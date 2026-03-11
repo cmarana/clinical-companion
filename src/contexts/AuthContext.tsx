@@ -6,6 +6,20 @@ interface SubscriptionInfo {
   subscribed: boolean;
   productId: string | null;
   subscriptionEnd: string | null;
+  isTrial: boolean;
+  trialDaysLeft: number;
+}
+
+const TRIAL_DAYS = 7;
+
+function getTrialInfo(user: User | null): { isTrial: boolean; trialDaysLeft: number } {
+  if (!user?.created_at) return { isTrial: false, trialDaysLeft: 0 };
+  const created = new Date(user.created_at);
+  const now = new Date();
+  const diffMs = now.getTime() - created.getTime();
+  const diffDays = diffMs / (1000 * 60 * 60 * 24);
+  const daysLeft = Math.max(0, Math.ceil(TRIAL_DAYS - diffDays));
+  return { isTrial: daysLeft > 0, trialDaysLeft: daysLeft };
 }
 
 interface AuthContextType {
