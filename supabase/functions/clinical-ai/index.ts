@@ -43,6 +43,12 @@ interface PatientData {
   isNeuroCase: boolean;
   glasgowScore?: number;
   hasAnticoagulantInUse: boolean;
+  // Obstetric
+  isPregnant: boolean;
+  isPuerperal: boolean;
+  gestationalWeeks?: number;
+  isFertileAge: boolean;
+  pregnancyConfirmed: boolean; // explicitly stated vs suspected
 }
 
 interface RenalCalcResult {
@@ -966,6 +972,67 @@ const PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
   },
 };
 
+// ─── Obstetric Protocols ─────────────────────────────────────────
+const OBSTETRIC_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  preeclampsia: {
+    name: "Pré-eclâmpsia Grave / Eclâmpsia — FEBRASGO/ACOG",
+    steps: [
+      { order: 1, action: "🔴 EMERGÊNCIA OBSTÉTRICA — Estabilizar mãe é prioridade" },
+      { order: 2, action: "Sulfato de Magnésio (Zuspan): 4g IV em 20min (diluir em 100mL SF) → 1-2g/h BIC", target: "Prevenir/tratar convulsão" },
+      { order: 3, action: "Monitorar Mg: reflexo patelar, FR > 16, diurese > 25mL/h. Antídoto: Gluconato de Ca 1g IV se toxicidade" },
+      { order: 4, action: "Anti-hipertensivo: Hidralazina 5mg IV a cada 20min (máx 20mg) OU Nifedipino 10mg VO", target: "PA < 160x110 (NÃO reduzir < 140x90)" },
+      { order: 5, action: "⚠️ EVITAR: IECA, BRA, nitroprussiato (toxicidade fetal)" },
+      { order: 6, action: "Exames: hemograma, plaquetas, TGO/TGP, LDH, bilirrubinas, Cr, ácido úrico, proteinúria" },
+      { order: 7, action: "Avaliar HELLP: plaquetas < 100.000 + AST > 70 + LDH > 600 + esquizócitos" },
+      { order: 8, action: "Se eclâmpsia (convulsão): MgSO4 + estabilizar + avaliar parto IMEDIATO" },
+      { order: 9, action: "Avaliação fetal: cardiotocografia, USG doppler" },
+      { order: 10, action: "Se ≥ 34 sem: considerar parto. Se < 34 sem: corticoide (betametasona 12mg IM 2 doses 24h) + avaliar" },
+      { order: 11, action: "Manter MgSO4 por 24h pós-parto" },
+    ],
+  },
+  obstetric_hemorrhage: {
+    name: "Hemorragia Obstétrica — Protocolo de Emergência",
+    steps: [
+      { order: 1, action: "🔴 ATIVAR PROTOCOLO DE HEMORRAGIA MACIÇA" },
+      { order: 2, action: "2 acessos calibrosos (16-18G) + cristaloide aquecido" },
+      { order: 3, action: "Tipagem + reserva + solicitar hemoderivados" },
+      { order: 4, action: "Ocitocina 10-40 UI em 500mL SF BIC (1ª linha para atonia)" },
+      { order: 5, action: "Se refratário: Metilergometrina 0,2mg IM (⚠️ CONTRAINDICADO se HAS)" },
+      { order: 6, action: "Misoprostol 800mcg VR se atonia refratária" },
+      { order: 7, action: "Ácido tranexâmico 1g IV em 10min (se < 3h do início)" },
+      { order: 8, action: "Massagem uterina bimanual" },
+      { order: 9, action: "Avaliar causa: 4T (Tônus, Trauma, Tecido, Trombina)" },
+      { order: 10, action: "Se refratário: balão de Bakri, sutura B-Lynch, embolização, histerectomia" },
+      { order: 11, action: "Metas: Hb > 7, plaquetas > 50.000, fibrinogênio > 200" },
+    ],
+  },
+  ectopic: {
+    name: "Gravidez Ectópica — Conduta",
+    steps: [
+      { order: 1, action: "Suspeitar se: atraso menstrual + dor pélvica + sangramento ± instabilidade" },
+      { order: 2, action: "Beta-hCG quantitativo + USG transvaginal" },
+      { order: 3, action: "Se instável (choque): cirurgia IMEDIATA (laparoscopia/laparotomia)" },
+      { order: 4, action: "Se estável + ectópica íntegra + hCG < 5000: considerar metotrexato 50mg/m² IM dose única" },
+      { order: 5, action: "Contraindicações metotrexato: BCF +, hCG > 5000, massa > 4cm, contraindicação clínica" },
+      { order: 6, action: "Seguimento hCG seriado após tratamento" },
+      { order: 7, action: "Tipagem sanguínea: anti-D se Rh negativo" },
+    ],
+  },
+  sepsis_puerperal: {
+    name: "Sepse Puerperal — Conduta",
+    steps: [
+      { order: 1, action: "Suspeitar se: febre > 38°C + taquicardia + dor pélvica/uterina no puerpério" },
+      { order: 2, action: "Hemoculturas (2 pares) ANTES do ATB" },
+      { order: 3, action: "Antibiótico amplo espectro: Clindamicina 900mg 8/8h + Gentamicina 5mg/kg/dia ± Ampicilina 2g 6/6h" },
+      { order: 4, action: "Alternativa: Piperacilina-Tazobactam 4,5g 6/6h" },
+      { order: 5, action: "USG pélvica: avaliar restos ovulares, abscesso, coleção" },
+      { order: 6, action: "Ressuscitação volêmica se sepse (seguir bundle sepse)" },
+      { order: 7, action: "Avaliar necessidade de curetagem/drenagem" },
+      { order: 8, action: "Profilaxia TEV: enoxaparina 40mg/dia (puerpério = risco alto)" },
+    ],
+  },
+};
+
 // ─── Parsing Helpers ─────────────────────────────────────────────
 function parseNumber(input?: string | null): number | undefined {
   if (!input) return undefined;
@@ -1104,6 +1171,14 @@ function extractPatient(messages: ChatMessage[]): PatientData {
   const hasAnticoagulantInUse = /warfarina|marevan|rivaroxabana|apixabana|dabigatrana|enoxaparina|heparina/i.test(medsRaw || "") ||
     /warfarina|marevan|rivaroxabana|apixabana|dabigatrana|enoxaparina|heparina/i.test(text);
 
+  // Obstetric detection
+  const isPregnant = /gestante|grávida|gravidez|gestação|gesta\b|g[0-9]p[0-9]|semanas?\s*de\s*(gestação|ig)|ig\s*[:=]?\s*[0-9]/i.test(text);
+  const isPuerperal = /puérpera|puerpério|pós[- ]?parto|pós[- ]?cesárea|pós[- ]?operatório.*parto/i.test(text);
+  const gestWeeksRaw = firstMatch(text, [/([0-9]{1,2})\s*sem(?:anas?)?\s*(?:de\s*)?(?:gestação|ig|gest)/i, /ig\s*[:=]?\s*([0-9]{1,2})/i]);
+  const gestationalWeeks = gestWeeksRaw ? parseNumber(gestWeeksRaw) : undefined;
+  const isFertileAge = sex === "F" && ageNum !== undefined && ageNum >= 12 && ageNum <= 55;
+  const pregnancyConfirmed = isPregnant; // explicitly stated
+
   return {
     weightKg: actualWeight,
     ageYears: ageNum,
@@ -1113,6 +1188,7 @@ function extractPatient(messages: ChatMessage[]): PatientData {
     hasHeartFailure, isElderly, isDialytic, hasAnticoagulationIndication,
     isPediatric, isNeonate, isInfant, estimatedWeightKg, vaccinesUpToDate,
     isNeuroCase, glasgowScore, hasAnticoagulantInUse,
+    isPregnant, isPuerperal, gestationalWeeks, isFertileAge, pregnancyConfirmed,
   };
 }
 
@@ -1396,11 +1472,21 @@ function checkInteractions(medsInUse: string[], prescribedDrugs: string[], patie
 }
 
 // ─── MODULE 5: Protocol Selection ───────────────────────────────
-function selectProtocol(text: string, scenario: Scenario, isPediatric: boolean): { name: string; steps: ProtocolStep[] } | null {
+function selectProtocol(text: string, scenario: Scenario, patient: PatientData): { name: string; steps: ProtocolStep[] } | null {
   const lower = text.toLowerCase();
 
-  // Pediatric protocols first
-  if (isPediatric) {
+  // Obstetric protocols first (highest priority for pregnant patients)
+  if (patient.isPregnant || patient.isPuerperal) {
+    if (/eclâmpsia|pré[- ]?eclâmpsia|hellp|convuls.*gestante|pa.*alta.*gestante/i.test(lower)) return OBSTETRIC_PROTOCOLS.preeclampsia;
+    if (/hemorrag.*pós[- ]?parto|atonia|sangr.*puerpério|hpp\b/i.test(lower)) return OBSTETRIC_PROTOCOLS.obstetric_hemorrhage;
+    if (/ectópica|ectopic|gravidez.*tubár/i.test(lower)) return OBSTETRIC_PROTOCOLS.ectopic;
+    if (/sepse.*puerper|febre.*puerpério|endometrite|infec.*puerper/i.test(lower)) return OBSTETRIC_PROTOCOLS.sepsis_puerperal;
+    // Bleeding in pregnancy
+    if (/sangr.*gra|hemorrag.*gestação|descolamento|placenta prévia/i.test(lower)) return OBSTETRIC_PROTOCOLS.obstetric_hemorrhage;
+  }
+
+  // Pediatric protocols
+  if (patient.isPediatric) {
     if (/pcr|parada|sem pulso|rcp/i.test(lower)) return PEDIATRIC_PROTOCOLS.pals_pcr;
     if (/sepse|séptic|choque séptico/i.test(lower)) return PEDIATRIC_PROTOCOLS.sepse_ped;
     if (/convuls|estado.*mal|status epilepticus/i.test(lower)) return PEDIATRIC_PROTOCOLS.convulsao_ped;
@@ -1409,7 +1495,7 @@ function selectProtocol(text: string, scenario: Scenario, isPediatric: boolean):
   }
 
   if (/sepse|séptic|choque séptico/i.test(lower)) {
-    if (isPediatric) return PEDIATRIC_PROTOCOLS.sepse_ped;
+    if (patient.isPediatric) return PEDIATRIC_PROTOCOLS.sepse_ped;
     return scenario === "UTI" ? PROTOCOLS.sepsis_uti : PROTOCOLS.sepsis;
   }
   if (/choque|hipoten/i.test(lower) && !/séptic/i.test(lower)) return PROTOCOLS.shock;
@@ -1418,7 +1504,7 @@ function selectProtocol(text: string, scenario: Scenario, isPediatric: boolean):
   if (/iam|infarto|sca|síndrome coronariana|dor torácica/i.test(lower)) return PROTOCOLS.cardiac;
   // Neuro protocols
   if (/meningite|encefalite/i.test(lower) && !/pediátr|criança/i.test(lower)) return PROTOCOLS.meningitis;
-  if (/convuls|estado.*mal|status epilepticus|crise epiléptica/i.test(lower) && !isPediatric) return PROTOCOLS.seizure;
+  if (/convuls|estado.*mal|status epilepticus|crise epiléptica/i.test(lower) && !patient.isPediatric) return PROTOCOLS.seizure;
   if (/tce|trauma.*crani|trauma.*crânio/i.test(lower)) return PROTOCOLS.tce;
   if (/coma\b|rebaixamento.*consciência|glasgow.*[3-8]\b/i.test(lower)) return PROTOCOLS.coma;
   if (/delirium|confus.*mental.*agud/i.test(lower)) return PROTOCOLS.delirium;
@@ -1602,6 +1688,27 @@ function generateSafetyAlerts(patient: PatientData, renal: RenalCalcResult): str
     }
   }
 
+  // OBSTETRIC ALERTS
+  if (patient.isPregnant || patient.isPuerperal) {
+    alerts.push("🤰 MODO OBSTETRÍCIA ATIVADO: Prioridade = segurança materna E fetal.");
+    if (patient.isPregnant) {
+      alerts.push(`🤰 GESTANTE${patient.gestationalWeeks ? ` — IG ${patient.gestationalWeeks} semanas` : " — IG não informada (PERGUNTAR)"}`);
+      alerts.push("🔴 DROGAS PROIBIDAS NA GESTAÇÃO: IECA, BRA, warfarina, isotretinoína, tetraciclina, metotrexato, misoprostol (sem indicação)");
+      alerts.push("🟡 EVITAR SE POSSÍVEL: quinolonas, AINEs (especialmente 3º trimestre), benzodiazepínicos");
+      alerts.push("✅ SEGUROS: penicilinas, cefalosporinas, azitromicina, metronidazol (2º/3º tri), paracetamol, insulina");
+      if (patient.gestationalWeeks && patient.gestationalWeeks >= 20) {
+        alerts.push("🟡 IG ≥ 20 sem: Monitorar PA. Se PA ≥ 140x90: investigar pré-eclâmpsia.");
+      }
+    }
+    if (patient.isPuerperal) {
+      alerts.push("🔴 PUERPÉRIO: Risco aumentado de TEV, infecção, hemorragia, depressão pós-parto.");
+      alerts.push("🟡 Profilaxia TEV: enoxaparina 40mg/dia (puerpério = alto risco).");
+    }
+  }
+  if (patient.isFertileAge && !patient.isPregnant && !patient.isPuerperal) {
+    alerts.push("🟡 MULHER EM IDADE FÉRTIL: Confirmar se gestante antes de prescrever drogas teratogênicas.");
+  }
+
   return alerts;
 }
 
@@ -1667,7 +1774,7 @@ function runEngine(messages: ChatMessage[]): EngineResult {
   const renal = calcRenal(patient);
   const doses = calcDoses(patient, renal);
   const userText = messages.filter(m => m.role === "user").map(m => m.content).join("\n");
-  const protocol = selectProtocol(userText, patient.scenario, patient.isPediatric);
+  const protocol = selectProtocol(userText, patient.scenario, patient);
   const antibiotic = patient.isPediatric ? null : selectAntibiotic(patient, renal); // pediatric ATB handled by LLM with dose context
   const interactions = checkInteractions(patient.medicationsInUse, [], patient, renal);
   const drugRenalAdj = getDrugRenalAdjustments(renal.clcrMlMin);
@@ -1694,6 +1801,12 @@ function runEngine(messages: ChatMessage[]): EngineResult {
   }
   if (patient.isPediatric && patient.vaccinesUpToDate === undefined) {
     missingData.push("STATUS VACINAL — vacinação em dia?");
+  }
+  if ((patient.isPregnant || patient.isPuerperal) && !patient.gestationalWeeks && patient.isPregnant) {
+    missingData.push("IDADE GESTACIONAL (semanas) — necessário para conduta obstétrica");
+  }
+  if (patient.isFertileAge && !patient.isPregnant && !patient.isPuerperal) {
+    missingData.push("GRAVIDEZ — paciente em idade fértil, confirmar se gestante antes de prescrever");
   }
 
   const warnings = [...allergyWarnings];
@@ -1900,6 +2013,36 @@ function formatEngineContext(e: EngineResult): string {
     lines.push(`  → Delirium: medidas não farmacológicas PRIMEIRO. Haloperidol 0,5-2mg se agitação grave (monitorar QTc)`);
   }
 
+  // Obstetric section
+  if (e.patient.isPregnant || e.patient.isPuerperal) {
+    lines.push("\n🤰 ═══ MODO OBSTETRÍCIA ATIVADO ═══");
+    lines.push(`  Gestante: ${e.patient.isPregnant ? "SIM" : "Não"}`);
+    lines.push(`  Puérpera: ${e.patient.isPuerperal ? "SIM" : "Não"}`);
+    lines.push(`  IG: ${e.patient.gestationalWeeks ? `${e.patient.gestationalWeeks} semanas` : "NÃO INFORMADA — PERGUNTAR"}`);
+    lines.push(`  Mulher em idade fértil: ${e.patient.isFertileAge ? "SIM" : "N/A"}`);
+    lines.push(`\n  DROGAS PROIBIDAS NA GESTAÇÃO:`);
+    lines.push(`  🔴 CONTRAINDICADAS: IECA, BRA, warfarina, isotretinoína, tetraciclina, doxiciclina, metotrexato, misoprostol (sem indicação obstétrica)`);
+    lines.push(`  🟡 EVITAR: quinolonas, AINEs (3º tri: fechamento ducto arterioso), benzodiazepínicos, carbamazepina, valproato, fenitoína`);
+    lines.push(`  ✅ SEGUROS: penicilinas, cefalosporinas, azitromicina, eritromicina, metronidazol (2º/3º tri), clindamicina, paracetamol, insulina`);
+    lines.push(`\n  ANTIBIÓTICOS NA GESTAÇÃO:`);
+    lines.push(`  → 1ª escolha: penicilinas, cefalosporinas`);
+    lines.push(`  → Atípicos: azitromicina (NÃO usar quinolona)`);
+    lines.push(`  → ITU: ceftriaxona, nitrofurantoína (NÃO no 3º tri), fosfomicina`);
+    lines.push(`  → Anaeróbios: metronidazol (evitar 1º tri se possível), clindamicina`);
+    lines.push(`\n  EMERGÊNCIAS OBSTÉTRICAS:`);
+    lines.push(`  → Pré-eclâmpsia: MgSO4 (Zuspan: 4g IV → 1-2g/h) + anti-HAS (hidralazina/nifedipino). EVITAR IECA/BRA/nitroprussiato.`);
+    lines.push(`  → Eclâmpsia: MgSO4 + avaliar parto IMEDIATO. Monitorar reflexo patelar, FR, diurese.`);
+    lines.push(`  → Hemorragia pós-parto: ocitocina → metilergometrina → misoprostol → ác. tranexâmico → cirurgia`);
+    lines.push(`  → Ectópica: beta-hCG + USG TV. Instável = cirurgia. Estável = metotrexato.`);
+    lines.push(`  → Sepse puerperal: clinda + genta ± ampicilina. Profilaxia TEV obrigatória.`);
+    lines.push(`\n  EXAMES NA GESTAÇÃO:`);
+    lines.push(`  → EVITAR radiação (TC/RX) se possível. Preferir USG, RM sem contraste.`);
+    lines.push(`  → Se TC imprescindível: proteção abdominal + anotar dose.`);
+    lines.push(`\n  PUERPÉRIO:`);
+    lines.push(`  → Riscos: TEV, infecção (endometrite), hemorragia tardia, depressão pós-parto, mastite`);
+    lines.push(`  → Profilaxia TEV: enoxaparina 40mg/dia (cesárea, imobilização, obesidade, PE)`);
+  }
+
   lines.push("\n═══ FIM DO MOTOR CLÍNICO ═══");
   return lines.join("\n");
 }
@@ -2028,6 +2171,19 @@ REGRAS NEUROLÓGICAS (se MODO NEURO ativado):
 - Idoso confuso: NUNCA assumir demência. Investigar infecção, droga, metabólico, AVC primeiro.
 - Anticoagulado + neuro: risco de sangramento intracraniano. TC urgente. Reverter se hemorragia.
 - ADAPTAR AO CENÁRIO: SAMU → estabilizar (via aérea, glicemia); PS → TC + investigar; UTI → monitorar PIC, Glasgow horário; UBS → referenciar se grave.
+
+REGRAS OBSTÉTRICAS (se MODO OBSTETRÍCIA ativado):
+- Se gestante: NUNCA prescrever IECA, BRA, warfarina, isotretinoína, tetraciclina, metotrexato sem indicação obstétrica.
+- EVITAR: quinolonas, AINEs (3º tri), benzodiazepínicos, valproato, carbamazepina, fenitoína.
+- ANTIBIÓTICOS SEGUROS: penicilinas, cefalosporinas, azitromicina, metronidazol (2º/3º tri), clindamicina.
+- Pré-eclâmpsia/Eclâmpsia: MgSO4 (Zuspan: 4g IV 20min → 1-2g/h). Anti-HAS: hidralazina 5mg IV ou nifedipino 10mg VO. NUNCA IECA/BRA.
+- Hemorragia pós-parto: ocitocina → metilergometrina (⚠️ CI se HAS) → misoprostol 800mcg VR → ác. tranexâmico 1g IV → cirurgia.
+- Gravidez ectópica: instável = cirurgia. Estável + hCG < 5000 = metotrexato.
+- Sepse puerperal: clinda + genta ± ampicilina. Profilaxia TEV obrigatória.
+- EXAMES: evitar radiação. Preferir USG, RM sem contraste.
+- PUERPÉRIO: profilaxia TEV (enoxaparina 40mg/dia), monitorar infecção, hemorragia, depressão.
+- MULHER EM IDADE FÉRTIL: confirmar gravidez antes de prescrever teratogênicos.
+- Se dúvida sobre segurança de droga na gestação: NÃO PRESCREVER. Perguntar/consultar.
 
 DISCLAIMER: Apoio à decisão clínica — responsabilidade final é do médico.`;
 
