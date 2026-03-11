@@ -1664,6 +1664,25 @@ function formatEngineContext(e: EngineResult): string {
     }
   }
 
+  // Pediatric section
+  if (e.patient.isPediatric) {
+    lines.push("\n👶 ═══ MODO PEDIATRIA ATIVADO ═══");
+    lines.push(`  Neonato: ${e.patient.isNeonate ? "SIM 🔴" : "Não"}`);
+    lines.push(`  Lactente: ${e.patient.isInfant ? "SIM ⚠️" : "Não"}`);
+    lines.push(`  Peso estimado por idade: ${e.patient.estimatedWeightKg ? `~${e.patient.estimatedWeightKg} kg (CONFIRMAR)` : "N/A"}`);
+    lines.push(`  Vacinas: ${e.patient.vaccinesUpToDate === true ? "Em dia" : e.patient.vaccinesUpToDate === false ? "ATRASADAS ⚠️" : "Não informado — PERGUNTAR"}`);
+    
+    const pedDoses = calcPediatricDoses(e.patient);
+    for (const line of pedDoses) lines.push(line);
+    
+    lines.push("\n  REGRAS PEDIÁTRICAS:");
+    lines.push("  → NUNCA usar dose adulta");
+    lines.push("  → Volume: 10-20 mL/kg (NÃO 30 mL/kg)");
+    lines.push("  → Reavaliar após CADA bolus");
+    lines.push("  → Se RN febril: internar + ATB empírico");
+    lines.push("  → EVITAR: quinolonas, tetraciclinas, codeína, tramadol em < 12a");
+  }
+
   lines.push("\n═══ FIM DO MOTOR CLÍNICO ═══");
   return lines.join("\n");
 }
