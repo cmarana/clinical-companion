@@ -11,6 +11,7 @@ type AllergyType = "ANAFILÁTICA" | "LEVE" | "NÃO INFORMADA";
 interface PatientData {
   weightKg?: number;
   ageYears?: number;
+  ageMonths?: number; // for pediatric precision
   creatinineMgDl?: number;
   sex?: "M" | "F";
   allergies?: string;
@@ -27,11 +28,16 @@ interface PatientData {
     hospitalized30d: boolean;
     immunosuppressed: boolean;
   };
-  // Conditions that affect fluid resuscitation
   hasHeartFailure: boolean;
-  isElderly: boolean; // ≥65
-  isDialytic: boolean; // EXPLICITLY stated by user
-  hasAnticoagulationIndication: string | null; // TEV, FA, IAM, TEP, TVP, prótese
+  isElderly: boolean;
+  isDialytic: boolean;
+  hasAnticoagulationIndication: string | null;
+  // Pediatric
+  isPediatric: boolean; // age < 14
+  isNeonate: boolean; // age < 28 days
+  isInfant: boolean; // age < 1 year
+  estimatedWeightKg?: number; // weight estimated by age if not provided
+  vaccinesUpToDate?: boolean;
 }
 
 interface RenalCalcResult {
