@@ -110,6 +110,8 @@ export default function ClinicalAI() {
     if (patientCtx.age) parts.push(`**Idade:** ${patientCtx.age}`);
     if (patientCtx.creatinine) parts.push(`**Creatinina:** ${patientCtx.creatinine}`);
     if (patientCtx.allergies) parts.push(`**Alergias:** ${patientCtx.allergies}`);
+    if (patientCtx.sex) parts.push(`**Sexo:** ${patientCtx.sex}`);
+    if (patientCtx.scenario) parts.push(`**Cenário:** ${patientCtx.scenario}`);
 
     if (!symptoms && !history && !vitals && !exams) {
       toast.error("Preencha ao menos sintomas, história ou exames");
