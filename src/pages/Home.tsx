@@ -1,8 +1,10 @@
 import { useNavigate } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { Card, CardContent } from "@/components/ui/card";
-import { Zap, FileText, Pill, GraduationCap, Stethoscope, Baby, Heart, Syringe } from "lucide-react";
+import { Zap, FileText, Pill, GraduationCap, Stethoscope, Baby, Heart, Syringe, Crown, LogOut } from "lucide-react";
 import { protocolCategories } from "@/data/protocols";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
 
 const iconMap: Record<string, React.ReactNode> = {
   Zap: <Zap size={22} />,
@@ -21,16 +23,42 @@ const quickActions = [
 
 export default function Home() {
   const navigate = useNavigate();
+  const { user, subscription, signOut } = useAuth();
 
   return (
     <>
-      <TopBar showBack={false} />
+      <TopBar showBack={false} rightContent={
+        <button onClick={() => navigate("/pricing")} className="p-1.5 rounded-md hover:bg-accent transition-colors text-muted-foreground">
+          <Crown size={18} />
+        </button>
+      } />
       <div className="px-4 py-5 max-w-lg mx-auto space-y-6">
         {/* Hero */}
         <div className="space-y-1">
           <h1 className="font-heading text-2xl font-bold tracking-tight">Manual de Plantão</h1>
           <p className="text-sm text-muted-foreground">Guia de sobrevivência na emergência — Ed. 2026</p>
+          {user && (
+            <div className="flex items-center justify-between pt-1">
+              <p className="text-xs text-muted-foreground truncate">{user.email}</p>
+              <Button variant="ghost" size="sm" onClick={signOut} className="text-xs gap-1 h-7 px-2">
+                <LogOut size={12} /> Sair
+              </Button>
+            </div>
+          )}
         </div>
+
+        {/* Subscription banner */}
+        {!subscription.subscribed && (
+          <Card onClick={() => navigate("/pricing")} className="cursor-pointer border-primary bg-primary/5 hover:bg-primary/10 transition-colors">
+            <CardContent className="flex items-center gap-3 p-4">
+              <Crown size={20} className="text-primary" />
+              <div className="flex-1">
+                <p className="font-heading font-semibold text-sm">Assine o Manual Pro</p>
+                <p className="text-xs text-muted-foreground">R$ 20/mês — Acesso completo</p>
+              </div>
+            </CardContent>
+          </Card>
+        )}
 
         {/* Quick Actions */}
         <div className="grid grid-cols-2 gap-3">
