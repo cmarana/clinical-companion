@@ -21,6 +21,17 @@ const modules = [
   { label: "Questões", icon: HelpCircle, path: "/quiz" },
 ];
 
+const emergencyShortcuts = [
+  { label: "PCR", path: "/protocols/pcr" },
+  { label: "Sepse", path: "/protocols/sepse" },
+  { label: "IAM", path: "/protocols/iam" },
+  { label: "AVC", path: "/protocols/avc" },
+  { label: "Anafilaxia", path: "/protocols/anafilaxia" },
+  { label: "Choque", path: "/protocols/choque-hipovolemico" },
+  { label: "IOT", path: "/protocols/iot" },
+  { label: "Convulsão", path: "/protocols/convulsao" },
+];
+
 export default function Home() {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
