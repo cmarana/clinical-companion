@@ -86,7 +86,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (newSession?.user) {
           setTimeout(() => checkSubscription(), 0);
         } else {
-          setSubscription({ subscribed: false, productId: null, subscriptionEnd: null });
+          setSubscription({ subscribed: false, productId: null, subscriptionEnd: null, isTrial: false, trialDaysLeft: 0 });
         }
       }
     );
