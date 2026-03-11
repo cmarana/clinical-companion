@@ -4,7 +4,7 @@ import { Lock, Crown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 interface PremiumGateProps {
-  children: React.ReactNode;
+  children?: React.ReactNode;
   fallback?: React.ReactNode;
   className?: string;
 }

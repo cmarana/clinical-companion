@@ -17,15 +17,6 @@ export default function Quiz() {
   const [score, setScore] = useState(0);
   const [answered, setAnswered] = useState(false);
 
-  if (!subscription.subscribed) {
-    return (
-      <>
-        <TopBar title="Quiz Interativo" />
-        <PremiumGate />
-      </>
-    );
-  }
-
   const categories = useMemo(() => {
     const cats = new Set(quizQuestions.map((q) => q.category));
     return ["all", ...Array.from(cats)];
@@ -63,6 +54,15 @@ export default function Quiz() {
       setAnswered(false);
     }
   };
+
+  if (!subscription.subscribed) {
+    return (
+      <>
+        <TopBar title="Quiz Interativo" />
+        <PremiumGate />
+      </>
+    );
+  }
 
   if (mode === "menu") {
     return (
