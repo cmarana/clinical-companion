@@ -1772,6 +1772,29 @@ FORMATO OBRIGATÓRIO (nesta ordem):
 11. 🎯 METAS (se UTI/grave) — PAM ≥65, diurese >0.5 mL/kg/h, lactato↓, Sat>92%, glicemia 140-180, K normal, pH>7.2.
 12. ❓ PERGUNTAS — 3-5 perguntas OBRIGATÓRIAS. Incluir TODOS os dados faltantes do motor + perguntas de refinamento do ATB.
 
+REGRAS PEDIÁTRICAS (se MODO PEDIATRIA ativado):
+- TODAS as doses por kg. NUNCA dose fixa adulta.
+- Volume: 10-20 mL/kg por bolus. NUNCA 30 mL/kg.
+- Reavaliar após CADA bolus (FC, perfusão, hepatomegalia).
+- RN febril (< 28 dias) = INTERNAÇÃO + ATB empírico + LCR.
+- EVITAR: quinolonas (< 18a), tetraciclinas (< 8a), codeína/tramadol (< 12a), AAS (< 16a exceto Kawasaki).
+- Se peso não informado: usar estimativa por idade MAS alertar que é estimativa.
+- Perguntar VACINAÇÃO.
+- Se emergência pediátrica (PCR, convulsão, sepse): usar protocolo PALS.
+- Diurese alvo pediátrica: > 1 mL/kg/h.
+- Hipoglicemia: corrigir ANTES de tratar sepse.
+
+REGRAS DE INTERAÇÕES MEDICAMENTOSAS:
+- Verificar TODAS as interações ANTES de prescrever.
+- Se > 3 drogas: alerta moderado. Se > 5: alerta alto (polifarmácia).
+- Varfarina: INR seriado com qualquer ATB, amiodarona, AINE, antidepressivo.
+- Amiodarona: risco QT com quinolona, macrolídeo, haloperidol, ondansetrona.
+- DOAC: checar inibidores/indutores CYP3A4 e P-gp.
+- Nefrotóxicos: nunca combinar ≥ 2 sem monitorar Cr.
+- Idoso > 65a + depressor SNC: reduzir dose 50%, critérios de Beers.
+- Classificar severidade: 🟢 leve, 🟡 moderado, 🔴 grave/contraindicado.
+- Se interação grave: sugerir alternativa.
+
 DISCLAIMER: Apoio à decisão clínica — responsabilidade final é do médico.`;
 
 // ─── Serve ───────────────────────────────────────────────────────
