@@ -53,6 +53,19 @@ export default function Home() {
           )}
         </div>
 
+        {/* Trial banner */}
+        {subscription.isTrial && (
+          <Card onClick={() => navigate("/pricing")} className="cursor-pointer border-primary bg-accent/30 hover:bg-accent/50 transition-colors">
+            <CardContent className="flex items-center gap-3 p-4">
+              <Crown size={20} className="text-primary" />
+              <div className="flex-1">
+                <p className="font-heading font-semibold text-sm">Teste gratuito — {subscription.trialDaysLeft} {subscription.trialDaysLeft === 1 ? "dia" : "dias"} restantes</p>
+                <p className="text-xs text-muted-foreground">Assine para manter acesso completo</p>
+              </div>
+            </CardContent>
+          </Card>
+        )}
+
         {/* Subscription banner */}
         {!isPremium && (
           <Card onClick={() => navigate("/pricing")} className="cursor-pointer border-primary bg-primary/5 hover:bg-primary/10 transition-colors">

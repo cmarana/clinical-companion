@@ -3,12 +3,13 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, Crown, LogOut, Sparkles } from "lucide-react";
+import { Check, Crown, LogOut, Sparkles, Clock } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { plans } from "@/lib/plans";
 import { cn } from "@/lib/utils";
+import { Progress } from "@/components/ui/progress";
 
 const features = [
   "Todos os protocolos completos",
@@ -74,6 +75,49 @@ export default function Pricing() {
     }
   };
 
+  const PlanSelector = () => (
+    <>
+      <div className="grid grid-cols-2 gap-2">
+        {plans.map((plan) => (
+          <Card
+            key={plan.id}
+            onClick={() => setSelectedPlan(plan.id)}
+            className={cn(
+              "cursor-pointer transition-all relative overflow-hidden",
+              selectedPlan === plan.id
+                ? "border-primary ring-2 ring-primary/20 shadow-md"
+                : "border-border hover:border-primary/40"
+            )}
+          >
+            {plan.popular && (
+              <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-[9px] font-heading font-bold px-2 py-0.5 rounded-bl-lg">
+                POPULAR
+              </div>
+            )}
+            <CardContent className="p-3 space-y-1">
+              <p className="font-heading font-bold text-xs">{plan.name}</p>
+              <div className="flex items-baseline gap-0.5">
+                <span className="font-heading font-bold text-lg">{plan.priceDisplay}</span>
+              </div>
+              <p className="text-[10px] text-muted-foreground">{plan.monthlyEquivalent}</p>
+              {plan.savings && (
+                <p className="text-[10px] font-heading font-semibold text-primary">{plan.savings}</p>
+              )}
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+      <Button
+        onClick={() => handleCheckout(selectedPlan)}
+        className="w-full h-12 text-base font-heading font-bold"
+        size="lg"
+        disabled={loading !== null}
+      >
+        {loading ? "Redirecionando..." : "Assinar agora"}
+      </Button>
+    </>
+  );
+
   return (
     <>
       <TopBar title="Assinatura" />
@@ -89,7 +133,32 @@ export default function Pricing() {
           </p>
         </div>
 
-        {subscription.subscribed ? (
+        {/* Trial Banner */}
+        {subscription.isTrial && (
+          <Card className="border-primary bg-accent/30">
+            <CardContent className="p-5 space-y-4">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <Clock size={20} className="text-primary" />
+                </div>
+                <div className="flex-1">
+                  <p className="font-heading font-bold text-sm">Teste gratuito ativo</p>
+                  <p className="text-xs text-muted-foreground">
+                    {subscription.trialDaysLeft} {subscription.trialDaysLeft === 1 ? "dia restante" : "dias restantes"}
+                  </p>
+                </div>
+              </div>
+              <Progress value={((7 - subscription.trialDaysLeft) / 7) * 100} className="h-2" />
+              <p className="text-xs text-muted-foreground text-center">
+                Assine agora para manter o acesso completo após o período de teste.
+              </p>
+              <PlanSelector />
+            </CardContent>
+          </Card>
+        )}
+
+        {/* Paid subscription active */}
+        {subscription.subscribed && !subscription.isTrial && (
           <Card className="border-primary">
             <CardContent className="p-5 space-y-4">
               <div className="text-center p-4 rounded-lg bg-primary/10 text-primary font-medium">
@@ -109,49 +178,12 @@ export default function Pricing() {
               </Button>
             </CardContent>
           </Card>
-        ) : (
-          <>
-            {/* Plan selector */}
-            <div className="grid grid-cols-2 gap-2">
-              {plans.map((plan) => (
-                <Card
-                  key={plan.id}
-                  onClick={() => setSelectedPlan(plan.id)}
-                  className={cn(
-                    "cursor-pointer transition-all relative overflow-hidden",
-                    selectedPlan === plan.id
-                      ? "border-primary ring-2 ring-primary/20 shadow-md"
-                      : "border-border hover:border-primary/40"
-                  )}
-                >
-                  {plan.popular && (
-                    <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-[9px] font-heading font-bold px-2 py-0.5 rounded-bl-lg">
-                      POPULAR
-                    </div>
-                  )}
-                  <CardContent className="p-3 space-y-1">
-                    <p className="font-heading font-bold text-xs">{plan.name}</p>
-                    <div className="flex items-baseline gap-0.5">
-                      <span className="font-heading font-bold text-lg">{plan.priceDisplay}</span>
-                    </div>
-                    <p className="text-[10px] text-muted-foreground">{plan.monthlyEquivalent}</p>
-                    {plan.savings && (
-                      <p className="text-[10px] font-heading font-semibold text-primary">{plan.savings}</p>
-                    )}
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
+        )}
 
-            {/* CTA */}
-            <Button
-              onClick={() => handleCheckout(selectedPlan)}
-              className="w-full h-12 text-base font-heading font-bold"
-              size="lg"
-              disabled={loading !== null}
-            >
-              {loading ? "Redirecionando..." : user ? "Assinar agora" : "Entrar para assinar"}
-            </Button>
+        {/* No subscription and no trial */}
+        {!subscription.subscribed && (
+          <>
+            <PlanSelector />
 
             {/* Features */}
             <Card>

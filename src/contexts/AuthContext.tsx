@@ -6,6 +6,20 @@ interface SubscriptionInfo {
   subscribed: boolean;
   productId: string | null;
   subscriptionEnd: string | null;
+  isTrial: boolean;
+  trialDaysLeft: number;
+}
+
+const TRIAL_DAYS = 7;
+
+function getTrialInfo(user: User | null): { isTrial: boolean; trialDaysLeft: number } {
+  if (!user?.created_at) return { isTrial: false, trialDaysLeft: 0 };
+  const created = new Date(user.created_at);
+  const now = new Date();
+  const diffMs = now.getTime() - created.getTime();
+  const diffDays = diffMs / (1000 * 60 * 60 * 24);
+  const daysLeft = Math.max(0, Math.ceil(TRIAL_DAYS - diffDays));
+  return { isTrial: daysLeft > 0, trialDaysLeft: daysLeft };
 }
 
 interface AuthContextType {
@@ -21,7 +35,7 @@ const AuthContext = createContext<AuthContextType>({
   user: null,
   session: null,
   loading: true,
-  subscription: { subscribed: false, productId: null, subscriptionEnd: null },
+  subscription: { subscribed: false, productId: null, subscriptionEnd: null, isTrial: false, trialDaysLeft: 0 },
   checkSubscription: async () => {},
   signOut: async () => {},
 });
@@ -34,21 +48,34 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     subscribed: false,
     productId: null,
     subscriptionEnd: null,
+    isTrial: false,
+    trialDaysLeft: 0,
   });
 
   const checkSubscription = useCallback(async () => {
     try {
       const { data, error } = await supabase.functions.invoke("check-subscription");
       if (error) throw error;
+      const hasPaidSub = data?.subscribed ?? false;
+      const trial = getTrialInfo(user);
       setSubscription({
-        subscribed: data?.subscribed ?? false,
+        subscribed: hasPaidSub || trial.isTrial,
         productId: data?.product_id ?? null,
         subscriptionEnd: data?.subscription_end ?? null,
+        isTrial: !hasPaidSub && trial.isTrial,
+        trialDaysLeft: trial.trialDaysLeft,
       });
     } catch {
-      setSubscription({ subscribed: false, productId: null, subscriptionEnd: null });
+      const trial = getTrialInfo(user);
+      setSubscription({
+        subscribed: trial.isTrial,
+        productId: null,
+        subscriptionEnd: null,
+        isTrial: trial.isTrial,
+        trialDaysLeft: trial.trialDaysLeft,
+      });
     }
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     const { data: { subscription: authSub } } = supabase.auth.onAuthStateChange(
@@ -59,7 +86,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (newSession?.user) {
           setTimeout(() => checkSubscription(), 0);
         } else {
-          setSubscription({ subscribed: false, productId: null, subscriptionEnd: null });
+          setSubscription({ subscribed: false, productId: null, subscriptionEnd: null, isTrial: false, trialDaysLeft: 0 });
         }
       }
     );
@@ -85,7 +112,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await supabase.auth.signOut();
     setUser(null);
     setSession(null);
-    setSubscription({ subscribed: false, productId: null, subscriptionEnd: null });
+    setSubscription({ subscribed: false, productId: null, subscriptionEnd: null, isTrial: false, trialDaysLeft: 0 });
   };
 
   return (
