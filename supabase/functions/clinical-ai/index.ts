@@ -1416,6 +1416,12 @@ function selectProtocol(text: string, scenario: Scenario, isPediatric: boolean):
   if (/hemorr|sangr.*ativo|choque hemorrágico/i.test(lower)) return PROTOCOLS.bleeding;
   if (/insuf.*resp|dispneia.*aguda|hipoxemia/i.test(lower)) return PROTOCOLS.respiratory_failure;
   if (/iam|infarto|sca|síndrome coronariana|dor torácica/i.test(lower)) return PROTOCOLS.cardiac;
+  // Neuro protocols
+  if (/meningite|encefalite/i.test(lower) && !/pediátr|criança/i.test(lower)) return PROTOCOLS.meningitis;
+  if (/convuls|estado.*mal|status epilepticus|crise epiléptica/i.test(lower) && !isPediatric) return PROTOCOLS.seizure;
+  if (/tce|trauma.*crani|trauma.*crânio/i.test(lower)) return PROTOCOLS.tce;
+  if (/coma\b|rebaixamento.*consciência|glasgow.*[3-8]\b/i.test(lower)) return PROTOCOLS.coma;
+  if (/delirium|confus.*mental.*agud/i.test(lower)) return PROTOCOLS.delirium;
   if (/avc|acidente vascular|stroke/i.test(lower)) return PROTOCOLS.stroke;
   return null;
 }
