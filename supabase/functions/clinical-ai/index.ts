@@ -1800,6 +1800,36 @@ function selectProtocol(text: string, scenario: Scenario, patient: PatientData):
   if (/coma\b|rebaixamento.*consciência|glasgow.*[3-8]\b/i.test(lower)) return PROTOCOLS.coma;
   if (/delirium|confus.*mental.*agud/i.test(lower)) return PROTOCOLS.delirium;
   if (/avc|acidente vascular|stroke/i.test(lower)) return PROTOCOLS.stroke;
+
+  // Endocrine / Metabolic protocols
+  if (/cetoacidose|cad\b/i.test(lower)) return ENDOCRINE_PROTOCOLS.cad;
+  if (/estado hiperosmolar|hhs\b|hiperosmolar/i.test(lower)) return ENDOCRINE_PROTOCOLS.hhs;
+  if (/hipercalemia|potássio.*alto|k\+?\s*>?\s*[56]/i.test(lower)) return ENDOCRINE_PROTOCOLS.hyperkalemia;
+  if (/hiponatremia|sódio.*baixo|na\+?\s*<?\s*1[23]/i.test(lower)) return ENDOCRINE_PROTOCOLS.hyponatremia;
+  if (/tireotoxicose|tempestade.*tireoid|crise.*tireotóxica/i.test(lower)) return ENDOCRINE_PROTOCOLS.thyroid_storm;
+  if (/mixedema|coma.*mixedematoso|hipotireoidismo.*grave/i.test(lower)) return ENDOCRINE_PROTOCOLS.myxedema;
+
+  // Gastro protocols
+  if (/hematêmese|melena|hda\b|hemorragia.*digestiva.*alta|sangramento.*digestivo/i.test(lower)) return GASTRO_PROTOCOLS.hda;
+  if (/pancreatite/i.test(lower)) return GASTRO_PROTOCOLS.pancreatite;
+  if (/cirrose.*descomp|encefalopatia.*hepát|ascite.*tensa|pbe\b|peritonite.*espontânea/i.test(lower)) return GASTRO_PROTOCOLS.cirrose_descomp;
+  if (/colecistite|colangite/i.test(lower)) return GASTRO_PROTOCOLS.colecistite;
+  if (/enterorragia|hdb\b|hemorragia.*digestiva.*baixa/i.test(lower)) return GASTRO_PROTOCOLS.hda; // same initial approach
+
+  // Trauma protocols
+  if (/politrauma|trauma.*grave|atropelamento|faf\b|fac\b|colisão|capotamento/i.test(lower)) return TRAUMA_PROTOCOLS.trauma_atls;
+  if (/choque.*hemorrágico|hemorragia.*trauma/i.test(lower)) return TRAUMA_PROTOCOLS.hemorrhagic_shock;
+  if (/abdome agudo|perfuração|obstrução intestinal|isquemia mesentérica/i.test(lower)) return TRAUMA_PROTOCOLS.abdome_agudo;
+
+  // Ortho protocols
+  if (/fratura|fratura exposta/i.test(lower)) return ORTHO_PROTOCOLS.fracture;
+  if (/luxação|luxação.*ombro|luxação.*quadril/i.test(lower)) return ORTHO_PROTOCOLS.luxation;
+  if (/dor lombar|lombalgia|cervicalgia|dorsalgia|ciatalgia|hérnia.*disc/i.test(lower)) return ORTHO_PROTOCOLS.low_back_pain;
+
+  // ICU protocols
+  if (/intubação|iot\b|sequência rápida|isr\b/i.test(lower)) return ICU_PROTOCOLS.intubation_rsi;
+  if (patient.isCriticalCase && scenario === "UTI") return ICU_PROTOCOLS.icu_general;
+
   return null;
 }
 
