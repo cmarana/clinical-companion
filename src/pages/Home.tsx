@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import {
   Search, Pill, ClipboardList, FileText, Calculator,
   Baby, Heart, Stethoscope, BookOpen, HelpCircle,
-  AlertTriangle, Zap, Moon, Sun
+  AlertTriangle, Zap, Moon, Sun, ChevronRight
 } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
