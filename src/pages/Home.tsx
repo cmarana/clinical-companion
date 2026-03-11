@@ -85,6 +85,29 @@ export default function Home() {
           </button>
         ))}
       </div>
+
+      {/* Emergency shortcuts */}
+      <div className="mt-3">
+        <div className="flex items-center justify-between mb-2">
+          <h2 className="font-heading font-semibold text-xs flex items-center gap-1.5 text-destructive">
+            <Zap size={12} /> Acesso Rápido
+          </h2>
+          <button onClick={() => navigate("/emergency")} className="text-[10px] text-muted-foreground flex items-center gap-0.5 hover:text-foreground">
+            Ver todos <ChevronRight size={10} />
+          </button>
+        </div>
+        <div className="flex flex-wrap gap-1.5">
+          {emergencyShortcuts.map((s) => (
+            <button
+              key={s.path}
+              onClick={() => navigate(s.path)}
+              className="px-3 py-1.5 rounded-lg border border-destructive/20 bg-destructive/5 hover:bg-destructive/10 active:scale-[0.97] transition-all font-heading font-semibold text-xs"
+            >
+              {s.label}
+            </button>
+          ))}
+        </div>
+      </div>
     </div>
   );
 }
