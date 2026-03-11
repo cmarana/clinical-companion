@@ -15,15 +15,6 @@ export default function EmergencyMode() {
     Object.fromEntries(emergencyCategories.map(c => [c.id, true]))
   );
 
-  if (!subscription.subscribed) {
-    return (
-      <>
-        <TopBar title="Emergência" />
-        <PremiumGate />
-      </>
-    );
-  }
-
   const searchResults = useMemo(() => {
     if (search.length < 2) return null;
     const q = search.toLowerCase();
