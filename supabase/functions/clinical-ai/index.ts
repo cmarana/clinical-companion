@@ -1688,6 +1688,27 @@ function generateSafetyAlerts(patient: PatientData, renal: RenalCalcResult): str
     }
   }
 
+  // OBSTETRIC ALERTS
+  if (patient.isPregnant || patient.isPuerperal) {
+    alerts.push("🤰 MODO OBSTETRÍCIA ATIVADO: Prioridade = segurança materna E fetal.");
+    if (patient.isPregnant) {
+      alerts.push(`🤰 GESTANTE${patient.gestationalWeeks ? ` — IG ${patient.gestationalWeeks} semanas` : " — IG não informada (PERGUNTAR)"}`);
+      alerts.push("🔴 DROGAS PROIBIDAS NA GESTAÇÃO: IECA, BRA, warfarina, isotretinoína, tetraciclina, metotrexato, misoprostol (sem indicação)");
+      alerts.push("🟡 EVITAR SE POSSÍVEL: quinolonas, AINEs (especialmente 3º trimestre), benzodiazepínicos");
+      alerts.push("✅ SEGUROS: penicilinas, cefalosporinas, azitromicina, metronidazol (2º/3º tri), paracetamol, insulina");
+      if (patient.gestationalWeeks && patient.gestationalWeeks >= 20) {
+        alerts.push("🟡 IG ≥ 20 sem: Monitorar PA. Se PA ≥ 140x90: investigar pré-eclâmpsia.");
+      }
+    }
+    if (patient.isPuerperal) {
+      alerts.push("🔴 PUERPÉRIO: Risco aumentado de TEV, infecção, hemorragia, depressão pós-parto.");
+      alerts.push("🟡 Profilaxia TEV: enoxaparina 40mg/dia (puerpério = alto risco).");
+    }
+  }
+  if (patient.isFertileAge && !patient.isPregnant && !patient.isPuerperal) {
+    alerts.push("🟡 MULHER EM IDADE FÉRTIL: Confirmar se gestante antes de prescrever drogas teratogênicas.");
+  }
+
   return alerts;
 }
 
