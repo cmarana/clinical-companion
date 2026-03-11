@@ -3681,7 +3681,7 @@ Se K ≥ 5,5 detectado:
 → K 5,5-6,0: monitorar ECG, suspender drogas que elevam K, furosemida.
 → K 6,0-6,5: ECG + Gluconato Ca se alteração ECG + Insulina 10UI + G50% + Salbutamol nebulizado.
 → K ≥ 6,5 ou ECG alterado:
-  🔴 EMERGÊNCIA CARDÍACA — RISCO DE PARADA (FV/AESP/Assistolia)
+  EMERGENCIA CARDIACA — RISCO DE PARADA (FV/AESP/Assistolia)
   AGORA (primeiros 5 minutos):
   1. Gluconato de Cálcio 10% 10mL IV em 2-3 min (estabiliza membrana — NÃO reduz K)
   2. MONITORAR ECG CONTÍNUO — se bradicardia/ondas T apiculadas/QRS largo = risco PCR
