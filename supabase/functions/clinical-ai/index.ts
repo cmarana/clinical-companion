@@ -830,12 +830,24 @@ function selectAntibiotic(patient: PatientData, renal: RenalCalcResult): Antibio
     if (riskFactors.recentATB) justifications.push("ATB recente");
     if (riskFactors.ventilated) justifications.push("ventilação mecânica");
     if (focus === "SNC") justifications.push("SNC (necessita alta penetração)");
+    if (isSevere) justifications.push("choque séptico grave");
     if (justifications.length === 0) {
       rationale += " ⚠️ JUSTIFICATIVA para Meropenem: NÃO HÁ JUSTIFICATIVA CLARA. Considerar esquema mais estreito.";
       questionsNeeded.push("Há justificativa para carbapenêmico? (falha ATB prévio, ESBL confirmado, choque séptico grave?)");
     } else {
       rationale += ` Justificativa Meropenem: ${justifications.join(", ")}.`;
     }
+  }
+
+  // SEVERITY-BASED ANTIBIOTIC ESCALATION WARNING
+  if (isSevere && isAnaphylactic && !/aztreonam/i.test(primary) && !/meropenem/i.test(primary)) {
+    rationale += " ⚠️ CHOQUE GRAVE: esquema pode ser INSUFICIENTE. Considerar Aztreonam + Vancomicina ou Meropenem com cautela (reação cruzada <1%).";
+  }
+  if (isSevere && /levofloxacino.*metronidazol/i.test(primary) && !isAnaphylactic) {
+    rationale += " ⚠️ ALERTA: Levofloxacino + Metronidazol pode ser INSUFICIENTE para choque séptico grave hospitalar. Considerar escalonamento para Piptazo ou Meropenem + Vancomicina.";
+  }
+  if (isSevere && isAnaphylactic && /levofloxacino/i.test(primary)) {
+    rationale += " ⚠️ ANAFILAXIA + CHOQUE: Quinolona pode ser insuficiente. Preferir Aztreonam + Vancomicina. Considerar Meropenem com cautela se sem alternativa.";
   }
 
   return { primary, alternatives, rationale, coverageNeeded, questionsNeeded, allergyWarnings };
