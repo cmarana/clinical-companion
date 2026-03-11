@@ -98,6 +98,15 @@ export default function DutyMode() {
     return [...matchedProtocols, ...matchedMeds];
   }, [search]);
 
+  if (!subscription.subscribed) {
+    return (
+      <>
+        <TopBar title="Modo Plantão" />
+        <PremiumGate />
+      </>
+    );
+  }
+
   return (
     <>
       <TopBar title="Modo Plantão" />
