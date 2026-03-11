@@ -310,9 +310,221 @@ const INTERACTION_PAIRS: { drugs: string[]; severity: "🔴" | "🟡"; mechanism
   { drugs: ["losartana", "espironolactona"], severity: "🟡", mechanism: "Hipercalemia aditiva", action: "Monitorar K a cada 24-48h. Alvo K < 5,0." },
   { drugs: ["losartana", "aine"], severity: "🟡", mechanism: "Reduz efeito anti-hipertensivo + piora função renal", action: "Evitar AINEs. Monitorar Cr e PA." },
   { drugs: ["losartana", "ieca"], severity: "🔴", mechanism: "Hipercalemia + IRA", action: "EVITAR duplo bloqueio SRAA." },
-  // Hyperkalemia combos with renal failure
   { drugs: ["losartana", "espironolactona"], severity: "🔴", mechanism: "Hipercalemia grave se DRC associada", action: "Monitorar K rigoroso. Evitar se ClCr < 30." },
+  // DOAC interactions
+  { drugs: ["rivaroxabana", "cetoconazol"], severity: "🔴", mechanism: "Inibição CYP3A4 + P-gp → aumento nível DOAC", action: "CONTRAINDICADO. Trocar antifúngico." },
+  { drugs: ["rivaroxabana", "rifampicina"], severity: "🔴", mechanism: "Indução CYP3A4 → reduz nível DOAC", action: "CONTRAINDICADO. Trocar um dos dois." },
+  { drugs: ["apixabana", "cetoconazol"], severity: "🔴", mechanism: "Inibição CYP3A4 → aumento nível DOAC", action: "CONTRAINDICADO ou reduzir dose 50%." },
+  { drugs: ["dabigatrana", "amiodarona"], severity: "🟡", mechanism: "Aumento nível dabigatrana via P-gp", action: "Monitorar sangramento. Considerar reduzir dose." },
+  // Antidepressant interactions
+  { drugs: ["fluoxetina", "tramadol"], severity: "🔴", mechanism: "Síndrome serotoninérgica + reduz conversão tramadol", action: "EVITAR. Usar analgésico alternativo." },
+  { drugs: ["sertralina", "tramadol"], severity: "🔴", mechanism: "Síndrome serotoninérgica", action: "EVITAR. Trocar analgésico." },
+  { drugs: ["fluoxetina", "warfarina"], severity: "🟡", mechanism: "Inibição CYP2C9 → aumento INR", action: "Monitorar INR semanal." },
+  { drugs: ["paroxetina", "tamoxifeno"], severity: "🔴", mechanism: "Inibição CYP2D6 → reduz eficácia tamoxifeno", action: "CONTRAINDICADO. Trocar antidepressivo." },
+  { drugs: ["venlafaxina", "imao"], severity: "🔴", mechanism: "Síndrome serotoninérgica grave", action: "CONTRAINDICADO. Wash-out 14 dias." },
+  // Antipsychotic interactions
+  { drugs: ["haloperidol", "amiodarona"], severity: "🔴", mechanism: "QT prolongado aditivo → Torsades", action: "EVITAR. Se necessário, QTc seriado." },
+  { drugs: ["haloperidol", "metoclopramida"], severity: "🟡", mechanism: "Efeitos extrapiramidais aditivos", action: "Monitorar rigidez/distonia." },
+  { drugs: ["quetiapina", "fluconazol"], severity: "🟡", mechanism: "Inibição CYP3A4 → aumento quetiapina", action: "Reduzir dose quetiapina." },
+  // Anticonvulsant interactions
+  { drugs: ["carbamazepina", "warfarina"], severity: "🔴", mechanism: "Indução CYP → reduz warfarina", action: "Monitorar INR. Pode precisar aumentar dose." },
+  { drugs: ["fenitoina", "fluconazol"], severity: "🔴", mechanism: "Inibição CYP2C9 → toxicidade fenitoina", action: "Monitorar nível sérico fenitoína." },
+  { drugs: ["valproato", "lamotrigina"], severity: "🟡", mechanism: "Valproato dobra nível de lamotrigina", action: "Reduzir lamotrigina 50%." },
+  // Opioid interactions  
+  { drugs: ["morfina", "benzodiazepínico"], severity: "🔴", mechanism: "Depressão respiratória sinérgica", action: "EVITAR combinação. Se necessário, monitorar SpO2 contínuo." },
+  { drugs: ["fentanil", "benzodiazepínico"], severity: "🔴", mechanism: "Depressão respiratória sinérgica", action: "EVITAR. Monitorar em UTI com capnografia." },
+  { drugs: ["metformina", "contraste"], severity: "🟡", mechanism: "Risco de acidose lática com contraste iodado", action: "Suspender metformina 48h antes/depois do contraste. Monitorar Cr." },
+  // Digoxin expanded
+  { drugs: ["digoxina", "furosemida"], severity: "🟡", mechanism: "Hipocalemia por furosemida → toxicidade digitálica", action: "Monitorar K rigoroso. Manter K > 4,0." },
+  { drugs: ["digoxina", "verapamil"], severity: "🔴", mechanism: "Aumento nível digoxina + bradicardia aditiva", action: "Reduzir digoxina 50%. Monitorar FC e nível." },
 ];
+
+// ─── Pediatric Database ─────────────────────────────────────────
+// Weight estimation by age (emergency only)
+function estimateWeightByAge(ageYears: number, ageMonths?: number): number {
+  const totalMonths = (ageYears * 12) + (ageMonths || 0);
+  if (totalMonths < 1) return 3.5; // newborn
+  if (totalMonths <= 12) return 3.5 + (totalMonths * 0.5); // ~0.5kg/month
+  if (ageYears <= 5) return (ageYears * 2) + 8; // APLS formula
+  if (ageYears <= 12) return (ageYears * 3) + 7; // APLS formula
+  return (ageYears * 3) + 7; // cap at 13
+}
+
+// Pediatric drug doses (mg/kg or mcg/kg)
+interface PedDrugEntry {
+  name: string;
+  dosePerKg: string;
+  maxDose: string;
+  frequency: string;
+  route: string;
+  ageRestrictions?: string;
+  warnings?: string[];
+}
+
+const PEDIATRIC_DRUGS: Record<string, PedDrugEntry> = {
+  ceftriaxona: {
+    name: "Ceftriaxona", dosePerKg: "50-100 mg/kg/dia", maxDose: "4g/dia",
+    frequency: "12/12h ou 1x/dia", route: "IV/IM",
+    ageRestrictions: "⚠️ CONTRAINDICADO em RN com hiperbilirrubinemia. NÃO misturar com cálcio IV em neonatos.",
+    warnings: ["Evitar em < 28 dias se ictérico", "Não administrar com soluções de cálcio em neonatos"],
+  },
+  amoxicilina: {
+    name: "Amoxicilina", dosePerKg: "40-90 mg/kg/dia", maxDose: "3g/dia",
+    frequency: "8/8h", route: "VO",
+  },
+  amoxicilina_clav: {
+    name: "Amoxicilina + Clavulanato", dosePerKg: "40-90 mg/kg/dia (amoxicilina)", maxDose: "3g/dia",
+    frequency: "8/8h ou 12/12h", route: "VO",
+  },
+  ampicilina: {
+    name: "Ampicilina", dosePerKg: "100-200 mg/kg/dia (meningite: 200-400 mg/kg/dia)", maxDose: "12g/dia",
+    frequency: "6/6h", route: "IV",
+  },
+  cefepime_ped: {
+    name: "Cefepime", dosePerKg: "50 mg/kg/dose", maxDose: "2g/dose",
+    frequency: "8/8h", route: "IV",
+  },
+  vancomicina_ped: {
+    name: "Vancomicina", dosePerKg: "15 mg/kg/dose (40-60 mg/kg/dia)", maxDose: "2g/dose",
+    frequency: "6/6h", route: "IV",
+    warnings: ["Infundir em ≥ 60 min", "Monitorar nível sérico"],
+  },
+  meropenem_ped: {
+    name: "Meropenem", dosePerKg: "20-40 mg/kg/dose (meningite: 40 mg/kg/dose)", maxDose: "2g/dose",
+    frequency: "8/8h", route: "IV",
+  },
+  gentamicina_ped: {
+    name: "Gentamicina", dosePerKg: "5-7,5 mg/kg/dia", maxDose: "Guiado por nível",
+    frequency: "24/24h (dose única diária)", route: "IV",
+    warnings: ["Monitorar nível sérico", "Nefro e ototoxicidade"],
+  },
+  dipirona_ped: {
+    name: "Dipirona", dosePerKg: "10-25 mg/kg/dose", maxDose: "1g/dose",
+    frequency: "6/6h", route: "IV/VO",
+    ageRestrictions: "Evitar em < 3 meses",
+  },
+  paracetamol_ped: {
+    name: "Paracetamol", dosePerKg: "10-15 mg/kg/dose", maxDose: "75 mg/kg/dia (máx 4g/dia)",
+    frequency: "4/4h ou 6/6h", route: "VO/VR",
+  },
+  ibuprofeno_ped: {
+    name: "Ibuprofeno", dosePerKg: "5-10 mg/kg/dose", maxDose: "40 mg/kg/dia (máx 2,4g/dia)",
+    frequency: "6/6h ou 8/8h", route: "VO",
+    ageRestrictions: "Evitar em < 6 meses",
+  },
+  adrenalina_ped: {
+    name: "Adrenalina", dosePerKg: "PCR: 0,01 mg/kg (0,1 mL/kg da 1:10.000) | Anafilaxia: 0,01 mg/kg IM (máx 0,3mg < 6a, 0,5mg > 6a)",
+    maxDose: "1mg/dose (PCR)", frequency: "3-5 min (PCR)", route: "IV/IO/IM",
+  },
+  midazolam_ped: {
+    name: "Midazolam", dosePerKg: "Convulsão: 0,15-0,2 mg/kg IV/IO | 0,2 mg/kg IN | 0,3 mg/kg IM",
+    maxDose: "10mg", frequency: "Dose única, repetir 1x se necessário", route: "IV/IO/IN/IM",
+    warnings: ["⚠️ Risco depressão respiratória", "Monitorar SpO2"],
+  },
+  diazepam_ped: {
+    name: "Diazepam", dosePerKg: "Convulsão: 0,2-0,5 mg/kg VR | 0,1-0,3 mg/kg IV",
+    maxDose: "10mg (< 5a: 5mg)", frequency: "Dose única", route: "VR/IV",
+    warnings: ["⚠️ Risco depressão respiratória"],
+  },
+  sf_bolus_ped: {
+    name: "SF 0,9% / RL (bolus)", dosePerKg: "10-20 mL/kg", maxDose: "Reavaliar após cada bolus",
+    frequency: "Bolus em 10-20 min", route: "IV",
+    warnings: ["NÃO usar 30 mL/kg como adulto", "Reavaliar após CADA bolus"],
+  },
+  noradrenalina_ped: {
+    name: "Noradrenalina", dosePerKg: "0,05-2 mcg/kg/min", maxDose: "Titular por resposta",
+    frequency: "BIC contínua", route: "IV central",
+  },
+};
+
+// Drugs contraindicated or requiring special caution in pediatrics
+const PEDIATRIC_CONTRAINDICATED: { drug: string; reason: string; ageLimit?: string }[] = [
+  { drug: "quinolona", reason: "Risco de artropatia / lesão cartilagem de crescimento", ageLimit: "< 18 anos (relativo)" },
+  { drug: "ciprofloxacino", reason: "Risco de artropatia (uso excepcional em Pseudomonas)", ageLimit: "< 18 anos" },
+  { drug: "levofloxacino", reason: "Risco de artropatia", ageLimit: "< 18 anos" },
+  { drug: "tetraciclina", reason: "Manchas dentárias permanentes + depósito ósseo", ageLimit: "< 8 anos" },
+  { drug: "doxiciclina", reason: "Manchas dentárias (risco menor que tetraciclina)", ageLimit: "< 8 anos" },
+  { drug: "codeína", reason: "Metabolismo variável CYP2D6 → depressão respiratória fatal", ageLimit: "< 12 anos (CONTRAINDICADO)" },
+  { drug: "tramadol", reason: "Mesmo risco que codeína em metabolizadores rápidos", ageLimit: "< 12 anos" },
+  { drug: "ácido acetilsalicílico", reason: "Síndrome de Reye", ageLimit: "< 16 anos (exceto Kawasaki)" },
+  { drug: "metoclopramida", reason: "Risco extrapiramidal alto em crianças", ageLimit: "< 1 ano (relativo < 18)" },
+  { drug: "ondansetrona", reason: "QT prolongado — cautela", ageLimit: "Cautela em < 2 anos" },
+  { drug: "benzodiazepínico", reason: "Depressão respiratória — usar com monitorização", ageLimit: "Todas as idades" },
+  { drug: "opioide", reason: "Depressão respiratória — dose rigorosa por kg com monitorização SpO2", ageLimit: "Todas as idades" },
+];
+
+// Pediatric dehydration classification
+function classifyDehydration(text: string): { level: string; fluidMlKg: string; plan: string } | null {
+  if (/desidrata/i.test(text)) {
+    if (/grave|choque|letárgic|inconsciente|pulso fraco/i.test(text)) {
+      return { level: "GRAVE (≥10%)", fluidMlKg: "20 mL/kg SF rápido (repetir até 60 mL/kg)", plan: "Plano C (SNG/IV)" };
+    }
+    if (/moderada|olhos fundos|turgor diminuído|irritad|sedento/i.test(text)) {
+      return { level: "MODERADA (5-10%)", fluidMlKg: "50-100 mL/kg em 4h (SRO)", plan: "Plano B (TRO supervisionada)" };
+    }
+    return { level: "LEVE (<5%)", fluidMlKg: "50 mL/kg em 4h (SRO)", plan: "Plano A (domiciliar)" };
+  }
+  return null;
+}
+
+// Pediatric emergency protocols
+const PEDIATRIC_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  pals_pcr: {
+    name: "PCR Pediátrica — PALS (AHA 2020)",
+    steps: [
+      { order: 1, action: "Confirmar PCR: sem pulso central (braquial < 1a, carotídeo/femoral > 1a) em 10s" },
+      { order: 2, action: "Iniciar RCP: 15:2 (2 socorristas) ou 30:2 (1 socorrista)", target: "100-120/min, profundidade ⅓ AP" },
+      { order: 3, action: "Adrenalina 0,01 mg/kg IV/IO (0,1 mL/kg da 1:10.000)", target: "A cada 3-5 min" },
+      { order: 4, action: "Avaliar ritmo: FV/TV sem pulso → desfibrilação 2 J/kg → 4 J/kg" },
+      { order: 5, action: "Via aérea: IOT (tubo sem cuff < 8a, com cuff preferível)", target: "Tubo = (idade/4) + 3,5 (com cuff)" },
+      { order: 6, action: "Acesso vascular: IO se IV não obtido em 60-90s" },
+      { order: 7, action: "Amiodarona 5 mg/kg IV/IO se FV/TV refratária (máx 300mg)" },
+      { order: 8, action: "Tratar causas reversíveis: 5H e 5T" },
+    ],
+  },
+  sepse_ped: {
+    name: "Sepse Pediátrica — ACCM/PALS (2020)",
+    steps: [
+      { order: 1, action: "Reconhecimento: FC alterada + perfusão ruim ± hipotensão" },
+      { order: 2, action: "O2 100% + acesso vascular (IO se necessário)" },
+      { order: 3, action: "SF 0,9% 10-20 mL/kg em bolus rápido (10 min)", target: "Até 40-60 mL/kg na 1ª hora se necessário" },
+      { order: 4, action: "Reavaliar após CADA bolus: FC, perfusão, hepatomegalia, crepitações" },
+      { order: 5, action: "Se refratário a fluido → adrenalina (choque frio) ou noradrenalina (choque quente)" },
+      { order: 6, action: "Antibiótico amplo espectro em ≤ 1 HORA" },
+      { order: 7, action: "Hemoculturas ANTES do ATB se não atrasar > 15 min" },
+      { order: 8, action: "Glicemia capilar: corrigir hipoglicemia", target: "Glicemia > 60 mg/dL" },
+      { order: 9, action: "Calcemia: corrigir hipocalcemia" },
+      { order: 10, action: "Hidrocortisona 2 mg/kg (máx 100mg) se choque refratário ou suspeita insuf. adrenal" },
+      { order: 11, action: "Monitorar diurese", target: "> 1 mL/kg/h" },
+      { order: 12, action: "Lactato sérico seriado" },
+    ],
+  },
+  convulsao_ped: {
+    name: "Estado de Mal Epiléptico Pediátrico",
+    steps: [
+      { order: 1, action: "0-5 min: Estabilizar via aérea, O2, posição lateral, glicemia" },
+      { order: 2, action: "5-10 min: Midazolam 0,2 mg/kg IN ou 0,15 mg/kg IV/IO (máx 10mg)" },
+      { order: 3, action: "Se refratário: repetir benzodiazepínico 1x" },
+      { order: 4, action: "10-20 min: Fenitoína 20 mg/kg IV em 20 min OU Levetiracetam 40-60 mg/kg IV" },
+      { order: 5, action: "20-40 min: Se refratário → Fenobarbital 20 mg/kg IV" },
+      { order: 6, action: "> 40 min: Considerar midazolam BIC ou tiopental (UTI)" },
+      { order: 7, action: "Investigar causa: TC, labs, LCR se indicado" },
+    ],
+  },
+  febre_rn: {
+    name: "RN Febril (< 28 dias) — ALTO RISCO",
+    steps: [
+      { order: 1, action: "🔴 RN FEBRIL = INTERNAÇÃO OBRIGATÓRIA até exclusão de sepse" },
+      { order: 2, action: "Hemograma + PCR/PCT + hemocultura" },
+      { order: 3, action: "Urina tipo I + urocultura (cateterismo vesical)" },
+      { order: 4, action: "Punção lombar (LCR)" },
+      { order: 5, action: "RX tórax se sintomas respiratórios" },
+      { order: 6, action: "Antibiótico empírico: Ampicilina 50mg/kg 6/6h + Gentamicina 5mg/kg/dia" },
+      { order: 7, action: "Se suspeita herpes: Aciclovir 20mg/kg 8/8h" },
+      { order: 8, action: "Monitorar em UTI neonatal se instável" },
+    ],
+  },
+};
 
 // ─── Anticoagulation Indications ─────────────────────────────────
 const ANTICOAG_INDICATIONS = ["tev", "tep", "tvp", "tromboembolismo", "embolia pulmonar", "trombose venosa",
