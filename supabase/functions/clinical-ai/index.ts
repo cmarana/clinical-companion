@@ -1165,7 +1165,7 @@ function checkInteractions(medsInUse: string[], prescribedDrugs: string[], patie
 
   // Acidosis risk in sepsis + DRC
   if (renal.stage !== "NORMAL" && renal.stage !== "LEVE") {
-    const userText = allDrugs.join(" "); // crude check
+    const userText = allDrugs.join(" ");
     if (/sepse|séptico|choque/i.test(userText) || patient.scenario === "UTI") {
       alerts.push({
         pair: "Sepse + DRC",
@@ -1176,14 +1176,95 @@ function checkInteractions(medsInUse: string[], prescribedDrugs: string[], patie
     }
   }
 
+  // Polypharmacy warning
+  if (allDrugs.length >= 5) {
+    alerts.push({
+      pair: `${allDrugs.length} medicamentos`,
+      severity: "🔴",
+      mechanism: "POLIFARMÁCIA: risco exponencial de interações com ≥ 5 drogas",
+      action: "Revisar TODAS as combinações. Considerar desprescrição. Monitorar função renal e hepática.",
+    });
+  } else if (allDrugs.length >= 3) {
+    alerts.push({
+      pair: `${allDrugs.length} medicamentos`,
+      severity: "🟡",
+      mechanism: "Polifarmácia moderada: risco aumentado de interações",
+      action: "Revisar combinações. Monitorar efeitos adversos.",
+    });
+  }
+
+  // Elderly-specific interaction risk
+  if (patient.isElderly) {
+    const hasCNS = allDrugs.some(d => /benzodiazepínico|diazepam|midazolam|clonazepam|lorazepam|zolpidem|opioide|morfina|tramadol|codeína/i.test(d));
+    if (hasCNS) {
+      alerts.push({
+        pair: "SNC depressor + Idoso",
+        severity: "🔴",
+        mechanism: "Risco de queda, delirium, depressão respiratória em idoso",
+        action: "Reduzir dose 50%. Monitorar nível de consciência. Critérios de Beers.",
+      });
+    }
+  }
+
+  // Pediatric contraindicated drugs check
+  if (patient.isPediatric) {
+    for (const contra of PEDIATRIC_CONTRAINDICATED) {
+      if (allDrugs.some(d => d.includes(contra.drug.toLowerCase()))) {
+        alerts.push({
+          pair: `${contra.drug} + Pediatria`,
+          severity: "🔴",
+          mechanism: `${contra.reason} (${contra.ageLimit || "pediátrico"})`,
+          action: `EVITAR em criança. Considerar alternativa.`,
+        });
+      }
+    }
+  }
+
+  // Warfarin universal check
+  const hasWarfarin = allDrugs.some(d => /warfarina|marevan|coumadin/i.test(d));
+  if (hasWarfarin) {
+    const warfarinInteractors = allDrugs.filter(d => 
+      /antibiótico|amiodarona|aine|ibuprofeno|diclofenaco|naproxeno|fluconazol|metronidazol|ciprofloxacino|fluoxetina|carbamazepina|fenitoína|omeprazol/i.test(d)
+    );
+    if (warfarinInteractors.length > 0) {
+      alerts.push({
+        pair: `Warfarina + ${warfarinInteractors.join(", ")}`,
+        severity: "🔴",
+        mechanism: "Múltiplas interações com warfarina → risco de sangramento ou perda de efeito",
+        action: "INR seriado (2-3x/semana). Ajustar dose warfarina.",
+      });
+    }
+  }
+
+  // Nefrotoxic combination check
+  const nephrotoxics = allDrugs.filter(d => /vancomicina|gentamicina|aminoglicosídeo|aine|ibuprofeno|diclofenaco|contraste|anfotericina/i.test(d));
+  if (nephrotoxics.length >= 2) {
+    alerts.push({
+      pair: nephrotoxics.join(" + "),
+      severity: "🔴",
+      mechanism: "Nefrotoxicidade sinérgica: múltiplos agentes nefrotóxicos",
+      action: "EVITAR combinação. Monitorar Cr e diurese a cada 12-24h.",
+    });
+  }
+
   return alerts;
 }
 
 // ─── MODULE 5: Protocol Selection ───────────────────────────────
-function selectProtocol(text: string, scenario: Scenario): { name: string; steps: ProtocolStep[] } | null {
+function selectProtocol(text: string, scenario: Scenario, isPediatric: boolean): { name: string; steps: ProtocolStep[] } | null {
   const lower = text.toLowerCase();
 
+  // Pediatric protocols first
+  if (isPediatric) {
+    if (/pcr|parada|sem pulso|rcp/i.test(lower)) return PEDIATRIC_PROTOCOLS.pals_pcr;
+    if (/sepse|séptic|choque séptico/i.test(lower)) return PEDIATRIC_PROTOCOLS.sepse_ped;
+    if (/convuls|estado.*mal|status epilepticus/i.test(lower)) return PEDIATRIC_PROTOCOLS.convulsao_ped;
+    if (/rn.*febr|neonat.*febr|recém.*febr|febre.*rn|febre.*neonat/i.test(lower)) return PEDIATRIC_PROTOCOLS.febre_rn;
+    if (/febre/i.test(lower) && /neonat|rn\b|recém/i.test(lower)) return PEDIATRIC_PROTOCOLS.febre_rn;
+  }
+
   if (/sepse|séptic|choque séptico/i.test(lower)) {
+    if (isPediatric) return PEDIATRIC_PROTOCOLS.sepse_ped;
     return scenario === "UTI" ? PROTOCOLS.sepsis_uti : PROTOCOLS.sepsis;
   }
   if (/choque|hipoten/i.test(lower) && !/séptic/i.test(lower)) return PROTOCOLS.shock;
