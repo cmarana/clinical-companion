@@ -1643,6 +1643,168 @@ const HEMATOLOGY_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[]
   },
 };
 
+// ─── Infectology Protocols ──────────────────────────────────────
+const INFECTOLOGY_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  febrile_neutropenia: {
+    name: "Neutropenia Febril — Protocolo de Emergência",
+    steps: [
+      { order: 1, action: "🔴 EMERGÊNCIA: Neutrófilos < 500 + febre ≥ 38°C (ou ≥ 37,8°C por > 1h)" },
+      { order: 2, action: "Hemoculturas (2 pares de sítios diferentes) + culturas de todos os sítios suspeitos" },
+      { order: 3, action: "ATB de amplo espectro anti-Pseudomonas em ≤ 1 HORA: Cefepime 2g 8/8h IV OU Piperacilina-Tazobactam 4,5g 6/6h OU Meropenem" },
+      { order: 4, action: "Se instável/choque: associar Vancomicina + considerar antifúngico" },
+      { order: 5, action: "Se cateter venoso central: considerar infecção de cateter → hemoculturas central + periférica" },
+      { order: 6, action: "MASCC score para estratificação de risco (≥ 21 = baixo risco)" },
+      { order: 7, action: "Se febre persistente > 4-7 dias: considerar antifúngico empírico (anfotericina/caspofungina)" },
+      { order: 8, action: "Ajustar ATB com culturas. NÃO suspender ATB até neutrófilos > 500 e afebril > 48h" },
+    ],
+  },
+  catheter_infection: {
+    name: "Infecção de Cateter Venoso Central",
+    steps: [
+      { order: 1, action: "Hemoculturas pareadas: central + periférica (tempo de positivação diferencial)" },
+      { order: 2, action: "Se instável/choque séptico: REMOVER cateter + ATB empírico" },
+      { order: 3, action: "ATB: Vancomicina (MRSA) ± Cefepime/Piptazo (gram-neg). Se fungo: equinocandina" },
+      { order: 4, action: "Se S. aureus: SEMPRE remover cateter. ATB ≥ 14 dias (≥ 4 sem se endocardite)" },
+      { order: 5, action: "Se CoNS (epidermidis): pode tentar lock therapy se cateter essencial" },
+      { order: 6, action: "Ecocardiograma se S. aureus ou candidemia (excluir endocardite)" },
+    ],
+  },
+  empiric_atb_guide: {
+    name: "Guia de ATB Empírico por Foco e Origem",
+    steps: [
+      { order: 1, action: "PULMONAR comunitário: Ceftriaxona + Azitromicina. Se grave/UTI: + considerar anti-Pseudomonas" },
+      { order: 2, action: "PULMONAR hospitalar/VAP: Piptazo ou Cefepime ou Meropenem ± Vancomicina (se MRSA)" },
+      { order: 3, action: "URINÁRIO comunitário: Ceftriaxona IV ou Ciprofloxacino. Simples: Fosfomicina/Nitrofurantoína VO" },
+      { order: 4, action: "URINÁRIO hospitalar/sonda: Piptazo ou Cefepime. Se ESBL: Meropenem" },
+      { order: 5, action: "ABDOMINAL: Ceftriaxona + Metronidazol. Se grave/hospitalar: Piptazo ou Meropenem" },
+      { order: 6, action: "PELE comunitária: Cefalexina/Ceftriaxona. Se necrotizante: Meropenem + Clindamicina + Vancomicina" },
+      { order: 7, action: "SNC: Ceftriaxona 2g 12/12h + Ampicilina (se > 50a ou imunossuprimido) + Dexametasona" },
+      { order: 8, action: "SEM FOCO/SEPSE: Piptazo ou Meropenem ± Vancomicina. Culturas de todos os sítios" },
+      { order: 9, action: "IMUNOSSUPRIMIDO: Meropenem + Vancomicina ± antifúngico. Cobertura máxima" },
+      { order: 10, action: "⚠️ SEMPRE: ajustar para rim, alergia, origem (comunitária vs hospitalar)" },
+    ],
+  },
+};
+
+// ─── Palliative Care Protocols ──────────────────────────────────
+const PALLIATIVE_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  symptom_control: {
+    name: "Controle de Sintomas — Cuidados Paliativos",
+    steps: [
+      { order: 1, action: "DOR: Escala analgésica OMS. Dipirona → Tramadol → Morfina. Dose por peso/rim/idoso" },
+      { order: 2, action: "Morfina VO: iniciar 5mg 4/4h. SC: 2-5mg 4/4h. Titular até conforto" },
+      { order: 3, action: "DISPNEIA: Morfina 2-5mg SC/IV mesmo sem hipoxemia. O2 se melhora subjetiva. Ansiolítico adjuvante" },
+      { order: 4, action: "NÁUSEA/VÔMITO: Metoclopramida 10mg 8/8h OU Ondansetrona 4-8mg 8/8h. Haloperidol 1mg se refratário" },
+      { order: 5, action: "DELIRIUM TERMINAL: Haloperidol 0,5-2mg SC/IV 8/8h. Evitar BZD (piora). Quetiapina 25mg se leve" },
+      { order: 6, action: "SECREÇÃO (sororoca): Escopolamina (hioscina) 20mg SC 6/6h. Posicionamento lateral" },
+      { order: 7, action: "ANSIEDADE: Midazolam 2,5-5mg SC 6/6h. Escutar. Acolhimento familiar" },
+      { order: 8, action: "SEDAÇÃO PALIATIVA: se sofrimento refratário → Midazolam 1-5mg/h BIC SC/IV. Decisão compartilhada" },
+    ],
+  },
+  end_of_life: {
+    name: "Fase Final de Vida — Condutas Proporcionais",
+    steps: [
+      { order: 1, action: "Avaliar prognóstico: horas a dias? Funcionalidade (PPS/Karnofsky)?" },
+      { order: 2, action: "Definir objetivo: CONFORTO. Não prolongar sofrimento" },
+      { order: 3, action: "Suspender: exames desnecessários, monitorização invasiva, ATB fútil, hidratação excessiva" },
+      { order: 4, action: "Manter: analgesia, controle de sintomas, higiene, dignidade" },
+      { order: 5, action: "Hidratação: MÍNIMA (500-1000 mL/dia SC). Excesso piora edema/secreção/dispneia" },
+      { order: 6, action: "Comunicação: família presente, informar prognóstico, respeitar vontades" },
+      { order: 7, action: "ONR (Ordem de Não Reanimar): documentar se indicado. NÃO iniciar RCP automaticamente" },
+      { order: 8, action: "⚠️ Paliativo NÃO é abandono. É cuidado ativo com foco em conforto" },
+    ],
+  },
+};
+
+// ─── Oncology Protocols ─────────────────────────────────────────
+const ONCOLOGY_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  febrile_onco: {
+    name: "Febre no Paciente Oncológico",
+    steps: [
+      { order: 1, action: "🔴 Considerar NEUTROPENIA FEBRIL até provar contrário se quimioterapia recente" },
+      { order: 2, action: "Hemograma URGENTE: se neutrófilos < 500 → protocolo neutropenia febril" },
+      { order: 3, action: "Hemoculturas (2 pares) + urina + RX tórax + culturas de cateter se presente" },
+      { order: 4, action: "ATB anti-Pseudomonas em ≤ 1 HORA: Cefepime ou Piptazo" },
+      { order: 5, action: "Se instável: + Vancomicina + considerar antifúngico" },
+      { order: 6, action: "MASSC score: ≥ 21 baixo risco (considerar VO ambulatorial). < 21 alto risco (internar)" },
+    ],
+  },
+  oncologic_emergency: {
+    name: "Emergências Oncológicas",
+    steps: [
+      { order: 1, action: "Compressão medular: dor dorsal + déficit motor → Dexametasona 10mg IV + RM urgente + radioterapia/cirurgia" },
+      { order: 2, action: "Síndrome de lise tumoral: hidratação vigorosa + alopurinol/rasburicase + monitorar K/Ca/P/ácido úrico/Cr" },
+      { order: 3, action: "Hipercalcemia maligna: SF 0,9% 200-300mL/h + ácido zoledrônico 4mg IV + calcitonina se grave" },
+      { order: 4, action: "SVCS (Síndrome Veia Cava Superior): elevar cabeceira + dexametasona + diurético + radioterapia/stent urgente" },
+      { order: 5, action: "Sangramento: avaliar plaquetas/INR. Transfundir se < 10k ou sangramento ativo. Ácido tranexâmico" },
+      { order: 6, action: "⚠️ Sempre considerar se tratamento é curativo ou paliativo antes de indicar medidas invasivas" },
+    ],
+  },
+};
+
+// ─── Rheumatology Protocols ─────────────────────────────────────
+const RHEUMATOLOGY_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  acute_arthritis: {
+    name: "Artrite Aguda — Avaliação",
+    steps: [
+      { order: 1, action: "Diferenciar: inflamatória vs infecciosa vs metabólica vs degenerativa vs traumática" },
+      { order: 2, action: "Se monoartrite aguda + febre → ARTRITE SÉPTICA até provar contrário → Punção articular URGENTE" },
+      { order: 3, action: "Exames: hemograma, VHS, PCR, ácido úrico, FR, anti-CCP, FAN, Cr, hemoculturas se febre" },
+      { order: 4, action: "Líquido sinovial: celularidade, gram, cultura, cristais (birrefringência)" },
+      { order: 5, action: "Gota: cristais de urato monossódico. Colchicina 0,5mg 8/8h + AINE (se rim ok). Corticoide se CI" },
+      { order: 6, action: "Artrite séptica: ATB IV + drenagem articular. Oxacilina ou Vancomicina + Ceftriaxona" },
+      { order: 7, action: "⚠️ NÃO iniciar imunossupressor sem excluir infecção" },
+    ],
+  },
+  lupus_flare: {
+    name: "Lúpus — Avaliação de Atividade",
+    steps: [
+      { order: 1, action: "Avaliar: pele (rash malar), articulações, rim (proteinúria/Cr), hematológico, serosites, SNC" },
+      { order: 2, action: "Exames: hemograma, Cr, proteinúria, complemento (C3/C4), anti-dsDNA, EAS, VHS, PCR" },
+      { order: 3, action: "Se nefrite lúpica: biópsia renal. Classe III/IV → imunossupressão agressiva" },
+      { order: 4, action: "Flare leve: AINE + hidroxicloroquina. Moderado: corticoide baixa dose" },
+      { order: 5, action: "Flare grave: Metilprednisolona 1g/dia 3 dias (pulsoterapia) → prednisona + imunossupressor" },
+      { order: 6, action: "⚠️ Se febre em lúpico: excluir infecção ANTES de assumir flare" },
+    ],
+  },
+};
+
+// ─── Gynecology (Ambulatory) Protocols ──────────────────────────
+const GYNECO_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  vaginal_bleeding: {
+    name: "Sangramento Vaginal — Avaliação",
+    steps: [
+      { order: 1, action: "SEMPRE excluir gravidez: beta-hCG" },
+      { order: 2, action: "Se grávida: ver protocolos obstétricos (aborto, ectópica, descolamento)" },
+      { order: 3, action: "Não grávida: pensar → disfuncional, mioma, pólipo, hormonal, infecção, neoplasia" },
+      { order: 4, action: "Exames: beta-hCG, hemograma, USG TV, coagulograma se sangramento intenso" },
+      { order: 5, action: "Se instável (choque): acesso venoso + volume + tipagem + considerar PS" },
+      { order: 6, action: "UBS: avaliar gravidade, exames básicos, encaminhar se necessário" },
+    ],
+  },
+  vaginal_discharge: {
+    name: "Corrimento Vaginal — Abordagem Sindrômica",
+    steps: [
+      { order: 1, action: "Candidíase: prurido + corrimento branco grumoso → Fluconazol 150mg dose única OU Miconazol creme 7 dias" },
+      { order: 2, action: "Vaginose bacteriana: corrimento acinzentado + odor → Metronidazol 500mg 12/12h 7 dias OU gel vaginal" },
+      { order: 3, action: "Tricomoníase: corrimento amarelo-esverdeado + odor → Metronidazol 2g dose única (tratar parceiro)" },
+      { order: 4, action: "Cervicite (gonococo/clamídia): corrimento mucopurulento → Ceftriaxona 500mg IM DU + Azitromicina 1g VO DU" },
+      { order: 5, action: "Testar DSTs se risco: HIV, sífilis, hepatites" },
+      { order: 6, action: "⚠️ Se gestante: ajustar tratamento (evitar metronidazol 1º trimestre se possível)" },
+    ],
+  },
+  pelvic_pain: {
+    name: "Dor Pélvica — Avaliação",
+    steps: [
+      { order: 1, action: "SEMPRE excluir: gravidez ectópica (beta-hCG + USG TV)" },
+      { order: 2, action: "Considerar: cisto ovariano, DIP, endometriose, ITU, apendicite, torção de ovário" },
+      { order: 3, action: "Se febre + corrimento + dor à mobilização cervical → DIP → ATB (Ceftriaxona + Doxiciclina + Metronidazol)" },
+      { order: 4, action: "Se dor aguda intensa + massa anexial → torção ovariana → USG Doppler URGENTE → cirurgia" },
+      { order: 5, action: "Exames: beta-hCG, hemograma, EAS/urocultura, USG TV" },
+    ],
+  },
+};
+
 // ─── Parsing Helpers ─────────────────────────────────────────────
 function parseNumber(input?: string | null): number | undefined {
   if (!input) return undefined;
