@@ -39,6 +39,10 @@ interface PatientData {
   isInfant: boolean; // age < 1 year
   estimatedWeightKg?: number; // weight estimated by age if not provided
   vaccinesUpToDate?: boolean;
+  // Neuro
+  isNeuroCase: boolean;
+  glasgowScore?: number;
+  hasAnticoagulantInUse: boolean;
 }
 
 interface RenalCalcResult {
