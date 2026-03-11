@@ -19,6 +19,7 @@ import SearchPage from "@/pages/SearchPage";
 import Favorites from "@/pages/Favorites";
 import Notes from "@/pages/Notes";
 import EmergencyMode from "@/pages/EmergencyMode";
+import EmergencyProtocolDetail from "@/pages/EmergencyProtocolDetail";
 import DutyMode from "@/pages/DutyMode";
 import Prescriptions from "@/pages/Prescriptions";
 import PrescriptionDetail from "@/pages/PrescriptionDetail";
