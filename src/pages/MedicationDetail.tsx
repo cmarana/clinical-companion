@@ -34,8 +34,20 @@ export default function MedicationDetail() {
 
   const fav = isFavorite(med.id);
   const isPremium = subscription.subscribed;
+  const isFreeMed = FREE_MEDICATION_IDS.includes(med.id);
 
-  return (
+  // If not premium and not a free medication, show full lock
+  if (!isPremium && !isFreeMed) {
+    return (
+      <>
+        <TopBar title={med.name} />
+        <div className="px-4 py-4 max-w-lg mx-auto">
+          <PremiumGate />
+        </div>
+      </>
+    );
+  }
+
     <>
       <TopBar
         title={med.name}
