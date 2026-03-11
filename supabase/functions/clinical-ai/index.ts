@@ -937,6 +937,35 @@ function extractPatient(messages: ChatMessage[]): PatientData {
   const ageNum = parseNumber(ageRaw);
   const isElderly = ageNum !== undefined && ageNum >= 65;
 
+  // Pediatric detection
+  const ageMonthsRaw = firstMatch(text, [/\b([0-9]{1,2})\s*meses?\b/i, /\b([0-9]{1,2})\s*m\b/i]);
+  const ageMonths = parseNumber(ageMonthsRaw);
+  const ageDaysRaw = firstMatch(text, [/\b([0-9]{1,3})\s*dias?\b/i]);
+  const ageDays = parseNumber(ageDaysRaw);
+  
+  const isPediatric = (ageNum !== undefined && ageNum < 14) || 
+    ageMonths !== undefined || ageDays !== undefined ||
+    /pediátr|criança|lactente|neonat|rn\b|recém.?nascid|prematuro|escolar|adolescente/i.test(text);
+  
+  const isNeonate = (ageDays !== undefined && ageDays < 28) || 
+    (ageNum !== undefined && ageNum === 0 && (ageMonths === undefined || ageMonths < 1)) ||
+    /neonat|rn\b|recém.?nascid/i.test(text);
+  
+  const isInfant = (ageNum !== undefined && ageNum < 1) || 
+    (ageMonths !== undefined && ageMonths < 12) ||
+    /lactente/i.test(text);
+
+  // Estimate weight if pediatric and no weight given
+  let estimatedWeightKg: number | undefined;
+  const actualWeight = parseNumber(weightRaw);
+  if (isPediatric && !actualWeight && ageNum !== undefined) {
+    estimatedWeightKg = estimateWeightByAge(ageNum, ageMonths);
+  }
+
+  // Vaccines
+  const vaccinesUpToDate = /vacina.*dia|vacinação.*completa|cartão.*dia/i.test(text) ? true :
+    /vacina.*atrasad|não vacin/i.test(text) ? false : undefined;
+
   // Dialysis: ONLY if EXPLICITLY stated
   const isDialytic = /dialí[ts]|hemodiálise|diálise|peritoneal|trs\b/i.test(text);
 
@@ -950,11 +979,13 @@ function extractPatient(messages: ChatMessage[]): PatientData {
   }
 
   return {
-    weightKg: parseNumber(weightRaw),
+    weightKg: actualWeight,
     ageYears: ageNum,
+    ageMonths,
     creatinineMgDl: parseNumber(creatRaw),
     sex, allergies, allergyType, scenario, focus, infectionOrigin, medicationsInUse, riskFactors,
     hasHeartFailure, isElderly, isDialytic, hasAnticoagulationIndication,
+    isPediatric, isNeonate, isInfant, estimatedWeightKg, vaccinesUpToDate,
   };
 }
 
