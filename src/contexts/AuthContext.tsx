@@ -112,7 +112,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await supabase.auth.signOut();
     setUser(null);
     setSession(null);
-    setSubscription({ subscribed: false, productId: null, subscriptionEnd: null });
+    setSubscription({ subscribed: false, productId: null, subscriptionEnd: null, isTrial: false, trialDaysLeft: 0 });
   };
 
   return (
