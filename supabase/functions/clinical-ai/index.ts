@@ -1787,6 +1787,21 @@ function extractPatient(messages: ChatMessage[]): PatientData {
   // Endocrine / Metabolic detection
   const isEndocrineCase = /cetoacidose|cad\b|estado hiperosmolar|hhs\b|hipoglicemia|hiperglicemia.*grave|hipernatremia|hiponatremia|hipercalemia|hipocalemia|hipercalcemia|hipocalcemia|tireotoxicose|tempestade.*tireoid|mixedema|coma.*mixedematoso|crise.*adrenal|insuficiência adrenal|feocromocitoma|diabetes.*descompens/i.test(text);
 
+  // Respiratory detection
+  const isRespiratoryCase = /dispneia|dessatura|insuficiência respirat|asma|dpoc|pneumonia|tep\b|tromboembolismo pulmonar|embolia pulmonar|dor torácica.*respirat|tosse.*agud|hipoxemia|pneumotórax|edema.*pulmonar|eap\b|broncoespasmo|hemoptise|sibilos|crepitações|estertor|taquipneia|insuf.*resp|vni\b|bipap|cpap/i.test(text) && !isTraumaCase;
+
+  // Psychiatry detection
+  const isPsychiatryCase = /agita[çc]ão|confus.*mental|delirium|tentativa.*suicídio|overdose|intoxica[çc]ão.*agud|ansiedade.*grave|psicose|abstinência|comportamento.*agressiv|surto.*psicótic|alucinaç|delírio|autoagressão|heteroagressão|ideação suicida|delirium tremens|síndrome.*abstinência/i.test(text) && !isNeuroCase;
+
+  // Urology detection
+  const isUrologyCase = /disúria|dor lombar.*urin|hematúria|retenção urinária|cólica renal|itu\b|infec.*urinár|pielonefrite|prostatite|anúria|oligúria|litíase|cálculo renal|nefrolitíase|bexigoma|urosepse|sonda vesical/i.test(text);
+
+  // Dermatology detection
+  const isDermatologyCase = /lesão.*pele|rash|manchas|coceira|prurido|vermelhidão|ferida|bolha|alergia.*pele|celulite|erisipela|herpes.*zoster|zoster|urticária|anafilaxia|angioedema|stevens.*johnson|net\b|necrose epidérmica|fasceíte|abscesso.*pele|furúnculo|impetigo|psoríase|dermatite/i.test(text);
+
+  // Hematology detection
+  const isHematologyCase = /anemia|hemoglobina.*baix|plaquetas.*baix|plaquetopenia|trombocitopenia|inr.*alto|sangramento.*ativ|trombose|tep\b|tvp\b|anticoagulante|coagulopatia|civd\b|pancitopenia|leucopenia|hemólise|hemolítica|púrpura|petéquia|equimose|epistaxe|hemofilia|hit\b|heparina.*induz/i.test(text);
+
   return {
     weightKg: actualWeight,
     ageYears: ageNum,
@@ -1798,6 +1813,7 @@ function extractPatient(messages: ChatMessage[]): PatientData {
     isNeuroCase, glasgowScore, hasAnticoagulantInUse,
     isPregnant, isPuerperal, gestationalWeeks, isFertileAge, pregnancyConfirmed,
     isCriticalCase, isTraumaCase, isOrthoCase, isGastroCase, isEndocrineCase,
+    isRespiratoryCase, isPsychiatryCase, isUrologyCase, isDermatologyCase, isHematologyCase,
   };
 }
 
