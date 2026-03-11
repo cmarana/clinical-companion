@@ -2030,6 +2030,66 @@ function generateSafetyAlerts(patient: PatientData, renal: RenalCalcResult): str
     alerts.push("🟡 MULHER EM IDADE FÉRTIL: Confirmar se gestante antes de prescrever drogas teratogênicas.");
   }
 
+  // ICU / CRITICAL ALERTS
+  if (patient.isCriticalCase) {
+    alerts.push("🏥 MODO UTI/CRÍTICO ATIVADO: ABCDE obrigatório. Classificar choque. Volume cauteloso.");
+    if (patient.scenario === "UTI") {
+      alerts.push("🔴 UTI: Acesso central, PAI, monitor multiparamétrico. PAM ≥ 65. Lactato seriado.");
+    }
+    if (patient.hasHeartFailure || patient.isDialytic || patient.isElderly) {
+      alerts.push("🔴 VOLUME RESTRITO em paciente crítico: 250-500 mL + reavaliar (POCUS). NÃO 30 mL/kg automático.");
+    }
+  }
+
+  // TRAUMA ALERTS
+  if (patient.isTraumaCase) {
+    alerts.push("🚑 MODO TRAUMA ATIVADO: Seguir ATLS. ABCDE. Tratar primeiro o que mata.");
+    alerts.push("🔴 Não assumir trauma leve. Considerar: hemorragia, TCE, pneumotórax, tamponamento, fratura instável.");
+    if (patient.hasAnticoagulantInUse) {
+      alerts.push("🔴 TRAUMA + ANTICOAGULADO: Reverter anticoagulação. Risco hemorrágico aumentado.");
+    }
+    if (patient.isElderly) {
+      alerts.push("🔴 IDOSO + TRAUMA: Maior morbimortalidade. Investigar causa da queda. Menor reserva fisiológica.");
+    }
+  }
+
+  // ORTHO ALERTS
+  if (patient.isOrthoCase) {
+    alerts.push("🦴 MODO ORTOPEDIA ATIVADO: Exame neurovascular obrigatório. Imobilizar antes de mover.");
+    if (patient.isElderly) {
+      alerts.push("🟡 IDOSO + ORTOPEDIA: Queda → investigar causa. Risco fratura patológica. Osteoporose.");
+    }
+    if (patient.hasAnticoagulantInUse) {
+      alerts.push("🔴 ANTICOAGULADO + FRATURA/TRAUMA: Risco de hematoma compartimental. Monitorar.");
+    }
+  }
+
+  // GASTRO ALERTS
+  if (patient.isGastroCase) {
+    alerts.push("🫄 MODO GASTRO ATIVADO: NÃO assumir gastrite. Investigar abdome agudo, HDA, perfuração.");
+    if (patient.hasAnticoagulantInUse) {
+      alerts.push("🔴 ANTICOAGULADO + SANGRAMENTO GI: Avaliar reversão. INR. Hemoderivados.");
+    }
+    if (patient.isElderly) {
+      alerts.push("🔴 IDOSO + ABDOME: Maior risco de abdome grave com pouca dor. Investigar mais.");
+    }
+    if (renal.stage === "GRAVE" || renal.stage === "TERMINAL") {
+      alerts.push("🔴 DRC + GASTRO: Cautela com AINEs, opioides, contraste. Evitar nefrotóxicos.");
+    }
+  }
+
+  // ENDOCRINE ALERTS
+  if (patient.isEndocrineCase) {
+    alerts.push("🧬 MODO ENDÓCRINO ATIVADO: Monitorar K ANTES de insulina. Corrigir eletrólitos LENTAMENTE.");
+    alerts.push("🔴 NUNCA assumir CAD/HHS sem confirmar critérios. Gasometria obrigatória.");
+    if (patient.isElderly) {
+      alerts.push("🟡 IDOSO + ENDÓCRINO: Mais risco de complicações. Corrigir mais lentamente.");
+    }
+    if (renal.stage !== "NORMAL" && renal.stage !== "LEVE") {
+      alerts.push("🔴 DRC + EMERGÊNCIA METABÓLICA: Maior risco de hipercalemia, acidose. Considerar diálise precoce.");
+    }
+  }
+
   return alerts;
 }
 
