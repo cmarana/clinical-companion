@@ -13,6 +13,7 @@ import Protocols from "@/pages/Protocols";
 import ProtocolDetail from "@/pages/ProtocolDetail";
 import Medications from "@/pages/Medications";
 import MedicationDetail from "@/pages/MedicationDetail";
+import Calculators from "@/pages/Calculators";
 import Quiz from "@/pages/Quiz";
 import SearchPage from "@/pages/SearchPage";
 import Favorites from "@/pages/Favorites";
@@ -42,6 +43,7 @@ const AppRoutes = () => (
       <Route path="/protocols/:id" element={<ProtocolDetail />} />
       <Route path="/medications" element={<Medications />} />
       <Route path="/medications/:id" element={<MedicationDetail />} />
+      <Route path="/calculators" element={<Calculators />} />
       <Route path="/quiz" element={<Quiz />} />
       <Route path="/search" element={<SearchPage />} />
       <Route path="/favorites" element={<Favorites />} />

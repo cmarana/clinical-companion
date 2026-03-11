@@ -7,7 +7,6 @@ import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import PremiumGate, { PremiumBadge } from "@/components/PremiumGate";
-import { FREE_MEDICATION_FIELDS } from "@/lib/plans";
 
 const allSections = [
   { key: "indication" as const, label: "Indicação" },
@@ -35,15 +34,6 @@ export default function MedicationDetail() {
   const fav = isFavorite(med.id);
   const isPremium = subscription.subscribed;
 
-  const freeSections = allSections.filter((s) =>
-    (FREE_MEDICATION_FIELDS as readonly string[]).includes(s.key)
-  );
-  const lockedSections = allSections.filter(
-    (s) => !(FREE_MEDICATION_FIELDS as readonly string[]).includes(s.key)
-  );
-
-  const visibleSections = isPremium ? allSections : freeSections;
-
   return (
     <>
       <TopBar
@@ -61,26 +51,26 @@ export default function MedicationDetail() {
         {!isPremium && (
           <div className="flex items-center gap-2">
             <PremiumBadge />
-            <span className="text-xs text-muted-foreground">Dose, diluição e mais requerem assinatura</span>
+            <span className="text-xs text-muted-foreground">Conteúdo completo requer assinatura</span>
           </div>
         )}
 
-        {visibleSections.map((s) => (
-          <Card key={s.key}>
-            <CardHeader className="pb-2 pt-4 px-4">
-              <CardTitle className="text-sm font-heading">{s.label}</CardTitle>
-            </CardHeader>
-            <CardContent className="px-4 pb-4">
-              {med[s.key].split("\n").map((line, i) => (
-                <p key={i} className="text-sm leading-relaxed mb-1">{line}</p>
-              ))}
-            </CardContent>
-          </Card>
-        ))}
-
-        {!isPremium && lockedSections.length > 0 && (
+        {/* Free users only see indication preview */}
+        {!isPremium ? (
           <>
-            {lockedSections.map((s) => (
+            <Card>
+              <CardHeader className="pb-2 pt-4 px-4">
+                <CardTitle className="text-sm font-heading">Indicação</CardTitle>
+              </CardHeader>
+              <CardContent className="px-4 pb-4">
+                <p className="text-sm leading-relaxed">{med.indication.split("\n")[0]}</p>
+                {med.indication.split("\n").length > 1 && (
+                  <p className="text-xs text-muted-foreground mt-1">...</p>
+                )}
+              </CardContent>
+            </Card>
+
+            {allSections.filter(s => s.key !== "indication").map((s) => (
               <Card key={s.key} className="opacity-60">
                 <CardHeader className="pb-2 pt-4 px-4">
                   <CardTitle className="text-sm font-heading flex items-center gap-2">
@@ -94,9 +84,22 @@ export default function MedicationDetail() {
                 </CardContent>
               </Card>
             ))}
-            <PremiumGate>
-              <></>
-            </PremiumGate>
+            <PremiumGate />
+          </>
+        ) : (
+          <>
+            {allSections.map((s) => (
+              <Card key={s.key}>
+                <CardHeader className="pb-2 pt-4 px-4">
+                  <CardTitle className="text-sm font-heading">{s.label}</CardTitle>
+                </CardHeader>
+                <CardContent className="px-4 pb-4">
+                  {med[s.key].split("\n").map((line, i) => (
+                    <p key={i} className="text-sm leading-relaxed mb-1">{line}</p>
+                  ))}
+                </CardContent>
+              </Card>
+            ))}
           </>
         )}
 

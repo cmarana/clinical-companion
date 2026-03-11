@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { Card, CardContent } from "@/components/ui/card";
-import { Zap, FileText, Pill, GraduationCap, Stethoscope, Baby, Heart, Syringe, Crown, LogOut, Lock } from "lucide-react";
+import { Zap, FileText, Pill, GraduationCap, Stethoscope, Baby, Heart, Syringe, Crown, LogOut, Lock, Calculator } from "lucide-react";
 import { protocolCategories } from "@/data/protocols";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/button";
@@ -23,7 +23,8 @@ export default function Home() {
   const quickActions = [
     { label: "Modo Emergência", icon: <Zap size={24} />, path: "/emergency", accent: true, premium: true },
     { label: "Protocolos", icon: <FileText size={24} />, path: "/protocols", premium: false },
-    { label: "Medicamentos", icon: <Pill size={24} />, path: "/medications", premium: false },
+    { label: "Medicamentos", icon: <Pill size={24} />, path: "/medications", premium: true },
+    { label: "Calculadoras", icon: <Calculator size={24} />, path: "/calculators", premium: true },
     { label: "Quiz", icon: <GraduationCap size={24} />, path: "/quiz", premium: true },
   ];
 

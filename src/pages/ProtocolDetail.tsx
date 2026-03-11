@@ -56,7 +56,7 @@ export default function ProtocolDetail() {
         </div>
 
         <Tabs defaultValue={visibleSections[0]?.id || ""} className="w-full">
-          <TabsList className="w-full flex overflow-x-auto no-scrollbar h-auto flex-wrap gap-1 bg-transparent p-0 mb-4">
+          <TabsList className="w-full flex overflow-x-auto no-scrollbar h-auto gap-1 bg-transparent p-0 mb-4">
             {visibleSections.map((s) => (
               <TabsTrigger
                 key={s.id}
