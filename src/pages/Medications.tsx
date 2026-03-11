@@ -8,6 +8,8 @@ import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import PremiumGate, { PremiumBadge } from "@/components/PremiumGate";
+import { FREE_MEDICATION_IDS } from "@/lib/plans";
+import { cn } from "@/lib/utils";
 
 export default function Medications() {
   const navigate = useNavigate();
@@ -30,7 +32,7 @@ export default function Medications() {
         {!isPremium && (
           <div className="flex items-center gap-2">
             <PremiumBadge />
-            <span className="text-xs text-muted-foreground">Conteúdo completo requer assinatura</span>
+            <span className="text-xs text-muted-foreground">3 medicamentos gratuitos — assine para acesso completo</span>
           </div>
         )}
         <div className="relative">
@@ -43,30 +45,40 @@ export default function Medications() {
           />
         </div>
         <div className="space-y-2">
-          {filtered.map((m) => (
-            <Card
-              key={m.id}
-              onClick={() => navigate(`/medications/${m.id}`)}
-              className="cursor-pointer hover:shadow-sm active:scale-[0.99] transition-all"
-            >
-              <CardContent className="flex items-center gap-3 p-3.5">
-                <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center text-accent-foreground">
-                  <Pill size={16} />
-                </div>
-                <div className="flex-1 min-w-0">
-                  <p className="font-heading font-semibold text-sm">{m.name}</p>
-                  <p className="text-xs text-muted-foreground truncate">
-                    {isPremium ? m.indication.slice(0, 60) + "..." : m.tags.slice(0, 3).join(", ")}
-                  </p>
-                </div>
-                {!isPremium ? (
-                  <Lock size={14} className="text-muted-foreground shrink-0" />
-                ) : (
-                  <ChevronRight size={16} className="text-muted-foreground shrink-0" />
+          {filtered.map((m) => {
+            const isFree = FREE_MEDICATION_IDS.includes(m.id);
+            const locked = !isPremium && !isFree;
+
+            return (
+              <Card
+                key={m.id}
+                onClick={() => navigate(`/medications/${m.id}`)}
+                className={cn(
+                  "cursor-pointer hover:shadow-sm active:scale-[0.99] transition-all",
+                  locked && "opacity-60"
                 )}
-              </CardContent>
-            </Card>
-          ))}
+              >
+                <CardContent className="flex items-center gap-3 p-3.5">
+                  <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center text-accent-foreground">
+                    <Pill size={16} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <p className="font-heading font-semibold text-sm">
+                      {locked && "🔒 "}{m.name}
+                    </p>
+                    <p className="text-xs text-muted-foreground truncate">
+                      {locked ? m.tags.slice(0, 3).join(", ") : m.indication.slice(0, 60) + "..."}
+                    </p>
+                  </div>
+                  {locked ? (
+                    <Lock size={14} className="text-muted-foreground shrink-0" />
+                  ) : (
+                    <ChevronRight size={16} className="text-muted-foreground shrink-0" />
+                  )}
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
         {!isPremium && (
           <PremiumGate />
