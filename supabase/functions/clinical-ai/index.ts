@@ -622,7 +622,7 @@ const ANTICOAG_INDICATIONS = ["tev", "tep", "tvp", "tromboembolismo", "embolia p
   "prótese valvar", "válvula mecânica", "válvula protética"];
 
 // ─── Antibiotic Selection Engine ─────────────────────────────────
-function selectAntibiotic(patient: PatientData, renal: RenalCalcResult): AntibioticRecommendation | null {
+function selectAntibiotic(patient: PatientData, renal: RenalCalcResult, messages: ChatMessage[]): AntibioticRecommendation | null {
   const { focus, scenario, infectionOrigin, riskFactors, allergies, allergyType } = patient;
   const isHospital = infectionOrigin === "HOSPITALAR" || riskFactors.previousICU || riskFactors.hospitalized30d;
   // UTI scenario alone does NOT mean hospital infection - only if explicitly stated
