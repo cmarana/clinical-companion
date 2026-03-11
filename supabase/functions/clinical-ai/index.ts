@@ -640,6 +640,11 @@ function selectAntibiotic(patient: PatientData, renal: RenalCalcResult): Antibio
   if (scenario === "UTI" && !riskFactors.ventilated) questionsNeeded.push("Em ventilação mecânica?");
   if (focus === "SEM FOCO DEFINIDO") questionsNeeded.push("Qual o FOCO INFECCIOSO provável? (pulmonar, urinário, abdominal, pele, SNC)");
 
+  // Severity assessment for antibiotic escalation
+  const isSevere = /choque|sepse grave|instável|grave|crítico|lactato.*alto|pam\s*<?\s*6[05]/i.test(
+    messages.map(m => m.content).join("\n")
+  );
+
   // ALLERGY SAFETY RULES
   if (isAnaphylactic) {
     allergyWarnings.push("🔴 ANAFILAXIA A PENICILINA → EVITAR: penicilinas, cefalosporinas, carbapenêmicos (se alternativa existir)");
