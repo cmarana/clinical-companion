@@ -69,6 +69,23 @@ interface PatientData {
   isDermatologyCase: boolean;
   // Hematology
   isHematologyCase: boolean;
+  // Infectology
+  isInfectologyCase: boolean;
+  // Geriatrics (enhanced)
+  isGeriatricCase: boolean;
+  elderlyRiskLevel: "NONE" | "ALTO" | "MUITO_ALTO" | "MAXIMO";
+  // Primary Care (APS/UBS)
+  isAPSCase: boolean;
+  // Palliative Care
+  isPalliativeCase: boolean;
+  // Oncology
+  isOncologyCase: boolean;
+  // Electrolyte / Acid-Base
+  isElectrolyteCase: boolean;
+  // Rheumatology
+  isRheumatologyCase: boolean;
+  // Gynecology (ambulatory)
+  isGynecoCase: boolean;
 }
 
 interface RenalCalcResult {
