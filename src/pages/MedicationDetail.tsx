@@ -7,6 +7,7 @@ import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import PremiumGate, { PremiumBadge } from "@/components/PremiumGate";
+import { FREE_MEDICATION_IDS } from "@/lib/plans";
 
 const allSections = [
   { key: "indication" as const, label: "Indicação" },
@@ -33,6 +34,19 @@ export default function MedicationDetail() {
 
   const fav = isFavorite(med.id);
   const isPremium = subscription.subscribed;
+  const isFreeMed = FREE_MEDICATION_IDS.includes(med.id);
+
+  // If not premium and not a free medication, show full lock
+  if (!isPremium && !isFreeMed) {
+    return (
+      <>
+        <TopBar title={med.name} />
+        <div className="px-4 py-4 max-w-lg mx-auto">
+          <PremiumGate />
+        </div>
+      </>
+    );
+  }
 
   return (
     <>

@@ -58,12 +58,16 @@ export const plans: Plan[] = [
 export const FREE_PROTOCOL_SECTIONS = ["def", "diag"];
 // Free content: only these medication fields are visible
 export const FREE_MEDICATION_FIELDS = ["indication"] as const;
+// Free protocols: only these 3 basic protocols are accessible for free users
+export const FREE_PROTOCOL_IDS = ["dor-toracica", "dispneia", "itu"];
+// Free medications: only these 3 basic medications are accessible for free users
+export const FREE_MEDICATION_IDS = ["dipirona", "omeprazol", "ondansetrona"];
 // Free features
 export const FREE_FEATURES = {
   protocols: true,      // can browse list
-  protocolPreview: true, // can see first 2 sections
+  protocolPreview: true, // can see first 2 sections of free protocols only
   medications: true,     // can browse list
-  medicationPreview: true, // can see indication only
+  medicationPreview: true, // can see indication of free meds only
   quiz: false,
   emergency: false,
   notes: false,

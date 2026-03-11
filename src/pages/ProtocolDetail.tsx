@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { protocols } from "@/data/protocols";
 import { useFavorites } from "@/contexts/FavoritesContext";
@@ -7,12 +7,13 @@ import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import PremiumGate, { PremiumBadge } from "@/components/PremiumGate";
-import { FREE_PROTOCOL_SECTIONS } from "@/lib/plans";
+import { FREE_PROTOCOL_SECTIONS, FREE_PROTOCOL_IDS } from "@/lib/plans";
 
 export default function ProtocolDetail() {
   const { id } = useParams<{ id: string }>();
   const { isFavorite, toggleFavorite } = useFavorites();
   const { subscription } = useAuth();
+  const navigate = useNavigate();
   const protocol = protocols.find((p) => p.id === id);
 
   if (!protocol) {
@@ -26,8 +27,22 @@ export default function ProtocolDetail() {
 
   const fav = isFavorite(protocol.id);
   const isPremium = subscription.subscribed;
+  const isFreeProtocol = FREE_PROTOCOL_IDS.includes(protocol.id);
 
-  // Free users can see only def and diag sections
+  // If not premium and not a free protocol, show full lock
+  if (!isPremium && !isFreeProtocol) {
+    return (
+      <>
+        <TopBar title={protocol.title} />
+        <div className="px-4 py-4 max-w-lg mx-auto">
+          <p className="text-xs text-muted-foreground font-heading mb-4">{protocol.category}</p>
+          <PremiumGate />
+        </div>
+      </>
+    );
+  }
+
+  // Free users on free protocols: only def and diag sections
   const visibleSections = isPremium
     ? protocol.sections
     : protocol.sections.filter((s) => FREE_PROTOCOL_SECTIONS.includes(s.id));
@@ -61,7 +76,7 @@ export default function ProtocolDetail() {
               <TabsTrigger
                 key={s.id}
                 value={s.id}
-                className="text-xs px-3 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground bg-secondary"
+                className="shrink-0 text-xs px-3 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground bg-secondary"
               >
                 {s.title}
               </TabsTrigger>
@@ -69,7 +84,7 @@ export default function ProtocolDetail() {
             {lockedSections.map((s) => (
               <span
                 key={s.id}
-                className="text-xs px-3 py-1.5 rounded-full bg-muted text-muted-foreground opacity-50 cursor-not-allowed"
+                className="shrink-0 text-xs px-3 py-1.5 rounded-full bg-muted text-muted-foreground opacity-50 cursor-not-allowed"
               >
                 🔒 {s.title}
               </span>
