@@ -10,6 +10,8 @@ import { traumaProtocols } from "./trauma";
 import { intoxicationProtocols } from "./intoxication";
 import { proceduresProtocols } from "./procedures";
 import { pediatricEmergencyProtocols } from "./pediatric";
+import { obstetricsProtocols } from "./obstetrics";
+import { obstetricsProtocols2 } from "./obstetrics2";
 
 export { SECTION_ORDER } from "./types";
 export type { EmergencyProtocol, EmergencyCategory, EmergencySection } from "./types";
@@ -22,6 +24,7 @@ export const emergencyCategories: EmergencyCategory[] = [
   { id: "sepsis", title: "Sepse e Choque", protocols: sepsisProtocols },
   { id: "metabolic", title: "Metabólico e Eletrolítico", protocols: metabolicProtocols },
   { id: "trauma", title: "Trauma (ATLS)", protocols: traumaProtocols },
+  { id: "obstetrics", title: "Obstetrícia de Emergência", protocols: [...obstetricsProtocols, ...obstetricsProtocols2] },
   { id: "intoxication", title: "Intoxicações", protocols: intoxicationProtocols },
   { id: "procedures", title: "Procedimentos de Emergência", protocols: proceduresProtocols },
   { id: "pediatric-emergency", title: "Pediatria de Emergência", protocols: pediatricEmergencyProtocols },
