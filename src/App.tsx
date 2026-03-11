@@ -13,6 +13,7 @@ import Protocols from "@/pages/Protocols";
 import ProtocolDetail from "@/pages/ProtocolDetail";
 import Medications from "@/pages/Medications";
 import MedicationDetail from "@/pages/MedicationDetail";
+import Calculators from "@/pages/Calculators";
 import Quiz from "@/pages/Quiz";
 import SearchPage from "@/pages/SearchPage";
 import Favorites from "@/pages/Favorites";
