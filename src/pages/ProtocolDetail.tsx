@@ -3,11 +3,13 @@ import TopBar from "@/components/TopBar";
 import { protocols } from "@/data/protocols";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { useAuth } from "@/contexts/AuthContext";
-import { Star } from "lucide-react";
+import { Star, GitBranch } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import PremiumGate, { PremiumBadge } from "@/components/PremiumGate";
 import { FREE_PROTOCOL_SECTIONS, FREE_PROTOCOL_IDS } from "@/lib/plans";
+import DecisionTree from "@/components/DecisionTree";
+import { decisionTrees } from "@/data/decisionTrees";
 
 export default function ProtocolDetail() {
   const { id } = useParams<{ id: string }>();
@@ -101,6 +103,21 @@ export default function ProtocolDetail() {
             </TabsContent>
           ))}
         </Tabs>
+
+        {/* Decision Tree */}
+        {isPremium && protocol.id && decisionTrees[protocol.id] && (
+          <div className="mt-6 space-y-2">
+            <div className="flex items-center gap-2">
+              <GitBranch size={16} className="text-primary" />
+              <h3 className="font-heading font-semibold text-sm">Fluxograma Interativo</h3>
+            </div>
+            <DecisionTree
+              title={decisionTrees[protocol.id].title}
+              root={decisionTrees[protocol.id].tree}
+              guideline={decisionTrees[protocol.id].guideline}
+            />
+          </div>
+        )}
 
         {!isPremium && lockedSections.length > 0 && (
           <PremiumGate>
