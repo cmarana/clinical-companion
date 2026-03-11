@@ -181,14 +181,14 @@
 
 .clinical-response ul,
 .clinical-response ol {
-  margin-bottom: 6px;
+  margin-bottom: 12px;
   padding-left: 18px;
 }
 
 .clinical-response li {
   font-size: 13px;
-  margin-bottom: 2px;
-  line-height: 1.5;
+  margin-bottom: 4px;
+  line-height: 1.6;
 }
 
 .clinical-response table {
