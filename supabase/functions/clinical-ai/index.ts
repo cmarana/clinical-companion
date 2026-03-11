@@ -2424,6 +2424,93 @@ function formatEngineContext(e: EngineResult): string {
     lines.push(`  → Profilaxia TEV: enoxaparina 40mg/dia (cesárea, imobilização, obesidade, PE)`);
   }
 
+  // ICU / Critical section
+  if (e.patient.isCriticalCase) {
+    lines.push("\n🏥 ═══ MODO UTI / PACIENTE CRÍTICO ATIVADO ═══");
+    lines.push(`  Cenário: ${e.patient.scenario}`);
+    lines.push(`  IC: ${e.patient.hasHeartFailure ? "SIM" : "Não informado"}`);
+    lines.push(`  Dialítico: ${e.patient.isDialytic ? "SIM" : "NÃO ASSUMIR"}`);
+    lines.push(`\n  REGRAS UTI:`);
+    lines.push(`  → ABCDE obrigatório`);
+    lines.push(`  → Classificar choque: séptico, cardiogênico, hipovolêmico, obstrutivo. NÃO assumir sepse.`);
+    lines.push(`  → Volume: 250-500 mL → reavaliar (POCUS). NÃO 30 mL/kg automático em idoso/DRC/IC.`);
+    lines.push(`  → Vasopressor: noradrenalina 1ª escolha. Mostrar mcg/kg/min + mL/h + diluição.`);
+    lines.push(`  → Se refratário: vasopressina 0,03 UI/min → dobutamina → hidrocortisona 200mg/dia.`);
+    lines.push(`  → IOT se: Glasgow < 8, hipoxemia, fadiga, choque grave.`);
+    lines.push(`  → VM: VT 6-8 mL/kg, PEEP ≥ 5, FiO2 para SpO2 92-96%.`);
+    lines.push(`  → Sedação: midazolam/propofol + fentanil/dexmedetomidina. Dose por kg.`);
+    lines.push(`  → METAS: PAM ≥ 65, Sat > 92%, diurese > 0,5 mL/kg/h, lactato ↓, glicemia 140-180, pH > 7,2.`);
+    lines.push(`  → Calcular ClCr → ajustar TODAS as drogas.`);
+    lines.push(`  → Checar interações: vasoativo + sedação + ATB + anticoagulação + QT.`);
+  }
+
+  // Trauma section
+  if (e.patient.isTraumaCase) {
+    lines.push("\n🚑 ═══ MODO TRAUMA ATIVADO ═══");
+    lines.push(`  REGRAS TRAUMA:`);
+    lines.push(`  → ATLS obrigatório: A (via aérea + cervical) → B (respiração) → C (circulação) → D (neuro) → E (exposição).`);
+    lines.push(`  → Tratar PRIMEIRO o que mata. Não assumir trauma leve.`);
+    lines.push(`  → Choque no trauma: pensar hipovolêmico/hemorrágico PRIMEIRO. Não assumir sepse.`);
+    lines.push(`  → Volume: cristaloide 500mL → reavaliar. Se choque III/IV → sangue precoce.`);
+    lines.push(`  → Ácido tranexâmico 1g IV se < 3h do trauma.`);
+    lines.push(`  → FAST (POCUS): líquido livre abdominal/pericárdico.`);
+    lines.push(`  → Abdome agudo: NUNCA assumir gastrite. Considerar apendicite, perfuração, isquemia, ectópica.`);
+    lines.push(`  → Analgesia: dipirona + opioide. Ajustar por peso/rim/idade.`);
+    lines.push(`  → ATB cirúrgico se abdome: ceftriaxona + metronidazol. Se hospitalar: piptazo/mero.`);
+    lines.push(`  → Anticoagulado + trauma: reverter IMEDIATAMENTE.`);
+    lines.push(`  → Idoso + trauma: investigar causa da queda. Menor reserva.`);
+    lines.push(`  → Mostrar cálculos: peso, dose, volume, BIC, ClCr.`);
+  }
+
+  // Orthopedic section
+  if (e.patient.isOrthoCase) {
+    lines.push("\n🦴 ═══ MODO ORTOPEDIA ATIVADO ═══");
+    lines.push(`  REGRAS ORTOPEDIA:`);
+    lines.push(`  → Exame neurovascular OBRIGATÓRIO: pulso, sensibilidade, motor, perfusão.`);
+    lines.push(`  → Se déficit neurovascular → URGÊNCIA.`);
+    lines.push(`  → Imobilizar ANTES de mover/transportar.`);
+    lines.push(`  → RX se: dor forte, trauma, deformidade, edema, incapacidade de apoiar.`);
+    lines.push(`  → Fratura: imobilizar + analgesia + RX + avaliar cirurgia.`);
+    lines.push(`  → Luxação: RX pré + redução com sedação + RX pós + neurovascular pós.`);
+    lines.push(`  → Dor lombar: excluir red flags (déficit neuro, retenção urinária, febre, câncer, trauma).`);
+    lines.push(`  → Analgesia: dipirona/paracetamol + AINE (se rim ok) + opioide se grave.`);
+    lines.push(`  → Idoso: investigar causa queda. Risco fratura patológica.`);
+    lines.push(`  → Anticoagulado: risco hematoma. Monitorar compartimento.`);
+    lines.push(`  → ADAPTAR: SAMU → imobilizar; PS → investigar; UBS → encaminhar.`);
+  }
+
+  // Gastro section
+  if (e.patient.isGastroCase) {
+    lines.push("\n🫄 ═══ MODO GASTRO ATIVADO ═══");
+    lines.push(`  REGRAS GASTRO:`);
+    lines.push(`  → Abdome agudo: NUNCA assumir gastrite/virose. Considerar apendicite, perfuração, isquemia, ectópica.`);
+    lines.push(`  → HDA: IBP IV (omeprazol 80mg bolus + 8mg/h) + EDA ≤ 12-24h. Se cirrose: octreotida + ceftriaxona profilática.`);
+    lines.push(`  → Cirrose: pensar varizes, ascite, encefalopatia, PBE. EVITAR excesso volume, AINEs, aminoglicosídeos.`);
+    lines.push(`  → Pancreatite: hidratação vigorosa + analgesia + jejum inicial → dieta precoce. ATB só se necrose infectada.`);
+    lines.push(`  → Colecistite/Colangite: USG + ATB (ceftriaxona + metronidazol). Colecistectomia precoce. CPRE se colangite grave.`);
+    lines.push(`  → Hepatite: avaliar AST/ALT/bilirrubina/INR. EVITAR drogas hepatotóxicas.`);
+    lines.push(`  → Anticoagulado: avaliar INR, risco sangramento.`);
+    lines.push(`  → Cautela com: AINEs, paracetamol (dose máx), opioide, metformina em cirrose/DRC.`);
+    lines.push(`  → Idoso: abdome grave com pouca dor → investigar mais.`);
+  }
+
+  // Endocrine section
+  if (e.patient.isEndocrineCase) {
+    lines.push("\n🧬 ═══ MODO ENDÓCRINO / METABÓLICO ATIVADO ═══");
+    lines.push(`  REGRAS ENDÓCRINO:`);
+    lines.push(`  → Hiperglicemia: SEMPRE avaliar CAD vs HHS. Não assumir hiperglicemia simples.`);
+    lines.push(`  → CAD: SF → K (ANTES insulina!) → Insulina 0,1 UI/kg/h IV. Se K < 3,3 → CORRIGIR PRIMEIRO.`);
+    lines.push(`  → HHS: HIDRATAR PRIMEIRO, insulina DEPOIS. Osmolaridade queda < 3 mOsm/h.`);
+    lines.push(`  → Potássio: SEMPRE avaliar K antes de insulina. Se K alto → ECG → Gluconato Ca → Insulina+Glicose.`);
+    lines.push(`  → Sódio: corrigir LENTAMENTE. Máx 8-10 mEq/L/24h. Risco mielinólise.`);
+    lines.push(`  → Hipoglicemia: glicose EV imediata → reavaliar → investigar causa.`);
+    lines.push(`  → Tireotoxicose: beta-bloq + PTU + iodo (1h após PTU) + corticoide.`);
+    lines.push(`  → Mixedema: hidrocortisona ANTES de levotiroxina. Aquecimento passivo.`);
+    lines.push(`  → DRC / idoso: ajustar doses. Mais risco.`);
+    lines.push(`  → Mostrar cálculos: ml/kg, insulina/kg, Na corrigido, osmolaridade, ClCr.`);
+    lines.push(`  → NUNCA assumir CAD/HHS. Confirmar com exames.`);
+  }
+
   lines.push("\n═══ FIM DO MOTOR CLÍNICO ═══");
   return lines.join("\n");
 }
