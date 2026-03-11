@@ -1187,7 +1187,22 @@ function extractPatient(messages: ChatMessage[]): PatientData {
   const gestWeeksRaw = firstMatch(text, [/([0-9]{1,2})\s*sem(?:anas?)?\s*(?:de\s*)?(?:gestação|ig|gest)/i, /ig\s*[:=]?\s*([0-9]{1,2})/i]);
   const gestationalWeeks = gestWeeksRaw ? parseNumber(gestWeeksRaw) : undefined;
   const isFertileAge = sex === "F" && ageNum !== undefined && ageNum >= 12 && ageNum <= 55;
-  const pregnancyConfirmed = isPregnant; // explicitly stated
+  const pregnancyConfirmed = isPregnant;
+
+  // ICU / Critical case detection
+  const isCriticalCase = /\buti\b|sala vermelha|choque|sepse grave|intuba[çc]|ventila[çc]|noradrenalina|coma\b|pcr\b|parada|instabilidade|instável|choque séptico|choque cardiogênico|choque hipovolêmico|vasopressor|drogas vasoativas/i.test(text);
+
+  // Trauma / Surgery detection
+  const isTraumaCase = /trauma|acidente|queda.*alt|ferimento|abdome agudo|politrauma|sala vermelha.*trauma|atropelamento|fac\b|faf\b|arma.*branca|arma.*fogo|colisão|capotamento|esmagamento|amputação|evisceração|fratura exposta/i.test(text);
+
+  // Orthopedic detection
+  const isOrthoCase = /fratura|luxação|entorse|dor lombar|dor articular|trauma.*membro|imobiliza[çc]|tala|gesso|deformidade.*membro|claudica|lesão.*ligament|tendin|artrose|artrite|lombalgia|cervicalgia|dorsalgia|ombro.*dor|joelho.*dor|tornozelo/i.test(text) && !isTraumaCase;
+
+  // Gastroenterology detection
+  const isGastroCase = /hematêmese|melena|enterorragia|hda\b|hdb\b|varizes esofág|cirrose|ascite|pancreatite|colecistite|colangite|icterícia|abdome agudo|obstrução intestinal|perfuração|isquemia mesentérica|hepatite.*agud|encefalopatia hepát|peritonite/i.test(text);
+
+  // Endocrine / Metabolic detection
+  const isEndocrineCase = /cetoacidose|cad\b|estado hiperosmolar|hhs\b|hipoglicemia|hiperglicemia.*grave|hipernatremia|hiponatremia|hipercalemia|hipocalemia|hipercalcemia|hipocalcemia|tireotoxicose|tempestade.*tireoid|mixedema|coma.*mixedematoso|crise.*adrenal|insuficiência adrenal|feocromocitoma|diabetes.*descompens/i.test(text);
 
   return {
     weightKg: actualWeight,
@@ -1199,6 +1214,7 @@ function extractPatient(messages: ChatMessage[]): PatientData {
     isPediatric, isNeonate, isInfant, estimatedWeightKg, vaccinesUpToDate,
     isNeuroCase, glasgowScore, hasAnticoagulantInUse,
     isPregnant, isPuerperal, gestationalWeeks, isFertileAge, pregnancyConfirmed,
+    isCriticalCase, isTraumaCase, isOrthoCase, isGastroCase, isEndocrineCase,
   };
 }
 
