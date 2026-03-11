@@ -1881,6 +1881,25 @@ function formatEngineContext(e: EngineResult): string {
     lines.push("  → EVITAR: quinolonas, tetraciclinas, codeína, tramadol em < 12a");
   }
 
+  // Neuro section
+  if (e.patient.isNeuroCase) {
+    lines.push("\n🧠 ═══ MODO NEURO ATIVADO ═══");
+    lines.push(`  Glasgow: ${e.patient.glasgowScore !== undefined ? `${e.patient.glasgowScore} (${e.patient.glasgowScore <= 8 ? "GRAVE — IOT indicada" : e.patient.glasgowScore <= 12 ? "MODERADO" : "LEVE"})` : "NÃO INFORMADO — AVALIAR"}`);
+    lines.push(`  Anticoagulante em uso: ${e.patient.hasAnticoagulantInUse ? "SIM 🔴 (risco sangramento intracraniano)" : "Não detectado"}`);
+    lines.push(`  Idoso: ${e.patient.isElderly ? "SIM — confusão pode ser infecção/droga/metabólico/AVC" : "Não"}`);
+    lines.push(`\n  REGRAS NEURO:`);
+    lines.push(`  → SEMPRE excluir: AVC, hemorragia, meningite, hipoglicemia, hipóxia, intoxicação`);
+    lines.push(`  → Glasgow ≤ 8: IOT + VM + TC urgente`);
+    lines.push(`  → Convulsão: BZD → fenitoína/levetiracetam → fenobarbital`);
+    lines.push(`  → Cefaleia grave: excluir hemorragia (TC), meningite (LCR), AVC, dissecção`);
+    lines.push(`  → TCE + anticoagulado: TC obrigatória + reverter anticoagulação se sangramento`);
+    lines.push(`  → Febre + alteração mental: pensar meningite → ATB empírico NÃO ATRASAR`);
+    lines.push(`  → AVC isquêmico < 4,5h: avaliar trombólise (Alteplase 0,9mg/kg)`);
+    lines.push(`  → AVC hemorrágico: NÃO anticoagular. Reverter se anticoagulado.`);
+    lines.push(`  → Idoso confuso: investigar infecção, droga, metabólico antes de assumir demência`);
+    lines.push(`  → Delirium: medidas não farmacológicas PRIMEIRO. Haloperidol 0,5-2mg se agitação grave (monitorar QTc)`);
+  }
+
   lines.push("\n═══ FIM DO MOTOR CLÍNICO ═══");
   return lines.join("\n");
 }
