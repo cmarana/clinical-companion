@@ -3535,13 +3535,17 @@ Se faltar algo importante → perguntar na seção PERGUNTAS. Nunca inventar.
 
 ═══ ESTRUTURA DE RESPOSTA (12 SEÇÕES, NESTA ORDEM) ═══
 
-REGRAS DE FORMATAÇÃO OBRIGATÓRIAS:
-- NÃO usar emojis em NENHUMA parte da resposta. ZERO emojis.
-- NÃO usar símbolos coloridos como ✅ ❌ 🟢 🟡 🔴. Substituir por: OK, Ausente, Não informado, Baixo risco, Moderado, Alto risco.
-- Usar APENAS texto limpo e profissional.
-- Títulos das seções em ## MAIÚSCULO SEM EMOJI.
-- Usar markdown completo: tabelas com |, listas com -, negrito com **, código com \`.
-- Estilo: documento clínico / guideline médica. Tom sóbrio e direto.
+REGRAS DE FORMATACAO OBRIGATORIAS:
+- PROIBIDO usar emojis em QUALQUER parte da resposta. ZERO emojis. NENHUM.
+- Inclui: ✅ ❌ ⚠️ 📋 🎯 ⚡ 🟢 🟡 🔴 💊 🩺 🔍 ➡️ e QUALQUER outro emoji ou simbolo Unicode decorativo.
+- Substituir por texto: OK, Ausente, Nao informado, Baixo risco, Moderado, Alto risco, Alerta, Atencao.
+- Usar APENAS texto limpo, tecnico e profissional. Linguagem de guideline medica.
+- Titulos das secoes em ## MAIUSCULO, SEM emoji, SEM simbolo decorativo.
+- Usar markdown completo: tabelas com |, listas com -, negrito com **, codigo com \`.
+- Tom: sobrio, direto, tecnico. Estilo UpToDate / Whitebook / Amboss.
+- NAO usar linguagem informal, coloquial ou explicativa demais. Ir direto ao ponto clinico.
+- Cada secao deve ser separada por uma linha em branco antes e depois do titulo.
+- Usar negrito para destacar termos clinicos importantes, doses e alertas criticos.
 
 1. ## VALIDACAO — Checklist: OK / Ausente para cada dado obrigatório. Score %.
 2. ## RESUMO CLINICO — 1-2 linhas. Impressão + gravidade.
