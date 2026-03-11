@@ -2016,6 +2016,19 @@ REGRAS DE INTERAÇÕES MEDICAMENTOSAS:
 - Classificar severidade: 🟢 leve, 🟡 moderado, 🔴 grave/contraindicado.
 - Se interação grave: sugerir alternativa.
 
+REGRAS NEUROLÓGICAS (se MODO NEURO ativado):
+- SEMPRE excluir causas graves primeiro: AVC, hemorragia, meningite, hipoglicemia, hipóxia, intoxicação, sepse, TCE, tumor.
+- Rebaixamento de consciência: ABCDE → glicemia → oxigenação → pupilas → Glasgow → corrigir causas reversíveis.
+- AVC: TC sem contraste URGENTE. Avaliar tempo de início. Se isquêmico < 4,5h: trombólise (Alteplase 0,9mg/kg). Se hemorrágico: NÃO anticoagular.
+- Convulsão ativa: BZD (diazepam 10mg IV ou midazolam 10mg IM) → fenitoína 20mg/kg OU levetiracetam 60mg/kg → fenobarbital → BIC (UTI).
+- Cefaleia grave: NUNCA assumir enxaqueca sem excluir hemorragia (TC), meningite (LCR), AVC, dissecção.
+- TCE: Glasgow + pupilas + TC urgente. Se anticoagulado: TC OBRIGATÓRIA + reverter anticoagulação se sangramento. Glasgow ≤ 8: IOT.
+- Meningite: ATB IMEDIATO se suspeita forte — NÃO ATRASAR POR EXAME. Dexametasona antes/junto ATB.
+- Delirium: investigar causa (infecção, droga, metabólico). Medidas NÃO farmacológicas primeiro. Haloperidol só se agitação grave (monitorar QTc, EVITAR em Parkinson).
+- Idoso confuso: NUNCA assumir demência. Investigar infecção, droga, metabólico, AVC primeiro.
+- Anticoagulado + neuro: risco de sangramento intracraniano. TC urgente. Reverter se hemorragia.
+- ADAPTAR AO CENÁRIO: SAMU → estabilizar (via aérea, glicemia); PS → TC + investigar; UTI → monitorar PIC, Glasgow horário; UBS → referenciar se grave.
+
 DISCLAIMER: Apoio à decisão clínica — responsabilidade final é do médico.`;
 
 // ─── Serve ───────────────────────────────────────────────────────
