@@ -2754,6 +2754,91 @@ function generateSafetyAlerts(patient: PatientData, renal: RenalCalcResult): str
     }
   }
 
+  // INFECTOLOGY ALERTS
+  if (patient.isInfectologyCase) {
+    alerts.push("🦠 MODO INFECTOLOGIA ATIVADO: Definir FOCO infeccioso. Classificar origem (comunitária vs hospitalar). Culturas ANTES do ATB.");
+    alerts.push("🔴 Se sepse/choque séptico: ATB em ≤ 1 HORA. Culturas + lactato + volume + vasopressor.");
+    if (patient.riskFactors.immunosuppressed) {
+      alerts.push("🔴 IMUNOSSUPRIMIDO: Cobertura máxima. Pensar fungo. Considerar antifúngico empírico.");
+    }
+    if (renal.stage !== "NORMAL" && renal.stage !== "LEVE") {
+      alerts.push(`🔴 DRC + INFECÇÃO: Ajustar ATB para ClCr ${renal.clcrMlMin} mL/min. Evitar nefrotóxicos.`);
+    }
+    if (patient.isElderly) {
+      alerts.push("🟡 IDOSO + INFECÇÃO: Pode não ter febre. Apresentação atípica. Investigar mais.");
+    }
+  }
+
+  // GERIATRIC ALERTS (enhanced)
+  if (patient.isGeriatricCase) {
+    if (patient.elderlyRiskLevel === "MAXIMO") {
+      alerts.push("🔴 IDOSO ≥ 80 ANOS — RISCO MÁXIMO: Ajustar TODAS as doses. Volume cauteloso. Fragilidade.");
+    } else if (patient.elderlyRiskLevel === "MUITO_ALTO") {
+      alerts.push("🔴 IDOSO ≥ 75 ANOS — RISCO MUITO ALTO: Doses menores. Monitorar função renal. Risco delirium.");
+    } else if (patient.elderlyRiskLevel === "ALTO") {
+      alerts.push("🟡 IDOSO ≥ 65 ANOS — RISCO ALTO: Critérios de Beers. Evitar polifarmácia. ClCr obrigatório.");
+    }
+    if (patient.medicationsInUse.length >= 5) {
+      alerts.push("🔴 POLIFARMÁCIA (≥ 5 drogas): Risco exponencial de interações e efeitos adversos. Revisar TODAS.");
+    } else if (patient.medicationsInUse.length >= 3) {
+      alerts.push("🟡 POLIFARMÁCIA (≥ 3 drogas): Checar interações. Considerar desprescrição.");
+    }
+    alerts.push("🟡 RISCO DE QUEDA: Cuidado com BZD, opioides, anti-HAS, sedativos. Avaliar ortostatismo.");
+  }
+
+  // APS / PRIMARY CARE ALERTS
+  if (patient.isAPSCase) {
+    alerts.push("🏥 MODO APS/UBS ATIVADO: Conduta adaptada para baixa complexidade. Preferir VO e SUS.");
+    alerts.push("🟡 UBS ≠ PS: Evitar exames desnecessários, ATB sem indicação, conduta hospitalar.");
+    alerts.push("🔴 ENCAMINHAR PS SE: instabilidade, dor torácica, dispneia grave, sangramento ativo, confusão, febre persistente.");
+  }
+
+  // PALLIATIVE CARE ALERTS
+  if (patient.isPalliativeCase) {
+    alerts.push("🕊️ MODO PALIATIVO ATIVADO: Prioridade = CONFORTO. Proporcionalidade terapêutica.");
+    alerts.push("🟡 Avaliar: objetivo curativo vs paliativo. Medidas invasivas apenas se benefício > sofrimento.");
+    alerts.push("🔴 Se sofrimento refratário: considerar sedação paliativa. Decisão compartilhada com família.");
+    alerts.push("⚠️ Paliativo NÃO é abandono. É cuidado ativo com foco em dignidade e conforto.");
+  }
+
+  // ONCOLOGY ALERTS
+  if (patient.isOncologyCase) {
+    alerts.push("🎗️ MODO ONCOLOGIA ATIVADO: Paciente de ALTO RISCO. Considerar neutropenia, sangramento, metástase.");
+    alerts.push("🔴 FEBRE em oncológico = neutropenia febril até provar contrário → ATB em ≤ 1 HORA.");
+    if (renal.stage !== "NORMAL" && renal.stage !== "LEVE") {
+      alerts.push("🔴 DRC + ONCOLOGIA: Ajustar todas as drogas. Maior risco de toxicidade.");
+    }
+    if (patient.isPalliativeCase) {
+      alerts.push("🕊️ ONCOLOGIA + PALIATIVO: Avaliar proporcionalidade. Considerar conforto sobre cura.");
+    }
+  }
+
+  // ELECTROLYTE ALERTS
+  if (patient.isElectrolyteCase) {
+    alerts.push("⚗️ MODO HIDROELETROLÍTICO ATIVADO: Avaliar gravidade. Corrigir LENTAMENTE. Monitorar seriado.");
+    alerts.push("🔴 NUNCA corrigir Na rápido (máx 8-10 mEq/L/24h). Risco mielinólise pontina.");
+    alerts.push("🔴 K alto + ECG alterado → Gluconato Ca IMEDIATO → Insulina+Glicose → diurético/diálise.");
+    if (renal.stage !== "NORMAL" && renal.stage !== "LEVE") {
+      alerts.push("🔴 DRC + DISTÚRBIO ELETROLÍTICO: Correção mais lenta. Considerar diálise se refratário.");
+    }
+  }
+
+  // RHEUMATOLOGY ALERTS
+  if (patient.isRheumatologyCase) {
+    alerts.push("🦴 MODO REUMATOLOGIA ATIVADO: Diferenciar inflamatório vs infeccioso vs degenerativo.");
+    alerts.push("🔴 Monoartrite aguda + febre → ARTRITE SÉPTICA até provar contrário → Punção articular.");
+    alerts.push("⚠️ NÃO iniciar imunossupressor sem excluir infecção. Corticoide com cautela.");
+  }
+
+  // GYNECOLOGY ALERTS
+  if (patient.isGynecoCase) {
+    alerts.push("♀️ MODO GINECOLOGIA ATIVADO: SEMPRE excluir gravidez (beta-hCG). Perguntar DUM.");
+    alerts.push("🔴 Dor pélvica aguda: excluir ectópica, torção ovariana, DIP.");
+    if (patient.isFertileAge) {
+      alerts.push("🟡 Mulher em idade fértil: confirmar gravidez ANTES de prescrever.");
+    }
+  }
+
   return alerts;
 }
 
