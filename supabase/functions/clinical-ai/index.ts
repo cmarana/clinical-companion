@@ -126,7 +126,7 @@ interface DrugEntry {
 
 interface InteractionAlert {
   pair: string;
-  severity: "🔴" | "🟡" | "🟢";
+  severity: "ALTO RISCO" | "MODERADO" | "BAIXO RISCO";
   mechanism: string;
   action: string;
 }
