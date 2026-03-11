@@ -26,6 +26,8 @@ import DiagnosisBySymptom from "@/pages/DiagnosisBySymptom";
 import Pediatrics from "@/pages/Pediatrics";
 import Obstetrics from "@/pages/Obstetrics";
 import Internship from "@/pages/Internship";
+import ClinicalAI from "@/pages/ClinicalAI";
+import DrugInteractions from "@/pages/DrugInteractions";
 import Auth from "@/pages/Auth";
 import ResetPassword from "@/pages/ResetPassword";
 import Pricing from "@/pages/Pricing";
