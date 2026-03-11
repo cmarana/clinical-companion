@@ -42,3 +42,5 @@ const intoxicationBase: EmergencyProtocol[] = [
     ]
   }
 ];
+
+export const intoxicationProtocols: EmergencyProtocol[] = [...intoxicationBase, ...intoxicationProtocols2, ...intoxicationProtocols3];
