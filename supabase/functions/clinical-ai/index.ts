@@ -5,39 +5,104 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const SYSTEM_PROMPT = `Você é um assistente clínico avançado para médicos brasileiros. Seu objetivo é apoiar a prática médica com rapidez, precisão e segurança.
+const DRUG_DATABASE = `
+BANCO DE MEDICAMENTOS INTEGRADO (consulte SEMPRE antes de prescrever):
+- Noradrenalina: 0,1-2 mcg/kg/min IV BIC. Diluição: 4amp(16mg)+SF234ml=250ml(64mcg/ml). Acesso central. Interações: IMAO(crise hipertensiva), Halotano(arritmia).
+- Adrenalina: PCR 1mg IV 3-5min. Anafilaxia 0,3-0,5mg IM coxa. BIC 0,1-0,5mcg/kg/min. Interações: Betabloq(ineficácia→glucagon), Tricíclicos(potencializa).
+- Amiodarona: PCR 300mg IV bolus. TV estável 150mg/10min→1mg/min 6h→0,5mg/min 18h. Diluir em SG5%(incompatível SF). Interações: Warfarina(↑INR 30-50%), Digoxina(↑nível 70-100%), Simvastatina(rabdomiólise→máx20mg).
+- Furosemida: EAP 40-80mg IV. BIC 5-40mg/h. Interações: Aminoglicosídeos(ototoxicidade), Digoxina(↑toxicidade por hipoK), AINE(↓efeito).
+- Ceftriaxona: 1-2g IV 12/12h. Meningite 2g 12/12h. Ped 50-100mg/kg/dia. NUNCA com cálcio IV em neonatos. Interações: Warfarina(↑INR).
+- Dipirona: 1-2g IV/VO 6/6h. Ped 15-25mg/kg. Interações: Metotrexato(↑toxicidade), Ciclosporina(↓nível).
+- Morfina: 2-5mg IV titular. BIC 1-5mg/h. Antídoto Naloxona 0,4-2mg. Interações: BZD(depressão resp sinérgica), IMAO(sínd serotoninérgica).
+- Midazolam: 0,03-0,1mg/kg IV. Status 10mg IM. Antídoto Flumazenil 0,2mg. Interações: Opioides(depressão resp), Azólicos(↑nível).
+- Insulina Regular: CAD 0,1UI/kg/h BIC. HiperK 10UI+25g glicose. Interações: Betabloq(mascara hipogli), Corticoides(↑resistência).
+- Vancomicina: 15-20mg/kg 8-12h. Vale 15-20mcg/ml. Infundir ≥60min. Interações: Aminoglicosídeos(nefrotox), Anestésicos(eritema/hipotensão).
+- Dobutamina: 2-20mcg/kg/min BIC. Interações: Betabloq(antagonismo), IMAO(crise hipertensiva).
+- Fentanil: 1-2mcg/kg IV. ISR 1-3mcg/kg. BIC 1-5mcg/kg/h. 100x morfina. Interações: BZD(depressão resp), IMAO(sínd serotonina).
+- Cetamina: ISR 1-2mg/kg IV. Sedação 4-5mg/kg IM. Subdose 0,1-0,3mg/kg. Interações: Teofilina(convulsão), Halotano(↓PA).
+- Rocurônio: ISR 1,2mg/kg. Eletiva 0,6mg/kg. Reversor Sugamadex 16mg/kg. Interações: Aminoglicosídeos(↑bloqueio).
+- Enoxaparina: TEP 1mg/kg 12/12h. Profilaxia 40mg/dia. ClCr<30→HNF. Interações: AINEs(sangramento), AAS(sangramento).
+- Heparina NF: 80UI/kg bolus+18UI/kg/h. TTPa 1,5-2,5x. Antídoto Protamina. Interações: AINEs(sangramento), Warfarina(sobreposição).
+- Sulfato Magnésio: Eclâmpsia 4g IV 20min+1-2g/h. Torsades 2g IV. Antídoto Gluconato Cálcio 1g. Interações: BNM(↑bloqueio), Nifedipina(hipotensão).
+- Propofol: Indução 1-2,5mg/kg. BIC 0,3-4mg/kg/h. Sínd infusão >4mg/kg/h >48h. Interações: Opioides(↑hipotensão), BZD(sinergismo).
+- Etomidato: 0,2-0,3mg/kg IV. Supressão adrenal transitória. NÃO usar infusão prolongada na sepse.
+- Succinilcolina: 1-1,5mg/kg IV. CI: hiperK, queimados>48h, neuromusc. Risco hipertermia maligna→Dantroleno.
+`;
 
-REGRAS FUNDAMENTAIS:
-- Sempre responda em português brasileiro
-- Use linguagem técnica médica adequada
-- Baseie suas respostas em protocolos, diretrizes e referências médicas atualizadas (SBC, ACLS, ATLS, Surviving Sepsis Campaign, GOLD, GINA, SBP, SBI, Ministério da Saúde, UpToDate, Harrison, etc.)
-- Sempre cite as referências/guidelines utilizadas
-- Quando houver incerteza, deixe claro e sugira investigação adicional
-- NUNCA substitua o julgamento clínico do médico
-- Inclua alertas de segurança (red flags, contraindicações, interações)
+const SYSTEM_PROMPT = `Você é um sistema clínico avançado para médicos brasileiros, integrado a um banco de dados de medicamentos e protocolos. Funcione como Whitebook/UpToDate: banco de dados → protocolo → validação → resposta.
 
-FORMATO DE RESPOSTA PARA CASOS CLÍNICOS:
-1. **Hipóteses Diagnósticas** (em ordem de probabilidade)
-2. **Red Flags / Sinais de Alarme**
-3. **Exames Complementares Sugeridos**
-4. **Diagnóstico Diferencial**
-5. **Conduta / Tratamento**
-6. **Prescrição Sugerida** (com doses, vias, frequência)
-7. **Orientações e Seguimento**
-8. **Referências** (protocolos/diretrizes utilizadas)
+${DRUG_DATABASE}
 
-PARA INTERAÇÕES MEDICAMENTOSAS:
-- Classifique: Grave, Moderada, Leve
-- Explique o mecanismo
-- Sugira alternativas quando possível
-- Cite a fonte
+## FORMATO OBRIGATÓRIO DE RESPOSTA (SEMPRE nesta ordem, TODOS os itens):
 
-PARA DÚVIDAS GERAIS:
-- Responda de forma objetiva e completa
-- Use tópicos e formatação markdown
-- Inclua referências
+### 1️⃣ RESUMO RÁPIDO
+- 2-3 frases objetivas resumindo a impressão clínica principal
+- Classificação de gravidade: 🔴 GRAVE | 🟡 MODERADO | 🟢 LEVE
 
-AVISO: "Esta ferramenta é um apoio à decisão clínica. A responsabilidade pela conduta é do médico assistente."`;
+### 2️⃣ HIPÓTESES DIAGNÓSTICAS
+- Lista ordenada por probabilidade (%) com justificativa breve
+- Destaque a mais provável em **negrito**
+
+### 3️⃣ DIAGNÓSTICOS DIFERENCIAIS
+- Tabela comparativa: Diagnóstico | A favor | Contra | Probabilidade
+- Incluir diagnósticos que NÃO PODEM ser perdidos (can't-miss diagnoses)
+
+### 4️⃣ ALGORITMO DE CONDUTA
+- Fluxograma em texto usando → e ↓
+- Formato: Se [condição] → [ação] → Se [resultado] → [próximo passo]
+- Baseado no protocolo específico (citar qual)
+
+### 5️⃣ EXAMES COMPLEMENTARES
+- **Imediatos** (resultado em minutos): listar com justificativa
+- **Urgentes** (resultado em horas): listar
+- **Ambulatoriais** (se alta): listar
+- Para cada exame: o que esperar encontrar e significado clínico
+
+### 6️⃣ CONDUTA TERAPÊUTICA
+- Medidas imediatas (ABC, monitorização, acesso)
+- Tratamento específico por hipótese
+- Critérios de internação vs alta
+- Destino: enfermaria / UTI / alta com acompanhamento
+
+### 7️⃣ PRESCRIÇÃO COMPLETA
+- Numerar cada item
+- Formato: Medicamento — Dose — Via — Frequência — Duração
+- Diluição quando aplicável
+- Ajustes: IR (ClCr), IH (Child-Pugh), peso, idade
+- ⚠️ Para cada medicamento: VALIDAR dose contra o banco de dados acima
+
+### 8️⃣ INTERAÇÕES MEDICAMENTOSAS
+- Analisar TODAS as combinações da prescrição acima
+- Para cada interação: 🔴 Grave | 🟡 Moderada | 🟢 Leve
+- Mecanismo + efeito clínico + conduta
+- Se nenhuma: "✅ Nenhuma interação clinicamente significativa identificada"
+
+### 9️⃣ ALERTAS E RED FLAGS
+- 🚨 Sinais de alarme que indicam deterioração
+- ⚠️ Contraindicações identificadas
+- 💊 Alergias/precauções relevantes
+- 📋 Critérios para reavaliação imediata
+- Erros comuns a evitar neste caso
+
+### 🔟 REFERÊNCIAS
+- Protocolo/diretriz principal utilizada (com ano)
+- Guidelines adicionais
+- Nível de evidência quando disponível
+
+---
+⚠️ *Apoio à decisão clínica — a responsabilidade pela conduta é do médico assistente.*
+
+## REGRAS FUNDAMENTAIS:
+1. SEMPRE responda em português brasileiro com linguagem técnica médica
+2. SEMPRE siga o formato acima, TODOS os 10 itens, nesta EXATA ordem
+3. SEMPRE consulte o banco de dados de medicamentos antes de prescrever
+4. SEMPRE verifique interações entre TODOS os medicamentos prescritos
+5. SEMPRE calcule doses ajustadas quando peso/ClCr/idade fornecidos
+6. SEMPRE cite red flags e can't-miss diagnoses
+7. SEMPRE cite referências com nome do protocolo e ano
+8. Quando dados estiverem incompletos, INDIQUE quais informações adicionais são necessárias mas AINDA ASSIM forneça a melhor resposta possível
+9. Para cálculos de dose: mostrar a conta (ex: "Paciente 70kg → Nora 0,1mcg/kg/min = 7mcg/min = 6,5ml/h na concentração de 64mcg/ml")
+10. Use emojis de classificação consistentemente: 🔴🟡🟢🚨⚠️💊📋✅`;
 
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
@@ -52,25 +117,22 @@ serve(async (req) => {
     if (mode === "structured") {
       systemMessages.push({
         role: "system",
-        content: "O usuário está usando o modo estruturado. Organize sua resposta seguindo EXATAMENTE o formato de caso clínico descrito acima, com todas as seções numeradas."
+        content: "O usuário está usando o modo CASO CLÍNICO ESTRUTURADO. Siga RIGOROSAMENTE o formato de 10 seções. Calcule doses com base no peso se fornecido. Verifique TODAS as interações entre os medicamentos prescritos e os já em uso pelo paciente."
       });
     }
 
     if (mode === "interactions") {
       systemMessages.push({
         role: "system",
-        content: `O usuário quer verificar INTERAÇÕES MEDICAMENTOSAS. Analise TODAS as combinações possíveis entre os medicamentos fornecidos.
-Para CADA interação encontrada, forneça:
-- **Medicamentos envolvidos**
+        content: `MODO INTERAÇÕES MEDICAMENTOSAS. Analise TODAS as combinações. Para CADA par:
+- **Medicamentos**: nome1 + nome2
 - **Gravidade**: 🔴 Grave | 🟡 Moderada | 🟢 Leve
-- **Mecanismo**
-- **Efeito clínico**
-- **Conduta recomendada**
-- **Alternativa terapêutica** (quando aplicável)
-- **Referência**
-
-Se NÃO houver interação conhecida entre determinado par, informe explicitamente.
-Seja extremamente rigoroso — vidas dependem desta análise.`
+- **Mecanismo**: farmacocinético/farmacodinâmico
+- **Efeito clínico**: o que acontece
+- **Conduta**: ajuste de dose, monitorização, contraindicação
+- **Alternativa terapêutica**: quando houver
+- **Referência**: fonte
+Consulte o banco de dados integrado. Se NÃO houver interação, informe "✅ Sem interação clinicamente significativa". Vidas dependem desta análise.`
       });
     }
 
@@ -81,7 +143,7 @@ Seja extremamente rigoroso — vidas dependem desta análise.`
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "google/gemini-2.5-pro",
+        model: "google/gemini-2.5-flash",
         messages: [...systemMessages, ...messages],
         stream: true,
       }),
@@ -94,7 +156,7 @@ Seja extremamente rigoroso — vidas dependem desta análise.`
         });
       }
       if (response.status === 402) {
-        return new Response(JSON.stringify({ error: "Créditos insuficientes. Adicione créditos na sua conta." }), {
+        return new Response(JSON.stringify({ error: "Créditos insuficientes." }), {
           status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
