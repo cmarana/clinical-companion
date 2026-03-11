@@ -1170,14 +1170,15 @@ const TRAUMA_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> 
   hemorrhagic_shock: {
     name: "Choque Hemorrágico no Trauma",
     steps: [
-      { order: 1, action: "Classe I (<15% volemia): FC normal, PA normal → cristaloide" },
-      { order: 2, action: "Classe II (15-30%): FC 100-120, PA normal → cristaloide + considerar sangue" },
-      { order: 3, action: "Classe III (30-40%): FC > 120, PA↓, confuso → sangue + protocolo maciço" },
-      { order: 4, action: "Classe IV (>40%): FC > 140, PA muito↓, letárgico → sangue urgente + cirurgia" },
-      { order: 5, action: "Ácido tranexâmico 1g IV se < 3h" },
-      { order: 6, action: "Protocolo transfusão maciça: CH:PFC:PLQ 1:1:1" },
-      { order: 7, action: "Metas: Hb > 7, plaquetas > 50.000, fibrinogênio > 200, pH > 7.2, Ca ionizado > 1.0, temp > 35°C" },
-      { order: 8, action: "Evitar hipotermia (tríade letal: hipotermia + acidose + coagulopatia)" },
+      { order: 1, action: "🔴 Classe I (<15% volemia): FC normal, PA normal → cristaloide 500-1000mL" },
+      { order: 2, action: "Classe II (15-30%): FC 100-120, PA normal → cristaloide + tipagem + considerar sangue" },
+      { order: 3, action: "🔴 Classe III (30-40%): FC > 120, PA↓, confuso → ATIVAR MTP IMEDIATO. Sangue precoce." },
+      { order: 4, action: "🔴 Classe IV (>40%): FC > 140, PA muito↓, letárgico → sangue urgente + cirurgia IMEDIATA" },
+      { order: 5, action: "Ácido tranexâmico 1g IV em 10min se < 3h (+ 1g em 8h)" },
+      { order: 6, action: "Protocolo transfusão maciça (MTP): CH:PFC:PLQ 1:1:1. NÃO esperar labs." },
+      { order: 7, action: "⚠️ EVITAR cristaloide em excesso: piora tríade letal (hipotermia + acidose + coagulopatia)." },
+      { order: 8, action: "Metas: Hb > 7, plaquetas > 50k, fibrinogênio > 200, pH > 7,2, Ca ionizado > 1,0, temp > 35°C" },
+      { order: 9, action: "Considerar REBOA / cirurgia de controle de dano se hemorragia não compressível" },
     ],
   },
 };
