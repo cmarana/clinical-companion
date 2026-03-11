@@ -1052,20 +1052,32 @@ function calcRenal(p: PatientData): RenalCalcResult {
   result.clcrMlMin = clcr;
   result.formula = `Cockcroft-Gault: ((140 - ${p.ageYears}) × ${p.weightKg}) / (72 × ${p.creatinineMgDl})${p.sex === "F" ? " × 0,85" : ""} = ${clcr} mL/min${sexLabel}`;
 
-  if (clcr >= 90) result.stage = "NORMAL";
-  else if (clcr >= 60) { result.stage = "LEVE"; result.adjustments.push("Monitorar função renal"); }
-  else if (clcr >= 30) {
+  if (clcr >= 90) {
+    result.stage = "NORMAL";
+    result.adjustments.push("Função renal normal — doses padrão");
+  } else if (clcr >= 60) {
+    result.stage = "LEVE";
+    result.adjustments.push("DRC leve (ClCr 60-89): Monitorar função renal");
+    result.adjustments.push("Evitar nefrotóxicos desnecessários");
+  } else if (clcr >= 30) {
     result.stage = "MODERADA";
-    result.adjustments.push("Ajustar drogas renais");
-    result.adjustments.push("Evitar nefrotóxicos se possível");
+    result.adjustments.push("⚠️ DRC MODERADA (ClCr 30-59): AJUSTAR DROGAS RENAIS");
+    result.adjustments.push("Drogas que EXIGEM ajuste: vancomicina, aminoglicosídeos, meropenem, cefepime, piperacilina-tazo, cipro/levofloxacino, enoxaparina, gabapentina, tramadol, digoxina");
+    result.adjustments.push("Metformina: máx 1000mg/dia se ClCr 30-44; SUSPENDER se ClCr < 30");
+    result.adjustments.push("Evitar nefrotóxicos: AINEs, contraste iodado, aminoglicosídeos se possível");
+    result.adjustments.push("Enoxaparina profilática: manter 40mg/dia. Terapêutica: 1mg/kg 12/12h (monitorar anti-Xa)");
   } else if (clcr >= 15) {
     result.stage = "GRAVE";
-    result.adjustments.push("Ajustar TODAS as drogas de eliminação renal");
+    result.adjustments.push("🔴 DRC GRAVE (ClCr 15-29): AJUSTAR TODAS AS DROGAS DE ELIMINAÇÃO RENAL");
+    result.adjustments.push("Drogas que EXIGEM ajuste OBRIGATÓRIO: vancomicina, aminoglicosídeos, meropenem, cefepime, piperacilina-tazo, cipro/levofloxacino, gabapentina, tramadol, digoxina, morfina");
+    result.adjustments.push("EVITAR: metformina (CONTRAINDICADO), AINEs, contraste iodado, espironolactona (hipercalemia)");
+    result.adjustments.push("Enoxaparina: 1mg/kg 1x/dia OU PREFERIR HNF (mais seguro)");
+    result.adjustments.push("Morfina: EVITAR — acúmulo M6G. Preferir fentanil.");
     result.adjustments.push("Avaliar indicação de diálise (NÃO ASSUMIR — perguntar se já dialisa)");
-    result.adjustments.push("Enoxaparina: 1mg/kg 1x/dia ou preferir HNF");
+    result.adjustments.push("Monitorar K rigorosamente: alvo K < 5,0");
   } else {
     result.stage = "TERMINAL";
-    result.adjustments.push("⚠️ ClCr < 15 — INSUFICIÊNCIA RENAL TERMINAL");
+    result.adjustments.push("🔴 ClCr < 15 — INSUFICIÊNCIA RENAL TERMINAL");
     result.adjustments.push("NÃO ASSUMIR que paciente dialisa — PERGUNTAR");
     result.adjustments.push("Preferir HNF sobre enoxaparina");
     result.adjustments.push("Avaliar TRS urgente se: K > 6,5, pH < 7,1, oligúria refratária, sobrecarga hídrica");
