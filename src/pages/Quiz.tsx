@@ -5,8 +5,11 @@ import { Button } from "@/components/ui/button";
 import { quizQuestions } from "@/data/quizQuestions";
 import { cn } from "@/lib/utils";
 import { CheckCircle, XCircle, RotateCcw, Trophy } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import PremiumGate from "@/components/PremiumGate";
 
 export default function Quiz() {
+  const { subscription } = useAuth();
   const [mode, setMode] = useState<"menu" | "playing" | "result">("menu");
   const [category, setCategory] = useState<string>("all");
   const [currentIdx, setCurrentIdx] = useState(0);
@@ -51,6 +54,15 @@ export default function Quiz() {
       setAnswered(false);
     }
   };
+
+  if (!subscription.subscribed) {
+    return (
+      <>
+        <TopBar title="Quiz Interativo" />
+        <PremiumGate />
+      </>
+    );
+  }
 
   if (mode === "menu") {
     return (
