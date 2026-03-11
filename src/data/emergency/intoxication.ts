@@ -1,6 +1,8 @@
 import type { EmergencyProtocol } from "./types";
+import { intoxicationProtocols2 } from "./intoxication2";
+import { intoxicationProtocols3 } from "./intoxication3";
 
-export const intoxicationProtocols: EmergencyProtocol[] = [
+const intoxicationBase: EmergencyProtocol[] = [
   {
     id: "intoxicacao-abordagem",
     title: "Abordagem Geral das Intoxicações",
