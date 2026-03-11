@@ -208,20 +208,14 @@ export default function ClinicalAI() {
                 <Bot size={14} className="text-primary" />
               </div>
             )}
-            <div className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm ${
+            <div className={`max-w-[90%] rounded-lg px-4 py-3 text-sm ${
               msg.role === "user"
-                ? "bg-primary text-primary-foreground rounded-br-md"
-                : "bg-muted rounded-bl-md"
+                ? "bg-primary text-primary-foreground rounded-br-sm"
+                : "bg-card border border-border rounded-bl-sm shadow-sm"
             }`}>
               {msg.role === "assistant" ? (
-                <div className="prose prose-sm dark:prose-invert max-w-none
-                  [&_h3]:text-xs [&_h3]:font-bold [&_h3]:mt-3 [&_h3]:mb-1.5 [&_h3]:border-b [&_h3]:border-border/50 [&_h3]:pb-1
-                  [&_p]:mb-1.5 [&_p]:text-[13px] [&_p]:leading-relaxed
-                  [&_ul]:mb-1.5 [&_ol]:mb-1.5 [&_li]:text-[13px]
-                  [&_table]:text-[11px] [&_th]:px-2 [&_th]:py-1 [&_td]:px-2 [&_td]:py-1
-                  [&_strong]:text-foreground
-                  [&_code]:text-[11px] [&_code]:bg-background/50 [&_code]:px-1 [&_code]:rounded">
-                  <ReactMarkdown>{msg.content}</ReactMarkdown>
+                <div className="clinical-response">
+                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.content}</ReactMarkdown>
                 </div>
               ) : (
                 <div className="whitespace-pre-wrap text-[13px]">{msg.content}</div>
