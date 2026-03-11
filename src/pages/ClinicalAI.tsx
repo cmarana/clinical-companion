@@ -7,8 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { streamClinicalAi } from "@/lib/clinicalAiStream";
 import { toast } from "sonner";
-import ReactMarkdown from "react-markdown";
-import remarkGfm from "remark-gfm";
+import ClinicalResponseCards from "@/components/ClinicalResponseCards";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
