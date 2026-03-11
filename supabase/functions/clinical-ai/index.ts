@@ -2926,7 +2926,7 @@ function runEngine(messages: ChatMessage[]): EngineResult {
   const doses = calcDoses(patient, renal);
   const userText = messages.filter(m => m.role === "user").map(m => m.content).join("\n");
   const protocol = selectProtocol(userText, patient.scenario, patient);
-  const antibiotic = patient.isPediatric ? null : selectAntibiotic(patient, renal); // pediatric ATB handled by LLM with dose context
+  const antibiotic = patient.isPediatric ? null : selectAntibiotic(patient, renal, messages); // pediatric ATB handled by LLM with dose context
   const interactions = checkInteractions(patient.medicationsInUse, [], patient, renal);
   const drugRenalAdj = getDrugRenalAdjustments(renal.clcrMlMin);
   const allergyWarnings = checkAllergies(patient);
