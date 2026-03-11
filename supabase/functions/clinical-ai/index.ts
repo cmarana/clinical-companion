@@ -972,6 +972,67 @@ const PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
   },
 };
 
+// ─── Obstetric Protocols ─────────────────────────────────────────
+const OBSTETRIC_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  preeclampsia: {
+    name: "Pré-eclâmpsia Grave / Eclâmpsia — FEBRASGO/ACOG",
+    steps: [
+      { order: 1, action: "🔴 EMERGÊNCIA OBSTÉTRICA — Estabilizar mãe é prioridade" },
+      { order: 2, action: "Sulfato de Magnésio (Zuspan): 4g IV em 20min (diluir em 100mL SF) → 1-2g/h BIC", target: "Prevenir/tratar convulsão" },
+      { order: 3, action: "Monitorar Mg: reflexo patelar, FR > 16, diurese > 25mL/h. Antídoto: Gluconato de Ca 1g IV se toxicidade" },
+      { order: 4, action: "Anti-hipertensivo: Hidralazina 5mg IV a cada 20min (máx 20mg) OU Nifedipino 10mg VO", target: "PA < 160x110 (NÃO reduzir < 140x90)" },
+      { order: 5, action: "⚠️ EVITAR: IECA, BRA, nitroprussiato (toxicidade fetal)" },
+      { order: 6, action: "Exames: hemograma, plaquetas, TGO/TGP, LDH, bilirrubinas, Cr, ácido úrico, proteinúria" },
+      { order: 7, action: "Avaliar HELLP: plaquetas < 100.000 + AST > 70 + LDH > 600 + esquizócitos" },
+      { order: 8, action: "Se eclâmpsia (convulsão): MgSO4 + estabilizar + avaliar parto IMEDIATO" },
+      { order: 9, action: "Avaliação fetal: cardiotocografia, USG doppler" },
+      { order: 10, action: "Se ≥ 34 sem: considerar parto. Se < 34 sem: corticoide (betametasona 12mg IM 2 doses 24h) + avaliar" },
+      { order: 11, action: "Manter MgSO4 por 24h pós-parto" },
+    ],
+  },
+  obstetric_hemorrhage: {
+    name: "Hemorragia Obstétrica — Protocolo de Emergência",
+    steps: [
+      { order: 1, action: "🔴 ATIVAR PROTOCOLO DE HEMORRAGIA MACIÇA" },
+      { order: 2, action: "2 acessos calibrosos (16-18G) + cristaloide aquecido" },
+      { order: 3, action: "Tipagem + reserva + solicitar hemoderivados" },
+      { order: 4, action: "Ocitocina 10-40 UI em 500mL SF BIC (1ª linha para atonia)" },
+      { order: 5, action: "Se refratário: Metilergometrina 0,2mg IM (⚠️ CONTRAINDICADO se HAS)" },
+      { order: 6, action: "Misoprostol 800mcg VR se atonia refratária" },
+      { order: 7, action: "Ácido tranexâmico 1g IV em 10min (se < 3h do início)" },
+      { order: 8, action: "Massagem uterina bimanual" },
+      { order: 9, action: "Avaliar causa: 4T (Tônus, Trauma, Tecido, Trombina)" },
+      { order: 10, action: "Se refratário: balão de Bakri, sutura B-Lynch, embolização, histerectomia" },
+      { order: 11, action: "Metas: Hb > 7, plaquetas > 50.000, fibrinogênio > 200" },
+    ],
+  },
+  ectopic: {
+    name: "Gravidez Ectópica — Conduta",
+    steps: [
+      { order: 1, action: "Suspeitar se: atraso menstrual + dor pélvica + sangramento ± instabilidade" },
+      { order: 2, action: "Beta-hCG quantitativo + USG transvaginal" },
+      { order: 3, action: "Se instável (choque): cirurgia IMEDIATA (laparoscopia/laparotomia)" },
+      { order: 4, action: "Se estável + ectópica íntegra + hCG < 5000: considerar metotrexato 50mg/m² IM dose única" },
+      { order: 5, action: "Contraindicações metotrexato: BCF +, hCG > 5000, massa > 4cm, contraindicação clínica" },
+      { order: 6, action: "Seguimento hCG seriado após tratamento" },
+      { order: 7, action: "Tipagem sanguínea: anti-D se Rh negativo" },
+    ],
+  },
+  sepsis_puerperal: {
+    name: "Sepse Puerperal — Conduta",
+    steps: [
+      { order: 1, action: "Suspeitar se: febre > 38°C + taquicardia + dor pélvica/uterina no puerpério" },
+      { order: 2, action: "Hemoculturas (2 pares) ANTES do ATB" },
+      { order: 3, action: "Antibiótico amplo espectro: Clindamicina 900mg 8/8h + Gentamicina 5mg/kg/dia ± Ampicilina 2g 6/6h" },
+      { order: 4, action: "Alternativa: Piperacilina-Tazobactam 4,5g 6/6h" },
+      { order: 5, action: "USG pélvica: avaliar restos ovulares, abscesso, coleção" },
+      { order: 6, action: "Ressuscitação volêmica se sepse (seguir bundle sepse)" },
+      { order: 7, action: "Avaliar necessidade de curetagem/drenagem" },
+      { order: 8, action: "Profilaxia TEV: enoxaparina 40mg/dia (puerpério = risco alto)" },
+    ],
+  },
+};
+
 // ─── Parsing Helpers ─────────────────────────────────────────────
 function parseNumber(input?: string | null): number | undefined {
   if (!input) return undefined;
