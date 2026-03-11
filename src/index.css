@@ -134,77 +134,101 @@
   }
 }
 
-/* ─── Clinical AI Response Styling ─── */
-.clinical-response {
+/* ─── Clinical AI Cards Layout ─── */
+.clinical-cards {
   font-family: 'Inter', 'Roboto Flex', var(--font-heading), system-ui, sans-serif;
   font-size: 14px;
   line-height: 1.7;
   color: hsl(var(--foreground));
-  padding: 16px;
-  border-radius: 8px;
 }
 
-.clinical-response h1,
-.clinical-response h2 {
-  font-size: 15px;
+.clinical-intro {
+  padding: 12px 16px;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.clinical-card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 10px;
+  padding: 14px 16px;
+  box-shadow: 0 1px 3px hsl(var(--foreground) / 0.04);
+}
+
+.dark .clinical-card {
+  background: hsl(240 6% 10%);
+  border-color: hsl(240 4% 18%);
+}
+
+/* ─── Typography inside cards ─── */
+.clinical-card h2,
+.clinical-card h1,
+.clinical-intro h2,
+.clinical-intro h1 {
+  font-size: 13px;
   font-weight: 700;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
   text-transform: uppercase;
-  margin-top: 32px;
-  margin-bottom: 12px;
+  margin: 0 0 10px 0;
   padding-bottom: 8px;
   border-bottom: 1px solid hsl(var(--border));
   color: hsl(var(--foreground));
 }
 
-.clinical-response h1:first-child,
-.clinical-response h2:first-child {
-  margin-top: 0;
-}
-
-.clinical-response h3 {
+.clinical-card h3,
+.clinical-intro h3 {
   font-size: 14px;
   font-weight: 600;
-  margin-top: 24px;
-  margin-bottom: 8px;
+  margin-top: 16px;
+  margin-bottom: 6px;
   color: hsl(var(--foreground));
 }
 
-.clinical-response p {
-  margin-bottom: 12px;
+.clinical-card p,
+.clinical-intro p {
+  margin-bottom: 10px;
   font-size: 14px;
   line-height: 1.7;
 }
 
-.clinical-response strong {
+.clinical-card p:last-child,
+.clinical-intro p:last-child {
+  margin-bottom: 0;
+}
+
+.clinical-card strong,
+.clinical-intro strong {
   font-weight: 600;
   color: hsl(var(--foreground));
 }
 
-.clinical-response ul,
-.clinical-response ol {
-  margin-bottom: 16px;
+.clinical-card ul,
+.clinical-card ol,
+.clinical-intro ul,
+.clinical-intro ol {
+  margin-bottom: 12px;
   padding-left: 20px;
 }
 
-.clinical-response li {
+.clinical-card li,
+.clinical-intro li {
   font-size: 14px;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
   line-height: 1.7;
 }
 
-.clinical-response li + li {
-  margin-top: 4px;
-}
-
-.clinical-response table {
+/* ─── Tables inside cards ─── */
+.clinical-card table,
+.clinical-intro table {
   width: 100%;
   border-collapse: collapse;
-  margin: 12px 0 16px;
+  margin: 10px 0 12px;
   font-size: 13px;
 }
 
-.clinical-response th {
+.clinical-card th,
+.clinical-intro th {
   background: hsl(var(--muted));
   font-weight: 600;
   padding: 8px 10px;
@@ -216,20 +240,24 @@
   font-family: 'Inter', var(--font-heading), sans-serif;
 }
 
-.clinical-response td {
+.clinical-card td,
+.clinical-intro td {
   padding: 7px 10px;
   border: 1px solid hsl(var(--border));
   line-height: 1.5;
 }
 
-.clinical-response code {
+/* ─── Code & blocks inside cards ─── */
+.clinical-card code,
+.clinical-intro code {
   font-size: 13px;
   background: hsl(var(--muted));
   padding: 2px 5px;
   border-radius: 3px;
 }
 
-.clinical-response pre {
+.clinical-card pre,
+.clinical-intro pre {
   background: hsl(var(--muted));
   padding: 12px;
   border-radius: 6px;
@@ -237,22 +265,25 @@
   margin: 10px 0;
 }
 
-.clinical-response pre code {
+.clinical-card pre code,
+.clinical-intro pre code {
   background: none;
   padding: 0;
 }
 
-.clinical-response blockquote {
+.clinical-card blockquote,
+.clinical-intro blockquote {
   border-left: 3px solid hsl(var(--primary));
   padding-left: 12px;
-  margin: 12px 0;
+  margin: 10px 0;
   color: hsl(var(--muted-foreground));
 }
 
-.clinical-response hr {
+.clinical-card hr,
+.clinical-intro hr {
   border: none;
   border-top: 1px solid hsl(var(--border));
-  margin: 20px 0;
+  margin: 16px 0;
 }
 
 @keyframes flash-red {
