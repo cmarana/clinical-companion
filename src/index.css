@@ -163,8 +163,8 @@
 .clinical-response h3 {
   font-size: 13px;
   font-weight: 600;
-  margin-top: 12px;
-  margin-bottom: 4px;
+  margin-top: 20px;
+  margin-bottom: 6px;
   color: hsl(var(--foreground));
 }
 
