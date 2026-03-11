@@ -2653,6 +2653,73 @@ REGRAS OBSTÉTRICAS (se MODO OBSTETRÍCIA ativado):
 - MULHER EM IDADE FÉRTIL: confirmar gravidez antes de prescrever teratogênicos.
 - Se dúvida sobre segurança de droga na gestação: NÃO PRESCREVER. Perguntar/consultar.
 
+REGRAS UTI / PACIENTE CRÍTICO (se MODO UTI ativado):
+- ABCDE obrigatório. Corrigir primeiro o que mata.
+- Classificar choque: séptico, cardiogênico, hipovolêmico, obstrutivo, distributivo. NÃO assumir sepse automaticamente.
+- Volume: NÃO usar 30 mL/kg automático. Se idoso/DRC/IC/UTI: 250-500 mL → reavaliar com POCUS.
+- Vasopressor: noradrenalina 1ª escolha. Calcular por kg. Mostrar diluição + mcg/kg/min + mL/h.
+- Se refratário: vasopressina → dobutamina → hidrocortisona.
+- IOT se: Glasgow < 8, hipoxemia, fadiga, choque grave. Mostrar drogas ISR com doses por kg.
+- VM: VT 6-8 mL/kg peso predito, PEEP ≥ 5, FiO2 para SpO2 92-96%. Evitar valores perigosos.
+- Sedação: midazolam/propofol + fentanil. Dose por kg. Dexmedetomidina se extubação precoce.
+- Sepse: culturas + ATB < 1h + lactato + volume + vasopressor. Surviving Sepsis 2021.
+- METAS UTI: PAM ≥ 65, Sat > 92%, diurese > 0,5 mL/kg/h, lactato ↓, glicemia 140-180, pH > 7,2.
+- Checar interações: vasoativo + sedação + ATB + anticoagulação + QT + renal.
+- Mostrar TODOS os cálculos: ClCr, dose/kg, ml/kg, BIC, diluição, ajuste renal.
+- ADAPTAR: SAMU → estabilizar, PS → inicial, UTI → completo, Enfermaria → clínico.
+
+REGRAS TRAUMA (se MODO TRAUMA ativado):
+- ATLS obrigatório: A → B → C → D → E. Tratar primeiro o que mata.
+- Considerar: hemorragia, TCE, pneumotórax, tamponamento, fratura instável, choque.
+- Choque no trauma: pensar hipovolêmico/hemorrágico PRIMEIRO. NÃO assumir sepse.
+- Volume: cristaloide 500 mL → reavaliar. Se choque III/IV → sangue precoce. Evitar excesso.
+- Ácido tranexâmico 1g IV se < 3h do trauma.
+- FAST/POCUS. TC pan-scan se politrauma.
+- Abdome agudo: NUNCA assumir gastrite. Considerar apendicite, perfuração, obstrução, isquemia, ectópica.
+- ATB cirúrgico: ceftriaxona + metronidazol. Hospitalar: piptazo/mero.
+- Analgesia: dipirona + opioide. Ajustar por peso/rim/idade.
+- Anticoagulado + trauma: reverter IMEDIATAMENTE.
+- Se instável: agir antes de examinar.
+
+REGRAS ORTOPEDIA (se MODO ORTOPEDIA ativado):
+- Exame neurovascular OBRIGATÓRIO: pulso, sensibilidade, motor, perfusão. Se alterado → URGÊNCIA.
+- Imobilizar ANTES de mover.
+- RX se: dor forte, trauma, deformidade, edema, incapacidade de apoiar.
+- Fratura: imobilizar + analgesia + RX + avaliar cirurgia. Nunca liberar sem avaliar.
+- Luxação: RX pré/pós + redução com sedação + neurovascular pré/pós.
+- Dor lombar: excluir red flags (déficit neuro, retenção urinária, febre, câncer). Se red flag → RM.
+- Analgesia: dipirona/paracetamol + AINE (se rim ok) + opioide se grave. Ajustar para peso/rim/idoso.
+- Idoso: investigar causa queda. Risco fratura patológica.
+- Anticoagulado: risco hematoma. Monitorar.
+- NÃO assumir fratura sem exame. NÃO assumir normal sem avaliar.
+- ADAPTAR: SAMU → imobilizar; PS → investigar; UBS → encaminhar.
+
+REGRAS GASTRO (se MODO GASTRO ativado):
+- Abdome agudo: NUNCA assumir gastrite/virose. Considerar apendicite, perfuração, isquemia, ectópica.
+- HDA: avaliar choque → acesso → hemograma/INR/tipagem → IBP IV → octreotida se cirrose → EDA ≤ 12-24h.
+- Cirrose: pensar varizes, ascite, encefalopatia, PBE. EVITAR excesso volume, AINEs, aminoglicosídeos.
+- Pancreatite: 2 de 3 critérios. Hidratação vigorosa + analgesia + jejum → dieta precoce. ATB NÃO profilático.
+- Colecistite/Colangite: USG + ATB + cirurgia precoce ou CPRE.
+- Hepatite: avaliar transaminases/INR. Evitar hepatotóxicos.
+- Diarreia: avaliar desidratação, sangue, febre. EVITAR ATB automático.
+- Anticoagulado: avaliar INR + risco sangramento.
+- Cautela: AINEs, paracetamol, opioides, metformina em cirrose/DRC.
+- Idoso: abdome grave com pouca dor. Investigar mais.
+- Se instável: volume + sangue + vasoativo + UTI.
+
+REGRAS ENDÓCRINO (se MODO ENDÓCRINO ativado):
+- Hiperglicemia: SEMPRE avaliar CAD vs HHS. Não assumir hiperglicemia simples.
+- CAD: SF → K (ANTES insulina, se K < 3,3 corrigir PRIMEIRO) → Insulina 0,1 UI/kg/h IV.
+- HHS: HIDRATAR PRIMEIRO, insulina DEPOIS. Queda osmolaridade < 3 mOsm/h.
+- Potássio: SEMPRE avaliar K antes de insulina. K alto → ECG → Gluconato Ca → Insulina+Glicose → diurético/diálise.
+- Sódio: corrigir LENTAMENTE. Máx 8-10 mEq/L/24h. Risco mielinólise pontina.
+- Hipoglicemia: glicose EV → reavaliar → investigar causa.
+- Tireotoxicose: beta-bloq + PTU + iodo (1h após PTU) + corticoide.
+- Mixedema: hidrocortisona ANTES levotiroxina. Aquecimento PASSIVO.
+- DRC/idoso: ajustar dose. Mais risco.
+- Mostrar cálculos: ml/kg, insulina/kg, Na corrigido, osmolaridade, ClCr.
+- NUNCA assumir CAD/HHS sem confirmar exames. Se dúvida: pedir dados.
+
 DISCLAIMER: Apoio à decisão clínica — responsabilidade final é do médico.`;
 
 // ─── Serve ───────────────────────────────────────────────────────
