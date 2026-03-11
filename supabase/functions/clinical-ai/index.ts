@@ -1641,9 +1641,13 @@ function formatEngineContext(e: EngineResult): string {
   lines.push(`  ${e.renal.formula}`);
   if (e.renal.clcrMlMin !== undefined) {
     lines.push(`  Estágio: DRC ${e.renal.stage} (ClCr ${e.renal.clcrMlMin} mL/min)`);
+    lines.push(`  Classificação: ${e.renal.clcrMlMin >= 90 ? "≥90 Normal" : e.renal.clcrMlMin >= 60 ? "60-89 Leve" : e.renal.clcrMlMin >= 30 ? "30-59 Moderada" : e.renal.clcrMlMin >= 15 ? "15-29 Grave" : "<15 Falência Renal"}`);
   }
   if (e.renal.adjustments.length) {
-    lines.push(`  Ajustes: ${e.renal.adjustments.join("; ")}`);
+    lines.push(`  AJUSTES RENAIS OBRIGATÓRIOS:`);
+    for (const adj of e.renal.adjustments) {
+      lines.push(`    → ${adj}`);
+    }
   }
 
   // Doses
