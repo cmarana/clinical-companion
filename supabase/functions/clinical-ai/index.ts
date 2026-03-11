@@ -2942,6 +2942,87 @@ function formatEngineContext(e: EngineResult): string {
     lines.push(`  → NUNCA assumir CAD/HHS. Confirmar com exames.`);
   }
 
+  // Respiratory section
+  if (e.patient.isRespiratoryCase) {
+    lines.push("\n🫁 ═══ MODO RESPIRATÓRIO ATIVADO ═══");
+    lines.push(`  REGRAS RESPIRATÓRIO:`);
+    lines.push(`  → Dispneia: NUNCA assumir ansiedade. Considerar asma, DPOC, pneumonia, TEP, EAP, pneumotórax, IAM, sepse.`);
+    lines.push(`  → O2: se SpO2 < 94% → dar O2. Se DPOC: meta 88-92%. EVITAR hiperóxia.`);
+    lines.push(`  → Insuficiência respiratória: avaliar FR, SpO2, gasometria, uso musculatura. VM se grave.`);
+    lines.push(`  → Asma: beta-agonista + ipratrópio + corticoide. Se grave: MgSO4 + UTI.`);
+    lines.push(`  → DPOC: beta-agonista + ipratrópio + corticoide. O2 CONTROLADO 88-92%. VNI se pH < 7,35.`);
+    lines.push(`  → Pneumonia: avaliar CURB-65. ATB conforme gravidade. NÃO usar meropenem automático.`);
+    lines.push(`  → TEP: Wells → D-dímero → AngioTC. Se maciço: trombólise. Anticoagulação se confirmado.`);
+    lines.push(`  → Pneumotórax: RX. Pequeno → observar. Grande → dreno. Hipertensivo → descompressão imediata.`);
+    lines.push(`  → EAP: sentar + VNI + furosemida + nitrato. Tratar causa (HAS, IAM, arritmia).`);
+    lines.push(`  → VM se indicada: VT 6-8 mL/kg, PEEP ≥ 5, FiO2 para SpO2 alvo.`);
+    lines.push(`  → ADAPTAR: SAMU → O2 + estabilizar; PS → exames + conduta inicial; UTI → completo; UBS → encaminhar.`);
+  }
+
+  // Psychiatry section
+  if (e.patient.isPsychiatryCase) {
+    lines.push("\n🧠 ═══ MODO PSIQUIATRIA ATIVADO ═══");
+    lines.push(`  REGRAS PSIQUIATRIA:`);
+    lines.push(`  → SEMPRE excluir causa orgânica ANTES: hipoglicemia, sepse, AVC, hipóxia, droga, metabólico, trauma.`);
+    lines.push(`  → Agitação: segurança → contenção verbal → sedação farmacológica (haloperidol + midazolam IM).`);
+    lines.push(`  → QT longo: cuidado com haloperidol, quetiapina, ziprasidona, amiodarona, quinolona, macrolídeo.`);
+    lines.push(`  → Intoxicação: ABCDE, identificar substância, antídotos (naloxone, flumazenil, NAC).`);
+    lines.push(`  → Suicídio: SEMPRE avaliar risco. NÃO liberar sem avaliação psiquiátrica.`);
+    lines.push(`  → Abstinência alcoólica: CIWA → BZD. Tiamina ANTES de glicose. Se DT → UTI.`);
+    lines.push(`  → Idoso: dose menor (50%). Risco delirium. EVITAR BZD exceto abstinência.`);
+    lines.push(`  → Contenção mecânica: SÓ se risco. Reavaliar 15-30 min.`);
+    lines.push(`  → Checar interações: antidepressivo + antipsicótico + BZD + antiarrítmico + QT.`);
+    lines.push(`  → ADAPTAR: SAMU → conter seguro; PS → estabilizar + excluir orgânico; UTI → grave; UBS → encaminhar.`);
+  }
+
+  // Urology section
+  if (e.patient.isUrologyCase) {
+    lines.push("\n🩺 ═══ MODO UROLOGIA ATIVADO ═══");
+    lines.push(`  REGRAS UROLOGIA:`);
+    lines.push(`  → ITU: classificar simples vs complicada. EVITAR quinolona para ITU simples.`);
+    lines.push(`  → ITU simples: fosfomicina dose única OU nitrofurantoína 5 dias. EVITAR cipro/levo.`);
+    lines.push(`  → Pielonefrite: febre + dor lombar + leucocitose. Ceftriaxona IV se internação.`);
+    lines.push(`  → Cólica renal: analgesia (dipirona + AINE ou opioide). TC sem contraste. Tamsulosina se ≤ 6mm.`);
+    lines.push(`  → Retenção urinária: sondagem de alívio. Investigar causa (HPB, droga, neuro).`);
+    lines.push(`  → Hematúria: investigar infecção, cálculo, tumor, anticoagulação.`);
+    lines.push(`  → DRC: ajustar ATB. EVITAR AINEs para cólica.`);
+    lines.push(`  → Gestante: TRATAR TODA ITU (inclusive bacteriúria assintomática). ATB seguro.`);
+    lines.push(`  → Febre + litíase = pielonefrite obstrutiva → URGÊNCIA (duplo J/nefrostomia).`);
+    lines.push(`  → ADAPTAR: UBS → simples; PS → completo; UTI → urosepse; SAMU → estabilizar.`);
+  }
+
+  // Dermatology section
+  if (e.patient.isDermatologyCase) {
+    lines.push("\n🩹 ═══ MODO DERMATOLOGIA ATIVADO ═══");
+    lines.push(`  REGRAS DERMATOLOGIA:`);
+    lines.push(`  → Avaliar gravidade: febre, dor intensa, bolha, necrose, mucosa, queda estado geral → URGÊNCIA.`);
+    lines.push(`  → Anafilaxia: ADRENALINA IM 0,3-0,5mg IMEDIATA. O2 + volume + anti-histamínico + corticoide adjuvante.`);
+    lines.push(`  → Celulite/erisipela: cefalexina VO (leve) ou ceftriaxona IV (grave). Se necrose/crepitação → fasceíte → cirurgia.`);
+    lines.push(`  → Stevens-Johnson/NET: SUSPENDER droga causadora. UTI/queimados. Avaliação oftalmológica URGENTE.`);
+    lines.push(`  → Herpes zoster: antiviral < 72h (valaciclovir). Zoster oftálmico → urgência. Imunossuprimido → aciclovir IV.`);
+    lines.push(`  → Alergia medicamentosa: suspender droga suspeita. Não reintroduzir sem avaliação.`);
+    lines.push(`  → Corticoide: cautela se infecção ativa. NÃO usar em herpes, micose sem diagnóstico.`);
+    lines.push(`  → Diabético/imunossuprimido: maior risco infecção. Investigar osteomielite se ferida crônica.`);
+    lines.push(`  → ADAPTAR: UBS → simples; PS → moderado; UTI → grave (NET, anafilaxia); SAMU → emergência.`);
+  }
+
+  // Hematology section
+  if (e.patient.isHematologyCase) {
+    lines.push("\n🩸 ═══ MODO HEMATOLOGIA ATIVADO ═══");
+    lines.push(`  REGRAS HEMATOLOGIA:`);
+    lines.push(`  → Anemia: classificar leve/moderada/grave. Transfundir se Hb < 7 (geral) ou < 8 (cardiopatia).`);
+    lines.push(`  → Plaquetopenia: confirmar (excluir EDTA). Transfundir se < 10k ou < 50k + sangramento.`);
+    lines.push(`  → INR alto + warfarina: suspender → vit K → CCP se sangramento grave.`);
+    lines.push(`  → DOAC: ajustar para rim. Se sangramento: medidas locais + considerar antídoto específico.`);
+    lines.push(`  → CIVD: tratar causa base. Repor fibrinogênio/crioprecipitado + PFC + plaquetas se necessário.`);
+    lines.push(`  → TVP/TEP: anticoagulação imediata se alta probabilidade. Wells + D-dímero ou imagem.`);
+    lines.push(`  → Sangramento: avaliar causa (anticoagulante, plaqueta, CIVD, trauma). Tratar causa.`);
+    lines.push(`  → Função renal: ajustar heparina, enoxaparina, DOAC. Se ClCr < 30 → HNF.`);
+    lines.push(`  → Idoso: maior risco sangramento. Dose menor anticoagulante.`);
+    lines.push(`  → NÃO transfundir sem critério. NÃO anticoagular sem avaliar risco.`);
+    lines.push(`  → Mostrar cálculos: dose anticoagulante, ClCr, volume transfusão.`);
+  }
+
   lines.push("\n═══ FIM DO MOTOR CLÍNICO ═══");
   return lines.join("\n");
 }
