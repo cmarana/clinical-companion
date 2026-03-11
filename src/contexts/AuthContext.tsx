@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, useCallback } from "react";
+import { createContext, useContext, useEffect, useState, useCallback, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import type { User, Session } from "@supabase/supabase-js";
 
@@ -52,39 +52,60 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     trialDaysLeft: 0,
   });
 
+  // Deduplicate concurrent calls
+  const pendingCheck = useRef<Promise<void> | null>(null);
+  const userRef = useRef<User | null>(null);
+  userRef.current = user;
+
   const checkSubscription = useCallback(async () => {
-    try {
-      const { data, error } = await supabase.functions.invoke("check-subscription");
-      if (error) throw error;
-      const hasPaidSub = data?.subscribed ?? false;
-      const trial = getTrialInfo(user);
-      setSubscription({
-        subscribed: hasPaidSub || trial.isTrial,
-        productId: data?.product_id ?? null,
-        subscriptionEnd: data?.subscription_end ?? null,
-        isTrial: !hasPaidSub && trial.isTrial,
-        trialDaysLeft: trial.trialDaysLeft,
-      });
-    } catch {
-      const trial = getTrialInfo(user);
-      setSubscription({
-        subscribed: trial.isTrial,
-        productId: null,
-        subscriptionEnd: null,
-        isTrial: trial.isTrial,
-        trialDaysLeft: trial.trialDaysLeft,
-      });
-    }
-  }, [user]);
+    // If a check is already in-flight, reuse it
+    if (pendingCheck.current) return pendingCheck.current;
+
+    const doCheck = async () => {
+      try {
+        const { data, error } = await supabase.functions.invoke("check-subscription");
+        if (error) throw error;
+        const hasPaidSub = data?.subscribed ?? false;
+        const trial = getTrialInfo(userRef.current);
+        setSubscription({
+          subscribed: hasPaidSub || trial.isTrial,
+          productId: data?.product_id ?? null,
+          subscriptionEnd: data?.subscription_end ?? null,
+          isTrial: !hasPaidSub && trial.isTrial,
+          trialDaysLeft: trial.trialDaysLeft,
+        });
+      } catch {
+        const trial = getTrialInfo(userRef.current);
+        setSubscription({
+          subscribed: trial.isTrial,
+          productId: null,
+          subscriptionEnd: null,
+          isTrial: trial.isTrial,
+          trialDaysLeft: trial.trialDaysLeft,
+        });
+      } finally {
+        pendingCheck.current = null;
+      }
+    };
+
+    pendingCheck.current = doCheck();
+    return pendingCheck.current;
+  }, []);
 
   useEffect(() => {
+    let initialCheckDone = false;
+
     const { data: { subscription: authSub } } = supabase.auth.onAuthStateChange(
       async (_event, newSession) => {
         setSession(newSession);
         setUser(newSession?.user ?? null);
         setLoading(false);
         if (newSession?.user) {
-          setTimeout(() => checkSubscription(), 0);
+          // Skip if getSession already triggered the check
+          if (!initialCheckDone) {
+            initialCheckDone = true;
+            setTimeout(() => checkSubscription(), 0);
+          }
         } else {
           setSubscription({ subscribed: false, productId: null, subscriptionEnd: null, isTrial: false, trialDaysLeft: 0 });
         }
@@ -95,7 +116,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       setSession(s);
       setUser(s?.user ?? null);
       setLoading(false);
-      if (s?.user) checkSubscription();
+      if (s?.user) {
+        initialCheckDone = true;
+        checkSubscription();
+      }
     });
 
     return () => authSub.unsubscribe();
