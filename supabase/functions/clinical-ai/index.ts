@@ -2408,6 +2408,28 @@ function selectProtocol(text: string, scenario: Scenario, patient: PatientData):
   if (/anemia.*grave|hb\s*<?\s*[67]|hemoglobina.*baix/i.test(lower)) return HEMATOLOGY_PROTOCOLS.severe_anemia;
   if (/tvp\b|trombose venosa profunda/i.test(lower)) return HEMATOLOGY_PROTOCOLS.dvt_pe;
 
+  // Infectology protocols
+  if (/neutropenia.*febril|febre.*neutropenia|neutropênic.*febre/i.test(lower)) return INFECTOLOGY_PROTOCOLS.febrile_neutropenia;
+  if (/infec.*cateter|cateter.*infec|infec.*cvc|bacteremia.*cateter/i.test(lower)) return INFECTOLOGY_PROTOCOLS.catheter_infection;
+  if (patient.isInfectologyCase && /antibiótico|atb|empírico/i.test(lower)) return INFECTOLOGY_PROTOCOLS.empiric_atb_guide;
+
+  // Palliative protocols
+  if (/sedação paliativa|sofrimento refratário|fim de vida|fase final/i.test(lower)) return PALLIATIVE_PROTOCOLS.end_of_life;
+  if (patient.isPalliativeCase) return PALLIATIVE_PROTOCOLS.symptom_control;
+
+  // Oncology protocols
+  if (/febre.*oncológic|oncológic.*febre|febre.*câncer|febre.*quimio|neutropenia/i.test(lower)) return ONCOLOGY_PROTOCOLS.febrile_onco;
+  if (/compressão medular|lise tumoral|hipercalcemia.*malig|svcs|veia cava/i.test(lower)) return ONCOLOGY_PROTOCOLS.oncologic_emergency;
+
+  // Rheumatology protocols
+  if (/artrite.*aguda|monoartrite|artrite séptica|gota.*agud/i.test(lower)) return RHEUMATOLOGY_PROTOCOLS.acute_arthritis;
+  if (/lúpus.*flare|lúpus.*ativ|nefrite lúpica/i.test(lower)) return RHEUMATOLOGY_PROTOCOLS.lupus_flare;
+
+  // Gynecology protocols
+  if (/sangramento vaginal/i.test(lower)) return GYNECO_PROTOCOLS.vaginal_bleeding;
+  if (/corrimento|vaginose|candidíase.*vagin|tricomoníase/i.test(lower)) return GYNECO_PROTOCOLS.vaginal_discharge;
+  if (/dor pélvica|dip\b|doença.*inflamatória.*pélvica/i.test(lower)) return GYNECO_PROTOCOLS.pelvic_pain;
+
   return null;
 }
 
