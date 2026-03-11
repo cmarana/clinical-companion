@@ -1802,6 +1802,12 @@ function runEngine(messages: ChatMessage[]): EngineResult {
   if (patient.isPediatric && patient.vaccinesUpToDate === undefined) {
     missingData.push("STATUS VACINAL — vacinação em dia?");
   }
+  if ((patient.isPregnant || patient.isPuerperal) && !patient.gestationalWeeks && patient.isPregnant) {
+    missingData.push("IDADE GESTACIONAL (semanas) — necessário para conduta obstétrica");
+  }
+  if (patient.isFertileAge && !patient.isPregnant && !patient.isPuerperal) {
+    missingData.push("GRAVIDEZ — paciente em idade fértil, confirmar se gestante antes de prescrever");
+  }
 
   const warnings = [...allergyWarnings];
   for (const adj of drugRenalAdj) {
