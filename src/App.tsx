@@ -19,6 +19,7 @@ import SearchPage from "@/pages/SearchPage";
 import Favorites from "@/pages/Favorites";
 import Notes from "@/pages/Notes";
 import EmergencyMode from "@/pages/EmergencyMode";
+import EmergencyProtocolDetail from "@/pages/EmergencyProtocolDetail";
 import DutyMode from "@/pages/DutyMode";
 import Prescriptions from "@/pages/Prescriptions";
 import PrescriptionDetail from "@/pages/PrescriptionDetail";
@@ -58,6 +59,7 @@ const AppRoutes = () => (
       <Route path="/favorites" element={<Favorites />} />
       <Route path="/notes" element={<Notes />} />
       <Route path="/emergency" element={<EmergencyMode />} />
+      <Route path="/emergency/:id" element={<EmergencyProtocolDetail />} />
       <Route path="/duty" element={<DutyMode />} />
       <Route path="/prescriptions" element={<Prescriptions />} />
       <Route path="/prescriptions/:id" element={<PrescriptionDetail />} />
