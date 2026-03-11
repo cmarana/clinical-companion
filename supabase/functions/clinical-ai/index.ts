@@ -4,8 +4,9 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 type ChatMessage = { role: "user" | "assistant" | "system"; content: string };
 type Scenario = "PS" | "UTI" | "UBS" | "SAMU" | "ENFERMARIA" | "HOSPITAL" | "NÃO INFORMADO";
 type Focus = "PULMONAR" | "URINÁRIO" | "ABDOMINAL" | "PELE/TECIDOS" | "SNC" | "SEM FOCO DEFINIDO";
-type RenalStage = "NORMAL" | "LEVE" | "MODERADA" | "GRAVE" | "DIALÍTICA";
+type RenalStage = "NORMAL" | "LEVE" | "MODERADA" | "GRAVE" | "TERMINAL";
 type InfectionOrigin = "COMUNITÁRIA" | "HOSPITALAR" | "NÃO DEFINIDA";
+type AllergyType = "ANAFILÁTICA" | "LEVE" | "NÃO INFORMADA";
 
 interface PatientData {
   weightKg?: number;
@@ -13,11 +14,11 @@ interface PatientData {
   creatinineMgDl?: number;
   sex?: "M" | "F";
   allergies?: string;
+  allergyType: AllergyType;
   scenario: Scenario;
   focus: Focus;
   infectionOrigin: InfectionOrigin;
   medicationsInUse: string[];
-  // Risk factors for resistant organisms
   riskFactors: {
     previousICU: boolean;
     recentATB: boolean;
@@ -26,6 +27,11 @@ interface PatientData {
     hospitalized30d: boolean;
     immunosuppressed: boolean;
   };
+  // Conditions that affect fluid resuscitation
+  hasHeartFailure: boolean;
+  isElderly: boolean; // ≥65
+  isDialytic: boolean; // EXPLICITLY stated by user
+  hasAnticoagulationIndication: string | null; // TEV, FA, IAM, TEP, TVP, prótese
 }
 
 interface RenalCalcResult {
@@ -36,12 +42,15 @@ interface RenalCalcResult {
 }
 
 interface DoseCalcResult {
-  fluid30MlKg?: string;
+  fluidRecommendation: string;
+  fluidWarning?: string;
   noraMinMcgMin?: string;
   noraMaxMcgMin?: string;
   noraDilution: string;
-  hepBolus?: string;
-  hepMaintenance?: string;
+  hepProphylaxis?: string;
+  hepTherapeutic?: string;
+  hepWarning?: string;
+  enoxProphylaxis?: string;
   enoxTherapeutic?: string;
   enoxRenal?: string;
   insulinCAD?: string;
@@ -74,6 +83,7 @@ interface AntibioticRecommendation {
   rationale: string;
   coverageNeeded: string[];
   questionsNeeded: string[];
+  allergyWarnings: string[];
 }
 
 interface ProtocolStep {
@@ -92,6 +102,7 @@ interface EngineResult {
   missingData: string[];
   warnings: string[];
   dataValidation: { complete: boolean; missing: string[]; score: number };
+  safetyAlerts: string[];
 }
 
 // ─── CORS ────────────────────────────────────────────────────────
@@ -111,7 +122,7 @@ const DRUG_DB: Record<string, DrugEntry> = {
   meropenem: {
     name: "Meropenem", dose: "1-2g 8/8h",
     renalAdj: { "26-50": "1g 12/12h", "10-25": "500mg 12/12h", "<10": "500mg 24/24h" },
-    contraindications: ["Alergia a carbapenêmicos"],
+    contraindications: ["Alergia a carbapenêmicos", "Alergia anafilática a penicilina (preferir alternativa)"],
     interactions: ["Valproato (reduz nível em até 90% — CONTRAINDICADO)", "Probenecida (aumenta nível)"],
     class: "Antibiótico — Carbapenêmico", route: "IV",
   },
@@ -163,6 +174,27 @@ const DRUG_DB: Record<string, DrugEntry> = {
     interactions: ["Warfarina (aumento INR)", "QT-prolongadores", "Antiácidos (reduz absorção)"],
     class: "Antibiótico — Fluoroquinolona", route: "IV/VO", qtProlongation: true,
   },
+  aztreonam: {
+    name: "Aztreonam", dose: "2g 8/8h IV",
+    renalAdj: { "10-30": "1g 8/8h", "<10": "500mg 8/8h" },
+    contraindications: [],
+    interactions: [],
+    class: "Antibiótico — Monobactâmico", route: "IV",
+  },
+  linezolida: {
+    name: "Linezolida", dose: "600mg 12/12h IV/VO",
+    renalAdj: {},
+    contraindications: ["Uso de IMAO", "Feocromocitoma"],
+    interactions: ["ISRS (síndrome serotoninérgica)", "IMAO (crise hipertensiva)", "Alimentos ricos em tiramina"],
+    class: "Antibiótico — Oxazolidinona", route: "IV/VO",
+  },
+  daptomicina: {
+    name: "Daptomicina", dose: "6-8 mg/kg 1x/dia IV",
+    renalAdj: { "<30": "Dose padrão, intervalo 48/48h" },
+    contraindications: ["Pneumonia (inativada por surfactante)"],
+    interactions: ["Estatinas (risco de rabdomiólise)"],
+    class: "Antibiótico — Lipopeptídeo", route: "IV",
+  },
   clindamicina: {
     name: "Clindamicina", dose: "600-900mg 8/8h",
     renalAdj: {},
@@ -192,8 +224,8 @@ const DRUG_DB: Record<string, DrugEntry> = {
     class: "Corticoide", route: "IV",
   },
   enoxaparina: {
-    name: "Enoxaparina", dose: "1 mg/kg 12/12h (terapêutico) | 40mg 1x/dia (profilático)",
-    renalAdj: { "<30": "1mg/kg 1x/dia (terapêutico) ou considerar HNF" },
+    name: "Enoxaparina", dose: "Profilaxia: 40mg 1x/dia SC | Terapêutica: 1mg/kg 12/12h SC",
+    renalAdj: { "<30": "Terapêutica: 1mg/kg 1x/dia OU preferir HNF. Profilaxia: 20mg/dia" },
     contraindications: ["Sangramento ativo", "Plaquetas < 50.000", "Alergia a heparina/HIT"],
     interactions: ["AINEs (sangramento)", "Antiplaquetários (sangramento aditivo)"],
     class: "Anticoagulante — HBPM", route: "SC",
@@ -219,10 +251,10 @@ const DRUG_DB: Record<string, DrugEntry> = {
     class: "Hipoglicemiante", route: "IV/SC",
   },
   heparina_nf: {
-    name: "Heparina Não Fracionada (HNF)", dose: "Bolus 80 UI/kg + 18 UI/kg/h → ajustar por TTPa",
+    name: "Heparina Não Fracionada (HNF)", dose: "Profilaxia: 5000 UI SC 8/8h | Terapêutica: 80 UI/kg bolus + 18 UI/kg/h",
     renalAdj: {}, contraindications: ["HIT", "Sangramento ativo", "Plaquetas < 50.000"],
     interactions: ["AINEs (sangramento)", "Fibrinolíticos (sangramento grave)"],
-    class: "Anticoagulante", route: "IV",
+    class: "Anticoagulante", route: "IV/SC",
   },
   metronidazol: {
     name: "Metronidazol", dose: "500mg 8/8h IV",
@@ -271,107 +303,225 @@ const INTERACTION_PAIRS: { drugs: string[]; severity: "🔴" | "🟡"; mechanism
   { drugs: ["metronidazol", "warfarina"], severity: "🟡", mechanism: "Aumento INR", action: "Monitorar INR 2-3 dias." },
   { drugs: ["losartana", "espironolactona"], severity: "🟡", mechanism: "Hipercalemia aditiva", action: "Monitorar K a cada 24-48h. Alvo K < 5,0." },
   { drugs: ["losartana", "aine"], severity: "🟡", mechanism: "Reduz efeito anti-hipertensivo + piora função renal", action: "Evitar AINEs. Monitorar Cr e PA." },
+  { drugs: ["losartana", "ieca"], severity: "🔴", mechanism: "Hipercalemia + IRA", action: "EVITAR duplo bloqueio SRAA." },
+  // Hyperkalemia combos with renal failure
+  { drugs: ["losartana", "espironolactona"], severity: "🔴", mechanism: "Hipercalemia grave se DRC associada", action: "Monitorar K rigoroso. Evitar se ClCr < 30." },
 ];
+
+// ─── Anticoagulation Indications ─────────────────────────────────
+const ANTICOAG_INDICATIONS = ["tev", "tep", "tvp", "tromboembolismo", "embolia pulmonar", "trombose venosa",
+  "fa ", "fibrilação atrial", "flutter", "iam", "infarto", "sca", "síndrome coronariana",
+  "prótese valvar", "válvula mecânica", "válvula protética"];
 
 // ─── Antibiotic Selection Engine ─────────────────────────────────
 function selectAntibiotic(patient: PatientData, renal: RenalCalcResult): AntibioticRecommendation | null {
-  const { focus, scenario, infectionOrigin, riskFactors, allergies } = patient;
-  const isHospital = infectionOrigin === "HOSPITALAR" || scenario === "UTI" || riskFactors.previousICU || riskFactors.hospitalized30d;
+  const { focus, scenario, infectionOrigin, riskFactors, allergies, allergyType } = patient;
+  const isHospital = infectionOrigin === "HOSPITALAR" || riskFactors.previousICU || riskFactors.hospitalized30d;
+  // UTI scenario alone does NOT mean hospital infection - only if explicitly stated
   const hasResistanceRisk = riskFactors.recentATB || riskFactors.catheter || riskFactors.ventilated || isHospital;
   const penicillinAllergy = allergies ? /penicilina|amoxicilina|ampicilina/i.test(allergies) : false;
+  const isAnaphylactic = penicillinAllergy && allergyType === "ANAFILÁTICA";
 
   const questionsNeeded: string[] = [];
+  const allergyWarnings: string[] = [];
+
   if (infectionOrigin === "NÃO DEFINIDA") questionsNeeded.push("Infecção comunitária ou hospitalar?");
   if (!riskFactors.previousICU && scenario === "UTI") questionsNeeded.push("UTI prévia nos últimos 90 dias?");
   if (!riskFactors.recentATB) questionsNeeded.push("Uso de antibiótico nos últimos 90 dias?");
   if (scenario === "UTI" && !riskFactors.catheter) questionsNeeded.push("Cateter venoso central / SVD / outros dispositivos?");
   if (scenario === "UTI" && !riskFactors.ventilated) questionsNeeded.push("Em ventilação mecânica?");
+  if (focus === "SEM FOCO DEFINIDO") questionsNeeded.push("Qual o FOCO INFECCIOSO provável? (pulmonar, urinário, abdominal, pele, SNC)");
+
+  // ALLERGY SAFETY RULES
+  if (isAnaphylactic) {
+    allergyWarnings.push("🔴 ANAFILAXIA A PENICILINA → EVITAR: penicilinas, cefalosporinas, carbapenêmicos (se alternativa existir)");
+    allergyWarnings.push("✅ PREFERIR: Aztreonam, Quinolona (levo/cipro), Vancomicina, Linezolida, Daptomicina");
+  } else if (penicillinAllergy) {
+    allergyWarnings.push("🟡 ALERGIA NÃO-ANAFILÁTICA A PENICILINA → Cefalosporinas: risco cruzado ~2%. Carbapenêmicos: risco < 1%.");
+    allergyWarnings.push("Perguntar: Tipo de reação (rash? urticária? edema? anafilaxia?)");
+    if (allergyType === "NÃO INFORMADA") {
+      questionsNeeded.push("TIPO de alergia a penicilina: foi anafilaxia (edema de glote, choque) ou reação leve (rash, urticária)?");
+    }
+  }
 
   let primary = "";
   let alternatives: string[] = [];
   let rationale = "";
   let coverageNeeded: string[] = [];
 
+  // Helper for anaphylactic-safe choices
+  const anaphylaxSafe = (normal: string, normalAlts: string[]): [string, string[]] => {
+    if (isAnaphylactic) {
+      return [
+        "Aztreonam 2g 8/8h + Vancomicina 15-20mg/kg 12/12h",
+        ["Levofloxacino 750mg/dia + Vancomicina", "Aztreonam + Linezolida 600mg 12/12h"]
+      ];
+    }
+    if (penicillinAllergy) {
+      // Non-anaphylactic: can use cephalosporins with caution
+      return [normal, normalAlts];
+    }
+    return [normal, normalAlts];
+  };
+
   if (focus === "PULMONAR") {
     if (isHospital || hasResistanceRisk) {
       coverageNeeded = ["Pseudomonas", "MRSA", "Gram-negativos MDR"];
-      if (penicillinAllergy) {
-        primary = "Meropenem 1g 8/8h + Vancomicina 15-20mg/kg 12/12h";
-        alternatives = ["Cefepime 2g 8/8h + Vancomicina (se alergia penicilina leve)", "Aztreonam + Vancomicina (se alergia grave)"];
+      if (isAnaphylactic) {
+        primary = "Aztreonam 2g 8/8h + Vancomicina 15-20mg/kg 12/12h";
+        alternatives = ["Levofloxacino 750mg/dia + Vancomicina", "Aztreonam + Linezolida 600mg 12/12h"];
+        rationale = "⚠️ ANAFILAXIA PENICILINA: Aztreonam (monobactâmico, sem reação cruzada) + Vancomicina para MRSA.";
+      } else if (penicillinAllergy) {
+        primary = "Cefepime 2g 8/8h + Vancomicina 15-20mg/kg 12/12h (reação cruzada ~2%, monitorar)";
+        alternatives = ["Aztreonam 2g 8/8h + Vancomicina", "Meropenem 1g 8/8h + Vancomicina (cruzada < 1%)"];
+        rationale = "Alergia não-anafilática: cefalosporina 4ª com cautela. Monitorar 1ª dose.";
       } else {
         primary = "Piperacilina-Tazobactam 4,5g 6/6h + Vancomicina 15-20mg/kg 12/12h";
-        alternatives = ["Meropenem 1g 8/8h + Vancomicina", "Cefepime 2g 8/8h + Vancomicina"];
+        alternatives = ["Cefepime 2g 8/8h + Vancomicina", "Meropenem 1g 8/8h + Vancomicina"];
+        rationale = "Pneumonia hospitalar/associada a VM: cobertura anti-Pseudomonas + MRSA (ATS/IDSA 2016).";
       }
-      rationale = "Pneumonia hospitalar/associada a VM: cobertura anti-Pseudomonas + MRSA obrigatória (ATS/IDSA 2016).";
     } else {
       coverageNeeded = ["S. pneumoniae", "H. influenzae", "Atípicos"];
-      primary = "Ceftriaxona 1g 12/12h + Azitromicina 500mg 1x/dia";
-      alternatives = ["Levofloxacino 750mg 1x/dia (monoterapia)", "Ampicilina-Sulbactam 3g 6/6h + Azitromicina"];
-      rationale = "PAC grave internada: beta-lactâmico + macrolídeo (BTS/IDSA 2019).";
+      if (isAnaphylactic) {
+        primary = "Levofloxacino 750mg 1x/dia (monoterapia respiratória)";
+        alternatives = ["Aztreonam 2g 8/8h + Azitromicina 500mg/dia"];
+        rationale = "ANAFILAXIA: quinolona respiratória como monoterapia em PAC.";
+      } else {
+        primary = "Ceftriaxona 1g 12/12h + Azitromicina 500mg 1x/dia";
+        alternatives = ["Levofloxacino 750mg 1x/dia (monoterapia)", "Ampicilina-Sulbactam 3g 6/6h + Azitromicina"];
+        rationale = "PAC grave internada: beta-lactâmico + macrolídeo (BTS/IDSA 2019).";
+      }
     }
   } else if (focus === "URINÁRIO") {
     if (isHospital || hasResistanceRisk) {
       coverageNeeded = ["E. coli ESBL", "Pseudomonas", "Enterococcus"];
-      primary = "Meropenem 1g 8/8h";
-      alternatives = ["Piperacilina-Tazobactam 4,5g 6/6h", "Cefepime 2g 8/8h"];
-      rationale = "ITU complicada hospitalar: cobertura ESBL. Avaliar urocultura prévia.";
+      if (isAnaphylactic) {
+        primary = "Aztreonam 2g 8/8h (Gram-neg) ± Vancomicina (se suspeita Enterococcus)";
+        alternatives = ["Ciprofloxacino 400mg 12/12h IV", "Gentamicina 5mg/kg/dia (dose única)"];
+        rationale = "ANAFILAXIA: Aztreonam cobre gram-neg incluindo Pseudomonas.";
+      } else {
+        primary = "Piperacilina-Tazobactam 4,5g 6/6h";
+        alternatives = ["Meropenem 1g 8/8h", "Cefepime 2g 8/8h"];
+        rationale = "ITU complicada hospitalar: cobertura ESBL.";
+      }
     } else {
       coverageNeeded = ["E. coli", "Klebsiella", "Proteus"];
       primary = "Ceftriaxona 1g 12/12h";
       alternatives = ["Ciprofloxacino 400mg 12/12h IV", "Ampicilina-Sulbactam 3g 6/6h"];
       rationale = "Pielonefrite comunitária: cefalosporina 3ª geração.";
+      if (isAnaphylactic) {
+        primary = "Ciprofloxacino 400mg 12/12h IV";
+        alternatives = ["Gentamicina 5mg/kg/dia (dose única)", "Aztreonam 2g 8/8h"];
+        rationale = "ANAFILAXIA: quinolona para ITU comunitária.";
+      }
     }
   } else if (focus === "ABDOMINAL") {
     coverageNeeded = ["Gram-negativos", "Anaeróbios", "Enterococcus"];
     if (isHospital || hasResistanceRisk) {
-      primary = "Meropenem 1g 8/8h ± Vancomicina (se risco Enterococcus resistente)";
-      alternatives = ["Piperacilina-Tazobactam 4,5g 6/6h"];
-      rationale = "Infecção intra-abdominal hospitalar: carbapenêmico (SIS/IDSA 2017).";
+      if (isAnaphylactic) {
+        primary = "Aztreonam 2g 8/8h + Metronidazol 500mg 8/8h + Vancomicina 15-20mg/kg 12/12h";
+        alternatives = ["Ciprofloxacino 400mg 12/12h + Metronidazol 500mg 8/8h"];
+        rationale = "ANAFILAXIA: Aztreonam (gram-neg) + Metronidazol (anaeróbios) + Vanco (Enterococcus).";
+      } else {
+        primary = "Piperacilina-Tazobactam 4,5g 6/6h";
+        alternatives = ["Meropenem 1g 8/8h", "Cefepime 2g 8/8h + Metronidazol 500mg 8/8h"];
+        rationale = "Infecção intra-abdominal hospitalar (SIS/IDSA 2017).";
+      }
     } else {
-      primary = "Ceftriaxona 1g 12/12h + Metronidazol 500mg 8/8h";
-      alternatives = ["Ampicilina-Sulbactam 3g 6/6h", "Piperacilina-Tazobactam 4,5g 6/6h"];
-      rationale = "Infecção intra-abdominal comunitária: cef3 + anaerobicida.";
+      if (isAnaphylactic) {
+        primary = "Ciprofloxacino 400mg 12/12h + Metronidazol 500mg 8/8h";
+        alternatives = ["Aztreonam 2g 8/8h + Metronidazol 500mg 8/8h"];
+        rationale = "ANAFILAXIA: quinolona + anaerobicida para infecção abdominal comunitária.";
+      } else {
+        primary = "Ceftriaxona 1g 12/12h + Metronidazol 500mg 8/8h";
+        alternatives = ["Ampicilina-Sulbactam 3g 6/6h", "Piperacilina-Tazobactam 4,5g 6/6h"];
+        rationale = "Infecção intra-abdominal comunitária: cef3 + anaerobicida.";
+      }
     }
   } else if (focus === "PELE/TECIDOS") {
     coverageNeeded = ["S. aureus (MSSA/MRSA)", "Streptococcus", "Anaeróbios (se necrotizante)"];
     if (isHospital || hasResistanceRisk) {
       primary = "Vancomicina 15-20mg/kg 12/12h + Piperacilina-Tazobactam 4,5g 6/6h (se necrotizante)";
-      alternatives = ["Vancomicina + Meropenem", "Daptomicina 6-8mg/kg/dia"];
+      alternatives = ["Vancomicina + Meropenem", "Daptomicina 6-8mg/kg/dia + Aztreonam"];
       rationale = "Infecção de pele hospitalar/necrotizante: cobrir MRSA + gram-negativos + anaeróbios.";
+      if (isAnaphylactic) {
+        primary = "Vancomicina 15-20mg/kg 12/12h + Aztreonam 2g 8/8h + Metronidazol 500mg 8/8h";
+        alternatives = ["Daptomicina 6-8mg/kg/dia + Aztreonam", "Linezolida 600mg 12/12h + Aztreonam"];
+        rationale = "ANAFILAXIA: Vancomicina/Daptomicina (MRSA) + Aztreonam (gram-neg) + Metronidazol (anaeróbios).";
+      }
     } else {
-      primary = "Cefazolina 2g 8/8h (celulite simples) | Clindamicina 600mg 8/8h (se alergia penicilina)";
-      alternatives = ["Oxacilina 2g 4/4h"];
+      primary = "Cefazolina 2g 8/8h (celulite simples)";
+      alternatives = ["Clindamicina 600mg 8/8h", "Oxacilina 2g 4/4h"];
       rationale = "Celulite comunitária: anti-estafilocócica.";
+      if (isAnaphylactic) {
+        primary = "Clindamicina 600mg 8/8h";
+        alternatives = ["Vancomicina 15-20mg/kg 12/12h", "Daptomicina 4mg/kg/dia"];
+        rationale = "ANAFILAXIA: Clindamicina como alternativa segura para pele.";
+      }
     }
   } else if (focus === "SNC") {
     coverageNeeded = ["S. pneumoniae", "N. meningitidis", "Listeria (se > 50a ou imunossuprimido)"];
-    primary = "Ceftriaxona 2g 12/12h + Dexametasona 0,15mg/kg 6/6h (iniciar antes/junto ATB)";
-    if (patient.ageYears && patient.ageYears > 50) {
-      primary += " + Ampicilina 2g 4/4h (cobertura Listeria)";
+    if (isAnaphylactic) {
+      primary = "Meropenem 2g 8/8h (exceção: SNC sem alternativa segura — risco cruzado < 1%, MONITORAR) + Dexametasona";
+      alternatives = ["Cloranfenicol 1g 6/6h (se disponível)", "Aztreonam NÃO cobre gram-positivos — insuficiente para SNC"];
+      rationale = "⚠️ ANAFILAXIA + SNC: situação crítica. Meropenem pode ser usado com cautela em SNC (sem alternativa monobactâmica adequada). Skin test prévio se possível.";
+      allergyWarnings.push("🔴 SNC + ANAFILAXIA: Meropenem usado como EXCEÇÃO — sem alternativa monobactâmica para cobertura SNC. Monitorar reação alérgica.");
+    } else {
+      primary = "Ceftriaxona 2g 12/12h + Dexametasona 0,15mg/kg 6/6h (iniciar antes/junto ATB)";
+      if (patient.ageYears && patient.ageYears > 50) {
+        primary += " + Ampicilina 2g 4/4h (cobertura Listeria)";
+      }
+      alternatives = ["Meropenem 2g 8/8h (se alergia cefalosporina)"];
+      rationale = "Meningite bacteriana: cef3 + dexametasona ± ampicilina (IDSA 2004/ESCMID 2016).";
     }
-    alternatives = ["Meropenem 2g 8/8h (se alergia cefalosporina)"];
-    rationale = "Meningite bacteriana: cef3 + dexametasona ± ampicilina (IDSA 2004/ESCMID 2016).";
   } else {
-    // Sem foco definido — sepse sem foco
+    // Sem foco definido
     if (isHospital || hasResistanceRisk) {
       coverageNeeded = ["Gram-positivos (MRSA)", "Gram-negativos (Pseudomonas)", "Anaeróbios"];
-      primary = "Meropenem 1g 8/8h + Vancomicina 15-20mg/kg 12/12h";
-      alternatives = ["Piperacilina-Tazobactam 4,5g 6/6h + Vancomicina", "Cefepime 2g 8/8h + Vancomicina + Metronidazol"];
-      rationale = "Sepse sem foco hospitalar: espectro amplo cobrindo MRSA + Pseudomonas + anaeróbios.";
+      if (isAnaphylactic) {
+        primary = "Aztreonam 2g 8/8h + Vancomicina 15-20mg/kg 12/12h + Metronidazol 500mg 8/8h";
+        alternatives = ["Levofloxacino 750mg/dia + Vancomicina + Metronidazol", "Aztreonam + Linezolida + Metronidazol"];
+        rationale = "ANAFILAXIA + sepse sem foco hospitalar: Aztreonam (gram-neg) + Vanco (MRSA) + Metro (anaeróbios).";
+      } else {
+        primary = "Piperacilina-Tazobactam 4,5g 6/6h + Vancomicina 15-20mg/kg 12/12h";
+        alternatives = ["Cefepime 2g 8/8h + Vancomicina + Metronidazol", "Meropenem 1g 8/8h + Vancomicina"];
+        rationale = "Sepse sem foco hospitalar: espectro amplo cobrindo MRSA + Pseudomonas + anaeróbios.";
+      }
     } else {
       coverageNeeded = ["Gram-positivos", "Gram-negativos", "Atípicos"];
-      primary = "Ceftriaxona 1g 12/12h + Metronidazol 500mg 8/8h (se suspeita abdominal)";
-      alternatives = ["Piperacilina-Tazobactam 4,5g 6/6h", "Levofloxacino 750mg 1x/dia"];
-      rationale = "Sepse comunitária sem foco: cefalosporina amplo espectro. Definir foco para estreitar.";
+      if (isAnaphylactic) {
+        primary = "Levofloxacino 750mg 1x/dia + Metronidazol 500mg 8/8h";
+        alternatives = ["Aztreonam 2g 8/8h + Metronidazol", "Ciprofloxacino 400mg 12/12h + Metronidazol"];
+        rationale = "ANAFILAXIA + sepse comunitária: quinolona amplo espectro.";
+      } else {
+        primary = "Ceftriaxona 1g 12/12h + Metronidazol 500mg 8/8h (se suspeita abdominal)";
+        alternatives = ["Piperacilina-Tazobactam 4,5g 6/6h", "Levofloxacino 750mg 1x/dia"];
+        rationale = "Sepse comunitária sem foco: cefalosporina amplo espectro. Definir foco para estreitar.";
+      }
     }
   }
 
-  // Renal adjustments for selected drugs
+  // Renal adjustment note
   if (renal.clcrMlMin !== undefined && renal.clcrMlMin < 50) {
     rationale += ` ⚠️ Ajustar doses para ClCr ${renal.clcrMlMin} mL/min.`;
   }
 
-  return { primary, alternatives, rationale, coverageNeeded, questionsNeeded };
+  // MEROPENEM JUSTIFICATION CHECK
+  if (/meropenem/i.test(primary)) {
+    const justifications: string[] = [];
+    if (isHospital) justifications.push("infecção hospitalar");
+    if (riskFactors.recentATB) justifications.push("ATB recente");
+    if (riskFactors.ventilated) justifications.push("ventilação mecânica");
+    if (focus === "SNC") justifications.push("SNC (necessita alta penetração)");
+    if (justifications.length === 0) {
+      rationale += " ⚠️ JUSTIFICATIVA para Meropenem: NÃO HÁ JUSTIFICATIVA CLARA. Considerar esquema mais estreito.";
+      questionsNeeded.push("Há justificativa para carbapenêmico? (falha ATB prévio, ESBL confirmado, choque séptico grave?)");
+    } else {
+      rationale += ` Justificativa Meropenem: ${justifications.join(", ")}.`;
+    }
+  }
+
+  return { primary, alternatives, rationale, coverageNeeded, questionsNeeded, allergyWarnings };
 }
 
 // ─── Protocols ───────────────────────────────────────────────────
@@ -382,16 +532,16 @@ const PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
       { order: 1, action: "Lactato sérico IMEDIATO (repetir em 2-4h se > 2 mmol/L)", target: "Queda ≥ 20% em 2h" },
       { order: 2, action: "Hemoculturas (2 pares de sítios diferentes) ANTES do antibiótico" },
       { order: 3, action: "Antibiótico de amplo espectro em ≤ 1 HORA (ver recomendação do motor)" },
-      { order: 4, action: "Cristaloide 30 mL/kg se hipotensão ou lactato ≥ 4 mmol/L", target: "Iniciar em ≤ 3h, completar com reavaliação" },
+      { order: 4, action: "Cristaloide — VER REGRA DE VOLUME DO MOTOR (pode ser restrito em idoso/DRC/IC)", target: "Reavaliar a cada 250-500mL" },
       { order: 5, action: "Noradrenalina se PAM < 65 mmHg após volume adequado", target: "PAM ≥ 65 mmHg" },
       { order: 6, action: "Reavaliar responsividade a fluidos (elevação passiva de MMII, variação PP, eco POCUS)" },
       { order: 7, action: "Diurese alvo > 0,5 mL/kg/h — SVD para monitoração" },
       { order: 8, action: "Balanço hídrico rigoroso a cada 6h" },
       { order: 9, action: "Lactato seriado (repetir a cada 2-4h até normalização)" },
       { order: 10, action: "Hidrocortisona 200mg/dia (50mg 6/6h) se choque refratário a vasopressor ≥ 4h" },
-      { order: 11, action: "Considerar TRS (diálise) se: oligúria refratária, hipercalemia, acidose metabólica grave, sobrecarga hídrica" },
+      { order: 11, action: "Considerar TRS (diálise) se: oligúria refratária, K > 6,5, pH < 7,1, sobrecarga hídrica" },
       { order: 12, action: "Glicemia capilar 4/4h → insulina se > 180 mg/dL", target: "Glicemia 140-180 mg/dL" },
-      { order: 13, action: "Profilaxia TVP (enoxaparina ou HNF se ClCr < 30)" },
+      { order: 13, action: "Profilaxia TVP: enoxaparina profilática OU HNF profilática (NÃO terapêutica sem indicação)" },
       { order: 14, action: "Profilaxia úlcera de estresse (omeprazol 40mg 1x/dia)" },
       { order: 15, action: "Reavaliação antibiótica em 48-72h com culturas" },
     ],
@@ -405,7 +555,7 @@ const PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
       { order: 4, action: "Lactato sérico IMEDIATO + seriado a cada 2h", target: "Queda ≥ 20% em 2h" },
       { order: 5, action: "Hemoculturas (2 pares) + culturas de todos os sítios suspeitos ANTES do ATB" },
       { order: 6, action: "Antibiótico amplo espectro em ≤ 1 HORA (ver recomendação motor)" },
-      { order: 7, action: "Cristaloide 30 mL/kg em bolus", target: "Iniciar imediatamente" },
+      { order: 7, action: "Cristaloide — VER REGRA DE VOLUME DO MOTOR (restrito em idoso/DRC/IC/dialítico)", target: "Reavaliar após cada 250-500mL com POCUS" },
       { order: 8, action: "Noradrenalina se PAM < 65 após volume — iniciar PRECOCE", target: "PAM ≥ 65 mmHg" },
       { order: 9, action: "Vasopressina 0,03 UI/min como 2º vasopressor se nora > 0,5 mcg/kg/min" },
       { order: 10, action: "Reavaliar volemia: eco POCUS, variação PP, elevação passiva MMII" },
@@ -415,7 +565,7 @@ const PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
       { order: 14, action: "Considerar TRS: oligúria refratária, K > 6,5, pH < 7,1, sobrecarga hídrica" },
       { order: 15, action: "Gasometria arterial seriada (a cada 2-4h)" },
       { order: 16, action: "Glicemia capilar 4/4h → insulina IV se > 180", target: "140-180 mg/dL" },
-      { order: 17, action: "Profilaxia TVP: enoxaparina 40mg/dia SC (HNF se ClCr < 30)" },
+      { order: 17, action: "Profilaxia TVP: enoxaparina 40mg/dia SC (HNF 5000 UI 8/8h se ClCr < 30) — APENAS PROFILÁTICA" },
       { order: 18, action: "Profilaxia úlcera de estresse: omeprazol 40mg IV 1x/dia" },
       { order: 19, action: "Cabeceira elevada 30-45°" },
       { order: 20, action: "Reavaliação ATB em 48-72h com culturas + descalonar se possível" },
@@ -427,7 +577,7 @@ const PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
       { order: 1, action: "Identificar tipo: distributivo, cardiogênico, hipovolêmico, obstrutivo" },
       { order: 2, action: "Acesso venoso calibroso (2 acessos 16-18G)" },
       { order: 3, action: "Monitorização: PAM, FC, SpO2, diurese" },
-      { order: 4, action: "Ressuscitação volêmica se hipovolêmico/distributivo" },
+      { order: 4, action: "Ressuscitação volêmica se hipovolêmico/distributivo (CUIDADO em cardiogênico)" },
       { order: 5, action: "Vasopressor se PAM < 65 após volume adequado" },
       { order: 6, action: "Ecocardiograma point-of-care (POCUS)" },
       { order: 7, action: "Lactato + gasometria" },
@@ -466,7 +616,7 @@ const PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
       { order: 3, action: "Nitroglicerina SL (se PA > 90 e sem sildenafil)" },
       { order: 4, action: "Troponina seriada (0h e 3h)" },
       { order: 5, action: "Se IAMCSST: CATE em ≤ 90min ou fibrinolítico em ≤ 30min" },
-      { order: 6, action: "Anticoagulação (enoxaparina ou HNF)" },
+      { order: 6, action: "Anticoagulação (enoxaparina ou HNF) — INDICAÇÃO CLARA: SCA" },
       { order: 7, action: "Dupla antiagregação" },
     ],
   },
@@ -517,6 +667,20 @@ function extractPatient(messages: ChatMessage[]): PatientData {
 
   const allergies = firstMatch(text, [/alergias?\s*[:=]\s*([^\n\]]+)/i]);
 
+  // Detect allergy TYPE
+  let allergyType: AllergyType = "NÃO INFORMADA";
+  if (allergies) {
+    if (/anafila|choque.*alér|edema.*glote|angioedema/i.test(text)) {
+      allergyType = "ANAFILÁTICA";
+    } else if (/rash|urticária|leve|cutâne/i.test(text)) {
+      allergyType = "LEVE";
+    }
+    // If allergy mentioned but type not specified, default to treating as potentially anaphylactic for safety
+    if (allergyType === "NÃO INFORMADA" && /penicilina|amoxicilina|ampicilina/i.test(allergies)) {
+      // Keep as NÃO INFORMADA - will prompt to ask
+    }
+  }
+
   const medsRaw = firstMatch(text, [/medica[çc][õo]es?\s*(?:em uso|atuais?)?\s*[:=]\s*([^\n]+)/i, /drogas?\s*(?:em uso)?\s*[:=]\s*([^\n]+)/i]);
   const medicationsInUse = medsRaw ? medsRaw.split(/[,;+]/).map(s => s.trim().toLowerCase()).filter(Boolean) : [];
 
@@ -548,11 +712,31 @@ function extractPatient(messages: ChatMessage[]): PatientData {
     immunosuppressed: /imunosuprimido|imunossuprimido|transplant|quimioterapia|hiv|aids|corticoide crônico/i.test(text),
   };
 
+  // Heart failure detection
+  const hasHeartFailure = /insuficiência cardíaca|ic\b|fração de ejeção|fe\s*reduzida|icc|edema pulmonar/i.test(text);
+
+  // Elderly detection
+  const ageNum = parseNumber(ageRaw);
+  const isElderly = ageNum !== undefined && ageNum >= 65;
+
+  // Dialysis: ONLY if EXPLICITLY stated
+  const isDialytic = /dialí[ts]|hemodiálise|diálise|peritoneal|trs\b/i.test(text);
+
+  // Anticoagulation indication detection
+  let hasAnticoagulationIndication: string | null = null;
+  for (const indication of ANTICOAG_INDICATIONS) {
+    if (text.toLowerCase().includes(indication)) {
+      hasAnticoagulationIndication = indication.toUpperCase();
+      break;
+    }
+  }
+
   return {
     weightKg: parseNumber(weightRaw),
-    ageYears: parseNumber(ageRaw),
+    ageYears: ageNum,
     creatinineMgDl: parseNumber(creatRaw),
-    sex, allergies, scenario, focus, infectionOrigin, medicationsInUse, riskFactors,
+    sex, allergies, allergyType, scenario, focus, infectionOrigin, medicationsInUse, riskFactors,
+    hasHeartFailure, isElderly, isDialytic, hasAnticoagulationIndication,
   };
 }
 
@@ -586,13 +770,14 @@ function calcRenal(p: PatientData): RenalCalcResult {
   } else if (clcr >= 15) {
     result.stage = "GRAVE";
     result.adjustments.push("Ajustar TODAS as drogas de eliminação renal");
-    result.adjustments.push("Considerar se diálise indicada");
+    result.adjustments.push("Avaliar indicação de diálise (NÃO ASSUMIR — perguntar se já dialisa)");
     result.adjustments.push("Enoxaparina: 1mg/kg 1x/dia ou preferir HNF");
   } else {
-    result.stage = "DIALÍTICA";
-    result.adjustments.push("Dose para diálise");
+    result.stage = "TERMINAL";
+    result.adjustments.push("⚠️ ClCr < 15 — INSUFICIÊNCIA RENAL TERMINAL");
+    result.adjustments.push("NÃO ASSUMIR que paciente dialisa — PERGUNTAR");
     result.adjustments.push("Preferir HNF sobre enoxaparina");
-    result.adjustments.push("Avaliar TRS urgente");
+    result.adjustments.push("Avaliar TRS urgente se: K > 6,5, pH < 7,1, oligúria refratária, sobrecarga hídrica");
   }
 
   return result;
@@ -604,15 +789,41 @@ function calcDoses(p: PatientData, renal: RenalCalcResult): DoseCalcResult {
   const clcr = renal.clcrMlMin;
 
   const result: DoseCalcResult = {
+    fluidRecommendation: "",
     noraDilution: "16mg/250mL SF = 64 mcg/mL",
     mgSO4Attack: "MgSO₄ 50%: 4g (8mL) IV em 20min",
   };
 
-  if (!w) return result;
+  if (!w) {
+    result.fluidRecommendation = "❌ PESO NÃO INFORMADO — não é possível calcular volume por kg.";
+    return result;
+  }
 
-  const fluid = w * 30;
-  result.fluid30MlKg = `30 mL/kg × ${w} kg = ${fluid} mL de cristaloide`;
+  // ─── FLUID RESUSCITATION RULES ───
+  const needsRestrictedFluid = p.isElderly || p.hasHeartFailure || p.isDialytic || 
+    renal.stage === "GRAVE" || renal.stage === "TERMINAL";
 
+  if (needsRestrictedFluid) {
+    const reasons: string[] = [];
+    if (p.isElderly) reasons.push("idoso (≥65a)");
+    if (p.hasHeartFailure) reasons.push("insuficiência cardíaca");
+    if (p.isDialytic) reasons.push("dialítico");
+    if (renal.stage === "GRAVE" || renal.stage === "TERMINAL") reasons.push(`DRC ${renal.stage} (ClCr ${clcr} mL/min)`);
+    
+    result.fluidRecommendation = `⚠️ VOLUME RESTRITO: Paciente ${reasons.join(" + ")}.\n` +
+      `  → NÃO usar 30 mL/kg automaticamente.\n` +
+      `  → Iniciar com 250-500 mL de cristaloide.\n` +
+      `  → Reavaliar após CADA alíquota (POCUS, elevação MMII, variação PP).\n` +
+      `  → Se piora (crepitações, hipoxemia): PARAR volume, iniciar vasopressor.\n` +
+      `  → Referência: 30 mL/kg × ${w} kg = ${w * 30} mL (NÃO RECOMENDADO neste paciente).`;
+    result.fluidWarning = `🔴 RISCO DE CONGESTÃO: ${reasons.join(", ")}. Volume cauteloso.`;
+  } else {
+    const fluid = w * 30;
+    result.fluidRecommendation = `30 mL/kg × ${w} kg = ${fluid} mL de cristaloide (RL ou SF 0,9%).\n` +
+      `  → Infundir em bolus. Reavaliar responsividade após cada 500 mL.`;
+  }
+
+  // Noradrenaline
   const noraMin = Number((0.1 * w).toFixed(1));
   const noraMax = Number((2 * w).toFixed(1));
   const noraMinMlH = Number((noraMin / 64 * 60).toFixed(1));
@@ -620,20 +831,42 @@ function calcDoses(p: PatientData, renal: RenalCalcResult): DoseCalcResult {
   result.noraMinMcgMin = `Dose mínima: 0,1 mcg/kg/min × ${w} kg = ${noraMin} mcg/min (${noraMinMlH} mL/h na diluição 64mcg/mL)`;
   result.noraMaxMcgMin = `Dose máxima: 2 mcg/kg/min × ${w} kg = ${noraMax} mcg/min (${noraMaxMlH} mL/h)`;
 
-  const hepBolus = Math.round(80 * w);
-  const hepMaint = Math.round(18 * w);
-  result.hepBolus = `HNF bolus: 80 UI/kg × ${w} kg = ${hepBolus} UI`;
-  result.hepMaintenance = `HNF manutenção: 18 UI/kg/h × ${w} kg = ${hepMaint} UI/h`;
-
-  const enoxDose = Number((1 * w).toFixed(0));
-  result.enoxTherapeutic = `Enoxaparina terapêutica: 1 mg/kg × ${w} kg = ${enoxDose} mg SC 12/12h`;
-  if (clcr && clcr < 30) {
-    result.enoxRenal = `⚠️ ClCr ${clcr} < 30: ${enoxDose} mg SC 1x/dia OU preferir HNF`;
+  // ─── HEPARIN RULES ───
+  // PROPHYLAXIS always calculated
+  if (clcr !== undefined && clcr < 30) {
+    result.hepProphylaxis = `HNF profilática: 5000 UI SC 8/8h (preferir HNF pois ClCr ${clcr} < 30)`;
+  } else {
+    const enoxProf = 40;
+    result.enoxProphylaxis = `Enoxaparina profilática: ${enoxProf} mg SC 1x/dia`;
+    result.hepProphylaxis = `HNF profilática: 5000 UI SC 8/8h (alternativa)`;
   }
 
+  // THERAPEUTIC only if indication exists
+  if (p.hasAnticoagulationIndication) {
+    const hepBolus = Math.round(80 * w);
+    const hepMaint = Math.round(18 * w);
+    result.hepTherapeutic = `HNF terapêutica (INDICAÇÃO: ${p.hasAnticoagulationIndication}):\n` +
+      `  Bolus: 80 UI/kg × ${w} kg = ${hepBolus} UI\n` +
+      `  Manutenção: 18 UI/kg/h × ${w} kg = ${hepMaint} UI/h\n` +
+      `  Ajustar por TTPa a cada 6h.`;
+    
+    const enoxDose = Number((1 * w).toFixed(0));
+    result.enoxTherapeutic = `Enoxaparina terapêutica: 1 mg/kg × ${w} kg = ${enoxDose} mg SC 12/12h`;
+    if (clcr && clcr < 30) {
+      result.enoxRenal = `⚠️ ClCr ${clcr} < 30: ${enoxDose} mg SC 1x/dia OU preferir HNF`;
+    }
+  } else {
+    result.hepWarning = `🔴 ANTICOAGULAÇÃO TERAPÊUTICA NÃO INDICADA.\n` +
+      `  Sem indicação detectada (TEV, FA, IAM, TEP, TVP, prótese valvar).\n` +
+      `  → Usar apenas PROFILAXIA.\n` +
+      `  → Se há indicação não detectada, informar.`;
+  }
+
+  // Insulin
   const insulinDose = Number((0.1 * w).toFixed(1));
   result.insulinCAD = `Insulina Regular CAD: 0,1 UI/kg/h × ${w} kg = ${insulinDose} UI/h IV`;
 
+  // Prothrombin complex
   const ptMin = Math.round(25 * w);
   const ptMax = Math.round(50 * w);
   result.complexoPTmin = `Complexo protrombínico 25 UI/kg × ${w} kg = ${ptMin} UI`;
@@ -643,7 +876,7 @@ function calcDoses(p: PatientData, renal: RenalCalcResult): DoseCalcResult {
 }
 
 // ─── MODULE 4: Interaction Checker ──────────────────────────────
-function checkInteractions(medsInUse: string[], prescribedDrugs: string[]): InteractionAlert[] {
+function checkInteractions(medsInUse: string[], prescribedDrugs: string[], patient: PatientData, renal: RenalCalcResult): InteractionAlert[] {
   const allDrugs = [...new Set([...medsInUse, ...prescribedDrugs])].map(d => d.toLowerCase());
   const alerts: InteractionAlert[] = [];
 
@@ -654,7 +887,7 @@ function checkInteractions(medsInUse: string[], prescribedDrugs: string[]): Inte
     }
   }
 
-  // Check QT prolongation combinations
+  // QT prolongation combinations
   const qtDrugs = allDrugs.filter(d => {
     for (const [key, drug] of Object.entries(DRUG_DB)) {
       if (drug.qtProlongation && (d.includes(key) || key.includes(d))) return true;
@@ -666,35 +899,49 @@ function checkInteractions(medsInUse: string[], prescribedDrugs: string[]): Inte
       pair: qtDrugs.join(" + "),
       severity: "🔴",
       mechanism: "Múltiplos QT-prolongadores: risco de Torsades de Pointes",
-      action: "Monitorar QTc seriado. Manter K > 4,0 e Mg > 2,0. Considerar trocar um dos agentes.",
+      action: "Monitorar QTc. Corrigir K > 4,0 e Mg > 2,0. Se QTc > 500ms: suspender um dos agentes.",
     });
   }
 
-  // Check hyperkalemia risk with renal failure
-  const hasRenalDrug = allDrugs.some(d => /losartana|enalapril|captopril|espironolactona|ieca|bra/i.test(d));
-  if (hasRenalDrug) {
+  // Hyperkalemia risk with renal failure
+  const hasRAS = allDrugs.some(d => /losartana|enalapril|captopril|ramipril|ieca|bra|espironolactona|amilorida/i.test(d));
+  if (hasRAS && renal.clcrMlMin !== undefined && renal.clcrMlMin < 30) {
     alerts.push({
-      pair: "BRA/IECA + IRA/DRC",
-      severity: "🟡",
-      mechanism: "Risco de hipercalemia com IRA ou DRC",
-      action: "Monitorar K a cada 24h. Suspender se K > 5,5 ou Cr em elevação progressiva.",
+      pair: "BRA/IECA + DRC grave",
+      severity: "🔴",
+      mechanism: "Hipercalemia grave por bloqueio SRAA + DRC",
+      action: "Monitorar K a cada 24h. Suspender se K > 5,5. Considerar suspensão temporária em sepse/IRA.",
     });
+  }
+
+  // Acidosis risk in sepsis + DRC
+  if (renal.stage !== "NORMAL" && renal.stage !== "LEVE") {
+    const userText = allDrugs.join(" "); // crude check
+    if (/sepse|séptico|choque/i.test(userText) || patient.scenario === "UTI") {
+      alerts.push({
+        pair: "Sepse + DRC",
+        severity: "🟡",
+        mechanism: "Acidose metabólica composta: sepse (lactato) + DRC (retenção ácidos)",
+        action: "Gasometria seriada. Monitorar pH, HCO3, lactato. Considerar BIC se pH < 7,1.",
+      });
+    }
   }
 
   return alerts;
 }
 
-// ─── MODULE 5: Protocol Engine ──────────────────────────────────
+// ─── MODULE 5: Protocol Selection ───────────────────────────────
 function selectProtocol(text: string, scenario: Scenario): { name: string; steps: ProtocolStep[] } | null {
-  const t = text.toLowerCase();
-  if (/sepse|séptico|sepsis|choque séptico/i.test(t)) {
+  const lower = text.toLowerCase();
+
+  if (/sepse|séptic|choque séptico/i.test(lower)) {
     return scenario === "UTI" ? PROTOCOLS.sepsis_uti : PROTOCOLS.sepsis;
   }
-  if (/choque|shock|hipoten/i.test(t) && !/séptico/i.test(t)) return PROTOCOLS.shock;
-  if (/hemorrag|sangramento|hda|hdb|choque hemorrágico/i.test(t)) return PROTOCOLS.bleeding;
-  if (/insuf.*resp|dispneia|hipoxemia|ira\b|irpa/i.test(t)) return PROTOCOLS.respiratory_failure;
-  if (/iam|infarto|sca|dor torác|síndrome coronar/i.test(t)) return PROTOCOLS.cardiac;
-  if (/avc|acidente vascular|stroke|déficit focal/i.test(t)) return PROTOCOLS.stroke;
+  if (/choque|hipoten/i.test(lower) && !/séptic/i.test(lower)) return PROTOCOLS.shock;
+  if (/hemorr|sangr.*ativo|choque hemorrágico/i.test(lower)) return PROTOCOLS.bleeding;
+  if (/insuf.*resp|dispneia.*aguda|hipoxemia/i.test(lower)) return PROTOCOLS.respiratory_failure;
+  if (/iam|infarto|sca|síndrome coronariana|dor torácica/i.test(lower)) return PROTOCOLS.cardiac;
+  if (/avc|acidente vascular|stroke/i.test(lower)) return PROTOCOLS.stroke;
   return null;
 }
 
@@ -723,16 +970,32 @@ function getDrugRenalAdjustments(clcr: number | undefined): string[] {
 }
 
 // ─── MODULE 7: Allergy Checker ──────────────────────────────────
-function checkAllergies(allergies: string | undefined): string[] {
+function checkAllergies(patient: PatientData): string[] {
+  const { allergies, allergyType } = patient;
   if (!allergies) return [];
   const a = allergies.toLowerCase();
   const warnings: string[] = [];
 
   if (/penicilina|amoxicilina|ampicilina/i.test(a)) {
-    warnings.push("🔴 ALERGIA A PENICILINA: Evitar pipe-tazo, amoxicilina, ampicilina. Cefalosporinas: reação cruzada ~2%. Meropenem: < 1% cruzada.");
+    if (allergyType === "ANAFILÁTICA") {
+      warnings.push("🔴 ANAFILAXIA A PENICILINA CONFIRMADA:");
+      warnings.push("  → EVITAR: Penicilinas, Cefalosporinas, Carbapenêmicos (se alternativa existir)");
+      warnings.push("  → PREFERIR: Aztreonam, Quinolona (levo/cipro), Vancomicina, Linezolida, Daptomicina");
+      warnings.push("  → Carbapenêmico APENAS se SNC ou situação sem alternativa, com skin test e monitorização");
+    } else if (allergyType === "LEVE") {
+      warnings.push("🟡 ALERGIA LEVE A PENICILINA (rash/urticária):");
+      warnings.push("  → Cefalosporinas: reação cruzada ~2%, PODEM ser usadas com cautela (monitorar 1ª dose)");
+      warnings.push("  → Carbapenêmicos: risco < 1%, PODEM ser usadas");
+      warnings.push("  → Evitar penicilinas diretas");
+    } else {
+      warnings.push("🟡 ALERGIA A PENICILINA — TIPO NÃO INFORMADO:");
+      warnings.push("  → PERGUNTAR: Foi anafilaxia (choque, edema de glote) ou reação leve (rash)?");
+      warnings.push("  → Tratando como potencialmente grave até confirmação");
+      warnings.push("  → EVITAR penicilinas. Cefalosporinas/carbapenêmicos com cautela.");
+    }
   }
   if (/cefalosporina|ceftriaxona|cefazolina|cefepime/i.test(a)) {
-    warnings.push("🔴 ALERGIA A CEFALOSPORINA: Evitar todas cefalosporinas. Carbapenêmico ou fluoroquinolona.");
+    warnings.push("🔴 ALERGIA A CEFALOSPORINA: Evitar todas cefalosporinas. Usar Aztreonam, Quinolona ou Carbapenêmico.");
   }
   if (/sulfa|sulfametoxazol|bactrim/i.test(a)) {
     warnings.push("🟡 ALERGIA A SULFA: Evitar SMX-TMP. Atenção furosemida (cruzada rara).");
@@ -766,6 +1029,38 @@ function validateData(patient: PatientData): { complete: boolean; missing: strin
   return { complete: missing.length === 0, missing, score };
 }
 
+// ─── MODULE 9: Safety Alerts Generator ──────────────────────────
+function generateSafetyAlerts(patient: PatientData, renal: RenalCalcResult): string[] {
+  const alerts: string[] = [];
+
+  if (patient.isElderly) alerts.push("🟡 IDOSO (≥65a): Reduzir doses. Volume cauteloso. Monitorar função renal.");
+  if (renal.stage === "GRAVE" || renal.stage === "TERMINAL") {
+    alerts.push(`🔴 DRC ${renal.stage} (ClCr ${renal.clcrMlMin} mL/min): Ajustar TODAS as drogas renais.`);
+  }
+  if (patient.hasHeartFailure) alerts.push("🔴 IC: Volume restrito. Risco de congestão. POCUS antes de volume.");
+  if (patient.isDialytic) alerts.push("🔴 DIALÍTICO: Volume muito restrito. Avaliar necessidade de TRS.");
+  if (patient.allergies) alerts.push(`🟡 ALERGIA INFORMADA: "${patient.allergies}" (tipo: ${patient.allergyType})`);
+  
+  // Anticoagulation safety
+  if (!patient.hasAnticoagulationIndication) {
+    alerts.push("ℹ️ SEM INDICAÇÃO DE ANTICOAGULAÇÃO TERAPÊUTICA detectada. Usar apenas profilaxia.");
+  }
+
+  // Scenario-specific alerts
+  if (patient.scenario === "UBS") {
+    alerts.push("ℹ️ CENÁRIO UBS: Não pedir exames invasivos. Conduta simples. Referenciar se grave.");
+  } else if (patient.scenario === "SAMU") {
+    alerts.push("ℹ️ CENÁRIO SAMU: Foco em estabilização. Não prescrever medicações complexas.");
+  }
+
+  // Nefrotoxicity warning
+  if (renal.stage === "MODERADA" || renal.stage === "GRAVE" || renal.stage === "TERMINAL") {
+    alerts.push("🟡 EVITAR NEFROTÓXICOS: aminoglicosídeos, AINEs, contraste iodado (se possível).");
+  }
+
+  return alerts;
+}
+
 // ─── MAIN ENGINE ─────────────────────────────────────────────────
 function runEngine(messages: ChatMessage[]): EngineResult {
   const patient = extractPatient(messages);
@@ -774,10 +1069,11 @@ function runEngine(messages: ChatMessage[]): EngineResult {
   const userText = messages.filter(m => m.role === "user").map(m => m.content).join("\n");
   const protocol = selectProtocol(userText, patient.scenario);
   const antibiotic = selectAntibiotic(patient, renal);
-  const interactions = checkInteractions(patient.medicationsInUse, []);
+  const interactions = checkInteractions(patient.medicationsInUse, [], patient, renal);
   const drugRenalAdj = getDrugRenalAdjustments(renal.clcrMlMin);
-  const allergyWarnings = checkAllergies(patient.allergies);
+  const allergyWarnings = checkAllergies(patient);
   const dataValidation = validateData(patient);
+  const safetyAlerts = generateSafetyAlerts(patient, renal);
 
   const missingData: string[] = [];
   if (!patient.weightKg) missingData.push("PESO (kg) — necessário para cálculos mg/kg, mL/kg, UI/kg");
@@ -787,23 +1083,16 @@ function runEngine(messages: ChatMessage[]): EngineResult {
   if (!patient.allergies) missingData.push("ALERGIAS — necessário para validação de segurança");
   if (patient.scenario === "NÃO INFORMADO") missingData.push("CENÁRIO (PS/UTI/UBS/SAMU/Enfermaria)");
   if (patient.focus === "SEM FOCO DEFINIDO") missingData.push("FOCO INFECCIOSO");
+  if (patient.allergies && patient.allergyType === "NÃO INFORMADA" && /penicilina/i.test(patient.allergies)) {
+    missingData.push("TIPO DE ALERGIA a penicilina: anafilaxia ou reação leve?");
+  }
 
   const warnings = [...allergyWarnings];
-  if (renal.stage === "GRAVE" || renal.stage === "DIALÍTICA") {
-    warnings.push(`🔴 DRC ${renal.stage} (ClCr ${renal.clcrMlMin} mL/min) — Ajustar doses de TODAS as drogas renais`);
-  }
   for (const adj of drugRenalAdj) {
     warnings.push(`💊 AJUSTE RENAL: ${adj}`);
   }
 
-  // Add acidosis warning for sepsis + renal failure
-  if (renal.stage !== "NORMAL" && renal.stage !== "LEVE") {
-    if (/sepse|séptico|choque/i.test(userText)) {
-      warnings.push("🟡 RISCO ACIDOSE: Sepse + DRC → acidose metabólica composta. Monitorar pH, HCO3, lactato.");
-    }
-  }
-
-  return { patient, renal, doses, interactions, protocol, antibiotic, missingData, warnings, dataValidation };
+  return { patient, renal, doses, interactions, protocol, antibiotic, missingData, warnings, dataValidation, safetyAlerts };
 }
 
 // ─── Format Engine Context ───────────────────────────────────────
@@ -823,15 +1112,18 @@ function formatEngineContext(e: EngineResult): string {
 
   // Patient
   lines.push("👤 DADOS DO PACIENTE:");
-  lines.push(`  Peso: ${e.patient.weightKg ? `${e.patient.weightKg} kg ✅` : "❌ NÃO INFORMADO"}`);
-  lines.push(`  Idade: ${e.patient.ageYears ? `${e.patient.ageYears} anos ✅` : "❌ NÃO INFORMADO"}`);
+  lines.push(`  Peso: ${e.patient.weightKg ? `${e.patient.weightKg} kg ✅` : "❌ NÃO INFORMADO — NÃO INVENTAR"}`);
+  lines.push(`  Idade: ${e.patient.ageYears ? `${e.patient.ageYears} anos ✅${e.patient.isElderly ? " (IDOSO)" : ""}` : "❌ NÃO INFORMADO"}`);
   lines.push(`  Sexo: ${e.patient.sex ? `${e.patient.sex === "M" ? "Masculino" : "Feminino"} ✅` : "❌ NÃO INFORMADO"}`);
   lines.push(`  Creatinina: ${e.patient.creatinineMgDl ? `${e.patient.creatinineMgDl} mg/dL ✅` : "❌ NÃO INFORMADO"}`);
-  lines.push(`  Alergias: ${e.patient.allergies ? `"${e.patient.allergies}" ✅` : "❌ NÃO INFORMADO"}`);
+  lines.push(`  Alergias: ${e.patient.allergies ? `"${e.patient.allergies}" (Tipo: ${e.patient.allergyType}) ✅` : "❌ NÃO INFORMADO"}`);
   lines.push(`  Cenário: ${e.patient.scenario}`);
   lines.push(`  Foco: ${e.patient.focus}`);
   lines.push(`  Origem infecção: ${e.patient.infectionOrigin}`);
   lines.push(`  Medicações em uso: ${e.patient.medicationsInUse.length ? e.patient.medicationsInUse.join(", ") : "não informadas"}`);
+  lines.push(`  IC: ${e.patient.hasHeartFailure ? "SIM ⚠️" : "Não informado"}`);
+  lines.push(`  Dialítico: ${e.patient.isDialytic ? "SIM (informado pelo usuário) ⚠️" : "NÃO INFORMADO — NÃO ASSUMIR"}`);
+  lines.push(`  Indicação anticoagulação: ${e.patient.hasAnticoagulationIndication || "NENHUMA DETECTADA → só profilaxia"}`);
 
   // Risk factors
   const rf = e.patient.riskFactors;
@@ -859,15 +1151,26 @@ function formatEngineContext(e: EngineResult): string {
   if (!e.patient.weightKg) {
     lines.push("  ⚠️ PESO NÃO INFORMADO — doses por kg PENDENTES. NÃO INVENTE PESO.");
   } else {
-    if (e.doses.fluid30MlKg) lines.push(`  ${e.doses.fluid30MlKg}`);
+    // Fluid
+    lines.push(`  VOLUME: ${e.doses.fluidRecommendation}`);
+    if (e.doses.fluidWarning) lines.push(`  ${e.doses.fluidWarning}`);
+    
+    // Vasopressors
     lines.push(`  Diluição nora: ${e.doses.noraDilution}`);
     if (e.doses.noraMinMcgMin) lines.push(`  ${e.doses.noraMinMcgMin}`);
     if (e.doses.noraMaxMcgMin) lines.push(`  ${e.doses.noraMaxMcgMin}`);
-    if (e.doses.hepBolus) lines.push(`  ${e.doses.hepBolus}`);
-    if (e.doses.hepMaintenance) lines.push(`  ${e.doses.hepMaintenance}`);
-    if (e.doses.enoxTherapeutic) lines.push(`  ${e.doses.enoxTherapeutic}`);
+    
+    // Heparin
+    lines.push("\n  ANTICOAGULAÇÃO:");
+    if (e.doses.hepProphylaxis) lines.push(`  PROFILAXIA: ${e.doses.hepProphylaxis}`);
+    if (e.doses.enoxProphylaxis) lines.push(`  PROFILAXIA: ${e.doses.enoxProphylaxis}`);
+    if (e.doses.hepTherapeutic) lines.push(`  TERAPÊUTICA: ${e.doses.hepTherapeutic}`);
+    if (e.doses.enoxTherapeutic) lines.push(`  TERAPÊUTICA: ${e.doses.enoxTherapeutic}`);
     if (e.doses.enoxRenal) lines.push(`  ${e.doses.enoxRenal}`);
-    if (e.doses.insulinCAD) lines.push(`  ${e.doses.insulinCAD}`);
+    if (e.doses.hepWarning) lines.push(`  ${e.doses.hepWarning}`);
+    
+    // Other
+    if (e.doses.insulinCAD) lines.push(`\n  ${e.doses.insulinCAD}`);
     lines.push(`  ${e.doses.mgSO4Attack}`);
     if (e.doses.complexoPTmin) lines.push(`  ${e.doses.complexoPTmin}`);
     if (e.doses.complexoPTmax) lines.push(`  ${e.doses.complexoPTmax}`);
@@ -877,7 +1180,7 @@ function formatEngineContext(e: EngineResult): string {
     const vancoStd = Math.round(15 * w);
     const vancoMax = Math.round(20 * w);
     const vancoAtaque = Math.round(25 * w);
-    lines.push(`  Vancomicina manutenção: 15-20 mg/kg × ${w} kg = ${vancoStd}-${vancoMax} mg 12/12h`);
+    lines.push(`\n  Vancomicina manutenção: 15-20 mg/kg × ${w} kg = ${vancoStd}-${vancoMax} mg 12/12h`);
     lines.push(`  Vancomicina ataque: 25 mg/kg × ${w} kg = ${vancoAtaque} mg`);
     if (e.renal.clcrMlMin !== undefined && e.renal.clcrMlMin < 50) {
       const adj = e.renal.clcrMlMin >= 30 ? `${vancoStd} mg 24/24h` : `${vancoStd} mg 48/48h ou por nível`;
@@ -892,6 +1195,12 @@ function formatEngineContext(e: EngineResult): string {
     lines.push(`  ALTERNATIVAS: ${e.antibiotic.alternatives.join(" | ")}`);
     lines.push(`  RACIONAL: ${e.antibiotic.rationale}`);
     lines.push(`  COBERTURA NECESSÁRIA: ${e.antibiotic.coverageNeeded.join(", ")}`);
+    if (e.antibiotic.allergyWarnings.length) {
+      lines.push(`  ALERTAS DE ALERGIA:`);
+      for (const aw of e.antibiotic.allergyWarnings) {
+        lines.push(`    ${aw}`);
+      }
+    }
     if (e.antibiotic.questionsNeeded.length) {
       lines.push(`  ❓ PERGUNTAS PARA REFINAR ATB:`);
       for (const q of e.antibiotic.questionsNeeded) {
@@ -916,9 +1225,17 @@ function formatEngineContext(e: EngineResult): string {
     }
   }
 
+  // Safety Alerts
+  if (e.safetyAlerts.length) {
+    lines.push("\n🛡️ ALERTAS DE SEGURANÇA DO MOTOR:");
+    for (const sa of e.safetyAlerts) {
+      lines.push(`  ${sa}`);
+    }
+  }
+
   // Warnings
   if (e.warnings.length) {
-    lines.push("\n🚨 ALERTAS DO MOTOR:");
+    lines.push("\n🚨 ALERTAS ADICIONAIS:");
     for (const w of e.warnings) {
       lines.push(`  ${w}`);
     }
@@ -939,14 +1256,73 @@ function formatEngineContext(e: EngineResult): string {
 // ─── System Prompt ───────────────────────────────────────────────
 const SYSTEM_PROMPT = `Você é um assistente clínico de plantão no Brasil. O MOTOR CLÍNICO já calculou tudo. Você ORGANIZA e EXPLICA.
 
-REGRAS ABSOLUTAS:
-1. Use EXATAMENTE os valores do motor clínico. NÃO recalcule. NÃO invente peso/idade/sexo.
-2. Se dado marcado ❌, PERGUNTE ao usuário. NÃO assuma valor.
-3. Se motor calculou dose, COPIE exatamente. NÃO arredonde diferente.
-4. ANTES de prescrever, VERIFIQUE a validação de dados. Se < 100%, ALERTE sobre dados faltantes.
-5. Use o antibiótico recomendado pelo motor. Se dados insuficientes para refinar, PERGUNTE (comunitário vs hospitalar, dispositivos, ATB recente).
-6. Se cenário = UTI, use protocolo UTI completo (acesso central, PAI, monitor invasivo, etc).
-7. Comece pela AÇÃO. Máximo 1 frase antes das prioridades.
+REGRAS ABSOLUTAS DE SEGURANÇA (NUNCA VIOLAR):
+
+1. NÃO ASSUMIR DADOS NÃO INFORMADOS
+   - NUNCA assumir: diálise, ventilação mecânica, UTI prévia, foco infeccioso, peso, idade, sexo
+   - Se dado marcado ❌, PERGUNTE. NÃO invente.
+   - Se o motor diz "NÃO ASSUMIR", obedeça.
+
+2. AJUSTE RENAL OBRIGATÓRIO
+   - Se creatinina informada → usar ClCr do motor
+   - ClCr < 60 → ajustar doses
+   - ClCr < 30 → ajuste OBRIGATÓRIO
+   - ClCr < 15 → insuficiência renal grave
+   - NUNCA prescrever antibiótico, heparina ou enoxaparina sem considerar rim
+
+3. PESO = BASE DE CÁLCULO
+   - Sempre usar doses por kg do motor
+   - NUNCA usar dose fixa se peso disponível
+   - COPIAR exatamente os valores do motor
+
+4. VOLUME NÃO É AUTOMÁTICO
+   - Se motor diz "VOLUME RESTRITO" → NÃO usar 30 mL/kg
+   - Idoso, DRC, IC, dialítico → 250-500 mL + reavaliar + POCUS
+   - Seguir EXATAMENTE a recomendação de volume do motor
+
+5. ALERGIA É REGRA FORTE
+   - Se anafilaxia a penicilina → EVITAR penicilinas, cefalosporinas, carbapenêmicos
+   - PREFERIR: aztreonam, quinolona, vancomicina, linezolida, daptomicina
+   - Seguir o antibiótico recomendado pelo motor (já considera alergia)
+   - NUNCA ignorar alergia
+
+6. NÃO ANTICOAGULAR SEM INDICAÇÃO
+   - Se motor diz "ANTICOAGULAÇÃO TERAPÊUTICA NÃO INDICADA" → usar APENAS profilaxia
+   - Anticoagulação plena SÓ se: TEV, FA, IAM, TEP, TVP, prótese valvar
+   - Sepse SEM essas indicações = PROFILAXIA apenas
+
+7. ANTIBIÓTICO DIRECIONADO
+   - Meropenem + Vancomicina NÃO É AUTOMÁTICO
+   - Só usar espectro máximo se: choque grave + hospitalar + sem foco + falha ATB
+   - Seguir a recomendação do motor que considera foco, cenário, alergia
+
+8. ALERTAS OBRIGATÓRIOS
+   - Mostrar TODOS os alertas do motor
+   - Se risco: DRC, idoso, alergia, interação, QT, hipercalemia, sangramento
+   - Nunca omitir alerta de segurança
+
+9. EXAMES COERENTES COM CENÁRIO
+   - UBS → não pedir TC urgente ou invasivos
+   - SAMU → não pedir ressonância
+   - PS → exames básicos primeiro
+   - UTI → pode pedir invasivos
+
+10. ADAPTAR AO CENÁRIO
+    - UBS → conduta simples
+    - PS → conduta inicial
+    - UTI → conduta completa (acesso central, PAI, monitor)
+    - SAMU → estabilização
+    - Enfermaria → manejo clínico
+
+11. MOSTRAR TODOS OS CÁLCULOS
+    - ClCr, dose/kg, volume/kg, diluição, velocidade BIC, ajuste renal
+    - Nunca esconder cálculo
+
+12. PRIORIDADE = SEGURANÇA DO PACIENTE
+    - Se dúvida → ser conservador
+    - Pedir mais dados antes de prescrever
+    - Evitar droga arriscada se alternativa existir
+    - Alertar risco
 
 FORMATO OBRIGATÓRIO (nesta ordem):
 1. 📊 VALIDAÇÃO — Checklist: ✅/❌ para cada dado. Score %.
@@ -954,12 +1330,13 @@ FORMATO OBRIGATÓRIO (nesta ordem):
 3. 🎯 DIAGNÓSTICO — hipótese principal + 2-3 diferenciais (tabela: Hipótese | Probabilidade | Argumento).
 4. ⚡ PRIORIDADES — 1-5 ações IMEDIATAS (verbo imperativo, em ordem de urgência).
 5. 🔄 ALGORITMO — fluxo decisório com setas (→ ↓).
-6. 🔬 EXAMES — "Imediatos" e "Complementares".
-7. 💊 CONDUTA + PRESCRIÇÃO — Use ATB do motor. Copie doses do motor. Mostre fórmula + resultado.
+6. 🔬 EXAMES — "Imediatos" e "Complementares" (ADAPTAR AO CENÁRIO).
+7. 💊 CONDUTA + PRESCRIÇÃO — Use ATB do motor. Copie doses do motor. Mostre fórmula + resultado. PROFILAXIA TVP = profilática (NÃO terapêutica sem indicação).
 8. ⚠️ INTERAÇÕES — Copie alertas do motor + adicione QT, eletrólitos, renal.
-9. 🚨 ALERTAS — red flags, contraindicações, segurança.
+9. 🚨 ALERTAS — red flags, contraindicações, segurança. INCLUIR todos os alertas de segurança do motor.
 10. 📚 REFERÊNCIAS — guidelines brasileiras e internacionais.
-11. ❓ PERGUNTAS — 3-5 perguntas OBRIGATÓRIAS. Incluir TODOS os dados faltantes do motor + perguntas de refinamento do ATB.
+11. 🎯 METAS (se UTI/grave) — PAM ≥65, diurese >0.5 mL/kg/h, lactato↓, Sat>92%, glicemia 140-180, K normal, pH>7.2.
+12. ❓ PERGUNTAS — 3-5 perguntas OBRIGATÓRIAS. Incluir TODOS os dados faltantes do motor + perguntas de refinamento do ATB.
 
 DISCLAIMER: Apoio à decisão clínica — responsabilidade final é do médico.`;
 
