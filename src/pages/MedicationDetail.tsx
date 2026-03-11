@@ -8,9 +8,6 @@ import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import PremiumGate, { PremiumBadge } from "@/components/PremiumGate";
 import { FREE_MEDICATION_IDS } from "@/lib/plans";
-import { cn } from "@/lib/utils";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import PremiumGate, { PremiumBadge } from "@/components/PremiumGate";
 
 const allSections = [
   { key: "indication" as const, label: "Indicação" },
