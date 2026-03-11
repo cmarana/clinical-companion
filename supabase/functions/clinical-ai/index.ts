@@ -1134,20 +1134,22 @@ const ICU_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
 // ─── Trauma / Surgery Protocols ──────────────────────────────────
 const TRAUMA_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
   trauma_atls: {
-    name: "Trauma Grave — ATLS",
+    name: "Trauma Grave — ATLS + Damage Control Resuscitation",
     steps: [
       { order: 1, action: "A: Via aérea com proteção cervical. IOT se necessário (colar cervical mantido)" },
       { order: 2, action: "B: Respiração — excluir pneumotórax hipertensivo, hemotórax, tórax instável. Drenagem se indicado" },
       { order: 3, action: "C: Circulação — 2 acessos calibrosos (16-18G). Compressão hemorragia externa" },
-      { order: 4, action: "Cristaloide aquecido 500mL → reavaliar. Se choque classe III/IV → sangue precoce" },
-      { order: 5, action: "Ácido tranexâmico 1g IV em 10min se < 3h do trauma" },
-      { order: 6, action: "Tipagem + reserva + protocolo de transfusão maciça se indicado (CH:PFC:PLQ 1:1:1)" },
+      { order: 4, action: "🔴 VOLUME: NÃO dar cristaloide em excesso. Cristaloide piora coagulopatia/hipotermia/acidose (tríade letal).", target: "Classe I-II: cristaloide 500-1000mL. Classe III-IV: SANGUE PRECOCE" },
+      { order: 5, action: "🔴 Se choque classe III/IV → ATIVAR PROTOCOLO MTP IMEDIATO (CH:PFC:PLQ 1:1:1). NÃO esperar labs." },
+      { order: 6, action: "Ácido tranexâmico 1g IV em 10min se < 3h do trauma (+ 1g em 8h)" },
       { order: 7, action: "D: Neurológico — Glasgow, pupilas, déficit motor/sensitivo" },
       { order: 8, action: "E: Exposição — despir, avaliar lesões, prevenir hipotermia (manta térmica)" },
       { order: 9, action: "FAST (eco POCUS): líquido livre abdominal/pericárdico" },
-      { order: 10, action: "TC corpo inteiro (pan-scan) se politrauma + instável pós-ressuscitação" },
-      { order: 11, action: "Se anticoagulado: reverter IMEDIATAMENTE (vitamina K, CCP, PFC)" },
-      { order: 12, action: "Avaliação secundária: head-to-toe após estabilização" },
+      { order: 10, action: "Se anticoagulado: reverter IMEDIATAMENTE (vitamina K, CCP, PFC)" },
+      { order: 11, action: "Considerar REBOA / cirurgia de controle de dano se hemorragia não compressível" },
+      { order: 12, action: "Metas: Hb > 7, plaquetas > 50k, fibrinogênio > 200, Ca ionizado > 1,0, pH > 7,2, temp > 35°C" },
+      { order: 13, action: "ATB profilático (cefazolina): NÃO é prioridade inicial. Foco = controle hemorrágico." },
+      { order: 14, action: "TC corpo inteiro (pan-scan) APÓS estabilização. Avaliação secundária head-to-toe." },
     ],
   },
   abdome_agudo: {
