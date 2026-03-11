@@ -142,3 +142,8 @@
 .emergency-flash {
   animation: flash-red 200ms ease-in-out;
 }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+.safe-area-bottom { padding-bottom: env(safe-area-inset-bottom, 0); }
