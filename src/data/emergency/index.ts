@@ -1,11 +1,13 @@
 import type { EmergencyCategory } from "./types";
 import { resuscitationProtocols } from "./resuscitation";
+import { cardiovascularProtocols } from "./cardiovascular";
 
 export { SECTION_ORDER } from "./types";
 export type { EmergencyProtocol, EmergencyCategory, EmergencySection } from "./types";
 
 export const emergencyCategories: EmergencyCategory[] = [
   { id: "resuscitation", title: "Ressuscitação e Via Aérea", protocols: resuscitationProtocols },
+  { id: "cardiovascular", title: "Cardiovasculares de Emergência", protocols: cardiovascularProtocols },
 ];
 
 // Flat list for search/lookup

@@ -26,6 +26,15 @@ export default function EmergencyMode() {
   const toggleCat = (id: string) =>
     setOpenCats(prev => ({ ...prev, [id]: !prev[id] }));
 
+  if (!subscription.subscribed) {
+    return (
+      <>
+        <TopBar title="Emergência" />
+        <PremiumGate />
+      </>
+    );
+  }
+
   return (
     <>
       <TopBar title="Emergência" />
