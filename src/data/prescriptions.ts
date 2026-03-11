@@ -340,6 +340,127 @@ Grave:
     ],
   },
   {
+    id: "neuro",
+    title: "Neurologia",
+    items: [
+      {
+        id: "cefaleia-rx",
+        title: "Cefaleia / Enxaqueca no PS",
+        type: "Prescrição no Pronto Socorro",
+        prescription: `1. Dipirona 1g EV 6/6h
+2. Cetoprofeno 100mg EV (dose única)
+3. Metoclopramida 10mg EV (efeito antiemético + adjuvante para cefaleia)
+4. Dexametasona 10mg EV (dose única — status migranoso)
+5. SF 0,9% 500mL EV — hidratação
+6. Clorpromazina 0,1mg/kg EV lento (se refratária, em ambiente monitorado)
+7. Sumatriptano 6mg SC (se migranosa, sem contraindicações cardiovasculares)`,
+        notes: "NÃO usar triptanos + ergotamínicos juntos. Investigar cefaleia secundária se: início abrupto (thunderclap), pior da vida, sinais focais, febre, rigidez de nuca.",
+        warnings: "Red flags: cefaleia em trovão, papiledema, febre + meningismo, déficit focal, alteração de consciência → TC + líquor.",
+        guideline: "SBCe / IHS",
+      },
+      {
+        id: "convulsao-rx",
+        title: "Crise Convulsiva / Status Epiléptico",
+        type: "Prescrição no Pronto Socorro",
+        prescription: `Fase 1 (0-5 min):
+1. Diazepam 10mg EV lento (ou Midazolam 10mg IM se sem acesso)
+2. O2 suplementar, proteção de via aérea
+3. Glicemia capilar (Glicose 50% 40mL se hipoglicemia)
+4. Monitorização contínua
+
+Fase 2 (5-20 min) — Se não cessou:
+5. Fenitoína 20mg/kg EV (máx 50mg/min, em SF — precipita em SG!)
+6. OU Valproato de sódio 40mg/kg EV em 10 min (alternativa)
+
+Fase 3 (>20 min) — Status epiléptico refratário:
+7. Midazolam IV em BIC: bolus 0,2mg/kg → 0,1-0,4mg/kg/h
+8. OU Propofol 2mg/kg bolus → 2-5mg/kg/h
+9. IOT + ventilação mecânica
+10. Monitorização EEG contínua`,
+        warnings: "Fenitoína NÃO diluir em SG (cristaliza). Infundir com monitorização cardíaca (risco de arritmia e hipotensão).",
+        guideline: "ABN / AES",
+      },
+    ],
+  },
+  {
+    id: "renal",
+    title: "Nefrologia / Urologia",
+    items: [
+      {
+        id: "colica-renal-rx",
+        title: "Cólica Renal",
+        type: "Prescrição no Pronto Socorro",
+        prescription: `1. Cetoprofeno 100mg EV (1ª escolha — AINE)
+2. OU Tenoxicam 20mg EV
+3. Dipirona 1g EV 6/6h (adjuvante)
+4. Tramadol 50-100mg EV (se dor refratária)
+5. Buscopan Composto (Escopolamina + Dipirona) 1 amp EV 8/8h
+6. Ondansetrona 4mg EV se náusea
+7. SF 0,9% 500mL EV — NÃO hiper-hidratar (pode piorar a dor)
+8. Tamsulosina 0,4mg VO 1x/dia (terapia expulsiva para cálculos 5-10mm)
+9. TC sem contraste de abdome (padrão-ouro)
+10. EAS + Creatinina + Hemograma`,
+        notes: "NÃO hiper-hidratar na fase aguda da cólica — aumenta pressão no trato urinário e piora dor. Hidratar apenas se sinais de desidratação.",
+        warnings: "Internar se: febre + ITU (pionefrose), rim único, IRA, dor refratária, cálculo >10mm obstrutivo.",
+        guideline: "SBU / EAU",
+      },
+    ],
+  },
+  {
+    id: "trauma",
+    title: "Trauma / Queimaduras",
+    items: [
+      {
+        id: "queimadura-rx",
+        title: "Queimaduras",
+        type: "Prescrição Hospitalar",
+        prescription: `1. Avaliar SCQ (regra dos 9 ou palma da mão = 1%)
+2. Reposição volêmica (Parkland): RL 4mL × peso × %SCQ
+   - 50% nas primeiras 8h, 50% nas 16h seguintes
+3. Analgesia: Morfina 2-4mg EV (queimaduras extensas) + Dipirona 1g EV 6/6h
+4. Profilaxia antitetânica (dT se necessário)
+5. Curativo: Sulfadiazina de prata 1% tópico (2º grau)
+6. Ceftriaxona 1g EV 12/12h se sinais de infecção
+7. Omeprazol 40mg EV 1x/dia (profilaxia úlcera de Curling se >20% SCQ)
+8. SVD se SCQ >20%
+9. Cabeceira elevada 30° se queimadura facial
+10. Dieta hiperproteica e hipercalórica precoce`,
+        notes: "Grande queimado (>20% SCQ adulto, >10% criança, >5% idoso): internar em UTI/Centro de Queimados.",
+        warnings: "NÃO estourar bolhas de 2º grau. NÃO usar gelo. NÃO usar soluções antissépticas irritantes.",
+        guideline: "SBQ / ABA",
+      },
+    ],
+  },
+  {
+    id: "tropical",
+    title: "Doenças Tropicais",
+    items: [
+      {
+        id: "dengue-rx",
+        title: "Dengue",
+        type: "Prescrição no Pronto Socorro",
+        prescription: `Grupo A (sem sinais de alarme):
+1. Hidratação oral: 60-80 mL/kg/dia (1/3 SRO + 2/3 líquidos)
+2. Paracetamol 750mg VO 6/6h se febre/dor
+3. Dipirona 500mg VO 6/6h (alternativa)
+4. Repouso
+5. Retorno se sinais de alarme
+
+Grupo B (com petéquias ou comorbidades):
+6. Hidratação oral supervisionada + hemograma
+7. Reavaliar em 4h
+
+Grupo C (sinais de alarme):
+8. SF 0,9% 20mL/kg EV em 2h (até 3x)
+9. Hemograma + Hematócrito seriado (6/6h)
+10. Internação — Grupo D (choque): SF 0,9% 20mL/kg em 20min`,
+        notes: "Sinais de alarme: dor abdominal intensa, vômitos persistentes, hipotensão postural, hepatomegalia, sangramento mucoso, letargia, lipotímia, ↑Ht com ↓plaquetas.",
+        warnings: "NÃO usar AAS ou AINEs (risco de hemorragia). Usar APENAS Paracetamol ou Dipirona para febre/dor.",
+        guideline: "Ministério da Saúde 2024",
+      },
+    ],
+  },
+  {
     id: "discharge",
     title: "Alta Hospitalar",
     items: [
