@@ -3,7 +3,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 // ─── Types ───────────────────────────────────────────────────────
 type ChatMessage = { role: "user" | "assistant" | "system"; content: string };
 type Scenario = "PS" | "UTI" | "UBS" | "SAMU" | "ENFERMARIA" | "HOSPITAL" | "NÃO INFORMADO";
-type ClinicalMode = "NEURO" | "CARDIO" | "PEDIATRIA" | "UTI" | "TRAUMA" | "ORTOPEDIA" | "GASTRO" | "ENDOCRINO" | "RESPIRATORIO" | "PSIQUIATRIA" | "UROLOGIA" | "DERMATOLOGIA" | "HEMATOLOGIA" | "GERAL";
+type ClinicalMode = "NEURO" | "CARDIO" | "PEDIATRIA" | "UTI" | "TRAUMA" | "ORTOPEDIA" | "GASTRO" | "ENDOCRINO" | "RESPIRATORIO" | "PSIQUIATRIA" | "UROLOGIA" | "DERMATOLOGIA" | "HEMATOLOGIA" | "INFECTOLOGIA" | "GERIATRIA" | "APS" | "PALIATIVO" | "ONCOLOGIA" | "HIDROELETROLITICO" | "REUMATOLOGIA" | "GINECO" | "GERAL";
 type Focus = "PULMONAR" | "URINÁRIO" | "ABDOMINAL" | "PELE/TECIDOS" | "SNC" | "SEM FOCO DEFINIDO";
 type RenalStage = "NORMAL" | "LEVE" | "MODERADA" | "GRAVE" | "TERMINAL";
 type InfectionOrigin = "COMUNITÁRIA" | "HOSPITALAR" | "NÃO DEFINIDA";
@@ -69,6 +69,23 @@ interface PatientData {
   isDermatologyCase: boolean;
   // Hematology
   isHematologyCase: boolean;
+  // Infectology
+  isInfectologyCase: boolean;
+  // Geriatrics (enhanced)
+  isGeriatricCase: boolean;
+  elderlyRiskLevel: "NONE" | "ALTO" | "MUITO_ALTO" | "MAXIMO";
+  // Primary Care (APS/UBS)
+  isAPSCase: boolean;
+  // Palliative Care
+  isPalliativeCase: boolean;
+  // Oncology
+  isOncologyCase: boolean;
+  // Electrolyte / Acid-Base
+  isElectrolyteCase: boolean;
+  // Rheumatology
+  isRheumatologyCase: boolean;
+  // Gynecology (ambulatory)
+  isGynecoCase: boolean;
 }
 
 interface RenalCalcResult {
@@ -1626,6 +1643,168 @@ const HEMATOLOGY_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[]
   },
 };
 
+// ─── Infectology Protocols ──────────────────────────────────────
+const INFECTOLOGY_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  febrile_neutropenia: {
+    name: "Neutropenia Febril — Protocolo de Emergência",
+    steps: [
+      { order: 1, action: "🔴 EMERGÊNCIA: Neutrófilos < 500 + febre ≥ 38°C (ou ≥ 37,8°C por > 1h)" },
+      { order: 2, action: "Hemoculturas (2 pares de sítios diferentes) + culturas de todos os sítios suspeitos" },
+      { order: 3, action: "ATB de amplo espectro anti-Pseudomonas em ≤ 1 HORA: Cefepime 2g 8/8h IV OU Piperacilina-Tazobactam 4,5g 6/6h OU Meropenem" },
+      { order: 4, action: "Se instável/choque: associar Vancomicina + considerar antifúngico" },
+      { order: 5, action: "Se cateter venoso central: considerar infecção de cateter → hemoculturas central + periférica" },
+      { order: 6, action: "MASCC score para estratificação de risco (≥ 21 = baixo risco)" },
+      { order: 7, action: "Se febre persistente > 4-7 dias: considerar antifúngico empírico (anfotericina/caspofungina)" },
+      { order: 8, action: "Ajustar ATB com culturas. NÃO suspender ATB até neutrófilos > 500 e afebril > 48h" },
+    ],
+  },
+  catheter_infection: {
+    name: "Infecção de Cateter Venoso Central",
+    steps: [
+      { order: 1, action: "Hemoculturas pareadas: central + periférica (tempo de positivação diferencial)" },
+      { order: 2, action: "Se instável/choque séptico: REMOVER cateter + ATB empírico" },
+      { order: 3, action: "ATB: Vancomicina (MRSA) ± Cefepime/Piptazo (gram-neg). Se fungo: equinocandina" },
+      { order: 4, action: "Se S. aureus: SEMPRE remover cateter. ATB ≥ 14 dias (≥ 4 sem se endocardite)" },
+      { order: 5, action: "Se CoNS (epidermidis): pode tentar lock therapy se cateter essencial" },
+      { order: 6, action: "Ecocardiograma se S. aureus ou candidemia (excluir endocardite)" },
+    ],
+  },
+  empiric_atb_guide: {
+    name: "Guia de ATB Empírico por Foco e Origem",
+    steps: [
+      { order: 1, action: "PULMONAR comunitário: Ceftriaxona + Azitromicina. Se grave/UTI: + considerar anti-Pseudomonas" },
+      { order: 2, action: "PULMONAR hospitalar/VAP: Piptazo ou Cefepime ou Meropenem ± Vancomicina (se MRSA)" },
+      { order: 3, action: "URINÁRIO comunitário: Ceftriaxona IV ou Ciprofloxacino. Simples: Fosfomicina/Nitrofurantoína VO" },
+      { order: 4, action: "URINÁRIO hospitalar/sonda: Piptazo ou Cefepime. Se ESBL: Meropenem" },
+      { order: 5, action: "ABDOMINAL: Ceftriaxona + Metronidazol. Se grave/hospitalar: Piptazo ou Meropenem" },
+      { order: 6, action: "PELE comunitária: Cefalexina/Ceftriaxona. Se necrotizante: Meropenem + Clindamicina + Vancomicina" },
+      { order: 7, action: "SNC: Ceftriaxona 2g 12/12h + Ampicilina (se > 50a ou imunossuprimido) + Dexametasona" },
+      { order: 8, action: "SEM FOCO/SEPSE: Piptazo ou Meropenem ± Vancomicina. Culturas de todos os sítios" },
+      { order: 9, action: "IMUNOSSUPRIMIDO: Meropenem + Vancomicina ± antifúngico. Cobertura máxima" },
+      { order: 10, action: "⚠️ SEMPRE: ajustar para rim, alergia, origem (comunitária vs hospitalar)" },
+    ],
+  },
+};
+
+// ─── Palliative Care Protocols ──────────────────────────────────
+const PALLIATIVE_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  symptom_control: {
+    name: "Controle de Sintomas — Cuidados Paliativos",
+    steps: [
+      { order: 1, action: "DOR: Escala analgésica OMS. Dipirona → Tramadol → Morfina. Dose por peso/rim/idoso" },
+      { order: 2, action: "Morfina VO: iniciar 5mg 4/4h. SC: 2-5mg 4/4h. Titular até conforto" },
+      { order: 3, action: "DISPNEIA: Morfina 2-5mg SC/IV mesmo sem hipoxemia. O2 se melhora subjetiva. Ansiolítico adjuvante" },
+      { order: 4, action: "NÁUSEA/VÔMITO: Metoclopramida 10mg 8/8h OU Ondansetrona 4-8mg 8/8h. Haloperidol 1mg se refratário" },
+      { order: 5, action: "DELIRIUM TERMINAL: Haloperidol 0,5-2mg SC/IV 8/8h. Evitar BZD (piora). Quetiapina 25mg se leve" },
+      { order: 6, action: "SECREÇÃO (sororoca): Escopolamina (hioscina) 20mg SC 6/6h. Posicionamento lateral" },
+      { order: 7, action: "ANSIEDADE: Midazolam 2,5-5mg SC 6/6h. Escutar. Acolhimento familiar" },
+      { order: 8, action: "SEDAÇÃO PALIATIVA: se sofrimento refratário → Midazolam 1-5mg/h BIC SC/IV. Decisão compartilhada" },
+    ],
+  },
+  end_of_life: {
+    name: "Fase Final de Vida — Condutas Proporcionais",
+    steps: [
+      { order: 1, action: "Avaliar prognóstico: horas a dias? Funcionalidade (PPS/Karnofsky)?" },
+      { order: 2, action: "Definir objetivo: CONFORTO. Não prolongar sofrimento" },
+      { order: 3, action: "Suspender: exames desnecessários, monitorização invasiva, ATB fútil, hidratação excessiva" },
+      { order: 4, action: "Manter: analgesia, controle de sintomas, higiene, dignidade" },
+      { order: 5, action: "Hidratação: MÍNIMA (500-1000 mL/dia SC). Excesso piora edema/secreção/dispneia" },
+      { order: 6, action: "Comunicação: família presente, informar prognóstico, respeitar vontades" },
+      { order: 7, action: "ONR (Ordem de Não Reanimar): documentar se indicado. NÃO iniciar RCP automaticamente" },
+      { order: 8, action: "⚠️ Paliativo NÃO é abandono. É cuidado ativo com foco em conforto" },
+    ],
+  },
+};
+
+// ─── Oncology Protocols ─────────────────────────────────────────
+const ONCOLOGY_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  febrile_onco: {
+    name: "Febre no Paciente Oncológico",
+    steps: [
+      { order: 1, action: "🔴 Considerar NEUTROPENIA FEBRIL até provar contrário se quimioterapia recente" },
+      { order: 2, action: "Hemograma URGENTE: se neutrófilos < 500 → protocolo neutropenia febril" },
+      { order: 3, action: "Hemoculturas (2 pares) + urina + RX tórax + culturas de cateter se presente" },
+      { order: 4, action: "ATB anti-Pseudomonas em ≤ 1 HORA: Cefepime ou Piptazo" },
+      { order: 5, action: "Se instável: + Vancomicina + considerar antifúngico" },
+      { order: 6, action: "MASSC score: ≥ 21 baixo risco (considerar VO ambulatorial). < 21 alto risco (internar)" },
+    ],
+  },
+  oncologic_emergency: {
+    name: "Emergências Oncológicas",
+    steps: [
+      { order: 1, action: "Compressão medular: dor dorsal + déficit motor → Dexametasona 10mg IV + RM urgente + radioterapia/cirurgia" },
+      { order: 2, action: "Síndrome de lise tumoral: hidratação vigorosa + alopurinol/rasburicase + monitorar K/Ca/P/ácido úrico/Cr" },
+      { order: 3, action: "Hipercalcemia maligna: SF 0,9% 200-300mL/h + ácido zoledrônico 4mg IV + calcitonina se grave" },
+      { order: 4, action: "SVCS (Síndrome Veia Cava Superior): elevar cabeceira + dexametasona + diurético + radioterapia/stent urgente" },
+      { order: 5, action: "Sangramento: avaliar plaquetas/INR. Transfundir se < 10k ou sangramento ativo. Ácido tranexâmico" },
+      { order: 6, action: "⚠️ Sempre considerar se tratamento é curativo ou paliativo antes de indicar medidas invasivas" },
+    ],
+  },
+};
+
+// ─── Rheumatology Protocols ─────────────────────────────────────
+const RHEUMATOLOGY_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  acute_arthritis: {
+    name: "Artrite Aguda — Avaliação",
+    steps: [
+      { order: 1, action: "Diferenciar: inflamatória vs infecciosa vs metabólica vs degenerativa vs traumática" },
+      { order: 2, action: "Se monoartrite aguda + febre → ARTRITE SÉPTICA até provar contrário → Punção articular URGENTE" },
+      { order: 3, action: "Exames: hemograma, VHS, PCR, ácido úrico, FR, anti-CCP, FAN, Cr, hemoculturas se febre" },
+      { order: 4, action: "Líquido sinovial: celularidade, gram, cultura, cristais (birrefringência)" },
+      { order: 5, action: "Gota: cristais de urato monossódico. Colchicina 0,5mg 8/8h + AINE (se rim ok). Corticoide se CI" },
+      { order: 6, action: "Artrite séptica: ATB IV + drenagem articular. Oxacilina ou Vancomicina + Ceftriaxona" },
+      { order: 7, action: "⚠️ NÃO iniciar imunossupressor sem excluir infecção" },
+    ],
+  },
+  lupus_flare: {
+    name: "Lúpus — Avaliação de Atividade",
+    steps: [
+      { order: 1, action: "Avaliar: pele (rash malar), articulações, rim (proteinúria/Cr), hematológico, serosites, SNC" },
+      { order: 2, action: "Exames: hemograma, Cr, proteinúria, complemento (C3/C4), anti-dsDNA, EAS, VHS, PCR" },
+      { order: 3, action: "Se nefrite lúpica: biópsia renal. Classe III/IV → imunossupressão agressiva" },
+      { order: 4, action: "Flare leve: AINE + hidroxicloroquina. Moderado: corticoide baixa dose" },
+      { order: 5, action: "Flare grave: Metilprednisolona 1g/dia 3 dias (pulsoterapia) → prednisona + imunossupressor" },
+      { order: 6, action: "⚠️ Se febre em lúpico: excluir infecção ANTES de assumir flare" },
+    ],
+  },
+};
+
+// ─── Gynecology (Ambulatory) Protocols ──────────────────────────
+const GYNECO_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  vaginal_bleeding: {
+    name: "Sangramento Vaginal — Avaliação",
+    steps: [
+      { order: 1, action: "SEMPRE excluir gravidez: beta-hCG" },
+      { order: 2, action: "Se grávida: ver protocolos obstétricos (aborto, ectópica, descolamento)" },
+      { order: 3, action: "Não grávida: pensar → disfuncional, mioma, pólipo, hormonal, infecção, neoplasia" },
+      { order: 4, action: "Exames: beta-hCG, hemograma, USG TV, coagulograma se sangramento intenso" },
+      { order: 5, action: "Se instável (choque): acesso venoso + volume + tipagem + considerar PS" },
+      { order: 6, action: "UBS: avaliar gravidade, exames básicos, encaminhar se necessário" },
+    ],
+  },
+  vaginal_discharge: {
+    name: "Corrimento Vaginal — Abordagem Sindrômica",
+    steps: [
+      { order: 1, action: "Candidíase: prurido + corrimento branco grumoso → Fluconazol 150mg dose única OU Miconazol creme 7 dias" },
+      { order: 2, action: "Vaginose bacteriana: corrimento acinzentado + odor → Metronidazol 500mg 12/12h 7 dias OU gel vaginal" },
+      { order: 3, action: "Tricomoníase: corrimento amarelo-esverdeado + odor → Metronidazol 2g dose única (tratar parceiro)" },
+      { order: 4, action: "Cervicite (gonococo/clamídia): corrimento mucopurulento → Ceftriaxona 500mg IM DU + Azitromicina 1g VO DU" },
+      { order: 5, action: "Testar DSTs se risco: HIV, sífilis, hepatites" },
+      { order: 6, action: "⚠️ Se gestante: ajustar tratamento (evitar metronidazol 1º trimestre se possível)" },
+    ],
+  },
+  pelvic_pain: {
+    name: "Dor Pélvica — Avaliação",
+    steps: [
+      { order: 1, action: "SEMPRE excluir: gravidez ectópica (beta-hCG + USG TV)" },
+      { order: 2, action: "Considerar: cisto ovariano, DIP, endometriose, ITU, apendicite, torção de ovário" },
+      { order: 3, action: "Se febre + corrimento + dor à mobilização cervical → DIP → ATB (Ceftriaxona + Doxiciclina + Metronidazol)" },
+      { order: 4, action: "Se dor aguda intensa + massa anexial → torção ovariana → USG Doppler URGENTE → cirurgia" },
+      { order: 5, action: "Exames: beta-hCG, hemograma, EAS/urocultura, USG TV" },
+    ],
+  },
+};
+
 // ─── Parsing Helpers ─────────────────────────────────────────────
 function parseNumber(input?: string | null): number | undefined {
   if (!input) return undefined;
@@ -1802,6 +1981,36 @@ function extractPatient(messages: ChatMessage[]): PatientData {
   // Hematology detection
   const isHematologyCase = /anemia|hemoglobina.*baix|plaquetas.*baix|plaquetopenia|trombocitopenia|inr.*alto|sangramento.*ativ|trombose|tep\b|tvp\b|anticoagulante|coagulopatia|civd\b|pancitopenia|leucopenia|hemólise|hemolítica|púrpura|petéquia|equimose|epistaxe|hemofilia|hit\b|heparina.*induz/i.test(text);
 
+  // Infectology detection
+  const isInfectologyCase = /febre.*infec|infec.*febre|sepse|choque séptico|antibiótico.*empírico|pneumonia.*febre|itu.*febre|celulite.*febre|meningite|abdome.*infeccioso|cateter.*infec|imunossuprimido.*febre|neutropenia.*febril|urosepse|endocardite|osteomielite|abscesso|empiema|peritonite|infec.*hospitalar|nosocomial/i.test(text);
+
+  // Geriatric detection (enhanced)
+  const isGeriatricCase = isElderly;
+  let elderlyRiskLevel: "NONE" | "ALTO" | "MUITO_ALTO" | "MAXIMO" = "NONE";
+  if (ageNum !== undefined) {
+    if (ageNum >= 80) elderlyRiskLevel = "MAXIMO";
+    else if (ageNum >= 75) elderlyRiskLevel = "MUITO_ALTO";
+    else if (ageNum >= 65) elderlyRiskLevel = "ALTO";
+  }
+
+  // APS / Primary Care detection
+  const isAPSCase = scenario === "UBS" || /atenção primária|atenção básica|ambulatório|consultório|esf\b|estratégia.*família/i.test(text);
+
+  // Palliative Care detection
+  const isPalliativeCase = /paliativ|terminal|câncer avançado|doença.*avançad|demência avançad|sem possibilidade.*cura|falência.*múltiplos|limitação.*suporte|conforto|fase final|cuidado.*fim.*vida|prognóstico.*reservad|fora.*possibilidade/i.test(text);
+
+  // Oncology detection
+  const isOncologyCase = /câncer|neoplasia|quimioterapia|radioterapia|neutropenia|metástase|tumor|oncológic|linfoma|leucemia|mieloma|carcinoma|sarcoma|quimio|imunossuprimido.*câncer/i.test(text);
+
+  // Electrolyte / Acid-base detection
+  const isElectrolyteCase = /na\+?\s*[:=]?\s*[0-9]|k\+?\s*[:=]?\s*[0-9]|mg\+?\s*[:=]?\s*[0-9]|ca\+?\s*[:=]?\s*[0-9]|acidose|alcalose|gasometria|ph\s*[:=]?\s*[67]|hco3|bicarbonato|lactato.*alto|distúrbio.*eletrolít|hidroeletrolít|ânion gap|osmolaridade/i.test(text) && !isEndocrineCase;
+
+  // Rheumatology detection
+  const isRheumatologyCase = /artrite|artralgia|dor articular.*crônic|rigidez matinal|lúpus|les\b|doença autoimune|gota|ácido úrico.*alto|vasculite|artrite reumatoid|espondiloartrite|fibromialgia|polimialgia|esclerodermia|síndrome.*sjögren|dermatomiosite/i.test(text) && !isOrthoCase;
+
+  // Gynecology (ambulatory) detection
+  const isGynecoCase = /sangramento vaginal|corrimento|dor pélvica|anticoncep|amenorreia|gestação inicial|dst\b|ist\b|dip\b|doença.*inflamatória.*pélvica|menopausa|climatério|cisto.*ovarian|endometriose|mioma|colo.*útero|papanicolau|colposcopia|vaginose|candidíase.*vaginal/i.test(text) && !isPregnant;
+
   return {
     weightKg: actualWeight,
     ageYears: ageNum,
@@ -1814,6 +2023,8 @@ function extractPatient(messages: ChatMessage[]): PatientData {
     isPregnant, isPuerperal, gestationalWeeks, isFertileAge, pregnancyConfirmed,
     isCriticalCase, isTraumaCase, isOrthoCase, isGastroCase, isEndocrineCase,
     isRespiratoryCase, isPsychiatryCase, isUrologyCase, isDermatologyCase, isHematologyCase,
+    isInfectologyCase, isGeriatricCase, elderlyRiskLevel, isAPSCase, isPalliativeCase,
+    isOncologyCase, isElectrolyteCase, isRheumatologyCase, isGynecoCase,
   };
 }
 
@@ -2197,6 +2408,28 @@ function selectProtocol(text: string, scenario: Scenario, patient: PatientData):
   if (/anemia.*grave|hb\s*<?\s*[67]|hemoglobina.*baix/i.test(lower)) return HEMATOLOGY_PROTOCOLS.severe_anemia;
   if (/tvp\b|trombose venosa profunda/i.test(lower)) return HEMATOLOGY_PROTOCOLS.dvt_pe;
 
+  // Infectology protocols
+  if (/neutropenia.*febril|febre.*neutropenia|neutropênic.*febre/i.test(lower)) return INFECTOLOGY_PROTOCOLS.febrile_neutropenia;
+  if (/infec.*cateter|cateter.*infec|infec.*cvc|bacteremia.*cateter/i.test(lower)) return INFECTOLOGY_PROTOCOLS.catheter_infection;
+  if (patient.isInfectologyCase && /antibiótico|atb|empírico/i.test(lower)) return INFECTOLOGY_PROTOCOLS.empiric_atb_guide;
+
+  // Palliative protocols
+  if (/sedação paliativa|sofrimento refratário|fim de vida|fase final/i.test(lower)) return PALLIATIVE_PROTOCOLS.end_of_life;
+  if (patient.isPalliativeCase) return PALLIATIVE_PROTOCOLS.symptom_control;
+
+  // Oncology protocols
+  if (/febre.*oncológic|oncológic.*febre|febre.*câncer|febre.*quimio|neutropenia/i.test(lower)) return ONCOLOGY_PROTOCOLS.febrile_onco;
+  if (/compressão medular|lise tumoral|hipercalcemia.*malig|svcs|veia cava/i.test(lower)) return ONCOLOGY_PROTOCOLS.oncologic_emergency;
+
+  // Rheumatology protocols
+  if (/artrite.*aguda|monoartrite|artrite séptica|gota.*agud/i.test(lower)) return RHEUMATOLOGY_PROTOCOLS.acute_arthritis;
+  if (/lúpus.*flare|lúpus.*ativ|nefrite lúpica/i.test(lower)) return RHEUMATOLOGY_PROTOCOLS.lupus_flare;
+
+  // Gynecology protocols
+  if (/sangramento vaginal/i.test(lower)) return GYNECO_PROTOCOLS.vaginal_bleeding;
+  if (/corrimento|vaginose|candidíase.*vagin|tricomoníase/i.test(lower)) return GYNECO_PROTOCOLS.vaginal_discharge;
+  if (/dor pélvica|dip\b|doença.*inflamatória.*pélvica/i.test(lower)) return GYNECO_PROTOCOLS.pelvic_pain;
+
   return null;
 }
 
@@ -2518,6 +2751,91 @@ function generateSafetyAlerts(patient: PatientData, renal: RenalCalcResult): str
     }
     if (patient.isElderly) {
       alerts.push("🟡 IDOSO + HEMATOLOGIA: Maior risco de sangramento. Dose menor de anticoagulante.");
+    }
+  }
+
+  // INFECTOLOGY ALERTS
+  if (patient.isInfectologyCase) {
+    alerts.push("🦠 MODO INFECTOLOGIA ATIVADO: Definir FOCO infeccioso. Classificar origem (comunitária vs hospitalar). Culturas ANTES do ATB.");
+    alerts.push("🔴 Se sepse/choque séptico: ATB em ≤ 1 HORA. Culturas + lactato + volume + vasopressor.");
+    if (patient.riskFactors.immunosuppressed) {
+      alerts.push("🔴 IMUNOSSUPRIMIDO: Cobertura máxima. Pensar fungo. Considerar antifúngico empírico.");
+    }
+    if (renal.stage !== "NORMAL" && renal.stage !== "LEVE") {
+      alerts.push(`🔴 DRC + INFECÇÃO: Ajustar ATB para ClCr ${renal.clcrMlMin} mL/min. Evitar nefrotóxicos.`);
+    }
+    if (patient.isElderly) {
+      alerts.push("🟡 IDOSO + INFECÇÃO: Pode não ter febre. Apresentação atípica. Investigar mais.");
+    }
+  }
+
+  // GERIATRIC ALERTS (enhanced)
+  if (patient.isGeriatricCase) {
+    if (patient.elderlyRiskLevel === "MAXIMO") {
+      alerts.push("🔴 IDOSO ≥ 80 ANOS — RISCO MÁXIMO: Ajustar TODAS as doses. Volume cauteloso. Fragilidade.");
+    } else if (patient.elderlyRiskLevel === "MUITO_ALTO") {
+      alerts.push("🔴 IDOSO ≥ 75 ANOS — RISCO MUITO ALTO: Doses menores. Monitorar função renal. Risco delirium.");
+    } else if (patient.elderlyRiskLevel === "ALTO") {
+      alerts.push("🟡 IDOSO ≥ 65 ANOS — RISCO ALTO: Critérios de Beers. Evitar polifarmácia. ClCr obrigatório.");
+    }
+    if (patient.medicationsInUse.length >= 5) {
+      alerts.push("🔴 POLIFARMÁCIA (≥ 5 drogas): Risco exponencial de interações e efeitos adversos. Revisar TODAS.");
+    } else if (patient.medicationsInUse.length >= 3) {
+      alerts.push("🟡 POLIFARMÁCIA (≥ 3 drogas): Checar interações. Considerar desprescrição.");
+    }
+    alerts.push("🟡 RISCO DE QUEDA: Cuidado com BZD, opioides, anti-HAS, sedativos. Avaliar ortostatismo.");
+  }
+
+  // APS / PRIMARY CARE ALERTS
+  if (patient.isAPSCase) {
+    alerts.push("🏥 MODO APS/UBS ATIVADO: Conduta adaptada para baixa complexidade. Preferir VO e SUS.");
+    alerts.push("🟡 UBS ≠ PS: Evitar exames desnecessários, ATB sem indicação, conduta hospitalar.");
+    alerts.push("🔴 ENCAMINHAR PS SE: instabilidade, dor torácica, dispneia grave, sangramento ativo, confusão, febre persistente.");
+  }
+
+  // PALLIATIVE CARE ALERTS
+  if (patient.isPalliativeCase) {
+    alerts.push("🕊️ MODO PALIATIVO ATIVADO: Prioridade = CONFORTO. Proporcionalidade terapêutica.");
+    alerts.push("🟡 Avaliar: objetivo curativo vs paliativo. Medidas invasivas apenas se benefício > sofrimento.");
+    alerts.push("🔴 Se sofrimento refratário: considerar sedação paliativa. Decisão compartilhada com família.");
+    alerts.push("⚠️ Paliativo NÃO é abandono. É cuidado ativo com foco em dignidade e conforto.");
+  }
+
+  // ONCOLOGY ALERTS
+  if (patient.isOncologyCase) {
+    alerts.push("🎗️ MODO ONCOLOGIA ATIVADO: Paciente de ALTO RISCO. Considerar neutropenia, sangramento, metástase.");
+    alerts.push("🔴 FEBRE em oncológico = neutropenia febril até provar contrário → ATB em ≤ 1 HORA.");
+    if (renal.stage !== "NORMAL" && renal.stage !== "LEVE") {
+      alerts.push("🔴 DRC + ONCOLOGIA: Ajustar todas as drogas. Maior risco de toxicidade.");
+    }
+    if (patient.isPalliativeCase) {
+      alerts.push("🕊️ ONCOLOGIA + PALIATIVO: Avaliar proporcionalidade. Considerar conforto sobre cura.");
+    }
+  }
+
+  // ELECTROLYTE ALERTS
+  if (patient.isElectrolyteCase) {
+    alerts.push("⚗️ MODO HIDROELETROLÍTICO ATIVADO: Avaliar gravidade. Corrigir LENTAMENTE. Monitorar seriado.");
+    alerts.push("🔴 NUNCA corrigir Na rápido (máx 8-10 mEq/L/24h). Risco mielinólise pontina.");
+    alerts.push("🔴 K alto + ECG alterado → Gluconato Ca IMEDIATO → Insulina+Glicose → diurético/diálise.");
+    if (renal.stage !== "NORMAL" && renal.stage !== "LEVE") {
+      alerts.push("🔴 DRC + DISTÚRBIO ELETROLÍTICO: Correção mais lenta. Considerar diálise se refratário.");
+    }
+  }
+
+  // RHEUMATOLOGY ALERTS
+  if (patient.isRheumatologyCase) {
+    alerts.push("🦴 MODO REUMATOLOGIA ATIVADO: Diferenciar inflamatório vs infeccioso vs degenerativo.");
+    alerts.push("🔴 Monoartrite aguda + febre → ARTRITE SÉPTICA até provar contrário → Punção articular.");
+    alerts.push("⚠️ NÃO iniciar imunossupressor sem excluir infecção. Corticoide com cautela.");
+  }
+
+  // GYNECOLOGY ALERTS
+  if (patient.isGynecoCase) {
+    alerts.push("♀️ MODO GINECOLOGIA ATIVADO: SEMPRE excluir gravidez (beta-hCG). Perguntar DUM.");
+    alerts.push("🔴 Dor pélvica aguda: excluir ectópica, torção ovariana, DIP.");
+    if (patient.isFertileAge) {
+      alerts.push("🟡 Mulher em idade fértil: confirmar gravidez ANTES de prescrever.");
     }
   }
 
@@ -3023,6 +3341,138 @@ function formatEngineContext(e: EngineResult): string {
     lines.push(`  → Mostrar cálculos: dose anticoagulante, ClCr, volume transfusão.`);
   }
 
+  // Infectology section
+  if (e.patient.isInfectologyCase) {
+    lines.push("\n🦠 ═══ MODO INFECTOLOGIA ATIVADO ═══");
+    lines.push(`  REGRAS INFECTOLOGIA:`);
+    lines.push(`  → SEMPRE definir FOCO: pulmão, urina, abdome, pele, cateter, SNC, desconhecido. NUNCA prescrever ATB sem foco.`);
+    lines.push(`  → Classificar ORIGEM: comunitária vs hospitalar vs UTI vs imunossuprimido. Muda o ATB.`);
+    lines.push(`  → Classificar GRAVIDADE: leve → VO; moderada → IV; sepse → protocolo; choque séptico → emergência.`);
+    lines.push(`  → SEPSE: culturas + lactato + ATB < 1h + volume + vasopressor se necessário.`);
+    lines.push(`  → ATB baseado em: foco + gravidade + rim + alergia + hospitalar vs comunitário.`);
+    lines.push(`  → COBERTURA: avaliar gram+, gram-, anaeróbio, MRSA, Pseudomonas, fungo conforme cenário.`);
+    lines.push(`  → CULTURAS antes do ATB se possível. MAS NÃO ATRASAR se choque.`);
+    lines.push(`  → Mostrar DURAÇÃO sugerida do ATB.`);
+    lines.push(`  → AJUSTE RENAL obrigatório se Cr alta / ClCr baixo / idoso / DRC.`);
+    lines.push(`  → ALERGIA: evitar beta-lactâmico se anafilaxia. Sugerir alternativa.`);
+    lines.push(`  → Checar INTERAÇÕES: warfarina, amiodarona, DOAC, QT, rim.`);
+    lines.push(`  → ADAPTAR: UBS → simples VO; PS → completo; UTI → amplo espectro; SAMU → estabilizar.`);
+    lines.push(`  → NÃO usar ATB sem motivo. NÃO usar dose sem ajuste. NÃO ignorar alergia.`);
+  }
+
+  // Geriatric section
+  if (e.patient.isGeriatricCase) {
+    lines.push("\n👴 ═══ MODO GERIATRIA ATIVADO ═══");
+    lines.push(`  Nível de risco: ${e.patient.elderlyRiskLevel}`);
+    lines.push(`  REGRAS GERIATRIA:`);
+    lines.push(`  → Idoso = ALTO RISCO. Creatinina pode parecer normal → SEMPRE calcular ClCr.`);
+    lines.push(`  → POLIFARMÁCIA: > 3 drogas → alerta. > 5 drogas → alerta alto. Checar TODAS as interações.`);
+    lines.push(`  → DOSE: preferir dose MENOR. Começar baixo, ajustar devagar.`);
+    lines.push(`  → DELIRIUM: pensar se confusão/agitação/sonolência/queda. Excluir causa clínica ANTES.`);
+    lines.push(`  → INFECÇÃO NO IDOSO: pode NÃO ter febre. Pensar ITU, pneumonia, sepse, pele.`);
+    lines.push(`  → RISCO DE QUEDA: cuidado com BZD, opioide, anti-HAS, sedativo.`);
+    lines.push(`  → ANTICOAGULANTE: maior risco sangramento. Checar INR, plaqueta, rim.`);
+    lines.push(`  → HIDRATAÇÃO: cuidado com volume (risco EAP, IC, IRA).`);
+    lines.push(`  → SEDAÇÃO: dose MENOR. Evitar excesso. Critérios de Beers.`);
+    lines.push(`  → NÃO usar dose padrão adulto jovem. SEMPRE ajustar.`);
+  }
+
+  // APS section
+  if (e.patient.isAPSCase) {
+    lines.push("\n🏥 ═══ MODO APS / UBS ATIVADO ═══");
+    lines.push(`  REGRAS APS:`);
+    lines.push(`  → UBS ≠ PS. Evitar exames desnecessários, ATB sem indicação, conduta hospitalar.`);
+    lines.push(`  → Classificar gravidade: leve → tratar UBS; moderado → avaliar; grave → encaminhar PS; instável → SAMU.`);
+    lines.push(`  → ATB: só se indicado. Preferir VO, esquema simples, baixo custo, disponível SUS.`);
+    lines.push(`  → Exames: pedir só se necessário. Evitar TC/exame caro sem indicação.`);
+    lines.push(`  → Doenças comuns APS: HAS, DM, asma, DPOC, depressão, ansiedade, dor lombar, ITU, IVAS, dermatite.`);
+    lines.push(`  → PREVENÇÃO: vacina, rastreamento, controle crônico, educação.`);
+    lines.push(`  → ENCAMINHAR SE: instabilidade, suspeita grave, falha tratamento, dúvida diagnóstica.`);
+    lines.push(`  → SUS: preferir medicação e exame disponível. Conduta realista.`);
+    lines.push(`  → CRÔNICOS: ajustar tratamento gradualmente. Não mudar tudo de uma vez.`);
+    lines.push(`  → ALERTAS: dor torácica, dispneia, sangramento, confusão, hipotensão, febre persistente → encaminhar.`);
+    lines.push(`  → PRIORIDADE = SEGURANÇA + REALIDADE. Conduta possível na APS.`);
+  }
+
+  // Palliative section
+  if (e.patient.isPalliativeCase) {
+    lines.push("\n🕊️ ═══ MODO CUIDADOS PALIATIVOS ATIVADO ═══");
+    lines.push(`  REGRAS PALIATIVO:`);
+    lines.push(`  → Definir OBJETIVO: curativo, limitado, paliativo, conforto. NÃO tratar automaticamente como curativo.`);
+    lines.push(`  → NÃO indicar medidas invasivas sem necessidade (IOT, RCP, diálise, UTI, cirurgia). Se fútil → evitar.`);
+    lines.push(`  → CONTROLE DE SINTOMAS: dor (morfina), dispneia (morfina mesmo sem hipoxemia), náusea, delirium, ansiedade, secreção.`);
+    lines.push(`  → ANALGESIA: escala OMS. Dipirona → tramadol → morfina/fentanil. Ajustar rim/idoso.`);
+    lines.push(`  → DELIRIUM TERMINAL: haloperidol/quetiapina. Evitar excesso de BZD.`);
+    lines.push(`  → SEDAÇÃO PALIATIVA: se sofrimento refratário → midazolam/morfina BIC. Decisão compartilhada.`);
+    lines.push(`  → HIDRATAÇÃO: evitar excesso (piora edema/secreção/dispneia). Máx 500-1000 mL/dia SC.`);
+    lines.push(`  → ATB: usar APENAS se melhora conforto. Evitar se fútil.`);
+    lines.push(`  → ONR: se indicado → documentar. NÃO indicar RCP automaticamente.`);
+    lines.push(`  → FAMÍLIA: decisão compartilhada. Informar prognóstico. Acolher.`);
+    lines.push(`  → PRIORIDADE = CONFORTO. Evitar excesso de intervenção. Paliativo NÃO é abandono.`);
+  }
+
+  // Oncology section
+  if (e.patient.isOncologyCase) {
+    lines.push("\n🎗️ ═══ MODO ONCOLOGIA ATIVADO ═══");
+    lines.push(`  REGRAS ONCOLOGIA:`);
+    lines.push(`  → Paciente oncológico = ALTO RISCO: imunossuprimido, risco infeccioso, risco sepse, risco sangramento.`);
+    lines.push(`  → FEBRE: considerar neutropenia febril. Hemograma URGENTE. ATB anti-Pseudomonas em ≤ 1h se neutrófilos < 500.`);
+    lines.push(`  → NEUTROPENIA: quimioterapia recente + leucócitos baixos + febre = EMERGÊNCIA.`);
+    lines.push(`  → ATB: cobrir gram-, Pseudomonas, hospitalar. Cefepime/Piptazo 1ª linha. + Vanco se instável.`);
+    lines.push(`  → SANGRAMENTO: plaqueta baixa, quimio, metástase → checar hemograma. Transfundir se critério.`);
+    lines.push(`  → DOR ONCOLÓGICA: pode precisar opioide em dose maior. Ajuste renal.`);
+    lines.push(`  → METÁSTASE: pensar se dor óssea, déficit neurológico, dispneia, icterícia. Investigar.`);
+    lines.push(`  → PALIATIVO: considerar se doença avançada, sem tratamento curativo, estado geral ruim.`);
+    lines.push(`  → INTERAÇÕES: checar quimioterapia + anticoagulante + opioide + ATB.`);
+    lines.push(`  → Oncológico piora RÁPIDO. NÃO subestimar. Tratar precoce.`);
+  }
+
+  // Electrolyte section
+  if (e.patient.isElectrolyteCase) {
+    lines.push("\n⚗️ ═══ MODO HIDROELETROLÍTICO ATIVADO ═══");
+    lines.push(`  REGRAS HIDROELETROLÍTICO:`);
+    lines.push(`  → SEMPRE avaliar gravidade: Na, K, pH, HCO3, lactato, Cr. Se grave → urgência.`);
+    lines.push(`  → HIPERCALEMIA: K ≥ 5,5 alerta. K ≥ 6 grave. K ≥ 6,5 + ECG → tratar IMEDIATO.`);
+    lines.push(`  → HIPOCALEMIA: K < 3,5 alerta. K < 3 repor. K < 2,5 urgência. ANTES de insulina.`);
+    lines.push(`  → HIPONATREMIA: classificar leve/moderada/grave. NUNCA corrigir rápido (máx 8-10 mEq/L/24h).`);
+    lines.push(`  → HIPERNATREMIA: corrigir LENTAMENTE. Calcular déficit de água livre.`);
+    lines.push(`  → ACIDOSE: avaliar pH, HCO3, CO2, lactato. Classificar metabólica/respiratória/mista. Ânion gap.`);
+    lines.push(`  → GASOMETRIA: interpretar pH, pCO2, HCO3, BE, lactato.`);
+    lines.push(`  → REPOSIÇÃO: calcular dose. NÃO usar dose fixa.`);
+    lines.push(`  → DRC / UTI: maior risco. Corrigir mais lento. Considerar diálise se refratário.`);
+    lines.push(`  → PRIORIDADE = SEGURANÇA. Se dúvida → corrigir devagar, repetir exame, monitorar.`);
+  }
+
+  // Rheumatology section
+  if (e.patient.isRheumatologyCase) {
+    lines.push("\n🦴 ═══ MODO REUMATOLOGIA ATIVADO ═══");
+    lines.push(`  REGRAS REUMATOLOGIA:`);
+    lines.push(`  → Diferenciar: inflamatório vs degenerativo vs infeccioso vs autoimune vs metabólico.`);
+    lines.push(`  → ARTRITE AGUDA: pensar gota, séptica, reativa, trauma. Monoartrite + febre = séptica até provar contrário.`);
+    lines.push(`  → ARTRITE SÉPTICA: EMERGÊNCIA. Punção articular + ATB IV + drenagem.`);
+    lines.push(`  → GOTA: dor súbita, monoarticular, ácido úrico alto. Colchicina + AINE. Corticoide se CI.`);
+    lines.push(`  → LÚPUS/AUTOIMUNE: múltiplos sistemas, rash, anemia, plaqueta baixa, rim. FAN, anti-dsDNA, complemento.`);
+    lines.push(`  → VASCULITE: febre + lesão pele + rim + neurológico. Biópsia + imunossupressão.`);
+    lines.push(`  → CORTICOIDE: usar com cuidado. EXCLUIR infecção antes.`);
+    lines.push(`  → IMUNOSSUPRESSOR: NUNCA iniciar sem certeza diagnóstica e exclusão de infecção.`);
+  }
+
+  // Gynecology section
+  if (e.patient.isGynecoCase) {
+    lines.push("\n♀️ ═══ MODO GINECOLOGIA ATIVADO ═══");
+    lines.push(`  REGRAS GINECO:`);
+    lines.push(`  → SEMPRE perguntar: idade, gestação (beta-hCG), DUM, anticoncepcional.`);
+    lines.push(`  → SANGRAMENTO VAGINAL: excluir gravidez. Pensar mioma, hormonal, infecção, neoplasia.`);
+    lines.push(`  → DOR PÉLVICA: excluir ectópica, torção ovariana, DIP, cisto, ITU. USG TV.`);
+    lines.push(`  → CORRIMENTO: candidíase (fluconazol), vaginose (metronidazol), tricomoníase (metronidazol + tratar parceiro), cervicite (ceftriaxona + azitromicina).`);
+    lines.push(`  → GRAVIDEZ: SEMPRE excluir antes de qualquer conduta.`);
+    lines.push(`  → ANTICONCEPÇÃO: avaliar idade, tabagismo, trombose, HAS.`);
+    lines.push(`  → DST: testar se risco (HIV, sífilis, hepatites).`);
+    lines.push(`  → Se gestante: ajustar ATB (evitar metronidazol 1º tri se possível).`);
+    lines.push(`  → ALERTAS: dor intensa, sangramento forte, suspeita ectópica, febre → PS.`);
+    lines.push(`  → ADAPTAR: UBS → abordagem sindrômica; PS → exames completos.`);
+  }
+
   lines.push("\n═══ FIM DO MOTOR CLÍNICO ═══");
   return lines.join("\n");
 }
@@ -3297,6 +3747,104 @@ REGRAS HEMATOLOGIA (se MODO HEMATOLOGIA ativado):
 - Idoso: maior risco sangramento. Dose menor. Monitorar mais.
 - NÃO transfundir sem critério. NÃO anticoagular sem avaliar risco-benefício.
 - Mostrar cálculos: dose anticoagulante por kg, ClCr, volume transfusão.
+
+REGRAS INFECTOLOGIA (se MODO INFECTOLOGIA ativado):
+- SEMPRE definir FOCO infeccioso: pulmão, urina, abdome, pele, cateter, SNC, desconhecido. NUNCA prescrever ATB sem foco.
+- Classificar ORIGEM: comunitária vs hospitalar vs UTI vs imunossuprimido. Muda o esquema ATB.
+- Classificar GRAVIDADE: infecção leve → VO; moderada → IV; sepse → protocolo bundle; choque séptico → emergência.
+- SEPSE: culturas + lactato + ATB < 1h + volume + vasopressor se necessário. Seguir Surviving Sepsis.
+- ATB baseado em: foco + gravidade + rim + alergia + comunitário vs hospitalar.
+- COBERTURA: avaliar necessidade de gram+, gram-, anaeróbio, MRSA, Pseudomonas, fungo.
+- CULTURAS antes do ATB se possível. MAS NÃO ATRASAR se choque/sepse.
+- Mostrar DURAÇÃO sugerida do ATB.
+- AJUSTE RENAL obrigatório se Cr alta / ClCr baixo / idoso / DRC.
+- ALERGIA: evitar beta-lactâmico se anafilaxia. Sugerir alternativa (aztreonam, quinolona, vancomicina).
+- Checar INTERAÇÕES: warfarina, amiodarona, DOAC, QT, rim.
+- ADAPTAR: UBS → simples VO; PS → completo IV; UTI → amplo espectro; SAMU → estabilizar.
+
+REGRAS GERIATRIA (se MODO GERIATRIA ativado ou idade ≥ 65):
+- Idoso = ALTO RISCO. ≥65 = alto. ≥75 = muito alto. ≥80 = máximo.
+- Creatinina pode parecer normal → SEMPRE calcular ClCr (Cockcroft-Gault).
+- POLIFARMÁCIA: > 3 drogas → alerta. > 5 drogas → alerta alto. Checar TODAS as interações.
+- DOSE: preferir dose MENOR. Começar baixo, ajustar devagar. Critérios de Beers.
+- DELIRIUM: confusão/agitação/sonolência/queda → excluir causa clínica (infecção, droga, metabólico) ANTES.
+- INFECÇÃO NO IDOSO: pode NÃO ter febre. Apresentação atípica. Investigar mais.
+- RISCO DE QUEDA: cuidado com BZD, opioide, anti-HAS, sedativo.
+- ANTICOAGULANTE: maior risco sangramento. Dose menor. Checar INR/plaqueta/rim.
+- HIDRATAÇÃO: cuidado com volume (risco EAP, IC, IRA). Volume cauteloso.
+- SEDAÇÃO: dose MENOR (50%). Evitar BZD em idoso (delirium).
+- NÃO usar dose padrão adulto jovem. SEMPRE ajustar para idade e rim.
+
+REGRAS APS / UBS (se MODO APS ativado):
+- UBS ≠ PS. Evitar exames desnecessários, ATB sem indicação, conduta hospitalar.
+- Classificar gravidade: leve → tratar UBS; moderado → avaliar; grave → PS; instável → SAMU.
+- ATB: só se indicado. Preferir VO, esquema simples, baixo custo, disponível SUS.
+- Exames: pedir só se necessário. Evitar TC/exame caro sem indicação.
+- Doenças comuns APS: HAS, DM, asma, DPOC, depressão, ansiedade, dor lombar, ITU, IVAS, dermatite.
+- PREVENÇÃO: vacina, rastreamento, controle crônico, educação em saúde.
+- ENCAMINHAR SE: instabilidade, suspeita grave, falha tratamento, dúvida diagnóstica.
+- SUS: preferir medicação e exame disponível. Conduta REALISTA para o cenário.
+- CRÔNICOS: ajustar gradualmente. Não mudar tudo de uma vez.
+- ALERTAS: dor torácica, dispneia, sangramento, confusão, hipotensão → ENCAMINHAR.
+- PRIORIDADE = SEGURANÇA + REALIDADE. Conduta possível na APS.
+
+REGRAS CUIDADOS PALIATIVOS (se MODO PALIATIVO ativado):
+- Definir OBJETIVO: curativo vs paliativo vs conforto. NÃO tratar automaticamente como curativo.
+- NÃO indicar medidas invasivas sem necessidade (IOT, RCP, diálise, UTI). Se fútil → evitar.
+- CONTROLE DE SINTOMAS: priorizar dor, dispneia, ansiedade, delirium, náusea, secreção.
+- ANALGESIA: escala OMS. Dipirona → tramadol → morfina/fentanil. Ajustar rim/idoso.
+- DISPNEIA: morfina mesmo sem hipoxemia. O2 se melhora subjetiva. Ansiolítico adjuvante.
+- DELIRIUM TERMINAL: haloperidol/quetiapina. Evitar excesso de BZD.
+- SEDAÇÃO PALIATIVA: sofrimento refratário → midazolam/morfina BIC. Decisão compartilhada.
+- HIDRATAÇÃO: evitar excesso (piora edema/secreção). Máx 500-1000 mL/dia SC.
+- ATB: usar APENAS se melhora conforto. Evitar se fútil.
+- ONR: documentar se indicado. NÃO indicar RCP automaticamente.
+- FAMÍLIA: decisão compartilhada. Informar prognóstico.
+- Paliativo NÃO é abandono. É cuidado ATIVO com foco em dignidade e conforto.
+
+REGRAS ONCOLOGIA (se MODO ONCOLOGIA ativado):
+- Paciente oncológico = ALTO RISCO: imunossuprimido, risco infeccioso/sepse/sangramento.
+- FEBRE: considerar neutropenia febril até provar contrário se quimioterapia recente. ATB em ≤ 1h.
+- NEUTROPENIA: QT recente + leucócitos baixos + febre = EMERGÊNCIA. Cefepime/Piptazo + Vancomicina se instável.
+- SANGRAMENTO: plaqueta baixa + quimio + metástase → checar hemograma. Transfundir se critério.
+- DOR ONCOLÓGICA: pode precisar opioide em dose maior. Escala OMS. Ajuste renal.
+- METÁSTASE: pensar se dor óssea, déficit neuro, dispneia, icterícia. Investigar.
+- EMERGÊNCIAS: compressão medular (dexa + RM), lise tumoral (hidratação + alopurinol), hipercalcemia (SF + zoledrônico).
+- PALIATIVO: considerar se doença avançada sem tratamento curativo.
+- Oncológico piora RÁPIDO. NÃO subestimar. Tratar precoce.
+
+REGRAS HIDROELETROLÍTICO (se MODO HIDROELETROLÍTICO ativado):
+- SEMPRE avaliar gravidade: Na, K, pH, HCO3, lactato, Cr. Se grave → urgência.
+- HIPERCALEMIA: K ≥ 5,5 alerta. K ≥ 6 grave. K ≥ 6,5 + ECG → tratar IMEDIATO (gluconato Ca → insulina+glicose → diurético/diálise).
+- HIPOCALEMIA: K < 3,5 alerta. K < 3 repor. K < 2,5 urgência. CORRIGIR ANTES de insulina.
+- HIPONATREMIA: classificar leve/moderada/grave. NUNCA corrigir rápido (máx 8-10 mEq/L/24h). Risco mielinólise.
+- HIPERNATREMIA: corrigir LENTAMENTE. Calcular déficit de água livre.
+- ACIDOSE: pH, HCO3, CO2, lactato. Classificar metabólica/respiratória/mista. BIC só se pH < 6,9.
+- GASOMETRIA: interpretar pH, pCO2, HCO3, BE, lactato sistematicamente.
+- REPOSIÇÃO: calcular dose. NÃO usar dose fixa. Ajustar para rim/peso.
+- DRC / UTI: maior risco. Corrigir mais lento. Diálise se refratário.
+- PRIORIDADE = SEGURANÇA. Se dúvida → corrigir devagar, repetir exame, monitorar.
+
+REGRAS REUMATOLOGIA (se MODO REUMATOLOGIA ativado):
+- Diferenciar: inflamatório vs degenerativo vs infeccioso vs autoimune vs metabólico.
+- ARTRITE AGUDA: pensar gota, séptica, reativa, trauma. Monoartrite + febre = SÉPTICA até provar contrário.
+- ARTRITE SÉPTICA: EMERGÊNCIA. Punção articular + ATB IV (oxacilina/vancomicina + ceftriaxona) + drenagem.
+- GOTA: dor súbita, monoarticular. Colchicina + AINE. Corticoide se AINE CI. NÃO mexer ácido úrico na crise.
+- LÚPUS/AUTOIMUNE: múltiplos sistemas. FAN, anti-dsDNA, complemento. Se febre em lúpico: excluir infecção ANTES.
+- CORTICOIDE: cautela. EXCLUIR infecção antes. NÃO iniciar imunossupressor sem certeza.
+- ALERTAS: febre + monoartrite = urgência. Rim + plaqueta baixa = gravidade.
+
+REGRAS GINECOLOGIA AMBULATORIAL (se MODO GINECO ativado):
+- SEMPRE perguntar: idade, gestação (beta-hCG), DUM, anticoncepcional.
+- SANGRAMENTO VAGINAL: excluir gravidez PRIMEIRO. Pensar mioma, hormonal, infecção, neoplasia.
+- DOR PÉLVICA: excluir ectópica (beta-hCG + USG TV), torção ovariana, DIP, cisto, ITU.
+- CORRIMENTO: abordagem sindrômica. Candidíase (fluconazol), vaginose (metronidazol), tricomoníase (metronidazol + parceiro), cervicite (ceftriaxona + azitromicina).
+- GRAVIDEZ: SEMPRE excluir antes de prescrever.
+- ANTICONCEPÇÃO: avaliar idade, tabagismo, trombose, HAS. Critérios de elegibilidade OMS.
+- DST: testar se risco (HIV, sífilis, hepatites).
+- Se gestante: ajustar ATB (evitar metronidazol 1º tri, quinolonas, tetraciclinas).
+- ALERTAS: dor intensa, sangramento forte, suspeita ectópica, febre → encaminhar PS.
+- ADAPTAR: UBS → abordagem sindrômica; PS → exames completos + imagem.
 
 DISCLAIMER: Apoio à decisão clínica — responsabilidade final é do médico.`;
 
