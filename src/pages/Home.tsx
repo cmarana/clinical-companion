@@ -73,9 +73,11 @@ export default function Home() {
             key={m.path}
             onClick={() => navigate(m.path)}
             className={`flex items-center gap-3 px-3 py-3.5 rounded-xl border transition-all active:scale-[0.97] text-left ${
-              m.accent
-                ? "border-destructive/30 bg-destructive/5 hover:bg-destructive/10"
-                : "border-border bg-card hover:bg-accent/50"
+              (m as any).highlight
+                ? "border-primary/40 bg-primary/5 hover:bg-primary/10 col-span-2"
+                : m.accent
+                  ? "border-destructive/30 bg-destructive/5 hover:bg-destructive/10"
+                  : "border-border bg-card hover:bg-accent/50"
             }`}
           >
             <div className={`flex items-center justify-center w-9 h-9 rounded-lg shrink-0 ${
