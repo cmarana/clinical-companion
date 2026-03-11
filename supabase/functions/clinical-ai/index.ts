@@ -290,6 +290,48 @@ const DRUG_DB: Record<string, DrugEntry> = {
     interactions: ["IECA (hipercalemia)", "Espironolactona (hipercalemia)", "AINEs (reduz efeito + piora renal)", "Lítio (toxicidade)"],
     class: "Anti-hipertensivo — BRA", route: "VO",
   },
+  gabapentina: {
+    name: "Gabapentina", dose: "300-600mg 8/8h",
+    renalAdj: { "30-59": "200-700mg 12/12h", "15-29": "100-300mg 1x/dia", "<15": "100-300mg em dias alternados ou pós-diálise" },
+    contraindications: [],
+    interactions: ["Opioides (depressão respiratória)", "Antiácidos (reduz absorção — dar 2h antes)"],
+    class: "Anticonvulsivante / Analgésico adjuvante", route: "VO",
+  },
+  morfina: {
+    name: "Morfina", dose: "2-10mg IV 4/4h ou BIC 1-5mg/h",
+    renalAdj: { "30-59": "Reduzir dose 25%. Intervalo aumentado.", "15-29": "Reduzir dose 50%. Preferir fentanil.", "<15": "EVITAR — metabólito ativo (M6G) acumula. Usar fentanil ou hidromorfona." },
+    contraindications: ["Depressão respiratória grave", "Íleo paralítico"],
+    interactions: ["Benzodiazepínicos (depressão respiratória)", "IMAO (crise hipertensiva)", "Gabapentina (depressão respiratória)"],
+    class: "Opioide", route: "IV/SC/VO",
+  },
+  tramadol: {
+    name: "Tramadol", dose: "50-100mg 6/6h",
+    renalAdj: { "30-59": "50mg 12/12h (máx 200mg/dia)", "<30": "50mg 12/12h. Considerar alternativa.", "<15": "EVITAR — acúmulo de metabólitos." },
+    contraindications: ["Epilepsia não controlada", "Uso de IMAO", "< 12 anos"],
+    interactions: ["ISRS (síndrome serotoninérgica)", "IMAO (contraindicado)", "Carbamazepina (reduz efeito)"],
+    class: "Opioide fraco", route: "IV/VO",
+  },
+  digoxina: {
+    name: "Digoxina", dose: "0,125-0,25mg 1x/dia",
+    renalAdj: { "30-59": "0,125mg/dia ou dias alternados", "15-29": "0,0625-0,125mg/dia. Monitorar nível sérico.", "<15": "0,0625mg dias alternados. Nível sérico obrigatório." },
+    contraindications: ["BAV 2º/3º grau sem MP", "Cardiomiopatia hipertrófica obstrutiva", "Hipocalemia não corrigida"],
+    interactions: ["Amiodarona (aumenta nível 70-100%)", "Verapamil (aumenta nível + bradicardia)", "Furosemida (hipocalemia → toxicidade)", "Espironolactona (aumenta nível)"],
+    class: "Digitálico", route: "VO/IV",
+  },
+  metformina: {
+    name: "Metformina", dose: "500-1000mg 12/12h",
+    renalAdj: { "30-44": "Máx 1000mg/dia. Monitorar.", "<30": "CONTRAINDICADO — risco de acidose lática." },
+    contraindications: ["ClCr < 30", "IC descompensada", "Acidose metabólica", "Uso de contraste iodado (suspender 48h)"],
+    interactions: ["Contraste iodado (acidose lática)", "Álcool (acidose lática)", "Diuréticos (piora renal)"],
+    class: "Hipoglicemiante — Biguanida", route: "VO",
+  },
+  espironolactona: {
+    name: "Espironolactona", dose: "25-100mg 1x/dia",
+    renalAdj: { "30-59": "Máx 25mg/dia. Monitorar K.", "<30": "EVITAR — risco hipercalemia grave." },
+    contraindications: ["K > 5,0", "ClCr < 30 (relativo)", "Insuficiência adrenal"],
+    interactions: ["IECA/BRA (hipercalemia)", "Suplemento de K (hipercalemia)", "Digoxina (aumenta nível)", "AINEs (piora renal + reduz efeito)"],
+    class: "Diurético poupador de K", route: "VO",
+  },
 };
 
 // ─── Interaction Database ────────────────────────────────────────
