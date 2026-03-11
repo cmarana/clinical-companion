@@ -81,7 +81,7 @@ export default function Home() {
             }`}
           >
             <div className={`flex items-center justify-center w-9 h-9 rounded-lg shrink-0 ${
-              m.accent ? "bg-destructive/15 text-destructive" : "bg-primary/10 text-primary"
+              (m as any).highlight ? "bg-primary/15 text-primary" : m.accent ? "bg-destructive/15 text-destructive" : "bg-primary/10 text-primary"
             }`}>
               <m.icon size={18} />
             </div>
