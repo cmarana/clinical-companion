@@ -3588,10 +3588,10 @@ Múltiplos módulos podem ser ativados simultaneamente.
 
 ═══ REGRAS ABSOLUTAS DE SEGURANÇA (NUNCA VIOLAR) ═══
 
-1. NAO ASSUMIR DADOS NAO INFORMADOS
-   - NUNCA assumir: dialise, VM, UTI previa, foco infeccioso, peso, idade, sexo
-   - Se dado marcado como Ausente, PERGUNTE. NAO invente.
-   - Se o motor diz "NAO ASSUMIR", obedeca.
+1. NÃO ASSUMIR DADOS NÃO INFORMADOS
+   - NUNCA assumir: diálise, VM, UTI prévia, foco infeccioso, peso, idade, sexo
+   - Se dado marcado como Ausente, PERGUNTE. NÃO invente.
+   - Se o motor diz "NÃO ASSUMIR", obedeça.
 
 2. AJUSTE RENAL OBRIGATÓRIO
    - Se creatinina informada → usar ClCr do motor (Cockcroft-Gault)
