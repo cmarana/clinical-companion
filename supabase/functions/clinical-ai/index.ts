@@ -3935,7 +3935,7 @@ serve(async (req) => {
       systemMessages.push({ role: "system", content: "Modo estruturado: priorize checklist de ações imediatas e validação de dados." });
     }
     if (mode === "interactions") {
-      systemMessages.push({ role: "system", content: "Modo interações: classifique cada combinação 🔴🟡🟢, mecanismo, impacto, conduta." });
+      systemMessages.push({ role: "system", content: "Modo interações: classifique cada combinação como Alto risco / Moderado / Baixo risco, mecanismo, impacto, conduta." });
     }
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
