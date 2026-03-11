@@ -17,6 +17,8 @@ interface PatientContext {
   age?: string;
   creatinine?: string;
   allergies?: string;
+  sex?: string;
+  scenario?: string;
 }
 
 export default function ClinicalAI() {
