@@ -1093,6 +1093,17 @@ function extractPatient(messages: ChatMessage[]): PatientData {
     }
   }
 
+  // Neuro case detection
+  const isNeuroCase = /rebaixamento|consciência|convuls|avc|acidente vascular|cefaleia|déficit focal|coma|confus|tce|trauma.*crani|meningite|encefalite|delirium|glasgow|hemipar|hemiplegia|afasia|disartria|ataxia|pupila|rigidez de nuca/i.test(text);
+
+  // Glasgow score extraction
+  const glasgowRaw = firstMatch(text, [/glasgow\s*[:=]?\s*([0-9]{1,2})/i, /gcs\s*[:=]?\s*([0-9]{1,2})/i]);
+  const glasgowScore = glasgowRaw ? parseNumber(glasgowRaw) : undefined;
+
+  // Anticoagulant in use detection
+  const hasAnticoagulantInUse = /warfarina|marevan|rivaroxabana|apixabana|dabigatrana|enoxaparina|heparina/i.test(medsRaw || "") ||
+    /warfarina|marevan|rivaroxabana|apixabana|dabigatrana|enoxaparina|heparina/i.test(text);
+
   return {
     weightKg: actualWeight,
     ageYears: ageNum,
@@ -1101,6 +1112,7 @@ function extractPatient(messages: ChatMessage[]): PatientData {
     sex, allergies, allergyType, scenario, focus, infectionOrigin, medicationsInUse, riskFactors,
     hasHeartFailure, isElderly, isDialytic, hasAnticoagulationIndication,
     isPediatric, isNeonate, isInfant, estimatedWeightKg, vaccinesUpToDate,
+    isNeuroCase, glasgowScore, hasAnticoagulantInUse,
   };
 }
 
