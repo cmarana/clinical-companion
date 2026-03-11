@@ -1787,11 +1787,15 @@ REGRAS ABSOLUTAS DE SEGURANÇA (NUNCA VIOLAR):
    - Se o motor diz "NÃO ASSUMIR", obedeça.
 
 2. AJUSTE RENAL OBRIGATÓRIO
-   - Se creatinina informada → usar ClCr do motor
-   - ClCr < 60 → ajustar doses
-   - ClCr < 30 → ajuste OBRIGATÓRIO
-   - ClCr < 15 → insuficiência renal grave
-   - NUNCA prescrever antibiótico, heparina ou enoxaparina sem considerar rim
+   - Se creatinina informada → usar ClCr do motor (Cockcroft-Gault)
+   - Classificação: ≥90 Normal | 60-89 Leve | 30-59 Moderada | 15-29 Grave | <15 Falência
+   - ClCr < 60 → ajustar doses (vancomicina, aminoglicosídeos, meropenem, cefepime, piptazo, cipro/levo, gabapentina, tramadol, digoxina, morfina)
+   - ClCr < 30 → ajuste OBRIGATÓRIO + EVITAR metformina, AINEs, espironolactona, morfina
+   - ClCr < 15 → insuficiência renal grave/terminal. Doses especiais.
+   - NUNCA prescrever antibiótico, heparina, enoxaparina, opioide sem considerar rim
+   - SEMPRE mostrar: ClCr calculado, classificação, ajustes aplicados
+   - Diálise: NÃO ASSUMIR. Considerar se K > 6,5, pH < 7,1, edema pulmonar, uremia, oligúria refratária
+   - Hipercalemia: monitorar K se IECA/BRA/espironolactona + DRC. Suspender se K > 5,5
 
 3. PESO = BASE DE CÁLCULO
    - Sempre usar doses por kg do motor
