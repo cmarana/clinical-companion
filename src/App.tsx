@@ -19,6 +19,13 @@ import SearchPage from "@/pages/SearchPage";
 import Favorites from "@/pages/Favorites";
 import Notes from "@/pages/Notes";
 import EmergencyMode from "@/pages/EmergencyMode";
+import DutyMode from "@/pages/DutyMode";
+import Prescriptions from "@/pages/Prescriptions";
+import PrescriptionDetail from "@/pages/PrescriptionDetail";
+import DiagnosisBySymptom from "@/pages/DiagnosisBySymptom";
+import Pediatrics from "@/pages/Pediatrics";
+import Obstetrics from "@/pages/Obstetrics";
+import Internship from "@/pages/Internship";
 import Auth from "@/pages/Auth";
 import ResetPassword from "@/pages/ResetPassword";
 import Pricing from "@/pages/Pricing";
@@ -49,6 +56,13 @@ const AppRoutes = () => (
       <Route path="/favorites" element={<Favorites />} />
       <Route path="/notes" element={<Notes />} />
       <Route path="/emergency" element={<EmergencyMode />} />
+      <Route path="/duty" element={<DutyMode />} />
+      <Route path="/prescriptions" element={<Prescriptions />} />
+      <Route path="/prescriptions/:id" element={<PrescriptionDetail />} />
+      <Route path="/diagnosis" element={<DiagnosisBySymptom />} />
+      <Route path="/pediatrics" element={<Pediatrics />} />
+      <Route path="/obstetrics" element={<Obstetrics />} />
+      <Route path="/internship" element={<Internship />} />
       <Route path="/pricing" element={<Pricing />} />
     </Route>
     <Route path="*" element={<NotFound />} />
