@@ -299,3 +299,82 @@
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
 .safe-area-bottom { padding-bottom: env(safe-area-inset-bottom, 0); }
+
+/* ─── Duty Mode (Modo Plantão) ─── */
+.duty-card {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 10px;
+}
+
+.dark .duty-card {
+  background: hsl(240 6% 10%);
+  border-color: hsl(240 4% 18%);
+}
+
+.duty-grid-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 12px 4px;
+  border-radius: 8px;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--secondary));
+  color: hsl(var(--foreground));
+  font-family: var(--font-heading);
+  transition: background 150ms, transform 100ms;
+}
+
+.duty-grid-btn:active {
+  transform: scale(0.96);
+}
+
+.duty-grid-btn:hover {
+  background: hsl(var(--accent));
+}
+
+.dark .duty-grid-btn {
+  background: hsl(240 4% 13%);
+  border-color: hsl(240 4% 18%);
+}
+
+.dark .duty-grid-btn:hover {
+  background: hsl(240 4% 16%);
+}
+
+.duty-list-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-family: var(--font-heading);
+  font-size: 13px;
+  color: hsl(var(--foreground));
+  transition: background 150ms;
+}
+
+.duty-list-item:hover {
+  background: hsl(var(--accent));
+}
+
+.dark .duty-list-item:hover {
+  background: hsl(240 4% 16%);
+}
+
+.duty-list-item:active {
+  transform: scale(0.98);
+}
+
+.duty-badge {
+  font-size: 10px;
+  font-family: var(--font-heading);
+  font-weight: 500;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
+  white-space: nowrap;
+}
