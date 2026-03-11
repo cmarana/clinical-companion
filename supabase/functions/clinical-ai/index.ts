@@ -1079,7 +1079,13 @@ function calcRenal(p: PatientData): RenalCalcResult {
     result.stage = "TERMINAL";
     result.adjustments.push("🔴 ClCr < 15 — INSUFICIÊNCIA RENAL TERMINAL");
     result.adjustments.push("NÃO ASSUMIR que paciente dialisa — PERGUNTAR");
-    result.adjustments.push("Preferir HNF sobre enoxaparina");
+    result.adjustments.push("Preferir HNF sobre enoxaparina (enoxaparina não dialisa)");
+    result.adjustments.push("EVITAR: metformina, AINEs, espironolactona, morfina (M6G acumula)");
+    result.adjustments.push("CONTRAINDICADOS: metformina, espironolactona em dose alta");
+    result.adjustments.push("Gabapentina: dose mínima, dias alternados ou pós-diálise");
+    result.adjustments.push("Digoxina: 0,0625mg dias alternados, nível sérico obrigatório");
+    result.adjustments.push("Considerar diálise se: K > 6,5 | pH < 7,1 | edema pulmonar | uremia | oligúria refratária | intoxicação");
+    result.adjustments.push("Monitorar K a cada 12-24h: alvo K < 5,0");
     result.adjustments.push("Avaliar TRS urgente se: K > 6,5, pH < 7,1, oligúria refratária, sobrecarga hídrica");
   }
 
