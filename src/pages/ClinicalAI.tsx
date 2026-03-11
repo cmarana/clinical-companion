@@ -157,6 +157,21 @@ export default function ClinicalAI() {
           className="w-20 h-6 text-[10px] px-1.5 rounded border border-border bg-background" />
         <input placeholder="Alergias" value={patientCtx.allergies || ""} onChange={e => setPatientCtx(p => ({...p, allergies: e.target.value}))}
           className="w-24 h-6 text-[10px] px-1.5 rounded border border-border bg-background" />
+        <select value={patientCtx.sex || ""} onChange={e => setPatientCtx(p => ({...p, sex: e.target.value}))}
+          className="w-14 h-6 text-[10px] px-1 rounded border border-border bg-background text-foreground">
+          <option value="">Sexo</option>
+          <option value="masculino">M</option>
+          <option value="feminino">F</option>
+        </select>
+        <select value={patientCtx.scenario || ""} onChange={e => setPatientCtx(p => ({...p, scenario: e.target.value}))}
+          className="w-20 h-6 text-[10px] px-1 rounded border border-border bg-background text-foreground">
+          <option value="">Cenário</option>
+          <option value="PS">PS</option>
+          <option value="UTI">UTI</option>
+          <option value="UBS">UBS</option>
+          <option value="SAMU">SAMU</option>
+          <option value="Enfermaria">Enferm.</option>
+        </select>
       </div>
 
       {/* Messages */}
