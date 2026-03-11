@@ -43,6 +43,12 @@ interface PatientData {
   isNeuroCase: boolean;
   glasgowScore?: number;
   hasAnticoagulantInUse: boolean;
+  // Obstetric
+  isPregnant: boolean;
+  isPuerperal: boolean;
+  gestationalWeeks?: number;
+  isFertileAge: boolean;
+  pregnancyConfirmed: boolean; // explicitly stated vs suspected
 }
 
 interface RenalCalcResult {
