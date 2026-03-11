@@ -1584,6 +1584,24 @@ function generateSafetyAlerts(patient: PatientData, renal: RenalCalcResult): str
     alerts.push("🟡 EVITAR NEFROTÓXICOS: aminoglicosídeos, AINEs, contraste iodado (se possível), anfotericina B.");
   }
 
+  // NEURO ALERTS
+  if (patient.isNeuroCase) {
+    alerts.push("🧠 MODO NEURO ATIVADO: Sempre excluir causas graves (AVC, hemorragia, meningite, hipoglicemia, hipóxia).");
+    if (patient.glasgowScore !== undefined) {
+      if (patient.glasgowScore <= 8) {
+        alerts.push(`🔴 GLASGOW ${patient.glasgowScore} ≤ 8: IOT + VM indicadas. TC urgente. Avaliar PIC.`);
+      } else if (patient.glasgowScore <= 12) {
+        alerts.push(`🟡 GLASGOW ${patient.glasgowScore} (moderado): Monitorar rebaixamento. TC indicada.`);
+      }
+    }
+    if (patient.hasAnticoagulantInUse) {
+      alerts.push("🔴 NEURO + ANTICOAGULADO: Risco de sangramento intracraniano. TC urgente. Considerar reversão se hemorragia confirmada.");
+    }
+    if (patient.isElderly) {
+      alerts.push("🔴 IDOSO + NEURO: Confusão pode ser infecção, droga, metabólico, AVC. NUNCA assumir demência sem investigar.");
+    }
+  }
+
   return alerts;
 }
 
