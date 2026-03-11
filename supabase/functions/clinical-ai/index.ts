@@ -1981,6 +1981,36 @@ function extractPatient(messages: ChatMessage[]): PatientData {
   // Hematology detection
   const isHematologyCase = /anemia|hemoglobina.*baix|plaquetas.*baix|plaquetopenia|trombocitopenia|inr.*alto|sangramento.*ativ|trombose|tep\b|tvp\b|anticoagulante|coagulopatia|civd\b|pancitopenia|leucopenia|hemólise|hemolítica|púrpura|petéquia|equimose|epistaxe|hemofilia|hit\b|heparina.*induz/i.test(text);
 
+  // Infectology detection
+  const isInfectologyCase = /febre.*infec|infec.*febre|sepse|choque séptico|antibiótico.*empírico|pneumonia.*febre|itu.*febre|celulite.*febre|meningite|abdome.*infeccioso|cateter.*infec|imunossuprimido.*febre|neutropenia.*febril|urosepse|endocardite|osteomielite|abscesso|empiema|peritonite|infec.*hospitalar|nosocomial/i.test(text);
+
+  // Geriatric detection (enhanced)
+  const isGeriatricCase = isElderly;
+  let elderlyRiskLevel: "NONE" | "ALTO" | "MUITO_ALTO" | "MAXIMO" = "NONE";
+  if (ageNum !== undefined) {
+    if (ageNum >= 80) elderlyRiskLevel = "MAXIMO";
+    else if (ageNum >= 75) elderlyRiskLevel = "MUITO_ALTO";
+    else if (ageNum >= 65) elderlyRiskLevel = "ALTO";
+  }
+
+  // APS / Primary Care detection
+  const isAPSCase = scenario === "UBS" || /atenção primária|atenção básica|ambulatório|consultório|esf\b|estratégia.*família/i.test(text);
+
+  // Palliative Care detection
+  const isPalliativeCase = /paliativ|terminal|câncer avançado|doença.*avançad|demência avançad|sem possibilidade.*cura|falência.*múltiplos|limitação.*suporte|conforto|fase final|cuidado.*fim.*vida|prognóstico.*reservad|fora.*possibilidade/i.test(text);
+
+  // Oncology detection
+  const isOncologyCase = /câncer|neoplasia|quimioterapia|radioterapia|neutropenia|metástase|tumor|oncológic|linfoma|leucemia|mieloma|carcinoma|sarcoma|quimio|imunossuprimido.*câncer/i.test(text);
+
+  // Electrolyte / Acid-base detection
+  const isElectrolyteCase = /na\+?\s*[:=]?\s*[0-9]|k\+?\s*[:=]?\s*[0-9]|mg\+?\s*[:=]?\s*[0-9]|ca\+?\s*[:=]?\s*[0-9]|acidose|alcalose|gasometria|ph\s*[:=]?\s*[67]|hco3|bicarbonato|lactato.*alto|distúrbio.*eletrolít|hidroeletrolít|ânion gap|osmolaridade/i.test(text) && !isEndocrineCase;
+
+  // Rheumatology detection
+  const isRheumatologyCase = /artrite|artralgia|dor articular.*crônic|rigidez matinal|lúpus|les\b|doença autoimune|gota|ácido úrico.*alto|vasculite|artrite reumatoid|espondiloartrite|fibromialgia|polimialgia|esclerodermia|síndrome.*sjögren|dermatomiosite/i.test(text) && !isOrthoCase;
+
+  // Gynecology (ambulatory) detection
+  const isGynecoCase = /sangramento vaginal|corrimento|dor pélvica|anticoncep|amenorreia|gestação inicial|dst\b|ist\b|dip\b|doença.*inflamatória.*pélvica|menopausa|climatério|cisto.*ovarian|endometriose|mioma|colo.*útero|papanicolau|colposcopia|vaginose|candidíase.*vaginal/i.test(text) && !isPregnant;
+
   return {
     weightKg: actualWeight,
     ageYears: ageNum,
@@ -1993,6 +2023,8 @@ function extractPatient(messages: ChatMessage[]): PatientData {
     isPregnant, isPuerperal, gestationalWeeks, isFertileAge, pregnancyConfirmed,
     isCriticalCase, isTraumaCase, isOrthoCase, isGastroCase, isEndocrineCase,
     isRespiratoryCase, isPsychiatryCase, isUrologyCase, isDermatologyCase, isHematologyCase,
+    isInfectologyCase, isGeriatricCase, elderlyRiskLevel, isAPSCase, isPalliativeCase,
+    isOncologyCase, isElectrolyteCase, isRheumatologyCase, isGynecoCase,
   };
 }
 
