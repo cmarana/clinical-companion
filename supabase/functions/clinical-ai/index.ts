@@ -3877,7 +3877,7 @@ Se K ≥ 5,5 detectado:
 - Varfarina: INR seriado com qualquer ATB, amiodarona, AINE.
 - Amiodarona: risco QT com quinolona, macrolídeo, haloperidol.
 - Nefrotóxicos: nunca combinar ≥ 2 sem monitorar Cr.
-- Classificar: 🟢 leve, 🟡 moderado, 🔴 grave/contraindicado.
+- Classificar: Baixo risco, Moderado, Alto risco (CONTRAINDICADO).
 
 ═══ REGRAS FINAIS ═══
 - Se dúvida → perguntar.
