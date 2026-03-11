@@ -83,15 +83,6 @@ export default function DutyMode() {
   const { favorites } = useFavorites();
   const [search, setSearch] = useState("");
 
-  if (!subscription.subscribed) {
-    return (
-      <>
-        <TopBar title="Modo Plantão" />
-        <PremiumGate />
-      </>
-    );
-  }
-
   // Global search across protocols, medications, shortcuts
   const searchResults = useMemo(() => {
     if (search.length < 2) return null;
