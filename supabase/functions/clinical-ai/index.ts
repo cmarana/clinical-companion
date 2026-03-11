@@ -59,6 +59,16 @@ interface PatientData {
   isGastroCase: boolean;
   // Endocrine / Metabolic
   isEndocrineCase: boolean;
+  // Respiratory
+  isRespiratoryCase: boolean;
+  // Psychiatry
+  isPsychiatryCase: boolean;
+  // Urology
+  isUrologyCase: boolean;
+  // Dermatology
+  isDermatologyCase: boolean;
+  // Hematology
+  isHematologyCase: boolean;
 }
 
 interface RenalCalcResult {
