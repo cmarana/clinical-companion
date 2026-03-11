@@ -59,6 +59,7 @@ const AppRoutes = () => (
       <Route path="/favorites" element={<Favorites />} />
       <Route path="/notes" element={<Notes />} />
       <Route path="/emergency" element={<EmergencyMode />} />
+      <Route path="/emergency/:id" element={<EmergencyProtocolDetail />} />
       <Route path="/duty" element={<DutyMode />} />
       <Route path="/prescriptions" element={<Prescriptions />} />
       <Route path="/prescriptions/:id" element={<PrescriptionDetail />} />
