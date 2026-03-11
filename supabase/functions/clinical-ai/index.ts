@@ -2007,6 +2007,36 @@ function formatEngineContext(e: EngineResult): string {
     lines.push(`  → Delirium: medidas não farmacológicas PRIMEIRO. Haloperidol 0,5-2mg se agitação grave (monitorar QTc)`);
   }
 
+  // Obstetric section
+  if (e.patient.isPregnant || e.patient.isPuerperal) {
+    lines.push("\n🤰 ═══ MODO OBSTETRÍCIA ATIVADO ═══");
+    lines.push(`  Gestante: ${e.patient.isPregnant ? "SIM" : "Não"}`);
+    lines.push(`  Puérpera: ${e.patient.isPuerperal ? "SIM" : "Não"}`);
+    lines.push(`  IG: ${e.patient.gestationalWeeks ? `${e.patient.gestationalWeeks} semanas` : "NÃO INFORMADA — PERGUNTAR"}`);
+    lines.push(`  Mulher em idade fértil: ${e.patient.isFertileAge ? "SIM" : "N/A"}`);
+    lines.push(`\n  DROGAS PROIBIDAS NA GESTAÇÃO:`);
+    lines.push(`  🔴 CONTRAINDICADAS: IECA, BRA, warfarina, isotretinoína, tetraciclina, doxiciclina, metotrexato, misoprostol (sem indicação obstétrica)`);
+    lines.push(`  🟡 EVITAR: quinolonas, AINEs (3º tri: fechamento ducto arterioso), benzodiazepínicos, carbamazepina, valproato, fenitoína`);
+    lines.push(`  ✅ SEGUROS: penicilinas, cefalosporinas, azitromicina, eritromicina, metronidazol (2º/3º tri), clindamicina, paracetamol, insulina`);
+    lines.push(`\n  ANTIBIÓTICOS NA GESTAÇÃO:`);
+    lines.push(`  → 1ª escolha: penicilinas, cefalosporinas`);
+    lines.push(`  → Atípicos: azitromicina (NÃO usar quinolona)`);
+    lines.push(`  → ITU: ceftriaxona, nitrofurantoína (NÃO no 3º tri), fosfomicina`);
+    lines.push(`  → Anaeróbios: metronidazol (evitar 1º tri se possível), clindamicina`);
+    lines.push(`\n  EMERGÊNCIAS OBSTÉTRICAS:`);
+    lines.push(`  → Pré-eclâmpsia: MgSO4 (Zuspan: 4g IV → 1-2g/h) + anti-HAS (hidralazina/nifedipino). EVITAR IECA/BRA/nitroprussiato.`);
+    lines.push(`  → Eclâmpsia: MgSO4 + avaliar parto IMEDIATO. Monitorar reflexo patelar, FR, diurese.`);
+    lines.push(`  → Hemorragia pós-parto: ocitocina → metilergometrina → misoprostol → ác. tranexâmico → cirurgia`);
+    lines.push(`  → Ectópica: beta-hCG + USG TV. Instável = cirurgia. Estável = metotrexato.`);
+    lines.push(`  → Sepse puerperal: clinda + genta ± ampicilina. Profilaxia TEV obrigatória.`);
+    lines.push(`\n  EXAMES NA GESTAÇÃO:`);
+    lines.push(`  → EVITAR radiação (TC/RX) se possível. Preferir USG, RM sem contraste.`);
+    lines.push(`  → Se TC imprescindível: proteção abdominal + anotar dose.`);
+    lines.push(`\n  PUERPÉRIO:`);
+    lines.push(`  → Riscos: TEV, infecção (endometrite), hemorragia tardia, depressão pós-parto, mastite`);
+    lines.push(`  → Profilaxia TEV: enoxaparina 40mg/dia (cesárea, imobilização, obesidade, PE)`);
+  }
+
   lines.push("\n═══ FIM DO MOTOR CLÍNICO ═══");
   return lines.join("\n");
 }
