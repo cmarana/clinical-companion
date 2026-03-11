@@ -104,6 +104,21 @@ export default function ProtocolDetail() {
           ))}
         </Tabs>
 
+        {/* Decision Tree */}
+        {isPremium && protocol.id && decisionTrees[protocol.id] && (
+          <div className="mt-6 space-y-2">
+            <div className="flex items-center gap-2">
+              <GitBranch size={16} className="text-primary" />
+              <h3 className="font-heading font-semibold text-sm">Fluxograma Interativo</h3>
+            </div>
+            <DecisionTree
+              title={decisionTrees[protocol.id].title}
+              root={decisionTrees[protocol.id].tree}
+              guideline={decisionTrees[protocol.id].guideline}
+            />
+          </div>
+        )}
+
         {!isPremium && lockedSections.length > 0 && (
           <PremiumGate>
             <></>
