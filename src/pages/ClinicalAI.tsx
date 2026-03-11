@@ -127,12 +127,6 @@ export default function ClinicalAI() {
 
   const clearChat = () => { setMessages([]); };
 
-  const sectionIcons: Record<string, string> = {
-    "RESUMO": "📋", "HIPÓTESES": "🎯", "DIFERENCIAIS": "🔀",
-    "ALGORITMO": "🔄", "EXAMES": "🔬", "CONDUTA": "⚡",
-    "PRESCRIÇÃO": "💊", "INTERAÇÕES": "⚠️", "ALERTAS": "🚨", "REFERÊNCIAS": "📚",
-  };
-
   return (
     <div className="flex flex-col h-[calc(100vh-4rem)] max-w-2xl mx-auto">
       {/* Header */}
