@@ -48,7 +48,17 @@ interface PatientData {
   isPuerperal: boolean;
   gestationalWeeks?: number;
   isFertileAge: boolean;
-  pregnancyConfirmed: boolean; // explicitly stated vs suspected
+  pregnancyConfirmed: boolean;
+  // ICU / Critical
+  isCriticalCase: boolean;
+  // Trauma / Surgery
+  isTraumaCase: boolean;
+  // Orthopedics
+  isOrthoCase: boolean;
+  // Gastroenterology
+  isGastroCase: boolean;
+  // Endocrine / Metabolic
+  isEndocrineCase: boolean;
 }
 
 interface RenalCalcResult {
