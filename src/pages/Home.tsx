@@ -3,18 +3,20 @@ import { Input } from "@/components/ui/input";
 import {
   Search, Pill, ClipboardList, FileText, Calculator,
   Baby, Heart, Stethoscope, BookOpen, HelpCircle,
-  AlertTriangle, Zap, Moon, Sun, ChevronRight
+  AlertTriangle, Zap, Moon, Sun, ChevronRight, Bot, FlaskConical
 } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
 
 const modules = [
+  { label: "IA Clínica", icon: Bot, path: "/clinical-ai", highlight: true },
   { label: "Modo Plantão", icon: AlertTriangle, path: "/duty", accent: true },
   { label: "Emergência", icon: Zap, path: "/emergency", accent: true },
   { label: "Medicações", icon: Pill, path: "/medications" },
   { label: "Prescrições", icon: ClipboardList, path: "/prescriptions" },
   { label: "Protocolos", icon: FileText, path: "/protocols" },
   { label: "Calculadoras", icon: Calculator, path: "/calculators" },
+  { label: "Interações", icon: FlaskConical, path: "/drug-interactions" },
   { label: "Pediatria", icon: Baby, path: "/pediatrics" },
   { label: "Obstetrícia", icon: Heart, path: "/obstetrics" },
   { label: "Clínica", icon: Stethoscope, path: "/diagnosis" },
@@ -71,13 +73,15 @@ export default function Home() {
             key={m.path}
             onClick={() => navigate(m.path)}
             className={`flex items-center gap-3 px-3 py-3.5 rounded-xl border transition-all active:scale-[0.97] text-left ${
-              m.accent
-                ? "border-destructive/30 bg-destructive/5 hover:bg-destructive/10"
-                : "border-border bg-card hover:bg-accent/50"
+              (m as any).highlight
+                ? "border-primary/40 bg-primary/5 hover:bg-primary/10 col-span-2"
+                : m.accent
+                  ? "border-destructive/30 bg-destructive/5 hover:bg-destructive/10"
+                  : "border-border bg-card hover:bg-accent/50"
             }`}
           >
             <div className={`flex items-center justify-center w-9 h-9 rounded-lg shrink-0 ${
-              m.accent ? "bg-destructive/15 text-destructive" : "bg-primary/10 text-primary"
+              (m as any).highlight ? "bg-primary/15 text-primary" : m.accent ? "bg-destructive/15 text-destructive" : "bg-primary/10 text-primary"
             }`}>
               <m.icon size={18} />
             </div>
