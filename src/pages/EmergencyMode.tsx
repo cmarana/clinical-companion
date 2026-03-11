@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { protocols } from "@/data/protocols";
 import { Zap } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import PremiumGate from "@/components/PremiumGate";
 
 const emergencyIds = [
   "pcr", "sepse", "choque-hipovolemico", "choque-cardiogenico", "anafilaxia",
@@ -12,6 +14,17 @@ const emergencyIds = [
 
 export default function EmergencyMode() {
   const navigate = useNavigate();
+  const { subscription } = useAuth();
+
+  if (!subscription.subscribed) {
+    return (
+      <>
+        <TopBar title="Modo Emergência" className="border-destructive bg-destructive/5" />
+        <PremiumGate />
+      </>
+    );
+  }
+
   const emergencyProtocols = protocols.filter((p) => emergencyIds.includes(p.id));
 
   return (

@@ -1,15 +1,18 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { protocols } from "@/data/protocols";
 import { useFavorites } from "@/contexts/FavoritesContext";
+import { useAuth } from "@/contexts/AuthContext";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import PremiumGate, { PremiumBadge } from "@/components/PremiumGate";
+import { FREE_PROTOCOL_SECTIONS } from "@/lib/plans";
 
 export default function ProtocolDetail() {
   const { id } = useParams<{ id: string }>();
-  const navigate = useNavigate();
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { subscription } = useAuth();
   const protocol = protocols.find((p) => p.id === id);
 
   if (!protocol) {
@@ -22,6 +25,16 @@ export default function ProtocolDetail() {
   }
 
   const fav = isFavorite(protocol.id);
+  const isPremium = subscription.subscribed;
+
+  // Free users can see only def and diag sections
+  const visibleSections = isPremium
+    ? protocol.sections
+    : protocol.sections.filter((s) => FREE_PROTOCOL_SECTIONS.includes(s.id));
+
+  const lockedSections = isPremium
+    ? []
+    : protocol.sections.filter((s) => !FREE_PROTOCOL_SECTIONS.includes(s.id));
 
   return (
     <>
@@ -37,10 +50,14 @@ export default function ProtocolDetail() {
         }
       />
       <div className="px-4 py-4 max-w-lg mx-auto">
-        <p className="text-xs text-muted-foreground mb-3 font-heading">{protocol.category}</p>
-        <Tabs defaultValue={protocol.sections[0]?.id || ""} className="w-full">
+        <div className="flex items-center gap-2 mb-3">
+          <p className="text-xs text-muted-foreground font-heading">{protocol.category}</p>
+          {!isPremium && <PremiumBadge />}
+        </div>
+
+        <Tabs defaultValue={visibleSections[0]?.id || ""} className="w-full">
           <TabsList className="w-full flex overflow-x-auto no-scrollbar h-auto flex-wrap gap-1 bg-transparent p-0 mb-4">
-            {protocol.sections.map((s) => (
+            {visibleSections.map((s) => (
               <TabsTrigger
                 key={s.id}
                 value={s.id}
@@ -49,8 +66,16 @@ export default function ProtocolDetail() {
                 {s.title}
               </TabsTrigger>
             ))}
+            {lockedSections.map((s) => (
+              <span
+                key={s.id}
+                className="text-xs px-3 py-1.5 rounded-full bg-muted text-muted-foreground opacity-50 cursor-not-allowed"
+              >
+                🔒 {s.title}
+              </span>
+            ))}
           </TabsList>
-          {protocol.sections.map((s) => (
+          {visibleSections.map((s) => (
             <TabsContent key={s.id} value={s.id} className="protocol-content">
               <h2 className="text-lg font-semibold mb-3 border-b border-border pb-2 font-heading">{s.title}</h2>
               {s.content.split("\n").map((line, i) => (
@@ -61,6 +86,12 @@ export default function ProtocolDetail() {
             </TabsContent>
           ))}
         </Tabs>
+
+        {!isPremium && lockedSections.length > 0 && (
+          <PremiumGate>
+            <></>
+          </PremiumGate>
+        )}
       </div>
     </>
   );

@@ -1,19 +1,22 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Check, Crown, LogOut } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Check, Crown, LogOut, Sparkles } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
+import { plans } from "@/lib/plans";
+import { cn } from "@/lib/utils";
 
 const features = [
-  "Todos os protocolos médicos",
+  "Todos os protocolos completos",
   "Guia completo de medicamentos",
+  "Doses, diluições e precauções",
   "Modo Emergência",
   "Quiz com 100+ questões",
-  "Favoritos e anotações",
+  "Favoritos e anotações pessoais",
   "Busca inteligente",
   "Funcionamento offline (PWA)",
   "Atualizações contínuas",
@@ -21,19 +24,30 @@ const features = [
 
 export default function Pricing() {
   const { user, subscription, checkSubscription, signOut } = useAuth();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<string | null>(null);
   const [portalLoading, setPortalLoading] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState("semiannual");
   const navigate = useNavigate();
   const { toast } = useToast();
+  const [searchParams] = useSearchParams();
 
-  const handleCheckout = async () => {
+  useEffect(() => {
+    if (searchParams.get("success") === "true") {
+      toast({ title: "Assinatura realizada!", description: "Bem-vindo ao Manual de Plantão Pro!" });
+      checkSubscription();
+    }
+  }, [searchParams]);
+
+  const handleCheckout = async (planId: string) => {
     if (!user) {
       navigate("/auth");
       return;
     }
-    setLoading(true);
+    setLoading(planId);
     try {
-      const { data, error } = await supabase.functions.invoke("create-checkout");
+      const { data, error } = await supabase.functions.invoke("create-checkout", {
+        body: { planId },
+      });
       if (error) throw error;
       if (data?.url) {
         window.open(data.url, "_blank");
@@ -41,7 +55,7 @@ export default function Pricing() {
     } catch (err: any) {
       toast({ title: "Erro", description: err.message, variant: "destructive" });
     } finally {
-      setLoading(false);
+      setLoading(null);
     }
   };
 
@@ -63,52 +77,110 @@ export default function Pricing() {
   return (
     <>
       <TopBar title="Assinatura" />
-      <div className="px-4 py-6 max-w-lg mx-auto space-y-6">
-        <Card className="border-primary">
-          <CardHeader className="text-center pb-2">
-            <div className="mx-auto w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mb-2">
-              <Crown size={20} className="text-primary" />
-            </div>
-            <CardTitle className="font-heading text-lg">Manual de Plantão Pro</CardTitle>
-            <div className="flex items-baseline justify-center gap-1 mt-1">
-              <span className="text-3xl font-bold">R$ 20</span>
-              <span className="text-sm text-muted-foreground">/mês</span>
-            </div>
-          </CardHeader>
-          <CardContent className="space-y-4">
-            <ul className="space-y-2">
-              {features.map((f) => (
-                <li key={f} className="flex items-center gap-2 text-sm">
-                  <Check size={16} className="text-primary shrink-0" />
-                  {f}
-                </li>
-              ))}
-            </ul>
+      <div className="px-4 py-6 max-w-lg mx-auto space-y-6 pb-24">
+        {/* Header */}
+        <div className="text-center space-y-2">
+          <div className="mx-auto w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
+            <Crown size={24} className="text-primary" />
+          </div>
+          <h1 className="font-heading text-xl font-bold">Manual de Plantão Pro</h1>
+          <p className="text-sm text-muted-foreground">
+            Acesso completo a todos os protocolos, medicamentos e ferramentas
+          </p>
+        </div>
 
-            {subscription.subscribed ? (
-              <div className="space-y-3">
-                <div className="text-center p-3 rounded-lg bg-primary/10 text-primary text-sm font-medium">
-                  Assinatura ativa
-                  {subscription.subscriptionEnd && (
-                    <span className="block text-xs text-muted-foreground mt-1">
-                      Renova em {new Date(subscription.subscriptionEnd).toLocaleDateString("pt-BR")}
-                    </span>
-                  )}
-                </div>
-                <Button onClick={handlePortal} variant="outline" className="w-full" disabled={portalLoading}>
-                  {portalLoading ? "Carregando..." : "Gerenciar assinatura"}
-                </Button>
-                <Button onClick={() => checkSubscription()} variant="ghost" className="w-full text-xs">
-                  Atualizar status
-                </Button>
+        {subscription.subscribed ? (
+          <Card className="border-primary">
+            <CardContent className="p-5 space-y-4">
+              <div className="text-center p-4 rounded-lg bg-primary/10 text-primary font-medium">
+                <Sparkles size={20} className="mx-auto mb-2" />
+                Assinatura ativa
+                {subscription.subscriptionEnd && (
+                  <span className="block text-xs text-muted-foreground mt-1">
+                    Renova em {new Date(subscription.subscriptionEnd).toLocaleDateString("pt-BR")}
+                  </span>
+                )}
               </div>
-            ) : (
-              <Button onClick={handleCheckout} className="w-full" size="lg" disabled={loading}>
-                {loading ? "Redirecionando..." : user ? "Assinar agora" : "Entrar para assinar"}
+              <Button onClick={handlePortal} variant="outline" className="w-full" disabled={portalLoading}>
+                {portalLoading ? "Carregando..." : "Gerenciar assinatura"}
               </Button>
-            )}
-          </CardContent>
-        </Card>
+              <Button onClick={() => checkSubscription()} variant="ghost" className="w-full text-xs">
+                Atualizar status
+              </Button>
+            </CardContent>
+          </Card>
+        ) : (
+          <>
+            {/* Plan selector */}
+            <div className="grid grid-cols-2 gap-2">
+              {plans.map((plan) => (
+                <Card
+                  key={plan.id}
+                  onClick={() => setSelectedPlan(plan.id)}
+                  className={cn(
+                    "cursor-pointer transition-all relative overflow-hidden",
+                    selectedPlan === plan.id
+                      ? "border-primary ring-2 ring-primary/20 shadow-md"
+                      : "border-border hover:border-primary/40"
+                  )}
+                >
+                  {plan.popular && (
+                    <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-[9px] font-heading font-bold px-2 py-0.5 rounded-bl-lg">
+                      POPULAR
+                    </div>
+                  )}
+                  <CardContent className="p-3 space-y-1">
+                    <p className="font-heading font-bold text-xs">{plan.name}</p>
+                    <div className="flex items-baseline gap-0.5">
+                      <span className="font-heading font-bold text-lg">{plan.priceDisplay}</span>
+                    </div>
+                    <p className="text-[10px] text-muted-foreground">{plan.monthlyEquivalent}</p>
+                    {plan.savings && (
+                      <p className="text-[10px] font-heading font-semibold text-primary">{plan.savings}</p>
+                    )}
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+
+            {/* CTA */}
+            <Button
+              onClick={() => handleCheckout(selectedPlan)}
+              className="w-full h-12 text-base font-heading font-bold"
+              size="lg"
+              disabled={loading !== null}
+            >
+              {loading ? "Redirecionando..." : user ? "Assinar agora" : "Entrar para assinar"}
+            </Button>
+
+            {/* Features */}
+            <Card>
+              <CardContent className="p-4">
+                <p className="font-heading font-bold text-sm mb-3">Tudo incluso:</p>
+                <ul className="space-y-2.5">
+                  {features.map((f) => (
+                    <li key={f} className="flex items-start gap-2.5 text-sm">
+                      <Check size={16} className="text-primary shrink-0 mt-0.5" />
+                      <span>{f}</span>
+                    </li>
+                  ))}
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* Free tier info */}
+            <Card className="bg-muted/50">
+              <CardContent className="p-4">
+                <p className="font-heading font-bold text-sm mb-2">Versão Gratuita</p>
+                <ul className="space-y-1.5 text-xs text-muted-foreground">
+                  <li>• Visualização de definições e diagnósticos</li>
+                  <li>• Indicações dos medicamentos</li>
+                  <li>• Lista de protocolos e medicamentos</li>
+                </ul>
+              </CardContent>
+            </Card>
+          </>
+        )}
 
         {user && (
           <div className="text-center">
