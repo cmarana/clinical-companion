@@ -1472,11 +1472,21 @@ function checkInteractions(medsInUse: string[], prescribedDrugs: string[], patie
 }
 
 // ─── MODULE 5: Protocol Selection ───────────────────────────────
-function selectProtocol(text: string, scenario: Scenario, isPediatric: boolean): { name: string; steps: ProtocolStep[] } | null {
+function selectProtocol(text: string, scenario: Scenario, patient: PatientData): { name: string; steps: ProtocolStep[] } | null {
   const lower = text.toLowerCase();
 
-  // Pediatric protocols first
-  if (isPediatric) {
+  // Obstetric protocols first (highest priority for pregnant patients)
+  if (patient.isPregnant || patient.isPuerperal) {
+    if (/eclâmpsia|pré[- ]?eclâmpsia|hellp|convuls.*gestante|pa.*alta.*gestante/i.test(lower)) return OBSTETRIC_PROTOCOLS.preeclampsia;
+    if (/hemorrag.*pós[- ]?parto|atonia|sangr.*puerpério|hpp\b/i.test(lower)) return OBSTETRIC_PROTOCOLS.obstetric_hemorrhage;
+    if (/ectópica|ectopic|gravidez.*tubár/i.test(lower)) return OBSTETRIC_PROTOCOLS.ectopic;
+    if (/sepse.*puerper|febre.*puerpério|endometrite|infec.*puerper/i.test(lower)) return OBSTETRIC_PROTOCOLS.sepsis_puerperal;
+    // Bleeding in pregnancy
+    if (/sangr.*gra|hemorrag.*gestação|descolamento|placenta prévia/i.test(lower)) return OBSTETRIC_PROTOCOLS.obstetric_hemorrhage;
+  }
+
+  // Pediatric protocols
+  if (patient.isPediatric) {
     if (/pcr|parada|sem pulso|rcp/i.test(lower)) return PEDIATRIC_PROTOCOLS.pals_pcr;
     if (/sepse|séptic|choque séptico/i.test(lower)) return PEDIATRIC_PROTOCOLS.sepse_ped;
     if (/convuls|estado.*mal|status epilepticus/i.test(lower)) return PEDIATRIC_PROTOCOLS.convulsao_ped;
@@ -1485,7 +1495,7 @@ function selectProtocol(text: string, scenario: Scenario, isPediatric: boolean):
   }
 
   if (/sepse|séptic|choque séptico/i.test(lower)) {
-    if (isPediatric) return PEDIATRIC_PROTOCOLS.sepse_ped;
+    if (patient.isPediatric) return PEDIATRIC_PROTOCOLS.sepse_ped;
     return scenario === "UTI" ? PROTOCOLS.sepsis_uti : PROTOCOLS.sepsis;
   }
   if (/choque|hipoten/i.test(lower) && !/séptic/i.test(lower)) return PROTOCOLS.shock;
@@ -1494,7 +1504,7 @@ function selectProtocol(text: string, scenario: Scenario, isPediatric: boolean):
   if (/iam|infarto|sca|síndrome coronariana|dor torácica/i.test(lower)) return PROTOCOLS.cardiac;
   // Neuro protocols
   if (/meningite|encefalite/i.test(lower) && !/pediátr|criança/i.test(lower)) return PROTOCOLS.meningitis;
-  if (/convuls|estado.*mal|status epilepticus|crise epiléptica/i.test(lower) && !isPediatric) return PROTOCOLS.seizure;
+  if (/convuls|estado.*mal|status epilepticus|crise epiléptica/i.test(lower) && !patient.isPediatric) return PROTOCOLS.seizure;
   if (/tce|trauma.*crani|trauma.*crânio/i.test(lower)) return PROTOCOLS.tce;
   if (/coma\b|rebaixamento.*consciência|glasgow.*[3-8]\b/i.test(lower)) return PROTOCOLS.coma;
   if (/delirium|confus.*mental.*agud/i.test(lower)) return PROTOCOLS.delirium;
