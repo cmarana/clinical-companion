@@ -2493,13 +2493,14 @@ function checkAllergies(patient: PatientData): string[] {
   if (/penicilina|amoxicilina|ampicilina/i.test(a)) {
     if (allergyType === "ANAFILÁTICA") {
       warnings.push("🔴 ANAFILAXIA A PENICILINA CONFIRMADA:");
-      warnings.push("  → EVITAR: Penicilinas, Cefalosporinas, Carbapenêmicos (se alternativa existir)");
+      warnings.push("  → EVITAR: Penicilinas, Cefalosporinas");
+      warnings.push("  → Carbapenêmicos: reação cruzada < 1%. Em situação GRAVE → avaliar risco × benefício.");
       warnings.push("  → PREFERIR: Aztreonam, Quinolona (levo/cipro), Vancomicina, Linezolida, Daptomicina");
-      warnings.push("  → Carbapenêmico APENAS se SNC ou situação sem alternativa, com skin test e monitorização");
+      warnings.push("  → Se choque/SNC: considerar meropenem com cautela, skin test se possível, monitorar 1ª dose.");
     } else if (allergyType === "LEVE") {
       warnings.push("🟡 ALERGIA LEVE A PENICILINA (rash/urticária):");
       warnings.push("  → Cefalosporinas: reação cruzada ~2%, PODEM ser usadas com cautela (monitorar 1ª dose)");
-      warnings.push("  → Carbapenêmicos: risco < 1%, PODEM ser usadas");
+      warnings.push("  → Carbapenêmicos: risco < 1%, PODEM ser usados");
       warnings.push("  → Evitar penicilinas diretas");
     } else {
       warnings.push("🟡 ALERGIA A PENICILINA — TIPO NÃO INFORMADO:");
