@@ -2,12 +2,18 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { Card, CardContent } from "@/components/ui/card";
 import { protocols, protocolCategories } from "@/data/protocols";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Lock } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/contexts/AuthContext";
+import { FREE_PROTOCOL_IDS } from "@/lib/plans";
+import { PremiumBadge } from "@/components/PremiumGate";
+import PremiumGate from "@/components/PremiumGate";
 
 export default function Protocols() {
   const navigate = useNavigate();
+  const { subscription } = useAuth();
+  const isPremium = subscription.subscribed;
   const [searchParams] = useSearchParams();
   const initialCat = searchParams.get("cat") || "all";
   const [activeCat, setActiveCat] = useState(initialCat);
@@ -18,6 +24,13 @@ export default function Protocols() {
     <>
       <TopBar title="Protocolos" />
       <div className="px-4 py-4 max-w-lg mx-auto space-y-4">
+        {!isPremium && (
+          <div className="flex items-center gap-2">
+            <PremiumBadge />
+            <span className="text-xs text-muted-foreground">3 protocolos gratuitos — assine para acesso completo</span>
+          </div>
+        )}
+
         {/* Category pills */}
         <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
           <button
@@ -45,22 +58,40 @@ export default function Protocols() {
 
         {/* List */}
         <div className="space-y-2">
-          {filtered.map((p) => (
-            <Card
-              key={p.id}
-              onClick={() => navigate(`/protocols/${p.id}`)}
-              className="cursor-pointer hover:shadow-sm active:scale-[0.99] transition-all"
-            >
-              <CardContent className="flex items-center justify-between p-3.5">
-                <div>
-                  <p className="font-heading font-semibold text-sm">{p.title}</p>
-                  <p className="text-xs text-muted-foreground">{p.category}</p>
-                </div>
-                <ChevronRight size={16} className="text-muted-foreground" />
-              </CardContent>
-            </Card>
-          ))}
+          {filtered.map((p) => {
+            const isFree = FREE_PROTOCOL_IDS.includes(p.id);
+            const locked = !isPremium && !isFree;
+
+            return (
+              <Card
+                key={p.id}
+                onClick={() => navigate(`/protocols/${p.id}`)}
+                className={cn(
+                  "cursor-pointer hover:shadow-sm active:scale-[0.99] transition-all",
+                  locked && "opacity-60"
+                )}
+              >
+                <CardContent className="flex items-center justify-between p-3.5">
+                  <div>
+                    <p className="font-heading font-semibold text-sm flex items-center gap-2">
+                      {locked && "🔒"} {p.title}
+                    </p>
+                    <p className="text-xs text-muted-foreground">{p.category}</p>
+                  </div>
+                  {locked ? (
+                    <Lock size={14} className="text-muted-foreground shrink-0" />
+                  ) : (
+                    <ChevronRight size={16} className="text-muted-foreground" />
+                  )}
+                </CardContent>
+              </Card>
+            );
+          })}
         </div>
+
+        {!isPremium && (
+          <PremiumGate />
+        )}
       </div>
     </>
   );

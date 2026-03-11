@@ -73,4 +73,3 @@ export const FREE_FEATURES = {
   notes: false,
   favorites: true,
 };
-};
