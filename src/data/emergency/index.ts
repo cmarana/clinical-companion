@@ -6,6 +6,9 @@ import { respiratoryProtocols } from "./respiratory";
 import { neurologicalProtocols } from "./neurological";
 import { sepsisProtocols } from "./sepsis";
 import { metabolicProtocols } from "./metabolic";
+import { traumaProtocols } from "./trauma";
+import { intoxicationProtocols } from "./intoxication";
+import { proceduresProtocols } from "./procedures";
 
 export { SECTION_ORDER } from "./types";
 export type { EmergencyProtocol, EmergencyCategory, EmergencySection } from "./types";
@@ -17,6 +20,9 @@ export const emergencyCategories: EmergencyCategory[] = [
   { id: "neurological", title: "Neurológico", protocols: neurologicalProtocols },
   { id: "sepsis", title: "Sepse e Choque", protocols: sepsisProtocols },
   { id: "metabolic", title: "Metabólico e Eletrolítico", protocols: metabolicProtocols },
+  { id: "trauma", title: "Trauma (ATLS)", protocols: traumaProtocols },
+  { id: "intoxication", title: "Intoxicações", protocols: intoxicationProtocols },
+  { id: "procedures", title: "Procedimentos de Emergência", protocols: proceduresProtocols },
 ];
 
 // Flat list for search/lookup
