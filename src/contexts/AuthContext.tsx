@@ -52,17 +52,27 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     trialDaysLeft: 0,
   });
 
-  // Deduplicate concurrent calls
+  // Deduplicate and throttle concurrent calls
   const pendingCheck = useRef<Promise<void> | null>(null);
+  const lastCheckTime = useRef<number>(0);
   const userRef = useRef<User | null>(null);
   userRef.current = user;
 
-  const checkSubscription = useCallback(async () => {
+  const MIN_CHECK_INTERVAL = 30_000; // 30 seconds minimum between checks
+
+  const checkSubscription = useCallback(async (force = false) => {
     // If a check is already in-flight, reuse it
     if (pendingCheck.current) return pendingCheck.current;
 
+    // Skip if checked recently (unless forced)
+    const now = Date.now();
+    if (!force && now - lastCheckTime.current < MIN_CHECK_INTERVAL) {
+      return;
+    }
+
     const doCheck = async () => {
       try {
+        lastCheckTime.current = Date.now();
         const { data, error } = await supabase.functions.invoke("check-subscription");
         if (error) throw error;
         const hasPaidSub = data?.subscribed ?? false;
