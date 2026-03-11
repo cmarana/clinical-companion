@@ -2,13 +2,17 @@ import { useNavigate } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { Card, CardContent } from "@/components/ui/card";
 import { medications } from "@/data/medications";
-import { ChevronRight, Pill } from "lucide-react";
+import { ChevronRight, Pill, Lock } from "lucide-react";
 import { useState } from "react";
 import { Input } from "@/components/ui/input";
 import { Search } from "lucide-react";
+import { useAuth } from "@/contexts/AuthContext";
+import PremiumGate, { PremiumBadge } from "@/components/PremiumGate";
 
 export default function Medications() {
   const navigate = useNavigate();
+  const { subscription } = useAuth();
+  const isPremium = subscription.subscribed;
   const [search, setSearch] = useState("");
 
   const filtered = search
@@ -23,6 +27,12 @@ export default function Medications() {
     <>
       <TopBar title="Medicamentos" />
       <div className="px-4 py-4 max-w-lg mx-auto space-y-4">
+        {!isPremium && (
+          <div className="flex items-center gap-2">
+            <PremiumBadge />
+            <span className="text-xs text-muted-foreground">Conteúdo completo requer assinatura</span>
+          </div>
+        )}
         <div className="relative">
           <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
           <Input
@@ -45,13 +55,22 @@ export default function Medications() {
                 </div>
                 <div className="flex-1 min-w-0">
                   <p className="font-heading font-semibold text-sm">{m.name}</p>
-                  <p className="text-xs text-muted-foreground truncate">{m.indication.slice(0, 60)}...</p>
+                  <p className="text-xs text-muted-foreground truncate">
+                    {isPremium ? m.indication.slice(0, 60) + "..." : m.tags.slice(0, 3).join(", ")}
+                  </p>
                 </div>
-                <ChevronRight size={16} className="text-muted-foreground shrink-0" />
+                {!isPremium ? (
+                  <Lock size={14} className="text-muted-foreground shrink-0" />
+                ) : (
+                  <ChevronRight size={16} className="text-muted-foreground shrink-0" />
+                )}
               </CardContent>
             </Card>
           ))}
         </div>
+        {!isPremium && (
+          <PremiumGate />
+        )}
       </div>
     </>
   );

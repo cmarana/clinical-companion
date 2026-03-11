@@ -6,9 +6,9 @@ const tabs = [
   { path: "/", icon: Home, label: "Início" },
   { path: "/protocols", icon: FileText, label: "Protocolos" },
   { path: "/emergency", icon: Zap, label: "Emergência" },
+  { path: "/calculators", icon: Calculator, label: "Calculadoras" },
   { path: "/search", icon: Search, label: "Busca" },
   { path: "/favorites", icon: Star, label: "Favoritos" },
-  { path: "/notes", icon: StickyNote, label: "Notas" },
 ];
 
 export default function BottomNav() {
