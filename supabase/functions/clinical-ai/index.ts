@@ -1043,6 +1043,271 @@ const OBSTETRIC_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] 
   },
 };
 
+// ─── ICU / Critical Protocols ────────────────────────────────────
+const ICU_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  icu_general: {
+    name: "Paciente Crítico — Abordagem UTI Completa",
+    steps: [
+      { order: 1, action: "ABCDE obrigatório: via aérea, respiração, circulação, neurológico, exposição" },
+      { order: 2, action: "Classificar choque: séptico, cardiogênico, hipovolêmico, obstrutivo, distributivo", target: "NÃO assumir sepse automaticamente" },
+      { order: 3, action: "Acesso central (duplo lúmen) + PAI (linha arterial)", target: "PAM ≥ 65 mmHg contínua" },
+      { order: 4, action: "Monitor multiparamétrico: ECG, SpO2, EtCO2, PAI, PVC" },
+      { order: 5, action: "Volume: 250-500 mL cristaloide → reavaliar (POCUS, elevação MMII, variação PP)", target: "NÃO usar 30 mL/kg automático em idoso/DRC/IC" },
+      { order: 6, action: "Noradrenalina se PAM < 65 após volume. Dose: 0,1-2 mcg/kg/min. Mostrar diluição + ml/h" },
+      { order: 7, action: "Se refratário (nora > 0,5): vasopressina 0,03 UI/min → dobutamina se baixo DC → hidrocortisona 200mg/dia" },
+      { order: 8, action: "IOT se: Glasgow < 8, hipoxemia refratária, fadiga, choque grave" },
+      { order: 9, action: "VM: VT 6-8 mL/kg peso predito, PEEP ≥ 5, FiO2 para SpO2 92-96%, FR 14-20", target: "Evitar barotrauma" },
+      { order: 10, action: "Sedação: midazolam/propofol + fentanil. Dose por kg. Dexmedetomidina se extubação precoce" },
+      { order: 11, action: "Lactato sérico seriado a cada 2-4h", target: "Queda ≥ 20% em 2h" },
+      { order: 12, action: "Gasometria arterial seriada" },
+      { order: 13, action: "Calcular ClCr → ajustar TODAS as drogas renais" },
+      { order: 14, action: "Glicemia capilar 4/4h → insulina se > 180", target: "140-180 mg/dL" },
+      { order: 15, action: "Profilaxia TVP (enoxaparina/HNF profilática) + úlcera estresse (omeprazol 40mg)" },
+      { order: 16, action: "Balanço hídrico rigoroso 6/6h. Diurese horária", target: "Diurese > 0,5 mL/kg/h" },
+    ],
+  },
+  intubation_rsi: {
+    name: "Intubação de Sequência Rápida (ISR)",
+    steps: [
+      { order: 1, action: "Pré-oxigenação: O2 100% 3-5 min ou 8 respirações VCF" },
+      { order: 2, action: "Posicionamento: rampa (obeso) ou sniffing position" },
+      { order: 3, action: "Indutor: Etomidato 0,3 mg/kg IV (estabilidade hemodinâmica) OU Ketamina 1-2 mg/kg IV (broncoespasmo, choque)" },
+      { order: 4, action: "Bloqueador NM: Rocurônio 1,2 mg/kg IV (início 60s, duração 45min) OU Succinilcolina 1-1,5 mg/kg IV (início 30s, duração 5-10min)" },
+      { order: 5, action: "⚠️ Succinilcolina: CI se hipercalemia, queimadura > 72h, lesão medular, miopatia, rabdomiólise" },
+      { order: 6, action: "Confirmar posição: capnografia (EtCO2), ausculta bilateral, expansibilidade" },
+      { order: 7, action: "Fixar tubo + RX tórax" },
+      { order: 8, action: "Iniciar sedação contínua + analgesia" },
+    ],
+  },
+};
+
+// ─── Trauma / Surgery Protocols ──────────────────────────────────
+const TRAUMA_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  trauma_atls: {
+    name: "Trauma Grave — ATLS",
+    steps: [
+      { order: 1, action: "A: Via aérea com proteção cervical. IOT se necessário (colar cervical mantido)" },
+      { order: 2, action: "B: Respiração — excluir pneumotórax hipertensivo, hemotórax, tórax instável. Drenagem se indicado" },
+      { order: 3, action: "C: Circulação — 2 acessos calibrosos (16-18G). Compressão hemorragia externa" },
+      { order: 4, action: "Cristaloide aquecido 500mL → reavaliar. Se choque classe III/IV → sangue precoce" },
+      { order: 5, action: "Ácido tranexâmico 1g IV em 10min se < 3h do trauma" },
+      { order: 6, action: "Tipagem + reserva + protocolo de transfusão maciça se indicado (CH:PFC:PLQ 1:1:1)" },
+      { order: 7, action: "D: Neurológico — Glasgow, pupilas, déficit motor/sensitivo" },
+      { order: 8, action: "E: Exposição — despir, avaliar lesões, prevenir hipotermia (manta térmica)" },
+      { order: 9, action: "FAST (eco POCUS): líquido livre abdominal/pericárdico" },
+      { order: 10, action: "TC corpo inteiro (pan-scan) se politrauma + instável pós-ressuscitação" },
+      { order: 11, action: "Se anticoagulado: reverter IMEDIATAMENTE (vitamina K, CCP, PFC)" },
+      { order: 12, action: "Avaliação secundária: head-to-toe após estabilização" },
+    ],
+  },
+  abdome_agudo: {
+    name: "Abdome Agudo — Avaliação e Conduta",
+    steps: [
+      { order: 1, action: "Avaliar instabilidade hemodinâmica — se presente: ressuscitar PRIMEIRO" },
+      { order: 2, action: "Considerar diagnósticos: apendicite, colecistite, pancreatite, perfuração, obstrução, isquemia, ectópica" },
+      { order: 3, action: "NUNCA assumir gastrite ou diagnóstico benigno sem investigar" },
+      { order: 4, action: "Exames: hemograma, PCR, amilase/lipase, TGO/TGP, bilirrubinas, lactato, Cr, beta-hCG (mulher fértil)" },
+      { order: 5, action: "Imagem: USG abdominal (1ª linha) → TC abdome com contraste se necessário" },
+      { order: 6, action: "Analgesia: dipirona IV + opioide se dor intensa (NÃO atrasar analgesia)" },
+      { order: 7, action: "ATB: Ceftriaxona 2g + Metronidazol 500mg se suspeita de perfuração/infecção abdominal" },
+      { order: 8, action: "Jejum se possibilidade cirúrgica" },
+      { order: 9, action: "Avaliação cirúrgica precoce se: perfuração, obstrução, isquemia, apendicite" },
+      { order: 10, action: "⚠️ Idoso: abdome agudo com pouca dor = MAIS GRAVE. Investigar mais." },
+    ],
+  },
+  hemorrhagic_shock: {
+    name: "Choque Hemorrágico no Trauma",
+    steps: [
+      { order: 1, action: "Classe I (<15% volemia): FC normal, PA normal → cristaloide" },
+      { order: 2, action: "Classe II (15-30%): FC 100-120, PA normal → cristaloide + considerar sangue" },
+      { order: 3, action: "Classe III (30-40%): FC > 120, PA↓, confuso → sangue + protocolo maciço" },
+      { order: 4, action: "Classe IV (>40%): FC > 140, PA muito↓, letárgico → sangue urgente + cirurgia" },
+      { order: 5, action: "Ácido tranexâmico 1g IV se < 3h" },
+      { order: 6, action: "Protocolo transfusão maciça: CH:PFC:PLQ 1:1:1" },
+      { order: 7, action: "Metas: Hb > 7, plaquetas > 50.000, fibrinogênio > 200, pH > 7.2, Ca ionizado > 1.0, temp > 35°C" },
+      { order: 8, action: "Evitar hipotermia (tríade letal: hipotermia + acidose + coagulopatia)" },
+    ],
+  },
+};
+
+// ─── Orthopedic Protocols ────────────────────────────────────────
+const ORTHO_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  fracture: {
+    name: "Fratura — Avaliação e Conduta Inicial",
+    steps: [
+      { order: 1, action: "Avaliar mecanismo de trauma: queda, acidente, impacto, altura" },
+      { order: 2, action: "Exame neurovascular OBRIGATÓRIO: pulso distal, sensibilidade, motor, perfusão", target: "Se alterado → URGÊNCIA" },
+      { order: 3, action: "Imobilizar ANTES de movimentar ou transportar" },
+      { order: 4, action: "Analgesia: dipirona + opioide se dor intensa. Ajustar por peso/rim/idade" },
+      { order: 5, action: "RX em 2 incidências (AP + perfil) incluindo articulações proximal e distal" },
+      { order: 6, action: "Se fratura exposta: ATB profilático (cefalosporina ± aminoglicosídeo), curativo estéril, cirurgia" },
+      { order: 7, action: "Avaliar necessidade de redução/cirurgia (ortopedia)" },
+      { order: 8, action: "⚠️ Idoso: investigar causa da queda (síncope, arritmia, ortostatismo). Risco fraturas patológicas." },
+      { order: 9, action: "⚠️ Anticoagulado: risco de hematoma. Monitorar compartimento." },
+      { order: 10, action: "Profilaxia TEV se imobilização prolongada" },
+    ],
+  },
+  luxation: {
+    name: "Luxação — Avaliação e Conduta",
+    steps: [
+      { order: 1, action: "Exame neurovascular ANTES da redução" },
+      { order: 2, action: "RX pré-redução para confirmar e excluir fratura associada" },
+      { order: 3, action: "Analgesia/sedação para redução (midazolam + fentanil ou ketamina)" },
+      { order: 4, action: "Redução pela técnica apropriada para cada articulação" },
+      { order: 5, action: "RX pós-redução para confirmar" },
+      { order: 6, action: "Exame neurovascular pós-redução" },
+      { order: 7, action: "Imobilização + encaminhar ortopedia" },
+    ],
+  },
+  low_back_pain: {
+    name: "Dor Lombar — Red Flags e Conduta",
+    steps: [
+      { order: 1, action: "Red flags: déficit neurológico, retenção urinária, febre, perda ponderal, trauma, câncer, uso de corticoide" },
+      { order: 2, action: "Se red flag presente → investigar: RM, hemograma, VHS/PCR, PSA se homem" },
+      { order: 3, action: "Se sem red flags: lombalgia mecânica → analgesia + orientação" },
+      { order: 4, action: "Analgesia: paracetamol/dipirona + AINE (se rim ok) + relaxante muscular ± opioide se grave" },
+      { order: 5, action: "Repouso relativo (NÃO repouso absoluto)" },
+      { order: 6, action: "Encaminhar ortopedia/neurocirurgia se: síndrome da cauda equina, déficit motor progressivo" },
+    ],
+  },
+};
+
+// ─── Gastroenterology Protocols ──────────────────────────────────
+const GASTRO_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  hda: {
+    name: "Hemorragia Digestiva Alta — Protocolo",
+    steps: [
+      { order: 1, action: "Avaliar choque: PA, FC, perfusão. 2 acessos calibrosos 16-18G" },
+      { order: 2, action: "Hemograma, INR, tipagem, Cr, lactato, gasometria" },
+      { order: 3, action: "IBP IV: omeprazol 80mg bolus + 8mg/h BIC (antes da EDA)" },
+      { order: 4, action: "Se suspeita varicosa (cirrose): octreotida 50mcg bolus + 50mcg/h BIC OU terlipressina 2mg IV 4/4h" },
+      { order: 5, action: "Antibiótico profilático se cirrose: ceftriaxona 1g IV 1x/dia (7 dias)" },
+      { order: 6, action: "Transfusão se Hb < 7 (alvo conservador). Se choque → transfusão imediata" },
+      { order: 7, action: "EDA em ≤ 12-24h (≤ 12h se alto risco / cirrose)", target: "Hemostasia endoscópica" },
+      { order: 8, action: "Se anticoagulado: avaliar reversão (vitamina K, CCP). INR alvo." },
+      { order: 9, action: "⚠️ Evitar SNG para lavagem — controverso e sem benefício comprovado" },
+      { order: 10, action: "Se sangramento maciço refratário: angioembolização ou cirurgia" },
+    ],
+  },
+  pancreatite: {
+    name: "Pancreatite Aguda — Conduta",
+    steps: [
+      { order: 1, action: "Diagnóstico: 2 de 3 → dor abdominal típica + amilase/lipase > 3x + imagem" },
+      { order: 2, action: "Classificar gravidade: BISAP, Ranson, APACHE II, TC (Balthazar)" },
+      { order: 3, action: "Hidratação vigorosa: RL 250-500 mL/h nas primeiras 12-24h (reavaliar em idoso/DRC/IC)" },
+      { order: 4, action: "Analgesia: dipirona + tramadol/morfina. Evitar meperidina." },
+      { order: 5, action: "Jejum inicial → dieta oral precoce assim que tolerada (NÃO esperar amilase normalizar)" },
+      { order: 6, action: "ATB: NÃO usar profilático. Apenas se necrose infectada confirmada" },
+      { order: 7, action: "TC abdome com contraste se não melhora em 48-72h (avaliar necrose)" },
+      { order: 8, action: "Se biliar: USG (colelitíase) → colecistectomia na mesma internação se leve" },
+      { order: 9, action: "Monitorar: PCR, hemograma, Cr, Ca, glicemia" },
+    ],
+  },
+  cirrose_descomp: {
+    name: "Cirrose Descompensada — Conduta",
+    steps: [
+      { order: 1, action: "Avaliar: varizes (HDA), ascite, encefalopatia hepática (EH), PBE, SHR" },
+      { order: 2, action: "Se HDA varicosa: octreotida/terlipressina + EDA + ceftriaxona profilática" },
+      { order: 3, action: "Se ascite tensa: paracentese de alívio + albumina 8g/L retirado (se > 5L)" },
+      { order: 4, action: "Se PBE (PMN > 250 no líquido): ceftriaxona 2g/dia 5-7 dias + albumina D1 e D3" },
+      { order: 5, action: "Se EH: lactulose 30mL 8/8h (alvo 2-3 evacuações/dia) + rifaximina 550mg 12/12h" },
+      { order: 6, action: "EVITAR excesso de volume. EVITAR AINEs, aminoglicosídeos. Cautela com opioides/BZD." },
+      { order: 7, action: "Monitorar: Na, K, Cr, INR, albumina, bilirrubinas, amônia" },
+      { order: 8, action: "MELD score para prognóstico e transplante" },
+    ],
+  },
+  colecistite: {
+    name: "Colecistite / Colangite Aguda",
+    steps: [
+      { order: 1, action: "Tríade de Charcot (colangite): febre + dor HCD + icterícia. Pêntade de Reynolds: + hipotensão + confusão" },
+      { order: 2, action: "Exames: hemograma, PCR, TGO/TGP, FA, GGT, bilirrubinas, amilase, hemoculturas" },
+      { order: 3, action: "USG abdominal: cálculo, espessamento parede, Murphy sonográfico, dilatação vias biliares" },
+      { order: 4, action: "ATB: Ceftriaxona 2g/dia + Metronidazol 500mg 8/8h. Se grave: Piperacilina-Tazobactam" },
+      { order: 5, action: "Colecistite: colecistectomia precoce (< 72h)" },
+      { order: 6, action: "Colangite: CPRE para drenagem biliar de urgência se grave" },
+    ],
+  },
+};
+
+// ─── Endocrine / Metabolic Protocols ─────────────────────────────
+const ENDOCRINE_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  cad: {
+    name: "Cetoacidose Diabética (CAD) — Protocolo",
+    steps: [
+      { order: 1, action: "Critérios: glicose > 250 + pH < 7,3 + HCO3 < 18 + cetonemia/cetonúria" },
+      { order: 2, action: "Hidratação: SF 0,9% 1000-1500 mL na 1ª hora → 250-500 mL/h", target: "Reavaliar em idoso/DRC/IC" },
+      { order: 3, action: "⚠️ POTÁSSIO ANTES DA INSULINA: Se K < 3,3 → corrigir K ANTES. Se K 3,3-5,3 → KCl 20-40 mEq/L no soro. Se K > 5,3 → iniciar insulina, monitorar K 2/2h" },
+      { order: 4, action: "Insulina Regular: 0,1 UI/kg/h IV (BIC). NÃO fazer bolus na CAD leve/moderada" },
+      { order: 5, action: "Quando glicemia < 250: trocar para SG 5% + manter insulina até resolver cetoacidose" },
+      { order: 6, action: "Resolução: pH > 7,3 + HCO3 > 18 + glicemia < 200 + anion gap normal" },
+      { order: 7, action: "Transição para SC: insulina SC 1-2h ANTES de suspender BIC" },
+      { order: 8, action: "Monitorar: glicemia 1/1h, gasometria 2-4h, K 2/2h, Na corrigido, osmolaridade" },
+      { order: 9, action: "BIC (bicarbonato): APENAS se pH < 6,9 (100 mEq em 400mL em 2h)" },
+      { order: 10, action: "Investigar fator precipitante: infecção, IAM, AVC, má adesão" },
+    ],
+  },
+  hhs: {
+    name: "Estado Hiperosmolar Hiperglicêmico (EHH)",
+    steps: [
+      { order: 1, action: "Critérios: glicose > 600 + osmolaridade > 320 + pH > 7,3 + desidratação grave" },
+      { order: 2, action: "HIDRATAR PRIMEIRO: SF 0,9% 1000-1500 mL na 1ª hora → 250-500 mL/h" },
+      { order: 3, action: "Quando PA estabilizar: avaliar Na corrigido. Se Na alto → SF 0,45%" },
+      { order: 4, action: "Insulina: iniciar APÓS hidratação adequada. 0,05-0,1 UI/kg/h IV" },
+      { order: 5, action: "Monitorar K igual CAD. Repor K conforme necessário" },
+      { order: 6, action: "Osmolaridade alvo: queda < 3 mOsm/h (risco edema cerebral se rápido demais)" },
+      { order: 7, action: "Profilaxia TEV: enoxaparina (alto risco trombótico)" },
+      { order: 8, action: "Investigar precipitante: infecção, AVC, IAM, desidratação" },
+    ],
+  },
+  hyperkalemia: {
+    name: "Hipercalemia — Protocolo de Emergência",
+    steps: [
+      { order: 1, action: "ECG IMEDIATO: ondas T apiculadas, alargamento QRS, perda onda P, sine wave" },
+      { order: 2, action: "Se alteração ECG: Gluconato de Cálcio 10% 10mL IV em 2-3 min (estabiliza membrana)", target: "Repetir em 5-10 min se necessário" },
+      { order: 3, action: "Shift (mover K para dentro da célula): Insulina 10 UI + Glicose 50% 50mL (25g) IV" },
+      { order: 4, action: "Nebulização com salbutamol 10-20mg (adjuvante)" },
+      { order: 5, action: "Bicarbonato de sódio 50 mEq IV se acidose metabólica" },
+      { order: 6, action: "Eliminação: Furosemida 40-80mg IV, resina de troca (poliestirenossulfonato de Ca)" },
+      { order: 7, action: "Se refratário ou K > 6,5 com alteração ECG: diálise de urgência" },
+      { order: 8, action: "Suspender drogas que elevam K: IECA, BRA, espironolactona, suplemento K" },
+    ],
+  },
+  hyponatremia: {
+    name: "Hiponatremia — Correção Segura",
+    steps: [
+      { order: 1, action: "Classificar: leve (130-134), moderada (125-129), grave (< 125)" },
+      { order: 2, action: "Se sintomas graves (convulsão, coma): NaCl 3% 100mL IV em 10min, repetir até 2x", target: "Aumentar Na 4-6 mEq/L nas primeiras 6h" },
+      { order: 3, action: "Correção LENTA: máximo 8-10 mEq/L em 24h", target: "Risco de mielinólise pontina se > 10-12 mEq/L/24h" },
+      { order: 4, action: "Identificar causa: SIADH, hipovolêmica, hipervolêmica (IC, cirrose, DRC)" },
+      { order: 5, action: "Monitorar Na a cada 2-4h durante correção" },
+      { order: 6, action: "Se Na subir rápido demais: SG 5% + considerar desmopressina 2mcg IV para frear" },
+    ],
+  },
+  thyroid_storm: {
+    name: "Tireotoxicose / Tempestade Tireoidiana",
+    steps: [
+      { order: 1, action: "Score de Burch-Wartofsky > 45: tempestade tireoidiana provável" },
+      { order: 2, action: "Betabloqueador: Propranolol 60-80mg VO 6/6h OU Esmolol IV se grave", target: "FC < 100" },
+      { order: 3, action: "Antitireoidiano: PTU 200mg VO/SNG 6/6h (preferir PTU na crise por bloqueio T4→T3)" },
+      { order: 4, action: "Iodo (1h APÓS PTU): Lugol 10 gotas 8/8h OU iodeto de potássio" },
+      { order: 5, action: "Corticoide: Hidrocortisona 100mg IV 8/8h (bloqueia T4→T3 + insuf. adrenal relativa)" },
+      { order: 6, action: "Suporte: resfriamento ativo (evitar AAS), hidratação, monitorização UTI" },
+      { order: 7, action: "Investigar precipitante: infecção, cirurgia, iodo, suspensão de medicação" },
+    ],
+  },
+  myxedema: {
+    name: "Coma Mixedematoso — Emergência",
+    steps: [
+      { order: 1, action: "Suspeitar se: hipotermia + bradicardia + rebaixamento + hipotensão + hipoglicemia + hiponatremia" },
+      { order: 2, action: "Levotiroxina IV: 200-500mcg bolus → 50-100mcg/dia IV" },
+      { order: 3, action: "Hidrocortisona 100mg IV 8/8h (ANTES da levotiroxina — insuf. adrenal associada)" },
+      { order: 4, action: "Aquecimento passivo (mantas). NÃO aquecer ativamente rápido" },
+      { order: 5, action: "Suporte: IOT se necessário, vasopressor, correção hipoglicemia/hiponatremia" },
+      { order: 6, action: "Monitorização em UTI" },
+    ],
+  },
+};
+
 // ─── Parsing Helpers ─────────────────────────────────────────────
 function parseNumber(input?: string | null): number | undefined {
   if (!input) return undefined;
