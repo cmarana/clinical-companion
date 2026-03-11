@@ -1446,13 +1446,38 @@ function generateSafetyAlerts(patient: PatientData, renal: RenalCalcResult): str
     }
   }
 
-  if (patient.isElderly) alerts.push("🟡 IDOSO (≥65a): Reduzir doses. Volume cauteloso. Monitorar função renal.");
-  if (renal.stage === "GRAVE" || renal.stage === "TERMINAL") {
-    alerts.push(`🔴 DRC ${renal.stage} (ClCr ${renal.clcrMlMin} mL/min): Ajustar TODAS as drogas renais.`);
+  if (patient.isElderly) alerts.push("🟡 IDOSO (≥65a): Reduzir doses. Volume cauteloso. Monitorar função renal. Critérios de Beers.");
+  if (renal.stage === "MODERADA") {
+    alerts.push(`🟡 DRC MODERADA (ClCr ${renal.clcrMlMin} mL/min): Ajustar drogas renais. Evitar nefrotóxicos.`);
+  }
+  if (renal.stage === "GRAVE") {
+    alerts.push(`🔴 DRC GRAVE (ClCr ${renal.clcrMlMin} mL/min): Ajustar TODAS as drogas renais. EVITAR: AINEs, metformina, espironolactona, morfina.`);
+    alerts.push("🔴 Enoxaparina: preferir HNF. Se usar, 1mg/kg 1x/dia.");
+    alerts.push("🔴 Monitorar K a cada 24h. Se IECA/BRA em uso: risco hipercalemia grave.");
+  }
+  if (renal.stage === "TERMINAL") {
+    alerts.push(`🔴 FALÊNCIA RENAL (ClCr ${renal.clcrMlMin} mL/min): Doses especiais para TODAS as drogas.`);
+    alerts.push("🔴 CONTRAINDICADOS: metformina, espironolactona, AINEs, morfina.");
+    alerts.push("🔴 Considerar diálise: K > 6,5 | pH < 7,1 | edema pulmonar | uremia | oligúria refratária.");
+    alerts.push("🔴 NÃO ASSUMIR DIÁLISE — perguntar se paciente já faz.");
+    alerts.push("🔴 Monitorar K a cada 12-24h. Suspender IECA/BRA/espironolactona se K > 5,5.");
   }
   if (patient.hasHeartFailure) alerts.push("🔴 IC: Volume restrito. Risco de congestão. POCUS antes de volume.");
-  if (patient.isDialytic) alerts.push("🔴 DIALÍTICO: Volume muito restrito. Avaliar necessidade de TRS.");
+  if (patient.isDialytic) alerts.push("🔴 DIALÍTICO (informado): Volume muito restrito. Avaliar necessidade de TRS urgente.");
   if (patient.allergies) alerts.push(`🟡 ALERGIA INFORMADA: "${patient.allergies}" (tipo: ${patient.allergyType})`);
+  
+  // Hyperkalaemia risk assessment
+  if ((renal.stage === "GRAVE" || renal.stage === "TERMINAL") && patient.medicationsInUse.length > 0) {
+    const kRiskDrugs = patient.medicationsInUse.filter(d => /ieca|enalapril|captopril|ramipril|losartana|bra|espironolactona|amilorida|potássio|suplemento.*k/i.test(d));
+    if (kRiskDrugs.length > 0) {
+      alerts.push(`🔴 HIPERCALEMIA: DRC ${renal.stage} + ${kRiskDrugs.join(", ")} → risco grave. Monitorar K a cada 12-24h. Suspender se K > 5,5.`);
+    }
+  }
+
+  // Elderly + DRC combo
+  if (patient.isElderly && (renal.stage === "MODERADA" || renal.stage === "GRAVE" || renal.stage === "TERMINAL")) {
+    alerts.push("🔴 IDOSO + DRC: Dose menor que o habitual. Mais risco de toxicidade. Monitorar rigorosamente.");
+  }
   
   if (!patient.hasAnticoagulationIndication && !patient.isPediatric) {
     alerts.push("ℹ️ SEM INDICAÇÃO DE ANTICOAGULAÇÃO TERAPÊUTICA detectada. Usar apenas profilaxia.");
@@ -1465,7 +1490,7 @@ function generateSafetyAlerts(patient: PatientData, renal: RenalCalcResult): str
   }
 
   if (renal.stage === "MODERADA" || renal.stage === "GRAVE" || renal.stage === "TERMINAL") {
-    alerts.push("🟡 EVITAR NEFROTÓXICOS: aminoglicosídeos, AINEs, contraste iodado (se possível).");
+    alerts.push("🟡 EVITAR NEFROTÓXICOS: aminoglicosídeos, AINEs, contraste iodado (se possível), anfotericina B.");
   }
 
   return alerts;
