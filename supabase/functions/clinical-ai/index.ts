@@ -2164,6 +2164,39 @@ function selectProtocol(text: string, scenario: Scenario, patient: PatientData):
   if (/intubação|iot\b|sequência rápida|isr\b/i.test(lower)) return ICU_PROTOCOLS.intubation_rsi;
   if (patient.isCriticalCase && scenario === "UTI") return ICU_PROTOCOLS.icu_general;
 
+  // Respiratory protocols
+  if (/asma|crise asmática|broncoespasmo/i.test(lower)) return RESPIRATORY_PROTOCOLS.asthma_crisis;
+  if (/dpoc|exacerba.*dpoc/i.test(lower)) return RESPIRATORY_PROTOCOLS.dpoc_exacerbation;
+  if (/pneumonia.*comunit|pac\b/i.test(lower)) return RESPIRATORY_PROTOCOLS.pneumonia_cap;
+  if (/tep\b|tromboembolismo pulmonar|embolia pulmonar/i.test(lower)) return RESPIRATORY_PROTOCOLS.tep;
+  if (/pneumotórax/i.test(lower)) return RESPIRATORY_PROTOCOLS.pneumothorax;
+  if (/edema.*pulmonar|eap\b/i.test(lower)) return RESPIRATORY_PROTOCOLS.eap;
+
+  // Psychiatry protocols
+  if (/agita[çc]ão|agitad|comportamento.*agressiv/i.test(lower)) return PSYCHIATRY_PROTOCOLS.agitation;
+  if (/intoxica[çc]ão|overdose|envenenam/i.test(lower)) return PSYCHIATRY_PROTOCOLS.intoxication;
+  if (/abstinência.*álcool|abstinência.*alcoól|delirium tremens|ciwa/i.test(lower)) return PSYCHIATRY_PROTOCOLS.alcohol_withdrawal;
+  if (/suicíd|autoextermínio|autolís/i.test(lower)) return PSYCHIATRY_PROTOCOLS.suicide_risk;
+
+  // Urology protocols
+  if (/pielonefrite/i.test(lower)) return UROLOGY_PROTOCOLS.pyelonephritis;
+  if (/cólica renal|litíase|cálculo renal|nefrolitíase/i.test(lower)) return UROLOGY_PROTOCOLS.renal_colic;
+  if (/retenção urinária|bexigoma/i.test(lower)) return UROLOGY_PROTOCOLS.urinary_retention;
+  if (/itu\b|infec.*urinár|cistite|disúria/i.test(lower)) return UROLOGY_PROTOCOLS.itu_simple;
+
+  // Dermatology protocols
+  if (/anafilaxia|choque anafilát|angioedema/i.test(lower)) return DERMATOLOGY_PROTOCOLS.anaphylaxis;
+  if (/celulite|erisipela|fasceíte/i.test(lower)) return DERMATOLOGY_PROTOCOLS.cellulitis;
+  if (/stevens.*johnson|net\b|necrólise epidérm/i.test(lower)) return DERMATOLOGY_PROTOCOLS.sjs_ten;
+  if (/herpes.*zoster|zoster/i.test(lower)) return DERMATOLOGY_PROTOCOLS.herpes_zoster;
+
+  // Hematology protocols
+  if (/civd|coagulação intravascular/i.test(lower)) return HEMATOLOGY_PROTOCOLS.civd;
+  if (/inr.*alto|inr.*elevado|reversão.*warfarina/i.test(lower)) return HEMATOLOGY_PROTOCOLS.inr_high;
+  if (/plaquetopenia|trombocitopenia|plaquetas.*baix/i.test(lower)) return HEMATOLOGY_PROTOCOLS.thrombocytopenia;
+  if (/anemia.*grave|hb\s*<?\s*[67]|hemoglobina.*baix/i.test(lower)) return HEMATOLOGY_PROTOCOLS.severe_anemia;
+  if (/tvp\b|trombose venosa profunda/i.test(lower)) return HEMATOLOGY_PROTOCOLS.dvt_pe;
+
   return null;
 }
 
