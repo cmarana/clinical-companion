@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2 } from "lucide-react";
+import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
@@ -11,16 +11,24 @@ import ReactMarkdown from "react-markdown";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
+// Persistent patient context for the session
+interface PatientContext {
+  weight?: string;
+  age?: string;
+  creatinine?: string;
+  allergies?: string;
+}
+
 export default function ClinicalAI() {
   const navigate = useNavigate();
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [mode, setMode] = useState<"chat" | "structured">("chat");
+  const [patientCtx, setPatientCtx] = useState<PatientContext>({});
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
-  // Structured form fields
+  // Structured form
   const [symptoms, setSymptoms] = useState("");
   const [history, setHistory] = useState("");
   const [vitals, setVitals] = useState("");
@@ -32,9 +40,19 @@ export default function ClinicalAI() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  const buildContextPrefix = () => {
+    const parts: string[] = [];
+    if (patientCtx.weight) parts.push(`Peso: ${patientCtx.weight}kg`);
+    if (patientCtx.age) parts.push(`Idade: ${patientCtx.age}`);
+    if (patientCtx.creatinine) parts.push(`Creatinina: ${patientCtx.creatinine}`);
+    if (patientCtx.allergies) parts.push(`Alergias: ${patientCtx.allergies}`);
+    return parts.length ? `[CONTEXTO DO PACIENTE: ${parts.join(" | ")}]\n\n` : "";
+  };
+
   const sendMessage = async (text: string, sendMode: "chat" | "structured" = "chat") => {
     if (!text.trim() || isLoading) return;
 
+    const fullText = buildContextPrefix() + text;
     const userMsg: Msg = { role: "user", content: text };
     setMessages((prev) => [...prev, userMsg]);
     setInput("");
@@ -52,16 +70,17 @@ export default function ClinicalAI() {
       });
     };
 
+    // Build message history with context injected in latest user msg
+    const apiMessages = messages.map(m => ({ role: m.role, content: m.content }));
+    apiMessages.push({ role: "user", content: fullText });
+
     try {
       await streamClinicalAi({
-        messages: [...messages, userMsg],
+        messages: apiMessages,
         mode: sendMode,
         onDelta: upsertAssistant,
         onDone: () => setIsLoading(false),
-        onError: (err) => {
-          toast.error(err);
-          setIsLoading(false);
-        },
+        onError: (err) => { toast.error(err); setIsLoading(false); },
       });
     } catch {
       toast.error("Erro ao conectar com a IA");
@@ -83,22 +102,28 @@ export default function ClinicalAI() {
     if (exams) parts.push(`**Exames:** ${exams}`);
     if (medications) parts.push(`**Medicações em uso:** ${medications}`);
     if (additionalInfo) parts.push(`**Informações adicionais:** ${additionalInfo}`);
+    if (patientCtx.weight) parts.push(`**Peso:** ${patientCtx.weight}kg`);
+    if (patientCtx.age) parts.push(`**Idade:** ${patientCtx.age}`);
+    if (patientCtx.creatinine) parts.push(`**Creatinina:** ${patientCtx.creatinine}`);
+    if (patientCtx.allergies) parts.push(`**Alergias:** ${patientCtx.allergies}`);
 
-    if (parts.length === 0) {
-      toast.error("Preencha ao menos um campo");
+    if (!symptoms && !history && !vitals && !exams) {
+      toast.error("Preencha ao menos sintomas, história ou exames");
       return;
     }
 
     const text = "**CASO CLÍNICO ESTRUTURADO**\n\n" + parts.join("\n\n");
     sendMessage(text, "structured");
-
-    // Clear form
     setSymptoms(""); setHistory(""); setVitals("");
     setExams(""); setMedications(""); setAdditionalInfo("");
   };
 
-  const clearChat = () => {
-    setMessages([]);
+  const clearChat = () => { setMessages([]); };
+
+  const sectionIcons: Record<string, string> = {
+    "RESUMO": "📋", "HIPÓTESES": "🎯", "DIFERENCIAIS": "🔀",
+    "ALGORITMO": "🔄", "EXAMES": "🔬", "CONDUTA": "⚡",
+    "PRESCRIÇÃO": "💊", "INTERAÇÕES": "⚠️", "ALERTAS": "🚨", "REFERÊNCIAS": "📚",
   };
 
   return (
@@ -110,11 +135,24 @@ export default function ClinicalAI() {
         </button>
         <div className="flex-1 min-w-0">
           <h1 className="font-heading font-bold text-sm">IA Clínica</h1>
-          <p className="text-[10px] text-muted-foreground truncate">Apoio diagnóstico e terapêutico baseado em evidências</p>
+          <p className="text-[10px] text-muted-foreground truncate">Diagnóstico • Conduta • Prescrição • Interações</p>
         </div>
-        <button onClick={clearChat} className="p-1.5 rounded-md hover:bg-accent text-muted-foreground" title="Limpar conversa">
+        <button onClick={clearChat} className="p-1.5 rounded-md hover:bg-accent text-muted-foreground" title="Nova consulta">
           <RotateCcw size={16} />
         </button>
+      </div>
+
+      {/* Patient Context Bar */}
+      <div className="px-3 py-1.5 border-b border-border bg-muted/30 flex gap-2 items-center overflow-x-auto">
+        <span className="text-[9px] font-heading font-semibold text-muted-foreground shrink-0">PACIENTE:</span>
+        <input placeholder="Peso (kg)" value={patientCtx.weight || ""} onChange={e => setPatientCtx(p => ({...p, weight: e.target.value}))}
+          className="w-16 h-6 text-[10px] px-1.5 rounded border border-border bg-background" />
+        <input placeholder="Idade" value={patientCtx.age || ""} onChange={e => setPatientCtx(p => ({...p, age: e.target.value}))}
+          className="w-14 h-6 text-[10px] px-1.5 rounded border border-border bg-background" />
+        <input placeholder="Cr (mg/dL)" value={patientCtx.creatinine || ""} onChange={e => setPatientCtx(p => ({...p, creatinine: e.target.value}))}
+          className="w-20 h-6 text-[10px] px-1.5 rounded border border-border bg-background" />
+        <input placeholder="Alergias" value={patientCtx.allergies || ""} onChange={e => setPatientCtx(p => ({...p, allergies: e.target.value}))}
+          className="w-24 h-6 text-[10px] px-1.5 rounded border border-border bg-background" />
       </div>
 
       {/* Messages */}
@@ -122,19 +160,24 @@ export default function ClinicalAI() {
         {messages.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full text-center px-4">
             <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-3">
-              <MessageSquare size={24} className="text-primary" />
+              <Bot size={24} className="text-primary" />
             </div>
             <h2 className="font-heading font-bold text-base mb-1">Assistente Clínico IA</h2>
-            <p className="text-xs text-muted-foreground max-w-sm mb-4">
-              Descreva sintomas, caso clínico ou dúvida médica. A IA fornecerá diagnóstico diferencial, conduta, prescrição e referências.
+            <p className="text-[10px] text-muted-foreground max-w-sm mb-1">
+              Respostas estruturadas em 10 seções: resumo, diagnóstico, diferenciais, algoritmo, exames, conduta, prescrição, interações, alertas e referências.
+            </p>
+            <p className="text-[10px] text-muted-foreground/70 max-w-sm mb-4">
+              Preencha o contexto do paciente acima para cálculos de dose automáticos.
             </p>
             <div className="flex flex-wrap gap-1.5 justify-center">
-              {["Dor torácica tipo A", "Sepse — conduta", "Dose de Noradrenalina", "IAM com supra de ST"].map((s) => (
-                <button
-                  key={s}
-                  onClick={() => { setInput(s); setMode("chat"); }}
-                  className="px-3 py-1.5 rounded-lg border border-border bg-muted/50 hover:bg-accent text-xs font-heading"
-                >
+              {[
+                "Dor torácica tipo A em homem 55a, HAS, DM",
+                "Sepse pulmonar — conduta completa",
+                "Criança 3a, febre 39°C + petéquias",
+                "Gestante 32sem, PA 160x110, proteinúria",
+              ].map((s) => (
+                <button key={s} onClick={() => { setInput(s); setMode("chat"); }}
+                  className="px-3 py-1.5 rounded-lg border border-border bg-muted/50 hover:bg-accent text-[10px] font-heading text-left">
                   {s}
                 </button>
               ))}
@@ -143,27 +186,47 @@ export default function ClinicalAI() {
         )}
 
         {messages.map((msg, i) => (
-          <div key={i} className={`flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+          <div key={i} className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+            {msg.role === "assistant" && (
+              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-1">
+                <Bot size={14} className="text-primary" />
+              </div>
+            )}
             <div className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm ${
               msg.role === "user"
                 ? "bg-primary text-primary-foreground rounded-br-md"
                 : "bg-muted rounded-bl-md"
             }`}>
               {msg.role === "assistant" ? (
-                <div className="prose prose-sm dark:prose-invert max-w-none [&_p]:mb-1.5 [&_ul]:mb-1.5 [&_ol]:mb-1.5 [&_h1]:text-base [&_h2]:text-sm [&_h3]:text-sm [&_li]:text-sm">
+                <div className="prose prose-sm dark:prose-invert max-w-none
+                  [&_h3]:text-xs [&_h3]:font-bold [&_h3]:mt-3 [&_h3]:mb-1.5 [&_h3]:border-b [&_h3]:border-border/50 [&_h3]:pb-1
+                  [&_p]:mb-1.5 [&_p]:text-[13px] [&_p]:leading-relaxed
+                  [&_ul]:mb-1.5 [&_ol]:mb-1.5 [&_li]:text-[13px]
+                  [&_table]:text-[11px] [&_th]:px-2 [&_th]:py-1 [&_td]:px-2 [&_td]:py-1
+                  [&_strong]:text-foreground
+                  [&_code]:text-[11px] [&_code]:bg-background/50 [&_code]:px-1 [&_code]:rounded">
                   <ReactMarkdown>{msg.content}</ReactMarkdown>
                 </div>
               ) : (
-                <div className="whitespace-pre-wrap">{msg.content}</div>
+                <div className="whitespace-pre-wrap text-[13px]">{msg.content}</div>
               )}
             </div>
+            {msg.role === "user" && (
+              <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center shrink-0 mt-1">
+                <User size={14} className="text-primary-foreground" />
+              </div>
+            )}
           </div>
         ))}
 
         {isLoading && messages[messages.length - 1]?.role !== "assistant" && (
-          <div className="flex justify-start">
-            <div className="bg-muted rounded-2xl rounded-bl-md px-4 py-3">
-              <Loader2 size={16} className="animate-spin text-muted-foreground" />
+          <div className="flex gap-2 justify-start">
+            <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+              <Bot size={14} className="text-primary" />
+            </div>
+            <div className="bg-muted rounded-2xl rounded-bl-md px-4 py-3 flex items-center gap-2">
+              <Loader2 size={14} className="animate-spin text-muted-foreground" />
+              <span className="text-[11px] text-muted-foreground">Analisando caso clínico...</span>
             </div>
           </div>
         )}
@@ -171,25 +234,22 @@ export default function ClinicalAI() {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Input area */}
+      {/* Input */}
       <div className="border-t border-border bg-card/80 backdrop-blur-sm p-3">
         <Tabs value={mode} onValueChange={(v) => setMode(v as "chat" | "structured")} className="w-full">
           <TabsList className="w-full mb-2 h-8">
             <TabsTrigger value="chat" className="flex-1 text-xs gap-1.5 h-7">
-              <MessageSquare size={12} /> Chat
+              <MessageSquare size={12} /> Chat Livre
             </TabsTrigger>
             <TabsTrigger value="structured" className="flex-1 text-xs gap-1.5 h-7">
-              <ClipboardList size={12} /> Estruturado
+              <ClipboardList size={12} /> Caso Estruturado
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="chat" className="mt-0">
             <form onSubmit={handleChatSubmit} className="flex gap-2">
-              <Textarea
-                ref={textareaRef}
-                value={input}
-                onChange={(e) => setInput(e.target.value)}
-                placeholder="Descreva o caso, sintomas ou dúvida..."
+              <Textarea value={input} onChange={(e) => setInput(e.target.value)}
+                placeholder="Descreva sintomas, caso clínico ou dúvida..."
                 className="min-h-[44px] max-h-32 text-sm resize-none rounded-xl"
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleChatSubmit(e); }
@@ -205,7 +265,7 @@ export default function ClinicalAI() {
             <form onSubmit={handleStructuredSubmit} className="space-y-2">
               <div className="grid grid-cols-2 gap-2">
                 <div>
-                  <label className="text-[10px] font-heading font-medium text-muted-foreground mb-0.5 block">Sintomas / QP</label>
+                  <label className="text-[10px] font-heading font-medium text-muted-foreground mb-0.5 block">Sintomas / QP *</label>
                   <Input value={symptoms} onChange={(e) => setSymptoms(e.target.value)} placeholder="Dor torácica, dispneia..." className="h-8 text-xs" />
                 </div>
                 <div>
@@ -232,7 +292,7 @@ export default function ClinicalAI() {
                 <Input value={additionalInfo} onChange={(e) => setAdditionalInfo(e.target.value)} placeholder="Alergias, observações..." className="h-8 text-xs" />
               </div>
               <Button type="submit" disabled={isLoading} className="w-full h-9 text-xs rounded-xl">
-                {isLoading ? <><Loader2 size={14} className="animate-spin mr-1.5" /> Analisando...</> : "Analisar Caso Clínico"}
+                {isLoading ? <><Loader2 size={14} className="animate-spin mr-1.5" /> Analisando...</> : "🔍 Analisar Caso Clínico"}
               </Button>
             </form>
           </TabsContent>
