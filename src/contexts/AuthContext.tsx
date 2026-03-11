@@ -56,15 +56,26 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       const { data, error } = await supabase.functions.invoke("check-subscription");
       if (error) throw error;
+      const hasPaidSub = data?.subscribed ?? false;
+      const trial = getTrialInfo(user);
       setSubscription({
-        subscribed: data?.subscribed ?? false,
+        subscribed: hasPaidSub || trial.isTrial,
         productId: data?.product_id ?? null,
         subscriptionEnd: data?.subscription_end ?? null,
+        isTrial: !hasPaidSub && trial.isTrial,
+        trialDaysLeft: trial.trialDaysLeft,
       });
     } catch {
-      setSubscription({ subscribed: false, productId: null, subscriptionEnd: null });
+      const trial = getTrialInfo(user);
+      setSubscription({
+        subscribed: trial.isTrial,
+        productId: null,
+        subscriptionEnd: null,
+        isTrial: trial.isTrial,
+        trialDaysLeft: trial.trialDaysLeft,
+      });
     }
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     const { data: { subscription: authSub } } = supabase.auth.onAuthStateChange(
