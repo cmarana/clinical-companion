@@ -2166,6 +2166,19 @@ REGRAS NEUROLÓGICAS (se MODO NEURO ativado):
 - Anticoagulado + neuro: risco de sangramento intracraniano. TC urgente. Reverter se hemorragia.
 - ADAPTAR AO CENÁRIO: SAMU → estabilizar (via aérea, glicemia); PS → TC + investigar; UTI → monitorar PIC, Glasgow horário; UBS → referenciar se grave.
 
+REGRAS OBSTÉTRICAS (se MODO OBSTETRÍCIA ativado):
+- Se gestante: NUNCA prescrever IECA, BRA, warfarina, isotretinoína, tetraciclina, metotrexato sem indicação obstétrica.
+- EVITAR: quinolonas, AINEs (3º tri), benzodiazepínicos, valproato, carbamazepina, fenitoína.
+- ANTIBIÓTICOS SEGUROS: penicilinas, cefalosporinas, azitromicina, metronidazol (2º/3º tri), clindamicina.
+- Pré-eclâmpsia/Eclâmpsia: MgSO4 (Zuspan: 4g IV 20min → 1-2g/h). Anti-HAS: hidralazina 5mg IV ou nifedipino 10mg VO. NUNCA IECA/BRA.
+- Hemorragia pós-parto: ocitocina → metilergometrina (⚠️ CI se HAS) → misoprostol 800mcg VR → ác. tranexâmico 1g IV → cirurgia.
+- Gravidez ectópica: instável = cirurgia. Estável + hCG < 5000 = metotrexato.
+- Sepse puerperal: clinda + genta ± ampicilina. Profilaxia TEV obrigatória.
+- EXAMES: evitar radiação. Preferir USG, RM sem contraste.
+- PUERPÉRIO: profilaxia TEV (enoxaparina 40mg/dia), monitorar infecção, hemorragia, depressão.
+- MULHER EM IDADE FÉRTIL: confirmar gravidez antes de prescrever teratogênicos.
+- Se dúvida sobre segurança de droga na gestação: NÃO PRESCREVER. Perguntar/consultar.
+
 DISCLAIMER: Apoio à decisão clínica — responsabilidade final é do médico.`;
 
 // ─── Serve ───────────────────────────────────────────────────────
