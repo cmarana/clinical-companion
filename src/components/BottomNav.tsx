@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Home, FileText, Search, Star, StickyNote, Zap } from "lucide-react";
+import { Home, FileText, Search, Star, Calculator, Zap } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const tabs = [
