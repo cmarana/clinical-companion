@@ -134,6 +134,120 @@
   }
 }
 
+/* ─── Clinical AI Response Styling ─── */
+.clinical-response {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  line-height: 1.6;
+  color: hsl(var(--foreground));
+}
+
+.clinical-response h1,
+.clinical-response h2 {
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-top: 16px;
+  margin-bottom: 6px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid hsl(var(--border));
+  color: hsl(var(--foreground));
+}
+
+.clinical-response h1:first-child,
+.clinical-response h2:first-child {
+  margin-top: 0;
+}
+
+.clinical-response h3 {
+  font-size: 13px;
+  font-weight: 600;
+  margin-top: 12px;
+  margin-bottom: 4px;
+  color: hsl(var(--foreground));
+}
+
+.clinical-response p {
+  margin-bottom: 6px;
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.clinical-response strong {
+  font-weight: 600;
+  color: hsl(var(--foreground));
+}
+
+.clinical-response ul,
+.clinical-response ol {
+  margin-bottom: 6px;
+  padding-left: 18px;
+}
+
+.clinical-response li {
+  font-size: 13px;
+  margin-bottom: 2px;
+  line-height: 1.5;
+}
+
+.clinical-response table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 8px 0;
+  font-size: 12px;
+}
+
+.clinical-response th {
+  background: hsl(var(--muted));
+  font-weight: 600;
+  padding: 6px 8px;
+  text-align: left;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  border: 1px solid hsl(var(--border));
+  font-family: var(--font-heading);
+}
+
+.clinical-response td {
+  padding: 5px 8px;
+  border: 1px solid hsl(var(--border));
+}
+
+.clinical-response code {
+  font-size: 12px;
+  background: hsl(var(--muted));
+  padding: 1px 4px;
+  border-radius: 3px;
+}
+
+.clinical-response pre {
+  background: hsl(var(--muted));
+  padding: 10px;
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 8px 0;
+}
+
+.clinical-response pre code {
+  background: none;
+  padding: 0;
+}
+
+.clinical-response blockquote {
+  border-left: 3px solid hsl(var(--primary));
+  padding-left: 10px;
+  margin: 8px 0;
+  color: hsl(var(--muted-foreground));
+}
+
+.clinical-response hr {
+  border: none;
+  border-top: 1px solid hsl(var(--border));
+  margin: 12px 0;
+}
+
 @keyframes flash-red {
   0%, 100% { background-color: transparent; }
   50% { background-color: hsl(var(--destructive) / 0.3); }
