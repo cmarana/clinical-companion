@@ -1318,6 +1318,314 @@ const ENDOCRINE_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] 
   },
 };
 
+// ─── Respiratory Protocols ───────────────────────────────────────
+const RESPIRATORY_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  asthma_crisis: {
+    name: "Crise Asmática — Protocolo",
+    steps: [
+      { order: 1, action: "O2 suplementar se SpO2 < 94%", target: "SpO2 ≥ 94%" },
+      { order: 2, action: "Salbutamol 400-800 mcg (4-8 jatos) com espaçador a cada 20 min por 1h OU nebulização 2,5-5mg" },
+      { order: 3, action: "Brometo de ipratrópio 80 mcg (4 jatos) a cada 20 min por 1h OU nebulização 0,5mg" },
+      { order: 4, action: "Corticoide sistêmico: Prednisona 40-60mg VO OU Hidrocortisona 200mg IV (se grave)" },
+      { order: 5, action: "Se crise grave/refratária: Sulfato de Magnésio 2g IV em 20 min" },
+      { order: 6, action: "Se falha: considerar VNI. Se Glasgow < 8 ou fadiga → IOT" },
+      { order: 7, action: "Classificar gravidade: leve (fala frases), moderada (fala palavras), grave (silêncio/cianose)" },
+      { order: 8, action: "Reavaliação em 1h: se melhora → alta com corticoide 5-7 dias + plano de ação" },
+    ],
+  },
+  dpoc_exacerbation: {
+    name: "Exacerbação de DPOC — Protocolo",
+    steps: [
+      { order: 1, action: "O2 CONTROLADO: cateter nasal 1-3 L/min OU máscara Venturi", target: "SpO2 88-92% (NUNCA hiperóxia)" },
+      { order: 2, action: "Broncodilatador: Salbutamol 400-800 mcg + Ipratrópio 80 mcg a cada 20 min por 1h" },
+      { order: 3, action: "Corticoide: Prednisona 40mg VO 5-7 dias OU Hidrocortisona 200mg IV" },
+      { order: 4, action: "Antibiótico se: purulência escarro + dispneia + aumento volume escarro (2/3 critérios Anthonisen)" },
+      { order: 5, action: "ATB: Amoxicilina-Clavulanato VO OU Levofloxacino se grave" },
+      { order: 6, action: "VNI (BiPAP) se: acidose respiratória (pH < 7,35), hipercapnia, fadiga", target: "IPAP 10-20, EPAP 4-8" },
+      { order: 7, action: "Se falha VNI ou Glasgow < 8 → IOT" },
+      { order: 8, action: "Gasometria arterial seriada" },
+    ],
+  },
+  pneumonia_cap: {
+    name: "Pneumonia Adquirida na Comunidade (PAC)",
+    steps: [
+      { order: 1, action: "Avaliar gravidade: CURB-65 ou PSI" },
+      { order: 2, action: "CURB-65 0-1: ambulatório → Amoxicilina 1g 8/8h VO OU Azitromicina 500mg/dia 5 dias" },
+      { order: 3, action: "CURB-65 2: internação → Ceftriaxona 1g/dia IV + Azitromicina 500mg/dia" },
+      { order: 4, action: "CURB-65 3-5 ou UTI: Ceftriaxona 2g/dia + Azitromicina. Se Pseudomonas: Cefepime/Piptazo + Levofloxacino" },
+      { order: 5, action: "Hemoculturas (2 pares) ANTES do ATB se internação" },
+      { order: 6, action: "RX tórax (PA e perfil). TC se dúvida ou complicação" },
+      { order: 7, action: "O2 suplementar se SpO2 < 94% (88-92% se DPOC)" },
+      { order: 8, action: "Reavaliação em 48-72h" },
+    ],
+  },
+  tep: {
+    name: "Tromboembolismo Pulmonar (TEP)",
+    steps: [
+      { order: 1, action: "Suspeitar se: dispneia súbita + dor torácica + taquicardia + hipóxia ± hemoptise" },
+      { order: 2, action: "Estratificar risco: Wells score. Se alta probabilidade ou instável → tratar" },
+      { order: 3, action: "D-dímero: se baixa/intermediária probabilidade. Se negativo: exclui TEP" },
+      { order: 4, action: "Angiotomografia de tórax (padrão ouro). Alternativa: cintilografia V/Q" },
+      { order: 5, action: "Se TEP maciço (instável): trombólise → Alteplase 100mg IV em 2h OU 0,6mg/kg em 15min (máx 50mg)" },
+      { order: 6, action: "Anticoagulação: Enoxaparina 1mg/kg 12/12h SC OU HNF 80 UI/kg bolus + 18 UI/kg/h" },
+      { order: 7, action: "Ecocardiograma point-of-care: disfunção VD, McConnell" },
+      { order: 8, action: "Se contraindicação à anticoagulação: filtro de VCI" },
+      { order: 9, action: "Suporte: O2, volume (500mL se hipotenso, cautela se VD dilatado), vasopressor" },
+    ],
+  },
+  pneumothorax: {
+    name: "Pneumotórax — Conduta",
+    steps: [
+      { order: 1, action: "RX tórax PA em inspiração. USG point-of-care se disponível" },
+      { order: 2, action: "Pneumotórax pequeno (< 2cm) + estável: observação + O2 alto fluxo + RX controle 6h" },
+      { order: 3, action: "Pneumotórax grande ou sintomático: drenagem torácica (dreno 24-28F no 5º EIC LAM)" },
+      { order: 4, action: "Pneumotórax hipertensivo: descompressão imediata (2º EIC LHC agulha 14G) → dreno" },
+      { order: 5, action: "Monitorar: SpO2, FR, expansibilidade, sinais vitais" },
+      { order: 6, action: "Se bilateral ou recorrente: avaliar cirurgia (VATS)" },
+    ],
+  },
+  eap: {
+    name: "Edema Agudo de Pulmão (EAP)",
+    steps: [
+      { order: 1, action: "Sentar paciente. O2 suplementar", target: "SpO2 ≥ 94%" },
+      { order: 2, action: "VNI (CPAP 10cmH2O ou BiPAP) se consciente e colaborativo" },
+      { order: 3, action: "Furosemida 40-80mg IV (repetir conforme resposta)" },
+      { order: 4, action: "Nitroglicerina SL ou IV se PA > 90 (5-200 mcg/min)", target: "PAS > 100" },
+      { order: 5, action: "Morfina 2-4mg IV se ansiedade intensa (cautela em DPOC, idoso)" },
+      { order: 6, action: "Tratar causa: HAS, IAM, arritmia, sobrecarga volêmica" },
+      { order: 7, action: "Se refratário ou Glasgow < 8 → IOT" },
+      { order: 8, action: "Ecocardiograma, BNP/NT-proBNP, RX tórax" },
+    ],
+  },
+};
+
+// ─── Psychiatry Protocols ────────────────────────────────────────
+const PSYCHIATRY_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  agitation: {
+    name: "Agitação Psicomotora — Protocolo",
+    steps: [
+      { order: 1, action: "SEGURANÇA: proteger paciente e equipe. Avaliar risco auto/heteroagressão" },
+      { order: 2, action: "EXCLUIR CAUSA ORGÂNICA PRIMEIRO: glicemia, SpO2, PA, temperatura, pupilas, Glasgow" },
+      { order: 3, action: "Exames: hemograma, glicemia, eletrólitos, Cr, gasometria, toxicológico, TC se suspeita SNC" },
+      { order: 4, action: "Contenção verbal PRIMEIRO: ambiente calmo, falar com tom baixo, não confrontar" },
+      { order: 5, action: "Se contenção verbal falhar → sedação farmacológica:" },
+      { order: 6, action: "1ª linha: Haloperidol 5mg IM + Midazolam 5mg IM (OU Haloperidol 5mg IM + Prometazina 25mg IM)" },
+      { order: 7, action: "Alternativa: Olanzapina 10mg IM (NÃO combinar com BZD)" },
+      { order: 8, action: "⚠️ Haloperidol: monitorar QTc. EVITAR se QT > 500ms, Parkinson, delirium por BZD/álcool" },
+      { order: 9, action: "Contenção mecânica SÓ se risco iminente. Reavaliar a cada 15-30 min" },
+      { order: 10, action: "Idoso: REDUZIR dose 50%. Haloperidol 2,5mg + Midazolam 2,5mg" },
+    ],
+  },
+  intoxication: {
+    name: "Intoxicação Aguda — Abordagem",
+    steps: [
+      { order: 1, action: "ABCDE. Via aérea é prioridade. IOT se Glasgow < 8 ou sem proteção" },
+      { order: 2, action: "Identificar substância: perguntar o quê, quanto, quando, via" },
+      { order: 3, action: "Antídotos específicos: Naloxone (opioide 0,4-2mg IV), Flumazenil (BZD 0,2mg IV — cautela), N-acetilcisteína (paracetamol)" },
+      { order: 4, action: "Descontaminação: carvão ativado 1g/kg VO se < 1h da ingestão e via aérea protegida" },
+      { order: 5, action: "Exames: glicemia, gasometria, eletrólitos, função renal/hepática, ECG, toxicológico" },
+      { order: 6, action: "Monitorar: ECG contínuo (QT, QRS), SpO2, Glasgow, diurese" },
+      { order: 7, action: "Lavagem gástrica: APENAS se < 1h + substância potencialmente letal + via aérea protegida" },
+      { order: 8, action: "⚠️ Flumazenil: CONTRAINDICADO se uso crônico de BZD ou convulsão (risco de convulsão)" },
+    ],
+  },
+  alcohol_withdrawal: {
+    name: "Abstinência Alcoólica — Protocolo CIWA",
+    steps: [
+      { order: 1, action: "Aplicar escala CIWA-Ar. Tratar se CIWA ≥ 10" },
+      { order: 2, action: "Benzodiazepínico: Diazepam 10mg VO/IV a cada hora até CIWA < 10 (máx 60mg)" },
+      { order: 3, action: "Alternativa se hepatopata: Lorazepam 2mg (metabolismo extra-hepático)" },
+      { order: 4, action: "Tiamina 300mg IV ANTES de glicose (prevenir Wernicke)" },
+      { order: 5, action: "Hidratação + correção eletrólitos (Mg, K)" },
+      { order: 6, action: "Se convulsão: Diazepam 10mg IV. Se Delirium Tremens: UTI + BZD agressivo + monitorização" },
+      { order: 7, action: "Monitorar: CIWA a cada 1-2h, sinais vitais, glicemia, Glasgow" },
+      { order: 8, action: "⚠️ Delirium tremens: mortalidade até 15% sem tratamento. NÃO subtratar" },
+    ],
+  },
+  suicide_risk: {
+    name: "Risco de Suicídio — Avaliação",
+    steps: [
+      { order: 1, action: "Avaliar risco: ideação ativa, plano, meios, tentativa prévia, desesperança" },
+      { order: 2, action: "Garantir segurança: remover objetos perigosos, observação contínua" },
+      { order: 3, action: "Estabilizar clinicamente se tentativa (tratar intoxicação, ferimento, etc.)" },
+      { order: 4, action: "NÃO LIBERAR sem avaliação psiquiátrica se risco moderado/alto" },
+      { order: 5, action: "Encaminhar para avaliação psiquiátrica de urgência" },
+      { order: 6, action: "Documentar avaliação de risco no prontuário" },
+      { order: 7, action: "Se risco alto: internação involuntária se necessário (conforme legislação)" },
+    ],
+  },
+};
+
+// ─── Urology Protocols ──────────────────────────────────────────
+const UROLOGY_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  itu_simple: {
+    name: "ITU Simples — Conduta",
+    steps: [
+      { order: 1, action: "Classificar: simples (mulher jovem, não grávida) vs complicada (homem, gestante, sonda, DRC, diabetes, anomalia)" },
+      { order: 2, action: "ITU simples: Fosfomicina 3g dose única VO OU Nitrofurantoína 100mg 6/6h 5 dias" },
+      { order: 3, action: "Alternativa: Sulfametoxazol-Trimetoprim 800/160mg 12/12h 3 dias (se sensibilidade local > 80%)" },
+      { order: 4, action: "⚠️ EVITAR quinolona para ITU simples (reservar para complicada)" },
+      { order: 5, action: "Pedir: EAS + urocultura se recorrente, complicada ou falha terapêutica" },
+      { order: 6, action: "Se gestante: Cefalexina 500mg 6/6h 7 dias OU Nitrofurantoína (evitar 3º tri) OU Fosfomicina dose única" },
+    ],
+  },
+  pyelonephritis: {
+    name: "Pielonefrite — Conduta",
+    steps: [
+      { order: 1, action: "Suspeitar se: febre + dor lombar + disúria ± leucocitose. Giordano positivo" },
+      { order: 2, action: "Exames: hemograma, PCR, Cr, EAS, urocultura + hemoculturas" },
+      { order: 3, action: "Leve/ambulatório: Ciprofloxacino 500mg 12/12h 7 dias VO OU Ceftriaxona 1g/dia IM" },
+      { order: 4, action: "Internação se: vômitos, sepse, gestante, obstrução, DRC, imunossuprimido" },
+      { order: 5, action: "Internado: Ceftriaxona 1-2g/dia IV OU Ciprofloxacino 400mg 12/12h IV" },
+      { order: 6, action: "USG renal se: febre persistente 72h, suspeita obstrução/abscesso, DRC" },
+      { order: 7, action: "Ajustar ATB conforme urocultura em 48-72h" },
+    ],
+  },
+  renal_colic: {
+    name: "Cólica Renal / Litíase — Conduta",
+    steps: [
+      { order: 1, action: "Analgesia IMEDIATA: Dipirona 1g IV + Cetoprofeno 100mg IV OU Diclofenaco 75mg IM" },
+      { order: 2, action: "Se dor refratária: Morfina 2-5mg IV OU Tramadol 50-100mg IV" },
+      { order: 3, action: "Exames: EAS (hematúria), Cr, hemograma" },
+      { order: 4, action: "TC abdome sem contraste (padrão ouro) OU USG (gestante, crianças)" },
+      { order: 5, action: "Cálculo ≤ 6mm: tratamento conservador (hidratação oral, analgesia, tamsulosina 0,4mg/dia)" },
+      { order: 6, action: "Cálculo > 6mm ou complicado (febre, anúria, rim único): urologia → litotripsia/cirurgia" },
+      { order: 7, action: "⚠️ Febre + litíase = pielonefrite obstrutiva → URGÊNCIA UROLÓGICA (duplo J/nefrostomia)" },
+      { order: 8, action: "⚠️ DRC: evitar AINEs. Preferir dipirona + opioide" },
+    ],
+  },
+  urinary_retention: {
+    name: "Retenção Urinária Aguda — Conduta",
+    steps: [
+      { order: 1, action: "Avaliar: bexigoma palpável, dor suprapúbica, volume (USG beira-leito)" },
+      { order: 2, action: "Cateterismo vesical de alívio (sonda Foley 14-16Fr)" },
+      { order: 3, action: "Se retenção > 400mL: clampear a cada 300-500mL (prevenir hematúria ex-vacuo)" },
+      { order: 4, action: "Investigar causa: HPB, medicação (anticolinérgico, opioide), neurológica, estenose" },
+      { order: 5, action: "Se HPB: Tansulosina 0,4mg/dia + avaliar finasterida" },
+      { order: 6, action: "Exames: EAS, urocultura, Cr, PSA (se > 50 anos)" },
+    ],
+  },
+};
+
+// ─── Dermatology Protocols ───────────────────────────────────────
+const DERMATOLOGY_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  anaphylaxis: {
+    name: "Anafilaxia — Protocolo de Emergência",
+    steps: [
+      { order: 1, action: "🔴 ADRENALINA IM 0,3-0,5mg (adulto) na face lateral da coxa. Repetir a cada 5-15 min se necessário" },
+      { order: 2, action: "Decúbito dorsal + elevar MMII (se hipotensão). Posição sentada se dispneia" },
+      { order: 3, action: "O2 alto fluxo. IOT se edema de glote/estridor" },
+      { order: 4, action: "Acesso venoso calibroso. SF 0,9% 1000-2000 mL rápido se hipotensão" },
+      { order: 5, action: "Adjuvantes: Difenidramina 50mg IV + Ranitidina 50mg IV" },
+      { order: 6, action: "Corticoide: Hidrocortisona 200mg IV (previne fase tardia — não é 1ª linha)" },
+      { order: 7, action: "Se broncoespasmo: Salbutamol nebulizado" },
+      { order: 8, action: "Monitorar por 6-24h (risco de reação bifásica)" },
+      { order: 9, action: "Prescrever adrenalina autoinjetável na alta + encaminhar alergista" },
+    ],
+  },
+  cellulitis: {
+    name: "Celulite / Erisipela — Conduta",
+    steps: [
+      { order: 1, action: "Diferenciar: Erisipela (bordas bem definidas, superficial) vs Celulite (bordas mal definidas, profunda)" },
+      { order: 2, action: "Leve/ambulatório: Cefalexina 500mg 6/6h VO 7-10 dias OU Amoxicilina-Clavulanato" },
+      { order: 3, action: "Moderada/internação: Ceftriaxona 1g/dia IV OU Oxacilina 2g 4/4h IV" },
+      { order: 4, action: "Se MRSA suspeito: adicionar Sulfametoxazol-Trimetoprim VO ou Vancomicina IV" },
+      { order: 5, action: "Se necrose/crepitação/toxemia: pensar FASCEÍTE NECROTIZANTE → cirurgia URGENTE + mero + vanco" },
+      { order: 6, action: "Exames se internado: hemograma, PCR, hemoculturas, Cr, glicemia" },
+      { order: 7, action: "Diabético/imunossuprimido: ATB amplo + investigar osteomielite (RM se suspeita)" },
+      { order: 8, action: "Marcar bordas da lesão para monitorar progressão" },
+    ],
+  },
+  sjs_ten: {
+    name: "Stevens-Johnson / Necrólise Epidérmica Tóxica (NET)",
+    steps: [
+      { order: 1, action: "🔴 EMERGÊNCIA DERMATOLÓGICA. Mortalidade: SJS 5-10%, NET até 30%" },
+      { order: 2, action: "SUSPENDER DROGA CAUSADORA IMEDIATAMENTE (alopurinol, carbamazepina, fenitoína, sulfonamida, AINE)" },
+      { order: 3, action: "Internação em UTI ou unidade de queimados se > 30% SCQ (NET)" },
+      { order: 4, action: "Suporte: hidratação, analgesia, cuidados com feridas (NÃO desbridar epiderme)" },
+      { order: 5, action: "Avaliação oftalmológica URGENTE (risco de sequela grave)" },
+      { order: 6, action: "Avaliar mucosas: oral, genital, conjuntival" },
+      { order: 7, action: "Score SCORTEN para prognóstico" },
+      { order: 8, action: "Exames: hemograma, Cr, eletrólitos, hemoculturas, biópsia se dúvida" },
+    ],
+  },
+  herpes_zoster: {
+    name: "Herpes Zoster — Conduta",
+    steps: [
+      { order: 1, action: "Diagnóstico clínico: vesículas em dermátomo unilateral + dor neuropática" },
+      { order: 2, action: "Antiviral em < 72h: Valaciclovir 1g 8/8h 7 dias OU Aciclovir 800mg 5x/dia 7 dias" },
+      { order: 3, action: "Analgesia: Paracetamol/Dipirona + Gabapentina 300mg 8/8h + Amitriptilina 25mg à noite" },
+      { order: 4, action: "Se dor refratária: Tramadol ou Pregabalina" },
+      { order: 5, action: "⚠️ Zoster oftálmico (V1): URGÊNCIA oftalmológica" },
+      { order: 6, action: "⚠️ Zoster disseminado (imunossuprimido): Aciclovir IV 10mg/kg 8/8h + internação" },
+      { order: 7, action: "Cuidados locais: limpar com SF, não romper vesículas" },
+    ],
+  },
+};
+
+// ─── Hematology Protocols ────────────────────────────────────────
+const HEMATOLOGY_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  severe_anemia: {
+    name: "Anemia Grave / Indicação de Transfusão",
+    steps: [
+      { order: 1, action: "Avaliar: Hb, sintomas (dispneia, taquicardia, angina, hipotensão)" },
+      { order: 2, action: "Transfusão se: Hb < 7 g/dL (geral) OU Hb < 8 se cardiopatia/SCA OU sangramento ativo com instabilidade" },
+      { order: 3, action: "1 CH eleva Hb em ~1 g/dL. Prescrever por unidade (NÃO ml/kg)" },
+      { order: 4, action: "Infundir em 2-4h por unidade. Verificar tipagem + prova cruzada" },
+      { order: 5, action: "Monitorar: PA, FC, temperatura, sinais reação transfusional" },
+      { order: 6, action: "Investigar causa: hemograma completo, reticulócitos, ferro/ferritina, B12/folato, Coombs, haptoglobina" },
+      { order: 7, action: "Se anemia hemolítica: Coombs direto, esfregaço, LDH, bilirrubinas, haptoglobina" },
+    ],
+  },
+  thrombocytopenia: {
+    name: "Plaquetopenia — Abordagem",
+    steps: [
+      { order: 1, action: "Confirmar: repetir hemograma (excluir pseudotrombocitopenia por EDTA)" },
+      { order: 2, action: "Classificar risco: > 100k (leve), 50-100k (moderada), 20-50k (grave), < 20k (muito grave), < 10k (transfundir)" },
+      { order: 3, action: "Transfusão de plaquetas se: < 10.000 OU < 20.000 com febre/sepse OU < 50.000 + sangramento ativo OU pré-procedimento" },
+      { order: 4, action: "Investigar causa: esfregaço, Coombs, LDH, fibrinogênio (CIVD), heparina (HIT), HIV, hepatite" },
+      { order: 5, action: "Se HIT (trombocitopenia induzida por heparina): suspender TODA heparina, usar argatroban ou fondaparinux" },
+      { order: 6, action: "Se PTT (púrpura trombocitopênica trombótica): NÃO transfundir plaquetas → plasmaferese" },
+      { order: 7, action: "Se CIVD: tratar causa base, repor fibrinogênio/crioprecipitado, PFC, plaquetas se < 50k + sangramento" },
+    ],
+  },
+  inr_high: {
+    name: "INR Elevado / Reversão Warfarina",
+    steps: [
+      { order: 1, action: "INR 4-6 sem sangramento: suspender warfarina 1-2 doses. Reavaliar" },
+      { order: 2, action: "INR 6-9 sem sangramento: suspender warfarina + Vitamina K 2,5mg VO" },
+      { order: 3, action: "INR > 9 sem sangramento: suspender + Vitamina K 5mg VO. INR em 24h" },
+      { order: 4, action: "INR alto + sangramento grave: Vitamina K 10mg IV lento + CCP (complexo protrombínico) 25-50 UI/kg" },
+      { order: 5, action: "Se CCP indisponível: PFC 15-20 mL/kg (menos eficaz, mais volume)" },
+      { order: 6, action: "Monitorar INR a cada 6-12h até estável" },
+      { order: 7, action: "Investigar interação (ATB, amiodarona, AINE, fluconazol, dieta)" },
+    ],
+  },
+  dvt_pe: {
+    name: "TVP / TEP — Anticoagulação",
+    steps: [
+      { order: 1, action: "TVP: Wells + D-dímero OU USG Doppler. TEP: Wells + D-dímero OU AngioTC" },
+      { order: 2, action: "Anticoagulação IMEDIATA se alta probabilidade (enquanto aguarda exame)" },
+      { order: 3, action: "Opções: Rivaroxabana 15mg 12/12h 21 dias → 20mg/dia OU Enoxaparina 1mg/kg 12/12h SC + Warfarina" },
+      { order: 4, action: "Se DRC (ClCr < 30): HNF → Warfarina (evitar DOAC)" },
+      { order: 5, action: "Duração: 1º episódio provocado → 3 meses. Não provocado → ≥ 6 meses. Recorrente → indefinido" },
+      { order: 6, action: "Monitorar: INR (warfarina alvo 2-3), Cr, hemograma, sinais sangramento" },
+      { order: 7, action: "Meia elástica compressiva para TVP proximal" },
+    ],
+  },
+  civd: {
+    name: "CIVD — Coagulação Intravascular Disseminada",
+    steps: [
+      { order: 1, action: "Suspeitar se: sepse + plaqueta baixa + INR alto + fibrinogênio baixo + D-dímero alto + esquizócitos" },
+      { order: 2, action: "TRATAR CAUSA BASE (sepse, trauma, obstétrica, neoplasia)" },
+      { order: 3, action: "Score ISTH para CIVD aberta" },
+      { order: 4, action: "Se sangramento: PFC 15-20 mL/kg, Crioprecipitado (alvo fibrinogênio > 150), Plaquetas se < 50k" },
+      { order: 5, action: "Anticoagulação profilática com HNF SC se predomínio trombótico" },
+      { order: 6, action: "Monitorar: hemograma, INR, TTPa, fibrinogênio, D-dímero a cada 6-12h" },
+    ],
+  },
+};
+
 // ─── Parsing Helpers ─────────────────────────────────────────────
 function parseNumber(input?: string | null): number | undefined {
   if (!input) return undefined;
