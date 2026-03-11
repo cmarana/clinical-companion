@@ -1363,6 +1363,29 @@ function validateData(patient: PatientData): { complete: boolean; missing: strin
 function generateSafetyAlerts(patient: PatientData, renal: RenalCalcResult): string[] {
   const alerts: string[] = [];
 
+  // PEDIATRIC ALERTS
+  if (patient.isPediatric) {
+    alerts.push("👶 MODO PEDIATRIA ATIVADO: Todas as doses devem ser por kg. NUNCA usar dose adulta.");
+    if (patient.isNeonate) {
+      alerts.push("🔴 NEONATO (< 28 dias): ALTO RISCO. RN febril = sepse até provar contrário. Internação obrigatória.");
+    }
+    if (patient.isInfant) {
+      alerts.push("🔴 LACTENTE (< 1 ano): Monitorar desidratação, hipoglicemia, hipotermia.");
+    }
+    if (!patient.weightKg) {
+      if (patient.estimatedWeightKg) {
+        alerts.push(`⚠️ PESO NÃO INFORMADO — Estimativa por idade: ~${patient.estimatedWeightKg} kg (CONFIRMAR peso real antes de prescrever)`);
+      } else {
+        alerts.push("🔴 PESO OBRIGATÓRIO EM PEDIATRIA — PERGUNTAR PESO ANTES DE PRESCREVER.");
+      }
+    }
+    if (patient.vaccinesUpToDate === false) {
+      alerts.push("🟡 VACINAÇÃO ATRASADA: Considerar etiologias preveníveis por vacina.");
+    } else if (patient.vaccinesUpToDate === undefined) {
+      alerts.push("ℹ️ Status vacinal não informado — perguntar.");
+    }
+  }
+
   if (patient.isElderly) alerts.push("🟡 IDOSO (≥65a): Reduzir doses. Volume cauteloso. Monitorar função renal.");
   if (renal.stage === "GRAVE" || renal.stage === "TERMINAL") {
     alerts.push(`🔴 DRC ${renal.stage} (ClCr ${renal.clcrMlMin} mL/min): Ajustar TODAS as drogas renais.`);
@@ -1371,24 +1394,77 @@ function generateSafetyAlerts(patient: PatientData, renal: RenalCalcResult): str
   if (patient.isDialytic) alerts.push("🔴 DIALÍTICO: Volume muito restrito. Avaliar necessidade de TRS.");
   if (patient.allergies) alerts.push(`🟡 ALERGIA INFORMADA: "${patient.allergies}" (tipo: ${patient.allergyType})`);
   
-  // Anticoagulation safety
-  if (!patient.hasAnticoagulationIndication) {
+  if (!patient.hasAnticoagulationIndication && !patient.isPediatric) {
     alerts.push("ℹ️ SEM INDICAÇÃO DE ANTICOAGULAÇÃO TERAPÊUTICA detectada. Usar apenas profilaxia.");
   }
 
-  // Scenario-specific alerts
   if (patient.scenario === "UBS") {
     alerts.push("ℹ️ CENÁRIO UBS: Não pedir exames invasivos. Conduta simples. Referenciar se grave.");
   } else if (patient.scenario === "SAMU") {
     alerts.push("ℹ️ CENÁRIO SAMU: Foco em estabilização. Não prescrever medicações complexas.");
   }
 
-  // Nefrotoxicity warning
   if (renal.stage === "MODERADA" || renal.stage === "GRAVE" || renal.stage === "TERMINAL") {
     alerts.push("🟡 EVITAR NEFROTÓXICOS: aminoglicosídeos, AINEs, contraste iodado (se possível).");
   }
 
   return alerts;
+}
+
+// ─── MODULE 10: Pediatric Dose Calculator ────────────────────────
+function calcPediatricDoses(patient: PatientData): string[] {
+  const lines: string[] = [];
+  const w = patient.weightKg || patient.estimatedWeightKg;
+  if (!w) {
+    lines.push("❌ PESO NÃO DISPONÍVEL — não é possível calcular doses pediátricas.");
+    return lines;
+  }
+
+  const isEstimated = !patient.weightKg && !!patient.estimatedWeightKg;
+  if (isEstimated) {
+    lines.push(`⚠️ PESO ESTIMADO: ~${w} kg (CONFIRMAR antes de prescrever)`);
+  }
+
+  lines.push(`\n  DOSES PEDIÁTRICAS (peso ${isEstimated ? "estimado" : "informado"}: ${w} kg):`);
+  
+  // Volume
+  const vol10 = Math.round(10 * w);
+  const vol20 = Math.round(20 * w);
+  lines.push(`  Volume ressuscitação: 10-20 mL/kg = ${vol10}-${vol20} mL (NÃO usar 30 mL/kg)`);
+  lines.push(`  → Reavaliar após CADA bolus de 10-20 mL/kg`);
+  
+  // Common pediatric drugs
+  for (const [, drug] of Object.entries(PEDIATRIC_DRUGS)) {
+    const doseMatch = drug.dosePerKg.match(/([0-9]+(?:[.,][0-9]+)?)/);
+    if (doseMatch) {
+      const dosePerKg = parseFloat(doseMatch[1]);
+      const totalDose = Math.round(dosePerKg * w * 10) / 10;
+      let line = `  ${drug.name}: ${drug.dosePerKg} × ${w}kg = ${totalDose} ${drug.dosePerKg.includes("mg") ? "mg" : "unid"} ${drug.frequency} ${drug.route}`;
+      if (drug.maxDose) line += ` (máx: ${drug.maxDose})`;
+      lines.push(line);
+    }
+    if (drug.ageRestrictions) lines.push(`    ${drug.ageRestrictions}`);
+    if (drug.warnings) {
+      for (const warn of drug.warnings) lines.push(`    ⚠️ ${warn}`);
+    }
+  }
+
+  // Contraindicated drugs
+  lines.push(`\n  🚫 DROGAS CONTRAINDICADAS/CAUTELA EM PEDIATRIA:`);
+  for (const contra of PEDIATRIC_CONTRAINDICATED) {
+    lines.push(`  ${contra.drug}: ${contra.reason} (${contra.ageLimit || "todas idades"})`);
+  }
+
+  // Dehydration if applicable
+  const userText = patient.medicationsInUse.join(" "); // crude
+  const dehydration = classifyDehydration(userText);
+  if (dehydration) {
+    lines.push(`\n  💧 DESIDRATAÇÃO ${dehydration.level}:`);
+    lines.push(`  → ${dehydration.fluidMlKg}`);
+    lines.push(`  → ${dehydration.plan}`);
+  }
+
+  return lines;
 }
 
 // ─── MAIN ENGINE ─────────────────────────────────────────────────
@@ -1397,8 +1473,8 @@ function runEngine(messages: ChatMessage[]): EngineResult {
   const renal = calcRenal(patient);
   const doses = calcDoses(patient, renal);
   const userText = messages.filter(m => m.role === "user").map(m => m.content).join("\n");
-  const protocol = selectProtocol(userText, patient.scenario);
-  const antibiotic = selectAntibiotic(patient, renal);
+  const protocol = selectProtocol(userText, patient.scenario, patient.isPediatric);
+  const antibiotic = patient.isPediatric ? null : selectAntibiotic(patient, renal); // pediatric ATB handled by LLM with dose context
   const interactions = checkInteractions(patient.medicationsInUse, [], patient, renal);
   const drugRenalAdj = getDrugRenalAdjustments(renal.clcrMlMin);
   const allergyWarnings = checkAllergies(patient);
@@ -1406,15 +1482,24 @@ function runEngine(messages: ChatMessage[]): EngineResult {
   const safetyAlerts = generateSafetyAlerts(patient, renal);
 
   const missingData: string[] = [];
-  if (!patient.weightKg) missingData.push("PESO (kg) — necessário para cálculos mg/kg, mL/kg, UI/kg");
+  if (!patient.weightKg) {
+    if (patient.isPediatric && patient.estimatedWeightKg) {
+      missingData.push(`PESO (kg) — ESTIMADO ${patient.estimatedWeightKg}kg por idade. CONFIRMAR peso real.`);
+    } else {
+      missingData.push("PESO (kg) — necessário para cálculos mg/kg, mL/kg, UI/kg");
+    }
+  }
   if (!patient.sex) missingData.push("SEXO — necessário para ajuste ClCr (fator 0,85 feminino)");
-  if (!patient.ageYears) missingData.push("IDADE — necessário para ClCr e ajustes etários");
-  if (!patient.creatinineMgDl) missingData.push("CREATININA — necessário para função renal e ajuste de doses");
+  if (!patient.ageYears && !patient.ageMonths) missingData.push("IDADE — necessário para ClCr e ajustes etários");
+  if (!patient.creatinineMgDl && !patient.isPediatric) missingData.push("CREATININA — necessário para função renal e ajuste de doses");
   if (!patient.allergies) missingData.push("ALERGIAS — necessário para validação de segurança");
   if (patient.scenario === "NÃO INFORMADO") missingData.push("CENÁRIO (PS/UTI/UBS/SAMU/Enfermaria)");
   if (patient.focus === "SEM FOCO DEFINIDO") missingData.push("FOCO INFECCIOSO");
   if (patient.allergies && patient.allergyType === "NÃO INFORMADA" && /penicilina/i.test(patient.allergies)) {
     missingData.push("TIPO DE ALERGIA a penicilina: anafilaxia ou reação leve?");
+  }
+  if (patient.isPediatric && patient.vaccinesUpToDate === undefined) {
+    missingData.push("STATUS VACINAL — vacinação em dia?");
   }
 
   const warnings = [...allergyWarnings];
