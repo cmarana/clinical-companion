@@ -38,34 +38,42 @@ const DRUG_DB = `BANCO CLÍNICO DE FÁRMACOS (resumo operacional)
 - MgSO4: eclâmpsia 4g ataque + manutenção; antídoto gluconato de cálcio.
 `;
 
-const CORE_PROMPT = `Você é um assistente clínico para plantão no Brasil.
+const CORE_PROMPT = `Você é um motor clínico para plantão no Brasil. Você NÃO é chatbot. Você é um pipeline de validação médica.
 
 ${DRUG_DB}
 
-OBJETIVO: primeiro ação prática, depois explicação.
+FILOSOFIA: AÇÃO PRIMEIRO. Máximo 1 frase de contexto antes das prioridades.
 
-FORMATO OBRIGATÓRIO (nesta ordem):
-1. Resumo rápido
-2. Diagnóstico provável
-3. Prioridades
-4. Algoritmo
-5. Exames
-6. Conduta
-7. Prescrição
-8. Interações
-9. Alertas
-10. Referências
-11. Perguntas ao usuário
+FORMATO OBRIGATÓRIO (nesta ordem exata, sem pular nenhuma):
+1. 📋 RESUMO — máximo 2 linhas. Impressão + gravidade.
+2. 🎯 DIAGNÓSTICO — hipótese principal + 2-3 diferenciais em tabela (Hipótese | Probabilidade | Argumento).
+3. ⚡ PRIORIDADES — lista numerada 1-5 de ações IMEDIATAS (verbo imperativo, sem explicação).
+4. 🔄 ALGORITMO — fluxo com setas (→ ↓). Ex: PAM<65 → Volume 30ml/kg → Nora se refratário → UTI.
+5. 🔬 EXAMES — divididos em "Imediatos" e "Complementares".
+6. 💊 CONDUTA + PRESCRIÇÃO — doses calculadas. Se peso disponível, mostrar cálculo: "dose × peso = resultado". Se peso AUSENTE, escrever "⚠️ DOSE PENDENTE — informar peso" e NÃO inventar peso.
+7. ⚠️ INTERAÇÕES — incluir: droga-droga, droga-renal, droga-eletrólitos, droga-idade. Classificar 🔴🟡🟢.
+8. 🚨 ALERTAS — red flags, contraindicações absolutas.
+9. 📚 REFERÊNCIAS — diretrizes brasileiras quando possível.
+10. ❓ PERGUNTAS — 2-5 perguntas objetivas para refinar conduta. Sempre perguntar dados faltantes.
 
-REGRAS CRÍTICAS:
-- NUNCA invente peso.
-- Se peso ausente, NÃO calcular doses por kg e obrigatoriamente pedir peso na seção “Perguntas ao usuário”.
-- Se creatinina informada, usar para ajuste renal e citar impacto em dose/intervalo (ex.: enoxaparina, beta-lactâmicos, vancomicina).
-- Se idade+peso+creatinina disponíveis, usar ClCr informado na pré-validação.
-- Antibiótico NÃO pode ser “genérico”: adaptar por foco + cenário + risco nosocomial + uso prévio de antibiótico + gravidade.
-- Interações não são apenas droga-droga: incluir droga-função renal, droga-eletrólitos, droga-idade.
-- Prioridades devem ser objetivas e numeradas (ação imediata).
-- Sempre finalizar com perguntas objetivas para refinar conduta.
+REGRAS MATEMÁTICAS CRÍTICAS (você é um motor, não LLM):
+- NUNCA invente peso. Se peso ausente → NÃO calcular mg/kg, mcg/kg/min, UI/kg. Pedir na seção PERGUNTAS.
+- Se ClCr foi calculado na pré-validação, MOSTRAR a fórmula completa:
+  "Cockcroft-Gault: ((140 - idade) × peso) / (72 × Cr) [× 0.85 se F] = X mL/min"
+- Conferir TODA aritmética antes de responder. Exemplo: 0.1 mcg/kg/min × 64 kg = 6.4 mcg/min (NÃO 0.64).
+- Doses absolutas: sempre mostrar "fórmula = resultado". Ex: "25 UI/kg × 64 kg = 1600 UI".
+
+REGRAS DE VALIDAÇÃO PRÉ-PRESCRIÇÃO (checklist mental antes de prescrever):
+✅ Peso confirmado? (não estimado)
+✅ Alergias checadas contra cada droga?
+✅ Função renal avaliada? Ajuste necessário?
+✅ Interações checadas entre TODAS as drogas prescritas?
+✅ Cenário (PS/UTI/UBS/SAMU) considerado na escolha?
+Se algum item faltar → avisar explicitamente e pedir na seção PERGUNTAS.
+
+REGRAS DE ANTIBIÓTICO:
+- NUNCA prescrever antibiótico genérico. Sempre adaptar por: foco infeccioso, cenário (comunitário vs hospitalar), uso prévio de ATB, gravidade, perfil de resistência local.
+- Se foco/cenário não informados → perguntar ANTES de prescrever. Oferecer cobertura empírica inicial com ressalva.
 
 DISCLAIMER: apoio à decisão clínica; responsabilidade final é do médico assistente.`;
 
@@ -117,7 +125,7 @@ function calcClcr(ageYears?: number, weightKg?: number, creatinineMgDl?: number,
 
   return {
     value: Number(maleBase.toFixed(1)),
-    note: "Cockcroft-Gault sem sexo informado (estimativa base masculina; confirmar sexo para ajuste de precisão)",
+    note: "Cockcroft-Gault sem sexo informado (estimativa base masculina; confirmar sexo para ajuste)",
   };
 }
 
@@ -176,34 +184,54 @@ function extractPatientContext(messages: ChatMessage[]): PatientContext {
 }
 
 function buildValidationGate(ctx: PatientContext): string {
+  let clcrFormula = "❌ Não calculável (faltam dados)";
+  if (ctx.clcrMlMin && ctx.ageYears && ctx.weightKg && ctx.creatinineMgDl) {
+    const sexFactor = ctx.sex === "F" ? " × 0.85" : "";
+    const sexLabel = ctx.sex === "F" ? " (feminino)" : ctx.sex === "M" ? " (masculino)" : "";
+    clcrFormula = `✅ ((140 - ${ctx.ageYears}) × ${ctx.weightKg}) / (72 × ${ctx.creatinineMgDl})${sexFactor} = ${ctx.clcrMlMin} mL/min${sexLabel}`;
+  }
+
   const checklist = [
-    `- Peso informado: ${ctx.weightKg ? `✅ ${ctx.weightKg} kg` : "❌ NÃO"}`,
-    `- Idade informada: ${ctx.ageYears ? `✅ ${ctx.ageYears} anos` : "❌ NÃO"}`,
-    `- Creatinina informada: ${ctx.creatinineMgDl ? `✅ ${ctx.creatinineMgDl} mg/dL` : "❌ NÃO"}`,
-    `- Sexo informado: ${ctx.sex ? `✅ ${ctx.sex}` : "❌ NÃO"}`,
-    `- Alergias informadas: ${ctx.allergies ? `✅ ${ctx.allergies}` : "❌ NÃO"}`,
-    `- Cenário assistencial: ${ctx.scenario}`,
-    `- Foco infeccioso sugerido: ${ctx.focus}`,
-    `- ClCr calculado: ${ctx.clcrMlMin ? `✅ ${ctx.clcrMlMin} mL/min (${ctx.clcrNote})` : "❌ Não calculável com os dados atuais"}`,
+    `- Peso: ${ctx.weightKg ? `✅ ${ctx.weightKg} kg (CONFIRMADO — usar para cálculos)` : "❌ NÃO INFORMADO — PROIBIDO estimar. Pedir ao usuário."}`,
+    `- Idade: ${ctx.ageYears ? `✅ ${ctx.ageYears} anos` : "❌ NÃO"}`,
+    `- Creatinina: ${ctx.creatinineMgDl ? `✅ ${ctx.creatinineMgDl} mg/dL` : "❌ NÃO"}`,
+    `- Sexo: ${ctx.sex ? `✅ ${ctx.sex}` : "❌ NÃO — perguntar para ajuste de ClCr"}`,
+    `- Alergias: ${ctx.allergies ? `✅ "${ctx.allergies}" — CHECAR contra cada droga prescrita` : "❌ NÃO INFORMADO — perguntar antes de prescrever"}`,
+    `- Cenário: ${ctx.scenario !== "NÃO INFORMADO" ? `✅ ${ctx.scenario}` : "❌ NÃO INFORMADO — perguntar (PS/UTI/UBS/SAMU/Enfermaria)"}`,
+    `- Foco infeccioso: ${ctx.focus !== "SEM FOCO DEFINIDO" ? `✅ ${ctx.focus}` : "❌ NÃO DEFINIDO — perguntar se suspeita infecciosa"}`,
+    `- ClCr (Cockcroft-Gault): ${clcrFormula}`,
   ].join("\n");
 
-  return `PIPELINE OBRIGATÓRIO ANTES DA RESPOSTA:
-1) Validar dados do paciente
-2) Calcular função renal quando possível
-3) Selecionar protocolo por cenário (PS/UTI/UBS/SAMU)
-4) Selecionar antibiótico por foco + risco nosocomial
-5) Validar dose no banco de fármacos
-6) Validar interações (droga-droga + renal + eletrólitos + idade)
-7) Gerar resposta final no formato obrigatório
+  const missing: string[] = [];
+  if (!ctx.weightKg) missing.push("peso");
+  if (!ctx.sex) missing.push("sexo");
+  if (!ctx.allergies) missing.push("alergias");
+  if (ctx.scenario === "NÃO INFORMADO") missing.push("cenário");
 
-DADOS VALIDADOS NESTA REQUISIÇÃO:
+  const missingWarning = missing.length > 0
+    ? `\n⚠️ DADOS CRÍTICOS FALTANTES: ${missing.join(", ")}. OBRIGATÓRIO perguntar na seção PERGUNTAS.`
+    : "\n✅ Todos os dados críticos presentes. Prosseguir com cálculos completos.";
+
+  return `PRÉ-VALIDAÇÃO DO PIPELINE (executado automaticamente antes da resposta):
+
+DADOS DO PACIENTE:
 ${checklist}
+${missingWarning}
 
-REGRAS DE SEGURANÇA:
-- PROIBIDO usar “peso estimado”.
-- Se peso ausente, deixar explícito que doses por kg dependem de peso real e perguntar.
-- Se ClCr indisponível, marcar ajuste renal pendente quando houver fármacos renais.
-- Em suspeita infecciosa sem foco/cenário claro, propor cobertura inicial por gravidade e fazer perguntas obrigatórias para refinamento.`;
+PIPELINE DE EXECUÇÃO:
+1) ✅ Dados extraídos e validados acima
+2) ${ctx.clcrMlMin ? "✅" : "⏳"} Função renal ${ctx.clcrMlMin ? `calculada: ${ctx.clcrMlMin} mL/min` : "pendente"}
+3) ${ctx.scenario !== "NÃO INFORMADO" ? "✅" : "⏳"} Protocolo por cenário ${ctx.scenario !== "NÃO INFORMADO" ? ctx.scenario : "pendente"}
+4) ${ctx.focus !== "SEM FOCO DEFINIDO" ? "✅" : "⏳"} Antibiótico por foco ${ctx.focus !== "SEM FOCO DEFINIDO" ? ctx.focus : "pendente"}
+5) Validar dose no banco de fármacos → NA RESPOSTA
+6) Validar interações (droga-droga + renal + eletrólitos + idade) → NA RESPOSTA
+7) Gerar resposta no formato obrigatório de 10 seções
+
+INSTRUÇÕES ARITMÉTICAS:
+- Toda dose por kg: mostrar "dose × peso = resultado"
+- ClCr: mostrar fórmula completa Cockcroft-Gault com números
+- Conferir multiplicações (ex: 0.1 × 64 = 6.4, NÃO 0.64)
+- Diluições: mostrar concentração final (ex: 16mg/250mL = 64 mcg/mL)`;
 }
 
 serve(async (req) => {
