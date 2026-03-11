@@ -48,6 +48,7 @@ export default function MedicationDetail() {
     );
   }
 
+  return (
     <>
       <TopBar
         title={med.name}
