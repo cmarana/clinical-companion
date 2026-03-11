@@ -126,7 +126,7 @@ interface DrugEntry {
 
 interface InteractionAlert {
   pair: string;
-  severity: "🔴" | "🟡" | "🟢";
+  severity: "ALTO RISCO" | "MODERADO" | "BAIXO RISCO";
   mechanism: string;
   action: string;
 }
@@ -3535,13 +3535,17 @@ Se faltar algo importante → perguntar na seção PERGUNTAS. Nunca inventar.
 
 ═══ ESTRUTURA DE RESPOSTA (12 SEÇÕES, NESTA ORDEM) ═══
 
-REGRAS DE FORMATAÇÃO OBRIGATÓRIAS:
-- NÃO usar emojis em NENHUMA parte da resposta. ZERO emojis.
-- NÃO usar símbolos coloridos como ✅ ❌ 🟢 🟡 🔴. Substituir por: OK, Ausente, Não informado, Baixo risco, Moderado, Alto risco.
-- Usar APENAS texto limpo e profissional.
-- Títulos das seções em ## MAIÚSCULO SEM EMOJI.
-- Usar markdown completo: tabelas com |, listas com -, negrito com **, código com \`.
-- Estilo: documento clínico / guideline médica. Tom sóbrio e direto.
+REGRAS DE FORMATACAO OBRIGATORIAS:
+- PROIBIDO usar emojis em QUALQUER parte da resposta. ZERO emojis. NENHUM.
+- Inclui: ✅ ❌ ⚠️ 📋 🎯 ⚡ 🟢 🟡 🔴 💊 🩺 🔍 ➡️ e QUALQUER outro emoji ou simbolo Unicode decorativo.
+- Substituir por texto: OK, Ausente, Nao informado, Baixo risco, Moderado, Alto risco, Alerta, Atencao.
+- Usar APENAS texto limpo, tecnico e profissional. Linguagem de guideline medica.
+- Titulos das secoes em ## MAIUSCULO, SEM emoji, SEM simbolo decorativo.
+- Usar markdown completo: tabelas com |, listas com -, negrito com **, codigo com \`.
+- Tom: sobrio, direto, tecnico. Estilo UpToDate / Whitebook / Amboss.
+- NAO usar linguagem informal, coloquial ou explicativa demais. Ir direto ao ponto clinico.
+- Cada secao deve ser separada por uma linha em branco antes e depois do titulo.
+- Usar negrito para destacar termos clinicos importantes, doses e alertas criticos.
 
 1. ## VALIDACAO — Checklist: OK / Ausente para cada dado obrigatório. Score %.
 2. ## RESUMO CLINICO — 1-2 linhas. Impressão + gravidade.
@@ -3584,10 +3588,10 @@ Múltiplos módulos podem ser ativados simultaneamente.
 
 ═══ REGRAS ABSOLUTAS DE SEGURANÇA (NUNCA VIOLAR) ═══
 
-1. NÃO ASSUMIR DADOS NÃO INFORMADOS
-   - NUNCA assumir: diálise, VM, UTI prévia, foco infeccioso, peso, idade, sexo
-   - Se dado marcado ❌, PERGUNTE. NÃO invente.
-   - Se o motor diz "NÃO ASSUMIR", obedeça.
+1. NAO ASSUMIR DADOS NAO INFORMADOS
+   - NUNCA assumir: dialise, VM, UTI previa, foco infeccioso, peso, idade, sexo
+   - Se dado marcado como Ausente, PERGUNTE. NAO invente.
+   - Se o motor diz "NAO ASSUMIR", obedeca.
 
 2. AJUSTE RENAL OBRIGATÓRIO
    - Se creatinina informada → usar ClCr do motor (Cockcroft-Gault)
@@ -3877,7 +3881,7 @@ Se K ≥ 5,5 detectado:
 - Varfarina: INR seriado com qualquer ATB, amiodarona, AINE.
 - Amiodarona: risco QT com quinolona, macrolídeo, haloperidol.
 - Nefrotóxicos: nunca combinar ≥ 2 sem monitorar Cr.
-- Classificar: 🟢 leve, 🟡 moderado, 🔴 grave/contraindicado.
+- Classificar: Baixo risco, Moderado, Alto risco (CONTRAINDICADO).
 
 ═══ REGRAS FINAIS ═══
 - Se dúvida → perguntar.
@@ -3935,7 +3939,7 @@ serve(async (req) => {
       systemMessages.push({ role: "system", content: "Modo estruturado: priorize checklist de ações imediatas e validação de dados." });
     }
     if (mode === "interactions") {
-      systemMessages.push({ role: "system", content: "Modo interações: classifique cada combinação 🔴🟡🟢, mecanismo, impacto, conduta." });
+      systemMessages.push({ role: "system", content: "Modo interações: classifique cada combinação como Alto risco / Moderado / Baixo risco, mecanismo, impacto, conduta." });
     }
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {

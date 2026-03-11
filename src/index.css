@@ -136,21 +136,23 @@
 
 /* ─── Clinical AI Response Styling ─── */
 .clinical-response {
-  font-family: var(--font-heading);
-  font-size: 13px;
-  line-height: 1.6;
+  font-family: 'Inter', 'Roboto Flex', var(--font-heading), system-ui, sans-serif;
+  font-size: 14px;
+  line-height: 1.7;
   color: hsl(var(--foreground));
+  padding: 16px;
+  border-radius: 8px;
 }
 
 .clinical-response h1,
 .clinical-response h2 {
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  margin-top: 28px;
-  margin-bottom: 10px;
-  padding-bottom: 6px;
+  margin-top: 32px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
   border-bottom: 1px solid hsl(var(--border));
   color: hsl(var(--foreground));
 }
@@ -161,16 +163,16 @@
 }
 
 .clinical-response h3 {
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 600;
-  margin-top: 20px;
-  margin-bottom: 6px;
+  margin-top: 24px;
+  margin-bottom: 8px;
   color: hsl(var(--foreground));
 }
 
 .clinical-response p {
-  margin-bottom: 10px;
-  font-size: 13px;
+  margin-bottom: 12px;
+  font-size: 14px;
   line-height: 1.7;
 }
 
@@ -181,53 +183,58 @@
 
 .clinical-response ul,
 .clinical-response ol {
-  margin-bottom: 12px;
-  padding-left: 18px;
+  margin-bottom: 16px;
+  padding-left: 20px;
 }
 
 .clinical-response li {
-  font-size: 13px;
-  margin-bottom: 4px;
-  line-height: 1.6;
+  font-size: 14px;
+  margin-bottom: 6px;
+  line-height: 1.7;
+}
+
+.clinical-response li + li {
+  margin-top: 4px;
 }
 
 .clinical-response table {
   width: 100%;
   border-collapse: collapse;
-  margin: 8px 0;
-  font-size: 12px;
+  margin: 12px 0 16px;
+  font-size: 13px;
 }
 
 .clinical-response th {
   background: hsl(var(--muted));
   font-weight: 600;
-  padding: 6px 8px;
+  padding: 8px 10px;
   text-align: left;
-  font-size: 11px;
+  font-size: 12px;
   text-transform: uppercase;
-  letter-spacing: 0.03em;
+  letter-spacing: 0.04em;
   border: 1px solid hsl(var(--border));
-  font-family: var(--font-heading);
+  font-family: 'Inter', var(--font-heading), sans-serif;
 }
 
 .clinical-response td {
-  padding: 5px 8px;
+  padding: 7px 10px;
   border: 1px solid hsl(var(--border));
+  line-height: 1.5;
 }
 
 .clinical-response code {
-  font-size: 12px;
+  font-size: 13px;
   background: hsl(var(--muted));
-  padding: 1px 4px;
+  padding: 2px 5px;
   border-radius: 3px;
 }
 
 .clinical-response pre {
   background: hsl(var(--muted));
-  padding: 10px;
+  padding: 12px;
   border-radius: 6px;
   overflow-x: auto;
-  margin: 8px 0;
+  margin: 10px 0;
 }
 
 .clinical-response pre code {
@@ -237,15 +244,15 @@
 
 .clinical-response blockquote {
   border-left: 3px solid hsl(var(--primary));
-  padding-left: 10px;
-  margin: 8px 0;
+  padding-left: 12px;
+  margin: 12px 0;
   color: hsl(var(--muted-foreground));
 }
 
 .clinical-response hr {
   border: none;
   border-top: 1px solid hsl(var(--border));
-  margin: 12px 0;
+  margin: 20px 0;
 }
 
 @keyframes flash-red {
