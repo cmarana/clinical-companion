@@ -3651,7 +3651,7 @@ Múltiplos módulos podem ser ativados simultaneamente.
 
 ═══ REGRAS DE SEPSE (BUNDLE ORGANIZADO) ═══
 Se sepse/choque séptico detectado, COMEÇAR com o bundle completo ORGANIZADO (NÃO espalhar):
-→ 🔴 BUNDLE SEPSE — PRIMEIROS 60 MINUTOS:
+→ BUNDLE SEPSE — PRIMEIROS 60 MINUTOS:
   1. Hemoculturas (2 pares) + culturas de todos os focos
   2. Lactato sérico (repetir em 2-4h se > 2)
   3. Antibiótico empírico IV em < 1 HORA (NÃO atrasar)
