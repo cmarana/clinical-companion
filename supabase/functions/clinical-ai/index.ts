@@ -3,7 +3,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 // ─── Types ───────────────────────────────────────────────────────
 type ChatMessage = { role: "user" | "assistant" | "system"; content: string };
 type Scenario = "PS" | "UTI" | "UBS" | "SAMU" | "ENFERMARIA" | "HOSPITAL" | "NÃO INFORMADO";
-type ClinicalMode = "NEURO" | "CARDIO" | "PEDIATRIA" | "UTI" | "TRAUMA" | "ORTOPEDIA" | "GASTRO" | "ENDOCRINO" | "GERAL";
+type ClinicalMode = "NEURO" | "CARDIO" | "PEDIATRIA" | "UTI" | "TRAUMA" | "ORTOPEDIA" | "GASTRO" | "ENDOCRINO" | "RESPIRATORIO" | "PSIQUIATRIA" | "UROLOGIA" | "DERMATOLOGIA" | "HEMATOLOGIA" | "GERAL";
 type Focus = "PULMONAR" | "URINÁRIO" | "ABDOMINAL" | "PELE/TECIDOS" | "SNC" | "SEM FOCO DEFINIDO";
 type RenalStage = "NORMAL" | "LEVE" | "MODERADA" | "GRAVE" | "TERMINAL";
 type InfectionOrigin = "COMUNITÁRIA" | "HOSPITALAR" | "NÃO DEFINIDA";
