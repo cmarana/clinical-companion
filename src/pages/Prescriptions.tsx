@@ -1,0 +1,88 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import TopBar from "@/components/TopBar";
+import { useAuth } from "@/contexts/AuthContext";
+import PremiumGate from "@/components/PremiumGate";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Search, ChevronRight, ClipboardList } from "lucide-react";
+import { prescriptionCategories, type PrescriptionCategory } from "@/data/prescriptions";
+
+export default function Prescriptions() {
+  const navigate = useNavigate();
+  const { subscription } = useAuth();
+  const [query, setQuery] = useState("");
+  const [expandedCat, setExpandedCat] = useState<string | null>(null);
+
+  if (!subscription.subscribed) {
+    return (
+      <>
+        <TopBar title="Prescrições" />
+        <PremiumGate />
+      </>
+    );
+  }
+
+  const filtered = prescriptionCategories.map(cat => ({
+    ...cat,
+    items: cat.items.filter(item =>
+      item.title.toLowerCase().includes(query.toLowerCase()) ||
+      cat.title.toLowerCase().includes(query.toLowerCase())
+    ),
+  })).filter(cat => cat.items.length > 0);
+
+  return (
+    <>
+      <TopBar title="Prescrições" />
+      <div className="px-4 py-4 max-w-lg mx-auto space-y-4 pb-24">
+        <p className="text-xs text-muted-foreground">Prescrições prontas para pronto socorro, internação e ambulatório</p>
+
+        <div className="relative">
+          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
+          <Input
+            placeholder="Buscar prescrição..."
+            value={query}
+            onChange={e => setQuery(e.target.value)}
+            className="pl-8 h-10 text-sm rounded-xl"
+          />
+        </div>
+
+        {filtered.map(cat => (
+          <div key={cat.id} className="space-y-2">
+            <button
+              onClick={() => setExpandedCat(expandedCat === cat.id ? null : cat.id)}
+              className="w-full flex items-center justify-between p-3 rounded-xl bg-accent/50 hover:bg-accent transition-colors"
+            >
+              <div className="flex items-center gap-2">
+                <ClipboardList size={16} className="text-primary" />
+                <span className="font-heading font-semibold text-sm">{cat.title}</span>
+                <span className="text-xs text-muted-foreground">({cat.items.length})</span>
+              </div>
+              <ChevronRight size={16} className={`text-muted-foreground transition-transform ${expandedCat === cat.id ? "rotate-90" : ""}`} />
+            </button>
+
+            {(expandedCat === cat.id || query.length >= 2) && (
+              <div className="space-y-1.5 pl-2">
+                {cat.items.map(item => (
+                  <Card
+                    key={item.id}
+                    onClick={() => navigate(`/prescriptions/${item.id}`)}
+                    className="cursor-pointer hover:shadow-sm active:scale-[0.99] transition-all"
+                  >
+                    <CardContent className="p-3 flex items-center justify-between">
+                      <div>
+                        <p className="font-heading font-semibold text-xs">{item.title}</p>
+                        <p className="text-[10px] text-muted-foreground">{item.type}</p>
+                      </div>
+                      <ChevronRight size={14} className="text-muted-foreground" />
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}
