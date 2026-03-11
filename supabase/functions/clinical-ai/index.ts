@@ -2457,6 +2457,70 @@ function generateSafetyAlerts(patient: PatientData, renal: RenalCalcResult): str
     }
   }
 
+  // RESPIRATORY ALERTS
+  if (patient.isRespiratoryCase) {
+    alerts.push("🫁 MODO RESPIRATÓRIO ATIVADO: Prioridade = oxigenação. Via aérea primeiro.");
+    alerts.push("🔴 Dispneia: NUNCA assumir ansiedade. Excluir TEP, pneumotórax, EAP, pneumonia, IAM.");
+    if (/dpoc/i.test(patient.medicationsInUse.join(" ") || "")) {
+      alerts.push("🟡 DPOC: Meta SpO2 88-92%. EVITAR hiperóxia.");
+    }
+    if (patient.isElderly) {
+      alerts.push("🟡 IDOSO + RESPIRATÓRIO: Maior risco de pneumonia grave, TEP. Investigar mais.");
+    }
+    if (patient.hasAnticoagulantInUse) {
+      alerts.push("🟡 ANTICOAGULADO + RESPIRATÓRIO: Risco de hemoptise. Se TEP: já anticoagulado, avaliar dose.");
+    }
+  }
+
+  // PSYCHIATRY ALERTS
+  if (patient.isPsychiatryCase) {
+    alerts.push("🧠 MODO PSIQUIATRIA ATIVADO: EXCLUIR causa orgânica ANTES de assumir psiquiátrico.");
+    alerts.push("🔴 Sempre avaliar: glicemia, SpO2, PA, temperatura, pupilas. Pode ser sepse, AVC, hipóxia, intoxicação.");
+    if (patient.isElderly) {
+      alerts.push("🔴 IDOSO + AGITAÇÃO/CONFUSÃO: Pensar DELIRIUM. Dose sedação 50%. EVITAR BZD (piora delirium).");
+    }
+    alerts.push("⚠️ QT LONGO: Cuidado com haloperidol + antipsicóticos + amiodarona + quinolona + macrolídeo.");
+  }
+
+  // UROLOGY ALERTS
+  if (patient.isUrologyCase) {
+    alerts.push("🩺 MODO UROLOGIA ATIVADO: Classificar ITU (simples vs complicada). EVITAR quinolona para ITU simples.");
+    if (patient.isPregnant) {
+      alerts.push("🤰 ITU NA GESTANTE: TRATAR SEMPRE (mesmo bacteriúria assintomática). ATB seguro: cefalexina, nitrofurantoína, fosfomicina.");
+    }
+    if (renal.stage === "GRAVE" || renal.stage === "TERMINAL") {
+      alerts.push("🔴 DRC + UROLOGIA: Evitar AINEs para cólica. Ajustar ATB. Cautela com contraste.");
+    }
+    if (patient.isElderly) {
+      alerts.push("🟡 IDOSO + UROLOGIA: Maior risco de ITU complicada, retenção, pielonefrite.");
+    }
+  }
+
+  // DERMATOLOGY ALERTS
+  if (patient.isDermatologyCase) {
+    alerts.push("🩹 MODO DERMATOLOGIA ATIVADO: Avaliar gravidade (febre, necrose, bolha, mucosa).");
+    alerts.push("🔴 Se anafilaxia: ADRENALINA IM IMEDIATA. Não esperar.");
+    alerts.push("🔴 Se bolha + febre + mucosa: pensar Stevens-Johnson/NET → URGÊNCIA.");
+    if (patient.isElderly) {
+      alerts.push("🟡 IDOSO/DIABÉTICO: Maior risco de infecção de pele. Investigar osteomielite se ferida crônica.");
+    }
+  }
+
+  // HEMATOLOGY ALERTS
+  if (patient.isHematologyCase) {
+    alerts.push("🩸 MODO HEMATOLOGIA ATIVADO: Avaliar Hb, plaquetas, INR, fibrinogênio.");
+    alerts.push("🔴 NÃO transfundir sem critério: Hb < 7 (geral), < 8 (cardiopatia), plaquetas < 10k ou < 50k + sangramento.");
+    if (patient.hasAnticoagulantInUse) {
+      alerts.push("🔴 ANTICOAGULANTE EM USO: Avaliar INR/TTPa. Se sangramento grave: reverter (vit K, CCP, PFC).");
+    }
+    if (renal.stage !== "NORMAL" && renal.stage !== "LEVE") {
+      alerts.push("🔴 DRC + HEMATOLOGIA: Ajustar enoxaparina/DOAC. Preferir HNF se ClCr < 30.");
+    }
+    if (patient.isElderly) {
+      alerts.push("🟡 IDOSO + HEMATOLOGIA: Maior risco de sangramento. Dose menor de anticoagulante.");
+    }
+  }
+
   return alerts;
 }
 
