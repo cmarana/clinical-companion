@@ -304,12 +304,328 @@ function InfusionRateCalculator() {
   );
 }
 
+function WellsCalculator() {
+  const items = [
+    { label: "Sinais clínicos de TVP", pts: 3 },
+    { label: "Diagnóstico alternativo menos provável que TEP", pts: 3 },
+    { label: "FC >100 bpm", pts: 1.5 },
+    { label: "Imobilização >3 dias ou cirurgia <4 semanas", pts: 1.5 },
+    { label: "TVP ou TEP prévio", pts: 1.5 },
+    { label: "Hemoptise", pts: 1 },
+    { label: "Câncer ativo (tratamento <6 meses)", pts: 1 },
+  ];
+  const [checked, setChecked] = useState<boolean[]>(new Array(items.length).fill(false));
+  const total = items.reduce((sum, item, i) => sum + (checked[i] ? item.pts : 0), 0);
+  const risk = total <= 1 ? "Baixo risco" : total <= 6 ? "Risco intermediário" : "Alto risco";
+  const color = total <= 1 ? "text-success" : total <= 6 ? "text-warning-foreground" : "text-destructive";
+
+  return (
+    <div className="space-y-3">
+      <p className="text-xs text-muted-foreground">Probabilidade pré-teste para TEP</p>
+      {items.map((item, i) => (
+        <label key={i} className="flex items-center gap-2 text-xs cursor-pointer">
+          <input type="checkbox" checked={checked[i]} onChange={() => { const c = [...checked]; c[i] = !c[i]; setChecked(c); }} className="rounded border-border" />
+          <span className="flex-1">{item.label}</span>
+          <span className="text-muted-foreground font-heading">+{item.pts}</span>
+        </label>
+      ))}
+      <div className="bg-muted rounded-lg p-4 text-center space-y-1">
+        <p className="font-heading text-3xl font-bold">{total}</p>
+        <p className={`font-heading text-sm font-semibold ${color}`}>{risk}</p>
+      </div>
+    </div>
+  );
+}
+
+function CHA2DS2Calculator() {
+  const items = [
+    { label: "IC congestiva / disfunção VE", pts: 1 },
+    { label: "Hipertensão", pts: 1 },
+    { label: "Idade ≥75 anos", pts: 2 },
+    { label: "Diabetes mellitus", pts: 1 },
+    { label: "AVC/AIT/tromboembolismo prévio", pts: 2 },
+    { label: "Doença vascular (IAM, DAP, placa aórtica)", pts: 1 },
+    { label: "Idade 65-74 anos", pts: 1 },
+    { label: "Sexo feminino", pts: 1 },
+  ];
+  const [checked, setChecked] = useState<boolean[]>(new Array(items.length).fill(false));
+  const total = items.reduce((sum, item, i) => sum + (checked[i] ? item.pts : 0), 0);
+  const rec = total === 0 ? "Sem anticoagulação" : total === 1 ? "Considerar anticoagulação" : "Anticoagulação recomendada";
+  const color = total === 0 ? "text-success" : total === 1 ? "text-warning-foreground" : "text-destructive";
+
+  return (
+    <div className="space-y-3">
+      <p className="text-xs text-muted-foreground">Risco de AVC em FA (CHA₂DS₂-VASc)</p>
+      {items.map((item, i) => (
+        <label key={i} className="flex items-center gap-2 text-xs cursor-pointer">
+          <input type="checkbox" checked={checked[i]} onChange={() => { const c = [...checked]; c[i] = !c[i]; setChecked(c); }} className="rounded border-border" />
+          <span className="flex-1">{item.label}</span>
+          <span className="text-muted-foreground font-heading">+{item.pts}</span>
+        </label>
+      ))}
+      <div className="bg-muted rounded-lg p-4 text-center space-y-1">
+        <p className="font-heading text-3xl font-bold">{total}</p>
+        <p className={`font-heading text-sm font-semibold ${color}`}>{rec}</p>
+      </div>
+    </div>
+  );
+}
+
+function CURB65Calculator() {
+  const items = [
+    { label: "Confusão mental", pts: 1 },
+    { label: "Ureia >50 mg/dL (>7 mmol/L)", pts: 1 },
+    { label: "FR ≥30 irpm", pts: 1 },
+    { label: "PAS <90 ou PAD ≤60 mmHg", pts: 1 },
+    { label: "Idade ≥65 anos", pts: 1 },
+  ];
+  const [checked, setChecked] = useState<boolean[]>(new Array(items.length).fill(false));
+  const total = items.reduce((sum, _, i) => sum + (checked[i] ? 1 : 0), 0);
+  const rec = total <= 1 ? "Ambulatorial" : total === 2 ? "Internação breve / observação" : "Internação (considerar UTI se 4-5)";
+  const color = total <= 1 ? "text-success" : total === 2 ? "text-warning-foreground" : "text-destructive";
+
+  return (
+    <div className="space-y-3">
+      <p className="text-xs text-muted-foreground">Gravidade de pneumonia comunitária</p>
+      {items.map((item, i) => (
+        <label key={i} className="flex items-center gap-2 text-xs cursor-pointer">
+          <input type="checkbox" checked={checked[i]} onChange={() => { const c = [...checked]; c[i] = !c[i]; setChecked(c); }} className="rounded border-border" />
+          <span className="flex-1">{item.label}</span>
+        </label>
+      ))}
+      <div className="bg-muted rounded-lg p-4 text-center space-y-1">
+        <p className="font-heading text-3xl font-bold">{total}</p>
+        <p className={`font-heading text-sm font-semibold ${color}`}>{rec}</p>
+        <p className="text-xs text-muted-foreground">Mortalidade: {total <= 1 ? "<3%" : total === 2 ? "~9%" : total === 3 ? "~22%" : ">30%"}</p>
+      </div>
+    </div>
+  );
+}
+
+function QSofaCalculator() {
+  const items = [
+    { label: "PAS ≤100 mmHg", pts: 1 },
+    { label: "FR ≥22 irpm", pts: 1 },
+    { label: "Alteração do nível de consciência (Glasgow <15)", pts: 1 },
+  ];
+  const [checked, setChecked] = useState<boolean[]>(new Array(items.length).fill(false));
+  const total = items.reduce((sum, _, i) => sum + (checked[i] ? 1 : 0), 0);
+  const rec = total < 2 ? "Baixo risco — reavaliar" : "Alto risco de sepse — investigar disfunção orgânica (SOFA)";
+  const color = total < 2 ? "text-success" : "text-destructive";
+
+  return (
+    <div className="space-y-3">
+      <p className="text-xs text-muted-foreground">Triagem rápida para sepse à beira-leito</p>
+      {items.map((item, i) => (
+        <label key={i} className="flex items-center gap-2 text-xs cursor-pointer">
+          <input type="checkbox" checked={checked[i]} onChange={() => { const c = [...checked]; c[i] = !c[i]; setChecked(c); }} className="rounded border-border" />
+          <span className="flex-1">{item.label}</span>
+        </label>
+      ))}
+      <div className="bg-muted rounded-lg p-4 text-center space-y-1">
+        <p className="font-heading text-3xl font-bold">{total}/3</p>
+        <p className={`font-heading text-sm font-semibold ${color}`}>{rec}</p>
+      </div>
+    </div>
+  );
+}
+
+function ApgarCalculator() {
+  const cats = [
+    { label: "Frequência cardíaca", opts: ["Ausente (0)", "<100 bpm (1)", "≥100 bpm (2)"] },
+    { label: "Esforço respiratório", opts: ["Ausente (0)", "Irregular/fraco (1)", "Choro forte (2)"] },
+    { label: "Tônus muscular", opts: ["Flácido (0)", "Alguma flexão (1)", "Movimento ativo (2)"] },
+    { label: "Irritabilidade reflexa", opts: ["Sem resposta (0)", "Careta (1)", "Choro/tosse (2)"] },
+    { label: "Cor", opts: ["Cianose/palidez (0)", "Cianose extremidades (1)", "Rosado (2)"] },
+  ];
+  const [vals, setVals] = useState<number[]>(new Array(cats.length).fill(2));
+  const total = vals.reduce((a, b) => a + b, 0);
+
+  return (
+    <div className="space-y-3">
+      <p className="text-xs text-muted-foreground">Avaliação do recém-nascido (1º e 5º minuto)</p>
+      {cats.map((cat, ci) => (
+        <div key={ci} className="space-y-1">
+          <Label className="font-heading text-xs">{cat.label}</Label>
+          <Select value={String(vals[ci])} onValueChange={(v) => { const n = [...vals]; n[ci] = Number(v); setVals(n); }}>
+            <SelectTrigger><SelectValue /></SelectTrigger>
+            <SelectContent>
+              {cat.opts.map((opt, oi) => (
+                <SelectItem key={oi} value={String(oi)}>{opt}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      ))}
+      <div className="bg-muted rounded-lg p-4 text-center space-y-1">
+        <p className="font-heading text-3xl font-bold">{total}/10</p>
+        <p className={`font-heading text-sm font-semibold ${total >= 7 ? "text-success" : total >= 4 ? "text-warning-foreground" : "text-destructive"}`}>
+          {total >= 7 ? "Normal" : total >= 4 ? "Moderadamente deprimido" : "Gravemente deprimido"}
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function ParklandCalculator() {
+  const [weight, setWeight] = useState("");
+  const [burn, setBurn] = useState("");
+  const w = Number(weight), b = Number(burn);
+  const total = w && b ? 4 * w * b : null;
+
+  return (
+    <div className="space-y-3">
+      <p className="text-xs text-muted-foreground">Reposição volêmica em queimados (Ringer Lactato)</p>
+      <div className="grid grid-cols-2 gap-3">
+        <div className="space-y-1">
+          <Label className="font-heading text-xs">Peso (kg)</Label>
+          <Input type="number" value={weight} onChange={(e) => setWeight(e.target.value)} placeholder="70" />
+        </div>
+        <div className="space-y-1">
+          <Label className="font-heading text-xs">% SCQ</Label>
+          <Input type="number" value={burn} onChange={(e) => setBurn(e.target.value)} placeholder="30" />
+        </div>
+      </div>
+      {total !== null && (
+        <div className="bg-muted rounded-lg p-4 text-center space-y-1">
+          <p className="font-heading text-3xl font-bold">{total} <span className="text-base font-normal">mL/24h</span></p>
+          <p className="font-heading text-sm text-primary font-semibold">1as 8h: {Math.round(total / 2)} mL | 16h seguintes: {Math.round(total / 2)} mL</p>
+          <p className="text-xs text-muted-foreground">Fórmula: 4 × peso × %SCQ</p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function AnionGapCalculator() {
+  const [na, setNa] = useState("");
+  const [cl, setCl] = useState("");
+  const [hco3, setHco3] = useState("");
+  const [albumin, setAlbumin] = useState("4.0");
+  const n = Number(na), c = Number(cl), h = Number(hco3), a = Number(albumin);
+  const ag = n && c && h ? n - (c + h) : null;
+  const corrected = ag !== null && a ? ag + 2.5 * (4 - a) : null;
+
+  return (
+    <div className="space-y-3">
+      <p className="text-xs text-muted-foreground">AG = Na - (Cl + HCO3)</p>
+      <div className="grid grid-cols-2 gap-3">
+        <div className="space-y-1">
+          <Label className="font-heading text-xs">Na⁺ (mEq/L)</Label>
+          <Input type="number" value={na} onChange={(e) => setNa(e.target.value)} placeholder="140" />
+        </div>
+        <div className="space-y-1">
+          <Label className="font-heading text-xs">Cl⁻ (mEq/L)</Label>
+          <Input type="number" value={cl} onChange={(e) => setCl(e.target.value)} placeholder="104" />
+        </div>
+        <div className="space-y-1">
+          <Label className="font-heading text-xs">HCO₃⁻ (mEq/L)</Label>
+          <Input type="number" value={hco3} onChange={(e) => setHco3(e.target.value)} placeholder="24" />
+        </div>
+        <div className="space-y-1">
+          <Label className="font-heading text-xs">Albumina (g/dL)</Label>
+          <Input type="number" value={albumin} onChange={(e) => setAlbumin(e.target.value)} placeholder="4.0" step="0.1" />
+        </div>
+      </div>
+      {ag !== null && (
+        <div className="bg-muted rounded-lg p-4 text-center space-y-1">
+          <p className="font-heading text-3xl font-bold">{Math.round(ag * 10) / 10}</p>
+          {corrected !== null && <p className="text-xs text-muted-foreground">Corrigido pela albumina: {Math.round(corrected * 10) / 10}</p>}
+          <p className={`font-heading text-sm font-semibold ${ag > 12 ? "text-destructive" : "text-success"}`}>
+            {ag > 12 ? "AG elevado — acidose metabólica com AG" : "AG normal (8-12)"}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function TIMICalculator() {
+  const items = [
+    { label: "Idade ≥65 anos" },
+    { label: "≥3 fatores de risco para DAC" },
+    { label: "Estenose coronariana conhecida ≥50%" },
+    { label: "Uso de AAS nos últimos 7 dias" },
+    { label: "≥2 episódios de angina nas últimas 24h" },
+    { label: "Desvio de ST ≥0,5mm" },
+    { label: "Marcadores cardíacos elevados (troponina)" },
+  ];
+  const [checked, setChecked] = useState<boolean[]>(new Array(items.length).fill(false));
+  const total = items.reduce((sum, _, i) => sum + (checked[i] ? 1 : 0), 0);
+  const risk = total <= 2 ? "Baixo" : total <= 4 ? "Intermediário" : "Alto";
+  const color = total <= 2 ? "text-success" : total <= 4 ? "text-warning-foreground" : "text-destructive";
+
+  return (
+    <div className="space-y-3">
+      <p className="text-xs text-muted-foreground">Risco em SCA sem supra de ST</p>
+      {items.map((item, i) => (
+        <label key={i} className="flex items-center gap-2 text-xs cursor-pointer">
+          <input type="checkbox" checked={checked[i]} onChange={() => { const c = [...checked]; c[i] = !c[i]; setChecked(c); }} className="rounded border-border" />
+          <span className="flex-1">{item.label}</span>
+        </label>
+      ))}
+      <div className="bg-muted rounded-lg p-4 text-center space-y-1">
+        <p className="font-heading text-3xl font-bold">{total}/7</p>
+        <p className={`font-heading text-sm font-semibold ${color}`}>Risco {risk}</p>
+      </div>
+    </div>
+  );
+}
+
+function ChildPughCalculator() {
+  const cats = [
+    { label: "Bilirrubina", opts: ["<2 (1 pt)", "2-3 (2 pts)", ">3 (3 pts)"] },
+    { label: "Albumina", opts: [">3.5 (1 pt)", "2.8-3.5 (2 pts)", "<2.8 (3 pts)"] },
+    { label: "INR", opts: ["<1.7 (1 pt)", "1.7-2.3 (2 pts)", ">2.3 (3 pts)"] },
+    { label: "Ascite", opts: ["Ausente (1 pt)", "Leve (2 pts)", "Moderada/tensa (3 pts)"] },
+    { label: "Encefalopatia", opts: ["Ausente (1 pt)", "Grau I-II (2 pts)", "Grau III-IV (3 pts)"] },
+  ];
+  const [vals, setVals] = useState<number[]>(new Array(cats.length).fill(1));
+  const total = vals.reduce((a, b) => a + b, 0);
+  const cls = total <= 6 ? "A" : total <= 9 ? "B" : "C";
+  const mort = total <= 6 ? "5-6% (1 ano)" : total <= 9 ? "20% (1 ano)" : "55% (1 ano)";
+
+  return (
+    <div className="space-y-3">
+      <p className="text-xs text-muted-foreground">Classificação de gravidade na cirrose</p>
+      {cats.map((cat, ci) => (
+        <div key={ci} className="space-y-1">
+          <Label className="font-heading text-xs">{cat.label}</Label>
+          <Select value={String(vals[ci])} onValueChange={(v) => { const n = [...vals]; n[ci] = Number(v); setVals(n); }}>
+            <SelectTrigger><SelectValue /></SelectTrigger>
+            <SelectContent>
+              {cat.opts.map((opt, oi) => (
+                <SelectItem key={oi} value={String(oi + 1)}>{opt}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      ))}
+      <div className="bg-muted rounded-lg p-4 text-center space-y-1">
+        <p className="font-heading text-3xl font-bold">{total} <span className="text-base font-normal">— Classe {cls}</span></p>
+        <p className={`font-heading text-sm font-semibold ${cls === "A" ? "text-success" : cls === "B" ? "text-warning-foreground" : "text-destructive"}`}>
+          Mortalidade: {mort}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 const calculators: CalculatorConfig[] = [
   { id: "glasgow", title: "Escala de Glasgow", icon: <Brain size={18} />, description: "Nível de consciência (3-15)", component: GlasgowCalculator },
   { id: "sofa", title: "SOFA Score", icon: <Activity size={18} />, description: "Disfunção orgânica na sepse", component: SofaCalculator },
-  { id: "clearance", title: "Clearance de Creatinina", icon: <Droplets size={18} />, description: "Cockcroft-Gault", component: CreatinineClearanceCalculator },
+  { id: "qsofa", title: "qSOFA", icon: <Activity size={18} />, description: "Triagem rápida para sepse", component: QSofaCalculator },
+  { id: "wells", title: "Wells (TEP)", icon: <Heart size={18} />, description: "Probabilidade de TEP", component: WellsCalculator },
+  { id: "cha2ds2", title: "CHA₂DS₂-VASc", icon: <Heart size={18} />, description: "Risco de AVC em FA", component: CHA2DS2Calculator },
+  { id: "timi", title: "TIMI Score", icon: <Heart size={18} />, description: "Risco na SCA sem supra", component: TIMICalculator },
+  { id: "curb65", title: "CURB-65", icon: <Activity size={18} />, description: "Gravidade de pneumonia", component: CURB65Calculator },
+  { id: "apgar", title: "APGAR", icon: <Scale size={18} />, description: "Avaliação do RN", component: ApgarCalculator },
+  { id: "childpugh", title: "Child-Pugh", icon: <Droplets size={18} />, description: "Gravidade na cirrose", component: ChildPughCalculator },
+  { id: "clearance", title: "Clearance Creatinina", icon: <Droplets size={18} />, description: "Cockcroft-Gault", component: CreatinineClearanceCalculator },
   { id: "dose", title: "Dose por Peso", icon: <Scale size={18} />, description: "mg/kg → dose total e volume", component: DoseCalculator },
   { id: "infusion", title: "Velocidade de Infusão", icon: <Heart size={18} />, description: "BIC em mL/h", component: InfusionRateCalculator },
+  { id: "parkland", title: "Parkland (Queimados)", icon: <Calculator size={18} />, description: "Reposição volêmica", component: ParklandCalculator },
+  { id: "aniongap", title: "Anion Gap", icon: <Calculator size={18} />, description: "Acidose metabólica", component: AnionGapCalculator },
   { id: "imc", title: "IMC", icon: <Calculator size={18} />, description: "Índice de Massa Corporal", component: IMCCalculator },
 ];
 
