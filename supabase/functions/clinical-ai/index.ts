@@ -1171,6 +1171,14 @@ function extractPatient(messages: ChatMessage[]): PatientData {
   const hasAnticoagulantInUse = /warfarina|marevan|rivaroxabana|apixabana|dabigatrana|enoxaparina|heparina/i.test(medsRaw || "") ||
     /warfarina|marevan|rivaroxabana|apixabana|dabigatrana|enoxaparina|heparina/i.test(text);
 
+  // Obstetric detection
+  const isPregnant = /gestante|grávida|gravidez|gestação|gesta\b|g[0-9]p[0-9]|semanas?\s*de\s*(gestação|ig)|ig\s*[:=]?\s*[0-9]/i.test(text);
+  const isPuerperal = /puérpera|puerpério|pós[- ]?parto|pós[- ]?cesárea|pós[- ]?operatório.*parto/i.test(text);
+  const gestWeeksRaw = firstMatch(text, [/([0-9]{1,2})\s*sem(?:anas?)?\s*(?:de\s*)?(?:gestação|ig|gest)/i, /ig\s*[:=]?\s*([0-9]{1,2})/i]);
+  const gestationalWeeks = gestWeeksRaw ? parseNumber(gestWeeksRaw) : undefined;
+  const isFertileAge = sex === "F" && ageNum !== undefined && ageNum >= 12 && ageNum <= 55;
+  const pregnancyConfirmed = isPregnant; // explicitly stated
+
   return {
     weightKg: actualWeight,
     ageYears: ageNum,
@@ -1180,6 +1188,7 @@ function extractPatient(messages: ChatMessage[]): PatientData {
     hasHeartFailure, isElderly, isDialytic, hasAnticoagulationIndication,
     isPediatric, isNeonate, isInfant, estimatedWeightKg, vaccinesUpToDate,
     isNeuroCase, glasgowScore, hasAnticoagulantInUse,
+    isPregnant, isPuerperal, gestationalWeeks, isFertileAge, pregnancyConfirmed,
   };
 }
 
