@@ -11,6 +11,7 @@ type AllergyType = "ANAFILÁTICA" | "LEVE" | "NÃO INFORMADA";
 interface PatientData {
   weightKg?: number;
   ageYears?: number;
+  ageMonths?: number; // for pediatric precision
   creatinineMgDl?: number;
   sex?: "M" | "F";
   allergies?: string;
@@ -27,11 +28,16 @@ interface PatientData {
     hospitalized30d: boolean;
     immunosuppressed: boolean;
   };
-  // Conditions that affect fluid resuscitation
   hasHeartFailure: boolean;
-  isElderly: boolean; // ≥65
-  isDialytic: boolean; // EXPLICITLY stated by user
-  hasAnticoagulationIndication: string | null; // TEV, FA, IAM, TEP, TVP, prótese
+  isElderly: boolean;
+  isDialytic: boolean;
+  hasAnticoagulationIndication: string | null;
+  // Pediatric
+  isPediatric: boolean; // age < 14
+  isNeonate: boolean; // age < 28 days
+  isInfant: boolean; // age < 1 year
+  estimatedWeightKg?: number; // weight estimated by age if not provided
+  vaccinesUpToDate?: boolean;
 }
 
 interface RenalCalcResult {
@@ -304,9 +310,221 @@ const INTERACTION_PAIRS: { drugs: string[]; severity: "🔴" | "🟡"; mechanism
   { drugs: ["losartana", "espironolactona"], severity: "🟡", mechanism: "Hipercalemia aditiva", action: "Monitorar K a cada 24-48h. Alvo K < 5,0." },
   { drugs: ["losartana", "aine"], severity: "🟡", mechanism: "Reduz efeito anti-hipertensivo + piora função renal", action: "Evitar AINEs. Monitorar Cr e PA." },
   { drugs: ["losartana", "ieca"], severity: "🔴", mechanism: "Hipercalemia + IRA", action: "EVITAR duplo bloqueio SRAA." },
-  // Hyperkalemia combos with renal failure
   { drugs: ["losartana", "espironolactona"], severity: "🔴", mechanism: "Hipercalemia grave se DRC associada", action: "Monitorar K rigoroso. Evitar se ClCr < 30." },
+  // DOAC interactions
+  { drugs: ["rivaroxabana", "cetoconazol"], severity: "🔴", mechanism: "Inibição CYP3A4 + P-gp → aumento nível DOAC", action: "CONTRAINDICADO. Trocar antifúngico." },
+  { drugs: ["rivaroxabana", "rifampicina"], severity: "🔴", mechanism: "Indução CYP3A4 → reduz nível DOAC", action: "CONTRAINDICADO. Trocar um dos dois." },
+  { drugs: ["apixabana", "cetoconazol"], severity: "🔴", mechanism: "Inibição CYP3A4 → aumento nível DOAC", action: "CONTRAINDICADO ou reduzir dose 50%." },
+  { drugs: ["dabigatrana", "amiodarona"], severity: "🟡", mechanism: "Aumento nível dabigatrana via P-gp", action: "Monitorar sangramento. Considerar reduzir dose." },
+  // Antidepressant interactions
+  { drugs: ["fluoxetina", "tramadol"], severity: "🔴", mechanism: "Síndrome serotoninérgica + reduz conversão tramadol", action: "EVITAR. Usar analgésico alternativo." },
+  { drugs: ["sertralina", "tramadol"], severity: "🔴", mechanism: "Síndrome serotoninérgica", action: "EVITAR. Trocar analgésico." },
+  { drugs: ["fluoxetina", "warfarina"], severity: "🟡", mechanism: "Inibição CYP2C9 → aumento INR", action: "Monitorar INR semanal." },
+  { drugs: ["paroxetina", "tamoxifeno"], severity: "🔴", mechanism: "Inibição CYP2D6 → reduz eficácia tamoxifeno", action: "CONTRAINDICADO. Trocar antidepressivo." },
+  { drugs: ["venlafaxina", "imao"], severity: "🔴", mechanism: "Síndrome serotoninérgica grave", action: "CONTRAINDICADO. Wash-out 14 dias." },
+  // Antipsychotic interactions
+  { drugs: ["haloperidol", "amiodarona"], severity: "🔴", mechanism: "QT prolongado aditivo → Torsades", action: "EVITAR. Se necessário, QTc seriado." },
+  { drugs: ["haloperidol", "metoclopramida"], severity: "🟡", mechanism: "Efeitos extrapiramidais aditivos", action: "Monitorar rigidez/distonia." },
+  { drugs: ["quetiapina", "fluconazol"], severity: "🟡", mechanism: "Inibição CYP3A4 → aumento quetiapina", action: "Reduzir dose quetiapina." },
+  // Anticonvulsant interactions
+  { drugs: ["carbamazepina", "warfarina"], severity: "🔴", mechanism: "Indução CYP → reduz warfarina", action: "Monitorar INR. Pode precisar aumentar dose." },
+  { drugs: ["fenitoina", "fluconazol"], severity: "🔴", mechanism: "Inibição CYP2C9 → toxicidade fenitoina", action: "Monitorar nível sérico fenitoína." },
+  { drugs: ["valproato", "lamotrigina"], severity: "🟡", mechanism: "Valproato dobra nível de lamotrigina", action: "Reduzir lamotrigina 50%." },
+  // Opioid interactions  
+  { drugs: ["morfina", "benzodiazepínico"], severity: "🔴", mechanism: "Depressão respiratória sinérgica", action: "EVITAR combinação. Se necessário, monitorar SpO2 contínuo." },
+  { drugs: ["fentanil", "benzodiazepínico"], severity: "🔴", mechanism: "Depressão respiratória sinérgica", action: "EVITAR. Monitorar em UTI com capnografia." },
+  { drugs: ["metformina", "contraste"], severity: "🟡", mechanism: "Risco de acidose lática com contraste iodado", action: "Suspender metformina 48h antes/depois do contraste. Monitorar Cr." },
+  // Digoxin expanded
+  { drugs: ["digoxina", "furosemida"], severity: "🟡", mechanism: "Hipocalemia por furosemida → toxicidade digitálica", action: "Monitorar K rigoroso. Manter K > 4,0." },
+  { drugs: ["digoxina", "verapamil"], severity: "🔴", mechanism: "Aumento nível digoxina + bradicardia aditiva", action: "Reduzir digoxina 50%. Monitorar FC e nível." },
 ];
+
+// ─── Pediatric Database ─────────────────────────────────────────
+// Weight estimation by age (emergency only)
+function estimateWeightByAge(ageYears: number, ageMonths?: number): number {
+  const totalMonths = (ageYears * 12) + (ageMonths || 0);
+  if (totalMonths < 1) return 3.5; // newborn
+  if (totalMonths <= 12) return 3.5 + (totalMonths * 0.5); // ~0.5kg/month
+  if (ageYears <= 5) return (ageYears * 2) + 8; // APLS formula
+  if (ageYears <= 12) return (ageYears * 3) + 7; // APLS formula
+  return (ageYears * 3) + 7; // cap at 13
+}
+
+// Pediatric drug doses (mg/kg or mcg/kg)
+interface PedDrugEntry {
+  name: string;
+  dosePerKg: string;
+  maxDose: string;
+  frequency: string;
+  route: string;
+  ageRestrictions?: string;
+  warnings?: string[];
+}
+
+const PEDIATRIC_DRUGS: Record<string, PedDrugEntry> = {
+  ceftriaxona: {
+    name: "Ceftriaxona", dosePerKg: "50-100 mg/kg/dia", maxDose: "4g/dia",
+    frequency: "12/12h ou 1x/dia", route: "IV/IM",
+    ageRestrictions: "⚠️ CONTRAINDICADO em RN com hiperbilirrubinemia. NÃO misturar com cálcio IV em neonatos.",
+    warnings: ["Evitar em < 28 dias se ictérico", "Não administrar com soluções de cálcio em neonatos"],
+  },
+  amoxicilina: {
+    name: "Amoxicilina", dosePerKg: "40-90 mg/kg/dia", maxDose: "3g/dia",
+    frequency: "8/8h", route: "VO",
+  },
+  amoxicilina_clav: {
+    name: "Amoxicilina + Clavulanato", dosePerKg: "40-90 mg/kg/dia (amoxicilina)", maxDose: "3g/dia",
+    frequency: "8/8h ou 12/12h", route: "VO",
+  },
+  ampicilina: {
+    name: "Ampicilina", dosePerKg: "100-200 mg/kg/dia (meningite: 200-400 mg/kg/dia)", maxDose: "12g/dia",
+    frequency: "6/6h", route: "IV",
+  },
+  cefepime_ped: {
+    name: "Cefepime", dosePerKg: "50 mg/kg/dose", maxDose: "2g/dose",
+    frequency: "8/8h", route: "IV",
+  },
+  vancomicina_ped: {
+    name: "Vancomicina", dosePerKg: "15 mg/kg/dose (40-60 mg/kg/dia)", maxDose: "2g/dose",
+    frequency: "6/6h", route: "IV",
+    warnings: ["Infundir em ≥ 60 min", "Monitorar nível sérico"],
+  },
+  meropenem_ped: {
+    name: "Meropenem", dosePerKg: "20-40 mg/kg/dose (meningite: 40 mg/kg/dose)", maxDose: "2g/dose",
+    frequency: "8/8h", route: "IV",
+  },
+  gentamicina_ped: {
+    name: "Gentamicina", dosePerKg: "5-7,5 mg/kg/dia", maxDose: "Guiado por nível",
+    frequency: "24/24h (dose única diária)", route: "IV",
+    warnings: ["Monitorar nível sérico", "Nefro e ototoxicidade"],
+  },
+  dipirona_ped: {
+    name: "Dipirona", dosePerKg: "10-25 mg/kg/dose", maxDose: "1g/dose",
+    frequency: "6/6h", route: "IV/VO",
+    ageRestrictions: "Evitar em < 3 meses",
+  },
+  paracetamol_ped: {
+    name: "Paracetamol", dosePerKg: "10-15 mg/kg/dose", maxDose: "75 mg/kg/dia (máx 4g/dia)",
+    frequency: "4/4h ou 6/6h", route: "VO/VR",
+  },
+  ibuprofeno_ped: {
+    name: "Ibuprofeno", dosePerKg: "5-10 mg/kg/dose", maxDose: "40 mg/kg/dia (máx 2,4g/dia)",
+    frequency: "6/6h ou 8/8h", route: "VO",
+    ageRestrictions: "Evitar em < 6 meses",
+  },
+  adrenalina_ped: {
+    name: "Adrenalina", dosePerKg: "PCR: 0,01 mg/kg (0,1 mL/kg da 1:10.000) | Anafilaxia: 0,01 mg/kg IM (máx 0,3mg < 6a, 0,5mg > 6a)",
+    maxDose: "1mg/dose (PCR)", frequency: "3-5 min (PCR)", route: "IV/IO/IM",
+  },
+  midazolam_ped: {
+    name: "Midazolam", dosePerKg: "Convulsão: 0,15-0,2 mg/kg IV/IO | 0,2 mg/kg IN | 0,3 mg/kg IM",
+    maxDose: "10mg", frequency: "Dose única, repetir 1x se necessário", route: "IV/IO/IN/IM",
+    warnings: ["⚠️ Risco depressão respiratória", "Monitorar SpO2"],
+  },
+  diazepam_ped: {
+    name: "Diazepam", dosePerKg: "Convulsão: 0,2-0,5 mg/kg VR | 0,1-0,3 mg/kg IV",
+    maxDose: "10mg (< 5a: 5mg)", frequency: "Dose única", route: "VR/IV",
+    warnings: ["⚠️ Risco depressão respiratória"],
+  },
+  sf_bolus_ped: {
+    name: "SF 0,9% / RL (bolus)", dosePerKg: "10-20 mL/kg", maxDose: "Reavaliar após cada bolus",
+    frequency: "Bolus em 10-20 min", route: "IV",
+    warnings: ["NÃO usar 30 mL/kg como adulto", "Reavaliar após CADA bolus"],
+  },
+  noradrenalina_ped: {
+    name: "Noradrenalina", dosePerKg: "0,05-2 mcg/kg/min", maxDose: "Titular por resposta",
+    frequency: "BIC contínua", route: "IV central",
+  },
+};
+
+// Drugs contraindicated or requiring special caution in pediatrics
+const PEDIATRIC_CONTRAINDICATED: { drug: string; reason: string; ageLimit?: string }[] = [
+  { drug: "quinolona", reason: "Risco de artropatia / lesão cartilagem de crescimento", ageLimit: "< 18 anos (relativo)" },
+  { drug: "ciprofloxacino", reason: "Risco de artropatia (uso excepcional em Pseudomonas)", ageLimit: "< 18 anos" },
+  { drug: "levofloxacino", reason: "Risco de artropatia", ageLimit: "< 18 anos" },
+  { drug: "tetraciclina", reason: "Manchas dentárias permanentes + depósito ósseo", ageLimit: "< 8 anos" },
+  { drug: "doxiciclina", reason: "Manchas dentárias (risco menor que tetraciclina)", ageLimit: "< 8 anos" },
+  { drug: "codeína", reason: "Metabolismo variável CYP2D6 → depressão respiratória fatal", ageLimit: "< 12 anos (CONTRAINDICADO)" },
+  { drug: "tramadol", reason: "Mesmo risco que codeína em metabolizadores rápidos", ageLimit: "< 12 anos" },
+  { drug: "ácido acetilsalicílico", reason: "Síndrome de Reye", ageLimit: "< 16 anos (exceto Kawasaki)" },
+  { drug: "metoclopramida", reason: "Risco extrapiramidal alto em crianças", ageLimit: "< 1 ano (relativo < 18)" },
+  { drug: "ondansetrona", reason: "QT prolongado — cautela", ageLimit: "Cautela em < 2 anos" },
+  { drug: "benzodiazepínico", reason: "Depressão respiratória — usar com monitorização", ageLimit: "Todas as idades" },
+  { drug: "opioide", reason: "Depressão respiratória — dose rigorosa por kg com monitorização SpO2", ageLimit: "Todas as idades" },
+];
+
+// Pediatric dehydration classification
+function classifyDehydration(text: string): { level: string; fluidMlKg: string; plan: string } | null {
+  if (/desidrata/i.test(text)) {
+    if (/grave|choque|letárgic|inconsciente|pulso fraco/i.test(text)) {
+      return { level: "GRAVE (≥10%)", fluidMlKg: "20 mL/kg SF rápido (repetir até 60 mL/kg)", plan: "Plano C (SNG/IV)" };
+    }
+    if (/moderada|olhos fundos|turgor diminuído|irritad|sedento/i.test(text)) {
+      return { level: "MODERADA (5-10%)", fluidMlKg: "50-100 mL/kg em 4h (SRO)", plan: "Plano B (TRO supervisionada)" };
+    }
+    return { level: "LEVE (<5%)", fluidMlKg: "50 mL/kg em 4h (SRO)", plan: "Plano A (domiciliar)" };
+  }
+  return null;
+}
+
+// Pediatric emergency protocols
+const PEDIATRIC_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
+  pals_pcr: {
+    name: "PCR Pediátrica — PALS (AHA 2020)",
+    steps: [
+      { order: 1, action: "Confirmar PCR: sem pulso central (braquial < 1a, carotídeo/femoral > 1a) em 10s" },
+      { order: 2, action: "Iniciar RCP: 15:2 (2 socorristas) ou 30:2 (1 socorrista)", target: "100-120/min, profundidade ⅓ AP" },
+      { order: 3, action: "Adrenalina 0,01 mg/kg IV/IO (0,1 mL/kg da 1:10.000)", target: "A cada 3-5 min" },
+      { order: 4, action: "Avaliar ritmo: FV/TV sem pulso → desfibrilação 2 J/kg → 4 J/kg" },
+      { order: 5, action: "Via aérea: IOT (tubo sem cuff < 8a, com cuff preferível)", target: "Tubo = (idade/4) + 3,5 (com cuff)" },
+      { order: 6, action: "Acesso vascular: IO se IV não obtido em 60-90s" },
+      { order: 7, action: "Amiodarona 5 mg/kg IV/IO se FV/TV refratária (máx 300mg)" },
+      { order: 8, action: "Tratar causas reversíveis: 5H e 5T" },
+    ],
+  },
+  sepse_ped: {
+    name: "Sepse Pediátrica — ACCM/PALS (2020)",
+    steps: [
+      { order: 1, action: "Reconhecimento: FC alterada + perfusão ruim ± hipotensão" },
+      { order: 2, action: "O2 100% + acesso vascular (IO se necessário)" },
+      { order: 3, action: "SF 0,9% 10-20 mL/kg em bolus rápido (10 min)", target: "Até 40-60 mL/kg na 1ª hora se necessário" },
+      { order: 4, action: "Reavaliar após CADA bolus: FC, perfusão, hepatomegalia, crepitações" },
+      { order: 5, action: "Se refratário a fluido → adrenalina (choque frio) ou noradrenalina (choque quente)" },
+      { order: 6, action: "Antibiótico amplo espectro em ≤ 1 HORA" },
+      { order: 7, action: "Hemoculturas ANTES do ATB se não atrasar > 15 min" },
+      { order: 8, action: "Glicemia capilar: corrigir hipoglicemia", target: "Glicemia > 60 mg/dL" },
+      { order: 9, action: "Calcemia: corrigir hipocalcemia" },
+      { order: 10, action: "Hidrocortisona 2 mg/kg (máx 100mg) se choque refratário ou suspeita insuf. adrenal" },
+      { order: 11, action: "Monitorar diurese", target: "> 1 mL/kg/h" },
+      { order: 12, action: "Lactato sérico seriado" },
+    ],
+  },
+  convulsao_ped: {
+    name: "Estado de Mal Epiléptico Pediátrico",
+    steps: [
+      { order: 1, action: "0-5 min: Estabilizar via aérea, O2, posição lateral, glicemia" },
+      { order: 2, action: "5-10 min: Midazolam 0,2 mg/kg IN ou 0,15 mg/kg IV/IO (máx 10mg)" },
+      { order: 3, action: "Se refratário: repetir benzodiazepínico 1x" },
+      { order: 4, action: "10-20 min: Fenitoína 20 mg/kg IV em 20 min OU Levetiracetam 40-60 mg/kg IV" },
+      { order: 5, action: "20-40 min: Se refratário → Fenobarbital 20 mg/kg IV" },
+      { order: 6, action: "> 40 min: Considerar midazolam BIC ou tiopental (UTI)" },
+      { order: 7, action: "Investigar causa: TC, labs, LCR se indicado" },
+    ],
+  },
+  febre_rn: {
+    name: "RN Febril (< 28 dias) — ALTO RISCO",
+    steps: [
+      { order: 1, action: "🔴 RN FEBRIL = INTERNAÇÃO OBRIGATÓRIA até exclusão de sepse" },
+      { order: 2, action: "Hemograma + PCR/PCT + hemocultura" },
+      { order: 3, action: "Urina tipo I + urocultura (cateterismo vesical)" },
+      { order: 4, action: "Punção lombar (LCR)" },
+      { order: 5, action: "RX tórax se sintomas respiratórios" },
+      { order: 6, action: "Antibiótico empírico: Ampicilina 50mg/kg 6/6h + Gentamicina 5mg/kg/dia" },
+      { order: 7, action: "Se suspeita herpes: Aciclovir 20mg/kg 8/8h" },
+      { order: 8, action: "Monitorar em UTI neonatal se instável" },
+    ],
+  },
+};
 
 // ─── Anticoagulation Indications ─────────────────────────────────
 const ANTICOAG_INDICATIONS = ["tev", "tep", "tvp", "tromboembolismo", "embolia pulmonar", "trombose venosa",
@@ -719,6 +937,35 @@ function extractPatient(messages: ChatMessage[]): PatientData {
   const ageNum = parseNumber(ageRaw);
   const isElderly = ageNum !== undefined && ageNum >= 65;
 
+  // Pediatric detection
+  const ageMonthsRaw = firstMatch(text, [/\b([0-9]{1,2})\s*meses?\b/i, /\b([0-9]{1,2})\s*m\b/i]);
+  const ageMonths = parseNumber(ageMonthsRaw);
+  const ageDaysRaw = firstMatch(text, [/\b([0-9]{1,3})\s*dias?\b/i]);
+  const ageDays = parseNumber(ageDaysRaw);
+  
+  const isPediatric = (ageNum !== undefined && ageNum < 14) || 
+    ageMonths !== undefined || ageDays !== undefined ||
+    /pediátr|criança|lactente|neonat|rn\b|recém.?nascid|prematuro|escolar|adolescente/i.test(text);
+  
+  const isNeonate = (ageDays !== undefined && ageDays < 28) || 
+    (ageNum !== undefined && ageNum === 0 && (ageMonths === undefined || ageMonths < 1)) ||
+    /neonat|rn\b|recém.?nascid/i.test(text);
+  
+  const isInfant = (ageNum !== undefined && ageNum < 1) || 
+    (ageMonths !== undefined && ageMonths < 12) ||
+    /lactente/i.test(text);
+
+  // Estimate weight if pediatric and no weight given
+  let estimatedWeightKg: number | undefined;
+  const actualWeight = parseNumber(weightRaw);
+  if (isPediatric && !actualWeight && ageNum !== undefined) {
+    estimatedWeightKg = estimateWeightByAge(ageNum, ageMonths);
+  }
+
+  // Vaccines
+  const vaccinesUpToDate = /vacina.*dia|vacinação.*completa|cartão.*dia/i.test(text) ? true :
+    /vacina.*atrasad|não vacin/i.test(text) ? false : undefined;
+
   // Dialysis: ONLY if EXPLICITLY stated
   const isDialytic = /dialí[ts]|hemodiálise|diálise|peritoneal|trs\b/i.test(text);
 
@@ -732,11 +979,13 @@ function extractPatient(messages: ChatMessage[]): PatientData {
   }
 
   return {
-    weightKg: parseNumber(weightRaw),
+    weightKg: actualWeight,
     ageYears: ageNum,
+    ageMonths,
     creatinineMgDl: parseNumber(creatRaw),
     sex, allergies, allergyType, scenario, focus, infectionOrigin, medicationsInUse, riskFactors,
     hasHeartFailure, isElderly, isDialytic, hasAnticoagulationIndication,
+    isPediatric, isNeonate, isInfant, estimatedWeightKg, vaccinesUpToDate,
   };
 }
 
@@ -916,7 +1165,7 @@ function checkInteractions(medsInUse: string[], prescribedDrugs: string[], patie
 
   // Acidosis risk in sepsis + DRC
   if (renal.stage !== "NORMAL" && renal.stage !== "LEVE") {
-    const userText = allDrugs.join(" "); // crude check
+    const userText = allDrugs.join(" ");
     if (/sepse|séptico|choque/i.test(userText) || patient.scenario === "UTI") {
       alerts.push({
         pair: "Sepse + DRC",
@@ -927,14 +1176,95 @@ function checkInteractions(medsInUse: string[], prescribedDrugs: string[], patie
     }
   }
 
+  // Polypharmacy warning
+  if (allDrugs.length >= 5) {
+    alerts.push({
+      pair: `${allDrugs.length} medicamentos`,
+      severity: "🔴",
+      mechanism: "POLIFARMÁCIA: risco exponencial de interações com ≥ 5 drogas",
+      action: "Revisar TODAS as combinações. Considerar desprescrição. Monitorar função renal e hepática.",
+    });
+  } else if (allDrugs.length >= 3) {
+    alerts.push({
+      pair: `${allDrugs.length} medicamentos`,
+      severity: "🟡",
+      mechanism: "Polifarmácia moderada: risco aumentado de interações",
+      action: "Revisar combinações. Monitorar efeitos adversos.",
+    });
+  }
+
+  // Elderly-specific interaction risk
+  if (patient.isElderly) {
+    const hasCNS = allDrugs.some(d => /benzodiazepínico|diazepam|midazolam|clonazepam|lorazepam|zolpidem|opioide|morfina|tramadol|codeína/i.test(d));
+    if (hasCNS) {
+      alerts.push({
+        pair: "SNC depressor + Idoso",
+        severity: "🔴",
+        mechanism: "Risco de queda, delirium, depressão respiratória em idoso",
+        action: "Reduzir dose 50%. Monitorar nível de consciência. Critérios de Beers.",
+      });
+    }
+  }
+
+  // Pediatric contraindicated drugs check
+  if (patient.isPediatric) {
+    for (const contra of PEDIATRIC_CONTRAINDICATED) {
+      if (allDrugs.some(d => d.includes(contra.drug.toLowerCase()))) {
+        alerts.push({
+          pair: `${contra.drug} + Pediatria`,
+          severity: "🔴",
+          mechanism: `${contra.reason} (${contra.ageLimit || "pediátrico"})`,
+          action: `EVITAR em criança. Considerar alternativa.`,
+        });
+      }
+    }
+  }
+
+  // Warfarin universal check
+  const hasWarfarin = allDrugs.some(d => /warfarina|marevan|coumadin/i.test(d));
+  if (hasWarfarin) {
+    const warfarinInteractors = allDrugs.filter(d => 
+      /antibiótico|amiodarona|aine|ibuprofeno|diclofenaco|naproxeno|fluconazol|metronidazol|ciprofloxacino|fluoxetina|carbamazepina|fenitoína|omeprazol/i.test(d)
+    );
+    if (warfarinInteractors.length > 0) {
+      alerts.push({
+        pair: `Warfarina + ${warfarinInteractors.join(", ")}`,
+        severity: "🔴",
+        mechanism: "Múltiplas interações com warfarina → risco de sangramento ou perda de efeito",
+        action: "INR seriado (2-3x/semana). Ajustar dose warfarina.",
+      });
+    }
+  }
+
+  // Nefrotoxic combination check
+  const nephrotoxics = allDrugs.filter(d => /vancomicina|gentamicina|aminoglicosídeo|aine|ibuprofeno|diclofenaco|contraste|anfotericina/i.test(d));
+  if (nephrotoxics.length >= 2) {
+    alerts.push({
+      pair: nephrotoxics.join(" + "),
+      severity: "🔴",
+      mechanism: "Nefrotoxicidade sinérgica: múltiplos agentes nefrotóxicos",
+      action: "EVITAR combinação. Monitorar Cr e diurese a cada 12-24h.",
+    });
+  }
+
   return alerts;
 }
 
 // ─── MODULE 5: Protocol Selection ───────────────────────────────
-function selectProtocol(text: string, scenario: Scenario): { name: string; steps: ProtocolStep[] } | null {
+function selectProtocol(text: string, scenario: Scenario, isPediatric: boolean): { name: string; steps: ProtocolStep[] } | null {
   const lower = text.toLowerCase();
 
+  // Pediatric protocols first
+  if (isPediatric) {
+    if (/pcr|parada|sem pulso|rcp/i.test(lower)) return PEDIATRIC_PROTOCOLS.pals_pcr;
+    if (/sepse|séptic|choque séptico/i.test(lower)) return PEDIATRIC_PROTOCOLS.sepse_ped;
+    if (/convuls|estado.*mal|status epilepticus/i.test(lower)) return PEDIATRIC_PROTOCOLS.convulsao_ped;
+    if (/rn.*febr|neonat.*febr|recém.*febr|febre.*rn|febre.*neonat/i.test(lower)) return PEDIATRIC_PROTOCOLS.febre_rn;
+    if (/febre/i.test(lower) && /neonat|rn\b|recém/i.test(lower)) return PEDIATRIC_PROTOCOLS.febre_rn;
+  }
+
   if (/sepse|séptic|choque séptico/i.test(lower)) {
+    if (isPediatric) return PEDIATRIC_PROTOCOLS.sepse_ped;
     return scenario === "UTI" ? PROTOCOLS.sepsis_uti : PROTOCOLS.sepsis;
   }
   if (/choque|hipoten/i.test(lower) && !/séptic/i.test(lower)) return PROTOCOLS.shock;
@@ -1033,6 +1363,29 @@ function validateData(patient: PatientData): { complete: boolean; missing: strin
 function generateSafetyAlerts(patient: PatientData, renal: RenalCalcResult): string[] {
   const alerts: string[] = [];
 
+  // PEDIATRIC ALERTS
+  if (patient.isPediatric) {
+    alerts.push("👶 MODO PEDIATRIA ATIVADO: Todas as doses devem ser por kg. NUNCA usar dose adulta.");
+    if (patient.isNeonate) {
+      alerts.push("🔴 NEONATO (< 28 dias): ALTO RISCO. RN febril = sepse até provar contrário. Internação obrigatória.");
+    }
+    if (patient.isInfant) {
+      alerts.push("🔴 LACTENTE (< 1 ano): Monitorar desidratação, hipoglicemia, hipotermia.");
+    }
+    if (!patient.weightKg) {
+      if (patient.estimatedWeightKg) {
+        alerts.push(`⚠️ PESO NÃO INFORMADO — Estimativa por idade: ~${patient.estimatedWeightKg} kg (CONFIRMAR peso real antes de prescrever)`);
+      } else {
+        alerts.push("🔴 PESO OBRIGATÓRIO EM PEDIATRIA — PERGUNTAR PESO ANTES DE PRESCREVER.");
+      }
+    }
+    if (patient.vaccinesUpToDate === false) {
+      alerts.push("🟡 VACINAÇÃO ATRASADA: Considerar etiologias preveníveis por vacina.");
+    } else if (patient.vaccinesUpToDate === undefined) {
+      alerts.push("ℹ️ Status vacinal não informado — perguntar.");
+    }
+  }
+
   if (patient.isElderly) alerts.push("🟡 IDOSO (≥65a): Reduzir doses. Volume cauteloso. Monitorar função renal.");
   if (renal.stage === "GRAVE" || renal.stage === "TERMINAL") {
     alerts.push(`🔴 DRC ${renal.stage} (ClCr ${renal.clcrMlMin} mL/min): Ajustar TODAS as drogas renais.`);
@@ -1041,24 +1394,77 @@ function generateSafetyAlerts(patient: PatientData, renal: RenalCalcResult): str
   if (patient.isDialytic) alerts.push("🔴 DIALÍTICO: Volume muito restrito. Avaliar necessidade de TRS.");
   if (patient.allergies) alerts.push(`🟡 ALERGIA INFORMADA: "${patient.allergies}" (tipo: ${patient.allergyType})`);
   
-  // Anticoagulation safety
-  if (!patient.hasAnticoagulationIndication) {
+  if (!patient.hasAnticoagulationIndication && !patient.isPediatric) {
     alerts.push("ℹ️ SEM INDICAÇÃO DE ANTICOAGULAÇÃO TERAPÊUTICA detectada. Usar apenas profilaxia.");
   }
 
-  // Scenario-specific alerts
   if (patient.scenario === "UBS") {
     alerts.push("ℹ️ CENÁRIO UBS: Não pedir exames invasivos. Conduta simples. Referenciar se grave.");
   } else if (patient.scenario === "SAMU") {
     alerts.push("ℹ️ CENÁRIO SAMU: Foco em estabilização. Não prescrever medicações complexas.");
   }
 
-  // Nefrotoxicity warning
   if (renal.stage === "MODERADA" || renal.stage === "GRAVE" || renal.stage === "TERMINAL") {
     alerts.push("🟡 EVITAR NEFROTÓXICOS: aminoglicosídeos, AINEs, contraste iodado (se possível).");
   }
 
   return alerts;
+}
+
+// ─── MODULE 10: Pediatric Dose Calculator ────────────────────────
+function calcPediatricDoses(patient: PatientData): string[] {
+  const lines: string[] = [];
+  const w = patient.weightKg || patient.estimatedWeightKg;
+  if (!w) {
+    lines.push("❌ PESO NÃO DISPONÍVEL — não é possível calcular doses pediátricas.");
+    return lines;
+  }
+
+  const isEstimated = !patient.weightKg && !!patient.estimatedWeightKg;
+  if (isEstimated) {
+    lines.push(`⚠️ PESO ESTIMADO: ~${w} kg (CONFIRMAR antes de prescrever)`);
+  }
+
+  lines.push(`\n  DOSES PEDIÁTRICAS (peso ${isEstimated ? "estimado" : "informado"}: ${w} kg):`);
+  
+  // Volume
+  const vol10 = Math.round(10 * w);
+  const vol20 = Math.round(20 * w);
+  lines.push(`  Volume ressuscitação: 10-20 mL/kg = ${vol10}-${vol20} mL (NÃO usar 30 mL/kg)`);
+  lines.push(`  → Reavaliar após CADA bolus de 10-20 mL/kg`);
+  
+  // Common pediatric drugs
+  for (const [, drug] of Object.entries(PEDIATRIC_DRUGS)) {
+    const doseMatch = drug.dosePerKg.match(/([0-9]+(?:[.,][0-9]+)?)/);
+    if (doseMatch) {
+      const dosePerKg = parseFloat(doseMatch[1]);
+      const totalDose = Math.round(dosePerKg * w * 10) / 10;
+      let line = `  ${drug.name}: ${drug.dosePerKg} × ${w}kg = ${totalDose} ${drug.dosePerKg.includes("mg") ? "mg" : "unid"} ${drug.frequency} ${drug.route}`;
+      if (drug.maxDose) line += ` (máx: ${drug.maxDose})`;
+      lines.push(line);
+    }
+    if (drug.ageRestrictions) lines.push(`    ${drug.ageRestrictions}`);
+    if (drug.warnings) {
+      for (const warn of drug.warnings) lines.push(`    ⚠️ ${warn}`);
+    }
+  }
+
+  // Contraindicated drugs
+  lines.push(`\n  🚫 DROGAS CONTRAINDICADAS/CAUTELA EM PEDIATRIA:`);
+  for (const contra of PEDIATRIC_CONTRAINDICATED) {
+    lines.push(`  ${contra.drug}: ${contra.reason} (${contra.ageLimit || "todas idades"})`);
+  }
+
+  // Dehydration if applicable
+  const userText = patient.medicationsInUse.join(" "); // crude
+  const dehydration = classifyDehydration(userText);
+  if (dehydration) {
+    lines.push(`\n  💧 DESIDRATAÇÃO ${dehydration.level}:`);
+    lines.push(`  → ${dehydration.fluidMlKg}`);
+    lines.push(`  → ${dehydration.plan}`);
+  }
+
+  return lines;
 }
 
 // ─── MAIN ENGINE ─────────────────────────────────────────────────
@@ -1067,8 +1473,8 @@ function runEngine(messages: ChatMessage[]): EngineResult {
   const renal = calcRenal(patient);
   const doses = calcDoses(patient, renal);
   const userText = messages.filter(m => m.role === "user").map(m => m.content).join("\n");
-  const protocol = selectProtocol(userText, patient.scenario);
-  const antibiotic = selectAntibiotic(patient, renal);
+  const protocol = selectProtocol(userText, patient.scenario, patient.isPediatric);
+  const antibiotic = patient.isPediatric ? null : selectAntibiotic(patient, renal); // pediatric ATB handled by LLM with dose context
   const interactions = checkInteractions(patient.medicationsInUse, [], patient, renal);
   const drugRenalAdj = getDrugRenalAdjustments(renal.clcrMlMin);
   const allergyWarnings = checkAllergies(patient);
@@ -1076,15 +1482,24 @@ function runEngine(messages: ChatMessage[]): EngineResult {
   const safetyAlerts = generateSafetyAlerts(patient, renal);
 
   const missingData: string[] = [];
-  if (!patient.weightKg) missingData.push("PESO (kg) — necessário para cálculos mg/kg, mL/kg, UI/kg");
+  if (!patient.weightKg) {
+    if (patient.isPediatric && patient.estimatedWeightKg) {
+      missingData.push(`PESO (kg) — ESTIMADO ${patient.estimatedWeightKg}kg por idade. CONFIRMAR peso real.`);
+    } else {
+      missingData.push("PESO (kg) — necessário para cálculos mg/kg, mL/kg, UI/kg");
+    }
+  }
   if (!patient.sex) missingData.push("SEXO — necessário para ajuste ClCr (fator 0,85 feminino)");
-  if (!patient.ageYears) missingData.push("IDADE — necessário para ClCr e ajustes etários");
-  if (!patient.creatinineMgDl) missingData.push("CREATININA — necessário para função renal e ajuste de doses");
+  if (!patient.ageYears && !patient.ageMonths) missingData.push("IDADE — necessário para ClCr e ajustes etários");
+  if (!patient.creatinineMgDl && !patient.isPediatric) missingData.push("CREATININA — necessário para função renal e ajuste de doses");
   if (!patient.allergies) missingData.push("ALERGIAS — necessário para validação de segurança");
   if (patient.scenario === "NÃO INFORMADO") missingData.push("CENÁRIO (PS/UTI/UBS/SAMU/Enfermaria)");
   if (patient.focus === "SEM FOCO DEFINIDO") missingData.push("FOCO INFECCIOSO");
   if (patient.allergies && patient.allergyType === "NÃO INFORMADA" && /penicilina/i.test(patient.allergies)) {
     missingData.push("TIPO DE ALERGIA a penicilina: anafilaxia ou reação leve?");
+  }
+  if (patient.isPediatric && patient.vaccinesUpToDate === undefined) {
+    missingData.push("STATUS VACINAL — vacinação em dia?");
   }
 
   const warnings = [...allergyWarnings];
@@ -1249,6 +1664,25 @@ function formatEngineContext(e: EngineResult): string {
     }
   }
 
+  // Pediatric section
+  if (e.patient.isPediatric) {
+    lines.push("\n👶 ═══ MODO PEDIATRIA ATIVADO ═══");
+    lines.push(`  Neonato: ${e.patient.isNeonate ? "SIM 🔴" : "Não"}`);
+    lines.push(`  Lactente: ${e.patient.isInfant ? "SIM ⚠️" : "Não"}`);
+    lines.push(`  Peso estimado por idade: ${e.patient.estimatedWeightKg ? `~${e.patient.estimatedWeightKg} kg (CONFIRMAR)` : "N/A"}`);
+    lines.push(`  Vacinas: ${e.patient.vaccinesUpToDate === true ? "Em dia" : e.patient.vaccinesUpToDate === false ? "ATRASADAS ⚠️" : "Não informado — PERGUNTAR"}`);
+    
+    const pedDoses = calcPediatricDoses(e.patient);
+    for (const line of pedDoses) lines.push(line);
+    
+    lines.push("\n  REGRAS PEDIÁTRICAS:");
+    lines.push("  → NUNCA usar dose adulta");
+    lines.push("  → Volume: 10-20 mL/kg (NÃO 30 mL/kg)");
+    lines.push("  → Reavaliar após CADA bolus");
+    lines.push("  → Se RN febril: internar + ATB empírico");
+    lines.push("  → EVITAR: quinolonas, tetraciclinas, codeína, tramadol em < 12a");
+  }
+
   lines.push("\n═══ FIM DO MOTOR CLÍNICO ═══");
   return lines.join("\n");
 }
@@ -1337,6 +1771,29 @@ FORMATO OBRIGATÓRIO (nesta ordem):
 10. 📚 REFERÊNCIAS — guidelines brasileiras e internacionais.
 11. 🎯 METAS (se UTI/grave) — PAM ≥65, diurese >0.5 mL/kg/h, lactato↓, Sat>92%, glicemia 140-180, K normal, pH>7.2.
 12. ❓ PERGUNTAS — 3-5 perguntas OBRIGATÓRIAS. Incluir TODOS os dados faltantes do motor + perguntas de refinamento do ATB.
+
+REGRAS PEDIÁTRICAS (se MODO PEDIATRIA ativado):
+- TODAS as doses por kg. NUNCA dose fixa adulta.
+- Volume: 10-20 mL/kg por bolus. NUNCA 30 mL/kg.
+- Reavaliar após CADA bolus (FC, perfusão, hepatomegalia).
+- RN febril (< 28 dias) = INTERNAÇÃO + ATB empírico + LCR.
+- EVITAR: quinolonas (< 18a), tetraciclinas (< 8a), codeína/tramadol (< 12a), AAS (< 16a exceto Kawasaki).
+- Se peso não informado: usar estimativa por idade MAS alertar que é estimativa.
+- Perguntar VACINAÇÃO.
+- Se emergência pediátrica (PCR, convulsão, sepse): usar protocolo PALS.
+- Diurese alvo pediátrica: > 1 mL/kg/h.
+- Hipoglicemia: corrigir ANTES de tratar sepse.
+
+REGRAS DE INTERAÇÕES MEDICAMENTOSAS:
+- Verificar TODAS as interações ANTES de prescrever.
+- Se > 3 drogas: alerta moderado. Se > 5: alerta alto (polifarmácia).
+- Varfarina: INR seriado com qualquer ATB, amiodarona, AINE, antidepressivo.
+- Amiodarona: risco QT com quinolona, macrolídeo, haloperidol, ondansetrona.
+- DOAC: checar inibidores/indutores CYP3A4 e P-gp.
+- Nefrotóxicos: nunca combinar ≥ 2 sem monitorar Cr.
+- Idoso > 65a + depressor SNC: reduzir dose 50%, critérios de Beers.
+- Classificar severidade: 🟢 leve, 🟡 moderado, 🔴 grave/contraindicado.
+- Se interação grave: sugerir alternativa.
 
 DISCLAIMER: Apoio à decisão clínica — responsabilidade final é do médico.`;
 
