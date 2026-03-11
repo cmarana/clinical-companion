@@ -290,6 +290,48 @@ const DRUG_DB: Record<string, DrugEntry> = {
     interactions: ["IECA (hipercalemia)", "Espironolactona (hipercalemia)", "AINEs (reduz efeito + piora renal)", "Lítio (toxicidade)"],
     class: "Anti-hipertensivo — BRA", route: "VO",
   },
+  gabapentina: {
+    name: "Gabapentina", dose: "300-600mg 8/8h",
+    renalAdj: { "30-59": "200-700mg 12/12h", "15-29": "100-300mg 1x/dia", "<15": "100-300mg em dias alternados ou pós-diálise" },
+    contraindications: [],
+    interactions: ["Opioides (depressão respiratória)", "Antiácidos (reduz absorção — dar 2h antes)"],
+    class: "Anticonvulsivante / Analgésico adjuvante", route: "VO",
+  },
+  morfina: {
+    name: "Morfina", dose: "2-10mg IV 4/4h ou BIC 1-5mg/h",
+    renalAdj: { "30-59": "Reduzir dose 25%. Intervalo aumentado.", "15-29": "Reduzir dose 50%. Preferir fentanil.", "<15": "EVITAR — metabólito ativo (M6G) acumula. Usar fentanil ou hidromorfona." },
+    contraindications: ["Depressão respiratória grave", "Íleo paralítico"],
+    interactions: ["Benzodiazepínicos (depressão respiratória)", "IMAO (crise hipertensiva)", "Gabapentina (depressão respiratória)"],
+    class: "Opioide", route: "IV/SC/VO",
+  },
+  tramadol: {
+    name: "Tramadol", dose: "50-100mg 6/6h",
+    renalAdj: { "30-59": "50mg 12/12h (máx 200mg/dia)", "<30": "50mg 12/12h. Considerar alternativa.", "<15": "EVITAR — acúmulo de metabólitos." },
+    contraindications: ["Epilepsia não controlada", "Uso de IMAO", "< 12 anos"],
+    interactions: ["ISRS (síndrome serotoninérgica)", "IMAO (contraindicado)", "Carbamazepina (reduz efeito)"],
+    class: "Opioide fraco", route: "IV/VO",
+  },
+  digoxina: {
+    name: "Digoxina", dose: "0,125-0,25mg 1x/dia",
+    renalAdj: { "30-59": "0,125mg/dia ou dias alternados", "15-29": "0,0625-0,125mg/dia. Monitorar nível sérico.", "<15": "0,0625mg dias alternados. Nível sérico obrigatório." },
+    contraindications: ["BAV 2º/3º grau sem MP", "Cardiomiopatia hipertrófica obstrutiva", "Hipocalemia não corrigida"],
+    interactions: ["Amiodarona (aumenta nível 70-100%)", "Verapamil (aumenta nível + bradicardia)", "Furosemida (hipocalemia → toxicidade)", "Espironolactona (aumenta nível)"],
+    class: "Digitálico", route: "VO/IV",
+  },
+  metformina: {
+    name: "Metformina", dose: "500-1000mg 12/12h",
+    renalAdj: { "30-44": "Máx 1000mg/dia. Monitorar.", "<30": "CONTRAINDICADO — risco de acidose lática." },
+    contraindications: ["ClCr < 30", "IC descompensada", "Acidose metabólica", "Uso de contraste iodado (suspender 48h)"],
+    interactions: ["Contraste iodado (acidose lática)", "Álcool (acidose lática)", "Diuréticos (piora renal)"],
+    class: "Hipoglicemiante — Biguanida", route: "VO",
+  },
+  espironolactona: {
+    name: "Espironolactona", dose: "25-100mg 1x/dia",
+    renalAdj: { "30-59": "Máx 25mg/dia. Monitorar K.", "<30": "EVITAR — risco hipercalemia grave." },
+    contraindications: ["K > 5,0", "ClCr < 30 (relativo)", "Insuficiência adrenal"],
+    interactions: ["IECA/BRA (hipercalemia)", "Suplemento de K (hipercalemia)", "Digoxina (aumenta nível)", "AINEs (piora renal + reduz efeito)"],
+    class: "Diurético poupador de K", route: "VO",
+  },
 };
 
 // ─── Interaction Database ────────────────────────────────────────
@@ -1010,22 +1052,40 @@ function calcRenal(p: PatientData): RenalCalcResult {
   result.clcrMlMin = clcr;
   result.formula = `Cockcroft-Gault: ((140 - ${p.ageYears}) × ${p.weightKg}) / (72 × ${p.creatinineMgDl})${p.sex === "F" ? " × 0,85" : ""} = ${clcr} mL/min${sexLabel}`;
 
-  if (clcr >= 90) result.stage = "NORMAL";
-  else if (clcr >= 60) { result.stage = "LEVE"; result.adjustments.push("Monitorar função renal"); }
-  else if (clcr >= 30) {
+  if (clcr >= 90) {
+    result.stage = "NORMAL";
+    result.adjustments.push("Função renal normal — doses padrão");
+  } else if (clcr >= 60) {
+    result.stage = "LEVE";
+    result.adjustments.push("DRC leve (ClCr 60-89): Monitorar função renal");
+    result.adjustments.push("Evitar nefrotóxicos desnecessários");
+  } else if (clcr >= 30) {
     result.stage = "MODERADA";
-    result.adjustments.push("Ajustar drogas renais");
-    result.adjustments.push("Evitar nefrotóxicos se possível");
+    result.adjustments.push("⚠️ DRC MODERADA (ClCr 30-59): AJUSTAR DROGAS RENAIS");
+    result.adjustments.push("Drogas que EXIGEM ajuste: vancomicina, aminoglicosídeos, meropenem, cefepime, piperacilina-tazo, cipro/levofloxacino, enoxaparina, gabapentina, tramadol, digoxina");
+    result.adjustments.push("Metformina: máx 1000mg/dia se ClCr 30-44; SUSPENDER se ClCr < 30");
+    result.adjustments.push("Evitar nefrotóxicos: AINEs, contraste iodado, aminoglicosídeos se possível");
+    result.adjustments.push("Enoxaparina profilática: manter 40mg/dia. Terapêutica: 1mg/kg 12/12h (monitorar anti-Xa)");
   } else if (clcr >= 15) {
     result.stage = "GRAVE";
-    result.adjustments.push("Ajustar TODAS as drogas de eliminação renal");
+    result.adjustments.push("🔴 DRC GRAVE (ClCr 15-29): AJUSTAR TODAS AS DROGAS DE ELIMINAÇÃO RENAL");
+    result.adjustments.push("Drogas que EXIGEM ajuste OBRIGATÓRIO: vancomicina, aminoglicosídeos, meropenem, cefepime, piperacilina-tazo, cipro/levofloxacino, gabapentina, tramadol, digoxina, morfina");
+    result.adjustments.push("EVITAR: metformina (CONTRAINDICADO), AINEs, contraste iodado, espironolactona (hipercalemia)");
+    result.adjustments.push("Enoxaparina: 1mg/kg 1x/dia OU PREFERIR HNF (mais seguro)");
+    result.adjustments.push("Morfina: EVITAR — acúmulo M6G. Preferir fentanil.");
     result.adjustments.push("Avaliar indicação de diálise (NÃO ASSUMIR — perguntar se já dialisa)");
-    result.adjustments.push("Enoxaparina: 1mg/kg 1x/dia ou preferir HNF");
+    result.adjustments.push("Monitorar K rigorosamente: alvo K < 5,0");
   } else {
     result.stage = "TERMINAL";
-    result.adjustments.push("⚠️ ClCr < 15 — INSUFICIÊNCIA RENAL TERMINAL");
+    result.adjustments.push("🔴 ClCr < 15 — INSUFICIÊNCIA RENAL TERMINAL");
     result.adjustments.push("NÃO ASSUMIR que paciente dialisa — PERGUNTAR");
-    result.adjustments.push("Preferir HNF sobre enoxaparina");
+    result.adjustments.push("Preferir HNF sobre enoxaparina (enoxaparina não dialisa)");
+    result.adjustments.push("EVITAR: metformina, AINEs, espironolactona, morfina (M6G acumula)");
+    result.adjustments.push("CONTRAINDICADOS: metformina, espironolactona em dose alta");
+    result.adjustments.push("Gabapentina: dose mínima, dias alternados ou pós-diálise");
+    result.adjustments.push("Digoxina: 0,0625mg dias alternados, nível sérico obrigatório");
+    result.adjustments.push("Considerar diálise se: K > 6,5 | pH < 7,1 | edema pulmonar | uremia | oligúria refratária | intoxicação");
+    result.adjustments.push("Monitorar K a cada 12-24h: alvo K < 5,0");
     result.adjustments.push("Avaliar TRS urgente se: K > 6,5, pH < 7,1, oligúria refratária, sobrecarga hídrica");
   }
 
@@ -1386,13 +1446,38 @@ function generateSafetyAlerts(patient: PatientData, renal: RenalCalcResult): str
     }
   }
 
-  if (patient.isElderly) alerts.push("🟡 IDOSO (≥65a): Reduzir doses. Volume cauteloso. Monitorar função renal.");
-  if (renal.stage === "GRAVE" || renal.stage === "TERMINAL") {
-    alerts.push(`🔴 DRC ${renal.stage} (ClCr ${renal.clcrMlMin} mL/min): Ajustar TODAS as drogas renais.`);
+  if (patient.isElderly) alerts.push("🟡 IDOSO (≥65a): Reduzir doses. Volume cauteloso. Monitorar função renal. Critérios de Beers.");
+  if (renal.stage === "MODERADA") {
+    alerts.push(`🟡 DRC MODERADA (ClCr ${renal.clcrMlMin} mL/min): Ajustar drogas renais. Evitar nefrotóxicos.`);
+  }
+  if (renal.stage === "GRAVE") {
+    alerts.push(`🔴 DRC GRAVE (ClCr ${renal.clcrMlMin} mL/min): Ajustar TODAS as drogas renais. EVITAR: AINEs, metformina, espironolactona, morfina.`);
+    alerts.push("🔴 Enoxaparina: preferir HNF. Se usar, 1mg/kg 1x/dia.");
+    alerts.push("🔴 Monitorar K a cada 24h. Se IECA/BRA em uso: risco hipercalemia grave.");
+  }
+  if (renal.stage === "TERMINAL") {
+    alerts.push(`🔴 FALÊNCIA RENAL (ClCr ${renal.clcrMlMin} mL/min): Doses especiais para TODAS as drogas.`);
+    alerts.push("🔴 CONTRAINDICADOS: metformina, espironolactona, AINEs, morfina.");
+    alerts.push("🔴 Considerar diálise: K > 6,5 | pH < 7,1 | edema pulmonar | uremia | oligúria refratária.");
+    alerts.push("🔴 NÃO ASSUMIR DIÁLISE — perguntar se paciente já faz.");
+    alerts.push("🔴 Monitorar K a cada 12-24h. Suspender IECA/BRA/espironolactona se K > 5,5.");
   }
   if (patient.hasHeartFailure) alerts.push("🔴 IC: Volume restrito. Risco de congestão. POCUS antes de volume.");
-  if (patient.isDialytic) alerts.push("🔴 DIALÍTICO: Volume muito restrito. Avaliar necessidade de TRS.");
+  if (patient.isDialytic) alerts.push("🔴 DIALÍTICO (informado): Volume muito restrito. Avaliar necessidade de TRS urgente.");
   if (patient.allergies) alerts.push(`🟡 ALERGIA INFORMADA: "${patient.allergies}" (tipo: ${patient.allergyType})`);
+  
+  // Hyperkalaemia risk assessment
+  if ((renal.stage === "GRAVE" || renal.stage === "TERMINAL") && patient.medicationsInUse.length > 0) {
+    const kRiskDrugs = patient.medicationsInUse.filter(d => /ieca|enalapril|captopril|ramipril|losartana|bra|espironolactona|amilorida|potássio|suplemento.*k/i.test(d));
+    if (kRiskDrugs.length > 0) {
+      alerts.push(`🔴 HIPERCALEMIA: DRC ${renal.stage} + ${kRiskDrugs.join(", ")} → risco grave. Monitorar K a cada 12-24h. Suspender se K > 5,5.`);
+    }
+  }
+
+  // Elderly + DRC combo
+  if (patient.isElderly && (renal.stage === "MODERADA" || renal.stage === "GRAVE" || renal.stage === "TERMINAL")) {
+    alerts.push("🔴 IDOSO + DRC: Dose menor que o habitual. Mais risco de toxicidade. Monitorar rigorosamente.");
+  }
   
   if (!patient.hasAnticoagulationIndication && !patient.isPediatric) {
     alerts.push("ℹ️ SEM INDICAÇÃO DE ANTICOAGULAÇÃO TERAPÊUTICA detectada. Usar apenas profilaxia.");
@@ -1405,7 +1490,7 @@ function generateSafetyAlerts(patient: PatientData, renal: RenalCalcResult): str
   }
 
   if (renal.stage === "MODERADA" || renal.stage === "GRAVE" || renal.stage === "TERMINAL") {
-    alerts.push("🟡 EVITAR NEFROTÓXICOS: aminoglicosídeos, AINEs, contraste iodado (se possível).");
+    alerts.push("🟡 EVITAR NEFROTÓXICOS: aminoglicosídeos, AINEs, contraste iodado (se possível), anfotericina B.");
   }
 
   return alerts;
@@ -1556,9 +1641,13 @@ function formatEngineContext(e: EngineResult): string {
   lines.push(`  ${e.renal.formula}`);
   if (e.renal.clcrMlMin !== undefined) {
     lines.push(`  Estágio: DRC ${e.renal.stage} (ClCr ${e.renal.clcrMlMin} mL/min)`);
+    lines.push(`  Classificação: ${e.renal.clcrMlMin >= 90 ? "≥90 Normal" : e.renal.clcrMlMin >= 60 ? "60-89 Leve" : e.renal.clcrMlMin >= 30 ? "30-59 Moderada" : e.renal.clcrMlMin >= 15 ? "15-29 Grave" : "<15 Falência Renal"}`);
   }
   if (e.renal.adjustments.length) {
-    lines.push(`  Ajustes: ${e.renal.adjustments.join("; ")}`);
+    lines.push(`  AJUSTES RENAIS OBRIGATÓRIOS:`);
+    for (const adj of e.renal.adjustments) {
+      lines.push(`    → ${adj}`);
+    }
   }
 
   // Doses
@@ -1698,11 +1787,15 @@ REGRAS ABSOLUTAS DE SEGURANÇA (NUNCA VIOLAR):
    - Se o motor diz "NÃO ASSUMIR", obedeça.
 
 2. AJUSTE RENAL OBRIGATÓRIO
-   - Se creatinina informada → usar ClCr do motor
-   - ClCr < 60 → ajustar doses
-   - ClCr < 30 → ajuste OBRIGATÓRIO
-   - ClCr < 15 → insuficiência renal grave
-   - NUNCA prescrever antibiótico, heparina ou enoxaparina sem considerar rim
+   - Se creatinina informada → usar ClCr do motor (Cockcroft-Gault)
+   - Classificação: ≥90 Normal | 60-89 Leve | 30-59 Moderada | 15-29 Grave | <15 Falência
+   - ClCr < 60 → ajustar doses (vancomicina, aminoglicosídeos, meropenem, cefepime, piptazo, cipro/levo, gabapentina, tramadol, digoxina, morfina)
+   - ClCr < 30 → ajuste OBRIGATÓRIO + EVITAR metformina, AINEs, espironolactona, morfina
+   - ClCr < 15 → insuficiência renal grave/terminal. Doses especiais.
+   - NUNCA prescrever antibiótico, heparina, enoxaparina, opioide sem considerar rim
+   - SEMPRE mostrar: ClCr calculado, classificação, ajustes aplicados
+   - Diálise: NÃO ASSUMIR. Considerar se K > 6,5, pH < 7,1, edema pulmonar, uremia, oligúria refratária
+   - Hipercalemia: monitorar K se IECA/BRA/espironolactona + DRC. Suspender se K > 5,5
 
 3. PESO = BASE DE CÁLCULO
    - Sempre usar doses por kg do motor
