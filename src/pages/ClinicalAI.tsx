@@ -207,15 +207,13 @@ export default function ClinicalAI() {
                 <Bot size={14} className="text-primary" />
               </div>
             )}
-            <div className={`max-w-[90%] rounded-lg px-4 py-3 text-sm ${
+            <div className={`max-w-[95%] rounded-lg text-sm ${
               msg.role === "user"
-                ? "bg-primary text-primary-foreground rounded-br-sm"
-                : "bg-card border border-border rounded-bl-sm shadow-sm"
+                ? "bg-primary text-primary-foreground rounded-br-sm px-4 py-3"
+                : "rounded-bl-sm"
             }`}>
               {msg.role === "assistant" ? (
-                <div className="clinical-response">
-                  <ReactMarkdown remarkPlugins={[remarkGfm]}>{msg.content}</ReactMarkdown>
-                </div>
+                <ClinicalResponseCards content={msg.content} />
               ) : (
                 <div className="whitespace-pre-wrap text-[13px]">{msg.content}</div>
               )}
