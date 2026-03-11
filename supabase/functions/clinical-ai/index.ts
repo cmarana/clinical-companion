@@ -645,12 +645,16 @@ function selectAntibiotic(patient: PatientData, renal: RenalCalcResult): Antibio
     messages.map(m => m.content).join("\n")
   );
 
-  // ALLERGY SAFETY RULES
+  // ALLERGY SAFETY RULES — with nuance for severity
   if (isAnaphylactic) {
-    allergyWarnings.push("🔴 ANAFILAXIA A PENICILINA → EVITAR: penicilinas, cefalosporinas, carbapenêmicos (se alternativa existir)");
+    allergyWarnings.push("🔴 ANAFILAXIA A PENICILINA → EVITAR: penicilinas, cefalosporinas.");
+    allergyWarnings.push("🟡 Carbapenêmicos: reação cruzada < 1%. Em situação GRAVE (choque, SNC) → considerar meropenem com cautela e monitorização.");
     allergyWarnings.push("✅ PREFERIR: Aztreonam, Quinolona (levo/cipro), Vancomicina, Linezolida, Daptomicina");
+    if (isSevere) {
+      allergyWarnings.push("⚠️ CHOQUE GRAVE + ANAFILAXIA: NÃO evitar carbapenêmico automaticamente. Avaliar risco × benefício. Skin test se possível.");
+    }
   } else if (penicillinAllergy) {
-    allergyWarnings.push("🟡 ALERGIA NÃO-ANAFILÁTICA A PENICILINA → Cefalosporinas: risco cruzado ~2%. Carbapenêmicos: risco < 1%.");
+    allergyWarnings.push("🟡 ALERGIA NÃO-ANAFILÁTICA A PENICILINA → Cefalosporinas: risco cruzado ~2%. Carbapenêmicos: risco < 1%. PODEM ser usados.");
     allergyWarnings.push("Perguntar: Tipo de reação (rash? urticária? edema? anafilaxia?)");
     if (allergyType === "NÃO INFORMADA") {
       questionsNeeded.push("TIPO de alergia a penicilina: foi anafilaxia (edema de glote, choque) ou reação leve (rash, urticária)?");
