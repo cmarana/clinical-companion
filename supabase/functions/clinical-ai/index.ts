@@ -622,7 +622,7 @@ const ANTICOAG_INDICATIONS = ["tev", "tep", "tvp", "tromboembolismo", "embolia p
   "prótese valvar", "válvula mecânica", "válvula protética"];
 
 // ─── Antibiotic Selection Engine ─────────────────────────────────
-function selectAntibiotic(patient: PatientData, renal: RenalCalcResult): AntibioticRecommendation | null {
+function selectAntibiotic(patient: PatientData, renal: RenalCalcResult, messages: ChatMessage[]): AntibioticRecommendation | null {
   const { focus, scenario, infectionOrigin, riskFactors, allergies, allergyType } = patient;
   const isHospital = infectionOrigin === "HOSPITALAR" || riskFactors.previousICU || riskFactors.hospitalized30d;
   // UTI scenario alone does NOT mean hospital infection - only if explicitly stated
@@ -640,12 +640,21 @@ function selectAntibiotic(patient: PatientData, renal: RenalCalcResult): Antibio
   if (scenario === "UTI" && !riskFactors.ventilated) questionsNeeded.push("Em ventilação mecânica?");
   if (focus === "SEM FOCO DEFINIDO") questionsNeeded.push("Qual o FOCO INFECCIOSO provável? (pulmonar, urinário, abdominal, pele, SNC)");
 
-  // ALLERGY SAFETY RULES
+  // Severity assessment for antibiotic escalation
+  const isSevere = /choque|sepse grave|instável|grave|crítico|lactato.*alto|pam\s*<?\s*6[05]/i.test(
+    messages.map(m => m.content).join("\n")
+  );
+
+  // ALLERGY SAFETY RULES — with nuance for severity
   if (isAnaphylactic) {
-    allergyWarnings.push("🔴 ANAFILAXIA A PENICILINA → EVITAR: penicilinas, cefalosporinas, carbapenêmicos (se alternativa existir)");
+    allergyWarnings.push("🔴 ANAFILAXIA A PENICILINA → EVITAR: penicilinas, cefalosporinas.");
+    allergyWarnings.push("🟡 Carbapenêmicos: reação cruzada < 1%. Em situação GRAVE (choque, SNC) → considerar meropenem com cautela e monitorização.");
     allergyWarnings.push("✅ PREFERIR: Aztreonam, Quinolona (levo/cipro), Vancomicina, Linezolida, Daptomicina");
+    if (isSevere) {
+      allergyWarnings.push("⚠️ CHOQUE GRAVE + ANAFILAXIA: NÃO evitar carbapenêmico automaticamente. Avaliar risco × benefício. Skin test se possível.");
+    }
   } else if (penicillinAllergy) {
-    allergyWarnings.push("🟡 ALERGIA NÃO-ANAFILÁTICA A PENICILINA → Cefalosporinas: risco cruzado ~2%. Carbapenêmicos: risco < 1%.");
+    allergyWarnings.push("🟡 ALERGIA NÃO-ANAFILÁTICA A PENICILINA → Cefalosporinas: risco cruzado ~2%. Carbapenêmicos: risco < 1%. PODEM ser usados.");
     allergyWarnings.push("Perguntar: Tipo de reação (rash? urticária? edema? anafilaxia?)");
     if (allergyType === "NÃO INFORMADA") {
       questionsNeeded.push("TIPO de alergia a penicilina: foi anafilaxia (edema de glote, choque) ou reação leve (rash, urticária)?");
@@ -821,12 +830,24 @@ function selectAntibiotic(patient: PatientData, renal: RenalCalcResult): Antibio
     if (riskFactors.recentATB) justifications.push("ATB recente");
     if (riskFactors.ventilated) justifications.push("ventilação mecânica");
     if (focus === "SNC") justifications.push("SNC (necessita alta penetração)");
+    if (isSevere) justifications.push("choque séptico grave");
     if (justifications.length === 0) {
       rationale += " ⚠️ JUSTIFICATIVA para Meropenem: NÃO HÁ JUSTIFICATIVA CLARA. Considerar esquema mais estreito.";
       questionsNeeded.push("Há justificativa para carbapenêmico? (falha ATB prévio, ESBL confirmado, choque séptico grave?)");
     } else {
       rationale += ` Justificativa Meropenem: ${justifications.join(", ")}.`;
     }
+  }
+
+  // SEVERITY-BASED ANTIBIOTIC ESCALATION WARNING
+  if (isSevere && isAnaphylactic && !/aztreonam/i.test(primary) && !/meropenem/i.test(primary)) {
+    rationale += " ⚠️ CHOQUE GRAVE: esquema pode ser INSUFICIENTE. Considerar Aztreonam + Vancomicina ou Meropenem com cautela (reação cruzada <1%).";
+  }
+  if (isSevere && /levofloxacino.*metronidazol/i.test(primary) && !isAnaphylactic) {
+    rationale += " ⚠️ ALERTA: Levofloxacino + Metronidazol pode ser INSUFICIENTE para choque séptico grave hospitalar. Considerar escalonamento para Piptazo ou Meropenem + Vancomicina.";
+  }
+  if (isSevere && isAnaphylactic && /levofloxacino/i.test(primary)) {
+    rationale += " ⚠️ ANAFILAXIA + CHOQUE: Quinolona pode ser insuficiente. Preferir Aztreonam + Vancomicina. Considerar Meropenem com cautela se sem alternativa.";
   }
 
   return { primary, alternatives, rationale, coverageNeeded, questionsNeeded, allergyWarnings };
@@ -917,15 +938,17 @@ const PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
     ],
   },
   cardiac: {
-    name: "SCA / IAM",
+    name: "SCA / IAM — Protocolo Atualizado (AHA 2023)",
     steps: [
-      { order: 1, action: "ECG 12 derivações em ≤ 10 min" },
-      { order: 2, action: "AAS 200-300mg mastigar" },
-      { order: 3, action: "Nitroglicerina SL (se PA > 90 e sem sildenafil)" },
-      { order: 4, action: "Troponina seriada (0h e 3h)" },
-      { order: 5, action: "Se IAMCSST: CATE em ≤ 90min ou fibrinolítico em ≤ 30min" },
-      { order: 6, action: "Anticoagulação (enoxaparina ou HNF) — INDICAÇÃO CLARA: SCA" },
-      { order: 7, action: "Dupla antiagregação" },
+      { order: 1, action: "ECG 12 derivações em ≤ 10 min. Se IAM inferior → solicitar V3R e V4R (avaliar VD)" },
+      { order: 2, action: "AAS 200-300mg mastigar IMEDIATO" },
+      { order: 3, action: "⚠️ Nitroglicerina SL: NÃO dar se PA < 90, FC < 50 ou > 100, IAM de VD (V3R/V4R), sildenafil < 24h, tadalafil < 48h", target: "Avaliar VD ANTES de nitrato" },
+      { order: 4, action: "⚠️ NÃO dar diurético se IAM de VD (piora choque por hipovolemia relativa)" },
+      { order: 5, action: "Morfina: usar com CAUTELA (AHA 2023 recomenda reduzir uso). Risco: hipotensão, bradicardia, reduz absorção ticagrelor. Preferir nitroglicerina IV para dor.", target: "Se necessário: 2-4mg IV com monitorização" },
+      { order: 6, action: "Troponina seriada (0h e 3h) OU high-sensitivity (0h e 1h)" },
+      { order: 7, action: "Se IAMCSST: CATE em ≤ 90min ou fibrinolítico em ≤ 30min se CATE indisponível" },
+      { order: 8, action: "Anticoagulação (enoxaparina ou HNF) — INDICAÇÃO CLARA: SCA. NÃO usar dose profilática." },
+      { order: 9, action: "Dupla antiagregação: AAS + Ticagrelor 180mg (ou Clopidogrel 300-600mg)" },
     ],
   },
   stroke: {
@@ -1111,20 +1134,22 @@ const ICU_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
 // ─── Trauma / Surgery Protocols ──────────────────────────────────
 const TRAUMA_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
   trauma_atls: {
-    name: "Trauma Grave — ATLS",
+    name: "Trauma Grave — ATLS + Damage Control Resuscitation",
     steps: [
       { order: 1, action: "A: Via aérea com proteção cervical. IOT se necessário (colar cervical mantido)" },
       { order: 2, action: "B: Respiração — excluir pneumotórax hipertensivo, hemotórax, tórax instável. Drenagem se indicado" },
       { order: 3, action: "C: Circulação — 2 acessos calibrosos (16-18G). Compressão hemorragia externa" },
-      { order: 4, action: "Cristaloide aquecido 500mL → reavaliar. Se choque classe III/IV → sangue precoce" },
-      { order: 5, action: "Ácido tranexâmico 1g IV em 10min se < 3h do trauma" },
-      { order: 6, action: "Tipagem + reserva + protocolo de transfusão maciça se indicado (CH:PFC:PLQ 1:1:1)" },
+      { order: 4, action: "🔴 VOLUME: NÃO dar cristaloide em excesso. Cristaloide piora coagulopatia/hipotermia/acidose (tríade letal).", target: "Classe I-II: cristaloide 500-1000mL. Classe III-IV: SANGUE PRECOCE" },
+      { order: 5, action: "🔴 Se choque classe III/IV → ATIVAR PROTOCOLO MTP IMEDIATO (CH:PFC:PLQ 1:1:1). NÃO esperar labs." },
+      { order: 6, action: "Ácido tranexâmico 1g IV em 10min se < 3h do trauma (+ 1g em 8h)" },
       { order: 7, action: "D: Neurológico — Glasgow, pupilas, déficit motor/sensitivo" },
       { order: 8, action: "E: Exposição — despir, avaliar lesões, prevenir hipotermia (manta térmica)" },
       { order: 9, action: "FAST (eco POCUS): líquido livre abdominal/pericárdico" },
-      { order: 10, action: "TC corpo inteiro (pan-scan) se politrauma + instável pós-ressuscitação" },
-      { order: 11, action: "Se anticoagulado: reverter IMEDIATAMENTE (vitamina K, CCP, PFC)" },
-      { order: 12, action: "Avaliação secundária: head-to-toe após estabilização" },
+      { order: 10, action: "Se anticoagulado: reverter IMEDIATAMENTE (vitamina K, CCP, PFC)" },
+      { order: 11, action: "Considerar REBOA / cirurgia de controle de dano se hemorragia não compressível" },
+      { order: 12, action: "Metas: Hb > 7, plaquetas > 50k, fibrinogênio > 200, Ca ionizado > 1,0, pH > 7,2, temp > 35°C" },
+      { order: 13, action: "ATB profilático (cefazolina): NÃO é prioridade inicial. Foco = controle hemorrágico." },
+      { order: 14, action: "TC corpo inteiro (pan-scan) APÓS estabilização. Avaliação secundária head-to-toe." },
     ],
   },
   abdome_agudo: {
@@ -1145,14 +1170,15 @@ const TRAUMA_PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> 
   hemorrhagic_shock: {
     name: "Choque Hemorrágico no Trauma",
     steps: [
-      { order: 1, action: "Classe I (<15% volemia): FC normal, PA normal → cristaloide" },
-      { order: 2, action: "Classe II (15-30%): FC 100-120, PA normal → cristaloide + considerar sangue" },
-      { order: 3, action: "Classe III (30-40%): FC > 120, PA↓, confuso → sangue + protocolo maciço" },
-      { order: 4, action: "Classe IV (>40%): FC > 140, PA muito↓, letárgico → sangue urgente + cirurgia" },
-      { order: 5, action: "Ácido tranexâmico 1g IV se < 3h" },
-      { order: 6, action: "Protocolo transfusão maciça: CH:PFC:PLQ 1:1:1" },
-      { order: 7, action: "Metas: Hb > 7, plaquetas > 50.000, fibrinogênio > 200, pH > 7.2, Ca ionizado > 1.0, temp > 35°C" },
-      { order: 8, action: "Evitar hipotermia (tríade letal: hipotermia + acidose + coagulopatia)" },
+      { order: 1, action: "🔴 Classe I (<15% volemia): FC normal, PA normal → cristaloide 500-1000mL" },
+      { order: 2, action: "Classe II (15-30%): FC 100-120, PA normal → cristaloide + tipagem + considerar sangue" },
+      { order: 3, action: "🔴 Classe III (30-40%): FC > 120, PA↓, confuso → ATIVAR MTP IMEDIATO. Sangue precoce." },
+      { order: 4, action: "🔴 Classe IV (>40%): FC > 140, PA muito↓, letárgico → sangue urgente + cirurgia IMEDIATA" },
+      { order: 5, action: "Ácido tranexâmico 1g IV em 10min se < 3h (+ 1g em 8h)" },
+      { order: 6, action: "Protocolo transfusão maciça (MTP): CH:PFC:PLQ 1:1:1. NÃO esperar labs." },
+      { order: 7, action: "⚠️ EVITAR cristaloide em excesso: piora tríade letal (hipotermia + acidose + coagulopatia)." },
+      { order: 8, action: "Metas: Hb > 7, plaquetas > 50k, fibrinogênio > 200, pH > 7,2, Ca ionizado > 1,0, temp > 35°C" },
+      { order: 9, action: "Considerar REBOA / cirurgia de controle de dano se hemorragia não compressível" },
     ],
   },
 };
@@ -2467,13 +2493,14 @@ function checkAllergies(patient: PatientData): string[] {
   if (/penicilina|amoxicilina|ampicilina/i.test(a)) {
     if (allergyType === "ANAFILÁTICA") {
       warnings.push("🔴 ANAFILAXIA A PENICILINA CONFIRMADA:");
-      warnings.push("  → EVITAR: Penicilinas, Cefalosporinas, Carbapenêmicos (se alternativa existir)");
+      warnings.push("  → EVITAR: Penicilinas, Cefalosporinas");
+      warnings.push("  → Carbapenêmicos: reação cruzada < 1%. Em situação GRAVE → avaliar risco × benefício.");
       warnings.push("  → PREFERIR: Aztreonam, Quinolona (levo/cipro), Vancomicina, Linezolida, Daptomicina");
-      warnings.push("  → Carbapenêmico APENAS se SNC ou situação sem alternativa, com skin test e monitorização");
+      warnings.push("  → Se choque/SNC: considerar meropenem com cautela, skin test se possível, monitorar 1ª dose.");
     } else if (allergyType === "LEVE") {
       warnings.push("🟡 ALERGIA LEVE A PENICILINA (rash/urticária):");
       warnings.push("  → Cefalosporinas: reação cruzada ~2%, PODEM ser usadas com cautela (monitorar 1ª dose)");
-      warnings.push("  → Carbapenêmicos: risco < 1%, PODEM ser usadas");
+      warnings.push("  → Carbapenêmicos: risco < 1%, PODEM ser usados");
       warnings.push("  → Evitar penicilinas diretas");
     } else {
       warnings.push("🟡 ALERGIA A PENICILINA — TIPO NÃO INFORMADO:");
@@ -2905,7 +2932,7 @@ function runEngine(messages: ChatMessage[]): EngineResult {
   const doses = calcDoses(patient, renal);
   const userText = messages.filter(m => m.role === "user").map(m => m.content).join("\n");
   const protocol = selectProtocol(userText, patient.scenario, patient);
-  const antibiotic = patient.isPediatric ? null : selectAntibiotic(patient, renal); // pediatric ATB handled by LLM with dose context
+  const antibiotic = patient.isPediatric ? null : selectAntibiotic(patient, renal, messages); // pediatric ATB handled by LLM with dose context
   const interactions = checkInteractions(patient.medicationsInUse, [], patient, renal);
   const drugRenalAdj = getDrugRenalAdjustments(renal.clcrMlMin);
   const allergyWarnings = checkAllergies(patient);
@@ -3493,6 +3520,15 @@ Sempre considerar idade.
 Sempre considerar alergias.
 Sempre considerar cenário clínico.
 
+═══ PRINCÍPIO ACTION-FIRST (EMERGÊNCIA) ═══
+Em caso GRAVE ou CRÍTICO, a PRIMEIRA coisa na resposta deve ser:
+→ IMPRESSÃO CLÍNICA (1 frase) + AÇÕES IMEDIATAS (primeiros 10 minutos)
+→ NÃO fazer explicação longa antes de tratar.
+→ Exemplo SEPSE: "Sepse grave foco pulmonar. BUNDLE AGORA: 1) Culturas 2) Lactato 3) ATB <1h 4) Volume 30mL/kg (ou restrito se IC/DRC/idoso) 5) Noradrenalina se PAM<65 6) Definir foco"
+→ Exemplo HIPERCALEMIA GRAVE: "K ≥ 6,5 + ECG alterado = EMERGÊNCIA CARDÍACA. AGORA: 1) Gluconato Ca 10mL 10% IV em 2-3min 2) Insulina 10UI + G50% 3) Nebulização salbutamol 4) MONITORAR ECG CONTÍNUO 5) Avaliar diálise URGENTE"
+→ Exemplo TRAUMA GRAVE: "Politrauma instável. AGORA: 1) Via aérea + cervical 2) Excluir pneumotórax 3) Compressão hemorragia 4) Ativar protocolo MTP 5) Ácido tranexâmico 1g se <3h"
+→ DEPOIS da conduta imediata, seguir com as 12 seções completas.
+
 ═══ CAMPOS OBRIGATÓRIOS ═══
 Sempre considerar se informado: idade, peso, sexo, creatinina, alergias, medicações em uso, cenário (UBS / PS / UTI / SAMU / enfermaria).
 Se faltar algo importante → perguntar na seção PERGUNTAS. Nunca inventar.
@@ -3556,25 +3592,36 @@ Múltiplos módulos podem ser ativados simultaneamente.
 3. PESO = BASE DE CÁLCULO
    - Sempre usar doses por kg do motor. NUNCA dose fixa se peso disponível.
 
-4. VOLUME NÃO É AUTOMÁTICO
-   - Se motor diz "VOLUME RESTRITO" → NÃO usar 30 mL/kg
-   - Idoso, DRC, IC, dialítico → 250-500 mL + reavaliar + POCUS
+4. VOLUME NÃO É AUTOMÁTICO — SEMPRE CONTEXTUALIZAR
+   - Padrão sepse (SSC 2021): 30 mL/kg cristaloide nas primeiras 3h.
+   - MAS: se idoso, DRC, IC, dialítico → RESTRINGIR para 250-500 mL + reavaliar (POCUS, elevação MMII, variação PP).
+   - SEMPRE MOSTRAR: "30 mL/kg × peso = X mL (referência SSC). Neste paciente: [dose ajustada] por [motivo]."
+   - Se motor diz "VOLUME RESTRITO" → explicar POR QUÊ e dar alternativa.
+   - Se piora com volume (crepitações, dessaturação) → PARAR e iniciar vasopressor.
 
-5. ALERGIA É REGRA FORTE
-   - Se anafilaxia a penicilina → EVITAR penicilinas, cefalosporinas, carbapenêmicos
-   - PREFERIR: aztreonam, quinolona, vancomicina, linezolida, daptomicina
-   - NUNCA ignorar alergia
+5. ALERGIA É REGRA FORTE — COM NUANCE PARA CARBAPENÊMICO
+   - Se anafilaxia a penicilina confirmada → EVITAR penicilinas e cefalosporinas.
+   - Carbapenêmico: reação cruzada < 1%. Em situação GRAVE (sepse, choque, SNC):
+     → "Considerar meropenem com cautela: risco de reação cruzada < 1%. Skin test se possível. Monitorar 1ª dose."
+     → NÃO dizer "evitar carbapenêmico sempre que possível" — isso é PERIGOSO em choque grave.
+   - Se alternativa segura existe (aztreonam): PREFERIR. Mas se foco exige carbapenêmico (SNC, abdome) → avaliar risco × benefício.
+   - PREFERIR sem alergia grave: aztreonam (gram-), quinolona, vancomicina/linezolida (gram+), daptomicina.
+   - NUNCA ignorar alergia. MAS também NUNCA deixar paciente morrer por medo de alergia em situação extrema.
 
 6. NÃO ANTICOAGULAR SEM INDICAÇÃO
    - Anticoagulação plena SÓ se: TEV, FA, IAM, TEP, TVP, prótese valvar
    - Sepse SEM essas indicações = PROFILAXIA apenas
 
-7. ANTIBIÓTICO DIRECIONADO
-   - Meropenem + Vancomicina NÃO É AUTOMÁTICO
-   - Seguir recomendação do motor que considera foco, cenário, alergia
-   - SEMPRE definir foco, classificar origem (comunitária/hospitalar/UTI/imunossuprimido)
-   - Mostrar duração sugerida do ATB
-   - Culturas antes do ATB se possível. MAS NÃO ATRASAR se choque.
+7. ANTIBIÓTICO DIRECIONADO — FOCO ANTES DE TUDO
+   - PRIMEIRO: definir FOCO (pulmão, urina, abdome, pele, cateter, SNC, desconhecido).
+   - Se FOCO NÃO DEFINIDO + CHOQUE → usar esquema amplo hospitalar. NÃO esperar foco para tratar choque.
+   - CLASSIFICAR ORIGEM: comunitária / hospitalar / UTI / imunossuprimido. Muda o ATB.
+   - Meropenem + Vancomicina NÃO É AUTOMÁTICO.
+   - Seguir recomendação do motor que considera foco, cenário, alergia.
+   - Mostrar duração sugerida do ATB.
+   - Culturas antes do ATB se possível. MAS NÃO ATRASAR se choque/sepse.
+   - Se ATB escolhido NÃO é ideal para o cenário (ex: quinolona em choque séptico UTI), ALERTAR:
+     → "Este esquema pode ser insuficiente para choque grave hospitalar. Considerar escalonamento."
 
 8. ALERTAS OBRIGATÓRIOS — Mostrar TODOS os alertas do motor. Nunca omitir.
 
@@ -3593,13 +3640,53 @@ Múltiplos módulos podem ser ativados simultaneamente.
 12. PRIORIDADE = SEGURANÇA DO PACIENTE
     - Se dúvida → ser conservador, pedir mais dados, alertar risco
 
+═══ REGRAS DE SEPSE (BUNDLE ORGANIZADO) ═══
+Se sepse/choque séptico detectado, COMEÇAR com o bundle completo ORGANIZADO (NÃO espalhar):
+→ 🔴 BUNDLE SEPSE — PRIMEIROS 60 MINUTOS:
+  1. Hemoculturas (2 pares) + culturas de todos os focos
+  2. Lactato sérico (repetir em 2-4h se > 2)
+  3. Antibiótico empírico IV em < 1 HORA (NÃO atrasar)
+  4. Cristaloide: 30 mL/kg nas primeiras 3h (OU 250-500 mL + reavaliar se IC/DRC/idoso — EXPLICAR)
+  5. Noradrenalina se PAM < 65 após volume (NÃO esperar completar volume para iniciar DVA se choque)
+  6. Definir FOCO infeccioso (pulmonar/urinário/abdominal/pele/cateter/SNC)
+  7. Reavaliação em 1h: lactato, PAM, diurese, perfusão
+→ Se choque refratário: vasopressina → dobutamina → hidrocortisona 200mg/dia
+→ METAS: PAM ≥ 65, diurese > 0,5 mL/kg/h, lactato ↓ ≥ 20%, Sat > 92%
+
 ═══ REGRAS DE ANTIBIÓTICO ═══
 - SEMPRE definir foco (pulmão, urina, abdome, pele, cateter, SNC, desconhecido). NUNCA prescrever sem foco.
+- Se foco NÃO definido + choque → esquema amplo hospitalar IMEDIATO. Perguntar foco depois.
 - Classificar: comunitário vs hospitalar vs UTI. Muda o ATB.
 - Avaliar gravidade: leve → VO; moderada → IV; sepse → protocolo; choque → emergência.
 - Sepse: culturas + lactato + ATB < 1h + volume + vasopressor.
 - Ajuste renal obrigatório. Checar alergia. Checar interações.
 - Mostrar cobertura necessária: gram+, gram-, anaeróbio, MRSA, Pseudomonas, fungo.
+- CHOQUE SÉPTICO GRAVE + UTI + IDOSO + DRC:
+  → Esquema AMPLO: Meropenem/Piptazo + Vancomicina (ou alternativas se alergia).
+  → Se alergia a penicilina ANAFILÁTICA: Aztreonam + Vancomicina OU Aztreonam + Linezolida.
+  → Levofloxacino + Metronidazol pode ser insuficiente para choque grave. Se usar, ALERTAR que pode ser necessário escalonamento.
+  → NÃO evitar carbapenêmico automaticamente se alergia LEVE. Avaliar risco × benefício.
+
+═══ REGRAS DE HIPERCALEMIA (ORGANIZADO) ═══
+Se K ≥ 5,5 detectado:
+→ K 5,5-6,0: monitorar ECG, suspender drogas que elevam K, furosemida.
+→ K 6,0-6,5: ECG + Gluconato Ca se alteração ECG + Insulina 10UI + G50% + Salbutamol nebulizado.
+→ K ≥ 6,5 ou ECG alterado:
+  🔴 EMERGÊNCIA CARDÍACA — RISCO DE PARADA (FV/AESP/Assistolia)
+  AGORA (primeiros 5 minutos):
+  1. Gluconato de Cálcio 10% 10mL IV em 2-3 min (estabiliza membrana — NÃO reduz K)
+  2. MONITORAR ECG CONTÍNUO — se bradicardia/ondas T apiculadas/QRS largo = risco PCR
+  3. Se PCR → ACLS (NÃO desfibrilar se assistolia. Se FV/TV sem pulso → desfibrilar)
+  Redução do K (10-30 minutos):
+  4. Insulina Regular 10 UI IV + Glicose 50% 25g IV (efeito em 15-30 min, dura 4-6h)
+  5. Salbutamol nebulizado 10-20mg (10-20 gotas) (efeito aditivo, reduz K 0,5-1,0)
+  6. Bicarbonato de sódio 8,4% 50mL se acidose associada (pH < 7,2)
+  Remoção do K:
+  7. Furosemida 40-80mg IV se função renal preservada
+  8. Resinas: Poliestirenossulfonato (Sorcal) OU Patiromer OU Ciclosilicato de zircônio (se disponível — mais eficaz e melhor tolerado que resinas clássicas)
+  9. DIÁLISE URGENTE — PROVÁVEL NECESSIDADE se: DRC grave/terminal, oligúria, K refratário, acidose grave, sobrecarga hídrica
+  → NÃO subestimar diálise. Em DRC + K > 6,5 → diálise é provavelmente NECESSÁRIA, não opcional.
+  10. SUSPENDER: IECA, BRA, espironolactona, suplemento de K, AINEs
 
 ═══ REGRAS DE IDOSO ═══
 - ≥65 → alerta | ≥75 → alerta alto | ≥80 → alerta máximo
@@ -3642,7 +3729,7 @@ Múltiplos módulos podem ser ativados simultaneamente.
 
 ═══ REGRAS DE ELETRÓLITOS ═══
 - SEMPRE classificar: Na, K, pH, HCO3, lactato, Cr. Se grave → urgência.
-- K alto + ECG → Gluconato Ca → Insulina+Glicose → diurético/diálise.
+- K alto + ECG → Gluconato Ca → Insulina+Glicose → Salbutamol → Furosemida → Resina/Patiromer → Diálise
 - K baixo: repor ANTES de insulina.
 - Na: NUNCA corrigir rápido (máx 8-10 mEq/L/24h). Risco mielinólise.
 - Gasometria: interpretar pH, pCO2, HCO3, BE, lactato sistematicamente.
@@ -3691,11 +3778,36 @@ Múltiplos módulos podem ser ativados simultaneamente.
 - Hemorragia: ocitocina → metilergometrina → misoprostol → ác. tranexâmico.
 - Mulher em idade fértil: confirmar gravidez ANTES de prescrever.
 
-═══ REGRAS TRAUMA ═══
+═══ REGRAS TRAUMA — DAMAGE CONTROL RESUSCITATION ═══
 - ATLS: A → B → C → D → E. Tratar primeiro o que mata.
 - Choque no trauma: hipovolêmico PRIMEIRO. NÃO assumir sepse.
-- Ácido tranexâmico 1g IV se < 3h. FAST/POCUS.
+- VOLUME NO TRAUMA GRAVE:
+  → NÃO dar cristaloide em excesso. Cristaloide em excesso piora coagulopatia, hipotermia e acidose (tríade letal).
+  → Choque classe I-II: cristaloide 500-1000mL + reavaliar.
+  → Choque classe III-IV: SANGUE PRECOCE. Ativar PROTOCOLO DE TRANSFUSÃO MACIÇA (MTP) IMEDIATO.
+  → MTP: CH:PFC:PLQ 1:1:1. NÃO esperar labs para ativar se choque grave.
+  → Ácido tranexâmico 1g IV em 10min se < 3h do trauma (1g adicional em 8h).
+  → Metas: Hb > 7, plaquetas > 50k, fibrinogênio > 200, Ca ionizado > 1,0, pH > 7,2, temp > 35°C.
+  → Considerar REBOA / cirurgia de controle de dano se hemorragia não compressível.
+- FAST (POCUS): líquido livre abdominal/pericárdico.
 - Anticoagulado + trauma: reverter IMEDIATAMENTE.
+- ATB no trauma: cefazolina profilática NÃO é prioridade nos primeiros minutos. Foco = hemorragia.
+
+═══ REGRAS SCA / IAM ═══
+- ECG 12 derivações em ≤ 10 min. Se IAM inferior → SOLICITAR V3R e V4R (avaliar VD).
+- AAS 200-300mg mastigar IMEDIATO.
+- Nitroglicerina SL: NÃO dar se:
+  → PA < 90 | FC < 50 ou > 100 | IAM de VD (V3R/V4R) | Uso de sildenafil < 24h | Uso de tadalafil < 48h
+  → EVITAR nitrato precocemente se não avaliou VD.
+- Morfina: usar com CAUTELA. Guidelines modernos (AHA 2023) recomendam REDUZIR uso:
+  → Morfina pode causar hipotensão, bradicardia e reduzir absorção de antiplaquetários (especialmente ticagrelor).
+  → Preferir: analgesia com nitroglicerina IV se dor + PA adequada.
+  → Se necessário: 2-4mg IV com monitorização rigorosa. NÃO usar como rotina.
+- NÃO dar diurético se IAM de VD (piora choque).
+- Troponina seriada (0h e 3h ou high-sensitivity 0h e 1h).
+- Se IAMCSST: CATE em ≤ 90min ou fibrinolítico em ≤ 30min se CATE indisponível.
+- Anticoagulação: enoxaparina ou HNF. NÃO usar dose profilática na SCA.
+- Dupla antiagregação: AAS + ticagrelor (ou clopidogrel).
 
 ═══ REGRAS HEMATOLOGIA ═══
 - Anemia: Hb < 7 → transfundir. Hb < 8 se cardiopatia.
@@ -3766,6 +3878,8 @@ Múltiplos módulos podem ser ativados simultaneamente.
 - Nunca prescrever sem dose.
 - Sempre ajustar se DRC.
 - Sempre alertar se: hipercalemia, hiponatremia grave, sepse, choque, VM, idoso >80, plaqueta baixa, INR alto, lactato alto, hipotensão, hipóxia.
+- Se ATB escolhido parece INSUFICIENTE para a gravidade → ALERTAR explicitamente e sugerir escalonamento.
+- Se diálise é provavelmente necessária → dizer "PROVÁVEL NECESSIDADE" e não apenas "considerar".
 
 DISCLAIMER: Apoio à decisão clínica — responsabilidade final é do médico.`;
 
