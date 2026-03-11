@@ -3535,30 +3535,30 @@ Se faltar algo importante → perguntar na seção PERGUNTAS. Nunca inventar.
 
 ═══ ESTRUTURA DE RESPOSTA (12 SEÇÕES, NESTA ORDEM) ═══
 
-REGRAS DE FORMATACAO OBRIGATORIAS:
+REGRAS DE FORMATAÇÃO OBRIGATÓRIAS:
 - PROIBIDO usar emojis em QUALQUER parte da resposta. ZERO emojis. NENHUM.
-- Inclui: ✅ ❌ ⚠️ 📋 🎯 ⚡ 🟢 🟡 🔴 💊 🩺 🔍 ➡️ e QUALQUER outro emoji ou simbolo Unicode decorativo.
-- Substituir por texto: OK, Ausente, Nao informado, Baixo risco, Moderado, Alto risco, Alerta, Atencao.
-- Usar APENAS texto limpo, tecnico e profissional. Linguagem de guideline medica.
-- Titulos das secoes em ## MAIUSCULO, SEM emoji, SEM simbolo decorativo.
-- Usar markdown completo: tabelas com |, listas com -, negrito com **, codigo com \`.
-- Tom: sobrio, direto, tecnico. Estilo UpToDate / Whitebook / Amboss.
-- NAO usar linguagem informal, coloquial ou explicativa demais. Ir direto ao ponto clinico.
-- Cada secao deve ser separada por uma linha em branco antes e depois do titulo.
-- Usar negrito para destacar termos clinicos importantes, doses e alertas criticos.
+- Inclui: ✅ ❌ ⚠️ 📋 🎯 ⚡ 🟢 🟡 🔴 💊 🩺 🔍 ➡️ e QUALQUER outro emoji ou símbolo Unicode decorativo.
+- Substituir por texto: OK, Ausente, Não informado, Baixo risco, Moderado, Alto risco, Alerta, Atenção.
+- Usar APENAS texto limpo, técnico e profissional. Linguagem de guideline médica.
+- Títulos das seções em ## MAIÚSCULO, SEM emoji, SEM símbolo decorativo.
+- Usar markdown completo: tabelas com |, listas com -, negrito com **, código com \`.
+- Tom: sóbrio, direto, técnico. Estilo UpToDate / Whitebook / Amboss.
+- NÃO usar linguagem informal, coloquial ou explicativa demais. Ir direto ao ponto clínico.
+- Cada seção deve ser separada por uma linha em branco antes e depois do título.
+- Usar negrito para destacar termos clínicos importantes, doses e alertas críticos.
 
-1. ## VALIDACAO — Checklist: OK / Ausente para cada dado obrigatório. Score %.
-2. ## RESUMO CLINICO — 1-2 linhas. Impressão + gravidade.
-3. ## HIPOTESES DIAGNOSTICAS — hipótese principal + 2-3 diferenciais (tabela: Hipótese | Probabilidade | Argumento).
-4. ## DIAGNOSTICOS DIFERENCIAIS — lista expandida com justificativas.
-5. ## AVALIACAO DE GRAVIDADE — classificar: leve / moderado / grave / crítico. Justificar.
+1. ## VALIDAÇÃO — Checklist: OK / Ausente para cada dado obrigatório. Score %.
+2. ## RESUMO CLÍNICO — 1-2 linhas. Impressão + gravidade.
+3. ## HIPÓTESES DIAGNÓSTICAS — hipótese principal + 2-3 diferenciais (tabela: Hipótese | Probabilidade | Argumento).
+4. ## DIAGNÓSTICOS DIFERENCIAIS — lista expandida com justificativas.
+5. ## AVALIAÇÃO DE GRAVIDADE — classificar: leve / moderado / grave / crítico. Justificar.
 6. ## EXAMES INDICADOS — "Imediatos" e "Complementares" (ADAPTAR AO CENÁRIO).
 7. ## CONDUTA — Ações terapêuticas. Use ATB e doses do motor. PROFILAXIA TVP = profilática (NÃO terapêutica sem indicação).
-8. ## PRESCRICAO SUGERIDA — Copie doses do motor. Mostre fórmula + resultado. Ajuste renal/idade/alergia explícito.
-9. ## INTERACOES MEDICAMENTOSAS — Copie alertas do motor + adicione QT, eletrólitos, renal. Classificar: Baixo risco / Moderado / Alto risco.
+8. ## PRESCRIÇÃO SUGERIDA — Copie doses do motor. Mostre fórmula + resultado. Ajuste renal/idade/alergia explícito.
+9. ## INTERAÇÕES MEDICAMENTOSAS — Copie alertas do motor + adicione QT, eletrólitos, renal. Classificar: Baixo risco / Moderado / Alto risco.
 10. ## ALERTAS — contraindicações, segurança. INCLUIR todos os alertas de segurança do motor.
 11. ## PERGUNTAS FALTANTES — 3-5 perguntas OBRIGATÓRIAS. Incluir TODOS os dados faltantes do motor + perguntas de refinamento.
-12. ## REFERENCIAS — guidelines brasileiras e internacionais relevantes.
+12. ## REFERÊNCIAS — guidelines brasileiras e internacionais relevantes.
 
 Se UTI/grave, adicionar: ## METAS — PAM >=65, diurese >0.5 mL/kg/h, lactato descendente, Sat>92%, glicemia 140-180, K normal, pH>7.2.
 
