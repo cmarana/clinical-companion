@@ -3,6 +3,7 @@ import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 // ─── Types ───────────────────────────────────────────────────────
 type ChatMessage = { role: "user" | "assistant" | "system"; content: string };
 type Scenario = "PS" | "UTI" | "UBS" | "SAMU" | "ENFERMARIA" | "HOSPITAL" | "NÃO INFORMADO";
+type ClinicalMode = "NEURO" | "CARDIO" | "PEDIATRIA" | "GERAL";
 type Focus = "PULMONAR" | "URINÁRIO" | "ABDOMINAL" | "PELE/TECIDOS" | "SNC" | "SEM FOCO DEFINIDO";
 type RenalStage = "NORMAL" | "LEVE" | "MODERADA" | "GRAVE" | "TERMINAL";
 type InfectionOrigin = "COMUNITÁRIA" | "HOSPITALAR" | "NÃO DEFINIDA";
@@ -38,6 +39,10 @@ interface PatientData {
   isInfant: boolean; // age < 1 year
   estimatedWeightKg?: number; // weight estimated by age if not provided
   vaccinesUpToDate?: boolean;
+  // Neuro
+  isNeuroCase: boolean;
+  glasgowScore?: number;
+  hasAnticoagulantInUse: boolean;
 }
 
 interface RenalCalcResult {
@@ -891,6 +896,74 @@ const PROTOCOLS: Record<string, { name: string; steps: ProtocolStep[] }> = {
       { order: 6, action: "NIH Stroke Scale" },
     ],
   },
+  meningitis: {
+    name: "Meningite Bacteriana — Protocolo de Emergência",
+    steps: [
+      { order: 1, action: "🔴 ANTIBIÓTICO IMEDIATO se suspeita forte — NÃO ATRASAR POR EXAME" },
+      { order: 2, action: "Dexametasona 0,15mg/kg 6/6h IV (iniciar ANTES ou junto com 1ª dose ATB)", target: "Manter por 4 dias" },
+      { order: 3, action: "Ceftriaxona 2g 12/12h IV (+ Ampicilina 2g 4/4h se > 50a ou imunossuprimido)" },
+      { order: 4, action: "Hemoculturas (2 pares) ANTES do ATB se não atrasar" },
+      { order: 5, action: "Punção lombar (LCR): citologia, bioquímica, gram, cultura, látex, PCR" },
+      { order: 6, action: "TC crânio ANTES da PL se: papiledema, déficit focal, Glasgow < 12, imunossuprimido, convulsão recente" },
+      { order: 7, action: "Monitorar Glasgow, pupilas, sinais vitais a cada 1-2h" },
+      { order: 8, action: "Isolamento respiratório se suspeita de meningococo" },
+      { order: 9, action: "Quimioprofilaxia contactantes se meningococo: Rifampicina 600mg 12/12h 2 dias" },
+    ],
+  },
+  seizure: {
+    name: "Estado de Mal Epiléptico — Adulto",
+    steps: [
+      { order: 1, action: "0-5 min: Estabilizar via aérea, O2, decúbito lateral, glicemia capilar" },
+      { order: 2, action: "Acesso venoso. Tiamina 100mg IV + Glicose 50% 40mL (se hipoglicemia ou suspeita)" },
+      { order: 3, action: "5-10 min: Diazepam 10mg IV (2mg/min) OU Midazolam 10mg IM", target: "Repetir 1x se necessário" },
+      { order: 4, action: "10-20 min: Fenitoína 20mg/kg IV em 20 min (máx 50mg/min, monitorar ECG) OU Levetiracetam 60mg/kg IV (máx 4500mg) em 15 min" },
+      { order: 5, action: "20-40 min: Se refratário → Fenobarbital 20mg/kg IV (máx 60mg/min)" },
+      { order: 6, action: "> 40 min: EME refratário → Midazolam BIC 0,2mg/kg bolus + 0,1-0,4mg/kg/h OU Propofol (UTI)" },
+      { order: 7, action: "Investigar causa: TC crânio, eletrólitos, toxicológico, LCR se febre" },
+      { order: 8, action: "⚠️ Fenitoína: MONITORAR ECG (risco arritmia), não misturar com glicose" },
+    ],
+  },
+  tce: {
+    name: "TCE — Trauma Cranioencefálico",
+    steps: [
+      { order: 1, action: "ABCDE + imobilização cervical até exclusão de lesão" },
+      { order: 2, action: "Glasgow: leve (13-15) | moderado (9-12) | grave (3-8)" },
+      { order: 3, action: "TC crânio sem contraste URGENTE se: Glasgow < 15, perda de consciência, amnésia, vômitos, sinais de fratura, anticoagulado, > 65a" },
+      { order: 4, action: "Se Glasgow ≤ 8: IOT + Ventilação mecânica. Cabeceira 30°", target: "PIC < 20 mmHg" },
+      { order: 5, action: "Manitol 20% 1g/kg ou SF hipertônico 3% 250mL se hipertensão intracraniana" },
+      { order: 6, action: "PA: manter PPC ≥ 60 mmHg (PPC = PAM - PIC)" },
+      { order: 7, action: "⚠️ Se anticoagulado: reverter IMEDIATAMENTE (vitamina K, CCP, PFC conforme agente)" },
+      { order: 8, action: "Profilaxia convulsão: Fenitoína 20mg/kg se TCE grave (7 dias)" },
+      { order: 9, action: "Neurocirurgia se: hematoma epidural, subdural > 10mm, desvio linha média > 5mm" },
+      { order: 10, action: "Monitorar: Glasgow horário, pupilas, glicemia, Na, osmolaridade" },
+    ],
+  },
+  coma: {
+    name: "Rebaixamento de Consciência / Coma — Abordagem Sistemática",
+    steps: [
+      { order: 1, action: "ABCDE + Glasgow + pupilas + glicemia capilar" },
+      { order: 2, action: "Corrigir causas reversíveis IMEDIATAMENTE: Glicose (se hipoglicemia), Tiamina (etilista/desnutrido), Naloxone (suspeita opioide), Flumazenil (suspeita BZD)" },
+      { order: 3, action: "Avaliar '5H e 5T': Hipoglicemia, Hipóxia, Hipotensão, Hipotermia, H+ (acidose), Toxinas, Tamponamento, Tensão (pneumotórax), TEP, Trauma" },
+      { order: 4, action: "TC crânio sem contraste URGENTE" },
+      { order: 5, action: "Gasometria + eletrólitos + glicemia + função renal + hepática + amônia + toxicológico" },
+      { order: 6, action: "Se febre + rigidez nuca: pensar meningite/encefalite → ATB empírico + Aciclovir se suspeita viral" },
+      { order: 7, action: "Se Glasgow ≤ 8: IOT + Ventilação mecânica" },
+      { order: 8, action: "Monitorar: Glasgow horário, pupilas, Na, osmolaridade, PIC se disponível" },
+    ],
+  },
+  delirium: {
+    name: "Delirium — Avaliação e Manejo",
+    steps: [
+      { order: 1, action: "Diagnóstico: CAM (Confusion Assessment Method) — início agudo + flutuação + desatenção + pensamento desorganizado OU rebaixamento" },
+      { order: 2, action: "Investigar causa: infecção, metabólico, droga, dor, retenção urinária, constipação, hipóxia" },
+      { order: 3, action: "Exames: hemograma, PCR, eletrólitos, glicemia, função renal/hepática, gasometria, urina I, RX tórax" },
+      { order: 4, action: "TC crânio se: déficit focal, TCE, anticoagulado, sem causa aparente" },
+      { order: 5, action: "Medidas NÃO farmacológicas PRIMEIRO: reorientação, iluminação, mobilização, sono, óculos/prótese auditiva" },
+      { order: 6, action: "Se agitação grave (risco para si/equipe): Haloperidol 0,5-2mg IV/IM (dose menor em idoso)", target: "NÃO usar BZD (piora delirium, exceto em abstinência)" },
+      { order: 7, action: "⚠️ Haloperidol: monitorar QTc. EVITAR se QT > 500ms. EVITAR em Parkinson." },
+      { order: 8, action: "Tratar causa base. Revisar medicações (suspender BZD, anticolinérgicos, opioides se possível)" },
+    ],
+  },
 };
 
 // ─── Parsing Helpers ─────────────────────────────────────────────
@@ -1020,6 +1093,17 @@ function extractPatient(messages: ChatMessage[]): PatientData {
     }
   }
 
+  // Neuro case detection
+  const isNeuroCase = /rebaixamento|consciência|convuls|avc|acidente vascular|cefaleia|déficit focal|coma|confus|tce|trauma.*crani|meningite|encefalite|delirium|glasgow|hemipar|hemiplegia|afasia|disartria|ataxia|pupila|rigidez de nuca/i.test(text);
+
+  // Glasgow score extraction
+  const glasgowRaw = firstMatch(text, [/glasgow\s*[:=]?\s*([0-9]{1,2})/i, /gcs\s*[:=]?\s*([0-9]{1,2})/i]);
+  const glasgowScore = glasgowRaw ? parseNumber(glasgowRaw) : undefined;
+
+  // Anticoagulant in use detection
+  const hasAnticoagulantInUse = /warfarina|marevan|rivaroxabana|apixabana|dabigatrana|enoxaparina|heparina/i.test(medsRaw || "") ||
+    /warfarina|marevan|rivaroxabana|apixabana|dabigatrana|enoxaparina|heparina/i.test(text);
+
   return {
     weightKg: actualWeight,
     ageYears: ageNum,
@@ -1028,6 +1112,7 @@ function extractPatient(messages: ChatMessage[]): PatientData {
     sex, allergies, allergyType, scenario, focus, infectionOrigin, medicationsInUse, riskFactors,
     hasHeartFailure, isElderly, isDialytic, hasAnticoagulationIndication,
     isPediatric, isNeonate, isInfant, estimatedWeightKg, vaccinesUpToDate,
+    isNeuroCase, glasgowScore, hasAnticoagulantInUse,
   };
 }
 
@@ -1331,6 +1416,12 @@ function selectProtocol(text: string, scenario: Scenario, isPediatric: boolean):
   if (/hemorr|sangr.*ativo|choque hemorrágico/i.test(lower)) return PROTOCOLS.bleeding;
   if (/insuf.*resp|dispneia.*aguda|hipoxemia/i.test(lower)) return PROTOCOLS.respiratory_failure;
   if (/iam|infarto|sca|síndrome coronariana|dor torácica/i.test(lower)) return PROTOCOLS.cardiac;
+  // Neuro protocols
+  if (/meningite|encefalite/i.test(lower) && !/pediátr|criança/i.test(lower)) return PROTOCOLS.meningitis;
+  if (/convuls|estado.*mal|status epilepticus|crise epiléptica/i.test(lower) && !isPediatric) return PROTOCOLS.seizure;
+  if (/tce|trauma.*crani|trauma.*crânio/i.test(lower)) return PROTOCOLS.tce;
+  if (/coma\b|rebaixamento.*consciência|glasgow.*[3-8]\b/i.test(lower)) return PROTOCOLS.coma;
+  if (/delirium|confus.*mental.*agud/i.test(lower)) return PROTOCOLS.delirium;
   if (/avc|acidente vascular|stroke/i.test(lower)) return PROTOCOLS.stroke;
   return null;
 }
@@ -1491,6 +1582,24 @@ function generateSafetyAlerts(patient: PatientData, renal: RenalCalcResult): str
 
   if (renal.stage === "MODERADA" || renal.stage === "GRAVE" || renal.stage === "TERMINAL") {
     alerts.push("🟡 EVITAR NEFROTÓXICOS: aminoglicosídeos, AINEs, contraste iodado (se possível), anfotericina B.");
+  }
+
+  // NEURO ALERTS
+  if (patient.isNeuroCase) {
+    alerts.push("🧠 MODO NEURO ATIVADO: Sempre excluir causas graves (AVC, hemorragia, meningite, hipoglicemia, hipóxia).");
+    if (patient.glasgowScore !== undefined) {
+      if (patient.glasgowScore <= 8) {
+        alerts.push(`🔴 GLASGOW ${patient.glasgowScore} ≤ 8: IOT + VM indicadas. TC urgente. Avaliar PIC.`);
+      } else if (patient.glasgowScore <= 12) {
+        alerts.push(`🟡 GLASGOW ${patient.glasgowScore} (moderado): Monitorar rebaixamento. TC indicada.`);
+      }
+    }
+    if (patient.hasAnticoagulantInUse) {
+      alerts.push("🔴 NEURO + ANTICOAGULADO: Risco de sangramento intracraniano. TC urgente. Considerar reversão se hemorragia confirmada.");
+    }
+    if (patient.isElderly) {
+      alerts.push("🔴 IDOSO + NEURO: Confusão pode ser infecção, droga, metabólico, AVC. NUNCA assumir demência sem investigar.");
+    }
   }
 
   return alerts;
@@ -1772,6 +1881,25 @@ function formatEngineContext(e: EngineResult): string {
     lines.push("  → EVITAR: quinolonas, tetraciclinas, codeína, tramadol em < 12a");
   }
 
+  // Neuro section
+  if (e.patient.isNeuroCase) {
+    lines.push("\n🧠 ═══ MODO NEURO ATIVADO ═══");
+    lines.push(`  Glasgow: ${e.patient.glasgowScore !== undefined ? `${e.patient.glasgowScore} (${e.patient.glasgowScore <= 8 ? "GRAVE — IOT indicada" : e.patient.glasgowScore <= 12 ? "MODERADO" : "LEVE"})` : "NÃO INFORMADO — AVALIAR"}`);
+    lines.push(`  Anticoagulante em uso: ${e.patient.hasAnticoagulantInUse ? "SIM 🔴 (risco sangramento intracraniano)" : "Não detectado"}`);
+    lines.push(`  Idoso: ${e.patient.isElderly ? "SIM — confusão pode ser infecção/droga/metabólico/AVC" : "Não"}`);
+    lines.push(`\n  REGRAS NEURO:`);
+    lines.push(`  → SEMPRE excluir: AVC, hemorragia, meningite, hipoglicemia, hipóxia, intoxicação`);
+    lines.push(`  → Glasgow ≤ 8: IOT + VM + TC urgente`);
+    lines.push(`  → Convulsão: BZD → fenitoína/levetiracetam → fenobarbital`);
+    lines.push(`  → Cefaleia grave: excluir hemorragia (TC), meningite (LCR), AVC, dissecção`);
+    lines.push(`  → TCE + anticoagulado: TC obrigatória + reverter anticoagulação se sangramento`);
+    lines.push(`  → Febre + alteração mental: pensar meningite → ATB empírico NÃO ATRASAR`);
+    lines.push(`  → AVC isquêmico < 4,5h: avaliar trombólise (Alteplase 0,9mg/kg)`);
+    lines.push(`  → AVC hemorrágico: NÃO anticoagular. Reverter se anticoagulado.`);
+    lines.push(`  → Idoso confuso: investigar infecção, droga, metabólico antes de assumir demência`);
+    lines.push(`  → Delirium: medidas não farmacológicas PRIMEIRO. Haloperidol 0,5-2mg se agitação grave (monitorar QTc)`);
+  }
+
   lines.push("\n═══ FIM DO MOTOR CLÍNICO ═══");
   return lines.join("\n");
 }
@@ -1887,6 +2015,19 @@ REGRAS DE INTERAÇÕES MEDICAMENTOSAS:
 - Idoso > 65a + depressor SNC: reduzir dose 50%, critérios de Beers.
 - Classificar severidade: 🟢 leve, 🟡 moderado, 🔴 grave/contraindicado.
 - Se interação grave: sugerir alternativa.
+
+REGRAS NEUROLÓGICAS (se MODO NEURO ativado):
+- SEMPRE excluir causas graves primeiro: AVC, hemorragia, meningite, hipoglicemia, hipóxia, intoxicação, sepse, TCE, tumor.
+- Rebaixamento de consciência: ABCDE → glicemia → oxigenação → pupilas → Glasgow → corrigir causas reversíveis.
+- AVC: TC sem contraste URGENTE. Avaliar tempo de início. Se isquêmico < 4,5h: trombólise (Alteplase 0,9mg/kg). Se hemorrágico: NÃO anticoagular.
+- Convulsão ativa: BZD (diazepam 10mg IV ou midazolam 10mg IM) → fenitoína 20mg/kg OU levetiracetam 60mg/kg → fenobarbital → BIC (UTI).
+- Cefaleia grave: NUNCA assumir enxaqueca sem excluir hemorragia (TC), meningite (LCR), AVC, dissecção.
+- TCE: Glasgow + pupilas + TC urgente. Se anticoagulado: TC OBRIGATÓRIA + reverter anticoagulação se sangramento. Glasgow ≤ 8: IOT.
+- Meningite: ATB IMEDIATO se suspeita forte — NÃO ATRASAR POR EXAME. Dexametasona antes/junto ATB.
+- Delirium: investigar causa (infecção, droga, metabólico). Medidas NÃO farmacológicas primeiro. Haloperidol só se agitação grave (monitorar QTc, EVITAR em Parkinson).
+- Idoso confuso: NUNCA assumir demência. Investigar infecção, droga, metabólico, AVC primeiro.
+- Anticoagulado + neuro: risco de sangramento intracraniano. TC urgente. Reverter se hemorragia.
+- ADAPTAR AO CENÁRIO: SAMU → estabilizar (via aérea, glicemia); PS → TC + investigar; UTI → monitorar PIC, Glasgow horário; UBS → referenciar se grave.
 
 DISCLAIMER: Apoio à decisão clínica — responsabilidade final é do médico.`;
 
