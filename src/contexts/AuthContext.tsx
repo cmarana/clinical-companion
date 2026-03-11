@@ -48,6 +48,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     subscribed: false,
     productId: null,
     subscriptionEnd: null,
+    isTrial: false,
+    trialDaysLeft: 0,
   });
 
   const checkSubscription = useCallback(async () => {
