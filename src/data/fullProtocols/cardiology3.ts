@@ -1,0 +1,73 @@
+import type { FullProtocol } from "./types";
+
+export const cardioFullProtocols3: FullProtocol[] = [
+  {
+    id: "fp-tamponamento",
+    title: "Tamponamento Cardíaco",
+    categoryId: "cardiology",
+    category: "Cardiologia",
+    tags: ["tamponamento", "pericárdio", "pericardiocentese", "beck", "choque obstrutivo"],
+    sections: [
+      { id: "intro", title: "Introdução", content: "O tamponamento cardíaco é uma emergência causada pelo acúmulo de líquido pericárdico que comprime as câmaras cardíacas, reduzindo o enchimento diastólico e o débito cardíaco. A pericardiocentese de emergência é o tratamento definitivo.\n\nDiretrizes: ESC 2015, AHA 2004." },
+      { id: "def", title: "Definição", content: "Compressão das câmaras cardíacas por derrame pericárdico, causando instabilidade hemodinâmica.\n\nTríade de Beck (tamponamento agudo):\n1. Hipotensão\n2. Turgência jugular\n3. Bulhas abafadas\n\nA gravidade depende da velocidade de acúmulo: 100-200 mL agudos podem tamponar; > 1L crônicos podem ser tolerados." },
+      { id: "screening", title: "Rastreamento e Identificação", content: "Contextos de risco:\n• Trauma penetrante\n• Pós-cateterismo / pós-cirurgia cardíaca\n• Neoplasia com derrame pericárdico\n• Dissecção de aorta tipo A\n• Ruptura de parede pós-IAM\n• Pericardite com deterioração\n• Uremia / diálise" },
+      { id: "etiology", title: "Etiologia", content: "Agudo: trauma penetrante, ruptura de parede pós-IAM, dissecção de aorta, perfuração por cateter\nSubagudo: neoplasia (pulmão, mama, linfoma), pericardite viral/bacteriana/TB, uremia, autoimune, hipotireoidismo" },
+      { id: "clinical", title: "Apresentação Clínica", content: "• Hipotensão + turgência jugular + bulhas abafadas (Tríade de Beck)\n• Pulso paradoxal (queda PAS > 10 mmHg na inspiração)\n• Taquicardia compensatória\n• Dispneia\n• Sinal de Kussmaul\n• Pulmão LIMPO (diferencia de EAP)\n• AESP na PCR" },
+      { id: "diagnosis", title: "Diagnóstico", content: "1. Ecocardiograma à beira-leito: derrame pericárdico + colapso de AD/VD\n2. FAST (trauma): líquido pericárdico\n3. ECG: baixa voltagem, alternância elétrica\n4. Rx tórax: silhueta cardíaca em moringa\n5. PA invasiva: pulso paradoxal\n6. Cateterismo: equalização de pressões diastólicas" },
+      { id: "differential", title: "Diagnóstico Diferencial", content: "• Pneumotórax hipertensivo (MV abolido, timpanismo)\n• TEP maciço\n• Choque cardiogênico (EAP, B3)\n• Pericardite constritiva (crônica)\n• IC direita aguda" },
+      { id: "conduct", title: "Conduta Inicial", content: "1. Volume: SF 0,9% 500-1000 mL IV rápido (manter pré-carga VD)\n2. PERICARDIOCENTESE DE EMERGÊNCIA:\n• Via subxifoidea guiada por eco (preferida)\n• Agulha 18G longa, 45° cefálico em direção ao ombro esquerdo\n• Aspirar líquido pericárdico\n• Pode-se deixar dreno pigtail para drenagem contínua\n3. Se trauma + tamponamento: toracotomia de emergência\n4. Evitar: diuréticos, VPP agressiva (reduzem pré-carga)" },
+      { id: "treatment", title: "Abordagem Terapêutica", content: "Pericardiocentese alivia o tamponamento agudo.\n\nTratamento definitivo conforme causa:\n• Neoplásico: janela pericárdica cirúrgica\n• Purulento: drenagem cirúrgica + ATB\n• Urêmico: diálise intensiva\n• Autoimune: imunossupressão\n• Ruptura de parede/dissecção: cirurgia cardíaca de emergência" },
+      { id: "prescriptions", title: "Prescrições", content: "PRESCRIÇÃO — TAMPONAMENTO:\n\n1. SF 0,9% 1000 mL IV rápido\n2. Pericardiocentese subxifoidea guiada por eco\n3. Monitorização contínua: ECG, PA, SpO2\n4. Noradrenalina 0,1 mcg/kg/min se hipotensão refratária\n5. Hemograma, coagulograma, eletrólitos\n6. Cultura + citologia do líquido pericárdico\n7. Ecocardiograma controle pós-procedimento\n8. Solicitar avaliação cirurgia cardíaca" },
+      { id: "followup", title: "Acompanhamento", content: "• Monitorização em UTI\n• Eco controle seriado\n• Tratar causa de base\n• Vigiar reacúmulo (dreno pigtail)" },
+      { id: "complications", title: "Complicações", content: "• PCR se atraso no tratamento\n• Perfuração miocárdica (pericardiocentese)\n• Pneumotórax iatrogênico\n• Recorrência do derrame" },
+      { id: "criteria", title: "Critérios de Internação / UTI / Alta", content: "UTI: todo tamponamento agudo\nAlta: após resolução, dreno removido, sem reacúmulo, causa tratada" },
+      { id: "references", title: "Referências Bibliográficas", content: "1. Adler Y et al. ESC Guidelines on Pericardial Diseases 2015.\n2. Spodick DH. Acute Cardiac Tamponade. NEJM 2003.\n3. Ristic AD et al. Pericardial Diseases. Eur Heart J 2014." }
+    ]
+  },
+  {
+    id: "fp-disseccao-aorta",
+    title: "Dissecção de Aorta",
+    categoryId: "cardiology",
+    category: "Cardiologia",
+    tags: ["dissecção", "aorta", "stanford", "cirurgia cardíaca", "dor torácica"],
+    sections: [
+      { id: "intro", title: "Introdução", content: "A dissecção aguda de aorta é a emergência aórtica mais comum e mais letal. Ocorre pela laceração da íntima com dissecção da média pelo fluxo sanguíneo. Tipo A (ascendente): cirurgia de emergência. Tipo B (descendente): tratamento clínico na maioria.\n\nMortalidade do tipo A: 1-2% por hora nas primeiras 48h sem cirurgia. Diretrizes: ESC 2014, ACC/AHA 2022, SBC." },
+      { id: "def", title: "Definição", content: "Separação das camadas da parede aórtica pela entrada de sangue na média através de laceração da íntima.\n\nStanford:\n• Tipo A: envolve aorta ascendente (independente da origem)\n• Tipo B: NÃO envolve aorta ascendente\n\nDeBakey:\n• I: ascendente + arco + descendente\n• II: ascendente apenas\n• III: descendente apenas" },
+      { id: "screening", title: "Rastreamento e Identificação", content: "Dor torácica/dorsal de início súbito, dilacerante, migratória = DISSECÇÃO ATÉ PROVA CONTRÁRIA\n\nFatores de risco:\n• HAS (principal — 70-80%)\n• Síndrome de Marfan, Ehlers-Danlos\n• Valva aórtica bicúspide\n• Coarctação de aorta\n• Cocaína/anfetaminas\n• Gravidez (3º trimestre)\n• Cirurgia cardíaca/cateterismo prévio" },
+      { id: "etiology", title: "Etiologia", content: "HAS crônica: principal fator (degeneração da média)\nDoenças do tecido conjuntivo: Marfan, Ehlers-Danlos\nIatrogênica: cateterismo, cirurgia\nTraumática: desaceleração (acidentes)\nInflamatória: aortite (Takayasu, sífilis)" },
+      { id: "clinical", title: "Apresentação Clínica", content: "Dor: início súbito, máxima intensidade desde o início, dilacerante\n• Anterior (tipo A): dissecção ascendente\n• Interescapular/dorsal (tipo B): descendente\n• Migratória: progressão da dissecção\n\nComplicações do tipo A:\n• Insuficiência aórtica aguda (sopro diastólico)\n• Tamponamento cardíaco\n• IAM (oclusão de coronária)\n• AVC (oclusão de carótida)\n• Isquemia de MMSS\n\nTipo B:\n• Isquemia mesentérica\n• Isquemia renal (IRA)\n• Isquemia de MMII\n• Diferença de PA entre os braços (> 20 mmHg)" },
+      { id: "diagnosis", title: "Diagnóstico", content: "1. Angio-TC de aorta (padrão-ouro — sensibilidade > 95%): flap intimal, falso lúmen\n2. Ecocardiograma transesofágico (alternativa se instável)\n3. Rx tórax: mediastino alargado (60-90%), derrame pleural E\n4. ECG: pode ser normal ou mostrar IAM (coronária envolvida)\n5. D-dímero: < 500 exclui com alto VPN\n6. Troponina (se IAM associado)" },
+      { id: "differential", title: "Diagnóstico Diferencial", content: "• IAM\n• TEP\n• Pneumotórax\n• Pericardite\n• Dor musculoesquelética\n• Pancreatite aguda (dor dorsal)\n• Úlcera penetrante aórtica\n• Hematoma intramural de aorta" },
+      { id: "conduct", title: "Conduta Inicial", content: "CONTROLE PRESSÓRICO IMEDIATO — meta: PAS 100-120 mmHg, FC < 60 bpm\n\n1. Esmolol: 500 mcg/kg bolus → 50-200 mcg/kg/min BIC (preferido)\n   OU Labetalol: 20 mg IV bolus, repetir a cada 10 min\n2. Se necessário: adicionar Nitroprussiato 0,3-5 mcg/kg/min (SOMENTE após BB!)\n3. Morfina 2-4 mg IV para dor\n4. NÃO usar anti-hipertensivos que aumentam FC (hidralazina isolada)\n\nTIPO A: CIRURGIA DE EMERGÊNCIA\nTIPO B não complicado: tratamento clínico\nTIPO B complicado (isquemia, expansão): reparo endovascular (TEVAR)" },
+      { id: "treatment", title: "Abordagem Terapêutica", content: "Tipo A: substituição da aorta ascendente ± arco (cirurgia de Bentall se dilatação de raiz)\nTipo B:\n• Clínico: BB + anti-hipertensivo + controle de dor\n• TEVAR: se complicado (isquemia, ruptura, expansão, dor refratária)\n\nLongo prazo:\n• BB de manutenção (indefinido)\n• Controle rigoroso de PA (< 130/80)\n• TC de aorta controle periódico" },
+      { id: "prescriptions", title: "Prescrições", content: "PRESCRIÇÃO — DISSECÇÃO DE AORTA:\n\n1. Esmolol: 500 mcg/kg IV bolus → 50-200 mcg/kg/min BIC\n2. Meta: PAS 100-120, FC < 60\n3. Nitroprussiato 0,3 mcg/kg/min (se PA não controlada após BB)\n4. Morfina 2-4 mg IV SN dor\n5. Monitorização: PA invasiva (bilateral), ECG, SpO2\n6. Angio-TC de aorta URGENTE\n7. Tipagem + reserva de 6 CH\n8. Hemograma, coagulograma, creatinina, troponina\n9. Se tipo A: contato imediato com cirurgia cardíaca\n10. Repouso absoluto, zero VO" },
+      { id: "followup", title: "Acompanhamento", content: "• UTI pós-operatória (tipo A)\n• TC de aorta controle em 1, 3, 6, 12 meses, depois anual\n• BB indefinido\n• PA < 130/80\n• Evitar exercício isométrico intenso\n• Rastreio genético se Marfan/conectivopatia" },
+      { id: "complications", title: "Complicações", content: "• Ruptura aórtica\n• Tamponamento cardíaco\n• Insuficiência aórtica aguda\n• IAM\n• AVC\n• Isquemia mesentérica\n• Paraplegia (isquemia medular)\n• IRA\n• Morte" },
+      { id: "criteria", title: "Critérios de Internação / UTI / Alta", content: "UTI: TODOS os pacientes com dissecção aguda\nAlta: após estabilização, PA controlada, sem complicação, seguimento garantido" },
+      { id: "references", title: "Referências Bibliográficas", content: "1. Erbel R et al. ESC Guidelines on Aortic Diseases 2014.\n2. Isselbacher EM et al. ACC/AHA Guideline for Aortic Disease 2022.\n3. Nienaber CA et al. Aortic Dissection. NEJM 2016.\n4. IRAD — International Registry of Acute Aortic Dissection." }
+    ]
+  },
+  {
+    id: "fp-cardioversao",
+    title: "Cardioversão Elétrica",
+    categoryId: "cardiology",
+    category: "Cardiologia",
+    tags: ["cardioversão", "desfibrilação", "sincronizada", "arritmia", "sedação"],
+    sections: [
+      { id: "intro", title: "Introdução", content: "A cardioversão elétrica sincronizada é a aplicação de choque elétrico sincronizado com a onda R para reversão de taquiarritmias. Difere da desfibrilação por ser sincronizada, evitando choque no período vulnerável (onda T).\n\nDiretrizes: AHA ACLS 2020, SBC 2016." },
+      { id: "def", title: "Definição", content: "Aplicação de corrente elétrica sincronizada com o QRS para despolarização simultânea do miocárdio e restauração do ritmo sinusal.\n\nIndicações:\n• Taquiarritmias instáveis com pulso\n• FA eletiva (< 48h ou anticoagulado > 3 semanas)\n\nContraindicações:\n• Intoxicação digitálica\n• Taquicardia sinusal\n• TV polimórfica (→ desfibrilação)" },
+      { id: "screening", title: "Rastreamento e Identificação", content: "Urgência: instabilidade hemodinâmica\nEletiva: FA < 48h, flutter, TSV refratária\n\nAvaliação pré:\n• ECG 12D (confirmar ritmo)\n• Eletrólitos (K+, Mg2+)\n• Digoxinemia se em uso\n• Ecocardiograma TE (FA > 48h sem anticoagulação)\n• Jejum 6-8h (eletiva)" },
+      { id: "etiology", title: "Etiologia", content: "Arritmias que respondem:\n• FA, flutter atrial\n• TSV (reentrada nodal, via acessória)\n• TV monomórfica sustentada com pulso\n\nArritmias que NÃO respondem:\n• Taquicardia sinusal\n• Taquicardia atrial multifocal\n• TV polimórfica / Torsades (→ desfibrilação não sincronizada)" },
+      { id: "clinical", title: "Apresentação Clínica", content: "Paciente com taquiarritmia + instabilidade:\n• Hipotensão\n• Dor torácica anginosa\n• Dispneia grave / EAP\n• Síncope / rebaixamento\n\nOu paciente estável com FA < 48h candidato a cardioversão eletiva." },
+      { id: "diagnosis", title: "Diagnóstico", content: "ECG 12 derivações para identificar o ritmo antes de cardioverter.\n\nFA: irregularmente irregular, sem onda P\nFlutter: ondas F (dente de serra), FC ~150 bpm\nTSV: regular, QRS estreito\nTV: QRS largo, regular" },
+      { id: "differential", title: "Diagnóstico Diferencial", content: "• TV vs TSV com aberrância (na dúvida: tratar como TV)\n• FA pré-excitada (WPW) — evitar BCC/adenosina\n• Taquicardia sinusal — NÃO cardioverter\n• Artefato de movimento" },
+      { id: "conduct", title: "Conduta Inicial", content: "PROCEDIMENTO:\n\n1. Monitorização: ECG, SpO2, PA\n2. Material de ressuscitação disponível\n3. Jejum (eletiva) ou proteção de VA\n4. Sedação: Propofol 0,5-1 mg/kg IV OU Midazolam 3-5 mg IV + Fentanil 50 mcg IV\n5. Selecionar modo SINCRONIZADO\n6. Pás em posição anterolateral ou anteroposterior\n7. Energia:\n• TSV / Flutter: 50-100 J\n• FA: 120-200 J\n• TV monomórfica: 100 J\n8. Avisar equipe → CHOQUE\n9. Verificar ritmo pós-choque\n10. Se não reverte: aumentar energia → repetir" },
+      { id: "treatment", title: "Abordagem Terapêutica", content: "Pós-cardioversão bem-sucedida:\n• Manter monitorização por 2-4h\n• Antiarrítmico de manutenção conforme indicação\n• Anticoagulação por 4 semanas mínimas (FA)\n\nSe FA > 48h sem anticoagulação:\n• Eco TE antes → se trombo em AE: anticoagular 3 semanas antes\n• Se sem trombo: cardioverter + anticoagular 4 semanas" },
+      { id: "prescriptions", title: "Prescrições", content: "CHECKLIST — CARDIOVERSÃO ELETIVA:\n\n1. Jejum 6-8h\n2. Propofol 0,5-1 mg/kg IV (sedação)\n3. Cardioversão sincronizada (energia conforme ritmo)\n4. Monitorização pós: ECG, PA, SpO2 por 2-4h\n5. Anticoagulação: Rivaroxabana 20 mg/dia ou Varfarina (INR 2-3)\n6. Antiarrítmico de manutenção SN\n7. ECG 12D pós-procedimento\n8. Orientações de alta" },
+      { id: "followup", title: "Acompanhamento", content: "• ECG controle\n• Anticoagulação por mínimo 4 semanas\n• Avaliação de necessidade de anticoagulação crônica (CHA₂DS₂-VASc)\n• Seguimento cardiológico" },
+      { id: "complications", title: "Complicações", content: "• Tromboembolismo (FA > 48h sem anticoagulação)\n• Queimadura cutânea\n• Bradicardia transitória\n• Arritmia pós-choque\n• Aspiração (sedação)" },
+      { id: "criteria", title: "Critérios de Internação / UTI / Alta", content: "Alta no mesmo dia: cardioversão eletiva bem-sucedida, estável\nInternação: instabilidade, arritmia recorrente, comorbidade" },
+      { id: "references", title: "Referências Bibliográficas", content: "1. AHA — ACLS Guidelines 2020.\n2. January CT et al. AHA/ACC/HRS Guideline for AF 2019.\n3. SBC — Diretriz de FA 2016.\n4. Stiell IG et al. Canadian Cardiovascular Society AF Guidelines 2020." }
+    ]
+  }
+];
