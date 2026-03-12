@@ -37,7 +37,7 @@ export default function EmergencyMode() {
 
   return (
     <>
-      <TopBar title="Emergência" />
+      <TopBar title="Emergência / UTI / SAMU" />
       <div className="px-4 py-4 max-w-lg mx-auto space-y-4 pb-24">
         {/* Header */}
         <div className="duty-card p-4 space-y-2">

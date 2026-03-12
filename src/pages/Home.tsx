@@ -15,6 +15,7 @@ const modules = [
   { label: "Medicações", icon: Pill, path: "/medications" },
   { label: "Prescrições", icon: ClipboardList, path: "/prescriptions" },
   { label: "Protocolos", icon: FileText, path: "/protocols" },
+  { label: "Protocolos Completos", icon: BookOpen, path: "/full-protocols" },
   { label: "Calculadoras", icon: Calculator, path: "/calculators" },
   { label: "Interações", icon: FlaskConical, path: "/drug-interactions" },
   { label: "Pediatria", icon: Baby, path: "/pediatrics" },

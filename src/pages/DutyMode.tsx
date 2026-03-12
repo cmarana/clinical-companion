@@ -16,7 +16,7 @@ import { medications } from "@/data/medications";
 /* ─── Data ─── */
 
 const quickAccess = [
-  { label: "Emergência", icon: Zap, path: "/emergency" },
+  { label: "Emergência / UTI / SAMU", icon: Zap, path: "/emergency" },
   { label: "Medicações", icon: Pill, path: "/medications" },
   { label: "Prescrições", icon: ClipboardList, path: "/prescriptions" },
   { label: "Calculadoras", icon: Calculator, path: "/calculators" },
