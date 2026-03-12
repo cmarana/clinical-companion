@@ -29,7 +29,7 @@ export default function EmergencyMode() {
   if (!subscription.subscribed) {
     return (
       <>
-        <TopBar title="Emergência" />
+      <TopBar title="Emergência / UTI / SAMU" />
         <PremiumGate />
       </>
     );
