@@ -4,8 +4,11 @@ import { cardiovascularProtocols } from "./cardiovascular";
 import { cardiovascularProtocols2 } from "./cardiovascular2";
 import { respiratoryProtocols } from "./respiratory";
 import { neurologicalProtocols } from "./neurological";
+import { neurologicalProtocols2 } from "./neurological2";
 import { sepsisProtocols } from "./sepsis";
+import { sepsisProtocols2 } from "./sepsis2";
 import { metabolicProtocols } from "./metabolic";
+import { metabolicProtocols2 } from "./metabolic2";
 import { traumaProtocols } from "./trauma";
 import { traumaProtocols2 } from "./trauma2";
 import { intoxicationProtocols } from "./intoxication";
@@ -21,9 +24,9 @@ export const emergencyCategories: EmergencyCategory[] = [
   { id: "resuscitation", title: "Ressuscitação e Via Aérea", protocols: resuscitationProtocols },
   { id: "cardiovascular", title: "Cardiovasculares de Emergência", protocols: [...cardiovascularProtocols, ...cardiovascularProtocols2] },
   { id: "respiratory", title: "Respiratório", protocols: respiratoryProtocols },
-  { id: "neurological", title: "Neurológico", protocols: neurologicalProtocols },
-  { id: "sepsis", title: "Sepse e Choque", protocols: sepsisProtocols },
-  { id: "metabolic", title: "Metabólico e Eletrolítico", protocols: metabolicProtocols },
+  { id: "neurological", title: "Neurológico", protocols: [...neurologicalProtocols, ...neurologicalProtocols2] },
+  { id: "sepsis", title: "Sepse e Choque", protocols: [...sepsisProtocols, ...sepsisProtocols2] },
+  { id: "metabolic", title: "Metabólico e Eletrolítico", protocols: [...metabolicProtocols, ...metabolicProtocols2] },
   { id: "trauma", title: "Trauma (ATLS)", protocols: [...traumaProtocols, ...traumaProtocols2] },
   { id: "obstetrics", title: "Obstetrícia de Emergência", protocols: [...obstetricsProtocols, ...obstetricsProtocols2] },
   { id: "intoxication", title: "Intoxicações", protocols: intoxicationProtocols },
