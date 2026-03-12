@@ -22,6 +22,10 @@ import { pediatricEmergencyProtocols } from "./pediatric";
 import { obstetricsProtocols } from "./obstetrics";
 import { obstetricsProtocols2 } from "./obstetrics2";
 import { obstetricsProtocols3 } from "./obstetrics3";
+import { obstetricsProtocols4 } from "./obstetrics4";
+import { traumaProtocols4 } from "./trauma4";
+import { intoxicationProtocols4 } from "./intoxication4";
+import { proceduresProtocols4 } from "./procedures4";
 
 export { SECTION_ORDER } from "./types";
 export type { EmergencyProtocol, EmergencyCategory, EmergencySection } from "./types";
