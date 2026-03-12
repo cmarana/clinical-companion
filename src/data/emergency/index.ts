@@ -17,11 +17,11 @@ import { traumaProtocols2 } from "./trauma2";
 import { traumaProtocols3 } from "./trauma3";
 import { intoxicationProtocols } from "./intoxication";
 import { proceduresProtocols } from "./procedures";
-import { proceduresProtocols3 } from "./procedures3";
+
 import { pediatricEmergencyProtocols } from "./pediatric";
 import { obstetricsProtocols } from "./obstetrics";
 import { obstetricsProtocols2 } from "./obstetrics2";
-import { obstetricsProtocols3 } from "./obstetrics3";
+
 import { obstetricsProtocols4 } from "./obstetrics4";
 import { traumaProtocols4 } from "./trauma4";
 import { intoxicationProtocols4 } from "./intoxication4";
@@ -38,9 +38,9 @@ export const emergencyCategories: EmergencyCategory[] = [
   { id: "sepsis", title: "Sepse e Choque", protocols: [...sepsisProtocols, ...sepsisProtocols2, ...sepsisProtocols3] },
   { id: "metabolic", title: "Metabólico e Eletrolítico", protocols: [...metabolicProtocols, ...metabolicProtocols2, ...metabolicProtocols3] },
   { id: "trauma", title: "Trauma (ATLS)", protocols: [...traumaProtocols, ...traumaProtocols2, ...traumaProtocols3, ...traumaProtocols4] },
-  { id: "obstetrics", title: "Obstetrícia de Emergência", protocols: [...obstetricsProtocols, ...obstetricsProtocols2, ...obstetricsProtocols3, ...obstetricsProtocols4] },
+  { id: "obstetrics", title: "Obstetrícia de Emergência", protocols: [...obstetricsProtocols, ...obstetricsProtocols2, ...obstetricsProtocols4] },
   { id: "intoxication", title: "Intoxicações", protocols: [...intoxicationProtocols, ...intoxicationProtocols4] },
-  { id: "procedures", title: "Procedimentos de Emergência", protocols: [...proceduresProtocols, ...proceduresProtocols3, ...proceduresProtocols4] },
+  { id: "procedures", title: "Procedimentos de Emergência", protocols: [...proceduresProtocols, ...proceduresProtocols4] },
   { id: "pediatric-emergency", title: "Pediatria de Emergência", protocols: pediatricEmergencyProtocols },
 ];
 
