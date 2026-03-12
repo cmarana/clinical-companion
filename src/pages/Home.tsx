@@ -11,10 +11,11 @@ import { useTheme } from "@/contexts/ThemeContext";
 const modules = [
   { label: "IA Clínica", icon: Bot, path: "/clinical-ai", highlight: true },
   { label: "Modo Plantão", icon: AlertTriangle, path: "/duty", accent: true },
-  { label: "Emergência", icon: Zap, path: "/emergency", accent: true },
+  { label: "Emergência / UTI / SAMU", icon: Zap, path: "/emergency", accent: true },
   { label: "Medicações", icon: Pill, path: "/medications" },
   { label: "Prescrições", icon: ClipboardList, path: "/prescriptions" },
   { label: "Protocolos", icon: FileText, path: "/protocols" },
+  { label: "Protocolos Completos", icon: BookOpen, path: "/full-protocols" },
   { label: "Calculadoras", icon: Calculator, path: "/calculators" },
   { label: "Interações", icon: FlaskConical, path: "/drug-interactions" },
   { label: "Pediatria", icon: Baby, path: "/pediatrics" },

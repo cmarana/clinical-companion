@@ -32,6 +32,8 @@ import DrugInteractions from "@/pages/DrugInteractions";
 import Auth from "@/pages/Auth";
 import ResetPassword from "@/pages/ResetPassword";
 import Pricing from "@/pages/Pricing";
+import FullProtocols from "@/pages/FullProtocols";
+import FullProtocolDetail from "@/pages/FullProtocolDetail";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -69,6 +71,8 @@ const AppRoutes = () => (
       <Route path="/internship" element={<Internship />} />
       <Route path="/clinical-ai" element={<ClinicalAI />} />
       <Route path="/drug-interactions" element={<DrugInteractions />} />
+      <Route path="/full-protocols" element={<FullProtocols />} />
+      <Route path="/full-protocols/:id" element={<FullProtocolDetail />} />
       <Route path="/pricing" element={<Pricing />} />
     </Route>
     <Route path="*" element={<NotFound />} />
