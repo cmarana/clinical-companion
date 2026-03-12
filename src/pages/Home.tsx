@@ -11,7 +11,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 const modules = [
   { label: "IA Clínica", icon: Bot, path: "/clinical-ai", highlight: true },
   { label: "Modo Plantão", icon: AlertTriangle, path: "/duty", accent: true },
-  { label: "Emergência", icon: Zap, path: "/emergency", accent: true },
+  { label: "Emergência / UTI / SAMU", icon: Zap, path: "/emergency", accent: true },
   { label: "Medicações", icon: Pill, path: "/medications" },
   { label: "Prescrições", icon: ClipboardList, path: "/prescriptions" },
   { label: "Protocolos", icon: FileText, path: "/protocols" },
