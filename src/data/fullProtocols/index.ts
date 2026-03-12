@@ -15,8 +15,13 @@ import { metabolicFullProtocols } from "./metabolic";
 import { metabolicFullProtocols2 } from "./metabolic2";
 import { traumaFullProtocols } from "./trauma";
 import { traumaFullProtocols2 } from "./trauma2";
+import { traumaFullProtocols3 } from "./trauma3";
 import { obstetricsFullProtocols } from "./obstetrics";
 import { obstetricsFullProtocols2 } from "./obstetrics2";
+import { obstetricsFullProtocols3 } from "./obstetrics3";
+import { intoxicationFullProtocols } from "./intoxication";
+import { intoxicationFullProtocols2 } from "./intoxication2";
+import { proceduresFullProtocols } from "./procedures";
 
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
@@ -26,6 +31,8 @@ export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "metabolic", title: "Metabólico e Endócrino", order: 5 },
   { id: "trauma", title: "Trauma e Cirurgia", order: 6 },
   { id: "obstetrics", title: "Obstetrícia", order: 7 },
+  { id: "intoxication", title: "Intoxicações", order: 8 },
+  { id: "procedures", title: "Procedimentos de Emergência", order: 9 },
 ];
 
 export const fullProtocols: FullProtocol[] = [
@@ -42,8 +49,13 @@ export const fullProtocols: FullProtocol[] = [
   ...metabolicFullProtocols2,
   ...traumaFullProtocols,
   ...traumaFullProtocols2,
+  ...traumaFullProtocols3,
   ...obstetricsFullProtocols,
   ...obstetricsFullProtocols2,
+  ...obstetricsFullProtocols3,
+  ...intoxicationFullProtocols,
+  ...intoxicationFullProtocols2,
+  ...proceduresFullProtocols,
 ];
 
 export function getFullProtocol(id: string) {
