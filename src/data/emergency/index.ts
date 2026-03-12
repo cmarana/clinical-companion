@@ -7,6 +7,7 @@ import { neurologicalProtocols } from "./neurological";
 import { sepsisProtocols } from "./sepsis";
 import { metabolicProtocols } from "./metabolic";
 import { traumaProtocols } from "./trauma";
+import { traumaProtocols2 } from "./trauma2";
 import { intoxicationProtocols } from "./intoxication";
 import { proceduresProtocols } from "./procedures";
 import { pediatricEmergencyProtocols } from "./pediatric";
