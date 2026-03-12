@@ -17,7 +17,7 @@ import { traumaProtocols2 } from "./trauma2";
 import { traumaProtocols3 } from "./trauma3";
 import { intoxicationProtocols } from "./intoxication";
 import { proceduresProtocols } from "./procedures";
-import { proceduresProtocols3 } from "./procedures3";
+
 import { pediatricEmergencyProtocols } from "./pediatric";
 import { obstetricsProtocols } from "./obstetrics";
 import { obstetricsProtocols2 } from "./obstetrics2";
