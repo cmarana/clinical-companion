@@ -34,6 +34,8 @@ import ResetPassword from "@/pages/ResetPassword";
 import Pricing from "@/pages/Pricing";
 import FullProtocols from "@/pages/FullProtocols";
 import FullProtocolDetail from "@/pages/FullProtocolDetail";
+import Bulario from "@/pages/Bulario";
+import BularioDetail from "@/pages/BularioDetail";
 import NotFound from "@/pages/NotFound";
 
 const queryClient = new QueryClient();
