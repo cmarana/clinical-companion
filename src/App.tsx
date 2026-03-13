@@ -51,7 +51,7 @@ const AppRoutes = () => (
     <Route path="/reset-password" element={<ResetPassword />} />
     <Route element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>
       <Route path="/" element={<Home />} />
-      <Route path="/protocols" element={<Protocols />} />
+      <Route path="/protocols" element={<Navigate to="/full-protocols" replace />} />
       <Route path="/protocols/:id" element={<ProtocolDetail />} />
       <Route path="/medications" element={<Medications />} />
       <Route path="/medications/:id" element={<MedicationDetail />} />

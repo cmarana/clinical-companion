@@ -14,7 +14,6 @@ const modules = [
   { label: "Emergência / UTI / SAMU", icon: Zap, path: "/emergency", accent: true },
   { label: "Medicações", icon: Pill, path: "/medications" },
   { label: "Prescrições", icon: ClipboardList, path: "/prescriptions" },
-  { label: "Protocolos", icon: FileText, path: "/protocols" },
   { label: "Protocolos Completos", icon: BookOpen, path: "/full-protocols" },
   { label: "Calculadoras", icon: Calculator, path: "/calculators" },
   { label: "Interações", icon: FlaskConical, path: "/drug-interactions" },
