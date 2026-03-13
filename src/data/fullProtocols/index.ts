@@ -64,6 +64,7 @@ export const fullProtocols: FullProtocol[] = [
   ...metabolicFullProtocols2,
   ...metabolicFullProtocols3,
   ...metabolicFullProtocols4,
+  ...metabolicFullProtocols5,
   ...traumaFullProtocols,
   ...traumaFullProtocols2,
   ...traumaFullProtocols3,
