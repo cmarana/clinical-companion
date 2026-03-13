@@ -42,7 +42,7 @@ export const emergencyFullProtocols2: FullProtocol[] = [
     ]
   },
   {
-    id: "fp-intoxicacao-opioide", title: "Intoxicação por Opioide", categoryId: "emergency", category: "Emergência e Ressuscitação",
+    id: "fp-intoxicacao-opioide-emerg", title: "Intoxicação por Opioide", categoryId: "emergency", category: "Emergência e Ressuscitação",
     tags: ["opioide", "naloxona", "overdose", "fentanil", "heroína", "depressão respiratória"],
     sections: [
       { id: "intro", title: "Introdução", content: "A intoxicação por opioides é uma emergência crescente globalmente. A tríade clássica é miose + depressão respiratória + rebaixamento. Naloxona é o antídoto específico. O principal risco é apneia e morte por hipóxia.\n\nDiretrizes: Nelson's Toxicology 2019, CIATox 2022." },

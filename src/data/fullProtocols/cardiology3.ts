@@ -48,7 +48,7 @@ export const cardioFullProtocols3: FullProtocol[] = [
     ]
   },
   {
-    id: "fp-cardioversao",
+    id: "fp-cardioversao-cardio",
     title: "Cardioversão Elétrica",
     categoryId: "cardiology",
     category: "Cardiologia",
