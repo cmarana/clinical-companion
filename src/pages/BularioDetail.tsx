@@ -1,14 +1,13 @@
 import { useParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
-import { bularioMedications } from "@/data/bularioMedications";
+import { useBularioDetail } from "@/hooks/useBularioMedications";
 import { useFavorites } from "@/contexts/FavoritesContext";
-import { Star } from "lucide-react";
+import { Star, Loader2 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 
-/** Section helper — only renders if content is non-empty */
 function Section({ title, content }: { title: string; content?: string }) {
   if (!content) return null;
   return (
@@ -28,7 +27,18 @@ function Section({ title, content }: { title: string; content?: string }) {
 export default function BularioDetail() {
   const { id } = useParams<{ id: string }>();
   const { isFavorite, toggleFavorite } = useFavorites();
-  const med = bularioMedications.find((m) => m.id === id);
+  const { data: med, isLoading } = useBularioDetail(id);
+
+  if (isLoading) {
+    return (
+      <>
+        <TopBar title="Bulário" />
+        <div className="flex items-center justify-center h-64">
+          <Loader2 size={24} className="animate-spin text-muted-foreground" />
+        </div>
+      </>
+    );
+  }
 
   if (!med) {
     return (
@@ -46,10 +56,10 @@ export default function BularioDetail() {
   return (
     <>
       <TopBar
-        title={med.name}
+        title={med.nome}
         rightContent={
           <button
-            onClick={() => toggleFavorite({ id: med.id, type: "medication", title: med.name })}
+            onClick={() => toggleFavorite({ id: med.id, type: "medication", title: med.nome })}
             className="p-1.5 rounded-md hover:bg-accent transition-colors"
           >
             <Star size={18} className={cn(fav ? "fill-warning text-warning" : "text-muted-foreground")} />
@@ -59,25 +69,26 @@ export default function BularioDetail() {
       <div className="px-4 py-4 max-w-lg mx-auto space-y-4 pb-24">
         {/* Header badges */}
         <div className="flex flex-wrap gap-1.5">
-          <Badge variant="secondary">{med.drugClass}</Badge>
-          <Badge variant="outline">{med.category}</Badge>
-          <Badge variant="outline">{med.dosageForm} — {med.route}</Badge>
-          {med.controlled && <Badge variant="destructive">Controlado</Badge>}
-          {med.prescriptionType && (
+          <Badge variant="secondary">{med.classe}</Badge>
+          {med.subclasse && <Badge variant="outline">{med.subclasse}</Badge>}
+          <Badge variant="outline">{med.categoria}</Badge>
+          <Badge variant="outline">{med.forma_farmaceutica} — {med.via}</Badge>
+          {med.controlado && <Badge variant="destructive">Controlado</Badge>}
+          {med.receituario && (
             <Badge variant="outline" className="border-warning text-warning-foreground">
-              {med.prescriptionType}
+              {med.receituario}
             </Badge>
           )}
-          {med.anvisaCategory && (
-            <Badge variant="outline">ANVISA: {med.anvisaCategory}</Badge>
+          {med.categoria_anvisa && (
+            <Badge variant="outline">ANVISA: {med.categoria_anvisa}</Badge>
           )}
         </div>
 
         {/* Brand names */}
-        {med.brandNames.length > 0 && (
+        {med.nomes_comerciais.length > 0 && (
           <p className="text-xs text-muted-foreground">
             <span className="font-heading font-semibold">Nomes comerciais:</span>{" "}
-            {med.brandNames.join(", ")}
+            {med.nomes_comerciais.join(", ")}
           </p>
         )}
 
@@ -92,46 +103,40 @@ export default function BularioDetail() {
             <TabsTrigger value="referencias" className="text-xs py-2">Referências</TabsTrigger>
           </TabsList>
 
-          {/* TAB: Principal */}
           <TabsContent value="principal" className="space-y-3 mt-3">
-            <Section title="Mecanismo de ação" content={med.mechanismOfAction} />
-            <Section title="Indicações" content={med.indications} />
-            <Section title="Contraindicações" content={med.contraindications} />
-            <Section title="Observações clínicas" content={med.clinicalNotes} />
+            <Section title="Mecanismo de ação" content={med.mecanismo} />
+            <Section title="Indicações" content={med.indicacoes} />
+            <Section title="Contraindicações" content={med.contraindicacoes} />
+            <Section title="Observações clínicas" content={med.observacoes} />
           </TabsContent>
 
-          {/* TAB: Posologia */}
           <TabsContent value="posologia" className="space-y-3 mt-3">
-            <Section title="Posologia adulto" content={med.adultDosage} />
-            <Section title="Posologia pediátrica" content={med.pediatricDosage} />
-            <Section title="Ajuste renal" content={med.renalAdjustment} />
-            <Section title="Ajuste hepático" content={med.hepaticAdjustment} />
-            <Section title="Apresentações" content={med.presentations} />
+            <Section title="Posologia adulto" content={med.posologia_adulto} />
+            <Section title="Posologia pediátrica" content={med.posologia_pediatrica} />
+            <Section title="Ajuste renal" content={med.ajuste_renal} />
+            <Section title="Ajuste hepático" content={med.ajuste_hepatico} />
+            <Section title="Apresentações" content={med.apresentacoes} />
           </TabsContent>
 
-          {/* TAB: Cuidados */}
           <TabsContent value="cuidados" className="space-y-3 mt-3">
-            <Section title="Efeitos adversos" content={med.adverseEffects} />
-            <Section title="Uso na gestação" content={med.pregnancyUse} />
-            <Section title="Uso na lactação" content={med.lactationUse} />
-            <Section title="Uso em idosos" content={med.elderlyUse} />
-            <Section title="Monitorização" content={med.monitoring} />
+            <Section title="Efeitos adversos" content={med.efeitos_adversos} />
+            <Section title="Uso na gestação" content={med.gestacao} />
+            <Section title="Uso na lactação" content={med.lactacao} />
+            <Section title="Uso em idosos" content={med.idoso} />
+            <Section title="Monitorização" content={med.monitorizacao} />
           </TabsContent>
 
-          {/* TAB: Interações */}
           <TabsContent value="interacoes" className="space-y-3 mt-3">
-            <Section title="Interações medicamentosas" content={med.interactions} />
+            <Section title="Interações medicamentosas" content={med.interacoes} />
           </TabsContent>
 
-          {/* TAB: Diluição */}
           <TabsContent value="diluicao" className="space-y-3 mt-3">
-            <Section title="Diluição EV" content={med.ivDilution} />
-            <Section title="Compatibilidade" content={med.compatibility} />
+            <Section title="Diluição EV" content={med.diluicao_ev} />
+            <Section title="Compatibilidade" content={med.compatibilidade_ev} />
           </TabsContent>
 
-          {/* TAB: Referências */}
           <TabsContent value="referencias" className="space-y-3 mt-3">
-            <Section title="Referências" content={med.references} />
+            <Section title="Referências" content={med.referencias} />
           </TabsContent>
         </Tabs>
 
