@@ -23,7 +23,8 @@ interface PatientContext {
 
 export default function ClinicalAI() {
   const navigate = useNavigate();
-  const [messages, setMessages] = useState<Msg[]>([]);
+  const location = useLocation();
+  const prefillHandled = useRef(false);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [mode, setMode] = useState<"chat" | "structured">("chat");
