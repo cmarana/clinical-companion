@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { useState, useMemo } from "react";
 import { Search, ChevronRight, ChevronDown } from "lucide-react";
 import { emergencyCategories, allEmergencyProtocols } from "@/data/emergency";
+import SalaVermelha from "@/components/SalaVermelha";
 
 export default function EmergencyMode() {
   const navigate = useNavigate();
