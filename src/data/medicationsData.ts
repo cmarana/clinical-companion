@@ -39,6 +39,23 @@ export interface MedicationImportItem {
   gestacaoSeguro?: boolean;
   tags?: string[];
   categoriaAnvisa?: string;
+  // New expanded fields
+  descricao?: string;
+  mecanismoAcao?: string;
+  indicacoesDetalhadas?: string;
+  doseAdulto?: string;
+  dosePediatrica?: string;
+  dosePorPeso?: string;
+  doseMaxima?: string;
+  efeitosAdversosComuns?: string;
+  efeitosAdversosGraves?: string;
+  interacoesMedicamentosas?: string;
+  diluicao?: string;
+  tempoInfusao?: string;
+  categoriaFarmacologica?: string;
+  grupoTerapeutico?: string;
+  tarja?: string;
+  receitaTipo?: string;
 }
 
 export const medicationsData: MedicationImportItem[] = [
