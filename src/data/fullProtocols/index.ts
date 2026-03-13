@@ -15,6 +15,7 @@ import { metabolicFullProtocols } from "./metabolic";
 import { metabolicFullProtocols2 } from "./metabolic2";
 import { metabolicFullProtocols3 } from "./metabolic3";
 import { metabolicFullProtocols4 } from "./metabolic4";
+import { metabolicFullProtocols5 } from "./metabolic5";
 import { traumaFullProtocols } from "./trauma";
 import { traumaFullProtocols2 } from "./trauma2";
 import { traumaFullProtocols3 } from "./trauma3";
