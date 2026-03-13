@@ -93,6 +93,9 @@ export default function BularioDetail() {
           </p>
         )}
 
+        {/* Drug interaction alerts */}
+        <DrugInteractionAlert medication={med} />
+
         {/* Tabbed content */}
         <Tabs defaultValue="principal" className="w-full">
           <TabsList className="w-full grid grid-cols-3 lg:grid-cols-6 h-auto">
