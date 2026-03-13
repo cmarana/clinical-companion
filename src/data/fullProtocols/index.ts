@@ -15,6 +15,7 @@ import { metabolicFullProtocols } from "./metabolic";
 import { metabolicFullProtocols2 } from "./metabolic2";
 import { metabolicFullProtocols3 } from "./metabolic3";
 import { metabolicFullProtocols4 } from "./metabolic4";
+import { metabolicFullProtocols5 } from "./metabolic5";
 import { traumaFullProtocols } from "./trauma";
 import { traumaFullProtocols2 } from "./trauma2";
 import { traumaFullProtocols3 } from "./trauma3";
@@ -29,7 +30,9 @@ import { pediatricFullProtocols2 } from "./pediatric2";
 import { neonatalFullProtocols } from "./neonatal";
 import { infectiousFullProtocols } from "./infectious";
 import { infectiousFullProtocols2 } from "./infectious2";
+import { infectiousFullProtocols3 } from "./infectious3";
 import { otherEmergenciesFullProtocols } from "./otherEmergencies";
+import { otherEmergenciesFullProtocols2 } from "./otherEmergencies2";
 
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
@@ -61,6 +64,7 @@ export const fullProtocols: FullProtocol[] = [
   ...metabolicFullProtocols2,
   ...metabolicFullProtocols3,
   ...metabolicFullProtocols4,
+  ...metabolicFullProtocols5,
   ...traumaFullProtocols,
   ...traumaFullProtocols2,
   ...traumaFullProtocols3,
@@ -75,7 +79,9 @@ export const fullProtocols: FullProtocol[] = [
   ...neonatalFullProtocols,
   ...infectiousFullProtocols,
   ...infectiousFullProtocols2,
+  ...infectiousFullProtocols3,
   ...otherEmergenciesFullProtocols,
+  ...otherEmergenciesFullProtocols2,
 ];
 
 export function getFullProtocol(id: string) {
