@@ -81,6 +81,18 @@ export default function Bulario() {
           </div>
         )}
 
+        {!isLoading && totalCount > 0 && totalCount < allMedicationsData.length && (
+          <div className="flex items-center justify-between p-3 rounded-xl bg-card border border-border">
+            <p className="text-xs text-muted-foreground">
+              {totalCount} de {allMedicationsData.length} medicamentos importados.
+            </p>
+            <Button onClick={handleImport} disabled={importing} size="sm" variant="outline" className="gap-2">
+              {importing ? <Loader2 size={14} className="animate-spin" /> : <Upload size={14} />}
+              {importing ? "Importando..." : "Importar restantes"}
+            </Button>
+          </div>
+        )}
+
         {!isLoading && medications.length === 0 && totalCount > 0 && (
           <div className="text-center py-12">
             <p className="text-sm text-muted-foreground">Nenhum medicamento encontrado com esses filtros.</p>

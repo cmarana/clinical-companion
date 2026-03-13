@@ -54,10 +54,17 @@ export interface ImportResult {
  * Auto-chunks into batches for large datasets.
  */
 export async function importFromArray(items: MedicationImportItem[]): Promise<ImportResult> {
-  const result: ImportResult = { total: items.length, imported: 0, errors: [] };
+  // Deduplicate by id (last occurrence wins)
+  const uniqueMap = new Map<string, MedicationImportItem>();
+  for (const item of items) {
+    uniqueMap.set(item.id, item);
+  }
+  const dedupedItems = Array.from(uniqueMap.values());
+  
+  const result: ImportResult = { total: dedupedItems.length, imported: 0, errors: [] };
 
-  for (let i = 0; i < items.length; i += BATCH_SIZE) {
-    const batch = items.slice(i, i + BATCH_SIZE).map(toDbRow);
+  for (let i = 0; i < dedupedItems.length; i += BATCH_SIZE) {
+    const batch = dedupedItems.slice(i, i + BATCH_SIZE).map(toDbRow);
     const { error } = await supabase
       .from("bulario_medications")
       .upsert(batch, { onConflict: "id" });
