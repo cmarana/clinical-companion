@@ -2066,6 +2066,7 @@ import { medicationsLote6 } from "./medicationsLote6";
 import { medicationsLote7 } from "./medicationsLote7";
 import { medicationsLote8 } from "./medicationsLote8";
 import { medicationsLote9 } from "./medicationsLote9";
+import { medicationsLote10 } from "./medicationsLote10";
 
 export const allMedicationsData: MedicationImportItem[] = [
   ...medicationsData,
@@ -2076,4 +2077,5 @@ export const allMedicationsData: MedicationImportItem[] = [
   ...medicationsLote7,
   ...medicationsLote8,
   ...medicationsLote9,
+  ...medicationsLote10,
 ];
