@@ -7,6 +7,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { getFullProtocol, FULL_SECTION_ORDER } from "@/data/fullProtocols";
+import ProtocolActionBar from "@/components/ProtocolActionBar";
 
 export default function FullProtocolDetail() {
   const { id } = useParams<{ id: string }>();
@@ -57,7 +58,12 @@ export default function FullProtocolDetail() {
         }
       />
       <div className="px-4 py-4 max-w-lg mx-auto pb-24">
-        <p className="text-xs text-muted-foreground font-heading mb-4">{protocol.category}</p>
+        <p className="text-xs text-muted-foreground font-heading mb-3">{protocol.category}</p>
+
+        <ProtocolActionBar
+          protocolId={protocol.id}
+          protocolTitle={protocol.title}
+        />
 
         <Tabs defaultValue={defaultTab} className="w-full">
           <TabsList className="w-full flex overflow-x-auto no-scrollbar h-auto gap-1 bg-transparent p-0 mb-4">

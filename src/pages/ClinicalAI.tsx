@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -23,6 +23,8 @@ interface PatientContext {
 
 export default function ClinicalAI() {
   const navigate = useNavigate();
+  const location = useLocation();
+  const prefillHandled = useRef(false);
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -41,6 +43,19 @@ export default function ClinicalAI() {
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
+
+  // Handle prefilled context from protocol pages
+  useEffect(() => {
+    const state = location.state as { prefill?: string } | null;
+    if (state?.prefill && !prefillHandled.current) {
+      prefillHandled.current = true;
+      setInput(state.prefill);
+      // Auto-send after a short delay
+      setTimeout(() => {
+        sendMessage(state.prefill!, "chat");
+      }, 300);
+    }
+  }, [location.state]);
 
   const buildContextPrefix = () => {
     const parts: string[] = [];

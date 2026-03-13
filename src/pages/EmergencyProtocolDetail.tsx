@@ -4,6 +4,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import PremiumGate from "@/components/PremiumGate";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { getEmergencyProtocol, SECTION_ORDER } from "@/data/emergency";
+import ProtocolActionBar from "@/components/ProtocolActionBar";
 
 export default function EmergencyProtocolDetail() {
   const { id } = useParams<{ id: string }>();
@@ -41,6 +42,10 @@ export default function EmergencyProtocolDetail() {
     <>
       <TopBar title={protocol.title} />
       <div className="px-4 py-4 max-w-lg mx-auto pb-24">
+        <ProtocolActionBar
+          protocolId={protocol.id}
+          protocolTitle={protocol.title}
+        />
         <Tabs defaultValue={defaultTab} className="w-full">
           <TabsList className="w-full flex overflow-x-auto no-scrollbar h-auto gap-1 bg-transparent p-0 mb-4">
             {orderedSections.map(s => (
