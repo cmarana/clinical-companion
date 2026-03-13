@@ -1,11 +1,12 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Home, Search, Activity, Star, User } from "lucide-react";
+import { Home, Search, Activity, Star, User, Pill } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const tabs = [
   { path: "/", icon: Home, label: "Início" },
   { path: "/search", icon: Search, label: "Busca" },
   { path: "/duty", icon: Activity, label: "Plantão" },
+  { path: "/bulario", icon: Pill, label: "Bulário" },
   { path: "/favorites", icon: Star, label: "Favoritos" },
   { path: "/pricing", icon: User, label: "Conta" },
 ];
@@ -34,8 +35,8 @@ export default function BottomNav() {
                 tab.path === "/duty" && "text-destructive"
               )}
             >
-              <tab.icon size={22} strokeWidth={active ? 2.5 : 2} />
-              <span className="text-[10px] font-heading font-medium">{tab.label}</span>
+              <tab.icon size={20} strokeWidth={active ? 2.5 : 2} />
+              <span className="text-[9px] font-heading font-medium">{tab.label}</span>
             </button>
           );
         })}

@@ -12,6 +12,7 @@ const modules = [
   { label: "IA Clínica", icon: Bot, path: "/clinical-ai", highlight: true },
   { label: "Modo Plantão", icon: AlertTriangle, path: "/duty", accent: true },
   { label: "Emergência / UTI / SAMU", icon: Zap, path: "/emergency", accent: true },
+  { label: "Bulário", icon: Pill, path: "/bulario" },
   { label: "Medicações", icon: Pill, path: "/medications" },
   { label: "Prescrições", icon: ClipboardList, path: "/prescriptions" },
   { label: "Protocolos Completos", icon: BookOpen, path: "/full-protocols" },
