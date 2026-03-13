@@ -63,8 +63,8 @@ export async function importFromArray(items: MedicationImportItem[]): Promise<Im
   
   const result: ImportResult = { total: dedupedItems.length, imported: 0, errors: [] };
 
-  for (let i = 0; i < items.length; i += BATCH_SIZE) {
-    const batch = items.slice(i, i + BATCH_SIZE).map(toDbRow);
+  for (let i = 0; i < dedupedItems.length; i += BATCH_SIZE) {
+    const batch = dedupedItems.slice(i, i + BATCH_SIZE).map(toDbRow);
     const { error } = await supabase
       .from("bulario_medications")
       .upsert(batch, { onConflict: "id" });
