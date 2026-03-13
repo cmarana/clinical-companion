@@ -8,7 +8,7 @@ import BularioFilterBar from "@/components/BularioFilterBar";
 import { useBularioList, useBularioCount } from "@/hooks/useBularioMedications";
 import { Button } from "@/components/ui/button";
 import { importFromArray } from "@/lib/bularioImporter";
-import { medicationsData } from "@/data/medicationsData";
+import { allMedicationsData } from "@/data/medicationsData";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
