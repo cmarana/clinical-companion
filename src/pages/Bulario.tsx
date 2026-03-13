@@ -1,17 +1,46 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { Card, CardContent } from "@/components/ui/card";
-import { ChevronRight, Pill, ShieldCheck, Baby, Heart, Loader2 } from "lucide-react";
+import { ChevronRight, Pill, ShieldCheck, Baby, Heart, Loader2, Upload } from "lucide-react";
 import { type BularioFilters, INITIAL_FILTERS } from "@/types/bulario";
 import BularioFilterBar from "@/components/BularioFilterBar";
 import { useBularioList, useBularioCount } from "@/hooks/useBularioMedications";
+import { Button } from "@/components/ui/button";
+import { importFromArray } from "@/lib/bularioImporter";
+import { medicationsData } from "@/data/medicationsData";
+import { useQueryClient } from "@tanstack/react-query";
+import { toast } from "sonner";
 
 export default function Bulario() {
   const navigate = useNavigate();
   const [filters, setFilters] = useState<BularioFilters>(INITIAL_FILTERS);
   const { data: medications = [], isLoading } = useBularioList(filters);
   const { data: totalCount = 0 } = useBularioCount();
+  const [importing, setImporting] = useState(false);
+  const queryClient = useQueryClient();
+
+  const handleImport = async () => {
+    if (medicationsData.length === 0) {
+      toast.info("Nenhum medicamento para importar.");
+      return;
+    }
+    setImporting(true);
+    try {
+      const result = await importFromArray(medicationsData);
+      if (result.errors.length > 0) {
+        toast.error(`Erros: ${result.errors.join(", ")}`);
+      } else {
+        toast.success(`${result.imported} medicamentos importados com sucesso!`);
+      }
+      queryClient.invalidateQueries({ queryKey: ["bulario"] });
+      queryClient.invalidateQueries({ queryKey: ["bulario-count"] });
+    } catch {
+      toast.error("Erro ao importar medicamentos.");
+    } finally {
+      setImporting(false);
+    }
+  };
 
   return (
     <>
@@ -35,13 +64,20 @@ export default function Bulario() {
         )}
 
         {!isLoading && medications.length === 0 && totalCount === 0 && (
-          <div className="text-center py-16 space-y-2">
+          <div className="text-center py-16 space-y-3">
             <Pill size={32} className="mx-auto text-muted-foreground" />
             <p className="text-sm text-muted-foreground font-heading">Bulário em construção</p>
             <p className="text-xs text-muted-foreground">
-              A base de medicamentos será adicionada em breve.<br />
-              A estrutura já suporta 10.000+ medicamentos.
+              {medicationsData.length > 0
+                ? `${medicationsData.length} medicamentos prontos para importar.`
+                : "A base de medicamentos será adicionada em breve."}
             </p>
+            {medicationsData.length > 0 && (
+              <Button onClick={handleImport} disabled={importing} size="sm" className="gap-2">
+                {importing ? <Loader2 size={14} className="animate-spin" /> : <Upload size={14} />}
+                {importing ? "Importando..." : `Importar ${medicationsData.length} medicamentos`}
+              </Button>
+            )}
           </div>
         )}
 
