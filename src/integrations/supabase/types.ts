@@ -14,7 +14,117 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      bulario_medications: {
+        Row: {
+          ajuste_hepatico: string
+          ajuste_renal: string
+          apresentacoes: string
+          categoria: string
+          categoria_anvisa: string
+          classe: string
+          compatibilidade_ev: string
+          contraindicacoes: string
+          controlado: boolean
+          created_at: string
+          diluicao_ev: string
+          efeitos_adversos: string
+          forma_farmaceutica: string
+          gestacao: string
+          gestacao_seguro: boolean
+          id: string
+          idoso: string
+          indicacoes: string
+          interacoes: string
+          lactacao: string
+          mecanismo: string
+          monitorizacao: string
+          nome: string
+          nomes_comerciais: string[]
+          observacoes: string
+          pediatria: boolean
+          posologia_adulto: string
+          posologia_pediatrica: string
+          principio_ativo: string
+          receituario: string
+          referencias: string
+          subclasse: string
+          tags: string[]
+          via: string
+        }
+        Insert: {
+          ajuste_hepatico?: string
+          ajuste_renal?: string
+          apresentacoes?: string
+          categoria?: string
+          categoria_anvisa?: string
+          classe?: string
+          compatibilidade_ev?: string
+          contraindicacoes?: string
+          controlado?: boolean
+          created_at?: string
+          diluicao_ev?: string
+          efeitos_adversos?: string
+          forma_farmaceutica?: string
+          gestacao?: string
+          gestacao_seguro?: boolean
+          id: string
+          idoso?: string
+          indicacoes?: string
+          interacoes?: string
+          lactacao?: string
+          mecanismo?: string
+          monitorizacao?: string
+          nome: string
+          nomes_comerciais?: string[]
+          observacoes?: string
+          pediatria?: boolean
+          posologia_adulto?: string
+          posologia_pediatrica?: string
+          principio_ativo: string
+          receituario?: string
+          referencias?: string
+          subclasse?: string
+          tags?: string[]
+          via?: string
+        }
+        Update: {
+          ajuste_hepatico?: string
+          ajuste_renal?: string
+          apresentacoes?: string
+          categoria?: string
+          categoria_anvisa?: string
+          classe?: string
+          compatibilidade_ev?: string
+          contraindicacoes?: string
+          controlado?: boolean
+          created_at?: string
+          diluicao_ev?: string
+          efeitos_adversos?: string
+          forma_farmaceutica?: string
+          gestacao?: string
+          gestacao_seguro?: boolean
+          id?: string
+          idoso?: string
+          indicacoes?: string
+          interacoes?: string
+          lactacao?: string
+          mecanismo?: string
+          monitorizacao?: string
+          nome?: string
+          nomes_comerciais?: string[]
+          observacoes?: string
+          pediatria?: boolean
+          posologia_adulto?: string
+          posologia_pediatrica?: string
+          principio_ativo?: string
+          receituario?: string
+          referencias?: string
+          subclasse?: string
+          tags?: string[]
+          via?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
