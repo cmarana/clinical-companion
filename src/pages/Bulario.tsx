@@ -21,13 +21,13 @@ export default function Bulario() {
   const queryClient = useQueryClient();
 
   const handleImport = async () => {
-    if (medicationsData.length === 0) {
+    if (allMedicationsData.length === 0) {
       toast.info("Nenhum medicamento para importar.");
       return;
     }
     setImporting(true);
     try {
-      const result = await importFromArray(medicationsData);
+      const result = await importFromArray(allMedicationsData);
       if (result.errors.length > 0) {
         toast.error(`Erros: ${result.errors.join(", ")}`);
       } else {
