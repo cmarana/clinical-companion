@@ -36,6 +36,23 @@ export interface BularioMedicationRow {
   gestacao_seguro: boolean;
   tags: string[];
   categoria_anvisa: string;
+  // New expanded fields
+  descricao: string;
+  mecanismo_acao: string;
+  indicacoes_detalhadas: string;
+  dose_adulto: string;
+  dose_pediatrica: string;
+  dose_por_peso: string;
+  dose_maxima: string;
+  efeitos_adversos_comuns: string;
+  efeitos_adversos_graves: string;
+  interacoes_medicamentosas: string;
+  diluicao: string;
+  tempo_infusao: string;
+  categoria_farmacologica: string;
+  grupo_terapeutico: string;
+  tarja: string;
+  receita_tipo: string;
 }
 
 /** Fetch paginated & filtered medications from Supabase */

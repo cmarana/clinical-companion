@@ -21,22 +21,35 @@ export type Database = {
           apresentacoes: string
           categoria: string
           categoria_anvisa: string
+          categoria_farmacologica: string
           classe: string
           compatibilidade_ev: string
           contraindicacoes: string
           controlado: boolean
           created_at: string
+          descricao: string
+          diluicao: string
           diluicao_ev: string
+          dose_adulto: string
+          dose_maxima: string
+          dose_pediatrica: string
+          dose_por_peso: string
           efeitos_adversos: string
+          efeitos_adversos_comuns: string
+          efeitos_adversos_graves: string
           forma_farmaceutica: string
           gestacao: string
           gestacao_seguro: boolean
+          grupo_terapeutico: string
           id: string
           idoso: string
           indicacoes: string
+          indicacoes_detalhadas: string
           interacoes: string
+          interacoes_medicamentosas: string
           lactacao: string
           mecanismo: string
+          mecanismo_acao: string
           monitorizacao: string
           nome: string
           nomes_comerciais: string[]
@@ -45,10 +58,13 @@ export type Database = {
           posologia_adulto: string
           posologia_pediatrica: string
           principio_ativo: string
+          receita_tipo: string
           receituario: string
           referencias: string
           subclasse: string
           tags: string[]
+          tarja: string
+          tempo_infusao: string
           via: string
         }
         Insert: {
@@ -57,22 +73,35 @@ export type Database = {
           apresentacoes?: string
           categoria?: string
           categoria_anvisa?: string
+          categoria_farmacologica?: string
           classe?: string
           compatibilidade_ev?: string
           contraindicacoes?: string
           controlado?: boolean
           created_at?: string
+          descricao?: string
+          diluicao?: string
           diluicao_ev?: string
+          dose_adulto?: string
+          dose_maxima?: string
+          dose_pediatrica?: string
+          dose_por_peso?: string
           efeitos_adversos?: string
+          efeitos_adversos_comuns?: string
+          efeitos_adversos_graves?: string
           forma_farmaceutica?: string
           gestacao?: string
           gestacao_seguro?: boolean
+          grupo_terapeutico?: string
           id: string
           idoso?: string
           indicacoes?: string
+          indicacoes_detalhadas?: string
           interacoes?: string
+          interacoes_medicamentosas?: string
           lactacao?: string
           mecanismo?: string
+          mecanismo_acao?: string
           monitorizacao?: string
           nome: string
           nomes_comerciais?: string[]
@@ -81,10 +110,13 @@ export type Database = {
           posologia_adulto?: string
           posologia_pediatrica?: string
           principio_ativo: string
+          receita_tipo?: string
           receituario?: string
           referencias?: string
           subclasse?: string
           tags?: string[]
+          tarja?: string
+          tempo_infusao?: string
           via?: string
         }
         Update: {
@@ -93,22 +125,35 @@ export type Database = {
           apresentacoes?: string
           categoria?: string
           categoria_anvisa?: string
+          categoria_farmacologica?: string
           classe?: string
           compatibilidade_ev?: string
           contraindicacoes?: string
           controlado?: boolean
           created_at?: string
+          descricao?: string
+          diluicao?: string
           diluicao_ev?: string
+          dose_adulto?: string
+          dose_maxima?: string
+          dose_pediatrica?: string
+          dose_por_peso?: string
           efeitos_adversos?: string
+          efeitos_adversos_comuns?: string
+          efeitos_adversos_graves?: string
           forma_farmaceutica?: string
           gestacao?: string
           gestacao_seguro?: boolean
+          grupo_terapeutico?: string
           id?: string
           idoso?: string
           indicacoes?: string
+          indicacoes_detalhadas?: string
           interacoes?: string
+          interacoes_medicamentosas?: string
           lactacao?: string
           mecanismo?: string
+          mecanismo_acao?: string
           monitorizacao?: string
           nome?: string
           nomes_comerciais?: string[]
@@ -117,10 +162,13 @@ export type Database = {
           posologia_adulto?: string
           posologia_pediatrica?: string
           principio_ativo?: string
+          receita_tipo?: string
           receituario?: string
           referencias?: string
           subclasse?: string
           tags?: string[]
+          tarja?: string
+          tempo_infusao?: string
           via?: string
         }
         Relationships: []

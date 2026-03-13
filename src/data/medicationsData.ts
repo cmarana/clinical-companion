@@ -39,6 +39,23 @@ export interface MedicationImportItem {
   gestacaoSeguro?: boolean;
   tags?: string[];
   categoriaAnvisa?: string;
+  // New expanded fields
+  descricao?: string;
+  mecanismoAcao?: string;
+  indicacoesDetalhadas?: string;
+  doseAdulto?: string;
+  dosePediatrica?: string;
+  dosePorPeso?: string;
+  doseMaxima?: string;
+  efeitosAdversosComuns?: string;
+  efeitosAdversosGraves?: string;
+  interacoesMedicamentosas?: string;
+  diluicao?: string;
+  tempoInfusao?: string;
+  categoriaFarmacologica?: string;
+  grupoTerapeutico?: string;
+  tarja?: string;
+  receitaTipo?: string;
 }
 
 export const medicationsData: MedicationImportItem[] = [
@@ -2150,6 +2167,8 @@ export function removeDuplicateMedications(
   return result;
 }
 
+import { medicationsLote11 } from "./medicationsLote11";
+
 const allRaw: MedicationImportItem[] = [
   ...medicationsData,
   ...medicationsLote3,
@@ -2160,6 +2179,7 @@ const allRaw: MedicationImportItem[] = [
   ...medicationsLote8,
   ...medicationsLote9,
   ...medicationsLote10,
+  ...medicationsLote11,
 ];
 
 export const allMedicationsData: MedicationImportItem[] = removeDuplicateMedications(allRaw);

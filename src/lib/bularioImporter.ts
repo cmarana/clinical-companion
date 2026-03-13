@@ -39,6 +39,23 @@ function toDbRow(item: MedicationImportItem) {
     gestacao_seguro: item.gestacaoSeguro ?? false,
     tags: item.tags ?? [],
     categoria_anvisa: item.categoriaAnvisa ?? "",
+    // New expanded fields
+    descricao: item.descricao ?? "",
+    mecanismo_acao: item.mecanismoAcao ?? "",
+    indicacoes_detalhadas: item.indicacoesDetalhadas ?? "",
+    dose_adulto: item.doseAdulto ?? "",
+    dose_pediatrica: item.dosePediatrica ?? "",
+    dose_por_peso: item.dosePorPeso ?? "",
+    dose_maxima: item.doseMaxima ?? "",
+    efeitos_adversos_comuns: item.efeitosAdversosComuns ?? "",
+    efeitos_adversos_graves: item.efeitosAdversosGraves ?? "",
+    interacoes_medicamentosas: item.interacoesMedicamentosas ?? "",
+    diluicao: item.diluicao ?? "",
+    tempo_infusao: item.tempoInfusao ?? "",
+    categoria_farmacologica: item.categoriaFarmacologica ?? "",
+    grupo_terapeutico: item.grupoTerapeutico ?? "",
+    tarja: item.tarja ?? "",
+    receita_tipo: item.receitaTipo ?? "",
   };
 }
 
