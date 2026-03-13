@@ -75,6 +75,8 @@ const AppRoutes = () => (
       <Route path="/drug-interactions" element={<DrugInteractions />} />
       <Route path="/full-protocols" element={<FullProtocols />} />
       <Route path="/full-protocols/:id" element={<FullProtocolDetail />} />
+      <Route path="/bulario" element={<Bulario />} />
+      <Route path="/bulario/:id" element={<BularioDetail />} />
       <Route path="/pricing" element={<Pricing />} />
     </Route>
     <Route path="*" element={<NotFound />} />
