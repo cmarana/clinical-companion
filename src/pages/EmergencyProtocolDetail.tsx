@@ -4,6 +4,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import PremiumGate from "@/components/PremiumGate";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { getEmergencyProtocol, SECTION_ORDER } from "@/data/emergency";
+import ProtocolActionBar from "@/components/ProtocolActionBar";
 
 export default function EmergencyProtocolDetail() {
   const { id } = useParams<{ id: string }>();
