@@ -7,6 +7,7 @@ import { cn } from "@/lib/utils";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
+import DrugInteractionAlert from "@/components/DrugInteractionAlert";
 
 function Section({ title, content }: { title: string; content?: string }) {
   if (!content) return null;
@@ -91,6 +92,9 @@ export default function BularioDetail() {
             {med.nomes_comerciais.join(", ")}
           </p>
         )}
+
+        {/* Drug interaction alerts */}
+        <DrugInteractionAlert medication={med} />
 
         {/* Tabbed content */}
         <Tabs defaultValue="principal" className="w-full">

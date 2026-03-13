@@ -7,7 +7,8 @@ import { protocols } from "@/data/protocols";
 import { medications } from "@/data/medications";
 import { prescriptionCategories } from "@/data/prescriptions";
 import { symptomGuides } from "@/data/symptomGuides";
-import { Search, FileText, Pill, ClipboardList, Stethoscope } from "lucide-react";
+import { useBularioList } from "@/hooks/useBularioMedications";
+import { Search, FileText, Pill, ClipboardList, Stethoscope, BookOpen, Loader2 } from "lucide-react";
 
 interface SearchResult {
   id: string;
@@ -15,7 +16,7 @@ interface SearchResult {
   subtitle: string;
   type: string;
   path: string;
-  icon: "protocol" | "medication" | "prescription" | "symptom";
+  icon: "protocol" | "medication" | "prescription" | "symptom" | "bulario";
 }
 
 const typeColors: Record<string, string> = {
@@ -23,6 +24,7 @@ const typeColors: Record<string, string> = {
   medication: "bg-success/10 text-success",
   prescription: "bg-accent text-accent-foreground",
   symptom: "bg-warning/10 text-warning",
+  bulario: "bg-secondary text-secondary-foreground",
 };
 
 export default function SearchPage() {
@@ -30,7 +32,21 @@ export default function SearchPage() {
   const [searchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("q") || "");
 
-  const results = useMemo<SearchResult[]>(() => {
+  // Bulário search from database
+  const bularioFilters = useMemo(() => ({
+    search: query.length >= 2 ? query : "",
+    drugClass: null,
+    category: null,
+    dosageForm: null,
+    route: null,
+    controlled: null,
+    pediatric: null,
+    pregnancySafe: null,
+  }), [query]);
+
+  const { data: bularioMeds = [], isLoading: bularioLoading } = useBularioList(bularioFilters);
+
+  const localResults = useMemo<SearchResult[]>(() => {
     if (query.length < 2) return [];
     const q = query.toLowerCase();
 
@@ -54,12 +70,27 @@ export default function SearchPage() {
     return [...protocolResults, ...medResults, ...rxResults, ...symptomResults];
   }, [query]);
 
+  const bularioResults = useMemo<SearchResult[]>(() => {
+    if (query.length < 2) return [];
+    return bularioMeds.map(m => ({
+      id: m.id,
+      title: m.nome,
+      subtitle: `${m.principio_ativo} · ${m.classe}`,
+      type: "Bulário",
+      path: `/bulario/${m.id}`,
+      icon: "bulario" as const,
+    }));
+  }, [query, bularioMeds]);
+
+  const results = useMemo(() => [...localResults, ...bularioResults], [localResults, bularioResults]);
+
   const getIcon = (type: string) => {
     switch (type) {
       case "protocol": return <FileText size={16} />;
       case "medication": return <Pill size={16} />;
       case "prescription": return <ClipboardList size={16} />;
       case "symptom": return <Stethoscope size={16} />;
+      case "bulario": return <BookOpen size={16} />;
       default: return <FileText size={16} />;
     }
   };
@@ -80,7 +111,10 @@ export default function SearchPage() {
         </div>
 
         {query.length >= 2 && (
-          <p className="text-xs text-muted-foreground">{results.length} resultado(s)</p>
+          <div className="flex items-center gap-2">
+            <p className="text-xs text-muted-foreground">{results.length} resultado(s)</p>
+            {bularioLoading && <Loader2 size={12} className="animate-spin text-muted-foreground" />}
+          </div>
         )}
 
         <div className="space-y-2">
@@ -106,7 +140,7 @@ export default function SearchPage() {
           ))}
         </div>
 
-        {query.length >= 2 && results.length === 0 && (
+        {query.length >= 2 && results.length === 0 && !bularioLoading && (
           <p className="text-center text-muted-foreground text-sm py-8">Nenhum resultado encontrado.</p>
         )}
       </div>
