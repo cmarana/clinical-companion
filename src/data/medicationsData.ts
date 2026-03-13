@@ -2057,3 +2057,13 @@ export const medicationsData: MedicationImportItem[] = [
     tags: ["von Willebrand", "hemofilia", "diabetes insipidus", "enurese"],
   },
 ];
+
+// Combine all lotes
+import { medicationsLote3 } from "./medicationsLote3";
+import { medicationsLote4 } from "./medicationsLote4";
+
+export const allMedicationsData: MedicationImportItem[] = [
+  ...medicationsData,
+  ...medicationsLote3,
+  ...medicationsLote4,
+];
