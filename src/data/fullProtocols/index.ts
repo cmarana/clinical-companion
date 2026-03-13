@@ -30,7 +30,9 @@ import { pediatricFullProtocols2 } from "./pediatric2";
 import { neonatalFullProtocols } from "./neonatal";
 import { infectiousFullProtocols } from "./infectious";
 import { infectiousFullProtocols2 } from "./infectious2";
+import { infectiousFullProtocols3 } from "./infectious3";
 import { otherEmergenciesFullProtocols } from "./otherEmergencies";
+import { otherEmergenciesFullProtocols2 } from "./otherEmergencies2";
 
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
