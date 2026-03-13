@@ -2068,7 +2068,89 @@ import { medicationsLote8 } from "./medicationsLote8";
 import { medicationsLote9 } from "./medicationsLote9";
 import { medicationsLote10 } from "./medicationsLote10";
 
-export const allMedicationsData: MedicationImportItem[] = [
+/** Normalize string for comparison: lowercase, remove accents, trim */
+function norm(s: string): string {
+  return s
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+/** Count how many "meaningful" fields a medication has filled */
+function completenessScore(m: MedicationImportItem): number {
+  const fields: (keyof MedicationImportItem)[] = [
+    "indicacoes", "posologiaAdulto", "posologiaPediatrica", "contraindicacoes",
+    "efeitosAdversos", "interacoes", "gestacao", "lactacao", "mecanismo",
+    "ajusteRenal", "ajusteHepatico", "monitorizacao", "diluicaoEV",
+    "compatibilidadeEV", "apresentacoes", "observacoes", "referencias",
+    "idoso", "receituario", "categoriaAnvisa",
+  ];
+  let score = 0;
+  for (const f of fields) {
+    const v = m[f];
+    if (v && typeof v === "string" && v.length > 0) score++;
+  }
+  if (m.nomesComerciais && m.nomesComerciais.length > 0) score += 2;
+  if (m.tags && m.tags.length > 0) score++;
+  if (m.subclasse) score++;
+  return score;
+}
+
+/**
+ * Remove duplicate medications keeping the most complete entry.
+ * Duplicates are detected by normalized nome OR normalized principioAtivo.
+ */
+export function removeDuplicateMedications(
+  meds: MedicationImportItem[]
+): MedicationImportItem[] {
+  const byName = new Map<string, MedicationImportItem>();
+  const byPrincipio = new Map<string, MedicationImportItem>();
+  const result: MedicationImportItem[] = [];
+  let removed = 0;
+
+  for (const med of meds) {
+    const nName = norm(med.nome);
+    const nPrincipio = norm(med.principioAtivo);
+
+    // Find existing match by name or principio ativo
+    const existingByName = byName.get(nName);
+    const existingByPrincipio = byPrincipio.get(nPrincipio);
+    const existing = existingByName || existingByPrincipio;
+
+    if (existing) {
+      // Keep the more complete one
+      const existingScore = completenessScore(existing);
+      const newScore = completenessScore(med);
+
+      if (newScore > existingScore) {
+        // Replace: remove old from result, add new
+        const idx = result.indexOf(existing);
+        if (idx !== -1) result.splice(idx, 1);
+        // Clean old keys
+        byName.delete(norm(existing.nome));
+        byPrincipio.delete(norm(existing.principioAtivo));
+        // Add new
+        result.push(med);
+        byName.set(nName, med);
+        byPrincipio.set(nPrincipio, med);
+      }
+      // else keep existing, discard new
+      removed++;
+    } else {
+      result.push(med);
+      byName.set(nName, med);
+      byPrincipio.set(nPrincipio, med);
+    }
+  }
+
+  console.log(`Duplicatas removidas: ${removed}`);
+  console.log(`Total atual: ${result.length}`);
+  return result;
+}
+
+const allRaw: MedicationImportItem[] = [
   ...medicationsData,
   ...medicationsLote3,
   ...medicationsLote4,
@@ -2079,3 +2161,5 @@ export const allMedicationsData: MedicationImportItem[] = [
   ...medicationsLote9,
   ...medicationsLote10,
 ];
+
+export const allMedicationsData: MedicationImportItem[] = removeDuplicateMedications(allRaw);
