@@ -1,34 +1,17 @@
-import { useState, useMemo } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { Card, CardContent } from "@/components/ui/card";
-import { ChevronRight, Pill, ShieldCheck, Baby, Heart } from "lucide-react";
+import { ChevronRight, Pill, ShieldCheck, Baby, Heart, Loader2 } from "lucide-react";
 import { type BularioFilters, INITIAL_FILTERS } from "@/types/bulario";
-import { bularioMedications } from "@/data/bularioMedications";
 import BularioFilterBar from "@/components/BularioFilterBar";
-import { cn } from "@/lib/utils";
+import { useBularioList, useBularioCount } from "@/hooks/useBularioMedications";
 
 export default function Bulario() {
   const navigate = useNavigate();
   const [filters, setFilters] = useState<BularioFilters>(INITIAL_FILTERS);
-
-  const filtered = useMemo(() => {
-    const q = filters.search.toLowerCase().trim();
-    return bularioMedications.filter((m) => {
-      if (q) {
-        const haystack = `${m.name} ${m.activeIngredient} ${m.drugClass} ${m.category} ${m.brandNames.join(" ")} ${m.tags.join(" ")}`.toLowerCase();
-        if (!haystack.includes(q)) return false;
-      }
-      if (filters.drugClass && m.drugClass !== filters.drugClass) return false;
-      if (filters.category && m.category !== filters.category) return false;
-      if (filters.dosageForm && m.dosageForm !== filters.dosageForm) return false;
-      if (filters.route && m.route !== filters.route) return false;
-      if (filters.controlled === true && !m.controlled) return false;
-      if (filters.pediatric === true && !m.pediatric) return false;
-      if (filters.pregnancySafe === true && !m.pregnancySafe) return false;
-      return true;
-    });
-  }, [filters]);
+  const { data: medications = [], isLoading } = useBularioList(filters);
+  const { data: totalCount = 0 } = useBularioCount();
 
   return (
     <>
@@ -41,11 +24,17 @@ export default function Bulario() {
         <BularioFilterBar
           filters={filters}
           onChange={setFilters}
-          totalCount={bularioMedications.length}
-          filteredCount={filtered.length}
+          totalCount={totalCount}
+          filteredCount={medications.length}
         />
 
-        {filtered.length === 0 && bularioMedications.length === 0 && (
+        {isLoading && (
+          <div className="flex items-center justify-center py-16">
+            <Loader2 size={24} className="animate-spin text-muted-foreground" />
+          </div>
+        )}
+
+        {!isLoading && medications.length === 0 && totalCount === 0 && (
           <div className="text-center py-16 space-y-2">
             <Pill size={32} className="mx-auto text-muted-foreground" />
             <p className="text-sm text-muted-foreground font-heading">Bulário em construção</p>
@@ -56,14 +45,14 @@ export default function Bulario() {
           </div>
         )}
 
-        {filtered.length === 0 && bularioMedications.length > 0 && (
+        {!isLoading && medications.length === 0 && totalCount > 0 && (
           <div className="text-center py-12">
             <p className="text-sm text-muted-foreground">Nenhum medicamento encontrado com esses filtros.</p>
           </div>
         )}
 
         <div className="space-y-1.5">
-          {filtered.map((m) => (
+          {medications.map((m) => (
             <Card
               key={m.id}
               onClick={() => navigate(`/bulario/${m.id}`)}
@@ -74,15 +63,15 @@ export default function Bulario() {
                   <Pill size={15} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-heading font-semibold text-sm truncate">{m.name}</p>
+                  <p className="font-heading font-semibold text-sm truncate">{m.nome}</p>
                   <p className="text-[11px] text-muted-foreground truncate">
-                    {m.activeIngredient} · {m.drugClass}
+                    {m.principio_ativo} · {m.classe}
                   </p>
                 </div>
                 <div className="flex items-center gap-1 shrink-0">
-                  {m.controlled && <ShieldCheck size={12} className="text-destructive" />}
-                  {m.pediatric && <Baby size={12} className="text-primary" />}
-                  {m.pregnancySafe && <Heart size={12} className="text-success" />}
+                  {m.controlado && <ShieldCheck size={12} className="text-destructive" />}
+                  {m.pediatria && <Baby size={12} className="text-primary" />}
+                  {m.gestacao_seguro && <Heart size={12} className="text-success" />}
                   <ChevronRight size={14} className="text-muted-foreground ml-1" />
                 </div>
               </CardContent>
