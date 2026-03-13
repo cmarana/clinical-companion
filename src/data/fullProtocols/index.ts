@@ -79,7 +79,9 @@ export const fullProtocols: FullProtocol[] = [
   ...neonatalFullProtocols,
   ...infectiousFullProtocols,
   ...infectiousFullProtocols2,
+  ...infectiousFullProtocols3,
   ...otherEmergenciesFullProtocols,
+  ...otherEmergenciesFullProtocols2,
 ];
 
 export function getFullProtocol(id: string) {
