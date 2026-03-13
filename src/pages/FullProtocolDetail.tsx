@@ -7,6 +7,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { getFullProtocol, FULL_SECTION_ORDER } from "@/data/fullProtocols";
+import ProtocolActionBar from "@/components/ProtocolActionBar";
 
 export default function FullProtocolDetail() {
   const { id } = useParams<{ id: string }>();
