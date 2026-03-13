@@ -2061,9 +2061,13 @@ export const medicationsData: MedicationImportItem[] = [
 // Combine all lotes
 import { medicationsLote3 } from "./medicationsLote3";
 import { medicationsLote4 } from "./medicationsLote4";
+import { medicationsLote5 } from "./medicationsLote5";
+import { medicationsLote6 } from "./medicationsLote6";
 
 export const allMedicationsData: MedicationImportItem[] = [
   ...medicationsData,
   ...medicationsLote3,
   ...medicationsLote4,
+  ...medicationsLote5,
+  ...medicationsLote6,
 ];
