@@ -96,6 +96,19 @@ export default function BularioDetail() {
         {/* Drug interaction alerts */}
         <DrugInteractionAlert medication={med} />
 
+        {/* Description */}
+        {med.descricao && (
+          <p className="text-sm text-muted-foreground leading-relaxed">{med.descricao}</p>
+        )}
+
+        {/* Tarja badge */}
+        {med.tarja && (
+          <Badge variant={med.tarja.toLowerCase().includes('preta') ? 'destructive' : 'outline'}
+            className={med.tarja.toLowerCase().includes('preta') ? '' : 'border-destructive text-destructive'}>
+            Tarja {med.tarja}
+          </Badge>
+        )}
+
         {/* Tabbed content */}
         <Tabs defaultValue="principal" className="w-full">
           <TabsList className="w-full grid grid-cols-3 lg:grid-cols-6 h-auto">
@@ -108,22 +121,35 @@ export default function BularioDetail() {
           </TabsList>
 
           <TabsContent value="principal" className="space-y-3 mt-3">
-            <Section title="Mecanismo de ação" content={med.mecanismo} />
+            <Section title="Mecanismo de ação" content={med.mecanismo_acao || med.mecanismo} />
             <Section title="Indicações" content={med.indicacoes} />
+            <Section title="Indicações detalhadas" content={med.indicacoes_detalhadas} />
             <Section title="Contraindicações" content={med.contraindicacoes} />
             <Section title="Observações clínicas" content={med.observacoes} />
+            {(med.categoria_farmacologica || med.grupo_terapeutico) && (
+              <Card>
+                <CardContent className="px-4 py-3 space-y-1">
+                  {med.categoria_farmacologica && <p className="text-sm"><span className="font-heading font-semibold">Categoria farmacológica:</span> {med.categoria_farmacologica}</p>}
+                  {med.grupo_terapeutico && <p className="text-sm"><span className="font-heading font-semibold">Grupo terapêutico:</span> {med.grupo_terapeutico}</p>}
+                </CardContent>
+              </Card>
+            )}
           </TabsContent>
 
           <TabsContent value="posologia" className="space-y-3 mt-3">
-            <Section title="Posologia adulto" content={med.posologia_adulto} />
-            <Section title="Posologia pediátrica" content={med.posologia_pediatrica} />
+            <Section title="Posologia adulto" content={med.dose_adulto || med.posologia_adulto} />
+            <Section title="Posologia pediátrica" content={med.dose_pediatrica || med.posologia_pediatrica} />
+            <Section title="Dose por peso" content={med.dose_por_peso} />
+            <Section title="Dose máxima" content={med.dose_maxima} />
             <Section title="Ajuste renal" content={med.ajuste_renal} />
             <Section title="Ajuste hepático" content={med.ajuste_hepatico} />
             <Section title="Apresentações" content={med.apresentacoes} />
           </TabsContent>
 
           <TabsContent value="cuidados" className="space-y-3 mt-3">
-            <Section title="Efeitos adversos" content={med.efeitos_adversos} />
+            <Section title="Efeitos adversos comuns" content={med.efeitos_adversos_comuns} />
+            <Section title="Efeitos adversos graves" content={med.efeitos_adversos_graves} />
+            <Section title="Efeitos adversos" content={(!med.efeitos_adversos_comuns && !med.efeitos_adversos_graves) ? med.efeitos_adversos : undefined} />
             <Section title="Uso na gestação" content={med.gestacao} />
             <Section title="Uso na lactação" content={med.lactacao} />
             <Section title="Uso em idosos" content={med.idoso} />
@@ -131,11 +157,12 @@ export default function BularioDetail() {
           </TabsContent>
 
           <TabsContent value="interacoes" className="space-y-3 mt-3">
-            <Section title="Interações medicamentosas" content={med.interacoes} />
+            <Section title="Interações medicamentosas" content={med.interacoes_medicamentosas || med.interacoes} />
           </TabsContent>
 
           <TabsContent value="diluicao" className="space-y-3 mt-3">
-            <Section title="Diluição EV" content={med.diluicao_ev} />
+            <Section title="Diluição" content={med.diluicao || med.diluicao_ev} />
+            <Section title="Tempo de infusão" content={med.tempo_infusao} />
             <Section title="Compatibilidade" content={med.compatibilidade_ev} />
           </TabsContent>
 
