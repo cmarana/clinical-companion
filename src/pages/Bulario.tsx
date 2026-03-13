@@ -8,7 +8,7 @@ import BularioFilterBar from "@/components/BularioFilterBar";
 import { useBularioList, useBularioCount } from "@/hooks/useBularioMedications";
 import { Button } from "@/components/ui/button";
 import { importFromArray } from "@/lib/bularioImporter";
-import { medicationsData } from "@/data/medicationsData";
+import { allMedicationsData } from "@/data/medicationsData";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
 
@@ -21,13 +21,13 @@ export default function Bulario() {
   const queryClient = useQueryClient();
 
   const handleImport = async () => {
-    if (medicationsData.length === 0) {
+    if (allMedicationsData.length === 0) {
       toast.info("Nenhum medicamento para importar.");
       return;
     }
     setImporting(true);
     try {
-      const result = await importFromArray(medicationsData);
+      const result = await importFromArray(allMedicationsData);
       if (result.errors.length > 0) {
         toast.error(`Erros: ${result.errors.join(", ")}`);
       } else {
@@ -68,14 +68,14 @@ export default function Bulario() {
             <Pill size={32} className="mx-auto text-muted-foreground" />
             <p className="text-sm text-muted-foreground font-heading">Bulário em construção</p>
             <p className="text-xs text-muted-foreground">
-              {medicationsData.length > 0
-                ? `${medicationsData.length} medicamentos prontos para importar.`
+              {allMedicationsData.length > 0
+                ? `${allMedicationsData.length} medicamentos prontos para importar.`
                 : "A base de medicamentos será adicionada em breve."}
             </p>
-            {medicationsData.length > 0 && (
+            {allMedicationsData.length > 0 && (
               <Button onClick={handleImport} disabled={importing} size="sm" className="gap-2">
                 {importing ? <Loader2 size={14} className="animate-spin" /> : <Upload size={14} />}
-                {importing ? "Importando..." : `Importar ${medicationsData.length} medicamentos`}
+                {importing ? "Importando..." : `Importar ${allMedicationsData.length} medicamentos`}
               </Button>
             )}
           </div>
