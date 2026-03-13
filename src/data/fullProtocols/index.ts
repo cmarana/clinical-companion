@@ -13,6 +13,8 @@ import { sepsisFullProtocols } from "./sepsis";
 import { sepsisFullProtocols2 } from "./sepsis2";
 import { metabolicFullProtocols } from "./metabolic";
 import { metabolicFullProtocols2 } from "./metabolic2";
+import { metabolicFullProtocols3 } from "./metabolic3";
+import { metabolicFullProtocols4 } from "./metabolic4";
 import { traumaFullProtocols } from "./trauma";
 import { traumaFullProtocols2 } from "./trauma2";
 import { traumaFullProtocols3 } from "./trauma3";
@@ -25,6 +27,9 @@ import { proceduresFullProtocols } from "./procedures";
 import { pediatricFullProtocols } from "./pediatric";
 import { pediatricFullProtocols2 } from "./pediatric2";
 import { neonatalFullProtocols } from "./neonatal";
+import { infectiousFullProtocols } from "./infectious";
+import { infectiousFullProtocols2 } from "./infectious2";
+import { otherEmergenciesFullProtocols } from "./otherEmergencies";
 
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
@@ -38,6 +43,8 @@ export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "procedures", title: "Procedimentos de Emergência", order: 9 },
   { id: "pediatrics", title: "Pediatria de Emergência", order: 10 },
   { id: "neonatal", title: "Neonatal", order: 11 },
+  { id: "infectious", title: "Infectologia de Emergência", order: 12 },
+  { id: "other_emergencies", title: "Outras Emergências Frequentes", order: 13 },
 ];
 
 export const fullProtocols: FullProtocol[] = [
@@ -52,6 +59,8 @@ export const fullProtocols: FullProtocol[] = [
   ...sepsisFullProtocols2,
   ...metabolicFullProtocols,
   ...metabolicFullProtocols2,
+  ...metabolicFullProtocols3,
+  ...metabolicFullProtocols4,
   ...traumaFullProtocols,
   ...traumaFullProtocols2,
   ...traumaFullProtocols3,
@@ -64,6 +73,9 @@ export const fullProtocols: FullProtocol[] = [
   ...pediatricFullProtocols,
   ...pediatricFullProtocols2,
   ...neonatalFullProtocols,
+  ...infectiousFullProtocols,
+  ...infectiousFullProtocols2,
+  ...otherEmergenciesFullProtocols,
 ];
 
 export function getFullProtocol(id: string) {
