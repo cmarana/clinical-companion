@@ -44,6 +44,19 @@ export default function ClinicalAI() {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
 
+  // Handle prefilled context from protocol pages
+  useEffect(() => {
+    const state = location.state as { prefill?: string } | null;
+    if (state?.prefill && !prefillHandled.current) {
+      prefillHandled.current = true;
+      setInput(state.prefill);
+      // Auto-send after a short delay
+      setTimeout(() => {
+        sendMessage(state.prefill!, "chat");
+      }, 300);
+    }
+  }, [location.state]);
+
   const buildContextPrefix = () => {
     const parts: string[] = [];
     if (patientCtx.weight) parts.push(`Peso: ${patientCtx.weight}kg`);
