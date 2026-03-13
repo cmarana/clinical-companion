@@ -68,14 +68,14 @@ export default function Bulario() {
             <Pill size={32} className="mx-auto text-muted-foreground" />
             <p className="text-sm text-muted-foreground font-heading">Bulário em construção</p>
             <p className="text-xs text-muted-foreground">
-              {medicationsData.length > 0
-                ? `${medicationsData.length} medicamentos prontos para importar.`
+              {allMedicationsData.length > 0
+                ? `${allMedicationsData.length} medicamentos prontos para importar.`
                 : "A base de medicamentos será adicionada em breve."}
             </p>
-            {medicationsData.length > 0 && (
+            {allMedicationsData.length > 0 && (
               <Button onClick={handleImport} disabled={importing} size="sm" className="gap-2">
                 {importing ? <Loader2 size={14} className="animate-spin" /> : <Upload size={14} />}
-                {importing ? "Importando..." : `Importar ${medicationsData.length} medicamentos`}
+                {importing ? "Importando..." : `Importar ${allMedicationsData.length} medicamentos`}
               </Button>
             )}
           </div>
