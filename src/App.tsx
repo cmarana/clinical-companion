@@ -49,40 +49,46 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
+const LazyFallback = () => (
+  <div className="min-h-screen flex items-center justify-center bg-background text-muted-foreground text-sm">Carregando...</div>
+);
+
 const AppRoutes = () => (
-  <Routes>
-    <Route path="/auth" element={<Auth />} />
-    <Route path="/reset-password" element={<ResetPassword />} />
-    <Route element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>
-      <Route path="/" element={<Home />} />
-      <Route path="/protocols" element={<Navigate to="/full-protocols" replace />} />
-      <Route path="/protocols/:id" element={<ProtocolDetail />} />
-      <Route path="/medications" element={<Medications />} />
-      <Route path="/medications/:id" element={<MedicationDetail />} />
-      <Route path="/calculators" element={<Calculators />} />
-      <Route path="/quiz" element={<Quiz />} />
-      <Route path="/search" element={<SearchPage />} />
-      <Route path="/favorites" element={<Favorites />} />
-      <Route path="/notes" element={<Notes />} />
-      <Route path="/emergency" element={<EmergencyMode />} />
-      <Route path="/emergency/:id" element={<EmergencyProtocolDetail />} />
-      <Route path="/duty" element={<DutyMode />} />
-      <Route path="/prescriptions" element={<Prescriptions />} />
-      <Route path="/prescriptions/:id" element={<PrescriptionDetail />} />
-      <Route path="/diagnosis" element={<DiagnosisBySymptom />} />
-      <Route path="/pediatrics" element={<Pediatrics />} />
-      <Route path="/obstetrics" element={<Obstetrics />} />
-      <Route path="/internship" element={<Internship />} />
-      <Route path="/clinical-ai" element={<ClinicalAI />} />
-      <Route path="/drug-interactions" element={<DrugInteractions />} />
-      <Route path="/full-protocols" element={<FullProtocols />} />
-      <Route path="/full-protocols/:id" element={<FullProtocolDetail />} />
-      <Route path="/bulario" element={<Bulario />} />
-      <Route path="/bulario/:id" element={<BularioDetail />} />
-      <Route path="/pricing" element={<Pricing />} />
-    </Route>
-    <Route path="*" element={<NotFound />} />
-  </Routes>
+  <Suspense fallback={<LazyFallback />}>
+    <Routes>
+      <Route path="/auth" element={<Auth />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>
+        <Route path="/" element={<Home />} />
+        <Route path="/protocols" element={<Navigate to="/full-protocols" replace />} />
+        <Route path="/protocols/:id" element={<ProtocolDetail />} />
+        <Route path="/medications" element={<Medications />} />
+        <Route path="/medications/:id" element={<MedicationDetail />} />
+        <Route path="/calculators" element={<Calculators />} />
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/notes" element={<Notes />} />
+        <Route path="/emergency" element={<EmergencyMode />} />
+        <Route path="/emergency/:id" element={<EmergencyProtocolDetail />} />
+        <Route path="/duty" element={<DutyMode />} />
+        <Route path="/prescriptions" element={<Prescriptions />} />
+        <Route path="/prescriptions/:id" element={<PrescriptionDetail />} />
+        <Route path="/diagnosis" element={<DiagnosisBySymptom />} />
+        <Route path="/pediatrics" element={<Pediatrics />} />
+        <Route path="/obstetrics" element={<Obstetrics />} />
+        <Route path="/internship" element={<Internship />} />
+        <Route path="/clinical-ai" element={<ClinicalAI />} />
+        <Route path="/drug-interactions" element={<DrugInteractions />} />
+        <Route path="/full-protocols" element={<FullProtocols />} />
+        <Route path="/full-protocols/:id" element={<FullProtocolDetail />} />
+        <Route path="/bulario" element={<Bulario />} />
+        <Route path="/bulario/:id" element={<BularioDetail />} />
+        <Route path="/pricing" element={<Pricing />} />
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  </Suspense>
 );
 
 const App = () => (
