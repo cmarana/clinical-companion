@@ -8,35 +8,37 @@ import { FavoritesProvider } from "@/contexts/FavoritesContext";
 import { NotesProvider } from "@/contexts/NotesContext";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import AppLayout from "@/components/AppLayout";
-import Home from "@/pages/Home";
-import Protocols from "@/pages/Protocols";
-import ProtocolDetail from "@/pages/ProtocolDetail";
-import Medications from "@/pages/Medications";
-import MedicationDetail from "@/pages/MedicationDetail";
-import Calculators from "@/pages/Calculators";
-import Quiz from "@/pages/Quiz";
-import SearchPage from "@/pages/SearchPage";
-import Favorites from "@/pages/Favorites";
-import Notes from "@/pages/Notes";
-import EmergencyMode from "@/pages/EmergencyMode";
-import EmergencyProtocolDetail from "@/pages/EmergencyProtocolDetail";
-import DutyMode from "@/pages/DutyMode";
-import Prescriptions from "@/pages/Prescriptions";
-import PrescriptionDetail from "@/pages/PrescriptionDetail";
-import DiagnosisBySymptom from "@/pages/DiagnosisBySymptom";
-import Pediatrics from "@/pages/Pediatrics";
-import Obstetrics from "@/pages/Obstetrics";
-import Internship from "@/pages/Internship";
-import ClinicalAI from "@/pages/ClinicalAI";
-import DrugInteractions from "@/pages/DrugInteractions";
-import Auth from "@/pages/Auth";
-import ResetPassword from "@/pages/ResetPassword";
-import Pricing from "@/pages/Pricing";
-import FullProtocols from "@/pages/FullProtocols";
-import FullProtocolDetail from "@/pages/FullProtocolDetail";
-import Bulario from "@/pages/Bulario";
-import BularioDetail from "@/pages/BularioDetail";
-import NotFound from "@/pages/NotFound";
+import { lazy, Suspense } from "react";
+
+const Home = lazy(() => import("@/pages/Home"));
+const Protocols = lazy(() => import("@/pages/Protocols"));
+const ProtocolDetail = lazy(() => import("@/pages/ProtocolDetail"));
+const Medications = lazy(() => import("@/pages/Medications"));
+const MedicationDetail = lazy(() => import("@/pages/MedicationDetail"));
+const Calculators = lazy(() => import("@/pages/Calculators"));
+const Quiz = lazy(() => import("@/pages/Quiz"));
+const SearchPage = lazy(() => import("@/pages/SearchPage"));
+const Favorites = lazy(() => import("@/pages/Favorites"));
+const Notes = lazy(() => import("@/pages/Notes"));
+const EmergencyMode = lazy(() => import("@/pages/EmergencyMode"));
+const EmergencyProtocolDetail = lazy(() => import("@/pages/EmergencyProtocolDetail"));
+const DutyMode = lazy(() => import("@/pages/DutyMode"));
+const Prescriptions = lazy(() => import("@/pages/Prescriptions"));
+const PrescriptionDetail = lazy(() => import("@/pages/PrescriptionDetail"));
+const DiagnosisBySymptom = lazy(() => import("@/pages/DiagnosisBySymptom"));
+const Pediatrics = lazy(() => import("@/pages/Pediatrics"));
+const Obstetrics = lazy(() => import("@/pages/Obstetrics"));
+const Internship = lazy(() => import("@/pages/Internship"));
+const ClinicalAI = lazy(() => import("@/pages/ClinicalAI"));
+const DrugInteractions = lazy(() => import("@/pages/DrugInteractions"));
+const Auth = lazy(() => import("@/pages/Auth"));
+const ResetPassword = lazy(() => import("@/pages/ResetPassword"));
+const Pricing = lazy(() => import("@/pages/Pricing"));
+const FullProtocols = lazy(() => import("@/pages/FullProtocols"));
+const FullProtocolDetail = lazy(() => import("@/pages/FullProtocolDetail"));
+const Bulario = lazy(() => import("@/pages/Bulario"));
+const BularioDetail = lazy(() => import("@/pages/BularioDetail"));
+const NotFound = lazy(() => import("@/pages/NotFound"));
 
 const queryClient = new QueryClient();
 
@@ -47,40 +49,46 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   return <>{children}</>;
 }
 
+const LazyFallback = () => (
+  <div className="min-h-screen flex items-center justify-center bg-background text-muted-foreground text-sm">Carregando...</div>
+);
+
 const AppRoutes = () => (
-  <Routes>
-    <Route path="/auth" element={<Auth />} />
-    <Route path="/reset-password" element={<ResetPassword />} />
-    <Route element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>
-      <Route path="/" element={<Home />} />
-      <Route path="/protocols" element={<Navigate to="/full-protocols" replace />} />
-      <Route path="/protocols/:id" element={<ProtocolDetail />} />
-      <Route path="/medications" element={<Medications />} />
-      <Route path="/medications/:id" element={<MedicationDetail />} />
-      <Route path="/calculators" element={<Calculators />} />
-      <Route path="/quiz" element={<Quiz />} />
-      <Route path="/search" element={<SearchPage />} />
-      <Route path="/favorites" element={<Favorites />} />
-      <Route path="/notes" element={<Notes />} />
-      <Route path="/emergency" element={<EmergencyMode />} />
-      <Route path="/emergency/:id" element={<EmergencyProtocolDetail />} />
-      <Route path="/duty" element={<DutyMode />} />
-      <Route path="/prescriptions" element={<Prescriptions />} />
-      <Route path="/prescriptions/:id" element={<PrescriptionDetail />} />
-      <Route path="/diagnosis" element={<DiagnosisBySymptom />} />
-      <Route path="/pediatrics" element={<Pediatrics />} />
-      <Route path="/obstetrics" element={<Obstetrics />} />
-      <Route path="/internship" element={<Internship />} />
-      <Route path="/clinical-ai" element={<ClinicalAI />} />
-      <Route path="/drug-interactions" element={<DrugInteractions />} />
-      <Route path="/full-protocols" element={<FullProtocols />} />
-      <Route path="/full-protocols/:id" element={<FullProtocolDetail />} />
-      <Route path="/bulario" element={<Bulario />} />
-      <Route path="/bulario/:id" element={<BularioDetail />} />
-      <Route path="/pricing" element={<Pricing />} />
-    </Route>
-    <Route path="*" element={<NotFound />} />
-  </Routes>
+  <Suspense fallback={<LazyFallback />}>
+    <Routes>
+      <Route path="/auth" element={<Auth />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
+      <Route element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>
+        <Route path="/" element={<Home />} />
+        <Route path="/protocols" element={<Navigate to="/full-protocols" replace />} />
+        <Route path="/protocols/:id" element={<ProtocolDetail />} />
+        <Route path="/medications" element={<Medications />} />
+        <Route path="/medications/:id" element={<MedicationDetail />} />
+        <Route path="/calculators" element={<Calculators />} />
+        <Route path="/quiz" element={<Quiz />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/favorites" element={<Favorites />} />
+        <Route path="/notes" element={<Notes />} />
+        <Route path="/emergency" element={<EmergencyMode />} />
+        <Route path="/emergency/:id" element={<EmergencyProtocolDetail />} />
+        <Route path="/duty" element={<DutyMode />} />
+        <Route path="/prescriptions" element={<Prescriptions />} />
+        <Route path="/prescriptions/:id" element={<PrescriptionDetail />} />
+        <Route path="/diagnosis" element={<DiagnosisBySymptom />} />
+        <Route path="/pediatrics" element={<Pediatrics />} />
+        <Route path="/obstetrics" element={<Obstetrics />} />
+        <Route path="/internship" element={<Internship />} />
+        <Route path="/clinical-ai" element={<ClinicalAI />} />
+        <Route path="/drug-interactions" element={<DrugInteractions />} />
+        <Route path="/full-protocols" element={<FullProtocols />} />
+        <Route path="/full-protocols/:id" element={<FullProtocolDetail />} />
+        <Route path="/bulario" element={<Bulario />} />
+        <Route path="/bulario/:id" element={<BularioDetail />} />
+        <Route path="/pricing" element={<Pricing />} />
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+  </Suspense>
 );
 
 const App = () => (
