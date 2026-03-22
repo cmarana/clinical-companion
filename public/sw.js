@@ -1,12 +1,18 @@
-const CACHE_NAME = 'medcore-v2';
+const CACHE_NAME = 'medcore-v3';
 const STATIC_ASSETS = [
-  '/',
-  '/index.html',
   '/manifest.json',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
   '/favicon.ico',
 ];
+
+const isSameOrigin = (url) => url.origin === self.location.origin;
+const isDevAsset = (url) =>
+  url.pathname.startsWith('/src/') ||
+  url.pathname.startsWith('/node_modules/') ||
+  url.pathname.startsWith('/@vite') ||
+  url.pathname.startsWith('/@react-refresh') ||
+  url.pathname.includes('__x00__');
 
 // Install: cache static assets
 self.addEventListener('install', (event) => {
@@ -36,6 +42,9 @@ self.addEventListener('fetch', (event) => {
   
   // Skip non-GET requests
   if (event.request.method !== 'GET') return;
+
+  // Never intercept dev-server module requests
+  if (isDevAsset(url)) return;
   
   // Skip Supabase API calls (auth, realtime, etc.) - these need to be online
   if (url.hostname.includes('supabase') || url.pathname.startsWith('/auth')) {
@@ -50,8 +59,12 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
       fetch(event.request)
         .then((response) => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+          if (response.ok && isSameOrigin(url)) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => {
+              cache.put('/index.html', clone);
+            });
+          }
           return response;
         })
         .catch(() => caches.match('/index.html'))
@@ -59,16 +72,26 @@ self.addEventListener('fetch', (event) => {
     return;
   }
   
-  // For JS/CSS/fonts/images: Cache first, network fallback (stale-while-revalidate)
+  // For scripts/styles: prefer network to avoid stale chunks after deploys.
+  if (event.request.destination === 'script' || event.request.destination === 'style') {
+    event.respondWith(
+      fetch(event.request)
+        .then((response) => {
+          if (response.ok) {
+            const clone = response.clone();
+            caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
+          }
+          return response;
+        })
+        .catch(() => caches.match(event.request))
+    );
+    return;
+  }
+
+  // For fonts/images: stale-while-revalidate remains OK.
   if (
-    url.pathname.endsWith('.js') ||
-    url.pathname.endsWith('.css') ||
-    url.pathname.endsWith('.woff2') ||
-    url.pathname.endsWith('.woff') ||
-    url.pathname.endsWith('.png') ||
-    url.pathname.endsWith('.jpg') ||
-    url.pathname.endsWith('.svg') ||
-    url.pathname.endsWith('.ico') ||
+    event.request.destination === 'font' ||
+    event.request.destination === 'image' ||
     url.hostname.includes('fonts.googleapis.com') ||
     url.hostname.includes('fonts.gstatic.com')
   ) {
