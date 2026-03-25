@@ -56,6 +56,7 @@ const LazyFallback = () => (
 const AppRoutes = () => (
   <Suspense fallback={<LazyFallback />}>
     <Routes>
+      <Route path="/index" element={<Navigate to="/" replace />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>
