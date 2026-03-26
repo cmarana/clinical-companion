@@ -380,4 +380,73 @@ TRALI (dispneia, infiltrado bilateral, hipoxemia):
     warnings: "ADRENALINA IM é a PRIMEIRA droga. Anti-histamínico NÃO trata anafilaxia, é adjuvante.",
     guideline: "ASBAI / WAO / EAACI",
   },
+  {
+    id: "rx-emerg-hemorragia-digestiva",
+    title: "Hemorragia Digestiva — Ressuscitação",
+    type: "Prescrição de Emergência",
+    prescription: `1. 2 acessos calibrosos (jelco 14-16G)
+2. SF 0,9% / RL — ressuscitação volêmica agressiva
+3. Tipagem sanguínea + reserva de CH (mínimo 4 unidades)
+4. Transfusão se Hb <7 (ou <9 se cardiopata/instável)
+5. Omeprazol 80mg EV bolus → 8mg/h em BIC (HDA não varicosa)
+6. OU Terlipressina 2mg EV + Ceftriaxona 1g EV (se suspeita varicosa/hepatopata)
+7. Octreotida 50mcg bolus → 50mcg/h EV (alternativa à Terlipressina)
+8. SNG: aspirar — sangue confirma HDA (mas aspirado limpo não exclui)
+9. IOT se: rebaixamento, hematêmese maciça (proteger via aérea para EDA)
+10. Hemograma, coagulograma, INR, função renal, lactato
+11. EDA em até 12-24h (urgente se instável)
+12. Ácido Tranexâmico 1g EV (controverso em HDA — considerar)`,
+    warnings: "HDA varicosa em cirrótico: Terlipressina + ATB (Ceftriaxona) REDUZ mortalidade. Não esquecer o ATB.",
+    guideline: "SBG / ESGE / AASLD",
+  },
+  {
+    id: "rx-emerg-politrauma",
+    title: "Politrauma — ABCDE Prescrição",
+    type: "Prescrição de Emergência",
+    prescription: `A — Via Aérea + Coluna Cervical:
+1. Colar cervical + prancha
+2. IOT se Glasgow ≤8 ou perda de reflexo protetor
+
+B — Ventilação:
+3. O2 100% alto fluxo
+4. Drenagem torácica se pneumo/hemotórax
+
+C — Circulação:
+5. 2 acessos calibrosos (14-16G)
+6. SF 0,9% 1000mL EV rápido → reavaliar
+7. Ácido Tranexâmico 1g EV em 10 min (dentro de 3h do trauma)
+8. Tipagem + reserva CH. Protocolo de transfusão maciça se >4 CH
+9. Torniquete + compressão se hemorragia externa
+
+D — Déficit Neurológico:
+10. Glasgow, pupilas, déficit motor
+11. TC crânio se Glasgow <15 ou mecanismo grave
+
+E — Exposição:
+12. Despir completamente + prevenir hipotermia
+13. FAST (USG — líquido livre?)
+14. Laboratório: hemograma, tipagem, gasometria, lactato, coagulograma
+15. RX cervical, tórax AP, pelve AP`,
+    guideline: "ATLS 10ª ed / PHTLS",
+  },
+  {
+    id: "rx-emerg-crise-falciforme",
+    title: "Crise Vaso-Oclusiva (Doença Falciforme)",
+    type: "Prescrição de Emergência",
+    prescription: `1. Analgesia AGRESSIVA (prioridade):
+   Morfina 0,1mg/kg EV a cada 15-20 min até controle
+   + Dipirona 1g EV 6/6h
+   + Cetoprofeno 100mg EV 12/12h
+2. Hidratação: SF 0,9% 1000-1500mL EV (NÃO hiper-hidratar — risco EAP)
+3. O2 suplementar APENAS se SpO2 <95% (hiperóxia pode inibir eritropoiese)
+4. Ácido fólico 5mg VO 1x/dia
+5. Hemograma + reticulócitos + função renal + bilirrubinas
+6. RX tórax (Síndrome Torácica Aguda: infiltrado + febre/dor/hipóxia)
+7. Se STA: Ceftriaxona 1g EV + Azitromicina 500mg + transfusão simples
+8. Transfusão simples se Hb <5 ou queda >2 do basal
+9. Exsanguineotransfusão se: STA grave, AVC, priapismo >4h
+10. NÃO dar O2 sem indicação. NÃO hiper-hidratar.`,
+    warnings: "Dor na falciforme é REAL e INTENSA. NÃO subtratar. Escala de dor + protocolo de opioide.",
+    guideline: "ABHH / MS / ASH",
+  },
 ];

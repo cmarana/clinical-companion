@@ -381,4 +381,53 @@ Preferir Ringer Lactato (menos acidose)`,
     notes: "Coloides sintéticos (HES/Voluven) NÃO são mais recomendados na sepse (aumento de IRA e mortalidade).",
     guideline: "SSC 2021 / AMIB",
   },
+  {
+    id: "rx-classe-benzodiazepinicos",
+    title: "Benzodiazepínicos — Doses e Indicações",
+    type: "Por Classe de Medicamento",
+    prescription: `MIDAZOLAM:
+EV: 1-5mg lento (sedação); IM: 0,2mg/kg (convulsão/agitação)
+Intranasal: 0,2mg/kg (pediatria)
+Infusão: 0,05-0,2mg/kg/h
+
+DIAZEPAM:
+EV: 5-10mg lento (convulsão); VR: 0,5mg/kg (pediatria)
+VO: 5-10mg 8/8h (ansiedade/relaxante)
+
+CLONAZEPAM:
+VO: 0,25-2mg 12/12h (epilepsia, pânico)
+SL: 0,25-0,5mg (crise de pânico aguda)
+
+LORAZEPAM:
+VO: 1-2mg 8/8h; SL: 1-2mg (ansiedade aguda)
+Preferido no hepatopata (não tem metabólitos ativos)
+
+ANTAGONISTA: Flumazenil 0,2mg EV a cada 60s (máx 1mg)`,
+    warnings: "Depressão respiratória dose-dependente. CI em miastenia gravis. Evitar em idosos e hepatopatas.",
+    guideline: "ABP / SBA",
+  },
+  {
+    id: "rx-classe-antidepressivos",
+    title: "Antidepressivos — Guia Rápido PS",
+    type: "Por Classe de Medicamento",
+    prescription: `ISRS (1ª linha — NUNCA iniciar no PS, mas reconhecer):
+Sertralina 50mg, Fluoxetina 20mg, Escitalopram 10mg
+
+TRICÍCLICOS (cuidado — intoxicação grave):
+Amitriptilina 25mg, Nortriptilina 25mg
+Uso no PS: dor neuropática, cefaleia profilaxia, insônia
+
+INTOXICAÇÃO POR TRICÍCLICO:
+1. ECG: QRS >100ms = risco de arritmia
+2. Bicarbonato 8,4% 1-2mEq/kg EV (proteção cardíaca)
+3. NÃO usar Flumazenil (risco de convulsão)
+4. Carvão ativado 1g/kg se <1h da ingestão
+5. Monitorização contínua por 24h
+
+SÍNDROME SEROTONINÉRGICA:
+Tríade: alteração mental + hiperatividade autonômica + clônus
+Tratamento: Ciproheptadina 12mg VO ataque → 4mg 8/8h`,
+    warnings: "Intoxicação por tricíclico: QRS largo = Bicarbonato URGENTE. NÃO dar Flumazenil.",
+    guideline: "ABP / AACT",
+  },
 ];

@@ -332,4 +332,67 @@ Reação grave (anafilaxia):
     warnings: "Toda anafilaxia deve receber ADRENALINA IM como primeira medida. Anti-histamínico NÃO trata anafilaxia.",
     guideline: "SBP / ASBAI",
   },
+  {
+    id: "rx-ped-tcec",
+    title: "TCE Leve na Criança — Conduta",
+    type: "Prescrição Pediátrica",
+    prescription: `PECARN (critérios de baixo risco — NÃO fazer TC):
+<2 anos: sem hematoma (exceto frontal), mecanismo não grave, comportamento normal, sem perda de consciência
+≥2 anos: sem perda de consciência, sem vômito, mecanismo não grave, sem cefaleia grave
+
+Se baixo risco:
+1. Observação por 4-6h no PS
+2. Paracetamol 1gota/kg VO 6/6h se dor (NÃO usar AINEs nas primeiras 24h)
+3. Dieta leve
+4. NÃO sedar (dificulta avaliação neurológica)
+
+Se risco intermediário:
+5. Observação prolongada (6-12h) OU TC crânio
+6. Monitorar: Glasgow pediátrico, pupilas, fontanela, vômitos
+
+Alta com orientações:
+7. Acordar a cada 2-3h nas primeiras 24h
+8. Retorno se: vômitos repetidos, sonolência excessiva, convulsão, líquido pelo nariz/ouvido`,
+    notes: "PECARN reduz TC desnecessárias em crianças. Aplicar criteriosamente.",
+    guideline: "SBP / PECARN",
+  },
+  {
+    id: "rx-ped-pcr",
+    title: "PCR Pediátrica — Prescrição",
+    type: "Prescrição de Emergência Pediátrica",
+    prescription: `1. RCP: 15:2 (2 socorristas) ou 30:2 (1 socorrista)
+   Frequência: 100-120 compressões/min
+   Profundidade: 1/3 do diâmetro AP do tórax
+2. Adrenalina 0,01mg/kg (0,1mL/kg da 1:10.000) EV/IO a cada 3-5 min
+   Dose máxima: 1mg
+3. Se FV/TV: desfibrilar 2J/kg → 4J/kg → até 10J/kg
+4. Amiodarona 5mg/kg EV bolus (FV/TV refratária)
+5. SF 0,9% 20mL/kg bolus se hipovolemia suspeitada
+6. IOT: tubo sem cuff <8 anos: (idade/4 + 4); com cuff: (idade/4 + 3,5)
+7. Tratar causas reversíveis: 5Hs e 5Ts
+8. Glicemia capilar (hipoglicemia é causa comum em crianças)
+9. Acesso IO se EV não obtido em 60-90 segundos`,
+    warnings: "Bradicardia <60 com má perfusão em criança = INICIAR RCP. Causa mais comum de PCR pediátrica: hipóxia.",
+    guideline: "AHA / PALS 2020",
+  },
+  {
+    id: "rx-ped-diabetes-novo",
+    title: "Diabetes Tipo 1 — Diagnóstico Novo na Criança",
+    type: "Prescrição Pediátrica / Hospitalar",
+    prescription: `Se CAD: ver protocolo de Cetoacidose Pediátrica
+
+Sem CAD (diagnóstico ambulatorial/internação):
+1. Insulina NPH 0,3-0,5UI/kg/dia SC dividida 2/3 manhã + 1/3 noite
+2. Insulina Regular: escala móvel conforme glicemia
+   <150: 0; 150-200: 1UI; 200-250: 2UI; 250-300: 3UI; >300: 4UI
+3. Glicemia capilar: pré-refeições + 22h + 3h
+4. Dieta fracionada (6 refeições)
+5. Hemoglobina glicada (A1c) basal
+6. Peptídeo C, anti-GAD, anti-IA2 (confirmar tipo 1)
+7. TSH + anti-TPO (associação com Hashimoto)
+8. Função renal, perfil lipídico
+9. Avaliação oftalmológica anual
+10. Educação em diabetes: aplicação, rodízio, hipoglicemia, contagem de carboidratos`,
+    guideline: "SBD / ISPAD / ADA",
+  },
 ];

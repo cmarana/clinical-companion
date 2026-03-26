@@ -927,4 +927,149 @@ Todos:
     notes: "Tríade de Beck (tamponamento): hipotensão + turgência jugular + bulhas hipofonéticas → pericardiocentese.",
     guideline: "SBC / ESC",
   },
+  {
+    id: "rx-crise-adrenal-diag",
+    title: "Crise Adrenal / Insuficiência Adrenal Aguda",
+    type: "Prescrição de Emergência / UTI",
+    prescription: `1. Hidrocortisona 100mg EV em bolus IMEDIATO
+2. Manutenção: Hidrocortisona 50mg EV 6/6h (ou 200mg/24h em BIC)
+3. SF 0,9% 1000mL EV rápido (expansão volêmica — desidratação grave)
+4. SG 5% se hipoglicemia
+5. Monitorar: PA, FC, glicemia, Na+, K+
+6. NÃO esperar resultado de cortisol para tratar (se suspeita clínica forte)
+7. Colher cortisol e ACTH ANTES da hidrocortisona (se possível)
+8. Tratar fator desencadeante (infecção, cirurgia, suspensão de corticoide)
+9. Reduzir dose gradualmente após 48-72h de estabilidade
+10. Na alta: Prednisona 5mg/dia + Fludrocortisona 0,1mg/dia + cartão de alerta`,
+    warnings: "Paciente em uso crônico de corticoide: NUNCA suspender abruptamente. Estresse = dobrar dose.",
+    guideline: "SBEM / Endocrine Society",
+  },
+  {
+    id: "rx-coma-mixedematoso-diag",
+    title: "Coma Mixedematoso",
+    type: "Prescrição UTI / Emergência",
+    prescription: `1. IOT se rebaixamento grave ou hipoventilação
+2. Levotiroxina 200-500mcg EV lento (ataque) → 50-100mcg EV/dia
+   Se indisponível EV: Levotiroxina 500mcg via SNG
+3. Hidrocortisona 100mg EV 8/8h (tratar insuficiência adrenal concomitante)
+   Dar ANTES da levotiroxina (prevenir crise adrenal)
+4. Aquecimento PASSIVO gradual (cobertores — NÃO ativo externo)
+5. SF 0,9% com cautela (risco de hiponatremia dilucional)
+6. Glicemia capilar (hipoglicemia frequente)
+7. NÃO sedar (sensibilidade extrema a sedativos/opioides)
+8. Monitorização contínua (bradicardia, hipotensão)
+9. TSH, T4L, T3, cortisol, Na+, gasometria
+10. Tratar fator precipitante (infecção é o mais comum)`,
+    warnings: "Mortalidade 30-60%. Dar HIDROCORTISONA antes da LEVOTIROXINA. Aquecimento ativo pode causar colapso vascular.",
+    guideline: "SBEM / ATA",
+  },
+  {
+    id: "rx-ehh-diag",
+    title: "Estado Hiperglicêmico Hiperosmolar (EHH)",
+    type: "Prescrição UTI / Emergência",
+    prescription: `1. SF 0,9% 1000mL EV em 1h → 250-500mL/h (déficit 6-9L)
+   Se Na corrigido >145: trocar para SF 0,45%
+2. Insulina Regular: 0,1UI/kg bolus → 0,1UI/kg/h EV contínua
+   OU 0,14UI/kg/h sem bolus
+3. K+ ANTES da insulina:
+   K <3,3: NÃO iniciar insulina (repor K primeiro)
+   K 3,3-5,3: KCl 20-40mEq/L de cada SF
+   K >5,3: não repor, controlar 2/2h
+4. Quando glicemia <300: SG 5% + insulina 0,02-0,05UI/kg/h
+5. Glicemia capilar 1/1h
+6. Eletrólitos, gasometria, osmolaridade 2-4h
+7. Enoxaparina 40mg SC 1x/dia (alto risco trombótico)
+8. Investigar precipitante: infecção, IAM, AVC, má adesão`,
+    notes: "EHH: Osmolaridade >320, glicemia >600, pH >7,3. Diferente da CAD: sem cetoacidose significativa.",
+    warnings: "Déficit hídrico é ENORME (6-9L). Hidratação é a medida mais importante. Risco de TEP.",
+    guideline: "SBD / ADA 2024",
+  },
+  {
+    id: "rx-hiponatremia-diag",
+    title: "Hiponatremia Grave",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `SINTOMÁTICA (Na <120 + convulsão/rebaixamento):
+1. NaCl 3% 150mL EV em 20 min → repetir até 2x se persistir sintoma
+2. Alvo: elevar Na em 4-6 mEq/L nas primeiras 6h
+3. Máximo: 8-10 mEq/L em 24h (risco mielinólise)
+4. Na sérico a cada 2-4h
+
+ASSINTOMÁTICA (Na 120-130):
+5. Restrição hídrica 800-1000mL/dia (SIADH)
+6. Furosemida 20mg VO 1x/dia + aumento de sal na dieta
+7. Se SIADH refratária: Ureia 15-30g/dia VO (eficaz e barata)
+
+HIPOVOLÊMICA (desidratação):
+8. SF 0,9% — o sódio corrige com a reposição volêmica
+
+INVESTIGAÇÃO:
+9. Na sérico, osmolaridade sérica e urinária, Na urinário
+10. TSH, cortisol (excluir hipotireoidismo e insuficiência adrenal)`,
+    warnings: "Correção rápida >10-12mEq/24h causa MIELINÓLISE PONTINA (irreversível). Corrigir DEVAGAR.",
+    guideline: "KDIGO / SBN",
+  },
+  {
+    id: "rx-les-agudo-diag",
+    title: "Lúpus Eritematoso Sistêmico — Flare Agudo",
+    type: "Prescrição Hospitalar",
+    prescription: `Leve (articular/cutâneo):
+1. Hidroxicloroquina 400mg VO 1x/dia (manter — NUNCA suspender)
+2. Prednisona 0,5mg/kg/dia VO → reduzir gradual
+3. AINEs por curto período se artralgia
+
+Moderado (serosite, citopenias):
+4. Prednisona 1mg/kg/dia VO
+5. Azatioprina 2mg/kg/dia VO (poupador de corticoide)
+
+Grave (nefrite lúpica, cerebrite, hemorragia alveolar):
+6. Pulsoterapia: Metilprednisolona 1g EV/dia por 3 dias
+7. Ciclofosfamida EV (protocolo NIH ou Euro-Lupus)
+8. OU Micofenolato 2-3g/dia VO (nefrite classe III-V)
+9. Exames: anti-dsDNA, C3, C4, hemograma, função renal, proteinúria 24h, EAS
+10. Biópsia renal se proteinúria >500mg/dia ou sedimento ativo`,
+    notes: "Hidroxicloroquina reduz mortalidade — manter em TODOS os pacientes com LES.",
+    guideline: "SBR / EULAR / ACR",
+  },
+  {
+    id: "rx-artrite-reumatoide-aguda-diag",
+    title: "Artrite Reumatoide — Crise Articular",
+    type: "Prescrição PS / Hospitalar",
+    prescription: `Crise articular aguda:
+1. Prednisona 10-20mg VO 1x/dia (curto período)
+2. OU Metilprednisolona 40-80mg IM dose única
+3. Cetoprofeno 100mg VO 12/12h (curto prazo)
+4. Dipirona 1g VO 6/6h
+5. Compressas frias nas articulações inflamadas
+6. Manter DMARD em uso (Metotrexato, Leflunomida)
+
+Se monoartrite aguda:
+7. Artrocentese (excluir artrite séptica — SEMPRE)
+8. Cultura + gram + cristais do líquido sinovial
+
+Encaminhamento:
+9. Reumatologista para ajuste de DMARD
+10. Hemograma, PCR/VHS, função renal/hepática (monitorar Metotrexato)`,
+    notes: "NÃO suspender Metotrexato por conta própria. Encaminhar reumatologista para ajustes.",
+    guideline: "SBR / EULAR / ACR",
+  },
+  {
+    id: "rx-trombocitopenia-diag",
+    title: "Trombocitopenia Grave / PTI",
+    type: "Prescrição Hospitalar",
+    prescription: `Plaquetas <20.000 ou sangramento ativo:
+1. Prednisona 1mg/kg/dia VO (máx 80mg) por 2-4 semanas
+2. OU Dexametasona 40mg VO/EV 1x/dia por 4 dias (pulso)
+3. Se sangramento grave: Imunoglobulina EV 1g/kg/dia por 2 dias
+4. Transfusão de plaquetas APENAS se sangramento ativo grave
+   (na PTI: plaquetas são destruídas rapidamente — transfusão é ineficaz sem terapia)
+5. Ácido Tranexâmico 1g VO/EV 8/8h (se sangramento mucoso)
+6. Omeprazol 40mg VO 1x/dia (proteção gástrica)
+7. EVITAR: AAS, AINEs, IM, procedimentos invasivos
+8. Hemograma seriado
+9. Esfregaço de sangue periférico (excluir PTT, SHU)
+10. Hematologista URGENTE
+11. Se refratária: Eltrombopag, Romiplostim, esplenectomia`,
+    warnings: "PTT (pentade): trombocitopenia + anemia hemolítica + febre + alteração neurológica + IRA. Plasmaférese URGENTE.",
+    guideline: "ABHH / ASH",
+  },
 ];
