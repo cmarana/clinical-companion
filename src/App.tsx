@@ -59,7 +59,7 @@ const AppRoutes = () => (
       <Route path="/index" element={<Navigate to="/" replace />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/reset-password" element={<ResetPassword />} />
-      <Route element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>
+      <Route element={<AppLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/protocols" element={<Navigate to="/full-protocols" replace />} />
         <Route path="/protocols/:id" element={<ProtocolDetail />} />
