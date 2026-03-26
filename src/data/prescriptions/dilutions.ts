@@ -229,4 +229,117 @@ Exemplo (70kg, 10mcg/kg/min):
     warnings: "Risco de taquiarritmia em doses altas. Acesso central preferencial.",
     guideline: "SSC 2021",
   },
+  {
+    id: "rx-dil-dobutamina",
+    title: "Dobutamina — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `AMPOLA: Dobutamina 12,5mg/mL — 20mL = 250mg
+
+DILUIÇÃO:
+1 ampola (250mg) + SG 5% 230mL = 250mL
+Concentração: 1000 mcg/mL (1mg/mL)
+
+DOSE: 2,5-20 mcg/kg/min
+
+CÁLCULO:
+Dose (mcg/kg/min) × Peso × 60 / 1000 = mL/h
+
+Exemplo (70kg, 5mcg/kg/min):
+5 × 70 × 60 / 1000 = 21 mL/h`,
+    notes: "Inotrópico positivo puro. Indicada no choque cardiogênico (PAS >90 com sinais de baixo débito).",
+    warnings: "Pode causar taquicardia. Contraindicada se obstrução dinâmica da via de saída.",
+    guideline: "SBC / AMIB",
+  },
+  {
+    id: "rx-dil-propofol",
+    title: "Propofol — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `APRESENTAÇÃO: Propofol 10mg/mL — frasco 20mL (200mg) ou 50mL (500mg)
+
+USO PURO (não diluir):
+Bolus IOT: 1-2mg/kg EV lento (70kg = 70-140mg = 7-14mL)
+Manutenção: 2-4mg/kg/h em BIC
+
+Em seringa de 50mL:
+Propofol 10mg/mL puro → 50mL = 500mg
+
+Exemplo (70kg, 3mg/kg/h):
+3 × 70 = 210mg/h = 21 mL/h
+
+RASS alvo: -2 a -3 (ajustar conforme resposta)`,
+    warnings: "Hipotensão dose-dependente. NÃO usar em choque. Trocar equipo a cada 12h (meio de cultura). Síndrome da infusão do Propofol se uso prolongado >48h em doses altas.",
+    notes: "Contém lipídeos — considerar no balanço calórico. 1,1 kcal/mL.",
+  },
+  {
+    id: "rx-dil-nitroprussiato",
+    title: "Nitroprussiato de Sódio — Diluição",
+    type: "Diluição e Preparo",
+    prescription: `AMPOLA: Nitroprussiato 50mg — pó liofilizado
+
+DILUIÇÃO:
+1. Reconstituir com diluente próprio (2mL)
+2. Diluir em SG 5% 248mL = 250mL
+Concentração: 200 mcg/mL
+
+DOSE: 0,25-10 mcg/kg/min (iniciar 0,25)
+
+CÁLCULO:
+Dose (mcg/kg/min) × Peso × 60 / 200 = mL/h
+
+Exemplo (70kg, 1mcg/kg/min):
+1 × 70 × 60 / 200 = 21 mL/h
+
+PROTEGER DA LUZ (fotossensível) — usar equipo e frasco opaco`,
+    warnings: "Intoxicação por cianeto se >72h ou dose >4mcg/kg/min prolongada. Monitorar tiocianato sérico.",
+    guideline: "SBC",
+  },
+  {
+    id: "rx-dil-nitroglicerina",
+    title: "Nitroglicerina EV — Diluição",
+    type: "Diluição e Preparo",
+    prescription: `AMPOLA: Nitroglicerina 5mg/mL — 10mL = 50mg
+
+DILUIÇÃO:
+1 ampola (50mg) + SG 5% 240mL = 250mL
+Concentração: 200 mcg/mL
+
+DOSE: 5-200 mcg/min (NÃO é por kg)
+
+CÁLCULO:
+Dose (mcg/min) × 60 / 200 = mL/h
+OU Dose (mcg/min) / 3,33 = mL/h
+
+Exemplo (10mcg/min):
+10 × 60 / 200 = 3 mL/h
+
+Iniciar: 5mcg/min → titular a cada 5 min conforme PA
+Indicações: SCA, EAP, emergência hipertensiva`,
+    warnings: "NÃO usar se PAS <100 ou uso de sildenafil <24h. Usar equipo sem PVC (absorve a droga).",
+    notes: "Usar equipo de polietileno (não PVC) — PVC absorve até 80% da nitroglicerina.",
+  },
+  {
+    id: "rx-dil-heparina",
+    title: "Heparina Não Fracionada — Diluição",
+    type: "Diluição e Preparo",
+    prescription: `FRASCO: Heparina 5.000UI/mL — 5mL = 25.000UI
+
+ANTICOAGULAÇÃO PLENA:
+25.000UI (5mL) + SF 0,9% 245mL = 250mL
+Concentração: 100 UI/mL
+
+Bolus: 80UI/kg EV (ex: 70kg = 5.600UI = 56mL)
+Manutenção: 18UI/kg/h (ex: 70kg = 1.260UI/h = 12,6 mL/h)
+
+CONTROLE:
+TTPa a cada 6h (alvo: 1,5-2,5x o controle)
+Ajustar conforme nomograma institucional
+
+PROFILAXIA TVP:
+Heparina 5.000UI SC 8/8h ou 12/12h
+
+ANTAGONISTA:
+Protamina 1mg para cada 100UI de Heparina (nas últimas 2h)`,
+    warnings: "Monitorar TTPa e plaquetas (risco de HIT — trombocitopenia induzida por heparina).",
+    guideline: "SBC / ISTH",
+  },
 ];

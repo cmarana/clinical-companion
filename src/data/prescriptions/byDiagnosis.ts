@@ -257,4 +257,174 @@ Fase 3 (>20 min — refratário):
 12. Balanço hídrico rigoroso`,
     guideline: "SBC / ESC 2023",
   },
+  {
+    id: "rx-dengue-diag",
+    title: "Dengue",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `Grupo A (sem alarme):
+1. Hidratação oral 60-80mL/kg/dia (1/3 SRO + 2/3 líquidos)
+2. Paracetamol 750mg VO 6/6h se febre
+3. Dipirona 500mg VO 6/6h (alternativa)
+4. Repouso + retorno se sinais de alarme
+
+Grupo C (sinais de alarme):
+5. SF 0,9% 20mL/kg EV em 2h (até 3x)
+6. Hemograma + Ht seriado 6/6h
+7. Internação
+
+Grupo D (choque):
+8. SF 0,9% 20mL/kg em 20min — repetir até estabilizar`,
+    warnings: "NÃO usar AAS ou AINEs. Usar APENAS Paracetamol ou Dipirona.",
+    guideline: "MS 2024",
+  },
+  {
+    id: "rx-celulite-diag",
+    title: "Celulite / Erisipela",
+    type: "Prescrição Hospitalar",
+    prescription: `Leve (ambulatorial):
+1. Cefalexina 500mg VO 6/6h por 7-10 dias
+
+Moderada/Grave:
+2. Oxacilina 2g EV 4/4h OU Cefazolina 1g EV 8/8h
+3. SF 0,9% 1000mL EV
+4. Dipirona 1g EV 6/6h
+5. Elevação do membro
+6. Se MRSA: Vancomicina 15-20mg/kg EV 12/12h`,
+    guideline: "IDSA / SBI",
+  },
+  {
+    id: "rx-colica-renal-diag",
+    title: "Cólica Renal",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. Cetoprofeno 100mg EV (1ª escolha)
+2. Dipirona 1g EV 6/6h
+3. Tramadol 50-100mg EV se refratária
+4. Buscopan Composto 1 amp EV 8/8h
+5. Ondansetrona 4mg EV se náusea
+6. SF 0,9% 500mL EV (NÃO hiper-hidratar)
+7. Tamsulosina 0,4mg VO 1x/dia (cálculos 5-10mm)
+8. TC sem contraste de abdome
+9. EAS + creatinina`,
+    warnings: "NÃO hiper-hidratar na cólica aguda. Internar se febre, rim único ou IRA.",
+    guideline: "SBU / EAU",
+  },
+  {
+    id: "rx-pancreatite-diag",
+    title: "Pancreatite Aguda",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Dieta zero nas primeiras 24-48h (ou dieta precoce se tolerada)
+2. SF 0,9% ou RL 250-500mL/h (ressuscitação agressiva nas primeiras 24h)
+3. Dipirona 1g EV 6/6h
+4. Tramadol 50-100mg EV 8/8h OU Morfina 2-4mg EV se dor intensa
+5. Ondansetrona 4mg EV 8/8h
+6. Omeprazol 40mg EV 1x/dia
+7. Enoxaparina 40mg SC 1x/dia
+8. Amilase, lipase, TGO, TGP, bilirrubinas, cálcio, triglicerídeos
+9. TC abdome com contraste (após 72h se grave — Balthazar)
+10. ATB apenas se necrose infectada (Meropenem 1g EV 8/8h)`,
+    notes: "Critérios de gravidade: Ranson, APACHE II, BISAP. Necrose >30% = grave.",
+    guideline: "SBG / AGA",
+  },
+  {
+    id: "rx-tep-diag",
+    title: "Tromboembolismo Pulmonar (TEP)",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. O2 suplementar se SpO2 <94%
+2. Heparina não fracionada 80UI/kg bolus → 18UI/kg/h EV em BIC
+3. OU Enoxaparina 1mg/kg SC 12/12h (se estável)
+4. AngioTC de tórax (confirmação diagnóstica)
+5. D-dímero (se baixa probabilidade)
+6. ECG, troponina, BNP
+7. Ecocardiograma à beira do leito (disfunção de VD)
+8. Se TEP maciço com instabilidade: Alteplase 100mg EV em 2h
+9. Após alta: anticoagulação por 3-6 meses (Rivaroxabana 15mg 12/12h por 21 dias → 20mg 1x/dia)`,
+    warnings: "TEP maciço com choque = trombólise imediata. NÃO atrasar anticoagulação.",
+    guideline: "SBC / ESC 2019",
+  },
+  {
+    id: "rx-fa-diag",
+    title: "Fibrilação Atrial",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `Controle de frequência (FC alvo <110):
+1. Metoprolol 5mg EV lento (até 15mg)
+2. OU Diltiazem 0,25mg/kg EV em 2 min
+3. Amiodarona 150mg EV em 10 min (se IC)
+
+Cardioversão (se <48h):
+4. Cardioversão elétrica sincronizada 120-200J
+5. Amiodarona EV (cardioversão química)
+
+Anticoagulação:
+6. CHA2DS2-VASc ≥2 (H) ou ≥3 (M): Rivaroxabana 20mg 1x/dia OU Apixabana 5mg 12/12h`,
+    guideline: "SBC / ESC 2020",
+  },
+  {
+    id: "rx-queimadura-diag",
+    title: "Queimaduras",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Avaliar SCQ (regra dos 9)
+2. Parkland: RL 4mL × peso × %SCQ (50% em 8h, 50% em 16h)
+3. Morfina 2-4mg EV + Dipirona 1g EV 6/6h
+4. Profilaxia antitetânica
+5. Sulfadiazina de prata 1% tópico (2º grau)
+6. Omeprazol 40mg EV (se >20% SCQ — úlcera de Curling)
+7. SVD se SCQ >20%
+8. Dieta hiperproteica precoce`,
+    warnings: "NÃO estourar bolhas. NÃO usar gelo.",
+    guideline: "SBQ / ABA",
+  },
+  {
+    id: "rx-hda-diag",
+    title: "Hemorragia Digestiva Alta",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. 2 acessos calibrosos + cristalóide em bolus
+2. Omeprazol 80mg EV bolus → 8mg/h BIC por 72h
+3. Reserva de concentrado de hemácias
+4. Hemograma, coagulograma, função hepática, lactato
+5. SNG (avaliar)
+6. Se varizes: Terlipressina 2mg EV → 1mg 4/4h OU Octreotida 50mcg bolus → 50mcg/h
+7. Ceftriaxona 1g EV 1x/dia (profilaxia em cirróticos)
+8. EDA em 12-24h
+9. Transfusão se Hb <7 (ou <9 se cardiopata)`,
+    guideline: "SBG / ESGE",
+  },
+  {
+    id: "rx-ira-diag",
+    title: "Insuficiência Renal Aguda",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Identificar e tratar causa (pré-renal, renal, pós-renal)
+2. SF 0,9% — ressuscitação volêmica se pré-renal (250-500mL/h)
+3. Suspender nefrotóxicos (AINEs, aminoglicosídeos, contraste)
+4. Furosemida 40-80mg EV (se hipervolemia — NÃO para "estimular" rim)
+5. Monitorar: creatinina, ureia, K+, Na+, gasometria 12/12h
+6. Se hipercalemia: Gluconato de Cálcio + Insulina + Glicose + Sorcal
+7. Se acidose grave (pH <7,1): Bicarbonato 8,4%
+8. SVD — controle de diurese
+9. USG renal (excluir obstrução)
+10. Indicações de diálise: K+ refratário, acidose refratária, EAP, uremia sintomática`,
+    guideline: "KDIGO / SBN",
+  },
+  {
+    id: "rx-hipercalemia-diag",
+    title: "Hipercalemia",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `K+ 5,5-6,0 (leve):
+1. Sorcal (poliestirenossulfonato) 30g + Manitol VO
+
+K+ 6,0-6,5 (moderada):
+2. Insulina Regular 10UI + Glicose 50% 50mL EV
+3. Nebulização com Salbutamol 10 gotas
+4. Sorcal 30g VO ou retal
+
+K+ >6,5 ou alteração ECG (grave):
+5. Gluconato de Cálcio 10% 10mL EV em 2-3 min (estabilizar membrana)
+6. Insulina 10UI + G50% 50mL EV
+7. Bicarbonato 8,4% 50mEq EV (se acidose)
+8. Salbutamol NBZ
+9. Furosemida 40-80mg EV
+10. Sorcal 30g
+11. Considerar diálise se refratário`,
+    warnings: "ECG obrigatório: onda T apiculada, alargamento QRS, bradicardia = URGÊNCIA.",
+    guideline: "KDIGO / SBN",
+  },
 ];

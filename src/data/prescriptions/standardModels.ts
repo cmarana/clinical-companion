@@ -120,4 +120,59 @@ MONITORIZAÇÃO:
 12. Reavaliar ATB em 48-72h com resultado de culturas`,
     guideline: "SSC 2021",
   },
+  {
+    id: "rx-modelo-pos-op",
+    title: "Modelo — Pós-Operatório Imediato",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta zero por ___h (até peristalse ou orientação cirúrgica)
+2. SF 0,9% 1000mL + SG 5% 1000mL EV — alternados, ___mL/h
+3. Dipirona 1g EV 6/6h
+4. Cetoprofeno 100mg EV 12/12h (se não CI)
+5. Tramadol 50-100mg EV 8/8h SN (se dor moderada)
+6. Ondansetrona 4mg EV 8/8h SN
+7. Omeprazol 40mg EV 1x/dia
+8. Enoxaparina 40mg SC 1x/dia (profilaxia TVP)
+9. Cabeceira a 30°
+10. Monitorização de sinais vitais 4/4h
+11. Controle de drenagem / débito SNG
+12. Glicemia capilar ___/___h (se DM)
+13. Deambulação precoce quando possível
+14. Comunicar intercorrências`,
+    notes: "Ajustar analgesia pela escala EVA. Iniciar dieta conforme cirurgião/peristalse.",
+  },
+  {
+    id: "rx-modelo-diabetico",
+    title: "Modelo — Paciente Diabético Internado",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta para diabético (1800-2000 kcal, fracionada)
+2. Glicemia capilar: antes das refeições e às 22h (4x/dia)
+3. Insulina NPH ___UI SC manhã + ___UI SC noite (2/3 manhã, 1/3 noite)
+4. Insulina Regular conforme escala:
+   - 150-200: 2UI SC | 201-250: 4UI SC | 251-300: 6UI SC | >300: 8UI SC + avisar plantonista
+5. Se dieta zero: SG 5% 500mL EV 8/8h + Insulina Regular conforme escala
+6. Suspender hipoglicemiantes orais durante internação (preferir insulina)
+7. Alvo glicêmico: 140-180mg/dL
+8. Se hipoglicemia (<70): Glicose 50% 20mL EV + reavaliar em 15 min
+9. HbA1c se não dosada nos últimos 3 meses`,
+    guideline: "SBD / ADA",
+  },
+  {
+    id: "rx-modelo-idoso",
+    title: "Modelo — Paciente Idoso (>65 anos)",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta _____ (avaliar consistência — risco de disfagia/aspiração)
+2. SF 0,9% — cuidado com hipervolemia (500-1000mL/dia, ajustar)
+3. Dipirona 500mg EV 6/6h (dose reduzida)
+4. EVITAR: AINEs, Benzodiazepínicos, Metoclopramida, Anti-histamínicos 1ª geração
+5. Omeprazol 20mg EV 1x/dia
+6. Enoxaparina 40mg SC 1x/dia (ajustar se ClCr <30: 20mg)
+7. Avaliar função renal ANTES de qualquer medicação
+8. Reconciliação medicamentosa (listar todas as medicações de uso domiciliar)
+9. Prevenção de delirium: orientação, iluminação, sono, mobilização precoce
+10. Protocolo de prevenção de queda
+11. Profilaxia de lesão por pressão (mudança de decúbito 2/2h)
+12. Comunicar intercorrências — limiar baixo para investigar`,
+    notes: "Critérios de Beers: lista de medicamentos potencialmente inapropriados para idosos. Sempre consultar.",
+    guideline: "AGS Beers Criteria",
+  },
 ];

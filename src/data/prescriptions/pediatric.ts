@@ -143,4 +143,72 @@ Dor intensa:
     warnings: "NÃO usar AAS em crianças. Codeína: contraindicada <12 anos (metabolismo variável).",
     guideline: "SBP / SBA",
   },
+  {
+    id: "rx-ped-bronquiolite",
+    title: "Bronquiolite Viral Aguda",
+    type: "Prescrição Pediátrica",
+    prescription: `1. O2 suplementar se SpO2 <92%
+2. Aspiração nasal com SF 0,9% antes das mamadas
+3. Hidratação: VO ou EV conforme tolerância
+4. Posição: cabeceira elevada 30°
+5. Monitorização de SpO2 e FR
+6. Cateter nasal de alto fluxo (se disponível e SpO2 <92%)
+7. NÃO usar: broncodilatador de rotina, corticóide, antibiótico
+8. Teste rápido para VSR (se disponível)
+9. Internação se: <3 meses, prematuro, SpO2 <92%, apneias, recusa alimentar`,
+    notes: "Bronquiolite é VIRAL. ATB apenas se infecção bacteriana secundária documentada.",
+    guideline: "SBP / AAP",
+  },
+  {
+    id: "rx-ped-laringite",
+    title: "Laringite / Crupe",
+    type: "Prescrição Pediátrica",
+    prescription: `Leve (estridor apenas ao chorar):
+1. Dexametasona 0,15-0,6mg/kg VO dose única (máx 10mg)
+2. Observação por 2-4h
+
+Moderada/Grave (estridor em repouso):
+3. Nebulização com Adrenalina pura (1:1000) 3-5mL
+4. Dexametasona 0,6mg/kg VO/EV (máx 10mg)
+5. O2 umidificado se SpO2 <94%
+6. Observar por 3-4h após NBZ com adrenalina (efeito rebote)
+7. Se grave/sem resposta: considerar IOT (tubo 0,5-1mm menor)`,
+    notes: "Adrenalina NBZ: início em 10-30min, duração ~2h. Observar efeito rebote.",
+    guideline: "SBP",
+  },
+  {
+    id: "rx-ped-itu",
+    title: "ITU Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `<3 meses ou grave: INTERNAR
+1. Ampicilina 100mg/kg/dia EV div 6/6h + Gentamicina 5mg/kg/dia EV
+
+3 meses-2 anos (moderada):
+2. Ceftriaxona 50mg/kg/dia EV 1x/dia
+
+>2 anos (leve, ambulatorial):
+3. Cefalexina 50mg/kg/dia VO div 6/6h por 7-10 dias
+4. OU Amoxicilina-Clavulanato
+
+Sempre solicitar:
+5. EAS + urocultura (coleta por cateterismo se <2 anos)
+6. USG renal
+7. UCM se <6 meses ou ITU recorrente`,
+    guideline: "SBP / AAP",
+  },
+  {
+    id: "rx-ped-cetoacidose",
+    title: "Cetoacidose Diabética Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `1. SF 0,9% 20mL/kg EV em 1h (expansão) → 10mL/kg/h nas 2h seguintes
+2. NÃO corrigir desidratação rápido demais (risco de edema cerebral)
+3. Insulina Regular 0,1UI/kg/h EV contínua (iniciar APÓS 1ª hora de hidratação)
+4. K+ ≥5,3: não repor. K+ 3,5-5,3: 40mEq/L no soro. K+ <3,5: repor ANTES da insulina
+5. Glicemia capilar 1/1h
+6. Gasometria 2/2h
+7. Quando glicemia <250: trocar para SG 5% + SF 0,45% e reduzir insulina
+8. Transição para SC quando pH >7,3 e HCO3 >15 e paciente comendo`,
+    warnings: "Edema cerebral: cefaleia, bradicardia, alteração consciência → Manitol 0,5-1g/kg EV.",
+    guideline: "SBP / ISPAD",
+  },
 ];
