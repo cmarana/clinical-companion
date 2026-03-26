@@ -2293,5 +2293,218 @@ SHU típica (pós-diarréica / E. coli O157:H7):
     warnings: "Risco de trombose de seio cavernoso, meningite, abscesso cerebral. NÃO atrasar TC e ATB EV.",
     guideline: "CBO / AAO / IDSA",
   },
+  {
+    id: "rx-migranca-com-aura-diag",
+    title: "Migrânea com Aura",
+    type: "Por Diagnóstico",
+    prescription: `1. Sumatriptano 6mg SC dose única (se VO não tolerada)
+  - Alternativa: Sumatriptano 50-100mg VO dose única
+2. Metoclopramida 10mg EV (pré-tratamento antiemético)
+3. Dipirona 1g EV se dor refratária
+4. Dexametasona 10mg EV (prevenção recorrência 24-72h)
+5. Diazepam 5mg VO se componente tensional
+6. Manter em ambiente escuro e silencioso
+7. Hidratação: SF 0,9% 500mL EV
+8. NÃO usar triptanos se: aura prolongada >60min, aura hemiplégica, aura de tronco`,
+    alternatives: "Naratriptano 2,5mg VO (ação mais longa), Ergotamina + Cafeína VO (não usar junto com triptanos), Cetorolaco 30mg EV",
+    notes: "Aura típica: visual (escotomas, zigzag) 5-60min seguida de cefaleia. Se aura isolada sem cefaleia: investigar AIT.",
+    warnings: "CONTRAINDICAÇÃO ABSOLUTA de triptanos: doença coronariana, AVC prévio, HAS não controlada, uso de IMAO.",
+    guideline: "SBCe / IHS / AAN",
+  },
+  {
+    id: "rx-corpo-estranho-esofago-diag",
+    title: "Corpo Estranho em Esôfago",
+    type: "Por Diagnóstico",
+    prescription: `1. RX cervical + tórax AP e perfil (localizar CE)
+2. Jejum absoluto
+3. Acesso venoso periférico
+4. Omeprazol 40mg EV
+5. Metoclopramida 10mg EV
+6. EDA de urgência se:
+   - Bateria/pilha (EMERGÊNCIA <2h)
+   - Objeto pontiagudo
+   - Impactação >24h
+   - Obstrução total (sialorreia)
+7. Glucagon 1mg EV (pode relaxar esfíncter — impactação alimentar)
+8. Monitorizar via aérea
+9. TC cervicotorácica se suspeita de perfuração`,
+    notes: "Moedas em esôfago proximal <24h em criança assintomática: pode aguardar 12-24h (progressão espontânea). Bateria tipo botão: EMERGÊNCIA — necrose em 2h.",
+    warnings: "Perfuração esofágica: enfisema subcutâneo, febre, dor torácica. Mortalidade alta se não tratada.",
+    guideline: "ASGE / SBG / ESGE",
+  },
+  {
+    id: "rx-trombose-mesenterica-diag",
+    title: "Trombose Mesentérica / Isquemia Mesentérica Aguda",
+    type: "Por Diagnóstico",
+    prescription: `1. Jejum absoluto + SNG aberta
+2. Ressuscitação volêmica agressiva: SF 0,9% / RL
+3. Analgesia: Morfina 2-4mg EV (não mascarar)
+4. ATB de amplo espectro:
+   - Piperacilina-Tazobactam 4,5g EV 8/8h OU
+   - Meropenem 1g EV 8/8h + Metronidazol 500mg EV 8/8h
+5. Heparina não fracionada: bolus 80UI/kg + 18UI/kg/h (se trombose venosa)
+6. Angio-TC abdome URGENTE
+7. Lactato seriado (marcador de isquemia)
+8. Avaliação cirúrgica IMEDIATA
+9. Cirurgia: exploração + ressecção de alças necróticas + second-look em 24-48h
+10. SVD + débito urinário horário`,
+    notes: "Dor abdominal desproporcional ao exame físico = sinal clássico. Alto risco: FA, aterosclerose, estados hipercoaguláveis.",
+    warnings: "Mortalidade >60% se diagnóstico tardio. Lactato normal NÃO exclui. Acidose metabólica + dor abdominal intensa = pensar isquemia.",
+    guideline: "ACS / SBC / ESVS",
+  },
+  {
+    id: "rx-abscesso-perianal-diag",
+    title: "Abscesso Perianal / Perirretal",
+    type: "Por Diagnóstico",
+    prescription: `1. Analgesia: Dipirona 1g EV + Tramadol 100mg EV se dor intensa
+2. Incisão e drenagem IMEDIATA (não aguardar flutuação)
+   - Anestesia local: Lidocaína 2% s/ vaso
+   - Incisão cruciforme ou elíptica sobre ponto de maior flutuação
+   - Curetagem da loja + lavagem com SF
+3. Packing com gaze iodoformada
+4. ATB se celulite extensa, imunossupressão ou sinais sistêmicos:
+   - Amoxicilina-Clavulanato 875/125mg VO 12/12h 7-10 dias OU
+   - Ciprofloxacino 500mg 12/12h + Metronidazol 400mg 8/8h
+5. Banho de assento com água morna 3x/dia
+6. Retorno em 48h para troca de curativo
+7. Encaminhar ao Proctologista (risco de fístula: 30-50%)`,
+    notes: "Abscesso isquiorretal/supraelevador: drenagem em CC sob anestesia. Pacientes com Crohn: abordagem conservadora possível.",
+    warnings: "Imunossuprimido (DM, HIV, QT): risco de gangrena de Fournier. Vigilância rigorosa.",
+    guideline: "SBCP / ASCRS",
+  },
+  {
+    id: "rx-edema-agudo-angioedema-diag",
+    title: "Angioedema / Edema de Quincke",
+    type: "Por Diagnóstico",
+    prescription: `1. AVALIAR VIA AÉREA — preparar material de IOT/cricotireoidostomia
+2. Adrenalina 0,3-0,5mg IM (se estridor ou angioedema de via aérea)
+3. Dexametasona 10mg EV
+4. Difenidramina 50mg EV OU Prometazina 25mg IM
+5. Ranitidina 50mg EV (bloqueio H2)
+6. Se angioedema por IECA:
+   - SUSPENDER IECA definitivamente
+   - Icatibanto 30mg SC (se disponível)
+   - Ácido tranexâmico 1g EV (alternativa)
+7. Nebulização com Adrenalina 3-5mL se edema de laringe
+8. Observação mínima 6-12h (risco de rebound)
+9. Monitorização contínua
+10. Se refratário: considerar IOT precoce`,
+    alternatives: "Angioedema hereditário: Concentrado de C1-inibidor, Icatibanto, Plasma fresco congelado",
+    notes: "Angioedema por IECA: pode ocorrer meses/anos após início. Trocar para BRA (risco cruzado <2%).",
+    warnings: "Edema de língua/assoalho da boca progredindo: IOT IMEDIATA — intubação pode ser impossível em minutos.",
+    guideline: "WAO / ASBAI / ACAAI",
+  },
+  {
+    id: "rx-parada-atrioventricular-diag",
+    title: "Bloqueio Atrioventricular (BAV) Avançado",
+    type: "Por Diagnóstico",
+    prescription: `1. Monitor cardíaco contínuo
+2. Atropina 0,5mg EV a cada 3-5min (máx 3mg) — para BAV 2° Mobitz I ou BAV nodal
+3. Se não responde a atropina:
+   - Adrenalina 2-10mcg/min EV em BIC OU
+   - Dopamina 5-20mcg/kg/min EV em BIC
+4. Marcapasso transcutâneo (pads já posicionados)
+   - Frequência: 60-80bpm
+   - Saída: iniciar 20mA, aumentar até captura
+5. Isoproterenol 2-10mcg/min (se disponível)
+6. ECG de 12 derivações seriado
+7. Eletrólitos (K+, Ca++, Mg++)
+8. Ecocardiograma
+9. Marcapasso transvenoso se:
+   - BAV 2° Mobitz II
+   - BAVT
+   - Instabilidade hemodinâmica
+10. Avaliação Cardiologia/Eletrofisiologia URGENTE`,
+    notes: "BAV 1°: geralmente benigno. BAV 2° Mobitz I: QRS estreito, geralmente nodal. BAV 2° Mobitz II: QRS largo, infranodal = risco de BAVT.",
+    warnings: "Atropina NÃO funciona em bloqueio infranodal (Mobitz II, BAVT com QRS largo). Ir direto para marcapasso.",
+    guideline: "AHA / SBC / ESC",
+  },
+  {
+    id: "rx-hemorragia-subaracnoidea-diag",
+    title: "Hemorragia Subaracnóidea (HSA)",
+    type: "Por Diagnóstico",
+    prescription: `1. ABC — proteger via aérea se rebaixamento
+2. PA sistólica <160mmHg (Nitroprussiato ou Labetalol EV)
+3. Nimodipino 60mg VO 4/4h por 21 dias (prevenção vasoespasmo)
+4. Analgesia: Paracetamol 1g EV 6/6h (evitar AINEs)
+   - Morfina 2-4mg EV se dor intensa
+5. Antiemético: Ondansetrona 4mg EV 8/8h
+6. Fenitoína 20mg/kg EV (ataque) se convulsão OU
+   Levetiracetam 1000mg EV 12/12h
+7. Cabeceira elevada 30°
+8. Repouso absoluto, ambiente escuro e silencioso
+9. Laxante: Lactulose 15mL VO 12/12h (evitar Valsalva)
+10. TC crânio sem contraste URGENTE
+11. Se TC normal + alta suspeita: punção lombar (xantocromia)
+12. Angio-TC ou arteriografia cerebral
+13. Avaliação Neurocirurgia IMEDIATA
+14. Escala de Hunt-Hess e Fisher`,
+    notes: "Cefaleia 'a pior da vida', início súbito, thunderclap headache. TC sensibilidade >95% nas primeiras 6h.",
+    warnings: "NÃO usar AAS, Heparina ou anticoagulantes. Vasoespasmo pico: dias 4-14. Ressangramento precoce: mortalidade >70%.",
+    guideline: "AHA / SBC / ABN / Neurocritical Care Society",
+  },
+  {
+    id: "rx-herpes-simples-encefalite-diag",
+    title: "Encefalite Herpética",
+    type: "Por Diagnóstico",
+    prescription: `1. Aciclovir 10mg/kg EV 8/8h por 14-21 dias
+   - Diluir em 100mL SF, infundir em 1h
+   - Hidratação vigorosa (nefrotoxicidade)
+2. Anticonvulsivante profilático:
+   - Fenitoína 20mg/kg EV (ataque) + 100mg 8/8h OU
+   - Levetiracetam 500mg EV 12/12h
+3. Dexametasona 0,15mg/kg EV 6/6h (controverso — considerar)
+4. Controle de temperatura: Dipirona 1g EV 6/6h
+5. Punção lombar (PCR para HSV no líquor)
+6. RNM crânio (lesões temporais mediais = patognomônico)
+7. EEG (PLEDs — descargas lateralizadas)
+8. Monitorização em UTI
+9. Balanço hídrico rigoroso
+10. Ajuste renal do Aciclovir (ClCr)`,
+    notes: "Iniciar Aciclovir EMPÍRICO — não aguardar resultado do PCR. Atraso >48h piora prognóstico drasticamente.",
+    warnings: "Mortalidade sem tratamento: 70%. Com tratamento precoce: <20%. Sequelas cognitivas frequentes.",
+    guideline: "IDSA / SBI / ABN",
+  },
+  {
+    id: "rx-crise-miastenia-diag",
+    title: "Crise Miastênica",
+    type: "Por Diagnóstico",
+    prescription: `1. IOT se capacidade vital <15-20mL/kg ou FR >30
+2. SUSPENDER anticolinesterásicos (Piridostigmina) durante crise
+3. Imunoglobulina EV 0,4g/kg/dia por 5 dias (2g/kg total) OU
+4. Plasmaférese 5 sessões em dias alternados
+5. Metilprednisolona 1g EV/dia por 3-5 dias (após estabilização)
+6. ATB se infecção desencadeante (evitar aminoglicosídeos, macrolídeos, fluoroquinolonas)
+7. VNI se fadiga respiratória sem indicação imediata de IOT
+8. Gasometria arterial seriada
+9. Capacidade vital forçada 4/4h
+10. Monitorização em UTI
+11. Após estabilização: reintroduzir Piridostigmina em doses baixas`,
+    notes: "Triggers: infecção, cirurgia, estresse, medicamentos (aminoglicosídeos, beta-bloqueadores, magnésio).",
+    warnings: "Crise colinérgica vs miastênica: dose de Edrofônio 2mg EV (teste). Se piora = colinérgica. NÃO confundir.",
+    guideline: "ABN / AAN / Myasthenia Gravis Foundation",
+  },
+  {
+    id: "rx-cetoacidose-euglicemica-diag",
+    title: "Cetoacidose Euglicêmica (por iSGLT2)",
+    type: "Por Diagnóstico",
+    prescription: `1. SUSPENDER iSGLT2 (Dapagliflozina, Empagliflozina, Canagliflozina)
+2. Insulina Regular EV em BIC: 0,1UI/kg/h
+3. SG 5% + SF 0,9% concomitante (glicemia pode ser <250)
+4. Reposição de K+:
+   - K+ >5,2: não repor, checar 2/2h
+   - K+ 3,3-5,2: 20-40mEq/L no soro
+   - K+ <3,3: repor antes da insulina
+5. Bicarbonato de sódio se pH <6,9:
+   - NaHCO3 8,4% 100mL em 400mL AD EV em 2h
+6. Gasometria arterial 2/2h
+7. Eletrólitos 2/2h (K+, Na+, Cl-)
+8. Beta-hidroxibutirato sérico (se disponível)
+9. Resolução: pH >7,3, HCO3 >18, AG <12
+10. Hidratação vigorosa: SF 0,9% 1L na 1ª hora`,
+    notes: "Glicemia pode ser normal (<250). Chave: cetose + acidose metabólica AG elevado em uso de iSGLT2. Comum em pós-operatório, jejum, desidratação.",
+    warnings: "NÃO descartar CAD por glicemia normal. Usar cetonemia (beta-OHB) para diagnóstico e monitorização.",
+    guideline: "ADA / SBD / Endocrine Society",
+  },
 ];
 

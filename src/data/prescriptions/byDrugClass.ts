@@ -667,4 +667,58 @@ DROGAS COMUNS (informativo):
     notes: "Paciente imunossuprimido febril: tratar como neutropenia febril até resultado de hemograma.",
     guideline: "SBR / SBN / ABT / IDSA",
   },
+  {
+    id: "rx-classe-bloqueadores-neuromusculares",
+    title: "Bloqueadores Neuromusculares (BNM)",
+    type: "Classe de Medicamento",
+    prescription: `DESPOLARIZANTE:
+Succinilcolina 1-1,5mg/kg EV (IOT sequência rápida)
+- Início: 30-60 segundos | Duração: 6-10 minutos
+- CI: hipercalemia, queimaduras >24h, rabdomiólise, miopatias
+
+NÃO DESPOLARIZANTES:
+Rocurônio 0,6-1,2mg/kg EV (IOT)
+- Início: 60-90 seg | Duração: 30-60 min
+- 1,2mg/kg = sequência rápida (substitui Succinilcolina)
+- Manutenção: 0,1-0,2mg/kg/dose
+
+Cisatracúrio 0,15-0,2mg/kg EV
+- Início: 2-3 min | Duração: 40-60 min
+- Metabolismo de Hofmann (ideal para DRC/DHC)
+- BIC: 1-3mcg/kg/min
+
+Atracúrio 0,4-0,5mg/kg EV
+- Início: 2-3 min | Duração: 20-35 min
+
+REVERSÃO:
+- Neostigmina 0,04-0,07mg/kg + Atropina 0,02mg/kg EV
+- Sugammadex 2-4mg/kg (reversão do Rocurônio — imediata)`,
+    notes: "TOF (Train-of-Four) para monitorizar bloqueio: manter 1-2/4 em ventilação mecânica. Reversão quando TOF ≥4.",
+    warnings: "NUNCA usar BNM sem sedação adequada. Consciência durante paralisia = tortura.",
+    guideline: "SBA / ASA / ESAIC",
+  },
+  {
+    id: "rx-classe-antidotos",
+    title: "Antídotos — Referência Rápida",
+    type: "Classe de Medicamento",
+    prescription: `INTOXICAÇÃO → ANTÍDOTO:
+Paracetamol → N-Acetilcisteína (NAC) 150mg/kg em 1h, 50mg/kg em 4h, 100mg/kg em 16h
+Benzodiazepínicos → Flumazenil 0,2mg EV, repetir 0,1mg a cada 1min (máx 1mg)
+Opioides → Naloxona 0,4-2mg EV/IM/IN, repetir 2-3min
+Organofosforados → Atropina 2mg EV 5/5min + Pralidoxima 1-2g EV em 30min
+Betabloqueadores → Glucagon 5-10mg EV + Insulina hiperinsulinêmica-euglicêmica
+Bloqueadores de Ca² → Cálcio (Gluconato 30mL ou Cloreto 10mL) + Insulina
+Anticoagulantes (Warfarina) → Vitamina K 10mg EV + CCP (se grave)
+Heparina → Protamina 1mg/100UI de Heparina
+Digoxina → Anticorpo anti-Digoxina (Digibind)
+Metemoglobinemia → Azul de Metileno 1-2mg/kg EV em 5min
+Isoniazida → Piridoxina (B6) — dose = dose de INH ingerida (máx 5g)
+Cianeto → Hidroxocobalamina 5g EV OU Nitrito de sódio + Tiossulfato
+Monóxido de carbono → O₂ 100% (câmara hiperbárica se grave)
+Ferro → Deferoxamina 15mg/kg/h EV (máx 6g/dia)
+Etanol/Metanol/Etilenoglicol → Fomepizol 15mg/kg EV OU Etanol EV`,
+    notes: "CIATOX 24h: 0800-722-6001. Sempre coletar nível sérico da droga se possível.",
+    warnings: "Flumazenil: CI em dependentes de benzo e epilépticos (risco de convulsão). Naloxona: precipita abstinência em dependentes.",
+    guideline: "AACT / ABRACIT / EXTRIP",
+  },
 ];

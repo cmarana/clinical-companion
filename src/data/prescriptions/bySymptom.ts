@@ -828,5 +828,67 @@ CRÔNICA (Na+ <130, assintomática):
     notes: "Fecaloma + dor abdominal intensa + distensão: excluir volvo e obstrução intestinal (RX/TC).",
     guideline: "SBG / AGA",
   },
+  {
+    id: "rx-sint-rash-cutaneo",
+    title: "Rash Cutâneo Agudo no PS",
+    type: "Por Sintoma",
+    prescription: `1. Avaliar sinais de gravidade: descolamento epidérmico, Nikolsky+, mucosas
+2. Se urticária simples:
+   - Loratadina 10mg VO OU Cetirizina 10mg VO
+   - Prednisona 40mg VO dose única
+3. Se farmacodermia extensa:
+   - Dexametasona 10mg EV
+   - Difenidramina 50mg EV
+   - SUSPENDER todos medicamentos suspeitos
+4. Se SSJ/NET (descolamento >10%): ver protocolo específico
+5. Se petéquias/púrpura: hemograma urgente (plaquetas)
+6. Se vesículas em dermátomo: Herpes Zoster → Aciclovir
+7. Documentar com fotos
+8. Biópsia se dúvida diagnóstica`,
+    notes: "Cronologia medicamentosa é CHAVE: ATB (7-14d), anticonvulsivantes (2-8 semanas), alopurinol (2-6 semanas).",
+    warnings: "Sinal de Nikolsky positivo = EMERGÊNCIA dermatológica. Transferir para centro de queimados se NET.",
+    guideline: "SBD / AAD / BAD",
+  },
+  {
+    id: "rx-sint-hipotermia-ps",
+    title: "Hipotermia no PS",
+    type: "Por Sintoma",
+    prescription: `1. Medir temperatura central (retal/esofágica)
+2. Leve (32-35°C):
+   - Reaquecimento passivo: cobertores, ambiente aquecido
+   - Líquidos aquecidos VO
+3. Moderada (28-32°C):
+   - Reaquecimento ativo externo: manta térmica, ar quente forçado
+   - SF 0,9% aquecido (40-42°C) EV
+4. Grave (<28°C):
+   - Reaquecimento ativo interno: lavagem peritoneal aquecida, ECMO
+   - Cuidado com arritmias (manipulação mínima)
+5. Monitorização cardíaca contínua (risco de FV)
+6. Glicemia capilar (hipoglicemia frequente)
+7. Gasometria (corrigir pH para temperatura)
+8. Eletrólitos seriados
+9. NÃO declarar óbito até reaquecer (>35°C): "ninguém está morto até estar quente e morto"`,
+    warnings: "FV em hipotermia: desfibrilação pode não funcionar <30°C. Tentar 1x, reaquecer para >30°C antes de repetir.",
+    guideline: "AHA / Wilderness Medical Society",
+  },
+  {
+    id: "rx-sint-linfonodomegalia-aguda",
+    title: "Linfonodomegalia Aguda no PS",
+    type: "Por Sintoma",
+    prescription: `1. Anamnese dirigida: tempo de evolução, sintomas B, infecção recente
+2. Se sinais infecciosos locais (adenite):
+   - Amoxicilina-Clavulanato 875/125mg VO 12/12h 7-10d
+   - Analgesia: Ibuprofeno 600mg VO 8/8h
+3. Se flutuação: USG + drenagem se abscesso
+4. Exames iniciais: hemograma, VHS, PCR, LDH, ácido úrico
+5. Sorologias: EBV, CMV, HIV, toxoplasmose
+6. Se suspeita de linfoma/neoplasia:
+   - Biópsia excisional (NÃO PAAF)
+   - TC cervical/tórax/abdome
+   - LDH, beta-2-microglobulina
+7. Sinais de alarme: >2cm, endurecido, aderido, supraclavicular, >4 semanas`,
+    notes: "Linfonodo supraclavicular esquerdo (Virchow) = investigar neoplasia abdominal. Cervical posterior + esplenomegalia: pensar mononucleose.",
+    guideline: "SBHH / ASH",
+  },
 ];
 

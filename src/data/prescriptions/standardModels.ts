@@ -582,4 +582,43 @@ CRM / Carimbo / Assinatura`,
     warnings: "NÃO dar carvão ativado em: cáusticos, hidrocarbonetos, via aérea desprotegida, íleo paralítico.",
     guideline: "AACT / ABRACIT / MS",
   },
+  {
+    id: "rx-modelo-obeso-morbido",
+    title: "Modelo — Paciente Obeso Mórbido",
+    type: "Modelo Padrão",
+    prescription: `1. Dieta para obeso (ajustar com Nutrição)
+2. Peso real para dose de ATB e peso ideal para volumes
+3. Enoxaparina 40mg SC 12/12h (profilaxia — dose ajustada para >120kg)
+4. Omeprazol 40mg EV 1x/dia
+5. Cabeceira elevada ≥30° (SAOS, aspiração)
+6. Cama bariátrica se disponível
+7. Acesso venoso: preferir USG-guiado (acessos difíceis)
+8. Mobilização precoce com fisioterapia
+9. Insulina SC conforme protocolo (resistência insulínica)
+10. Glicemia capilar 6/6h
+11. Monitorização: SpO2 contínua (risco de hipoventilação)
+12. Avaliação Anestesiologia precoce se cirurgia (VAD)`,
+    notes: "Dosagem de drogas: usar peso real para hidrofílicos (ATB), peso ideal para lipofílicos (Benzo). IOT: preparar para via aérea difícil.",
+    guideline: "SBCBM / ASA",
+  },
+  {
+    id: "rx-modelo-transplantado",
+    title: "Modelo — Paciente Transplantado no PS",
+    type: "Modelo Padrão",
+    prescription: `1. MANTER imunossupressores (NÃO suspender sem orientação do centro transplantador)
+   - Verificar dose e horário habitual do paciente
+   - Tacrolimus / Ciclosporina / Micofenolato / Prednisona
+2. Nível sérico de Tacrolimus/Ciclosporina (se disponível)
+3. Hemograma, função renal, função hepática, PCR
+4. Se febre: hemoculturas 2 pares + ATB empírico PRECOCE
+   - Piperacilina-Tazobactam 4,5g EV 6/6h (amplo espectro)
+5. Se diarreia: pesquisa de CMV, C. difficile
+6. Cuidado com interações: Azólicos ↑ nível de Tacrolimus
+7. Contatar centro transplantador IMEDIATAMENTE
+8. Profilaxias: verificar se usa Sulfametoxazol-Trimetoprim, Aciclovir
+9. Precaução de contato se internação
+10. NÃO dar vacinas de vírus vivo`,
+    warnings: "Paciente transplantado pode não fazer febre/leucocitose com infecção grave. Baixo limiar para investigar e tratar.",
+    guideline: "ABTO / AST / KDIGO",
+  },
 ];

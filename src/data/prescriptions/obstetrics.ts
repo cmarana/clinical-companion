@@ -518,4 +518,61 @@ Se não houver melhora:
     warnings: "Prolapso de cordão: NÃO tentar reintroduzir. Elevar apresentação + cesárea IMEDIATA. Manter mão até incisão.",
     guideline: "FEBRASGO / ACOG / NICE / FIGO",
   },
+  {
+    id: "rx-obst-colestase-gestacional",
+    title: "Colestase Intra-hepática da Gestação",
+    type: "Obstetrícia",
+    prescription: `1. Ácido Ursodesoxicólico 300mg VO 8/8h (ou 15mg/kg/dia)
+2. Monitorizar ácidos biliares séricos (semanal)
+3. Função hepática (TGO, TGP, GGT) semanal
+4. Coagulograma + Vitamina K 10mg VO/IM se TP alargado
+5. Anti-histamínico para prurido: Difenidramina 25mg VO 8/8h
+6. CTG 2x/semana a partir do diagnóstico
+7. Resolução:
+   - Ácidos biliares <40: 37-38 semanas
+   - Ácidos biliares 40-99: 36 semanas
+   - Ácidos biliares ≥100: considerar resolução imediata
+8. Corticoide para maturidade pulmonar se <37 semanas`,
+    notes: "Prurido em palmas e plantas (pior à noite) no 3° trimestre: dosar ácidos biliares. Risco de óbito fetal súbito.",
+    warnings: "Ácidos biliares >100: risco elevado de morte fetal. Não usar Colestiramina (interfere absorção de vitaminas).",
+    guideline: "FEBRASGO / RCOG / SMFM",
+  },
+  {
+    id: "rx-obst-inversao-uterina",
+    title: "Inversão Uterina Aguda",
+    type: "Obstetrícia",
+    prescription: `1. CHAMAR AJUDA — emergência obstétrica
+2. NÃO remover a placenta (se ainda aderida)
+3. Manobra de Johnson: reposicionar fundo uterino imediatamente
+   - Empurrar o fundo uterino pela vagina na direção do umbigo
+4. Se resistência: Terbutalina 0,25mg SC OU Nitroglicerina 50-100mcg EV (relaxamento uterino)
+5. Após reposição: Ocitocina 20UI em 500mL RL EV
+6. Reposição volêmica agressiva (choque distributivo + hemorrágico)
+7. ATB profilático: Cefazolina 2g EV
+8. Se falha: redução sob anestesia geral OU laparotomia (Huntington)
+9. Monitorização contínua
+10. Reserva de sangue (2-4 CH)`,
+    warnings: "NÃO tentar retirar a placenta antes de reduzir a inversão. Choque desproporcional à perda sanguínea visível (componente neurogênico).",
+    guideline: "FEBRASGO / ACOG / RCOG",
+  },
+  {
+    id: "rx-gin-candidíase-complicada",
+    title: "Candidíase Vulvovaginal Complicada / Recorrente",
+    type: "Ginecologia",
+    prescription: `1. Indução:
+   - Fluconazol 150mg VO dias 1, 4 e 7 (3 doses)
+2. Manutenção (se recorrente ≥4 episódios/ano):
+   - Fluconazol 150mg VO 1x/semana por 6 meses
+3. Tópico associado: Clotrimazol creme vaginal 1% por 7-14 noites
+4. Se gestante: APENAS tópico (Clotrimazol ou Miconazol 7 noites)
+5. Tratar parceiro SOMENTE se balanite
+6. Orientações:
+   - Roupa íntima de algodão
+   - Evitar duchas vaginais
+   - Evitar roupas apertadas
+7. Se refratária a Fluconazol: cultura + antifungigrama
+   - Considerar: Ácido Bórico 600mg intravaginal 1x/dia 14 noites`,
+    notes: "Candida glabrata: resistente a Azólicos. Tratar com Ácido Bórico ou Nistatina tópica.",
+    guideline: "FEBRASGO / CDC / IDSA",
+  },
 ];

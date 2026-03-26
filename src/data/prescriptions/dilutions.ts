@@ -1220,5 +1220,106 @@ Estabilidade:
     warnings: "Loading dose é ESSENCIAL — sem ela, níveis terapêuticos só após 3-4 dias. NÃO pular doses de ataque.",
     guideline: "ANVISA / SBI / IDSA",
   },
+  {
+    id: "rx-dil-clindamicina",
+    title: "Clindamicina — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `Apresentação: Clindamicina 600mg/4mL
+
+Diluição EV:
+- Diluir 600mg em 50-100mL de SF 0,9% ou SG 5%
+- Concentração máxima: 18mg/mL
+- Infundir em 20-30 minutos (600mg) ou 40-60 minutos (900mg)
+
+Doses habituais:
+- 600mg EV 8/8h (infecções moderadas)
+- 900mg EV 8/8h (infecções graves)
+
+Velocidade máxima: 30mg/min
+NÃO administrar em bolus (risco de hipotensão e PCR)
+
+Estabilidade:
+- Diluída: 24h em TA, 14 dias refrigerada`,
+    notes: "Excelente para infecções de pele, celulite, fasciíte (ação antitoxina). Cobre anaeróbios. Alternativa em alergia a Penicilina.",
+    warnings: "Risco de colite pseudomembranosa (C. difficile). Não usar IM se dose >600mg.",
+    guideline: "ANVISA / ASHP",
+  },
+  {
+    id: "rx-dil-metronidazol",
+    title: "Metronidazol — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `Apresentação: Metronidazol 500mg/100mL (solução pronta)
+
+Administração EV:
+- Infusão direta da bolsa (já diluído)
+- Infundir em 30-60 minutos
+- Velocidade: 5mL/min
+
+Doses habituais:
+- 500mg EV 8/8h (infecções abdominais, anaeróbios)
+- 250mg EV 8/8h (C. difficile — preferir VO)
+- 15mg/kg ataque + 7,5mg/kg 6/6h (infecções graves)
+
+NÃO misturar com outros medicamentos na mesma linha
+Proteger da luz (fotossensível)
+
+Estabilidade:
+- Solução pronta: usar imediatamente após abertura`,
+    notes: "Principal droga para anaeróbios. Efeito dissulfiram: paciente NÃO pode ingerir álcool durante e 48h após tratamento.",
+    warnings: "Neuropatia periférica com uso prolongado (>4 semanas). Monitorizar parestesias.",
+    guideline: "ANVISA / SBI",
+  },
+  {
+    id: "rx-dil-ceftazidima",
+    title: "Ceftazidima — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `Apresentação: Ceftazidima 1g ou 2g pó para reconstituição
+
+Reconstituição:
+- 1g: diluir em 10mL de AD
+- 2g: diluir em 10mL de AD
+
+Diluição EV:
+- Diluir dose reconstituída em 50-100mL SF 0,9% ou SG 5%
+- Infundir em 15-30 minutos (intermitente)
+- Infusão estendida: 3h (melhora PK/PD para Pseudomonas)
+
+Doses habituais:
+- 1g EV 8/8h (infecções moderadas)
+- 2g EV 8/8h (Pseudomonas, neutropenia febril)
+
+Estabilidade:
+- Reconstituída: 24h em TA
+- Diluída: 24h em TA, 7 dias refrigerada`,
+    notes: "Cefalosporina de 3ª geração com excelente cobertura para Pseudomonas aeruginosa. Não cobre MRSA.",
+    warnings: "Ajuste renal obrigatório. ClCr 31-50: 1g 12/12h. ClCr 16-30: 1g 24/24h. ClCr <15: 500mg 24/24h.",
+    guideline: "ANVISA / ASHP / SBI",
+  },
+  {
+    id: "rx-dil-hidrocortisona",
+    title: "Hidrocortisona — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `Apresentação: Hidrocortisona 100mg ou 500mg pó liofilizado
+
+Reconstituição:
+- 100mg: diluir em 2mL AD
+- 500mg: diluir em 4mL AD
+
+Administração EV:
+- Bolus: diluir em 10mL SF, infundir em 1-2 minutos (doses ≤100mg)
+- Infusão: diluir em 50-100mL SF 0,9% ou SG 5%, infundir em 15-30 min
+
+Doses habituais:
+- Choque séptico: 50mg EV 6/6h (200mg/dia) — ADRENAL Trial
+- Crise adrenal: 100mg EV bolus + 50mg 8/8h
+- Asma/DPOC: 100-200mg EV 6/6h
+- Insuficiência adrenal crônica: 50mg EV 8/8h (estresse)
+
+Estabilidade:
+- Reconstituída: usar em até 3h (sem conservante)`,
+    notes: "Equivalência: 100mg Hidrocortisona = 25mg Prednisolona = 4mg Dexametasona. Preferida em choque séptico por ação mineralocorticoide.",
+    warnings: "Hiperglicemia frequente. Monitorizar glicemia capilar 4/4h. Não suspender abruptamente após uso >3 dias.",
+    guideline: "ANVISA / SSC / Endocrine Society",
+  },
 ];
 

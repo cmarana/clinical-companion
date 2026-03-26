@@ -404,4 +404,51 @@ Sintomático (letargia, cianose, hipoglicemia, tremores) ou Ht >70%:
     warnings: "Meningite neonatal é sempre GRAVE. Mortalidade 20-30%. Sequelas neurológicas em 30-50%.",
     guideline: "SBP / AAP / Neonatologia",
   },
+  {
+    id: "rx-neo-hiperbilirrubinemia-direta",
+    title: "Colestase Neonatal / Hiperbilirrubinemia Direta",
+    type: "Neonatologia",
+    prescription: `1. Bilirrubina total e frações (BD >1mg/dL ou >20% da BT = colestase)
+2. Investigação:
+   - Função hepática: TGO, TGP, GGT, FA
+   - Coagulograma (INR — função hepática)
+   - Alfa-1-antitripsina
+   - TSH, T4 livre
+   - Sorologias TORCH
+   - USG abdome (vias biliares)
+3. Vitamina K 1mg IM (se coagulopatia)
+4. Ácido Ursodesoxicólico 10-20mg/kg/dia VO 12/12h
+5. Vitaminas lipossolúveis:
+   - Vitamina A: 5.000 UI/dia VO
+   - Vitamina D: 800-1000 UI/dia VO
+   - Vitamina E: 25 UI/kg/dia VO
+   - Vitamina K: 2,5mg VO 2x/semana
+6. Fórmula com TCM se amamentação insuficiente
+7. Encaminhar Hepatologia pediátrica URGENTE
+8. Atresia de vias biliares: Kasai até 60 dias de vida`,
+    warnings: "Icterícia >14 dias de vida: SEMPRE dosar bilirrubina direta. Atresia de vias biliares: diagnóstico precoce salva vidas.",
+    guideline: "SBP / NASPGHAN / ESPGHAN",
+  },
+  {
+    id: "rx-neo-abstinencia",
+    title: "Síndrome de Abstinência Neonatal (SAN)",
+    type: "Neonatologia",
+    prescription: `1. Score de Finnegan a cada 4h (ou 2h se medicado)
+2. Medidas não farmacológicas PRIMEIRO:
+   - Ambiente calmo, pouca luz, pouco ruído
+   - Swaddling (enrolar)
+   - Sucção não nutritiva (chupeta)
+   - Colo frequente
+   - Aleitamento materno (se mãe em programa de substituição)
+3. Tratamento farmacológico se Finnegan ≥8 (3 consecutivos) ou ≥12 (1x):
+   - Morfina oral 0,05-0,1mg/kg/dose 3/3-4/4h
+   - Titular conforme score: aumentar 0,02mg/kg por dose
+4. Se refratário: adicionar Fenobarbital 5mg/kg/dia VO
+5. Desmame: reduzir 10-20% da dose a cada 24-48h quando Finnegan <8
+6. Triagem para hepatite B/C, HIV
+7. Serviço Social + Psicologia`,
+    notes: "Opioides: início 24-72h de vida. Cocaína: horas. Álcool: 3-12h. Benzodiazepínicos: dias.",
+    warnings: "NÃO usar Naloxona no RN de mãe usuária de opioides (precipita convulsão).",
+    guideline: "SBP / AAP / WHO",
+  },
 ];
