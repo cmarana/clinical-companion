@@ -573,5 +573,93 @@ Ambos:
 11. ATB profilático: Amoxicilina-Clavulanato (se tamponamento >24h)
 12. ORL: avaliação se refratário`,
   },
-];
+  {
+    id: "rx-sint-disfagia",
+    title: "Disfagia Aguda",
+    type: "Prescrição Sintomática",
+    prescription: `1. Avaliar: odinofagia vs disfagia vs globus
+2. Se corpo estranho (espinha, osso): RX cervical lateral + EDA urgente
+3. Se bateria/objeto cortante: EDA de emergência (<2h)
+4. Se impactação alimentar esofágica:
+   Glucagon 1mg EV (relaxa EEI — pode resolver)
+   EDA se não resolver em 30 min
+5. Se suspeita de abscesso peritonsilar: TC cervical + drenagem + ATB
+6. Se disfagia + sialorreia + estridor: pensar epiglotite (IOT + ATB)
+7. Hidratação EV se não tolera VO
+8. NÃO insistir em dieta VO se engasgos frequentes (risco aspiração)
+9. Fonoaudiologia se disfagia neurológica
+10. Hemograma, PCR, RX cervical perfil`,
+    warnings: "Bateria-botão impactada no esôfago = EMERGÊNCIA (<2h). Corpo estranho pontiagudo = EDA urgente.",
+  },
+  {
+    id: "rx-sint-odinofagia",
+    title: "Odinofagia (Dor de Garganta)",
+    type: "Prescrição Sintomática",
+    prescription: `Viral (maioria):
+1. Ibuprofeno 400mg VO 8/8h por 3-5 dias
+2. Paracetamol 750mg VO 6/6h SN
+3. Gargarejo com água morna + sal
+4. Pastilhas/spray anestésico local (lidocaína)
+5. Hidratação abundante
 
+Faringoamigdalite estreptocócica (Centor ≥3):
+6. Amoxicilina 500mg VO 8/8h por 10 dias (1ª escolha)
+7. OU Penicilina Benzatina 1.200.000 UI IM dose única
+8. Se alergia: Azitromicina 500mg VO 1x/dia por 5 dias
+
+Abscesso peritonsilar:
+9. Drenagem + ATB (Amoxicilina-Clavulanato + Clindamicina)
+10. Internação se trismo grave
+
+Epiglotite (adulto):
+11. ATB + IOT eletiva em ambiente controlado`,
+    notes: "Critérios de Centor: febre >38°C, exsudato tonsilar, adenopatia cervical anterior, ausência de tosse.",
+  },
+  {
+    id: "rx-sint-cianose",
+    title: "Cianose",
+    type: "Prescrição Sintomática",
+    prescription: `Central (lábios, língua — SpO2 baixa):
+1. O2 100% alto fluxo imediato
+2. Gasometria arterial STAT
+3. Se não melhora com O2: pensar shunt (cardiopatia, TEP maciço)
+4. Se metaemoglobinemia: Azul de metileno 1-2mg/kg EV em 5 min
+
+Periférica (extremidades — SpO2 normal):
+5. Aquecer extremidades
+6. Avaliar: choque, vasculopatia, Raynaud
+
+Investigação:
+7. RX tórax, ECG, ecocardiograma
+8. Hemograma (policitemia?)
+9. MetaHb (se SpO2 baixa com PaO2 normal)
+10. AngioTC se suspeita TEP
+11. D-dímero se baixa probabilidade
+
+Causas comuns:
+Pneumonia grave, EAP, TEP, DPOC, cardiopatia cianótica, metaemoglobinemia`,
+  },
+  {
+    id: "rx-sint-soluço-persistente",
+    title: "Soluço Persistente (>48h)",
+    type: "Prescrição Sintomática",
+    prescription: `Manobras físicas:
+1. Manobra de Valsalva
+2. Estimulação faríngea (gelo, açúcar granulado sublingual)
+3. Compressão do nervo frênico (pressão supraclavicular)
+
+Farmacológico:
+4. Metoclopramida 10mg EV 8/8h (1ª linha)
+5. OU Clorpromazina 25-50mg EV lento (2ª linha — pode causar hipotensão)
+6. OU Baclofeno 5mg VO 8/8h (aumentar gradualmente)
+7. OU Gabapentina 300mg VO 8/8h
+8. Omeprazol 40mg EV 1x/dia (DRGE pode ser causa)
+
+Investigar causa:
+9. RX tórax, ECG (IAM inferior pode causar soluço)
+10. TC abdome se refratário (lesão diafragmática, abscesso subfrênico)
+11. Endoscopia se DRGE
+12. RNM crânio se suspeita central (AVC, esclerose múltipla)`,
+    notes: "Soluço >48h é soluço persistente. >1 mês é intratável. Sempre investigar causa orgânica.",
+  },
+];

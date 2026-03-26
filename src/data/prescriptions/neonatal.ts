@@ -362,5 +362,46 @@ HIPERNATREMIA (Na >150):
 10. SF 0,45% ou leite materno`,
     guideline: "SBP / Neonatologia",
   },
-];
+  {
+    id: "rx-neo-policitemia",
+    title: "Policitemia Neonatal",
+    type: "Prescrição Neonatal",
+    prescription: `DEFINIÇÃO: Ht venoso central >65% ou Hb >22
 
+Assintomático com Ht 65-70%:
+1. Hidratação EV adequada
+2. Monitorar Ht 6/6h
+3. Alimentação precoce
+
+Sintomático (letargia, cianose, hipoglicemia, tremores) ou Ht >70%:
+4. Exsanguineotransfusão parcial com SF 0,9%
+   Volume = (Ht observado - Ht desejado) × peso × volemia / Ht observado
+   Volemia neonatal: 80-90mL/kg
+   Ht desejado: 55%
+5. Trocar sangue por SF 0,9% (alíquotas de 5-10mL)
+6. Via: cateter umbilical venoso
+7. Monitorar: glicemia, bilirrubinas, Ht pós-procedimento
+8. Exames: hemograma, bilirrubinas, glicemia, cálcio`,
+    notes: "Causas: RCIU, pós-datismo, DMG, transfusão feto-fetal, clampeamento tardio excessivo.",
+    guideline: "SBP / Neonatologia",
+  },
+  {
+    id: "rx-neo-meningite",
+    title: "Meningite Neonatal",
+    type: "Prescrição Neonatal",
+    prescription: `1. Punção lombar (se condição clínica permitir)
+2. ATB empírico IMEDIATO:
+   Ampicilina 100mg/kg EV 8/8h (ou 6/6h >7 dias) + Gentamicina 5mg/kg 1x/dia
+3. Se suspeita de Gram-negativo ou >7 dias de vida:
+   Ampicilina + Cefotaxima 50mg/kg EV 6/6h (melhor penetração SNC que cefrtriaxona)
+4. OU Ampicilina + Meropenem 40mg/kg EV 8/8h (Gram-negativo resistente)
+5. Dexametasona: NÃO recomendada rotineiramente em neonatos
+6. Monitorar: perímetro cefálico diário, fontanela, convulsões
+7. USG transfontanela (abscesso, ventriculite, hidrocefalia)
+8. Punção lombar de controle em 48-72h
+9. Duração ATB: 14 dias (Gram+), 21 dias (Gram-), 21+ dias (abscessos)
+10. EEG se convulsões`,
+    warnings: "Meningite neonatal é sempre GRAVE. Mortalidade 20-30%. Sequelas neurológicas em 30-50%.",
+    guideline: "SBP / AAP / Neonatologia",
+  },
+];

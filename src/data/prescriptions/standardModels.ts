@@ -460,5 +460,64 @@ CRM / Carimbo / Assinatura`,
 14. Alta em 48-72h se sem complicações`,
     guideline: "FEBRASGO / NICE / ACOG",
   },
+  {
+    id: "rx-modelo-observacao",
+    title: "Modelo — Observação no PS (12-24h)",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta _____ (conforme quadro)
+2. SF 0,9% 500mL EV — manter acesso
+3. Dipirona 1g EV 6/6h se dor ou febre
+4. Ondansetrona 4mg EV 8/8h SN
+5. _____________________ (medicação específica do caso)
+6. Sinais vitais a cada 2h
+7. Balanço hídrico
+8. Glicemia capilar se DM
+9. Reavaliação médica em 6h
+10. Exames pendentes: ____________
+11. Se piora: comunicar imediatamente
+12. Reclassificar em 12-24h: alta / internação / transferência`,
+    notes: "Modelo para observação curta no PS. Reavaliar periodicamente.",
+  },
+  {
+    id: "rx-modelo-sala-amarela",
+    title: "Modelo — Sala Amarela (Semi-intensivo)",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta _____ (conforme quadro clínico)
+2. SF 0,9% 1000mL EV ___mL/h
+3. Monitorização contínua (PA não invasiva, FC, SpO2, ECG)
+4. Sinais vitais a cada 1-2h
+5. Glicemia capilar 4/4h (se DM ou crítico)
+6. Dipirona 1g EV 6/6h SN
+7. Omeprazol 40mg EV 1x/dia
+8. Enoxaparina 40mg SC 1x/dia (se indicado)
+9. O2 suplementar para SpO2 >___% (alvo conforme patologia)
+10. _____________________ (medicação específica)
+11. Balanço hídrico rigoroso
+12. SVD se necessário (controle de diurese)
+13. Comunicar plantonista se: instabilidade hemodinâmica, rebaixamento, dessaturação
+14. Avaliar necessidade de vaga em UTI`,
+    notes: "Sala amarela: paciente potencialmente grave que necessita monitorização contínua mas não necessariamente UTI.",
+  },
+  {
+    id: "rx-modelo-uti-admissao",
+    title: "Modelo — Admissão UTI",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta zero (avaliar em 24h)
+2. SF 0,9% 1000mL EV ___mL/h
+3. Monitorização contínua: PA invasiva, ECG, SpO2, EtCO2
+4. VM: modo ___, VT ___mL, FR ___, PEEP ___, FiO2 ___
+5. Sedação: Midazolam ___mg/h + Fentanil ___mcg/h BIC (RASS alvo ___)
+6. Vasopressor: Noradrenalina ___mcg/kg/min (PAM alvo ≥65)
+7. Omeprazol 40mg EV 1x/dia
+8. Enoxaparina 40mg SC 1x/dia (profilaxia TVP)
+9. Insulina Regular protocolo de correção (glicemia 140-180)
+10. Cabeceira 30-45° (prevenção PAV)
+11. Higiene oral com clorexidina 0,12% 8/8h
+12. Fisioterapia respiratória + motora 2x/dia
+13. SVD + mensurar diurese horária
+14. Exames à admissão: gasometria, lactato, hemograma, eletrólitos, função renal/hepática, coagulograma
+15. Balanço hídrico rigoroso 6/6h
+16. Bundle FASTHUG: Feeding, Analgesia, Sedation, Thrombo, Head, Ulcer, Glucose`,
+    guideline: "AMIB / SCCM",
+  },
 ];
-

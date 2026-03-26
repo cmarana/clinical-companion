@@ -515,5 +515,83 @@ ATB profilaxia (mordedura):
 9. Amoxicilina-Clavulanato 875/125mg VO 12/12h por 5-7 dias`,
     guideline: "MS / SVS / Protocolo Antirrábico 2023",
   },
-];
+  {
+    id: "rx-sus-notificacao",
+    title: "Doenças de Notificação Compulsória — Lista SUS",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `NOTIFICAÇÃO IMEDIATA (até 24h):
+- Dengue (óbito ou grave), Chikungunya, Zika
+- Meningite meningocócica
+- Sarampo, Difteria, Poliomielite (suspeita)
+- Raiva humana
+- Malária (região extra-amazônica)
+- Febre amarela
+- COVID-19 (grave/óbito)
+- Botulismo, Cólera, Varíola
+- Acidente de trabalho grave/fatal
+- Violência (sexual, contra criança/idoso, tentativa de suicídio)
+- Intoxicação exógena
 
+NOTIFICAÇÃO SEMANAL:
+- Tuberculose, Hanseníase, HIV/AIDS, Sífilis
+- Hepatites virais
+- Leishmaniose, Esquistossomose, Leptospirose
+- Acidente por animal peçonhento
+
+COMO NOTIFICAR:
+1. Preencher ficha SINAN (Sistema de Informação de Agravos de Notificação)
+2. Notificar vigilância epidemiológica do município
+3. Registrar em prontuário
+4. Art. 269 CP: deixar de notificar é crime (detenção 6 meses a 2 anos)`,
+    guideline: "MS / SVS / Portaria 217/2023",
+  },
+  {
+    id: "rx-sus-observacao-ps",
+    title: "Modelo Prescrição — Sala de Observação PS/UPA",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `1. Dieta _____ (zero / líquida / branda / livre)
+2. SF 0,9% ___mL EV — ___mL/h (ou manter acesso heparinizado)
+3. Dipirona 1g EV 6/6h se dor ou Tax ≥37,8°C
+4. Ondansetrona 4mg EV 8/8h se náusea/vômito
+5. Omeprazol 40mg EV 1x/dia (se indicado)
+6. _____________________ (medicação específica)
+7. Sinais vitais a cada ___h
+8. Glicemia capilar se DM: ___/___h
+9. Comunicar plantonista se:
+   - PA <90/60 ou >180/110
+   - FC <50 ou >120
+   - SpO2 <92%
+   - Temperatura >38,5°C
+   - Alteração nível de consciência
+   - Dor intensa EVA >7
+10. Reavaliação médica em ___h para decisão: alta / internação / transferência`,
+    notes: "Observação PS/UPA: máximo 24h. Se necessidade de internação >24h, regular leito hospitalar.",
+    guideline: "MS / PNAU",
+  },
+  {
+    id: "rx-sus-atestado",
+    title: "Atestado Médico — Modelo e Regras",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `MODELO:
+Atesto para os devidos fins que o(a) Sr(a). _______________,
+portador(a) do documento _______________, esteve sob cuidados médicos
+nesta unidade no dia ___/___/___, necessitando de afastamento de suas
+atividades por ___ dias a partir desta data.
+
+CID (com autorização do paciente): ___
+
+Data: ___/___/___
+CRM: ___________
+Assinatura e carimbo
+
+REGRAS CFM:
+1. NÃO é obrigatório colocar CID (sigilo médico) — apenas se paciente autorizar
+2. Atestado é direito do paciente — médico não pode negar
+3. Validade: prazo determinado pelo médico
+4. Para INSS (>15 dias): relatório médico detalhado para perícia
+5. Empresa pode contestar com médico do trabalho (mas deve aceitar inicialmente)
+6. Atestado falso: crime (art. 302 CP)
+7. Acompanhante: atestado de acompanhamento (filhos menores, idosos)`,
+    guideline: "CFM / Resolução 1658/2002 / CLT",
+  },
+];
