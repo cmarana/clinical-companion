@@ -7,10 +7,17 @@ import { emergencyFullProtocols2 } from "./emergency2";
 import { cardioFullProtocols } from "./cardiology";
 import { cardioFullProtocols2 } from "./cardiology2";
 import { cardioFullProtocols3 } from "./cardiology3";
+import { cardioFullProtocols4 } from "./cardiology4";
+import { cardioFullProtocols5 } from "./cardiology5";
 import { neuroFullProtocols } from "./neurology";
 import { neuroFullProtocols2 } from "./neurology2";
+import { neuroFullProtocols3 } from "./neurology3";
+import { neuroFullProtocols4 } from "./neurology4";
+import { neuroFullProtocols5 } from "./neurology5";
 import { sepsisFullProtocols } from "./sepsis";
 import { sepsisFullProtocols2 } from "./sepsis2";
+import { sepsisFullProtocols3 } from "./sepsis3";
+import { sepsisFullProtocols4 } from "./sepsis4";
 import { metabolicFullProtocols } from "./metabolic";
 import { metabolicFullProtocols2 } from "./metabolic2";
 import { metabolicFullProtocols3 } from "./metabolic3";
@@ -33,6 +40,8 @@ import { infectiousFullProtocols2 } from "./infectious2";
 import { infectiousFullProtocols3 } from "./infectious3";
 import { otherEmergenciesFullProtocols } from "./otherEmergencies";
 import { otherEmergenciesFullProtocols2 } from "./otherEmergencies2";
+import { respiratoryFullProtocols } from "./respiratory";
+import { respiratoryFullProtocols2 } from "./respiratory2";
 
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
@@ -40,14 +49,15 @@ export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "neurology", title: "Neurologia", order: 3 },
   { id: "sepsis", title: "Sepse e Choque", order: 4 },
   { id: "metabolic", title: "Metabólico e Endócrino", order: 5 },
-  { id: "trauma", title: "Trauma e Cirurgia", order: 6 },
-  { id: "obstetrics", title: "Obstetrícia", order: 7 },
-  { id: "intoxication", title: "Intoxicações", order: 8 },
-  { id: "procedures", title: "Procedimentos de Emergência", order: 9 },
-  { id: "pediatrics", title: "Pediatria de Emergência", order: 10 },
-  { id: "neonatal", title: "Neonatal", order: 11 },
-  { id: "infectious", title: "Infectologia de Emergência", order: 12 },
-  { id: "other_emergencies", title: "Outras Emergências Frequentes", order: 13 },
+  { id: "respiratory", title: "Respiratório", order: 6 },
+  { id: "trauma", title: "Trauma e Cirurgia", order: 7 },
+  { id: "obstetrics", title: "Obstetrícia", order: 8 },
+  { id: "intoxication", title: "Intoxicações", order: 9 },
+  { id: "procedures", title: "Procedimentos de Emergência", order: 10 },
+  { id: "pediatrics", title: "Pediatria de Emergência", order: 11 },
+  { id: "neonatal", title: "Neonatal", order: 12 },
+  { id: "infectious", title: "Infectologia de Emergência", order: 13 },
+  { id: "other_emergencies", title: "Outras Emergências Frequentes", order: 14 },
 ];
 
 export const fullProtocols: FullProtocol[] = [
@@ -56,15 +66,24 @@ export const fullProtocols: FullProtocol[] = [
   ...cardioFullProtocols,
   ...cardioFullProtocols2,
   ...cardioFullProtocols3,
+  ...cardioFullProtocols4,
+  ...cardioFullProtocols5,
   ...neuroFullProtocols,
   ...neuroFullProtocols2,
+  ...neuroFullProtocols3,
+  ...neuroFullProtocols4,
+  ...neuroFullProtocols5,
   ...sepsisFullProtocols,
   ...sepsisFullProtocols2,
+  ...sepsisFullProtocols3,
+  ...sepsisFullProtocols4,
   ...metabolicFullProtocols,
   ...metabolicFullProtocols2,
   ...metabolicFullProtocols3,
   ...metabolicFullProtocols4,
   ...metabolicFullProtocols5,
+  ...respiratoryFullProtocols,
+  ...respiratoryFullProtocols2,
   ...traumaFullProtocols,
   ...traumaFullProtocols2,
   ...traumaFullProtocols3,
