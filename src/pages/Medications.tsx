@@ -28,7 +28,7 @@ export default function Medications() {
   return (
     <>
       <TopBar title="Medicamentos" />
-      <div className="px-4 py-4 max-w-lg mx-auto space-y-4">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4">
         {!isPremium && (
           <div className="flex items-center gap-2">
             <PremiumBadge />

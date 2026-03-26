@@ -68,7 +68,7 @@ export default function Quiz() {
     return (
       <>
         <TopBar title="Quiz Interativo" />
-        <div className="px-4 py-5 max-w-lg mx-auto space-y-4">
+        <div className="px-4 py-5 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4">
           <p className="text-sm text-muted-foreground">Escolha uma categoria para começar:</p>
           <div className="space-y-2">
             {categories.map((cat) => (
@@ -92,7 +92,7 @@ export default function Quiz() {
     return (
       <>
         <TopBar title="Resultado" />
-        <div className="px-4 py-10 max-w-lg mx-auto text-center space-y-6">
+        <div className="px-4 py-10 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto text-center space-y-6">
           <Trophy size={48} className="mx-auto text-warning" />
           <div>
             <p className="font-heading text-3xl font-bold">{pct}%</p>
@@ -109,7 +109,7 @@ export default function Quiz() {
   return (
     <>
       <TopBar title={`Questão ${currentIdx + 1}/${questions.length}`} />
-      <div className="px-4 py-4 max-w-lg mx-auto space-y-4">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4">
         <div className="w-full bg-secondary rounded-full h-1.5">
           <div className="bg-primary h-1.5 rounded-full transition-all" style={{ width: `${((currentIdx + 1) / questions.length) * 100}%` }} />
         </div>

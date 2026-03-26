@@ -34,7 +34,7 @@ export default function Prescriptions() {
   return (
     <>
       <TopBar title="Prescrições" />
-      <div className="px-4 py-4 max-w-lg mx-auto space-y-4 pb-24">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4 pb-24">
         <p className="text-xs text-muted-foreground">Prescrições prontas para pronto socorro, internação e ambulatório</p>
 
         <div className="relative">

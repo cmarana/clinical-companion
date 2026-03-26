@@ -36,7 +36,7 @@ export default function ProtocolDetail() {
     return (
       <>
         <TopBar title={protocol.title} />
-        <div className="px-4 py-4 max-w-lg mx-auto">
+        <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto">
           <p className="text-xs text-muted-foreground font-heading mb-4">{protocol.category}</p>
           <PremiumGate />
         </div>
@@ -66,7 +66,7 @@ export default function ProtocolDetail() {
           </button>
         }
       />
-      <div className="px-4 py-4 max-w-lg mx-auto">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto">
         <div className="flex items-center gap-2 mb-3">
           <p className="text-xs text-muted-foreground font-heading">{protocol.category}</p>
           {!isPremium && <PremiumBadge />}

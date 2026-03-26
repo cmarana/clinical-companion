@@ -36,7 +36,7 @@ export default function PrescriptionDetail() {
   return (
     <>
       <TopBar title={prescription.title} />
-      <div className="px-4 py-4 max-w-lg mx-auto space-y-4 pb-24">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4 pb-24">
         <div className="flex items-center justify-between">
           <div>
             <h1 className="font-heading font-bold text-lg">{prescription.title}</h1>

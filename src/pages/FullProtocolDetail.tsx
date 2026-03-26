@@ -57,7 +57,7 @@ export default function FullProtocolDetail() {
           </button>
         }
       />
-      <div className="px-4 py-4 max-w-lg mx-auto pb-24">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto pb-24">
         <p className="text-xs text-muted-foreground font-heading mb-3">{protocol.category}</p>
 
         <ProtocolActionBar

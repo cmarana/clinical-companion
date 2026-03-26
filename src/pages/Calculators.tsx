@@ -637,7 +637,7 @@ export default function Calculators() {
     return (
       <>
         <TopBar title="Calculadoras" />
-        <div className="px-4 py-4 max-w-lg mx-auto space-y-4">
+        <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4">
           <div className="grid grid-cols-2 gap-2">
             {calculators.map((calc) => (
               <Card key={calc.id} className="opacity-60">
@@ -664,7 +664,7 @@ export default function Calculators() {
   return (
     <>
       <TopBar title="Calculadoras" />
-      <div className="px-4 py-4 max-w-lg mx-auto space-y-4">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4">
         <div className="grid grid-cols-2 gap-2">
           {calculators.map((calc) => (
             <Card
