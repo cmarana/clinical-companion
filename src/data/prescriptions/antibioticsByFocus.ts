@@ -234,4 +234,70 @@ Angina de Ludwig (EMERGÊNCIA):
     warnings: "Angina de Ludwig: infecção do assoalho da boca — risco de obstrução de via aérea!",
     guideline: "SBI / IDSA",
   },
+  {
+    id: "rx-atb-endocardite",
+    title: "Antibiótico — Endocardite Infecciosa",
+    type: "Antibiótico por Foco",
+    prescription: `Valva nativa (empírico):
+1. Oxacilina 2g EV 4/4h + Gentamicina 3mg/kg/dia 1x/dia por 4-6 semanas
+2. Se alergia a penicilina: Vancomicina 15-20mg/kg EV 12/12h
+
+Valva protética (empírico):
+3. Vancomicina 15mg/kg EV 12/12h + Gentamicina + Rifampicina 300mg VO 8/8h
+
+Streptococcus viridans (sensível à penicilina):
+4. Penicilina Cristalina 4 milhões UI EV 4/4h por 4 semanas
+
+Staphylococcus (MSSA):
+5. Oxacilina 2g EV 4/4h por 6 semanas
+
+MRSA:
+6. Vancomicina 15-20mg/kg EV 12/12h (monitorar nível sérico)`,
+    notes: "3 pares de hemocultura ANTES do ATB. Ecocardiograma transesofágico preferencial.",
+    guideline: "SBC / ESC / AHA",
+  },
+  {
+    id: "rx-atb-artrite-septica",
+    title: "Antibiótico — Artrite Séptica",
+    type: "Antibiótico por Foco",
+    prescription: `Empírico adulto:
+1. Oxacilina 2g EV 4/4h (cobertura Staphylococcus)
+2. Se MRSA: Vancomicina 15-20mg/kg EV 12/12h
+3. Se gonococo suspeito: Ceftriaxona 1g EV 1x/dia
+4. Duração: 4-6 semanas (EV 2-4 sem → VO completar)
+
+Pediátrico:
+5. <3 meses: Oxacilina + Ceftriaxona
+6. >3 meses: Oxacilina 200mg/kg/dia EV 6/6h
+7. Se suspeita Kingella (<5 anos): Ceftriaxona
+
+Artrocentese:
+8. OBRIGATÓRIA (diagnóstica e terapêutica)
+9. Gram, cultura, contagem celular (>50.000 leucócitos = séptica)
+10. Lavagem articular se purulenta`,
+    warnings: "Artrite séptica = emergência ortopédica. Drenagem cirúrgica se quadril ou refratária.",
+    guideline: "SBOT / IDSA",
+  },
+  {
+    id: "rx-atb-meningite",
+    title: "Antibiótico — Meningite Bacteriana",
+    type: "Antibiótico por Foco",
+    prescription: `Empírico adulto (18-50 anos):
+1. Ceftriaxona 2g EV 12/12h + Vancomicina 15-20mg/kg EV 12/12h
+2. Dexametasona 0,15mg/kg EV 6/6h por 4 dias (ANTES ou junto do ATB)
+
+>50 anos ou imunossuprimido:
+3. Adicionar Ampicilina 2g EV 4/4h (Listeria)
+
+Pediátrico (>1 mês):
+4. Ceftriaxona 100mg/kg/dia EV 12/12h + Vancomicina
+
+Neonatal (<1 mês):
+5. Ampicilina + Gentamicina OU Ampicilina + Cefotaxima
+
+6. Punção lombar ANTES do ATB (se não atrasar >30min)
+7. Duração: Meningococo 7d, Pneumococo 10-14d, Listeria 21d`,
+    warnings: "NÃO atrasar ATB para fazer punção lombar. Se instável: ATB primeiro, PL depois.",
+    guideline: "SBI / IDSA 2017",
+  },
 ];

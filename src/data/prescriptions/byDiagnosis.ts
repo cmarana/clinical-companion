@@ -577,4 +577,181 @@ Delirium Tremens (CIWA >20 ou convulsão):
     notes: "Poliúria pós-obstrutiva: pode perder litros de urina. Monitorar e repor volume.",
     guideline: "SBU / EAU",
   },
+  {
+    id: "rx-tvp-diag",
+    title: "Trombose Venosa Profunda (TVP)",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Dieta livre
+2. SF 0,9% 500mL EV — manter acesso
+3. Enoxaparina 1mg/kg SC 12/12h (dose plena)
+4. OU Heparina não fracionada 80UI/kg bolus → 18UI/kg/h (se DRC grave)
+5. Rivaroxabana 15mg VO 12/12h (se estável, pode iniciar direto)
+6. Membro elevado
+7. Meia elástica de compressão (após fase aguda)
+8. Dipirona 1g EV 6/6h se dor
+9. Cetoprofeno 100mg EV 12/12h (anti-inflamatório)
+10. D-dímero, hemograma, coagulograma, função renal
+11. USG Doppler venoso de MMII
+12. Investigar TEP se dispneia/taquicardia`,
+    warnings: "TVP proximal (iliofemoral) tem alto risco de TEP. Considerar internação.",
+    guideline: "SBC / ISTH",
+  },
+  {
+    id: "rx-gota-diag",
+    title: "Crise Gotosa / Artrite Gotosa",
+    type: "Prescrição PS / Hospitalar",
+    prescription: `1. Colchicina 0,5mg VO 8/8h (iniciar nas primeiras 12h)
+   OU Colchicina 1mg + 0,5mg após 1h (esquema curto)
+2. Cetoprofeno 100mg EV 12/12h OU Naproxeno 500mg VO 12/12h
+3. Prednisona 30-40mg VO 1x/dia por 5-7 dias (se CI a AINE)
+4. Dipirona 1g EV 6/6h (adjuvante)
+5. Compressas frias na articulação
+6. Repouso articular
+7. NÃO iniciar/alterar Alopurinol na crise
+8. Ácido úrico sérico (pode estar normal na crise)
+9. Hemograma, PCR, função renal
+10. Artrocentese se dúvida diagnóstica (cristais de urato)`,
+    notes: "Alopurinol não deve ser iniciado na crise — pode piorar. Iniciar após 2-4 semanas.",
+    guideline: "SBR / EULAR",
+  },
+  {
+    id: "rx-endocardite-diag",
+    title: "Endocardite Infecciosa",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `Empírico (valva nativa):
+1. Oxacilina 2g EV 4/4h + Gentamicina 3mg/kg/dia EV 1x/dia
+2. Se alergia: Vancomicina 15-20mg/kg EV 12/12h + Gentamicina
+
+Empírico (valva protética):
+3. Vancomicina 15-20mg/kg EV 12/12h + Gentamicina 3mg/kg/dia + Rifampicina 300mg VO 8/8h
+
+4. Hemocultura 3 amostras (punções diferentes, antes do ATB)
+5. Ecocardiograma transesofágico (ETE)
+6. SF 0,9% — hidratação
+7. Hemograma, PCR, VHS, função renal seriados
+8. ECG diário (bloqueio = abscesso perivalvar)
+9. Fundo de olho (manchas de Roth)
+10. Avaliação cirurgia cardíaca precoce se: IC, abscesso, vegetação >10mm`,
+    warnings: "Mortalidade 20-30%. Indicação cirúrgica precoce melhora prognóstico.",
+    guideline: "SBC / ESC / AHA",
+  },
+  {
+    id: "rx-erisipela-diag",
+    title: "Erisipela / Celulite Grave",
+    type: "Prescrição Hospitalar",
+    prescription: `Erisipela (Streptococcus):
+1. Penicilina Cristalina 2 milhões UI EV 4/4h
+2. OU Ceftriaxona 1g EV 1x/dia (alternativa)
+3. Elevação do membro afetado
+4. Compressas frias
+5. Dipirona 1g EV 6/6h
+6. Cetoprofeno 100mg EV 12/12h
+
+Celulite grave (Staphylococcus + Streptococcus):
+7. Oxacilina 2g EV 4/4h OU Cefalotina 1g EV 6/6h
+8. Se MRSA: Vancomicina 15mg/kg EV 12/12h
+9. Cuidados locais: limpeza com SF, curativo oclusivo
+10. Hemograma, PCR, hemocultura se febre alta
+11. USG partes moles se suspeita de abscesso (drenar)`,
+    notes: "Porta de entrada: micose interdigital é a mais comum. Tratar tinha pedis.",
+    guideline: "SBD / IDSA",
+  },
+  {
+    id: "rx-herpes-zoster-diag",
+    title: "Herpes Zoster",
+    type: "Prescrição PS / Ambulatorial",
+    prescription: `1. Aciclovir 800mg VO 5x/dia por 7 dias (iniciar <72h do início)
+2. OU Valaciclovir 1g VO 8/8h por 7 dias (melhor posologia)
+3. Se grave/imunossuprimido: Aciclovir 10mg/kg EV 8/8h
+4. Dipirona 1g VO/EV 6/6h
+5. Gabapentina 300mg VO à noite → titular até 300mg 8/8h
+6. Amitriptilina 25mg VO à noite (prevenção neuralgia pós-herpética)
+7. Cetoprofeno 100mg VO 12/12h
+8. Tramadol 50mg VO 8/8h se dor intensa
+9. Cuidados locais: manter lesões limpas e secas
+10. Vacina Herpes Zoster para prevenção (>50 anos)`,
+    warnings: "Zoster oftálmico (V1): URGÊNCIA oftalmológica. Zoster disseminado: internar e tratar EV.",
+    guideline: "SBD / CDC",
+  },
+  {
+    id: "rx-avch-diag",
+    title: "AVC Hemorrágico (AVCH)",
+    type: "Prescrição UTI / Sala Vermelha",
+    prescription: `1. Dieta zero (risco de rebaixamento)
+2. SF 0,9% 1000mL EV — manter 2 acessos
+3. PA alvo <140/90 mmHg:
+   Nitroprussiato 0,25-10mcg/kg/min OU Labetalol
+4. IOT se Glasgow ≤8
+5. Cabeceira a 30°
+6. Manitol 20% 0,5-1g/kg EV em 20 min (se herniação)
+7. Ácido Tranexâmico 1g EV em 10 min (se <4,5h do início — controversial)
+8. Se uso de anticoagulante: reverter (Protamina, CCP, Vitamina K)
+9. Profilaxia convulsão: Fenitoína 15-20mg/kg EV (controverso)
+10. TC crânio urgente + angioTC
+11. Neurocirurgia se: hematoma cerebelar >3cm, hidrocefalia, deterioração`,
+    warnings: "NÃO trombolisar. Controlar PA agressivamente. Neurocirurgia precoce se indicada.",
+    guideline: "SBN / AHA-ASA",
+  },
+  {
+    id: "rx-flutter-diag",
+    title: "Flutter Atrial",
+    type: "Prescrição PS / Hospitalar",
+    prescription: `Instável (hipotensão, EAP, isquemia):
+1. Cardioversão elétrica sincronizada 50-100J
+
+Estável — controle de frequência:
+2. Diltiazem 0,25mg/kg EV em 2 min → infusão 5-15mg/h
+3. OU Metoprolol 5mg EV lento (repetir até 15mg)
+4. OU Amiodarona 150mg EV em 10 min (se IC)
+
+Anticoagulação (CHA2DS2-VASc ≥2):
+5. Enoxaparina 1mg/kg SC 12/12h → transição para DOAC
+6. Rivaroxabana 20mg 1x/dia OU Apixabana 5mg 12/12h
+
+7. ECG 12 derivações (flutter típico: ondas F em dente de serra)
+8. Ecocardiograma
+9. TSH, eletrólitos
+10. Encaminhar para ablação (alta taxa de sucesso no flutter típico)`,
+    notes: "Flutter típico tem excelente resposta à ablação por cateter. Considerar precocemente.",
+    guideline: "SBC / ESC",
+  },
+  {
+    id: "rx-peritonite-diag",
+    title: "Peritonite / Abdome Agudo Infeccioso",
+    type: "Prescrição Hospitalar / Cirúrgica",
+    prescription: `1. Dieta zero
+2. SF 0,9% 1000-2000mL EV (ressuscitação volêmica)
+3. Ceftriaxona 1g EV 12/12h + Metronidazol 500mg EV 8/8h
+4. OU Piperacilina-Tazobactam 4,5g EV 6/6h (se disponível)
+5. OU Meropenem 1g EV 8/8h (se grave/nosocomial)
+6. Dipirona 1g EV 6/6h
+7. Morfina 2-4mg EV se dor intensa (NÃO retardar por medo de mascarar exame)
+8. SVD (controle de diurese)
+9. SNG aberta se vômitos/distensão
+10. Hemograma, PCR, lactato, amilase, função renal
+11. RX abdome (pneumoperitônio) + TC abdome
+12. Avaliação cirúrgica URGENTE`,
+    warnings: "Abdome agudo cirúrgico: NÃO retardar cirurgia. Peritonite generalizada = laparotomia.",
+    guideline: "SBCD / SBC",
+  },
+  {
+    id: "rx-miocardite-diag",
+    title: "Miocardite Aguda",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `1. Repouso absoluto (risco de arritmia letal)
+2. Monitorização contínua (ECG, SpO2, PA)
+3. SF 0,9% — manter acesso (evitar sobrecarga)
+4. IC aguda: Furosemida 20-40mg EV + Dobutamina 2,5-10mcg/kg/min se baixo débito
+5. Arritmias: Amiodarona 150mg EV se TV/FV
+6. NÃO usar AINE/AAS (piora inflamação miocárdica)
+7. IECA: Enalapril 2,5mg VO 12/12h (se tolerar PA)
+8. Betabloqueador: Carvedilol 3,125mg VO 12/12h (após estabilização)
+9. Troponina, BNP/NT-proBNP seriados
+10. ECG seriado
+11. Ecocardiograma (FE, derrame pericárdico)
+12. RMN cardíaca (padrão-ouro)
+13. Biópsia endomiocárdica se refratária`,
+    warnings: "Repouso absoluto — exercício na fase aguda pode causar morte súbita. Evitar AINEs.",
+    guideline: "SBC / ESC",
+  },
 ];

@@ -224,4 +224,80 @@ BUNDLE 6H:
     warnings: "CADA SEGUNDO CONTA. Descompressão com agulha salva vida. Drenagem depois.",
     guideline: "ATLS",
   },
+  {
+    id: "rx-emerg-crise-tireotoxica",
+    title: "Crise Tireotóxica / Tempestade Tireoidiana",
+    type: "Prescrição de Emergência",
+    prescription: `1. Propiltiouracil (PTU) 200mg VO/SNG 6/6h (bloqueia síntese)
+2. Lugol 10 gotas VO 8/8h (1h APÓS o PTU — bloqueia liberação)
+3. Propranolol 1mg EV lento a cada 5 min (máx 10mg) → VO 40-80mg 6/6h
+4. Hidrocortisona 100mg EV 8/8h (bloqueia conversão T4→T3)
+5. Paracetamol se febre (NÃO AAS — desloca T4 da proteína)
+6. SF 0,9% — reposição volêmica agressiva
+7. Resfriamento ativo se hipertermia >39°C
+8. Monitorização contínua (arritmias, IC)
+9. TSH, T4L, T3, hemograma, função hepática`,
+    warnings: "Dar PTU ANTES do Iodo. AAS é CONTRAINDICADO. Mortalidade 20-30% sem tratamento.",
+    guideline: "SBEM / ATA",
+  },
+  {
+    id: "rx-emerg-rebaixamento",
+    title: "Rebaixamento de Consciência — Abordagem",
+    type: "Prescrição de Emergência",
+    prescription: `1. ABCDE (via aérea, respiração, circulação)
+2. IOT se Glasgow ≤8
+3. Glicemia capilar IMEDIATA:
+   Se <70: Glicose 50% 40-60mL EV
+4. Tiamina 100mg EV (antes da glicose se etilista)
+5. Naloxona 0,4-2mg EV se suspeita de opioide
+6. Flumazenil 0,2mg EV se suspeita de BZD (contraindicado se epiléptico)
+7. SF 0,9% — acesso venoso
+8. TC crânio urgente (sem contraste)
+9. Gasometria, eletrólitos, amônia, toxicológico
+10. Hemograma, função renal/hepática, coagulograma
+11. ECG
+12. Pupilas + reflexo oculocefálico (localizar nível da lesão)`,
+    notes: "Mnemônico: AEIOU-TIPS — Álcool, Epilepsia, Insulina, Opioide, Uremia, Trauma, Infecção, Psiquiátrico, Stroke.",
+    guideline: "ACLS / Neurocrítico",
+  },
+  {
+    id: "rx-emerg-hipotermia",
+    title: "Hipotermia — Reaquecimento",
+    type: "Prescrição de Emergência",
+    prescription: `LEVE (32-35°C):
+1. Reaquecimento passivo: cobertores, ambiente aquecido
+2. Líquidos EV aquecidos (38-42°C)
+
+MODERADA (28-32°C):
+3. Reaquecimento ativo externo: manta térmica, bolsas de água quente
+4. SF aquecido 500mL EV
+5. Monitorização contínua (risco de arritmias)
+
+GRAVE (<28°C):
+6. Reaquecimento ativo interno: lavagem peritoneal/pleural com SF aquecido
+7. Se PCR: RCP até reaquecer >30°C ("não está morto até estar quente e morto")
+8. Desfibrilação pode ser ineficaz <30°C (tentar 1x, depois reaquecer)
+9. Adrenalina: espaçar doses se <30°C
+10. Temperatura esofágica (mais fidedigna)`,
+    warnings: "NÃO declarar óbito se hipotérmico sem reaquecimento. Arritmias de reaquecimento são comuns.",
+    guideline: "AHA / ILCOR",
+  },
+  {
+    id: "rx-emerg-afogamento",
+    title: "Afogamento — Prescrição",
+    type: "Prescrição de Emergência",
+    prescription: `1. ABCDE — priorizar via aérea e ventilação
+2. O2 100% por máscara com reservatório
+3. IOT se: apneia, Glasgow ≤8, SpO2 <90% refratária
+4. PEEP 5-10 cmH2O (edema pulmonar não cardiogênico)
+5. SF 0,9% — acesso venoso (NÃO corrigir Na+ agudamente)
+6. Aquecimento se hipotermia
+7. SNG aberta (estômago cheio de água — risco de broncoaspiração)
+8. Gasometria, eletrólitos, hemograma, lactato
+9. RX tórax (pode ser normal nas primeiras horas)
+10. Observação mínima 6-8h (edema pulmonar tardio)
+11. Coluna cervical: imobilizar se trauma/mergulho`,
+    warnings: "Manobra de Heimlich para "tirar água" é INEFICAZ e PERIGOSA. NÃO fazer.",
+    guideline: "SOBRASA / ILCOR",
+  },
 ];

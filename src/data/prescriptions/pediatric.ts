@@ -274,4 +274,62 @@ Desidratação grave (Plano C):
 9. Contatar CIATox (0800-722-6001)`,
     guideline: "SBP / CIATox",
   },
+  {
+    id: "rx-ped-oma",
+    title: "Otite Média Aguda Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `<6 meses ou grave (febre ≥39°C, otalgia intensa, bilateral):
+1. Amoxicilina 50mg/kg/dia VO 8/8h por 10 dias
+2. Se falha em 48-72h: Amoxicilina-Clavulanato 90mg/kg/dia (amox) VO 12/12h
+
+≥6 meses, unilateral, não grave:
+3. Observação por 48-72h (watchful waiting)
+4. Analgesia: Ibuprofeno 10mg/kg VO 8/8h
+
+Todos:
+5. Dipirona gotas 1 gota/kg VO 6/6h se dor/febre
+6. NÃO usar descongestionantes ou anti-histamínicos (sem benefício)
+7. Retorno se: febre persistente, piora, otorreia`,
+    notes: "Otoscopia pneumática é o padrão-ouro. Amoxicilina dose alta em locais com resistência.",
+    guideline: "SBP / AAP 2023",
+  },
+  {
+    id: "rx-ped-coqueluche",
+    title: "Coqueluche — Prescrição Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `1. Azitromicina:
+   <6 meses: 10mg/kg/dia VO 1x/dia por 5 dias
+   ≥6 meses: 10mg/kg no D1 → 5mg/kg D2-D5
+2. OU Claritromicina 7,5mg/kg/dose VO 12/12h por 7 dias (>1 mês)
+3. Isolamento respiratório por 5 dias após início do ATB
+4. O2 suplementar se SpO2 <92%
+5. Aspiração de secreções se necessário
+6. Hidratação (alimentação fracionada — vômitos pós-tosse)
+7. Monitorização: apneia em <6 meses (pode ser o único sintoma)
+8. Hemograma (linfocitose importante sugere coqueluche)
+9. PCR para Bordetella pertussis (nasofaringe)
+10. Profilaxia dos contactantes: Azitromicina por 5 dias`,
+    warnings: "RN e lactentes <6 meses: INTERNAR. Risco de apneia e cianose.",
+    guideline: "SBP / MS / SVS",
+  },
+  {
+    id: "rx-ped-alergia-alimentar",
+    title: "Alergia Alimentar — Reação Aguda Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `Reação leve/moderada (urticária, vômito):
+1. Dexclorfeniramina 0,15mg/kg/dia VO 8/8h
+2. OU Cetirizina gotas: 6-12m: 2,5mg/dia; 1-5a: 5mg/dia; >6a: 10mg/dia
+3. Prednisolona 1mg/kg VO dose única (se edema/urticária extensa)
+4. Suspender o alérgeno alimentar
+
+Reação grave (anafilaxia):
+5. Adrenalina 1:1000 IM 0,01mg/kg (máx 0,3mg) — face lateral da coxa
+6. SF 0,9% 20mL/kg EV rápido
+7. Hidrocortisona 4mg/kg EV
+8. Monitorização por 6-8h (reação bifásica)
+9. Prescrever adrenalina autoinjetável na alta
+10. Encaminhar alergista pediátrico`,
+    warnings: "Toda anafilaxia deve receber ADRENALINA IM como primeira medida. Anti-histamínico NÃO trata anafilaxia.",
+    guideline: "SBP / ASBAI",
+  },
 ];

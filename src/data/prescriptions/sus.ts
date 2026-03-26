@@ -255,4 +255,74 @@ Metronidazol 500mg/100mL em 30 min = 67 gotas/min
 Clindamicina 600mg + SF 100mL em 30 min = 67 gotas/min`,
     notes: "Colar tabela de gotejamento na sala de prescrição. Verificar gotejamento frequentemente.",
   },
+  {
+    id: "rx-sus-curativos",
+    title: "Curativos e Feridas — UPA/PS",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `Ferida limpa (corte, escoriação):
+1. Limpeza com SF 0,9% em jato (seringa 20mL + agulha 40×12)
+2. Clorexidina aquosa 0,2% ou PVPI tópico perilesional
+3. Sutura se necessário (Nylon 3-0 a 5-0)
+4. Curativo oclusivo com gaze + micropore
+
+Ferida contaminada:
+5. Limpeza exaustiva com SF 0,9%
+6. Desbridamento se tecido desvitalizado
+7. Cefalexina 500mg VO 6/6h por 7 dias (se sinais de infecção)
+8. OU Amoxicilina-Clavulanato 500/125mg VO 8/8h
+
+Queimadura (1º/2º grau pequena):
+9. SF 0,9% gelado para limpeza
+10. Sulfadiazina de prata 1% tópica
+11. Curativo não aderente
+
+Profilaxia tétano: Verificar cartão vacinal. dT se >5 anos.`,
+    notes: "Na UPA: priorizar SF 0,9% para limpeza. Não usar álcool ou água oxigenada em ferida aberta.",
+  },
+  {
+    id: "rx-sus-nebulizacao",
+    title: "Nebulização Padrão — UPA/PS",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `Crise asmática / Broncoespasmo:
+1. Fenoterol 10 gotas + Ipratrópio 20 gotas + SF 3mL — NBZ 20/20 min (3x na 1ª hora)
+2. Depois: NBZ 4/4h ou 6/6h conforme resposta
+3. Prednisona 40-60mg VO OU Hidrocortisona 100mg EV
+
+Bronquiolite (pediatria):
+4. SF 0,9% 3-5mL — NBZ (umidificação)
+5. NÃO usar broncodilatadores de rotina em bronquiolite <6 meses
+
+Laringite / Crupe:
+6. Adrenalina 1:1000 — 3-5mL pura em NBZ
+7. Dexametasona 0,6mg/kg VO/IM dose única
+
+DPOC exacerbado:
+8. Fenoterol 10 gotas + Ipratrópio 40 gotas + SF 3mL — NBZ
+9. O2 baixo fluxo (alvo SpO2 88-92%)`,
+    warnings: "Na DPOC: O2 em baixo fluxo (risco de narcose por CO2). Não suspender O2, apenas titular.",
+    guideline: "SBPT / GINA",
+  },
+  {
+    id: "rx-sus-hidratacao",
+    title: "Hidratação Venosa Padrão — Adulto",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `MANUTENÇÃO (paciente em dieta zero):
+1. SG 5% 1000mL + NaCl 20% 20mL + KCl 19,1% 10mL — EV 8/8h
+   (fornece ~2400mL/dia + eletrólitos básicos)
+
+REPOSIÇÃO (desidratação moderada):
+2. SF 0,9% 1000mL EV em 2-4h → reavaliar
+3. Se persistir: mais 500-1000mL conforme clínica
+
+DESIDRATAÇÃO GRAVE / CHOQUE:
+4. SF 0,9% 500mL EV em 15-20 min (pode repetir até 30mL/kg)
+5. Reavaliar PA, FC, perfusão
+
+MONITORAR:
+6. Diurese (alvo ≥0,5mL/kg/h)
+7. Eletrólitos a cada 12-24h
+8. Balanço hídrico
+9. Peso diário se internado`,
+    notes: "Regra de Holliday-Segar (manutenção): 100mL/kg (primeiros 10kg) + 50mL/kg (10-20kg) + 20mL/kg (>20kg) /dia.",
+  },
 ];

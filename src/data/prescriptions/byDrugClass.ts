@@ -310,4 +310,75 @@ Adenosina: 6mg EV rápido → 12mg se necessário (TSV)
 Atropina: 0,5-1mg EV (bradicardia)`,
     guideline: "SBC / AHA",
   },
+  {
+    id: "rx-classe-anticoagulantes",
+    title: "Anticoagulantes — Doses e Indicações",
+    type: "Por Classe de Medicamento",
+    prescription: `HEPARINA NÃO FRACIONADA:
+Profilaxia: 5.000UI SC 8/8h ou 12/12h
+Terapêutica: 80UI/kg bolus → 18UI/kg/h (ajustar por TTPa)
+
+ENOXAPARINA (HBPM):
+Profilaxia: 40mg SC 1x/dia
+Terapêutica: 1mg/kg SC 12/12h
+
+DOACs (Anticoagulantes Orais Diretos):
+Rivaroxabana: TEP/TVP: 15mg 12/12h 21d → 20mg 1x/dia; FA: 20mg 1x/dia
+Apixabana: TEP/TVP: 10mg 12/12h 7d → 5mg 12/12h; FA: 5mg 12/12h
+Edoxabana: 60mg 1x/dia (30mg se ClCr 15-50)
+Dabigatrana: FA: 150mg 12/12h (110mg se >80 anos)
+
+WARFARINA:
+Dose inicial: 5mg VO 1x/dia → ajustar por INR (alvo 2-3)
+Sobreposição com Heparina por ≥5 dias + INR ≥2 por 24h`,
+    notes: "DOACs: não precisa monitorar INR. CI se ClCr <15-30 e prótese valvar mecânica.",
+    guideline: "SBC / ISTH",
+  },
+  {
+    id: "rx-classe-tromboliticos",
+    title: "Trombolíticos — Doses e Indicações",
+    type: "Por Classe de Medicamento",
+    prescription: `ALTEPLASE (rt-PA):
+AVC isquêmico (<4,5h): 0,9mg/kg EV (máx 90mg)
+  10% em bolus 1 min → 90% em 60 min
+
+IAM com supra ST (se angioplastia >120min):
+Alteplase: 15mg bolus → 0,75mg/kg em 30min (máx 50mg) → 0,5mg/kg em 60min (máx 35mg)
+
+TEP maciço (instabilidade):
+Alteplase 100mg EV em 2h
+
+TENECTEPLASE:
+IAM: dose por peso (30-50mg) EV bolus único
+TEP: dose por peso (mesma do IAM)
+
+ESTREPTOQUINASE (disponível SUS):
+IAM: 1.500.000UI EV em 60 min
+NÃO repetir (anticorpos)`,
+    warnings: "Contraindicações absolutas: sangramento ativo, AVCh <3 meses, cirurgia <3 semanas, dissecção aórtica.",
+    guideline: "SBC / AHA",
+  },
+  {
+    id: "rx-classe-cristaloides-coloides",
+    title: "Cristaloides e Coloides — Guia",
+    type: "Por Classe de Medicamento",
+    prescription: `CRISTALOIDES:
+SF 0,9%: isotônico, Na 154mEq/L. Risco: acidose hiperclorêmica se grande volume
+Ringer Lactato: mais fisiológico, Na 130, K 4, Ca 3. Preferido na ressuscitação
+SG 5%: água livre. NÃO para ressuscitação. Usado para manutenção/diluição
+
+COLOIDES:
+Albumina 20%: hipoalbuminemia grave, SHR, PBE (1,5g/kg D1 + 1g/kg D3)
+Albumina 5%: expansor em grandes queimados, paracentese de grande volume
+
+SOLUÇÕES HIPERTÔNICAS:
+NaCl 3%: hiponatremia grave, HIC
+NaCl 20%: para preparo de NaCl 3%
+
+RESSUSCITAÇÃO VOLÊMICA:
+SF 0,9% ou RL 30mL/kg → reavaliar
+Preferir Ringer Lactato (menos acidose)`,
+    notes: "Coloides sintéticos (HES/Voluven) NÃO são mais recomendados na sepse (aumento de IRA e mortalidade).",
+    guideline: "SSC 2021 / AMIB",
+  },
 ];

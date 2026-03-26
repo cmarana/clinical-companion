@@ -237,4 +237,62 @@ MONITORIZAÇÃO:
     notes: "Sempre excluir causa orgânica antes de atribuir a quadro psiquiátrico primário.",
     guideline: "ABP / CFM",
   },
+  {
+    id: "rx-modelo-neurologico",
+    title: "Modelo — Paciente Neurológico (AVC/TCE)",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta _____ (zero se rebaixado / disfagia — testar deglutição)
+2. SF 0,9% 1000mL EV — ___mL/h (EVITAR SG 5% — piora edema cerebral)
+3. Cabeceira a 30° (reduz PIC)
+4. Dipirona 1g EV 6/6h se febre ≥37,8°C (controle rigoroso de temperatura)
+5. Omeprazol 40mg EV 1x/dia
+6. Fenitoína 100mg EV 8/8h (profilaxia convulsão se indicada)
+7. Manitol 20% ___mL EV em 20 min SOS (se sinais de herniação)
+8. PA: manter conforme protocolo (AVC isquêmico: <185/110 se trombolisado)
+9. Glicemia capilar 6/6h (alvo 140-180mg/dL — evitar hipo e hiperglicemia)
+10. Glasgow / pupilas / déficit motor a cada 2h
+11. Enoxaparina 40mg SC 1x/dia (após 24-48h se AVC isquêmico, não hemorrágico)
+12. SVD (controle de diurese)
+13. Fisioterapia motora e respiratória precoce
+14. TC crânio de controle conforme evolução`,
+    notes: "NÃO usar SG 5% no paciente neurológico (água livre piora edema). SF 0,9% é o padrão.",
+  },
+  {
+    id: "rx-modelo-renal",
+    title: "Modelo — Paciente com IRA / DRC",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta hipossódica, hipocalêmica, hipoproteica (0,6-0,8g/kg/dia se DRC)
+2. Restrição hídrica: ___mL/dia (diurese + 500mL de perdas insensíveis)
+3. SF 0,9% — EVITAR sobrecarga. Manter acesso salinizado
+4. Suspender drogas nefrotóxicas: AINEs, aminoglicosídeos, contraste
+5. Ajustar doses conforme TFG (ClCr estimado)
+6. Furosemida ___mg EV ___/___h (se hipervolemia)
+7. Bicarbonato de Sódio 8,4% ___mL se acidose grave (pH <7,1)
+8. Gluconato de Cálcio 10mL EV se K+ >6,5 (proteção cardíaca)
+9. Insulina Regular 10UI + SG 50% 100mL EV se K+ >6,0
+10. Exames: Cr, Ur, Na, K, Ca, P, Mg, gasometria, EAS
+11. USG renal (tamanho, hidronefrose)
+12. Indicações de diálise de urgência: K+ refratário, acidose refratária, EAP, uremia (encefalopatia/pericardite)`,
+    warnings: "Indicações de diálise de urgência (mnemônico AEIOU): Acidose, Eletrólitos (K+), Intoxicação, Overload (hipervolemia), Uremia.",
+  },
+  {
+    id: "rx-modelo-hepatico",
+    title: "Modelo — Paciente Hepatopata / Cirrótico",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta hipossódica (2g Na/dia), normoproteica (1,2-1,5g/kg/dia)
+2. Restrição hídrica se Na <125mEq/L
+3. SF 0,9% — evitar sobrecarga. Manter acesso
+4. Espironolactona 100mg VO 1x/dia + Furosemida 40mg VO 1x/dia (ascite)
+5. Lactulose 15-30mL VO 8/8h (alvo: 2-3 evacuações pastosas/dia)
+6. Rifaximina 550mg VO 12/12h (profilaxia encefalopatia)
+7. Omeprazol 20mg VO 1x/dia
+8. Propranolol 20-40mg VO 12/12h (profilaxia HDA varicosa — FC alvo <55)
+9. Albumina 20% se indicada (PBE, paracentese de grande volume, SHR)
+10. Evitar: AINEs, aminoglicosídeos, benzodiazepínicos (preferir Haloperidol se agitação)
+11. Exames: hepatograma, coagulograma, albumina, Na, K, Cr
+12. Paracentese diagnóstica se ascite nova/piora (descartar PBE)
+13. MELD para priorização de transplante`,
+    notes: "EVITAR benzodiazepínicos no cirrótico (precipitam encefalopatia). AINEs causam IRA e sangramento.",
+    guideline: "SBG / EASL",
+  },
 ];

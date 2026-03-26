@@ -177,4 +177,64 @@ ANTIBIÓTICOS:
     warnings: "Pneumoperitônio = perfuração = cirurgia de EMERGÊNCIA.",
     guideline: "SBP / Neonatologia",
   },
+  {
+    id: "rx-neo-hipotermia",
+    title: "Hipotermia Terapêutica Neonatal",
+    type: "Prescrição Neonatal",
+    prescription: `Indicação: Asfixia perinatal (IG ≥36 sem, <6h de vida):
+1. Temperatura alvo: 33,5°C ± 0,5°C (corporal total) por 72h
+2. Manta de resfriamento OU gelo controlado
+3. Monitorização contínua: temperatura esofágica/retal, ECG, SpO2
+4. Sedação leve: Morfina 10-20mcg/kg/h EV se desconforto
+5. Dieta zero nas primeiras 24-48h → iniciar cautamente
+6. Exames seriados: gasometria, lactato, eletrólitos, coagulograma
+7. EEG contínuo (padrão de surto-supressão)
+8. RMN encéfalo após reaquecimento (D5-D7)
+9. Reaquecimento gradual: 0,5°C/h até 36,5°C
+10. NÃO usar anticonvulsivante profilático`,
+    warnings: "Reaquecimento rápido causa convulsões e instabilidade. Máximo 0,5°C por hora.",
+    guideline: "SBP / ILCOR Neonatal",
+  },
+  {
+    id: "rx-neo-cardiopatia",
+    title: "Cardiopatia Congênita — Suspeita Neonatal",
+    type: "Prescrição Neonatal",
+    prescription: `Sinais de alarme: cianose central, sopro, taquipneia, dificuldade de mamar
+
+Canal-dependente (cianótica):
+1. Prostaglandina E1 0,01-0,05mcg/kg/min EV contínua
+2. NÃO oferecer O2 em alta concentração (fecha o canal)
+3. Manter SpO2 75-85% (aceitável)
+
+Não cianótica (sobrecarga):
+4. Furosemida 1mg/kg EV 12/12h
+5. Captopril 0,1mg/kg VO 8/8h (se IC)
+6. Restrição hídrica (80-100mL/kg/dia)
+
+Todos:
+7. Ecocardiograma urgente
+8. Teste de hiperóxia (O2 100% por 10 min — se PaO2 não sobe = cardiopatia)
+9. Gasometria arterial pré e pós-ductal
+10. ECG + RX tórax
+11. Transferência para centro com cirurgia cardíaca pediátrica`,
+    warnings: "Prostaglandina causa apneia — ter material de IOT pronto. NÃO suspender antes de confirmação.",
+    guideline: "SBC / SBP",
+  },
+  {
+    id: "rx-neo-asfixia",
+    title: "Asfixia Perinatal — Manejo Inicial",
+    type: "Prescrição Neonatal",
+    prescription: `1. Passos iniciais: aquecer, posicionar, aspirar se necessário, secar, estimular
+2. Se FC <100 ou apneia: VPP com ambu + O2 21-30% (prematuro) ou 21% (termo)
+3. Se FC <60 após VPP eficaz por 30s: compressões torácicas 3:1
+4. Se FC <60 mantida: Adrenalina 0,01-0,03mg/kg EV (veia umbilical)
+5. Volume: SF 0,9% 10mL/kg EV se hipovolemia suspeitada
+6. Gasometria de cordão (pH <7,0 ou BE <-16 = asfixia significativa)
+7. Apgar 1 e 5 min (e 10 min se <7)
+8. Glicemia capilar seriada
+9. Avaliar critérios para hipotermia terapêutica
+10. Exames: hemograma, gasometria, lactato, função renal/hepática, coagulação`,
+    warnings: "RN a termo: iniciar VPP com O2 21% (ar ambiente). Prematuro <35sem: 21-30%.",
+    guideline: "SBP / NRP / ILCOR",
+  },
 ];
