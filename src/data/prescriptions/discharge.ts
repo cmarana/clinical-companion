@@ -823,5 +823,56 @@ Bacteriana (secreção purulenta):
 9. Retorno imediato se: dispneia pior que antes da alta, febre >38,5°C, escarro hemoptoico`,
     guideline: "GOLD / SBPT / ATS",
   },
+  {
+    id: "rx-alta-fratura-costela",
+    title: "Alta — Fratura de Costela Simples",
+    type: "Alta Hospitalar",
+    prescription: `1. Dipirona 1g VO 6/6h (analgesia regular por 7-10 dias)
+2. Ibuprofeno 600mg VO 8/8h por 5-7 dias (com alimentação)
+3. Tramadol 50mg VO 8/8h SN (dor intensa, máx 5 dias)
+4. Omeprazol 20mg VO 1x/dia (proteção gástrica)
+5. Exercícios respiratórios: inspiração profunda 10x a cada hora (IMPORTANTÍSSIMO)
+6. NÃO enfaixar ou imobilizar o tórax
+7. Gelo local 15min 3-4x/dia
+8. Retorno imediato se: falta de ar, piora da dor, febre, escarro com sangue
+9. Retorno ambulatorial em 14 dias
+10. RX tórax de controle se piora clínica`,
+    notes: "Consolidação: 4-6 semanas. Dor pode persistir 2-3 meses. Fisioterapia respiratória é a medida mais importante para prevenir pneumonia.",
+    guideline: "SBOT / SBCT",
+  },
+  {
+    id: "rx-alta-luxacao-ombro",
+    title: "Alta — Luxação de Ombro (Pós-Redução)",
+    type: "Alta Hospitalar",
+    prescription: `1. Tipoia (Velpeau) por 3-4 semanas (<40 anos) ou 1-2 semanas (>40 anos)
+2. Gelo local 20min 3-4x/dia (primeiras 48h)
+3. Dipirona 1g VO 6/6h por 7 dias
+4. Ibuprofeno 600mg VO 8/8h por 5 dias (com alimentação)
+5. Paracetamol 750mg VO 6/6h SN (alternância)
+6. RX pós-redução realizado (documentar congruência)
+7. NÃO elevar braço acima do ombro por 4-6 semanas
+8. Iniciar exercícios pendulares em 7-10 dias
+9. Fisioterapia após retirada da tipoia (fortalecimento manguito rotador)
+10. Retorno Ortopedia em 7-14 dias
+11. Recidiva >2 episódios em <25 anos: considerar cirurgia (Bankart)`,
+    guideline: "SBOT / AAOS",
+  },
+  {
+    id: "rx-alta-crise-renal-aguda",
+    title: "Alta — IRA Não Dialítica (Pós-PS)",
+    type: "Alta Hospitalar",
+    prescription: `1. Hidratação oral vigorosa: 2-3L/dia (se sem restrição)
+2. SUSPENDER nefrotóxicos: AINEs, aminoglicosídeos, contraste
+3. Ajustar doses de medicamentos por função renal
+4. Creatinina e eletrólitos: repetir em 48-72h
+5. Dieta hipoproteica leve (0,8g/kg/dia) temporariamente
+6. Evitar suplementos de potássio
+7. Retorno imediato se: oligúria (<500mL/dia), edema, dispneia, confusão
+8. Retorno Nefrologia em 7-14 dias
+9. Causas pré-renais: manter hidratação e PA adequadas
+10. Se uso crônico de IECA/BRA: reavaliar dose com Nefrologista`,
+    notes: "IRA pré-renal: reversível com hidratação. IRA intrínseca: pode levar 2-6 semanas para recuperar. Creatinina pode continuar subindo 24-48h após resolução da causa.",
+    guideline: "KDIGO / SBN",
+  },
 ];
 

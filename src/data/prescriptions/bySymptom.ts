@@ -890,5 +890,45 @@ CRÔNICA (Na+ <130, assintomática):
     notes: "Linfonodo supraclavicular esquerdo (Virchow) = investigar neoplasia abdominal. Cervical posterior + esplenomegalia: pensar mononucleose.",
     guideline: "SBHH / ASH",
   },
+  {
+    id: "rx-sint-rigidez-nuca",
+    title: "Rigidez de Nuca / Meningismo no PS",
+    type: "Por Sintoma",
+    prescription: `1. Sinais meníngeos: Kernig, Brudzinski, rigidez de nuca
+2. Se sinais positivos + febre:
+   - Hemoculturas 2 pares IMEDIATO
+   - Ceftriaxona 2g EV ANTES da TC/PL (não atrasar ATB)
+   - Dexametasona 0,15mg/kg EV (antes ou junto do ATB)
+3. TC crânio SEM contraste (antes da PL se: papiledema, déficit focal, imunocomprometido, convulsão)
+4. Punção lombar: citologia, bioquímica, cultura, Gram, Latex
+5. Se líquor purulento: manter Ceftriaxona 2g 12/12h + Vancomicina 15-20mg/kg 12/12h
+6. Se líquor claro com pleocitose linfocítica: viral OU TB OU fúngica
+7. Aciclovir 10mg/kg 8/8h se suspeita de encefalite herpética
+8. Notificação compulsória (meningite)`,
+    notes: "Meningismo sem febre: pensar em HSA (thunderclap headache). Punção lombar: xantocromia se HSA.",
+    warnings: "ATB EMPÍRICO antes da TC e PL se alta suspeita clínica. Cada hora de atraso aumenta mortalidade.",
+    guideline: "IDSA / SBI / ABN / MS",
+  },
+  {
+    id: "rx-sint-claudicacao-aguda",
+    title: "Isquemia Aguda de Membro (Claudicação/Membro Frio)",
+    type: "Por Sintoma",
+    prescription: `1. 6 P's: Pain, Pallor, Pulselessness, Paresthesia, Paralysis, Poikilothermia
+2. Heparina não fracionada: bolus 80UI/kg + 18UI/kg/h EV (anticoagulação plena)
+3. Analgesia: Morfina 2-4mg EV titulada
+4. NÃO elevar membro (manter horizontal ou levemente pendente)
+5. Proteger membro: algodão, evitar trauma, não aplicar calor
+6. Doppler vascular urgente OU Angio-TC
+7. Classificação de Rutherford:
+   - I (viável): anticoagulação + investigação
+   - IIA (ameaçado marginalmente): revascularização eletiva
+   - IIB (ameaçado imediatamente): revascularização URGENTE
+   - III (irreversível): amputação
+8. Avaliação Cirurgia Vascular IMEDIATA
+9. Embolectomia (Fogarty) ou trombólise intra-arterial
+10. Pós-revascularização: monitorizar síndrome de reperfusão (K+, CPK, mioglobina)`,
+    warnings: "Membro com paralisia + anestesia = Rutherford IIB: revascularização em <6h ou amputação. EMERGÊNCIA.",
+    guideline: "SBACV / SVS / ESVS / ACC/AHA",
+  },
 ];
 

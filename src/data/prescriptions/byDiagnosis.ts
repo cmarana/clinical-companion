@@ -2506,5 +2506,538 @@ SHU típica (pós-diarréica / E. coli O157:H7):
     warnings: "NÃO descartar CAD por glicemia normal. Usar cetonemia (beta-OHB) para diagnóstico e monitorização.",
     guideline: "ADA / SBD / Endocrine Society",
   },
+  {
+    id: "rx-fratura-femur-proximal-diag",
+    title: "Fratura de Fêmur Proximal (Quadril)",
+    type: "Por Diagnóstico",
+    prescription: `1. Imobilização: tração cutânea com 2-3kg (alívio de dor)
+2. Analgesia multimodal:
+   - Dipirona 1g EV 6/6h
+   - Tramadol 100mg EV 8/8h OU Morfina 2-4mg EV titulada
+   - Bloqueio do nervo femoral guiado por USG (se disponível)
+3. Jejum (pré-operatório)
+4. SF 0,9% 1500mL EV/24h
+5. Profilaxia TVP: Enoxaparina 40mg SC 1x/dia (iniciar 12h pré-op ou pós-op)
+6. RX pelve AP + quadril afetado (2 incidências)
+7. Exames pré-operatórios: hemograma, coagulograma, função renal, ECG, RX tórax
+8. Tipagem sanguínea + reserva de 2 CH
+9. Avaliação Ortopedia URGENTE — cirurgia idealmente <48h
+10. Avaliação clínica pré-operatória
+11. Profilaxia de delirium: evitar BZD, orientação temporo-espacial`,
+    notes: "Mortalidade em 1 ano: 20-30% em idosos. Cirurgia precoce (<48h) reduz mortalidade. Garden I-II: fixação. Garden III-IV: artroplastia.",
+    warnings: "Idoso + fratura de fêmur: investigar causa da queda (síncope, AVC, hipotensão). Risco alto de TEP.",
+    guideline: "SBOT / AAOS / NICE",
+  },
+  {
+    id: "rx-fratura-exposta-manejo-diag",
+    title: "Fratura Exposta — Manejo Completo (Gustilo-Anderson)",
+    type: "Por Diagnóstico",
+    prescription: `1. ABCDE do trauma (prioridade)
+2. Irrigação copiosa com SF 0,9% (mínimo 3L para tipo I, 6L para tipo II, 9L+ para tipo III)
+3. Curativo estéril úmido — NÃO reintroduzir osso exposto
+4. Imobilização provisória (tala gessada)
+5. Fotografia para documentação (evitar manipulações repetidas)
+6. ATB PRECOCE (<3h):
+   - Gustilo I: Cefazolina 2g EV + 1g 8/8h
+   - Gustilo II: Cefazolina 2g EV + Gentamicina 5mg/kg/dia
+   - Gustilo III: Cefazolina + Gentamicina + Metronidazol 500mg 8/8h (se solo/contaminação fecal)
+7. Profilaxia antitetânica (dT + SAT se indicado)
+8. Desbridamento cirúrgico em até 6h (ideal)
+9. Fixador externo provisório (damage control ortho)
+10. Analgesia: Morfina 4mg EV titulada`,
+    notes: "Gustilo I: ferida <1cm, limpa. II: 1-10cm, sem lesão extensa. IIIA: cobertura adequada. IIIB: sem cobertura (retalho). IIIC: lesão vascular.",
+    warnings: "Fratura exposta é EMERGÊNCIA cirúrgica. Cada hora de atraso aumenta risco de infecção. Compartimento: checar 5P's.",
+    guideline: "SBOT / OTA / EAST",
+  },
+  {
+    id: "rx-luxacao-quadril-diag",
+    title: "Luxação de Quadril",
+    type: "Por Diagnóstico",
+    prescription: `1. Analgesia + sedação procedural:
+   - Midazolam 3-5mg EV + Fentanil 50-100mcg EV OU
+   - Propofol 1-2mg/kg EV (com anestesista)
+2. Redução URGENTE (<6h — risco de necrose avascular da cabeça femoral):
+   - Posterior (90%): manobra de Allis (flexão + tração axial)
+   - Anterior: extensão + rotação interna + tração
+3. RX pós-redução (congruência articular)
+4. TC quadril pós-redução (fragmentos intra-articulares?)
+5. Imobilização: repouso + descarga parcial por 4-6 semanas
+6. Enoxaparina 40mg SC 1x/dia (profilaxia TVP)
+7. Controle de dor: Paracetamol 1g 6/6h + Tramadol SN
+8. RNM em 6-8 semanas (avaliação de necrose avascular)
+9. Acompanhamento Ortopedia`,
+    notes: "Mecanismo: dashboard injury (joelho no painel). Posterior: membro encurtado + aduzido + rodado internamente.",
+    warnings: "Redução >6h: risco de necrose avascular sobe de 5% para >50%. EMERGÊNCIA ORTOPÉDICA.",
+    guideline: "SBOT / AAOS",
+  },
+  {
+    id: "rx-fratura-coluna-diag",
+    title: "Fratura de Coluna Vertebral (Estável/Instável)",
+    type: "Por Diagnóstico",
+    prescription: `1. Imobilização em bloco (colar cervical + prancha rígida)
+2. NÃO retirar colar até exclusão de lesão (TC coluna completa)
+3. Exame neurológico detalhado (ASIA/Frankel)
+4. Se déficit neurológico agudo:
+   - Metilprednisolona 30mg/kg EV em 15min + 5,4mg/kg/h por 23h (controverso, se <8h)
+   - PA sistólica >90mmHg (perfusão medular)
+5. TC coluna (cervical/torácica/lombar conforme mecanismo)
+6. RNM se déficit neurológico ou TC suspeita
+7. Analgesia: Morfina 2-4mg EV titulada
+8. SVD (bexiga neurogênica)
+9. SNG se íleo paralítico
+10. Profilaxia TVP: Enoxaparina 40mg SC (iniciar 24-72h)
+11. Avaliação Neurocirurgia/Ortopedia URGENTE
+12. Estável (TLICS <4): tratamento conservador (colete)
+13. Instável (TLICS ≥5): tratamento cirúrgico`,
+    notes: "Classificação TLICS (toraco-lombar) e SLIC (cervical subaxial). Fratura de Jefferson (C1): instável se ligamento transverso roto.",
+    warnings: "Choque neurogênico: hipotensão + bradicardia (diferente de choque hipovolêmico). Tratar com vasopressor.",
+    guideline: "SBOT / AO Spine / ATLS",
+  },
+  {
+    id: "rx-sindrome-compartimental-manejo-diag",
+    title: "Síndrome Compartimental Aguda — Manejo",
+    type: "Por Diagnóstico",
+    prescription: `1. DIAGNÓSTICO CLÍNICO (6 P's):
+   - Pain (dor desproporcional), Pressure, Paresthesia, Paralysis, Pallor, Pulselessness
+   - DOR À EXTENSÃO PASSIVA DOS DEDOS = sinal mais precoce
+2. Remover TODA imobilização (gesso, talas, curativos compressivos)
+3. Membro no nível do coração (NÃO elevar)
+4. Medição de pressão compartimental (Stryker):
+   - >30mmHg OU delta P <30mmHg (PAD - Pcompartimento) = fasciotomia
+5. FASCIOTOMIA DE URGÊNCIA (<6h do início)
+6. Analgesia: Morfina EV (não mascarar com bloqueio regional)
+7. Hidratação vigorosa (prevenção de IRA por rabdomiólise)
+8. Monitorizar: CPK, mioglobina, K+, creatinina, diurese
+9. Alcalinização urinária: NaHCO3 se CPK >5000
+10. Manter ferida aberta pós-fasciotomia (fechamento 48-72h ou enxerto)`,
+    warnings: "Atraso >6-8h: dano irreversível (contratura de Volkmann). NÃO aguardar perda de pulso para indicar fasciotomia — é sinal TARDIO.",
+    guideline: "SBOT / AAOS / EAST",
+  },
+  {
+    id: "rx-les-agudo-grave-diag",
+    title: "Lúpus Eritematoso Sistêmico — Flare Grave",
+    type: "Por Diagnóstico",
+    prescription: `1. Pulsoterapia: Metilprednisolona 1g EV/dia por 3 dias
+2. Após pulso: Prednisona 1mg/kg/dia VO (máx 60mg)
+3. Hidroxicloroquina 400mg/dia VO (NUNCA suspender)
+4. Se nefrite lúpica (classe III-IV):
+   - Micofenolato 2-3g/dia VO OU
+   - Ciclofosfamida EV (Euro-Lupus: 500mg quinzenal x 6)
+5. Se SAF associada: anticoagulação plena (Warfarina INR 2-3)
+6. Proteção gástrica: Omeprazol 20mg/dia
+7. Cálcio 1000mg + Vitamina D 1000UI/dia
+8. Monitorização: anti-dsDNA, C3/C4, creatinina, proteinúria
+9. Hemograma seriado (anemia hemolítica, plaquetopenia)
+10. Profilaxia de Pneumocystis se imunossupressão intensa: SMX-TMP 400/80mg/dia`,
+    notes: "SLEDAI e BILAG para atividade de doença. Nefrite lúpica: biópsia renal obrigatória para classificação e tratamento.",
+    warnings: "Ciclofosfamida: preservação de fertilidade (criopreservação). Corticoide crônico: osteoporose, DM, infecções.",
+    guideline: "SBR / ACR / EULAR / KDIGO",
+  },
+  {
+    id: "rx-vasculite-aguda-diag",
+    title: "Vasculite Sistêmica — Apresentação Aguda no PS",
+    type: "Por Diagnóstico",
+    prescription: `1. Suspeitar se: púrpura palpável + acometimento multissistêmico
+2. Exames iniciais:
+   - Hemograma, VHS, PCR, creatinina, EAS
+   - ANCA (c-ANCA/PR3, p-ANCA/MPO)
+   - Complemento (C3, C4)
+   - Crioglobulinas, hepatite B e C
+   - RX tórax
+3. Se hemorragia alveolar (hemoptise + infiltrado):
+   - Pulsoterapia Metilprednisolona 1g/dia EV por 3 dias
+   - Ciclofosfamida 15mg/kg EV (máx 1,2g) OU Rituximab 375mg/m²
+   - Plasmaférese (PEXIVAS: se creatinina >5,7 ou hemorragia alveolar grave)
+4. Se glomerulonefrite rapidamente progressiva:
+   - Biópsia renal urgente (se possível)
+   - Iniciar tratamento empírico se alta suspeita
+5. Prednisona 1mg/kg/dia VO após pulso
+6. Profilaxia: SMX-TMP, Omeprazol, Ca + Vit D`,
+    notes: "Granulomatose com Poliangiíte (Wegener): ANCA-PR3+, seios paranasais + pulmão + rim. Poliangiíte Microscópica: ANCA-MPO+, rim + pulmão.",
+    warnings: "Hemorragia alveolar difusa: mortalidade >25%. Tratar ANTES do resultado de ANCA.",
+    guideline: "SBR / ACR / EULAR / BSR",
+  },
+  {
+    id: "rx-artrite-reat-aguda-diag",
+    title: "Artrite Reativa / Síndrome de Reiter",
+    type: "Por Diagnóstico",
+    prescription: `1. AINE: Indometacina 50mg VO 8/8h OU Naproxeno 500mg VO 12/12h
+2. Corticoide intra-articular se monoartrite: Triancinolona 40mg
+3. Se refratária (>3 meses):
+   - Sulfassalazina 500mg VO, titular até 2-3g/dia
+4. Se uretrite/cervicite: Azitromicina 1g VO dose única + Ceftriaxona 500mg IM
+5. Colírio de corticoide se uveíte (avaliação Oftalmo)
+6. Fisioterapia precoce
+7. HLA-B27 (prognóstico)
+8. Descartar artrite séptica: artrocentese se monoartrite aguda
+9. Cultura/PCR de secreção uretral e fezes
+10. Proteção gástrica: Omeprazol 20mg/dia`,
+    notes: "Tríade clássica: artrite + uretrite + conjuntivite. Pós-infecção: Chlamydia (genital) ou Salmonella/Shigella/Campylobacter (enteral).",
+    guideline: "SBR / ACR / ASAS",
+  },
+  {
+    id: "rx-fratura-costela-diag",
+    title: "Fratura de Costela / Tórax Instável (Flail Chest)",
+    type: "Por Diagnóstico",
+    prescription: `FRATURA SIMPLES (1-2 costelas):
+1. Analgesia efetiva (PRIORIDADE — evitar hipoventilação):
+   - Dipirona 1g EV/VO 6/6h + Tramadol 50-100mg 8/8h
+   - Paracetamol 1g VO 6/6h (alternância)
+2. Orientar fisioterapia respiratória (espirometria de incentivo)
+3. NÃO enfaixar tórax (restrição ventilatória)
+4. RX tórax (hemotórax, pneumotórax associado?)
+
+TÓRAX INSTÁVEL (≥3 costelas fraturadas em 2 pontos):
+5. IOT + Ventilação mecânica se insuficiência respiratória
+6. Analgesia peridural torácica (GOLD STANDARD)
+7. Bloqueio intercostal OU Bloqueio do plano eretor (ESP block)
+8. Morfina 2-4mg EV titulada
+9. TC tórax (contusão pulmonar associada)
+10. Fixação cirúrgica (SSRO): indicações crescentes
+11. Fisioterapia intensiva + mobilização precoce
+12. Monitorizar SpO2, gasometria`,
+    notes: "Fratura de 1ª-2ª costela: trauma de alta energia — excluir lesão de grandes vasos (angio-TC). Idoso: mortalidade aumenta 19% por cada costela fraturada.",
+    guideline: "SBOT / SBCT / EAST / ATLS",
+  },
+  {
+    id: "rx-epicondilite-tendinopatia-diag",
+    title: "Epicondilite / Tendinopatia Aguda",
+    type: "Por Diagnóstico",
+    prescription: `1. Repouso relativo + gelo local 20min 3-4x/dia (fase aguda)
+2. AINE tópico: Diclofenaco gel 1% 3x/dia por 14 dias
+3. AINE oral se dor moderada: Naproxeno 500mg VO 12/12h por 7-10 dias
+4. Imobilização: cotoveleira com coxim ou tala (repouso funcional)
+5. Infiltração local (se refratária >6 semanas):
+   - Triancinolona 20mg + Lidocaína 2% 2mL peritendinosa
+   - Máx 3 infiltrações com intervalo ≥6 semanas
+6. Fisioterapia: exercícios excêntricos (protocolo Alfredson)
+7. Orientar ergonomia no trabalho
+8. Se refratária >6 meses: considerar PRP, ondas de choque, cirurgia
+9. RX se suspeita de calcificação (tendinopatia calcárea)`,
+    notes: "Epicondilite lateral (tennis elbow): extensores do punho. Medial (golfer elbow): flexores. Tratamento conservador resolve 85-90%.",
+    guideline: "SBOT / AAOS / EULAR",
+  },
+  {
+    id: "rx-fascite-plantar-diag",
+    title: "Fascite Plantar",
+    type: "Por Diagnóstico",
+    prescription: `1. Gelo local: garrafa congelada sob o pé 15-20min 2-3x/dia
+2. AINE: Ibuprofeno 600mg VO 8/8h por 7-10 dias
+3. Palmilha com suporte de arco plantar
+4. Calcanheira de silicone
+5. Alongamento: fáscia plantar + panturrilha 3x/dia (30s x 5 repetições)
+6. Fisioterapia: terapia manual + ondas de choque (se disponível)
+7. Se refratária (>6 semanas):
+   - Infiltração com corticoide: Triancinolona 20mg + Lidocaína 1% 2mL
+   - USG-guiada (reduz risco de ruptura)
+8. Órtese noturna (Night splint) — manter tornozelo em 90°
+9. Perda de peso se obesidade
+10. Evitar calçados planos e sem suporte`,
+    notes: "Dor matinal no primeiro passo é patognomônica. RX: esporão de calcâneo é achado incidental (não é a causa da dor).",
+    guideline: "SBOT / AOFAS / AAOS",
+  },
+  {
+    id: "rx-vasculite-iga-purpura-diag",
+    title: "Púrpura de Henoch-Schönlein / Vasculite por IgA",
+    type: "Por Diagnóstico",
+    prescription: `1. Repouso relativo (melhora edema e púrpura)
+2. Analgesia: Paracetamol 10-15mg/kg/dose 6/6h (evitar AINEs se nefrite)
+3. Hidratação oral adequada
+4. Monitorização renal: EAS + creatinina semanal por 6 meses
+5. Se artrite intensa: Naproxeno 10mg/kg/dia VO 12/12h
+6. Se dor abdominal intensa / vasculite intestinal:
+   - Prednisona 1-2mg/kg/dia VO (máx 60mg) por 1-2 semanas
+7. Se nefrite (proteinúria nefrótica ou GN rapidamente progressiva):
+   - Pulsoterapia com Metilprednisolona
+   - Encaminhar Nefrologia pediátrica
+8. PA diária (HAS por nefrite)
+9. Alta se: sem dor abdominal, EAS normal, função renal preservada
+10. Acompanhamento: EAS mensal por 6 meses`,
+    notes: "Tétrade clássica: púrpura palpável em MMII, artralgia, dor abdominal, nefrite. Maioria é autolimitada (2-6 semanas). Pico: 3-10 anos.",
+    warnings: "Nefrite em 30-50% dos casos. Proteinúria persistente >3 meses: biópsia renal. Risco de intussuscepção.",
+    guideline: "SBP / SBR / ACR / EULAR",
+  },
+  {
+    id: "rx-polimialgia-reumatica-diag",
+    title: "Polimialgia Reumática / Arterite de Células Gigantes",
+    type: "Por Diagnóstico",
+    prescription: `POLIMIALGIA REUMÁTICA:
+1. Prednisona 15-20mg/dia VO (resposta dramática em 24-72h)
+2. Redução gradual: 10% a cada 2-4 semanas até 10mg
+3. Abaixo de 10mg: reduzir 1mg/mês
+4. Duração total: 12-24 meses
+5. Ca 1000mg + Vit D 1000UI/dia
+6. Densitometria óssea basal
+
+ARTERITE DE CÉLULAS GIGANTES (urgência oftalmológica):
+7. Prednisona 1mg/kg/dia (máx 60mg) OU
+8. Metilprednisolona 1g/dia EV x 3 dias se perda visual
+9. AAS 100mg/dia (proteção vascular)
+10. USG de artérias temporais (sinal do halo)
+11. Biópsia de artéria temporal (até 2 semanas do início do corticoide)
+12. Tocilizumab 162mg SC semanal (poupador de corticoide)
+13. VHS e PCR seriados para monitorar atividade`,
+    notes: "VHS >40-50 + dor em cinturas + rigidez matinal >45min + idade >50 = fortemente sugestivo. Resposta dramática a corticoide confirma.",
+    warnings: "Cefaleia temporal + claudicação mandibular + amaurose fugaz = EMERGÊNCIA (risco de cegueira irreversível). Iniciar corticoide ANTES da biópsia.",
+    guideline: "SBR / ACR / EULAR / BSR",
+  },
+  {
+    id: "rx-esclerodermia-crise-renal-diag",
+    title: "Crise Renal Esclerodérmica",
+    type: "Por Diagnóstico",
+    prescription: `1. Captopril 6,25-12,5mg VO 8/8h (IECA é tratamento de PRIMEIRA LINHA)
+   - Titular rapidamente: dobrar dose a cada 12-24h
+   - Meta: PA normal em 72h
+2. NÃO usar BRA (inferior ao IECA nesta condição)
+3. Se HAS maligna: Nitroprussiato EV como ponte
+4. Monitorizar: creatinina, K+, hemograma (anemia hemolítica microangiopática)
+5. Pesquisar esquizócitos (AHMA) + plaquetopenia
+6. Se anúria/IRA grave: hemodiálise (manter IECA mesmo em diálise)
+7. Suspender corticoide se possível (fator precipitante)
+8. Prognóstico renal: 50% recuperam função em 12-18 meses se IECA mantido`,
+    notes: "Ocorre em esclerose sistêmica difusa, geralmente nos primeiros 4 anos. Corticoide em dose >15mg/dia é fator de risco.",
+    warnings: "NÃO suspender IECA mesmo se creatinina subir. Recuperação renal tardia possível até 2 anos. Diálise NÃO contraindica IECA.",
+    guideline: "SBR / ACR / EULAR / EUSTAR",
+  },
+  {
+    id: "rx-espondilite-flare-diag",
+    title: "Espondilite Anquilosante — Flare Agudo",
+    type: "Por Diagnóstico",
+    prescription: `1. AINE em dose plena (1ª linha):
+   - Indometacina 50mg VO 8/8h OU
+   - Naproxeno 500mg VO 12/12h OU
+   - Etoricoxibe 90mg VO 1x/dia
+2. Proteção gástrica: Omeprazol 20mg/dia
+3. Fisioterapia: exercícios de extensão + natação
+4. Se refratário a 2 AINEs por 4 semanas:
+   - Anti-TNF: Adalimumab 40mg SC quinzenal OU
+   - Secuquinumab 150mg SC (IL-17)
+5. Corticoide intra-articular se artrite periférica (NÃO sistêmico)
+6. Se uveíte anterior: Dexametasona colírio + midriático (Oftalmo)
+7. HLA-B27 + RNM sacroilíacas (diagnóstico)
+8. VHS/PCR para monitorar atividade (BASDAI)
+9. Cessar tabagismo (acelera fusão vertebral)`,
+    notes: "Dor lombar inflamatória: <40 anos, insidiosa, rigidez matinal >30min, melhora com exercício, piora com repouso.",
+    guideline: "SBR / ASAS / ACR / EULAR",
+  },
+  {
+    id: "rx-trombose-venosa-cerebral-diag",
+    title: "Trombose Venosa Cerebral (TVC)",
+    type: "Por Diagnóstico",
+    prescription: `1. Anticoagulação plena IMEDIATA (mesmo com hemorragia associada):
+   - Heparina não fracionada: bolus 80UI/kg + 18UI/kg/h (TTPa 2-2,5x) OU
+   - Enoxaparina 1mg/kg SC 12/12h
+2. Controle de cefaleia: Paracetamol 1g 6/6h + Metoclopramida 10mg 8/8h
+   - Evitar opioides se possível (mascarar rebaixamento)
+3. Anticonvulsivante se crise: Levetiracetam 500mg EV 12/12h
+4. Se HIC: Acetazolamida 250mg VO 8/8h OU punção lombar evacuadora
+5. TC com fase venosa OU AngioRM venosa (diagnóstico)
+6. Investigar trombofilias após fase aguda
+7. Transição para Warfarina (INR 2-3) por 6-12 meses
+8. Se causa identificada e removível: 6 meses
+9. Se idiopática ou trombofilia grave: considerar anticoagulação indefinida
+10. Suspender ACO se em uso`,
+    notes: "Cefaleia progressiva + papiledema + déficit focal + convulsão em mulher jovem + ACO = pensar TVC. RNM > TC para diagnóstico.",
+    warnings: "Anticoagulação mesmo com hemorragia intracraniana associada — é o tratamento. NÃO é contraindicação.",
+    guideline: "ABN / AHA / ESO / EANO",
+  },
+  {
+    id: "rx-botulismo-diag",
+    title: "Botulismo",
+    type: "Por Diagnóstico",
+    prescription: `1. Suporte ventilatório: IOT precoce se paralisia descendente progredindo
+   - Capacidade vital forçada seriada (IOT se <15mL/kg)
+2. Soro antibotulínico trivalente (SAB) — solicitar ao CIEVS/MS:
+   - 1 ampola EV (teste de sensibilidade antes)
+   - Administrar o mais precoce possível
+3. NÃO usar aminoglicosídeos (agravam bloqueio neuromuscular)
+4. SNG se disfagia
+5. SVD se retenção urinária
+6. Laxante: Manitol 20% VO ou enema (eliminar toxina do TGI)
+7. Metronidazol 500mg EV 8/8h se botulismo de ferida
+8. Notificação compulsória IMEDIATA
+9. Investigar fonte alimentar (mel em lactentes, conservas caseiras)
+10. Monitorização em UTI
+11. ENMG: padrão incremental na estimulação repetitiva`,
+    notes: "Paralisia descendente (diferente de Guillain-Barré que é ascendente). Pupilas fixas dilatadas, boca seca, constipação precedem paralisia.",
+    warnings: "SAB disponível apenas via MS/SVS. Ligar CIEVS (0800-644-6645). Cada hora conta. Ventilação mecânica por semanas/meses.",
+    guideline: "MS / SVS / CDC / IDSA",
+  },
+  {
+    id: "rx-doenca-kawasaki-diag",
+    title: "Doença de Kawasaki",
+    type: "Por Diagnóstico",
+    prescription: `1. Imunoglobulina EV (IVIG) 2g/kg dose única, infundir em 10-12h
+   - Até o 10° dia de febre (idealmente dias 5-10)
+2. AAS dose anti-inflamatória: 80-100mg/kg/dia VO 6/6h (até 48-72h afebril)
+3. AAS dose antiplaquetária: 3-5mg/kg/dia VO (após afebril, por 6-8 semanas)
+4. Se refratário (febre >36h após IVIG):
+   - 2ª dose de IVIG 2g/kg OU
+   - Metilprednisolona 30mg/kg/dia EV x 3 dias OU
+   - Infliximab 5mg/kg EV dose única
+5. Ecocardiograma na admissão + 2 semanas + 6-8 semanas
+6. Hemograma, PCR, VHS, albumina, TGO/TGP
+7. Se aneurisma coronariano gigante (>8mm): anticoagulação com Warfarina
+8. Acompanhamento cardiológico prolongado`,
+    notes: "Critérios: febre ≥5 dias + 4/5 (conjuntivite, alteração labial/oral, rash, linfadenopatia cervical, alteração de extremidades). Incompleta: febre + 2-3 critérios + laboratorial.",
+    warnings: "Aneurisma coronariano: principal causa de cardiopatia adquirida na infância. IVIG antes do 10° dia reduz risco de 25% para <5%.",
+    guideline: "SBP / AHA / JCS",
+  },
+  {
+    id: "rx-sindrome-hemolitico-uremica-diag",
+    title: "Síndrome Hemolítico-Urêmica (SHU) Típica",
+    type: "Por Diagnóstico",
+    prescription: `1. Hidratação EV cautelosa: SF 0,9% conforme volemia (evitar hiper-hidratação se oligúria)
+2. Controle de PA: Amlodipino 0,1mg/kg/dose VO 12/12h (pediatria) OU Enalapril
+3. Transfusão de hemácias se Hb <6-7g/dL (concentrado de hemácias lavadas)
+4. NÃO transfundir plaquetas (exceto sangramento ativo ameaçador)
+5. NÃO usar ATB (pode aumentar liberação de Shiga-toxina)
+6. NÃO usar antimotílicos (Loperamida)
+7. Diálise se: K+ >6,5 refratário, sobrecarga hídrica, uremia sintomática
+8. Monitorização: hemograma + esquizócitos 12/12h, LDH, haptoglobina, creatinina, K+
+9. Balanço hídrico rigoroso + peso diário
+10. Investigar: coprocultura (E. coli O157:H7), toxina Shiga nas fezes
+11. Se SHU atípica (sem diarreia): complemento, ADAMTS-13 → considerar Eculizumab`,
+    notes: "Tríade: anemia hemolítica microangiopática + plaquetopenia + IRA. Precedida por diarreia sanguinolenta (E. coli produtora de Shiga-toxina).",
+    warnings: "NÃO dar antibiótico na SHU típica. Plaquetas: apenas se sangramento ativo grave (piora microangiopatia). ADAMTS-13 <10% = PTT, não SHU.",
+    guideline: "SBP / SBN / KDIGO / ASH",
+  },
+  {
+    id: "rx-mordedura-ofidica-botrhrops-diag",
+    title: "Acidente Botrópico (Jararaca) — Manejo Completo",
+    type: "Por Diagnóstico",
+    prescription: `CLASSIFICAÇÃO E SOROTERAPIA:
+Leve: dor e edema local, sem coagulopatia → SAB 4 ampolas EV
+Moderado: edema ascendente + coagulopatia leve → SAB 8 ampolas EV
+Grave: edema extenso + hemorragia + choque + IRA → SAB 12 ampolas EV
+
+SOROTERAPIA:
+1. Soro antibotrópico (SAB) EV diluído em 250mL SF, infundir em 20-60min
+2. Pré-medicar: Hidrocortisona 500mg EV + Prometazina 25mg IM (prevenção anafilaxia)
+3. Adrenalina preparada beira-leito
+
+TRATAMENTO DE SUPORTE:
+4. Hidratação vigorosa: SF 0,9% 2L EV (proteção renal)
+5. Analgesia: Dipirona 1g EV 6/6h (NÃO usar AINEs)
+6. Elevação do membro afetado
+7. Profilaxia antitetânica
+8. Limpeza local + curativo
+9. NÃO: torniquete, sucção, incisão, gelo
+10. Monitorizar: TP, fibrinogênio, creatinina, diurese, hemograma
+11. Fasciotomia se síndrome compartimental
+12. ATB apenas se infecção secundária`,
+    notes: "Botrópico (jararaca) é o acidente ofídico mais comum no Brasil (90%). Tempo de coagulação (TC) incoagulável = indicador de gravidade.",
+    warnings: "Soro é eficaz apenas nas primeiras 6-12h. NÃO aplicar soro local no membro. Dose IGUAL para crianças e adultos.",
+    guideline: "MS / SVS / Instituto Butantan / SBMT",
+  },
+  {
+    id: "rx-fratura-pelve-diag",
+    title: "Fratura de Pelve (Instável/Ring Disruption)",
+    type: "Por Diagnóstico",
+    prescription: `1. ABCDE do trauma — hemorragia retroperitoneal massiva
+2. Cinta pélvica OU lençol amarrado (estabilização provisória)
+3. Ressuscitação volêmica + protocolo de transfusão maciça (1:1:1)
+4. Ácido tranexâmico 1g EV em 10min
+5. RX pelve AP (Young-Burgess)
+6. TC pelve + abdome com contraste
+7. Se instável hemodinamicamente:
+   - Fixação externa provisória OU
+   - Tamponamento pré-peritoneal OU
+   - Angioembolização (se blush arterial na TC)
+8. SVD (se uretra íntegra — sangue no meato = uretrocistografia retrógrada ANTES)
+9. Tipagem + reserva 6 CH
+10. Avaliação Ortopedia + Cirurgia do Trauma`,
+    warnings: "Fratura de pelve pode perder >2L de sangue no retroperitônio sem sinais externos. Mortalidade 15-30% se instável.",
+    guideline: "ATLS / SBOT / ACS / EAST",
+  },
+  {
+    id: "rx-fratura-tornozelo-diag",
+    title: "Fratura de Tornozelo (Weber/AO)",
+    type: "Por Diagnóstico",
+    prescription: `1. Gelo + elevação + imobilização provisória (tala suropodálica)
+2. RX tornozelo AP + perfil + mortise (incidência com 15° rotação interna)
+3. Classificação Weber: A (infrasindesmótico), B (transsindesmótico), C (suprassindesmótico)
+4. Analgesia: Dipirona 1g VO 6/6h + Ibuprofeno 600mg VO 8/8h
+5. Enoxaparina 40mg SC 1x/dia (profilaxia TVP se imobilização)
+
+CONSERVADOR (Weber A estável, sem desvio):
+6. Bota gessada suropodálica 6 semanas (sem carga 3 sem + carga parcial 3 sem)
+
+CIRÚRGICO (Weber B/C instável, desvio >2mm, incongruência articular):
+7. RAFI (redução aberta e fixação interna)
+8. RX de controle pós-operatório
+9. Fisioterapia após retirada de imobilização
+10. Retorno Ortopedia em 7 dias (revisão de ferida operatória)`,
+    notes: "Critérios de Ottawa: dor + incapacidade de dar 4 passos + dor à palpação dos maléolos ou base do 5° meta = RX indicado.",
+    guideline: "SBOT / AAOS / AO Foundation",
+  },
+  {
+    id: "rx-lombalgia-aguda-diag",
+    title: "Lombalgia Aguda Mecânica",
+    type: "Por Diagnóstico",
+    prescription: `1. Repouso relativo (NÃO repouso absoluto — piora prognóstico)
+2. Analgesia escalonada:
+   - Dipirona 1g VO 6/6h + Ibuprofeno 600mg VO 8/8h (7-10 dias)
+   - Se refratário: Tramadol 50mg VO 8/8h (máx 5 dias)
+3. Relaxante muscular: Ciclobenzaprina 5-10mg VO à noite (7-10 dias)
+4. Compressas mornas locais
+5. Red flags (investigar com imagem):
+   - Febre, perda ponderal, trauma, déficit neurológico
+   - Retenção urinária, anestesia em sela (síndrome de cauda equina)
+   - Idade >50 com dor nova, história de câncer
+6. Se red flags presentes: RNM lombar URGENTE
+7. Se sem red flags: NÃO solicitar RX/RNM nas primeiras 4-6 semanas
+8. Orientar atividade física progressiva
+9. Encaminhar fisioterapia se >4 semanas
+10. Retorno se piora ou novos sintomas neurológicos`,
+    notes: "95% das lombalgias agudas são mecânicas/inespecíficas e resolvem em 4-6 semanas. Imagem precoce sem red flags = overdiagnosis.",
+    guideline: "ACP / ACR / NICE / SBR",
+  },
+  {
+    id: "rx-entorse-tornozelo-diag",
+    title: "Entorse de Tornozelo (Graus I-III)",
+    type: "Por Diagnóstico",
+    prescription: `GRAU I (estiramento, sem instabilidade):
+1. Protocolo PRICE: Proteção, Repouso relativo, Ice, Compressão, Elevação
+2. Gelo 20min 4-6x/dia por 48-72h
+3. Ibuprofeno 600mg VO 8/8h por 5 dias
+4. Tornozeira elástica
+
+GRAU II (ruptura parcial):
+5. Tala suropodálica ou bota walker por 2-3 semanas
+6. Carga parcial com muletas
+7. Dipirona + Ibuprofeno (analgesia combinada)
+8. Fisioterapia proprioceptiva após fase aguda
+
+GRAU III (ruptura completa ligamentar):
+9. Bota gessada ou walker 4-6 semanas
+10. Sem carga por 2 semanas, depois carga progressiva
+11. RX tornozelo (Critérios de Ottawa)
+12. RNM se suspeita de lesão osteocondral
+13. Avaliação Ortopedia (cirurgia se instabilidade crônica)
+
+TODOS: Fisioterapia proprioceptiva é ESSENCIAL para prevenir recidiva`,
+    notes: "Ligamento talofibular anterior é o mais acometido (inversão). Entorse de repetição sem reabilitação: instabilidade crônica.",
+    guideline: "SBOT / AAOS / NICE",
+  },
+  {
+    id: "rx-tendinite-ombro-diag",
+    title: "Tendinite / Síndrome do Impacto do Ombro",
+    type: "Por Diagnóstico",
+    prescription: `1. Repouso relativo (evitar abdução acima de 90°)
+2. Gelo local 20min 3-4x/dia
+3. AINE: Naproxeno 500mg VO 12/12h por 7-14 dias + Omeprazol 20mg
+4. AINE tópico: Diclofenaco gel 3x/dia
+5. Fisioterapia: exercícios de Codman (pendulares) + fortalecimento do manguito rotador
+6. Se refratário (>4-6 semanas):
+   - Infiltração subacromial: Triancinolona 40mg + Lidocaína 2% 3mL
+   - Máx 3 infiltrações (intervalo ≥6 semanas)
+7. USG de ombro (tendinopatia, ruptura parcial/total, bursite)
+8. RNM se suspeita de ruptura completa
+9. Avaliação Ortopedia se ruptura ou falha terapêutica
+10. Afastamento laboral se atividade de esforço repetitivo`,
+    notes: "Teste de Neer e Hawkins positivos: sugestivo de impacto subacromial. Ruptura completa do supraespinhal: indicação cirúrgica relativa.",
+    guideline: "SBOT / AAOS / EULAR",
+  },
 ];
 

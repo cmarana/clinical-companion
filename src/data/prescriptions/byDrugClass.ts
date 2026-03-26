@@ -721,4 +721,82 @@ Etanol/Metanol/Etilenoglicol → Fomepizol 15mg/kg EV OU Etanol EV`,
     warnings: "Flumazenil: CI em dependentes de benzo e epilépticos (risco de convulsão). Naloxona: precipita abstinência em dependentes.",
     guideline: "AACT / ABRACIT / EXTRIP",
   },
+  {
+    id: "rx-classe-probioticos",
+    title: "Probióticos — Indicações e Posologia",
+    type: "Classe de Medicamento",
+    prescription: `INDICAÇÕES BASEADAS EM EVIDÊNCIA:
+1. Diarreia associada a ATB: Saccharomyces boulardii 250mg VO 12/12h (durante ATB e 5 dias após)
+2. Gastroenterite aguda (pediatria): Lactobacillus rhamnosus GG 10⁹ UFC/dia VO por 5-7 dias
+3. Prevenção de C. difficile em uso de ATB: S. boulardii 250-500mg/dia
+4. Síndrome do Intestino Irritável: Bifidus infantis 10⁸ UFC/dia
+5. Enterocolite necrosante (prevenção em RNPT): Lactobacillus + Bifidobacterium
+
+POSOLOGIA:
+- S. boulardii (Floratil®): 100-250mg VO 12/12h
+- L. rhamnosus GG: 10⁹-10¹⁰ UFC/dia
+- VSL#3: 1-2 sachês/dia (bolsite, RCU)
+
+NÃO usar em: pacientes com CVC, imunossuprimidos graves, pós-cirurgia cardíaca, pancreatite grave
+Administrar 2h antes ou depois do ATB`,
+    notes: "Evidência mais forte: prevenção de diarreia por ATB e C. difficile. Probióticos não substituem tratamento de infecção.",
+    warnings: "Fungemia por S. boulardii descrita em pacientes com CVC. Não abrir cápsulas perto de pacientes com CVC.",
+    guideline: "WGO / AGA / ESPGHAN",
+  },
+  {
+    id: "rx-classe-coloides",
+    title: "Colóides — Albumina e Gelatinas",
+    type: "Classe de Medicamento",
+    prescription: `ALBUMINA HUMANA 20%:
+Indicações no PS:
+1. PBE (peritonite bacteriana espontânea): 1,5g/kg D1 + 1g/kg D3
+2. Síndrome hepatorrenal: 1g/kg/dia (máx 100g) + Terlipressina
+3. Paracentese de grande volume (>5L): 6-8g de albumina/L retirado
+4. Nefropatia por contraste em cirrótico: 1g/kg (máx 100g)
+
+Dose: Albumina 20% frasco 50mL (10g)
+Infusão: 1-2mL/min (10g em 25-50min)
+
+NÃO INDICADA em:
+- Ressuscitação volêmica de rotina (preferir cristaloides)
+- Hipoalbuminemia isolada (sem indicação específica)
+- Queimados nas primeiras 24h (Parkland com RL)
+
+GELATINA MODIFICADA (Haemaccel):
+- 500mL EV em 30-60min
+- Expansor de curta duração
+- Risco de anafilaxia
+- Não ultrapassa 1500mL/dia`,
+    notes: "Albumina em sepse: sem benefício vs cristaloide (SAFE trial, ALBIOS trial). Exceção: sepse + cirrose.",
+    guideline: "EASL / AASLD / SSC / SBI",
+  },
+  {
+    id: "rx-classe-hemostaticos",
+    title: "Hemostáticos e Antifibrinolíticos — Referência",
+    type: "Classe de Medicamento",
+    prescription: `ÁCIDO TRANEXÂMICO:
+- Trauma: 1g EV em 10min + 1g EV em 8h (CRASH-2 — até 3h do trauma)
+- HPP: 1g EV em 10min (até 30min do parto)
+- Epistaxe: 500mg VO 8/8h ou tópico (gaze embebida)
+- Dose pediátrica: 15-20mg/kg EV
+
+ÁCIDO AMINOCAPROICO:
+- 4-5g EV/VO ataque + 1g/h manutenção (máx 30g/dia)
+- Alternativa ao tranexâmico
+
+VITAMINA K (Fitomenadiona):
+- Reversão de Warfarina: 5-10mg EV lento (15-30min)
+- INR >9 sem sangramento: 2,5-5mg VO
+- Início de ação: 6-12h (EV), 24h (VO)
+
+CCP (Complexo Protrombínico Concentrado):
+- Sangramento grave por Warfarina: 25-50 UI/kg EV
+- Reversão imediata (minutos)
+
+DESMOPRESSINA (DDAVP):
+- Hemofilia A leve / von Willebrand tipo 1: 0,3mcg/kg EV em 30min
+- Disfunção plaquetária urêmica: 0,3mcg/kg EV`,
+    notes: "Tranexâmico é contraindicado em CIVD com trombose predominante. CCP preferido sobre PFC para reversão urgente de Warfarina.",
+    guideline: "SBH / ISTH / CRASH-2 / WOMAN Trial",
+  },
 ];

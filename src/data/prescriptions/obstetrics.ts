@@ -575,4 +575,51 @@ Se não houver melhora:
     notes: "Candida glabrata: resistente a Azólicos. Tratar com Ácido Bórico ou Nistatina tópica.",
     guideline: "FEBRASGO / CDC / IDSA",
   },
+  {
+    id: "rx-obst-tocolitico",
+    title: "Tocólise — Trabalho de Parto Prematuro",
+    type: "Obstetrícia",
+    prescription: `INDICAÇÃO: contrações regulares + dilatação progressiva entre 24-34 semanas
+
+1ª LINHA:
+1. Nifedipino: 20mg VO ataque + 20mg VO após 30min se contrações persistem
+   Manutenção: 20mg VO 6/6-8/8h (máx 72h)
+
+2ª LINHA:
+2. Atosibano: bolus 6,75mg EV em 1min → 18mg/h em 3h → 6mg/h por até 45h
+
+CORTICOIDE PARA MATURIDADE PULMONAR:
+3. Betametasona 12mg IM — 2 doses com intervalo de 24h OU
+   Dexametasona 6mg IM — 4 doses com intervalo de 12h
+   (Entre 24-34 semanas, dose de resgate se >14 dias da 1ª dose)
+
+4. Neuroproteção fetal: Sulfato de Magnésio 4g EV em 30min + 1g/h (se <32 semanas)
+5. NÃO usar tocolítico se: corioamnionite, sofrimento fetal, DPPNI, eclâmpsia
+6. Cultura reto-vaginal para GBS (se não coletada)
+7. Fibronectina fetal (se disponível) — VPN alto
+8. Medida de colo por USG TV (<25mm = risco)`,
+    notes: "Tocólise ganha 48h para corticoide e transferência. Não prolongar além de 48h. Nifedipino: evitar se hipotensão ou cardiopatia.",
+    warnings: "MgSO4 como tocolítico: não usar >48h (risco de desmineralização óssea fetal). NÃO usar Indometacina >32 semanas (fechamento do ducto arterioso).",
+    guideline: "FEBRASGO / ACOG / RCOG / NICE",
+  },
+  {
+    id: "rx-obst-cerclagem-emergencia",
+    title: "Insuficiência Istmocervical / Cerclagem de Emergência",
+    type: "Obstetrícia",
+    prescription: `1. Repouso em Trendelenburg
+2. Indometacina 100mg VR ataque + 25mg VO 6/6h por 48h (tocolítico + anti-inflamatório)
+3. ATB: Azitromicina 1g VO dose única + Amoxicilina 500mg VO 8/8h 7 dias
+4. Cultura cervical
+5. Cerclagem de emergência (McDonald) se:
+   - IG entre 14-24 semanas
+   - Dilatação cervical + membranas visíveis
+   - Sem corioamnionite, sem trabalho de parto ativo
+6. Progesterona 200mg vaginal/dia (manutenção pós-cerclagem)
+7. Repouso relativo
+8. USG seriada (comprimento cervical + viabilidade fetal)
+9. Corticoide: Betametasona 12mg IM x 2 doses (se 24-34 semanas)
+10. Retirada da cerclagem: 36-37 semanas`,
+    notes: "Cerclagem profilática (história): oferecida se ≥3 perdas no 2° trimestre ou colo <25mm <24 semanas + história prévia.",
+    guideline: "FEBRASGO / ACOG / RCOG",
+  },
 ];

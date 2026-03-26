@@ -712,4 +712,58 @@ DADOS OBRIGATÓRIOS:
     notes: "Notificação é OBRIGAÇÃO LEGAL do médico (Lei 6.259/1975). Omissão = infração ética + responsabilidade administrativa.",
     guideline: "MS / SVS / Portaria GM/MS 217/2023",
   },
+  {
+    id: "rx-sus-acidente-trabalho",
+    title: "Acidente de Trabalho — CAT e Conduta no PS",
+    type: "SUS / UPA",
+    prescription: `DOCUMENTAÇÃO OBRIGATÓRIA:
+1. Abertura de CAT (Comunicação de Acidente de Trabalho) pelo empregador
+2. Se empregador recusar: sindicato, médico ou o próprio trabalhador pode emitir
+3. Preencher: descrição do acidente, parte do corpo atingida, CID-10
+4. Emitir Relatório Médico com:
+   - Data/hora do atendimento
+   - Descrição das lesões
+   - Nexo causal (acidente x lesão)
+   - Conduta e prognóstico
+5. Se acidente de trajeto: mesmo procedimento
+
+CONDUTA CLÍNICA:
+6. Tratar lesão conforme protocolo específico
+7. Profilaxia antitetânica se ferimento
+8. Afastamento: atestado médico com CID
+   - Até 15 dias: empresa paga
+   - >15 dias: encaminhar ao INSS (perícia)
+9. Encaminhar para referência se necessário (Ortopedia, Cirurgia)
+10. Acidentes com material biológico: ver protocolo PEP`,
+    notes: "CAT deve ser emitida até 1° dia útil após o acidente. Acidente de trajeto tem mesmos direitos. Doença ocupacional equipara-se a acidente de trabalho.",
+    guideline: "MS / CLT / Lei 8.213/91 / INSS",
+  },
+  {
+    id: "rx-sus-violencia-domestica",
+    title: "Violência Doméstica / Contra Mulher — Protocolo PS",
+    type: "SUS / UPA",
+    prescription: `ATENDIMENTO:
+1. Acolhimento em ambiente reservado
+2. Documentar lesões detalhadamente (localização, extensão, mecanismo)
+3. Fotografar lesões (com consentimento) — prontuário
+4. Exame clínico completo
+
+VIOLÊNCIA SEXUAL:
+5. Anticoncepção de emergência: Levonorgestrel 1,5mg VO dose única (até 72h)
+6. Profilaxia DST:
+   - PEP HIV: TDF/3TC + DTG por 28 dias (até 72h)
+   - Ceftriaxona 500mg IM + Azitromicina 1g VO + Metronidazol 2g VO
+   - Hepatite B: vacina + IGHAHB (se não vacinada)
+7. Coleta de vestígios (até 72h — NÃO necessita BO)
+
+NOTIFICAÇÃO COMPULSÓRIA:
+8. Notificar SINAN (violência interpessoal/autoprovocada)
+9. Comunicar ao Conselho Tutelar se menor
+10. Informar sobre Lei Maria da Penha e serviços de apoio
+11. Encaminhar ao CREAS/Centro de Referência da Mulher
+12. Acompanhamento psicológico`,
+    notes: "Notificação é obrigação do profissional de saúde (Lei 10.778/2003). NÃO depende de BO policial. Sigilo profissional mantido.",
+    warnings: "Não minimizar relato. Não questionar por que não saiu de casa. Documentação médica pode ser usada como prova judicial.",
+    guideline: "MS / Lei Maria da Penha / Norma Técnica MS 2012 / CFM",
+  },
 ];

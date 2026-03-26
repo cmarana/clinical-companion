@@ -988,5 +988,41 @@ Ataque maciço (>20 picadas adulto / >5 criança):
     warnings: "Síndrome de Boerhaave (ruptura esofágica): tríade de Mackler (vômitos + dor torácica + enfisema subcutâneo). Mortalidade >30% se atraso.",
     guideline: "ACS / SBCT",
   },
+  {
+    id: "rx-emerg-crush-syndrome",
+    title: "Síndrome de Esmagamento (Crush Syndrome)",
+    type: "Emergência",
+    prescription: `1. Hidratação AGRESSIVA: SF 0,9% 1-2L/h EV (iniciar ANTES da liberação do membro)
+2. Bicarbonato de sódio: NaHCO3 8,4% 50mL em 1L SF (manter pH urinário >6,5)
+3. Manitol 20% 1g/kg EV (diurese osmótica — proteção renal)
+4. Gluconato de cálcio 10% 30mL EV se hipercalemia com alteração ECG
+5. Monitorizar: K+, Ca++, CPK, mioglobina, pH, gasometria, diurese
+6. Meta de diurese: 200-300mL/h
+7. ECG contínuo (hipercalemia letal)
+8. SVD + débito urinário horário
+9. Se IRA oligúrica: hemodiálise de urgência
+10. NÃO aplicar torniquete no membro antes de hidratar
+11. Fasciotomia se síndrome compartimental associada`,
+    warnings: "Hipercalemia + rabdomiólise = PCR. Iniciar hidratação ANTES de liberar o membro comprimido — a reperfusão libera K+ e mioglobina massivamente.",
+    guideline: "ATLS / ACS / Disaster Medicine",
+  },
+  {
+    id: "rx-emerg-embolia-amniotica",
+    title: "Embolia por Líquido Amniótico",
+    type: "Emergência",
+    prescription: `1. CHAMAR AJUDA — equipe multidisciplinar IMEDIATA
+2. ABC — IOT precoce se insuficiência respiratória
+3. Ressuscitação volêmica + vasopressores (Noradrenalina)
+4. Se PCR: RCP + cesárea perimortem em 4 minutos
+5. Hemoderivados: protocolo de transfusão maciça (1:1:1)
+6. Crioprecipitado 10U + PFC 15mL/kg (CIVD)
+7. Ácido tranexâmico 1g EV
+8. Fibrinogênio >200mg/dL (repor se <150)
+9. Ocitocina 40UI EV (atonia uterina associada)
+10. Ecocardiograma beira-leito (disfunção VD aguda)
+11. UTI obstétrica`,
+    warnings: "Mortalidade 60-80%. Diagnóstico clínico: colapso cardiovascular súbito + CIVD durante/após parto. Não existe tratamento específico — suporte agressivo.",
+    guideline: "FEBRASGO / ACOG / SMFM",
+  },
 ];
 
