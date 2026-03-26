@@ -766,4 +766,80 @@ NOTIFICAÇÃO COMPULSÓRIA:
     warnings: "Não minimizar relato. Não questionar por que não saiu de casa. Documentação médica pode ser usada como prova judicial.",
     guideline: "MS / Lei Maria da Penha / Norma Técnica MS 2012 / CFM",
   },
+  {
+    id: "rx-sus-tuberculose",
+    title: "Tuberculose Pulmonar — Esquema Básico (RIPE) SUS",
+    type: "SUS / UPA",
+    prescription: `FASE INTENSIVA (2 meses):
+1. RIPE: Rifampicina 150mg + Isoniazida 75mg + Pirazinamida 400mg + Etambutol 275mg
+   Dose por peso:
+   - 20-35kg: 2 comprimidos/dia
+   - 36-50kg: 3 comprimidos/dia
+   - >50kg: 4 comprimidos/dia
+   Em jejum ou com refeição leve
+
+FASE DE MANUTENÇÃO (4 meses):
+2. RI: Rifampicina 150mg + Isoniazida 75mg (mesma posologia por peso)
+
+ACOMPANHAMENTO:
+3. Baciloscopia mensal (2°, 4°, 6° mês)
+4. Função hepática: TGO, TGP (basal + mensal se sintomas)
+5. RX tórax: basal + 2° + 6° mês
+6. Tratamento Diretamente Observado (TDO) — obrigatório
+7. Notificação compulsória (SINAN)
+8. Avaliar contactantes (PPD/IGRA + RX)
+9. HIV obrigatório em todo paciente com TB`,
+    notes: "TDO: profissional de saúde observa a tomada da medicação 3x/semana. Disponível gratuitamente no SUS. Dose fixa combinada (DFC) = 1 comprimido 4 em 1.",
+    warnings: "Hepatotoxicidade: suspender se TGO/TGP >3x LSN com sintomas ou >5x sem. Rifampicina: coloração alaranjada de urina/lágrima (orientar paciente). Isoniazida: neuropatia periférica → dar Piridoxina 50mg/dia (gestantes, etilistas, DM, HIV).",
+    guideline: "MS / PNCT / OMS / SBPT",
+  },
+  {
+    id: "rx-sus-hanseniase",
+    title: "Hanseníase — Esquema PQT SUS",
+    type: "SUS / UPA",
+    prescription: `PAUCIBACILAR (PB — até 5 lesões):
+Duração: 6 doses em até 9 meses
+- Dose supervisionada (mensal): Rifampicina 600mg + Dapsona 100mg
+- Dose autoadministrada (diária): Dapsona 100mg/dia
+
+MULTIBACILAR (MB — >5 lesões):
+Duração: 12 doses em até 18 meses
+- Dose supervisionada (mensal): Rifampicina 600mg + Dapsona 100mg + Clofazimina 300mg
+- Dose autoadministrada (diária): Dapsona 100mg + Clofazimina 50mg
+
+REAÇÕES:
+- Tipo 1 (reversa): Prednisona 1-2mg/kg/dia (desmame lento 6-9 meses)
+- Tipo 2 (ENH): Talidomida 100-400mg/dia (APENAS homens ou mulheres pós-menopausa)
+  Mulheres em idade fértil: Pentoxifilina 400mg 8/8h
+
+ACOMPANHAMENTO:
+3. Exame neurológico simplificado mensal
+4. Avaliação de incapacidades (grau 0, 1, 2)
+5. Notificação compulsória
+6. Examinar contactantes domiciliares (BCG)`,
+    notes: "Diagnóstico clínico: lesão de pele com alteração de sensibilidade e/ou espessamento de nervo periférico. PQT disponível gratuitamente no SUS.",
+    warnings: "Talidomida: TERATOGÊNICA — proibida para mulheres em idade fértil. Dapsona: pode causar metemoglobinemia e anemia hemolítica (G6PD). Clofazimina: pigmentação cutânea (orientar paciente).",
+    guideline: "MS / OMS / SBD / SBH",
+  },
+  {
+    id: "rx-sus-pre-natal-baixo-risco",
+    title: "Pré-Natal Baixo Risco — Prescrição Inicial UBS",
+    type: "SUS / UPA",
+    prescription: `1. Ácido fólico 5mg VO 1x/dia (iniciar pré-concepção, manter até 12 semanas)
+2. Sulfato ferroso 40mg Fe elementar VO 1x/dia (a partir de 20 semanas)
+   - Tomar em jejum com suco cítrico (vitamina C melhora absorção)
+3. Exames do 1° trimestre:
+   - Hemograma, tipagem sanguínea (ABO/Rh), Coombs indireto (se Rh-)
+   - Glicemia jejum, VDRL, HIV, HBsAg, Toxoplasmose IgG/IgM
+   - Urina rotina + urocultura, parasitológico de fezes
+   - USG obstétrica (datação: 11-14 semanas com TN)
+4. Consultas: mensais até 28 sem → quinzenais até 36 sem → semanais até parto
+5. Vacinas: dTpa (27-36 sem), Influenza, Hepatite B (se não vacinada)
+6. Orientações: nutrição, atividade física, sinais de alerta (sangramento, PA alta)
+7. Mínimo 6 consultas (idealmente ≥10)
+8. Cartão da Gestante: preencher e entregar`,
+    notes: "Caderneta da Gestante do MS: documento obrigatório. SISPRENATAL: cadastro obrigatório para acompanhamento. Ácido fólico previne defeitos do tubo neural.",
+    warnings: "Glicemia jejum ≥92: Diabetes Gestacional (TOTG 75g entre 24-28 sem). VDRL positivo: tratar sífilis IMEDIATAMENTE (Penicilina Benzatina). Rh-: Coombs indireto mensal a partir de 28 semanas.",
+    guideline: "MS / FEBRASGO / Caderno AB nº 32",
+  },
 ];

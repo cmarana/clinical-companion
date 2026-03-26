@@ -494,4 +494,57 @@ Sintomático (letargia, cianose, hipoglicemia, tremores) ou Ht >70%:
     warnings: "NÃO hiper-hidratar RNPT (<1500g): risco de PCA, hemorragia peri-intraventricular, DBP.",
     guideline: "SBP / AAP / NRP",
   },
+  {
+    id: "rx-neo-enterocolite-necrosante",
+    title: "Enterocolite Necrosante (ECN) Neonatal",
+    type: "Neonatal",
+    prescription: `CLASSIFICAÇÃO DE BELL:
+Estágio I (suspeita): distensão, resíduo gástrico, sangue oculto+
+Estágio II (definida): pneumatose intestinal, gás porta
+Estágio III (avançada): peritonite, pneumoperitônio
+
+TRATAMENTO:
+1. Jejum absoluto (7-14 dias conforme estágio)
+2. SNG aberta (descompressão gástrica)
+3. NPT (nutrição parenteral total)
+4. ATB: Ampicilina 50mg/kg/dose 12/12h + Gentamicina 4mg/kg/dose 24/24h + Metronidazol 7,5mg/kg/dose 8/8h
+   Duração: 10-14 dias (estágio II-III)
+5. Hidratação vigorosa (expansão volêmica com SF 0,9% 10-20mL/kg)
+6. Suporte hemodinâmico: Dopamina/Dobutamina se choque
+7. RX abdome seriado: 6/6h nas primeiras 48h
+8. Hemograma + PCR + gasometria + eletrólitos seriados
+9. CIRURGIA: se pneumoperitônio, ansa fixa, deterioração clínica
+   Opções: laparotomia com ressecção + ostomia OU drenagem peritoneal
+10. Reintroduzir dieta enteral trófica lentamente após resolução`,
+    notes: "ECN: emergência cirúrgica neonatal mais comum. RNPT <32 semanas e <1500g: maior risco. Leite materno é fator protetor.",
+    warnings: "Pneumoperitônio = perfuração = cirurgia IMEDIATA. CIVD frequente em estágio III. Mortalidade: 20-50% no estágio III.",
+    guideline: "SBP / AAP / NeoReviews / ESPGHAN",
+  },
+  {
+    id: "rx-neo-asfixia-perinatal-hie",
+    title: "Asfixia Perinatal / Encefalopatia Hipóxico-Isquêmica (EHI)",
+    type: "Neonatal",
+    prescription: `CRITÉRIOS PARA HIPOTERMIA TERAPÊUTICA:
+- IG ≥36 semanas + peso ≥1800g
+- Apgar ≤5 no 10° min OU necessidade de reanimação >10min
+- pH cordão <7,0 ou BE <-16 OU
+- Encefalopatia moderada/grave (Sarnat II/III)
+
+PROTOCOLO:
+1. Hipotermia terapêutica: temperatura alvo 33,5°C por 72h
+   - Iniciar em até 6h de vida
+   - Reaquecimento lento: 0,5°C/h
+2. Monitorização contínua: T retal, FC, PA, SpO2, EEG (aEEG)
+3. Ventilação mecânica (manter normocapnia)
+4. Glicemia: manter 70-120mg/dL
+5. Anticonvulsivante se convulsões: Fenobarbital 20mg/kg EV (dose de ataque)
+   Manutenção: 5mg/kg/dia
+6. Restrição hídrica: 60mL/kg/dia D1 (risco de IRA + SIADH)
+7. Jejum nas primeiras 24-72h → NPT
+8. Eco cerebral + RNM encéfalo (D3-D5 e D10-D14)
+9. Avaliação neuropediátrica + follow-up neurológico`,
+    notes: "EHI é a principal causa de PC (paralisia cerebral) de origem perinatal. Hipotermia terapêutica: NNT=7 para desfecho favorável.",
+    warnings: "Hipotermia: risco de bradicardia sinusal (tolerável), plaquetopenia, coagulopatia. NÃO iniciar após 6h de vida (sem benefício comprovado).",
+    guideline: "SBP / ILCOR / AAP / NNF",
+  },
 ];

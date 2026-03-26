@@ -1024,5 +1024,112 @@ Ataque maciço (>20 picadas adulto / >5 criança):
     warnings: "Mortalidade 60-80%. Diagnóstico clínico: colapso cardiovascular súbito + CIVD durante/após parto. Não existe tratamento específico — suporte agressivo.",
     guideline: "FEBRASGO / ACOG / SMFM",
   },
+  {
+    id: "rx-emerg-tempestade-tireoidiana",
+    title: "Tempestade Tireoidiana (Crise Tireotóxica)",
+    type: "Emergência",
+    prescription: `1. Score de Burch-Wartofsky (>45 = altamente sugestivo)
+2. Propiltiouracil (PTU) 200mg VO/SNG 4/4h (bloqueia síntese + conversão T4→T3)
+3. Lugol (iodo) 10 gotas VO 8/8h — iniciar 1h APÓS PTU
+4. Propranolol 60-80mg VO 6/6h (ou Esmolol EV se VO impossível)
+5. Hidrocortisona 100mg EV 8/8h (bloqueia conversão periférica + insuficiência adrenal relativa)
+6. Resfriamento ativo se hipertermia (Paracetamol — NÃO usar AAS)
+7. Hidratação vigorosa: SF 0,9% + Glicose
+8. Tratar fator precipitante (infecção, cirurgia, iodo)
+9. UTI obrigatória
+10. Monitorização cardíaca contínua (FA, ICC)`,
+    notes: "Mortalidade 10-30% mesmo com tratamento. AAS desloca T4 da proteína → piora crise. PTU preferido sobre Metimazol na crise (bloqueia conversão periférica).",
+    warnings: "NÃO dar iodo ANTES do PTU (aumenta síntese hormonal — efeito Jod-Basedow). IC com alto débito pode evoluir para choque.",
+    guideline: "SBEM / ATA / Endocrine Society",
+  },
+  {
+    id: "rx-emerg-hemorragia-digestiva-alta",
+    title: "Hemorragia Digestiva Alta (HDA)",
+    type: "Emergência",
+    prescription: `1. Estabilização hemodinâmica: 2 acessos calibrosos (16-18G)
+2. Cristaloide: SF 0,9% ou RL em bolus (30mL/kg se choque)
+3. Transfusão: CH se Hb <7 (alvo 7-9) — liberal se cardiopata (Hb <8)
+4. Score de Glasgow-Blatchford (estratificação pré-endoscopia)
+5. Omeprazol 80mg EV bolus → 8mg/h BIC (infusão contínua 72h)
+6. Se suspeita varicosa:
+   - Octreotide 50mcg EV bolus → 50mcg/h BIC
+   - Ceftriaxona 1g EV 1x/dia (profilaxia PBE — 7 dias)
+7. EDA em <12h (instável) ou <24h (estável)
+8. Jejum até EDA
+9. SVD (monitorizar diurese)
+10. SNG: controversa — considerar se vômitos incoercíveis
+11. Se hemorragia maciça refratária: Balão de Sengstaken-Blakemore (ponte para TIPS)`,
+    notes: "Úlcera péptica: causa mais comum de HDA. Varizes esofágicas: maior mortalidade. Mallory-Weiss: geralmente autolimitada.",
+    warnings: "NÃO usar IBP em bolus isolado sem BIC na HDA varicosa ativa. Ressuscitação excessiva com cristaloide pode piorar coagulopatia dilucional.",
+    guideline: "FBG / ESGE / ACG / BSG",
+  },
+  {
+    id: "rx-emerg-pneumotorax-hipertensivo",
+    title: "Pneumotórax Hipertensivo",
+    type: "Emergência",
+    prescription: `DIAGNÓSTICO CLÍNICO (NÃO esperar RX):
+- Hipotensão + turgência jugular + ausência de MV unilateral + desvio traqueal contralateral
+
+DESCOMPRESSÃO IMEDIATA:
+1. Toracocentese de alívio: jelco 14G no 2° EIC, linha hemiclavicular (lado afetado)
+   - Ou 5° EIC linha axilar anterior (ATLS 10ª ed.)
+2. Após descompressão: drenagem torácica em selo d'água
+   - Dreno 28-32F no 5° EIC, linha axilar anterior/média
+3. Monitorização contínua: SpO2, PA, FC
+4. RX tórax pós-drenagem (confirmar expansão)
+5. O2 suplementar alto fluxo
+6. Avaliar necessidade de VM (se IOT prévia: reduzir PEEP/VC)`,
+    notes: "Causa iatrogênica mais comum: acesso venoso central (subclávia). Trauma: fratura de costela, ferimento penetrante. Em VM: barotrauma.",
+    warnings: "EMERGÊNCIA CLÍNICA — diagnóstico clínico, tratamento IMEDIATO. PCR em AESP no trauma: pensar em pneumotórax hipertensivo.",
+    guideline: "ATLS / BTS / ACCP",
+  },
+  {
+    id: "rx-emerg-anafilaxia-refrataria",
+    title: "Anafilaxia Refratária / Bifásica",
+    type: "Emergência",
+    prescription: `1. Adrenalina IM repetida: 0,3-0,5mg a cada 5-15min (até 3 doses)
+2. Se sem resposta após 3 doses IM:
+   - Adrenalina EV: 1mg diluída em 100mL SF → 1-10mcg/min BIC (titular)
+3. Expansão volêmica: SF 0,9% 1-2L em bolus rápido
+4. Vasopressina 1-2UI EV se choque refratário a Adrenalina
+5. Glucagon 1-5mg EV (se uso de betabloqueador — adrenalina pode ser ineficaz)
+6. Metilprednisolona 125mg EV (prevenção fase bifásica)
+7. Difenidramina 50mg EV + Ranitidina 50mg EV
+8. Salbutamol NBZ 10 gotas se broncoespasmo persistente
+9. Observação mínima: 12-24h (reação bifásica em 5-20% — até 72h)
+10. Na alta: prescrever Adrenalina auto-injetável + plano de ação`,
+    notes: "Reação bifásica: recorrência sem reexposição, geralmente 4-12h. Fatores de risco: atraso na Adrenalina, uso oral do alérgeno.",
+    warnings: "JAMAIS substituir Adrenalina por corticoide/anti-histamínico como 1ª linha. Adrenalina EV APENAS em BIC — bolus pode causar arritmia fatal.",
+    guideline: "ASBAI / WAO / EAACI / AAAAI",
+  },
+  {
+    id: "rx-emerg-estado-mal-epileptico",
+    title: "Estado de Mal Epiléptico",
+    type: "Emergência",
+    prescription: `FASE 1 (0-5min): ESTABILIZAÇÃO
+1. Via aérea + O2 + monitor + acesso venoso
+2. Glicemia capilar → se hipoglicemia: Glicose 50% 40mL EV
+3. Tiamina 100mg EV (antes da glicose se etilista)
+
+FASE 2 (5-20min): BENZODIAZEPÍNICO
+4. Diazepam 10mg EV (2mg/min) → repetir 1x em 5min se necessário
+   OU Midazolam 10mg IM (se sem acesso venoso)
+
+FASE 3 (20-40min): ANTIEPILÉPTICO
+5. Fenitoína 20mg/kg EV (máx 50mg/min) em SF 0,9%
+   OU Valproato 40mg/kg EV (máx 6mg/kg/min)
+   OU Levetiracetam 60mg/kg EV (máx 5g) em 15min
+
+FASE 4 (>40min): REFRATÁRIO
+6. Midazolam BIC: 0,2mg/kg bolus → 0,1-2mg/kg/h
+   OU Propofol: 2mg/kg bolus → 1-5mg/kg/h
+   OU Tiopental: 3-5mg/kg bolus → 1-5mg/kg/h
+7. EEG contínuo (meta: surto-supressão por 24-48h)
+8. IOT + VM
+9. Investigar causa: TC, líquor, toxicológico`,
+    notes: "Definição: crise ≥5min ou ≥2 crises sem recuperação da consciência. Causas em adultos: má aderência a AE, AVC, tumor, infecção SNC, metabólica.",
+    warnings: "Fenitoína: NUNCA em SG (cristaliza). Infundir lento — arritmia/hipotensão. Monitorizar ECG durante infusão.",
+    guideline: "ABN / AES / NCS / ILAE",
+  },
 ];
 

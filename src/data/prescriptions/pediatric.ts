@@ -755,5 +755,91 @@ Sinais de alerta para retorno:
     notes: "Fenótipos: sibilante transitório (melhora até 3 anos), sibilante persistente (atópico — provável asma). IPA positivo: 77% serão asmáticos.",
     guideline: "SBP / GINA / PRACTALL",
   },
+  {
+    id: "rx-ped-meningite-bacteriana",
+    title: "Meningite Bacteriana — Pediatria",
+    type: "Pediatria",
+    prescription: `1. Ceftriaxona 100mg/kg/dia EV 12/12h (máx 4g/dia) — 10-14 dias
+   (Neisseria/Pneumococo: 7 dias; H. influenzae: 7-10 dias)
+2. Vancomicina 60mg/kg/dia EV 6/6h (se suspeita de Pneumococo resistente)
+3. Dexametasona 0,6mg/kg/dia EV 6/6h por 4 dias (iniciar ANTES ou junto ao ATB)
+4. Líquor: celularidade, proteína, glicose, Gram, cultura, látex
+5. Hidratação: 80% da manutenção (risco de SIADH)
+6. Monitorizar: PC (lactentes), nível de consciência, convulsões
+7. Isolamento respiratório (meningococo) até 24h de ATB
+8. Quimioprofilaxia de contactantes (meningococo):
+   - Rifampicina 10mg/kg 12/12h por 2 dias (adulto: 600mg)
+9. Notificação compulsória imediata`,
+    notes: "RN (<28d): Ampicilina + Gentamicina (Listeria + E. coli + Streptococcus B). >3 meses: Ceftriaxona ± Vancomicina.",
+    warnings: "Dexametasona: benefício comprovado para H. influenzae. Controverso para outras etiologias, mas recomendado empiricamente. NÃO atrasar ATB para fazer PL.",
+    guideline: "SBP / IDSA / ABN / MS",
+  },
+  {
+    id: "rx-ped-cetoacidose-diabetica",
+    title: "Cetoacidose Diabética — Pediatria",
+    type: "Pediatria",
+    prescription: `1. Peso da criança: ___kg
+2. FASE 1 — Expansão (1ª hora):
+   - SF 0,9% 20mL/kg EV em 1h (repetir se choque, máx 40-60mL/kg)
+3. FASE 2 — Hidratação (manutenção + déficit em 24-48h):
+   - SF 0,9% → calcular: manutenção + 5-10% déficit
+   - Adicionar KCl 40mEq/L quando K+ <5,5 e diurese presente
+4. Insulina Regular: 0,1UI/kg/h EV BIC (iniciar APÓS 1ª hora de hidratação)
+   - Meta: queda de glicemia 50-75mg/dL/h
+5. Quando glicemia <250-300: trocar para SG 5% + SF 0,45% (manter insulina)
+6. Gasometria + eletrólitos + glicemia capilar: a cada 1-2h
+7. Bicarbonato: APENAS se pH <6,9 (risco de edema cerebral)
+8. Transição para SC: quando pH >7,3, BIC >15, AG normal, VO tolerada
+   - Insulina SC 30min ANTES de suspender BIC
+9. MONITORIZAR edema cerebral: cefaleia, vômito, bradicardia, alteração pupilar
+   - Se edema: Manitol 0,5-1g/kg EV em 20min OU NaCl 3% 2,5-5mL/kg`,
+    notes: "Edema cerebral: complicação mais temida na CAD pediátrica (0,5-1%). Fatores de risco: correção rápida de Na+, excesso de volume, uso de bicarbonato.",
+    warnings: "NUNCA fazer bolus de insulina na CAD pediátrica. Queda de glicemia muito rápida = risco de edema cerebral. Monitorização neurológica contínua.",
+    guideline: "SBP / ISPAD / ADA / SBD",
+  },
+  {
+    id: "rx-ped-kawasaki",
+    title: "Doença de Kawasaki — Pediatria",
+    type: "Pediatria",
+    prescription: `CRITÉRIOS (≥5 dias de febre + 4/5):
+- Conjuntivite bilateral não purulenta
+- Alteração labial/oral (lábios fissurados, língua em morango)
+- Exantema polimórfico
+- Alteração de extremidades (edema/descamação)
+- Linfadenopatia cervical >1,5cm
+
+TRATAMENTO:
+1. Imunoglobulina IV 2g/kg em dose única (infusão em 10-12h)
+   - Idealmente <10 dias de febre
+2. AAS 80-100mg/kg/dia VO 6/6h (fase aguda — até afebril por 48-72h)
+3. AAS 3-5mg/kg/dia VO 1x/dia (fase subaguda — por 6-8 semanas)
+4. Ecocardiograma: basal → 2 semanas → 6-8 semanas
+5. Se aneurisma coronariano: AAS indefinido ± anticoagulação
+6. Refratário (febre >36h pós-IGIV): 2ª dose IGIV OU Infliximab OU Metilprednisolona`,
+    notes: "Kawasaki incompleto: febre ≥5 dias + <4 critérios + marcadores inflamatórios elevados → considerar eco e tratar. Pico: 6-11 meses de idade.",
+    warnings: "Complicação mais temida: aneurisma coronariano (20-25% sem tratamento). Com IGIV: reduz para 3-5%. NÃO vacinar (vacinas vivas) por 11 meses após IGIV.",
+    guideline: "SBP / AHA / JCS",
+  },
+  {
+    id: "rx-ped-anafilaxia-pediatrica",
+    title: "Anafilaxia — Pediatria",
+    type: "Pediatria",
+    prescription: `1. Adrenalina IM (VASTO LATERAL da coxa):
+   - <10kg: 0,1mL (0,01mg/kg)
+   - 10-25kg: 0,15mg (auto-injetor pediátrico)
+   - >25kg: 0,3mg
+   - Repetir a cada 5-15min se necessário (até 3 doses)
+2. Decúbito dorsal + elevar MMII (exceto se vômito/dispneia)
+3. O2 alto fluxo (máscara com reservatório)
+4. SF 0,9% 20mL/kg EV rápido (repetir se hipotensão)
+5. Salbutamol NBZ 0,15mg/kg (mín 2,5mg) se broncoespasmo
+6. Metilprednisolona 2mg/kg EV (máx 125mg) — prevenção fase bifásica
+7. Difenidramina 1mg/kg EV (máx 50mg)
+8. Observação: mínimo 4-6h (8-12h se grave)
+9. Alta com: Adrenalina auto-injetável + plano de ação escrito + encaminhar alergista`,
+    notes: "Causa mais comum em crianças: alimentos (leite de vaca, ovo, amendoim). Diagnóstico CLÍNICO — não esperar exames.",
+    warnings: "Adrenalina é a ÚNICA droga que salva na anafilaxia. Anti-histamínico e corticoide são ADJUVANTES. Atraso na adrenalina = maior mortalidade.",
+    guideline: "SBP / ASBAI / WAO / EAACI",
+  },
 ];
 

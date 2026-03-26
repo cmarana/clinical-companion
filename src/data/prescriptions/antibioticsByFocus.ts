@@ -642,4 +642,73 @@ WAGNER 4-5 (gangrena parcial/total):
     warnings: "Diabético pode ter infecção grave sem febre ou leucocitose. Hiperglicemia persistente pode ser único sinal de infecção.",
     guideline: "IDSA / IWGDF / SBD / SBACV",
   },
+  {
+    id: "rx-atb-endoftalmite",
+    title: "ATB — Endoftalmite Pós-Operatória",
+    type: "ATB por Foco",
+    prescription: `INTRAVÍTREO (URGÊNCIA — idealmente <6h):
+1. Vancomicina 1mg/0,1mL intravítreo
+2. Ceftazidima 2,25mg/0,1mL intravítreo
+3. Dexametasona 0,4mg/0,1mL intravítreo (controverso)
+
+SISTÊMICO (adjuvante):
+4. Vancomicina 1g EV 12/12h
+5. Ceftazidima 2g EV 8/8h
+6. Moxifloxacino 400mg VO 1x/dia (boa penetração ocular)
+
+TÓPICO:
+7. Moxifloxacino 0,5% colírio 1 gota 1/1h (espaçar progressivamente)
+8. Dexametasona 0,1% colírio 1 gota 2/2h (após 24-48h do ATB)
+9. Atropina 1% colírio 1 gota 8/8h (cicloplégico)
+
+VITRECTOMIA: se acuidade visual ≤ percepção luminosa (EVS criteria)`,
+    notes: "Endoftalmite aguda (<6 semanas): Staphylococcus coagulase-negativo mais comum. Tardia (>6 semanas): Propionibacterium acnes.",
+    warnings: "EMERGÊNCIA OFTALMOLÓGICA. Cada hora de atraso piora o prognóstico visual. Avaliação oftalmológica IMEDIATA.",
+    guideline: "CBO / AAO / ESCRS / EVS",
+  },
+  {
+    id: "rx-atb-artrite-septica",
+    title: "ATB — Artrite Séptica",
+    type: "ATB por Foco",
+    prescription: `1. Artrocentese ANTES do ATB (Gram + cultura + cristais)
+2. ATB empírico:
+   - Adulto: Oxacilina 2g EV 4/4h (se MRSA: Vancomicina 15-20mg/kg 12/12h)
+   - Criança >5 anos: Oxacilina 200mg/kg/dia EV 6/6h
+   - Criança <5 anos: Oxacilina + Ceftriaxona (cobrir Kingella kingae)
+   - Prótese articular: Vancomicina + Rifampicina 300mg VO 12/12h
+3. Duração: 4-6 semanas (EV 2-4 semanas → transição VO)
+4. Drenagem articular:
+   - Joelho: artrocenteses de repetição ou artroscopia
+   - Quadril: SEMPRE drenagem cirúrgica (artrotomia)
+5. Imobilização inicial → mobilização precoce
+6. Monitorizar: PCR seriada (melhor marcador de resposta)`,
+    notes: "S. aureus é o germe mais comum em todas as idades (exceto neonato: Streptococcus B). Gonococo: jovem sexualmente ativo com poliartralgia migratória.",
+    warnings: "Artrite séptica de quadril em criança: EMERGÊNCIA CIRÚRGICA. Atraso >24h: necrose da cabeça femoral.",
+    guideline: "SBR / SBOT / IDSA / EULAR",
+  },
+  {
+    id: "rx-atb-colangite-aguda",
+    title: "ATB — Colangite Aguda (Tríade de Charcot)",
+    type: "ATB por Foco",
+    prescription: `GRAU I (leve — responde a ATB):
+1. Ciprofloxacino 400mg EV 12/12h + Metronidazol 500mg EV 8/8h
+   OU Amoxicilina-Clavulanato 1g EV 8/8h
+
+GRAU II (moderada — sem disfunção orgânica):
+2. Piperacilina-Tazobactam 4,5g EV 6/6h
+   OU Ceftriaxona 2g EV 1x/dia + Metronidazol 500mg EV 8/8h
+
+GRAU III (grave — Pêntade de Reynolds: Charcot + hipotensão + confusão):
+3. Meropenem 1g EV 8/8h ± Vancomicina
+4. Drenagem biliar de URGÊNCIA (<24h): CPRE
+5. Se CPRE impossível: drenagem percutânea ou cirúrgica
+
+TODOS:
+6. Hidratação vigorosa
+7. Analgesia (evitar Morfina — controvérsia sobre espasmo de Oddi)
+8. Duração ATB: 4-7 dias após drenagem efetiva`,
+    notes: "Tríade de Charcot: febre + icterícia + dor em HCD. Causa mais comum: coledocolitíase. CPRE é diagnóstica E terapêutica.",
+    warnings: "Grau III: mortalidade >30% sem drenagem. NÃO atrasar drenagem por exames complementares.",
+    guideline: "FBG / TG18 (Tokyo Guidelines) / WSES",
+  },
 ];

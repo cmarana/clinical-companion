@@ -799,4 +799,60 @@ DESMOPRESSINA (DDAVP):
     notes: "Tranexâmico é contraindicado em CIVD com trombose predominante. CCP preferido sobre PFC para reversão urgente de Warfarina.",
     guideline: "SBH / ISTH / CRASH-2 / WOMAN Trial",
   },
+  {
+    id: "rx-classe-antiemeticos",
+    title: "Antieméticos — Classes e Posologia",
+    type: "Classe Medicamentosa",
+    prescription: `ANTAGONISTAS 5-HT3 (1ª linha quimioterapia/pós-op):
+- Ondansetrona 4-8mg EV 8/8h (máx 16mg/dose)
+
+ANTAGONISTAS DOPAMINÉRGICOS:
+- Metoclopramida 10mg EV/VO 8/8h (máx 30mg/dia — risco extrapiramidal)
+- Bromoprida 10mg EV/VO 8/8h
+- Domperidona 10mg VO 8/8h (não cruza BHE — menos efeitos extrapiramidais)
+
+ANTI-HISTAMÍNICOS:
+- Dimenidrinato 50mg EV/VO 6/6h (cinetose, labirintite)
+
+ANTICOLINÉRGICOS:
+- Escopolamina (Buscopan) 10mg EV 8/8h (cólica + náusea)
+
+NK1 (emetogênese quimioterápica):
+- Aprepitanto 125mg VO D1 → 80mg D2-D3
+
+CORTICOIDE (adjuvante):
+- Dexametasona 4-8mg EV 1x/dia (NVPO / quimioterapia)`,
+    notes: "Ondansetrona: evitar em constipação intestinal. Metoclopramida: contra em obstrução mecânica, feocromocitoma. Grávidas: Ondansetrona ou Dimenidrinato.",
+    warnings: "Metoclopramida: risco de discinesia tardia (uso crônico). NÃO usar em Parkinson. Ondansetrona: prolongamento QT em doses altas.",
+    guideline: "FBG / MASCC / ASCO / PONV Guidelines",
+  },
+  {
+    id: "rx-classe-insulinas",
+    title: "Insulinas — Tipos, Início, Pico e Duração",
+    type: "Classe Medicamentosa",
+    prescription: `ULTRARRÁPIDAS (pré-prandial):
+- Lispro/Asparte/Glulisina: início 5-15min, pico 1-2h, duração 3-5h
+
+RÁPIDA (Regular):
+- Insulina Regular: início 30min, pico 2-4h, duração 6-8h
+- Uso EV (única insulina EV): CAD, HHS, BIC
+
+INTERMEDIÁRIA:
+- NPH: início 1-2h, pico 4-8h, duração 12-16h
+- Esquema: 2/3 manhã + 1/3 noite (ou 50/50)
+
+LONGAS (basal):
+- Glargina (Lantus/Basaglar): início 2h, sem pico, duração 24h — 1x/dia
+- Detemir: início 2h, pico leve 6-8h, duração 18-22h — 1-2x/dia
+- Degludeca: início 2h, sem pico, duração >42h — 1x/dia (ultraflexível)
+
+DOSE INICIAL DM2:
+- Insulina basal: 10UI/dia SC noite → titular +2UI cada 3 dias (GJ alvo <130)
+
+DOSE INICIAL DM1:
+- 0,4-1UI/kg/dia total → 50% basal + 50% bolus (pré-refeições)`,
+    notes: "SUS disponibiliza: Regular + NPH. Glargina e Asparte: alto custo (disponível via processo administrativo em alguns estados).",
+    warnings: "Hipoglicemia: sintoma mais temido. Ensinar paciente a reconhecer (sudorese, tremor, confusão) e tratar (15g carboidrato rápido). Sempre ter glicose oral disponível.",
+    guideline: "SBD / ADA / EASD / IDF",
+  },
 ];

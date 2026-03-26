@@ -622,4 +622,52 @@ CORTICOIDE PARA MATURIDADE PULMONAR:
     notes: "Cerclagem profilática (história): oferecida se ≥3 perdas no 2° trimestre ou colo <25mm <24 semanas + história prévia.",
     guideline: "FEBRASGO / ACOG / RCOG",
   },
+  {
+    id: "rx-obs-diabetes-gestacional",
+    title: "Diabetes Gestacional — Manejo",
+    type: "Obstetrícia",
+    prescription: `DIAGNÓSTICO (TOTG 75g entre 24-28 semanas):
+- Jejum ≥92 / 1h ≥180 / 2h ≥153 (1 valor alterado = DG)
+
+TRATAMENTO:
+1. Dieta fracionada (6 refeições): 30-35kcal/kg/dia
+   - 40-50% carboidratos complexos, 20% proteínas, 30-40% gorduras
+2. Exercício físico moderado: 30min/dia (caminhada, natação)
+3. Automonitorização glicêmica: 4-7x/dia (jejum + pós-prandiais)
+   Alvos: jejum <95 / 1h pós <140 / 2h pós <120
+4. Se dieta insuficiente após 2 semanas:
+   - Insulina NPH: 0,5UI/kg/dia (ajustar conforme perfil)
+   - Insulina Regular pré-prandial se pós-prandiais elevados
+5. Metformina 500mg 12/12h (se recusa/indisponibilidade de insulina — off-label)
+6. USG mensal com perfil biofísico fetal
+7. Parto: 39 semanas (DG com dieta) / 38-39 sem (DG com insulina)
+8. Pós-parto: suspender insulina + TOTG 75g em 6-12 semanas`,
+    notes: "DG aumenta risco de macrossomia, distocia de ombro, hipoglicemia neonatal, pré-eclâmpsia. 50% das mulheres com DG desenvolverão DM2 em 10 anos.",
+    warnings: "NÃO usar antidiabéticos orais como 1ª linha (Glibenclamida: maior risco neonatal). Insulina é o tratamento padrão.",
+    guideline: "FEBRASGO / SBD / ADA / IADPSG",
+  },
+  {
+    id: "rx-obs-sifilis-gestacao",
+    title: "Sífilis na Gestação — Tratamento",
+    type: "Obstetrícia",
+    prescription: `SÍFILIS PRIMÁRIA / SECUNDÁRIA / LATENTE RECENTE (<1 ano):
+1. Penicilina Benzatina 2.400.000 UI IM dose única
+
+SÍFILIS LATENTE TARDIA / INDETERMINADA / TERCIÁRIA:
+2. Penicilina Benzatina 2.400.000 UI IM 1x/semana por 3 semanas
+
+ALERGIA À PENICILINA:
+3. DESSENSIBILIZAÇÃO obrigatória + Penicilina (gestante NÃO pode usar Doxiciclina)
+
+MONITORIZAÇÃO:
+4. VDRL mensal durante gestação
+5. VDRL no parto (sangue materno + cordão umbilical)
+6. Tratamento adequado: ≥30 dias antes do parto + queda ≥2 diluições em 3 meses
+7. Parceiro: tratar simultaneamente (Penicilina Benzatina)
+8. Notificação compulsória (sífilis gestacional + sífilis congênita)
+9. Se tratamento inadequado: RN = investigação completa (VDRL, hemograma, líquor, RX ossos longos)`,
+    notes: "Sífilis congênita é EVITÁVEL com tratamento materno adequado. Brasil: alta prevalência — rastrear em TODA consulta de pré-natal.",
+    warnings: "Reação de Jarisch-Herxheimer: febre, mialgia, contrações nas primeiras 24h pós-tratamento. Monitorizar BCF. Não atrasar tratamento por medo da reação.",
+    guideline: "MS / FEBRASGO / CDC / OMS",
+  },
 ];
