@@ -41,7 +41,7 @@ export default function MedicationDetail() {
     return (
       <>
         <TopBar title={med.name} />
-        <div className="px-4 py-4 max-w-lg mx-auto">
+        <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto">
           <PremiumGate />
         </div>
       </>
@@ -61,7 +61,7 @@ export default function MedicationDetail() {
           </button>
         }
       />
-      <div className="px-4 py-4 max-w-lg mx-auto space-y-3">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-3">
         {!isPremium && (
           <div className="flex items-center gap-2">
             <PremiumBadge />

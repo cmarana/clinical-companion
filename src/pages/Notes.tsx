@@ -47,7 +47,7 @@ export default function Notes() {
           </button>
         }
       />
-      <div className="px-4 py-4 max-w-lg mx-auto space-y-4">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4">
         {showForm && (
           <Card>
             <CardContent className="p-4 space-y-3">

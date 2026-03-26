@@ -96,7 +96,7 @@ export default function Internship() {
   return (
     <>
       <TopBar title="Internato / Residência" />
-      <div className="px-4 py-4 max-w-lg mx-auto space-y-3 pb-24">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-3 pb-24">
         <div className="flex items-center gap-2 mb-2">
           <BookOpen size={18} className="text-primary" />
           <p className="font-heading font-semibold text-sm">Guia prático para internos e residentes</p>

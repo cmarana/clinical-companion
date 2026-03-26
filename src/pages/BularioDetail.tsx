@@ -67,7 +67,7 @@ export default function BularioDetail() {
           </button>
         }
       />
-      <div className="px-4 py-4 max-w-lg mx-auto space-y-4 pb-24">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4 pb-24">
         {/* Header badges */}
         <div className="flex flex-wrap gap-1.5">
           <Badge variant="secondary">{med.classe}</Badge>

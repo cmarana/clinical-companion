@@ -11,7 +11,7 @@ export default function Favorites() {
   return (
     <>
       <TopBar title="Favoritos" />
-      <div className="px-4 py-4 max-w-lg mx-auto space-y-4">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4">
         {favorites.length === 0 ? (
           <div className="text-center py-12 space-y-3">
             <Star size={40} className="mx-auto text-muted-foreground" />

@@ -110,7 +110,7 @@ export default function DutyMode() {
   return (
     <>
       <TopBar title="Modo Plantão" />
-      <div className="px-4 py-4 max-w-lg mx-auto space-y-5 pb-24">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-5 pb-24">
 
         {/* ── Search ── */}
         <div className="relative">

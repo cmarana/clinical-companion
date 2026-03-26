@@ -77,7 +77,7 @@ export default function Bulario() {
   return (
     <>
       <TopBar title="Bulário" />
-      <div className="px-4 py-4 max-w-lg mx-auto space-y-4 pb-24">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4 pb-24">
         <p className="text-xs text-muted-foreground">
           Bulário profissional completo — pesquise por nome, princípio ativo, classe ou categoria.
         </p>
