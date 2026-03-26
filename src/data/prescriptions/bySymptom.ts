@@ -756,5 +756,77 @@ Diagnósticos diferenciais:
 12. Dor musculoesquelética`,
     warnings: "Cólica renal + febre = pielonefrite ou cálculo infectado → ATB + USG urgente. Pode ser sepse urinária.",
   },
+  {
+    id: "rx-sint-hipercalemia",
+    title: "Hipercalemia — Manejo Sintomático",
+    type: "Prescrição por Sintoma",
+    prescription: `Se K+ >6,5 ou alteração ECG (onda T apiculada, QRS alargado):
+1. Gluconato de cálcio 10% 10mL EV em 2-3 min (estabiliza membrana — NÃO baixa K+)
+2. Insulina regular 10UI + Glicose 50% 50mL (5 ampolas SG 50%) EV em 15-30 min
+3. Salbutamol 10 gotas nebulização (adjuvante — baixa K+ 0,5-1mEq/L)
+4. Bicarbonato de sódio 8,4% 50mL EV se acidose (pH <7,2)
+5. Furosemida 40-80mg EV (aumenta excreção renal)
+6. Resina de troca: Poliestirenossulfonato de cálcio (Sorcal) 30g VO ou VR
+7. ECG contínuo
+8. K+ a cada 1-2h até <5,5
+9. Diálise de urgência se: K+ >7, refratário, sintomático`,
+    warnings: "Gluconato de cálcio: efeito em 1-3 min, dura 30-60 min. NÃO misturar com bicarbonato na mesma via. Insulina sem glicose = hipoglicemia grave.",
+    guideline: "KDIGO / SBN / AHA",
+  },
+  {
+    id: "rx-sint-hiponatremia-aguda",
+    title: "Hiponatremia Aguda Sintomática",
+    type: "Prescrição por Sintoma",
+    prescription: `Se Na+ <120 ou sintomas neurológicos (convulsão, rebaixamento):
+1. NaCl 3% (salina hipertônica): 150mL EV em 20 min → repetir até 2x se necessário
+   Alvo: elevar Na+ 4-6 mEq/L nas primeiras 6h
+2. NÃO elevar >8 mEq/L em 24h (risco de mielinólise pontina)
+3. Furosemida 20-40mg EV se SIADH
+4. Restrição hídrica 800-1000mL/dia (SIADH)
+5. Na+ sérico a cada 2-4h
+6. Osmolaridade sérica e urinária
+7. Se Na+ subir rápido demais: SG 5% EV + DDAVP 2mcg EV (freiar correção)
+
+CRÔNICA (Na+ <130, assintomática):
+8. Restrição hídrica
+9. Investigar causa: SIADH, IC, cirrose, hipotireoidismo, insuf. adrenal
+10. Correção NÃO >0,5 mEq/L/h`,
+    warnings: "MIELINÓLISE PONTINA: complicação devastadora por correção rápida. Máximo 8mEq/L em 24h. Se ultrapassar: reverter com SG 5% + DDAVP.",
+    guideline: "KDIGO / SBN / ESE",
+  },
+  {
+    id: "rx-sint-broncoespasmo",
+    title: "Broncoespasmo Agudo — Manejo no PS",
+    type: "Prescrição por Sintoma",
+    prescription: `1. Salbutamol spray 4-8 jatos com espaçador a cada 20 min (3x na 1ª hora)
+2. OU Salbutamol nebulização: 10 gotas + SF 3mL a cada 20 min
+3. Ipratrópio 40mcg (2 jatos) a cada 20 min
+4. Prednisona 40-60mg VO dose única OU Hidrocortisona 200mg EV
+5. O2 suplementar se SpO2 <94%
+6. Se refratário: Sulfato de magnésio 2g EV em 20 min
+7. Se falência: Adrenalina 0,3-0,5mg SC/IM
+8. Se iminência de PCR: IOT + ventilação mecânica
+9. Peak flow antes e após broncodilatador (se possível)
+10. Monitorar SpO2, FR, sinais de exaustão respiratória`,
+    guideline: "GINA / SBPT",
+  },
+  {
+    id: "rx-sint-retencao-fecal",
+    title: "Impactação Fecal / Fecaloma",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. Desimpactação manual (luva + lidocaína gel) se fecaloma retal palpável
+2. Fleet enema (fosfato de sódio) 130mL VR — pode repetir em 6h
+3. OU Glicerina 12% enema 500mL VR
+4. Óleo mineral 30mL VO 8/8h (amolecedor)
+5. Lactulose 30mL VO 8/8h
+6. Bisacodil 10mg VO à noite
+7. Hidratação oral abundante
+8. Dipirona 500mg EV se dor/desconforto
+9. RX abdome (nível hidroaéreo, distensão)
+10. Após resolução: orientar dieta rica em fibras, hidratação, atividade física
+11. Se idoso acamado: considerar enema de Lactulose regular`,
+    notes: "Fecaloma + dor abdominal intensa + distensão: excluir volvo e obstrução intestinal (RX/TC).",
+    guideline: "SBG / AGA",
+  },
 ];
 

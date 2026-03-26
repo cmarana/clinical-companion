@@ -520,4 +520,66 @@ CRM / Carimbo / Assinatura`,
 16. Bundle FASTHUG: Feeding, Analgesia, Sedation, Thrombo, Head, Ulcer, Glucose`,
     guideline: "AMIB / SCCM",
   },
+  {
+    id: "rx-modelo-alta-uti",
+    title: "Modelo — Alta da UTI para Enfermaria",
+    type: "Modelo Padrão",
+    prescription: `1. Dieta conforme liberação (branda/livre)
+2. SF 0,9% 500mL EV 8/8h (manter acesso)
+3. Manter medicações conforme última prescrição de UTI:
+   - ATB: completar esquema (documentar D_/total)
+   - Antihipertensivos VO
+   - Insulina conforme esquema
+4. Dipirona 1g EV 6/6h SOS
+5. Omeprazol 20mg VO 1x/dia
+6. Enoxaparina 40mg SC 1x/dia (manter profilaxia TVP)
+7. Fisioterapia motora e respiratória 2x/dia
+8. Mobilização precoce (levantar da cama no D1 de enfermaria)
+9. Monitorar SSVV 6/6h
+10. Hemograma, eletrólitos, função renal de controle
+11. Alertar equipe: sinais de deterioração (qSOFA, NEWS)
+12. Plano de alta hospitalar ao atingir critérios`,
+    guideline: "AMIB / SCCM / IHI",
+  },
+  {
+    id: "rx-modelo-semicritico",
+    title: "Modelo — Paciente Semi-crítico (Semi-intensiva)",
+    type: "Modelo Padrão",
+    prescription: `1. Dieta branda (se VO liberada) OU dieta enteral (se disfagia)
+2. SF 0,9% 500mL EV 8/8h
+3. Dipirona 1g EV 6/6h SOS
+4. Omeprazol 40mg EV 1x/dia
+5. Enoxaparina 40mg SC 1x/dia
+6. Monitorização contínua: ECG, SpO2, PA não invasiva
+7. Balanço hídrico 12/12h
+8. O2 suplementar se SpO2 <92%
+9. HGT 6/6h — protocolo de insulina se >180
+10. Cabeceira elevada 30-45°
+11. SSVV a cada 4h
+12. Hemograma, eletrólitos, gasometria 1x/dia
+13. Critérios de transferência para UTI: instabilidade hemodinâmica, IOT, droga vasoativa
+14. Critérios de transferência para enfermaria: estabilidade 24h sem O2, sem droga`,
+    guideline: "AMIB / MS",
+  },
+  {
+    id: "rx-modelo-intoxicado",
+    title: "Modelo — Paciente Intoxicado (Observação)",
+    type: "Modelo Padrão",
+    prescription: `1. ABC — proteger via aérea (IOT se Glasgow ≤8)
+2. Dieta zero até avaliação
+3. SF 0,9% 1000mL EV em 4h
+4. Carvão ativado 1g/kg VO (se ingestão <2h e via aérea protegida)
+5. Monitorização contínua: ECG, SpO2, Glasgow horário
+6. Glicemia capilar (corrigir hipoglicemia)
+7. Exames: hemograma, função renal/hepática, eletrólitos, gasometria, coagulograma
+8. Screening toxicológico (se disponível)
+9. Antídoto específico (conforme substância):
+   - BZD: Flumazenil 0,2mg EV | Opioide: Naloxona 0,4mg EV
+   - Paracetamol: NAC | Organofosforado: Atropina + Pralidoxima
+10. Observação mínima: 6h (substância conhecida de curta ação) / 24h (desconhecida)
+11. Avaliação Psiquiatria OBRIGATÓRIA se tentativa de autoextermínio
+12. CIATOX: 0800-722-6001`,
+    warnings: "NÃO dar carvão ativado em: cáusticos, hidrocarbonetos, via aérea desprotegida, íleo paralítico.",
+    guideline: "AACT / ABRACIT / MS",
+  },
 ];

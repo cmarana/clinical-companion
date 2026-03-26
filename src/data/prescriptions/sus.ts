@@ -594,4 +594,67 @@ REGRAS CFM:
 7. Acompanhante: atestado de acompanhamento (filhos menores, idosos)`,
     guideline: "CFM / Resolução 1658/2002 / CLT",
   },
+  {
+    id: "rx-sus-regulacao-vaga",
+    title: "Regulação de Vaga — Como Solicitar",
+    type: "SUS — Documentação",
+    prescription: `COMO SOLICITAR VAGA UTI/ENFERMARIA:
+1. Preencher Laudo de Regulação (SISREG ou sistema local)
+2. Dados obrigatórios:
+   - Nome completo, CPF, CNS (Cartão SUS)
+   - Diagnóstico com CID-10
+   - Quadro clínico DETALHADO (sinais vitais, exames, condutas já realizadas)
+   - Nível de complexidade: UTI, Semi, Enfermaria, Centro Cirúrgico
+3. Classificação de prioridade:
+   - EMERGÊNCIA (risco iminente) — regulação 0 (imediata)
+   - URGÊNCIA — regulação em até 4h
+   - PRIORIDADE — regulação em até 24h
+4. Contato direto com Central de Regulação se emergência
+5. NUNCA transferir sem vaga regulada (responsabilidade médica)
+6. Preencher SAMU/TIH para transporte se necessário
+7. Resumo de transferência obrigatório`,
+    notes: "Médico que transfere SEM vaga pode responder por negligência. Sempre documentar em prontuário as tentativas de regulação.",
+    guideline: "MS / Portaria 2048 / CFM",
+  },
+  {
+    id: "rx-sus-declaracao-obito",
+    title: "Declaração de Óbito — Preenchimento",
+    type: "SUS — Documentação",
+    prescription: `PREENCHIMENTO DA DO:
+1. OBRIGATÓRIO para todo óbito no território nacional
+2. Causa básica: doença ou evento que iniciou a cadeia de eventos que levou à morte
+3. Preencher de BAIXO para CIMA (linha D → A):
+   - Linha D: causa básica (ex: Neoplasia de pulmão)
+   - Linha C: consequência (ex: Metástases cerebrais)
+   - Linha B: consequência (ex: Hipertensão intracraniana)
+   - Linha A: causa imediata (ex: Parada Cardiorrespiratória — NÃO usar como causa básica)
+4. Parte II: condições contribuintes (ex: DM, HAS, tabagismo)
+5. CID-10 de CADA linha
+6. NÃO usar como causa básica: PCR, falência múltipla de órgãos, sepse (sem especificar foco)
+7. Mortes violentas: NÃO preencher — encaminhar ao IML
+8. Óbito fetal: DO específica (se peso >500g ou IG >22 semanas)`,
+    notes: "DO mal preenchida prejudica estatísticas de saúde pública. Seja preciso na causa básica.",
+    guideline: "MS / CFM / OMS / CID-10",
+  },
+  {
+    id: "rx-sus-consentimento-informado",
+    title: "Termo de Consentimento Informado",
+    type: "SUS — Documentação",
+    prescription: `MODELO DE CONSENTIMENTO:
+"Eu, [NOME COMPLETO], portador do RG [____] e CPF [____], declaro que fui informado(a) pelo(a) Dr(a). [NOME] — CRM [____] — sobre:
+1. Meu diagnóstico: [DIAGNÓSTICO]
+2. O procedimento/tratamento proposto: [PROCEDIMENTO]
+3. Os riscos envolvidos: [LISTAR PRINCIPAIS RISCOS]
+4. As alternativas ao tratamento proposto: [ALTERNATIVAS]
+5. As consequências de não realizar o procedimento: [CONSEQUÊNCIAS]
+
+Declaro que tive oportunidade de fazer perguntas, que foram respondidas de forma clara, e que consinto livremente com o procedimento."
+
+Data: ___/___/____
+Assinatura do paciente: ________________
+Assinatura de testemunha: ________________
+Assinatura do médico: ________________ CRM: ____`,
+    notes: "Consentimento informado é obrigatório para procedimentos invasivos. Paciente pode revogar a qualquer momento. Menor de 18 anos: responsável legal assina.",
+    guideline: "CFM / Resolução 1931/2009 / Código de Ética Médica",
+  },
 ];
