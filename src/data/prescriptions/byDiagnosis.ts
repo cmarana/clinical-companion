@@ -754,4 +754,177 @@ Anticoagulação (CHA2DS2-VASc ≥2):
     warnings: "Repouso absoluto — exercício na fase aguda pode causar morte súbita. Evitar AINEs.",
     guideline: "SBC / ESC",
   },
+  {
+    id: "rx-fratura-exposta-diag",
+    title: "Fratura Exposta",
+    type: "Prescrição PS / Ortopedia",
+    prescription: `1. ABCDE (politrauma?)
+2. Analgesia: Morfina 4-6mg EV + Dipirona 1g EV
+3. SF 0,9% 1000mL EV — acesso venoso
+4. Limpeza grosseira da ferida com SF abundante
+5. Curativo estéril úmido + imobilização provisória
+6. NÃO reduzir no PS (risco vascular)
+7. ATB:
+   Gustilo I-II: Cefalotina 2g EV → 1g 6/6h
+   Gustilo III: Cefalotina + Gentamicina 5mg/kg/dia
+   Contaminação fecal/solo: + Penicilina Cristalina 4M UI 4/4h
+8. Profilaxia antitetânica (dT + SAT/IGHAT se indicado)
+9. RX (2 incidências + articulação acima e abaixo)
+10. Avaliação vascular (pulsos distais, perfusão)
+11. Centro cirúrgico em até 6h (desbridamento + fixação)`,
+    warnings: "Fratura exposta = emergência cirúrgica. ATB dentro de 1h. Limpeza + desbridamento precoce.",
+    guideline: "SBOT / ATLS",
+  },
+  {
+    id: "rx-luxacao-ombro-diag",
+    title: "Luxação de Ombro",
+    type: "Prescrição PS",
+    prescription: `1. RX ombro (AP + axilar lateral) ANTES da redução
+2. Avaliar lesão neurovascular (n. axilar → sensibilidade deltoidea)
+3. Sedação para redução:
+   Midazolam 2-5mg EV + Fentanil 50-100mcg EV
+   OU Propofol 0,5-1mg/kg EV (com monitorização)
+4. Redução (técnicas):
+   Kocher, Cunningham, tração-contratração, Stimson
+5. RX pós-redução (confirmar)
+6. Imobilização com tipoia (Velpeau) por 3-4 semanas (<30 anos) ou 1-2 semanas (>40 anos)
+7. Gelo local 20min 4/4h por 48h
+8. Dipirona 1g VO 6/6h + Cetoprofeno 100mg VO 12/12h
+9. Encaminhar ortopedia (risco de recidiva em jovens — considerar artroscopia)`,
+    notes: "Luxação anterior (95%). Recidiva: <20 anos = 80-90%, >40 anos = 10-15%.",
+    guideline: "SBOT",
+  },
+  {
+    id: "rx-sindrome-compartimental-diag",
+    title: "Síndrome Compartimental",
+    type: "Prescrição de Emergência Ortopédica",
+    prescription: `1. EMERGÊNCIA CIRÚRGICA — fasciotomia
+2. Remover TODA imobilização (gesso, tala, curativo)
+3. Membro ao nível do coração (NÃO elevar)
+4. Analgesia: Morfina 4-6mg EV (dor desproporcional)
+5. SF 0,9% 1000mL EV — hidratação (prevenir mioglobinúria)
+6. Medida de pressão compartimental se disponível (>30mmHg ou delta <30 da PAD)
+7. Fasciotomia de URGÊNCIA (até 6h — após: lesão irreversível)
+8. Monitorar: CPK, mioglobina, função renal (rabdomiólise)
+9. Alcalinização urinária: Bicarbonato 8,4% 150mL + SG 5% 850mL (pH urinário >6,5)
+10. Manter diurese >200mL/h com SF agressivo`,
+    warnings: "6Ps: Pain (desproporcional), Pressure, Paresthesia, Paralysis, Pulselessness, Pallor. Fasciotomia NÃO esperar.",
+    guideline: "SBOT / ATLS",
+  },
+  {
+    id: "rx-fascite-necrosante-diag",
+    title: "Fascite Necrosante",
+    type: "Prescrição de Emergência / Cirúrgica",
+    prescription: `1. Internação UTI
+2. Ressuscitação volêmica: SF 0,9% 30mL/kg EV
+3. ATB de amplo espectro IMEDIATO:
+   Meropenem 1g EV 8/8h + Vancomicina 15-20mg/kg EV 12/12h + Clindamicina 900mg EV 8/8h
+   (Clindamicina = antitoxina — reduz produção de toxinas)
+4. Cirurgia de EMERGÊNCIA: desbridamento extenso
+   Reavaliação cirúrgica a cada 24-48h (redesbridamento)
+5. Hemoculturas, lactato, gasometria, CPK
+6. Noradrenalina se choque
+7. Analgesia: Fentanil EV contínuo (dor intensa)
+8. Hemoderivados se necessário
+9. LRINEC score ≥6: alto risco`,
+    warnings: "Mortalidade 25-40%. Cirurgia em HORAS salva vida. ATB sozinho NÃO resolve.",
+    guideline: "IDSA / SBOT",
+  },
+  {
+    id: "rx-rabdomiolise-diag",
+    title: "Rabdomiólise",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `1. SF 0,9% agressivo: 200-300mL/h EV (alvo diurese >200-300mL/h)
+2. Bicarbonato 8,4% 150mL + SG 5% 850mL (manter pH urinário >6,5)
+3. Furosemida 40-80mg EV se oligúria (após expandir)
+4. Monitorar: CPK seriada, creatinina, K+, Ca2+, fósforo, gasometria
+5. Tratar hipercalemia agressivamente (ver protocolo)
+6. NÃO repor cálcio (exceto se sintomático ou ECG alterado — deposita no músculo)
+7. Suspender droga causadora (estatina, drogas ilícitas)
+8. Se IRA oligúrica refratária: diálise
+9. Manitol 20% 0,5g/kg EV (controverso — apenas se diurese presente)
+10. Acompanhar CPK até queda sustentada`,
+    warnings: "Hipercalemia + IRA = principal causa de morte. Hidratar MUITO (10-15L/dia pode ser necessário).",
+    guideline: "KDIGO / AMIB",
+  },
+  {
+    id: "rx-epistaxe-diag",
+    title: "Epistaxe (Sangramento Nasal)",
+    type: "Prescrição PS",
+    prescription: `ANTERIOR (90% — ponto de Kiesselbach):
+1. Posição sentada, inclinado para frente
+2. Compressão digital binasal por 15 min contínuos
+3. Se não parar: Algodão + Adrenalina 1:10.000 ou Oximetazolina nasal
+4. Cauterização com Nitrato de Prata (se ponto visível)
+5. Tamponamento anterior com Merocel ou gaze rayon
+
+POSTERIOR (grave — nasofaringe):
+6. Sonda Foley 14Fr: inserir pela narina, insuflar balão com 7-10mL H2O, tracionar
+7. OU tamponamento com balão duplo (Epistat)
+8. Internar + monitorizar SpO2
+9. ATB: Amoxicilina-Clavulanato se tamponamento >48h
+
+Todos:
+10. PA (epistaxe pode ser sintoma de crise hipertensiva)
+11. Coagulograma, hemograma, tipagem se sangramento intenso`,
+    notes: "Anticoagulados: avaliar reverter se sangramento grave. NÃO suspender sem avaliar risco.",
+    guideline: "ABORL-CCF",
+  },
+  {
+    id: "rx-glaucoma-agudo-diag",
+    title: "Glaucoma Agudo de Ângulo Fechado",
+    type: "Prescrição de Emergência Oftalmológica",
+    prescription: `1. Timolol 0,5% — 1 gota no olho afetado (repetir 1x após 30 min)
+2. Brimonidina 0,2% — 1 gota 12/12h
+3. Pilocarpina 2% — 1 gota 15/15 min por 1h → 6/6h
+   (iniciar APÓS 1h dos outros — pupila pode estar parética)
+4. Acetazolamida 500mg VO (ataque) → 250mg VO 6/6h
+5. Manitol 20% 1-2g/kg EV em 30-45 min (se PIO muito elevada)
+6. Prednisolona 1% colírio — 1 gota 6/6h (reduzir inflamação)
+7. Analgesia: Dipirona 1g EV + Ondansetrona 4mg EV (náusea frequente)
+8. Encaminhar URGENTE para oftalmologista (iridotomia a laser)
+9. Tratar olho contralateral profilaticamente (pilocarpina)`,
+    warnings: "EMERGÊNCIA oftalmológica. PIO >60 mmHg pode causar perda visual irreversível em horas.",
+    guideline: "CBO / AAO",
+  },
+  {
+    id: "rx-ssj-net-diag",
+    title: "Síndrome de Stevens-Johnson / NET",
+    type: "Prescrição UTI / Queimados",
+    prescription: `1. SUSPENDER droga causadora IMEDIAMENTE (principal medida)
+   Comuns: Alopurinol, Carbamazepina, Fenitoína, Sulfas, AINEs oxicam
+2. Internação em UTI ou unidade de queimados se >10% SCQ
+3. Acesso venoso + SF 0,9% (reposição volêmica como queimado)
+4. Analgesia: Morfina EV contínua se dor intensa
+5. Cuidados de pele: NÃO desbridar. Curativos não aderentes (tule)
+6. Olhos: avaliação oftalmológica URGENTE (sinéquias)
+   Colírio lubrificante sem conservante 1/1h
+   Dexametasona colírio 4/4h
+7. Boca: Nistatina suspensão 6/6h, higiene oral delicada
+8. SVD (monitorar diurese — desidratação)
+9. Nutrição precoce (SNG se necessário)
+10. NÃO usar corticoide sistêmico (controverso — pode piorar)
+11. SCORTEN para prognóstico
+12. Imunoglobulina EV 2g/kg em 3-5 dias (se NET grave — controverso)`,
+    warnings: "Mortalidade NET: 30-50%. Suspender a droga = medida mais importante. Tratar como queimado.",
+    guideline: "SBD / EADV",
+  },
+  {
+    id: "rx-pericardite-diag",
+    title: "Pericardite Aguda",
+    type: "Prescrição Hospitalar",
+    prescription: `1. AAS 750-1000mg VO 8/8h por 1-2 semanas (reduzir gradual)
+2. OU Ibuprofeno 600mg VO 8/8h por 1-2 semanas
+3. + Colchicina 0,5mg VO 12/12h por 3 meses (previne recorrência)
+4. Omeprazol 20mg VO 1x/dia (proteção gástrica)
+5. Repouso (evitar exercício até resolução dos sintomas + PCR normal)
+6. NÃO usar corticoide em 1ª linha (aumenta recorrência)
+7. ECG seriado (supra ST difuso côncavo = pericardite; depressão PR)
+8. Ecocardiograma (derrame? tamponamento?)
+9. Troponina (miopericardite se elevada)
+10. Hemograma, PCR/VHS (marcadores inflamatórios)
+11. Se derrame grande ou tamponamento: pericardiocentese`,
+    notes: "Tríade de Beck (tamponamento): hipotensão + turgência jugular + bulhas hipofonéticas → pericardiocentese.",
+    guideline: "SBC / ESC",
+  },
 ];

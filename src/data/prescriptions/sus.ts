@@ -325,4 +325,77 @@ MONITORAR:
 9. Peso diário se internado`,
     notes: "Regra de Holliday-Segar (manutenção): 100mL/kg (primeiros 10kg) + 50mL/kg (10-20kg) + 20mL/kg (>20kg) /dia.",
   },
+  {
+    id: "rx-sus-ortopedia",
+    title: "Imobilizações e Analgesia — UPA/PS",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `Tala gessada (sem gesso circular no PS):
+1. Algodão ortopédico + atadura gessada (tala)
+2. NÃO fazer gesso circular no PS agudo (edema → síndrome compartimental)
+3. Membro elevado + gelo
+
+Analgesia padrão ortopedia:
+4. Dipirona 1g EV 6/6h
+5. Cetoprofeno 100mg EV 12/12h (se sem CI)
+6. Tramadol 50-100mg EV 8/8h (se dor moderada/intensa)
+7. Morfina 2-4mg EV (se dor intensa — fratura de fêmur, politrauma)
+8. Diazepam 5-10mg VO (relaxante muscular — lombalgia)
+
+Disponível na UPA:
+- Tala gessada, tipoia, colar cervical, prancha
+- NÃO disponível: parafusos, placas, fixadores (transferir)`,
+    notes: "Fratura exposta, lesão vascular, luxação irredutível: TRANSFERIR para hospital com ortopedia.",
+  },
+  {
+    id: "rx-sus-psiquiatria",
+    title: "Emergência Psiquiátrica — UPA/PS",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `Agitação psicomotora:
+1. Haloperidol 5mg IM + Prometazina 50mg IM (mesma seringa)
+   Repetir após 30 min se necessário (máx 3 doses em 24h)
+2. Se disponível: Midazolam 7,5-15mg IM (ação mais rápida)
+
+Surto psicótico:
+3. Haloperidol 5mg IM → após estabilização: Risperidona 2mg VO 12/12h
+
+Intoxicação aguda (álcool):
+4. Tiamina 300mg IM (ANTES de glicose)
+5. Glicose hipertônica se glicemia baixa
+6. Hidratação: SF 0,9% 1000mL + complexo B
+
+Tentativa de suicídio:
+7. Estabilizar clinicamente (lavagem gástrica se <1h, carvão ativado)
+8. Avaliação psiquiátrica obrigatória
+9. NÃO dar alta sem avaliação psiquiátrica
+10. Internação involuntária se risco iminente (Lei 10.216)
+11. Notificação compulsória (violência autoprovocada)`,
+    warnings: "NÃO dar alta a paciente com ideação suicida sem avaliação psiquiátrica.",
+    guideline: "ABP / MS",
+  },
+  {
+    id: "rx-sus-dengue",
+    title: "Dengue — Classificação e Manejo SUS",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `GRUPO A (sem sinais de alarme, sem comorbidades):
+1. Hidratação oral 60mL/kg/dia (1/3 SRO + 2/3 líquidos caseiros)
+2. Paracetamol 750mg VO 6/6h OU Dipirona 1g VO 6/6h
+3. NÃO usar AAS ou AINEs
+4. Retorno diário até 48h após febre
+
+GRUPO B (comorbidades OU <2 anos OU >65 anos OU gestante):
+5. Hidratação oral supervisionada na UBS/UPA por 4-6h
+6. Hemograma (Ht basal)
+
+GRUPO C (sinais de alarme):
+7. SF 0,9% 20mL/kg em 2h → reavaliar
+8. Se melhora: 25mL/kg em 6h → manutenção
+9. Hemograma + Ht seriado 2/2h
+10. Internar
+
+GRUPO D (dengue grave — choque):
+11. SF 0,9% 20mL/kg em 20 min (repetir até 3x)
+12. Se refratário: albumina ou coloides
+13. UTI + monitorização`,
+    guideline: "MS / OMS 2024",
+  },
 ];

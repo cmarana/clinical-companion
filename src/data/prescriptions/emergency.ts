@@ -300,4 +300,84 @@ GRAVE (<28°C):
     warnings: 'Manobra de Heimlich para "tirar água" é INEFICAZ e PERIGOSA. NÃO fazer.',
     guideline: "SOBRASA / ILCOR",
   },
+  {
+    id: "rx-emerg-hemoptise",
+    title: "Hemoptise Maciça",
+    type: "Prescrição de Emergência",
+    prescription: `1. Posicionar em DL com lado sangrante para BAIXO (proteger pulmão são)
+2. O2 100% sob máscara
+3. 2 acessos calibrosos + tipagem sanguínea
+4. IOT se: hipoxemia grave, sangramento incontrolável (tubo 8.0+ para broncoscopia)
+   IOT seletiva no brônquio do lado SÃO se possível
+5. Ácido Tranexâmico 1g EV em 10 min
+6. SF 0,9% — ressuscitação se instável
+7. Concentrado de hemácias se Hb <7 ou choque
+8. Broncoscopia URGENTE (localizar + tamponar)
+9. AngioTC tórax (identificar artéria brônquica)
+10. Embolização arterial brônquica (tratamento definitivo na maioria)
+11. Cirurgia se: embolização falha ou sangramento maciço refratário`,
+    warnings: "Hemoptise maciça (>600mL/24h ou >100mL/h) = risco de asfixia. Via aérea é prioridade.",
+    guideline: "SBPT / BTS",
+  },
+  {
+    id: "rx-emerg-reacao-transfusional",
+    title: "Reação Transfusional Aguda",
+    type: "Prescrição de Emergência",
+    prescription: `1. PARAR a transfusão IMEDIATAMENTE
+2. Manter acesso com SF 0,9%
+3. Verificar etiqueta x pulseira do paciente
+
+Reação hemolítica aguda (calafrios, febre, dor lombar, hemoglobinúria):
+4. SF 0,9% agressivo (manter diurese >100mL/h)
+5. Furosemida 40mg EV se oligúria
+6. Adrenalina se anafilaxia
+7. Enviar amostra do paciente + bolsa ao banco de sangue
+8. Hemograma, Coombs direto, bilirrubinas, haptoglobina, LDH, DHL
+
+Reação alérgica leve (urticária):
+9. Dexclorfeniramina 5mg EV → pode reiniciar lentamente
+
+TRALI (dispneia, infiltrado bilateral, hipoxemia):
+10. Suporte ventilatório (VNI ou IOT)
+11. NÃO dar diurético (é edema NÃO cardiogênico)`,
+    warnings: "Hemólise aguda = emergência. Identificar corretamente bolsa e paciente ANTES de toda transfusão.",
+    guideline: "HEMOMINAS / AABB",
+  },
+  {
+    id: "rx-emerg-cetoacidose-alcoolica",
+    title: "Cetoacidose Alcoólica",
+    type: "Prescrição de Emergência",
+    prescription: `1. Tiamina 300mg EV ANTES da glicose (prevenir Wernicke)
+2. SG 5% 1000mL + NaCl 20% 20mL EV (corrigir desidratação + glicose)
+3. SF 0,9% — ressuscitação se hipovolêmico
+4. KCl 19,1% 10mL em cada SF/SG (repor potássio)
+5. MgSO4 2g EV em 100mL SF (hipomagnesemia é frequente)
+6. NÃO usar insulina (diferente da CAD diabética)
+7. Gasometria seriada (acidose metabólica com AG elevado)
+8. Cetonúria/cetonemia
+9. Glicemia (pode ser normal ou baixa — diferente da CAD)
+10. Hemograma, função renal, eletrólitos, amilase/lipase
+11. Dieta assim que tolerar VO`,
+    notes: "Melhora rápida com SG + tiamina. Diferente da CAD diabética: glicemia normal/baixa, sem insulina.",
+    guideline: "SBH / AMIB",
+  },
+  {
+    id: "rx-emerg-choque-anafilatico",
+    title: "Choque Anafilático — Protocolo Completo",
+    type: "Prescrição de Emergência",
+    prescription: `1. Adrenalina 1:1000 (1mg/mL) — 0,3-0,5mg IM face lateral da coxa
+   Repetir a cada 5-15 min se necessário (até 3 doses)
+2. Posição de Trendelenburg (pernas elevadas)
+3. SF 0,9% 1000-2000mL EV rápido (bolus)
+4. O2 alto fluxo 10-15L/min
+5. Se broncoespasmo: Salbutamol NBZ 10-20 gotas
+6. Hidrocortisona 200mg EV (efeito em 4-6h — prevenção bifásica)
+7. Dexclorfeniramina 5mg EV OU Ranitidina 50mg EV (adjuvantes)
+8. Se refratário: Adrenalina EV 0,1mg (1:10.000) lento + BIC
+9. IOT se edema de glotis/estridor
+10. Observação 8-24h (reação bifásica em 20%)
+11. Na alta: prescrever Adrenalina autoinjetável + plano de ação`,
+    warnings: "ADRENALINA IM é a PRIMEIRA droga. Anti-histamínico NÃO trata anafilaxia, é adjuvante.",
+    guideline: "ASBAI / WAO / EAACI",
+  },
 ];
