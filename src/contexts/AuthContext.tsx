@@ -45,7 +45,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
   const [subscription, setSubscription] = useState<SubscriptionInfo>({
-    subscribed: false,
+    subscribed: true, // Temporarily unlocked — all content accessible
     productId: null,
     subscriptionEnd: null,
     isTrial: false,
