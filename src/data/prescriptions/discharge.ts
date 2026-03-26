@@ -735,5 +735,21 @@ Bacteriana (secreção purulenta):
 8. Retorno se: piora visual, dor ocular intensa, secreção abundante após 48h de ATB`,
     guideline: "CBO / AAO",
   },
+  {
+    id: "rx-alta-queimadura-menor",
+    title: "Alta — Queimadura Menor (<10% SCQ)",
+    type: "Prescrição de Alta",
+    prescription: `1. Ibuprofeno 600mg VO 8/8h por 5 dias (com alimento)
+2. OU Dipirona 500mg VO 6/6h se dor
+3. Paracetamol 750mg VO 6/6h (alternativa/adjuvante)
+4. Sulfadiazina de prata 1% tópica: aplicar camada fina 1x/dia após limpeza com SF
+5. Curativo: gaze não aderente + gaze simples + atadura. Trocar 1x/dia
+6. Lavar a área com SF 0,9% ou água corrente limpa antes de cada troca
+7. NÃO estourar bolhas — proteger com curativo acolchoado
+8. Retorno em 48h para reavaliação
+9. Retorno imediato se: febre, secreção purulenta, piora da dor, mau cheiro
+10. Dieta hiperproteica (auxiliar cicatrização)`,
+    guideline: "SBQ / ABA",
+  },
 ];
 

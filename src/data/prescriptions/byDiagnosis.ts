@@ -2166,5 +2166,132 @@ SHU típica (pós-diarréica / E. coli O157:H7):
     notes: "Segmentos mais acometidos: posterior do lobo superior D (deitado), segmento basal posterior do lobo inferior D (de pé). Sempre avaliar disfagia.",
     guideline: "SBP / IDSA / ATS",
   },
+  {
+    id: "rx-penfigo",
+    title: "Pênfigo Vulgar / Bolhoso",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Prednisona 1-2mg/kg/dia VO (ataque)
+2. Azatioprina 2-3mg/kg/dia VO (poupador de corticoide)
+3. OU Micofenolato mofetil 1g VO 12/12h (alternativa)
+4. Cuidados com bolhas: curativo não aderente, SF 0,9% para limpeza
+5. Sulfadiazina de prata 1% tópica em áreas erosadas extensas
+6. Analgesia: Dipirona 1g EV 6/6h + Tramadol 50mg EV 8/8h se dor intensa
+7. Omeprazol 40mg VO 1x/dia (proteção gástrica pelo corticoide)
+8. Dieta hiperproteica (perda proteica pelas lesões)
+9. Hemograma, albumina, eletrólitos, glicemia (monitorar corticoide)
+10. Biópsia de pele + IFD para confirmação diagnóstica`,
+    notes: "Pênfigo vulgar: bolhas flácidas em mucosa oral → pele. Penfigoide bolhoso: bolhas tensas em pele (mais benigno). Nikolsky positivo no pênfigo vulgar.",
+    warnings: "Imunossupressão prolongada: rastrear TB latente antes de iniciar. Monitorar glicemia e PA pelo corticoide.",
+    guideline: "SBD / EADV",
+  },
+  {
+    id: "rx-grande-queimado",
+    title: "Grande Queimado — Manejo Completo",
+    type: "Prescrição em CTQ / UTI",
+    prescription: `1. ABCDE do trauma — avaliar via aérea (queimadura facial/inalação)
+2. IOT precoce se: rouquidão, estridor, queimadura de face/pescoço, inalação
+3. Reposição volêmica (Parkland): RL 4mL × peso × %SCQ
+   - 50% nas primeiras 8h (contar a partir da queimadura), 50% nas 16h seguintes
+4. Alvo diurese: 0,5-1 mL/kg/h (adulto), 1-2 mL/kg/h (criança)
+5. SVD — débito urinário horário
+6. Analgesia multimodal: Morfina 2-4mg EV titulada + Dipirona 1g EV 6/6h + Cetamina 0,2mg/kg EV (subdissociativa)
+7. Profilaxia antitetânica (dT + SAT se necessário)
+8. Curativo: Sulfadiazina de prata 1% tópico ou curativo biológico
+9. Omeprazol 40mg EV 1x/dia (profilaxia úlcera de Curling se >20% SCQ)
+10. Enoxaparina 40mg SC 1x/dia (profilaxia TVP)
+11. Nutrição enteral precoce: dieta hiperproteica hipercalórica (Curreri: 25kcal/kg + 40kcal/%SCQ)
+12. Ceftriaxona 1g EV 12/12h se sinais de infecção (NÃO usar ATB profilático)
+13. Escarotomia se queimadura circunferencial com comprometimento vascular`,
+    notes: "Classificação: Grande queimado = >20% SCQ adulto, >10% criança, >5% idoso, ou qualquer queimadura de via aérea, face, mãos, pés, períneo, articulações.",
+    warnings: "NÃO usar gelo. NÃO estourar bolhas. NÃO usar ATB tópico com prata em face. Queimadura elétrica: ECG + CPK + monitorização 24h.",
+    guideline: "SBQ / ABA / ISBI",
+  },
+  {
+    id: "rx-dermatite-contato",
+    title: "Dermatite de Contato Grave",
+    type: "Prescrição no PS",
+    prescription: `1. Prednisona 0,5-1mg/kg/dia VO por 7-14 dias (desmame gradual)
+2. Hidroxizine 25mg VO 8/8h (prurido)
+3. OU Dexclorfeniramina 2mg VO 8/8h
+4. Compressas de permanganato de potássio 1:40.000 (se exsudato)
+5. Corticoide tópico potente: Clobetasol 0,05% creme 2x/dia (corpo) por 7 dias
+6. Hidratante emoliente após corticoide tópico
+7. Se infecção secundária: Cefalexina 500mg VO 6/6h por 7 dias
+8. Afastar agente causal`,
+    notes: "Causa mais comum: níquel, cosméticos, látex, plantas. Patch test para identificação do alérgeno.",
+    guideline: "SBD / EADV",
+  },
+  {
+    id: "rx-priapismo",
+    title: "Priapismo Isquêmico",
+    type: "Prescrição de Emergência",
+    prescription: `1. Analgesia: Morfina 2-4mg EV + Dipirona 1g EV
+2. Aspiração de sangue do corpo cavernoso com agulha 16-18G (butterfly)
+3. Injeção intracavernosa de Fenilefrina:
+   - Diluir 1mg em 9mL SF (100mcg/mL)
+   - Injetar 200-500mcg a cada 5-10 min (máx 1mg total)
+4. Monitorar PA e FC durante injeção (risco de HAS/bradicardia)
+5. Se falha após 1h: shunt cirúrgico (Winter/Al-Ghorab)
+6. Gasometria do aspirado cavernoso: pO2 <30, pCO2 >60 = isquêmico
+7. Hemograma + reticulócitos (afastar anemia falciforme)
+8. Se falciforme: hidratação EV + O2 + transfusão simples/exsanguíneo`,
+    notes: "Emergência urológica: >4h de ereção dolorosa → isquemia → fibrose → impotência. Priapismo de alto fluxo (pós-trauma): não é emergência, conduta expectante.",
+    warnings: "NÃO usar adrenalina intracavernosa (necrose). Fenilefrina é o alfa-agonista de escolha. Monitorar PA.",
+    guideline: "SBU / AUA / EAU",
+  },
+  {
+    id: "rx-torcao-testicular",
+    title: "Torção Testicular",
+    type: "Prescrição de Emergência",
+    prescription: `1. Analgesia: Cetoprofeno 100mg EV + Dipirona 1g EV
+2. Tentativa de detorção manual: "abrir o livro" (rotação lateral-medial)
+   - Se alívio da dor → sucesso, mas AINDA precisa de cirurgia
+3. USG Doppler testicular (se disponível e sem atrasar cirurgia)
+4. ENCAMINHAR PARA CIRURGIA DE EMERGÊNCIA
+   - Exploração escrotal + orquidopexia bilateral
+   - Janela: <6h = 90-100% salvamento; >12h = risco alto de perda
+5. Jejum
+6. Acesso venoso + SF 0,9% 500mL EV
+7. Ondansetrona 4mg EV se náusea
+8. Hemograma, coagulograma (pré-operatório)`,
+    notes: "Pico bimodal: neonatos e adolescentes 12-18 anos. Sinal de Prehn negativo (elevação do testículo NÃO alivia dor). Reflexo cremastérico geralmente ausente.",
+    warnings: "NÃO atrasar cirurgia por exames de imagem. Cada hora conta. Janela ideal <6h.",
+    guideline: "SBU / AUA / EAU",
+  },
+  {
+    id: "rx-retencao-urinaria",
+    title: "Retenção Urinária Aguda",
+    type: "Prescrição no PS",
+    prescription: `1. Cateterismo vesical de alívio (sonda Foley 14-18Fr)
+2. Esvaziar lentamente (máx 500mL por vez — risco de hematúria ex vacuo)
+3. Se não conseguir sondar: sonda de Coudé ou cistostomia suprapúbica
+4. Tamsulosina 0,4mg VO 1x/dia (relaxa colo vesical)
+5. Finasterida 5mg VO 1x/dia (se HPB — efeito em semanas)
+6. Dipirona 1g EV 6/6h se dor
+7. USG de vias urinárias (avaliar volume residual, HPB, cálculos)
+8. PSA, creatinina, EAS
+9. Encaminhar para urologia se recorrente`,
+    notes: "Causas comuns: HPB, medicamentos (anticolinérgicos, opioides, descongestionantes), cálculo, coágulo, estenose uretral.",
+    warnings: "Esvaziar >500mL de uma vez pode causar hematúria ex vacuo e hipotensão vasovagal. Esvaziar de forma fracionada.",
+    guideline: "SBU / EAU",
+  },
+  {
+    id: "rx-celulite-orbitaria",
+    title: "Celulite Orbitária",
+    type: "Prescrição Hospitalar",
+    prescription: `1. TC de órbitas e seios da face com contraste
+2. Ceftriaxona 2g EV 12/12h + Metronidazol 500mg EV 8/8h
+3. OU Ampicilina-Sulbactam 3g EV 6/6h
+4. Dexametasona 0,15mg/kg EV 6/6h (reduzir edema)
+5. Avaliação oftalmológica URGENTE (acuidade visual, motilidade, pupila)
+6. Avaliação ORL (drenagem de sinusite se foco)
+7. Dipirona 1g EV 6/6h
+8. Hemograma, PCR, hemocultura
+9. Internação obrigatória
+10. Cirurgia se: abscesso subperiosteal, piora visual, não responde a ATB 48h`,
+    notes: "Diferenciar de celulite pré-septal (pálpebra apenas, sem proptose). Celulite orbitária: proptose, dor à movimentação, déficit visual = EMERGÊNCIA.",
+    warnings: "Risco de trombose de seio cavernoso, meningite, abscesso cerebral. NÃO atrasar TC e ATB EV.",
+    guideline: "CBO / AAO / IDSA",
+  },
 ];
 

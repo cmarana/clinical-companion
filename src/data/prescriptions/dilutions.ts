@@ -1144,5 +1144,81 @@ CUIDADOS:
 - Cilastatina bloqueia metabolismo renal do imipenem`,
     guideline: "ANVISA / SBI / IDSA",
   },
+  {
+    id: "rx-dil-ertapenem",
+    title: "Ertapenem — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `Apresentação: Frasco-ampola 1g pó liofilizado
+
+Reconstituição:
+- Diluir 1g em 10mL de água destilada ou SF 0,9%
+- Agitar até dissolução completa
+
+Diluição EV:
+- Transferir para SF 0,9% 50mL
+- Infundir em 30 minutos
+
+Dose: 1g EV 1x/dia
+Dose pediátrica (3m-12a): 15mg/kg EV 12/12h (máx 1g/dia)
+
+Estabilidade:
+- Após reconstituição: usar em até 1h em temperatura ambiente
+- Diluído em SF: até 6h em TA ou 24h refrigerado`,
+    notes: "NÃO diluir em Ringer Lactato (incompatível). Carbapenêmico com espectro mais estreito — NÃO cobre Pseudomonas e Acinetobacter.",
+    warnings: "Incompatível com soluções contendo dextrose (SG). Usar APENAS SF 0,9% ou água destilada.",
+    guideline: "ANVISA / Merck",
+  },
+  {
+    id: "rx-dil-linezolida",
+    title: "Linezolida — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `Apresentação: Bolsa pronta 600mg/300mL (2mg/mL)
+
+Administração EV:
+- Solução pronta para uso — NÃO precisa diluir
+- Infundir em 30-120 minutos
+- Dose: 600mg EV 12/12h
+
+Administração VO:
+- Linezolida 600mg VO 12/12h (biodisponibilidade ~100%)
+- Pode trocar EV→VO quando tolerando dieta
+
+Estabilidade:
+- Bolsa íntegra: conforme fabricante
+- Após abertura: usar imediatamente
+
+Interações importantes:
+- IMAO: evitar tiramina (queijo, vinho, embutidos)
+- Serotonina: risco de síndrome serotoninérgica com ISRS/IRSN`,
+    notes: "Oxazolidinona: cobre MRSA, VRE, Enterococcus resistente. Biodisponibilidade oral = EV, preferir VO quando possível. Monitorar plaquetas semanalmente (trombocitopenia dose-dependente).",
+    warnings: "Uso >14 dias: risco de neuropatia óptica e periférica, acidose lática, trombocitopenia. Hemograma semanal obrigatório.",
+    guideline: "ANVISA / Pfizer / IDSA",
+  },
+  {
+    id: "rx-dil-teicoplanina",
+    title: "Teicoplanina — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `Apresentação: Frasco-ampola 200mg ou 400mg pó liofilizado + diluente
+
+Reconstituição:
+- 200mg: adicionar 3mL de água destilada (diluente fornecido)
+- 400mg: adicionar 3mL de água destilada
+- Agitar SUAVEMENTE (não espumar) até dissolução completa
+
+Administração EV:
+- Pode ser feita em bolus direto (lento, 3-5 min) OU
+- Diluir em SF 0,9% ou SG 5% 100mL e infundir em 30 min
+
+Administração IM: pode ser administrada IM (boa alternativa)
+
+Dose de ataque: 6mg/kg EV 12/12h por 3 doses (loading)
+Manutenção: 6mg/kg EV 1x/dia (infecções graves: 12mg/kg)
+
+Estabilidade:
+- Reconstituída: 24h em TA ou 48h refrigerada`,
+    notes: "Glicopeptídeo alternativo à Vancomicina: menos nefrotóxico, pode ser dado IM, sem necessidade de monitorar nível sérico de rotina (embora recomendado em infecções graves: vale >15).",
+    warnings: "Loading dose é ESSENCIAL — sem ela, níveis terapêuticos só após 3-4 dias. NÃO pular doses de ataque.",
+    guideline: "ANVISA / SBI / IDSA",
+  },
 ];
 
