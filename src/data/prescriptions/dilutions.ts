@@ -1033,5 +1033,116 @@ CUIDADOS:
 - Risco de convulsão (menor que imipenem)`,
     guideline: "ANVISA / SBI / IDSA",
   },
+  {
+    id: "rx-dil-cefepime",
+    title: "Cefepime — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO PADRÃO:
+Cefepime 2g + AD 10mL (reconstituição) → diluir em SF 0,9% ou SG 5% 100mL
+Infundir em 30 minutos
+
+DOSE: 2g EV 8/8h (infecção grave) ou 12/12h (moderada)
+Ajuste renal: ClCr 30-50: 2g 12/12h | ClCr 10-30: 2g 24/24h
+
+INFUSÃO ESTENDIDA (4h):
+Cefepime 2g + SF 0,9% 100-250mL — infundir em 4h (otimiza PK/PD)
+
+CUIDADOS:
+- Compatível com SF 0,9% e SG 5%
+- Estável por 24h refrigerado após reconstituição
+- Risco de neurotoxicidade em DRC (confusão, convulsão, mioclonia)
+- Monitorar função renal diariamente`,
+    guideline: "ANVISA / SBI / IDSA",
+  },
+  {
+    id: "rx-dil-polimixina-b",
+    title: "Polimixina B — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO:
+Polimixina B 500.000 UI + SF 0,9% 300-500mL
+Infundir em 60-90 minutos
+
+DOSE: 15.000-25.000 UI/kg/dia dividido em 12/12h
+Dose ataque: 25.000 UI/kg no D1 (dose única)
+NÃO ajustar para função renal (excreção não renal)
+
+CUIDADOS:
+- Nefrotóxica — monitorar creatinina diariamente
+- Neurotóxica — parestesias faciais são comuns (avisar paciente)
+- Infusão lenta para minimizar bloqueio neuromuscular
+- NÃO usar com outros nefrotóxicos se possível
+- Reservar para Gram-negativos MDR (KPC, Acinetobacter pan-R)`,
+    warnings: "Polimixina B: droga de último recurso. Nefrotoxicidade em 20-60% dos pacientes. Monitorar diurese e creatinina rigorosamente.",
+    guideline: "ANVISA / SBI / IDSA",
+  },
+  {
+    id: "rx-dil-anfotericina-b",
+    title: "Anfotericina B — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `ANFOTERICINA B DESOXICOLATO (convencional):
+Reconstituir 50mg + AD 10mL → diluir em SG 5% 500mL
+Concentração: NÃO exceder 0,1mg/mL
+Infundir em 4-6 horas
+DOSE: 0,5-1,5mg/kg/dia (iniciar baixa, escalonar)
+Dose teste: 1mg em 30 min (observar reação)
+
+ANFOTERICINA B LIPOSSOMAL:
+Reconstituir com AD — diluir em SG 5%
+Infundir em 2 horas
+DOSE: 3-5mg/kg/dia
+
+PRÉ-MEDICAÇÃO (convencional):
+- Dipirona 1g EV 30 min antes
+- SF 0,9% 500mL EV antes e após (nefoproteção)
+- Hidrocortisona 50mg EV (se reação infusional prévia)
+
+CUIDADOS:
+- NUNCA diluir em SF (precipita!)
+- Monitorar K+, Mg2+, Creatinina diariamente
+- Repor K+ e Mg2+ conforme necessidade
+- Nefrotoxicidade é dose-cumulativa`,
+    warnings: "Anfotericina convencional: nefrotóxica grave. Preferir lipossomal se disponível. NÃO usar SF para diluição — apenas SG 5%.",
+    guideline: "ANVISA / SBI / IDSA",
+  },
+  {
+    id: "rx-dil-ciprofloxacino-ev",
+    title: "Ciprofloxacino EV — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO:
+Ciprofloxacino 400mg/200mL (solução pronta) — não necessita diluição adicional
+Infundir em 60 minutos (LENTO — risco de cristalúria e flebite)
+
+DOSE: 400mg EV 12/12h (infecções graves) ou 8/8h (muito graves)
+Ajuste renal: ClCr <30: 200-400mg 12/12h
+
+CUIDADOS:
+- Infusão LENTA (mínimo 60 min) — reduz flebite
+- Hidratação adequada (prevenir cristalúria)
+- Fotossensibilidade — orientar proteção solar
+- Prolonga QTc — ECG se uso concomitante de outros que prolongam QT
+- Risco de tendinopatia (especialmente idosos e uso de corticóide)
+- Interação com teofilina, warfarina, antiácidos`,
+    guideline: "ANVISA / SBI",
+  },
+  {
+    id: "rx-dil-imipenem",
+    title: "Imipenem/Cilastatina — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO:
+Imipenem 500mg + SF 0,9% ou SG 5% 100mL
+Infundir em 30-60 minutos (doses ≤500mg) ou 40-60 min (doses >500mg)
+
+DOSE: 500mg EV 6/6h (infecção grave) ou 1g EV 8/8h (muito grave)
+Ajuste renal: ClCr 30-70: 500mg 8/8h | ClCr <30: 500mg 12/12h
+Dose máxima: 4g/dia ou 50mg/kg/dia
+
+CUIDADOS:
+- Risco de CONVULSÃO (maior que meropenem) — cuidado em DRC e idosos
+- Infusão rápida aumenta risco de náusea/vômito
+- NÃO diluir <5mg/mL (instável)
+- Estável por 4h em TA após reconstituição
+- Cilastatina bloqueia metabolismo renal do imipenem`,
+    guideline: "ANVISA / SBI / IDSA",
+  },
 ];
 
