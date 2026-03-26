@@ -98,6 +98,15 @@ import { traumaFullProtocols4 } from "./trauma4";
 import { proceduresFullProtocols3 } from "./procedures3";
 import { otherEmergenciesFullProtocols4 } from "./otherEmergencies4";
 
+// Batch 5
+import { cardioFullProtocols7 } from "./cardiology7";
+import { obstetricsFullProtocols5 } from "./obstetrics5";
+import { respiratoryFullProtocols5 } from "./respiratory5";
+import { proceduresFullProtocols4 } from "./procedures4";
+import { dermatologyFullProtocols4 } from "./dermatology4";
+import { pediatricFullProtocols3 } from "./pediatric3";
+import { gynecologyFullProtocols3 } from "./gynecology3";
+
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
   { id: "cardiology", title: "Cardiologia", order: 2 },
@@ -223,6 +232,15 @@ export const fullProtocols: FullProtocol[] = [
   ...traumaFullProtocols4,
   ...proceduresFullProtocols3,
   ...otherEmergenciesFullProtocols4,
+
+  // Batch 5 — new protocols
+  ...cardioFullProtocols7,
+  ...obstetricsFullProtocols5,
+  ...respiratoryFullProtocols5,
+  ...proceduresFullProtocols4,
+  ...dermatologyFullProtocols4,
+  ...pediatricFullProtocols3,
+  ...gynecologyFullProtocols3,
 ];
 
 export function getFullProtocol(id: string) {
