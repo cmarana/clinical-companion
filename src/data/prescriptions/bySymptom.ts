@@ -175,4 +175,67 @@ Investigar se >4 semanas:
     notes: "VPPB: Manobra de Epley é o tratamento. Medicação é sintomática.",
     guideline: "SBO / ABN",
   },
+  {
+    id: "rx-sint-dor-toracica",
+    title: "Dor Torácica",
+    type: "Prescrição Sintomática",
+    prescription: `Avaliação imediata:
+1. ECG 12 derivações em até 10 min
+2. Troponina + CK-MB
+3. RX tórax
+4. Monitorização contínua
+5. AAS 200mg VO (mastigar) se suspeita de SCA
+6. Nitroglicerina SL (se PA >100 e sem CI)
+7. Morfina 2-4mg EV se dor refratária
+8. O2 se SpO2 <94%
+9. Diagnósticos diferenciais: IAM, TEP, dissecção, pneumotórax, pericardite`,
+    warnings: "Dor torácica + instabilidade = sala vermelha. NÃO dar alta sem excluir SCA.",
+  },
+  {
+    id: "rx-sint-soluço",
+    title: "Soluço Persistente",
+    type: "Prescrição Sintomática",
+    prescription: `1. Manobras vagais: Valsalva, água gelada, susto
+2. Metoclopramida 10mg EV 8/8h
+3. OU Clorpromazina 25mg EV/IM (se refratário)
+4. OU Baclofeno 5-10mg VO 8/8h
+5. Gabapentina 300mg VO 8/8h (se crônico)
+6. Omeprazol 40mg EV (se origem gástrica)
+7. Investigar causa se >48h: RX tórax, TC crânio, função renal`,
+    notes: "Soluço >48h = investigar SNC, diafragma, mediastino, metabólico.",
+  },
+  {
+    id: "rx-sint-prurido",
+    title: "Prurido",
+    type: "Prescrição Sintomática",
+    prescription: `Agudo/alérgico:
+1. Difenidramina 50mg EV (ou Hidroxizina 25mg VO)
+2. Dexametasona 4mg EV (se componente inflamatório)
+3. Compressas frias
+4. Loratadina 10mg VO 1x/dia (manutenção)
+
+Por opioides:
+5. Naloxona em dose baixa (0,25-0,5mcg/kg/h)
+6. OU Ondansetrona 4mg EV
+
+Urêmico/colestático:
+7. Colestiramina 4g VO (colestase)
+8. Gabapentina 100-300mg (urêmico)`,
+  },
+  {
+    id: "rx-sint-edema",
+    title: "Edema / Retenção Hídrica",
+    type: "Prescrição Sintomática",
+    prescription: `1. Avaliar causa: IC, DRC, síndrome nefrótica, hepática, medicamentosa
+2. Restrição hídrica 800-1000mL/dia
+3. Restrição de sódio (<2g/dia)
+4. Furosemida 40mg EV (ajustar conforme resposta)
+5. OU Furosemida 40mg VO 1x/dia (ambulatorial)
+6. Espironolactona 25mg VO 1x/dia (se IC ou ascite)
+7. Controle de peso diário
+8. Balanço hídrico
+9. Eletrólitos: Na+, K+, Mg2+, creatinina
+10. Albumina sérica (hipoalbuminemia = edema refratário)`,
+    notes: "Edema + dispneia = considerar IC ou síndrome nefrótica. ECO + BNP.",
+  },
 ];

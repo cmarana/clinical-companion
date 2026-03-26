@@ -111,4 +111,36 @@ ANTIBIÓTICOS:
     notes: "Sempre calcular doses por kg. RN prematuro: ajustar doses e intervalos.",
     guideline: "SBP / Neonatologia",
   },
+  {
+    id: "rx-neo-desconforto-resp",
+    title: "Desconforto Respiratório Neonatal",
+    type: "Prescrição Neonatal",
+    prescription: `1. O2 suplementar para SpO2 alvo (prematuro: 90-95%, termo: >95%)
+2. CPAP nasal: 5-7 cmH2O (1ª linha para prematuro)
+3. Surfactante (Survanta 4mL/kg) via traqueal se: FiO2 >40% em CPAP, PMH confirmada
+4. IOT se: apneia frequente, FiO2 >60%, acidose respiratória grave
+5. Gasometria arterial seriada
+6. Acesso venoso + GIG (glicose + eletrólitos)
+7. Dieta zero inicialmente → leite materno por sonda quando estável
+8. RX tórax (padrão reticulogranular = PMH)
+9. Hemograma + PCR (excluir sepse)`,
+    notes: "PMH (Doença da Membrana Hialina): mais comum em prematuros <34 sem. Surfactante é o tratamento.",
+    guideline: "SBP / Neonatologia",
+  },
+  {
+    id: "rx-neo-apneia",
+    title: "Apneia da Prematuridade",
+    type: "Prescrição Neonatal",
+    prescription: `1. Monitorização cardiorrespiratória contínua
+2. Estimulação tátil (1ª medida se apneia)
+3. CPAP nasal 4-6 cmH2O (reduz frequência de apneias)
+4. Cafeína citrato:
+   - Ataque: 20mg/kg EV/VO
+   - Manutenção: 5-10mg/kg/dia 1x/dia
+5. Aminofilina (alternativa): 5mg/kg ataque → 2mg/kg 8/8h
+6. Excluir causas secundárias: sepse, hipoglicemia, hipotermia, anemia
+7. IOT + VM se apneias frequentes refratárias`,
+    notes: "Cafeína é a droga de escolha. Pode ser mantida até 34-36 semanas de IG corrigida.",
+    guideline: "SBP / Neonatologia",
+  },
 ];
