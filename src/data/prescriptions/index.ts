@@ -10,6 +10,7 @@ import { antibioticsByFocusItems } from "./antibioticsByFocus";
 import { dischargeItems } from "./discharge";
 import { dilutionItems } from "./dilutions";
 import { standardModelItems } from "./standardModels";
+import { obstetricsItems } from "./obstetrics";
 
 export type { PrescriptionItem, PrescriptionCategory };
 
@@ -25,6 +26,12 @@ export const prescriptionCategories: PrescriptionCategory[] = [
     title: "Prescrição de Emergência (Rápida)",
     icon: "zap",
     items: emergencyItems,
+  },
+  {
+    id: "obstetrics",
+    title: "Obstetrícia e Ginecologia",
+    icon: "heart-pulse",
+    items: obstetricsItems,
   },
   {
     id: "sus",
