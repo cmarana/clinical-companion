@@ -117,7 +117,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             setTimeout(() => checkSubscription(), 0);
           }
         } else {
-          setSubscription({ subscribed: false, productId: null, subscriptionEnd: null, isTrial: false, trialDaysLeft: 0 });
+          // Temporarily keep everything unlocked even without auth
+          setSubscription({ subscribed: true, productId: null, subscriptionEnd: null, isTrial: false, trialDaysLeft: 0 });
         }
       }
     );
@@ -146,7 +147,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await supabase.auth.signOut();
     setUser(null);
     setSession(null);
-    setSubscription({ subscribed: false, productId: null, subscriptionEnd: null, isTrial: false, trialDaysLeft: 0 });
+    setSubscription({ subscribed: true, productId: null, subscriptionEnd: null, isTrial: false, trialDaysLeft: 0 });
   };
 
   return (
