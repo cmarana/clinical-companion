@@ -281,4 +281,53 @@ CONTRACEPÇÃO DE EMERGÊNCIA:
     warnings: "NÃO exigir Boletim de Ocorrência. Notificação compulsória é obrigatória pelo profissional de saúde.",
     guideline: "MS / Protocolo Nacional 2023",
   },
+  {
+    id: "rx-obst-itu-gestante",
+    title: "ITU na Gestante",
+    type: "Prescrição Obstétrica",
+    prescription: `Bacteriúria assintomática (TRATAR na gestação):
+1. Cefalexina 500mg VO 6/6h por 7 dias (1ª escolha)
+2. OU Amoxicilina 500mg VO 8/8h por 7 dias
+3. OU Nitrofurantoína 100mg VO 6/6h por 7 dias (evitar >36 sem e no 1º tri)
+
+Cistite:
+4. Mesmo esquema acima
+
+Pielonefrite (INTERNAR):
+5. Ceftriaxona 1g EV 12/12h por 10-14 dias
+6. SF 0,9% — hidratação
+7. Dipirona 1g EV 6/6h se febre
+8. Urocultura + hemocultura
+9. Monitorização fetal (BCF)
+10. Após melhora: transição VO e completar 14 dias
+
+11. Urocultura de controle 1-2 semanas após tratamento
+12. Considerar profilaxia: Nitrofurantoína 100mg VO à noite até o parto (se recorrência)`,
+    notes: "Bacteriúria assintomática: tratar SEMPRE na gestação (risco de pielonefrite e parto prematuro).",
+    guideline: "FEBRASGO / MS",
+  },
+  {
+    id: "rx-obst-diabetes-gestacional",
+    title: "Diabetes Gestacional — Manejo",
+    type: "Prescrição Obstétrica",
+    prescription: `Diagnóstico (TOTG 75g):
+Jejum ≥92, 1h ≥180, 2h ≥153 (1 valor alterado = DMG)
+
+Medidas iniciais (2 semanas):
+1. Dieta fracionada (6 refeições) + exercício 30min/dia
+2. Glicemia capilar 4 pontos: jejum (<95), 1h pós-refeição (<140), 2h pós (<120)
+
+Se metas não atingidas:
+3. Insulina NPH 0,3-0,5UI/kg/dia SC
+   Iniciar: 10UI à noite (se jejum alta) OU manhã/almoço (se pós-prandial alta)
+4. Insulina Regular pré-refeição se pós-prandial não controlada
+5. Titular a cada 3-5 dias
+
+6. Metformina: alternativa se recusa/indisponibilidade de insulina (850mg 12/12h)
+7. USG mensal (crescimento fetal, ILA)
+8. Perfil biofísico fetal semanal após 32 semanas
+9. Programar parto: 39-40 sem (DMG dieta) ou 37-39 sem (DMG insulina)
+10. Pós-parto: suspender insulina + TOTG 6-12 semanas após`,
+    guideline: "FEBRASGO / SBD / ADA",
+  },
 ];

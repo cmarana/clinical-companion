@@ -300,4 +300,69 @@ Neonatal (<1 mês):
     warnings: "NÃO atrasar ATB para fazer punção lombar. Se instável: ATB primeiro, PL depois.",
     guideline: "SBI / IDSA 2017",
   },
+  {
+    id: "rx-atb-osteomielite",
+    title: "Antibiótico — Osteomielite",
+    type: "Antibiótico por Foco",
+    prescription: `Empírico adulto:
+1. Oxacilina 2g EV 4/4h por 4-6 semanas
+2. Se MRSA: Vancomicina 15-20mg/kg EV 12/12h
+3. Se pé diabético: Piperacilina-Tazobactam 4,5g EV 6/6h OU Meropenem 1g 8/8h (polimicrobiano)
+4. Transição EV→VO: após 2-3 semanas se boa resposta
+   Ciprofloxacino 750mg VO 12/12h + Rifampicina 300mg VO 12/12h (Staphylococcus)
+
+Pediátrico:
+5. Oxacilina 200mg/kg/dia EV 6/6h
+6. Se <5 anos: + Ceftriaxona (Kingella kingae)
+
+7. Hemocultura (positiva em 50%)
+8. Biópsia óssea se possível (padrão-ouro)
+9. PCR/VHS seriados (marcadores de resposta)
+10. RMN (exame de imagem de escolha)`,
+    notes: "Duração: aguda 4-6 semanas. Crônica: 6-8 semanas + desbridamento cirúrgico.",
+    guideline: "SBOT / IDSA",
+  },
+  {
+    id: "rx-atb-peritonite-pbep",
+    title: "Antibiótico — PBE (Peritonite Bacteriana Espontânea)",
+    type: "Antibiótico por Foco",
+    prescription: `Diagnóstico: PMN >250/mm³ no líquido ascítico
+
+1. Ceftriaxona 2g EV 1x/dia por 5-7 dias (1ª escolha)
+2. OU Cefotaxima 2g EV 8/8h
+3. Albumina:
+   D1: 1,5g/kg EV
+   D3: 1g/kg EV
+   (reduz mortalidade e SHR — OBRIGATÓRIA)
+4. Paracentese de controle em 48h (queda >25% de PMN = resposta)
+5. Se falha: ampliar para Meropenem 1g EV 8/8h
+
+Profilaxia (quem já teve PBE):
+6. Norfloxacino 400mg VO 1x/dia indefinidamente
+7. OU Ciprofloxacino 500mg VO 1x/semana
+8. OU Sulfametoxazol-Trimetoprim 800/160mg VO 1x/dia`,
+    warnings: "Albumina na PBE SALVA VIDA. Não esquecer. Mortalidade sem albumina: 30% vs 10% com.",
+    guideline: "SBG / EASL / AASLD",
+  },
+  {
+    id: "rx-atb-itu-cateter",
+    title: "Antibiótico — ITU Associada a Cateter",
+    type: "Antibiótico por Foco",
+    prescription: `1. Trocar a sonda vesical ANTES de iniciar ATB (reduz falha)
+2. Se possível: remover a sonda (melhor opção)
+
+Empírico leve/moderada:
+3. Ciprofloxacino 400mg EV 12/12h OU 500mg VO 12/12h
+4. OU Ceftriaxona 1g EV 1x/dia
+
+Empírico grave/sepse:
+5. Piperacilina-Tazobactam 4,5g EV 6/6h
+6. OU Meropenem 1g EV 8/8h (se risco de ESBL)
+7. + Vancomicina se risco de Enterococcus
+
+8. Urocultura + hemocultura ANTES do ATB
+9. Duração: 7-10 dias (5 dias se remoção rápida do cateter e boa resposta)
+10. NÃO tratar bacteriúria assintomática (exceto pré-operatório urológico)`,
+    guideline: "SBI / IDSA 2010",
+  },
 ];

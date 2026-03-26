@@ -569,4 +569,94 @@ Osmolaridade sérica (manter <320)`,
     warnings: "Correção rápida de Na+ causa MIELINÓLISE PONTINA (síndrome de desmielinização osmótica). Máx 8-10 mEq/24h.",
     guideline: "KDIGO / SBN",
   },
+  {
+    id: "rx-dil-fenilefrina",
+    title: "Fenilefrina — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `AMPOLA: Fenilefrina 10mg/mL — 1mL
+
+BOLUS (hipotensão aguda — IOT, raquianestesia):
+100-200mcg EV (diluir 1 ampola em 100mL SF → 100mcg/mL)
+Dar 1-2mL EV lento
+
+INFUSÃO CONTÍNUA:
+Fenilefrina 10mg (1 ampola) + SF 0,9% 250mL = 40mcg/mL
+Dose: 0,5-5 mcg/kg/min
+Ex (70kg, 1mcg/kg/min): 70mcg/min = 105mL/h
+
+USO: vasopressor α1 puro (sem efeito β)
+Indicações: hipotensão com taquicardia, raquianestesia, FA com RVR`,
+    notes: "α1 puro — aumenta PA sem aumentar FC. Útil quando taquicardia é problema.",
+    warnings: "Bradicardia reflexa. Cuidado em coronariopatas (aumento da pós-carga).",
+  },
+  {
+    id: "rx-dil-metilprednisolona",
+    title: "Metilprednisolona — Pulsoterapia",
+    type: "Diluição e Preparo",
+    prescription: `APRESENTAÇÃO: Metilprednisolona 500mg ou 1g — pó liofilizado
+
+PULSOTERAPIA (LES, vasculite, rejeição, mielite):
+1g EV em 250mL SF 0,9% — infundir em 1-3h
+Dose: 1g/dia por 3 dias consecutivos
+OU 500mg/dia por 3-5 dias
+
+ASMA GRAVE / DPOC:
+Metilprednisolona 60-125mg EV 6/6h
+
+CHOQUE REFRATÁRIO (controverso):
+Hidrocortisona 50mg EV 6/6h (preferida ao invés de metilprednisolona)
+
+PREPARO:
+Reconstituir com diluente próprio → diluir em SF 0,9% 100-250mL
+Infundir em 30-60 min (pulsoterapia em 1-3h)`,
+    warnings: "Pulsoterapia: monitorar PA e FC durante infusão. Risco de arritmia se infusão rápida. Hiperglicemia.",
+  },
+  {
+    id: "rx-dil-octreotida",
+    title: "Octreotida — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `AMPOLA: Octreotida 0,1mg/mL (100mcg/mL) — 1mL
+
+HDA VARICOSA:
+Bolus: 50mcg EV (0,5mL)
+Manutenção: 50mcg/h em BIC por 3-5 dias
+Diluição: 600mcg (6 ampolas) + SF 0,9% 250mL = ~2,3mcg/mL
+Velocidade: ~21mL/h
+
+FÍSTULA PANCREÁTICA / INTESTINAL:
+100-250mcg SC 8/8h
+
+HIPOGLICEMIA POR SULFONILURÉIA:
+50mcg SC 6/6h (refratária à glicose)
+
+SÍNDROME CARCINOIDE:
+100-600mcg/dia SC divididos 8/8h`,
+    notes: "Alternativa à Terlipressina na HDA varicosa (mais disponível que Terlipressina em algumas unidades).",
+    guideline: "SBG / AASLD",
+  },
+  {
+    id: "rx-dil-albumina",
+    title: "Albumina — Indicações e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `APRESENTAÇÃO: Albumina Humana 20% — frasco 50mL (10g)
+
+PERITONITE BACTERIANA ESPONTÂNEA (PBE):
+D1: 1,5g/kg EV
+D3: 1g/kg EV
+
+PARACENTESE DE GRANDE VOLUME (>5L):
+6-8g de Albumina para cada litro retirado acima de 5L
+Ex: retirou 8L → repor 6-8g × 3 = 18-24g = ~2 frascos
+
+SÍNDROME HEPATORRENAL:
+Albumina 20-40g/dia EV + Terlipressina
+
+GRANDE QUEIMADO:
+Após 24h de Parkland: Albumina 0,3-0,5mL/kg/%SCQ
+
+INFUNDIR puro (não diluir) — via EV em 2-4h
+Ou diluir em SF 0,9% se necessário`,
+    warnings: "NÃO usar albumina como expansor volêmico de rotina. Indicações específicas.",
+    guideline: "EASL / SBG",
+  },
 ];
