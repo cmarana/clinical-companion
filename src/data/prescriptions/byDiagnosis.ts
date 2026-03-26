@@ -1925,5 +1925,246 @@ Se NÃO reduzir ou sinais de estrangulamento:
 13. Diálise se: hipercalemia refratária, EAP, uremia sintomática`,
     guideline: "SBN / KDIGO / SBP",
   },
+  {
+    id: "rx-osteomielite-diag",
+    title: "Osteomielite Aguda",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Oxacilina 2g EV 4/4h (S. aureus provável)
+2. OU Cefazolina 2g EV 8/8h
+3. Se MRSA: Vancomicina 15-20mg/kg EV 12/12h
+4. Dipirona 1g EV 6/6h se dor/febre
+5. Enoxaparina 40mg SC 1x/dia (profilaxia TVP)
+6. Imobilização do membro afetado
+7. Hemograma, PCR, VHS, hemocultura 2 pares
+8. RX local + RNM (padrão-ouro)
+9. Cultura óssea (biópsia se possível)
+10. Avaliar desbridamento cirúrgico se abscesso
+11. Tempo total ATB: 4-6 semanas (guiado por cultura)`,
+    guideline: "IDSA / SBI",
+  },
+  {
+    id: "rx-artrite-septica-diag",
+    title: "Artrite Séptica",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Oxacilina 2g EV 4/4h (empírico — S. aureus)
+2. OU Vancomicina 15-20mg/kg EV 12/12h se risco MRSA
+3. Artrocentese diagnóstica e terapêutica URGENTE
+4. Análise líquido sinovial: celularidade, Gram, cultura
+5. Hemocultura 2 pares
+6. Hemograma, PCR, VHS, ácido úrico
+7. Dipirona 1g EV 6/6h
+8. Imobilização articular
+9. Avaliação Ortopedia para drenagem/lavagem cirúrgica
+10. ATB guiado por cultura — duração 2-4 semanas`,
+    warnings: "Artrite séptica é emergência ortopédica — drenagem precoce reduz sequelas. Gonococo: considerar Ceftriaxona 1g EV/dia.",
+    guideline: "IDSA / SBR",
+  },
+  {
+    id: "rx-abscesso-periamigdaliano-diag",
+    title: "Abscesso Periamigdaliano",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. Amoxicilina-Clavulanato 1g EV 8/8h OU Clindamicina 600mg EV 8/8h
+2. Dipirona 1g EV 6/6h
+3. Dexametasona 8mg EV dose única
+4. Punção aspirativa ou drenagem pelo ORL
+5. Hidratação EV se disfagia intensa
+6. Ondansetrona 4mg EV se náusea
+7. Dieta líquida/pastosa conforme tolerância
+8. Hemograma, PCR
+9. Se abscesso >3cm ou recorrente: amigdalectomia a quente ou diferida`,
+    guideline: "ABORL / AAO-HNS",
+  },
+  {
+    id: "rx-empiema-pleural-diag",
+    title: "Empiema Pleural",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Drenagem torácica em selo d'água (OBRIGATÓRIA)
+2. Ceftriaxona 2g EV 1x/dia + Clindamicina 600mg EV 8/8h (empírico)
+3. OU Piperacilina-Tazobactam 4,5g EV 6/6h (se nosocomial)
+4. Análise líquido pleural: pH, DHL, proteínas, Gram, cultura, celularidade
+5. Dipirona 1g EV 6/6h
+6. Enoxaparina 40mg SC 1x/dia
+7. Fisioterapia respiratória precoce
+8. TC tórax com contraste
+9. Se loculado: considerar fibrinolítico intrapleural (Alteplase + DNAse)
+10. Avaliação Cirurgia Torácica se não resolve em 48-72h`,
+    guideline: "BTS / SBPT / IDSA",
+  },
+  {
+    id: "rx-civd-diag",
+    title: "CIVD — Coagulação Intravascular Disseminada",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `1. Tratar CAUSA BASE (sepse, trauma, obstetrícia, neoplasia)
+2. Se sangramento ativo:
+   - Plasma fresco congelado 10-15mL/kg EV
+   - Crioprecipitado 1U/5kg se Fibrinogênio <100
+   - Concentrado de plaquetas se <50.000 com sangramento
+3. Se trombose predominante:
+   - Heparina não fracionada 10-15UI/kg/h (sem bolus)
+4. Hemograma, TP/INR, TTPa, Fibrinogênio, D-dímero, Esfregaço (esquizócitos)
+5. Monitorar coagulograma a cada 6-12h
+6. Ácido tranexâmico 1g EV (se hiperfibrinólise)
+7. Vitamina K 10mg EV lento (se INR prolongado)`,
+    warnings: "CIVD NÃO é diagnóstico — é complicação. Sempre buscar e tratar causa base. Escore ISTH >5 = CIVD manifesta.",
+    guideline: "ISTH / ABHH",
+  },
+  {
+    id: "rx-chikungunya-diag",
+    title: "Chikungunya",
+    type: "Prescrição Ambulatorial / Hospitalar",
+    prescription: `Fase aguda (febre + poliartralgia):
+1. Paracetamol 750mg VO 6/6h (1ª escolha)
+2. Dipirona 500mg VO 6/6h (alternativa)
+3. Hidratação oral abundante 60mL/kg/dia
+4. Repouso
+5. NÃO usar AAS nem AINEs na fase aguda (risco de sangramento)
+
+Fase subaguda/crônica (artralgia persistente >14 dias):
+6. Prednisona 0,5mg/kg/dia VO por 5 dias (desmame)
+7. OU Hidroxicloroquina 400mg/dia VO (se >3 meses)
+8. AINEs podem ser usados NA FASE CRÔNICA
+9. Fisioterapia`,
+    notes: "Diferente da Dengue: artralgia intensa bilateral é a marca. Não tem risco de choque hemorrágico.",
+    guideline: "MS / OPAS / SVS",
+  },
+  {
+    id: "rx-febre-reumatica-diag",
+    title: "Febre Reumática Aguda",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Penicilina Benzatina 1.200.000 UI IM dose única (erradicação do estreptococo)
+2. AAS 80-100mg/kg/dia VO dividido em 4 doses (artrite)
+3. OU Naproxeno 15mg/kg/dia (alternativa ao AAS)
+4. Se cardite moderada/grave: Prednisona 1-2mg/kg/dia VO (máx 80mg/dia)
+5. Se coreia: Haloperidol 1mg VO 12/12h OU Ácido valproico
+6. Repouso relativo até normalização de VHS/PCR
+7. Ecocardiograma (avaliar valvopatia)
+8. Hemograma, VHS, PCR, ASLO, cultura orofaringe
+9. ECG (avaliar bloqueio PR)
+10. Profilaxia secundária: Penicilina Benzatina 1.200.000 UI IM a cada 21 dias`,
+    notes: "Profilaxia por 5 anos ou até 21 anos (sem cardite) / 10 anos ou até 25 anos (com cardite sem sequela) / Toda vida (com sequela valvar).",
+    guideline: "SBC / AHA / Jones 2015",
+  },
+  {
+    id: "rx-ptt-shu-diag",
+    title: "PTT / SHU — Microangiopatia Trombótica",
+    type: "Prescrição UTI",
+    prescription: `PTT (Púrpura Trombocitopênica Trombótica):
+1. Plasmaférese URGENTE (1-1,5 volemias/dia) — mortalidade sem tto >90%
+2. Metilprednisolona 1g EV por 3 dias → Prednisona 1mg/kg/dia
+3. NÃO transfundir plaquetas (piora trombose microvascular)
+4. Rituximabe 375mg/m² semanal (se refratária)
+5. ADAMTS13 + anticorpo anti-ADAMTS13
+
+SHU típica (pós-diarréica / E. coli O157:H7):
+6. Suporte: hidratação EV, controle de PA
+7. NÃO usar antibióticos (aumenta liberação de toxina Shiga)
+8. Diálise se IRA oligúrica
+9. Transfusão de hemácias se Hb <7
+10. Monitorar: esquizócitos, DHL, bilirrubina indireta, haptoglobina`,
+    warnings: "NUNCA transfundir plaquetas na PTT — 'joga gasolina no incêndio'. Plasmaférese é tratamento de emergência.",
+    guideline: "ABHH / ISTH / ASH",
+  },
+  {
+    id: "rx-mediastinite-diag",
+    title: "Mediastinite",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `1. Piperacilina-Tazobactam 4,5g EV 6/6h + Vancomicina 15-20mg/kg EV 12/12h
+2. OU Meropenem 1g EV 8/8h + Vancomicina (se pós-esternotomia)
+3. Drenagem cirúrgica URGENTE (cervicotomia/toracotomia)
+4. TC tórax/pescoço com contraste
+5. Hemocultura + cultura de secreção
+6. Hemograma, PCR, procalcitonina, lactato
+7. SF 0,9% — ressuscitação volêmica agressiva
+8. Noradrenalina se choque
+9. Dipirona 1g EV 6/6h
+10. IOT precoce se comprometimento de via aérea`,
+    warnings: "Mortalidade 20-40%. Causa mais comum: perfuração esofágica (Boerhaave) ou pós-cirurgia cardíaca. Cirurgia NÃO pode esperar.",
+    guideline: "SBC / ESTS / IDSA",
+  },
+  {
+    id: "rx-sindrome-anticol-diag",
+    title: "Síndrome Anticolinérgica",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. ABC — proteção de via aérea se rebaixamento
+2. Fisostigmina 1-2mg EV lento em 5 min (antídoto — se disponível)
+   - Repetir 1mg a cada 15-30 min se necessário
+3. Diazepam 5-10mg EV se agitação/convulsão
+4. SF 0,9% 1000mL EV — hidratação
+5. Controle de temperatura: resfriamento externo se hipertermia
+6. SVD se retenção urinária
+7. Monitorização contínua (ECG — risco de arritmia)
+8. Carvão ativado 1g/kg se ingestão <2h
+9. NÃO usar Haloperidol (efeito anticolinérgico sinérgico)`,
+    notes: "Mnemônico: 'quente como lebre, seco como osso, vermelho como beterraba, cego como morcego, louco como chapeleiro'. Causas: anti-histamínicos, tricíclicos, atropina, Atropa belladonna.",
+    guideline: "AACT / ABRACIT",
+  },
+  {
+    id: "rx-espondilodiscite-diag",
+    title: "Espondilodiscite",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Oxacilina 2g EV 4/4h (empírico — S. aureus)
+2. OU Vancomicina 15-20mg/kg EV 12/12h se risco MRSA
+3. Imobilização (colete/órtese)
+4. Dipirona 1g EV 6/6h + Tramadol 100mg EV 8/8h
+5. RNM de coluna (padrão-ouro)
+6. Hemocultura 2 pares (positiva em 50-70%)
+7. PCR, VHS (seguimento)
+8. Biópsia guiada por TC se hemocultura negativa
+9. ATB por 6-8 semanas (mínimo)
+10. Avaliação Neurocirurgia se abscesso epidural / déficit neurológico`,
+    guideline: "IDSA / SBCM",
+  },
+  {
+    id: "rx-chagas-agudo-diag",
+    title: "Doença de Chagas Aguda",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Benznidazol 5mg/kg/dia VO dividido em 2-3 doses por 60 dias
+2. Hemograma semanal (risco de leucopenia)
+3. Função hepática basal e quinzenal
+4. Dipirona 500mg VO 6/6h se febre
+5. Se miocardite: repouso absoluto, monitorização cardíaca
+6. Furosemida 40mg VO se IC
+7. Amiodarona se arritmia
+8. Pesquisa direta (gota espessa, Strout) + sorologia
+9. Ecocardiograma
+10. Notificação compulsória IMEDIATA`,
+    notes: "Forma aguda: febre, hepatoesplenomegalia, sinal de Romaña (edema palpebral). Transmissão: vetorial, oral (açaí contaminado), transfusional.",
+    guideline: "MS / Consenso Brasileiro de Chagas 2015",
+  },
+  {
+    id: "rx-zika-diag",
+    title: "Zika Vírus",
+    type: "Prescrição Ambulatorial",
+    prescription: `1. Paracetamol 750mg VO 6/6h se febre/dor
+2. Dipirona 500mg VO 6/6h (alternativa)
+3. Loratadina 10mg VO 1x/dia (se prurido)
+4. Hidratação oral abundante
+5. Repouso
+6. NÃO usar AAS nem AINEs (diagnóstico diferencial com Dengue)
+7. Pesquisa Dengue/Chikungunya (diagnóstico diferencial)
+8. Orientar sobre proteção contra mosquitos
+9. Se gestante: acompanhamento USG mensal (microcefalia)
+10. Notificação compulsória (gestantes e síndrome neurológica)`,
+    warnings: "Gestantes: risco de microcefalia fetal. Orientar evitar gravidez por 6 meses após infecção (homem — Zika no sêmen).",
+    guideline: "MS / OMS / SVS",
+  },
+  {
+    id: "rx-pneumonia-aspirativa-diag",
+    title: "Pneumonia Aspirativa",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Clindamicina 600mg EV 8/8h + Ceftriaxona 2g EV 1x/dia
+2. OU Amoxicilina-Clavulanato 1g EV 8/8h (monoterapia)
+3. OU Piperacilina-Tazobactam 4,5g EV 6/6h (grave/nosocomial)
+4. Dieta zero até avaliação fonoaudiológica
+5. Cabeceira 30-45°
+6. SF 0,9% 1000mL EV
+7. Dipirona 1g EV 6/6h se febre
+8. Enoxaparina 40mg SC 1x/dia
+9. Aspiração de secreções se necessário
+10. RX tórax (infiltrado em segmentos dependentes)
+11. Hemograma, PCR, gasometria`,
+    notes: "Segmentos mais acometidos: posterior do lobo superior D (deitado), segmento basal posterior do lobo inferior D (de pé). Sempre avaliar disfagia.",
+    guideline: "SBP / IDSA / ATS",
+  },
 ];
 

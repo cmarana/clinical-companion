@@ -603,4 +603,68 @@ DESMOPRESSINA (DDAVP):
 0,3mcg/kg EV em 30 min (hemofilia A leve, von Willebrand tipo 1, uremia)`,
     guideline: "ABHH / ISTH / SBC",
   },
+  {
+    id: "rx-classe-antipsicoticos",
+    title: "Antipsicóticos — Guia Rápido",
+    type: "Por Classe de Medicamento",
+    prescription: `TÍPICOS (1ª geração):
+- Haloperidol 5mg IM/EV (agitação aguda) — máx 20mg/dia
+- Clorpromazina 25-50mg IM (sedação intensa)
+- Levomepromazina 25mg VO/IM (sedação + analgesia)
+
+ATÍPICOS (2ª geração):
+- Olanzapina 10mg IM (agitação — NÃO associar com BZD IM)
+- Risperidona 2mg VO (manutenção)
+- Quetiapina 25-100mg VO (insônia/agitação leve)
+
+CUIDADOS:
+- Haloperidol EV: monitorar QTc (risco de Torsade de Pointes)
+- Síndrome neuroléptica maligna: rigidez + hipertermia + rabdomiólise
+- Acatisia: pode confundir com piora da agitação
+- Distonia aguda: Prometazina 50mg IM ou Biperideno 2mg IM`,
+    guideline: "ABP / APA",
+  },
+  {
+    id: "rx-classe-antivirais",
+    title: "Antivirais — Guia Rápido",
+    type: "Por Classe de Medicamento",
+    prescription: `HERPES/VARICELA:
+- Aciclovir 200mg VO 5x/dia (herpes simples) ou 800mg VO 5x/dia (zoster)
+- Aciclovir 10mg/kg EV 8/8h (encefalite herpética, varicela grave)
+- Valaciclovir 1000mg VO 8/8h (zoster) — melhor biodisponibilidade oral
+
+INFLUENZA:
+- Oseltamivir 75mg VO 12/12h por 5 dias (iniciar <48h do início)
+- Dose dobrada (150mg 12/12h) se paciente grave em UTI
+
+HIV (PEP — profilaxia pós-exposição):
+- Tenofovir 300mg + Lamivudina 300mg + Dolutegravir 50mg — 1x/dia por 28 dias
+- Iniciar em até 72h da exposição
+
+COVID-19 (alto risco):
+- Nirmatrelvir/Ritonavir (se disponível) — iniciar <5 dias
+- Dexametasona 6mg/dia por 10 dias (se O2-dependente)`,
+    guideline: "MS / SBI / IDSA / OMS",
+  },
+  {
+    id: "rx-classe-imunossupressores",
+    title: "Imunossupressores — Guia no PS",
+    type: "Por Classe de Medicamento",
+    prescription: `CORTICOIDES EM ALTAS DOSES:
+- Metilprednisolona 1g/dia EV por 3-5 dias (pulsoterapia — LES, vasculite, transplante)
+- Prednisona 1-2mg/kg/dia VO (indução)
+
+CUIDADOS NA EMERGÊNCIA com paciente IMUNOSSUPRIMIDO:
+1. Limiar baixo para ATB empírico (febre = infecção até prova contrária)
+2. Coletar culturas ANTES do ATB
+3. Pesquisar infecções oportunistas: CMV, PCP, TB, fungos
+4. NÃO suspender imunossupressão sem consultar especialista
+5. Dose de estresse de corticóide se uso crônico (Hidrocortisona 100mg EV)
+
+DROGAS COMUNS (informativo):
+- Azatioprina, Micofenolato, Ciclosporina, Tacrolimus, Metotrexato
+- Verificar interações medicamentosas antes de prescrever ATB/antifúngico`,
+    notes: "Paciente imunossuprimido febril: tratar como neutropenia febril até resultado de hemograma.",
+    guideline: "SBR / SBN / ABT / IDSA",
+  },
 ];

@@ -660,5 +660,80 @@ Bacteriana (secreção purulenta):
 10. Retorno PS se: febre alta, edema periorbitário, cefaleia intensa, alteração visual`,
     guideline: "ABORL / AAO-HNS",
   },
+  {
+    id: "rx-alta-abscesso-drenado",
+    title: "Alta — Abscesso Drenado",
+    type: "Prescrição de Alta",
+    prescription: `1. Cefalexina 500mg — 1cp VO 6/6h por 7-10 dias
+2. OU Amoxicilina-Clavulanato 875mg — 1cp VO 12/12h por 7 dias
+3. Dipirona 500mg — 1cp VO 6/6h se dor
+4. Ibuprofeno 600mg — 1cp VO 8/8h por 3 dias (se dor/edema)
+5. Curativo diário com SF 0,9%: lavar a cavidade, tamponar com gaze
+6. Manter dreno (se houver) — orientar cuidados
+7. Retorno em 48h para reavaliação do curativo
+8. Retorno PS se: febre, aumento de dor, secreção purulenta, vermelhidão progressiva`,
+    guideline: "IDSA / SBI",
+  },
+  {
+    id: "rx-alta-faringoamigdalite",
+    title: "Alta — Faringoamigdalite",
+    type: "Prescrição de Alta",
+    prescription: `1. Amoxicilina 500mg — 1cp VO 8/8h por 10 dias (estreptocócica)
+2. OU Penicilina Benzatina 1.200.000 UI IM dose única (alternativa)
+3. Paracetamol 750mg — 1cp VO 6/6h se dor/febre
+4. Ibuprofeno 400mg — 1cp VO 8/8h por 3 dias (dor intensa)
+5. Orientar gargarejo com água morna e sal
+6. Hidratação oral e dieta pastosa
+7. Repouso por 48-72h
+8. Retorno se: piora após 48h de ATB, trismo, abaulamento de palato, disfagia com sialorreia`,
+    notes: "Se alergia a penicilina: Azitromicina 500mg VO 1x/dia por 3 dias.",
+    guideline: "ABORL / SBI",
+  },
+  {
+    id: "rx-alta-hernia-disco",
+    title: "Alta — Lombalgia / Hérnia de Disco",
+    type: "Prescrição de Alta",
+    prescription: `1. Cetoprofeno 100mg — 1cp VO 12/12h por 5-7 dias (com protetor gástrico)
+2. Omeprazol 20mg — 1cp VO em jejum
+3. Ciclobenzaprina 5mg — 1cp VO à noite (relaxante muscular)
+4. OU Tizanidina 2mg — 1cp VO 8/8h
+5. Dipirona 500mg — 1cp VO 6/6h se dor
+6. Se dor intensa: Tramadol 50mg — 1cp VO 8/8h por 5 dias
+7. Compressa quente local 20 min 3x/dia
+8. Orientar atividade gradual (NÃO repouso absoluto)
+9. Encaminhar Fisioterapia
+10. Retorno se: piora progressiva, fraqueza em MMII, perda de controle esfincteriano (Síndrome da Cauda Equina — PS URGENTE)`,
+    warnings: "Red flags: déficit motor, anestesia em sela, incontinência urinária/fecal = RNM urgente + avaliação neurocirúrgica.",
+    guideline: "SBR / ACP / NICE",
+  },
+  {
+    id: "rx-alta-crise-ansiosa",
+    title: "Alta — Crise Ansiosa / Pânico",
+    type: "Prescrição de Alta",
+    prescription: `1. Orientar que não é 'doença orgânica grave' — psicoeducação sobre ansiedade
+2. Diazepam 5mg — 1cp VO 12/12h por 3-5 dias (SOS) — receita B1
+3. OU Alprazolam 0,5mg — 1cp VO 12/12h por 5 dias (SOS) — receita B1
+4. Encaminhar Psiquiatria / Psicologia ambulatorial
+5. Orientar técnicas de respiração (4-7-8)
+6. Evitar cafeína, álcool, estimulantes
+7. Atividade física regular
+8. Retorno PS se: dor torácica atípica, dispneia súbita, ideação suicida`,
+    notes: "BZD é ponte — NUNCA manter sem acompanhamento psiquiátrico. Investigar organicidade na primeira crise.",
+    guideline: "ABP / APA / NICE",
+  },
+  {
+    id: "rx-alta-conjuntivite-bacteriana",
+    title: "Alta — Conjuntivite Bacteriana",
+    type: "Prescrição de Alta",
+    prescription: `1. Ciprofloxacino colírio 0,3% — 1 gota no olho afetado 4/4h por 7 dias
+2. OU Moxifloxacino colírio 0,5% — 1 gota 8/8h por 7 dias
+3. Compressas frias com SF 0,9% — 3-4x/dia
+4. Higiene das mãos rigorosa (altamente contagiosa)
+5. Trocar fronhas e toalhas diariamente
+6. Evitar coçar os olhos
+7. Paracetamol 750mg — 1cp VO 6/6h se dor
+8. Retorno se: piora visual, dor ocular intensa, secreção abundante após 48h de ATB`,
+    guideline: "CBO / AAO",
+  },
 ];
 

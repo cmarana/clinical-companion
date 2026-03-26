@@ -822,5 +822,94 @@ Ataque maciço (>20 picadas adulto / >5 criança):
     warnings: "Envenenamento maciço por abelhas: hemólise + rabdomiólise + CIVD + IRA. Diferente de anafilaxia.",
     guideline: "MS / CEVAP / SVS",
   },
+  {
+    id: "rx-emerg-edema-glote",
+    title: "Edema de Glote / Obstrução de Via Aérea",
+    type: "Prescrição de Emergência",
+    prescription: `1. Adrenalina 0,3-0,5mg IM (1:1000) — IMEDIATA
+2. Adrenalina nebulização: 3-5mL puro via nebulizador
+3. Dexametasona 10mg EV
+4. O2 suplementar alto fluxo (10-15L/min)
+5. Preparar material para IOT difícil
+6. Cricotireoidostomia de emergência se IOT impossível
+7. Salbutamol 10 gotas neb se broncoespasmo associado
+8. Hidrocortisona 200mg EV
+9. Difenidramina 50mg EV
+10. Monitorização contínua SpO2, FR, FC`,
+    warnings: "Via aérea difícil — chamar anestesiologista. Se edema completo: crico é salvadora. NÃO perder tempo com múltiplas tentativas de IOT.",
+    guideline: "AHA / ASBAI / DAS",
+  },
+  {
+    id: "rx-emerg-pneumoperitonio",
+    title: "Pneumoperitônio / Perfuração de Víscera Oca",
+    type: "Prescrição de Emergência",
+    prescription: `1. Dieta ZERO absoluta
+2. SNG aberta em frasco
+3. SF 0,9% 1000mL EV em bolus (ressuscitação)
+4. Ceftriaxona 2g EV + Metronidazol 500mg EV
+5. OU Piperacilina-Tazobactam 4,5g EV 6/6h
+6. Dipirona 1g EV + Tramadol 100mg EV
+7. Omeprazol 40mg EV
+8. SVD — controle de diurese
+9. Avaliação Cirurgia Geral URGENTE (laparotomia)
+10. RX tórax em ortostase (pneumoperitônio)
+11. TC abdome se estável
+12. Reserva de hemoderivados`,
+    warnings: "Pneumoperitônio em RX = cirurgia. Exceção rara: pneumoperitônio pós-procedimento recente. Não atrasar cirurgia.",
+    guideline: "EAST / CBC / ACS",
+  },
+  {
+    id: "rx-emerg-hemorragia-varicosa",
+    title: "Hemorragia Varicosa Esofágica",
+    type: "Prescrição de Emergência",
+    prescription: `1. Ressuscitação: 2 acessos calibrosos, cristalóide
+2. Terlipressina 2mg EV bolus → 1mg EV 4/4h por 5 dias
+3. OU Octreotida 50mcg EV bolus → 50mcg/h BIC
+4. Ceftriaxona 1g EV 1x/dia (profilaxia PBE — REDUZ mortalidade)
+5. Omeprazol 80mg EV bolus → 8mg/h BIC
+6. EDA em até 12h (ligadura elástica)
+7. Se sangramento maciço: Balão de Sengstaken-Blakemore (ponte para EDA)
+8. Tipagem + reserva 4 UCH
+9. Transfundir se Hb <7 (alvo 7-9)
+10. Lactulose 30mL VO 8/8h (profilaxia encefalopatia)
+11. Evitar sedação excessiva`,
+    warnings: "NÃO hiperhidratar — PA alvo ~100mmHg. Excesso de volume piora sangramento varicoso. Mortalidade por episódio ~20%.",
+    guideline: "Baveno VII / SBG / EASL",
+  },
+  {
+    id: "rx-emerg-embolia-pulmonar-subm",
+    title: "TEP Submassivo — Disfunção de VD",
+    type: "Prescrição de Emergência",
+    prescription: `1. Heparina não fracionada: 80UI/kg bolus → 18UI/kg/h BIC
+2. OU Enoxaparina 1mg/kg SC 12/12h
+3. SF 0,9% 250mL EV (cuidado: NÃO hiper-hidratar — piora VD)
+4. Noradrenalina se hipotensão (0,1mcg/kg/min)
+5. O2 suplementar (alvo SpO2 >92%)
+6. Dobutamina 5mcg/kg/min se disfunção de VD sem hipotensão
+7. AngioTC de tórax (confirmatório)
+8. Ecocardiograma à beira-leito (sinais de sobrecarga de VD)
+9. Troponina + BNP (estratificação PESI)
+10. Se deterioração → trombólise sistêmica (Alteplase 100mg EV 2h)
+11. UTI obrigatória
+12. Avaliar filtro de VCI se contraindicação a anticoagulação`,
+    notes: "TEP submassivo = normotenso + disfunção VD + troponina elevada. Monitorar de perto — pode evoluir para maciço.",
+    guideline: "ESC / SBC / CHEST",
+  },
+  {
+    id: "rx-emerg-taquicardia-svt",
+    title: "Taquicardia Supraventricular (TSV)",
+    type: "Prescrição de Emergência",
+    prescription: `1. Manobra vagal: Valsalva modificado (soprar seringa 10mL por 15s + deitar com pernas elevadas)
+2. Se não reverte: Adenosina 6mg EV bolus rápido + flush de SF (antecubital)
+3. Se não reverte: Adenosina 12mg EV bolus rápido
+4. Se refratária: Verapamil 5mg EV em 2 min (se PA estável e sem IC)
+5. OU Diltiazem 0,25mg/kg EV em 2 min
+6. Se instável (hipotensão, dor torácica, IC): Cardioversão sincronizada 50-100J
+7. ECG de 12 derivações (durante e após conversão)
+8. Monitorização contínua
+9. Após conversão: encaminhar para Holter e EEF`,
+    warnings: "Adenosina: avisar paciente que vai sentir 'aperto no peito' e 'pausa' transitória. Contraindicada em asmáticos graves. NÃO dar Verapamil se suspeita de WPW (FA pré-excitada).",
+    guideline: "AHA / SBC / ESC",
+  },
 ];
 

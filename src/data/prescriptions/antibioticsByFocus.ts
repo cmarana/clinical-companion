@@ -520,4 +520,46 @@ Otite externa:
 10. NÃO usar aminoglicosídeos tópicos se perfuração timpânica`,
     guideline: "ABORL / AAO-HNS / IDSA",
   },
+  {
+    id: "rx-atb-empiema",
+    title: "Antibiótico — Empiema Pleural",
+    type: "Antibiótico por Foco",
+    prescription: `Comunitário:
+1. Ceftriaxona 2g EV 1x/dia + Clindamicina 600mg EV 8/8h
+2. OU Amoxicilina-Clavulanato 1g EV 8/8h
+
+Nosocomial:
+3. Piperacilina-Tazobactam 4,5g EV 6/6h
+4. OU Meropenem 1g EV 8/8h + Vancomicina 15-20mg/kg EV 12/12h
+
+IMPORTANTE:
+5. Drenagem torácica é o PRINCIPAL tratamento — ATB sozinho NÃO resolve
+6. Tempo de ATB: 2-6 semanas (guiado por melhora clínica/laboratorial)
+7. Se loculado: fibrinolítico intrapleural (Alteplase 10mg + DNAse 5mg 2x/dia por 3 dias)`,
+    guideline: "BTS / SBPT / IDSA",
+  },
+  {
+    id: "rx-atb-mordedura",
+    title: "Antibiótico — Mordedura Animal/Humana",
+    type: "Antibiótico por Foco",
+    prescription: `Profilaxia (mordedura <24h, sem sinais de infecção):
+1. Amoxicilina-Clavulanato 875mg VO 12/12h por 5 dias
+2. Se alergia: Clindamicina 300mg VO 8/8h + Ciprofloxacino 500mg VO 12/12h
+
+Infecção estabelecida:
+3. Amoxicilina-Clavulanato 1g EV 8/8h (leve/moderada)
+4. OU Piperacilina-Tazobactam 4,5g EV 6/6h (grave)
+5. OU Ampicilina-Sulbactam 3g EV 6/6h
+
+MORDEDURA HUMANA (maior risco de infecção):
+6. Sempre profilaxia ATB
+7. Pesquisar HIV, Hepatite B e C do agressor (se possível)
+
+TODOS:
+8. Profilaxia antitetânica (dT/dTpa conforme cartão)
+9. Profilaxia antirrábica conforme protocolo MS (cão/gato observável x desconhecido)
+10. Lavar ferida exaustivamente com SF e PVPI
+11. NÃO suturar mordedura de gato ou mordedura com >6h`,
+    guideline: "IDSA / MS / SVS",
+  },
 ];
