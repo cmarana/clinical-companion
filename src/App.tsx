@@ -13,8 +13,6 @@ import { lazy, Suspense } from "react";
 const Home = lazy(() => import("@/pages/Home"));
 const Protocols = lazy(() => import("@/pages/Protocols"));
 const ProtocolDetail = lazy(() => import("@/pages/ProtocolDetail"));
-const Medications = lazy(() => import("@/pages/Medications"));
-const MedicationDetail = lazy(() => import("@/pages/MedicationDetail"));
 const Calculators = lazy(() => import("@/pages/Calculators"));
 const Quiz = lazy(() => import("@/pages/Quiz"));
 const SearchPage = lazy(() => import("@/pages/SearchPage"));
@@ -63,8 +61,8 @@ const AppRoutes = () => (
         <Route path="/" element={<Home />} />
         <Route path="/protocols" element={<Navigate to="/full-protocols" replace />} />
         <Route path="/protocols/:id" element={<ProtocolDetail />} />
-        <Route path="/medications" element={<Medications />} />
-        <Route path="/medications/:id" element={<MedicationDetail />} />
+        <Route path="/medications" element={<Navigate to="/bulario" replace />} />
+        <Route path="/medications/:id" element={<Navigate to="/bulario" replace />} />
         <Route path="/calculators" element={<Calculators />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/search" element={<SearchPage />} />

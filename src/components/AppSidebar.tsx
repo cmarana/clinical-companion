@@ -20,7 +20,6 @@ const clinicalItems = [
   { title: "Modo Plantão", url: "/duty", icon: AlertTriangle },
   { title: "Emergência / UTI", url: "/emergency", icon: Zap },
   { title: "Protocolos", url: "/full-protocols", icon: BookOpen },
-  { title: "Medicações", url: "/medications", icon: Pill },
   { title: "Bulário", url: "/bulario", icon: Pill },
   { title: "Prescrições", url: "/prescriptions", icon: ClipboardList },
   { title: "Calculadoras", url: "/calculators", icon: Calculator },
