@@ -175,4 +175,66 @@ MONITORIZAÇÃO:
     notes: "Critérios de Beers: lista de medicamentos potencialmente inapropriados para idosos. Sempre consultar.",
     guideline: "AGS Beers Criteria",
   },
+  {
+    id: "rx-modelo-politrauma",
+    title: "Modelo — Paciente Politraumatizado",
+    type: "Prescrição Padrão",
+    prescription: `1. ABCDE do trauma — estabilizar
+2. 2 acessos calibrosos (jelco 14-16G) + SF 0,9% ou RL em bolus
+3. Tipagem + reserva de concentrado de hemácias
+4. Ácido tranexâmico 1g EV em 10 min (se <3h do trauma)
+5. Dipirona 1g EV 6/6h + Tramadol 100mg EV 8/8h
+6. Omeprazol 40mg EV 1x/dia
+7. Profilaxia antitetânica (dT se necessário)
+8. Cefazolina 1g EV 8/8h (se fratura exposta)
+9. SVD (avaliar hematúria)
+10. Imobilização de fraturas
+11. TC crânio + cervical + tórax + abdome (politrauma)
+12. FAST à beira do leito
+13. Monitorização contínua
+14. Reavaliar a cada 15-30 min
+15. Comunicar cirurgia se abdome agudo / FAST +`,
+    guideline: "ATLS / SBAIT",
+  },
+  {
+    id: "rx-modelo-gestante",
+    title: "Modelo — Paciente Gestante (PS Obstétrico)",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta _____ (livre / leve / zero)
+2. SF 0,9% ou RL — manter acesso
+3. Decúbito lateral esquerdo (>20 sem — evitar compressão aortocava)
+4. Monitorização materna: PA, FC, SpO2 4/4h
+5. BCF (batimentos cardiofetais) ___/___h
+6. Cardiotocografia se ≥26 semanas
+7. Analgesia: Dipirona 1g EV 6/6h OU Paracetamol 750mg VO (1ª escolha)
+8. Antiemético: Dimenidrinato 50mg EV 8/8h (categoria B)
+9. ATB se necessário: Cefalosporinas (1ª escolha na gestação)
+10. EVITAR: AINEs (3º trim), Quinolonas, Tetraciclinas, IECA/BRA
+11. Betametasona 12mg IM 2 doses (24/24h) se risco de parto prematuro 24-34 sem
+12. Sulfato de magnésio se pré-eclâmpsia grave / eclâmpsia
+13. Exames: hemograma, tipagem, EAS, glicemia, função renal
+14. Avaliação obstétrica`,
+    guideline: "FEBRASGO / MS",
+  },
+  {
+    id: "rx-modelo-psiquiatrico",
+    title: "Modelo — Paciente Psiquiátrico no PS",
+    type: "Prescrição Padrão",
+    prescription: `1. Avaliação de risco: auto/heteroagressividade, ideação suicida
+2. Contenção verbal (de-escalação) — SEMPRE primeira abordagem
+3. Se agitação com risco:
+   Haloperidol 5mg IM + Midazolam 5mg IM
+   OU Haloperidol 5mg IM + Prometazina 50mg IM
+4. Monitorar: PA, FC, SpO2, nível de consciência
+5. Glicemia capilar (excluir hipoglicemia)
+6. Excluir causas orgânicas: intoxicação, TCE, infecção, metabólico
+7. Contenção mecânica apenas se risco iminente (protocolo institucional)
+8. Reavaliar a cada 30 min
+9. ECG se uso de Haloperidol EV (QTc)
+10. Avaliação psiquiátrica
+11. Se ideação suicida ativa: internação involuntária conforme Lei 10.216
+12. Comunicar familiar/responsável`,
+    notes: "Sempre excluir causa orgânica antes de atribuir a quadro psiquiátrico primário.",
+    guideline: "ABP / CFM",
+  },
 ];

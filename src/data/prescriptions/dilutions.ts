@@ -342,4 +342,89 @@ Protamina 1mg para cada 100UI de Heparina (nas últimas 2h)`,
     warnings: "Monitorar TTPa e plaquetas (risco de HIT — trombocitopenia induzida por heparina).",
     guideline: "SBC / ISTH",
   },
+  {
+    id: "rx-dil-gluconato-calcio",
+    title: "Gluconato de Cálcio — Diluição",
+    type: "Diluição e Preparo",
+    prescription: `AMPOLA: Gluconato de Cálcio 10% — 10mL = 93mg Ca2+ elementar
+
+HIPERCALEMIA (estabilizar membrana):
+10mL EV em 2-3 min (pode repetir em 5 min se ECG persistir alterado)
+NÃO misturar com Bicarbonato na mesma via
+
+HIPOCALCEMIA SINTOMÁTICA:
+1-2 ampolas (10-20mL) + SF 0,9% 100mL EV em 10-20 min
+Manutenção: 6 ampolas + SF 0,9% 500mL EV em 24h
+
+INTOXICAÇÃO POR MAGNÉSIO:
+10mL EV lento (antídoto)
+
+INTOXICAÇÃO POR BLOQUEADOR DE CANAL DE CÁLCIO:
+10-20mL EV em bolus → repetir a cada 5 min (até 30mL)`,
+    warnings: "NUNCA infundir rápido (risco de bradicardia/assistolia). Não misturar com Bicarbonato (precipita).",
+  },
+  {
+    id: "rx-dil-manitol",
+    title: "Manitol — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `APRESENTAÇÃO: Manitol 20% — 250mL (50g)
+
+HIPERTENSÃO INTRACRANIANA:
+0,25-1g/kg EV em 15-20 min
+70kg: 17,5-70g = 87,5-350mL de Manitol 20%
+Dose usual: 250mL de Manitol 20% EV em 20 min
+Repetir a cada 6-8h conforme PIC/clínica
+
+EDEMA CEREBRAL (TCE, AVC):
+0,5-1g/kg EV rápido (15-20 min)
+Osmolaridade sérica alvo: <320 mOsm/L
+
+GLAUCOMA AGUDO:
+1-2g/kg EV em 30-60 min`,
+    warnings: "Monitorar osmolaridade sérica (manter <320). Risco de IRA se uso prolongado. Contraindicado se anúria.",
+    notes: "Efeito rebote: pode piorar edema se barreira hematoencefálica rompida. Preferir salina hipertônica em alguns casos.",
+  },
+  {
+    id: "rx-dil-furosemida-bic",
+    title: "Furosemida em BIC — Diluição",
+    type: "Diluição e Preparo",
+    prescription: `AMPOLA: Furosemida 10mg/mL — 2mL = 20mg
+
+INFUSÃO CONTÍNUA (IC refratária):
+Furosemida 250mg (12,5 ampolas) + SF 0,9% qsp 250mL
+Concentração: 1mg/mL
+Dose: 5-40mg/h (5-40 mL/h)
+
+Iniciar: bolus 40-80mg EV → BIC 5-10mg/h
+Titular conforme diurese (alvo: 100-200mL/h)
+
+Alternativa sem bomba:
+Furosemida 20-40mg EV a cada 2-4h
+
+MONITORAR:
+K+ sérico 6/6h (repor agressivamente)
+Mg2+ sérico
+Creatinina
+Peso diário e balanço hídrico`,
+    notes: "BIC é mais eficaz que bolus intermitente na IC grave. Menos ototoxicidade.",
+    guideline: "SBC / ESC",
+  },
+  {
+    id: "rx-dil-terlipressina",
+    title: "Terlipressina — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `AMPOLA: Terlipressina 1mg — pó liofilizado
+
+HDA VARICOSA:
+Bolus: 2mg EV (ou 1mg se <50kg)
+Manutenção: 1mg EV 4/4h por 2-5 dias
+NÃO precisa diluir para bolus (reconstituir com 5mL diluente)
+
+SÍNDROME HEPATORRENAL:
+1mg EV 4/4h → titular até 2mg 4/4h (máx 12mg/dia)
+Associar Albumina 20-40g/dia EV
+Duração: até melhora da creatinina ou máx 14 dias`,
+    warnings: "Contraindicada: doença coronariana, insuficiência vascular periférica. Monitorar isquemia.",
+    guideline: "SBG / EASL",
+  },
 ];

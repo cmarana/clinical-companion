@@ -184,4 +184,75 @@ Infecção de cateter:
 7. Encaminhar para serviço com Vancomicina`,
     warnings: "Se suspeita de MRSA invasivo, transferir para hospital com recursos.",
   },
+  {
+    id: "rx-sus-sem-meropenem",
+    title: "Alternativas sem Meropenem",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `Quando Meropenem NÃO está disponível:
+
+Infecção abdominal grave:
+1. Ceftriaxona 2g EV 1x/dia + Metronidazol 500mg EV 8/8h + Amicacina 15mg/kg/dia
+
+Sepse grave sem foco definido:
+2. Ceftriaxona 2g + Metronidazol + Gentamicina 5mg/kg/dia
+
+Pneumonia aspirativa grave:
+3. Ceftriaxona + Clindamicina 600mg EV 6/6h
+
+Neutropenia febril:
+4. Ceftazidima 2g EV 8/8h (se disponível)
+5. OU Ceftriaxona 2g + Amicacina 15mg/kg/dia
+
+ESBL sem carbapenêmico:
+6. Amicacina 15mg/kg/dia + avaliar sensibilidade
+7. Transferir se possível para hospital com recursos`,
+    notes: "Sem carbapenêmico, a cobertura de ESBL fica limitada. Transferir casos graves.",
+  },
+  {
+    id: "rx-sus-prescricao-ubs",
+    title: "Prescrição Padrão UBS / APS",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `Medicações disponíveis na UBS/APS:
+
+ANALGÉSICOS: Dipirona, Paracetamol, Ibuprofeno
+ANTIBIÓTICOS: Amoxicilina, Cefalexina, Sulfametoxazol-Trimetoprim, Azitromicina, Metronidazol
+ANTI-HIPERTENSIVOS: Losartana, Enalapril, Hidroclorotiazida, Anlodipino, Captopril
+ANTIDIABÉTICOS: Metformina, Glibenclamida, Insulina NPH, Insulina Regular
+RESPIRATÓRIO: Salbutamol spray, Beclometasona spray, Prednisona
+GASTRO: Omeprazol, Ranitidina
+PSIQUIÁTRICOS: Fluoxetina, Amitriptilina, Haloperidol, Diazepam, Clorpromazina
+OUTROS: Dexametasona, AAS, Sinvastatina, Furosemida, Espironolactona
+
+Receituário: branco comum (maioria), azul B2 (BZD), amarelo A (opioides)`,
+    notes: "Lista pode variar por município. Conferir RENAME e lista municipal.",
+    guideline: "RENAME / MS",
+  },
+  {
+    id: "rx-sus-gotejamento",
+    title: "Tabela de Gotejamento — Sem Bomba",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `FÓRMULAS:
+Macrogotas/min = Volume(mL) / (Tempo(h) × 3)
+Microgotas/min = Volume(mL) / Tempo(h)
+
+TABELA RÁPIDA (1000mL):
+8h = 42 gotas/min = 125 microgotas/min
+12h = 28 gotas/min = 83 microgotas/min
+24h = 14 gotas/min = 42 microgotas/min
+
+TABELA RÁPIDA (500mL):
+4h = 42 gotas/min
+6h = 28 gotas/min
+8h = 21 gotas/min
+
+RELAÇÕES:
+1mL = 20 macrogotas = 60 microgotas
+1 macrogota = 3 microgotas
+
+ATB COMUNS:
+Ceftriaxona 1g + SF 100mL em 30 min = 67 gotas/min
+Metronidazol 500mg/100mL em 30 min = 67 gotas/min
+Clindamicina 600mg + SF 100mL em 30 min = 67 gotas/min`,
+    notes: "Colar tabela de gotejamento na sala de prescrição. Verificar gotejamento frequentemente.",
+  },
 ];

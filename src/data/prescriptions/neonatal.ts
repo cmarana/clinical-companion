@@ -143,4 +143,38 @@ ANTIBIÓTICOS:
     notes: "Cafeína é a droga de escolha. Pode ser mantida até 34-36 semanas de IG corrigida.",
     guideline: "SBP / Neonatologia",
   },
+  {
+    id: "rx-neo-convulsao",
+    title: "Convulsão Neonatal",
+    type: "Prescrição Neonatal",
+    prescription: `1. Estabilizar via aérea + O2
+2. Glicemia capilar → se <47: Glicose 10% 2mL/kg EV
+3. Cálcio iônico → se baixo: Gluconato de Cálcio 10% 1-2mL/kg EV lento
+4. Fenobarbital 20mg/kg EV lento (em 15-20 min) — 1ª escolha
+5. Se persistir: dose adicional de Fenobarbital 10mg/kg (até total 40mg/kg)
+6. Se refratária: Fenitoína 20mg/kg EV lento (em SF, monitorar ECG)
+7. OU Midazolam 0,05-0,1mg/kg EV bolus → 0,1-0,4mg/kg/h BIC
+8. Manutenção: Fenobarbital 3-5mg/kg/dia EV/VO
+9. Investigar: USG transfontanelar, líquor, eletrólitos, TORCH, EEG
+10. Monitorização contínua`,
+    notes: "Causas mais comuns: encefalopatia hipóxico-isquêmica, infecção, distúrbio metabólico, hemorragia.",
+    guideline: "SBP / Neonatologia",
+  },
+  {
+    id: "rx-neo-enterocolite",
+    title: "Enterocolite Necrosante (ECN)",
+    type: "Prescrição Neonatal",
+    prescription: `1. Suspender dieta (jejum absoluto)
+2. SNG aberta (descompressão)
+3. Acesso venoso: NPT (nutrição parenteral total)
+4. ATB: Ampicilina 50mg/kg EV 12/12h + Gentamicina 4mg/kg/dia + Metronidazol 7,5mg/kg EV 8/8h
+5. SF 0,9% — ressuscitação volêmica se instabilidade
+6. Suporte vasopressor se choque (Dopamina/Dobutamina)
+7. RX abdome seriado (6-8h): distensão, pneumatose, pneumoperitônio
+8. Hemograma, PCR, gasometria, lactato seriados
+9. Cirurgia se: pneumoperitônio (perfuração), deterioração clínica
+10. Estadiamento de Bell (I-III)`,
+    warnings: "Pneumoperitônio = perfuração = cirurgia de EMERGÊNCIA.",
+    guideline: "SBP / Neonatologia",
+  },
 ];

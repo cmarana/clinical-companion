@@ -165,4 +165,46 @@ export const dischargeItems: PrescriptionItem[] = [
 6. Retorno PS se: palpitações intensas, dispneia, síncope, sangramento`,
     guideline: "SBC / ESC",
   },
+  {
+    id: "rx-alta-convulsao",
+    title: "Alta — Crise Convulsiva",
+    type: "Prescrição de Alta",
+    prescription: `1. Fenitoína 100mg — 1cp VO 8/8h (se iniciada na emergência)
+2. OU Valproato 500mg — 1cp VO 12/12h
+3. OU Levetiracetam 500mg — 1cp VO 12/12h (se 1ª crise)
+4. NÃO dirigir até liberação médica
+5. Evitar álcool, privação de sono, estresse
+6. Retorno neurologia em 1-2 semanas
+7. EEG ambulatorial
+8. Retorno PS se: nova crise, confusão prolongada, trauma`,
+    notes: "1ª crise: investigar causa. Iniciar anticonvulsivante a critério do neurologista.",
+  },
+  {
+    id: "rx-alta-pancreatite",
+    title: "Alta — Pancreatite Leve",
+    type: "Prescrição de Alta",
+    prescription: `1. Paracetamol 750mg — 1cp VO 6/6h se dor
+2. OU Tramadol 50mg — 1cp VO 8/8h se dor moderada
+3. Omeprazol 20mg — 1cp VO em jejum 1x/dia por 14 dias
+4. Dieta branda, hipolipídica por 2-4 semanas
+5. Abstinência alcoólica ABSOLUTA
+6. Retorno ambulatorial (gastroenterologia) em 1-2 semanas
+7. USG abdome controle (avaliar colelitíase como causa)
+8. Retorno PS se: dor intensa, febre, vômitos incoercíveis`,
+    notes: "Se causa biliar: colecistectomia programada para evitar recorrência.",
+  },
+  {
+    id: "rx-alta-tep",
+    title: "Alta — TEP (após estabilização)",
+    type: "Prescrição de Alta",
+    prescription: `1. Rivaroxabana 15mg — 1cp VO 12/12h por 21 dias → depois 20mg 1x/dia
+2. OU Apixabana 10mg VO 12/12h por 7 dias → depois 5mg 12/12h
+3. OU Warfarina: ajustar dose conforme INR (alvo 2-3) — sobrepor com Enoxaparina por 5 dias
+4. Meia elástica de compressão (se TVP associada)
+5. Investigar trombofilia se: <50 anos, sem fator provocador, recorrência
+6. Tempo de anticoagulação: 3 meses (provocado) a indefinido (idiopático/recorrente)
+7. Retorno hematologia/pneumologia em 2-4 semanas
+8. Retorno PS se: dispneia, dor torácica, hemoptise, sangramento`,
+    guideline: "SBC / ESC",
+  },
 ];

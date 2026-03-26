@@ -427,4 +427,154 @@ K+ >6,5 ou alteração ECG (grave):
     warnings: "ECG obrigatório: onda T apiculada, alargamento QRS, bradicardia = URGÊNCIA.",
     guideline: "KDIGO / SBN",
   },
+  {
+    id: "rx-cad-diag",
+    title: "Cetoacidose Diabética",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. SF 0,9% 1000mL EV em 1h → 250-500mL/h nas horas seguintes
+2. Insulina Regular 0,1UI/kg/h EV contínua (OU bolus 0,1UI/kg + 0,1UI/kg/h)
+3. K+ sérico: se <3,3 repor ANTES da insulina. Se 3,3-5,3: 40mEq/L no soro
+4. Glicemia capilar 1/1h
+5. Gasometria + eletrólitos 2/2h
+6. Quando glicemia <250: trocar para SG 5% + SF 0,45% e reduzir insulina para 0,05UI/kg/h
+7. Bicarbonato 8,4%: apenas se pH <6,9 (100mEq em 400mL em 2h)
+8. Transição para SC: quando pH >7,3, HCO3 >18, AG <12 e paciente comendo
+9. Manter insulina EV por 1-2h após 1ª dose SC`,
+    warnings: "Hipocalemia é a principal causa de morte na CAD. Repor K+ ANTES da insulina se <3,3.",
+    guideline: "SBD / ADA",
+  },
+  {
+    id: "rx-meningite-diag",
+    title: "Meningite Bacteriana",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. ATB IMEDIATO (não atrasar para exames):
+   Adulto: Ceftriaxona 2g EV 12/12h
+   Se >50 anos: + Ampicilina 2g EV 4/4h (cobertura Listeria)
+2. Dexametasona 0,15mg/kg EV 6/6h por 4 dias (ANTES ou junto com ATB)
+3. SF 0,9% — manter acesso (cuidado com hipervolemia)
+4. Punção lombar (se não houver contraindicação)
+5. Hemograma, PCR, hemocultura, glicemia, lactato
+6. Dipirona 1g EV 6/6h se febre
+7. Diazepam 10mg EV se convulsão
+8. Monitorar nível de consciência (Glasgow)
+9. Notificação compulsória IMEDIATA
+10. Isolamento respiratório se meningocócica`,
+    warnings: "ATB NA SUSPEITA — NÃO esperar resultado do líquor. Dexametasona reduz mortalidade.",
+    guideline: "IDSA / MS",
+  },
+  {
+    id: "rx-pneumotorax-diag",
+    title: "Pneumotórax",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `Pequeno (<2cm, estável, primário):
+1. Observação + O2 suplementar alto fluxo (acelera reabsorção)
+2. RX tórax controle em 6h
+3. Alta se estável, retorno em 24-48h
+
+Grande ou sintomático:
+4. Drenagem torácica em selo d'água (5º EIC, linha axilar média)
+5. Dreno tubular 28-32Fr (adulto)
+6. Confirmar com RX tórax pós-drenagem
+7. Analgesia: Dipirona 1g EV + Tramadol 100mg EV
+8. Monitorização contínua
+
+Hipertensivo (EMERGÊNCIA):
+9. Punção descompressiva IMEDIATA (2º EIC, linha hemiclavicular)
+10. Depois: drenagem torácica definitiva`,
+    warnings: "Pneumotórax hipertensivo = diagnóstico CLÍNICO. NÃO esperar RX. Desvio de traqueia, turgência jugular, hipotensão.",
+    guideline: "ATLS / SBCT",
+  },
+  {
+    id: "rx-disseccao-diag",
+    title: "Dissecção Aórtica",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. Controle IMEDIATO de PA e FC:
+   Esmolol 500mcg/kg bolus → 50-200mcg/kg/min EV (1ª escolha)
+   OU Metoprolol 5mg EV a cada 5 min (até 15mg)
+   Alvo: FC <60 e PAS 100-120
+2. Se PA ainda alta após betabloqueador: Nitroprussiato 0,25-10mcg/kg/min
+3. Morfina 2-4mg EV (dor intensa)
+4. AngioTC de tórax/abdome URGENTE
+5. Hemograma, coagulograma, função renal, troponina, D-dímero
+6. Tipagem sanguínea + reserva de sangue
+7. Ecocardiograma transesofágico (se instabilidade)
+8. Tipo A (asc): cirurgia de emergência
+9. Tipo B (desc): tratamento clínico ± endovascular`,
+    warnings: "BETABLOQUEADOR PRIMEIRO. NÃO usar nitroprussiato isolado (taquicardia reflexa piora dissecção).",
+    guideline: "SBC / AHA / ESC",
+  },
+  {
+    id: "rx-encefalopatia-hepatica-diag",
+    title: "Encefalopatia Hepática",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Lactulose 20-30mL VO 8/8h (ajustar para 2-3 evacuações pastosas/dia)
+2. OU Lactulose enema: 300mL + 700mL de água — retal (se VO impossível)
+3. Rifaximina 550mg VO 12/12h (associar se recorrência)
+4. Dieta normoproteica (1,2-1,5g/kg/dia) — NÃO restringir proteína
+5. Investigar fator precipitante: infecção, sangramento GI, constipação, diuréticos, desidratação
+6. Hemograma, função renal, eletrólitos, amônia, gasometria
+7. Paracentese se ascite (PBE?)
+8. SF 0,9% — hidratação cautelosa
+9. Flumazenil 0,5mg EV (se uso de BZD — diagnóstico/terapêutico)
+10. Classificar grau de West Haven (I-IV)`,
+    notes: "Principal precipitante: infecção (PBE). Sempre investigar e tratar causa.",
+    guideline: "EASL / SBG",
+  },
+  {
+    id: "rx-abstinencia-alcool-diag",
+    title: "Abstinência Alcoólica / Delirium Tremens",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `Abstinência leve-moderada (CIWA <20):
+1. Diazepam 10mg VO 6/6h → reduzir gradualmente em 5-7 dias
+2. Tiamina (Vit B1) 300mg EV 1x/dia por 3-5 dias (ANTES da glicose!)
+3. Ácido fólico 5mg VO 1x/dia
+4. Complexo B VO 12/12h
+5. Hidratação: SF 0,9% 1000mL + SG 5% 500mL
+
+Delirium Tremens (CIWA >20 ou convulsão):
+6. Diazepam 10-20mg EV a cada 5-10 min até sedação leve
+7. OU Midazolam 5mg IM se sem acesso
+8. Tiamina 500mg EV diluída em SF 100mL por 3 dias
+9. MgSO4 2g EV em 20 min (hipomagnesemia frequente)
+10. Monitorização contínua, contenção se necessário
+11. Glicemia, eletrólitos, função hepática, amilase`,
+    warnings: "TIAMINA ANTES DA GLICOSE — risco de Wernicke. Delirium Tremens tem mortalidade de 5-15% sem tratamento.",
+    guideline: "ASAM / ABP",
+  },
+  {
+    id: "rx-hdb-diag",
+    title: "Hemorragia Digestiva Baixa",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. 2 acessos calibrosos + SF 0,9% em bolus se instabilidade
+2. Tipagem sanguínea + reserva de concentrado de hemácias
+3. Hemograma seriado, coagulograma, função renal, lactato
+4. Toque retal (excluir hemorroida, fissura, massa)
+5. SNG (excluir HDA como causa)
+6. Transfusão se Hb <7 (ou <9 se cardiopata)
+7. Suspender anticoagulantes/antiagregantes
+8. Colonoscopia em 24h (após preparo) ou AngioTC se sangramento ativo
+9. Se instabilidade: considerar arteriografia com embolização
+10. Omeprazol 40mg EV 1x/dia
+11. Dieta zero até avaliação`,
+    notes: "90% dos HDB param espontaneamente. Divertículos e angiodisplasia são as causas mais comuns.",
+    guideline: "SBG / ACG",
+  },
+  {
+    id: "rx-retencao-urinaria-diag",
+    title: "Retenção Urinária Aguda",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. SVD (sonda vesical de demora) — Foley 16-18Fr
+2. Se falha: Sonda de Coudé ou chamar urologia
+3. Esvaziar GRADUALMENTE (máx 500mL por vez — risco hematúria ex-vacuo)
+4. SF 0,9% 500mL EV (se desidratação pós-obstrutiva)
+5. Monitorar diurese (pode haver poliúria pós-obstrutiva)
+6. Tamsulosina 0,4mg VO 1x/dia
+7. Finasterida 5mg VO 1x/dia (se HPB)
+8. EAS + urocultura
+9. Creatinina, ureia, K+ (IRA pós-renal?)
+10. USG de vias urinárias
+11. Encaminhar urologia`,
+    notes: "Poliúria pós-obstrutiva: pode perder litros de urina. Monitorar e repor volume.",
+    guideline: "SBU / EAU",
+  },
 ];

@@ -174,4 +174,54 @@ BUNDLE 6H:
     warnings: "Haloperidol EV: risco de arritmia (QT longo). Monitorar ECG se EV.",
     guideline: "ABP / APA",
   },
+  {
+    id: "rx-emerg-hipoglicemia",
+    title: "Hipoglicemia Grave",
+    type: "Prescrição de Emergência",
+    prescription: `1. Glicose 50% — 40mL (20g) EV em bolus
+2. Reavaliar glicemia em 15 min
+3. Se persistir: repetir Glicose 50% 40mL
+4. Manter SG 10% 100mL/h após correção
+5. Se sem acesso: Glucagon 1mg IM/SC
+6. Após estabilização: refeição VO
+7. Investigar causa: insulina, sulfonilureia, jejum, insuficiência hepática/adrenal
+8. Se por sulfonilureia: observar 24-48h (meia-vida longa)`,
+    warnings: "Hipoglicemia recorrente por sulfonilureia: manter SG 10% por 24-48h. NÃO dar alta precocemente.",
+    guideline: "SBD / ADA",
+  },
+  {
+    id: "rx-emerg-tamponamento",
+    title: "Tamponamento Cardíaco",
+    type: "Prescrição de Emergência",
+    prescription: `1. SF 0,9% 500-1000mL EV rápido (aumentar pré-carga)
+2. NÃO usar diuréticos ou vasodilatadores (piora!)
+3. Pericardiocentese de emergência (via subxifoide — guiada por USG se possível)
+4. Monitorização contínua
+5. ECG: baixa voltagem, alternância elétrica
+6. ECOTT à beira do leito: derrame + colapso de VD
+7. Preparar drenagem pericárdica definitiva (cirurgia)
+8. Tipagem sanguínea
+9. Se trauma: toracotomia de emergência`,
+    warnings: "Tríade de Beck: hipotensão + turgência jugular + abafamento de bulhas. NÃO usar diuréticos.",
+    guideline: "ATLS / SBC",
+  },
+  {
+    id: "rx-emerg-pneumotorax-hipert",
+    title: "Pneumotórax Hipertensivo",
+    type: "Prescrição de Emergência",
+    prescription: `1. Diagnóstico CLÍNICO — NÃO esperar RX
+2. Punção descompressiva IMEDIATA:
+   - 2º espaço intercostal, linha hemiclavicular
+   - Jelco 14G ou agulha calibrosa
+   - Ouvirá saída de ar sob pressão
+3. Após estabilização: drenagem torácica em selo d'água
+   - 5º EIC, linha axilar média
+   - Dreno 28-32Fr
+4. O2 alto fluxo
+5. RX tórax após drenagem
+6. Monitorização contínua
+7. Analgesia: Morfina 2-4mg EV se dor intensa`,
+    warnings: "CADA SEGUNDO CONTA. Descompressão com agulha salva vida. Drenagem depois.",
+    guideline: "ATLS",
+  },
 ];
