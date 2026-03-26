@@ -1663,4 +1663,267 @@ Ventilação Mecânica:
 12. Investigar causa: RX tórax, ECG, BNP, D-dímero, troponina`,
     guideline: "AMIB / SBPT / ARDS Network",
   },
+  {
+    id: "rx-sca-sem-supra-diag",
+    title: "SCA Sem Supra (IAM sem Supra / Angina Instável)",
+    type: "Prescrição Hospitalar",
+    prescription: `1. AAS 300mg mastigar (ataque) → 100mg/dia
+2. Clopidogrel 300mg (ataque) → 75mg/dia OU Ticagrelor 180mg → 90mg 12/12h
+3. Enoxaparina 1mg/kg SC 12/12h (ou HNF bolus + BIC se CATE previsto)
+4. Atorvastatina 80mg VO (iniciar nas primeiras 24h)
+5. Metoprolol 25mg VO 12/12h (se FC >60, PA >100, sem IC)
+6. Nitroglicerina SL 5mg a cada 5 min (até 3 doses) → EV se dor refratária
+7. Morfina 2-4mg EV se dor refratária a nitrato
+8. O2 APENAS se SpO2 <90%
+9. Troponina seriada (0h, 3h, 6h)
+10. ECG seriado (0h, 3h, 6h e se dor recorrente)
+11. GRACE score (estratificar risco)
+12. CATE: <2h se muito alto risco, <24h se alto risco, <72h se risco intermediário
+13. Ecocardiograma (função ventricular, alteração segmentar)`,
+    warnings: "NÃO usar nitrato se: PAS <90, uso de sildenafil <24h, IAM de VD (hipotensão).",
+    guideline: "SBC / ESC 2023 / AHA",
+  },
+  {
+    id: "rx-choque-cardiogenico-diag",
+    title: "Choque Cardiogênico",
+    type: "Prescrição Hospitalar",
+    prescription: `1. UTI — monitorização invasiva (PAI, PVC, Swan-Ganz se disponível)
+2. Noradrenalina 0,1-1mcg/kg/min (manter PAM ≥65)
+3. Dobutamina 2,5-20mcg/kg/min (inotrópico — aumentar débito)
+4. NÃO fazer volume agressivo (piora congestão)
+5. SF 0,9% 250mL em bolus APENAS se não congestivo (teste de volume cauteloso)
+6. Furosemida 40-80mg EV se congestão (mesmo hipotenso — com vasopressor)
+7. IOT + VM se edema pulmonar / fadiga respiratória
+8. ECG, troponina, BNP, lactato, gasometria
+9. Ecocardiograma URGENTE (FE, complicações mecânicas)
+10. CATE de emergência se IAM (causa mais comum)
+11. BIA (balão intra-aórtico) ou Impella se refratário
+12. Corrigir causas reversíveis: arritmia, tamponamento, TEP, valvulopatia aguda`,
+    warnings: "Mortalidade 40-50%. CATE + revascularização precoce reduz mortalidade no IAM.",
+    guideline: "SBC / ESC / SCAI",
+  },
+  {
+    id: "rx-clostridium-diag",
+    title: "Infecção por Clostridioides difficile (C. difficile)",
+    type: "Prescrição Hospitalar",
+    prescription: `Episódio inicial não grave:
+1. Vancomicina 125mg VO 6/6h por 10 dias (1ª escolha)
+2. OU Fidaxomicina 200mg VO 12/12h por 10 dias (menor recorrência)
+3. NÃO usar metronidazol como 1ª linha (inferior)
+
+Grave (leucócitos >15.000, creatinina >1,5):
+4. Vancomicina 125mg VO 6/6h por 10 dias
+
+Fulminante (hipotensão, íleo, megacólon):
+5. Vancomicina 500mg VO/SNG 6/6h + Vancomicina retal 500mg em 500mL SF 6/6h
+6. + Metronidazol 500mg EV 8/8h
+7. Avaliar colectomia de emergência
+
+TODOS:
+8. SUSPENDER ATB desencadeante se possível
+9. Precaução de contato (luvas + avental + quarto privativo)
+10. Higiene das mãos com ÁGUA E SABÃO (álcool não mata esporos)
+11. Pesquisa de toxina A/B (PCR ou EIA)
+12. NÃO usar antidiarreicos (loperamida) — risco de megacólon tóxico`,
+    guideline: "IDSA / SHEA 2021 / SBI",
+  },
+  {
+    id: "rx-intox-cocaina-diag",
+    title: "Intoxicação por Cocaína / Crack",
+    type: "Prescrição Hospitalar",
+    prescription: `Agitação / Simpaticomimético:
+1. Diazepam 10-20mg EV (1ª linha para TUDO — sedação, convulsão, HAS, taquicardia)
+2. Repetir a cada 5-10 min se necessário (doses altas podem ser necessárias)
+3. Resfriamento ativo se hipertermia >39°C
+
+Dor torácica / SCA por cocaína:
+4. AAS 300mg VO + Nitroglicerina SL (vasoespasmo coronariano)
+5. Diazepam 10mg EV
+6. NÃO usar betabloqueador puro (risco de vasoespasmo paradoxal)
+7. Fentolamina 5mg EV se HAS refratária
+8. CATE se critérios de IAM
+
+Convulsão:
+9. Diazepam 10mg EV → repetir 5 min → Midazolam BIC se refratária
+
+Suporte:
+10. SF 0,9% — hidratação
+11. Monitorização contínua (arritmias, SCA)
+12. CPK, troponina, ECG, função renal (rabdomiólise)
+13. Toxicológico urinário`,
+    warnings: "NUNCA usar betabloqueador puro na intoxicação por cocaína. Benzodiazepínico é a 1ª droga para TUDO.",
+    guideline: "ABCF / AHA / Toxicologia Clínica",
+  },
+  {
+    id: "rx-intox-monoxido-co-diag",
+    title: "Intoxicação por Monóxido de Carbono (CO)",
+    type: "Prescrição Hospitalar",
+    prescription: `1. O2 100% por máscara com reservatório (por pelo menos 6h)
+   Meia-vida do CO: 4-6h em ar ambiente → 60-90 min com O2 100%
+2. IOT + VM com FiO2 100% se rebaixamento / instabilidade
+3. Câmara hiperbárica se disponível (indicações):
+   COHb >25%, gestante com COHb >15%, alteração neurológica, isquemia miocárdica
+4. Monitorização contínua (arritmias)
+5. ECG (isquemia miocárdica por hipóxia)
+6. Troponina (elevação é comum)
+7. Gasometria arterial: COHb (carboxihemoglobina)
+   ATENÇÃO: SpO2 pode estar FALSAMENTE NORMAL (pulsooxímetro não distingue COHb)
+8. Gasometria venosa: lactato
+9. Neuroimagem se sintomas neurológicos (RNM — lesão de globo pálido)
+10. Observação 24h (síndrome neurológica tardia em até 40 dias)
+11. Investigar fonte de CO (incêndio, aquecedor, churrasqueira em ambiente fechado)`,
+    warnings: "SpO2 NÃO é confiável na intoxicação por CO — SEMPRE dosar COHb na gasometria.",
+    guideline: "ABCF / CIT / Undersea & Hyperbaric Medical Society",
+  },
+  {
+    id: "rx-hepatite-aguda-viral-diag",
+    title: "Hepatite Aguda Viral",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Repouso relativo (não é obrigatório repouso absoluto)
+2. Dieta leve, evitar álcool e hepatotóxicos
+3. NÃO usar paracetamol em dose alta (preferir dipirona)
+4. Dipirona 1g EV/VO 6/6h se dor ou febre
+5. Ondansetrona 4mg EV 8/8h se náusea intensa
+6. Hidratação VO abundante → EV se não tolera
+7. Evitar: paracetamol >2g/dia, AINEs, álcool, ervas hepatotóxicas
+8. Sorologias: anti-HAV IgM, HBsAg, anti-HBc IgM, anti-HCV, anti-HEV IgM
+9. TGO/TGP, bilirrubinas, GGT, FA, albumina, INR, hemograma
+10. Monitorar INR (coagulopatia = sinal de gravidade)
+11. Se INR >1,5 ou encefalopatia: pensar hepatite fulminante → NAC + contatar transplante
+12. Notificação compulsória (todas as hepatites virais)
+13. Hepatite A: suporte. Hepatite B aguda: suporte (>95% resolve). Hepatite C: encaminhar tratamento.`,
+    guideline: "MS / SBH / EASL / AASLD",
+  },
+  {
+    id: "rx-acidente-aranha-diag",
+    title: "Acidente por Aranha (Loxosceles / Phoneutria)",
+    type: "Prescrição Hospitalar",
+    prescription: `LOXOSCELES (aranha-marrom) — necrose cutânea:
+1. Soro antiloxoscélico (SALox) se <72h:
+   Leve: 5 ampolas EV. Moderado: 10 amp. Grave: 10 amp + corticoide
+2. Prednisona 1mg/kg/dia VO por 5-7 dias (reduz hemólise)
+3. Analgesia: Dipirona + Tramadol
+4. Cuidados locais: NÃO desbridar precocemente (esperar 7-14 dias)
+5. Monitorar: hemólise (Hb, LDH, bilirrubinas), função renal (IRA)
+6. SVD se hemoglobinúria (manter diurese >1mL/kg/h)
+
+PHONEUTRIA (armadeira) — dor intensa, neurotoxicidade:
+7. Analgesia: infiltração local com Lidocaína 2% sem vaso
+8. Dipirona 1g EV + Tramadol 100mg EV
+9. Soro antiaracnídeo se moderado/grave: 2-4 ampolas EV (criança: SEMPRE)
+10. Monitorar: bradicardia, hipotensão, EAP (grave em crianças <7 anos)
+
+TODOS:
+11. Pré-medicar soro: Prometazina + Hidrocortisona
+12. Notificação compulsória`,
+    guideline: "MS / Instituto Butantan / CEVAP",
+  },
+  {
+    id: "rx-colite-pseudomembranosa-diag",
+    title: "Colite Pseudomembranosa / Megacólon Tóxico",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Dieta zero se íleo / megacólon
+2. SF 0,9% — ressuscitação agressiva
+3. Vancomicina 500mg VO/SNG 6/6h
+4. + Vancomicina 500mg retal em 500mL SF 6/6h (se íleo paralítico)
+5. + Metronidazol 500mg EV 8/8h
+6. SUSPENDER ATB causador
+7. SNG aberta se distensão
+8. Precaução de contato
+9. RX abdome seriado (dilatação cólon >6cm = megacólon)
+10. TC abdome se suspeita de perfuração
+11. Hemograma, PCR, lactato, albumina, função renal
+12. Colectomia subtotal de emergência se:
+    Perfuração, megacólon refratário, piora clínica apesar de tratamento
+13. Mortalidade do megacólon tóxico: 30-50%`,
+    warnings: "Megacólon tóxico: NÃO usar antidiarreicos, NÃO fazer colonoscopia (perfuração). Cirurgia precoce salva vidas.",
+    guideline: "IDSA / SHEA / CBCD",
+  },
+  {
+    id: "rx-urticaria-aguda-diag",
+    title: "Urticária Aguda / Angioedema Alérgico",
+    type: "Prescrição Hospitalar",
+    prescription: `Sem comprometimento de via aérea:
+1. Dexclorfeniramina 5mg EV lento (anti-H1)
+2. Ranitidina 50mg EV (anti-H2 — adjuvante)
+3. Hidrocortisona 200mg EV (prevenção de reação tardia)
+4. Prednisolona 40-60mg VO se alta (por 3-5 dias)
+5. Loratadina 10mg VO ou Desloratadina 5mg VO (manutenção)
+6. Observação 4-6h (risco de evolução para anafilaxia)
+
+Com comprometimento de via aérea (disfonia, estridor, dispneia):
+7. Adrenalina 0,3-0,5mg IM IMEDIATO
+8. Protocolo de anafilaxia completo
+
+Investigação:
+9. Identificar e EVITAR desencadeante
+10. Diário alimentar + medicamentoso
+11. IgE específicas / prick test (ambulatorial)
+12. Se recorrente (>6 semanas): investigar urticária crônica (anti-FcεRI, anti-IgE, autoimune)`,
+    guideline: "ASBAI / WAO / EAACI",
+  },
+  {
+    id: "rx-hernia-inguinal-encarc-diag",
+    title: "Hérnia Inguinal Encarcerada",
+    type: "Prescrição Hospitalar",
+    prescription: `Tentativa de redução manual (Taxis):
+1. Sedação: Midazolam 2-5mg EV + Fentanil 50mcg EV
+2. Trendelenburg (pernas elevadas)
+3. Compressas geladas no tumor herniário (reduzir edema)
+4. Compressão suave e contínua por 10-15 min
+5. Se reduzir: internar + cirurgia eletiva precoce (24-48h)
+
+Se NÃO reduzir ou sinais de estrangulamento:
+6. Cirurgia de EMERGÊNCIA (hernioplastia + avaliar viabilidade intestinal)
+7. Dieta zero
+8. SF 0,9% — hidratação agressiva
+9. SNG aberta se sinais de obstrução
+10. Ceftriaxona 1g EV + Metronidazol 500mg EV (profilaxia/tratamento)
+11. Dipirona 1g EV 6/6h + Tramadol 50mg EV 6/6h
+12. Hemograma, gasometria, lactato (estrangulamento → isquemia)`,
+    warnings: "Sinais de estrangulamento: dor contínua, febre, leucocitose, peritonismo, lactato alto. CIRURGIA IMEDIATA.",
+    guideline: "CBCD / EHS / WSES",
+  },
+  {
+    id: "rx-endoftalmite-diag",
+    title: "Endoftalmite Aguda",
+    type: "Prescrição Hospitalar",
+    prescription: `EMERGÊNCIA OFTALMOLÓGICA — risco de perda visual permanente
+
+1. Coleta de humor vítreo + aquoso (ANTES do ATB intravítreo)
+2. Injeção intravítrea IMEDIATA:
+   Vancomicina 1mg/0,1mL + Ceftazidima 2,25mg/0,1mL
+3. OU Vancomicina + Amicacina 0,4mg/0,1mL (alternativa)
+4. Dexametasona intravítrea 0,4mg/0,1mL (controverso, pode associar)
+5. Colírios fortificados:
+   Vancomicina 25mg/mL 1 gota de hora em hora
+   Ceftazidima 50mg/mL 1 gota de hora em hora (alternar)
+6. Atropina 1% 1 gota 8/8h (cicloplégico — alívio dor + prevenir sinéquias)
+7. ATB sistêmico: Vancomicina EV + Ceftazidima EV (penetração vítrea limitada)
+8. Vitrectomia PARS PLANA se: acuidade visual ≤conta dedos
+9. Avaliar causa: pós-cirúrgica, endógena (candidemia), trauma
+10. Endoftalmite endógena: tratar foco primário (hemoculturas)`,
+    warnings: "Cada HORA de atraso piora prognóstico visual. Injeção intravítrea é o tratamento PRINCIPAL.",
+    guideline: "CBO / AAO / EVS (Endophthalmitis Vitrectomy Study)",
+  },
+  {
+    id: "rx-sindrome-nefritica-diag",
+    title: "Síndrome Nefrítica Aguda (GNDA)",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Dieta hipossódica (2g Na/dia) + restrição hídrica
+2. Furosemida 40-80mg EV 12/12h (edema, hipertensão, hipervolemia)
+3. Anti-hipertensivo: Nifedipino 10mg VO SN se PA elevada
+4. OU Nitroprussiato EV se encefalopatia hipertensiva
+5. Restrição de K+ se hipercalemia
+6. Penicilina Benzatina 1.200.000 UI IM (se GNPE — erradicar estreptococo)
+7. NÃO usar corticoide (GNPE é autolimitada em 90%)
+8. Exames: EAS (hematúria dismórfica, cilindros hemáticos), proteinúria 24h
+9. Complemento C3 (baixo na GNPE — normaliza em 8 semanas)
+10. ASLO, anti-DNAse B, hemograma, creatinina, eletrólitos
+11. USG renal (rins aumentados, sem obstrução)
+12. Biópsia renal SE: C3 não normaliza em 8 sem, proteinúria nefrótica, IRA progressiva
+13. Diálise se: hipercalemia refratária, EAP, uremia sintomática`,
+    guideline: "SBN / KDIGO / SBP",
+  },
 ];
+

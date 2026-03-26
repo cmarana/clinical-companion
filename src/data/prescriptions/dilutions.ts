@@ -920,4 +920,118 @@ INCOMPATIBILIDADES:
 - Estável em SF 0,9% e SG 5%`,
     guideline: "ANVISA / SBI / SBP",
   },
+  {
+    id: "rx-dil-noripurum",
+    title: "Ferro Sacarato (Noripurum) — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO:
+Ferro sacarato 100mg/5mL + SF 0,9% 100mL → infundir em 15-30 min
+Concentração máxima: 1mg/mL (não diluir menos de 100mL)
+
+DOSE:
+Fórmula de Ganzoni:
+Déficit de ferro (mg) = Peso × (Hb alvo - Hb atual) × 2,4 + depósito (500mg)
+Dose máxima por sessão: 200mg (5 ampolas de 100mg)
+Frequência: 1-3x por semana até completar déficit
+
+INDICAÇÕES:
+- Anemia ferropriva com intolerância VO
+- DRC em hemodiálise
+- Gestante com Hb <9 no 2°-3° trimestre
+- Sangramento ativo com anemia
+- Pré-operatório de urgência com anemia
+
+CUIDADOS:
+- Dose-teste não é mais recomendada (diferente do ferro dextran)
+- Reações: hipotensão, náusea, rubor facial (reduzir velocidade)
+- Anafilaxia é rara mas possível — ter adrenalina disponível
+- NÃO diluir em SG 5% (instável)`,
+    guideline: "SBH / ABHH / KDIGO",
+  },
+  {
+    id: "rx-dil-piperacilina-tazo",
+    title: "Piperacilina-Tazobactam — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `RECONSTITUIÇÃO:
+Piperacilina-Tazobactam 4,5g + SF 0,9% 20mL → agitar até dissolver
+
+DILUIÇÃO PARA INFUSÃO:
+4,5g reconstituído + SF 0,9% 100mL → infundir em 30 min (padrão)
+OU infusão estendida: 4,5g em 150mL SF → infundir em 4h (superior!)
+
+DOSE:
+Padrão: 4,5g EV 6/6h
+Infecção grave / Pseudomonas: 4,5g EV 6/6h em infusão estendida de 4h
+
+INFUSÃO ESTENDIDA (recomendada):
+Mantém concentração acima do MIC por mais tempo → melhor desfecho
+4,5g + SF 0,9% 150mL → infundir em 4h a cada 6h (iniciar próxima 2h após terminar)
+
+CUIDADOS:
+- Incompatível com: aminoglicosídeos, vancomicina, bicarbonato
+- Lavar linha entre medicações incompatíveis
+- Estável por 24h em temperatura ambiente após diluição
+- Ajuste renal: ClCr <20 → 4,5g 8/8h`,
+    guideline: "ANVISA / SBI / IDSA",
+  },
+  {
+    id: "rx-dil-ampicilina",
+    title: "Ampicilina — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `RECONSTITUIÇÃO:
+Ampicilina 500mg + água destilada 5mL
+Ampicilina 1g + água destilada 10mL
+
+EV em bolus:
+Ampicilina 1g reconstituída → infundir EV lento em 3-5 min
+
+EV em infusão:
+Ampicilina 1-2g + SF 0,9% 50-100mL → infundir em 15-30 min
+
+IM:
+Ampicilina 500mg + água destilada 3mL → IM profundo
+
+DOSE:
+Adulto: 1-2g EV 6/6h (infecção moderada) ou 2g EV 4/4h (grave/meningite)
+Neonato: 50mg/kg EV 12/12h (<7dias) ou 8/8h (>7dias)
+Meningite: 2g EV 4/4h (12g/dia)
+
+CUIDADOS:
+- Estabilidade limitada após reconstituição (1h em TA)
+- Administrar IMEDIATAMENTE após diluir
+- Compatível com SF 0,9% (preferido) e SG 5% (menos estável)
+- Rash maculopapular é MUITO comum (40% se mononucleose — não é alergia)`,
+    guideline: "ANVISA / SBI",
+  },
+  {
+    id: "rx-dil-meropenem",
+    title: "Meropenem — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `RECONSTITUIÇÃO:
+Meropenem 500mg + SF 0,9% 10mL
+Meropenem 1g + SF 0,9% 20mL
+
+EV em bolus:
+Meropenem 1g reconstituído → infundir EV lento em 5 min
+
+EV em infusão (padrão):
+Meropenem 1g + SF 0,9% 100mL → infundir em 30 min
+
+INFUSÃO ESTENDIDA (recomendada para infecções graves):
+Meropenem 1g + SF 0,9% 100mL → infundir em 3h a cada 8h
+Superior ao bolus em sepse / infecções por Gram-negativos MDR
+
+DOSE:
+Padrão: 1g EV 8/8h
+Meningite: 2g EV 8/8h
+Ajuste renal: ClCr 26-50 → 1g 12/12h; ClCr 10-25 → 500mg 12/12h
+
+CUIDADOS:
+- Estável por 4h em TA após reconstituição
+- NÃO misturar com outros ATB na mesma via
+- Sem necessidade de ajuste hepático
+- Risco de convulsão (menor que imipenem)`,
+    guideline: "ANVISA / SBI / IDSA",
+  },
 ];
+

@@ -495,5 +495,112 @@ Duração: 12 meses pós-SCA, 6 meses pós-stent eletivo
 Suspender 5-7 dias antes de cirurgia (exceto urgência)`,
     guideline: "SBC / ESC / AHA",
   },
-];
+  {
+    id: "rx-classe-antiparasitarios",
+    title: "Antiparasitários — Guia Rápido",
+    type: "Por Classe de Medicamento",
+    prescription: `ALBENDAZOL 400mg VO dose única:
+Ascaris, Ancilostomídeo, Enterobius, Trichuris
 
+IVERMECTINA 200mcg/kg VO dose única (jejum):
+Estrongiloidíase, Escabiose, Pediculose, Oncocercose
+Strongyloides: repetir em 14 dias
+
+METRONIDAZOL 500mg VO 8/8h por 7-10 dias:
+Giardíase, Amebíase invasiva
+
+NITAZOXANIDA (Annita) 500mg VO 12/12h por 3 dias:
+Giardíase, Criptosporidiose, Rotavírus (efeito modesto)
+
+PRAZIQUANTEL 40-60mg/kg VO dose única:
+Esquistossomose, Teníase
+
+BENZNIDAZOL 5mg/kg/dia VO por 60 dias:
+Doença de Chagas (fase aguda)
+
+PIRIMETAMINA + SULFADIAZINA + Ácido folínico:
+Toxoplasmose (gestante: Espiramicina 1g 8/8h)`,
+    notes: "Ivermectina em JEJUM (absorção oral). Albendazol com alimentos gordurosos (melhor absorção).",
+    guideline: "MS / OMS / SBI",
+  },
+  {
+    id: "rx-classe-antirretrovirais-pep",
+    title: "Antirretrovirais — PEP e TARV de Emergência",
+    type: "Por Classe de Medicamento",
+    prescription: `PEP (Profilaxia Pós-Exposição — até 72h):
+Tenofovir 300mg + Lamivudina 300mg (TDF/3TC) — 1cp 1x/dia
++ Dolutegravir 50mg — 1cp 1x/dia
+Duração: 28 dias
+
+TARV INICIAL (1ª linha Brasil):
+Tenofovir + Lamivudina + Dolutegravir (TLD)
+1cp 1x/dia, via oral
+
+PROFILAXIAS EM HIV:
+CD4 <200: Sulfametoxazol-Trimetoprim 800/160mg 1x/dia (Pneumocistose)
+CD4 <50: + Azitromicina 1200mg 1x/semana (MAC)
+TB latente: Isoniazida 300mg + Piridoxina 50mg por 6-9 meses
+
+INTERAÇÕES IMPORTANTES:
+- Rifampicina: trocar DTG para 50mg 12/12h
+- NÃO usar: carbamazepina, fenitoína com ARV
+- Contraste iodado: avaliar função renal (TDF é nefrotóxico)`,
+    guideline: "MS / PCDT HIV 2024 / OMS",
+  },
+  {
+    id: "rx-classe-laxantes",
+    title: "Laxantes — Guia Rápido",
+    type: "Por Classe de Medicamento",
+    prescription: `OSMÓTICOS (1ª linha):
+Lactulose 15-30mL VO 12/12h (também usado para encefalopatia hepática)
+Polietilenoglicol (PEG 4000) 1 sachê em 250mL água 1-2x/dia
+Manitol 20% VO (preparo de colonoscopia)
+
+ESTIMULANTES:
+Bisacodil 5-10mg VO à noite (efeito em 6-12h)
+Senna 12mg VO à noite
+Picossulfato de sódio 5-10 gotas VO à noite
+
+EMOLIENTES:
+Docusato de sódio 100mg VO 12/12h (amolecedor fecal)
+Óleo mineral 15-45mL VO à noite (NÃO em idosos — risco aspiração)
+
+ENEMA (retal):
+Fleet enema (fosfato de sódio) 1 frasco via retal SN
+Glicerina supositório 1 unidade via retal SN
+
+PROCINÉTICOS:
+Prucaloprida 2mg VO 1x/dia (constipação crônica refratária)
+
+Em uso de opioide: Naloxegol 25mg VO 1x/dia OU Metilnaltrexona SC`,
+    notes: "PEG 4000: melhor perfil para uso crônico. Lactulose: pode causar flatulência. Estimulantes: não usar cronicamente.",
+  },
+  {
+    id: "rx-classe-antifibrinoliticos",
+    title: "Antifibrinolíticos e Hemostáticos — Guia Rápido",
+    type: "Por Classe de Medicamento",
+    prescription: `ÁCIDO TRANEXÂMICO:
+EV: 1g em 10 min (trauma, HPP, hemoptise)
+VO: 250-500mg 8/8h por 5 dias (menorragia, pós-extração dentária)
+Tópico: em gaze embebida (epistaxe, ferida oral)
+
+ÁCIDO AMINOCAPRÓICO:
+4-5g EV na 1ª hora → 1g/h em BIC (até 30g/dia)
+Alternativa ao tranexâmico
+
+VITAMINA K (Fitomenadiona):
+EV lento: 10mg em 100mL SF em 30 min (reversão de Varfarina / coagulopatia)
+VO: 5-10mg (efeito em 24-48h)
+IM: 1mg (RN ao nascer — profilaxia de doença hemorrágica)
+NÃO dar vitamina K EV em bolus rápido (risco de anafilaxia)
+
+PROTAMINA:
+1mg neutraliza 100UI de heparina NF
+Infundir lento (máx 50mg em 10 min)
+Para HBPM: neutralização parcial (60-75%)
+
+DESMOPRESSINA (DDAVP):
+0,3mcg/kg EV em 30 min (hemofilia A leve, von Willebrand tipo 1, uremia)`,
+    guideline: "ABHH / ISTH / SBC",
+  },
+];
