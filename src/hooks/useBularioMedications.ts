@@ -114,6 +114,40 @@ export function useBularioDetail(id: string | undefined) {
   });
 }
 
+/** Simple list query (used by SearchPage) */
+export function useBularioList(filters: BularioFilters) {
+  return useQuery({
+    queryKey: ["bulario", filters],
+    queryFn: async () => {
+      let query = supabase
+        .from("bulario_medications")
+        .select("id, nome, principio_ativo, nomes_comerciais, classe, categoria, forma_farmaceutica, via, controlado, pediatria, gestacao_seguro, tags")
+        .order("nome")
+        .limit(200);
+
+      const q = filters.search.trim();
+      if (q.length >= 2) {
+        query = query.or(
+          `nome.ilike.%${q}%,principio_ativo.ilike.%${q}%,classe.ilike.%${q}%,indicacoes.ilike.%${q}%`
+        );
+      }
+
+      if (filters.drugClass) query = query.eq("classe", filters.drugClass);
+      if (filters.category) query = query.eq("categoria", filters.category);
+      if (filters.dosageForm) query = query.eq("forma_farmaceutica", filters.dosageForm);
+      if (filters.route) query = query.eq("via", filters.route);
+      if (filters.controlled === true) query = query.eq("controlado", true);
+      if (filters.pediatric === true) query = query.eq("pediatria", true);
+      if (filters.pregnancySafe === true) query = query.eq("gestacao_seguro", true);
+
+      const { data, error } = await query;
+      if (error) throw error;
+      return (data ?? []) as BularioMedicationRow[];
+    },
+    staleTime: 5 * 60 * 1000,
+  });
+}
+
 /** Fetch total count for display */
 export function useBularioCount() {
   return useQuery({
