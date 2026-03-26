@@ -1086,5 +1086,48 @@ POSTERIOR (grave):
     warnings: "NÃO hiperestender cabeça (risco de aspiração de sangue). Verificar PA — crise hipertensiva pode ser causa. Manter tamponamento por 48-72h.",
     guideline: "ABORL-CCF / AAO-HNS",
   },
+  {
+    id: "rx-sint-miose-sialorr",
+    title: "Síndrome Colinérgica (Miose + Sialorreia + Bradicardia)",
+    type: "Por Sintoma",
+    prescription: `1. Suspeitar de: organofosforados, carbamatos, cogumelos muscarínicos
+2. Atropina 2-4mg EV a cada 5-10min (até secreções secas)
+3. Pralidoxima 1-2g EV em 15-30min (se organofosforado)
+4. IOT precoce se broncorreia/insuficiência respiratória
+5. Descontaminação cutânea + roupas
+6. Monitorizar colinesterase sérica
+7. Diazepam 10mg EV se convulsões`,
+    notes: "DUMBELS: Diarrhea, Urination, Miosis, Bradycardia/Bronchospasm, Emesis, Lacrimation, Salivation. Nicotínicos: fasciculações, fraqueza, taquicardia.",
+    guideline: "SBTox / AACT",
+  },
+  {
+    id: "rx-sint-midriase-taqui",
+    title: "Síndrome Anticolinérgica (Midríase + Taquicardia + Pele Seca)",
+    type: "Por Sintoma",
+    prescription: `1. Suspeitar de: tricíclicos, anti-histamínicos, escopolamina, atropina, plantas (Datura)
+2. Fisostigmina 1-2mg EV lento em 5min (APENAS se diagnóstico confirmado, sem QRS largo)
+3. Diazepam 10mg EV se agitação/convulsão
+4. Resfriamento ativo se hipertermia >39°C
+5. SVD se retenção urinária
+6. Carvão ativado 1g/kg se ingestão <1-2h
+7. ECG: QRS largo → NaHCO3 (pode ser tricíclico)`,
+    notes: "'Hot as a hare, dry as a bone, red as a beet, blind as a bat, mad as a hatter, full as a flask'. Fisostigmina: meia-vida 20-30min, pode precisar repetir.",
+    warnings: "Fisostigmina CONTRAINDICADA se QRS largo (tricíclico) — risco de assistolia. Na dúvida, não usar.",
+    guideline: "SBTox / AACT",
+  },
+  {
+    id: "rx-sint-dor-articular-aguda",
+    title: "Dor Articular Aguda — Manejo Inicial",
+    type: "Por Sintoma",
+    prescription: `1. Artrocentese diagnóstica (OBRIGATÓRIA se monoartrite aguda — excluir artrite séptica)
+2. Análise do líquido sinovial: celularidade, Gram, cultura, cristais (birrefringência)
+3. Analgesia: Dipirona 1g EV 6/6h + Cetoprofeno 100mg EV 12/12h
+4. Se artrite séptica: ATB empírico (Oxacilina 2g EV 4/4h + Ceftriaxona 2g EV/dia)
+5. Se gota: Colchicina 0,5mg VO 8/8h + AINE (NÃO iniciar alopurinol na crise)
+6. Se artrite reativa: AINE + repouso articular
+7. Imobilização + gelo local 20min 4x/dia`,
+    notes: "Monoartrite aguda: artrite séptica até prova em contrário. Líquido purulento (>50.000 cel): tratar como séptica. Gota: cristais em forma de agulha com birrefringência negativa.",
+    guideline: "SBR / ACR / EULAR",
+  },
 ];
 

@@ -670,4 +670,21 @@ MONITORIZAÇÃO:
     warnings: "Reação de Jarisch-Herxheimer: febre, mialgia, contrações nas primeiras 24h pós-tratamento. Monitorizar BCF. Não atrasar tratamento por medo da reação.",
     guideline: "MS / FEBRASGO / CDC / OMS",
   },
+  {
+    id: "rx-obst-colestase-intra-hepatica",
+    title: "Colestase Intra-Hepática da Gestação",
+    type: "Obstetrícia",
+    prescription: `1. Ácido Ursodesoxicólico (UDCA) 300mg VO 8/8h (dose total: 10-15mg/kg/dia)
+2. Dexametasona 12mg IM (maturação pulmonar se <34 semanas)
+3. Monitorizar: ácidos biliares séricos semanais, função hepática, coagulograma
+4. CTG (cardiotocografia) 2x/semana a partir do diagnóstico
+5. Anti-histamínico para prurido: Difenidramina 25-50mg VO 6/6h (seguro na gestação)
+6. Colestiramina 4g VO 2-3x/dia (se UDCA insuficiente)
+7. Vitamina K 10mg VO/dia (se coagulopatia)
+8. Programar parto com 36-37 semanas (se ácidos biliares ≥40) ou 37-38 semanas
+9. Resolução: sintomas desaparecem em 48h pós-parto`,
+    notes: "Ácidos biliares ≥40mcmol/L: risco aumentado de óbito fetal súbito (antecipar parto). Prurido palmo-plantar de predomínio noturno: sintoma clássico. É diagnóstico de exclusão.",
+    warnings: "Risco de morte fetal intraútero — monitorização fetal rigorosa. Colestiramina pode reduzir absorção de vitaminas lipossolúveis (K, D, A, E).",
+    guideline: "FEBRASGO / RCOG / ACOG / SMFM",
+  },
 ];

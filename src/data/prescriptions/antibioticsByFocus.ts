@@ -755,5 +755,47 @@ MENINGITE FÚNGICA (Criptococose):
     warnings: "NÃO atrasar ATB por punção lombar ou TC. Se contraindicação à PL: ATB empírico + TC → PL quando possível.",
     guideline: "SBI / IDSA / ESCMID / MS",
   },
+  {
+    id: "rx-atb-osteoarticular",
+    title: "ATB — Infecção Osteoarticular (Artrite Séptica / Osteomielite)",
+    type: "ATB por Foco",
+    prescription: `Artrite Séptica:
+1ª linha: Oxacilina 2g EV 4/4h + Ceftriaxona 2g EV/dia (cobertura Gram+ e Gram-)
+- Se MRSA: Vancomicina 15-20mg/kg EV 12/12h + Ceftriaxona 2g EV/dia
+- Duração: 2-4 semanas EV → transição VO por mais 2-4 semanas
+
+Osteomielite Aguda:
+1ª linha: Oxacilina 2g EV 4/4h por 4-6 semanas
+- Se MRSA: Vancomicina 15-20mg/kg EV 12/12h
+- Alternativa VO (transição): Clindamicina 600mg VO 8/8h ou Ciprofloxacino 750mg VO 12/12h + Rifampicina 600mg/dia
+
+Osteomielite Crônica:
+- Guiar por cultura + antibiograma SEMPRE
+- Desbridamento cirúrgico + ATB 6-8 semanas`,
+    notes: "S. aureus: principal agente em todas as faixas etárias. Artrite séptica: drenagem articular é parte ESSENCIAL do tratamento (punção seriada ou artroscopia). PCR e VHS para monitorizar resposta.",
+    warnings: "Osteomielite crônica: NUNCA tratar sem cultura (alta taxa de resistência). Transição EV→VO: só com boa biodisponibilidade oral e melhora clínica/laboratorial.",
+    guideline: "SBTO / IDSA / EBJIS",
+  },
+  {
+    id: "rx-atb-mordedura",
+    title: "ATB — Mordedura (Cão, Gato, Humano)",
+    type: "ATB por Foco",
+    prescription: `Profilaxia ATB (indicada se):
+- Mordedura de gato (SEMPRE — alta taxa de infecção)
+- Mordedura de humano
+- Mordedura de cão em mão, face, articulação, ou paciente imunossuprimido
+- Ferida profunda ou com esmagamento
+
+1ª linha: Amoxicilina-Clavulanato 875/125mg VO 12/12h por 5-7 dias
+Alergia à penicilina: Clindamicina 300mg VO 8/8h + Ciprofloxacino 500mg VO 12/12h
+
+Se infecção estabelecida (celulite, abscesso):
+- Ampicilina-Sulbactam 3g EV 6/6h (ou Pipe-Tazo)
+- Duração: 7-14 dias conforme resposta
+
+Sempre avaliar: profilaxia antirrábica + antitetânica`,
+    notes: "Pasteurella multocida: principal agente em mordedura de gato (infecção em <12h). Eikenella corrodens: mordedura humana. Capnocytophaga: mordedura de cão em esplenectomizado (sepse fulminante).",
+    guideline: "SBI / IDSA / MS (Profilaxia Antirrábica)",
+  },
 ];
 

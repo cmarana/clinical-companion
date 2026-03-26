@@ -547,4 +547,24 @@ PROTOCOLO:
     warnings: "Hipotermia: risco de bradicardia sinusal (tolerável), plaquetopenia, coagulopatia. NÃO iniciar após 6h de vida (sem benefício comprovado).",
     guideline: "SBP / ILCOR / AAP / NNF",
   },
+  {
+    id: "rx-neo-ictericia-grave",
+    title: "Icterícia Neonatal Grave — Fototerapia + Exsanguíneotransfusão",
+    type: "Neonatal",
+    prescription: `1. Bilirrubina total: verificar no nomograma de Bhutani (risco por hora de vida)
+2. Fototerapia intensiva:
+   - LED azul (430-490nm), irradiância ≥30mcW/cm²/nm
+   - Máxima superfície corporal exposta (apenas fralda)
+   - Controle de BT a cada 4-6h
+3. Hidratação: aumentar oferta hídrica em 20% (se VO: SME ou fórmula; se EV: TIG ajustada)
+4. Exsanguíneotransfusão — indicações:
+   - BT acima da curva de EST no nomograma
+   - Sinais de encefalopatia bilirrubínica aguda (letargia, hipotonia, opistótono)
+   - Falha da fototerapia intensiva
+5. Colher: tipagem ABO/Rh (mãe e RN), Coombs direto, reticulócitos, hemograma
+6. Investigar: incompatibilidade ABO/Rh, deficiência de G6PD, esferocitose`,
+    notes: "Kernicterus: sequela permanente (paralisia cerebral, surdez, paralisia do olhar). Prevenível com fototerapia adequada e monitorização. Zonas de Kramer: guia clínico para estimar nível.",
+    warnings: "NÃO atrasar fototerapia por aguardar exames. Encefalopatia bilirrubínica é EMERGÊNCIA — exsanguíneotransfusão imediata. Coombs direto positivo = hemólise imune.",
+    guideline: "SBP / AAP / NICE",
+  },
 ];

@@ -1018,5 +1018,52 @@ Bacteriana (secreção purulenta):
     notes: "Tamsulosina (alfa-bloqueador) facilita passagem de cálculos ureterais distais 5-10mm. Cálculos >10mm geralmente precisam de intervenção.",
     guideline: "SBU / EAU / AUA",
   },
+  {
+    id: "rx-alta-fratura-conservadora",
+    title: "Alta — Fratura com Tratamento Conservador",
+    type: "Alta",
+    prescription: `1. Manter imobilização (gesso/tala) conforme orientação ortopédica
+2. Dipirona 1g VO 6/6h (dor leve-moderada)
+3. Ibuprofeno 600mg VO 8/8h por 5-7 dias (com alimento)
+4. Codeína 30mg VO 6/6h se dor intensa (por 3-5 dias)
+5. Crioterapia: gelo local 20min 4x/dia por 72h
+6. Elevação do membro acima do coração
+7. Exercícios de mobilização dos dedos (prevenir rigidez)
+8. Retorno em 7 dias para Rx controle
+9. Sinais de alarme: dor intensa, parestesia, dedos cianóticos/edemaciados, febre`,
+    notes: "Orientar: NÃO molhar gesso, NÃO colocar objetos dentro, NÃO apoiar peso até liberação. Verificar sempre pulsos e sensibilidade distal.",
+    guideline: "SBTO / AAOS",
+  },
+  {
+    id: "rx-alta-intox-observacao",
+    title: "Alta — Pós-Observação por Intoxicação",
+    type: "Alta",
+    prescription: `1. Alta APENAS após período de observação adequado e estabilidade clínica
+2. Avaliação psiquiátrica obrigatória se tentativa de autoextermínio
+3. Remover acesso a substância/medicamento causador
+4. Orientar familiar/acompanhante sobre sinais de alerta
+5. Receita: sintomáticos conforme necessidade (antieméticos, analgésicos)
+6. NÃO prescrever medicação com potencial tóxico em grande quantidade
+7. Retorno ao PS se: sonolência excessiva, vômitos persistentes, confusão
+8. Encaminhar para acompanhamento: CAPS, psiquiatria, toxicologia`,
+    notes: "Tempos mínimos de observação: paracetamol 24h (com exames normais), BZD 2-6h, tricíclicos 24h, organofosforados 24-48h, opioides 4-6h (24-72h se metadona/fentanil).",
+    warnings: "NUNCA dar alta de tentativa de suicídio sem avaliação psiquiátrica. Risco de nova tentativa é maior nas primeiras semanas.",
+    guideline: "SBTox / ABP / MS",
+  },
+  {
+    id: "rx-alta-luxacao-reduzida",
+    title: "Alta — Pós-Redução de Luxação",
+    type: "Alta",
+    prescription: `1. Manter tipoia/imobilização conforme orientação (2-4 semanas para ombro)
+2. Dipirona 1g VO 6/6h + Ibuprofeno 600mg VO 8/8h por 5-7 dias
+3. Crioterapia 20min 4x/dia por 72h
+4. NÃO fazer movimentos de abdução/rotação externa (ombro)
+5. Exercícios isométricos e de amplitude limitada conforme orientação
+6. Retorno em 7-10 dias para reavaliação + fisioterapia
+7. Sinais de alarme: dor intensa, parestesia, fraqueza, sensação de instabilidade
+8. Encaminhar Ortopedia para avaliação de instabilidade/lesão ligamentar`,
+    notes: "Luxação recorrente de ombro: 80-90% de recidiva em <25 anos. Considerar tratamento cirúrgico (Bankart) precocemente em jovens atletas.",
+    guideline: "SBTO / AAOS",
+  },
 ];
 

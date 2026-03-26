@@ -908,5 +908,41 @@ FASE MANUTENÇÃO (Holliday-Segar):
     notes: "SRO do MS (osmolaridade reduzida) é a composição ideal. Não usar soro caseiro no lugar. Zinco 20mg/dia por 10-14 dias reduz duração da diarreia em crianças.",
     guideline: "MS / OMS / SBP / ESPGHAN",
   },
+  {
+    id: "rx-ped-intox-acidental",
+    title: "Intoxicação Acidental em Pediatria",
+    type: "Pediatria",
+    prescription: `1. ABCDE pediátrico — via aérea é prioridade
+2. Identificar substância, quantidade estimada, tempo de ingestão
+3. Contatar CIATox: 0800-722-6001
+4. Carvão ativado 1g/kg VO (se <1-2h, paciente alerta, substância adsorvível)
+5. NÃO provocar vômito (contraindicado em crianças <6 meses, cáusticos, hidrocarbonetos)
+6. Antídoto específico conforme substância:
+   - Paracetamol: NAC 150mg/kg EV (protocolo pediátrico)
+   - Opioide: Naloxona 0,1mg/kg EV (máx 2mg)
+   - BZD: suporte (flumazenil com cautela)
+7. Monitorização: ECG, glicemia, gasometria, eletrólitos
+8. Exames: hemograma, função hepática/renal, nível sérico da substância
+9. Internação para observação (mínimo 6-24h conforme substância)`,
+    notes: "Pico de intoxicação acidental: 1-5 anos. Produtos domésticos (limpeza, medicamentos) são as causas mais comuns. Sempre considerar maus-tratos em intoxicação repetida.",
+    warnings: "NÃO dar leite, água com sal, ou induzir vômito. Cáusticos: NÃO fazer carvão ativado nem lavagem gástrica.",
+    guideline: "SBP / SBTox / CIATox / AAP",
+  },
+  {
+    id: "rx-ped-fratura-torus",
+    title: "Fratura em Torus (Fratura em Fivela) — Pediatria",
+    type: "Pediatria",
+    prescription: `1. Fratura estável por definição — tratamento conservador
+2. Tala gessada removível (ou imobilização com splint) por 3-4 semanas
+3. Dipirona gotas: 1 gota/kg VO 6/6h (máx 40 gotas)
+4. Ibuprofeno gotas: 1 gota/kg VO 8/8h (máx 40 gotas)
+5. Crioterapia local 15min 3-4x/dia por 48h
+6. Exercícios de mobilização dos dedos
+7. Rx controle em 3-4 semanas (confirmar consolidação)
+8. Retorno em 7 dias para reavaliação do gesso
+9. Orientar pais: sinais de alarme (dor intensa, palidez dos dedos)`,
+    notes: "Fratura em torus: deformidade plástica da cortical — exclusiva de crianças. Muito estável, bom prognóstico. Imobilização removível tão eficaz quanto gesso circunferencial.",
+    guideline: "SBP / SBTO / AAOS / POSNA",
+  },
 ];
 

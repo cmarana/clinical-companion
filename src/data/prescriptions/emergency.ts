@@ -1210,5 +1210,59 @@ NÍVEL 3 — Contenção mecânica:
     warnings: "NÃO declarar óbito até aquecer a 32°C. Arritmias podem ser refratárias até reaquecimento. Afterdrop: queda paradoxal de T ao iniciar reaquecimento.",
     guideline: "AHA / ERC / Wilderness Medical Society",
   },
+  {
+    id: "rx-emerg-rabdomiolise",
+    title: "Rabdomiólise",
+    type: "Emergência",
+    prescription: `1. Hidratação agressiva: SF 0,9% 200-300mL/h (alvo diurese >200mL/h)
+2. Bicarbonato de sódio 8,4% 100mL + SF 900mL EV (alcalinizar urina — alvo pH urinário >6,5)
+3. Manitol 20% 0,5g/kg EV (se oligúria apesar de hidratação)
+4. Monitorizar: CPK 6/6h, K+, Ca2+, fósforo, creatinina, gasometria, mioglobina urinária
+5. Tratar hipercalemia agressivamente (principal causa de morte precoce)
+6. Hemodiálise se: K+ refratário, oligúria/anúria, acidose grave, hipervolemia
+7. Evitar: cálcio EV (deposita em músculo lesado), diuréticos de alça (acidificam urina)
+8. Fasciotomia se síndrome compartimental associada`,
+    notes: "Causas: trauma/esmagamento, convulsão prolongada, exercício extremo, drogas (estatinas, cocaína), imobilização prolongada. CPK >5x LSN = rabdomiólise. IRA ocorre em 15-40% dos casos.",
+    warnings: "CPK >15.000: alto risco de IRA. Hipercalemia pode ser fatal nas primeiras horas. Hipocalcemia inicial — NÃO repor (será liberada na fase de recuperação → hipercalcemia rebote).",
+    guideline: "SBN / KDIGO / EAU",
+  },
+  {
+    id: "rx-emerg-anafilaxia",
+    title: "Anafilaxia — Protocolo Completo",
+    type: "Emergência",
+    prescription: `1. Adrenalina 0,3-0,5mg IM (face anterolateral da coxa) — PRIMEIRA MEDIDA
+   - Repetir a cada 5-15min se sem melhora (até 3 doses)
+   - Crianças: 0,01mg/kg IM (máx 0,3mg)
+2. Posicionar: Trendelenburg (se hipotensão); sentado (se dispneia)
+3. O2 alto fluxo 10-15L/min
+4. Acesso venoso calibroso + SF 0,9% 1000mL EV rápido (repetir conforme PA)
+5. Difenidramina 50mg EV + Ranitidina 50mg EV (anti-H1 + anti-H2)
+6. Metilprednisolona 125mg EV (previne fase tardia — efeito em 4-6h)
+7. Se broncoespasmo: Salbutamol NBZ 5mg + ipratrópio
+8. Se refratário: Adrenalina EV 0,1-0,5mcg/kg/min em BIC
+9. Observar por mínimo 6-8h (anafilaxia bifásica: 1-23%)
+10. Alta com: auto-injetor de adrenalina + orientação + encaminhar alergista`,
+    notes: "Critérios diagnósticos: envolvimento de 2+ sistemas (pele/mucosa + respiratório + cardiovascular + GI) após exposição a alérgeno provável. Adrenalina IM é o tratamento — NUNCA atrasar.",
+    warnings: "NÃO usar adrenalina SC (absorção errática). Anti-histamínicos e corticoides NÃO são primeira linha. Anafilaxia bifásica pode ocorrer até 72h após.",
+    guideline: "ASBAI / WAO / EAACI / ACAAI",
+  },
+  {
+    id: "rx-emerg-hemorragia-digestiva-alta",
+    title: "Hemorragia Digestiva Alta — Manejo Inicial",
+    type: "Emergência",
+    prescription: `1. ABCDE + 2 acessos venosos calibrosos (16-18G)
+2. Ressuscitação volêmica: SF 0,9% / Ringer Lactato — alvo PAM >65mmHg
+3. Omeprazol 80mg EV bolus → 8mg/h EV em BIC (40mg 12/12h se sem BIC)
+4. Concentrado de hemácias se Hb <7g/dL (ou <9 se instável/cardiopata)
+5. Eritromicina 250mg EV 30min antes da EDA (pró-cinético — limpa estômago)
+6. Se varicosa (hepatopata): Terlipressina 2mg EV 4/4h + Ceftriaxona 1g EV/dia
+7. Octreotida 50mcg EV bolus → 50mcg/h EV (se terlipressina indisponível)
+8. SNG: controverso — considerar para avaliar volume
+9. EDA em até 12-24h (ou <12h se alto risco: instabilidade, hematêmese ativa)
+10. Blakemore-Sengstaken: ponte para EDA/TIPS se hemorragia maciça refratária`,
+    notes: "Score de Glasgow-Blatchford para estratificação (0 = baixo risco → alta). Score de Rockall pós-EDA para recidiva. Causas: úlcera péptica (mais comum), varizes, Mallory-Weiss.",
+    warnings: "NÃO usar AINE/AAS até definir causa. Terlipressina: contraindicada em coronariopata grave. Balão de Sengstaken: máximo 24h (necrose esofágica).",
+    guideline: "FBG / ESGE / ACG / BSG",
+  },
 ];
 

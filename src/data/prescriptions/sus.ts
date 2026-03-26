@@ -887,5 +887,43 @@ Manutenção ambulatorial SUS:
     notes: "Farmácia Popular: Insulina, Metformina, Glibenclamida são GRATUITOS. Seringas e fitas reagentes também. Orientar paciente sobre direitos.",
     guideline: "MS / SBD / PCDT Diabetes",
   },
+  {
+    id: "rx-sus-intox-agrotoxicos",
+    title: "Intoxicação por Agrotóxicos — Manejo SUS",
+    type: "SUS / UPA",
+    prescription: `1. ABCDE + descontaminação (retirar roupas, lavar pele — EQUIPE com EPI)
+2. Identificar produto: classe (organofosforado, carbamato, piretroide, glifosato)
+3. Atropina 2mg EV a cada 5min até atropinização (organofosforado/carbamato)
+4. Pralidoxima 1-2g EV lento (se organofosforado — solicitar via farmácia hospitalar/CIEVS)
+5. Carvão ativado 1g/kg VO (se ingestão <1h, paciente consciente)
+6. Contatar CIATox: 0800-722-6001 (orientação especializada 24h)
+7. Notificação COMPULSÓRIA: SINAN — ficha de intoxicação exógena
+8. Encaminhar para Centro de Referência em Toxicologia (se grave)
+9. Solicitar colinesterase sérica (eritrocitária = exposição crônica)`,
+    notes: "Brasil: maior consumidor de agrotóxicos do mundo. Intoxicação por organofosforado: principal causa de morte por intoxicação no meio rural. Notificação obrigatória em até 24h.",
+    warnings: "Equipe deve usar EPI completo na descontaminação. Vômito provocado: CONTRAINDICADO (risco de aspiração). Em UPA sem pralidoxima: atropinizar e transferir.",
+    guideline: "MS / SINITOX / CIATox / SBTox",
+  },
+  {
+    id: "rx-sus-acidente-ofidico",
+    title: "Acidente Ofídico (Serpentes) — Protocolo SUS",
+    type: "SUS / UPA",
+    prescription: `1. Identificar o tipo de acidente: Botrópico (jararaca), Crotálico (cascavel), Laquético (surucucu), Elapídico (coral)
+2. SORO ANTIVENENO (disponível nas UPAs/Hospitais de referência via SUS):
+   a) Botrópico leve: SAB 4 ampolas EV
+   b) Botrópico moderado: SAB 8 ampolas EV
+   c) Botrópico grave: SAB 12 ampolas EV
+   d) Crotálico: SAC 10-20 ampolas EV
+   e) Laquético: SABL 10-20 ampolas EV
+   f) Elapídico: SAE 10 ampolas EV
+3. Diluir soro em SF 0,9% 250mL, EV em 20-60min (infusão rápida)
+4. Pré-medicação: Hidrocortisona 500mg + Prometazina 50mg EV (prevenir reação)
+5. Hidratação vigorosa: SF 0,9% + manter diurese >1mL/kg/h
+6. Monitorizar: TC (coagulograma) 12/12h, CPK, função renal, diurese
+7. NÃO fazer torniquete, NÃO sugar veneno, NÃO aplicar substâncias no local
+8. Notificação COMPULSÓRIA: SINAN`,
+    notes: "Botrópico: 90% dos acidentes no Brasil. Coagulopatia de consumo é o principal risco. Dose de soro baseada na gravidade clínica (não no peso do paciente).",
+    guideline: "MS / Instituto Butantan / Fundação Ezequiel Dias",
+  },
 ];
 
