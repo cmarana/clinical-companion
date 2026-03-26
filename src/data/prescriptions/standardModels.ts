@@ -763,5 +763,61 @@ CRM / Carimbo / Assinatura`,
     notes: "SEMPRE registrar acuidade visual no prontuário (medida pré e pós-tratamento). É o 'sinal vital' da Oftalmologia.",
     guideline: "CBO / AAO",
   },
+  {
+    id: "rx-modelo-internacao-hematologia",
+    title: "Modelo — Internação Hematologia (Neutropenia Febril)",
+    type: "Modelo Padrão",
+    prescription: `1. Dieta branda (baixo teor bacteriano — sem saladas cruas, frutas sem casca)
+2. SF 0,9% 1000mL EV 8/8h
+3. Cefepima 2g EV 8/8h (ou Pipe-Tazo 4,5g EV 6/6h)
+4. Vancomicina 1g EV 12/12h (se mucosite grave, celulite, cateter)
+5. Dipirona 1g EV 6/6h (se febre/dor — NÃO usar AINE)
+6. Omeprazol 40mg EV 1x/dia
+7. Ondansetrona 8mg EV 8/8h (se náusea/vômito)
+8. Filgrastima (G-CSF) 300mcg SC 1x/dia (se indicado)
+9. Hemograma + PCR + função renal/hepática diários
+10. Hemoculturas se pico febril ≥38,3°C
+11. Precauções de contato + gotículas`,
+    notes: "Neutropenia febril: emergência oncológica. ATB em até 60min. MASCC ≥21: considerar tratamento ambulatorial se estrutura adequada.",
+    guideline: "ABHH / IDSA / ASCO",
+  },
+  {
+    id: "rx-modelo-internacao-ortopedia",
+    title: "Modelo — Internação Ortopedia (Fratura de Fêmur Proximal)",
+    type: "Modelo Padrão",
+    prescription: `1. Dieta livre (se sem previsão cirúrgica imediata) / Jejum (se cirurgia programada)
+2. SF 0,9% 1000mL EV 8/8h (ajustar conforme comorbidades)
+3. Dipirona 1g EV 6/6h
+4. Tramadol 100mg + SF 100mL EV 8/8h (infundir em 30min)
+5. Morfina 3-5mg SC 4/4h ACM (resgate)
+6. Omeprazol 40mg EV 1x/dia
+7. Enoxaparina 40mg SC 1x/dia (iniciar na admissão — manter até 35 dias pós-op)
+8. Ondansetrona 8mg EV 8/8h se náusea
+9. Tração cutânea provisória (se aguardando cirurgia >24h)
+10. Avaliação pré-anestésica + risco cirúrgico
+11. Rx de tórax, ECG, hemograma, coagulograma, função renal, tipagem sanguínea
+12. Prevenção de delirium: orientação temporal, óculos/prótese auditiva, mobilização precoce`,
+    notes: "Fratura de fêmur em idoso: cirurgia idealmente em <48h (reduz mortalidade). Avaliar risco de delirium (CAM). Tromboprofilaxia prolongada (35 dias).",
+    guideline: "SBTO / NICE / AAOS",
+  },
+  {
+    id: "rx-modelo-toxicologia",
+    title: "Modelo — Admissão Centro de Toxicologia",
+    type: "Modelo Padrão",
+    prescription: `1. ABCDE + monitorização contínua (ECG, SpO2, PA)
+2. Identificar toxídrome: colinérgica, anticolinérgica, simpatomimética, opioide, sedativa
+3. Colher: hemograma, eletrólitos, gasometria, glicemia, função renal/hepática, CPK, lactato
+4. ECG 12 derivações (QRS, QTc)
+5. Screening toxicológico urinário (se disponível)
+6. Descontaminação conforme indicação e tempo de ingestão:
+   - Carvão ativado 1g/kg VO (se <1-2h, via aérea protegida)
+   - Lavagem gástrica: rara indicação (ingestão <1h de substância potencialmente letal)
+7. Antídoto específico conforme toxídrome
+8. SF 0,9% 1000mL EV (hidratação de manutenção)
+9. Diazepam 10mg EV se convulsão/agitação
+10. Contato com CIATox: 0800-722-6001`,
+    notes: "5 toxídromes: colinérgica, anticolinérgica, simpatomimética, opioide, sedativo-hipnótica. Sempre colher nível sérico de paracetamol (coingestão frequente e insidiosa).",
+    guideline: "SBTox / AACT / CIATox",
+  },
 ];
 

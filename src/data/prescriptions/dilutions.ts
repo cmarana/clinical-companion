@@ -1695,5 +1695,64 @@ Estabilidade: 24h em temperatura ambiente (proteger da luz)`,
     warnings: "NÃO usar em SG 5% (precipitação). Hepatotoxicidade rara — monitorar função hepática semanal. Menos interações medicamentosas que Voriconazol.",
     guideline: "ANVISA / IDSA / ESCMID",
   },
+  {
+    id: "rx-dil-n-acetilcisteina",
+    title: "N-Acetilcisteína (NAC) — Diluição EV",
+    type: "Diluição",
+    prescription: `Protocolo Prescott (21h) para intoxicação por Paracetamol:
+1ª fase (1h): NAC 150mg/kg + SG 5% 200mL EV em 1h
+2ª fase (4h): NAC 50mg/kg + SG 5% 500mL EV em 4h
+3ª fase (16h): NAC 100mg/kg + SG 5% 1000mL EV em 16h
+- Dose total: 300mg/kg em 21h
+- Usar peso real (até 110kg — acima usar 110kg)
+- Reação anafilactóide (rubor, urticária): reduzir velocidade de infusão, anti-histamínico`,
+    notes: "NAC EV: ampola 600mg/3mL ou 300mg/3mL (verificar apresentação local). Protocolo modificado de 2 bolsas (Bateman) cada vez mais aceito.",
+    warnings: "Reação anafilactóide em 10-20% dos casos (mais comum na 1ª bolsa). NÃO é alergia verdadeira — geralmente pode continuar com velocidade menor.",
+    guideline: "SBTox / RCEM / AACT",
+  },
+  {
+    id: "rx-dil-pralidoxima",
+    title: "Pralidoxima (Contrathion) — Diluição EV",
+    type: "Diluição",
+    prescription: `Intoxicação por Organofosforados:
+Ataque: 1-2g diluídos em SF 0,9% 100mL EV em 15-30min
+Manutenção: 500mg/h EV em BIC ou 1g EV a cada 6-8h (diluir em SF 0,9% 100mL)
+- Ampola: 200mg/mL (frasco 10mL = 2g) — varia conforme fabricante
+- Iniciar idealmente nas primeiras 6h (antes do envelhecimento da AChE)
+- Manter por 24-48h ou até melhora clínica + colinesterase em ascensão`,
+    notes: "Pralidoxima reativa a acetilcolinesterase fosforilada. Após 'envelhecimento' (24-48h), a enzima torna-se irreversível e pralidoxima é ineficaz.",
+    warnings: "Infusão rápida: hipotensão, rigidez muscular, laringoespasmo. Sempre administrar em 15-30min. Não substitui atropina (ações complementares).",
+    guideline: "SBTox / WHO / AACT",
+  },
+  {
+    id: "rx-dil-naloxona-infusao",
+    title: "Naloxona — Infusão Contínua EV",
+    type: "Diluição",
+    prescription: `Intoxicação por Opioides com necessidade de infusão contínua:
+Dose: 2/3 da dose eficaz (que reverteu a depressão) por hora
+Preparo: Naloxona 2mg (5 ampolas de 0,4mg) + SF 0,9% 250mL
+Concentração: 8mcg/mL
+Infusão: ajustar conforme resposta clínica (geralmente 0,4-0,8mg/h)
+- Monitorizar: FR, nível de consciência, tamanho pupilar
+- Titular para FR >12irpm sem abstinência`,
+    notes: "Meia-vida da naloxona (30-90min) é menor que a maioria dos opioides. Metadona: infusão por 48-72h. Fentanil ilícito: pode precisar doses muito altas.",
+    warnings: "Abstinência aguda por naloxona: vômitos (risco de aspiração), agitação, hipertensão, edema pulmonar. Em dependentes, titular com cautela.",
+    guideline: "SBTox / AACT / AHA",
+  },
+  {
+    id: "rx-dil-bicarbonato-intox",
+    title: "Bicarbonato de Sódio — Infusão para Intoxicações",
+    type: "Diluição",
+    prescription: `Intoxicação por Tricíclicos / Bloqueadores de Canal de Na+:
+Bolus: NaHCO3 8,4% 1-2mEq/kg (1-2mL/kg) EV em 2-3min
+- Repetir a cada 3-5min se QRS >100ms persistir
+Manutenção: NaHCO3 8,4% 150mL + SG 5% 850mL EV em BIC
+- Velocidade: 150-250mL/h (titular pelo pH arterial e QRS)
+- Alvo: pH 7,45-7,55 (NÃO ultrapassar 7,55)
+- Monitorizar: ECG contínuo (QRS), gasometria 2/2h, Na+, K+`,
+    notes: "Mecanismo: alcalinização aumenta ligação proteica do tricíclico + supera bloqueio de Na+. Funciona também para: cocaína, propafenona, flecainida, quinidina.",
+    warnings: "Hipocalemia pode ocorrer com alcalinização (monitorizar e repor K+). NÃO usar em intoxicação por betabloqueadores ou BCC (sem benefício).",
+    guideline: "SBTox / AHA / AACT",
+  },
 ];
 

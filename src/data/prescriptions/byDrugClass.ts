@@ -923,5 +923,44 @@ Fisostigmina 1-2mg EV lento (uso restrito, monitorização)`,
     notes: "Síndrome anticolinérgica: 'hot as a hare, dry as a bone, red as a beet, blind as a bat, mad as a hatter'. Causas: anti-histamínicos, antidepressivos tricíclicos, escopolamina.",
     guideline: "SBA / SBTox",
   },
+  {
+    id: "rx-classe-antidotos",
+    title: "Antídotos — Principais",
+    type: "Classe de Medicamento",
+    prescription: `1. Paracetamol → N-Acetilcisteína (NAC)
+2. Opioides → Naloxona
+3. Benzodiazepínicos → Flumazenil (com cautela)
+4. Organofosforados → Atropina + Pralidoxima
+5. Tricíclicos → Bicarbonato de sódio
+6. Digitálicos → Anticorpo antidigoxina (Fab)
+7. Betabloqueadores → Glucagon
+8. Bloqueadores de canal de cálcio → Glucagon + Insulina em alta dose
+9. Cumarínicos (Varfarina) → Vitamina K + CCP (complexo protrombínico)
+10. Heparina → Protamina
+11. Ferro → Desferoxamina
+12. Metanol/Etilenoglicol → Fomepizol (ou Etanol)
+13. Isoniazida → Piridoxina (Vitamina B6)
+14. Cianeto → Hidroxocobalamina`,
+    notes: "Estoque mínimo obrigatório em PS: NAC, Naloxona, Atropina, Flumazenil, NaHCO3, Glucagon, Vitamina K, Protamina. Antídotos raros: contatar CIATox.",
+    guideline: "SBTox / AACT / WHO",
+  },
+  {
+    id: "rx-classe-relaxantes-musculares",
+    title: "Relaxantes Musculares — Prescrição no PS",
+    type: "Classe de Medicamento",
+    prescription: `1. Ciclobenzaprina 5-10mg VO 8/8h (mais usado)
+   - Efeitos: sedação, boca seca
+   - NÃO usar em idosos, cardiopatas, uso de IMAO
+2. Carisoprodol 125-350mg VO 8/8h
+   - Atenção: potencial de abuso/dependência
+3. Tizanidina 2-4mg VO 8/8h (agonista alfa-2)
+   - Hipotensão e sedação dose-dependente
+4. Baclofeno 5-10mg VO 8/8h (espasticidade central)
+   - Titular lentamente, NÃO suspender abruptamente
+5. Dantrolene 25-100mg VO 8/8h (espasticidade + SNM)
+   - Hepatotoxicidade — monitorizar função hepática`,
+    notes: "Relaxantes musculares: evidência limitada para lombalgia aguda. Usar por tempo curto (7-14 dias). Ciclobenzaprina: estrutura similar a tricíclicos (mesmos cuidados).",
+    guideline: "SBR / AAN / NICE",
+  },
 ];
 

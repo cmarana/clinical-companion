@@ -3553,5 +3553,314 @@ FASE 5 — Transição:
     warnings: "NÃO usar SG 50% sem acesso venoso calibroso (necrose se extravasar). Glibenclamida em idoso/DRC: principal causa de hipoglicemia prolongada.",
     guideline: "SBEM / ADA / Endocrine Society",
   },
+  // === ORTOPEDIA ===
+  {
+    id: "rx-sindrome-compartimental",
+    title: "Síndrome Compartimental Aguda",
+    type: "Ortopedia",
+    prescription: `1. EMERGÊNCIA CIRÚRGICA — fasciotomia em até 6h
+2. Analgesia: Morfina 5-10mg EV (não mascarar dor — guia diagnóstico)
+3. Remover gesso/curativo circunferencial IMEDIATAMENTE
+4. Membro em posição neutra (NÃO elevar — piora perfusão)
+5. SF 0,9% 1000mL EV rápido (prevenção de rabdomiólise)
+6. Manitol 20% — 1g/kg EV (se rabdomiólise associada)
+7. Bicarbonato de sódio 8,4% — 100mL + SF 900mL EV (alcalinizar urina)
+8. Monitorizar: CPK, K+, creatinina, mioglobina, diurese
+9. Pressão compartimental >30mmHg ou delta <30mmHg da PAD → fasciotomia
+10. Pós-fasciotomia: curativo a vácuo, revisão em 48-72h`,
+    notes: "5 Ps: Pain (dor desproporcional), Pressure (tensão), Paresthesia, Paralysis, Pulselessness (tardio). Dor ao alongamento passivo é o sinal mais precoce e sensível.",
+    warnings: "NÃO esperar pulso ausente para diagnosticar (sinal tardio = isquemia irreversível). Tempo-dependente: >6h de isquemia = dano irreversível. Fasciotomia de emergência.",
+    guideline: "SBTO / AAOS / BOTS",
+  },
+  {
+    id: "rx-luxacao-ombro-anterior",
+    title: "Luxação Anterior de Ombro",
+    type: "Ortopedia",
+    prescription: `1. Analgesia + sedação procedural:
+   - Midazolam 2-5mg EV + Fentanil 50-100mcg EV, OU
+   - Propofol 0,5-1mg/kg EV (com monitorização)
+2. Técnica de redução (escolher uma):
+   a) Kocher: rotação externa → adução → rotação interna
+   b) Milch: abdução gradual → rotação externa → tração
+   c) Cunningham: massagem dos músculos periescapulares
+   d) Estimson: decúbito ventral + peso 3-5kg no braço por 20-30min
+3. Pós-redução: Rx controle (AP + perfil axilar)
+4. Tipoia tipo Velpeau por 3-4 semanas (<25 anos) ou 1-2 semanas (>40 anos)
+5. Crioterapia local 20min 4x/dia por 72h
+6. Dipirona 1g VO 6/6h + Ibuprofeno 600mg VO 8/8h
+7. Encaminhar para Ortopedia (avaliação de lesão de Bankart/Hill-Sachs)`,
+    alternatives: "Técnica do Hennepin (rotação externa pura): menos dor, pode dispensar sedação. Bloqueio intra-articular com Lidocaína 1% 20mL como alternativa à sedação.",
+    notes: "Luxação anterior = 95% dos casos. Avaliar nervo axilar (sensibilidade deltóide) e artéria axilar antes e após redução. Recorrência: 80-90% em <20 anos.",
+    warnings: "NÃO forçar redução — risco de fratura. Se irredutível: avaliação de interposição tecidual → redução aberta. Rx pré-redução obrigatório para excluir fratura.",
+    guideline: "SBTO / AAOS / EFORT",
+  },
+  {
+    id: "rx-fratura-colles",
+    title: "Fratura de Colles (Rádio Distal)",
+    type: "Ortopedia",
+    prescription: `1. Bloqueio do hematoma: Lidocaína 1% sem vaso 5-10mL no foco de fratura
+2. Redução incruenta sob tração (se desviada)
+3. Imobilização: tala gessada antebraquiopalmar
+4. Verificação neurovascular pós-imobilização (pulso radial, sensibilidade)
+5. Rx controle pós-redução (critérios de aceitabilidade)
+6. Analgesia: Dipirona 1g VO 6/6h + Cetoprofeno 100mg VO 12/12h
+7. Elevação do membro + crioterapia + exercícios de dedos
+8. Retorno em 7 dias para Rx controle e avaliação de desvio secundário
+9. Critérios cirúrgicos: encurtamento >3mm, inclinação dorsal >10°, degrau articular >2mm`,
+    notes: "Fratura mais comum do PS. Mecanismo: queda com mão espalmada (FOOSH). Sempre avaliar fratura de escafóide associada (dor na tabaqueira anatômica).",
+    warnings: "Síndrome do túnel do carpo aguda: parestesia mediano pós-fratura → URGÊNCIA (descompressão). Monitorar edema sob gesso.",
+    guideline: "SBTO / AAOS / BSSH",
+  },
+  {
+    id: "rx-luxacao-cotovelo",
+    title: "Luxação de Cotovelo",
+    type: "Ortopedia",
+    prescription: `1. Sedação procedural: Midazolam 3-5mg + Fentanil 50-100mcg EV
+2. Redução: tração no antebraço + contratração no braço
+3. Teste de estabilidade pós-redução (flexão-extensão)
+4. Rx controle AP e perfil
+5. Tala gessada axilopalmar em 90° de flexão
+6. Analgesia: Dipirona 1g 6/6h + Ibuprofeno 600mg 8/8h
+7. Crioterapia + elevação do membro
+8. Mobilização precoce em 7-10 dias (evitar rigidez)
+9. Avaliar: nervo ulnar, artéria braquial, fraturas associadas (coronóide, cabeça do rádio)`,
+    notes: "Segunda luxação mais comum. 'Tríade terrível': luxação + fratura coronóide + fratura cabeça do rádio → indicação cirúrgica. Avaliar nervo ulnar (parestesia 4° e 5° dedos).",
+    guideline: "SBTO / AAOS",
+  },
+  {
+    id: "rx-fratura-exposta-manejo",
+    title: "Fratura Exposta — Manejo Inicial no PS",
+    type: "Ortopedia",
+    prescription: `1. ATLS: ABCDE + controle de hemorragia
+2. Foto da ferida + curativo estéril úmido com SF
+3. NÃO explorar a ferida no PS (fazer no centro cirúrgico)
+4. Imobilização provisória com tala
+5. ATB (iniciar em até 1h):
+   - Gustilo I-II: Cefazolina 2g EV 8/8h
+   - Gustilo III: Cefazolina 2g EV 8/8h + Gentamicina 5mg/kg/dia EV
+   - Gustilo IIIB/C com contaminação: adicionar Metronidazol 500mg EV 8/8h
+6. Profilaxia antitetânica (dT + SAT/IGHAT conforme história vacinal)
+7. Analgesia: Morfina 5-10mg EV + Dipirona 1g EV
+8. Centro cirúrgico: desbridamento + lavagem + fixação em até 6h`,
+    notes: "Classificação de Gustilo-Anderson no centro cirúrgico (não no PS). Tempo porta-ATB <1h reduz infecção. Foto da ferida evita exposições repetidas.",
+    warnings: "NÃO tentar reduzir osso exposto para dentro da ferida. NÃO usar torniquete >2h sem afrouxar.",
+    guideline: "SBTO / ATLS / BOA-BAPRAS",
+  },
+  // === HEMATOLOGIA ===
+  {
+    id: "rx-civd",
+    title: "Coagulação Intravascular Disseminada (CIVD)",
+    type: "Hematologia",
+    prescription: `1. TRATAR A CAUSA BASE (sepse, neoplasia, trauma, obstétrica)
+2. Suporte hemoterápico (guiado por sangramento ativo):
+   a) Plaquetas: manter >50.000 (se sangramento ativo) ou >20.000 (se sem sangramento)
+   b) Crioprecipitado: 1U/5-10kg se fibrinogênio <150mg/dL (alvo >150)
+   c) PFC: 10-15mL/kg se TP/TTPA >1,5x o controle
+3. Ácido tranexâmico 1g EV 8/8h (se hiperfibrinólise predominante)
+4. Heparina NÃO FRACIONADA 5-10U/kg/h EV (APENAS se trombose predominante — ex: purpura fulminans)
+5. Monitorizar 6/6h: plaquetas, fibrinogênio, TP, TTPA, D-dímero, esquizócitos
+6. Suporte: SF 0,9% para manter PAM >65mmHg
+7. Concentrado de hemácias se Hb <7g/dL (ou <9 se instável)`,
+    notes: "CIVD aguda: consumo > produção → sangramento. CIVD crônica: compensada → trombose. ISTH DIC Score ≥5 = CIVD. Fibrinogênio é o melhor marcador de gravidade.",
+    warnings: "NÃO dar heparina em CIVD com sangramento ativo (exceto purpura fulminans). Tratar a causa é o principal tratamento. Ácido tranexâmico contraindicado se trombose predominante.",
+    guideline: "ABHH / ISTH / BSH",
+  },
+  {
+    id: "rx-ptt-shu",
+    title: "Púrpura Trombocitopênica Trombótica (PTT) / SHU",
+    type: "Hematologia",
+    prescription: `1. PTT é EMERGÊNCIA — plasmaférese em até 4-8h
+2. Enquanto aguarda plasmaférese:
+   a) PFC 30mL/kg EV (repor ADAMTS13)
+   b) Metilprednisolona 1g EV/dia por 3 dias (pulsoterapia)
+3. Plasmaférese: 1-1,5 volemia plasmática/dia até normalização
+4. Caplacizumab 11mg EV (dose de ataque) → 11mg SC/dia (se disponível)
+5. Rituximab 375mg/m² EV semanal por 4 semanas (refratário/recorrente)
+6. NÃO transfundir plaquetas (exceto se sangramento com risco de vida)
+7. Monitorizar: LDH, esquizócitos, plaquetas, Hb, creatinina, ADAMTS13
+8. Ácido fólico 5mg/dia VO (suporte à eritropoiese)
+9. SHU típica (E.coli O157:H7): suporte — NÃO dar ATB (piora liberação de toxina Shiga)`,
+    notes: "Pêntade da PTT: trombocitopenia, anemia hemolítica microangiopática, febre, alteração neurológica, insuficiência renal. Na prática, basta MAT + plaquetopenia. ADAMTS13 <10% = PTT.",
+    warnings: "NUNCA transfundir plaquetas na PTT (piora trombose microvascular). Mortalidade sem tratamento >90%. SHU: ATB aumenta risco de SHU em infecção por E.coli O157.",
+    guideline: "ABHH / ISTH / ASH / BSH",
+  },
+  {
+    id: "rx-crise-falcemica-vaso-oclusiva",
+    title: "Crise Vaso-Oclusiva Falcêmica",
+    type: "Hematologia",
+    prescription: `1. Analgesia agressiva (escalonada):
+   a) Dipirona 1g EV 6/6h + Cetoprofeno 100mg EV 12/12h
+   b) Morfina 0,1-0,15mg/kg EV a cada 15-20min até alívio (sem dose máxima fixa)
+   c) PCA (bomba de analgesia controlada pelo paciente) se disponível
+2. Hidratação: SF 0,9% 30mL/kg/dia EV (NÃO hiper-hidratar — risco STA)
+3. O2 suplementar APENAS se SpO2 <95%
+4. Ácido fólico 5mg/dia VO
+5. Tromboprofilaxia: Enoxaparina 40mg SC/dia (se internado)
+6. Se febre ≥38,3°C: hemoculturas + ATB (Ceftriaxona 2g EV/dia) — risco de sepse por encapsulados
+7. Transfusão simples se Hb <5-6g/dL ou queda >2g do basal
+8. Exsanguíneotransfusão: STA grave, AVC, priapismo refratário`,
+    notes: "STA (Síndrome Torácica Aguda): infiltrado novo + sintoma respiratório + febre. Principal causa de morte na falciforme. Exsanguíneotransfusão parcial é o tratamento.",
+    warnings: "NÃO hiper-hidratar (precipita STA e edema pulmonar). Alvo Hb pós-transfusão ≤10g/dL (hiper-viscosidade se >10). Meperidina CONTRAINDICADA (convulsões).",
+    guideline: "ABHH / ASH / NHLBI / NICE",
+  },
+  {
+    id: "rx-neutropenia-febril",
+    title: "Neutropenia Febril",
+    type: "Hematologia",
+    prescription: `1. EMERGÊNCIA — ATB em até 60min da triagem
+2. Colher antes do ATB: 2 pares de hemoculturas (periférica + cateter se presente)
+3. ATB empírico:
+   a) Baixo risco (MASCC ≥21): Amoxicilina-Clavulanato 500mg VO 8/8h + Ciprofloxacino 500mg VO 12/12h
+   b) Alto risco: Cefepima 2g EV 8/8h OU Piperacilina-Tazobactam 4,5g EV 6/6h OU Meropenem 1g EV 8/8h
+4. Adicionar Vancomicina 15-20mg/kg EV 12/12h SE: instabilidade, mucosite grave, infecção de cateter, celulite
+5. Adicionar antifúngico (Caspofungina 70mg D1, 50mg/dia) SE: febre persistente >4-7 dias apesar de ATB
+6. G-CSF (Filgrastima) 5mcg/kg/dia SC: considerar se alto risco de complicações
+7. Monitorizar: hemograma diário, culturas, PCR, função renal/hepática`,
+    notes: "Neutropenia febril: neutrófilos <500/mm³ + febre ≥38,3°C (1x) ou ≥38°C por >1h. MASCC score para estratificação de risco.",
+    warnings: "NÃO atrasar ATB por exames. Infecção pode ser fulminante sem neutrófilos. Evitar AINE (mascara febre). Toque retal contraindicado.",
+    guideline: "ABHH / IDSA / ASCO / ESMO",
+  },
+  // === TOXICOLOGIA ===
+  {
+    id: "rx-intox-organofosforados",
+    title: "Intoxicação por Organofosforados",
+    type: "Toxicologia",
+    prescription: `1. ABCDE + descontaminação (retirar roupas, lavar pele com água e sabão)
+2. Atropina 2-4mg EV a cada 5-10min até atropinização:
+   - Alvo: secreções secas, FC >80bpm, pupilas médias
+   - Pode necessitar doses altas (centenas de mg nas primeiras 24h)
+   - Manutenção: infusão contínua 0,5-1mg/h (titular por secreções)
+3. Pralidoxima (Contrathion) 1-2g EV em 15-30min:
+   - Idealmente nas primeiras 6h (antes do envelhecimento da AChE)
+   - Manutenção: 500mg/h EV ou 1g EV 6/6h por 24-48h
+4. Diazepam 10mg EV se convulsões
+5. IOT precoce se insuficiência respiratória (NÃO usar Succinilcolina — metabolizada por colinesterase)
+6. Monitorizar: colinesterase sérica, ECG (QTc), gasometria, eletrólitos
+7. Lavagem gástrica: considerar se ingestão <1h (com via aérea protegida)
+8. Carvão ativado 1g/kg (se ingestão <1h, paciente consciente)`,
+    notes: "Síndrome colinérgica: DUMBELS (Diarrhea, Urination, Miosis, Bradycardia/Bronchospasm, Emesis, Lacrimation, Salivation). Síndrome intermediária: 24-96h após exposição.",
+    warnings: "NÃO usar Succinilcolina para IOT (bloqueio prolongado). Atropina NÃO reverte fraqueza muscular (apenas secreções). Pralidoxima ineficaz após 'envelhecimento' da enzima (24-48h).",
+    guideline: "SBTox / EXTRIP / WHO / ACT",
+  },
+  {
+    id: "rx-intox-paracetamol",
+    title: "Intoxicação por Paracetamol (Acetaminofeno)",
+    type: "Toxicologia",
+    prescription: `1. Dose tóxica: >150mg/kg ou >7,5g em adultos
+2. Carvão ativado 1g/kg VO (se ingestão <2h, paciente consciente)
+3. N-Acetilcisteína (NAC) — ANTÍDOTO:
+   a) Protocolo EV 21h (Prescott):
+      - 150mg/kg em SG 5% 200mL EV em 1h (ataque)
+      - 50mg/kg em SG 5% 500mL EV em 4h
+      - 100mg/kg em SG 5% 1000mL EV em 16h
+   b) Protocolo VO 72h: 140mg/kg ataque → 70mg/kg 4/4h por 17 doses
+4. Iniciar NAC se:
+   - Dose >150mg/kg e <8h da ingestão (não esperar nível sérico)
+   - Nível sérico acima da linha de tratamento no nomograma de Rumack-Matthew
+   - Apresentação tardia (>24h) com ALT elevada
+5. Monitorizar: ALT/AST 12/12h, bilirrubinas, TP/INR, creatinina, lactato
+6. Critérios de King's College para transplante hepático de emergência`,
+    notes: "Fases: I (0-24h) assintomático/náuseas; II (24-72h) hepatotoxicidade; III (72-96h) falência hepática; IV (>96h) recuperação. NAC é 100% eficaz se iniciada <8h.",
+    warnings: "Paracetamol é a principal causa de falência hepática aguda no mundo. Dose única >150mg/kg ou múltiplas doses >75mg/kg/dia. NAC pode causar reação anafilactóide (não é alergia — reduzir velocidade).",
+    guideline: "SBTox / AACT / RCEM / Toxbase",
+  },
+  {
+    id: "rx-intox-triciclicos",
+    title: "Intoxicação por Antidepressivos Tricíclicos",
+    type: "Toxicologia",
+    prescription: `1. ABCDE — IOT precoce se rebaixamento ou convulsão
+2. ECG seriado: QRS >100ms = risco de arritmia; >160ms = risco de TV/FV
+3. Bicarbonato de sódio 8,4%:
+   - 1-2mEq/kg EV em bolus se QRS >100ms ou hipotensão
+   - Manutenção: NaHCO3 150mL + SG 5% 850mL EV em BIC (alvo pH 7,45-7,55)
+4. Diazepam 10mg EV se convulsões (NÃO usar fenitoína — piora cardiotoxicidade)
+5. Noradrenalina 0,1-0,5mcg/kg/min EV (se hipotensão refratária ao NaHCO3)
+6. NÃO usar Flumazenil (risco de convulsão)
+7. NÃO fazer lavagem gástrica tardia (risco de aspiração + retardo esvaziamento)
+8. Carvão ativado 1g/kg (se ingestão <1h, via aérea protegida)
+9. Monitorização cardíaca contínua por mínimo 24h
+10. Se TV/FV: NaHCO3 + Lidocaína 1mg/kg EV (NÃO amiodarona)`,
+    notes: "Tríade da intoxicação tricíclica: convulsão + arritmia + hipotensão. Bloqueio dos canais de Na+ (QRS largo), anticolinérgico (taquicardia, midríase, retenção urinária), anti-histamínico (sedação).",
+    warnings: "QRS >100ms é o melhor preditor de convulsão. QRS >160ms prediz arritmia ventricular. NÃO usar antiarrítmicos classe IA/IC. Fenitoína CONTRAINDICADA. Monitorizar mínimo 24h mesmo se assintomático.",
+    guideline: "SBTox / AACT / AHA / Toxbase",
+  },
+  {
+    id: "rx-intox-benzodiazepinicos",
+    title: "Intoxicação por Benzodiazepínicos",
+    type: "Toxicologia",
+    prescription: `1. ABCDE — suporte ventilatório (principal risco: depressão respiratória)
+2. Flumazenil 0,2mg EV em 30s:
+   - Repetir 0,3mg após 30s se sem resposta
+   - Depois 0,5mg a cada 1min (dose máxima total: 3-5mg)
+   - ATENÇÃO: uso crônico de BZD ou coingesta de tricíclicos → NÃO usar flumazenil
+3. Carvão ativado 1g/kg VO (se ingestão <1h, paciente consciente, via aérea protegida)
+4. Monitorização: SpO2, FR, nível de consciência
+5. Observação por 2h após flumazenil (meia-vida curta — ressedação)
+6. Se coingesta de álcool: Tiamina 300mg EV + SG 5% 500mL
+7. Intoxicação pura por BZD raramente é fatal (atenção a coingestões)`,
+    notes: "BZD isolado: mortalidade muito baixa. Perigo real: coingesta (álcool, opioides, tricíclicos). Flumazenil meia-vida 40-80min < BZD (pode haver ressedação).",
+    warnings: "Flumazenil CONTRAINDICADO se: uso crônico de BZD (convulsão), coingesta de tricíclicos (arritmia), história de epilepsia. Na dúvida, NÃO usar — suporte ventilatório é suficiente.",
+    guideline: "SBTox / AACT / RCEM",
+  },
+  {
+    id: "rx-intox-opioides",
+    title: "Intoxicação por Opioides / Overdose",
+    type: "Toxicologia",
+    prescription: `1. ABCDE — ventilação com BVM é a prioridade
+2. Naloxona (Narcan) 0,4mg EV/IM/IN:
+   - Repetir a cada 2-3min até FR >12 e resposta (máx 10mg)
+   - Via intranasal: 2mg em cada narina (4mg total)
+   - Se dependente: iniciar com 0,04mg (evitar abstinência aguda)
+3. Infusão contínua: 2/3 da dose eficaz por hora em SF 0,9%
+4. Monitorizar por mínimo 4-6h (naloxona meia-vida < opioides)
+5. Se fentanil/metadona: observação prolongada (24-72h)
+6. IOT se: apneia refratária, edema pulmonar não cardiogênico
+7. Carvão ativado: considerar se ingestão oral <1h
+8. Rabdomiólise: hidratação agressiva + monitorizar CPK e função renal`,
+    notes: "Tríade da intoxicação opioide: miose, depressão respiratória, rebaixamento de consciência. Fentanil ilícito: pode precisar de doses muito altas de naloxona (5-10mg).",
+    warnings: "Naloxona meia-vida (30-90min) < maioria dos opioides → RESSEDAÇÃO. Metadona: observar 72h. Abstinência aguda pode causar vômitos → risco aspiração. Edema pulmonar não cardiogênico: complicação grave.",
+    guideline: "SBTox / AACT / AHA / WHO",
+  },
+  {
+    id: "rx-intox-litio",
+    title: "Intoxicação por Lítio",
+    type: "Toxicologia",
+    prescription: `1. Suspender lítio IMEDIATAMENTE
+2. Hidratação vigorosa: SF 0,9% 200-300mL/h EV (restaurar volemia e TFG)
+3. NÃO usar carvão ativado (não adsorve lítio)
+4. Lavagem intestinal total (PEG): considerar se ingestão de formulação de liberação prolongada
+5. Hemodiálise — indicações:
+   - Lítio sérico >4mEq/L (aguda) ou >2,5mEq/L (crônica com sintomas)
+   - Alteração neurológica (convulsão, coma, tremor refratário)
+   - Insuficiência renal
+   - Deterioração clínica apesar de hidratação
+6. Controle de convulsões: Diazepam 10mg EV
+7. Monitorizar: lítio sérico 4/4h, Na+, K+, creatinina, ECG
+8. Lítio sérico pode subir após diálise (redistribuição) → repetir diálise se necessário`,
+    notes: "Intoxicação aguda: GI predominante. Crônica: neurológica predominante (tremor, ataxia, mioclonia, coma). Fatores precipitantes: desidratação, AINE, IECA, diuréticos tiazídicos.",
+    warnings: "Sequelas neurológicas permanentes (SILENT: Syndrome of Irreversible Lithium Effectuated Neurotoxicity). Dano pode ser irreversível mesmo com normalização do nível.",
+    guideline: "SBTox / EXTRIP / AACT",
+  },
+  {
+    id: "rx-intox-digitálicos",
+    title: "Intoxicação Digitálica (Digoxina)",
+    type: "Toxicologia",
+    prescription: `1. Suspender digoxina
+2. ECG: qualquer arritmia é possível (clássico: TV bidirecional, BAV + taqui atrial)
+3. Anticorpo antidigoxina (Fab — DigiFab):
+   - Indicações: arritmia com instabilidade, K+ >5,5mEq/L, digoxina >10ng/mL
+   - Dose: nº frascos = (nível sérico x peso) / 100 OU dose empírica 10-20 frascos
+4. Hipercalemia: tratar agressivamente
+   - Gluconato de cálcio 10% CONTRAINDICADO (controvérsia — pode piorar)
+   - Insulina 10U + Glicose 50% 50mL EV
+   - NaHCO3 50mEq EV
+5. Atropina 0,5-1mg EV se bradicardia sintomática
+6. Marcapasso transcutâneo se bradicardia refratária
+7. NÃO cardioverter (risco de FV refratária) — usar Fab antes
+8. Monitorização cardíaca contínua, K+ 2/2h, nível digoxina (útil antes do Fab)`,
+    notes: "Fatores de risco: hipocalemia, hipercalcemia, hipomagnesemia, insuficiência renal, hipotireoidismo, amiodarona. Nível terapêutico: 0,5-2ng/mL.",
+    warnings: "Cardioversão pode causar FV refratária na intox digitálica. K+ é o melhor marcador de gravidade. Gluconato de cálcio: usar com cautela extrema (risco teórico de 'coração de pedra').",
+    guideline: "SBTox / AHA / AACT / Toxbase",
+  },
 ];
 
