@@ -1,0 +1,260 @@
+import { PrescriptionItem } from "./types";
+
+export const byDiagnosisItems: PrescriptionItem[] = [
+  {
+    id: "rx-pneumonia",
+    title: "Pneumonia Comunitária",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Dieta livre (se tolerar VO)
+2. SF 0,9% 1000mL EV — manter acesso
+3. Ceftriaxona 1g EV 12/12h
+4. Azitromicina 500mg EV ou VO 1x/dia
+5. Dipirona 1g EV 6/6h se dor ou febre ≥37,8°C
+6. Ondansetrona 4mg EV 8/8h se náusea
+7. Enoxaparina 40mg SC 1x/dia (profilaxia TVP)
+8. O2 suplementar se SpO2 <92%
+9. Cabeceira a 30°
+10. Hemograma, PCR, ureia, creatinina, gasometria
+11. RX tórax PA e perfil
+12. Hemocultura 2 amostras se grave`,
+    alternatives: "Se alergia a cefalosporinas: Levofloxacino 750mg EV 1x/dia.\nSe suspeita de aspiração: Clindamicina 600mg EV 8/8h + Ceftriaxona.",
+    guideline: "SBP / IDSA 2019",
+  },
+  {
+    id: "rx-itu",
+    title: "Infecção do Trato Urinário",
+    type: "Prescrição Ambulatorial / Hospitalar",
+    prescription: `Cistite não complicada:
+1. Nitrofurantoína 100mg VO 6/6h por 5 dias
+2. OU Fosfomicina 3g VO dose única
+3. OU Cefalexina 500mg VO 6/6h por 7 dias
+
+Pielonefrite:
+1. Internação se sinais de gravidade
+2. Ceftriaxona 1g EV 12/12h
+3. SF 0,9% 1000mL EV
+4. Dipirona 1g EV 6/6h se febre
+5. Ondansetrona 4mg EV se náusea
+6. Urocultura + antibiograma
+7. Hemograma, PCR, função renal`,
+    alternatives: "Ciprofloxacino 400mg EV 12/12h se alergia.\nGestação: Cefalexina 500mg VO 6/6h por 7 dias.",
+    guideline: "SBI / IDSA",
+  },
+  {
+    id: "rx-pielonefrite",
+    title: "Pielonefrite",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Internação — repouso no leito
+2. SF 0,9% 1000-2000mL EV nas primeiras 6h
+3. Ceftriaxona 1g EV 12/12h (1ª escolha)
+4. Dipirona 1g EV 6/6h se febre/dor
+5. Ondansetrona 4mg EV 8/8h se náusea
+6. Omeprazol 40mg EV 1x/dia
+7. Urocultura + antibiograma (coletar ANTES do ATB)
+8. Hemograma, PCR, creatinina, ureia, lactato
+9. USG de vias urinárias (descartar obstrução)
+10. SVD se retenção ou controle rigoroso de diurese`,
+    alternatives: "Se alergia grave a cefalosporinas: Ciprofloxacino 400mg EV 12/12h.\nSe sepse urinária: associar Amicacina 15mg/kg/dia EV.",
+    warnings: "Pielonefrite com obstrução = emergência urológica. Solicitar USG/TC urgente.",
+    guideline: "SBI / EAU",
+  },
+  {
+    id: "rx-asma-diag",
+    title: "Asma — Crise",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `Leve/Moderada:
+1. Salbutamol spray 4-8 jatos com espaçador a cada 20 min (3x na 1ª hora)
+2. Ipratrópio 40mcg (2 jatos) a cada 20 min (3x)
+3. Prednisona 40-60mg VO OU Hidrocortisona 200mg EV
+
+Grave:
+1. Salbutamol nebulização contínua: 10 gotas + SF 3mL a cada 20 min
+2. Ipratrópio 20-40 gotas + Salbutamol na mesma nebulização
+3. Hidrocortisona 200mg EV → 100mg EV 6/6h
+4. Sulfato de magnésio 2g EV em 20 min (se refratária)
+5. O2 suplementar para SpO2 >94%
+6. VNI se necessário
+7. IOT se falência respiratória`,
+    guideline: "GINA 2023 / SBPT",
+  },
+  {
+    id: "rx-dpoc-diag",
+    title: "DPOC Exacerbada",
+    type: "Prescrição Hospitalar",
+    prescription: `1. O2 suplementar (alvo SpO2 88-92%)
+2. Salbutamol 10 gotas + Ipratrópio 20 gotas + SF 3mL — nebulização 6/6h
+3. Prednisona 40mg VO 1x/dia por 5 dias
+4. Amoxicilina-Clavulanato 875mg VO 12/12h (se escarro purulento)
+5. OU Levofloxacino 750mg VO 1x/dia
+6. VNI (BiPAP) se acidose respiratória (pH <7,35)
+7. Gasometria arterial seriada
+8. RX tórax
+9. Hemograma, PCR`,
+    warnings: "NÃO usar O2 em alto fluxo — risco de hipercapnia.",
+    guideline: "GOLD 2024 / SBPT",
+  },
+  {
+    id: "rx-sepse-diag",
+    title: "Sepse / Choque Séptico",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. SF 0,9% 30mL/kg EV em 3 horas
+2. Ceftriaxona 2g EV 1x/dia (foco pulmonar/urinário) OU Piperacilina-Tazobactam 4,5g EV 6/6h
+3. Noradrenalina 0,1 mcg/kg/min se PAM <65 após volume
+4. Hidrocortisona 50mg EV 6/6h (choque refratário)
+5. Coletar 2 pares de hemocultura ANTES do ATB
+6. Lactato arterial (repetir em 2-4h)
+7. Hemograma, PCR, função renal, gasometria, coagulograma
+8. SVD — alvo diurese ≥0,5 mL/kg/h`,
+    notes: "ATB na PRIMEIRA HORA. Cada hora de atraso aumenta mortalidade em ~7%.",
+    warnings: "NÃO atrasar ATB para resultado de cultura.",
+    guideline: "Surviving Sepsis 2021",
+  },
+  {
+    id: "rx-iam-diag",
+    title: "IAM com Supra de ST",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. AAS 200mg VO (mastigar)
+2. Clopidogrel 300mg VO
+3. Heparina não fracionada 60UI/kg EV bolus → 12UI/kg/h em BIC
+4. Morfina 2-4mg EV se dor refratária
+5. Nitroglicerina SL 5mg (se PA >100 e FC >50)
+6. Atenolol 25-50mg VO
+7. Atorvastatina 80mg VO
+8. O2 se SpO2 <94%
+9. ECG 12 derivações seriado
+10. Troponina, CK-MB
+11. Encaminhar angioplastia primária OU Tenecteplase se porta-balão >120 min`,
+    warnings: "NÃO usar nitrato se sildenafil <24h. Porta-agulha <30min, porta-balão <90min.",
+    guideline: "SBC / AHA 2023",
+  },
+  {
+    id: "rx-avc-diag",
+    title: "AVC Isquêmico",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. TC de crânio sem contraste URGENTE
+2. Glicemia capilar (corrigir se <70 ou >180)
+3. PA: se trombólise, <185x110
+4. Alteplase 0,9 mg/kg EV (máx 90mg) — 10% bolus, 90% em 1h (se elegível)
+5. Janela: até 4,5h (trombólise) ou 24h (trombectomia)
+6. Monitorar PA a cada 15 min por 2h
+7. Dieta zero até avaliação de disfagia
+8. Cabeceira 30°
+9. Enoxaparina 40mg SC 1x/dia (após 24h da trombólise)
+10. SF 0,9% 1000mL EV`,
+    warnings: "NÃO usar antiagregante/anticoagulante nas primeiras 24h se trombólise.",
+    guideline: "AHA/ASA 2019",
+  },
+  {
+    id: "rx-crise-has-diag",
+    title: "Crise Hipertensiva",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `Emergência hipertensiva (com LOA):
+1. Nitroprussiato 0,25-10 mcg/kg/min EV em BIC
+2. OU Nitroglicerina EV 5-200 mcg/min (se SCA/EAP)
+3. Reduzir PAM em 25% na 1ª hora
+
+Urgência hipertensiva (sem LOA):
+1. Captopril 25mg VO (repetir em 30 min)
+2. Clonidina 0,1-0,2mg VO (repetir em 1h)
+3. NÃO usar Nifedipino SL`,
+    warnings: "Nifedipino SL é CONTRAINDICADO. NÃO reduzir PA abruptamente.",
+    guideline: "SBC 2020",
+  },
+  {
+    id: "rx-cefaleia-diag",
+    title: "Cefaleia / Enxaqueca",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. Dipirona 1g EV
+2. Cetoprofeno 100mg EV
+3. Metoclopramida 10mg EV
+4. Dexametasona 10mg EV (status migranoso)
+5. SF 0,9% 500mL EV
+6. Clorpromazina 0,1mg/kg EV lento (se refratária)
+7. Sumatriptano 6mg SC (se migranosa, sem CI cardiovascular)`,
+    notes: "Red flags: cefaleia em trovão, febre + rigidez, déficit focal → TC + líquor.",
+    guideline: "SBCe / IHS",
+  },
+  {
+    id: "rx-dor-abdominal-diag",
+    title: "Dor Abdominal Aguda",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. Dipirona 1g EV 6/6h
+2. Buscopan Composto 1 amp EV 8/8h
+3. Tramadol 50-100mg EV se dor intensa
+4. Ondansetrona 4mg EV se náusea/vômito
+5. SF 0,9% 1000mL EV
+6. Dieta zero até definição diagnóstica
+7. Hemograma, amilase, lipase, TGO, TGP, bilirrubinas, PCR
+8. USG abdome ou TC conforme suspeita
+9. EAS, βHCG (mulheres em idade fértil)
+10. Avaliação cirúrgica se abdome agudo`,
+    notes: "Analgesia NÃO mascara abdome agudo — tratar dor precocemente.",
+    guideline: "SBC / WSES",
+  },
+  {
+    id: "rx-gastroenterite-diag",
+    title: "Gastroenterite Aguda",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. SRO livre
+2. SF 0,9% 1000mL EV (se desidratação)
+3. Ondansetrona 4mg EV 8/8h
+4. Buscopan Composto 1 amp EV 6/6h se cólica
+5. Dieta leve, sem lactose por 3-5 dias
+6. Probiótico (S. boulardii) 200mg VO 12/12h
+7. Racecadotrila 100mg VO 8/8h se diarreia intensa`,
+    warnings: "NÃO usar Loperamida se febre ou disenteria.",
+    guideline: "SBG / OMS",
+  },
+  {
+    id: "rx-anafilaxia-diag",
+    title: "Anafilaxia",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. Adrenalina 1:1000 — 0,3-0,5mg IM na coxa (repetir a cada 5-15 min)
+2. SF 0,9% 1000-2000mL EV bolus
+3. Difenidramina 50mg EV
+4. Ranitidina 50mg EV
+5. Hidrocortisona 200mg EV
+6. Salbutamol spray 4-8 jatos (se broncoespasmo)
+7. O2 se SpO2 <94%
+8. Monitorização 6-8h (reação bifásica)`,
+    warnings: "NÃO atrasar adrenalina. Corticóide NÃO substitui adrenalina.",
+    guideline: "WAO / ASBAI",
+  },
+  {
+    id: "rx-convulsao-diag",
+    title: "Crise Convulsiva / Status Epiléptico",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `Fase 1 (0-5 min):
+1. Diazepam 10mg EV lento (ou Midazolam 10mg IM)
+2. O2 + proteção de via aérea
+3. Glicemia capilar
+
+Fase 2 (5-20 min):
+4. Fenitoína 20mg/kg EV (máx 50mg/min, em SF!)
+5. OU Valproato 40mg/kg EV em 10 min
+
+Fase 3 (>20 min — refratário):
+6. Midazolam BIC 0,2mg/kg bolus → 0,1-0,4mg/kg/h
+7. IOT + ventilação mecânica`,
+    warnings: "Fenitoína NÃO diluir em SG (cristaliza).",
+    guideline: "ABN / AES",
+  },
+  {
+    id: "rx-ic-aguda-diag",
+    title: "Insuficiência Cardíaca Aguda",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. Furosemida 40-80mg EV bolus (repetir conforme resposta)
+2. Nitroglicerina EV 5-200 mcg/min (se PA >100)
+3. VNI: CPAP ou BiPAP
+4. O2 para SpO2 >94%
+5. Cabeceira 90°
+6. Captopril 25mg SL se PAS >160
+7. Morfina 2-4mg EV (se ansiedade intensa — uso criterioso)
+8. Dobutamina 2,5-20 mcg/kg/min se baixo débito (PAS <90)
+9. Monitorização contínua
+10. BNP/NT-proBNP, troponina, ECG, RX tórax
+11. Restrição hídrica 800-1000mL/dia
+12. Balanço hídrico rigoroso`,
+    guideline: "SBC / ESC 2023",
+  },
+];

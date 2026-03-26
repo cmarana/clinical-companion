@@ -1,0 +1,177 @@
+import { PrescriptionItem } from "./types";
+
+export const emergencyItems: PrescriptionItem[] = [
+  {
+    id: "rx-emerg-pcr",
+    title: "PCR — Parada Cardiorrespiratória",
+    type: "Prescrição de Emergência",
+    prescription: `1. Adrenalina 1mg (1:10.000) EV a cada 3-5 min
+2. Amiodarona 300mg EV bolus (FV/TV refratária) → 150mg após
+3. SF 0,9% 250mL — acesso calibroso
+4. IOT + ventilação mecânica
+5. Monitorização (ECG, SpO2, capnografia)
+6. Desfibrilação 200J bifásico se FV/TV sem pulso
+7. Bicarbonato 8,4% 1mEq/kg se acidose grave`,
+    notes: "Trocar compressor a cada 2 min. ETCO2 >10 = RCP eficaz.",
+    warnings: "NÃO desfibrilar assistolia. NÃO atrasar compressões.",
+    guideline: "AHA 2020 / ACLS",
+  },
+  {
+    id: "rx-emerg-iot",
+    title: "Intubação — Sequência Rápida",
+    type: "Prescrição de Emergência",
+    prescription: `Pré-oxigenação:
+1. O2 100% por 3-5 min (máscara com reservatório)
+
+Indução:
+2. Fentanil 2-3 mcg/kg EV (2-3 min antes)
+3. Lidocaína 1,5mg/kg EV (se TCE/broncoespasmo)
+4. Etomidato 0,3mg/kg EV OU Cetamina 1,5mg/kg EV (se instabilidade)
+5. Succinilcolina 1,5mg/kg EV OU Rocurônio 1,2mg/kg EV
+
+Pós-IOT:
+6. Confirmar com capnografia + ausculta
+7. Fixar tubo e conectar ao ventilador
+8. Midazolam 0,1mg/kg/h + Fentanil 1-2mcg/kg/h em BIC (manutenção)
+9. RX tórax confirmatório`,
+    warnings: "Ter material de via aérea difícil disponível. Sempre ter aspirador ligado.",
+    guideline: "SBA / AMIB",
+  },
+  {
+    id: "rx-emerg-sedacao",
+    title: "Sedação de Emergência",
+    type: "Prescrição de Emergência",
+    prescription: `Sedação leve (procedimentos breves):
+1. Midazolam 2-5mg EV lento (titular)
+2. OU Cetamina 0,5-1mg/kg EV
+
+Sedação profunda (IOT/procedimentos invasivos):
+3. Propofol 1-2mg/kg EV bolus → 2-4mg/kg/h em BIC
+4. Fentanil 50-100mcg EV (analgesia associada)
+
+Manutenção em VM:
+5. Midazolam 0,05-0,2mg/kg/h em BIC
+6. Fentanil 1-3mcg/kg/h em BIC
+7. RASS alvo: -2 a -3
+8. Monitorar: PA, FC, SpO2, RASS a cada 2h`,
+    notes: "Propofol: risco de hipotensão. Cetamina: opção em choque (não deprime PA).",
+    guideline: "SBA / AMIB",
+  },
+  {
+    id: "rx-emerg-choque",
+    title: "Choque — Abordagem Inicial",
+    type: "Prescrição de Emergência",
+    prescription: `1. 2 acessos venosos calibrosos (jelco 14-16G)
+2. SF 0,9% 30mL/kg EV rápido (reavaliar a cada 250-500mL)
+3. Noradrenalina 0,1-1mcg/kg/min se PAM <65 após volume
+4. Monitorização contínua (PA invasiva se disponível)
+5. Lactato arterial + gasometria
+6. SVD (alvo diurese ≥0,5mL/kg/h)
+7. Tratar causa base:
+   - Séptico: ATB na 1ª hora
+   - Hemorrágico: hemoderivados + cirurgia
+   - Cardiogênico: Dobutamina + vasopressor
+   - Obstrutivo: tratar causa (TEP, tamponamento, pneumotórax)`,
+    guideline: "ATLS / SSC 2021",
+  },
+  {
+    id: "rx-emerg-sepse-grave",
+    title: "Sepse Grave — Protocolo Rápido",
+    type: "Prescrição de Emergência",
+    prescription: `BUNDLE 1ª HORA:
+1. Lactato arterial
+2. Hemoculturas (2 pares) ANTES do ATB
+3. ATB de amplo espectro (Piperacilina-Tazobactam 4,5g EV)
+4. SF 0,9% 30mL/kg EV se hipotensão ou lactato ≥4
+5. Vasopressor (Noradrenalina) se PAM <65 após volume
+
+BUNDLE 6H:
+6. Reavaliar volemia (Δ PP, USG, elevação de MMII)
+7. Novo lactato se inicial >2
+8. Hidrocortisona 50mg EV 6/6h (se refratário)
+9. Dobutamina se baixo débito persistente`,
+    warnings: "CADA HORA DE ATRASO no ATB = +7% mortalidade.",
+    guideline: "SSC 2021",
+  },
+  {
+    id: "rx-emerg-eap",
+    title: "Edema Agudo de Pulmão",
+    type: "Prescrição de Emergência",
+    prescription: `1. Furosemida 40-80mg EV bolus
+2. Nitroglicerina EV 5-200mcg/min (se PA >100)
+3. VNI: CPAP 5-10 ou BiPAP IPAP 10-15 / EPAP 5-8
+4. O2 para SpO2 >94%
+5. Cabeceira 90°
+6. Captopril 25mg SL se PAS >160
+7. Morfina 2-4mg EV (criterioso)
+8. IOT se sem melhora`,
+    warnings: "NÃO usar nitrato se PA <100 ou uso de sildenafil.",
+    guideline: "SBC / ESC",
+  },
+  {
+    id: "rx-emerg-asma-grave",
+    title: "Asma Grave — Emergência",
+    type: "Prescrição de Emergência",
+    prescription: `1. Salbutamol NBZ contínua: 10 gotas + SF 3mL a cada 20 min
+2. Ipratrópio 40 gotas na mesma NBZ
+3. Hidrocortisona 200mg EV → 100mg 6/6h
+4. Sulfato de magnésio 2g EV em 20 min
+5. O2 para SpO2 >94%
+6. Adrenalina 0,3-0,5mg IM se risco de PCR
+7. VNI se tolerada
+8. IOT se falência (cuidado: broncoespasmo pós-IOT)`,
+    notes: "Cetamina pode ser usada na indução se IOT necessária (broncodilatador).",
+    guideline: "GINA 2023",
+  },
+  {
+    id: "rx-emerg-status",
+    title: "Status Epiléptico",
+    type: "Prescrição de Emergência",
+    prescription: `0-5 min:
+1. Diazepam 10mg EV (ou Midazolam 10mg IM)
+2. O2 + via aérea segura
+3. Glicemia → Glicose 50% se <70
+
+5-20 min:
+4. Fenitoína 20mg/kg EV (máx 50mg/min, em SF)
+5. OU Valproato 40mg/kg EV em 10 min
+
+>20 min:
+6. Midazolam BIC 0,2mg/kg → 0,1-0,4mg/kg/h
+7. OU Propofol 2mg/kg → 2-5mg/kg/h
+8. IOT
+9. EEG contínuo`,
+    guideline: "ABN / AES",
+  },
+  {
+    id: "rx-emerg-anafilaxia",
+    title: "Anafilaxia — Emergência",
+    type: "Prescrição de Emergência",
+    prescription: `1. Adrenalina 1:1000 — 0,5mg IM na coxa IMEDIATO
+2. Repetir a cada 5-15 min se necessário
+3. SF 0,9% 1000-2000mL EV rápido
+4. Difenidramina 50mg EV
+5. Hidrocortisona 200mg EV
+6. Salbutamol NBZ se broncoespasmo
+7. O2 alto fluxo
+8. Preparar IOT se edema de via aérea`,
+    warnings: "ADRENALINA É A 1ª DROGA. Não atrasar para dar corticóide.",
+    guideline: "WAO 2023",
+  },
+  {
+    id: "rx-emerg-agitacao",
+    title: "Agitação Psicomotora — Emergência",
+    type: "Prescrição de Emergência",
+    prescription: `1. Contenção verbal primeiro (de-escalação)
+2. Se necessário contenção química:
+   - Haloperidol 5mg IM + Midazolam 5mg IM (1ª escolha)
+   - OU Haloperidol 5mg IM + Prometazina 50mg IM
+3. Monitorar: PA, FC, SpO2, nível de consciência
+4. Glicemia capilar (excluir hipoglicemia)
+5. Considerar: intoxicação, TCE, sepse, hipóxia
+6. Após estabilização: investigar causa base
+7. Contenção mecânica se risco iminente (protocolo institucional)`,
+    warnings: "Haloperidol EV: risco de arritmia (QT longo). Monitorar ECG se EV.",
+    guideline: "ABP / APA",
+  },
+];

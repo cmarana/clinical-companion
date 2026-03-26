@@ -1,0 +1,173 @@
+import { PrescriptionItem } from "./types";
+
+export const antibioticsByFocusItems: PrescriptionItem[] = [
+  {
+    id: "rx-atb-pulmao",
+    title: "Antibiótico — Foco Pulmonar",
+    type: "Antibiótico por Foco",
+    prescription: `PAC leve (ambulatorial):
+1. Amoxicilina 500mg VO 8/8h por 7 dias
+2. OU Azitromicina 500mg VO 1x/dia por 3-5 dias
+
+PAC moderada/grave (hospitalar):
+3. Ceftriaxona 1g EV 12/12h + Azitromicina 500mg EV 1x/dia
+
+PAC grave UTI:
+4. Ceftriaxona 2g EV 1x/dia + Azitromicina 500mg EV
+5. Se risco Pseudomonas: Piperacilina-Taz 4,5g 6/6h OU Meropenem 1g 8/8h
+
+Aspirativa:
+6. Ceftriaxona + Clindamicina 600mg EV 6/6h
+7. OU Amoxicilina-Clavulanato`,
+    guideline: "SBP / IDSA 2019",
+  },
+  {
+    id: "rx-atb-urinario",
+    title: "Antibiótico — Foco Urinário",
+    type: "Antibiótico por Foco",
+    prescription: `Cistite simples:
+1. Fosfomicina 3g VO dose única
+2. OU Nitrofurantoína 100mg VO 6/6h por 5 dias
+
+ITU complicada:
+3. Ceftriaxona 1g EV 12/12h
+
+Pielonefrite:
+4. Ceftriaxona 1g EV 12/12h por 10-14 dias
+5. OU Ciprofloxacino 400mg EV 12/12h
+
+Urossepse:
+6. Piperacilina-Tazobactam 4,5g EV 6/6h
+7. OU Meropenem 1g EV 8/8h (se ESBL)
+
+Gestante:
+8. Cefalexina 500mg VO 6/6h por 7 dias (categoria B)`,
+    guideline: "SBI / IDSA",
+  },
+  {
+    id: "rx-atb-abdome",
+    title: "Antibiótico — Foco Abdominal",
+    type: "Antibiótico por Foco",
+    prescription: `Leve (apendicite não complicada):
+1. Ceftriaxona 1g EV 12/12h + Metronidazol 500mg EV 8/8h
+
+Moderado (peritonite localizada):
+2. Piperacilina-Tazobactam 4,5g EV 6/6h
+3. OU Ceftriaxona + Metronidazol
+
+Grave (peritonite difusa / sepse abdominal):
+4. Meropenem 1g EV 8/8h
+5. OU Piperacilina-Taz + Metronidazol
+6. Avaliar necessidade de Fluconazol (se Candida)
+
+SUS (sem Piperacilina):
+7. Ceftriaxona 1g 12/12h + Metronidazol 500mg 8/8h + Gentamicina 5mg/kg/dia`,
+    guideline: "SBI / WSES",
+  },
+  {
+    id: "rx-atb-pele",
+    title: "Antibiótico — Foco Pele / Partes Moles",
+    type: "Antibiótico por Foco",
+    prescription: `Celulite/Erisipela leve:
+1. Cefalexina 500mg VO 6/6h por 7-10 dias
+2. OU Amoxicilina-Clavulanato 875mg VO 12/12h
+
+Moderada/Grave:
+3. Oxacilina 2g EV 4/4h
+4. OU Cefazolina 1g EV 8/8h
+
+Fascite necrosante:
+5. Piperacilina-Taz 4,5g 6/6h + Clindamicina 900mg 8/8h
+6. OU Meropenem + Clindamicina + Vancomicina
+
+Mordedura:
+7. Amoxicilina-Clavulanato 875mg VO 12/12h
+8. Profilaxia tétano + raiva conforme indicação`,
+    guideline: "IDSA / SBI",
+  },
+  {
+    id: "rx-atb-snc",
+    title: "Antibiótico — Foco SNC (Meningite)",
+    type: "Antibiótico por Foco",
+    prescription: `Meningite bacteriana — empírico:
+Adulto:
+1. Ceftriaxona 2g EV 12/12h + Ampicilina 2g EV 4/4h (se >50 anos)
+2. Dexametasona 0,15mg/kg EV 6/6h por 4 dias (iniciar ANTES ou junto com ATB)
+
+Pediátrico (>1 mês):
+3. Ceftriaxona 100mg/kg/dia EV div 12/12h
+
+Neonatal:
+4. Ampicilina + Gentamicina OU Cefotaxima
+
+Encefalite herpética:
+5. Aciclovir 10mg/kg EV 8/8h por 14-21 dias`,
+    warnings: "ATB IMEDIATO na suspeita. NÃO atrasar para exames. Dexametasona reduz sequela.",
+    guideline: "IDSA / SBI / MS",
+  },
+  {
+    id: "rx-atb-sepse",
+    title: "Antibiótico — Sepse (empírico)",
+    type: "Antibiótico por Foco",
+    prescription: `Foco pulmonar: Ceftriaxona 2g + Azitromicina 500mg
+Foco urinário: Ceftriaxona 1g 12/12h
+Foco abdominal: Piperacilina-Taz 4,5g 6/6h OU Ceftriaxona + Metronidazol
+Foco pele: Oxacilina 2g 4/4h OU Cefazolina 1g 8/8h
+Foco desconhecido: Piperacilina-Taz 4,5g 6/6h OU Meropenem 1g 8/8h
+Cateter: Vancomicina 15-20mg/kg 12/12h + Cefepime 2g 8/8h
+Neutropenia febril: Cefepime 2g 8/8h OU Meropenem 1g 8/8h
+
+SUS: Ceftriaxona 2g + Metronidazol 500mg 8/8h (cobertura ampla)`,
+    notes: "ATB na 1ª hora. Ajustar conforme cultura em 48-72h. Descalonar sempre que possível.",
+    guideline: "SSC 2021",
+  },
+  {
+    id: "rx-atb-pediatria",
+    title: "Antibiótico — Pediatria",
+    type: "Antibiótico por Foco",
+    prescription: `OTITE MÉDIA: Amoxicilina 50mg/kg/dia VO div 8/8h por 10 dias
+FARINGITE: Amoxicilina 50mg/kg/dia VO 8/8h por 10 dias OU Penicilina Benzatina IM dose única
+PNEUMONIA: Amoxicilina 50mg/kg/dia VO 8/8h (ambulatorial) OU Penicilina Cristalina EV (hospitalar)
+ITU: Cefalexina 50mg/kg/dia VO 6/6h ou Ceftriaxona 50-100mg/kg/dia EV
+SEPSE <3 meses: Ampicilina + Gentamicina
+SEPSE >3 meses: Ceftriaxona 100mg/kg/dia EV
+MENINGITE: Ceftriaxona 100mg/kg/dia EV + Dexametasona`,
+    notes: "Sempre calcular dose por kg. Preferir suspensão oral quando possível.",
+    guideline: "SBP / AAP",
+  },
+  {
+    id: "rx-atb-hospitalar",
+    title: "Antibiótico — Infecção Hospitalar",
+    type: "Antibiótico por Foco",
+    prescription: `PAH/PAVM:
+1. Piperacilina-Taz 4,5g 6/6h OU Meropenem 1g 8/8h
+2. + Vancomicina se risco MRSA
+
+ITU associada a cateter:
+3. Ceftriaxona 1g 12/12h (se sensível)
+4. Meropenem se ESBL
+
+Infecção de corrente sanguínea (cateter):
+5. Vancomicina + Cefepime/Meropenem
+6. Remover cateter
+
+Clostridium difficile:
+7. Vancomicina 125mg VO 6/6h por 10 dias (1ª escolha)
+8. OU Metronidazol 500mg VO 8/8h (casos leves)`,
+    guideline: "ANVISA / IDSA",
+  },
+  {
+    id: "rx-atb-comunitario",
+    title: "Antibiótico — Infecção Comunitária",
+    type: "Antibiótico por Foco",
+    prescription: `IVAS (sinusite): Amoxicilina 500mg VO 8/8h por 7-10 dias
+AMIGDALITE: Amoxicilina VO ou Penicilina Benzatina IM dose única
+OTITE EXTERNA: Ciprofloxacino otológico 3 gotas 12/12h por 7 dias
+CELULITE: Cefalexina 500mg VO 6/6h por 7-10 dias
+ITU SIMPLES: Fosfomicina 3g dose única ou Nitrofurantoína 100mg 6/6h 5 dias
+PAC AMBULATORIAL: Amoxicilina 500mg 8/8h ± Azitromicina 500mg 1x/dia
+DIARREIA BACTERIANA: Ciprofloxacino 500mg VO 12/12h por 3-5 dias (se indicado)`,
+    notes: "Maioria das IVAS é viral — ATB apenas se critérios bacterianos. Evitar uso desnecessário.",
+    guideline: "ANVISA / MS",
+  },
+];
