@@ -714,5 +714,46 @@ Sinais de alerta para retorno:
     notes: "90% dos lactentes com refluxo melhoram até 12-18 meses. IBP NÃO melhora choro/irritabilidade isolados.",
     guideline: "SBP / NASPGHAN / ESPGHAN",
   },
+  {
+    id: "rx-ped-celulite-periorbitaria",
+    title: "Celulite Periorbitária / Pré-septal (Pediatria)",
+    type: "Pediatria",
+    prescription: `1. Diferenciar pré-septal (pálpebra) de orbitária (proptose, dor, déficit visual)
+2. Se pré-septal sem sinais de gravidade:
+   - Amoxicilina-Clavulanato 50mg/kg/dia VO 12/12h por 10 dias
+3. Se <1 ano, febre alta ou piora rápida:
+   - Internação + Cefuroxima 150mg/kg/dia EV 8/8h OU
+   - Ceftriaxona 80mg/kg/dia EV 1x/dia
+4. TC de órbita com contraste se: proptose, limitação de MOE, piora com ATB oral
+5. Se celulite orbitária confirmada:
+   - Ceftriaxona + Oxacilina EV
+   - Avaliação Oftalmo + ORL
+6. Analgesia: Ibuprofeno 10mg/kg 8/8h
+7. Compressas mornas locais
+8. Retorno em 48h (se ambulatorial)`,
+    notes: "Causa mais comum: sinusite etmoidal. Staphylococcus e Streptococcus predominam.",
+    warnings: "Celulite orbitária: risco de trombose de seio cavernoso e meningite. TC + internação obrigatória.",
+    guideline: "SBP / AAP / IDSA",
+  },
+  {
+    id: "rx-ped-sibilancia-recorrente",
+    title: "Sibilância Recorrente do Lactente",
+    type: "Pediatria",
+    prescription: `1. Crise aguda:
+   - Salbutamol spray 100mcg: 2-4 jatos com espaçador + máscara, a cada 20min (3 doses)
+   - Prednisolona 1-2mg/kg/dia VO por 3-5 dias
+2. Se resposta parcial: manter Salbutamol 4/4h
+3. Tratamento de manutenção (≥3 episódios em 6 meses):
+   - Budesonida 200mcg spray 1x/dia OU
+   - Montelucaste 4mg VO 1x/dia (6m-5a)
+4. Trial terapêutico por 8-12 semanas, depois reavaliar
+5. Investigar: DRGE, alergia alimentar, fibrose cística, imunodeficiência
+6. Índice Preditivo de Asma (IPA): critério maior (pais asmáticos, eczema) + menores
+7. Fisioterapia respiratória
+8. Controle ambiental (tabagismo passivo, mofo, ácaros)
+9. Retorno em 30 dias para reavaliação`,
+    notes: "Fenótipos: sibilante transitório (melhora até 3 anos), sibilante persistente (atópico — provável asma). IPA positivo: 77% serão asmáticos.",
+    guideline: "SBP / GINA / PRACTALL",
+  },
 ];
 

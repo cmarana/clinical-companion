@@ -612,4 +612,34 @@ PROFUNDA (fáscia/músculo):
     notes: "Classificação CDC de infecção de sítio cirúrgico: superficial (<30 dias), profunda (<30-90 dias), órgão/espaço (<30-90 dias).",
     guideline: "ANVISA / CDC / IDSA / SBI",
   },
+  {
+    id: "rx-atb-pie-diabetico-wagner",
+    title: "ATB — Pé Diabético por Classificação de Wagner",
+    type: "ATB por Foco",
+    prescription: `WAGNER 1 (úlcera superficial):
+- Cefalexina 500mg VO 6/6h OU Amoxicilina-Clavulanato 875/125mg 12/12h
+- Duração: 7-14 dias
+- Curativo diário + desbridamento ambulatorial
+
+WAGNER 2 (úlcera profunda sem abscesso):
+- Amoxicilina-Clavulanato 875/125mg VO 12/12h OU
+- Ciprofloxacino 500mg 12/12h + Clindamicina 300mg 6/6h
+- Duração: 14-21 dias
+- RX pé (osteomielite?)
+
+WAGNER 3 (abscesso/osteomielite):
+- Piperacilina-Tazobactam 4,5g EV 6/6h OU
+- Ertapenem 1g EV 1x/dia
+- Se MRSA risco: + Vancomicina 15-20mg/kg 12/12h
+- Duração: 4-6 semanas (osteomielite)
+- RNM pé + cultura profunda + desbridamento cirúrgico
+
+WAGNER 4-5 (gangrena parcial/total):
+- Meropenem 1g EV 8/8h + Vancomicina
+- Avaliação Vascular URGENTE (revascularização?)
+- Amputação se inviável`,
+    notes: "Cultura superficial (swab) é INÚTIL. Coletar cultura PROFUNDA (tecido/osso). ITBI (índice tornozelo-braquial) para avaliação vascular.",
+    warnings: "Diabético pode ter infecção grave sem febre ou leucocitose. Hiperglicemia persistente pode ser único sinal de infecção.",
+    guideline: "IDSA / IWGDF / SBD / SBACV",
+  },
 ];

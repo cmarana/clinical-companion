@@ -2781,5 +2781,154 @@ ARTERITE DE CÉLULAS GIGANTES (urgência oftalmológica):
     warnings: "Cefaleia temporal + claudicação mandibular + amaurose fugaz = EMERGÊNCIA (risco de cegueira irreversível). Iniciar corticoide ANTES da biópsia.",
     guideline: "SBR / ACR / EULAR / BSR",
   },
+  {
+    id: "rx-esclerodermia-crise-renal-diag",
+    title: "Crise Renal Esclerodérmica",
+    type: "Por Diagnóstico",
+    prescription: `1. Captopril 6,25-12,5mg VO 8/8h (IECA é tratamento de PRIMEIRA LINHA)
+   - Titular rapidamente: dobrar dose a cada 12-24h
+   - Meta: PA normal em 72h
+2. NÃO usar BRA (inferior ao IECA nesta condição)
+3. Se HAS maligna: Nitroprussiato EV como ponte
+4. Monitorizar: creatinina, K+, hemograma (anemia hemolítica microangiopática)
+5. Pesquisar esquizócitos (AHMA) + plaquetopenia
+6. Se anúria/IRA grave: hemodiálise (manter IECA mesmo em diálise)
+7. Suspender corticoide se possível (fator precipitante)
+8. Prognóstico renal: 50% recuperam função em 12-18 meses se IECA mantido`,
+    notes: "Ocorre em esclerose sistêmica difusa, geralmente nos primeiros 4 anos. Corticoide em dose >15mg/dia é fator de risco.",
+    warnings: "NÃO suspender IECA mesmo se creatinina subir. Recuperação renal tardia possível até 2 anos. Diálise NÃO contraindica IECA.",
+    guideline: "SBR / ACR / EULAR / EUSTAR",
+  },
+  {
+    id: "rx-espondilite-flare-diag",
+    title: "Espondilite Anquilosante — Flare Agudo",
+    type: "Por Diagnóstico",
+    prescription: `1. AINE em dose plena (1ª linha):
+   - Indometacina 50mg VO 8/8h OU
+   - Naproxeno 500mg VO 12/12h OU
+   - Etoricoxibe 90mg VO 1x/dia
+2. Proteção gástrica: Omeprazol 20mg/dia
+3. Fisioterapia: exercícios de extensão + natação
+4. Se refratário a 2 AINEs por 4 semanas:
+   - Anti-TNF: Adalimumab 40mg SC quinzenal OU
+   - Secuquinumab 150mg SC (IL-17)
+5. Corticoide intra-articular se artrite periférica (NÃO sistêmico)
+6. Se uveíte anterior: Dexametasona colírio + midriático (Oftalmo)
+7. HLA-B27 + RNM sacroilíacas (diagnóstico)
+8. VHS/PCR para monitorar atividade (BASDAI)
+9. Cessar tabagismo (acelera fusão vertebral)`,
+    notes: "Dor lombar inflamatória: <40 anos, insidiosa, rigidez matinal >30min, melhora com exercício, piora com repouso.",
+    guideline: "SBR / ASAS / ACR / EULAR",
+  },
+  {
+    id: "rx-trombose-venosa-cerebral-diag",
+    title: "Trombose Venosa Cerebral (TVC)",
+    type: "Por Diagnóstico",
+    prescription: `1. Anticoagulação plena IMEDIATA (mesmo com hemorragia associada):
+   - Heparina não fracionada: bolus 80UI/kg + 18UI/kg/h (TTPa 2-2,5x) OU
+   - Enoxaparina 1mg/kg SC 12/12h
+2. Controle de cefaleia: Paracetamol 1g 6/6h + Metoclopramida 10mg 8/8h
+   - Evitar opioides se possível (mascarar rebaixamento)
+3. Anticonvulsivante se crise: Levetiracetam 500mg EV 12/12h
+4. Se HIC: Acetazolamida 250mg VO 8/8h OU punção lombar evacuadora
+5. TC com fase venosa OU AngioRM venosa (diagnóstico)
+6. Investigar trombofilias após fase aguda
+7. Transição para Warfarina (INR 2-3) por 6-12 meses
+8. Se causa identificada e removível: 6 meses
+9. Se idiopática ou trombofilia grave: considerar anticoagulação indefinida
+10. Suspender ACO se em uso`,
+    notes: "Cefaleia progressiva + papiledema + déficit focal + convulsão em mulher jovem + ACO = pensar TVC. RNM > TC para diagnóstico.",
+    warnings: "Anticoagulação mesmo com hemorragia intracraniana associada — é o tratamento. NÃO é contraindicação.",
+    guideline: "ABN / AHA / ESO / EANO",
+  },
+  {
+    id: "rx-botulismo-diag",
+    title: "Botulismo",
+    type: "Por Diagnóstico",
+    prescription: `1. Suporte ventilatório: IOT precoce se paralisia descendente progredindo
+   - Capacidade vital forçada seriada (IOT se <15mL/kg)
+2. Soro antibotulínico trivalente (SAB) — solicitar ao CIEVS/MS:
+   - 1 ampola EV (teste de sensibilidade antes)
+   - Administrar o mais precoce possível
+3. NÃO usar aminoglicosídeos (agravam bloqueio neuromuscular)
+4. SNG se disfagia
+5. SVD se retenção urinária
+6. Laxante: Manitol 20% VO ou enema (eliminar toxina do TGI)
+7. Metronidazol 500mg EV 8/8h se botulismo de ferida
+8. Notificação compulsória IMEDIATA
+9. Investigar fonte alimentar (mel em lactentes, conservas caseiras)
+10. Monitorização em UTI
+11. ENMG: padrão incremental na estimulação repetitiva`,
+    notes: "Paralisia descendente (diferente de Guillain-Barré que é ascendente). Pupilas fixas dilatadas, boca seca, constipação precedem paralisia.",
+    warnings: "SAB disponível apenas via MS/SVS. Ligar CIEVS (0800-644-6645). Cada hora conta. Ventilação mecânica por semanas/meses.",
+    guideline: "MS / SVS / CDC / IDSA",
+  },
+  {
+    id: "rx-doenca-kawasaki-diag",
+    title: "Doença de Kawasaki",
+    type: "Por Diagnóstico",
+    prescription: `1. Imunoglobulina EV (IVIG) 2g/kg dose única, infundir em 10-12h
+   - Até o 10° dia de febre (idealmente dias 5-10)
+2. AAS dose anti-inflamatória: 80-100mg/kg/dia VO 6/6h (até 48-72h afebril)
+3. AAS dose antiplaquetária: 3-5mg/kg/dia VO (após afebril, por 6-8 semanas)
+4. Se refratário (febre >36h após IVIG):
+   - 2ª dose de IVIG 2g/kg OU
+   - Metilprednisolona 30mg/kg/dia EV x 3 dias OU
+   - Infliximab 5mg/kg EV dose única
+5. Ecocardiograma na admissão + 2 semanas + 6-8 semanas
+6. Hemograma, PCR, VHS, albumina, TGO/TGP
+7. Se aneurisma coronariano gigante (>8mm): anticoagulação com Warfarina
+8. Acompanhamento cardiológico prolongado`,
+    notes: "Critérios: febre ≥5 dias + 4/5 (conjuntivite, alteração labial/oral, rash, linfadenopatia cervical, alteração de extremidades). Incompleta: febre + 2-3 critérios + laboratorial.",
+    warnings: "Aneurisma coronariano: principal causa de cardiopatia adquirida na infância. IVIG antes do 10° dia reduz risco de 25% para <5%.",
+    guideline: "SBP / AHA / JCS",
+  },
+  {
+    id: "rx-sindrome-hemolitico-uremica-diag",
+    title: "Síndrome Hemolítico-Urêmica (SHU) Típica",
+    type: "Por Diagnóstico",
+    prescription: `1. Hidratação EV cautelosa: SF 0,9% conforme volemia (evitar hiper-hidratação se oligúria)
+2. Controle de PA: Amlodipino 0,1mg/kg/dose VO 12/12h (pediatria) OU Enalapril
+3. Transfusão de hemácias se Hb <6-7g/dL (concentrado de hemácias lavadas)
+4. NÃO transfundir plaquetas (exceto sangramento ativo ameaçador)
+5. NÃO usar ATB (pode aumentar liberação de Shiga-toxina)
+6. NÃO usar antimotílicos (Loperamida)
+7. Diálise se: K+ >6,5 refratário, sobrecarga hídrica, uremia sintomática
+8. Monitorização: hemograma + esquizócitos 12/12h, LDH, haptoglobina, creatinina, K+
+9. Balanço hídrico rigoroso + peso diário
+10. Investigar: coprocultura (E. coli O157:H7), toxina Shiga nas fezes
+11. Se SHU atípica (sem diarreia): complemento, ADAMTS-13 → considerar Eculizumab`,
+    notes: "Tríade: anemia hemolítica microangiopática + plaquetopenia + IRA. Precedida por diarreia sanguinolenta (E. coli produtora de Shiga-toxina).",
+    warnings: "NÃO dar antibiótico na SHU típica. Plaquetas: apenas se sangramento ativo grave (piora microangiopatia). ADAMTS-13 <10% = PTT, não SHU.",
+    guideline: "SBP / SBN / KDIGO / ASH",
+  },
+  {
+    id: "rx-mordedura-ofidica-botrhrops-diag",
+    title: "Acidente Botrópico (Jararaca) — Manejo Completo",
+    type: "Por Diagnóstico",
+    prescription: `CLASSIFICAÇÃO E SOROTERAPIA:
+Leve: dor e edema local, sem coagulopatia → SAB 4 ampolas EV
+Moderado: edema ascendente + coagulopatia leve → SAB 8 ampolas EV
+Grave: edema extenso + hemorragia + choque + IRA → SAB 12 ampolas EV
+
+SOROTERAPIA:
+1. Soro antibotrópico (SAB) EV diluído em 250mL SF, infundir em 20-60min
+2. Pré-medicar: Hidrocortisona 500mg EV + Prometazina 25mg IM (prevenção anafilaxia)
+3. Adrenalina preparada beira-leito
+
+TRATAMENTO DE SUPORTE:
+4. Hidratação vigorosa: SF 0,9% 2L EV (proteção renal)
+5. Analgesia: Dipirona 1g EV 6/6h (NÃO usar AINEs)
+6. Elevação do membro afetado
+7. Profilaxia antitetânica
+8. Limpeza local + curativo
+9. NÃO: torniquete, sucção, incisão, gelo
+10. Monitorizar: TP, fibrinogênio, creatinina, diurese, hemograma
+11. Fasciotomia se síndrome compartimental
+12. ATB apenas se infecção secundária`,
+    notes: "Botrópico (jararaca) é o acidente ofídico mais comum no Brasil (90%). Tempo de coagulação (TC) incoagulável = indicador de gravidade.",
+    warnings: "Soro é eficaz apenas nas primeiras 6-12h. NÃO aplicar soro local no membro. Dose IGUAL para crianças e adultos.",
+    guideline: "MS / SVS / Instituto Butantan / SBMT",
+  },
 ];
 
