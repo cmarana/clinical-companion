@@ -154,17 +154,29 @@ export const fullProtocols: FullProtocol[] = [
 
   // New categories
   ...gastroFullProtocols,
+  ...gastroFullProtocols2,
   ...nephrologyFullProtocols,
+  ...nephrologyFullProtocols2,
   ...psychiatryFullProtocols,
+  ...psychiatryFullProtocols2,
   ...dermatologyFullProtocols,
+  ...dermatologyFullProtocols2,
   ...ophthalmologyFullProtocols,
+  ...ophthalmologyFullProtocols2,
   ...orlFullProtocols,
+  ...orlFullProtocols2,
   ...gynecologyFullProtocols,
+  ...gynecologyFullProtocols2,
   ...hematologyFullProtocols,
+  ...hematologyFullProtocols2,
   ...geriatricsFullProtocols,
+  ...geriatricsFullProtocols2,
   ...painPalliativeFullProtocols,
+  ...painPalliativeFullProtocols2,
   ...triageFullProtocols,
+  ...triageFullProtocols2,
   ...susProtocolsFullProtocols,
+  ...susProtocolsFullProtocols2,
 ];
 
 export function getFullProtocol(id: string) {
