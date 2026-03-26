@@ -78,7 +78,7 @@ export const fullProtocols: FullProtocol[] = [
   ...neuroFullProtocols2,
   ...neuroFullProtocols3,
   ...neuroFullProtocols4,
-  ...neuroFullProtocols5,
+  
   ...sepsisFullProtocols,
   ...sepsisFullProtocols2,
   ...sepsisFullProtocols3,
