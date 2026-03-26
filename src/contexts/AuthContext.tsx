@@ -117,7 +117,8 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
             setTimeout(() => checkSubscription(), 0);
           }
         } else {
-          setSubscription({ subscribed: false, productId: null, subscriptionEnd: null, isTrial: false, trialDaysLeft: 0 });
+          // Temporarily keep everything unlocked even without auth
+          setSubscription({ subscribed: true, productId: null, subscriptionEnd: null, isTrial: false, trialDaysLeft: 0 });
         }
       }
     );
