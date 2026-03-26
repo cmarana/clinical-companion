@@ -1072,4 +1072,295 @@ Encaminhamento:
     warnings: "PTT (pentade): trombocitopenia + anemia hemolítica + febre + alteração neurológica + IRA. Plasmaférese URGENTE.",
     guideline: "ABHH / ASH",
   },
+  {
+    id: "rx-colecistite-diag",
+    title: "Colecistite Aguda",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Dieta zero (jejum para cirurgia)
+2. SF 0,9% 1000mL EV — manter hidratação
+3. Ceftriaxona 1g EV 12/12h + Metronidazol 500mg EV 8/8h
+4. Dipirona 1g EV 6/6h
+5. Cetoprofeno 100mg EV 12/12h (evitar se IRA)
+6. Tramadol 50-100mg EV 8/8h se dor intensa
+7. Ondansetrona 4mg EV 8/8h se náusea
+8. Omeprazol 40mg EV 1x/dia
+9. Enoxaparina 40mg SC 1x/dia
+10. USG abdome (parede espessada, Murphy sonográfico, cálculo)
+11. Hemograma, PCR, TGO/TGP, FA, GGT, bilirrubinas, amilase/lipase
+12. Colecistectomia laparoscópica precoce (idealmente <72h)`,
+    notes: "Critérios de Tóquio: Murphy + febre/leucocitose + imagem. Grau I-III define conduta.",
+    guideline: "CBCD / Tokyo Guidelines 2018",
+  },
+  {
+    id: "rx-diverticulite-diag",
+    title: "Diverticulite Aguda",
+    type: "Prescrição Hospitalar",
+    prescription: `NÃO complicada (Hinchey I):
+1. Dieta líquida → progredir conforme tolerância
+2. Ciprofloxacino 400mg EV 12/12h + Metronidazol 500mg EV 8/8h
+3. OU Ceftriaxona 1g EV 12/12h + Metronidazol 500mg EV 8/8h
+4. Dipirona 1g EV 6/6h
+5. Buscopan composto EV 6/6h
+6. Ondansetrona 4mg EV 8/8h SN
+
+Complicada (Hinchey II-IV):
+7. Dieta zero
+8. Piperacilina-Tazobactam 4,5g EV 6/6h OU Meropenem 1g EV 8/8h
+9. Drenagem percutânea guiada por TC (abscesso >4cm)
+10. Cirurgia de emergência se: peritonite difusa, perfuração livre
+11. TC abdome com contraste (estadiamento Hinchey)
+12. Hemograma, PCR, função renal`,
+    guideline: "CBCD / WSES 2020",
+  },
+  {
+    id: "rx-obstrucao-intestinal-diag",
+    title: "Obstrução Intestinal",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Dieta zero
+2. SNG aberta (descompressão gástrica — medir débito)
+3. SF 0,9% 1000-2000mL EV (reposição vigorosa — 3° espaço)
+4. KCl 19,1% conforme K+ (hipocalemia é comum)
+5. Dipirona 1g EV 6/6h
+6. Buscopan simples 20mg EV 6/6h (controverso)
+7. Ondansetrona 4mg EV 8/8h
+8. Omeprazol 40mg EV 1x/dia
+9. SVD (balanço hídrico rigoroso)
+10. RX abdome em pé + deitado (níveis hidroaéreos, distensão)
+11. TC abdome se dúvida (ponto de transição, sinais de isquemia)
+12. Hemograma, eletrólitos, gasometria, lactato, amilase
+13. Cirurgia: se sinais de estrangulamento, peritonite, ou sem melhora em 48-72h`,
+    warnings: "Sinais de alarme: dor contínua, taquicardia, febre, leucocitose, lactato elevado = possível isquemia/estrangulamento.",
+    guideline: "CBCD / WSES",
+  },
+  {
+    id: "rx-colangite-diag",
+    title: "Colangite Aguda",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Dieta zero
+2. SF 0,9% — ressuscitação volêmica
+3. Piperacilina-Tazobactam 4,5g EV 6/6h OU Meropenem 1g EV 8/8h
+4. Dipirona 1g EV 6/6h
+5. Ondansetrona 4mg EV 8/8h
+6. Enoxaparina 40mg SC 1x/dia
+7. Vitamina K 10mg EV se coagulopatia
+8. Hemograma, PCR, TGO/TGP, FA, GGT, bilirrubinas, amilase, coagulograma
+9. USG abdome (dilatação de vias biliares)
+10. CPRE de urgência (descompressão biliar) — idealmente <24h
+11. Se instável: noradrenalina + ressuscitação (sepse biliar)
+12. Tríade de Charcot: dor HD + febre + icterícia
+13. Pêntade de Reynolds: + hipotensão + confusão mental = GRAVÍSSIMO`,
+    guideline: "Tokyo Guidelines 2018 / CBCD",
+  },
+  {
+    id: "rx-cirrose-descomp-diag",
+    title: "Cirrose Descompensada — Ascite",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Dieta hipossódica (2g Na/dia)
+2. Espironolactona 100mg VO 1x/dia (até 400mg)
+3. Furosemida 40mg VO 1x/dia (até 160mg) — proporção 100:40
+4. Restrição hídrica se Na <125
+5. Paracentese de alívio se ascite tensa (>5L: repor Albumina 8g/L retirado)
+6. Albumina 20% EV se paracentese >5L
+7. Profilaxia PBE: Norfloxacino 400mg/dia se proteína líquido <1,5
+8. MELD score (priorizar transplante)
+9. USG abdome (ascite, hepatocarcinoma, trombose portal)
+10. Exames: Na, K, creatinina, função hepática, coagulograma, hemograma
+11. Análise líquido ascítico: citologia, proteína, albumina (GASA)
+12. NÃO usar AINEs (risco IRA). Evitar aminoglicosídeos.`,
+    warnings: "GASA ≥1,1 = hipertensão portal. PMN >250 = PBE → tratar com Ceftriaxona + Albumina.",
+    guideline: "AASLD / SBH",
+  },
+  {
+    id: "rx-hepatite-alcoolica-diag",
+    title: "Hepatite Alcoólica Grave",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Dieta hiperprotéica (1,5g/kg/dia) — suporte nutricional agressivo
+2. Tiamina 300mg EV 1x/dia (3 dias) → 100mg VO
+3. Ácido fólico 5mg VO 1x/dia
+4. Complexo B VO 1x/dia
+5. Se Maddrey ≥32: Prednisolona 40mg VO 1x/dia por 28 dias
+6. Reavaliar com Score de Lille no D7 (se >0,45 = não respondedor → suspender)
+7. Omeprazol 20mg VO 1x/dia
+8. Lactulose 20mL VO 8/8h se encefalopatia
+9. Hemograma, bilirrubinas, TP/INR, creatinina, AST/ALT
+10. Calcular Maddrey: 4,6 × (TP paciente - TP controle) + bilirrubina total
+11. NÃO usar corticoide se: infecção ativa, HDA, IRA, hepatite B
+12. Pentoxifilina 400mg VO 8/8h (alternativa controversa)`,
+    guideline: "EASL / AASLD / SBH",
+  },
+  {
+    id: "rx-miastenia-crise-diag",
+    title: "Crise Miastênica",
+    type: "Prescrição Hospitalar",
+    prescription: `1. IOT se: CVF <15mL/kg, PImáx >-20cmH2O, disfagia grave
+2. VNI como ponte se leve (BiPAP IPAP 12 / EPAP 5)
+3. SUSPENDER anticolinesterásico (piridostigmina) na crise — risco de crise colinérgica
+4. Imunoglobulina EV 0,4g/kg/dia por 5 dias (1ª escolha)
+5. OU Plasmaférese 5 sessões em dias alternados
+6. Metilprednisolona 1g EV/dia por 3-5 dias (cuidado: pode piorar inicialmente)
+7. SF 0,9% — acesso venoso
+8. Monitorização contínua (CVF seriada, gasometria)
+9. EVITAR: aminoglicosídeos, quinolonas, betabloqueadores, magnésio, fenitoína
+10. Após estabilização: reintroduzir piridostigmina 30mg VO 6/6h gradual`,
+    warnings: "CVF <1L ou queda rápida = IOT urgente. Não esperar gasometria alterar.",
+    guideline: "ABN / AAN / Myasthenia Gravis Foundation",
+  },
+  {
+    id: "rx-guillain-barre-diag",
+    title: "Síndrome de Guillain-Barré",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Monitorização contínua: CVF a cada 4-6h (IOT se <20mL/kg ou queda >30%)
+2. Imunoglobulina EV 0,4g/kg/dia por 5 dias (1ª escolha)
+3. OU Plasmaférese 5 sessões em dias alternados
+4. NÃO usar corticoide (NÃO é eficaz na GBS)
+5. Profilaxia TVP: Enoxaparina 40mg SC 1x/dia
+6. Analgesia: Gabapentina 300mg 8/8h (dor neuropática é frequente)
+7. Cuidados com disautonomia: monitorar PA, FC, arritmias
+8. SVD se retenção urinária
+9. Fisioterapia motora + respiratória precoce
+10. LCR: dissociação albumino-citológica (proteína alta, células normais)
+11. ENMG: padrão desmielinizante ou axonal
+12. Recuperação: semanas a meses. 80% recuperam marcha independente.`,
+    guideline: "ABN / AAN / GBS-CIDP Foundation",
+  },
+  {
+    id: "rx-abscesso-hepatico-diag",
+    title: "Abscesso Hepático",
+    type: "Prescrição Hospitalar",
+    prescription: `Piogênico:
+1. Ceftriaxona 1g EV 12/12h + Metronidazol 500mg EV 8/8h
+2. OU Piperacilina-Tazobactam 4,5g EV 6/6h
+3. Drenagem percutânea guiada por USG/TC (se >5cm ou sem melhora)
+4. Hemoculturas (2 pares) + cultura do aspirado
+
+Amebiano:
+5. Metronidazol 750mg EV 8/8h por 7-10 dias
+6. Seguido de Teclozan 500mg VO 8/8h por 3 dias (erradicação luminal)
+7. Drenagem se: >5cm, lobo esquerdo, sem resposta em 5-7 dias
+
+Ambos:
+8. Dipirona 1g EV 6/6h
+9. Omeprazol 40mg EV 1x/dia
+10. TC abdome com contraste (diagnóstico + guia drenagem)
+11. Hemograma, PCR, TGO/TGP, FA, GGT, bilirrubinas
+12. ATB EV por 2-3 semanas → VO até 4-6 semanas total`,
+    guideline: "SBI / CBCD",
+  },
+  {
+    id: "rx-sindrome-nefrotica-diag",
+    title: "Síndrome Nefrótica",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Dieta hipossódica (2g Na/dia) + normoproteica
+2. Furosemida 40-80mg EV 12/12h (edema refratário)
+3. OU Furosemida + Albumina 20% 100mL EV antes do diurético
+4. Espironolactona 25-50mg VO 1x/dia (adjuvante)
+5. IECA ou BRA: Enalapril 10-20mg VO 12/12h (reduzir proteinúria)
+6. Estatina: Atorvastatina 40mg VO (dislipidemia nefrótica)
+7. Anticoagulação profilática se albumina <2g/dL (risco de trombose venosa renal)
+8. Exames: proteinúria 24h, albumina, colesterol, triglicérides, função renal
+9. USG renal + biópsia renal (definir etiologia)
+10. Hemograma, complemento (C3/C4), FAN, anti-DNA, sorologias (hepatite B/C, HIV)
+11. NÃO usar AINEs. Cuidado com nefrotóxicos.`,
+    guideline: "SBN / KDIGO",
+  },
+  {
+    id: "rx-apendicite-diag",
+    title: "Apendicite Aguda",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Dieta zero (jejum para cirurgia)
+2. SF 0,9% 1000mL EV
+3. Ceftriaxona 1g EV 12/12h + Metronidazol 500mg EV 8/8h (profilaxia/tratamento)
+4. Dipirona 1g EV 6/6h
+5. Tramadol 50-100mg EV 8/8h se dor intensa
+6. Ondansetrona 4mg EV 8/8h SN
+7. Omeprazol 40mg EV 1x/dia
+8. Enoxaparina 40mg SC 1x/dia
+9. Apendicectomia laparoscópica (idealmente <12h do diagnóstico)
+10. TC abdome se dúvida diagnóstica (sensibilidade >95%)
+11. Hemograma, PCR, EAS, beta-HCG (mulheres em idade fértil)
+12. Escore de Alvarado: ≥7 = alta probabilidade`,
+    notes: "Não retardar analgesia para não 'mascarar' exame físico — mito ultrapassado.",
+    guideline: "CBCD / WSES 2020 / EAES",
+  },
+  {
+    id: "rx-insuf-hepatica-aguda-diag",
+    title: "Insuficiência Hepática Aguda (Hepatite Fulminante)",
+    type: "Prescrição Hospitalar",
+    prescription: `1. UTI — monitorização contínua
+2. N-Acetilcisteína 150mg/kg em 1h → 50mg/kg em 4h → 100mg/kg em 16h (mesmo se não por paracetamol)
+3. Lactulose 20-30mL VO/SNG 6/6h (encefalopatia)
+4. NÃO usar proteínas na dieta inicialmente se encefalopatia grave
+5. Omeprazol 40mg EV 1x/dia
+6. Vitamina K 10mg EV 1x/dia
+7. Glicose 50% se hipoglicemia (frequente)
+8. Reposição eletrolítica conforme necessidade
+9. ATB profilático: Ceftriaxona 1g EV se sinais de infecção
+10. INR, bilirrubinas, amônia, lactato, gasometria, hemograma
+11. Sorologias: hepatites A/B/C/E, autoimunes (FAN, AML), paracetamol nível
+12. Critérios de King's College para transplante hepático
+13. Contatar transplante PRECOCEMENTE (mortalidade >80% sem transplante)`,
+    warnings: "INR >6,5 + creatinina >3,4 + encefalopatia grau III-IV = transplante urgente (King's College).",
+    guideline: "AASLD / EASL / SBH",
+  },
+  {
+    id: "rx-embolia-gordurosa-diag",
+    title: "Embolia Gordurosa",
+    type: "Prescrição Hospitalar",
+    prescription: `1. O2 suplementar → IOT + VM se insuficiência respiratória
+2. SF 0,9% — manter hidratação (evitar hipovolemia)
+3. Metilprednisolona 1,5mg/kg EV 8/8h (controverso, mas usado na prática)
+4. Analgesia adequada do foco fraturário
+5. Fixação precoce da fratura de ossos longos (<24h reduz risco)
+6. NÃO há tratamento específico — suporte
+7. Monitorização contínua (SpO2, gasometria seriada)
+8. Tríade clássica: hipóxia + confusão mental + petéquias (axilar, conjuntival, cervical)
+9. TC tórax: vidro fosco difuso bilateral
+10. RNM crânio: restrição de difusão (padrão "céu estrelado")
+11. Hemograma, gasometria, lipase (pode elevar), EAS (gotículas de gordura)
+12. Prevenir: fixação precoce de fraturas + ressuscitação volêmica adequada`,
+    guideline: "ATLS / Ortopedia Trauma",
+  },
+  {
+    id: "rx-cetoacidose-diag",
+    title: "Cetoacidose Diabética",
+    type: "Prescrição Hospitalar",
+    prescription: `1. SF 0,9% 1000mL EV na 1ª hora
+2. Após: SF 0,9% 500mL/h (ajustar conforme hidratação e Na)
+3. Insulina Regular 0,1 UI/kg EV bolus → 0,1 UI/kg/h em BIC
+4. NÃO iniciar insulina se K <3,3 (corrigir K antes)
+5. KCl 19,1%: K <3,3 → 40mEq/h; K 3,3-5,3 → 20-30mEq/L de SF; K >5,3 → aguardar
+6. Quando glicemia <250: trocar para SG 5% + SF + manter insulina
+7. Bicarbonato: APENAS se pH <6,9 (100mEq em 400mL em 2h)
+8. Gasometria + glicemia a cada 1-2h
+9. Eletrólitos (K, Na, Mg, P) a cada 2-4h
+10. Meta: queda glicemia 50-75mg/dL/h
+11. Critérios de resolução: pH >7,3 + AG <12 + HCO3 >15 + glicemia <200
+12. Transição: iniciar insulina SC 2h ANTES de desligar BIC`,
+    guideline: "SBD / ADA 2024",
+  },
+  {
+    id: "rx-tev-diag",
+    title: "Tromboembolismo Venoso (TVP + TEP) — Anticoagulação",
+    type: "Prescrição Hospitalar",
+    prescription: `TVP proximal / TEP sem instabilidade:
+1. Enoxaparina 1mg/kg SC 12/12h (padrão-ouro)
+2. OU Heparina não-fracionada 80 UI/kg bolus → 18 UI/kg/h BIC (se ClCr <30)
+3. DOAC: Rivaroxabana 15mg VO 12/12h por 21 dias → 20mg 1x/dia
+4. OU Apixabana 10mg VO 12/12h por 7 dias → 5mg 12/12h
+
+TEP maciço (instabilidade hemodinâmica):
+5. Alteplase 100mg EV em 2h (trombólise)
+6. OU Tenecteplase peso-ajustada EV bolus
+7. Heparina NF após trombólise
+
+Suporte:
+8. O2 para SpO2 >94%
+9. SF 0,9% 250-500mL (cuidadoso — não sobrecarregar VD)
+10. Noradrenalina se hipotensão
+11. D-dímero, troponina, BNP, gasometria
+12. AngioTC tórax (TEP) / USG Doppler MMII (TVP)
+13. Duração anticoagulação: 3-6 meses (provocado) ou indefinido (não provocado/recorrente)`,
+    guideline: "SBC / ESC 2019 / CHEST",
+  },
 ];
+

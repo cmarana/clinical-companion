@@ -430,4 +430,70 @@ Tratamento: Ciproheptadina 12mg VO ataque → 4mg 8/8h`,
     warnings: "Intoxicação por tricíclico: QRS largo = Bicarbonato URGENTE. NÃO dar Flumazenil.",
     guideline: "ABP / AACT",
   },
+  {
+    id: "rx-classe-antidiabeticos",
+    title: "Antidiabéticos Orais — Guia Rápido",
+    type: "Por Classe de Medicamento",
+    prescription: `BIGUANIDAS: Metformina 500-850mg VO 2-3x/dia (1ª linha DM2, CI se ClCr <30)
+SULFONILUREIAS: Glicazida MR 30-120mg 1x/dia, Glibenclamida 5mg 1-3x/dia (risco hipoglicemia)
+INIBIDORES DPP-4: Sitagliptina 100mg 1x/dia, Vildagliptina 50mg 12/12h (neutros no peso)
+AGONISTAS GLP-1: Liraglutida 0,6-1,8mg SC 1x/dia, Semaglutida 0,25-1mg SC 1x/sem (perda de peso)
+INIBIDORES SGLT2: Dapagliflozina 10mg 1x/dia, Empagliflozina 10-25mg 1x/dia (benefício cardio-renal)
+TIAZOLIDINEDIONAS: Pioglitazona 15-45mg 1x/dia (CI em IC)
+INIBIDORES α-GLUCOSIDASE: Acarbose 50-100mg 3x/dia (reduz pico pós-prandial)
+
+SUS disponíveis: Metformina, Glibenclamida, Glicazida, Insulina NPH/Regular`,
+    notes: "SGLT2i: reduz mortalidade CV e progressão DRC. GLP-1a: reduz eventos CV em DM2 com DCV.",
+    guideline: "SBD / ADA 2024",
+  },
+  {
+    id: "rx-classe-antihistaminicos",
+    title: "Anti-histamínicos — Guia Rápido",
+    type: "Por Classe de Medicamento",
+    prescription: `1ª GERAÇÃO (sedativos — atravessam BHE):
+Dexclorfeniramina 2mg VO 8/8h (Polaramine)
+Prometazina 25mg VO ou IM 8/8h (Fenergan) — NÃO usar EV
+Hidroxizina 25mg VO 8/8h (Hixizine)
+Difenidramina 50mg VO ou EV 8/8h
+
+2ª GERAÇÃO (não sedativos — preferidos):
+Loratadina 10mg VO 1x/dia
+Desloratadina 5mg VO 1x/dia
+Cetirizina 10mg VO 1x/dia
+Fexofenadina 180mg VO 1x/dia
+Bilastina 20mg VO 1x/dia (jejum)
+
+EMERGÊNCIA:
+Dexclorfeniramina 5mg EV lento (anafilaxia — adjuvante)
+Ranitidina 50mg EV (anti-H2 — adjuvante na anafilaxia)`,
+    notes: "1ª geração: evitar em idosos (risco delirium, retenção urinária). 2ª geração: preferir sempre que possível.",
+  },
+  {
+    id: "rx-classe-antiplaquetarios",
+    title: "Antiplaquetários — Guia Rápido",
+    type: "Por Classe de Medicamento",
+    prescription: `AAS (ácido acetilsalicílico):
+100mg 1x/dia (prevenção secundária)
+200-300mg ataque (SCA)
+
+CLOPIDOGREL:
+75mg 1x/dia (manutenção)
+300-600mg ataque (SCA, antes de angioplastia)
+
+TICAGRELOR:
+90mg 12/12h (SCA — superior ao clopidogrel)
+Ataque: 180mg
+
+PRASUGREL:
+10mg 1x/dia (pós-angioplastia em SCA)
+Ataque: 60mg
+CI: >75 anos, <60kg, AVC/AIT prévio
+
+DUPLA ANTIAGREGAÇÃO (DAPT):
+AAS + Clopidogrel/Ticagrelor/Prasugrel
+Duração: 12 meses pós-SCA, 6 meses pós-stent eletivo
+Suspender 5-7 dias antes de cirurgia (exceto urgência)`,
+    guideline: "SBC / ESC / AHA",
+  },
 ];
+

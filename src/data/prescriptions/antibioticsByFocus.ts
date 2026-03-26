@@ -365,4 +365,112 @@ Empírico grave/sepse:
 10. NÃO tratar bacteriúria assintomática (exceto pré-operatório urológico)`,
     guideline: "SBI / IDSA 2010",
   },
+  {
+    id: "rx-atb-biliar",
+    title: "Antibiótico — Foco Biliar",
+    type: "Antibiótico por Foco",
+    prescription: `Colecistite aguda leve (Grau I Tokyo):
+1. Ceftriaxona 1g EV 12/12h + Metronidazol 500mg EV 8/8h
+
+Colecistite moderada/grave ou colangite:
+2. Piperacilina-Tazobactam 4,5g EV 6/6h
+3. OU Meropenem 1g EV 8/8h (se risco de MDR)
+
+Pós-CPRE com colangite:
+4. Manter esquema por 5-7 dias
+5. Descalonar conforme cultura da bile
+
+Germes: E. coli, Klebsiella, Enterococcus, anaeróbios
+6. Hemoculturas + cultura da bile (na CPRE)
+7. Duração: 5-7 dias (colecistite), 7-14 dias (colangite complicada)`,
+    guideline: "Tokyo Guidelines 2018 / SBI",
+  },
+  {
+    id: "rx-atb-pe-diabetico",
+    title: "Antibiótico — Pé Diabético Infectado",
+    type: "Antibiótico por Foco",
+    prescription: `Leve (celulite superficial):
+1. Cefalexina 500mg VO 6/6h + Metronidazol 400mg VO 8/8h
+2. OU Amoxicilina-Clavulanato 875/125mg VO 12/12h
+
+Moderado (úlcera profunda, celulite extensa):
+3. Oxacilina 2g EV 4/4h + Ceftriaxona 1g EV 12/12h + Metronidazol 500mg EV 8/8h
+4. OU Piperacilina-Tazobactam 4,5g EV 6/6h
+
+Grave (sepse, osteomielite, necrose):
+5. Meropenem 1g EV 8/8h + Vancomicina 15mg/kg EV 12/12h
+6. Desbridamento cirúrgico urgente
+7. RNM do pé (avaliar osteomielite)
+8. Cultura profunda do tecido (swab superficial não serve)
+9. Duração: 2-4 semanas (partes moles), 6 semanas (osteomielite)
+10. Controle glicêmico rigoroso + curativos especializados`,
+    guideline: "IDSA / SBD / IWGDF",
+  },
+  {
+    id: "rx-atb-neutropenia-febril",
+    title: "Antibiótico — Neutropenia Febril",
+    type: "Antibiótico por Foco",
+    prescription: `DEFINIÇÃO: Neutrófilos <500 + Tax ≥38,3°C (ou ≥38°C por >1h)
+
+BUNDLE 1ª HORA:
+1. Hemoculturas (2 pares periféricos + 1 do cateter se houver)
+2. ATB empírico imediato:
+   Cefepime 2g EV 8/8h (1ª escolha)
+   OU Meropenem 1g EV 8/8h (se instável/colonizado MDR)
+   OU Piperacilina-Tazobactam 4,5g EV 6/6h
+
+Adicionar Vancomicina se:
+3. Mucosite grave, infecção de cateter, celulite, pneumonia, instabilidade
+
+Adicionar antifúngico se:
+4. Febre persistente >4-7 dias: Caspofungina 70mg D1 → 50mg/dia
+5. OU Anfotericina B lipossomal 3mg/kg/dia
+
+Suporte:
+6. G-CSF (Filgrastima): considerar se alto risco
+7. Hemograma diário + PCR
+8. Duração: até neutrófilos >500 por 2 dias + afebril`,
+    warnings: "Neutropenia febril = emergência. ATB na 1ª HORA. Cada hora de atraso aumenta mortalidade.",
+    guideline: "SBOC / NCCN / IDSA / ASCO",
+  },
+  {
+    id: "rx-atb-infeccao-cateter",
+    title: "Antibiótico — Infecção de Cateter Venoso Central",
+    type: "Antibiótico por Foco",
+    prescription: `1. Hemoculturas PAREADAS: periférica + do cateter (tempo diferencial)
+2. Vancomicina 15-20mg/kg EV 12/12h (cobertura Gram+ incluindo MRSA)
+3. + Cefepime 2g EV 8/8h OU Piperacilina-Tazobactam 4,5g EV 6/6h
+4. Se instável/candidíase: adicionar antifúngico
+
+Decisão sobre cateter:
+5. REMOVER se: S. aureus, Candida, P. aeruginosa, tunelite, sepse grave
+6. Tentar salvar se: CoNS sem complicação (lock terapia + ATB sistêmico)
+
+Ajustar conforme cultura:
+7. S. aureus MRSA: Vancomicina 14 dias (4-6 semanas se complicado)
+8. S. aureus MSSA: Oxacilina 2g EV 4/4h → 14 dias
+9. Candida: remover cateter + Fluconazol/Caspofungina 14 dias após última hemocultura positiva
+10. Ecocardiograma se S. aureus (excluir endocardite)`,
+    guideline: "IDSA / ANVISA / CCIH",
+  },
+  {
+    id: "rx-atb-prostatico",
+    title: "Antibiótico — Prostatite Aguda",
+    type: "Antibiótico por Foco",
+    prescription: `Prostatite aguda bacteriana:
+1. Ciprofloxacino 500mg VO 12/12h por 4-6 semanas
+2. OU Levofloxacino 500mg VO 1x/dia por 4-6 semanas
+3. Se grave/sepse: Ceftriaxona 1g EV 12/12h + Gentamicina 5mg/kg 1x/dia
+4. Após melhora: trocar para quinolona VO até completar 4-6 semanas
+
+Suporte:
+5. Dipirona 1g EV 6/6h
+6. Cetoprofeno 100mg EV 12/12h
+7. Alfa-bloqueador: Tansulosina 0,4mg VO 1x/dia (melhora sintomas obstrutivos)
+8. SVD se retenção urinária aguda (NÃO fazer cateterismo intermitente)
+9. USG próstata transretal se suspeita de abscesso (drenagem se >2cm)
+10. Urocultura + hemoculturas (E. coli é o germe mais comum)`,
+    guideline: "SBU / EAU / IDSA",
+  },
 ];
+

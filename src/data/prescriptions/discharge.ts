@@ -367,4 +367,138 @@ Bacteriana (secreção purulenta):
    (sinais de anafilaxia)
 8. Se recorrente (>6 semanas): encaminhar alergista`,
   },
+  {
+    id: "rx-alta-ic",
+    title: "Alta — Insuficiência Cardíaca",
+    type: "Prescrição de Alta",
+    prescription: `1. Carvedilol 3,125mg — 1cp VO 12/12h (titular gradualmente)
+2. Enalapril 5mg — 1cp VO 12/12h (ou Losartana 50mg se tosse)
+3. Espironolactona 25mg — 1cp VO 1x/dia
+4. Furosemida 40mg — 1cp VO pela manhã (ajustar conforme congestão)
+5. Controle de peso diário (ganho >1kg/dia = reter líquido)
+6. Restrição hídrica 1,5L/dia se NYHA III-IV
+7. Dieta hipossódica (2g Na/dia)
+8. Retorno cardiologia em 7-14 dias
+9. Retorno PS se: dispneia piora, edema piorando, ganho >2kg em 2 dias`,
+    guideline: "SBC / ESC",
+  },
+  {
+    id: "rx-alta-avc",
+    title: "Alta — AVC Isquêmico",
+    type: "Prescrição de Alta",
+    prescription: `1. AAS 100mg — 1cp VO 1x/dia (após almoço)
+2. Atorvastatina 40-80mg — 1cp VO à noite
+3. Anti-hipertensivo conforme perfil (manter PA <130/80 após fase aguda)
+4. Se FA: Rivaroxabana 20mg 1x/dia OU Apixabana 5mg 12/12h
+5. Fisioterapia / fonoaudiologia / terapia ocupacional
+6. Paracetamol 750mg VO 6/6h SN
+7. Retorno neurologia em 30 dias
+8. RNM crânio + AngioTC de carótidas ambulatorial se não feitos
+9. Retorno PS se: novo déficit, cefaleia súbita intensa, convulsão`,
+    guideline: "ABN / AHA/ASA 2019",
+  },
+  {
+    id: "rx-alta-pielonefrite",
+    title: "Alta — Pielonefrite",
+    type: "Prescrição de Alta",
+    prescription: `1. Ciprofloxacino 500mg — 1cp VO 12/12h por 7-10 dias
+2. OU Ceftriaxona 1g IM 1x/dia por 7 dias (se não tolera VO)
+3. Paracetamol 750mg VO 6/6h se dor ou febre
+4. Buscopan simples 10mg VO 6/6h se cólica
+5. Hidratação oral abundante (≥2L/dia)
+6. Urocultura de controle após tratamento
+7. Retorno em 48-72h para reavaliação clínica
+8. Retorno PS se: febre persistente, vômitos, piora da dor lombar`,
+    guideline: "SBI / IDSA",
+  },
+  {
+    id: "rx-alta-diabetes-descomp",
+    title: "Alta — Diabetes Descompensado",
+    type: "Prescrição de Alta",
+    prescription: `1. Metformina 850mg — 1cp VO no almoço e jantar
+2. Glicazida MR 30mg — 1cp VO no café (titular conforme glicemia)
+3. OU Insulina NPH __UI SC café + __UI SC jantar (ajustar conforme)
+4. Insulina Regular conforme tabela de correção
+5. Glicemia capilar: jejum + antes do jantar
+6. Dieta diabética (orientação nutricional)
+7. Retorno endocrinologia em 15-30 dias
+8. HbA1c + função renal + perfil lipídico em 30 dias
+9. Retorno PS se: poliúria intensa, vômitos, confusão, glicemia >400`,
+    guideline: "SBD / ADA",
+  },
+  {
+    id: "rx-alta-meningite",
+    title: "Alta — Meningite Viral",
+    type: "Prescrição de Alta",
+    prescription: `1. Paracetamol 750mg — 1cp VO 6/6h se febre ou dor
+2. Ibuprofeno 400mg — 1cp VO 8/8h se cefaleia intensa
+3. Repouso em ambiente escuro e silencioso
+4. Hidratação oral abundante
+5. Retorno em 48-72h para reavaliação
+6. Retorno PS se: febre alta, rigidez de nuca piora, convulsão, confusão mental
+7. Notificação epidemiológica se meningocócica`,
+  },
+  {
+    id: "rx-alta-queimadura",
+    title: "Alta — Queimadura Menor",
+    type: "Prescrição de Alta",
+    prescription: `1. Sulfadiazina de prata 1% — aplicar na área queimada 1x/dia após limpeza
+2. OU Curativo com gaze vaselinada (Adaptic) se face/articulações
+3. Paracetamol 750mg VO 6/6h SN dor
+4. Ibuprofeno 400mg VO 8/8h SN (se não contraindicado)
+5. Tramadol 50mg VO 6/6h se dor intensa
+6. Limpeza com SF 0,9% + troca de curativo 1x/dia
+7. Não estourar bolhas íntegras
+8. Verificar vacinação antitetânica
+9. Retorno em 48-72h para reavaliação do curativo
+10. Retorno PS se: sinais de infecção (secreção purulenta, febre, odor fétido)`,
+    guideline: "SBCP / ABA",
+  },
+  {
+    id: "rx-alta-colica-renal-2",
+    title: "Alta — Cólica Renal com Cálculo Pequeno",
+    type: "Prescrição de Alta",
+    prescription: `1. Cetoprofeno 100mg — 1cp VO 12/12h por 5 dias
+2. Dipirona 1g — 1cp VO 6/6h se dor
+3. Tansulosina 0,4mg — 1cp VO 1x/dia (terapia expulsiva para cálculos <10mm)
+4. Buscopan composto — 1cp VO 6/6h SN
+5. Hidratação oral normal (≥2L/dia) — NÃO forçar hiper-hidratação na cólica aguda
+6. Coar urina para capturar cálculo (enviar para análise)
+7. TC sem contraste ou USG de controle em 2-4 semanas
+8. Retorno urologia em 30 dias
+9. Retorno PS se: febre, anúria, dor refratária`,
+    guideline: "SBU / EAU / AUA",
+  },
+  {
+    id: "rx-alta-fibrilacao-atrial",
+    title: "Alta — Fibrilação Atrial",
+    type: "Prescrição de Alta",
+    prescription: `1. Controle de FC:
+   Metoprolol 50mg VO 12/12h OU Diltiazem 60mg VO 8/8h
+2. Anticoagulação (se CHA₂DS₂-VASc ≥2 homem / ≥3 mulher):
+   Rivaroxabana 20mg 1x/dia no almoço OU Apixabana 5mg 12/12h
+3. Se cardioversão eletiva: manter anticoagulação 4 semanas antes + 4 semanas depois
+4. Controle de PA se hipertenso
+5. TSH (excluir hipertireoidismo)
+6. Ecocardiograma ambulatorial
+7. Retorno cardiologia em 7-15 dias
+8. Retorno PS se: palpitação intensa, síncope, dispneia, AVC-like`,
+    guideline: "SBC / ESC / AHA",
+  },
+  {
+    id: "rx-alta-sepse",
+    title: "Alta — Pós-Sepse",
+    type: "Prescrição de Alta",
+    prescription: `1. Completar ATB conforme foco (duração total: ___dias)
+2. ATB VO de transição: _______ (conforme sensibilidade)
+3. Paracetamol 750mg VO 6/6h se febre ou dor
+4. Probiótico VO 1x/dia (após ATB prolongado)
+5. Retorno para repetir hemograma + PCR em 7 dias
+6. Fisioterapia motora se descondicionamento (pós-UTI)
+7. Avaliação nutricional (caquexia pós-sepse é comum)
+8. Retorno PS se: febre, calafrios, piora do estado geral
+9. Follow-up ambulatorial em 30 dias (mortalidade pós-sepse é alta nos primeiros 90 dias)`,
+    guideline: "SSC / ILAS",
+  },
 ];
+

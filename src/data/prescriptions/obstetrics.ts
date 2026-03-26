@@ -330,4 +330,103 @@ Se metas não atingidas:
 10. Pós-parto: suspender insulina + TOTG 6-12 semanas após`,
     guideline: "FEBRASGO / SBD / ADA",
   },
+  {
+    id: "rx-obst-corioamnionite",
+    title: "Corioamnionite",
+    type: "Prescrição Obstétrica",
+    prescription: `1. ATB imediato (NÃO esperar cultura):
+   Ampicilina 2g EV 6/6h + Gentamicina 5mg/kg EV 1x/dia
+2. Se cesárea: adicionar Clindamicina 900mg EV 8/8h (anaeróbios)
+3. Antitérmico: Dipirona 1g EV 6/6h
+4. SF 0,9% — hidratação
+5. Monitorização materno-fetal contínua (CTG)
+6. Resolução da gestação: parto vaginal é preferível (NÃO é indicação absoluta de cesárea)
+7. Cesárea por indicação obstétrica (não pela corioamnionite em si)
+8. Hemograma, PCR, hemocultura materna
+9. Cultura do recém-nascido ao nascer
+10. Pós-parto: manter ATB se cesárea (dose adicional de Clindamicina). Se parto vaginal: ATB pode ser suspenso`,
+    warnings: "Febre intraparto + taquicardia fetal + LA fétido = corioamnionite. ATB IMEDIATO + resolução.",
+    guideline: "FEBRASGO / ACOG / NICE",
+  },
+  {
+    id: "rx-obst-embolia-amniotica",
+    title: "Embolia de Líquido Amniótico",
+    type: "Prescrição Obstétrica",
+    prescription: `EMERGÊNCIA MÁXIMA — Mortalidade 60-80%
+
+1. Ativar equipe de emergência (anestesista + obstetra + neonatologista)
+2. IOT imediata + VM (hipóxia grave)
+3. 2 acessos calibrosos + tipagem
+4. SF 0,9% / RL — ressuscitação agressiva
+5. Noradrenalina 0,1-1mcg/kg/min se hipotensão refratária
+6. Se PCR: RCP + cesárea perimortem em 4 min se IG >20 semanas
+7. Tratar CIVD: plasma fresco, crioprecipitado, plaquetas, fibrinogênio
+8. Ácido Tranexâmico 1g EV
+9. Concentrado de hemácias conforme necessidade
+10. Ocitocina 20-40UI em SF (se atonia uterina associada)
+11. UTI pós-estabilização
+12. NÃO há tratamento específico — suporte agressivo`,
+    warnings: "Tríade clássica: hipotensão súbita + hipóxia + CIVD durante parto ou pós-parto imediato. Diagnóstico CLÍNICO.",
+    guideline: "FEBRASGO / ACOG / SMFM",
+  },
+  {
+    id: "rx-obst-dheg-cronica",
+    title: "Hipertensão Crônica na Gestação",
+    type: "Prescrição Obstétrica",
+    prescription: `1. Anti-hipertensivo 1ª linha: Metildopa 250mg VO 8/8h (até 2g/dia)
+2. 2ª linha: Nifedipino retard 20mg VO 12/12h (até 60mg/dia)
+3. 3ª linha: Hidralazina 25mg VO 8/8h
+4. CONTRAINDICADOS na gestação: IECA, BRA, Atenolol, Espironolactona
+5. Alvo PA: <140/90 (sem comprometer perfusão placentária)
+6. AAS 100mg/dia a partir de 12 semanas (prevenção pré-eclâmpsia sobreposta)
+7. Cálcio 1-2g/dia VO (se ingesta baixa)
+8. USG seriada: crescimento fetal + Doppler de artérias uterinas
+9. Pré-natal de alto risco
+10. Monitorar: proteinúria, plaquetas, TGO/TGP, creatinina, ácido úrico (screening pré-eclâmpsia sobreposta)
+11. Resolução: 37-39 semanas (sem complicações)`,
+    guideline: "FEBRASGO / ACOG / ISSHP",
+  },
+  {
+    id: "rx-obst-rupreme",
+    title: "Ruptura Prematura de Membranas (RPM)",
+    type: "Prescrição Obstétrica",
+    prescription: `CONFIRMAR: teste de cristalização, pH vaginal (Nitrazina), USG (oligoâmnio)
+
+Se IG <34 semanas (conduta expectante):
+1. Internação + repouso
+2. Betametasona 12mg IM 24/24h (2 doses) — maturação pulmonar
+3. ATB profilaxia: Ampicilina 2g EV 6/6h + Azitromicina 1g VO dose única
+   → Amoxicilina 500mg VO 8/8h por 5 dias (após 48h EV)
+4. Sulfato de magnésio se IG <32 sem (neuroproteção fetal)
+5. Monitorar: temperatura, leucograma, PCR, CTG, ILA
+6. NÃO fazer toque vaginal repetido (risco infecção)
+7. Critérios de resolução: corioamnionite, sofrimento fetal, IG >34 semanas
+
+Se IG ≥34 semanas:
+8. Resolução da gestação (indução ou cesárea conforme indicação)`,
+    guideline: "FEBRASGO / ACOG / NICE",
+  },
+  {
+    id: "rx-gin-mioma-agudo",
+    title: "Mioma Uterino — Sangramento Agudo",
+    type: "Prescrição Ginecológica",
+    prescription: `Sangramento agudo abundante:
+1. SF 0,9% — acesso venoso + ressuscitação se instável
+2. Ácido Tranexâmico 1g EV 8/8h (antifibrinolítico — 1ª linha)
+3. Hemograma, tipagem sanguínea, coagulograma
+4. Transfusão se Hb <7 (ou <9 se sintomática)
+
+Tratamento hormonal:
+5. Progesterona: Medroxiprogesterona 10mg VO 8/8h por 10 dias (para cessar sangramento)
+6. OU ACO combinado: estradiol 30mcg + levonorgestrel — 1cp 8/8h por 7 dias → 1cp/dia
+7. Após estabilização: avaliar DIU de levonorgestrel (Mirena)
+
+Tratamento definitivo:
+8. Cirurgia se: anemia refratária, mioma >10cm, compressão, falha hormonal
+9. Miomectomia (desejo reprodutivo) ou histerectomia
+10. USG pélvica transvaginal (tamanho, localização, vascularização)
+11. Sulfato ferroso 200mg VO 1x/dia (repor ferro)`,
+    guideline: "FEBRASGO / ACOG / NICE",
+  },
 ];
+
