@@ -10,6 +10,10 @@ interface PremiumGateProps {
 }
 
 export default function PremiumGate({ children, fallback, className }: PremiumGateProps) {
+  // Premium gate temporarily disabled — all content unlocked
+  return <>{children}</>;
+
+  /* Original gate logic — will be re-enabled when pricing is configured
   const { subscription } = useAuth();
   const navigate = useNavigate();
 
