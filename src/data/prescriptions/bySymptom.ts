@@ -238,4 +238,54 @@ Urêmico/colestático:
 10. Albumina sérica (hipoalbuminemia = edema refratário)`,
     notes: "Edema + dispneia = considerar IC ou síndrome nefrótica. ECO + BNP.",
   },
+  {
+    id: "rx-sint-lombalgia",
+    title: "Lombalgia Aguda",
+    type: "Prescrição Sintomática",
+    prescription: `1. Dipirona 1g EV 6/6h
+2. Cetoprofeno 100mg EV 12/12h (se não CI)
+3. Ciclobenzaprina 5mg VO 8/8h (relaxante muscular)
+4. Tramadol 50mg EV 8/8h (se EVA ≥6)
+5. Compressas mornas
+6. NÃO prescrever repouso absoluto — atividade tolerável
+7. RX lombar: apenas se red flags
+8. Red flags: déficit motor, alteração esfincteriana (cauda equina), febre, perda de peso, trauma, >50 anos`,
+    warnings: "Síndrome de cauda equina (retenção/incontinência + anestesia perineal + fraqueza MMII) = EMERGÊNCIA cirúrgica.",
+  },
+  {
+    id: "rx-sint-retencao-urinaria",
+    title: "Retenção Urinária Aguda",
+    type: "Prescrição Sintomática",
+    prescription: `1. SVD (Sonda Vesical de Demora) — Foley 16-18Fr
+2. Esvaziar gradualmente (máx 500mL por vez)
+3. Monitorar diurese pós-desobstrução (pode haver poliúria)
+4. Tamsulosina 0,4mg VO 1x/dia
+5. EAS + urocultura
+6. Creatinina (IRA pós-renal?)
+7. USG vias urinárias
+8. Encaminhar urologia`,
+    notes: "Causas: HPB (mais comum em idosos), medicamentos (anticolinérgicos, opioides), cálculos, tumor.",
+  },
+  {
+    id: "rx-sint-hematuria",
+    title: "Hematúria",
+    type: "Prescrição Sintomática",
+    prescription: `Macroscópica com coágulos:
+1. SVD 3 vias (Foley 22-24Fr) — irrigação vesical contínua com SF 0,9%
+2. Hemograma, coagulograma, função renal
+3. USG vias urinárias
+4. EAS + urocultura
+
+Macroscópica sem coágulos:
+5. EAS + urocultura
+6. Hidratação oral/EV
+7. USG vias urinárias
+8. Encaminhar urologia ambulatorial
+
+Investigação:
+9. >40 anos + hematúria = excluir neoplasia (cistoscopia + uroTC)
+10. Jovem: pensar em glomerulonefrite, litíase, ITU`,
+    warnings: "Hematúria em >40 anos = descartar neoplasia urológica até prova contrária.",
+    guideline: "SBU / AUA",
+  },
 ];

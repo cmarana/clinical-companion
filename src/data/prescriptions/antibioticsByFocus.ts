@@ -170,4 +170,68 @@ DIARREIA BACTERIANA: Ciprofloxacino 500mg VO 12/12h por 3-5 dias (se indicado)`,
     notes: "Maioria das IVAS é viral — ATB apenas se critérios bacterianos. Evitar uso desnecessário.",
     guideline: "ANVISA / MS",
   },
+  {
+    id: "rx-atb-gestante",
+    title: "Antibiótico — Gestante",
+    type: "Antibiótico por Foco",
+    prescription: `SEGUROS (Categoria B):
+Penicilinas: Amoxicilina, Ampicilina, Penicilina
+Cefalosporinas: Cefalexina, Ceftriaxona, Cefazolina
+Macrolídeos: Azitromicina, Eritromicina
+Nitrofurantoína: 100mg VO 6/6h (evitar próximo ao parto)
+Metronidazol: evitar no 1º trimestre (usar se necessário depois)
+
+CONTRAINDICADOS:
+Quinolonas (Cipro, Levo): toxicidade cartilagem fetal
+Tetraciclinas (Doxiciclina): manchas dentárias, toxicidade hepática
+Aminoglicosídeos: ototoxicidade fetal (usar apenas se risco-benefício)
+Sulfametoxazol-Trimetoprim: 1º trim (defeitos tubo neural) e 3º trim (kernicterus)
+
+ITU na gestação: Cefalexina 500mg VO 6/6h por 7 dias
+Pielonefrite: Ceftriaxona 1g EV 12/12h`,
+    warnings: "SEMPRE verificar categoria FDA/ANVISA. Quinolonas e Tetraciclinas são CONTRAINDICADAS.",
+    guideline: "FEBRASGO / MS",
+  },
+  {
+    id: "rx-atb-drc",
+    title: "Antibiótico — Ajuste em DRC",
+    type: "Antibiótico por Foco",
+    prescription: `AJUSTES CONFORME ClCr (mL/min):
+
+Ceftriaxona: NÃO precisa ajuste (eliminação biliar)
+Amoxicilina: ClCr <30: 500mg 12/12h (em vez de 8/8h)
+Ciprofloxacino: ClCr <30: 250-500mg 12/12h
+Levofloxacino: ClCr <50: 750mg 48/48h
+Metronidazol: NÃO precisa ajuste
+Vancomicina: ajustar por nível sérico (vale 15-20mcg/mL)
+Gentamicina: ClCr <60: espaçar intervalo ou guiar por nível
+Meropenem: ClCr <25: 1g 12/12h (em vez de 8/8h)
+Fluconazol: ClCr <50: 50% da dose
+
+DIÁLISE: doses suplementares pós-diálise para drogas dialisáveis`,
+    notes: "Aminoglicosídeos e Vancomicina: monitorar nível sérico. Ceftriaxona é o ATB mais seguro em DRC.",
+    guideline: "KDIGO / SBI",
+  },
+  {
+    id: "rx-atb-odontogenico",
+    title: "Antibiótico — Infecção Odontogênica",
+    type: "Antibiótico por Foco",
+    prescription: `Leve (ambulatorial):
+1. Amoxicilina 500mg VO 8/8h por 7 dias
+2. OU Amoxicilina-Clavulanato 875mg VO 12/12h
+3. Se alergia a penicilina: Clindamicina 300mg VO 6/6h
+
+Moderada/Grave (hospitalar):
+4. Ampicilina-Sulbactam 3g EV 6/6h
+5. OU Clindamicina 600mg EV 6/6h + Ceftriaxona 1g EV 12/12h
+6. Metronidazol 500mg EV 8/8h (cobertura anaeróbia)
+
+Angina de Ludwig (EMERGÊNCIA):
+7. Ampicilina-Sulbactam 3g EV 6/6h OU Clindamicina + Ceftriaxona
+8. Dexametasona 8mg EV (reduzir edema)
+9. Avaliação de via aérea URGENTE (risco de obstrução)
+10. Drenagem cirúrgica`,
+    warnings: "Angina de Ludwig: infecção do assoalho da boca — risco de obstrução de via aérea!",
+    guideline: "SBI / IDSA",
+  },
 ];

@@ -211,4 +211,67 @@ Sempre solicitar:
     warnings: "Edema cerebral: cefaleia, bradicardia, alteração consciência → Manitol 0,5-1g/kg EV.",
     guideline: "SBP / ISPAD",
   },
+  {
+    id: "rx-ped-meningite",
+    title: "Meningite Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `>3 meses:
+1. Ceftriaxona 100mg/kg/dia EV div 12/12h (máx 4g/dia)
+2. Dexametasona 0,15mg/kg EV 6/6h por 4 dias (ANTES ou junto com ATB)
+
+1-3 meses:
+3. Ampicilina 200mg/kg/dia + Ceftriaxona 100mg/kg/dia
+
+<1 mês:
+4. Ampicilina 200mg/kg/dia + Gentamicina 5mg/kg/dia OU Cefotaxima
+
+Todos:
+5. Punção lombar (se sem CI)
+6. Hemograma, PCR, hemocultura, glicemia
+7. Dipirona 15mg/kg EV 6/6h se febre
+8. SF 0,9% — cuidado com restrição hídrica (SIADH)
+9. Notificação compulsória
+10. Isolamento se meningocócica`,
+    warnings: "ATB IMEDIATO na suspeita. Dexametasona reduz sequela auditiva (H. influenzae).",
+    guideline: "SBP / IDSA / MS",
+  },
+  {
+    id: "rx-ped-geca",
+    title: "Gastroenterite Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `Sem desidratação (Plano A):
+1. SRO após cada evacuação: <1 ano 50-100mL, 1-10 anos 100-200mL
+2. Manter aleitamento materno
+3. Zinco 10mg/dia (<6m) ou 20mg/dia (>6m) por 10-14 dias
+
+Desidratação leve/moderada (Plano B):
+4. TRO: SRO 50-100mL/kg em 4-6h
+5. Ondansetrona 0,15mg/kg VO (máx 4mg) se vômitos
+
+Desidratação grave (Plano C):
+6. SF 0,9% 20mL/kg EV em 20-30 min (repetir até 3x)
+7. Reavaliar → se melhorou: Plano B
+8. Glicemia capilar (hipoglicemia frequente)`,
+    notes: "Zinco reduz duração e gravidade da diarreia. ATB: apenas se disenteria com comprometimento sistêmico.",
+    guideline: "OMS / SBP",
+  },
+  {
+    id: "rx-ped-intoxicacao",
+    title: "Intoxicação Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `1. ABCDE — estabilizar primeiro
+2. Identificar substância, dose, tempo
+3. Carvão ativado 1g/kg VO (máx 50g) — se <1h da ingestão e via aérea protegida
+4. NÃO induzir vômito (risco de aspiração)
+5. Lavagem gástrica: raramente indicada (<1h, substância potencialmente fatal)
+6. Antídotos específicos:
+   Paracetamol: N-acetilcisteína 140mg/kg VO ataque → 70mg/kg 4/4h
+   BZD: Flumazenil 0,01mg/kg EV (cuidado se epiléptico)
+   Opioide: Naloxona 0,1mg/kg EV
+   Organofosforado: Atropina 0,02mg/kg EV
+7. Exames: hemograma, função renal/hepática, gasometria, eletrólitos
+8. ECG (QTc)
+9. Contatar CIATox (0800-722-6001)`,
+    guideline: "SBP / CIATox",
+  },
 ];
