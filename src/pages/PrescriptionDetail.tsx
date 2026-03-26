@@ -2,15 +2,17 @@ import { useParams, useNavigate } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { prescriptionCategories } from "@/data/prescriptions/index";
 import { Button } from "@/components/ui/button";
-import { Copy, Check } from "lucide-react";
+import { Copy, Check, Star } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
+import { useFavorites } from "@/contexts/FavoritesContext";
 
 export default function PrescriptionDetail() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { toast } = useToast();
   const [copied, setCopied] = useState(false);
+  const { isFavorite, toggleFavorite } = useFavorites();
 
   const prescription = prescriptionCategories
     .flatMap(c => c.items)
@@ -42,10 +44,26 @@ export default function PrescriptionDetail() {
             <h1 className="font-heading font-bold text-lg">{prescription.title}</h1>
             <p className="text-xs text-muted-foreground">{prescription.type}</p>
           </div>
-          <Button size="sm" variant="outline" onClick={handleCopy} className="gap-1.5">
-            {copied ? <Check size={14} /> : <Copy size={14} />}
-            {copied ? "Copiado" : "Copiar"}
-          </Button>
+          <div className="flex items-center gap-2">
+            <Button
+              size="sm"
+              variant="ghost"
+              onClick={() => {
+                toggleFavorite({ id: prescription.id, type: "prescription", title: prescription.title });
+                toast({
+                  title: isFavorite(prescription.id) ? "Removido dos favoritos" : "Adicionado aos favoritos",
+                  description: prescription.title,
+                });
+              }}
+              className="gap-1.5"
+            >
+              <Star size={14} className={isFavorite(prescription.id) ? "fill-warning text-warning" : ""} />
+            </Button>
+            <Button size="sm" variant="outline" onClick={handleCopy} className="gap-1.5">
+              {copied ? <Check size={14} /> : <Copy size={14} />}
+              {copied ? "Copiado" : "Copiar"}
+            </Button>
+          </div>
         </div>
 
         {prescription.guideline && (
