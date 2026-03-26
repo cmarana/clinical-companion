@@ -117,6 +117,12 @@ import { triageFullProtocols4 } from "./triage4";
 import { ophthalmologyFullProtocols4 } from "./ophthalmology4";
 import { orlFullProtocols4 } from "./otorhinolaryngology4";
 
+// Batch 7
+import { sepsisFullProtocols5 } from "./sepsis5";
+import { neonatalFullProtocols3 } from "./neonatal3";
+import { respiratoryFullProtocols6 } from "./respiratory6";
+import { susProtocolsFullProtocols4 } from "./susProtocols4";
+
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
   { id: "cardiology", title: "Cardiologia", order: 2 },
@@ -261,6 +267,12 @@ export const fullProtocols: FullProtocol[] = [
   ...triageFullProtocols4,
   ...ophthalmologyFullProtocols4,
   ...orlFullProtocols4,
+
+  // Batch 7 — final protocols
+  ...sepsisFullProtocols5,
+  ...neonatalFullProtocols3,
+  ...respiratoryFullProtocols6,
+  ...susProtocolsFullProtocols4,
 ];
 
 export function getFullProtocol(id: string) {
