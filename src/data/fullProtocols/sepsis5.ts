@@ -1,0 +1,27 @@
+import type { FullProtocol } from "./types";
+
+export const sepsisFullProtocols5: FullProtocol[] = [
+  {
+    id: "fp-vasopressores-inotropicos",
+    title: "Vasopressores e Inotrópicos na Emergência",
+    categoryId: "sepsis",
+    category: "Sepse e Choque",
+    tags: ["vasopressor", "inotrópico", "noradrenalina", "dobutamina", "vasopressina", "choque"],
+    sections: [
+      { id: "intro", title: "Introdução", content: "Vasopressores e inotrópicos são drogas essenciais no manejo do choque refratário a volume. A escolha adequada depende do tipo de choque e da fisiopatologia predominante. Noradrenalina é o vasopressor de primeira linha na maioria dos choques. Diretriz SSC 2021, SBC e AMIB." },
+      { id: "def", title: "Definição", content: "Vasopressores: aumentam a resistência vascular periférica (vasoconstritores) — Noradrenalina, Vasopressina, Fenilefrina. Inotrópicos: aumentam a contratilidade cardíaca — Dobutamina, Milrinona, Levosimendan. Mistas: Adrenalina, Dopamina (efeito dose-dependente)." },
+      { id: "screening", title: "Rastreamento e Identificação", content: "Indicação: hipotensão refratária a ressuscitação volêmica adequada (30 mL/kg de cristaloide no choque séptico). PAM alvo ≥65 mmHg (≥80 em hipertensos crônicos). Sinais de hipoperfusão: lactato >2, TEC >3s, oligúria, rebaixamento." },
+      { id: "etiology", title: "Etiologia", content: "Choque distributivo (séptico, anafilático, neurogênico): vasodilatação → vasopressor. Choque cardiogênico: falência de bomba → inotrópico. Choque hipovolêmico: volume é prioridade, vasopressor como ponte. Choque obstrutivo: tratar causa (TEP, tamponamento)." },
+      { id: "clinical", title: "Apresentação Clínica", content: "PAM <65 mmHg ou PAS <90 mmHg após volume adequado. Sinais de hipoperfusão tecidual: extremidades frias e moteadas, oligúria (<0,5 mL/kg/h), confusão mental, lactato elevado, enchimento capilar lento." },
+      { id: "diagnosis", title: "Diagnóstico", content: "Monitorização: PAM invasiva (PAI — padrão-ouro), PVC (limitações conhecidas), débito urinário, lactato seriado (a cada 2-4h), ecocardiograma point-of-care (avaliação de função cardíaca e volemia), gasometria venosa central (SvcO2)." },
+      { id: "differential", title: "Diagnóstico Diferencial", content: "Diferenciar tipo de choque para escolha da droga: distributivo (quente → vasopressor), cardiogênico (frio/úmido → inotrópico), hipovolêmico (frio/seco → volume), obstrutivo (tratar causa). Eco point-of-care ajuda na diferenciação." },
+      { id: "conduct", title: "Conduta Inicial", content: "1. Acesso venoso central (idealmente — mas não atrasar início por acesso periférico); 2. Noradrenalina como primeira escolha; 3. Iniciar em acesso periférico calibroso (antecubital) se CVC não disponível — seguro por até 12h; 4. PAM invasiva assim que possível; 5. Reavaliar volemia antes de escalonar doses." },
+      { id: "treatment", title: "Abordagem Terapêutica", content: "CHOQUE SÉPTICO: 1º Noradrenalina 0,1-1 mcg/kg/min (titular para PAM ≥65). 2º Vasopressina 0,03 UI/min (associar se Nora >0,25-0,5 mcg/kg/min). 3º Adrenalina 0,1-0,5 mcg/kg/min (se refratário). Se disfunção miocárdica: Dobutamina 2,5-20 mcg/kg/min. Hidrocortisona 200mg/dia EV (se Nora >0,25 por >4h). CHOQUE CARDIOGÊNICO: Dobutamina 2,5-20 mcg/kg/min ± Noradrenalina (se PAM baixa). Milrinona 0,375-0,75 mcg/kg/min (alternativa — vasodilata, cuidado com hipotensão). Levosimendan 0,1 mcg/kg/min (se refratário a dobutamina). CHOQUE ANAFILÁTICO: Adrenalina 0,3-0,5mg IM (primeiro) → Adrenalina EV 0,1-0,5 mcg/kg/min se refratário." },
+      { id: "prescriptions", title: "Prescrições", content: "Noradrenalina: 4 ampolas (16mg) + SF 234mL (concentração 64 mcg/mL). Iniciar 5 mL/h (≈5 mcg/min para 70kg), titular a cada 5-10min. Vasopressina: 1 ampola (20 UI) + SF 100mL → 9 mL/h = 0,03 UI/min (dose fixa, não titular). Dobutamina: 1 ampola (250mg) + SF 230mL → iniciar 5 mL/h (≈2,5 mcg/kg/min para 70kg). Adrenalina: 6 ampolas (6mg) + SF 94mL (60 mcg/mL) → titular conforme PAM. Hidrocortisona: 50mg EV 6/6h (total 200mg/dia) — choque séptico refratário." },
+      { id: "followup", title: "Acompanhamento", content: "Lactato a cada 2-4h (meta: queda >10%/2h). Débito urinário horário. Desmame gradual de vasopressores (reduzir 10-20% a cada 30-60min se PAM estável). Desmamar vasopressina antes da noradrenalina. Reavaliar necessidade de hidrocortisona diariamente." },
+      { id: "complications", title: "Complicações", content: "Arritmias (adrenalina, dobutamina), isquemia periférica/digital (noradrenalina em doses altas), isquemia mesentérica, taquicardia, extravasamento (necrose tecidual — tratar com fentolamina local). Noradrenalina periférica: monitorar sítio de infusão a cada 2h." },
+      { id: "criteria", title: "Critérios de Internação / UTI / Alta", content: "Todo paciente em uso de vasopressor deve estar em UTI com monitorização invasiva. Critérios de desmame: PAM ≥65 sem escalonamento por >4h, lactato normalizando, diurese adequada. Alta da UTI: sem vasopressor por ≥24h, estável." },
+      { id: "references", title: "Referências Bibliográficas", content: "Surviving Sepsis Campaign Guidelines 2021 (Evans L et al. Crit Care Med). AMIB — Choque e Monitorização Hemodinâmica. De Backer D et al. NEJM 2010 (Dopamina vs Noradrenalina). Gordon AC et al. NEJM 2016 (VANISH — Vasopressina). Annane D et al. NEJM 2018 (APROCCHSS — Hidrocortisona)." }
+    ]
+  }
+];
