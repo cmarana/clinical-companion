@@ -49,6 +49,20 @@ import { otherEmergenciesFullProtocols } from "./otherEmergencies";
 import { otherEmergenciesFullProtocols2 } from "./otherEmergencies2";
 import { otherEmergenciesFullProtocols3 } from "./otherEmergencies3";
 
+// New categories
+import { gastroFullProtocols } from "./gastroenterology";
+import { nephrologyFullProtocols } from "./nephrology";
+import { psychiatryFullProtocols } from "./psychiatry";
+import { dermatologyFullProtocols } from "./dermatology";
+import { ophthalmologyFullProtocols } from "./ophthalmology";
+import { orlFullProtocols } from "./otorhinolaryngology";
+import { gynecologyFullProtocols } from "./gynecology";
+import { hematologyFullProtocols } from "./hematology";
+import { geriatricsFullProtocols } from "./geriatrics";
+import { painPalliativeFullProtocols } from "./painPalliative";
+import { triageFullProtocols } from "./triage";
+import { susProtocolsFullProtocols } from "./susProtocols";
+
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
   { id: "cardiology", title: "Cardiologia", order: 2 },
@@ -58,12 +72,24 @@ export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "respiratory", title: "Respiratório", order: 6 },
   { id: "trauma", title: "Trauma e Cirurgia", order: 7 },
   { id: "obstetrics", title: "Obstetrícia", order: 8 },
-  { id: "intoxication", title: "Intoxicações", order: 9 },
-  { id: "procedures", title: "Procedimentos de Emergência", order: 10 },
-  { id: "pediatrics", title: "Pediatria de Emergência", order: 11 },
-  { id: "neonatal", title: "Neonatal", order: 12 },
-  { id: "infectious", title: "Infectologia de Emergência", order: 13 },
-  { id: "other_emergencies", title: "Outras Emergências Frequentes", order: 14 },
+  { id: "gynecology", title: "Ginecologia de Emergência", order: 9 },
+  { id: "intoxication", title: "Intoxicações", order: 10 },
+  { id: "procedures", title: "Procedimentos de Emergência", order: 11 },
+  { id: "pediatrics", title: "Pediatria de Emergência", order: 12 },
+  { id: "neonatal", title: "Neonatal", order: 13 },
+  { id: "infectious", title: "Infectologia de Emergência", order: 14 },
+  { id: "gastroenterology", title: "Gastroenterologia de Emergência", order: 15 },
+  { id: "nephrology", title: "Nefrologia / Urologia de Emergência", order: 16 },
+  { id: "psychiatry", title: "Psiquiatria de Emergência", order: 17 },
+  { id: "dermatology", title: "Dermatologia de Emergência", order: 18 },
+  { id: "ophthalmology", title: "Oftalmologia de Emergência", order: 19 },
+  { id: "otorhinolaryngology", title: "Otorrinolaringologia de Emergência", order: 20 },
+  { id: "hematology", title: "Hematologia de Emergência", order: 21 },
+  { id: "geriatrics", title: "Geriatria de Emergência", order: 22 },
+  { id: "pain_palliative", title: "Dor Aguda / Cuidados Paliativos", order: 23 },
+  { id: "triage", title: "Triagem / Classificação de Risco", order: 24 },
+  { id: "sus_protocols", title: "Protocolos SUS / ATB / Prescrição", order: 25 },
+  { id: "other_emergencies", title: "Outras Emergências Frequentes", order: 26 },
 ];
 
 export const fullProtocols: FullProtocol[] = [
@@ -113,6 +139,20 @@ export const fullProtocols: FullProtocol[] = [
   ...otherEmergenciesFullProtocols,
   ...otherEmergenciesFullProtocols2,
   ...otherEmergenciesFullProtocols3,
+
+  // New categories
+  ...gastroFullProtocols,
+  ...nephrologyFullProtocols,
+  ...psychiatryFullProtocols,
+  ...dermatologyFullProtocols,
+  ...ophthalmologyFullProtocols,
+  ...orlFullProtocols,
+  ...gynecologyFullProtocols,
+  ...hematologyFullProtocols,
+  ...geriatricsFullProtocols,
+  ...painPalliativeFullProtocols,
+  ...triageFullProtocols,
+  ...susProtocolsFullProtocols,
 ];
 
 export function getFullProtocol(id: string) {
