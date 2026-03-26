@@ -842,4 +842,50 @@ ACOMPANHAMENTO:
     warnings: "Glicemia jejum ≥92: Diabetes Gestacional (TOTG 75g entre 24-28 sem). VDRL positivo: tratar sífilis IMEDIATAMENTE (Penicilina Benzatina). Rh-: Coombs indireto mensal a partir de 28 semanas.",
     guideline: "MS / FEBRASGO / Caderno AB nº 32",
   },
+  {
+    id: "rx-sus-caps-surto",
+    title: "SUS/CAPS — Surto Psicótico / Emergência Psiquiátrica",
+    type: "Prescrição SUS",
+    prescription: `Disponível no SUS:
+1. Haloperidol 5mg IM + Prometazina 50mg IM (combinação padrão CAPS/UPA)
+2. Diazepam 10mg VO/IM (se ansiedade/agitação)
+3. Risperidona 2mg VO 12/12h (manutenção — disponível RENAME)
+4. Clorpromazina 100mg VO 8/8h (alternativa)
+5. Biperideno 2mg VO 12/12h (profilaxia SEP — RENAME)
+6. Haloperidol Decanoato 50mg IM (depot mensal — RENAME)
+
+Fluxo SUS:
+7. Acolhimento → CAPS → Internação hospitalar se necessário (CAPS III com leito noturno)
+8. Internação involuntária: comunicar MPF em 72h (Lei 10.216)
+9. PTS (Projeto Terapêutico Singular)
+10. Matriciamento com equipe de saúde mental da ESF`,
+    notes: "RENAME 2024: Haloperidol, Clorpromazina, Risperidona, Biperideno, Diazepam, Clonazepam, Carbamazepina, Valproato, Lítio, Fluoxetina, Amitriptilina estão disponíveis.",
+    guideline: "MS / RAPS / Lei 10.216",
+  },
+  {
+    id: "rx-sus-protocolo-diabetes",
+    title: "SUS — Protocolo de Diabetes no PS",
+    type: "Prescrição SUS",
+    prescription: `Disponível no SUS:
+1. Insulina Regular (frasco) — para BIC ou SC
+2. Insulina NPH — manutenção
+3. SF 0,9% 1000mL EV
+4. KCl 19,1% — reposição de potássio
+5. Dipirona 1g EV 6/6h se necessário
+6. Glicemia capilar: fita reagente + glicosímetro (RENAME)
+
+CAD no SUS/UPA (sem BIC):
+7. Insulina Regular 0,1UI/kg IM a cada hora (alternativa sem bomba)
+8. KCl 10mL (19,1%) em cada 500mL de SF — infusão gravitacional
+9. Controle de glicemia capilar 1/1h
+10. Gasometria (se disponível) ou venosa + lactato
+
+Manutenção ambulatorial SUS:
+11. Metformina 850mg VO 12/12h (1ª linha — RENAME)
+12. Glibenclamida 5mg VO 12/12h (2ª linha — RENAME)
+13. Insulina NPH: disponível pelo SUS (Farmácia Popular)`,
+    notes: "Farmácia Popular: Insulina, Metformina, Glibenclamida são GRATUITOS. Seringas e fitas reagentes também. Orientar paciente sobre direitos.",
+    guideline: "MS / SBD / PCDT Diabetes",
+  },
 ];
+

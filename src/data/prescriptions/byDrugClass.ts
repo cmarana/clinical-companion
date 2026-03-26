@@ -855,4 +855,73 @@ DOSE INICIAL DM1:
     warnings: "Hipoglicemia: sintoma mais temido. Ensinar paciente a reconhecer (sudorese, tremor, confusão) e tratar (15g carboidrato rápido). Sempre ter glicose oral disponível.",
     guideline: "SBD / ADA / EASD / IDF",
   },
+  {
+    id: "rx-classe-antipsicoticos",
+    title: "Antipsicóticos — Guia Rápido",
+    type: "Classe de Medicamento",
+    prescription: `TÍPICOS (1ª geração):
+Haloperidol 5mg IM/VO (potência alta, SEP frequente)
+Clorpromazina 25-100mg VO/IM (sedação intensa)
+Levomepromazina 25mg VO/IM (muito sedativo)
+
+ATÍPICOS (2ª geração):
+Risperidona 1-6mg VO (equilíbrio eficácia/SEP)
+Olanzapina 5-20mg VO/IM (metabólico: peso, glicemia)
+Quetiapina 25-800mg VO (sedativo, versátil)
+Aripiprazol 10-30mg VO (menor ganho de peso)
+Clozapina 100-900mg VO (REFRATÁRIO — agranulocitose!)
+
+DEPOT (ação prolongada):
+Haloperidol Decanoato 50-300mg IM mensal
+Palmitato de Paliperidona 75-150mg IM mensal
+Risperidona LA 25-50mg IM quinzenal`,
+    notes: "Clozapina: APENAS para esquizofrenia refratária (≥2 antipsicóticos sem resposta). Hemograma semanal nas primeiras 18 semanas, depois mensal (agranulocitose 1-2%).",
+    warnings: "SEP: distonia aguda (Biperideno 2mg IM), acatisia (Propranolol), parkinsonismo, discinesia tardia (irreversível). QTc: monitorar com Haloperidol, Ziprasidona.",
+    guideline: "ABP / APA / NICE / BAP",
+  },
+  {
+    id: "rx-classe-anticonvulsivantes",
+    title: "Anticonvulsivantes — Guia Rápido",
+    type: "Classe de Medicamento",
+    prescription: `CRISE AGUDA:
+Diazepam 10mg EV/Retal — status epiléptico
+Midazolam 10mg IM — sem acesso venoso
+
+MANUTENÇÃO:
+Fenitoína 100mg VO 8/8h (nível sérico: 10-20mcg/mL)
+Carbamazepina 200mg VO 12/12h (titular até 600-1200mg/dia)
+Valproato de sódio 250mg VO 12/12h (titular até 750-2000mg/dia)
+Levetiracetam 500mg VO 12/12h (titular até 1500-3000mg/dia)
+Lamotrigina 25mg VO 1x/dia (escalonar lento — risco Stevens-Johnson)
+Topiramato 25-50mg VO 12/12h
+
+DOSE DE ATAQUE (PS):
+Fenitoína 20mg/kg EV (máx 50mg/min, em SF)
+Valproato 40mg/kg EV em 10min
+Levetiracetam 60mg/kg EV em 15min (máx 5g)`,
+    notes: "Valproato: TERATOGÊNICO (categoria D). Contraindicado em mulheres em idade fértil se possível. Hepatotoxicidade: monitorar TGO/TGP. Fenitoína: cinética não-linear (ajustes pequenos).",
+    warnings: "Fenitoína: NÃO diluir em SG (cristaliza). Lamotrigina: escalonar MUITO devagar (Stevens-Johnson). Carbamazepina: HLA-B*15:02 em asiáticos (SJS).",
+    guideline: "ABN / ILAE / AAN / NICE",
+  },
+  {
+    id: "rx-classe-colinergicos",
+    title: "Anticolinérgicos e Colinérgicos — Guia Rápido",
+    type: "Classe de Medicamento",
+    prescription: `ANTICOLINÉRGICOS:
+Atropina 0,5-1mg EV (bradicardia, IOT, intoxicação organofosforado)
+Escopolamina (Buscopan) 10-20mg EV/IM (espasmo GI/GU)
+Ipratrópio 20-40 gotas NBZ (broncoespasmo)
+Biperideno 2mg IM/VO (distonia aguda por antipsicótico)
+
+COLINÉRGICOS:
+Neostigmina 0,5-2,5mg EV (reversão de BNM)
+Piridostigmina 60mg VO 8/8h (miastenia gravis)
+Pilocarpina 2% colírio (glaucoma)
+
+ANTÍDOTO (intoxicação anticolinérgica):
+Fisostigmina 1-2mg EV lento (uso restrito, monitorização)`,
+    notes: "Síndrome anticolinérgica: 'hot as a hare, dry as a bone, red as a beet, blind as a bat, mad as a hatter'. Causas: anti-histamínicos, antidepressivos tricíclicos, escopolamina.",
+    guideline: "SBA / SBTox",
+  },
 ];
+

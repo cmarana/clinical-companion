@@ -711,4 +711,49 @@ TODOS:
     warnings: "Grau III: mortalidade >30% sem drenagem. NÃO atrasar drenagem por exames complementares.",
     guideline: "FBG / TG18 (Tokyo Guidelines) / WSES",
   },
+  {
+    id: "rx-atb-ocular",
+    title: "ATB — Infecção Ocular",
+    type: "Antibiótico por Foco",
+    prescription: `CONJUNTIVITE BACTERIANA:
+1. Moxifloxacino 0,5% colírio — 1 gota 6/6h por 5-7 dias
+2. OU Tobramicina 0,3% colírio 6/6h por 7 dias
+
+ÚLCERA DE CÓRNEA:
+3. Moxifloxacino 0,5% colírio FORTIFICADO — 1 gota 1/1h (24h) → 2/2h
+4. OU Colírio fortificado duplo: Cefazolina 5% + Gentamicina 1,4% alternados 1/1h
+5. Cultura de raspado corneal ANTES do ATB (se possível)
+
+ENDOFTALMITE:
+6. EMERGÊNCIA — Injeção intravítrea: Vancomicina 1mg/0,1mL + Ceftazidima 2,25mg/0,1mL
+7. Colírio Moxifloxacino 0,5% 1/1h + Prednisolona 1% 2/2h
+8. Vitrectomia se: AV ≤ conta dedos (EVTS)`,
+    notes: "Endoftalmite pós-operatória: 0,05-0,1% após facectomia. Sintomas 2-7 dias PO: dor, BAV, hipópio. É EMERGÊNCIA — cada hora conta.",
+    warnings: "NÃO usar corticoide tópico sem avaliação oftalmológica (risco de perfuração em úlcera herpética/fúngica). Colírio de aminoglicosídeo: toxicidade epitelial se uso prolongado.",
+    guideline: "CBO / AAO / ESCRS",
+  },
+  {
+    id: "rx-atb-snc",
+    title: "ATB — Infecção do SNC (Meningite / Encefalite)",
+    type: "Antibiótico por Foco",
+    prescription: `MENINGITE BACTERIANA (empírica):
+Adulto imunocompetente:
+1. Ceftriaxona 2g EV 12/12h + Dexametasona 0,15mg/kg EV 6/6h (iniciar ANTES ou junto com ATB)
+2. Se >50 anos ou imunossuprimido: + Ampicilina 2g EV 4/4h (cobertura Listeria)
+
+Neonatal:
+3. Ampicilina 75mg/kg EV 8/8h + Gentamicina 5mg/kg EV 1x/dia
+4. OU Ampicilina + Cefotaxima 50mg/kg EV 8/8h
+
+ENCEFALITE HERPÉTICA:
+5. Aciclovir 10mg/kg EV 8/8h por 14-21 dias
+
+MENINGITE FÚNGICA (Criptococose):
+6. Anfotericina B lipossomal 3-4mg/kg EV 1x/dia + Flucitosina 25mg/kg VO 6/6h (indução 2 semanas)
+7. Manutenção: Fluconazol 400mg VO 1x/dia por ≥8 semanas`,
+    notes: "Dexametasona na meningite bacteriana: reduz mortalidade por Pneumococo. Dar ANTES ou junto com ATB (após perde benefício). Quimioprofilaxia contactantes (Meningococo): Rifampicina 600mg VO 12/12h por 2 dias.",
+    warnings: "NÃO atrasar ATB por punção lombar ou TC. Se contraindicação à PL: ATB empírico + TC → PL quando possível.",
+    guideline: "SBI / IDSA / ESCMID / MS",
+  },
 ];
+

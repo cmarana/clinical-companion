@@ -3204,5 +3204,354 @@ CLASSE V (membranosa):
     warnings: "Ciclofosfamida: preservação de fertilidade em mulheres jovens (análogos GnRH). Micofenolato é TERATOGÊNICO.",
     guideline: "SBR / EULAR/ERA-EDTA / ACR / KDIGO",
   },
+  // === PSIQUIATRIA ===
+  {
+    id: "rx-surto-psicotico",
+    title: "Surto Psicótico Agudo",
+    type: "Prescrição de Emergência Psiquiátrica",
+    prescription: `1. Haloperidol 5mg IM (pode repetir após 30 min, máx 15mg/dia)
+2. OU Olanzapina 10mg IM (NÃO associar com benzodiazepínico IM)
+3. Prometazina 50mg IM (associar ao Haloperidol — previne distonia)
+4. Diazepam 10mg VO/IM se agitação intensa (se Olanzapina: NÃO usar benzo IM)
+5. Monitorizar sinais vitais 30/30 min nas primeiras 2h
+6. Contenção mecânica se risco iminente (última opção, documentar)
+7. Ambiente calmo, baixa estimulação
+8. Após estabilização: Risperidona 2mg VO 12/12h OU Olanzapina 10mg VO 1x/dia
+9. Hemograma, função hepática, TSH, glicemia, toxicológico
+10. Avaliação psiquiátrica formal`,
+    notes: "Olanzapina IM + benzodiazepínico IM = risco de depressão respiratória grave. Haloperidol + Prometazina é a combinação clássica no PS brasileiro.",
+    warnings: "NÃO usar Haloperidol EV (risco de QT longo/torsades). Monitorar distonia aguda (tratar com Biperideno 2mg IM).",
+    guideline: "ABP / NICE / APA",
+  },
+  {
+    id: "rx-snm",
+    title: "Síndrome Neuroléptica Maligna (SNM)",
+    type: "Prescrição de Emergência",
+    prescription: `1. SUSPENDER IMEDIATAMENTE o antipsicótico causador
+2. SF 0,9% 2000-3000mL EV nas primeiras 6h (hidratação vigorosa)
+3. Resfriamento ativo: compressas geladas, colchão térmico, SF gelado EV
+4. Dantrolene 1-2,5mg/kg EV a cada 6h (até 10mg/kg/dia) — relaxante muscular
+5. OU Bromocriptina 2,5-5mg VO/SNG 8/8h (agonista dopaminérgico)
+6. Diazepam 5-10mg EV se rigidez intensa
+7. Monitorização em UTI: ECG contínuo, PA, temperatura, SpO2
+8. CPK seriada (risco rabdomiólise)
+9. Função renal + eletrólitos (risco IRA por mioglobinúria)
+10. SVD — alvo diurese >1mL/kg/h (alcalinizar urina se CPK >5000)
+11. Gasometria arterial
+12. NÃO reiniciar antipsicótico por ≥2 semanas`,
+    notes: "Tétrade clássica: hipertermia >40°C + rigidez muscular + alteração de consciência + disautonomia. CPK geralmente >1000 (pode chegar >100.000).",
+    warnings: "Mortalidade de 10-20% se não tratada. NÃO confundir com síndrome serotoninérgica (clônus + hiperreflexia na SS vs. rigidez na SNM).",
+    guideline: "ABP / APA / Lancet Neurology",
+  },
+  {
+    id: "rx-delirium-tremens",
+    title: "Delirium Tremens / Abstinência Alcoólica Grave",
+    type: "Prescrição de Emergência",
+    prescription: `1. Diazepam 10-20mg EV a cada 5-10 min até sedação leve (protocolo loading dose)
+2. OU Diazepam 10mg EV 1/1h (protocolo baseado em sintomas — CIWA-Ar ≥20)
+3. SF 0,9% 1000-2000mL EV (corrigir desidratação)
+4. Tiamina 500mg EV 8/8h por 3 dias (ANTES de glicose — prevenir Wernicke)
+5. Glicose 50% 40mL EV (se hipoglicemia — APÓS tiamina)
+6. Sulfato de magnésio 2g EV em 30min (se hipomagnesemia)
+7. Haloperidol 5mg IM se alucinações intensas (ASSOCIAR ao benzo, não substituir)
+8. Monitorização contínua: PA, FC, temperatura, SpO2
+9. Contenção mecânica se agitação extrema
+10. Eletrólitos, função hepática, coagulograma, amilase`,
+    notes: "CIWA-Ar ≥20 = abstinência grave. Delirium tremens aparece 48-96h após última ingesta. Mortalidade ~5% mesmo com tratamento.",
+    warnings: "NÃO usar betabloqueador isolado. NÃO dar glicose sem tiamina (precipita Wernicke). Doses muito altas de benzo podem ser necessárias (>100mg diazepam/dia).",
+    guideline: "ABP / ASAM / NICE",
+  },
+  {
+    id: "rx-intoxicacao-benzo",
+    title: "Intoxicação por Benzodiazepínicos",
+    type: "Prescrição de Emergência",
+    prescription: `1. ABCDE — proteção de via aérea (risco de rebaixamento)
+2. Flumazenil 0,2mg EV em 15s → 0,3mg após 1 min → 0,5mg a cada 1 min (máx 3-5mg)
+3. IOT se GCS ≤8 ou apneia
+4. Monitorização: SpO2, PA, ECG, nível de consciência
+5. Lavagem gástrica se <1h da ingestão (se via aérea protegida)
+6. Carvão ativado 1g/kg (máx 50g) se <2h da ingestão
+7. SF 0,9% 1000mL EV
+8. Observação mínima 6-12h (meia-vida do benzo pode ser > flumazenil)`,
+    notes: "Flumazenil tem meia-vida curta (~1h) — ressedação é comum. Pode ser necessário infusão contínua.",
+    warnings: "Flumazenil CONTRAINDICADO em: uso crônico de benzodiazepínicos (risco de convulsão), coingestão com pró-convulsivantes, epilépticos.",
+    guideline: "SBTox / AACT / EAPCCT",
+  },
+  {
+    id: "rx-depressao-grave",
+    title: "Depressão Grave com Risco Suicida",
+    type: "Prescrição Psiquiátrica de Emergência",
+    prescription: `1. Avaliação de risco suicida estruturada (SAD PERSONS / Columbia)
+2. Internação psiquiátrica (voluntária ou involuntária conforme Lei 10.216)
+3. Vigilância contínua 1:1 — retirar objetos de risco
+4. Sertralina 50mg VO 1x/dia (iniciar — efeito em 2-4 semanas)
+5. OU Escitalopram 10mg VO 1x/dia
+6. Lorazepam 1-2mg VO 8/8h (ansiedade/insônia — curto prazo)
+7. Quetiapina 25-50mg VO à noite (se insônia refratária)
+8. Hemograma, TSH, eletrólitos, B12, ácido fólico
+9. Notificação de tentativa de suicídio (obrigatória — portaria MS)
+10. Contactar CAPS / rede de atenção psicossocial para seguimento`,
+    notes: "ISRS podem aumentar ideação suicida nas primeiras 2-4 semanas (paradoxo). Monitorar de perto.",
+    warnings: "NÃO dar alta sem plano de segurança e seguimento garantido. ISRS + IMAO = síndrome serotoninérgica.",
+    guideline: "ABP / APA / MS / NICE",
+  },
+  {
+    id: "rx-sindrome-serotoninergica",
+    title: "Síndrome Serotoninérgica",
+    type: "Prescrição de Emergência",
+    prescription: `1. SUSPENDER TODOS os serotoninérgicos (ISRS, IMAO, tramadol, ondansetrona, triptanos)
+2. SF 0,9% 1000-2000mL EV (hidratação)
+3. Ciproeptadina 12mg VO/SNG (ataque) → 4mg VO 8/8h (antagonista 5-HT2A)
+4. Diazepam 5-10mg EV se agitação/rigidez/convulsão
+5. Resfriamento ativo se T >41°C
+6. IOT + VM se rigidez intensa ou falência respiratória
+7. Monitorização em UTI: PA, FC, temperatura, SpO2
+8. CPK, função renal, eletrólitos, coagulograma
+9. NÃO usar Dantrolene (diferente da SNM)`,
+    notes: "Tríade: alteração mental + hiperatividade autonômica + hiperatividade neuromuscular (CLÔNUS + hiperreflexia — diferença da SNM).",
+    warnings: "Hunter Criteria: clonus (espontâneo ou induzível) é o achado mais específico. Tremor + hiperreflexia + agitação em usuário de serotoninérgico = diagnóstico.",
+    guideline: "ABP / UpToDate / Lancet",
+  },
+  // === ENDOCRINOLOGIA ===
+  {
+    id: "rx-insuf-adrenal",
+    title: "Insuficiência Adrenal / Crise Adrenal Aguda",
+    type: "Prescrição de Emergência Endócrina",
+    prescription: `1. Hidrocortisona 100mg EV em bolus IMEDIATO
+2. SF 0,9% 1000mL EV em bolus (hipotensão + desidratação)
+3. SG 5% 500mL EV se hipoglicemia
+4. Hidrocortisona 50mg EV 6/6h (manutenção nas primeiras 24h)
+5. Fludrocortisona 0,1mg VO 1x/dia (se insuficiência primária — após tolerar VO)
+6. Monitorização: PA, FC, glicemia capilar 4/4h, eletrólitos seriados
+7. Na+ e K+ (esperar hiponatremia + hipercalemia na primária)
+8. Cortisol sérico + ACTH (ANTES do tratamento se possível)
+9. TSH, T4L (rastrear hipotireoidismo associado)
+10. Investigar causa: hemorragia adrenal, suspensão de corticoide, infecção (Waterhouse-Friderichsen)`,
+    notes: "Dose de estresse: duplicar a dose de corticoide em doença moderada, triplicar se grave. Cirurgia: Hidrocortisona 100mg EV no ato + 50mg 8/8h por 24-48h.",
+    warnings: "NÃO usar vasopressor sem repor cortisol — choque refratário. Paciente em uso crônico de corticoide: NUNCA suspender abruptamente.",
+    guideline: "SBEM / Endocrine Society / NICE",
+  },
+  {
+    id: "rx-feocromocitoma",
+    title: "Feocromocitoma — Crise Hipertensiva",
+    type: "Prescrição de Emergência Endócrina",
+    prescription: `1. Fentolamina 2-5mg EV em bolus (pode repetir a cada 5 min) — bloqueador alfa
+2. OU Nitroprussiato 0,25-10mcg/kg/min EV em BIC (se fentolamina indisponível)
+3. Propranolol 1mg EV lento (SOMENTE APÓS bloqueio alfa adequado)
+4. Labetalol 20mg EV em 2 min (alternativa — alfa + beta bloqueio)
+5. SF 0,9% 1000-2000mL EV (repor volemia — vasodilatação pós-alfa bloqueio)
+6. Monitorização contínua: PA (idealmente invasiva), ECG, SpO2
+7. Metanefrina e normetanefrina plasmáticas/urinárias
+8. TC/RMN abdome (localização do tumor)
+9. Pré-operatório: Doxazosina 2-8mg VO 12/12h por ≥14 dias
+10. Dieta hipersódica + hidratação oral (expansão volêmica pré-cirúrgica)`,
+    notes: "Regra dos 10: 10% bilateral, 10% maligno, 10% extra-adrenal, 10% pediátrico, 10% familiar. Investigar NEM 2, VHL, NF1.",
+    warnings: "NUNCA dar betabloqueador ANTES do alfa-bloqueio (crise hipertensiva paradoxal por vasoconstrição sem oposição). Cuidado com metoclopramida, anestésicos, contraste — podem precipitar crise.",
+    guideline: "SBEM / Endocrine Society / ESH",
+  },
+  {
+    id: "rx-mixedema",
+    title: "Coma Mixedematoso",
+    type: "Prescrição de Emergência Endócrina",
+    prescription: `1. Levotiroxina 200-500mcg EV (dose de ataque) → 50-100mcg EV 1x/dia
+2. OU T3 (Liotironina) 10-20mcg EV 8/8h (se grave — ação mais rápida)
+3. Hidrocortisona 100mg EV 8/8h (cobrir possível insuficiência adrenal associada)
+4. Aquecimento passivo (cobertores) — NÃO usar aquecimento ativo externo (vasodilatação → choque)
+5. SF 0,9% EV com cautela (risco de hiponatremia/ICC)
+6. Glicose 50% se hipoglicemia
+7. IOT + VM se rebaixamento de consciência
+8. Monitorização em UTI
+9. TSH, T4L, T3, cortisol, Na+, gasometria
+10. Investigar fator precipitante: infecção, AVC, frio, sedativos`,
+    notes: "Mortalidade 30-60% mesmo com tratamento. Hipotermia sem infecção é achado clássico. Hiponatremia dilucional é comum.",
+    warnings: "NÃO aquecer ativamente (risco de vasodilatação periférica → colapso). Reposição de T4 em cardiopatas: iniciar com doses menores.",
+    guideline: "SBEM / ATA / ETA",
+  },
+  {
+    id: "rx-hipercalcemia",
+    title: "Hipercalcemia Grave (Ca >14mg/dL)",
+    type: "Prescrição de Emergência",
+    prescription: `1. SF 0,9% 200-300mL/h EV (expansão volêmica — alvo 3-4L/dia)
+2. Furosemida 20-40mg EV (SOMENTE após hidratação adequada — NÃO usar para "forçar calciúrese")
+3. Ácido Zoledrônico 4mg EV em 15 min (efeito em 2-4 dias)
+4. OU Pamidronato 60-90mg EV em 2-4h
+5. Calcitonina 4UI/kg IM/SC 12/12h (efeito rápido em 4-6h, mas transitório)
+6. Hidrocortisona 200mg EV 8/8h (se suspeita de granulomatose/linfoma/mieloma)
+7. Denosumab 120mg SC (se refratária a bifosfonatos)
+8. ECG (QT curto, ondas J de Osborn, BAV)
+9. Ca, PTH, 25-OH vitamina D, fosfatase alcalina, PTHrP
+10. Hemodiálise se Ca >18 ou refratária`,
+    notes: "Principais causas: hiperparatireoidismo (ambulatorial) e malignidade (hospitalar). Ca corrigido = Ca total + 0,8 × (4 - albumina).",
+    warnings: "Evitar tiazídicos (aumentam Ca). Imobilização piora hipercalcemia. Digitalicos: toxicidade potencializada pela hipercalcemia.",
+    guideline: "SBEM / AACE / Endocrine Society",
+  },
+  {
+    id: "rx-hipocalcemia",
+    title: "Hipocalcemia Grave / Sintomática",
+    type: "Prescrição de Emergência",
+    prescription: `1. Gluconato de cálcio 10% — 10-20mL (1-2 ampolas) EV em 10-20 min (monitorização ECG)
+2. Seguido de: Gluconato de cálcio 10% — 100mL (10 amp) em 1000mL SG5% a 50-100mL/h
+3. Sulfato de magnésio 2g EV em 30 min (corrigir Mg — hipocalcemia não corrige sem Mg normal)
+4. Calcitriol 0,5-1mcg VO 12/12h (início de ação em 1-3 dias)
+5. Carbonato de cálcio 500mg VO 8/8h (manutenção oral)
+6. ECG: monitorar QT longo → risco torsades de pointes
+7. Ca iônico, Mg, fósforo, PTH, vitamina D, albumina
+8. Se pós-tireoidectomia: manter Ca >8 e suplementar preventivamente`,
+    notes: "Sinal de Chvostek (percussão facial → contração) e Trousseau (manguito → espasmo carpopedal) são clássicos. Ca iônico é mais fidedigno que Ca total.",
+    warnings: "Cloreto de cálcio é mais irritante — preferir Gluconato (exceto em PCR). Infusão rápida de Ca → bradicardia/parada. Não misturar Ca com bicarbonato no mesmo acesso.",
+    guideline: "SBEM / Endocrine Society / NICE",
+  },
+  {
+    id: "rx-hipotireoidismo-subclinico",
+    title: "Hipotireoidismo — Manejo Ambulatorial",
+    type: "Prescrição Ambulatorial",
+    prescription: `TSH >10 ou sintomático:
+1. Levotiroxina 25-50mcg VO 1x/dia (jejum, 30min antes do café)
+2. Idoso/cardiopata: iniciar com 12,5-25mcg
+3. Meta TSH: 0,5-2,5 (jovens), 1-5 (idosos >70 anos)
+4. Repetir TSH em 6-8 semanas e ajustar dose
+5. Intervalo de 4h entre Levotiroxina e: Ca, Fe, IBP, antiácidos
+6. Lipidograma, glicemia (rastrear associações)
+7. Gestante: alvo TSH <2,5 no 1º trimestre`,
+    notes: "Dose plena estimada: 1,6mcg/kg/dia. Hipotireoidismo subclínico (TSH 5-10, T4L normal): tratar se sintomático, anticorpo anti-TPO+, gestante, ou <65 anos.",
+    guideline: "SBEM / ATA / ETA",
+  },
+  // === OFTALMOLOGIA ===
+  {
+    id: "rx-glaucoma-agudo",
+    title: "Glaucoma Agudo de Ângulo Fechado",
+    type: "Prescrição de Emergência Oftalmológica",
+    prescription: `1. Timolol 0,5% — 1 gota no olho afetado STAT + 12/12h
+2. Brimonidina 0,2% — 1 gota 8/8h
+3. Pilocarpina 2% — 1 gota a cada 15 min × 4 doses, depois 6/6h (APÓS 1h do início — pupila pode estar fixa inicialmente)
+4. Acetazolamida 500mg VO STAT → 250mg VO 6/6h
+5. Manitol 20% — 1-2g/kg EV em 45 min (se PIO refratária)
+6. Prednisolona 1% colírio — 1 gota 1/1h (reduzir inflamação)
+7. Ondansetrona 4mg EV se náusea/vômito
+8. Analgesia: Dipirona 1g EV + Cetoprofeno 100mg EV
+9. Decúbito dorsal (facilita fluxo do humor aquoso)
+10. Encaminhar URGENTE para Oftalmologista — Iridotomia a laser`,
+    notes: "PIO normal: 10-21 mmHg. Crise: PIO pode chegar a 60-80 mmHg. Clássico: dor ocular intensa + olho vermelho + pupila mediofixia + halos + visão borrada + náusea/vômito.",
+    warnings: "NÃO dilatar pupila (piora o bloqueio). Pilocarpina imediata pode ser ineficaz (esfíncter isquêmico) — iniciar com hipotensores primeiro. Contra: atropina, anticolinérgicos, simpaticomiméticos midriáticos.",
+    guideline: "CBO / AAO / EGS",
+  },
+  {
+    id: "rx-descolamento-retina",
+    title: "Descolamento de Retina",
+    type: "Prescrição de Emergência Oftalmológica",
+    prescription: `1. Encaminhar URGENTE para Retinólogo/Oftalmologista de urgência
+2. Repouso absoluto no leito
+3. Oclusão bilateral (reduzir movimentação ocular)
+4. Posicionamento: cabeceira elevada se descolamento superior / decúbito lateral se lateral
+5. NÃO realizar esforço físico, Valsalva, tossir
+6. Dipirona 1g EV 6/6h se dor
+7. Ondansetrona 4mg EV se náusea
+8. Mapeamento de retina + USG ocular (modo B)
+9. Fundo de olho com oftalmoscópio indireto
+10. Pré-operatório: hemograma, coagulograma, glicemia, ECG`,
+    notes: "Clássico: fotopsias (flashes) → moscas volantes → cortina/sombra no campo visual. Sem dor geralmente. Fatores de risco: miopia alta, cirurgia de catarata prévia, trauma.",
+    warnings: "É EMERGÊNCIA CIRÚRGICA se envolver mácula (descolamento regmatogênico com mácula on). Cada hora de atraso piora prognóstico visual. Cirurgia: vitrectomia ou introflexão escleral.",
+    guideline: "CBO / AAO / EURETINA",
+  },
+  {
+    id: "rx-queimadura-quimica-ocular",
+    title: "Queimadura Química Ocular",
+    type: "Prescrição de Emergência Oftalmológica",
+    prescription: `1. IRRIGAÇÃO IMEDIATA com SF 0,9% ou água limpa — MÍNIMO 30 min (2-3L)
+2. NÃO tentar neutralizar o agente
+3. Everter pálpebras e remover partículas retidas
+4. Verificar pH com fita (meta: pH 7,0-7,4) — repetir lavagem se pH alterado
+5. Colírio anestésico (Proximetacaína 0,5%) para facilitar irrigação
+6. Ciclopentolato 1% — 1 gota 8/8h (cicloplégico — alívio da dor)
+7. Prednisolona 1% colírio — 1 gota 2/2h (primeiros 7 dias)
+8. Moxifloxacino 0,5% colírio — 1 gota 6/6h (profilaxia infecção)
+9. Vitamina C 500mg VO 6/6h (auxilia regeneração em álcalis)
+10. Citrato de sódio 10% colírio — 1 gota 2/2h (quelante de Ca em álcalis)
+11. Encaminhar Oftalmologista URGENTE — classificação de Roper-Hall`,
+    notes: "Álcalis (NaOH, cal, amônia) são PIORES que ácidos — penetração profunda, liquefação. Ácido causa coagulação (barreira). Classificação Roper-Hall: I-II (bom prognóstico), III-IV (grave).",
+    warnings: "NÃO atrasar irrigação para qualquer procedimento. Curativo oclusivo NÃO é recomendado. Corticoide tópico por >7-10 dias: risco de perfuração (inibição de colágeno).",
+    guideline: "CBO / AAO / ISBI",
+  },
+  {
+    id: "rx-celulite-orbitaria",
+    title: "Celulite Orbitária",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Internação hospitalar obrigatória
+2. TC de órbitas e seios paranasais com contraste
+3. Oxacilina 2g EV 4/4h + Ceftriaxona 2g EV 12/12h
+4. OU Ampicilina-Sulbactam 3g EV 6/6h
+5. Se alergia: Vancomicina 15-20mg/kg EV 12/12h + Metronidazol 500mg EV 8/8h
+6. Dexametasona 0,3mg/kg EV 8/8h (se edema compressivo do nervo óptico)
+7. Dipirona 1g EV 6/6h
+8. Avaliação oftalmológica: acuidade visual, motilidade, pupila, FO, PIO
+9. Avaliação ORL se sinusite associada
+10. Se abscesso subperiosteal ou orbitário: drenagem cirúrgica de urgência`,
+    notes: "Diferencial com celulite periorbitária (pré-septal): pré-septal NÃO tem proptose, dor à movimentação, limitação de MOE. TC é obrigatória para diferenciar.",
+    warnings: "Complicações: abscesso cerebral, trombose de seio cavernoso, cegueira. Qualquer déficit visual = urgência cirúrgica.",
+    guideline: "CBO / AAO / SBO",
+  },
+  // === ENDOCRINOLOGIA (adicionais) ===
+  {
+    id: "rx-cetoacidose-diabetica-completa",
+    title: "Cetoacidose Diabética — Protocolo Completo",
+    type: "Prescrição de Emergência Endócrina",
+    prescription: `FASE 1 — Hidratação (1ª hora):
+1. SF 0,9% 15-20mL/kg EV em 1h (~1000-1500mL)
+
+FASE 2 — Insulina (após K+ ≥3,3):
+2. Insulina Regular 0,1UI/kg EV bolus → 0,1UI/kg/h em BIC
+3. OU Insulina Regular 0,14UI/kg/h em BIC (sem bolus)
+4. Meta: reduzir glicemia 50-75mg/dL/h
+
+FASE 3 — Potássio:
+5. K+ <3,3: KCl 40mEq/h EV (NÃO iniciar insulina antes)
+6. K+ 3,3-5,3: KCl 20-30mEq/L em cada litro de SF
+7. K+ >5,3: NÃO repor, monitorar 2/2h
+
+FASE 4 — Bicarbonato (controverso):
+8. Somente se pH <6,9: NaHCO3 100mEq em 400mL em 2h
+
+FASE 5 — Transição:
+9. Quando glicemia <200: trocar SF por SG 5% + SF 0,45% + manter BIC
+10. Quando gap fechado + pH >7,3 + BIC >15: iniciar insulina SC (sobrepor 2h com BIC)`,
+    notes: "Critérios diagnósticos: glicemia >250 + pH <7,3 + BIC <18 + cetonemia/cetonúria + AG >12. Causa mais comum: má aderência à insulina > infecção.",
+    warnings: "K+ <3,3 = NÃO dar insulina (risco de arritmia fatal). Edema cerebral: risco se correção muito rápida (especialmente em crianças).",
+    guideline: "SBEM / ADA / ISPAD",
+  },
+  {
+    id: "rx-crise-tireotoxica",
+    title: "Crise Tireotóxica / Tempestade Tireoidiana",
+    type: "Prescrição de Emergência Endócrina",
+    prescription: `1. Propiltiouracil (PTU) 200mg VO/SNG 4/4h (bloqueia síntese + conversão T4→T3)
+2. Solução de Lugol 10 gotas VO 8/8h (iniciar 1h APÓS PTU — bloqueia liberação)
+3. Propranolol 40-80mg VO 6/6h (controle FC — alvo <100)
+4. OU Esmolol 500mcg/kg EV bolus → 50-200mcg/kg/min (se grave/VO impossível)
+5. Hidrocortisona 100mg EV 8/8h (bloqueia conversão T4→T3 + protege adrenal)
+6. Paracetamol se febre (NÃO usar AAS — desloca T4 da TBG)
+7. Resfriamento ativo se hipertermia
+8. SF 0,9% + SG 5% EV (reposição hídrica — estado hipermetabólico)
+9. Monitorização: ECG contínuo, PA, FC, temperatura, SpO2
+10. TSH, T4L, T3, hemograma, função hepática, eletrólitos`,
+    notes: "Score de Burch-Wartofsky ≥45 = altamente sugestivo. Precipitantes: infecção, cirurgia, contraste iodado, suspensão de antitireoidiano, pós-parto.",
+    warnings: "Mortalidade 10-30% mesmo com tratamento. Iodo SEMPRE após antitireoidiano (senão fornece substrato para mais hormônio). AAS é CONTRAINDICADO.",
+    guideline: "SBEM / ATA / ETA",
+  },
+  {
+    id: "rx-hipoglicemia-grave",
+    title: "Hipoglicemia Grave",
+    type: "Prescrição de Emergência",
+    prescription: `1. Glicose 50% — 40mL EV em bolus (20g de glicose)
+2. Repetir glicemia em 15 min — se <70: repetir glicose 50% 20mL
+3. Glucagon 1mg IM/SC (se sem acesso venoso)
+4. Após recuperação: refeição com carboidrato complexo
+5. SG 10% 500mL EV em BIC (se hipoglicemia recorrente — sulfonilureia, insulina de ação longa)
+6. Glicemia capilar 1/1h por 4-6h após estabilização
+7. Investigar causa: dose de insulina, sulfonilureia, jejum, insuficiência hepática, insuficiência adrenal, insulinoma
+8. Se sulfonilureia: manter SG por ≥24-48h (meia-vida longa)
+9. Octreotida 50mcg SC 8/8h (se hipoglicemia refratária por sulfonilureia)`,
+    notes: "Tríade de Whipple: sintomas + glicemia <54 + melhora com glicose. Neuroglicopenia: confusão, convulsão, coma. Adrenérgicos: tremor, sudorese, taquicardia.",
+    warnings: "NÃO usar SG 50% sem acesso venoso calibroso (necrose se extravasar). Glibenclamida em idoso/DRC: principal causa de hipoglicemia prolongada.",
+    guideline: "SBEM / ADA / Endocrine Society",
+  },
 ];
 

@@ -841,5 +841,72 @@ TRATAMENTO:
     warnings: "Adrenalina é a ÚNICA droga que salva na anafilaxia. Anti-histamínico e corticoide são ADJUVANTES. Atraso na adrenalina = maior mortalidade.",
     guideline: "SBP / ASBAI / WAO / EAACI",
   },
+  {
+    id: "rx-ped-convulsao-febril",
+    title: "Convulsão Febril — Pediatria",
+    type: "Prescrição Pediátrica",
+    prescription: `CRISE EM ANDAMENTO:
+1. Diazepam 0,3mg/kg EV (máx 10mg) em 2-3 min
+2. OU Diazepam retal 0,5mg/kg (se sem acesso)
+3. OU Midazolam 0,2mg/kg IM/Intranasal
+
+PÓS-CRISE:
+4. Dipirona 15mg/kg EV (tratar febre)
+5. Glicemia capilar
+6. Investigar foco febril
+7. Meningite: se <12 meses, considerar líquor
+8. Alta após observação 4-6h se: simples, recuperação completa, >12 meses
+9. Orientar pais: é BENIGNA (simples), NÃO causa epilepsia, NÃO causa lesão cerebral
+10. Anticonvulsivante profilático: NÃO indicado na convulsão febril simples`,
+    notes: "Simples: generalizada, <15min, sem recorrência em 24h, sem déficit. Complexa: focal, >15min, recorrente, déficit pós-ictal. Complexa → investigar mais.",
+    warnings: "NÃO usar Fenitoína para convulsão febril. NÃO iniciar anticonvulsivante crônico. Risco de recorrência: 30% (simples), 50% se 1ª crise <12 meses.",
+    guideline: "SBP / AAP / NICE / ILAE",
+  },
+  {
+    id: "rx-ped-laringite-aguda",
+    title: "Laringite / Crupe — Pediatria",
+    type: "Prescrição Pediátrica",
+    prescription: `LEVE (estridor apenas ao chorar):
+1. Dexametasona 0,6mg/kg VO dose única (máx 10mg) — TODOS recebem
+2. Observar por 2-4h
+
+MODERADO (estridor em repouso):
+3. Dexametasona 0,6mg/kg VO/IM dose única
+4. Adrenalina 1:1000 — 0,5mL/kg (máx 5mL) pura em NBZ
+5. Observar 3-4h após adrenalina (efeito rebote)
+
+GRAVE (estridor + tiragem + agitação/letargia):
+6. Adrenalina NBZ + Dexametasona
+7. O2 umidificado
+8. NÃO examinar orofaringe (risco de espasmo)
+9. Manter criança no colo dos pais, calma
+10. IOT se: insuficiência respiratória (tubo 0,5-1mm menor que o habitual)`,
+    notes: "Score de Westley: 0-2 (leve), 3-7 (moderado), ≥8 (grave). Dexametasona VO é tão eficaz quanto IM. Dose única é suficiente na maioria dos casos.",
+    warnings: "NÃO confundir com epiglotite (febre alta, babando, posição tripé → IOT urgente, NÃO examinar orofaringe). Adrenalina: efeito temporário (2h) — observar rebote.",
+    guideline: "SBP / AAP / NICE / CPS",
+  },
+  {
+    id: "rx-ped-desidratacao",
+    title: "Desidratação — Pediatria (Planos A, B, C)",
+    type: "Prescrição Pediátrica",
+    prescription: `PLANO A (sem desidratação — domiciliar):
+1. SRO após cada evacuação: <1 ano: 50-100mL | 1-10 anos: 100-200mL | >10 anos: livre
+2. Manter alimentação habitual + aleitamento materno
+
+PLANO B (desidratação leve-moderada — TRO no PS):
+3. SRO 50-100mL/kg em 4-6h (fracionado, colher ou seringa)
+4. Reavaliação horária
+5. Se vômitos: Ondansetrona 0,15mg/kg VO (máx 4mg)
+6. Se falha: Plano C
+
+PLANO C (desidratação grave — EV):
+FASE RÁPIDA:
+7. <5 anos: SF 0,9% 20mL/kg EV em 30 min (repetir até 3x)
+8. >5 anos: SF 0,9% 30mL/kg EV em 30 min → 70mL/kg em 2,5h
+FASE MANUTENÇÃO (Holliday-Segar):
+9. Primeiros 10kg: 100mL/kg/dia | 10-20kg: +50mL/kg/dia | >20kg: +20mL/kg/dia`,
+    notes: "SRO do MS (osmolaridade reduzida) é a composição ideal. Não usar soro caseiro no lugar. Zinco 20mg/dia por 10-14 dias reduz duração da diarreia em crianças.",
+    guideline: "MS / OMS / SBP / ESPGHAN",
+  },
 ];
 

@@ -705,4 +705,63 @@ CRM / Carimbo / Assinatura`,
     warnings: "AINEs: PROIBIDOS. Metformina: suspender se TFG <30. Contraste iodado: hidratar + NAC se necessário. Gadolínio: fibrose nefrogênica sistêmica se TFG <30.",
     guideline: "SBN / KDIGO / KDOQI / NKF",
   },
+  {
+    id: "rx-modelo-psiquiatrico",
+    title: "Modelo — Paciente Psiquiátrico (Internação)",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta livre (supervisionar se risco de auto-lesão com talheres)
+2. Vigilância contínua / 1:1 (se risco suicida ou agitação)
+3. Risperidona ___mg VO 12/12h OU Olanzapina ___mg VO à noite
+4. Biperideno 2mg VO 12/12h (profilaxia SEP se Haloperidol/Risperidona)
+5. Diazepam ___mg VO ___/___h (se ansiedade/insônia — curto prazo)
+6. OU Lorazepam ___mg VO 8/8h (se hepatopata)
+7. Haloperidol 5mg IM + Prometazina 50mg IM se agitação (SOS)
+8. Dipirona 1g VO 6/6h se dor ou febre
+9. Retirar objetos de risco do ambiente
+10. Hemograma, glicemia, TSH, B12, função hepática, ECG, toxicológico
+11. Avaliação psicológica e social
+12. Comunicar intercorrências / plano de segurança`,
+    notes: "Documentar nível de risco suicida, capacidade de juízo e consentimento. Internação involuntária: comunicar MPF em 72h (Lei 10.216/2001).",
+    guideline: "ABP / MS / CFM",
+  },
+  {
+    id: "rx-modelo-endocrino",
+    title: "Modelo — Emergência Endócrina",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta zero / conforme nível de consciência
+2. SF 0,9% ___mL EV → ___mL/h (hidratação conforme desidratação)
+3. Insulina Regular BIC: ___UI/h (se CAD/EHH) OU
+   Hidrocortisona ___mg EV ___/___h (se crise adrenal) OU
+   PTU/Metimazol (se tireotoxicose)
+4. Monitorização contínua: PA, FC, SpO2
+5. Glicemia capilar ___/___h
+6. Eletrólitos seriados (Na+, K+, Ca2+, Mg2+, PO4)
+7. Gasometria arterial ___/___h (se acidose)
+8. Reposição de K+: conforme protocolo
+9. SVD — controle de diurese
+10. Cortisol, TSH, T4L, ACTH (colher ANTES de tratar se possível)
+11. Comunicar Endocrinologista / UTI`,
+    notes: "Nas emergências endócrinas, TRATAR PRIMEIRO e INVESTIGAR DEPOIS (exceto colher cortisol/TSH/ACTH antes se possível). A clínica é soberana.",
+    guideline: "SBEM / ADA / Endocrine Society",
+  },
+  {
+    id: "rx-modelo-oftalmologico",
+    title: "Modelo — Urgência Oftalmológica",
+    type: "Prescrição Padrão",
+    prescription: `1. Acuidade visual (tabela de Snellen — registrar SEMPRE)
+2. Teste de fluoresceína (descartar defeito epitelial/úlcera)
+3. Tonometria (PIO) se disponível
+4. Fundoscopia direta
+5. Reflexo pupilar (aferente — Marcus Gunn)
+6. Colírio anestésico (Proximetacaína 0,5%) — APENAS para exame
+7. Moxifloxacino 0,5% colírio — 1 gota ___/___h (se infeccioso)
+8. Prednisolona 1% colírio — 1 gota ___/___h (SOMENTE se orientado por Oftalmo)
+9. Ciclopentolato 1% — 1 gota 8/8h (cicloplégico — alívio dor por espasmo ciliar)
+10. Dipirona 1g EV/VO 6/6h se dor
+11. Encaminhar Oftalmologista: ___ (urgente/ambulatorial)
+12. Curativo oclusivo: ___ (sim/não — depende da patologia)`,
+    notes: "SEMPRE registrar acuidade visual no prontuário (medida pré e pós-tratamento). É o 'sinal vital' da Oftalmologia.",
+    guideline: "CBO / AAO",
+  },
 ];
+
