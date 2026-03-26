@@ -117,7 +117,12 @@ import { triageFullProtocols4 } from "./triage4";
 import { ophthalmologyFullProtocols4 } from "./ophthalmology4";
 import { orlFullProtocols4 } from "./otorhinolaryngology4";
 
-export const fullProtocolCategories: FullProtocolCategory[] = [
+// Batch 7
+import { sepsisFullProtocols5 } from "./sepsis5";
+import { neonatalFullProtocols3 } from "./neonatal3";
+import { respiratoryFullProtocols6 } from "./respiratory6";
+import { susProtocolsFullProtocols4 } from "./susProtocols4";
+
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
   { id: "cardiology", title: "Cardiologia", order: 2 },
   { id: "neurology", title: "Neurologia", order: 3 },
