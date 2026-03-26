@@ -4,7 +4,7 @@ import TopBar from "@/components/TopBar";
 import { Input } from "@/components/ui/input";
 import { Card, CardContent } from "@/components/ui/card";
 import { protocols } from "@/data/protocols";
-import { medications } from "@/data/medications";
+
 import { prescriptionCategories } from "@/data/prescriptions";
 import { symptomGuides } from "@/data/symptomGuides";
 import { useBularioList } from "@/hooks/useBularioMedications";
