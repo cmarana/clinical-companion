@@ -75,6 +75,19 @@ import { orlFullProtocols2 } from "./otorhinolaryngology2";
 import { gynecologyFullProtocols2 } from "./gynecology2";
 import { hematologyFullProtocols2 } from "./hematology2";
 
+// Batch 3
+import { gastroFullProtocols3 } from "./gastroenterology3";
+import { nephrologyFullProtocols3 } from "./nephrology3";
+import { psychiatryFullProtocols3 } from "./psychiatry3";
+import { dermatologyFullProtocols3 } from "./dermatology3";
+import { ophthalmologyFullProtocols3 } from "./ophthalmology3";
+import { orlFullProtocols3 } from "./otorhinolaryngology3";
+import { hematologyFullProtocols3 } from "./hematology3";
+import { geriatricsFullProtocols3 } from "./geriatrics3";
+import { painPalliativeFullProtocols3 } from "./painPalliative3";
+import { triageFullProtocols3 } from "./triage3";
+import { susProtocolsFullProtocols3 } from "./susProtocols3";
+
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
   { id: "cardiology", title: "Cardiologia", order: 2 },
