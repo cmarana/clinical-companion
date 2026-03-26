@@ -47,7 +47,7 @@ export default function Home() {
   };
 
   return (
-    <div className="px-3 pt-2 pb-20 max-w-lg mx-auto">
+    <div className="px-3 pt-2 pb-20 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto">
       {/* Top bar */}
       <div className="flex items-center justify-between h-10 mb-2">
         <span className="font-heading font-bold text-sm tracking-tight">PS Guide</span>
@@ -68,7 +68,7 @@ export default function Home() {
       </form>
 
       {/* Grid */}
-      <div className="grid grid-cols-2 gap-2">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
         {modules.map((m) => (
           <button
             key={m.path}
