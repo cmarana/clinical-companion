@@ -48,7 +48,7 @@ export const neuroFullProtocols4: FullProtocol[] = [
     ]
   },
   {
-    id: "fp-delirium",
+    id: "fp-delirium-neuro",
     title: "Delirium Agudo",
     categoryId: "neurology",
     category: "Neurologia",
