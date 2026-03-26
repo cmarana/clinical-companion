@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import TopBar from "@/components/TopBar";
-import { prescriptionCategories } from "@/data/prescriptions";
+import { prescriptionCategories } from "@/data/prescriptions/index";
 import { Button } from "@/components/ui/button";
 import { Copy, Check } from "lucide-react";
 import { useState } from "react";

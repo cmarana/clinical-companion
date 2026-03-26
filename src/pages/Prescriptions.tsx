@@ -5,8 +5,22 @@ import { useAuth } from "@/contexts/AuthContext";
 import PremiumGate from "@/components/PremiumGate";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Search, ChevronRight, ClipboardList } from "lucide-react";
-import { prescriptionCategories, type PrescriptionCategory } from "@/data/prescriptions";
+import { Search, ChevronRight, ClipboardList, Stethoscope, Zap, Building, Baby, HeartPulse, Thermometer, Pill, Target, LogOut, FlaskConical, FileText } from "lucide-react";
+import { prescriptionCategories } from "@/data/prescriptions/index";
+
+const iconMap: Record<string, React.ReactNode> = {
+  stethoscope: <Stethoscope size={16} className="text-primary" />,
+  zap: <Zap size={16} className="text-red-500" />,
+  building: <Building size={16} className="text-blue-500" />,
+  baby: <Baby size={16} className="text-pink-500" />,
+  "heart-pulse": <HeartPulse size={16} className="text-rose-500" />,
+  thermometer: <Thermometer size={16} className="text-orange-500" />,
+  pill: <Pill size={16} className="text-violet-500" />,
+  target: <Target size={16} className="text-green-500" />,
+  "log-out": <LogOut size={16} className="text-teal-500" />,
+  "flask-conical": <FlaskConical size={16} className="text-amber-500" />,
+  "file-text": <FileText size={16} className="text-indigo-500" />,
+};
 
 export default function Prescriptions() {
   const navigate = useNavigate();
@@ -35,7 +49,7 @@ export default function Prescriptions() {
     <>
       <TopBar title="Prescrições" />
       <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4 pb-24">
-        <p className="text-xs text-muted-foreground">Prescrições prontas para pronto socorro, internação e ambulatório</p>
+        <p className="text-xs text-muted-foreground">Prescrições prontas para pronto socorro, internação, ambulatório e SUS</p>
 
         <div className="relative">
           <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
@@ -54,7 +68,7 @@ export default function Prescriptions() {
               className="w-full flex items-center justify-between p-3 rounded-xl bg-accent/50 hover:bg-accent transition-colors"
             >
               <div className="flex items-center gap-2">
-                <ClipboardList size={16} className="text-primary" />
+                {cat.icon && iconMap[cat.icon] ? iconMap[cat.icon] : <ClipboardList size={16} className="text-primary" />}
                 <span className="font-heading font-semibold text-sm">{cat.title}</span>
                 <span className="text-xs text-muted-foreground">({cat.items.length})</span>
               </div>
