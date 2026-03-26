@@ -3,7 +3,7 @@ import TopBar from "@/components/TopBar";
 import { prescriptionCategories } from "@/data/prescriptions/index";
 import { Button } from "@/components/ui/button";
 import { Copy, Check, Star, Printer } from "lucide-react";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useFavorites } from "@/contexts/FavoritesContext";
 
@@ -46,8 +46,10 @@ export default function PrescriptionDetail() {
     const dateStr = now.toLocaleDateString("pt-BR");
     const timeStr = now.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
 
+    const escapeHtml = (str: string) => str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
     printWindow.document.write(`<!DOCTYPE html>
-<html><head><meta charset="utf-8"><title>${prescription.title}</title>
+<html><head><meta charset="utf-8"><title>${escapeHtml(prescription.title)}</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body { font-family: 'Arial', sans-serif; padding: 28px 32px; font-size: 12pt; line-height: 1.65; color: #000; }
@@ -67,14 +69,14 @@ export default function PrescriptionDetail() {
   @media print { body { padding: 20px; } }
 </style></head><body>
 <div class="header">
-  <h1>${prescription.title}</h1>
-  <div class="type">${prescription.type}</div>
+  <h1>${escapeHtml(prescription.title)}</h1>
+  <div class="type">${escapeHtml(prescription.type)}</div>
 </div>
-${prescription.guideline ? `<div class="guideline">Diretriz: ${prescription.guideline}</div>` : ""}
-<div class="section"><h2>Prescrição</h2><pre>${prescription.prescription}</pre></div>
-${prescription.alternatives ? `<div class="section"><h2>Alternativas</h2><pre>${prescription.alternatives}</pre></div>` : ""}
-${prescription.notes ? `<div class="section"><h2>Observações</h2><pre>${prescription.notes}</pre></div>` : ""}
-${prescription.warnings ? `<div class="warning"><h2>⚠ Atenção</h2><pre>${prescription.warnings}</pre></div>` : ""}
+${prescription.guideline ? `<div class="guideline">Diretriz: ${escapeHtml(prescription.guideline)}</div>` : ""}
+<div class="section"><h2>Prescrição</h2><pre>${escapeHtml(prescription.prescription)}</pre></div>
+${prescription.alternatives ? `<div class="section"><h2>Alternativas</h2><pre>${escapeHtml(prescription.alternatives)}</pre></div>` : ""}
+${prescription.notes ? `<div class="section"><h2>Observações</h2><pre>${escapeHtml(prescription.notes)}</pre></div>` : ""}
+${prescription.warnings ? `<div class="warning"><h2>⚠ Atenção</h2><pre>${escapeHtml(prescription.warnings)}</pre></div>` : ""}
 <div class="signature"><div class="line"></div><p>Assinatura / CRM</p></div>
 <div class="footer"><span>Gerado em ${dateStr} às ${timeStr}</span><span>Pronto Socorro Guide</span></div>
 </body></html>`);
@@ -110,99 +112,6 @@ ${prescription.warnings ? `<div class="warning"><h2>⚠ Atenção</h2><pre>${pre
             <Button size="sm" variant="outline" onClick={handlePrint} className="gap-1.5">
               <Printer size={14} />
               PDF
-            </Button>
-            <Button size="sm" variant="outline" onClick={handleCopy} className="gap-1.5">
-              {copied ? <Check size={14} /> : <Copy size={14} />}
-              {copied ? "Copiado" : "Copiar"}
-            </Button>
-          </div>
-        </div>
-
-        {prescription.guideline && (
-          <div className="text-xs text-primary font-heading font-medium bg-accent/50 px-3 py-1.5 rounded-lg inline-block">
-            Diretriz: {prescription.guideline}
-          </div>
-        )}
-
-        <div className="bg-card border rounded-xl p-4 space-y-2">
-          <h2 className="font-heading font-semibold text-sm">Prescrição</h2>
-          <div className="text-sm leading-relaxed whitespace-pre-line">{prescription.prescription}</div>
-        </div>
-
-        {prescription.alternatives && (
-          <div className="bg-card border rounded-xl p-4 space-y-2">
-            <h2 className="font-heading font-semibold text-sm">Alternativas</h2>
-            <div className="text-sm leading-relaxed whitespace-pre-line">{prescription.alternatives}</div>
-          </div>
-        )}
-
-        {prescription.notes && (
-          <div className="bg-accent/30 border rounded-xl p-4 space-y-2">
-            <h2 className="font-heading font-semibold text-sm">Observações</h2>
-            <div className="text-sm leading-relaxed whitespace-pre-line">{prescription.notes}</div>
-          </div>
-        )}
-
-        {prescription.warnings && (
-          <div className="bg-destructive/5 border border-destructive/20 rounded-xl p-4 space-y-2">
-            <h2 className="font-heading font-semibold text-sm text-destructive">⚠️ Atenção</h2>
-            <div className="text-sm leading-relaxed whitespace-pre-line">{prescription.warnings}</div>
-          </div>
-        )}
-      </div>
-    </>
-  );
-}
-  const { id } = useParams();
-  const navigate = useNavigate();
-  const { toast } = useToast();
-  const [copied, setCopied] = useState(false);
-  const { isFavorite, toggleFavorite } = useFavorites();
-
-  const prescription = prescriptionCategories
-    .flatMap(c => c.items)
-    .find(p => p.id === id);
-
-  if (!prescription) {
-    return (
-      <>
-        <TopBar title="Prescrição" />
-        <div className="px-4 py-8 text-center text-muted-foreground text-sm">Prescrição não encontrada.</div>
-      </>
-    );
-  }
-
-  const handleCopy = async () => {
-    const text = `${prescription.title}\n\n${prescription.prescription}\n\n${prescription.notes ? `Observações: ${prescription.notes}` : ""}`;
-    await navigator.clipboard.writeText(text);
-    setCopied(true);
-    toast({ title: "Copiado!", description: "Prescrição copiada para a área de transferência." });
-    setTimeout(() => setCopied(false), 2000);
-  };
-
-  return (
-    <>
-      <TopBar title={prescription.title} />
-      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4 pb-24">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="font-heading font-bold text-lg">{prescription.title}</h1>
-            <p className="text-xs text-muted-foreground">{prescription.type}</p>
-          </div>
-          <div className="flex items-center gap-2">
-            <Button
-              size="sm"
-              variant="ghost"
-              onClick={() => {
-                toggleFavorite({ id: prescription.id, type: "prescription", title: prescription.title });
-                toast({
-                  title: isFavorite(prescription.id) ? "Removido dos favoritos" : "Adicionado aos favoritos",
-                  description: prescription.title,
-                });
-              }}
-              className="gap-1.5"
-            >
-              <Star size={14} className={isFavorite(prescription.id) ? "fill-warning text-warning" : ""} />
             </Button>
             <Button size="sm" variant="outline" onClick={handleCopy} className="gap-1.5">
               {copied ? <Check size={14} /> : <Copy size={14} />}
