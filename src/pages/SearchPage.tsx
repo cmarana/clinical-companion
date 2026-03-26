@@ -54,9 +54,7 @@ export default function SearchPage() {
       .filter(p => p.title.toLowerCase().includes(q) || p.tags.some(t => t.includes(q)) || p.sections.some(s => s.content.toLowerCase().includes(q)))
       .map(p => ({ id: p.id, title: p.title, subtitle: p.category, type: "Protocolo", path: `/protocols/${p.id}`, icon: "protocol" as const }));
 
-    const medResults: SearchResult[] = medications
-      .filter(m => m.name.toLowerCase().includes(q) || m.tags.some(t => t.includes(q)) || m.indication.toLowerCase().includes(q))
-      .map(m => ({ id: m.id, title: m.name, subtitle: "Medicamento", type: "Medicamento", path: `/medications/${m.id}`, icon: "medication" as const }));
+
 
     const rxResults: SearchResult[] = prescriptionCategories
       .flatMap(c => c.items)
@@ -67,7 +65,7 @@ export default function SearchPage() {
       .filter(s => s.symptom.toLowerCase().includes(q) || s.hypotheses.some(h => h.toLowerCase().includes(q)))
       .map(s => ({ id: s.id, title: s.symptom, subtitle: "Diagnóstico", type: "Sintoma", path: `/diagnosis`, icon: "symptom" as const }));
 
-    return [...protocolResults, ...medResults, ...rxResults, ...symptomResults];
+    return [...protocolResults, ...rxResults, ...symptomResults];
   }, [query]);
 
   const bularioResults = useMemo<SearchResult[]>(() => {
