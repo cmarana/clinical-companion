@@ -364,4 +364,101 @@ ______________________________
 CRM / Carimbo / Assinatura`,
     notes: "Modelo genérico — personalizar conforme diagnóstico. Sempre incluir sinais de alerta e retorno.",
   },
+  {
+    id: "rx-modelo-pos-pcr",
+    title: "Modelo — Pós-PCR (Cuidados Pós-Ressuscitação)",
+    type: "Prescrição Padrão",
+    prescription: `1. UTI — monitorização contínua
+2. VM protetora: VT 6-8mL/kg, PEEP 5-8, FiO2 para SpO2 94-98%
+3. Sedação: Midazolam + Fentanil BIC (RASS -3 a -4)
+4. PAM alvo ≥65 (Noradrenalina se necessário)
+5. Hipotermia terapêutica 32-36°C por 24h (se comatoso após RCE)
+6. Reaquecer 0,25-0,5°C/h após 24h
+7. Glicemia 140-180mg/dL (evitar hipoglicemia)
+8. Tratar causa base da PCR
+9. CATE urgente se: IAMST ou forte suspeita isquêmica
+10. EEG contínuo (se disponível) — monitorar status epiléptico não convulsivo
+11. Gasometria, lactato, troponina seriadas
+12. Neuroprognosticação: >72h após reaquecer (não antes)`,
+    guideline: "AHA / ILCOR 2020 / AMIB",
+  },
+  {
+    id: "rx-modelo-puerpera",
+    title: "Modelo — Puérpera (Pós-Parto Normal)",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta livre
+2. Deambulação precoce (6h após parto normal)
+3. SF 0,9% 500mL EV — manter acesso 12h (retirar se estável)
+4. Ocitocina 10UI IM (se não recebeu no parto)
+5. Dipirona 1g EV 6/6h se dor
+6. Cetoprofeno 100mg VO 12/12h por 3 dias
+7. Sulfato ferroso 200mg VO 1x/dia por 30-60 dias
+8. Avaliar involução uterina (fundo uterino) a cada 6h
+9. Vigiar lóquios (cor, quantidade, odor)
+10. Avaliar mamas: pega, fissuras, ingurgitamento
+11. Alojamento conjunto + amamentação livre demanda
+12. Orientar contracepção pós-parto
+13. Alta em 24-48h se sem complicações`,
+    guideline: "FEBRASGO / MS",
+  },
+  {
+    id: "rx-modelo-dialitico",
+    title: "Modelo — Paciente Renal Dialítico (Internação)",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta renal (hipossódica, hipopotassêmica, hipofosfatêmica)
+2. Restrição hídrica: ___mL/dia (incluir medicações EV)
+3. NÃO puncionar braço da FAV (fístula arteriovenosa)
+4. Evitar: anti-hipertensivos pré-diálise (risco hipotensão)
+5. Ajustar doses renais de TODOS os medicamentos
+6. Eritropoetina SC (conforme protocolo dialítico)
+7. Sevelâmer 800mg VO junto às refeições (quelante fósforo)
+8. Calcitriol 0,25mcg VO 1x/dia
+9. Hemodiálise conforme escala (___x/semana)
+10. Acesso dialítico: verificar funcionamento FAV/cateter
+11. Eletrólitos pré e pós-diálise (K, Na, Ca, P, Mg)
+12. Evitar nefrotóxicos: AINEs, aminoglicosídeos, contraste iodado (se possível)
+13. Peso diário (controle de ganho interdialítico)`,
+    guideline: "SBN / KDIGO / KDOQI",
+  },
+  {
+    id: "rx-modelo-oncologico",
+    title: "Modelo — Paciente Oncológico (Internação)",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta conforme tolerância
+2. SF 0,9% 1000mL EV — manter acesso (port-a-cath se disponível)
+3. Analgesia escalonada OMS:
+   Degrau 1: Dipirona 1g EV 6/6h + Paracetamol 750mg 6/6h
+   Degrau 2: + Tramadol 50mg EV 6/6h OU Codeína 30mg VO 4/4h
+   Degrau 3: + Morfina 5mg EV 4/4h (titular)
+4. Adjuvantes: Gabapentina 300mg VO 8/8h (dor neuropática), Dexametasona 4mg EV 12/12h
+5. Ondansetrona 8mg EV 8/8h (antiemético)
+6. Omeprazol 40mg EV 1x/dia
+7. Laxativo: Lactulose 15mL VO 12/12h (se opioide)
+8. Enoxaparina 40mg SC 1x/dia (alto risco trombótico)
+9. Hemograma, função renal/hepática, eletrólitos
+10. Se neutropenia febril: protocolo específico (ATB na 1ª hora)`,
+    notes: "Neutropenia febril: neutrófilos <500 + Tax ≥38,3°C (ou ≥38°C por >1h) = emergência oncológica.",
+    guideline: "SBOC / NCCN / ASCO",
+  },
+  {
+    id: "rx-modelo-cesarea",
+    title: "Modelo — Pós-Cesárea",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta zero por 6h → líquida → branda → livre
+2. SF 0,9% 1000mL EV a cada 8h (manter até dieta oral)
+3. Ocitocina 10-20UI em SF 500mL EV (infundir em 4-8h)
+4. Cefazolina 1g EV dose única profilática (se não recebeu no intraoperatório)
+5. Dipirona 1g EV 6/6h
+6. Cetoprofeno 100mg EV 12/12h (ou IM)
+7. Tramadol 50mg EV 6/6h SN (se dor intensa)
+8. Ondansetrona 4mg EV 8/8h SN
+9. Enoxaparina 40mg SC 1x/dia (se fatores de risco para TEV)
+10. SVD: retirar em 12-24h
+11. Deambulação precoce (12-24h)
+12. Curativo: trocar em 24h, manter limpo e seco
+13. Alojamento conjunto + amamentação livre demanda
+14. Alta em 48-72h se sem complicações`,
+    guideline: "FEBRASGO / NICE / ACOG",
+  },
 ];
+

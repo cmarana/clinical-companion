@@ -395,4 +395,121 @@ Sem CAD (diagnóstico ambulatorial/internação):
 10. Educação em diabetes: aplicação, rodízio, hipoglicemia, contagem de carboidratos`,
     guideline: "SBD / ISPAD / ADA",
   },
+  {
+    id: "rx-ped-choque",
+    title: "Choque Pediátrico",
+    type: "Prescrição Pediátrica",
+    prescription: `1. O2 100% alto fluxo
+2. Acesso EV/IO em 90 segundos (se não conseguir periférico)
+3. SF 0,9% 20mL/kg EV rápido em bolus (push/pull com seringa)
+   Repetir até 60mL/kg na 1ª hora (reavaliar após cada bolus)
+4. Se não responde a 40-60mL/kg:
+   Adrenalina 0,1-1mcg/kg/min (choque frio — perfusão ruim, extremidades frias)
+   OU Noradrenalina 0,1-2mcg/kg/min (choque quente — vasodilatado, corado)
+5. Hidrocortisona 2mg/kg EV (se refratário a vasopressor)
+6. Glicemia capilar (hipoglicemia é causa de choque em crianças)
+7. Cálcio iônico (hipocalcemia piora contractilidade)
+8. ATB na 1ª hora se séptico
+9. Monitorização: PA, FC, perfusão periférica, TEC, diurese
+10. Alvo: TEC <2s, pulsos normais, diurese >1mL/kg/h`,
+    warnings: "Criança compensa muito antes de descompensar. Hipotensão é sinal TARDIO = choque descompensado.",
+    guideline: "SBP / PALS / SSC Pediátrica",
+  },
+  {
+    id: "rx-ped-status-epilepticus",
+    title: "Status Epiléptico Pediátrico",
+    type: "Prescrição Pediátrica",
+    prescription: `0-5 min (estabilização):
+1. Via aérea, O2, monitorização, glicemia
+2. Diazepam 0,3mg/kg EV (máx 10mg) OU 0,5mg/kg retal
+3. OU Midazolam 0,2mg/kg IM/intranasal se sem acesso
+
+5-15 min (2ª linha):
+4. Repetir benzodiazepínico 1x se persistir
+5. Fenitoína 20mg/kg EV em 20 min (em SF, máx 1mg/kg/min)
+6. OU Valproato 20-40mg/kg EV em 5 min (preferido se crise focal)
+7. OU Levetiracetam 40-60mg/kg EV em 15 min
+
+>30 min (status refratário):
+8. Midazolam BIC 0,1-0,4mg/kg/h
+9. OU Propofol (>3 anos) — NÃO usar em BIC prolongada em crianças
+10. IOT
+11. Piridoxina 100mg EV se <18 meses (excluir deficiência de B6)`,
+    guideline: "SBP / ABN / AES",
+  },
+  {
+    id: "rx-ped-queimadura",
+    title: "Queimadura Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `Avaliação:
+1. SCQ pelo diagrama de Lund-Browder (NÃO usar regra dos 9 em criança)
+2. Classificação: 1° (epiderme), 2° (derme), 3° (total)
+
+Ressuscitação (se SCQ >10% em criança):
+3. SF 0,9% ou RL: 3mL/kg/% SCQ em 24h
+   Metade nas primeiras 8h, metade nas próximas 16h
+4. + Necessidade hídrica basal de manutenção (Holliday-Segar)
+5. Alvo diurese: 1mL/kg/h
+
+Tratamento local:
+6. Sulfadiazina de prata 1% nas áreas abertas
+7. Curativo oclusivo em áreas de 2° grau
+8. NÃO usar gelo, pasta de dente, manteiga
+
+Suporte:
+9. Analgesia: Morfina 0,1mg/kg EV + Dipirona 15mg/kg EV
+10. Verificar vacinação antitetânica
+11. SNG se SCQ >20% (íleo adinâmico)
+12. IOT precoce se: queimadura de face/VA, inalação, edema progressivo`,
+    warnings: "Queimadura em criança: SEMPRE investigar maus-tratos (padrão de luva/meia, lesões simétricas).",
+    guideline: "SBP / SBCP / ABA",
+  },
+  {
+    id: "rx-ped-politrauma",
+    title: "Politrauma Pediátrico",
+    type: "Prescrição Pediátrica",
+    prescription: `A — Via aérea (tubo sem cuff <8 anos):
+1. Tubo: (idade/4) + 4 para sem cuff, (idade/4) + 3,5 para com cuff
+2. Colar cervical pediátrico
+
+B — Ventilação:
+3. FR alvo: lactente 30-40, pré-escolar 20-30, escolar 15-20
+
+C — Circulação:
+4. Acesso EV/IO (intraósseo se >90s sem periférico)
+5. SF 0,9% 20mL/kg bolus → reavaliar
+6. Transfusão se não responder a 40mL/kg
+7. Ácido Tranexâmico 15mg/kg EV (máx 1g) em 10 min
+8. PA normal: PAS = 70 + (2 × idade)
+
+D — Neurológico:
+9. Glasgow pediátrico, pupilas, fontanela
+10. TC crânio se Glasgow <15, vômitos, mecanismo grave (PECARN)
+
+E — Exposição:
+11. Peso estimado: Broselow ou (idade × 2) + 8
+12. Hipotermia é MUITO mais rápida em crianças — aquecer ativamente`,
+    guideline: "ATLS / PHTLS / SBP",
+  },
+  {
+    id: "rx-ped-afogamento",
+    title: "Afogamento Pediátrico",
+    type: "Prescrição Pediátrica",
+    prescription: `1. ABCDE — priorizar ventilação (hipóxia é a causa da PCR no afogamento)
+2. 5 ventilações de resgate ANTES de compressões
+3. O2 100% por máscara
+4. IOT se: apneia, Glasgow ≤8, SpO2 <90% refratária
+5. PEEP 5-8 cmH2O (edema pulmonar não cardiogênico)
+6. Aquecimento se hipotermia (retirar roupas molhadas, manta térmica)
+7. SNG aberta (prevenir broncoaspiração)
+8. SF 0,9% — acesso venoso (cuidado com volume se edema pulmonar)
+9. Glicemia capilar
+10. Gasometria, eletrólitos, hemograma
+11. RX tórax (pode ser normal nas primeiras horas)
+12. Observação mínima 6-8h (edema tardio)
+13. Coluna cervical se mecanismo sugestivo (mergulho)`,
+    warnings: "NÃO fazer manobra de Heimlich. Priorizar VENTILAÇÃO. Hipotermia em criança: NÃO parar RCP até reaquecer.",
+    guideline: "SBP / SOBRASA / ILCOR",
+  },
 ];
+

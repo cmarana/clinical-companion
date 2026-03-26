@@ -449,4 +449,143 @@ E — Exposição:
     warnings: "Dor na falciforme é REAL e INTENSA. NÃO subtratar. Escala de dor + protocolo de opioide.",
     guideline: "ABHH / MS / ASH",
   },
+  {
+    id: "rx-emerg-fa-rapida",
+    title: "FA com Alta Resposta Ventricular",
+    type: "Prescrição de Emergência",
+    prescription: `COM instabilidade (hipotensão, EAP, angina, rebaixamento):
+1. Cardioversão elétrica sincronizada 120-200J bifásico
+2. Sedação: Propofol 1mg/kg ou Etomidato 0,3mg/kg EV
+
+SEM instabilidade — Controle de FC:
+3. Metoprolol 5mg EV lento a cada 5 min (máx 15mg) → VO 50mg 12/12h
+4. OU Diltiazem 0,25mg/kg EV em 2 min → 5-15mg/h BIC
+5. OU Amiodarona 150mg EV em 10 min → 1mg/min 6h → 0,5mg/min 18h (se IC/instável)
+6. Alvo FC <110 bpm
+7. Avaliar anticoagulação (CHA₂DS₂-VASc)
+8. Se FA >48h: anticoagular 3 semanas antes da cardioversão OU eco transesofágico
+9. Heparina se cardioversão urgente
+10. ECG, troponina, TSH, eletrólitos, hemograma`,
+    warnings: "NÃO usar betabloqueador + diltiazem juntos (bloqueio AV). Amiodarona na IC.",
+    guideline: "SBC / ESC / AHA",
+  },
+  {
+    id: "rx-emerg-bradiarritmia",
+    title: "Bradiarritmia / BAV — Emergência",
+    type: "Prescrição de Emergência",
+    prescription: `SEM sintomas: observar + monitorizar
+
+COM sintomas (hipotensão, síncope, dispneia, IC):
+1. Atropina 0,5mg EV a cada 3-5 min (máx 3mg)
+2. Se não responder à atropina:
+   - Adrenalina 2-10 mcg/min EV em BIC
+   - OU Dopamina 5-20 mcg/kg/min EV em BIC
+3. Marcapasso transcutâneo (MP-TC):
+   - Eletrodos anteroposterior
+   - FC 60-80 bpm, output mínimo para captura
+   - Sedação: Fentanil 50mcg + Midazolam 2-3mg EV
+4. Marcapasso transvenoso se refratário ou definitivo
+5. ECG 12 derivações (localizar bloqueio)
+6. Excluir: hipercalemia, hipotireoidismo, drogas (betabloq, BCC, digoxina)`,
+    warnings: "Atropina é INEFICAZ no BAV de 2° Mobitz II e BAVT infranodal. Ir direto para marcapasso.",
+    guideline: "AHA / ACLS 2020",
+  },
+  {
+    id: "rx-emerg-tvsp",
+    title: "Taquicardia Ventricular com Pulso",
+    type: "Prescrição de Emergência",
+    prescription: `COM instabilidade:
+1. Cardioversão elétrica sincronizada 100-200J bifásico
+2. Sedação: Propofol 1mg/kg ou Etomidato 0,3mg/kg EV
+
+SEM instabilidade (TV monomórfica):
+3. Amiodarona 150mg EV em 10 min → 1mg/min 6h → 0,5mg/min 18h
+4. OU Lidocaína 1-1,5mg/kg EV → 1-4mg/min BIC
+5. OU Procainamida 20-50mg/min EV (suspender se QRS alargar >50%)
+
+TV Polimórfica (Torsades de Pointes):
+6. Sulfato de Magnésio 2g EV em 10 min
+7. Se QT longo: isoproterenol ou overdrive pacing
+8. Corrigir K >4,0 e Mg >2,0
+9. ECG: identificar QRS largo, regularidade, morfologia
+10. Troponina, eletrólitos, gasometria
+11. Ecocardiograma (função ventricular, cardiopatia estrutural)`,
+    guideline: "AHA / ACLS / SBC",
+  },
+  {
+    id: "rx-emerg-hipertermia-maligna",
+    title: "Hipertermia Maligna",
+    type: "Prescrição de Emergência",
+    prescription: `1. SUSPENDER agente desencadeante imediatamente (halogenado, succinilcolina)
+2. Dantrolene 2,5mg/kg EV bolus — repetir a cada 5 min até controle (máx 10mg/kg)
+3. Resfriamento ativo: compressas geladas, SF gelado EV, lavagem gástrica gelada
+4. O2 100% alto fluxo — hiperventilar
+5. Bicarbonato 1-2mEq/kg EV se acidose grave
+6. Tratar hipercalemia: Gluconato de cálcio + insulina + glicose
+7. SF 0,9% gelado — ressuscitação agressiva
+8. SVD (vigiar mioglobinúria — urina escura)
+9. Manter diurese >2mL/kg/h (Manitol 0,25g/kg se mioglobinúria)
+10. Gasometria, CPK, K, Ca, lactato, coagulação a cada 30 min
+11. Monitorização contínua em UTI por 24-72h (risco de recorrência)
+12. Encaminhar para teste genético (RYR1) — família também`,
+    warnings: "CADA MINUTO CONTA. Dantrolene salva vida. Mortalidade sem tratamento: >70%.",
+    guideline: "MHAUS / SBA",
+  },
+  {
+    id: "rx-emerg-intox-organo",
+    title: "Intoxicação por Organofosforado",
+    type: "Prescrição de Emergência",
+    prescription: `1. Descontaminação: retirar roupas, lavar pele com água e sabão (equipe com EPI)
+2. ABCDE — IOT se insuficiência respiratória (secreção massiva)
+3. Atropina 2-4mg EV a cada 5-10 min até secar secreções
+   Dose pode ser MUITO alta (dezenas de mg) — titular por secreções/FC
+4. Pralidoxima (Contrathion) 1-2g EV em 15-30 min → 500mg/h BIC (reativar colinesterase)
+   Iniciar em <6h da exposição (depois pode ser ineficaz)
+5. Diazepam 10mg EV se convulsão (NÃO usar fenitoína)
+6. O2 + aspiração contínua de secreções
+7. Carvão ativado 1g/kg se ingestão <1h
+8. Monitorização contínua (bradiarritmia, insuficiência resp)
+9. Colinesterase sérica (eritrocitária e plasmática)
+10. Observar 48-72h (efeitos tardios: síndrome intermediária)`,
+    warnings: "Síndrome DUMBELS: Diarreia, Urina, Miose, Bradicardia, Emese, Lacrimejamento, Salivação.",
+    guideline: "CIT / ABCF / WHO",
+  },
+  {
+    id: "rx-emerg-sindrome-serotoninergica",
+    title: "Síndrome Serotoninérgica",
+    type: "Prescrição de Emergência",
+    prescription: `1. SUSPENDER todos os agentes serotoninérgicos (ISRS, IRSN, tramadol, triptanos, linezolida)
+2. Medidas de suporte: SF 0,9% EV, resfriamento ativo
+3. Benzodiazepínico: Diazepam 5-10mg EV (agitação, hipertonia, convulsão)
+4. Ciproheptadina 12mg VO/SNG (antídoto) → 4mg 6/6h (máx 32mg/dia)
+5. Resfriamento ativo se temperatura >41°C
+6. IOT + BNM (Rocurônio — NÃO usar succinilcolina) se rigidez refratária
+7. Monitorização contínua (FC, PA, temperatura, SpO2)
+8. NÃO usar propranolol (mascara taquicardia, piora instabilidade)
+9. CPK, função renal, eletrólitos, coagulação
+10. Resolução em 24-72h após suspensão do agente`,
+    notes: "Tríade: alteração mental + hiperatividade autonômica + hiperatividade neuromuscular (clônus, tremor, rigidez).",
+    warnings: "Diagnóstico diferencial: SNM (mais lento, rigidez em cano de chumbo). Critérios de Hunter.",
+    guideline: "ABCF / Toxicologia Clínica",
+  },
+  {
+    id: "rx-emerg-snm",
+    title: "Síndrome Neuroléptica Maligna",
+    type: "Prescrição de Emergência",
+    prescription: `1. SUSPENDER antipsicótico causador
+2. SF 0,9% — hidratação agressiva (prevenção IRA por rabdomiólise)
+3. Resfriamento ativo (compressas, manta, SF gelado)
+4. Dantrolene 1-2,5mg/kg EV a cada 6h (relaxante muscular)
+5. Bromocriptina 2,5-5mg VO/SNG 8/8h (agonista dopaminérgico)
+6. Benzodiazepínico: Diazepam 5-10mg EV se rigidez/agitação
+7. IOT se insuficiência respiratória
+8. SVD — manter diurese >2mL/kg/h
+9. CPK seriado, mioglobina, função renal, eletrólitos, coagulação
+10. Evolução mais lenta que síndrome serotoninérgica (5-10 dias)
+11. Monitorizar em UTI
+12. Reintrodução de antipsicótico: mínimo 2 semanas, baixa dose, outra classe`,
+    warnings: "Tétrade: hipertermia + rigidez + alteração mental + disautonomia. CPK >1000 é comum.",
+    guideline: "ABP / APA / Toxicologia",
+  },
 ];
+

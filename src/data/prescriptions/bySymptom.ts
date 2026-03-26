@@ -461,4 +461,117 @@ Investigar causa (4 Hs):
 13. USG POCUS (tamponamento? hipovolemia? TEP?)`,
     notes: "POCUS à beira-leito: ferramenta essencial para hipotensão indiferenciada.",
   },
+  {
+    id: "rx-sint-hemoptise",
+    title: "Hemoptise",
+    type: "Prescrição Sintomática",
+    prescription: `Leve (raias de sangue):
+1. Repouso + decúbito lateral com lado afetado para baixo
+2. Codeína 30mg VO 6/6h (antitussígeno)
+3. RX tórax
+4. Hemograma, coagulograma
+5. Investigar: TB (BAAR), neoplasia, bronquiectasia
+
+Moderada a grave:
+6. O2 alto fluxo
+7. 2 acessos calibrosos + tipagem
+8. Ácido Tranexâmico 1g EV em 10 min
+9. IOT se hemorragia maciça (>600mL/24h)
+10. Broncoscopia URGENTE
+11. AngioTC tórax`,
+    warnings: "Hemoptise maciça: posicionar com lado sangrante para BAIXO. Via aérea é prioridade.",
+  },
+  {
+    id: "rx-sint-disuria",
+    title: "Disúria",
+    type: "Prescrição Sintomática",
+    prescription: `1. EAS + urocultura
+2. Fenazopiridina 200mg VO 8/8h por 2-3 dias (alívio da dor vesical)
+3. Analgesia: Dipirona 1g VO 6/6h
+4. Hidratação oral abundante (≥2L/dia)
+5. Se ITU confirmada: iniciar ATB (Nitrofurantoína ou Fosfomicina)
+6. Se uretrite: avaliar DST (Ceftriaxona 500mg IM + Azitromicina 1g VO)
+7. Se vaginite: exame ginecológico
+8. Retorno se: febre, dor lombar, hematúria`,
+    notes: "Fenazopiridina: aviso que urina fica laranja/vermelha. Máximo 2-3 dias.",
+  },
+  {
+    id: "rx-sint-palpitacoes",
+    title: "Palpitações",
+    type: "Prescrição Sintomática",
+    prescription: `1. ECG 12 derivações IMEDIATO
+2. Monitorização contínua
+3. PA, FC, SpO2
+
+Se taquicardia sinusal:
+4. Tratar causa base (febre, dor, ansiedade, desidratação)
+
+Se TPSV:
+5. Manobra vagal (Valsalva modificado, gelo na face)
+6. Adenosina 6mg EV rápida → 12mg → 12mg
+
+Se FA:
+7. Controle de FC (Metoprolol ou Diltiazem)
+
+Se estável sem arritmia:
+8. TSH, hemograma, eletrólitos
+9. Holter 24h ambulatorial se recorrente
+10. Ansiolítico SN: Clonazepam 0,25mg SL`,
+  },
+  {
+    id: "rx-sint-dor-pelvica",
+    title: "Dor Pélvica Aguda",
+    type: "Prescrição Sintomática",
+    prescription: `1. Analgesia: Dipirona 1g EV + Cetoprofeno 100mg EV
+2. Buscopan composto EV 6/6h
+3. beta-HCG (excluir gravidez ectópica — PRIORIDADE)
+4. USG pélvica transvaginal
+5. EAS + urocultura
+6. Hemograma, PCR
+
+Se DIP: Ceftriaxona 500mg IM + Doxiciclina 100mg VO 12/12h + Metronidazol 500mg VO 12/12h
+Se torção ovariana: USG Doppler urgente → cirurgia
+Se gravidez ectópica: tipagem + cirurgia/MTX
+Se cisto roto: observação + analgesia (cirurgia se instável)
+Se endometriose: AINE + encaminhar ginecologia`,
+    warnings: "TODA mulher em idade fértil com dor pélvica: beta-HCG antes de qualquer conduta.",
+  },
+  {
+    id: "rx-sint-parestesias",
+    title: "Parestesias / Dormência",
+    type: "Prescrição Sintomática",
+    prescription: `1. Exame neurológico completo (nível sensitivo, dermátomos, força)
+2. Glicemia (hipoglicemia, diabetes)
+3. Eletrólitos: Ca, K, Mg, Na
+4. Se déficit focal agudo: protocolo AVC (TC crânio urgente)
+5. Se bilateral + ascendente: considerar Guillain-Barré (reflexos, CVF)
+6. Se perioral + mãos: pensar hipocalcemia (Chvostek, Trousseau)
+7. Se território radicular: RNM coluna (hérnia, compressão)
+8. Hemograma, B12, ácido fólico, TSH, HbA1c
+9. ENMG ambulatorial se crônica
+10. Gabapentina 300mg VO à noite se dor neuropática associada`,
+  },
+  {
+    id: "rx-sint-epistaxe",
+    title: "Epistaxe (Sangramento Nasal)",
+    type: "Prescrição Sintomática",
+    prescription: `Anterior (90% dos casos):
+1. Sentar paciente, inclinar para frente
+2. Comprimir asa do nariz por 10-15 min contínuos
+3. Algodão com Adrenalina 1:10.000 ou Oximetazolina intranasal
+4. Se persistir: tamponamento anterior com Merocel ou gaze rayon
+5. Cauterização com nitrato de prata (se ponto visível)
+
+Posterior:
+6. Tamponamento posterior com sonda de Foley (cateter 14Fr, inflar com 10mL)
+7. OU tampão posterior duplo (anterior + posterior)
+8. Internação + monitorização (risco de obstrução VA)
+
+Ambos:
+9. PA (tratar crise hipertensiva se presente)
+10. Hemograma, coagulograma, tipagem (se volumoso)
+11. ATB profilático: Amoxicilina-Clavulanato (se tamponamento >24h)
+12. ORL: avaliação se refratário`,
+  },
 ];
+

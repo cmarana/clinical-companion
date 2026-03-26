@@ -398,4 +398,122 @@ GRUPO D (dengue grave — choque):
 13. UTI + monitorização`,
     guideline: "MS / OMS 2024",
   },
+  {
+    id: "rx-sus-sala-vermelha",
+    title: "Protocolo Sala Vermelha — UPA/Hospital Público",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `Materiais que DEVEM estar prontos:
+1. Carrinho de PCR montado e testado
+2. Desfibrilador bifásico carregado
+3. Material de IOT (laringoscópio, tubos 7.0-8.0, guia, bougie)
+4. Aspirador ligado
+5. Drogas preparadas: Adrenalina, Amiodarona, Atropina
+6. BVM com reservatório + O2
+
+Prescrição padrão Sala Vermelha:
+7. Monitorização contínua (ECG, PA, SpO2, EtCO2)
+8. 2 acessos calibrosos (jelco 16-18G)
+9. SF 0,9% 1000mL EV (ajustar conforme)
+10. Tipagem sanguínea + hemograma + gasometria STAT
+11. Glicemia capilar
+12. IOT se Glasgow ≤8
+13. Noradrenalina se PAM <65 (iniciar 0,1mcg/kg/min)
+14. FAST (se trauma)`,
+    notes: "Sala vermelha = paciente INSTÁVEL. Médico deve ficar à beira do leito até estabilização.",
+    guideline: "MS / AMIB / ATLS",
+  },
+  {
+    id: "rx-sus-receituario-controlado",
+    title: "Receituário Controlado — Regras Anvisa",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `RECEITA BRANCA COMUM:
+Anti-hipertensivos, antibióticos, AINEs — receita simples (2 vias)
+
+RECEITA BRANCA ESPECIAL (C1):
+Antidepressivos (fluoxetina, sertralina), anticonvulsivantes (gabapentina)
+2 vias, validade 30 dias, máx 60 dias de tratamento
+
+RECEITA B (AZUL — Notificação B):
+Benzodiazepínicos (diazepam, clonazepam, alprazolam)
+Receita azul, 2 vias, validade 30 dias, máx 60 dias
+Barbitúricos: fenobarbital também
+
+RECEITA A (AMARELA — Notificação A):
+Opioides fortes: morfina, metadona, fentanil, oxicodona
+Receita amarela em 3 vias (1 paciente, 1 farmácia, 1 vigilância)
+Validade 30 dias, máx 30 dias de tratamento
+
+RECEITA ANTIMICROBIANOS:
+2 vias, validade 10 dias, identificação do paciente`,
+    notes: "SUS fornece: diazepam, clonazepam, fenobarbital, morfina solução oral, codeína. Formulário terapêutico RENAME.",
+    guideline: "ANVISA / Portaria SVS 344/1998",
+  },
+  {
+    id: "rx-sus-transferencia",
+    title: "Transferência Inter-hospitalar — SUS",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `1. Estabilizar paciente ANTES da transferência
+2. Contato com Central de Regulação (SAMU, regulação estadual)
+3. Documentação obrigatória:
+   - Resumo clínico + exames
+   - Justificativa para transferência
+   - Classificação de risco
+   - Consentimento do paciente/familiar
+4. Prescrição de transporte:
+   - Monitorização contínua
+   - Acesso venoso pérvio
+   - Medicações de emergência disponíveis
+   - Profissional adequado ao nível de complexidade
+5. Se VM: ambú + O2 suficiente para tempo + 30 min reserva
+6. Drogas vasoativas em BIC com bateria (verificar carga)
+7. Comunicar hospital receptor (leito confirmado)
+8. Prontuário + exames de imagem acompanham o paciente`,
+    notes: "Nunca transferir paciente instável sem estabilização prévia. Responsabilidade é do médico solicitante até chegada.",
+    guideline: "CFM / MS / SAMU",
+  },
+  {
+    id: "rx-sus-alta-responsavel",
+    title: "Alta Responsável — Modelo SUS",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `1. Resumo de alta com diagnósticos (CID-10)
+2. Medicações prescritas com duração e posologia clara
+3. Orientações escritas em linguagem acessível
+4. Sinais de alarme para retorno ao PS
+5. Encaminhamento para UBS (contrarreferência)
+6. Agendamento ambulatorial (quando possível)
+7. Entrega de medicações disponíveis na farmácia hospitalar
+8. Orientar retirada na UBS/farmácia popular se indisponível
+9. Atestado médico (dias de afastamento)
+10. Relatório para perícia INSS se necessário
+11. Orientação sobre vacinação (quando aplicável)
+12. Assinatura do paciente/responsável confirmando orientações`,
+    notes: "Contrarreferência para UBS é obrigatória no SUS. Garantir seguimento do paciente na atenção primária.",
+    guideline: "MS / SUS / Política Nacional de Humanização",
+  },
+  {
+    id: "rx-sus-mordedura-animal",
+    title: "Mordedura Animal — Profilaxia Antirrábica SUS",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `Limpeza do ferimento:
+1. Lavagem exaustiva com água e sabão (5-10 min)
+2. SF 0,9% irrigação copiosa
+3. NÃO suturar (exceto face — sutura após lavar)
+4. Antisséptico: Clorexidina ou PVPI tópico
+
+Profilaxia antirrábica (conforme MS):
+5. Animal doméstico observável + mordedura leve:
+   Observar animal 10 dias (vacina se sinais ou se animal morre)
+6. Animal não observável / silvestre / morcego:
+   Vacina antirrábica D0, D3, D7, D14
+   + Soro/Imunoglobulina antirrábica se grave
+
+Profilaxia antitetânica:
+7. Avaliar cartão vacinal → dT se >5 anos da última dose
+8. SAT 5000UI IM se ferimento contaminado + esquema incompleto
+
+ATB profilaxia (mordedura):
+9. Amoxicilina-Clavulanato 875/125mg VO 12/12h por 5-7 dias`,
+    guideline: "MS / SVS / Protocolo Antirrábico 2023",
+  },
 ];
+

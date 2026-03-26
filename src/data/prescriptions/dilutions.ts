@@ -659,4 +659,158 @@ Ou diluir em SF 0,9% se necessário`,
     warnings: "NÃO usar albumina como expansor volêmico de rotina. Indicações específicas.",
     guideline: "EASL / SBG",
   },
+  {
+    id: "rx-dil-dexmedetomidina",
+    title: "Dexmedetomidina — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO:
+Dexmedetomidina 2mL (200mcg) + SF 0,9% 48mL = 50mL
+Concentração: 4 mcg/mL
+
+DOSE:
+Ataque: 1mcg/kg EV em 10 min (OPCIONAL — causa bradicardia/hipotensão)
+Manutenção: 0,2-1,4 mcg/kg/h
+
+Exemplo (70kg, dose 0,7mcg/kg/h):
+0,7 × 70 / 4 = 12,25 mL/h
+
+VANTAGENS:
+- Sedação sem depressão respiratória
+- Paciente "acordável" (cooperativo)
+- Ideal para desmame de VM e extubação
+
+CUIDADOS:
+- Bradicardia e hipotensão (efeitos mais comuns)
+- NÃO usar em bloqueio AV 2°/3° sem MP
+- Usar com cautela em hipovolêmico`,
+    guideline: "AMIB / SBA",
+  },
+  {
+    id: "rx-dil-levosimendana",
+    title: "Levosimendana — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO:
+Levosimendana 12,5mg/5mL + SG 5% 245mL = 250mL
+Concentração: 0,05 mg/mL (50 mcg/mL)
+
+DOSE:
+Ataque: 6-12 mcg/kg EV em 10 min (OMITIR se hipotenso)
+Manutenção: 0,05-0,2 mcg/kg/h por 24h
+
+Exemplo (70kg, dose 0,1mcg/kg/h):
+0,1 × 70 / 50 × 1000 = 0,14 mL/h → 8,4 mL/h
+
+INDICAÇÕES:
+- IC aguda descompensada (baixo débito)
+- IC refratária a dobutamina
+- Efeito persiste 7-10 dias após infusão
+
+CUIDADOS:
+- Hipotensão (omitir bolus se PAS <90)
+- Arritmias (especialmente taquiarritmia)
+- NÃO usar com outros inotrópicos EV simultaneamente (risco arritmia)`,
+    guideline: "SBC / ESC / AMIB",
+  },
+  {
+    id: "rx-dil-alteplase",
+    title: "Alteplase (rtPA) — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `AVC ISQUÊMICO (janela ≤4,5h):
+0,9mg/kg (máx 90mg)
+10% em bolus EV em 1 min → restante em BIC em 1h
+Exemplo 70kg: 63mg total → 6,3mg bolus → 56,7mg em 1h
+
+TEP MACIÇO:
+100mg EV em 2h
+
+IAM (se sem hemodinâmica para CATE):
+15mg bolus → 0,75mg/kg em 30min (máx 50mg) → 0,5mg/kg em 60min (máx 35mg)
+
+PREPARO:
+Reconstituir 50mg em 50mL de água para injeção = 1mg/mL
+Via EV exclusiva (não misturar)
+
+CUIDADOS:
+- Suspender heparina durante infusão no AVC
+- PA <185/110 antes e <180/105 durante (AVC)
+- Monitorizar sangramento ativo (neurológico, acesso, gengival)
+- NÃO dar anticoagulante nas primeiras 24h pós-trombólise no AVC`,
+    warnings: "Verificar TODOS os critérios de inclusão/exclusão antes de administrar. Protocolo institucional.",
+    guideline: "AHA/ASA / SBC / ABN",
+  },
+  {
+    id: "rx-dil-labetalol",
+    title: "Labetalol — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `BOLUS:
+Labetalol 20mg EV em 2 min → dobrar dose a cada 10 min
+Sequência: 20mg → 40mg → 80mg → 80mg → 80mg (máx 300mg)
+
+BIC:
+Labetalol 200mg (40mL) + SF 0,9% 160mL = 200mL (1mg/mL)
+Dose: 0,5-2mg/min → titular conforme PA
+
+INDICAÇÕES:
+- Emergência hipertensiva
+- Dissecção de aorta (1ª escolha junto com esmolol)
+- Pré-eclâmpsia (seguro na gestação)
+
+CUIDADOS:
+- Bradicardia, broncoespasmo (CI em asma/DPOC grave)
+- Insuficiência cardíaca (reduzir dose)
+- Monitorizar PA a cada 5 min durante titulação`,
+    guideline: "SBC / AHA / ESC",
+  },
+  {
+    id: "rx-dil-esmolol",
+    title: "Esmolol — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO:
+Esmolol 2500mg/250mL (premix) = 10mg/mL
+OU 5g em 500mL SG5% = 10mg/mL
+
+DOSE:
+Ataque: 500mcg/kg EV em 1 min
+Manutenção: 50-300mcg/kg/min
+
+Exemplo (70kg):
+Ataque: 35mg (3,5mL) em 1 min
+Manutenção 100mcg/kg/min: 0,1 × 70 × 60 / 10.000 = 42 mL/h
+
+VANTAGENS:
+- Meia-vida ultracurta (9 min) — fácil titular
+- Ideal para: dissecção aorta, crise tireotóxica, FA rápida perioperatória
+
+CUIDADOS:
+- Bradicardia, hipotensão
+- CI: asma grave, BAV 2°/3°, choque cardiogênico
+- Extravasamento: necrose tecidual (via central preferível)`,
+    guideline: "SBC / SBA / AMIB",
+  },
+  {
+    id: "rx-dil-tranexamico",
+    title: "Ácido Tranexâmico — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `TRAUMA (CRASH-2):
+1g EV em 10 min → 1g EV em 8h (dentro de 3h do trauma)
+
+HEMORRAGIA PÓS-PARTO:
+1g EV em 10 min → repetir 1g após 30 min se persistir
+
+HEMORRAGIA DIGESTIVA:
+1g EV em 10 min (benefício controverso)
+
+PREPARO:
+Ácido Tranexâmico 1g (10mL) + SF 0,9% 100mL EV em 10 min
+Para BIC: 1g em 500mL SF em 8h
+
+CUIDADOS:
+- Administrar LENTO (risco de hipotensão se rápido)
+- NÃO usar >3h após trauma (pode aumentar mortalidade)
+- Contraindicado em CID ativa com predomínio trombótico
+- Eventos tromboembólicos são raros mas possíveis
+- Custo baixo, disponível no SUS`,
+    guideline: "CRASH-2 / WOMAN Trial / ATLS",
+  },
 ];
+
