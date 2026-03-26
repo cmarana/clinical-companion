@@ -1,0 +1,27 @@
+import type { FullProtocol } from "./types";
+
+export const cardioFullProtocols6: FullProtocol[] = [
+  {
+    id: "fp-flutter-atrial",
+    title: "Flutter Atrial",
+    categoryId: "cardiology",
+    category: "Cardiologia",
+    tags: ["flutter", "atrial", "arritmia", "cardioversão", "ablação"],
+    sections: [
+      { id: "intro", title: "Introdução", content: "O flutter atrial é uma taquiarritmia supraventricular caracterizada por atividade atrial organizada com frequência atrial de 250-350 bpm e resposta ventricular tipicamente com condução 2:1 (FC ~150 bpm). É menos comum que a FA, mas frequentemente coexiste com ela." },
+      { id: "def", title: "Definição", content: "**Flutter atrial típico:** circuito de macro-reentrada no átrio direito dependente do istmo cavotricuspídeo (ICT). Ondas F em 'dentes de serra' (derivações inferiores: II, III, aVF).\n**Flutter atípico:** circuito não dependente do ICT (átrio esquerdo, cicatrizes). ECG variável.\n\n**Condução:** geralmente 2:1 (FC ~150), pode ser 3:1, 4:1 ou variável." },
+      { id: "screening", title: "Rastreamento e Identificação", content: "• Taquicardia regular com FC ~150 bpm → suspeitar de flutter 2:1\n• ECG: ondas F em dentes de serra, melhor visualizadas em II, III, aVF e V1\n• Manobra vagal ou adenosina: não reverte, mas desmascarar ondas F (aumenta o bloqueio AV transitoriamente)\n• Risco de AVC semelhante à FA → mesmas indicações de anticoagulação" },
+      { id: "etiology", title: "Etiologia", content: "• Doença cardíaca estrutural (IC, valvopatia, cardiomiopatia)\n• Pós-cirurgia cardíaca\n• DPOC, TEP\n• Tireotoxicose\n• Álcool\n• Idiopático\n• Pode ser desencadeado por FA prévia" },
+      { id: "clinical", title: "Apresentação Clínica", content: "• Palpitações regulares\n• Dispneia\n• Fadiga\n• Tontura, pré-síncope\n• Dor torácica\n• IC descompensada\n• Pode ser assintomático\n\n**Instabilidade hemodinâmica:** hipotensão, choque, alteração de consciência, EAP → cardioversão elétrica imediata" },
+      { id: "diagnosis", title: "Diagnóstico", content: "**ECG:**\n• Ondas F regulares em dentes de serra (250-350/min)\n• Negativas em II, III, aVF e positivas em V1 (flutter típico anti-horário)\n• Condução AV fixa (2:1, 3:1, 4:1) ou variável\n• QRS estreito (exceto se bloqueio de ramo ou WPW)\n\n**Exames complementares:**\n• Ecocardiograma (estrutura, função, trombo)\n• TSH\n• Eletrólitos\n• Hemograma, função renal" },
+      { id: "differential", title: "Diagnóstico Diferencial", content: "• FA (irregular vs regular)\n• Taquicardia atrial\n• TSV (TRNAV, TRAV)\n• Taquicardia sinusal (FC ~150 em exercício/febre)" },
+      { id: "conduct", title: "Conduta Inicial", content: "**Instável:** Cardioversão elétrica sincronizada 50-100J\n\n**Estável — Controle de frequência:**\n• Diltiazem 0,25 mg/kg IV em 2 min → 5-15 mg/h BIC\n• Metoprolol 5 mg IV a cada 5 min (máx 15mg)\n• Amiodarona 150 mg IV em 10 min (se IC)\n\n**Controle de ritmo:**\n• Cardioversão elétrica eletiva (baixa energia: 50-100J — alta taxa de sucesso)\n• Ibutilida 1mg IV em 10 min (conversão farmacológica)\n• Ablação por cateter do ICT (tratamento definitivo — taxa de sucesso > 95%)" },
+      { id: "treatment", title: "Abordagem Terapêutica", content: "**Anticoagulação:**\n• Mesmas indicações da FA (CHA2DS2-VASc)\n• Score ≥ 2 (homens) ou ≥ 3 (mulheres) → anticoagulação oral\n• DOACs preferidos: Rivaroxabana, Apixabana, Edoxabana\n• Se < 48h sem anticoagulação prévia → cardioversão possível com heparina\n• Se ≥ 48h ou duração desconhecida → ETE para excluir trombo OU anticoagulação por 3 semanas antes\n\n**Ablação do ICT:**\n• Tratamento definitivo do flutter típico\n• Indicado se: recorrente, sintomático, intolerância a medicamentos\n• Procedimento seguro com sucesso > 95% e recorrência < 5%" },
+      { id: "prescriptions", title: "Prescrições", content: "**Flutter estável — controle de frequência:**\n1. Diltiazem 30-60 mg VO 8/8h OU Metoprolol 50 mg VO 12/12h\n2. Rivaroxabana 20 mg VO 1x/dia (com almoço) se CHA2DS2-VASc indicar\n3. Considerar cardioversão eletiva\n4. Encaminhar para ablação de ICT\n\n**Flutter instável:**\n1. Cardioversão elétrica sincronizada 50-100J\n2. Sedação: Propofol 1 mg/kg IV ou Midazolam 0,1 mg/kg + Fentanil 1 mcg/kg IV\n3. Anticoagulação pós-cardioversão por mínimo 4 semanas" },
+      { id: "followup", title: "Acompanhamento", content: "• Controle de frequência e ritmo ambulatorial\n• Acompanhamento com cardiologista/eletrofisiologista\n• Avaliação para ablação de ICT\n• Monitorar anticoagulação\n• ECG de controle\n• Ecocardiograma de seguimento" },
+      { id: "complications", title: "Complicações", content: "• AVC/embolia (risco similar à FA)\n• IC descompensada (taquicardiomiopatia)\n• Degeneração para FA\n• Condução 1:1 (FC 250-300 — instabilidade extrema, risco de FV)\n• Proarritmia por antiarrítmicos (especialmente IC sem controle de frequência prévio)" },
+      { id: "criteria", title: "Critérios de Internação / UTI / Alta", content: "**Internação:** Instabilidade hemodinâmica, FC de difícil controle, IC aguda, AVC\n**UTI:** Choque, condução 1:1, pós-cardioversão com instabilidade\n**Alta:** FC controlada, anticoagulação adequada, encaminhamento para ablação" },
+      { id: "references", title: "Referências Bibliográficas", content: "• SBC: Diretriz de Arritmias Cardíacas (2023)\n• ESC Guidelines: Supraventricular Tachycardia (2019)\n• AHA/ACC: Atrial Fibrillation/Flutter Guidelines (2023)\n• January CT et al. 2019 AHA/ACC Focused Update. Circulation 2019" },
+    ],
+  },
+];
