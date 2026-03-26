@@ -3039,5 +3039,170 @@ TODOS: Fisioterapia proprioceptiva é ESSENCIAL para prevenir recidiva`,
     notes: "Teste de Neer e Hawkins positivos: sugestivo de impacto subacromial. Ruptura completa do supraespinhal: indicação cirúrgica relativa.",
     guideline: "SBOT / AAOS / EULAR",
   },
+  {
+    id: "rx-diag-endocardite-infecciosa",
+    title: "Endocardite Infecciosa",
+    type: "Diagnóstico",
+    prescription: `1. Hemoculturas: 3 pares (sítios diferentes, antes do ATB)
+2. Ecocardiograma transesofágico (ETE — superior ao ETT)
+3. ATB empírico (válvula nativa):
+   - Oxacilina 2g EV 4/4h + Gentamicina 3mg/kg/dia EV 1x/dia
+4. ATB empírico (válvula protética):
+   - Vancomicina 15-20mg/kg EV 12/12h + Gentamicina + Rifampicina 300mg VO 8/8h
+5. Duração: 4-6 semanas (nativa), 6 semanas (protética)
+6. Monitorizar: função renal, nível sérico de Vancomicina/Gentamicina
+7. Avaliação Cirurgia Cardíaca se: IC refratária, vegetação >10mm, embolização recorrente
+8. Hemoculturas de controle: 48-72h após início ATB`,
+    notes: "Critérios de Duke modificados: 2 maiores OU 1 maior + 3 menores OU 5 menores. Staphylococcus aureus: forma aguda, destruição valvar rápida.",
+    warnings: "Complicações: AVC embólico, abscesso esplênico, glomerulonefrite, aneurisma micótico. NÃO anticoagular na fase aguda (risco de AVC hemorrágico).",
+    guideline: "SBC / AHA / ESC",
+  },
+  {
+    id: "rx-diag-pancreatite-aguda",
+    title: "Pancreatite Aguda",
+    type: "Diagnóstico",
+    prescription: `1. Jejum APENAS se náuseas/vômitos intensos (dieta precoce é superior)
+2. Hidratação agressiva: Ringer Lactato 250-500mL/h nas primeiras 12-24h
+3. Analgesia:
+   - Dipirona 1g EV 6/6h + Tramadol 100mg EV 8/8h
+   - Se refratário: Morfina 2-4mg EV 4/4h (NÃO piora pancreatite — mito)
+4. Omeprazol 40mg EV 1x/dia
+5. Ondansetrona 4mg EV 8/8h SN
+6. Laboratório: Lipase/Amilase, PCR, Ca++, TG, Hb, Cr, gasometria, lactato
+7. Critérios de gravidade: BISAP, Ranson, APACHE II, Marshall modificado
+8. TC abdome com contraste: apenas após 72h (avaliar necrose)
+9. Dieta oral precoce (VO hipogordurosa) em 24-48h se tolerado
+10. ATB: APENAS se necrose infectada (Meropenem 1g EV 8/8h)`,
+    notes: "Causa mais comum: biliar (solicitar USG). Segunda: alcoólica. Hipertrigliceridemia >1000 pode causar pancreatite (filtração/insulina).",
+    warnings: "SIRS nas primeiras 48h: risco de falência orgânica precoce. Ressuscitação volêmica inadequada = principal causa de morte precoce.",
+    guideline: "SBP / ACG / IAP/APA",
+  },
+  {
+    id: "rx-diag-trombose-venosa-profunda",
+    title: "Trombose Venosa Profunda (TVP)",
+    type: "Diagnóstico",
+    prescription: `1. Score de Wells para TVP (calcular antes de exame)
+2. USG Doppler venoso de membros inferiores
+3. D-dímero (se Wells baixo/intermediário — alto VPN)
+4. Anticoagulação:
+   OPÇÃO 1 (preferida): Rivaroxabana 15mg VO 12/12h por 21 dias → 20mg 1x/dia
+   OPÇÃO 2: Enoxaparina 1mg/kg SC 12/12h + Warfarina (iniciar no D1, suspender HBPM quando INR 2-3)
+   OPÇÃO 3: HNF EV (bolus 80UI/kg → 18UI/kg/h) se ClCr <30 ou instável
+5. Duração: 3-6 meses (1° episódio provocado), indefinido (não provocado/recorrente)
+6. Meias compressivas: 30-40mmHg (controverso, mas reduz síndrome pós-trombótica)
+7. Deambulação precoce (repouso NÃO é necessário)
+8. Rastrear trombofilia se: <50 anos, sítio incomum, recorrente, HF forte`,
+    notes: "TVP proximal (ilíaco-femoral): maior risco de TEP. TVP distal isolada: pode observar com USG seriado vs anticoagular.",
+    warnings: "Contraindicações absolutas à anticoagulação: hemorragia ativa, cirurgia craniana recente, AVCh. Considerar filtro de VCI nesses casos.",
+    guideline: "SBC / CHEST / ESC / ISTH",
+  },
+  {
+    id: "rx-diag-crise-hipertensiva-emergencia",
+    title: "Emergência Hipertensiva (com LOA)",
+    type: "Diagnóstico",
+    prescription: `1. PA contínua (invasiva se disponível)
+2. ECG + Troponina + BNP
+3. TC crânio (se cefaleia, alteração neurológica)
+4. Fundo de olho (papiledema = hipertensão maligna)
+5. Função renal + urina rotina (proteinúria, hematúria)
+6. Meta: reduzir 20-25% da PAM na 1ª hora
+DROGAS EV:
+   - Nitroprussiato 0,5-10mcg/kg/min (titular a cada 5min)
+   - Nitroglicerina 5-200mcg/min (se SCA associada)
+   - Labetalol 20mg EV bolus → 40-80mg a cada 10min (máx 300mg)
+   - Esmolol: se dissecção de aorta (FC alvo <60)
+   - Hidralazina 5-20mg EV (eclâmpsia — preferido)
+7. NÃO usar Nifedipina sublingual (queda abrupta = AVC/IAM)
+8. Transição para VO em 24-48h quando PA controlada`,
+    notes: "Emergência = LOA (encefalopatia, EAP, dissecção, eclâmpsia, IRA). Urgência = PA elevada sem LOA (redução gradual VO).",
+    warnings: "Redução rápida demais: AVC isquêmico, IAM, IRA. Na dissecção de aorta: PA alvo <120mmHg em 20min.",
+    guideline: "SBC / AHA / ESC",
+  },
+  {
+    id: "rx-diag-insuficiencia-hepatica-aguda",
+    title: "Insuficiência Hepática Aguda (Hepatite Fulminante)",
+    type: "Diagnóstico",
+    prescription: `1. Transferir para UTI / Centro com Transplante Hepático
+2. N-Acetilcisteína (NAC) EV — MESMO se não for paracetamol:
+   - 150mg/kg em 1h → 50mg/kg em 4h → 100mg/kg em 16h
+3. Lactulose 20-30mL VO/SNG 8/8h (encefalopatia)
+4. Monitorizar: INR, fator V, amônia, glicemia (hipoglicemia!), lactato
+5. Glicose 50% EV se hipoglicemia (infusão contínua G10%)
+6. Vitamina K 10mg EV 1x/dia por 3 dias
+7. Omeprazol 40mg EV 12/12h (profilaxia HDA)
+8. PFC/Crioprecipitado: APENAS se sangramento ativo (NÃO corrigir INR profilaticamente)
+9. Manitol 20% se HIC (edema cerebral)
+10. Critérios de King's College para transplante
+11. Sorologias: HAV IgM, HBsAg, Anti-HBc IgM, HCV, CMV, EBV, HSV
+12. Paracetamol sérico, toxicológico completo`,
+    notes: "Causa mais comum no BR: viral (hepatite A/B). No mundo: paracetamol. Fator V <20%: indicação de transplante.",
+    warnings: "Edema cerebral é causa de morte. NÃO fazer PL. NÃO corrigir coagulopatia sem sangramento (mascara prognóstico).",
+    guideline: "SBH / AASLD / EASL",
+  },
+  {
+    id: "rx-diag-sindrome-nefrotica",
+    title: "Síndrome Nefrótica",
+    type: "Diagnóstico",
+    prescription: `1. Proteinúria 24h (ou relação prot/creat urinária)
+2. Albumina sérica (<2,5g/dL = grave)
+3. Perfil lipídico (hipercolesterolemia)
+4. Função renal + eletrólitos
+5. Sorologias: HBV, HCV, HIV, VDRL
+6. Complemento (C3, C4), FAN, Anti-DNA, Anti-PLA2R
+7. USG renal
+8. Biópsia renal (adultos — sempre, exceto DM clássica)
+9. Tratamento geral:
+   - Furosemida 40-80mg VO 1-2x/dia + Espironolactona 25mg
+   - IECA/BRA (antiproteinúrico): Enalapril 10-20mg 12/12h
+   - Restrição de sódio (<2g/dia)
+   - Estatina (Atorvastatina 20-40mg)
+10. Anticoagulação se albumina <2,0 ou evento trombótico
+11. Vacinação anti-pneumocócica (risco de peritonite primária)`,
+    notes: "Adulto: causa mais comum = nefropatia membranosa (Anti-PLA2R positivo em 70%). Criança: lesão mínima (responde a corticoide).",
+    warnings: "Trombose de veia renal: dor lombar + hematúria + piora proteinúria. Doppler renal urgente.",
+    guideline: "SBN / KDIGO / KDOQI",
+  },
+  {
+    id: "rx-diag-guillain-barre",
+    title: "Síndrome de Guillain-Barré",
+    type: "Diagnóstico",
+    prescription: `1. Monitorização em UTI (risco de insuficiência respiratória)
+2. CVF (capacidade vital forçada) seriada a cada 4-6h
+   - CVF <20mL/kg ou queda >30%: IOT eletiva
+3. Imunoterapia (iniciar em <2 semanas do início):
+   OPÇÃO 1: Imunoglobulina IV 0,4g/kg/dia por 5 dias (preferida)
+   OPÇÃO 2: Plasmaférese 5 sessões em 7-14 dias
+4. NÃO usar corticoide (ineficaz e pode piorar)
+5. Profilaxia TVP: Enoxaparina 40mg SC 1x/dia
+6. Líquor: dissociação albumino-citológica (proteína alta, células normais)
+7. ENMG: padrão desmielinizante ou axonal
+8. Dor neuropática: Gabapentina 300-600mg 8/8h
+9. Fisioterapia motora e respiratória precoce
+10. Monitorizar disautonomia: PA, FC, arritmias`,
+    notes: "Fraqueza ascendente simétrica + arreflexia. Antecedente: Campylobacter, CMV, Zika, EBV. Variante Miller-Fisher: oftalmoplegia + ataxia + arreflexia.",
+    warnings: "20-30% precisam de ventilação mecânica. Disautonomia pode causar arritmias fatais. NÃO dar Succinilcolina (hipercalemia).",
+    guideline: "ABN / AAN / Cochrane / GBS-CIDP Foundation",
+  },
+  {
+    id: "rx-diag-lupus-nefrite",
+    title: "Nefrite Lúpica",
+    type: "Diagnóstico",
+    prescription: `1. Biópsia renal (classificação ISN/RPS — classes I a VI)
+2. Laboratório: Cr, ureia, proteinúria 24h, complemento C3/C4, Anti-DNA, Anti-Sm
+3. Urina rotina (hematúria dismórfica, cilindros celulares)
+CLASSE III/IV (proliferativa):
+4. Indução: Micofenolato mofetil 2-3g/dia VO OU Ciclofosfamida EV (Euro-Lupus: 500mg quinzenal x 6)
+5. Prednisona 1mg/kg/dia (máx 60mg) → desmame progressivo
+6. Pulsoterapia se grave: Metilprednisolona 1g EV x 3 dias
+CLASSE V (membranosa):
+7. Micofenolato mofetil 2-3g/dia + Prednisona
+8. Manutenção: Micofenolato 1-2g/dia por ≥3 anos
+9. Hidroxicloroquina 400mg/dia (TODOS os pacientes com LES)
+10. IECA/BRA para controle de proteinúria
+11. Controle PA rigoroso (<130/80)`,
+    notes: "Classe IV é a mais comum e grave. Anti-DNA correlaciona com atividade renal. Complemento consumido (C3/C4 baixos) = atividade.",
+    warnings: "Ciclofosfamida: preservação de fertilidade em mulheres jovens (análogos GnRH). Micofenolato é TERATOGÊNICO.",
+    guideline: "SBR / EULAR/ERA-EDTA / ACR / KDIGO",
+  },
 ];
 

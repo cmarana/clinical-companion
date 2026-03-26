@@ -930,5 +930,78 @@ CRÔNICA (Na+ <130, assintomática):
     warnings: "Membro com paralisia + anestesia = Rutherford IIB: revascularização em <6h ou amputação. EMERGÊNCIA.",
     guideline: "SBACV / SVS / ESVS / ACC/AHA",
   },
+  {
+    id: "rx-sint-ictericia-aguda",
+    title: "Icterícia Aguda no Adulto",
+    type: "Sintoma",
+    prescription: `INVESTIGAÇÃO:
+1. Bilirrubinas (total, direta, indireta)
+2. TGO, TGP, FA, GGT, albumina, TAP/INR
+3. Hemograma + reticulócitos + LDH + haptoglobina (hemólise?)
+4. Sorologias: HAV IgM, HBsAg, Anti-HBc IgM, Anti-HCV
+5. USG abdome total (dilatação de vias biliares?)
+
+ICTERÍCIA PRÉ-HEPÁTICA (BI elevada, BD normal):
+- Anemia hemolítica: hemograma + reticulócitos + Coombs direto
+- Síndrome de Gilbert: BI leve, sem doença hepática
+
+ICTERÍCIA HEPÁTICA (BD + BI elevadas):
+- Hepatite viral/tóxica/medicamentosa/autoimune
+- Suspender hepatotóxicos (paracetamol, álcool, fitoterápicos)
+
+ICTERÍCIA PÓS-HEPÁTICA (BD elevada):
+- Obstrutiva: coledocolitíase, tumor de cabeça de pâncreas
+- ColangioRM ou CPRE
+- Se colangite: ATB + drenagem de urgência`,
+    notes: "FA/GGT elevados desproporcionalmente: padrão colestático (obstrutivo). TGO/TGP elevados: padrão hepatocelular.",
+    warnings: "Icterícia + coagulopatia + encefalopatia = insuficiência hepática aguda. Transferir para centro com transplante.",
+    guideline: "FBG / SBH / ACG / BSG",
+  },
+  {
+    id: "rx-sint-oliguria-aguda",
+    title: "Oligúria Aguda (<0,5mL/kg/h)",
+    type: "Sintoma",
+    prescription: `1. Confirmar oligúria real (SVD se necessário — diurese horária)
+2. Avaliar volemia:
+   - USG point-of-care (VCI, B-lines pulmonares)
+   - Teste de Trendelenburg / elevação passiva de MMII
+3. Se hipovolêmico: SF 0,9% 250-500mL em bolus → reavaliar
+4. Laboratório: Cr, ureia, Na+, K+, gasometria, EAS, sódio urinário
+   - FeNa <1%: pré-renal / FeNa >2%: NTA (necrose tubular aguda)
+5. Suspender nefrotóxicos: AINEs, aminoglicosídeos, contraste, IECA/BRA (se IRA)
+6. Corrigir hipercalemia se K+ >5,5
+7. Se anúria + hipervolemia: avaliar diálise de urgência
+8. Furosemida 40-80mg EV (apenas se HIPERVOLÊMICO — NÃO usar para "estimular" diurese em hipovolemia)
+9. Avaliar obstrução: USG (hidronefrose) → SVD → Nefrostomia se necessário`,
+    notes: "Pré-renal: causa mais comum de IRA (50-60%). Melhora com volume. NTA: causa mais comum de IRA intrínseca (isquemia, nefrotóxicos).",
+    warnings: "Furosemida NÃO melhora prognóstico da IRA — apenas controla hipervolemia. NÃO usar para transformar oligúrica em não-oligúrica.",
+    guideline: "KDIGO / SBN / NICE / ADQI",
+  },
+  {
+    id: "rx-sint-dor-toracica-abordagem",
+    title: "Dor Torácica — Abordagem Sistematizada no PS",
+    type: "Sintoma",
+    prescription: `AVALIAÇÃO INICIAL (primeiros 10 minutos):
+1. ECG 12 derivações (<10min da chegada)
+2. Sinais vitais + SpO2
+3. Acesso venoso + coleta: Troponina, hemograma, Cr, eletrólitos
+4. AAS 200mg mastigar (se SCA não descartada)
+
+CAUSAS LETAIS (descartar primeiro):
+A - SCA (síndrome coronariana aguda): ECG + Troponina seriada (0h/1h/3h)
+B - Dissecção de aorta: angio-TC (PA nos 4 membros, D-dímero)
+C - TEP: D-dímero + Wells → angio-TC se positivo
+D - Pneumotórax hipertensivo: diagnóstico clínico → descompressão imediata
+E - Tamponamento cardíaco: USG FAST → pericardiocentese
+
+OUTRAS CAUSAS:
+5. Pericardite: ECG (supra ST difuso côncavo + infra PR)
+6. Musculoesquelética: dor reprodutível à palpação
+7. DRGE: queimação retroesternal, piora com alimentação
+8. Herpes-zóster: dor dermatomérica + vesículas`,
+    notes: "HEART Score: estratificação de risco em dor torácica (History, ECG, Age, Risk factors, Troponin). Score ≤3: baixo risco, alta precoce.",
+    warnings: "ECG normal NÃO exclui SCA. Troponina negativa na 1ª coleta NÃO exclui IAM (sensibilidade máxima em 3-6h). Sempre seriação.",
+    guideline: "SBC / AHA/ACC / ESC",
+  },
 ];
 

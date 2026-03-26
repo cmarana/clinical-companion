@@ -874,5 +874,75 @@ Bacteriana (secreção purulenta):
     notes: "IRA pré-renal: reversível com hidratação. IRA intrínseca: pode levar 2-6 semanas para recuperar. Creatinina pode continuar subindo 24-48h após resolução da causa.",
     guideline: "KDIGO / SBN",
   },
+  {
+    id: "rx-alta-pneumonia-comunitaria",
+    title: "Alta — Pneumonia Adquirida na Comunidade (PAC)",
+    type: "Alta",
+    prescription: `1. Amoxicilina 500mg VO 8/8h por 5-7 dias (PAC leve, sem comorbidades)
+   OU Amoxicilina-Clavulanato 875/125mg VO 12/12h por 7 dias (com comorbidades)
+   OU Azitromicina 500mg VO 1x/dia por 3 dias (se alergia a penicilina)
+2. Dipirona 1g VO 6/6h SN (febre/dor)
+3. Paracetamol 750mg VO 6/6h SN (alternância com Dipirona)
+4. Hidratação oral abundante (≥2L/dia)
+5. Repouso relativo por 5-7 dias
+6. RX tórax controle em 4-6 semanas (resolução radiológica)
+7. Retorno imediato se: febre persistente >48h, dispneia progressiva, hemoptise
+8. Retorno ambulatorial em 7 dias
+9. Vacinar anti-pneumocócica e anti-influenza (se não vacinado)`,
+    notes: "Critérios de alta: afebril >24h, VO tolerada, SpO2 >92%, sinais vitais estáveis, antibiótico VO disponível.",
+    guideline: "SBPT / IDSA/ATS / BTS",
+  },
+  {
+    id: "rx-alta-itu-complicada",
+    title: "Alta — ITU Complicada / Pielonefrite",
+    type: "Alta",
+    prescription: `1. Ciprofloxacino 500mg VO 12/12h por 7-10 dias
+   OU Amoxicilina-Clavulanato 875/125mg VO 12/12h por 10-14 dias
+   (ajustar conforme urocultura/antibiograma colhidos na internação)
+2. Dipirona 1g VO 6/6h SN (febre/dor)
+3. Escopolamina 10mg VO 8/8h SN (cólica)
+4. Hidratação oral abundante (≥2L/dia)
+5. Urocultura de controle em 7 dias pós-término do ATB
+6. USG rins e vias urinárias (se não realizado durante internação)
+7. Retorno imediato se: febre >38,5°C, calafrios, dor lombar intensa, vômitos
+8. Retorno Urologia/Nefrologia se: ITU de repetição, litíase, malformação`,
+    notes: "ITU complicada: homem, gestante, cateter vesical, alteração anatômica/funcional, DRC. Pielonefrite em gestante: sempre internar.",
+    guideline: "SBU / EAU / IDSA",
+  },
+  {
+    id: "rx-alta-celulite",
+    title: "Alta — Celulite / Erisipela",
+    type: "Alta",
+    prescription: `1. Cefalexina 500mg VO 6/6h por 7-10 dias (celulite)
+   OU Amoxicilina 500mg VO 8/8h por 7 dias (erisipela)
+   OU Clindamicina 300mg VO 8/8h por 7-10 dias (alergia a penicilina)
+2. Ibuprofeno 600mg VO 8/8h por 5 dias (com alimentação)
+3. Dipirona 1g VO 6/6h SN
+4. Elevação do membro afetado
+5. Compressas mornas locais
+6. Cuidados com porta de entrada: tratar micose interdigital (Cetoconazol creme)
+7. Meia compressiva 20-30mmHg (se insuficiência venosa)
+8. Retorno em 48-72h para reavaliação (melhora esperada em 24-48h)
+9. Retorno imediato se: piora do eritema, febre persistente, crepitação, bolhas hemorrágicas`,
+    notes: "Erisipela: bordas elevadas, bem delimitadas (Streptococcus). Celulite: bordas difusas, mais profunda (Staphylococcus/Streptococcus). Demarcar borda com caneta para monitorar.",
+    guideline: "SBD / IDSA / CREST",
+  },
+  {
+    id: "rx-alta-crise-asmatica",
+    title: "Alta — Crise Asmática",
+    type: "Alta",
+    prescription: `1. Salbutamol spray 200mcg (2 puffs) com espaçador 4/4h por 48h → 6/6h por 5 dias → SN
+2. Prednisolona 40mg VO 1x/dia por 5-7 dias (NÃO precisa desmame se ≤7 dias)
+   Pediátrico: 1-2mg/kg/dia (máx 40mg) por 3-5 dias
+3. Beclometasona 250mcg spray 2 puffs 12/12h (iniciar/retomar CI de manutenção)
+4. Espaçador obrigatório para spray
+5. Plano de ação escrito: quando aumentar medicação de resgate e quando ir ao PS
+6. Evitar gatilhos: tabagismo, ácaros, mofo, animais
+7. Peak flow domiciliar (se disponível)
+8. Retorno em 2-7 dias para reavaliação (classificar gravidade e Step)
+9. Encaminhar Pneumologista se: >2 crises/ano, despertar noturno, limitação de atividade`,
+    notes: "NÃO dar alta sem corticoide inalatório (CI) de manutenção. GINA 2023: não usar mais SABA isolado — sempre CI + formoterol ou CI + SABA.",
+    guideline: "SBPT / GINA / BTS/SIGN",
+  },
 ];
 

@@ -665,4 +665,44 @@ CRM / Carimbo / Assinatura`,
     warnings: "NÃO usar Succinilcolina para IOT após 24h de queimadura (hipercalemia letal). Cálculo de Parkland é guia — ajustar por diurese.",
     guideline: "SBQ / ABA / ISBI",
   },
+  {
+    id: "rx-modelo-paciente-hepatopata",
+    title: "Prescrição Modelo — Paciente Hepatopata / Cirrótico",
+    type: "Modelo Pronto",
+    prescription: `1. Dieta hipossódica (<2g/dia) + hiperproteica (1,2-1,5g/kg/dia)
+2. Lactulose 15-30mL VO 8/8h (alvo: 2-3 evacuações pastosas/dia)
+3. Espironolactona 100mg VO 1x/dia (ascite)
+4. Furosemida 40mg VO 1x/dia (associar se espironolactona insuficiente — proporção 100:40)
+5. Albumina 20% se paracentese >5L (8g por litro retirado)
+6. Omeprazol 20mg VO 1x/dia (profilaxia HDA se varizes)
+7. Propranolol 20-40mg VO 12/12h (profilaxia de sangramento varicoso — FC alvo 55-60)
+8. Rifaximina 550mg VO 12/12h (profilaxia encefalopatia hepática recorrente)
+9. NÃO usar: AINEs (IRA), Dipirona com cautela, Benzodiazepínicos (encefalopatia)
+10. MELD: calcular para prioridade em transplante
+11. Rastreio CHC: USG + Alfa-fetoproteína 6/6 meses`,
+    notes: "Child-Pugh A: compensado. B: descompensação inicial. C: descompensado grave. MELD ≥15: listar para transplante.",
+    warnings: "Evitar AINEs (vasoconstrição renal → síndrome hepatorrenal). Evitar aminoglicosídeos. Paracetamol: máx 2g/dia. PBE: ATB empírico com Ceftriaxona se ascite + febre.",
+    guideline: "SBH / AASLD / EASL",
+  },
+  {
+    id: "rx-modelo-paciente-renal-cronico",
+    title: "Prescrição Modelo — Paciente DRC / Diálise",
+    type: "Modelo Pronto",
+    prescription: `1. Dieta hipoproteica (0,6-0,8g/kg/dia se TFG <30 e não dialítico)
+   Dialítico: 1,2g/kg/dia proteína
+2. Restrição hídrica: diurese + 500mL/dia (se oligúrico)
+3. Restrição de sódio (<2g/dia), potássio (<2g/dia), fósforo
+4. Carbonato de Cálcio 500mg VO nas refeições (quelante de fósforo)
+   OU Sevelamer 800mg VO nas refeições
+5. Calcitriol 0,25mcg VO 1x/dia (se PTH elevado)
+6. Eritropoetina 4000UI SC 3x/semana (alvo Hb 10-12)
+7. Ferro EV: Sacarato de hidróxido férrico 200mg EV 1x/semana (se ferritina <500, IST <30%)
+8. IECA/BRA: antiproteinúrico (se ClCr >15, K+ <5,5)
+9. Bicarbonato de sódio 500mg VO 8/8h (se BIC <22)
+10. Estatina: se dislipidemia (exceto dialítico — benefício incerto)
+11. Ajustar doses de TODOS medicamentos pela TFG`,
+    notes: "Estágios DRC (KDIGO): G1-G2 (>60): assintomático. G3 (30-59): acompanhamento nefrológico. G4 (15-29): preparar diálise. G5 (<15): diálise ou transplante.",
+    warnings: "AINEs: PROIBIDOS. Metformina: suspender se TFG <30. Contraste iodado: hidratar + NAC se necessário. Gadolínio: fibrose nefrogênica sistêmica se TFG <30.",
+    guideline: "SBN / KDIGO / KDOQI / NKF",
+  },
 ];

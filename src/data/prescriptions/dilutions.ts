@@ -1466,5 +1466,117 @@ Estabilidade:
     warnings: "Risco de síndrome serotoninérgica com ISRS/IRSN. Reduz limiar convulsivo — cuidado em epilépticos. NÃO usar com IMAO.",
     guideline: "ANVISA / SBA / SBAD",
   },
+  {
+    id: "rx-dil-tigeciclina",
+    title: "Tigeciclina EV — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `Apresentação: Tigeciclina 50mg pó liofilizado (frasco-ampola)
+
+Reconstituição: 5,3mL de SF 0,9% → solução 10mg/mL
+Diluição: Transferir para 100mL de SF 0,9% ou SG 5%
+
+Dose: 100mg EV (dose de ataque) → 50mg EV 12/12h
+Infusão: 30-60 minutos
+
+Estabilidade:
+- Reconstituído: usar imediatamente
+- Diluído: 24h TA / 48h refrigerado`,
+    notes: "Glicilciclina — amplo espectro incluindo MRSA, VRE, Acinetobacter (exceto P. aeruginosa). Bacteriostático.",
+    warnings: "Náusea intensa (30-40%) — infundir lentamente. FDA warning: aumento de mortalidade em estudos. Reservar para infecções sem alternativa.",
+    guideline: "ANVISA / ASHP / IDSA",
+  },
+  {
+    id: "rx-dil-colistina-polimixinae",
+    title: "Colistina (Polimixina E) EV — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `Apresentação: Colistimetato de sódio 1.000.000 UI (≈80mg CBA) frasco-ampola
+
+Reconstituição: 10mL de SF 0,9% ou AD
+Diluição: em 100-250mL de SF 0,9% ou SG 5%
+
+DOSE (baseada em CBA — Colistin Base Activity):
+- Dose de ataque: 9MUI (≈300mg CBA) EV em 2h
+- Manutenção: 4,5MUI (≈150mg CBA) EV 12/12h
+- Ajuste renal obrigatório (nefrotóxica)
+
+Infusão: 1-2 horas (NUNCA em bolus)
+
+Estabilidade:
+- Reconstituído: usar em até 24h sob refrigeração`,
+    notes: "Último recurso para Gram-negativos MDR (Acinetobacter, Pseudomonas, KPC). Atividade concentração-dependente. Associar com Meropenem (sinergia).",
+    warnings: "Nefrotoxicidade dose-dependente (30-60%). Monitorizar Cr diariamente. Neurotoxicidade: parestesias, bloqueio neuromuscular. NÃO associar com aminoglicosídeo.",
+    guideline: "ANVISA / IDSA / EUCAST / Consenso Brasileiro Polimixinas",
+  },
+  {
+    id: "rx-dil-daptomicina",
+    title: "Daptomicina EV — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `Apresentação: Daptomicina 350mg ou 500mg pó liofilizado
+
+Reconstituição: 7mL (350mg) ou 10mL (500mg) de SF 0,9% → solução 50mg/mL
+Diluição: em 50mL de SF 0,9%
+
+DOSE:
+- Infecções de pele: 4mg/kg EV 1x/dia
+- Bacteremia / Endocardite: 6-10mg/kg EV 1x/dia
+Infusão: 30 minutos (ou 2min EV direto se volume <50mL)
+
+Estabilidade:
+- Reconstituído: 12h TA / 48h refrigerado
+- Diluído em SF: 12h TA / 48h refrigerado`,
+    notes: "Lipopeptídeo — bactericida contra Gram-positivos (MRSA, VRE, S. aureus). NÃO usar para pneumonia (inativada pelo surfactante pulmonar).",
+    warnings: "Monitorizar CPK semanal (rabdomiólise). Suspender estatinas durante uso. Se CPK >10x LSN + sintomas: suspender.",
+    guideline: "ANVISA / IDSA / ASHP",
+  },
+  {
+    id: "rx-dil-anfotericina-b-lipidica",
+    title: "Anfotericina B Lipossomal — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `Apresentação: Anfotericina B lipossomal 50mg pó liofilizado
+
+Reconstituição: 12mL de AD (agitar vigorosamente) → 4mg/mL
+Diluição: em SG 5% para concentração final 1-2mg/mL
+(NUNCA usar SF 0,9% — precipita)
+
+DOSE:
+- Infecções fúngicas invasivas: 3-5mg/kg/dia EV
+- Leishmaniose visceral: 3mg/kg/dia D1-5, D14, D21 (20mg/kg total)
+- Mucormicose: 5-10mg/kg/dia
+
+Infusão: 1-2 horas
+Pré-medicação: Dipirona 1g + Hidrocortisona 50mg + SF 500mL (pré-hidratação)
+
+Estabilidade:
+- Reconstituído: 24h refrigerado
+- Diluído: 6h TA`,
+    notes: "Formulação lipossomal: MUITO menos nefrotóxica que a convencional. Preferida na prática atual. Agitar bem antes de reconstituir.",
+    warnings: "Hipocalemia frequente (repor K+). Nefrotoxicidade (menor que convencional, mas existe). Monitorizar K+, Mg++, Cr diariamente.",
+    guideline: "ANVISA / IDSA / ESCMID",
+  },
+  {
+    id: "rx-dil-alteplase-tpa",
+    title: "Alteplase (tPA) EV — Diluição para AVC e TEP",
+    type: "Diluição",
+    prescription: `Apresentação: Alteplase 50mg pó liofilizado + diluente
+
+Reconstituição: 50mL de AD (diluente próprio) → 1mg/mL
+
+AVC ISQUÊMICO (janela <4,5h):
+- Dose: 0,9mg/kg (máx 90mg)
+- 10% em bolus EV em 1min → 90% em BIC em 60min
+
+TEP MACIÇA:
+- Dose: 100mg EV em 2h
+- OU 0,6mg/kg (máx 50mg) em 15min (protocolo acelerado se PCR)
+
+IAM com supradesnível de ST (se cateterismo indisponível):
+- Dose: 15mg bolus → 0,75mg/kg em 30min (máx 50mg) → 0,5mg/kg em 60min (máx 35mg)
+
+Estabilidade:
+- Reconstituído: 8h refrigerado`,
+    notes: "Alteplase = tPA recombinante. No AVC: cada minuto sem trombólise = ~1,9 milhão de neurônios perdidos. TNKase (Tenecteplase) é alternativa em dose única.",
+    warnings: "Contraindicações absolutas: AVCh prévio, cirurgia craniana <3 meses, sangramento ativo. NÃO usar anticoagulante nas primeiras 24h pós-trombólise no AVC.",
+    guideline: "ABN / AHA/ASA / ESO / SBC",
+  },
 ];
 
