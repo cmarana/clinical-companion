@@ -288,4 +288,88 @@ Investigação:
     warnings: "Hematúria em >40 anos = descartar neoplasia urológica até prova contrária.",
     guideline: "SBU / AUA",
   },
+  {
+    id: "rx-sint-cefaleia-tensional",
+    title: "Cefaleia Tensional",
+    type: "Prescrição Sintomática",
+    prescription: `Aguda:
+1. Dipirona 1g VO/EV dose única
+2. OU Paracetamol 750mg VO
+3. OU Ibuprofeno 400mg VO
+4. Associar relaxante muscular: Ciclobenzaprina 5mg VO (se tensão muscular)
+
+Moderada/recorrente:
+5. Cetoprofeno 100mg EV dose única
+6. Clorpromazina 0,1mg/kg EV diluído em 500mL SF (infundir lento) — refratária
+
+Profilaxia (se >15 dias/mês):
+7. Amitriptilina 10-25mg VO à noite
+8. OU Nortriptilina 10-25mg VO à noite
+9. Orientações: higiene do sono, redução de estresse, postura`,
+    notes: "Cefaleia por uso excessivo de analgésicos: se >15 dias/mês de medicação. Suspender gradualmente.",
+    guideline: "SBCe / IHS",
+  },
+  {
+    id: "rx-sint-oliguria",
+    title: "Oligúria / Anúria",
+    type: "Prescrição Sintomática",
+    prescription: `1. Excluir globo vesical (USG point-of-care ou cateterismo vesical de alívio)
+2. SF 0,9% 500mL EV em 30 min (prova de volume — se não hipervolêmico)
+3. Reavaliar diurese após 1h:
+   - Se responsivo: manter hidratação
+   - Se não responsivo: Furosemida 40-80mg EV (teste diurético)
+4. Se mantém oligúria: avaliar IRA (pré-renal vs renal vs pós-renal)
+5. Creatinina, ureia, K+, Na+, gasometria
+6. EAS, Na urinário (FENa <1% = pré-renal)
+7. USG renal (obstrução?)
+8. Suspender drogas nefrotóxicas (AINEs, aminoglicosídeos, contraste)
+9. Ajustar doses conforme TFG`,
+    warnings: "K+ >6,0 com oligúria = emergência. Tratar hipercalemia e considerar diálise.",
+    guideline: "KDIGO / SBN",
+  },
+  {
+    id: "rx-sint-ictericia",
+    title: "Icterícia no Adulto — Investigação",
+    type: "Prescrição Sintomática / Investigação",
+    prescription: `1. Bilirrubinas (total, direta, indireta)
+2. TGO, TGP, FA, GGT
+3. Hemograma (anemia hemolítica?)
+4. Coagulograma (INR — função hepática)
+5. Albumina sérica
+6. Reticulócitos + LDH + haptoglobina (se suspeita hemolítica)
+7. Sorologias hepatites: HBsAg, anti-HBs, anti-HBc, anti-HCV, anti-HAV IgM
+8. USG abdome (vias biliares dilatadas = obstrutiva)
+9. Se obstrutiva: ColangioRM ou CPRE
+10. Se hepatocelular: avaliar hepatite, drogas, álcool
+11. Se hemolítica: Coombs direto, esfregaço
+
+TRATAMENTO SINTOMÁTICO:
+12. Colestiramina 4g VO 8/8h (prurido)
+13. Hidratação adequada
+14. Vitamina K 10mg EV se INR alargado`,
+    notes: "BD elevada = causa hepática ou obstrutiva. BI elevada = hemólise ou Gilbert.",
+  },
+  {
+    id: "rx-sint-crise-asmatica",
+    title: "Crise Asmática — Manejo no PS",
+    type: "Prescrição Sintomática",
+    prescription: `Leve/Moderada:
+1. Salbutamol spray 4-8 puffs com espaçador a cada 20 min (3x)
+2. OU NBZ: Fenoterol 10gts + Ipratrópio 20gts + SF 3mL 20/20 min (3x)
+3. Prednisona 40-60mg VO dose única
+
+Grave (fala entrecortada, FR >30, SpO2 <90%):
+4. NBZ contínua: Fenoterol 20gts + Ipratrópio 40gts 20/20 min
+5. O2 para SpO2 ≥93%
+6. Hidrocortisona 200mg EV OU Metilprednisolona 60mg EV
+7. MgSO4 2g EV em 20 min (se refratária)
+8. Gasometria arterial (PaCO2 normal ou elevada = sinal de gravidade)
+9. Se deterioração: VNI ou IOT (ketamina como indutor)
+
+Alta:
+10. Prednisona 40mg VO 5-7 dias
+11. Manter broncodilatador inalatório
+12. Encaminhar pneumologia`,
+    guideline: "SBPT / GINA 2024",
+  },
 ];

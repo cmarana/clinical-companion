@@ -427,4 +427,146 @@ Duração: até melhora da creatinina ou máx 14 dias`,
     warnings: "Contraindicada: doença coronariana, insuficiência vascular periférica. Monitorar isquemia.",
     guideline: "SBG / EASL",
   },
+  {
+    id: "rx-dil-ketamina",
+    title: "Ketamina / Cetamina — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `AMPOLA: Cetamina 50mg/mL — 10mL = 500mg
+
+IOT (sequência rápida):
+1-2mg/kg EV em 60 segundos
+Ex (70kg): 70-140mg = 1,4-2,8mL puro
+
+SEDAÇÃO PROCEDURAL:
+0,5-1mg/kg EV (diluir em 10mL SF)
+OU 4-5mg/kg IM (sem diluir)
+
+ANALGESIA (subdissociativa):
+0,1-0,3mg/kg EV em 10 min (diluir em SF 100mL)
+
+INFUSÃO CONTÍNUA (analgesia):
+Cetamina 500mg + SF 0,9% 250mL = 2mg/mL
+Dose: 0,1-0,5mg/kg/h
+
+BRONCOESPASMO REFRATÁRIO:
+0,5-1mg/kg EV → infusão 0,5mg/kg/h`,
+    notes: "Mantém drive respiratório e PA. Ideal no choque e broncoespasmo. Associar Midazolam para evitar efeitos dissociativos.",
+    warnings: "Emergência laríngea: ter aspirador pronto. Pode causar hipertensão e taquicardia. CI relativa em HIC.",
+  },
+  {
+    id: "rx-dil-rocuronio",
+    title: "Rocurônio — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `AMPOLA: Rocurônio 10mg/mL — 5mL = 50mg
+
+IOT (sequência rápida):
+Dose: 1,2mg/kg EV em bolus
+Ex (70kg): 84mg = 8,4mL (puro)
+Início de ação: 60-90 segundos
+Duração: 30-45 min
+
+IOT (dose convencional):
+0,6mg/kg EV (início em 90-120s)
+
+INFUSÃO CONTÍNUA (BNM em VM):
+Rocurônio 500mg + SF 0,9% qsp 50mL = 10mg/mL
+Dose: 0,3-0,6mg/kg/h (avaliar com TOF)
+
+ANTAGONISTA:
+Sugammadex 2-4mg/kg EV (reversão imediata)
+OU Neostigmina 0,04mg/kg + Atropina 0,02mg/kg`,
+    notes: "Sugammadex reverte em 2-3 min (porém caro e nem sempre disponível no SUS).",
+    warnings: "Sem efeito analgésico ou sedativo. SEMPRE associar com sedação adequada.",
+  },
+  {
+    id: "rx-dil-vasopressina",
+    title: "Vasopressina — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `AMPOLA: Vasopressina 20UI/mL — 1mL
+
+PCR (alternativa à Adrenalina — não mais recomendada AHA 2020):
+40UI EV dose única (substituindo 1ª ou 2ª dose de Adrenalina)
+
+CHOQUE SÉPTICO (associada à Noradrenalina):
+Vasopressina 20UI + SF 0,9% 100mL = 0,2UI/mL
+Dose fixa: 0,03-0,04UI/min (9-12mL/h)
+NÃO titular — dose fixa
+
+DIABETES INSIPIDUS:
+DDAVP (Desmopressina) — diferente da Vasopressina
+
+HDA VARICOSA (alternativa à Terlipressina):
+0,2-0,4UI/min EV`,
+    notes: "No choque séptico: associar à Noradrenalina quando dose ≥0,25mcg/kg/min. Permite reduzir dose de Noradrenalina.",
+    warnings: "Dose fixa — NÃO titular como outros vasopressores. Risco de isquemia mesentérica e digital.",
+    guideline: "SSC 2021",
+  },
+  {
+    id: "rx-dil-atropina",
+    title: "Atropina — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `AMPOLA: Atropina 0,25mg/mL — 1mL OU 0,5mg/mL — 1mL
+
+BRADICARDIA SINTOMÁTICA:
+0,5mg EV a cada 3-5 min (máx 3mg total = 6 ampolas de 0,5mg)
+Dose mínima: 0,5mg (doses <0,5mg podem causar bradicardia paradoxal)
+
+PRÉ-IOT (pediatria):
+0,02mg/kg EV (mín 0,1mg, máx 0,5mg)
+
+INTOXICAÇÃO POR ORGANOFOSFORADO:
+Atropina 2-4mg EV a cada 5-10 min (doses altas!)
+Titular até: secreções secas, FC >80, PA estável
+Podem ser necessárias dezenas de ampolas
+
+BRADICARDIA NA PCR:
+1mg EV a cada 3-5 min (máx 3mg)`,
+    warnings: "Ineficaz em BAV 2º grau Mobitz II e BAV 3º grau (indicar marcapasso). Dose <0,5mg = bradicardia paradoxal.",
+    guideline: "AHA / ACLS",
+  },
+  {
+    id: "rx-dil-lidocaina-ev",
+    title: "Lidocaína EV — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `AMPOLA: Lidocaína 2% sem vasoconstritor — 20mg/mL — 5mL = 100mg
+
+ARRITMIA (TV estável — alternativa à Amiodarona):
+Bolus: 1-1,5mg/kg EV (70kg = 70-105mg = 3,5-5mL)
+Manutenção: 1-4mg/min
+Diluição: Lidocaína 2g + SG 5% 500mL = 4mg/mL
+Dose 2mg/min = 30mL/h
+
+PRÉ-IOT (reduzir PIC):
+1,5mg/kg EV 3 min antes da laringoscopia
+
+ANALGESIA EV (adjuvante):
+Bolus 1,5mg/kg em 10 min → infusão 1-2mg/kg/h
+
+DOSE MÁXIMA: 4,5mg/kg (sem adrenalina) ou 7mg/kg (com adrenalina)`,
+    warnings: "Sinais de intoxicação: zumbido, gosto metálico, parestesias periorais, convulsão. Antídoto: Intralipid 20%.",
+    guideline: "AHA / SBA",
+  },
+  {
+    id: "rx-dil-salina-hipertonica",
+    title: "Salina Hipertônica (NaCl 3%) — Preparo",
+    type: "Diluição e Preparo",
+    prescription: `PREPARO DE NaCl 3%:
+NaCl 20% 75mL + SF 0,9% 425mL = 500mL de NaCl 3%
+OU NaCl 20% 30mL + SF 0,9% 170mL = 200mL de NaCl 3%
+
+HIPONATREMIA GRAVE SINTOMÁTICA (Na <120 + convulsão/rebaixamento):
+NaCl 3% 150mL EV em 20 min (pode repetir 2x)
+Alvo: elevar Na+ em 4-6 mEq/L nas primeiras 6h
+Máximo: 8-10 mEq/L em 24h (risco de mielinólise pontina)
+
+HIPERTENSÃO INTRACRANIANA (alternativa ao Manitol):
+NaCl 3% 250mL EV em 15-20 min
+OU NaCl 23,4% 30mL EV em acesso central em 15 min
+
+MONITORAR:
+Na+ sérico a cada 2-4h
+Osmolaridade sérica (manter <320)`,
+    warnings: "Correção rápida de Na+ causa MIELINÓLISE PONTINA (síndrome de desmielinização osmótica). Máx 8-10 mEq/24h.",
+    guideline: "KDIGO / SBN",
+  },
 ];

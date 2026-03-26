@@ -207,4 +207,84 @@ export const dischargeItems: PrescriptionItem[] = [
 8. Retorno PS se: dispneia, dor torácica, hemoptise, sangramento`,
     guideline: "SBC / ESC",
   },
+  {
+    id: "rx-alta-gota",
+    title: "Alta — Crise Gotosa",
+    type: "Prescrição de Alta",
+    prescription: `1. Colchicina 0,5mg — 1cp VO 12/12h por 7 dias
+2. Naproxeno 500mg — 1cp VO 12/12h por 5-7 dias (com protetor gástrico)
+3. OU Prednisona 20mg — 1cp VO 1x/dia por 5 dias (se CI a AINE)
+4. Omeprazol 20mg — 1cp VO 1x/dia em jejum (proteção gástrica)
+5. Aumentar ingesta hídrica (≥2L/dia)
+6. Evitar: álcool, vísceras, frutos do mar, refrigerantes açucarados
+7. NÃO iniciar Alopurinol agora (esperar 2-4 semanas)
+8. Retorno reumatologia para avaliação de profilaxia com Alopurinol
+9. Retorno PS se: febre, articulação muito quente/vermelha (excluir artrite séptica)`,
+    guideline: "SBR / EULAR",
+  },
+  {
+    id: "rx-alta-herpes-zoster",
+    title: "Alta — Herpes Zoster",
+    type: "Prescrição de Alta",
+    prescription: `1. Valaciclovir 1g — 1cp VO 8/8h por 7 dias (iniciar <72h)
+2. OU Aciclovir 800mg — 1cp VO 5x/dia por 7 dias
+3. Gabapentina 300mg — 1cp VO à noite (neuralgia)
+4. Dipirona 500mg — 1cp VO 6/6h se dor
+5. Tramadol 50mg — 1cp VO 8/8h se dor intensa
+6. Manter lesões limpas e secas (NÃO romper vesículas)
+7. Contagioso até todas as lesões estarem em crosta
+8. Retorno se: envolvimento ocular, disseminação, piora da dor
+9. Encaminhar dermatologia/neurologia se neuralgia persistente`,
+  },
+  {
+    id: "rx-alta-tvp",
+    title: "Alta — TVP (Trombose Venosa)",
+    type: "Prescrição de Alta",
+    prescription: `1. Rivaroxabana 15mg — 1cp VO 12/12h por 21 dias → depois 20mg 1x/dia
+2. OU Apixabana 10mg VO 12/12h por 7 dias → depois 5mg 12/12h
+3. Meia elástica de compressão graduada (usar durante o dia)
+4. Deambulação precoce (repouso NÃO é mais recomendado)
+5. Elevar MMII ao repouso
+6. Evitar: viagens longas, imobilização prolongada
+7. Tempo de anticoagulação: mínimo 3 meses (reavaliar com hematologista)
+8. Retorno hematologia em 2-4 semanas
+9. Retorno PS se: dispneia, dor torácica, edema progressivo, sangramento`,
+    guideline: "SBC / ISTH",
+  },
+  {
+    id: "rx-alta-erisipela",
+    title: "Alta — Erisipela / Celulite",
+    type: "Prescrição de Alta",
+    prescription: `1. Cefalexina 500mg — 1cp VO 6/6h por 10-14 dias
+2. OU Amoxicilina-Clavulanato 500/125mg — 1cp VO 8/8h por 10 dias
+3. Dipirona 500mg — 1cp VO 6/6h se dor/febre
+4. Elevação do membro afetado
+5. Cuidados com a pele: hidratar, tratar micose interdigital (porta de entrada)
+6. Cetoconazol creme nos espaços interdigitais 1x/dia por 30 dias
+7. Meias de compressão (se edema crônico)
+8. Retorno em 48-72h para reavaliação
+9. Retorno PS se: piora do eritema, febre alta, bolhas, crepitação`,
+    notes: "Tratar porta de entrada é fundamental para prevenir recorrência.",
+  },
+  {
+    id: "rx-alta-endocardite-profilaxia",
+    title: "Alta — Profilaxia de Endocardite",
+    type: "Prescrição de Alta",
+    prescription: `Indicações: prótese valvar, endocardite prévia, cardiopatia congênita cianótica
+
+Procedimento dentário (manipulação gengival/periapical):
+1. Amoxicilina 2g VO dose única — 30-60 min antes do procedimento
+2. Se alergia: Clindamicina 600mg VO dose única
+3. Se não tolerar VO: Ampicilina 2g EV/IM
+
+NÃO indicada para:
+- Procedimentos GI/GU de rotina
+- Sopro inocente
+- Prolapso mitral sem regurgitação
+
+Orientações:
+4. Levar cartão/orientação para o dentista
+5. Manter higiene dental rigorosa`,
+    guideline: "SBC / AHA",
+  },
 ];
