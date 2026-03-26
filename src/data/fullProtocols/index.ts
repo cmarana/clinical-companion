@@ -59,9 +59,21 @@ import { orlFullProtocols } from "./otorhinolaryngology";
 import { gynecologyFullProtocols } from "./gynecology";
 import { hematologyFullProtocols } from "./hematology";
 import { geriatricsFullProtocols } from "./geriatrics";
+import { geriatricsFullProtocols2 } from "./geriatrics2";
 import { painPalliativeFullProtocols } from "./painPalliative";
+import { painPalliativeFullProtocols2 } from "./painPalliative2";
 import { triageFullProtocols } from "./triage";
+import { triageFullProtocols2 } from "./triage2";
 import { susProtocolsFullProtocols } from "./susProtocols";
+import { susProtocolsFullProtocols2 } from "./susProtocols2";
+import { gastroFullProtocols2 } from "./gastroenterology2";
+import { nephrologyFullProtocols2 } from "./nephrology2";
+import { psychiatryFullProtocols2 } from "./psychiatry2";
+import { dermatologyFullProtocols2 } from "./dermatology2";
+import { ophthalmologyFullProtocols2 } from "./ophthalmology2";
+import { orlFullProtocols2 } from "./otorhinolaryngology2";
+import { gynecologyFullProtocols2 } from "./gynecology2";
+import { hematologyFullProtocols2 } from "./hematology2";
 
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
@@ -142,17 +154,29 @@ export const fullProtocols: FullProtocol[] = [
 
   // New categories
   ...gastroFullProtocols,
+  ...gastroFullProtocols2,
   ...nephrologyFullProtocols,
+  ...nephrologyFullProtocols2,
   ...psychiatryFullProtocols,
+  ...psychiatryFullProtocols2,
   ...dermatologyFullProtocols,
+  ...dermatologyFullProtocols2,
   ...ophthalmologyFullProtocols,
+  ...ophthalmologyFullProtocols2,
   ...orlFullProtocols,
+  ...orlFullProtocols2,
   ...gynecologyFullProtocols,
+  ...gynecologyFullProtocols2,
   ...hematologyFullProtocols,
+  ...hematologyFullProtocols2,
   ...geriatricsFullProtocols,
+  ...geriatricsFullProtocols2,
   ...painPalliativeFullProtocols,
+  ...painPalliativeFullProtocols2,
   ...triageFullProtocols,
+  ...triageFullProtocols2,
   ...susProtocolsFullProtocols,
+  ...susProtocolsFullProtocols2,
 ];
 
 export function getFullProtocol(id: string) {
