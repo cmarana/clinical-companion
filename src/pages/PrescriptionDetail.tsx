@@ -2,7 +2,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { prescriptionCategories } from "@/data/prescriptions/index";
 import { Button } from "@/components/ui/button";
-import { Copy, Check, Star } from "lucide-react";
+import { Copy, Check, Star, Printer } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useFavorites } from "@/contexts/FavoritesContext";
@@ -35,6 +35,56 @@ export default function PrescriptionDetail() {
     setTimeout(() => setCopied(false), 2000);
   };
 
+  const handlePrint = () => {
+    const printWindow = window.open("", "_blank");
+    if (!printWindow) {
+      toast({ title: "Erro", description: "Não foi possível abrir a janela de impressão. Verifique o bloqueador de pop-ups.", variant: "destructive" });
+      return;
+    }
+
+    const now = new Date();
+    const dateStr = now.toLocaleDateString("pt-BR");
+    const timeStr = now.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+
+    const escapeHtml = (str: string) => str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+
+    printWindow.document.write(`<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>${escapeHtml(prescription.title)}</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Arial', sans-serif; padding: 28px 32px; font-size: 12pt; line-height: 1.65; color: #000; }
+  .header { border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 18px; }
+  .header h1 { font-size: 16pt; font-weight: 700; }
+  .header .type { font-size: 10pt; color: #555; margin-top: 2px; }
+  .guideline { font-size: 9pt; background: #f0f0f0; padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 14px; }
+  .section { margin-bottom: 14px; }
+  .section h2 { font-size: 13pt; font-weight: 600; margin-bottom: 6px; border-bottom: 1px solid #ddd; padding-bottom: 3px; }
+  .section pre { white-space: pre-wrap; font-family: 'Arial', sans-serif; font-size: 11pt; line-height: 1.6; }
+  .warning { border: 1.5px solid #c00; padding: 10px; border-radius: 4px; margin-top: 10px; }
+  .warning h2 { color: #c00; border-bottom-color: #c00; }
+  .footer { margin-top: 40px; padding-top: 10px; border-top: 1px solid #999; font-size: 8pt; color: #888; display: flex; justify-content: space-between; }
+  .signature { margin-top: 60px; text-align: center; }
+  .signature .line { border-top: 1px solid #000; width: 250px; margin: 0 auto 4px; }
+  .signature p { font-size: 10pt; color: #333; }
+  @media print { body { padding: 20px; } }
+</style></head><body>
+<div class="header">
+  <h1>${escapeHtml(prescription.title)}</h1>
+  <div class="type">${escapeHtml(prescription.type)}</div>
+</div>
+${prescription.guideline ? `<div class="guideline">Diretriz: ${escapeHtml(prescription.guideline)}</div>` : ""}
+<div class="section"><h2>Prescrição</h2><pre>${escapeHtml(prescription.prescription)}</pre></div>
+${prescription.alternatives ? `<div class="section"><h2>Alternativas</h2><pre>${escapeHtml(prescription.alternatives)}</pre></div>` : ""}
+${prescription.notes ? `<div class="section"><h2>Observações</h2><pre>${escapeHtml(prescription.notes)}</pre></div>` : ""}
+${prescription.warnings ? `<div class="warning"><h2>⚠ Atenção</h2><pre>${escapeHtml(prescription.warnings)}</pre></div>` : ""}
+<div class="signature"><div class="line"></div><p>Assinatura / CRM</p></div>
+<div class="footer"><span>Gerado em ${dateStr} às ${timeStr}</span><span>Pronto Socorro Guide</span></div>
+</body></html>`);
+
+    printWindow.document.close();
+    setTimeout(() => { printWindow.print(); }, 300);
+  };
+
   return (
     <>
       <TopBar title={prescription.title} />
@@ -58,6 +108,10 @@ export default function PrescriptionDetail() {
               className="gap-1.5"
             >
               <Star size={14} className={isFavorite(prescription.id) ? "fill-warning text-warning" : ""} />
+            </Button>
+            <Button size="sm" variant="outline" onClick={handlePrint} className="gap-1.5">
+              <Printer size={14} />
+              PDF
             </Button>
             <Button size="sm" variant="outline" onClick={handleCopy} className="gap-1.5">
               {copied ? <Check size={14} /> : <Copy size={14} />}
