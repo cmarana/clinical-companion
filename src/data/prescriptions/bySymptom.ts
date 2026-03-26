@@ -372,4 +372,93 @@ Alta:
 12. Encaminhar pneumologia`,
     guideline: "SBPT / GINA 2024",
   },
+  {
+    id: "rx-sint-artralgia",
+    title: "Artralgia / Dor Articular Aguda",
+    type: "Prescrição Sintomática",
+    prescription: `Sem sinais de artrite séptica:
+1. Cetoprofeno 100mg EV/VO 12/12h
+2. Dipirona 1g EV 6/6h (adjuvante)
+3. Compressas frias 20min 4/4h
+4. Repouso articular relativo
+
+Se artrite (edema, calor, limitação):
+5. Artrocentese se monoartrite aguda (descartar séptica/gota)
+6. Líquido sinovial: gram, cultura, cristais, celularidade
+7. Se séptica: ATB + drenagem (emergência ortopédica)
+8. Se gota: Colchicina + AINE (ver protocolo)
+
+Investigação:
+9. Hemograma, PCR/VHS, ácido úrico
+10. FAN, FR se poliarticular
+11. RX da articulação afetada`,
+    notes: "Monoartrite aguda = excluir artrite séptica até prova contrária (artrocentese!).",
+  },
+  {
+    id: "rx-sint-dor-torax-nao-cardiaca",
+    title: "Dor Torácica Não Cardíaca",
+    type: "Prescrição Sintomática",
+    prescription: `Após exclusão de SCA (ECG + troponina normais):
+
+Musculoesquelética:
+1. Cetoprofeno 100mg VO 12/12h por 5 dias
+2. Dipirona 1g VO 6/6h
+3. Compressas quentes
+4. Orientar benignidade
+
+DRGE / Esofagiana:
+5. Omeprazol 40mg VO 1x/dia em jejum (teste terapêutico)
+6. Domperidona 10mg VO 30min antes das refeições
+7. Cabeceira elevada à noite
+
+Ansiedade / Pânico:
+8. Acolhimento + orientação
+9. Clonazepam 0,25-0,5mg SL se crise aguda
+10. Encaminhar psiquiatria/psicologia
+
+11. Orientar sinais de alarme para retorno: dor com esforço, dispneia, síncope`,
+    notes: "Dor torácica atípica em jovens: 80-90% é musculoesquelética ou ansiedade. Sempre excluir SCA.",
+  },
+  {
+    id: "rx-sint-globo-vesical",
+    title: "Globo Vesical / Retenção Urinária Aguda",
+    type: "Prescrição Sintomática",
+    prescription: `1. Cateterismo vesical de alívio (sonda Foley 14-18Fr)
+   Se dificuldade: tentar sonda de maior calibre ou Coude
+2. Medir volume residual (>500mL = retenção significativa)
+3. Se >1000mL: clampear após 500mL e liberar mais 500mL a cada 30 min
+   (prevenir hematúria ex-vacuo)
+4. Manter SVD em sistema fechado
+5. Monitorar diurese pós-desobstrução (poliúria pós-obstrutiva)
+6. SF 0,9% 500mL EV (repor perdas se poliúria)
+7. Tamsulosina 0,4mg VO 1x/dia (relaxa colo vesical)
+8. Creatinina, ureia, K+ (IRA pós-renal?)
+9. EAS + urocultura
+10. USG renal e vias urinárias
+11. Encaminhar urologia`,
+    warnings: "Poliúria pós-obstrutiva pode causar desidratação grave. Monitorar e repor.",
+    guideline: "SBU",
+  },
+  {
+    id: "rx-sint-hipotensao",
+    title: "Hipotensão Sintomática",
+    type: "Prescrição Sintomática",
+    prescription: `1. Posição Trendelenburg (pernas elevadas)
+2. SF 0,9% 500-1000mL EV rápido (prova de volume)
+3. Reavaliar PA + FC após 500mL
+4. Se responsivo: manter hidratação + investigar causa
+5. Se NÃO responsivo: considerar vasopressor (Noradrenalina)
+
+Investigar causa (4 Hs):
+6. Hipovolemia (sangramento, desidratação)
+7. Hipoadrenalismo (Hidrocortisona 100mg EV se suspeita)
+8. Hipotireoidismo
+9. Hipotermia
+
+10. Hemograma, lactato, gasometria, culturas se febre
+11. ECG (bradiarritmia? IAM inferior?)
+12. RX tórax (pneumotórax? EAP?)
+13. USG POCUS (tamponamento? hipovolemia? TEP?)`,
+    notes: "POCUS à beira-leito: ferramenta essencial para hipotensão indiferenciada.",
+  },
 ];

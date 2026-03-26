@@ -287,4 +287,84 @@ Orientações:
 5. Manter higiene dental rigorosa`,
     guideline: "SBC / AHA",
   },
+  {
+    id: "rx-alta-fratura-tornozelo",
+    title: "Alta — Fratura de Tornozelo / Entorse",
+    type: "Prescrição de Alta",
+    prescription: `1. Imobilização com tala gessada suropodálica (manter até consulta)
+2. NÃO apoiar o pé (usar muletas)
+3. Membro elevado + gelo 20 min 4/4h por 48h
+4. Dipirona 500mg — 1cp VO 6/6h se dor
+5. Cetoprofeno 100mg — 1cp VO 12/12h por 5 dias (com alimento)
+6. Omeprazol 20mg — 1cp VO 1x/dia em jejum
+7. Enoxaparina 40mg SC 1x/dia (se imobilização >7 dias — avaliar risco TVP)
+8. Retorno ortopedia em 5-7 dias com RX
+9. Retorno PS se: dor insuportável, dedos roxos/inchados, formigamento`,
+  },
+  {
+    id: "rx-alta-lombalgia-aguda",
+    title: "Alta — Lombalgia Aguda (atualizada)",
+    type: "Prescrição de Alta",
+    prescription: `1. Dipirona 500mg — 1cp VO 6/6h se dor
+2. Ibuprofeno 600mg — 1cp VO 8/8h por 5-7 dias (com alimento)
+3. Ciclobenzaprina 5mg — 1cp VO à noite por 7-10 dias
+4. OU Carisoprodol composto — 1cp VO 8/8h (máx 10 dias)
+5. NÃO repouso absoluto (manter atividades toleráveis)
+6. Compressas quentes 20min 3-4x/dia
+7. Evitar: carregar peso, ficar muito tempo sentado
+8. Sinais de alerta (retornar PS):
+   Perda de força em MMII, incontinência urinária/fecal (cauda equina),
+   anestesia em sela, febre + lombalgia, perda de peso
+9. Se >6 semanas sem melhora: RMN lombar
+10. Encaminhar fisioterapia`,
+    notes: "Red flags: <20 ou >55 anos, trauma, neoplasia prévia, uso de corticoide, perda de peso, déficit neurológico.",
+  },
+  {
+    id: "rx-alta-conjuntivite",
+    title: "Alta — Conjuntivite",
+    type: "Prescrição de Alta",
+    prescription: `Viral (mais comum):
+1. Compressas frias com SF 0,9% 4-6x/dia
+2. Lágrima artificial sem conservante 4-6x/dia
+3. NÃO usar antibiótico tópico (viral = autolimitada em 7-14 dias)
+4. Higiene rigorosa (lavar mãos, não compartilhar toalha)
+5. Afastamento de trabalho/escola por 7 dias (altamente contagioso)
+
+Bacteriana (secreção purulenta):
+6. Ciprofloxacino colírio 0,3% — 1 gota 4/4h por 7 dias
+7. OU Tobramicina colírio — 1 gota 4/4h por 7 dias
+8. Compressas mornas para remover secreção
+
+9. Retorno se: piora da dor, borramento visual, fotofobia intensa (excluir ceratite, uveíte)`,
+    notes: "NÃO usar corticoide tópico sem avaliação oftalmológica (risco de herpes ocular).",
+  },
+  {
+    id: "rx-alta-otite",
+    title: "Alta — Otite Média Aguda",
+    type: "Prescrição de Alta",
+    prescription: `1. Amoxicilina 500mg — 1cp VO 8/8h por 10 dias (adulto)
+2. Se falha/recorrente: Amoxicilina-Clavulanato 500/125mg VO 8/8h por 10 dias
+3. Dipirona 500mg — 1cp VO 6/6h se dor
+4. OU Ibuprofeno 400mg VO 8/8h (analgésico + anti-inflamatório)
+5. NÃO usar descongestionantes orais (sem benefício comprovado)
+6. NÃO pingar nada no ouvido sem orientação do otorrino
+7. Evitar entrada de água no ouvido
+8. Retorno em 48-72h se não melhorar
+9. Retorno PS se: febre alta persistente, inchaço atrás da orelha (mastoidite)`,
+    guideline: "ABORL-CCF",
+  },
+  {
+    id: "rx-alta-urticaria",
+    title: "Alta — Urticária Aguda",
+    type: "Prescrição de Alta",
+    prescription: `1. Cetirizina 10mg — 1cp VO 1x/dia por 7-14 dias
+2. OU Loratadina 10mg — 1cp VO 1x/dia
+3. Se intensa: Prednisona 40mg — 1cp VO 1x/dia por 3-5 dias
+4. Banho frio/morno (NÃO quente — piora)
+5. Evitar alérgeno identificado
+6. Evitar: álcool, AINEs, alimentos histaminérgicos na crise
+7. Retorno PS se: edema de lábio/língua/garganta, dificuldade para respirar, tontura
+   (sinais de anafilaxia)
+8. Se recorrente (>6 semanas): encaminhar alergista`,
+  },
 ];

@@ -295,4 +295,73 @@ MONITORIZAÇÃO:
     notes: "EVITAR benzodiazepínicos no cirrótico (precipitam encefalopatia). AINEs causam IRA e sangramento.",
     guideline: "SBG / EASL",
   },
+  {
+    id: "rx-modelo-queimado",
+    title: "Modelo — Grande Queimado",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta zero (se >20% SCQ) → iniciar dieta enteral precoce em 6-8h
+2. 2 acessos venosos calibrosos (pode ser através da queimadura)
+3. Hidratação (Parkland): RL 4mL × Peso × %SCQ em 24h
+   50% nas primeiras 8h + 50% nas 16h seguintes
+4. SVD (alvo diurese 0,5-1mL/kg/h adulto, 1mL/kg/h criança)
+5. Analgesia agressiva: Morfina 0,1mg/kg EV (titular) + Dipirona 1g EV 6/6h
+6. Profilaxia tétano (dT ± IGHAT)
+7. Cuidados de queimadura: limpeza com SF + Sulfadiazina de prata 1%
+8. NÃO usar ATB sistêmico profilático
+9. Escarotomia se queimadura circunferencial (síndrome compartimental)
+10. IOT precoce se: queimadura facial, rouquidão, pelos nasais chamuscados
+11. Monitorização: hemograma, eletrólitos, gasometria, lactato
+12. Transferir para Centro de Queimados se: >20% SCQ, face, mãos, pés, genitália, elétrica, inalatória`,
+    warnings: "Queimadura de via aérea: IOT PRECOCE (edema progride rapidamente). Não esperar estridor.",
+    guideline: "SBQ / ABA",
+  },
+  {
+    id: "rx-modelo-pediatrico-internacao",
+    title: "Modelo — Internação Pediátrica",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta _____ (livre para idade / leite materno / fórmula / pastosa)
+2. Hidratação:
+   Holliday-Segar: 100mL/kg (0-10kg) + 50mL/kg (10-20kg) + 20mL/kg (>20kg) /dia
+   SG 5% + NaCl 20% + KCl 19,1% conforme cálculo
+3. Dipirona gotas ___gts VO/EV 6/6h se febre ≥37,8°C ou dor
+   (1 gota/kg, máx 40 gotas)
+4. Paracetamol gotas ___gts VO 6/6h alternado (se necessário)
+5. Ondansetrona ___mg EV 8/8h se vômitos (0,15mg/kg, máx 4mg)
+6. ATB: _____________ (dose por kg)
+7. O2 suplementar se SpO2 <92%
+8. Peso diário
+9. Balanço hídrico
+10. Sinais vitais + PEWS a cada ___h
+11. Comunicar intercorrências + chamar responsável
+12. Acompanhante permanente (ECA — direito da criança)`,
+    notes: "Sempre calcular doses por peso (mg/kg). Verificar dose máxima. Dupla checagem.",
+  },
+  {
+    id: "rx-modelo-alta-geral",
+    title: "Modelo — Receita de Alta Geral",
+    type: "Prescrição Padrão",
+    prescription: `[NOME DO PACIENTE]
+[DATA]
+
+1. _________________ — Tomar 1cp VO _____/___h por ___ dias
+2. _________________ — Tomar 1cp VO _____/___h por ___ dias
+3. _________________ — Tomar 1cp VO _____/___h se dor/febre
+4. _________________ (proteção gástrica se AINE) — 1cp VO 1x/dia em jejum
+
+ORIENTAÇÕES:
+- Repouso relativo por ___ dias
+- Hidratação oral adequada (≥2L/dia)
+- Alimentação leve nos primeiros dias
+- Sinais de alerta para retorno ao PS:
+  [personalizar conforme diagnóstico]
+- Retorno em ___ dias para reavaliação
+
+ENCAMINHAMENTOS:
+- Especialidade: _______________
+- Exames de retorno: _______________
+
+______________________________
+CRM / Carimbo / Assinatura`,
+    notes: "Modelo genérico — personalizar conforme diagnóstico. Sempre incluir sinais de alerta e retorno.",
+  },
 ];
