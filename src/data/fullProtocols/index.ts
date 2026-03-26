@@ -232,6 +232,15 @@ export const fullProtocols: FullProtocol[] = [
   ...traumaFullProtocols4,
   ...proceduresFullProtocols3,
   ...otherEmergenciesFullProtocols4,
+
+  // Batch 5 — new protocols
+  ...cardioFullProtocols7,
+  ...obstetricsFullProtocols5,
+  ...respiratoryFullProtocols5,
+  ...proceduresFullProtocols4,
+  ...dermatologyFullProtocols4,
+  ...pediatricFullProtocols3,
+  ...gynecologyFullProtocols3,
 ];
 
 export function getFullProtocol(id: string) {
