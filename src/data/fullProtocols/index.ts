@@ -251,6 +251,16 @@ export const fullProtocols: FullProtocol[] = [
   ...dermatologyFullProtocols4,
   ...pediatricFullProtocols3,
   ...gynecologyFullProtocols3,
+
+  // Batch 6 — expanding smaller categories
+  ...neonatalFullProtocols2,
+  ...geriatricsFullProtocols4,
+  ...gynecologyFullProtocols4,
+  ...painPalliativeFullProtocols4,
+  ...hematologyFullProtocols4,
+  ...triageFullProtocols4,
+  ...ophthalmologyFullProtocols4,
+  ...orlFullProtocols4,
 ];
 
 export function getFullProtocol(id: string) {
