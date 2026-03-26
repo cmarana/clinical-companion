@@ -26,6 +26,8 @@ export default function PrescriptionDetail() {
   const [patientName, setPatientName] = useState("");
   const [patientBed, setPatientBed] = useState("");
   const [patientRecord, setPatientRecord] = useState("");
+  const [patientDob, setPatientDob] = useState("");
+  const [patientWeight, setPatientWeight] = useState("");
 
   const prescription = prescriptionCategories
     .flatMap(c => c.items)
@@ -61,10 +63,12 @@ export default function PrescriptionDetail() {
 
     const escapeHtml = (str: string) => str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
-    const patientInfo = [patientName, patientBed, patientRecord].filter(Boolean);
+    const patientInfo = [patientName, patientBed, patientRecord, patientDob, patientWeight].filter(Boolean);
     const patientBlock = patientInfo.length
       ? `<div class="patient-info">
           ${patientName ? `<div><strong>Paciente:</strong> ${escapeHtml(patientName)}</div>` : ""}
+          ${patientDob ? `<div><strong>Data de nascimento:</strong> ${escapeHtml(patientDob)}</div>` : ""}
+          ${patientWeight ? `<div><strong>Peso:</strong> ${escapeHtml(patientWeight)} kg</div>` : ""}
           ${patientBed ? `<div><strong>Leito:</strong> ${escapeHtml(patientBed)}</div>` : ""}
           ${patientRecord ? `<div><strong>Prontuário:</strong> ${escapeHtml(patientRecord)}</div>` : ""}
         </div>`
@@ -190,6 +194,16 @@ ${prescription.warnings ? `<div class="warning"><h2>⚠ Atenção</h2><pre>${esc
             <div>
               <Label className="text-xs font-heading">Nome do paciente</Label>
               <Input value={patientName} onChange={e => setPatientName(e.target.value)} placeholder="João da Silva" className="h-9 text-sm" />
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <div>
+                <Label className="text-xs font-heading">Data de nascimento</Label>
+                <Input value={patientDob} onChange={e => setPatientDob(e.target.value)} placeholder="01/01/1970" className="h-9 text-sm" />
+              </div>
+              <div>
+                <Label className="text-xs font-heading">Peso (kg)</Label>
+                <Input value={patientWeight} onChange={e => setPatientWeight(e.target.value)} placeholder="70" className="h-9 text-sm" />
+              </div>
             </div>
             <div className="grid grid-cols-2 gap-2">
               <div>
