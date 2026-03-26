@@ -1578,5 +1578,122 @@ Estabilidade:
     warnings: "Contraindicações absolutas: AVCh prévio, cirurgia craniana <3 meses, sangramento ativo. NÃO usar anticoagulante nas primeiras 24h pós-trombólise no AVC.",
     guideline: "ABN / AHA/ASA / ESO / SBC",
   },
+  {
+    id: "rx-dil-tigeciclina",
+    title: "Tigeciclina — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `RECONSTITUIÇÃO:
+Tigeciclina 50mg frasco-ampola + 5,3mL de SF 0,9% = 10mg/mL
+
+DILUIÇÃO:
+Transferir dose para SF 0,9% 100mL
+
+DOSE ADULTO:
+Ataque: 100mg EV (2 frascos) em 30-60min
+Manutenção: 50mg EV 12/12h em 30-60min
+
+INDICAÇÕES PRINCIPAIS:
+- Infecções intra-abdominais complicadas
+- Infecções de pele e partes moles (MRSA, Acinetobacter)
+- Pneumonia comunitária
+
+Estabilidade: 24h em temperatura ambiente, 48h refrigerado`,
+    notes: "Bacteriostático — NÃO usar em bacteremia (concentração sérica baixa). Boa para Acinetobacter pan-resistente. Cobertura: Gram+ (incluindo MRSA), Gram- (incluindo ESBL), anaeróbios.",
+    warnings: "NÃO cobre Pseudomonas. Efeitos adversos: náusea intensa (30-40%), pancreatite. Aumento de mortalidade em meta-análise FDA para infecções graves.",
+    guideline: "ANVISA / FDA / IDSA",
+  },
+  {
+    id: "rx-dil-colistina",
+    title: "Colistina (Colistimetato) — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `ATENÇÃO: Unidades diferentes conforme fabricante!
+- CMS (Colistimetato de sódio) — dose em UI ou mg CBA
+
+RECONSTITUIÇÃO:
+Polimixina E frasco 1.000.000 UI + 2mL AD = 500.000 UI/mL
+
+DILUIÇÃO:
+Dose prescrita em SF 0,9% 100-250mL
+
+DOSE ADULTO:
+Ataque: 9 milhões UI (300mg CBA) EV em 2h
+Manutenção: 4,5 milhões UI (150mg CBA) EV 12/12h em 1-2h
+Ajuste renal obrigatório (DRC/diálise)
+
+NEBULIZAÇÃO (terapia adjuvante):
+1-2 milhões UI em 4mL SF — NBZ 8/8h
+
+Estabilidade: usar em até 12h após reconstituição`,
+    notes: "Última linha para Gram- pan-resistentes (Acinetobacter, Pseudomonas, KPC). Nefrotoxicidade dose-dependente (30-50%). Monitorar função renal diariamente.",
+    warnings: "Ataque é OBRIGATÓRIO (subníveis terapêuticos sem dose de ataque). Bloqueio neuromuscular raro mas grave. NÃO combinar com outros nefrotóxicos se possível.",
+    guideline: "ANVISA / IDSA / EMA",
+  },
+  {
+    id: "rx-dil-daptomicina",
+    title: "Daptomicina — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `RECONSTITUIÇÃO:
+Daptomicina 500mg frasco + 10mL SF 0,9% = 50mg/mL (agitar LENTAMENTE)
+
+DILUIÇÃO:
+Transferir dose para SF 0,9% 50-100mL (NÃO usar Ringer Lactato — incompatível)
+
+DOSES:
+Pele/partes moles: 4mg/kg EV 1x/dia em 30min
+Bacteremia/Endocardite (S. aureus): 6-10mg/kg EV 1x/dia em 30min
+Dose alta (off-label, VRE/MRSA complexo): 8-12mg/kg
+
+Ajuste renal: se ClCr <30 → 48/48h
+
+Estabilidade: 12h em temperatura ambiente, 48h refrigerado`,
+    notes: "NÃO usar para pneumonia (inativada pelo surfactante pulmonar). CPK semanal obrigatória (miopatia). Suspender se CPK >10x LSN com sintomas.",
+    warnings: "Interação com estatinas: suspender estatina durante uso (risco de rabdomiólise). NÃO diluir em Ringer. Infundir em 30min (2min se bolus EV direto).",
+    guideline: "ANVISA / FDA / IDSA / BSAC",
+  },
+  {
+    id: "rx-dil-polimixina-b",
+    title: "Polimixina B — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `RECONSTITUIÇÃO:
+Polimixina B 500.000 UI frasco + 5mL AD = 100.000 UI/mL
+
+DILUIÇÃO:
+Dose em SG 5% 250-500mL
+
+DOSE ADULTO:
+15.000-25.000 UI/kg/dia EV dividido em 12/12h
+Infusão em 1-2h
+NÃO necessita dose de ataque (diferente da Colistina)
+NÃO precisa ajuste renal (excreção extra-renal)
+
+Estabilidade: 72h refrigerado após reconstituição`,
+    notes: "Diferenças da Colistina: não precisa de ataque, não precisa ajuste renal, nefrotoxicidade possivelmente menor. Cobertura similar para Gram- MDR.",
+    warnings: "Bloqueio neuromuscular: evitar em miastenia gravis, não associar com BNM. Pigmentação cutânea (hiperpigmentação) em uso prolongado — reversível.",
+    guideline: "ANVISA / IDSA",
+  },
+  {
+    id: "rx-dil-micafungina",
+    title: "Micafungina — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `RECONSTITUIÇÃO:
+Micafungina 50mg ou 100mg frasco + 5mL SF 0,9% (NÃO agitar — espumar)
+
+DILUIÇÃO:
+Transferir para SF 0,9% 100mL
+
+DOSES:
+Candidemia: 100mg EV 1x/dia
+Candidíase esofágica: 150mg EV 1x/dia
+Profilaxia (TMO): 50mg EV 1x/dia
+
+Infusão: em 1h
+NÃO necessita dose de ataque
+NÃO precisa ajuste renal ou hepático (leve-moderado)
+
+Estabilidade: 24h em temperatura ambiente (proteger da luz)`,
+    notes: "Equinocandina — fungicida contra Candida, fungistática contra Aspergillus. Alternativa ao Fluconazol em Candida resistente ou paciente instável. Sem interação com CYP3A4.",
+    warnings: "NÃO usar em SG 5% (precipitação). Hepatotoxicidade rara — monitorar função hepática semanal. Menos interações medicamentosas que Voriconazol.",
+    guideline: "ANVISA / IDSA / ESCMID",
+  },
 ];
 

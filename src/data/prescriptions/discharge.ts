@@ -944,5 +944,79 @@ Bacteriana (secreção purulenta):
     notes: "NÃO dar alta sem corticoide inalatório (CI) de manutenção. GINA 2023: não usar mais SABA isolado — sempre CI + formoterol ou CI + SABA.",
     guideline: "SBPT / GINA / BTS/SIGN",
   },
+  {
+    id: "rx-alta-surto-psicotico",
+    title: "Alta — Surto Psicótico (Estabilizado)",
+    type: "Prescrição de Alta",
+    prescription: `1. Risperidona 2mg — 1cp VO 12/12h (manter dose da internação)
+2. OU Olanzapina 10mg — 1cp VO à noite
+3. Biperideno 2mg — 1cp VO 12/12h (se efeitos extrapiramidais)
+4. NÃO interromper medicação sem orientação psiquiátrica
+5. Evitar álcool e drogas ilícitas
+6. Retorno no CAPS em 7 dias
+7. Retorno ao PS se: agitação, alucinações, recusa alimentar, ideação suicida
+8. Manter acompanhamento psiquiátrico regular
+9. Orientar família sobre sinais de recaída`,
+    notes: "Adesão é o maior desafio. Considerar antipsicótico de depósito (Risperidona LA, Palmitato de Paliperidona) se má aderência. Encaminhar CAPS III se grave.",
+    guideline: "ABP / MS / NICE",
+  },
+  {
+    id: "rx-alta-crise-adrenal",
+    title: "Alta — Insuficiência Adrenal",
+    type: "Prescrição de Alta",
+    prescription: `1. Prednisona 5mg — 1cp VO pela manhã + 2,5mg à tarde (dose fisiológica)
+2. OU Hidrocortisona 20mg manhã + 10mg tarde (se disponível)
+3. Fludrocortisona 0,1mg — 1cp VO 1x/dia (se insuficiência primária)
+4. Cartão de identificação: "PORTADOR DE INSUFICIÊNCIA ADRENAL"
+5. Kit de emergência: Hidrocortisona 100mg IM (uso domiciliar em crise)
+6. Dose de estresse: duplicar corticoide em febre/infecção, triplicar se grave
+7. NUNCA suspender abruptamente
+8. Retorno endocrinologista em 2-4 semanas
+9. Retorno PS se: vômitos, hipotensão, prostração extrema`,
+    notes: "Alerta médico (bracelete/cartão) é FUNDAMENTAL — salva vidas em emergências quando paciente está inconsciente.",
+    guideline: "SBEM / Endocrine Society",
+  },
+  {
+    id: "rx-alta-glaucoma-agudo",
+    title: "Alta — Pós-Crise Glaucomatosa",
+    type: "Prescrição de Alta",
+    prescription: `1. Timolol 0,5% — 1 gota no olho afetado 12/12h
+2. Brimonidina 0,2% — 1 gota 8/8h (ambos os olhos se indicado)
+3. Acetazolamida 250mg — 1cp VO 8/8h por 3-5 dias (conforme orientação)
+4. Prednisolona 1% colírio — 1 gota 6/6h por 5-7 dias (desmame)
+5. NÃO usar colírios midriáticos (piora glaucoma de ângulo fechado)
+6. Retorno Oftalmologista em 24-48h para Iridotomia a laser (olho afetado + profilática no contralateral)
+7. Retorno PS se: dor ocular intensa, piora visual, náusea/vômito`,
+    guideline: "CBO / AAO / EGS",
+  },
+  {
+    id: "rx-alta-tvp",
+    title: "Alta — TVP",
+    type: "Prescrição de Alta",
+    prescription: `1. Rivaroxabana 15mg — 1cp VO 12/12h por 21 dias, depois 20mg 1x/dia (com refeição)
+2. OU Apixabana 10mg VO 12/12h por 7 dias, depois 5mg 12/12h
+3. OU Enoxaparina 1mg/kg SC 12/12h + Varfarina 5mg VO 1x/dia (INR alvo 2-3, suspender HBPM quando INR terapêutico por 2 dias)
+4. Meia elástica de compressão (30-40mmHg) — usar diariamente
+5. Deambulação precoce (NÃO manter repouso)
+6. Duração: 3-6 meses (1º episódio provocado) ou indefinido (não provocado/recorrente)
+7. Retorno hematologista/angiologista em 7-14 dias
+8. Retorno PS se: dispneia, dor torácica, hemoptise (TEP)`,
+    guideline: "SBC / ISTH / ACCP / ESC",
+  },
+  {
+    id: "rx-alta-colica-renal",
+    title: "Alta — Cólica Renal",
+    type: "Prescrição de Alta",
+    prescription: `1. Cetoprofeno 100mg — 1cp VO 12/12h por 5 dias (com protetor gástrico)
+2. Dipirona 500mg — 1cp VO 6/6h se dor
+3. Tamsulosina 0,4mg — 1cp VO 1x/dia à noite (terapia expulsiva, cálculos 5-10mm)
+4. Omeprazol 20mg — 1cp VO 1x/dia (proteção gástrica)
+5. Hidratação oral adequada (≥2L/dia)
+6. Coar urina (peneira) — guardar cálculo para análise
+7. Retorno urologista em 7-14 dias com TC sem contraste
+8. Retorno PS se: febre, dor incontrolável, anúria, vômitos persistentes`,
+    notes: "Tamsulosina (alfa-bloqueador) facilita passagem de cálculos ureterais distais 5-10mm. Cálculos >10mm geralmente precisam de intervenção.",
+    guideline: "SBU / EAU / AUA",
+  },
 ];
 

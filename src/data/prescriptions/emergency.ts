@@ -1131,5 +1131,84 @@ FASE 4 (>40min): REFRATÁRIO
     warnings: "Fenitoína: NUNCA em SG (cristaliza). Infundir lento — arritmia/hipotensão. Monitorizar ECG durante infusão.",
     guideline: "ABN / AES / NCS / ILAE",
   },
+  {
+    id: "rx-emerg-agitacao-psicomotora",
+    title: "Agitação Psicomotora — Emergência",
+    type: "Prescrição de Emergência",
+    prescription: `NÍVEL 1 — Contenção verbal:
+1. Abordagem calma, tom firme, ambiente seguro
+
+NÍVEL 2 — Contenção química:
+2. Haloperidol 5mg IM + Prometazina 50mg IM (mesma seringa)
+3. OU Olanzapina 10mg IM (NÃO associar com benzo IM — depressão respiratória)
+4. OU Midazolam 15mg IM (se etiologia desconhecida/intoxicação)
+
+NÍVEL 3 — Contenção mecânica:
+5. 5 pontos (4 membros + tórax) — reavaliar 15/15 min
+6. Documentar indicação, horário, reavaliações
+7. Monitorização: PA, FC, SpO2, temperatura
+8. Após sedação: posição lateral de segurança, aspirador à mão`,
+    notes: "Sempre investigar causa orgânica: hipoglicemia, hipóxia, TCE, intoxicação, sepse, pós-ictal. Glicemia capilar é OBRIGATÓRIA antes de sedar.",
+    warnings: "Olanzapina IM + Diazepam IM = PROIBIDO (depressão respiratória fatal descrita). Haloperidol EV: risco de QT longo.",
+    guideline: "ABP / ABEM / NICE",
+  },
+  {
+    id: "rx-emerg-intoxicacao-litio",
+    title: "Intoxicação por Lítio",
+    type: "Prescrição de Emergência",
+    prescription: `1. SUSPENDER Lítio imediatamente
+2. SF 0,9% 200mL/h EV (NÃO restringir sódio — piora reabsorção de Li)
+3. NÃO usar diuréticos (aumentam reabsorção de Li)
+4. Hemodiálise se: Lítio sérico >4mEq/L, ou >2,5 com sintomas graves, ou IRA
+5. Monitorar: Lítio sérico seriado 6/6h, função renal, eletrólitos, ECG
+6. Lavagem gástrica se <1h (carvão ativado NÃO adsorve Lítio)
+7. Irrigação intestinal total (Polietilenoglicol) se liberação prolongada
+8. Tratar convulsão: Diazepam 10mg EV
+9. IOT se rebaixamento grave
+10. ECG: achatamento de onda T, BAV, bradicardia`,
+    notes: "Níveis terapêuticos: 0,6-1,2. Toxicidade: >1,5. Grave: >2,5. Sintomas: tremor grosseiro, ataxia, disartria, convulsão, coma.",
+    warnings: "Meia-vida do Lítio em IRA pode chegar a >3 dias. Hemodiálise pode precisar ser repetida (rebound). Dano neurológico pode ser irreversível (SILENT syndrome).",
+    guideline: "SBTox / AACT / EXTRIP",
+  },
+  {
+    id: "rx-emerg-tamponamento-pericardico",
+    title: "Tamponamento Pericárdico — Pericardiocentese",
+    type: "Prescrição de Emergência",
+    prescription: `1. ABCDE — O2 suplementar alto fluxo
+2. SF 0,9% 500-1000mL EV em bolus rápido (aumentar pré-carga)
+3. NÃO usar diuréticos ou vasodilatadores (colapso!)
+4. Pericardiocentese de urgência:
+   - Via subxifoide (Marfan) guiada por USG
+   - Jelco 14-16G ou agulha longa, aspirar líquido
+   - Drenar em seringa, enviar para análise
+5. Se instabilidade: pericardiocentese às cegas pela via subxifoide (45°, direção ombro esquerdo)
+6. Noradrenalina se PAM <65 (após volume)
+7. ECG: baixa voltagem, alternância elétrica
+8. Ecocardiograma: colapso de VD na diástole
+9. Encaminhar para cirurgia cardíaca se: trauma penetrante, hemopericárdio recorrente`,
+    notes: "Tríade de Beck: hipotensão + turgência jugular + abafamento de bulhas. Pulso paradoxal: queda de PAS >10mmHg na inspiração.",
+    warnings: "NÃO atrasar pericardiocentese se instável. Retirar 50mL já pode melhorar dramaticamente a hemodinâmica.",
+    guideline: "SBC / AHA / ESC / ATLS",
+  },
+  {
+    id: "rx-emerg-hipotermia",
+    title: "Hipotermia Grave (<30°C)",
+    type: "Prescrição de Emergência",
+    prescription: `1. ABCDE — minimizar movimentação (risco de FV por manipulação)
+2. Retirar roupas molhadas, secar, cobertores
+3. Reaquecimento passivo: ambiente aquecido, cobertores térmicos
+4. Reaquecimento ativo externo: manta térmica, ar quente forçado (Bair Hugger)
+5. Reaquecimento ativo interno (se <30°C):
+   - SF 0,9% aquecido a 40-42°C EV
+   - Lavagem peritoneal/pleural com SF aquecido
+   - ECMO/CEC em casos graves
+6. Drogas vasoativas: espaçar intervalos (metabolismo reduzido)
+7. Desfibrilação: tentar 1x se FV, se não responder → aquecer até 30°C antes de nova tentativa
+8. Monitorar: ECG (onda J de Osborn), K+, gasometria
+9. "Ninguém está morto até estar quente e morto" — reanimar até T ≥32°C`,
+    notes: "Classificação: leve (32-35°C), moderada (28-32°C), grave (<28°C). Onda J de Osborn é patognomônica mas não obrigatória.",
+    warnings: "NÃO declarar óbito até aquecer a 32°C. Arritmias podem ser refratárias até reaquecimento. Afterdrop: queda paradoxal de T ao iniciar reaquecimento.",
+    guideline: "AHA / ERC / Wilderness Medical Society",
+  },
 ];
 

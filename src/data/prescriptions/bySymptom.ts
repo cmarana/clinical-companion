@@ -1003,5 +1003,88 @@ OUTRAS CAUSAS:
     warnings: "ECG normal NÃO exclui SCA. Troponina negativa na 1ª coleta NÃO exclui IAM (sensibilidade máxima em 3-6h). Sempre seriação.",
     guideline: "SBC / AHA/ACC / ESC",
   },
+  {
+    id: "rx-sint-alucinacoes",
+    title: "Alucinações / Psicose Aguda",
+    type: "Prescrição Sintomática",
+    prescription: `1. Haloperidol 5mg IM + Prometazina 50mg IM (1ª linha no PS)
+2. OU Olanzapina 10mg IM (NÃO combinar com benzo IM)
+3. OU Risperidona 2mg VO (se aceitar VO e cooperativo)
+4. Ambiente calmo, iluminação adequada, acompanhante
+5. Glicemia capilar (descartar hipoglicemia)
+6. Monitorização: PA, FC, SpO2, nível de consciência
+7. Se distonia aguda: Biperideno 2mg IM
+8. Investigar: tóxico, metabólico, infeccioso, neurológico (TC se 1º episódio)`,
+    notes: "1º episódio psicótico: SEMPRE fazer TC de crânio + exames metabólicos + toxicológico. Descartar delirium orgânico antes de diagnóstico psiquiátrico.",
+    guideline: "ABP / NICE / APA",
+  },
+  {
+    id: "rx-sint-olho-vermelho",
+    title: "Olho Vermelho Agudo — Abordagem no PS",
+    type: "Prescrição Sintomática",
+    prescription: `CONJUNTIVITE BACTERIANA:
+1. Moxifloxacino 0,5% colírio — 1 gota 6/6h por 7 dias
+2. Compressas frias
+
+CONJUNTIVITE ALÉRGICA:
+3. Olopatadina 0,1% colírio — 1 gota 12/12h
+4. Anti-histamínico VO se necessário
+
+CORPO ESTRANHO:
+5. Anestésico tópico (Proximetacaína 0,5%) para exame
+6. Remoção com cotonete úmido ou irrigação
+7. Fluoresceína: descartar úlcera de córnea
+8. Moxifloxacino 0,5% colírio 6/6h por 5 dias (profilaxia)
+
+SINAIS DE ALARME (encaminhar Oftalmo):
+- Dor intensa + baixa visual + pupila irregular → uveíte/glaucoma
+- Hifema (sangue na câmara anterior) → trauma penetrante`,
+    notes: "NUNCA prescrever anestésico tópico para uso domiciliar (retarda cicatrização, mascara lesão grave). Colírio de corticoide: SOMENTE com avaliação oftalmológica.",
+    warnings: "Olho vermelho + dor + baixa visual + fotofobia = NÃO é conjuntivite simples. Encaminhar urgente.",
+    guideline: "CBO / AAO",
+  },
+  {
+    id: "rx-sint-vertigem",
+    title: "Vertigem / Tontura Aguda",
+    type: "Prescrição Sintomática",
+    prescription: `VPPB (vertigem posicional):
+1. Manobra de Epley (tratamento — NÃO medicar de rotina)
+2. Dimenidrinato 50mg VO 8/8h por 3-5 dias (fase aguda apenas)
+
+NEURITE VESTIBULAR:
+3. Dimenidrinato 50mg EV 8/8h
+4. Ondansetrona 4mg EV se vômitos
+5. SF 0,9% 500-1000mL EV (hidratação)
+6. Prednisona 60mg VO 1x/dia por 5 dias (desmame em 2 semanas)
+7. Reabilitação vestibular precoce
+
+DESCARTAR CAUSA CENTRAL (HINTS):
+8. Head Impulse normal + Nistagmo direction-changing + Test of Skew positivo = CENTRAL → RM urgente
+9. Idade >60 + FR cardiovasculares + vertigem aguda = pensar AVC de fossa posterior`,
+    notes: "HINTS é mais sensível que RM nas primeiras 48h para AVC de fossa posterior. VPPB é a causa mais comum de vertigem (benigna). NÃO medicar crônicamente com sedativos vestibulares.",
+    warnings: "Vertigem + déficit focal/cerebelar = AVC até prova em contrário. Flunarizina/Cinarizina uso crônico: parkinsonismo em idosos.",
+    guideline: "SBO / AAO-HNS / AAN",
+  },
+  {
+    id: "rx-sint-epistaxe",
+    title: "Epistaxe (Sangramento Nasal)",
+    type: "Prescrição de Emergência",
+    prescription: `ANTERIOR (90% dos casos):
+1. Comprimir asa nasal por 15-20 min (paciente sentado, cabeça levemente inclinada para frente)
+2. Algodão com Lidocaína 2% + Adrenalina 1:10.000 (tamponamento farmacológico)
+3. Cauterização com Nitrato de Prata se ponto sangrante visível
+4. Tamponamento anterior com Merocel ou gaze vaselinada (se persistente)
+
+POSTERIOR (grave):
+5. Tamponamento posterior com sonda de Foley + tamponamento anterior
+6. OU balão de Epistat
+7. SF 0,9% EV se instável
+8. Hemograma, coagulograma, tipagem sanguínea
+9. Amoxicilina-Clavulanato 875mg VO 12/12h (profilaxia — se tamponamento)
+10. Encaminhar ORL se: posterior, recorrente, coagulopata`,
+    notes: "Causas comuns: trauma digital, HAS, anticoagulantes, rinossinusite, Rendu-Osler-Weber. Plexo de Kiesselbach (anterior) é o local mais frequente.",
+    warnings: "NÃO hiperestender cabeça (risco de aspiração de sangue). Verificar PA — crise hipertensiva pode ser causa. Manter tamponamento por 48-72h.",
+    guideline: "ABORL-CCF / AAO-HNS",
+  },
 ];
 
