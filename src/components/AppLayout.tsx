@@ -1,13 +1,30 @@
 import { Outlet } from "react-router-dom";
 import BottomNav from "./BottomNav";
 import ScrollToTop from "./ScrollToTop";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { AppSidebar } from "./AppSidebar";
 
 export default function AppLayout() {
   return (
-    <div className="min-h-screen bg-background text-foreground pb-16">
-      <Outlet />
+    <SidebarProvider>
+      <div className="min-h-screen flex w-full">
+        <AppSidebar />
+        <div className="flex-1 flex flex-col min-w-0">
+          {/* Desktop sidebar trigger */}
+          <header className="hidden md:flex h-10 items-center border-b border-border bg-card/80 backdrop-blur-sm px-3">
+            <SidebarTrigger />
+            <span className="ml-2 font-heading font-semibold text-xs text-muted-foreground">PS Guide</span>
+          </header>
+          <main className="flex-1 bg-background text-foreground pb-16 md:pb-0">
+            <Outlet />
+          </main>
+        </div>
+      </div>
       <ScrollToTop />
-      <BottomNav />
-    </div>
+      {/* BottomNav only on mobile */}
+      <div className="md:hidden">
+        <BottomNav />
+      </div>
+    </SidebarProvider>
   );
 }
