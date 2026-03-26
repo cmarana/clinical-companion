@@ -660,5 +660,59 @@ Sinais de alerta para retorno:
     notes: "IVAS é a causa mais comum de consulta pediátrica no PS. 95% viral. ATB desnecessário na maioria.",
     guideline: "SBP / AAP",
   },
+  {
+    id: "rx-ped-faringoamigdalite",
+    title: "Faringoamigdalite Bacteriana (Pediatria)",
+    type: "Pediatria",
+    prescription: `1. Penicilina Benzatina IM dose única:
+   - <20kg: 600.000 UI IM
+   - ≥20kg: 1.200.000 UI IM
+   OU Amoxicilina 50mg/kg/dia VO 12/12h por 10 dias
+2. Ibuprofeno 5-10mg/kg/dose VO 8/8h (dor e febre)
+3. Paracetamol 10-15mg/kg/dose VO 6/6h (alternância)
+4. Hidratação VO incentivada (líquidos frios/gelados aliviam dor)
+5. Dieta livre conforme tolerância (evitar ácidos)
+6. Retorno se: febre persistente >48h após ATB, trismo, abaulamento de palato (abscesso periamigdaliano)`,
+    notes: "Critérios de Centor/McIsaac ≥3: tratar empiricamente. Score 0-1: viral, não prescrever ATB.",
+    warnings: "Abscesso periamigdaliano: trismo + desvio de úvula + voz abafada = drenagem + internação.",
+    guideline: "SBP / IDSA / SBI",
+  },
+  {
+    id: "rx-ped-tce-leve",
+    title: "TCE Leve Pediátrico (Avaliação e Conduta)",
+    type: "Pediatria",
+    prescription: `1. Avaliar por PECARN:
+   <2 anos: GCS ≤14, palpação craniana alterada, alteração do comportamento, hematoma não frontal, perda de consciência >5s, mecanismo grave
+   ≥2 anos: GCS ≤14, sinais de fratura de base, alteração mental, perda de consciência, vômitos, cefaleia intensa, mecanismo grave
+2. PECARN baixo risco: observação 4-6h no PS
+3. PECARN risco intermediário: observação OU TC crânio
+4. PECARN alto risco: TC crânio sem contraste
+5. Analgesia: Paracetamol 15mg/kg VO
+6. Manter em observação com reavaliações neurológicas 1/1h
+7. Dieta leve após 2h sem vômitos
+8. Se alta: orientações por escrito (sinais de alarme 48h)`,
+    notes: "PECARN: sensibilidade >99% para lesão intracraniana clinicamente importante. Reduz TC desnecessárias.",
+    warnings: "Fratura de crânio em <1 ano: mesmo sem alteração neurológica, considerar TC e observação prolongada.",
+    guideline: "SBP / PECARN / NICE",
+  },
+  {
+    id: "rx-ped-refluxo-lactente",
+    title: "Refluxo Gastroesofágico do Lactente",
+    type: "Pediatria",
+    prescription: `1. Tranquilizar os pais: RGE fisiológico é comum e autolimitado
+2. Medidas posturais:
+   - Cabeceira elevada 30°
+   - Manter sentado 30min após mamadas
+3. Fracionamento: mamadas menores e mais frequentes
+4. Espessamento da fórmula (se fórmula): 1 colher de cereal de arroz/30mL
+5. Se AM exclusivo: manter, ajustar pega
+6. Medicamentos SOMENTE se DRGE complicada:
+   - Omeprazol 1mg/kg/dia VO 1x/dia (máx 20mg)
+   - Domperidona 0,25mg/kg/dose VO 8/8h
+7. Encaminhar Gastropediatria se: recusa alimentar, deficit ponderal, hematêmese, apneia
+8. Retorno em 30 dias para reavaliação de peso`,
+    notes: "90% dos lactentes com refluxo melhoram até 12-18 meses. IBP NÃO melhora choro/irritabilidade isolados.",
+    guideline: "SBP / NASPGHAN / ESPGHAN",
+  },
 ];
 

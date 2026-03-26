@@ -911,5 +911,82 @@ Ataque maciço (>20 picadas adulto / >5 criança):
     warnings: "Adenosina: avisar paciente que vai sentir 'aperto no peito' e 'pausa' transitória. Contraindicada em asmáticos graves. NÃO dar Verapamil se suspeita de WPW (FA pré-excitada).",
     guideline: "AHA / SBC / ESC",
   },
+  {
+    id: "rx-emerg-crise-adrenal",
+    title: "Crise Adrenal / Insuficiência Adrenal Aguda",
+    type: "Emergência",
+    prescription: `1. Hidrocortisona 100mg EV em bolus IMEDIATO
+2. SF 0,9% 1000mL EV em bolus (hipotensão refratária a volume)
+3. SG 10% se hipoglicemia
+4. Hidrocortisona 50mg EV 8/8h (manutenção 24h)
+5. Monitorização contínua (PA, FC, glicemia)
+6. Investigar fator precipitante (infecção, trauma, suspensão de corticoide)
+7. Vasopressor se choque refratário: Noradrenalina 0,1-2mcg/kg/min
+8. Eletrólitos: Na+, K+ (hipercalemia + hiponatremia clássico)
+9. NÃO atrasar corticoide por exames
+10. Cortisol sérico + ACTH antes do tratamento (se possível)`,
+    warnings: "Choque refratário a vasopressores: SEMPRE pensar em insuficiência adrenal. Hidrocortisona pode salvar a vida em minutos.",
+    guideline: "Endocrine Society / SBEm",
+  },
+  {
+    id: "rx-emerg-hemorragia-pos-parto",
+    title: "Hemorragia Pós-Parto Massiva",
+    type: "Emergência",
+    prescription: `1. CHAMAR AJUDA — ativar protocolo de hemorragia massiva
+2. Ocitocina 20UI em 500mL RL EV rápido + Ocitocina 10UI IM
+3. Massagem uterina bimanual contínua
+4. Ácido Tranexâmico 1g EV em 10min (até 30min pós-parto)
+5. Misoprostol 800mcg VR/SL
+6. Ergometrina 0,2mg IM (se disponível, CI em HAS)
+7. Reposição volêmica agressiva: SF/RL aquecido
+8. Hemoderivados: protocolo transfusão maciça (1:1:1)
+9. Se refratário: balão de tamponamento intrauterino (Bakri)
+10. Sutura de B-Lynch se cirúrgico
+11. Última opção: histerectomia de emergência
+12. Fibrinogênio >200mg/dL (Crioprecipitado se <150)`,
+    warnings: "4 T's: Tônus (atonia 70%), Trauma, Tecido (restos), Trombina (coagulopatia). Mortalidade materna principal causa no Brasil.",
+    guideline: "FEBRASGO / ACOG / OMS / FIGO",
+  },
+  {
+    id: "rx-emerg-lesao-renal-contraste",
+    title: "Nefropatia por Contraste — Prevenção e Manejo",
+    type: "Emergência",
+    prescription: `1. Identificar risco: DRC (ClCr <45), DM, ICC, idoso, desidratação
+2. PREVENÇÃO:
+   - SF 0,9% 1mL/kg/h 6-12h pré + 6-12h pós-contraste
+   - OU NaHCO3 150mL + 850mL SG5% a 3mL/kg/h 1h pré + 1mL/kg/h 6h pós
+3. Usar menor volume possível de contraste iso-osmolar
+4. SUSPENDER 48h antes: Metformina, AINEs, diuréticos (se possível)
+5. Creatinina basal + 48h + 72h pós-contraste
+6. Se IRA pós-contraste:
+   - Hidratação vigorosa
+   - Suspender nefrotóxicos
+   - Monitorizar K+, diurese
+   - Diálise se indicação clássica
+7. N-acetilcisteína 1200mg VO 12/12h (véspera e dia do exame) — benefício controverso`,
+    notes: "Pico de creatinina: 3-5 dias pós-contraste. Maioria reversível em 7-14 dias.",
+    warnings: "NÃO adiar exame contrastado de emergência por medo de nefropatia — risco do atraso diagnóstico é maior.",
+    guideline: "KDIGO / SBN / ACR",
+  },
+  {
+    id: "rx-emerg-pneumomediastino",
+    title: "Pneumomediastino Espontâneo",
+    type: "Emergência",
+    prescription: `1. Repouso + O2 suplementar alto fluxo (reabsorção)
+2. Analgesia: Paracetamol 1g EV 6/6h + Tramadol 100mg EV 8/8h SN
+3. RX tórax PA + perfil (enfisema subcutâneo, sinal de Naclerio)
+4. TC tórax se suspeita de perfuração esofágica (Boerhaave)
+5. Esofagograma com contraste hidrossolúvel se:
+   - Vômitos precedendo dor torácica
+   - Enfisema extenso
+   - Derrame pleural esquerdo
+6. Jejum se suspeita de Boerhaave
+7. ATB largo espectro se perfuração confirmada
+8. Observação hospitalar 24-48h
+9. Maioria: resolução espontânea em 48-72h`,
+    notes: "Causas: Valsalva, tosse intensa, asma, vômitos, drogas inalatórias. Se trauma: excluir ruptura de via aérea.",
+    warnings: "Síndrome de Boerhaave (ruptura esofágica): tríade de Mackler (vômitos + dor torácica + enfisema subcutâneo). Mortalidade >30% se atraso.",
+    guideline: "ACS / SBCT",
+  },
 ];
 

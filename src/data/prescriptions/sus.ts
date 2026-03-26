@@ -657,4 +657,59 @@ Assinatura do médico: ________________ CRM: ____`,
     notes: "Consentimento informado é obrigatório para procedimentos invasivos. Paciente pode revogar a qualquer momento. Menor de 18 anos: responsável legal assina.",
     guideline: "CFM / Resolução 1931/2009 / Código de Ética Médica",
   },
+  {
+    id: "rx-sus-profilaxia-rabica",
+    title: "Profilaxia Antirrábica — Protocolo MS/SUS",
+    type: "SUS / UPA",
+    prescription: `CLASSIFICAÇÃO DO ACIDENTE:
+Leve: lambedura pele íntegra, arranhadura superficial
+Grave: lambedura de mucosa, mordedura, arranhadura profunda, morcego
+
+ANIMAL OBSERVÁVEL (cão/gato doméstico):
+- Acidente leve: observar animal 10 dias. Se morrer/desaparecer: vacinar
+- Acidente grave: vacinar (dias 0, 3, 7, 14) + observar animal
+
+ANIMAL NÃO OBSERVÁVEL / SILVESTRE / MORCEGO:
+- Acidente leve: vacinar (4 doses: dias 0, 3, 7, 14)
+- Acidente grave: vacinar (4 doses) + Soro antirrábico (SAR 40UI/kg) ou Imunoglobulina
+
+VACINAÇÃO:
+- Vacina antirrábica humana (VERO): 0,5mL IM deltóide
+- Dias 0, 3, 7, 14
+
+SORO ANTIRRÁBICO (SAR):
+- 40UI/kg, infiltrar ao redor da ferida (máximo possível local)
+- Restante: IM glúteo
+- Aplicar junto com a 1ª dose da vacina (máx até 3° dia)`,
+    notes: "Lavar ferida exaustivamente com água e sabão por 15 minutos. PVPI tópico. NÃO suturar mordedura (exceto face).",
+    warnings: "Morcego: SEMPRE acidente grave, mesmo sem mordedura visível. Contato com morcego encontrado morto = profilaxia completa.",
+    guideline: "MS / SVS / OMS / Norma Técnica de Profilaxia da Raiva",
+  },
+  {
+    id: "rx-sus-ficha-notificacao",
+    title: "Ficha de Notificação Compulsória — Orientações",
+    type: "SUS / UPA",
+    prescription: `DOENÇAS DE NOTIFICAÇÃO IMEDIATA (até 24h):
+- Meningite, Dengue grave, Chikungunya grave
+- Raiva humana, Febre amarela, Malária (área não endêmica)
+- Sarampo, Difteria, Poliomielite
+- Botulismo, Cólera, Peste
+- Violência (sexual, infantil, idoso)
+- Acidente com animal peçonhento
+- Intoxicação exógena
+
+COMO NOTIFICAR:
+1. Preencher SINAN NET (ficha específica por agravo)
+2. Comunicar Vigilância Epidemiológica do município
+3. Telefone: Disque-Notifica ou Vigilância local
+4. CIEVS (Centro de Informações Estratégicas de Vigilância em Saúde)
+
+DADOS OBRIGATÓRIOS:
+- Nome, data nascimento, endereço, cartão SUS
+- Data dos primeiros sintomas
+- Hipótese diagnóstica (CID-10)
+- Dados do notificante (médico + CRM)`,
+    notes: "Notificação é OBRIGAÇÃO LEGAL do médico (Lei 6.259/1975). Omissão = infração ética + responsabilidade administrativa.",
+    guideline: "MS / SVS / Portaria GM/MS 217/2023",
+  },
 ];

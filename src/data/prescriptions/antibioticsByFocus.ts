@@ -562,4 +562,54 @@ TODOS:
 11. NÃO suturar mordedura de gato ou mordedura com >6h`,
     guideline: "IDSA / MS / SVS",
   },
+  {
+    id: "rx-atb-fungico-invasivo",
+    title: "Antifúngico Empírico — Infecção Fúngica Invasiva",
+    type: "ATB por Foco",
+    prescription: `CANDIDEMIA / CANDIDÍASE INVASIVA:
+1ª linha: Micafungina 100mg EV 1x/dia OU Anidulafungina 200mg EV D1, depois 100mg/dia
+Alternativa: Fluconazol 800mg EV D1, depois 400mg/dia (se paciente estável e Candida sensível)
+
+ASPERGILOSE INVASIVA:
+1ª linha: Voriconazol 6mg/kg EV 12/12h D1, depois 4mg/kg 12/12h
+Alternativa: Isavuconazol 200mg EV 8/8h D1-2, depois 200mg/dia
+
+MUCORMICOSE:
+1ª linha: Anfotericina B lipossomal 5-10mg/kg/dia EV
++ Debridamento cirúrgico URGENTE
+
+DURAÇÃO:
+- Candidemia: 14 dias após última hemocultura negativa
+- Aspergilose: mínimo 6-12 semanas
+- Mucormicose: até resolução clínica
+
+MONITORIZAÇÃO: Função renal, K+, Mg++ (Anfotericina). Nível sérico de Voriconazol (vale: 1-5,5 mcg/mL)`,
+    notes: "Hemoculturas demoram 2-5 dias para Candida. Equinocandinas não cobrem Mucor/Rhizopus nem SNC.",
+    warnings: "Anfotericina B desoxicolato: nefrotoxicidade grave. Preferir formulação lipossomal SEMPRE.",
+    guideline: "IDSA / ESCMID / SBI",
+  },
+  {
+    id: "rx-atb-ferida-operatoria",
+    title: "ATB — Infecção de Ferida Operatória",
+    type: "ATB por Foco",
+    prescription: `SUPERFICIAL (pele e subcutâneo):
+1. Abrir pontos + drenagem
+2. Cefalexina 500mg VO 6/6h 7 dias OU
+3. Amoxicilina-Clavulanato 875/125mg VO 12/12h 7 dias
+4. Cultura + antibiograma do material drenado
+
+PROFUNDA (fáscia/músculo):
+1. Oxacilina 2g EV 4/4h + Ceftriaxona 2g EV 1x/dia OU
+2. Piperacilina-Tazobactam 4,5g EV 6/6h
+3. Se MRSA risco: adicionar Vancomicina 15-20mg/kg EV 12/12h
+4. Debridamento cirúrgico
+5. Cultura do tecido profundo
+
+ÓRGÃO/ESPAÇO (cavidade):
+1. Meropenem 1g EV 8/8h + Vancomicina 15-20mg/kg 12/12h
+2. Drenagem percutânea ou cirúrgica
+3. TC para avaliação de coleção`,
+    notes: "Classificação CDC de infecção de sítio cirúrgico: superficial (<30 dias), profunda (<30-90 dias), órgão/espaço (<30-90 dias).",
+    guideline: "ANVISA / CDC / IDSA / SBI",
+  },
 ];

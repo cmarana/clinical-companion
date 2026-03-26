@@ -751,5 +751,77 @@ Bacteriana (secreção purulenta):
 10. Dieta hiperproteica (auxiliar cicatrização)`,
     guideline: "SBQ / ABA",
   },
+  {
+    id: "rx-alta-angina-estavel",
+    title: "Alta — Dor Torácica / Angina Estável Investigada",
+    type: "Alta Hospitalar",
+    prescription: `1. AAS 100mg VO 1x/dia (uso contínuo)
+2. Atenolol 25-50mg VO 1x/dia OU Metoprolol 50mg VO 12/12h
+3. Sinvastatina 40mg VO à noite OU Rosuvastatina 10-20mg
+4. Isossorbida 5mg SL se dor anginosa (máx 3 doses, 5min intervalo)
+5. Enalapril 10mg VO 12/12h (se HAS, DM ou disfunção VE)
+6. Dieta hipossódica, hipolipídica
+7. Cessar tabagismo
+8. Atividade física orientada (teste ergométrico antes)
+9. Retorno Cardiologia em 7-14 dias com exames
+10. Retorno imediato se: dor torácica em repouso, dispneia, síncope`,
+    guideline: "SBC / AHA / ESC",
+  },
+  {
+    id: "rx-alta-avc-isquemico",
+    title: "Alta — AVC Isquêmico (Pós-Internação)",
+    type: "Alta Hospitalar",
+    prescription: `1. AAS 100mg VO 1x/dia (ou Clopidogrel 75mg se intolerância)
+2. Sinvastatina 40-80mg VO à noite (meta LDL <70)
+3. Anti-hipertensivo conforme indicação (iniciar após 24-48h):
+   - Losartana 50mg VO 1x/dia OU Enalapril 10mg VO 12/12h
+4. Se FA: Rivaroxabana 20mg VO 1x/dia OU Warfarina (INR 2-3)
+5. Controle glicêmico se DM
+6. Fisioterapia motora + fonoaudiologia (disfagia, afasia)
+7. Avaliação Neurologia em 30 dias
+8. Eco Doppler de carótidas (se não realizado)
+9. Ecocardiograma TT (fonte embólica)
+10. Sinais de alarme: déficit focal novo, cefaleia intensa, convulsão, febre`,
+    notes: "Dupla antiagregação (AAS + Clopidogrel) por 21 dias em AVC minor (NIHSS ≤3) ou AIT de alto risco.",
+    guideline: "ABN / AHA / ESO",
+  },
+  {
+    id: "rx-alta-bronquiolite",
+    title: "Alta — Bronquiolite (Lactente)",
+    type: "Alta Hospitalar",
+    prescription: `1. NÃO prescrever broncodilatadores de rotina (benefício não comprovado)
+2. Lavagem nasal com SF 0,9% frequente (antes das mamadas e ao deitar)
+3. Aspiração nasal suave se obstrução
+4. Fracionamento das mamadas (volumes menores, mais frequentes)
+5. Cabeceira elevada 30°
+6. Paracetamol 1 gota/kg VO 6/6h se febre (>37,8°C)
+7. Sinais de retorno imediato:
+   - Tiragem subcostal/intercostal
+   - Gemência, batimento de asa nasal
+   - Recusa alimentar >50%
+   - Cianose, apneia
+   - Piora da dispneia
+8. Retorno em 48-72h para reavaliação
+9. Manter aleitamento materno`,
+    notes: "Pico da doença: dia 3-5. Melhora gradual em 7-14 dias. Tosse residual pode durar 2-4 semanas.",
+    guideline: "SBP / AAP / NICE",
+  },
+  {
+    id: "rx-alta-epoc-exacerbacao",
+    title: "Alta — DPOC Exacerbação (Pós-PS)",
+    type: "Alta Hospitalar",
+    prescription: `1. Prednisona 40mg VO 1x/dia por 5 dias (não prolongar)
+2. Salbutamol spray 200mcg (2 jatos) 4/4-6/6h por 7 dias
+3. Brometo de Ipratrópio spray 40mcg (2 jatos) 6/6h por 7 dias
+4. Se ATB indicado (escarro purulento + dispneia): 
+   - Amoxicilina-Clavulanato 875/125mg VO 12/12h 5 dias OU
+   - Azitromicina 500mg VO 1x/dia 3 dias
+5. Manter medicações de base (LABA, LAMA, CI)
+6. Cessar tabagismo (referência ambulatorial)
+7. Vacinação: Influenza anual, Pneumo 23
+8. Retorno Pneumologia em 7-14 dias
+9. Retorno imediato se: dispneia pior que antes da alta, febre >38,5°C, escarro hemoptoico`,
+    guideline: "GOLD / SBPT / ATS",
+  },
 ];
 
