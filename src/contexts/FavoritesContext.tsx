@@ -2,7 +2,7 @@ import { createContext, useContext, useState, useEffect, type ReactNode } from "
 
 interface FavoriteItem {
   id: string;
-  type: "protocol" | "medication";
+  type: "protocol" | "medication" | "prescription";
   title: string;
 }
 
