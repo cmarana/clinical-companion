@@ -13,7 +13,7 @@ import { neuroFullProtocols } from "./neurology";
 import { neuroFullProtocols2 } from "./neurology2";
 import { neuroFullProtocols3 } from "./neurology3";
 import { neuroFullProtocols4 } from "./neurology4";
-import { neuroFullProtocols5 } from "./neurology5";
+
 import { sepsisFullProtocols } from "./sepsis";
 import { sepsisFullProtocols2 } from "./sepsis2";
 import { sepsisFullProtocols3 } from "./sepsis3";
