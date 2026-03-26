@@ -23,25 +23,31 @@ import { metabolicFullProtocols2 } from "./metabolic2";
 import { metabolicFullProtocols3 } from "./metabolic3";
 import { metabolicFullProtocols4 } from "./metabolic4";
 import { metabolicFullProtocols5 } from "./metabolic5";
+import { respiratoryFullProtocols } from "./respiratory";
+import { respiratoryFullProtocols2 } from "./respiratory2";
+import { respiratoryFullProtocols3 } from "./respiratory3";
 import { traumaFullProtocols } from "./trauma";
 import { traumaFullProtocols2 } from "./trauma2";
 import { traumaFullProtocols3 } from "./trauma3";
 import { obstetricsFullProtocols } from "./obstetrics";
 import { obstetricsFullProtocols2 } from "./obstetrics2";
 import { obstetricsFullProtocols3 } from "./obstetrics3";
+import { obstetricsFullProtocols4 } from "./obstetrics4";
 import { intoxicationFullProtocols } from "./intoxication";
 import { intoxicationFullProtocols2 } from "./intoxication2";
+import { intoxicationFullProtocols3 } from "./intoxication3";
 import { proceduresFullProtocols } from "./procedures";
+import { proceduresFullProtocols2 } from "./procedures2";
 import { pediatricFullProtocols } from "./pediatric";
 import { pediatricFullProtocols2 } from "./pediatric2";
 import { neonatalFullProtocols } from "./neonatal";
 import { infectiousFullProtocols } from "./infectious";
 import { infectiousFullProtocols2 } from "./infectious2";
 import { infectiousFullProtocols3 } from "./infectious3";
+import { infectiousFullProtocols4 } from "./infectious4";
 import { otherEmergenciesFullProtocols } from "./otherEmergencies";
 import { otherEmergenciesFullProtocols2 } from "./otherEmergencies2";
-import { respiratoryFullProtocols } from "./respiratory";
-import { respiratoryFullProtocols2 } from "./respiratory2";
+import { otherEmergenciesFullProtocols3 } from "./otherEmergencies3";
 
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
@@ -84,23 +90,29 @@ export const fullProtocols: FullProtocol[] = [
   ...metabolicFullProtocols5,
   ...respiratoryFullProtocols,
   ...respiratoryFullProtocols2,
+  ...respiratoryFullProtocols3,
   ...traumaFullProtocols,
   ...traumaFullProtocols2,
   ...traumaFullProtocols3,
   ...obstetricsFullProtocols,
   ...obstetricsFullProtocols2,
   ...obstetricsFullProtocols3,
+  ...obstetricsFullProtocols4,
   ...intoxicationFullProtocols,
   ...intoxicationFullProtocols2,
+  ...intoxicationFullProtocols3,
   ...proceduresFullProtocols,
+  ...proceduresFullProtocols2,
   ...pediatricFullProtocols,
   ...pediatricFullProtocols2,
   ...neonatalFullProtocols,
   ...infectiousFullProtocols,
   ...infectiousFullProtocols2,
   ...infectiousFullProtocols3,
+  ...infectiousFullProtocols4,
   ...otherEmergenciesFullProtocols,
   ...otherEmergenciesFullProtocols2,
+  ...otherEmergenciesFullProtocols3,
 ];
 
 export function getFullProtocol(id: string) {
