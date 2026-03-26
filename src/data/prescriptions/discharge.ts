@@ -500,5 +500,81 @@ Bacteriana (secreção purulenta):
 9. Follow-up ambulatorial em 30 dias (mortalidade pós-sepse é alta nos primeiros 90 dias)`,
     guideline: "SSC / ILAS",
   },
+  {
+    id: "rx-alta-diverticulite",
+    title: "Alta — Diverticulite Não Complicada",
+    type: "Prescrição de Alta",
+    prescription: `1. Ciprofloxacino 500mg — 1cp VO 12/12h por 7-10 dias
+2. Metronidazol 400mg — 1cp VO 8/8h por 7-10 dias
+3. OU Amoxicilina-Clavulanato 875/125mg — 1cp VO 12/12h por 7-10 dias
+4. Paracetamol 750mg VO 6/6h se dor (evitar AINEs)
+5. Buscopan simples 10mg VO 6/6h SN
+6. Dieta líquida 48-72h → progredir para dieta com fibras gradualmente
+7. Hidratação oral abundante
+8. Retorno em 5-7 dias para reavaliação
+9. Colonoscopia em 6-8 semanas (excluir neoplasia)
+10. Retorno PS se: febre, piora dor, vômitos, distensão abdominal`,
+    guideline: "CBCD / WSES",
+  },
+  {
+    id: "rx-alta-pneumotorax",
+    title: "Alta — Pneumotórax Pequeno",
+    type: "Prescrição de Alta",
+    prescription: `1. O2 suplementar por cateter nasal em domicílio NÃO é necessário
+2. Repouso relativo por 7-14 dias
+3. Evitar: esforço físico intenso, voo comercial, mergulho por 6 semanas
+4. Paracetamol 750mg VO 6/6h SN (dor pleurítica)
+5. NÃO usar AINEs (risco de sangramento)
+6. RX tórax de controle em 7-14 dias
+7. Se pneumotórax primário espontâneo pequeno (<2cm no ápice): pode acompanhar ambulatorialmente
+8. Retorno IMEDIATO ao PS se: dispneia piora, dor torácica intensa, taquicardia
+9. Encaminhar pneumologia
+10. Orientar: cessar tabagismo (reduz recorrência em 50%)`,
+    guideline: "SBPT / BTS / ACCP",
+  },
+  {
+    id: "rx-alta-colecistite",
+    title: "Alta — Pós-Colecistectomia",
+    type: "Prescrição de Alta",
+    prescription: `1. Dieta leve por 7-14 dias → progredir gradualmente
+2. Evitar: frituras, gorduras, condimentos fortes por 30 dias
+3. Paracetamol 750mg VO 6/6h SN
+4. Cetoprofeno 100mg VO 12/12h por 3-5 dias SN
+5. Tramadol 50mg VO 6/6h SN se dor intensa
+6. Omeprazol 20mg VO em jejum por 14 dias
+7. Cuidados com ferida operatória: manter limpo e seco
+8. Retirar pontos em 7-10 dias (UBS)
+9. Retorno cirurgião em 15-30 dias
+10. Retorno PS se: febre, icterícia, dor abdominal intensa, saída de bile pela ferida`,
+  },
+  {
+    id: "rx-alta-pancreatite-2",
+    title: "Alta — Pancreatite Aguda Leve",
+    type: "Prescrição de Alta",
+    prescription: `1. Dieta hipogordurosa estrita por 30 dias
+2. Evitar absolutamente: álcool (abstinência total)
+3. Paracetamol 750mg VO 6/6h SN
+4. Tramadol 50mg VO 6/6h SN se dor
+5. Omeprazol 20mg VO em jejum por 14 dias
+6. Enzima pancreática (Creon) se esteatorréia
+7. USG abdome em 30 dias (reavaliação biliar)
+8. Colecistectomia eletiva se biliar (prevenir recorrência)
+9. Retorno gastroenterologia em 15-30 dias
+10. Retorno PS se: dor intensa, febre, vômitos, icterícia`,
+    guideline: "SBG / AGA / ESGE",
+  },
+  {
+    id: "rx-alta-trombocitopenia",
+    title: "Alta — Trombocitopenia Imune (PTI)",
+    type: "Prescrição de Alta",
+    prescription: `1. Prednisona 1mg/kg/dia VO (máx 80mg) — desmame em 4-8 semanas
+2. Omeprazol 20mg VO em jejum (proteção gástrica)
+3. Evitar: AAS, AINEs, anticoagulantes
+4. Evitar atividades com risco de trauma
+5. Hemograma semanal nas primeiras 4 semanas
+6. Retorno hematologia em 7-14 dias
+7. Retorno PS se: sangramento ativo, petéquias novas extensas, hematúria, melena
+8. Se refratária: Romiplostim SC, Eltrombopag VO, ou esplenectomia`,
+    guideline: "ABHH / ASH / ITP Foundation",
+  },
 ];
-

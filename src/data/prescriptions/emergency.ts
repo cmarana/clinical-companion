@@ -587,5 +587,119 @@ TV Polimórfica (Torsades de Pointes):
     warnings: "Tétrade: hipertermia + rigidez + alteração mental + disautonomia. CPK >1000 é comum.",
     guideline: "ABP / APA / Toxicologia",
   },
-];
+  {
+    id: "rx-emerg-intox-paracetamol",
+    title: "Intoxicação por Paracetamol",
+    type: "Prescrição de Emergência",
+    prescription: `1. N-Acetilcisteína (NAC) — ANTÍDOTO:
+   Protocolo 21h (Prescott):
+   150mg/kg EV em 200mL SG5% em 1h (ataque)
+   → 50mg/kg em 500mL SG5% em 4h
+   → 100mg/kg em 1000mL SG5% em 16h
 
+2. Carvão ativado 1g/kg VO (se <2h da ingestão)
+3. Dosar nível sérico de paracetamol (a partir de 4h da ingestão)
+4. Nomograma de Rumack-Matthew (plotar nível x tempo)
+5. Iniciar NAC se: nível acima da linha de tratamento OU dose >150mg/kg OU dúvida
+6. TGO/TGP, bilirrubinas, INR, creatinina, gasometria a cada 6-12h
+7. Se INR >2 e encefalopatia: critérios de King's College (transplante)
+8. Lactato >3,5 em <4h = mau prognóstico
+9. Monitorar: insuficiência hepática nas primeiras 24-72h`,
+    warnings: "Dose tóxica: >150mg/kg ou >7,5g em adulto. Início pode ser ASSINTOMÁTICO — não esperar sintomas.",
+    guideline: "ABCF / CIT / Toxicologia Clínica",
+  },
+  {
+    id: "rx-emerg-overdose-opioide",
+    title: "Overdose de Opioide",
+    type: "Prescrição de Emergência",
+    prescription: `Tríade clássica: miose + rebaixamento + depressão respiratória
+
+1. ABCDE — garantir via aérea (ventilação é prioridade)
+2. Naloxona 0,4mg EV/IM/SC — repetir a cada 2-3 min até resposta
+   Dose pode chegar a 2-10mg se refratário
+3. Se sem acesso: Naloxona intranasal 4mg (spray)
+4. BVM se apneia enquanto prepara naloxona
+5. CUIDADO: meia-vida da naloxona (30-90min) é MENOR que a do opioide
+   → Risco de re-sedação → observar 4-6h mínimo
+6. Se opioide de longa ação (metadona): Naloxona BIC 0,4-0,8mg/h
+7. O2 suplementar
+8. Monitorização contínua (SpO2, FR, Glasgow)
+9. Glicemia capilar (excluir hipoglicemia)
+10. ECG (metadona causa QT longo)
+11. Toxicológico urinário
+12. Na alta: orientar sobre naloxona domiciliar (onde disponível)`,
+    warnings: "Naloxona pode precipitar abstinência aguda. Titular com cautela em dependentes. Monitorar por re-sedação.",
+    guideline: "ABCF / AHA / WHO",
+  },
+  {
+    id: "rx-emerg-eclampsia-ps",
+    title: "Eclâmpsia — Emergência no PS",
+    type: "Prescrição de Emergência",
+    prescription: `1. Proteger via aérea — DLE (decúbito lateral esquerdo)
+2. O2 sob máscara
+3. NÃO conter a convulsão fisicamente
+4. Sulfato de Magnésio (Esquema Zuspan) — 1ª LINHA:
+   Ataque: MgSO4 4g EV em 20 min
+   Manutenção: 1-2g/h EV em BIC
+5. Se convulsão refratária: Diazepam 10mg EV (resgate)
+6. Anti-hipertensivo se PAS ≥160 ou PAD ≥110:
+   Nifedipino 10mg VO OU Hidralazina 5mg EV
+7. SVD (diurese ≥25mL/h confirma nível terapêutico de Mg)
+8. Monitorar toxicidade do MgSO4: reflexo patelar, FR, diurese
+   Antídoto: Gluconato de cálcio 1g EV em 3 min se toxicidade
+9. Exames STAT: hemograma, plaquetas, TGO/TGP, LDH, creatinina, ácido úrico
+10. Avaliar resolução da gestação APÓS estabilização
+11. NÃO é indicação de cesárea de emergência imediata (estabilizar primeiro)`,
+    warnings: "Eclâmpsia pode ocorrer pós-parto (até 48h). MgSO4 manter por 24h após última crise.",
+    guideline: "FEBRASGO / ACOG / MS",
+  },
+  {
+    id: "rx-emerg-queimadura-va",
+    title: "Queimadura de Via Aérea / Inalação",
+    type: "Prescrição de Emergência",
+    prescription: `1. IOT PRECOCE (edema progride rapidamente — esperar é perigoso)
+   Tubo ≥7,5 (edema pode dificultar reintubação)
+2. O2 100% por 6-12h (tratar intoxicação por CO)
+3. Broncoscopia precoce (avaliar lesão de VA inferior)
+4. Ventilação protetora: VT 6mL/kg, PEEP 5-8
+5. NBZ com Salbutamol 10 gotas 2/2h (broncoespasmo)
+6. NBZ com Heparina 5000UI + SF 3mL 4/4h (reduz formação de cilindros)
+7. Aspiração traqueal frequente
+8. Cabeceira 30°
+9. Ressuscitação volêmica: Parkland (4mL × kg × %SCQ)
+10. Carboxihemoglobina (COHb): >15% = intoxicação significativa
+11. Gasometria: PaO2 pode estar NORMAL mesmo com CO alto
+12. Observação mínima 24h mesmo se assintomático`,
+    warnings: "Sinais de queimadura de VA: rouquidão, estridor, vibrissas chamuscadas, escarro carbonáceo, edema facial. IOT PRECOCE.",
+    guideline: "SBCP / ABA / AMIB",
+  },
+  {
+    id: "rx-emerg-acidente-escorpiao",
+    title: "Acidente Escorpiônico (Escorpião)",
+    type: "Prescrição de Emergência",
+    prescription: `Leve (dor local, parestesia):
+1. Analgesia: Dipirona 1g EV + Tramadol 50mg EV
+2. Lidocaína 2% sem vaso (infiltração local 1-2mL)
+3. Observação 4-6h
+4. NÃO requer soro
+
+Moderado (dor intensa + vômitos, sudorese, taquicardia):
+5. Soro antiescorpiônico (SAEsc) 2-3 ampolas EV
+6. Analgesia EV
+7. Monitorização 12-24h
+
+Grave (choque, EAP, arritmia, rebaixamento — mais em crianças):
+8. SAEsc 4-6 ampolas EV
+9. UTI
+10. Dobutamina se disfunção miocárdica (Eco à beira-leito)
+11. Furosemida se EAP
+12. Atropina se bradicardia
+13. IOT se insuficiência respiratória
+
+TODOS:
+14. Pré-medicar soro: Prometazina 25mg IM + Hidrocortisona 200mg EV
+15. Notificação compulsória`,
+    warnings: "Crianças <7 anos: SEMPRE grave até prova em contrário. Internação obrigatória. ECG + Eco.",
+    guideline: "MS / Instituto Butantan / SVS",
+  },
+];

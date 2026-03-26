@@ -1362,5 +1362,305 @@ Suporte:
 13. Duração anticoagulação: 3-6 meses (provocado) ou indefinido (não provocado/recorrente)`,
     guideline: "SBC / ESC 2019 / CHEST",
   },
-];
+  {
+    id: "rx-tuberculose-diag",
+    title: "Tuberculose Pulmonar — Tratamento",
+    type: "Prescrição Hospitalar",
+    prescription: `Esquema básico (RIPE) — 6 meses:
+Fase intensiva (2 meses):
+1. Rifampicina 600mg + Isoniazida 300mg + Pirazinamida 1600mg + Etambutol 1100mg
+   (Comprimido 4 em 1: RHZE — 4cp/dia se >50kg)
 
+Fase de manutenção (4 meses):
+2. Rifampicina 600mg + Isoniazida 300mg (RH — 2cp/dia)
+
+3. Piridoxina (B6) 50mg VO 1x/dia (prevenção de neuropatia por isoniazida)
+4. Jejum — tomar em jejum pela manhã (melhor absorção)
+5. TGO/TGP basal + mensal nos primeiros 3 meses
+6. BAAR mensal (controle de tratamento)
+7. RX tórax: início, 2° mês, 6° mês
+8. TDO (Tratamento Diretamente Observado) na UBS
+9. Notificação compulsória SINAN
+10. Investigar contactantes (PPD/IGRA + RX tórax)
+11. HIV obrigatório em todo paciente com TB`,
+    warnings: "NÃO usar corticoide sem ATB na TB ativa. Hepatotoxicidade: suspender se TGO >5x LSN ou icterícia.",
+    guideline: "MS / OMS / PNCT 2024",
+  },
+  {
+    id: "rx-hiv-pep-diag",
+    title: "PEP — Profilaxia Pós-Exposição HIV",
+    type: "Prescrição Hospitalar",
+    prescription: `INDICAÇÃO: exposição de risco ao HIV em até 72h
+
+Esquema preferencial (28 dias):
+1. Tenofovir 300mg + Lamivudina 300mg (TDF/3TC) — 1cp VO 1x/dia
+2. Dolutegravir 50mg — 1cp VO 1x/dia
+
+INICIAR O MAIS RÁPIDO POSSÍVEL (ideal <2h, máx 72h)
+
+Exames basais:
+3. HIV teste rápido (se positivo: NÃO é PEP, é tratamento)
+4. Hepatite B (HBsAg, anti-HBs), Hepatite C (anti-HCV)
+5. VDRL, creatinina, hemograma, TGO/TGP
+6. beta-HCG (mulheres)
+
+Seguimento:
+7. Retorno em 30 dias: repetir HIV, função renal
+8. Retorno em 90 dias: HIV, VDRL, hepatites
+9. Orientar: uso de preservativo até resultado final
+10. Se exposição sexual: avaliar ISTs (Ceftriaxona + Azitromicina profilático se violência)
+11. Encaminhar para SAE se HIV+`,
+    guideline: "MS / PCDT PEP 2024 / OMS",
+  },
+  {
+    id: "rx-leptospirose-diag",
+    title: "Leptospirose",
+    type: "Prescrição Hospitalar",
+    prescription: `Forma leve (anictérica):
+1. Doxiciclina 100mg VO 12/12h por 7 dias
+2. OU Amoxicilina 500mg VO 8/8h por 7 dias
+3. Hidratação oral abundante
+4. Dipirona 1g VO 6/6h SN (NÃO usar AINEs)
+
+Forma grave (síndrome de Weil: icterícia + IRA + hemorragia):
+5. Penicilina G cristalina 1,5 milhão UI EV 6/6h
+6. OU Ceftriaxona 1g EV 12/12h (alternativa)
+7. SF 0,9% — ressuscitação volêmica
+8. Hemodiálise precoce se IRA oligúrica (LRA não oligúrica é mais comum)
+9. Transfusão se hemorragia / plaquetopenia grave
+10. NÃO usar AINEs (risco de sangramento)
+11. Hemograma, bilirrubinas, creatinina, CPK, coagulograma
+12. Notificação compulsória
+13. Sorologia: ELISA IgM (a partir do 7° dia)`,
+    warnings: "Icterícia rubínica (alaranjada) + IRA + hemorragias = leptospirose até prova em contrário em área endêmica.",
+    guideline: "MS / SVS / SBI",
+  },
+  {
+    id: "rx-acidente-ofidico-diag",
+    title: "Acidente Ofídico (Envenenamento por Serpente)",
+    type: "Prescrição Hospitalar",
+    prescription: `Identificar o tipo de acidente:
+
+BOTRÓPICO (jararaca — mais comum 90%): dor, edema, equimose, coagulopatia
+1. Soro antibotrópico (SAB) EV: leve 4 amp, moderado 8 amp, grave 12 amp
+2. Hidratação agressiva (prevenir IRA por rabdomiólise/CIVD)
+3. Analgesia (NÃO usar AINEs — piora coagulopatia)
+
+CROTÁLICO (cascavel): facies miastênica, urina escura, pouca dor local
+4. Soro anticrotálico (SAC) EV: leve 5 amp, moderado 10 amp, grave 20 amp
+5. Manitol 20% 100mL EV se mioglobinúria
+
+ELAPÍDICO (coral verdadeira): neurotoxicidade, paralisia respiratória
+6. Soro antielapídico (SAE) 10 amp EV
+7. IOT se insuficiência respiratória (pode ser rápida)
+8. Neostigmina 0,05mg/kg EV (reversão parcial do bloqueio)
+
+TODOS:
+9. Pré-medicar soro: Prometazina 25mg IM + Hidrocortisona 500mg EV
+10. Notificação compulsória`,
+    warnings: "NUNCA fazer torniquete, sucção ou corte no local da picada. Soro antiofídico é o ÚNICO tratamento eficaz.",
+    guideline: "MS / Instituto Butantan / Fundação Ezequiel Dias",
+  },
+  {
+    id: "rx-fournier-diag",
+    title: "Gangrena de Fournier",
+    type: "Prescrição Hospitalar",
+    prescription: `EMERGÊNCIA CIRÚRGICA
+
+1. ATB de amplo espectro IMEDIATO:
+   Meropenem 1g EV 8/8h + Vancomicina 15mg/kg EV 12/12h + Clindamicina 900mg EV 8/8h
+2. OU Piperacilina-Tazobactam 4,5g EV 6/6h + Vancomicina + Clindamicina
+3. SF 0,9% — ressuscitação agressiva
+4. Noradrenalina se choque séptico
+5. Desbridamento cirúrgico URGENTE (vida > tecido)
+   Reoperação planejada em 24-48h (second look)
+6. Dipirona 1g EV 6/6h + Morfina 4mg EV 4/4h SN (dor intensa)
+7. SVD (se períneo comprometido)
+8. Hemograma, PCR, lactato, gasometria, coagulograma, hemoculturas
+9. TC pélvica (extensão, gás subcutâneo)
+10. Curativos com VAC (pressão negativa) após desbridamento
+11. Avaliar câmara hiperbárica (se disponível)
+12. Controle glicêmico rigoroso (maioria são diabéticos)`,
+    warnings: "Mortalidade 20-40%. Desbridamento precoce e agressivo é o principal fator prognóstico.",
+    guideline: "CBCD / WSES / SBU",
+  },
+  {
+    id: "rx-angioedema-diag",
+    title: "Angioedema",
+    type: "Prescrição Hospitalar",
+    prescription: `Angioedema alérgico (histaminérgico):
+1. Adrenalina 0,3-0,5mg IM se via aérea ameaçada
+2. Dexclorfeniramina 5mg EV
+3. Hidrocortisona 200mg EV
+4. Ranitidina 50mg EV
+5. Monitorar via aérea — IOT se estridor/disfonia progressiva
+6. Nebulização com Adrenalina 5mL se edema de VA
+
+Angioedema por IECA (bradicinicinérgico):
+7. SUSPENDER IECA permanentemente
+8. Anti-histamínicos podem NÃO funcionar (mediado por bradicinina)
+9. Icatibanto 30mg SC (se disponível — inibidor de bradicinina)
+10. OU concentrado de inibidor de C1 esterase 20UI/kg EV
+11. Adrenalina IM se via aérea comprometida
+12. Observação 24-48h (recorrência é possível)
+
+Angioedema hereditário:
+13. Concentrado de C1 inibidor ou Icatibanto
+14. NÃO responde a anti-histamínicos/corticoides
+15. Encaminhar imunologista`,
+    guideline: "ASBAI / WAO / EAACI",
+  },
+  {
+    id: "rx-trombose-cerebral-diag",
+    title: "Trombose Venosa Cerebral",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Heparina não-fracionada 80UI/kg bolus → 18UI/kg/h BIC (TTPA 2-2,5x)
+2. OU Enoxaparina 1mg/kg SC 12/12h
+3. Anticoagular MESMO SE hemorragia associada (recomendação forte)
+4. Anticonvulsivante se crise: Levetiracetam 500mg EV 12/12h
+5. Analgesia: Dipirona 1g EV 6/6h + Morfina se cefaleia intensa
+6. Manitol 20% 1g/kg EV se HIC (hipertensão intracraniana)
+7. Cabeceira a 30°
+8. RNM + AngioRM venosa (padrão-ouro diagnóstico)
+9. AngioTC venosa (alternativa se RM indisponível)
+10. Investigar trombofilias: proteína C/S, antitrombina, FV Leiden, mutação protrombina, anticorpo antifosfolípide
+11. Hemograma, coagulograma, D-dímero, beta-HCG
+12. Transição para Varfarina (INR 2-3) por 6-12 meses`,
+    notes: "Cefaleia progressiva + sinais focais + papiledema em mulher jovem/puérpera/uso ACO = pensar em TVC.",
+    guideline: "AHA/ASA 2024 / ESO / ABN",
+  },
+  {
+    id: "rx-derrame-pleural-diag",
+    title: "Derrame Pleural — Investigação e Tratamento",
+    type: "Prescrição Hospitalar",
+    prescription: `1. RX tórax PA + perfil + Laurell (decúbito lateral)
+2. USG torácica (localizar, estimar volume, guiar punção)
+3. Toracocentese diagnóstica (sempre que >10mm no Laurell):
+
+Análise do líquido:
+4. Proteínas, LDH, glicose, pH, celularidade, ADA
+5. Citologia oncótica + BAAR + cultura
+6. Critérios de Light (exsudato vs transudato):
+   Proteína LP/sérica >0,5 OU LDH LP/sérica >0,6 OU LDH LP >2/3 LSN = EXSUDATO
+
+Transudato: tratar causa (IC, cirrose, síndrome nefrótica)
+7. Furosemida 40-80mg EV + restrição hídrica
+
+Exsudato: investigar causa
+8. Empiema (pH <7,2, glicose <60, pus): drenagem torácica fechada
+9. TB pleural (ADA >40, linfocítico): RIPE esquema básico
+10. Neoplásico: citologia + biópsia pleural
+11. Paracentese de alívio se dispneia (máx 1500mL por vez)
+12. Drenagem torácica se: empiema, hemotórax, quilotórax, pneumotórax associado`,
+    guideline: "SBPT / BTS / ATS",
+  },
+  {
+    id: "rx-malaria-diag",
+    title: "Malária",
+    type: "Prescrição Hospitalar",
+    prescription: `P. vivax / P. ovale (forma mais comum no Brasil):
+1. Cloroquina 600mg D1 → 450mg D2 → 450mg D3
+2. Primaquina 15mg/dia por 14 dias (cura radical — eliminar hipnozoítos)
+3. Dosar G6PD antes da primaquina (risco de hemólise)
+
+P. falciparum não grave:
+4. Arteméter-Lumefantrina (Coartem): 4cp 12/12h por 3 dias
+5. + Primaquina 45mg dose única no D1 (gametocidose)
+
+P. falciparum grave (parasitemia >2%, alteração consciência, IRA, acidose):
+6. Artesunato 2,4mg/kg EV 0h, 12h, 24h → 1x/dia até VO possível
+7. Após melhora: completar com Coartem VO
+8. SF 0,9% — cuidado com edema pulmonar
+9. Transfusão se Hb <7 ou anemia grave sintomática
+10. Hemodiálise se IRA grave
+11. Gota espessa + teste rápido (diagnóstico)
+12. Notificação compulsória + SIVEP-Malária`,
+    warnings: "Malária grave por P. falciparum: mortalidade alta. Artesunato EV é superior à quinina.",
+    guideline: "MS / OMS / PNCM 2024",
+  },
+  {
+    id: "rx-tetano-diag",
+    title: "Tétano Acidental",
+    type: "Prescrição Hospitalar",
+    prescription: `1. UTI — ambiente escuro e silencioso (evitar estímulos)
+2. Imunoglobulina antitetânica (SAT humano) 3000-6000 UI IM
+3. OU Soro antitetânico (SAT equino) 20.000 UI EV (teste alérgico antes)
+4. Metronidazol 500mg EV 8/8h por 7-10 dias (eliminar C. tetani)
+5. Benzodiazepínico: Diazepam 5-10mg EV a cada 5 min até controle dos espasmos
+   → BIC: Midazolam 0,1-0,3mg/kg/h
+6. IOT se: espasmos laríngeos, insuficiência respiratória
+7. BNM: Rocurônio/Pancurônio se espasmos refratários (em VM)
+8. Sulfato de Magnésio 5g EV → 2-3g/h BIC (controle autonômico)
+9. Desbridamento do foco (ferida)
+10. Vacinação: dT (o tétano NÃO confere imunidade natural)
+11. Analgesia: Morfina 2-4mg EV SN
+12. Nutrição precoce por SNG se não tolera VO`,
+    warnings: "Tétano NÃO confere imunidade. Vacinar DURANTE a internação. Mortalidade 30-50% mesmo com tratamento.",
+    guideline: "MS / SVS / OMS",
+  },
+  {
+    id: "rx-crise-panico-diag",
+    title: "Crise de Pânico / Transtorno de Ansiedade Agudo",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Excluir causas orgânicas PRIMEIRO:
+   ECG (arritmia, IAM), glicemia, gasometria, TSH
+2. Ambiente calmo, acolhedor, privacidade
+3. Técnica de respiração: inspirar 4s → segurar 4s → expirar 6s
+4. Reassurar: "Não é infarto, não vai morrer, isso vai passar"
+
+Farmacológico (se necessário):
+5. Clonazepam 0,5mg SL (dissolve rápido)
+6. OU Alprazolam 0,5mg SL
+7. OU Diazepam 5-10mg VO
+
+8. Alta com orientações + encaminhamento psiquiatria
+9. Se recorrente: iniciar ISRS (Sertralina 50mg ou Escitalopram 10mg)
+10. TCC (terapia cognitivo-comportamental) é 1ª linha junto com ISRS
+11. Evitar uso crônico de benzodiazepínicos (dependência)`,
+    notes: "Diagnóstico de exclusão. Sempre excluir: IAM, TEP, arritmia, tireotoxicose, hipoglicemia, feocromocitoma.",
+    guideline: "ABP / APA / DSM-5",
+  },
+  {
+    id: "rx-tentativa-suicidio-diag",
+    title: "Tentativa de Suicídio — Manejo na Emergência",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Estabilização clínica PRIMEIRO (ABCDE se intoxicação/trauma)
+2. Lavagem gástrica + Carvão ativado se intoxicação <1h
+3. Antídotos específicos conforme substância
+4. NÃO deixar paciente sozinho em nenhum momento
+5. Retirar objetos perigosos (cintos, cadarços, objetos cortantes)
+6. Avaliação psiquiátrica OBRIGATÓRIA antes da alta
+7. Escalas: Columbia Suicide Severity Rating Scale (C-SSRS)
+8. Internação psiquiátrica se risco iminente persistente
+9. Contato familiar/pessoa de referência
+10. Plano de segurança: restringir acesso a meios letais
+11. Encaminhamento CAPS (Centro de Atenção Psicossocial)
+12. Follow-up em 48-72h (período de maior risco de nova tentativa)
+13. Notificação compulsória (violência autoprovocada)`,
+    warnings: "TODA tentativa de suicídio é grave. Não minimizar. Avaliação psiquiátrica é obrigatória. Notificação compulsória.",
+    guideline: "ABP / MS / OMS / CFM",
+  },
+  {
+    id: "rx-insuf-resp-aguda-diag",
+    title: "Insuficiência Respiratória Aguda",
+    type: "Prescrição Hospitalar",
+    prescription: `Tipo I (hipoxêmica — PaO2 <60):
+1. O2 suplementar: cateter nasal → máscara com reservatório → CNAF
+2. VNI: CPAP 5-10 ou BiPAP IPAP 12-20 / EPAP 5-8 (se não responde)
+3. IOT se: SpO2 <88% refratária, fadiga, rebaixamento
+
+Tipo II (hipercápnica — PaCO2 >50):
+4. VNI é 1ª linha (especialmente DPOC): BiPAP IPAP 15-20 / EPAP 5-8
+5. NÃO dar O2 em excesso no DPOC (alvo SpO2 88-92%)
+6. IOT se: pH <7,25 refratário, fadiga, Glasgow ↓
+
+Ventilação Mecânica:
+7. Modo: VCV ou PCV → volume corrente 6-8mL/kg peso predito
+8. PEEP: iniciar 5 → titular conforme oxigenação
+9. FiO2: menor possível para SpO2 >94% (88-92% se DPOC)
+10. Pplateau <30cmH2O (ventilação protetora)
+11. Gasometria 30 min após ajustes
+12. Investigar causa: RX tórax, ECG, BNP, D-dímero, troponina`,
+    guideline: "AMIB / SBPT / ARDS Network",
+  },
+];

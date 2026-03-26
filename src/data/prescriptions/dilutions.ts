@@ -812,5 +812,112 @@ CUIDADOS:
 - Custo baixo, disponível no SUS`,
     guideline: "CRASH-2 / WOMAN Trial / ATLS",
   },
-];
+  {
+    id: "rx-dil-vancomicina",
+    title: "Vancomicina — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO:
+Vancomicina 500mg + SF 0,9% 100mL → infundir em 1h
+Vancomicina 1g + SF 0,9% 200mL → infundir em 2h
+Vancomicina 2g + SF 0,9% 400mL → infundir em 2-3h
 
+Concentração máxima: 5mg/mL (para evitar flebite)
+
+DOSE:
+15-20mg/kg EV 12/12h (adulto com função renal normal)
+Dose de ataque (grave): 25-30mg/kg EV (dose única)
+Ajuste renal obrigatório (clearance de creatinina)
+
+MONITORIZAÇÃO:
+Vancocinemia (nível sérico vale): 15-20mcg/mL (infecção grave)
+AUC/MIC alvo: 400-600 (método preferido atualmente)
+Coletar no vale (antes da próxima dose) após 4ª-5ª dose
+
+CUIDADOS:
+- Infundir LENTO (Síndrome do Homem Vermelho = infusão rápida)
+- Se red man syndrome: parar, anti-histamínico, reiniciar mais devagar
+- Nefrotóxica: monitorar creatinina a cada 48-72h
+- Via central preferível se uso prolongado`,
+    warnings: "Síndrome do Homem Vermelho NÃO é alergia verdadeira. É reação histaminóide por infusão rápida.",
+    guideline: "IDSA / ASHP / SBI",
+  },
+  {
+    id: "rx-dil-nac",
+    title: "N-Acetilcisteína (NAC) — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `PROTOCOLO 21h (Prescott — padrão):
+ETAPA 1: NAC 150mg/kg em SG 5% 200mL EV em 1h
+ETAPA 2: NAC 50mg/kg em SG 5% 500mL EV em 4h
+ETAPA 3: NAC 100mg/kg em SG 5% 1000mL EV em 16h
+
+Exemplo (70kg):
+Etapa 1: 10.500mg (21 ampolas de 500mg/3mL = 63mL) em 200mL SG5% em 1h
+Etapa 2: 3.500mg (7 amp) em 500mL SG5% em 4h
+Etapa 3: 7.000mg (14 amp) em 1000mL SG5% em 16h
+
+INDICAÇÕES:
+- Intoxicação por paracetamol (dentro de 8-10h ideal)
+- Insuficiência hepática aguda (qualquer causa)
+- Prevenção de nefropatia por contraste (controverso)
+
+CUIDADOS:
+- Reação anafilactóide na 1ª etapa é comum (10-20%): reduzir velocidade
+- Se reação: parar, anti-histamínico, reiniciar mais devagar
+- Cheiro de enxofre forte é normal`,
+    guideline: "ABCF / CIT / Toxicologia",
+  },
+  {
+    id: "rx-dil-oxacilina",
+    title: "Oxacilina — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `RECONSTITUIÇÃO:
+Oxacilina 500mg: diluir em 10mL de água destilada
+Oxacilina 1g: diluir em 20mL de água destilada
+
+DILUIÇÃO PARA INFUSÃO:
+Oxacilina 2g + SF 0,9% 100mL → infundir em 30-60 min
+
+DOSE:
+Adulto: 2g EV 4/4h (infecção grave) ou 1g EV 6/6h (moderada)
+Dose máxima: 12g/dia
+
+INDICAÇÕES PRINCIPAIS:
+- Endocardite por S. aureus MSSA
+- Osteomielite
+- Celulite/erisipela grave
+- Artrite séptica por MSSA
+
+CUIDADOS:
+- Flebite frequente — rodar acesso a cada 72h
+- Nefrite intersticial com uso prolongado (monitorar EAS)
+- Estável apenas em SF 0,9% (NÃO usar SG 5%)
+- Incompatível com aminoglicosídeos na mesma via`,
+    guideline: "ANVISA / SBI",
+  },
+  {
+    id: "rx-dil-ceftriaxona",
+    title: "Ceftriaxona — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `IM:
+Ceftriaxona 1g + Lidocaína 1% 3,5mL → IM profundo no glúteo
+(Dor intensa se diluir em água destilada — SEMPRE usar lidocaína IM)
+
+EV em bolus:
+Ceftriaxona 1g + água destilada 10mL → infundir em 3-5 min
+
+EV em infusão:
+Ceftriaxona 1g + SF 0,9% 100mL → infundir em 30 min
+Ceftriaxona 2g + SF 0,9% 100mL → infundir em 30 min
+
+DOSE:
+Adulto: 1g EV 12/12h (maioria das infecções) ou 2g EV 1x/dia
+Meningite: 2g EV 12/12h
+Dose máxima: 4g/dia
+
+INCOMPATIBILIDADES:
+- NÃO diluir em soluções com cálcio (Ringer Lactato)
+- CONTRAINDICADO em RN que recebe cálcio EV (precipitação fatal)
+- Estável em SF 0,9% e SG 5%`,
+    guideline: "ANVISA / SBI / SBP",
+  },
+];

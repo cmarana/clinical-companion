@@ -472,5 +472,52 @@ Suporte:
 10. Urocultura + hemoculturas (E. coli é o germe mais comum)`,
     guideline: "SBU / EAU / IDSA",
   },
-];
+  {
+    id: "rx-atb-oftalmologico",
+    title: "Antibiótico — Infecções Oftalmológicas",
+    type: "Antibiótico por Foco",
+    prescription: `Conjuntivite bacteriana:
+1. Ciprofloxacino colírio 0,3% — 1 gota 4x/dia por 7 dias
+2. OU Tobramicina colírio 0,3% — 1 gota 4x/dia por 7 dias
 
+Celulite periorbitária (pré-septal):
+3. Amoxicilina-Clavulanato 875/125mg VO 12/12h por 7-10 dias
+4. Se grave: Ceftriaxona 1g EV 12/12h
+
+Celulite orbitária (pós-septal — EMERGÊNCIA):
+5. Ceftriaxona 2g EV 12/12h + Metronidazol 500mg EV 8/8h
+6. OU Piperacilina-Tazobactam 4,5g EV 6/6h
+7. TC órbitas com contraste urgente
+8. Avaliação oftalmológica IMEDIATA
+9. Drenagem cirúrgica se abscesso subperiósteo
+
+Endoftalmite:
+10. Injeção intravítrea: Vancomicina 1mg + Ceftazidima 2,25mg
+11. EMERGÊNCIA oftalmológica — vitrectomia se necessário`,
+    warnings: "Celulite orbitária: proptose, oftalmoplegia, perda visual = EMERGÊNCIA. Pode causar trombose de seio cavernoso.",
+    guideline: "CBO / AAO / SBI",
+  },
+  {
+    id: "rx-atb-otorrinolaringologico",
+    title: "Antibiótico — Infecções ORL",
+    type: "Antibiótico por Foco",
+    prescription: `Otite média aguda:
+1. Amoxicilina 50mg/kg/dia VO 8/8h por 10 dias (criança)
+2. Amoxicilina 500mg VO 8/8h por 7 dias (adulto)
+3. Se falha: Amoxicilina-Clavulanato ou Ceftriaxona IM
+
+Sinusite aguda bacteriana (>10 dias ou piora após melhora):
+4. Amoxicilina 500mg VO 8/8h por 10-14 dias
+5. OU Amoxicilina-Clavulanato 875mg VO 12/12h
+6. Se alergia: Levofloxacino 500mg 1x/dia
+
+Amigdalite estreptocócica:
+7. Amoxicilina 500mg VO 8/8h por 10 dias
+8. OU Penicilina Benzatina 1.200.000 UI IM dose única
+
+Otite externa:
+9. Ciprofloxacino + Dexametasona otológico — 4 gotas 12/12h por 7 dias
+10. NÃO usar aminoglicosídeos tópicos se perfuração timpânica`,
+    guideline: "ABORL / AAO-HNS / IDSA",
+  },
+];

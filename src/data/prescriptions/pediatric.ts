@@ -511,5 +511,81 @@ E — Exposição:
     warnings: "NÃO fazer manobra de Heimlich. Priorizar VENTILAÇÃO. Hipotermia em criança: NÃO parar RCP até reaquecer.",
     guideline: "SBP / SOBRASA / ILCOR",
   },
-];
+  {
+    id: "rx-ped-corpo-estranho",
+    title: "Corpo Estranho de Via Aérea Pediátrico",
+    type: "Prescrição Pediátrica",
+    prescription: `OBSTRUÇÃO COMPLETA (não respira, não chora, cianose):
 
+<1 ano:
+1. 5 tapas dorsais + 5 compressões torácicas (alternados)
+2. NÃO fazer Heimlich em lactente
+3. Verificar boca entre ciclos (remover se visível)
+4. Se inconsciente: iniciar RCP
+
+>1 ano:
+5. Manobra de Heimlich (compressões abdominais subdiafragmáticas)
+6. Se inconsciente: RCP + verificar boca a cada ciclo
+
+OBSTRUÇÃO PARCIAL (tosse eficaz):
+7. NÃO intervir — estimular tosse
+8. Monitorar — pode evoluir para completa
+
+Pós-desobstrução:
+9. RX tórax AP + lateral
+10. Broncoscopia se: suspeita de CE residual, estridor persistente, sibilância unilateral
+11. Observação mínima 6h
+12. CE esofágico: RX + endoscopia (bateria-botão = EMERGÊNCIA)`,
+    warnings: "Bateria-botão no esôfago: EMERGÊNCIA absoluta (<2h causa necrose). Endoscopia IMEDIATA.",
+    guideline: "SBP / AHA / PALS",
+  },
+  {
+    id: "rx-ped-desnutricao-grave",
+    title: "Desnutrição Grave (Marasmo/Kwashiorkor)",
+    type: "Prescrição Pediátrica",
+    prescription: `FASE DE ESTABILIZAÇÃO (D1-7):
+1. NÃO hiper-hidratar (risco de IC)
+2. ReSoMal 5mL/kg a cada 30 min por 2h → reavaliação
+3. ATB: Amoxicilina 15mg/kg VO 8/8h + Gentamicina 7,5mg/kg IM 1x/dia
+4. Vitamina A: <6m 50.000UI, 6-12m 100.000UI, >12m 200.000UI (dose única)
+5. Ácido fólico 5mg D1 → 1mg/dia
+6. Alimentação: F-75 (100kcal/100mL) a cada 2-3h → NÃO usar F-100 nesta fase
+7. Manter aquecido (hipotermia é letal)
+8. Glicemia 3/3h (hipoglicemia é frequente e fatal)
+   Se <54: Glicose 10% 5mL/kg VO ou EV
+
+FASE DE REABILITAÇÃO (D8-42):
+9. F-100 (100kcal/100mL) → aumentar gradualmente
+10. Sulfato ferroso 3mg/kg/dia (SOMENTE nesta fase, NÃO antes)
+11. Zinco 2mg/kg/dia
+12. Estimulação psicomotora`,
+    warnings: "NÃO dar ferro na fase de estabilização (piora infecção). NÃO hiper-hidratar (risco IC). Aquecer SEMPRE.",
+    guideline: "MS / OMS / SBP",
+  },
+  {
+    id: "rx-ped-croup",
+    title: "Crupe Viral (Laringotraqueobronquite) — Completo",
+    type: "Prescrição Pediátrica",
+    prescription: `Leve (estridor apenas ao chorar, sem tiragem):
+1. Dexametasona 0,15-0,3mg/kg VO dose única (máx 10mg)
+2. Alta com orientações
+
+Moderado (estridor em repouso, tiragem intercostal):
+3. Dexametasona 0,6mg/kg VO/IM dose única (máx 10mg)
+4. Adrenalina NBZ: 0,5mL/kg (máx 5mL) da solução 1:1000 + SF 3mL
+5. Observar 2-4h após adrenalina (efeito rebote possível)
+
+Grave (estridor importante, tiragem grave, agitação, cianose):
+6. Adrenalina NBZ repetida a cada 20 min (até 3x)
+7. Dexametasona 0,6mg/kg EV/IM
+8. O2 umidificado
+9. Posição confortável (NÃO examinar orofaringe — risco de laringoespasmo)
+10. IOT se: falência respiratória (tubo 0,5-1 menor que o habitual)
+
+Todos:
+11. Manter hidratação oral/EV
+12. NÃO usar sedativos`,
+    notes: "Pico dos sintomas: D2-3 da doença. Tosse ladrante + estridor inspiratório + rouquidão.",
+    guideline: "SBP / AAP / CPS",
+  },
+];
