@@ -6,6 +6,15 @@ import { Copy, Check, Star, Printer } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useFavorites } from "@/contexts/FavoritesContext";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogFooter,
+} from "@/components/ui/dialog";
 
 export default function PrescriptionDetail() {
   const { id } = useParams();
@@ -13,6 +22,10 @@ export default function PrescriptionDetail() {
   const { toast } = useToast();
   const [copied, setCopied] = useState(false);
   const { isFavorite, toggleFavorite } = useFavorites();
+  const [showPrintDialog, setShowPrintDialog] = useState(false);
+  const [patientName, setPatientName] = useState("");
+  const [patientBed, setPatientBed] = useState("");
+  const [patientRecord, setPatientRecord] = useState("");
 
   const prescription = prescriptionCategories
     .flatMap(c => c.items)
@@ -48,6 +61,15 @@ export default function PrescriptionDetail() {
 
     const escapeHtml = (str: string) => str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 
+    const patientInfo = [patientName, patientBed, patientRecord].filter(Boolean);
+    const patientBlock = patientInfo.length
+      ? `<div class="patient-info">
+          ${patientName ? `<div><strong>Paciente:</strong> ${escapeHtml(patientName)}</div>` : ""}
+          ${patientBed ? `<div><strong>Leito:</strong> ${escapeHtml(patientBed)}</div>` : ""}
+          ${patientRecord ? `<div><strong>Prontuário:</strong> ${escapeHtml(patientRecord)}</div>` : ""}
+        </div>`
+      : "";
+
     printWindow.document.write(`<!DOCTYPE html>
 <html><head><meta charset="utf-8"><title>${escapeHtml(prescription.title)}</title>
 <style>
@@ -56,6 +78,8 @@ export default function PrescriptionDetail() {
   .header { border-bottom: 2px solid #000; padding-bottom: 10px; margin-bottom: 18px; }
   .header h1 { font-size: 16pt; font-weight: 700; }
   .header .type { font-size: 10pt; color: #555; margin-top: 2px; }
+  .patient-info { background: #f5f5f5; border: 1px solid #ddd; padding: 10px 14px; border-radius: 4px; margin-bottom: 16px; font-size: 11pt; line-height: 1.8; }
+  .patient-info strong { font-weight: 600; }
   .guideline { font-size: 9pt; background: #f0f0f0; padding: 4px 10px; border-radius: 4px; display: inline-block; margin-bottom: 14px; }
   .section { margin-bottom: 14px; }
   .section h2 { font-size: 13pt; font-weight: 600; margin-bottom: 6px; border-bottom: 1px solid #ddd; padding-bottom: 3px; }
@@ -72,6 +96,7 @@ export default function PrescriptionDetail() {
   <h1>${escapeHtml(prescription.title)}</h1>
   <div class="type">${escapeHtml(prescription.type)}</div>
 </div>
+${patientBlock}
 ${prescription.guideline ? `<div class="guideline">Diretriz: ${escapeHtml(prescription.guideline)}</div>` : ""}
 <div class="section"><h2>Prescrição</h2><pre>${escapeHtml(prescription.prescription)}</pre></div>
 ${prescription.alternatives ? `<div class="section"><h2>Alternativas</h2><pre>${escapeHtml(prescription.alternatives)}</pre></div>` : ""}
@@ -83,6 +108,7 @@ ${prescription.warnings ? `<div class="warning"><h2>⚠ Atenção</h2><pre>${esc
 
     printWindow.document.close();
     setTimeout(() => { printWindow.print(); }, 300);
+    setShowPrintDialog(false);
   };
 
   return (
@@ -109,7 +135,7 @@ ${prescription.warnings ? `<div class="warning"><h2>⚠ Atenção</h2><pre>${esc
             >
               <Star size={14} className={isFavorite(prescription.id) ? "fill-warning text-warning" : ""} />
             </Button>
-            <Button size="sm" variant="outline" onClick={handlePrint} className="gap-1.5">
+            <Button size="sm" variant="outline" onClick={() => setShowPrintDialog(true)} className="gap-1.5">
               <Printer size={14} />
               PDF
             </Button>
@@ -152,6 +178,41 @@ ${prescription.warnings ? `<div class="warning"><h2>⚠ Atenção</h2><pre>${esc
           </div>
         )}
       </div>
+
+      {/* Dialog para dados do paciente antes de imprimir */}
+      <Dialog open={showPrintDialog} onOpenChange={setShowPrintDialog}>
+        <DialogContent className="max-w-sm">
+          <DialogHeader>
+            <DialogTitle className="font-heading text-base">Dados do Paciente</DialogTitle>
+            <p className="text-xs text-muted-foreground">Campos opcionais — preencha para incluir no PDF</p>
+          </DialogHeader>
+          <div className="space-y-3 py-2">
+            <div>
+              <Label className="text-xs font-heading">Nome do paciente</Label>
+              <Input value={patientName} onChange={e => setPatientName(e.target.value)} placeholder="João da Silva" className="h-9 text-sm" />
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <div>
+                <Label className="text-xs font-heading">Leito</Label>
+                <Input value={patientBed} onChange={e => setPatientBed(e.target.value)} placeholder="12-A" className="h-9 text-sm" />
+              </div>
+              <div>
+                <Label className="text-xs font-heading">Prontuário</Label>
+                <Input value={patientRecord} onChange={e => setPatientRecord(e.target.value)} placeholder="123456" className="h-9 text-sm" />
+              </div>
+            </div>
+          </div>
+          <DialogFooter className="flex-row gap-2">
+            <Button variant="outline" size="sm" onClick={handlePrint} className="flex-1 text-xs">
+              Pular e imprimir
+            </Button>
+            <Button size="sm" onClick={handlePrint} className="flex-1 text-xs">
+              <Printer size={14} className="mr-1" />
+              Gerar PDF
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }
