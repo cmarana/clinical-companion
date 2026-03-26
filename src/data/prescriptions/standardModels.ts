@@ -621,4 +621,48 @@ CRM / Carimbo / Assinatura`,
     warnings: "Paciente transplantado pode não fazer febre/leucocitose com infecção grave. Baixo limiar para investigar e tratar.",
     guideline: "ABTO / AST / KDIGO",
   },
+  {
+    id: "rx-modelo-reumatologico",
+    title: "Modelo — Paciente Reumatológico em Flare",
+    type: "Modelo Padrão",
+    prescription: `1. Dieta livre (hiperproteica se corticoide dose alta)
+2. Hidratação: SF 0,9% 1500mL EV/24h
+3. Corticoide conforme doença de base:
+   - LES: Metilprednisolona 1g/dia x 3 OU Prednisona 1mg/kg/dia
+   - AR/espondiloartrite: Prednisona 10-20mg/dia
+4. Manter imunossupressor habitual (discutir com Reumatologista)
+5. Omeprazol 20mg VO 1x/dia
+6. Cálcio 1000mg + Vitamina D 1000UI/dia
+7. Profilaxia TVP: Enoxaparina 40mg SC 1x/dia (se acamado)
+8. Se febre: investigar infecção ANTES de aumentar imunossupressão
+   - Hemograma, PCR, hemoculturas, EAS, RX tórax
+9. Profilaxia Pneumocystis se dose alta de corticoide: SMX-TMP 400/80mg/dia
+10. Glicemia capilar 6/6h (corticoide)
+11. Monitorizar: função renal, hepática, hemograma seriado`,
+    notes: "Paciente imunossuprimido: infecção pode simular flare e vice-versa. Na dúvida, tratar AMBOS.",
+    guideline: "SBR / ACR / EULAR",
+  },
+  {
+    id: "rx-modelo-grande-queimado-uti",
+    title: "Modelo — Grande Queimado UTI (>20% SCQ)",
+    type: "Modelo Padrão",
+    prescription: `1. ABCDE (IOT se queimadura de face/via aérea)
+2. Fórmula de Parkland: 4mL x peso(kg) x %SCQ de RL
+   - 50% nas primeiras 8h (desde a hora da queimadura)
+   - 50% nas próximas 16h
+3. SVD + diurese horária (meta: 0,5-1mL/kg/h; se mioglobinúria: 1-2mL/kg/h)
+4. Analgesia:
+   - Morfina 0,1mg/kg EV (titular) + Ketamina 0,3mg/kg para procedimentos
+   - Dipirona 1g EV 6/6h
+5. Omeprazol 40mg EV 1x/dia (úlcera de Curling)
+6. Profilaxia antitetânica (dT/SAT)
+7. Curativo com Sulfadiazina de prata 1% ou curativo biológico
+8. Aquecimento do paciente (hipotermia agrava)
+9. Nutrição enteral precoce (iniciar em 6-12h): dieta hiperproteica hipercalórica
+10. ATB: NÃO usar profilático — tratar apenas infecção documentada
+11. Albumina após 24h se SCQ >30%
+12. Escarotomia se queimadura circunferencial (comprometimento vascular ou respiratório)`,
+    warnings: "NÃO usar Succinilcolina para IOT após 24h de queimadura (hipercalemia letal). Cálculo de Parkland é guia — ajustar por diurese.",
+    guideline: "SBQ / ABA / ISBI",
+  },
 ];

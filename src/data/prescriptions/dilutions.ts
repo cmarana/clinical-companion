@@ -1321,5 +1321,150 @@ Estabilidade:
     warnings: "Hiperglicemia frequente. Monitorizar glicemia capilar 4/4h. Não suspender abruptamente após uso >3 dias.",
     guideline: "ANVISA / SSC / Endocrine Society",
   },
+  {
+    id: "rx-dil-tigeciclina",
+    title: "Tigeciclina — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `Apresentação: Tigeciclina 50mg pó liofilizado
+
+Reconstituição:
+- Diluir em 5,3mL de SF 0,9% (concentração 10mg/mL)
+
+Diluição EV:
+- Transferir dose para 100mL de SF 0,9% ou SG 5%
+- Infundir em 30-60 minutos
+
+Doses:
+- Ataque: 100mg EV (dose única)
+- Manutenção: 50mg EV 12/12h
+- Infecções graves/resistentes: 100mg 12/12h (high-dose — off-label)
+
+NÃO necessita ajuste renal
+NÃO necessita ajuste hepático leve-moderado (Child A-B)
+Child-Pugh C: 25mg 12/12h
+
+Estabilidade:
+- Reconstituída: usar imediatamente
+- Diluída: 24h TA, 48h refrigerada`,
+    notes: "Glicilciclina: cobre MRSA, VRE, Acinetobacter, KPC (algumas). NÃO cobre Pseudomonas nem Proteus. Evitar em bacteremia (baixos níveis séricos).",
+    warnings: "Aumento de mortalidade em monoterapia para bacteremia e VAP (FDA black box). Usar em combinação. Náusea/vômito frequentes.",
+    guideline: "ANVISA / IDSA / SBI",
+  },
+  {
+    id: "rx-dil-colistina",
+    title: "Colistina (Polimixina E) — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `Apresentação: Colistimetato de sódio 1.000.000 UI (≈80mg CBA ou ≈33mg CMS)
+
+ATENÇÃO: Existem 2 unidades — CBA (colistin base activity) e CMS. Confirmar apresentação!
+
+Reconstituição:
+- Diluir frasco em 10mL AD
+
+Dose de ATAQUE (obrigatória):
+- 9 milhões UI CMS EV (≈300mg CBA) — dose única
+- Diluir em 100mL SF, infundir em 30-60min
+
+Dose de MANUTENÇÃO (iniciar 12-24h após ataque):
+- Função renal normal: 4,5 milhões UI CMS EV 12/12h
+- Ajustar por ClCr (consultar tabela)
+- Diluir em 100mL SF, infundir em 30-60min
+
+Via inalatória (adjuvante em VAP):
+- 1-2 milhões UI em 4mL SF nebulização 8/8h
+
+Monitorização:
+- Função renal diária (nefrotóxica — 30-60%)
+- Nível sérico de Colistina se disponível (alvo: 2-4mg/L)`,
+    notes: "Última linha para Gram-negativos MDR (Acinetobacter, KPC, Pseudomonas pan-R). Loading dose é ESSENCIAL — sem ela, níveis subterapêuticos por 48h.",
+    warnings: "Nefrotoxicidade dose-dependente e reversível na maioria. Neurotoxicidade: parestesias, fraqueza. NÃO misturar com outros nefrotóxicos.",
+    guideline: "ANVISA / IDSA / SBI / EUCAST",
+  },
+  {
+    id: "rx-dil-daptomicina",
+    title: "Daptomicina — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `Apresentação: Daptomicina 350mg ou 500mg pó liofilizado
+
+Reconstituição:
+- 350mg: 7mL de SF 0,9% (concentração 50mg/mL)
+- 500mg: 10mL de SF 0,9% (concentração 50mg/mL)
+
+Diluição EV:
+- Diluir em 50mL SF 0,9% (NÃO usar SG — incompatível)
+- Infundir em 30 minutos
+- OU administrar EV direto em 2 minutos (sem diluição)
+
+Doses:
+- Infecção de pele: 4mg/kg EV 1x/dia
+- Bacteremia / Endocardite: 6-10mg/kg EV 1x/dia
+- MRSA com vancomicina MIC ≥2: considerar 8-10mg/kg
+
+Ajuste renal: ClCr <30 ou HD → 4-6mg/kg a cada 48h (administrar após HD)
+
+Monitorização:
+- CPK semanal (miopatia — suspender se CPK >10x LSN)
+- NÃO usar com estatinas concomitantemente
+
+Estabilidade:
+- Reconstituída: 12h TA, 48h refrigerada`,
+    notes: "Cobre MRSA, VRE, Enterococcus. NÃO usar para pneumonia (inativada pelo surfactante pulmonar). Alternativa à Vancomicina em bacteremia.",
+    warnings: "Miopatia: monitorizar CPK. Suspender estatinas durante uso. Pneumonia eosinofílica rara mas descrita.",
+    guideline: "ANVISA / IDSA / SBI",
+  },
+  {
+    id: "rx-dil-azitromicina-ev",
+    title: "Azitromicina EV — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `Apresentação: Azitromicina 500mg pó para reconstituição
+
+Reconstituição:
+- Diluir 500mg em 4,8mL de AD (concentração 100mg/mL)
+
+Diluição EV:
+- 1ª diluição: adicionar dose em 250-500mL SF 0,9% ou SG 5%
+- Concentração final: 1-2mg/mL
+- NUNCA concentração >2mg/mL
+
+Infusão:
+- 1mg/mL: infundir em 3 horas
+- 2mg/mL: infundir em 1 hora
+- NUNCA em bolus (risco de arritmia)
+
+Doses:
+- PAC grave: 500mg EV 1x/dia por 2-5 dias, depois VO
+- Legionella: 500mg EV 1x/dia
+
+Estabilidade:
+- Reconstituída: 24h TA
+- Diluída: 24h TA (1mg/mL) ou 7 dias refrigerada`,
+    notes: "Excelente para atípicos (Legionella, Mycoplasma, Chlamydia). Trocar para VO assim que possível (boa biodisponibilidade oral).",
+    warnings: "Prolongamento de QT. Evitar com outros QT-prolongadores (Amiodarona, Haloperidol). ECG antes se cardiopata.",
+    guideline: "ANVISA / ASHP / SBI",
+  },
+  {
+    id: "rx-dil-tramadol-ev",
+    title: "Tramadol EV — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `Apresentação: Tramadol 50mg/mL ampola 2mL (100mg)
+
+Administração EV:
+- Bolus lento: diluir 100mg em 10mL SF, infundir em 2-3 minutos
+- Infusão contínua: diluir 200-400mg em 250-500mL SF ou SG 5%
+  Velocidade: 10-20mg/hora
+
+Doses:
+- 50-100mg EV 6/6-8/8h (máx 400mg/dia)
+- Idoso/DRC: 50mg 8/8h (máx 200-300mg/dia)
+- NÃO usar em ClCr <10 (acúmulo metabólito ativo)
+
+Pré-medicação: Metoclopramida 10mg EV ou Ondansetrona 4mg EV (náusea)
+
+Estabilidade:
+- Diluído: 24h TA`,
+    notes: "Opioide fraco. Menor depressão respiratória que Morfina. Efeito dual: opioide + inibição recaptação serotonina/noradrenalina.",
+    warnings: "Risco de síndrome serotoninérgica com ISRS/IRSN. Reduz limiar convulsivo — cuidado em epilépticos. NÃO usar com IMAO.",
+    guideline: "ANVISA / SBA / SBAD",
+  },
 ];
 
