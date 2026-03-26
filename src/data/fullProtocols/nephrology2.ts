@@ -2,7 +2,7 @@ import type { FullProtocol } from "./types";
 
 export const nephrologyFullProtocols2: FullProtocol[] = [
   {
-    id: "fp-hipercalemia",
+    id: "fp-hipercalemia-nefro",
     title: "Hipercalemia de Emergência",
     categoryId: "nephrology",
     category: "Nefrologia / Urologia de Emergência",

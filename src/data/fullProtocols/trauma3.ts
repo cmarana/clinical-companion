@@ -82,7 +82,7 @@ export const traumaFullProtocols3: FullProtocol[] = [
     ]
   },
   {
-    id: "fp-queimaduras", title: "Queimaduras", categoryId: "trauma", category: "Trauma e Cirurgia",
+    id: "fp-queimaduras-trauma", title: "Queimaduras", categoryId: "trauma", category: "Trauma e Cirurgia",
     tags: ["queimadura", "SCQ", "parkland", "inalação", "escarotomia"],
     sections: [
       { id: "intro", title: "Introdução", content: "Lesões por agentes térmicos, químicos, elétricos ou radioativos. Extensão (SCQ) e profundidade determinam gravidade. > 20% SCQ requer ressuscitação volêmica pela fórmula de Parkland." },

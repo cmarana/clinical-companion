@@ -42,7 +42,7 @@ export const sepsisFullProtocols2: FullProtocol[] = [
     ]
   },
   {
-    id: "fp-hda", title: "Hemorragia Digestiva Alta", categoryId: "sepsis", category: "Sepse e Choque",
+    id: "fp-hda-choque", title: "Hemorragia Digestiva Alta com Choque", categoryId: "sepsis", category: "Sepse e Choque",
     tags: ["hda", "hemorragia", "digestiva", "endoscopia", "varizes", "úlcera"],
     sections: [
       { id: "intro", title: "Introdução", content: "HDA: sangramento acima do ângulo de Treitz. Mortalidade: 5-10% (não varicosa) e até 20-30% (varicosa). Ressuscitação + EDA precoce são os pilares. Diretrizes: ACG 2021, Baveno VII 2022." },
