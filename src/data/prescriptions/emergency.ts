@@ -702,4 +702,125 @@ TODOS:
     warnings: "Crianças <7 anos: SEMPRE grave até prova em contrário. Internação obrigatória. ECG + Eco.",
     guideline: "MS / Instituto Butantan / SVS",
   },
+  {
+    id: "rx-emerg-choque-hemorragico",
+    title: "Choque Hemorrágico — Protocolo de Transfusão Maciça",
+    type: "Prescrição de Emergência",
+    prescription: `Classificação (ATLS):
+Classe I: <750mL (normal) | II: 750-1500mL (taquicardia)
+Classe III: 1500-2000mL (hipotensão) | IV: >2000mL (risco de morte)
+
+1. 2 acessos calibrosos (14-16G) → IO se necessário
+2. SF 0,9% ou RL 1000mL EV rápido (máx 1-2L cristaloide)
+3. Ácido Tranexâmico 1g EV em 10 min (dentro de 3h)
+4. Tipagem sanguínea + ativar protocolo de transfusão maciça
+
+PROTOCOLO DE TRANSFUSÃO MACIÇA (PTM):
+5. CH:PFC:PLQ na proporção 1:1:1
+6. Pacote 1: 6 CH + 6 PFC + 1 aférese PLQ
+7. Fibrinogênio alvo >1,5: Crioprecipitado 10 unidades
+8. Cálcio: Gluconato de cálcio 1g EV a cada 4 CH (citrato quela Ca)
+9. Aquecer hemoderivados (hipotermia piora coagulopatia)
+
+Tríade letal do trauma:
+10. Hipotermia + Acidose + Coagulopatia → reaquecimento + correção
+11. Cirurgia de controle de danos (tamponar → UTI → reabordar)
+12. Alvo: PAM 65 (ou PAS 80-90 se hemorragia não controlada — hipotensão permissiva)`,
+    warnings: "Hipotensão permissiva (PAS 80-90) EXCETO em TCE (manter PAS ≥100 em TCE).",
+    guideline: "ATLS / ABHH / CRASH-2",
+  },
+  {
+    id: "rx-emerg-intox-bzd",
+    title: "Intoxicação por Benzodiazepínico",
+    type: "Prescrição de Emergência",
+    prescription: `1. ABCDE — via aérea é prioridade (depressão respiratória)
+2. O2 suplementar
+3. IOT se: apneia, Glasgow ≤8, perda de reflexo protetor
+4. Flumazenil 0,2mg EV em 15s → 0,3mg após 30s → 0,5mg a cada 1 min
+   Dose máxima: 3-5mg total
+   
+CONTRAINDICAÇÕES DO FLUMAZENIL:
+5. Epiléptico em uso crônico de BZD (risco de status epiléptico)
+6. Coingestão de ADT, cocaína, ou substância pró-convulsivante
+7. Dependente de BZD (precipita abstinência grave + convulsão)
+8. ECG com QRS alargado (sugere ADT)
+
+9. Carvão ativado 1g/kg se <1h da ingestão
+10. Monitorização contínua (re-sedação: meia-vida do flumazenil é CURTA — 45-90min)
+11. Observação 6-12h (BZDs de longa ação)
+12. Glicemia, gasometria, toxicológico
+13. Avaliar intencionalidade (tentativa de suicídio → psiquiatria)`,
+    warnings: "Flumazenil é PERIGOSO em epilépticos e polintoxicação. Na dúvida, NÃO usar — manter suporte.",
+    guideline: "ABCF / CIT / Toxicologia",
+  },
+  {
+    id: "rx-emerg-crise-hipertensiva-ps",
+    title: "Emergência vs Urgência Hipertensiva — Manejo no PS",
+    type: "Prescrição de Emergência",
+    prescription: `URGÊNCIA HIPERTENSIVA (PA elevada SEM lesão de órgão-alvo):
+1. Captopril 25mg VO (pode repetir em 30 min)
+2. OU Clonidina 0,1-0,2mg VO (repetir 0,1mg a cada hora, máx 0,6mg)
+3. Repouso + ambiente calmo
+4. Meta: reduzir PA em 24-48h (NÃO rapidamente)
+5. Alta com anti-hipertensivo ajustado + retorno em 7 dias
+
+EMERGÊNCIA HIPERTENSIVA (PA elevada COM lesão de órgão-alvo):
+6. Nitroprussiato de sódio 0,3-10mcg/kg/min EV (1ª escolha na maioria)
+7. OU Nitroglicerina 5-200mcg/min (se SCA ou EAP)
+8. OU Labetalol EV (dissecção aórtica — com esmolol)
+9. OU Hidralazina 5mg EV (gestante — pré-eclâmpsia)
+10. Meta: reduzir 20-25% da PA na 1ª hora → normalizar em 24-48h
+11. Monitorização contínua (UTI)
+12. Investigar LOA: fundo de olho, creatinina, EAS, troponina, TC crânio, ECG`,
+    warnings: "NÃO dar nifedipino SL (queda abrupta = AVC/IAM). Redução gradual e controlada.",
+    guideline: "SBC / ESC / AHA",
+  },
+  {
+    id: "rx-emerg-tep-macico",
+    title: "TEP Maciço — Trombólise",
+    type: "Prescrição de Emergência",
+    prescription: `Critérios de TEP maciço: hipotensão (PAS <90 por >15 min) + evidência de TEP
+
+1. SF 0,9% 250-500mL EV cauteloso (VD já está sobrecarregado)
+2. Noradrenalina 0,1-1mcg/kg/min se hipotensão
+3. Trombólise SISTÊMICA:
+   Alteplase 100mg EV em 2h
+   OU Tenecteplase dose ajustada ao peso EV bolus
+4. Se PCR por TEP: Alteplase 50mg EV bolus → RCP por 60-90 min
+5. Heparina NF após trombólise (iniciar quando TTPA <2x)
+6. O2 alto fluxo → IOT se necessário
+7. Dobutamina 5-20mcg/kg/min (suporte de VD)
+8. ECMO se disponível e refratário
+9. Embolectomia cirúrgica se: contraindicação à trombólise + instável
+10. AngioTC tórax (se estável o suficiente para imagem)
+11. Eco beira-leito: dilatação de VD, sinal de McConnell, septo paradoxal
+12. Troponina, BNP, D-dímero, gasometria`,
+    warnings: "TEP maciço com PCR: Alteplase 50mg em bolus + continuar RCP por 60-90 min antes de considerar parada.",
+    guideline: "SBC / ESC 2019 / AHA",
+  },
+  {
+    id: "rx-emerg-acidente-abelha",
+    title: "Acidente por Abelhas (Múltiplas Picadas)",
+    type: "Prescrição de Emergência",
+    prescription: `Reação local / poucas picadas:
+1. Remover ferrões (raspar — não pinçar)
+2. Gelo local
+3. Dexclorfeniramina 5mg EV
+4. Hidrocortisona 200mg EV
+5. Analgesia: Dipirona 1g EV
+
+Ataque maciço (>20 picadas adulto / >5 criança):
+6. Protocolo de anafilaxia se sinais sistêmicos
+7. Adrenalina 0,5mg IM se anafilaxia
+8. SF 0,9% — hidratação agressiva (prevenção IRA por rabdomiólise)
+9. Monitorar: CPK, mioglobina, função renal, coagulograma (CIVD)
+10. SVD — manter diurese >1mL/kg/h
+11. Hemograma, gasometria, lactato, DHL, reticulócitos (hemólise)
+12. Hemodiálise se IRA por mioglobinúria
+13. >500 picadas: mortalidade alta — UTI obrigatória
+14. Notificação compulsória`,
+    warnings: "Envenenamento maciço por abelhas: hemólise + rabdomiólise + CIVD + IRA. Diferente de anafilaxia.",
+    guideline: "MS / CEVAP / SVS",
+  },
 ];
+

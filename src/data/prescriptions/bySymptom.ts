@@ -662,4 +662,99 @@ Investigar causa:
 12. RNM crânio se suspeita central (AVC, esclerose múltipla)`,
     notes: "Soluço >48h é soluço persistente. >1 mês é intratável. Sempre investigar causa orgânica.",
   },
+  {
+    id: "rx-sint-sincope",
+    title: "Síncope",
+    type: "Prescrição Sintomática",
+    prescription: `1. ECG 12 derivações (arritmia, BAV, WPW, Brugada, QT longo)
+2. PA deitado e em pé (hipotensão ortostática: queda ≥20 PAS ou ≥10 PAD)
+3. Glicemia capilar
+4. Monitorização contínua por 2-4h
+5. Hemograma (anemia?), troponina, eletrólitos
+
+Vasovagal (pródromo, fator desencadeante, jovem):
+6. Hidratação oral, repouso, orientações (sentar/deitar ao sentir)
+7. Alta com orientações
+
+Cardiogênica (sem pródromo, durante esforço, cardiopata):
+8. Internação + monitorização contínua
+9. Ecocardiograma (estenose aórtica, HCM, disfunção VE)
+10. Holter 24h / monitor de eventos
+11. Avaliar indicação de marcapasso
+
+Red flags: durante exercício, dor torácica, palpitação, história familiar de morte súbita, ECG anormal`,
+    warnings: "Síncope durante exercício = SEMPRE investigar (morte súbita). Não dar alta sem ECG.",
+  },
+  {
+    id: "rx-sint-convulsao-ps",
+    title: "Convulsão no PS — Manejo Inicial",
+    type: "Prescrição Sintomática",
+    prescription: `Durante a crise:
+1. Proteger via aérea (DL, aspirar secreções)
+2. NÃO introduzir objetos na boca
+3. O2 por máscara
+4. Diazepam 10mg EV lento (ou Midazolam 10mg IM se sem acesso)
+5. Repetir em 5 min se persistir
+6. Glicemia capilar IMEDIATA → Glicose 50% se <70
+
+Pós-ictal:
+7. Monitorização (SpO2, PA, FC, Glasgow)
+8. Glicemia, eletrólitos (Na, Ca, Mg), hemograma
+9. Gasometria (acidose metabólica pós-ictal é comum)
+10. TC crânio sem contraste (se: primeira crise, focal, TCE, HIV+, anticoagulado)
+11. ECG (QT longo pode mimetizar convulsão)
+12. Se primeira crise + exame normal + TC normal: encaminhar neurologia
+13. Se epiléptico: verificar nível sérico do anticonvulsivante, aderência
+14. Fenitoína 20mg/kg EV se necessário dose de ataque`,
+    notes: "Primeira crise convulsiva em adulto: SEMPRE investigar causa (TC crânio + exames).",
+  },
+  {
+    id: "rx-sint-confusao-mental",
+    title: "Confusão Mental / Delirium no PS",
+    type: "Prescrição Sintomática",
+    prescription: `1. ABCDE — garantir via aérea se Glasgow baixo
+2. Glicemia capilar IMEDIATA
+3. Tiamina 100mg EV (ANTES da glicose se suspeita de etilismo)
+4. Naloxona 0,4mg EV se suspeita opioide
+5. Flumazenil 0,2mg EV se suspeita BZD (CI se epiléptico)
+
+Investigação:
+6. Gasometria, eletrólitos (Na, Ca, Mg), ureia, creatinina
+7. Hemograma, PCR, EAS, toxicológico urinário
+8. TSH, amônia, função hepática
+9. TC crânio (se focal, TCE, anticoagulado, HIC)
+10. ECG
+11. Punção lombar se: febre + rigidez de nuca
+
+Se agitação:
+12. Haloperidol 5mg IM (ou EV com monitorização de QT)
+13. NÃO usar benzodiazepínicos como 1ª linha no delirium (exceto abstinência alcoólica)
+14. Mnemônico AEIOU-TIPS: Álcool, Epilepsia, Insulina, Opioide, Uremia, Trauma, Infecção, Psiquiátrico, Stroke`,
+  },
+  {
+    id: "rx-sint-dor-flanco",
+    title: "Dor em Flanco",
+    type: "Prescrição Sintomática",
+    prescription: `1. Analgesia IMEDIATA (não esperar diagnóstico):
+   Cetoprofeno 100mg EV (1ª linha para cólica renal)
+   + Dipirona 1g EV
+   + Buscopan composto EV
+2. Morfina 2-4mg EV se dor refratária (EVA >7)
+3. SF 0,9% 500mL EV (NÃO hiper-hidratar na cólica aguda)
+
+Investigação:
+4. EAS (hematúria apoia litíase, mas ausência não exclui)
+5. Creatinina (rim único? obstrução bilateral?)
+6. TC abdome sem contraste (padrão-ouro para litíase)
+7. OU USG de vias urinárias (se gestante ou indisponível TC)
+8. Hemograma, PCR (pielonefrite? abscesso?)
+
+Diagnósticos diferenciais:
+9. Cólica renal (mais comum)
+10. Pielonefrite (febre + Giordano positivo)
+11. Aneurisma de aorta roto (>50 anos, PA assimétrica)
+12. Dor musculoesquelética`,
+    warnings: "Cólica renal + febre = pielonefrite ou cálculo infectado → ATB + USG urgente. Pode ser sepse urinária.",
+  },
 ];
+

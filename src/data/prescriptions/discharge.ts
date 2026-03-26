@@ -577,4 +577,88 @@ Bacteriana (secreção purulenta):
 8. Se refratária: Romiplostim SC, Eltrombopag VO, ou esplenectomia`,
     guideline: "ABHH / ASH / ITP Foundation",
   },
+  {
+    id: "rx-alta-apendicectomia",
+    title: "Alta — Pós-Apendicectomia",
+    type: "Prescrição de Alta",
+    prescription: `1. Dieta leve por 3-5 dias → progredir gradualmente
+2. Paracetamol 750mg VO 6/6h SN
+3. Cetoprofeno 100mg VO 12/12h por 3-5 dias
+4. Tramadol 50mg VO 6/6h SN se dor intensa
+5. Se apendicite complicada: ATB VO para completar 5-7 dias
+   Ciprofloxacino 500mg 12/12h + Metronidazol 400mg 8/8h
+6. Cuidados com ferida: manter limpo e seco
+7. Retirar pontos em 7-10 dias (UBS)
+8. Evitar esforço físico por 15-30 dias
+9. Retorno cirurgião em 15 dias
+10. Retorno PS se: febre, dor abdominal intensa, vômitos, saída de secreção pela ferida`,
+    guideline: "CBCD / WSES",
+  },
+  {
+    id: "rx-alta-mordedura",
+    title: "Alta — Mordedura Animal",
+    type: "Prescrição de Alta",
+    prescription: `1. Amoxicilina-Clavulanato 875/125mg — 1cp VO 12/12h por 5-7 dias
+2. Paracetamol 750mg VO 6/6h SN
+3. Ibuprofeno 400mg VO 8/8h SN por 3-5 dias
+4. Limpeza da ferida com água e sabão 3x/dia
+5. Curativo com SF 0,9% + gaze estéril
+6. NÃO suturar (exceto face — sutura após lavar bem)
+7. Verificar vacinação antitetânica → dT se >5 anos
+8. Esquema antirrábico conforme orientação médica
+9. Retorno em 48h para reavaliação da ferida
+10. Retorno PS se: sinais de infecção (vermelhidão, pus, febre, edema progressivo)`,
+    guideline: "MS / SVS",
+  },
+  {
+    id: "rx-alta-intoxicacao",
+    title: "Alta — Pós-Intoxicação Exógena",
+    type: "Prescrição de Alta",
+    prescription: `1. Exames de controle em 24-48h (função hepática se paracetamol, função renal)
+2. Se intencional: alta SOMENTE após avaliação psiquiátrica
+3. Encaminhamento CAPS / Psiquiatria ambulatorial
+4. Plano de segurança: restringir acesso a meios letais
+5. Contato com familiar/responsável obrigatório
+6. NÃO prescrever medicações em quantidade excessiva
+7. Medicações prescritas: manter com familiar responsável
+8. Retorno em 48-72h (período de maior risco de nova tentativa)
+9. Retorno PS se: sintomas novos, vômitos, dor abdominal, icterícia, confusão
+10. Notificação compulsória realizada (violência autoprovocada)`,
+    warnings: "NUNCA dar alta sem avaliação psiquiátrica em tentativa de suicídio. Período de maior risco: primeiras 72h.",
+    guideline: "ABP / MS / OMS",
+  },
+  {
+    id: "rx-alta-acidente-ofidico",
+    title: "Alta — Acidente Ofídico",
+    type: "Prescrição de Alta",
+    prescription: `1. Completar ATB se ferida infectada (Amoxicilina-Clavulanato 875mg 12/12h)
+2. Dipirona 1g VO 6/6h SN
+3. Cetoprofeno 100mg VO 12/12h por 5 dias SN
+4. Elevar membro afetado
+5. Cuidados com ferida: limpeza com SF, curativo oclusivo
+6. Hemograma + coagulograma de controle em 24h e 48h
+7. Função renal de controle em 48h (IRA tardia)
+8. NÃO usar AINEs se coagulopatia persistente
+9. Retorno em 24-48h para reavaliação
+10. Fisioterapia se edema extenso ou síndrome compartimental tratada
+11. Retorno PS se: sangramento, piora do edema, urina escura, febre`,
+    guideline: "MS / Instituto Butantan",
+  },
+  {
+    id: "rx-alta-sinusite",
+    title: "Alta — Sinusite Aguda",
+    type: "Prescrição de Alta",
+    prescription: `1. Amoxicilina 500mg — 1cp VO 8/8h por 10-14 dias
+2. OU Amoxicilina-Clavulanato 875mg VO 12/12h (se falha ou recorrente)
+3. Ibuprofeno 400mg VO 8/8h por 5 dias SN
+4. Paracetamol 750mg VO 6/6h SN
+5. Lavagem nasal com SF 0,9% 6/6h (seringa 20mL)
+6. Budesonida nasal 64mcg — 2 jatos em cada narina 2x/dia por 14 dias
+7. Descongestionante nasal (Oximetazolina): máximo 3-5 dias
+8. Hidratação oral abundante
+9. Retorno em 7-10 dias se não melhorar
+10. Retorno PS se: febre alta, edema periorbitário, cefaleia intensa, alteração visual`,
+    guideline: "ABORL / AAO-HNS",
+  },
 ];
+

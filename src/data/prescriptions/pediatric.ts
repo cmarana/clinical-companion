@@ -588,4 +588,77 @@ Todos:
     notes: "Pico dos sintomas: D2-3 da doença. Tosse ladrante + estridor inspiratório + rouquidão.",
     guideline: "SBP / AAP / CPS",
   },
+  {
+    id: "rx-ped-urticaria",
+    title: "Urticária / Reação Alérgica Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `Urticária sem anafilaxia:
+1. Dexclorfeniramina 0,15mg/kg/dia VO dividido em 3 doses
+   OU Loratadina: 2-5 anos 5mg 1x/dia; >6 anos 10mg 1x/dia
+   OU Cetirizina: 6-12m 2,5mg; 1-6a 2,5-5mg; >6a 5-10mg 1x/dia
+2. Prednisolona 1mg/kg VO dose única (se extenso/edema)
+3. Observação 2-4h (risco de evolução para anafilaxia)
+
+Angioedema (edema de lábios/pálpebras sem dispneia):
+4. Dexclorfeniramina 0,1mg/kg EV lento
+5. Hidrocortisona 5mg/kg EV (máx 200mg)
+6. Observação 6h
+
+Anafilaxia:
+7. Adrenalina 0,01mg/kg IM (máx 0,3mg criança, 0,5mg adolescente)
+8. Protocolo de anafilaxia completo
+
+Todos:
+9. Identificar e evitar desencadeante
+10. Na alta: anti-histamínico por 5-7 dias
+11. Encaminhar alergista se recorrente`,
+    guideline: "SBP / ASBAI / WAO",
+  },
+  {
+    id: "rx-ped-ictericia",
+    title: "Icterícia Neonatal — Prescrição no PS",
+    type: "Prescrição Pediátrica",
+    prescription: `1. Bilirrubina total e frações (direta e indireta)
+2. Tipagem sanguínea (mãe e RN), Coombs direto
+3. Hemograma + reticulócitos
+4. Plotar no nomograma de Bhutani (hora de vida × bilirrubina)
+
+FOTOTERAPIA se acima da curva de indicação:
+5. Fototerapia intensiva: irradiância ≥30 µW/cm²/nm
+6. RN despido, proteção ocular
+7. Monitorar: temperatura (hipo/hipertermia), hidratação, diurese
+8. Bilirrubina de controle em 4-6h após início
+
+EXSANGUINEOTRANSFUSÃO se:
+9. BT >25 em RN a termo (ou conforme curva)
+10. Encefalopatia bilirrubínica aguda (letargia, hipotonia, choro agudo)
+
+Icterícia PATOLÓGICA (investigar):
+11. Início <24h de vida → incompatibilidade ABO/Rh, esferocitose, G6PD
+12. BD elevada → atresia biliar, infecção congênita (TORCH), hepatite neonatal
+13. Encaminhar urgente se colúria + acolia fecal (atresia biliar — cirurgia <60 dias)`,
+    guideline: "SBP / AAP / Neonatologia",
+  },
+  {
+    id: "rx-ped-iva-lactente",
+    title: "Infecção de Vias Aéreas Superiores (IVAS) — Lactente",
+    type: "Prescrição Pediátrica",
+    prescription: `1. Lavagem nasal com SF 0,9% 1-2mL em cada narina 4-6x/dia
+2. Aspiração nasal suave (pera de borracha) se obstrução
+3. Dipirona gotas 1 gota/kg VO 6/6h se febre ≥37,8°C (máx 40 gotas)
+4. OU Paracetamol gotas 1 gota/kg VO 6/6h
+5. Hidratação oral reforçada (oferecer líquidos frequentemente)
+6. Cabeceira elevada para dormir
+7. NÃO usar: descongestionantes, anti-histamínicos, mucolíticos em <2 anos
+8. NÃO usar mel em <1 ano (risco de botulismo)
+9. NÃO prescrever antibiótico (viral na imensa maioria)
+
+Sinais de alerta para retorno:
+10. Febre >48h, prostração, recusa alimentar
+11. Taquipneia, tiragem, gemência (pneumonia?)
+12. <3 meses com febre: SEMPRE investigar (hemograma, EAS, hemocultura)`,
+    notes: "IVAS é a causa mais comum de consulta pediátrica no PS. 95% viral. ATB desnecessário na maioria.",
+    guideline: "SBP / AAP",
+  },
 ];
+

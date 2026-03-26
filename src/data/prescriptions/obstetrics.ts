@@ -428,5 +428,94 @@ Tratamento definitivo:
 11. Sulfato ferroso 200mg VO 1x/dia (repor ferro)`,
     guideline: "FEBRASGO / ACOG / NICE",
   },
-];
+  {
+    id: "rx-obst-hiperemese",
+    title: "Hiperêmese Gravídica",
+    type: "Prescrição Obstétrica",
+    prescription: `1. Internação se: desidratação, perda >5% peso, cetonúria, distúrbio eletrolítico
+2. Dieta zero inicialmente → líquidos gelados em pequenos volumes → progredir
+3. SF 0,9% 1000mL + KCl 19,1% 10mL EV (correção de desidratação)
+4. Tiamina 100mg EV 1x/dia (prevenção de Wernicke — obrigatória se >3 semanas de vômitos)
+5. Ondansetrona 4mg EV 8/8h (seguro no 2°-3° trimestre; 1° trimestre: avaliar risco-benefício)
+6. Metoclopramida 10mg EV 8/8h (alternativa)
+7. Dimenidrinato 50mg EV 6/6h SN
+8. Piridoxina (B6) 25mg VO 8/8h (1ª linha ambulatorial)
+9. Omeprazol 20mg EV 1x/dia se epigastralgia
+10. Monitorar: eletrólitos, função renal, cetonúria, função tireoidiana (TSH — pode causar tireotoxicose gestacional transitória)
+11. USG obstétrica (excluir mola hidatiforme, gemelaridade)
+12. Peso diário + balanço hídrico`,
+    notes: "PUQE score (Pregnancy-Unique Quantification of Emesis) para classificar gravidade.",
+    guideline: "FEBRASGO / ACOG / NICE",
+  },
+  {
+    id: "rx-obst-tev-gestacao",
+    title: "TEV na Gestação — Anticoagulação",
+    type: "Prescrição Obstétrica",
+    prescription: `1. Enoxaparina 1mg/kg SC 12/12h (tratamento) — dose terapêutica
+2. NÃO usar Varfarina no 1° trimestre (teratogênica — embriopatia warfarínica)
+3. NÃO usar DOACs na gestação (contraindicados)
+4. Monitorar anti-Xa a cada 4 semanas (alvo 0,6-1,0 UI/mL)
 
+Parto:
+5. Suspender enoxaparina 24h antes do parto programado (12h se dose profilática)
+6. Anestesia neuroaxial: aguardar ≥24h após última dose terapêutica
+7. Reiniciar 12h após parto vaginal ou 24h após cesárea
+
+Pós-parto:
+8. Manter anticoagulação por mínimo 6 semanas pós-parto (total ≥3 meses)
+9. Pode usar Varfarina no pós-parto (segura na amamentação)
+10. AngioTC tórax é seguro na gestação (menor dose de radiação fetal que V/Q)
+11. USG Doppler MMII se suspeita de TVP
+12. D-dímero é ELEVADO fisiologicamente na gestação — NÃO usar para excluir TEV`,
+    warnings: "TEV é a principal causa de morte materna no puerpério em países desenvolvidos.",
+    guideline: "FEBRASGO / ESC / ACOG / RCOG",
+  },
+  {
+    id: "rx-gin-bartholinite",
+    title: "Abscesso de Bartholin / Bartholinite",
+    type: "Prescrição Ginecológica",
+    prescription: `1. Drenagem cirúrgica + marsupialização (tratamento definitivo)
+2. OU Inserção de cateter de Word (balão — manter por 4-6 semanas)
+3. Anestesia local: Lidocaína 2% sem vaso (bloqueio + infiltração)
+
+Pré-drenagem:
+4. Cetoprofeno 100mg EV 12/12h
+5. Dipirona 1g EV 6/6h
+6. Banhos de assento mornos 3x/dia
+
+ATB (apenas se celulite associada ou imunodeprimida):
+7. Amoxicilina-Clavulanato 875mg VO 12/12h por 7 dias
+8. OU Ciprofloxacino 500mg VO 12/12h + Metronidazol 500mg VO 8/8h
+9. Se suspeita de IST: Ceftriaxona 500mg IM + Azitromicina 1g VO
+
+10. Cultura do material drenado
+11. Em >40 anos: biópsia para excluir carcinoma de Bartholin
+12. Retorno em 7-10 dias para reavaliação + retirada do cateter de Word em 4-6 semanas`,
+    guideline: "FEBRASGO / ACOG",
+  },
+  {
+    id: "rx-obst-sofrimento-fetal",
+    title: "Sofrimento Fetal Agudo",
+    type: "Prescrição Obstétrica",
+    prescription: `Sinais: desacelerações tardias/prolongadas, bradicardia fetal, variabilidade ausente
+
+Ressuscitação intrauterina (ENQUANTO prepara cesárea):
+1. DLE (decúbito lateral esquerdo) — melhora perfusão uteroplacentária
+2. O2 10L/min por máscara (controverso, mas ainda feito na prática)
+3. SF 0,9% 500-1000mL EV rápido (expansão volêmica)
+4. SUSPENDER ocitocina se em uso
+5. Terbutalina 0,25mg SC (tocólise de emergência — relaxar útero)
+6. Amnioinfusão (se desaceleração variável + oligoâmnio)
+7. Exame vaginal: excluir prolapso de cordão
+   Se prolapso de cordão: elevar apresentação fetal + CESÁREA IMEDIATA
+
+Se não houver melhora:
+8. CESÁREA DE EMERGÊNCIA — tempo decisão-nascimento <30 min
+9. Neonatologista presente na sala
+10. Gasometria de cordão ao nascer (pH artéria umbilical)
+11. Apgar 1° e 5° minuto
+12. pH cordão <7,0 + BE <-12 = asfixia perinatal significativa`,
+    warnings: "Prolapso de cordão: NÃO tentar reintroduzir. Elevar apresentação + cesárea IMEDIATA. Manter mão até incisão.",
+    guideline: "FEBRASGO / ACOG / NICE / FIGO",
+  },
+];
