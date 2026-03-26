@@ -451,4 +451,47 @@ Sintomático (letargia, cianose, hipoglicemia, tremores) ou Ht >70%:
     warnings: "NÃO usar Naloxona no RN de mãe usuária de opioides (precipita convulsão).",
     guideline: "SBP / AAP / WHO",
   },
+  {
+    id: "rx-neo-pneumotorax",
+    title: "Pneumotórax Neonatal",
+    type: "Neonatologia",
+    prescription: `1. Se assintomático + pequeno (<15%):
+   - Observação + O2 a 100% por 6-12h (nitrogen washout)
+   - Monitorização contínua + RX de controle
+2. Se sintomático / hipertensivo:
+   - Punção de alívio: jelco 18-20G no 2° EIC linha hemiclavicular
+   - Conectar em selo d'água
+3. Drenagem torácica se recidiva ou grande volume:
+   - Dreno 10-12Fr no 4°-5° EIC linha axilar anterior
+   - Manter em selo d'água com aspiração -10 a -20cmH2O
+4. Ajustar ventilação mecânica (diminuir PIP, PEEP, Ti)
+5. RX tórax de controle pós-drenagem
+6. Surfactante se DMH associada
+7. Gasometria arterial seriada
+8. Clampear dreno 12-24h antes de retirar (teste)`,
+    notes: "Mais comum em RNPT com DMH em ventilação mecânica. RN termo: pneumotórax espontâneo em 1-2% (assintomático, resolve sozinho).",
+    guideline: "SBP / NRP / AAP",
+  },
+  {
+    id: "rx-neo-choque",
+    title: "Choque Neonatal",
+    type: "Neonatologia",
+    prescription: `1. Expansão volêmica: SF 0,9% 10mL/kg EV em 10-30min (máx 3 bolus)
+2. Se refratário a volume:
+   - Dopamina 5-20mcg/kg/min EV em BIC (1ª escolha)
+   - Dobutamina 5-20mcg/kg/min (se disfunção miocárdica)
+3. Se refratário a catecolaminas:
+   - Adrenalina 0,05-0,3mcg/kg/min EV
+4. Considerar insuficiência adrenal:
+   - Hidrocortisona 1-2mg/kg EV 8/8h (choque refratário)
+5. ATB empírico: Ampicilina + Gentamicina (sepse neonatal precoce)
+6. Correção de distúrbios: hipoglicemia (SG10% 2mL/kg), hipocalcemia (Gluconato de Ca)
+7. Ecocardiograma funcional (avaliar débito cardíaco e função)
+8. Gasometria + lactato seriado
+9. SVD (meta diurese >1mL/kg/h)
+10. Monitorização invasiva (PA invasiva em artéria umbilical)`,
+    notes: "Dopamina: 1ª escolha no choque neonatal por hipotensão. Dobutamina: se função cardíaca comprometida no eco. Milrinona: se hipertensão pulmonar.",
+    warnings: "NÃO hiper-hidratar RNPT (<1500g): risco de PCA, hemorragia peri-intraventricular, DBP.",
+    guideline: "SBP / AAP / NRP",
+  },
 ];

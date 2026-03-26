@@ -2930,5 +2930,114 @@ TRATAMENTO DE SUPORTE:
     warnings: "Soro é eficaz apenas nas primeiras 6-12h. NÃO aplicar soro local no membro. Dose IGUAL para crianças e adultos.",
     guideline: "MS / SVS / Instituto Butantan / SBMT",
   },
+  {
+    id: "rx-fratura-pelve-diag",
+    title: "Fratura de Pelve (Instável/Ring Disruption)",
+    type: "Por Diagnóstico",
+    prescription: `1. ABCDE do trauma — hemorragia retroperitoneal massiva
+2. Cinta pélvica OU lençol amarrado (estabilização provisória)
+3. Ressuscitação volêmica + protocolo de transfusão maciça (1:1:1)
+4. Ácido tranexâmico 1g EV em 10min
+5. RX pelve AP (Young-Burgess)
+6. TC pelve + abdome com contraste
+7. Se instável hemodinamicamente:
+   - Fixação externa provisória OU
+   - Tamponamento pré-peritoneal OU
+   - Angioembolização (se blush arterial na TC)
+8. SVD (se uretra íntegra — sangue no meato = uretrocistografia retrógrada ANTES)
+9. Tipagem + reserva 6 CH
+10. Avaliação Ortopedia + Cirurgia do Trauma`,
+    warnings: "Fratura de pelve pode perder >2L de sangue no retroperitônio sem sinais externos. Mortalidade 15-30% se instável.",
+    guideline: "ATLS / SBOT / ACS / EAST",
+  },
+  {
+    id: "rx-fratura-tornozelo-diag",
+    title: "Fratura de Tornozelo (Weber/AO)",
+    type: "Por Diagnóstico",
+    prescription: `1. Gelo + elevação + imobilização provisória (tala suropodálica)
+2. RX tornozelo AP + perfil + mortise (incidência com 15° rotação interna)
+3. Classificação Weber: A (infrasindesmótico), B (transsindesmótico), C (suprassindesmótico)
+4. Analgesia: Dipirona 1g VO 6/6h + Ibuprofeno 600mg VO 8/8h
+5. Enoxaparina 40mg SC 1x/dia (profilaxia TVP se imobilização)
+
+CONSERVADOR (Weber A estável, sem desvio):
+6. Bota gessada suropodálica 6 semanas (sem carga 3 sem + carga parcial 3 sem)
+
+CIRÚRGICO (Weber B/C instável, desvio >2mm, incongruência articular):
+7. RAFI (redução aberta e fixação interna)
+8. RX de controle pós-operatório
+9. Fisioterapia após retirada de imobilização
+10. Retorno Ortopedia em 7 dias (revisão de ferida operatória)`,
+    notes: "Critérios de Ottawa: dor + incapacidade de dar 4 passos + dor à palpação dos maléolos ou base do 5° meta = RX indicado.",
+    guideline: "SBOT / AAOS / AO Foundation",
+  },
+  {
+    id: "rx-lombalgia-aguda-diag",
+    title: "Lombalgia Aguda Mecânica",
+    type: "Por Diagnóstico",
+    prescription: `1. Repouso relativo (NÃO repouso absoluto — piora prognóstico)
+2. Analgesia escalonada:
+   - Dipirona 1g VO 6/6h + Ibuprofeno 600mg VO 8/8h (7-10 dias)
+   - Se refratário: Tramadol 50mg VO 8/8h (máx 5 dias)
+3. Relaxante muscular: Ciclobenzaprina 5-10mg VO à noite (7-10 dias)
+4. Compressas mornas locais
+5. Red flags (investigar com imagem):
+   - Febre, perda ponderal, trauma, déficit neurológico
+   - Retenção urinária, anestesia em sela (síndrome de cauda equina)
+   - Idade >50 com dor nova, história de câncer
+6. Se red flags presentes: RNM lombar URGENTE
+7. Se sem red flags: NÃO solicitar RX/RNM nas primeiras 4-6 semanas
+8. Orientar atividade física progressiva
+9. Encaminhar fisioterapia se >4 semanas
+10. Retorno se piora ou novos sintomas neurológicos`,
+    notes: "95% das lombalgias agudas são mecânicas/inespecíficas e resolvem em 4-6 semanas. Imagem precoce sem red flags = overdiagnosis.",
+    guideline: "ACP / ACR / NICE / SBR",
+  },
+  {
+    id: "rx-entorse-tornozelo-diag",
+    title: "Entorse de Tornozelo (Graus I-III)",
+    type: "Por Diagnóstico",
+    prescription: `GRAU I (estiramento, sem instabilidade):
+1. Protocolo PRICE: Proteção, Repouso relativo, Ice, Compressão, Elevação
+2. Gelo 20min 4-6x/dia por 48-72h
+3. Ibuprofeno 600mg VO 8/8h por 5 dias
+4. Tornozeira elástica
+
+GRAU II (ruptura parcial):
+5. Tala suropodálica ou bota walker por 2-3 semanas
+6. Carga parcial com muletas
+7. Dipirona + Ibuprofeno (analgesia combinada)
+8. Fisioterapia proprioceptiva após fase aguda
+
+GRAU III (ruptura completa ligamentar):
+9. Bota gessada ou walker 4-6 semanas
+10. Sem carga por 2 semanas, depois carga progressiva
+11. RX tornozelo (Critérios de Ottawa)
+12. RNM se suspeita de lesão osteocondral
+13. Avaliação Ortopedia (cirurgia se instabilidade crônica)
+
+TODOS: Fisioterapia proprioceptiva é ESSENCIAL para prevenir recidiva`,
+    notes: "Ligamento talofibular anterior é o mais acometido (inversão). Entorse de repetição sem reabilitação: instabilidade crônica.",
+    guideline: "SBOT / AAOS / NICE",
+  },
+  {
+    id: "rx-tendinite-ombro-diag",
+    title: "Tendinite / Síndrome do Impacto do Ombro",
+    type: "Por Diagnóstico",
+    prescription: `1. Repouso relativo (evitar abdução acima de 90°)
+2. Gelo local 20min 3-4x/dia
+3. AINE: Naproxeno 500mg VO 12/12h por 7-14 dias + Omeprazol 20mg
+4. AINE tópico: Diclofenaco gel 3x/dia
+5. Fisioterapia: exercícios de Codman (pendulares) + fortalecimento do manguito rotador
+6. Se refratário (>4-6 semanas):
+   - Infiltração subacromial: Triancinolona 40mg + Lidocaína 2% 3mL
+   - Máx 3 infiltrações (intervalo ≥6 semanas)
+7. USG de ombro (tendinopatia, ruptura parcial/total, bursite)
+8. RNM se suspeita de ruptura completa
+9. Avaliação Ortopedia se ruptura ou falha terapêutica
+10. Afastamento laboral se atividade de esforço repetitivo`,
+    notes: "Teste de Neer e Hawkins positivos: sugestivo de impacto subacromial. Ruptura completa do supraespinhal: indicação cirúrgica relativa.",
+    guideline: "SBOT / AAOS / EULAR",
+  },
 ];
 
