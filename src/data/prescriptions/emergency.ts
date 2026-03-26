@@ -297,7 +297,7 @@ GRAVE (<28°C):
 9. RX tórax (pode ser normal nas primeiras horas)
 10. Observação mínima 6-8h (edema pulmonar tardio)
 11. Coluna cervical: imobilizar se trauma/mergulho`,
-    warnings: "Manobra de Heimlich para "tirar água" é INEFICAZ e PERIGOSA. NÃO fazer.",
+    warnings: 'Manobra de Heimlich para "tirar água" é INEFICAZ e PERIGOSA. NÃO fazer.',
     guideline: "SOBRASA / ILCOR",
   },
 ];
