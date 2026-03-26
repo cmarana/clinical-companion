@@ -1,11 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { Card, CardContent } from "@/components/ui/card";
 import { ChevronRight, Pill, ShieldCheck, Baby, Heart, Loader2, Upload } from "lucide-react";
 import { type BularioFilters, INITIAL_FILTERS } from "@/types/bulario";
 import BularioFilterBar from "@/components/BularioFilterBar";
-import { useBularioList, useBularioCount } from "@/hooks/useBularioMedications";
+import { useBularioInfiniteList, useBularioCount } from "@/hooks/useBularioMedications";
 import { Button } from "@/components/ui/button";
 import { importFromArray } from "@/lib/bularioImporter";
 import { allMedicationsData } from "@/data/medicationsData";
@@ -15,10 +15,42 @@ import { toast } from "sonner";
 export default function Bulario() {
   const navigate = useNavigate();
   const [filters, setFilters] = useState<BularioFilters>(INITIAL_FILTERS);
-  const { data: medications = [], isLoading } = useBularioList(filters);
+  const {
+    data,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+  } = useBularioInfiniteList(filters);
   const { data: totalCount = 0 } = useBularioCount();
   const [importing, setImporting] = useState(false);
   const queryClient = useQueryClient();
+
+  const medications = data?.pages.flatMap((p) => p.items) ?? [];
+
+  // Infinite scroll sentinel
+  const sentinelRef = useRef<HTMLDivElement>(null);
+  const handleObserver = useCallback(
+    (entries: IntersectionObserverEntry[]) => {
+      const [entry] = entries;
+      if (entry.isIntersecting && hasNextPage && !isFetchingNextPage) {
+        fetchNextPage();
+      }
+    },
+    [fetchNextPage, hasNextPage, isFetchingNextPage]
+  );
+
+  useEffect(() => {
+    const el = sentinelRef.current;
+    if (!el) return;
+    const observer = new IntersectionObserver(handleObserver, {
+      root: null,
+      rootMargin: "200px",
+      threshold: 0,
+    });
+    observer.observe(el);
+    return () => observer.disconnect();
+  }, [handleObserver]);
 
   const handleImport = async () => {
     if (allMedicationsData.length === 0) {
@@ -33,7 +65,7 @@ export default function Bulario() {
       } else {
         toast.success(`${result.imported} medicamentos importados com sucesso!`);
       }
-      queryClient.invalidateQueries({ queryKey: ["bulario"] });
+      queryClient.invalidateQueries({ queryKey: ["bulario-infinite"] });
       queryClient.invalidateQueries({ queryKey: ["bulario-count"] });
     } catch {
       toast.error("Erro ao importar medicamentos.");
@@ -126,6 +158,20 @@ export default function Bulario() {
             </Card>
           ))}
         </div>
+
+        {/* Infinite scroll sentinel */}
+        <div ref={sentinelRef} className="h-4" />
+        {isFetchingNextPage && (
+          <div className="flex items-center justify-center py-4">
+            <Loader2 size={20} className="animate-spin text-muted-foreground" />
+            <span className="ml-2 text-xs text-muted-foreground">Carregando mais...</span>
+          </div>
+        )}
+        {!hasNextPage && medications.length > 0 && !isLoading && (
+          <p className="text-center text-xs text-muted-foreground py-2">
+            Todos os {medications.length} medicamentos carregados
+          </p>
+        )}
       </div>
     </>
   );

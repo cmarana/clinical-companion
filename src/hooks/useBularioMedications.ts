@@ -1,4 +1,4 @@
-import { useQuery } from "@tanstack/react-query";
+import { useInfiniteQuery, useQuery } from "@tanstack/react-query";
 import { supabase } from "@/integrations/supabase/client";
 import type { BularioFilters } from "@/types/bulario";
 
@@ -36,7 +36,6 @@ export interface BularioMedicationRow {
   gestacao_seguro: boolean;
   tags: string[];
   categoria_anvisa: string;
-  // New expanded fields
   descricao: string;
   mecanismo_acao: string;
   indicacoes_detalhadas: string;
@@ -55,18 +54,19 @@ export interface BularioMedicationRow {
   receita_tipo: string;
 }
 
-/** Fetch paginated & filtered medications from Supabase */
-export function useBularioList(filters: BularioFilters) {
-  return useQuery({
-    queryKey: ["bulario", filters],
-    queryFn: async () => {
+const PAGE_SIZE = 50;
+
+/** Fetch paginated & filtered medications with infinite scroll */
+export function useBularioInfiniteList(filters: BularioFilters) {
+  return useInfiniteQuery({
+    queryKey: ["bulario-infinite", filters],
+    queryFn: async ({ pageParam = 0 }) => {
       let query = supabase
         .from("bulario_medications")
         .select("id, nome, principio_ativo, nomes_comerciais, classe, categoria, forma_farmaceutica, via, controlado, pediatria, gestacao_seguro, tags")
         .order("nome")
-        .limit(200);
+        .range(pageParam, pageParam + PAGE_SIZE - 1);
 
-      // Text search
       const q = filters.search.trim();
       if (q.length >= 2) {
         query = query.or(
@@ -74,7 +74,6 @@ export function useBularioList(filters: BularioFilters) {
         );
       }
 
-      // Filters
       if (filters.drugClass) query = query.eq("classe", filters.drugClass);
       if (filters.category) query = query.eq("categoria", filters.category);
       if (filters.dosageForm) query = query.eq("forma_farmaceutica", filters.dosageForm);
@@ -85,8 +84,13 @@ export function useBularioList(filters: BularioFilters) {
 
       const { data, error } = await query;
       if (error) throw error;
-      return (data ?? []) as BularioMedicationRow[];
+      return {
+        items: (data ?? []) as BularioMedicationRow[],
+        nextOffset: (data?.length ?? 0) < PAGE_SIZE ? undefined : pageParam + PAGE_SIZE,
+      };
     },
+    initialPageParam: 0,
+    getNextPageParam: (lastPage) => lastPage.nextOffset,
     staleTime: 5 * 60 * 1000,
   });
 }
@@ -107,6 +111,40 @@ export function useBularioDetail(id: string | undefined) {
     },
     enabled: !!id,
     staleTime: 10 * 60 * 1000,
+  });
+}
+
+/** Simple list query (used by SearchPage) */
+export function useBularioList(filters: BularioFilters) {
+  return useQuery({
+    queryKey: ["bulario", filters],
+    queryFn: async () => {
+      let query = supabase
+        .from("bulario_medications")
+        .select("id, nome, principio_ativo, nomes_comerciais, classe, categoria, forma_farmaceutica, via, controlado, pediatria, gestacao_seguro, tags")
+        .order("nome")
+        .limit(200);
+
+      const q = filters.search.trim();
+      if (q.length >= 2) {
+        query = query.or(
+          `nome.ilike.%${q}%,principio_ativo.ilike.%${q}%,classe.ilike.%${q}%,indicacoes.ilike.%${q}%`
+        );
+      }
+
+      if (filters.drugClass) query = query.eq("classe", filters.drugClass);
+      if (filters.category) query = query.eq("categoria", filters.category);
+      if (filters.dosageForm) query = query.eq("forma_farmaceutica", filters.dosageForm);
+      if (filters.route) query = query.eq("via", filters.route);
+      if (filters.controlled === true) query = query.eq("controlado", true);
+      if (filters.pediatric === true) query = query.eq("pediatria", true);
+      if (filters.pregnancySafe === true) query = query.eq("gestacao_seguro", true);
+
+      const { data, error } = await query;
+      if (error) throw error;
+      return (data ?? []) as BularioMedicationRow[];
+    },
+    staleTime: 5 * 60 * 1000,
   });
 }
 
