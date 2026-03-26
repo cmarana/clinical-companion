@@ -39,7 +39,7 @@ export default function FullProtocols() {
   return (
     <>
       <TopBar title="Protocolos Completos" />
-      <div className="px-4 py-4 max-w-lg mx-auto space-y-4 pb-24">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4 pb-24">
         <div className="space-y-1">
           <h1 className="font-heading font-bold text-base tracking-tight">Biblioteca de Protocolos</h1>
           <p className="text-xs text-muted-foreground">
@@ -84,7 +84,7 @@ export default function FullProtocols() {
         </div>
 
         {/* List */}
-        <div className="space-y-2">
+        <div className="space-y-2 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-2 md:space-y-0">
           {filtered.map((p) => (
             <Card
               key={p.id}
