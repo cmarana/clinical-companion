@@ -755,7 +755,7 @@ function MELDCalculator() {
   );
 }
 
-function APACHEII Calculator() {
+function APACHEIICalculator() {
   const [temp, setTemp] = useState(""); const [pam, setPam] = useState(""); const [fc, setFc] = useState("");
   const [fr, setFr] = useState(""); const [pao2, setPao2] = useState(""); const [ph, setPh] = useState("");
   const [na2, setNa2] = useState(""); const [k, setK] = useState(""); const [cr2, setCr2] = useState("");
@@ -831,7 +831,7 @@ const calculators: CalculatorConfig[] = [
   { id: "cha2ds2", title: "CHA₂DS₂-VASc", icon: <Heart size={18} />, description: "Risco de AVC em FA", component: CHA2DS2Calculator },
   { id: "timi", title: "TIMI Score", icon: <Heart size={18} />, description: "Risco na SCA sem supra", component: TIMICalculator },
   { id: "meld", title: "MELD / MELD-Na", icon: <Droplets size={18} />, description: "Gravidade hepatopatia", component: MELDCalculator },
-  { id: "apacheii", title: "APACHE II", icon: <Activity size={18} />, description: "Gravidade na UTI", component: APACHEII Calculator },
+  { id: "apacheii", title: "APACHE II", icon: <Activity size={18} />, description: "Gravidade na UTI", component: APACHEIICalculator },
   { id: "curb65", title: "CURB-65", icon: <Activity size={18} />, description: "Gravidade de pneumonia", component: CURB65Calculator },
   { id: "apgar", title: "APGAR", icon: <Scale size={18} />, description: "Avaliação do RN", component: ApgarCalculator },
   { id: "childpugh", title: "Child-Pugh", icon: <Droplets size={18} />, description: "Gravidade na cirrose", component: ChildPughCalculator },
