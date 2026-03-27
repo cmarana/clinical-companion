@@ -2507,6 +2507,153 @@ ESTABILIDADE: 24h em TA após diluição
 COMPATÍVEL com SF 0,9% e SG5%`,
     notes: "Na HDA varicosa, associar com terapia endoscópica (ligadura elástica). Octreotida pode substituir Terlipressina quando esta não está disponível.",
   },
+  // ========== DILUIÇÕES CIRURGIA TORÁCICA / INFECTOLOGIA ==========
+  {
+    id: "rx-dil-alteplase-intrapleural",
+    title: "Alteplase Intrapleural — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `INDICAÇÃO: Empiema loculado / Derrame pleural septado
+
+DILUIÇÃO:
+Alteplase 10mg + SF 0,9% 30mL (no mesmo frasco)
++ DNase (Dornase alfa) 5mg em 30mL SF separado
+
+ADMINISTRAÇÃO:
+1. Instilar Alteplase 10mg/30mL via dreno de tórax
+2. Clampar dreno por 1 hora
+3. Abrir dreno e drenar
+4. Após 2h: Instilar DNase 5mg/30mL
+5. Clampar dreno por 1 hora
+6. Abrir dreno e drenar
+7. Repetir 2x/dia por 3 dias (total 6 doses de cada)
+
+MONITORIZAÇÃO:
+- Débito do dreno após cada instilação
+- RX tórax diário
+- Hemograma (risco de sangramento)
+- Se dor torácica intensa: suspender e avaliar`,
+    warnings: "Contraindicado se fístula broncopleural ativa, sangramento ativo ou coagulopatia grave. Se falha após 3 dias: indicar VATS.",
+    notes: "Protocolo MIST2 (multicenter intrapleural sepsis trial). Alteplase + DNase juntas reduzem necessidade de cirurgia em 80%.",
+  },
+  {
+    id: "rx-dil-anfotericina-b-lipo",
+    title: "Anfotericina B Lipossomal — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO:
+1. Reconstituir cada frasco de 50mg com 12mL de Água para Injeção
+2. Agitar SUAVEMENTE (não usar vortex — destrói lipossomas)
+3. Diluir a dose calculada em SG 5% para concentração de 1-2mg/mL
+4. Usar filtro de 5 mícrons (fornecido com o produto)
+
+DOSE:
+- Infecção fúngica invasiva: 3-5mg/kg/dia EV
+- Leishmaniose visceral: 3mg/kg/dia D1-D5 + D14 + D21 (total 20mg/kg)
+- Mucormicose: 5-10mg/kg/dia
+
+INFUSÃO: 1-2 horas EV (pode estender para 4h se intolerância)
+
+PRÉ-MEDICAÇÃO (reduzir efeitos):
+- Dipirona 1g EV 30min antes
+- Hidrocortisona 50mg EV 30min antes (controverso)
+
+MONITORIZAÇÃO:
+- Função renal (Cr, ureia) diária
+- K+ e Mg²⁺ diários (repor agressivamente)
+- Hemograma 2x/semana`,
+    warnings: "NÃO diluir em SF (precipita). NÃO misturar com outras drogas na mesma linha. Nefrotoxicidade menor que Anfotericina B convencional, mas ainda relevante.",
+  },
+  {
+    id: "rx-dil-polimixina-b",
+    title: "Polimixina B — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO:
+Reconstituir 500.000UI em 5mL de AD
+Diluir dose calculada em SG 5% 250-500mL
+
+DOSE:
+- 15.000-25.000 UI/kg/dia EV dividido 12/12h
+- Dose de ataque: 25.000 UI/kg na 1ª dose
+- NÃO ajustar por função renal (eliminação não-renal)
+
+INFUSÃO: 1-2 horas EV
+
+DOSE MÁXIMA: 25.000 UI/kg/dia
+
+CÁLCULO (exemplo 70kg):
+- Dose: 25.000 × 70 = 1.750.000 UI/dia = 875.000 UI 12/12h
+- Cada frasco = 500.000 UI
+- 1,75 frascos por dose
+
+MONITORIZAÇÃO:
+- Função renal diária (nefrotóxica)
+- Parestesias (neurotoxicidade)
+- Bloqueio neuromuscular (raro)
+
+INCOMPATIBILIDADES:
+- NÃO misturar com Heparina, cefalosporinas`,
+    warnings: "Nefrotoxicidade dose-dependente (30-60%). Neurotoxicidade: parestesias periorais, tonturas, fraqueza muscular. Última linha para gram-negativos MDR/XDR.",
+  },
+  {
+    id: "rx-dil-anidulafungina",
+    title: "Anidulafungina — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO:
+1. Reconstituir 100mg com 30mL de AD
+2. Diluir em SF 0,9% ou SG 5% para concentração ≤0,77mg/mL
+3. Dose de 200mg: diluir em 260mL de SF
+
+DOSE:
+- Candidemia: 200mg EV no D1 (ataque) → 100mg EV 1x/dia
+- Candidíase esofágica: 100mg D1 → 50mg/dia
+- Candidíase invasiva: 200mg D1 → 100mg/dia
+
+INFUSÃO:
+- 200mg: infundir em 3 horas (velocidade máx 1,1mg/min)
+- 100mg: infundir em 1,5 hora
+- 50mg: infundir em 45 min
+
+NÃO NECESSITA AJUSTE:
+- Insuficiência renal
+- Insuficiência hepática leve/moderada
+- Diálise
+
+ESTABILIDADE: 24h em TA após diluição`,
+    notes: "Equinocandina com menor interação medicamentosa. Boa opção em pacientes com polifarmácia. Cobertura: Candida spp (incluindo C. glabrata e C. krusei). NÃO cobre Cryptococcus.",
+  },
+  {
+    id: "rx-dil-daptomicina-2",
+    title: "Daptomicina — Diluição e Preparo (Detalhado)",
+    type: "Diluição e Preparo",
+    prescription: `RECONSTITUIÇÃO:
+1. Adicionar 7mL de SF 0,9% ao frasco de 500mg
+2. Concentração: 50mg/mL
+3. Girar suavemente (NÃO agitar)
+4. Deixar repousar 10 min
+
+DILUIÇÃO PARA INFUSÃO:
+5. Diluir a dose em 50mL de SF 0,9%
+
+DOSE:
+- Bacteremia / Endocardite: 8-10mg/kg EV 1x/dia
+- Infecção de pele: 4mg/kg EV 1x/dia
+- Osteomielite: 6-8mg/kg EV 1x/dia
+
+INFUSÃO: 30 minutos (pode ser bolus EV lento em 2 min se volume ≤50mL)
+
+AJUSTE RENAL:
+ClCr <30: a cada 48h (mesma dose)
+Hemodiálise: após a sessão
+
+MONITORIZAÇÃO:
+- CPK semanal (miopatia — suspender se CPK >10x LSN)
+- Evitar uso concomitante de estatinas
+- Função renal
+
+INCOMPATIBILIDADES:
+- NÃO diluir em SG (inativação)
+- NÃO misturar com SG em Y`,
+    warnings: "NÃO usar para pneumonia (inativada pelo surfactante pulmonar). Miopatia: suspender se dor muscular + CPK >10x. Alternativa à Vancomicina para MRSA.",
+  },
 ];
 
 

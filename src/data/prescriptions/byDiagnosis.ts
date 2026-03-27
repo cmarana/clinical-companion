@@ -6964,6 +6964,343 @@ TRATAMENTO IMEDIATO:
     warnings: "NÃO usar Cálcio EV (stone heart). NÃO cardioverter (se inevitável: energia mínima). Hipocalemia e hipomagnesemia POTENCIALIZAM toxicidade. Fab é o único antídoto eficaz.",
     guideline: "AHA / SBC / AACT / UpToDate",
   },
+  // ========== CIRURGIA TORÁCICA ==========
+  {
+    id: "rx-drenagem-torax",
+    title: "Drenagem Torácica — Pneumotórax/Hemotórax",
+    type: "Prescrição Cirúrgica",
+    prescription: `PRÉ-PROCEDIMENTO:
+1. Monitorização (SpO2, PA, FC, FR)
+2. O2 suplementar — manter SpO2 >94%
+3. Acesso venoso periférico calibroso
+4. Tipagem sanguínea + reserva CH (se hemotórax)
+5. RX tórax PA (confirmar lado)
+6. Analgesia: Dipirona 1g EV + Tramadol 50mg EV
+7. Anestesia local: Lidocaína 2% sem vasoconstritor — 20mL
+
+PROCEDIMENTO:
+8. Posição semi-sentada, braço ipsilateral abduzido
+9. Incisão no 5º EIC, linha axilar média (triângulo de segurança)
+10. Dissecção romba até pleura parietal
+11. Dreno tubular 28-36Fr (adulto) — hemotórax: 36Fr
+12. Fixar com fio 0 — ponto em U
+13. Conectar ao selo d'água (frasco coletor)
+14. Confirmar oscilação e borbulhamento
+
+PÓS-PROCEDIMENTO:
+15. RX tórax de controle
+16. Dipirona 1g EV 6/6h + Tramadol 50mg EV 8/8h
+17. Cefazolina 1g EV (dose única profilática)
+18. Registro de débito do dreno a cada 6h
+19. Fisioterapia respiratória`,
+    warnings: "Hemotórax maciço (>1500mL ou >200mL/h por 2-4h): indicação de toracotomia. NUNCA clampar dreno de tórax (risco de pneumotórax hipertensivo).",
+    guideline: "ATLS / SBCT / BTS",
+  },
+  {
+    id: "rx-mediastinite",
+    title: "Mediastinite Aguda",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `1. Dieta zero
+2. Jejum + SNG aberta
+3. SF 0,9% 1000mL EV — reposição volêmica agressiva
+4. ATB empírico AMPLO ESPECTRO:
+   - Meropenem 1g EV 8/8h + Vancomicina 15-20mg/kg EV 12/12h
+   - OU Piperacilina-Tazobactam 4,5g EV 6/6h + Vancomicina
+5. Analgesia: Dipirona 1g EV 6/6h + Tramadol 100mg EV 8/8h
+6. Omeprazol 40mg EV 12/12h
+7. Enoxaparina 40mg SC 1x/dia
+8. Monitorização intensiva (UTI)
+9. TC tórax com contraste (definir extensão e coleções)
+10. CIRURGIA DE URGÊNCIA — drenagem mediastinal + cervicotomia
+11. Coleta de cultura de secreção (aeróbio + anaeróbio + fungo)
+12. Hemoculturas 2 amostras
+13. HMG, PCR, procalcitonina, lactato, gasometria
+14. Avaliar etiologia: perfuração esofágica (Boerhaave), pós-cirúrgica, odontogênica descendente`,
+    warnings: "Mortalidade 20-50%. Diagnóstico precoce e cirurgia agressiva são decisivos. Mediastinite descendente necrotizante: origem cervical (infecção dentária/periamigdaliana).",
+    guideline: "SBCT / ESTS / ACS",
+  },
+  {
+    id: "rx-empiema-pleural",
+    title: "Empiema Pleural",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Dieta livre (se tolerar VO)
+2. SF 0,9% 1000mL EV — manter acesso
+3. ATB empírico:
+   - Ceftriaxona 2g EV 1x/dia + Metronidazol 500mg EV 8/8h (comunitário)
+   - Piperacilina-Tazobactam 4,5g EV 6/6h (nosocomial)
+4. Analgesia: Dipirona 1g EV 6/6h + Cetoprofeno 100mg EV 12/12h
+5. Drenagem pleural fechada (dreno 28-32Fr)
+6. Se loculado: considerar fibrinolítico intrapleural (Alteplase 10mg + DNase 5mg em 30mL SF 2x/dia)
+7. Fisioterapia respiratória
+8. Omeprazol 40mg EV 1x/dia
+9. Enoxaparina 40mg SC 1x/dia
+10. Cultura + bioquímica do líquido pleural (pH, glicose, LDH, proteínas)
+11. Se falha drenagem + fibrinolítico: VATS (videotoracoscopia)
+12. RX tórax diário para controle`,
+    guideline: "BTS / ATS / SBPT",
+  },
+  {
+    id: "rx-quilotorax",
+    title: "Quilotórax",
+    type: "Prescrição Hospitalar",
+    prescription: `TRATAMENTO CONSERVADOR (1ª linha):
+1. Jejum OU dieta com TCM (triglicerídeos de cadeia média) — sem gordura de cadeia longa
+2. NPT (nutrição parenteral total) se débito >1000mL/dia
+3. Drenagem pleural (dreno de tórax)
+4. Octreotida 100mcg SC 8/8h (reduz fluxo linfático)
+5. Reposição proteica: Albumina 20% EV se albumina <2,5
+6. Controle de eletrólitos e imunoglobulinas
+7. Monitorizar linfócitos (risco de imunossupressão)
+
+SE FALHA CONSERVADOR (>2 semanas ou >1L/dia):
+8. Ligadura do ducto torácico (VATS ou toracotomia)
+9. Pleurodese química (talco)
+
+ETIOLOGIA:
+- Pós-operatório (esofagectomia, cirurgia cardíaca)
+- Linfoma
+- Trauma`,
+    guideline: "SBCT / ESTS / Chest",
+  },
+  {
+    id: "rx-contusao-pulmonar",
+    title: "Contusão Pulmonar",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `1. Monitorização intensiva (SpO2, gasometria seriada)
+2. O2 suplementar — manter SpO2 >94%
+3. Analgesia MULTIMODAL (fundamental para ventilação adequada):
+   - Dipirona 1g EV 6/6h
+   - Tramadol 100mg EV 8/8h
+   - Cetamina subdose 0,2mg/kg/h EV (adjuvante)
+   - Considerar bloqueio intercostal/peridural torácica
+4. Restrição hídrica relativa (evitar sobrecarga — piora edema pulmonar)
+5. Fisioterapia respiratória intensiva
+6. EVITAR: excesso de cristaloide
+7. Se piora respiratória: VNI (BiPAP)
+8. Se falha VNI ou PaO2/FiO2 <200: IOT + VM protetora (Vt 6mL/kg, PEEP otimizada)
+9. TC tórax para avaliar extensão
+10. RX tórax seriado (piora nas primeiras 24-72h)
+11. Tratar fraturas costais associadas
+12. Profilaxia TEV: Enoxaparina 40mg SC (se sem sangramento ativo)`,
+    warnings: "Contusão pulmonar piora nas primeiras 24-72h. Ressuscitação volêmica excessiva agrava o quadro. Tórax instável associado: considerar fixação cirúrgica.",
+    guideline: "ATLS / EAST / SBCT",
+  },
+  {
+    id: "rx-torax-instavel",
+    title: "Tórax Instável (Flail Chest)",
+    type: "Prescrição UTI",
+    prescription: `1. IOT + VM protetora se insuficiência respiratória
+   (Vt 6mL/kg, PEEP 8-12, FiO2 para SpO2 >94%)
+2. Analgesia AGRESSIVA — prioridade absoluta:
+   - Peridural torácica contínua (Ropivacaína 0,2% + Fentanil 2mcg/mL)
+   - OU Bloqueio do plano eretor (ESP block)
+   - Tramadol 100mg EV 8/8h + Dipirona 1g EV 6/6h
+   - PCA (analgesia controlada pelo paciente) se disponível
+3. Fisioterapia respiratória intensiva (4x/dia)
+4. Posição semi-sentada (30-45°)
+5. SF 0,9% — restrição hídrica relativa
+6. Enoxaparina 40mg SC 1x/dia (se sem sangramento)
+7. Omeprazol 40mg EV 1x/dia
+
+INDICAÇÃO CIRÚRGICA (fixação costal):
+8. ≥3 costelas fraturadas com desvio
+9. Necessidade de VM prolongada atribuída ao tórax instável
+10. Deformidade grave da parede torácica
+11. Toracotomia por outra indicação`,
+    guideline: "EAST / ATLS / Chest Wall Injury Society",
+  },
+  // ========== ENDOCARDITE INFECCIOSA ==========
+  {
+    id: "rx-endocardite-valva-nativa",
+    title: "Endocardite Infecciosa — Valva Nativa",
+    type: "Prescrição Hospitalar",
+    prescription: `EMPÍRICO (aguardando culturas):
+1. Oxacilina 2g EV 4/4h + Gentamicina 3mg/kg/dia EV 1x/dia
+2. Se alergia a penicilina: Vancomicina 15-20mg/kg EV 12/12h + Gentamicina
+
+STREPTOCOCCUS (CIM ≤0,12):
+3. Penicilina G Cristalina 4MUI EV 4/4h por 4 semanas
+4. OU Ceftriaxona 2g EV 1x/dia por 4 semanas
+
+STAPHYLOCOCCUS AUREUS MSSA:
+5. Oxacilina 2g EV 4/4h por 6 semanas
+
+STAPHYLOCOCCUS AUREUS MRSA:
+6. Vancomicina 15-20mg/kg EV 12/12h por 6 semanas
+7. ± Rifampicina 300mg VO 8/8h (se prótese)
+
+ENTEROCOCCUS:
+8. Ampicilina 2g EV 4/4h + Gentamicina 1mg/kg EV 8/8h por 4-6 semanas
+
+SUPORTE:
+9. Hemoculturas 3 amostras (sítios diferentes) ANTES de ATB
+10. Ecocardiograma TT + TE (transesofágico)
+11. Fundoscopia (manchas de Roth)
+12. Monitorizar função renal (nefrotoxicidade aminoglicosídeo)`,
+    warnings: "Indicações cirúrgicas: ICC refratária, vegetação >10mm com embolia, abscesso perianular, fungo, prótese com deiscência. Mortalidade: 20-30%.",
+    guideline: "AHA / ESC / SBC 2023",
+  },
+  {
+    id: "rx-endocardite-protese",
+    title: "Endocardite — Válvula Protética",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `EMPÍRICO:
+1. Vancomicina 15-20mg/kg EV 12/12h + Gentamicina 3mg/kg/dia EV + Rifampicina 300mg VO 8/8h
+
+ESTAFILOCOCO (MRSA ou CoNS):
+2. Vancomicina 15-20mg/kg EV 12/12h por ≥6 semanas
+3. + Rifampicina 300mg VO 8/8h por ≥6 semanas
+4. + Gentamicina 3mg/kg/dia EV por 2 semanas
+
+5. Eco TE obrigatório (sensibilidade muito superior ao TT em prótese)
+6. TC crânio (embolia séptica cerebral)
+7. Hemoculturas seriadas até negativação
+8. Avaliar cirurgia precoce (deiscência, abscesso, IC refratária)`,
+    warnings: "Endocardite de prótese precoce (<60 dias PO): estafilococos e gram-negativos predominam. Prótese tardia: perfil semelhante à nativa.",
+    guideline: "AHA / ESC / SBC",
+  },
+  {
+    id: "rx-tb-multirresistente",
+    title: "Tuberculose Multirresistente (TB-MDR)",
+    type: "Prescrição Hospitalar / Ambulatorial",
+    prescription: `DEFINIÇÃO: Resistência a pelo menos Rifampicina + Isoniazida
+
+ESQUEMA PADRONIZADO (MS Brasil — regime longo):
+1. Fase intensiva (8 meses):
+   - Levofloxacino 750mg VO 1x/dia
+   - Bedaquilina 400mg VO 1x/dia por 2 semanas → 200mg 3x/semana por 22 semanas
+   - Linezolida 600mg VO 1x/dia
+   - Clofazimina 100mg VO 1x/dia
+   - Cicloserina 250-500mg VO 12/12h
+
+2. Fase de manutenção (12 meses):
+   - Levofloxacino + Clofazimina + Cicloserina
+
+MONITORIZAÇÃO:
+3. Baciloscopia + cultura mensal
+4. Função hepática (TGO/TGP) mensal
+5. Audiometria mensal (se aminoglicosídeo)
+6. Hemograma mensal (Linezolida — mielotoxicidade)
+7. ECG mensal (Bedaquilina — prolongamento QT)
+8. Acuidade visual (Linezolida — neurite óptica)
+9. Creatinina mensal
+10. TSM (teste de sensibilidade) a cada 3 meses`,
+    warnings: "Linezolida: mielotoxicidade (anemia, plaquetopenia), neuropatia periférica, acidose lática — monitorizar rigorosamente. Bedaquilina: prolongamento QT — ECG seriado.",
+    guideline: "MS Brasil / OMS 2022 / WHO operational handbook on TB",
+  },
+  {
+    id: "rx-tb-xdr",
+    title: "Tuberculose Extensivamente Resistente (TB-XDR)",
+    type: "Prescrição Hospitalar",
+    prescription: `DEFINIÇÃO (OMS 2021): MDR + resistência a fluoroquinolona + ≥1 do grupo A (Bedaquilina ou Linezolida)
+
+ESQUEMA INDIVIDUALIZADO:
+1. Referência obrigatória a centro de referência terciário
+2. Regime baseado em TSM expandido:
+   - Pretomanid (se disponível via uso compassivo)
+   - Delamanid 100mg VO 12/12h por 6 meses
+   - Imipenem-Cilastatina 1g EV 6/6h + Amoxicilina-Clavulanato 1g VO 12/12h (carbapenêmico)
+   - Ácido para-aminossalicílico (PAS) 4g VO 12/12h
+   - Clofazimina 100mg VO 1x/dia
+3. Duração: 18-20 meses (individualizar)
+4. Regime BPaL (Bedaquilina + Pretomanid + Linezolida) — protocolo OMS
+5. Monitorização intensiva (mesmos parâmetros de MDR + mais frequente)
+6. Isolamento respiratório rigoroso (quarto com pressão negativa)`,
+    warnings: "Mortalidade XDR: 40-60%. Adesão ao tratamento é crítica. Notificação compulsória. Encaminhar sempre a centro de referência.",
+    guideline: "OMS 2022 / MS Brasil / PNCT",
+  },
+  // ========== INFECTOLOGIA AVANÇADA ==========
+  {
+    id: "rx-peritonite-bacteriana-espontanea",
+    title: "Peritonite Bacteriana Espontânea (PBE)",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Dieta zero nas primeiras horas → branda após melhora
+2. SF 0,9% — hidratação cautelosa (ascite tensa: NÃO exceder)
+3. Paracentese diagnóstica:
+   - PMN >250/mm³ = PBE (tratar mesmo sem cultura positiva)
+4. Ceftriaxona 2g EV 1x/dia por 5 dias (1ª linha)
+   OU Cefotaxima 2g EV 8/8h
+5. Albumina humana 20%:
+   - 1,5g/kg no D1 + 1g/kg no D3 (reduz mortalidade e SHR)
+6. Suspender diuréticos durante tratamento
+7. Repetir paracentese em 48h (PMN deve cair >25%)
+8. Se falha: ampliar espectro (Meropenem)
+9. Profilaxia secundária: Norfloxacino 400mg VO 1x/dia INDEFINIDAMENTE
+
+PROFILAXIA PRIMÁRIA:
+10. Cirróticos com hemorragia digestiva: Ceftriaxona 1g EV 1x/dia por 7 dias
+11. Proteína no líquido ascítico <1,5: Norfloxacino 400mg/dia`,
+    warnings: "SHR (síndrome hepatorrenal) pode ser precipitada pela PBE — albumina no D1/D3 é MANDATÓRIA. Não usar aminoglicosídeos em cirróticos (nefrotoxicidade).",
+    guideline: "AASLD / EASL / SBH",
+  },
+  {
+    id: "rx-abscesso-hepatico",
+    title: "Abscesso Hepático",
+    type: "Prescrição Hospitalar",
+    prescription: `ABSCESSO PIOGÊNICO:
+1. Ceftriaxona 2g EV 1x/dia + Metronidazol 500mg EV 8/8h por 4-6 semanas
+2. OU Piperacilina-Tazobactam 4,5g EV 6/6h
+3. Drenagem percutânea guiada por USG/TC se >5cm
+4. Hemoculturas + cultura do aspirado
+5. Investigar foco: biliar, portal (diverticulite, apendicite)
+
+ABSCESSO AMEBIANO:
+6. Metronidazol 750mg EV/VO 8/8h por 10 dias
+7. Seguido de Teclozan 500mg VO 8/8h por 3 dias (eliminar cistos intestinais)
+8. Drenagem apenas se >10cm, risco de ruptura ou sem resposta ao tratamento
+9. Sorologia para E. histolytica
+
+SUPORTE:
+10. Analgesia: Dipirona 1g EV 6/6h + Tramadol 50mg EV 8/8h
+11. Omeprazol 40mg EV 1x/dia
+12. USG ou TC de controle em 2-4 semanas`,
+    guideline: "IDSA / SBI / WGO",
+  },
+  {
+    id: "rx-fasciite-necrotizante",
+    title: "Fasciíte Necrotizante",
+    type: "Prescrição UTI / Emergência",
+    prescription: `1. Ressuscitação volêmica agressiva (30mL/kg cristaloide na 1ª hora)
+2. ATB empírico IMEDIATO:
+   - Meropenem 1g EV 8/8h + Vancomicina 15-20mg/kg EV 12/12h + Clindamicina 900mg EV 8/8h
+   - Clindamicina: efeito antitoxina (inibe síntese proteica de toxinas estreptocócicas)
+3. DESBRIDAMENTO CIRÚRGICO DE URGÊNCIA — NÃO ATRASAR
+   - Revisão cirúrgica a cada 24-48h
+4. Noradrenalina se choque (PAM >65)
+5. IOT + VM se necessário
+6. Hemoculturas + cultura de tecido desbridado
+7. Laboratório: HMG, PCR, lactato, CK, gasometria
+8. LRINEC score (Laboratory Risk Indicator for Necrotizing Fasciitis)
+9. Considerar Imunoglobulina EV se Strep Grupo A com choque tóxico
+10. Câmara hiperbárica (controverso — não atrasar cirurgia para isso)`,
+    warnings: "MORTALIDADE: 20-40%. Cada hora de atraso na cirurgia aumenta mortalidade. Diagnóstico é CLÍNICO (dor desproporcional, crepitação, necrose, toxemia). TC/RNM NÃO devem atrasar cirurgia.",
+    guideline: "IDSA / WSES / SBI",
+  },
+  {
+    id: "rx-neurocisticercose",
+    title: "Neurocisticercose",
+    type: "Prescrição Hospitalar / Ambulatorial",
+    prescription: `FORMA PARENQUIMATOSA ATIVA (cistos viáveis):
+1. Albendazol 15mg/kg/dia VO (máx 800mg) dividido 12/12h por 8-30 dias
+   + Praziquantel 50mg/kg/dia VO dividido 8/8h (se >2 cistos)
+2. Dexametasona 0,1mg/kg/dia VO por 5-10 dias (iniciar 1 dia ANTES do antiparasitário)
+3. Anticonvulsivante: Fenitoína 100mg VO 8/8h OU Levetiracetam 500mg VO 12/12h
+
+FORMA INTRAVENTRICULAR / SUBARACNÓIDEA:
+4. Cirurgia (neuroendoscopia para remoção de cisto intraventricular)
+5. Derivação ventriculoperitoneal se hidrocefalia
+
+CISTO CALCIFICADO (inativo):
+6. NÃO tratar com antiparasitário
+7. Apenas anticonvulsivante se crises epilépticas
+
+MONITORIZAÇÃO:
+8. RNM de controle em 6 meses
+9. Fundoscopia (antes de tratar — excluir cisto intraocular!)
+10. TGO/TGP basal e quinzenal`,
+    warnings: "NUNCA tratar com antiparasitário sem corticoide (risco de HIC por edema reacional). Excluir cisto ocular ANTES de iniciar albendazol (pode causar cegueira).",
+    guideline: "AAN / ASTMH / MS Brasil",
+  },
 ];
 
 

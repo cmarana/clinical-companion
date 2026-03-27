@@ -998,5 +998,199 @@ Osteomielite confirmada:
 11. RNM é o melhor exame para diagnóstico`,
     guideline: "IDSA / SBD / IWGDF / SBACV",
   },
+  // ========== FOCO ENDOCÁRDICO ==========
+  {
+    id: "rx-atb-endocardio",
+    title: "Antibiótico — Foco Endocárdico",
+    type: "Antibiótico por Foco",
+    prescription: `EMPÍRICO (valva nativa, aguardando culturas):
+1. Oxacilina 2g EV 4/4h + Gentamicina 3mg/kg/dia EV
+2. Se alergia: Vancomicina 15-20mg/kg EV 12/12h + Gentamicina
+
+EMPÍRICO (valva protética):
+3. Vancomicina + Gentamicina + Rifampicina 300mg VO 8/8h
+
+Streptococcus viridans (CIM ≤0,12):
+4. Penicilina G 4MUI EV 4/4h por 4 semanas
+5. OU Ceftriaxona 2g EV 1x/dia por 4 semanas
+
+MSSA:
+6. Oxacilina 2g EV 4/4h por 6 semanas
+
+MRSA:
+7. Vancomicina por 6 semanas + Rifampicina (se prótese)
+
+Enterococcus:
+8. Ampicilina 2g EV 4/4h + Gentamicina 1mg/kg 8/8h por 4-6 semanas
+9. OU Ampicilina + Ceftriaxona (se alto nível de resistência a aminoglicosídeos)
+
+HACEK:
+10. Ceftriaxona 2g EV 1x/dia por 4 semanas`,
+    guideline: "AHA / ESC / SBC 2023",
+  },
+  // ========== FOCO MEDIASTINAL ==========
+  {
+    id: "rx-atb-mediastino",
+    title: "Antibiótico — Foco Mediastinal",
+    type: "Antibiótico por Foco",
+    prescription: `MEDIASTINITE AGUDA (perfuração esofágica / descendente):
+1. Meropenem 1g EV 8/8h + Vancomicina 15-20mg/kg EV 12/12h
+2. OU Piperacilina-Tazobactam 4,5g EV 6/6h + Vancomicina
+3. + Fluconazol 400mg EV 1x/dia (se risco fúngico)
+
+MEDIASTINITE PÓS-ESTERNOTOMIA:
+4. Vancomicina 15-20mg/kg EV 12/12h + Cefepime 2g EV 8/8h
+5. Ajustar conforme cultura de ferida operatória
+
+6. Duração: 4-6 semanas (guiada por cultura e resposta clínica)
+7. DESBRIDAMENTO CIRÚRGICO obrigatório
+8. Coleta de cultura de tecido profundo (aeróbio + anaeróbio + fungo)`,
+    guideline: "STS / IDSA / SBCT",
+  },
+  // ========== FOCO PLEURAL ==========
+  {
+    id: "rx-atb-pleural",
+    title: "Antibiótico — Foco Pleural (Empiema)",
+    type: "Antibiótico por Foco",
+    prescription: `COMUNITÁRIO:
+1. Ceftriaxona 2g EV 1x/dia + Metronidazol 500mg EV 8/8h
+2. OU Amoxicilina-Clavulanato 1,2g EV 8/8h
+3. Duração: 2-4 semanas (+ drenagem)
+
+NOSOCOMIAL:
+4. Piperacilina-Tazobactam 4,5g EV 6/6h
+5. OU Meropenem 1g EV 8/8h (se MDR)
+6. + Vancomicina se risco de MRSA
+
+FIBRINOLÍTICO INTRAPLEURAL (se loculado):
+7. Alteplase 10mg + DNase 5mg em 30mL SF 12/12h por 3 dias
+8. Clampar dreno por 1h após instilar
+
+9. Se falha clínica: VATS (videotoracoscopia)
+10. Decorticação cirúrgica se encarceramento pulmonar`,
+    guideline: "BTS / ATS / SBPT",
+  },
+  // ========== PROFILAXIA CIRÚRGICA POR TIPO ==========
+  {
+    id: "rx-atb-profilaxia-ortopedica",
+    title: "Profilaxia ATB — Cirurgia Ortopédica",
+    type: "Profilaxia Cirúrgica",
+    prescription: `FRATURA EXPOSTA:
+Gustilo I: Cefazolina 2g EV → 1g 8/8h por 24h
+Gustilo II: Cefazolina 2g EV → 1g 8/8h por 24-48h
+Gustilo III: Cefazolina 2g + Gentamicina 5mg/kg + Metronidazol 500mg 8/8h por 72h
+Gustilo IIIB/C contaminada: + Penicilina G 4MUI EV 4/4h (Clostridium)
+
+ARTROPLASTIA (quadril/joelho):
+1. Cefazolina 2g EV (indução) → 1g 8/8h por 24h
+2. Se MRSA: Vancomicina 15mg/kg EV (iniciar 2h antes)
+
+FIXAÇÃO INTERNA:
+3. Cefazolina 2g EV DU (pode repetir se >4h)
+
+AMPUTAÇÃO:
+4. Cefazolina 2g + Metronidazol 500mg EV`,
+    notes: "Obesidade >120kg: Cefazolina 3g. Sempre administrar 30-60min antes da incisão.",
+    guideline: "AAOS / ANVISA / ASHP",
+  },
+  {
+    id: "rx-atb-profilaxia-abdominal",
+    title: "Profilaxia ATB — Cirurgia Abdominal",
+    type: "Profilaxia Cirúrgica",
+    prescription: `COLECISTECTOMIA:
+1. Cefazolina 2g EV DU (indicada se fatores de risco: >60 anos, DM, coledocolitíase)
+2. Videolaparoscópica eletiva sem fatores: DISPENSÁVEL
+
+APENDICECTOMIA:
+3. Não perfurada: Cefoxitina 2g EV DU OU Ceftriaxona 1g + Metronidazol 500mg
+4. Perfurada/abscesso: terapêutico (Ceftriaxona + Metronidazol 7-10 dias)
+
+COLORRETAL:
+5. Cefoxitina 2g EV (repetir 2/2h intraop)
+6. OU Ceftriaxona 1g + Metronidazol 500mg
+7. Preparo mecânico + ATB oral: Eritromicina base 1g + Neomicina 1g VO às 19h, 20h, 21h (véspera)
+
+HERNIOPLASTIA COM TELA:
+8. Cefazolina 2g EV DU
+
+ESPLENECTOMIA:
+9. Cefazolina 2g EV DU + vacinação pós-op (Pneumo23, MenC, Hib)`,
+    guideline: "ANVISA / ASHP / SIS / IDSA",
+  },
+  {
+    id: "rx-atb-profilaxia-uro-gine",
+    title: "Profilaxia ATB — Cirurgia Urológica e Ginecológica",
+    type: "Profilaxia Cirúrgica",
+    prescription: `HISTERECTOMIA (abdominal/vaginal):
+1. Cefazolina 2g EV DU
+
+CESARIANA:
+2. Cefazolina 2g EV (antes da incisão — NÃO após clampeamento)
+
+CURETAGEM UTERINA:
+3. Doxiciclina 100mg VO 1h antes + 200mg VO após (se aborto séptico: terapêutico)
+
+PROSTATECTOMIA:
+4. Ciprofloxacino 500mg VO 1h antes OU Cefazolina 2g EV
+
+BIÓPSIA DE PRÓSTATA:
+5. Ciprofloxacino 500mg VO 12/12h por 3 dias (iniciar 1h antes)
+
+RTU PRÓSTATA/BEXIGA:
+6. Ciprofloxacino 400mg EV OU Cefazolina 2g EV DU
+
+LITOTRIPSIA:
+7. Ciprofloxacino 500mg VO DU (se urocultura estéril)
+
+NEFRECTOMIA:
+8. Cefazolina 2g EV DU`,
+    guideline: "AUA / ACOG / ANVISA",
+  },
+  {
+    id: "rx-atb-profilaxia-neuro-cardio",
+    title: "Profilaxia ATB — Neurocirurgia e Cardíaca",
+    type: "Profilaxia Cirúrgica",
+    prescription: `CRANIOTOMIA:
+1. Cefazolina 2g EV DU (repetir se >4h)
+2. Se implante/shunt: Cefazolina 2g EV DU
+3. Cirurgia transesfenoidal: Cefazolina 2g EV DU + cuidados nasais
+
+CIRURGIA CARDÍACA:
+4. Cefazolina 2g EV (indução) → 1g EV 8/8h por 48h (máximo)
+5. Se alergia: Vancomicina 15mg/kg EV (iniciar 2h antes)
+6. Se MRSA institucional: adicionar Vancomicina
+
+CIRURGIA VASCULAR:
+7. Cefazolina 2g EV DU (periférica sem implante)
+8. Com prótese vascular: Cefazolina 2g → 1g 8/8h por 24h
+
+CIRURGIA TORÁCICA (Ressecção pulmonar):
+9. Cefazolina 2g EV DU → repetir se >4h
+10. OU Ampicilina-Sulbactam 3g EV DU`,
+    guideline: "STS / ANVISA / ASHP / IDSA",
+  },
+  // ========== FOCO ÓSSEO/ARTICULAR ==========
+  {
+    id: "rx-atb-artrite-septica",
+    title: "Antibiótico — Artrite Séptica",
+    type: "Antibiótico por Foco",
+    prescription: `EMPÍRICO (adulto):
+1. Oxacilina 2g EV 4/4h (cobertura S. aureus)
+2. Se risco MRSA: Vancomicina 15-20mg/kg EV 12/12h
+3. Se suspeita gonocócica: Ceftriaxona 1g EV 1x/dia
+
+AJUSTE POR CULTURA:
+MSSA: Oxacilina 2g EV 4/4h por 4-6 semanas
+MRSA: Vancomicina 15-20mg/kg 12/12h por 4-6 semanas
+Gonococo: Ceftriaxona 1g EV 1x/dia por 7-14 dias
+Gram-negativo: Ceftriaxona 2g EV 1x/dia por 4-6 semanas
+
+OBRIGATÓRIO:
+4. Artrocentese (antes do ATB!) — cultura + contagem celular
+5. Lavagem articular (artroscópica ou aberta)
+6. Imobilização funcional
+7. Fisioterapia precoce (após controle infeccioso)`,
+    guideline: "IDSA / ACR / SBOT",
+  },
 ];
 

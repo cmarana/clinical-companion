@@ -1301,6 +1301,132 @@ ERROS COMUNS:
     notes: "A DO é documento legal e epidemiológico. Preenchimento adequado é obrigação do médico (Art. 84 CEM). DO errada = estatística de saúde errada = políticas públicas equivocadas.",
     guideline: "MS / Manual de Instruções para Preenchimento da DO / CFM",
   },
+  // ========== MODELOS CIRURGIA TORÁCICA ==========
+  {
+    id: "rx-modelo-pos-op-toracotomia",
+    title: "Modelo — Pós-Operatório de Toracotomia",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta zero até 6h PO → líquida → branda conforme tolerância
+2. SF 0,9% 1000mL + SG 5% 1000mL EV — alternados a cada 8h
+3. Cefazolina 1g EV 8/8h por 24h (profilaxia)
+4. Analgesia multimodal:
+   - Dipirona 1g EV 6/6h
+   - Tramadol 100mg EV 8/8h
+   - Peridural torácica contínua (se disponível)
+   - OU Bloqueio intercostal com Bupivacaína 0,25%
+5. Omeprazol 40mg EV 1x/dia
+6. Enoxaparina 40mg SC 1x/dia (iniciar 12h PO)
+7. Cuidados com dreno de tórax:
+   - Manter selo d'água
+   - Registrar débito 6/6h (tipo: seroso, sanguinolento, quiloso)
+   - Avaliar borbulhamento e oscilação
+   - Ordenhar dreno conforme protocolo
+8. RX tórax diário
+9. Fisioterapia respiratória 3x/dia (incentivador, tosse assistida)
+10. Deambulação precoce (D1 PO)
+11. Cabeceira a 30-45°
+12. SpO2 contínua — O2 nasal se SpO2 <93%
+13. Critérios para retirada do dreno: débito <200mL/24h + sem borbulhamento + pulmão expandido`,
+  },
+  {
+    id: "rx-modelo-pos-op-vats",
+    title: "Modelo — Pós-Operatório de VATS",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta líquida 4h PO → branda → livre
+2. SF 0,9% 1000mL EV — 40mL/h (reduzir conforme VO)
+3. Cefazolina 1g EV DU (PO imediato — se não feito intraop)
+4. Analgesia:
+   - Dipirona 1g EV 6/6h
+   - Cetoprofeno 100mg EV 12/12h (se função renal normal)
+   - Tramadol 50mg EV 8/8h SN
+5. Omeprazol 40mg EV 1x/dia
+6. Enoxaparina 40mg SC 1x/dia (se imobilização >24h)
+7. Dreno torácico: monitorizar débito e borbulhamento
+8. RX tórax PO imediato + D1
+9. Deambulação precoce (6h PO)
+10. Fisioterapia respiratória 2x/dia
+11. Alta hospitalar D1-D2 PO (se sem intercorrências)`,
+  },
+  // ========== MODELO PROFILAXIA CIRÚRGICA ==========
+  {
+    id: "rx-modelo-checklist-profilaxia",
+    title: "Modelo — Checklist Profilaxia Cirúrgica",
+    type: "Prescrição Padrão",
+    prescription: `CHECKLIST DE PROFILAXIA ATB CIRÚRGICA:
+
+□ ATB selecionado conforme tipo de cirurgia
+□ Dose ajustada para peso (>120kg: Cefazolina 3g)
+□ Administrado 30-60min ANTES da incisão (Vancomicina: 120min antes)
+□ Repique intraoperatório programado:
+  - Cefazolina: a cada 4h
+  - Cefoxitina: a cada 2h
+  - Vancomicina: a cada 8-12h
+  - Gentamicina: dose única
+□ Suspensão em até 24h pós-op (cardíaca: até 48h)
+□ Alergia documentada? → esquema alternativo
+□ Tricotomia (se necessária): tricotomizador elétrico, NÃO lâmina
+□ Antissepsia: Clorexidina 2% degermante + alcoólica
+
+ESQUEMAS ALTERNATIVOS (alergia a beta-lactâmico):
+- Limpas: Clindamicina 900mg EV ± Gentamicina 5mg/kg
+- Contaminadas: Clindamicina 900mg + Gentamicina 5mg/kg + Metronidazol 500mg
+- Se MRSA: Vancomicina 15mg/kg (iniciar 120min antes)`,
+    notes: "A profilaxia ATB adequada reduz infecção de sítio cirúrgico em 50-60%. O momento da administração é o fator mais crítico.",
+    guideline: "ANVISA / ASHP / WHO / CDC",
+  },
+  {
+    id: "rx-modelo-pos-op-drenagem-torax",
+    title: "Modelo — Manejo de Dreno de Tórax no PO",
+    type: "Prescrição Padrão",
+    prescription: `CUIDADOS COM DRENO DE TÓRAX:
+
+1. Manter frasco coletor SEMPRE abaixo do nível do tórax
+2. Verificar selo d'água:
+   - Oscilação com respiração = dreno pérvio ✓
+   - Borbulhamento contínuo = fístula aérea OU conexão frouxa
+   - Sem oscilação e sem borbulhamento = obstrução OU pulmão expandido
+3. Ordenhar dreno suavemente (NÃO clampar — exceto para troca de frasco)
+4. Registrar débito a cada 6h: volume, aspecto (seroso, hemático, purulento, quiloso)
+5. Curativo oclusivo na inserção — trocar diário
+
+CRITÉRIOS PARA RETIRADA:
+6. Débito <200mL/24h (100-150mL ideal)
+7. Sem borbulhamento por >24h
+8. Pulmão expandido no RX
+9. Paciente estável clinicamente
+
+TÉCNICA DE RETIRADA:
+10. Pedir ao paciente para fazer Valsalva (expiração forçada com glote fechada)
+11. Remover dreno rapidamente
+12. Fechar incisão com ponto em U previamente dado
+13. Curativo oclusivo
+14. RX tórax de controle em 2-4h`,
+    notes: "Se sangramento >200mL/h por 2-4h consecutivas: acionar cirurgia torácica (possível toracotomia exploradora). Dreno com aspecto quiloso (branco leitoso): investigar quilotórax.",
+  },
+  // ========== MODELO INFECTOLOGIA ==========
+  {
+    id: "rx-modelo-atb-empirico-adulto-resumo",
+    title: "Modelo — ATB Empírico por Sítio (Resumo Rápido)",
+    type: "Prescrição Padrão",
+    prescription: `GUIA RÁPIDO — ATB EMPÍRICO POR SÍTIO (ADULTO):
+
+PULMÃO (PAC): Ceftriaxona 1g 12/12h + Azitromicina 500mg 1x/dia
+PULMÃO (PAVM): Meropenem 1g 8/8h + Vancomicina OU Piperacilina-Taz 4,5g 6/6h
+URINÁRIO: Ceftriaxona 1g 12/12h (se grave) | Cipro 500mg 12/12h (se leve)
+ABDOMINAL: Ceftriaxona 1g 12/12h + Metronidazol 500mg 8/8h | Pipe-Taz se grave
+PELE/PARTES MOLES: Oxacilina 2g 4/4h ± Clindamicina 600mg 6/6h
+PELE NECROTIZANTE: Meropenem + Vancomicina + Clindamicina
+SNC (MENINGITE): Ceftriaxona 2g 12/12h + Dexametasona 0,15mg/kg 6/6h
+ENDOCARDITE: Oxacilina 2g 4/4h + Gentamicina 3mg/kg/dia
+CATETER: Vancomicina 15-20mg/kg 12/12h ± Pipe-Taz
+ÓSSEO/ARTICULAR: Oxacilina 2g 4/4h (se MRSA: Vancomicina)
+NEUTROPENIA FEBRIL: Cefepime 2g 8/8h OU Meropenem 1g 8/8h
+
+AJUSTE RENAL: Sempre calcular ClCr (Cockcroft-Gault)
+ESCALONAR: Após resultado de cultura + antibiograma (48-72h)`,
+    notes: "Este é um guia de consulta rápida. Para doses detalhadas, consultar a prescrição específica de cada condição.",
+    guideline: "IDSA / SBI / ANVISA / SBC",
+  },
 ];
 
 
