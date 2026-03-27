@@ -999,5 +999,184 @@ Todos:
     notes: "VSR é o principal agente. Pico: <6 meses. Palivizumabe (profilaxia): prematuros <29sem, cardiopatas, pneumopatas. NÃO existe tratamento específico — suporte é a base.",
     guideline: "SBP / AAP / NICE",
   },
+  {
+    id: "rx-ped-desidratacao-grave",
+    title: "Desidratação Grave na Criança",
+    type: "Prescrição Pediátrica",
+    prescription: `Fase de expansão (desidratação grave / choque):
+1. SF 0,9% 20mL/kg EV em 20-30 min (pode repetir até 3x)
+2. Reavaliar: perfusão, FC, PA, nível de consciência
+
+Fase de manutenção (Holliday-Segar):
+3. Até 10kg: 100mL/kg/dia
+4. 10-20kg: 1000mL + 50mL/kg acima de 10kg
+5. >20kg: 1500mL + 20mL/kg acima de 20kg
+
+Reposição:
+6. SRO 50-100mL/kg em 4-6h (desidratação moderada — VO)
+7. Corrigir Na+, K+ conforme exames
+8. KCl 10%: 2-3mEq/kg/dia EV (após confirmar diurese)
+
+9. Glicemia capilar (risco de hipoglicemia em lactentes)
+10. Se hipoglicemia: SG 10% 2mL/kg EV em bolus
+11. Hemograma, eletrólitos, gasometria, função renal`,
+    notes: "Sinais de desidratação grave: olhos fundos, fontanela deprimida, turgor pastoso, letargia, TEC >3s, ausência de lágrimas, mucosas secas.",
+    guideline: "SBP / OMS / AAP",
+  },
+  {
+    id: "rx-ped-cetoacidose",
+    title: "Cetoacidose Diabética Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `1. SF 0,9% 10-20mL/kg EV em 1-2h (NÃO fazer bolus rápido — risco de edema cerebral)
+2. Manutenção: SF 0,9% com reposição calculada em 24-48h
+3. Insulina Regular: 0,05-0,1 UI/kg/h em BIC (NÃO fazer bolus em pediatria)
+4. Quando glicemia <300: trocar para SG 5% + SF 0,9% (manter insulina)
+5. Reposição de K+:
+   K+ <3,5: repor ANTES da insulina (40mEq/L)
+   K+ 3,5-5,5: repor junto (20-30mEq/L)
+   K+ >5,5: não repor, monitorar
+6. NÃO usar Bicarbonato de rotina (apenas se pH <6,9)
+7. Glicemia capilar 1/1h
+8. Gasometria + eletrólitos 2/2h
+9. Monitorar sinais de EDEMA CEREBRAL: cefaleia, bradicardia, vômitos, alteração pupilar
+10. Se edema cerebral: Manitol 0,5-1g/kg EV OU NaCl 3% 2,5-5mL/kg em 10min`,
+    warnings: "Edema cerebral: complicação mais temida na CAD pediátrica (mortalidade 25%). Fatores de risco: correção rápida, bolus de fluidos, insulina precoce, Na+ não subindo com correção.",
+    guideline: "ISPAD / SBD / ADA / SBP",
+  },
+  {
+    id: "rx-ped-anafilaxia",
+    title: "Anafilaxia Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `1. Adrenalina 1:1000 IM na coxa:
+   <10kg: 0,1mg (0,1mL)
+   10-25kg: 0,15mg (EpiPen Jr)
+   >25kg: 0,3mg (EpiPen)
+   Repetir a cada 5-15 min se necessário
+
+2. SF 0,9% 20mL/kg EV em bolus (se hipotensão)
+3. Difenidramina 1mg/kg EV/IM (máx 50mg)
+4. Ranitidina 1mg/kg EV (máx 50mg)
+5. Hidrocortisona 4-8mg/kg EV (máx 200mg)
+6. Salbutamol spray 4-8 jatos com espaçador (se broncoespasmo)
+7. O2 alto fluxo
+8. Monitorização por 6-8h (reação bifásica)
+9. Alta com prescrição de Adrenalina auto-injetável
+10. Encaminhar alergista/imunologista`,
+    guideline: "ASBAI / WAO / AAP / EAACI",
+  },
+  {
+    id: "rx-ped-meningite",
+    title: "Meningite Bacteriana Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `1. Dexametasona 0,15mg/kg EV 6/6h por 4 dias (DAR ANTES ou junto ao ATB)
+2. Ceftriaxona 100mg/kg/dia EV dividido 12/12h (máx 4g/dia)
+3. + Vancomicina 15mg/kg EV 6/6h (se suspeita de pneumococo resistente)
+4. <3 meses: Ampicilina 75mg/kg EV 6/6h + Ceftriaxona (cobrir Listeria + GBS)
+5. SF 0,9% — manutenção (evitar hiper-hidratação — SIADH)
+6. Dipirona 15mg/kg EV 6/6h se febre
+7. Punção lombar: citologia, bioquímica, Gram, cultura, látex
+8. TC crânio ANTES do líquor se: convulsão, papiledema, déficit focal, RNC, imunossuprimido
+9. Monitorar: PC (lactentes), convulsão, SIADH (Na+ e osmolaridade)
+10. Notificação COMPULSÓRIA imediata (SINAN)
+11. Quimioprofilaxia contactantes (meningococo): Rifampicina 10mg/kg 12/12h por 2 dias`,
+    guideline: "SBP / SBI / AAP / IDSA",
+  },
+  {
+    id: "rx-ped-itu",
+    title: "ITU Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `<3 meses ou grave (febre alta, toxemia):
+1. Internação
+2. Ampicilina 50mg/kg EV 6/6h + Gentamicina 5mg/kg EV 1x/dia
+3. OU Ceftriaxona 50-75mg/kg EV 1x/dia
+4. SF 0,9% manutenção EV
+
+3 meses - 2 anos (febril):
+5. Ceftriaxona 50mg/kg IM 1x/dia (ambulatorial com reavaliação em 48h)
+6. OU Amoxicilina-Clavulanato 25mg/kg VO 12/12h por 10 dias
+
+>2 anos (afebril — cistite):
+7. Cefalexina 25-50mg/kg/dia VO dividido 6/6h por 5-7 dias
+8. OU Nitrofurantoína 5-7mg/kg/dia VO 6/6h por 7 dias (>1 mês)
+
+Todos:
+9. Urocultura ANTES do ATB (saco coletor: apenas se negativa exclui; positiva: confirmar com cateterismo)
+10. USG renal + vias urinárias
+11. Uretrocistografia miccional: 1ª ITU febril em <2 anos OU ITU recorrente`,
+    guideline: "SBP / AAP / NICE / SBU",
+  },
+  {
+    id: "rx-ped-asma-grave",
+    title: "Crise Asmática Grave na Criança",
+    type: "Prescrição Pediátrica",
+    prescription: `1. Salbutamol spray: 4-8 jatos com espaçador a cada 20 min (3x na 1ª hora)
+2. OU Salbutamol NBZ: 0,15mg/kg (mín 2,5mg) + SF 3mL a cada 20 min
+3. Ipratrópio 250mcg (20 gotas) na mesma NBZ (3 doses na 1ª hora)
+4. Prednisolona 1-2mg/kg VO (máx 40mg) OU Hidrocortisona 4mg/kg EV
+5. O2 suplementar para SpO2 ≥94%
+
+Se refratária (após 1ª hora sem melhora):
+6. Salbutamol NBZ contínua
+7. Sulfato de Magnésio 25-75mg/kg EV em 20-30min (máx 2g)
+8. Aminofilina 5mg/kg EV em 20min → 0,5-1mg/kg/h (UTI, monitorar toxicidade)
+9. Considerar VNI
+10. IOT se: falência respiratória iminente (bradicardia, cianose, silêncio respiratório, RNC)
+
+Pós-crise:
+11. Prednisolona 1mg/kg/dia VO por 3-5 dias
+12. Revisar tratamento de manutenção (step-up)`,
+    guideline: "GINA 2023 / SBP / SBPT",
+  },
+  {
+    id: "rx-ped-sepse",
+    title: "Sepse Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `Primeira hora (Golden Hour):
+1. O2 100% + monitorização
+2. SF 0,9% 10-20mL/kg EV em 5-10 min (repetir até 40-60mL/kg na 1ª hora)
+3. Ceftriaxona 80-100mg/kg EV (máx 2g) — ATB na 1ª hora
+4. Se choque refratário a fluido: Adrenalina 0,1-0,3mcg/kg/min EM BIC
+   OU Noradrenalina 0,1mcg/kg/min (se vasoplegia — choque quente)
+5. Dopamina: NÃO é mais 1ª linha em pediatria
+
+Se choque frio (mal perfundido, TEC >3s):
+6. Adrenalina (1ª escolha)
+
+Se choque quente (vasodilatado, pulsos amplos):
+7. Noradrenalina (1ª escolha)
+
+8. Hidrocortisona 2mg/kg EV bolus (se choque refratário a catecolaminas)
+9. Glicemia: manter >60mg/dL (SG 10% 2mL/kg se hipoglicemia)
+10. Cálcio iônico: repor se <1,0 (Gluconato de Ca 10% 0,5mL/kg lento)
+11. Hemograma, gasometria, lactato, culturas, PCR/procalcitonina`,
+    warnings: "Criança compensa até descompensar abruptamente. Hipotensão é sinal TARDIO. FC, TEC, perfusão periférica são sinais precoces de choque.",
+    guideline: "ACCM / SSC 2020 / SBP / AMIB Pediátrica",
+  },
+  {
+    id: "rx-ped-status-epileptico",
+    title: "Status Epiléptico Pediátrico",
+    type: "Prescrição Pediátrica",
+    prescription: `0-5 min:
+1. Midazolam 0,15-0,2mg/kg EV (máx 5mg)
+   OU Midazolam 0,2mg/kg IM/nasal/bucal (se sem acesso)
+   OU Diazepam 0,3mg/kg EV (máx 10mg) ou 0,5mg/kg VR
+2. Glicemia capilar → SG 10% 2mL/kg se hipoglicemia
+
+5-20 min (se não cessou):
+3. Repetir Midazolam 0,15mg/kg EV (1 dose adicional)
+4. Fenitoína 20mg/kg EV em 20 min (em SF — NÃO em SG!)
+   OU Valproato de sódio 20-40mg/kg EV em 5 min (alternativa)
+   OU Levetiracetam 40-60mg/kg EV em 15 min
+
+>20 min (refratário):
+5. Midazolam BIC: 0,1-0,4mg/kg/h (titular)
+6. OU Tiopental 3-5mg/kg bolus → 1-5mg/kg/h
+7. IOT + ventilação mecânica
+8. UTI + monitorização EEG contínua
+
+9. Exames: hemograma, eletrólitos, Ca++, Mg, toxicológico, gasometria
+10. Neuroimagem após estabilização`,
+    guideline: "ABN / ILAE / SBP / AES",
+  },
 ];
 
