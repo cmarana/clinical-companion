@@ -1372,5 +1372,51 @@ NÍVEL 3 — Contenção mecânica:
     warnings: "Mortalidade de 20-50% na embolia arterial. Volume letal estimado: 3-5mL/kg EV.",
     guideline: "AMIB / SBC",
   },
+  {
+    id: "rx-emerg-rabdomiolise",
+    title: "Rabdomiólise — Emergência",
+    type: "Prescrição de Emergência",
+    prescription: `1. SF 0,9% 1000-1500mL/h EV (volume agressivo — alvo diurese >200-300mL/h)
+2. SVD — controle rigoroso de diurese
+3. Bicarbonato de sódio 8,4%: 150mEq em 1000mL SG5% (manter pH urinário >6,5 — protege túbulo)
+4. Monitorar: CK, mioglobina, K+, Ca++, creatinina, gasometria — 6/6h
+5. Tratar hipercalemia: Gluconato de Ca 10% 10mL EV + Insulina 10UI + SG50% 40mL + Salbutamol NBZ
+6. NÃO repor Cálcio se hipocalcemia assintomática (deposição no músculo necrótico)
+7. Manitol 20% 100mL EV (se diurese não responde a volume — controverso)
+8. Hemodiálise se: IRA oligúrica, K+ refratário, acidose grave, sobrecarga hídrica`,
+    warnings: "CK >5000: risco de IRA. CK >15000: risco alto. Causa mais comum de IRA por rabdomiólise: hipovolemia. HIDRATAR AGRESSIVAMENTE.",
+    guideline: "AMIB / KDIGO / SBN",
+  },
+  {
+    id: "rx-emerg-sindrome-lise-tumoral",
+    title: "Síndrome de Lise Tumoral — Emergência",
+    type: "Emergência Oncológica",
+    prescription: `1. Hidratação agressiva: SF 0,9% 3L/m²/dia EV (200mL/h em adulto)
+2. Alopurinol 300-600mg VO 1x/dia (prevenção) OU Rasburicase 0,2mg/kg EV dose única (tratamento — ácido úrico >8)
+3. NÃO alcalinizar urina se usar Rasburicase
+4. Tratar hipercalemia: protocolo padrão (insulina + glicose, Ca, Kayexalate, diálise)
+5. Tratar hiperfosfatemia: Sevelamer 800mg VO 8/8h + restrição dietética
+6. NÃO repor Cálcio se assintomático (precipitação fosfato de cálcio)
+7. Monitorização: K+, Ca++, PO4, ácido úrico, LDH, creatinina — 4/4h nas primeiras 24h
+8. Hemodiálise se: K+ >6,5 refratário, ácido úrico >10 refratário, IRA oligúrica, hiperfosfatemia >10`,
+    warnings: "Rasburicase: NÃO usar se deficiência de G6PD (anemia hemolítica). Colher ácido úrico em tubo gelado após Rasburicase (degradação in vitro).",
+    guideline: "ASCO / NCCN / SBOC",
+  },
+  {
+    id: "rx-emerg-compressao-medular",
+    title: "Compressão Medular — Emergência Oncológica",
+    type: "Emergência Oncológica",
+    prescription: `1. Dexametasona 10mg EV em bolus → 4mg EV 6/6h (reduzir edema perilesional)
+2. RNM de coluna TOTAL urgente (delinear nível e extensão)
+3. Analgesia: Morfina 2-4mg EV SN + Dipirona 1g EV 6/6h
+4. Radioterapia de urgência (iniciar em <24h se possível)
+5. Avaliar descompressão cirúrgica: instabilidade vertebral, déficit neurológico progressivo, tumor radiorresistente
+6. Profilaxia de TVP: Enoxaparina 40mg SC 1x/dia
+7. SVD se retenção urinária
+8. Avaliação fisioterápica precoce
+9. Omeprazol 40mg EV 1x/dia (corticoide em dose alta)`,
+    warnings: "Cada hora de atraso no diagnóstico reduz chance de recuperação neurológica. Déficit motor estabelecido >48h: prognóstico ruim para recuperação.",
+    guideline: "NCCN / ESMO / SBOC",
+  },
 ];
 

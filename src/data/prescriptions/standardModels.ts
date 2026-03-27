@@ -916,5 +916,25 @@ CRM / Carimbo / Assinatura`,
 15. Extubação precoce quando possível (protocolo fast-track)`,
     guideline: "SBC / SBCCV / STS",
   },
+  {
+    id: "rx-modelo-vascular",
+    title: "Modelo — Internação Cirurgia Vascular",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta _____ (livre / branda / zero se pré-op)
+2. SF 0,9% 1000mL EV ___mL/h
+3. AAS 100mg VO 1x/dia (manter — exceto se sangramento ativo)
+4. Estatina: Atorvastatina 40-80mg VO à noite
+5. Heparina: _____ (profilática ou terapêutica conforme indicação)
+6. Dipirona 1g EV 6/6h
+7. Omeprazol 40mg EV 1x/dia
+8. Insulina conforme protocolo (se DM — controle rigoroso)
+9. Avaliar: pulsos periféricos + ITB (Índice Tornozelo-Braquial)
+10. Doppler vascular se indicado
+11. Exames: hemograma, coagulograma, função renal, glicemia, perfil lipídico
+12. Monitorizar: perfusão de extremidades (cor, temperatura, pulso, enchimento capilar)
+13. Cessação tabágica: orientação + encaminhamento
+14. Comunicar: alteração de perfusão de membro, sangramento, hipotensão`,
+    guideline: "SVB / ACC/AHA",
+  },
 ];
 

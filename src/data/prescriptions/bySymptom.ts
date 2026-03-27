@@ -1217,5 +1217,53 @@ Grave (K+ <2,5 ou sintomático):
     warnings: "NÃO infundir KCl em bolus (risco de PCR). Via periférica: máx 20mEq/h. Acesso central: máx 40mEq/h com ECG contínuo. Corrigir Mg para corrigir K.",
     guideline: "SBN / AMIB",
   },
+  {
+    id: "rx-sint-sangramento-anticoag",
+    title: "Sangramento por Anticoagulante",
+    type: "Prescrição Sintomática",
+    prescription: `Varfarina (INR elevado):
+1. INR 4,5-10 sem sangramento: suspender Varfarina + Vitamina K 2,5mg VO
+2. INR >10 sem sangramento: suspender + Vitamina K 5mg VO
+3. Sangramento grave: Complexo Protrombínico (CCP) 25-50UI/kg EV + Vitamina K 10mg EV lento
+4. Se CCP indisponível: PFC 15-20mL/kg
+
+DOACs (Rivaroxabana, Apixabana):
+5. Sangramento grave: Andexanet alfa (se disponível) OU CCP 50UI/kg
+6. Ácido tranexâmico 1g EV (adjuvante)
+7. Não dialisa (alta ligação proteica)
+
+Heparina:
+8. Protamina: 1mg para cada 100UI de HNF das últimas 2-3h (máx 50mg)
+9. HBPM: Protamina reverte ~60% (1mg para cada 1mg de Enoxaparina)
+
+Dabigatrana:
+10. Idarucizumab 5g EV (antídoto específico)`,
+    warnings: "Sempre avaliar necessidade de transfusão (CH se Hb <7, plaquetas se <50.000 + sangramento). Controlar PA. Identificar foco do sangramento.",
+    guideline: "ISTH / SBC / ACC/AHA",
+  },
+  {
+    id: "rx-sint-dor-pos-op",
+    title: "Dor Pós-Operatória — Protocolo Escalonado",
+    type: "Prescrição Sintomática",
+    prescription: `Degrau 1 (dor leve — EVA 1-3):
+1. Dipirona 1g EV 6/6h
+2. Paracetamol 1g EV 6/6h (alternar)
+
+Degrau 2 (dor moderada — EVA 4-6):
+3. Cetoprofeno 100mg EV 12/12h (se não contraindicado)
+4. Tramadol 50-100mg EV 8/8h
+5. Ondansetrona 4mg EV 8/8h (profilaxia náusea por opioide)
+
+Degrau 3 (dor intensa — EVA 7-10):
+6. Morfina 2-4mg EV 4/4h (titular)
+7. OU PCA (analgesia controlada pelo paciente) se disponível
+8. Cetamina subdissociativa: 0,1-0,3mg/kg/h em BIC (poupa opioide)
+
+Adjuvantes:
+9. Dipirona 1g EV 6/6h (manter em TODOS os degraus)
+10. Gabapentina 300mg VO 8/8h (se componente neuropático)
+11. Bloqueio regional (se possível): superior a sistêmico`,
+    guideline: "SBA / ESRA / PROSPECT",
+  },
 ];
 

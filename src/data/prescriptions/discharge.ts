@@ -1170,5 +1170,36 @@ Bacteriana (secreção purulenta):
 8. Retorno ortopedia em 7-10 dias com novo RX
 9. Fisioterapia após retirada da imobilização`,
   },
+  {
+    id: "rx-alta-pos-tvp",
+    title: "Alta — TVP em Anticoagulação (Vascular)",
+    type: "Alta Vascular",
+    prescription: `1. Rivaroxabana 15mg — 1cp VO 12/12h com refeição por 21 dias → 20mg 1x/dia
+2. OU Apixabana 10mg VO 12/12h por 7 dias → 5mg 12/12h
+3. Meia elástica de compressão 20-30mmHg (usar diariamente por 2 anos)
+4. Deambulação precoce (repouso NÃO é necessário após anticoagulação)
+5. Evitar imobilização prolongada (viagens >4h: levantar a cada 2h)
+6. Retorno: cirurgia vascular em 2-4 semanas
+7. Exames: hemograma, função renal em 30 dias
+8. Duração anticoagulação: 3-6 meses (provocada) / indefinida (não provocada/recorrente)
+9. Sinais de alarme: dispneia súbita (TEP), sangramento, edema progressivo`,
+    guideline: "SVB / CHEST / ISTH",
+  },
+  {
+    id: "rx-alta-cirurgia-vascular",
+    title: "Alta — Pós-Revascularização de Membro",
+    type: "Alta Vascular",
+    prescription: `1. AAS 100mg — 1cp VO 1x/dia (uso contínuo)
+2. Clopidogrel 75mg — 1cp VO 1x/dia (se stent — dupla antiagregação)
+3. Atorvastatina 40-80mg — 1cp VO à noite
+4. Cilostazol 100mg — 1cp VO 12/12h (claudicação — se tolerado)
+5. Dipirona 500mg — 1cp VO 6/6h se dor
+6. Curativo da ferida operatória: trocar com SF diariamente
+7. Caminhada diária progressiva (reabilitação vascular)
+8. Parar de fumar (OBRIGATÓRIO — principal fator de risco)
+9. Retorno: 7-10 dias (avaliação de ferida) + 30 dias (Doppler de controle)
+10. PS se: dor intensa no membro, palidez, frialdade, ausência de pulso`,
+    guideline: "SVB / ACC/AHA",
+  },
 ];
 
