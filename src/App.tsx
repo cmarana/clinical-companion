@@ -8,6 +8,7 @@ import { FavoritesProvider } from "@/contexts/FavoritesContext";
 import { NotesProvider } from "@/contexts/NotesContext";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import AppLayout from "@/components/AppLayout";
+import { PWAInstallPrompt, OfflineIndicator } from "@/components/PWAInstallPrompt";
 import { lazy, Suspense } from "react";
 
 const Home = lazy(() => import("@/pages/Home"));
@@ -108,8 +109,10 @@ const App = () => (
           <FavoritesProvider>
             <NotesProvider>
               <TooltipProvider>
-                <Toaster />
+              <Toaster />
                 <Sonner />
+                <OfflineIndicator />
+                <PWAInstallPrompt />
                 <AppRoutes />
               </TooltipProvider>
             </NotesProvider>
