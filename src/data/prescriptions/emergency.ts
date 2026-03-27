@@ -1886,6 +1886,204 @@ FASE 4 — Super-refratário (>24h em coma):
     warnings: "Status epilepticus >30min: dano neuronal irreversível. Mortalidade do super-refratário: 30-50%. Fenitoína: NUNCA diluir em SG (cristaliza). Infundir em SF com filtro.",
     guideline: "AAN / ILAE / ABN / Neurocritical Care Society",
   },
+  // ========== CIRURGIA TORÁCICA — EMERGÊNCIAS ==========
+  {
+    id: "rx-emerg-pneumotorax-hipertensivo-drenagem",
+    title: "Pneumotórax Hipertensivo — Descompressão + Drenagem",
+    type: "Prescrição de Emergência",
+    prescription: `DESCOMPRESSÃO IMEDIATA:
+1. Jelco 14G no 2º EIC, linha hemiclavicular (lado afetado)
+2. OU Toracostomia digital no 5º EIC, linha axilar média
+
+DRENAGEM DEFINITIVA:
+3. Dreno tubular 28-32Fr no 5º EIC, linha axilar média
+4. Conectar ao selo d'água
+5. O2 100% (máscara com reservatório)
+6. Acesso venoso calibroso + SF 0,9% 500mL
+7. Analgesia: Fentanil 50-100mcg EV
+8. RX tórax de controle IMEDIATO
+9. Se bilateral: drenar ambos os lados`,
+    warnings: "NÃO esperar RX para tratar pneumotórax hipertensivo — diagnóstico CLÍNICO. Sinais: turgência jugular, desvio de traqueia, enfisema subcutâneo, hipotensão, ausência de MV.",
+    guideline: "ATLS / ACLS",
+  },
+  {
+    id: "rx-emerg-tamponamento-pericardiaco",
+    title: "Tamponamento Pericárdico — Pericardiocentese",
+    type: "Prescrição de Emergência",
+    prescription: `1. Monitorização contínua (ECG, PA invasiva se possível)
+2. SF 0,9% 1000mL EV rápido (aumentar pré-carga)
+3. EVITAR: diuréticos, vasodilatadores, ventilação com pressão positiva
+4. Pericardiocentese de urgência:
+   - Técnica de Seldinger guiada por USG (subxifoidiana)
+   - Agulha longa 18G angulada 45° em direção ao ombro esquerdo
+   - Aspirar líquido — drenar o máximo possível
+   - Considerar deixar cateter pigtail para drenagem contínua
+5. Enviar líquido: citologia, cultura, bioquímica, BK
+6. Ecocardiograma de controle
+7. Se recidivante: janela pericárdica cirúrgica
+
+SE TRAUMA PENETRANTE:
+8. Toracotomia anterolateral esquerda de emergência (sala vermelha)
+9. Pericardiotomia + rafia cardíaca`,
+    warnings: "Tríade de Beck: hipotensão + turgência jugular + bulhas abafadas. Pulso paradoxal >10mmHg. ECG: baixa voltagem + alternância elétrica.",
+    guideline: "ATLS / ESC / AHA",
+  },
+  {
+    id: "rx-emerg-lesao-grandes-vasos",
+    title: "Lesão de Grandes Vasos Torácicos",
+    type: "Prescrição de Emergência / UTI",
+    prescription: `1. Acesso venoso central (jugular direita ou femoral — NÃO subclávia do lado lesado)
+2. Tipagem + reserva CH 6U + PFC 6U + Plaquetas
+3. Protocolo de transfusão maciça (1:1:1)
+4. Controle de PA sistólica alvo 80-90mmHg (hipotensão permissiva)
+5. Esmolol ou Labetalol se PA >120mmHg (reduzir cisalhamento aórtico)
+6. Analgesia + sedação (Fentanil + Midazolam)
+7. AngioTC tórax URGENTE
+8. Cirurgia vascular / Endovascular de URGÊNCIA
+9. IOT + VM se instabilidade respiratória
+10. Ácido Tranexâmico 1g EV em 10min + 1g em 8h
+11. Aquecer paciente (manta térmica — prevenir tríade letal)
+12. Gasometria + lactato seriados`,
+    warnings: "Alargamento mediastinal no RX: suspeitar dissecção/rotura aórtica traumática. NÃO passar SNG/TOT às cegas se suspeita de lesão esofágica. Mortalidade >80% no local.",
+    guideline: "ATLS / SVS / EAST",
+  },
+  // ========== PROFILAXIA CIRÚRGICA ==========
+  {
+    id: "rx-emerg-profilaxia-cirurgica-resumo",
+    title: "Profilaxia ATB Cirúrgica — Resumo por Procedimento",
+    type: "Protocolo de Emergência / Centro Cirúrgico",
+    prescription: `PRINCÍPIOS:
+- Administrar 30-60min ANTES da incisão
+- Repetir se cirurgia >4h (ou 2x meia-vida do ATB)
+- Suspender em até 24h pós-op (exceto cardíaca: até 48h)
+
+CIRURGIA LIMPA:
+1. Hernioplastia: Cefazolina 2g EV DU (se tela)
+2. Tireoide: NÃO indicada (exceto se reoperação/DM)
+3. Ortopédica com implante: Cefazolina 2g EV
+
+CIRURGIA LIMPA-CONTAMINADA:
+4. Colecistectomia: Cefazolina 2g EV DU
+5. Histerectomia: Cefazolina 2g EV DU
+6. Cirurgia cardíaca: Cefazolina 2g EV → repetir 8/8h por 48h
+7. Craniotomia: Cefazolina 2g EV DU
+8. Cesariana: Cefazolina 2g EV (antes da incisão)
+
+CIRURGIA CONTAMINADA:
+9. Apendicectomia: Cefoxitina 2g EV DU OU Ceftriaxona + Metronidazol
+10. Colorretal: Cefoxitina 2g EV + preparo mecânico VO (Eritromicina + Neomicina)
+
+CIRURGIA INFECTADA:
+11. NÃO é profilaxia — é TRATAMENTO
+12. Esquema conforme foco infeccioso`,
+    notes: "Alergia a cefalosporinas: Clindamicina 900mg EV + Gentamicina 5mg/kg. Obesos mórbidos: Cefazolina 3g. Vancomicina apenas se MRSA prevalente na instituição.",
+    guideline: "ANVISA / ASHP / SIS / IDSA",
+  },
+  // ========== EMERGÊNCIAS INFECCIOSAS ==========
+  {
+    id: "rx-emerg-sepse-foco-abdominal",
+    title: "Sepse — Foco Abdominal (Peritonite)",
+    type: "Prescrição de Emergência",
+    prescription: `1. Acesso venoso calibroso (2 acessos)
+2. SF 0,9% 30mL/kg EV na 1ª hora
+3. Hemoculturas 2 amostras ANTES do ATB
+4. ATB empírico IMEDIATO (<1h):
+   - Piperacilina-Tazobactam 4,5g EV 6/6h
+   - OU Meropenem 1g EV 8/8h + Metronidazol 500mg EV 8/8h
+   - Se grave/nosocomial: + Fluconazol 400mg EV (cobertura fúngica)
+5. Noradrenalina se PAM <65 após volume (acesso central)
+6. Lactato seriado (meta: clearance >10%/2h)
+7. Sondagem vesical (diurese alvo >0,5mL/kg/h)
+8. SNG aberta (se íleo/vômitos)
+9. CIRURGIA — controle do foco: NÃO ATRASAR
+   (Laparotomia exploradora se peritonite difusa)
+10. TC abdome se estável (localizar foco)
+11. Hidrocortisona 50mg EV 6/6h se choque refratário
+12. Gasometria + lactato + HMG + coagulograma`,
+    warnings: "Controle do foco cirúrgico é prioridade em sepse abdominal. ATB sem cirurgia = falha terapêutica. Cada hora de atraso no ATB aumenta mortalidade em 7%.",
+    guideline: "SSC 2021 / SIS / WSES",
+  },
+  {
+    id: "rx-emerg-choque-toxico-estreptococico",
+    title: "Síndrome do Choque Tóxico Estreptocócico",
+    type: "Prescrição de Emergência / UTI",
+    prescription: `1. Ressuscitação volêmica agressiva (30-60mL/kg na 1ª hora)
+2. ATB:
+   - Penicilina G Cristalina 4MUI EV 4/4h + Clindamicina 900mg EV 8/8h
+   - Clindamicina é FUNDAMENTAL (inibe síntese de toxinas — efeito independente de crescimento)
+3. Noradrenalina + Vasopressina se choque refratário
+4. IOT + VM se SDRA
+5. Imunoglobulina humana EV 1g/kg no D1 → 0,5g/kg nos D2-D3 (neutraliza superantígenos)
+6. Desbridamento cirúrgico se fasciíte necrotizante associada
+7. Hemoculturas + cultura de sítio
+8. Laboratório: HMG, CK, Cr, TGO/TGP, coagulograma, gasometria, lactato
+9. Hemodiálise se IRA
+10. Monitorização hemodinâmica invasiva`,
+    warnings: "Mortalidade 30-70%. Strep pyogenes (Grupo A) produz superantígenos (SPE). Clindamicina SEMPRE associada à Penicilina (sinergia comprovada).",
+    guideline: "IDSA / CDC / SBI",
+  },
+  {
+    id: "rx-emerg-abscesso-periamigdaliano",
+    title: "Abscesso Periamigdaliano — Drenagem de Emergência",
+    type: "Prescrição de Emergência",
+    prescription: `1. Avaliar via aérea (trismo severo? estridor?)
+2. Analgesia: Dipirona 1g EV + Tramadol 50mg EV
+3. Corticoide: Dexametasona 8mg EV DU (reduz edema e dor)
+4. ATB:
+   - Amoxicilina-Clavulanato 1g EV 8/8h
+   - OU Clindamicina 600mg EV 6/6h (se alergia)
+   - OU Ceftriaxona 1g EV + Metronidazol 500mg EV 8/8h
+5. DRENAGEM (sob anestesia local com Lidocaína spray):
+   - Punção aspirativa com agulha 18G (guia diagnóstica)
+   - OU incisão e drenagem (bisturi 11)
+   - Local: ponto de maior abaulamento (polo superior da amígdala)
+6. Hidratação EV (paciente geralmente desidratado por disfagia)
+7. Omeprazol 40mg EV 1x/dia
+8. Considerar internação se: trismo severo, extensão para espaço parafaríngeo, imunocomprometido
+9. Alta em 24-48h se boa evolução → completar ATB VO por 10-14 dias`,
+    warnings: "COMPLICAÇÃO: mediastinite descendente necrotizante (extensão ao mediastino — mortalidade alta). TC cervical se suspeita de extensão profunda.",
+    guideline: "AAO-HNS / SBO / UpToDate",
+  },
+  {
+    id: "rx-emerg-epiglotite-adulto",
+    title: "Epiglotite Aguda no Adulto",
+    type: "Prescrição de Emergência",
+    prescription: `1. VIA AÉREA É PRIORIDADE — equipamento de IOT difícil preparado
+2. Manter paciente calmo, sentado, inclinado para frente
+3. O2 umidificado (NÃO irritar via aérea)
+4. NÃO examinar orofaringe com abaixador de língua (risco de espasmo laríngeo)
+5. Nasolaringoscopia flexível (confirmação — por especialista)
+6. ATB EV IMEDIATO:
+   - Ceftriaxona 2g EV 1x/dia por 7-10 dias
+   - + Dexametasona 0,6mg/kg EV (máx 10mg) 1x/dia por 2-3 dias
+7. Adrenalina nebulizada 3-5mL (1:1000) se estridor severo
+8. Se obstrução iminente: IOT por operador experiente (TOT 1-2 números menor)
+9. Se falha IOT: cricotireoidostomia de emergência
+10. Internação em UTI nas primeiras 24-48h
+11. Hemoculturas (H. influenzae tipo B, S. aureus, Strep spp)`,
+    warnings: "Epiglotite no adulto pode evoluir para obstrução completa em HORAS. NÃO usar abaixador de língua, NÃO deitar o paciente, NÃO sedar sem controle de via aérea.",
+    guideline: "AAO-HNS / ATLS / UpToDate",
+  },
+  {
+    id: "rx-emerg-angina-ludwig",
+    title: "Angina de Ludwig",
+    type: "Prescrição de Emergência / UTI",
+    prescription: `1. AVALIAR VIA AÉREA — IOT precoce se edema progressivo
+   (IOT pode ser MUITO difícil — preparo para via aérea cirúrgica)
+2. ATB EV:
+   - Ampicilina-Sulbactam 3g EV 6/6h
+   - OU Penicilina G 4MUI EV 4/4h + Metronidazol 500mg EV 8/8h + Oxacilina 2g EV 4/4h
+   - OU Meropenem 1g EV 8/8h (se grave/nosocomial)
+3. Dexametasona 8mg EV 8/8h por 48h (reduzir edema — controverso mas usado)
+4. TC cervical com contraste (extensão, coleções)
+5. Drenagem cirúrgica se coleção OU sem melhora em 24-48h
+6. Avaliar foco dentário (causa mais comum: 2º/3º molar inferior)
+7. Hidratação EV (disfagia intensa)
+8. Monitorização em UTI
+9. COMPLICAÇÃO TEMIDA: mediastinite descendente — TC se piora`,
+    warnings: "Infecção do espaço submandibular bilateral + sublingual. Mortalidade sem tratamento: >50%. Pode evoluir para mediastinite em horas. IOT precoce salva vidas.",
+    guideline: "AAO-HNS / IDSA / SBO",
+  },
 ];
 
 

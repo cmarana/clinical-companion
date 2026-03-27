@@ -1555,5 +1555,139 @@ TRATAMENTO:
 11. Se refratário: Doxepina 10-25mg VO à noite (tricíclico com efeito anti-H1/H2)`,
     guideline: "SBD / BAD / AAD / EADV",
   },
+  // ========== SINTOMAS TORÁCICOS ==========
+  {
+    id: "rx-sint-dor-toracica-pleuritica",
+    title: "Dor Torácica Pleurítica",
+    type: "Prescrição por Sintoma",
+    prescription: `INVESTIGAÇÃO:
+1. RX tórax PA e perfil
+2. ECG (descartar SCA)
+3. HMG, PCR, D-dímero (se suspeita TEP)
+4. USG point-of-care (POCUS) — derrame pleural?
+5. Oximetria de pulso
+
+TRATAMENTO SINTOMÁTICO:
+6. Se derrame pleural: toracocentese diagnóstica (>1cm)
+7. Analgesia:
+   - AINEs: Ibuprofeno 600mg VO 8/8h (primeira linha para pleurisia)
+   - OU Cetoprofeno 100mg EV 12/12h (se VO impossível)
+   - Dipirona 1g EV 6/6h (adjuvante)
+8. Se derrame volumoso com dispneia: toracocentese de alívio (máx 1500mL)
+9. Tratar causa base: pneumonia, TEP, pleurite, TB pleural, neoplasia
+
+QUANDO INTERNAR:
+10. Derrame pleural volumoso ou bilateral
+11. Empiema (líquido purulento, pH <7,2, glicose <40)
+12. Suspeita de TEP/SCA`,
+    guideline: "BTS / ATS / SBPT",
+  },
+  {
+    id: "rx-sint-enfisema-subcutaneo",
+    title: "Enfisema Subcutâneo",
+    type: "Prescrição por Sintoma",
+    prescription: `INVESTIGAÇÃO:
+1. RX tórax PA (pneumotórax? pneumomediastino?)
+2. TC tórax se RX inconclusivo
+3. Palpação cervical e torácica (extensão do enfisema)
+4. Avaliar via aérea (se cervical extenso)
+
+CAUSAS COMUNS:
+- Pneumotórax (mais frequente)
+- Pneumomediastino espontâneo
+- Lesão traqueobrônquica
+- Pós-procedimento (biópsia, acesso central, IOT)
+- Perfuração esofágica (síndrome de Boerhaave)
+
+TRATAMENTO:
+5. Tratar causa base (se pneumotórax: drenar)
+6. O2 suplementar alto fluxo (acelera reabsorção)
+7. Se extenso/compressivo: incisões de descompressão ("blowhole")
+8. Analgesia: Dipirona 1g EV 6/6h
+9. Monitorização: SpO2, FR, circunferência cervical
+10. Se pneumomediastino espontâneo: repouso + O2 + analgesia (autolimitado)`,
+    guideline: "ATLS / SBCT",
+  },
+  {
+    id: "rx-sint-hemoptise-moderada",
+    title: "Hemoptise — Avaliação e Manejo Inicial",
+    type: "Prescrição por Sintoma",
+    prescription: `CLASSIFICAÇÃO:
+- Leve: <100mL/24h (escarro hemoptoico)
+- Moderada: 100-500mL/24h
+- Maciça: >500mL/24h OU >100mL/h (risco de vida)
+
+AVALIAÇÃO INICIAL:
+1. Confirmar hemoptise (diferenciar de hematemese/epistaxe posterior)
+2. Monitorização (SpO2, PA, FC)
+3. Acesso venoso calibroso
+4. Tipagem + reserva sanguínea
+5. HMG, coagulograma, gasometria
+6. RX tórax PA (localizar lado)
+7. TC tórax com contraste (se estável)
+
+MANEJO:
+8. Posicionar em DECÚBITO LATERAL (lado sangrante para BAIXO)
+9. O2 suplementar
+10. Ácido Tranexâmico 1g EV 8/8h (antifibrinolítico)
+11. Codeína 30mg VO 4/4h (supressor de tosse — com cautela)
+12. Se maciça: IOT com TOT 8+ (proteção do pulmão são) → broncoscopia de urgência
+13. Se refratário: arteriografia bronquial com embolização`,
+    guideline: "SBPT / BTS / Chest",
+  },
+  // ========== SINTOMAS INFECCIOSOS ==========
+  {
+    id: "rx-sint-febre-prolongada",
+    title: "Febre Prolongada (>3 semanas) — Investigação",
+    type: "Prescrição por Sintoma",
+    prescription: `DEFINIÇÃO: Febre >38,3°C por >3 semanas sem diagnóstico após 1 semana de investigação
+
+INVESTIGAÇÃO INICIAL:
+1. HMG completo com diferencial
+2. VHS + PCR + Ferritina
+3. Hemoculturas 3 amostras (sítios diferentes)
+4. Urocultura
+5. TGO/TGP, Bilirrubinas, FA, GGT
+6. LDH, Ácido úrico
+7. FAN, Fator Reumatoide, ANCA
+8. PPD/IGRA + RX tórax (TB)
+9. Sorologias: HIV, CMV, EBV, Toxoplasmose, Hepatites B/C
+10. Esfregaço periférico (linfoma, leucemia)
+11. Gota espessa (malária — se região endêmica)
+12. Ecocardiograma (endocardite)
+13. TC tórax + abdome + pelve
+
+SEGUNDA LINHA:
+14. PET-CT (localizar foco inflamatório/neoplásico oculto)
+15. Biópsia de medula óssea
+16. Biópsia hepática (granulomas)
+17. Biópsia de linfonodo (se adenomegalia)`,
+    notes: "As 3 grandes causas de FOI: infecções (TB, endocardite, abscessos), neoplasias (linfomas), autoimunes (Still, LES, vasculites). Em 15-25% dos casos não se encontra a causa.",
+    guideline: "IDSA / SBI / UpToDate",
+  },
+  {
+    id: "rx-sint-sudorese-noturna",
+    title: "Sudorese Noturna — Investigação",
+    type: "Prescrição por Sintoma",
+    prescription: `INVESTIGAÇÃO (especialmente se sintomas B: febre + perda de peso + sudorese):
+1. HMG completo com diferencial (linfocitose? blastos?)
+2. VHS + PCR + LDH
+3. RX tórax (alargamento mediastinal? tuberculose?)
+4. PPD/IGRA (tuberculose)
+5. HIV (teste rápido)
+6. TSH + T4L (hipertireoidismo)
+7. Glicemia de jejum (hipoglicemia noturna — DM em uso de insulina)
+8. Hemoculturas (se febre associada — endocardite?)
+9. TC tórax + abdome (linfadenopatia profunda?)
+10. Se adenomegalia: biópsia (Linfoma de Hodgkin: sintomas B clássicos)
+11. Ferritina (doença de Still)
+12. Considerar: feocromocitoma (metanefrinas), carcinoide (5-HIAA)
+
+TRATAMENTO SINTOMÁTICO (enquanto investiga):
+13. Evitar cobertores pesados
+14. Manter ambiente fresco
+15. Revisar medicamentos (antidepressivos ISRS, tamoxifeno, opioides — causas comuns)`,
+    guideline: "UpToDate / Harrison's / SBI",
+  },
 ];
 

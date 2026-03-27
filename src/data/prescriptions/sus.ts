@@ -1326,6 +1326,95 @@ SEGUIMENTO:
     warnings: "Todo idoso em uso de anticoagulante com queda deve fazer TC de crânio (mesmo assintomático — sangramento pode ser tardio). Fratura de fêmur no idoso: mortalidade em 1 ano de 20-30%.",
     guideline: "SBGG / AGS / Estatuto do Idoso / MS",
   },
+  // ========== SUS — INFECTOLOGIA ==========
+  {
+    id: "rx-sus-tb-basico",
+    title: "Tuberculose — Esquema RIPE (SUS)",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `ESQUEMA BÁSICO (RIPE) — Adulto ≥10 anos:
+
+FASE INTENSIVA (2 meses):
+1. RHZE (dose fixa combinada — comprimido 4em1):
+   - 20-35kg: 2 comp/dia
+   - 36-50kg: 3 comp/dia
+   - >50kg: 4 comp/dia
+   VO em jejum (1h antes do café)
+
+FASE MANUTENÇÃO (4 meses):
+2. RH (dose fixa combinada — comprimido 2em1):
+   - 20-35kg: 2 comp/dia
+   - 36-50kg: 3 comp/dia
+   - >50kg: 4 comp/dia
+
+ORIENTAÇÕES:
+3. TDO (Tratamento Diretamente Observado) — preferencial
+4. Notificação compulsória (SINAN)
+5. Contatos domiciliares: investigar com PPD/IGRA + RX
+6. HIV: solicitar para TODOS os pacientes com TB
+7. TGO/TGP basal e mensal (hepatotoxicidade)
+8. Piridoxina (Vit B6) 50mg/dia VO (prevenção neuropatia — especialmente DM, HIV, etilismo)`,
+    notes: "Medicação fornecida gratuitamente pelo SUS. Tratamento NÃO pode ser interrompido. Abandono = 30 dias sem medicação.",
+    guideline: "MS Brasil / PNCT / OMS",
+  },
+  {
+    id: "rx-sus-hanseniase",
+    title: "Hanseníase — PQT (SUS)",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `PAUCIBACILAR (até 5 lesões):
+1. Dose supervisionada (mensal):
+   - Rifampicina 600mg VO
+   - Dapsona 100mg VO
+2. Dose autoadministrada (diária):
+   - Dapsona 100mg VO 1x/dia
+3. Duração: 6 doses em até 9 meses
+
+MULTIBACILAR (>5 lesões):
+4. Dose supervisionada (mensal):
+   - Rifampicina 600mg VO
+   - Clofazimina 300mg VO
+   - Dapsona 100mg VO
+5. Dose autoadministrada (diária):
+   - Clofazimina 50mg VO 1x/dia
+   - Dapsona 100mg VO 1x/dia
+6. Duração: 12 doses em até 18 meses
+
+REAÇÃO HANSÊNICA TIPO 1 (reversa):
+7. Prednisona 1-2mg/kg/dia VO (desmame em 6-9 meses)
+
+REAÇÃO TIPO 2 (ENH):
+8. Talidomida 100-400mg/dia VO (PROIBIDA em mulheres em idade fértil)
+9. Se mulher: Pentoxifilina 400mg VO 8/8h`,
+    warnings: "Hanseníase é de notificação compulsória. Talidomida: teratogênica — NUNCA em gestantes ou mulheres sem contracepção dupla. PQT é fornecida gratuitamente pelo SUS.",
+    guideline: "MS Brasil / OMS",
+  },
+  {
+    id: "rx-sus-profilaxia-cirurgica-upa",
+    title: "Profilaxia Cirúrgica — Drogas Disponíveis no SUS/UPA",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `DISPONÍVEIS NA MAIORIA DAS UPAs/HOSPITAIS PÚBLICOS:
+1. Cefazolina 1g EV (principal droga para profilaxia — limpa/limpa-contaminada)
+2. Ceftriaxona 1g EV (alternativa quando Cefazolina indisponível)
+3. Metronidazol 500mg EV (cobertura anaeróbia — cirurgias contaminadas)
+4. Gentamicina 80mg EV (alternativa para alergia a cefalosporinas)
+5. Clindamicina 600mg EV (alternativa para alergia)
+
+ESQUEMAS PRÁTICOS COM DROGAS DO SUS:
+Limpa com implante: Cefazolina 1g EV DU
+Limpa-contaminada: Cefazolina 1g EV DU
+Contaminada (abdominal): Ceftriaxona 1g EV + Metronidazol 500mg EV
+Alergia grave: Clindamicina 600mg + Gentamicina 80mg EV
+
+GERALMENTE NÃO DISPONÍVEIS EM UPA:
+- Cefoxitina
+- Ampicilina-Sulbactam
+- Vancomicina (disponível em hospitais terciários)
+
+LEMBRAR:
+- Administrar 30-60 min antes da incisão
+- Dose única na maioria dos casos
+- Suspender em até 24h PO`,
+    guideline: "ANVISA / RENAME / MS",
+  },
 ];
 
 

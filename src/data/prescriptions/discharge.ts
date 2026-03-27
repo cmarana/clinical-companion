@@ -1438,6 +1438,170 @@ PRESCRIÇÃO:
 8. Se face, mãos, pés, genitália ou >10% SCQ: INTERNAR (não dar alta)`,
     guideline: "SBQ / ABA / MS",
   },
+  // ========== ALTA — CIRURGIA TORÁCICA ==========
+  {
+    id: "rx-alta-drenagem-torax",
+    title: "Alta — Pós-Drenagem Torácica",
+    type: "Prescrição de Alta",
+    prescription: `1. Repouso relativo por 7 dias (evitar esforço físico intenso)
+2. Paracetamol 750mg VO 6/6h por 5 dias
+3. Ibuprofeno 600mg VO 8/8h por 3-5 dias (se sem contraindicação)
+4. Cuidados com ferida operatória:
+   - Manter curativo seco por 48h
+   - Após: lavar com água e sabão
+   - Retirar pontos em 10-14 dias (posto de saúde)
+5. Espirometria de incentivo: 10 séries de 10 respirações profundas/dia
+6. Evitar tabagismo (principal fator de recidiva de pneumotórax)
+7. RX tórax de controle em 7 e 30 dias
+8. Retorno em 7 dias ou antes se:
+   - Falta de ar súbita
+   - Dor torácica intensa
+   - Febre
+   - Enfisema subcutâneo (inchaço com crepitação)
+9. Evitar viagens aéreas por 6 semanas (risco de re-expansão)
+10. Evitar mergulho por 12 meses`,
+    guideline: "BTS / SBPT",
+  },
+  {
+    id: "rx-alta-toracotomia",
+    title: "Alta — Pós-Toracotomia",
+    type: "Prescrição de Alta",
+    prescription: `1. Repouso relativo por 30 dias
+2. Analgesia:
+   - Paracetamol 750mg VO 6/6h
+   - Tramadol 50mg VO 8/8h SN (não dirigir sob uso)
+   - Ibuprofeno 600mg VO 8/8h por 5 dias
+3. Exercícios respiratórios: inspirometria de incentivo 3x/dia
+4. Deambulação progressiva
+5. Evitar elevar braço ipsilateral acima do ombro por 2 semanas
+6. Cuidados com cicatriz: protetor solar após cicatrização
+7. NÃO carregar peso >5kg por 30 dias
+8. Retorno ambulatorial: 7, 14 e 30 dias PO
+9. RX tórax nos retornos
+10. Sinais de alerta: febre, dispneia, drenagem pela ferida, dor intensa`,
+  },
+  // ========== ALTA — INFECTOLOGIA ==========
+  {
+    id: "rx-alta-endocardite",
+    title: "Alta — Pós-Tratamento Endocardite",
+    type: "Prescrição de Alta",
+    prescription: `1. Conclusão ATB EV hospitalar (4-6 semanas)
+2. Manter acompanhamento cardiológico:
+   - Eco TT em 30 e 90 dias
+   - Avaliar necessidade de troca valvar
+3. Profilaxia de endocardite em procedimentos:
+   - Amoxicilina 2g VO 1h antes de procedimento odontológico
+   - Se alergia: Clindamicina 600mg VO
+4. Higiene dental rigorosa (escovação 3x/dia, fio dental)
+5. Retorno cardiologia: 15 dias
+6. Retorno infectologia: 30 dias
+7. Hemograma + PCR + VHS no retorno
+8. Hemoculturas de controle (negativação confirmada)
+9. Sinais de alerta: febre, calafrios, dispneia, edema, lesões cutâneas novas`,
+    guideline: "AHA / ESC / SBC",
+  },
+  {
+    id: "rx-alta-tb-tratamento",
+    title: "Alta — Tuberculose em Tratamento Ambulatorial",
+    type: "Prescrição de Alta",
+    prescription: `1. Manter esquema RIPE conforme peso:
+   - >50kg: 4 comp RHZE/dia (fase intensiva 2 meses)
+   - Seguido de RH (fase manutenção 4 meses)
+2. Tomar em JEJUM (1h antes do café)
+3. Piridoxina (Vit B6) 50mg/dia VO
+4. Retorno mensal na UBS (TDO)
+5. Baciloscopia mensal (2º, 4º, 6º mês)
+6. TGO/TGP se sintomas (náuseas, icterícia, dor abdominal)
+7. NÃO interromper tratamento por conta própria
+8. Isolamento respiratório: NÃO necessário após 15 dias de tratamento eficaz (baciloscopia negativa)
+9. Comunicantes: investigar com PPD e RX tórax
+10. Sinais de alerta: icterícia (suspender e procurar UPA), vômitos persistentes, perda visual
+11. Medicação GRATUITA pelo SUS — retirar na UBS mensalmente`,
+    guideline: "MS Brasil / PNCT",
+  },
+  {
+    id: "rx-alta-pbe",
+    title: "Alta — Peritonite Bacteriana Espontânea",
+    type: "Prescrição de Alta",
+    prescription: `1. Completar ATB (total 5 dias — hospitalar)
+2. Profilaxia secundária CONTÍNUA:
+   - Norfloxacino 400mg VO 1x/dia INDEFINIDAMENTE
+   - OU Sulfametoxazol-Trimetoprim 800/160mg VO 1x/dia (alternativa)
+3. Dieta hipossódica (<2g Na/dia)
+4. Restrição hídrica se Na <125
+5. Furosemida ___mg VO + Espironolactona ___mg VO (ajustar conforme peso/ascite)
+6. Lactulose 15-30mL VO 2-3x/dia (prevenção de encefalopatia)
+7. Retorno em 7 dias (hepatologia/gastro)
+8. Paracentese de controle se recidiva de sintomas
+9. Sinais de alerta: febre, dor abdominal, confusão mental, aumento rápido da barriga
+10. Avaliar transplante hepático (PBE = fator de mau prognóstico)`,
+    guideline: "AASLD / EASL / SBH",
+  },
+  // ========== ALTA — PÓS-CIRURGIA GERAL ==========
+  {
+    id: "rx-alta-pos-op-geral",
+    title: "Alta — Pós-Operatório Geral (Modelo)",
+    type: "Prescrição de Alta",
+    prescription: `1. Repouso relativo por ___dias
+2. Analgesia:
+   - Paracetamol 750mg VO 6/6h por 5-7 dias
+   - Dipirona 500mg VO 6/6h (alternância)
+   - Ibuprofeno 600mg VO 8/8h por 3-5 dias (se sem contraindicação renal/GI)
+   - Tramadol 50mg VO 6/6h SN (dor intensa — máx 7 dias)
+3. Cuidados com ferida operatória:
+   - Manter curativo oclusivo seco por 24-48h
+   - Após: lavar com água e sabão neutro
+   - Trocar curativo diariamente
+   - NÃO aplicar pomadas sem orientação
+4. Dieta: _____ (conforme cirurgia)
+5. Retorno para retirada de pontos: ___dias
+6. Sinais de alerta — procurar UPA:
+   - Febre ≥38°C
+   - Vermelhidão/secreção na ferida
+   - Sangramento ativo
+   - Dor intensa que não cede com medicação
+   - Náuseas/vômitos persistentes
+7. Atestado médico: ___dias
+8. Retorno ambulatorial: ___dias`,
+  },
+  {
+    id: "rx-alta-apendicectomia",
+    title: "Alta — Pós-Apendicectomia",
+    type: "Prescrição de Alta",
+    prescription: `Não complicada (sem perfuração):
+1. Dieta leve por 3 dias → progressão para dieta normal
+2. Paracetamol 750mg VO 6/6h + Dipirona 500mg VO 6/6h (alternância)
+3. Ibuprofeno 600mg VO 8/8h por 3 dias SN
+4. Repouso relativo por 7 dias
+5. NÃO carregar peso >5kg por 15 dias
+6. Retorno em 7 dias para reavaliação + retirada de pontos (se não absorvíveis)
+
+Complicada (abscesso/peritonite):
+7. Completar ATB:
+   - Ciprofloxacino 500mg VO 12/12h + Metronidazol 400mg VO 8/8h por 7-10 dias
+   - OU Amoxicilina-Clavulanato 875/125mg VO 12/12h por 7 dias
+8. Repouso por 14 dias
+9. Retorno em 5 dias + 15 dias
+10. Sinais de alerta: febre, dor abdominal progressiva, distensão, vômitos`,
+    guideline: "EAST / ACS / CBC",
+  },
+  {
+    id: "rx-alta-colecistectomia",
+    title: "Alta — Pós-Colecistectomia",
+    type: "Prescrição de Alta",
+    prescription: `1. Dieta LEVE e HIPOLIPÍDICA por 30 dias
+   (evitar: frituras, gorduras, queijos amarelos, embutidos, creme de leite)
+2. Paracetamol 750mg VO 6/6h por 5 dias
+3. Buscopan Composto 1 comp VO 6/6h SN (cólica)
+4. Omeprazol 20mg VO 1x/dia por 30 dias (se dispepsia)
+5. Repouso relativo por 7 dias (VLP) ou 15 dias (aberta)
+6. NÃO carregar peso >5kg por 15 dias (VLP) ou 30 dias (aberta)
+7. Retorno: 7 dias (VLP) ou 10 dias (aberta)
+8. Pode tomar banho normal após 24h (VLP)
+9. Sinais de alerta: icterícia, febre, dor intensa, distensão abdominal
+10. Diarreia pós-colecistectomia (pode ocorrer): Colestiramina 4g VO 1-2x/dia`,
+    guideline: "SAGES / CBC / SBAD",
+  },
 ];
 
 
