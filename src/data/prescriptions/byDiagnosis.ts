@@ -7593,6 +7593,784 @@ TÉTANO:
 9. Avaliar status vacinal: se >5 anos sem reforço → dT + SAT/IGHAT`,
     guideline: "MS Brasil / IDSA / WHO",
   },
+
+  // ═══════════════════════════════════════════════════
+  // PSIQUIATRIA — EXPANSÃO
+  // ═══════════════════════════════════════════════════
+  {
+    id: "rx-psiq-agitacao-grave",
+    title: "Agitação Psicomotora Grave",
+    type: "Prescrição Psiquiátrica de Emergência",
+    prescription: `1. Contenção mecânica (4 pontos) se risco iminente
+2. Haloperidol 5mg IM + Midazolam 5mg IM (coquetel de contenção química)
+3. Repetir Haloperidol 5mg IM a cada 30min se necessário (máx 30mg/dia)
+4. Monitorizar SpO2, FC, PA a cada 15 minutos
+5. Acesso venoso periférico — SF 0,9% 500mL
+6. ECG (avaliar QTc antes e após haloperidol)
+7. Glicemia capilar (excluir hipoglicemia)
+8. Avaliar etiologia: intoxicação, abstinência, psicose, delirium, TCE`,
+    alternatives: `Alternativas à contenção química:
+- Olanzapina 10mg IM (evitar associar com benzodiazepínico IM)
+- Droperidol 2,5-5mg IM (alternativa ao haloperidol, menor QTc)
+- Cetamina 4mg/kg IM (agitação extrema refratária)
+- Ziprasidona 10-20mg IM (alternativa atípica)`,
+    notes: "Contenção mecânica deve ser reavaliada a cada 2h. Documentar indicação, tipo de contenção e horário. Observar síndrome neuroléptica maligna.",
+    warnings: "QTc >500ms: suspender haloperidol. NÃO associar olanzapina IM + benzodiazepínico IM (risco de apneia). Vigiar via aérea em pacientes sedados.",
+    guideline: "APA / ABP / MS Brasil",
+  },
+  {
+    id: "rx-psiq-surto-psicotico",
+    title: "Surto Psicótico Agudo / Primeiro Episódio",
+    type: "Prescrição Psiquiátrica de Emergência",
+    prescription: `1. Ambiente calmo, baixa estimulação
+2. Haloperidol 5mg VO (se aceitar) ou 5mg IM
+3. Prometazina 50mg IM (se agitação associada)
+4. SF 0,9% 500mL EV — hidratação
+5. ECG (QTc basal)
+6. Hemograma, glicemia, função renal, TSH, toxicológico urinário
+7. TC crânio (se primeiro episódio ou sinais focais)
+8. Avaliação psiquiátrica formal
+9. Internação psiquiátrica se risco para si ou terceiros`,
+    alternatives: `- Risperidona 2mg VO 12/12h (primeiro episódio leve)
+- Olanzapina 10mg VO/IM
+- Aripiprazol 15mg VO (perfil metabólico mais favorável em jovens)`,
+    notes: "Primeiro episódio psicótico: investigar causas orgânicas (droga, tumor, infecção SNC, autoimune). VDRL, anti-NMDA se jovem.",
+    warnings: "Evitar benzodiazepínicos isolados em psicose. Vigiar distonia aguda (tratar com biperideno 2mg IM).",
+    guideline: "NICE / ABP / MS Brasil",
+  },
+  {
+    id: "rx-psiq-tentativa-suicidio",
+    title: "Tentativa de Suicídio — Manejo no PS",
+    type: "Prescrição Psiquiátrica de Emergência",
+    prescription: `1. Estabilização clínica (ABC + tratar lesão/intoxicação)
+2. Retirar objetos perfurocortantes, cordas, medicamentos
+3. Acompanhante 1:1 (vigilância contínua)
+4. Avaliar método, intencionalidade, planejamento, acesso a meios
+5. Escala de Columbia (C-SSRS) ou SAD PERSONS
+6. Toxicológico urinário + dosagem de medicamentos se ingestão
+7. Exames gerais: HMG, eletrólitos, função renal/hepática, ECG
+8. Avaliação psiquiátrica OBRIGATÓRIA antes da alta
+9. Notificação compulsória (violência autoprovocada)
+10. Internação psiquiátrica se risco iminente persistente`,
+    notes: "Toda tentativa de suicídio é grave. Não minimizar. Não deixar paciente sozinho. Contato com familiar/responsável.",
+    warnings: "NÃO dar alta sem avaliação psiquiátrica. NOTIFICAÇÃO COMPULSÓRIA. Risco maior nas primeiras 48h pós-tentativa.",
+    guideline: "MS Brasil / OMS / ABP",
+  },
+  {
+    id: "rx-psiq-sindrome-neuroleptica-maligna",
+    title: "Síndrome Neuroléptica Maligna (SNM)",
+    type: "Prescrição Psiquiátrica de Emergência",
+    prescription: `1. SUSPENDER imediatamente TODOS os antipsicóticos
+2. Internação em UTI
+3. SF 0,9% 2000-3000mL EV (hidratação vigorosa)
+4. Resfriamento ativo (compressas, cobertores térmicos)
+5. Dantrolene 1-2,5mg/kg EV a cada 6h (máx 10mg/kg/dia) — se disponível
+6. Bromocriptina 2,5mg VO/SNG 8/8h (alternativa ao dantrolene)
+7. Benzodiazepínico: Diazepam 10mg EV se rigidez intensa
+8. Monitorização contínua: T, PA, FC, SpO2, diurese
+9. CPK, mioglobina, função renal, eletrólitos seriados
+10. SVD (alvo diurese >1mL/kg/h — prevenir IRA por rabdomiólise)`,
+    notes: "Tríade clássica: hipertermia + rigidez muscular + alteração do nível de consciência. CPK geralmente >1000. Diagnóstico clínico.",
+    warnings: "MORTALIDADE 10-20%. Não reintroduzir antipsicóticos por pelo menos 2 semanas. Diagnóstico diferencial: síndrome serotoninérgica, hipertermia maligna.",
+    guideline: "APA / UpToDate / ABP",
+  },
+  {
+    id: "rx-psiq-sindrome-serotoninergica",
+    title: "Síndrome Serotoninérgica",
+    type: "Prescrição Psiquiátrica de Emergência",
+    prescription: `1. SUSPENDER TODOS os agentes serotoninérgicos (ISRS, IRSN, tramadol, linezolida, etc.)
+2. Medidas de suporte: SF 0,9% EV, resfriamento se hipertermia
+3. Benzodiazepínico: Diazepam 5-10mg EV (controle de agitação e mioclonias)
+4. Ciproeptadina 12mg VO (dose de ataque) → 4mg VO 8/8h
+5. Se hipertermia >41°C: IOT + BNM (evitar succinilcolina)
+6. Monitorização contínua em UTI se grave
+7. CPK, eletrólitos, gasometria, função renal
+8. Controle de temperatura a cada 1h`,
+    notes: "Tríade: alteração do estado mental + hiperatividade autonômica + hiperatividade neuromuscular (clônus, mioclonias). Critérios de Hunter.",
+    warnings: "NÃO usar dantrolene (ineficaz na SS). Diagnóstico diferencial com SNM. Evitar contenção física (piora rabdomiólise).",
+    guideline: "Boyer & Shannon / UpToDate",
+  },
+  {
+    id: "rx-psiq-delirium-tremens",
+    title: "Delirium Tremens / Abstinência Alcoólica Grave",
+    type: "Prescrição Psiquiátrica de Emergência",
+    prescription: `1. Internação em UTI ou semi-intensiva
+2. Diazepam 10mg EV a cada 5-10 min até sedação leve (CIWA-Ar guiado)
+3. Tiamina (Vit B1) 500mg EV 8/8h por 3 dias → 300mg EV 1x/dia por 5 dias
+4. SF 0,9% 1000mL + KCl 10% 10mL + MgSO4 10% 10mL EV
+5. Glicose 50% 40mL EV (SEMPRE após tiamina)
+6. Haloperidol 5mg IM se alucinações intensas (adjuvante — não usar isolado)
+7. Monitorização contínua: PA, FC, T, SpO2
+8. Glicemia capilar 4/4h
+9. HMG, eletrólitos (Mg, K, Ca, Na, P), função hepática, coagulograma
+10. Escala CIWA-Ar a cada 1-2h`,
+    alternatives: `- Lorazepam 2mg EV (preferir se hepatopatia grave — sem metabolismo hepático ativo)
+- Fenobarbital 130-260mg EV (refratário ao benzodiazepínico)
+- Dexmedetomidina (adjuvante em UTI, refratário)`,
+    notes: "CIWA-Ar ≥20: abstinência grave. Delirium tremens: mortalidade 5-15% sem tratamento. Pico em 48-72h após última ingesta.",
+    warnings: "SEMPRE dar tiamina ANTES de glicose (risco de encefalopatia de Wernicke). Não usar fenitoína para convulsões da abstinência.",
+    guideline: "ASAM / MS Brasil",
+  },
+  {
+    id: "rx-psiq-intoxicacao-benzodiazepinicos",
+    title: "Intoxicação por Benzodiazepínicos",
+    type: "Prescrição Psiquiátrica de Emergência",
+    prescription: `1. ABC — garantir via aérea (IOT se Glasgow ≤8 ou apneia)
+2. Monitorização contínua: SpO2, ECG, PA
+3. Flumazenil 0,2mg EV em 30s → 0,3mg após 1 min → 0,5mg a cada 1 min (máx 3mg)
+4. SF 0,9% 1000mL EV
+5. Carvão ativado 1g/kg VO/SNG (se ingestão <1h e via aérea protegida)
+6. Toxicológico urinário
+7. Observação mínima 6-12h (risco de ressedação com flumazenil)`,
+    notes: "Meia-vida do flumazenil (45-90min) é menor que a maioria dos BZDs. Risco de ressedação.",
+    warnings: "CONTRAINDICAÇÕES do flumazenil: epilepsia em uso crônico de BZD, coingestão de tricíclicos, dependência de BZD (risco de convulsão).",
+    guideline: "EXTRIP / AACT",
+  },
+  {
+    id: "rx-psiq-catatonia",
+    title: "Catatonia Aguda",
+    type: "Prescrição Psiquiátrica de Emergência",
+    prescription: `1. Lorazepam 2mg EV/IM — teste terapêutico (resposta em minutos confirma diagnóstico)
+2. Se resposta positiva: Lorazepam 2mg EV/IM 8/8h → titular até 12-16mg/dia
+3. Hidratação vigorosa: SF 0,9% 2000-3000mL/dia EV
+4. Prevenção de TVP: Enoxaparina 40mg SC 1x/dia
+5. Avaliar necessidade de SNG (se recusa alimentar prolongada)
+6. CPK, função renal (rabdomiólise por imobilidade)
+7. Se refratário a lorazepam: considerar ECT (eletroconvulsoterapia)
+8. Monitorização: T, PA, diurese, nutrição`,
+    notes: "Bush-Francis Catatonia Rating Scale para diagnóstico e monitorização. Catatonia maligna: febre + rigidez + instabilidade autonômica → UTI.",
+    warnings: "NÃO usar antipsicóticos na catatonia (risco de SNM). SUSPENDER antipsicóticos se catatonia surgir durante uso.",
+    guideline: "APA / Fink & Taylor",
+  },
+  {
+    id: "rx-psiq-mania-aguda",
+    title: "Mania Aguda / Episódio Maníaco",
+    type: "Prescrição Psiquiátrica de Emergência",
+    prescription: `1. Ambiente com baixa estimulação
+2. Lítio 300mg VO 8/8h (titular até nível sérico 0,8-1,2 mEq/L)
+3. OU Valproato 500mg VO 12/12h (titular até 1000-1500mg/dia)
+4. Antipsicótico: Risperidona 2mg VO 12/12h OU Olanzapina 10mg VO/IM
+5. Se agitação intensa: Haloperidol 5mg IM + Midazolam 5mg IM
+6. Hidratação: SF 0,9% 1000mL EV (pacientes em mania frequentemente desidratam)
+7. Exames: Lítio sérico (se em uso), TSH, função renal, HMG, Na, Ca
+8. ECG (QTc basal)
+9. Internação psiquiátrica se impossibilidade de manejo ambulatorial`,
+    notes: "Litemia terapêutica: 0,8-1,2 mEq/L. Checar nível a cada 5-7 dias até estabilização. Intoxicação por lítio: >1,5 mEq/L.",
+    warnings: "Lítio: monitorizar função renal e tireoidiana. Valproato: hepatotoxicidade, pancreatite. Evitar valproato em mulheres em idade fértil.",
+    guideline: "CANMAT / APA / ABP",
+  },
+  {
+    id: "rx-psiq-panico-agudo",
+    title: "Crise de Pânico / Ataque de Ansiedade Agudo",
+    type: "Prescrição Psiquiátrica de Emergência",
+    prescription: `1. Reasseguramento e orientação (não é emergência cardíaca/respiratória)
+2. Técnica de respiração diafragmática / controle respiratório
+3. Alprazolam 0,5mg SL OU Clonazepam 0,5mg SL (se crise intensa)
+4. Excluir causas orgânicas: ECG, troponina (se dor torácica), D-dímero (se dispneia)
+5. Orientar sobre o transtorno, desmistificar sintomas
+6. Encaminhar para psiquiatria/psicologia ambulatorial
+7. Prescrição de alta: Clonazepam 0,5mg VO SOS (máx 2x/dia por 7 dias)`,
+    notes: "Ataque de pânico: pico em 10 minutos, duração 20-30 min. Sintomas: taquicardia, dispneia, parestesias, medo de morrer.",
+    warnings: "SEMPRE excluir SCA, TEP e arritmias antes de diagnosticar pânico. Não prescrever BZD de uso contínuo no PS.",
+    guideline: "APA / DSM-5 / ABP",
+  },
+  {
+    id: "rx-psiq-intoxicacao-litio",
+    title: "Intoxicação por Lítio",
+    type: "Prescrição Psiquiátrica de Emergência",
+    prescription: `1. SUSPENDER lítio imediatamente
+2. SF 0,9% 1000-2000mL EV (hidratação vigorosa — restaurar volemia)
+3. Lítio sérico a cada 4-6h
+4. Função renal, eletrólitos (Na, K), gasometria
+5. NÃO usar diuréticos (piora a reabsorção de lítio)
+6. Hemodiálise se: lítio >4 mEq/L, ou >2,5 com sintomas neurológicos graves, ou IRA
+7. Monitorizar ECG (arritmias, alterações de ST)
+8. Suporte neurológico: convulsões → diazepam 10mg EV`,
+    notes: "Leve (1,5-2,5): tremor, náusea, diarreia. Moderada (2,5-3,5): confusão, mioclonias. Grave (>3,5): convulsões, coma, arritmias.",
+    warnings: "Intoxicação crônica é mais perigosa que aguda (maior acúmulo tecidual). Sequelas neurológicas permanentes possíveis.",
+    guideline: "EXTRIP / UpToDate",
+  },
+
+  // ═══════════════════════════════════════════════════
+  // OFTALMOLOGIA — EXPANSÃO
+  // ═══════════════════════════════════════════════════
+  {
+    id: "rx-oftalmo-glaucoma-agudo-2",
+    title: "Glaucoma Agudo — Tratamento Intensivo",
+    type: "Prescrição de Emergência Oftalmológica",
+    prescription: `1. Timolol 0,5% — 1 gota no olho afetado 12/12h
+2. Brimonidina 0,2% — 1 gota 8/8h
+3. Pilocarpina 2% — 1 gota 15/15 min por 1h → 6/6h
+4. Acetazolamida 500mg VO ataque → 250mg VO 6/6h
+5. Manitol 20% — 1-2g/kg EV em 45 min (se PIO >50 ou não responde)
+6. Dexametasona colírio 0,1% — 1 gota 6/6h (reduzir inflamação)
+7. Analgesia: Dipirona 1g EV + Tramadol 50mg EV se dor intensa
+8. Encaminhar URGENTE para iridotomia a laser`,
+    notes: "PIO alvo: <21mmHg. Medir PIO a cada 1-2h até controle. Pilocarpina pode ser ineficaz se PIO >40 (esfíncter pupilar isquêmico).",
+    warnings: "Timolol: evitar em asma/DPOC/bradicardia. Acetazolamida: evitar se alergia a sulfa. Manitol: risco de sobrecarga em cardiopatas.",
+    guideline: "AAO / CBO",
+  },
+  {
+    id: "rx-oftalmo-queimadura-quimica",
+    title: "Queimadura Química Ocular",
+    type: "Prescrição de Emergência Oftalmológica",
+    prescription: `1. IRRIGAÇÃO IMEDIATA com SF 0,9% ou Ringer Lactato — mínimo 30 minutos contínuos (2-3L)
+2. Verificar pH conjuntival com fita (alvo: 7,0-7,4) — repetir irrigação se pH alterado
+3. Remoção de partículas retidas (everter pálpebra + swab)
+4. Ciclopentolato 1% — 1 gota 8/8h (cicloplégico — alívio da dor)
+5. Antibiótico tópico: Ciprofloxacino colírio 0,3% — 1 gota 6/6h
+6. Vitamina C 500mg VO 8/8h (promove cicatrização)
+7. Doxiciclina 100mg VO 12/12h (anti-colagenase)
+8. Analgesia sistêmica: Dipirona 1g EV 6/6h + Tramadol 50mg EV SOS
+9. Encaminhamento URGENTE para oftalmologia (avaliação com lâmpada de fenda)`,
+    notes: "Álcalis são mais graves que ácidos (penetração profunda). Classificação de Roper-Hall para gravidade. Não atrasar irrigação para nenhum exame.",
+    warnings: "NÃO usar colírios de corticoide nas primeiras 48h sem avaliação oftalmológica. NÃO neutralizar o agente químico (reação exotérmica).",
+    guideline: "AAO / CBO / Roper-Hall",
+  },
+  {
+    id: "rx-oftalmo-descolamento-retina",
+    title: "Descolamento de Retina — Manejo no PS",
+    type: "Prescrição de Emergência Oftalmológica",
+    prescription: `1. Repouso absoluto no leito
+2. Posicionamento: decúbito conforme localização do descolamento (orientação do oftalmologista)
+3. Oclusão do olho afetado
+4. Evitar esforço físico, Valsalva, tosse
+5. Antieméticos: Ondansetrona 4mg EV 8/8h (evitar vômitos/esforço)
+6. Analgesia: Dipirona 1g EV 6/6h
+7. ENCAMINHAMENTO URGENTE para retinólogo (cirurgia em 24-48h)
+8. Orientar sobre sintomas de progressão: aumento do campo escuro`,
+    notes: "Sintomas clássicos: flash luminoso (fotopsia) + moscas volantes (miodesopsias) + cortina/sombra no campo visual. Fundoscopia: retina elevada.",
+    warnings: "Descolamento com acometimento macular: EMERGÊNCIA CIRÚRGICA (<24h). Sem acometimento macular: urgência (24-72h).",
+    guideline: "AAO / CBO",
+  },
+  {
+    id: "rx-oftalmo-celulite-orbitaria",
+    title: "Celulite Orbitária",
+    type: "Prescrição de Emergência Oftalmológica",
+    prescription: `1. Internação hospitalar
+2. Ceftriaxona 2g EV 12/12h + Metronidazol 500mg EV 8/8h
+3. OU Ampicilina-Sulbactam 3g EV 6/6h
+4. Dexametasona 4mg EV 6/6h (se edema intenso com compressão do nervo óptico)
+5. Analgesia: Dipirona 1g EV 6/6h + AINE
+6. TC de órbitas e seios da face com contraste
+7. Avaliação oftalmológica: acuidade visual, reflexo pupilar, motilidade ocular
+8. Hemograma, PCR, hemocultura
+9. Avaliação de cirurgia (drenagem se abscesso subperiosteal >1cm)`,
+    notes: "Sinais de alerta: proptose, oftalmoplegia, perda visual, dor à movimentação ocular. Diferenciar de celulite pré-septal (pálpebra apenas).",
+    warnings: "RISCO de trombose de seio cavernoso, meningite, abscesso cerebral. Complicação potencialmente fatal.",
+    guideline: "AAO / IDSA",
+  },
+  {
+    id: "rx-oftalmo-oclusao-arteria-central",
+    title: "Oclusão da Artéria Central da Retina (OACR)",
+    type: "Prescrição de Emergência Oftalmológica",
+    prescription: `1. EMERGÊNCIA OFTALMOLÓGICA — tempo é visão (janela <6h)
+2. Massagem ocular digital intermitente (10s compressão / 10s liberação x 5 min)
+3. Respiração em saco fechado (aumentar pCO2 → vasodilatação retiniana) por 10 min a cada 2h
+4. Acetazolamida 500mg VO (reduzir PIO para aumentar perfusão)
+5. Timolol 0,5% colírio — 1 gota (reduzir PIO)
+6. Encaminhamento IMEDIATO para oftalmologia (trombólise intra-arterial ou paracentese de câmara anterior)
+7. Investigar fonte embólica: ECG, ecocardiograma, doppler de carótidas
+8. AAS 100mg VO (se etiologia trombótica)`,
+    notes: "Perda visual monocular, súbita, indolor. Fundoscopia: retina pálida com mancha vermelho-cereja na fóvea. Equivalente a 'AVC do olho'.",
+    warnings: "Janela terapêutica muito curta (<4-6h). Após esse período, dano geralmente irreversível. Investigar como evento vascular sistêmico.",
+    guideline: "AAO / AHA",
+  },
+  {
+    id: "rx-oftalmo-uveite-anterior",
+    title: "Uveíte Anterior Aguda",
+    type: "Prescrição de Emergência Oftalmológica",
+    prescription: `1. Prednisolona acetato 1% colírio — 1 gota 1/1h nas primeiras 48h → reduzir gradualmente
+2. Ciclopentolato 1% — 1 gota 8/8h (cicloplégico — previne sinéquias)
+3. OU Atropina 1% — 1 gota 12/12h (se uveíte intensa)
+4. Analgesia: Ibuprofeno 600mg VO 8/8h
+5. Óculos escuros (fotofobia)
+6. Encaminhar para oftalmologia em 24-48h
+7. Se recorrente: investigar HLA-B27, sarcoidose, sífilis, TB, toxoplasmose`,
+    notes: "Sinais: dor ocular, fotofobia, hiperemia ciliar, células na câmara anterior (lâmpada de fenda). PIO pode estar alta ou baixa.",
+    warnings: "NUNCA prescrever corticoide tópico ocular sem excluir herpes (ceratite herpética — piora catastrófica). Encaminhar sempre.",
+    guideline: "AAO / SUN Working Group",
+  },
+
+  // ═══════════════════════════════════════════════════
+  // OTORRINOLARINGOLOGIA — EXPANSÃO
+  // ═══════════════════════════════════════════════════
+  {
+    id: "rx-orl-abscesso-peritonsilar",
+    title: "Abscesso Peritonsilar (Quinsy)",
+    type: "Prescrição ORL / Emergência",
+    prescription: `1. Drenagem por aspiração com agulha OU incisão e drenagem (I&D)
+2. Amoxicilina-Clavulanato 1g EV 8/8h OU
+3. Clindamicina 600mg EV 6/6h (se alergia a penicilina)
+4. Dexametasona 10mg EV dose única (reduz edema e dor)
+5. Dipirona 1g EV 6/6h + Tramadol 50mg EV 8/8h
+6. Hidratação: SF 0,9% 1000mL EV
+7. Dieta líquida/pastosa
+8. Cultura do material drenado
+9. Reavaliação em 24h (recidiva: considerar amigdalectomia a quente)`,
+    notes: "Trismo, desvio da úvula, abaulamento do palato mole, voz abafada (hot potato voice). Pico: 20-40 anos.",
+    warnings: "RISCO de extensão para espaço parafaríngeo/retrofaríngeo → mediastinite. Garantir via aérea se edema extenso.",
+    guideline: "AAO-HNS / ABORL",
+  },
+  {
+    id: "rx-orl-epistaxe-anterior",
+    title: "Epistaxe Anterior — Manejo Inicial",
+    type: "Prescrição ORL / Emergência",
+    prescription: `1. Compressão digital bilateral (pinçar narinas) por 15-20 min sem soltar
+2. Posição sentada, cabeça levemente inclinada para frente
+3. Aplicar algodão embebido em:
+   - Oximetazolina 0,05% (vasoconstritor) OU
+   - Adrenalina 1:10.000 + Lidocaína 2%
+4. Se não ceder: tamponamento anterior com Merocel ou gaze rayon
+5. Se tamponamento: Amoxicilina-Clavulanato 875mg VO 12/12h (profilaxia de sinusite)
+6. Controlar PA (se HAS: Captopril 25mg SL ou Anlodipino 5mg VO)
+7. Hemograma, coagulograma, tipagem sanguínea (se sangramento volumoso)
+8. Cauterização com nitrato de prata (se ponto sangrante visível no plexo de Kiesselbach)`,
+    notes: "90% das epistaxes são anteriores (plexo de Kiesselbach). Se bilateral ou posterior: mais grave.",
+    warnings: "NÃO tamponar ambas as narinas se suspeita de fratura de base de crânio (rinoliquorreia). Tamponamento posterior: risco de necrose septal.",
+    guideline: "AAO-HNS / ABORL",
+  },
+  {
+    id: "rx-orl-epistaxe-posterior",
+    title: "Epistaxe Posterior Refratária",
+    type: "Prescrição ORL / Emergência",
+    prescription: `1. Tamponamento posterior com sonda de Foley 14-16Fr:
+   - Inserir pela narina, insuflar balão com 10-15mL de SF na nasofaringe
+   - Tração anterior + tamponamento anterior com gaze
+2. OU sonda de duplo balão (Epistat/Rapid Rhino posterior)
+3. Internação hospitalar (risco de aspiração, hipóxia)
+4. Oximetria contínua
+5. Amoxicilina-Clavulanato 875mg VO 12/12h
+6. Analgesia: Dipirona 1g EV 6/6h
+7. Tipagem + reserva de 2CH
+8. Hemograma, coagulograma, eletrólitos
+9. Se refratário: arteriografia com embolização OU ligadura da artéria esfenopalatina
+10. Correção de coagulopatia se presente (Vitamina K, PFC, plaquetas)`,
+    warnings: "Tamponamento posterior: monitorizar SpO2 (risco de apneia reflexa — reflexo nasocardíaco). Manter em ambiente monitorizado.",
+    guideline: "AAO-HNS / ABORL",
+  },
+  {
+    id: "rx-orl-corpo-estranho-via-aerea",
+    title: "Corpo Estranho em Via Aérea",
+    type: "Prescrição ORL / Emergência",
+    prescription: `1. Se obstrução TOTAL + consciente: manobra de Heimlich
+2. Se obstrução TOTAL + inconsciente: RCP + laringoscopia direta
+3. Se obstrução PARCIAL (tosse eficaz): NÃO interferir, manter calmo
+4. Se obstrução parcial com estridor: preparar material de via aérea difícil
+5. Rx tórax PA + lateral (AP e lateral do pescoço em crianças)
+6. Broncoscopia rígida (preferência) ou flexível para remoção
+7. Dexametasona 0,6mg/kg EV (máx 10mg) — reduzir edema
+8. Monitorização contínua: SpO2, FR
+9. Pós-remoção: observação 4-6h + Rx controle`,
+    notes: "Crianças <3 anos: maior risco. Objetos mais comuns: amendoim, feijão, moedas, peças pequenas. Sinal clássico: engasgo súbito + tosse.",
+    warnings: "NÃO fazer tapotagem ou manobras cegas em obstrução parcial com respiração presente. Risco de obstrução total.",
+    guideline: "AHA / ATLS / ABORL",
+  },
+  {
+    id: "rx-orl-angina-ludwig",
+    title: "Angina de Ludwig",
+    type: "Prescrição ORL / Emergência",
+    prescription: `1. Via aérea: avaliar IOT precoce (edema de assoalho de boca progressivo)
+   - Material de via aérea difícil e cricotireoidostomia à beira leito
+2. Ampicilina-Sulbactam 3g EV 6/6h OU
+3. Ceftriaxona 2g EV 12/12h + Metronidazol 500mg EV 8/8h + Clindamicina 600mg EV 6/6h
+4. Dexametasona 10mg EV 8/8h (reduzir edema)
+5. TC cervical com contraste (avaliar extensão e coleções)
+6. Drenagem cirúrgica (se coleção >3cm ou sem melhora em 24-48h)
+7. Hemograma, PCR, hemocultura
+8. Hidratação vigorosa: SF 0,9% 2000mL EV
+9. Analgesia: Dipirona 1g EV 6/6h + Morfina 4mg EV SOS`,
+    notes: "Infecção do espaço submandibular bilateral + sublingual. Origem dentária em 70-90%. Edema duro do assoalho da boca, protrusão lingual.",
+    warnings: "EMERGÊNCIA DE VIA AÉREA. Mortalidade sem tratamento >50%. Risco de mediastinite, fascia necrosante cervical, trombose de jugular.",
+    guideline: "IDSA / ABORL",
+  },
+  {
+    id: "rx-orl-mastoidite-aguda",
+    title: "Mastoidite Aguda",
+    type: "Prescrição ORL / Emergência",
+    prescription: `1. Internação hospitalar
+2. Ceftriaxona 2g EV 12/12h OU Cefotaxima 2g EV 8/8h
+3. + Metronidazol 500mg EV 8/8h (se suspeita de anaeróbios)
+4. TC de ossos temporais com contraste (avaliar complicações)
+5. Miringotomia com tubo de ventilação (otorrinolaringologista)
+6. Analgesia: Dipirona 1g EV 6/6h + AINE
+7. Se abscesso subperiosteal: drenagem cirúrgica (mastoidectomia)
+8. Hemograma, PCR, VHS, hemocultura
+9. Avaliar complicações: trombose de seio sigmoide, abscesso epidural, meningite`,
+    notes: "Complicação de otite média aguda. Edema retroauricular, deslocamento do pavilhão, dor intensa, febre alta.",
+    warnings: "Complicações intracranianas: abscesso cerebral, meningite, trombose de seio venoso. TC/RM urgente se sinais neurológicos.",
+    guideline: "AAO-HNS / ABORL",
+  },
+  {
+    id: "rx-orl-epiglotite-adulto",
+    title: "Epiglotite Aguda no Adulto",
+    type: "Prescrição ORL / Emergência",
+    prescription: `1. EMERGÊNCIA DE VIA AÉREA — material de IOT difícil + cricotireoidostomia pronto
+2. NÃO examinar orofaringe com abaixador de língua (risco de laringoespasmo)
+3. Manter paciente sentado, inclinado para frente
+4. Ceftriaxona 2g EV 12/12h OU Ampicilina-Sulbactam 3g EV 6/6h
+5. Dexametasona 10mg EV → 4mg EV 8/8h
+6. Adrenalina nebulizada 3-5mL (1:1000) se estridor
+7. Heliox (se disponível e obstrução parcial)
+8. Monitorização contínua em UTI/semi
+9. Hemocultura + cultura de secreção
+10. IOT precoce se: estridor em repouso, sialorreia, incapacidade de deglutir`,
+    notes: "Adultos: mais insidiosa que crianças. H. influenzae menos comum (vacinação). Etiologia: S. aureus, estreptococo, polimicrobiana.",
+    warnings: "NÃO realizar Rx lateral de pescoço se instabilidade respiratória. NÃO sedar sem ter via aérea garantida.",
+    guideline: "AAO-HNS / ATLS",
+  },
+  {
+    id: "rx-orl-surdez-subita",
+    title: "Surdez Súbita Neurossensorial",
+    type: "Prescrição ORL / Emergência",
+    prescription: `1. URGÊNCIA OTOLÓGICA — tratamento em até 72h melhora prognóstico
+2. Prednisona 1mg/kg/dia VO (máx 60mg) por 10-14 dias → reduzir em 5 dias
+3. OU Dexametasona intratimpânica (se contraindicação a corticoide sistêmico)
+4. Audiometria tonal e vocal URGENTE
+5. RM de crânio com contraste (excluir schwannoma vestibular / AVC de fossa posterior)
+6. Exames: hemograma, VHS, PCR, glicemia, VDRL, FTA-Abs, TSH
+7. Repouso relativo, evitar ruídos intensos
+8. Valaciclovir 1g VO 8/8h por 7 dias (se suspeita viral — controverso)`,
+    notes: "Definição: perda ≥30dB em 3 frequências consecutivas em <72h. Idiopática em 90%. Prognóstico: 2/3 recuperam parcialmente.",
+    warnings: "SEMPRE excluir AVC de fossa posterior (vertigem + surdez + nistagmo). Schwannoma vestibular: RM obrigatória.",
+    guideline: "AAO-HNS / ABORL",
+  },
+
+  // ═══════════════════════════════════════════════════
+  // CIRURGIA GERAL — EXPANSÃO
+  // ═══════════════════════════════════════════════════
+  {
+    id: "rx-cir-abdome-agudo-obstrutivo",
+    title: "Abdome Agudo Obstrutivo",
+    type: "Prescrição Cirúrgica",
+    prescription: `1. Jejum absoluto
+2. SNG aberta em frasco (descompressão)
+3. SVD (controle de diurese)
+4. SF 0,9% 2000mL EV nas primeiras 6h (reposição volêmica)
+5. Reposição de eletrólitos conforme gasometria
+6. Dipirona 1g EV 6/6h + Tramadol 50mg EV 8/8h
+7. Bromoprida 10mg EV 8/8h (pró-cinético) — se obstrução parcial
+8. Enema glicerinado (se obstrução baixa funcional, sem sinais de estrangulamento)
+9. Rx abdome em pé + decúbito (níveis hidroaéreos, distensão)
+10. TC abdome com contraste (se dúvida ou suspeita de estrangulamento)
+11. Cirurgia de urgência se: sinais peritoneais, isquemia, hérnias encarceradas não redutíveis`,
+    notes: "Causas mais comuns: bridas/aderências (60%), hérnias, tumores, vólvulo. Obstrução de delgado vs cólon tem manejo diferente.",
+    warnings: "Estrangulamento: dor desproporcional, taquicardia, leucocitose, acidose, lactato elevado → cirurgia IMEDIATA.",
+    guideline: "EAST / ATLS / CBC",
+  },
+  {
+    id: "rx-cir-hernia-encarcerada",
+    title: "Hérnia Inguinal Encarcerada / Estrangulada",
+    type: "Prescrição Cirúrgica",
+    prescription: `1. Tentativa de redução manual (Taxis) se <6h e sem sinais de estrangulamento:
+   - Sedação: Midazolam 3mg EV + Fentanil 50mcg EV
+   - Trendelenburg, bolsa de gelo local, pressão suave e constante
+2. Se redução bem-sucedida: internação + cirurgia eletiva precoce (24-48h)
+3. Se irredutível ou >6h ou sinais de estrangulamento: CIRURGIA DE URGÊNCIA
+4. Jejum absoluto
+5. SF 0,9% 1000mL EV (hidratação)
+6. Cefazolina 2g EV (profilaxia pré-operatória)
+7. Dipirona 1g EV 6/6h
+8. HMG, eletrólitos, lactato, gasometria, tipagem sanguínea`,
+    notes: "Estrangulamento: dor intensa, irredutibilidade, sinais de obstrução, toxemia. Conteúdo mais comum: intestino delgado, omento.",
+    warnings: "NÃO tentar redução se sinais de estrangulamento (isquemia intestinal — risco de perfuração e peritonite). Cirurgia imediata.",
+    guideline: "EHS / CBC",
+  },
+  {
+    id: "rx-cir-perfuracao-viscera",
+    title: "Perfuração de Víscera Oca / Abdome Agudo Perfurativo",
+    type: "Prescrição Cirúrgica",
+    prescription: `1. CIRURGIA DE URGÊNCIA — laparotomia exploradora
+2. Jejum absoluto
+3. 2 acessos venosos calibrosos (jelco 16-18)
+4. SF 0,9% 2000mL EV rápido (reposição)
+5. Ceftriaxona 2g EV + Metronidazol 500mg EV (cobertura para Gram- e anaeróbios)
+6. OU Piperacilina-Tazobactam 4,5g EV (se peritonite difusa)
+7. SNG aberta
+8. SVD
+9. Dipirona 1g EV + Morfina 4mg EV (analgesia — NÃO atrasar por medo de mascarar exame)
+10. Rx tórax em ortostase (pneumoperitôneo)
+11. Tipagem + reserva 2-4CH
+12. Gasometria, lactato, HMG, coagulograma`,
+    notes: "Pneumoperitôneo na Rx confirma perfuração. Úlcera péptica perfurada: mais comum. TC se dúvida diagnóstica.",
+    warnings: "NÃO atrasar cirurgia para exames. Cada hora de atraso aumenta mortalidade. Peritonite fecal: mortalidade >30%.",
+    guideline: "EAST / WSES / CBC",
+  },
+  {
+    id: "rx-cir-trauma-abdominal-fechado",
+    title: "Trauma Abdominal Fechado — Manejo Inicial",
+    type: "Prescrição Cirúrgica",
+    prescription: `1. ATLS: ABCDE
+2. 2 acessos venosos calibrosos + SF 0,9% 1000mL EV rápido
+3. FAST (US à beira leito) — líquido livre?
+4. Se FAST (+) + instável: laparotomia exploradora IMEDIATA
+5. Se FAST (+) + estável: TC abdome com contraste EV
+6. Se FAST (-) + estável: observação + exames seriados
+7. Tipagem + reserva 4CH
+8. HMG, lactato, amilase, lipase, função hepática, coagulograma, EAS
+9. SNG + SVD (avaliar hematúria)
+10. Rx tórax (avaliar hemotórax associado)
+11. Analgesia: não atrasar — Dipirona + Fentanil EV titulado`,
+    notes: "Órgãos mais lesados: baço (40-55%) > fígado (35-45%) > rim. Lesão esplênica grau I-III em estável: manejo não operatório.",
+    warnings: "Hematúria macroscópica: investigar lesão renal/vesical. Fratura de bacia: risco de sangramento retroperitoneal maciço.",
+    guideline: "ATLS / EAST / CBC",
+  },
+
+  // ═══════════════════════════════════════════════════
+  // CIRURGIA VASCULAR — EXPANSÃO
+  // ═══════════════════════════════════════════════════
+  {
+    id: "rx-vasc-isquemia-aguda-membro",
+    title: "Isquemia Aguda de Membro (6 Ps)",
+    type: "Prescrição Cirúrgica / Emergência Vascular",
+    prescription: `1. EMERGÊNCIA VASCULAR — tempo é membro (6h de janela)
+2. Heparina não fracionada 80UI/kg EV em bolus → 18UI/kg/h em BIC
+3. Analgesia: Morfina 4mg EV titulada
+4. Membro em posição neutra (NÃO elevar — piora isquemia)
+5. Proteger calcanhares (almofada)
+6. AngioTC ou arteriografia de urgência
+7. Hidratação vigorosa: SF 0,9% 1000-2000mL (prevenir nefropatia por mioglobina)
+8. Tipagem + reserva 2CH
+9. CPK, mioglobina, função renal, gasometria, lactato, potássio
+10. Cirurgia de urgência: embolectomia / bypass / trombólise intra-arterial
+11. Pós-revascularização: vigiar síndrome de reperfusão (hipercalemia, acidose, mioglobinúria)`,
+    notes: "6 Ps: Pain, Pallor, Pulselessness, Paresthesia, Paralysis, Poikilothermia. Rutherford I-IIa: viável. IIb: ameaçado. III: irreversível.",
+    warnings: "Rutherford III (rigidez, anestesia completa): amputação primária. Síndrome de reperfusão: pode ser fatal (hipercalemia aguda).",
+    guideline: "SVS / ESVS / SBACV",
+  },
+  {
+    id: "rx-vasc-aneurisma-aorta-roto",
+    title: "Aneurisma de Aorta Abdominal Roto",
+    type: "Prescrição Cirúrgica / Emergência Vascular",
+    prescription: `1. EMERGÊNCIA CIRÚRGICA — mortalidade >80% sem cirurgia
+2. 2 acessos venosos calibrosos (jelco 14-16) + acesso central
+3. Protocolo de transfusão maciça: CH 6U + PFC 6U + plaquetas 1 aférese
+4. Hipotensão permissiva: PAS alvo 70-80mmHg (NÃO normalizar PA)
+5. SF 0,9% aquecido — volume mínimo para manter consciência
+6. Tipagem + prova cruzada URGENTE
+7. Noradrenalina SOS (evitar vasopressores se possível — pioram sangramento)
+8. TC com contraste (SOMENTE se hemodinamicamente tolerável — não atrasar cirurgia)
+9. Cirurgia IMEDIATA: reparo aberto ou EVAR (endovascular)
+10. Manta térmica (prevenir tríade letal: hipotermia + coagulopatia + acidose)`,
+    notes: "Tríade clássica: dor abdominal/lombar + massa pulsátil + hipotensão. Presente em apenas 50% dos casos.",
+    warnings: "NÃO atrasar cirurgia para exames. Mortalidade pré-hospitalar 50%, intra-hospitalar sem cirurgia >90%.",
+    guideline: "SVS / ESVS / SBACV",
+  },
+  {
+    id: "rx-vasc-pe-diabetico-infectado",
+    title: "Pé Diabético Infectado — Wagner 3-4",
+    type: "Prescrição Hospitalar / Cirurgia Vascular",
+    prescription: `1. Internação hospitalar
+2. Piperacilina-Tazobactam 4,5g EV 6/6h OU
+3. Ertapenem 1g EV 1x/dia (infecção grave, uso prévio de ATB)
+4. + Vancomicina 15-20mg/kg EV 12/12h (se risco de MRSA)
+5. Insulina regular conforme glicemia (esquema sliding scale ou BIC)
+6. Curativo diário com SF 0,9% + desbridamento de tecido necrótico
+7. Rx pé (avaliar osteomielite: destruição óssea, gás em partes moles)
+8. RM pé (padrão-ouro para osteomielite) se disponível
+9. Doppler arterial de MMII (avaliar isquemia associada)
+10. HbA1c, HMG, PCR, VHS, função renal, cultura de tecido profundo (NÃO swab superficial)
+11. Avaliar necessidade de revascularização antes de amputação
+12. Profilaxia de TVP: Enoxaparina 40mg SC 1x/dia`,
+    notes: "Wagner 3: úlcera profunda com osteomielite/abscesso. Wagner 4: gangrena parcial. Wagner 5: gangrena extensa. IDSA: infecção leve/moderada/grave.",
+    warnings: "Osteomielite: tratamento prolongado 6-8 semanas de ATB. Gangrena úmida: desbridamento/amputação urgente.",
+    guideline: "IDSA / IWGDF / SBACV",
+  },
+
+  // ═══════════════════════════════════════════════════
+  // ANESTESIOLOGIA — EXPANSÃO
+  // ═══════════════════════════════════════════════════
+  {
+    id: "rx-anest-sedacao-procedural-ps",
+    title: "Sedação Procedural no PS (Cardioversão, Redução de Fratura)",
+    type: "Prescrição Anestésica",
+    prescription: `1. Jejum: ideal ≥2h para líquidos, ≥6h para sólidos (emergência: avaliar risco/benefício)
+2. Monitorização: SpO2, ECG, PA, capnografia (se disponível)
+3. Material de via aérea + aspirador + Ambu prontos
+4. Pré-oxigenação: O2 5L/min por cateter ou máscara por 3 min
+
+OPÇÕES DE SEDAÇÃO:
+a) Propofol 1mg/kg EV lento (30s) → bolus adicionais de 0,5mg/kg SOS
+b) Cetamina 1-2mg/kg EV lento (dissociativa — mantém reflexo de VA)
+c) Midazolam 0,05mg/kg EV + Fentanil 1mcg/kg EV (sedação leve)
+d) Etomidato 0,3mg/kg EV (ideal para cardioversão — estabilidade hemodinâmica)
+
+5. Antagonistas disponíveis: Flumazenil + Naloxona
+6. Observação pós-procedimento: mínimo 30-60 min até Aldrete ≥9`,
+    notes: "ASA I-II: seguro no PS com monitorização. ASA III-IV: considerar anestesista. Cetamina: ideal em crianças e hemodinamicamente instáveis.",
+    warnings: "Propofol: hipotensão e apneia (ter vasopressor pronto). Cetamina: vômito (ondansetrona profilática), laringoespasmo raro. Etomidato: mioclonias, supressão adrenal transitória.",
+    guideline: "ACEP / SBA",
+  },
+  {
+    id: "rx-anest-bloqueio-nervoso-femoral",
+    title: "Bloqueio do Nervo Femoral (Fratura de Fêmur/Quadril)",
+    type: "Prescrição Anestésica",
+    prescription: `1. Indicação: analgesia para fratura de fêmur/quadril no PS (reduz necessidade de opioide)
+2. Material: agulha de bloqueio 22G 50mm, US linear, seringa 20mL
+3. Solução: Bupivacaína 0,25% 20mL OU Ropivacaína 0,375% 20mL
+4. Técnica guiada por ultrassom (preferência):
+   - Transdutor linear na prega inguinal
+   - Identificar: artéria femoral, nervo femoral (lateral à artéria, sob fascia ilíaca)
+   - Aspirar antes de injetar (excluir intravascular)
+   - Injetar 20mL perineuralmente
+5. Monitorização: PA, FC, SpO2 durante e 30 min após
+6. Avaliar bloqueio motor (extensão do joelho) e sensitivo (face anterior da coxa)
+7. Duração esperada: 8-12h com bupivacaína`,
+    notes: "Reduz necessidade de opioide em >50%. Pode ser realizado no PS por emergencista treinado. Técnica com neuroestimulador como alternativa ao US.",
+    warnings: "Risco: punção vascular, infecção, LAST (intoxicação por anestésico local). Ter Intralipid 20% disponível.",
+    guideline: "NYSORA / SBA / ACEP",
+  },
+  {
+    id: "rx-anest-intoxicacao-anestesico-local",
+    title: "LAST — Intoxicação por Anestésico Local",
+    type: "Prescrição Anestésica",
+    prescription: `1. PARAR administração do anestésico local IMEDIATAMENTE
+2. Chamar ajuda — equipe de RCP
+3. Via aérea: O2 100% → IOT se necessário
+4. Convulsão: Midazolam 2-4mg EV OU Propofol em dose baixa
+   - NÃO usar fenitoína
+5. PCR: RCP conforme ACLS (evitar vasopressina, reduzir dose de adrenalina para 1mcg/kg)
+6. EMULSÃO LIPÍDICA 20% (Intralipid):
+   - Bolus: 1,5mL/kg EV em 1 min (~100mL para 70kg)
+   - Infusão: 0,25mL/kg/min por 30-60 min
+   - Repetir bolus 1-2x se persistir colapso cardiovascular
+   - Dose máxima: 12mL/kg
+7. NÃO usar lidocaína para arritmias (piora toxicidade)
+8. Considerar ECMO/CEC se PCR refratária`,
+    notes: "Sinais precoces: zumbido, gosto metálico, parestesia perioral, agitação. Tardios: convulsão, arritmia, PCR. Bupivacaína: mais cardiotóxica.",
+    warnings: "LAST pode ocorrer até 30 min após bloqueio. PCR por bupivacaína é refratária a RCP convencional — emulsão lipídica é essencial.",
+    guideline: "ASRA / SBA",
+  },
+  {
+    id: "rx-anest-via-aerea-dificil",
+    title: "Via Aérea Difícil — Algoritmo e Prescrição",
+    type: "Prescrição Anestésica",
+    prescription: `1. Preditores de VAD: Mallampati III-IV, DTM <6cm, abertura bucal <3cm, pescoço curto/grosso, obesidade, história prévia
+
+PREPARO:
+2. Posicionamento em rampa (obesos) ou sniffing position
+3. Pré-oxigenação: O2 100% por 3-5 min (ou 8 respirações de capacidade vital)
+4. Apneic oxygenation: cateter nasal 15L/min durante tentativa
+5. Videolaringoscópio como primeira escolha (se disponível)
+
+FALHA NA IOT (máx 3 tentativas):
+6. Dispositivo supraglótico (máscara laríngea) → ventilar → planejar
+7. Se não ventila + não intuba (CICO): cricotireoidostomia de emergência
+   - Técnica cirúrgica: incisão vertical pele + horizontal membrana cricotireoidea
+   - Bougie + cânula 6.0
+
+DROGAS (SRI):
+8. Fentanil 2mcg/kg → Lidocaína 1,5mg/kg → Propofol 2mg/kg (ou Cetamina 2mg/kg) → Succinilcolina 1,5mg/kg OU Rocurônio 1,2mg/kg
+9. Sugamadex 16mg/kg (reversão de emergência do rocurônio se CICO)`,
+    notes: "LEMON: Look, Evaluate 3-3-2, Mallampati, Obstruction, Neck mobility. Sempre ter plano B e C antes de induzir.",
+    warnings: "Máx 3 tentativas de IOT. Não persistir se dessaturar <93%. Cricotireoidostomia: não hesitar se CICO.",
+    guideline: "DAS / ASA / SBA",
+  },
+
+  // ═══════════════════════════════════════════════════
+  // REUMATOLOGIA — EXPANSÃO
+  // ═══════════════════════════════════════════════════
+  {
+    id: "rx-reumato-vasculite-sistemica",
+    title: "Vasculite Sistêmica Aguda (ANCA+)",
+    type: "Prescrição Hospitalar / Reumatologia",
+    prescription: `1. Internação hospitalar
+2. Metilprednisolona 1g EV 1x/dia por 3 dias (pulsoterapia)
+3. → Prednisona 1mg/kg/dia VO (após pulse — máx 80mg) com redução gradual
+4. Ciclofosfamida 15mg/kg EV (indução) OU Rituximab 375mg/m² EV semanal x4
+5. Plasmaférese: se hemorragia alveolar ou creatinina >5,7 (controverso — PEXIVAS)
+6. Sulfametoxazol-Trimetoprima 400/80mg VO 1x/dia (profilaxia para PCP)
+7. IBP: Omeprazol 20mg VO 1x/dia (proteção gástrica)
+8. Exames: ANCA (c-ANCA/p-ANCA), anti-MPO, anti-PR3, função renal, EAS com sedimento, Rx tórax
+9. Biópsia renal (se glomerulonefrite rapidamente progressiva)
+10. Monitorizar: HMG semanal (mielotoxicidade da ciclofosfamida)`,
+    notes: "GPA (Wegener): c-ANCA/anti-PR3. MPA: p-ANCA/anti-MPO. EGPA (Churg-Strauss): p-ANCA + eosinofilia. Acometimento renal e pulmonar: emergência.",
+    warnings: "Ciclofosfamida: risco de cistite hemorrágica (mesna profilático), infertilidade, neoplasia. Rituximab: risco de reativação de hepatite B (checar HBsAg).",
+    guideline: "ACR / EULAR / SBR",
+  },
+  {
+    id: "rx-reumato-lupus-nefrite",
+    title: "Nefrite Lúpica Classe III/IV — Tratamento de Indução",
+    type: "Prescrição Hospitalar / Reumatologia",
+    prescription: `1. Metilprednisolona 500-1000mg EV 1x/dia por 3 dias
+2. → Prednisona 0,5-1mg/kg/dia VO com redução progressiva
+3. Micofenolato mofetil 1g VO 12/12h (indução — preferência atual) OU
+4. Ciclofosfamida EV (Euro-Lupus: 500mg quinzenal x6 doses)
+5. Hidroxicloroquina 400mg VO 1x/dia (manter SEMPRE — nefroprotetor)
+6. IECA/BRA: Enalapril 10mg VO 12/12h (nefroproteção + anti-proteinúria)
+7. IBP: Omeprazol 20mg 1x/dia
+8. SMX-TMP profilático (se imunossupressão intensa)
+9. Exames: anti-dsDNA, C3/C4, proteinúria 24h, creatinina, biópsia renal (classificação ISN/RPS)
+10. Vitamina D + Cálcio (prevenção de osteoporose por corticoide)`,
+    notes: "Classe III: focal. Classe IV: difusa (mais grave). Classe V: membranosa. Biópsia renal é mandatória para classificação e tratamento.",
+    warnings: "Micofenolato: teratogênico (contracepção obrigatória). Hidroxicloroquina: exame oftalmológico anual (maculopatia). Anti-dsDNA e complemento para monitorizar atividade.",
+    guideline: "EULAR/ERA-EDTA / ACR / SBR",
+  },
+  {
+    id: "rx-reumato-esclerodermia-crise-renal",
+    title: "Crise Renal Esclerodérmica",
+    type: "Prescrição de Emergência / Reumatologia",
+    prescription: `1. EMERGÊNCIA NEFROLÓGICA/REUMATOLÓGICA
+2. IECA (droga de escolha — NÃO suspender mesmo se creatinina subir):
+   - Captopril 12,5-25mg VO 8/8h → titular rapidamente até 50mg 8/8h
+   - OU Enalapril 5mg VO 12/12h → titular
+3. Alvo PA: reduzir 20mmHg/dia (não normalizar agudamente)
+4. Se HAS refratária: Anlodipino 5mg VO + Nitroprussiato em BIC
+5. Monitorizar: PA horária, função renal diária, LDH, esquizócitos (MAT associada)
+6. Hemodiálise se: uremia sintomática, hipercalemia refratária, sobrecarga
+7. NÃO usar corticoides em dose alta (fator de risco para crise renal)
+8. Hemograma com reticulócitos, haptoglobina, LDH (avaliar MAT)`,
+    notes: "Crise renal esclerodérmica: HAS maligna + IRA rapidamente progressiva. Mais comum em esclerose sistêmica difusa precoce. Anti-RNA polimerase III: marcador de risco.",
+    warnings: "IECA é OBRIGATÓRIO mesmo com piora da creatinina. Diálise necessária em 40-50% — muitos recuperam função renal em meses. Corticoide >15mg/dia é fator precipitante.",
+    guideline: "EULAR / ACR / SBR",
+  },
+
+  // ═══════════════════════════════════════════════════
+  // QUEIMADOS / CTQ — EXPANSÃO
+  // ═══════════════════════════════════════════════════
+  {
+    id: "rx-queimado-grande-queimado",
+    title: "Grande Queimado — Ressuscitação e Manejo Inicial",
+    type: "Prescrição em CTQ / UTI",
+    prescription: `1. ATLS: ABCDE (atenção especial à via aérea — queimadura de face/inalação)
+2. IOT precoce se: queimadura de face, rouquidão, estridor, escarro carbonáceo
+3. PARKLAND: Ringer Lactato 4mL x peso(kg) x %SCQ
+   - 50% nas primeiras 8h (a partir do horário da queimadura)
+   - 50% nas 16h seguintes
+   - Titular para diurese 0,5-1mL/kg/h (adulto) ou 1mL/kg/h (criança)
+4. SVD (monitorizar diurese horária OBRIGATÓRIO)
+5. SNG (íleo paralítico frequente em >20% SCQ)
+6. Analgesia: Morfina 0,1mg/kg EV titulada OU Cetamina 0,3mg/kg EV
+7. Profilaxia de Curling (úlcera de estresse): Omeprazol 40mg EV 12/12h
+8. Vacina antitetânica (se >5 anos do último reforço)
+9. Curativo: SF 0,9% + Sulfadiazina de prata 1% (2º grau) OU Curativo de prata nanocristalina
+10. NÃO usar antibiótico profilático sistêmico
+11. Exames: HMG, gasometria, carboxi-hemoglobina, lactato, eletrólitos, CPK, mioglobina, função renal
+12. Manta térmica (hipotermia é letal no queimado)`,
+    notes: "Regra dos 9 (adulto): cabeça 9%, membro superior 9% cada, tronco anterior 18%, posterior 18%, membro inferior 18% cada, períneo 1%. Criança: cabeça proporcionalmente maior.",
+    warnings: "SCQ >20%: risco de choque hipovolêmico. Queimadura circunferencial: escarotomia de urgência. Inalação: principal causa de morte em queimados.",
+    guideline: "ABA / ISBI / SBQ",
+  },
+  {
+    id: "rx-queimado-queimadura-eletrica",
+    title: "Queimadura Elétrica",
+    type: "Prescrição em CTQ / UTI",
+    prescription: `1. ATLS: ABCDE — atenção a lesão associada (queda, PCR)
+2. ECG contínuo por 24-48h (arritmias tardias)
+3. Monitorização em UTI/semi
+4. Hidratação agressiva: SF 0,9% para diurese >1-2mL/kg/h (prevenir IRA por mioglobina)
+5. Se mioglobinúria (urina escura): bicarbonato de sódio 8,4% 100mL em 500mL SF → manter pH urinário >6,5
+6. CPK seriada a cada 6h (rabdomiólise)
+7. Avaliação neurovascular das extremidades a cada 2h (síndrome compartimental)
+8. Fasciotomia se síndrome compartimental
+9. Analgesia: Morfina + Cetamina EV
+10. Troponina, enzimas cardíacas (lesão miocárdica)
+11. Exames: HMG, eletrólitos (K!), função renal, mioglobina, gasometria
+12. TC crânio se perda de consciência`,
+    notes: "Lesão real muito maior que a visível (corrente percorre tecidos profundos). Alta tensão (>1000V): maior risco de lesão cardíaca e compartimental.",
+    warnings: "PCR é a principal causa de morte imediata na queimadura elétrica. Rabdomiólise maciça: hipercalemia fatal. Lesão de órgãos internos pode ser oculta.",
+    guideline: "ABA / ATLS / SBQ",
+  },
 ];
 
 
