@@ -5,7 +5,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import PremiumGate from "@/components/PremiumGate";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Search, ChevronRight, ClipboardList, Stethoscope, Zap, Building, Baby, HeartPulse, Thermometer, Pill, Target, LogOut, FlaskConical, FileText, Brain, Eye, Droplets, Scissors, Syringe, Monitor, Shield, Flame, Ribbon, Activity, Bone, Skull } from "lucide-react";
+import { Search, ChevronRight, ClipboardList, Stethoscope, Zap, Building, Baby, HeartPulse, Thermometer, Pill, Target, LogOut, FlaskConical, FileText, Brain, Eye, Droplets, Scissors, Syringe, Monitor, Shield, Flame, Ribbon, Activity, Bone, Skull, Wind, UtensilsCrossed, Bug, Ear } from "lucide-react";
 import { prescriptionCategories } from "@/data/prescriptions/index";
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -33,6 +33,10 @@ const iconMap: Record<string, React.ReactNode> = {
   bone: <Bone size={16} className="text-stone-500" />,
   skull: <Skull size={16} className="text-red-600" />,
   kidney: <Activity size={16} className="text-amber-600" />,
+  wind: <Wind size={16} className="text-sky-500" />,
+  utensils: <UtensilsCrossed size={16} className="text-amber-700" />,
+  bug: <Bug size={16} className="text-lime-600" />,
+  ear: <Ear size={16} className="text-pink-600" />,
 };
 
 export default function Prescriptions() {
