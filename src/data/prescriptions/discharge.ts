@@ -1298,5 +1298,45 @@ Bacteriana (secreção purulenta):
     notes: "Até 50% dos sobreviventes de UTI apresentam PICS. Impacto funcional, cognitivo e psicológico pode durar anos.",
     guideline: "SCCM / AMIB / NICE",
   },
+  {
+    id: "rx-alta-pos-anestesia",
+    title: "Alta — Pós-Anestesia / Day Clinic",
+    type: "Alta",
+    prescription: `CRITÉRIOS DE ALTA (PADSS ≥9):
+1. Sinais vitais estáveis por 30min
+2. Orientado, alerta, deambulando sem tontura
+3. Dor controlada (EVA <4)
+4. Sem náusea/vômito ativo
+5. Sem sangramento significativo
+6. Acompanhante responsável presente
+
+PRESCRIÇÃO:
+7. Dipirona 500mg — 1cp VO 6/6h por 3-5 dias
+8. Cetoprofeno 100mg — 1cp VO 12/12h por 3 dias (com alimento)
+9. Tramadol 50mg — 1cp VO 8/8h se dor moderada (resgate)
+10. Ondansetrona 4mg — 1cp VO 8/8h se náusea (por 24h)
+11. NÃO dirigir nas primeiras 24h
+12. NÃO ingerir álcool por 48h
+13. NÃO assinar documentos legais por 24h
+14. Retorno ao PS se: febre, sangramento, dor intensa, vômitos persistentes`,
+    guideline: "SBA / ASA / ERAS",
+  },
+  {
+    id: "rx-alta-pos-queimadura",
+    title: "Alta — Pós-Queimadura (Pequeno Queimado)",
+    type: "Alta",
+    prescription: `1. Cefalexina 500mg — 1cp VO 6/6h por 7 dias (se sinais de infecção)
+2. Dipirona 500mg — 1cp VO 6/6h se dor
+3. Tramadol 50mg — 1cp VO 8/8h se dor moderada (nos primeiros 3-5 dias)
+4. Curativo diário com SF 0,9% + Sulfadiazina de prata 1% (2º grau)
+5. Trocar curativo 1-2x/dia (lavar suavemente, NÃO esfregar)
+6. NÃO estourar bolhas
+7. NÃO expor ao sol por 6 meses (hiperpigmentação)
+8. Protetor solar FPS 50 na área cicatrizada após reepitelização
+9. Hidratação da cicatriz com óleo de semente de uva ou creme à base de silicone
+10. Retorno: cirurgia plástica em 7-10 dias para avaliação
+11. Retorno ao PS se: febre, secreção purulenta, aumento da dor, mau cheiro`,
+    guideline: "SBQ / SBCP",
+  },
 ];
 

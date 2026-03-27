@@ -1134,5 +1134,55 @@ ORIENTAÇÕES:
 12. Manter conforto e dignidade — presença familiar`,
     guideline: "ANCP / MS / OMS",
   },
+  {
+    id: "rx-sus-ped-basico",
+    title: "Pediatria na UPA — Kit Básico",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `MEDICAMENTOS PEDIÁTRICOS DISPONÍVEIS EM UPA:
+1. Dipirona gotas 500mg/mL: 1gota/kg VO 6/6h
+2. Ibuprofeno gotas 50mg/mL: 1gota/kg VO 8/8h (>6m)
+3. Amoxicilina suspensão 250mg/5mL
+4. Cefalexina suspensão 250mg/5mL
+5. Prednisolona 3mg/mL (crupe, asma)
+6. Salbutamol spray 100mcg/jato (com espaçador)
+7. SF 0,9% (nebulização + hidratação)
+8. SRO (sais de reidratação oral)
+9. Ondansetrona 4mg (>6m, dose 0,15mg/kg)
+10. Ceftriaxona EV (infecções graves)
+11. Diazepam retal 0,3-0,5mg/kg (convulsão)
+
+NÃO DISPONÍVEIS:
+- Dexmedetomidina, Propofol, bombas de infusão pediátrica
+- Antibióticos de amplo espectro (Meropenem, Vancomicina)
+- Fórmulas enterais especializadas`,
+    notes: "Calcular TODAS as doses por kg. Usar fita de Broselow se peso desconhecido. Cuidado com volumes de diluição em lactentes.",
+    guideline: "SBP / MS / RENAME",
+  },
+  {
+    id: "rx-sus-obito-declaracao",
+    title: "Declaração de Óbito — Preenchimento",
+    type: "Protocolo Administrativo — SUS",
+    prescription: `QUANDO PREENCHER:
+1. Óbito por causa natural: médico assistente ou plantonista
+2. Óbito por causa externa (trauma, intoxicação, suicídio, homicídio): IML (NÃO preencher DO)
+3. Morte encefálica: protocolo específico (CFM 2.173/2017)
+
+CAMPOS OBRIGATÓRIOS:
+4. Causa básica: doença que iniciou a cadeia de eventos (última linha da Parte I)
+5. Causa imediata: mecanismo final de morte (primeira linha da Parte I)
+6. Linha A: causa imediata (ex: choque séptico)
+7. Linha B: causa consequencial (ex: pneumonia aspirativa)
+8. Linha C: causa consequencial (ex: AVC isquêmico)
+9. Linha D: causa básica (ex: fibrilação atrial crônica)
+10. Parte II: condições contribuintes (ex: DM2, HAS, obesidade)
+
+ORIENTAÇÕES:
+11. NÃO usar como causa: parada cardiorrespiratória (mecanismo, não causa)
+12. NÃO usar: falência múltipla de órgãos (sem especificar causa)
+13. Usar CID-10 em todas as linhas
+14. Assinatura + CRM + carimbo obrigatórios`,
+    notes: "DO é documento médico e legal. Preenchimento correto impacta estatísticas de saúde pública. Dúvidas: consultar SVO ou SIM do município.",
+    guideline: "CFM / MS / OMS",
+  },
 ];
 

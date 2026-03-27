@@ -1073,5 +1073,65 @@ AVALIAÇÃO:
 13. Não acelerar o processo de morte — controlar sofrimento`,
     guideline: "ANCP / IAHPC / EAPC / CFM Res. 1.805/2006",
   },
+  {
+    id: "rx-modelo-anestesia-geral",
+    title: "Modelo — Anestesia Geral (Checklist)",
+    type: "Prescrição Padrão — Anestesiologia",
+    prescription: `PRÉ-OPERATÓRIO:
+1. Jejum confirmado: sólidos ___h, líquidos claros ___h
+2. TCLE assinado
+3. Avaliação: ASA ___, Mallampati ___, alergias: ___
+4. Acesso venoso: ___G
+5. Monitorização: ECG, SpO2, PANI, capnografia, temperatura, BIS (se disponível)
+
+INDUÇÃO:
+6. Pré-oxigenação: O2 100% por 3-5min
+7. Fentanil ___mcg/kg EV
+8. Propofol ___mg/kg EV OU Etomidato ___mg/kg (se instável)
+9. Bloqueador neuromuscular: Rocurônio ___mg/kg OU Succinilcolina ___mg/kg
+10. Intubação: tubo ___mm, fixado em ___cm na rima labial
+11. Confirmar: capnografia + ausculta bilateral
+
+MANUTENÇÃO:
+12. Sevoflurano ___% (CAM ___) OU TIVA: Propofol ___mg/kg/h + Remifentanil ___mcg/kg/min
+13. Analgesia: Dipirona 1g EV + Cetoprofeno 100mg EV (multimodal)
+14. Antibiótico profilático: Cefazolina 2g EV (30-60min antes da incisão)
+15. Aquecimento ativo (manta térmica)
+
+DESPERTAR:
+16. Sugammadex 2-4mg/kg EV (reverter Rocurônio) OU Neostigmina 0,04mg/kg + Atropina 0,02mg/kg
+17. Extubação: paciente acordado, TOF ≥0,9, VC adequado, obedece comandos
+18. SRPA: Aldrete ≥9 para alta`,
+    guideline: "SBA / ASA / ERAS",
+  },
+  {
+    id: "rx-modelo-bloqueio-tap",
+    title: "Bloqueio TAP (Transversus Abdominis Plane)",
+    type: "Prescrição Anestésica",
+    prescription: `INDICAÇÃO: analgesia pós-op de cirurgias abdominais (cesárea, apendicectomia, hernioplastia, laparotomia)
+
+TÉCNICA (guiada por USG):
+1. Transdutor linear na parede abdominal lateral (entre rebordo costal e crista ilíaca)
+2. Identificar 3 camadas musculares: oblíquo externo, oblíquo interno, transverso do abdome
+3. Agulha: 80-100mm, in-plane
+4. Alvo: plano fascial entre oblíquo interno e transverso (pop fascial + abertura hidrodissecção)
+5. Volume: 20mL por lado (bilateral = 40mL total)
+
+DROGAS:
+6. Ropivacaína 0,375%: 20mL por lado
+7. OU Bupivacaína 0,25%: 20mL por lado
+8. Dexametasona 4mg adjuvante (prolonga duração)
+9. Duração analgésica: 12-24h
+
+VARIAÇÕES:
+10. TAP subcostal: para cirurgias supra-umbilicais
+11. TAP lateral: para cirurgias infra-umbilicais
+12. Quadratus Lumborum Block (QLB): variante mais posterior — cobertura mais ampla
+
+DOSE MÁXIMA TOTAL (bilateral):
+13. Ropivacaína: 3mg/kg | Bupivacaína: 2mg/kg
+14. Ter Intralipid 20% disponível (toxicidade por anestésico local)`,
+    guideline: "SBA / ESRA / ASRA",
+  },
 ];
 

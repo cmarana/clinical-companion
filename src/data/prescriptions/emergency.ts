@@ -1567,5 +1567,150 @@ TRATAMENTO (ORDEM IMPORTA):
     warnings: "Mortalidade 10-30%. ORDEM das drogas importa: betabloqueador PRIMEIRO, antitireoidiano DEPOIS, iodo APÓS antitireoidiano (1h). AAS é CONTRAINDICADO.",
     guideline: "ATA / SBEM / Endocrine Society",
   },
+  {
+    id: "rx-emerg-coma-mixedema",
+    title: "Coma Mixedematoso",
+    type: "Prescrição de Emergência",
+    prescription: `1. Levotiroxina 200-500mcg EV dose única (ataque) → 50-100mcg EV 1x/dia
+2. OU T3 (Liotironina) 5-20mcg EV 8/8h (se disponível — ação mais rápida)
+3. Hidrocortisona 100mg EV 8/8h (ANTES da tiroxina — risco de crise adrenal)
+4. Aquecimento passivo (cobertores) — NÃO usar aquecimento ativo rápido (vasodilatação → colapso)
+5. SF 0,9% + SG 5% EV cauteloso (risco de hiponatremia + ICC)
+6. IOT + VM se rebaixamento/hipoventilação
+7. Monitorar: Na+ (hiponatremia dilucional), glicemia, T esofágica
+8. UTI obrigatória
+9. Tratar fator precipitante: infecção, cirurgia, sedativos, frio`,
+    warnings: "Mortalidade 30-50%. NÃO aquecer ativamente (colapso CV). Hidrocortisona ANTES da levotiroxina. Hiponatremia grave: NaCl 3% se Na <120 + sintomático.",
+    guideline: "ATA / SBEM / Endocrine Society",
+  },
+  {
+    id: "rx-emerg-hemorragia-massiva",
+    title: "Protocolo de Transfusão Maciça",
+    type: "Prescrição de Emergência",
+    prescription: `DEFINIÇÃO: ≥10 CH em 24h OU ≥4 CH em 1h OU perda de 1 volemia em 24h
+
+ATIVAR PROTOCOLO DE TRANSFUSÃO MACIÇA:
+1. Contato com banco de sangue — solicitar COOLER EMERGÊNCIA
+2. Razão alvo: CH:PFC:Plaquetas = 1:1:1 (ou 6:4:1 em unidades)
+3. CH O negativo (mulheres em idade fértil) ou O positivo (demais) — NÃO esperar tipagem
+
+REPOSIÇÃO:
+4. Ácido Tranexâmico 1g EV em 10min → 1g em 8h (dentro de 3h do trauma — CRASH-2)
+5. Fibrinogênio alvo >1,5g/dL: Crioprecipitado 10U se <1,5
+6. Plaquetas alvo >50.000 (>100.000 se TCE)
+7. Cálcio iônico alvo >1,1mmol/L: Gluconato Ca++ 10% 10mL a cada 4 CH transfundidos
+8. Manter normotermia (aquecedor de fluidos 37-40°C)
+
+MONITORIZAÇÃO:
+9. Gasometria + Ca++ + fibrinogênio + coagulograma a cada 30-60min
+10. TEG/ROTEM se disponível (guia transfusão point-of-care)
+11. Alvo: pH >7,2, BE >-6, T >35°C, Ca++ >1,1
+12. Tríade letal do trauma: hipotermia + acidose + coagulopatia → PREVENIR`,
+    warnings: "Hipocalcemia por citrato é a causa mais comum de coagulopatia e PCR durante transfusão maciça. Repor Ca++ a cada 4 CH.",
+    guideline: "ATLS / EAST / TQIP / ACS",
+  },
+  {
+    id: "rx-emerg-embolia-gordurosa",
+    title: "Embolia Gordurosa",
+    type: "Prescrição de Emergência",
+    prescription: `Suspeitar em: fraturas de ossos longos/pelve 24-72h após trauma, petéquias + hipóxia + confusão
+
+CRITÉRIOS DE GURD (≥1 major + ≥4 minor):
+Major: petéquias axilares/conjuntivais, hipóxia (PaO2<60), confusão
+Minor: taquicardia, febre, anemia, plaquetopenia, ↑VHS, gordúria
+
+TRATAMENTO (SUPORTE):
+1. O2 suplementar → VM se PaO2/FiO2 <200 (SDRA)
+2. Ventilação protetora: VC 6mL/kg, PEEP escalonada, FiO2 mínima
+3. Hidratação cautelosa: SF 0,9% — evitar sobrecarga
+4. Corticoide: Metilprednisolona 1,5mg/kg EV 8/8h por 3 dias (controverso — pode reduzir SDRA)
+5. Heparina profilática: Enoxaparina 40mg SC 1x/dia
+6. Monitorar: gasometria, plaquetas, Hb, fundo de olho (manchas de Purtscher)
+7. Fixação precoce e definitiva das fraturas (reduz embolização)
+8. NÃO existe tratamento específico — suporte é a base`,
+    guideline: "ATLS / Orthopedic Trauma Association / SBTO",
+  },
+  {
+    id: "rx-emerg-rebaixamento-noc",
+    title: "Rebaixamento do Nível de Consciência — Abordagem",
+    type: "Prescrição de Emergência",
+    prescription: `ABORDAGEM ABCDE → depois investigar causa
+
+CAUSAS TRATÁVEIS IMEDIATAMENTE (DON'T):
+D — Dextrose (SG 50% 40mL se glicemia <60)
+O — O2 (se SpO2 <94%)
+N — Naloxona 0,4mg EV (se suspeita de opioide)
+T — Tiamina 100mg EV (ANTES da glicose se etilista/desnutrido)
+
+EXAMES INICIAIS:
+1. Glicemia capilar (imediato)
+2. Gasometria arterial + lactato
+3. Hemograma, Na+, K+, Ca++, ureia, creatinina, hepatograma
+4. Toxicológico (urina + sangue)
+5. TC crânio sem contraste
+6. ECG
+
+ESCALA DE GLASGOW:
+7. Avaliar e registrar: abertura ocular + resposta verbal + resposta motora
+8. Se Glasgow ≤8: IOT para proteção de via aérea
+9. Se sinais de HIC: Manitol 20% 1g/kg EV + cabeceira 30° + hiperventilação transitória
+
+DIAGNÓSTICO DIFERENCIAL:
+10. Metabólico: hipo/hiperglicemia, hipo/hipernatremia, uremia, encefalopatia hepática
+11. Tóxico: intoxicação exógena, álcool, drogas
+12. Neurológico: AVC, HSA, meningite, status epiléptico não convulsivo
+13. Traumático: TCE, hematoma epidural/subdural`,
+    guideline: "ATLS / AHA / ABN / AMIB",
+  },
+  {
+    id: "rx-emerg-pneumotorax-hipertensivo",
+    title: "Pneumotórax Hipertensivo — Tratamento Imediato",
+    type: "Prescrição de Emergência",
+    prescription: `DIAGNÓSTICO CLÍNICO (NÃO esperar RX):
+- Hipotensão + taquicardia + turgência jugular
+- Ausência de MV unilateral + hipertimpanismo
+- Desvio de traqueia contralateral (tardio)
+- Cianose + dispneia grave
+
+TRATAMENTO IMEDIATO:
+1. Descompressão com agulha: jelco 14G no 2° EIC linha hemiclavicular (lado afetado)
+2. OU 5° EIC linha axilar anterior (preferido em obesos/musculosos)
+3. Saída de ar sob pressão confirma diagnóstico
+4. Manter jelco aberto até drenagem definitiva
+
+DRENAGEM TORÁCICA DEFINITIVA:
+5. 5° EIC linha axilar anterior (triângulo de segurança)
+6. Dreno 28-32Fr (adulto)
+7. Técnica: incisão → dissecção romba → abertura pleural digital → inserir dreno → conectar a selo d'água
+8. Fixação com fio + curativo oclusivo
+9. RX tórax confirmatório pós-drenagem
+
+MONITORIZAÇÃO:
+10. SpO2, PA, FR contínuos
+11. Débito do dreno (hemotórax associado?)
+12. Oscilação do selo d'água (patência)
+13. Se pneumotórax bilateral: drenar o mais sintomático primeiro`,
+    warnings: "EMERGÊNCIA — não esperar exame de imagem. Se em ventilação mecânica: pode evoluir rapidamente para PCR. Descompressão ANTES de qualquer exame.",
+    guideline: "ATLS / BTS / SBCT",
+  },
+  {
+    id: "rx-emerg-queimadura-quimica",
+    title: "Queimadura Química",
+    type: "Prescrição de Emergência",
+    prescription: `1. IRRIGAÇÃO COPIOSA com água corrente por 20-30min (INICIAR IMEDIATAMENTE)
+2. Remover roupas e acessórios contaminados (usar EPI)
+3. NÃO tentar neutralizar o agente (reação exotérmica piora lesão)
+4. Identificar o agente: ácido vs álcali vs outros
+   - Álcalis (soda cáustica, cal): penetram mais profundamente — irrigar por 1h
+   - Ácidos: lesão mais superficial mas com necrose de coagulação
+5. Queimadura ocular química: irrigar com SF 0,9% por 30min contínuos + avaliar pH conjuntival (alvo 7,0)
+6. Ácido fluorídrico: Gluconato de cálcio 10% gel tópico + infiltração subcutânea 0,5mL/cm²
+7. Fósforo branco: NÃO secar (inflama ao ar) — manter úmido + debridar partículas com luz UV
+8. Analgesia: Morfina 2-4mg EV (queimaduras químicas são muito dolorosas)
+9. Profilaxia antitetânica
+10. Encaminhar Centro de Queimados se >5% SCQ ou face/mãos/genitais/articulações`,
+    warnings: "IRRIGAÇÃO é o tratamento mais importante. NÃO neutralizar. Ácido fluorídrico pode causar hipocalcemia fatal — monitorar Ca++ e ECG.",
+    guideline: "SBQ / ABA / ISBI / TOXBASE",
+  },
 ];
 

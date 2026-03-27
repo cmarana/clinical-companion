@@ -934,5 +934,69 @@ Drenagem:
 Duração ATB: 3-6 semanas total (incluindo transição VO)`,
     guideline: "BTS / ATS / SBPT / IDSA",
   },
+  {
+    id: "rx-atb-neonatal-sepse",
+    title: "Antibiótico — Sepse Neonatal",
+    type: "Antibiótico por Foco",
+    prescription: `Sepse precoce (<72h):
+1. Ampicilina 50mg/kg EV 12/12h (se <7d) ou 8/8h (se 7-28d)
+2. + Gentamicina 4-5mg/kg EV 1x/dia
+
+Sepse tardia (>72h):
+3. Oxacilina 50mg/kg EV 6/6h + Amicacina 15mg/kg EV 1x/dia
+4. Se MRSA ou cateter: Vancomicina 15mg/kg EV 8/8h + Amicacina
+5. Se suspeita de Gram negativo MDR: Meropenem 20mg/kg EV 8/8h
+
+Meningite neonatal:
+6. Ampicilina 75-100mg/kg EV 6/6h + Cefotaxima 50mg/kg EV 6/6h
+7. Duração: 21 dias (Gram negativo) ou 14 dias (Gram positivo)`,
+    guideline: "SBP / SBI / AAP / NICE Neonatal",
+  },
+  {
+    id: "rx-atb-queimadura",
+    title: "Antibiótico — Infecção em Queimadura",
+    type: "Antibiótico por Foco",
+    prescription: `NÃO usar antibiótico profilático de rotina em queimados
+
+Sinais de infecção: mudança na aparência da ferida, aprofundamento, celulite perilesional, febre, leucocitose
+
+Infecção local:
+1. Sulfadiazina de prata 1% tópico (troca diária)
+2. OU Curativo com prata nanocristalina (Acticoat)
+
+Celulite perilesional:
+3. Oxacilina 2g EV 4/4h OU Cefazolina 1g EV 8/8h
+
+Infecção invasiva/sepse:
+4. Piperacilina-Tazobactam 4,5g EV 6/6h + Vancomicina 15-20mg/kg EV 12/12h
+5. Se MDR: Meropenem 1g EV 8/8h + Polimixina B (conforme perfil)
+6. Culturas de superfície + hemocultura
+7. Biópsia quantitativa: >10⁵ UFC/g = infecção invasiva`,
+    guideline: "SBQ / ABA / ISBI / IDSA",
+  },
+  {
+    id: "rx-atb-pe-diabetico",
+    title: "Antibiótico — Pé Diabético",
+    type: "Antibiótico por Foco",
+    prescription: `Leve (superficial, <2cm celulite):
+1. Cefalexina 500mg VO 6/6h por 7-14 dias
+2. OU Amoxicilina-Clavulanato 875mg VO 12/12h
+
+Moderada (celulite >2cm, abscesso, osteomielite):
+3. Ampicilina-Sulbactam 3g EV 6/6h
+4. OU Ceftriaxona 1g EV 12/12h + Metronidazol 500mg EV 8/8h
+5. Desbridamento cirúrgico se coleção
+
+Grave (sepse, necrose):
+6. Piperacilina-Tazobactam 4,5g EV 6/6h + Vancomicina 15-20mg/kg EV 12/12h
+7. OU Meropenem 1g EV 8/8h (se MDR)
+8. Desbridamento URGENTE
+9. Avaliar amputação se isquemia irreversível
+
+Osteomielite confirmada:
+10. ATB EV 2-4 semanas → VO 2-4 semanas (guiado por cultura óssea)
+11. RNM é o melhor exame para diagnóstico`,
+    guideline: "IDSA / SBD / IWGDF / SBACV",
+  },
 ];
 
