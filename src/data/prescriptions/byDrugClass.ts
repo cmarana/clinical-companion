@@ -1087,5 +1087,91 @@ CHOQUE CARDIOGÊNICO: Dobutamina → +Noradrenalina se PAM baixa → Milrinona s
     notes: "Noradrenalina: SEMPRE por CVC (necrose se extravasar por periférico — se necessário: jelco >20G, membro superior, monitorar 2/2h). Fenilefrina: pode ser periférico por curto prazo.",
     guideline: "SSC 2021 / AMIB / SBC / ESC",
   },
+  {
+    id: "rx-classe-anestesicos-locais",
+    title: "Anestésicos Locais — Guia de Doses",
+    type: "Por Classe de Medicamento",
+    prescription: `AMIDAS (metabolismo hepático):
+Lidocaína: 4,5mg/kg (sem adrenalina) | 7mg/kg (com adrenalina)
+  Infiltração: 1-2% | Peridural: 2% | Tópica: 2-5%
+  Início: 1-3min | Duração: 60-120min
+Bupivacaína: 2mg/kg (sem) | 3mg/kg (com adrenalina)
+  Raqui: 0,5% hiperbárica | Peridural: 0,25-0,5% | Bloqueios: 0,25-0,5%
+  Início: 5-15min | Duração: 4-8h
+Ropivacaína: 3mg/kg (sem) | 3,5mg/kg (com)
+  Peridural: 0,2-1% | Bloqueios: 0,375-0,5%
+  Início: 5-15min | Duração: 6-12h
+  MENOS CARDIOTÓXICA que Bupivacaína
+
+ÉSTERES (metabolismo plasmático):
+Procaína: 7mg/kg | Infiltração: 1-2%
+Tetracaína: Raqui: 0,5% (rara no Brasil)
+
+INTOXICAÇÃO (LAST):
+Prodrômicos: zumbido, gosto metálico, parestesia perioral
+Graves: convulsão, arritmia, PCR
+ANTÍDOTO: Intralipid 20% 1,5mL/kg bolus → 0,25mL/kg/min`,
+    warnings: "Bupivacaína é a mais cardiotóxica — nunca EV. Calcular dose total ANTES de injetar. Ter Intralipid em toda sala de bloqueio.",
+    guideline: "SBA / ASRA / ESRA",
+  },
+  {
+    id: "rx-classe-bloqueadores-neuromusculares",
+    title: "Bloqueadores Neuromusculares — Guia Rápido",
+    type: "Por Classe de Medicamento",
+    prescription: `DESPOLARIZANTES:
+Succinilcolina: 1-1,5mg/kg EV (ISR clássica)
+  Início: 30-60s | Duração: 5-10min
+  CI: hipercalemia, queimados >24h, denervação, miopatia, história familiar HM
+  Reversão: espontânea (pseudocolinesterase)
+
+NÃO DESPOLARIZANTES:
+Rocurônio: 0,6mg/kg (IOT rotina) | 1,2mg/kg (ISR)
+  Início: 60-90s (1,2mg/kg→45s) | Duração: 30-60min
+  Reversão: Sugammadex 2-4mg/kg
+Cisatracúrio: 0,15-0,2mg/kg
+  Início: 2-3min | Duração: 40-60min
+  Metabolismo: Hofmann (independe de fígado/rim)
+  BIC em UTI: 1-3mcg/kg/min
+Atracúrio: 0,5mg/kg
+  Início: 2-3min | Duração: 30-45min
+  Libera histamina (broncoespasmo, hipotensão)
+
+MONITORIZAÇÃO:
+TOF (Train of Four): 4 estímulos → contar respostas
+TOF ratio ≥0,9 para extubação segura
+PTC (Post-Tetanic Count): para bloqueio profundo`,
+    guideline: "SBA / ASA / ESAIC",
+  },
+  {
+    id: "rx-classe-anti-hipertensivos-ev",
+    title: "Anti-Hipertensivos EV — Emergência",
+    type: "Por Classe de Medicamento",
+    prescription: `NITROPRUSSIATO (SNP): 0,25-10mcg/kg/min
+  Início: segundos | Arterial + venoso
+  Indicação: emergência hipertensiva geral, dissecção (+ beta)
+  CI: gravidez | Risco: intoxicação cianídrica
+
+NITROGLICERINA (NTG): 5-200mcg/min
+  Início: 1-2min | Predominantemente venoso
+  Indicação: SCA, EAP, pós-op cardíaco
+  CI: uso de sildenafil <24h
+
+ESMOLOL: 500mcg/kg bolus → 50-200mcg/kg/min
+  Início: 1-2min | Duração: 10-30min (ultra-curto)
+  Indicação: dissecção aórtica, taquiarritmia, peri-op
+  CI: bradicardia, BAV, IC descompensada
+
+LABETALOL: 20mg EV bolus → dobrar a cada 10min (máx 300mg)
+  Início: 5min | Alfa + beta bloqueador
+  Indicação: eclâmpsia, dissecção, AVC (se elegível)
+
+HIDRALAZINA: 5-20mg EV a cada 20-30min
+  Início: 10-20min | Vasodilatador arterial
+  Indicação: eclâmpsia (1ª escolha no Brasil)
+
+CLEVIDIPINA: 1-2mg/h → dobrar a cada 90s (máx 32mg/h)
+  BCC ultra-curto | Ideal para titulação fina peri-op`,
+    guideline: "SBC / AHA / ESC / AMIB",
+  },
 ];
 
