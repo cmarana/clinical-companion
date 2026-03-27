@@ -925,5 +925,56 @@ Manutenção ambulatorial SUS:
     notes: "Botrópico: 90% dos acidentes no Brasil. Coagulopatia de consumo é o principal risco. Dose de soro baseada na gravidade clínica (não no peso do paciente).",
     guideline: "MS / Instituto Butantan / Fundação Ezequiel Dias",
   },
+  {
+    id: "rx-sus-dialise-urgencia",
+    title: "Diálise de Urgência — Fluxo SUS",
+    type: "SUS / UPA",
+    prescription: `1. INDICAÇÕES (AEIOU): Acidose, Eletrólitos (K+), Intoxicação, Overload, Uremia
+2. Estabilizar paciente + tratar hipercalemia enquanto aguarda vaga:
+   a) Gluconato de cálcio 10% 10mL EV em 5min (proteção cardíaca)
+   b) Insulina Regular 10UI + Glicose 50% 50mL EV
+   c) Nebulização com Salbutamol 10 gotas (reduz K+)
+   d) Bicarbonato 8,4% 50mL EV se acidose grave
+3. Solicitar vaga em hospital com serviço de nefrologia/hemodiálise via regulação
+4. Implantar cateter duplo-lúmen em jugular interna D (se disponível)
+5. Exames: gasometria, K+, Na+, ureia, creatinina, hemograma
+6. Furosemida 200-400mg EV (tentativa — pode não funcionar se DRC avançada)
+7. Monitorização cardíaca contínua (risco de arritmia por hipercalemia)`,
+    notes: "Em UPA sem nefrologia: estabilizar e regular vaga. Hipercalemia é a urgência mais imediata — tratar antes de transferir. Gluconato de cálcio NÃO reduz K+, apenas protege o miocárdio.",
+    guideline: "SBN / KDIGO / MS",
+  },
+  {
+    id: "rx-sus-asma-grave",
+    title: "Crise Asmática Grave — Manejo em UPA",
+    type: "SUS / UPA",
+    prescription: `1. Salbutamol spray 4-8 jatos com espaçador a cada 20min (3 doses na 1ª hora)
+2. Ipratrópio 3 jatos com espaçador a cada 20min (3 doses)
+3. Se sem espaçador: NBZ com Salbutamol 10 gotas + Ipratrópio 20 gotas + SF 3mL a cada 20min
+4. Hidrocortisona 200mg EV (ataque) → 100mg EV 6/6h OU Prednisona 40-60mg VO
+5. Sulfato de Magnésio 2g EV em 20min (se refratária)
+6. O2 cateter nasal/máscara para SpO2 >94%
+7. Adrenalina 0,3-0,5mg IM se não responder (broncoespasmo grave)
+8. Se falência: IOT (cetamina para indução — broncodilatador)
+9. Solicitar vaga UTI via regulação se não melhorar em 1-2h`,
+    notes: "Spray + espaçador é tão eficaz quanto NBZ e mais prático. MgSO4 EV: evidência sólida na crise refratária. Aminofilina: NÃO recomendada de rotina (muitos efeitos adversos).",
+    guideline: "GINA 2023 / SBPT / MS",
+  },
+  {
+    id: "rx-sus-meningite",
+    title: "Meningite Bacteriana — Protocolo SUS",
+    type: "SUS / UPA",
+    prescription: `1. Ceftriaxona 2g EV 12/12h (INICIAR NA PRIMEIRA HORA — não aguardar líquor)
+2. Dexametasona 0,15mg/kg EV 6/6h por 4 dias (iniciar ANTES ou junto com ATB)
+3. SF 0,9% — hidratação (evitar hiper-hidratação)
+4. Dipirona 1g EV 6/6h se febre
+5. Coletar: hemograma, PCR, hemocultura (2 pares), glicemia
+6. Punção lombar (se não contraindicada): citologia, bioquímica, Gram, cultura, látex
+7. TC crânio ANTES do líquor se: papiledema, déficit focal, convulsão, imunossuprimido
+8. Notificação COMPULSÓRIA (SINAN) — imediata
+9. Quimioprofilaxia contactantes (meningococo): Rifampicina 600mg VO 12/12h por 2 dias
+10. Se <3 meses: Ampicilina 50mg/kg EV 6/6h + Ceftriaxona (cobrir Listeria)`,
+    notes: "Meningocócica: petéquias/púrpura = URGÊNCIA. ATB na 1ª hora reduz mortalidade. Dexametasona: benefício comprovado para pneumocócica (reduz sequela auditiva).",
+    guideline: "MS / SBI / IDSA / ESCMID",
+  },
 ];
 

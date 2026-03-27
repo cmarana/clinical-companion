@@ -567,4 +567,43 @@ PROTOCOLO:
     warnings: "NÃO atrasar fototerapia por aguardar exames. Encefalopatia bilirrubínica é EMERGÊNCIA — exsanguíneotransfusão imediata. Coombs direto positivo = hemólise imune.",
     guideline: "SBP / AAP / NICE",
   },
+  {
+    id: "rx-neo-asfixia-leve",
+    title: "Asfixia Perinatal — Suporte Pós-Reanimação",
+    type: "Neonatal",
+    prescription: `1. UTI neonatal + monitorização contínua (SpO2, FC, PA, temperatura)
+2. Manter normotermia (36,5-37,5°C) — evitar hiper/hipotermia não controlada
+3. Hipotermia terapêutica (33,5°C por 72h): se EHI moderada/grave com critérios
+4. Suporte ventilatório conforme necessidade (CPAP, VM)
+5. Correção de distúrbios metabólicos: glicemia, Ca++, Mg++
+6. Restrição hídrica inicial: 60-70mL/kg/dia (risco de SIADH)
+7. Alimentação: dieta zero nas primeiras 24-48h → iniciar trófica cautelosa
+8. Anticonvulsivante se crise: Fenobarbital 20mg/kg EV (ataque) → 3-5mg/kg/dia
+9. Exames: gasometria, lactato, eletrólitos, coagulograma, função renal/hepática
+10. EEG/aEEG (avaliar padrão de base)
+11. RNM crânio entre D3-D7 (prognóstico)`,
+    notes: "Hipotermia terapêutica: iniciar <6h de vida. Critérios: IG ≥36sem, Apgar ≤5 no 10min ou pH <7,0 ou BE <-16 + encefalopatia. NNT = 7 para desfecho favorável.",
+    guideline: "SBP / ILCOR / AAP",
+  },
+  {
+    id: "rx-neo-pneumonia",
+    title: "Pneumonia Neonatal",
+    type: "Neonatal",
+    prescription: `Precoce (<72h — associada a corioamnionite):
+1. Ampicilina 50mg/kg EV 12/12h (<7d) ou 8/8h (>7d)
+2. Gentamicina 4-5mg/kg EV 1x/dia
+3. Duração: 7-10 dias (14 se GBS)
+
+Tardia (>72h — nosocomial):
+4. Oxacilina 50mg/kg EV 6/6h + Amicacina 15mg/kg EV 1x/dia
+5. Se MRSA ou grave: Vancomicina 15mg/kg EV 12/12h + Cefepime 50mg/kg 8/8h
+
+Suporte:
+6. O2 / CPAP / VM conforme gravidade
+7. Monitorização de SpO2 pré e pós-ductal
+8. RX tórax (infiltrado alveolar, broncograma aéreo)
+9. Hemograma + PCR + hemocultura
+10. Surfactante se SDRA neonatal associada`,
+    guideline: "SBP / Neonatologia",
+  },
 ];

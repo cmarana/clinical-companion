@@ -3862,5 +3862,389 @@ FASE 5 — Transição:
     warnings: "Cardioversão pode causar FV refratária na intox digitálica. K+ é o melhor marcador de gravidade. Gluconato de cálcio: usar com cautela extrema (risco teórico de 'coração de pedra').",
     guideline: "SBTox / AHA / AACT / Toxbase",
   },
+  {
+    id: "rx-sindrome-nefrotica",
+    title: "Síndrome Nefrótica",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Repouso relativo + dieta hipossódica (<2g Na/dia)
+2. Furosemida 40-80mg EV 12/12h (se edema importante)
+3. Albumina 20% 50-100mL EV antes da furosemida (se albumina <2g/dL)
+4. Espironolactona 25-50mg VO 12/12h
+5. Restrição hídrica se Na <130mEq/L
+6. Prednisona 1mg/kg/dia VO (máx 80mg) por 4-8 semanas (se lesão mínima)
+7. Enoxaparina 40mg SC 1x/dia (profilaxia TVP — risco elevado)
+8. Atorvastatina 20-40mg VO (dislipidemia nefrótica)
+9. IECA/BRA: Enalapril 10-20mg VO 12/12h (antiproteinúrico)
+10. Exames: proteinúria 24h, albumina, colesterol, complemento C3/C4, anti-PLA2R
+11. Biópsia renal (adultos — guiar tratamento)`,
+    notes: "Tríade: proteinúria >3,5g/dia + hipoalbuminemia + edema. Risco de TVP/TEP (perda de antitrombina III). Lesão mínima: mais comum em crianças, responde a corticoide.",
+    warnings: "NÃO usar IECA se IRA/hipercalemia. Albumina EV: efeito transitório, usar apenas para mobilizar edema refratário. Vacinar contra pneumococo.",
+    guideline: "SBN / KDIGO 2021",
+  },
+  {
+    id: "rx-gnrp",
+    title: "Glomerulonefrite Rapidamente Progressiva (GNRP)",
+    type: "Prescrição de Emergência Nefrológica",
+    prescription: `1. Internação URGENTE (risco de DRC terminal em dias/semanas)
+2. Pulsoterapia: Metilprednisolona 500-1000mg EV 1x/dia por 3 dias
+3. Após pulso: Prednisona 1mg/kg/dia VO (desmame em 6-12 meses)
+4. Ciclofosfamida 2mg/kg/dia VO OU pulso EV 0,5-1g/m² mensal (6 meses)
+5. OU Rituximabe 375mg/m² EV semanal por 4 semanas (vasculite ANCA)
+6. Plasmaférese: se anti-GBM (Goodpasture) ou hemorragia pulmonar
+7. IECA/BRA após estabilização (controle pressórico + antiproteinúrico)
+8. Exames: ANCA, anti-GBM, complemento, FAN, crioglobulinas, biópsia renal URGENTE
+9. Diálise de urgência se: K+ >6,5, EAP, acidose refratária, uremia grave
+10. Monitorizar: creatinina diária, sedimento urinário, hemograma (mielotoxicidade)`,
+    notes: "Classificação: tipo I (anti-GBM/Goodpasture), tipo II (imunocomplexos/lúpus), tipo III (pauci-imune/ANCA). Biópsia: crescentes em >50% dos glomérulos. Prognóstico depende da % de crescentes e creatinina inicial.",
+    warnings: "Emergência nefrológica — cada dia de atraso piora o prognóstico renal. Ciclofosfamida: leucopenia, infertilidade, cistite hemorrágica (Mesna profilático).",
+    guideline: "SBN / KDIGO / ACR / EULAR",
+  },
+  {
+    id: "rx-nefrite-lupica-diag",
+    title: "Nefrite Lúpica — Indução",
+    type: "Prescrição Hospitalar",
+    prescription: `Classe III/IV (proliferativa):
+1. Pulsoterapia: Metilprednisolona 1g EV 1x/dia por 3 dias
+2. Prednisona 1mg/kg/dia VO (desmame gradual a partir da 4ª semana)
+3. Micofenolato Mofetil 1g VO 12/12h (indução — 6 meses) OU
+4. Ciclofosfamida EV (Euro-Lupus): 500mg quinzenal por 3 meses (6 pulsos)
+5. Hidroxicloroquina 400mg VO 1x/dia (MANTER — reduz flares)
+6. IECA/BRA se proteinúria (Losartana 50-100mg ou Enalapril 10-20mg)
+7. Atorvastatina 20mg VO (se dislipidemia)
+8. Protetor gástrico: Omeprazol 20mg VO 1x/dia
+9. Cálcio 1000mg + Vitamina D 1000UI VO 1x/dia
+10. Exames: anti-dsDNA, C3/C4, proteinúria 24h, creatinina, biópsia renal (classificação ISN/RPS)`,
+    notes: "Classe V (membranosa): Micofenolato ou Ciclosporina. Classe II (mesangial): pode tratar apenas com IECA + hidroxicloroquina. Manutenção: Micofenolato 1g 12/12h ou Azatioprina 2mg/kg/dia.",
+    guideline: "SBR / ACR / EULAR / KDIGO",
+  },
+  {
+    id: "rx-ira-dialise",
+    title: "IRA — Indicações de Diálise de Urgência",
+    type: "Prescrição de Emergência",
+    prescription: `INDICAÇÕES ABSOLUTAS (mnemônico AEIOU):
+A — Acidose metabólica refratária (pH <7,1)
+E — Eletrólitos: Hipercalemia refratária (K+ >6,5 com alteração ECG)
+I — Intoxicação dialysável (metanol, etilenoglicol, lítio, salicilatos)
+O — Overload (sobrecarga hídrica / EAP refratário a diurético)
+U — Uremia sintomática (encefalopatia, pericardite, sangramento)
+
+Preparação:
+1. Solicitar acesso para hemodiálise: cateter duplo-lúmen em jugular interna D
+2. Exames pré-diálise: K+, Na+, Ca++, P, Mg, gasometria, ureia, creatinina
+3. Peso seco estimado
+4. Avaliar anticoagulação do circuito (heparina vs citrato)
+5. Contato com nefrologia + serviço de diálise`,
+    notes: "IRA KDIGO 3 sem indicação absoluta: considerar diálise se oligúria >12h apesar de otimização volêmica. Diálise precoce vs tardia: sem benefício de mortalidade (STARRT-AKI trial).",
+    guideline: "SBN / KDIGO 2024",
+  },
+  {
+    id: "rx-hemoptise-macica",
+    title: "Hemoptise Maciça",
+    type: "Prescrição de Emergência",
+    prescription: `1. Via aérea: decúbito lateral (lado sangrante para BAIXO)
+2. O2 suplementar alto fluxo
+3. 2 acessos venosos calibrosos + reserva de sangue
+4. IOT precoce se: insuficiência respiratória, volume >500mL/24h
+5. Tubo endotraqueal calibroso (≥8mm) para permitir broncoscopia
+6. IOT seletiva no brônquio contralateral se sangramento maciço unilateral
+7. Ácido Tranexâmico 1g EV em 10 min (pode repetir em 8h)
+8. Suspender anticoagulantes — reverter se necessário
+9. Broncoscopia de urgência (localizar + tamponar)
+10. TC tórax com contraste (identificar artéria brônquica)
+11. Embolização de artéria brônquica (radiologia intervencionista)
+12. Cirurgia: lobectomia de urgência se refratária`,
+    notes: "Definição: >200-600mL em 24h (varia por autor). Causas: tuberculose, bronquiectasia, CA pulmão, vasculite. Mortalidade por asfixia (não exsanguinação).",
+    warnings: "Prioridade: PROTEGER via aérea e pulmão contralateral. Decúbito lateral com lado afetado para baixo. NÃO esperar para intubar se volume elevado.",
+    guideline: "SBPT / ATS / BTS",
+  },
+  {
+    id: "rx-derrame-pleural-complicado",
+    title: "Derrame Pleural Complicado / Empiema",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Toracocentese diagnóstica + análise do líquido pleural:
+   pH, glicose, LDH, proteínas, celularidade, Gram, cultura, citologia
+2. Critérios de Light (exsudato): LDH LP/sérico >0,6 OU proteína LP/sérica >0,5
+3. Indicação de drenagem: pH <7,2, glicose <40, Gram/cultura +, empiema franco, loculações
+4. Dreno de tórax 28-32Fr (empiema) ou pigtail 12-14Fr (derrames simples)
+5. Antibioticoterapia:
+   Ceftriaxona 2g EV 1x/dia + Metronidazol 500mg EV 8/8h
+   OU Ampicilina-Sulbactam 3g EV 6/6h
+6. Se MRSA: adicionar Vancomicina 15-20mg/kg EV 12/12h
+7. Fibrinolíticos intrapleurais: Alteplase 10mg + DNase 5mg 12/12h por 3 dias (se loculado)
+8. Fisioterapia respiratória
+9. Se falha: VATS (videotoracoscopia) — decorticação
+10. Exames: hemograma, PCR, RX tórax diário, USG pleural`,
+    notes: "Empiema: mortalidade 15-20% — não subestimar. Drenagem precoce + ATB agressivo = melhor prognóstico. Derrames parapneumônicos simples não necessitam drenagem.",
+    guideline: "SBPT / BTS / ACCP",
+  },
+  {
+    id: "rx-pneumotorax-espontaneo",
+    title: "Pneumotórax Espontâneo",
+    type: "Prescrição Hospitalar",
+    prescription: `Primário pequeno (<2cm, estável):
+1. Observação + O2 alto fluxo (10-15L/min) — acelera absorção
+2. RX tórax controle em 4-6h
+3. Se estável: alta com RX em 2 semanas
+
+Primário grande (>2cm ou sintomático):
+4. Aspiração com cateter 16-18G no 2º EIC, linha hemiclavicular
+5. Se falha: dreno de tórax 20-24Fr com selo d'água
+6. Analgesia: Dipirona 1g EV 6/6h + Cetoprofeno 100mg EV 12/12h
+
+Secundário / Hipertensivo:
+7. Drenagem IMEDIATA (agulha grossa → dreno)
+8. Descompressão com agulha 14G no 2º EIC se instabilidade
+9. VM: PEEP baixa, FR baixa (evitar barotrauma)
+10. Cirurgia (VATS + pleurodese) se: recidivante, bilateral, fístula persistente >5 dias`,
+    guideline: "SBPT / BTS / ACCP",
+  },
+  {
+    id: "rx-sdra",
+    title: "SDRA — Síndrome do Desconforto Respiratório Agudo",
+    type: "Prescrição de UTI",
+    prescription: `1. IOT + VM protetora:
+   VC 6mL/kg (peso predito) — NUNCA >8mL/kg
+   PEEP conforme tabela PEEP/FiO2 (ARDS Network)
+   Pressão de platô ≤30cmH2O
+   Driving pressure ≤15cmH2O
+2. FiO2: titular para SpO2 88-95% (PaO2 55-80)
+3. Sedação profunda (RASS -4/-5): Propofol + Fentanil em BIC
+4. Bloqueio neuromuscular: Cisatracúrio 0,15mg/kg bolus → 1-3mcg/kg/min (se P/F <150)
+5. Posição prona: se P/F <150 por ≥12h → prona por 16h/dia
+6. Balanço hídrico negativo (Furosemida se estável hemodinamicamente)
+7. ATB conforme foco (se infeccioso)
+8. Corticoide: Dexametasona 20mg EV/dia por 5 dias → 10mg por 5 dias
+9. Gasometria 4/4h, mecânica ventilatória 6/6h
+10. Meta: pH >7,25 (hipercapnia permissiva aceitável)`,
+    notes: "Classificação Berlin: leve P/F 200-300, moderada 100-200, grave <100. Prona melhora mortalidade na SDRA grave (PROSEVA trial). VM protetora é a intervenção com maior impacto.",
+    guideline: "AMIB / ATS / ESICM / ARDS Network",
+  },
+  {
+    id: "rx-tep",
+    title: "Tromboembolismo Pulmonar (TEP)",
+    type: "Prescrição de Emergência",
+    prescription: `TEP sem instabilidade:
+1. Heparina não fracionada: 80UI/kg bolus → 18UI/kg/h EV em BIC
+   OU Enoxaparina 1mg/kg SC 12/12h
+2. Iniciar anticoagulação oral junto: Rivaroxabana 15mg VO 12/12h por 21 dias → 20mg 1x/dia
+3. AngioTC de tórax (exame confirmatório)
+4. Exames: D-dímero, troponina, BNP, gasometria, ECG
+
+TEP maciço (instabilidade hemodinâmica):
+5. Trombólise: Alteplase 100mg EV em 2h OU Tenecteplase (dose por peso)
+6. Se contraindicação à trombólise: Embolectomia cirúrgica ou por cateter
+7. Noradrenalina se choque
+8. O2 / VM conforme necessidade
+9. Ecocardiograma à beira-leito (disfunção VD)`,
+    warnings: "TEP maciço é emergência — trombólise salva vidas. Wells score + D-dímero para estratificação. PESI/sPESI para prognóstico.",
+    guideline: "SBC / ESC / ATS",
+  },
+  {
+    id: "rx-dpoc-exacerbada-grave",
+    title: "DPOC Exacerbada Grave — UTI",
+    type: "Prescrição de UTI",
+    prescription: `1. VNI (BiPAP): IPAP 12-20, EPAP 5-8, FiO2 para SpO2 88-92%
+2. Se falha VNI: IOT + VM (VC 6-8mL/kg, FR 12-16, PEEP 5, FiO2 mínima)
+3. Broncodilatadores: Salbutamol 10 gotas + Ipratrópio 40 gotas NBZ 4/4h
+4. Metilprednisolona 40mg EV 1x/dia por 5 dias
+5. ATB: Ceftriaxona 1g EV 12/12h + Azitromicina 500mg EV (se escarro purulento)
+6. Aminofilina: 5mg/kg EV em 20min (se refratário — controlar FC)
+7. Gasometria arterial 2/2h → 4/4h quando estabilizar
+8. Fisioterapia respiratória
+9. Profilaxia TVP: Enoxaparina 40mg SC 1x/dia
+10. NÃO hiper-oxigenar (risco de hipercapnia)`,
+    guideline: "GOLD 2024 / SBPT / AMIB",
+  },
+  {
+    id: "rx-sindrome-hepatorrenal",
+    title: "Síndrome Hepatorrenal (SHR)",
+    type: "Prescrição de UTI",
+    prescription: `1. Albumina 20%: 1g/kg EV no D1 (máx 100g) + 20-40g/dia nos dias seguintes
+2. Terlipressina 0,5-1mg EV 4/4h (titular até 2mg 4/4h — 1ª escolha)
+3. OU Noradrenalina 0,5-3mg/h EV em BIC (alternativa se terlipressina indisponível)
+4. Suspender diuréticos
+5. SF 0,9% — NÃO hiperhidratar (risco de hipervolemia no cirrótico)
+6. Meta: ↓creatinina ≥25% ou normalização
+7. Monitorização: PA, diurese, creatinina diária, Na+ sérico
+8. Duração: manter até resposta ou máx 14 dias
+9. Se refratário: TIPS (shunt transjugular) ou transplante hepático
+10. Exames: função renal, Na+ urinário (<10 = SHR), sedimento (normal na SHR)`,
+    notes: "SHR tipo 1: rápida (dobra creatinina em <2 semanas) — mortalidade >50% em 30 dias. SHR tipo 2: insidiosa. Diagnóstico de exclusão: excluir hipovolemia, nefrotoxicidade, obstrução.",
+    guideline: "SBH / EASL / AASLD",
+  },
+  {
+    id: "rx-encefalopatia-hepatica",
+    title: "Encefalopatia Hepática",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Lactulose 20-30mL VO 8/8h (titular para 2-3 evacuações pastosas/dia)
+2. Se coma/sem VO: Lactulose 300mL + 700mL SF via enema de retenção 8/8h
+3. Rifaximina 550mg VO 12/12h (se recorrente ou adjuvante)
+4. Identificar e tratar fator precipitante: infecção (PBE!), HDA, constipação, drogas, TIPS
+5. Dieta: NÃO restringir proteína (1-1,5g/kg/dia) — preferir proteína vegetal/BCAA
+6. Correção de distúrbios eletrolíticos (hipocalemia → alcalose → ↑amônia)
+7. Suspender benzodiazepínicos e opioides
+8. Flumazenil 0,2mg EV: teste diagnóstico (melhora transitória sugere BZD endógeno)
+9. Monitorizar: Glasgow, escala de West Haven, amônia (não se correlaciona bem)
+10. IOT se Glasgow ≤8`,
+    guideline: "SBH / EASL / AASLD",
+  },
+  {
+    id: "rx-ascite-manejo",
+    title: "Ascite — Manejo Clínico",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Restrição de sódio: <2g/dia (88mEq/dia)
+2. Espironolactona 100mg VO 1x/dia (início — titular até 400mg/dia)
+3. Furosemida 40mg VO 1x/dia (associar — titular até 160mg/dia)
+4. Proporção: 100:40 (espironolactona:furosemida)
+5. Meta: perda de peso 0,5kg/dia (sem edema) ou 1kg/dia (com edema)
+6. Se ascite tensa/sintomática: paracentese de alívio (até 5L sem albumina)
+7. Se >5L: Albumina 20% 8g por litro retirado (6-8g/L)
+8. Monitorizar: peso diário, Na+ sérico, creatinina, K+
+9. Suspender IECA/BRA se PAS <90 ou creatinina ↑
+10. Ascite refratária: TIPS ou transplante hepático`,
+    guideline: "SBH / EASL / AASLD",
+  },
+  {
+    id: "rx-fibrose-pulmonar-exacerbacao",
+    title: "Fibrose Pulmonar — Exacerbação Aguda",
+    type: "Prescrição de UTI",
+    prescription: `1. O2 suplementar alto fluxo / CNAF (alvo SpO2 >88%)
+2. TC tórax de alta resolução (vidro fosco bilateral novo)
+3. Excluir: infecção (hemograma, PCT, culturas), TEP (AngioTC), IC (BNP, eco)
+4. Metilprednisolona 1g EV 1x/dia por 3 dias → Prednisona 1mg/kg VO (desmame)
+5. ATB empírico (enquanto exclui infecção): Ceftriaxona + Azitromicina
+6. VNI: pode tentar (evitar IOT se possível — prognóstico reservado em VM)
+7. Se IOT: VM protetora (VC 6mL/kg, PEEP cautelosa)
+8. Anticoagulação: controversa (alguns estudos sugerem benefício)
+9. Manter antifibrótico (Pirfenidona/Nintedanibe) se em uso
+10. Prognóstico: mortalidade >50% na exacerbação aguda`,
+    guideline: "SBPT / ATS / ERS",
+  },
+  {
+    id: "rx-bronquiectasia-exacerbacao",
+    title: "Bronquiectasia — Exacerbação Infecciosa",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Escarro para cultura + antibiograma (ANTES do ATB)
+2. ATB empírico (14 dias):
+   Amoxicilina-Clavulanato 875mg VO 12/12h (leve)
+   Ciprofloxacino 500mg VO 12/12h (se Pseudomonas prévia)
+   Piperacilina-Tazobactam 4,5g EV 6/6h (grave/hospitalar)
+3. Se Pseudomonas confirmada: Ceftazidima 2g EV 8/8h OU Meropenem 1g EV 8/8h
+4. Broncodilatadores: Salbutamol NBZ 6/6h
+5. SF hipertônico 3-7% NBZ 12/12h (fluidificação — antes da fisioterapia)
+6. Fisioterapia respiratória (drenagem postural, flutter, PEP) — 2x/dia
+7. O2 suplementar se SpO2 <92%
+8. Hemograma, PCR, RX tórax`,
+    notes: "Causas: pós-infecciosa (TB), fibrose cística, imunodeficiência, discinesia ciliar. Pseudomonas: colonizadora frequente — erradicação no 1º isolamento.",
+    guideline: "SBPT / ERS / BTS",
+  },
+  {
+    id: "rx-abscesso-pulmonar",
+    title: "Abscesso Pulmonar",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Clindamicina 600mg EV 6/6h (1ª escolha — cobre anaeróbios)
+2. OU Amoxicilina-Clavulanato 1g EV 8/8h
+3. OU Metronidazol 500mg EV 8/8h + Ceftriaxona 1g EV 12/12h
+4. Duração: 4-6 semanas (ATB prolongado — mínimo até resolução radiológica)
+5. Transição VO quando afebril e melhorando: Clindamicina 300mg VO 6/6h
+6. Fisioterapia respiratória + drenagem postural
+7. TC tórax (diagnóstico + avaliar tamanho e complicações)
+8. Broncoscopia: se suspeita de corpo estranho ou neoplasia obstrutiva
+9. Drenagem percutânea: se >6cm, refratário a ATB, ou empiema associado
+10. Cirurgia: lobectomia se fístula broncopleural ou hemorragia`,
+    notes: "Fatores de risco: aspiração (alcoolismo, disfagia, epilepsia), periodontite grave, obstrução brônquica. Agentes: anaeróbios (Peptostreptococcus, Bacteroides, Fusobacterium).",
+    guideline: "SBPT / IDSA / ATS",
+  },
+  {
+    id: "rx-hda-varicosa",
+    title: "HDA Varicosa — Protocolo Completo",
+    type: "Prescrição de Emergência",
+    prescription: `1. Ressuscitação: 2 acessos 16G, SF/RL (alvo PAS 90-100, FC <100)
+2. Terlipressina 2mg EV bolus → 1mg EV 4/4h por 5 dias
+3. OU Octreotida 50mcg EV bolus → 50mcg/h EV por 5 dias
+4. Ceftriaxona 1g EV 1x/dia por 7 dias (profilaxia PBE — OBRIGATÓRIA)
+5. Omeprazol 80mg EV bolus → 8mg/h BIC (se úlcera associada)
+6. Transfusão: Hb alvo 7-8g/dL (transfusão excessiva ↑pressão portal)
+7. EDA em <12h: ligadura elástica (1ª escolha) ou escleroterapia
+8. Se sangramento incontrolável: Balão de Sengstaken (ponte — máx 24h)
+9. Se falha endoscópica: TIPS de resgate
+10. Lactulose 30mL VO 8/8h (prevenir encefalopatia pelo sangue no TGI)`,
+    notes: "Mortalidade do episódio: 15-20%. Ressangramento em 6 semanas: 60%. Profilaxia secundária: betabloqueador (Propranolol/Carvedilol) + ligadura elástica seriada.",
+    guideline: "SBH / EASL / BAVENO VII",
+  },
+  {
+    id: "rx-insuf-hepatica-aguda",
+    title: "Insuficiência Hepática Aguda (IHA)",
+    type: "Prescrição de UTI",
+    prescription: `1. UTI + monitorização contínua (Glasgow, PA, glicemia)
+2. NAC (N-Acetilcisteína): considerar independente da causa
+   150mg/kg EV em 1h → 50mg/kg em 4h → 100mg/kg em 16h
+3. Lactulose 30mL VO/SNG 6/6h (encefalopatia)
+4. Manitol 20% 0,5-1g/kg EV se edema cerebral (PIC elevada)
+5. Glicose 50% 50mL EV se hipoglicemia (monitorar glicemia 2/2h)
+6. Vitamina K 10mg EV (se coagulopatia — pode não responder)
+7. Omeprazol 40mg EV 12/12h (profilaxia HDA)
+8. ATB profilático: considerar Ceftriaxona 1g EV/dia
+9. Contraindicações: NÃO corrigir INR profilaticamente (mascara prognóstico)
+10. Avaliar critérios para transplante hepático (King's College)
+11. Contato URGENTE com centro de transplante`,
+    notes: "Critérios King's College (paracetamol): pH <7,3 OU INR >6,5 + Cr >3,4 + EH grau 3-4. Não-paracetamol: INR >6,5 OU 3 de 5 critérios (idade, etiologia, duração icterícia, INR, BT).",
+    guideline: "SBH / EASL / AASLD",
+  },
+  {
+    id: "rx-pancreatite-necrosante",
+    title: "Pancreatite Aguda Necrosante",
+    type: "Prescrição de UTI",
+    prescription: `1. Jejum + SNG se íleo (dieta enteral precoce por SNE se tolerada)
+2. Ressuscitação volêmica agressiva: RL 250-500mL/h nas primeiras 12-24h
+3. Analgesia: Fentanil 50-100mcg/h EV em BIC (evitar morfina — espasmo Oddi controverso)
+4. Omeprazol 40mg EV 12/12h
+5. ATB: NÃO usar profilático (sem evidência)
+6. ATB terapêutico SE necrose infectada (>7-10 dias com febre/piora):
+   Meropenem 1g EV 8/8h (boa penetração no pâncreas)
+7. TC abdome com contraste (avaliar extensão da necrose — Balthazar)
+8. Punção aspirativa guiada (se necrose + sinais de infecção)
+9. Necrosectomia: step-up approach (drenagem percutânea → endoscópica → cirúrgica)
+10. Nutrição enteral precoce via SNE (reduz mortalidade vs NPT)`,
+    guideline: "SBG / ACG / AGA / IAP",
+  },
+  {
+    id: "rx-cetoacidose-adulto",
+    title: "Cetoacidose Diabética — Adulto",
+    type: "Prescrição de Emergência",
+    prescription: `1. SF 0,9% 1000mL EV em 1h (primeiro litro)
+2. SF 0,9% 500mL/h nas próximas 4h (avaliar volemia)
+3. Insulina Regular: 0,1UI/kg EV bolus → 0,1UI/kg/h em BIC
+4. OU Insulina Regular 0,14UI/kg/h sem bolus
+5. Quando glicemia <250: trocar para SG 5% + manter insulina (reduzir dose)
+6. Potássio:
+   K+ >5,2: NÃO repor (monitorar)
+   K+ 3,3-5,2: KCl 20-40mEq em cada litro de SF
+   K+ <3,3: REPOR K+ ANTES de iniciar insulina (40mEq/h em acesso central)
+7. Bicarbonato: APENAS se pH <6,9 (NaHCO3 100mEq em 400mL em 2h)
+8. Monitorizar: glicemia 1/1h, K+ 2/2h, gasometria 4/4h
+9. Critérios de resolução: pH >7,3, HCO3 >18, AG <12, glicemia <200
+10. Transição para insulina SC: sobrepor 2h antes de desligar BIC`,
+    notes: "Meta: queda de glicemia 50-70mg/dL/h. Se não cair: dobrar taxa de insulina. Gap aniônico = Na - (Cl + HCO3). Normal: 10-12. CAD: >12.",
+    guideline: "SBD / ADA / AACE",
+  },
+  {
+    id: "rx-estado-hiperosmolar",
+    title: "Estado Hiperglicêmico Hiperosmolar (EHH)",
+    type: "Prescrição de Emergência",
+    prescription: `1. SF 0,9% 1000-1500mL EV na 1ª hora
+2. Avaliar Na+ corrigido: Na medido + 1,6 × [(glicemia - 100) / 100]
+3. Se Na+ corrigido alto: SF 0,45% 250-500mL/h
+4. Se Na+ corrigido normal/baixo: SF 0,9% 250-500mL/h
+5. Insulina Regular: 0,1UI/kg/h EV em BIC (APÓS 1-2L de volume)
+6. NÃO dar insulina se K+ <3,3 — repor K+ primeiro
+7. Quando glicemia <300: SG 5% + manter insulina (reduzir para 0,02-0,05UI/kg/h)
+8. Reposição de K+: mesmos critérios da CAD
+9. Tromboprofilaxia: Enoxaparina 40mg SC 1x/dia (risco alto de TEV)
+10. Monitorizar: glicemia 1/1h, Na+/K+ 2/2h, osmolaridade calculada
+11. Osmolaridade alvo: queda <3mOsm/kg/h (risco de edema cerebral)`,
+    notes: "Diferenças CAD vs EHH: EHH tem glicemia mais alta (>600), sem cetose significativa, osmolaridade >320. Mortalidade EHH: 5-20% (maior que CAD). Desidratação profunda (déficit 6-9L).",
+    guideline: "SBD / ADA / AACE",
+  },
 ];
 

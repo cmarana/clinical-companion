@@ -687,4 +687,41 @@ MONITORIZAÇÃO:
     warnings: "Risco de morte fetal intraútero — monitorização fetal rigorosa. Colestiramina pode reduzir absorção de vitaminas lipossolúveis (K, D, A, E).",
     guideline: "FEBRASGO / RCOG / ACOG / SMFM",
   },
+  {
+    id: "rx-obst-infeccao-puerperal",
+    title: "Infecção Puerperal / Endometrite",
+    type: "Obstetrícia",
+    prescription: `1. Internação + hemograma, PCR, hemocultura
+2. Clindamicina 900mg EV 8/8h + Gentamicina 5mg/kg EV 1x/dia (esquema clássico)
+3. OU Ampicilina-Sulbactam 3g EV 6/6h
+4. Se pós-cesárea grave: adicionar Ampicilina 2g EV 6/6h (cobertura enterococo)
+5. Ocitocina 10UI EV se subinvolução uterina
+6. SF 0,9% 1000mL EV
+7. Dipirona 1g EV 6/6h + Cetoprofeno 100mg EV 12/12h
+8. USG pélvica: avaliar restos ovulares, abscesso, coleção
+9. Curetagem se restos placentários
+10. Manter ATB EV até 48h afebril → alta com Amoxicilina-Clavulanato VO`,
+    notes: "Endometrite: principal infecção puerperal. Fatores de risco: cesárea (5-10x mais), RPM prolongada, trabalho de parto prolongado, múltiplos toques.",
+    guideline: "FEBRASGO / ACOG / WHO",
+  },
+  {
+    id: "rx-obst-itu-gestacional",
+    title: "ITU na Gestação — Bacteriúria a Pielonefrite",
+    type: "Obstetrícia",
+    prescription: `Bacteriúria Assintomática / Cistite:
+1. Cefalexina 500mg VO 6/6h por 7 dias (1ª escolha — categoria B)
+2. OU Nitrofurantoína 100mg VO 6/6h por 7 dias (evitar no 3º tri perto do parto)
+3. OU Amoxicilina 500mg VO 8/8h por 7 dias
+4. Urocultura de controle 1-2 semanas após tratamento
+
+Pielonefrite na Gestação (INTERNAÇÃO OBRIGATÓRIA):
+5. Ceftriaxona 1g EV 12/12h por 10-14 dias
+6. SF 0,9% 1000mL EV (hidratação)
+7. Dipirona 1g EV 6/6h se febre
+8. Monitorização fetal (CTG)
+9. Hemograma, PCR, creatinina, urocultura + antibiograma
+10. Transição VO quando afebril 48h → Cefalexina 500mg VO 6/6h até completar 14 dias`,
+    notes: "Bacteriúria assintomática DEVE ser tratada na gestação (30% evoluem para pielonefrite se não tratada). Urocultura no 1º trimestre para todas.",
+    guideline: "FEBRASGO / MS / ACOG / IDSA",
+  },
 ];

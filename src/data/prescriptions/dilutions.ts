@@ -1754,5 +1754,129 @@ Manutenção: NaHCO3 8,4% 150mL + SG 5% 850mL EV em BIC
     warnings: "Hipocalemia pode ocorrer com alcalinização (monitorizar e repor K+). NÃO usar em intoxicação por betabloqueadores ou BCC (sem benefício).",
     guideline: "SBTox / AHA / AACT",
   },
+  {
+    id: "rx-dil-micafungina",
+    title: "Micafungina — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `RECONSTITUIÇÃO:
+Micafungina 50mg ou 100mg: reconstituir com SF 0,9% 5mL (sem agitar — girar suavemente)
+
+DILUIÇÃO:
+Dose 50mg: diluir em SF 0,9% ou SG 5% 100mL
+Dose 100mg: diluir em SF 0,9% ou SG 5% 100mL
+Dose 150mg: diluir em SF 0,9% ou SG 5% 100mL
+Concentração máxima: 1,5mg/mL
+
+INFUSÃO:
+Velocidade: infundir em 1 hora (mínimo)
+Não infundir em menos de 1 hora
+
+DOSES:
+Candidemia: 100mg EV 1x/dia
+Candidíase esofágica: 150mg EV 1x/dia
+Profilaxia em TMO: 50mg EV 1x/dia`,
+    notes: "Não necessita ajuste renal ou hepático (leve/moderado). Estabilidade: 24h em temperatura ambiente após diluição. Menor interação medicamentosa que outros azólicos.",
+    warnings: "Incompatível com diversas soluções — usar linha dedicada. Não misturar com outros medicamentos na mesma via.",
+    guideline: "ANVISA / IDSA / ESCMID",
+  },
+  {
+    id: "rx-dil-caspofungina",
+    title: "Caspofungina — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `RECONSTITUIÇÃO:
+Caspofungina 50mg ou 70mg: reconstituir com 10,8mL de água destilada
+Concentração: ~5,2mg/mL (50mg) ou ~7,2mg/mL (70mg)
+
+DILUIÇÃO:
+Diluir em SF 0,9% ou Ringer Lactato 250mL
+NÃO diluir em soluções glicosadas (SG 5%)
+
+INFUSÃO:
+Velocidade: infundir em 1 hora (LENTAMENTE)
+
+DOSES:
+Ataque (D1): 70mg EV 1x/dia
+Manutenção (D2+): 50mg EV 1x/dia
+Insuficiência hepática moderada (Child B): manutenção 35mg/dia
+Peso >80kg: considerar manutenção 70mg/dia`,
+    notes: "Não necessita ajuste renal. Ajuste hepático: Child C sem dados. Interações: Ciclosporina (↑área), Rifampicina (↑dose para 70mg/dia). Estabilidade: 24h após diluição (2-25°C).",
+    warnings: "NÃO usar SG 5% para diluição (degradação). NÃO infundir em bolus. Histamina-like reaction se infusão rápida (rubor, prurido).",
+    guideline: "ANVISA / IDSA / ESCMID",
+  },
+  {
+    id: "rx-dil-voriconazol",
+    title: "Voriconazol — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `RECONSTITUIÇÃO:
+Voriconazol 200mg: reconstituir com 19mL de água destilada = 10mg/mL
+
+DILUIÇÃO:
+Diluir em SF 0,9% ou SG 5% (concentração final: 0,5-5mg/mL)
+Dose 200mg: adicionar a SF 0,9% 100-250mL
+
+INFUSÃO:
+Velocidade: infundir em 1-2 horas (máx 3mg/kg/h)
+
+DOSES:
+Ataque: 6mg/kg EV 12/12h no D1
+Manutenção: 4mg/kg EV 12/12h (→ transição VO 200mg 12/12h)
+VO: 200mg 12/12h (>40kg) ou 100mg 12/12h (<40kg) — jejum
+
+MONITORIZAÇÃO:
+Nível sérico (vale): colher antes da 5ª dose
+Alvo: 1-5,5 mcg/mL (toxicidade >5,5)`,
+    notes: "Espectro: Aspergillus (1ª escolha), Fusarium, Scedosporium. Reações visuais transitórias em ~30%. Interações EXTENSAS (CYP2C19/3A4). Fotossensibilidade: proteção solar obrigatória.",
+    warnings: "Hepatotoxicidade: TGO/TGP semanais. Formulação EV contém ciclodextrina — contraindicada se ClCr <50 (acúmulo). Usar VO se possível em DRC. QTc: monitorizar ECG.",
+    guideline: "ANVISA / IDSA / ESCMID",
+  },
+  {
+    id: "rx-dil-anidulafungina",
+    title: "Anidulafungina — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `RECONSTITUIÇÃO:
+Anidulafungina 100mg: reconstituir com 30mL de água destilada = 3,33mg/mL
+
+DILUIÇÃO:
+Diluir em SF 0,9% ou SG 5%
+Dose 200mg (ataque): diluir em 250mL → concentração 0,77mg/mL
+Dose 100mg (manutenção): diluir em 250mL → concentração 0,36mg/mL
+Concentração máxima: 0,77mg/mL
+
+INFUSÃO:
+Taxa máxima: 1,1mg/min
+Ataque 200mg: infundir em ≥3 horas
+Manutenção 100mg: infundir em ≥1,5 horas
+
+DOSES:
+Candidemia: 200mg EV D1 → 100mg EV 1x/dia
+Candidíase esofágica: 100mg D1 → 50mg 1x/dia`,
+    notes: "Única equinocandina SEM metabolismo hepático — segura em hepatopata. Não necessita ajuste renal. Sem interações significativas. Estabilidade: 24h (25°C).",
+    guideline: "ANVISA / IDSA / ESCMID",
+  },
+  {
+    id: "rx-dil-fluconazol-ev",
+    title: "Fluconazol EV — Diluição e Preparo",
+    type: "Diluição",
+    prescription: `APRESENTAÇÃO:
+Fluconazol 2mg/mL — frasco de 100mL (200mg) ou 200mL (400mg)
+Solução PRONTA para uso — não necessita diluição adicional
+
+INFUSÃO:
+Velocidade máxima: 200mg/hora (≤10mL/min)
+Dose 400mg: infundir em ≥2 horas
+Dose 800mg: infundir em ≥4 horas
+
+DOSES:
+Candidemia: 800mg EV D1 → 400mg EV 1x/dia (12mg/kg → 6mg/kg)
+Meningite criptocócica: 400-800mg EV 1x/dia
+ITU por Candida: 200-400mg EV/VO 1x/dia
+Candidíase orofaríngea: 200mg D1 → 100mg 1x/dia
+
+AJUSTE RENAL:
+ClCr <50: reduzir dose em 50%
+Hemodiálise: dose total após cada sessão`,
+    notes: "Espectro: C. albicans, C. parapsilosis, C. tropicalis. NÃO cobre C. krusei (resistência intrínseca) e C. glabrata (resistência frequente). Boa penetração SNC.",
+    guideline: "ANVISA / IDSA / ESCMID",
+  },
 ];
 
