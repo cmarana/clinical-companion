@@ -1178,5 +1178,210 @@ Se choque quente (vasodilatado, pulsos amplos):
 10. Neuroimagem após estabilização`,
     guideline: "ABN / ILAE / SBP / AES",
   },
+  {
+    id: "rx-ped-bronquiolite-grave",
+    title: "Bronquiolite Grave — Pediátrica",
+    type: "Prescrição Pediátrica — Emergência",
+    prescription: `CRITÉRIOS DE GRAVIDADE: FR >60-70, tiragem subcostal, batimento nasal, SpO2 <92%, apneia, recusa alimentar
+
+1. O2 suplementar: cateter nasal 0,5-2L/min (alvo SpO2 ≥92%)
+2. OU CNAF (Cânula Nasal de Alto Fluxo): 2L/kg/min (máx 8L/min em lactentes)
+   Início: 2L/kg/min, FiO2 para SpO2 ≥92%
+3. Aspiração nasal SUAVE com SF 0,9% (antes de mamar e antes de nebulização)
+4. Hidratação:
+   - Se tolerar VO: amamentação ou fórmula em volumes menores e mais frequentes
+   - Se não tolerar VO: SF 0,9% EV — Holliday-Segar (restrição a 80% se necessário)
+5. Solução hipertônica NaCl 3%: 4mL nebulização 4-6h (internados — reduz tempo de internação)
+6. Monitorização contínua: SpO2, FR, FC, padrão respiratório
+7. Cabeceira elevada 30°
+
+NÃO FAZER (sem evidência):
+8. NÃO usar broncodilatadores de rotina (Salbutamol — sem benefício comprovado)
+9. NÃO usar corticoides (sem benefício na bronquiolite por VSR)
+10. NÃO usar antibióticos (exceto se coinfecção bacteriana documentada)
+11. NÃO usar fisioterapia respiratória de rotina (pode piorar desconforto)
+
+VNI/IOT:
+12. Se falha da CNAF: CPAP nasal 5-7cmH2O
+13. Se apneia recorrente ou falência respiratória: IOT + VM
+14. Se IOT: VC 6-8mL/kg, PEEP 5-6, FR conforme idade`,
+    notes: "VSR é o agente mais comum. Pico: 2-6 meses. Prematuros, cardiopatas e pneumopatas são grupo de risco. Palivizumabe para profilaxia em <1 ano de alto risco.",
+    warnings: "Apneia é mais comum em prematuros <32 semanas — monitorar de perto. NÃO usar Salbutamol de rotina — se teste terapêutico sem melhora, SUSPENDER.",
+    guideline: "SBP / AAP / NICE 2021",
+  },
+  {
+    id: "rx-ped-desidratacao-grave",
+    title: "Desidratação Grave — Pediátrica (Plano C Expandido)",
+    type: "Prescrição Pediátrica — Emergência",
+    prescription: `SINAIS: letargia/inconsciência, olhos fundos, sinal da prega >2s, pulso filiforme, TEC >3s, PA baixa
+
+FASE DE EXPANSÃO (0-1h):
+1. SF 0,9% 20mL/kg EV em bolus rápido (10-20min)
+2. Reavaliar: se persistir choque → repetir até 3x (total 60mL/kg na 1ª hora)
+3. Se acesso periférico impossível: acesso intraósseo (IO) — IMEDIATO
+
+FASE DE REPOSIÇÃO (1-24h):
+4. SF 0,9% + SG 5% (1:1) — volume de manutenção + reposição:
+   Holliday-Segar: 100mL/kg (0-10kg) + 50mL/kg (10-20kg) + 20mL/kg (>20kg) em 24h
+   + Déficit estimado: leve 50mL/kg | moderado 100mL/kg | grave 150mL/kg
+5. Repor 50% do déficit nas primeiras 8h, 50% nas 16h seguintes
+
+ELETRÓLITOS:
+6. Na+: corrigir lentamente se hipernatrêmico (queda <12mEq/24h — risco de edema cerebral)
+7. K+: adicionar KCl 10% à solução APÓS confirmar diurese (2-3mEq/kg/dia)
+8. Glicemia capilar: manter >60mg/dL (SG 10% se hipoglicemia)
+
+MONITORIZAÇÃO:
+9. Peso a cada 6-12h (melhor indicador de hidratação)
+10. Diurese: alvo ≥1mL/kg/h
+11. Eletrólitos 4-6h (fase aguda)
+12. Sinais vitais 1/1h
+13. Reintroduzir SRO assim que tolerar VO`,
+    warnings: "Hipernatremia: NÃO corrigir Na+ >12mEq/24h (edema cerebral). Hipocalemia: NÃO adicionar K+ antes de confirmar diurese. Se choque: VOLUME primeiro, eletrólitos depois.",
+    guideline: "SBP / OMS / WHO 2022",
+  },
+  {
+    id: "rx-ped-meningite",
+    title: "Meningite Bacteriana Pediátrica",
+    type: "Prescrição Pediátrica — Emergência",
+    prescription: `SUSPEITA: febre + irritabilidade/letargia + abaulamento de fontanela + rigidez de nuca + petéquias
+
+ANTIBIÓTICO EMPÍRICO (INICIAR NA 1ª HORA — NÃO esperar líquor):
+Neonato (<28 dias):
+1. Ampicilina 50mg/kg EV 6/6h + Gentamicina 5mg/kg/dia OU Cefotaxima 50mg/kg EV 6/6h
+
+1 mês - 3 meses:
+2. Ampicilina 75mg/kg EV 6/6h + Ceftriaxona 50mg/kg EV 12/12h
+
+>3 meses:
+3. Ceftriaxona 50mg/kg EV 12/12h (máx 4g/dia)
+4. + Vancomicina 15mg/kg EV 6/6h (se suspeita de pneumococo resistente)
+
+DEXAMETASONA:
+5. Dexametasona 0,15mg/kg EV 6/6h por 4 dias (iniciar ANTES ou junto com ATB)
+   Reduz sequela auditiva por H. influenzae e pneumococo
+
+SUPORTE:
+6. SF 0,9% EV — manter hidratação (NÃO restringir se normotenso)
+7. Dipirona 15mg/kg EV 6/6h se febre
+8. Anticonvulsivante se convulsão: Diazepam 0,3mg/kg EV (máx 10mg)
+9. Monitorização contínua: FC, FR, SpO2, PA, Glasgow pediátrico
+10. Cabeceira elevada 30°
+
+EXAMES:
+11. Punção lombar (se não houver contraindicação): celularidade, proteína, glicose, Gram, cultura, látex
+12. Hemograma, PCR, hemocultura (2 amostras), glicemia
+13. TC crânio ANTES da PL se: papiledema, sinais focais, Glasgow <12, convulsão prolongada
+
+QUIMIOPROFILAXIA DE CONTACTANTES:
+14. Meningococo: Rifampicina 10mg/kg VO 12/12h por 2 dias (adulto: 600mg)
+15. H. influenzae: Rifampicina 20mg/kg/dia VO por 4 dias`,
+    warnings: "ATB na 1ª HORA — cada hora de atraso aumenta mortalidade e sequelas. NÃO atrasar ATB para esperar exames de imagem. Ceftriaxona é contraindicada em neonatos com icterícia — usar Cefotaxima.",
+    guideline: "SBP / SBI / IDSA / ESCMID",
+  },
+  {
+    id: "rx-ped-sepse-phoenix",
+    title: "Sepse Pediátrica — Critérios Phoenix 2024",
+    type: "Prescrição Pediátrica — Emergência",
+    prescription: `CRITÉRIOS PHOENIX (2024) — substituem pSOFA:
+Phoenix Sepsis Score ≥2 em ≥1 sistema orgânico + infecção suspeita/confirmada
+
+GOLDEN HOUR (1ª hora):
+1. Reconhecimento + acesso venoso/IO em 5min
+2. SF 0,9% 10-20mL/kg bolus EV (até 40-60mL/kg na 1ª hora — reavaliar a cada bolus)
+3. ATB empírico IV na 1ª hora:
+   - <28d: Ampicilina + Gentamicina
+   - 1m-3m: Ceftriaxona + Ampicilina
+   - >3m: Ceftriaxona 50mg/kg EV 12/12h
+4. Coleta: hemocultura, lactato, hemograma, gasometria ANTES do ATB (se possível sem atrasar)
+5. Dextro: corrigir hipoglicemia com SG 10% 2mL/kg
+6. Cálcio iônico: corrigir se <1,1mmol/L (Gluconato Ca++ 10% 0,5mL/kg EV lento)
+
+SE CHOQUE REFRATÁRIO A VOLUME (>40mL/kg):
+7. Adrenalina 0,05-0,3mcg/kg/min (choque frio — TEC prolongado, extremidades frias)
+8. OU Noradrenalina 0,05-0,3mcg/kg/min (choque quente — vasodilatação)
+9. Considerar Hidrocortisona 2mg/kg EV (se refratário a DVA ou suspeita de insuficiência adrenal)
+10. IOT se: rebaixamento, choque refratário, insuficiência respiratória
+
+MONITORIZAÇÃO:
+11. FC, PA, SpO2, TEC, nível de consciência a cada 15min
+12. Diurese alvo: ≥1mL/kg/h
+13. Lactato seriado (4/4h até normalizar)`,
+    notes: "Mortalidade por sepse pediátrica no Brasil: ~20-30%. Meta: ATB na 1ª hora + volume agressivo na 1ª hora. Choque frio (mais comum em crianças) vs choque quente: orienta escolha do vasopressor.",
+    guideline: "Phoenix 2024 / SSC Pediatric / SBP / ACCM",
+  },
+  {
+    id: "rx-ped-laringite",
+    title: "Laringite / Crupe Viral — Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `CLASSIFICAÇÃO (Score de Westley):
+Leve (0-2): tosse ladrante, sem estridor em repouso
+Moderada (3-7): estridor em repouso, tiragem
+Grave (≥8): estridor intenso, tiragem grave, cianose, rebaixamento
+
+LEVE:
+1. Dexametasona 0,6mg/kg VO dose única (máx 10mg) — 1ª escolha SEMPRE
+2. Nebulização com SF se necessário para conforto
+3. Alta com orientações — retorno se estridor em repouso
+
+MODERADA:
+4. Dexametasona 0,6mg/kg VO/IM dose única
+5. Adrenalina nebulização: 0,5mL/kg (máx 5mL) da solução 1:1000 PURA + O2 6-8L/min
+6. Observar 2-4h após adrenalina (efeito rebote em 2h)
+7. Se melhora: alta com retorno garantido
+
+GRAVE:
+8. Dexametasona 0,6mg/kg EV/IM
+9. Adrenalina nebulização: repetir a cada 15-20min se necessário
+10. O2 suplementar (manter SpO2 >92%)
+11. Se sem resposta: considerar heliox (70:30)
+12. IOT se: fadiga respiratória, cianose, rebaixamento (tubo 0,5-1mm menor que o calculado)`,
+    warnings: "NÃO usar adrenalina SEM corticoide (efeito rebote). Dexametasona SEMPRE, mesmo nos leves. Epiglotite (diferencial grave): NÃO examinar orofaringe → IOT em centro cirúrgico.",
+    guideline: "SBP / AAP / Cochrane 2022",
+  },
+  {
+    id: "rx-ped-cetoacidose-detalhada",
+    title: "Cetoacidose Diabética Pediátrica — Protocolo Detalhado",
+    type: "Prescrição Pediátrica — Emergência / UTI",
+    prescription: `DIAGNÓSTICO: Glicemia >200 + pH <7,3 ou Bic <15 + cetonúria/cetonemia
+
+CLASSIFICAÇÃO:
+Leve: pH 7,2-7,3, Bic 10-15
+Moderada: pH 7,1-7,2, Bic 5-10
+Grave: pH <7,1, Bic <5
+
+FASE 1 — EXPANSÃO (0-1h):
+1. SF 0,9% 10-20mL/kg EV em 1h (NÃO ultrapassar 20mL/kg na 1ª hora)
+
+FASE 2 — HIDRATAÇÃO (1-48h):
+2. SF 0,9%: manutenção + déficit (5-7% leve/moderada, 7-10% grave) em 48h
+3. NÃO exceder 1,5-2x manutenção (risco de edema cerebral)
+
+INSULINA (INICIAR APÓS 1h de hidratação):
+4. Insulina Regular 0,05-0,1UI/kg/h EV em BIC (NÃO fazer bolus em crianças)
+5. Alvo: queda de glicemia 50-75mg/dL/h
+6. Quando glicemia <250-300: adicionar SG 5-10% à solução (NÃO suspender insulina)
+
+POTÁSSIO:
+7. Se K+ <3,5: repor ANTES da insulina (40mEq/L na solução)
+8. Se K+ 3,5-5,5: adicionar 20-40mEq/L
+9. Se K+ >5,5: NÃO adicionar — reavaliar em 1h
+
+BICARBONATO:
+10. APENAS se pH <6,9 (1-2mEq/kg em 1h — controverso)
+
+MONITORIZAÇÃO:
+11. Glicemia capilar 1/1h
+12. Gasometria + eletrólitos 2/2h (primeiras 6h) → 4/4h
+13. Glasgow a cada 1h (edema cerebral)
+14. Balanço hídrico rigoroso
+
+EDEMA CEREBRAL (complicação mais temida):
+15. Sinais: cefaleia, vômito, bradicardia, hipertensão, alteração pupilar, rebaixamento
+16. Manitol 20% 0,5-1g/kg EV em 15min OU NaCl 3% 2,5-5mL/kg em 10min
+17. Cabeceira 30°, reduzir taxa de infusão em 50%, IOT se necessário`,
+    warnings: "Edema cerebral: mortalidade 20-25%, sequelas em 35%. NÃO corrigir rápido demais. NÃO fazer bolus de insulina em crianças. NÃO exceder 1,5-2x manutenção de volume.",
+    guideline: "ISPAD 2022 / SBP / SBD / ADA",
+  },
 ];
 

@@ -2235,5 +2235,85 @@ Sinais: acidose láctica, taquifilaxia, confusão
 Antídoto: Hidroxocobalamina 5g EV OU Tiossulfato de sódio 12,5g EV`,
     warnings: "FOTOSSENSÍVEL — proteger da luz. Monitorar PA contínua (linha arterial obrigatória). Taquifilaxia = suspeitar intoxicação cianídrica.",
   },
+  {
+    id: "rx-dil-sugammadex",
+    title: "Sugammadex — Preparo e Doses",
+    type: "Diluição e Preparo",
+    prescription: `APRESENTAÇÃO: Sugammadex 200mg/2mL (100mg/mL) — NÃO precisa diluir
+
+REVERSÃO DE ROCURÔNIO:
+Reversão moderada (TOF ≥2 twitches): 2mg/kg EV
+Reversão profunda (PTC 1-2): 4mg/kg EV
+Reversão imediata (can't intubate, can't ventilate): 16mg/kg EV
+
+TABELA DE DOSES RÁPIDA:
+50kg: 2mg/kg→100mg(1mL) | 4→200mg(2mL) | 16→800mg(8mL)
+60kg: 2mg/kg→120mg(1,2mL) | 4→240mg(2,4mL) | 16→960mg(9,6mL)
+70kg: 2mg/kg→140mg(1,4mL) | 4→280mg(2,8mL) | 16→1120mg(11,2mL)
+80kg: 2mg/kg→160mg(1,6mL) | 4→320mg(3,2mL) | 16→1280mg(12,8mL)
+
+OBSERVAÇÕES:
+Início de ação: 2mg/kg→3min | 4mg/kg→2min | 16mg/kg→1,5min
+Administrar em bolus EV rápido (10s)
+NÃO reverte Succinilcolina — apenas Rocurônio e Vecurônio
+Re-curarização com Rocurônio: aguardar 5min após Sugammadex 2-4mg/kg, 24h após 16mg/kg`,
+    notes: "Sugammadex revolucionou a reversão do BNM. Dose de 16mg/kg é a maior: usar em emergência de VA (can't intubate, can't ventilate + Rocurônio dado). Custo elevado — algumas instituições restringem.",
+  },
+  {
+    id: "rx-dil-ropivacaina",
+    title: "Ropivacaína — Concentrações e Doses Máximas",
+    type: "Diluição e Preparo",
+    prescription: `APRESENTAÇÕES:
+Ropivacaína 0,2% (2mg/mL): analgesia peridural / bloqueios contínuos
+Ropivacaína 0,5% (5mg/mL): bloqueios periféricos (dose única)
+Ropivacaína 0,75% (7,5mg/mL): peridural cirúrgica
+Ropivacaína 1% (10mg/mL): anestesia peridural (motor intenso)
+
+DOSE MÁXIMA (sem adrenalina): 3mg/kg (máx 300mg)
+DOSE MÁXIMA (com adrenalina): 3,5mg/kg
+
+TABELA:
+50kg: máx 150mg = 30mL(0,5%) ou 20mL(0,75%)
+60kg: máx 180mg = 36mL(0,5%) ou 24mL(0,75%)
+70kg: máx 210mg = 42mL(0,5%) ou 28mL(0,75%)
+80kg: máx 240mg = 48mL(0,5%) ou 32mL(0,75%)
+
+BLOQUEIOS:
+Femoral/ciático: 0,5% 15-20mL
+TAP block: 0,375% 20mL/lado
+Peridural (analgesia de parto): 0,2% 10-15mL bolus → 6-10mL/h
+Interescalênico: 0,5% 15-20mL`,
+    warnings: "Menos cardiotóxica que Bupivacaína — preferir em bloqueios com grandes volumes. LAST: Intralipid 20% 1,5mL/kg bolus.",
+  },
+  {
+    id: "rx-dil-ketamina-analgesia",
+    title: "Cetamina — Doses Subanestésicas (Analgesia)",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO PARA ANALGESIA:
+Cetamina 50mg/mL → diluir 1 ampola (2mL/100mg) em SF 0,9% 98mL = 100mL
+Concentração: 1mg/mL
+
+DOSES SUBANESTÉSICAS (analgesia):
+Bolus: 0,1-0,3mg/kg EV lento (em 10min)
+Infusão: 0,1-0,25mg/kg/h (analgesia multimodal)
+
+INDICAÇÕES:
+- Analgesia multimodal (reduz consumo de opioide em 30-50%)
+- Dor refratária a opioides
+- Paciente tolerante a opioides
+- Queimados
+- Politrauma
+
+CÁLCULO (70kg, dose 0,15mg/kg/h, conc 1mg/mL):
+0,15 × 70 = 10,5mg/h = 10,5mL/h
+
+DOSES ANESTÉSICAS (referência):
+EV: 1-2mg/kg (indução)
+IM: 4-6mg/kg (sedação dissociativa)
+Intranasal: 3-4mg/kg (em pediatria)
+
+EFEITOS: sialorreia (associar Atropina 0,01mg/kg), nistagmo, dissociação, fenômenos de emergência (prevenir com Midazolam 1-2mg)`,
+    notes: "Em doses subanestésicas NÃO causa os efeitos dissociativos significativos. É segura hemodinamicamente (mantém PA e FC). Contraindicação relativa: HAS descontrolada, eclâmpsia, PIC elevada (controverso).",
+  },
 ];
 

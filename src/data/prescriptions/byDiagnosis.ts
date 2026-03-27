@@ -5962,5 +5962,252 @@ PNEUMOTÓRAX HIPERTENSIVO:
 13. Encaminhar hepatologia/transplante se MELD ≥15`,
     guideline: "AASLD / SBH / EASL",
   },
+  // === CIRURGIA PLÁSTICA ===
+  {
+    id: "rx-queimadura-face",
+    title: "Queimadura de Face — Manejo Especializado",
+    type: "Prescrição Hospitalar / Centro de Queimados",
+    prescription: `1. IOT precoce se: queimadura de VAS, rouquidão, estridor, edema cervical, lesão por inalação
+2. Cabeceira elevada 45° (reduzir edema facial)
+3. Reposição volêmica (Parkland): RL 4mL × peso × %SCQ
+4. Limpeza suave com SF 0,9% — NÃO esfregar
+5. Sulfadiazina de prata 1% nas áreas de 2º grau (EXCETO ao redor dos olhos)
+6. Periocular: pomada oftálmica de tobramicina + lubrificante ocular (Gel de carbômer)
+7. Avaliação oftalmológica em 24h (queimadura corneal?)
+8. Morfina 2-4mg EV (analgesia — queimaduras faciais são muito dolorosas)
+9. Dipirona 1g EV 6/6h (adjuvante)
+10. Curativo aberto na face (exposição) — NÃO usar curativo oclusivo
+11. Profilaxia antitetânica (dT)
+12. Hidratação labial com vaselina
+13. Nutrição hiperproteica e hipercalórica precoce
+14. Avaliar necessidade de escarotomia cervical (se queimadura circular restritiva)
+15. Encaminhar cirurgia plástica para planejamento de enxertia se 3º grau`,
+    warnings: "Queimadura de face + inalação = alta mortalidade. IOT PRECOCE antes do edema impossibilitar. NÃO usar prata ao redor dos olhos (toxicidade ocular).",
+    guideline: "SBQ / ABA / ISBI",
+  },
+  {
+    id: "rx-retalho-cuidados",
+    title: "Pós-Operatório de Retalhos — Cuidados",
+    type: "Prescrição Hospitalar",
+    prescription: `RETALHO LOCAL/REGIONAL:
+1. Curativo oclusivo não compressivo por 48h
+2. NÃO realizar curativos compressivos sobre o retalho (isquemia)
+3. Monitorização do retalho: cor, temperatura, enchimento capilar (a cada 1-2h nas primeiras 24h)
+4. Doppler manual do pedículo (se retalho pediculado)
+5. Posicionamento: evitar tração, torção ou compressão do pedículo
+6. AAS 100mg VO 1x/dia (alguns protocolos — antiagregação leve)
+7. Enoxaparina 40mg SC 1x/dia (profilaxia TVP)
+
+SINAIS DE SOFRIMENTO:
+8. Congestão venosa: retalho cianótico, edemaciado, sangra escuro → soltar pontos, sanguessugas medicinais
+9. Isquemia arterial: retalho pálido, frio, sem enchimento capilar → exploração cirúrgica urgente
+10. Hematoma sob retalho: drenagem imediata
+
+CUIDADOS GERAIS:
+11. Dipirona 1g EV 6/6h + Tramadol 50mg EV 8/8h (analgesia)
+12. Cefazolina 1g EV 8/8h por 48-72h (profilaxia)
+13. Manter normotermia (vasoconstrição prejudica retalho)
+14. NÃO fumar (vasoconstricção — necrose de retalho)
+15. Nutrição hiperproteica para cicatrização`,
+    guideline: "SBCP / ASPS",
+  },
+  {
+    id: "rx-enxerto-pele",
+    title: "Pós-Enxerto de Pele — Cuidados",
+    type: "Prescrição Hospitalar",
+    prescription: `ÁREA RECEPTORA (enxerto):
+1. Curativo tipo Brown (gaze vaselinada + algodão + fixação com pontos)
+2. 1ª troca: 5-7 dias (NÃO abrir antes exceto se sinais de infecção)
+3. Imobilização do membro enxertado (evitar cisalhamento)
+4. Elevação do membro (reduzir edema)
+
+ÁREA DOADORA:
+5. Curativo com gaze rayon ou alginato de cálcio
+6. Manter seco — NÃO molhar por 10-14 dias
+7. Analgesia: Dipirona 1g EV 6/6h + Tramadol 50mg EV 8/8h
+
+CUIDADOS GERAIS:
+8. Cefazolina 1g EV 8/8h por 48h (profilaxia)
+9. Enoxaparina 40mg SC 1x/dia
+10. Dieta hiperproteica
+11. Repouso no leito (se enxerto em MMII)
+12. Monitorar pega: >80% = sucesso
+13. Após pega: hidratação com óleo mineral + protetor solar FPS 50 por 6 meses`,
+    guideline: "SBCP / BAPRAS",
+  },
+  {
+    id: "rx-fasciotomia",
+    title: "Fasciotomia — Síndrome Compartimental",
+    type: "Prescrição de Emergência / Cirúrgica",
+    prescription: `INDICAÇÃO: pressão compartimental >30mmHg OU ΔP <30mmHg (PAD - pressão compartimental)
+
+PRÉ-OPERATÓRIO:
+1. Analgesia: Morfina 2-4mg EV (NÃO mascarar dor — monitorar evolução)
+2. Remover gesso/tala/curativo constritivo
+3. Membro ao nível do coração (NÃO elevar — piora isquemia)
+4. SF 0,9% 1000mL EV (hidratação — mioglobinúria)
+5. Fasciotomia URGENTE (não atrasar — necrose em 6-8h)
+
+PÓS-FASCIOTOMIA:
+6. Ferida aberta com curativo a vácuo (VAC) ou gaze úmida
+7. Reavaliar em 48-72h para fechamento gradual ou enxerto
+8. Monitorar função renal (rabdomiólise → CK, mioglobina)
+9. Hidratação agressiva: SF 0,9% 200-300mL/h (manter diurese >200mL/h)
+10. Bicarbonato de sódio 8,4% se pH urinário <6,5 (protege túbulos)
+11. Cefazolina 1g EV 8/8h (profilaxia)
+12. Fisioterapia precoce após estabilização`,
+    warnings: "EMERGÊNCIA CIRÚRGICA — atraso >6h = necrose muscular irreversível + amputação. Os 5 Ps: Pain (dor desproporcional), Pressure, Paresthesia, Paralysis, Pulselessness (tardio).",
+    guideline: "SBTO / AAOS / BOA",
+  },
+  // === ANESTESIOLOGIA ===
+  {
+    id: "rx-raqui-anestesia",
+    title: "Raquianestesia — Protocolo",
+    type: "Prescrição Anestésica",
+    prescription: `INDICAÇÕES: cesárea, cirurgias de MMII, perineais, urológicas, ortopédicas abaixo do umbigo
+
+PRÉ-ANESTÉSICO:
+1. Jejum confirmado (sólidos 8h, líquidos claros 2h)
+2. Avaliação ASA, via aérea, alergias
+3. Acesso venoso calibroso (18-16G)
+4. Pré-hidratação: RL 500-1000mL EV (co-loading)
+5. Monitorização: ECG, SpO2, PANI
+
+TÉCNICA:
+6. Posição sentada ou decúbito lateral
+7. Punção: L3-L4 ou L4-L5 (agulha Quincke 25-27G)
+8. Líquor claro confirmado
+9. Bupivacaína hiperbárica 0,5%:
+   - Cesárea: 10-12,5mg (2-2,5mL)
+   - Cirurgia de MMII: 12,5-15mg
+   - Perineais: 7,5-10mg
+10. Morfina intratecal: 80-100mcg (analgesia pós-op 18-24h)
+11. OU Fentanil intratecal: 15-25mcg (início rápido, duração 2-4h)
+12. Posicionar em decúbito dorsal com coxim na nádega D (cesárea — desvio uterino)
+
+PÓS-RAQUI:
+13. PA a cada 3-5min nos primeiros 20min
+14. Efedrina 5-10mg EV se PAS <90 ou queda >20%
+15. Atropina 0,5mg EV se bradicardia <50
+16. Ondansetrona 4mg EV (profilaxia náusea)
+17. Cefaleia pós-punção: repouso, hidratação, cafeína, blood patch se refratária`,
+    guideline: "SBA / ASA / ESRA",
+  },
+  {
+    id: "rx-peridural",
+    title: "Anestesia Peridural / Epidural",
+    type: "Prescrição Anestésica",
+    prescription: `INDICAÇÕES: analgesia de parto, pós-op abdominal/torácico, cirurgias de grande porte
+
+TÉCNICA:
+1. Acesso venoso + monitorização
+2. Posição sentada ou decúbito lateral
+3. Punção: agulha Tuohy 16-18G no espaço peridural (perda de resistência)
+4. Nível: L2-L4 (lombar) ou T6-T10 (torácico — conforme cirurgia)
+5. Dose teste: Lidocaína 2% com adrenalina 3mL (excluir intravascular/intratecal)
+6. Cateter peridural: avançar 3-5cm no espaço
+
+DROGAS:
+7. Bupivacaína 0,25-0,5%: 10-20mL (fracionados 5mL a cada 5min)
+8. OU Ropivacaína 0,2-0,75%: 10-20mL
+9. Fentanil peridural: 50-100mcg (adjuvante)
+10. Morfina peridural: 2-3mg (analgesia prolongada 12-24h)
+
+ANALGESIA DE PARTO (infusão contínua):
+11. Bupivacaína 0,0625-0,125% + Fentanil 2mcg/mL: 8-12mL/h
+12. OU PCEA (analgesia controlada pela paciente)
+
+COMPLICAÇÕES:
+13. Hipotensão: Efedrina 5-10mg EV
+14. Raqui total acidental: IOT + suporte
+15. Hematoma peridural: emergência neurocirúrgica se déficit motor`,
+    guideline: "SBA / ESRA / ASA",
+  },
+  {
+    id: "rx-bloqueio-femoral",
+    title: "Bloqueio do Nervo Femoral — Guiado por USG",
+    type: "Prescrição Anestésica",
+    prescription: `INDICAÇÃO: analgesia para fratura de fêmur, cirurgia de joelho, pós-op de prótese de joelho
+
+TÉCNICA (guiada por USG):
+1. Transdutor linear de alta frequência (10-15MHz)
+2. Posição: decúbito dorsal, membro em rotação externa leve
+3. Localização: triângulo femoral (abaixo do ligamento inguinal)
+4. Identificar: artéria femoral, nervo femoral (lateral à artéria, sob fáscia ilíaca)
+5. Agulha: 50-100mm, abordagem in-plane (lateral para medial)
+6. Aspirar (excluir intravascular) → injetar ao redor do nervo
+
+DROGAS:
+7. Ropivacaína 0,375-0,5%: 15-20mL
+8. OU Bupivacaína 0,25-0,5%: 15-20mL
+9. Duração: 8-16h (dose única)
+10. Cateter perineural: infusão contínua Ropivacaína 0,2% 5-8mL/h (pós-op prolongado)
+
+BLOQUEIO DO CANAL ADUTOR (alternativa):
+11. Mais distal — preserva função motora do quadríceps
+12. Ropivacaína 0,25%: 15-20mL
+13. Ideal para deambulação precoce pós-op
+
+DOSE MÁXIMA (sem adrenalina):
+14. Bupivacaína: 2mg/kg | Ropivacaína: 3mg/kg | Lidocaína: 4,5mg/kg`,
+    warnings: "SEMPRE guiar por USG. Aspirar antes de injetar. Monitorar toxicidade sistêmica por anestésico local (LAST): zumbido, gosto metálico, arritmia → Intralipid 20% 1,5mL/kg bolus.",
+    guideline: "SBA / ESRA / ASRA",
+  },
+  {
+    id: "rx-bloqueio-interescalenico",
+    title: "Bloqueio Interescalênico — Guiado por USG",
+    type: "Prescrição Anestésica",
+    prescription: `INDICAÇÃO: cirurgia de ombro (artroscopia, prótese, fratura proximal de úmero)
+
+TÉCNICA (guiada por USG):
+1. Transdutor linear no pescoço lateral (nível da cricóide)
+2. Identificar: escaleno anterior, escaleno médio, raízes C5-C6-C7 (sinal do semáforo)
+3. Agulha: 50mm, abordagem in-plane (posterior para anterior)
+4. Injetar entre as raízes no espaço interescalênico
+
+DROGAS:
+5. Ropivacaína 0,5%: 15-20mL
+6. OU Bupivacaína 0,375%: 15-20mL
+7. Dexametasona 4mg perineural (prolonga duração em 6-8h)
+8. Duração: 12-20h (dose única com adjuvante)
+
+COMPLICAÇÕES ESPERADAS:
+9. Paralisia diafragmática ipsilateral (100% — contraindicado se doença pulmonar bilateral)
+10. Síndrome de Horner (ptose, miose, anidrose — transitória)
+11. Rouquidão (bloqueio do nervo laríngeo recorrente)
+
+CONTRAINDICAÇÕES:
+12. Doença pulmonar contralateral (pneumonectomia, paralisia frênica prévia)
+13. Coagulopatia não corrigida`,
+    guideline: "SBA / ESRA / ASRA / NYSORA",
+  },
+  {
+    id: "rx-intoxicacao-anestesico-local",
+    title: "Intoxicação por Anestésico Local (LAST)",
+    type: "Prescrição de Emergência",
+    prescription: `SINAIS PRECOCES (SNC): zumbido, gosto metálico, parestesia perioral, agitação, confusão, convulsão
+SINAIS TARDIOS (CV): bradicardia, hipotensão, arritmia, PCR (TV/FV ou assistolia)
+
+TRATAMENTO IMEDIATO:
+1. PARAR a injeção de anestésico local
+2. Chamar ajuda — pedir kit de resgate lipídico
+3. Via aérea: O2 100%, IOT se necessário
+4. Se convulsão: Midazolam 2-4mg EV (NÃO usar Propofol em dose alta — cardiotóxico)
+
+EMULSÃO LIPÍDICA (INTRALIPID 20%) — ANTÍDOTO:
+5. Bolus: 1,5mL/kg EV em 1min (~100mL para 70kg)
+6. Infusão: 0,25mL/kg/min por 30-60min
+7. Se instabilidade persiste: repetir bolus (máx 2x)
+8. Dose máxima total: 12mL/kg
+
+SE PCR:
+9. RCP conforme ACLS — pode ser prolongada
+10. NÃO usar: Vasopressina, BCC, Betabloqueador, Lidocaína
+11. Adrenalina em doses reduzidas (<1mcg/kg)
+12. Amiodarona para arritmia (se necessário)
+13. Considerar ECMO se refratário`,
+    warnings: "LAST pode ocorrer até 30min após bloqueio. Toda sala de bloqueio deve ter Intralipid 20% disponível. Bupivacaína é a mais cardiotóxica.",
+    guideline: "ASRA / SBA / AAGBI",
+  },
 ];
 
