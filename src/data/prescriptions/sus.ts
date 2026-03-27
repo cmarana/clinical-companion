@@ -1184,5 +1184,58 @@ ORIENTAÇÕES:
     notes: "DO é documento médico e legal. Preenchimento correto impacta estatísticas de saúde pública. Dúvidas: consultar SVO ou SIM do município.",
     guideline: "CFM / MS / OMS",
   },
+  {
+    id: "rx-sus-acidente-biologico-upa",
+    title: "Acidente Biológico na UPA — Fluxo Rápido",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `1. Lavar ferimento com água e sabão — NÃO espremer
+2. Teste rápido HIV do paciente-fonte (se disponível na UPA)
+3. Se fonte HIV+ ou desconhecida de risco:
+   PEP: TDF/3TC + DTG — INICIAR EM <2h
+   Disponível em UPA/UBS referência ou SAE (Serviço de Atenção Especializada)
+4. Se fonte HBsAg+ e profissional não vacinado: encaminhar para IGHAHB + vacina
+5. Notificar SINAN (obrigatório)
+6. Emitir CAT (se CLT)
+7. Encaminhar SAE/CRT para seguimento sorológico (30, 90, 180 dias)
+8. Telefone útil: Disque Saúde 136 — orientações sobre PEP`,
+    notes: "Muitas UPAs NÃO têm o kit PEP — saber o serviço de referência local. O profissional deve ser encaminhado IMEDIATAMENTE ao serviço que dispõe do ARV.",
+    guideline: "MS / PCDT PEP 2021 / NR-32",
+  },
+  {
+    id: "rx-sus-violencia-sexual",
+    title: "Violência Sexual — Protocolo SUS",
+    type: "Prescrição SUS / Emergência",
+    prescription: `ATENDIMENTO IMEDIATO (NÃO condicionar a BO):
+1. Acolhimento humanizado — ambiente privativo
+2. NÃO exigir boletim de ocorrência para atendimento médico
+3. Notificação compulsória SINAN (obrigatória — independe de BO)
+
+PROFILAXIAS (INICIAR EM <72h):
+HIV (PEP):
+4. TDF/3TC 300/300mg 1cp VO 1x/dia + DTG 50mg VO 1x/dia por 28 dias
+
+ISTs:
+5. Penicilina Benzatina 2.400.000UI IM dose única (sífilis)
+6. Ceftriaxona 500mg IM dose única (gonorreia)
+7. Azitromicina 1g VO dose única (clamídia)
+8. Metronidazol 2g VO dose única (tricomoníase)
+
+HEPATITE B:
+9. IGHAHB 0,06mL/kg IM (se não vacinada) + iniciar vacinação
+
+CONTRACEPÇÃO DE EMERGÊNCIA:
+10. Levonorgestrel 1,5mg VO dose única (até 5 dias — quanto antes, melhor)
+
+EXAMES:
+11. Beta-HCG, HIV, VDRL, HBsAg, anti-HCV, hemograma, hepatograma
+12. Swab vaginal/anal para perícia (se <72h e consentimento)
+
+SEGUIMENTO:
+13. 30, 90, 180 dias: sorologias
+14. Apoio psicológico/psiquiátrico
+15. Assistente social`,
+    warnings: "NÃO é necessário BO para atendimento médico. Notificação SINAN é OBRIGATÓRIA. Iniciar profilaxias o mais rápido possível (ideal <2h para PEP HIV).",
+    guideline: "MS / Norma Técnica 2012 / Lei 12.845/2013",
+  },
 ];
 

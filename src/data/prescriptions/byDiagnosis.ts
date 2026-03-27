@@ -6209,5 +6209,237 @@ SE PCR:
     warnings: "LAST pode ocorrer até 30min após bloqueio. Toda sala de bloqueio deve ter Intralipid 20% disponível. Bupivacaína é a mais cardiotóxica.",
     guideline: "ASRA / SBA / AAGBI",
   },
+  // === CIRURGIA VASCULAR ===
+  {
+    id: "rx-tromboembolectomia",
+    title: "Tromboembolectomia Arterial — Peri-Operatório",
+    type: "Prescrição Cirúrgica / Emergência Vascular",
+    prescription: `INDICAÇÃO: isquemia aguda de membro (6Ps: Pain, Pallor, Pulselessness, Paresthesia, Paralysis, Poikilothermia)
+Classificação de Rutherford: I (viável), IIa (marginalmente ameaçado), IIb (imediatamente ameaçado), III (irreversível)
+
+PRÉ-OPERATÓRIO:
+1. Heparina NF 80UI/kg EV bolus (anticoagulação imediata ao diagnóstico)
+2. Analgesia: Morfina 2-4mg EV (dor intensa)
+3. Membro em posição declive (NÃO elevar — piora isquemia)
+4. Hidratação: SF 0,9% 1000mL EV (preparo para reperfusão)
+5. Reserva de CH + PFC (sangramento cirúrgico)
+6. AngioTC ou arteriografia (se não atrasar cirurgia)
+
+PÓS-OPERATÓRIO:
+7. Heparina NF em BIC: 18UI/kg/h (TTPa alvo 1,5-2,5x controle)
+8. Fasciotomia profilática se isquemia >6h (síndrome compartimental de reperfusão)
+9. Hidratação agressiva: SF 0,9% 200mL/h (mioglobinúria por reperfusão)
+10. Monitorar: CK, mioglobina, K+, gasometria, função renal
+11. Bicarbonato de sódio 8,4% se pH urinário <6,5
+12. Manitol 20% 0,5g/kg EV (proteção renal — controvérso)
+13. Pulsos distais + Doppler contínuo pós-op
+14. Anticoagulação de longo prazo: transição para Warfarina ou DOAC`,
+    warnings: "Síndrome de reperfusão: hipercalemia, acidose, mioglobinúria → pode causar PCR e IRA. Fasciotomia profilática em isquemia >6h. Rutherford III (irreversível) = considerar amputação primária.",
+    guideline: "SBACV / SVS / ESVS / ACC/AHA",
+  },
+  {
+    id: "rx-pe-diabetico-avancado",
+    title: "Pé Diabético — Manejo Avançado",
+    type: "Prescrição Hospitalar / Cirurgia Vascular",
+    prescription: `CLASSIFICAÇÃO DE WAGNER:
+0: pé em risco (sem úlcera)
+1: úlcera superficial
+2: úlcera profunda (tendão/cápsula)
+3: osteomielite / abscesso profundo
+4: gangrena localizada
+5: gangrena extensa
+
+MANEJO GERAL:
+1. Controle glicêmico rigoroso: insulina EV em BIC se internado (alvo 140-180)
+2. Desbridamento cirúrgico de tecido necrótico (Wagner ≥2 com infecção)
+3. Antibioticoterapia (guiada por cultura + antibiograma):
+   Moderada: Ampicilina-Sulbactam 3g EV 6/6h
+   Grave: Piperacilina-Tazobactam 4,5g EV 6/6h + Vancomicina 15-20mg/kg EV 12/12h
+4. Curativo diário com SF 0,9% + cobertura especial:
+   Exsudativa: alginato de cálcio ou hidrofibra com prata
+   Granulação: hidrogel ou gaze não aderente
+   Epitelização: filme transparente ou espuma
+5. Descarga total (bota gessada de contato total ou sandália de descarga)
+
+AVALIAÇÃO VASCULAR:
+6. ITB (Índice Tornozelo-Braquial): <0,9 = DAP; <0,5 = isquemia crítica
+7. Doppler arterial / AngioTC de MMII se ITB alterado
+8. Se isquemia crítica: revascularização (angioplastia ou bypass) ANTES de amputação
+9. Oxigenoterapia hiperbárica (adjuvante — se disponível)
+
+OSTEOMIELITE:
+10. RNM é o padrão-ouro para diagnóstico
+11. Biópsia óssea + cultura: guia ATB por 6-8 semanas
+12. ATB EV 2-4 semanas → VO 2-4 semanas (mínimo 6 semanas total)
+13. Avaliar necessidade de ressecção óssea`,
+    notes: "Equipe multidisciplinar obrigatória: endócrino, vascular, ortopedia, enfermagem especializada. Salvamento de membro deve ser sempre tentado antes de amputação.",
+    guideline: "IWGDF / SBD / SBACV / IDSA",
+  },
+  {
+    id: "rx-trombose-venosa-profunda-extensa",
+    title: "TVP Extensa — Flegmasia / Síndrome Pós-Trombótica",
+    type: "Prescrição Hospitalar / Cirurgia Vascular",
+    prescription: `TVP ILIOFEMORAL EXTENSA:
+1. Enoxaparina 1mg/kg SC 12/12h OU Heparina NF EV em BIC (TTPa 1,5-2,5x)
+2. Elevação do membro
+3. Meias elásticas de compressão (30-40mmHg) — NÃO na fase aguda com dor intensa
+
+FLEGMASIA CERULEA DOLENS (emergência vascular):
+4. Heparina NF 80UI/kg bolus → 18UI/kg/h EV BIC
+5. Trombólise dirigida por cateter (CDT): Alteplase 0,5-1mg/h intra-trombo
+6. OU Trombectomia farmacoquímica (AngioJet, EKOS)
+7. OU Trombectomia cirúrgica (se contraindicação à trombólise)
+8. Fasciotomia se síndrome compartimental
+9. Se gangrena venosa: amputação pode ser necessária
+
+FILTRO DE VEIA CAVA INFERIOR:
+10. Indicação: contraindicação absoluta à anticoagulação + TEP/TVP OU TEP recorrente apesar de anticoagulação
+11. Preferir filtro removível
+
+TRANSIÇÃO PARA ANTICOAGULAÇÃO ORAL:
+12. Warfarina: iniciar junto com heparina → manter heparina até INR 2-3 por 48h
+13. OU DOAC: Rivaroxabana 15mg 12/12h por 21 dias → 20mg 1x/dia
+14. Duração: 3-6 meses (provocada) OU indefinida (não provocada/recorrente)`,
+    guideline: "SBACV / SVS / CHEST / ASH",
+  },
+  {
+    id: "rx-aneurisma-aorta-abd-eletivo",
+    title: "Aneurisma de Aorta Abdominal — Peri-Operatório Eletivo",
+    type: "Prescrição Cirúrgica / Vascular",
+    prescription: `INDICAÇÃO CIRÚRGICA:
+- AAA ≥5,5cm (homem) ou ≥5,0cm (mulher)
+- Crescimento >1cm/ano
+- Sintomático (dor abdominal/lombar)
+
+PRÉ-OPERATÓRIO:
+1. Avaliação cardiovascular (risco Goldman/Lee)
+2. Ecocardiograma + teste de estresse se indicado
+3. AngioTC de aorta (planejamento)
+4. Betabloqueador: Atenolol 25-50mg VO (iniciar 7 dias antes se possível)
+5. Estatina: Atorvastatina 40-80mg VO
+6. Reserva de CH 4U + PFC 4U + Plaquetas 1U
+7. Acesso central + PAI (linha arterial)
+
+PÓS-OPERATÓRIO (aberto):
+8. UTI por 24-48h mínimo
+9. Monitorização hemodinâmica invasiva
+10. Analgesia peridural torácica (ideal) OU PCA com Morfina
+11. DVA se necessário (Noradrenalina ± Dobutamina)
+12. Dieta enteral precoce (se tolerada)
+13. Profilaxia TVP: HNF 5000UI SC 8/8h (após hemostasia)
+14. Monitorar: função renal (isquemia de pinçamento), abdome (isquemia intestinal), MMII (pulsos)
+15. Colonoscopia se suspeita de colite isquêmica (diarreia sanguinolenta pós-op)`,
+    guideline: "SBACV / SVS / ESVS / ACC/AHA",
+  },
+  // === MEDICINA DO TRABALHO ===
+  {
+    id: "rx-acidente-material-biologico",
+    title: "Acidente com Material Biológico — Protocolo PEP",
+    type: "Prescrição de Emergência / Saúde Ocupacional",
+    prescription: `ATENDIMENTO IMEDIATO (0h):
+1. Lavar ferimento com água e sabão por 5min (NÃO espremer)
+2. Mucosa: irrigar com SF 0,9% ou água abundante
+3. NÃO usar soluções irritantes (hipoclorito, éter, glutaraldeído)
+
+AVALIAÇÃO DE RISCO:
+4. Tipo de exposição: percutânea (agulha) > mucosa > pele íntegra
+5. Tipo de material: sangue > fluidos com sangue > outros
+6. Status do paciente-fonte: HIV, HBV, HCV (solicitar testes rápidos IMEDIATO)
+7. Status do profissional: vacinação HBV, anti-HBs
+
+PROFILAXIA PÓS-EXPOSIÇÃO (PEP) — HIV:
+Se indicada (fonte HIV+ ou desconhecida de risco):
+8. Iniciar em ATÉ 2 HORAS (máx 72h) — cada hora conta
+9. Esquema preferencial: TDF/3TC (Tenofovir/Lamivudina) 300/300mg 1cp VO 1x/dia
+   + DTG (Dolutegravir) 50mg VO 1x/dia
+10. Duração: 28 dias (sem interrupção)
+11. Testes do profissional: HIV, HBV, HCV, hemograma, função renal, hepatograma (basal)
+12. Seguimento sorológico: 30, 90 e 180 dias
+
+HEPATITE B:
+13. Se não vacinado ou anti-HBs <10: IGHAHB 0,06mL/kg IM + iniciar/completar vacinação
+14. Se vacinado com anti-HBs ≥10: tranquilizar
+
+HEPATITE C:
+15. Sem profilaxia disponível — acompanhar com HCV-RNA em 6 semanas e anti-HCV 3-6 meses
+16. Se soroconversão: tratar com DAA (encaminhar hepatologia)
+
+NOTIFICAÇÃO:
+17. CAT (Comunicação de Acidente de Trabalho) obrigatória
+18. Notificação SINAN (compulsória)`,
+    warnings: "PEP HIV: iniciar o MAIS RÁPIDO possível — eficácia diminui drasticamente após 2h. NÃO atrasar para aguardar resultado do fonte. Na DÚVIDA, iniciar e reavaliar.",
+    guideline: "MS / PCDT PEP 2021 / CDC / OMS",
+  },
+  {
+    id: "rx-acidente-perfurocortante",
+    title: "Acidente Perfurocortante — Fluxo Completo",
+    type: "Prescrição de Emergência / Saúde Ocupacional",
+    prescription: `FLUXO DE ATENDIMENTO:
+
+1. CUIDADOS LOCAIS IMEDIATOS:
+   - Perfurocortante: lavar com água e sabão abundante
+   - Respingo em mucosa: lavar com SF ou água corrente por 15min
+   - Pele íntegra: sem risco significativo (lavar com água e sabão)
+
+2. TESTE RÁPIDO DO PACIENTE-FONTE (se disponível):
+   - HIV teste rápido (resultado em 15-30min)
+   - HBsAg
+   - Anti-HCV
+   - Se fonte desconhecida ou não testável: considerar PEP
+
+3. AVALIAÇÃO DO PROFISSIONAL:
+   - Cartão vacinal HBV (3 doses?)
+   - Anti-HBs prévio (≥10UI/L = protegido)
+   - Sorologia basal: HIV, HBV, HCV
+
+4. DECISÃO PEP HIV (INICIAR EM <2h):
+   Fonte HIV+: PEP indicada → TDF/3TC + DTG por 28 dias
+   Fonte HIV desconhecida (risco): considerar PEP → decidir com infectologista
+   Fonte HIV negativa (teste rápido): PEP NÃO indicada
+
+5. DECISÃO HBV:
+   Profissional vacinado + anti-HBs ≥10: nada a fazer
+   Profissional não vacinado + fonte HBsAg+: IGHAHB + vacina
+   
+6. SEGUIMENTO:
+   Hemograma + creatinina + hepatograma: basal, 15d, 30d
+   Sorologia HIV: 30, 90, 180 dias
+   HCV-RNA: 6 semanas | Anti-HCV: 3, 6 meses
+
+7. DOCUMENTAÇÃO:
+   - Ficha de notificação SINAN
+   - CAT (CLT) ou equivalente (servidor público)
+   - Prontuário do profissional (sigilo)`,
+    guideline: "MS / PCDT PEP 2021 / NR-32 / CDC",
+  },
+  {
+    id: "rx-dermatose-ocupacional",
+    title: "Dermatose Ocupacional — Manejo",
+    type: "Prescrição Ambulatorial / Saúde Ocupacional",
+    prescription: `INVESTIGAÇÃO:
+1. História ocupacional detalhada: agente, exposição, tempo, EPI
+2. Patch test (teste de contato) — padrão-ouro para dermatite de contato alérgica
+3. Biópsia se dúvida diagnóstica
+
+DERMATITE DE CONTATO IRRITATIVA (mais comum):
+4. Afastamento do agente causal
+5. Creme barreira: Dexpantenol 5% ou Vaselina 3x/dia
+6. Corticoide tópico: Betametasona 0,05% creme 2x/dia por 7-14 dias
+7. Anti-histamínico: Loratadina 10mg VO 1x/dia (se prurido)
+
+DERMATITE DE CONTATO ALÉRGICA:
+8. Afastamento DEFINITIVO do alérgeno
+9. Corticoide tópico potente: Clobetasol 0,05% creme 2x/dia por 7-10 dias
+10. Se extenso: Prednisona 0,5mg/kg/dia VO por 7-14 dias (desmame)
+11. Emolientes: ureia 10% 2x/dia
+
+ORIENTAÇÕES:
+12. EPI adequado (luvas de material compatível, mangas longas)
+13. Notificação como doença ocupacional (SINAN)
+14. CAT se CLT
+15. Encaminhar dermatologia ocupacional se recorrente
+16. Readaptação funcional se impossibilidade de evitar agente`,
+    guideline: "SBD / ANAMT / MS / NR-7",
+  },
 ];
 

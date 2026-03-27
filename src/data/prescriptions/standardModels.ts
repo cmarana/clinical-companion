@@ -1133,5 +1133,37 @@ DOSE MÁXIMA TOTAL (bilateral):
 14. Ter Intralipid 20% disponível (toxicidade por anestésico local)`,
     guideline: "SBA / ESRA / ASRA",
   },
+  {
+    id: "rx-modelo-notificacao-compulsoria",
+    title: "Modelo — Doenças de Notificação Compulsória",
+    type: "Prescrição Padrão — Administrativo",
+    prescription: `NOTIFICAÇÃO IMEDIATA (em até 24h):
+1. Acidente com material biológico
+2. Violência sexual e tentativa de suicídio
+3. Dengue (óbito), Chikungunya, Zika (gestante)
+4. Meningite bacteriana
+5. Raiva humana / acidente por animal peçonhento (óbito)
+6. Botulismo, Cólera, Difteria
+7. COVID-19 (SRAG), Influenza (SRAG)
+8. Sarampo, Poliomielite
+9. Febre amarela, Malária (extra-amazônica)
+10. Eventos adversos pós-vacinação (EAPV)
+
+NOTIFICAÇÃO SEMANAL:
+11. Dengue, Chikungunya (casos)
+12. Tuberculose, Hanseníase
+13. Sífilis (gestante/congênita)
+14. HIV/AIDS
+15. Hepatites virais
+16. Acidente de trabalho
+
+ONDE NOTIFICAR:
+17. SINAN (Sistema de Informação de Agravos de Notificação)
+18. Ficha de notificação específica por agravo
+19. Setor de epidemiologia do hospital/UBS/UPA
+20. Plantão epidemiológico municipal (se urgente)`,
+    notes: "Notificação compulsória é OBRIGAÇÃO LEGAL do médico (Lei 6.259/75). Omissão é infração ética e legal.",
+    guideline: "MS / Portaria GM/MS nº 217/2023 / CFM",
+  },
 ];
 

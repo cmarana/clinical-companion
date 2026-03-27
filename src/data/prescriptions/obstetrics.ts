@@ -810,4 +810,154 @@ Neuroproteção fetal (<32 semanas):
     warnings: "Mortalidade: 20-60%. Apresentação: colapso cardiovascular súbito + hipóxia + CIVD durante/após parto. Diagnóstico de EXCLUSÃO. Suporte é o único tratamento.",
     guideline: "FEBRASGO / ACOG / RCOG / SMFM",
   },
+  {
+    id: "rx-obst-atonia-refrataria",
+    title: "Atonia Uterina Refratária — Hemorragia Pós-Parto",
+    type: "Prescrição de Emergência Obstétrica",
+    prescription: `DEFINIÇÃO: HPP >500mL (vaginal) ou >1000mL (cesárea) SEM resposta às medidas iniciais
+
+ESCALADA TERAPÊUTICA (SEQUENCIAL):
+1. MASSAGEM UTERINA BIMANUAL (compressão contínua)
+2. Ocitocina 20-40UI em SF 0,9% 500mL EV — correr rápido
+3. Metilergometrina 0,2mg IM (CI: hipertensão, pré-eclâmpsia)
+4. Misoprostol 800mcg via retal (absorção confiável mesmo com sangramento)
+5. Ácido tranexâmico 1g EV em 10min (WOMAN trial — repetir em 30min se persistir)
+
+SE REFRATÁRIA AOS UTEROTÔNICOS:
+6. Tamponamento intrauterino com balão de Bakri (ou sonda Foley com 60-80mL)
+   Manter por 12-24h com tração suave
+7. Manobra de B-Lynch (sutura compressiva uterina — cirúrgica)
+8. Ligadura das artérias uterinas (cirúrgica)
+9. Ligadura das artérias hipogástricas (ilíacas internas)
+10. Embolização arterial seletiva (radiologia intervencionista — se disponível)
+
+ÚLTIMA OPÇÃO:
+11. Histerectomia subtotal de emergência (salva-vidas)
+
+SUPORTE SIMULTÂNEO:
+12. 2 acessos calibrosos + Protocolo de Transfusão Maciça (CH:PFC:Plaq 1:1:1)
+13. Ácido tranexâmico 1g EV (se não dado)
+14. Fibrinogênio alvo >2g/L (crioprecipitado)
+15. Ca++ iônico: Gluconato Ca++ a cada 4 CH
+16. Manter normotermia
+17. SVD (monitorar diurese)
+18. UTI materna pós-estabilização`,
+    warnings: "HPP é a PRINCIPAL causa de morte materna no mundo. Não atrasar histerectomia se vida em risco. Preparar protocolo de transfusão maciça PRECOCEMENTE.",
+    guideline: "FEBRASGO / FIGO / ACOG / OMS / RCOG",
+  },
+  {
+    id: "rx-obst-inversao-uterina",
+    title: "Inversão Uterina",
+    type: "Prescrição de Emergência Obstétrica",
+    prescription: `CLASSIFICAÇÃO:
+- Incompleta: fundo uterino no colo
+- Completa: fundo protrai pela vagina
+- Prolapsada: útero exteriorizado
+
+DIAGNÓSTICO: massa no canal de parto/vagina + útero não palpável no abdome + choque desproporcional à perda sanguínea
+
+MANEJO IMEDIATO:
+1. NÃO remover a placenta se ainda aderida (piora sangramento)
+2. Reposição volêmica agressiva: SF 0,9% + CH (choque neurogênico + hipovolêmico)
+3. Noradrenalina se choque refratário
+4. Analgesia: Morfina EV ou anestesia geral (para relaxamento)
+
+REPOSIÇÃO MANUAL (Manobra de Johnson):
+5. Empurrar o fundo uterino de volta pela vagina → através do colo → posição anatômica
+6. Aplicar pressão contínua por 3-5min no fundo uterino após redução
+7. Se dificuldade: relaxamento uterino com:
+   - Nitroglicerina 50-200mcg EV (efeito rápido, curta duração)
+   - OU Terbutalina 0,25mg SC
+   - OU Halotano/Sevoflurano (anestesia geral — relaxamento máximo)
+
+APÓS REDUÇÃO:
+8. Ocitocina 20UI em SF 500mL EV (manter tônus)
+9. Compressão bimanual por 10-15min
+10. Antibioticoterapia: Cefazolina 1g EV 8/8h
+11. Monitorar: sangramento, tônus uterino, sinais vitais
+12. Se irredutível: Laparotomia (técnica de Huntington — tração cirúrgica)`,
+    warnings: "EMERGÊNCIA OBSTÉTRICA — choque pode ser desproporcional à perda visível (componente neurogênico). NÃO REMOVER placenta antes de reduzir. Tentar redução manual IMEDIATAMENTE.",
+    guideline: "FEBRASGO / ACOG / RCOG / FIGO",
+  },
+  {
+    id: "rx-obst-corioamnionite",
+    title: "Corioamnionite / Infecção Intra-Amniótica",
+    type: "Prescrição Obstétrica",
+    prescription: `DIAGNÓSTICO: febre materna ≥38°C + ≥1: taquicardia materna, taquicardia fetal, útero doloroso, líquido amniótico fétido/purulento, leucocitose >15.000
+
+TRATAMENTO (INICIAR IMEDIATAMENTE — NÃO atrasar o parto):
+1. Ampicilina 2g EV 6/6h
+2. + Gentamicina 5mg/kg EV 1x/dia
+3. Se cesárea: adicionar Clindamicina 900mg EV 8/8h OU Metronidazol 500mg EV 8/8h (cobertura anaeróbia)
+4. Antitérmico: Dipirona 1g EV 6/6h
+5. Hidratação: SF 0,9% 1000mL EV
+6. Monitorização fetal contínua (CTG)
+
+CONDUTA OBSTÉTRICA:
+7. RESOLUÇÃO DA GESTAÇÃO — via de parto pela indicação obstétrica
+8. NÃO é indicação absoluta de cesárea (via vaginal é preferível se possível)
+9. Indução com Ocitocina se necessário
+10. Corioamnionite NÃO contraindica anestesia neuroaxial
+
+PÓS-PARTO:
+11. Manter ATB EV por 24-48h após parto (afebril + assintomática → suspender)
+12. Se cesárea: manter ATB por 48h mínimo
+13. Avaliar RN: hemograma, PCR, hemocultura → ATB empírico neonatal se indicado`,
+    guideline: "FEBRASGO / ACOG / MS",
+  },
+  {
+    id: "rx-obst-rotura-uterina",
+    title: "Rotura Uterina",
+    type: "Prescrição de Emergência Obstétrica",
+    prescription: `SUSPEITA: cesárea prévia em trabalho de parto + dor intensa súbita + parada de contrações + bradicardia fetal + sangramento + choque
+
+MANEJO IMEDIATO:
+1. Laparotomia de EMERGÊNCIA (minutos contam para sobrevida fetal)
+2. Anestesia geral (mais rápida que neuroaxial neste contexto)
+3. 2 acessos calibrosos: SF 0,9% + CH em bolus
+4. Extrair feto + placenta
+5. Avaliar extensão da lesão uterina
+
+REPARO:
+6. Se lesão pequena + desejo reprodutivo: rafia uterina em 2 planos
+7. Se lesão extensa + sangramento incontrolável: histerectomia subtotal
+8. Ligadura de uterinas + hipogástricas se necessário
+
+SUPORTE:
+9. Protocolo de transfusão maciça (CH:PFC:Plaq 1:1:1)
+10. Ácido tranexâmico 1g EV
+11. Antibioticoterapia: Cefazolina 2g EV + Metronidazol 500mg EV
+12. UTI materna pós-operatório
+13. Monitorar: sangramento, Hb/Ht, coagulograma, função renal
+14. Suporte psicológico para a família`,
+    warnings: "Mortalidade fetal: 50-75% se rotura completa. Mortalidade materna: 1-5%. Fatores de risco: cesárea prévia clássica, indução com Misoprostol em cesárea prévia, grande multiparidade.",
+    guideline: "FEBRASGO / ACOG / RCOG",
+  },
+  {
+    id: "rx-obst-prolapso-cordao",
+    title: "Prolapso de Cordão Umbilical",
+    type: "Prescrição de Emergência Obstétrica",
+    prescription: `DIAGNÓSTICO: cordão palpável à frente da apresentação + bradicardia fetal
+
+MANEJO IMEDIATO (cada segundo conta):
+1. NÃO empurrar o cordão de volta
+2. Elevar apresentação fetal MANUALMENTE (mão na vagina empurrando apresentação para cima)
+3. MANTER a mão na posição até cesárea
+4. Posição genupeitoral (joelhos-tórax) OU Trendelenburg acentuado
+5. Encher bexiga com 500-700mL de SF via SVD (eleva apresentação — alternativa temporária)
+
+CESÁREA DE EMERGÊNCIA:
+6. Categoria 1 — decisão-incisão em <15min
+7. Anestesia geral (mais rápida)
+8. Manter elevação manual durante TODO o transporte e indução
+
+ENQUANTO AGUARDA:
+9. O2 10L/min para mãe
+10. SF 0,9% EV rápido
+11. Terbutalina 0,25mg SC (tocólise — reduz contrações que comprimem cordão)
+12. Monitorização fetal contínua
+13. NÃO tentar reduzir/recolocar o cordão`,
+    warnings: "Mortalidade fetal sem intervenção: >50%. Manter mão na vagina elevando a apresentação ATÉ a cesárea. NÃO perder tempo com exames.",
+    guideline: "FEBRASGO / ACOG / RCOG / NICE",
+  },
 ];

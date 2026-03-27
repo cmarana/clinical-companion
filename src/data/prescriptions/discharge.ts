@@ -1338,5 +1338,45 @@ PRESCRIÇÃO:
 11. Retorno ao PS se: febre, secreção purulenta, aumento da dor, mau cheiro`,
     guideline: "SBQ / SBCP",
   },
+  {
+    id: "rx-alta-pos-parto-normal",
+    title: "Alta — Pós-Parto Normal",
+    type: "Alta Obstétrica",
+    prescription: `1. Dipirona 500mg — 1cp VO 6/6h se dor
+2. Ibuprofeno 600mg — 1cp VO 8/8h por 3 dias (com alimento)
+3. Sulfato ferroso 40mg Fe elementar — 1cp VO 1x/dia por 30-60 dias (prevenção anemia)
+4. Amamentação exclusiva em livre demanda
+5. Cuidados com episiotomia/laceração: lavar com água e sabão, secar bem
+6. Orientar sinais de alarme:
+   - Sangramento vaginal aumentado (>1 absorvente/hora)
+   - Febre ≥38°C
+   - Dor abdominal intensa
+   - Disúria, lóquios fétidos
+7. Contracepção: discutir opções (minipílula, DIU, implante — compatíveis com amamentação)
+8. Retorno: consulta puerperal em 7-10 dias (revisão de episiotomia)
+9. Puericultura do RN em 5-7 dias
+10. Teste do pezinho: 3-5 dias de vida
+11. Vacinação RN: BCG + Hepatite B (maternidade)`,
+    guideline: "FEBRASGO / MS",
+  },
+  {
+    id: "rx-alta-pos-cesarea",
+    title: "Alta — Pós-Cesárea",
+    type: "Alta Obstétrica",
+    prescription: `1. Dipirona 500mg — 1cp VO 6/6h se dor (1ª linha)
+2. Ibuprofeno 600mg — 1cp VO 8/8h por 5 dias (com alimento)
+3. Tramadol 50mg — 1cp VO 8/8h se dor moderada (resgate — por 3 dias)
+4. Sulfato ferroso 40mg — 1cp VO 1x/dia por 60 dias
+5. Cuidados com FO: manter seco, lavar com água e sabão, NÃO aplicar pomadas
+6. Retirada de pontos/grampos: 7-10 dias
+7. Não carregar peso >5kg por 30 dias
+8. Atividade sexual: após 30-40 dias (ou conforme conforto)
+9. Amamentação em livre demanda (cesárea NÃO contraindica)
+10. Sinais de alarme: febre, saída de secreção pela FO, sangramento vaginal excessivo, dor intensa
+11. Contracepção: iniciar na consulta puerperal
+12. Retorno: 7-10 dias (revisão FO) + consulta puerperal 30-40 dias
+13. Intervalo intergestacional recomendado: ≥18 meses (cicatriz uterina)`,
+    guideline: "FEBRASGO / MS / ACOG",
+  },
 ];
 
