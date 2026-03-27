@@ -4246,5 +4246,383 @@ TEP maciço (instabilidade hemodinâmica):
     notes: "Diferenças CAD vs EHH: EHH tem glicemia mais alta (>600), sem cetose significativa, osmolaridade >320. Mortalidade EHH: 5-20% (maior que CAD). Desidratação profunda (déficit 6-9L).",
     guideline: "SBD / ADA / AACE",
   },
+  // === OTORRINOLARINGOLOGIA ===
+  {
+    id: "rx-abscesso-peritonsilar",
+    title: "Abscesso Peritonsilar",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Internação — dieta líquida fria
+2. Amoxicilina-Clavulanato 1g EV 8/8h OU Clindamicina 600mg EV 8/8h
+3. Drenagem por punção/incisão sob anestesia local (Lidocaína spray 10%)
+4. Dexametasona 8mg EV dose única (reduz edema e dor)
+5. Dipirona 1g EV 6/6h
+6. Tramadol 50mg EV 8/8h se dor intensa
+7. SF 0,9% 1000mL EV — hidratação
+8. Hemograma, PCR
+9. Avaliar TC cervical se extensão profunda ou complicação`,
+    warnings: "Se trismo intenso: considerar drenagem sob sedação. Complicação: extensão para espaço parafaríngeo/mediastinite.",
+    guideline: "ABR-ORL / AAO-HNS",
+  },
+  {
+    id: "rx-epistaxe-refrataria",
+    title: "Epistaxe Refratária",
+    type: "Prescrição de Emergência",
+    prescription: `Medidas iniciais:
+1. Compressão digital bimanual por 15-20 min
+2. Oximetazolina 0,05% tópico nasal (vasoconstricção)
+3. Lidocaína 2% + Adrenalina tópico (algodão embebido)
+
+Se não ceder:
+4. Tamponamento anterior com gaze furacinada ou Merocel
+5. Se tamponamento anterior falhar: tamponamento posterior com cateter de Foley (sonda 14-16Fr, insuflar 10-15mL)
+6. Ácido tranexâmico 1g EV (adjuvante)
+7. Hemograma + coagulograma + tipagem sanguínea
+8. Reservar CH se Hb <7 ou instabilidade
+9. Avaliar cauterização (anterior) ou embolização (posterior) se refratária
+10. Internação + monitorização se tamponamento posterior`,
+    warnings: "Tamponamento posterior: risco de reflexo vagal, dessaturação. Monitorar SpO2. Retirar em 48-72h. Antibioticoprofilaxia: Amoxicilina-Clavulanato 875mg 12/12h.",
+    guideline: "ABR-ORL / AAO-HNS",
+  },
+  {
+    id: "rx-labirintite",
+    title: "Labirintite / Vertigem Periférica",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. Dimenidrinato 50mg EV 8/8h (ou Meclizina 25mg VO 8/8h)
+2. Ondansetrona 4mg EV 8/8h se vômitos
+3. Betaistina 24mg VO 12/12h (manutenção)
+4. SF 0,9% 500mL EV — hidratação
+5. Repouso em ambiente tranquilo
+6. Manobra de Epley se VPPB confirmada
+7. Dexametasona 4mg EV (se neurite vestibular)
+8. Diazepam 5mg VO SN (supressão vestibular aguda — máx 3 dias)`,
+    notes: "Diferenciar central vs periférico: nistagmo vertical/multidirecional, déficit focal = central → TC/RNM urgente.",
+    guideline: "ABR-ORL / AAN",
+  },
+  {
+    id: "rx-otite-externa-maligna",
+    title: "Otite Externa Maligna/Necrosante",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Internação — avaliar UTI se sepse
+2. Ciprofloxacino 400mg EV 12/12h (1ª escolha — anti-Pseudomonas)
+3. OU Piperacilina-Tazobactam 4,5g EV 6/6h (se grave)
+4. Curativos locais com aspiração do CAE
+5. TC de ossos temporais + RNM (extensão do processo)
+6. Dipirona 1g EV 6/6h + Tramadol 50mg EV 8/8h
+7. Controle glicêmico rigoroso (DM — fator de risco principal)
+8. Duração: 6-8 semanas de antibioticoterapia
+9. Avaliar desbridamento cirúrgico se refratária`,
+    warnings: "Mortalidade 10-20% se complicada (osteomielite base do crânio, paralisia facial). Sempre investigar em idoso diabético com otalgia desproporcional.",
+    guideline: "ABR-ORL / IDSA",
+  },
+  {
+    id: "rx-angina-ludwig",
+    title: "Angina de Ludwig",
+    type: "Prescrição de Emergência",
+    prescription: `1. Via aérea: avaliar IOT precoce ou via aérea cirúrgica se obstrução
+2. Clindamicina 600mg EV 6/6h + Ceftriaxona 2g EV 1x/dia
+3. OU Ampicilina-Sulbactam 3g EV 6/6h
+4. Dexametasona 10mg EV 8/8h por 48h (reduzir edema)
+5. SF 0,9% 1000mL EV — hidratação
+6. TC cervical + tórax (avaliar extensão mediastinal)
+7. Drenagem cirúrgica de urgência se flutuação ou piora
+8. Dipirona 1g EV 6/6h
+9. Monitorização contínua — risco de obstrução de VA`,
+    warnings: "EMERGÊNCIA com risco de morte por obstrução de via aérea. Manter material de cricotireoidostomia à beira-leito.",
+    guideline: "ABR-ORL / IDSA",
+  },
+  // === CIRURGIA ===
+  {
+    id: "rx-abdome-agudo",
+    title: "Abdome Agudo — Avaliação Inicial",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. Dieta ZERO
+2. SF 0,9% 1000-2000mL EV — ressuscitação volêmica
+3. SNG aberta (se vômitos/distensão importante)
+4. SVD — controle de diurese
+5. Dipirona 1g EV 6/6h (analgesia NÃO mascara exame — pode dar)
+6. Tramadol 50-100mg EV 8/8h se dor moderada/intensa
+7. Omeprazol 40mg EV 1x/dia
+8. Exames: hemograma, PCR, amilase, lipase, lactato, gasometria, função renal, bilirrubinas
+9. RX de abdome em 3 incidências (decúbito, ortostático, PA tórax)
+10. TC de abdome com contraste (se disponível e estável)
+11. Avaliação cirúrgica URGENTE se: peritonite, instabilidade, pneumoperitônio`,
+    notes: "Abdome agudo: inflamatório (apendicite), obstrutivo (bridas), perfurativo (úlcera), vascular (isquemia mesentérica), hemorrágico (gravidez ectópica).",
+    guideline: "CBC / EAST",
+  },
+  {
+    id: "rx-apendicite",
+    title: "Apendicite Aguda — Pré-operatório",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Dieta ZERO
+2. SF 0,9% 1000mL EV — hidratação
+3. Ceftriaxona 2g EV + Metronidazol 500mg EV (profilaxia/tratamento)
+4. Dipirona 1g EV 6/6h
+5. Ondansetrona 4mg EV 8/8h se náusea
+6. Omeprazol 40mg EV 1x/dia
+7. Enoxaparina 40mg SC (profilaxia TVP — avaliar momento)
+8. Reservar hemoderivados (tipagem)
+9. Encaminhar para apendicectomia (laparoscópica preferencial)
+10. Se abscesso periapendicular: drenagem percutânea + ATB → cirurgia eletiva em 6-8 semanas`,
+    notes: "Alvarado score ≥7: alta probabilidade. TC abdome: sensibilidade >95%. Na dúvida em mulher jovem: USG pélvico para excluir patologia ginecológica.",
+    guideline: "CBC / SAGES / WSES",
+  },
+  {
+    id: "rx-colecistite-aguda",
+    title: "Colecistite Aguda — Pré-operatório",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Dieta ZERO
+2. SF 0,9% 1000mL EV
+3. Ceftriaxona 2g EV + Metronidazol 500mg EV 8/8h
+4. OU Ampicilina-Sulbactam 3g EV 6/6h
+5. Dipirona 1g EV 6/6h + Cetoprofeno 100mg EV 12/12h
+6. Buscopan (Escopolamina) 20mg EV 6/6h
+7. Ondansetrona 4mg EV se náusea
+8. Omeprazol 40mg EV 1x/dia
+9. Colecistectomia videolaparoscópica precoce (idealmente <72h — Tokyo Guidelines)
+10. Se alto risco cirúrgico: colecistostomia percutânea`,
+    notes: "Tokyo Guidelines 2018: Grau I (leve), II (moderado — >72h, leuco >18k, massa palpável), III (grave — disfunção orgânica). USG: parede espessada >4mm + Murphy sonográfico.",
+    guideline: "CBC / WSES / Tokyo 2018",
+  },
+  {
+    id: "rx-obstrucao-intestinal",
+    title: "Obstrução Intestinal",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Dieta ZERO
+2. SNG aberta (descompressão — débito e aspecto)
+3. SF 0,9% 1000-2000mL EV — reposição volêmica agressiva
+4. SVD — controle de diurese
+5. Correção de distúrbios eletrolíticos (K+, Na+, Mg2+)
+6. Dipirona 1g EV 6/6h
+7. Ondansetrona 4mg EV 8/8h
+8. Omeprazol 40mg EV 1x/dia
+9. Enoxaparina 40mg SC 1x/dia
+10. RX abdome (3 incidências): níveis hidroaéreos
+11. TC abdome com contraste (avaliar etiologia, sinais de estrangulamento)
+12. Avaliação cirúrgica: URGENTE se estrangulamento, febre, leucocitose progressiva, peritonite`,
+    notes: "Causas mais comuns: bridas/aderências (75%), hérnias encarceradas, neoplasia, volvo. Manejo conservador por 48-72h se obstrução parcial sem sinais de complicação.",
+    guideline: "CBC / WSES / EAST",
+  },
+  {
+    id: "rx-isquemia-mesenterica",
+    title: "Isquemia Mesentérica Aguda",
+    type: "Prescrição de Emergência",
+    prescription: `1. SF 0,9% 1000-2000mL EV em bolus (choque distributivo)
+2. SNG aberta
+3. SVD — diurese alvo ≥0,5mL/kg/h
+4. Antibioticoterapia ampla: Piperacilina-Tazobactam 4,5g EV 6/6h OU Meropenem 1g EV 8/8h
+5. Heparina não fracionada: 80UI/kg bolus → 18UI/kg/h (se embólica/trombótica)
+6. Analgesia: Morfina 2-4mg EV (dor desproporcional ao exame)
+7. Lactato arterial + gasometria (acidose metabólica)
+8. Angiotomografia de abdome URGENTE
+9. Cirurgia de emergência: laparotomia exploradora + ressecção de segmento necrótico
+10. UTI pós-operatório — second look em 24-48h`,
+    warnings: "Mortalidade 60-80%. Dor desproporcional ao exame físico = RED FLAG. Leucocitose + lactato elevado + acidose = isquemia avançada.",
+    guideline: "CBC / WSES / ESVS",
+  },
+  {
+    id: "rx-hernia-encarcerada",
+    title: "Hérnia Encarcerada / Estrangulada",
+    type: "Prescrição de Emergência",
+    prescription: `1. Dieta ZERO
+2. SF 0,9% 1000mL EV
+3. Tentativa de redução manual (Taxis) — APENAS se <6h e sem sinais de estrangulamento
+4. Analgesia: Dipirona 1g EV + Tramadol 50mg EV + Trendelenburg
+5. Se irredutível ou sinais de estrangulamento: cirurgia de EMERGÊNCIA
+6. Ceftriaxona 2g EV + Metronidazol 500mg EV (se suspeita de necrose)
+7. SNG se vômitos/distensão
+8. Hemograma, lactato, gasometria
+9. Omeprazol 40mg EV
+10. Reservar hemoderivados`,
+    warnings: "Sinais de estrangulamento: dor contínua, eritema na pele sobre a hérnia, febre, vômitos, irritação peritoneal. NÃO tentar Taxis se estrangulada.",
+    guideline: "CBC / WSES",
+  },
+  {
+    id: "rx-perfuracao-visceral",
+    title: "Perfuração de Víscera Oca",
+    type: "Prescrição de Emergência",
+    prescription: `1. Dieta ZERO — SNG aberta
+2. SF 0,9% 2000mL EV em bolus (ressuscitação)
+3. Piperacilina-Tazobactam 4,5g EV 6/6h OU Meropenem 1g EV 8/8h + Metronidazol 500mg EV 8/8h
+4. Noradrenalina se choque (0,1mcg/kg/min → titular)
+5. Analgesia: Dipirona 1g EV + Morfina 2-4mg EV SN
+6. SVD — diurese alvo ≥0,5mL/kg/h
+7. Exames: hemograma, lactato, gasometria, coagulograma
+8. RX tórax em ortostase: pneumoperitônio (sinal de Rigler)
+9. TC abdome com contraste (líquido livre, ar livre)
+10. CIRURGIA DE URGÊNCIA — laparotomia/laparoscopia`,
+    notes: "Causas: úlcera péptica perfurada, diverticulite, neoplasia, corpo estranho. Pneumoperitônio = indicação cirúrgica na maioria dos casos.",
+    guideline: "CBC / WSES",
+  },
+  // === UTI AVANÇADA ===
+  {
+    id: "rx-choque-cardiogenico",
+    title: "Choque Cardiogênico",
+    type: "Prescrição UTI",
+    prescription: `1. Dobutamina 2,5-20mcg/kg/min em BIC (inotrópico de 1ª linha)
+2. Noradrenalina 0,05-0,5mcg/kg/min em BIC (se PAS <90 apesar de Dobutamina)
+3. SF 0,9% — ressuscitação CAUTELOSA (250mL em 10min, reavaliar)
+4. Furosemida 40-80mg EV se congestão pulmonar
+5. IOT + VM se IRpA/edema pulmonar refratário
+6. PA invasiva + cateter de Swan-Ganz ou ecocardiograma seriado
+7. SVD — diurese alvo ≥0,5mL/kg/h
+8. Heparina profilática: Enoxaparina 40mg SC 1x/dia
+9. ECG + troponina + BNP/NT-proBNP + ecocardiograma URGENTE
+10. Avaliar: angioplastia primária (se IAM), BIA (balão intra-aórtico), dispositivo de assistência ventricular
+11. Lactato seriado (alvo: queda >10% em 2h)`,
+    warnings: "NÃO hidratar agressivamente como no choque séptico. Volume pode piorar edema pulmonar. Dobutamina sem vasopressor: pode causar hipotensão (vasodilatação).",
+    guideline: "SBC / ESC / ACC/AHA / SCAI",
+  },
+  {
+    id: "rx-ecmo-indicacao",
+    title: "ECMO — Indicações e Manejo Inicial",
+    type: "Prescrição UTI",
+    prescription: `INDICAÇÕES ECMO-VV (Veno-Venosa — respiratória):
+1. SDRA grave refratária: P/F <80 por >6h ou <50 por >3h
+2. Hipercapnia refratária: pH <7,20 com PaCO2 >80
+3. Falha de VM protetora + prona
+
+INDICAÇÕES ECMO-VA (Veno-Arterial — cardíaca):
+4. Choque cardiogênico refratário (IAM, miocardite fulminante)
+5. PCR refratária (E-CPR) — protocolos específicos
+6. Pós-cardiotomia com falência ventricular
+
+MANEJO INICIAL:
+7. Heparina não fracionada: bolus 50-100UI/kg → BIC (TTPa alvo 1,5-2x)
+8. Fluxo inicial: 50-80mL/kg/min (ajustar por gasometria)
+9. FiO2 da membrana: iniciar 100% → desmamar
+10. Sweep gas: ajustar conforme PaCO2
+11. Monitorização: gasometria pré e pós-membrana, lactato, fibrinogênio, plaquetas, hemólise
+12. Hemograma + coagulograma 6/6h nas primeiras 24h
+13. Ecocardiograma diário (ECMO-VA: monitorar distensão de VE)`,
+    notes: "ECMO-VA: monitorar Harlequin Syndrome (hipóxia diferencial — SpO2 MSD). Complicações: sangramento, trombose, hemólise, infecção de cânula, isquemia de membro.",
+    guideline: "ELSO / AMIB / SBCCV",
+  },
+  {
+    id: "rx-ventilacao-protetora",
+    title: "Ventilação Mecânica Protetora — SDRA",
+    type: "Prescrição UTI",
+    prescription: `Parâmetros iniciais:
+1. Modo: VCV ou PCV
+2. VC: 6mL/kg de peso PREDITO (♂: 50+0,91×[altura cm-152,4] | ♀: 45,5+0,91×[altura cm-152,4])
+3. FR: 20-35/min (ajustar por pH/PaCO2)
+4. PEEP: conforme tabela PEEP/FiO2 (ARDSNet)
+5. FiO2: menor possível para SpO2 92-96%
+6. Driving Pressure (Pplatô - PEEP) ≤15cmH2O
+7. Pressão de Platô ≤30cmH2O
+
+Adjuntos:
+8. Posição PRONA se P/F <150 com PEEP ≥10 e FiO2 ≥0,6 (sessões ≥16h)
+9. Bloqueador neuromuscular: Cisatracúrio 0,15mg/kg/h nas primeiras 48h se P/F <120
+10. Hidrocortisona 50mg EV 6/6h se SDRA moderada-grave + choque
+11. Balanço hídrico negativo (após estabilização hemodinâmica)
+12. Sedação: RASS -4 a -5 durante prona / BNM`,
+    notes: "Peso predito (não real!) para cálculo de VC. Hipercapnia permissiva é aceitável (pH >7,20). Driving pressure é o melhor preditor de mortalidade.",
+    guideline: "ARDSNet / PROSEVA / AMIB",
+  },
+  {
+    id: "rx-delirium-uti",
+    title: "Delirium em UTI — Prevenção e Tratamento",
+    type: "Prescrição UTI",
+    prescription: `Prevenção (Bundle ABCDEF):
+1. Avaliação diária de despertar (suspensão de sedação)
+2. Teste de respiração espontânea diário
+3. Escolha de sedação: Dexmedetomidina preferencial (vs Midazolam)
+4. Monitorizar CAM-ICU 2x/dia
+5. Mobilização precoce
+6. Envolvimento familiar
+
+Tratamento (se CAM-ICU positivo):
+7. Haloperidol 2,5-5mg EV 8/8h (1ª linha — evitar se QTc >500ms)
+8. OU Quetiapina 25-50mg VO 12/12h (se VO possível)
+9. Dexmedetomidina 0,2-0,7mcg/kg/h em BIC (se agitação + necessidade de sedação)
+10. Corrigir causas reversíveis: dor, retenção urinária, constipação, hipóxia, infecção
+11. Evitar: Benzodiazepínicos (pioram delirium), contenção mecânica desnecessária`,
+    notes: "Delirium em UTI: aumenta mortalidade em 3x, tempo de VM e internação. CAM-ICU: ferramenta padrão de screening.",
+    guideline: "PADIS 2018 / AMIB",
+  },
+  {
+    id: "rx-desmame-vm",
+    title: "Desmame de Ventilação Mecânica",
+    type: "Prescrição UTI",
+    prescription: `Critérios para TRE (Teste de Respiração Espontânea):
+1. Causa da IRpA resolvida/melhorando
+2. FiO2 ≤0,4 com PEEP ≤8 e SpO2 ≥92%
+3. Hemodinâmica estável (sem/baixa dose vasopressor)
+4. Drive respiratório presente (sem BNM, sedação mínima)
+5. Tosse eficaz, secreção controlada
+
+TRE (30-120 min):
+6. Tubo T com O2 suplementar OU PSV 5-7 + PEEP 5 + FiO2 ≤0,4
+7. Monitorar: FR, SpO2, FC, PA, uso de musculatura acessória, sudorese
+
+Sucesso do TRE → EXTUBAÇÃO:
+8. Aspirar vias aéreas antes
+9. Dexametasona 8mg EV 12/12h (4 doses) se alto risco de estridor pós-extubação
+10. Manter VNI profilática se: >65 anos, ICC, DPOC, falha prévia
+11. Cuff leak test antes da extubação (risco de edema laríngeo)
+
+Falha do TRE (FR >35, SpO2 <90, FC >140, sudorese, agitação):
+12. Retornar VM → reavaliar em 24h`,
+    guideline: "AMIB / ATS/ACCP 2017",
+  },
+  {
+    id: "rx-hipotermia-terapeutica",
+    title: "Hipotermia Terapêutica Pós-PCR",
+    type: "Prescrição UTI",
+    prescription: `1. Indicação: RCE (retorno da circulação espontânea) após PCR em comatoso (GCS <8)
+2. Temperatura alvo: 32-36°C por 24h (TTM2: alvo <37,8°C aceitável)
+3. Indução: SF 0,9% gelado 30mL/kg EV + dispositivo de resfriamento
+4. Manutenção: cobertor de resfriamento / cateter intravascular
+5. Sedação: Midazolam + Fentanil em BIC (prevenir tremores)
+6. Cisatracúrio 0,15mg/kg/h se tremores refratários
+7. Monitorizar: temperatura esofágica/vesical contínua
+8. Reaquecimento: 0,25-0,5°C/hora (LENTO — risco de hipercalemia e arritmias)
+9. Exames: gasometria, lactato, troponina, eletrólitos seriados
+10. Evitar hiperglicemia (insulina se >180mg/dL) e hipotensão (PAM ≥65)
+11. EEG contínuo (prognóstico neurológico em 72h)`,
+    notes: "TTM2 trial: não superioridade de 33°C vs 36°C, mas MANTER normotermia (<37,8°C) é consenso. Reaquecimento rápido = perigoso.",
+    guideline: "AHA 2020 / ERC / ILCOR",
+  },
+  {
+    id: "rx-bia",
+    title: "Balão Intra-Aórtico (BIA) — Manejo",
+    type: "Prescrição UTI",
+    prescription: `INDICAÇÕES:
+1. Choque cardiogênico pós-IAM (ponte para revascularização)
+2. Complicações mecânicas do IAM (IM aguda, CIV)
+3. Angina refratária pré-cirurgia
+4. Desmame difícil de CEC
+
+MANEJO:
+5. Posição: ponta na aorta descendente (abaixo da subclávia esquerda)
+6. RX tórax confirmatório (ponta 2-3cm abaixo do arco aórtico)
+7. Timing: inflação na dicrótica (diástole), deflação antes da sístole
+8. Relação 1:1 (assist a cada batimento)
+9. Heparina não fracionada: TTPa alvo 1,5-2,5x
+10. Monitorizar: pulso distal do membro canulado, plaquetas diárias
+11. Desmame: reduzir relação 1:1 → 1:2 → 1:3 → retirar (se PAM estável e lactato normal)`,
+    warnings: "Contraindicações: insuficiência aórtica moderada/grave, dissecção de aorta, DAP. Complicação: isquemia de membro (5-10%).",
+    guideline: "SBC / ACC/AHA",
+  },
+  {
+    id: "rx-nutricao-uti",
+    title: "Nutrição em UTI — Terapia Nutricional",
+    type: "Prescrição UTI",
+    prescription: `Enteral (1ª escolha — iniciar em 24-48h):
+1. Dieta enteral polimérica 1.0-1.5kcal/mL via SNG/SNE
+2. Iniciar: 20-25mL/h → progredir 10-20mL/h a cada 6h
+3. Alvo calórico: 25-30kcal/kg/dia (peso ajustado se obeso)
+4. Alvo proteico: 1,2-2,0g/kg/dia (mais alto em queimados/trauma)
+5. Pausa de 1h antes de procedimentos/prona
+6. Verificar resíduo gástrico se distensão (>500mL: suspender, procinético)
+7. Metoclopramida 10mg EV 8/8h (se intolerância)
+8. Cabeceira ≥30° durante infusão
+
+Parenteral (se contraindicação enteral):
+9. Iniciar apenas após D7 se EN impossível (paciente previamente nutrido)
+10. Iniciar precoce se desnutrido grave
+11. Glicemia alvo: 140-180mg/dL (protocolo de insulina)`,
+    guideline: "ESPEN / ASPEN / BRASPEN",
+  },
 ];
 

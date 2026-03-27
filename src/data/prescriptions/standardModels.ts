@@ -855,5 +855,66 @@ CRM / Carimbo / Assinatura`,
 13. Monitorização: SpO2, FR, PA
 14. Comunicar se: SpO2 <___%, FR >30, rebaixamento`,
   },
+  {
+    id: "rx-modelo-pre-op",
+    title: "Modelo — Pré-operatório Geral",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta ZERO a partir das ___h (mínimo 8h para sólidos, 2h para líquidos claros)
+2. SF 0,9% 1000mL EV ___mL/h (hidratação de manutenção)
+3. Tricotomia no local cirúrgico (máquina, não lâmina — idealmente na sala)
+4. Banho com Clorexidina degermante 2% na noite anterior e manhã
+5. Enoxaparina 40mg SC (última dose ≥12h antes da cirurgia)
+6. Profilaxia ATB: Cefazolina 2g EV na indução anestésica (30-60 min antes da incisão)
+7. Reservar ___UI de concentrado de hemácias (tipagem/prova cruzada)
+8. Jejum medicamentoso: manter anti-hipertensivos + suspender IECA/BRA no dia
+9. Metformina: suspender 48h antes (se contraste ou grande porte)
+10. Anticoagulação: suspender Varfarina 5 dias antes (INR alvo <1,5)
+11. AAS: manter (exceto neurocirurgia) — suspender 7 dias se alto risco de sangramento
+12. Exames: hemograma, coagulograma, função renal, ECG, RX tórax (>40 anos ou indicação)
+13. TCLE assinado`,
+    notes: "ASA-PS para estratificação de risco. Checklist de cirurgia segura da OMS.",
+    guideline: "ACERTO / ERAS / OMS",
+  },
+  {
+    id: "rx-modelo-pos-op-geral",
+    title: "Modelo — Pós-operatório Geral",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta zero → líquida clara → progressão conforme tolerância
+2. SF 0,9% 1000mL EV ___mL/h
+3. Dipirona 1g EV 6/6h
+4. Cetoprofeno 100mg EV 12/12h (se não contraindicado)
+5. Tramadol 50-100mg EV 8/8h SN (se dor moderada/intensa)
+6. Ondansetrona 4mg EV 8/8h SN
+7. Omeprazol 40mg EV 1x/dia
+8. Enoxaparina 40mg SC 1x/dia (reiniciar 12h pós-cirurgia)
+9. Cefazolina 1g EV 8/8h por 24h (profilaxia — NÃO prolongar >24h na maioria)
+10. Curativo: manter oclusivo por 48h → trocar com SF
+11. Deambulação precoce (nas primeiras 6-12h se possível)
+12. Monitorização de sinais vitais 6/6h
+13. SVD: retirar precocemente (≤24-48h quando possível)
+14. Comunicar se: febre, sangramento, hipotensão, oligúria`,
+    guideline: "ERAS / ACERTO",
+  },
+  {
+    id: "rx-modelo-uti-pos-cardiaca",
+    title: "Modelo — Pós-operatório Cardíaco (UTI)",
+    type: "Prescrição Padrão",
+    prescription: `1. VM: VCV VC 6-8mL/kg | FR 14 | PEEP 5 | FiO2 ___
+2. Sedação: Propofol 1-4mg/kg/h OU Dexmedetomidina 0,2-0,7mcg/kg/h
+3. Noradrenalina ___mcg/kg/min se PAM <65 (após reaquecimento)
+4. Dobutamina ___mcg/kg/min se IC <2,2 / SvO2 <65%
+5. Milrinona se disfunção de VD
+6. Insulina BIC: manter glicemia 140-180mg/dL
+7. Reposição de K+: alvo 4,0-5,0 mEq/L (prevenir arritmias)
+8. Reposição de Mg2+: alvo >2,0 mg/dL
+9. Drenos mediastinal/pleural: mensurar débito horário
+10. Heparina profilática: iniciar quando débito drenos <100mL/h e sem sangramento ativo
+11. Tempo de coagulação ativado (TCA) se BIA ou ECMO
+12. Ecocardiograma pós-operatório (função, derrame, prótese)
+13. Gasometria arterial + lactato de admissão → seriados
+14. Reaquecimento passivo (alvo >36°C — evitar reaquecimento ativo rápido)
+15. Extubação precoce quando possível (protocolo fast-track)`,
+    guideline: "SBC / SBCCV / STS",
+  },
 ];
 
