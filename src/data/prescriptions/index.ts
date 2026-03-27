@@ -37,18 +37,18 @@ const specialtyRules: SpecialtyRule[] = [
   { id: "hematology", title: "Hematologia", icon: "droplets", match: (t, ti) => /hematol/i.test(t) || /trombocitopenia|pti\b|civd|hemofilia|tromboembolismo venoso|tvp\b|anticoagula|púrpura|hemolítico-urêmica|\bshu\b/i.test(ti) },
   { id: "toxicology", title: "Toxicologia", icon: "skull", match: (t, ti) => /toxicol/i.test(t) || /intoxica|envenenamento|ofídico|angioedema|anafilaxia|stevens-johnson|anticolinérgica|serotoninérgica|acidente.*aranha|acidente botrópico/i.test(ti) },
   { id: "rheumatology", title: "Reumatologia", icon: "bone", match: (t, ti) => /reumatol/i.test(t) || /lúpus|\bles\b|artrite reumatoide|gota|crise gotosa|vasculite|artrite reativa|reiter|polimialgia|arterite.*gigantes|esclerodérmica|henoch|kawasaki/i.test(ti) },
-  { id: "dermatology", title: "Dermatologia", icon: "palette", match: (t, ti) => /dermat/i.test(t) || /pênfigo|dermatite de contato/i.test(ti) },
-  { id: "urology", title: "Urologia", icon: "cross", match: (t, ti) => /urolog/i.test(t) || /priapismo|torção testicular/i.test(ti) },
+  { id: "dermatology", title: "Dermatologia", icon: "palette", match: (t, ti) => /dermat/i.test(t) || /pênfigo|dermatite de contato|stevens-johnson|\bnet\b|ssj|celulite.*grave|erisipela.*grave|urticária|angioedema|herpes zoster|psoríase pustulosa|eczema herpético/i.test(ti) },
+  { id: "urology", title: "Urologia", icon: "cross", match: (t, ti) => /urolog/i.test(t) || /priapismo|torção testicular|retenção urinária|cólica renal.*complicad|parafimose|trauma renal|epididimite|orquiepididimite/i.test(ti) },
   { id: "vascular-surgery", title: "Cirurgia Vascular", icon: "scissors", match: (t, ti) => /vascular/i.test(t) || /isquemia aguda de membro|aneurisma.*roto|pé diabético|dissecção.*aorta/i.test(ti) },
   { id: "general-surgery", title: "Cirurgia Geral / Torácica", icon: "scissors", match: (t, ti) => (/cirúrg|cirurg/i.test(t) && !/vascular/i.test(t)) || /apendicite|hérnia.*encarcerada|perfuração.*víscera|trauma abdominal|retalho|enxerto de pele/i.test(ti) },
   { id: "anesthesiology", title: "Anestesiologia", icon: "syringe", match: (t, ti) => /anest/i.test(t) },
   { id: "icu", title: "Terapia Intensiva / UTI", icon: "monitor", match: (t, ti) => /\buti\b|terapia intensiva|desmame|ecmo/i.test(t) },
-  { id: "geriatrics", title: "Geriatria", icon: "user-round", match: (t, ti) => /geriatr/i.test(t) || /polifarmácia|desprescrição|queda no idoso|fragilidade/i.test(ti) },
+  { id: "geriatrics", title: "Geriatria", icon: "user-round", match: (t, ti) => /geriatr/i.test(t) || /polifarmácia|desprescrição|queda no idoso|fragilidade|delirium.*idoso|delirium.*prevenção|demência.*agitação/i.test(ti) },
   { id: "med-legal", title: "Medicina Legal / Trabalho", icon: "shield", match: (t, ti) => /legal|ocupacional|trabalho/i.test(t) },
   { id: "burns", title: "Queimados / CTQ", icon: "flame", match: (t, ti) => /queim|ctq/i.test(t) || /queimadura/i.test(ti) },
   { id: "oncology", title: "Oncologia", icon: "ribbon", match: (t, ti) => /oncol/i.test(t) },
   { id: "ent", title: "Otorrinolaringologia", icon: "ear", match: (t, ti) => /orl/i.test(t) || /epistaxe|sangramento nasal|abscesso peritonsilar|abscesso periamigdaliano|angina de ludwig|mastoidite|epiglotite|surdez súbita|corpo estranho.*via aérea|labirintite|vertigem|otite externa maligna|otite.*necrosante/i.test(ti) },
-  { id: "emergency-general", title: "Emergência Geral / PS", icon: "zap", match: (t, ti) => /crise hipertensiva|emergência hipertensiva|dor abdominal aguda/i.test(ti) },
+  { id: "emergency-general", title: "Emergência Geral / PS", icon: "zap", match: (t, ti) => /Prescrição de Emergência \/ PS/i.test(t) || /crise hipertensiva|emergência hipertensiva|dor abdominal aguda.*protocolo|síncope.*avaliação|mordedura.*cão|mordedura.*gato|afogamento|choque elétrico|eletrocussão|corpo estranho ingerido/i.test(ti) },
 ];
 
 function splitByDiagnosis(items: PrescriptionItem[]): PrescriptionCategory[] {
