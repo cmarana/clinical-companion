@@ -1112,5 +1112,63 @@ Bacteriana (secreção purulenta):
 9. Sinais de alarme: dispneia, hemoptise, dor torácica, síncope, sangramento`,
     guideline: "SBC / ESC / CHEST",
   },
+  {
+    id: "rx-alta-apendicectomia",
+    title: "Alta — Pós-Apendicectomia",
+    type: "Alta Cirúrgica",
+    prescription: `1. Dipirona 500mg — 1cp VO 6/6h por 5 dias
+2. Ibuprofeno 400mg — 1cp VO 8/8h por 3-5 dias (com alimento)
+3. Tramadol 50mg — 1cp VO 8/8h SN (se dor intensa)
+4. Metronidazol 400mg — 1cp VO 8/8h por 5 dias (se complicada)
+5. Curativo: trocar diariamente com SF, manter limpo e seco
+6. Retirar pontos em 7-10 dias (ou absorvíveis)
+7. Dieta leve por 48h → progressão livre
+8. Evitar esforço físico por 30 dias (laparoscópica: 15 dias)
+9. Retorno em 7-10 dias ou se: febre, dor progressiva, secreção na ferida
+10. Retorno ao trabalho: 7-15 dias (laparoscópica) / 30 dias (aberta)`,
+    guideline: "CBC / SAGES",
+  },
+  {
+    id: "rx-alta-colecistectomia",
+    title: "Alta — Pós-Colecistectomia",
+    type: "Alta Cirúrgica",
+    prescription: `1. Dipirona 500mg — 1cp VO 6/6h por 5 dias
+2. Cetoprofeno 100mg — 1cp VO 12/12h por 3-5 dias (com alimento)
+3. Omeprazol 20mg — 1cp VO em jejum por 30 dias
+4. Dieta leve, hipolipídica por 30 dias → reintrodução gradual
+5. Curativo oclusivo por 48h → expor
+6. Retirar pontos em 7-10 dias
+7. Evitar esforço abdominal por 15-30 dias
+8. Retorno em 7-10 dias com resultado de anatomopatológico
+9. Procurar PS se: febre, icterícia, vômitos biliosos, dor intensa`,
+    guideline: "CBC / SAGES",
+  },
+  {
+    id: "rx-alta-epistaxe",
+    title: "Alta — Epistaxe pós-tamponamento",
+    type: "Alta ORL",
+    prescription: `1. Amoxicilina-Clavulanato 875mg — 1cp VO 12/12h por 5-7 dias (profilaxia se tamponado)
+2. Dipirona 500mg — 1cp VO 6/6h se dor
+3. SF nasal (lavagem): 3-4x/dia (após remoção do tampão)
+4. NÃO assoar nariz por 7 dias — espirrar de boca aberta
+5. Evitar esforço físico por 7-10 dias
+6. Retorno ORL em 48-72h para retirada do tamponamento
+7. Umidificar ambiente. Evitar ar condicionado direto
+8. Procurar PS se: sangramento recorrente, epistaxe do outro lado, febre`,
+  },
+  {
+    id: "rx-alta-fratura-conservadora",
+    title: "Alta — Fratura com Tratamento Conservador",
+    type: "Alta Ortopédica",
+    prescription: `1. Dipirona 500mg — 1cp VO 6/6h por 5-7 dias
+2. Cetoprofeno 100mg — 1cp VO 12/12h por 5 dias (com alimento)
+3. Tramadol 50mg — 1cp VO 8/8h SN (dor intensa)
+4. Elevar membro acima do nível do coração quando possível
+5. Gelo local: 20 min 4-6x/dia por 48-72h
+6. NÃO molhar imobilização gessada
+7. Sinais de alarme: dor desproporcional, parestesia, palidez, edema tenso → PS URGENTE (síndrome compartimental)
+8. Retorno ortopedia em 7-10 dias com novo RX
+9. Fisioterapia após retirada da imobilização`,
+  },
 ];
 

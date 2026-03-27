@@ -841,5 +841,51 @@ Profilaxia em HDA do cirrótico:
     notes: "PBE: causa mais comum de infecção em cirrótico. Mortalidade 20-30%. Albumina reduz SHR e mortalidade (estudo Sort). Cultura do LA: inocular em frasco de hemocultura à beira-leito.",
     guideline: "SBH / EASL / AASLD",
   },
+  {
+    id: "rx-atb-cabeca-pescoco",
+    title: "Antibiótico — Infecções de Cabeça e Pescoço",
+    type: "Antibiótico por Foco",
+    prescription: `Amigdalite bacteriana:
+1. Amoxicilina 500mg VO 8/8h por 10 dias (1ª escolha)
+2. Penicilina Benzatina 1,2MI IM dose única (alternativa)
+
+Abscesso peritonsilar:
+3. Amoxicilina-Clavulanato 1g EV 8/8h + Drenagem
+4. OU Clindamicina 600mg EV 8/8h (se alergia a penicilina)
+
+Angina de Ludwig / Infecção cervical profunda:
+5. Clindamicina 600mg EV 6/6h + Ceftriaxona 2g EV 1x/dia
+6. OU Ampicilina-Sulbactam 3g EV 6/6h
+7. Drenagem cirúrgica OBRIGATÓRIA se coleção
+
+Sinusite complicada (celulite orbitária):
+8. Ceftriaxona 2g EV 12/12h + Metronidazol 500mg EV 8/8h`,
+    guideline: "ABR-ORL / IDSA",
+  },
+  {
+    id: "rx-atb-profilaxia-cirurgica",
+    title: "Antibiótico — Profilaxia Cirúrgica",
+    type: "Antibiótico por Foco",
+    prescription: `Cirurgia limpa (hérnia, tireoide, mama):
+1. Cefazolina 2g EV na indução (dose única — NÃO prolongar)
+
+Cirurgia limpa-contaminada (colecistectomia, histerectomia):
+2. Cefazolina 2g EV na indução (dose única)
+3. Repique: Cefazolina 1g EV se cirurgia >4h ou sangramento >1500mL
+
+Cirurgia contaminada (colorretal, apendicectomia):
+4. Cefazolina 2g + Metronidazol 500mg EV na indução
+5. OU Ceftriaxona 2g + Metronidazol 500mg
+
+Cirurgia suja (peritonite, perfuração):
+6. Tratamento (não profilaxia): Piperacilina-Taz 4,5g 6/6h OU Meropenem
+
+Alergia a cefalosporinas:
+7. Clindamicina 600mg EV + Gentamicina 5mg/kg EV
+
+REGRA: dose única na indução. NÃO ultrapassar 24h na maioria.`,
+    notes: "Obesidade: dobrar dose de Cefazolina (3g se >120kg). Sempre administrar 30-60 min antes da incisão.",
+    guideline: "ANVISA / ASHP / IDSA / SIS",
+  },
 ];
 

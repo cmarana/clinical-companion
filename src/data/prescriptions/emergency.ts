@@ -1310,5 +1310,67 @@ NÍVEL 3 — Contenção mecânica:
     warnings: "NÃO atrasar corticoide por exames. Na dúvida, dar Hidrocortisona e dosar cortisol depois. Choque refratário a vasopressor: PENSAR em insuficiência adrenal.",
     guideline: "SBEM / Endocrine Society",
   },
+  {
+    id: "rx-emerg-tamponamento-cardiaco",
+    title: "Tamponamento Cardíaco — Emergência",
+    type: "Prescrição de Emergência",
+    prescription: `1. SF 0,9% 500-1000mL EV em bolus (aumentar pré-carga)
+2. NÃO usar diuréticos / NÃO usar nitratos (pioram o tamponamento)
+3. Pericardiocentese de EMERGÊNCIA (abordagem subxifóide guiada por USG)
+4. Aspirar líquido pericárdico → enviar: citologia, cultura, bioquímica
+5. Deixar dreno pigtail se drenagem >100mL/24h
+6. Monitorização contínua: PA invasiva, SpO2, ECG
+7. Ecocardiograma à beira-leito (confirmar derrame + colapso de VD)
+8. Noradrenalina se hipotensão refratária (0,1mcg/kg/min)
+9. Avaliar janela pericárdica cirúrgica se recorrente`,
+    warnings: "Tríade de Beck: hipotensão + estase jugular + bulhas abafadas. Pulso paradoxal >10mmHg. NUNCA dar diurético — piora fatal.",
+    guideline: "SBC / ESC / AHA",
+  },
+  {
+    id: "rx-emerg-pneumotorax-hipertensivo",
+    title: "Pneumotórax Hipertensivo",
+    type: "Prescrição de Emergência",
+    prescription: `1. Descompressão imediata com jelco 14G no 2º EIC, linha hemiclavicular
+2. OU descompressão digital no 5º EIC, linha axilar anterior
+3. Após descompressão: drenagem torácica em selo d'água (5º EIC, LAA)
+4. O2 100% alto fluxo
+5. SF 0,9% 1000mL EV se hipotensão
+6. RX tórax pós-drenagem
+7. Monitorização contínua: SpO2, PA, FR`,
+    warnings: "NÃO esperar RX para tratar — diagnóstico é CLÍNICO. Desvio de traqueia, enfisema subcutâneo, ausência de MV, hipotensão, turgência jugular.",
+    guideline: "ATLS / SBAIT",
+  },
+  {
+    id: "rx-emerg-hemorragia-periop",
+    title: "Hemorragia Perioperatória Maciça",
+    type: "Prescrição de Emergência",
+    prescription: `1. Ativar protocolo de transfusão maciça
+2. CH:PFC:Plaquetas na proporção 1:1:1
+3. Ácido tranexâmico 1g EV em 10min (nas primeiras 3h)
+4. Fibrinogênio: Crioprecipitado 10U se fibrinogênio <1,5g/L
+5. Cálcio (Gluconato de Ca 10% 10mL EV) a cada 4 unidades de CH
+6. Aquecer todos os hemoderivados
+7. Manter: Hb >7, plaquetas >50.000, INR <1,5, Ca++ >1,0
+8. Noradrenalina se PAM <65 apesar de volume
+9. Cirurgia de controle de dano: tamponamento + reintervenção em 24-48h
+10. Temperatura alvo >35°C (prevenir tríade letal: hipotermia + acidose + coagulopatia)`,
+    guideline: "ATLS / CRASH-2 / WSES",
+  },
+  {
+    id: "rx-emerg-embolia-gasosa",
+    title: "Embolia Gasosa",
+    type: "Prescrição de Emergência",
+    prescription: `1. Decúbito lateral esquerdo + Trendelenburg (posição de Durant)
+2. O2 100% alto fluxo (acelera reabsorção do ar)
+3. SF 0,9% 1000-2000mL EV (expansão volêmica)
+4. Aspirar ar pelo CVC (se acesso central in situ)
+5. Noradrenalina se hipotensão refratária
+6. Ecocardiograma: bolhas intracavitárias
+7. Câmara hiperbárica se disponível (embolia arterial/neurológica)
+8. Monitorização: ECG (arritmias), SpO2, PA invasiva
+9. Tratar causa: clampar acesso vascular, corrigir ar no circuito`,
+    warnings: "Mortalidade de 20-50% na embolia arterial. Volume letal estimado: 3-5mL/kg EV.",
+    guideline: "AMIB / SBC",
+  },
 ];
 

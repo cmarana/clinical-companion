@@ -1878,5 +1878,91 @@ Hemodiálise: dose total após cada sessão`,
     notes: "Espectro: C. albicans, C. parapsilosis, C. tropicalis. NÃO cobre C. krusei (resistência intrínseca) e C. glabrata (resistência frequente). Boa penetração SNC.",
     guideline: "ANVISA / IDSA / ESCMID",
   },
+  {
+    id: "rx-dil-dobutamina",
+    title: "Dobutamina — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO PADRÃO:
+Dobutamina 250mg (1 ampola 20mL) + SG 5% 230mL = 250mL
+Concentração: 1000 mcg/mL (1mg/mL)
+
+CÁLCULO:
+Dose (mcg/kg/min) × Peso(kg) × 60 / 1000 = mL/h
+
+Exemplo (70kg, dose 5mcg/kg/min):
+5 × 70 × 60 / 1000 = 21 mL/h
+
+FAIXA DE DOSE: 2,5-20 mcg/kg/min
+INÍCIO: 2,5-5mcg/kg/min → titular a cada 10-15 min
+
+SEM BOMBA:
+Macrogotas/min = mL/h / 3
+Ex: 21 mL/h ≈ 7 macrogotas/min`,
+    warnings: "NÃO diluir em soluções alcalinas (precipita). Pode causar hipotensão se dose alta sem vasopressor. Taquicardia: reduzir dose.",
+    notes: "Inotropismo: beta-1 agonista. Usar com Noradrenalina se PAM baixa. Efeito: aumenta DC, reduz RVP.",
+  },
+  {
+    id: "rx-dil-milrinona",
+    title: "Milrinona — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO PADRÃO:
+Milrinona 20mg (20mL) + SG 5% 80mL = 100mL
+Concentração: 200 mcg/mL
+
+DOSE:
+Ataque (opcional): 50mcg/kg EV em 10 min
+Manutenção: 0,375-0,75 mcg/kg/min em BIC
+
+Exemplo (70kg, dose 0,5mcg/kg/min):
+0,5 × 70 × 60 / 200 = 10,5 mL/h
+
+AJUSTE RENAL:
+ClCr 50: reduzir 25%
+ClCr 30: reduzir 33%
+ClCr 10: reduzir 50%`,
+    warnings: "Inibidor de PDE3: vasodilatador + inotrópico. HIPOTENSÃO é o efeito adverso mais comum. Evitar bolus se instável. Monitorar arritmias.",
+    notes: "Alternativa à Dobutamina quando betabloqueado. Não depende de receptores beta. Meia-vida ~2,5h (mais longa que Dobutamina).",
+  },
+  {
+    id: "rx-dil-vasopressina",
+    title: "Vasopressina — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO:
+Vasopressina 20UI (1 ampola 1mL) + SF 0,9% 99mL = 100mL
+Concentração: 0,2 UI/mL
+
+DOSE FIXA no choque séptico:
+0,03-0,04 UI/min (NÃO titular como catecolaminas)
+= 9-12 mL/h
+
+Hemorragia varicosa:
+0,2-0,4 UI/min = 60-120 mL/h (usar por tempo limitado)
+
+Diabetes insípidus:
+2-4 UI SC/IM a cada 4-6h OU 0,5mUI/kg/h em BIC`,
+    warnings: "NÃO usar como vasopressor único no choque. Associar com Noradrenalina. Risco: isquemia digital, mesentérica, coronariana.",
+    notes: "Surviving Sepsis 2021: adicionar Vasopressina 0,03UI/min quando Noradrenalina ≥0,25mcg/kg/min (reduzir dose de catecolamina).",
+  },
+  {
+    id: "rx-dil-cisatracurio",
+    title: "Cisatracúrio — Diluição e Preparo (BNM em UTI)",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO:
+Cisatracúrio 200mg (10 ampolas de 2mL/10mg) + SF 0,9% 180mL = 200mL
+Concentração: 1 mg/mL
+
+DOSE:
+Bolus: 0,15-0,2 mg/kg EV
+Manutenção: 0,06-0,18 mg/kg/h em BIC (1-3mcg/kg/min)
+
+Exemplo (70kg, 0,1mg/kg/h):
+0,1 × 70 = 7 mg/h = 7 mL/h
+
+INDICAÇÃO em UTI:
+SDRA grave com P/F <120 + prona + sedação profunda
+Usar por máximo 48h quando possível`,
+    warnings: "SEMPRE associar sedação profunda (RASS -5) — paciente paralisado sentindo dor/consciência é inaceitável. Monitorar TOF (train-of-four). Miopatia do doente crítico se uso prolongado.",
+    notes: "Metabolismo de Hofmann (independente de fígado/rim). Preferido em disfunção orgânica múltipla.",
+  },
 ];
 
