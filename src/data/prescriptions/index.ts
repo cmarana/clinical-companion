@@ -48,7 +48,7 @@ const specialtyRules: SpecialtyRule[] = [
   { id: "burns", title: "Queimados / CTQ", icon: "flame", match: (t, ti) => /queim|ctq/i.test(t) || /queimadura/i.test(ti) },
   { id: "oncology", title: "Oncologia", icon: "ribbon", match: (t, ti) => /oncol/i.test(t) },
   { id: "ent", title: "Otorrinolaringologia", icon: "ear", match: (t, ti) => /orl/i.test(t) || /epistaxe|sangramento nasal|abscesso peritonsilar|abscesso periamigdaliano|angina de ludwig|mastoidite|epiglotite|surdez súbita|corpo estranho.*via aérea|labirintite|vertigem|otite externa maligna|otite.*necrosante/i.test(ti) },
-  { id: "emergency-general", title: "Emergência Geral / PS", icon: "zap", match: (t, ti) => /crise hipertensiva|emergência hipertensiva|dor abdominal aguda/i.test(ti) },
+  { id: "emergency-general", title: "Emergência Geral / PS", icon: "zap", match: (t, ti) => /Prescrição de Emergência \/ PS/i.test(t) || /crise hipertensiva|emergência hipertensiva|dor abdominal aguda.*protocolo|síncope.*avaliação|mordedura.*cão|mordedura.*gato|afogamento|choque elétrico|eletrocussão|corpo estranho ingerido/i.test(ti) },
 ];
 
 function splitByDiagnosis(items: PrescriptionItem[]): PrescriptionCategory[] {
