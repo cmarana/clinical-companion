@@ -1712,5 +1712,62 @@ MONITORIZAÇÃO:
     warnings: "IRRIGAÇÃO é o tratamento mais importante. NÃO neutralizar. Ácido fluorídrico pode causar hipocalcemia fatal — monitorar Ca++ e ECG.",
     guideline: "SBQ / ABA / ISBI / TOXBASE",
   },
+  {
+    id: "rx-emerg-isquemia-mesenterica-aguda",
+    title: "Isquemia Mesentérica Aguda",
+    type: "Prescrição de Emergência / Cirúrgica",
+    prescription: `SUSPEITA: dor abdominal DESPROPORCIONAL ao exame físico + fator de risco (FA, aterosclerose, ICC, estados pró-trombóticos)
+
+DIAGNÓSTICO:
+1. AngioTC de abdome com contraste (padrão-ouro — sensibilidade >95%)
+2. Lactato arterial (elevação precoce)
+3. Gasometria (acidose metabólica)
+4. Hemograma, amilase, LDH, D-dímero
+
+MANEJO:
+5. Ressuscitação volêmica: SF 0,9% EV agressivo
+6. Antibioticoterapia: Piperacilina-Tazobactam 4,5g EV 6/6h OU Meropenem 1g EV 8/8h
+7. Heparina NF 80UI/kg bolus → 18UI/kg/h (anticoagulação plena)
+8. Analgesia: Morfina EV (NÃO usar vasoconstritores mesentéricos)
+9. SNG aberta (descompressão gástrica)
+10. SVD (controle de diurese)
+
+TRATAMENTO DEFINITIVO:
+11. Embolia arterial: embolectomia cirúrgica ± ressecção intestinal
+12. Trombose arterial: bypass mesentérico ou trombectomia
+13. Trombose venosa: anticoagulação (cirurgia se peritonite)
+14. Isquemia não oclusiva: papaverina intra-arterial 30-60mg/h + otimizar DC
+
+PÓS-OPERATÓRIO:
+15. Second-look laparotomia em 24-48h (avaliar viabilidade intestinal remanescente)
+16. NPT se ressecção extensa (síndrome do intestino curto)
+17. UTI obrigatória`,
+    warnings: "Mortalidade: 60-80%. A dor DESPROPORCIONAL ao exame é a chave clínica. NÃO usar vasopressores que piorem vasoconstrição mesentérica.",
+    guideline: "SBAD / ACG / ESVS / ACC/AHA",
+  },
+  {
+    id: "rx-emerg-sindrome-esmagamento",
+    title: "Síndrome de Esmagamento (Crush Syndrome)",
+    type: "Prescrição de Emergência",
+    prescription: `DEFINIÇÃO: rabdomiólise traumática por compressão prolongada (>1h) de massa muscular
+
+MANEJO PRÉ-HOSPITALAR (ANTES de retirar o peso):
+1. SF 0,9% 1-1,5L/h EV (INICIAR ANTES da liberação — prevenir choque de reperfusão)
+2. Monitorar ECG (hipercalemia → FV)
+3. Se K+ provável alto: Gluconato de Ca++ 10% 30mL EV (cardioproteção)
+
+APÓS LIBERAÇÃO:
+4. Hidratação MASSIVA: SF 0,9% 200-300mL/h (alvo diurese >200-300mL/h)
+5. Bicarbonato de sódio 8,4%: manter pH urinário >6,5 (protege túbulos da mioglobina)
+6. Manitol 20% 1g/kg EV (diurese osmótica — controverso se anúria)
+7. Tratar hipercalemia: Insulina 10UI + SG50% 40mL, Salbutamol NBZ, Kayexalate
+8. Gluconato de cálcio 10% se ECG alterado (alargamento QRS, onda T apiculada)
+9. Monitorar: CK (>5.000 = risco de IRA), mioglobina, K+, Ca++, gasometria, função renal
+10. Hemodiálise se: IRA oligúrica, K+ >6,5 refratário, acidose grave
+11. Fasciotomia se síndrome compartimental associada
+12. Avaliar amputação se membro inviável`,
+    warnings: "CHOQUE DE REPERFUSÃO: ao liberar o membro, toxinas entram na circulação → hipercalemia → PCR. SEMPRE hidratar ANTES de liberar. Ter Ca++ à mão.",
+    guideline: "ATLS / FEMA / WHO / Wilderness Medical Society",
+  },
 ];
 
