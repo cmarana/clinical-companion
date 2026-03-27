@@ -3,7 +3,8 @@ import { Input } from "@/components/ui/input";
 import {
   Search, Pill, ClipboardList, FileText, Calculator,
   Baby, Heart, Stethoscope, BookOpen, HelpCircle,
-  AlertTriangle, Zap, Moon, Sun, ChevronRight, Bot, FlaskConical
+  AlertTriangle, Zap, Moon, Sun, ChevronRight, Bot, FlaskConical,
+  Timer, CheckSquare, Hash, GitBranch, FileEdit
 } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -20,6 +21,11 @@ const modules = [
   { label: "Pediatria", icon: Baby, path: "/pediatrics" },
   { label: "Obstetrícia", icon: Heart, path: "/obstetrics" },
   { label: "Clínica", icon: Stethoscope, path: "/diagnosis" },
+  { label: "Timer PCR", icon: Timer, path: "/cpr-timer", accent: true },
+  { label: "Checklists", icon: CheckSquare, path: "/checklists" },
+  { label: "CID-10", icon: Hash, path: "/cid" },
+  { label: "Compat. Drogas", icon: GitBranch, path: "/drug-compatibility" },
+  { label: "Evoluções", icon: FileEdit, path: "/evolution-templates" },
   { label: "Questões", icon: HelpCircle, path: "/quiz" },
 ];
 
