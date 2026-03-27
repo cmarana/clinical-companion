@@ -1396,5 +1396,164 @@ MONITORIZAÇÃO:
 12. Alvo: PAM ≥65, diurese ≥0,5mL/kg/h, lactato ↓, SvO2 >65%`,
     guideline: "SSC / AMIB / AHA",
   },
+  {
+    id: "rx-sint-oliguria",
+    title: "Oligúria — Investigação e Manejo",
+    type: "Prescrição Sintomática / UTI",
+    prescription: `DEFINIÇÃO: diurese <0,5mL/kg/h por >6h
+
+INVESTIGAÇÃO:
+1. SVD funcionante? Flush vesical se dúvida de obstrução
+2. USG bexiga (globo vesical? = pós-renal)
+3. Na+ urinário: <20 = pré-renal | >40 = renal (NTA)
+4. FENa: <1% = pré-renal | >2% = renal
+5. Ureia/Creatinina sérica: relação >40:1 sugere pré-renal
+
+MANEJO:
+Pré-renal (hipovolemia):
+6. Prova de volume: SF 0,9% 250-500mL em 15-30min → observar resposta
+7. Se responsivo: manter hidratação
+8. Se não responsivo: NÃO insistir em volume
+
+Renal (NTA/nefrotóxica):
+9. Suspender nefrotóxicos (AINEs, aminoglicosídeos, contraste)
+10. Manter euvolemia
+11. Furosemida 40-80mg EV (NÃO melhora prognóstico, mas controla volemia)
+
+Pós-renal (obstrutivo):
+12. SVD de alívio → se débito >400mL: esvaziar gradualmente (200mL/vez)
+13. Nefrostomia se obstrução alta bilateral`,
+    guideline: "KDIGO AKI / SBN / AMIB",
+  },
+  {
+    id: "rx-sint-hipotermia-neonato",
+    title: "Hipotermia Neonatal",
+    type: "Prescrição Pediátrica — Neonatal",
+    prescription: `CLASSIFICAÇÃO:
+Frio (36-36,4°C): reaquecimento lento
+Hipotermia moderada (32-35,9°C): reaquecimento ativo
+Hipotermia grave (<32°C): emergência
+
+MANEJO:
+1. Berço aquecido com servo-controle (alvo T axilar 36,5-37,5°C)
+2. Contato pele-a-pele (método Canguru — mãe/pai)
+3. Gorro, meias, luvas (reduzir perdas)
+4. Saco plástico em <32 semanas (imediatamente após nascer)
+5. Glicemia capilar: hipoglicemia é associada → SG 10% 2mL/kg se <40
+6. Monitorar: FC, FR, SpO2, T axilar a cada 15-30min
+7. Gasometria se grave (acidose metabólica)
+8. Considerar sepse como causa: hemograma + PCR + hemocultura + ATB empírico
+9. Meta: T 36,5°C em 1h
+10. NÃO reaquecer rapidamente (risco de apneia e bradicardia)`,
+    guideline: "SBP / OMS / AAP / NRP",
+  },
+  {
+    id: "rx-sint-dor-torax-ps",
+    title: "Dor Torácica no PS — Abordagem Sistemática",
+    type: "Prescrição Sintomática",
+    prescription: `ATENDIMENTO IMEDIATO:
+1. ECG 12 derivações em <10min da chegada
+2. Monitorização contínua
+3. Acesso venoso calibroso
+4. AAS 200mg mastigar (se suspeita de SCA)
+5. O2 se SpO2 <94%
+
+ESTRATIFICAÇÃO:
+6. Troponina (0h e 3h) — se alta sensibilidade: 0h e 1h
+7. HEART Score: History, ECG, Age, Risk factors, Troponin
+   ≤3: baixo risco (alta com acompanhamento)
+   4-6: moderado (observação, teste provocativo)
+   ≥7: alto risco (internação, cateterismo)
+
+DIAGNÓSTICOS DIFERENCIAIS GRAVES (Big Five):
+8. SCA (IAM): ECG + Troponina + hemodinâmica
+9. TEP: D-dímero, Wells Score, angioTC
+10. Dissecção aórtica: angioTC tórax, pulsos assimétricos
+11. Pneumotórax hipertensivo: clínico → descompressão imediata
+12. Tamponamento: tríade de Beck (hipotensão + turgência jugular + hipofonese) → POCUS
+
+CAUSAS NÃO CARDÍACAS:
+13. Osteomuscular, DRGE, ansiedade/pânico, pleurite, herpes zoster`,
+    guideline: "SBC / AHA / ESC 2023",
+  },
+  {
+    id: "rx-sint-hipocalemia-grave",
+    title: "Hipocalemia Grave",
+    type: "Prescrição de Emergência",
+    prescription: `DEFINIÇÃO GRAVE: K+ <2,5mEq/L OU sintomático (arritmia, paralisia, rabdomiólise)
+
+REPOSIÇÃO EV (GRAVE):
+1. KCl 19,1% (2,56mEq/mL) — NÃO infundir puro
+2. Diluição: KCl 10mL (25,6mEq) + SF 0,9% 490mL = 500mL
+3. Velocidade máxima periférica: 10mEq/h (40mEq/L na solução)
+4. Velocidade máxima central: 20-40mEq/h (com monitorização ECG)
+5. Alvo: K+ >3,5mEq/L
+6. Dosar K+ a cada 2h durante reposição
+
+REPOSIÇÃO VO (MODERADA — K+ 2,5-3,5):
+7. KCl xarope 6%: 15-30mL VO 6/6h (cada 15mL = 12mEq)
+8. OU KCl comprimido 600mg VO 8/8h (cada cp = 8mEq)
+
+CORRIGIR MAGNÉSIO:
+9. Mg++ <1,5: MgSO4 50% 1-2g EV em 1h (hipomagnesemia impede correção de K+)
+
+CAUSAS:
+10. Investigar: diurético, vômitos, diarreia, hiperaldosteronismo, alcalose
+11. Se diurético crônico: associar Espironolactona 25-50mg VO`,
+    warnings: "NUNCA infundir KCl EV em bolus (PCR por arritmia). Velocidade máxima periférica: 10mEq/h. Sempre corrigir Mg++ junto.",
+    guideline: "SBN / KDIGO / AMIB",
+  },
+  {
+    id: "rx-sint-hipernatremia",
+    title: "Hipernatremia — Correção",
+    type: "Prescrição de Emergência / UTI",
+    prescription: `DEFINIÇÃO: Na+ >145mEq/L | Grave: >160mEq/L
+
+PRINCÍPIO: corrigir LENTAMENTE (<10-12mEq/24h) para evitar edema cerebral
+
+CÁLCULO DO DÉFICIT DE ÁGUA LIVRE:
+Déficit (L) = ACT × [(Na+ atual / 140) - 1]
+ACT = peso × 0,6 (homem) ou × 0,5 (mulher/idoso)
+Exemplo (70kg homem, Na+ 160): 42 × (160/140 - 1) = 6L
+
+REPOSIÇÃO:
+1. Fase aguda (<48h de instalação): pode corrigir mais rápido (1-2mEq/h nas primeiras 4h)
+2. Fase crônica (>48h ou incerto): máx 10mEq/24h
+
+SOLUÇÃO:
+3. Água livre VO/SNG (se tolerar) — mais seguro
+4. SG 5% EV (açúcar livre = água livre)
+5. SF 0,45% EV (meia-salina — cada litro = 500mL de água livre)
+6. NÃO usar SF 0,9% isolado (Na 154 — não corrige hipernatremia)
+
+MONITORIZAÇÃO:
+7. Na+ sérico a cada 4-6h
+8. Balanço hídrico rigoroso
+9. Diurese + osmolalidade urinária (DDI vs renal vs desidratação)
+10. Se diabetes insipidus central: Desmopressina 1-2mcg EV/SC 12/12h`,
+    guideline: "SBN / KDIGO / AMIB / Uptodate",
+  },
+  {
+    id: "rx-sint-prurido-generalizado",
+    title: "Prurido Generalizado",
+    type: "Prescrição Sintomática",
+    prescription: `INVESTIGAÇÃO:
+1. Dermatose primária? (eczema, urticária, escabiose, dermatite de contato)
+2. Causas sistêmicas: DRC (uremia), colestase, policitemia, linfoma, DM, tireoide, HIV
+3. Exames: hemograma, função renal, hepatograma, bilirrubinas, TSH, glicemia, VHS, LDH
+
+TRATAMENTO:
+4. Hidratação cutânea: creme hidratante à base de ureia 10% 2x/dia
+5. Banho morno (NÃO quente) com sabonete neutro
+6. Anti-histamínico:
+   - Dia: Loratadina 10mg VO 1x/dia OU Cetirizina 10mg VO 1x/dia
+   - Noite (se insônia pelo prurido): Hidroxizina 25mg VO à noite
+7. Se urticariforme: aumentar anti-H1 até 4x dose (off-label — eficaz)
+8. Corticoide tópico: Betametasona 0,05% creme 2x/dia por 7-14 dias (lesões localizadas)
+9. Se colestásico: Colestiramina 4g VO 2-4x/dia
+10. Se urêmico: otimizar diálise + Gabapentina 100-300mg VO à noite
+11. Se refratário: Doxepina 10-25mg VO à noite (tricíclico com efeito anti-H1/H2)`,
+    guideline: "SBD / BAD / AAD / EADV",
+  },
 ];
 
