@@ -1964,5 +1964,74 @@ Usar por máximo 48h quando possível`,
     warnings: "SEMPRE associar sedação profunda (RASS -5) — paciente paralisado sentindo dor/consciência é inaceitável. Monitorar TOF (train-of-four). Miopatia do doente crítico se uso prolongado.",
     notes: "Metabolismo de Hofmann (independente de fígado/rim). Preferido em disfunção orgânica múltipla.",
   },
+  {
+    id: "rx-dil-esmolol",
+    title: "Esmolol — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO:
+Esmolol 2500mg (250mL frasco pronto 10mg/mL) — usar direto
+OU Esmolol 100mg (10mL) + SF 0,9% 90mL = 100mL (1mg/mL = 1000mcg/mL)
+
+DOSE:
+Bolus: 500mcg/kg EV em 1 min
+Manutenção: 50-200mcg/kg/min em BIC
+
+Exemplo (70kg, 100mcg/kg/min, concentração 10mg/mL):
+100 × 70 × 60 / 10000 = 42 mL/h
+
+INDICAÇÕES:
+Dissecção aórtica, taquiarritmias perioperatórias, crise tireotóxica, IOT em reativo
+Meia-vida: 9 min (ultra-curta — ideal para titulação)`,
+    warnings: "Bradicardia e hipotensão: titular cuidadosamente. Contraindicado em IC descompensada, BAV 2º/3º grau, asma grave.",
+    notes: "Betabloqueador de ultra-curta ação. Efeito cessa em 10-20 min após suspensão. Ideal quando precisa de controle rápido e reversível.",
+  },
+  {
+    id: "rx-dil-alteplase",
+    title: "Alteplase (rt-PA) — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `AVC ISQUÊMICO:
+Dose: 0,9mg/kg (máx 90mg)
+10% em bolus EV em 1 min → 90% em BIC em 60 min
+Diluir: reconstituir 50mg em 50mL de água destilada (1mg/mL)
+
+Exemplo (70kg = 63mg):
+Bolus: 6,3mg (6,3mL) EV em 1 min
+Infusão: 56,7mg (56,7mL) EV em 60 min = 56,7mL/h
+
+TEP MACIÇO:
+Dose: 100mg EV em 2h
+10mg bolus → 90mg em 2h
+
+IAM (se Tenecteplase não disponível):
+15mg bolus → 0,75mg/kg em 30min (máx 50mg) → 0,5mg/kg em 60min (máx 35mg)
+
+JANELAS:
+AVC: até 4,5h | TEP: instabilidade hemodinâmica | IAM: porta-agulha <30min`,
+    warnings: "Contraindicações absolutas: sangramento ativo, cirurgia SNC <3 meses, AVC hemorrágico, MAV conhecida. Monitorar PA rigorosamente pós-trombólise.",
+  },
+  {
+    id: "rx-dil-heparina-bic",
+    title: "Heparina Não Fracionada — Protocolo de Infusão",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO PADRÃO:
+HNF 25.000UI (5mL) + SF 0,9% 245mL = 250mL
+Concentração: 100 UI/mL
+
+PROTOCOLO PARA TVP/TEP:
+Bolus: 80UI/kg EV (máx 10.000UI)
+Infusão: 18UI/kg/h em BIC
+
+Exemplo (70kg):
+Bolus: 5600UI = 56mL da solução (NÃO usar em bolus da solução diluída — usar puro: 5600UI = 1,12mL da ampola)
+Infusão: 1260UI/h = 12,6mL/h
+
+AJUSTE POR TTPa (colher 6h após início):
+TTPa <35s: bolus 80UI/kg + aumentar 4UI/kg/h
+TTPa 35-45s: bolus 40UI/kg + aumentar 2UI/kg/h
+TTPa 46-70s: sem alteração (ALVO)
+TTPa 71-90s: reduzir 2UI/kg/h
+TTPa >90s: parar por 1h + reduzir 3UI/kg/h`,
+    notes: "Controle: TTPa 1,5-2,5x o controle (46-70s). Colher TTPa 6h após cada ajuste. Antídoto: Protamina 1mg para cada 100UI de HNF das últimas 2-3h.",
+  },
 ];
 

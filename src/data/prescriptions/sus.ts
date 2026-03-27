@@ -976,5 +976,73 @@ Manutenção ambulatorial SUS:
     notes: "Meningocócica: petéquias/púrpura = URGÊNCIA. ATB na 1ª hora reduz mortalidade. Dexametasona: benefício comprovado para pneumocócica (reduz sequela auditiva).",
     guideline: "MS / SBI / IDSA / ESCMID",
   },
+  {
+    id: "rx-sus-vascular-emergencia",
+    title: "Emergência Vascular — Recursos SUS",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `Isquemia aguda de membro (UPA/Hospital):
+1. Heparina não fracionada 5000UI EV bolus (disponível SUS)
+2. Dipirona 1g EV + Tramadol 50mg EV (analgesia)
+3. SF 0,9% 500mL EV — hidratação
+4. NÃO elevar membro, NÃO aquecer
+5. TRANSFERIR URGENTE para hospital com cirurgia vascular (SAMU/regulação)
+
+Trombose venosa profunda (UPA):
+6. Enoxaparina 1mg/kg SC 12/12h (iniciar na UPA se disponível)
+7. OU Heparina NF 80UI/kg bolus → 18UI/kg/h (se HBPM indisponível)
+8. Solicitar USG Doppler venoso (se disponível) — se não: clínica + Wells
+9. Encaminhar para internação com heparinização`,
+    notes: "Na UPA sem cirurgião vascular: anticoagular e transferir. Isquemia aguda: tempo é membro. TVP: pode iniciar anticoagulação antes do exame se alta suspeita clínica.",
+    guideline: "MS / SVB",
+  },
+  {
+    id: "rx-sus-hemoderivados",
+    title: "Solicitação de Hemoderivados — SUS",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `Concentrado de Hemácias (CH):
+1. Indicação: Hb <7 (ou <9 se cardiopata/instável)
+2. Dose: 1U eleva Hb em ~1g/dL (adulto 70kg)
+3. Solicitar: tipagem ABO/Rh + prova cruzada
+4. Transfundir em 2-4h (máx 4h fora da geladeira)
+5. Aquecer apenas se transfusão maciça (>3U em <1h)
+
+Plasma Fresco Congelado (PFC):
+6. Indicação: coagulopatia com sangramento ativo (INR >1,5)
+7. Dose: 10-15mL/kg
+
+Concentrado de Plaquetas:
+8. Indicação: plaquetas <50.000 + sangramento OU <10.000 (mesmo sem sangramento)
+9. Dose: 1U/10kg (aférese: 1U)
+
+Crioprecipitado:
+10. Indicação: fibrinogênio <1,5g/L
+11. Dose: 1-2U/10kg
+
+REAÇÃO TRANSFUSIONAL: parar imediato, SF 0,9%, adrenalina se anafilaxia, enviar bolsa ao banco de sangue.`,
+    notes: "Preencher requisição com indicação clínica + Hb/Ht + peso. Toda reação transfusional deve ser notificada ao Hemocentro (NOTIVISA).",
+    guideline: "MS / ANVISA / AABB",
+  },
+  {
+    id: "rx-sus-sedacao-upa",
+    title: "Sedação e Analgesia — Recursos disponíveis UPA/SAMU",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `Sedação para IOT (disponível na maioria das UPAs):
+1. Midazolam 15mg/3mL: 0,1-0,3mg/kg EV (sedação)
+2. Fentanil 0,5mg/10mL: 2-3mcg/kg EV (analgesia)
+3. Succinilcolina 100mg: 1-1,5mg/kg EV (BNM — se disponível)
+
+Sedação para procedimento (redução de fratura, cardioversão):
+4. Cetamina 50mg/mL: 1-2mg/kg EV (sedação dissociativa — mantém drive respiratório)
+5. Midazolam 2-5mg EV lento (alternativa)
+
+Agitação psicomotora:
+6. Haloperidol 5mg IM (1ª escolha)
+7. Midazolam 5-10mg IM (se agitação intensa)
+8. Prometazina 25mg IM (associar ao Haloperidol se necessário)
+
+SEMPRE: monitorar SpO2, ter material de via aérea e Flumazenil/Naloxona disponíveis.`,
+    notes: "Na UPA sem capnografia: monitorar SpO2 + FR + nível de consciência continuamente durante sedação. Manter 1 profissional exclusivo para monitorização.",
+    guideline: "CFM / SBA / MS",
+  },
 ];
 

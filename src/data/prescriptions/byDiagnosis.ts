@@ -4624,5 +4624,293 @@ Parenteral (se contraindicação enteral):
 11. Glicemia alvo: 140-180mg/dL (protocolo de insulina)`,
     guideline: "ESPEN / ASPEN / BRASPEN",
   },
+  // === HEMATOLOGIA AVANÇADA ===
+  {
+    id: "rx-mat-ptt",
+    title: "Microangiopatia Trombótica — PTT",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `1. Plasmaférese de URGÊNCIA (1-1,5 volemias/sessão) — diária até normalização
+2. Corticoide: Metilprednisolona 1g EV por 3 dias → Prednisona 1mg/kg/dia
+3. PFC 15-20mL/kg EV enquanto aguarda plasmaférese (reposição ADAMTS13)
+4. Ácido fólico 5mg VO 1x/dia (suporte eritropoiético)
+5. NÃO TRANSFUNDIR PLAQUETAS (piora microtrombose — exceção: sangramento ameaçador de vida)
+6. Caplacizumab 11mg SC 1x/dia (anti-vWF — se disponível, reduz tempo de resolução)
+7. Rituximab 375mg/m² EV semanal (PTT refratária ou recidivante)
+8. Exames: hemograma, reticulócitos, LDH, haptoglobina, bilirrubina indireta, esquizócitos, ADAMTS13
+9. Monitorização: plaquetas diárias, LDH diário (marcador de resposta)`,
+    notes: "Pêntade clássica: anemia hemolítica microangiopática + trombocitopenia + IRA + febre + alteração neurológica. PLASCORE ≥5: alta suspeita. ADAMTS13 <10%: confirma PTT.",
+    warnings: "NÃO dar plaquetas na PTT. NÃO atrasar plasmaférese. Mortalidade sem tratamento: >90%. Com plasmaférese: <20%.",
+    guideline: "ISTH / ASH / BSH",
+  },
+  {
+    id: "rx-shu-atipica",
+    title: "SHU Atípica",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `1. Eculizumab 900mg EV semanal por 4 semanas → 1200mg na semana 5 → 1200mg a cada 2 semanas
+2. Vacinação anti-meningocócica (ACWY + B) ANTES ou junto ao início (risco de Neisseria)
+3. Penicilina V 500mg VO 12/12h (profilaxia meningocócica até 2 semanas pós-vacina)
+4. Suporte renal: hemodiálise se IRA oligúrica/anúrica ou hipercalemia refratária
+5. Transfusão de CH se Hb <7 (ou sintomática)
+6. NÃO TRANSFUNDIR PLAQUETAS (mesma lógica da PTT)
+7. Exames: complemento (C3, C4, CH50), fator H, fator I, anticorpos anti-fator H
+8. Monitorização: creatinina, plaquetas, LDH, haptoglobina diários`,
+    notes: "Diferenciar de SHU típica (E. coli STEC — suporte apenas, sem Eculizumab). SHU atípica: complemento desregulado. Resposta ao Eculizumab: melhora de plaquetas em 24-48h.",
+    guideline: "KDIGO / ASH / SBN",
+  },
+  {
+    id: "rx-hemofilia-sangramento",
+    title: "Hemofilia — Sangramento Agudo",
+    type: "Prescrição de Emergência",
+    prescription: `Hemofilia A (deficiência de Fator VIII):
+1. Fator VIII concentrado: dose = Peso(kg) × Aumento desejado(%) × 0,5
+   - Sangramento leve (articular): alvo 30-50% → manter 24-48h
+   - Sangramento grave (SNC, retroperitônio): alvo 80-100% → manter 7-14 dias
+2. Repetir a cada 8-12h (meia-vida FVIII: ~12h)
+
+Hemofilia B (deficiência de Fator IX):
+3. Fator IX concentrado: dose = Peso(kg) × Aumento desejado(%) × 1,0
+4. Repetir a cada 18-24h (meia-vida FIX: ~24h)
+
+Adjuntos:
+5. Ácido tranexâmico 1g EV 8/8h (sangramento mucoso)
+6. Desmopressina (DDAVP) 0,3mcg/kg EV em 30min (Hemofilia A leve)
+7. NÃO usar AAS ou AINEs (exceto COX-2 seletivos com cautela)
+8. Hemograma + TTPa (monitorar — TP normal na hemofilia)
+9. Se inibidor: Fator VII ativado recombinante (NovoSeven) 90mcg/kg 2/2h OU CCPA (FEIBA) 50-100UI/kg`,
+    warnings: "NUNCA puncionar articulação sem reposição de fator ANTES. NÃO usar IM. NÃO atrasar fator por exames. Acesso venoso: evitar punções múltiplas.",
+    guideline: "WFH / SBH / ISTH",
+  },
+  {
+    id: "rx-civd-avancada",
+    title: "CIVD — Manejo Avançado",
+    type: "Prescrição UTI",
+    prescription: `1. TRATAR A CAUSA BASE (sepse, trauma, neoplasia, obstétrica)
+2. Se sangramento ativo:
+   - PFC 15-20mL/kg EV (repor fatores)
+   - Crioprecipitado 10U se fibrinogênio <1,0-1,5g/L
+   - Plaquetas se <50.000 + sangramento (ou <20.000 mesmo sem sangramento)
+3. Se trombose predominante (CIVD crônica/compensada):
+   - Heparina não fracionada 500UI/h em BIC (dose baixa, sem bolus)
+   - OU Enoxaparina 40mg SC 12/12h
+4. Ácido tranexâmico: CONTRAINDICADO na CIVD (piora trombose microvascular)
+5. Monitorização: TP, TTPa, fibrinogênio, D-dímero, plaquetas — 6/6h
+6. Score ISTH para CIVD: ≥5 = CIVD manifesta`,
+    warnings: "NÃO usar antifibrinolíticos (ácido tranexâmico) na CIVD manifesta. Tratar causa é o MAIS IMPORTANTE.",
+    guideline: "ISTH / BSH / SBH",
+  },
+  {
+    id: "rx-trombocitopenia-heparina",
+    title: "Trombocitopenia Induzida por Heparina (HIT)",
+    type: "Prescrição Hospitalar",
+    prescription: `1. SUSPENDER TODA heparina (HNF e HBPM) IMEDIATAMENTE
+2. Iniciar anticoagulante alternativo:
+   - Argatroban 2mcg/kg/min EV em BIC (ajustar por TTPa 1,5-3x) — preferido se disfunção hepática leve
+   - OU Fondaparinux 7,5mg SC 1x/dia (off-label mas usado)
+3. NÃO usar Varfarina até plaquetas >150.000 (risco de necrose cutânea / gangrena venosa)
+4. Após recuperação plaquetária: transição para Varfarina com overlap de 5 dias
+5. Dosar anticorpos anti-PF4/heparina (ELISA) + teste funcional (SRA)
+6. Monitorar: plaquetas diárias
+7. Score 4T para probabilidade pré-teste`,
+    notes: "HIT tipo II: queda >50% nas plaquetas entre D5-D14 da heparina (ou D1 se exposição prévia <100 dias). Risco trombótico: 30-50%. Mortalidade sem tratamento: 20%.",
+    guideline: "ASH / ISTH / SBH",
+  },
+  // === CIRURGIA VASCULAR ===
+  {
+    id: "rx-aneurisma-aorta-roto",
+    title: "Aneurisma de Aorta Roto — Emergência",
+    type: "Prescrição de Emergência",
+    prescription: `1. CIRURGIA DE EMERGÊNCIA — NÃO atrasar por exames
+2. 2 acessos venosos calibrosos (14-16G) + acesso central
+3. SF 0,9% / Ringer Lactato em bolus — HIPOTENSÃO PERMISSIVA (PAS 80-90 até sala cirúrgica)
+4. Ativar protocolo de transfusão maciça: CH:PFC:Plaq 1:1:1
+5. Ácido tranexâmico 1g EV em 10min
+6. Tipagem + reservar ≥6U de CH
+7. Noradrenalina SN (evitar PAM alta — aumenta sangramento)
+8. IOT + VM se instabilidade ou rebaixamento
+9. PA invasiva + SVD
+10. Angiotomografia APENAS se hemodinâmicamente estável (dúvida diagnóstica)
+11. Avaliar: reparo endovascular (EVAR) vs cirurgia aberta`,
+    warnings: "Tríade clássica: dor abdominal/lombar + massa pulsátil + hipotensão. Mortalidade pré-hospitalar: 50%. NÃO elevar PA. NÃO atrasar por exames.",
+    guideline: "SVB / SBCCV / ESVS / SVS",
+  },
+  {
+    id: "rx-isquemia-aguda-membro",
+    title: "Isquemia Aguda de Membro",
+    type: "Prescrição de Emergência",
+    prescription: `1. Heparina não fracionada: 80UI/kg EV bolus → 18UI/kg/h em BIC (TTPa alvo 2-2,5x)
+2. Analgesia: Morfina 2-4mg EV (dor intensa)
+3. SF 0,9% 500mL EV — hidratação (evitar hipovolemia)
+4. Manter membro em posição neutra (NÃO elevar — piora isquemia)
+5. NÃO aquecer membro (aumenta demanda metabólica)
+6. Classificação de Rutherford:
+   I (viável): anticoagulação + avaliação eletiva
+   IIa (marginal): revascularização urgente
+   IIb (ameaçada): revascularização IMEDIATA
+   III (irreversível): amputação
+7. Embolectomia/trombectomia com cateter de Fogarty (se embólica)
+8. OU trombólise intra-arterial: Alteplase 0,5-1mg/h via cateter (se trombótica e IIa)
+9. Fasciotomia profilática se >6h de isquemia (síndrome compartimental pós-reperfusão)
+10. Pós-reperfusão: monitorar K+, CK, mioglobina, função renal (rabdomiólise)`,
+    notes: "6 Ps: Pain, Pallor, Pulselessness, Paresthesia, Paralysis, Poikilothermia. Janela: 6h para revascularização (golden time).",
+    guideline: "SVB / ESVS / SVS / ACC/AHA",
+  },
+  {
+    id: "rx-disseccao-aortica",
+    title: "Dissecção Aguda de Aorta",
+    type: "Prescrição de Emergência",
+    prescription: `1. PA alvo: PAS 100-120mmHg E FC <60bpm (reduzir dP/dt)
+2. Esmolol 500mcg/kg bolus → 50-200mcg/kg/min em BIC (1ª escolha — betabloqueador EV)
+3. OU Labetalol 20mg EV bolus → 1-2mg/min em BIC
+4. Se PA não controlada: Nitroprussiato 0,25-10mcg/kg/min (APENAS APÓS betabloqueador)
+5. Morfina 2-4mg EV para dor (reduz descarga simpática)
+6. Angiotomografia de aorta (exame de escolha)
+7. 2 acessos calibrosos + tipagem + reservar CH
+8. PA invasiva (artéria radial DIREITA — avaliar discrepância de PA entre membros)
+
+Stanford A (aorta ascendente): CIRURGIA DE EMERGÊNCIA
+Stanford B (descendente): manejo clínico (exceto se complicação)
+   Complicações Stanford B: rotura, malperfusão, dor refratária → TEVAR/cirurgia`,
+    warnings: "NÃO usar Nitroprussiato ISOLADO (taquicardia reflexa aumenta dP/dt e piora dissecção). SEMPRE betabloqueador PRIMEIRO.",
+    guideline: "SBC / SBCCV / ESC / ACC/AHA",
+  },
+  {
+    id: "rx-tvp-extensa",
+    title: "TVP Extensa — Iliofemoral / Flegmasia",
+    type: "Prescrição Hospitalar",
+    prescription: `TVP iliofemoral:
+1. Heparina não fracionada: 80UI/kg bolus → 18UI/kg/h (TTPa 1,5-2,5x)
+   OU Enoxaparina 1mg/kg SC 12/12h
+2. Elevação do membro + compressão elástica (após anticoagulação plena)
+3. Analgesia: Dipirona 1g EV 6/6h + AINEs se não contraindicado
+4. Transição para DOAC: Rivaroxabana 15mg 12/12h por 21 dias → 20mg 1x/dia
+5. Avaliar trombólise dirigida por cateter (CDT) se TVP iliofemoral + <14 dias + baixo risco de sangramento
+
+Flegmasia Cerulea Dolens (emergência):
+6. Heparinização plena IMEDIATA
+7. Trombólise sistêmica ou CDT
+8. Fasciotomia se síndrome compartimental
+9. Amputação se irreversível (necrose extensa)
+10. Elevação do membro + SF 0,9% 1000mL EV`,
+    warnings: "Flegmasia cerulea: membro edemaciado, cianótico, sem pulso. Evolução para gangrena venosa. Mortalidade 25%. Amputação 25%.",
+    guideline: "SBC / CHEST / ESVS / ISTH",
+  },
+  // === SEDAÇÃO/ANALGESIA UTI AVANÇADA ===
+  {
+    id: "rx-sedacao-dexmedetomidina",
+    title: "Sedação com Dexmedetomidina — UTI",
+    type: "Prescrição UTI",
+    prescription: `DILUIÇÃO:
+Dexmedetomidina 200mcg (2mL) + SF 0,9% 48mL = 50mL
+Concentração: 4 mcg/mL
+
+DOSE:
+Ataque (opcional): 1mcg/kg EV em 10 min (EVITAR se instável — bradicardia/hipotensão)
+Manutenção: 0,2-1,4 mcg/kg/h em BIC
+
+Exemplo (70kg, 0,7mcg/kg/h):
+0,7 × 70 / 4 = 12,25 mL/h
+
+INDICAÇÕES:
+1. Sedação leve a moderada (RASS 0 a -3)
+2. Desmame de VM (sedação cooperativa)
+3. Delirium em UTI (superior a benzodiazepínicos)
+4. Pós-operatório cardíaco
+5. Pode ser usada em paciente NÃO intubado (diferencial)`,
+    warnings: "Bradicardia e hipotensão: efeitos mais comuns. Evitar bolus em idosos/instáveis. NÃO adequada para sedação PROFUNDA (RASS -4/-5).",
+    notes: "Agonista alfa-2: sedação sem depressão respiratória significativa. Reduz incidência de delirium vs Midazolam (estudo MENDS/SEDCOM).",
+    guideline: "PADIS 2018 / AMIB",
+  },
+  {
+    id: "rx-analgesia-multimodal-uti",
+    title: "Analgesia Multimodal em UTI",
+    type: "Prescrição UTI",
+    prescription: `Protocolo Analgesia-First (analgosedação):
+1. Fentanil 50-200mcg/h em BIC (titulação por BPS/CPOT)
+   OU Remifentanil 0,05-0,15mcg/kg/min (ultra-curta ação — ideal para despertar diário)
+2. Dipirona 1g EV 6/6h (adjuvante — reduz opioide)
+3. Paracetamol 1g EV 6/6h (adjuvante)
+4. Cetamina subdissociativa: 0,1-0,3mg/kg/h em BIC (poupa opioide, broncodilatador)
+5. Lidocaína EV: 1-2mg/kg/h em BIC (dor abdominal/queimados — poupa opioide)
+6. Gabapentina 300mg VO 8/8h (via SNE — dor neuropática)
+7. NÃO usar AINEs de rotina em UTI (risco renal + sangramento)
+
+Avaliação:
+8. BPS (intubado) ou CPOT: avaliar 4/4h e antes/após intervenção
+9. BPS alvo: 3-4 (sem dor) | CPOT alvo: 0-2
+10. Sempre tratar dor ANTES de sedar`,
+    notes: "Analgosedação (analgesia-first): reduz tempo de VM, UTI e delirium vs sedação-first. Remifentanil: meia-vida 3-4min (ideal para despertar diário).",
+    guideline: "PADIS 2018 / AMIB / SBA",
+  },
+  {
+    id: "rx-sedacao-profunda-uti",
+    title: "Sedação Profunda em UTI (RASS -4/-5)",
+    type: "Prescrição UTI",
+    prescription: `INDICAÇÕES: SDRA grave + prona, status epiléptico, hipertensão intracraniana, BNM, tétano
+
+Opção 1 — Midazolam + Fentanil:
+1. Midazolam: 0,05-0,2mg/kg/h em BIC (5-15mg/h em 70kg)
+2. Fentanil: 1-3mcg/kg/h em BIC (50-200mcg/h em 70kg)
+
+Opção 2 — Propofol + Fentanil (preferido se curta duração):
+3. Propofol: 1-4mg/kg/h em BIC (NÃO ultrapassar 5mg/kg/h — PRIS)
+4. Fentanil: 1-3mcg/kg/h em BIC
+
+Opção 3 — Cetamina (broncoespasmo, choque):
+5. Cetamina: 0,5-2mg/kg/h em BIC (preserva drive respiratório e PA)
+
+Monitorização:
+6. RASS a cada 4h (alvo -4 a -5)
+7. BIS (se disponível): alvo 40-60
+8. Despertar diário: suspender sedação 1x/dia (exceto se contraindicação)
+9. Triglicerídeos a cada 48h se Propofol (PRIS: acidose + rabdomiólise + bradicardia)`,
+    warnings: "PRIS (Síndrome da Infusão de Propofol): >5mg/kg/h por >48h. Monitorar: lactato, CK, triglicerídeos, ECG. Suspender imediatamente se suspeita.",
+    guideline: "PADIS 2018 / AMIB / SBA",
+  },
+  {
+    id: "rx-protocolo-despertar-diario",
+    title: "Protocolo de Despertar Diário — SAT/SBT",
+    type: "Prescrição UTI",
+    prescription: `CRITÉRIOS DE SEGURANÇA (para suspender sedação):
+1. Sem BNM ativo
+2. Sem convulsão ativa nas últimas 24h
+3. Sem HIC monitorada com PIC >20
+4. Sem isquemia miocárdica ativa
+5. FiO2 ≤0,6 e PEEP ≤10
+
+PROTOCOLO SAT (Spontaneous Awakening Trial):
+6. Suspender infusão de sedativo (manter analgesia em dose baixa)
+7. Avaliar em 30-60 min:
+   Sucesso: abre olhos, segue comandos, RASS ≥ -1
+   Falha: agitação perigosa, SpO2 <88%, FR >35, arritmia — reiniciar em 50% da dose
+
+APÓS SAT BEM-SUCEDIDO → SBT (TRE):
+8. PSV 5-7 + PEEP 5 OU Tubo T por 30-120 min
+9. Sucesso SBT → EXTUBAR
+10. SAT + SBT coordenados: redução de 30% na mortalidade em 1 ano (estudo ABC)`,
+    notes: "Bundle ABCDEF: A (avaliar dor), B (SAT+SBT), C (escolha de sedação), D (delirium), E (exercício/mobilidade), F (família). Implementação conjunta reduz mortalidade e delirium.",
+    guideline: "PADIS 2018 / ABC Trial / AMIB",
+  },
+  {
+    id: "rx-bloqueio-neuromuscular-uti",
+    title: "Bloqueio Neuromuscular Contínuo em UTI",
+    type: "Prescrição UTI",
+    prescription: `INDICAÇÕES RESTRITAS:
+1. SDRA grave com P/F <120 + driving pressure >15 + assincronias
+2. Hipotermia terapêutica (controle de tremores)
+3. Hipertensão intracraniana refratária
+4. Tétano grave
+
+PROTOCOLO:
+5. Cisatracúrio 0,15mg/kg bolus → 0,06-0,18mg/kg/h em BIC (1ª escolha)
+6. OU Pancurônio 0,1mg/kg bolus → 0,02-0,03mg/kg/h (mais barato, mais efeitos CV)
+7. OBRIGATÓRIO: sedação profunda RASS -5 (ANTES de iniciar BNM)
+8. Monitorar TOF (train-of-four): alvo 1-2/4 twitches
+9. Pausar BNM 1x/dia para reavaliar necessidade
+10. Tempo máximo recomendado: 48h (se possível)
+11. Prevenir: úlcera de córnea (lubrificante ocular), TVP (compressão pneumática)
+12. Cuidados: posicionamento articular, fisioterapia passiva`,
+    warnings: "Miopatia do doente crítico: risco com BNM >48h + corticoide. Awareness intraoperatória: SEMPRE manter sedação profunda + BIS se disponível.",
+    guideline: "PADIS 2018 / AMIB / ACURASYS",
+  },
 ];
 
