@@ -5650,5 +5650,317 @@ Suporte:
     warnings: "Diferenciar crise miastênica de crise colinérgica (excesso de anticolinesterásico): ambas causam fraqueza + insuficiência respiratória. Na dúvida: suspender Piridostigmina + suporte.",
     guideline: "ABN / AAN / MGFA",
   },
+  // === GERIATRIA ===
+  {
+    id: "rx-delirium-idoso",
+    title: "Delirium no Idoso",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `MEDIDAS NÃO FARMACOLÓGICAS (1ª LINHA):
+1. Reorientação frequente (relógio, calendário, familiares)
+2. Mobilização precoce — evitar contenção física
+3. Correção sensorial: óculos e prótese auditiva no leito
+4. Ciclo sono-vigília: luz durante o dia, escuro à noite
+5. Hidratação oral + evitar desidratação
+6. Revisar medicações (Critérios de Beers) — SUSPENDER benzodiazepínicos, anticolinérgicos, opioides desnecessários
+
+FARMACOLÓGICO (se agitação com risco):
+7. Haloperidol 0,5-1mg VO/IM 12/12h (menor dose possível)
+8. OU Quetiapina 12,5-25mg VO à noite (se Parkinson/Lewy)
+9. NÃO usar benzodiazepínicos (exceto se abstinência alcoólica)
+10. Investigar e tratar CAUSA: infecção, retenção urinária, constipação, dor, hipóxia, distúrbio metabólico
+
+EXAMES:
+11. Hemograma, PCR, EAS, urocultura, função renal, eletrólitos, glicemia, TSH
+12. RX tórax, gasometria
+13. CAM (Confusion Assessment Method) para diagnóstico`,
+    notes: "Delirium é EMERGÊNCIA GERIÁTRICA — mortalidade de 25-33% em hospitalizados. Tipos: hiperativo (agitação), hipoativo (mais comum, subdiagnosticado) e misto. Usar CAM para diagnóstico.",
+    warnings: "NÃO usar benzodiazepínicos (pioram delirium). Haloperidol contraindicado se QTc >500ms. Contenção física PIORA delirium.",
+    guideline: "AGS / NICE / SBGG",
+  },
+  {
+    id: "rx-polifarmacia-idoso",
+    title: "Polifarmácia — Desprescrição no Idoso",
+    type: "Prescrição Ambulatorial / Hospitalar",
+    prescription: `AVALIAÇÃO CRITÉRIOS DE BEERS (AGS 2023):
+MEDICAMENTOS POTENCIALMENTE INAPROPRIADOS (MPI):
+1. SUSPENDER/SUBSTITUIR: Benzodiazepínicos de ação longa (Diazepam, Clonazepam)
+2. SUSPENDER: Anti-histamínicos 1ª geração (Prometazina, Hidroxizina) — risco anticolinérgico
+3. SUSPENDER: AINEs crônicos (Ibuprofeno, Diclofenaco) — risco renal, GI, CV
+4. REDUZIR: Opioides — risco de queda, confusão, constipação
+5. REAVALIAR: IBPs crônicos (Omeprazol >8 semanas) — risco de fraturas, deficiência B12, Clostridium
+6. EVITAR: Antipsicóticos em demência (exceto se risco iminente) — ↑ mortalidade
+7. REAVALIAR: Metildopa, Clonidina (hipotensão postural)
+
+SUBSTITUIÇÕES SEGURAS:
+8. Diazepam → Lorazepam 0,5mg (se necessário) OU medidas não farmacológicas
+9. Prometazina → Ondansetrona (antiemético)
+10. AINEs → Dipirona ou Paracetamol
+11. Omeprazol crônico → reavaliar indicação; se DRGE: dose mínima efetiva
+
+FERRAMENTA STOPP/START:
+12. STOPP: identificar medicamentos a suspender
+13. START: identificar medicamentos a iniciar (ex: vitamina D, estatina se indicação)`,
+    notes: "Polifarmácia: ≥5 medicamentos. Cada medicamento adicional aumenta risco de interação em 7-10%. Revisão medicamentosa a cada consulta.",
+    guideline: "AGS Beers 2023 / STOPP/START v3 / SBGG",
+  },
+  {
+    id: "rx-queda-idoso",
+    title: "Queda no Idoso — Avaliação e Prevenção",
+    type: "Prescrição Ambulatorial / Hospitalar",
+    prescription: `AVALIAÇÃO IMEDIATA (se queda recente):
+1. Investigar lesão: TC crânio se TCE, RX se fratura
+2. Hemograma, glicemia, eletrólitos, função renal
+3. ECG (síncope cardiogênica?)
+4. PA deitado e em pé (hipotensão ortostática: queda ≥20mmHg PAS)
+
+INVESTIGAÇÃO DE CAUSA:
+5. Revisar medicamentos: hipotensores, sedativos, hipoglicemiantes
+6. Teste de visão — encaminhar oftalmologista
+7. Avaliação cognitiva (MEEM — demência ↑ risco de queda)
+8. Força muscular e marcha: Timed Up & Go (TUG >12s = risco)
+9. Avaliação podológica (calçado adequado)
+
+PREVENÇÃO:
+10. Vitamina D 1000-2000UI/dia (se deficiente)
+11. Exercícios de equilíbrio e fortalecimento (fisioterapia)
+12. Adaptação domiciliar: barras de apoio, iluminação, tapetes
+13. Reduzir/suspender benzodiazepínicos e sedativos
+14. Correção visual/auditiva`,
+    guideline: "AGS/BGS / SBGG / OMS",
+  },
+  {
+    id: "rx-fragilidade-idoso",
+    title: "Síndrome de Fragilidade — Manejo",
+    type: "Prescrição Ambulatorial",
+    prescription: `CRITÉRIOS DE FRIED (≥3 = frágil, 1-2 = pré-frágil):
+- Perda de peso não intencional (>4,5kg/ano)
+- Fadiga autorreferida
+- Fraqueza (força de preensão)
+- Velocidade de marcha reduzida
+- Baixa atividade física
+
+MANEJO:
+1. Exercício multicomponente: resistido + equilíbrio + aeróbico (3x/semana)
+2. Nutrição: proteína 1,2-1,5g/kg/dia + suplementar se desnutrido
+3. Vitamina D 1000-2000UI/dia
+4. Revisar polifarmácia (desprescrição)
+5. Vacinação em dia: Influenza, Pneumocócica, Herpes Zoster
+6. Avaliação geriátrica ampla (AGA): funcionalidade, cognição, humor, nutrição, social
+7. Suporte social: cuidador, rede de apoio
+8. Prevenção de quedas (protocolo específico)
+9. Planejamento de cuidados avançados`,
+    guideline: "SBGG / ICFSR / AGA",
+  },
+  {
+    id: "rx-demencia-agitacao",
+    title: "Agitação em Demência — Manejo",
+    type: "Prescrição Hospitalar",
+    prescription: `MEDIDAS NÃO FARMACOLÓGICAS (OBRIGATÓRIAS 1º):
+1. Ambiente calmo, com poucos estímulos
+2. Comunicação clara, frases curtas, tom calmo
+3. Identificar e tratar causa: dor (aplicar PAINAD), infecção, retenção urinária, constipação, fome/sede
+4. Presença de familiar/cuidador conhecido
+5. Música terapêutica, toque gentil
+
+FARMACOLÓGICO (ÚLTIMA OPÇÃO — se risco):
+6. Risperidona 0,25-0,5mg VO 1x/dia (único aprovado pela ANVISA para agitação em demência)
+7. OU Quetiapina 12,5-25mg VO à noite
+8. Haloperidol 0,5mg IM APENAS se risco iminente (evitar se Lewy/Parkinson)
+9. NÃO USAR: benzodiazepínicos, anticolinérgicos
+10. Duração: menor tempo possível → reavaliar em 1-2 semanas para desmame`,
+    warnings: "Antipsicóticos em demência: FDA BLACK BOX — ↑ mortalidade em 1,6-1,7x. Usar menor dose por menor tempo possível.",
+    guideline: "APA / NICE / SBGG / ANVISA",
+  },
+  // === MEDICINA INTENSIVA AVANÇADA ===
+  {
+    id: "rx-ecmo-va-avancado",
+    title: "ECMO VA — Protocolo Avançado",
+    type: "Prescrição UTI — Terapia Avançada",
+    prescription: `INDICAÇÕES:
+- Choque cardiogênico refratário (após otimização de DVA + IABP)
+- PCR refratária (eCPR — considerar se <60 anos, causa tratável, <60min)
+- Ponte para transplante cardíaco ou LVAD
+
+CANULAÇÃO:
+1. Femoral-femoral (periférica) ou central (esternal)
+2. Cânula arterial 15-17Fr / Cânula venosa 21-25Fr
+3. Inserção percutânea ou cirúrgica (guiada por USG + fluoroscopia)
+
+PARÂMETROS INICIAIS:
+4. Fluxo: 50-80mL/kg/min (adulto: 3-5 L/min)
+5. RPM: conforme débito alvo
+6. Sweep gas (O2): iniciar 1:1 com fluxo de sangue → titular por PaCO2
+7. FiO2: 100% → titular para PaO2 150-200mmHg na pós-membrana
+
+ANTICOAGULAÇÃO:
+8. Heparina NF: bolus 50-100UI/kg → infusão 7,5-20UI/kg/h
+9. Alvo TCA 180-220s OU TTPa 1,5-2x controle
+10. Anti-Xa: 0,3-0,7UI/mL (se disponível)
+
+MONITORIZAÇÃO:
+11. PAM alvo: 65-75mmHg
+12. SvO2 pré-membrana >65%
+13. Pressão transmembrana (ΔP <50mmHg — troca de membrana se >50)
+14. Fibrinogênio >150mg/dL (repor crioprecipitado se baixo)
+15. Plaquetas >50.000 (>80.000 se sangramento)
+16. LDH, Hb livre (hemólise)
+17. Ecocardiograma diário (avaliar abertura de valva aórtica — risco de estase/trombose)
+18. Checklist perfusional 6/6h
+
+COMPLICAÇÕES:
+19. Isquemia de membro (cânula arterial): cânula de reperfusão anterógrada obrigatória
+20. Síndrome de Arlequim (ECMO VA periférica): SpO2 mão D + gasometria radial D
+21. Sangramento: reavaliar ACT, repor fatores, considerar ácido tranexâmico
+22. Trombose: avaliar troca de circuito`,
+    guideline: "ELSO / AMIB / SBC",
+  },
+  {
+    id: "rx-monitorizacao-hemodinamica",
+    title: "Monitorização Hemodinâmica Avançada",
+    type: "Prescrição UTI",
+    prescription: `CATETER DE ARTÉRIA PULMONAR (Swan-Ganz):
+1. Inserção via jugular interna D ou subclávia
+2. Medidas: PVC, PAP, POAP, DC/IC, RVS, RVP, SvO2
+3. Valores-alvo:
+   - PVC: 8-12mmHg
+   - POAP: 12-18mmHg
+   - IC: 2,5-4,0 L/min/m²
+   - RVS: 800-1200 dina.s.cm-5
+   - SvO2: 65-75%
+
+TERMODILUIÇÃO TRANSPULMONAR (PiCCO/EV1000):
+4. Cateter arterial femoral + CVC jugular
+5. Medidas adicionais: GEDI (pré-carga volumétrica), ELWI (água pulmonar), GEF
+6. GEDI alvo: 680-800mL/m² (guia ressuscitação volêmica)
+7. ELWI <10mL/kg (>10 = edema pulmonar)
+
+ECOCARDIOGRAMA POINT-OF-CARE (POCUS):
+8. Avaliação de função VE/VD, derrame pericárdico
+9. VCI: <21mm com colapso >50% = hipovolemia provável
+10. TAPSE >17mm (função VD preservada)
+11. Protocolo RUSH para choque indiferenciado
+
+PROVA DE VOLUME (FLUID RESPONSIVENESS):
+12. Passive Leg Raising (PLR): elevação de MMII 45° por 1-3min
+13. Responsivo se: ↑ DC/IC ≥10% (medido por POCUS, PiCCO ou PA linha arterial)
+14. OU Variação de Pressão de Pulso (ΔPP) >13% em VM (sem arritmia, VC >8mL/kg)
+15. OU Teste de mini-bolus: 100mL em 1min → avaliar resposta hemodinâmica`,
+    notes: "Swan-Ganz: indicações cada vez mais restritas. POCUS + PiCCO são preferidos. PLR é o teste mais confiável para fluid responsiveness.",
+    guideline: "AMIB / ESICM / SSC",
+  },
+  {
+    id: "rx-desmame-vm",
+    title: "Desmame de Ventilação Mecânica",
+    type: "Prescrição UTI",
+    prescription: `CRITÉRIOS PARA INICIAR DESMAME:
+1. Causa da IOT resolvida/controlada
+2. FiO2 ≤40%, PEEP ≤8, PaO2/FiO2 >150
+3. Hemodinamicamente estável (sem ou baixa dose DVA)
+4. Nível de consciência adequado (Glasgow ≥8, responde a comandos)
+5. Tosse eficaz, reflexo de deglutição presente
+6. Balanço hídrico não excessivamente positivo
+
+TESTE DE RESPIRAÇÃO ESPONTÂNEA (TRE) — 30-120min:
+7. Tubo T com O2 úmido OU PSV 5-7cmH2O + PEEP 5
+8. Monitorar: FR, VC, SpO2, PA, FC, padrão respiratório
+9. FALHA SE: FR >35/min, SpO2 <90%, FC >140 ou ↑20%, PAS >180 ou <90, agitação, sudorese
+
+ÍNDICE DE TOBIN (FR/VC):
+10. <105 = sucesso provável (>105 = falha provável)
+
+EXTUBAÇÃO:
+11. Teste de vazamento do cuff (cuff leak test) — se risco de edema laríngeo
+12. Aspirar via aérea antes de desinsuflar cuff
+13. Manter cabeceira elevada 45°
+14. O2 suplementar pós-extubação (cateter/máscara/CNAF)
+15. Se falha pós-extubação: VNI precoce (DPOC, ICC) OU reintubação se necessário
+
+TRAQUEOSTOMIA (se VM prolongada):
+16. Considerar se previsão de VM >14-21 dias
+17. Percutânea à beira-leito vs cirúrgica`,
+    guideline: "AMIB / ATS / ERS / SBPT",
+  },
+  {
+    id: "rx-nutricao-parenteral-uti",
+    title: "Nutrição Parenteral Total — Prescrição UTI",
+    type: "Prescrição UTI",
+    prescription: `INDICAÇÕES: contraindicação absoluta à dieta enteral (obstrução intestinal, íleo prolongado, isquemia mesentérica, fístula de alto débito)
+
+CÁLCULOS:
+1. Necessidade calórica: 20-25kcal/kg/dia (fase aguda) → 25-30kcal/kg/dia (recuperação)
+2. Proteína: 1,2-2,0g/kg/dia (crítico)
+3. Glicose: 3-5g/kg/dia (máx 5mg/kg/min) — 60-70% das calorias não proteicas
+4. Lipídios: 0,7-1,5g/kg/dia (20-30% das calorias) — preferir emulsão com ômega-3 (SMOF)
+5. Volume total: 25-30mL/kg/dia
+
+PRESCRIÇÃO (exemplo 70kg):
+6. Glicose 50%: ___mL
+7. Aminoácidos 10%: ___mL
+8. Lipídios 20%: ___mL
+9. NaCl 20%: 10-20mL (conforme Na+)
+10. KCl 19,1%: 10-20mL (conforme K+)
+11. MgSO4 10%: 10mL
+12. Gluconato de cálcio 10%: 10mL
+13. Fosfato de potássio: conforme fósforo sérico
+14. Polivitamínico EV: 1 ampola/dia
+15. Oligoelementos: 1 ampola/dia
+
+MONITORIZAÇÃO:
+16. Glicemia 6/6h (insulina se >180)
+17. Eletrólitos diários (Na, K, Mg, P, Ca)
+18. Triglicerídeos 2x/semana (suspender lipídio se >400)
+19. Função hepática 2x/semana
+20. Balanço nitrogenado semanal`,
+    warnings: "Síndrome de realimentação: iniciar com 50% da meta calórica e progredir em 3-5 dias. Monitorar P, K, Mg — repor ANTES de iniciar NPT.",
+    guideline: "ESPEN / ASPEN / BRASPEN",
+  },
+  {
+    id: "rx-choque-obstrutivo",
+    title: "Choque Obstrutivo — Diagnóstico e Manejo",
+    type: "Prescrição de Emergência / UTI",
+    prescription: `CAUSAS:
+- TEP maciço
+- Tamponamento cardíaco
+- Pneumotórax hipertensivo
+- Hiperinsuflação dinâmica (auto-PEEP)
+
+TEP MACIÇO:
+1. Alteplase 100mg EV em 2h (trombólise)
+2. OU Tenecteplase (peso-ajustada) se PCR
+3. Heparina NF após trombólise
+4. Noradrenalina (DVA de escolha no TEP)
+5. Volume cauteloso (250mL SF — VD não tolera sobrecarga)
+
+TAMPONAMENTO CARDÍACO:
+6. Pericardiocentese de urgência (guiada por USG — via subxifoidea)
+7. SF 0,9% 500-1000mL EV (manter pré-carga)
+8. NÃO usar diuréticos, NÃO ventilar com pressão positiva (piora retorno venoso)
+9. Noradrenalina se hipotensão após drenagem
+
+PNEUMOTÓRAX HIPERTENSIVO:
+10. Descompressão imediata: jelco 14G no 2° EIC linha hemiclavicular
+11. Drenagem torácica definitiva (5° EIC linha axilar anterior)
+12. NÃO esperar RX para tratar se diagnóstico clínico evidente`,
+    guideline: "AHA / SBC / ATLS / AMIB",
+  },
+  {
+    id: "rx-pac-hepatopatia-uti",
+    title: "Hepatopata Grave na UTI — Manejo",
+    type: "Prescrição UTI",
+    prescription: `1. Lactulose 30mL VO/SNG 8/8h (alvo: 2-3 evacuações/dia) — encefalopatia
+2. Rifaximina 550mg VO 12/12h (profilaxia/tratamento encefalopatia)
+3. Albumina 20%: 1,5g/kg D1 + 1g/kg D3 (se PBE)
+4. Ceftriaxona 1g EV 1x/dia (profilaxia PBE)
+5. Terlipressina 0,5-2mg EV 4/4h (se SHR ou HDA varicosa)
+6. Omeprazol 40mg EV 12/12h (se HDA associada)
+7. Restrição de Na+ (<2g/dia) + Espironolactona + Furosemida (ascite)
+8. Vitamina K 10mg EV 1x/dia por 3 dias (se coagulopatia)
+9. Glicemia 4/4h (risco de hipoglicemia — glicogênio depletado)
+10. Evitar: benzodiazepínicos, AINEs, aminoglicosídeos, paracetamol >2g/dia
+11. Ajustar dose de TODOS os medicamentos metabolizados pelo fígado
+12. MELD para prioridade de transplante
+13. Encaminhar hepatologia/transplante se MELD ≥15`,
+    guideline: "AASLD / SBH / EASL",
+  },
 ];
 

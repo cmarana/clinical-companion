@@ -1264,5 +1264,39 @@ Bacteriana (secreção purulenta):
 7. Retorno ao PS se: dispneia progressiva, febre, dor torácica pleurítica
 8. Retorno: pneumologista em 1-2 semanas`,
   },
+  {
+    id: "rx-alta-delirium-resolvido",
+    title: "Alta — Pós-Delirium Resolvido",
+    type: "Alta",
+    prescription: `1. SUSPENDER medicações potencialmente causadoras (benzodiazepínicos, anticolinérgicos)
+2. Manter medicações de base otimizadas
+3. Orientar família: delirium pode recorrer — sinais de alarme
+4. Evitar: bebidas alcoólicas, privação de sono, jejum prolongado
+5. Retorno se: confusão, agitação, sonolência excessiva, febre
+6. Encaminhar geriatria para avaliação de funcionalidade e cognição
+7. Manter hidratação oral adequada
+8. Reavaliar polifarmácia na consulta ambulatorial
+9. Retorno: geriatra/clínica médica em 1-2 semanas`,
+  },
+  {
+    id: "rx-alta-uti-pos-critico",
+    title: "Alta — Pós-UTI (Síndrome Pós-Terapia Intensiva)",
+    type: "Alta",
+    prescription: `1. Orientar sobre Síndrome Pós-Terapia Intensiva (PICS):
+   - Fraqueza muscular (polineuropatia/miopatia do doente crítico)
+   - Disfunção cognitiva (memória, atenção)
+   - Transtornos psicológicos (TEPT, ansiedade, depressão)
+2. Fisioterapia motora + respiratória (encaminhar)
+3. Avaliação neuropsicológica se queixas cognitivas
+4. Suporte psicológico/psiquiátrico para paciente E família
+5. Nutrição hiperproteica: proteína 1,2-1,5g/kg/dia
+6. Vitamina D 2000UI/dia (deficiência comum pós-UTI)
+7. Reabilitação pulmonar se VM prolongada
+8. Profilaxia TVP ambulatorial: avaliar necessidade (se mobilidade reduzida)
+9. Reconciliação medicamentosa completa
+10. Retorno: equipe multidisciplinar em 2-4 semanas`,
+    notes: "Até 50% dos sobreviventes de UTI apresentam PICS. Impacto funcional, cognitivo e psicológico pode durar anos.",
+    guideline: "SCCM / AMIB / NICE",
+  },
 ];
 
