@@ -14,13 +14,83 @@ import { obstetricsItems } from "./obstetrics";
 
 export type { PrescriptionItem, PrescriptionCategory };
 
+/* ── helpers to auto-split byDiagnosis into specialty sub-categories ── */
+
+interface SpecialtyRule {
+  id: string;
+  title: string;
+  icon: string;
+  match: (type: string) => boolean;
+}
+
+const specialtyRules: SpecialtyRule[] = [
+  { id: "cardiology", title: "Cardiologia", icon: "heart-pulse", match: t => /cardiolog/i.test(t) },
+  { id: "ortho", title: "Ortopedia / Trauma", icon: "bone", match: t => /ortop|fratura|luxaç|compartimental/i.test(t) },
+  { id: "psychiatry", title: "Psiquiatria", icon: "brain", match: t => /psiqui/i.test(t) },
+  { id: "endocrinology", title: "Endocrinologia", icon: "activity", match: t => /endocrin/i.test(t) },
+  { id: "ophthalmology", title: "Oftalmologia", icon: "eye", match: t => /oftalm/i.test(t) },
+  { id: "hematology", title: "Hematologia", icon: "droplets", match: t => /hematol/i.test(t) },
+  { id: "nephrology", title: "Nefrologia", icon: "kidney", match: t => /nefrol/i.test(t) },
+  { id: "toxicology", title: "Toxicologia", icon: "skull", match: t => /toxicol/i.test(t) },
+  { id: "vascular-surgery", title: "Cirurgia Vascular", icon: "scissors", match: t => /vascular/i.test(t) },
+  { id: "general-surgery", title: "Cirurgia Geral / Torácica", icon: "scissors", match: t => /cirúrg|cirurg/i.test(t) && !/vascular/i.test(t) },
+  { id: "anesthesiology", title: "Anestesiologia", icon: "syringe", match: t => /anest/i.test(t) },
+  { id: "icu", title: "Terapia Intensiva / UTI", icon: "monitor", match: t => /\buti\b|terapia intensiva|desmame|ecmo/i.test(t) },
+  { id: "med-legal", title: "Medicina Legal / Trabalho", icon: "shield", match: t => /legal|ocupacional|trabalho/i.test(t) },
+  { id: "burns", title: "Queimados / CTQ", icon: "flame", match: t => /queim|ctq/i.test(t) },
+  { id: "oncology", title: "Oncologia", icon: "ribbon", match: t => /oncol/i.test(t) },
+  { id: "neurology", title: "Neurologia", icon: "brain", match: t => /neurol/i.test(t) },
+];
+
+function splitByDiagnosis(items: PrescriptionItem[]): PrescriptionCategory[] {
+  const buckets = new Map<string, PrescriptionItem[]>();
+  const unmatched: PrescriptionItem[] = [];
+
+  for (const item of items) {
+    let matched = false;
+    for (const rule of specialtyRules) {
+      if (rule.match(item.type)) {
+        if (!buckets.has(rule.id)) buckets.set(rule.id, []);
+        buckets.get(rule.id)!.push(item);
+        matched = true;
+        break;
+      }
+    }
+    if (!matched) unmatched.push(item);
+  }
+
+  const cats: PrescriptionCategory[] = [];
+
+  // General / unmatched items go first as "Por Diagnóstico (Geral)"
+  if (unmatched.length > 0) {
+    cats.push({
+      id: "by-diagnosis-general",
+      title: "Prescrição por Diagnóstico (Geral)",
+      icon: "stethoscope",
+      items: unmatched,
+    });
+  }
+
+  // Add specialty buckets
+  for (const rule of specialtyRules) {
+    const items = buckets.get(rule.id);
+    if (items && items.length > 0) {
+      cats.push({
+        id: `by-diagnosis-${rule.id}`,
+        title: rule.title,
+        icon: rule.icon,
+        items,
+      });
+    }
+  }
+
+  return cats;
+}
+
+const diagnosisCategories = splitByDiagnosis(byDiagnosisItems);
+
 export const prescriptionCategories: PrescriptionCategory[] = [
-  {
-    id: "by-diagnosis",
-    title: "Prescrição por Diagnóstico",
-    icon: "stethoscope",
-    items: byDiagnosisItems,
-  },
+  ...diagnosisCategories,
   {
     id: "emergency",
     title: "Prescrição de Emergência (Rápida)",
