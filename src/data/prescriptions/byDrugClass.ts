@@ -1036,5 +1036,56 @@ Rituximabe: 375mg/m² EV semanal por 4 semanas (ou 1g D0 + D14)`,
     notes: "Sempre rastrear TB e Hepatite B antes de imunossupressão. Profilaxia pneumocistose: SMX-TMP 400/80mg VO 1x/dia se alto risco. Vacinar antes de iniciar.",
     guideline: "SBR / SBN / ACR / EULAR",
   },
+  {
+    id: "rx-classe-diureticos",
+    title: "Diuréticos — Guia Rápido",
+    type: "Por Classe de Medicamento",
+    prescription: `ALÇA (mais potentes):
+Furosemida: 20-80mg EV/VO 6/6-12/12h (IC, EAP, IRA)
+Bumetanida: 0,5-2mg EV/VO (alternativa — 1mg Bumetanida = 40mg Furosemida)
+
+TIAZÍDICOS (manutenção):
+Hidroclorotiazida 25mg VO 1x/dia
+Clortalidona 12,5-25mg VO 1x/dia (mais potente, maior duração)
+Indapamida 1,5mg VO 1x/dia
+
+POUPADORES DE K+:
+Espironolactona 25-100mg VO 1x/dia (IC, cirrose, hiperaldo)
+Amilorida 5-10mg VO 1x/dia
+
+OSMÓTICO:
+Manitol 20%: 0,5-1g/kg EV (HIC, glaucoma)
+
+INIBIDORES DE SGLT2 (diurético + cardionefroproteção):
+Dapagliflozina 10mg VO 1x/dia (IC, DRC, DM2)
+Empagliflozina 10-25mg VO 1x/dia
+
+SEQUENCIAL (refratário): Furosemida EV + HCTZ VO (bloqueio sequencial do néfron)`,
+    notes: "Monitorar: K+, Na+, Mg, creatinina, ácido úrico. Furosemida EV: dobrar dose se sem resposta (máx 200mg/dose). Tiazídico: ineficaz se TFG <30 (exceto quando combinado com diurético de alça).",
+    guideline: "SBC / SBN / ESC / AHA",
+  },
+  {
+    id: "rx-classe-vasopressores",
+    title: "Vasopressores e Inotrópicos — Guia Rápido",
+    type: "Por Classe de Medicamento",
+    prescription: `VASOPRESSORES (alfa-agonistas):
+Noradrenalina: 0,05-2mcg/kg/min (1ª linha no choque séptico)
+Vasopressina: 0,03-0,04 UI/min (adjunto — NÃO titular)
+Fenilefrina: 0,1-0,5mcg/kg/min (vasoconstrição pura — taquiarritmia)
+Adrenalina: 0,01-0,5mcg/kg/min (choque anafilático, 2ª linha no séptico)
+
+INOTRÓPICOS (beta-agonistas):
+Dobutamina: 2,5-20mcg/kg/min (choque cardiogênico — 1ª linha)
+Milrinona: 0,375-0,75mcg/kg/min (iPDE3 — independe de beta)
+Levosimendana: 0,05-0,2mcg/kg/min (sensibilizador de Ca++ — IC avançada)
+
+INODILATADORES:
+Adrenalina em dose baixa (<0,1mcg/kg/min): predomina beta
+
+ORDEM NO CHOQUE SÉPTICO: Noradrenalina → +Vasopressina → +Adrenalina → considerar Hidrocortisona
+CHOQUE CARDIOGÊNICO: Dobutamina → +Noradrenalina se PAM baixa → Milrinona se betabloqueado`,
+    notes: "Noradrenalina: SEMPRE por CVC (necrose se extravasar por periférico — se necessário: jelco >20G, membro superior, monitorar 2/2h). Fenilefrina: pode ser periférico por curto prazo.",
+    guideline: "SSC 2021 / AMIB / SBC / ESC",
+  },
 ];
 

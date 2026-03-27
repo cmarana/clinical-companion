@@ -1201,5 +1201,68 @@ Bacteriana (secreção purulenta):
 10. PS se: dor intensa no membro, palidez, frialdade, ausência de pulso`,
     guideline: "SVB / ACC/AHA",
   },
+  {
+    id: "rx-alta-pneumotorax",
+    title: "Alta — Pós-Drenagem Torácica (Pneumotórax)",
+    type: "Alta",
+    prescription: `1. Dipirona 500mg — 1cp VO 6/6h por 5-7 dias
+2. Tramadol 50mg — 1cp VO 8/8h SN (dor intensa)
+3. RX tórax de controle em 7-10 dias
+4. Cessação tabágica OBRIGATÓRIA (reduz recidiva de 50% para 10%)
+5. Evitar esforço físico intenso por 30 dias
+6. Evitar voo comercial por 2-6 semanas (expansão de gases em altitude)
+7. Evitar mergulho com cilindro — PERMANENTE (risco de pneumotórax subaquático)
+8. Retorno ao PS se: dispneia súbita, dor torácica, sensação de ar escapando
+9. Retorno: pneumologista em 2-4 semanas
+10. Se 2° episódio: discutir cirurgia (VATS + pleurodese)`,
+    guideline: "SBPT / BTS",
+  },
+  {
+    id: "rx-alta-dialise-peritoneal",
+    title: "Alta — Início de Diálise Peritoneal",
+    type: "Alta Nefrológica",
+    prescription: `1. Treinamento de manipulação asséptica do cateter (paciente + familiar)
+2. Dieta hipossódica (<2g Na+/dia) + hiperproteica (1,2-1,5g/kg/dia — perdas proteicas)
+3. Carbonato de Cálcio 500mg — 1cp VO junto às refeições (quelante de fósforo)
+4. Alfacalcidol 0,25-0,5mcg VO 1x/dia (ou Calcitriol — conforme PTH)
+5. Eritropoetina SC conforme prescrição nefrológica (se Hb <10)
+6. Cuidados com o orifício de saída: limpeza diária com SF + oclusão
+7. Sinais de peritonite: líquido turvo, dor abdominal, febre → PS IMEDIATO com amostra do efluente
+8. Manter diurese residual: não restringir líquidos agressivamente no início
+9. Retorno: nefrologista em 7-14 dias
+10. Exames mensais: hemograma, função renal, eletrólitos, ferritina, PTH, albumina`,
+    guideline: "SBN / ISPD / KDOQI",
+  },
+  {
+    id: "rx-alta-exacerbacao-dpoc",
+    title: "Alta — Exacerbação de DPOC",
+    type: "Alta Pneumológica",
+    prescription: `1. Prednisona 40mg — 1cp VO 1x/dia por 5 dias (completar curso)
+2. Salbutamol spray 100mcg — 2-4 jatos 4/4-6/6h SN (resgate)
+3. Ipratrópio spray 20mcg — 2 jatos 6/6h (manutenção)
+4. Formoterol/Budesonida 12/400mcg — 1 inalação 12/12h (manutenção a longo prazo)
+5. Amoxicilina-Clavulanato 875mg — 1cp VO 12/12h por 5-7 dias (se escarro purulento)
+6. O2 domiciliar se indicado (PaO2 <55 ou PaO2 <60 + cor pulmonale)
+7. Cessação tabágica: encaminhar programa + considerar Vareniclina
+8. Vacinação: Influenza anual + Pneumocócica (PCV13 + PPSV23)
+9. Reabilitação pulmonar (encaminhar)
+10. Retorno: pneumologista em 2-4 semanas com espirometria`,
+    guideline: "GOLD 2024 / SBPT",
+  },
+  {
+    id: "rx-alta-derrame-pleural",
+    title: "Alta — Pós-Toracocentese / Drenagem Pleural",
+    type: "Alta",
+    prescription: `1. Dipirona 500mg — 1cp VO 6/6h por 5 dias
+2. Antibiótico (se empiema): completar curso conforme cultura (14-21 dias total)
+3. RX tórax de controle em 7-10 dias
+4. Fisioterapia respiratória (expansão pulmonar)
+5. Retorno com resultados de citologia/bioquímica/cultura do líquido
+6. Investigação complementar conforme resultado:
+   Exsudato: TC tórax, broncoscopia, biópsia pleural
+   Transudato: ecocardiograma, hepatograma, proteinúria
+7. Retorno ao PS se: dispneia progressiva, febre, dor torácica pleurítica
+8. Retorno: pneumologista em 1-2 semanas`,
+  },
 ];
 

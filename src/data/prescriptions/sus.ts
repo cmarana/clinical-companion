@@ -1044,5 +1044,52 @@ SEMPRE: monitorar SpO2, ter material de via aérea e Flumazenil/Naloxona dispon�
     notes: "Na UPA sem capnografia: monitorar SpO2 + FR + nível de consciência continuamente durante sedação. Manter 1 profissional exclusivo para monitorização.",
     guideline: "CFM / SBA / MS",
   },
+  {
+    id: "rx-sus-dialise-upa",
+    title: "IRA na UPA — Manejo Sem Diálise Disponível",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `1. Identificar e tratar causa (hipovolemia, sepse, obstrução, nefrotóxico)
+2. SF 0,9% 500mL EV em 30min (se pré-renal — avaliar responsividade)
+3. Furosemida 80-200mg EV (teste de resposta diurética — alto risco se não funcionar)
+4. Suspender: AINEs, aminoglicosídeos, IECA/BRA temporariamente
+5. SVD — controle rigoroso de diurese
+6. ECG + monitorar K+ (risco de arritmia fatal)
+
+HIPERCALEMIA na UPA (sem diálise):
+7. Gluconato de Ca 10% 10mL EV em 2-3min (proteção miocárdica)
+8. Insulina Regular 10UI EV + SG 50% 40mL em 15-30min
+9. Salbutamol 10 gotas NBZ contínua (shift de K+)
+10. Furosemida 80mg EV (se ainda urina)
+11. Poliestirenossulfonato de Ca (Sorcal) 30g VO ou VR
+
+12. TRANSFERIR para hospital com diálise se: K+ >6,5, acidose grave, EAP, uremia`,
+    notes: "Na UPA sem hemodiálise: o papel é estabilizar (proteger coração da hipercalemia, manejar volume) e TRANSFERIR. Cada hora conta.",
+    guideline: "MS / SBN / KDIGO",
+  },
+  {
+    id: "rx-sus-ventilador-transporte",
+    title: "VM de Transporte — Parâmetros para SAMU/Transferência",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `Parâmetros iniciais (ventilador de transporte):
+1. Modo: VCV (volume controlado — mais comum nos ventiladores de transporte)
+2. VC: 6-8mL/kg de peso predito
+3. FR: 12-16/min (adulto)
+4. PEEP: 5-8cmH2O
+5. FiO2: iniciar 100% → titular para SpO2 alvo
+6. Relação I:E: 1:2
+
+Alvo SpO2:
+7. Geral: ≥94%
+8. DPOC: 88-92%
+9. Neonato: 90-95%
+
+Cuidados:
+10. Verificar cilindro de O2: autonomia = (pressão × volume do cilindro) / (fluxo × 1000)
+11. Alarmes: Ppico, desconexão, FiO2
+12. Sedação: Midazolam 5mg EV bolus + Fentanil 100mcg (manter com repetições SN)
+13. Fixação segura do tubo + capnógrafo portátil (se disponível)
+14. Aspiração traqueal antes do transporte`,
+    guideline: "CFM / SAMU / AMIB",
+  },
 ];
 

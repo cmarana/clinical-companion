@@ -887,5 +887,52 @@ REGRA: dose única na indução. NÃO ultrapassar 24h na maioria.`,
     notes: "Obesidade: dobrar dose de Cefazolina (3g se >120kg). Sempre administrar 30-60 min antes da incisão.",
     guideline: "ANVISA / ASHP / IDSA / SIS",
   },
+  {
+    id: "rx-atb-dialise-peritonite",
+    title: "Antibiótico — Peritonite em Diálise Peritoneal",
+    type: "Antibiótico por Foco",
+    prescription: `Empírico (cobrir Gram+ e Gram-):
+1. Cefazolina 1g + Ceftazidima 1g — INTRAPERITONEAL (IP) na 1ª troca
+2. Manutenção: Cefazolina 125mg/L + Ceftazidima 125mg/L em CADA troca
+3. OU Vancomicina 30mg/kg IP a cada 5-7 dias (se MRSA endêmico)
+
+Gram+ isolado:
+4. Cefazolina 125mg/L IP em cada troca por 14 dias
+5. Se MRSA: Vancomicina IP
+
+Gram- isolado:
+6. Ceftazidima 125mg/L IP por 14-21 dias
+7. Se Pseudomonas: Ceftazidima IP + Ciprofloxacino 500mg VO 12/12h por 21 dias
+
+Critérios de retirada do cateter:
+8. Peritonite fúngica (SEMPRE retirar + Fluconazol/Equinocandina por 14 dias após retirada)
+9. Peritonite refratária (sem melhora em 5 dias)
+10. Infecção de túnel com peritonite`,
+    notes: "Diagnóstico: efluente turvo + leucócitos >100/mm³ (>50% PMN). Coletar efluente ANTES de iniciar ATB. Resposta: efluente clareando em 48h. Reavaliação obrigatória com cultura em 48-72h.",
+    guideline: "ISPD 2022 / SBN",
+  },
+  {
+    id: "rx-atb-empiema",
+    title: "Antibiótico — Empiema Pleural",
+    type: "Antibiótico por Foco",
+    prescription: `Empírico (cobrir flora mista aeróbia/anaeróbia):
+1. Ceftriaxona 2g EV 1x/dia + Metronidazol 500mg EV 8/8h
+2. OU Ampicilina-Sulbactam 3g EV 6/6h
+3. OU Piperacilina-Tazobactam 4,5g EV 6/6h (se nosocomial/grave)
+
+Se aspiração / abscesso associado:
+4. Clindamicina 600mg EV 6/6h + Ceftriaxona
+
+Se MRSA:
+5. Adicionar Vancomicina 15-20mg/kg EV 12/12h
+
+Drenagem:
+6. OBRIGATÓRIA: drenagem torácica fechada (28-32Fr)
+7. Fibrinolíticos intrapleurais: Alteplase 10mg + DNase 5mg em 30mL SF — 12/12h por 3 dias (MIST-2)
+8. VATS (videotoracoscopia): se drenagem inadequada ou loculado após 3-5 dias
+
+Duração ATB: 3-6 semanas total (incluindo transição VO)`,
+    guideline: "BTS / ATS / SBPT / IDSA",
+  },
 ];
 

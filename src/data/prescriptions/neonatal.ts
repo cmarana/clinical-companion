@@ -606,4 +606,99 @@ Suporte:
 10. Surfactante se SDRA neonatal associada`,
     guideline: "SBP / Neonatologia",
   },
+  {
+    id: "rx-neo-hipoglicemia",
+    title: "Hipoglicemia Neonatal",
+    type: "Prescrição Neonatal",
+    prescription: `Assintomática (glicemia 25-45mg/dL):
+1. Alimentação precoce (seio materno ou fórmula) a cada 2-3h
+2. Verificar glicemia pré-mamada por 24-48h
+
+Sintomática ou <25mg/dL:
+3. SG 10%: 2mL/kg EV em bolus (200mg/kg) em 5-10 min
+4. Manutenção: SG 10% em BIC — TIG (taxa de infusão de glicose) 6-8mg/kg/min
+5. Se não responde: aumentar TIG para 10-12mg/kg/min
+6. Se TIG >12mg/kg/min: considerar acesso central + investigar causa
+7. Hidrocortisona 5mg/kg/dia EV dividido 12/12h (se refratário)
+8. Diazóxido 5-15mg/kg/dia VO (se hiperinsulinismo — avaliação especializada)
+9. Glucagon 0,1mg/kg IM/SC (máx 1mg) — emergência enquanto aguarda acesso
+
+Monitorização:
+10. Glicemia 30 min após bolus → 1/1h até estável → pré-mamadas
+11. Desmame gradual de TIG (1-2mg/kg/min a cada 6-12h)`,
+    notes: "Grupos de risco: GIG, PIG, filhos de mãe diabética, prematuros. Hipoglicemia persistente (>48h ou TIG >10): investigar hiperinsulinismo, deficiência de cortisol/GH.",
+    guideline: "SBP / AAP / PES",
+  },
+  {
+    id: "rx-neo-ictericia",
+    title: "Icterícia Neonatal — Fototerapia",
+    type: "Prescrição Neonatal",
+    prescription: `Indicação de fototerapia:
+1. Conforme nomograma de Bhutani (IG + horas de vida + bilirrubina total)
+2. RN ≥35 semanas: tratar conforme curva AAP
+3. Prematuro <35 semanas: limiar mais baixo (tratar com BT menor)
+
+Prescrição:
+4. Fototerapia contínua (LED azul) — máxima superfície corporal exposta
+5. Proteção ocular com máscara (cobrir olhos, não nariz)
+6. Manter hidratação: amamentação frequente (8-12x/dia) ou complementação
+7. Monitorar BT 4-6h após início → 12/12h quando estável
+8. Manter temperatura (risco de hipo/hipertermia sob fototerapia)
+
+Exsanguineotransfusão (se BT em zona de risco ou sinais de kernicterus):
+9. BT em zona de exsanguineotransfusão no nomograma
+10. Sinais de encefalopatia bilirrubínica: letargia, hipotonia, opistótono, apneia
+11. Volume: 2 volemias (160-180mL/kg) com sangue reconstituído (CH + PFC)
+
+Investigar causa:
+12. Tipagem ABO/Rh mãe e RN, Coombs direto, reticulócitos, hematócrito, esfregaço`,
+    guideline: "SBP / AAP / NICE",
+  },
+  {
+    id: "rx-neo-reanimacao",
+    title: "Reanimação Neonatal em Sala de Parto",
+    type: "Prescrição Neonatal de Emergência",
+    prescription: `Golden Minute (primeiros 60 segundos):
+1. Prover calor (berço aquecido, saco plástico se <34sem)
+2. Posicionar cabeça (leve extensão)
+3. Aspirar boca e nariz (se necessário — não rotineiro)
+4. Secar e estimular
+5. Avaliar: respiração + FC
+
+Se apneia ou FC <100:
+6. VPP com máscara + ar ambiente (21%) em ≥34sem OU O2 30% em <34sem
+7. Frequência: 40-60/min (aperta-solta-solta)
+8. Avaliar FC em 30s de VPP
+
+Se FC <60 após 30s de VPP efetiva:
+9. Compressões torácicas: 3:1 (3 compressões para 1 ventilação)
+10. FiO2: 100%
+11. Considerar IOT (tubo: 2,5mm <1kg, 3,0mm 1-3kg, 3,5mm >3kg)
+
+Se FC <60 após 60s de compressão + VPP:
+12. Adrenalina 0,01-0,03mg/kg EV (veia umbilical) — 0,05-0,1mg/kg via traqueal
+13. SF 0,9% 10mL/kg EV (se hipovolemia/palidez)`,
+    warnings: "NÃO aspirar rotineiramente líquido amniótico meconial em RN vigoroso. Clampeamento tardio do cordão: 60s em RN a termo vigoroso.",
+    guideline: "SBP / NRP / ILCOR 2020",
+  },
+  {
+    id: "rx-neo-enterocolite",
+    title: "Enterocolite Necrosante (ECN)",
+    type: "Prescrição Neonatal",
+    prescription: `1. Dieta ZERO (repouso intestinal por 7-14 dias conforme estágio)
+2. SNG aberta (descompressão gástrica)
+3. NPT (nutrição parenteral total) — iniciar imediatamente
+4. ATB: Ampicilina 50mg/kg EV 12/12h + Gentamicina 4mg/kg EV 1x/dia + Metronidazol 7,5mg/kg EV 12/12h
+5. OU Vancomicina + Cefepime + Metronidazol (se nosocomial/grave)
+6. SF 0,9% 10-20mL/kg EV (ressuscitação se choque)
+7. Hemograma, PCR, gasometria, lactato, hemocultura — seriados
+8. RX abdome seriado (6/6-12/12h): pneumatose, gás portal, pneumoperitônio
+9. Avaliação cirúrgica: pneumoperitônio = cirurgia de emergência
+10. Suporte: VM, vasopressores, CH conforme necessidade
+11. Bell estágio I: suspeitada — observar + ATB 48h
+12. Bell II: definida — ATB 7-14 dias + dieta zero 7-14 dias
+13. Bell III: avançada — cirurgia + suporte intensivo`,
+    warnings: "ECN é a emergência cirúrgica GI mais comum em neonatos. Mortalidade: 20-40%. Fatores de risco: prematuridade, fórmula, isquemia, disbiose.",
+    guideline: "SBP / NEC Society / AAP",
+  },
 ];

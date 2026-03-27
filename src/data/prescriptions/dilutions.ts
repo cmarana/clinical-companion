@@ -2033,5 +2033,109 @@ TTPa 71-90s: reduzir 2UI/kg/h
 TTPa >90s: parar por 1h + reduzir 3UI/kg/h`,
     notes: "Controle: TTPa 1,5-2,5x o controle (46-70s). Colher TTPa 6h após cada ajuste. Antídoto: Protamina 1mg para cada 100UI de HNF das últimas 2-3h.",
   },
+  {
+    id: "rx-dil-manitol",
+    title: "Manitol 20% — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `APRESENTAÇÃO: Manitol 20% (200mg/mL) — frasco 250mL
+
+DOSE:
+HIC: 0,5-1g/kg EV em 15-20min (rápido)
+Ex: 70kg × 1g/kg = 70g = 350mL de Manitol 20%
+
+MANUTENÇÃO: 0,25-0,5g/kg EV a cada 4-6h
+Osmolaridade sérica alvo: <320mOsm/L (acima = risco renal)
+
+EDEMA CEREBRAL POR AVC: 0,5-1g/kg EV em 20min → 0,25g/kg 6/6h
+
+GLAUCOMA AGUDO: 1-2g/kg EV em 30-60min
+
+CUIDADOS:
+Cristaliza se frio → aquecer em banho-maria antes de usar
+Verificar filtro de infusão (cristais)
+Monitorar: Na+, K+, osmolaridade sérica, função renal
+Manter SVD (diurese osmótica intensa)`,
+    warnings: "Contraindicado em anúria/IRA estabelecida. Efeito rebote: se usar >48h pode piorar edema cerebral. Alternativa: NaCl 20% (melhor em hipovolêmicos).",
+  },
+  {
+    id: "rx-dil-nacl-hipertonico",
+    title: "NaCl 20% (Salina Hipertônica) — Preparo",
+    type: "Diluição e Preparo",
+    prescription: `APRESENTAÇÃO: NaCl 20% (3,4mEq/mL) — ampola 10-20mL
+
+HIPERTENSÃO INTRACRANIANA:
+NaCl 20%: 10-20mL EV em 10-15min (acesso central)
+OU NaCl 3%: 150-250mL EV em 10-20min (pode ser periférico)
+
+PREPARO de NaCl 3%:
+NaCl 20% 30mL + SF 0,9% 170mL = 200mL de solução ~3%
+OU NaCl 20% 15mL + SF 0,9% 85mL = 100mL de solução ~3%
+
+HIPONATREMIA GRAVE (Na+ <120 ou sintomática):
+NaCl 3%: 150mL EV em 20min → repetir 1x se persistir sintomas
+Alvo: elevar Na+ em 4-6mEq/L nas primeiras 6h (máx 8-10mEq em 24h)
+
+MONITORIZAÇÃO:
+Na+ sérico 2/2h durante correção
+Osmolaridade sérica (manter <320 se HIC)
+Acesso central para NaCl 20% (risco de flebite/necrose se extravasar)`,
+    warnings: "Correção rápida de Na+: risco de mielinólise pontina (desmielinização osmótica). NÃO ultrapassar 8-10mEq/24h. Se corrigiu demais: DDAVP 2mcg EV + SG5%.",
+  },
+  {
+    id: "rx-dil-bicarbonato",
+    title: "Bicarbonato de Sódio 8,4% — Protocolo de Infusão",
+    type: "Diluição e Preparo",
+    prescription: `APRESENTAÇÃO: NaHCO3 8,4%: 1mEq/mL — ampola 10mL ou 250mL
+
+ACIDOSE METABÓLICA GRAVE (pH <7,10):
+Dose: (Bic desejado - Bic atual) × 0,3 × Peso(kg) = mEq necessários
+Repor 50% do calculado → reavaliar com gasometria
+
+DILUIÇÃO:
+NaHCO3 8,4% 150mL + SG 5% 850mL = 1000mL de solução ~1,5%
+OU usar puro por acesso central (BIC lenta)
+
+PCR:
+1mEq/kg EV (apenas se acidose pré-existente documentada ou PCR prolongada)
+
+HIPERCALEMIA:
+50mEq (50mL 8,4%) EV em 5-10min
+
+INTOXICAÇÃO POR TRICÍCLICOS:
+1-2mEq/kg bolus → BIC para manter pH 7,45-7,55
+
+CUIDADOS:
+NÃO misturar com Ca++ na mesma via (precipita)
+Hipocalemia: corrigir K+ ANTES ou junto
+Hipernatremia: considerar volume de Na+ administrado`,
+    warnings: "Cada 50mL de NaHCO3 8,4% = 50mEq Na+. Risco de hipernatremia e sobrecarga volêmica. NÃO usar de rotina na PCR (sem benefício comprovado exceto situações específicas).",
+  },
+  {
+    id: "rx-dil-insulina-bic",
+    title: "Insulina Regular — Protocolo de Infusão Contínua",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO:
+Insulina Regular 50UI + SF 0,9% 49,5mL = 50mL (1UI/mL)
+OU Insulina Regular 100UI + SF 0,9% 99mL = 100mL (1UI/mL)
+
+PROTOCOLO CAD/EHH:
+Bolus: 0,1UI/kg EV
+Infusão: 0,1UI/kg/h em BIC
+Alvo: queda de glicemia 50-70mg/dL/h
+Se queda <50: dobrar taxa
+Se queda >70: reduzir em 50%
+Quando glicemia <250 (CAD) ou <300 (EHH): iniciar SG 5-10% + manter insulina 0,02-0,05UI/kg/h
+
+PROTOCOLO UTI (controle glicêmico):
+Alvo: 140-180mg/dL
+Iniciar: 1-2UI/h se glicemia >180
+Ajustar: conforme protocolo institucional (colher glicemia 1-2/2h)
+
+HIPERCALEMIA:
+Insulina Regular 10UI EV + SG 50% 40mL (4 ampolas) em 15-30min
+Início de ação: 15-30min | Duração: 4-6h
+Monitorar glicemia 30min e 1h após`,
+    notes: "Saturar equipo com solução de insulina antes de conectar ao paciente (insulina adsorve ao plástico). Em CAD: NÃO suspender insulina até resolver acidose (pH >7,3, Bic >18, AG <12).",
+  },
 ];
 

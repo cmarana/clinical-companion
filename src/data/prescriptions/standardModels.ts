@@ -936,5 +936,47 @@ CRM / Carimbo / Assinatura`,
 14. Comunicar: alteração de perfusão de membro, sangramento, hipotensão`,
     guideline: "SVB / ACC/AHA",
   },
+  {
+    id: "rx-modelo-nefro",
+    title: "Modelo — Internação Nefrologia",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta hipossódica (<2g Na+/dia) + hipoproteica (0,6-0,8g/kg/dia se DRC sem diálise)
+2. Restrição hídrica: ___mL/dia (se hiponatremia ou oligúria)
+3. SF 0,9% ___mL EV — manter acesso salinizado (evitar sobrecarga)
+4. Furosemida ___mg EV ___/___h (se sobrecarga/edema)
+5. Anti-hipertensivo: IECA/BRA (nefroproteção) — ajustar conforme TFG e K+
+6. Carbonato de Cálcio 500mg VO junto às refeições (quelante de PO4)
+7. Omeprazol 20mg VO 1x/dia
+8. Eritropoetina SC conforme protocolo (se Hb <10)
+9. Correção de: K+, Na+, Ca++, PO4, Bic (conforme exames)
+10. Insulina conforme protocolo (se DM)
+11. Exames: hemograma, ureia, creatinina, Na+, K+, Ca++, PO4, gasometria, EAS, proteinúria
+12. USG renal (se não recente)
+13. Avaliar necessidade de hemodiálise/diálise peritoneal
+14. Peso diário + balanço hídrico rigoroso
+15. Comunicar se: oligúria <0,5mL/kg/h, K+ >5,5, edema agudo de pulmão`,
+    guideline: "SBN / KDIGO",
+  },
+  {
+    id: "rx-modelo-hemodialise",
+    title: "Modelo — Prescrição de Hemodiálise",
+    type: "Prescrição Padrão",
+    prescription: `1. Dialisador: fibra de polissulfona ___m² (conforme peso/clearance)
+2. Fluxo de sangue (Qb): 300-400mL/min (iniciar 250 se 1ª sessão)
+3. Fluxo do dialisato (Qd): 500mL/min
+4. Anticoagulação: Heparina NF ___UI bolus + ___UI/h OU sem heparina (se sangramento ativo)
+5. Tempo de sessão: 3-4h (aguda: conforme indicação — pode ser contínua em UTI)
+6. Ultrafiltração: ___mL/h (máx 10-13mL/kg/h para evitar hipotensão)
+7. Peso seco estimado: ___kg
+8. Solução de diálise: Na+ 138-140, K+ 2-3, Ca++ 2,5-3,5, Bic 32-38
+9. Temperatura do dialisato: 35,5-36°C (reduz hipotensão intradialítica)
+
+HEMODIÁLISE CONTÍNUA (UTI — CVVHDF):
+10. Dose: 25-30mL/kg/h (total de efluente)
+11. Reposição: pré-diluição ou pós-diluição
+12. Anticoagulação regional com citrato (se sangramento ativo/CIVD)
+13. Monitorar: Ca++ iônico 2/2h se citrato`,
+    guideline: "SBN / KDIGO / KDOQI",
+  },
 ];
 

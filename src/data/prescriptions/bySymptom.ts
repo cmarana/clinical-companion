@@ -1265,5 +1265,82 @@ Adjuvantes:
 11. Bloqueio regional (se possível): superior a sistêmico`,
     guideline: "SBA / ESRA / PROSPECT",
   },
+  {
+    id: "rx-sint-oliguria",
+    title: "Oligúria — Abordagem no PS/UTI",
+    type: "Prescrição Sintomática",
+    prescription: `Definição: diurese <0,5mL/kg/h por >6h
+
+Avaliação inicial:
+1. SVD (se não tem) — confirmar que não é retenção urinária
+2. USG bexiga (bexigoma?)
+3. Avaliar volemia: POCUS (VCI, linhas B pulmonares), lactato, FC, PA
+
+Pré-renal (hipovolemia):
+4. SF 0,9% 250-500mL EV em 15-30min (fluid challenge) — reavaliar
+5. Se responsivo: manter hidratação
+6. Se não responsivo após 2L: considerar vasopressor (PAM alvo ≥65)
+
+Renal (NTA):
+7. Suspender nefrotóxicos (AINEs, aminoglicosídeos, contraste)
+8. Manter euvolemia (não hiper-hidratar)
+9. Furosemida 40-80mg EV (teste de estresse diurético: >200mL em 2h = boa resposta)
+
+Pós-renal (obstrutiva):
+10. USG: hidronefrose → SVD ou nefrostomia
+11. Avaliar causa: HPB, cálculo, tumor
+
+INDICAÇÕES DE DIÁLISE: K+ refratário, acidose grave, EAP, uremia sintomática, intoxicação dialítica`,
+    guideline: "KDIGO / SBN / AMIB",
+  },
+  {
+    id: "rx-sint-dispneia-aguda",
+    title: "Dispneia Aguda — Abordagem no PS",
+    type: "Prescrição Sintomática",
+    prescription: `Avaliação inicial:
+1. O2 suplementar: cateter nasal → máscara → VNI (conforme SpO2)
+2. Monitorização: SpO2, FR, PA, FC, ECG
+3. Gasometria arterial
+4. RX tórax PA
+5. Hemograma, D-dímero (se suspeita de TEP), BNP/NT-proBNP, troponina
+
+Por etiologia provável:
+ASMA/DPOC: Salbutamol 4-8 jatos + Ipratrópio + Corticoide
+EAP: VNI + Furosemida 40mg EV + Nitroglicerina SL
+TEP: Heparina dose plena + AngioTC
+PNEUMONIA: ATB + O2
+PNEUMOTÓRAX: Drenagem torácica
+ANAFILAXIA: Adrenalina IM + SF bolus
+
+6. Se IRpA grave (FR >35, SpO2 <90% apesar de O2, rebaixamento): IOT + VM
+7. Posição sentada / cabeceira elevada
+8. Acesso venoso calibroso
+9. Dipirona 1g EV se febre associada`,
+    notes: "Causas mais comuns de dispneia aguda no PS: ICC descompensada, DPOC exacerbada, asma, pneumonia, TEP, pneumotórax, anafilaxia, ansiedade.",
+    guideline: "SBPT / ATS / ERS",
+  },
+  {
+    id: "rx-sint-edema-mmii",
+    title: "Edema de Membros Inferiores — Abordagem",
+    type: "Prescrição Sintomática",
+    prescription: `Bilateral (sistêmico):
+1. ICC: Furosemida 40mg EV + restrição hídrica + IECA
+2. DRC/Nefrose: Furosemida + restrição Na+ + avaliar albumina
+3. Cirrose: Espironolactona 100mg + Furosemida 40mg VO + restrição Na+
+4. Medicamentoso: revisar medicações (Anlodipino, AINEs, corticoides)
+
+Unilateral (local):
+5. TVP: Doppler venoso → Enoxaparina 1mg/kg SC 12/12h se confirmado
+6. Celulite/Erisipela: ATB (Cefalexina ou Oxacilina)
+7. Insuficiência venosa crônica: meias de compressão + exercícios
+8. Linfedema: fisioterapia + drenagem linfática manual
+
+Exames:
+9. Hemograma, albumina, função renal, função hepática, EAS (proteinúria)
+10. Ecocardiograma se suspeita de ICC
+11. USG Doppler venoso se unilateral
+12. BNP/NT-proBNP (diferencial cardíaco vs não-cardíaco)`,
+    guideline: "SBC / SBN / SBACV",
+  },
 ];
 

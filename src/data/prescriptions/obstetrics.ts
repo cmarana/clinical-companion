@@ -724,4 +724,90 @@ Pielonefrite na Gestação (INTERNAÇÃO OBRIGATÓRIA):
     notes: "Bacteriúria assintomática DEVE ser tratada na gestação (30% evoluem para pielonefrite se não tratada). Urocultura no 1º trimestre para todas.",
     guideline: "FEBRASGO / MS / ACOG / IDSA",
   },
+  {
+    id: "rx-obst-diabetes-gestacional",
+    title: "Diabetes Gestacional — Manejo",
+    type: "Prescrição Obstétrica",
+    prescription: `Medidas não farmacológicas (2 semanas):
+1. Dieta fracionada (5-6 refeições/dia), baixo índice glicêmico
+2. Exercício físico: 30 min/dia de caminhada (se não contraindicado)
+3. Glicemia capilar: jejum + 1-2h pós-prandial (4-7 medidas/dia)
+
+Alvos glicêmicos:
+Jejum: <95mg/dL
+1h pós-prandial: <140mg/dL
+2h pós-prandial: <120mg/dL
+
+Se metas não atingidas (2 semanas de dieta):
+4. Insulina NPH: iniciar 0,2UI/kg/dia SC (dividido 2-3x/dia)
+5. Insulina Regular: pré-prandial se pós-prandial elevada
+6. Metformina 500mg VO 12/12h (alternativa — categoria B, mas controverso)
+
+Monitorização:
+7. USG mensal (crescimento fetal, ILA)
+8. CTG semanal a partir de 32-34 semanas
+9. Parto: indução com 39-40 semanas (ou 37-39 se insulina)
+10. Pós-parto: suspender insulina → TOTG 75g em 6-12 semanas`,
+    guideline: "FEBRASGO / SBD / ADA / ACOG",
+  },
+  {
+    id: "rx-obst-tpe",
+    title: "Trabalho de Parto Prematuro — Tocólise",
+    type: "Prescrição Obstétrica",
+    prescription: `Critérios: 24-34 semanas + contrações regulares + dilatação <4cm
+
+Tocolíticos:
+1. Nifedipino (1ª escolha): 20mg VO → 10mg VO a cada 20min (máx 40mg na 1ª hora)
+   Manutenção: 20mg VO 6/6-8/8h por 48h
+2. OU Atosiban (antagonista de ocitocina): 6,75mg EV bolus → 18mg/h por 3h → 6mg/h por 45h
+
+NÃO usar:
+3. Indometacina >32 semanas (fechamento ducto arterioso)
+4. Nifedipino + MgSO4 juntos (hipotensão grave)
+
+Corticoide para maturação pulmonar fetal (24-34 semanas):
+5. Betametasona 12mg IM a cada 24h — 2 doses (total 24mg)
+6. OU Dexametasona 6mg IM a cada 12h — 4 doses (total 24mg)
+
+Neuroproteção fetal (<32 semanas):
+7. MgSO4 4g EV em 30min → 1g/h por 12-24h (ou até o parto)
+
+8. ATB se RPMO: Ampicilina 2g EV 6/6h + Azitromicina 1g VO dose única`,
+    guideline: "FEBRASGO / MS / ACOG / RCOG",
+  },
+  {
+    id: "rx-obst-dheg-hellp",
+    title: "Síndrome HELLP",
+    type: "Prescrição Obstétrica de Emergência",
+    prescription: `1. Sulfato de Magnésio (Zuspan): 4g EV bolus → 1-2g/h EV em BIC
+2. Anti-hipertensivo: Hidralazina 5mg EV 20/20min (máx 20mg) OU Nifedipino 10mg VO
+3. Dexametasona 10mg EV 12/12h (2-4 doses — melhora plaquetas)
+4. Reservar: CH + PFC + plaquetas (se <50.000 ou pré-cesárea)
+5. Exames seriados: hemograma, plaquetas, LDH, AST/ALT, bilirrubinas, creatinina, coagulograma
+6. Monitorização fetal contínua (CTG)
+7. PARTO: resolução da gestação assim que estabilizada
+   ≥34 semanas: parto imediato
+   <34 semanas: corticoide + parto em 24-48h (se possível)
+8. Transfusão de plaquetas: apenas se <20.000 ou pré-cesárea com <50.000
+9. UTI materna pós-parto (monitorização 48-72h — pico de complicações)`,
+    warnings: "HELLP: Hemólise + Elevated Liver enzymes + Low Platelets. Risco: rotura hepática, CIVD, descolamento de placenta, IRA. Mortalidade materna: 1-3%.",
+    guideline: "FEBRASGO / ACOG / ISSHP",
+  },
+  {
+    id: "rx-obst-embolia-liquido-amniotico",
+    title: "Embolia por Líquido Amniótico",
+    type: "Prescrição Obstétrica de Emergência",
+    prescription: `1. IOT + VM imediata (se parada respiratória)
+2. RCP se PCR (decúbito lateral esquerdo ou deslocamento uterino manual)
+3. Cesariana perimortem se >4min de PCR sem resposta (4 minutos regra)
+4. SF 0,9% + CH + PFC + plaquetas (CIVD frequente)
+5. Noradrenalina 0,1-2mcg/kg/min se choque
+6. Dobutamina se disfunção de VD (ecocardiograma beira-leito)
+7. Ácido tranexâmico 1g EV
+8. Ocitocina 20UI em SF 500mL EV (hemorragia uterina pós-parto)
+9. UTI materna
+10. Tratar CIVD agressivamente: manter fibrinogênio >1,5g/L, plaquetas >50.000`,
+    warnings: "Mortalidade: 20-60%. Apresentação: colapso cardiovascular súbito + hipóxia + CIVD durante/após parto. Diagnóstico de EXCLUSÃO. Suporte é o único tratamento.",
+    guideline: "FEBRASGO / ACOG / RCOG / SMFM",
+  },
 ];
