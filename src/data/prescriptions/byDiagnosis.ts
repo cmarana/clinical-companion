@@ -7301,6 +7301,298 @@ MONITORIZAÇÃO:
     warnings: "NUNCA tratar com antiparasitário sem corticoide (risco de HIC por edema reacional). Excluir cisto ocular ANTES de iniciar albendazol (pode causar cegueira).",
     guideline: "AAN / ASTMH / MS Brasil",
   },
+  // ========== INFECTOLOGIA AVANÇADA CONTINUAÇÃO ==========
+  {
+    id: "rx-aspergilose-invasiva",
+    title: "Aspergilose Pulmonar Invasiva",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `1ª LINHA:
+1. Voriconazol 6mg/kg EV 12/12h no D1 → 4mg/kg EV 12/12h
+2. Transição VO: 200mg VO 12/12h (quando tolerável)
+
+ALTERNATIVAS:
+3. Isavuconazol 200mg EV 8/8h por 6 doses → 200mg EV/VO 1x/dia
+4. Anfotericina B lipossomal 3-5mg/kg/dia EV (se intolerância/falha azólicos)
+
+RESGATE:
+5. Caspofungina 70mg D1 → 50mg/dia OU Micafungina 150mg/dia
+6. Combinação: Voriconazol + Equinocandina (pacientes graves)
+
+SUPORTE:
+7. Galactomanana sérica 2x/semana
+8. TC tórax semanal (sinal do halo → crescente aéreo)
+9. Reduzir/suspender imunossupressão se possível
+10. Função hepática + nível sérico de Voriconazol (alvo 1-5 mcg/mL)
+11. Avaliar cirurgia se hemoptise maciça ou lesão pericárdica`,
+    warnings: "Voriconazol: fotossensibilidade, alucinações visuais, hepatotoxicidade. Interação com Ciclosporina, Tacrolimus, Sirolimus (reduzir dose).",
+    guideline: "IDSA / ECIL / SBI",
+  },
+  {
+    id: "rx-candidemia",
+    title: "Candidemia / Candida Invasiva",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `EMPÍRICO (antes da identificação da espécie):
+1. Anidulafungina 200mg EV D1 → 100mg EV 1x/dia
+2. OU Caspofungina 70mg EV D1 → 50mg EV 1x/dia
+3. OU Micafungina 100mg EV 1x/dia
+
+APÓS IDENTIFICAÇÃO:
+C. albicans sensível: escalonar para Fluconazol 400mg EV/VO 1x/dia (após clearance)
+C. glabrata/krusei: manter equinocandina
+C. parapsilosis: Fluconazol 400mg (equinocandinas menos eficazes)
+
+MANDATÓRIO:
+4. REMOVER cateter venoso central
+5. Hemoculturas diárias até negativação
+6. Fundoscopia (endoftalmite candidiásica — em 48h)
+7. Eco TT/TE (endocardite fúngica se persistência >72h)
+8. Tratamento: 14 dias APÓS 1ª hemocultura negativa
+9. Não esquecer: exame de fundo de olho por oftalmologista`,
+    warnings: "Candidemia NÃO é contaminação — mortalidade 30-50%. Sempre tratar. Sempre retirar cateter. Fluconazol NÃO cobre C. krusei e tem ação variável contra C. glabrata.",
+    guideline: "IDSA / ECIL / SBI",
+  },
+  {
+    id: "rx-paracoccidioidomicose",
+    title: "Paracoccidioidomicose",
+    type: "Prescrição Hospitalar / Ambulatorial",
+    prescription: `FORMA LEVE/MODERADA:
+1. Itraconazol 200mg VO 1x/dia (após refeição gordurosa) por 9-18 meses
+2. OU Sulfametoxazol-Trimetoprim 800/160mg VO 12/12h por 18-24 meses (SUS)
+
+FORMA GRAVE (disseminada/neuroparacoccidioido):
+3. Anfotericina B lipossomal 3mg/kg/dia EV por 2-4 semanas
+4. Seguida de Itraconazol 200mg VO 1x/dia por 12-24 meses
+5. OU Sulfametoxazol-Trimetoprim EV (se indisponível AnfB)
+
+CRITÉRIOS DE CURA:
+6. Clínico: resolução dos sintomas
+7. Sorológico: imunodifusão negativa ou título estável por 2 exames consecutivos
+8. Radiológico: estabilização das lesões
+
+SUPORTE:
+9. Reposição nutricional (desnutrição é frequente)
+10. Avaliar insuficiência adrenal (acometimento adrenal em 40-50%)
+11. Dexametasona se edema laríngeo/dispneia`,
+    notes: "Paracoccidioidomicose é a micose sistêmica mais comum no Brasil. Predomina em homens trabalhadores rurais. SMX-TMP é opção SUS mais acessível.",
+    guideline: "SBI / Consenso Brasileiro de Paracoccidioidomicose / MS",
+  },
+  {
+    id: "rx-histoplasmose",
+    title: "Histoplasmose Disseminada",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `FORMA GRAVE (disseminada em imunodeprimido):
+1. Anfotericina B lipossomal 3mg/kg/dia EV por 1-2 semanas
+2. Seguida de Itraconazol 200mg VO 12/12h por ≥12 meses
+
+FORMA LEVE/MODERADA:
+3. Itraconazol 200mg VO 12/12h por 6-12 meses
+
+EM HIV/AIDS:
+4. Anfotericina B lipossomal por 2 semanas → Itraconazol 200mg 12/12h
+5. Profilaxia secundária: Itraconazol 200mg/dia até CD4 >150 por 6 meses em TARV
+
+DIAGNÓSTICO:
+6. Antígeno urinário de Histoplasma (sensibilidade >90% na forma disseminada)
+7. Cultura de sangue/MO (resultado em 4-6 semanas)
+8. Histopatologia: granulomas + leveduras intracelulares
+
+MONITORIZAÇÃO:
+9. Nível sérico de Itraconazol (alvo >1mcg/mL)
+10. Função hepática quinzenal
+11. Antígeno urinário seriado (resposta ao tratamento)`,
+    guideline: "IDSA / SBI / MS Brasil",
+  },
+  {
+    id: "rx-esporotricose",
+    title: "Esporotricose",
+    type: "Prescrição Ambulatorial / Hospitalar",
+    prescription: `FORMA CUTÂNEA/LINFOCUTÂNEA (mais comum):
+1. Itraconazol 200mg VO 1x/dia por 3-6 meses (após refeição gordurosa)
+2. Alternativa SUS: Iodeto de potássio (solução saturada) 5 gotas VO 3x/dia → aumentar 1 gota/dia até 40 gotas 3x/dia por 3-6 meses
+
+FORMA DISSEMINADA/OSTEOARTICULAR:
+3. Anfotericina B lipossomal 3-5mg/kg/dia por 2-4 semanas
+4. Seguida de Itraconazol 200mg VO 12/12h por 12-24 meses
+
+FORMA PULMONAR:
+5. Se cavitária: Itraconazol 200mg 12/12h por 12 meses
+6. Se grave: Anfotericina B → Itraconazol
+
+EM GATOS (zoonose — Sporothrix brasiliensis):
+7. Orientar tutores sobre risco de transmissão
+8. Usar luvas no contato com lesões de animais
+9. Encaminhar animal para veterinário
+10. Notificação em áreas endêmicas (RJ, RS, SP)`,
+    notes: "Esporotricose zoonótica (por gatos) é epidêmica no Brasil, especialmente RJ. S. brasiliensis é mais virulento que S. schenckii. Iodeto de potássio: barato e disponível no SUS.",
+    guideline: "SBD / SBI / MS / UpToDate",
+  },
+  // ========== CIRURGIA TORÁCICA — COMPLEMENTOS ==========
+  {
+    id: "rx-hernia-diafragmatica-traumatica",
+    title: "Hérnia Diafragmática Traumática",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `1. Monitorização intensiva (SpO2, PA, FC)
+2. SNG para descompressão gástrica (ANTES da cirurgia)
+3. IOT + VM se insuficiência respiratória
+   - EVITAR ventilação com pressão positiva excessiva (piora herniação)
+4. Acesso venoso calibroso + reposição volêmica
+5. Tipagem + reserva de sangue
+6. TC tórax + abdome com contraste (definir lado e conteúdo herniado)
+7. CIRURGIA:
+   - Trauma agudo: laparotomia (via abdominal)
+   - Hérnia crônica/diagnóstico tardio: toracotomia (aderências intratorácicas)
+8. Rafia primária do diafragma com fio inabsorvível (Prolene 0)
+   OU tela (se defeito >10cm)
+9. Drenagem torácica ipsilateral
+10. ATB profilático: Cefazolina 2g EV + Metronidazol 500mg EV`,
+    warnings: "Lado esquerdo (80-90%) — estômago/cólon/baço herniam. Lado direito: proteção parcial pelo fígado. Pode ser diagnosticada tardiamente (meses-anos após trauma).",
+    guideline: "ATLS / EAST / SBCT",
+  },
+  {
+    id: "rx-traqueomalácia",
+    title: "Corpo Estranho em Via Aérea — Manejo",
+    type: "Prescrição de Emergência / Hospitalar",
+    prescription: `OBSTRUÇÃO TOTAL (asfixia):
+1. Manobra de Heimlich (adulto consciente)
+2. Compressões torácicas (adulto inconsciente / obeso / gestante)
+3. Se falha: cricotireoidostomia de emergência
+
+OBSTRUÇÃO PARCIAL / CORPO ESTRANHO BRÔNQUICO:
+4. Manter paciente calmo, posição confortável
+5. O2 suplementar (se SpO2 <94%)
+6. NÃO fazer manobra de Heimlich se tosse eficaz
+7. Broncoscopia RÍGIDA de urgência (remoção do CE)
+   - Broncoscopia flexível: localização e CE pequenos
+8. RX tórax PA + perfil (CE radiopaco / hiperinsuflação localizada / atelectasia)
+9. TC tórax se dúvida diagnóstica
+10. Pós-remoção: dexametasona 4mg EV (reduzir edema)
+11. Corticoide inalatório por 5-7 dias
+12. Se infecção secundária: ATB (Amoxicilina-Clavulanato)`,
+    guideline: "AHA / ATLS / SBPT / SBCT",
+  },
+  {
+    id: "rx-fistula-broncopleural",
+    title: "Fístula Broncopleural",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `1. Drenagem torácica adequada (dreno de grosso calibre 32-36Fr)
+2. Manter dreno em selo d'água (aspiração contínua -20cmH2O se necessário)
+3. Se em VM: minimizar pressão de via aérea:
+   - PEEP baixa (≤5cmH2O)
+   - Vt baixo
+   - FR alta
+   - Considerar ventilação unipulmonar (tubo de duplo lúmen)
+4. ATB: Piperacilina-Tazobactam 4,5g EV 6/6h + Vancomicina (se pós-pneumonectomia)
+5. Nutrição adequada (cicatrização)
+6. Avaliar cirurgia:
+   - Retalho muscular de reforço (grande dorsal, serrátil)
+   - Toracoplastia
+   - Selo broncoscópico (cola biológica — temporário)
+7. Fisioterapia respiratória (lado contralateral)
+8. Controle de BH e nutrição`,
+    warnings: "Fístula broncopleural pós-pneumonectomia: emergência — risco de aspiração de líquido da cavidade para o pulmão remanescente. Posicionar com lado operado para BAIXO.",
+    guideline: "SBCT / ESTS / Chest",
+  },
+  {
+    id: "rx-hemotorax-retido",
+    title: "Hemotórax Retido / Coagulado",
+    type: "Prescrição Hospitalar",
+    prescription: `DEFINIÇÃO: Hemotórax que não drena adequadamente ou coágulo retido após drenagem
+
+1. TC tórax (quantificar e localizar coleção)
+2. Se <72h + volume significativo: VATS (videotoracoscopia) — melhor resultado
+3. Se >72h: VATS mais difícil (aderências) → considerar fibrinolítico intrapleural:
+   - Alteplase 10mg + DNase 5mg em 30mL SF 2x/dia por 3 dias
+4. Se organizado/tardio: decorticação cirúrgica (toracotomia)
+5. Manter dreno de tórax (calibroso)
+6. ATB profilático: Cefazolina 1g EV 8/8h por 24h
+7. Fisioterapia respiratória
+8. Analgesia adequada (Tramadol + Dipirona)
+9. Enoxaparina 40mg SC 1x/dia (quando sem sangramento ativo)
+10. Monitorizar: hemoglobina seriada, RX tórax diário`,
+    notes: "VATS nas primeiras 72h: sucesso >90%, menor tempo de internação. Após 7 dias: fibrinolítico intrapleural é alternativa à cirurgia. Hemotórax retido não tratado → empiema + fibrotórax.",
+    guideline: "EAST / ATLS / SBCT",
+  },
+  // ========== PROFILAXIA CIRÚRGICA — MAIS PROCEDIMENTOS ==========
+  {
+    id: "rx-profilaxia-transplante-renal",
+    title: "Profilaxia — Peri-Transplante Renal",
+    type: "Prescrição Hospitalar",
+    prescription: `PROFILAXIA ANTIMICROBIANA PÓS-TRANSPLANTE RENAL:
+
+ATB:
+1. Cefazolina 2g EV (indução anestésica) → DU
+
+ANTIVIRAL (CMV):
+2. Se D+/R-: Valganciclovir 900mg VO 1x/dia por 6 meses (alta virulência)
+3. Se D+/R+ ou D-/R+: Valganciclovir por 3 meses OU terapia preemptiva (PCR CMV semanal)
+4. Se D-/R-: sem profilaxia CMV
+
+PNEUMOCISTOSE:
+5. Sulfametoxazol-Trimetoprim 400/80mg VO 1x/dia por 6-12 meses
+
+CANDIDA:
+6. Nistatina 500.000UI VO 4x/dia por 1-3 meses OU Fluconazol 100mg/dia
+
+TB LATENTE:
+7. Se PPD ≥5mm ou IGRA+: Isoniazida 300mg/dia por 9 meses (antes ou após transplante)
+
+VACINAS PRÉ-TRANSPLANTE:
+8. Hepatite B, Pneumo23, Influenza, COVID (INATIVADAS)
+9. CONTRAINDICADAS pós-transplante: BCG, Febre Amarela, MMR, VOP`,
+    guideline: "KDIGO / ABTo / SBN / SBI",
+  },
+  {
+    id: "rx-profilaxia-esplenectomia",
+    title: "Profilaxia — Pós-Esplenectomia",
+    type: "Prescrição Hospitalar / Ambulatorial",
+    prescription: `VACINAÇÃO (idealmente 14 dias ANTES da esplenectomia eletiva):
+1. Pneumocócica 13-valente (Prevenar) → 8 semanas depois: Pneumo23 (polissacarídica)
+2. Meningocócica conjugada ACWY
+3. Meningocócica B (Bexsero)
+4. Haemophilus influenzae tipo B (Hib)
+5. Influenza anual
+
+SE ESPLENECTOMIA DE URGÊNCIA:
+6. Vacinar 14 dias após cirurgia (antes: resposta insuficiente)
+
+ANTIBIOTICOPROFILAXIA:
+7. Penicilina V 250mg VO 12/12h contínua (mínimo 2 anos — idealmente até 5 anos ou mais)
+8. Alternativa: Amoxicilina 500mg VO 1x/dia
+9. Se alergia: Eritromicina 250mg VO 12/12h
+
+ORIENTAÇÃO AO PACIENTE:
+10. Cartão de alerta de asplenia (carregar sempre)
+11. Febre é EMERGÊNCIA — procurar PS imediatamente
+12. ATB empírico se febre: Amoxicilina-Clavulanato VO OU Ceftriaxona EV
+13. Profilaxia em viagem: Amoxicilina-Clavulanato sob demanda
+14. Evitar mordedura de cão/carrapato (Babesia, Capnocytophaga)`,
+    warnings: "OPSI (Overwhelming Post-Splenectomy Infection): mortalidade 50-70%. Pneumococo é o agente mais comum. Paciente asplênico com febre = emergência médica.",
+    guideline: "ACIP / SBI / MS / IDSA",
+  },
+  {
+    id: "rx-profilaxia-mordedura",
+    title: "Profilaxia — Mordedura Animal e Humana",
+    type: "Prescrição Ambulatorial / Emergência",
+    prescription: `MORDEDURA DE CÃO/GATO:
+1. Lavagem exaustiva com SF + PVPI (15 min)
+2. NÃO suturar (exceto face — sutura com fio fino)
+3. ATB profilático (indicado em todas as mordeduras de gato e mordeduras profundas de cão):
+   - Amoxicilina-Clavulanato 875/125mg VO 12/12h por 5-7 dias
+   - Se alergia: Clindamicina 300mg VO 6/6h + Ciprofloxacino 500mg VO 12/12h
+4. Profilaxia antirrábica conforme protocolo MS:
+   - Animal observável (10 dias): observar + vacina se sinais
+   - Animal silvestre/desaparecido/morto: vacina + soro antirrábico
+
+MORDEDURA HUMANA:
+5. Lavagem + Amoxicilina-Clavulanato 875/125mg VO 12/12h por 5-7 dias
+6. Sorologias: HIV, HBV, HCV (agressor e vítima)
+7. PEP HIV (se risco): TDF + 3TC + DTG por 28 dias
+8. Vacina anti-hepatite B (se não imune)
+
+TÉTANO:
+9. Avaliar status vacinal: se >5 anos sem reforço → dT + SAT/IGHAT`,
+    guideline: "MS Brasil / IDSA / WHO",
+  },
 ];
 
 

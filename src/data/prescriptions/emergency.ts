@@ -1979,6 +1979,111 @@ CIRURGIA INFECTADA:
     notes: "Alergia a cefalosporinas: Clindamicina 900mg EV + Gentamicina 5mg/kg. Obesos mórbidos: Cefazolina 3g. Vancomicina apenas se MRSA prevalente na instituição.",
     guideline: "ANVISA / ASHP / SIS / IDSA",
   },
+  // ========== EMERGÊNCIAS INFECCIOSAS ==========
+  {
+    id: "rx-emerg-sepse-foco-abdominal",
+    title: "Sepse — Foco Abdominal (Peritonite)",
+    type: "Prescrição de Emergência",
+    prescription: `1. Acesso venoso calibroso (2 acessos)
+2. SF 0,9% 30mL/kg EV na 1ª hora
+3. Hemoculturas 2 amostras ANTES do ATB
+4. ATB empírico IMEDIATO (<1h):
+   - Piperacilina-Tazobactam 4,5g EV 6/6h
+   - OU Meropenem 1g EV 8/8h + Metronidazol 500mg EV 8/8h
+   - Se grave/nosocomial: + Fluconazol 400mg EV (cobertura fúngica)
+5. Noradrenalina se PAM <65 após volume (acesso central)
+6. Lactato seriado (meta: clearance >10%/2h)
+7. Sondagem vesical (diurese alvo >0,5mL/kg/h)
+8. SNG aberta (se íleo/vômitos)
+9. CIRURGIA — controle do foco: NÃO ATRASAR
+   (Laparotomia exploradora se peritonite difusa)
+10. TC abdome se estável (localizar foco)
+11. Hidrocortisona 50mg EV 6/6h se choque refratário
+12. Gasometria + lactato + HMG + coagulograma`,
+    warnings: "Controle do foco cirúrgico é prioridade em sepse abdominal. ATB sem cirurgia = falha terapêutica. Cada hora de atraso no ATB aumenta mortalidade em 7%.",
+    guideline: "SSC 2021 / SIS / WSES",
+  },
+  {
+    id: "rx-emerg-choque-toxico-estreptococico",
+    title: "Síndrome do Choque Tóxico Estreptocócico",
+    type: "Prescrição de Emergência / UTI",
+    prescription: `1. Ressuscitação volêmica agressiva (30-60mL/kg na 1ª hora)
+2. ATB:
+   - Penicilina G Cristalina 4MUI EV 4/4h + Clindamicina 900mg EV 8/8h
+   - Clindamicina é FUNDAMENTAL (inibe síntese de toxinas — efeito independente de crescimento)
+3. Noradrenalina + Vasopressina se choque refratário
+4. IOT + VM se SDRA
+5. Imunoglobulina humana EV 1g/kg no D1 → 0,5g/kg nos D2-D3 (neutraliza superantígenos)
+6. Desbridamento cirúrgico se fasciíte necrotizante associada
+7. Hemoculturas + cultura de sítio
+8. Laboratório: HMG, CK, Cr, TGO/TGP, coagulograma, gasometria, lactato
+9. Hemodiálise se IRA
+10. Monitorização hemodinâmica invasiva`,
+    warnings: "Mortalidade 30-70%. Strep pyogenes (Grupo A) produz superantígenos (SPE). Clindamicina SEMPRE associada à Penicilina (sinergia comprovada).",
+    guideline: "IDSA / CDC / SBI",
+  },
+  {
+    id: "rx-emerg-abscesso-periamigdaliano",
+    title: "Abscesso Periamigdaliano — Drenagem de Emergência",
+    type: "Prescrição de Emergência",
+    prescription: `1. Avaliar via aérea (trismo severo? estridor?)
+2. Analgesia: Dipirona 1g EV + Tramadol 50mg EV
+3. Corticoide: Dexametasona 8mg EV DU (reduz edema e dor)
+4. ATB:
+   - Amoxicilina-Clavulanato 1g EV 8/8h
+   - OU Clindamicina 600mg EV 6/6h (se alergia)
+   - OU Ceftriaxona 1g EV + Metronidazol 500mg EV 8/8h
+5. DRENAGEM (sob anestesia local com Lidocaína spray):
+   - Punção aspirativa com agulha 18G (guia diagnóstica)
+   - OU incisão e drenagem (bisturi 11)
+   - Local: ponto de maior abaulamento (polo superior da amígdala)
+6. Hidratação EV (paciente geralmente desidratado por disfagia)
+7. Omeprazol 40mg EV 1x/dia
+8. Considerar internação se: trismo severo, extensão para espaço parafaríngeo, imunocomprometido
+9. Alta em 24-48h se boa evolução → completar ATB VO por 10-14 dias`,
+    warnings: "COMPLICAÇÃO: mediastinite descendente necrotizante (extensão ao mediastino — mortalidade alta). TC cervical se suspeita de extensão profunda.",
+    guideline: "AAO-HNS / SBO / UpToDate",
+  },
+  {
+    id: "rx-emerg-epiglotite-adulto",
+    title: "Epiglotite Aguda no Adulto",
+    type: "Prescrição de Emergência",
+    prescription: `1. VIA AÉREA É PRIORIDADE — equipamento de IOT difícil preparado
+2. Manter paciente calmo, sentado, inclinado para frente
+3. O2 umidificado (NÃO irritar via aérea)
+4. NÃO examinar orofaringe com abaixador de língua (risco de espasmo laríngeo)
+5. Nasolaringoscopia flexível (confirmação — por especialista)
+6. ATB EV IMEDIATO:
+   - Ceftriaxona 2g EV 1x/dia por 7-10 dias
+   - + Dexametasona 0,6mg/kg EV (máx 10mg) 1x/dia por 2-3 dias
+7. Adrenalina nebulizada 3-5mL (1:1000) se estridor severo
+8. Se obstrução iminente: IOT por operador experiente (TOT 1-2 números menor)
+9. Se falha IOT: cricotireoidostomia de emergência
+10. Internação em UTI nas primeiras 24-48h
+11. Hemoculturas (H. influenzae tipo B, S. aureus, Strep spp)`,
+    warnings: "Epiglotite no adulto pode evoluir para obstrução completa em HORAS. NÃO usar abaixador de língua, NÃO deitar o paciente, NÃO sedar sem controle de via aérea.",
+    guideline: "AAO-HNS / ATLS / UpToDate",
+  },
+  {
+    id: "rx-emerg-angina-ludwig",
+    title: "Angina de Ludwig",
+    type: "Prescrição de Emergência / UTI",
+    prescription: `1. AVALIAR VIA AÉREA — IOT precoce se edema progressivo
+   (IOT pode ser MUITO difícil — preparo para via aérea cirúrgica)
+2. ATB EV:
+   - Ampicilina-Sulbactam 3g EV 6/6h
+   - OU Penicilina G 4MUI EV 4/4h + Metronidazol 500mg EV 8/8h + Oxacilina 2g EV 4/4h
+   - OU Meropenem 1g EV 8/8h (se grave/nosocomial)
+3. Dexametasona 8mg EV 8/8h por 48h (reduzir edema — controverso mas usado)
+4. TC cervical com contraste (extensão, coleções)
+5. Drenagem cirúrgica se coleção OU sem melhora em 24-48h
+6. Avaliar foco dentário (causa mais comum: 2º/3º molar inferior)
+7. Hidratação EV (disfagia intensa)
+8. Monitorização em UTI
+9. COMPLICAÇÃO TEMIDA: mediastinite descendente — TC se piora`,
+    warnings: "Infecção do espaço submandibular bilateral + sublingual. Mortalidade sem tratamento: >50%. Pode evoluir para mediastinite em horas. IOT precoce salva vidas.",
+    guideline: "AAO-HNS / IDSA / SBO",
+  },
 ];
 
 
