@@ -5,7 +5,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import PremiumGate from "@/components/PremiumGate";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Search, ChevronRight, ClipboardList, Stethoscope, Zap, Building, Baby, HeartPulse, Thermometer, Pill, Target, LogOut, FlaskConical, FileText } from "lucide-react";
+import { Search, ChevronRight, ClipboardList, Stethoscope, Zap, Building, Baby, HeartPulse, Thermometer, Pill, Target, LogOut, FlaskConical, FileText, Brain, Eye, Droplets, Scissors, Syringe, Monitor, Shield, Flame, Ribbon, Activity, Bone, Skull } from "lucide-react";
 import { prescriptionCategories } from "@/data/prescriptions/index";
 
 const iconMap: Record<string, React.ReactNode> = {
@@ -20,6 +20,19 @@ const iconMap: Record<string, React.ReactNode> = {
   "log-out": <LogOut size={16} className="text-teal-500" />,
   "flask-conical": <FlaskConical size={16} className="text-amber-500" />,
   "file-text": <FileText size={16} className="text-indigo-500" />,
+  brain: <Brain size={16} className="text-purple-500" />,
+  eye: <Eye size={16} className="text-cyan-500" />,
+  droplets: <Droplets size={16} className="text-red-400" />,
+  scissors: <Scissors size={16} className="text-slate-500" />,
+  syringe: <Syringe size={16} className="text-emerald-500" />,
+  monitor: <Monitor size={16} className="text-blue-400" />,
+  shield: <Shield size={16} className="text-gray-500" />,
+  flame: <Flame size={16} className="text-orange-600" />,
+  ribbon: <Ribbon size={16} className="text-pink-400" />,
+  activity: <Activity size={16} className="text-yellow-500" />,
+  bone: <Bone size={16} className="text-stone-500" />,
+  skull: <Skull size={16} className="text-red-600" />,
+  kidney: <Activity size={16} className="text-amber-600" />,
 };
 
 export default function Prescriptions() {
