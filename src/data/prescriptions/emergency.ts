@@ -1418,5 +1418,91 @@ NÍVEL 3 — Contenção mecânica:
     warnings: "Cada hora de atraso no diagnóstico reduz chance de recuperação neurológica. Déficit motor estabelecido >48h: prognóstico ruim para recuperação.",
     guideline: "NCCN / ESMO / SBOC",
   },
+  {
+    id: "rx-emerg-hipertensao-intracraniana",
+    title: "Hipertensão Intracraniana — Emergência",
+    type: "Prescrição de Emergência",
+    prescription: `1. Cabeceira 30° (posição neutra da cabeça)
+2. IOT + VM: PaCO2 alvo 35-38mmHg (hiperventilação leve — NÃO <30 rotineiramente)
+3. Manitol 20%: 0,5-1g/kg EV em 15-20min (repetir 0,25-0,5g/kg 4/4-6/6h se necessário)
+4. OU NaCl 20%: 10-20mL EV em 10min (alternativa ao Manitol — não depleta volemia)
+5. Sedação profunda: Midazolam + Fentanil em BIC (RASS -4 a -5)
+6. Evitar: febre (antitérmico agressivo), hipotensão (PAM ≥80), hiponatremia, hiperglicemia, convulsão
+7. Monitorização PIC se disponível (alvo PIC <22mmHg, PPC 60-70mmHg)
+8. Dexametasona 4mg EV 6/6h (apenas se edema vasogênico — tumor, abscesso. NÃO usar em TCE)
+9. TC crânio urgente
+10. Avaliar: craniotomia descompressiva, DVE, drenagem cirúrgica (hematoma/abscesso)`,
+    warnings: "Tríade de Cushing: hipertensão + bradicardia + alteração respiratória = herniação iminente. Herniação uncal: midríase unilateral + hemiparesia contralateral.",
+    guideline: "BTF / ABN / SBN-Neurocirurgia",
+  },
+  {
+    id: "rx-emerg-hipotermia-acidental",
+    title: "Hipotermia Acidental — Emergência",
+    type: "Prescrição de Emergência",
+    prescription: `Leve (32-35°C):
+1. Reaquecimento passivo externo: retirar roupas molhadas, cobertores, ambiente aquecido
+2. Líquidos aquecidos VO
+
+Moderada (28-32°C):
+3. Reaquecimento ativo externo: manta térmica (Bair Hugger), bolsas de água quente em axilas/virilhas
+4. SF 0,9% aquecido a 40-42°C EV
+5. Monitorização ECG contínua (risco de FV se <30°C)
+6. NÃO mobilizar bruscamente (risco de FV)
+
+Grave (<28°C):
+7. Reaquecimento ativo interno: lavagem peritoneal/pleural com SF aquecido a 40-42°C
+8. ECMO-VA: método mais eficaz de reaquecimento em PCR por hipotermia
+9. Se PCR: RCP contínua até reaquecimento (32-35°C) — "ninguém está morto até estar quente e morto"
+10. Desfibrilação: limitar a 1 tentativa se <30°C → repetir após >30°C
+11. Vasopressores: eficácia reduzida — não escalonar até >30°C`,
+    warnings: "NÃO declarar óbito até temperatura >32°C e RCP sem resposta. PCR por hipotermia tem bom prognóstico neurológico se tratada adequadamente.",
+    guideline: "AHA / ERC / Wilderness Medical Society",
+  },
+  {
+    id: "rx-emerg-afogamento",
+    title: "Afogamento — Emergência",
+    type: "Prescrição de Emergência",
+    prescription: `Grau 1-2 (tosse, ausculta normal/estertores):
+1. O2 suplementar 5-10L/min
+2. Observação 6-12h no PS
+3. SpO2 >95% estável por 6h → alta com orientação
+
+Grau 3-4 (EAP, hipotensão):
+4. VNI: CPAP 5-10 cmH2O ou BiPAP
+5. Se falha: IOT + VM protetora (risco de SDRA)
+6. SF 0,9% 500-1000mL EV (evitar hiper-hidratação — EAP)
+7. Furosemida 40mg EV se congestão
+
+Grau 5-6 (apneia/PCR):
+8. RCP conforme protocolo ACLS (5 ventilações de resgate iniciais)
+9. Adrenalina 1mg EV cada 3-5min
+10. Reaquecimento se hipotermia (<35°C)
+11. Tratar: broncoespasmo, acidose, hipotermia, arritmia
+
+Todos:
+12. RX tórax (pode ser normal inicial — repetir em 6-12h)
+13. Gasometria
+14. Monitorizar: SDRA pode aparecer em 24-72h`,
+    notes: "Classificação de Szpilman: Graus 1-6. Principal causa de morte: hipóxia. Aspiração de água doce vs salgada: manejo prático é o mesmo. NÃO fazer manobra de Heimlich para retirar água.",
+    guideline: "SOBRASA / ILCOR / AHA / OMS",
+  },
+  {
+    id: "rx-emerg-choque-anafilatico-refratario",
+    title: "Anafilaxia Refratária / Choque Anafilático",
+    type: "Prescrição de Emergência",
+    prescription: `1. Adrenalina IM 0,5mg (1ª dose) — repetir a cada 5min até 3 doses
+2. Se sem resposta → Adrenalina EV:
+   Diluir: 1mg em 100mL SF (10mcg/mL)
+   Infundir: 0,1-0,5mcg/kg/min em BIC (titular por PA)
+3. SF 0,9% 1000-2000mL EV em bolus rápido (pode necessitar 5-10L)
+4. Glucagon 1-5mg EV em 5min (se em uso de betabloqueador — refratário a adrenalina)
+5. Vasopressina 1-2U EV bolus → 0,01-0,04U/min (se refratário a adrenalina)
+6. Azul de metileno 1-2mg/kg EV em 5min (vasoplegia refratária — off-label)
+7. IOT precoce se: edema de laringe, estridor, rouquidão (VA difícil — edema progressivo)
+8. Hidrocortisona 200mg EV (prevenção reação bifásica)
+9. Observação 12-24h (reação bifásica em 5-20%)`,
+    warnings: "Anafilaxia refratária: definida como sem resposta a 3 doses IM. Mortalidade: obstrução de VA (60%) > choque (25%). Paciente em betabloqueador: pode não responder a adrenalina — usar Glucagon.",
+    guideline: "WAO / ASBAI / AAAAI / EAACI",
+  },
 ];
 
