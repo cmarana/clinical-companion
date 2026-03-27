@@ -37,6 +37,11 @@ const FullProtocolDetail = lazy(() => import("@/pages/FullProtocolDetail"));
 const Bulario = lazy(() => import("@/pages/Bulario"));
 const BularioDetail = lazy(() => import("@/pages/BularioDetail"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
+const CPRTimer = lazy(() => import("@/pages/CPRTimer"));
+const Checklists = lazy(() => import("@/pages/Checklists"));
+const CIDSearch = lazy(() => import("@/pages/CIDSearch"));
+const EvolutionTemplates = lazy(() => import("@/pages/EvolutionTemplates"));
+const DrugCompatibility = lazy(() => import("@/pages/DrugCompatibility"));
 
 const queryClient = new QueryClient();
 
@@ -84,6 +89,11 @@ const AppRoutes = () => (
         <Route path="/bulario" element={<Bulario />} />
         <Route path="/bulario/:id" element={<BularioDetail />} />
         <Route path="/pricing" element={<Pricing />} />
+        <Route path="/cpr-timer" element={<CPRTimer />} />
+        <Route path="/checklists" element={<Checklists />} />
+        <Route path="/cid" element={<CIDSearch />} />
+        <Route path="/evolution-templates" element={<EvolutionTemplates />} />
+        <Route path="/drug-compatibility" element={<DrugCompatibility />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
