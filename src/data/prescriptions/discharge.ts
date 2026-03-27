@@ -1378,5 +1378,66 @@ PRESCRIÇÃO:
 13. Intervalo intergestacional recomendado: ≥18 meses (cicatriz uterina)`,
     guideline: "FEBRASGO / MS / ACOG",
   },
+  {
+    id: "rx-alta-hipoglicemia",
+    title: "Alta após Hipoglicemia — Orientações",
+    type: "Alta / Endocrinologia",
+    prescription: `1. Glicemia >100mg/dL estável por 2h antes da alta
+2. Identificar e corrigir causa:
+   - Ajuste de dose de insulina/sulfoniluréia
+   - Suspender medicamento causador se possível
+3. Orientações ao paciente:
+   - Alimentação regular (não pular refeições)
+   - Ter fonte de açúcar sempre disponível (sachê, bala)
+   - Reconhecer sintomas: tremor, sudorese, confusão, palidez
+   - Glicemia capilar 3-4x/dia por 1 semana
+4. Se sulfoniluréia: observar mínimo 12-24h (meia-vida longa!)
+5. Receita ajustada: [conforme reavaliação do esquema]
+6. Retorno: endocrinologia em 7 dias
+7. Se >2 episódios: investigação ambulatorial (insulinoma, insuficiência adrenal)`,
+    guideline: "ADA / SBEM / Endocrine Society",
+  },
+  {
+    id: "rx-alta-convulsao-primeira",
+    title: "Alta após Primeira Crise Convulsiva",
+    type: "Alta / Neurologia",
+    prescription: `1. TC crânio e EEG realizados (ou agendados)
+2. Exames laboratoriais normais (Na, K, Ca, Mg, glicemia)
+3. Exame neurológico normal na alta
+4. Orientações:
+   - NÃO dirigir até liberação pelo neurologista (CTB + CFM)
+   - Evitar altura, natação sem supervisão, operar máquinas
+   - Acompanhante por 48h
+   - Retorno ao PS se nova crise, febre, cefaleia intensa, confusão
+5. Se iniciado anticonvulsivante:
+   - Receita controlada (azul ou especial conforme droga)
+   - NÃO suspender abruptamente
+6. Encaminhar: Neurologia (urgência se lesão em TC)
+7. Retorno: 7-14 dias para resultado de EEG/exames`,
+    notes: "Primeira crise NÃO obriga tratamento crônico (50% não recorrem). Indicação de DAE na 1ª crise: lesão estrutural, EEG alterado, crise focal, status epilepticus.",
+    guideline: "ABN / ILAE / AAN",
+  },
+  {
+    id: "rx-alta-queimadura-menor",
+    title: "Alta de Queimadura Menor (1º e 2º grau superficial)",
+    type: "Alta / Cirurgia",
+    prescription: `1. Curativo:
+   - Lavar com SF 0,9% ou água corrente limpa
+   - Sulfadiazina de Prata 1% creme (camada fina) + gaze vaselinada
+   - OU Curativo de prata nanocristalina (se disponível)
+   - Trocar curativo 1x/dia (ou a cada 48h se prata nanocristalina)
+2. Analgesia:
+   - Paracetamol 750mg VO 6/6h
+   - Ibuprofeno 600mg VO 8/8h (se não contraindicado)
+   - Tramadol 50mg VO 6/6h SN (dor intensa)
+3. NÃO estourar bolhas (proteção natural)
+4. NÃO aplicar: pasta de dente, manteiga, pomadas caseiras
+5. Hidratação oral abundante
+6. Retorno: 48h para reavaliação
+7. Sinais de alerta: febre, secreção purulenta, piora da dor, extensão da lesão
+8. Se face, mãos, pés, genitália ou >10% SCQ: INTERNAR (não dar alta)`,
+    guideline: "SBQ / ABA / MS",
+  },
 ];
+
 

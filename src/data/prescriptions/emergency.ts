@@ -1769,5 +1769,123 @@ APÓS LIBERAÇÃO:
     warnings: "CHOQUE DE REPERFUSÃO: ao liberar o membro, toxinas entram na circulação → hipercalemia → PCR. SEMPRE hidratar ANTES de liberar. Ter Ca++ à mão.",
     guideline: "ATLS / FEMA / WHO / Wilderness Medical Society",
   },
+  {
+    id: "rx-emerg-hiperpotassemia-grave",
+    title: "Hiperpotassemia Grave (K+ >6,5) — Protocolo Rápido",
+    type: "Emergência",
+    prescription: `1. Monitorização cardíaca IMEDIATA
+2. ECG (ondas T apiculadas, alargamento QRS, perda de P)
+3. SE alteração no ECG:
+   - Gluconato de Cálcio 10% 10mL (1 amp) EV em 2-3min (estabiliza membrana — efeito em 1min, dura 30-60min)
+   - Pode repetir em 5min se ECG não normalizar
+4. SHIFT de K+ para intracelular:
+   - Insulina Regular 10UI + SG50% 50mL EV em 15min (efeito em 15min, dura 4-6h)
+   - Salbutamol 10-20mg nebulização contínua (efeito em 15-30min)
+   - Bicarbonato de Sódio 8,4% 50mL EV se acidose (pH <7,2)
+5. REMOÇÃO de K+:
+   - Furosemida 40-80mg EV
+   - Sorcal (Poliestirenossulfonato de Ca) 30g + Manitol VO ou VR
+   - Patirômero 8,4g VO (se disponível)
+6. DIÁLISE se refratário ou IRA/DRC em estágio avançado
+7. K+ sérico 1/1h até <5,5
+8. Glicemia capilar 1/1h (risco de hipo após insulina)
+9. Suspender causas: IECA/BRA, espironolactona, suplementação K+`,
+    warnings: "K+ >7,5 ou ECG com QRS largo: EMERGÊNCIA — Gluconato de Cálcio PRIMEIRO. Insulina sem glicose = hipoglicemia grave. SEMPRE associar SG50%. Salbutamol NÃO funciona em pacientes em uso de betabloqueador.",
+    guideline: "KDIGO / AHA / SBN / AMIB",
+  },
+  {
+    id: "rx-emerg-hipopotassemia-grave",
+    title: "Hipopotassemia Grave (K+ <2,5) — Protocolo Rápido",
+    type: "Emergência",
+    prescription: `1. Monitorização cardíaca contínua
+2. ECG (ondas U, achatamento T, depressão ST, arritmias)
+3. REPOSIÇÃO EV:
+   - KCl 19,1% 20mL (4 ampolas) em 480mL SF 0,9% = 500mL
+   - Velocidade máxima: 20-40mEq/h em acesso CENTRAL
+   - Velocidade máxima: 10mEq/h em acesso PERIFÉRICO (dor/flebite)
+4. Meta: K+ >3,5
+5. Dosar Mg²⁺ — hipocalemia refratária geralmente é por hipomagnesemia
+   - MgSO4 50% 2g EV em 20min se Mg <1,5
+6. K+ sérico 2/2h durante reposição
+7. ECG seriado
+8. Após K+ >3,0: transição para KCl VO 600mg 8/8h
+9. Investigar causa: diuréticos, vômitos, diarreia, hiperaldosteronismo`,
+    warnings: "NUNCA repor K+ EV em bolus direto (fibrilação ventricular). Velocidade >20mEq/h apenas em acesso central com monitorização. KCl periférico: diluir bem e infundir lentamente (flebite intensa).",
+    guideline: "KDIGO / SBN / AHA / AMIB",
+  },
+  {
+    id: "rx-emerg-acidose-metabolica-grave",
+    title: "Acidose Metabólica Grave (pH <7,1)",
+    type: "Emergência",
+    prescription: `1. Identificar e tratar CAUSA:
+   - AG elevado: CAD, uremia, intoxicação (metanol, etilenoglicol), lactato, AAS
+   - AG normal (hiperclorêmica): diarreia, ATR, infusão excessiva SF
+2. Bicarbonato de Sódio 8,4% — SOMENTE se pH <7,1 ou HCO3 <8:
+   - Déficit HCO3 = 0,3 × peso × (HCO3 desejado − HCO3 atual)
+   - Repor 50% do déficit em 4h
+   - Reavaliação com gasometria após cada reposição
+3. Gasometria arterial 2/2h
+4. Se CAD: Insulina (protocolo CAD)
+5. Se uremia: Diálise de urgência
+6. Se intoxicação: antídoto específico + diálise
+7. Ventilação: manter compensação respiratória (hipocapnia)
+   - Se IOT necessária: manter FR alta (mimetizar Kussmaul)
+8. Eletrólitos 4/4h (K+, Na+, Ca²⁺, Cl-)
+9. Lactato 2/2h se choque associado`,
+    warnings: "Bicarbonato pode piorar acidose intracelular paradoxalmente. Usar com cautela. Se IOT o paciente em Kussmaul: MANTER FR alta no ventilador — se ventilar com FR normal, pH despenca e paciente faz PCR.",
+    guideline: "KDIGO / AMIB / ATS / UpToDate",
+  },
+  {
+    id: "rx-emerg-anafilaxia-refrataria",
+    title: "Anafilaxia Refratária ao Tratamento Inicial",
+    type: "Emergência",
+    prescription: `1. Adrenalina IM 0,5mg (0,5mL 1:1000) — REPETIR a cada 5min (até 3 doses)
+2. Se sem resposta após 3 doses IM:
+   - Adrenalina EV: 1mg em 250mL SF (4mcg/mL) — iniciar 1-4mcg/min, titular
+   - OU Adrenalina 0,1mg (1mL 1:10.000) EV lenta (diluir 1amp 1:1000 em 9mL SF)
+3. Expansão volêmica: SF 0,9% 1-2L em bolus rápido (até 5L nas primeiras horas)
+4. Glucagon 1-5mg EV em 5min se betabloqueador (bypass receptor beta)
+5. Vasopressina 1-2UI EV se choque refratário
+6. Azul de Metileno 1,5mg/kg EV em 20min (inibidor de NO — vasodilatação refratária)
+7. Metilprednisolona 125mg EV (prevenção bifásica)
+8. Difenidramina 50mg EV + Ranitidina 50mg EV
+9. Salbutamol nebulização contínua se broncoespasmo
+10. IOT precoce se estridor/edema de glote progressivo
+11. Cricotireoidostomia se via aérea impossível
+12. Observação 12-24h (reação bifásica em até 20%)`,
+    warnings: "Adrenalina é a ÚNICA droga que salva vida na anafilaxia. NÃO atrasar por anti-histamínicos ou corticoides. Paciente em uso de betabloqueador: Glucagon é essencial (adrenalina pode não funcionar). Anafilaxia bifásica: até 20% recorrem em 8-12h.",
+    guideline: "WAO / AAAI / ASBAI / EAACI 2023",
+  },
+  {
+    id: "rx-emerg-crise-convulsiva-refrataria",
+    title: "Crise Convulsiva Refratária (Status Epilepticus Super-Refratário)",
+    type: "Emergência / Neurologia",
+    prescription: `FASE 1 (0-5min):
+1. Diazepam 10mg EV ou Midazolam 10mg IM
+2. Repetir em 5min se persistir
+
+FASE 2 (5-20min) — Refratária a BZD:
+3. Fenitoína 20mg/kg EV em SF (max 50mg/min) com monitorização
+   OU Valproato 40mg/kg EV em 10min (preferir se não acessar veia)
+   OU Levetiracetam 60mg/kg EV em 15min (max 4500mg)
+
+FASE 3 (>20min) — Status Refratário:
+4. IOT + Ventilação Mecânica
+5. Midazolam BIC: 0,2mg/kg bolus → 0,1-2mg/kg/h
+   OU Propofol: 2mg/kg bolus → 1-5mg/kg/h
+   OU Tiopental: 5mg/kg bolus → 1-5mg/h
+6. EEG contínuo — meta: surto-supressão
+7. Manter coma farmacológico por 24-48h
+8. Tentar desmame lento (reduzir 25%/6h)
+
+FASE 4 — Super-refratário (>24h em coma):
+9. Ketamina 1-5mg/kg/h (antagonista NMDA)
+10. Considerar: Lacosamida, Topiramato via SNG
+11. Dieta cetogênica (se disponível)
+12. Imunoglobulina/Plasmaférese se etiologia autoimune`,
+    warnings: "Status epilepticus >30min: dano neuronal irreversível. Mortalidade do super-refratário: 30-50%. Fenitoína: NUNCA diluir em SG (cristaliza). Infundir em SF com filtro.",
+    guideline: "AAN / ILAE / ABN / Neurocritical Care Society",
+  },
 ];
+
 

@@ -1237,5 +1237,95 @@ SEGUIMENTO:
     warnings: "NÃO é necessário BO para atendimento médico. Notificação SINAN é OBRIGATÓRIA. Iniciar profilaxias o mais rápido possível (ideal <2h para PEP HIV).",
     guideline: "MS / Norma Técnica 2012 / Lei 12.845/2013",
   },
+  {
+    id: "rx-sus-medicina-legal-upa",
+    title: "Medicina Legal na UPA — Orientações",
+    type: "SUS / Medicina Legal",
+    prescription: `SITUAÇÕES COMUNS NA UPA COM INTERFACE LEGAL:
+
+1. VÍTIMA DE AGRESSÃO:
+   - Atender NORMALMENTE (prioridade clínica)
+   - Documentar lesões detalhadamente no prontuário
+   - Notificação SINAN se violência
+   - Encaminhar ao IML para perícia (não é função do plantonista)
+   - NÃO condicionar atendimento a BO
+
+2. PACIENTE TRAZIDO PELA POLÍCIA:
+   - Atender com mesmos direitos de qualquer paciente
+   - Sigilo médico MANTIDO (não informar diagnóstico à polícia)
+   - Exceção: risco a terceiros, menor, idoso, notificação compulsória
+   - Algemas: solicitar retirada durante procedimentos médicos
+
+3. ÓBITO NA UPA:
+   - Morte natural com causa definida: preencher DO
+   - Morte suspeita/violenta: NÃO preencher DO → acionar IML/SAMU
+   - Morte sem assistência prévia: encaminhar ao SVO
+
+4. ATESTADO MÉDICO:
+   - CID somente COM autorização do paciente (Art. 102 CEM)
+   - Atestado é direito do paciente (Art. 6° Res. CFM 1.658/2002)
+   - Descanso médico: período compatível com quadro clínico
+
+5. PRONTUÁRIO:
+   - Documento LEGAL — preencher completamente
+   - Guardar por mínimo 20 anos (Res. CFM 1.821/2007)
+   - Cópia: direito do paciente (fornecer em até 48h)`,
+    guideline: "CFM / CEM 2018 / Res. CFM 1.658/2002 / 1.821/2007",
+  },
+  {
+    id: "rx-sus-endocrino-upa",
+    title: "Emergências Endocrinológicas na UPA — Manejo Inicial",
+    type: "SUS / Endocrinologia",
+    prescription: `1. HIPOGLICEMIA:
+   - Consciente: SG 50% 40mL VO (sachê) ou suco com açúcar
+   - Inconsciente: SG 50% 40mL EV (2 amp) em bolus
+   - Glucagon 1mg IM se sem acesso venoso
+   - Glicemia capilar 15/15min até >100mg/dL
+   - Investigar causa (insulina, sulfoniluréia, jejum, sepse)
+
+2. HIPERGLICEMIA SEM CETOACIDOSE (glicemia >400):
+   - Hidratação: SF 0,9% 1000mL em 1h
+   - Insulina Regular 0,1UI/kg SC (OU 10UI SC se peso desconhecido)
+   - Glicemia 1/1h
+   - Eletrólitos, gasometria
+   - Se pH <7,3 ou cetonúria: PROTOCOLO CAD
+
+3. CRISE ADRENAL (suspeita):
+   - Hidrocortisona 100mg EV (na UPA: Dexametasona 4mg EV se não disponível)
+   - SF 0,9% 1000mL em 1h
+   - SG 10% se hipoglicemia
+   - Transferir para hospital com UTI
+
+4. TEMPESTADE TIREOIDIANA:
+   - Propranolol 40mg VO + Dexametasona 4mg EV
+   - PTU 200mg VO (se disponível na UPA — raro)
+   - Transferência URGENTE para hospital`,
+    notes: "Na UPA, a prioridade é ESTABILIZAR e TRANSFERIR. Manejo definitivo de crises endocrinológicas requer internação hospitalar. Dexametasona pode substituir Hidrocortisona na crise adrenal (disponibilidade UPA).",
+    guideline: "SBEM / MS / ADA / Endocrine Society",
+  },
+  {
+    id: "rx-sus-idoso-queda-upa",
+    title: "Idoso com Queda na UPA — Protocolo",
+    type: "SUS / Geriatria",
+    prescription: `1. Avaliar sinais de gravidade: TCE, fratura de fêmur, instabilidade hemodinâmica
+2. Exame neurológico (Glasgow, pupilas, déficit focal)
+3. TC crânio se: anticoagulante, Glasgow <15, amnésia, vômitos, idade >65 com mecanismo relevante
+4. RX de bacia + fêmur bilateral (se dor)
+5. RX tórax (se queda de altura ou dispneia)
+6. ECG (síncope como causa da queda?)
+7. Glicemia capilar
+8. Eletrólitos (Na+, K+)
+9. HMG, coagulograma
+10. Analgesia: Dipirona 1g EV + Tramadol 50mg EV SN
+    (EVITAR AINEs no idoso — nefrotoxicidade, sangramento GI)
+11. Avaliar maus-tratos (Estatuto do Idoso — Lei 10.741/2003)
+12. Notificação ao Conselho do Idoso se suspeita de violência
+13. Revisar medicamentos (polifarmácia como causa da queda)
+14. Orientar prevenção de quedas na alta
+15. Encaminhar para avaliação geriátrica ambulatorial`,
+    warnings: "Todo idoso em uso de anticoagulante com queda deve fazer TC de crânio (mesmo assintomático — sangramento pode ser tardio). Fratura de fêmur no idoso: mortalidade em 1 ano de 20-30%.",
+    guideline: "SBGG / AGS / Estatuto do Idoso / MS",
+  },
 ];
+
 
