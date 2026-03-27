@@ -5309,5 +5309,346 @@ CUIDADOS:
     notes: "FLORALI trial: CNAF reduziu mortalidade em 90 dias vs O2 padrão em IRpA hipoxêmica. Vantagem: conforto, clearance de CO2, PEEP fisiológico (~3-5cmH2O).",
     guideline: "ERS / AMIB / SBPT",
   },
+  // === ESPECIALIDADES COMPLEMENTARES ===
+  {
+    id: "rx-pancreatite-aguda",
+    title: "Pancreatite Aguda",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Dieta zero nas primeiras 24-48h → dieta VO precoce quando tolerada (leve, hipogordurosa)
+2. Ringer Lactato 1,5mL/kg/h EV (hidratação agressiva nas primeiras 24h)
+3. Dipirona 1g EV 6/6h + Tramadol 50-100mg EV 8/8h
+4. Morfina 2-4mg EV SN (NÃO é contraindicada — mito do espasmo de Oddi)
+5. Omeprazol 40mg EV 1x/dia
+6. Ondansetrona 4mg EV 8/8h
+7. NÃO usar ATB profilático (apenas se necrose infectada confirmada)
+8. Exames: amilase, lipase, hemograma, PCR, Ca++, triglicerídeos, função hepática
+9. TC abdome com contraste: apenas se dúvida diagnóstica ou sem melhora em 72h (Balthazar)
+10. CPRE urgente se: colangite associada (icterícia + febre + coledocolitíase)
+11. Nutrição enteral precoce (SNE): superior à NPT em pancreatite grave`,
+    guideline: "SBG / ACG / AGA / IAP",
+  },
+  {
+    id: "rx-encefalopatia-hepatica",
+    title: "Encefalopatia Hepática",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Lactulose 15-30mL VO 8/8h (titular para 2-3 evacuações pastosas/dia)
+2. Se não tolera VO: Lactulose enema 300mL + 700mL água → reter 30-60min
+3. Rifaximina 550mg VO 12/12h (profilaxia secundária + adjunto)
+4. Dieta normoproteica (1,2g/kg/dia — NÃO restringir proteína)
+5. Investigar precipitante: infecção, sangramento GI, constipação, desidratação, medicações
+6. Colher: hemograma, eletrólitos, função renal, amônia (não correlaciona bem com gravidade)
+7. Paracentese diagnóstica se ascite (excluir PBE)
+8. Suspender benzodiazepínicos e opioides
+9. SF 0,9% 500-1000mL EV (se desidratado)
+10. Flumazenil 0,2mg EV: apenas para diagnóstico diferencial (NÃO rotina)`,
+    guideline: "SBH / EASL / AASLD",
+  },
+  {
+    id: "rx-les-atividade",
+    title: "LES em Atividade — Flare Grave",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Metilprednisolona 500mg-1g EV por 3 dias (pulsoterapia)
+2. → Prednisona 1mg/kg/dia VO (máx 60mg) → desmame lento
+3. Hidroxicloroquina 400mg VO 1x/dia (NUNCA suspender)
+4. Micofenolato 1g VO 12/12h (se nefrite classe III/IV)
+5. OU Ciclofosfamida EV (se nefrite grave ou cerebrite)
+6. Plasmaférese: se SAF catastrófica, hemorragia alveolar, PTT
+7. Rituximab 1g EV D0 + D14 (se refratário)
+8. Belimumab 10mg/kg EV (manutenção — reduz flares)
+9. Profilaxia: SMX-TMP, cálcio + vitamina D, proteção gástrica
+10. Exames: anti-dsDNA, complemento C3/C4, hemograma, função renal, EAS, proteinúria 24h`,
+    guideline: "SBR / EULAR / ACR / SLEDAI",
+  },
+  {
+    id: "rx-vasculite-anca",
+    title: "Vasculite ANCA — GPA/MPA",
+    type: "Prescrição Hospitalar",
+    prescription: `Indução de remissão:
+1. Metilprednisolona 500mg-1g EV por 3 dias → Prednisona 1mg/kg/dia VO
+2. Rituximab 375mg/m² semanal por 4 semanas (1ª escolha — RAVE trial)
+3. OU Ciclofosfamida 15mg/kg EV a cada 2 semanas por 3 meses → mensal
+4. Plasmaférese se: creatinina >5,7 ou hemorragia alveolar (controverso pós-PEXIVAS)
+
+Manutenção (após remissão):
+5. Rituximab 500mg EV a cada 6 meses por ≥2 anos (MAINRITSAN)
+6. OU Azatioprina 2mg/kg/dia VO
+7. Prednisona ≤5mg/dia (desmame completo se possível)
+
+Suporte:
+8. Profilaxia pneumocistose: SMX-TMP 400/80mg VO 1x/dia
+9. Cálcio 1g + Vitamina D 1000UI/dia
+10. Hemograma semanal (início), ANCA seriado, função renal mensal`,
+    guideline: "ACR / EULAR / EUVAS / SBR",
+  },
+  {
+    id: "rx-gota-aguda",
+    title: "Gota Aguda — Crise Articular",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1ª escolha:
+1. Colchicina 0,5mg VO → 0,5mg 1h após → 0,5mg 12/12h por 3-5 dias
+2. OU AINE: Naproxeno 500mg VO 12/12h OU Indometacina 50mg VO 8/8h por 5-7 dias
+
+Se contraindicação a AINE e Colchicina:
+3. Prednisona 30-40mg VO 1x/dia por 5 dias → desmame rápido
+4. OU Triancinolona 40mg IM dose única
+5. OU Infiltração articular com Triancinolona (se monoarticular)
+
+Adjuntos:
+6. Gelo local 20min 4x/dia
+7. Omeprazol 20mg VO se AINE
+8. NÃO iniciar/modificar Alopurinol durante crise (piora o flare)
+9. Se já em uso de Alopurinol: NÃO suspender
+
+Após resolução:
+10. Alopurinol 100mg VO → titular até ácido úrico <6mg/dL
+11. Colchicina 0,5mg VO 1x/dia profilática por 3-6 meses ao iniciar hipouricemiante`,
+    guideline: "SBR / ACR / EULAR / BSR",
+  },
+  {
+    id: "rx-trombose-seio-venoso",
+    title: "Trombose de Seio Venoso Cerebral",
+    type: "Prescrição de Emergência",
+    prescription: `1. Heparina não fracionada: 80UI/kg bolus → 18UI/kg/h (TTPa 2-2,5x)
+   OU Enoxaparina 1mg/kg SC 12/12h
+2. ANTICOAGULAR MESMO COM INFARTO HEMORRÁGICO (diferente de AVC arterial)
+3. Anticonvulsivante profilático: Levetiracetam 500mg EV 12/12h (se lesão cortical)
+4. Fenitoína 20mg/kg EV se convulsão (em SF, NÃO SG)
+5. Manitol 20% 0,5-1g/kg se HIC com rebaixamento
+6. Cabeceira 30°
+7. Analgesia: Dipirona 1g EV 6/6h + opioide SN
+8. TC com fase venosa ou AngioRNM (exame de escolha)
+9. Transição para Varfarina (INR 2-3) por 6-12 meses
+10. Investigar: trombofilias, ACO, puerpério, infecção, neoplasia`,
+    notes: "Suspeitar se: cefaleia + papiledema, convulsão + déficit focal (especialmente em mulher jovem, puerpério, uso de ACO). Sinal do delta vazio na TC com contraste.",
+    guideline: "AHA/ASA / ESO / ABN",
+  },
+  {
+    id: "rx-insuficiencia-cardiaca-descomp",
+    title: "IC Descompensada — Perfil B (Quente e Úmido)",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Furosemida 40-80mg EV em bolus → manter 80-240mg/dia EV (dividido ou BIC)
+2. Restrição hídrica: 800-1200mL/dia
+3. Restrição de Na+: <2g/dia
+4. Captopril 6,25-25mg VO 8/8h (se PAS >100) OU Enalapril 2,5-10mg VO 12/12h
+5. Carvedilol: manter se já em uso (NÃO iniciar na descompensação)
+6. Espironolactona 25mg VO 1x/dia
+7. Nitroglicerina EV 5-200mcg/min (se PA elevada + congestão)
+8. Peso diário + balanço hídrico rigoroso (alvo: perda 0,5-1kg/dia)
+9. O2 se SpO2 <92% — VNI se EAP
+10. Exames: BNP/NT-proBNP, função renal, eletrólitos, hemograma, ECG, ecocardiograma
+11. Enoxaparina 40mg SC 1x/dia (profilaxia TVP)
+12. Dapagliflozina 10mg VO 1x/dia (benefício mesmo na internação — EMPULSE)`,
+    guideline: "SBC / ESC / ACC/AHA / DIRETRIZ IC 2023",
+  },
+  {
+    id: "rx-miocardite-aguda",
+    title: "Miocardite Aguda",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `1. Repouso absoluto (evitar exercício por 3-6 meses)
+2. Monitorização contínua: ECG (arritmias), PA, SpO2
+3. IECA/BRA: Enalapril 2,5mg VO 12/12h (neuroproteção miocárdica)
+4. Betabloqueador: Carvedilol 3,125mg VO 12/12h (se estável)
+5. Diurético: Furosemida 40mg EV SN (se congestão)
+6. NÃO usar AINEs (piora inflamação miocárdica — dados em modelos animais)
+7. Troponina seriada + BNP/NT-proBNP
+8. RNM cardíaca (padrão-ouro: edema + realce tardio)
+9. Se IC grave: Dobutamina/Milrinona → BIA → ECMO-VA (ponte para recuperação/transplante)
+10. Se arritmia ventricular: Amiodarona 150mg EV → manutenção
+11. Biópsia endomiocárdica: considerar se fulminante ou sem melhora
+12. Imunossupressão: apenas se biópsia + (células gigantes, eosinofílica)`,
+    guideline: "SBC / ESC / AHA",
+  },
+  {
+    id: "rx-endocardite",
+    title: "Endocardite Infecciosa — Tratamento Empírico",
+    type: "Prescrição Hospitalar",
+    prescription: `Válvula nativa — Subaguda:
+1. Ampicilina 2g EV 4/4h + Oxacilina 2g EV 4/4h + Gentamicina 3mg/kg/dia EV
+2. Duração: 4-6 semanas
+
+Válvula nativa — Aguda (suspeita de S. aureus):
+3. Oxacilina 2g EV 4/4h (4-6 semanas)
+4. OU Vancomicina 15-20mg/kg EV 12/12h (se MRSA ou alergia)
+
+Válvula protética:
+5. Vancomicina 15-20mg/kg EV 12/12h + Gentamicina 3mg/kg/dia + Rifampicina 300mg VO 8/8h
+6. Duração: ≥6 semanas
+
+Todos:
+7. Hemocultura: 3 pares em sítios diferentes ANTES do ATB
+8. Ecocardiograma: ETT → se negativo + alta suspeita: ETE
+9. Avaliação cirúrgica: IC refratária, abscesso, prótese instável, embolia recorrente
+10. NÃO anticoagular (exceto se prótese mecânica — manter Varfarina com INR terapêutico)`,
+    guideline: "SBC / ESC / AHA / IDSA",
+  },
+  {
+    id: "rx-meningite-bacteriana",
+    title: "Meningite Bacteriana — Adulto",
+    type: "Prescrição de Emergência",
+    prescription: `1. Dexametasona 0,15mg/kg EV 6/6h por 4 dias (DAR ANTES ou junto ao ATB — reduz sequela)
+2. Ceftriaxona 2g EV 12/12h (10-14 dias)
+3. + Ampicilina 2g EV 4/4h (se >50 anos, imunossuprimido, etilista — cobrir Listeria)
+4. + Vancomicina 15-20mg/kg EV 12/12h (se suspeita de pneumococo resistente)
+5. Punção lombar: citologia, bioquímica (glicose, proteínas), Gram, cultura, látex, ADA
+6. TC crânio ANTES da PL se: papiledema, déficit focal, convulsão, imunossuprimido, RNC
+7. NÃO atrasar ATB por TC — colher hemocultura e iniciar ATB → depois TC → depois PL
+8. Monitorização: nível de consciência, PIC, Na+ (SIADH)
+9. Notificação COMPULSÓRIA imediata (SINAN)
+10. Quimioprofilaxia (meningococo): Rifampicina 600mg VO 12/12h por 2 dias`,
+    guideline: "SBI / IDSA / ESCMID / MS",
+  },
+  {
+    id: "rx-celulite-orbitaria",
+    title: "Celulite Orbitária",
+    type: "Prescrição de Emergência",
+    prescription: `1. INTERNAÇÃO (emergência oftalmológica)
+2. Ceftriaxona 2g EV 12/12h + Metronidazol 500mg EV 8/8h
+3. OU Ampicilina-Sulbactam 3g EV 6/6h
+4. + Vancomicina 15-20mg/kg EV 12/12h (se MRSA/grave)
+5. TC de órbita e seios da face com contraste (avaliar abscesso subperiosteal/orbitário)
+6. Avaliação oftalmológica: acuidade visual, motilidade ocular, reflexo pupilar, PIO, fundoscopia
+7. Drenagem cirúrgica: abscesso >1cm, piora apesar de ATB 48h, comprometimento visual
+8. Dipirona 1g EV 6/6h + Dexametasona 4mg EV 6/6h (reduzir edema)
+9. Elevação da cabeceira 30°
+10. Monitorar sinais de trombose de seio cavernoso: proptose bilateral, oftalmoplegia, meningismo`,
+    warnings: "Diferenciar pré-septal (pálpebra — geralmente ambulatorial) de pós-septal (órbita — internação). Complicação: abscesso orbitário, perda visual, trombose de seio cavernoso, abscesso cerebral.",
+    guideline: "SBO / AAO / IDSA",
+  },
+  {
+    id: "rx-sindrome-coronariana-sem-supra",
+    title: "SCA sem Supra de ST (IAM SSST / Angina Instável)",
+    type: "Prescrição no Pronto Socorro",
+    prescription: `1. AAS 300mg VO (mastigar)
+2. Ticagrelor 180mg VO OU Clopidogrel 300mg VO
+3. Enoxaparina 1mg/kg SC 12/12h OU HNF 60UI/kg bolus → 12UI/kg/h
+4. Atorvastatina 80mg VO
+5. Nitroglicerina SL 5mg (se PA >100 e FC >50) — repetir até 3x a cada 5min
+6. Metoprolol 25-50mg VO (se FC >70 e PA >100 — sem contraindicação)
+7. Morfina 2-4mg EV lento se dor refratária (usar com cautela)
+8. O2 suplementar APENAS se SpO2 <94%
+9. ECG seriado (admissão + 3h + 6h)
+10. Troponina seriada (0h + 1h ou 0h + 3h — protocolo da instituição)
+11. Estratificação: GRACE score → define cate precoce (<24h) vs eletivo
+12. Cateterismo: <2h se instabilidade, <24h se alto risco, <72h se risco intermediário`,
+    guideline: "SBC / ESC / ACC/AHA",
+  },
+  {
+    id: "rx-taquicardia-svt",
+    title: "Taquicardia Supraventricular (TSV)",
+    type: "Prescrição de Emergência",
+    prescription: `Estável (PA preservada, sem sinais de baixo débito):
+1. Manobras vagais: Valsalva modificada (soprar seringa 10mL por 15s → deitar + elevar MMII 45° por 15s)
+2. Adenosina 6mg EV rápido (flush com SF) → se não reverte: 12mg EV → 12mg EV
+3. Se refratária: Verapamil 5mg EV em 2min (NÃO usar se IC ou betabloqueado)
+4. OU Metoprolol 5mg EV lento (pode repetir até 15mg)
+5. Diltiazem 0,25mg/kg EV em 2min (alternativa)
+
+Instável (hipotensão, dor torácica, IC, RNC):
+6. Cardioversão elétrica sincronizada 50-100J bifásico
+7. Sedação breve: Midazolam 2-5mg EV ou Propofol 0,5-1mg/kg
+
+Após reversão:
+8. ECG 12 derivações (avaliar Wolff-Parkinson-White — onda delta)
+9. Se WPW: NÃO usar Verapamil/Digoxina/Adenosina em FA pré-excitada
+10. Encaminhar eletrofisiologista para ablação (tratamento definitivo)`,
+    guideline: "SBC / AHA / ESC / ACLS",
+  },
+  {
+    id: "rx-bradiarritmia",
+    title: "Bradiarritmia Sintomática",
+    type: "Prescrição de Emergência",
+    prescription: `1. Atropina 0,5mg EV a cada 3-5min (máx 3mg)
+2. Se sem resposta a Atropina:
+   Dopamina 5-20mcg/kg/min em BIC OU
+   Adrenalina 2-10mcg/min em BIC OU
+   Isoproterenol 2-10mcg/min (se disponível)
+3. Marcapasso transcutâneo: aplicar pás + capturar (verificar pulso mecânico!)
+   Sedação: Midazolam 2-5mg EV + Fentanil 50mcg EV
+4. Marcapasso transvenoso: inserir por acesso central (jugular/subclávia/femoral)
+
+Causas reversíveis: investigar drogas (betabloqueador, BCC, digital), distúrbio eletrolítico (K+), hipotireoidismo, isquemia
+
+5. BAV 2° grau tipo II (Mobitz II) ou BAV 3° grau (BAVT): marcapasso definitivo
+6. ECG 12 derivações + monitorização contínua
+7. Ecocardiograma
+8. Holter 24h (se intermitente)`,
+    guideline: "SBC / AHA / ESC / ACLS",
+  },
+  {
+    id: "rx-pericardite-aguda",
+    title: "Pericardite Aguda",
+    type: "Prescrição Hospitalar",
+    prescription: `1. Ibuprofeno 600mg VO 8/8h por 1-2 semanas → desmame em 2-4 semanas
+   OU AAS 750-1000mg VO 8/8h (preferido se pós-IAM — síndrome de Dressler)
+2. Colchicina 0,5mg VO 12/12h por 3 meses (reduz recorrência em 50% — COPE/ICAP trial)
+3. Omeprazol 20mg VO 1x/dia (proteção gástrica com AINE)
+4. Repouso relativo até resolução dos sintomas + normalização de PCR
+5. NÃO usar corticoide de rotina (aumenta recorrência — reservar para refratária/contraindicação)
+6. Ecocardiograma (avaliar derrame pericárdico)
+7. ECG: supradesnível de ST difuso + infradesnivelamento de PR
+8. Troponina (pode estar elevada = miopericardite)
+9. Exames: hemograma, PCR, VHS, função renal
+10. Internar se: febre >38°C, derrame grande, troponina elevada, imunossuprimido, falha de AINE`,
+    guideline: "SBC / ESC / AHA",
+  },
+  {
+    id: "rx-hemorragia-subaracnoidea",
+    title: "Hemorragia Subaracnóidea (HSA)",
+    type: "Prescrição de Emergência / UTI",
+    prescription: `1. PA alvo: PAS <160mmHg (antes do tratamento do aneurisma)
+   Nitroprussiato OU Labetalol EV para controle
+2. Nimodipino 60mg VO 4/4h por 21 dias (prevenção de vasoespasmo)
+3. Analgesia: Dipirona 1g EV 6/6h + Codeína 30mg VO 6/6h (evitar AINEs e AAS)
+4. Anticonvulsivante: Fenitoína 100mg EV 8/8h OU Levetiracetam 500mg EV 12/12h (controverso — usar se convulsão)
+5. Laxativo: Lactulose 15mL VO 12/12h (evitar Valsalva)
+6. Cabeceira 30°
+7. Repouso absoluto + ambiente tranquilo
+8. TC crânio + AngioTC (identificar aneurisma) → AngioRNM ou arteriografia se negativa
+9. Intervenção: clipagem cirúrgica ou embolização endovascular em <72h (ideal <24h)
+10. Monitorar vasoespasmo (D3-D14): Doppler transcraniano diário
+11. Se vasoespasmo: terapia HHH (hipervolemia + hipertensão + hemodiluição — controverso, manter euvolemia)
+12. Derivação ventricular externa (DVE) se hidrocefalia aguda`,
+    guideline: "ABN / AHA/ASA / EANS / Hunt-Hess / Fisher",
+  },
+  {
+    id: "rx-guillain-barre",
+    title: "Síndrome de Guillain-Barré",
+    type: "Prescrição Hospitalar / UTI",
+    prescription: `Imunoterapia (iniciar precoce — <2 semanas do início):
+1. Imunoglobulina EV (IVIg): 0,4g/kg/dia por 5 dias
+2. OU Plasmaférese: 5 sessões em 10-14 dias (1-1,5 volemias/sessão)
+3. NÃO usar corticoide (não tem benefício na SGB)
+
+Monitorização respiratória (risco de falência):
+4. Capacidade vital forçada (CVF) 4/4h: intubar se <20mL/kg ou queda >30% ou PImáx <-30
+5. SpO2 contínua, gasometria se dispneia
+6. IOT + VM se insuficiência respiratória
+
+Suporte:
+7. Enoxaparina 40mg SC 1x/dia (profilaxia TVP — imobilidade)
+8. Analgesia: Gabapentina 300mg VO 8/8h (dor neuropática frequente)
+9. Fisioterapia motora e respiratória precoce
+10. Monitorar disautonomia: PA, FC, arritmias, íleo paralítico, retenção urinária
+11. SVD se retenção urinária
+12. Líquor: dissociação albuminocitológica (proteína elevada + celularidade normal) — pode ser normal na 1ª semana`,
+    guideline: "ABN / GBS/CIDP Foundation / AAN",
+  },
+  {
+    id: "rx-miastenia-crise",
+    title: "Crise Miastênica",
+    type: "Prescrição de Emergência / UTI",
+    prescription: `1. IOT + VM se CVF <15-20mL/kg ou sinais de falência respiratória
+2. SUSPENDER anticolinesterásicos durante a crise (piora secreções)
+3. IVIg 0,4g/kg/dia por 5 dias (1ª escolha na crise)
+4. OU Plasmaférese: 5 sessões em 10-14 dias
+5. NÃO usar: aminoglicosídeos, magnésio, quinolonas, betabloqueadores, BCC — PIORAM miastenia
+6. Identificar gatilho: infecção, cirurgia, medicação, suspensão de imunossupressor
+7. Após estabilização: reiniciar Piridostigmina 30mg VO 6/6h → titular
+8. Corticoide: Prednisona 1mg/kg/dia (iniciar APÓS resolução da crise — pode piorar transitoriamente)
+9. Fisioterapia respiratória
+10. Monitorar CVF seriada + SpO2`,
+    warnings: "Diferenciar crise miastênica de crise colinérgica (excesso de anticolinesterásico): ambas causam fraqueza + insuficiência respiratória. Na dúvida: suspender Piridostigmina + suporte.",
+    guideline: "ABN / AAN / MGFA",
+  },
 ];
 
