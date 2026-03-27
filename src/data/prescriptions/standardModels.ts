@@ -978,5 +978,100 @@ HEMODIÁLISE CONTÍNUA (UTI — CVVHDF):
 13. Monitorar: Ca++ iônico 2/2h se citrato`,
     guideline: "SBN / KDIGO / KDOQI",
   },
+  {
+    id: "rx-modelo-transporte-inter",
+    title: "Modelo — Transporte Inter-Hospitalar",
+    type: "Prescrição Padrão — Transporte",
+    prescription: `CHECKLIST PRÉ-TRANSPORTE:
+1. Indicação e vaga confirmada no destino (contato médico a médico)
+2. Estabilização COMPLETA antes do transporte (VA, ventilação, hemodinâmica)
+3. SAMU regulado OU ambulância UTI (se paciente grave)
+
+DOCUMENTAÇÃO:
+4. Formulário de transferência preenchido (CFM)
+5. Resumo clínico + exames + imagens em mídia digital
+6. Termo de consentimento (quando possível)
+7. Contato do médico receptor
+
+EQUIPAMENTOS (UTI MÓVEL):
+8. Monitor multiparamétrico (ECG, SpO2, PANI, capnografia)
+9. Ventilador de transporte com cilindro O2 reserva (calcular autonomia)
+10. Bombas de infusão com bateria (conferir carga)
+11. Desfibrilador/cardioversor portátil
+12. Material de via aérea difícil + aspirador portátil
+13. Drogas vasoativas em seringas/bolsas identificadas
+
+MEDICAÇÕES OBRIGATÓRIAS NO TRANSPORTE:
+14. Adrenalina, Atropina, Amiodarona (kit PCR)
+15. Sedação: Midazolam + Fentanil (em infusão se IOT)
+16. DVA em bomba: Noradrenalina ___mcg/kg/min (se em uso)
+17. SF 0,9% reserva (≥1000mL)
+18. Glicose 50% (hipoglicemia)
+
+VENTILAÇÃO NO TRANSPORTE:
+19. FiO2: manter a mesma da origem → titular
+20. PEEP: manter → monitorar com capnografia
+21. Alarmes configurados
+22. Aspiração traqueal antes da partida`,
+    notes: "O médico que transfere é responsável até a chegada ao destino. Tempo estimado de transporte deve ser considerado no cálculo de O2 e bateria.",
+    guideline: "CFM Res. 2.110/2014 / AMIB / SAMU",
+  },
+  {
+    id: "rx-modelo-admissao-uti",
+    title: "Modelo — Admissão em UTI",
+    type: "Prescrição Padrão",
+    prescription: `1. Dieta: _____ (enteral precoce em 24-48h se possível / zero se contraindicação)
+2. Acesso venoso central: _____ (jugular / subclávia / femoral)
+3. PAI (pressão arterial invasiva): cateter arterial radial/femoral
+4. SVD — controle de diurese horário
+5. SNG/SOG: aberta (drenagem) OU fechada (dieta enteral)
+6. VM: Modo ___ | FiO2 ___ | PEEP ___ | VC ___ | FR ___
+7. Sedação: Midazolam ___mg/h + Fentanil ___mcg/h → alvo RASS ___
+8. DVA: Noradrenalina ___mcg/kg/min (PAM alvo ≥65)
+9. ATB: _____________ (conforme foco/culturas)
+10. Profilaxia TVP: Enoxaparina 40mg SC 1x/dia OU HNF 5000UI SC 8/8h
+11. Proteção gástrica: Omeprazol 40mg EV 1x/dia
+12. Controle glicêmico: insulina regular conforme protocolo (alvo 140-180)
+13. Bundle FASTHUG:
+    F - Feeding (nutrição)
+    A - Analgesia (EVA/BPS)
+    S - Sedation (RASS)
+    T - Thrombo prophylaxis
+    H - Head of bed (30-45°)
+    U - Ulcer prophylaxis
+    G - Glucose control
+14. Exames admissionais: gasometria, lactato, hemograma completo, coagulograma, função renal, eletrólitos, hepatograma, PCR, procalcitonina, culturas
+15. RX tórax no leito
+16. ECG 12 derivações
+17. Balanço hídrico rigoroso
+18. Comunicar intercorrências IMEDIATAMENTE`,
+    guideline: "AMIB / ESICM / SSC",
+  },
+  {
+    id: "rx-modelo-sedacao-paliativa",
+    title: "Modelo — Sedação Paliativa",
+    type: "Prescrição Padrão — Cuidados Paliativos",
+    prescription: `INDICAÇÃO: sintomas refratários em paciente com doença terminal irreversível
+
+REQUISITOS:
+1. Discussão em equipe multiprofissional
+2. Consentimento do paciente (se possível) ou família
+3. Documentação em prontuário: indicação, consentimento, plano
+
+PRESCRIÇÃO:
+4. Midazolam: bolus 2,5-5mg SC/EV → infusão 0,5-1mg/h SC/EV (titular)
+5. OU Propofol 0,5-1mg/kg/h EV (se refratário ao midazolam)
+6. Morfina 2-5mg SC/EV 4/4h (manter analgesia)
+7. Escopolamina (Hioscina) 20mg/dia SC em BIC (sialorreia terminal / estertores)
+8. Haloperidol 2,5-5mg SC 8/8h (se delirium/náusea)
+9. Suspender: monitorização invasiva, exames desnecessários, medidas fúteis
+10. Manter: conforto, higiene oral, cuidados com pele, presença familiar
+
+AVALIAÇÃO:
+11. RASS alvo: -3 a -5 (conforme necessidade de conforto)
+12. Reavaliar 4/4h: dor, agitação, dispneia, conforto
+13. Não acelerar o processo de morte — controlar sofrimento`,
+    guideline: "ANCP / IAHPC / EAPC / CFM Res. 1.805/2006",
+  },
 ];
 

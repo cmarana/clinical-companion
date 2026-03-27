@@ -2137,5 +2137,103 @@ Início de ação: 15-30min | Duração: 4-6h
 Monitorar glicemia 30min e 1h após`,
     notes: "Saturar equipo com solução de insulina antes de conectar ao paciente (insulina adsorve ao plástico). Em CAD: NÃO suspender insulina até resolver acidose (pH >7,3, Bic >18, AG <12).",
   },
+  {
+    id: "rx-dil-dexmedetomidina",
+    title: "Dexmedetomidina — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO PADRÃO:
+Dexmedetomidina 200mcg (1 frasco 2mL) + SF 0,9% 48mL = 50mL
+Concentração: 4 mcg/mL
+
+DOSE:
+Ataque (opcional): 0,5-1mcg/kg EV em 10-20min (pode causar bradicardia/hipotensão)
+Manutenção: 0,2-0,7mcg/kg/h (até 1,4mcg/kg/h em alguns protocolos)
+
+CÁLCULO (70kg, dose 0,5mcg/kg/h):
+0,5 × 70 / 4 = 8,75mL/h
+
+TABELA RÁPIDA (concentração 4mcg/mL):
+60kg: 0,2→3mL/h | 0,5→7,5mL/h | 0,7→10,5mL/h
+70kg: 0,2→3,5mL/h | 0,5→8,75mL/h | 0,7→12,25mL/h
+80kg: 0,2→4mL/h | 0,5→10mL/h | 0,7→14mL/h`,
+    notes: "Não causa depressão respiratória significativa — sedação cooperativa (paciente despertável). Ideal para desmame de VM e delirium em UTI.",
+    warnings: "Bradicardia e hipotensão são efeitos comuns. Evitar bolus em idosos e instáveis. NÃO usar em bloqueio cardíaco ≥2º grau.",
+  },
+  {
+    id: "rx-dil-propofol",
+    title: "Propofol — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `APRESENTAÇÃO: Propofol 1% (10mg/mL) — frasco 20mL ou 50mL
+NÃO precisa diluir (uso puro)
+
+INDUÇÃO (ISR/procedimentos):
+Dose: 1-2,5mg/kg EV lento (30-60s)
+Exemplo 70kg: 140-175mg = 14-17,5mL
+
+MANUTENÇÃO (sedação UTI):
+Dose: 1-4mg/kg/h (5-50mcg/kg/min)
+Exemplo 70kg a 2mg/kg/h: 140mg/h = 14mL/h
+
+TABELA RÁPIDA:
+60kg: 1mg/kg/h→6mL/h | 2→12mL/h | 3→18mL/h
+70kg: 1mg/kg/h→7mL/h | 2→14mL/h | 3→21mL/h
+80kg: 1mg/kg/h→8mL/h | 2→16mL/h | 3→24mL/h
+
+SÍNDROME DE INFUSÃO DO PROPOFOL (PRIS):
+Risco se >5mg/kg/h por >48h
+Sinais: acidose metabólica, rabdomiólise, hipercalemia, arritmia, lipemia
+Conduta: SUSPENDER propofol imediatamente, suporte`,
+    warnings: "PRIS é fatal — NÃO exceder 5mg/kg/h por tempo prolongado. Monitorar CK e lactato se >48h. Trocar seringa a cada 12h (risco de contaminação — emulsão lipídica).",
+  },
+  {
+    id: "rx-dil-remifentanil",
+    title: "Remifentanil — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO:
+Remifentanil 2mg (1 frasco) + SF 0,9% 40mL = 40mL
+Concentração: 50 mcg/mL
+
+OU concentração dobrada:
+Remifentanil 5mg + SF 0,9% 50mL = 50mL → 100mcg/mL
+
+DOSE:
+Analgesia/sedação em UTI: 0,05-0,2mcg/kg/min
+Anestesia: 0,1-0,5mcg/kg/min (+ hipnótico)
+Bolus: 0,5-1mcg/kg em 30-60s (procedimentos)
+
+CÁLCULO (70kg, 0,1mcg/kg/min, conc 50mcg/mL):
+0,1 × 70 × 60 / 50 = 8,4mL/h
+
+VANTAGEM: meia-vida contexto-sensitiva de 3-4min (cessação ultra-rápida)
+NÃO acumula — ideal para neurointensivismo e desmame de VM`,
+    notes: "Após suspensão: dor de rebote intensa — prescrever analgesia de transição ANTES de desligar. Rigidez torácica com bolus rápido — administrar lentamente.",
+  },
+  {
+    id: "rx-dil-nitroprussiato",
+    title: "Nitroprussiato de Sódio — Diluição e Preparo",
+    type: "Diluição e Preparo",
+    prescription: `DILUIÇÃO:
+Nitroprussiato 50mg (1 ampola) + SG 5% 250mL
+Concentração: 200 mcg/mL
+
+PROTEGER DA LUZ — envolver equipo e frasco com papel alumínio
+
+DOSE: 0,25-10 mcg/kg/min (iniciar baixo, titular a cada 5min)
+Dose habitual: 1-3 mcg/kg/min
+
+CÁLCULO (70kg, dose 2mcg/kg/min):
+2 × 70 × 60 / 200 = 42mL/h
+
+TABELA RÁPIDA:
+60kg: 0,5→9mL/h | 1→18mL/h | 2→36mL/h | 3→54mL/h
+70kg: 0,5→10,5mL/h | 1→21mL/h | 2→42mL/h | 3→63mL/h
+80kg: 0,5→12mL/h | 1→24mL/h | 2→48mL/h | 3→72mL/h
+
+TOXICIDADE POR CIANETO:
+Se dose >3mcg/kg/min por >72h ou >10mcg/kg/min por >10min
+Sinais: acidose láctica, taquifilaxia, confusão
+Antídoto: Hidroxocobalamina 5g EV OU Tiossulfato de sódio 12,5g EV`,
+    warnings: "FOTOSSENSÍVEL — proteger da luz. Monitorar PA contínua (linha arterial obrigatória). Taquifilaxia = suspeitar intoxicação cianídrica.",
+  },
 ];
 

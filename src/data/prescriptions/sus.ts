@@ -1091,5 +1091,48 @@ Cuidados:
 14. Aspiração traqueal antes do transporte`,
     guideline: "CFM / SAMU / AMIB",
   },
+  {
+    id: "rx-sus-geriatria-upa",
+    title: "Idoso na UPA — Cuidados Essenciais",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `ATENÇÃO AO IDOSO NA UPA:
+1. NÃO sedar com benzodiazepínicos (Diazepam) — piora delirium
+2. Preferir Haloperidol 0,5-1mg IM se agitação extrema
+3. Avaliar: infecção urinária (EAS + urocultura), pneumonia (RX), desidratação
+4. Glicemia capilar (hipoglicemia é causa comum de confusão)
+5. PA deitado e sentado (hipotensão ortostática)
+6. Revisar lista de medicamentos do paciente (polifarmácia)
+7. Hidratação cautelosa: SF 0,9% 500mL em 6h (risco de ICC)
+8. NÃO usar: Metoclopramida em dose alta (SEP), AINEs, anticolinérgicos
+9. Dipirona 500mg EV 6/6h para febre (menor risco que outros)
+10. Se queda: avaliar trauma (TC crânio se anticoagulado ou TCE)
+11. Comunicar familiar — orientar sobre delirium vs demência
+12. Registrar escala de funcionalidade (Katz/Barthel)`,
+    notes: "80% dos delirium em idosos na UPA são causados por: ITU, pneumonia, desidratação, constipação, dor. Tratar a causa resolve o delirium.",
+    guideline: "SBGG / MS",
+  },
+  {
+    id: "rx-sus-cuidados-paliativos",
+    title: "Cuidados Paliativos — Disponível no SUS",
+    type: "Prescrição SUS / Hospital Público",
+    prescription: `CONTROLE DE DOR:
+1. Dipirona 1g EV 6/6h (dor leve — Degrau 1 OMS)
+2. Tramadol 50mg EV 8/8h (dor moderada — Degrau 2)
+3. Morfina 5mg VO 4/4h OU 2mg SC 4/4h (dor intensa — Degrau 3)
+4. Dexametasona 4-8mg EV 1x/dia (dor óssea, compressão, edema cerebral)
+5. Gabapentina 300mg VO à noite → titular (dor neuropática)
+
+CONTROLE DE SINTOMAS:
+6. Dispneia: Morfina 2mg SC/EV (reduz percepção) + O2 se hipóxia
+7. Náusea: Ondansetrona 4mg EV 8/8h OU Haloperidol 1mg VO/SC 8/8h
+8. Sialorreia terminal: Escopolamina (Buscopan) 20mg SC 8/8h
+9. Agitação terminal: Midazolam 2,5-5mg SC (SN)
+10. Constipação por opioide: Lactulose 15mL VO 8/8h
+
+ORIENTAÇÕES:
+11. Não há indicação de: hidratação agressiva, nutrição forçada, medidas invasivas fúteis
+12. Manter conforto e dignidade — presença familiar`,
+    guideline: "ANCP / MS / OMS",
+  },
 ];
 

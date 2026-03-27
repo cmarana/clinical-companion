@@ -1504,5 +1504,68 @@ Todos:
     warnings: "Anafilaxia refratária: definida como sem resposta a 3 doses IM. Mortalidade: obstrução de VA (60%) > choque (25%). Paciente em betabloqueador: pode não responder a adrenalina — usar Glucagon.",
     guideline: "WAO / ASBAI / AAAAI / EAACI",
   },
+  {
+    id: "rx-emerg-hipotermia-acidental",
+    title: "Hipotermia Acidental Grave",
+    type: "Prescrição de Emergência",
+    prescription: `Classificação (HT II-IV):
+- Leve (32-35°C): tremores vigorosos
+- Moderada (28-32°C): confusão, bradiarritmia
+- Grave (<28°C): coma, FV, assistolia
+
+MANEJO:
+1. Remover roupas molhadas, secar o paciente
+2. Reaquecimento passivo: cobertores, ambiente aquecido (leve)
+3. Reaquecimento ativo externo: manta térmica (Bair Hugger), bolsas de água morna
+4. Reaquecimento ativo interno (se <30°C):
+   - SF 0,9% aquecido 40-42°C EV
+   - Lavagem vesical/gástrica com SF aquecido
+   - O2 aquecido e umidificado
+   - ECMO (reaquecimento ideal se <28°C com instabilidade)
+5. Monitorização contínua: ECG (ondas J/Osborn), PA, temperatura esofágica
+6. Se PCR: RCP contínua + NÃO declarar óbito até reaquecimento (≥32°C)
+7. Desfibrilação: até 3 tentativas se <30°C → aquecer antes de novas tentativas
+8. Adrenalina: espaçar intervalos se <30°C (metabolismo reduzido)
+9. Evitar movimentos bruscos (risco de FV)`,
+    warnings: "NINGUÉM está morto até estar QUENTE e morto. Reanimar até T ≥32°C. ECMO é o padrão-ouro para hipotermia grave com PCR.",
+    guideline: "ERC / AHA / ILCOR / Wilderness Medical Society",
+  },
+  {
+    id: "rx-emerg-hipertermia-maligna",
+    title: "Hipertermia Maligna",
+    type: "Prescrição de Emergência",
+    prescription: `1. SUSPENDER IMEDIATAMENTE o agente desencadeante (halogenados, succinilcolina)
+2. Dantrolene 2,5mg/kg EV bolus → repetir a cada 5min até resposta (máx 10mg/kg)
+3. Hiperventilação com O2 100% (alto fluxo)
+4. Resfriamento agressivo: SF gelado EV, compressas de gelo (axilas, virilhas, pescoço)
+5. Tratar hipercalemia: Insulina 10UI + SG50% 40mL, Gluconato de cálcio 10% 30mL EV
+6. Tratar arritmias: NÃO usar BCC (risco de hipercalemia fatal com dantrolene) → Amiodarona
+7. Bicarbonato de sódio 8,4% 1-2mEq/kg se acidose grave
+8. SVD + forçar diurese (manitol se mioglobinúria)
+9. Monitorar: T, gasometria, K+, Ca++, CK, mioglobina, lactato
+10. UTI obrigatória — risco de recorrência em 24h`,
+    warnings: "MORTALIDADE sem dantrolene: >70%. Com dantrolene: <5%. Ter dantrolene disponível em TODA sala cirúrgica.",
+    guideline: "MHAUS / SBA / AAGBI",
+  },
+  {
+    id: "rx-emerg-tempestade-tireoide",
+    title: "Tempestade Tireoidiana (Crise Tireotóxica)",
+    type: "Prescrição de Emergência",
+    prescription: `Score de Burch-Wartofsky ≥45 = Tempestade tireoidiana
+
+TRATAMENTO (ORDEM IMPORTA):
+1. Propranolol 60-80mg VO 6/6h OU Esmolol EV se grave (500mcg/kg bolus → 50-200mcg/kg/min)
+2. Propiltiouracil (PTU) 200mg VO/SNG 4/4h (bloqueia síntese + conversão periférica)
+3. Solução de Lugol 10 gotas VO 8/8h (APÓS 1h do PTU — bloqueia liberação)
+4. Hidrocortisona 100mg EV 8/8h (inibe conversão T4→T3 + insuficiência adrenal relativa)
+5. Paracetamol 750mg VO 6/6h (NÃO usar AAS — desloca T4 da albumina)
+6. Resfriamento externo se T >39°C
+7. SF 0,9% + SG 5% EV (hidratação agressiva — perdas insensíveis aumentadas)
+8. Colestiramina 4g VO 6/6h (reduz circulação entero-hepática — adjuvante)
+9. UTI — monitorização contínua
+10. Tratar causa precipitante: infecção, cirurgia, contraste iodado, suspensão de antitireoidiano`,
+    warnings: "Mortalidade 10-30%. ORDEM das drogas importa: betabloqueador PRIMEIRO, antitireoidiano DEPOIS, iodo APÓS antitireoidiano (1h). AAS é CONTRAINDICADO.",
+    guideline: "ATA / SBEM / Endocrine Society",
+  },
 ];
 

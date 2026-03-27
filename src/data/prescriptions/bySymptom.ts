@@ -1342,5 +1342,59 @@ Exames:
 12. BNP/NT-proBNP (diferencial cardíaco vs não-cardíaco)`,
     guideline: "SBC / SBN / SBACV",
   },
+  {
+    id: "rx-sint-confusao-idoso",
+    title: "Confusão Mental Aguda no Idoso",
+    type: "Prescrição Sintomática",
+    prescription: `INVESTIGAÇÃO OBRIGATÓRIA:
+1. Glicemia capilar (hipoglicemia?)
+2. EAS + urocultura (ITU é a causa #1)
+3. Hemograma, PCR, função renal, Na+, K+, Ca++
+4. Gasometria (hipóxia? hipercapnia?)
+5. RX tórax (pneumonia?)
+6. ECG (arritmia? IAM silencioso?)
+7. Lista de medicamentos (polifarmácia/intoxicação)
+8. Exame físico: globo vesical? fecaloma? dor?
+
+MANEJO:
+9. Tratar causa identificada
+10. Hidratação cautelosa: SF 0,9% 500mL EV em 4-6h
+11. Reorientação: relógio, familiar, ambiente calmo
+12. Se agitação com risco: Haloperidol 0,5mg VO/IM (dose ÚNICA — reavaliar)
+13. NÃO usar: Diazepam, Prometazina, Fenergan no idoso
+14. Se suspeita de meningite: TC + punção lombar`,
+    notes: "Confusão no idoso NÃO é normal do envelhecimento — SEMPRE tem causa. Delirium hipoativo é mais comum e mais perigoso (subdiagnosticado).",
+    guideline: "SBGG / AGS / NICE",
+  },
+  {
+    id: "rx-sint-instabilidade-hemodinamica",
+    title: "Instabilidade Hemodinâmica — Abordagem Sistemática",
+    type: "Prescrição de Emergência / UTI",
+    prescription: `ABORDAGEM RUSH (Rapid Ultrasound for Shock and Hypotension):
+1. PUMP: ecocardiograma (função VE, derrame pericárdico)
+2. TANK: VCI (pré-carga), FAST (líquido livre), pleura (derrame)
+3. PIPES: aorta (aneurisma/dissecção), TVP (TEP)
+
+MANEJO POR TIPO DE CHOQUE:
+Hipovolêmico:
+4. SF 0,9% 500-1000mL bolus → reavaliar
+5. Concentrado hemácias se Hb <7 (ou <9 se cardiopata)
+
+Distributivo (séptico):
+6. SF 0,9% 30mL/kg em 3h + Noradrenalina se PAM <65 pós-volume
+7. ATB na 1ª hora
+
+Cardiogênico:
+8. Dobutamina 2,5-20mcg/kg/min ± Noradrenalina
+9. NÃO fazer volume excessivo (sobrecarga)
+
+Obstrutivo:
+10. Tratar causa: pericardiocentese, drenagem torácica, trombólise
+
+MONITORIZAÇÃO:
+11. PA invasiva, SVD, gasometria, lactato seriado
+12. Alvo: PAM ≥65, diurese ≥0,5mL/kg/h, lactato ↓, SvO2 >65%`,
+    guideline: "SSC / AMIB / AHA",
+  },
 ];
 
