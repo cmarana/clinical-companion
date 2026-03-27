@@ -1383,5 +1383,251 @@ EDEMA CEREBRAL (complicação mais temida):
     warnings: "Edema cerebral: mortalidade 20-25%, sequelas em 35%. NÃO corrigir rápido demais. NÃO fazer bolus de insulina em crianças. NÃO exceder 1,5-2x manutenção de volume.",
     guideline: "ISPAD 2022 / SBP / SBD / ADA",
   },
+  // ========== PEDIATRIA — INFECTOLOGIA ==========
+  {
+    id: "rx-ped-coqueluche",
+    title: "Coqueluche Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `1. Azitromicina 10mg/kg/dia VO 1x/dia por 5 dias (1ª linha)
+2. OU Claritromicina 15mg/kg/dia VO 12/12h por 7 dias
+3. OU SMX-TMP 40/8mg/kg/dia VO 12/12h por 14 dias (se intolerância macrolídeos)
+4. Isolamento respiratório por 5 dias após início do ATB
+5. O2 suplementar se SpO2 <92%
+6. Aspiração de secreções (lactentes)
+7. Hidratação EV se vômitos frequentes pós-tosse
+8. Monitorização: apneia em <6 meses (UTI neonatal/pediátrica)
+9. Notificação compulsória
+10. Profilaxia de contactantes: Azitromicina (mesma dose)`,
+    guideline: "MS Brasil / CDC / SBP",
+  },
+  {
+    id: "rx-ped-epiglotite",
+    title: "Epiglotite Pediátrica",
+    type: "Prescrição de Emergência Pediátrica",
+    prescription: `1. NÃO EXAMINAR OROFARINGE — risco de espasmo e obstrução total
+2. Manter criança calma, no colo dos pais, sentada
+3. O2 umidificado (sem forçar máscara)
+4. Preparar material de IOT difícil + cricotireoidostomia
+5. IOT em centro cirúrgico com anestesista (TOT 1-2 números menor)
+6. ATB EV imediato: Ceftriaxona 100mg/kg/dia EV 1x/dia por 7-10 dias
+7. Dexametasona 0,6mg/kg EV 1x/dia por 2 dias
+8. Hemoculturas
+9. Internação em UTI pediátrica
+10. Extubação em 24-48h (após melhora do edema — teste de vazamento)`,
+    warnings: "Causa principal: H. influenzae tipo B (rara após vacinação). Se não vacinada: emergência absoluta. Diagnóstico: sinal do polegar no RX lateral cervical.",
+    guideline: "SBP / AAP / ATLS",
+  },
+  {
+    id: "rx-ped-kawasaki",
+    title: "Doença de Kawasaki",
+    type: "Prescrição Pediátrica",
+    prescription: `FASE AGUDA (até 10º dia de febre):
+1. Imunoglobulina humana EV 2g/kg em dose única (infundir em 10-12h)
+2. AAS 80-100mg/kg/dia VO dividido 6/6h (anti-inflamatório)
+3. Após afebril por 48h: AAS 3-5mg/kg/dia VO 1x/dia (antiplaquetário)
+
+SE REFRATÁRIO (febre persistente após 1ª IVIG):
+4. 2ª dose de IVIG 2g/kg
+5. OU Metilprednisolona 30mg/kg EV (pulso) por 3 dias
+6. OU Infliximabe 5mg/kg EV DU
+
+MONITORIZAÇÃO CARDÍACA:
+7. Ecocardiograma: diagnóstico + 2 semanas + 6-8 semanas
+8. Se aneurisma coronariano: AAS + Clopidogrel ± anticoagulação
+9. ECG (arritmias, isquemia)
+
+CRITÉRIOS DIAGNÓSTICOS:
+Febre ≥5 dias + 4 de 5: conjuntivite, alteração oral, exantema, alteração de extremidades, linfadenopatia cervical`,
+    warnings: "Complicação mais temida: aneurisma de artérias coronárias (25% sem tratamento → 4% com IVIG). Tratar até o 10º dia de febre. AAS em dose alta: única indicação pediátrica.",
+    guideline: "AHA / SBP / SBC",
+  },
+  {
+    id: "rx-ped-invaginacao",
+    title: "Invaginação Intestinal Pediátrica",
+    type: "Prescrição de Emergência Pediátrica",
+    prescription: `1. Jejum
+2. SNG aberta (se vômitos)
+3. Acesso venoso: SF 0,9% 20mL/kg EV (se desidratação/choque)
+4. Analgesia: Dipirona 15mg/kg EV
+5. USG abdominal (sinal do alvo / pseudo-rim)
+6. Redução por enema (pneumática ou hidrostática) — 1ª linha:
+   - Enema com ar (pneumático): pressão máx 120mmHg
+   - OU Enema com SF (hidrostático) guiado por USG
+   - Até 3 tentativas
+7. Se falha ou sinais de perfuração/peritonite: CIRURGIA
+   - Laparotomia: redução manual ± ressecção se necrose
+8. ATB profilático: Cefazolina 25mg/kg EV (se cirurgia)
+9. Observação 24h após redução (recidiva em 5-10%)
+10. Dieta líquida após 6h da redução bem-sucedida`,
+    warnings: "Tríade clássica: dor abdominal em cólica + vômitos + fezes em geleia de framboesa (tardio). Pico: 5-9 meses. >3 anos: investigar causa patológica (linfoma, Meckel, pólipo).",
+    guideline: "SBP / APSA / BAPS",
+  },
+  {
+    id: "rx-ped-laringotraqueite",
+    title: "Laringotraqueíte (Crupe) Viral",
+    type: "Prescrição Pediátrica",
+    prescription: `LEVE (estridor apenas ao chorar, sem tiragem):
+1. Dexametasona 0,15-0,6mg/kg VO DU (máx 10mg)
+2. Observação por 2-4h → alta se melhorar
+
+MODERADO (estridor em repouso, tiragem leve):
+3. Dexametasona 0,6mg/kg VO/IM DU
+4. Nebulização com Adrenalina 0,5mL/kg (máx 5mL) da solução 1:1000 (L-adrenalina)
+5. Observar por 3-4h após nebulização (efeito rebote)
+6. O2 umidificado se SpO2 <92%
+
+GRAVE (estridor em repouso, tiragem importante, agitação/letargia):
+7. Dexametasona 0,6mg/kg IM/EV
+8. Nebulização com Adrenalina — repetir a cada 20 min (até 3x)
+9. O2 suplementar
+10. Se falha: IOT (TOT 0,5-1 número menor que o habitual)
+11. Internação em UTI pediátrica
+
+ALTA: se sem estridor em repouso por >4h após última nebulização`,
+    notes: "Etiologia principal: Parainfluenza. Sinal do campanário no RX cervical AP. NÃO usar ATB (viral). Nebulização com adrenalina: efeito em 10-30min, duração 2h.",
+    guideline: "SBP / AAP / NICE",
+  },
+  {
+    id: "rx-ped-pielonefrite",
+    title: "Pielonefrite Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `<3 MESES (sempre internar):
+1. Ceftriaxona 50mg/kg/dia EV 1x/dia (OU Cefotaxima 150mg/kg/dia EV 8/8h)
+2. + Ampicilina 200mg/kg/dia EV 6/6h (cobertura Enterococcus)
+3. Duração EV: até afebril por 48h → completar 10-14 dias VO
+
+3 MESES - 2 ANOS (internar se tóxico/vômitos):
+4. Ceftriaxona 50mg/kg/dia EV/IM 1x/dia por 3-4 dias
+5. Transição VO: Cefixima 8mg/kg/dia VO 1x/dia (completar 10 dias)
+
+>2 ANOS (ambulatorial se bom estado):
+6. Cefixima 8mg/kg/dia VO 1x/dia por 10 dias
+7. OU Amoxicilina-Clavulanato 40mg/kg/dia VO 8/8h por 10 dias
+
+OBRIGATÓRIO:
+8. Urocultura ANTES do ATB (jato médio, sonda ou punção suprapúbica em lactentes)
+9. USG renal + vias urinárias
+10. Cintilografia renal com DMSA (após 6 meses — avaliar cicatriz)
+11. UCM (uretrocistografia miccional) se <2 anos ou USG alterada`,
+    guideline: "SBP / AAP / NICE / SBN",
+  },
+  {
+    id: "rx-ped-celulite-periorbitaria",
+    title: "Celulite Periorbitária vs Orbitária Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `CELULITE PRÉ-SEPTAL (periorbitária — sem proptose/oftalmoplegia):
+1. Se leve: Amoxicilina-Clavulanato 50mg/kg/dia VO 8/8h por 10 dias
+2. Se moderada: Ceftriaxona 50mg/kg/dia EV 1x/dia
+3. Analgesia: Dipirona 15mg/kg EV 6/6h
+
+CELULITE ORBITÁRIA (PÓS-SEPTAL — emergência):
+4. Internação + TC órbitas com contraste
+5. Ceftriaxona 100mg/kg/dia EV 12/12h + Oxacilina 200mg/kg/dia EV 6/6h
+6. OU Ampicilina-Sulbactam 200mg/kg/dia EV 6/6h
+7. Avaliação oftalmológica URGENTE (acuidade visual, reflexos pupilares)
+8. Avaliação ORL (sinusite é a causa mais comum)
+9. Se abscesso subperiosteal: drenagem cirúrgica
+
+SINAIS DE ALARME (pós-septal):
+10. Proptose, dor à movimentação ocular, oftalmoplegia, queda de acuidade visual
+11. Estes sinais = TC + cirurgia + ATB EV`,
+    warnings: "Celulite orbitária pode evoluir para trombose de seio cavernoso e meningite. Sempre diferenciar pré-septal (tratamento ambulatorial) de pós-septal (emergência cirúrgica).",
+    guideline: "SBP / AAP / SBO",
+  },
+  {
+    id: "rx-ped-artrite-septica",
+    title: "Artrite Séptica Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `1. ARTROCENTESE DE URGÊNCIA (diagnóstica + terapêutica — ANTES do ATB)
+   - Líquido sinovial: contagem celular, Gram, cultura
+   - >50.000 leucócitos/mm³ com PMN = sugestivo
+2. ATB empírico:
+   <3 meses: Oxacilina 200mg/kg/dia EV 6/6h + Ceftriaxona 100mg/kg/dia
+   3 meses-5 anos: Oxacilina 200mg/kg/dia EV 6/6h (S. aureus + Kingella)
+   >5 anos: Oxacilina 200mg/kg/dia EV 6/6h (S. aureus)
+   Se MRSA: Vancomicina 40-60mg/kg/dia EV 6/6h
+3. Drenagem articular cirúrgica (artroscopia/artrotomia) — especialmente quadril
+4. Imobilização funcional
+5. Duração ATB: 3-4 semanas (EV por 5-7 dias → VO se boa evolução + PCR caindo)
+6. Transição VO: Cefalexina 100mg/kg/dia 6/6h OU Clindamicina 30mg/kg/dia 8/8h
+7. Fisioterapia após controle infeccioso`,
+    warnings: "Quadril: drenagem cirúrgica OBRIGATÓRIA (risco de necrose da cabeça femoral). Critérios de Kocher: febre >38,5, leucocitose, VHS >40, incapacidade de apoiar.",
+    guideline: "SBP / SBOT / POSNA / AAP",
+  },
+  {
+    id: "rx-ped-itu-profilaxia",
+    title: "Profilaxia de ITU Pediátrica",
+    type: "Prescrição Pediátrica",
+    prescription: `INDICAÇÕES:
+- Refluxo vesicoureteral grau III-V
+- ITU recorrente (≥3 episódios/ano)
+- Malformação do trato urinário com estase
+- Enquanto aguarda UCM/cintilografia
+
+ESQUEMAS:
+1. Nitrofurantoína 1-2mg/kg/dia VO 1x/dia (à noite)
+   - NÃO usar em <1 mês
+2. OU SMX-TMP 1-2mg/kg/dia (do TMP) VO 1x/dia
+   - NÃO usar em <2 meses
+3. OU Cefalexina 10mg/kg/dia VO 1x/dia (lactentes <3 meses)
+
+DURAÇÃO:
+4. Até resolução do RVU ou decisão cirúrgica
+5. Geralmente 6-12 meses → reavaliar
+
+MEDIDAS COMPORTAMENTAIS:
+6. Aumentar ingesta hídrica
+7. Higiene perineal adequada (frente para trás)
+8. Tratar constipação (muito associada)
+9. Micções frequentes (não reter urina)`,
+    guideline: "SBP / AAP / EAU / SBN",
+  },
+  {
+    id: "rx-ped-pneumonia-complicada",
+    title: "Pneumonia Complicada Pediátrica (Derrame/Empiema)",
+    type: "Prescrição Pediátrica",
+    prescription: `1. Internação
+2. Acesso venoso + SF 0,9% (manutenção)
+3. O2 suplementar se SpO2 <92%
+4. ATB EV:
+   - Oxacilina 200mg/kg/dia EV 6/6h + Ceftriaxona 100mg/kg/dia EV 1x/dia
+   - OU Clindamicina 40mg/kg/dia EV 6/6h (se MRSA prevalente)
+5. Analgesia: Dipirona 15mg/kg EV 6/6h
+6. Toracocentese diagnóstica (se derrame >1cm na USG)
+   - pH, glicose, LDH, proteínas, celularidade, cultura
+7. Drenagem pleural se:
+   - Empiema (pus)
+   - pH <7,2 ou glicose <40mg/dL
+   - Loculado
+   - Derrame volumoso com dispneia
+8. Dreno torácico: 12-16Fr (conforme idade)
+9. Se loculado: Alteplase intrapleural (0,1mg/kg em 10mL SF 1x/dia por 3 dias)
+10. VATS se falha drenagem + fibrinolítico
+11. Fisioterapia respiratória
+12. Duração ATB: 2-4 semanas (guiar por clínica + PCR)`,
+    guideline: "SBP / BTS / IDSA",
+  },
+  {
+    id: "rx-ped-anafilaxia",
+    title: "Anafilaxia Pediátrica",
+    type: "Prescrição de Emergência Pediátrica",
+    prescription: `1. Adrenalina IM (face anterolateral da coxa):
+   - <30kg: 0,15mg (Epipen Jr ou 0,15mL da 1:1000)
+   - >30kg: 0,3mg (0,3mL da 1:1000)
+   - Repetir em 5-15 min se sem melhora (até 3 doses)
+2. Decúbito dorsal com MMII elevados (posição de Trendelenburg)
+3. O2 100% (máscara com reservatório)
+4. SF 0,9% 20mL/kg EV rápido (repetir até 60mL/kg se hipotensão)
+5. Salbutamol nebulização 0,15mg/kg (mín 2,5mg) se broncoespasmo
+6. Dexametasona 0,15mg/kg EV (máx 10mg) — prevenção de fase tardia
+7. Difenidramina 1mg/kg EV (máx 50mg) OU Prometazina 0,5mg/kg IM
+8. Ranitidina 1mg/kg EV (máx 50mg) — anti-H2
+9. Se refratária: Adrenalina EV 0,1-1mcg/kg/min em BIC
+10. Observação mínima 6-12h (reação bifásica em 5-20%)
+11. Prescrever Epipen na alta + plano de ação escrito
+12. Encaminhar para alergista`,
+    warnings: "Adrenalina IM é a PRIMEIRA e MAIS IMPORTANTE droga. NÃO atrasar por anti-histamínicos ou corticoides. Via EV apenas em anafilaxia refratária com monitorização.",
+    guideline: "WAO / EAACI / SBP / ASBAI",
+  },
 ];
 

@@ -701,4 +701,97 @@ Se FC <60 após 60s de compressão + VPP:
     warnings: "ECN é a emergência cirúrgica GI mais comum em neonatos. Mortalidade: 20-40%. Fatores de risco: prematuridade, fórmula, isquemia, disbiose.",
     guideline: "SBP / NEC Society / AAP",
   },
+  {
+    id: "rx-neo-meningite",
+    title: "Meningite Neonatal",
+    type: "Prescrição Neonatal",
+    prescription: `1. Ampicilina 100mg/kg/dose EV:
+   - 0-7 dias: 12/12h → 8/8h se meningite
+   - >7 dias: 8/8h → 6/6h se meningite
+2. + Cefotaxima 50mg/kg/dose EV:
+   - 0-7 dias: 12/12h
+   - >7 dias: 8/8h
+3. OU Ampicilina + Gentamicina 5mg/kg/dia EV (se cefotaxima indisponível)
+4. Punção lombar: celularidade, bioquímica, Gram, cultura, PCR para HSV
+5. Se suspeita de Herpes (HSV): Aciclovir 20mg/kg/dose EV 8/8h por 21 dias
+6. Duração ATB por agente:
+   - GBS: 14-21 dias
+   - E. coli: 21 dias
+   - Listeria: 21 dias
+7. USG transfontanelar (ventriculite, abscesso)
+8. Repetir PL em 48-72h (avaliar esterilização do LCR)
+9. Monitorizar perímetro cefálico diário (hidrocefalia)`,
+    warnings: "Meningite neonatal: mortalidade 15-30%, sequelas neurológicas em 30-50%. Agentes principais: GBS, E. coli K1, Listeria. LCR neonatal normal: até 30 células, proteína até 150.",
+    guideline: "AAP / SBP / Red Book",
+  },
+  {
+    id: "rx-neo-herpes-neonatal",
+    title: "Herpes Neonatal (HSV)",
+    type: "Prescrição Neonatal / UTI",
+    prescription: `1. Aciclovir 20mg/kg/dose EV 8/8h
+   - Doença SNC/disseminada: 21 dias
+   - Doença pele/olho/boca (SEM): 14 dias
+2. Hidratação EV: 100-120mL/kg/dia (prevenir nefrotoxicidade)
+3. Monitorizar função renal (Cr, ureia) e hemograma 2x/semana
+4. PCR para HSV no LCR (sensibilidade >95%)
+5. Cultura viral de vesículas, orofaringe, conjuntiva
+6. Função hepática (HSV disseminado: hepatite fulminante)
+7. Coagulograma (CIVD na forma disseminada)
+8. Exame oftalmológico
+9. EEG (convulsões na forma SNC)
+10. Após tratamento EV: Aciclovir 300mg/m²/dose VO 8/8h por 6 meses (supressão — reduz recorrência cutânea e melhora desfecho neurológico)`,
+    warnings: "Tríade de suspeição: vesículas + convulsões + sepse sem resposta a ATB. Forma disseminada: mortalidade 30% mesmo com tratamento. Iniciar Aciclovir na SUSPEITA — não esperar confirmação.",
+    guideline: "AAP / Red Book / SBP / IDSA",
+  },
+  {
+    id: "rx-neo-convulsao",
+    title: "Convulsão Neonatal",
+    type: "Prescrição Neonatal / UTI",
+    prescription: `1. ABC — garantir via aérea, O2 suplementar
+2. Acesso venoso + glicemia capilar IMEDIATA
+3. Se hipoglicemia (<45mg/dL): SG 10% 2mL/kg EV em bolus lento
+4. Se Ca²⁺ <7: Gluconato de cálcio 10% 2mL/kg EV lento (em 10min, com monitorização cardíaca)
+5. Se Mg²⁺ <1,5: Sulfato de magnésio 50% 0,2mL/kg IM
+
+ANTICONVULSIVANTE:
+6. Fenobarbital 20mg/kg EV em 15-20min (1ª linha)
+   - Se persistir: dose adicional 10mg/kg (até total 40mg/kg)
+7. Se refratária: Fenitoína 20mg/kg EV em 20-30min (em SF, NÃO em SG)
+8. Se super-refratária: Midazolam 0,15mg/kg EV bolus → 0,1-0,4mg/kg/h BIC
+   OU Levetiracetam 40-60mg/kg EV
+
+9. EEG contínuo (aEEG ou convencional) — MANDATÓRIO
+10. Investigar etiologia: encefalopatia hipóxico-isquêmica, infecção (TORCH, HSV), distúrbio metabólico, AVC neonatal, malformação
+11. RM crânio quando estável`,
+    warnings: "Convulsões neonatais são frequentemente sutis (movimentos oculares, apneia, automatismos). EEG é essencial — muitas convulsões são subclínicas. Fenobarbital é a 1ª linha em neonatos.",
+    guideline: "ILAE / AAP / SBP / ABN",
+  },
+  {
+    id: "rx-neo-hiperbilirrubinemia-grave",
+    title: "Hiperbilirrubinemia Neonatal Grave",
+    type: "Prescrição Neonatal",
+    prescription: `FOTOTERAPIA INTENSIVA:
+1. Fototerapia de alta intensidade (≥30 µW/cm²/nm) — bilateral se disponível
+2. Máxima exposição de superfície corporal (apenas fralda)
+3. Proteção ocular (óculos protetores)
+4. Hidratação: manter amamentação + SF 0,9% EV se desidratação
+5. Controlar bilirrubina a cada 4-6h
+6. Monitorizar temperatura (hiper/hipotermia)
+
+EXSANGUINEOTRANSFUSÃO (indicação):
+7. BT ≥25mg/dL (RN ≥35 sem) ou conforme nomograma AAP
+8. Sinais de encefalopatia bilirrubínica aguda (qualquer nível de BT)
+9. Técnica: troca de 2 volemias (160mL/kg) — push-pull via cateter umbilical
+10. Sangue: CH O- + PFC AB irradiado
+11. Monitorizar: glicemia, Ca²⁺, K+, hemograma pós-troca
+
+INVESTIGAÇÃO:
+12. Tipagem mãe + RN (incompatibilidade ABO/Rh)
+13. Coombs direto
+14. Reticulócitos, esfregaço (esferocitose, deficiência G6PD)
+15. Bilirrubina total e frações`,
+    warnings: "Kernicterus (encefalopatia bilirrubínica crônica): IRREVERSÍVEL. Sinais agudos: letargia, hipotonia, choro agudo, opistótono, convulsões. Exsanguineotransfusão é emergência.",
+    guideline: "AAP / SBP / SBN",
+  },
 ];
+
