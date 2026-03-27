@@ -1165,5 +1165,142 @@ ONDE NOTIFICAR:
     notes: "Notificação compulsória é OBRIGAÇÃO LEGAL do médico (Lei 6.259/75). Omissão é infração ética e legal.",
     guideline: "MS / Portaria GM/MS nº 217/2023 / CFM",
   },
+  {
+    id: "rx-modelo-desmame-dva",
+    title: "Checklist de Desmame de Drogas Vasoativas",
+    type: "Modelo / UTI",
+    prescription: `CHECKLIST DIÁRIO — DESMAME DE DVA
+
+□ PAM ≥65mmHg estável por ≥2h?
+□ Lactato em queda ou normalizado?
+□ Diurese ≥0,5mL/kg/h?
+□ ScvO2/SvO2 >70%/>65%?
+□ Extremidades aquecidas, TEC <3s?
+□ Foco infeccioso controlado?
+□ Volemia otimizada? (ΔPP <13%, PLR responsivo?)
+□ pH >7,25?
+□ Hb ≥7g/dL?
+□ Ca²⁺ ionizado >4,0mg/dL?
+□ Cortisol dosado se DVA >48h?
+
+ORDEM DE DESMAME:
+1º) Noradrenalina (principal — desmamar primeiro se dose baixa)
+2º) Dobutamina (desmamar quando IC/ScvO2 adequados)
+3º) Vasopressina (desmamar por ÚLTIMO — dose fixa)
+
+REGISTRAR:
+- Dose atual de cada DVA
+- Hora de cada redução
+- Parâmetros hemodinâmicos pré e pós redução
+- Se falha: dose retornada e motivo`,
+    notes: "Imprimir e fixar à beira-leito. Reavaliar pelo menos 2x/dia. Desmame deve ser tentado ATIVAMENTE — não esperar passivamente.",
+    guideline: "SSC 2021 / AMIB / Uptodate",
+  },
+  {
+    id: "rx-modelo-medicina-legal-laudo",
+    title: "Modelo de Relatório Médico para Fins Legais",
+    type: "Modelo / Medicina Legal",
+    prescription: `RELATÓRIO MÉDICO
+
+Eu, Dr(a). [NOME], CRM [NÚMERO], [ESPECIALIDADE], DECLARO para os devidos fins que:
+
+O(A) paciente [NOME COMPLETO], [IDADE] anos, RG [NÚMERO], foi atendido(a) neste serviço em [DATA] às [HORA], apresentando:
+
+QUEIXA PRINCIPAL: [descrever em aspas o que o paciente refere]
+
+HISTÓRICO: [circunstâncias relatadas]
+
+EXAME FÍSICO:
+- Estado geral: [descrever]
+- Sinais vitais: PA [X]mmHg, FC [X]bpm, FR [X]irpm, T [X]°C, SpO2 [X]%
+- Lesões identificadas: [descrever detalhadamente cada lesão com localização anatômica, dimensões, características — conforme modelo de documentação de lesão corporal]
+
+EXAMES COMPLEMENTARES REALIZADOS: [listar]
+
+DIAGNÓSTICO: [CID-10]
+
+CONDUTA: [tratamento realizado]
+
+PROGNÓSTICO: [tempo estimado de recuperação, sequelas previstas]
+
+OBSERVAÇÕES: [informações adicionais relevantes]
+
+[Local], [Data]
+____________________________
+Dr(a). [Nome]
+CRM [Número]`,
+    notes: "Este modelo NÃO substitui o laudo pericial do IML. É um relatório médico assistencial que pode ser solicitado judicialmente. Manter cópia no prontuário.",
+    guideline: "CFM / CPC Art. 473 / Código de Ética Médica",
+  },
+  {
+    id: "rx-modelo-receita-controlada",
+    title: "Modelo de Receituário Controlado (Portaria 344/98)",
+    type: "Modelo / Receituário",
+    prescription: `RECEITUÁRIO DE CONTROLE ESPECIAL (LISTA C1 — 2 VIAS):
+- Identificação do emitente (nome, CRM, endereço, telefone)
+- Data
+- Nome do paciente (completo, sem abreviações)
+- Endereço do paciente
+- Medicamento (DCB ou DCI): [nome genérico]
+- Forma farmacêutica + concentração
+- Quantidade (em algarismos arábicos e por extenso)
+- Posologia
+- Assinatura + CRM
+
+RECEITUÁRIO AZUL (LISTA B1 — BENZODIAZEPÍNICOS):
+- Notificação de Receita "B" (cor azul)
+- Validade: 30 dias a partir da emissão
+- Quantidade máxima: 60 dias de tratamento
+- Em 2 vias (1ª via retida na farmácia)
+
+RECEITUÁRIO AMARELO (LISTA A — OPIOIDES/ANFETAMINAS):
+- Notificação de Receita "A" (cor amarela)
+- Sequência numérica fornecida pela Vigilância Sanitária
+- Validade: 30 dias
+- Quantidade máxima: 30 dias de tratamento
+- Emitir em 3 vias (1ª retida farmácia, 2ª VISA, 3ª paciente)
+
+RECEITA SIMPLES (LISTA C1 — ANTIDEPRESSIVOS, ANTICONVULSIVANTES):
+- 2 vias (1ª retida farmácia)
+- Validade: 30 dias
+- Sem notificação especial`,
+    notes: "A Portaria 344/98 da ANVISA regulamenta prescrição e dispensação de medicamentos sujeitos a controle especial. Erro na receita = medicamento NÃO é dispensado.",
+    guideline: "ANVISA / Portaria 344/98 / RDC 58/2007",
+  },
+  {
+    id: "rx-modelo-atestado-obito",
+    title: "Orientação para Preenchimento — Declaração de Óbito",
+    type: "Modelo / Medicina Legal",
+    prescription: `ORIENTAÇÕES PARA PREENCHIMENTO DA DO:
+
+BLOCO V — CONDIÇÕES E CAUSAS DO ÓBITO:
+Linha a: causa IMEDIATA da morte (ex: "Choque séptico")
+Linha b: causa antecedente (ex: "Pneumonia bacteriana")
+Linha c: causa antecedente (ex: "Neoplasia de pulmão")
+Linha d: causa BÁSICA (ex: "Tabagismo crônico")
+→ A causa BÁSICA é a mais importante (vai para estatística)
+
+PARTE II: Outras condições significativas (DM, HAS, etc.)
+
+QUEM PREENCHE:
+- Morte natural com assistência: médico assistente
+- Morte natural sem assistência: SVO (Serviço de Verificação de Óbitos)
+- Morte violenta ou suspeita: IML (NUNCA o médico do PS)
+- Morte fetal (>500g ou >20sem): médico que assistiu o parto
+
+NÃO COLOCAR na causa da morte:
+- "PCR" (parada cardiorrespiratória) — é mecanismo, não causa
+- "Falência múltipla de órgãos" — sequência, não causa
+- "Causa indeterminada" sem justificativa
+
+ERROS COMUNS:
+- Rasuras (invalida o documento — novo formulário)
+- Deixar causa básica vaga
+- Preencher DO em morte violenta (competência IML)
+- Não registrar tempo aproximado entre causas`,
+    notes: "A DO é documento legal e epidemiológico. Preenchimento adequado é obrigação do médico (Art. 84 CEM). DO errada = estatística de saúde errada = políticas públicas equivocadas.",
+    guideline: "MS / Manual de Instruções para Preenchimento da DO / CFM",
+  },
 ];
+
 

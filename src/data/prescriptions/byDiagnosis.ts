@@ -6441,5 +6441,529 @@ ORIENTAÇÕES:
 16. Readaptação funcional se impossibilidade de evitar agente`,
     guideline: "SBD / ANAMT / MS / NR-7",
   },
+  {
+    id: "rx-cetoacidose-alcoolica",
+    title: "Cetoacidose Alcoólica",
+    type: "Endocrinologia / Emergência",
+    prescription: `1. Dieta zero inicialmente
+2. SF 0,9% 1000mL EV em 1h (bolus) → manter 250mL/h
+3. SG 5% 1000mL + NaCl 20% 20mL EV — FUNDAMENTAL (glicose suprime cetogênese)
+4. Tiamina (Vit B1) 300mg EV ANTES da glicose (prevenir Wernicke)
+5. Complexo B 1 amp EV 1x/dia
+6. Sulfato de Magnésio 50% 2g (4mL) EV em 20min
+7. KCl 19,1% 10mL em cada 500mL de SF (manter K+ 4-5)
+8. Ondansetrona 4mg EV 8/8h (antiemético)
+9. Omeprazol 40mg EV 1x/dia
+10. Glicemia capilar 1/1h
+11. Gasometria 2/2h até AG normalizar
+12. Eletrólitos (Na, K, Mg, P) 6/6h
+13. Monitorização cardíaca contínua
+14. NÃO usar insulina (diferente da CAD diabética!)
+15. NÃO usar bicarbonato (exceto pH <6,9)`,
+    alternatives: "Se desidratação grave: SF 0,9% 2000mL na 1ª hora. Se hipofosfatemia: Fosfato de potássio 20mmol em 6h.",
+    warnings: "SEMPRE dar Tiamina ANTES de glicose — risco de Encefalopatia de Wernicke. A cetoacidose alcoólica NÃO cursa com hiperglicemia significativa (diferente da CAD). Cetona sérica pode ser falsamente BAIXA (predomina beta-hidroxibutirato, não detectado pelo teste de nitroprussiato).",
+    guideline: "UpToDate / ADA / Sociedade Brasileira de Endocrinologia",
+  },
+  {
+    id: "rx-hipocalcemia-grave",
+    title: "Hipocalcemia Grave (Sintomática / Ca²⁺ <7,0)",
+    type: "Endocrinologia / Emergência",
+    prescription: `1. Monitorização cardíaca contínua (risco de QT longo → Torsades)
+2. Gluconato de Cálcio 10% 20mL (2 ampolas) EV em 10-20min — DILUÍDO em 100mL SF
+3. Manutenção: Gluconato de Cálcio 10% 60mL (6 amp) em 500mL SF EV em 6h (infusão contínua)
+4. Dosar Ca²⁺ ionizado 2/2h — meta: Ca²⁺i >4,0mg/dL
+5. Corrigir hipomagnesemia SIMULTANEAMENTE:
+   - MgSO4 50% 2g (4mL) EV em 20min → manter 1g/h por 6h
+6. Se pH >7,45 (alcalose): corrigir primeiro (alcalose piora hipocalcemia)
+7. Após estabilização: Carbonato de Cálcio 500mg VO 8/8h
+8. Calcitriol 0,25-0,5mcg VO 12/12h
+9. Colecalciferol 50.000UI VO 1x/semana (se Vit D baixa)
+10. ECG seriado (monitorar QTc)
+11. Evitar furosemida (aumenta calciúria)
+12. Fosfato sérico: se elevado, restringir fósforo na dieta`,
+    warnings: "NÃO usar Cloreto de Cálcio em veia periférica (necrose tecidual). Gluconato de Cálcio é mais seguro. NUNCA infundir cálcio com bicarbonato no mesmo acesso (precipita). Hipocalcemia refratária: pensar em hipomagnesemia não corrigida.",
+    guideline: "Endocrine Society / SBEM / Uptodate",
+  },
+  {
+    id: "rx-crise-tireotoxica",
+    title: "Crise Tireotóxica (Burch-Wartofsky ≥45)",
+    type: "Endocrinologia / Emergência",
+    prescription: `1. Internação em UTI — monitorização contínua
+2. BLOQUEAR SÍNTESE:
+   - Propiltiouracil (PTU) 200mg VO/SNG 4/4h (preferir PTU: bloqueia T4→T3)
+   - OU Metimazol 20mg VO/SNG 6/6h
+3. BLOQUEAR LIBERAÇÃO (1h APÓS antitireoidiano):
+   - Lugol 10 gotas VO 8/8h OU Iodeto de potássio saturado (SSKI) 5 gotas 6/6h
+4. BLOQUEAR CONVERSÃO PERIFÉRICA:
+   - Hidrocortisona 100mg EV 8/8h (bloqueia T4→T3 + trata insuficiência adrenal relativa)
+5. BLOQUEAR EFEITOS ADRENÉRGICOS:
+   - Propranolol 60-80mg VO 6/6h (bloqueia T4→T3 também)
+   - OU Esmolol EV se VO impossível: 500mcg/kg bolus → 50-100mcg/kg/min
+6. Paracetamol 750mg EV 6/6h (antitérmico — NÃO usar AAS: desloca T4 da albumina)
+7. Resfriamento ativo se T>40°C
+8. Hidratação: SG5% + SF0,9% 150mL/h
+9. Tratar fator precipitante (infecção, cirurgia, iodo)
+10. TSH, T4L, T3 na admissão + 24/24h`,
+    warnings: "SEQUÊNCIA É FUNDAMENTAL: antitireoidiano PRIMEIRO, iodo DEPOIS (1h). Iodo sem bloqueio prévio = Jod-Basedow (piora). NÃO usar AAS (aumenta T4 livre). Mortalidade 10-30% mesmo com tratamento.",
+    guideline: "ATA / SBEM / Burch-Wartofsky Score",
+  },
+  {
+    id: "rx-insuficiencia-adrenal-aguda",
+    title: "Insuficiência Adrenal Aguda (Crise Addisoniana)",
+    type: "Endocrinologia / Emergência",
+    prescription: `1. Hidrocortisona 100mg EV em bolus IMEDIATO
+2. Hidrocortisona 50mg EV 6/6h (primeiras 24h)
+3. SF 0,9% 1000mL EV em 1h (expansão volêmica agressiva)
+4. Manter SF 0,9% 250mL/h até estabilização hemodinâmica
+5. SG 10% se hipoglicemia (glicemia capilar 1/1h)
+6. Monitorização cardíaca contínua
+7. Eletrólitos 4/4h (Na+, K+) — hipercalemia frequente
+8. Se K+ >6,0: Gluconato de Ca 10% 10mL EV + Insulina R 10UI + SG50% 50mL
+9. NÃO usar mineralocorticoide na fase aguda (Hidrocortisona em dose de estresse já tem efeito mineralocorticoide)
+10. Após estabilização (D2-D3): reduzir para Hidrocortisona 20mg manhã + 10mg tarde VO
+11. Fludrocortisona 0,1mg VO 1x/dia (manutenção — insuficiência primária)
+12. Identificar e tratar fator precipitante`,
+    notes: "Fatores precipitantes: infecção, cirurgia, suspensão abrupta de corticoide, trauma. Em pacientes em uso crônico de corticoide: dose de estresse = Hidrocortisona 100mg EV antes de procedimentos.",
+    guideline: "Endocrine Society / SBEM / Uptodate",
+  },
+  {
+    id: "rx-feocromocitoma-crise",
+    title: "Crise Hipertensiva por Feocromocitoma",
+    type: "Endocrinologia / Emergência",
+    prescription: `1. UTI — monitorização invasiva (PA intra-arterial)
+2. ALFA-BLOQUEIO PRIMEIRO (NUNCA beta-bloqueador isolado!):
+   - Fentolamina 5mg EV em bolus → repetir 5/5min até PA controlada
+   - OU Nitroprussiato de sódio 0,5-10mcg/kg/min EV (BIC)
+3. APÓS alfa-bloqueio adequado, SE taquicardia:
+   - Esmolol 500mcg/kg bolus → 50-200mcg/kg/min
+   - OU Propranolol 1mg EV lento (repetir até FC <100)
+4. Hidratação: SF 0,9% 250mL/h (depleção volêmica crônica)
+5. Glicemia capilar 1/1h (risco de hipoglicemia pós alfa-bloqueio)
+6. Metanefrina e Catecolaminas urinárias 24h
+7. TC/RM de abdome após estabilização
+8. Pré-operatório (se indicado):
+   - Doxazosina 2-4mg VO 12/12h (iniciar 10-14 dias antes)
+   - Dieta hipersódica + hidratação abundante
+   - Beta-bloqueador SOMENTE após 3 dias de alfa-bloqueio`,
+    warnings: "NUNCA usar beta-bloqueador ANTES do alfa-bloqueio → vasoconstrição alfa sem oposição → crise hipertensiva paradoxal fatal. Evitar Metoclopramida, Droperidol, Naloxona (podem precipitar crise).",
+    guideline: "Endocrine Society / SBEM / AHA",
+  },
+  {
+    id: "rx-hipercalcemia-grave",
+    title: "Hipercalcemia Grave (Ca²⁺ >14mg/dL ou sintomática)",
+    type: "Endocrinologia / Emergência",
+    prescription: `1. Hidratação AGRESSIVA: SF 0,9% 200-500mL/h (meta: diurese 200-300mL/h)
+2. Após reidratação adequada: Furosemida 20-40mg EV 6/6h (SOMENTE se euvolêmico)
+3. Ácido Zoledrônico 4mg EV em 100mL SF em 15min (efeito em 2-4 dias)
+   - OU Pamidronato 60-90mg EV em 500mL SF em 4h
+4. Se refratária ou neoplásica: Denosumabe 120mg SC
+5. Calcitonina 4UI/kg SC/IM 12/12h (efeito rápido mas transitório — taquifilaxia em 48h)
+6. Hidrocortisona 200mg EV/dia (se linfoma, mieloma, intoxicação por Vit D)
+7. Ca²⁺ sérico + ionizado 6/6h
+8. Eletrólitos (Na, K, Mg, P) 6/6h
+9. ECG (QT curto, arritmias)
+10. Monitorização cardíaca contínua
+11. Diurese rigorosa
+12. Diálise se IRC associada ou refratária`,
+    warnings: "NÃO usar Furosemida em paciente DESIDRATADO. Hidratar PRIMEIRO. A causa mais comum é hiperparatireoidismo (ambulatorial) e neoplasia (internação). Bifosfonato contraindicado se ClCr <30.",
+    guideline: "Endocrine Society / ASCO / SBEM",
+  },
+  {
+    id: "rx-corpo-delito",
+    title: "Exame de Corpo de Delito — Orientações Médicas",
+    type: "Medicina Legal",
+    prescription: `ORIENTAÇÕES PARA EXAME DE CORPO DE DELITO NO PS:
+
+1. O MÉDICO PLANTONISTA NÃO realiza perícia — apenas ATENDE e DOCUMENTA
+2. Documentação médica detalhada:
+   a. Descrever TODAS as lesões: localização (usar termos anatômicos), dimensões (cm), tipo (escoriação, equimose, ferimento corto-contuso, perfuro-inciso, LAB, etc.)
+   b. Fotografar com CONSENTIMENTO (anexar ao prontuário)
+   c. Registrar mecanismo referido pelo paciente (entre aspas: "paciente refere que...")
+   d. Hora exata do atendimento
+3. Classificar natureza das lesões (Art. 129 CP):
+   - Leve: sem sequela permanente, incapacidade <30 dias
+   - Grave: incapacidade >30 dias, perigo de vida, debilidade permanente
+   - Gravíssima: incapacidade permanente, enfermidade incurável, deformidade permanente
+4. Preencher Boletim de Atendimento completo
+5. Notificação SINAN se violência (Portaria MS 104/2011)
+6. Encaminhar paciente ao IML para perícia oficial
+7. NÃO emitir laudo pericial (competência do perito legista)
+8. Guardar amostras biológicas se indicado (cadeia de custódia)
+9. Orientar paciente sobre BO na delegacia
+10. Se menor de idade ou incapaz: notificação ao Conselho Tutelar OBRIGATÓRIA`,
+    notes: "O médico do PS tem obrigação de atender INDEPENDENTEMENTE de BO. A documentação médica pode ser requisitada judicialmente. Sigilo médico mantido exceto nos casos previstos em lei (violência, menor, notificação compulsória).",
+    guideline: "CFM / Código Penal Art. 129 / Lei 10.778/2003 / ECA",
+  },
+  {
+    id: "rx-pericia-embriaguez",
+    title: "Perícia de Embriaguez — Conduta no PS",
+    type: "Medicina Legal",
+    prescription: `CONDUTA MÉDICA EM SUSPEITA DE EMBRIAGUEZ:
+
+1. ATENDER o paciente (prioridade é saúde, não perícia)
+2. Sinais clínicos de intoxicação alcoólica a documentar:
+   a. Hálito etílico (presente/ausente)
+   b. Fala (normal/pastosa/incoerente)
+   c. Marcha (normal/ebriosa/impossibilitada)
+   d. Equilíbrio (Romberg)
+   e. Coordenação (dedo-nariz, calcanhar-joelho)
+   f. Pupilas (midríase/normal)
+   g. Consciência (Glasgow)
+   h. Orientação tempo-espaço
+3. NÃO realizar etilometria (competência policial — Lei Seca 12.760/2012)
+4. Dosagem de alcoolemia pode ser solicitada CLINICAMENTE se necessário
+5. Se traumatismo associado: protocolo de trauma habitual
+6. Se Glasgow ≤13: TC de crânio (excluir TCE)
+7. Glicemia capilar (excluir hipoglicemia)
+8. Se intoxicação grave (coma, depressão respiratória):
+   - IOT se Glasgow ≤8
+   - Tiamina 300mg EV
+   - SG 50% 50mL EV (se hipoglicemia)
+   - Monitorização
+9. O médico NÃO pode ser obrigado a colher sangue para fins periciais
+10. Documentar recusa do paciente em realizar exames (se aplicável)`,
+    warnings: "O médico NÃO é perito — atende clinicamente. Dosagem de alcoolemia para fins legais requer CONSENTIMENTO do paciente (ou ordem judicial). Art. 306 CTB: crime é conduzir com capacidade alterada, não apenas ter álcool no sangue.",
+    guideline: "CFM Res. 1931/2009 / Lei 12.760/2012 / CTB Art. 306",
+  },
+  {
+    id: "rx-lesao-corporal-documentacao",
+    title: "Documentação de Lesão Corporal — Modelo",
+    type: "Medicina Legal",
+    prescription: `MODELO DE DESCRIÇÃO DE LESÕES NO PRONTUÁRIO:
+
+"Ao exame físico dirigido, identifico:
+1. Escoriação linear de aproximadamente [X]cm em [localização anatômica], com [características: crosta hemática, sangramento ativo, bordas regulares/irregulares]
+2. Equimose de coloração [avermelhada/arroxeada/esverdeada/amarelada] de [X]x[Y]cm em [localização]
+3. Ferimento corto-contuso de [X]cm em [localização], com [bordas irregulares, ponte de tecido, escoriação perilesional]
+4. Ferimento perfuro-inciso de [X]cm em [localização], com [bordas regulares, cauda de escoriação — indicar direção]
+5. Edema de partes moles em [localização]
+6. Hematoma subgaleal/subdural/epidural (se TC)"
+
+CLASSIFICAÇÃO TEMPORAL DAS EQUIMOSES (Legrand du Saulle):
+- Vermelho-escuro: recente (<24h)
+- Violáceo: 1-3 dias
+- Azulado: 3-6 dias
+- Esverdeado: 7-12 dias
+- Amarelado: 12-20 dias
+- Normal: >20 dias
+
+CONDUTA:
+1. Suturar/tratar lesões conforme indicação clínica
+2. Fotografar (com régua para escala) se consentimento
+3. Solicitar exames complementares conforme indicação (RX, TC)
+4. Encaminhar ao IML
+5. Atestado de comparecimento ao paciente`,
+    notes: "Esta classificação temporal é aproximada e pode variar. Múltiplas cores numa mesma equimose sugerem lesões em tempos diferentes (importante para violência doméstica e maus-tratos).",
+    guideline: "Hygino Hercules / Genival Veloso / CFM",
+  },
+  {
+    id: "rx-morte-encefalica-protocolo",
+    title: "Protocolo de Morte Encefálica (Res. CFM 2.173/2017)",
+    type: "Medicina Legal / UTI",
+    prescription: `PRÉ-REQUISITOS PARA ABERTURA DE PROTOCOLO:
+1. Coma aperceptivo (Glasgow 3) com causa conhecida e irreversível
+2. Tempo mínimo de observação em UTI:
+   - Adultos: 6h (ou 24h se causa hipóxico-isquêmica)
+   - Crianças 2m-2a: 24h
+   - RN 7d-2m: 48h
+3. Excluir: hipotermia (<35°C), drogas depressoras SNC, distúrbio metabólico grave
+
+PROCEDIMENTOS OBRIGATÓRIOS (2 exames clínicos + 1 complementar):
+
+EXAME CLÍNICO (por 2 médicos diferentes, 1 especialista):
+1. Coma aperceptivo (Glasgow 3)
+2. Pupilas fixas e arreativas (midríase ou médias)
+3. Ausência de reflexo corneopalpebral bilateral
+4. Ausência de reflexo oculocefálico
+5. Ausência de reflexo vestíbulo-calórico (50mL água gelada cada ouvido, aguardar 5min)
+6. Ausência de reflexo de tosse (aspiração traqueal profunda)
+7. Teste de Apneia:
+   - Pré-oxigenar com FiO2 100% por 10min
+   - Desconectar VM
+   - Instalar O2 6L/min no TOT
+   - Aguardar 10min
+   - Gasometria: confirmar PaCO2 ≥55mmHg
+   - AUSÊNCIA de movimentos respiratórios
+
+EXAME COMPLEMENTAR (1 obrigatório):
+- Arteriografia cerebral (padrão-ouro)
+- Doppler transcraniano
+- EEG (30min, 8 canais)
+- Cintilografia cerebral (SPECT)
+
+INTERVALO ENTRE EXAMES:
+- >2 anos: 1h
+- 1-2 anos: 12h
+- 2 meses-1 ano: 24h
+
+PÓS-CONFIRMAÇÃO:
+1. Comunicar família
+2. Notificar Central de Transplantes (OPO) — OBRIGATÓRIO
+3. Manter suporte se doação de órgãos
+4. Registrar horário do óbito = hora do último exame
+5. Preencher Declaração de Óbito`,
+    warnings: "Protocolo é OBRIGATÓRIO (Decreto 9.175/2017). Médicos examinadores NÃO podem fazer parte da equipe de transplante. Notificação à OPO é obrigatória INDEPENDENTE da doação.",
+    guideline: "CFM Res. 2.173/2017 / Decreto 9.175/2017 / ABTO",
+  },
+  {
+    id: "rx-desmame-noradrenalina",
+    title: "Desmame de Noradrenalina",
+    type: "UTI / Desmame de DVA",
+    prescription: `CRITÉRIOS PARA INICIAR DESMAME:
+1. PAM ≥65mmHg estável por ≥2h
+2. Lactato em queda ou normalizado
+3. Diurese ≥0,5mL/kg/h
+4. SvO2 >65% ou ScvO2 >70%
+5. Foco infeccioso controlado / ATB adequado
+6. Sem sinais de hipoperfusão (livedo, extremidades frias)
+
+PROTOCOLO DE DESMAME:
+1. Reduzir 0,02-0,05mcg/kg/min a cada 15-30min
+2. Se dose <0,1mcg/kg/min e PAM estável: reduzir mais agressivamente
+3. Monitorizar PA a cada 5min durante desmame
+4. Se PAM cair >10%: retornar à dose anterior, aguardar 30-60min
+5. Suspender quando dose <0,02mcg/kg/min com PAM ≥65
+
+OTIMIZAÇÃO PRÉ-DESMAME:
+- Corrigir hipovolemia (PVC, variação de PP, elevação passiva de MMII)
+- Hidrocortisona 50mg EV 6/6h se choque refratário (dose de estresse)
+- Corrigir acidose (pH >7,25)
+- Hemoglobina ≥7g/dL (ou ≥9 se coronariopata/hemorragia ativa)
+- Corrigir hipocalcemia (Ca²⁺i >4,0)
+
+SE FALHA NO DESMAME (2ª tentativa):
+1. Reavaliar volemia
+2. Considerar insuficiência adrenal (Cortisol randômico + iniciar Hidrocortisona)
+3. Ecocardiograma à beira-leito
+4. Pesquisar novo foco infeccioso`,
+    notes: "DVA não é tratamento, é suporte. O desmame deve ocorrer assim que possível. Manter meta de PAM individualizada (PAM 70-75 em hipertensos crônicos).",
+    guideline: "SSC 2021 / AMIB / Uptodate",
+  },
+  {
+    id: "rx-desmame-vasopressina",
+    title: "Desmame de Vasopressina",
+    type: "UTI / Desmame de DVA",
+    prescription: `INDICAÇÃO DE VASOPRESSINA:
+- Associar quando Noradrenalina >0,25-0,5mcg/kg/min
+- Dose FIXA: 0,03-0,04UI/min (NÃO titular)
+
+PROTOCOLO DE DESMAME:
+1. Desmamar Noradrenalina PRIMEIRO até dose baixa (<0,1mcg/kg/min)
+2. SOMENTE ENTÃO iniciar desmame de Vasopressina
+3. Reduzir 0,01UI/min a cada 30-60min
+4. Se hipotensão: retornar dose anterior + reavaliar Noradrenalina
+5. Suspender quando dose ≤0,01UI/min com PAM estável
+
+MONITORIZAÇÃO:
+- PA contínua (idealmente invasiva)
+- Diurese horária
+- Lactato 4/4h
+- Natremia 6/6h (vasopressina pode causar hiponatremia)
+- Glicemia 4/4h
+
+CUIDADOS:
+- Acesso venoso central exclusivo
+- Não misturar com outras drogas no mesmo lúmen
+- Isquemia digital/esplâncnica: reduzir/suspender
+- Se necrose de extremidades: suspender imediatamente`,
+    warnings: "NUNCA titular vasopressina como noradrenalina. Dose fixa de 0,03-0,04UI/min. Desmame de vasopressina é o ÚLTIMO passo (após desmamar nora). Risco de isquemia mesentérica e digital.",
+    guideline: "SSC 2021 / VASST Trial / AMIB",
+  },
+  {
+    id: "rx-desmame-dobutamina",
+    title: "Desmame de Dobutamina",
+    type: "UTI / Desmame de DVA",
+    prescription: `CRITÉRIOS PARA DESMAME:
+1. IC/DC adequado (IC >2,2 L/min/m²)
+2. SvO2/ScvO2 normalizada
+3. Lactato em queda
+4. Sem sinais de baixo débito (extremidades quentes, TEC <3s)
+5. Diurese adequada
+6. Ecocardiograma: FEVE estável ou melhorando
+
+PROTOCOLO:
+1. Reduzir 2,5mcg/kg/min a cada 30-60min
+2. Monitorizar: PA, FC, diurese, ScvO2 a cada redução
+3. Se FC aumentar >20% ou ScvO2 cair >5%: retornar dose anterior
+4. Suspender quando dose <2,5mcg/kg/min com parâmetros estáveis
+5. Eco controle após suspensão
+
+ATENÇÃO:
+- Evitar suspensão abrupta (down-regulation de receptores beta)
+- Se IC/FEVE-dependente: considerar Milrinone ou Levosimendan como ponte
+- Em IC crônica descompensada: pode ser necessário transição para inotrópico oral ou indicação de dispositivo
+
+SE FALHA NO DESMAME:
+1. Ecocardiograma (função VE/VD)
+2. Otimizar pré-carga
+3. Considerar Levosimendan 0,1mcg/kg/min por 24h (sensibilizador de cálcio)
+4. Avaliar suporte mecânico (BIA, Impella, ECMO VA)`,
+    guideline: "ESC Heart Failure / SBC IC / AMIB",
+  },
+  {
+    id: "rx-desmame-milrinone",
+    title: "Desmame de Milrinone",
+    type: "UTI / Desmame de DVA",
+    prescription: `PROTOCOLO DE DESMAME:
+1. Reduzir 0,125mcg/kg/min a cada 2-4h (meia-vida longa: 2,5h)
+2. Monitorizar PA (risco de hipotensão — vasodilatador)
+3. Se hipotensão: Noradrenalina em dose baixa como suporte
+4. Suspender quando dose <0,125mcg/kg/min com hemodinâmica estável
+5. AGUARDAR 4-6h após suspensão antes de considerar desmame concluído
+
+CUIDADOS ESPECIAIS:
+- Meia-vida prolongada na IRA (ajustar para ClCr)
+- ClCr 10-50: reduzir dose em 25-50%
+- ClCr <10: reduzir dose em 50-75%
+- Trombocitopenia: HMG diário
+- Arritmias: monitorização contínua
+- NÃO associar com Levosimendan (mecanismos sobrepostos)`,
+    guideline: "ESC / SBC / FDA prescribing information",
+  },
+  {
+    id: "rx-desmame-nitroprussiato",
+    title: "Desmame de Nitroprussiato de Sódio",
+    type: "UTI / Desmame de DVA",
+    prescription: `PROTOCOLO:
+1. Reduzir 0,5-1mcg/kg/min a cada 10-15min
+2. Monitorizar PA contínua (meia-vida ultracurta: 2min)
+3. Se PA subir: retornar dose anterior, avaliar anti-hipertensivo VO/EV
+4. Transição para anti-hipertensivo VO ANTES do desmame:
+   - Captopril 25mg VO 8/8h OU
+   - Anlodipino 5-10mg VO 1x/dia OU
+   - Hidralazina 25mg VO 8/8h
+5. Iniciar VO e desmamar BIC simultaneamente
+
+TOXICIDADE POR CIANETO (>48h ou >2mcg/kg/min):
+- Sinais: acidose metabólica inexplicada, taquifilaxia, confusão
+- Dosar: tiocianato sérico (manter <10mg/dL)
+- Antídoto: Hidroxocobalamina 5g EV OU Tiossulfato de sódio 12,5g EV
+- Suspender Nitroprussiato IMEDIATAMENTE se suspeita
+
+DURAÇÃO MÁXIMA RECOMENDADA: 48-72h`,
+    warnings: "Risco de intoxicação por cianeto após 48h ou doses altas. Proteger da luz (fotossensível). Taquifilaxia = sinal de alerta de toxicidade. Monitorar tiocianato se uso >24h.",
+    guideline: "AHA / SBC / UpToDate",
+  },
+  {
+    id: "rx-hipotireoidismo-grave",
+    title: "Hipotireoidismo Grave Subclínico Descompensado",
+    type: "Endocrinologia",
+    prescription: `1. Levotiroxina 1,6mcg/kg/dia VO em jejum (30-60min antes café)
+2. Iniciar com dose baixa se idoso ou coronariopata: 12,5-25mcg/dia
+3. Aumentar 12,5-25mcg a cada 4-6 semanas
+4. TSH + T4L controle em 6 semanas
+5. Se componente adrenal: Hidrocortisona ANTES da Levotiroxina
+6. Monitorar lipidograma (dislipidemia associada)
+7. Avaliar anemia (pode ser macrocítica — B12/folato)
+8. ECG basal (bradicardia, baixa voltagem, derrame pericárdico)`,
+    guideline: "ATA / SBEM / ETA",
+  },
+  {
+    id: "rx-hiponatremia-grave",
+    title: "Hiponatremia Grave (Na+ <120 ou sintomática)",
+    type: "Endocrinologia / Nefrologia",
+    prescription: `1. Se convulsão ou coma: NaCl 3% 150mL EV em 20min (pode repetir 1x)
+2. Meta: elevar Na+ 4-6mEq/L nas primeiras 6h
+3. LIMITE: não elevar >8mEq/L em 24h (risco de mielinólise pontina)
+4. NaCl 3% preparo: NaCl 20% 60mL + SF 0,9% 440mL = 500mL a 3%
+5. Na+ sérico 2/2h nas primeiras 12h, depois 4/4h
+6. Osmolaridade sérica e urinária
+7. Se SIADH: restrição hídrica 800-1000mL/dia + Furosemida 20mg VO
+8. Se hipovolêmica: SF 0,9% 250mL/h
+9. Se hipervolêmica (IC/cirrose): restrição hídrica + Furosemida
+10. Tolvaptan 15mg VO 1x/dia (SIADH refratária — não disponível SUS)
+11. Se correção excessiva: SG 5% 6-10mL/kg em 1h + Desmopressina 2mcg EV`,
+    warnings: "MIELINÓLISE PONTINA: desmielinização osmótica se correção >8-10mEq/L/24h. Fatores de risco: alcoolismo, desnutrição, hipocalemia. Se corrigiu demais: REBAIXAR Na+ ativamente com SG5% + DDAVP.",
+    guideline: "KDIGO / SBEM / European Guideline on Hyponatraemia",
+  },
+  {
+    id: "rx-sindrome-lise-tumoral",
+    title: "Síndrome de Lise Tumoral (SLT)",
+    type: "Hematologia / Emergência",
+    prescription: `1. Hiper-hidratação: SF 0,9% 3000mL/m²/dia (manter diurese >2mL/kg/h)
+2. Rasburicase 0,2mg/kg EV em 30min (1ª linha se ácido úrico >8 ou alto risco)
+   - OU Alopurinol 300-600mg/dia VO (se baixo risco)
+3. Monitorar 6/6h: K+, Ca²⁺, P, ácido úrico, creatinina, LDH
+4. Hipercalemia: tratar conforme protocolo (Gluconato Ca + Insulina/Glicose + Sorcal)
+5. Hiperfosfatemia: Hidróxido de alumínio 300mg VO 8/8h + restrição de fósforo
+6. Hipocalcemia: NÃO tratar se assintomática (risco de precipitação Ca-P)
+7. NÃO alcalinizar urina se usando Rasburicase
+8. Diálise se: K+ >6 refratário, oligúria, Ca-P >70, acidose refratária
+9. ECG contínuo
+10. Classificação Cairo-Bishop para estadiamento`,
+    guideline: "ASCO / NCCN / Howard 2011 / SBH",
+  },
+  {
+    id: "rx-rabdomiolise",
+    title: "Rabdomiólise",
+    type: "Nefrologia / Emergência",
+    prescription: `1. Hidratação AGRESSIVA: SF 0,9% 1-2L/h nas primeiras 6h (meta: diurese >200-300mL/h)
+2. Manter SF 0,9% 200-500mL/h até CK em queda e diurese adequada
+3. Bicarbonato de Sódio 8,4% 100mL em 400mL SG5% (manter pH urinário >6,5 — previne precipitação mioglobina)
+4. Manitol 20% 0,5g/kg EV se oligúria (controverso)
+5. CK total 6/6h
+6. Eletrólitos 4/4h (K+, Ca²⁺, P)
+7. Creatinina, ureia 6/6h
+8. Mioglobina urinária
+9. Hipercalemia: protocolo padrão
+10. Hipocalcemia: NÃO corrigir (cálcio se deposita no músculo lesado → hipercalcemia rebote na recuperação)
+11. Diálise se: IRA oligúrica refratária, K+ >6,5 refratário, acidose grave
+12. Fasciotomia se síndrome compartimental
+13. Suspender estatinas/fibratos se causadores`,
+    warnings: "CK >5000: alto risco de IRA. CK >15000: diálise frequentemente necessária. A hipocalcemia da fase aguda NÃO deve ser tratada (exceto se arritmia) — haverá hipercalcemia rebote na fase de recuperação.",
+    guideline: "KDIGO / AMIB / UpToDate",
+  },
+  {
+    id: "rx-hipertermia-maligna-completo",
+    title: "Hipertermia Maligna — Protocolo Completo",
+    type: "Anestesiologia / Emergência",
+    prescription: `RECONHECIMENTO:
+- Rigidez masseteriana após Succinilcolina
+- Taquicardia inexplicada, hipercapnia, acidose
+- Elevação rápida de temperatura (>1°C a cada 5min)
+- Rabdomiólise (CK elevada, mioglobinúria)
+
+TRATAMENTO IMEDIATO:
+1. SUSPENDER agente desencadeante (halogenados, Succinilcolina)
+2. Chamar AJUDA — avisar equipe
+3. Hiperventilar com O2 100% (fluxo >10L/min)
+4. Dantrolene 2,5mg/kg EV em bolus rápido → repetir 1mg/kg a cada 5min até controle (dose máx 10mg/kg)
+   - Diluição: cada frasco 20mg em 60mL água estéril
+5. Resfriamento ativo:
+   - SF 0,9% gelado EV
+   - Compressas geladas (axilas, virilhas, pescoço)
+   - Lavagem gástrica/vesical com SF gelado
+   - Meta: T <38,5°C (parar resfriamento — evitar hipotermia)
+6. Bicarbonato de Sódio 8,4% 1-2mEq/kg se pH <7,2
+7. Hipercalemia: Gluconato de Cálcio 10% 30mg/kg + Insulina R 0,1UI/kg + SG50%
+8. Manter Dantrolene 1mg/kg EV 4/4h por 24-48h
+9. Diurese forçada (Manitol ou Furosemida) — prevenir IRA por mioglobina
+10. UTI obrigatória por ≥48h`,
+    warnings: "Mortalidade sem Dantrolene: >70%. Com Dantrolene: <5%. TODO centro cirúrgico deve ter estoque de Dantrolene. Aconselhamento genético para família (herança autossômica dominante — mutação RYR1).",
+    guideline: "MHAUS / SBA / ASA / EMHG",
+  },
+  {
+    id: "rx-intoxicacao-digital",
+    title: "Intoxicação Digitálica (Digoxina)",
+    type: "Cardiologia / Toxicologia",
+    prescription: `1. Suspender Digoxina IMEDIATAMENTE
+2. Monitorização cardíaca contínua
+3. ECG seriado (bradiarritmias, BAV, TV bidirecional, TSV com BAV)
+4. Dosagem sérica de Digoxina (terapêutico: 0,5-2ng/mL; tóxico: >2ng/mL)
+5. Eletrólitos: K+ (hipocalemia PIORA toxicidade), Mg²⁺, Ca²⁺
+6. Corrigir K+ se <4,0: KCl 19,1% em SF — meta K+ 4,0-5,0
+7. Se bradicardia sintomática: Atropina 0,5-1mg EV (pode repetir até 3mg)
+8. Se taquiarritmia ventricular: Fenitoína 250mg EV em 10min OU Lidocaína 1mg/kg EV
+9. NÃO usar cardioversão elétrica (exceto risco iminente de morte — usar energia mínima)
+10. ANTÍDOTO — Fragmentos Fab anti-digoxina (Digibind):
+    - Indicação: arritmia com risco de vida, K+ >5,5, digoxina >10ng/mL, ingestão >10mg
+    - Dose: nº de frascos = (nível sérico ng/mL × peso kg) / 100
+    - OU dose empírica: 10 frascos (ingestão aguda)
+11. Diálise NÃO remove Digoxina (alto volume de distribuição)
+12. Marcapasso provisório se BAV completo refratário à Atropina`,
+    warnings: "NÃO usar Cálcio EV (stone heart). NÃO cardioverter (se inevitável: energia mínima). Hipocalemia e hipomagnesemia POTENCIALIZAM toxicidade. Fab é o único antídoto eficaz.",
+    guideline: "AHA / SBC / AACT / UpToDate",
+  },
 ];
+
 

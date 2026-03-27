@@ -2315,5 +2315,198 @@ Intranasal: 3-4mg/kg (em pediatria)
 EFEITOS: sialorreia (associar Atropina 0,01mg/kg), nistagmo, dissociação, fenômenos de emergência (prevenir com Midazolam 1-2mg)`,
     notes: "Em doses subanestésicas NÃO causa os efeitos dissociativos significativos. É segura hemodinamicamente (mantém PA e FC). Contraindicação relativa: HAS descontrolada, eclâmpsia, PIC elevada (controverso).",
   },
+  {
+    id: "rx-dil-fentolamina",
+    title: "Diluição de Fentolamina",
+    type: "Diluição / Preparo",
+    prescription: `FENTOLAMINA (Regitina) — Alfa-bloqueador
+Apresentação: ampola 10mg/mL (1mL)
+
+USO EM BOLUS:
+- 5mg (0,5mL) EV direto lento
+- Repetir a cada 5-10min conforme PA
+- Efeito imediato, duração 15-30min
+
+INFUSÃO CONTÍNUA (se necessário):
+- 10mg (1amp) + 90mL SF 0,9% = 100mL (0,1mg/mL)
+- Iniciar 0,5-1mg/min (5-10mL/min em BIC)
+- Titular conforme PA (meta individualizada)
+
+INDICAÇÕES:
+- Crise hipertensiva por feocromocitoma
+- Extravasamento de Noradrenalina (infiltração local)
+- Teste diagnóstico de feocromocitoma (em desuso)
+
+EXTRAVASAMENTO DE NORADRENALINA:
+- Fentolamina 5-10mg + 10mL SF → infiltrar SC ao redor da área
+- Fazer o mais precocemente possível (<12h)
+
+ESTABILIDADE: usar imediatamente após diluição`,
+    notes: "Droga essencial na crise de feocromocitoma. Manter em estoque no PS. Para extravasamento de vasopressores: infiltração LOCAL é o tratamento (não EV).",
+  },
+  {
+    id: "rx-dil-glucagon",
+    title: "Diluição de Glucagon",
+    type: "Diluição / Preparo",
+    prescription: `GLUCAGON
+Apresentação: frasco-ampola 1mg (pó liofilizado) + diluente
+
+RECONSTITUIÇÃO:
+- Diluir 1mg no diluente próprio (1mL)
+- Concentração: 1mg/mL
+
+HIPOGLICEMIA:
+- Adulto: 1mg IM/SC (pode repetir em 15min)
+- Criança <25kg: 0,5mg IM/SC
+- Criança >25kg: 1mg IM/SC
+
+ANAFILAXIA REFRATÁRIA EM USO DE BETABLOQUEADOR:
+- 1-5mg EV em 5min
+- Manutenção: 5-15mcg/min EV contínuo
+- Diluir: 5mg em 495mL SG5% (10mcg/mL)
+
+INTOXICAÇÃO POR BETABLOQUEADOR/BCC:
+- 5-10mg EV em bolus (1mg/min)
+- Manutenção: 2-5mg/h
+
+CORPO ESTRANHO ESOFÁGICO (espasmo):
+- 1mg EV (relaxa musculatura lisa esofágica)
+
+EFEITOS ADVERSOS: náuseas, vômitos, hiperglicemia
+ESTABILIDADE: usar imediatamente após reconstituição (não guardar)`,
+    notes: "Medicamento ESSENCIAL no PS. Indicações principais: hipoglicemia (quando acesso EV impossível), anafilaxia refratária em uso de betabloqueador, intoxicação por betabloqueador/BCC.",
+  },
+  {
+    id: "rx-dil-alteplase",
+    title: "Diluição de Alteplase (rt-PA)",
+    type: "Diluição / Preparo",
+    prescription: `ALTEPLASE (Actilyse) — Trombolítico
+Apresentação: 50mg (frasco-ampola) + diluente 50mL
+
+RECONSTITUIÇÃO:
+- Adicionar 50mL do diluente próprio ao frasco
+- Concentração: 1mg/mL
+- Homogeneizar GENTILMENTE (não agitar)
+
+AVC ISQUÊMICO (0,9mg/kg — máx 90mg):
+- 10% da dose em bolus EV em 1min
+- 90% restante em BIC em 60min
+- Ex: paciente 70kg = 63mg total → 6,3mg bolus + 56,7mg em 1h
+
+TEP MACIÇO (100mg):
+- 10mg EV bolus em 1-2min
+- 90mg EV em 2h
+
+IAM COM SUPRA ST (se Angioplastia indisponível):
+- <65kg: 15mg bolus → 0,75mg/kg em 30min → 0,5mg/kg em 60min
+- ≥65kg: 15mg bolus → 50mg em 30min → 35mg em 60min
+
+ESTABILIDADE: 24h em TA (2-30°C) após reconstituição
+COMPATIBILIDADE: APENAS SF 0,9% ou água para injeção
+NÃO misturar com SG5%, heparina ou outras drogas na mesma via`,
+    warnings: "Contraindicações absolutas: sangramento ativo, AVC hemorrágico, cirurgia intracraniana <3m, neoplasia intracraniana. Ter Ácido Tranexâmico disponível para reversão se sangramento.",
+  },
+  {
+    id: "rx-dil-amiodarona-manutencao",
+    title: "Diluição de Amiodarona — Protocolo Completo",
+    type: "Diluição / Preparo",
+    prescription: `AMIODARONA
+Apresentação: ampola 150mg/3mL (50mg/mL)
+
+PCR (FV/TV sem pulso):
+- 300mg (2 amp) EV direto (diluídas em 20mL SG5%)
+- 2ª dose: 150mg (1 amp) EV
+
+TAQUIARRITMIA ESTÁVEL — PROTOCOLO 24H:
+FASE 1 (rápida — 10min):
+- 150mg (1 amp) em 100mL SG5% → infundir em 10min (15mg/min)
+
+FASE 2 (lenta — 6h):
+- 360mg (2,4 amp → usar 3 amp = 450mg para facilitar) em 250mL SG5%
+- Infundir em 6h (1mg/min)
+
+FASE 3 (manutenção — 18h):
+- 540mg (3,6 amp → usar 4 amp = 600mg) em 500mL SG5%
+- Infundir em 18h (0,5mg/min)
+
+DOSE TOTAL EM 24H: ~1050mg (±150mg das perdas por equipo)
+
+CUIDADOS:
+- USAR equipo com filtro (precipita em concentrações altas)
+- NÃO misturar com SF 0,9% (precipita!) — apenas SG5%
+- Acesso central preferencial (flebite em veia periférica)
+- ECG contínuo (QT longo, bradicardia, BAV)
+- Hepatograma semanal se uso prolongado
+- TSH a cada 3 meses (tireotoxicose/hipotireoidismo)
+
+ESTABILIDADE: 24h em TA protegido da luz`,
+    warnings: "NUNCA diluir em SF! Apenas SG5%. Flebite grave em veia periférica — preferir acesso central. Interação com Warfarina (aumenta INR), Digoxina (aumenta nível sérico), QT prolongadores.",
+  },
+  {
+    id: "rx-dil-azul-metileno",
+    title: "Diluição de Azul de Metileno",
+    type: "Diluição / Preparo",
+    prescription: `AZUL DE METILENO (Cloreto de Metiltionínio)
+Apresentação: ampola 1% = 10mg/mL (5mL = 50mg)
+
+METEMOGLOBINEMIA:
+- 1-2mg/kg EV em 5min
+- Diluir dose calculada em 50mL SG5% (NUNCA SF — incompatível)
+- Pode repetir em 30-60min se MetHb ainda >30%
+- Dose máxima: 7mg/kg total
+
+CHOQUE VASOPLEGIA (refratário a DVA):
+- 1,5-2mg/kg EV em 20-30min
+- Diluir em 100mL SG5%
+- Pode repetir 1mg/kg em 1h se necessário
+- Manutenção: 0,5mg/kg/h (se boa resposta)
+
+INDICAÇÕES:
+- Metemoglobinemia >20% (ou >10% se sintomática)
+- Choque vasoplégico pós-CEC (cirurgia cardíaca)
+- Anafilaxia refratária (vasoplegia por NO)
+
+CONTRAINDICAÇÕES:
+- Deficiência de G6PD (piora hemólise e metemoglobinemia!)
+- Uso de ISRS (risco de síndrome serotoninérgica)
+- Insuficiência renal grave
+
+EFEITOS: urina azul-esverdeada (avisar paciente), pode interferir com oximetria de pulso
+ESTABILIDADE: usar imediatamente`,
+    warnings: "CONTRAINDICADO em deficiência de G6PD! Nestes pacientes, usar Ácido Ascórbico 1-3g EV. Interfere com oximetria de pulso (leitura falsamente baixa). Interação grave com ISRS → síndrome serotoninérgica.",
+  },
+  {
+    id: "rx-dil-octreotida",
+    title: "Diluição de Octreotida (Sandostatina)",
+    type: "Diluição / Preparo",
+    prescription: `OCTREOTIDA
+Apresentação: ampola 0,1mg/mL (1mL) ou 0,5mg/mL (1mL)
+
+HEMORRAGIA DIGESTIVA VARICOSA:
+- Bolus: 50mcg (0,5mL da amp 0,1mg) EV direto
+- Manutenção: 50mcg/h EV contínuo por 2-5 dias
+- Diluição BIC: 500mcg (5 amp de 0,1mg) em 245mL SF = 250mL (2mcg/mL)
+  → Velocidade: 25mL/h = 50mcg/h
+
+HIPOGLICEMIA REFRATÁRIA (insulinoma, sulfoniluréia):
+- 50-100mcg SC 8/8h
+
+DIARREIA SECRETORA / CARCINOIDE:
+- 100-600mcg/dia SC dividido em 2-3 doses
+
+FÍSTULA PANCREÁTICA / ENTÉRICA:
+- 100mcg SC 8/8h
+
+CUIDADOS:
+- Pode causar bradicardia (monitorizar FC)
+- Hiperglicemia (monitorizar glicemia)
+- Dor abdominal, náuseas
+- Colelitíase com uso prolongado
+
+ESTABILIDADE: 24h em TA após diluição
+COMPATÍVEL com SF 0,9% e SG5%`,
+    notes: "Na HDA varicosa, associar com terapia endoscópica (ligadura elástica). Octreotida pode substituir Terlipressina quando esta não está disponível.",
+  },
 ];
+
 
