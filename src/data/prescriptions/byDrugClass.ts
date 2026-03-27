@@ -962,5 +962,79 @@ Fisostigmina 1-2mg EV lento (uso restrito, monitorização)`,
     notes: "Relaxantes musculares: evidência limitada para lombalgia aguda. Usar por tempo curto (7-14 dias). Ciclobenzaprina: estrutura similar a tricíclicos (mesmos cuidados).",
     guideline: "SBR / AAN / NICE",
   },
+  {
+    id: "rx-classe-antifungicos",
+    title: "Antifúngicos — Guia por Classe",
+    type: "Classe de Medicamento",
+    prescription: `AZÓLICOS:
+Fluconazol: 200-800mg EV/VO 1x/dia (Candida, Cripto)
+Voriconazol: 4-6mg/kg EV 12/12h (Aspergillus — 1ª escolha)
+Itraconazol: 200mg VO 12/12h (Histoplasma, Esporotricose)
+
+EQUINOCANDINAS:
+Caspofungina: 70mg D1 → 50mg EV 1x/dia
+Micafungina: 100mg EV 1x/dia
+Anidulafungina: 200mg D1 → 100mg EV 1x/dia
+→ 1ª escolha para candidemia em instável / UTI
+
+POLIENOS:
+Anfotericina B lipossomal: 3-5mg/kg/dia EV (nefrotóxica — monitorar)
+Anfotericina B convencional: 0,5-1mg/kg/dia (mais tóxica — evitar)
+
+OUTROS:
+Flucitosina: 25mg/kg VO 6/6h (associar a Anfo B na criptococose)`,
+    notes: "Equinocandinas NÃO penetram SNC nem urina. Azólicos: interações CYP extensas. Anfotericina B: pré-medicar com Dipirona + SF 500mL (reduz nefrotoxicidade).",
+    guideline: "IDSA / ESCMID / ANVISA",
+  },
+  {
+    id: "rx-classe-diureticos",
+    title: "Diuréticos — Doses e Indicações",
+    type: "Classe de Medicamento",
+    prescription: `ALÇA:
+Furosemida: 20-80mg EV/VO 12/12h (máx 600mg/dia)
+- IC, EAP, edema, hipercalemia, DRC
+
+TIAZÍDICOS:
+Hidroclorotiazida: 25-50mg VO 1x/dia
+Clortalidona: 12,5-25mg VO 1x/dia (mais potente, meia-vida longa)
+- HAS, edema leve
+
+POUPADORES DE K+:
+Espironolactona: 25-100mg VO 1x/dia (IC, cirrose, hiperaldosteronismo)
+Amilorida: 5-10mg VO 1x/dia
+
+OSMÓTICOS:
+Manitol 20%: 0,5-1g/kg EV em 20-30min (HIC, edema cerebral)
+
+INIBIDORES DA ANIDRASE:
+Acetazolamida: 250mg VO 8/8h (glaucoma, alcalose metabólica, pseudotumor)`,
+    notes: "Furosemida EV = 2x potência VO. Espironolactona: ginecomastia dose-dependente. Tiazídicos: ineficazes se ClCr <30. Manitol: repor volume perdido.",
+    guideline: "SBC / SBN / ESC",
+  },
+  {
+    id: "rx-classe-imunossupressores",
+    title: "Imunossupressores — Guia de Doses",
+    type: "Classe de Medicamento",
+    prescription: `CORTICOIDES:
+Prednisona: 0,5-1mg/kg/dia VO
+Metilprednisolona (pulso): 500-1000mg EV 1x/dia por 3 dias
+Dexametasona: 4-8mg EV 6/6h (edema cerebral)
+
+ANTIMETABÓLITOS:
+Micofenolato Mofetil: 500mg-1g VO 12/12h
+Azatioprina: 1-3mg/kg/dia VO 1x/dia
+
+INIBIDORES DA CALCINEURINA:
+Ciclosporina: 3-5mg/kg/dia VO (nível sérico: 150-250 ng/mL)
+Tacrolimus: 0,1-0,2mg/kg/dia VO 12/12h (nível: 5-15 ng/mL)
+
+ALQUILANTES:
+Ciclofosfamida: 2mg/kg/dia VO ou pulso EV 0,5-1g/m² mensal
+
+BIOLÓGICOS:
+Rituximabe: 375mg/m² EV semanal por 4 semanas (ou 1g D0 + D14)`,
+    notes: "Sempre rastrear TB e Hepatite B antes de imunossupressão. Profilaxia pneumocistose: SMX-TMP 400/80mg VO 1x/dia se alto risco. Vacinar antes de iniciar.",
+    guideline: "SBR / SBN / ACR / EULAR",
+  },
 ];
 

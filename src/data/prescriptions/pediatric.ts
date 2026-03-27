@@ -944,5 +944,60 @@ FASE MANUTENÇÃO (Holliday-Segar):
     notes: "Fratura em torus: deformidade plástica da cortical — exclusiva de crianças. Muito estável, bom prognóstico. Imobilização removível tão eficaz quanto gesso circunferencial.",
     guideline: "SBP / SBTO / AAOS / POSNA",
   },
+  {
+    id: "rx-ped-sindrome-nefrotica",
+    title: "Síndrome Nefrótica na Criança",
+    type: "Pediatria",
+    prescription: `1. Prednisona 2mg/kg/dia VO (máx 60mg) em dose única matinal por 4-6 semanas
+2. Após: Prednisona 1,5mg/kg em dias alternados por 4-6 semanas (desmame)
+3. Furosemida 1-2mg/kg/dia VO (se edema importante)
+4. Albumina 20% 0,5-1g/kg EV em 2h (se anasarca + albumina <1,5g/dL) + Furosemida após
+5. Dieta hipossódica
+6. Restrição hídrica se Na <130
+7. Penicilina V 125-250mg VO 12/12h (profilaxia durante edema ativo)
+8. Vacinação antipneumocócica (risco de infecções capsuladas)
+9. Exames: proteinúria 24h, albumina, colesterol, C3/C4, função renal
+10. Biópsia renal: SÓ se corticorresistente, <1 ano, >12 anos, hematúria macro, C3 baixo`,
+    notes: "Lesão mínima: ~80% das SNs infantis. 90% respondem a corticoide em 4-8 semanas. Recidivas frequentes: considerar Ciclofosfamida, Micofenolato ou Rituximabe.",
+    guideline: "SBP / IPNA / KDIGO",
+  },
+  {
+    id: "rx-ped-itu",
+    title: "ITU Pediátrica",
+    type: "Pediatria",
+    prescription: `<3 meses (INTERNAÇÃO):
+1. Ampicilina 50mg/kg EV 6/6h + Gentamicina 5mg/kg EV 1x/dia por 10-14 dias
+
+3 meses a 2 anos (se febre — pielonefrite):
+2. Ceftriaxona 50mg/kg EV 1x/dia por 7-10 dias
+3. OU Amoxicilina-Clavulanato 50mg/kg/dia VO se leve
+
+>2 anos (cistite):
+4. Cefalexina 50mg/kg/dia VO 6/6h por 7 dias
+5. OU Nitrofurantoína 5mg/kg/dia VO 6/6h por 7 dias (>1 mês)
+
+Todos:
+6. Urocultura ANTES do ATB (cateterismo ou punção se <2 anos)
+7. USG renal (1ª ITU febril)
+8. Uretrocistografia miccional se: <2 anos com ITU febril, USG alterado, ITU recorrente`,
+    guideline: "SBP / AAP / NICE",
+  },
+  {
+    id: "rx-ped-bronquiolite",
+    title: "Bronquiolite Viral Aguda",
+    type: "Pediatria",
+    prescription: `1. O2 suplementar se SpO2 <92% (cateter nasal 0,5-2L/min)
+2. CNAF (cânula nasal de alto fluxo): 2L/kg/min (se disponível)
+3. Lavagem nasal com SF 0,9% frequente
+4. Aspiração de VAS se secreção abundante
+5. Hidratação: VO frequente em pequenos volumes OU EV se recusa
+6. Cabeceira elevada 30°
+7. Monitorização: SpO2, FR, tiragens, aceitação alimentar
+8. NÃO usar: broncodilatadores de rotina, corticoide, antibiótico, fisioterapia respiratória de rotina
+9. Teste de broncodilatador: Salbutamol 2 jatos → reavaliar (manter se resposta +)
+10. IOT se: apneia recorrente, fadiga respiratória, SpO2 <90% apesar de O2`,
+    notes: "VSR é o principal agente. Pico: <6 meses. Palivizumabe (profilaxia): prematuros <29sem, cardiopatas, pneumopatas. NÃO existe tratamento específico — suporte é a base.",
+    guideline: "SBP / AAP / NICE",
+  },
 ];
 

@@ -1065,5 +1065,52 @@ Bacteriana (secreção purulenta):
     notes: "Luxação recorrente de ombro: 80-90% de recidiva em <25 anos. Considerar tratamento cirúrgico (Bankart) precocemente em jovens atletas.",
     guideline: "SBTO / AAOS",
   },
+  {
+    id: "rx-alta-sindrome-nefrotica",
+    title: "Alta — Síndrome Nefrótica",
+    type: "Alta",
+    prescription: `1. Prednisona ___mg VO 1x/dia pela manhã (com alimento)
+2. Furosemida ___mg VO ___/___h (conforme edema)
+3. Enalapril ___mg VO 12/12h (antiproteinúrico)
+4. Atorvastatina 20mg VO 1x/noite
+5. Cálcio 1000mg + Vitamina D 1000UI VO 1x/dia (proteção óssea)
+6. Omeprazol 20mg VO em jejum (proteção gástrica)
+7. Dieta hipossódica (<2g sal/dia)
+8. Controle de peso diário (aumento súbito = retenção hídrica)
+9. Retorno: nefro em 2-4 semanas com proteinúria 24h + creatinina + albumina
+10. Sinais de alarme: edema intenso, dispneia, dor/edema unilateral de MMII (TVP)`,
+    guideline: "SBN / KDIGO",
+  },
+  {
+    id: "rx-alta-pneumotorax",
+    title: "Alta — Pós-Drenagem de Pneumotórax",
+    type: "Alta",
+    prescription: `1. RX tórax de controle pós-retirada do dreno (confirmar expansão)
+2. Dipirona 1g VO 6/6h por 5 dias se dor
+3. Ibuprofeno 600mg VO 8/8h por 3-5 dias (com alimento)
+4. Curativo local: troca diária, manter limpo e seco
+5. Evitar mergulho e viagem aérea por 2-4 semanas
+6. NÃO fumar (principal fator de recidiva)
+7. Retorno com RX tórax em 2 semanas
+8. Sinais de alarme: dispneia, dor torácica pleurítica, enfisema subcutâneo
+9. Encaminhar cirurgia torácica se recidivante`,
+    guideline: "SBPT / BTS",
+  },
+  {
+    id: "rx-alta-tep",
+    title: "Alta — TEP em Anticoagulação",
+    type: "Alta",
+    prescription: `1. Rivaroxabana 15mg VO 12/12h com refeição por 21 dias → 20mg 1x/dia
+   OU Apixabana 10mg VO 12/12h por 7 dias → 5mg 12/12h
+2. Duração mínima: 3 meses (6-12 meses se provocado, indefinido se não provocado)
+3. Meias de compressão elástica 30-40mmHg
+4. Deambulação precoce (repouso NÃO é necessário)
+5. Evitar: viagens longas sem movimentação, imobilização
+6. Retorno: hematologia/pneumologia em 2-4 semanas
+7. Exames de controle: hemograma, função renal, D-dímero (após suspensão)
+8. Investigar trombofilia se <50 anos e não provocado
+9. Sinais de alarme: dispneia, hemoptise, dor torácica, síncope, sangramento`,
+    guideline: "SBC / ESC / CHEST",
+  },
 ];
 

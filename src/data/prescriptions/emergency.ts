@@ -1264,5 +1264,51 @@ NÍVEL 3 — Contenção mecânica:
     warnings: "NÃO usar AINE/AAS até definir causa. Terlipressina: contraindicada em coronariopata grave. Balão de Sengstaken: máximo 24h (necrose esofágica).",
     guideline: "FBG / ESGE / ACG / BSG",
   },
+  {
+    id: "rx-emerg-hemoptise",
+    title: "Hemoptise Maciça — Manejo Emergencial",
+    type: "Emergência",
+    prescription: `1. Via aérea: decúbito lateral com pulmão afetado para BAIXO
+2. O2 alto fluxo + aspiração contínua
+3. IOT precoce com tubo ≥8mm (permitir broncoscopia)
+4. Ácido Tranexâmico 1g EV em 10min
+5. Suspender/reverter anticoagulação
+6. 2 acessos calibrosos + reserva CH
+7. Broncoscopia de urgência (balão tamponante)
+8. AngioTC tórax → embolização de artéria brônquica
+9. Se refratário: IOT seletiva contralateral → cirurgia`,
+    warnings: "Morte é por ASFIXIA, não exsanguinação. Proteger pulmão sadio é prioridade absoluta.",
+    guideline: "SBPT / ATS / BTS",
+  },
+  {
+    id: "rx-emerg-embolia-gordurosa",
+    title: "Embolia Gordurosa — Pós-Fratura",
+    type: "Emergência",
+    prescription: `1. O2 suplementar / VM se IRpA
+2. Hidratação agressiva: SF 0,9% 30mL/kg nas primeiras 6h
+3. Metilprednisolona 1,5mg/kg EV 8/8h por 48-72h (controverso)
+4. Estabilização precoce de fraturas de ossos longos
+5. Monitorização: SpO2, gasometria, nível de consciência
+6. Exames: hemograma (anemia + plaquetopenia), gasometria, TC crânio se alteração neurológica
+7. Tríade clássica: hipoxemia + confusão mental + petéquias (24-72h pós-fratura)
+8. Suporte em UTI se SDRA`,
+    notes: "Incidência: até 10% das fraturas de fêmur/pelve. Diagnóstico clínico — não existe exame confirmatório. Petéquias em tórax/axilas são patognomônicas mas ocorrem em <50%.",
+    guideline: "SBTO / ATLS / AMIB",
+  },
+  {
+    id: "rx-emerg-crise-addisoniana",
+    title: "Crise Addisoniana — Insuficiência Adrenal Aguda",
+    type: "Emergência Endocrinológica",
+    prescription: `1. Hidrocortisona 100mg EV em bolus IMEDIATO
+2. Manutenção: Hidrocortisona 50mg EV 8/8h (reduzir em 3-5 dias)
+3. SF 0,9% 1000mL EV em bolus (hipotensão + desidratação)
+4. SG 5-10% se hipoglicemia associada
+5. Correção de hipercalemia se presente
+6. NÃO USAR Dexametasona se teste do ACTH ainda não foi feito
+7. Monitorização: PA, glicemia 2/2h, Na+, K+, cortisol
+8. Após estabilização: transição para Prednisona VO + Fludrocortisona 0,1mg VO`,
+    warnings: "NÃO atrasar corticoide por exames. Na dúvida, dar Hidrocortisona e dosar cortisol depois. Choque refratário a vasopressor: PENSAR em insuficiência adrenal.",
+    guideline: "SBEM / Endocrine Society",
+  },
 ];
 

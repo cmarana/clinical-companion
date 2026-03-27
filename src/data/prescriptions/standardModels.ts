@@ -819,5 +819,41 @@ CRM / Carimbo / Assinatura`,
     notes: "5 toxídromes: colinérgica, anticolinérgica, simpatomimética, opioide, sedativo-hipnótica. Sempre colher nível sérico de paracetamol (coingestão frequente e insidiosa).",
     guideline: "SBTox / AACT / CIATox",
   },
+  {
+    id: "rx-modelo-nefrologia",
+    title: "Modelo — Admissão Nefrologia",
+    type: "Modelo Padrão",
+    prescription: `1. Dieta hipossódica (<2g Na/dia) + hipoprotéica (se DRC avançada)
+2. Restrição hídrica: ___mL/dia (se hiponatremia ou oligúria)
+3. SF 0,9% — manter acesso salinizado (evitar sobrecarga)
+4. Furosemida ___mg EV ___/___h (se congestão)
+5. IECA/BRA: ___mg VO (antiproteinúrico — suspender se IRA/hipercalemia)
+6. Correção eletrolítica: K+, Ca++, P, Mg, Na+ conforme labs
+7. Bicarbonato de sódio VO se acidose metabólica crônica (HCO3 <18)
+8. Eritropoetina SC (se anemia de DRC — Hb <10)
+9. Monitorização: peso diário, balanço hídrico, PA 4/4h
+10. Exames: creatinina, ureia, eletrólitos, gasometria, EAS, proteinúria, USG renal
+11. Avaliar indicação de diálise
+12. Interconsulta nefrologia`,
+  },
+  {
+    id: "rx-modelo-pneumologia",
+    title: "Modelo — Admissão Pneumologia",
+    type: "Modelo Padrão",
+    prescription: `1. Dieta _____ (livre / leve / zero se IOT)
+2. Cabeceira elevada 30-45°
+3. O2 suplementar: ___L/min cateter nasal / máscara (SpO2 alvo: ___)
+4. Broncodilatadores: Salbutamol + Ipratrópio NBZ ___/___h
+5. Corticoide: ___mg EV/VO ___/___h
+6. ATB: _______________ (se pneumonia/exacerbação infecciosa)
+7. Dipirona 1g EV 6/6h se febre/dor
+8. Omeprazol 40mg EV 1x/dia
+9. Enoxaparina 40mg SC 1x/dia (profilaxia TVP)
+10. Fisioterapia respiratória
+11. Gasometria arterial de admissão → conforme evolução
+12. RX tórax + hemograma + PCR
+13. Monitorização: SpO2, FR, PA
+14. Comunicar se: SpO2 <___%, FR >30, rebaixamento`,
+  },
 ];
 

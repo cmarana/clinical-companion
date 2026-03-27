@@ -797,5 +797,49 @@ Sempre avaliar: profilaxia antirrábica + antitetânica`,
     notes: "Pasteurella multocida: principal agente em mordedura de gato (infecção em <12h). Eikenella corrodens: mordedura humana. Capnocytophaga: mordedura de cão em esplenectomizado (sepse fulminante).",
     guideline: "SBI / IDSA / MS (Profilaxia Antirrábica)",
   },
+  {
+    id: "rx-atb-fungico-invasivo",
+    title: "Antifúngico — Infecções Fúngicas Invasivas",
+    type: "Antibiótico por Foco",
+    prescription: `Candidemia / Candidíase invasiva:
+1ª linha: Equinocandina (Micafungina 100mg ou Caspofungina 70mg D1→50mg ou Anidulafungina 200mg D1→100mg) EV 1x/dia
+2ª linha: Fluconazol 800mg D1 → 400mg 1x/dia (se Candida sensível + paciente estável)
+
+Aspergilose invasiva:
+1ª linha: Voriconazol 6mg/kg 12/12h D1 → 4mg/kg 12/12h EV (→ VO 200mg 12/12h)
+2ª linha: Anfotericina B lipossomal 3-5mg/kg/dia EV
+
+Mucormicose:
+1ª linha: Anfotericina B lipossomal 5-10mg/kg/dia EV
+Associar: debridamento cirúrgico agressivo
+
+Criptococose (meníngea):
+Anfotericina B lipossomal 3-4mg/kg/dia + Flucitosina 25mg/kg 6/6h (indução 2 semanas)
+Manutenção: Fluconazol 400mg/dia por 8 semanas → 200mg/dia (profilaxia)`,
+    notes: "Equinocandinas: NÃO penetram SNC e urina. Voriconazol: monitorizar nível sérico (1-5,5mcg/mL). Anfotericina B lipossomal: menos nefrotóxica que convencional.",
+    guideline: "IDSA / ESCMID / ANVISA",
+  },
+  {
+    id: "rx-atb-peritonite",
+    title: "Antibiótico — Peritonite Bacteriana Espontânea (PBE)",
+    type: "Antibiótico por Foco",
+    prescription: `Diagnóstico: PMN >250/mm³ no líquido ascítico
+
+Tratamento:
+1. Ceftriaxona 2g EV 1x/dia por 5-7 dias (1ª escolha)
+2. OU Cefotaxima 2g EV 8/8h
+3. Albumina 20%: 1,5g/kg EV no D1 + 1g/kg EV no D3 (previne SHR)
+
+Profilaxia primária (alto risco):
+4. Norfloxacino 400mg VO 1x/dia (se proteína LA <1,5g/dL + Child ≥9)
+
+Profilaxia secundária (pós-PBE):
+5. Norfloxacino 400mg VO 1x/dia — contínuo até transplante ou morte
+
+Profilaxia em HDA do cirrótico:
+6. Ceftriaxona 1g EV 1x/dia por 7 dias`,
+    notes: "PBE: causa mais comum de infecção em cirrótico. Mortalidade 20-30%. Albumina reduz SHR e mortalidade (estudo Sort). Cultura do LA: inocular em frasco de hemocultura à beira-leito.",
+    guideline: "SBH / EASL / AASLD",
+  },
 ];
 

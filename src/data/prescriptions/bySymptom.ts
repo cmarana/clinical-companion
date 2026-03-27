@@ -1129,5 +1129,93 @@ POSTERIOR (grave):
     notes: "Monoartrite aguda: artrite séptica até prova em contrário. Líquido purulento (>50.000 cel): tratar como séptica. Gota: cristais em forma de agulha com birrefringência negativa.",
     guideline: "SBR / ACR / EULAR",
   },
+  {
+    id: "rx-sint-edema-mmii",
+    title: "Edema de Membros Inferiores — Investigação",
+    type: "Por Sintoma",
+    prescription: `1. Anamnese: bilateral vs unilateral, dor, início, medicações
+2. Exames iniciais: albumina, proteínas totais, creatinina, ureia, EAS, Na+, TSH
+3. Se bilateral: avaliar IC (BNP, eco), síndrome nefrótica (proteinúria 24h), cirrose
+4. Se unilateral + dor: Doppler venoso (excluir TVP)
+5. Furosemida 40mg VO 1x/dia (se congestão — titular)
+6. Restrição de sódio (<2g/dia)
+7. Meias de compressão (se insuficiência venosa crônica)
+8. Elevar MMII
+9. Se anasarca + hipoalbuminemia: Albumina 20% 50mL EV + Furosemida`,
+    guideline: "SBC / SBN / SBACV",
+  },
+  {
+    id: "rx-sint-oliguria",
+    title: "Oligúria — Investigação e Manejo",
+    type: "Por Sintoma",
+    prescription: `Definição: diurese <0,5mL/kg/h por >6h
+
+1. Avaliar volemia: desafio com SF 0,9% 250-500mL em 15-30min
+2. Se resposta (+): continuar reposição volêmica
+3. Se sem resposta: Furosemida 40-80mg EV (teste de estresse com furosemida)
+4. Suspender nefrotóxicos: AINEs, aminoglicosídeos, contraste
+5. Verificar SVD (obstrução? Globo vesical?)
+6. USG de vias urinárias (excluir hidronefrose)
+7. Exames: creatinina, ureia, Na+ urinário, osmolaridade urinária, sedimento
+8. Na+ urinário <20 = pré-renal | >40 = renal (NTA)
+9. FeNa <1% = pré-renal | >2% = NTA
+10. Se IRA refratária: avaliar indicação de diálise (AEIOU)`,
+    guideline: "SBN / KDIGO",
+  },
+  {
+    id: "rx-sint-hematuria",
+    title: "Hematúria — Investigação Inicial",
+    type: "Por Sintoma",
+    prescription: `1. EAS + sedimento urinário (confirmar hematúria verdadeira)
+2. Se dismorfismo eritrocitário / cilindros hemáticos: origem glomerular
+3. Se hemácias isomórficas: origem urológica
+4. Exames: creatinina, ureia, hemograma, coagulograma, PSA (se >40 anos)
+5. USG de vias urinárias (cálculos, massas, rins)
+6. Se >40 anos ou fatores de risco: uroTC + cistoscopia (excluir CA)
+7. Se glomerular: complemento C3/C4, FAN, ANCA, anti-GBM, proteinúria 24h
+8. Se hematúria macroscópica intensa: irrigação vesical contínua com SF 0,9%
+9. Suspender anticoagulantes se sangramento ativo
+10. Encaminhar: nefro (se glomerular) ou uro (se urológica)`,
+    guideline: "SBU / AUA / SBN",
+  },
+  {
+    id: "rx-sint-dispneia-aguda",
+    title: "Dispneia Aguda — Diagnóstico Diferencial",
+    type: "Por Sintoma",
+    prescription: `1. ABCDE + monitorização (SpO2, PA, FC, FR)
+2. O2 suplementar se SpO2 <94% (<88-92% se DPOC)
+3. ECG 12 derivações (IAM, arritmia, sobrecarga de VD)
+4. RX tórax (EAP, derrame, pneumotórax, pneumonia)
+5. Gasometria arterial (hipoxemia, acidose, hipercapnia)
+6. BNP/NT-proBNP (IC — BNP >400 sugere descompensação)
+7. D-dímero se Wells sugere TEP
+8. Troponina se suspeita de SCA
+9. AngioTC tórax se suspeita de TEP
+10. Se broncoespasmo: NBZ com Salbutamol + Ipratrópio
+11. Se EAP: Furosemida + Nitrato + VNI
+12. Se pneumotórax: drenagem`,
+    guideline: "SBPT / ATS / ESC",
+  },
+  {
+    id: "rx-sint-hipocalemia",
+    title: "Hipocalemia — Reposição de Potássio",
+    type: "Por Sintoma",
+    prescription: `Leve (K+ 3-3,5mEq/L):
+1. KCl 600mg (8mEq) VO 8/8h por 3-5 dias
+2. Dieta rica em potássio
+
+Moderada (K+ 2,5-3mEq/L):
+3. KCl 10% — 10mL (13mEq) EV diluído em SF 0,9% 500mL em 4h
+4. Máximo: 20mEq/h por via periférica
+5. KCl 600mg VO 6/6h concomitante
+
+Grave (K+ <2,5 ou sintomático):
+6. KCl 19,1% — 10mL (25mEq) + SF 0,9% 250mL EV em 2-4h (acesso central)
+7. Máximo: 40mEq/h por acesso central (com monitorização ECG)
+8. Dosar K+ 2/2h até correção
+9. Corrigir hipomagnesemia concomitante (MgSO4 2g EV)`,
+    warnings: "NÃO infundir KCl em bolus (risco de PCR). Via periférica: máx 20mEq/h. Acesso central: máx 40mEq/h com ECG contínuo. Corrigir Mg para corrigir K.",
+    guideline: "SBN / AMIB",
+  },
 ];
 
