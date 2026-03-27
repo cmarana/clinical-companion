@@ -611,13 +611,227 @@ function ChildPughCalculator() {
   );
 }
 
+function HEARTScoreCalculator() {
+  const cats = [
+    { label: "História", opts: ["Pouco suspeita (0)", "Moderadamente suspeita (1)", "Altamente suspeita (2)"] },
+    { label: "ECG", opts: ["Normal (0)", "Alteração inespecífica (1)", "Desvio ST significativo (2)"] },
+    { label: "Idade", opts: ["<45 anos (0)", "45-64 anos (1)", "≥65 anos (2)"] },
+    { label: "Fatores de risco", opts: ["Nenhum (0)", "1-2 fatores (1)", "≥3 fatores ou aterosclerose (2)"] },
+    { label: "Troponina", opts: ["Normal (0)", "1-3x LSN (1)", ">3x LSN (2)"] },
+  ];
+  const [vals, setVals] = useState<number[]>(new Array(cats.length).fill(0));
+  const total = vals.reduce((a, b) => a + b, 0);
+  const risk = total <= 3 ? "Baixo risco (1.7%)" : total <= 6 ? "Risco intermediário (12-16.6%)" : "Alto risco (50-65%)";
+  const color = total <= 3 ? "text-success" : total <= 6 ? "text-warning-foreground" : "text-destructive";
+  const conduct = total <= 3 ? "Alta precoce — investigação ambulatorial" : total <= 6 ? "Observação, troponina seriada, considerar teste funcional" : "Internação, considerar cateterismo";
+
+  return (
+    <div className="space-y-3">
+      <p className="text-xs text-muted-foreground">Estratificação de risco na dor torácica aguda</p>
+      {cats.map((cat, ci) => (
+        <div key={ci} className="space-y-1">
+          <Label className="font-heading text-xs">{cat.label}</Label>
+          <Select value={String(vals[ci])} onValueChange={(v) => { const n = [...vals]; n[ci] = Number(v); setVals(n); }}>
+            <SelectTrigger><SelectValue /></SelectTrigger>
+            <SelectContent>
+              {cat.opts.map((opt, oi) => (
+                <SelectItem key={oi} value={String(oi)}>{opt}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      ))}
+      <div className="bg-muted rounded-lg p-4 text-center space-y-1">
+        <p className="font-heading text-3xl font-bold">{total}/10</p>
+        <p className={`font-heading text-sm font-semibold ${color}`}>{risk}</p>
+        <p className="text-xs text-muted-foreground">{conduct}</p>
+      </div>
+    </div>
+  );
+}
+
+function NIHSSCalculator() {
+  const items = [
+    { label: "1a. Nível de consciência", opts: ["Alerta (0)","Sonolento (1)","Estuporoso (2)","Coma (3)"] },
+    { label: "1b. Perguntas (mês/idade)", opts: ["Ambas corretas (0)","Uma correta (1)","Nenhuma (2)"] },
+    { label: "1c. Comandos (abrir/fechar olhos, apertar mão)", opts: ["Ambos corretos (0)","Um correto (1)","Nenhum (2)"] },
+    { label: "2. Melhor olhar conjugado", opts: ["Normal (0)","Paralisia parcial (1)","Desvio forçado (2)"] },
+    { label: "3. Visual (campos)", opts: ["Sem perda (0)","Hemianopsia parcial (1)","Hemianopsia completa (2)","Bilateral (3)"] },
+    { label: "4. Paralisia facial", opts: ["Normal (0)","Menor (1)","Parcial (2)","Completa (3)"] },
+    { label: "5a. Motor braço esq.", opts: ["Sem queda (0)","Queda (1)","Algum esforço (2)","Sem esforço (3)","Nenhum (4)"] },
+    { label: "5b. Motor braço dir.", opts: ["Sem queda (0)","Queda (1)","Algum esforço (2)","Sem esforço (3)","Nenhum (4)"] },
+    { label: "6a. Motor perna esq.", opts: ["Sem queda (0)","Queda (1)","Algum esforço (2)","Sem esforço (3)","Nenhum (4)"] },
+    { label: "6b. Motor perna dir.", opts: ["Sem queda (0)","Queda (1)","Algum esforço (2)","Sem esforço (3)","Nenhum (4)"] },
+    { label: "7. Ataxia de membros", opts: ["Ausente (0)","Um membro (1)","Dois membros (2)"] },
+    { label: "8. Sensibilidade", opts: ["Normal (0)","Perda leve (1)","Perda grave (2)"] },
+    { label: "9. Linguagem", opts: ["Normal (0)","Afasia leve (1)","Afasia grave (2)","Mudo/afasia global (3)"] },
+    { label: "10. Disartria", opts: ["Normal (0)","Leve (1)","Grave (2)"] },
+    { label: "11. Extinção/inatenção", opts: ["Normal (0)","Parcial (1)","Completa (2)"] },
+  ];
+  const [vals, setVals] = useState<number[]>(new Array(items.length).fill(0));
+  const total = vals.reduce((a, b) => a + b, 0);
+  const sev = total === 0 ? "Sem déficit" : total <= 4 ? "Leve" : total <= 15 ? "Moderado" : total <= 20 ? "Grave" : "Muito grave";
+  const color = total <= 4 ? "text-success" : total <= 15 ? "text-warning-foreground" : "text-destructive";
+
+  return (
+    <div className="space-y-3">
+      <p className="text-xs text-muted-foreground">Escala de AVC do NIH — avaliação de gravidade</p>
+      {items.map((item, i) => (
+        <div key={i} className="space-y-1">
+          <Label className="font-heading text-xs">{item.label}</Label>
+          <Select value={String(vals[i])} onValueChange={(v) => { const n = [...vals]; n[i] = Number(v); setVals(n); }}>
+            <SelectTrigger><SelectValue /></SelectTrigger>
+            <SelectContent>
+              {item.opts.map((opt, oi) => (
+                <SelectItem key={oi} value={String(oi)}>{opt}</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+      ))}
+      <div className="bg-muted rounded-lg p-4 text-center space-y-1">
+        <p className="font-heading text-3xl font-bold">{total}/42</p>
+        <p className={`font-heading text-sm font-semibold ${color}`}>{sev}</p>
+        {total >= 4 && total <= 25 && <p className="text-xs text-muted-foreground">Janela terapêutica: considerar trombólise (rt-PA) se ≤4,5h</p>}
+      </div>
+    </div>
+  );
+}
+
+function MELDCalculator() {
+  const [bilirubin, setBilirubin] = useState("");
+  const [creatinine, setCreatinine] = useState("");
+  const [inr, setInr] = useState("");
+  const [sodium, setSodium] = useState("");
+
+  const b = Math.max(1, Number(bilirubin));
+  const c = Math.max(1, Math.min(4, Number(creatinine)));
+  const i = Math.max(1, Number(inr));
+  const na = Math.min(137, Math.max(125, Number(sodium) || 137));
+
+  const canCalc = Number(bilirubin) && Number(creatinine) && Number(inr);
+  const meld = canCalc ? Math.round(10 * (0.957 * Math.log(c) + 0.378 * Math.log(b) + 1.12 * Math.log(i) + 0.643)) : null;
+  const meldNa = meld !== null && Number(sodium) ? Math.round(meld + 1.32 * (137 - na) - 0.033 * meld * (137 - na)) : null;
+
+  const getMortality = (s: number) => {
+    if (s <= 9) return "1.9%";
+    if (s <= 19) return "6%";
+    if (s <= 29) return "19.6%";
+    if (s <= 39) return "52.6%";
+    return "71.3%";
+  };
+
+  return (
+    <div className="space-y-3">
+      <p className="text-xs text-muted-foreground">Gravidade de hepatopatia / prioridade em transplante</p>
+      <div className="grid grid-cols-2 gap-3">
+        <div className="space-y-1">
+          <Label className="font-heading text-xs">Bilirrubina (mg/dL)</Label>
+          <Input type="number" value={bilirubin} onChange={(e) => setBilirubin(e.target.value)} placeholder="1.0" step="0.1" />
+        </div>
+        <div className="space-y-1">
+          <Label className="font-heading text-xs">Creatinina (mg/dL)</Label>
+          <Input type="number" value={creatinine} onChange={(e) => setCreatinine(e.target.value)} placeholder="1.0" step="0.1" />
+        </div>
+        <div className="space-y-1">
+          <Label className="font-heading text-xs">INR</Label>
+          <Input type="number" value={inr} onChange={(e) => setInr(e.target.value)} placeholder="1.0" step="0.1" />
+        </div>
+        <div className="space-y-1">
+          <Label className="font-heading text-xs">Na⁺ (mEq/L) — MELD-Na</Label>
+          <Input type="number" value={sodium} onChange={(e) => setSodium(e.target.value)} placeholder="140" />
+        </div>
+      </div>
+      {meld !== null && (
+        <div className="bg-muted rounded-lg p-4 text-center space-y-1">
+          <p className="font-heading text-3xl font-bold">{meld}</p>
+          {meldNa !== null && <p className="font-heading text-sm text-primary font-semibold">MELD-Na: {meldNa}</p>}
+          <p className={`font-heading text-sm font-semibold ${meld <= 9 ? "text-success" : meld <= 19 ? "text-warning-foreground" : "text-destructive"}`}>
+            Mortalidade 3 meses: {getMortality(meldNa ?? meld)}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function APACHEII Calculator() {
+  const [temp, setTemp] = useState(""); const [pam, setPam] = useState(""); const [fc, setFc] = useState("");
+  const [fr, setFr] = useState(""); const [pao2, setPao2] = useState(""); const [ph, setPh] = useState("");
+  const [na2, setNa2] = useState(""); const [k, setK] = useState(""); const [cr2, setCr2] = useState("");
+  const [ht, setHt] = useState(""); const [wbc, setWbc] = useState(""); const [gcs, setGcs] = useState("15");
+  const [age2, setAge2] = useState(""); const [chronic, setChronic] = useState("0");
+
+  const scoreTemp = (v:number)=>v>=41||v<=29.9?4:v>=39||v<=31.9?3:v>=38.5||v<=33.9?1:0;
+  const scorePam = (v:number)=>v>=160||v<=49?4:v>=130||v<=69?2:v>=110?2:0;
+  const scoreFc = (v:number)=>v>=180||v<=39?4:v>=140||v<=54?3:v>=110||v<=69?2:0;
+  const scoreFr = (v:number)=>v>=50||v<=5?4:v>=35?3:v>=25||v<=9?1:0;
+  const scorePh2 = (v:number)=>v>=7.7||v<7.15?4:v>=7.6||v<7.25?3:v>=7.5||v<7.33?2:0;
+
+  const calculate = () => {
+    const t=Number(temp),p=Number(pam),f=Number(fc),r=Number(fr),o=Number(pao2),
+      ph2=Number(ph),n=Number(na2),kv=Number(k),c=Number(cr2),h=Number(ht),w=Number(wbc),
+      g=Number(gcs),a=Number(age2),ch=Number(chronic);
+    if(!t||!p||!f||!r||!a) return null;
+    let s = scoreTemp(t)+scorePam(p)+scoreFc(f)+scoreFr(r);
+    if(ph2) s+=scorePh2(ph2);
+    s += (15-g);
+    if(a>=75) s+=6; else if(a>=65) s+=5; else if(a>=55) s+=3; else if(a>=45) s+=2;
+    s += ch;
+    return s;
+  };
+  const score = calculate();
+  const mort = (s:number)=>s<=4?"~4%":s<=9?"~8%":s<=14?"~15%":s<=19?"~25%":s<=24?"~40%":s<=29?"~55%":s<=34?"~73%":">85%";
+
+  return (
+    <div className="space-y-3">
+      <p className="text-xs text-muted-foreground">Gravidade na UTI — primeiras 24h (simplificado)</p>
+      <div className="grid grid-cols-3 gap-2">
+        <div className="space-y-1"><Label className="font-heading text-[10px]">Temp (°C)</Label><Input type="number" value={temp} onChange={e=>setTemp(e.target.value)} placeholder="37" className="h-8 text-xs"/></div>
+        <div className="space-y-1"><Label className="font-heading text-[10px]">PAM (mmHg)</Label><Input type="number" value={pam} onChange={e=>setPam(e.target.value)} placeholder="80" className="h-8 text-xs"/></div>
+        <div className="space-y-1"><Label className="font-heading text-[10px]">FC (bpm)</Label><Input type="number" value={fc} onChange={e=>setFc(e.target.value)} placeholder="80" className="h-8 text-xs"/></div>
+        <div className="space-y-1"><Label className="font-heading text-[10px]">FR (irpm)</Label><Input type="number" value={fr} onChange={e=>setFr(e.target.value)} placeholder="16" className="h-8 text-xs"/></div>
+        <div className="space-y-1"><Label className="font-heading text-[10px]">pH</Label><Input type="number" value={ph} onChange={e=>setPh(e.target.value)} placeholder="7.4" step="0.01" className="h-8 text-xs"/></div>
+        <div className="space-y-1"><Label className="font-heading text-[10px]">PaO₂</Label><Input type="number" value={pao2} onChange={e=>setPao2(e.target.value)} placeholder="90" className="h-8 text-xs"/></div>
+        <div className="space-y-1"><Label className="font-heading text-[10px]">Na⁺</Label><Input type="number" value={na2} onChange={e=>setNa2(e.target.value)} placeholder="140" className="h-8 text-xs"/></div>
+        <div className="space-y-1"><Label className="font-heading text-[10px]">K⁺</Label><Input type="number" value={k} onChange={e=>setK(e.target.value)} placeholder="4" step="0.1" className="h-8 text-xs"/></div>
+        <div className="space-y-1"><Label className="font-heading text-[10px]">Cr (mg/dL)</Label><Input type="number" value={cr2} onChange={e=>setCr2(e.target.value)} placeholder="1" step="0.1" className="h-8 text-xs"/></div>
+        <div className="space-y-1"><Label className="font-heading text-[10px]">Ht (%)</Label><Input type="number" value={ht} onChange={e=>setHt(e.target.value)} placeholder="40" className="h-8 text-xs"/></div>
+        <div className="space-y-1"><Label className="font-heading text-[10px]">Leucócitos</Label><Input type="number" value={wbc} onChange={e=>setWbc(e.target.value)} placeholder="10000" className="h-8 text-xs"/></div>
+        <div className="space-y-1"><Label className="font-heading text-[10px]">Glasgow</Label><Input type="number" value={gcs} onChange={e=>setGcs(e.target.value)} placeholder="15" className="h-8 text-xs"/></div>
+      </div>
+      <div className="grid grid-cols-2 gap-2">
+        <div className="space-y-1"><Label className="font-heading text-[10px]">Idade (anos)</Label><Input type="number" value={age2} onChange={e=>setAge2(e.target.value)} placeholder="60" className="h-8 text-xs"/></div>
+        <div className="space-y-1">
+          <Label className="font-heading text-[10px]">Doença crônica</Label>
+          <Select value={chronic} onValueChange={setChronic}><SelectTrigger className="h-8 text-xs"><SelectValue/></SelectTrigger>
+            <SelectContent><SelectItem value="0">Não (0)</SelectItem><SelectItem value="2">Pós-op eletivo (2)</SelectItem><SelectItem value="5">Não-cirúrgico ou pós-op urgência (5)</SelectItem></SelectContent>
+          </Select>
+        </div>
+      </div>
+      {score !== null && (
+        <div className="bg-muted rounded-lg p-4 text-center space-y-1">
+          <p className="font-heading text-3xl font-bold">{score}</p>
+          <p className={`font-heading text-sm font-semibold ${score<=9?"text-success":score<=19?"text-warning-foreground":"text-destructive"}`}>
+            Mortalidade estimada: {mort(score)}
+          </p>
+        </div>
+      )}
+    </div>
+  );
+}
+
 const calculators: CalculatorConfig[] = [
   { id: "glasgow", title: "Escala de Glasgow", icon: <Brain size={18} />, description: "Nível de consciência (3-15)", component: GlasgowCalculator },
   { id: "sofa", title: "SOFA Score", icon: <Activity size={18} />, description: "Disfunção orgânica na sepse", component: SofaCalculator },
   { id: "qsofa", title: "qSOFA", icon: <Activity size={18} />, description: "Triagem rápida para sepse", component: QSofaCalculator },
+  { id: "heart", title: "HEART Score", icon: <Heart size={18} />, description: "Risco na dor torácica", component: HEARTScoreCalculator },
+  { id: "nihss", title: "NIHSS", icon: <Brain size={18} />, description: "Gravidade do AVC", component: NIHSSCalculator },
   { id: "wells", title: "Wells (TEP)", icon: <Heart size={18} />, description: "Probabilidade de TEP", component: WellsCalculator },
   { id: "cha2ds2", title: "CHA₂DS₂-VASc", icon: <Heart size={18} />, description: "Risco de AVC em FA", component: CHA2DS2Calculator },
   { id: "timi", title: "TIMI Score", icon: <Heart size={18} />, description: "Risco na SCA sem supra", component: TIMICalculator },
+  { id: "meld", title: "MELD / MELD-Na", icon: <Droplets size={18} />, description: "Gravidade hepatopatia", component: MELDCalculator },
+  { id: "apacheii", title: "APACHE II", icon: <Activity size={18} />, description: "Gravidade na UTI", component: APACHEII Calculator },
   { id: "curb65", title: "CURB-65", icon: <Activity size={18} />, description: "Gravidade de pneumonia", component: CURB65Calculator },
   { id: "apgar", title: "APGAR", icon: <Scale size={18} />, description: "Avaliação do RN", component: ApgarCalculator },
   { id: "childpugh", title: "Child-Pugh", icon: <Droplets size={18} />, description: "Gravidade na cirrose", component: ChildPughCalculator },
