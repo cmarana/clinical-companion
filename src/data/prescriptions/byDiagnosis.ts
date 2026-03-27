@@ -8371,6 +8371,598 @@ DROGAS (SRI):
     warnings: "PCR é a principal causa de morte imediata na queimadura elétrica. Rabdomiólise maciça: hipercalemia fatal. Lesão de órgãos internos pode ser oculta.",
     guideline: "ABA / ATLS / SBQ",
   },
+
+  // ═══════════════════════════════════════════════════
+  // DERMATOLOGIA — EXPANSÃO
+  // ═══════════════════════════════════════════════════
+  {
+    id: "rx-derm-penfigo-vulgar",
+    title: "Pênfigo Vulgar — Manejo Hospitalar",
+    type: "Prescrição Hospitalar / Dermatologia",
+    prescription: `1. Internação hospitalar (lesões extensas, comprometimento oral grave)
+2. Prednisona 1mg/kg/dia VO (máx 80mg) OU Metilprednisolona 1g EV/dia x3 dias (se grave)
+3. Rituximab 1g EV (D1 e D15) — primeira linha em pênfigo moderado-grave
+4. OU Azatioprina 2-3mg/kg/dia VO (poupador de corticoide)
+5. Curativo: Compressas com SF 0,9% + cobertura não aderente (Adaptic)
+6. Sulfadiazina de prata 1% nas erosões extensas
+7. Analgesia: Dipirona 1g EV 6/6h + Tramadol 50mg EV SOS
+8. Lidocaína gel 2% antes das refeições (lesões orais)
+9. Dieta pastosa/líquida (se lesões orais extensas)
+10. Profilaxia: Omeprazol 20mg + Cálcio + Vitamina D (uso prolongado de corticoide)
+11. Exames: biópsia com imunofluorescência, anti-desmogleína 1 e 3`,
+    notes: "Sinal de Nikolsky positivo. Biópsia: acantólise suprabasal. IFD: depósito de IgG/C3 intercelular.",
+    warnings: "Rituximab: risco de reativação HBV (checar HBsAg). Corticoide em dose alta: risco de sepse em pele desnuda.",
+    guideline: "SBD / BAD / EADV",
+  },
+  {
+    id: "rx-derm-ssj-net-completa",
+    title: "Síndrome de Stevens-Johnson / NET — Protocolo Completo",
+    type: "Prescrição Hospitalar / Dermatologia",
+    prescription: `1. SUSPENDER imediatamente a droga suspeita (ALDEN score para causalidade)
+2. Internação em UTI ou Centro de Queimados (se >30% SCQ = NET)
+3. Hidratação: SF 0,9% — calcular como queimado (Parkland adaptado)
+4. Curativo: compressas de SF 0,9% + cobertura não aderente (NÃO desbridar)
+5. Ciclosporina 3mg/kg/dia VO/SNG (evidência crescente — iniciar precoce)
+6. OU Imunoglobulina EV 0,5-1g/kg/dia x3 dias (controverso)
+7. Analgesia: Morfina 0,1mg/kg EV titulada
+8. Colírio lubrificante sem conservante 1/1h (prevenção de sinéquias oculares)
+9. Avaliação oftalmológica URGENTE
+10. Cuidados de mucosas: Nistatina oral, lidocaína gel
+11. SVD (se lesões genitais)
+12. Profilaxia de TVP: Enoxaparina 40mg SC 1x/dia
+13. SCORTEN na admissão e em 72h (prognóstico)`,
+    notes: "SSJ: <10% SCQ. Overlap: 10-30%. NET: >30%. SCORTEN: 0-1 ponto = 3% mortalidade; ≥5 pontos = 90%. Drogas mais comuns: alopurinol, anticonvulsivantes, sulfonamidas, AINEs.",
+    warnings: "NÃO usar corticoide sistêmico (controverso, pode aumentar mortalidade). Complicações tardias: sinéquias oculares, estenose esofágica, cicatrizes.",
+    guideline: "SBD / BAD / RegiSCAR",
+  },
+  {
+    id: "rx-derm-celulite-erisipela-grave",
+    title: "Celulite / Erisipela Grave — Internação",
+    type: "Prescrição Hospitalar / Dermatologia",
+    prescription: `1. Internação hospitalar
+2. Oxacilina 2g EV 4/4h OU Cefazolina 2g EV 8/8h
+3. Se alergia: Clindamicina 600mg EV 6/6h
+4. Se suspeita de MRSA: Vancomicina 15-20mg/kg EV 12/12h
+5. Elevação do membro afetado
+6. Dipirona 1g EV 6/6h + AINE
+7. Compressas de SF 0,9% nas lesões
+8. Demarcar a borda da lesão com caneta (monitorizar progressão)
+9. Hemograma, PCR, hemocultura (se febre alta/sepse)
+10. Doppler venoso se edema unilateral (excluir TVP)
+11. Profilaxia de recorrência: Penicilina benzatina 1,2MUI IM a cada 21 dias (se ≥3 episódios/ano)`,
+    notes: "Erisipela: bordas bem delimitadas, superficial (derme). Celulite: bordas mal definidas, profunda (subcutâneo). Porta de entrada: micose interdigital, úlcera, picada de inseto.",
+    warnings: "Fascite necrosante: dor desproporcional ao exame, crepitação, necrose → CIRURGIA DE URGÊNCIA. Não confundir.",
+    guideline: "IDSA / SBD",
+  },
+  {
+    id: "rx-derm-urticaria-aguda-grave",
+    title: "Urticária Aguda Grave / Angioedema",
+    type: "Prescrição de Emergência / Dermatologia",
+    prescription: `1. Se angioedema com estridor/dispneia: Adrenalina 0,3-0,5mg IM (face anterolateral da coxa)
+2. Dexametasona 10mg EV
+3. Ranitidina 50mg EV (anti-H2)
+4. Difenidramina 50mg EV OU Prometazina 25mg EV/IM
+5. Desloratadina 5mg VO OU Cetirizina 10mg VO (manutenção)
+6. SF 0,9% 500-1000mL EV (se hipotensão)
+7. Monitorizar SpO2, PA, FC por 4-6h
+8. Se angioedema hereditário (deficiência de C1-INH):
+   - Icatibanto 30mg SC OU
+   - Concentrado de C1-INH 20UI/kg EV
+   - NÃO responde a anti-histamínicos/corticoides
+9. Alta com: anti-histamínico + Prednisona 40mg VO x5 dias + EpiPen (se anafilaxia prévia)`,
+    notes: "Angioedema por IECA: suspender IECA permanentemente. Não responde a adrenalina/anti-histamínico. Pode ocorrer anos após início do IECA.",
+    warnings: "Angioedema de glote: IOT precoce. Se impossível: cricotireoidostomia. Observar 6-8h (risco de reação bifásica).",
+    guideline: "WAO / ASBAI / EAACI",
+  },
+  {
+    id: "rx-derm-herpes-zoster-complicado",
+    title: "Herpes Zoster Complicado / Oftálmico",
+    type: "Prescrição Hospitalar / Dermatologia",
+    prescription: `1. Aciclovir 10mg/kg EV 8/8h x7-10 dias (se imunossuprimido ou disseminado)
+2. OU Valaciclovir 1g VO 8/8h x7 dias (se imunocompetente sem complicação)
+3. Pregabalina 75mg VO 12/12h → titular até 300mg/dia (dor neuropática)
+4. OU Gabapentina 300mg VO 8/8h → titular
+5. Analgesia escalonada: Dipirona + Tramadol + considerar Amitriptilina 25mg VO à noite
+6. Cuidados locais: limpeza com SF + curativo não aderente
+7. Se Zoster oftálmico: Avaliação oftalmológica URGENTE
+   - Aciclovir pomada oftálmica 5x/dia
+   - Ciclopentolato 1% colírio 8/8h
+8. Se complicação neurológica (encefalite, mielite): Aciclovir EV + neurologia`,
+    notes: "Sinal de Hutchinson (vesículas no nariz): risco de acometimento ocular. Ramsay Hunt: zoster auricular + paralisia facial + vertigem.",
+    warnings: "Imunossuprimidos: risco de zoster disseminado (>2 dermátomos). Neuralgia pós-herpética: dor crônica em >20% dos >50 anos.",
+    guideline: "IDSA / SBD / AAD",
+  },
+  {
+    id: "rx-derm-psoríase-pustulosa",
+    title: "Psoríase Pustulosa Generalizada (Von Zumbusch)",
+    type: "Prescrição Hospitalar / Dermatologia",
+    prescription: `1. Internação hospitalar (risco de sepse, distúrbio eletrolítico)
+2. Hidratação vigorosa: SF 0,9% 2000-3000mL/dia EV
+3. Acitretina 25-50mg/dia VO (primeira linha)
+4. OU Ciclosporina 3-5mg/kg/dia VO (resposta rápida)
+5. OU Metotrexato 15-25mg/semana (VO ou SC)
+6. Cuidados tópicos: emolientes + corticoide tópico de média potência
+7. Monitorizar: temperatura, eletrólitos, albumina, função renal/hepática
+8. Cultura de pele se suspeita de infecção secundária
+9. Analgesia e antitérmicos: Dipirona 1g EV 6/6h
+10. Suporte nutricional (perda proteica cutânea significativa)`,
+    notes: "Forma grave e potencialmente fatal de psoríase. Desencadeantes: retirada abrupta de corticoide, infecção, gestação, hipocalcemia.",
+    warnings: "NÃO usar corticoide sistêmico (risco de rebote e piora). Acitretina: teratogênica (contracepção por 3 anos após). Ciclosporina: nefrotoxicidade, HAS.",
+    guideline: "SBD / BAD / AAD",
+  },
+  {
+    id: "rx-derm-eczema-herpetico",
+    title: "Eczema Herpético (Erupção Variceliforme de Kaposi)",
+    type: "Prescrição Hospitalar / Dermatologia",
+    prescription: `1. Aciclovir 5-10mg/kg EV 8/8h (se extenso ou imunossuprimido)
+2. OU Valaciclovir 1g VO 8/8h x10 dias (se leve, imunocompetente)
+3. Suspender imunossupressores tópicos (tacrolimus, pimecrolimus)
+4. Cuidados locais: compressas de SF + curativo oclusivo leve
+5. Antibiótico tópico: Mupirocina 2% 3x/dia (prevenção de impetiginização)
+6. Se infecção bacteriana secundária: Cefalexina 500mg VO 6/6h
+7. Analgesia: Dipirona + anti-histamínico (Hidroxizina 25mg VO 8/8h)
+8. Avaliação oftalmológica se lesões periorbitárias`,
+    notes: "Complicação do dermatite atópica por HSV. Múltiplas vesículas/erosões monomórficas sobre eczema prévio. Diagnóstico: PCR para HSV, Tzanck.",
+    warnings: "Risco de disseminação sistêmica em imunossuprimidos. Complicação ocular: ceratite herpética.",
+    guideline: "SBD / AAD",
+  },
+
+  // ═══════════════════════════════════════════════════
+  // UROLOGIA — EXPANSÃO
+  // ═══════════════════════════════════════════════════
+  {
+    id: "rx-uro-torcao-testicular-completa",
+    title: "Torção Testicular — Protocolo Completo",
+    type: "Prescrição de Emergência / Urologia",
+    prescription: `1. EMERGÊNCIA CIRÚRGICA — janela de 6h para salvar testículo
+2. Jejum absoluto
+3. Analgesia: Morfina 0,1mg/kg EV
+4. Tentativa de destorção manual (rotação lateral — "abrir o livro"):
+   - Alivio imediato da dor = sucesso → cirurgia eletiva em 24-48h
+   - Sem melhora: cirurgia IMEDIATA
+5. US Doppler testicular (se disponível rapidamente — NÃO atrasar cirurgia)
+6. Cirurgia: exploração escrotal + destorção + orquidopexia bilateral
+7. Acesso venoso + SF 0,9% 500mL
+8. Cefazolina 2g EV (profilaxia pré-operatória)
+9. Tipagem sanguínea`,
+    notes: "Pico: 12-18 anos. Dor escrotal aguda + testículo elevado + reflexo cremastérico ausente. Sinal de Prehn negativo (dor NÃO alivia ao elevar).",
+    warnings: "Viabilidade: <6h = 90-100%; 6-12h = 50%; >24h = <10%. NÃO atrasar cirurgia por exame de imagem. Na dúvida: explorar cirurgicamente.",
+    guideline: "AUA / EAU / SBU",
+  },
+  {
+    id: "rx-uro-priapismo-isquemico-completo",
+    title: "Priapismo Isquêmico — Protocolo Completo",
+    type: "Prescrição de Emergência / Urologia",
+    prescription: `1. EMERGÊNCIA UROLÓGICA — risco de necrose e disfunção erétil permanente após 4-6h
+2. Analgesia: Morfina 0,1mg/kg EV
+3. Aspiração intracavernosa:
+   - Agulha 16-18G no corpo cavernoso (posição 2h ou 10h)
+   - Aspirar sangue escuro (confirma isquemia)
+4. Injeção de Fenilefrina intracavernosa:
+   - 200mcg a cada 3-5 min (máx 1mg em 1h)
+   - Diluição: Fenilefrina 10mg em 19mL SF = 500mcg/mL → diluir 1mL em 4mL SF = 100mcg/mL
+5. Monitorizar PA e FC (risco de crise hipertensiva)
+6. Se refratário: shunt cirúrgico (Al-Ghorab, Winter)
+7. Gasometria do sangue aspirado: pO2 <40, pCO2 >60, pH <7,25 = isquêmico
+8. Se falciforme: hidratação vigorosa + O2 + transfusão simples/exsanguineotransfusão`,
+    notes: "Causas: idiopático (60%), anemia falciforme, drogas (sildenafil, trazodona, clorpromazina, cocaína). Priapismo >36h: prognóstico de função erétil muito ruim.",
+    warnings: "NÃO usar adrenalina (cardiotoxicidade). Fenilefrina é o alfa-agonista de escolha (menos efeito beta). Priapismo de alto fluxo (não isquêmico): NÃO é emergência.",
+    guideline: "AUA / EAU / SBU",
+  },
+  {
+    id: "rx-uro-retencao-urinaria-aguda",
+    title: "Retenção Urinária Aguda — Manejo no PS",
+    type: "Prescrição de Emergência / Urologia",
+    prescription: `1. Cateterismo vesical de alívio (SVD Foley 16-18Fr)
+   - Se impossibilidade de passagem: tentar sonda Coudé
+   - Se falha: cistostomia suprapúbica por punção (USG guiada)
+2. Descompressão gradual: clampar a cada 500mL por 15 min (prevenir hematúria ex-vacuo)
+3. Medir volume residual (registrar na evolução)
+4. Tansulosina 0,4mg VO 1x/dia (relaxa musculatura prostática)
+5. Finasterida 5mg VO 1x/dia (se HPB conhecida)
+6. Exames: EAS, urocultura, ureia, creatinina, PSA (após resolução)
+7. US rins e vias urinárias (avaliar hidronefrose)
+8. Tentativa de retirada do cateter em 48-72h (com tansulosina)
+9. Se falha: encaminhar para urologia (RTUP)`,
+    notes: "Causas: HPB (mais comum >60 anos), prostatite, medicamentos (anticolinérgicos, opioides, BZD), estenose uretral, fecaloma.",
+    warnings: "Hematúria ex-vacuo: sangramento por descompressão rápida. Nefropatia obstrutiva: monitorizar diurese pós-desobstrução (poliúria pós-obstrutiva).",
+    guideline: "AUA / EAU / SBU",
+  },
+  {
+    id: "rx-uro-colica-renal-complicada",
+    title: "Cólica Renal Complicada / Cálculo Obstrutivo Infectado",
+    type: "Prescrição de Emergência / Urologia",
+    prescription: `1. EMERGÊNCIA: cálculo + infecção + obstrução = sepse urinária
+2. Antibiótico IMEDIATO: Ceftriaxona 2g EV OU Piperacilina-Tazobactam 4,5g EV
+3. Drenagem URGENTE: Duplo J ou Nefrostomia percutânea (não esperar ATB fazer efeito)
+4. SF 0,9% 30mL/kg EV nas primeiras 3h (se sepse)
+5. Vasopressor se PAM <65 após volume: Noradrenalina
+6. Analgesia: Dipirona 1g EV + Cetoprofeno 100mg EV + Tramadol 100mg EV
+7. Buscopan composto 1 ampola EV 8/8h (antiespasmódico)
+8. Exames: HMG, PCR, procalcitonina, lactato, gasometria, urina I, urocultura, hemocultura
+9. TC abdome sem contraste (confirmar obstrução e tamanho do cálculo)
+10. NÃO tentar litotripsia/ureteroscopia na fase aguda infectada — apenas drenar`,
+    notes: "Tríade letal: dor lombar + febre + cálculo ureteral obstrutivo. Drenar primeiro, tratar o cálculo depois (em 2-4 semanas).",
+    warnings: "MORTALIDADE ALTA se não drenar urgente. Cálculo infectado obstrutivo é uma das emergências urológicas mais graves.",
+    guideline: "EAU / AUA / SBU",
+  },
+  {
+    id: "rx-uro-parafimose",
+    title: "Parafimose — Redução de Emergência",
+    type: "Prescrição de Emergência / Urologia",
+    prescription: `1. Tentativa de redução manual:
+   - Aplicar compressas de gelo por 5-10 min (reduzir edema)
+   - OU envolver glande com gaze embebida em glicose 50% por 10 min (osmótico)
+   - Comprimir glande com ambas as mãos por 5 min → empurrar glande enquanto traciona prepúcio
+2. Se dor intensa: bloqueio peniano dorsal
+   - Lidocaína 1% sem vasoconstritor: 3-5mL na base do pênis (2h e 10h)
+3. Se irredutível: incisão dorsal do anel fimótico (dorsal slit) sob anestesia local
+4. Após redução: encaminhar para postectomia eletiva
+5. Analgesia: Dipirona 1g EV + AINE
+6. Antibiótico tópico: Mupirocina se escoriações`,
+    notes: "Emergência: a constrição do anel fimótico causa edema progressivo → isquemia → necrose da glande. Mais comum em crianças e após cateterismo.",
+    warnings: "NÃO postergar redução. Necrose de glande pode ocorrer em poucas horas. Se sinais de isquemia (glande escurecida): cirurgia imediata.",
+    guideline: "EAU / AUA / SBU",
+  },
+  {
+    id: "rx-uro-trauma-renal",
+    title: "Trauma Renal — Classificação e Manejo",
+    type: "Prescrição de Emergência / Urologia",
+    prescription: `1. ATLS: ABCDE — estabilização hemodinâmica
+2. TC abdome com contraste (fase arterial + excretora) — padrão-ouro
+3. Classificação AAST (I-V):
+   - Grau I-III (estável): manejo conservador (repouso + observação)
+   - Grau IV-V (instável): exploração cirúrgica
+4. Repouso absoluto no leito
+5. Hidratação: SF 0,9% 2000mL/dia EV
+6. Monitorizar: hematócrito seriado (6/6h nas primeiras 24h), diurese, sinais vitais
+7. Analgesia: Dipirona 1g EV 6/6h (evitar AINEs — nefrotóxicos)
+8. Tipagem + reserva 2CH
+9. Antibiótico: Cefazolina 1g EV 8/8h se penetrante
+10. Repeat TC em 48-72h (avaliar extravasamento tardio)
+11. Se hematúria macroscópica persistente: arteriografia com embolização seletiva`,
+    notes: "80% dos traumas renais são grau I-III e respondem ao manejo conservador. Hematúria microscópica isolada em trauma fechado: risco baixo.",
+    warnings: "Indicações absolutas de cirurgia: instabilidade não responsiva, lesão de pedículo, rim avulsionado. Hematoma retroperitoneal em expansão: explorar.",
+    guideline: "AAST / EAU / AUA",
+  },
+  {
+    id: "rx-uro-epididimite-aguda",
+    title: "Epididimite / Orquiepididimite Aguda",
+    type: "Prescrição Ambulatorial / Urologia",
+    prescription: `1. <35 anos (suspeita de IST):
+   - Ceftriaxona 500mg IM dose única + Doxiciclina 100mg VO 12/12h x14 dias
+2. >35 anos (enteropatógenos):
+   - Ciprofloxacino 500mg VO 12/12h x14 dias OU Levofloxacino 500mg VO 1x/dia x14 dias
+3. AINE: Ibuprofeno 600mg VO 8/8h x7 dias
+4. Elevação escrotal (suspensório ou cueca apertada)
+5. Compressas frias intermitentes
+6. Repouso relativo x7 dias
+7. Exames: EAS, urocultura, pesquisa de Chlamydia/Gonococo (swab uretral ou urina 1ºjato PCR)
+8. US Doppler escrotal (excluir torção — fluxo AUMENTADO na epididimite)
+9. Retorno em 48-72h (se sem melhora: reavaliar diagnóstico)
+10. Parceira(o): tratar se IST confirmada`,
+    notes: "Sinal de Prehn positivo (melhora ao elevar testículo — diferente da torção). Doppler: hiperfluxo. Torção: ausência de fluxo.",
+    warnings: "SEMPRE excluir torção testicular em jovem com dor escrotal aguda. Na dúvida: exploração cirúrgica.",
+    guideline: "CDC 2021 / EAU / SBU",
+  },
+
+  // ═══════════════════════════════════════════════════
+  // GERIATRIA — EXPANSÃO
+  // ═══════════════════════════════════════════════════
+  {
+    id: "rx-geri-delirium-idoso",
+    title: "Delirium no Idoso — Manejo no PS e Internação",
+    type: "Prescrição Hospitalar / Geriatria",
+    prescription: `1. IDENTIFICAR E TRATAR A CAUSA (CAM ou 4AT para diagnóstico):
+   - Infecção (ITU, pneumonia): investigar e tratar
+   - Medicamentos (benzodiazepínicos, opioides, anticolinérgicos): SUSPENDER
+   - Distúrbios metabólicos: glicemia, Na, Ca, função renal, TSH
+   - Retenção urinária / fecaloma: avaliar globo e toque retal
+   - Dor não tratada: analgesia adequada
+2. Medidas NÃO farmacológicas (PRIMEIRA LINHA):
+   - Orientação temporal (relógio, calendário, janela)
+   - Familiar presente 24h
+   - Óculos e aparelho auditivo
+   - Mobilização precoce
+   - Evitar contenção mecânica
+   - Ciclo sono-vigília: luz diurna, escuridão noturna
+3. Se agitação com risco: Haloperidol 0,5-1mg VO/IM (dose mínima eficaz)
+   - Repetir 0,5mg a cada 30 min SOS (máx 3mg/dia no idoso)
+4. ECG (QTc antes do haloperidol)
+5. Exames: HMG, EAS, urocultura, eletrólitos, função renal, gasometria, Rx tórax, glicemia
+6. Evitar BZD (paradoxal no idoso — exceto abstinência alcoólica)`,
+    notes: "Delirium: flutuação de consciência + desatenção + início agudo. CAM: sensibilidade 94-100%. Tipos: hiperativo (agitação), hipoativo (apatia — mais comum e subdiagnosticado), misto.",
+    warnings: "NÃO usar haloperidol em parkinsonismo/demência com corpos de Lewy (piora catastrófica). Quetiapina 12,5-25mg VO é alternativa. Delirium é EMERGÊNCIA GERIÁTRICA.",
+    guideline: "AGS / NICE / BGS",
+  },
+  {
+    id: "rx-geri-polifarmacia-deprescricao",
+    title: "Polifarmácia no Idoso — Desprescrição Estruturada",
+    type: "Prescrição Ambulatorial / Geriatria",
+    prescription: `REVISÃO SISTEMÁTICA (Critérios de Beers + STOPP/START):
+
+SUSPENDER / REDUZIR (alta prioridade):
+1. Benzodiazepínicos: reduzir 25% a cada 2 semanas → descontinuar
+2. IBPs >8 semanas sem indicação: reduzir dose → dias alternados → suspender
+3. Anti-histamínicos de 1ª geração (Prometazina, Hidroxizina): trocar por 2ª geração
+4. Antipsicóticos para insônia: reduzir gradual → suspender
+5. AINEs crônicos: trocar por paracetamol ± tópico
+6. Sulfoniluréias (Glibenclamida): trocar por Gliclazida MR ou inibidor de SGLT2
+7. Amitriptilina/Nortriptilina para dor: considerar Duloxetina se indicado
+8. Estatina se >80 anos sem DCV estabelecida: discutir risco-benefício
+
+INICIAR (subprescrição frequente):
+9. Vitamina D 1000-2000UI/dia (se <80 nmol/L)
+10. Cálcio 500-1000mg/dia (se ingesta inadequada)
+11. Vacinas: Influenza anual + Pneumocócica + Herpes Zoster`,
+    notes: "Polifarmácia: ≥5 medicamentos. Hiperpolifarmácia: ≥10. Cada medicamento adicional aumenta risco de RAM em 12-18%. Cascata de prescrição: RAM → novo diagnóstico → novo medicamento.",
+    warnings: "NUNCA suspender abruptamente: benzodiazepínicos (convulsão), betabloqueadores (rebote), corticoides (insuficiência adrenal), anticonvulsivantes.",
+    guideline: "AGS Beers 2023 / STOPP/START v3 / deprescribing.org",
+  },
+  {
+    id: "rx-geri-queda-idoso-avaliacao",
+    title: "Queda no Idoso — Avaliação e Prevenção no PS",
+    type: "Prescrição Ambulatorial / Geriatria",
+    prescription: `AVALIAÇÃO IMEDIATA:
+1. Excluir lesão aguda: Rx (quadril, punho, coluna se dor), TC crânio (se anticoagulante, trauma craniano)
+2. ECG (síncope? Arritmia? BAV?)
+3. PA ortostática (deitado → em pé: queda >20/10mmHg = positivo)
+4. Glicemia capilar
+5. Hemograma (anemia?)
+6. Exame neurológico dirigido: força, sensibilidade, equilíbrio, marcha
+
+PREVENÇÃO (prescrição de alta):
+7. Revisar medicamentos: SUSPENDER BZD, anti-hipertensivos excessivos, alfa-bloqueadores
+8. Vitamina D 1000-2000UI/dia VO
+9. Fisioterapia / exercício de equilíbrio (Tai Chi, Otago)
+10. Avaliação oftalmológica
+11. Avaliar calçados (antiderrapante, fixo no pé)
+12. Modificações ambientais: barras de apoio no banheiro, iluminação, retirar tapetes
+13. Se ≥2 quedas/ano ou queda com lesão: densitometria + avaliar anti-osteoporótico`,
+    notes: "1/3 dos >65 anos caem a cada ano. Queda + anticoagulante + TCE: TC crânio obrigatória (mesmo sem sintomas). Fratura de quadril: mortalidade de 20-30% em 1 ano.",
+    warnings: "Hipotensão ortostática: causa em até 30% das quedas em idosos. Reduzir anti-hipertensivos antes de adicionar novos. Fratura de fêmur oculta: dor no quadril sem alteração na Rx → RM.",
+    guideline: "AGS / BGS / NICE / CDC STEADI",
+  },
+  {
+    id: "rx-geri-delirium-prevencao",
+    title: "Prevenção de Delirium na Internação (Protocolo HELP)",
+    type: "Prescrição Hospitalar / Geriatria",
+    prescription: `PROTOCOLO HELP (Hospital Elder Life Program):
+1. Orientação: apresentar-se, informar data/local/motivo da internação 3x/dia
+2. Estimulação cognitiva: conversa, leitura, jogos simples
+3. Mobilização precoce: sentar na poltrona, deambular no corredor (se possível)
+4. Hidratação e nutrição: oferecer líquidos, auxiliar nas refeições
+5. Sono: evitar medicamentos à noite, tampões auriculares, máscara ocular
+6. Visão e audição: garantir óculos e aparelho auditivo
+7. Evitar contenção mecânica (risco de agitação paradoxal)
+8. Revisão de medicamentos: SUSPENDER anticolinérgicos, BZD, opioides se possível
+9. SVD: retirar o mais precoce possível
+10. Monitorizar com CAM ou 4AT 2x/dia (manhã e noite)
+
+PRESCRIÇÃO MEDICAMENTOSA ADJUVANTE:
+11. Melatonina 3mg VO às 20h (regularizar ciclo — evidência moderada)
+12. Se dor: Paracetamol 500mg VO 6/6h (fixo — dor é causa comum de delirium)`,
+    notes: "Protocolo HELP reduz delirium em 40%. Fatores de risco: >65 anos, demência prévia, déficit sensorial, desidratação, polifarmácia, cirurgia de grande porte.",
+    warnings: "NÃO prescrever BZD para insônia no idoso hospitalizado (precipita delirium). NÃO usar haloperidol profilático (sem benefício comprovado).",
+    guideline: "AGS / HELP Program / NICE",
+  },
+  {
+    id: "rx-geri-fragilidade-nutricao",
+    title: "Síndrome de Fragilidade — Manejo Nutricional e Funcional",
+    type: "Prescrição Ambulatorial / Geriatria",
+    prescription: `DIAGNÓSTICO (Critérios de Fried — ≥3 de 5):
+□ Perda de peso não intencional (>4,5kg/ano)
+□ Exaustão autorrelatada
+□ Fraqueza (grip strength)
+□ Velocidade de marcha reduzida (<0,8m/s)
+□ Baixa atividade física
+
+PRESCRIÇÃO:
+1. Suplementação proteica: 1,2-1,5g/kg/dia de proteína (distribuir nas 3 refeições)
+2. Suplemento nutricional oral 2x/dia (se ingestão insuficiente)
+3. Vitamina D 2000UI/dia VO
+4. Exercício multicomponente: resistência + equilíbrio + aeróbico (3-5x/semana)
+5. Programa de fisioterapia supervisionado
+6. Avaliar e tratar depressão (GDS-15)
+7. Avaliar e corrigir déficits sensoriais (visão, audição)
+8. Revisão de medicamentos (desprescrição)
+9. Vacinação em dia
+10. Suporte social: avaliar rede de apoio, cuidador`,
+    notes: "Fragilidade ≠ incapacidade ≠ comorbidade. Pré-frágil (1-2 critérios): intervenção precoce reverte em 25%. Frágil: maior risco de queda, hospitalização, morte.",
+    warnings: "Exercício é a ÚNICA intervenção com evidência forte para reverter fragilidade. Suplementação proteica isolada NÃO é suficiente.",
+    guideline: "AGS / ICFSR / EWGSOP2",
+  },
+  {
+    id: "rx-geri-demencia-agitacao",
+    title: "Agitação em Demência — Manejo Não Farmacológico e Farmacológico",
+    type: "Prescrição Hospitalar / Geriatria",
+    prescription: `1. EXCLUIR causa tratável (DICE):
+   - Dor (PAINAD scale) → tratar com Paracetamol 500mg 6/6h fixo
+   - Infecção (ITU, pneumonia) → investigar
+   - Constipação / retenção urinária → toque retal, US bexiga
+   - Medicamentos (anticolinérgicos, BZD) → suspender
+
+2. Medidas NÃO farmacológicas (PRIMEIRA LINHA):
+   - Ambiente calmo, música suave, aromaterapia
+   - Redirecionamento gentil, não confrontar
+   - Familiar presente
+   - Atividade ocupacional
+
+3. Se risco para si ou outros (ÚLTIMA linha):
+   - Quetiapina 12,5-25mg VO à noite (escolha na demência com corpos de Lewy)
+   - OU Risperidona 0,25-0,5mg VO 12/12h (máx 2mg/dia — evidência mais forte)
+   - Trazodona 25-50mg VO (se insônia/agitação noturna)
+4. ECG antes de antipsicótico (QTc)
+5. Reavaliar em 7-14 dias — descontinuar se possível em 4-8 semanas`,
+    notes: "FDA black box warning: antipsicóticos em demência aumentam mortalidade em 60-70%. Uso deve ser temporário e de última linha. SCPD: sintomas comportamentais e psicológicos da demência.",
+    warnings: "Haloperidol CONTRAINDICADO em demência com corpos de Lewy e Parkinson (hipersensibilidade a neurolépticos). BZD: paradoxal e aumenta risco de queda.",
+    guideline: "APA / AGS / NICE / ABP",
+  },
+
+  // ═══════════════════════════════════════════════════
+  // EMERGÊNCIA GERAL / PS — EXPANSÃO
+  // ═══════════════════════════════════════════════════
+  {
+    id: "rx-emerg-crise-hipertensiva-protocolo",
+    title: "Crise Hipertensiva — Urgência vs Emergência",
+    type: "Prescrição de Emergência / PS",
+    prescription: `URGÊNCIA HIPERTENSIVA (PA >180/120 sem LOA):
+1. Ambiente calmo, repouso
+2. Captopril 25mg VO → repetir em 30 min se necessário
+3. OU Clonidina 0,1mg VO → 0,1mg a cada 1h (máx 0,6mg)
+4. Alvo: reduzir 20-25% em 24-48h (NÃO normalizar rapidamente)
+5. Observação por 4-6h → alta com anti-hipertensivo ajustado
+
+EMERGÊNCIA HIPERTENSIVA (PA elevada + LOA):
+6. Nitroprussiato de sódio 0,3-10mcg/kg/min EV em BIC (LOA neurológica, dissecção)
+7. OU Nitroglicerina 5-200mcg/min EV (SCA, EAP)
+8. OU Esmolol 500mcg/kg bolus → 50-300mcg/kg/min (dissecção aórtica)
+9. OU Labetalol 20mg EV em 2 min → 40-80mg a cada 10 min
+10. Monitorização contínua: PA invasiva (se disponível), ECG, SpO2
+11. Exames: troponina, ECG, Rx tórax, creatinina, eletrólitos, fundoscopia, TC crânio (se sintomas neurológicos)
+12. Alvo na emergência: reduzir 25% nas primeiras 2h → 160/100 em 2-6h`,
+    notes: "LOA (lesão de órgão-alvo): encefalopatia, AVC, SCA, EAP, dissecção aórtica, eclâmpsia, IRA. Urgência: sem LOA. Emergência: com LOA.",
+    warnings: "NÃO usar Nifedipina sublingual (queda imprevisível). AVC isquêmico agudo: NÃO reduzir PA <185/110 se candidato a trombólise; se não: <220/120 é aceitável.",
+    guideline: "AHA 2017 / SBC / ESC",
+  },
+  {
+    id: "rx-emerg-dor-abdominal-aguda",
+    title: "Dor Abdominal Aguda — Protocolo de Investigação no PS",
+    type: "Prescrição de Emergência / PS",
+    prescription: `1. ABC — estabilizar se sinais de choque
+2. Analgesia IMEDIATA (NÃO postergar por medo de mascarar diagnóstico):
+   - Dipirona 1g EV + Buscopan 20mg EV
+   - Se dor intensa: Tramadol 100mg EV OU Morfina 4mg EV titulada
+3. Acesso venoso + SF 0,9% 500-1000mL EV
+4. Jejum até definição diagnóstica
+5. Exames: HMG, PCR, amilase/lipase, função hepática, função renal, EAS, Beta-HCG (mulheres em idade fértil), gasometria + lactato
+6. ECG (IAM inferior pode simular abdome agudo)
+7. Rx abdome em pé e decúbito (pneumoperitôneo, níveis, cálculos)
+8. US abdome (apendicite, colecistite, gravidez ectópica, líquido livre)
+9. TC abdome com contraste (se US inconclusivo ou abdome cirúrgico)
+10. Avaliação cirúrgica se: sinais peritoneais, defesa involuntária, rigidez, abdome em tábua`,
+    notes: "Red flags: rigidez abdominal, instabilidade hemodinâmica, febre alta, defesa difusa, vômitos fecaloides. Idoso e imunossuprimido: exame abdominal pode ser pobre mesmo em abdome agudo.",
+    warnings: "Abdome agudo no idoso: mortalidade 10x maior que no jovem. Sempre considerar: isquemia mesentérica, aneurisma roto, vólvulo. ECG obrigatório em >50 anos com dor epigástrica.",
+    guideline: "WSES / EAST / CBC",
+  },
+  {
+    id: "rx-emerg-sincope-avaliacao",
+    title: "Síncope — Avaliação e Estratificação no PS",
+    type: "Prescrição de Emergência / PS",
+    prescription: `1. ECG 12 derivações (obrigatório em TODA síncope)
+2. PA ortostática (deitado 5 min → em pé 1 e 3 min)
+3. Glicemia capilar
+4. Exames: HMG, eletrólitos, função renal, troponina (se suspeita cardíaca)
+5. Anamnese dirigida: pródromo (vasovagal) vs súbita sem aviso (cardíaca)
+
+ESTRATIFICAÇÃO (Canadian Syncope Risk Score / San Francisco):
+ALTO RISCO (internar + monitorizar):
+- ECG anormal (BAV, QTc >500, Brugada, WPW, TV)
+- Sopro cardíaco novo
+- Síncope ao esforço
+- Troponina elevada
+- História de IC ou cardiopatia
+- Sem pródromos (súbita)
+
+BAIXO RISCO (alta com orientações):
+- Vasovagal típica (postura prolongada, calor, punção venosa)
+- Jovem, sem cardiopatia, ECG normal
+- Pródromos claros (náusea, escurecimento visual, sudorese)
+
+6. Se alto risco: monitorização telemetria 24-48h + Ecocardiograma
+7. Se recorrente: Holter 24h OU Loop recorder implantável`,
+    notes: "Síncope vasovagal: 60% dos casos. Síncope cardíaca: 15-20% (maior mortalidade). Hipotensão ortostática: 10-15%. San Francisco Rule: C-H-E-S-S (IC, Htc<30, ECG anormal, SOB, PAS<90).",
+    warnings: "Síncope ao esforço em jovem: SEMPRE excluir cardiomiopatia hipertrófica, DAVD, anomalia coronariana, canalopatia. ECO obrigatório.",
+    guideline: "ESC 2018 / AHA / SBC",
+  },
+  {
+    id: "rx-emerg-mordedura-animal",
+    title: "Mordedura de Cão/Gato — Profilaxia e Tratamento",
+    type: "Prescrição de Emergência / PS",
+    prescription: `1. Lavagem EXAUSTIVA da ferida: SF 0,9% sob pressão (seringa 20mL + agulha 25x7) por 15 min
+2. Antissepsia: PVPI 10% ou Clorexidina aquosa 2%
+3. NÃO suturar mordedura de gato (risco de infecção >50%)
+4. Mordedura de cão: suturar se face (estética) — demais: aproximação com steri-strip
+5. Profilaxia antibiótica (INDICAÇÕES: mão, face, imunossuprimido, mordedura de gato, mordedura profunda):
+   - Amoxicilina-Clavulanato 875/125mg VO 12/12h x5-7 dias
+   - Se alergia: Clindamicina 300mg 6/6h + Ciprofloxacino 500mg 12/12h
+6. Profilaxia ANTIRRÁBICA (avaliar protocolo MS):
+   - Animal conhecido + vacinado + observável 10 dias: observar animal
+   - Animal desconhecido/silvestre/morcego: Vacina D0,3,7,14 + Soro antirrábico (SAR) 40UI/kg
+7. Vacina antitetânica (dT) se >5 anos do último reforço
+8. Curativo diário + reavaliação em 48h`,
+    notes: "Mordedura de gato: Pasteurella multocida (infecção rápida em 12-24h). Mordedura de cão: polimicrobiana. Mordedura humana: risco de hepatite B/C — avaliar profilaxia.",
+    warnings: "Morcego: SEMPRE considerar exposição rábica mesmo sem mordedura visível (contato durante sono). Raiva: mortalidade 100% após sintomas.",
+    guideline: "IDSA / MS Brasil / OMS",
+  },
+  {
+    id: "rx-emerg-afogamento",
+    title: "Afogamento — Resgate e Manejo no PS",
+    type: "Prescrição de Emergência / PS",
+    prescription: `1. Segurança da cena + resgate aquático
+2. Se inconsciente sem respiração: RCP imediata (priorizar ventilação — 5 ventilações iniciais)
+3. O2 100% alto fluxo (máscara não reinalante)
+4. Se Glasgow ≤8 ou SpO2 <90% com O2: IOT + Ventilação mecânica protetora
+5. SNG (descompressão gástrica — água deglutida)
+6. Aquecimento ativo se hipotermia (<35°C): manta térmica, soros aquecidos
+7. Monitorização contínua: SpO2, ECG, temperatura central
+8. Exames: gasometria, eletrólitos (Na, K), lactato, Rx tórax, HMG
+9. Classificação de gravidade (Szpilman):
+   - Grau 1-2 (tosse/estertores): O2 + observação 6-24h
+   - Grau 3-4 (EAP/hipotensão): UTI + VM + vasopressores
+   - Grau 5-6 (PCR): RCP prolongada (hipotermia protege → não desistir precoce)
+10. Antibiótico: NÃO profilático (só se sinais de infecção após 48-72h)`,
+    notes: "Manobra de Heimlich NÃO é indicada em afogamento (não é obstrução por corpo estranho). Afogamento em água doce vs salgada: diferença clínica mínima na prática.",
+    warnings: "Hipotermia: NÃO declarar óbito até aquecer ('ninguém está morto até estar quente e morto'). PCR em afogamento: RCP prolongada (>60min) pode ter bom desfecho.",
+    guideline: "ILCOR / SBR / OMS / Szpilman",
+  },
+  {
+    id: "rx-emerg-choque-eletrico",
+    title: "Choque Elétrico / Eletrocussão — Manejo no PS",
+    type: "Prescrição de Emergência / PS",
+    prescription: `1. Segurança: DESLIGAR a fonte elétrica antes do resgate
+2. Se PCR: RCP conforme ACLS (FV é o ritmo mais comum em eletrocussão)
+3. ABC — via aérea (edema pode ser tardio se lesão em pescoço/face)
+4. 2 acessos venosos calibrosos
+5. ECG contínuo por 24h (arritmias tardias)
+6. Monitorização em UTI/semi se: perda de consciência, queimadura extensa, arritmia, alta tensão
+7. Hidratação: SF 0,9% para diurese >1mL/kg/h
+8. CPK seriada (rabdomiólise)
+9. Se mioglobinúria: bicarbonato de sódio 8,4% em SF → manter pH urinário >6,5
+10. Troponina (lesão miocárdica direta)
+11. Avaliação de queimaduras em pontos de entrada e saída
+12. Fasciotomia se síndrome compartimental
+13. Exame neurológico seriado (lesão medular, neuropatia)`,
+    notes: "Alta tensão (>1000V): lesão profunda, rabdomiólise, lesão cardíaca. Baixa tensão (<1000V): fibrilação ventricular (principal causa de morte). Raio: pode causar PCR em assistolia.",
+    warnings: "Gestantes: monitorização fetal obrigatória por 24h (mesmo em baixa tensão). Lesão interna pode ser muito maior que a externa.",
+    guideline: "ATLS / ABA / ACLS",
+  },
+  {
+    id: "rx-emerg-corpo-estranho-ingerido",
+    title: "Corpo Estranho Ingerido — Manejo no PS",
+    type: "Prescrição de Emergência / PS",
+    prescription: `1. Rx cervical + tórax + abdome (localizar e identificar o objeto)
+2. Avaliar via aérea (se odinofagia intensa, estridor, sialorreia)
+
+CONDUTA POR TIPO:
+A) Botão/pilha/bateria (EMERGÊNCIA):
+   - Se esôfago: EDA IMEDIATA (<2h) → risco de perfuração em 2-4h
+   - Se estômago + assintomático: repetir Rx em 48h
+B) Objeto pontiagudo/cortante:
+   - Se esôfago/estômago: EDA para remoção
+   - Se passou do duodeno + assintomático: acompanhar com Rx seriado
+C) Objeto rombo <3cm (moeda):
+   - Se esôfago >24h: EDA
+   - Se estômago: observar (maioria passa em 4-6 dias)
+D) Magneto (2+ ímãs): EDA URGENTE (risco de fístula/necrose entre alças)
+
+3. Jejum até definição
+4. Se assintomático em seguimento: dieta rica em fibras + Rx seriado
+5. Sinais de complicação: dor, febre, vômitos, hematêmese → TC + cirurgia`,
+    notes: "Crianças 6m-3 anos: maior risco. Moedas são o objeto mais comum. Body packers (drogas embaladas): NÃO fazer EDA (risco de ruptura) → cirurgia se sintomas.",
+    warnings: "Pilha em esôfago: EMERGÊNCIA ABSOLUTA — necrose em 2h. 2+ ímãs: risco de perfuração, fístula, necrose por pressão entre alças intestinais.",
+    guideline: "ESGE / NASPGHAN / ASGE",
+  },
 ];
 
 
