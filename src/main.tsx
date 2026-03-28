@@ -51,4 +51,19 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-createRoot(document.getElementById("root")!).render(<App />);
+console.log("[MedCore] main.tsx executing");
+const rootEl = document.getElementById("root");
+console.log("[MedCore] root element:", rootEl);
+if (rootEl) {
+  try {
+    const root = createRoot(rootEl);
+    console.log("[MedCore] createRoot OK, rendering App...");
+    root.render(<App />);
+    console.log("[MedCore] render() called");
+  } catch (e) {
+    console.error("[MedCore] render error:", e);
+    rootEl.innerHTML = '<div style="color:red;padding:20px">Erro ao carregar: ' + String(e) + '</div>';
+  }
+} else {
+  console.error("[MedCore] #root not found!");
+}
