@@ -9313,6 +9313,381 @@ D) Magneto (2+ ímãs): EDA URGENTE (risco de fístula/necrose entre alças)
     warnings: "NUNCA usar nitroprussiato sem betabloqueador (taquicardia reflexa aumenta shear stress → propaga dissecção). Dor torácica + diferença de PA entre membros = suspeitar.",
     guideline: "AHA / ESC / SBCCV",
   },
+
+  // ── ONCOLOGIA (expansão) ──
+  {
+    id: "rx-neutropenia-febril",
+    title: "Neutropenia Febril Pós-Quimioterapia",
+    type: "Prescrição Oncologia",
+    prescription: `1. EMERGÊNCIA ONCOLÓGICA — iniciar ATB em até 60 minutos
+2. Definição: neutrófilos <500/mm³ (ou <1000 com previsão de queda) + Tax ≥38,3°C (ou ≥38°C por >1h)
+3. Hemocultura 2 amostras (aeróbia + anaeróbia) + cultura de cateter central se presente
+4. Hemograma, PCR, procalcitonina, função renal/hepática, eletrólitos, lactato
+5. RX tórax PA e perfil
+6. EAS + urocultura
+7. MASCC Score para estratificação de risco:
+   - Alto risco (MASCC <21): internação + Cefepime 2g EV 8/8h ou Piperacilina-Tazobactam 4,5g EV 6/6h
+   - Baixo risco (MASCC ≥21): Amoxicilina-Clavulanato 500mg VO 8/8h + Ciprofloxacino 500mg VO 12/12h
+8. Se instável/choque: Meropenem 1g EV 8/8h + Vancomicina 15-20mg/kg EV 12/12h
+9. Se mucosite grave ou cateter infectado: adicionar Vancomicina
+10. Reavaliar em 48-72h: sem melhora → considerar antifúngico (Caspofungina 70mg D1 → 50mg/dia)
+11. G-CSF (Filgrastima 5mcg/kg/dia SC) se alto risco ou neutropenia prolongada prevista
+12. Profilaxia: Fluconazol 400mg/dia se neutropenia >7 dias prevista`,
+    notes: "Mortalidade de neutropenia febril: 5-10% (alto risco até 20%). Infecção documentada em apenas 30-40%. Foco mais comum: pulmão, pele, trato urinário.",
+    warnings: "NÃO esperar resultados de cultura para iniciar ATB. NÃO fazer toque retal (risco de bacteremia). Febre pode ser o ÚNICO sinal de infecção.",
+    guideline: "IDSA / ASCO / NCCN / SBOC",
+  },
+  {
+    id: "rx-sindrome-lise-tumoral",
+    title: "Síndrome de Lise Tumoral (SLT)",
+    type: "Prescrição Oncologia / UTI",
+    prescription: `1. Internação — monitorização contínua se alto risco
+2. Hidratação agressiva: SF 0,9% 3000mL/m²/dia (meta diurese >2mL/kg/h)
+3. NÃO alcalinizar urina (controverso e pode piorar precipitação de fosfato de cálcio)
+4. Rasburicase 0,2mg/kg EV dose única (1ª escolha se ácido úrico >8 ou alto risco)
+   - CI: deficiência de G6PD (hemólise grave)
+5. OU Alopurinol 300-600mg/dia VO (prevenção, se baixo risco)
+6. Monitorizar LABS a cada 4-6h: K+, Ca²+, fósforo, ácido úrico, LDH, creatinina
+7. Hipercalemia: protocolo padrão (gluconato de cálcio + insulina + glicose + Sorcal)
+8. Hiperfosfatemia: Hidróxido de alumínio 300mg VO 8/8h com refeições + restrição dietética
+9. Hipocalcemia: tratar APENAS se sintomática (correção agressiva pode piorar deposição tecidual)
+10. Indicação de diálise: K+ refratário, oligúria, sobrecarga hídrica, ácido úrico/fósforo refratários
+11. ECG seriado (arritmias por distúrbios eletrolíticos)
+12. Classificação Cairo-Bishop para diagnóstico`,
+    notes: "Alto risco: linfoma de Burkitt, LLA, leucemias com WBC >100.000. Pode ocorrer espontaneamente (antes da QT) em tumores de alta proliferação. SLT laboratorial → SLT clínica: IRA, arritmia, convulsão.",
+    warnings: "Rasburicase + G6PD = hemólise potencialmente fatal. NUNCA enviar amostra de ácido úrico em gelo após rasburicase (degrada in vitro → resultado falsamente baixo).",
+    guideline: "ASCO / NCCN / Cairo-Bishop",
+  },
+  {
+    id: "rx-compressao-medular",
+    title: "Compressão Medular Oncológica",
+    type: "Prescrição Oncologia / Emergência",
+    prescription: `1. EMERGÊNCIA — janela terapêutica: horas a poucos dias
+2. Dexametasona 10mg EV em bolus → 4mg EV 6/6h (redução de edema)
+3. Analgesia: Dipirona 1g EV 6/6h + Morfina 5mg SC 4/4h SN
+4. RNM de coluna TOTAL (pode haver múltiplos níveis) — URGENTE
+5. Repouso no leito com alinhamento de coluna
+6. SVD se retenção urinária
+7. Profilaxia TVP: Enoxaparina 40mg SC 1x/dia
+8. Laxativo: Lactulose 15mL VO 12/12h (evitar Valsalva)
+9. Decisão terapêutica MULTIDISCIPLINAR:
+   - Cirurgia descompressiva: instabilidade, fragmento ósseo, tumor radioresistente, deterioração durante RT
+   - Radioterapia: maioria dos casos (esquemas 8Gy dose única ou 30Gy em 10 frações)
+10. Prognóstico motor: depende do status neurológico pré-tratamento
+    - Deambulando: 80% mantêm deambulação
+    - Paraplégico >48h: <5% recuperam`,
+    notes: "Tumores mais comuns: mama, próstata, pulmão, mieloma. Dor dorsal em paciente oncológico = compressão medular até prova em contrário. Nível torácico: 60-70%.",
+    warnings: "Cada hora de atraso PIORA o prognóstico neurológico. Paraplegia >48h = geralmente irreversível.",
+    guideline: "NICE / ASCO / ESMO",
+  },
+  {
+    id: "rx-hipercalcemia-maligna",
+    title: "Hipercalcemia da Malignidade",
+    type: "Prescrição Oncologia",
+    prescription: `1. Hidratação agressiva: SF 0,9% 200-300mL/h (3-6L/dia) — corrigir desidratação
+2. Furosemida 20-40mg EV APENAS após hidratação adequada (NÃO usar para "forçar calciúria" sem hidratação)
+3. Ácido Zoledrônico 4mg EV em 15min (início de ação: 2-4 dias, pico: 4-7 dias)
+   OU Pamidronato 60-90mg EV em 2-4h
+4. Denosumabe 120mg SC se refratário ou IR (não necessita ajuste renal)
+5. Calcitonina 4UI/kg SC ou IM 12/12h (ação rápida em 4-6h, taquifilaxia em 48h)
+6. Se Ca >14mg/dL ou sintomático grave: Calcitonina + Bisfosfonato + Hidratação simultâneos
+7. Corticoide: Dexametasona 4mg EV 6/6h (se mieloma, linfoma ou origem hematológica)
+8. Monitorizar: Ca ionizado, creatinina, Mg, ECG (QT curto → arritmia)
+9. Dieta hipossódica (NÃO restringir cálcio dietético na fase aguda)
+10. Tratar a neoplasia de base (medida mais eficaz a longo prazo)
+11. Se refratária: diálise com banho pobre em cálcio`,
+    notes: "Mecanismo: PTHrp (humoral — pulmão, rim, cabeça/pescoço) ou osteolítica (mieloma, mama). Sinal de mau prognóstico — sobrevida mediana: 30 dias sem tratamento do tumor.",
+    warnings: "Ca corrigido = Ca total + 0,8 × (4 – albumina). Bisfosfonatos: ajustar dose se ClCr <30. NÃO usar furosemida sem hidratação (piora desidratação e hipercalcemia).",
+    guideline: "ASCO / ESMO / Endocrine Society",
+  },
+  {
+    id: "rx-svcs",
+    title: "Síndrome da Veia Cava Superior (SVCS)",
+    type: "Prescrição Oncologia / Emergência",
+    prescription: `1. Cabeceira elevada a 45° (reduzir pressão venosa)
+2. O2 suplementar se dispneia
+3. Dexametasona 4mg EV 6/6h (redução de edema peritumoral)
+4. Furosemida 40mg EV se edema facial/cerebral importante
+5. TC de tórax com contraste — confirmar diagnóstico e extensão
+6. Se estridor/edema de glote: IOT (cuidado — pode ser difícil)
+7. Biópsia ANTES do tratamento (se possível — não atrasar se instável)
+8. Tratamento conforme histologia:
+   - Linfoma / CPPC: QT urgente (resposta rápida)
+   - CPNPC / outros: RT paliativa ou stent endovascular
+9. Anticoagulação se trombose associada: Enoxaparina 1mg/kg SC 12/12h
+10. Stent endovascular: alívio imediato se edema cerebral ou via aérea comprometida
+11. Monitorizar: oximetria, diurese, perímetro cervical seriado`,
+    notes: "Causa: CA pulmão (70%), linfoma (15%), timoma. Edema facial, pletora, circulação colateral torácica, turgência jugular bilateral. Síndrome de Pemberton: piora ao elevar braços.",
+    warnings: "Via aérea pode estar comprometida — IOT difícil (edema supraglótico). Evitar punção de subclávia/jugular do lado afetado. Acesso venoso em MMII.",
+    guideline: "ASCO / ESMO / NCCN",
+  },
+
+  // ── ANESTESIOLOGIA (expansão) ──
+  {
+    id: "rx-raquianestesia",
+    title: "Raquianestesia — Protocolo e Manejo",
+    type: "Prescrição Anestesiologia",
+    prescription: `1. Jejum pré-operatório: líquidos claros 2h, sólidos leves 6h, gordurosos 8h
+2. Monitorização: ECG, SpO2, PANI 3/3min, acesso venoso periférico
+3. Pré-hidratação: SF 0,9% 500-1000mL ou co-loading com RL
+4. Posição: sentada ou DLE — punção L3-L4 ou L4-L5
+5. Antissepsia com Clorexidina alcoólica 0,5%
+6. Agulha ponta de lápis (Whitacre/Sprotte) 25G ou 27G (↓ cefaleia pós-punção)
+7. Bupivacaína hiperbárica 0,5%: 10-15mg (cesárea) / 7,5-12,5mg (MMII)
+8. Adjuvantes: Morfina 80-100mcg (analgesia 24h) OU Fentanil 15-25mcg
+9. Hipotensão pós-raqui: Efedrina 5-10mg EV ou Fenilefrina 50-100mcg EV
+10. Se bradicardia <50bpm: Atropina 0,5mg EV
+11. Nível sensitivo alvo: T10 (cirurgias abdominais baixas), T6 (cesárea)
+12. Cefaleia pós-punção: repouso + hidratação + Cafeína 500mg VO → se refratária: blood patch`,
+    notes: "Contraindicações absolutas: recusa do paciente, infecção no local, coagulopatia, hipovolemia grave, hipertensão intracraniana. Relativas: estenose aórtica, neuropatia prévia.",
+    warnings: "Raqui total (nível cervical alto): apneia + hipotensão grave → IOT imediata + vasopressores. Hematoma epidural: emergência neurocirúrgica (<8h).",
+    guideline: "SBA / ESRA / ASRA",
+  },
+  {
+    id: "rx-bloqueio-peridural",
+    title: "Anestesia Peridural / Epidural",
+    type: "Prescrição Anestesiologia",
+    prescription: `1. Indicações: analgesia de parto, cirurgias abdominais/torácicas, pós-operatório
+2. Monitorização: ECG, SpO2, PANI, acesso venoso
+3. Posição: sentada ou DLE
+4. Punção: agulha Tuohy 16-18G — técnica de perda de resistência (ar ou SF)
+5. Nível conforme cirurgia: T6-T8 (abdome superior), T10-T12 (MMII/períneo)
+6. Dose teste: Lidocaína 2% com adrenalina 1:200.000 — 3mL (excluir intravascular/intratecal)
+7. Bupivacaína 0,25-0,5%: 10-20mL fracionados (3-5mL por vez, aguardar 5min)
+8. Cateter peridural: fixar e confirmar posição
+9. Infusão contínua pós-op: Bupivacaína 0,125% + Fentanil 2mcg/mL a 5-10mL/h
+10. Hipotensão: Efedrina 5-10mg EV ou cristaloide
+11. Retirada do cateter: ≥12h após última dose de Enoxaparina (≥4h se HNF)
+12. Vigiar sinais de hematoma epidural: dor lombar + déficit motor progressivo`,
+    notes: "Latência: 15-20min. Cateter permite analgesia prolongada (dias). Vantagem sobre raqui: menor hipotensão, bloqueio titulável.",
+    warnings: "Injeção intravascular acidental: convulsão + colapso cardiovascular → Intralipid 20% 1,5mL/kg EV. Hematoma epidural: descompressão cirúrgica em <8h.",
+    guideline: "SBA / ESRA / ASRA",
+  },
+  {
+    id: "rx-bloqueio-braquial",
+    title: "Bloqueio do Plexo Braquial — Interescalênico e Axilar",
+    type: "Prescrição Anestesiologia",
+    prescription: `1. Indicação: cirurgias de ombro (interescalênico), cotovelo/mão (axilar/supraclavicular)
+2. USG obrigatório (padrão-ouro) + neuroestimulação complementar
+3. Monitorização: ECG, SpO2, PANI, acesso venoso
+4. INTERESCALÊNICO:
+   - Bupivacaína 0,375-0,5%: 15-20mL guiado por USG
+   - Bloqueio de C5-C7 (ombro, braço proximal)
+   - Efeitos esperados: paresia diafragmática ipsilateral (100%), Horner
+5. AXILAR:
+   - Bupivacaína 0,375%: 30-40mL (distribuir em musculocutâneo, mediano, ulnar, radial)
+   - Ideal para cirurgias distais ao cotovelo
+6. Adjuvantes: Dexametasona 4mg perineural (prolonga bloqueio 8-12h)
+7. Sedação: Midazolam 1-2mg EV + Fentanil 50mcg EV
+8. Dose máxima de bupivacaína: 2mg/kg (sem adrenalina) / 3mg/kg (com adrenalina)
+9. Vigiar sinais de LAST (toxicidade por anestésico local)
+10. Kit de LAST disponível: Intralipid 20% + via aérea`,
+    notes: "Interescalênico: CI relativa em pneumopata contralateral (paralisia frênica). Não bloqueia C8-T1 (mão ulnar). Supraclavicular: 'raqui do membro superior' — bloqueio mais completo.",
+    warnings: "LAST: formigamento perioral → convulsão → colapso CV. Tratamento: Intralipid 20% 1,5mL/kg bolus + infusão. NÃO usar bupivacaína EV para TIVA.",
+    guideline: "SBA / ESRA / ASRA / NYSORA",
+  },
+  {
+    id: "rx-hipertermia-maligna",
+    title: "Hipertermia Maligna — Protocolo de Emergência",
+    type: "Prescrição Anestesiologia / UTI",
+    prescription: `1. SUSPENDER agente desencadeante IMEDIATAMENTE (halogenados, succinilcolina)
+2. Pedir ajuda — ligar para HOTLINE (0800 se disponível)
+3. Hiperventilar com O2 100% a alto fluxo (≥10L/min) — trocar circuito e cal sodada
+4. DANTROLENE 2,5mg/kg EV em bolus rápido → repetir a cada 5min até resposta (dose máxima: 10mg/kg)
+5. Cada frasco (20mg) dilui em 60mL de água estéril — AGITAR vigorosamente
+6. Resfriamento ativo: SF 0,9% gelado EV, lavagem gástrica/vesical com SF gelado, compressas de gelo
+7. Tratar hipercalemia: Gluconato de cálcio 30mg/kg EV + Insulina regular 0,1UI/kg + SG50% 1mL/kg
+8. Bicarbonato de sódio 8,4%: 1-2mEq/kg se acidose metabólica grave
+9. Tratar arritmias: NÃO usar bloqueadores de canal de cálcio (interação fatal com dantrolene)
+10. SVD — meta diurese >2mL/kg/h (manitol 0,25g/kg se necessário)
+11. Labs seriados: gasometria, K+, Ca²+, CPK, mioglobina, coagulograma, lactato
+12. Manter Dantrolene 1mg/kg EV 4/4h por 24-48h pós-crise
+13. Encaminhar para biópsia muscular (teste de contratura com halotano-cafeína) e aconselhamento genético`,
+    notes: "Incidência: 1:10.000-50.000 anestesias. Herança autossômica dominante (mutação RYR1). Tríade: hipercapnia inexplicada + rigidez muscular + taquicardia. CPK pode chegar a >100.000.",
+    warnings: "Mortalidade sem Dantrolene: >80%. COM Dantrolene: <5%. CADA MINUTO conta. Ter pelo menos 36 frascos no hospital. NÃO usar verapamil (hipercalemia fatal com dantrolene).",
+    guideline: "MHAUS / SBA / AAGBI",
+  },
+  {
+    id: "rx-via-aerea-dificil",
+    title: "Via Aérea Difícil — Algoritmo de Manejo",
+    type: "Prescrição Anestesiologia / Emergência",
+    prescription: `1. Avaliação pré-intubação: Mallampati, distância tireomentoniana, abertura oral, mobilidade cervical
+2. Preditores de VAD: Mallampati III-IV, DTM <6cm, abertura oral <3cm, pescoço curto, obesidade, história prévia
+3. Preparação: 2 laringoscópios (direto + videolaringoscópio), bougie, máscara laríngea, kit de cricotireoidostomia
+4. PLANO A — Laringoscopia direta/vídeo:
+   - Otimizar: posição (rampa/sniffing), BURP/manipulação laríngea externa, bougie
+   - Máximo 3 tentativas + 1 por profissional mais experiente
+5. PLANO B — Dispositivo supraglótico (máscara laríngea):
+   - LMA de 2ª geração (i-gel, ProSeal, Supreme)
+   - Máximo 3 tentativas
+6. PLANO C — Ventilar com máscara facial:
+   - 2 mãos, cânula orofaríngea, 2 operadores
+7. PLANO D — CICO (Can't Intubate, Can't Oxygenate):
+   - CRICOTIREOIDOSTOMIA CIRÚRGICA — não atrasar
+   - Técnica: incisão vertical na pele → incisão horizontal na membrana cricotireoidea → bougie → tubo 6,0
+8. Despertar o paciente se possível (antes do plano D)
+9. Se via aérea difícil prevista: IOT acordado com fibroscópio (1ª escolha)
+10. Documentar: laudo de VAD + orientar paciente + registrar no prontuário`,
+    notes: "CICO é raro (1:50.000) mas fatal se não reconhecido. Videolaringoscópio melhora visualização em 90% dos casos difíceis. Sempre ter plano B, C e D antes de induzir.",
+    warnings: "Máximo de tentativas: NÃO insistir na laringoscopia (edema + sangramento = piora progressiva). SpO2 <90%: PARAR e ventilar antes de nova tentativa.",
+    guideline: "DAS / ASA / SBA",
+  },
+  {
+    id: "rx-sedacao-procedural",
+    title: "Sedação Procedural — Protocolo Seguro",
+    type: "Prescrição Anestesiologia / Emergência",
+    prescription: `1. Avaliação pré-sedação: ASA, alergias, jejum, via aérea, comorbidades
+2. Monitorização obrigatória: SpO2, ECG, PANI, capnografia (se disponível)
+3. Material de ressuscitação à beira do leito: BVM, cânulas, laringoscópio, aspirador
+4. SEDAÇÃO LEVE (ansiolise):
+   - Midazolam 1-2mg EV titulado (idoso: 0,5mg)
+5. SEDAÇÃO MODERADA:
+   - Midazolam 2-3mg EV + Fentanil 50-100mcg EV
+6. SEDAÇÃO PROFUNDA:
+   - Propofol 0,5-1mg/kg EV bolus → 25-75mcg/kg/min infusão
+   - OU Cetamina 1-2mg/kg EV (dissociativa — mantém reflexo de VA)
+7. PROCEDIMENTOS DOLOROSOS RÁPIDOS (<5min):
+   - Cetamina 1,5mg/kg EV dose única
+   - Pré-medicar: Ondansetrona 4mg EV (antiemético)
+8. Antagonistas disponíveis: Flumazenil 0,2mg EV (benzo), Naloxona 0,4mg EV (opioide)
+9. Critérios de alta: Aldrete ≥9, deambulação, VO tolerada, acompanhante
+10. Documentar: drogas, doses, horários, eventos, Aldrete na alta`,
+    notes: "Cetamina: ideal para crianças e procedimentos dolorosos (reduções, curativos). Mantém drive respiratório e reflexos protetores. Pode causar nistagmo, salivação, agitação de emergência.",
+    warnings: "Propofol: apneia dose-dependente — NUNCA sem material de VA disponível. Cetamina CI: <3 meses, HIC, psicose ativa, porfiria.",
+    guideline: "SBA / ASA / ACEP",
+  },
+
+  // ── MEDICINA LEGAL / TRABALHO (expansão) ──
+  {
+    id: "rx-corpo-delito",
+    title: "Exame de Corpo de Delito — Roteiro Médico",
+    type: "Prescrição Medicina Legal",
+    prescription: `1. Identificação completa do periciando (nome, RG, data nascimento)
+2. Data/hora do exame, local, solicitante (delegacia/juízo)
+3. Anamnese objetiva: relato do fato, mecanismo de lesão, data/hora da agressão
+4. Exame físico COMPLETO — descrever TODAS as lesões:
+   - Localização anatômica precisa
+   - Dimensões (cm), formato, coloração
+   - Classificação: escoriação, equimose, hematoma, ferida incisa/contusa/perfurante
+5. Documentação fotográfica com escala métrica (régua na foto)
+6. Estimativa de idade das lesões (equimose: evolução cromática):
+   - Vermelha: <24h | Azulada: 1-3 dias | Esverdeada: 3-7 dias | Amarelada: 7-15 dias
+7. Avaliar se houve PERIGO DE VIDA (Art. 129 §1° II CP)
+8. Avaliar debilidade/perda de membro, sentido ou função
+9. Solicitar exames complementares se necessário (RX, TC)
+10. Prognóstico: estimar tempo de incapacidade (dias de afastamento)
+11. Conclusão: nexo causal, instrumento provável, classificação da lesão
+12. Encaminhar para atendimento médico se necessário`,
+    notes: "Médico plantonista pode fazer laudo de lesão corporal como documento provisório até perícia oficial (IML). Art. 158 CPP: exame de corpo de delito é indispensável quando a infração deixar vestígios.",
+    warnings: "NÃO emitir juízo de valor sobre autoria. Descrever APENAS achados objetivos. Prontuário médico pode ser requisitado judicialmente.",
+    guideline: "CFM Res. 2.056/2013 / Código Penal Art. 129 / CPP Art. 158-184",
+  },
+  {
+    id: "rx-embriaguez-pericia",
+    title: "Perícia de Embriaguez / Exame Clínico de Alcoolemia",
+    type: "Prescrição Medicina Legal",
+    prescription: `1. Identificação completa + data/hora do exame
+2. ANAMNESE: quantidade referida de álcool, tempo desde a última ingestão, alimentação
+3. EXAME CLÍNICO COMPLETO:
+   a) Estado geral: hálito etílico, rubor facial, sudorese
+   b) Neurológico: marcha (Romberg, tandem), coordenação (índex-nariz, diadococinesia)
+   c) Fala: disartria, lentificação
+   d) Pupilas: midríase, nistagmo
+   e) Equilíbrio: uni e bipodal
+   f) Cognitivo: orientação, atenção, memória recente
+4. Classificação clínica:
+   - Fase 1 (excitação): euforia, desinibição, fala arrastada
+   - Fase 2 (confusão): incoordenação, diplopia, vômitos
+   - Fase 3 (estupor): rebaixamento, hipotermia, incontinência
+   - Fase 4 (coma): coma profundo, depressão respiratória
+5. Solicitar dosagem de alcoolemia sérica se disponível
+6. Etilômetro (bafômetro) se autorizado pelo periciando
+7. Coleta de sangue para alcoolemia: tubo com fluoreto de sódio (NÃO usar álcool na antissepsia)
+8. Conclusão: compatibilidade clínica com uso recente de álcool`,
+    notes: "Exame clínico de embriaguez é válido juridicamente mesmo sem dosagem laboratorial (STJ). Alcoolemia 0,0 ≠ ausência de embriaguez (pode ser por outras substâncias). Lei Seca: art. 306 CTB.",
+    warnings: "NÃO usar álcool 70% na antissepsia (contamina a amostra). O examinado pode RECUSAR bafômetro e coleta de sangue (direito constitucional — nemo tenetur). O exame clínico pode ser realizado.",
+    guideline: "CFM / IML-SP / CTB Lei 12.760/2012",
+  },
+  {
+    id: "rx-acidente-material-biologico",
+    title: "Acidente com Material Biológico — PEP e Condutas",
+    type: "Prescrição Medicina do Trabalho",
+    prescription: `1. CUIDADO IMEDIATO: lavar com água corrente + sabão (NÃO espremer)
+   - Mucosas: irrigar com SF 0,9% abundante
+   - NÃO usar soluções irritantes (álcool, hipoclorito)
+2. Identificar material: sangue, líquor, secreção vaginal, sêmen, líquido amniótico (RISCO)
+   - Saliva, urina, fezes sem sangue = SEM RISCO (exceto mordedura com sangue)
+3. Testar FONTE (paciente-fonte) E ACIDENTADO:
+   - Teste rápido HIV + HBsAg + Anti-HCV (ambos, na hora)
+4. PEP HIV (iniciar em até 72h, ideal <2h):
+   - TDF 300mg + 3TC 300mg (Truvada) + DTG 50mg — 1 comp de cada, 1x/dia, por 28 dias
+   - Se fonte HIV+ em TARV com resistência: ajustar conforme genotipagem
+5. HEPATITE B:
+   - Acidentado vacinado com Anti-HBs >10: NENHUMA conduta
+   - Não vacinado ou Anti-HBs <10: IGHAHB 0,06mL/kg IM + iniciar/completar vacina
+6. HEPATITE C: NÃO há profilaxia. Monitorizar: Anti-HCV + ALT em 30, 90 e 180 dias
+7. Notificar: CAT (Comunicação de Acidente de Trabalho)
+8. Registrar em livro/SINAN
+9. Acompanhamento sorológico: 30, 90, 180 dias
+10. Suporte psicológico ao acidentado`,
+    notes: "Risco de soroconversão: HIV percutâneo 0,3%, mucosa 0,09%. HBV percutâneo: até 30% (maior risco). HCV percutâneo: 1,8%. Agulhas ocas > agulhas sólidas em risco.",
+    warnings: "PEP HIV deve ser iniciada em até 72h (ideal <2h). Após 72h: NÃO iniciar PEP (sem evidência de benefício). IGHAHB até 7 dias do acidente.",
+    guideline: "MS Brasil PCDT PEP 2021 / CDC / CFM",
+  },
+  {
+    id: "rx-atestado-obito",
+    title: "Declaração de Óbito — Preenchimento Correto",
+    type: "Prescrição Medicina Legal",
+    prescription: `1. QUEM PREENCHE:
+   - Morte natural com assistência: médico assistente
+   - Morte natural sem assistência: SVO (Serviço de Verificação de Óbito)
+   - Morte violenta/suspeita: IML (encaminhar para perícia)
+2. PREENCHIMENTO DO BLOCO V (Causas de Morte):
+   - Linha a: causa imediata (ex: choque séptico)
+   - Linha b: causa consequencial (ex: pneumonia)
+   - Linha c: causa antecedente (ex: neoplasia de pulmão)
+   - Linha d: causa básica (ex: tabagismo — se aplicável)
+   - Parte II: causas contribuintes (ex: diabetes mellitus, HAS)
+3. NUNCA usar como causa básica:
+   - "Parada cardiorrespiratória" (mecanismo de morte, não causa)
+   - "Falência múltipla de órgãos" (consequência, não causa)
+4. Hora do óbito: hora da constatação OU hora estimada
+5. Preencher TODOS os campos obrigatórios
+6. Não rasurar — se erro: anular com traço horizontal e assinar
+7. Vias: 1ª branca (Registro Civil), 2ª amarela (hospital), 3ª rosa (SMS)
+8. Morte encefálica: protocolo específico (2 exames clínicos + complementar)
+9. Óbito fetal: >500g ou >20 semanas = DO obrigatória
+10. Notificar se doença de notificação compulsória`,
+    notes: "Médico NÃO pode se recusar a atestar óbito de paciente sob seus cuidados (CEM Art. 84). A causa básica da morte é a mais importante para estatísticas de saúde pública (CID-10).",
+    warnings: "Preenchimento incorreto da DO compromete estatísticas de mortalidade do país. NÃO atestar óbito de causa violenta — ENCAMINHAR AO IML.",
+    guideline: "MS Brasil / CFM Res. 1.779/2005 / OMS CID-10",
+  },
+  {
+    id: "rx-violencia-sexual",
+    title: "Atendimento à Vítima de Violência Sexual — Protocolo",
+    type: "Prescrição Medicina Legal / Emergência",
+    prescription: `1. Acolhimento humanizado — ambiente privativo
+2. NÃO é necessário BO para atendimento (Lei 12.845/2013)
+3. PROFILAXIAS (iniciar em até 72h):
+   a) HIV — PEP: TDF + 3TC + DTG por 28 dias (ver protocolo PEP)
+   b) Hepatite B: vacina + IGHAHB se não vacinada
+   c) ISTs: Ceftriaxona 500mg IM DU + Azitromicina 1g VO DU + Metronidazol 2g VO DU
+   d) Contracepção de emergência: Levonorgestrel 1,5mg VO DU (até 5 dias)
+4. Coleta de vestígios (se <72h e consentimento):
+   - Swab vaginal/anal/oral em tubo seco
+   - Roupas íntimas em saco de papel (NÃO plástico)
+   - Raspado subungueal
+5. Exames: Beta-hCG, sorologias (HIV, HBV, HCV, sífilis, HTLV), hemograma
+6. Teste rápido de gravidez ANTES da contracepção de emergência
+7. Suporte psicológico IMEDIATO
+8. Notificação COMPULSÓRIA: ficha SINAN (Lei 10.778/2003)
+9. Menor de 18 anos: notificar Conselho Tutelar
+10. Acompanhamento: 30, 90, 180 dias (sorologias)
+11. Se gravidez resultante: direito ao aborto legal (não necessita BO)`,
+    notes: "Lei 12.845/2013: atendimento OBRIGATÓRIO e INTEGRAL pelo SUS. NÃO pode condicionar atendimento à apresentação de BO. Aborto legal: até 20-22 semanas (protocolo MS).",
+    warnings: "NUNCA questionar a veracidade do relato. NUNCA condicionar atendimento a BO. Documentar tudo com consentimento. Sigilo profissional absoluto (exceto notificação compulsória).",
+    guideline: "MS Brasil / Lei 12.845/2013 / CFM / OMS",
+  },
 ];
 
 
