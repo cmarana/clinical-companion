@@ -30,6 +30,26 @@
 
   <body>
     <div id="root"></div>
+    <script>
+      // Emergency SW cleanup for preview/iframe — runs before React
+      (function(){
+        try {
+          var isPreview = location.hostname.indexOf('id-preview--') !== -1 || location.hostname.indexOf('lovableproject.com') !== -1;
+          var isIframe = false;
+          try { isIframe = window.self !== window.top; } catch(e) { isIframe = true; }
+          if ((isPreview || isIframe) && 'serviceWorker' in navigator) {
+            navigator.serviceWorker.getRegistrations().then(function(regs) {
+              regs.forEach(function(r) { r.unregister(); });
+            });
+            if ('caches' in window) {
+              caches.keys().then(function(keys) {
+                keys.forEach(function(k) { caches.delete(k); });
+              });
+            }
+          }
+        } catch(e) {}
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
