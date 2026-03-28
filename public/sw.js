@@ -1,4 +1,4 @@
-const CACHE_NAME = 'medcore-v3';
+const CACHE_NAME = 'medcore-v4';
 const STATIC_ASSETS = [
   '/manifest.json',
   '/icons/icon-192.png',

@@ -11,21 +11,24 @@ const isPreviewHost =
   window.location.hostname.includes("lovableproject.com");
 
 const cleanupServiceWorkers = async () => {
-  const registrations = await navigator.serviceWorker.getRegistrations();
-  await Promise.all(registrations.map((r) => r.unregister()));
+  if ("serviceWorker" in navigator) {
+    const registrations = await navigator.serviceWorker.getRegistrations();
+    await Promise.all(registrations.map((r) => r.unregister()));
+  }
   if ("caches" in window) {
     const keys = await caches.keys();
     await Promise.all(keys.map((k) => caches.delete(k)));
   }
 };
 
+// Always clean up in preview/iframe — run BEFORE anything else
+if (isPreviewHost || isInIframe) {
+  cleanupServiceWorkers().catch(() => {});
+}
+
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
-    // Never register SW in iframe/preview contexts
-    if (isPreviewHost || isInIframe) {
-      cleanupServiceWorkers().catch(() => {});
-      return;
-    }
+    if (isPreviewHost || isInIframe) return;
 
     if (import.meta.env.PROD) {
       navigator.serviceWorker
