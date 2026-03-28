@@ -8963,6 +8963,356 @@ D) Magneto (2+ ímãs): EDA URGENTE (risco de fístula/necrose entre alças)
     warnings: "Pilha em esôfago: EMERGÊNCIA ABSOLUTA — necrose em 2h. 2+ ímãs: risco de perfuração, fístula, necrose por pressão entre alças intestinais.",
     guideline: "ESGE / NASPGHAN / ASGE",
   },
+
+  // ── DERMATOLOGIA (expansão) ──
+  {
+    id: "rx-eczema-herpetico",
+    title: "Eczema Herpético (Erupção Variceliforme de Kaposi)",
+    type: "Prescrição Dermatologia",
+    prescription: `1. Internação se extenso ou imunossuprimido
+2. Aciclovir 10mg/kg EV 8/8h (casos graves) por 7-14 dias
+3. OU Aciclovir 400mg VO 5x/dia (casos leves) por 10 dias
+4. SF 0,9% 1000mL EV — manter hidratação
+5. Dipirona 1g EV 6/6h se febre
+6. Cuidados locais: compressas com SF 0,9% morno
+7. NÃO usar corticoide tópico durante infecção ativa
+8. Emoliente em áreas não infectadas
+9. Swab para cultura bacteriana (superinfecção frequente)
+10. Se superinfecção: Cefalexina 500mg VO 6/6h ou Oxacilina EV
+11. Isolamento de contato
+12. Avaliação oftalmológica se acometimento periocular`,
+    notes: "Complicação grave de dermatite atópica com disseminação do HSV. Mortalidade sem tratamento: até 10%. Pode simular varicela disseminada.",
+    warnings: "NÃO usar corticoide sistêmico. Iniciar antiviral imediatamente — atraso aumenta mortalidade.",
+    guideline: "SBD / AAD",
+  },
+  {
+    id: "rx-psoríase-pustulosa",
+    title: "Psoríase Pustulosa Generalizada (Von Zumbusch)",
+    type: "Prescrição Dermatologia",
+    prescription: `1. Internação em UTI se instável
+2. Acesso venoso + SF 0,9% — correção de desidratação
+3. Acitretina 25-50mg/dia VO (1ª escolha)
+4. OU Ciclosporina 3-5mg/kg/dia VO (se urgente, ação mais rápida)
+5. OU Metotrexato 15-25mg/semana IM/SC
+6. Emolientes intensivos (vaselina ou óleo mineral)
+7. Controle de dor: Dipirona 1g EV 6/6h + Tramadol 50mg EV 8/8h SN
+8. Monitorizar: hemograma, função renal, hepática, eletrólitos, albumina
+9. Profilaxia TVP: Enoxaparina 40mg SC 1x/dia
+10. Suporte nutricional (perda proteica cutânea)
+11. Controle térmico (hipotermia frequente)
+12. ATB se sinais de infecção secundária`,
+    notes: "Forma grave e potencialmente fatal de psoríase. Febre alta + pústulas estéreis generalizadas. Pode evoluir com SIRS, insuficiência cardíaca de alto débito.",
+    warnings: "Acitretina TERATOGÊNICA — contraindicada em gestantes e mulheres em idade fértil sem contracepção segura por 3 anos.",
+    guideline: "SBD / GRAPPA / AAD",
+  },
+  {
+    id: "rx-fasciite-necrosante-derm",
+    title: "Fasciíte Necrosante — Manejo Inicial",
+    type: "Prescrição Dermatologia / Cirurgia",
+    prescription: `1. INTERNAÇÃO URGENTE — UTI
+2. Acesso venoso calibroso + SF 0,9% 2000mL nas 1as 2h
+3. Meropenem 1g EV 8/8h + Clindamicina 900mg EV 8/8h + Vancomicina 25-30mg/kg EV (dose de ataque)
+4. Hemocultura 2 amostras antes do ATB
+5. CIRURGIA DE URGÊNCIA — desbridamento amplo (NÃO ATRASAR)
+6. Controle de dor: Fentanil 50-100mcg EV + Dipirona 1g EV 6/6h
+7. Monitorização contínua, SVD, balanço hídrico
+8. Gasometria + lactato seriado
+9. Hemograma, PCR, CPK, creatinina, coagulograma
+10. TC de partes moles se dúvida diagnóstica (NÃO atrasar cirurgia)
+11. Score LRINEC para auxílio diagnóstico
+12. Revisão cirúrgica em 24-48h (second look obrigatório)`,
+    notes: "LRINEC ≥6: alta suspeita. Mortalidade: 20-40%. Cada hora de atraso no desbridamento aumenta mortalidade. Streptococcus do grupo A e polimicrobiana são as formas mais comuns.",
+    warnings: "DOR DESPROPORCIONAL AO EXAME FÍSICO = sinal de alerta. Crepitação subcutânea = sinal tardio. NÃO esperar exames para operar se alta suspeita clínica.",
+    guideline: "SBI / IDSA / WSES",
+  },
+  {
+    id: "rx-eritrodermia",
+    title: "Eritrodermia — Dermatite Esfoliativa Generalizada",
+    type: "Prescrição Dermatologia",
+    prescription: `1. Internação — monitorização
+2. Acesso venoso + SF 0,9% — reposição volêmica
+3. Controle térmico (cobertores aquecidos se hipotermia)
+4. Emolientes intensivos: vaselina sólida ou óleo mineral em todo corpo 4-6x/dia
+5. Anti-histamínico: Hidroxizina 25mg VO 8/8h ou Dexclorfeniramina 2mg VO 8/8h
+6. Corticoide tópico de média potência em áreas inflamatórias
+7. Albumina humana 20% 50mL EV se albumina <2,5
+8. Dieta hiperproteica (perda proteica cutânea intensa)
+9. Profilaxia TVP: Enoxaparina 40mg SC 1x/dia
+10. Hemograma, albumina, eletrólitos, função renal/hepática, biópsia cutânea
+11. Tratar causa base: psoríase → Ciclosporina; farmacodermia → suspender droga; linfoma → encaminhar
+12. ATB se infecção secundária (Cefalexina ou Oxacilina)`,
+    notes: "Eritrodermia = >90% SCQ eritematosa. Causas: psoríase (25%), farmacodermia (20%), eczema (15%), linfoma cutâneo (10%), idiopática (30%). Risco de ICC de alto débito, hipotermia, sepse.",
+    warnings: "EVITAR corticoide sistêmico em eritrodermia psoriásica (risco de rebote com psoríase pustulosa). Investigar linfoma cutâneo de células T em >60 anos.",
+    guideline: "SBD / BAD",
+  },
+  {
+    id: "rx-piodermite-grave",
+    title: "Piodermite Grave / Abscesso Cutâneo Extenso",
+    type: "Prescrição Dermatologia",
+    prescription: `1. Incisão e drenagem (I&D) — obrigatório em abscessos
+2. Cultura + antibiograma do material drenado
+3. Oxacilina 2g EV 4/4h (S. aureus — 1ª escolha hospitalar)
+4. OU Cefazolina 2g EV 8/8h
+5. Se MRSA: Vancomicina 15-20mg/kg EV 12/12h ou SMX-TMP 800/160mg VO 12/12h
+6. Dipirona 1g EV 6/6h se dor/febre
+7. Curativos com SF 0,9% + cobertura com gaze úmida
+8. Avaliar extensão: USG de partes moles se profundo
+9. Hemograma, PCR, hemocultura se sinais sistêmicos
+10. Reavaliação em 48-72h
+11. Ambulatorial se pequeno: Cefalexina 500mg VO 6/6h por 7 dias
+12. Orientar higiene + descolonização nasal com mupirocina se MRSA recorrente`,
+    notes: "S. aureus é o principal agente (MSSA e MRSA comunitário). Furúnculo vs abscesso: ambos necessitam I&D se flutuantes. ATB sozinho sem drenagem = falha terapêutica.",
+    warnings: "Abscesso em triângulo perigoso da face (entre olhos e lábio superior): risco de trombose de seio cavernoso → NÃO manipular, ATB EV.",
+    guideline: "IDSA / SBI",
+  },
+
+  // ── QUEIMADOS / CTQ (expansão) ──
+  {
+    id: "rx-queimadura-face",
+    title: "Queimadura de Face — Manejo Especializado",
+    type: "Prescrição em CTQ",
+    prescription: `1. Via aérea: avaliar IOT precoce se edema, rouquidão, queimadura nasal/oral
+2. Cabeceira 30-45° (redução de edema facial)
+3. Fórmula de Parkland: 4mL x peso x %SCQ (RL)
+4. Curativo EXPOSTO em face — NÃO ocluir
+5. Sulfadiazina de prata 1% NÃO usar em face (risco de hiperpigmentação)
+6. Usar: vaselina estéril ou bacitracina pomada em camada fina 2x/dia
+7. Lubrificante ocular (Carbômero gel) 4/4h se queimadura periocular
+8. Avaliação oftalmológica URGENTE se acometimento ocular
+9. Dipirona 1g EV 6/6h + Tramadol 50-100mg EV 6/6h
+10. Profilaxia antitetânica
+11. Foto documentação seriada
+12. Fonoaudiologia se queimadura de lábios/boca
+13. Psicologia — suporte precoce`,
+    notes: "Face é área nobre — sempre internar. Queimadura de pavilhão auricular: risco de condrite → ATB com cobertura para Pseudomonas (Ciprofloxacino). NÃO usar gaze aderente.",
+    warnings: "Edema de face progride 24-48h — IOT PROFILÁTICA se dúvida. Queimadura de orelha: NÃO comprimir (risco de condrite/necrose).",
+    guideline: "ABA / SBQ",
+  },
+  {
+    id: "rx-queimadura-eletrica",
+    title: "Queimadura Elétrica — Protocolo Completo",
+    type: "Prescrição em CTQ / UTI",
+    prescription: `1. ABCDE — avaliar PCR (causa mais comum de óbito imediato)
+2. ECG 12 derivações + monitorização contínua por 24h
+3. Acesso venoso calibroso + RL — meta diurese 1-1,5mL/kg/h (prevenir IRA por mioglobina)
+4. Se mioglobinúria (urina escura): RL agressivo + Bicarbonato de sódio 8,4% 150mL em 1000mL de SG5% (alcalinizar urina pH >6,5)
+5. Manitol 20% — 1g/kg EV se rabdomiólise grave
+6. CPK seriada (6/6h nas primeiras 24h)
+7. Hemograma, eletrólitos (K+!), função renal, gasometria, lactato
+8. Fasciotomia de urgência se síndrome compartimental
+9. Avaliação de lesão profunda: TC ou RNM se suspeita
+10. Curativo convencional nas lesões de entrada/saída
+11. Profilaxia antitetânica
+12. Avaliar trauma associado (queda de altura, ejeção)`,
+    notes: "Iceberg effect: lesão superficial pequena com destruição profunda extensa (músculos, nervos, vasos). Alta voltagem (>1000V): maior risco de arritmia, rabdomiólise, amputação.",
+    warnings: "K+ PODE SUBIR RAPIDAMENTE (lise celular massiva) → monitorizar 4/4h. ECG por 24h obrigatório mesmo se assintomático (arritmias tardias).",
+    guideline: "ABA / ATLS / SBQ",
+  },
+  {
+    id: "rx-queimadura-inalacao",
+    title: "Lesão Inalatória por Queimadura",
+    type: "Prescrição em CTQ / UTI",
+    prescription: `1. IOT PRECOCE — não esperar descompensação
+2. Ventilação mecânica protetora: Vt 6mL/kg, PEEP 5-10, FiO2 para SpO2 >94%
+3. Broncoscopia diagnóstica e terapêutica (lavado + avaliação de lesão)
+4. Nebulização com SF 0,9% 3mL + Heparina 5000UI 4/4h (reduz formação de moldes)
+5. Nebulização com N-acetilcisteína 20% 3mL 4/4h (alternado com heparina)
+6. Aspiração traqueal frequente
+7. Fórmula de Parkland + 40-50% a mais de volume (lesão inalatória aumenta necessidade)
+8. Gasometria arterial seriada + carboxihemoglobina
+9. Se intoxicação por CO (COHb >15%): O2 100% por máscara ou TOT
+10. Se intoxicação por cianeto: Hidroxocobalamina 5g EV em 15min
+11. RX tórax seriado (edema pulmonar pode ser tardio — 24-48h)
+12. Cultura de aspirado traqueal se febre`,
+    notes: "Tríade clássica: queimadura em ambiente fechado + fuligem em narina/orofaringe + rouquidão. RX tórax inicial pode ser normal. Mortalidade dobra quando associada a queimadura cutânea.",
+    warnings: "COHb >25%: risco de óbito. Oxímetro de pulso NÃO detecta CO (leitura falsamente normal). Cianeto: morte em minutos sem antídoto.",
+    guideline: "ABA / SCCM / SBQ",
+  },
+  {
+    id: "rx-queimadura-pediatrica",
+    title: "Queimadura Pediátrica — Protocolo",
+    type: "Prescrição em CTQ Pediátrica",
+    prescription: `1. SCQ pela tabela de Lund-Browder (NÃO usar regra dos 9 em <10 anos)
+2. Parkland PEDIÁTRICA: 3mL x peso x %SCQ (RL) + manutenção com SG5% + eletrólitos
+   Manutenção: 4mL/kg/h (primeiros 10kg) + 2mL/kg/h (10-20kg) + 1mL/kg/h (>20kg)
+3. 50% nas primeiras 8h, 50% nas 16h seguintes
+4. Meta diurese: 1mL/kg/h
+5. Dipirona 15mg/kg EV 6/6h se dor/febre
+6. Morfina 0,1mg/kg EV para curativos (titular dose)
+7. Sulfadiazina de prata 1% (NÃO em face, NÃO em <2 meses)
+8. Curativo com gaze vaselinada + gaze estéril
+9. Profilaxia antitetânica conforme calendário vacinal
+10. Suporte nutricional precoce: dieta hipercalórica-hiperproteica via SNE se >20%SCQ
+11. Pesquisa de maus-tratos: padrão de queimadura, história incompatível, lesões em "luva/meia"
+12. Notificação ao Conselho Tutelar se suspeita`,
+    notes: "Crianças: grande queimado = >10% SCQ (vs 20% adulto). Maior risco de hipotermia (maior relação superfície/peso). Desidratação rápida. Risco de hipoglicemia → monitorizar glicemia.",
+    warnings: "SEMPRE investigar maus-tratos em queimaduras pediátricas com padrão suspeito. Queimadura em meia/luva = imersão forçada até prova em contrário.",
+    guideline: "ABA / SBQ / SBP",
+  },
+  {
+    id: "rx-queimadura-circunferencial",
+    title: "Queimadura Circunferencial — Escarotomia",
+    type: "Prescrição em CTQ / UTI",
+    prescription: `1. Monitorizar perfusão distal: pulsos, enchimento capilar, Doppler se necessário
+2. Elevação do membro acometido
+3. Indicação de ESCAROTOMIA:
+   - Membro: ausência de pulsos distais, parestesia progressiva, dor desproporcional
+   - Tórax: restrição ventilatória (↓ compliance, ↑ pressão de pico)
+   - Abdome: síndrome compartimental abdominal
+4. Técnica: incisão na linha médio-lateral do membro, toda extensão da escara
+5. Em mão: incisões dorsais entre metacarpos
+6. Sedação/analgesia: Cetamina 1-2mg/kg EV ou Midazolam + Fentanil
+7. Hemostasia com eletrocautério
+8. Curativo com gaze vaselinada + gaze estéril
+9. Fasciotomia se edema muscular profundo (queimadura elétrica)
+10. Reavaliar perfusão a cada 1-2h pós-procedimento
+11. Documentação fotográfica pré e pós`,
+    notes: "Escarotomia NÃO requer anestesia local (escara de 3° grau é insensível). Se dor intensa durante o procedimento: queimadura mais superficial que estimado → analgesia.",
+    warnings: "Atraso na escarotomia de tórax pode levar a insuficiência respiratória e óbito. Em membro: atraso >6h = risco de amputação.",
+    guideline: "ABA / ATLS / SBQ",
+  },
+
+  // ── CIRURGIA VASCULAR (expansão) ──
+  {
+    id: "rx-tromboembolectomia",
+    title: "Isquemia Aguda de Membro — Tromboembolectomia",
+    type: "Prescrição Cirurgia Vascular",
+    prescription: `1. EMERGÊNCIA VASCULAR — 6 Ps: Pain, Pallor, Pulselessness, Paresthesia, Paralysis, Poikilothermia
+2. Classificação de Rutherford: I (viável) → II (ameaçado) → III (irreversível)
+3. Heparinização IMEDIATA: Heparina 80UI/kg EV em bolus + 18UI/kg/h em BIC
+4. Meta TTPa: 1,5-2,5x controle (dosar 6/6h)
+5. Analgesia: Dipirona 1g EV 6/6h + Morfina 2-4mg EV SN
+6. NÃO elevar membro isquêmico (manter em nível ou pendente)
+7. Manter membro aquecido (algodão + coxim)
+8. Labs: hemograma, CPK, lactato, gasometria, coagulograma, função renal
+9. ECG (FA é causa de 80% das embolias arteriais)
+10. Rutherford I: heparinizar + angiografia eletiva
+11. Rutherford IIa/IIb: CIRURGIA DE URGÊNCIA — Fogarty (tromboembolectomia) ou trombólise intra-arterial
+12. Rutherford III (irreversível >12h): AMPUTAÇÃO — NÃO revascularizar (síndrome de reperfusão fatal)`,
+    notes: "Embolia: início súbito, FA, membro contralateral normal. Trombose: início gradual, doença arterial prévia, claudicação intermitente prévia.",
+    warnings: "Rutherford III: revascularização = LETAL (hipercalemia + acidose + mioglobinúria → PCR). Síndrome de reperfusão: monitorizar K+ e CPK pós-revascularização.",
+    guideline: "SVS / ESVS / SBACV",
+  },
+  {
+    id: "rx-pe-diabetico-avancado",
+    title: "Pé Diabético Infectado — Classificação e Manejo",
+    type: "Prescrição Cirurgia Vascular",
+    prescription: `1. Classificação de Wagner:
+   0: pé em risco  1: úlcera superficial  2: úlcera profunda  3: osteomielite/abscesso
+   4: gangrena localizada  5: gangrena extensa
+2. Wagner 1-2 sem infecção:
+   - Desbridamento local + curativo com alginato ou espuma
+   - Ciprofloxacino 500mg VO 12/12h + Clindamicina 300mg VO 8/8h por 14 dias
+3. Wagner 2-3 com infecção moderada:
+   - Internação + Piperacilina-Tazobactam 4,5g EV 6/6h
+   - OU Meropenem 1g EV 8/8h se grave
+4. Desbridamento cirúrgico amplo (centro cirúrgico)
+5. RX do pé (osteomielite?) → se dúvida: RNM
+6. Hemocultura + cultura do tecido profundo (NÃO swab superficial)
+7. Controle glicêmico rigoroso: Insulina Regular EV em BIC (meta 140-180mg/dL)
+8. Avaliação vascular: ITB, Doppler arterial, angioTC
+9. Se isquemia associada: revascularização antes de amputação
+10. Profilaxia TVP: Enoxaparina 40mg SC 1x/dia
+11. Offloading total (bota gessada de contato total ou sandália Baruk)
+12. Equipe multidisciplinar: vascular + endócrino + ortopedia + enfermagem`,
+    notes: "50% das amputações de MMII no Brasil são em diabéticos. Osteomielite: probe-to-bone positivo = VPP >89%. Infecção polimicrobiana é regra.",
+    warnings: "NÃO usar swab superficial para guiar ATB (contaminação da flora). SEMPRE avaliar perfusão arterial — sem fluxo = não cicatriza.",
+    guideline: "IWGDF / SBD / SBACV",
+  },
+  {
+    id: "rx-aneurisma-aorta-roto",
+    title: "Aneurisma de Aorta Abdominal Roto",
+    type: "Prescrição Cirurgia Vascular / UTI",
+    prescription: `1. EMERGÊNCIA ABSOLUTA — mortalidade >80% sem cirurgia
+2. Acesso venoso calibroso x2 (jelco 14G ou 16G)
+3. Tipagem + reserva de 10 concentrados de hemácias
+4. Hipotensão permissiva: PAS 70-80mmHg (NÃO ressuscitar para PA normal)
+5. SF 0,9% ou RL em pequenos bolus — evitar hemodiluição
+6. Noradrenalina se choque refratário
+7. IOT + VM se instável ou rebaixamento
+8. CIRURGIA IMEDIATA — open repair ou EVAR (endovascular)
+9. Ácido tranexâmico 1g EV em 10min (se disponível)
+10. Protocolo de transfusão maciça: 1CH:1PFC:1CP
+11. Manta térmica (prevenir tríade letal: hipotermia + acidose + coagulopatia)
+12. SVD — monitorizar diurese (meta >0,5mL/kg/h pós-cirurgia)
+13. Labs: gasometria, lactato, hemograma, coagulograma, fibrinogênio`,
+    notes: "Tríade clássica (50%): dor abdominal/lombar + massa pulsátil + hipotensão. Diagnóstico por USG FAST no PS (sensibilidade 95%). TC somente se hemodinamicamente estável.",
+    warnings: "NÃO atrasar cirurgia para exames. NÃO ressuscitar agressivamente (aumenta sangramento). Cada minuto de atraso = aumento de mortalidade.",
+    guideline: "SVS / ESVS / SBACV",
+  },
+  {
+    id: "rx-tvp-extensa",
+    title: "TVP Extensa Iliofemoral — Protocolo",
+    type: "Prescrição Cirurgia Vascular",
+    prescription: `1. Heparinização plena: Enoxaparina 1mg/kg SC 12/12h (1ª escolha)
+   OU Heparina não fracionada 80UI/kg bolus + 18UI/kg/h BIC
+2. Se phlegmasia cerulea dolens (membro cianótico + edema tenso):
+   - EMERGÊNCIA — trombólise farmacomecânica ou trombectomia cirúrgica
+   - Fasciotomia se síndrome compartimental
+3. Elevação do membro acometido a 15-20°
+4. Meia elástica de compressão (30-40mmHg) — NÃO na fase aguda
+5. Analgesia: Dipirona 1g EV 6/6h + anti-inflamatório se não houver CI
+6. Doppler venoso de membros inferiores
+7. D-dímero (se baixa probabilidade → exclui)
+8. Rastreio de TEP: se dispneia/taquicardia → angioTC de tórax
+9. Investigar trombofilia se <45 anos, recorrente ou sítio incomum
+10. Filtro de veia cava inferior: APENAS se CI absoluta a anticoagulação ou TEP recorrente sob ACO
+11. Transição para ACO oral: Rivaroxabana 15mg 12/12h por 21 dias → 20mg 1x/dia
+12. Duração: 3 meses (provocada) ou indefinida (idiopática/recorrente)`,
+    notes: "Phlegmasia alba dolens: membro branco edemaciado. Cerulea dolens: cianose + edema tenso = risco de gangrena venosa. Score de Wells para estratificação.",
+    warnings: "Phlegmasia cerulea dolens sem tratamento = perda do membro em 24-48h. NÃO usar meia elástica na fase aguda (piora edema).",
+    guideline: "CHEST / ISTH / SBACV",
+  },
+  {
+    id: "rx-ulcera-venosa",
+    title: "Úlcera Venosa Crônica — Tratamento Completo",
+    type: "Prescrição Cirurgia Vascular / Ambulatorial",
+    prescription: `1. Terapia compressiva (PILAR do tratamento):
+   - Bota de Unna (troca semanal) — 1ª escolha no SUS
+   - OU bandagem multicamadas (Profore)
+   - OU meia elástica 30-40mmHg (após cicatrização)
+2. Curativo: limpeza com SF 0,9% + cobertura conforme leito:
+   - Fibrina: alginato de cálcio ou hidrofibra
+   - Exsudativa: espuma de poliuretano
+   - Granulação: hidrocoloide ou malha não aderente
+   - Necrose: desbridamento mecânico/enzimático (colagenase)
+3. Elevação de MMII 30min 3x/dia
+4. Exercícios de bomba muscular da panturrilha
+5. Se infectada: Cefalexina 500mg VO 6/6h por 10 dias
+6. Pentoxifilina 400mg VO 8/8h (melhora cicatrização — evidência classe A)
+7. Diosmina + Hesperidina 450/50mg VO 12/12h (adjuvante)
+8. Avaliar necessidade de cirurgia venosa: safenectomia, CHIVA, laser endovenoso
+9. ITB obrigatório antes de compressão (excluir doença arterial periférica)
+10. Biópsia de borda se >3 meses sem cicatrização (excluir Marjolin/carcinoma)`,
+    notes: "Úlceras venosas: 70% das úlceras de MMII. Localização: maléolo medial. Compressão é o principal tratamento — sem compressão = não cicatriza. ITB <0,8: CI relativa a compressão. <0,5: CI absoluta.",
+    warnings: "SEMPRE medir ITB antes de aplicar compressão. Compressão em membro isquêmico (DAP) = necrose/amputação.",
+    guideline: "SVS / SBACV / EWMA",
+  },
+  {
+    id: "rx-disseccao-aorta-b",
+    title: "Dissecção Aguda de Aorta Tipo B — Manejo Clínico",
+    type: "Prescrição Cirurgia Vascular / UTI",
+    prescription: `1. Internação em UTI — monitorização invasiva (PAI)
+2. CONTROLE PRESSÓRICO AGRESSIVO:
+   - Esmolol 500mcg/kg bolus → 50-200mcg/kg/min EV em BIC (1ª escolha)
+   - OU Labetalol 20mg EV em 2min → repetir 10/10min até PA alvo
+   - Meta: PAS 100-120mmHg + FC <60bpm
+3. Se refratário ao betabloqueador: Nitroprussiato de sódio 0,3-5mcg/kg/min (NUNCA sem betabloqueador antes)
+4. Analgesia vigorosa: Morfina 2-4mg EV a cada 5min até controle da dor
+5. Repouso absoluto no leito
+6. Labs: hemograma seriado (queda Hb = ruptura), lactato, função renal, gasometria
+7. AngioTC de aorta com reconstrução 3D
+8. Indicação cirúrgica/endovascular URGENTE se:
+   - Má perfusão de órgão (renal, mesentérica, membros)
+   - Ruptura/hemotórax
+   - Dor refratária
+   - Expansão rápida (>1cm/ano)
+9. Se não complicada: tratamento clínico + acompanhamento com TC seriada
+10. Anti-hipertensivo oral de transição: Anlodipino + Losartana + Betabloqueador`,
+    notes: "Stanford B: acomete aorta descendente (distal à subclávia esquerda). 70% são tratados clinicamente. TEVAR (endovascular) para complicados. Mortalidade tipo B não complicada: 10%.",
+    warnings: "NUNCA usar nitroprussiato sem betabloqueador (taquicardia reflexa aumenta shear stress → propaga dissecção). Dor torácica + diferença de PA entre membros = suspeitar.",
+    guideline: "AHA / ESC / SBCCV",
+  },
 ];
 
 
