@@ -26,6 +26,10 @@ if (isPreviewHost || isInIframe) {
   cleanupServiceWorkers().catch(() => {});
 }
 
+if (typeof window !== "undefined" && window.location.pathname === "/index") {
+  window.history.replaceState({}, "", `/${window.location.search}${window.location.hash}`);
+}
+
 if ("serviceWorker" in navigator) {
   window.addEventListener("load", () => {
     if (isPreviewHost || isInIframe) return;
