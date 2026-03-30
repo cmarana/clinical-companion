@@ -31,6 +31,14 @@ const shimStorage = (kind: "localStorage" | "sessionStorage") => {
 shimStorage("localStorage");
 shimStorage("sessionStorage");
 
+const isInIframe = (() => {
+  try { return window.self !== window.top; } catch { return true; }
+})();
+
+const isPreviewHost =
+  window.location.hostname.includes("id-preview--") ||
+  window.location.hostname.includes("lovableproject.com");
+
 const cleanupServiceWorkers = async () => {
   if ("serviceWorker" in navigator) {
     const registrations = await navigator.serviceWorker.getRegistrations();
@@ -42,7 +50,6 @@ const cleanupServiceWorkers = async () => {
   }
 };
 
-// Always clean up in preview/iframe — run BEFORE anything else
 if (isPreviewHost || isInIframe) {
   cleanupServiceWorkers().catch(() => {});
 }
