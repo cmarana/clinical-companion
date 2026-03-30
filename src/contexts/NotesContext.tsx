@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
 import type { Note } from "@/types/medical";
+import { safeLocalStorage } from "@/lib/safeStorage";
 
 interface NotesContextType {
   notes: Note[];
@@ -13,14 +14,14 @@ const NotesContext = createContext<NotesContextType | undefined>(undefined);
 export function NotesProvider({ children }: { children: ReactNode }) {
   const [notes, setNotes] = useState<Note[]>(() => {
     try {
-      return JSON.parse(localStorage.getItem("notes") || "[]");
+      return JSON.parse(safeLocalStorage.getItem("notes") || "[]");
     } catch {
       return [];
     }
   });
 
   useEffect(() => {
-    localStorage.setItem("notes", JSON.stringify(notes));
+    safeLocalStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
   const addNote = (title: string, content: string) => {

@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Download, X, Wifi, WifiOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { safeSessionStorage } from "@/lib/safeStorage";
 
 interface BeforeInstallPromptEvent extends Event {
   prompt: () => Promise<void>;
@@ -9,7 +10,7 @@ interface BeforeInstallPromptEvent extends Event {
 
 export function PWAInstallPrompt() {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
-  const [dismissed, setDismissed] = useState(() => sessionStorage.getItem("pwa-dismissed") === "1");
+  const [dismissed, setDismissed] = useState(() => safeSessionStorage.getItem("pwa-dismissed") === "1");
 
   useEffect(() => {
     const handler = (e: Event) => {
@@ -30,7 +31,7 @@ export function PWAInstallPrompt() {
 
   const dismiss = () => {
     setDismissed(true);
-    sessionStorage.setItem("pwa-dismissed", "1");
+    safeSessionStorage.setItem("pwa-dismissed", "1");
   };
 
   return (
