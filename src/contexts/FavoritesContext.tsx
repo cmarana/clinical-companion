@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
+import { safeLocalStorage } from "@/lib/safeStorage";
 
 interface FavoriteItem {
   id: string;
@@ -17,14 +18,14 @@ const FavoritesContext = createContext<FavoritesContextType | undefined>(undefin
 export function FavoritesProvider({ children }: { children: ReactNode }) {
   const [favorites, setFavorites] = useState<FavoriteItem[]>(() => {
     try {
-      return JSON.parse(localStorage.getItem("favorites") || "[]");
+      return JSON.parse(safeLocalStorage.getItem("favorites") || "[]");
     } catch {
       return [];
     }
   });
 
   useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
+    safeLocalStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
   const isFavorite = (id: string) => favorites.some((f) => f.id === id);

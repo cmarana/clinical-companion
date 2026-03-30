@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
-import App from "./App.tsx";
 import "./index.css";
+import { installStorageFallbacks } from "@/lib/safeStorage";
 
 const isInIframe = (() => {
   try { return window.self !== window.top; } catch { return true; }
@@ -9,6 +9,8 @@ const isInIframe = (() => {
 const isPreviewHost =
   window.location.hostname.includes("id-preview--") ||
   window.location.hostname.includes("lovableproject.com");
+
+installStorageFallbacks();
 
 const cleanupServiceWorkers = async () => {
   if ("serviceWorker" in navigator) {
@@ -51,11 +53,18 @@ if ("serviceWorker" in navigator) {
   });
 }
 
-console.log("[MedCore] main.tsx executing");
-const rootEl = document.getElementById("root");
-console.log("[MedCore] root element:", rootEl);
-if (rootEl) {
+const bootstrap = async () => {
+  console.log("[MedCore] main.tsx executing");
+  const rootEl = document.getElementById("root");
+  console.log("[MedCore] root element:", rootEl);
+
+  if (!rootEl) {
+    console.error("[MedCore] #root not found!");
+    return;
+  }
+
   try {
+    const { default: App } = await import("./App.tsx");
     const root = createRoot(rootEl);
     console.log("[MedCore] createRoot OK, rendering App...");
     root.render(<App />);
@@ -64,6 +73,6 @@ if (rootEl) {
     console.error("[MedCore] render error:", e);
     rootEl.innerHTML = '<div style="color:red;padding:20px">Erro ao carregar: ' + String(e) + '</div>';
   }
-} else {
-  console.error("[MedCore] #root not found!");
-}
+};
+
+void bootstrap();
