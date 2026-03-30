@@ -54,23 +54,13 @@ if ("serviceWorker" in navigator) {
 }
 
 const bootstrap = async () => {
-  console.log("[MedCore] main.tsx executing");
   const rootEl = document.getElementById("root");
-  console.log("[MedCore] root element:", rootEl);
-
-  if (!rootEl) {
-    console.error("[MedCore] #root not found!");
-    return;
-  }
+  if (!rootEl) return;
 
   try {
     const { default: App } = await import("./App.tsx");
-    const root = createRoot(rootEl);
-    console.log("[MedCore] createRoot OK, rendering App...");
-    root.render(<App />);
-    console.log("[MedCore] render() called");
+    createRoot(rootEl).render(<App />);
   } catch (e) {
-    console.error("[MedCore] render error:", e);
     rootEl.innerHTML = '<div style="color:red;padding:20px">Erro ao carregar: ' + String(e) + '</div>';
   }
 };
