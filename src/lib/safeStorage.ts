@@ -63,10 +63,18 @@ export const installStorageFallbacks = () => {
   });
 };
 
-export const safeLocalStorage = canUseStorage("localStorage")
-  ? window.localStorage
-  : localFallback;
+export const safeLocalStorage: Storage = (() => {
+  try {
+    return canUseStorage("localStorage") ? window.localStorage : localFallback;
+  } catch {
+    return localFallback;
+  }
+})();
 
-export const safeSessionStorage = canUseStorage("sessionStorage")
-  ? window.sessionStorage
-  : sessionFallback;
+export const safeSessionStorage: Storage = (() => {
+  try {
+    return canUseStorage("sessionStorage") ? window.sessionStorage : sessionFallback;
+  } catch {
+    return sessionFallback;
+  }
+})();
