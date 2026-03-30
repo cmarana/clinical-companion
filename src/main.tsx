@@ -1,6 +1,35 @@
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { installStorageFallbacks } from "@/lib/safeStorage";
+
+// Shim storage ASAP — before ANY other module touches localStorage
+const createMemStore = (): Storage => {
+  const m = new Map<string, string>();
+  return {
+    get length() { return m.size; },
+    clear() { m.clear(); },
+    getItem(k: string) { return m.get(k) ?? null; },
+    key(i: number) { return [...m.keys()][i] ?? null; },
+    removeItem(k: string) { m.delete(k); },
+    setItem(k: string, v: string) { m.set(k, v); },
+  };
+};
+
+const shimStorage = (kind: "localStorage" | "sessionStorage") => {
+  try {
+    const s = window[kind];
+    const p = "__probe__";
+    s.setItem(p, "1");
+    s.removeItem(p);
+  } catch {
+    try {
+      Object.defineProperty(window, kind, {
+        configurable: true, enumerable: true, value: createMemStore(),
+      });
+    } catch { /* best effort */ }
+  }
+};
+shimStorage("localStorage");
+shimStorage("sessionStorage");
 
 const isInIframe = (() => {
   try { return window.self !== window.top; } catch { return true; }
@@ -9,8 +38,6 @@ const isInIframe = (() => {
 const isPreviewHost =
   window.location.hostname.includes("id-preview--") ||
   window.location.hostname.includes("lovableproject.com");
-
-installStorageFallbacks();
 
 const cleanupServiceWorkers = async () => {
   if ("serviceWorker" in navigator) {
@@ -23,7 +50,6 @@ const cleanupServiceWorkers = async () => {
   }
 };
 
-// Always clean up in preview/iframe — run BEFORE anything else
 if (isPreviewHost || isInIframe) {
   cleanupServiceWorkers().catch(() => {});
 }
