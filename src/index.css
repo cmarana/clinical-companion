@@ -12,20 +12,20 @@
     --card-foreground: 217 33% 17%;
     --popover: 0 0% 100%;
     --popover-foreground: 217 33% 17%;
-    --primary: 214 100% 42%;
+    --primary: 213 94% 44%;
     --primary-foreground: 0 0% 100%;
     --secondary: 210 40% 96%;
     --secondary-foreground: 217 33% 17%;
     --muted: 210 40% 96%;
     --muted-foreground: 215 16% 47%;
-    --accent: 214 80% 93%;
-    --accent-foreground: 214 100% 42%;
-    --destructive: 4 80% 49%;
+    --accent: 213 94% 94%;
+    --accent-foreground: 213 94% 44%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
-    --destructive-surface: 4 70% 96%;
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 214 100% 42%;
+    --destructive-surface: 0 70% 97%;
+    --border: 214 20% 90%;
+    --input: 214 20% 90%;
+    --ring: 213 94% 44%;
     --radius: 0.5rem;
 
     --sidebar-background: 210 40% 96%;
@@ -35,11 +35,11 @@
     --sidebar-accent: 210 40% 96%;
     --sidebar-accent-foreground: 217 33% 17%;
     --sidebar-border: 214 32% 91%;
-    --sidebar-ring: 214 91% 60%;
+    --sidebar-ring: 213 94% 44%;
 
     --warning: 38 92% 50%;
-    --warning-foreground: 38 92% 14%;
-    --success: 142 72% 29%;
+    --warning-foreground: 38 80% 12%;
+    --success: 160 84% 39%;
     --success-foreground: 0 0% 100%;
 
     --font-heading: 'Roboto Flex', system-ui, sans-serif;
@@ -53,20 +53,20 @@
     --card-foreground: 210 40% 96%;
     --popover: 217 33% 17%;
     --popover-foreground: 210 40% 96%;
-    --primary: 217 91% 60%;
+    --primary: 213 94% 58%;
     --primary-foreground: 0 0% 100%;
     --secondary: 217 33% 17%;
     --secondary-foreground: 210 40% 96%;
     --muted: 217 33% 17%;
     --muted-foreground: 215 20% 65%;
-    --accent: 217 33% 24%;
-    --accent-foreground: 217 91% 70%;
-    --destructive: 6 60% 62%;
+    --accent: 213 40% 22%;
+    --accent-foreground: 213 94% 72%;
+    --destructive: 0 72% 58%;
     --destructive-foreground: 0 0% 100%;
-    --destructive-surface: 6 40% 15%;
+    --destructive-surface: 0 40% 15%;
     --border: 217 33% 20%;
     --input: 217 33% 20%;
-    --ring: 217 91% 60%;
+    --ring: 213 94% 58%;
 
     --sidebar-background: 222 47% 11%;
     --sidebar-foreground: 210 40% 96%;
@@ -75,11 +75,11 @@
     --sidebar-accent: 217 33% 17%;
     --sidebar-accent-foreground: 210 40% 96%;
     --sidebar-border: 217 33% 20%;
-    --sidebar-ring: 217 91% 60%;
+    --sidebar-ring: 213 94% 58%;
 
     --warning: 38 92% 50%;
     --warning-foreground: 38 92% 90%;
-    --success: 142 72% 45%;
+    --success: 160 84% 45%;
     --success-foreground: 0 0% 100%;
   }
 }
