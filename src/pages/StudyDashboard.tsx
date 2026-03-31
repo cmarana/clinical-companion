@@ -207,11 +207,46 @@ export default function StudyDashboard() {
             <span className="text-[11px] text-muted-foreground font-medium">Streak (dias)</span>
             <span className="text-[10px] text-muted-foreground">Recorde: {streak.best}</span>
           </Card>
-          <Card className="p-4 flex flex-col items-center gap-1">
+          <Card className="p-4 flex flex-col items-center gap-1 relative">
+            <button
+              onClick={() => { setTempGoal(goalValue); setEditingGoal(!editingGoal); }}
+              className="absolute top-2 right-2 p-1 rounded-lg hover:bg-muted transition-colors text-muted-foreground"
+            >
+              <Settings2 size={14} />
+            </button>
             <Target className="text-primary" size={28} />
-            <span className="text-2xl font-bold text-foreground">{weekDays}/{weeklyGoal}</span>
-            <span className="text-[11px] text-muted-foreground font-medium">Meta semanal</span>
-            <Progress value={weekProgress} className="h-2 mt-1 w-full" />
+            {editingGoal ? (
+              <div className="flex items-center gap-2 mt-1">
+                <div className="flex items-center gap-1">
+                  {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+                    <button
+                      key={n}
+                      onClick={() => setTempGoal(n)}
+                      className={cn(
+                        "w-7 h-7 rounded-full text-xs font-bold transition-all",
+                        tempGoal === n
+                          ? "bg-primary text-primary-foreground scale-110"
+                          : "bg-muted text-muted-foreground hover:bg-muted/80"
+                      )}
+                    >
+                      {n}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  onClick={() => saveGoal(tempGoal)}
+                  className="p-1.5 rounded-lg bg-primary text-primary-foreground"
+                >
+                  <Check size={14} />
+                </button>
+              </div>
+            ) : (
+              <>
+                <span className="text-2xl font-bold text-foreground">{weekDays}/{goalValue}</span>
+                <span className="text-[11px] text-muted-foreground font-medium">Meta semanal</span>
+                <Progress value={weekProgress} className="h-2 mt-1 w-full" />
+              </>
+            )}
           </Card>
         </div>
 
