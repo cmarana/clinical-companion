@@ -1,18 +1,20 @@
 import { useState, useMemo } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
-import { Input } from "@/components/ui/input";
 import { protocols } from "@/data/protocols";
 import { prescriptionCategories } from "@/data/prescriptions";
 import { symptomGuides } from "@/data/symptomGuides";
 import { useBularioList } from "@/hooks/useBularioMedications";
 import { fullProtocols } from "@/data/fullProtocols";
 import { allEmergencyProtocols } from "@/data/emergency";
+import { cidData } from "@/data/cidData";
+import { labCategories } from "@/data/labValues";
 import { useRecentHistory } from "@/hooks/useRecentHistory";
 import {
   Search, FileText, Pill, ClipboardList, Stethoscope, BookOpen,
-  Loader2, Zap, Calculator, Hash, Clock, X
+  Loader2, Zap, Calculator, Hash, Clock, X, TestTubes, LayoutGrid, List
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface SearchResult {
   id: string;
@@ -20,7 +22,7 @@ interface SearchResult {
   subtitle: string;
   type: string;
   path: string;
-  icon: "protocol" | "medication" | "prescription" | "symptom" | "bulario" | "fullProtocol" | "emergency" | "calculator";
+  icon: "protocol" | "medication" | "prescription" | "symptom" | "bulario" | "fullProtocol" | "emergency" | "calculator" | "cid" | "labValue";
 }
 
 const typeColors: Record<string, string> = {
@@ -32,6 +34,8 @@ const typeColors: Record<string, string> = {
   fullProtocol: "bg-violet-500/10 text-violet-600 dark:text-violet-400",
   emergency: "bg-destructive/10 text-destructive",
   calculator: "bg-teal-500/10 text-teal-600 dark:text-teal-400",
+  cid: "bg-pink-500/10 text-pink-600 dark:text-pink-400",
+  labValue: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400",
 };
 
 const typeLabels: Record<string, string> = {
@@ -42,9 +46,25 @@ const typeLabels: Record<string, string> = {
   fullProtocol: "Protocolo Completo",
   emergency: "Emergência",
   calculator: "Calculadora",
+  cid: "CID-10",
+  labValue: "Lab. Referência",
 };
 
-// Calculator names for search
+const typeIcons: Record<string, React.ReactNode> = {
+  protocol: <FileText size={16} />,
+  prescription: <ClipboardList size={16} />,
+  symptom: <Stethoscope size={16} />,
+  bulario: <Pill size={16} />,
+  fullProtocol: <BookOpen size={16} />,
+  emergency: <Zap size={16} />,
+  calculator: <Calculator size={16} />,
+  cid: <Hash size={16} />,
+  labValue: <TestTubes size={16} />,
+};
+
+// Category display order
+const categoryOrder = ["emergency", "protocol", "fullProtocol", "prescription", "calculator", "cid", "bulario", "labValue", "symptom"];
+
 const calculatorItems = [
   { id: "glasgow", title: "Glasgow (ECG)", description: "Nível de consciência" },
   { id: "sofa", title: "SOFA Score", description: "Disfunção orgânica na sepse" },
@@ -64,20 +84,14 @@ const calculatorItems = [
   { id: "parkland", title: "Parkland (Queimados)", description: "Reposição volêmica" },
   { id: "aniongap", title: "Anion Gap", description: "Acidose metabólica" },
   { id: "imc", title: "IMC", description: "Índice de Massa Corporal" },
-];
-
-// CID-10 codes for search (top frequent ones)
-const cidItems = [
-  { code: "I21", desc: "Infarto Agudo do Miocárdio" },
-  { code: "J18", desc: "Pneumonia" },
-  { code: "A41", desc: "Septicemia" },
-  { code: "I64", desc: "AVC" },
-  { code: "J96", desc: "Insuficiência Respiratória" },
-  { code: "N39", desc: "ITU" },
-  { code: "K35", desc: "Apendicite Aguda" },
-  { code: "E11", desc: "Diabetes Mellitus tipo 2" },
-  { code: "I10", desc: "Hipertensão Arterial" },
-  { code: "J45", desc: "Asma" },
+  { id: "bishop", title: "Bishop Score", description: "Maturidade cervical" },
+  { id: "news", title: "NEWS / MEWS", description: "Deterioração clínica" },
+  { id: "ranson", title: "Ranson", description: "Gravidade pancreatite" },
+  { id: "hasbled", title: "HAS-BLED", description: "Risco de sangramento" },
+  { id: "grace", title: "GRACE Score", description: "Risco na SCA" },
+  { id: "perc", title: "PERC Rule", description: "Exclusão de TEP" },
+  { id: "rockall", title: "Rockall", description: "HDA não varicosa" },
+  { id: "blatchford", title: "Glasgow-Blatchford", description: "HDA — necessidade de intervenção" },
 ];
 
 export default function SearchPage() {
@@ -85,9 +99,9 @@ export default function SearchPage() {
   const [searchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get("q") || "");
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
+  const [viewMode, setViewMode] = useState<"list" | "grouped">("grouped");
   const { recent } = useRecentHistory();
 
-  // Bulário search from database
   const bularioFilters = useMemo(() => ({
     search: query.length >= 2 ? query : "",
     drugClass: null, category: null, dosageForm: null,
@@ -128,12 +142,23 @@ export default function SearchPage() {
       .filter(c => c.title.toLowerCase().includes(q) || c.description.toLowerCase().includes(q))
       .map(c => ({ id: c.id, title: c.title, subtitle: c.description, type: "Calculadora", path: `/calculators`, icon: "calculator" as const }));
 
+    const cidResults: SearchResult[] = cidData
+      .filter(c => c.code.toLowerCase().includes(q) || c.description.toLowerCase().includes(q))
+      .slice(0, 30)
+      .map(c => ({ id: c.code, title: `${c.code} — ${c.description}`, subtitle: c.category, type: "CID-10", path: `/cid`, icon: "cid" as const }));
+
+    const labResults: SearchResult[] = labCategories
+      .flatMap(cat => cat.values.map(v => ({ ...v, catTitle: cat.title })))
+      .filter(v => v.name.toLowerCase().includes(q) || v.unit.toLowerCase().includes(q))
+      .slice(0, 20)
+      .map(v => ({ id: v.name, title: v.name, subtitle: `${v.catTitle} · ${v.unit}`, type: "Lab. Referência", path: `/lab-reference`, icon: "labValue" as const }));
+
     const bularioResults: SearchResult[] = bularioMeds.map(m => ({
       id: m.id, title: m.nome, subtitle: `${m.principio_ativo} · ${m.classe}`,
       type: "Bulário", path: `/bulario/${m.id}`, icon: "bulario" as const,
     }));
 
-    return [...emergencyResults, ...protocolResults, ...fullProtocolResults, ...rxResults, ...calcResults, ...symptomResults, ...bularioResults];
+    return [...emergencyResults, ...protocolResults, ...fullProtocolResults, ...rxResults, ...calcResults, ...cidResults, ...labResults, ...symptomResults, ...bularioResults];
   }, [query, bularioMeds]);
 
   const filteredResults = activeFilter
@@ -146,20 +171,19 @@ export default function SearchPage() {
     return counts;
   }, [allResults]);
 
-  const getIcon = (type: string) => {
-    switch (type) {
-      case "protocol": return <FileText size={16} />;
-      case "prescription": return <ClipboardList size={16} />;
-      case "symptom": return <Stethoscope size={16} />;
-      case "bulario": return <Pill size={16} />;
-      case "fullProtocol": return <BookOpen size={16} />;
-      case "emergency": return <Zap size={16} />;
-      case "calculator": return <Calculator size={16} />;
-      default: return <FileText size={16} />;
-    }
-  };
+  // Group results by category
+  const groupedResults = useMemo(() => {
+    const groups: Record<string, SearchResult[]> = {};
+    filteredResults.forEach(r => {
+      if (!groups[r.icon]) groups[r.icon] = [];
+      groups[r.icon].push(r);
+    });
+    return categoryOrder
+      .filter(cat => groups[cat])
+      .map(cat => ({ category: cat, label: typeLabels[cat], results: groups[cat].slice(0, 8) }));
+  }, [filteredResults]);
 
-  const filters = Object.keys(typeCounts);
+  const filters = categoryOrder.filter(c => typeCounts[c]);
 
   return (
     <>
@@ -170,7 +194,7 @@ export default function SearchPage() {
           <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
           <input
             autoFocus
-            placeholder="Protocolo, medicamento, prescrição, calculadora, CID..."
+            placeholder="Protocolo, medicamento, CID, calculadora..."
             value={query}
             onChange={(e) => { setQuery(e.target.value); setActiveFilter(null); }}
             className="w-full pl-11 pr-10 h-[48px] text-sm rounded-2xl bg-muted/60 dark:bg-muted/40 border-0 shadow-inner focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all placeholder:text-muted-foreground/60 font-heading"
@@ -182,60 +206,97 @@ export default function SearchPage() {
           )}
         </div>
 
-        {/* Filter pills */}
-        {query.length >= 2 && filters.length > 1 && (
-          <div className="flex gap-1.5 overflow-x-auto pb-1">
-            <button
-              onClick={() => setActiveFilter(null)}
-              className={`shrink-0 px-3 py-1.5 rounded-2xl text-[11px] font-heading font-medium transition-all ${
-                !activeFilter ? "bg-primary text-primary-foreground" : "bg-muted/60 text-muted-foreground hover:bg-accent"
-              }`}
-            >
-              Todos ({allResults.length})
-            </button>
-            {filters.map(f => (
-              <button
-                key={f}
-                onClick={() => setActiveFilter(activeFilter === f ? null : f)}
-                className={`shrink-0 px-3 py-1.5 rounded-2xl text-[11px] font-heading font-medium transition-all ${
-                  activeFilter === f ? "bg-primary text-primary-foreground" : "bg-muted/60 text-muted-foreground hover:bg-accent"
-                }`}
-              >
-                {typeLabels[f] || f} ({typeCounts[f]})
-              </button>
+        {/* Filter pills + view toggle */}
+        {query.length >= 2 && filters.length > 0 && (
+          <div className="space-y-2">
+            <div className="flex items-center gap-2">
+              <div className="flex gap-1.5 overflow-x-auto pb-1 flex-1">
+                <button
+                  onClick={() => setActiveFilter(null)}
+                  className={cn(
+                    "shrink-0 px-3 py-1.5 rounded-2xl text-[11px] font-heading font-medium transition-all",
+                    !activeFilter ? "bg-primary text-primary-foreground" : "bg-muted/60 text-muted-foreground hover:bg-accent"
+                  )}
+                >
+                  Todos ({allResults.length})
+                </button>
+                {filters.map(f => (
+                  <button
+                    key={f}
+                    onClick={() => setActiveFilter(activeFilter === f ? null : f)}
+                    className={cn(
+                      "shrink-0 px-3 py-1.5 rounded-2xl text-[11px] font-heading font-medium transition-all",
+                      activeFilter === f ? "bg-primary text-primary-foreground" : "bg-muted/60 text-muted-foreground hover:bg-accent"
+                    )}
+                  >
+                    {typeLabels[f]} ({typeCounts[f]})
+                  </button>
+                ))}
+              </div>
+              {/* View toggle */}
+              <div className="flex bg-muted/60 rounded-lg p-0.5 shrink-0">
+                <button
+                  onClick={() => setViewMode("grouped")}
+                  className={cn("p-1.5 rounded-md transition-all", viewMode === "grouped" ? "bg-background shadow-sm" : "text-muted-foreground")}
+                >
+                  <LayoutGrid size={14} />
+                </button>
+                <button
+                  onClick={() => setViewMode("list")}
+                  className={cn("p-1.5 rounded-md transition-all", viewMode === "list" ? "bg-background shadow-sm" : "text-muted-foreground")}
+                >
+                  <List size={14} />
+                </button>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-2">
+              <p className="text-[11px] text-muted-foreground font-heading">{filteredResults.length} resultado(s)</p>
+              {bularioLoading && <Loader2 size={12} className="animate-spin text-muted-foreground" />}
+            </div>
+          </div>
+        )}
+
+        {/* Grouped view */}
+        {query.length >= 2 && viewMode === "grouped" && !activeFilter && groupedResults.length > 0 && (
+          <div className="space-y-4">
+            {groupedResults.map(group => (
+              <div key={group.category}>
+                <div className="flex items-center justify-between mb-2">
+                  <h3 className="font-heading font-semibold text-xs uppercase tracking-wider flex items-center gap-1.5">
+                    <span className={cn("w-5 h-5 rounded-md flex items-center justify-center", typeColors[group.category])}>
+                      {typeIcons[group.category]}
+                    </span>
+                    {group.label}
+                    <span className="text-muted-foreground font-normal">({typeCounts[group.category]})</span>
+                  </h3>
+                  {(typeCounts[group.category] || 0) > 8 && (
+                    <button
+                      onClick={() => setActiveFilter(group.category)}
+                      className="text-[10px] text-primary font-heading font-medium hover:underline"
+                    >
+                      Ver todos →
+                    </button>
+                  )}
+                </div>
+                <div className="space-y-1.5">
+                  {group.results.map(r => (
+                    <ResultCard key={`${r.icon}-${r.id}`} result={r} navigate={navigate} compact />
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
         )}
 
-        {/* Result count */}
-        {query.length >= 2 && (
-          <div className="flex items-center gap-2">
-            <p className="text-[11px] text-muted-foreground font-heading">{filteredResults.length} resultado(s)</p>
-            {bularioLoading && <Loader2 size={12} className="animate-spin text-muted-foreground" />}
+        {/* List view or filtered view */}
+        {query.length >= 2 && (viewMode === "list" || activeFilter) && (
+          <div className="space-y-2">
+            {filteredResults.slice(0, 60).map((r) => (
+              <ResultCard key={`${r.icon}-${r.id}`} result={r} navigate={navigate} />
+            ))}
           </div>
         )}
-
-        {/* Results */}
-        <div className="space-y-2">
-          {filteredResults.slice(0, 50).map((r) => (
-            <div
-              key={`${r.icon}-${r.id}`}
-              onClick={() => navigate(r.path)}
-              className="cursor-pointer flex items-center gap-3 p-3 bg-card rounded-[16px] shadow-sm hover:shadow-md active:scale-[0.99] transition-all duration-200"
-            >
-              <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${typeColors[r.icon]}`}>
-                {getIcon(r.icon)}
-              </div>
-              <div className="min-w-0 flex-1">
-                <p className="font-heading font-semibold text-[13px] truncate">{r.title}</p>
-                <p className="text-[11px] text-muted-foreground truncate">{r.subtitle}</p>
-              </div>
-              <span className={`text-[9px] font-heading font-medium px-2 py-0.5 rounded-full shrink-0 ${typeColors[r.icon]}`}>
-                {r.type}
-              </span>
-            </div>
-          ))}
-        </div>
 
         {/* Recent history when no query */}
         {query.length < 2 && recent.length > 0 && (
@@ -249,8 +310,8 @@ export default function SearchPage() {
                 onClick={() => navigate(entry.path)}
                 className="cursor-pointer flex items-center gap-3 p-3 bg-card rounded-[16px] shadow-sm hover:shadow-md active:scale-[0.99] transition-all duration-200"
               >
-                <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${typeColors[entry.type] || typeColors.protocol}`}>
-                  {getIcon(entry.type)}
+                <div className={cn("w-9 h-9 rounded-xl flex items-center justify-center shrink-0", typeColors[entry.type] || typeColors.protocol)}>
+                  {typeIcons[entry.type] || <FileText size={16} />}
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="font-heading font-semibold text-[13px] truncate">{entry.title}</p>
@@ -276,10 +337,10 @@ export default function SearchPage() {
             <Search size={32} className="mx-auto text-muted-foreground/40 mb-3" />
             <p className="text-muted-foreground text-sm font-heading">Busca Global Unificada</p>
             <p className="text-[11px] text-muted-foreground/60 mt-1 max-w-xs mx-auto">
-              Pesquise em protocolos, prescrições, medicamentos, calculadoras e CID num só lugar
+              Pesquise em protocolos, prescrições, medicamentos, calculadoras, CID-10 e valores laboratoriais
             </p>
             <div className="flex flex-wrap gap-1.5 justify-center mt-4">
-              {["Sepse", "Amiodarona", "IAM", "Glasgow", "Pneumonia"].map(s => (
+              {["Sepse", "Amiodarona", "IAM", "Glasgow", "I21", "Hemoglobina", "Pneumonia"].map(s => (
                 <button key={s} onClick={() => setQuery(s)}
                   className="px-3 py-1.5 rounded-2xl bg-muted/60 hover:bg-accent text-[11px] font-heading text-muted-foreground transition-all">
                   {s}
@@ -290,5 +351,30 @@ export default function SearchPage() {
         )}
       </div>
     </>
+  );
+}
+
+function ResultCard({ result: r, navigate, compact }: { result: SearchResult; navigate: (path: string) => void; compact?: boolean }) {
+  return (
+    <div
+      onClick={() => navigate(r.path)}
+      className={cn(
+        "cursor-pointer flex items-center gap-3 bg-card rounded-[16px] shadow-sm hover:shadow-md active:scale-[0.99] transition-all duration-200",
+        compact ? "p-2.5" : "p-3"
+      )}
+    >
+      <div className={cn("rounded-xl flex items-center justify-center shrink-0", typeColors[r.icon], compact ? "w-8 h-8" : "w-9 h-9")}>
+        {typeIcons[r.icon]}
+      </div>
+      <div className="min-w-0 flex-1">
+        <p className={cn("font-heading font-semibold truncate", compact ? "text-[12px]" : "text-[13px]")}>{r.title}</p>
+        <p className="text-[11px] text-muted-foreground truncate">{r.subtitle}</p>
+      </div>
+      {!compact && (
+        <span className={cn("text-[9px] font-heading font-medium px-2 py-0.5 rounded-full shrink-0", typeColors[r.icon])}>
+          {r.type}
+        </span>
+      )}
+    </div>
   );
 }
