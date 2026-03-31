@@ -87,6 +87,8 @@ export default function FullProtocolDetail() {
         <ProtocolActionBar
           protocolId={protocol.id}
           protocolTitle={protocol.title}
+          protocolCategory={protocol.category}
+          protocolSections={orderedSections.map(s => ({ title: s.title, content: s.content }))}
         />
 
         <Tabs defaultValue={defaultTab} className="w-full">

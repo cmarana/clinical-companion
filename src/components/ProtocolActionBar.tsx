@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { Bot, ClipboardList, Calculator, GitBranch } from "lucide-react";
 import { useState } from "react";
 import PrescriptionGenerator from "./PrescriptionGenerator";
+import ShareMenu from "./ShareMenu";
+import { formatProtocolForShare } from "@/lib/shareUtils";
 
 // Maps protocol IDs / keywords to AI context prompts
 const AI_CONTEXT_MAP: Record<string, string> = {
@@ -122,10 +124,12 @@ function findMatch(protocolId: string, map: Record<string, any>) {
 interface ProtocolActionBarProps {
   protocolId: string;
   protocolTitle: string;
-  protocolContent?: string; // Concatenated content for AI context
+  protocolCategory?: string;
+  protocolSections?: { title: string; content: string }[];
+  protocolContent?: string;
 }
 
-export default function ProtocolActionBar({ protocolId, protocolTitle, protocolContent }: ProtocolActionBarProps) {
+export default function ProtocolActionBar({ protocolId, protocolTitle, protocolCategory, protocolSections, protocolContent }: ProtocolActionBarProps) {
   const navigate = useNavigate();
   const [showPrescription, setShowPrescription] = useState(false);
 
@@ -195,6 +199,18 @@ export default function ProtocolActionBar({ protocolId, protocolTitle, protocolC
             <GitBranch size={14} /> Ver fluxograma
           </button>
         )}
+
+        {/* Share Button */}
+        <ShareMenu
+          title={protocolTitle}
+          showPDF
+          getText={() => {
+            if (protocolSections && protocolCategory) {
+              return formatProtocolForShare(protocolTitle, protocolCategory, protocolSections);
+            }
+            return `📋 ${protocolTitle}\n\n${protocolContent || ""}`;
+          }}
+        />
       </div>
 
       {/* Prescription Generator Modal */}
