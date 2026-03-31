@@ -879,37 +879,37 @@ export default function Calculators() {
     <>
       <TopBar title="Calculadoras" />
       <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {calculators.map((calc) => (
-            <Card
+            <div
               key={calc.id}
               onClick={() => setActiveCalc(activeCalc === calc.id ? null : calc.id)}
-              className={`cursor-pointer transition-all hover:shadow-sm active:scale-[0.98] ${
-                activeCalc === calc.id ? "ring-2 ring-primary" : ""
+              className={`cursor-pointer bg-card rounded-[20px] shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 border-0 ${
+                activeCalc === calc.id ? "ring-2 ring-primary shadow-md" : ""
               }`}
             >
-              <CardContent className="flex items-center gap-3 p-3.5">
-                <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center text-accent-foreground">
+              <div className="flex items-center gap-3 p-4">
+                <div className="w-10 h-10 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
                   {calc.icon}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-heading font-semibold text-xs">{calc.title}</p>
-                  <p className="text-[10px] text-muted-foreground">{calc.description}</p>
+                  <p className="font-heading font-semibold text-[13px]">{calc.title}</p>
+                  <p className="text-[11px] text-muted-foreground mt-0.5">{calc.description}</p>
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
 
         {ActiveComponent && (
-          <Card>
-            <CardHeader className="pb-2 pt-4 px-4">
-              <CardTitle className="text-sm font-heading">{calculators.find((c) => c.id === activeCalc)?.title}</CardTitle>
-            </CardHeader>
-            <CardContent className="px-4 pb-4">
+          <div className="bg-card rounded-[20px] shadow-sm border-0">
+            <div className="pb-2 pt-5 px-5">
+              <h3 className="text-sm font-heading font-bold">{calculators.find((c) => c.id === activeCalc)?.title}</h3>
+            </div>
+            <div className="px-5 pb-5">
               <ActiveComponent />
-            </CardContent>
-          </Card>
+            </div>
+          </div>
         )}
       </div>
     </>
