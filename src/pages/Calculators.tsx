@@ -835,6 +835,7 @@ function APACHEIICalculator() {
 }
 
 const calculators: CalculatorConfig[] = [
+  // — Originais —
   { id: "glasgow", title: "Escala de Glasgow", icon: <Brain size={18} />, description: "Nível de consciência (3-15)", component: GlasgowCalculator },
   { id: "sofa", title: "SOFA Score", icon: <Activity size={18} />, description: "Disfunção orgânica na sepse", component: SofaCalculator },
   { id: "qsofa", title: "qSOFA", icon: <Activity size={18} />, description: "Triagem rápida para sepse", component: QSofaCalculator },
@@ -854,19 +855,72 @@ const calculators: CalculatorConfig[] = [
   { id: "parkland", title: "Parkland (Queimados)", icon: <Calculator size={18} />, description: "Reposição volêmica", component: ParklandCalculator },
   { id: "aniongap", title: "Anion Gap", icon: <Calculator size={18} />, description: "Acidose metabólica", component: AnionGapCalculator },
   { id: "imc", title: "IMC", icon: <Calculator size={18} />, description: "Índice de Massa Corporal", component: IMCCalculator },
+  // — Batch 2 —
+  { id: "hasbled", title: "HAS-BLED", icon: <Heart size={18} />, description: "Risco de sangramento em FA", component: HASBLEDCalculator },
+  { id: "perc", title: "PERC Rule", icon: <Heart size={18} />, description: "Exclusão de TEP", component: PERCCalculator },
+  { id: "grace", title: "GRACE Score", icon: <Heart size={18} />, description: "Risco na SCA", component: GRACECalculator },
+  { id: "bishop", title: "Bishop Score", icon: <Baby size={18} />, description: "Maturidade cervical", component: BishopCalculator },
+  { id: "ranson", title: "Ranson Criteria", icon: <Droplets size={18} />, description: "Gravidade pancreatite", component: RansonCalculator },
+  { id: "news", title: "NEWS Score", icon: <Activity size={18} />, description: "Deterioração clínica", component: NEWSCalculator },
+  { id: "mews", title: "MEWS", icon: <Activity size={18} />, description: "Alerta precoce modificado", component: MEWSCalculator },
+  { id: "rox", title: "Índice ROX", icon: <Stethoscope size={18} />, description: "Sucesso de CNAF", component: RoxIndexCalculator },
+  { id: "sirs", title: "SIRS", icon: <Activity size={18} />, description: "Resp. inflamatória sistêmica", component: SIRS_Calculator },
+  { id: "mascc", title: "MASCC", icon: <Activity size={18} />, description: "Risco neutropenia febril", component: MASCCCalculator },
+  { id: "glasgowblatchford", title: "Glasgow-Blatchford", icon: <Droplets size={18} />, description: "HDA — necessidade de intervenção", component: GlasgowBlatchfordCalculator },
+  { id: "wellstvp", title: "Wells (TVP)", icon: <Heart size={18} />, description: "Probabilidade de TVP", component: WellsTVPCalculator },
+  { id: "centor", title: "Centor / McIsaac", icon: <Stethoscope size={18} />, description: "Faringite estreptocócica", component: CentorCalculator },
+  { id: "abcd2", title: "ABCD²", icon: <Brain size={18} />, description: "Risco de AVC após AIT", component: ABCD2Calculator },
+  { id: "osmolarity", title: "Osmolaridade Sérica", icon: <Calculator size={18} />, description: "Calculada vs medida", component: OsmolarityCalculator },
+  { id: "nacorrection", title: "Correção de Na⁺", icon: <Droplets size={18} />, description: "Hiperglicemia", component: SodiumCorrectionCalculator },
+  { id: "waterdeficit", title: "Déficit de Água Livre", icon: <Droplets size={18} />, description: "Hipernatremia", component: WaterDeficitCalculator },
+  { id: "corticoid", title: "Conversor Corticoides", icon: <Syringe size={18} />, description: "Equivalência entre corticoides", component: CorticosteroidConverterCalculator },
+  { id: "opioid", title: "Conversor Opioides", icon: <Syringe size={18} />, description: "Equivalência entre opioides", component: OpioidConverterCalculator },
+  // — Batch 3 —
+  { id: "pedweight", title: "Peso Pediátrico (PALS)", icon: <Baby size={18} />, description: "Estimativa por idade", component: PediatricWeightCalculator },
+  { id: "peddose", title: "Dose Pediátrica", icon: <Baby size={18} />, description: "mg/kg com dose máx.", component: PediatricDoseCalculator },
+  { id: "aldrete", title: "Aldrete", icon: <Activity size={18} />, description: "Alta pós-anestésica", component: AldretteCalculator },
+  { id: "mallampati", title: "Mallampati", icon: <Stethoscope size={18} />, description: "Via aérea difícil", component: MallampatiCalculator },
+  { id: "asa", title: "Classificação ASA", icon: <Stethoscope size={18} />, description: "Risco anestésico", component: ASACalculator },
+  { id: "fena", title: "FENa", icon: <Droplets size={18} />, description: "Fração excreção de sódio", component: FENaCalculator },
+  { id: "ttkg", title: "TTKG", icon: <Droplets size={18} />, description: "Gradiente transtubular K⁺", component: TranstubularKGradientCalculator },
+  { id: "bsa", title: "Superfície Corporal", icon: <Calculator size={18} />, description: "Dubois & Dubois (m²)", component: BodySurfaceAreaCalculator },
+  { id: "ibw", title: "Peso Ideal", icon: <Calculator size={18} />, description: "Devine formula", component: IdealBodyWeightCalculator },
+  { id: "light", title: "Critérios de Light", icon: <Stethoscope size={18} />, description: "Transudato vs exsudato", component: LightCriteriaCalculator },
+  { id: "aagradient", title: "Gradiente A-a", icon: <Calculator size={18} />, description: "Diferença alvéolo-arterial", component: CaGradientCalculator },
+  { id: "map", title: "PAM", icon: <Heart size={18} />, description: "Pressão arterial média", component: MAP_Calculator },
+  { id: "qtc", title: "QTc", icon: <Heart size={18} />, description: "QT corrigido (Bazett)", component: QTcCalculator },
+  { id: "fallrisk", title: "Morse (Queda)", icon: <Activity size={18} />, description: "Risco de queda", component: FallRiskCalculator },
+  { id: "braden", title: "Braden", icon: <Activity size={18} />, description: "Risco lesão por pressão", component: BradenCalculator },
 ];
 
 export default function Calculators() {
   const { subscription } = useAuth();
   const [activeCalc, setActiveCalc] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filtered = calculators.filter(
+    (c) =>
+      c.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      c.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   if (!subscription.subscribed) {
     return (
       <>
         <TopBar title="Calculadoras" />
         <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Buscar calculadora..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-9 rounded-2xl bg-card border-0 shadow-sm"
+            />
+          </div>
+          <p className="text-xs text-muted-foreground text-center">{calculators.length} calculadoras disponíveis</p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-            {calculators.map((calc) => (
+            {filtered.map((calc) => (
               <Card key={calc.id} className="opacity-60">
                 <CardContent className="flex items-center gap-3 p-3.5">
                   <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center text-muted-foreground">
@@ -892,8 +946,19 @@ export default function Calculators() {
     <>
       <TopBar title="Calculadoras" />
       <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Input
+            placeholder="Buscar calculadora..."
+            value={searchTerm}
+            onChange={(e) => { setSearchTerm(e.target.value); setActiveCalc(null); }}
+            className="pl-9 rounded-2xl bg-card border-0 shadow-sm"
+          />
+        </div>
+        <p className="text-xs text-muted-foreground text-center">{filtered.length} de {calculators.length} calculadoras</p>
+
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          {calculators.map((calc) => (
+          {filtered.map((calc) => (
             <div
               key={calc.id}
               onClick={() => setActiveCalc(activeCalc === calc.id ? null : calc.id)}
