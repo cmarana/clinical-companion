@@ -45,6 +45,7 @@ const EvolutionTemplates = lazy(() => import("@/pages/EvolutionTemplates"));
 const DrugCompatibility = lazy(() => import("@/pages/DrugCompatibility"));
 const LabReference = lazy(() => import("@/pages/LabReference"));
 const ClinicalAtlas = lazy(() => import("@/pages/ClinicalAtlas"));
+const Flashcards = lazy(() => import("@/pages/Flashcards"));
 
 const queryClient = new QueryClient();
 
@@ -104,6 +105,7 @@ const AppRoutes = () => (
         <Route path="/drug-compatibility" element={<DrugCompatibility />} />
         <Route path="/lab-reference" element={<LabReference />} />
         <Route path="/clinical-atlas" element={<ClinicalAtlas />} />
+        <Route path="/flashcards" element={<Flashcards />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
