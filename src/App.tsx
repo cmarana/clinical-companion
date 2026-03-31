@@ -48,6 +48,7 @@ const ClinicalAtlas = lazy(() => import("@/pages/ClinicalAtlas"));
 const Flashcards = lazy(() => import("@/pages/Flashcards"));
 const ResidencyQuiz = lazy(() => import("@/pages/ResidencyQuiz"));
 const IVDilutions = lazy(() => import("@/pages/IVDilutions"));
+const StudyDashboard = lazy(() => import("@/pages/StudyDashboard"));
 
 const queryClient = new QueryClient();
 
@@ -110,6 +111,7 @@ const AppRoutes = () => (
         <Route path="/flashcards" element={<Flashcards />} />
         <Route path="/residency-quiz" element={<ResidencyQuiz />} />
         <Route path="/iv-dilutions" element={<IVDilutions />} />
+        <Route path="/study-dashboard" element={<StudyDashboard />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
