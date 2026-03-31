@@ -39,7 +39,7 @@ export default function FullProtocols() {
   return (
     <>
       <TopBar title="Protocolos Completos" />
-      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4 pb-24">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-5 pb-24">
         <div className="space-y-1">
           <h1 className="font-heading font-bold text-base tracking-tight">Biblioteca de Protocolos</h1>
           <p className="text-xs text-muted-foreground">
@@ -49,22 +49,22 @@ export default function FullProtocols() {
 
         {/* Search */}
         <div className="relative">
-          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-          <Input
+          <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
+          <input
             placeholder="Buscar protocolo..."
             value={search}
             onChange={e => setSearch(e.target.value)}
-            className="pl-8 h-9 text-xs rounded-lg"
+            className="w-full pl-11 pr-4 h-12 text-sm rounded-2xl bg-muted/60 dark:bg-muted/40 border-0 shadow-inner focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all placeholder:text-muted-foreground/60 font-heading"
           />
         </div>
 
         {/* Category pills */}
-        <div className="flex gap-2 overflow-x-auto pb-1 no-scrollbar">
+        <div className="flex gap-2 overflow-x-auto pb-2 no-scrollbar">
           <button
             onClick={() => setActiveCat("all")}
             className={cn(
-              "shrink-0 px-3 py-1.5 rounded-full text-xs font-heading font-medium transition-colors",
-              activeCat === "all" ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground"
+              "shrink-0 px-4 py-2 rounded-2xl text-xs font-heading font-medium transition-all duration-200 active:scale-[0.97]",
+              activeCat === "all" ? "bg-primary text-primary-foreground shadow-sm" : "bg-card text-secondary-foreground shadow-sm"
             )}
           >
             Todos
@@ -74,8 +74,8 @@ export default function FullProtocols() {
               key={cat.id}
               onClick={() => setActiveCat(cat.id)}
               className={cn(
-                "shrink-0 px-3 py-1.5 rounded-full text-xs font-heading font-medium transition-colors",
-                activeCat === cat.id ? "bg-primary text-primary-foreground" : "bg-secondary text-secondary-foreground"
+                "shrink-0 px-4 py-2 rounded-2xl text-xs font-heading font-medium transition-all duration-200 active:scale-[0.97]",
+                activeCat === cat.id ? "bg-primary text-primary-foreground shadow-sm" : "bg-card text-secondary-foreground shadow-sm"
               )}
             >
               {cat.title}
@@ -84,21 +84,21 @@ export default function FullProtocols() {
         </div>
 
         {/* List */}
-        <div className="space-y-2 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-2 md:space-y-0">
+        <div className="space-y-3 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-3 md:space-y-0">
           {filtered.map((p) => (
-            <Card
+            <div
               key={p.id}
               onClick={() => navigate(`/full-protocols/${p.id}`)}
-              className="cursor-pointer hover:shadow-sm active:scale-[0.99] transition-all"
+              className="cursor-pointer bg-card rounded-[20px] shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 border-0"
             >
-              <CardContent className="flex items-center justify-between p-3.5">
+              <div className="flex items-center justify-between p-4">
                 <div>
                   <p className="font-heading font-semibold text-sm">{p.title}</p>
-                  <p className="text-xs text-muted-foreground">{p.category}</p>
+                  <p className="text-[11px] text-muted-foreground mt-0.5">{p.category}</p>
                 </div>
                 <ChevronRight size={16} className="text-muted-foreground shrink-0" />
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
           {filtered.length === 0 && (
             <p className="text-center text-sm text-muted-foreground py-8">Nenhum protocolo encontrado.</p>

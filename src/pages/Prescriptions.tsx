@@ -69,48 +69,50 @@ export default function Prescriptions() {
     <>
       <TopBar title="Prescrições" />
       <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4 pb-24">
-        <p className="text-xs text-muted-foreground">Prescrições prontas para pronto socorro, internação, ambulatório e SUS</p>
+        <p className="text-[11px] text-muted-foreground">Prescrições prontas para pronto socorro, internação, ambulatório e SUS</p>
 
         <div className="relative">
-          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-          <Input
+          <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
+          <input
             placeholder="Buscar prescrição..."
             value={query}
             onChange={e => setQuery(e.target.value)}
-            className="pl-8 h-10 text-sm rounded-xl"
+            className="w-full pl-11 pr-4 h-12 text-sm rounded-2xl bg-muted/60 dark:bg-muted/40 border-0 shadow-inner focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all placeholder:text-muted-foreground/60 font-heading"
           />
         </div>
 
         {filtered.map(cat => (
-          <div key={cat.id} className="space-y-2">
+          <div key={cat.id} className="space-y-2.5">
             <button
               onClick={() => setExpandedCat(expandedCat === cat.id ? null : cat.id)}
-              className="w-full flex items-center justify-between p-3 rounded-xl bg-accent/50 hover:bg-accent transition-colors"
+              className="w-full flex items-center justify-between p-4 rounded-[20px] bg-card shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 border-0"
             >
               <div className="flex items-center gap-2">
-                {cat.icon && iconMap[cat.icon] ? iconMap[cat.icon] : <ClipboardList size={16} className="text-primary" />}
+                <div className="w-8 h-8 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
+                  {cat.icon && iconMap[cat.icon] ? iconMap[cat.icon] : <ClipboardList size={16} className="text-primary" />}
+                </div>
                 <span className="font-heading font-semibold text-sm">{cat.title}</span>
-                <span className="text-xs text-muted-foreground">({cat.items.length})</span>
+                <span className="text-[11px] text-muted-foreground bg-muted px-2 py-0.5 rounded-full">{cat.items.length}</span>
               </div>
               <ChevronRight size={16} className={`text-muted-foreground transition-transform ${expandedCat === cat.id ? "rotate-90" : ""}`} />
             </button>
 
             {(expandedCat === cat.id || query.length >= 2) && (
-              <div className="space-y-1.5 pl-2">
+              <div className="space-y-2 pl-1">
                 {cat.items.map(item => (
-                  <Card
+                  <div
                     key={item.id}
                     onClick={() => navigate(`/prescriptions/${item.id}`)}
-                    className="cursor-pointer hover:shadow-sm active:scale-[0.99] transition-all"
+                    className="cursor-pointer bg-card rounded-2xl shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 border-0"
                   >
-                    <CardContent className="p-3 flex items-center justify-between">
+                    <div className="p-4 flex items-center justify-between">
                       <div>
-                        <p className="font-heading font-semibold text-xs">{item.title}</p>
-                        <p className="text-[10px] text-muted-foreground">{item.type}</p>
+                        <p className="font-heading font-semibold text-[13px]">{item.title}</p>
+                        <p className="text-[11px] text-muted-foreground mt-0.5">{item.type}</p>
                       </div>
                       <ChevronRight size={14} className="text-muted-foreground" />
-                    </CardContent>
-                  </Card>
+                    </div>
+                  </div>
                 ))}
               </div>
             )}
