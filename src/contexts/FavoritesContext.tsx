@@ -1,5 +1,7 @@
-import { createContext, useContext, useState, useEffect, useMemo, type ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, useMemo, useCallback, useRef, type ReactNode } from "react";
 import { safeLocalStorage } from "@/lib/safeStorage";
+import { supabase } from "@/integrations/supabase/client";
+import { useAuth } from "@/contexts/AuthContext";
 
 export interface FavoriteItem {
   id: string;
@@ -14,6 +16,7 @@ interface FavoritesContextType {
   toggleFavorite: (item: FavoriteItem) => void;
   grouped: Record<string, FavoriteItem[]>;
   specialties: string[];
+  syncing: boolean;
 }
 
 const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);
@@ -48,6 +51,8 @@ function inferSpecialty(item: FavoriteItem): string {
 }
 
 export function FavoritesProvider({ children }: { children: ReactNode }) {
+  const { user } = useAuth();
+  const [syncing, setSyncing] = useState(false);
   const [favorites, setFavorites] = useState<FavoriteItem[]>(() => {
     try {
       return JSON.parse(safeLocalStorage.getItem("favorites") || "[]");
@@ -55,20 +60,80 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
       return [];
     }
   });
+  const skipLocalSync = useRef(false);
 
+  // Save to localStorage
   useEffect(() => {
-    safeLocalStorage.setItem("favorites", JSON.stringify(favorites));
+    if (!skipLocalSync.current) {
+      safeLocalStorage.setItem("favorites", JSON.stringify(favorites));
+    }
+    skipLocalSync.current = false;
   }, [favorites]);
+
+  // Load from cloud when user logs in
+  useEffect(() => {
+    if (!user) return;
+    let cancelled = false;
+    (async () => {
+      setSyncing(true);
+      try {
+        const { data } = await supabase
+          .from("user_favorites")
+          .select("item_id, item_type, title, specialty")
+          .order("created_at", { ascending: false });
+        if (cancelled || !data) return;
+        const cloud: FavoriteItem[] = data.map((r: any) => ({
+          id: r.item_id,
+          type: r.item_type,
+          title: r.title,
+          specialty: r.specialty,
+        }));
+        // Merge: cloud wins, add local-only items
+        const cloudIds = new Set(cloud.map((f) => f.id));
+        const localOnly = favorites.filter((f) => !cloudIds.has(f.id));
+        // Push local-only to cloud
+        if (localOnly.length > 0) {
+          const rows = localOnly.map((f) => ({
+            user_id: user.id,
+            item_id: f.id,
+            item_type: f.type,
+            title: f.title,
+            specialty: f.specialty || inferSpecialty(f),
+          }));
+          await supabase.from("user_favorites").upsert(rows, { onConflict: "user_id,item_id" });
+        }
+        skipLocalSync.current = true;
+        setFavorites([...cloud, ...localOnly]);
+      } finally {
+        if (!cancelled) setSyncing(false);
+      }
+    })();
+    return () => { cancelled = true; };
+  }, [user?.id]);
 
   const isFavorite = (id: string) => favorites.some((f) => f.id === id);
 
-  const toggleFavorite = (item: FavoriteItem) => {
-    setFavorites((prev) =>
-      prev.some((f) => f.id === item.id)
-        ? prev.filter((f) => f.id !== item.id)
-        : [...prev, { ...item, specialty: item.specialty || inferSpecialty(item) }]
-    );
-  };
+  const toggleFavorite = useCallback((item: FavoriteItem) => {
+    const exists = favorites.some((f) => f.id === item.id);
+    if (exists) {
+      setFavorites((prev) => prev.filter((f) => f.id !== item.id));
+      if (user) {
+        supabase.from("user_favorites").delete().eq("user_id", user.id).eq("item_id", item.id).then();
+      }
+    } else {
+      const withSpec = { ...item, specialty: item.specialty || inferSpecialty(item) };
+      setFavorites((prev) => [...prev, withSpec]);
+      if (user) {
+        supabase.from("user_favorites").upsert({
+          user_id: user.id,
+          item_id: item.id,
+          item_type: item.type,
+          title: item.title,
+          specialty: withSpec.specialty,
+        }, { onConflict: "user_id,item_id" }).then();
+      }
+    }
+  }, [favorites, user]);
 
   const grouped = useMemo(() => {
     const map: Record<string, FavoriteItem[]> = {};
@@ -86,7 +151,7 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
   );
 
   return (
-    <FavoritesContext.Provider value={{ favorites, isFavorite, toggleFavorite, grouped, specialties }}>
+    <FavoritesContext.Provider value={{ favorites, isFavorite, toggleFavorite, grouped, specialties, syncing }}>
       {children}
     </FavoritesContext.Provider>
   );
