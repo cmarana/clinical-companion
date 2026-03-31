@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import TopBar from "@/components/TopBar";
 import { useBularioDetail } from "@/hooks/useBularioMedications";
 import { useFavorites } from "@/contexts/FavoritesContext";

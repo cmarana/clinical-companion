@@ -15,7 +15,14 @@ export default function FullProtocolDetail() {
   const { id } = useParams<{ id: string }>();
   const { subscription } = useAuth();
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { addEntry } = useRecentHistory();
   const protocol = getFullProtocol(id || "");
+
+  useEffect(() => {
+    if (protocol) {
+      addEntry({ path: `/full-protocols/${id}`, title: protocol.title, type: "fullProtocol" });
+    }
+  }, [id]);
 
   if (!protocol) {
     return (
