@@ -3,7 +3,7 @@ import {
   Search, Pill, ClipboardList, FileText, Calculator,
   Baby, Heart, Stethoscope, BookOpen, HelpCircle,
   AlertTriangle, Zap, Moon, Sun, ChevronRight, Bot, FlaskConical,
-  Timer, CheckSquare, Hash, GitBranch, FileEdit
+  Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes
 } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
