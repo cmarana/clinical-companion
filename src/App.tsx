@@ -43,6 +43,7 @@ const Checklists = lazy(() => import("@/pages/Checklists"));
 const CIDSearch = lazy(() => import("@/pages/CIDSearch"));
 const EvolutionTemplates = lazy(() => import("@/pages/EvolutionTemplates"));
 const DrugCompatibility = lazy(() => import("@/pages/DrugCompatibility"));
+const LabReference = lazy(() => import("@/pages/LabReference"));
 
 const queryClient = new QueryClient();
 
@@ -100,6 +101,7 @@ const AppRoutes = () => (
         <Route path="/cid" element={<CIDSearch />} />
         <Route path="/evolution-templates" element={<EvolutionTemplates />} />
         <Route path="/drug-compatibility" element={<DrugCompatibility />} />
+        <Route path="/lab-reference" element={<LabReference />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
