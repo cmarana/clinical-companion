@@ -29,6 +29,7 @@ const modules = [
   { label: "Atlas Clínico", sub: "ECG, Dermato, Radiologia", icon: ScanLine, path: "/clinical-atlas", variant: "default" as const },
   { label: "Evoluções", sub: "Templates de evolução", icon: FileEdit, path: "/evolution-templates", variant: "default" as const },
   { label: "Questões", sub: "Estudo por questões", icon: HelpCircle, path: "/quiz", variant: "default" as const },
+  { label: "Flashcards", sub: "Revisão espaçada (Anki)", icon: Brain, path: "/flashcards", variant: "default" as const },
 ];
 
 const emergencyShortcuts = [
