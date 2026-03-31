@@ -1,7 +1,7 @@
 export interface IVDrug {
   id: string;
   name: string;
-  category: "Vasopressor" | "Sedativo" | "Analgésico" | "Antiarrítmico" | "Antibiótico" | "Anticoagulante" | "Eletrólito" | "Inotrópico" | "Anti-hipertensivo" | "Outros";
+  category: "Vasopressor" | "Sedativo" | "Analgésico" | "Antiarrítmico" | "Antibiótico" | "Anticoagulante" | "Eletrólito" | "Inotrópico" | "Anti-hipertensivo" | "Antifúngico" | "Corticoide" | "Broncodilatador" | "Hemoderivado" | "Outros";
   presentations: string[];
   reconstitution: string;
   standardDilution: string;
