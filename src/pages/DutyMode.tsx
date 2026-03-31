@@ -114,12 +114,12 @@ export default function DutyMode() {
 
         {/* ── Search ── */}
         <div className="relative">
-          <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-          <Input
+          <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
+          <input
             placeholder="Buscar protocolo, medicação, dose, doença..."
             value={search}
             onChange={e => setSearch(e.target.value)}
-            className="pl-9 h-10 text-sm rounded-lg bg-card border-border"
+            className="w-full pl-11 pr-4 h-12 text-sm rounded-2xl bg-muted/60 dark:bg-muted/40 border-0 shadow-inner focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all placeholder:text-muted-foreground/60 font-heading"
           />
         </div>
 
@@ -168,16 +168,16 @@ export default function DutyMode() {
             {/* ── IA Clínica ── */}
             <button
               onClick={() => navigate("/clinical-ai")}
-              className="duty-card w-full flex items-center gap-3 p-4"
+              className="w-full flex items-center gap-3 p-4 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-indigo-500 text-white rounded-[20px] shadow-lg shadow-blue-500/20 dark:shadow-blue-500/30 active:scale-[0.98] transition-all duration-200"
             >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                <Sparkles size={20} className="text-primary" />
+              <div className="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center">
+                <Sparkles size={20} className="text-white" />
               </div>
               <div className="text-left flex-1">
-                <p className="font-heading font-semibold text-sm">IA Clínica</p>
-                <p className="text-xs text-muted-foreground">Diagnóstico, conduta e prescrição assistidos por IA</p>
+                <p className="font-heading font-semibold text-sm text-white">IA Clínica</p>
+                <p className="text-xs text-white/70">Diagnóstico, conduta e prescrição assistidos por IA</p>
               </div>
-              <ChevronRight size={16} className="text-muted-foreground" />
+              <ChevronRight size={16} className="text-white/60" />
             </button>
 
             {/* ── Emergency Protocols ── */}
@@ -261,7 +261,7 @@ export default function DutyMode() {
 /* ─── Reusable section wrapper ─── */
 function DutySection({ title, icon, children }: { title: string; icon?: React.ReactNode; children: React.ReactNode }) {
   return (
-    <div className="duty-card p-4 space-y-3">
+    <div className="duty-card p-5 space-y-3">
       <h2 className="font-heading font-semibold text-xs uppercase tracking-wider text-muted-foreground flex items-center gap-2">
         {icon}
         {title}
