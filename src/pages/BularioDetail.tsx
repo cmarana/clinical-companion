@@ -9,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import DrugInteractionAlert from "@/components/DrugInteractionAlert";
+import { useRecentHistory } from "@/hooks/useRecentHistory";
 
 function Section({ title, content }: { title: string; content?: string }) {
   if (!content) return null;

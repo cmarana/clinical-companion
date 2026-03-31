@@ -8,6 +8,7 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { Input } from "@/components/ui/input";
+import { useRecentHistory } from "@/hooks/useRecentHistory";
 import { Label } from "@/components/ui/label";
 import {
   Dialog,
