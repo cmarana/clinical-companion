@@ -47,6 +47,9 @@ export const flashcardCategoryLabels: Record<FlashcardCategory, string> = {
   reumatologia: "Reumatologia",
   ortopedia: "Ortopedia",
   medicina_familia: "Medicina de Família",
+  oftalmologia: "Oftalmologia",
+  otorrino: "Otorrinolaringologia",
+  geriatria: "Geriatria",
 };
 
 export const flashcardCategoryColors: Record<FlashcardCategory, string> = {
