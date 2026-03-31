@@ -54,28 +54,6 @@ export const atlasEntries: AtlasEntry[] = [
     tags: ["iam", "supra", "infarto", "coronária", "emergência"]
   },
   {
-    id: "ecg-fa",
-    title: "Fibrilação Atrial",
-    category: "ecg",
-    subcategory: "Arritmias Supraventriculares",
-    image_description: "Ausência de ondas P organizadas, substituídas por ondulações irregulares da linha de base (ondas f). Intervalos R-R irregularmente irregulares. QRS geralmente estreito.",
-    findings: [
-      "Ausência de ondas P definidas",
-      "Linha de base com ondulação irregular (ondas f)",
-      "Intervalos R-R irregularmente irregulares",
-      "FC variável (pode ser alta, normal ou baixa)",
-      "QRS estreito (salvo aberrância ou WPW)"
-    ],
-    clinical_significance: "Arritmia sustentada mais comum. Risco de AVC (calcular CHA₂DS₂-VASc). Controle de FC vs ritmo. Anticoagulação se indicada.",
-    pearls: [
-      "FA + RVR com QRS largo: excluir WPW (irregular polimórfico)",
-      "FA + FC controlada sem fármacos: pesquisar doença do nó sinusal",
-      "FA de início recente (<48h): cardioversão segura sem eco TE",
-      "RR regular em FA = bloqueio AV completo com ritmo de escape"
-    ],
-    tags: ["fa", "fibrilação", "atrial", "arritmia", "anticoagulação"]
-  },
-  {
     id: "ecg-brd",
     title: "Bloqueio de Ramo Direito (BRD)",
     category: "ecg",
