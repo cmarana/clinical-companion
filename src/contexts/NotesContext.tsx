@@ -1,12 +1,13 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from "react";
-import type { Note } from "@/types/medical";
+import type { Note, NoteCategory } from "@/types/medical";
 import { safeLocalStorage } from "@/lib/safeStorage";
 
 interface NotesContextType {
   notes: Note[];
-  addNote: (title: string, content: string) => void;
-  updateNote: (id: string, title: string, content: string) => void;
+  addNote: (title: string, content: string, category?: NoteCategory, patient?: string, templateId?: string) => void;
+  updateNote: (id: string, title: string, content: string, category?: NoteCategory, patient?: string) => void;
   deleteNote: (id: string) => void;
+  duplicateNote: (id: string) => void;
 }
 
 const NotesContext = createContext<NotesContextType | undefined>(undefined);
@@ -14,7 +15,9 @@ const NotesContext = createContext<NotesContextType | undefined>(undefined);
 export function NotesProvider({ children }: { children: ReactNode }) {
   const [notes, setNotes] = useState<Note[]>(() => {
     try {
-      return JSON.parse(safeLocalStorage.getItem("notes") || "[]");
+      const raw = JSON.parse(safeLocalStorage.getItem("notes") || "[]");
+      // migrate old notes without category
+      return raw.map((n: any) => ({ ...n, category: n.category || "outro" }));
     } catch {
       return [];
     }
@@ -24,14 +27,21 @@ export function NotesProvider({ children }: { children: ReactNode }) {
     safeLocalStorage.setItem("notes", JSON.stringify(notes));
   }, [notes]);
 
-  const addNote = (title: string, content: string) => {
+  const addNote = (title: string, content: string, category: NoteCategory = "outro", patient?: string, templateId?: string) => {
     const now = Date.now();
-    setNotes((prev) => [{ id: crypto.randomUUID(), title, content, createdAt: now, updatedAt: now }, ...prev]);
+    setNotes((prev) => [
+      { id: crypto.randomUUID(), title, content, category, patient, templateId, createdAt: now, updatedAt: now },
+      ...prev,
+    ]);
   };
 
-  const updateNote = (id: string, title: string, content: string) => {
+  const updateNote = (id: string, title: string, content: string, category?: NoteCategory, patient?: string) => {
     setNotes((prev) =>
-      prev.map((n) => (n.id === id ? { ...n, title, content, updatedAt: Date.now() } : n))
+      prev.map((n) =>
+        n.id === id
+          ? { ...n, title, content, ...(category && { category }), ...(patient !== undefined && { patient }), updatedAt: Date.now() }
+          : n
+      )
     );
   };
 
@@ -39,8 +49,18 @@ export function NotesProvider({ children }: { children: ReactNode }) {
     setNotes((prev) => prev.filter((n) => n.id !== id));
   };
 
+  const duplicateNote = (id: string) => {
+    const note = notes.find((n) => n.id === id);
+    if (!note) return;
+    const now = Date.now();
+    setNotes((prev) => [
+      { ...note, id: crypto.randomUUID(), title: `${note.title} (cópia)`, createdAt: now, updatedAt: now },
+      ...prev,
+    ]);
+  };
+
   return (
-    <NotesContext.Provider value={{ notes, addNote, updateNote, deleteNote }}>
+    <NotesContext.Provider value={{ notes, addNote, updateNote, deleteNote, duplicateNote }}>
       {children}
     </NotesContext.Provider>
   );
