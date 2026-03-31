@@ -2,6 +2,8 @@ import { useNavigate } from "react-router-dom";
 import { Bot, ClipboardList, Calculator, GitBranch } from "lucide-react";
 import { useState } from "react";
 import PrescriptionGenerator from "./PrescriptionGenerator";
+import ShareMenu from "./ShareMenu";
+import { formatProtocolForShare } from "@/lib/shareUtils";
 
 // Maps protocol IDs / keywords to AI context prompts
 const AI_CONTEXT_MAP: Record<string, string> = {
