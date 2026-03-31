@@ -43,6 +43,7 @@ const Checklists = lazy(() => import("@/pages/Checklists"));
 const CIDSearch = lazy(() => import("@/pages/CIDSearch"));
 const EvolutionTemplates = lazy(() => import("@/pages/EvolutionTemplates"));
 const DrugCompatibility = lazy(() => import("@/pages/DrugCompatibility"));
+const LabReference = lazy(() => import("@/pages/LabReference"));
 
 const queryClient = new QueryClient();
 
