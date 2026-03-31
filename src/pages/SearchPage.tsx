@@ -111,8 +111,8 @@ export default function SearchPage() {
       .map(p => ({ id: p.id, title: p.title, subtitle: p.category, type: "Protocolo Completo", path: `/full-protocols/${p.id}`, icon: "fullProtocol" as const }));
 
     const emergencyResults: SearchResult[] = allEmergencyProtocols
-      .filter(p => p.title.toLowerCase().includes(q) || p.category.toLowerCase().includes(q))
-      .map(p => ({ id: p.id, title: p.title, subtitle: `Emergência · ${p.category}`, type: "Emergência", path: `/emergency/${p.id}`, icon: "emergency" as const }));
+      .filter(p => p.title.toLowerCase().includes(q) || p.categoryId.toLowerCase().includes(q))
+      .map(p => ({ id: p.id, title: p.title, subtitle: `Emergência · ${p.categoryId}`, type: "Emergência", path: `/emergency/${p.id}`, icon: "emergency" as const }));
 
     const rxResults: SearchResult[] = prescriptionCategories
       .flatMap(c => c.items)

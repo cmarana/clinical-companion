@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { safeStorage } from "@/lib/safeStorage";
+import { safeLocalStorage } from "@/lib/safeStorage";
 
 export interface HistoryEntry {
   path: string;
