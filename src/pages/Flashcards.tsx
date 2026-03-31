@@ -13,6 +13,7 @@ import { useAuth } from "@/contexts/AuthContext";
 type View = "decks" | "review";
 
 export default function Flashcards() {
+  const { user } = useAuth();
   const [view, setView] = useState<View>("decks");
   const [activeCat, setActiveCat] = useState<FlashcardCategory | "all" | "due">("all");
   const [search, setSearch] = useState("");
@@ -20,6 +21,14 @@ export default function Flashcards() {
   const [flipped, setFlipped] = useState(false);
   const [sessionCards, setSessionCards] = useState<string[]>([]);
   const [sessionDone, setSessionDone] = useState(0);
+  const [, setRefresh] = useState(0);
+
+  // Sync study progress from cloud on login
+  useEffect(() => {
+    if (user) {
+      syncProgressFromCloud(user.id).then(() => setRefresh((r) => r + 1));
+    }
+  }, [user?.id]);
 
   const categories = useMemo(() => {
     const cats = [...new Set(flashcards.map((f) => f.category))];
