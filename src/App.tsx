@@ -101,6 +101,7 @@ const AppRoutes = () => (
         <Route path="/cid" element={<CIDSearch />} />
         <Route path="/evolution-templates" element={<EvolutionTemplates />} />
         <Route path="/drug-compatibility" element={<DrugCompatibility />} />
+        <Route path="/lab-reference" element={<LabReference />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
