@@ -5,9 +5,9 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import PremiumGate from "@/components/PremiumGate";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Star } from "lucide-react";
+import { Star, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { getFullProtocol, FULL_SECTION_ORDER } from "@/data/fullProtocols";
+import { getFullProtocol, FULL_SECTION_ORDER, getEvidence } from "@/data/fullProtocols";
 import ProtocolActionBar from "@/components/ProtocolActionBar";
 import { useRecentHistory } from "@/hooks/useRecentHistory";
 
@@ -17,6 +17,7 @@ export default function FullProtocolDetail() {
   const { isFavorite, toggleFavorite } = useFavorites();
   const { addEntry } = useRecentHistory();
   const protocol = getFullProtocol(id || "");
+  const evidence = protocol ? getEvidence(protocol.id) : undefined;
 
   useEffect(() => {
     if (protocol) {
@@ -67,7 +68,21 @@ export default function FullProtocolDetail() {
         }
       />
       <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto pb-24">
-        <p className="text-xs text-muted-foreground font-heading mb-3">{protocol.category}</p>
+        <div className="flex items-center gap-2 mb-3">
+          <p className="text-xs text-muted-foreground font-heading">{protocol.category}</p>
+          {evidence && (
+            <span className={cn(
+              "inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full",
+              evidence.class === "I" && "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400",
+              evidence.class === "IIa" && "bg-sky-500/15 text-sky-600 dark:text-sky-400",
+              evidence.class === "IIb" && "bg-amber-500/15 text-amber-600 dark:text-amber-400",
+              evidence.class === "III" && "bg-red-500/15 text-red-600 dark:text-red-400",
+            )}>
+              <ShieldCheck size={12} />
+              Classe {evidence.class} · Nível {evidence.level}
+            </span>
+          )}
+        </div>
 
         <ProtocolActionBar
           protocolId={protocol.id}
