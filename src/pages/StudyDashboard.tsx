@@ -11,7 +11,7 @@ import { residencyQuestions } from "@/data/residencyQuestions";
 import { safeLocalStorage } from "@/lib/safeStorage";
 import {
   Flame, Target, Trophy, Brain, GraduationCap, TrendingUp,
-  ChevronRight, Calendar, Star, Zap, BarChart3
+  ChevronRight, Calendar, Star, Zap, BarChart3, Settings2, Check
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -110,9 +110,11 @@ const chartConfig: ChartConfig = {
 export default function StudyDashboard() {
   const navigate = useNavigate();
   const [streak, setStreak] = useState(getStreak);
+  const [goalValue, setGoalValue] = useState(getWeeklyGoal);
+  const [editingGoal, setEditingGoal] = useState(false);
+  const [tempGoal, setTempGoal] = useState(goalValue);
 
   useEffect(() => {
-    // Record today if user has studied (has any progress)
     const progress = getProgress();
     const today = getTodayStr();
     const hasStudiedToday = Object.values(progress).some(
@@ -121,9 +123,15 @@ export default function StudyDashboard() {
     if (hasStudiedToday) setStreak(recordStudyDay());
   }, []);
 
-  const weeklyGoal = getWeeklyGoal();
+  const saveGoal = (val: number) => {
+    const clamped = Math.max(1, Math.min(7, val));
+    safeLocalStorage.setItem(WEEKLY_GOAL_KEY, String(clamped));
+    setGoalValue(clamped);
+    setEditingGoal(false);
+  };
+
   const weekDays = getWeekStudyDays();
-  const weekProgress = Math.min(100, (weekDays / weeklyGoal) * 100);
+  const weekProgress = Math.min(100, (weekDays / goalValue) * 100);
 
   // Flashcard stats
   const allCardIds = flashcards.map((c) => c.id);
@@ -199,11 +207,46 @@ export default function StudyDashboard() {
             <span className="text-[11px] text-muted-foreground font-medium">Streak (dias)</span>
             <span className="text-[10px] text-muted-foreground">Recorde: {streak.best}</span>
           </Card>
-          <Card className="p-4 flex flex-col items-center gap-1">
+          <Card className="p-4 flex flex-col items-center gap-1 relative">
+            <button
+              onClick={() => { setTempGoal(goalValue); setEditingGoal(!editingGoal); }}
+              className="absolute top-2 right-2 p-1 rounded-lg hover:bg-muted transition-colors text-muted-foreground"
+            >
+              <Settings2 size={14} />
+            </button>
             <Target className="text-primary" size={28} />
-            <span className="text-2xl font-bold text-foreground">{weekDays}/{weeklyGoal}</span>
-            <span className="text-[11px] text-muted-foreground font-medium">Meta semanal</span>
-            <Progress value={weekProgress} className="h-2 mt-1 w-full" />
+            {editingGoal ? (
+              <div className="flex items-center gap-2 mt-1">
+                <div className="flex items-center gap-1">
+                  {[1, 2, 3, 4, 5, 6, 7].map((n) => (
+                    <button
+                      key={n}
+                      onClick={() => setTempGoal(n)}
+                      className={cn(
+                        "w-7 h-7 rounded-full text-xs font-bold transition-all",
+                        tempGoal === n
+                          ? "bg-primary text-primary-foreground scale-110"
+                          : "bg-muted text-muted-foreground hover:bg-muted/80"
+                      )}
+                    >
+                      {n}
+                    </button>
+                  ))}
+                </div>
+                <button
+                  onClick={() => saveGoal(tempGoal)}
+                  className="p-1.5 rounded-lg bg-primary text-primary-foreground"
+                >
+                  <Check size={14} />
+                </button>
+              </div>
+            ) : (
+              <>
+                <span className="text-2xl font-bold text-foreground">{weekDays}/{goalValue}</span>
+                <span className="text-[11px] text-muted-foreground font-medium">Meta semanal</span>
+                <Progress value={weekProgress} className="h-2 mt-1 w-full" />
+              </>
+            )}
           </Card>
         </div>
 
