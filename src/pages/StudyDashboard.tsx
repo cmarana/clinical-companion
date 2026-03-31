@@ -188,7 +188,7 @@ export default function StudyDashboard() {
 
   return (
     <div className="min-h-screen bg-background pb-24">
-      <TopBar title="Dashboard de Estudo" backTo="/" />
+      <TopBar title="Dashboard de Estudo" showBack />
 
       <div className="px-4 pt-3 max-w-lg mx-auto space-y-4">
         {/* Streak & Weekly Goal */}
