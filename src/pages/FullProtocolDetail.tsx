@@ -5,9 +5,9 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import PremiumGate from "@/components/PremiumGate";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Star } from "lucide-react";
+import { Star, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { getFullProtocol, FULL_SECTION_ORDER } from "@/data/fullProtocols";
+import { getFullProtocol, FULL_SECTION_ORDER, getEvidence } from "@/data/fullProtocols";
 import ProtocolActionBar from "@/components/ProtocolActionBar";
 import { useRecentHistory } from "@/hooks/useRecentHistory";
 
