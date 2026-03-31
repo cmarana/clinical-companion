@@ -129,7 +129,7 @@ interface ProtocolActionBarProps {
   protocolContent?: string;
 }
 
-export default function ProtocolActionBar({ protocolId, protocolTitle, protocolContent }: ProtocolActionBarProps) {
+export default function ProtocolActionBar({ protocolId, protocolTitle, protocolCategory, protocolSections, protocolContent }: ProtocolActionBarProps) {
   const navigate = useNavigate();
   const [showPrescription, setShowPrescription] = useState(false);
 
