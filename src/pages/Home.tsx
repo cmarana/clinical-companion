@@ -109,6 +109,9 @@ export default function Home() {
         ))}
       </div>
 
+      {/* Recent History */}
+      <RecentHistory />
+
       {/* Emergency shortcuts */}
       <div className="mt-5">
         <div className="flex items-center justify-between mb-3">
