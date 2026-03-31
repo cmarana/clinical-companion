@@ -17,6 +17,7 @@ export default function FullProtocolDetail() {
   const { isFavorite, toggleFavorite } = useFavorites();
   const { addEntry } = useRecentHistory();
   const protocol = getFullProtocol(id || "");
+  const evidence = protocol ? getEvidence(protocol.id) : undefined;
 
   useEffect(() => {
     if (protocol) {
