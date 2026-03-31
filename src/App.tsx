@@ -46,6 +46,7 @@ const DrugCompatibility = lazy(() => import("@/pages/DrugCompatibility"));
 const LabReference = lazy(() => import("@/pages/LabReference"));
 const ClinicalAtlas = lazy(() => import("@/pages/ClinicalAtlas"));
 const Flashcards = lazy(() => import("@/pages/Flashcards"));
+const ResidencyQuiz = lazy(() => import("@/pages/ResidencyQuiz"));
 
 const queryClient = new QueryClient();
 
