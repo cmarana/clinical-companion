@@ -40,6 +40,10 @@ export const flashcardCategoryLabels: Record<FlashcardCategory, string> = {
   cirurgia: "Cirurgia",
   farmacologia: "Farmacologia",
   psiquiatria: "Psiquiatria",
+  dermatologia: "Dermatologia",
+  reumatologia: "Reumatologia",
+  ortopedia: "Ortopedia",
+  medicina_familia: "Medicina de Família",
 };
 
 export const flashcardCategoryColors: Record<FlashcardCategory, string> = {
