@@ -24,7 +24,10 @@ export type FlashcardCategory =
   | "dermatologia"
   | "reumatologia"
   | "ortopedia"
-  | "medicina_familia";
+  | "medicina_familia"
+  | "oftalmologia"
+  | "otorrino"
+  | "geriatria";
 export const flashcardCategoryLabels: Record<FlashcardCategory, string> = {
   cardiologia: "Cardiologia",
   pneumologia: "Pneumologia",
