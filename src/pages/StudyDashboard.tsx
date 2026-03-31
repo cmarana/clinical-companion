@@ -11,7 +11,7 @@ import { residencyQuestions } from "@/data/residencyQuestions";
 import { safeLocalStorage } from "@/lib/safeStorage";
 import {
   Flame, Target, Trophy, Brain, GraduationCap, TrendingUp,
-  ChevronRight, Calendar, Star, Zap, BarChart3
+  ChevronRight, Calendar, Star, Zap, BarChart3, Settings2, Check
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
