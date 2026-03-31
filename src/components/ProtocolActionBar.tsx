@@ -124,7 +124,9 @@ function findMatch(protocolId: string, map: Record<string, any>) {
 interface ProtocolActionBarProps {
   protocolId: string;
   protocolTitle: string;
-  protocolContent?: string; // Concatenated content for AI context
+  protocolCategory?: string;
+  protocolSections?: { title: string; content: string }[];
+  protocolContent?: string;
 }
 
 export default function ProtocolActionBar({ protocolId, protocolTitle, protocolContent }: ProtocolActionBarProps) {
