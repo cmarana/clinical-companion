@@ -40,10 +40,15 @@ export interface QuizQuestion {
   category: string;
 }
 
+export type NoteCategory = "admissao" | "evolucao" | "alta" | "procedimento" | "interconsulta" | "plantao" | "outro";
+
 export interface Note {
   id: string;
   title: string;
   content: string;
+  category: NoteCategory;
+  patient?: string;
+  templateId?: string;
   createdAt: number;
   updatedAt: number;
 }
