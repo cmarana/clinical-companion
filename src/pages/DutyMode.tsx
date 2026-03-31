@@ -6,10 +6,11 @@ import PremiumGate from "@/components/PremiumGate";
 import {
   Zap, Pill, ClipboardList, Calculator, FileText, Baby, Heart,
   Search, Brain, Star, Stethoscope, Activity, Syringe,
-  ChevronRight, Sparkles
+  ChevronRight, Sparkles, Clock, Play, Square
 } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { useState, useMemo } from "react";
+import { Button } from "@/components/ui/button";
+import { useState, useMemo, useEffect, useRef, useCallback } from "react";
+import { safeLocalStorage } from "@/lib/safeStorage";
 import { protocols } from "@/data/protocols";
 import { medications } from "@/data/medications";
 
@@ -83,6 +84,42 @@ export default function DutyMode() {
   const { favorites } = useFavorites();
   const [search, setSearch] = useState("");
 
+  // ── Shift Timer ──
+  const [shiftStart, setShiftStart] = useState<number | null>(() => {
+    const saved = safeLocalStorage.getItem("shift_start");
+    return saved ? Number(saved) : null;
+  });
+  const [shiftElapsed, setShiftElapsed] = useState(0);
+  const shiftInterval = useRef<ReturnType<typeof setInterval> | null>(null);
+
+  const startShift = useCallback(() => {
+    const now = Date.now();
+    setShiftStart(now);
+    safeLocalStorage.setItem("shift_start", String(now));
+  }, []);
+
+  const endShift = useCallback(() => {
+    setShiftStart(null);
+    setShiftElapsed(0);
+    safeLocalStorage.removeItem("shift_start");
+  }, []);
+
+  useEffect(() => {
+    if (shiftStart) {
+      const tick = () => setShiftElapsed(Math.floor((Date.now() - shiftStart) / 1000));
+      tick();
+      shiftInterval.current = setInterval(tick, 1000);
+      return () => { if (shiftInterval.current) clearInterval(shiftInterval.current); };
+    }
+  }, [shiftStart]);
+
+  const formatShiftTime = (s: number) => {
+    const h = Math.floor(s / 3600);
+    const m = Math.floor((s % 3600) / 60);
+    const sec = s % 60;
+    return `${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}:${sec.toString().padStart(2, "0")}`;
+  };
+
   // Global search across protocols, medications, shortcuts
   const searchResults = useMemo(() => {
     if (search.length < 2) return null;
@@ -111,6 +148,30 @@ export default function DutyMode() {
     <>
       <TopBar title="Modo Plantão" />
       <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-5 pb-24">
+
+        {/* ── Shift Timer Banner ── */}
+        <div className="rounded-2xl border bg-card p-4 flex items-center gap-3">
+          <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center">
+            <Clock size={20} className="text-primary" />
+          </div>
+          <div className="flex-1">
+            <p className="font-heading font-semibold text-xs text-muted-foreground uppercase tracking-wider">Cronômetro de Turno</p>
+            {shiftStart ? (
+              <p className="font-heading text-2xl font-bold tabular-nums tracking-tight">{formatShiftTime(shiftElapsed)}</p>
+            ) : (
+              <p className="text-sm text-muted-foreground">Nenhum plantão ativo</p>
+            )}
+          </div>
+          {shiftStart ? (
+            <Button variant="outline" size="sm" onClick={endShift} className="gap-1.5 border-destructive/30 text-destructive hover:bg-destructive/10">
+              <Square size={14} /> Encerrar
+            </Button>
+          ) : (
+            <Button size="sm" onClick={startShift} className="gap-1.5">
+              <Play size={14} /> Iniciar
+            </Button>
+          )}
+        </div>
 
         {/* ── Search ── */}
         <div className="relative">
