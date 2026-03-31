@@ -29,7 +29,14 @@ function Section({ title, content }: { title: string; content?: string }) {
 export default function BularioDetail() {
   const { id } = useParams<{ id: string }>();
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { addEntry } = useRecentHistory();
   const { data: med, isLoading } = useBularioDetail(id);
+
+  useEffect(() => {
+    if (med) {
+      addEntry({ path: `/bulario/${id}`, title: med.nome, type: "medication" });
+    }
+  }, [id, med?.nome]);
 
   if (isLoading) {
     return (

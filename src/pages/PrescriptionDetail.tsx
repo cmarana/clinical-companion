@@ -23,6 +23,7 @@ export default function PrescriptionDetail() {
   const { toast } = useToast();
   const [copied, setCopied] = useState(false);
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { addEntry } = useRecentHistory();
   const [showPrintDialog, setShowPrintDialog] = useState(false);
   const [patientName, setPatientName] = useState("");
   const [patientBed, setPatientBed] = useState("");
@@ -33,6 +34,12 @@ export default function PrescriptionDetail() {
   const prescription = prescriptionCategories
     .flatMap(c => c.items)
     .find(p => p.id === id);
+
+  useEffect(() => {
+    if (prescription) {
+      addEntry({ path: `/prescriptions/${id}`, title: prescription.title, type: "prescription" });
+    }
+  }, [id]);
 
   if (!prescription) {
     return (
