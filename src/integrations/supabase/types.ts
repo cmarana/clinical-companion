@@ -173,6 +173,105 @@ export type Database = {
         }
         Relationships: []
       }
+      user_favorites: {
+        Row: {
+          created_at: string
+          id: string
+          item_id: string
+          item_type: string
+          specialty: string | null
+          title: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          item_id: string
+          item_type: string
+          specialty?: string | null
+          title: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          item_id?: string
+          item_type?: string
+          specialty?: string | null
+          title?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_notes: {
+        Row: {
+          category: string
+          content: string
+          created_at: string
+          id: string
+          patient: string | null
+          template_id: string | null
+          title: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          category?: string
+          content?: string
+          created_at?: string
+          id?: string
+          patient?: string | null
+          template_id?: string | null
+          title?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          category?: string
+          content?: string
+          created_at?: string
+          id?: string
+          patient?: string | null
+          template_id?: string | null
+          title?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_study_progress: {
+        Row: {
+          card_id: string
+          ease: number
+          id: string
+          interval: number
+          last_review: number
+          next_review: number
+          repetitions: number
+          user_id: string
+        }
+        Insert: {
+          card_id: string
+          ease?: number
+          id?: string
+          interval?: number
+          last_review?: number
+          next_review?: number
+          repetitions?: number
+          user_id: string
+        }
+        Update: {
+          card_id?: string
+          ease?: number
+          id?: string
+          interval?: number
+          last_review?: number
+          next_review?: number
+          repetitions?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
