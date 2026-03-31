@@ -1,17 +1,19 @@
-import { useState, useMemo, useCallback } from "react";
+import { useState, useMemo, useCallback, useEffect } from "react";
 import TopBar from "@/components/TopBar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { flashcards, flashcardCategoryLabels, flashcardCategoryColors, type FlashcardCategory } from "@/data/flashcardsData";
-import { reviewCard, getDueCards, getNewCards, getStats, type Rating } from "@/lib/spacedRepetition";
+import { reviewCard, getDueCards, getNewCards, getStats, syncProgressFromCloud, type Rating } from "@/lib/spacedRepetition";
 import { Brain, RotateCcw, Search, ChevronRight, Zap, BookOpen, Trophy, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
+import { useAuth } from "@/contexts/AuthContext";
 
 type View = "decks" | "review";
 
 export default function Flashcards() {
+  const { user } = useAuth();
   const [view, setView] = useState<View>("decks");
   const [activeCat, setActiveCat] = useState<FlashcardCategory | "all" | "due">("all");
   const [search, setSearch] = useState("");
@@ -19,6 +21,14 @@ export default function Flashcards() {
   const [flipped, setFlipped] = useState(false);
   const [sessionCards, setSessionCards] = useState<string[]>([]);
   const [sessionDone, setSessionDone] = useState(0);
+  const [, setRefresh] = useState(0);
+
+  // Sync study progress from cloud on login
+  useEffect(() => {
+    if (user) {
+      syncProgressFromCloud(user.id).then(() => setRefresh((r) => r + 1));
+    }
+  }, [user?.id]);
 
   const categories = useMemo(() => {
     const cats = [...new Set(flashcards.map((f) => f.category))];
