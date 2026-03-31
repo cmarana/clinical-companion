@@ -1,15 +1,24 @@
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import TopBar from "@/components/TopBar";
 import { useAuth } from "@/contexts/AuthContext";
 import PremiumGate from "@/components/PremiumGate";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { getEmergencyProtocol, SECTION_ORDER } from "@/data/emergency";
 import ProtocolActionBar from "@/components/ProtocolActionBar";
+import { useRecentHistory } from "@/hooks/useRecentHistory";
 
 export default function EmergencyProtocolDetail() {
   const { id } = useParams<{ id: string }>();
   const { subscription } = useAuth();
+  const { addEntry } = useRecentHistory();
   const protocol = getEmergencyProtocol(id || "");
+
+  useEffect(() => {
+    if (protocol) {
+      addEntry({ path: `/emergency/${id}`, title: protocol.title, type: "emergency" });
+    }
+  }, [id]);
 
   if (!protocol) {
     return (

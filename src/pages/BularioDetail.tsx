@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import TopBar from "@/components/TopBar";
 import { useBularioDetail } from "@/hooks/useBularioMedications";
 import { useFavorites } from "@/contexts/FavoritesContext";
@@ -8,6 +9,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import DrugInteractionAlert from "@/components/DrugInteractionAlert";
+import { useRecentHistory } from "@/hooks/useRecentHistory";
 
 function Section({ title, content }: { title: string; content?: string }) {
   if (!content) return null;
@@ -28,7 +30,14 @@ function Section({ title, content }: { title: string; content?: string }) {
 export default function BularioDetail() {
   const { id } = useParams<{ id: string }>();
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { addEntry } = useRecentHistory();
   const { data: med, isLoading } = useBularioDetail(id);
+
+  useEffect(() => {
+    if (med) {
+      addEntry({ path: `/bulario/${id}`, title: med.nome, type: "medication" });
+    }
+  }, [id, med?.nome]);
 
   if (isLoading) {
     return (

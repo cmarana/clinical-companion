@@ -1,4 +1,5 @@
 import { useParams } from "react-router-dom";
+import { useEffect } from "react";
 import TopBar from "@/components/TopBar";
 import { useAuth } from "@/contexts/AuthContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
@@ -8,12 +9,20 @@ import { Star } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { getFullProtocol, FULL_SECTION_ORDER } from "@/data/fullProtocols";
 import ProtocolActionBar from "@/components/ProtocolActionBar";
+import { useRecentHistory } from "@/hooks/useRecentHistory";
 
 export default function FullProtocolDetail() {
   const { id } = useParams<{ id: string }>();
   const { subscription } = useAuth();
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { addEntry } = useRecentHistory();
   const protocol = getFullProtocol(id || "");
+
+  useEffect(() => {
+    if (protocol) {
+      addEntry({ path: `/full-protocols/${id}`, title: protocol.title, type: "fullProtocol" });
+    }
+  }, [id]);
 
   if (!protocol) {
     return (

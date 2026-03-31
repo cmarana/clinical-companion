@@ -1,4 +1,5 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import TopBar from "@/components/TopBar";
 import { prescriptionCategories } from "@/data/prescriptions/index";
 import { Button } from "@/components/ui/button";
@@ -7,6 +8,7 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { Input } from "@/components/ui/input";
+import { useRecentHistory } from "@/hooks/useRecentHistory";
 import { Label } from "@/components/ui/label";
 import {
   Dialog,
@@ -22,6 +24,7 @@ export default function PrescriptionDetail() {
   const { toast } = useToast();
   const [copied, setCopied] = useState(false);
   const { isFavorite, toggleFavorite } = useFavorites();
+  const { addEntry } = useRecentHistory();
   const [showPrintDialog, setShowPrintDialog] = useState(false);
   const [patientName, setPatientName] = useState("");
   const [patientBed, setPatientBed] = useState("");
@@ -32,6 +35,12 @@ export default function PrescriptionDetail() {
   const prescription = prescriptionCategories
     .flatMap(c => c.items)
     .find(p => p.id === id);
+
+  useEffect(() => {
+    if (prescription) {
+      addEntry({ path: `/prescriptions/${id}`, title: prescription.title, type: "prescription" });
+    }
+  }, [id]);
 
   if (!prescription) {
     return (
