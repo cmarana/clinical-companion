@@ -7,7 +7,20 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Calculator, Activity, Brain, Droplets, Heart, Scale } from "lucide-react";
+import { Calculator, Activity, Brain, Droplets, Heart, Scale, Baby, Stethoscope, Syringe, Search } from "lucide-react";
+import {
+  HASBLEDCalculator, PERCCalculator, GRACECalculator, BishopCalculator, RansonCalculator,
+  NEWSCalculator, MEWSCalculator, RoxIndexCalculator, SIRS_Calculator, MASCCCalculator,
+  GlasgowBlatchfordCalculator, WellsTVPCalculator, CentorCalculator, ABCD2Calculator,
+  OsmolarityCalculator, SodiumCorrectionCalculator, WaterDeficitCalculator,
+  CorticosteroidConverterCalculator, OpioidConverterCalculator,
+} from "@/components/calculators/CalculatorsBatch2";
+import {
+  PediatricWeightCalculator, PediatricDoseCalculator, AldretteCalculator,
+  MallampatiCalculator, ASACalculator, FENaCalculator, TranstubularKGradientCalculator,
+  BodySurfaceAreaCalculator, IdealBodyWeightCalculator, LightCriteriaCalculator,
+  CaGradientCalculator, MAP_Calculator, QTcCalculator, FallRiskCalculator, BradenCalculator,
+} from "@/components/calculators/CalculatorsBatch3";
 
 interface CalculatorConfig {
   id: string;
