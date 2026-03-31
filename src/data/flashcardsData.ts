@@ -61,6 +61,10 @@ export const flashcardCategoryColors: Record<FlashcardCategory, string> = {
   cirurgia: "bg-slate-500/15 text-slate-500",
   farmacologia: "bg-teal-500/15 text-teal-500",
   psiquiatria: "bg-indigo-500/15 text-indigo-500",
+  dermatologia: "bg-rose-500/15 text-rose-500",
+  reumatologia: "bg-purple-500/15 text-purple-500",
+  ortopedia: "bg-stone-500/15 text-stone-500",
+  medicina_familia: "bg-green-500/15 text-green-500",
 };
 
 export const flashcards: Flashcard[] = [
