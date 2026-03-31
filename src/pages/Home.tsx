@@ -3,7 +3,7 @@ import {
   Search, Pill, ClipboardList, FileText, Calculator,
   Baby, Heart, Stethoscope, BookOpen, HelpCircle,
   AlertTriangle, Zap, Moon, Sun, ChevronRight, Bot, FlaskConical,
-  Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain
+  Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain, GraduationCap
 } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -30,6 +30,7 @@ const modules = [
   { label: "Evoluções", sub: "Templates de evolução", icon: FileEdit, path: "/evolution-templates", variant: "default" as const },
   { label: "Questões", sub: "Estudo por questões", icon: HelpCircle, path: "/quiz", variant: "default" as const },
   { label: "Flashcards", sub: "Revisão espaçada (Anki)", icon: Brain, path: "/flashcards", variant: "default" as const },
+  { label: "Residência", sub: "Questões comentadas por banca", icon: GraduationCap, path: "/residency-quiz", variant: "default" as const },
 ];
 
 const emergencyShortcuts = [
