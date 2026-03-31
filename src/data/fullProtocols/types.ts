@@ -4,12 +4,18 @@ export interface FullProtocolSection {
   content: string;
 }
 
+export interface EvidenceLevel {
+  class: "I" | "IIa" | "IIb" | "III";
+  level: "A" | "B" | "C";
+}
+
 export interface FullProtocol {
   id: string;
   title: string;
   categoryId: string;
   category: string;
   tags: string[];
+  evidence?: EvidenceLevel;
   sections: FullProtocolSection[];
 }
 
