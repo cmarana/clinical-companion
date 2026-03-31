@@ -6,10 +6,11 @@ import PremiumGate from "@/components/PremiumGate";
 import {
   Zap, Pill, ClipboardList, Calculator, FileText, Baby, Heart,
   Search, Brain, Star, Stethoscope, Activity, Syringe,
-  ChevronRight, Sparkles
+  ChevronRight, Sparkles, Clock, Play, Square
 } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { useState, useMemo } from "react";
+import { Button } from "@/components/ui/button";
+import { useState, useMemo, useEffect, useRef, useCallback } from "react";
+import { safeLocalStorage } from "@/lib/safeStorage";
 import { protocols } from "@/data/protocols";
 import { medications } from "@/data/medications";
 
