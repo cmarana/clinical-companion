@@ -3,7 +3,7 @@ import {
   Search, Pill, ClipboardList, FileText, Calculator,
   Baby, Heart, Stethoscope, BookOpen, HelpCircle,
   AlertTriangle, Zap, Moon, Sun, ChevronRight, Bot, FlaskConical,
-  Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes
+  Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine
 } from "lucide-react";
 import { useState } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -26,6 +26,7 @@ const modules = [
   { label: "CID-10", sub: "Busca de códigos CID", icon: Hash, path: "/cid", variant: "default" as const },
   { label: "Compat. Drogas", sub: "Compatibilidade EV", icon: GitBranch, path: "/drug-compatibility", variant: "default" as const },
   { label: "Valores de Ref.", sub: "Exames laboratoriais", icon: TestTubes, path: "/lab-reference", variant: "default" as const },
+  { label: "Atlas Clínico", sub: "ECG, Dermato, Radiologia", icon: ScanLine, path: "/clinical-atlas", variant: "default" as const },
   { label: "Evoluções", sub: "Templates de evolução", icon: FileEdit, path: "/evolution-templates", variant: "default" as const },
   { label: "Questões", sub: "Estudo por questões", icon: HelpCircle, path: "/quiz", variant: "default" as const },
 ];
