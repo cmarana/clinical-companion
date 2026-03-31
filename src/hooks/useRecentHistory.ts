@@ -13,7 +13,7 @@ const MAX_ITEMS = 20;
 
 function loadHistory(): HistoryEntry[] {
   try {
-    const raw = safeStorage.getItem(STORAGE_KEY);
+    const raw = safeLocalStorage.getItem(STORAGE_KEY);
     if (!raw) return [];
     return JSON.parse(raw) as HistoryEntry[];
   } catch {
@@ -22,7 +22,7 @@ function loadHistory(): HistoryEntry[] {
 }
 
 function saveHistory(entries: HistoryEntry[]) {
-  safeStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
+  safeLocalStorage.setItem(STORAGE_KEY, JSON.stringify(entries));
 }
 
 export function useRecentHistory() {
@@ -39,7 +39,7 @@ export function useRecentHistory() {
 
   const clearHistory = useCallback(() => {
     setHistory([]);
-    safeStorage.removeItem(STORAGE_KEY);
+    safeLocalStorage.removeItem(STORAGE_KEY);
   }, []);
 
   // Sync across tabs
