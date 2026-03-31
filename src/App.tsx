@@ -44,6 +44,7 @@ const CIDSearch = lazy(() => import("@/pages/CIDSearch"));
 const EvolutionTemplates = lazy(() => import("@/pages/EvolutionTemplates"));
 const DrugCompatibility = lazy(() => import("@/pages/DrugCompatibility"));
 const LabReference = lazy(() => import("@/pages/LabReference"));
+const ClinicalAtlas = lazy(() => import("@/pages/ClinicalAtlas"));
 
 const queryClient = new QueryClient();
 
