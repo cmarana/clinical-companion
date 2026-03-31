@@ -309,6 +309,9 @@ export default function Notes() {
                       {n.content}
                     </pre>
                     <div className="flex gap-2 flex-wrap">
+                      <Button size="sm" variant="outline" className="gap-1.5 rounded-xl text-xs h-8" onClick={() => shareViaWhatsApp(formatNoteForShare(n.title, noteCategoryLabels[n.category], n.content, n.patient))}>
+                        <MessageCircle size={12} /> WhatsApp
+                      </Button>
                       <Button size="sm" variant="outline" className="gap-1.5 rounded-xl text-xs h-8" onClick={() => copyContent(n.content)}>
                         <Copy size={12} /> Copiar
                       </Button>
