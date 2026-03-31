@@ -39,9 +39,9 @@ export default function EmergencyMode() {
   return (
     <>
       <TopBar title="Emergência / UTI / SAMU" />
-      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4 pb-24">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-5 pb-24">
         {/* Header */}
-        <div className="duty-card p-4 space-y-2">
+        <div className="duty-card p-5 space-y-2">
           <h1 className="font-heading font-bold text-base tracking-tight">
             Protocolos de Emergência
           </h1>
@@ -68,18 +68,18 @@ export default function EmergencyMode() {
 
         {/* Search */}
         <div className="relative">
-          <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground" />
-          <Input
+          <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
+          <input
             placeholder="Buscar protocolo de emergência..."
             value={search}
             onChange={e => setSearch(e.target.value)}
-            className="pl-8 h-9 text-xs rounded-lg"
+            className="w-full pl-11 pr-4 h-12 text-sm rounded-2xl bg-muted/60 dark:bg-muted/40 border-0 shadow-inner focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all placeholder:text-muted-foreground/60 font-heading"
           />
         </div>
 
         {/* Search Results */}
         {searchResults && searchResults.length > 0 && (
-          <div className="duty-card p-3 space-y-1">
+          <div className="duty-card p-4 space-y-1.5">
             {searchResults.map(p => (
               <button
                 key={p.id}
@@ -103,7 +103,7 @@ export default function EmergencyMode() {
           <div key={cat.id} className="duty-card overflow-hidden">
             <button
               onClick={() => toggleCat(cat.id)}
-              className="w-full flex items-center justify-between p-4"
+              className="w-full flex items-center justify-between p-4 active:scale-[0.98] transition-all duration-200"
             >
               <h2 className="font-heading font-semibold text-xs uppercase tracking-wider text-muted-foreground">
                 {cat.title}
@@ -114,7 +114,7 @@ export default function EmergencyMode() {
               />
             </button>
             {openCats[cat.id] && (
-              <div className="px-3 pb-3 grid grid-cols-2 gap-1.5">
+              <div className="px-4 pb-4 grid grid-cols-2 gap-2">
                 {cat.protocols.map(p => (
                   <button
                     key={p.id}

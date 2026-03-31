@@ -78,7 +78,7 @@ export default function Bulario() {
     <>
       <TopBar title="Bulário" />
       <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4 pb-24">
-        <p className="text-xs text-muted-foreground">
+        <p className="text-[11px] text-muted-foreground">
           Bulário profissional completo — pesquise por nome, princípio ativo, classe ou categoria.
         </p>
 
@@ -131,19 +131,19 @@ export default function Bulario() {
           </div>
         )}
 
-        <div className="space-y-1.5">
+        <div className="space-y-2.5">
           {medications.map((m) => (
-            <Card
+            <div
               key={m.id}
               onClick={() => navigate(`/bulario/${m.id}`)}
-              className="cursor-pointer hover:shadow-sm active:scale-[0.99] transition-all"
+              className="cursor-pointer bg-card rounded-[20px] shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 border-0"
             >
-              <CardContent className="flex items-center gap-3 p-3">
-                <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center text-accent-foreground shrink-0">
-                  <Pill size={15} />
+              <div className="flex items-center gap-3 p-4">
+                <div className="w-10 h-10 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary shrink-0">
+                  <Pill size={18} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-heading font-semibold text-sm truncate">{m.nome}</p>
+                  <p className="font-heading font-semibold text-[13px] truncate">{m.nome}</p>
                   <p className="text-[11px] text-muted-foreground truncate">
                     {m.principio_ativo} · {m.classe}
                   </p>
@@ -154,8 +154,8 @@ export default function Bulario() {
                   {m.gestacao_seguro && <Heart size={12} className="text-success" />}
                   <ChevronRight size={14} className="text-muted-foreground ml-1" />
                 </div>
-              </CardContent>
-            </Card>
+              </div>
+            </div>
           ))}
         </div>
 
