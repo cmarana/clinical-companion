@@ -9,8 +9,9 @@ import type { NoteCategory } from "@/types/medical";
 import { clinicalTemplates, noteCategoryLabels, noteCategoryColors } from "@/data/clinicalTemplates";
 import {
   Plus, Trash2, Edit2, X, Check, StickyNote, Search, Copy, FileText,
-  ChevronDown, ChevronUp, LayoutTemplate, User, Clock
+  ChevronDown, ChevronUp, LayoutTemplate, User, Clock, MessageCircle
 } from "lucide-react";
+import { shareViaWhatsApp, formatNoteForShare } from "@/lib/shareUtils";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
