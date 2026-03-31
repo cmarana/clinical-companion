@@ -110,9 +110,11 @@ const chartConfig: ChartConfig = {
 export default function StudyDashboard() {
   const navigate = useNavigate();
   const [streak, setStreak] = useState(getStreak);
+  const [goalValue, setGoalValue] = useState(getWeeklyGoal);
+  const [editingGoal, setEditingGoal] = useState(false);
+  const [tempGoal, setTempGoal] = useState(goalValue);
 
   useEffect(() => {
-    // Record today if user has studied (has any progress)
     const progress = getProgress();
     const today = getTodayStr();
     const hasStudiedToday = Object.values(progress).some(
@@ -121,9 +123,15 @@ export default function StudyDashboard() {
     if (hasStudiedToday) setStreak(recordStudyDay());
   }, []);
 
-  const weeklyGoal = getWeeklyGoal();
+  const saveGoal = (val: number) => {
+    const clamped = Math.max(1, Math.min(7, val));
+    safeLocalStorage.setItem(WEEKLY_GOAL_KEY, String(clamped));
+    setGoalValue(clamped);
+    setEditingGoal(false);
+  };
+
   const weekDays = getWeekStudyDays();
-  const weekProgress = Math.min(100, (weekDays / weeklyGoal) * 100);
+  const weekProgress = Math.min(100, (weekDays / goalValue) * 100);
 
   // Flashcard stats
   const allCardIds = flashcards.map((c) => c.id);
