@@ -896,14 +896,31 @@ const calculators: CalculatorConfig[] = [
 export default function Calculators() {
   const { subscription } = useAuth();
   const [activeCalc, setActiveCalc] = useState<string | null>(null);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const filtered = calculators.filter(
+    (c) =>
+      c.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      c.description.toLowerCase().includes(searchTerm.toLowerCase())
+  );
 
   if (!subscription.subscribed) {
     return (
       <>
         <TopBar title="Calculadoras" />
         <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+            <Input
+              placeholder="Buscar calculadora..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="pl-9 rounded-2xl bg-card border-0 shadow-sm"
+            />
+          </div>
+          <p className="text-xs text-muted-foreground text-center">{calculators.length} calculadoras disponíveis</p>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-            {calculators.map((calc) => (
+            {filtered.map((calc) => (
               <Card key={calc.id} className="opacity-60">
                 <CardContent className="flex items-center gap-3 p-3.5">
                   <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center text-muted-foreground">
@@ -929,8 +946,19 @@ export default function Calculators() {
     <>
       <TopBar title="Calculadoras" />
       <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4">
+        <div className="relative">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+          <Input
+            placeholder="Buscar calculadora..."
+            value={searchTerm}
+            onChange={(e) => { setSearchTerm(e.target.value); setActiveCalc(null); }}
+            className="pl-9 rounded-2xl bg-card border-0 shadow-sm"
+          />
+        </div>
+        <p className="text-xs text-muted-foreground text-center">{filtered.length} de {calculators.length} calculadoras</p>
+
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
-          {calculators.map((calc) => (
+          {filtered.map((calc) => (
             <div
               key={calc.id}
               onClick={() => setActiveCalc(activeCalc === calc.id ? null : calc.id)}
