@@ -199,6 +199,18 @@ export default function ProtocolActionBar({ protocolId, protocolTitle, protocolC
             <GitBranch size={14} /> Ver fluxograma
           </button>
         )}
+
+        {/* Share Button */}
+        <ShareMenu
+          title={protocolTitle}
+          showPDF
+          getText={() => {
+            if (protocolSections && protocolCategory) {
+              return formatProtocolForShare(protocolTitle, protocolCategory, protocolSections);
+            }
+            return `📋 ${protocolTitle}\n\n${protocolContent || ""}`;
+          }}
+        />
       </div>
 
       {/* Prescription Generator Modal */}
