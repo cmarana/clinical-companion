@@ -30,6 +30,7 @@ const modules = [
   { label: "Evoluções", sub: "Templates de evolução", icon: FileEdit, path: "/evolution-templates", variant: "default" as const },
   { label: "Questões", sub: "Estudo por questões", icon: HelpCircle, path: "/quiz", variant: "default" as const },
   { label: "Flashcards", sub: "Revisão espaçada (Anki)", icon: Brain, path: "/flashcards", variant: "default" as const },
+  { label: "Residência", sub: "Questões comentadas por banca", icon: GraduationCap, path: "/residency-quiz", variant: "default" as const },
 ];
 
 const emergencyShortcuts = [
