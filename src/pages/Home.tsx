@@ -96,9 +96,17 @@ export default function Home() {
       {/* Top bar */}
       <div className="flex items-center justify-between h-12 mb-3">
         <span className="font-heading font-bold text-base tracking-tight">PS Guide</span>
-        <button onClick={toggleTheme} className="p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground">
-          {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-        </button>
+        <div className="flex items-center gap-2">
+          <button onClick={toggleTheme} className="p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground">
+            {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+          <button onClick={() => navigate(user ? "/profile" : "/auth")} className="rounded-full hover:ring-2 hover:ring-primary/30 transition-all">
+            <Avatar className="w-8 h-8">
+              {avatarUrl ? <AvatarImage src={avatarUrl} alt="Avatar" /> : null}
+              <AvatarFallback className="text-xs font-bold bg-primary/10 text-primary">{initials}</AvatarFallback>
+            </Avatar>
+          </button>
+        </div>
       </div>
 
       {/* Search */}
