@@ -687,83 +687,186 @@ export default function DocumentGenerator() {
 
         {/* Print Button */}
         {tab !== "digital-cert" && (
-          <Button onClick={handlePrint} className="w-full gap-2 h-12 text-sm font-semibold rounded-2xl" size="lg">
+          <Button onClick={handlePrintRequest} className="w-full gap-2 h-12 text-sm font-semibold rounded-2xl" size="lg">
             <Printer size={18} />
-            Imprimir {tab === "prescription" ? "Receituário" : "Atestado"}
+            Gerar {tab === "prescription" ? "Receituário" : "Atestado"}
           </Button>
         )}
+
+        {/* Digital Signature Dialog - shown before printing */}
+        <Dialog open={showSignDialog} onOpenChange={setShowSignDialog}>
+          <DialogContent className="max-w-md">
+            <DialogHeader>
+              <DialogTitle className="flex items-center gap-2">
+                <ShieldCheck size={20} className="text-primary" />
+                Assinatura Digital
+              </DialogTitle>
+              <DialogDescription>
+                Para validade jurídica (CFM nº 2.299/2021), assine o documento com certificado ICP-Brasil após gerar o PDF.
+              </DialogDescription>
+            </DialogHeader>
+            
+            <div className="space-y-2 my-2">
+              <p className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Obter certificado digital:</p>
+              {digitalCertProviders.slice(0, 3).map(prov => (
+                <a
+                  key={prov.name}
+                  href={prov.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-3 p-3 rounded-xl border border-border hover:border-primary/50 hover:bg-primary/5 transition-all"
+                >
+                  <ShieldCheck size={16} className="text-primary shrink-0" />
+                  <div className="flex-1 min-w-0">
+                    <p className="text-sm font-semibold">{prov.name}</p>
+                    <p className="text-[10px] text-muted-foreground">{prov.desc}</p>
+                  </div>
+                  <ExternalLink size={14} className="text-muted-foreground shrink-0" />
+                </a>
+              ))}
+            </div>
+
+            <div className="bg-muted/50 rounded-xl p-3 text-[11px] text-muted-foreground space-y-1">
+              <p className="font-semibold text-foreground">📋 Fluxo recomendado:</p>
+              <p>1. Clique em "Gerar PDF" abaixo</p>
+              <p>2. Salve como PDF (Ctrl+P → Salvar como PDF)</p>
+              <p>3. Assine o PDF com seu certificado digital</p>
+              <p>4. Envie ao paciente por e-mail ou WhatsApp</p>
+            </div>
+
+            <div className="flex gap-2 mt-2">
+              <Button variant="outline" onClick={() => setShowSignDialog(false)} className="flex-1">
+                Cancelar
+              </Button>
+              <Button onClick={executePrint} className="flex-1 gap-2">
+                <Printer size={16} />
+                Gerar PDF
+                <ArrowRight size={14} />
+              </Button>
+            </div>
+          </DialogContent>
+        </Dialog>
 
         {/* HIDDEN PRINT CONTENT */}
         <div className="hidden">
           <div ref={printRef}>
             {tab === "prescription" ? (
-              <div>
+              <div className="page">
+                {/* Header */}
                 <div className="header">
-                  <h1>{doctorName || "Nome do Médico"}</h1>
-                  <div className="crm">CRM {doctorCRM || "______"}/{doctorCRMState || "__"} — {doctorSpecialty || "Especialidade"}</div>
-                  {clinicName && <div className="clinic">{clinicName}</div>}
-                  {clinicAddress && <div className="clinic">{clinicAddress} {clinicPhone ? `| Tel: ${clinicPhone}` : ""}</div>}
+                  <div className="header-logo">⚕</div>
+                  <div className="header-text">
+                    <h1>{doctorName || "Nome do Médico"}</h1>
+                    <div className="subtitle">CRM {doctorCRM || "______"}/{doctorCRMState || "__"} — {doctorSpecialty || "Especialidade"}</div>
+                    {clinicName && <div className="contact">{clinicName}</div>}
+                    {clinicAddress && <div className="contact">{clinicAddress}{clinicPhone ? ` | Tel: ${clinicPhone}` : ""}</div>}
+                  </div>
                 </div>
-                <div className={`doc-type ${isSpecial ? "special" : ""}`}>
-                  {isSpecial ? "Receituário de Controle Especial" : "Receituário Simples"}
+                
+                <div className="doc-badge">
+                  {isSpecial ? "Receituário de Controle Especial" : "Receituário"}
                 </div>
-                <div className="patient-info">
-                  <p><strong>Paciente:</strong> {patientName || "________________________"}</p>
-                  <p><strong>Idade:</strong> {patientAge || "____"} {patientCPF ? ` | CPF: ${patientCPF}` : ""}</p>
+                
+                {/* Patient Box */}
+                <div className="patient-box">
+                  <div className="label">Identificação do Paciente</div>
+                  <p><strong>Nome:</strong> {patientName || "________________________________________"}</p>
+                  <p><strong>Idade:</strong> {patientAge || "____"} &nbsp;&nbsp; <strong>CPF:</strong> {patientCPF || "___.___.___-__"}</p>
                   {patientAddress && <p><strong>Endereço:</strong> {patientAddress}</p>}
                   <p><strong>Data:</strong> {today}</p>
                 </div>
-                <div className="med-list">
-                  {medications.filter(m => m.name).map((med, idx) => (
-                    <div key={med.id} className={`med-item ${isSpecial ? "special" : ""}`}>
-                      <div className="med-name">{idx + 1}. {med.name} {med.dose}</div>
-                      <div className="med-detail">
-                        Via: {med.route} | Posologia: {med.frequency || "Conforme orientação"} {med.duration ? `| Duração: ${med.duration}` : ""}
-                      </div>
-                      {med.instructions && <div className="med-instructions">{med.instructions}</div>}
+
+                <div className="use-header">Uso {isSpecial ? "Interno / Externo" : "Oral / Tópico / Outros"}</div>
+
+                {/* Medications */}
+                {medications.filter(m => m.name).map((med, idx) => (
+                  <div key={med.id} className="med-item">
+                    <span className="med-number">{idx + 1}</span>
+                    <span className="med-name">{med.name} {med.dose}</span>
+                    <div className="med-detail">
+                      Via: {med.route} &nbsp;|&nbsp; Posologia: {med.frequency || "Conforme orientação médica"} 
+                      {med.duration ? ` | Duração: ${med.duration}` : ""}
                     </div>
-                  ))}
-                </div>
-                {prescriptionNotes && <div className="notes"><strong>Observações:</strong> {prescriptionNotes}</div>}
-                <div className="signature">
-                  <div className="line"></div>
-                  <div className="name">{doctorName || "Nome do Médico"}</div>
-                  <div className="crm">CRM {doctorCRM || "______"}/{doctorCRMState || "__"}</div>
-                </div>
-                <div className="digital-sig">Espaço reservado para assinatura digital ICP-Brasil</div>
-                <div className="date">{today}</div>
-              </div>
-            ) : (
-              <div>
-                <div className="header">
-                  <h1>{doctorName || "Nome do Médico"}</h1>
-                  <div className="crm">CRM {doctorCRM || "______"}/{doctorCRMState || "__"} — {doctorSpecialty || "Especialidade"}</div>
-                  {clinicName && <div className="clinic">{clinicName}</div>}
-                  {clinicAddress && <div className="clinic">{clinicAddress} {clinicPhone ? `| Tel: ${clinicPhone}` : ""}</div>}
-                </div>
-                <div className="doc-type">Atestado Médico</div>
-                <div className="certificate-body">
-                  Atesto, para os devidos fins, que o(a) paciente <strong>{patientName || "________________________"}</strong>
-                  {patientAge ? `, ${patientAge}` : ""}
-                  {patientCPF ? `, CPF: ${patientCPF}` : ""}
-                  , foi atendido(a) nesta data e necessita de afastamento de suas atividades
-                  {daysOff ? ` por ${daysOff} (${numberToWords(parseInt(daysOff) || 0)}) dia(s)` : ""}
-                  , a partir de {today}
-                  {cidCode ? `. CID-10: ${cidCode}${cidDescription ? ` — ${cidDescription}` : ""}` : ""}.
-                </div>
-                {certificateReason && (
-                  <div className="certificate-body" style={{ marginTop: 0 }}>
-                    <strong>Justificativa:</strong> {certificateReason}
+                    {med.instructions && <div className="med-instructions">→ {med.instructions}</div>}
+                  </div>
+                ))}
+
+                {prescriptionNotes && (
+                  <div className="notes-box">
+                    <strong>Observações:</strong> {prescriptionNotes}
                   </div>
                 )}
-                {certificateNotes && <div className="notes"><strong>Observações:</strong> {certificateNotes}</div>}
-                <div className="signature">
-                  <div className="line"></div>
-                  <div className="name">{doctorName || "Nome do Médico"}</div>
-                  <div className="crm">CRM {doctorCRM || "______"}/{doctorCRMState || "__"}</div>
+
+                {/* Signature */}
+                <div className="signature-area">
+                  <div className="sig-line"></div>
+                  <div className="sig-name">{doctorName || "Nome do Médico"}</div>
+                  <div className="sig-crm">CRM {doctorCRM || "______"}/{doctorCRMState || "__"} — {doctorSpecialty || ""}</div>
                 </div>
-                <div className="digital-sig">Espaço reservado para assinatura digital ICP-Brasil</div>
-                <div className="date">{today}</div>
+
+                <div className="digital-sig">
+                  <div className="icon">🔐</div>
+                  <div className="title">Documento apto para assinatura digital ICP-Brasil</div>
+                  <div className="desc">Conforme Resolução CFM nº 2.299/2021 — Válido em todo território nacional</div>
+                </div>
+
+                <div className="footer">
+                  <span>Documento gerado eletronicamente</span>
+                  <span>{today}</span>
+                </div>
+              </div>
+            ) : (
+              <div className="page">
+                <div className="header">
+                  <div className="header-logo">⚕</div>
+                  <div className="header-text">
+                    <h1>{doctorName || "Nome do Médico"}</h1>
+                    <div className="subtitle">CRM {doctorCRM || "______"}/{doctorCRMState || "__"} — {doctorSpecialty || "Especialidade"}</div>
+                    {clinicName && <div className="contact">{clinicName}</div>}
+                    {clinicAddress && <div className="contact">{clinicAddress}{clinicPhone ? ` | Tel: ${clinicPhone}` : ""}</div>}
+                  </div>
+                </div>
+                
+                <div className="doc-badge">Atestado Médico</div>
+                
+                <div className="cert-body">
+                  Atesto, para os devidos fins, que o(a) paciente <strong>{patientName || "________________________"}</strong>
+                  {patientAge ? `, ${patientAge}` : ""}
+                  {patientCPF ? `, portador(a) do CPF nº ${patientCPF}` : ""}
+                  , foi atendido(a) nesta data e necessita de afastamento de suas atividades habituais
+                  {daysOff ? ` por um período de ${daysOff} (${numberToWords(parseInt(daysOff) || 0)}) dia(s)` : ""}
+                  , a contar de {today}
+                  {cidCode ? `. CID-10: ${cidCode}${cidDescription ? ` — ${cidDescription}` : ""}` : ""}.
+                </div>
+                
+                {certificateReason && (
+                  <div className="cert-body" style={{ marginTop: 0, textIndent: "50px" }}>
+                    <strong>Justificativa clínica:</strong> {certificateReason}
+                  </div>
+                )}
+                
+                {certificateNotes && (
+                  <div className="notes-box">
+                    <strong>Observações:</strong> {certificateNotes}
+                  </div>
+                )}
+                
+                <div className="signature-area">
+                  <div className="sig-line"></div>
+                  <div className="sig-name">{doctorName || "Nome do Médico"}</div>
+                  <div className="sig-crm">CRM {doctorCRM || "______"}/{doctorCRMState || "__"} — {doctorSpecialty || ""}</div>
+                </div>
+
+                <div className="digital-sig">
+                  <div className="icon">🔐</div>
+                  <div className="title">Documento apto para assinatura digital ICP-Brasil</div>
+                  <div className="desc">Conforme Resolução CFM nº 2.299/2021 — Válido em todo território nacional</div>
+                </div>
+
+                <div className="footer">
+                  <span>Documento gerado eletronicamente</span>
+                  <span>{today}</span>
+                </div>
               </div>
             )}
           </div>
