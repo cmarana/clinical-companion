@@ -134,13 +134,26 @@ export default function ClinicalAtlas() {
                     {/* Header */}
                     <button
                       onClick={() => setExpandedId(isExpanded ? null : entry.id)}
-                      className="w-full flex items-center justify-between p-4 text-left"
+                      className="w-full flex items-center justify-between p-4 text-left gap-3"
                     >
+                      {atlasImages[entry.id] && !isExpanded && (
+                        <img
+                          src={atlasImages[entry.id]}
+                          alt=""
+                          className="w-14 h-14 rounded-lg object-cover shrink-0"
+                          loading="lazy"
+                        />
+                      )}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-1">
                           <Badge variant="outline" className={cn("text-[10px] px-1.5 py-0", catInfo?.color)}>
                             {catInfo?.title}
                           </Badge>
+                          {atlasImages[entry.id] && (
+                            <Badge variant="secondary" className="text-[10px] px-1.5 py-0">
+                              <ImageIcon size={8} className="mr-0.5" /> Ilustração
+                            </Badge>
+                          )}
                         </div>
                         <h3 className="font-semibold text-sm leading-tight">{entry.title}</h3>
                       </div>
