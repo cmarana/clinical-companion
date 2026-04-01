@@ -150,6 +150,24 @@ export default function ClinicalAtlas() {
                     {/* Expanded content */}
                     {isExpanded && (
                       <div className="px-4 pb-4 space-y-4">
+                        {/* Image */}
+                        {atlasImages[entry.id] && (
+                          <div className="rounded-xl overflow-hidden border border-border">
+                            <img
+                              src={atlasImages[entry.id]}
+                              alt={entry.title}
+                              loading="lazy"
+                              width={800}
+                              height={512}
+                              className="w-full h-auto object-cover"
+                            />
+                            <div className="px-3 py-1.5 bg-muted/50 flex items-center gap-1.5">
+                              <ImageIcon size={10} className="text-muted-foreground" />
+                              <span className="text-[10px] text-muted-foreground italic">Ilustração didática gerada por IA — não substitui achados reais</span>
+                            </div>
+                          </div>
+                        )}
+
                         {/* Image description */}
                         <div className="bg-muted/50 rounded-xl p-3">
                           <div className="flex items-center gap-2 mb-2">
