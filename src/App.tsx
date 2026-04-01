@@ -116,6 +116,7 @@ const AppRoutes = () => (
         <Route path="/iv-dilutions" element={<IVDilutions />} />
         <Route path="/study-dashboard" element={<StudyDashboard />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/notifications" element={<Notifications />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
