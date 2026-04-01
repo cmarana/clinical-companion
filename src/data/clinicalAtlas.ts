@@ -9,6 +9,7 @@ export interface AtlasEntry {
   pearls: string[];
   differentials?: string[];
   tags: string[];
+  imageUrl?: string;
 }
 
 export type AtlasCategory = "ecg" | "dermatology" | "radiology" | "ophthalmology" | "lab";
