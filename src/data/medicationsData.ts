@@ -2168,6 +2168,9 @@ export function removeDuplicateMedications(
 }
 
 import { medicationsLote11 } from "./medicationsLote11";
+import { medicationsLote12 } from "./medicationsLote12";
+import { medicationsLote13 } from "./medicationsLote13";
+import { medicationsLote14 } from "./medicationsLote14";
 
 const allRaw: MedicationImportItem[] = [
   ...medicationsData,
@@ -2180,6 +2183,9 @@ const allRaw: MedicationImportItem[] = [
   ...medicationsLote9,
   ...medicationsLote10,
   ...medicationsLote11,
+  ...medicationsLote12,
+  ...medicationsLote13,
+  ...medicationsLote14,
 ];
 
 export const allMedicationsData: MedicationImportItem[] = removeDuplicateMedications(allRaw);
