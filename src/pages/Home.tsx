@@ -70,6 +70,7 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const { theme, toggleTheme } = useTheme();
   const { user } = useAuth();
+  const { unreadCount } = useNotifications();
   const [avatarUrl, setAvatarUrl] = useState("");
   const [initials, setInitials] = useState("U");
 
