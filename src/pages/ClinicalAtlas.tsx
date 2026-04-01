@@ -3,8 +3,40 @@ import TopBar from "@/components/TopBar";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { atlasEntries, atlasCategories, type AtlasCategory, type AtlasEntry } from "@/data/clinicalAtlas";
-import { Activity, Scan, ScanLine, Eye, Microscope, Search, ChevronDown, ChevronUp, Lightbulb, AlertTriangle, Stethoscope, BookOpen } from "lucide-react";
+import { Activity, Scan, ScanLine, Eye, Microscope, Search, ChevronDown, ChevronUp, Lightbulb, AlertTriangle, Stethoscope, BookOpen, ImageIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+// Image map for atlas entries
+import ecgStemi from "@/assets/atlas/ecg-stemi.jpg";
+import ecgAfib from "@/assets/atlas/ecg-afib.jpg";
+import ecgVt from "@/assets/atlas/ecg-vt.jpg";
+import ecgBavt from "@/assets/atlas/ecg-bavt.jpg";
+import dermPsoriasis from "@/assets/atlas/derm-psoriasis.jpg";
+import dermMelanoma from "@/assets/atlas/derm-melanoma.jpg";
+import dermHerpesZoster from "@/assets/atlas/derm-herpes-zoster.jpg";
+import dermSjs from "@/assets/atlas/derm-sjs.jpg";
+import xrPneumothorax from "@/assets/atlas/xr-pneumothorax.jpg";
+import eyePapilledema from "@/assets/atlas/eye-papilledema.jpg";
+import eyeDiabeticRetinopathy from "@/assets/atlas/eye-diabetic-retinopathy.jpg";
+import labSickleCell from "@/assets/atlas/lab-sickle-cell.jpg";
+import ctEpidural from "@/assets/atlas/ct-epidural.jpg";
+
+const atlasImages: Record<string, string> = {
+  "ecg-iam-supra": ecgStemi,
+  "ecg-fa": ecgAfib,
+  "ecg-tv": ecgVt,
+  "ecg-bavt": ecgBavt,
+  "derm-psoriase": dermPsoriasis,
+  "derm-melanoma": dermMelanoma,
+  "derm-herpes-zoster": dermHerpesZoster,
+  "derm-herpes-zoster-torax": dermHerpesZoster,
+  "derm-sjs": dermSjs,
+  "rad-pneumotorax": xrPneumothorax,
+  "oft-papiledema": eyePapilledema,
+  "oft-retinopatia-diabetica": eyeDiabeticRetinopathy,
+  "lab-falciforme": labSickleCell,
+  "rad-hematoma-epidural": ctEpidural,
+};
 
 const iconMap: Record<string, React.ElementType> = {
   Activity, Scan, ScanLine, Eye, Microscope,
