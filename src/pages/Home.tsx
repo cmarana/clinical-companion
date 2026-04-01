@@ -102,6 +102,14 @@ export default function Home() {
           <button onClick={toggleTheme} className="p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground">
             {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
           </button>
+          <button onClick={() => navigate("/notifications")} className="relative p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground">
+            <Bell size={16} />
+            {unreadCount > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-destructive text-destructive-foreground text-[9px] font-bold flex items-center justify-center">
+                {unreadCount > 9 ? "9+" : unreadCount}
+              </span>
+            )}
+          </button>
           <button onClick={() => navigate(user ? "/profile" : "/auth")} className="rounded-full hover:ring-2 hover:ring-primary/30 transition-all">
             <Avatar className="w-8 h-8">
               {avatarUrl ? <AvatarImage src={avatarUrl} alt="Avatar" /> : null}
