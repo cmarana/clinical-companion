@@ -4,7 +4,7 @@ import {
   Baby, Heart, Stethoscope, BookOpen, HelpCircle,
   AlertTriangle, Zap, Moon, Sun, ChevronRight, Bot, FlaskConical,
   Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain, GraduationCap,
-  Droplets, BarChart3, Bell
+  Droplets, BarChart3, Bell, Syringe
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
