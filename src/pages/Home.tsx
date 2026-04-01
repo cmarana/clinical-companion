@@ -25,6 +25,7 @@ const modules = [
   { label: "Interações", sub: "Checagem medicamentosa", icon: FlaskConical, path: "/drug-interactions", variant: "default" as const },
   { label: "Antimicrobianos", sub: "ATB por foco infeccioso", icon: FileText, path: "/antimicrobials", variant: "default" as const },
   { label: "Pediatria", sub: "Doses e protocolos pediátricos", icon: Baby, path: "/pediatrics", variant: "cyan" as const },
+  { label: "Doses Pediátricas", sub: "Calculadora por peso", icon: Calculator, path: "/pediatric-doses", variant: "cyan" as const },
   { label: "Obstetrícia", sub: "Emergências obstétricas", icon: Heart, path: "/obstetrics", variant: "default" as const },
   { label: "Clínica", sub: "Diagnóstico por sintoma", icon: Stethoscope, path: "/diagnosis", variant: "default" as const },
   { label: "Timer PCR", sub: "Cronômetro de reanimação", icon: Timer, path: "/cpr-timer", variant: "emergency" as const },

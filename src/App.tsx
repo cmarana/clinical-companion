@@ -53,6 +53,7 @@ const StudyDashboard = lazy(() => import("@/pages/StudyDashboard"));
 const Profile = lazy(() => import("@/pages/Profile"));
 const Notifications = lazy(() => import("@/pages/Notifications"));
 const AntimicrobialGuide = lazy(() => import("@/pages/AntimicrobialGuide"));
+const PediatricDoseCalculator = lazy(() => import("@/pages/PediatricDoseCalculator"));
 
 const queryClient = new QueryClient();
 
@@ -119,6 +120,7 @@ const AppRoutes = () => (
         <Route path="/profile" element={<Profile />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/antimicrobials" element={<AntimicrobialGuide />} />
+        <Route path="/pediatric-doses" element={<PediatricDoseCalculator />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
