@@ -751,70 +751,158 @@ export default function DocumentGenerator() {
         <div className="hidden">
           <div ref={printRef}>
             {tab === "prescription" ? (
-              <div className="page">
-                {/* Header */}
-                <div className="header">
-                  <div className="header-logo">⚕</div>
-                  <div className="header-text">
-                    <h1>{doctorName || "Nome do Médico"}</h1>
-                    <div className="subtitle">CRM {doctorCRM || "______"}/{doctorCRMState || "__"} — {doctorSpecialty || "Especialidade"}</div>
-                    {clinicName && <div className="contact">{clinicName}</div>}
-                    {clinicAddress && <div className="contact">{clinicAddress}{clinicPhone ? ` | Tel: ${clinicPhone}` : ""}</div>}
-                  </div>
-                </div>
-                
-                <div className="doc-badge">
-                  {isSpecial ? "Receituário de Controle Especial" : "Receituário"}
-                </div>
-                
-                {/* Patient Box */}
-                <div className="patient-box">
-                  <div className="label">Identificação do Paciente</div>
-                  <p><strong>Nome:</strong> {patientName || "________________________________________"}</p>
-                  <p><strong>Idade:</strong> {patientAge || "____"} &nbsp;&nbsp; <strong>CPF:</strong> {patientCPF || "___.___.___-__"}</p>
-                  {patientAddress && <p><strong>Endereço:</strong> {patientAddress}</p>}
-                  <p><strong>Data:</strong> {today}</p>
-                </div>
-
-                <div className="use-header">Uso {isSpecial ? "Interno / Externo" : "Oral / Tópico / Outros"}</div>
-
-                {/* Medications */}
-                {medications.filter(m => m.name).map((med, idx) => (
-                  <div key={med.id} className="med-item">
-                    <span className="med-number">{idx + 1}</span>
-                    <span className="med-name">{med.name} {med.dose}</span>
-                    <div className="med-detail">
-                      Via: {med.route} &nbsp;|&nbsp; Posologia: {med.frequency || "Conforme orientação médica"} 
-                      {med.duration ? ` | Duração: ${med.duration}` : ""}
+              isSpecial ? (
+                /* TWO-PART LAYOUT: 1ª via Farmácia + 2ª via Paciente - ANVISA */
+                <div className="page">
+                  <div className="two-part">
+                    {/* 1ª VIA - FARMÁCIA */}
+                    <div className="part">
+                      <div className="via-label">1ª Via — Retenção da Farmácia</div>
+                      <div className="header">
+                        <div className="header-logo">⚕</div>
+                        <div className="header-text">
+                          <h1>{doctorName || "Nome do Médico"}</h1>
+                          <div className="subtitle">CRM {doctorCRM || "______"}/{doctorCRMState || "__"}</div>
+                          {clinicName && <div className="contact">{clinicName}</div>}
+                        </div>
+                      </div>
+                      <div className="doc-badge">Receituário de Controle Especial</div>
+                      <div className="patient-box">
+                        <div className="label">Paciente</div>
+                        <p><strong>Nome:</strong> {patientName || "____________________"}</p>
+                        <p><strong>Endereço:</strong> {patientAddress || "____________________"}</p>
+                        <p><strong>CPF:</strong> {patientCPF || "___.___.___-__"}</p>
+                      </div>
+                      <div className="use-header">Uso Interno / Externo</div>
+                      {medications.filter(m => m.name).map((med, idx) => (
+                        <div key={med.id} className="med-item" style={{padding: "6px 8px", marginBottom: "8px"}}>
+                          <span className="med-number" style={{width: "18px", height: "18px", lineHeight: "18px", fontSize: "9pt"}}>{idx + 1}</span>
+                          <span className="med-name" style={{fontSize: "10pt"}}>{med.name} {med.dose}</span>
+                          <div className="med-detail" style={{fontSize: "9pt", paddingLeft: "26px"}}>
+                            {med.route} — {med.frequency || "Conf. orientação"} {med.duration ? `— ${med.duration}` : ""}
+                          </div>
+                        </div>
+                      ))}
+                      <div className="signature-area" style={{marginTop: "24px"}}>
+                        <div className="sig-line" style={{width: "200px"}}></div>
+                        <div className="sig-name" style={{fontSize: "9pt"}}>{doctorName || "Médico"}</div>
+                        <div className="sig-crm" style={{fontSize: "8pt"}}>CRM {doctorCRM || "___"}/{doctorCRMState || "__"}</div>
+                      </div>
+                      <div style={{marginTop: "12px", borderTop: "1px solid #ccc", paddingTop: "8px"}}>
+                        <p style={{fontSize: "8pt", color: "#888", textAlign: "center"}}>
+                          <strong>Identificação do Comprador</strong>
+                        </p>
+                        <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "4px", fontSize: "8pt", color: "#999", marginTop: "6px"}}>
+                          <p>Nome: ___________________</p>
+                          <p>RG: ___________________</p>
+                          <p>Endereço: ___________________</p>
+                          <p>Telefone: ___________________</p>
+                        </div>
+                      </div>
+                      <p style={{fontSize: "7pt", color: "#aaa", textAlign: "center", marginTop: "8px"}}>{today}</p>
                     </div>
-                    {med.instructions && <div className="med-instructions">→ {med.instructions}</div>}
+
+                    {/* DIVIDER */}
+                    <div className="divider"></div>
+
+                    {/* 2ª VIA - PACIENTE */}
+                    <div className="part">
+                      <div className="via-label">2ª Via — Paciente</div>
+                      <div className="header">
+                        <div className="header-logo">⚕</div>
+                        <div className="header-text">
+                          <h1>{doctorName || "Nome do Médico"}</h1>
+                          <div className="subtitle">CRM {doctorCRM || "______"}/{doctorCRMState || "__"}</div>
+                          {clinicName && <div className="contact">{clinicName}</div>}
+                        </div>
+                      </div>
+                      <div className="doc-badge">Receituário de Controle Especial</div>
+                      <div className="patient-box">
+                        <div className="label">Paciente</div>
+                        <p><strong>Nome:</strong> {patientName || "____________________"}</p>
+                        <p><strong>Endereço:</strong> {patientAddress || "____________________"}</p>
+                        <p><strong>CPF:</strong> {patientCPF || "___.___.___-__"}</p>
+                      </div>
+                      <div className="use-header">Uso Interno / Externo</div>
+                      {medications.filter(m => m.name).map((med, idx) => (
+                        <div key={med.id} className="med-item" style={{padding: "6px 8px", marginBottom: "8px"}}>
+                          <span className="med-number" style={{width: "18px", height: "18px", lineHeight: "18px", fontSize: "9pt"}}>{idx + 1}</span>
+                          <span className="med-name" style={{fontSize: "10pt"}}>{med.name} {med.dose}</span>
+                          <div className="med-detail" style={{fontSize: "9pt", paddingLeft: "26px"}}>
+                            {med.route} — {med.frequency || "Conf. orientação"} {med.duration ? `— ${med.duration}` : ""}
+                          </div>
+                        </div>
+                      ))}
+                      <div className="signature-area" style={{marginTop: "24px"}}>
+                        <div className="sig-line" style={{width: "200px"}}></div>
+                        <div className="sig-name" style={{fontSize: "9pt"}}>{doctorName || "Médico"}</div>
+                        <div className="sig-crm" style={{fontSize: "8pt"}}>CRM {doctorCRM || "___"}/{doctorCRMState || "__"}</div>
+                      </div>
+                      <div className="digital-sig" style={{marginTop: "16px", padding: "8px"}}>
+                        <div className="title" style={{fontSize: "8pt"}}>Assinatura Digital ICP-Brasil</div>
+                        <div className="desc">CFM nº 2.299/2021</div>
+                      </div>
+                      <p style={{fontSize: "7pt", color: "#aaa", textAlign: "center", marginTop: "8px"}}>{today}</p>
+                    </div>
                   </div>
-                ))}
-
-                {prescriptionNotes && (
-                  <div className="notes-box">
-                    <strong>Observações:</strong> {prescriptionNotes}
+                  <div className="footer">
+                    <span>Receituário Especial — Portaria SVS/MS nº 344/1998</span>
+                    <span>{today}</span>
                   </div>
-                )}
-
-                {/* Signature */}
-                <div className="signature-area">
-                  <div className="sig-line"></div>
-                  <div className="sig-name">{doctorName || "Nome do Médico"}</div>
-                  <div className="sig-crm">CRM {doctorCRM || "______"}/{doctorCRMState || "__"} — {doctorSpecialty || ""}</div>
                 </div>
-
-                <div className="digital-sig">
-                  <div className="icon">🔐</div>
-                  <div className="title">Documento apto para assinatura digital ICP-Brasil</div>
-                  <div className="desc">Conforme Resolução CFM nº 2.299/2021 — Válido em todo território nacional</div>
+              ) : (
+                /* SIMPLE PRESCRIPTION - single layout */
+                <div className="page">
+                  <div className="header">
+                    <div className="header-logo">⚕</div>
+                    <div className="header-text">
+                      <h1>{doctorName || "Nome do Médico"}</h1>
+                      <div className="subtitle">CRM {doctorCRM || "______"}/{doctorCRMState || "__"} — {doctorSpecialty || "Especialidade"}</div>
+                      {clinicName && <div className="contact">{clinicName}</div>}
+                      {clinicAddress && <div className="contact">{clinicAddress}{clinicPhone ? ` | Tel: ${clinicPhone}` : ""}</div>}
+                    </div>
+                  </div>
+                  <div className="doc-badge">Receituário</div>
+                  <div className="patient-box">
+                    <div className="label">Identificação do Paciente</div>
+                    <p><strong>Nome:</strong> {patientName || "________________________________________"}</p>
+                    <p><strong>Idade:</strong> {patientAge || "____"} &nbsp;&nbsp; <strong>CPF:</strong> {patientCPF || "___.___.___-__"}</p>
+                    {patientAddress && <p><strong>Endereço:</strong> {patientAddress}</p>}
+                    <p><strong>Data:</strong> {today}</p>
+                  </div>
+                  <div className="use-header">Uso Oral / Tópico / Outros</div>
+                  {medications.filter(m => m.name).map((med, idx) => (
+                    <div key={med.id} className="med-item">
+                      <span className="med-number">{idx + 1}</span>
+                      <span className="med-name">{med.name} {med.dose}</span>
+                      <div className="med-detail">
+                        Via: {med.route} &nbsp;|&nbsp; Posologia: {med.frequency || "Conforme orientação médica"} 
+                        {med.duration ? ` | Duração: ${med.duration}` : ""}
+                      </div>
+                      {med.instructions && <div className="med-instructions">→ {med.instructions}</div>}
+                    </div>
+                  ))}
+                  {prescriptionNotes && (
+                    <div className="notes-box">
+                      <strong>Observações:</strong> {prescriptionNotes}
+                    </div>
+                  )}
+                  <div className="signature-area">
+                    <div className="sig-line"></div>
+                    <div className="sig-name">{doctorName || "Nome do Médico"}</div>
+                    <div className="sig-crm">CRM {doctorCRM || "______"}/{doctorCRMState || "__"} — {doctorSpecialty || ""}</div>
+                  </div>
+                  <div className="digital-sig">
+                    <div className="icon">🔐</div>
+                    <div className="title">Documento apto para assinatura digital ICP-Brasil</div>
+                    <div className="desc">Conforme Resolução CFM nº 2.299/2021 — Válido em todo território nacional</div>
+                  </div>
+                  <div className="footer">
+                    <span>Documento gerado eletronicamente</span>
+                    <span>{today}</span>
+                  </div>
                 </div>
-
-                <div className="footer">
-                  <span>Documento gerado eletronicamente</span>
-                  <span>{today}</span>
-                </div>
-              </div>
+              )
             ) : (
               <div className="page">
                 <div className="header">
