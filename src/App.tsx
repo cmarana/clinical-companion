@@ -52,6 +52,7 @@ const IVDilutions = lazy(() => import("@/pages/IVDilutions"));
 const StudyDashboard = lazy(() => import("@/pages/StudyDashboard"));
 const Profile = lazy(() => import("@/pages/Profile"));
 const Notifications = lazy(() => import("@/pages/Notifications"));
+const AntimicrobialGuide = lazy(() => import("@/pages/AntimicrobialGuide"));
 
 const queryClient = new QueryClient();
 
@@ -117,6 +118,7 @@ const AppRoutes = () => (
         <Route path="/study-dashboard" element={<StudyDashboard />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/notifications" element={<Notifications />} />
+        <Route path="/antimicrobials" element={<AntimicrobialGuide />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>

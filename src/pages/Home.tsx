@@ -23,6 +23,7 @@ const modules = [
   { label: "Protocolos Completos", sub: "Diretrizes atualizadas", icon: BookOpen, path: "/full-protocols", variant: "default" as const },
   { label: "Calculadoras", sub: "Scores e doses rápidas", icon: Calculator, path: "/calculators", variant: "default" as const },
   { label: "Interações", sub: "Checagem medicamentosa", icon: FlaskConical, path: "/drug-interactions", variant: "default" as const },
+  { label: "Antimicrobianos", sub: "ATB por foco infeccioso", icon: FileText, path: "/antimicrobials", variant: "default" as const },
   { label: "Pediatria", sub: "Doses e protocolos pediátricos", icon: Baby, path: "/pediatrics", variant: "cyan" as const },
   { label: "Obstetrícia", sub: "Emergências obstétricas", icon: Heart, path: "/obstetrics", variant: "default" as const },
   { label: "Clínica", sub: "Diagnóstico por sintoma", icon: Stethoscope, path: "/diagnosis", variant: "default" as const },
