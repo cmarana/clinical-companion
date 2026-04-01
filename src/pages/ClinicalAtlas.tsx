@@ -223,6 +223,17 @@ export default function ClinicalAtlas() {
                           </div>
                         )}
 
+                        {/* Link to real images */}
+                        <a
+                          href={buildRealImageUrl(entry)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-3 py-2.5 bg-blue-500/10 dark:bg-blue-500/5 rounded-xl text-blue-600 dark:text-blue-400 text-xs font-medium hover:bg-blue-500/20 transition-colors"
+                        >
+                          <ExternalLink size={14} />
+                          <span>Ver imagens reais (Radiopaedia, DermNet, LITFL)</span>
+                        </a>
+
                         {/* Image description */}
                         <div className="bg-muted/50 rounded-xl p-3">
                           <div className="flex items-center gap-2 mb-2">
