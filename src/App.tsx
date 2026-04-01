@@ -49,6 +49,7 @@ const Flashcards = lazy(() => import("@/pages/Flashcards"));
 const ResidencyQuiz = lazy(() => import("@/pages/ResidencyQuiz"));
 const IVDilutions = lazy(() => import("@/pages/IVDilutions"));
 const StudyDashboard = lazy(() => import("@/pages/StudyDashboard"));
+const Profile = lazy(() => import("@/pages/Profile"));
 
 const queryClient = new QueryClient();
 
