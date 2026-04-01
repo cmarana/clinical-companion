@@ -129,7 +129,7 @@ export default function DocumentGenerator() {
   const { user } = useAuth();
   const printRef = useRef<HTMLDivElement>(null);
   const [tab, setTab] = useState("prescription");
-
+  const [showSignDialog, setShowSignDialog] = useState(false);
   // Doctor info
   const [doctorName, setDoctorName] = useState("");
   const [doctorCRM, setDoctorCRM] = useState("");
