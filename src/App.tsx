@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import { FavoritesProvider } from "@/contexts/FavoritesContext";
 import { NotesProvider } from "@/contexts/NotesContext";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
+import { NotificationsProvider } from "@/contexts/NotificationsContext";
 import AppLayout from "@/components/AppLayout";
 import { PWAInstallPrompt, OfflineIndicator } from "@/components/PWAInstallPrompt";
 import { lazy, Suspense } from "react";
@@ -50,6 +51,7 @@ const ResidencyQuiz = lazy(() => import("@/pages/ResidencyQuiz"));
 const IVDilutions = lazy(() => import("@/pages/IVDilutions"));
 const StudyDashboard = lazy(() => import("@/pages/StudyDashboard"));
 const Profile = lazy(() => import("@/pages/Profile"));
+const Notifications = lazy(() => import("@/pages/Notifications"));
 
 const queryClient = new QueryClient();
 
@@ -114,6 +116,7 @@ const AppRoutes = () => (
         <Route path="/iv-dilutions" element={<IVDilutions />} />
         <Route path="/study-dashboard" element={<StudyDashboard />} />
         <Route path="/profile" element={<Profile />} />
+        <Route path="/notifications" element={<Notifications />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
@@ -125,17 +128,19 @@ const App = () => (
     <BrowserRouter>
       <AuthProvider>
         <ThemeProvider>
-          <FavoritesProvider>
-            <NotesProvider>
-              <TooltipProvider>
-              <Toaster />
-                <Sonner />
-                <OfflineIndicator />
-                <PWAInstallPrompt />
-                <AppRoutes />
-              </TooltipProvider>
-            </NotesProvider>
-          </FavoritesProvider>
+          <NotificationsProvider>
+            <FavoritesProvider>
+              <NotesProvider>
+                <TooltipProvider>
+                <Toaster />
+                  <Sonner />
+                  <OfflineIndicator />
+                  <PWAInstallPrompt />
+                  <AppRoutes />
+                </TooltipProvider>
+              </NotesProvider>
+            </FavoritesProvider>
+          </NotificationsProvider>
         </ThemeProvider>
       </AuthProvider>
     </BrowserRouter>

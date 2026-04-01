@@ -4,7 +4,7 @@ import {
   Baby, Heart, Stethoscope, BookOpen, HelpCircle,
   AlertTriangle, Zap, Moon, Sun, ChevronRight, Bot, FlaskConical,
   Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain, GraduationCap,
-  Droplets, BarChart3
+  Droplets, BarChart3, Bell
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -12,6 +12,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import RecentHistory from "@/components/RecentHistory";
+import { useNotifications } from "@/contexts/NotificationsContext";
 
 const modules = [
   { label: "IA Clínica", sub: "Análise de conduta em tempo real", icon: Bot, path: "/clinical-ai", variant: "ai" as const },
@@ -69,6 +70,7 @@ export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
   const { theme, toggleTheme } = useTheme();
   const { user } = useAuth();
+  const { unreadCount } = useNotifications();
   const [avatarUrl, setAvatarUrl] = useState("");
   const [initials, setInitials] = useState("U");
 
@@ -99,6 +101,14 @@ export default function Home() {
         <div className="flex items-center gap-2">
           <button onClick={toggleTheme} className="p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground">
             {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+          <button onClick={() => navigate("/notifications")} className="relative p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground">
+            <Bell size={16} />
+            {unreadCount > 0 && (
+              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-destructive text-destructive-foreground text-[9px] font-bold flex items-center justify-center">
+                {unreadCount > 9 ? "9+" : unreadCount}
+              </span>
+            )}
           </button>
           <button onClick={() => navigate(user ? "/profile" : "/auth")} className="rounded-full hover:ring-2 hover:ring-primary/30 transition-all">
             <Avatar className="w-8 h-8">
