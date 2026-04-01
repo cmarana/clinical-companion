@@ -40,6 +40,7 @@ const modules = [
   { label: "Flashcards", sub: "Revisão espaçada (Anki)", icon: Brain, path: "/flashcards", variant: "default" as const },
   { label: "Residência", sub: "Questões comentadas por banca", icon: GraduationCap, path: "/residency-quiz", variant: "default" as const },
   { label: "Dashboard Estudo", sub: "Streak, metas e progresso", icon: BarChart3, path: "/study-dashboard", variant: "cyan" as const },
+  { label: "Documentos", sub: "Receitas e atestados", icon: FileText, path: "/documents", variant: "default" as const },
 ];
 
 const emergencyShortcuts = [

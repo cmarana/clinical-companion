@@ -122,6 +122,7 @@ const AppRoutes = () => (
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/antimicrobials" element={<AntimicrobialGuide />} />
         <Route path="/pediatric-doses" element={<PediatricDoseCalculator />} />
+        <Route path="/documents" element={<DocumentGenerator />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
