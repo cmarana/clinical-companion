@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/contexts/ThemeContext";
 import { FavoritesProvider } from "@/contexts/FavoritesContext";
 import { NotesProvider } from "@/contexts/NotesContext";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
+import { NotificationsProvider } from "@/contexts/NotificationsContext";
 import AppLayout from "@/components/AppLayout";
 import { PWAInstallPrompt, OfflineIndicator } from "@/components/PWAInstallPrompt";
 import { lazy, Suspense } from "react";
