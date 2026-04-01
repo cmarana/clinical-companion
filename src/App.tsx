@@ -128,17 +128,19 @@ const App = () => (
     <BrowserRouter>
       <AuthProvider>
         <ThemeProvider>
-          <FavoritesProvider>
-            <NotesProvider>
-              <TooltipProvider>
-              <Toaster />
-                <Sonner />
-                <OfflineIndicator />
-                <PWAInstallPrompt />
-                <AppRoutes />
-              </TooltipProvider>
-            </NotesProvider>
-          </FavoritesProvider>
+          <NotificationsProvider>
+            <FavoritesProvider>
+              <NotesProvider>
+                <TooltipProvider>
+                <Toaster />
+                  <Sonner />
+                  <OfflineIndicator />
+                  <PWAInstallPrompt />
+                  <AppRoutes />
+                </TooltipProvider>
+              </NotesProvider>
+            </FavoritesProvider>
+          </NotificationsProvider>
         </ThemeProvider>
       </AuthProvider>
     </BrowserRouter>
