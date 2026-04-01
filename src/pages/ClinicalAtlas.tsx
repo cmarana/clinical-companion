@@ -3,8 +3,50 @@ import TopBar from "@/components/TopBar";
 import { Input } from "@/components/ui/input";
 import { Badge } from "@/components/ui/badge";
 import { atlasEntries, atlasCategories, type AtlasCategory, type AtlasEntry } from "@/data/clinicalAtlas";
-import { Activity, Scan, ScanLine, Eye, Microscope, Search, ChevronDown, ChevronUp, Lightbulb, AlertTriangle, Stethoscope, BookOpen, ImageIcon } from "lucide-react";
+import { Activity, Scan, ScanLine, Eye, Microscope, Search, ChevronDown, ChevronUp, Lightbulb, AlertTriangle, Stethoscope, BookOpen, ImageIcon, ExternalLink } from "lucide-react";
 import { cn } from "@/lib/utils";
+
+const buildRealImageUrl = (entry: AtlasEntry): string => {
+  const searchTermMap: Record<string, string> = {
+    "ecg-iam-supra": "STEMI ECG 12 lead",
+    "ecg-brd": "right bundle branch block ECG",
+    "ecg-bre": "left bundle branch block ECG",
+    "ecg-fa": "atrial fibrillation ECG",
+    "ecg-tv": "ventricular tachycardia ECG",
+    "ecg-bavt": "third degree AV block ECG",
+    "ecg-brugada": "Brugada syndrome ECG",
+    "ecg-wellens": "Wellens syndrome ECG",
+    "ecg-wpw": "WPW syndrome ECG",
+    "ecg-hiperk": "hyperkalemia ECG peaked T waves",
+    "ecg-qt-longo": "long QT syndrome ECG",
+    "ecg-flutter": "atrial flutter ECG sawtooth",
+    "derm-psoriase": "psoriasis vulgaris dermatology",
+    "derm-melanoma": "melanoma ABCDE dermoscopy",
+    "derm-herpes-zoster": "herpes zoster dermatomal",
+    "derm-herpes-zoster-torax": "herpes zoster thoracic dermatome",
+    "derm-sjs": "Stevens-Johnson syndrome skin",
+    "derm-celulite": "cellulitis erysipelas skin",
+    "derm-escabiose": "scabies burrow dermatology",
+    "derm-urticaria": "urticaria wheals dermatology",
+    "rad-pneumotorax": "pneumothorax chest X-ray",
+    "rad-pneumonia": "lobar pneumonia chest X-ray",
+    "rad-derrame-pleural": "pleural effusion chest X-ray",
+    "rad-colles": "Colles fracture X-ray",
+    "rad-hematoma-epidural": "epidural hematoma CT scan",
+    "rad-hematoma-subdural": "subdural hematoma CT scan",
+    "rad-avc-isquemico": "ischemic stroke CT scan",
+    "rad-edema-pulmonar": "pulmonary edema chest X-ray",
+    "oft-papiledema": "papilledema fundoscopy",
+    "oft-retinopatia-diabetica": "diabetic retinopathy fundoscopy",
+    "oft-oclusao-arteria": "central retinal artery occlusion fundus",
+    "oft-glaucoma": "glaucoma optic disc cupping fundoscopy",
+    "lab-falciforme": "sickle cell blood smear",
+    "lab-blastos": "acute leukemia blasts blood smear",
+    "lab-esquizocitos": "schistocytes blood smear TTP",
+  };
+  const term = searchTermMap[entry.id] || `${entry.title} medical image`;
+  return `https://www.google.com/search?tbm=isch&q=${encodeURIComponent(term + " site:radiopaedia.org OR site:dermnet.com OR site:litfl.com")}`;
+};
 
 // Image map for atlas entries
 import ecgStemi from "@/assets/atlas/ecg-stemi.jpg";
@@ -180,6 +222,17 @@ export default function ClinicalAtlas() {
                             </div>
                           </div>
                         )}
+
+                        {/* Link to real images */}
+                        <a
+                          href={buildRealImageUrl(entry)}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 px-3 py-2.5 bg-blue-500/10 dark:bg-blue-500/5 rounded-xl text-blue-600 dark:text-blue-400 text-xs font-medium hover:bg-blue-500/20 transition-colors"
+                        >
+                          <ExternalLink size={14} />
+                          <span>Ver imagens reais (Radiopaedia, DermNet, LITFL)</span>
+                        </a>
 
                         {/* Image description */}
                         <div className="bg-muted/50 rounded-xl p-3">
