@@ -209,43 +209,175 @@ export default function DocumentGenerator() {
 
   const today = new Date().toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
 
-  const handlePrint = () => {
-    const printContent = printRef.current;
-    if (!printContent) return;
-    const printWindow = window.open("", "_blank");
-    if (!printWindow) return;
-    printWindow.document.write(`<!DOCTYPE html><html><head>
-      <title>${tab === "prescription" ? "Receituário" : "Atestado Médico"}</title>
-      <style>
-        @page { size: A4; margin: 20mm; }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Times New Roman', serif; font-size: 12pt; color: #1a1a1a; line-height: 1.6; }
-        .header { text-align: center; border-bottom: 2px solid #2563eb; padding-bottom: 16px; margin-bottom: 24px; }
-        .header h1 { font-size: 16pt; font-weight: bold; color: #1e40af; margin-bottom: 4px; }
-        .header .crm { font-size: 11pt; color: #4b5563; }
-        .header .clinic { font-size: 10pt; color: #6b7280; margin-top: 4px; }
-        .doc-type { text-align: center; font-size: 14pt; font-weight: bold; text-transform: uppercase; margin: 20px 0; letter-spacing: 2px; color: #1e40af; border: 1px solid #1e40af; padding: 8px; }
-        .doc-type.special { color: #d97706; border-color: #d97706; }
-        .patient-info { margin-bottom: 20px; font-size: 11pt; }
-        .patient-info p { margin-bottom: 4px; }
-        .patient-info strong { font-weight: bold; }
-        .med-list { margin: 16px 0; }
-        .med-item { margin-bottom: 16px; padding-left: 8px; border-left: 3px solid #2563eb; }
-        .med-item.special { border-left-color: #d97706; }
-        .med-name { font-weight: bold; font-size: 12pt; }
-        .med-detail { font-size: 11pt; color: #374151; margin-top: 2px; }
-        .med-instructions { font-size: 10pt; color: #6b7280; font-style: italic; margin-top: 2px; }
-        .notes { margin-top: 20px; padding: 12px; background: #f9fafb; border: 1px solid #e5e7eb; font-size: 10pt; }
-        .signature { margin-top: 60px; text-align: center; }
-        .signature .line { width: 300px; border-top: 1px solid #1a1a1a; margin: 0 auto 8px; }
-        .signature .name { font-weight: bold; font-size: 11pt; }
-        .signature .crm { font-size: 10pt; color: #4b5563; }
-        .date { text-align: right; margin-top: 24px; font-size: 10pt; color: #6b7280; }
-        .certificate-body { font-size: 12pt; line-height: 2; text-align: justify; margin: 24px 0; }
-        .digital-sig { margin-top: 40px; border: 1px dashed #9ca3af; padding: 16px; text-align: center; font-size: 10pt; color: #6b7280; }
-      </style></head><body>${printContent.innerHTML}</body></html>`);
-    printWindow.document.close();
-    setTimeout(() => printWindow.print(), 300);
+  const handlePrintRequest = () => {
+    setShowSignDialog(true);
+  };
+
+  const executePrint = () => {
+    setShowSignDialog(false);
+    setTimeout(() => {
+      const printContent = printRef.current;
+      if (!printContent) return;
+      const printWindow = window.open("", "_blank");
+      if (!printWindow) return;
+      const isSpecialDoc = prescriptionType === "special";
+      const accentColor = isSpecialDoc ? "#b45309" : "#1e3a5f";
+      const accentLight = isSpecialDoc ? "#fef3c7" : "#e8f0fe";
+      const docTitle = tab === "prescription"
+        ? (isSpecialDoc ? "RECEITUÁRIO DE CONTROLE ESPECIAL" : "RECEITUÁRIO SIMPLES")
+        : "ATESTADO MÉDICO";
+
+      printWindow.document.write(`<!DOCTYPE html><html><head>
+        <title>${docTitle}</title>
+        <style>
+          @page { size: A4; margin: 18mm 20mm 22mm 20mm; }
+          * { margin: 0; padding: 0; box-sizing: border-box; }
+          body { font-family: 'Times New Roman', 'Georgia', serif; font-size: 12pt; color: #111; line-height: 1.5; }
+          
+          .page { position: relative; min-height: 257mm; }
+          
+          /* Header - Brazilian medical standard */
+          .header { 
+            border-bottom: 3px double ${accentColor}; 
+            padding-bottom: 14px; 
+            margin-bottom: 20px;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+          }
+          .header-logo {
+            width: 60px; height: 60px; border-radius: 8px;
+            background: ${accentLight}; border: 1px solid ${accentColor}30;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 24pt; color: ${accentColor}; font-weight: bold;
+            flex-shrink: 0;
+          }
+          .header-text { flex: 1; }
+          .header-text h1 { 
+            font-size: 15pt; font-weight: bold; color: ${accentColor}; 
+            margin-bottom: 2px; letter-spacing: 0.5px;
+          }
+          .header-text .subtitle { font-size: 10pt; color: #555; margin-bottom: 1px; }
+          .header-text .contact { font-size: 9pt; color: #777; }
+          
+          /* Document type badge */
+          .doc-badge {
+            text-align: center; margin: 16px 0 20px;
+            padding: 10px 0;
+            font-size: 13pt; font-weight: bold; letter-spacing: 3px;
+            text-transform: uppercase; color: ${accentColor};
+            border-top: 1.5px solid ${accentColor};
+            border-bottom: 1.5px solid ${accentColor};
+            background: ${accentLight};
+          }
+          
+          /* Patient box */
+          .patient-box {
+            border: 1px solid #ccc; border-radius: 6px;
+            padding: 12px 14px; margin-bottom: 18px;
+            background: #fafafa;
+          }
+          .patient-box .label { 
+            font-size: 8pt; text-transform: uppercase; letter-spacing: 1px; 
+            color: #888; font-weight: bold; margin-bottom: 6px;
+          }
+          .patient-box p { font-size: 11pt; margin-bottom: 3px; }
+          .patient-box p strong { color: #333; }
+          
+          /* Prescription use section */
+          .use-header {
+            font-size: 10pt; font-weight: bold; color: ${accentColor};
+            text-transform: uppercase; letter-spacing: 1px;
+            border-bottom: 1px solid ${accentColor}40;
+            padding-bottom: 4px; margin: 18px 0 12px;
+          }
+          
+          /* Medication items */
+          .med-item { 
+            margin-bottom: 14px; padding: 10px 12px;
+            border-left: 4px solid ${accentColor};
+            background: ${accentLight}40;
+            border-radius: 0 4px 4px 0;
+            page-break-inside: avoid;
+          }
+          .med-number { 
+            display: inline-block; width: 22px; height: 22px; 
+            background: ${accentColor}; color: white; border-radius: 50%;
+            text-align: center; line-height: 22px; font-size: 10pt;
+            font-weight: bold; margin-right: 8px; vertical-align: middle;
+          }
+          .med-name { font-weight: bold; font-size: 12pt; vertical-align: middle; }
+          .med-detail { font-size: 11pt; color: #333; margin-top: 4px; padding-left: 30px; }
+          .med-instructions { font-size: 10pt; color: #555; font-style: italic; margin-top: 3px; padding-left: 30px; }
+          
+          /* Notes section */
+          .notes-box {
+            margin-top: 16px; padding: 10px 14px;
+            border: 1px dashed #aaa; border-radius: 4px;
+            font-size: 10pt; color: #444;
+            page-break-inside: avoid;
+          }
+          .notes-box strong { color: #333; }
+          
+          /* Certificate body text */
+          .cert-body { 
+            font-size: 12pt; line-height: 2; text-align: justify; 
+            margin: 20px 0; text-indent: 50px;
+          }
+          
+          /* Signature area */
+          .signature-area {
+            margin-top: 50px; text-align: center;
+            page-break-inside: avoid;
+          }
+          .sig-line { 
+            width: 280px; border-top: 1.5px solid #333; 
+            margin: 0 auto 6px; 
+          }
+          .sig-name { font-weight: bold; font-size: 11pt; color: #111; }
+          .sig-crm { font-size: 10pt; color: #555; }
+          
+          /* Digital signature placeholder */
+          .digital-sig {
+            margin-top: 30px; padding: 14px;
+            border: 2px dashed ${accentColor}60;
+            border-radius: 6px; text-align: center;
+            background: ${accentLight}40;
+            page-break-inside: avoid;
+          }
+          .digital-sig .icon { font-size: 18pt; margin-bottom: 4px; }
+          .digital-sig .title { font-size: 10pt; font-weight: bold; color: ${accentColor}; }
+          .digital-sig .desc { font-size: 8pt; color: #777; margin-top: 2px; }
+          
+          /* Footer */
+          .footer {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            border-top: 1px solid #ddd; padding-top: 8px;
+            display: flex; justify-content: space-between;
+            font-size: 8pt; color: #999;
+          }
+          
+          /* Special control: two-part layout */
+          .two-part { display: flex; gap: 0; }
+          .two-part .part { flex: 1; }
+          .two-part .divider { 
+            width: 0; border-left: 2px dashed #b45309; 
+            margin: 0 16px; position: relative;
+          }
+          .two-part .divider::after {
+            content: "✂"; position: absolute; top: 50%; left: -8px;
+            transform: translateY(-50%); font-size: 14pt; color: #b45309;
+          }
+          .via-label {
+            font-size: 9pt; font-weight: bold; text-transform: uppercase;
+            letter-spacing: 1px; color: ${accentColor};
+            margin-bottom: 10px; text-align: center;
+            padding: 4px; background: ${accentLight}; border-radius: 3px;
+          }
+        </style></head><body>${printContent.innerHTML}</body></html>`);
+      printWindow.document.close();
+      setTimeout(() => printWindow.print(), 400);
+    }, 300);
   };
 
   const isSpecial = prescriptionType === "special";
