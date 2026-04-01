@@ -173,6 +173,42 @@ export type Database = {
         }
         Relationships: []
       }
+      profiles: {
+        Row: {
+          avatar_url: string
+          created_at: string
+          crm: string
+          crm_state: string
+          full_name: string
+          id: string
+          specialty: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          avatar_url?: string
+          created_at?: string
+          crm?: string
+          crm_state?: string
+          full_name?: string
+          id?: string
+          specialty?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          avatar_url?: string
+          created_at?: string
+          crm?: string
+          crm_state?: string
+          full_name?: string
+          id?: string
+          specialty?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       user_favorites: {
         Row: {
           created_at: string

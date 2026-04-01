@@ -6,8 +6,11 @@ import {
   Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain, GraduationCap,
   Droplets, BarChart3
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
+import { useAuth } from "@/contexts/AuthContext";
+import { supabase } from "@/integrations/supabase/client";
+import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import RecentHistory from "@/components/RecentHistory";
 
 const modules = [
@@ -65,6 +68,22 @@ export default function Home() {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
   const { theme, toggleTheme } = useTheme();
+  const { user } = useAuth();
+  const [avatarUrl, setAvatarUrl] = useState("");
+  const [initials, setInitials] = useState("U");
+
+  useEffect(() => {
+    if (!user) return;
+    supabase.from("profiles").select("full_name, avatar_url").eq("user_id", user.id).maybeSingle()
+      .then(({ data }) => {
+        if (data?.avatar_url) setAvatarUrl(data.avatar_url);
+        if (data?.full_name) {
+          setInitials(data.full_name.split(" ").map((n: string) => n[0]).slice(0, 2).join("").toUpperCase());
+        } else {
+          setInitials(user.email?.[0]?.toUpperCase() || "U");
+        }
+      });
+  }, [user]);
 
   const handleSearch = () => {
     if (searchQuery.trim().length >= 2) {
@@ -77,9 +96,17 @@ export default function Home() {
       {/* Top bar */}
       <div className="flex items-center justify-between h-12 mb-3">
         <span className="font-heading font-bold text-base tracking-tight">PS Guide</span>
-        <button onClick={toggleTheme} className="p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground">
-          {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-        </button>
+        <div className="flex items-center gap-2">
+          <button onClick={toggleTheme} className="p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground">
+            {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+          </button>
+          <button onClick={() => navigate(user ? "/profile" : "/auth")} className="rounded-full hover:ring-2 hover:ring-primary/30 transition-all">
+            <Avatar className="w-8 h-8">
+              {avatarUrl ? <AvatarImage src={avatarUrl} alt="Avatar" /> : null}
+              <AvatarFallback className="text-xs font-bold bg-primary/10 text-primary">{initials}</AvatarFallback>
+            </Avatar>
+          </button>
+        </div>
       </div>
 
       {/* Search */}
