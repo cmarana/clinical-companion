@@ -120,6 +120,7 @@ const AppRoutes = () => (
         <Route path="/profile" element={<Profile />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/antimicrobials" element={<AntimicrobialGuide />} />
+        <Route path="/pediatric-doses" element={<PediatricDoseCalculator />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
