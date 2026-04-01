@@ -54,6 +54,7 @@ const Profile = lazy(() => import("@/pages/Profile"));
 const Notifications = lazy(() => import("@/pages/Notifications"));
 const AntimicrobialGuide = lazy(() => import("@/pages/AntimicrobialGuide"));
 const PediatricDoseCalculator = lazy(() => import("@/pages/PediatricDoseCalculator"));
+const DocumentGenerator = lazy(() => import("@/pages/DocumentGenerator"));
 
 const queryClient = new QueryClient();
 
