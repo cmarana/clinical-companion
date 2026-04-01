@@ -10,6 +10,8 @@ import PremiumGate, { PremiumBadge } from "@/components/PremiumGate";
 import { FREE_PROTOCOL_SECTIONS, FREE_PROTOCOL_IDS } from "@/lib/plans";
 import DecisionTree from "@/components/DecisionTree";
 import { decisionTrees } from "@/data/decisionTrees";
+import ShareMenu from "@/components/ShareMenu";
+import { formatProtocolForShare } from "@/lib/shareUtils";
 
 export default function ProtocolDetail() {
   const { id } = useParams<{ id: string }>();
@@ -67,9 +69,17 @@ export default function ProtocolDetail() {
         }
       />
       <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto">
-        <div className="flex items-center gap-2 mb-3">
-          <p className="text-xs text-muted-foreground font-heading">{protocol.category}</p>
-          {!isPremium && <PremiumBadge />}
+        <div className="flex items-center justify-between gap-2 mb-3">
+          <div className="flex items-center gap-2">
+            <p className="text-xs text-muted-foreground font-heading">{protocol.category}</p>
+            {!isPremium && <PremiumBadge />}
+          </div>
+          <ShareMenu
+            title={protocol.title}
+            showPDF
+            shareUrl={`${window.location.origin}/protocols/${protocol.id}`}
+            getText={() => formatProtocolForShare(protocol.title, protocol.category, visibleSections.map(s => ({ title: s.title, content: s.content })))}
+          />
         </div>
 
         <Tabs defaultValue={visibleSections[0]?.id || ""} className="w-full">

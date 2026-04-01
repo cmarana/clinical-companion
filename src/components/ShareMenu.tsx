@@ -1,15 +1,18 @@
-import { Share2, MessageCircle, Copy, FileDown } from "lucide-react";
+import { Share2, MessageCircle, Copy, FileDown, QrCode } from "lucide-react";
 import { useState } from "react";
 import { shareViaWhatsApp, copyToClipboard, exportToPDF } from "@/lib/shareUtils";
+import ShareProtocolDialog from "./ShareProtocolDialog";
 
 interface ShareMenuProps {
   getText: () => string;
   title: string;
   showPDF?: boolean;
+  shareUrl?: string;
 }
 
-export default function ShareMenu({ getText, title, showPDF = false }: ShareMenuProps) {
+export default function ShareMenu({ getText, title, showPDF = false, shareUrl }: ShareMenuProps) {
   const [open, setOpen] = useState(false);
+  const [showShareDialog, setShowShareDialog] = useState(false);
 
   const handleWhatsApp = () => {
     shareViaWhatsApp(getText());
@@ -26,6 +29,11 @@ export default function ShareMenu({ getText, title, showPDF = false }: ShareMenu
     setOpen(false);
   };
 
+  const handleShareLink = () => {
+    setOpen(false);
+    setShowShareDialog(true);
+  };
+
   return (
     <div className="relative">
       <button
@@ -39,6 +47,15 @@ export default function ShareMenu({ getText, title, showPDF = false }: ShareMenu
         <>
           <div className="fixed inset-0 z-40" onClick={() => setOpen(false)} />
           <div className="absolute left-0 top-full mt-1 z-50 bg-card border border-border rounded-xl shadow-lg p-1 min-w-[180px]">
+            {shareUrl && (
+              <button
+                onClick={handleShareLink}
+                className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg hover:bg-accent/50 transition-colors text-left"
+              >
+                <QrCode size={16} className="text-primary" />
+                <span className="text-xs font-medium">Link / QR Code</span>
+              </button>
+            )}
             <button
               onClick={handleWhatsApp}
               className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg hover:bg-accent/50 transition-colors text-left"
@@ -64,6 +81,16 @@ export default function ShareMenu({ getText, title, showPDF = false }: ShareMenu
             )}
           </div>
         </>
+      )}
+
+      {shareUrl && (
+        <ShareProtocolDialog
+          open={showShareDialog}
+          onClose={() => setShowShareDialog(false)}
+          protocolTitle={title}
+          shareUrl={shareUrl}
+          shareText={getText()}
+        />
       )}
     </div>
   );
