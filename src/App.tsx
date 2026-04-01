@@ -55,6 +55,7 @@ const Notifications = lazy(() => import("@/pages/Notifications"));
 const AntimicrobialGuide = lazy(() => import("@/pages/AntimicrobialGuide"));
 const PediatricDoseCalculator = lazy(() => import("@/pages/PediatricDoseCalculator"));
 const DocumentGenerator = lazy(() => import("@/pages/DocumentGenerator"));
+const ProcedureGuides = lazy(() => import("@/pages/ProcedureGuides"));
 
 const queryClient = new QueryClient();
 
@@ -123,6 +124,7 @@ const AppRoutes = () => (
         <Route path="/antimicrobials" element={<AntimicrobialGuide />} />
         <Route path="/pediatric-doses" element={<PediatricDoseCalculator />} />
         <Route path="/documents" element={<DocumentGenerator />} />
+        <Route path="/procedure-guides" element={<ProcedureGuides />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
