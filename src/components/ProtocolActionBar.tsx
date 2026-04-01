@@ -204,6 +204,7 @@ export default function ProtocolActionBar({ protocolId, protocolTitle, protocolC
         <ShareMenu
           title={protocolTitle}
           showPDF
+          shareUrl={`${window.location.origin}/full-protocols/${protocolId}`}
           getText={() => {
             if (protocolSections && protocolCategory) {
               return formatProtocolForShare(protocolTitle, protocolCategory, protocolSections);

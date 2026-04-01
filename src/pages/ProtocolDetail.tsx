@@ -10,6 +10,8 @@ import PremiumGate, { PremiumBadge } from "@/components/PremiumGate";
 import { FREE_PROTOCOL_SECTIONS, FREE_PROTOCOL_IDS } from "@/lib/plans";
 import DecisionTree from "@/components/DecisionTree";
 import { decisionTrees } from "@/data/decisionTrees";
+import ShareMenu from "@/components/ShareMenu";
+import { formatProtocolForShare } from "@/lib/shareUtils";
 
 export default function ProtocolDetail() {
   const { id } = useParams<{ id: string }>();
