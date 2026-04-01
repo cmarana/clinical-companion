@@ -55,6 +55,7 @@ const Notifications = lazy(() => import("@/pages/Notifications"));
 const AntimicrobialGuide = lazy(() => import("@/pages/AntimicrobialGuide"));
 const PediatricDoseCalculator = lazy(() => import("@/pages/PediatricDoseCalculator"));
 const DocumentGenerator = lazy(() => import("@/pages/DocumentGenerator"));
+const ProcedureGuides = lazy(() => import("@/pages/ProcedureGuides"));
 
 const queryClient = new QueryClient();
 
