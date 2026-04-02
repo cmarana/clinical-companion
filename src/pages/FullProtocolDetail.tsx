@@ -98,6 +98,7 @@ export default function FullProtocolDetail() {
   }
 
   const fav = isFavorite(protocol.id);
+  const updateLabel = getProtocolUpdateLabel(protocol.id);
 
   const orderedSections = FULL_SECTION_ORDER
     .map(so => protocol.sections.find(s => s.id === so.id))
