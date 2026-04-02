@@ -1,9 +1,9 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { useBularioList } from "@/hooks/useBularioMedications";
 import { useRecentHistory } from "@/hooks/useRecentHistory";
-import { fullTextSearch, typeColors, typeLabels, categoryOrder, type SearchResult } from "@/lib/searchEngine";
+import { typeColors, typeLabels, categoryOrder, type SearchResult } from "@/lib/searchEngine";
 import {
   Search, FileText, Pill, ClipboardList, Stethoscope, BookOpen,
   Loader2, Zap, Calculator, Hash, Clock, X, TestTubes, LayoutGrid, List
@@ -29,6 +29,7 @@ export default function SearchPage() {
   const [activeFilter, setActiveFilter] = useState<string | null>(null);
   const [viewMode, setViewMode] = useState<"list" | "grouped">("grouped");
   const { recent } = useRecentHistory();
+  const [staticResults, setStaticResults] = useState<SearchResult[]>([]);
 
   // Bulario search (DB-backed)
   const bularioFilters = useMemo(() => ({
@@ -38,8 +39,18 @@ export default function SearchPage() {
   }), [query]);
   const { data: bularioMeds = [], isLoading: bularioLoading } = useBularioList(bularioFilters);
 
-  // Full-text search across static data
-  const staticResults = useMemo(() => fullTextSearch(query), [query]);
+  // Async full-text search
+  const runSearch = useCallback(async (q: string) => {
+    if (q.length < 2) { setStaticResults([]); return; }
+    const { fullTextSearch } = await import("@/lib/searchEngine");
+    const results = await fullTextSearch(q);
+    setStaticResults(results);
+  }, []);
+
+  useEffect(() => {
+    const t = setTimeout(() => runSearch(query), 150);
+    return () => clearTimeout(t);
+  }, [query, runSearch]);
 
   // Merge with bulario DB results
   const allResults = useMemo<SearchResult[]>(() => {
