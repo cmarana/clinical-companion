@@ -40,6 +40,61 @@ export default function ClinicalAI() {
   const [exams, setExams] = useState("");
   const [medications, setMedications] = useState("");
   const [additionalInfo, setAdditionalInfo] = useState("");
+  const [isListening, setIsListening] = useState(false);
+  const [voiceTarget, setVoiceTarget] = useState<"chat" | "symptoms" | "history" | "vitals" | "exams">("chat");
+  const recognitionRef = useRef<any>(null);
+
+  const speechSupported = typeof window !== "undefined" && ("SpeechRecognition" in window || "webkitSpeechRecognition" in window);
+
+  const startVoice = useCallback((target: typeof voiceTarget) => {
+    if (isListening && recognitionRef.current) {
+      recognitionRef.current.stop();
+      setIsListening(false);
+      return;
+    }
+
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) { toast.error("Navegador não suporta reconhecimento de voz"); return; }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = "pt-BR";
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.maxAlternatives = 1;
+    recognitionRef.current = recognition;
+    setVoiceTarget(target);
+
+    let finalTranscript = "";
+
+    recognition.onstart = () => setIsListening(true);
+
+    recognition.onresult = (event: any) => {
+      let interim = "";
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        const t = event.results[i][0].transcript;
+        if (event.results[i].isFinal) {
+          finalTranscript += t + " ";
+        } else {
+          interim = t;
+        }
+      }
+      const combined = (finalTranscript + interim).trim();
+      
+      switch (target) {
+        case "chat": setInput(combined); break;
+        case "symptoms": setSymptoms(combined); break;
+        case "history": setHistory(combined); break;
+        case "vitals": setVitals(combined); break;
+        case "exams": setExams(combined); break;
+      }
+    };
+
+    recognition.onerror = () => { setIsListening(false); toast.error("Erro no reconhecimento de voz"); };
+    recognition.onend = () => setIsListening(false);
+
+    recognition.start();
+    toast.success("🎤 Ouvindo... fale o relato do paciente");
+  }, [isListening]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
