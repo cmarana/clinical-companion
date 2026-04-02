@@ -11,6 +11,7 @@ import { NotificationsProvider } from "@/contexts/NotificationsContext";
 import AppLayout from "@/components/AppLayout";
 import { PWAInstallPrompt, OfflineIndicator } from "@/components/PWAInstallPrompt";
 import { lazy, Suspense } from "react";
+import { ProtocolListSkeleton, ProtocolDetailSkeleton, MedicationListSkeleton } from "@/components/PageSkeleton";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Protocols = lazy(() => import("@/pages/Protocols"));
