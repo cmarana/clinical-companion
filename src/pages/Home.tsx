@@ -225,24 +225,26 @@ export default function Home() {
       <SmartSearch specialty={specialty} />
 
       {/* ── PRIMARY GRID ─────────────────────────────────────── */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-6">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 lg:gap-4 mb-6">
         {primaryModules.map((m, i) => (
           <motion.div
             key={m.path}
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: i * 0.05 }}
+            className={m.variant === "ai" ? "col-span-2" : ""}
           >
             <button
               onClick={() => navigateWithTracking(m.path, m.label)}
-              className={`group w-full flex items-center gap-3 px-4 py-4 rounded-[20px] border-0 transition-all duration-300 active:scale-[0.97] hover:shadow-xl hover:-translate-y-0.5 text-left ${cardStyles[m.variant]}`}
+              className={`group w-full flex items-center gap-3 px-4 py-4 lg:py-5 rounded-[20px] border-0 transition-all duration-300 active:scale-[0.97] hover:shadow-xl hover:-translate-y-0.5 text-left ${cardStyles[m.variant]}`}
             >
-              <div className={`flex items-center justify-center w-10 h-10 rounded-2xl shrink-0 transition-transform duration-300 group-hover:scale-110 ${iconStyles[m.variant]}`}>
-                <m.icon size={20} />
+              <div className={`flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-2xl shrink-0 transition-transform duration-300 group-hover:scale-110 ${iconStyles[m.variant]}`}>
+                <m.icon size={20} className="lg:hidden" />
+                <m.icon size={24} className="hidden lg:block" />
               </div>
               <div className="flex flex-col min-w-0">
-                <span className="font-heading font-semibold text-[13px] leading-tight truncate">{m.label}</span>
-                <span className={`text-[11px] leading-tight mt-0.5 truncate ${m.variant === "ai" ? "text-white/70" : "text-muted-foreground"}`}>
+                <span className="font-heading font-semibold text-[13px] lg:text-sm leading-tight truncate">{m.label}</span>
+                <span className={`text-[11px] lg:text-xs leading-tight mt-0.5 truncate ${m.variant === "ai" ? "text-white/70" : "text-muted-foreground"}`}>
                   {m.sub}
                 </span>
               </div>
