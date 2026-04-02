@@ -116,23 +116,23 @@ export default function Bulario() {
             <Pill size={32} className="mx-auto text-muted-foreground" />
             <p className="text-sm text-muted-foreground font-heading">Bulário em construção</p>
             <p className="text-xs text-muted-foreground">
-              {allMedicationsData.length > 0
-                ? `${allMedicationsData.length} medicamentos prontos para importar.`
+              {medsCount && medsCount > 0
+                ? `${medsCount} medicamentos prontos para importar.`
                 : "A base de medicamentos será adicionada em breve."}
             </p>
-            {allMedicationsData.length > 0 && (
+            {medsCount && medsCount > 0 && (
               <Button onClick={handleImport} disabled={importing} size="sm" className="gap-2">
                 {importing ? <Loader2 size={14} className="animate-spin" /> : <Upload size={14} />}
-                {importing ? "Importando..." : `Importar ${allMedicationsData.length} medicamentos`}
+                {importing ? "Importando..." : `Importar ${medsCount} medicamentos`}
               </Button>
             )}
           </div>
         )}
 
-        {!isLoading && totalCount > 0 && totalCount < allMedicationsData.length && (
+        {!isLoading && totalCount > 0 && medsCount !== null && totalCount < medsCount && (
           <div className="flex items-center justify-between p-3 rounded-xl bg-card border border-border">
             <p className="text-xs text-muted-foreground">
-              {totalCount} de {allMedicationsData.length} medicamentos importados.
+              {totalCount} de {medsCount} medicamentos importados.
             </p>
             <Button onClick={handleImport} disabled={importing} size="sm" variant="outline" className="gap-2">
               {importing ? <Loader2 size={14} className="animate-spin" /> : <Upload size={14} />}
