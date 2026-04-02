@@ -8,7 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Eye, EyeOff, Zap, Pill, ClipboardList, Calculator, Shield, Clock,
-  Bot, ChevronRight, ChevronDown, ArrowLeft
+  Bot, ChevronRight, ChevronDown, ArrowLeft, Activity
 } from "lucide-react";
 import pulsoLogo from "@/assets/pulso-logo.png";
 import { Separator } from "@/components/ui/separator";
