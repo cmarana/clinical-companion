@@ -240,3 +240,11 @@ function DutyModeContent() {
     </>
   );
 }
+
+export default function DutyMode() {
+  return (
+    <PremiumPageGuard feature="Modo Plantão" title="Modo Plantão">
+      <DutyModeContent />
+    </PremiumPageGuard>
+  );
+}
