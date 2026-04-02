@@ -38,9 +38,8 @@ export default defineConfig(({ mode }) => {
             "vendor-supabase": ["@supabase/supabase-js"],
             "vendor-ui": ["framer-motion"],
             "vendor-charts": ["recharts"],
-            "data-protocols": [
+            "data-protocols-legacy": [
               "./src/data/protocols.ts",
-              "./src/data/fullProtocols/index.ts",
               "./src/data/emergency/index.ts",
             ],
             "data-medications": [
