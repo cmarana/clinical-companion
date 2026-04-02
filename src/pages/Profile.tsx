@@ -200,6 +200,31 @@ export default function Profile() {
     loadProfile();
   }, [user]);
 
+  // ViaCEP auto-fill
+  useEffect(() => {
+    const cepDigits = profile.zip_code.replace(/\D/g, "");
+    if (cepDigits.length !== 8) return;
+
+    const controller = new AbortController();
+    setFetchingCep(true);
+
+    fetch(`https://viacep.com.br/ws/${cepDigits}/json/`, { signal: controller.signal })
+      .then(res => res.json())
+      .then(data => {
+        if (!data.erro) {
+          setProfile(p => ({
+            ...p,
+            city: data.localidade || p.city,
+            state: data.uf || p.state,
+          }));
+        }
+      })
+      .catch(() => {})
+      .finally(() => setFetchingCep(false));
+
+    return () => controller.abort();
+  }, [profile.zip_code]);
+
   const loadProfile = async () => {
     if (!user) return;
     setLoading(true);
