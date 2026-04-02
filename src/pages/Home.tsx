@@ -345,6 +345,11 @@ export default function Home() {
           </div>
         </motion.div>
       ))}
+
+      {/* Weekly Summary Widget — lower priority, below modules */}
+      <div className="mt-7">
+        <WeeklySummaryWidget />
+      </div>
     </div>
   );
 }
