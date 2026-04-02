@@ -78,7 +78,9 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   if (!user) return <Navigate to="/auth" replace />;
   // Wait for profile check to finish
   if (profileComplete === null) return <div className="min-h-screen flex items-center justify-center bg-background"><div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" /></div>;
-  if (!profileComplete) return <Navigate to="/onboarding" replace />;
+  // Skip onboarding redirect if user just completed it (heading to /pricing)
+  const justOnboarded = sessionStorage.getItem("pulso_just_onboarded") === "1";
+  if (!profileComplete && !justOnboarded) return <Navigate to="/onboarding" replace />;
   return <>{children}</>;
 }
 

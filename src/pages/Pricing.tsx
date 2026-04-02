@@ -43,6 +43,9 @@ export default function Pricing() {
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
+    // Clear onboarding flag now that we're on pricing
+    sessionStorage.removeItem("pulso_just_onboarded");
+
     if (searchParams.get("success") === "true") {
       const method = searchParams.get("method");
       toast({
@@ -303,6 +306,18 @@ export default function Pricing() {
                 : "Teste grátis por 7 dias. Cobrado apenas após o período de teste. Cancele a qualquer momento. Pagamento seguro via Stripe."
               }
             </p>
+
+            {/* Continue free option */}
+            <div className="text-center pt-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate("/")}
+                className="text-xs text-muted-foreground hover:text-foreground"
+              >
+                Continuar com acesso gratuito limitado →
+              </Button>
+            </div>
           </>
         )}
 
