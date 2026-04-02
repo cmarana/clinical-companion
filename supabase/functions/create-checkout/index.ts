@@ -58,7 +58,7 @@ serve(async (req) => {
         customer_email: customers.data.length > 0 ? undefined : user.email,
         line_items: [{ price: pixPriceId, quantity: 1 }],
         mode: "payment",
-        payment_method_types: ["pix"],
+        payment_method_types: undefined,
         success_url: `${origin}/pix-success?session_id={CHECKOUT_SESSION_ID}&plan=${planId}`,
         cancel_url: `${origin}/pricing`,
         locale: "pt-BR",
