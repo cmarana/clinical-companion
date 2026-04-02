@@ -8,7 +8,7 @@ import { useToast } from "@/hooks/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Eye, EyeOff, Zap, Pill, ClipboardList, Calculator, Shield, Clock,
-  Bot, ChevronRight, ChevronDown, ArrowLeft, Activity, Mic, WifiOff,
+  Bot, ChevronRight, ArrowLeft, Activity, Mic, WifiOff,
   Share2, Trophy, GitBranch, Brain, Newspaper, Stethoscope
 } from "lucide-react";
 import pulsoLogo from "@/assets/pulso-logo.png";
@@ -372,18 +372,9 @@ export default function Auth() {
 
                 <Separator className="my-1" />
 
-                <button
-                  onClick={() => navigate("/")}
-                  className="w-full flex flex-col items-center gap-0.5 py-2.5 text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  <span className="text-xs font-heading font-medium flex items-center gap-1">
-                    Continuar grátis sem conta
-                    <ChevronDown size={14} />
-                  </span>
-                  <span className="text-[10px] text-muted-foreground/70">
-                    10 protocolos · 10 medicamentos · calculadoras básicas
-                  </span>
-                </button>
+                <p className="text-[10px] text-muted-foreground/70 text-center py-2">
+                  Crie sua conta para acessar protocolos, calculadoras e IA clínica
+                </p>
               </motion.div>
             ) : (
               /* ── AUTH FORM ──────────────────────────────── */
