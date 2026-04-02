@@ -64,7 +64,7 @@ const calculatorShortcuts = [
 
 /* ─── Component ─── */
 
-export default function DutyMode() {
+function DutyModeContent() {
   const navigate = useNavigate();
   const { subscription } = useAuth();
   const { favorites } = useFavorites();
