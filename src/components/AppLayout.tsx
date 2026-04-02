@@ -8,6 +8,8 @@ import OfflineErrorBoundary from "./OfflineErrorBoundary";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function AppLayout() {
+  const location = useLocation();
+
   return (
     <SidebarProvider>
       <div className="min-h-screen flex w-full">
@@ -20,7 +22,17 @@ export default function AppLayout() {
           </header>
           <main className="flex-1 bg-background text-foreground pb-16 md:pb-0">
             <OfflineErrorBoundary>
-              <Outlet />
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={location.pathname}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
+                >
+                  <Outlet />
+                </motion.div>
+              </AnimatePresence>
             </OfflineErrorBoundary>
             <MedicalDisclaimer />
           </main>
