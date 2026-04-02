@@ -129,6 +129,7 @@ const AppRoutes = () => (
         <Route path="/procedure-guides" element={<ProcedureGuides />} />
         <Route path="/offline" element={<OfflineSetup />} />
         <Route path="/push-notifications" element={<PushNotificationSettings />} />
+        <Route path="/admin/analytics" element={<AdminAnalytics />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
