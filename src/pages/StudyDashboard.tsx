@@ -351,6 +351,63 @@ export default function StudyDashboard() {
           </div>
         </Card>
 
+        {/* Achievements / Conquistas */}
+        <Card className="p-4">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="font-heading font-semibold text-sm flex items-center gap-2">
+              <Award size={16} className="text-amber-500" /> Conquistas
+            </h3>
+            <Badge variant="secondary" className="text-[10px]">
+              {(() => {
+                const progress = getProgress();
+                const allIds = flashcards.map(c => c.id);
+                const s = getStats(allIds);
+                const catsStarted = new Set(flashcards.filter(f => progress[f.id]).map(f => f.category)).size;
+                const ap = getAchievementProgress({
+                  flashcardsMastered: s.mastered,
+                  flashcardsReviewed: s.mastered + s.learning + s.review,
+                  flashcardsTotal: s.total,
+                  quizTotal: quizStats.total,
+                  quizCorrect: quizStats.correct,
+                  streakCurrent: streak.current,
+                  streakBest: streak.best,
+                  categoriesStarted: catsStarted,
+                  perfectQuizSessions: 0,
+                });
+                return `${ap.unlocked}/${ap.total}`;
+              })()}
+            </Badge>
+          </div>
+          {(() => {
+            const unlocked = getUnlockedAchievements();
+            const unlockedIds = new Set(unlocked.map(u => u.id));
+            const sorted = [...achievements].sort((a, b) => {
+              const aU = unlockedIds.has(a.id) ? 0 : 1;
+              const bU = unlockedIds.has(b.id) ? 0 : 1;
+              return aU - bU;
+            });
+            return (
+              <div className="grid grid-cols-3 gap-2">
+                {sorted.slice(0, 9).map((a) => {
+                  const isUnlocked = unlockedIds.has(a.id);
+                  return (
+                    <div
+                      key={a.id}
+                      className={cn(
+                        "flex flex-col items-center gap-1 rounded-xl p-2.5 text-center transition-all",
+                        isUnlocked ? "bg-amber-500/10" : "bg-muted/40 opacity-50"
+                      )}
+                    >
+                      <span className="text-xl">{isUnlocked ? a.icon : "🔒"}</span>
+                      <span className="text-[10px] font-semibold leading-tight line-clamp-2">{a.title}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            );
+          })()}
+        </Card>
+
         {/* Quick access */}
         <div className="grid grid-cols-2 gap-3 pt-1">
           <Button
