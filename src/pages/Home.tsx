@@ -90,9 +90,9 @@ const studyModules = [
 ];
 
 const tabs = [
-  { id: "tools", label: "Ferramentas", icon: Wrench, modules: toolsModules },
-  { id: "specialties", label: "Especialidades", icon: Stethoscope, modules: specialtyModules },
-  { id: "study", label: "Estudo & Mais", icon: Library, modules: studyModules },
+  { id: "tools", label: "Ferramentas", icon: Wrench, modules: toolsModules, accent: "primary", gradient: "from-primary/8 to-primary/3 dark:from-primary/15 dark:to-primary/5", iconBg: "bg-primary/12 text-primary dark:bg-primary/20", ringColor: "ring-primary/20" },
+  { id: "specialties", label: "Especialidades", icon: Stethoscope, modules: specialtyModules, accent: "emerald", gradient: "from-emerald-500/8 to-emerald-500/3 dark:from-emerald-500/15 dark:to-emerald-500/5", iconBg: "bg-emerald-500/12 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400", ringColor: "ring-emerald-500/20" },
+  { id: "study", label: "Estudo & Mais", icon: Library, modules: studyModules, accent: "amber", gradient: "from-amber-500/8 to-amber-500/3 dark:from-amber-500/15 dark:to-amber-500/5", iconBg: "bg-amber-500/12 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400", ringColor: "ring-amber-500/20" },
 ];
 
 const emergencyShortcuts = [
