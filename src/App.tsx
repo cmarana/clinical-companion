@@ -61,6 +61,7 @@ const OfflineSetup = lazy(() => import("@/pages/OfflineSetup"));
 const PushNotificationSettings = lazy(() => import("@/pages/PushNotificationSettings"));
 const AdminAnalytics = lazy(() => import("@/pages/AdminAnalytics"));
 const UpdatesFeed = lazy(() => import("@/pages/UpdatesFeed"));
+const PixSuccess = lazy(() => import("@/pages/PixSuccess"));
 
 const queryClient = new QueryClient();
 
