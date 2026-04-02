@@ -158,7 +158,13 @@ export default function Home() {
 
       {/* ── PRIMARY GRID (6 modules) ─────────────────────────── */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3 mb-6">
-        {primaryModules.map((m) => (
+        {primaryModules.map((m, i) => (
+          <motion.div
+            key={m.path}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.3, delay: i * 0.05 }}
+          >
           <button
             key={m.path}
             onClick={() => navigate(m.path)}
