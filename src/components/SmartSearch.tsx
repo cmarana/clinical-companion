@@ -224,6 +224,15 @@ export default function SmartSearch({ specialty }: SmartSearchProps) {
           <span className="text-xs font-heading text-destructive font-medium">Ouvindo... fale o termo desejado</span>
         </motion.div>
       )}
+
+      <AnimatePresence>
+        {showDropdown && (
+          <motion.div
+            initial={{ opacity: 0, y: -4 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -4 }}
+            transition={{ duration: 0.15 }}
+            className="absolute top-full left-0 right-0 mt-1.5 bg-card rounded-2xl shadow-lg border border-border overflow-hidden max-h-[400px] overflow-y-auto"
           >
             {query.trim().length >= 2 && totalResults > 0 && (
               <div className="px-4 py-2 bg-muted/30 border-b border-border/50">
