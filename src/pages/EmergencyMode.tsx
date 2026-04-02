@@ -8,7 +8,7 @@ import { Search, ChevronRight, ChevronDown } from "lucide-react";
 import { emergencyCategories, allEmergencyProtocols } from "@/data/emergency";
 import SalaVermelha from "@/components/SalaVermelha";
 
-export default function EmergencyMode() {
+function EmergencyModeContent() {
   const navigate = useNavigate();
   const { subscription } = useAuth();
   const [search, setSearch] = useState("");
