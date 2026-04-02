@@ -223,9 +223,6 @@ export default function Home() {
       {/* Smart Search */}
       <SmartSearch specialty={specialty} />
 
-      {/* Weekly Summary Widget */}
-      <WeeklySummaryWidget />
-
       {/* ── PRIMARY GRID ─────────────────────────────────────── */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-6">
         {primaryModules.map((m, i) => (
@@ -348,6 +345,11 @@ export default function Home() {
           </div>
         </motion.div>
       ))}
+
+      {/* Weekly Summary Widget — lower priority, below modules */}
+      <div className="mt-7">
+        <WeeklySummaryWidget />
+      </div>
     </div>
   );
 }
