@@ -468,7 +468,7 @@ export default function Profile() {
         <div className="px-4 space-y-5 max-w-lg mx-auto [&_input]:h-11 [&_input]:transition-colors [&_input]:focus:ring-2 [&_input]:focus:ring-primary/30 [&_input]:focus:border-primary/50">
 
           {/* ── 1. Dados Pessoais ── */}
-          <Section icon={User} title="Dados Pessoais">
+          <Section icon={User} title="Dados Pessoais" index={0}>
             <div className="grid grid-cols-2 gap-3">
               <Field label="Nome">
                 <Input value={profile.first_name} onChange={e => set("first_name")(e.target.value)} placeholder="João" className="rounded-xl" />
@@ -512,7 +512,7 @@ export default function Profile() {
           </Section>
 
           {/* ── 2. Endereço ── */}
-          <Section icon={MapPin} title="Endereço">
+          <Section icon={MapPin} title="Endereço" index={1}>
             <Field label="CEP">
               <div className="relative">
                 <Input
@@ -546,7 +546,7 @@ export default function Profile() {
           </Section>
 
           {/* ── 3. Formação Acadêmica ── */}
-          <Section icon={GraduationCap} title="Formação Acadêmica">
+          <Section icon={GraduationCap} title="Formação Acadêmica" index={2}>
             <Select label="Status" value={profile.academic_status} onChange={set("academic_status")} options={ACADEMIC_STATUSES} />
 
             {profile.academic_status && (
@@ -577,7 +577,7 @@ export default function Profile() {
           </Section>
 
           {/* ── 4. Registro Profissional ── */}
-          <Section icon={Stethoscope} title="Registro Profissional">
+          <Section icon={Stethoscope} title="Registro Profissional" index={3}>
             <Select label="Tipo de Registro" value={profile.registration_type} onChange={set("registration_type")} options={REGISTRATION_TYPES} />
 
             {profile.registration_type && (
@@ -664,7 +664,7 @@ export default function Profile() {
           </div>
 
           {/* ── Account info ── */}
-          <Section icon={Shield} title="Conta">
+          <Section icon={Shield} title="Conta" index={5}>
             <div className="space-y-2.5">
               <div className="flex items-center gap-3 text-sm">
                 <Mail size={16} className="text-muted-foreground shrink-0" />
