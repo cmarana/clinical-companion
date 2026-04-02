@@ -7,10 +7,18 @@ import { type BularioFilters, INITIAL_FILTERS } from "@/types/bulario";
 import BularioFilterBar from "@/components/BularioFilterBar";
 import { useBularioInfiniteList, useBularioCount } from "@/hooks/useBularioMedications";
 import { Button } from "@/components/ui/button";
-import { importFromArray } from "@/lib/bularioImporter";
-import { allMedicationsData } from "@/data/medicationsData";
+import type { MedicationImportItem } from "@/data/medicationsData";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+
+// Lazy-load the heavy medications data (45K+ lines) only when needed
+let _cachedMedsData: MedicationImportItem[] | null = null;
+async function loadMedicationsData(): Promise<MedicationImportItem[]> {
+  if (_cachedMedsData) return _cachedMedsData;
+  const mod = await import("@/data/medicationsData");
+  _cachedMedsData = mod.allMedicationsData;
+  return _cachedMedsData;
+}
 
 export default function Bulario() {
   const navigate = useNavigate();
@@ -24,9 +32,15 @@ export default function Bulario() {
   } = useBularioInfiniteList(filters);
   const { data: totalCount = 0 } = useBularioCount();
   const [importing, setImporting] = useState(false);
+  const [medsCount, setMedsCount] = useState<number | null>(null);
   const queryClient = useQueryClient();
 
   const medications = data?.pages.flatMap((p) => p.items) ?? [];
+
+  // Load meds count lazily on mount
+  useEffect(() => {
+    loadMedicationsData().then(d => setMedsCount(d.length));
+  }, []);
 
   // Infinite scroll sentinel
   const sentinelRef = useRef<HTMLDivElement>(null);
@@ -53,13 +67,15 @@ export default function Bulario() {
   }, [handleObserver]);
 
   const handleImport = async () => {
-    if (allMedicationsData.length === 0) {
+    const medsData = await loadMedicationsData();
+    if (medsData.length === 0) {
       toast.info("Nenhum medicamento para importar.");
       return;
     }
     setImporting(true);
     try {
-      const result = await importFromArray(allMedicationsData);
+      const { importFromArray } = await import("@/lib/bularioImporter");
+      const result = await importFromArray(medsData);
       if (result.errors.length > 0) {
         toast.error(`Erros: ${result.errors.join(", ")}`);
       } else {
@@ -100,23 +116,23 @@ export default function Bulario() {
             <Pill size={32} className="mx-auto text-muted-foreground" />
             <p className="text-sm text-muted-foreground font-heading">Bulário em construção</p>
             <p className="text-xs text-muted-foreground">
-              {allMedicationsData.length > 0
-                ? `${allMedicationsData.length} medicamentos prontos para importar.`
+              {medsCount && medsCount > 0
+                ? `${medsCount} medicamentos prontos para importar.`
                 : "A base de medicamentos será adicionada em breve."}
             </p>
-            {allMedicationsData.length > 0 && (
+            {medsCount && medsCount > 0 && (
               <Button onClick={handleImport} disabled={importing} size="sm" className="gap-2">
                 {importing ? <Loader2 size={14} className="animate-spin" /> : <Upload size={14} />}
-                {importing ? "Importando..." : `Importar ${allMedicationsData.length} medicamentos`}
+                {importing ? "Importando..." : `Importar ${medsCount} medicamentos`}
               </Button>
             )}
           </div>
         )}
 
-        {!isLoading && totalCount > 0 && totalCount < allMedicationsData.length && (
+        {!isLoading && totalCount > 0 && medsCount !== null && totalCount < medsCount && (
           <div className="flex items-center justify-between p-3 rounded-xl bg-card border border-border">
             <p className="text-xs text-muted-foreground">
-              {totalCount} de {allMedicationsData.length} medicamentos importados.
+              {totalCount} de {medsCount} medicamentos importados.
             </p>
             <Button onClick={handleImport} disabled={importing} size="sm" variant="outline" className="gap-2">
               {importing ? <Loader2 size={14} className="animate-spin" /> : <Upload size={14} />}

@@ -42,9 +42,8 @@ export default defineConfig(({ mode }) => {
               "./src/data/protocols.ts",
               "./src/data/emergency/index.ts",
             ],
-            "data-medications": [
+            "data-medications-core": [
               "./src/data/medications.ts",
-              "./src/data/prescriptions/index.ts",
             ],
             "data-reference": [
               "./src/data/cidData.ts",
