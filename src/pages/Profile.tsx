@@ -186,9 +186,16 @@ function maskPhone(v: string) {
 }
 
 /* ── Section wrapper ── */
+let sectionIndex = 0;
 function Section({ icon: Icon, title, children }: { icon: React.ElementType; title: string; children: React.ReactNode }) {
+  const i = sectionIndex++;
   return (
-    <div className="bg-card rounded-2xl border border-border/60 p-5 space-y-4 shadow-sm">
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: 0.08 * i, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="bg-card rounded-2xl border border-border/60 p-5 space-y-4 shadow-sm"
+    >
       <div className="flex items-center gap-2.5 pb-1 border-b border-border/40">
         <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
           <Icon size={15} className="text-primary" />
@@ -196,7 +203,7 @@ function Section({ icon: Icon, title, children }: { icon: React.ElementType; tit
         <h3 className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">{title}</h3>
       </div>
       {children}
-    </div>
+    </motion.div>
   );
 }
 
