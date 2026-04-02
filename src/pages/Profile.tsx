@@ -187,12 +187,12 @@ function maskPhone(v: string) {
 /* ── Section wrapper ── */
 function Section({ icon: Icon, title, children }: { icon: React.ElementType; title: string; children: React.ReactNode }) {
   return (
-    <div className="bg-card rounded-2xl border border-border p-4 space-y-4">
-      <div className="flex items-center gap-2">
-        <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center">
-          <Icon size={14} className="text-primary" />
+    <div className="bg-card rounded-2xl border border-border/60 p-5 space-y-4 shadow-sm">
+      <div className="flex items-center gap-2.5 pb-1 border-b border-border/40">
+        <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+          <Icon size={15} className="text-primary" />
         </div>
-        <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">{title}</h3>
+        <h3 className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">{title}</h3>
       </div>
       {children}
     </div>
@@ -209,11 +209,12 @@ function Select({ label, value, onChange, options, placeholder = "Selecione..." 
     : options as { value: string; label: string }[];
   return (
     <div>
-      <label className="text-xs font-semibold text-muted-foreground mb-1.5 block">{label}</label>
+      <label className="text-[11px] font-semibold text-muted-foreground mb-1.5 block tracking-wide">{label}</label>
       <select
         value={value}
         onChange={e => onChange(e.target.value)}
-        className="w-full h-10 rounded-xl border border-input bg-background px-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+        className="w-full h-11 rounded-xl border border-input bg-background px-3 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 appearance-none"
+        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center' }}
       >
         <option value="">{placeholder}</option>
         {opts.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
@@ -226,7 +227,7 @@ function Select({ label, value, onChange, options, placeholder = "Selecione..." 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="text-xs font-semibold text-muted-foreground mb-1.5 block">{label}</label>
+      <label className="text-[11px] font-semibold text-muted-foreground mb-1.5 block tracking-wide">{label}</label>
       {children}
     </div>
   );
