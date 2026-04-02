@@ -67,6 +67,8 @@ interface ProfileData {
   city: string;
   state: string;
   zip_code: string;
+  neighborhood: string;
+  street: string;
   academic_status: string;
   university: string;
   course: string;
@@ -83,6 +85,7 @@ interface ProfileData {
 const defaultProfile: ProfileData = {
   full_name: "", first_name: "", last_name: "", cpf: "", birth_date: "",
   gender: "", phone: "", email: "", city: "", state: "", zip_code: "",
+  neighborhood: "", street: "",
   academic_status: "", university: "", course: "", graduation_year: "",
   registration_type: "", registration_number: "", registration_state: "",
   specialty: "", crm: "", crm_state: "", avatar_url: "",
@@ -216,6 +219,8 @@ export default function Profile() {
             ...p,
             city: data.localidade || p.city,
             state: data.uf || p.state,
+            neighborhood: data.bairro || p.neighborhood,
+            street: data.logradouro || p.street,
           }));
         }
       })
@@ -247,6 +252,8 @@ export default function Profile() {
         city: (data as any).city || "",
         state: (data as any).state || "",
         zip_code: (data as any).zip_code || "",
+        neighborhood: (data as any).neighborhood || "",
+        street: (data as any).street || "",
         academic_status: (data as any).academic_status || "",
         university: (data as any).university || "",
         course: (data as any).course || "",
@@ -287,6 +294,8 @@ export default function Profile() {
         city: profile.city,
         state: profile.state,
         zip_code: profile.zip_code.replace(/\D/g, ""),
+        neighborhood: profile.neighborhood,
+        street: profile.street,
         academic_status: profile.academic_status,
         university: profile.university,
         course: profile.course,
@@ -436,14 +445,6 @@ export default function Profile() {
 
           {/* ── 2. Endereço ── */}
           <Section icon={MapPin} title="Endereço">
-            <div className="grid grid-cols-3 gap-3">
-              <div className="col-span-2">
-                <Field label="Cidade">
-                  <Input value={profile.city} onChange={e => set("city")(e.target.value)} placeholder="São Paulo" className="rounded-xl" />
-                </Field>
-              </div>
-              <Select label="UF" value={profile.state} onChange={set("state")} options={UF_LIST.map(u => ({ value: u, label: u }))} placeholder="UF" />
-            </div>
             <Field label="CEP">
               <div className="relative">
                 <Input
@@ -460,6 +461,20 @@ export default function Profile() {
                 )}
               </div>
             </Field>
+            <Field label="Logradouro">
+              <Input value={profile.street} onChange={e => set("street")(e.target.value)} placeholder="Rua, Avenida..." className="rounded-xl" />
+            </Field>
+            <Field label="Bairro">
+              <Input value={profile.neighborhood} onChange={e => set("neighborhood")(e.target.value)} placeholder="Centro" className="rounded-xl" />
+            </Field>
+            <div className="grid grid-cols-3 gap-3">
+              <div className="col-span-2">
+                <Field label="Cidade">
+                  <Input value={profile.city} onChange={e => set("city")(e.target.value)} placeholder="São Paulo" className="rounded-xl" />
+                </Field>
+              </div>
+              <Select label="UF" value={profile.state} onChange={set("state")} options={UF_LIST.map(u => ({ value: u, label: u }))} placeholder="UF" />
+            </div>
           </Section>
 
           {/* ── 3. Formação Acadêmica ── */}

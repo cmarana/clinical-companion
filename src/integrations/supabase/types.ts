@@ -371,6 +371,7 @@ export type Database = {
           graduation_year: number | null
           id: string
           last_name: string
+          neighborhood: string
           phone: string
           provider: string
           registration_number: string
@@ -378,6 +379,7 @@ export type Database = {
           registration_type: string
           specialty: string
           state: string
+          street: string
           university: string
           updated_at: string
           user_id: string
@@ -400,6 +402,7 @@ export type Database = {
           graduation_year?: number | null
           id?: string
           last_name?: string
+          neighborhood?: string
           phone?: string
           provider?: string
           registration_number?: string
@@ -407,6 +410,7 @@ export type Database = {
           registration_type?: string
           specialty?: string
           state?: string
+          street?: string
           university?: string
           updated_at?: string
           user_id: string
@@ -429,6 +433,7 @@ export type Database = {
           graduation_year?: number | null
           id?: string
           last_name?: string
+          neighborhood?: string
           phone?: string
           provider?: string
           registration_number?: string
@@ -436,6 +441,7 @@ export type Database = {
           registration_type?: string
           specialty?: string
           state?: string
+          street?: string
           university?: string
           updated_at?: string
           user_id?: string

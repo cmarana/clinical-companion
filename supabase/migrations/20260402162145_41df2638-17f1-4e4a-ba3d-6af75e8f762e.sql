@@ -1,0 +1,3 @@
+ALTER TABLE public.profiles
+  ADD COLUMN IF NOT EXISTS neighborhood text NOT NULL DEFAULT '',
+  ADD COLUMN IF NOT EXISTS street text NOT NULL DEFAULT '';
