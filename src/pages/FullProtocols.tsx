@@ -87,19 +87,33 @@ export default function FullProtocols() {
         {/* List - responsive grid */}
         <div className="space-y-3 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-3 md:space-y-0">
           {filtered.map((p) => (
-            <div
-              key={p.id}
-              onClick={() => navigate(`/full-protocols/${p.id}`)}
-              className="cursor-pointer bg-card rounded-[20px] shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 border-0 hover:ring-1 hover:ring-primary/20"
-            >
-              <div className="flex items-center justify-between p-4">
-                <div>
-                  <p className="font-heading font-semibold text-sm">{p.title}</p>
-                  <p className="text-[11px] text-muted-foreground mt-0.5">{catLabel(p.categoryId)}</p>
+            <HoverCard key={p.id} openDelay={300} closeDelay={100}>
+              <HoverCardTrigger asChild>
+                <div
+                  onClick={() => navigate(`/full-protocols/${p.id}`)}
+                  className="cursor-pointer bg-card rounded-[20px] shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 border-0 hover:ring-1 hover:ring-primary/20"
+                >
+                  <div className="flex items-center justify-between p-4">
+                    <div>
+                      <p className="font-heading font-semibold text-sm">{p.title}</p>
+                      <p className="text-[11px] text-muted-foreground mt-0.5">{catLabel(p.categoryId)}</p>
+                    </div>
+                    <ChevronRight size={16} className="text-muted-foreground shrink-0" />
+                  </div>
                 </div>
-                <ChevronRight size={16} className="text-muted-foreground shrink-0" />
-              </div>
-            </div>
+              </HoverCardTrigger>
+              <HoverCardContent side="right" align="start" className="w-72 p-3 hidden md:block">
+                <p className="font-display font-semibold text-sm mb-1.5">{p.title}</p>
+                <p className="text-[10px] text-muted-foreground mb-2">{catLabel(p.categoryId)}</p>
+                {p.tags.length > 0 && (
+                  <div className="flex flex-wrap gap-1">
+                    {p.tags.slice(0, 6).map(tag => (
+                      <span key={tag} className="text-[9px] bg-muted text-muted-foreground px-2 py-0.5 rounded-full">{tag}</span>
+                    ))}
+                  </div>
+                )}
+              </HoverCardContent>
+            </HoverCard>
           ))}
           {filtered.length === 0 && (
             <p className="text-center text-sm text-muted-foreground py-8 col-span-full">Nenhum protocolo encontrado.</p>
