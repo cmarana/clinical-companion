@@ -186,9 +186,11 @@ export default function Auth() {
             transition={{ delay: 0.35 }}
             className="flex justify-center gap-6 mt-6"
           >
-            {stats.map((s) => (
+            {stats.map((s, i) => (
               <div key={s.label} className="text-center">
-                <div className="font-heading font-bold text-xl text-primary">{s.value}</div>
+                <div className="font-heading font-bold text-xl text-primary">
+                  <AnimatedCounter target={s.target} suffix={s.suffix} delay={350 + i * 200} />
+                </div>
                 <div className="text-[10px] text-muted-foreground font-medium uppercase tracking-wider">{s.label}</div>
               </div>
             ))}
