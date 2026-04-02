@@ -2174,6 +2174,12 @@ import { medicationsLote14 } from "./medicationsLote14";
 import { medicationsLote15 } from "./medicationsLote15";
 import { medicationsLote16 } from "./medicationsLote16";
 import { medicationsLote17 } from "./medicationsLote17";
+import { medicationsLote18 } from "./medicationsLote18";
+import { medicationsLote19 } from "./medicationsLote19";
+import { medicationsLote20 } from "./medicationsLote20";
+import { medicationsLote21 } from "./medicationsLote21";
+import { medicationsLote22 } from "./medicationsLote22";
+import { medicationsLote23 } from "./medicationsLote23";
 
 const allRaw: MedicationImportItem[] = [
   ...medicationsData,
