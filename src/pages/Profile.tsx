@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { motion } from "framer-motion";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import TopBar from "@/components/TopBar";
@@ -185,9 +186,14 @@ function maskPhone(v: string) {
 }
 
 /* ── Section wrapper ── */
-function Section({ icon: Icon, title, children }: { icon: React.ElementType; title: string; children: React.ReactNode }) {
+function Section({ icon: Icon, title, children, index = 0 }: { icon: React.ElementType; title: string; children: React.ReactNode; index?: number }) {
   return (
-    <div className="bg-card rounded-2xl border border-border/60 p-5 space-y-4 shadow-sm">
+    <motion.div
+      initial={{ opacity: 0, y: 18 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.4, delay: 0.1 + 0.08 * index, ease: [0.25, 0.46, 0.45, 0.94] }}
+      className="bg-card rounded-2xl border border-border/60 p-5 space-y-4 shadow-sm"
+    >
       <div className="flex items-center gap-2.5 pb-1 border-b border-border/40">
         <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
           <Icon size={15} className="text-primary" />
@@ -195,7 +201,7 @@ function Section({ icon: Icon, title, children }: { icon: React.ElementType; tit
         <h3 className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">{title}</h3>
       </div>
       {children}
-    </div>
+    </motion.div>
   );
 }
 
@@ -432,7 +438,12 @@ export default function Profile() {
       <TopBar title="Meu Perfil" />
 
       {/* Avatar section */}
-      <div className="flex flex-col items-center pt-8 pb-6 relative">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="flex flex-col items-center pt-8 pb-6 relative"
+      >
         <div className="absolute inset-0 h-28 bg-gradient-to-b from-primary/8 to-transparent rounded-b-3xl" />
         <div className="relative z-10">
           <div className="relative">
@@ -452,7 +463,7 @@ export default function Profile() {
         </div>
         {uploading && <span className="text-xs text-muted-foreground mt-3 animate-pulse">Enviando foto...</span>}
         <p className="text-xs text-muted-foreground mt-3 font-medium">{user.email}</p>
-      </div>
+      </motion.div>
 
       {loading ? (
         <div className="flex justify-center py-8">
@@ -462,7 +473,7 @@ export default function Profile() {
         <div className="px-4 space-y-5 max-w-lg mx-auto [&_input]:h-11 [&_input]:transition-colors [&_input]:focus:ring-2 [&_input]:focus:ring-primary/30 [&_input]:focus:border-primary/50">
 
           {/* ── 1. Dados Pessoais ── */}
-          <Section icon={User} title="Dados Pessoais">
+          <Section icon={User} title="Dados Pessoais" index={0}>
             <div className="grid grid-cols-2 gap-3">
               <Field label="Nome">
                 <Input value={profile.first_name} onChange={e => set("first_name")(e.target.value)} placeholder="João" className="rounded-xl" />
@@ -506,7 +517,7 @@ export default function Profile() {
           </Section>
 
           {/* ── 2. Endereço ── */}
-          <Section icon={MapPin} title="Endereço">
+          <Section icon={MapPin} title="Endereço" index={1}>
             <Field label="CEP">
               <div className="relative">
                 <Input
@@ -540,7 +551,7 @@ export default function Profile() {
           </Section>
 
           {/* ── 3. Formação Acadêmica ── */}
-          <Section icon={GraduationCap} title="Formação Acadêmica">
+          <Section icon={GraduationCap} title="Formação Acadêmica" index={2}>
             <Select label="Status" value={profile.academic_status} onChange={set("academic_status")} options={ACADEMIC_STATUSES} />
 
             {profile.academic_status && (
@@ -571,7 +582,7 @@ export default function Profile() {
           </Section>
 
           {/* ── 4. Registro Profissional ── */}
-          <Section icon={Stethoscope} title="Registro Profissional">
+          <Section icon={Stethoscope} title="Registro Profissional" index={3}>
             <Select label="Tipo de Registro" value={profile.registration_type} onChange={set("registration_type")} options={REGISTRATION_TYPES} />
 
             {profile.registration_type && (
@@ -658,7 +669,7 @@ export default function Profile() {
           </div>
 
           {/* ── Account info ── */}
-          <Section icon={Shield} title="Conta">
+          <Section icon={Shield} title="Conta" index={5}>
             <div className="space-y-2.5">
               <div className="flex items-center gap-3 text-sm">
                 <Mail size={16} className="text-muted-foreground shrink-0" />
