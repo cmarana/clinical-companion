@@ -97,7 +97,7 @@ serve(async (req) => {
         subscription_data: hadTrial ? undefined : { trial_period_days: 7 },
         success_url: `${origin}/pricing?success=true`,
         cancel_url: `${origin}/pricing`,
-        payment_method_types: ["card", "boleto"],
+        payment_method_types: ["card"],
         locale: "pt-BR",
       });
 
@@ -115,7 +115,7 @@ serve(async (req) => {
       subscription_data: { trial_period_days: 7 },
       success_url: `${origin}/pricing?success=true`,
       cancel_url: `${origin}/pricing`,
-      payment_method_types: ["card", "boleto"],
+      payment_method_types: ["card"],
       locale: "pt-BR",
     });
 

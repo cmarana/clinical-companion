@@ -209,7 +209,7 @@ export default function Pricing() {
                   )}
                 >
                   <CreditCard size={18} />
-                  Cartão / Boleto
+                  Cartão
                 </button>
                 <button
                   onClick={() => setPaymentMethod("pix")}
@@ -293,10 +293,6 @@ export default function Pricing() {
                 <div className="flex items-center gap-1.5 text-muted-foreground">
                   <QrCode size={16} className="text-primary" />
                   <span className="text-[11px]">PIX</span>
-                </div>
-                <div className="flex items-center gap-1.5 text-muted-foreground">
-                  <Receipt size={16} className="text-primary" />
-                  <span className="text-[11px]">Boleto</span>
                 </div>
               </div>
             </div>
