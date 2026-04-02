@@ -150,6 +150,14 @@ export default function FullProtocolDetail() {
                 <GitBranch size={12} /> Fluxograma
               </TabsTrigger>
             )}
+            {hasCalcs && (
+              <TabsTrigger
+                value="calculadoras"
+                className="shrink-0 text-[11px] px-2.5 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground bg-gradient-to-r from-amber-500/15 to-amber-500/5 ring-1 ring-amber-500/20 font-semibold gap-1"
+              >
+                <Calculator size={12} /> Calculadoras
+              </TabsTrigger>
+            )}
             {orderedSections.map(s => (
               <TabsTrigger
                 key={s.id}
@@ -169,6 +177,13 @@ export default function FullProtocolDetail() {
                 root={matchedTree.tree}
                 guideline={matchedTree.guideline}
               />
+            </TabsContent>
+          )}
+
+          {/* Embedded Calculators Tab */}
+          {hasCalcs && (
+            <TabsContent value="calculadoras">
+              <EmbeddedCalculators protocolId={protocol.id} />
             </TabsContent>
           )}
 
