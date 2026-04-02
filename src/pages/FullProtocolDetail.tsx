@@ -1,6 +1,7 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 import { cacheContent } from "@/lib/offlineCache";
+import ProtocolSplitList from "@/components/ProtocolSplitList";
 import TopBar from "@/components/TopBar";
 import { useAuth } from "@/contexts/AuthContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
