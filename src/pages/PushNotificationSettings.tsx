@@ -26,9 +26,14 @@ import { useAuth } from "@/contexts/AuthContext";
 import { subscribeToPush, unsubscribeFromPush, isPushSubscribed, updatePushPreferences } from "@/lib/webPush";
 
 export default function PushNotificationSettings() {
+  const { user } = useAuth();
   const [permission, setPermission] = useState(getPushPermission());
   const [reminders, setReminders] = useState<MedicationReminder[]>(getReminders());
   const [shiftConfig, setShiftConfig] = useState<ShiftAlertConfig>(getShiftAlertConfig());
+  const [pushSubscribed, setPushSubscribed] = useState(false);
+  const [pushStudyReminders, setPushStudyReminders] = useState(true);
+  const [pushProtocolUpdates, setPushProtocolUpdates] = useState(true);
+  const [pushLoading, setPushLoading] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
   const [formData, setFormData] = useState({
     medicationName: "",
