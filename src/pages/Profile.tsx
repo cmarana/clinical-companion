@@ -574,34 +574,23 @@ export default function Profile() {
 
             <Select
               label="Área da Saúde"
-              value={profile.specialty ? (() => {
-                for (const [area, specs] of Object.entries(SPECIALTIES_BY_AREA)) {
-                  if (specs.includes(profile.specialty)) return area;
-                }
-                return "";
-              })() : ""}
-              onChange={(area) => set("specialty")("")}
+              value={selectedArea}
+              onChange={(area) => {
+                setSelectedArea(area);
+                set("specialty")("");
+              }}
               options={HEALTH_AREAS.map(a => ({ value: a, label: a }))}
               placeholder="Selecione sua área..."
             />
-            {(() => {
-              const selectedArea = (() => {
-                for (const [area, specs] of Object.entries(SPECIALTIES_BY_AREA)) {
-                  if (specs.includes(profile.specialty)) return area;
-                }
-                return "";
-              })();
-              const specs = selectedArea ? SPECIALTIES_BY_AREA[selectedArea] : Object.values(SPECIALTIES_BY_AREA).flat();
-              return (
-                <Select
-                  label="Especialidade / Atuação"
-                  value={profile.specialty}
-                  onChange={set("specialty")}
-                  options={specs.map(s => ({ value: s, label: s }))}
-                  placeholder="Selecione..."
-                />
-              );
-            })()}
+            {selectedArea && (
+              <Select
+                label="Especialidade / Atuação"
+                value={profile.specialty}
+                onChange={set("specialty")}
+                options={(SPECIALTIES_BY_AREA[selectedArea] || []).map(s => ({ value: s, label: s }))}
+                placeholder="Selecione..."
+              />
+            )}
           </Section>
 
           {/* ── Save button ── */}
