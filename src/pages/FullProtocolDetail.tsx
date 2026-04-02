@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
+import { motion } from "framer-motion";
 import { cacheContent } from "@/lib/offlineCache";
 import ProtocolSplitList from "@/components/ProtocolSplitList";
 import TopBar from "@/components/TopBar";

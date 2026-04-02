@@ -45,6 +45,7 @@
 
     --font-heading: 'Inter', system-ui, sans-serif;
     --font-body: 'Inter', system-ui, sans-serif;
+    --font-display: 'Source Serif 4', 'Georgia', serif;
   }
 
   .dark {
