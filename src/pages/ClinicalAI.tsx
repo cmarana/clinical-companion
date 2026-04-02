@@ -360,10 +360,22 @@ export default function ClinicalAI() {
 
           <TabsContent value="structured" className="mt-0">
             <form onSubmit={handleStructuredSubmit} className="space-y-2">
+              {speechSupported && (
+                <button type="button" onClick={() => startVoice("symptoms")}
+                  className={`w-full flex items-center justify-center gap-2 py-2 rounded-xl text-xs font-heading font-semibold transition-all ${
+                    isListening && voiceTarget === "symptoms"
+                      ? "bg-destructive/15 text-destructive animate-pulse border border-destructive/30"
+                      : "bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20"
+                  }`}>
+                  {isListening && voiceTarget === "symptoms" ? <><MicOff size={14} /> Parar gravação</> : <><Mic size={14} /> 🎤 Gravar relato do paciente</>}
+                </button>
+              )}
               <div className="grid grid-cols-2 gap-2">
                 <div>
                   <label className="text-[10px] font-heading font-medium text-muted-foreground mb-0.5 block">Sintomas / QP *</label>
-                  <Input value={symptoms} onChange={(e) => setSymptoms(e.target.value)} placeholder="Dor torácica, dispneia..." className="h-8 text-xs" />
+                  <div className="flex gap-1">
+                    <Input value={symptoms} onChange={(e) => setSymptoms(e.target.value)} placeholder={isListening && voiceTarget === "symptoms" ? "🎤 Ouvindo..." : "Dor torácica, dispneia..."} className="h-8 text-xs" />
+                  </div>
                 </div>
                 <div>
                   <label className="text-[10px] font-heading font-medium text-muted-foreground mb-0.5 block">Sinais Vitais</label>
@@ -372,7 +384,17 @@ export default function ClinicalAI() {
               </div>
               <div>
                 <label className="text-[10px] font-heading font-medium text-muted-foreground mb-0.5 block">História Clínica</label>
-                <Input value={history} onChange={(e) => setHistory(e.target.value)} placeholder="HAS, DM, antecedentes..." className="h-8 text-xs" />
+                <div className="flex gap-1">
+                  <Input value={history} onChange={(e) => setHistory(e.target.value)} placeholder="HAS, DM, antecedentes..." className="h-8 text-xs flex-1" />
+                  {speechSupported && (
+                    <button type="button" onClick={() => startVoice("history")}
+                      className={`shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all ${
+                        isListening && voiceTarget === "history" ? "bg-destructive/15 text-destructive animate-pulse" : "bg-muted hover:bg-accent text-muted-foreground"
+                      }`}>
+                      {isListening && voiceTarget === "history" ? <MicOff size={12} /> : <Mic size={12} />}
+                    </button>
+                  )}
+                </div>
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <div>
