@@ -189,6 +189,7 @@ export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [fetchingCep, setFetchingCep] = useState(false);
   const [profile, setProfile] = useState<ProfileData>(defaultProfile);
 
   const set = (field: keyof ProfileData) => (v: string) =>
@@ -198,6 +199,31 @@ export default function Profile() {
     if (!user) return;
     loadProfile();
   }, [user]);
+
+  // ViaCEP auto-fill
+  useEffect(() => {
+    const cepDigits = profile.zip_code.replace(/\D/g, "");
+    if (cepDigits.length !== 8) return;
+
+    const controller = new AbortController();
+    setFetchingCep(true);
+
+    fetch(`https://viacep.com.br/ws/${cepDigits}/json/`, { signal: controller.signal })
+      .then(res => res.json())
+      .then(data => {
+        if (!data.erro) {
+          setProfile(p => ({
+            ...p,
+            city: data.localidade || p.city,
+            state: data.uf || p.state,
+          }));
+        }
+      })
+      .catch(() => {})
+      .finally(() => setFetchingCep(false));
+
+    return () => controller.abort();
+  }, [profile.zip_code]);
 
   const loadProfile = async () => {
     if (!user) return;
@@ -419,13 +445,20 @@ export default function Profile() {
               <Select label="UF" value={profile.state} onChange={set("state")} options={UF_LIST.map(u => ({ value: u, label: u }))} placeholder="UF" />
             </div>
             <Field label="CEP">
-              <Input
-                value={maskCEP(profile.zip_code)}
-                onChange={e => set("zip_code")(e.target.value)}
-                placeholder="00000-000"
-                className="rounded-xl"
-                inputMode="numeric"
-              />
+              <div className="relative">
+                <Input
+                  value={maskCEP(profile.zip_code)}
+                  onChange={e => set("zip_code")(e.target.value)}
+                  placeholder="00000-000"
+                  className="rounded-xl"
+                  inputMode="numeric"
+                />
+                {fetchingCep && (
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                    <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                  </div>
+                )}
+              </div>
             </Field>
           </Section>
 
