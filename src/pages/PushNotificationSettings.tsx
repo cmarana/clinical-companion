@@ -43,6 +43,11 @@ export default function PushNotificationSettings() {
     notes: "",
   });
 
+
+  useEffect(() => {
+    isPushSubscribed().then(setPushSubscribed);
+  }, []);
+
   const handleRequestPermission = async () => {
     const granted = await requestPushPermission();
     setPermission(getPushPermission());
