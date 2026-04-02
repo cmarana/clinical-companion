@@ -34,10 +34,39 @@ const showcaseFeatures = [
 ];
 
 const stats = [
-  { value: "2.000+", label: "Medicamentos" },
-  { value: "282", label: "Protocolos" },
-  { value: "53", label: "Calculadoras" },
+  { target: 2000, suffix: "+", label: "Medicamentos" },
+  { target: 282, suffix: "", label: "Protocolos" },
+  { target: 53, suffix: "", label: "Calculadoras" },
 ];
+
+function AnimatedCounter({ target, suffix, delay = 0 }: { target: number; suffix: string; delay?: number }) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const duration = 1800;
+      const steps = 60;
+      const increment = target / steps;
+      let current = 0;
+      const interval = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          setCount(target);
+          clearInterval(interval);
+        } else {
+          setCount(Math.floor(current));
+        }
+      }, duration / steps);
+      return () => clearInterval(interval);
+    }, delay);
+    return () => clearTimeout(timeout);
+  }, [target, delay]);
+
+  const formatted = target >= 1000
+    ? count.toLocaleString("pt-BR")
+    : count.toString();
+
+  return <>{formatted}{suffix}</>;
+}
 
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
