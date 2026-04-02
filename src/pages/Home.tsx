@@ -137,7 +137,7 @@ function getPrimaryModules(specialty: string | null): Module[] {
 export default function Home() {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, themeLabel } = useTheme();
   const { user } = useAuth();
   const { unreadCount } = useNotifications();
   const { trackModule } = useModuleAnalytics();
