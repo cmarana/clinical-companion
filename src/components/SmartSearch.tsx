@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, Clock, TrendingUp, X, ArrowRight, FileText, Pill, ClipboardList, BookOpen, Zap, Calculator, Hash, TestTubes, Stethoscope } from "lucide-react";
+import { Search, Clock, TrendingUp, X, ArrowRight, FileText, Pill, ClipboardList, BookOpen, Zap, Calculator, Hash, TestTubes, Stethoscope, Mic, MicOff } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { safeLocalStorage } from "@/lib/safeStorage";
 import { hapticLight } from "@/lib/haptics";
@@ -44,9 +44,49 @@ export default function SmartSearch({ specialty }: SmartSearchProps) {
   const [focused, setFocused] = useState(false);
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [isSearching, setIsSearching] = useState(false);
+  const [isListening, setIsListening] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const recognitionRef = useRef<any>(null);
+
+  const speechSupported = typeof window !== "undefined" && ("SpeechRecognition" in window || "webkitSpeechRecognition" in window);
+
+  const toggleVoice = useCallback(() => {
+    if (isListening && recognitionRef.current) {
+      recognitionRef.current.stop();
+      setIsListening(false);
+      return;
+    }
+
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) return;
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = "pt-BR";
+    recognition.continuous = false;
+    recognition.interimResults = true;
+    recognition.maxAlternatives = 1;
+    recognitionRef.current = recognition;
+
+    recognition.onstart = () => {
+      setIsListening(true);
+      setFocused(true);
+      hapticLight();
+    };
+
+    recognition.onresult = (event: any) => {
+      const transcript = Array.from(event.results)
+        .map((r: any) => r[0].transcript)
+        .join("");
+      setQuery(transcript);
+    };
+
+    recognition.onerror = () => setIsListening(false);
+    recognition.onend = () => setIsListening(false);
+
+    recognition.start();
+  }, [isListening]);
 
   const recentHistory = useMemo(() => {
     try {
@@ -144,16 +184,46 @@ export default function SmartSearch({ specialty }: SmartSearchProps) {
           onFocus={() => setFocused(true)}
           className="w-full pl-11 pr-10 h-[52px] text-sm rounded-2xl bg-muted/60 dark:bg-muted/40 border-0 shadow-inner focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all placeholder:text-muted-foreground/60 font-heading"
         />
-        {query && (
-          <button
-            type="button"
-            onClick={() => { setQuery(""); inputRef.current?.focus(); }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 p-1 rounded-full hover:bg-muted text-muted-foreground"
-          >
-            <X size={16} />
-          </button>
-        )}
+        <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
+          {query && (
+            <button
+              type="button"
+              onClick={() => { setQuery(""); inputRef.current?.focus(); }}
+              className="p-1 rounded-full hover:bg-muted text-muted-foreground"
+            >
+              <X size={16} />
+            </button>
+          )}
+          {speechSupported && (
+            <button
+              type="button"
+              onClick={toggleVoice}
+              className={`p-1.5 rounded-full transition-all ${
+                isListening
+                  ? "bg-destructive/15 text-destructive animate-pulse"
+                  : "hover:bg-muted text-muted-foreground"
+              }`}
+              aria-label={isListening ? "Parar gravação" : "Buscar por voz"}
+            >
+              {isListening ? <MicOff size={16} /> : <Mic size={16} />}
+            </button>
+          )}
+        </div>
       </form>
+
+      {isListening && (
+        <motion.div
+          initial={{ opacity: 0, y: -4 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="mt-2 flex items-center justify-center gap-2 py-2 px-4 rounded-xl bg-destructive/10 border border-destructive/20"
+        >
+          <span className="relative flex h-2.5 w-2.5">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75" />
+            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-destructive" />
+          </span>
+          <span className="text-xs font-heading text-destructive font-medium">Ouvindo... fale o termo desejado</span>
+        </motion.div>
+      )}
 
       <AnimatePresence>
         {showDropdown && (
