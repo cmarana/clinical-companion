@@ -311,6 +311,9 @@ export default function Profile() {
         registration_number: (data as any).registration_number || data.crm || "",
         registration_state: (data as any).registration_state || data.crm_state || "",
         specialty: data.specialty || "",
+        crm: data.crm || "",
+        crm_state: data.crm_state || "",
+        avatar_url: data.avatar_url || "",
       });
       // Initialize selectedArea from specialty
       if (data.specialty) {
@@ -321,10 +324,6 @@ export default function Profile() {
           }
         }
       }
-        crm: data.crm || "",
-        crm_state: data.crm_state || "",
-        avatar_url: data.avatar_url || "",
-      });
     } else if (!error || error.code === "PGRST116") {
       await supabase.from("profiles").insert({
         user_id: user.id,
