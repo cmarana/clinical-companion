@@ -15,6 +15,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import RecentHistory from "@/components/RecentHistory";
 import { useNotifications } from "@/contexts/NotificationsContext";
 import OnboardingModal from "@/components/OnboardingModal";
+import { useModuleAnalytics, setAnalyticsSpecialty } from "@/hooks/useModuleAnalytics";
 
 // ── ALL MODULES WITH TAGS ─────────────────────────────────────
 interface Module {
