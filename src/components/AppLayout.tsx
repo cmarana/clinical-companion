@@ -3,6 +3,7 @@ import BottomNav from "./BottomNav";
 import ScrollToTop from "./ScrollToTop";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "./AppSidebar";
+import MedicalDisclaimer from "./MedicalDisclaimer";
 
 export default function AppLayout() {
   return (
