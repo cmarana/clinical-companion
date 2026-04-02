@@ -29,6 +29,7 @@ export default function OfflineSetup() {
   const [totalFiles, setTotalFiles] = useState(0);
   const [cachedFiles, setCachedFiles] = useState(0);
   const [cacheCount, setCacheCount] = useState(0);
+  const [contentItems, setContentItems] = useState<Array<{ key: string; cachedAt: string | null }>>([]);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [swReady, setSwReady] = useState(false);
 
