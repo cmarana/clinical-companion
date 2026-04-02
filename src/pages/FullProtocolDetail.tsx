@@ -6,7 +6,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import PremiumGate from "@/components/PremiumGate";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Star, ShieldCheck, GitBranch } from "lucide-react";
+import { Star, ShieldCheck, GitBranch, Calculator } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FULL_SECTION_ORDER, getEvidence } from "@/data/fullProtocols";
 import { getFullProtocolAsync } from "@/data/fullProtocols/lazyLoader";
@@ -16,6 +16,7 @@ import { useRecentHistory } from "@/hooks/useRecentHistory";
 import { ProtocolDetailSkeleton } from "@/components/PageSkeleton";
 import DecisionTree from "@/components/DecisionTree";
 import { decisionTrees } from "@/data/decisionTrees";
+import EmbeddedCalculators, { findCalcsForProtocol } from "@/components/EmbeddedCalculators";
 
 export default function FullProtocolDetail() {
   const { id } = useParams<{ id: string }>();
@@ -29,13 +30,10 @@ export default function FullProtocolDetail() {
   const matchedTree = useMemo(() => {
     if (!protocol) return null;
     const pid = protocol.id.toLowerCase();
-    // Direct match
     if (decisionTrees[pid]) return decisionTrees[pid];
-    // Partial match: check if protocol ID contains a tree key
     for (const key of Object.keys(decisionTrees)) {
       if (pid.includes(key) || key.includes(pid)) return decisionTrees[key];
     }
-    // Match by tags
     if (protocol.tags) {
       for (const tag of protocol.tags) {
         const t = tag.toLowerCase();
@@ -43,6 +41,12 @@ export default function FullProtocolDetail() {
       }
     }
     return null;
+  }, [protocol]);
+
+  // Find matching embedded calculators
+  const hasCalcs = useMemo(() => {
+    if (!protocol) return false;
+    return findCalcsForProtocol(protocol.id).length > 0;
   }, [protocol]);
 
   useEffect(() => {
@@ -146,6 +150,14 @@ export default function FullProtocolDetail() {
                 <GitBranch size={12} /> Fluxograma
               </TabsTrigger>
             )}
+            {hasCalcs && (
+              <TabsTrigger
+                value="calculadoras"
+                className="shrink-0 text-[11px] px-2.5 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground bg-gradient-to-r from-amber-500/15 to-amber-500/5 ring-1 ring-amber-500/20 font-semibold gap-1"
+              >
+                <Calculator size={12} /> Calculadoras
+              </TabsTrigger>
+            )}
             {orderedSections.map(s => (
               <TabsTrigger
                 key={s.id}
@@ -165,6 +177,13 @@ export default function FullProtocolDetail() {
                 root={matchedTree.tree}
                 guideline={matchedTree.guideline}
               />
+            </TabsContent>
+          )}
+
+          {/* Embedded Calculators Tab */}
+          {hasCalcs && (
+            <TabsContent value="calculadoras">
+              <EmbeddedCalculators protocolId={protocol.id} />
             </TabsContent>
           )}
 
