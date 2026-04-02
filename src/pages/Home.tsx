@@ -288,7 +288,7 @@ export default function Home() {
             transition={{ duration: 0.3, delay: i * 0.05 }}
           >
             <button
-              onClick={() => navigate(m.path)}
+              onClick={() => navigateWithTracking(m.path, m.label)}
               className={`w-full flex items-center gap-3 px-4 py-4 rounded-[20px] border-0 transition-all duration-200 active:scale-[0.98] hover:shadow-md text-left ${cardStyles[m.variant]}`}
             >
               <div className={`flex items-center justify-center w-10 h-10 rounded-2xl shrink-0 ${iconStyles[m.variant]}`}>
