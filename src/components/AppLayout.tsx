@@ -22,7 +22,7 @@ export default function AppLayout() {
             <span className="ml-2 font-heading font-semibold text-xs text-primary">PULSO</span>
             {/* Cmd+K hint */}
             <kbd className="ml-auto hidden lg:inline-flex h-5 items-center gap-1 rounded border border-border bg-muted px-1.5 font-mono text-[10px] text-muted-foreground cursor-pointer hover:bg-accent transition-colors"
-              onClick={() => document.dispatchEvent(new KeyboardEvent("keydown", { key: "k", metaKey: true }))}
+              onClick={() => window.dispatchEvent(new KeyboardEvent("keydown", { key: "k", metaKey: true }))}
             >
               ⌘K
             </kbd>
