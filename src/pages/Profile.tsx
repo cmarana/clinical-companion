@@ -311,6 +311,16 @@ export default function Profile() {
         registration_number: (data as any).registration_number || data.crm || "",
         registration_state: (data as any).registration_state || data.crm_state || "",
         specialty: data.specialty || "",
+      });
+      // Initialize selectedArea from specialty
+      if (data.specialty) {
+        for (const [area, specs] of Object.entries(SPECIALTIES_BY_AREA)) {
+          if (specs.includes(data.specialty)) {
+            setSelectedArea(area);
+            break;
+          }
+        }
+      }
         crm: data.crm || "",
         crm_state: data.crm_state || "",
         avatar_url: data.avatar_url || "",
