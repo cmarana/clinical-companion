@@ -19,6 +19,7 @@ import { hapticLight } from "@/lib/haptics";
 import { useModuleAnalytics } from "@/hooks/useModuleAnalytics";
 import SmartSearch from "@/components/SmartSearch";
 import WeeklySummaryWidget from "@/components/WeeklySummaryWidget";
+import VoiceFeaturesBanner from "@/components/VoiceFeaturesBanner";
 
 // ── PREFETCH critical chunks after Home mounts ──
 const prefetchRoutes = () => {
@@ -345,6 +346,9 @@ export default function Home() {
           </div>
         </motion.div>
       ))}
+
+      {/* Voice Features Banner */}
+      <VoiceFeaturesBanner />
 
       {/* Weekly Summary Widget — lower priority, below modules */}
       <div className="mt-8 pt-6 border-t border-border/40">

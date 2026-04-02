@@ -3,6 +3,7 @@ import BottomNav from "./BottomNav";
 import ScrollToTop from "./ScrollToTop";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "./AppSidebar";
+import MedicalDisclaimer from "./MedicalDisclaimer";
 
 export default function AppLayout() {
   return (
@@ -17,6 +18,7 @@ export default function AppLayout() {
           </header>
           <main className="flex-1 bg-background text-foreground pb-16 md:pb-0">
             <Outlet />
+            <MedicalDisclaimer />
           </main>
         </div>
       </div>
