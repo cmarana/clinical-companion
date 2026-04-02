@@ -123,6 +123,8 @@ export const HIGH_RISK_PAIRS: Record<string, InteractionPair[]> = {
   "prednisona": [
     { drugs: ["ibuprofeno", "diclofenaco", "naproxeno"], severity: "moderado", desc: "Corticoide + AINE = risco GI aumentado (úlcera, sangramento)." },
     { drugs: ["insulina", "metformina", "glibenclamida"], severity: "moderado", desc: "Corticoides causam hiperglicemia — monitorar glicemia." },
+    { drugs: ["cetoconazol"], severity: "moderado", desc: "Cetoconazol aumenta exposição a corticoides via CYP3A4." },
+    { drugs: ["rifampicina"], severity: "moderado", desc: "Rifampicina acelera metabolismo da prednisona — pode requerer aumento de dose." },
   ],
   "clozapina": [
     { drugs: ["ciprofloxacino"], severity: "grave", desc: "Ciprofloxacino inibe CYP1A2 — aumento perigoso do nível de clozapina." },
