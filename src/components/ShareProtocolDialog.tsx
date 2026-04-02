@@ -48,7 +48,7 @@ export default function ShareProtocolDialog({ open, onClose, protocolTitle, shar
   };
 
   const handleWhatsApp = () => {
-    const msg = `📋 *${protocolTitle}*\n\n🔗 ${shareUrl}\n\n📱 _Compartilhado via PS Guide_`;
+    const msg = `📋 *${protocolTitle}*\n\n🔗 ${shareUrl}\n\n📱 _Compartilhado via PULSO_`;
     window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
