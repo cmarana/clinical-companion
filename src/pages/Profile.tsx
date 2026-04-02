@@ -189,6 +189,7 @@ export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [fetchingCep, setFetchingCep] = useState(false);
   const [profile, setProfile] = useState<ProfileData>(defaultProfile);
 
   const set = (field: keyof ProfileData) => (v: string) =>
