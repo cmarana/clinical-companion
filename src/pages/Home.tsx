@@ -180,6 +180,7 @@ export default function Home() {
               </span>
             </div>
           </button>
+          </motion.div>
         ))}
       </div>
 
