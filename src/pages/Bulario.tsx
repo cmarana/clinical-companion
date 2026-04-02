@@ -37,6 +37,11 @@ export default function Bulario() {
 
   const medications = data?.pages.flatMap((p) => p.items) ?? [];
 
+  // Load meds count lazily on mount
+  useEffect(() => {
+    loadMedicationsData().then(d => setMedsCount(d.length));
+  }, []);
+
   // Infinite scroll sentinel
   const sentinelRef = useRef<HTMLDivElement>(null);
   const handleObserver = useCallback(
@@ -62,13 +67,15 @@ export default function Bulario() {
   }, [handleObserver]);
 
   const handleImport = async () => {
-    if (allMedicationsData.length === 0) {
+    const medsData = await loadMedicationsData();
+    if (medsData.length === 0) {
       toast.info("Nenhum medicamento para importar.");
       return;
     }
     setImporting(true);
     try {
-      const result = await importFromArray(allMedicationsData);
+      const { importFromArray } = await import("@/lib/bularioImporter");
+      const result = await importFromArray(medsData);
       if (result.errors.length > 0) {
         toast.error(`Erros: ${result.errors.join(", ")}`);
       } else {
