@@ -62,6 +62,8 @@ const PushNotificationSettings = lazy(() => import("@/pages/PushNotificationSett
 const AdminAnalytics = lazy(() => import("@/pages/AdminAnalytics"));
 const UpdatesFeed = lazy(() => import("@/pages/UpdatesFeed"));
 const PixSuccess = lazy(() => import("@/pages/PixSuccess"));
+const TermsOfUse = lazy(() => import("@/pages/TermsOfUse"));
+const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
 
 const queryClient = new QueryClient();
 
@@ -87,6 +89,8 @@ const AppRoutes = () => (
       <Route path="/index" element={<Navigate to="/" replace />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/terms" element={<TermsOfUse />} />
+      <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route element={<AppLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/protocols" element={<Navigate to="/full-protocols" replace />} />
