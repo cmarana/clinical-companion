@@ -91,17 +91,17 @@ const emergencyShortcuts = [
 ];
 
 const cardStyles = {
-  ai: "col-span-2 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-indigo-500 text-white shadow-lg shadow-blue-500/20 dark:shadow-blue-500/30",
-  emergency: "bg-card text-card-foreground shadow-sm dark:shadow-none border-l-[3px] border-l-destructive",
-  cyan: "bg-card text-card-foreground shadow-sm dark:shadow-none border-l-[3px] border-l-cyan-500",
-  default: "bg-card text-card-foreground shadow-sm dark:shadow-none",
+  ai: "col-span-2 bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 dark:from-blue-500 dark:via-indigo-500 dark:to-violet-500 text-white shadow-lg shadow-blue-500/25 dark:shadow-blue-500/40 ring-1 ring-white/10",
+  emergency: "bg-gradient-to-br from-card to-card dark:from-card dark:to-[hsl(var(--card)/0.8)] shadow-md shadow-destructive/5 dark:shadow-destructive/10 ring-1 ring-destructive/15 dark:ring-destructive/25",
+  cyan: "bg-gradient-to-br from-card to-card dark:from-card dark:to-[hsl(var(--card)/0.8)] shadow-md shadow-cyan-500/5 dark:shadow-cyan-500/10 ring-1 ring-cyan-500/15 dark:ring-cyan-500/25",
+  default: "bg-gradient-to-br from-card to-card dark:from-card dark:to-[hsl(var(--card)/0.8)] shadow-md shadow-primary/5 dark:shadow-primary/10 ring-1 ring-border/50 dark:ring-border/30",
 };
 
 const iconStyles = {
-  ai: "bg-white/20 text-white",
-  emergency: "bg-destructive/10 text-destructive dark:bg-destructive/20",
-  cyan: "bg-cyan-500/10 text-cyan-600 dark:bg-cyan-500/20 dark:text-cyan-400",
-  default: "bg-primary/10 text-primary dark:bg-primary/20",
+  ai: "bg-white/20 text-white backdrop-blur-sm",
+  emergency: "bg-gradient-to-br from-destructive/10 to-destructive/20 text-destructive dark:from-destructive/15 dark:to-destructive/30",
+  cyan: "bg-gradient-to-br from-cyan-500/10 to-cyan-500/20 text-cyan-600 dark:from-cyan-500/15 dark:to-cyan-500/30 dark:text-cyan-400",
+  default: "bg-gradient-to-br from-primary/10 to-primary/20 text-primary dark:from-primary/15 dark:to-primary/30",
 };
 
 // Default 6 for users without specialty
