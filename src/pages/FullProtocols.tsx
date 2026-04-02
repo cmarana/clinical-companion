@@ -1,14 +1,12 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
-import { Card, CardContent } from "@/components/ui/card";
-import { fullProtocols, fullProtocolCategories } from "@/data/fullProtocols";
-import { ChevronRight } from "lucide-react";
+import { ChevronRight, Search } from "lucide-react";
 import { useState, useMemo } from "react";
 import { cn } from "@/lib/utils";
-import { Input } from "@/components/ui/input";
-import { Search } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import PremiumGate from "@/components/PremiumGate";
+import { fullProtocolCategories } from "@/data/fullProtocols";
+import { fullProtocolMetas } from "@/data/fullProtocols/metadata";
 
 export default function FullProtocols() {
   const navigate = useNavigate();
@@ -19,13 +17,16 @@ export default function FullProtocols() {
   const [search, setSearch] = useState("");
 
   const filtered = useMemo(() => {
-    let list = activeCat === "all" ? fullProtocols : fullProtocols.filter((p) => p.categoryId === activeCat);
+    let list = activeCat === "all" ? fullProtocolMetas : fullProtocolMetas.filter((p) => p.categoryId === activeCat);
     if (search.length >= 2) {
       const q = search.toLowerCase();
       list = list.filter(p => p.title.toLowerCase().includes(q) || p.tags.some(t => t.includes(q)));
     }
     return list;
   }, [activeCat, search]);
+
+  // Derive category label from fullProtocolCategories
+  const catLabel = (catId: string) => fullProtocolCategories.find(c => c.id === catId)?.title || catId;
 
   if (!subscription.subscribed) {
     return (
@@ -94,7 +95,7 @@ export default function FullProtocols() {
               <div className="flex items-center justify-between p-4">
                 <div>
                   <p className="font-heading font-semibold text-sm">{p.title}</p>
-                  <p className="text-[11px] text-muted-foreground mt-0.5">{p.category}</p>
+                  <p className="text-[11px] text-muted-foreground mt-0.5">{catLabel(p.categoryId)}</p>
                 </div>
                 <ChevronRight size={16} className="text-muted-foreground shrink-0" />
               </div>
