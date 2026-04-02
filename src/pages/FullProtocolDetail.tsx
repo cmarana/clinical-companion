@@ -13,6 +13,7 @@ import { getFullProtocolAsync } from "@/data/fullProtocols/lazyLoader";
 import type { FullProtocol } from "@/data/fullProtocols/types";
 import ProtocolActionBar from "@/components/ProtocolActionBar";
 import { useRecentHistory } from "@/hooks/useRecentHistory";
+import { useProtocolAnalytics } from "@/hooks/useProtocolAnalytics";
 import { ProtocolDetailSkeleton } from "@/components/PageSkeleton";
 import DecisionTree from "@/components/DecisionTree";
 import { decisionTrees } from "@/data/decisionTrees";
