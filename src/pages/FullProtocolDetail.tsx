@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState, useMemo } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
 import { cacheContent } from "@/lib/offlineCache";
 import ProtocolSplitList from "@/components/ProtocolSplitList";
@@ -8,10 +8,11 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import PremiumGate from "@/components/PremiumGate";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Star, ShieldCheck, GitBranch, Calculator } from "lucide-react";
+import { Star, ShieldCheck, GitBranch, Calculator, ChevronRight, Eye, EyeOff } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { FULL_SECTION_ORDER, getEvidence } from "@/data/fullProtocols";
+import { FULL_SECTION_ORDER, getEvidence, fullProtocolCategories } from "@/data/fullProtocols";
 import { getFullProtocolAsync } from "@/data/fullProtocols/lazyLoader";
+import { fullProtocolMetas } from "@/data/fullProtocols/metadata";
 import type { FullProtocol } from "@/data/fullProtocols/types";
 import ProtocolActionBar from "@/components/ProtocolActionBar";
 import { useRecentHistory } from "@/hooks/useRecentHistory";
@@ -22,15 +23,52 @@ import { decisionTrees } from "@/data/decisionTrees";
 import EmbeddedCalculators, { findCalcsForProtocol } from "@/components/EmbeddedCalculators";
 import { getProtocolUpdateLabel } from "@/data/protocolChangelog";
 import { CalendarCheck } from "lucide-react";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+  BreadcrumbPage,
+} from "@/components/ui/breadcrumb";
 
 export default function FullProtocolDetail() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const { subscription } = useAuth();
   const { isFavorite, toggleFavorite } = useFavorites();
   const { addEntry } = useRecentHistory();
   const { trackView } = useProtocolAnalytics(id);
   const [protocol, setProtocol] = useState<FullProtocol | null | undefined>(undefined);
+  const [focusMode, setFocusMode] = useState(false);
   const evidence = protocol ? getEvidence(protocol.id) : undefined;
+
+  // Category label for breadcrumbs
+  const categoryLabel = useMemo(() => {
+    if (!protocol) return "";
+    return fullProtocolCategories.find(c => c.id === protocol.categoryId)?.title || protocol.category;
+  }, [protocol]);
+
+  // Arrow key navigation between protocols in same category
+  const siblings = useMemo(() => {
+    if (!protocol) return [];
+    return fullProtocolMetas.filter(p => p.categoryId === protocol.categoryId);
+  }, [protocol]);
+
+  const currentIdx = useMemo(() => siblings.findIndex(s => s.id === id), [siblings, id]);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      if (e.key === "ArrowLeft" && currentIdx > 0) {
+        navigate(`/full-protocols/${siblings[currentIdx - 1].id}`);
+      } else if (e.key === "ArrowRight" && currentIdx < siblings.length - 1) {
+        navigate(`/full-protocols/${siblings[currentIdx + 1].id}`);
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [currentIdx, siblings, navigate]);
 
   // Find matching decision tree for this protocol
   const matchedTree = useMemo(() => {
@@ -113,25 +151,67 @@ export default function FullProtocolDetail() {
 
   return (
     <div className="flex w-full">
-      {/* Split panel - desktop only */}
-      <div className="hidden lg:block w-80 xl:w-96 shrink-0 h-[calc(100vh-2.5rem)] sticky top-10">
-        <ProtocolSplitList activeProtocolId={id} />
-      </div>
+      {/* Split panel - desktop only (hidden in focus mode) */}
+      {!focusMode && (
+        <div className="hidden lg:block w-80 xl:w-96 shrink-0 h-[calc(100vh-2.5rem)] sticky top-10">
+          <ProtocolSplitList activeProtocolId={id} />
+        </div>
+      )}
 
       {/* Main content */}
       <div className="flex-1 min-w-0">
         <TopBar
           title={protocol.title}
           rightContent={
-            <button
-              onClick={() => toggleFavorite({ id: protocol.id, type: "protocol", title: protocol.title })}
-              className="p-1.5 rounded-md hover:bg-accent transition-colors"
-            >
-              <Star size={18} className={cn(fav ? "fill-warning text-warning" : "text-muted-foreground")} />
-            </button>
+            <div className="flex items-center gap-1">
+              {/* Focus mode toggle - desktop only */}
+              <button
+                onClick={() => setFocusMode(f => !f)}
+                className="hidden lg:inline-flex p-1.5 rounded-md hover:bg-accent transition-colors"
+                title={focusMode ? "Sair do modo foco" : "Modo foco"}
+              >
+                {focusMode ? <EyeOff size={16} className="text-primary" /> : <Eye size={16} className="text-muted-foreground" />}
+              </button>
+              <button
+                onClick={() => toggleFavorite({ id: protocol.id, type: "protocol", title: protocol.title })}
+                className="p-1.5 rounded-md hover:bg-accent transition-colors"
+              >
+                <Star size={18} className={cn(fav ? "fill-warning text-warning" : "text-muted-foreground")} />
+              </button>
+            </div>
           }
         />
-        <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-4xl mx-auto pb-24">
+        <div className={cn("px-4 py-4 pb-24 mx-auto", focusMode ? "max-w-2xl" : "max-w-lg md:max-w-3xl lg:max-w-4xl")}>
+          {/* Breadcrumbs */}
+          <Breadcrumb className="mb-3">
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/full-protocols" className="text-xs font-heading hover:text-primary transition-colors">
+                  Protocolos
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator>
+                <ChevronRight size={12} />
+              </BreadcrumbSeparator>
+              <BreadcrumbItem>
+                <BreadcrumbLink
+                  href={`/full-protocols?cat=${protocol.categoryId}`}
+                  className="text-xs font-heading hover:text-primary transition-colors"
+                >
+                  {categoryLabel}
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator>
+                <ChevronRight size={12} />
+              </BreadcrumbSeparator>
+              <BreadcrumbItem>
+                <BreadcrumbPage className="text-xs font-heading font-semibold text-foreground truncate max-w-[200px]">
+                  {protocol.title}
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+
           <div className="flex items-center gap-2 mb-3">
             <p className="text-xs text-muted-foreground font-heading">{protocol.category}</p>
             {evidence && (
