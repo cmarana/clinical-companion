@@ -141,6 +141,7 @@ const AppRoutes = () => (
         <Route path="/admin/analytics" element={<AdminAnalytics />} />
         <Route path="/updates" element={<UpdatesFeed />} />
         <Route path="/pix-success" element={<PixSuccess />} />
+        <Route path="/referral" element={<Referral />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
