@@ -108,17 +108,19 @@ const iconStyles = {
 const defaultPrimaryPaths = ["/clinical-ai", "/duty", "/emergency", "/bulario", "/prescriptions", "/full-protocols"];
 
 function getPrimaryModules(specialty: string | null): Module[] {
+  // "todas" = show all primary modules (no filtering)
+  if (specialty === "todas") {
+    return allPrimaryModules;
+  }
+
   if (!specialty || specialty === "generalista") {
     return allPrimaryModules.filter(m => defaultPrimaryPaths.includes(m.path));
   }
 
-  // Always include IA + Bulário + Prescrições + Protocolos
   const alwaysShow = allPrimaryModules.filter(m => m.tags?.includes("all"));
-  // Add specialty-specific
   const specialtySpecific = allPrimaryModules.filter(
     m => !m.tags?.includes("all") && m.tags?.includes(specialty)
   );
-  // Fill remaining slots with defaults
   const combined = [...alwaysShow, ...specialtySpecific];
   const paths = new Set(combined.map(m => m.path));
 
@@ -132,7 +134,7 @@ function getPrimaryModules(specialty: string | null): Module[] {
     }
   }
 
-  return combined.slice(0, 8); // max 8
+  return combined.slice(0, 10);
 }
 
 export default function Home() {
