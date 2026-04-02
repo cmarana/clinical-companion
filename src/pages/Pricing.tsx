@@ -43,6 +43,9 @@ export default function Pricing() {
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
+    // Clear onboarding flag now that we're on pricing
+    sessionStorage.removeItem("pulso_just_onboarded");
+
     if (searchParams.get("success") === "true") {
       const method = searchParams.get("method");
       toast({
