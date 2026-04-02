@@ -76,10 +76,6 @@ export default function OfflineSetup() {
       listCachedContent().then(setContentItems);
 
       return () => navigator.serviceWorker.removeEventListener("message", handler);
-      };
-
-      navigator.serviceWorker.addEventListener("message", handler);
-      return () => navigator.serviceWorker.removeEventListener("message", handler);
     }
   }, []);
 
