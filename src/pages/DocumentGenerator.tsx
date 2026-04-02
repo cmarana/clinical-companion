@@ -1,4 +1,5 @@
 import { useState, useRef, useMemo, useCallback } from "react";
+import PrescriptionInteractionAlert from "@/components/PrescriptionInteractionAlert";
 import TopBar from "@/components/TopBar";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -580,6 +581,9 @@ export default function DocumentGenerator() {
                 <Plus size={14} /> Adicionar Medicamento
               </Button>
             </div>
+
+            {/* Auto Drug Interaction Alert */}
+            <PrescriptionInteractionAlert drugNames={medications.map(m => m.name)} />
 
             <div>
               <Label className="text-xs">Observações</Label>
