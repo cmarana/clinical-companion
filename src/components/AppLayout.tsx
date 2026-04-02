@@ -1,10 +1,11 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import BottomNav from "./BottomNav";
 import ScrollToTop from "./ScrollToTop";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "./AppSidebar";
 import MedicalDisclaimer from "./MedicalDisclaimer";
 import OfflineErrorBoundary from "./OfflineErrorBoundary";
+import { AnimatePresence, motion } from "framer-motion";
 
 export default function AppLayout() {
   return (
