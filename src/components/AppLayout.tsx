@@ -4,6 +4,7 @@ import ScrollToTop from "./ScrollToTop";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "./AppSidebar";
 import MedicalDisclaimer from "./MedicalDisclaimer";
+import OfflineErrorBoundary from "./OfflineErrorBoundary";
 
 export default function AppLayout() {
   return (
@@ -17,7 +18,9 @@ export default function AppLayout() {
             <span className="ml-2 font-heading font-semibold text-xs text-muted-foreground">PS Guide</span>
           </header>
           <main className="flex-1 bg-background text-foreground pb-16 md:pb-0">
-            <Outlet />
+            <OfflineErrorBoundary>
+              <Outlet />
+            </OfflineErrorBoundary>
             <MedicalDisclaimer />
           </main>
         </div>
