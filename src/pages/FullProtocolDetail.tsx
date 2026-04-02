@@ -6,7 +6,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import PremiumGate from "@/components/PremiumGate";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Star, ShieldCheck, GitBranch } from "lucide-react";
+import { Star, ShieldCheck, GitBranch, Calculator } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FULL_SECTION_ORDER, getEvidence } from "@/data/fullProtocols";
 import { getFullProtocolAsync } from "@/data/fullProtocols/lazyLoader";
@@ -16,6 +16,7 @@ import { useRecentHistory } from "@/hooks/useRecentHistory";
 import { ProtocolDetailSkeleton } from "@/components/PageSkeleton";
 import DecisionTree from "@/components/DecisionTree";
 import { decisionTrees } from "@/data/decisionTrees";
+import EmbeddedCalculators, { findCalcsForProtocol } from "@/components/EmbeddedCalculators";
 
 export default function FullProtocolDetail() {
   const { id } = useParams<{ id: string }>();
