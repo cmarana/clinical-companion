@@ -109,6 +109,28 @@ const FLOWCHART_MAP: Record<string, string> = {
   "eap": "eap",
   "convulsao": "convulsao",
   "status-epileptico": "status-epileptico",
+  // New trees
+  "tep": "tep",
+  "tromboembolismo": "tep",
+  "pneumonia": "pneumonia",
+  "pac": "pneumonia",
+  "cad": "cad",
+  "cetoacidose": "cetoacidose",
+  "hipercalemia": "hipercalemia",
+  "hda": "hda",
+  "hemorragia-digestiva": "hemorragia-digestiva",
+  "insuficiencia-respiratoria": "insuficiencia-respiratoria",
+  "sdra": "sdra",
+  "asma": "asma",
+  "crise-asmatica": "crise-asmatica",
+  "dpoc": "dpoc",
+  "exacerbacao-dpoc": "exacerbacao-dpoc",
+  "hiponatremia": "hiponatremia",
+  "intoxicacao": "intoxicacao",
+  "meningite": "meningite",
+  "ira": "ira-renal",
+  "insuficiencia-renal": "insuficiencia-renal",
+  "dengue": "dengue",
 };
 
 function findMatch(protocolId: string, map: Record<string, any>) {

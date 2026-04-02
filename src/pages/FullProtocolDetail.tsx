@@ -1,12 +1,12 @@
 import { useParams } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useMemo } from "react";
 import { cacheContent } from "@/lib/offlineCache";
 import TopBar from "@/components/TopBar";
 import { useAuth } from "@/contexts/AuthContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import PremiumGate from "@/components/PremiumGate";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Star, ShieldCheck } from "lucide-react";
+import { Star, ShieldCheck, GitBranch } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { FULL_SECTION_ORDER, getEvidence } from "@/data/fullProtocols";
 import { getFullProtocolAsync } from "@/data/fullProtocols/lazyLoader";
@@ -14,6 +14,8 @@ import type { FullProtocol } from "@/data/fullProtocols/types";
 import ProtocolActionBar from "@/components/ProtocolActionBar";
 import { useRecentHistory } from "@/hooks/useRecentHistory";
 import { ProtocolDetailSkeleton } from "@/components/PageSkeleton";
+import DecisionTree from "@/components/DecisionTree";
+import { decisionTrees } from "@/data/decisionTrees";
 
 export default function FullProtocolDetail() {
   const { id } = useParams<{ id: string }>();
