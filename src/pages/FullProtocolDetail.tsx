@@ -25,6 +25,26 @@ export default function FullProtocolDetail() {
   const [protocol, setProtocol] = useState<FullProtocol | null | undefined>(undefined);
   const evidence = protocol ? getEvidence(protocol.id) : undefined;
 
+  // Find matching decision tree for this protocol
+  const matchedTree = useMemo(() => {
+    if (!protocol) return null;
+    const pid = protocol.id.toLowerCase();
+    // Direct match
+    if (decisionTrees[pid]) return decisionTrees[pid];
+    // Partial match: check if protocol ID contains a tree key
+    for (const key of Object.keys(decisionTrees)) {
+      if (pid.includes(key) || key.includes(pid)) return decisionTrees[key];
+    }
+    // Match by tags
+    if (protocol.tags) {
+      for (const tag of protocol.tags) {
+        const t = tag.toLowerCase();
+        if (decisionTrees[t]) return decisionTrees[t];
+      }
+    }
+    return null;
+  }, [protocol]);
+
   useEffect(() => {
     let cancelled = false;
     setProtocol(undefined);
