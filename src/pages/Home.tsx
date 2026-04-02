@@ -6,6 +6,7 @@ import {
   Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain, GraduationCap,
   Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Eclipse
 } from "lucide-react";
+import pulsoLogo from "@/assets/pulso-logo.png";
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
