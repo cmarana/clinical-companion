@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, Crown, LogOut, Sparkles, Clock } from "lucide-react";
+import { Check, Crown, LogOut, Sparkles, Clock, X, Shield, Zap } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -11,16 +11,18 @@ import { plans } from "@/lib/plans";
 import { cn } from "@/lib/utils";
 import { Progress } from "@/components/ui/progress";
 
-const features = [
-  "Todos os protocolos completos",
-  "Guia completo de medicamentos",
-  "Doses, diluições e precauções",
-  "Modo Emergência",
-  "Quiz com 100+ questões",
-  "Favoritos e anotações pessoais",
-  "Busca inteligente",
-  "Funcionamento offline (PWA)",
-  "Atualizações contínuas",
+const premiumFeatures = [
+  { feature: "Protocolos completos", free: "3 protocolos básicos", premium: "280+ protocolos, todas especialidades" },
+  { feature: "Medicamentos", free: "3 medicamentos (indicação)", premium: "2.000+ fármacos com doses, diluições, interações" },
+  { feature: "IA Clínica", free: false, premium: true },
+  { feature: "Modo Emergência", free: false, premium: true },
+  { feature: "Modo Plantão", free: false, premium: true },
+  { feature: "Calculadoras clínicas", free: false, premium: true },
+  { feature: "Prescrições prontas", free: false, premium: true },
+  { feature: "Quiz & Flashcards", free: false, premium: true },
+  { feature: "Favoritos e anotações", free: "Limitado", premium: true },
+  { feature: "Modo offline", free: false, premium: true },
+  { feature: "Atualizações contínuas", free: false, premium: true },
 ];
 
 export default function Pricing() {
@@ -34,30 +36,21 @@ export default function Pricing() {
 
   useEffect(() => {
     if (searchParams.get("success") === "true") {
-      toast({ title: "Assinatura realizada!", description: "Bem-vindo ao Manual de Plantão Pro!" });
+      toast({ title: "Assinatura realizada!", description: "Bem-vindo ao PULSO Pro!" });
       checkSubscription();
     }
   }, [searchParams]);
 
   const handleCheckout = async (planId: string) => {
-    if (!user) {
-      navigate("/auth");
-      return;
-    }
+    if (!user) { navigate("/auth"); return; }
     setLoading(planId);
     try {
-      const { data, error } = await supabase.functions.invoke("create-checkout", {
-        body: { planId },
-      });
+      const { data, error } = await supabase.functions.invoke("create-checkout", { body: { planId } });
       if (error) throw error;
-      if (data?.url) {
-        window.open(data.url, "_blank");
-      }
+      if (data?.url) window.open(data.url, "_blank");
     } catch (err: any) {
       toast({ title: "Erro", description: err.message, variant: "destructive" });
-    } finally {
-      setLoading(null);
-    }
+    } finally { setLoading(null); }
   };
 
   const handlePortal = async () => {
@@ -65,58 +58,11 @@ export default function Pricing() {
     try {
       const { data, error } = await supabase.functions.invoke("customer-portal");
       if (error) throw error;
-      if (data?.url) {
-        window.open(data.url, "_blank");
-      }
+      if (data?.url) window.open(data.url, "_blank");
     } catch (err: any) {
       toast({ title: "Erro", description: err.message, variant: "destructive" });
-    } finally {
-      setPortalLoading(false);
-    }
+    } finally { setPortalLoading(false); }
   };
-
-  const PlanSelector = () => (
-    <>
-      <div className="grid grid-cols-2 gap-2">
-        {plans.map((plan) => (
-          <Card
-            key={plan.id}
-            onClick={() => setSelectedPlan(plan.id)}
-            className={cn(
-              "cursor-pointer transition-all relative overflow-hidden",
-              selectedPlan === plan.id
-                ? "border-primary ring-2 ring-primary/20 shadow-md"
-                : "border-border hover:border-primary/40"
-            )}
-          >
-            {plan.popular && (
-              <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-[9px] font-heading font-bold px-2 py-0.5 rounded-bl-lg">
-                POPULAR
-              </div>
-            )}
-            <CardContent className="p-3 space-y-1">
-              <p className="font-heading font-bold text-xs">{plan.name}</p>
-              <div className="flex items-baseline gap-0.5">
-                <span className="font-heading font-bold text-lg">{plan.priceDisplay}</span>
-              </div>
-              <p className="text-[10px] text-muted-foreground">{plan.monthlyEquivalent}</p>
-              {plan.savings && (
-                <p className="text-[10px] font-heading font-semibold text-primary">{plan.savings}</p>
-              )}
-            </CardContent>
-          </Card>
-        ))}
-      </div>
-      <Button
-        onClick={() => handleCheckout(selectedPlan)}
-        className="w-full h-12 text-base font-heading font-bold"
-        size="lg"
-        disabled={loading !== null}
-      >
-        {loading ? "Redirecionando..." : "Assinar agora"}
-      </Button>
-    </>
-  );
 
   return (
     <>
@@ -124,12 +70,12 @@ export default function Pricing() {
       <div className="px-4 py-6 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-6 pb-24">
         {/* Header */}
         <div className="text-center space-y-2">
-          <div className="mx-auto w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center">
-            <Crown size={24} className="text-primary" />
+          <div className="mx-auto w-14 h-14 rounded-2xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-lg shadow-primary/25">
+            <Crown size={28} className="text-primary-foreground" />
           </div>
-          <h1 className="font-heading text-xl font-bold">Manual de Plantão Pro</h1>
-          <p className="text-sm text-muted-foreground">
-            Acesso completo a todos os protocolos, medicamentos e ferramentas
+          <h1 className="font-heading text-2xl font-bold">PULSO Pro</h1>
+          <p className="text-sm text-muted-foreground max-w-xs mx-auto">
+            O companheiro completo do médico plantonista — decisões rápidas, sem margem para erro.
           </p>
         </div>
 
@@ -152,7 +98,6 @@ export default function Pricing() {
               <p className="text-xs text-muted-foreground text-center">
                 Assine agora para manter o acesso completo após o período de teste.
               </p>
-              <PlanSelector />
             </CardContent>
           </Card>
         )}
@@ -180,37 +125,107 @@ export default function Pricing() {
           </Card>
         )}
 
-        {/* No subscription and no trial */}
-        {!subscription.subscribed && (
+        {/* ── COMPARISON TABLE ──────────────────────────── */}
+        {(!subscription.subscribed || subscription.isTrial) && (
           <>
-            <PlanSelector />
+            {/* Social proof */}
+            <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
+              <Shield size={14} className="text-primary" />
+              <span>Usado por médicos plantonistas em todo o Brasil</span>
+            </div>
 
-            {/* Features */}
-            <Card>
-              <CardContent className="p-4">
-                <p className="font-heading font-bold text-sm mb-3">Tudo incluso:</p>
-                <ul className="space-y-2.5">
-                  {features.map((f) => (
-                    <li key={f} className="flex items-start gap-2.5 text-sm">
-                      <Check size={16} className="text-primary shrink-0 mt-0.5" />
-                      <span>{f}</span>
-                    </li>
-                  ))}
-                </ul>
+            {/* Comparison */}
+            <Card className="overflow-hidden">
+              <div className="grid grid-cols-3 text-center text-xs font-heading font-bold border-b">
+                <div className="p-3 bg-muted/30">Recurso</div>
+                <div className="p-3 bg-muted/50">Gratuito</div>
+                <div className="p-3 bg-primary/10 text-primary">Pro</div>
+              </div>
+              {premiumFeatures.map((f, i) => (
+                <div key={i} className={cn("grid grid-cols-3 text-center text-[11px] border-b last:border-0", i % 2 === 0 && "bg-muted/10")}>
+                  <div className="p-2.5 text-left font-medium text-foreground">{f.feature}</div>
+                  <div className="p-2.5 flex items-center justify-center">
+                    {f.free === false ? (
+                      <X size={14} className="text-muted-foreground/50" />
+                    ) : f.free === true ? (
+                      <Check size={14} className="text-primary" />
+                    ) : (
+                      <span className="text-muted-foreground text-[10px]">{f.free}</span>
+                    )}
+                  </div>
+                  <div className="p-2.5 bg-primary/5 flex items-center justify-center">
+                    {f.premium === true ? (
+                      <Check size={14} className="text-primary" />
+                    ) : (
+                      <span className="text-primary text-[10px] font-medium">{f.premium}</span>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </Card>
+
+            {/* Example callout */}
+            <Card className="bg-gradient-to-br from-primary/5 to-accent/30 border-primary/20">
+              <CardContent className="p-4 space-y-2">
+                <div className="flex items-center gap-2">
+                  <Zap size={16} className="text-primary" />
+                  <span className="font-heading font-bold text-sm">Na prática</span>
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed">
+                  Imagine: plantão às 3h, paciente com dor torácica. Com o <strong className="text-foreground">PULSO Pro</strong>, 
+                  você abre o protocolo de IAM com fluxograma interativo, calcula o TIMI Score ali mesmo, 
+                  e gera a prescrição completa em segundos — tudo offline.
+                </p>
               </CardContent>
             </Card>
 
-            {/* Free tier info */}
-            <Card className="bg-muted/50">
-              <CardContent className="p-4">
-                <p className="font-heading font-bold text-sm mb-2">Versão Gratuita</p>
-                <ul className="space-y-1.5 text-xs text-muted-foreground">
-                  <li>• Visualização de definições e diagnósticos</li>
-                  <li>• Indicações dos medicamentos</li>
-                  <li>• Lista de protocolos e medicamentos</li>
-                </ul>
-              </CardContent>
-            </Card>
+            {/* Plan selector */}
+            <div>
+              <p className="font-heading font-bold text-sm mb-3 text-center">Escolha seu plano</p>
+              <div className="grid grid-cols-2 gap-2">
+                {plans.map((plan) => (
+                  <Card
+                    key={plan.id}
+                    onClick={() => setSelectedPlan(plan.id)}
+                    className={cn(
+                      "cursor-pointer transition-all relative overflow-hidden",
+                      selectedPlan === plan.id
+                        ? "border-primary ring-2 ring-primary/20 shadow-md"
+                        : "border-border hover:border-primary/40"
+                    )}
+                  >
+                    {plan.popular && (
+                      <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-[9px] font-heading font-bold px-2 py-0.5 rounded-bl-lg">
+                        POPULAR
+                      </div>
+                    )}
+                    <CardContent className="p-3 space-y-1">
+                      <p className="font-heading font-bold text-xs">{plan.name}</p>
+                      <div className="flex items-baseline gap-0.5">
+                        <span className="font-heading font-bold text-lg">{plan.priceDisplay}</span>
+                      </div>
+                      <p className="text-[10px] text-muted-foreground">{plan.monthlyEquivalent}</p>
+                      {plan.savings && (
+                        <p className="text-[10px] font-heading font-semibold text-primary">{plan.savings}</p>
+                      )}
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
+            </div>
+
+            <Button
+              onClick={() => handleCheckout(selectedPlan)}
+              className="w-full h-12 text-base font-heading font-bold"
+              size="lg"
+              disabled={loading !== null}
+            >
+              {loading ? "Redirecionando..." : "Assinar agora"}
+            </Button>
+
+            <p className="text-[10px] text-muted-foreground text-center">
+              Cancele a qualquer momento. Pagamento seguro via Stripe.
+            </p>
           </>
         )}
 

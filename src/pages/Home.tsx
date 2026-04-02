@@ -18,6 +18,7 @@ import { useNotifications } from "@/contexts/NotificationsContext";
 import { hapticLight } from "@/lib/haptics";
 import { useModuleAnalytics } from "@/hooks/useModuleAnalytics";
 import SmartSearch from "@/components/SmartSearch";
+import WeeklySummaryWidget from "@/components/WeeklySummaryWidget";
 
 // ── PREFETCH critical chunks after Home mounts ──
 const prefetchRoutes = () => {
@@ -221,6 +222,9 @@ export default function Home() {
 
       {/* Smart Search */}
       <SmartSearch specialty={specialty} />
+
+      {/* Weekly Summary Widget */}
+      <WeeklySummaryWidget />
 
       {/* ── PRIMARY GRID ─────────────────────────────────────── */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-6">
