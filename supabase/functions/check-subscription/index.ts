@@ -64,6 +64,28 @@ serve(async (req) => {
       productId = sub.items.data[0].price.product;
     }
 
+    // Also check PIX one-time purchases
+    if (!hasActiveSub) {
+      const { data: pixPurchases } = await supabaseClient
+        .from("pix_purchases")
+        .select("access_end, plan_type")
+        .eq("user_id", user.id)
+        .eq("status", "active")
+        .gte("access_end", new Date().toISOString())
+        .order("access_end", { ascending: false })
+        .limit(1);
+
+      if (pixPurchases && pixPurchases.length > 0) {
+        return new Response(JSON.stringify({
+          subscribed: true,
+          product_id: "pix_purchase",
+          subscription_end: pixPurchases[0].access_end,
+        }), {
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+    }
+
     return new Response(JSON.stringify({
       subscribed: hasActiveSub,
       product_id: productId,

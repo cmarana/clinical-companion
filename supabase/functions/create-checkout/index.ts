@@ -7,9 +7,16 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-const PRICE_MAP: Record<string, string> = {
+// Recurring subscription prices (card/boleto)
+const SUB_PRICE_MAP: Record<string, string> = {
   monthly: "price_1THgm6FLmvoivW0nM2oX7iwh",
   annual: "price_1THgm7FLmvoivW0nIvfRyMSc",
+};
+
+// One-time PIX prices (no auto-renewal)
+const PIX_PRICE_MAP: Record<string, string> = {
+  monthly: "price_1THgp3FLmvoivW0nr6rNh7hr",
+  annual: "price_1THgp4FLmvoivW0n095lj2Xb",
 };
 
 serve(async (req) => {
@@ -31,19 +38,52 @@ serve(async (req) => {
 
     const body = await req.json().catch(() => ({}));
     const planId = body.planId || "monthly";
-    const priceId = PRICE_MAP[planId];
-    if (!priceId) throw new Error("Invalid plan");
+    const paymentMethod = body.paymentMethod || "card"; // "card" | "pix"
 
     const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
       apiVersion: "2025-08-27.basil",
     });
+
+    const origin = req.headers.get("origin") || "https://pronto-socorro-guide.lovable.app";
+
+    // ── PIX flow: one-time payment, no auto-renewal ──
+    if (paymentMethod === "pix") {
+      const pixPriceId = PIX_PRICE_MAP[planId];
+      if (!pixPriceId) throw new Error("Invalid plan for PIX");
+
+      const customers = await stripe.customers.list({ email: user.email, limit: 1 });
+
+      const session = await stripe.checkout.sessions.create({
+        customer: customers.data.length > 0 ? customers.data[0].id : undefined,
+        customer_email: customers.data.length > 0 ? undefined : user.email,
+        line_items: [{ price: pixPriceId, quantity: 1 }],
+        mode: "payment",
+        payment_method_types: ["pix"],
+        success_url: `${origin}/pricing?success=true&method=pix&plan=${planId}`,
+        cancel_url: `${origin}/pricing`,
+        locale: "pt-BR",
+        metadata: {
+          user_id: user.id,
+          plan_type: planId,
+          payment_method: "pix",
+        },
+      });
+
+      return new Response(JSON.stringify({ url: session.url }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+        status: 200,
+      });
+    }
+
+    // ── Card/Boleto flow: recurring subscription ──
+    const priceId = SUB_PRICE_MAP[planId];
+    if (!priceId) throw new Error("Invalid plan");
 
     const customers = await stripe.customers.list({ email: user.email, limit: 1 });
     let customerId: string | undefined;
     if (customers.data.length > 0) {
       customerId = customers.data[0].id;
 
-      // Check if user already had a trial — only offer trial to new customers
       const pastSubs = await stripe.subscriptions.list({
         customer: customerId,
         limit: 1,
@@ -55,8 +95,8 @@ serve(async (req) => {
         line_items: [{ price: priceId, quantity: 1 }],
         mode: "subscription",
         subscription_data: hadTrial ? undefined : { trial_period_days: 7 },
-        success_url: `${req.headers.get("origin")}/pricing?success=true`,
-        cancel_url: `${req.headers.get("origin")}/pricing`,
+        success_url: `${origin}/pricing?success=true`,
+        cancel_url: `${origin}/pricing`,
         payment_method_types: ["card", "boleto"],
         locale: "pt-BR",
       });
@@ -73,8 +113,8 @@ serve(async (req) => {
       line_items: [{ price: priceId, quantity: 1 }],
       mode: "subscription",
       subscription_data: { trial_period_days: 7 },
-      success_url: `${req.headers.get("origin")}/pricing?success=true`,
-      cancel_url: `${req.headers.get("origin")}/pricing`,
+      success_url: `${origin}/pricing?success=true`,
+      cancel_url: `${origin}/pricing`,
       payment_method_types: ["card", "boleto"],
       locale: "pt-BR",
     });
