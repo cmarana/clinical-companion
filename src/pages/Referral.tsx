@@ -37,8 +37,7 @@ export default function Referral() {
     try {
       const { error } = await supabase.from("referrals").insert({
         referrer_id: user.id,
-        referred_email: email.trim().toLowerCase(),
-      });
+      } as any);
       if (error) throw error;
       toast.success("Convite registrado!");
       setEmail("");
