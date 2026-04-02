@@ -14,9 +14,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import RecentHistory from "@/components/RecentHistory";
 import { useNotifications } from "@/contexts/NotificationsContext";
-import OnboardingModal from "@/components/OnboardingModal";
-import { hapticLight, hapticMedium } from "@/lib/haptics";
-import { useModuleAnalytics, setAnalyticsSpecialty } from "@/hooks/useModuleAnalytics";
+import { hapticLight } from "@/lib/haptics";
+import { useModuleAnalytics } from "@/hooks/useModuleAnalytics";
 import SmartSearch from "@/components/SmartSearch";
 
 // ── ALL MODULES WITH TAGS ─────────────────────────────────────
