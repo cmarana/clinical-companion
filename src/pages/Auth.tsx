@@ -295,19 +295,34 @@ export default function Auth() {
                 className="space-y-3"
               >
                 <Button
-                  onClick={() => setShowAuthForm(true)}
+                  onClick={() => { setIsLogin(false); setShowAuthForm(true); }}
                   className="w-full h-13 rounded-2xl text-sm font-heading font-semibold gap-2 shadow-lg shadow-primary/25"
                 >
-                  Começar agora — é grátis
+                  Começar 7 dias grátis
                   <ChevronRight size={16} />
                 </Button>
 
+                <Button
+                  onClick={() => { setIsLogin(true); setShowAuthForm(true); }}
+                  variant="outline"
+                  className="w-full h-11 rounded-2xl text-sm font-heading font-medium gap-2"
+                >
+                  Já tenho conta — Entrar
+                </Button>
+
+                <Separator className="my-1" />
+
                 <button
                   onClick={() => navigate("/")}
-                  className="w-full flex items-center justify-center gap-1 py-2.5 text-xs text-muted-foreground hover:text-foreground transition-colors font-heading"
+                  className="w-full flex flex-col items-center gap-0.5 py-2.5 text-muted-foreground hover:text-foreground transition-colors"
                 >
-                  Explorar sem conta
-                  <ChevronDown size={14} />
+                  <span className="text-xs font-heading font-medium flex items-center gap-1">
+                    Continuar grátis sem conta
+                    <ChevronDown size={14} />
+                  </span>
+                  <span className="text-[10px] text-muted-foreground/70">
+                    10 protocolos · 10 medicamentos · calculadoras básicas
+                  </span>
                 </button>
               </motion.div>
             ) : (
