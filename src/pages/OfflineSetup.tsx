@@ -7,9 +7,10 @@ import { toast } from "sonner";
 import {
   Download, CheckCircle, WifiOff, Wifi, HardDrive, RefreshCw,
   Trash2, Shield, Stethoscope, Pill, FileText, Calculator,
-  AlertTriangle, Loader2
+  AlertTriangle, Loader2, BookOpen
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { listCachedContent, clearContentCache } from "@/lib/offlineCache";
 
 type CacheStatus = "idle" | "downloading" | "complete" | "error";
 
