@@ -187,12 +187,12 @@ function maskPhone(v: string) {
 /* ── Section wrapper ── */
 function Section({ icon: Icon, title, children }: { icon: React.ElementType; title: string; children: React.ReactNode }) {
   return (
-    <div className="bg-card rounded-2xl border border-border p-4 space-y-4">
-      <div className="flex items-center gap-2">
-        <div className="w-7 h-7 rounded-lg bg-primary/10 flex items-center justify-center">
-          <Icon size={14} className="text-primary" />
+    <div className="bg-card rounded-2xl border border-border/60 p-5 space-y-4 shadow-sm">
+      <div className="flex items-center gap-2.5 pb-1 border-b border-border/40">
+        <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+          <Icon size={15} className="text-primary" />
         </div>
-        <h3 className="text-xs font-bold text-muted-foreground uppercase tracking-wider">{title}</h3>
+        <h3 className="text-[11px] font-bold text-muted-foreground uppercase tracking-widest">{title}</h3>
       </div>
       {children}
     </div>
@@ -209,11 +209,12 @@ function Select({ label, value, onChange, options, placeholder = "Selecione..." 
     : options as { value: string; label: string }[];
   return (
     <div>
-      <label className="text-xs font-semibold text-muted-foreground mb-1.5 block">{label}</label>
+      <label className="text-[11px] font-semibold text-muted-foreground mb-1.5 block tracking-wide">{label}</label>
       <select
         value={value}
         onChange={e => onChange(e.target.value)}
-        className="w-full h-10 rounded-xl border border-input bg-background px-3 text-sm focus:outline-none focus:ring-2 focus:ring-ring"
+        className="w-full h-11 rounded-xl border border-input bg-background px-3 text-sm transition-colors focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary/50 appearance-none"
+        style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E")`, backgroundRepeat: 'no-repeat', backgroundPosition: 'right 12px center' }}
       >
         <option value="">{placeholder}</option>
         {opts.map(o => <option key={o.value} value={o.value}>{o.label}</option>)}
@@ -226,7 +227,7 @@ function Select({ label, value, onChange, options, placeholder = "Selecione..." 
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div>
-      <label className="text-xs font-semibold text-muted-foreground mb-1.5 block">{label}</label>
+      <label className="text-[11px] font-semibold text-muted-foreground mb-1.5 block tracking-wide">{label}</label>
       {children}
     </div>
   );
@@ -431,23 +432,26 @@ export default function Profile() {
       <TopBar title="Meu Perfil" />
 
       {/* Avatar section */}
-      <div className="flex flex-col items-center pt-6 pb-4">
-        <div className="relative">
-          <Avatar className="w-24 h-24 border-4 border-primary/20">
-            {profile.avatar_url ? <AvatarImage src={profile.avatar_url} alt="Avatar" /> : null}
-            <AvatarFallback className="text-2xl font-bold bg-primary/10 text-primary">{initials}</AvatarFallback>
-          </Avatar>
-          <button
-            onClick={() => fileInputRef.current?.click()}
-            disabled={uploading}
-            className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg hover:bg-primary/90 transition-colors"
-          >
-            <Camera size={14} />
-          </button>
+      <div className="flex flex-col items-center pt-8 pb-6 relative">
+        <div className="absolute inset-0 h-28 bg-gradient-to-b from-primary/8 to-transparent rounded-b-3xl" />
+        <div className="relative z-10">
+          <div className="relative">
+            <Avatar className="w-28 h-28 border-4 border-background shadow-xl ring-2 ring-primary/20">
+              {profile.avatar_url ? <AvatarImage src={profile.avatar_url} alt="Avatar" /> : null}
+              <AvatarFallback className="text-3xl font-bold bg-gradient-to-br from-primary/20 to-primary/5 text-primary">{initials}</AvatarFallback>
+            </Avatar>
+            <button
+              onClick={() => fileInputRef.current?.click()}
+              disabled={uploading}
+              className="absolute -bottom-1 -right-1 w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-transform"
+            >
+              <Camera size={15} />
+            </button>
+          </div>
           <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleAvatarUpload} />
         </div>
-        {uploading && <span className="text-xs text-muted-foreground mt-2">Enviando foto...</span>}
-        <p className="text-xs text-muted-foreground mt-2">{user.email}</p>
+        {uploading && <span className="text-xs text-muted-foreground mt-3 animate-pulse">Enviando foto...</span>}
+        <p className="text-xs text-muted-foreground mt-3 font-medium">{user.email}</p>
       </div>
 
       {loading ? (
@@ -455,7 +459,7 @@ export default function Profile() {
           <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin" />
         </div>
       ) : (
-        <div className="px-4 space-y-4 max-w-lg mx-auto">
+        <div className="px-4 space-y-5 max-w-lg mx-auto [&_input]:h-11 [&_input]:transition-colors [&_input]:focus:ring-2 [&_input]:focus:ring-primary/30 [&_input]:focus:border-primary/50">
 
           {/* ── 1. Dados Pessoais ── */}
           <Section icon={User} title="Dados Pessoais">
@@ -603,7 +607,7 @@ export default function Profile() {
           </Section>
 
           {/* ── Save button ── */}
-          <Button onClick={handleSave} disabled={saving} className="w-full rounded-2xl gap-2 h-12 text-sm font-bold">
+          <Button onClick={handleSave} disabled={saving} className="w-full rounded-2xl gap-2 h-12 text-sm font-bold shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-shadow">
             <Save size={16} />
             {saving ? "Salvando..." : "Salvar Perfil"}
           </Button>
