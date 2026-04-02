@@ -3542,7 +3542,7 @@ REGRAS DE FORMATAÇÃO OBRIGATÓRIAS:
 - Usar APENAS texto limpo, técnico e profissional. Linguagem de guideline médica.
 - Títulos das seções em ## MAIÚSCULO, SEM emoji, SEM símbolo decorativo.
 - Usar markdown completo: tabelas com |, listas com -, negrito com **, código com \`.
-- Tom: sóbrio, direto, técnico. Estilo UpToDate / Whitebook / Amboss.
+- Tom: sóbrio, direto, técnico. Linguagem de referência clínica baseada em evidências.
 - NÃO usar linguagem informal, coloquial ou explicativa demais. Ir direto ao ponto clínico.
 - Cada seção deve ser separada por uma linha em branco antes e depois do título.
 - Usar negrito para destacar termos clínicos importantes, doses e alertas críticos.

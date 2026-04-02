@@ -44,7 +44,7 @@ export default function FullProtocols() {
         <div className="space-y-1">
           <h1 className="font-heading font-bold text-base tracking-tight">Biblioteca de Protocolos</h1>
           <p className="text-xs text-muted-foreground">
-            Protocolos completos com 14 secoes padronizadas. Estilo UpToDate / Whitebook / Amboss.
+            Protocolos clínicos completos com 14 seções padronizadas, baseados em diretrizes nacionais e internacionais.
           </p>
         </div>
 
