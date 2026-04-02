@@ -18,6 +18,7 @@ export default function EmergencyProtocolDetail() {
   useEffect(() => {
     if (protocol) {
       addEntry({ path: `/emergency/${id}`, title: protocol.title, type: "emergency" });
+      cacheContent(`emergency:${id}`, { id: protocol.id, title: protocol.title, categoryId: protocol.categoryId, sections: protocol.sections });
     }
   }, [id]);
 
