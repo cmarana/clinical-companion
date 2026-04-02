@@ -8,8 +8,9 @@ import { useToast } from "@/hooks/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Eye, EyeOff, Zap, Pill, ClipboardList, Calculator, Shield, Clock,
-  Bot, ChevronRight, ChevronDown, Activity, ArrowLeft
+  Bot, ChevronRight, ChevronDown, ArrowLeft
 } from "lucide-react";
+import pulsoLogo from "@/assets/pulso-logo.png";
 import { Separator } from "@/components/ui/separator";
 
 const showcaseFeatures = [
