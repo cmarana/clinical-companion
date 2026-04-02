@@ -1,9 +1,9 @@
-const CACHE_NAME = 'medcore-v4';
+const CACHE_NAME = 'medcore-v5';
 const STATIC_ASSETS = [
+  '/',
   '/manifest.json',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
-  '/favicon.ico',
 ];
 
 const isSameOrigin = (url) => url.origin === self.location.origin;
@@ -36,6 +36,56 @@ self.addEventListener('activate', (event) => {
   self.clients.claim();
 });
 
+// Message handler for pre-caching
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'PRECACHE_ASSETS') {
+    const urls = event.data.urls || [];
+    event.waitUntil(
+      caches.open(CACHE_NAME).then(async (cache) => {
+        let cached = 0;
+        for (const url of urls) {
+          try {
+            const existing = await cache.match(url);
+            if (!existing) {
+              await cache.add(url);
+            }
+            cached++;
+            // Report progress back to the client
+            const clients = await self.clients.matchAll();
+            clients.forEach(client => {
+              client.postMessage({
+                type: 'PRECACHE_PROGRESS',
+                cached,
+                total: urls.length,
+              });
+            });
+          } catch (e) {
+            // Skip failed URLs silently
+            cached++;
+          }
+        }
+        // Signal completion
+        const clients = await self.clients.matchAll();
+        clients.forEach(client => {
+          client.postMessage({ type: 'PRECACHE_COMPLETE', cached, total: urls.length });
+        });
+      })
+    );
+  }
+
+  if (event.data && event.data.type === 'GET_CACHE_SIZE') {
+    event.waitUntil(
+      caches.open(CACHE_NAME).then(async (cache) => {
+        const keys = await cache.keys();
+        const clients = await self.clients.matchAll();
+        clients.forEach(client => {
+          client.postMessage({ type: 'CACHE_SIZE', count: keys.length });
+        });
+      })
+    );
+  }
+});
+
 // Fetch: Network first for API/auth, Cache first for assets
 self.addEventListener('fetch', (event) => {
   const url = new URL(event.request.url);
@@ -46,6 +96,9 @@ self.addEventListener('fetch', (event) => {
   // Never intercept dev-server module requests
   if (isDevAsset(url)) return;
   
+  // Skip OAuth routes
+  if (url.pathname.startsWith('/~oauth')) return;
+
   // Skip Supabase API calls (auth, realtime, etc.) - these need to be online
   if (url.hostname.includes('supabase') || url.pathname.startsWith('/auth')) {
     return;
@@ -63,6 +116,7 @@ self.addEventListener('fetch', (event) => {
             const clone = response.clone();
             caches.open(CACHE_NAME).then((cache) => {
               cache.put('/index.html', clone);
+              cache.put(event.request, clone);
             });
           }
           return response;
@@ -72,8 +126,12 @@ self.addEventListener('fetch', (event) => {
     return;
   }
   
-  // For scripts/styles: prefer network to avoid stale chunks after deploys.
-  if (event.request.destination === 'script' || event.request.destination === 'style') {
+  // For JS/CSS bundles: Network first with aggressive caching
+  if (
+    isSameOrigin(url) &&
+    (event.request.destination === 'script' || event.request.destination === 'style' ||
+     url.pathname.endsWith('.js') || url.pathname.endsWith('.css'))
+  ) {
     event.respondWith(
       fetch(event.request)
         .then((response) => {
@@ -88,7 +146,7 @@ self.addEventListener('fetch', (event) => {
     return;
   }
 
-  // For fonts/images: stale-while-revalidate remains OK.
+  // For fonts/images: stale-while-revalidate
   if (
     event.request.destination === 'font' ||
     event.request.destination === 'image' ||
@@ -117,7 +175,7 @@ self.addEventListener('fetch', (event) => {
   event.respondWith(
     fetch(event.request)
       .then((response) => {
-        if (response.ok) {
+        if (response.ok && isSameOrigin(url)) {
           const clone = response.clone();
           caches.open(CACHE_NAME).then((cache) => cache.put(event.request, clone));
         }
