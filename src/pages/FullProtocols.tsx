@@ -25,7 +25,6 @@ export default function FullProtocols() {
     return list;
   }, [activeCat, search]);
 
-  // Derive category label from fullProtocolCategories
   const catLabel = (catId: string) => fullProtocolCategories.find(c => c.id === catId)?.title || catId;
 
   if (!subscription.subscribed) {
@@ -40,10 +39,10 @@ export default function FullProtocols() {
   return (
     <>
       <TopBar title="Protocolos Completos" />
-      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-5 pb-24">
+      <div className="px-4 py-4 max-w-lg md:max-w-4xl lg:max-w-6xl mx-auto space-y-5 pb-24">
         <div className="space-y-1">
-          <h1 className="font-heading font-bold text-base tracking-tight">Biblioteca de Protocolos</h1>
-          <p className="text-xs text-muted-foreground">
+          <h1 className="font-heading font-bold text-base lg:text-lg tracking-tight">Biblioteca de Protocolos</h1>
+          <p className="text-xs lg:text-sm text-muted-foreground">
             Protocolos clínicos completos com 14 seções padronizadas, baseados em diretrizes nacionais e internacionais.
           </p>
         </div>
@@ -84,13 +83,13 @@ export default function FullProtocols() {
           ))}
         </div>
 
-        {/* List */}
-        <div className="space-y-3 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-3 md:space-y-0">
+        {/* List - responsive grid */}
+        <div className="space-y-3 md:grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 md:gap-3 md:space-y-0">
           {filtered.map((p) => (
             <div
               key={p.id}
               onClick={() => navigate(`/full-protocols/${p.id}`)}
-              className="cursor-pointer bg-card rounded-[20px] shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 border-0"
+              className="cursor-pointer bg-card rounded-[20px] shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 border-0 hover:ring-1 hover:ring-primary/20"
             >
               <div className="flex items-center justify-between p-4">
                 <div>
@@ -102,7 +101,7 @@ export default function FullProtocols() {
             </div>
           ))}
           {filtered.length === 0 && (
-            <p className="text-center text-sm text-muted-foreground py-8">Nenhum protocolo encontrado.</p>
+            <p className="text-center text-sm text-muted-foreground py-8 col-span-full">Nenhum protocolo encontrado.</p>
           )}
         </div>
       </div>
