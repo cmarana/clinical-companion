@@ -111,109 +111,115 @@ export default function FullProtocolDetail() {
   const defaultTab = orderedSections[0]?.id || "";
 
   return (
-    <>
-      <TopBar
-        title={protocol.title}
-        rightContent={
-          <button
-            onClick={() => toggleFavorite({ id: protocol.id, type: "protocol", title: protocol.title })}
-            className="p-1.5 rounded-md hover:bg-accent transition-colors"
-          >
-            <Star size={18} className={cn(fav ? "fill-warning text-warning" : "text-muted-foreground")} />
-          </button>
-        }
-      />
-      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto pb-24">
-        <div className="flex items-center gap-2 mb-3">
-          <p className="text-xs text-muted-foreground font-heading">{protocol.category}</p>
-          {evidence && (
-            <span className={cn(
-              "inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full",
-              evidence.class === "I" && "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400",
-              evidence.class === "IIa" && "bg-sky-500/15 text-sky-600 dark:text-sky-400",
-              evidence.class === "IIb" && "bg-amber-500/15 text-amber-600 dark:text-amber-400",
-              evidence.class === "III" && "bg-red-500/15 text-red-600 dark:text-red-400",
-            )}>
-              <ShieldCheck size={12} />
-              Classe {evidence.class} · Nível {evidence.level}
-            </span>
-            )}
-          {updateLabel && (
-            <span className="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-primary/10 text-primary">
-              <CalendarCheck size={10} />
-              {updateLabel}
-            </span>
-          )}
-        </div>
-
-        <ProtocolActionBar
-          protocolId={protocol.id}
-          protocolTitle={protocol.title}
-          protocolCategory={protocol.category}
-          protocolSections={orderedSections.map(s => ({ title: s.title, content: s.content }))}
-        />
-
-        <Tabs defaultValue={matchedTree ? "flowchart" : defaultTab} className="w-full">
-          <TabsList className="w-full flex overflow-x-auto no-scrollbar h-auto gap-1 bg-transparent p-0 mb-4">
-            {matchedTree && (
-              <TabsTrigger
-                value="flowchart"
-                className="shrink-0 text-[11px] px-2.5 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground bg-gradient-to-r from-primary/15 to-primary/5 ring-1 ring-primary/20 font-semibold gap-1"
-              >
-                <GitBranch size={12} /> Fluxograma
-              </TabsTrigger>
-            )}
-            {hasCalcs && (
-              <TabsTrigger
-                value="calculadoras"
-                className="shrink-0 text-[11px] px-2.5 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground bg-gradient-to-r from-amber-500/15 to-amber-500/5 ring-1 ring-amber-500/20 font-semibold gap-1"
-              >
-                <Calculator size={12} /> Calculadoras
-              </TabsTrigger>
-            )}
-            {orderedSections.map(s => (
-              <TabsTrigger
-                key={s.id}
-                value={s.id}
-                className="shrink-0 text-[11px] px-2.5 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground bg-secondary"
-              >
-                {s.title}
-              </TabsTrigger>
-            ))}
-          </TabsList>
-
-          {/* Flowchart Tab */}
-          {matchedTree && (
-            <TabsContent value="flowchart">
-              <DecisionTree
-                title={matchedTree.title}
-                root={matchedTree.tree}
-                guideline={matchedTree.guideline}
-              />
-            </TabsContent>
-          )}
-
-          {/* Embedded Calculators Tab */}
-          {hasCalcs && (
-            <TabsContent value="calculadoras">
-              <EmbeddedCalculators protocolId={protocol.id} />
-            </TabsContent>
-          )}
-
-          {orderedSections.map(s => (
-            <TabsContent key={s.id} value={s.id} className="protocol-content">
-              <h2 className="text-lg font-semibold mb-3 border-b border-border pb-2 font-heading">
-                {s.title}
-              </h2>
-              {s.content.split("\n").map((line, i) => (
-                <p key={i} className="mb-2 text-sm leading-relaxed whitespace-pre-wrap">
-                  {line}
-                </p>
-              ))}
-            </TabsContent>
-          ))}
-        </Tabs>
+    <div className="flex w-full">
+      {/* Split panel - desktop only */}
+      <div className="hidden lg:block w-80 xl:w-96 shrink-0 h-[calc(100vh-2.5rem)] sticky top-10">
+        <ProtocolSplitList activeProtocolId={id} />
       </div>
-    </>
+
+      {/* Main content */}
+      <div className="flex-1 min-w-0">
+        <TopBar
+          title={protocol.title}
+          rightContent={
+            <button
+              onClick={() => toggleFavorite({ id: protocol.id, type: "protocol", title: protocol.title })}
+              className="p-1.5 rounded-md hover:bg-accent transition-colors"
+            >
+              <Star size={18} className={cn(fav ? "fill-warning text-warning" : "text-muted-foreground")} />
+            </button>
+          }
+        />
+        <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-4xl mx-auto pb-24">
+          <div className="flex items-center gap-2 mb-3">
+            <p className="text-xs text-muted-foreground font-heading">{protocol.category}</p>
+            {evidence && (
+              <span className={cn(
+                "inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full",
+                evidence.class === "I" && "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400",
+                evidence.class === "IIa" && "bg-sky-500/15 text-sky-600 dark:text-sky-400",
+                evidence.class === "IIb" && "bg-amber-500/15 text-amber-600 dark:text-amber-400",
+                evidence.class === "III" && "bg-red-500/15 text-red-600 dark:text-red-400",
+              )}>
+                <ShieldCheck size={12} />
+                Classe {evidence.class} · Nível {evidence.level}
+              </span>
+            )}
+            {updateLabel && (
+              <span className="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-primary/10 text-primary">
+                <CalendarCheck size={10} />
+                {updateLabel}
+              </span>
+            )}
+          </div>
+
+          <ProtocolActionBar
+            protocolId={protocol.id}
+            protocolTitle={protocol.title}
+            protocolCategory={protocol.category}
+            protocolSections={orderedSections.map(s => ({ title: s.title, content: s.content }))}
+          />
+
+          <Tabs defaultValue={matchedTree ? "flowchart" : defaultTab} className="w-full">
+            <TabsList className="w-full flex overflow-x-auto no-scrollbar h-auto gap-1 bg-transparent p-0 mb-4">
+              {matchedTree && (
+                <TabsTrigger
+                  value="flowchart"
+                  className="shrink-0 text-[11px] px-2.5 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground bg-gradient-to-r from-primary/15 to-primary/5 ring-1 ring-primary/20 font-semibold gap-1"
+                >
+                  <GitBranch size={12} /> Fluxograma
+                </TabsTrigger>
+              )}
+              {hasCalcs && (
+                <TabsTrigger
+                  value="calculadoras"
+                  className="shrink-0 text-[11px] px-2.5 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground bg-gradient-to-r from-amber-500/15 to-amber-500/5 ring-1 ring-amber-500/20 font-semibold gap-1"
+                >
+                  <Calculator size={12} /> Calculadoras
+                </TabsTrigger>
+              )}
+              {orderedSections.map(s => (
+                <TabsTrigger
+                  key={s.id}
+                  value={s.id}
+                  className="shrink-0 text-[11px] px-2.5 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground bg-secondary"
+                >
+                  {s.title}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+
+            {matchedTree && (
+              <TabsContent value="flowchart">
+                <DecisionTree
+                  title={matchedTree.title}
+                  root={matchedTree.tree}
+                  guideline={matchedTree.guideline}
+                />
+              </TabsContent>
+            )}
+
+            {hasCalcs && (
+              <TabsContent value="calculadoras">
+                <EmbeddedCalculators protocolId={protocol.id} />
+              </TabsContent>
+            )}
+
+            {orderedSections.map(s => (
+              <TabsContent key={s.id} value={s.id} className="protocol-content">
+                <h2 className="text-lg font-semibold mb-3 border-b border-border pb-2 font-heading">
+                  {s.title}
+                </h2>
+                {s.content.split("\n").map((line, i) => (
+                  <p key={i} className="mb-2 text-sm leading-relaxed whitespace-pre-wrap">
+                    {line}
+                  </p>
+                ))}
+              </TabsContent>
+            ))}
+          </Tabs>
+        </div>
+      </div>
+    </div>
   );
 }
