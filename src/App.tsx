@@ -61,6 +61,7 @@ const ProcedureGuides = lazy(() => import("@/pages/ProcedureGuides"));
 const OfflineSetup = lazy(() => import("@/pages/OfflineSetup"));
 const PushNotificationSettings = lazy(() => import("@/pages/PushNotificationSettings"));
 const AdminAnalytics = lazy(() => import("@/pages/AdminAnalytics"));
+const UserAnalytics = lazy(() => import("@/pages/UserAnalytics"));
 const UpdatesFeed = lazy(() => import("@/pages/UpdatesFeed"));
 const PixSuccess = lazy(() => import("@/pages/PixSuccess"));
 const TermsOfUse = lazy(() => import("@/pages/TermsOfUse"));
@@ -142,6 +143,7 @@ const AppRoutes = () => (
         <Route path="/offline" element={<OfflineSetup />} />
         <Route path="/push-notifications" element={<PushNotificationSettings />} />
         <Route path="/admin/analytics" element={<AdminAnalytics />} />
+        <Route path="/admin/users" element={<UserAnalytics />} />
         <Route path="/updates" element={<UpdatesFeed />} />
         <Route path="/pix-success" element={<PixSuccess />} />
         <Route path="/referral" element={<Referral />} />
