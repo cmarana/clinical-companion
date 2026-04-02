@@ -4,11 +4,13 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { flashcards, flashcardCategoryLabels, flashcardCategoryColors, type FlashcardCategory } from "@/data/flashcardsData";
-import { reviewCard, getDueCards, getNewCards, getStats, syncProgressFromCloud, type Rating } from "@/lib/spacedRepetition";
+import { reviewCard, getDueCards, getNewCards, getStats, getProgress, syncProgressFromCloud, type Rating } from "@/lib/spacedRepetition";
 import { Brain, RotateCcw, Search, ChevronRight, Zap, BookOpen, Trophy, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthContext";
+import { checkAndUnlock, type AchievementContext } from "@/lib/achievements";
+import { safeLocalStorage } from "@/lib/safeStorage";
 
 type View = "decks" | "review";
 
@@ -83,6 +85,28 @@ export default function Flashcards() {
     if (currentIdx + 1 < sessionCards.length) {
       setTimeout(() => setCurrentIdx((i) => i + 1), 200);
     } else {
+      // Check achievements
+      const allIds = flashcards.map(f => f.id);
+      const stats = getStats(allIds);
+      const progress = getProgress();
+      const catsStarted = new Set(flashcards.filter(f => progress[f.id]).map(f => f.category)).size;
+      const streak = JSON.parse(safeLocalStorage.getItem("study-streak") || "{}");
+      const quizRaw = JSON.parse(safeLocalStorage.getItem("quiz-progress") || "{}");
+      const ctx: AchievementContext = {
+        flashcardsMastered: stats.mastered,
+        flashcardsReviewed: stats.mastered + stats.learning + stats.review,
+        flashcardsTotal: stats.total,
+        quizTotal: quizRaw.total || 0,
+        quizCorrect: quizRaw.correct || 0,
+        streakCurrent: streak.current || 0,
+        streakBest: streak.best || 0,
+        categoriesStarted: catsStarted,
+        perfectQuizSessions: quizRaw.perfectSessions || 0,
+      };
+      const newBadges = checkAndUnlock(ctx);
+      if (newBadges.length > 0) {
+        newBadges.forEach(b => toast.success(`${b.icon} Conquista: ${b.title}`, { description: b.description }));
+      }
       toast.success(`Sessão concluída! ${sessionCards.length} cards revisados 🎉`);
       setView("decks");
     }
