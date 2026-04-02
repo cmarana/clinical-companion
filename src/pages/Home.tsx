@@ -254,7 +254,7 @@ export default function Home() {
       </div>
 
       {/* Specialty badge */}
-      {specialty && profileLoaded && (
+      {profileLoaded && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
@@ -265,7 +265,11 @@ export default function Home() {
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-[11px] font-heading font-medium hover:bg-primary/15 transition-colors"
           >
             <Sparkles size={12} />
-            {specialty.replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase())}
+            {specialty === "todas"
+              ? "Todas as áreas"
+              : specialty
+                ? specialty.replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase())
+                : "Personalizar"}
             <span className="text-primary/50 ml-0.5">· Alterar</span>
           </button>
         </motion.div>
