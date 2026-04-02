@@ -191,6 +191,7 @@ export default function Home() {
     setShowOnboarding(false);
     localStorage.setItem("ps-guide-specialty", specialtyId);
     localStorage.removeItem("ps-guide-onboarding-dismissed");
+    setAnalyticsSpecialty(specialtyId);
 
     if (user) {
       await supabase.from("profiles").update({ specialty: specialtyId }).eq("user_id", user.id);
