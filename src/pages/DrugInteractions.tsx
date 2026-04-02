@@ -422,3 +422,11 @@ function DatabaseCoveragePanel() {
     </div>
   );
 }
+
+export default function DrugInteractions() {
+  return (
+    <PremiumPageGuard feature="Interações Medicamentosas" title="Interações">
+      <DrugInteractionsContent />
+    </PremiumPageGuard>
+  );
+}

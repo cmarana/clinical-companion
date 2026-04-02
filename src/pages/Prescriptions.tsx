@@ -114,3 +114,11 @@ function PrescriptionsContent() {
     </>
   );
 }
+
+export default function Prescriptions() {
+  return (
+    <PremiumPageGuard feature="Prescrições" title="Prescrições">
+      <PrescriptionsContent />
+    </PremiumPageGuard>
+  );
+}
