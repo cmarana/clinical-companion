@@ -18,6 +18,20 @@ import { hapticLight } from "@/lib/haptics";
 import { useModuleAnalytics } from "@/hooks/useModuleAnalytics";
 import SmartSearch from "@/components/SmartSearch";
 
+// ── PREFETCH critical chunks after Home mounts ──
+const prefetchRoutes = () => {
+  const idleCallback = (window as any).requestIdleCallback || ((cb: () => void) => setTimeout(cb, 200));
+  idleCallback(() => {
+    // Most-used routes: prefetch their chunks
+    import("@/pages/FullProtocols");
+    import("@/pages/EmergencyMode");
+    import("@/pages/Prescriptions");
+    import("@/pages/Calculators");
+    import("@/pages/Bulario");
+    import("@/pages/ClinicalAI");
+  });
+};
+
 // ── ALL MODULES WITH TAGS ─────────────────────────────────────
 interface Module {
   label: string;
