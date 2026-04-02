@@ -38,9 +38,45 @@ interface ProfileData {
   avatar_url: string;
 }
 
+const themeOptions = [
+  {
+    id: "light" as const,
+    label: "Claro",
+    icon: Sun,
+    bg: "bg-[#F8FAFC]",
+    card: "bg-white",
+    text: "text-[#1E293B]",
+    subtext: "text-[#64748B]",
+    accent: "bg-[#3B82F6]",
+    desc: "Ideal para ambientes bem iluminados",
+  },
+  {
+    id: "dark" as const,
+    label: "Escuro",
+    icon: Moon,
+    bg: "bg-[#0F172A]",
+    card: "bg-[#1E293B]",
+    text: "text-[#F1F5F9]",
+    subtext: "text-[#94A3B8]",
+    accent: "bg-[#3B82F6]",
+    desc: "Conforto visual em baixa luminosidade",
+  },
+  {
+    id: "oled" as const,
+    label: "OLED Noturno",
+    icon: Eclipse,
+    bg: "bg-black",
+    card: "bg-[#0A0A0A]",
+    text: "text-[#E2E8F0]",
+    subtext: "text-[#64748B]",
+    accent: "bg-[#3B82F6]",
+    desc: "True-black para plantões noturnos",
+  },
+];
+
 export default function Profile() {
   const { user, signOut, subscription } = useAuth();
-  const navigate = useNavigate();
+  const { theme, setTheme } = useTheme();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
