@@ -1,5 +1,5 @@
-import { useParams } from "react-router-dom";
-import { useEffect, useState, useMemo } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { motion } from "framer-motion";
 import { cacheContent } from "@/lib/offlineCache";
 import ProtocolSplitList from "@/components/ProtocolSplitList";
@@ -8,10 +8,11 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import PremiumGate from "@/components/PremiumGate";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Star, ShieldCheck, GitBranch, Calculator } from "lucide-react";
+import { Star, ShieldCheck, GitBranch, Calculator, ChevronRight, Eye, EyeOff } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { FULL_SECTION_ORDER, getEvidence } from "@/data/fullProtocols";
+import { FULL_SECTION_ORDER, getEvidence, fullProtocolCategories } from "@/data/fullProtocols";
 import { getFullProtocolAsync } from "@/data/fullProtocols/lazyLoader";
+import { fullProtocolMetas } from "@/data/fullProtocols/metadata";
 import type { FullProtocol } from "@/data/fullProtocols/types";
 import ProtocolActionBar from "@/components/ProtocolActionBar";
 import { useRecentHistory } from "@/hooks/useRecentHistory";
@@ -22,6 +23,14 @@ import { decisionTrees } from "@/data/decisionTrees";
 import EmbeddedCalculators, { findCalcsForProtocol } from "@/components/EmbeddedCalculators";
 import { getProtocolUpdateLabel } from "@/data/protocolChangelog";
 import { CalendarCheck } from "lucide-react";
+import {
+  Breadcrumb,
+  BreadcrumbList,
+  BreadcrumbItem,
+  BreadcrumbLink,
+  BreadcrumbSeparator,
+  BreadcrumbPage,
+} from "@/components/ui/breadcrumb";
 
 export default function FullProtocolDetail() {
   const { id } = useParams<{ id: string }>();
