@@ -355,46 +355,91 @@ export type Database = {
       }
       profiles: {
         Row: {
+          academic_status: string
           avatar_url: string
+          birth_date: string | null
+          city: string
+          course: string
+          cpf: string
           created_at: string
           crm: string
           crm_state: string
           email: string
+          first_name: string
           full_name: string
+          gender: string
+          graduation_year: number | null
           id: string
+          last_name: string
           phone: string
           provider: string
+          registration_number: string
+          registration_state: string
+          registration_type: string
           specialty: string
+          state: string
+          university: string
           updated_at: string
           user_id: string
+          zip_code: string
         }
         Insert: {
+          academic_status?: string
           avatar_url?: string
+          birth_date?: string | null
+          city?: string
+          course?: string
+          cpf?: string
           created_at?: string
           crm?: string
           crm_state?: string
           email?: string
+          first_name?: string
           full_name?: string
+          gender?: string
+          graduation_year?: number | null
           id?: string
+          last_name?: string
           phone?: string
           provider?: string
+          registration_number?: string
+          registration_state?: string
+          registration_type?: string
           specialty?: string
+          state?: string
+          university?: string
           updated_at?: string
           user_id: string
+          zip_code?: string
         }
         Update: {
+          academic_status?: string
           avatar_url?: string
+          birth_date?: string | null
+          city?: string
+          course?: string
+          cpf?: string
           created_at?: string
           crm?: string
           crm_state?: string
           email?: string
+          first_name?: string
           full_name?: string
+          gender?: string
+          graduation_year?: number | null
           id?: string
+          last_name?: string
           phone?: string
           provider?: string
+          registration_number?: string
+          registration_state?: string
+          registration_type?: string
           specialty?: string
+          state?: string
+          university?: string
           updated_at?: string
           user_id?: string
+          zip_code?: string
         }
         Relationships: []
       }
