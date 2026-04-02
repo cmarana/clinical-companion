@@ -4,12 +4,14 @@ import TopBar from "@/components/TopBar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { checkInteractions, severityConfig, type FoundInteraction, type Severity } from "@/data/drugInteractionsDB";
+import { HIGH_RISK_PAIRS } from "@/data/drugInteractionPairs";
 import { streamClinicalAi } from "@/lib/clinicalAiStream";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 import {
   Plus, X, Search, Loader2, AlertTriangle, Shield, ShieldAlert,
-  ShieldX, Info, Pill, ChevronDown, ChevronUp, Zap, Bot, Trash2
+  ShieldX, Info, Pill, ChevronDown, ChevronUp, Zap, Bot, Trash2,
+  Database, Activity, Heart, Brain, Syringe, Beaker, Leaf, FlaskConical
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -307,28 +309,28 @@ export default function DrugInteractions() {
 
         {/* Info card when idle */}
         {!hasChecked && (
-          <div className="bg-card rounded-[20px] shadow-sm p-4">
-            <div className="flex items-center gap-2 mb-3">
-              <Zap size={16} className="text-primary" />
-              <h3 className="font-heading font-semibold text-sm">Como funciona</h3>
-            </div>
-            <div className="space-y-2">
-              {[
-                { step: "1", text: "Insira 2 ou mais medicamentos nos campos acima" },
-                { step: "2", text: "Clique em 'Verificar' para análise instantânea local" },
-                { step: "3", text: "Veja severidade, mecanismo, conduta e alternativas" },
-                { step: "4", text: "Use 'IA Clínica' para análise aprofundada adicional" },
-              ].map(({ step, text }) => (
-                <div key={step} className="flex items-center gap-2.5">
-                  <span className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-[11px] font-bold shrink-0">{step}</span>
-                  <p className="text-[12px] text-muted-foreground">{text}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-3 pt-3 border-t border-border/50">
-              <p className="text-[10px] text-muted-foreground">
-                📚 Base local com 40+ pares de interações de alto risco incluindo anticoagulantes, antiarrítmicos, psiquiátricos, antibióticos e mais.
-              </p>
+          <div className="space-y-3">
+            {/* Database coverage summary */}
+            <DatabaseCoveragePanel />
+
+            <div className="bg-card rounded-[20px] shadow-sm p-4">
+              <div className="flex items-center gap-2 mb-3">
+                <Zap size={16} className="text-primary" />
+                <h3 className="font-heading font-semibold text-sm">Como funciona</h3>
+              </div>
+              <div className="space-y-2">
+                {[
+                  { step: "1", text: "Insira 2 ou mais medicamentos nos campos acima" },
+                  { step: "2", text: "Clique em 'Verificar' para análise instantânea local" },
+                  { step: "3", text: "Veja severidade, mecanismo, conduta e alternativas" },
+                  { step: "4", text: "Use 'IA Clínica' para análise aprofundada adicional" },
+                ].map(({ step, text }) => (
+                  <div key={step} className="flex items-center gap-2.5">
+                    <span className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-[11px] font-bold shrink-0">{step}</span>
+                    <p className="text-[12px] text-muted-foreground">{text}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}
@@ -344,6 +346,78 @@ function DetailRow({ label, value, icon, highlight }: { label: string; value: st
         <span>{icon}</span> {label}
       </p>
       <p className={cn("text-[12px] leading-relaxed", highlight ? "font-medium" : "")}>{value}</p>
+    </div>
+  );
+}
+
+const DB_CATEGORIES = [
+  { name: "Anticoagulantes & DOACs", icon: Heart, count: "40+" },
+  { name: "Antiarrítmicos", icon: Activity, count: "25+" },
+  { name: "Psiquiátricos", icon: Brain, count: "60+" },
+  { name: "Antimicrobianos", icon: FlaskConical, count: "80+" },
+  { name: "Anestésicos & BNM", icon: Syringe, count: "50+" },
+  { name: "Endocrinologia", icon: Beaker, count: "70+" },
+  { name: "Fitoterápicos", icon: Leaf, count: "20+" },
+  { name: "Cardiovascular", icon: Heart, count: "45+" },
+];
+
+function DatabaseCoveragePanel() {
+  const totalDrugs = Object.keys(HIGH_RISK_PAIRS).length;
+  const totalPairs = Object.values(HIGH_RISK_PAIRS).reduce(
+    (sum, pairs) => sum + pairs.reduce((s, p) => s + p.drugs.length, 0), 0
+  );
+
+  return (
+    <div className="bg-card rounded-[20px] shadow-sm overflow-hidden">
+      {/* Header with stats */}
+      <div className="px-4 py-3 bg-primary/5 border-b border-border/50">
+        <div className="flex items-center gap-2 mb-2">
+          <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center">
+            <Database size={16} className="text-primary" />
+          </div>
+          <div>
+            <h3 className="font-heading font-semibold text-sm">Base de Interações</h3>
+            <p className="text-[10px] text-muted-foreground">Cobertura atual do banco local</p>
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-2 mt-3">
+          <div className="bg-background/80 rounded-xl p-2.5 text-center">
+            <p className="text-lg font-bold font-heading text-primary">{totalDrugs}</p>
+            <p className="text-[9px] text-muted-foreground font-medium">Fármacos</p>
+          </div>
+          <div className="bg-background/80 rounded-xl p-2.5 text-center">
+            <p className="text-lg font-bold font-heading text-destructive">{totalPairs}+</p>
+            <p className="text-[9px] text-muted-foreground font-medium">Pares</p>
+          </div>
+          <div className="bg-background/80 rounded-xl p-2.5 text-center">
+            <p className="text-lg font-bold font-heading text-amber-500">{DB_CATEGORIES.length}</p>
+            <p className="text-[9px] text-muted-foreground font-medium">Categorias</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Categories grid */}
+      <div className="p-3">
+        <p className="text-[10px] font-heading font-semibold text-muted-foreground mb-2 px-1">CATEGORIAS COBERTAS</p>
+        <div className="grid grid-cols-2 gap-1.5">
+          {DB_CATEGORIES.map((cat) => (
+            <div key={cat.name} className="flex items-center gap-2 px-2.5 py-2 rounded-xl bg-muted/40 hover:bg-muted/60 transition-colors">
+              <cat.icon size={13} className="text-primary shrink-0" />
+              <div className="min-w-0 flex-1">
+                <p className="text-[10px] font-heading font-medium truncate">{cat.name}</p>
+                <p className="text-[9px] text-muted-foreground">{cat.count} pares</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="px-4 py-2 bg-muted/30 border-t border-border/50">
+        <p className="text-[9px] text-muted-foreground text-center">
+          📚 Inclui anticoagulantes, antirretrovirais, quimioterápicos, imunossupressores, carbapenêmicos, polimixinas e antifúngicos sistêmicos
+        </p>
+      </div>
     </div>
   );
 }
