@@ -48,14 +48,20 @@ export function sendPushNotification(title: string, body: string, options?: {
 }) {
   if (getPushPermission() !== "granted") return;
 
-  const notif = new Notification(title, {
+  const notifOptions: NotificationOptions & { vibrate?: number[] } = {
     body,
     icon: options?.icon || "/icons/icon-192.png",
     badge: "/icons/icon-192.png",
     tag: options?.tag,
-    vibrate: options?.vibrate || [200, 100, 200],
     requireInteraction: true,
-  });
+  };
+
+  // vibrate is supported in some browsers but not in the TS types
+  if (options?.vibrate) {
+    (notifOptions as any).vibrate = options.vibrate;
+  }
+
+  const notif = new Notification(title, notifOptions);
 
   if (options?.path) {
     notif.onclick = () => {
