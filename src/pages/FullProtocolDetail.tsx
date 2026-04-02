@@ -30,13 +30,10 @@ export default function FullProtocolDetail() {
   const matchedTree = useMemo(() => {
     if (!protocol) return null;
     const pid = protocol.id.toLowerCase();
-    // Direct match
     if (decisionTrees[pid]) return decisionTrees[pid];
-    // Partial match: check if protocol ID contains a tree key
     for (const key of Object.keys(decisionTrees)) {
       if (pid.includes(key) || key.includes(pid)) return decisionTrees[key];
     }
-    // Match by tags
     if (protocol.tags) {
       for (const tag of protocol.tags) {
         const t = tag.toLowerCase();
@@ -44,6 +41,12 @@ export default function FullProtocolDetail() {
       }
     }
     return null;
+  }, [protocol]);
+
+  // Find matching embedded calculators
+  const hasCalcs = useMemo(() => {
+    if (!protocol) return false;
+    return findCalcsForProtocol(protocol.id).length > 0;
   }, [protocol]);
 
   useEffect(() => {
