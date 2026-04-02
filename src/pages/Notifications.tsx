@@ -45,6 +45,23 @@ export default function Notifications() {
         }
       />
 
+      {/* Push notification settings link */}
+      <div className="px-3 pt-2">
+        <button
+          onClick={() => navigate("/push-notifications")}
+          className="w-full flex items-center gap-3 px-4 py-3 rounded-[16px] bg-primary/5 border border-primary/10 hover:bg-primary/10 transition-colors mb-3"
+        >
+          <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center">
+            <BellRing size={16} className="text-primary" />
+          </div>
+          <div className="flex-1 text-left">
+            <p className="text-[12px] font-heading font-semibold">Notificações Push & Lembretes</p>
+            <p className="text-[10px] text-muted-foreground">Alertas de plantão e lembretes de medicação</p>
+          </div>
+          <Settings size={14} className="text-muted-foreground" />
+        </button>
+      </div>
+
       {notifications.length === 0 ? (
         <div className="flex flex-col items-center justify-center py-20 text-center px-6">
           <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
