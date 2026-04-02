@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import PremiumPageGuard from "@/components/PremiumPageGuard";
 import TopBar from "@/components/TopBar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -17,7 +18,7 @@ import { cn } from "@/lib/utils";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
-export default function DrugInteractions() {
+function DrugInteractionsContent() {
   const navigate = useNavigate();
   const [drugs, setDrugs] = useState<string[]>(["", ""]);
   const [hasChecked, setHasChecked] = useState(false);
@@ -419,5 +420,13 @@ function DatabaseCoveragePanel() {
         </p>
       </div>
     </div>
+  );
+}
+
+export default function DrugInteractions() {
+  return (
+    <PremiumPageGuard feature="Interações Medicamentosas" title="Interações">
+      <DrugInteractionsContent />
+    </PremiumPageGuard>
   );
 }

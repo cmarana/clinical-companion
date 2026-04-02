@@ -7,12 +7,9 @@ const corsHeaders = {
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
-// Price mappings
-const PRICE_MAP: Record<string, { priceId?: string; amount?: number; interval: string; intervalCount: number }> = {
-  monthly: { priceId: "price_1T9b7EFLmvoivW0nSUzffFtq", interval: "month", intervalCount: 1 },
-  quarterly: { amount: 4990, interval: "month", intervalCount: 3 },
-  semiannual: { amount: 8990, interval: "month", intervalCount: 6 },
-  annual: { priceId: "price_1T9b8KFLmvoivW0n34Lg8P7X", interval: "year", intervalCount: 1 },
+const PRICE_MAP: Record<string, string> = {
+  monthly: "price_1T9b7EFLmvoivW0nSUzffFtq",
+  annual: "price_1T9b8KFLmvoivW0n34Lg8P7X",
 };
 
 serve(async (req) => {
@@ -34,8 +31,8 @@ serve(async (req) => {
 
     const body = await req.json().catch(() => ({}));
     const planId = body.planId || "monthly";
-    const plan = PRICE_MAP[planId];
-    if (!plan) throw new Error("Invalid plan");
+    const priceId = PRICE_MAP[planId];
+    if (!priceId) throw new Error("Invalid plan");
 
     const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
       apiVersion: "2025-08-27.basil",
@@ -45,33 +42,36 @@ serve(async (req) => {
     let customerId: string | undefined;
     if (customers.data.length > 0) {
       customerId = customers.data[0].id;
+
+      // Check if user already had a trial — only offer trial to new customers
+      const pastSubs = await stripe.subscriptions.list({
+        customer: customerId,
+        limit: 1,
+      });
+      const hadTrial = pastSubs.data.some(s => s.trial_end !== null);
+
+      const session = await stripe.checkout.sessions.create({
+        customer: customerId,
+        line_items: [{ price: priceId, quantity: 1 }],
+        mode: "subscription",
+        subscription_data: hadTrial ? undefined : { trial_period_days: 7 },
+        success_url: `${req.headers.get("origin")}/pricing?success=true`,
+        cancel_url: `${req.headers.get("origin")}/pricing`,
+        payment_method_types: ["card"],
+      });
+
+      return new Response(JSON.stringify({ url: session.url }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+        status: 200,
+      });
     }
 
-    // Build line items
-    let lineItems: any[];
-    if (plan.priceId) {
-      lineItems = [{ price: plan.priceId, quantity: 1 }];
-    } else {
-      // Create price_data for quarterly/semiannual
-      lineItems = [{
-        price_data: {
-          currency: "brl",
-          product: "prod_U7qouLxbNzXrie", // Manual de Plantão Pro product
-          unit_amount: plan.amount,
-          recurring: {
-            interval: plan.interval as any,
-            interval_count: plan.intervalCount,
-          },
-        },
-        quantity: 1,
-      }];
-    }
-
+    // New customer — always offer 7-day trial
     const session = await stripe.checkout.sessions.create({
-      customer: customerId,
-      customer_email: customerId ? undefined : user.email,
-      line_items: lineItems,
+      customer_email: user.email,
+      line_items: [{ price: priceId, quantity: 1 }],
       mode: "subscription",
+      subscription_data: { trial_period_days: 7 },
       success_url: `${req.headers.get("origin")}/pricing?success=true`,
       cancel_url: `${req.headers.get("origin")}/pricing`,
       payment_method_types: ["card"],

@@ -3,25 +3,30 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, Crown, LogOut, Sparkles, Clock, X, Shield, Zap } from "lucide-react";
+import { Check, Crown, LogOut, Sparkles, X, Shield, Zap, Gift } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { plans } from "@/lib/plans";
 import { cn } from "@/lib/utils";
-import { Progress } from "@/components/ui/progress";
 
 const premiumFeatures = [
-  { feature: "Protocolos completos", free: "3 protocolos básicos", premium: "280+ protocolos, todas especialidades" },
-  { feature: "Medicamentos", free: "3 medicamentos (indicação)", premium: "2.000+ fármacos com doses, diluições, interações" },
+  { feature: "Protocolos clínicos", free: "10 protocolos", premium: "282+ protocolos completos" },
+  { feature: "Medicamentos", free: "10 fármacos", premium: "2.000+ com doses e interações" },
+  { feature: "Bulário completo", free: "10 itens", premium: "Acesso total" },
   { feature: "IA Clínica", free: false, premium: true },
-  { feature: "Modo Emergência", free: false, premium: true },
+  { feature: "Comandos de voz", free: false, premium: true },
   { feature: "Modo Plantão", free: false, premium: true },
-  { feature: "Calculadoras clínicas", free: false, premium: true },
+  { feature: "Modo Emergência", free: false, premium: true },
   { feature: "Prescrições prontas", free: false, premium: true },
+  { feature: "Calculadoras avançadas", free: "Básicas (IMC, Glasgow)", premium: "Todas (53+)" },
+  { feature: "Interações medicamentosas", free: false, premium: true },
+  { feature: "Diluições IV", free: false, premium: true },
   { feature: "Quiz & Flashcards", free: false, premium: true },
-  { feature: "Favoritos e anotações", free: "Limitado", premium: true },
-  { feature: "Modo offline", free: false, premium: true },
+  { feature: "Atlas Clínico", free: false, premium: true },
+  { feature: "Notas e anotações", free: false, premium: true },
+  { feature: "Compartilhamento QR", free: false, premium: true },
+  { feature: "Modo offline completo", free: false, premium: true },
   { feature: "Atualizações contínuas", free: false, premium: true },
 ];
 
@@ -29,14 +34,14 @@ export default function Pricing() {
   const { user, subscription, checkSubscription, signOut } = useAuth();
   const [loading, setLoading] = useState<string | null>(null);
   const [portalLoading, setPortalLoading] = useState(false);
-  const [selectedPlan, setSelectedPlan] = useState("semiannual");
+  const [selectedPlan, setSelectedPlan] = useState("annual");
   const navigate = useNavigate();
   const { toast } = useToast();
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
     if (searchParams.get("success") === "true") {
-      toast({ title: "Assinatura realizada!", description: "Bem-vindo ao PULSO Pro!" });
+      toast({ title: "🎉 Assinatura realizada!", description: "Bem-vindo ao PULSO Pro! Aproveite 7 dias grátis." });
       checkSubscription();
     }
   }, [searchParams]);
@@ -75,35 +80,12 @@ export default function Pricing() {
           </div>
           <h1 className="font-heading text-2xl font-bold">PULSO Pro</h1>
           <p className="text-sm text-muted-foreground max-w-xs mx-auto">
-            O companheiro completo do médico plantonista — decisões rápidas, sem margem para erro.
+            Acesso completo para decisões rápidas no plantão.
           </p>
         </div>
 
-        {/* Trial Banner */}
-        {subscription.isTrial && (
-          <Card className="border-primary bg-accent/30">
-            <CardContent className="p-5 space-y-4">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-                  <Clock size={20} className="text-primary" />
-                </div>
-                <div className="flex-1">
-                  <p className="font-heading font-bold text-sm">Teste gratuito ativo</p>
-                  <p className="text-xs text-muted-foreground">
-                    {subscription.trialDaysLeft} {subscription.trialDaysLeft === 1 ? "dia restante" : "dias restantes"}
-                  </p>
-                </div>
-              </div>
-              <Progress value={((7 - subscription.trialDaysLeft) / 7) * 100} className="h-2" />
-              <p className="text-xs text-muted-foreground text-center">
-                Assine agora para manter o acesso completo após o período de teste.
-              </p>
-            </CardContent>
-          </Card>
-        )}
-
         {/* Paid subscription active */}
-        {subscription.subscribed && !subscription.isTrial && (
+        {subscription.subscribed && (
           <Card className="border-primary">
             <CardContent className="p-5 space-y-4">
               <div className="text-center p-4 rounded-lg bg-primary/10 text-primary font-medium">
@@ -125,9 +107,25 @@ export default function Pricing() {
           </Card>
         )}
 
-        {/* ── COMPARISON TABLE ──────────────────────────── */}
-        {(!subscription.subscribed || subscription.isTrial) && (
+        {!subscription.subscribed && (
           <>
+            {/* Trial banner */}
+            <Card className="border-primary/30 bg-gradient-to-r from-primary/10 to-accent/20 overflow-hidden">
+              <CardContent className="p-5">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center shrink-0">
+                    <Gift size={20} className="text-primary" />
+                  </div>
+                  <div>
+                    <p className="font-heading font-bold text-sm">7 dias grátis</p>
+                    <p className="text-xs text-muted-foreground">
+                      Teste completo. Cartão cadastrado, mas cobrado só após 7 dias. Cancele a qualquer momento.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
             {/* Social proof */}
             <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
               <Shield size={14} className="text-primary" />
@@ -164,7 +162,7 @@ export default function Pricing() {
               ))}
             </Card>
 
-            {/* Example callout */}
+            {/* Real example callout */}
             <Card className="bg-gradient-to-br from-primary/5 to-accent/30 border-primary/20">
               <CardContent className="p-4 space-y-2">
                 <div className="flex items-center gap-2">
@@ -174,7 +172,7 @@ export default function Pricing() {
                 <p className="text-xs text-muted-foreground leading-relaxed">
                   Imagine: plantão às 3h, paciente com dor torácica. Com o <strong className="text-foreground">PULSO Pro</strong>, 
                   você abre o protocolo de IAM com fluxograma interativo, calcula o TIMI Score ali mesmo, 
-                  e gera a prescrição completa em segundos — tudo offline.
+                  e gera a prescrição completa em segundos — tudo offline, com comandos de voz.
                 </p>
               </CardContent>
             </Card>
@@ -182,7 +180,7 @@ export default function Pricing() {
             {/* Plan selector */}
             <div>
               <p className="font-heading font-bold text-sm mb-3 text-center">Escolha seu plano</p>
-              <div className="grid grid-cols-2 gap-2">
+              <div className="grid grid-cols-2 gap-3">
                 {plans.map((plan) => (
                   <Card
                     key={plan.id}
@@ -196,17 +194,18 @@ export default function Pricing() {
                   >
                     {plan.popular && (
                       <div className="absolute top-0 right-0 bg-primary text-primary-foreground text-[9px] font-heading font-bold px-2 py-0.5 rounded-bl-lg">
-                        POPULAR
+                        MELHOR VALOR
                       </div>
                     )}
-                    <CardContent className="p-3 space-y-1">
-                      <p className="font-heading font-bold text-xs">{plan.name}</p>
+                    <CardContent className="p-4 space-y-1.5">
+                      <p className="font-heading font-bold text-sm">{plan.name}</p>
                       <div className="flex items-baseline gap-0.5">
-                        <span className="font-heading font-bold text-lg">{plan.priceDisplay}</span>
+                        <span className="font-heading font-bold text-xl">{plan.priceDisplay}</span>
+                        <span className="text-xs text-muted-foreground">{plan.intervalLabel}</span>
                       </div>
-                      <p className="text-[10px] text-muted-foreground">{plan.monthlyEquivalent}</p>
+                      <p className="text-[11px] text-muted-foreground">{plan.monthlyEquivalent}</p>
                       {plan.savings && (
-                        <p className="text-[10px] font-heading font-semibold text-primary">{plan.savings}</p>
+                        <p className="text-[11px] font-heading font-semibold text-primary">{plan.savings}</p>
                       )}
                     </CardContent>
                   </Card>
@@ -216,15 +215,16 @@ export default function Pricing() {
 
             <Button
               onClick={() => handleCheckout(selectedPlan)}
-              className="w-full h-12 text-base font-heading font-bold"
+              className="w-full h-12 text-base font-heading font-bold gap-2"
               size="lg"
               disabled={loading !== null}
             >
-              {loading ? "Redirecionando..." : "Assinar agora"}
+              <Gift size={18} />
+              {loading ? "Redirecionando..." : "Começar 7 dias grátis"}
             </Button>
 
-            <p className="text-[10px] text-muted-foreground text-center">
-              Cancele a qualquer momento. Pagamento seguro via Stripe.
+            <p className="text-[10px] text-muted-foreground text-center leading-relaxed">
+              Teste grátis por 7 dias. Cobrado apenas após o período de teste. Cancele a qualquer momento. Pagamento seguro via Stripe.
             </p>
           </>
         )}

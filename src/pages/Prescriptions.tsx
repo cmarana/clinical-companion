@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { useAuth } from "@/contexts/AuthContext";
-import PremiumGate from "@/components/PremiumGate";
+import PremiumPageGuard from "@/components/PremiumPageGuard";
 import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Search, ChevronRight, ClipboardList, Stethoscope, Zap, Building, Baby, HeartPulse, Thermometer, Pill, Target, LogOut, FlaskConical, FileText, Brain, Eye, Droplets, Scissors, Syringe, Monitor, Shield, Flame, Ribbon, Activity, Bone, Skull, Wind, UtensilsCrossed, Bug, Ear, Palette, Cross, UserRound } from "lucide-react";
@@ -42,20 +42,12 @@ const iconMap: Record<string, React.ReactNode> = {
   "user-round": <UserRound size={16} className="text-slate-400" />,
 };
 
-export default function Prescriptions() {
+function PrescriptionsContent() {
   const navigate = useNavigate();
   const { subscription } = useAuth();
   const [query, setQuery] = useState("");
   const [expandedCat, setExpandedCat] = useState<string | null>(null);
 
-  if (!subscription.subscribed) {
-    return (
-      <>
-        <TopBar title="Prescrições" />
-        <PremiumGate />
-      </>
-    );
-  }
 
   const filtered = prescriptionCategories.map(cat => ({
     ...cat,
@@ -120,5 +112,13 @@ export default function Prescriptions() {
         ))}
       </div>
     </>
+  );
+}
+
+export default function Prescriptions() {
+  return (
+    <PremiumPageGuard feature="Prescrições" title="Prescrições">
+      <PrescriptionsContent />
+    </PremiumPageGuard>
   );
 }

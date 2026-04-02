@@ -32,7 +32,7 @@ export default function Medications() {
         {!isPremium && (
           <div className="flex items-center gap-2">
             <PremiumBadge />
-            <span className="text-xs text-muted-foreground">3 medicamentos gratuitos — assine para acesso completo</span>
+            <span className="text-xs text-muted-foreground">10 medicamentos gratuitos — assine para acesso completo</span>
           </div>
         )}
         <div className="relative">
@@ -52,10 +52,10 @@ export default function Medications() {
             return (
               <Card
                 key={m.id}
-                onClick={() => navigate(`/medications/${m.id}`)}
+                onClick={() => !locked && navigate(`/medications/${m.id}`)}
                 className={cn(
                   "cursor-pointer hover:shadow-sm active:scale-[0.99] transition-all",
-                  locked && "opacity-60"
+                  locked && "opacity-60 cursor-default"
                 )}
               >
                 <CardContent className="flex items-center gap-3 p-3.5">
@@ -81,7 +81,7 @@ export default function Medications() {
           })}
         </div>
         {!isPremium && (
-          <PremiumGate />
+          <PremiumGate feature="Todos os medicamentos" />
         )}
       </div>
     </>

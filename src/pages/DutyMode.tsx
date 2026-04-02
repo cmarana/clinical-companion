@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { useAuth } from "@/contexts/AuthContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
-import PremiumGate from "@/components/PremiumGate";
+import PremiumPageGuard from "@/components/PremiumPageGuard";
 import DutyShiftTimer from "@/components/duty/DutyShiftTimer";
 import DutyHandoffChecklist from "@/components/duty/DutyHandoffChecklist";
 import DutyBedNotes from "@/components/duty/DutyBedNotes";
@@ -64,7 +64,7 @@ const calculatorShortcuts = [
 
 /* ─── Component ─── */
 
-export default function DutyMode() {
+function DutyModeContent() {
   const navigate = useNavigate();
   const { subscription } = useAuth();
   const { favorites } = useFavorites();
@@ -84,14 +84,8 @@ export default function DutyMode() {
     return [...matchedProtocols, ...matchedMeds];
   }, [search]);
 
-  if (!subscription.subscribed) {
-    return (
-      <>
-        <TopBar title="Modo Plantão" />
-        <PremiumGate />
-      </>
-    );
-  }
+
+
 
   return (
     <>
@@ -238,5 +232,13 @@ export default function DutyMode() {
         )}
       </div>
     </>
+  );
+}
+
+export default function DutyMode() {
+  return (
+    <PremiumPageGuard feature="Modo Plantão" title="Modo Plantão">
+      <DutyModeContent />
+    </PremiumPageGuard>
   );
 }

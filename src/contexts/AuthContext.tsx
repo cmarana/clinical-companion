@@ -10,18 +10,6 @@ interface SubscriptionInfo {
   trialDaysLeft: number;
 }
 
-const TRIAL_DAYS = 7;
-
-function getTrialInfo(user: User | null): { isTrial: boolean; trialDaysLeft: number } {
-  if (!user?.created_at) return { isTrial: false, trialDaysLeft: 0 };
-  const created = new Date(user.created_at);
-  const now = new Date();
-  const diffMs = now.getTime() - created.getTime();
-  const diffDays = diffMs / (1000 * 60 * 60 * 24);
-  const daysLeft = Math.max(0, Math.ceil(TRIAL_DAYS - diffDays));
-  return { isTrial: daysLeft > 0, trialDaysLeft: daysLeft };
-}
-
 interface AuthContextType {
   user: User | null;
   session: Session | null;
@@ -31,11 +19,19 @@ interface AuthContextType {
   signOut: () => Promise<void>;
 }
 
+const defaultSub: SubscriptionInfo = {
+  subscribed: false,
+  productId: null,
+  subscriptionEnd: null,
+  isTrial: false,
+  trialDaysLeft: 0,
+};
+
 const AuthContext = createContext<AuthContextType>({
   user: null,
   session: null,
   loading: true,
-  subscription: { subscribed: false, productId: null, subscriptionEnd: null, isTrial: false, trialDaysLeft: 0 },
+  subscription: defaultSub,
   checkSubscription: async () => {},
   signOut: async () => {},
 });
@@ -44,31 +40,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
-  const [subscription, setSubscription] = useState<SubscriptionInfo>({
-    subscribed: true, // Temporarily unlocked — all content accessible
-    productId: null,
-    subscriptionEnd: null,
-    isTrial: false,
-    trialDaysLeft: 0,
-  });
+  const [subscription, setSubscription] = useState<SubscriptionInfo>(defaultSub);
 
-  // Deduplicate and throttle concurrent calls
   const pendingCheck = useRef<Promise<void> | null>(null);
   const lastCheckTime = useRef<number>(0);
-  const userRef = useRef<User | null>(null);
-  userRef.current = user;
-
-  const MIN_CHECK_INTERVAL = 30_000; // 30 seconds minimum between checks
+  const MIN_CHECK_INTERVAL = 30_000;
 
   const checkSubscription = useCallback(async (force = false) => {
-    // If a check is already in-flight, reuse it
     if (pendingCheck.current) return pendingCheck.current;
-
-    // Skip if checked recently (unless forced)
     const now = Date.now();
-    if (!force && now - lastCheckTime.current < MIN_CHECK_INTERVAL) {
-      return;
-    }
+    if (!force && now - lastCheckTime.current < MIN_CHECK_INTERVAL) return;
 
     const doCheck = async () => {
       try {
@@ -76,23 +57,15 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         const { data, error } = await supabase.functions.invoke("check-subscription");
         if (error) throw error;
         const hasPaidSub = data?.subscribed ?? false;
-        const trial = getTrialInfo(userRef.current);
         setSubscription({
-          subscribed: hasPaidSub || trial.isTrial,
+          subscribed: hasPaidSub,
           productId: data?.product_id ?? null,
           subscriptionEnd: data?.subscription_end ?? null,
-          isTrial: !hasPaidSub && trial.isTrial,
-          trialDaysLeft: trial.trialDaysLeft,
+          isTrial: false,
+          trialDaysLeft: 0,
         });
       } catch {
-        const trial = getTrialInfo(userRef.current);
-        setSubscription({
-          subscribed: trial.isTrial,
-          productId: null,
-          subscriptionEnd: null,
-          isTrial: trial.isTrial,
-          trialDaysLeft: trial.trialDaysLeft,
-        });
+        setSubscription(defaultSub);
       } finally {
         pendingCheck.current = null;
       }
@@ -111,14 +84,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser(newSession?.user ?? null);
         setLoading(false);
         if (newSession?.user) {
-          // Skip if getSession already triggered the check
           if (!initialCheckDone) {
             initialCheckDone = true;
             setTimeout(() => checkSubscription(), 0);
           }
         } else {
-          // Temporarily keep everything unlocked even without auth
-          setSubscription({ subscribed: true, productId: null, subscriptionEnd: null, isTrial: false, trialDaysLeft: 0 });
+          setSubscription(defaultSub);
         }
       }
     );
@@ -136,7 +107,6 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return () => authSub.unsubscribe();
   }, [checkSubscription]);
 
-  // Auto-refresh subscription every 60s
   useEffect(() => {
     if (!user) return;
     const interval = setInterval(checkSubscription, 60_000);
@@ -147,7 +117,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     await supabase.auth.signOut();
     setUser(null);
     setSession(null);
-    setSubscription({ subscribed: true, productId: null, subscriptionEnd: null, isTrial: false, trialDaysLeft: 0 });
+    setSubscription(defaultSub);
   };
 
   return (

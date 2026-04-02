@@ -1,14 +1,14 @@
 import { useNavigate } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { useAuth } from "@/contexts/AuthContext";
-import PremiumGate from "@/components/PremiumGate";
+import PremiumPageGuard from "@/components/PremiumPageGuard";
 import { Input } from "@/components/ui/input";
 import { useState, useMemo } from "react";
 import { Search, ChevronRight, ChevronDown } from "lucide-react";
 import { emergencyCategories, allEmergencyProtocols } from "@/data/emergency";
 import SalaVermelha from "@/components/SalaVermelha";
 
-export default function EmergencyMode() {
+function EmergencyModeContent() {
   const navigate = useNavigate();
   const { subscription } = useAuth();
   const [search, setSearch] = useState("");
@@ -27,14 +27,8 @@ export default function EmergencyMode() {
   const toggleCat = (id: string) =>
     setOpenCats(prev => ({ ...prev, [id]: !prev[id] }));
 
-  if (!subscription.subscribed) {
-    return (
-      <>
-      <TopBar title="Emergência / UTI / SAMU" />
-        <PremiumGate />
-      </>
-    );
-  }
+
+
 
   return (
     <>
@@ -131,5 +125,13 @@ export default function EmergencyMode() {
         ))}
       </div>
     </>
+  );
+}
+
+export default function EmergencyMode() {
+  return (
+    <PremiumPageGuard feature="Modo Emergência" title="Emergência">
+      <EmergencyModeContent />
+    </PremiumPageGuard>
   );
 }
