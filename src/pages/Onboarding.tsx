@@ -290,11 +290,11 @@ export default function Onboarding() {
     }
 
     toast.success("Perfil completo!");
-    // Navigate to pricing BEFORE updating profile state,
-    // otherwise ProtectedRoute will redirect to Home
+    // Mark that user just finished onboarding so ProtectedRoute won't redirect away from /pricing
+    sessionStorage.setItem("pulso_just_onboarded", "1");
     navigate("/pricing", { replace: true });
-    // Update profile state after navigation is queued
-    setTimeout(() => recheckProfile(), 100);
+    // Update profile state after navigation completes
+    setTimeout(() => recheckProfile(), 500);
   };
 
   const progress = ((step + 1) / STEPS.length) * 100;
