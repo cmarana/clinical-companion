@@ -267,9 +267,9 @@ export default function Home() {
               <button
                 key={m.path}
                 onClick={() => navigateWithTracking(m.path, m.label)}
-                className="w-full flex items-center gap-2.5 px-3.5 py-3.5 rounded-2xl bg-card text-card-foreground shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 text-left border-0"
+                className="group w-full flex items-center gap-2.5 px-3.5 py-3.5 rounded-2xl bg-gradient-to-br from-card to-card dark:from-card dark:to-[hsl(var(--card)/0.8)] text-card-foreground shadow-md shadow-primary/5 dark:shadow-primary/10 ring-1 ring-border/50 dark:ring-border/30 hover:shadow-xl hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-300 text-left border-0"
               >
-                <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 bg-primary/10 text-primary dark:bg-primary/20">
+                <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 bg-gradient-to-br from-primary/10 to-primary/20 text-primary dark:from-primary/15 dark:to-primary/30 transition-transform duration-300 group-hover:scale-110">
                   <m.icon size={18} />
                 </div>
                 <div className="flex flex-col min-w-0">
