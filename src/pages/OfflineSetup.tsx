@@ -71,6 +71,14 @@ export default function OfflineSetup() {
       };
 
       navigator.serviceWorker.addEventListener("message", handler);
+
+      // Also load content cache items
+      listCachedContent().then(setContentItems);
+
+      return () => navigator.serviceWorker.removeEventListener("message", handler);
+      };
+
+      navigator.serviceWorker.addEventListener("message", handler);
       return () => navigator.serviceWorker.removeEventListener("message", handler);
     }
   }, []);
