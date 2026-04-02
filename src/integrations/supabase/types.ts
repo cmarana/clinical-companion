@@ -200,6 +200,42 @@ export type Database = {
         }
         Relationships: []
       }
+      pix_purchases: {
+        Row: {
+          access_end: string | null
+          access_start: string | null
+          amount: number
+          created_at: string
+          id: string
+          plan_type: string
+          status: string
+          stripe_session_id: string
+          user_id: string
+        }
+        Insert: {
+          access_end?: string | null
+          access_start?: string | null
+          amount: number
+          created_at?: string
+          id?: string
+          plan_type?: string
+          status?: string
+          stripe_session_id: string
+          user_id: string
+        }
+        Update: {
+          access_end?: string | null
+          access_start?: string | null
+          amount?: number
+          created_at?: string
+          id?: string
+          plan_type?: string
+          status?: string
+          stripe_session_id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string
