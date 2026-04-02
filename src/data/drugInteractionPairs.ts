@@ -130,15 +130,7 @@ export const HIGH_RISK_PAIRS: Record<string, InteractionPair[]> = {
     { drugs: ["ciprofloxacino"], severity: "grave", desc: "Ciprofloxacino inibe CYP1A2 — aumento perigoso do nível de clozapina." },
     { drugs: ["carbamazepina"], severity: "grave", desc: "Carbamazepina + clozapina — risco de agranulocitose aditivo." },
   ],
-  "rivaroxabana": [
-    { drugs: ["ácido acetilsalicílico", "aas"], severity: "moderado", desc: "Risco de sangramento aumentado com antiagregante." },
-    { drugs: ["cetoconazol", "itraconazol"], severity: "grave", desc: "Azólicos aumentam nível de rivaroxabana — evitar." },
-    { drugs: ["ibuprofeno", "diclofenaco"], severity: "moderado", desc: "AINEs + DOAC = risco hemorrágico." },
-  ],
-  "apixabana": [
-    { drugs: ["ácido acetilsalicílico", "aas"], severity: "moderado", desc: "Risco de sangramento aumentado." },
-    { drugs: ["cetoconazol", "itraconazol"], severity: "grave", desc: "Azólicos aumentam nível de apixabana." },
-  ],
+  // rivaroxabana and apixabana moved to DOACs section below
   // === ANTIRRETROVIRAIS ===
   "ritonavir": [
     { drugs: ["sinvastatina", "atorvastatina", "lovastatina"], severity: "grave", desc: "Contraindicado — inibição potente de CYP3A4 → rabdomiólise." },
