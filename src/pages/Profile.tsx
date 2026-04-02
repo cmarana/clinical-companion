@@ -67,6 +67,8 @@ interface ProfileData {
   city: string;
   state: string;
   zip_code: string;
+  neighborhood: string;
+  street: string;
   academic_status: string;
   university: string;
   course: string;
@@ -83,6 +85,7 @@ interface ProfileData {
 const defaultProfile: ProfileData = {
   full_name: "", first_name: "", last_name: "", cpf: "", birth_date: "",
   gender: "", phone: "", email: "", city: "", state: "", zip_code: "",
+  neighborhood: "", street: "",
   academic_status: "", university: "", course: "", graduation_year: "",
   registration_type: "", registration_number: "", registration_state: "",
   specialty: "", crm: "", crm_state: "", avatar_url: "",
@@ -216,6 +219,8 @@ export default function Profile() {
             ...p,
             city: data.localidade || p.city,
             state: data.uf || p.state,
+            neighborhood: data.bairro || p.neighborhood,
+            street: data.logradouro || p.street,
           }));
         }
       })
@@ -247,6 +252,8 @@ export default function Profile() {
         city: (data as any).city || "",
         state: (data as any).state || "",
         zip_code: (data as any).zip_code || "",
+        neighborhood: (data as any).neighborhood || "",
+        street: (data as any).street || "",
         academic_status: (data as any).academic_status || "",
         university: (data as any).university || "",
         course: (data as any).course || "",
@@ -287,6 +294,8 @@ export default function Profile() {
         city: profile.city,
         state: profile.state,
         zip_code: profile.zip_code.replace(/\D/g, ""),
+        neighborhood: profile.neighborhood,
+        street: profile.street,
         academic_status: profile.academic_status,
         university: profile.university,
         course: profile.course,
