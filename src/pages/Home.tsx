@@ -191,9 +191,12 @@ export default function Home() {
     <div className="px-4 pt-3 pb-24 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto">
       {/* Top bar */}
       <div className="flex items-center justify-between h-12 mb-3">
-        <div className="flex flex-col">
-          <span className="font-heading font-bold text-base tracking-tight">PULSO</span>
-          <span className="text-[9px] text-muted-foreground tracking-wide -mt-0.5">Decida em segundos. Sem margem para erro.</span>
+        <div className="flex items-center gap-2.5">
+          <img src={pulsoLogo} alt="PULSO" width={32} height={32} className="rounded-lg" />
+          <div className="flex flex-col">
+            <span className="font-heading font-bold text-base tracking-tight">PULSO</span>
+            <span className="text-[9px] text-muted-foreground tracking-wide -mt-0.5">Decida em segundos. Sem margem para erro.</span>
+          </div>
         </div>
         <div className="flex items-center gap-2">
           <button onClick={() => { hapticLight(); toggleTheme(); }} className="p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground" title={themeLabel}>

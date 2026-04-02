@@ -119,9 +119,7 @@ export default function Auth() {
             transition={{ duration: 0.5 }}
             className="mb-6"
           >
-            <div className="mx-auto w-20 h-20 rounded-3xl bg-gradient-to-br from-primary to-blue-600 flex items-center justify-center shadow-xl shadow-primary/25 mb-4">
-              <Activity size={36} className="text-white" />
-            </div>
+            <img src={pulsoLogo} alt="PULSO" width={80} height={80} className="mx-auto mb-4 rounded-2xl shadow-xl shadow-primary/25" />
             <h1 className="font-heading text-3xl font-extrabold tracking-tight">
               PULSO
             </h1>
