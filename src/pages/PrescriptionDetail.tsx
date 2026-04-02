@@ -160,6 +160,12 @@ ${prescription.warnings ? `<div class="warning"><h2>⚠ Atenção</h2><pre>${esc
               {copied ? <Check size={14} /> : <Copy size={14} />}
               {copied ? "Copiado" : "Copiar"}
             </Button>
+            <ShareMenu
+              title={prescription.title}
+              showPDF
+              shareUrl={`${window.location.origin}/prescriptions/${prescription.id}`}
+              getText={() => formatPrescriptionForShare(prescription.title, prescription.prescription.split("\n"))}
+            />
           </div>
         </div>
 
