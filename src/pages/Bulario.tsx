@@ -7,10 +7,18 @@ import { type BularioFilters, INITIAL_FILTERS } from "@/types/bulario";
 import BularioFilterBar from "@/components/BularioFilterBar";
 import { useBularioInfiniteList, useBularioCount } from "@/hooks/useBularioMedications";
 import { Button } from "@/components/ui/button";
-import { importFromArray } from "@/lib/bularioImporter";
 import type { MedicationImportItem } from "@/data/medicationsData";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+
+// Lazy-load the heavy medications data (45K+ lines) only when needed
+let _cachedMedsData: MedicationImportItem[] | null = null;
+async function loadMedicationsData(): Promise<MedicationImportItem[]> {
+  if (_cachedMedsData) return _cachedMedsData;
+  const mod = await import("@/data/medicationsData");
+  _cachedMedsData = mod.allMedicationsData;
+  return _cachedMedsData;
+}
 
 export default function Bulario() {
   const navigate = useNavigate();
@@ -24,6 +32,7 @@ export default function Bulario() {
   } = useBularioInfiniteList(filters);
   const { data: totalCount = 0 } = useBularioCount();
   const [importing, setImporting] = useState(false);
+  const [medsCount, setMedsCount] = useState<number | null>(null);
   const queryClient = useQueryClient();
 
   const medications = data?.pages.flatMap((p) => p.items) ?? [];
