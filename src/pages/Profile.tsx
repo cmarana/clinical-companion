@@ -240,6 +240,7 @@ export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [selectedArea, setSelectedArea] = useState("");
   const [fetchingCep, setFetchingCep] = useState(false);
   const [profile, setProfile] = useState<ProfileData>(defaultProfile);
 
