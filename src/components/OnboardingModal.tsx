@@ -1,8 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  Stethoscope, Baby, Heart, Brain, Syringe, Pill,
-  ShieldCheck, Activity, X, ChevronRight, Sparkles, LayoutGrid
+  Stethoscope,
+  Baby,
+  Heart,
+  Brain,
+  Syringe,
+  Pill,
+  ShieldCheck,
+  Activity,
+  X,
+  ChevronRight,
+  Sparkles,
+  LayoutGrid,
 } from "lucide-react";
 
 export interface SpecialtyChoice {
@@ -33,10 +43,26 @@ export default function OnboardingModal({ onComplete, onSkip }: OnboardingModalP
   const [selected, setSelected] = useState<string | null>(null);
   const [step, setStep] = useState(0);
 
+  useEffect(() => {
+    const previousBodyOverflow = document.body.style.overflow;
+    const previousHtmlOverflow = document.documentElement.style.overflow;
+
+    document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+
+    return () => {
+      document.body.style.overflow = previousBodyOverflow;
+      document.documentElement.style.overflow = previousHtmlOverflow;
+    };
+  }, []);
+
   const handleContinue = () => {
     if (step === 0) {
       setStep(1);
-    } else if (selected) {
+      return;
+    }
+
+    if (selected) {
       onComplete(selected);
     }
   };
@@ -46,18 +72,20 @@ export default function OnboardingModal({ onComplete, onSkip }: OnboardingModalP
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm p-0 sm:p-4"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm overscroll-none"
     >
       <motion.div
         initial={{ y: 80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 80, opacity: 0 }}
         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-        className="w-full max-w-md bg-card rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col"
-        style={{ maxHeight: "calc(100dvh - env(safe-area-inset-bottom, 0px) - 60px)" }}
+        className="w-full max-w-md bg-card rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col min-h-0"
+        style={{
+          maxHeight: "min(760px, calc(100dvh - env(safe-area-inset-top, 0px) - 12px))",
+          paddingBottom: "max(env(safe-area-inset-bottom, 0px), 12px)",
+        }}
       >
-        {/* Header */}
-        <div className="relative px-6 pt-6 pb-4">
+        <div className="relative px-5 pt-5 pb-3 shrink-0">
           <button
             onClick={onSkip}
             className="absolute top-4 right-4 p-2 rounded-xl text-muted-foreground hover:bg-muted transition-colors"
@@ -77,7 +105,7 @@ export default function OnboardingModal({ onComplete, onSkip }: OnboardingModalP
                   <Sparkles size={20} className="text-primary" />
                   <span className="text-xs font-heading font-semibold text-primary uppercase tracking-wider">Bem-vindo</span>
                 </div>
-                <h2 className="font-heading font-bold text-xl text-foreground">
+                <h2 className="font-heading font-bold text-xl text-foreground pr-10">
                   Vamos personalizar sua experiência
                 </h2>
                 <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
@@ -94,7 +122,7 @@ export default function OnboardingModal({ onComplete, onSkip }: OnboardingModalP
                 <span className="text-xs font-heading font-semibold text-primary uppercase tracking-wider">
                   Passo 1 de 1
                 </span>
-                <h2 className="font-heading font-bold text-xl text-foreground mt-1">
+                <h2 className="font-heading font-bold text-xl text-foreground mt-1 pr-10">
                   Qual sua especialidade?
                 </h2>
                 <p className="text-sm text-muted-foreground mt-1">
@@ -105,8 +133,7 @@ export default function OnboardingModal({ onComplete, onSkip }: OnboardingModalP
           </AnimatePresence>
         </div>
 
-        {/* Content */}
-        <div className="flex-1 overflow-y-auto px-6 pb-4">
+        <div className="flex-1 min-h-0 overflow-y-auto overscroll-contain px-5 pb-3">
           <AnimatePresence mode="wait">
             {step === 0 ? (
               <motion.div
@@ -114,7 +141,7 @@ export default function OnboardingModal({ onComplete, onSkip }: OnboardingModalP
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="grid grid-cols-3 gap-3 py-4"
+                className="grid grid-cols-3 gap-2 py-2"
               >
                 {[
                   { icon: Activity, label: "Emergência", desc: "Protocolos rápidos" },
@@ -126,13 +153,13 @@ export default function OnboardingModal({ onComplete, onSkip }: OnboardingModalP
                     initial={{ opacity: 0, y: 16 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.1 + i * 0.1 }}
-                    className="flex flex-col items-center text-center p-3 rounded-2xl bg-muted/50"
+                    className="flex min-h-[140px] flex-col items-center justify-center rounded-2xl bg-muted/50 p-3 text-center"
                   >
-                    <div className="w-10 h-10 rounded-xl bg-primary/10 flex items-center justify-center text-primary mb-2">
+                    <div className="mb-2 flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary">
                       <f.icon size={20} />
                     </div>
-                    <span className="font-heading font-semibold text-[11px]">{f.label}</span>
-                    <span className="text-[10px] text-muted-foreground">{f.desc}</span>
+                    <span className="font-heading text-[11px] font-semibold leading-tight">{f.label}</span>
+                    <span className="mt-1 text-[10px] leading-snug text-muted-foreground">{f.desc}</span>
                   </motion.div>
                 ))}
               </motion.div>
@@ -153,16 +180,16 @@ export default function OnboardingModal({ onComplete, onSkip }: OnboardingModalP
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: i * 0.04 }}
                       onClick={() => setSelected(s.id)}
-                      className={`flex items-center gap-2.5 p-3.5 rounded-2xl text-left transition-all duration-200 border-2 ${
+                      className={`flex items-center gap-2.5 rounded-2xl border-2 p-3.5 text-left transition-all duration-200 ${
                         isSelected
                           ? "border-primary bg-primary/5 shadow-md"
                           : "border-transparent bg-muted/40 hover:bg-muted/70"
                       }`}
                     >
-                      <div className={`w-9 h-9 rounded-xl flex items-center justify-center shrink-0 ${s.color}`}>
+                      <div className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-xl ${s.color}`}>
                         <s.icon size={18} />
                       </div>
-                      <span className="font-heading font-semibold text-[12px] leading-tight">{s.label}</span>
+                      <span className="font-heading text-[12px] font-semibold leading-tight">{s.label}</span>
                     </motion.button>
                   );
                 })}
@@ -171,8 +198,7 @@ export default function OnboardingModal({ onComplete, onSkip }: OnboardingModalP
           </AnimatePresence>
         </div>
 
-        {/* Footer */}
-        <div className="px-6 pb-6 pt-2">
+        <div className="shrink-0 border-t border-border/60 bg-card/95 px-5 pt-2 backdrop-blur-sm">
           <button
             onClick={handleContinue}
             disabled={step === 1 && !selected}
