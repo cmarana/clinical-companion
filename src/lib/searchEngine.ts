@@ -1,11 +1,3 @@
-import { protocols } from "@/data/protocols";
-import { prescriptionCategories } from "@/data/prescriptions";
-import { symptomGuides } from "@/data/symptomGuides";
-import { fullProtocols } from "@/data/fullProtocols";
-import { allEmergencyProtocols } from "@/data/emergency";
-import { cidData } from "@/data/cidData";
-import { labCategories } from "@/data/labValues";
-
 export interface SearchResult {
   id: string;
   title: string;
@@ -45,9 +37,6 @@ const calculatorItems = [
   { id: "blatchford", title: "Glasgow-Blatchford", description: "HDA — necessidade de intervenção" },
 ];
 
-/**
- * Extract a snippet around the match position, stripping markdown
- */
 function extractSnippet(content: string, query: string, maxLen = 100): string | undefined {
   const clean = content.replace(/[#*_`>|[\]()]/g, "").replace(/\n+/g, " ").replace(/\s+/g, " ");
   const idx = clean.toLowerCase().indexOf(query);
@@ -60,15 +49,50 @@ function extractSnippet(content: string, query: string, maxLen = 100): string | 
   return snippet;
 }
 
+// Lazy-loaded data cache — only loaded on first search
+let _dataCache: {
+  protocols: any[];
+  prescriptionCategories: any[];
+  symptomGuides: any[];
+  fullProtocols: any[];
+  allEmergencyProtocols: any[];
+  cidData: any[];
+  labCategories: any[];
+} | null = null;
+
+async function loadSearchData() {
+  if (_dataCache) return _dataCache;
+  const [
+    { protocols },
+    { prescriptionCategories },
+    { symptomGuides },
+    { fullProtocols },
+    { allEmergencyProtocols },
+    { cidData },
+    { labCategories },
+  ] = await Promise.all([
+    import("@/data/protocols"),
+    import("@/data/prescriptions"),
+    import("@/data/symptomGuides"),
+    import("@/data/fullProtocols"),
+    import("@/data/emergency"),
+    import("@/data/cidData"),
+    import("@/data/labValues"),
+  ]);
+  _dataCache = { protocols, prescriptionCategories, symptomGuides, fullProtocols, allEmergencyProtocols, cidData, labCategories };
+  return _dataCache;
+}
+
 /**
- * Full-text search across all static data sources.
- * Searches WITHIN content, not just titles.
+ * Full-text search across all static data sources (lazy-loaded).
  */
-export function fullTextSearch(query: string): SearchResult[] {
+export async function fullTextSearch(query: string): Promise<SearchResult[]> {
   if (query.length < 2) return [];
   const q = query.toLowerCase();
   const terms = q.split(/\s+/).filter(t => t.length >= 2);
   if (terms.length === 0) return [];
+
+  const data = await loadSearchData();
 
   const matchesAll = (text: string) => {
     const lower = text.toLowerCase();
@@ -80,13 +104,11 @@ export function fullTextSearch(query: string): SearchResult[] {
     return terms.some(t => lower.includes(t));
   };
 
-  // ── Full Protocols (deep content search) ──
+  // ── Full Protocols ──
   const fullProtocolResults: SearchResult[] = [];
-  for (const p of fullProtocols) {
+  for (const p of data.fullProtocols) {
     const titleMatch = matchesAll(p.title) || matchesAll(p.category);
-    const tagMatch = p.tags.some(t => matchesAny(t));
-    
-    // Deep: search within each section's content
+    const tagMatch = p.tags.some((t: string) => matchesAny(t));
     let contentSnippet: string | undefined;
     let matchSection = "";
     if (!titleMatch) {
@@ -98,26 +120,21 @@ export function fullTextSearch(query: string): SearchResult[] {
         }
       }
     }
-
     if (titleMatch || tagMatch || contentSnippet) {
       fullProtocolResults.push({
-        id: p.id,
-        title: p.title,
+        id: p.id, title: p.title,
         subtitle: contentSnippet ? `${p.category} · ${matchSection}` : p.category,
-        snippet: contentSnippet,
-        type: "Protocolo Completo",
-        path: `/full-protocols/${p.id}`,
-        icon: "fullProtocol",
+        snippet: contentSnippet, type: "Protocolo Completo",
+        path: `/full-protocols/${p.id}`, icon: "fullProtocol",
       });
     }
     if (fullProtocolResults.length >= 30) break;
   }
 
-  // ── Emergency Protocols (deep content search) ──
+  // ── Emergency ──
   const emergencyResults: SearchResult[] = [];
-  for (const p of allEmergencyProtocols) {
+  for (const p of data.allEmergencyProtocols) {
     const titleMatch = matchesAll(p.title) || matchesAny(p.categoryId);
-    
     let contentSnippet: string | undefined;
     let matchSection = "";
     if (!titleMatch) {
@@ -129,37 +146,32 @@ export function fullTextSearch(query: string): SearchResult[] {
         }
       }
     }
-
     if (titleMatch || contentSnippet) {
       emergencyResults.push({
-        id: p.id,
-        title: p.title,
+        id: p.id, title: p.title,
         subtitle: contentSnippet ? `Emergência · ${matchSection}` : `Emergência · ${p.categoryId}`,
-        snippet: contentSnippet,
-        type: "Emergência",
-        path: `/emergency/${p.id}`,
-        icon: "emergency",
+        snippet: contentSnippet, type: "Emergência",
+        path: `/emergency/${p.id}`, icon: "emergency",
       });
     }
     if (emergencyResults.length >= 20) break;
   }
 
   // ── Protocols ──
-  const protocolResults: SearchResult[] = protocols
-    .filter(p => matchesAll(p.title) || p.tags.some(t => matchesAny(t)))
+  const protocolResults: SearchResult[] = data.protocols
+    .filter((p: any) => matchesAll(p.title) || p.tags.some((t: string) => matchesAny(t)))
     .slice(0, 20)
-    .map(p => ({ id: p.id, title: p.title, subtitle: p.category, type: "Protocolo", path: `/protocols/${p.id}`, icon: "protocol" as const }));
+    .map((p: any) => ({ id: p.id, title: p.title, subtitle: p.category, type: "Protocolo", path: `/protocols/${p.id}`, icon: "protocol" as const }));
 
-  // ── Prescriptions (deep: search in prescription text, alternatives, notes, warnings) ──
+  // ── Prescriptions ──
   const rxResults: SearchResult[] = [];
-  for (const cat of prescriptionCategories) {
+  for (const cat of data.prescriptionCategories) {
     for (const p of cat.items) {
       const titleMatch = matchesAll(p.title);
       const contentMatch = matchesAll(p.prescription);
       const altMatch = p.alternatives ? matchesAll(p.alternatives) : false;
       const notesMatch = p.notes ? matchesAll(p.notes) : false;
       const warningsMatch = p.warnings ? matchesAll(p.warnings) : false;
-
       if (titleMatch || contentMatch || altMatch || notesMatch || warningsMatch) {
         let snippet: string | undefined;
         if (!titleMatch) {
@@ -167,16 +179,7 @@ export function fullTextSearch(query: string): SearchResult[] {
             (p.alternatives ? extractSnippet(p.alternatives, terms[0]) : undefined) ||
             (p.notes ? extractSnippet(p.notes, terms[0]) : undefined);
         }
-
-        rxResults.push({
-          id: p.id,
-          title: p.title,
-          subtitle: p.type,
-          snippet,
-          type: "Prescrição",
-          path: `/prescriptions/${p.id}`,
-          icon: "prescription",
-        });
+        rxResults.push({ id: p.id, title: p.title, subtitle: p.type, snippet, type: "Prescrição", path: `/prescriptions/${p.id}`, icon: "prescription" });
       }
       if (rxResults.length >= 30) break;
     }
@@ -184,9 +187,9 @@ export function fullTextSearch(query: string): SearchResult[] {
   }
 
   // ── Symptom guides ──
-  const symptomResults: SearchResult[] = symptomGuides
-    .filter(s => matchesAll(s.symptom) || s.hypotheses.some(h => matchesAny(h)))
-    .map(s => ({ id: s.id, title: s.symptom, subtitle: "Diagnóstico por Sintoma", type: "Sintoma", path: `/diagnosis`, icon: "symptom" as const }));
+  const symptomResults: SearchResult[] = data.symptomGuides
+    .filter((s: any) => matchesAll(s.symptom) || s.hypotheses.some((h: string) => matchesAny(h)))
+    .map((s: any) => ({ id: s.id, title: s.symptom, subtitle: "Diagnóstico por Sintoma", type: "Sintoma", path: `/diagnosis`, icon: "symptom" as const }));
 
   // ── Calculators ──
   const calcResults: SearchResult[] = calculatorItems
@@ -194,19 +197,18 @@ export function fullTextSearch(query: string): SearchResult[] {
     .map(c => ({ id: c.id, title: c.title, subtitle: c.description, type: "Calculadora", path: `/calculators`, icon: "calculator" as const }));
 
   // ── CID-10 ──
-  const cidResults: SearchResult[] = cidData
-    .filter(c => matchesAny(c.code) || matchesAll(c.description))
+  const cidResults: SearchResult[] = data.cidData
+    .filter((c: any) => matchesAny(c.code) || matchesAll(c.description))
     .slice(0, 30)
-    .map(c => ({ id: c.code, title: `${c.code} — ${c.description}`, subtitle: c.category, type: "CID-10", path: `/cid`, icon: "cid" as const }));
+    .map((c: any) => ({ id: c.code, title: `${c.code} — ${c.description}`, subtitle: c.category, type: "CID-10", path: `/cid`, icon: "cid" as const }));
 
   // ── Lab values ──
-  const labResults: SearchResult[] = labCategories
-    .flatMap(cat => cat.values.map(v => ({ ...v, catTitle: cat.title })))
-    .filter(v => matchesAll(v.name) || matchesAny(v.unit))
+  const labResults: SearchResult[] = data.labCategories
+    .flatMap((cat: any) => cat.values.map((v: any) => ({ ...v, catTitle: cat.title })))
+    .filter((v: any) => matchesAll(v.name) || matchesAny(v.unit))
     .slice(0, 20)
-    .map(v => ({ id: v.name, title: v.name, subtitle: `${v.catTitle} · ${v.unit}`, type: "Lab. Referência", path: `/lab-reference`, icon: "labValue" as const }));
+    .map((v: any) => ({ id: v.name, title: v.name, subtitle: `${v.catTitle} · ${v.unit}`, type: "Lab. Referência", path: `/lab-reference`, icon: "labValue" as const }));
 
-  // Title matches first, then content matches
   const titleResults = [...emergencyResults.filter(r => !r.snippet), ...protocolResults, ...fullProtocolResults.filter(r => !r.snippet), ...rxResults.filter(r => !r.snippet), ...calcResults, ...cidResults, ...labResults, ...symptomResults];
   const contentResults = [...emergencyResults.filter(r => r.snippet), ...fullProtocolResults.filter(r => r.snippet), ...rxResults.filter(r => r.snippet)];
 

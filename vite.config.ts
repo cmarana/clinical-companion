@@ -3,7 +3,6 @@ import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { componentTagger } from "lovable-tagger";
 
-// https://vitejs.dev/config/
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
   const supabaseUrl = env.VITE_SUPABASE_URL || "https://xwmqqwqynyhccmyqtxje.supabase.co";
@@ -30,6 +29,32 @@ export default defineConfig(({ mode }) => {
       alias: {
         "@": path.resolve(__dirname, "./src"),
       },
+    },
+    build: {
+      rollupOptions: {
+        output: {
+          manualChunks: {
+            "vendor-react": ["react", "react-dom", "react-router-dom"],
+            "vendor-supabase": ["@supabase/supabase-js"],
+            "vendor-ui": ["framer-motion", "recharts"],
+            "data-protocols": [
+              "./src/data/protocols.ts",
+              "./src/data/fullProtocols/index.ts",
+              "./src/data/emergency/index.ts",
+            ],
+            "data-medications": [
+              "./src/data/medications.ts",
+              "./src/data/prescriptions/index.ts",
+            ],
+            "data-reference": [
+              "./src/data/cidData.ts",
+              "./src/data/labValues.ts",
+              "./src/data/symptomGuides.ts",
+            ],
+          },
+        },
+      },
+      chunkSizeWarningLimit: 600,
     },
   };
 });
