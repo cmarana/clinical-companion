@@ -186,11 +186,6 @@ export const HIGH_RISK_PAIRS: Record<string, InteractionPair[]> = {
     { drugs: ["fenitoína"], severity: "moderado", desc: "Cisplatina reduz absorção de fenitoína — monitorar níveis." },
     { drugs: ["varfarina"], severity: "moderado", desc: "Efeito anticoagulante pode ser alterado — monitorar INR." },
   ],
-  "metotrexato": [
-    { drugs: ["penicilina", "amoxicilina", "piperacilina"], severity: "moderado", desc: "Penicilinas reduzem excreção renal do metotrexato — toxicidade." },
-    { drugs: ["omeprazol", "pantoprazol"], severity: "moderado", desc: "IBPs podem retardar eliminação do metotrexato." },
-    { drugs: ["ciprofloxacino"], severity: "moderado", desc: "Quinolonas reduzem clearance renal do metotrexato." },
-  ],
   "ciclofosfamida": [
     { drugs: ["alopurinol"], severity: "moderado", desc: "Alopurinol aumenta mielotoxicidade da ciclofosfamida." },
     { drugs: ["varfarina"], severity: "moderado", desc: "Efeito anticoagulante potencializado — monitorar INR." },
