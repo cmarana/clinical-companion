@@ -14,19 +14,62 @@ import { useNavigate } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { hapticLight } from "@/lib/haptics";
 
-const SPECIALTIES = [
-  "Clínica Médica", "Cirurgia Geral", "Pediatria", "Ginecologia e Obstetrícia",
-  "Ortopedia e Traumatologia", "Cardiologia", "Dermatologia", "Neurologia",
-  "Psiquiatria", "Oftalmologia", "Otorrinolaringologia", "Urologia",
-  "Nefrologia", "Pneumologia", "Gastroenterologia", "Endocrinologia",
-  "Reumatologia", "Hematologia", "Infectologia", "Oncologia",
-  "Anestesiologia", "Medicina de Emergência", "Medicina de Família e Comunidade",
-  "Medicina Intensiva", "Geriatria", "Radiologia", "Patologia",
-  "Medicina do Trabalho", "Medicina Legal", "Nutrologia",
-  "Cirurgia Cardiovascular", "Cirurgia Plástica", "Neurocirurgia",
-  "Cirurgia Pediátrica", "Cirurgia Vascular", "Coloproctologia",
-  "Residente", "Estudante de Medicina", "Enfermagem", "Farmácia", "Outra"
-];
+const SPECIALTIES_BY_AREA: Record<string, string[]> = {
+  "Medicina": [
+    "Clínica Médica", "Cirurgia Geral", "Pediatria", "Ginecologia e Obstetrícia",
+    "Ortopedia e Traumatologia", "Cardiologia", "Dermatologia", "Neurologia",
+    "Psiquiatria", "Oftalmologia", "Otorrinolaringologia", "Urologia",
+    "Nefrologia", "Pneumologia", "Gastroenterologia", "Endocrinologia",
+    "Reumatologia", "Hematologia", "Infectologia", "Oncologia",
+    "Anestesiologia", "Medicina de Emergência", "Medicina de Família e Comunidade",
+    "Medicina Intensiva", "Geriatria", "Radiologia", "Patologia",
+    "Medicina do Trabalho", "Medicina Legal", "Nutrologia",
+    "Cirurgia Cardiovascular", "Cirurgia Plástica", "Neurocirurgia",
+    "Cirurgia Pediátrica", "Cirurgia Vascular", "Coloproctologia",
+  ],
+  "Enfermagem": [
+    "Enfermagem Geral", "Enfermagem em UTI", "Enfermagem Obstétrica",
+    "Enfermagem Pediátrica", "Enfermagem de Emergência", "Enfermagem do Trabalho",
+    "Enfermagem Oncológica", "Enfermagem em Saúde Mental", "Estomaterapia",
+  ],
+  "Farmácia": [
+    "Farmácia Clínica", "Farmácia Hospitalar", "Farmacologia",
+    "Atenção Farmacêutica", "Análises Clínicas", "Farmácia Industrial",
+  ],
+  "Fisioterapia": [
+    "Fisioterapia Respiratória", "Fisioterapia Neurofuncional",
+    "Fisioterapia Ortopédica", "Fisioterapia em UTI",
+    "Fisioterapia Esportiva", "Fisioterapia Pediátrica",
+  ],
+  "Nutrição": [
+    "Nutrição Clínica", "Nutrição Esportiva", "Nutrição Hospitalar",
+    "Nutrição Materno-Infantil", "Nutrição em Saúde Pública",
+  ],
+  "Psicologia": [
+    "Psicologia Clínica", "Psicologia Hospitalar", "Neuropsicologia",
+    "Psicologia da Saúde", "Psicologia Organizacional",
+  ],
+  "Odontologia": [
+    "Odontologia Geral", "Cirurgia Bucomaxilofacial", "Ortodontia",
+    "Endodontia", "Periodontia", "Odontopediatria", "Implantodontia",
+  ],
+  "Biomedicina": [
+    "Análises Clínicas", "Diagnóstico por Imagem", "Biomedicina Estética",
+    "Biologia Molecular", "Imunologia",
+  ],
+  "Fonoaudiologia": [
+    "Audiologia", "Linguagem", "Motricidade Orofacial", "Disfagia", "Voz",
+  ],
+  "Terapia Ocupacional": [
+    "Saúde Mental", "Reabilitação Física", "Gerontologia", "Neuropediatria",
+  ],
+  "Outras": [
+    "Serviço Social", "Educação Física em Saúde", "Radiologia Técnica",
+    "Técnico de Enfermagem", "Outra",
+  ],
+};
+
+const HEALTH_AREAS = Object.keys(SPECIALTIES_BY_AREA);
 
 const UF_LIST = [
   "AC","AL","AM","AP","BA","CE","DF","ES","GO","MA","MG","MS","MT",
@@ -47,11 +90,16 @@ const ACADEMIC_STATUSES = [
 ];
 
 const REGISTRATION_TYPES = [
-  { value: "CRM", label: "CRM" },
-  { value: "COREN", label: "COREN" },
-  { value: "CRF", label: "CRF" },
-  { value: "CRN", label: "CRN" },
-  { value: "CREFITO", label: "CREFITO" },
+  { value: "CRM", label: "CRM (Medicina)" },
+  { value: "COREN", label: "COREN (Enfermagem)" },
+  { value: "CRF", label: "CRF (Farmácia)" },
+  { value: "CRN", label: "CRN (Nutrição)" },
+  { value: "CREFITO", label: "CREFITO (Fisio/TO/Fono)" },
+  { value: "CRP", label: "CRP (Psicologia)" },
+  { value: "CRO", label: "CRO (Odontologia)" },
+  { value: "CRBM", label: "CRBM (Biomedicina)" },
+  { value: "CRESS", label: "CRESS (Serviço Social)" },
+  { value: "CREF", label: "CREF (Educação Física)" },
   { value: "outro", label: "Outro" },
 ];
 
@@ -192,6 +240,7 @@ export default function Profile() {
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [uploading, setUploading] = useState(false);
+  const [selectedArea, setSelectedArea] = useState("");
   const [fetchingCep, setFetchingCep] = useState(false);
   const [profile, setProfile] = useState<ProfileData>(defaultProfile);
 
@@ -266,6 +315,15 @@ export default function Profile() {
         crm_state: data.crm_state || "",
         avatar_url: data.avatar_url || "",
       });
+      // Initialize selectedArea from specialty
+      if (data.specialty) {
+        for (const [area, specs] of Object.entries(SPECIALTIES_BY_AREA)) {
+          if (specs.includes(data.specialty)) {
+            setSelectedArea(area);
+            break;
+          }
+        }
+      }
     } else if (!error || error.code === "PGRST116") {
       await supabase.from("profiles").insert({
         user_id: user.id,
@@ -523,7 +581,25 @@ export default function Profile() {
               </div>
             )}
 
-            <Select label="Especialidade" value={profile.specialty} onChange={set("specialty")} options={SPECIALTIES.map(s => ({ value: s, label: s }))} />
+            <Select
+              label="Área da Saúde"
+              value={selectedArea}
+              onChange={(area) => {
+                setSelectedArea(area);
+                set("specialty")("");
+              }}
+              options={HEALTH_AREAS.map(a => ({ value: a, label: a }))}
+              placeholder="Selecione sua área..."
+            />
+            {selectedArea && (
+              <Select
+                label="Especialidade / Atuação"
+                value={profile.specialty}
+                onChange={set("specialty")}
+                options={(SPECIALTIES_BY_AREA[selectedArea] || []).map(s => ({ value: s, label: s }))}
+                placeholder="Selecione..."
+              />
+            )}
           </Section>
 
           {/* ── Save button ── */}
