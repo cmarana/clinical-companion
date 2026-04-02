@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import {
   Bot, AlertTriangle, Zap, Pill, ClipboardList, BookOpen,
   Calculator, FlaskConical, Baby, Heart, Stethoscope, HelpCircle,
-  Search, Star, User, StickyNote, Home
+  Search, Star, User, StickyNote, Home, Gift
 } from "lucide-react";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupLabel,
