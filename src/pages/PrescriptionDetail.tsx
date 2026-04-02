@@ -3,7 +3,7 @@ import { useEffect } from "react";
 import TopBar from "@/components/TopBar";
 import { prescriptionCategories } from "@/data/prescriptions/index";
 import { Button } from "@/components/ui/button";
-import { Copy, Check, Star, Printer } from "lucide-react";
+import { Copy, Check, Star, Printer, Share2 } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useFavorites } from "@/contexts/FavoritesContext";
