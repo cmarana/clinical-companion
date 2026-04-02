@@ -6,7 +6,7 @@ import {
   Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain, GraduationCap,
   Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Eclipse
 } from "lucide-react";
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useAuth } from "@/contexts/AuthContext";
@@ -17,6 +17,20 @@ import { useNotifications } from "@/contexts/NotificationsContext";
 import { hapticLight } from "@/lib/haptics";
 import { useModuleAnalytics } from "@/hooks/useModuleAnalytics";
 import SmartSearch from "@/components/SmartSearch";
+
+// ── PREFETCH critical chunks after Home mounts ──
+const prefetchRoutes = () => {
+  const idleCallback = (window as any).requestIdleCallback || ((cb: () => void) => setTimeout(cb, 200));
+  idleCallback(() => {
+    // Most-used routes: prefetch their chunks
+    import("@/pages/FullProtocols");
+    import("@/pages/EmergencyMode");
+    import("@/pages/Prescriptions");
+    import("@/pages/Calculators");
+    import("@/pages/Bulario");
+    import("@/pages/ClinicalAI");
+  });
+};
 
 // ── ALL MODULES WITH TAGS ─────────────────────────────────────
 interface Module {
@@ -166,6 +180,9 @@ export default function Home() {
         }
       });
   }, [user]);
+
+  // Prefetch critical route chunks when idle
+  useEffect(() => { prefetchRoutes(); }, []);
 
   const primaryModules = useMemo(() => getPrimaryModules(specialty), [specialty]);
 
