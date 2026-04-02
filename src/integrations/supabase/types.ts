@@ -236,6 +236,39 @@ export type Database = {
         }
         Relationships: []
       }
+      protocol_views: {
+        Row: {
+          created_at: string
+          duration_seconds: number | null
+          id: string
+          protocol_category: string
+          protocol_id: string
+          protocol_title: string
+          source: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          duration_seconds?: number | null
+          id?: string
+          protocol_category?: string
+          protocol_id: string
+          protocol_title?: string
+          source?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          duration_seconds?: number | null
+          id?: string
+          protocol_category?: string
+          protocol_id?: string
+          protocol_title?: string
+          source?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       push_subscriptions: {
         Row: {
           auth: string
