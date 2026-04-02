@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Stethoscope, Baby, Heart, Brain, Syringe, Pill,
-  ShieldCheck, Activity, X, ChevronRight, Sparkles
+  ShieldCheck, Activity, X, ChevronRight, Sparkles, LayoutGrid
 } from "lucide-react";
 
 export interface SpecialtyChoice {
@@ -13,6 +13,7 @@ export interface SpecialtyChoice {
 }
 
 export const specialties: SpecialtyChoice[] = [
+  { id: "todas", label: "Ver Tudo", icon: LayoutGrid, color: "bg-slate-500/15 text-slate-600 dark:text-slate-400" },
   { id: "clinica-medica", label: "Clínica Médica", icon: Stethoscope, color: "bg-blue-500/15 text-blue-600 dark:text-blue-400" },
   { id: "emergencia", label: "Emergência / UTI", icon: Activity, color: "bg-red-500/15 text-red-600 dark:text-red-400" },
   { id: "pediatria", label: "Pediatria", icon: Baby, color: "bg-cyan-500/15 text-cyan-600 dark:text-cyan-400" },

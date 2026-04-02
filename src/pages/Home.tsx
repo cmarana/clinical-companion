@@ -108,17 +108,19 @@ const iconStyles = {
 const defaultPrimaryPaths = ["/clinical-ai", "/duty", "/emergency", "/bulario", "/prescriptions", "/full-protocols"];
 
 function getPrimaryModules(specialty: string | null): Module[] {
+  // "todas" = show all primary modules (no filtering)
+  if (specialty === "todas") {
+    return allPrimaryModules;
+  }
+
   if (!specialty || specialty === "generalista") {
     return allPrimaryModules.filter(m => defaultPrimaryPaths.includes(m.path));
   }
 
-  // Always include IA + Bulário + Prescrições + Protocolos
   const alwaysShow = allPrimaryModules.filter(m => m.tags?.includes("all"));
-  // Add specialty-specific
   const specialtySpecific = allPrimaryModules.filter(
     m => !m.tags?.includes("all") && m.tags?.includes(specialty)
   );
-  // Fill remaining slots with defaults
   const combined = [...alwaysShow, ...specialtySpecific];
   const paths = new Set(combined.map(m => m.path));
 
@@ -132,7 +134,7 @@ function getPrimaryModules(specialty: string | null): Module[] {
     }
   }
 
-  return combined.slice(0, 8); // max 8
+  return combined.slice(0, 10);
 }
 
 export default function Home() {
@@ -252,7 +254,7 @@ export default function Home() {
       </div>
 
       {/* Specialty badge */}
-      {specialty && profileLoaded && (
+      {profileLoaded && (
         <motion.div
           initial={{ opacity: 0, height: 0 }}
           animate={{ opacity: 1, height: "auto" }}
@@ -263,7 +265,11 @@ export default function Home() {
             className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-[11px] font-heading font-medium hover:bg-primary/15 transition-colors"
           >
             <Sparkles size={12} />
-            {specialty.replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase())}
+            {specialty === "todas"
+              ? "Todas as áreas"
+              : specialty
+                ? specialty.replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase())
+                : "Personalizar"}
             <span className="text-primary/50 ml-0.5">· Alterar</span>
           </button>
         </motion.div>
@@ -335,22 +341,35 @@ export default function Home() {
 
       {/* ── SECONDARY MODULES (tabbed) ───────────────────────── */}
       <div className="mt-6">
-        {/* Tab selector */}
-        <div className="flex gap-1.5 mb-4 bg-muted/50 dark:bg-muted/30 p-1 rounded-2xl">
+        {/* Section header */}
+        <h2 className="font-heading font-semibold text-xs uppercase tracking-wider text-muted-foreground mb-3 px-1">
+          Mais Ferramentas
+        </h2>
+
+        {/* Tab selector — prominent pills */}
+        <div className="flex gap-2 mb-4 overflow-x-auto pb-1 -mx-1 px-1">
           {tabs.map((tab) => {
             const isActive = activeTab === tab.id;
+            const count = tab.modules.length;
             return (
               <button
                 key={tab.id}
-                onClick={() => setActiveTab(tab.id)}
-                className={`flex-1 flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl text-xs font-heading font-medium transition-all duration-200 ${
+                onClick={() => { hapticLight(); setActiveTab(tab.id); }}
+                className={`flex items-center gap-2 px-4 py-3 rounded-2xl text-xs font-heading font-semibold transition-all duration-200 shrink-0 border-2 ${
                   isActive
-                    ? "bg-card text-foreground shadow-sm"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20"
+                    : "bg-card text-foreground border-border hover:border-primary/40 hover:shadow-sm"
                 }`}
               >
-                <tab.icon size={14} />
-                <span className="truncate">{tab.label}</span>
+                <tab.icon size={16} className={isActive ? "text-primary-foreground" : "text-primary"} />
+                <span>{tab.label}</span>
+                <span className={`ml-0.5 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
+                  isActive
+                    ? "bg-white/20 text-primary-foreground"
+                    : "bg-muted text-muted-foreground"
+                }`}>
+                  {count}
+                </span>
               </button>
             );
           })}
