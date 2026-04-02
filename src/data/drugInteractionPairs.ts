@@ -718,6 +718,174 @@ export const HIGH_RISK_PAIRS: Record<string, InteractionPair[]> = {
     { drugs: ["ticagrelor"], severity: "moderado", desc: "Ticagrelor pode ser administrado durante infusão de cangrelor — interação menor." },
     { drugs: ["heparina", "enoxaparina"], severity: "moderado", desc: "Risco hemorrágico aditivo — monitorar." },
   ],
+
+  // ── Insulinas ──
+  "insulina": [
+    { drugs: ["metoprolol", "propranolol", "atenolol", "carvedilol"], severity: "moderado", desc: "Betabloqueadores mascaram sinais de hipoglicemia (taquicardia, tremor)." },
+    { drugs: ["corticosteroides", "prednisona", "dexametasona", "hidrocortisona"], severity: "moderado", desc: "Corticoides causam hiperglicemia — ajustar dose de insulina." },
+    { drugs: ["furosemida", "hidroclorotiazida", "clortalidona"], severity: "moderado", desc: "Diuréticos tiazídicos e de alça podem elevar glicemia." },
+    { drugs: ["octreotida"], severity: "moderado", desc: "Octreotida altera secreção de hormônios contrarreguladores — hipoglicemia ou hiperglicemia." },
+    { drugs: ["inibidores da mao", "selegilina", "rasagilina"], severity: "moderado", desc: "IMAOs potencializam efeito hipoglicemiante." },
+    { drugs: ["álcool", "etanol"], severity: "grave", desc: "Hipoglicemia grave prolongada — risco de coma." },
+    { drugs: ["pioglitazona", "rosiglitazona"], severity: "moderado", desc: "Hipoglicemia aditiva e retenção hídrica — ajustar dose." },
+    { drugs: ["fluoxetina"], severity: "moderado", desc: "ISRS podem potencializar hipoglicemia." },
+    { drugs: ["ciprofloxacino", "levofloxacino"], severity: "moderado", desc: "Quinolonas podem causar hipo ou hiperglicemia." },
+  ],
+  "insulina glargina": [
+    { drugs: ["metoprolol", "propranolol", "atenolol"], severity: "moderado", desc: "Mascaramento de hipoglicemia." },
+    { drugs: ["prednisona", "dexametasona"], severity: "moderado", desc: "Hiperglicemia induzida por corticoides — titular insulina." },
+    { drugs: ["pioglitazona"], severity: "moderado", desc: "Hipoglicemia aditiva — monitorar glicemia." },
+  ],
+
+  // ── Hipoglicemiantes orais clássicos ──
+  "glibenclamida": [
+    { drugs: ["fluconazol", "miconazol"], severity: "grave", desc: "Inibição CYP2C9 — hipoglicemia grave e prolongada." },
+    { drugs: ["metoprolol", "propranolol", "atenolol"], severity: "moderado", desc: "Mascaramento de sinais de hipoglicemia." },
+    { drugs: ["ciprofloxacino"], severity: "moderado", desc: "Quinolonas potencializam hipoglicemia." },
+    { drugs: ["álcool", "etanol"], severity: "grave", desc: "Reação dissulfiram-like e hipoglicemia grave." },
+    { drugs: ["rifampicina"], severity: "moderado", desc: "Indução CYP2C9 — reduz eficácia hipoglicemiante." },
+    { drugs: ["corticosteroides", "prednisona"], severity: "moderado", desc: "Antagonismo — hiperglicemia." },
+    { drugs: ["varfarina"], severity: "moderado", desc: "Competição por CYP2C9 — monitorar INR e glicemia." },
+  ],
+  "gliclazida": [
+    { drugs: ["fluconazol", "miconazol", "voriconazol"], severity: "grave", desc: "Inibição CYP2C9 — hipoglicemia grave." },
+    { drugs: ["metoprolol", "propranolol"], severity: "moderado", desc: "Mascaramento de hipoglicemia." },
+    { drugs: ["rifampicina"], severity: "moderado", desc: "Reduz eficácia de gliclazida por indução enzimática." },
+    { drugs: ["álcool", "etanol"], severity: "moderado", desc: "Risco de hipoglicemia e efeito antabuse." },
+  ],
+
+  // ── SGLT2i (Inibidores de SGLT2) ──
+  "dapagliflozina": [
+    { drugs: ["insulina", "insulina glargina", "insulina lispro"], severity: "moderado", desc: "Risco de hipoglicemia aditivo — considerar redução de dose de insulina 20%." },
+    { drugs: ["glibenclamida", "gliclazida", "glimepirida"], severity: "moderado", desc: "Hipoglicemia aditiva com sulfonilureias — reduzir dose." },
+    { drugs: ["furosemida", "hidroclorotiazida", "clortalidona"], severity: "moderado", desc: "Depleção volêmica e hipotensão aditivas — monitorar PA e hidratação." },
+    { drugs: ["enalapril", "losartana", "ramipril"], severity: "moderado", desc: "Hipotensão aditiva e risco de IRA em desidratação." },
+    { drugs: ["lítio"], severity: "moderado", desc: "SGLT2i aumentam excreção renal de lítio — monitorar litemia." },
+    { drugs: ["digoxina"], severity: "moderado", desc: "Monitorar digoxinemia — alteração do volume de distribuição." },
+  ],
+  "empagliflozina": [
+    { drugs: ["insulina", "insulina glargina"], severity: "moderado", desc: "Hipoglicemia aditiva — reduzir dose de insulina." },
+    { drugs: ["glibenclamida", "gliclazida"], severity: "moderado", desc: "Hipoglicemia aditiva com sulfonilureias." },
+    { drugs: ["furosemida", "hidroclorotiazida"], severity: "moderado", desc: "Depleção volêmica e desidratação — monitorar." },
+    { drugs: ["enalapril", "losartana", "captopril"], severity: "moderado", desc: "Risco de IRA em desidratação." },
+    { drugs: ["lítio"], severity: "moderado", desc: "Alteração na excreção renal de lítio." },
+  ],
+  "canagliflozina": [
+    { drugs: ["insulina"], severity: "moderado", desc: "Hipoglicemia aditiva — reduzir insulina 20%." },
+    { drugs: ["glibenclamida", "gliclazida"], severity: "moderado", desc: "Hipoglicemia aditiva." },
+    { drugs: ["furosemida"], severity: "moderado", desc: "Depleção volêmica aditiva." },
+    { drugs: ["rifampicina"], severity: "moderado", desc: "Indução UGT — reduz eficácia de canagliflozina." },
+    { drugs: ["fenitoína", "fenobarbital"], severity: "moderado", desc: "Indutores enzimáticos reduzem níveis de canagliflozina." },
+    { drugs: ["digoxina"], severity: "moderado", desc: "Canagliflozina aumenta exposição à digoxina 20% — monitorar." },
+  ],
+
+  // ── GLP-1ra (Agonistas GLP-1) ──
+  "liraglutida": [
+    { drugs: ["insulina", "insulina glargina"], severity: "moderado", desc: "Hipoglicemia aditiva — reduzir dose de insulina." },
+    { drugs: ["glibenclamida", "gliclazida", "glimepirida"], severity: "moderado", desc: "Hipoglicemia aditiva com sulfonilureias — reduzir dose." },
+    { drugs: ["varfarina"], severity: "moderado", desc: "Retardo no esvaziamento gástrico pode alterar absorção — monitorar INR." },
+    { drugs: ["paracetamol", "acetaminofeno"], severity: "moderado", desc: "Retardo na absorção oral — pico plasmático atrasado." },
+    { drugs: ["anticoncepcionais orais"], severity: "moderado", desc: "Retardo gástrico pode reduzir absorção — usar método adicional." },
+    { drugs: ["levotiroxina"], severity: "moderado", desc: "Absorção de levotiroxina pode ser alterada — monitorar TSH." },
+  ],
+  "semaglutida": [
+    { drugs: ["insulina", "insulina glargina"], severity: "moderado", desc: "Hipoglicemia aditiva — considerar redução de insulina." },
+    { drugs: ["glibenclamida", "gliclazida"], severity: "moderado", desc: "Hipoglicemia aditiva com sulfonilureias." },
+    { drugs: ["varfarina"], severity: "moderado", desc: "Retardo gástrico pode alterar farmacocinética — monitorar INR nas primeiras semanas." },
+    { drugs: ["levotiroxina"], severity: "moderado", desc: "Absorção alterada — monitorar TSH." },
+    { drugs: ["anticoncepcionais orais"], severity: "moderado", desc: "Possível redução de absorção — considerar método adicional." },
+  ],
+  "dulaglutida": [
+    { drugs: ["insulina"], severity: "moderado", desc: "Hipoglicemia aditiva — ajustar dose de insulina." },
+    { drugs: ["glibenclamida", "gliclazida"], severity: "moderado", desc: "Hipoglicemia aditiva." },
+    { drugs: ["varfarina"], severity: "moderado", desc: "Monitorar INR — possível alteração de absorção." },
+    { drugs: ["sitagliptina", "linagliptina"], severity: "moderado", desc: "Mecanismo semelhante (incretinas) — benefício adicional limitado." },
+  ],
+  "tirzepatida": [
+    { drugs: ["insulina", "insulina glargina"], severity: "moderado", desc: "Hipoglicemia aditiva — reduzir insulina 20%." },
+    { drugs: ["glibenclamida", "gliclazida"], severity: "moderado", desc: "Hipoglicemia aditiva com sulfonilureias." },
+    { drugs: ["varfarina"], severity: "moderado", desc: "Retardo gástrico significativo — monitorar INR por 4-8 semanas." },
+    { drugs: ["anticoncepcionais orais"], severity: "moderado", desc: "Retardo gástrico pode reduzir eficácia — usar método de barreira adicional por 4 semanas após início/titulação." },
+    { drugs: ["levotiroxina"], severity: "moderado", desc: "Absorção de levotiroxina pode ser alterada — monitorar TSH." },
+  ],
+
+  // ── Inibidores DPP-4 ──
+  "sitagliptina": [
+    { drugs: ["insulina"], severity: "moderado", desc: "Hipoglicemia aditiva leve — ajustar insulina se necessário." },
+    { drugs: ["glibenclamida", "gliclazida"], severity: "moderado", desc: "Hipoglicemia aditiva com sulfonilureias." },
+    { drugs: ["digoxina"], severity: "moderado", desc: "Aumento leve nos níveis de digoxina — monitorar." },
+  ],
+  "linagliptina": [
+    { drugs: ["rifampicina"], severity: "moderado", desc: "Indução de P-gp — reduz eficácia de linagliptina." },
+    { drugs: ["insulina"], severity: "moderado", desc: "Hipoglicemia aditiva." },
+    { drugs: ["glibenclamida"], severity: "moderado", desc: "Hipoglicemia aditiva." },
+  ],
+
+  // ── Emergências endócrinas ──
+  "levotiroxina": [
+    { drugs: ["carbonato de cálcio", "cálcio"], severity: "moderado", desc: "Cálcio reduz absorção — separar por 4h." },
+    { drugs: ["sulfato ferroso", "ferro"], severity: "moderado", desc: "Ferro reduz absorção — separar por 4h." },
+    { drugs: ["omeprazol", "pantoprazol", "esomeprazol"], severity: "moderado", desc: "IBPs reduzem absorção — pode necessitar aumento de dose." },
+    { drugs: ["colestiramina", "colestipol", "colesevelam"], severity: "grave", desc: "Sequestradores de ácidos biliares reduzem absorção drasticamente — separar por 4-6h." },
+    { drugs: ["carbamazepina", "fenitoína", "fenobarbital"], severity: "moderado", desc: "Indutores enzimáticos aumentam metabolismo — ajustar dose de levotiroxina." },
+    { drugs: ["rifampicina"], severity: "moderado", desc: "Aumenta metabolismo de levotiroxina — monitorar TSH." },
+    { drugs: ["varfarina"], severity: "moderado", desc: "Levotiroxina potencializa efeito anticoagulante — monitorar INR." },
+    { drugs: ["sertralina"], severity: "moderado", desc: "Sertralina pode reduzir eficácia de levotiroxina — monitorar TSH." },
+    { drugs: ["sucralfato"], severity: "grave", desc: "Sucralfato reduz absorção significativamente — separar por 4h." },
+    { drugs: ["ciprofloxacino"], severity: "moderado", desc: "Quelação pode reduzir absorção — separar administração." },
+  ],
+  "hidrocortisona": [
+    { drugs: ["insulina"], severity: "moderado", desc: "Hiperglicemia — ajustar dose de insulina." },
+    { drugs: ["metformina"], severity: "moderado", desc: "Antagonismo — hiperglicemia induzida por corticoide." },
+    { drugs: ["ibuprofeno", "diclofenaco", "naproxeno"], severity: "grave", desc: "Risco de úlcera e sangramento GI aditivo." },
+    { drugs: ["varfarina"], severity: "moderado", desc: "Corticoides alteram resposta anticoagulante — monitorar INR." },
+    { drugs: ["furosemida", "hidroclorotiazida"], severity: "moderado", desc: "Hipocalemia aditiva — monitorar K+." },
+    { drugs: ["anfotericina b"], severity: "grave", desc: "Hipocalemia grave aditiva — risco de arritmias." },
+    { drugs: ["cetoconazol"], severity: "moderado", desc: "Cetoconazol inibe síntese de cortisol e metabolismo — interação complexa." },
+    { drugs: ["fenitoína", "fenobarbital"], severity: "moderado", desc: "Indutores enzimáticos reduzem efeito do corticoide." },
+    { drugs: ["vacinas de vírus vivo"], severity: "grave", desc: "Imunossupressão — contraindicado vacinas vivas." },
+  ],
+  "dexametasona": [
+    { drugs: ["insulina", "glibenclamida", "metformina"], severity: "moderado", desc: "Hiperglicemia significativa — ajustar hipoglicemiantes." },
+    { drugs: ["ibuprofeno", "diclofenaco"], severity: "grave", desc: "Risco GI aditivo — úlcera e sangramento." },
+    { drugs: ["varfarina"], severity: "moderado", desc: "Altera INR — monitorar." },
+    { drugs: ["rifampicina"], severity: "moderado", desc: "Rifampicina reduz efeito da dexametasona — dobrar dose se necessário." },
+    { drugs: ["fenitoína"], severity: "moderado", desc: "Fenitoína acelera metabolismo — reduz efeito." },
+    { drugs: ["cetoconazol"], severity: "moderado", desc: "Inibe metabolismo — aumento do efeito corticoide." },
+    { drugs: ["anfotericina b"], severity: "grave", desc: "Hipocalemia grave aditiva." },
+    { drugs: ["furosemida"], severity: "moderado", desc: "Hipocalemia aditiva." },
+    { drugs: ["ciclosporina"], severity: "moderado", desc: "Aumento mútuo de níveis — monitorar." },
+  ],
+  "octreotida": [
+    { drugs: ["insulina"], severity: "moderado", desc: "Octreotida suprime glucagon e GH — risco de hipo ou hiperglicemia." },
+    { drugs: ["ciclosporina"], severity: "moderado", desc: "Reduz absorção de ciclosporina — monitorar níveis." },
+    { drugs: ["bromocriptina"], severity: "moderado", desc: "Aumento da biodisponibilidade de bromocriptina." },
+    { drugs: ["loperamida", "codeína"], severity: "moderado", desc: "Efeito constipante aditivo." },
+  ],
+  "glucagon": [
+    { drugs: ["varfarina"], severity: "moderado", desc: "Glucagon em doses altas potencializa anticoagulação — monitorar INR." },
+    { drugs: ["metoprolol", "propranolol", "atenolol"], severity: "moderado", desc: "Glucagon é antídoto para intoxicação por betabloqueador — interação terapêutica." },
+    { drugs: ["insulina"], severity: "moderado", desc: "Efeito antagônico — glucagon eleva glicemia." },
+    { drugs: ["indometacina"], severity: "moderado", desc: "Indometacina pode bloquear efeito hiperglicemiante do glucagon." },
+  ],
+  "diazóxido": [
+    { drugs: ["insulina", "glibenclamida", "metformina"], severity: "moderado", desc: "Diazóxido causa hiperglicemia — antagoniza hipoglicemiantes." },
+    { drugs: ["hidroclorotiazida"], severity: "moderado", desc: "Efeito hiperglicemiante e hiperuricêmico aditivo." },
+    { drugs: ["fenitoína"], severity: "moderado", desc: "Diazóxido reduz ligação proteica de fenitoína — monitorar nível." },
+    { drugs: ["hidralazina", "nitroprussiato"], severity: "grave", desc: "Hipotensão grave aditiva." },
+  ],
+  "metimazol": [
+    { drugs: ["varfarina"], severity: "moderado", desc: "Hipertireoidismo aumenta metabolismo de varfarina — ao tratar, INR pode subir. Monitorar." },
+    { drugs: ["propranolol"], severity: "moderado", desc: "Ao normalizar tireoide, clearance do propranolol muda — ajustar dose." },
+    { drugs: ["digoxina"], severity: "moderado", desc: "Ao corrigir hipertireoidismo, nível de digoxina pode aumentar — monitorar." },
+    { drugs: ["teofilina"], severity: "moderado", desc: "Correção do hipertireoidismo reduz clearance — risco de toxicidade." },
+    { drugs: ["carbimazol"], severity: "grave", desc: "Mesmo mecanismo — não combinar tionamidas." },
+  ],
+  "propiltiouracil": [
+    { drugs: ["varfarina"], severity: "moderado", desc: "Ao tratar hipertireoidismo, efeito anticoagulante aumenta — monitorar INR." },
+    { drugs: ["digoxina"], severity: "moderado", desc: "Nível de digoxina pode aumentar ao normalizar tireoide." },
+    { drugs: ["lítio"], severity: "moderado", desc: "Efeito antitireoidiano aditivo — hipotireoidismo." },
+  ],
 };
 
 // Normalize drug name for matching
