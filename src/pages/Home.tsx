@@ -373,7 +373,7 @@ export default function Home() {
                   transition={{ duration: 0.2, delay: i * 0.03 }}
                 >
                   <button
-                    onClick={() => navigate(m.path)}
+                    onClick={() => navigateWithTracking(m.path, m.label)}
                     className="w-full flex items-center gap-2.5 px-3.5 py-3.5 rounded-2xl bg-card text-card-foreground shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 text-left border-0"
                   >
                     <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 bg-primary/10 text-primary dark:bg-primary/20">
