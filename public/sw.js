@@ -171,7 +171,7 @@ self.addEventListener('fetch', (event) => {
           }
           return response;
         })
-        .catch(() => caches.match('/index.html'))
+        .catch(() => caches.match('/index.html').then(r => r || caches.match('/offline.html')))
     );
     return;
   }

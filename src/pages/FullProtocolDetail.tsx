@@ -65,6 +65,7 @@ export default function FullProtocolDetail() {
   useEffect(() => {
     if (protocol) {
       addEntry({ path: `/full-protocols/${id}`, title: protocol.title, type: "fullProtocol" });
+      trackView(protocol.title, protocol.category, "browse");
       cacheContent(`fullProtocol:${id}`, { id: protocol.id, title: protocol.title, category: protocol.category, sections: protocol.sections, tags: protocol.tags });
     }
   }, [protocol, id]);
