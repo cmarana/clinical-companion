@@ -7,6 +7,7 @@ import {
   Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Sparkles
 } from "lucide-react";
 import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
