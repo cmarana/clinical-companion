@@ -60,6 +60,7 @@ const ProcedureGuides = lazy(() => import("@/pages/ProcedureGuides"));
 const OfflineSetup = lazy(() => import("@/pages/OfflineSetup"));
 const PushNotificationSettings = lazy(() => import("@/pages/PushNotificationSettings"));
 const AdminAnalytics = lazy(() => import("@/pages/AdminAnalytics"));
+const UpdatesFeed = lazy(() => import("@/pages/UpdatesFeed"));
 
 const queryClient = new QueryClient();
 
