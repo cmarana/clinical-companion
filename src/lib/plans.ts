@@ -8,7 +8,7 @@ export interface Plan {
   monthlyEquivalent: string;
   savings?: string;
   popular?: boolean;
-  priceId?: string; // Stripe price ID for direct plans
+  priceId: string;
 }
 
 export const plans: Plan[] = [
@@ -20,27 +20,7 @@ export const plans: Plan[] = [
     price: 19.90,
     priceDisplay: "R$ 19,90",
     monthlyEquivalent: "R$ 19,90/mês",
-  },
-  {
-    id: "quarterly",
-    name: "Trimestral",
-    interval: "quarter",
-    intervalLabel: "/trimestre",
-    price: 49.90,
-    priceDisplay: "R$ 49,90",
-    monthlyEquivalent: "R$ 16,63/mês",
-    savings: "Economize 17%",
-  },
-  {
-    id: "semiannual",
-    name: "Semestral",
-    interval: "semiannual",
-    intervalLabel: "/semestre",
-    price: 89.90,
-    priceDisplay: "R$ 89,90",
-    monthlyEquivalent: "R$ 14,98/mês",
-    savings: "Economize 25%",
-    popular: true,
+    priceId: "price_1T9b7EFLmvoivW0nSUzffFtq",
   },
   {
     id: "annual",
@@ -51,25 +31,69 @@ export const plans: Plan[] = [
     priceDisplay: "R$ 149,90",
     monthlyEquivalent: "R$ 12,49/mês",
     savings: "Economize 37%",
+    popular: true,
+    priceId: "price_1T9b8KFLmvoivW0n34Lg8P7X",
   },
 ];
 
-// Free content: only these protocol sections are visible
+// ── FREE TIER LIMITS ─────────────────────────────────────────
+// Free protocols: 10 most common emergency/clinical protocols
+export const FREE_PROTOCOL_IDS = [
+  "dor-toracica", "dispneia", "itu", "pneumonia", "sepse",
+  "hipertensao-emergencia", "cetoacidose-diabetica", "anafilaxia",
+  "crise-asmatica", "iam"
+];
+
+// Free medications: 10 most common drugs
+export const FREE_MEDICATION_IDS = [
+  "dipirona", "omeprazol", "ondansetrona", "paracetamol", "amoxicilina",
+  "metoclopramida", "ibuprofeno", "dexametasona", "furosemida", "enoxaparina"
+];
+
+// Free bulario: 10 medications accessible in the full drug reference
+export const FREE_BULARIO_COUNT = 10;
+
+// Free protocol sections visible for free protocols
 export const FREE_PROTOCOL_SECTIONS = ["def", "diag"];
-// Free content: only these medication fields are visible
+
+// Free medication fields visible for free meds
 export const FREE_MEDICATION_FIELDS = ["indication"] as const;
-// Free protocols: only these 3 basic protocols are accessible for free users
-export const FREE_PROTOCOL_IDS = ["dor-toracica", "dispneia", "itu"];
-// Free medications: only these 3 basic medications are accessible for free users
-export const FREE_MEDICATION_IDS = ["dipirona", "omeprazol", "ondansetrona"];
-// Free features
+
+// ── FEATURE ACCESS MATRIX ────────────────────────────────────
 export const FREE_FEATURES = {
-  protocols: true,      // can browse list
-  protocolPreview: true, // can see first 2 sections of free protocols only
-  medications: true,     // can browse list
-  medicationPreview: true, // can see indication of free meds only
+  // Can browse lists
+  protocols: true,
+  protocolPreview: true,      // first 2 sections of free protocols only
+  medications: true,
+  medicationPreview: true,    // indication of free meds only
+  bulario: true,              // browse list, view 10 free items
+
+  // Fully accessible free
+  favorites: true,            // up to 10 items
+  calculatorsBasic: true,     // IMC, clearance, glasgow
+  emergencyShortcuts: true,   // view quick links
+  search: true,               // basic search (no voice)
+
+  // Premium-only
+  clinicalAI: false,
+  voiceCommands: false,
+  dutyMode: false,
+  emergencyMode: false,
+  prescriptions: false,
+  calculatorsAdvanced: false,
   quiz: false,
-  emergency: false,
+  flashcards: false,
+  offlineMode: false,
+  sharing: false,
+  clinicalAtlas: false,
   notes: false,
-  favorites: true,
+  procedureGuides: false,
+  drugInteractions: false,
+  ivDilutions: false,
+  documentGenerator: false,
 };
+
+// Max favorites for free users
+export const FREE_FAVORITES_LIMIT = 10;
+// Max quiz questions per day for free users
+export const FREE_QUIZ_DAILY_LIMIT = 3;
