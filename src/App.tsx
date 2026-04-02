@@ -57,6 +57,7 @@ const PediatricDoseCalculator = lazy(() => import("@/pages/PediatricDoseCalculat
 const DocumentGenerator = lazy(() => import("@/pages/DocumentGenerator"));
 const ProcedureGuides = lazy(() => import("@/pages/ProcedureGuides"));
 const OfflineSetup = lazy(() => import("@/pages/OfflineSetup"));
+const PushNotificationSettings = lazy(() => import("@/pages/PushNotificationSettings"));
 
 const queryClient = new QueryClient();
 
@@ -127,6 +128,7 @@ const AppRoutes = () => (
         <Route path="/documents" element={<DocumentGenerator />} />
         <Route path="/procedure-guides" element={<ProcedureGuides />} />
         <Route path="/offline" element={<OfflineSetup />} />
+        <Route path="/push-notifications" element={<PushNotificationSettings />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
