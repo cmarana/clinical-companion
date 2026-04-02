@@ -347,7 +347,7 @@ export default function Home() {
       ))}
 
       {/* Weekly Summary Widget — lower priority, below modules */}
-      <div className="mt-7">
+      <div className="mt-8 pt-6 border-t border-border/40">
         <WeeklySummaryWidget />
       </div>
     </div>
