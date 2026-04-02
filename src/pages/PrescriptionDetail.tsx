@@ -3,13 +3,16 @@ import { useEffect } from "react";
 import TopBar from "@/components/TopBar";
 import { prescriptionCategories } from "@/data/prescriptions/index";
 import { Button } from "@/components/ui/button";
-import { Copy, Check, Star, Printer } from "lucide-react";
+import { Copy, Check, Star, Printer, Share2 } from "lucide-react";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { Input } from "@/components/ui/input";
 import { useRecentHistory } from "@/hooks/useRecentHistory";
 import { Label } from "@/components/ui/label";
+import ShareMenu from "@/components/ShareMenu";
+import { formatPrescriptionForShare } from "@/lib/shareUtils";
+import { cacheContent } from "@/lib/offlineCache";
 import {
   Dialog,
   DialogContent,
@@ -39,6 +42,7 @@ export default function PrescriptionDetail() {
   useEffect(() => {
     if (prescription) {
       addEntry({ path: `/prescriptions/${id}`, title: prescription.title, type: "prescription" });
+      cacheContent(`prescription:${id}`, { id: prescription.id, title: prescription.title });
     }
   }, [id]);
 
@@ -156,6 +160,12 @@ ${prescription.warnings ? `<div class="warning"><h2>⚠ Atenção</h2><pre>${esc
               {copied ? <Check size={14} /> : <Copy size={14} />}
               {copied ? "Copiado" : "Copiar"}
             </Button>
+            <ShareMenu
+              title={prescription.title}
+              showPDF
+              shareUrl={`${window.location.origin}/prescriptions/${prescription.id}`}
+              getText={() => formatPrescriptionForShare(prescription.title, prescription.prescription.split("\n"))}
+            />
           </div>
         </div>
 

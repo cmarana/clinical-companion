@@ -63,7 +63,17 @@ export function formatProtocolForShare(title: string, category: string, sections
     text += `${section.content}\n\n`;
   }
   
-  text += `\n📱 _Compartilhado via PS Guide_`;
+  text += `\n📱 _Compartilhado via PULSO_`;
+  return text;
+}
+
+export function formatPrescriptionForShare(title: string, items: string[]): string {
+  let text = `📋 *Prescrição — ${title}*\n`;
+  text += `${"─".repeat(30)}\n\n`;
+  for (const item of items) {
+    text += `${item}\n`;
+  }
+  text += `\n📱 _Compartilhado via PULSO_`;
   return text;
 }
 
@@ -73,6 +83,6 @@ export function formatNoteForShare(title: string, category: string, content: str
   if (patient) text += `👤 ${patient}\n`;
   text += `${"─".repeat(30)}\n\n`;
   text += content;
-  text += `\n\n📱 _Compartilhado via PS Guide_`;
+  text += `\n\n📱 _Compartilhado via PULSO_`;
   return text;
 }

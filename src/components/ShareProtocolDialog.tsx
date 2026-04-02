@@ -48,14 +48,14 @@ export default function ShareProtocolDialog({ open, onClose, protocolTitle, shar
   };
 
   const handleWhatsApp = () => {
-    const msg = `📋 *${protocolTitle}*\n\n🔗 ${shareUrl}\n\n📱 _Compartilhado via PS Guide_`;
+    const msg = `📋 *${protocolTitle}*\n\n🔗 ${shareUrl}\n\n📱 _Compartilhado via PULSO_`;
     window.open(`https://wa.me/?text=${encodeURIComponent(msg)}`, "_blank");
   };
 
   const handleNativeShare = async () => {
     if (navigator.share) {
       try {
-        await navigator.share({ title: protocolTitle, text: `${protocolTitle} - PS Guide`, url: shareUrl });
+        await navigator.share({ title: protocolTitle, text: `${protocolTitle} - PULSO`, url: shareUrl });
       } catch { /* cancelled */ }
     }
   };
