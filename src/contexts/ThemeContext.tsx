@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
 import { safeLocalStorage } from "@/lib/safeStorage";
 
-type Theme = "light" | "dark";
+type Theme = "light" | "dark" | "oled";
 type FontSize = "small" | "normal" | "large" | "xlarge";
 
 const fontSizeMap: Record<FontSize, string> = {
@@ -18,9 +18,19 @@ const fontSizeLabels: Record<FontSize, string> = {
   xlarge: "Extra Grande",
 };
 
+const themeLabels: Record<Theme, string> = {
+  light: "Claro",
+  dark: "Escuro",
+  oled: "Plantão Noturno",
+};
+
+const themeCycle: Theme[] = ["light", "dark", "oled"];
+
 interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
+  setTheme: (t: Theme) => void;
+  themeLabel: string;
   fontSize: FontSize;
   setFontSize: (size: FontSize) => void;
   fontSizeOptions: { value: FontSize; label: string }[];
@@ -29,9 +39,9 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
-  const [theme, setTheme] = useState<Theme>(() => {
+  const [theme, setThemeState] = useState<Theme>(() => {
     const stored = safeLocalStorage.getItem("app-theme");
-    if (stored === "dark" || stored === "light") return stored;
+    if (stored === "dark" || stored === "light" || stored === "oled") return stored;
     return typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
       : "light";
@@ -44,7 +54,10 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   });
 
   useEffect(() => {
-    document.documentElement.classList.toggle("dark", theme === "dark");
+    const el = document.documentElement;
+    el.classList.remove("dark", "oled");
+    if (theme === "dark") el.classList.add("dark");
+    if (theme === "oled") el.classList.add("dark", "oled");
     safeLocalStorage.setItem("app-theme", theme);
   }, [theme]);
 
@@ -53,7 +66,14 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     safeLocalStorage.setItem("app-font-size", fontSize);
   }, [fontSize]);
 
-  const toggleTheme = () => setTheme((t) => (t === "dark" ? "light" : "dark"));
+  const toggleTheme = () => {
+    setThemeState((t) => {
+      const idx = themeCycle.indexOf(t);
+      return themeCycle[(idx + 1) % themeCycle.length];
+    });
+  };
+
+  const setTheme = (t: Theme) => setThemeState(t);
 
   const setFontSize = (size: FontSize) => setFontSizeState(size);
 
@@ -63,7 +83,7 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
   }));
 
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, fontSize, setFontSize, fontSizeOptions }}>
+    <ThemeContext.Provider value={{ theme, toggleTheme, setTheme, themeLabel: themeLabels[theme], fontSize, setFontSize, fontSizeOptions }}>
       {children}
     </ThemeContext.Provider>
   );
