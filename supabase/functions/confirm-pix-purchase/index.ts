@@ -19,51 +19,89 @@ serve(async (req) => {
   );
 
   try {
-    const authHeader = req.headers.get("Authorization")!;
+    // Authenticate user
+    const authHeader = req.headers.get("Authorization");
+    if (!authHeader) throw new Error("Not authenticated");
     const token = authHeader.replace("Bearer ", "");
     const { data: userData } = await supabaseAdmin.auth.getUser(token);
     const user = userData.user;
     if (!user) throw new Error("Not authenticated");
 
     const body = await req.json().catch(() => ({}));
-    const planType = body.planType || "monthly";
+    const sessionId = body.sessionId;
+    if (!sessionId) throw new Error("Missing sessionId");
+
+    // Check if this session was already processed (idempotency)
+    const { data: existingPurchase } = await supabaseAdmin
+      .from("pix_purchases")
+      .select("id, access_end")
+      .eq("stripe_session_id", sessionId)
+      .eq("status", "active")
+      .limit(1);
+
+    if (existingPurchase && existingPurchase.length > 0) {
+      return new Response(JSON.stringify({
+        success: true,
+        already_processed: true,
+        access_end: existingPurchase[0].access_end,
+      }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+        status: 200,
+      });
+    }
+
+    // Validate payment with Stripe
+    const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
+      apiVersion: "2025-08-27.basil",
+    });
+
+    const session = await stripe.checkout.sessions.retrieve(sessionId);
+
+    // Verify: payment completed, belongs to this user, and is a one-time payment
+    if (session.payment_status !== "paid") {
+      throw new Error("Payment not completed");
+    }
+    if (session.metadata?.user_id !== user.id) {
+      throw new Error("Session does not belong to this user");
+    }
+    if (session.mode !== "payment") {
+      throw new Error("Not a one-time payment session");
+    }
+
+    const planType = session.metadata?.plan_type || "monthly";
 
     // Calculate access period
     const now = new Date();
+    let startDate = new Date(now);
     const accessEnd = new Date(now);
-    if (planType === "annual") {
-      accessEnd.setFullYear(accessEnd.getFullYear() + 1);
-    } else {
-      accessEnd.setMonth(accessEnd.getMonth() + 1);
-    }
 
-    // Check if user already has an active PIX purchase
+    // Check if user already has an active PIX purchase — extend from end date
     const { data: existing } = await supabaseAdmin
       .from("pix_purchases")
       .select("id, access_end")
       .eq("user_id", user.id)
       .eq("status", "active")
       .gte("access_end", now.toISOString())
+      .order("access_end", { ascending: false })
       .limit(1);
 
-    // If they have an active purchase, extend from end date
-    let startDate = now;
     if (existing && existing.length > 0) {
       startDate = new Date(existing[0].access_end);
-      const newEnd = new Date(startDate);
-      if (planType === "annual") {
-        newEnd.setFullYear(newEnd.getFullYear() + 1);
-      } else {
-        newEnd.setMonth(newEnd.getMonth() + 1);
-      }
-      accessEnd.setTime(newEnd.getTime());
     }
 
-    const amount = planType === "annual" ? 8990 : 990;
+    if (planType === "annual") {
+      accessEnd.setTime(startDate.getTime());
+      accessEnd.setFullYear(accessEnd.getFullYear() + 1);
+    } else {
+      accessEnd.setTime(startDate.getTime());
+      accessEnd.setMonth(accessEnd.getMonth() + 1);
+    }
+
+    const amount = session.amount_total || (planType === "annual" ? 8990 : 990);
 
     const { error } = await supabaseAdmin.from("pix_purchases").insert({
       user_id: user.id,
-      stripe_session_id: `pix_${Date.now()}`,
+      stripe_session_id: sessionId,
       plan_type: planType,
       amount,
       status: "active",
@@ -73,11 +111,15 @@ serve(async (req) => {
 
     if (error) throw new Error(error.message);
 
-    return new Response(JSON.stringify({ success: true, access_end: accessEnd.toISOString() }), {
+    return new Response(JSON.stringify({
+      success: true,
+      access_end: accessEnd.toISOString(),
+    }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 200,
     });
   } catch (error) {
+    console.error("confirm-pix-purchase error:", error.message);
     return new Response(JSON.stringify({ error: error.message }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
       status: 500,

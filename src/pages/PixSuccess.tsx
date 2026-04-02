@@ -1,37 +1,79 @@
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle2, Calendar, RefreshCw, Crown, ArrowRight } from "lucide-react";
+import { CheckCircle2, Calendar, RefreshCw, Crown, ArrowRight, AlertCircle, Loader2 } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 
+type Status = "loading" | "confirming" | "success" | "error";
+
 export default function PixSuccess() {
-  const { user, subscription, checkSubscription } = useAuth();
+  const { user, checkSubscription } = useAuth();
   const navigate = useNavigate();
+  const [searchParams] = useSearchParams();
+  const [status, setStatus] = useState<Status>("loading");
   const [accessEnd, setAccessEnd] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [errorMsg, setErrorMsg] = useState("");
 
   useEffect(() => {
-    const load = async () => {
-      if (!user) { setLoading(false); return; }
+    const sessionId = searchParams.get("session_id");
+    const plan = searchParams.get("plan");
+
+    if (!user) {
+      setStatus("loading");
+      return;
+    }
+
+    if (!sessionId) {
+      // No session_id — just show existing PIX purchase info
+      loadExistingPurchase();
+      return;
+    }
+
+    confirmPurchase(sessionId, plan || "monthly");
+  }, [user, searchParams]);
+
+  const loadExistingPurchase = async () => {
+    const { data } = await supabase
+      .from("pix_purchases")
+      .select("access_end")
+      .eq("user_id", user!.id)
+      .eq("status", "active")
+      .order("access_end", { ascending: false })
+      .limit(1);
+
+    if (data && data.length > 0) {
+      setAccessEnd(data[0].access_end);
+      setStatus("success");
+    } else {
+      setStatus("error");
+      setErrorMsg("Nenhuma compra PIX encontrada.");
+    }
+  };
+
+  const confirmPurchase = async (sessionId: string, plan: string) => {
+    setStatus("confirming");
+    try {
+      const { data, error } = await supabase.functions.invoke("confirm-pix-purchase", {
+        body: { sessionId, planType: plan },
+      });
+
+      if (error) throw error;
+      if (data?.error) throw new Error(data.error);
+
+      setAccessEnd(data.access_end);
+      setStatus("success");
+
+      // Refresh subscription state
       await checkSubscription();
-      // Fetch latest pix purchase
-      const { data } = await supabase
-        .from("pix_purchases")
-        .select("access_end, plan_type")
-        .eq("user_id", user.id)
-        .eq("status", "active")
-        .order("access_end", { ascending: false })
-        .limit(1);
-      if (data && data.length > 0) {
-        setAccessEnd(data[0].access_end);
-      }
-      setLoading(false);
-    };
-    load();
-  }, [user]);
+    } catch (err: any) {
+      console.error("PIX confirmation error:", err);
+      setErrorMsg(err.message || "Erro ao confirmar pagamento.");
+      setStatus("error");
+    }
+  };
 
   const formatDate = (iso: string) =>
     new Date(iso).toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" });
@@ -40,12 +82,40 @@ export default function PixSuccess() {
     ? Math.max(0, Math.ceil((new Date(accessEnd).getTime() - Date.now()) / 86400000))
     : 0;
 
-  if (loading) {
+  if (status === "loading" || status === "confirming") {
     return (
       <>
         <TopBar title="Confirmação" />
-        <div className="min-h-screen flex items-center justify-center">
-          <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+        <div className="min-h-screen flex flex-col items-center justify-center gap-4">
+          <Loader2 size={32} className="text-primary animate-spin" />
+          <p className="text-sm text-muted-foreground">
+            {status === "confirming" ? "Confirmando pagamento PIX..." : "Carregando..."}
+          </p>
+        </div>
+      </>
+    );
+  }
+
+  if (status === "error") {
+    return (
+      <>
+        <TopBar title="Erro" />
+        <div className="px-4 py-8 max-w-lg mx-auto space-y-6 pb-24">
+          <div className="text-center space-y-3">
+            <div className="mx-auto w-20 h-20 rounded-full bg-destructive/10 flex items-center justify-center">
+              <AlertCircle size={48} className="text-destructive" />
+            </div>
+            <h1 className="font-heading text-2xl font-bold">Erro na confirmação</h1>
+            <p className="text-sm text-muted-foreground">{errorMsg}</p>
+          </div>
+          <div className="space-y-3">
+            <Button onClick={() => navigate("/pricing")} className="w-full" size="lg">
+              Voltar para planos
+            </Button>
+            <Button onClick={() => window.location.reload()} variant="outline" className="w-full">
+              Tentar novamente
+            </Button>
+          </div>
         </div>
       </>
     );
@@ -55,7 +125,6 @@ export default function PixSuccess() {
     <>
       <TopBar title="Pagamento Confirmado" />
       <div className="px-4 py-8 max-w-lg mx-auto space-y-6 pb-24">
-        {/* Success Icon */}
         <div className="text-center space-y-3">
           <div className="mx-auto w-20 h-20 rounded-full bg-primary/10 flex items-center justify-center">
             <CheckCircle2 size={48} className="text-primary" />
@@ -66,7 +135,6 @@ export default function PixSuccess() {
           </p>
         </div>
 
-        {/* Access Details */}
         <Card className="border-primary/30">
           <CardContent className="p-5 space-y-4">
             <div className="flex items-center gap-3">
@@ -103,7 +171,6 @@ export default function PixSuccess() {
           </CardContent>
         </Card>
 
-        {/* Actions */}
         <div className="space-y-3">
           <Button onClick={() => navigate("/")} className="w-full h-12 font-heading font-bold gap-2" size="lg">
             <ArrowRight size={18} />
