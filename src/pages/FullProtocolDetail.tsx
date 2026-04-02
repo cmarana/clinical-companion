@@ -17,6 +17,8 @@ import { ProtocolDetailSkeleton } from "@/components/PageSkeleton";
 import DecisionTree from "@/components/DecisionTree";
 import { decisionTrees } from "@/data/decisionTrees";
 import EmbeddedCalculators, { findCalcsForProtocol } from "@/components/EmbeddedCalculators";
+import { getProtocolUpdateLabel } from "@/data/protocolChangelog";
+import { CalendarCheck } from "lucide-react";
 
 export default function FullProtocolDetail() {
   const { id } = useParams<{ id: string }>();
