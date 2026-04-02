@@ -18,6 +18,7 @@ export default function AppLayout() {
           </header>
           <main className="flex-1 bg-background text-foreground pb-16 md:pb-0">
             <Outlet />
+            <MedicalDisclaimer />
           </main>
         </div>
       </div>

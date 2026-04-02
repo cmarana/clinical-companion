@@ -347,6 +347,9 @@ export default function Home() {
         </motion.div>
       ))}
 
+      {/* Voice Features Banner */}
+      <VoiceFeaturesBanner />
+
       {/* Weekly Summary Widget — lower priority, below modules */}
       <div className="mt-8 pt-6 border-t border-border/40">
         <WeeklySummaryWidget />
