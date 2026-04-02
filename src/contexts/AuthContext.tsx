@@ -79,7 +79,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     let initialCheckDone = false;
 
     const { data: { subscription: authSub } } = supabase.auth.onAuthStateChange(
-      async (_event, newSession) => {
+      async (event, newSession) => {
         setSession(newSession);
         setUser(newSession?.user ?? null);
         setLoading(false);
@@ -87,6 +87,21 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           if (!initialCheckDone) {
             initialCheckDone = true;
             setTimeout(() => checkSubscription(), 0);
+          }
+          // Send welcome email on first sign-up
+          if (event === 'SIGNED_IN' && newSession.user.created_at) {
+            const createdAt = new Date(newSession.user.created_at).getTime();
+            const now = Date.now();
+            if (now - createdAt < 60000) {
+              supabase.functions.invoke("send-transactional-email", {
+                body: {
+                  templateName: "welcome",
+                  recipientEmail: newSession.user.email,
+                  idempotencyKey: `welcome-${newSession.user.id}`,
+                  templateData: { name: newSession.user.user_metadata?.full_name },
+                },
+              }).catch(() => {});
+            }
           }
         } else {
           setSubscription(defaultSub);
