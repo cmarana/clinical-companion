@@ -173,7 +173,7 @@ export default function OfflineSetup() {
     return acc;
   }, {});
 
-  const filteredGrouped = searchTerm
+  const filteredGrouped: Record<string, CachedItem[]> = searchTerm
     ? Object.fromEntries(
         Object.entries(grouped).map(([type, items]) => [
           type,
@@ -181,7 +181,7 @@ export default function OfflineSetup() {
             const meta = getItemMeta(i);
             return meta.title.toLowerCase().includes(searchTerm.toLowerCase());
           })
-        ]).filter(([, items]) => (items as CachedItem[]).length > 0)
+        ]).filter(([, items]) => items.length > 0)
       )
     : grouped;
 
