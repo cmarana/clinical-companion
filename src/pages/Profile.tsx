@@ -77,6 +77,7 @@ const themeOptions = [
 export default function Profile() {
   const { user, signOut, subscription } = useAuth();
   const { theme, setTheme } = useTheme();
+  const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
