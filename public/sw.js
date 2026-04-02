@@ -232,3 +232,61 @@ self.addEventListener('fetch', (event) => {
       .catch(() => caches.match(event.request))
   );
 });
+
+// ── Push Notification Handler ──
+self.addEventListener('push', (event) => {
+  let data = { title: 'PULSO', body: '', url: '/', icon: '/icons/icon-192.png' };
+  
+  try {
+    if (event.data) {
+      const parsed = event.data.json();
+      data = { ...data, ...parsed };
+    }
+  } catch (e) {
+    if (event.data) {
+      data.body = event.data.text();
+    }
+  }
+
+  const options = {
+    body: data.body,
+    icon: data.icon || '/icons/icon-192.png',
+    badge: '/icons/icon-192.png',
+    tag: data.tag || 'pulso-notification',
+    requireInteraction: true,
+    data: { url: data.url || '/' },
+    vibrate: [300, 100, 300],
+    actions: [
+      { action: 'open', title: 'Abrir' },
+      { action: 'dismiss', title: 'Dispensar' },
+    ],
+  };
+
+  event.waitUntil(
+    self.registration.showNotification(data.title, options)
+  );
+});
+
+// ── Notification Click Handler ──
+self.addEventListener('notificationclick', (event) => {
+  event.notification.close();
+
+  if (event.action === 'dismiss') return;
+
+  const url = event.notification.data?.url || '/';
+
+  event.waitUntil(
+    self.clients.matchAll({ type: 'window', includeUncontrolled: true }).then((clients) => {
+      // Focus existing window if available
+      for (const client of clients) {
+        if (client.url.includes(self.location.origin)) {
+          client.focus();
+          client.navigate(url);
+          return;
+        }
+      }
+      // Open new window
+      return self.clients.openWindow(url);
+    })
+  );
+});
