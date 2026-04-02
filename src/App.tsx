@@ -135,6 +135,7 @@ const AppRoutes = () => (
         <Route path="/push-notifications" element={<PushNotificationSettings />} />
         <Route path="/admin/analytics" element={<AdminAnalytics />} />
         <Route path="/updates" element={<UpdatesFeed />} />
+        <Route path="/pix-success" element={<PixSuccess />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
