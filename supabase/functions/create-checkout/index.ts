@@ -8,8 +8,8 @@ const corsHeaders = {
 };
 
 const PRICE_MAP: Record<string, string> = {
-  monthly: "price_1T9b7EFLmvoivW0nSUzffFtq",
-  annual: "price_1T9b8KFLmvoivW0n34Lg8P7X",
+  monthly: "price_1THgm6FLmvoivW0nM2oX7iwh",
+  annual: "price_1THgm7FLmvoivW0nIvfRyMSc",
 };
 
 serve(async (req) => {
@@ -57,7 +57,8 @@ serve(async (req) => {
         subscription_data: hadTrial ? undefined : { trial_period_days: 7 },
         success_url: `${req.headers.get("origin")}/pricing?success=true`,
         cancel_url: `${req.headers.get("origin")}/pricing`,
-        payment_method_types: ["card"],
+        payment_method_types: ["card", "boleto"],
+        locale: "pt-BR",
       });
 
       return new Response(JSON.stringify({ url: session.url }), {
@@ -74,7 +75,8 @@ serve(async (req) => {
       subscription_data: { trial_period_days: 7 },
       success_url: `${req.headers.get("origin")}/pricing?success=true`,
       cancel_url: `${req.headers.get("origin")}/pricing`,
-      payment_method_types: ["card"],
+      payment_method_types: ["card", "boleto"],
+      locale: "pt-BR",
     });
 
     return new Response(JSON.stringify({ url: session.url }), {

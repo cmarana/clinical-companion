@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, Crown, LogOut, Sparkles, X, Shield, Zap, Gift } from "lucide-react";
+import { Check, Crown, LogOut, Sparkles, X, Shield, Zap, Gift, CreditCard, QrCode, Receipt } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -222,6 +222,25 @@ export default function Pricing() {
               <Gift size={18} />
               {loading ? "Redirecionando..." : "Começar 7 dias grátis"}
             </Button>
+
+            {/* Payment methods */}
+            <div className="flex flex-col items-center gap-2">
+              <p className="text-[11px] text-muted-foreground font-medium">Formas de pagamento aceitas</p>
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-1.5 text-muted-foreground">
+                  <CreditCard size={16} className="text-primary" />
+                  <span className="text-[11px]">Cartão</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-muted-foreground">
+                  <QrCode size={16} className="text-primary" />
+                  <span className="text-[11px]">PIX</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-muted-foreground">
+                  <Receipt size={16} className="text-primary" />
+                  <span className="text-[11px]">Boleto</span>
+                </div>
+              </div>
+            </div>
 
             <p className="text-[10px] text-muted-foreground text-center leading-relaxed">
               Teste grátis por 7 dias. Cobrado apenas após o período de teste. Cancele a qualquer momento. Pagamento seguro via Stripe.
