@@ -4,7 +4,7 @@ import {
   Baby, Heart, Stethoscope, BookOpen, HelpCircle,
   AlertTriangle, Zap, Moon, Sun, ChevronRight, Bot, FlaskConical,
   Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain, GraduationCap,
-  Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Sparkles
+  Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Sparkles, Eclipse
 } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
