@@ -58,6 +58,7 @@ const DocumentGenerator = lazy(() => import("@/pages/DocumentGenerator"));
 const ProcedureGuides = lazy(() => import("@/pages/ProcedureGuides"));
 const OfflineSetup = lazy(() => import("@/pages/OfflineSetup"));
 const PushNotificationSettings = lazy(() => import("@/pages/PushNotificationSettings"));
+const AdminAnalytics = lazy(() => import("@/pages/AdminAnalytics"));
 
 const queryClient = new QueryClient();
 
@@ -129,6 +130,7 @@ const AppRoutes = () => (
         <Route path="/procedure-guides" element={<ProcedureGuides />} />
         <Route path="/offline" element={<OfflineSetup />} />
         <Route path="/push-notifications" element={<PushNotificationSettings />} />
+        <Route path="/admin/analytics" element={<AdminAnalytics />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
