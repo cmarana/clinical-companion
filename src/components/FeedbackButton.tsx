@@ -25,7 +25,9 @@ export default function FeedbackButton() {
     if (!message.trim()) return;
     setSending(true);
     try {
+      const feedbackId = crypto.randomUUID();
       const { error } = await supabase.from("feedback").insert({
+        id: feedbackId,
         user_id: user.id,
         type,
         message: message.trim(),
@@ -35,6 +37,16 @@ export default function FeedbackButton() {
       toast.success("Feedback enviado! Obrigado 🙏");
       setMessage("");
       setOpen(false);
+
+      // Send confirmation email (fire-and-forget)
+      supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "feedback-confirmation",
+          recipientEmail: user.email,
+          idempotencyKey: `feedback-confirm-${feedbackId}`,
+          templateData: { type },
+        },
+      }).catch(() => {});
     } catch (e: any) {
       toast.error("Erro ao enviar feedback");
     } finally {

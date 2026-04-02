@@ -66,6 +66,7 @@ const PixSuccess = lazy(() => import("@/pages/PixSuccess"));
 const TermsOfUse = lazy(() => import("@/pages/TermsOfUse"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
 const Referral = lazy(() => import("@/pages/Referral"));
+const Unsubscribe = lazy(() => import("@/pages/Unsubscribe"));
 
 const queryClient = new QueryClient();
 
@@ -93,6 +94,7 @@ const AppRoutes = () => (
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/terms" element={<TermsOfUse />} />
       <Route path="/privacy" element={<PrivacyPolicy />} />
+      <Route path="/unsubscribe" element={<Unsubscribe />} />
       <Route element={<AppLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/protocols" element={<Navigate to="/full-protocols" replace />} />
