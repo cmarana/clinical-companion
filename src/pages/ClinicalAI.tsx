@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot } from "lucide-react";
+import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot, Mic, MicOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { streamClinicalAi } from "@/lib/clinicalAiStream";
 import { toast } from "sonner";
 import ClinicalResponseCards from "@/components/ClinicalResponseCards";
+import { motion } from "framer-motion";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -39,6 +40,61 @@ export default function ClinicalAI() {
   const [exams, setExams] = useState("");
   const [medications, setMedications] = useState("");
   const [additionalInfo, setAdditionalInfo] = useState("");
+  const [isListening, setIsListening] = useState(false);
+  const [voiceTarget, setVoiceTarget] = useState<"chat" | "symptoms" | "history" | "vitals" | "exams">("chat");
+  const recognitionRef = useRef<any>(null);
+
+  const speechSupported = typeof window !== "undefined" && ("SpeechRecognition" in window || "webkitSpeechRecognition" in window);
+
+  const startVoice = useCallback((target: typeof voiceTarget) => {
+    if (isListening && recognitionRef.current) {
+      recognitionRef.current.stop();
+      setIsListening(false);
+      return;
+    }
+
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) { toast.error("Navegador não suporta reconhecimento de voz"); return; }
+
+    const recognition = new SpeechRecognition();
+    recognition.lang = "pt-BR";
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.maxAlternatives = 1;
+    recognitionRef.current = recognition;
+    setVoiceTarget(target);
+
+    let finalTranscript = "";
+
+    recognition.onstart = () => setIsListening(true);
+
+    recognition.onresult = (event: any) => {
+      let interim = "";
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        const t = event.results[i][0].transcript;
+        if (event.results[i].isFinal) {
+          finalTranscript += t + " ";
+        } else {
+          interim = t;
+        }
+      }
+      const combined = (finalTranscript + interim).trim();
+      
+      switch (target) {
+        case "chat": setInput(combined); break;
+        case "symptoms": setSymptoms(combined); break;
+        case "history": setHistory(combined); break;
+        case "vitals": setVitals(combined); break;
+        case "exams": setExams(combined); break;
+      }
+    };
+
+    recognition.onerror = () => { setIsListening(false); toast.error("Erro no reconhecimento de voz"); };
+    recognition.onend = () => setIsListening(false);
+
+    recognition.start();
+    toast.success("🎤 Ouvindo... fale o relato do paciente");
+  }, [isListening]);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -271,24 +327,55 @@ export default function ClinicalAI() {
           <TabsContent value="chat" className="mt-0">
             <form onSubmit={handleChatSubmit} className="flex gap-2">
               <Textarea value={input} onChange={(e) => setInput(e.target.value)}
-                placeholder="Descreva sintomas, caso clínico ou dúvida..."
+                placeholder={isListening && voiceTarget === "chat" ? "🎤 Ouvindo..." : "Descreva sintomas, caso clínico ou dúvida..."}
                 className="min-h-[44px] max-h-32 text-sm resize-none rounded-xl"
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleChatSubmit(e); }
                 }}
               />
+              {speechSupported && (
+                <Button type="button" size="icon" variant={isListening && voiceTarget === "chat" ? "destructive" : "outline"}
+                  onClick={() => startVoice("chat")}
+                  className={`shrink-0 rounded-xl h-[44px] w-[44px] ${isListening && voiceTarget === "chat" ? "animate-pulse" : ""}`}
+                  title={isListening ? "Parar gravação" : "Ditar relato por voz"}
+                >
+                  {isListening && voiceTarget === "chat" ? <MicOff size={18} /> : <Mic size={18} />}
+                </Button>
+              )}
               <Button type="submit" size="icon" disabled={isLoading || !input.trim()} className="shrink-0 rounded-xl h-[44px] w-[44px]">
                 {isLoading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
               </Button>
             </form>
+            {isListening && voiceTarget === "chat" && (
+              <motion.div initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }}
+                className="mt-2 flex items-center justify-center gap-2 py-1.5 px-3 rounded-lg bg-destructive/10 border border-destructive/20">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-destructive" />
+                </span>
+                <span className="text-[10px] font-heading text-destructive font-medium">Gravando relato... toque no microfone para parar</span>
+              </motion.div>
+            )}
           </TabsContent>
 
           <TabsContent value="structured" className="mt-0">
             <form onSubmit={handleStructuredSubmit} className="space-y-2">
+              {speechSupported && (
+                <button type="button" onClick={() => startVoice("symptoms")}
+                  className={`w-full flex items-center justify-center gap-2 py-2 rounded-xl text-xs font-heading font-semibold transition-all ${
+                    isListening && voiceTarget === "symptoms"
+                      ? "bg-destructive/15 text-destructive animate-pulse border border-destructive/30"
+                      : "bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20"
+                  }`}>
+                  {isListening && voiceTarget === "symptoms" ? <><MicOff size={14} /> Parar gravação</> : <><Mic size={14} /> 🎤 Gravar relato do paciente</>}
+                </button>
+              )}
               <div className="grid grid-cols-2 gap-2">
                 <div>
                   <label className="text-[10px] font-heading font-medium text-muted-foreground mb-0.5 block">Sintomas / QP *</label>
-                  <Input value={symptoms} onChange={(e) => setSymptoms(e.target.value)} placeholder="Dor torácica, dispneia..." className="h-8 text-xs" />
+                  <div className="flex gap-1">
+                    <Input value={symptoms} onChange={(e) => setSymptoms(e.target.value)} placeholder={isListening && voiceTarget === "symptoms" ? "🎤 Ouvindo..." : "Dor torácica, dispneia..."} className="h-8 text-xs" />
+                  </div>
                 </div>
                 <div>
                   <label className="text-[10px] font-heading font-medium text-muted-foreground mb-0.5 block">Sinais Vitais</label>
@@ -297,7 +384,17 @@ export default function ClinicalAI() {
               </div>
               <div>
                 <label className="text-[10px] font-heading font-medium text-muted-foreground mb-0.5 block">História Clínica</label>
-                <Input value={history} onChange={(e) => setHistory(e.target.value)} placeholder="HAS, DM, antecedentes..." className="h-8 text-xs" />
+                <div className="flex gap-1">
+                  <Input value={history} onChange={(e) => setHistory(e.target.value)} placeholder="HAS, DM, antecedentes..." className="h-8 text-xs flex-1" />
+                  {speechSupported && (
+                    <button type="button" onClick={() => startVoice("history")}
+                      className={`shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all ${
+                        isListening && voiceTarget === "history" ? "bg-destructive/15 text-destructive animate-pulse" : "bg-muted hover:bg-accent text-muted-foreground"
+                      }`}>
+                      {isListening && voiceTarget === "history" ? <MicOff size={12} /> : <Mic size={12} />}
+                    </button>
+                  )}
+                </div>
               </div>
               <div className="grid grid-cols-2 gap-2">
                 <div>
