@@ -341,9 +341,12 @@ export default function Auth() {
       </div>
 
       {/* Footer */}
-      <div className="text-center pb-8 px-4">
+      <div className="text-center pb-8 px-4 space-y-3">
         <p className="text-[9px] text-muted-foreground/60">
           PULSO · Emergência Médica · Feito para quem salva vidas
+        </p>
+        <p className="text-[9px] text-muted-foreground/50 max-w-xs mx-auto leading-relaxed">
+          Ferramenta de apoio à decisão clínica. Não substitui o julgamento médico profissional.
         </p>
       </div>
     </div>
