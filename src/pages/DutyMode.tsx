@@ -3,14 +3,16 @@ import TopBar from "@/components/TopBar";
 import { useAuth } from "@/contexts/AuthContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import PremiumGate from "@/components/PremiumGate";
+import DutyShiftTimer from "@/components/duty/DutyShiftTimer";
+import DutyHandoffChecklist from "@/components/duty/DutyHandoffChecklist";
+import DutyBedNotes from "@/components/duty/DutyBedNotes";
+import DutySection from "@/components/duty/DutySection";
 import {
   Zap, Pill, ClipboardList, Calculator, FileText, Baby, Heart,
-  Search, Brain, Star, Stethoscope, Activity, Syringe,
-  ChevronRight, Sparkles, Clock, Play, Square
+  Search, Star, Stethoscope, Sparkles,
+  ChevronRight
 } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { useState, useMemo, useEffect, useRef, useCallback } from "react";
-import { safeLocalStorage } from "@/lib/safeStorage";
+import { useState, useMemo } from "react";
 import { protocols } from "@/data/protocols";
 import { medications } from "@/data/medications";
 
@@ -27,14 +29,18 @@ const quickAccess = [
   { label: "Obstetrícia", icon: Heart, path: "/obstetrics" },
 ];
 
-const emergencyShortcuts = [
-  { label: "PCR / RCP", path: "/protocols/pcr" },
-  { label: "Sepse", path: "/protocols/sepse" },
-  { label: "IAM", path: "/protocols/iam" },
-  { label: "AVC", path: "/protocols/avc" },
-  { label: "Anafilaxia", path: "/protocols/anafilaxia" },
-  { label: "Choque Hipovolêmico", path: "/protocols/choque-hipovolemico" },
-  { label: "Intubação (IOT)", path: "/protocols/iot" },
+const emergencyOneTap = [
+  { label: "PCR / RCP", path: "/protocols/pcr", color: "bg-red-500/15 text-red-600 dark:text-red-400" },
+  { label: "Sepse", path: "/protocols/sepse", color: "bg-orange-500/15 text-orange-600 dark:text-orange-400" },
+  { label: "IAM", path: "/protocols/iam", color: "bg-red-500/15 text-red-600 dark:text-red-400" },
+  { label: "AVC", path: "/protocols/avc", color: "bg-purple-500/15 text-purple-600 dark:text-purple-400" },
+  { label: "Anafilaxia", path: "/protocols/anafilaxia", color: "bg-pink-500/15 text-pink-600 dark:text-pink-400" },
+  { label: "IOT", path: "/protocols/iot", color: "bg-blue-500/15 text-blue-600 dark:text-blue-400" },
+  { label: "Choque", path: "/protocols/choque-hipovolemico", color: "bg-red-500/15 text-red-600 dark:text-red-400" },
+  { label: "EAP", path: "/protocols/eap", color: "bg-cyan-500/15 text-cyan-600 dark:text-cyan-400" },
+];
+
+const emergencyMore = [
   { label: "Dor Torácica", path: "/protocols/dor-toracica" },
   { label: "Dispneia", path: "/protocols/dispneia" },
   { label: "Convulsão", path: "/protocols/convulsao" },
@@ -42,27 +48,7 @@ const emergencyShortcuts = [
   { label: "Hipercalemia", path: "/protocols/hipercalemia" },
   { label: "Bradicardia", path: "/protocols/bradicardia" },
   { label: "Taquiarritmia", path: "/protocols/taquiarritmia" },
-  { label: "EAP", path: "/protocols/eap" },
   { label: "Crise Hipertensiva", path: "/protocols/crise-hipertensiva" },
-];
-
-const specialties = [
-  { label: "Clínica Médica", path: "/protocols" },
-  { label: "Cirurgia", path: "/protocols" },
-  { label: "Pediatria", path: "/pediatrics" },
-  { label: "Ginecologia", path: "/obstetrics" },
-  { label: "Obstetrícia", path: "/obstetrics" },
-  { label: "Cardiologia", path: "/protocols" },
-  { label: "Endocrinologia", path: "/protocols" },
-  { label: "Nefrologia", path: "/protocols" },
-  { label: "Gastroenterologia", path: "/protocols" },
-  { label: "Neurologia", path: "/protocols" },
-  { label: "Psiquiatria", path: "/protocols" },
-  { label: "Infectologia", path: "/protocols" },
-  { label: "Reumatologia", path: "/protocols" },
-  { label: "Dermatologia", path: "/protocols" },
-  { label: "Urologia", path: "/protocols" },
-  { label: "Ortopedia", path: "/protocols" },
 ];
 
 const calculatorShortcuts = [
@@ -84,43 +70,6 @@ export default function DutyMode() {
   const { favorites } = useFavorites();
   const [search, setSearch] = useState("");
 
-  // ── Shift Timer ──
-  const [shiftStart, setShiftStart] = useState<number | null>(() => {
-    const saved = safeLocalStorage.getItem("shift_start");
-    return saved ? Number(saved) : null;
-  });
-  const [shiftElapsed, setShiftElapsed] = useState(0);
-  const shiftInterval = useRef<ReturnType<typeof setInterval> | null>(null);
-
-  const startShift = useCallback(() => {
-    const now = Date.now();
-    setShiftStart(now);
-    safeLocalStorage.setItem("shift_start", String(now));
-  }, []);
-
-  const endShift = useCallback(() => {
-    setShiftStart(null);
-    setShiftElapsed(0);
-    safeLocalStorage.removeItem("shift_start");
-  }, []);
-
-  useEffect(() => {
-    if (shiftStart) {
-      const tick = () => setShiftElapsed(Math.floor((Date.now() - shiftStart) / 1000));
-      tick();
-      shiftInterval.current = setInterval(tick, 1000);
-      return () => { if (shiftInterval.current) clearInterval(shiftInterval.current); };
-    }
-  }, [shiftStart]);
-
-  const formatShiftTime = (s: number) => {
-    const h = Math.floor(s / 3600);
-    const m = Math.floor((s % 3600) / 60);
-    const sec = s % 60;
-    return `${h.toString().padStart(2, "0")}:${m.toString().padStart(2, "0")}:${sec.toString().padStart(2, "0")}`;
-  };
-
-  // Global search across protocols, medications, shortcuts
   const searchResults = useMemo(() => {
     if (search.length < 2) return null;
     const q = search.toLowerCase();
@@ -147,37 +96,16 @@ export default function DutyMode() {
   return (
     <>
       <TopBar title="Modo Plantão" />
-      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-5 pb-24">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4 pb-24">
 
-        {/* ── Shift Timer Banner ── */}
-        <div className="rounded-2xl border bg-card p-4 flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center">
-            <Clock size={20} className="text-primary" />
-          </div>
-          <div className="flex-1">
-            <p className="font-heading font-semibold text-xs text-muted-foreground uppercase tracking-wider">Cronômetro de Turno</p>
-            {shiftStart ? (
-              <p className="font-heading text-2xl font-bold tabular-nums tracking-tight">{formatShiftTime(shiftElapsed)}</p>
-            ) : (
-              <p className="text-sm text-muted-foreground">Nenhum plantão ativo</p>
-            )}
-          </div>
-          {shiftStart ? (
-            <Button variant="outline" size="sm" onClick={endShift} className="gap-1.5 border-destructive/30 text-destructive hover:bg-destructive/10">
-              <Square size={14} /> Encerrar
-            </Button>
-          ) : (
-            <Button size="sm" onClick={startShift} className="gap-1.5">
-              <Play size={14} /> Iniciar
-            </Button>
-          )}
-        </div>
+        {/* ── Shift Timer ── */}
+        <DutyShiftTimer />
 
         {/* ── Search ── */}
         <div className="relative">
           <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
           <input
-            placeholder="Buscar protocolo, medicação, dose, doença..."
+            placeholder="Buscar protocolo, medicação, dose..."
             value={search}
             onChange={e => setSearch(e.target.value)}
             className="w-full pl-11 pr-4 h-12 text-sm rounded-2xl bg-muted/60 dark:bg-muted/40 border-0 shadow-inner focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all placeholder:text-muted-foreground/60 font-heading"
@@ -189,11 +117,7 @@ export default function DutyMode() {
           <DutySection title="Resultados">
             <div className="space-y-1">
               {searchResults.map(r => (
-                <button
-                  key={r.path + r.label}
-                  onClick={() => { navigate(r.path); setSearch(""); }}
-                  className="duty-list-item"
-                >
+                <button key={r.path + r.label} onClick={() => { navigate(r.path); setSearch(""); }} className="duty-list-item">
                   <span className="flex-1 text-left">{r.label}</span>
                   <span className="duty-badge">{r.type}</span>
                   <ChevronRight size={14} className="text-muted-foreground" />
@@ -207,18 +131,36 @@ export default function DutyMode() {
           <p className="text-center text-sm text-muted-foreground py-4">Nenhum resultado encontrado.</p>
         )}
 
-        {/* Only show sections when not searching */}
         {!searchResults && (
           <>
+            {/* ── One-Tap Emergency ── */}
+            <DutySection title="Emergência One-Tap" icon={<Zap size={14} className="text-destructive" />}>
+              <div className="grid grid-cols-4 gap-2">
+                {emergencyOneTap.map(s => (
+                  <button
+                    key={s.path}
+                    onClick={() => navigate(s.path)}
+                    className={`flex items-center justify-center px-2 py-3 rounded-2xl text-[11px] font-heading font-semibold transition-all active:scale-95 ${s.color}`}
+                  >
+                    {s.label}
+                  </button>
+                ))}
+              </div>
+              <div className="grid grid-cols-2 gap-1.5 mt-2">
+                {emergencyMore.map(s => (
+                  <button key={s.path} onClick={() => navigate(s.path)} className="duty-list-item">
+                    <span className="flex-1 text-left text-xs">{s.label}</span>
+                    <ChevronRight size={13} className="text-muted-foreground" />
+                  </button>
+                ))}
+              </div>
+            </DutySection>
+
             {/* ── Quick Access Grid ── */}
             <DutySection title="Acesso Rápido">
               <div className="grid grid-cols-4 gap-2">
                 {quickAccess.map(m => (
-                  <button
-                    key={m.path}
-                    onClick={() => navigate(m.path)}
-                    className="duty-grid-btn"
-                  >
+                  <button key={m.path} onClick={() => navigate(m.path)} className="duty-grid-btn">
                     <m.icon size={18} strokeWidth={1.8} />
                     <span className="text-[10px] leading-tight font-medium text-center">{m.label}</span>
                   </button>
@@ -241,47 +183,17 @@ export default function DutyMode() {
               <ChevronRight size={16} className="text-white/60" />
             </button>
 
-            {/* ── Emergency Protocols ── */}
-            <DutySection title="Protocolos de Emergência" icon={<Zap size={14} />}>
-              <div className="grid grid-cols-2 gap-1.5">
-                {emergencyShortcuts.map(s => (
-                  <button
-                    key={s.path}
-                    onClick={() => navigate(s.path)}
-                    className="duty-list-item"
-                  >
-                    <span className="flex-1 text-left text-xs">{s.label}</span>
-                    <ChevronRight size={13} className="text-muted-foreground" />
-                  </button>
-                ))}
-              </div>
-            </DutySection>
+            {/* ── Handoff Checklist ── */}
+            <DutyHandoffChecklist />
+
+            {/* ── Bed Notes ── */}
+            <DutyBedNotes />
 
             {/* ── Calculators ── */}
             <DutySection title="Calculadoras" icon={<Calculator size={14} />}>
               <div className="grid grid-cols-2 gap-1.5">
                 {calculatorShortcuts.map(s => (
-                  <button
-                    key={s.label}
-                    onClick={() => navigate(s.path)}
-                    className="duty-list-item"
-                  >
-                    <span className="flex-1 text-left text-xs">{s.label}</span>
-                    <ChevronRight size={13} className="text-muted-foreground" />
-                  </button>
-                ))}
-              </div>
-            </DutySection>
-
-            {/* ── Specialties ── */}
-            <DutySection title="Especialidades" icon={<Stethoscope size={14} />}>
-              <div className="grid grid-cols-2 gap-1.5">
-                {specialties.map(s => (
-                  <button
-                    key={s.label}
-                    onClick={() => navigate(s.path)}
-                    className="duty-list-item"
-                  >
+                  <button key={s.label} onClick={() => navigate(s.path)} className="duty-list-item">
                     <span className="flex-1 text-left text-xs">{s.label}</span>
                     <ChevronRight size={13} className="text-muted-foreground" />
                   </button>
@@ -290,7 +202,7 @@ export default function DutyMode() {
             </DutySection>
 
             {/* ── Favorites ── */}
-            {favorites.length > 0 && (
+            {favorites.length > 0 ? (
               <DutySection title="Favoritos" icon={<Star size={14} />}>
                 <div className="space-y-1">
                   {favorites.slice(0, 8).map(f => (
@@ -311,23 +223,20 @@ export default function DutyMode() {
                   </button>
                 )}
               </DutySection>
+            ) : (
+              <DutySection title="Favoritos" icon={<Star size={14} />}>
+                <div className="text-center py-4 space-y-2">
+                  <Star size={24} className="mx-auto text-muted-foreground/40" />
+                  <p className="text-xs text-muted-foreground">Salve protocolos e medicações como favoritos para acesso rápido durante o plantão.</p>
+                  <button onClick={() => navigate("/protocols")} className="text-xs text-primary font-heading font-medium">
+                    Explorar protocolos →
+                  </button>
+                </div>
+              </DutySection>
             )}
           </>
         )}
       </div>
     </>
-  );
-}
-
-/* ─── Reusable section wrapper ─── */
-function DutySection({ title, icon, children }: { title: string; icon?: React.ReactNode; children: React.ReactNode }) {
-  return (
-    <div className="duty-card p-5 space-y-3">
-      <h2 className="font-heading font-semibold text-xs uppercase tracking-wider text-muted-foreground flex items-center gap-2">
-        {icon}
-        {title}
-      </h2>
-      {children}
-    </div>
   );
 }

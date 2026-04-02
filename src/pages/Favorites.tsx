@@ -26,10 +26,22 @@ export default function Favorites() {
       <TopBar title="Favoritos" />
       <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4 pb-24">
         {favorites.length === 0 ? (
-          <div className="text-center py-12 space-y-3">
-            <Star size={40} className="mx-auto text-muted-foreground" />
-            <p className="text-muted-foreground text-sm">Nenhum favorito salvo ainda.</p>
-            <p className="text-muted-foreground text-xs">Toque na estrela em protocolos, prescrições ou medicamentos para salvar.</p>
+          <div className="text-center py-16 space-y-4">
+            <div className="w-16 h-16 rounded-2xl bg-warning/10 flex items-center justify-center mx-auto">
+              <Star size={28} className="text-warning/60" />
+            </div>
+            <div className="space-y-1">
+              <p className="font-heading font-semibold text-sm">Nenhum favorito ainda</p>
+              <p className="text-muted-foreground text-xs max-w-[260px] mx-auto">Toque na ⭐ em protocolos, prescrições ou medicamentos para acessar rapidamente aqui.</p>
+            </div>
+            <div className="flex gap-2 justify-center">
+              <button onClick={() => navigate("/protocols")} className="px-4 py-2 rounded-xl bg-primary text-primary-foreground text-xs font-heading font-medium">
+                Explorar Protocolos
+              </button>
+              <button onClick={() => navigate("/medications")} className="px-4 py-2 rounded-xl bg-secondary text-secondary-foreground text-xs font-heading font-medium">
+                Ver Medicações
+              </button>
+            </div>
           </div>
         ) : (
           <div className="space-y-3">

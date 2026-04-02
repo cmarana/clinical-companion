@@ -27,7 +27,19 @@ export default function RecentHistory() {
   const navigate = useNavigate();
   const { recent } = useRecentHistory();
 
-  if (recent.length === 0) return null;
+  if (recent.length === 0) {
+    return (
+      <div className="mt-5">
+        <h2 className="font-heading font-semibold text-xs flex items-center gap-1.5 text-muted-foreground uppercase tracking-wider mb-3">
+          <Clock size={12} /> Recentes
+        </h2>
+        <div className="rounded-2xl bg-card p-5 text-center space-y-2">
+          <Clock size={22} className="mx-auto text-muted-foreground/40" />
+          <p className="text-xs text-muted-foreground">Seus protocolos e medicamentos acessados recentemente aparecerão aqui.</p>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="mt-5">
