@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { useAuth } from "@/contexts/AuthContext";
-import PremiumGate from "@/components/PremiumGate";
+import PremiumPageGuard from "@/components/PremiumPageGuard";
 import { Input } from "@/components/ui/input";
 import { useState, useMemo } from "react";
 import { Search, ChevronRight, ChevronDown } from "lucide-react";
