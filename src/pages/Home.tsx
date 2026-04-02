@@ -4,7 +4,7 @@ import {
   Baby, Heart, Stethoscope, BookOpen, HelpCircle,
   AlertTriangle, Zap, Moon, Sun, ChevronRight, Bot, FlaskConical,
   Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain, GraduationCap,
-  Droplets, BarChart3, Bell, Syringe
+  Droplets, BarChart3, Bell, Syringe, WifiOff
 } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -42,6 +42,7 @@ const modules = [
   { label: "Dashboard Estudo", sub: "Streak, metas e progresso", icon: BarChart3, path: "/study-dashboard", variant: "cyan" as const },
   { label: "Documentos", sub: "Receitas e atestados", icon: FileText, path: "/documents", variant: "default" as const },
   { label: "Procedimentos", sub: "IOT, CVC, drenagem, sutura", icon: Syringe, path: "/procedure-guides", variant: "default" as const },
+  { label: "Modo Offline", sub: "Prepare para plantão sem internet", icon: WifiOff, path: "/offline", variant: "default" as const },
 ];
 
 const emergencyShortcuts = [
