@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { cacheContent } from "@/lib/offlineCache";
 import TopBar from "@/components/TopBar";
 import { useAuth } from "@/contexts/AuthContext";
@@ -8,25 +8,46 @@ import PremiumGate from "@/components/PremiumGate";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Star, ShieldCheck } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { getFullProtocol, FULL_SECTION_ORDER, getEvidence } from "@/data/fullProtocols";
+import { FULL_SECTION_ORDER, getEvidence } from "@/data/fullProtocols";
+import { getFullProtocolAsync } from "@/data/fullProtocols/lazyLoader";
+import type { FullProtocol } from "@/data/fullProtocols/types";
 import ProtocolActionBar from "@/components/ProtocolActionBar";
 import { useRecentHistory } from "@/hooks/useRecentHistory";
+import { ProtocolDetailSkeleton } from "@/components/PageSkeleton";
 
 export default function FullProtocolDetail() {
   const { id } = useParams<{ id: string }>();
   const { subscription } = useAuth();
   const { isFavorite, toggleFavorite } = useFavorites();
   const { addEntry } = useRecentHistory();
-  const protocol = getFullProtocol(id || "");
+  const [protocol, setProtocol] = useState<FullProtocol | null | undefined>(undefined);
   const evidence = protocol ? getEvidence(protocol.id) : undefined;
+
+  useEffect(() => {
+    let cancelled = false;
+    setProtocol(undefined);
+    getFullProtocolAsync(id || "").then(p => {
+      if (!cancelled) setProtocol(p ?? null);
+    });
+    return () => { cancelled = true; };
+  }, [id]);
 
   useEffect(() => {
     if (protocol) {
       addEntry({ path: `/full-protocols/${id}`, title: protocol.title, type: "fullProtocol" });
-      // Auto-cache for offline access
       cacheContent(`fullProtocol:${id}`, { id: protocol.id, title: protocol.title, category: protocol.category, sections: protocol.sections, tags: protocol.tags });
     }
-  }, [id]);
+  }, [protocol, id]);
+
+  // Loading
+  if (protocol === undefined) {
+    return (
+      <>
+        <TopBar title="Carregando..." />
+        <ProtocolDetailSkeleton />
+      </>
+    );
+  }
 
   if (!protocol) {
     return (
@@ -50,7 +71,6 @@ export default function FullProtocolDetail() {
 
   const fav = isFavorite(protocol.id);
 
-  // Order sections according to FULL_SECTION_ORDER
   const orderedSections = FULL_SECTION_ORDER
     .map(so => protocol.sections.find(s => s.id === so.id))
     .filter(Boolean) as typeof protocol.sections;
