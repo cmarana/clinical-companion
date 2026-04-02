@@ -160,9 +160,10 @@ const App = () => (
                 <TooltipProvider>
                 <Toaster />
                   <Sonner />
-                  <OfflineIndicator />
-                  <PWAInstallPrompt />
-                  <AppRoutes />
+                   <OfflineIndicator />
+                   <PWAInstallPrompt />
+                   <FeedbackButton />
+                   <AppRoutes />
                 </TooltipProvider>
               </NotesProvider>
             </FavoritesProvider>
