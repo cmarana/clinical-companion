@@ -11,6 +11,7 @@ import { NotificationsProvider } from "@/contexts/NotificationsContext";
 import AppLayout from "@/components/AppLayout";
 import { PWAInstallPrompt, OfflineIndicator } from "@/components/PWAInstallPrompt";
 import { lazy, Suspense } from "react";
+import { ProtocolListSkeleton, ProtocolDetailSkeleton, MedicationListSkeleton } from "@/components/PageSkeleton";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Protocols = lazy(() => import("@/pages/Protocols"));
@@ -95,21 +96,21 @@ const AppRoutes = () => (
         <Route path="/search" element={<SearchPage />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/notes" element={<Notes />} />
-        <Route path="/emergency" element={<EmergencyMode />} />
-        <Route path="/emergency/:id" element={<EmergencyProtocolDetail />} />
+        <Route path="/emergency" element={<Suspense fallback={<ProtocolListSkeleton />}><EmergencyMode /></Suspense>} />
+        <Route path="/emergency/:id" element={<Suspense fallback={<ProtocolDetailSkeleton />}><EmergencyProtocolDetail /></Suspense>} />
         <Route path="/duty" element={<DutyMode />} />
-        <Route path="/prescriptions" element={<Prescriptions />} />
-        <Route path="/prescriptions/:id" element={<PrescriptionDetail />} />
+        <Route path="/prescriptions" element={<Suspense fallback={<ProtocolListSkeleton />}><Prescriptions /></Suspense>} />
+        <Route path="/prescriptions/:id" element={<Suspense fallback={<ProtocolDetailSkeleton />}><PrescriptionDetail /></Suspense>} />
         <Route path="/diagnosis" element={<DiagnosisBySymptom />} />
         <Route path="/pediatrics" element={<Pediatrics />} />
         <Route path="/obstetrics" element={<Obstetrics />} />
         <Route path="/internship" element={<Internship />} />
         <Route path="/clinical-ai" element={<ClinicalAI />} />
         <Route path="/drug-interactions" element={<DrugInteractions />} />
-        <Route path="/full-protocols" element={<FullProtocols />} />
-        <Route path="/full-protocols/:id" element={<FullProtocolDetail />} />
-        <Route path="/bulario" element={<Bulario />} />
-        <Route path="/bulario/:id" element={<BularioDetail />} />
+        <Route path="/full-protocols" element={<Suspense fallback={<ProtocolListSkeleton />}><FullProtocols /></Suspense>} />
+        <Route path="/full-protocols/:id" element={<Suspense fallback={<ProtocolDetailSkeleton />}><FullProtocolDetail /></Suspense>} />
+        <Route path="/bulario" element={<Suspense fallback={<MedicationListSkeleton />}><Bulario /></Suspense>} />
+        <Route path="/bulario/:id" element={<Suspense fallback={<ProtocolDetailSkeleton />}><BularioDetail /></Suspense>} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/cpr-timer" element={<CPRTimer />} />
         <Route path="/checklists" element={<Checklists />} />
