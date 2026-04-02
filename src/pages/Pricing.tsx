@@ -30,18 +30,27 @@ const premiumFeatures = [
   { feature: "Atualizações contínuas", free: false, premium: true },
 ];
 
+type PaymentMethod = "card" | "pix";
+
 export default function Pricing() {
   const { user, subscription, checkSubscription, signOut } = useAuth();
   const [loading, setLoading] = useState<string | null>(null);
   const [portalLoading, setPortalLoading] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("annual");
+  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("card");
   const navigate = useNavigate();
   const { toast } = useToast();
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
     if (searchParams.get("success") === "true") {
-      toast({ title: "🎉 Assinatura realizada!", description: "Bem-vindo ao PULSO Pro! Aproveite 7 dias grátis." });
+      const method = searchParams.get("method");
+      toast({
+        title: "🎉 Assinatura realizada!",
+        description: method === "pix"
+          ? "Pagamento PIX confirmado! Aproveite o PULSO Pro."
+          : "Bem-vindo ao PULSO Pro! Aproveite 7 dias grátis.",
+      });
       checkSubscription();
     }
   }, [searchParams]);
@@ -50,7 +59,9 @@ export default function Pricing() {
     if (!user) { navigate("/auth"); return; }
     setLoading(planId);
     try {
-      const { data, error } = await supabase.functions.invoke("create-checkout", { body: { planId } });
+      const { data, error } = await supabase.functions.invoke("create-checkout", {
+        body: { planId, paymentMethod },
+      });
       if (error) throw error;
       if (data?.url) window.open(data.url, "_blank");
     } catch (err: any) {
@@ -68,6 +79,8 @@ export default function Pricing() {
       toast({ title: "Erro", description: err.message, variant: "destructive" });
     } finally { setPortalLoading(false); }
   };
+
+  const isPix = paymentMethod === "pix";
 
   return (
     <>
@@ -93,13 +106,16 @@ export default function Pricing() {
                 Assinatura ativa
                 {subscription.subscriptionEnd && (
                   <span className="block text-xs text-muted-foreground mt-1">
-                    Renova em {new Date(subscription.subscriptionEnd).toLocaleDateString("pt-BR")}
+                    {subscription.productId === "pix_purchase" ? "Acesso até" : "Renova em"}{" "}
+                    {new Date(subscription.subscriptionEnd).toLocaleDateString("pt-BR")}
                   </span>
                 )}
               </div>
-              <Button onClick={handlePortal} variant="outline" className="w-full" disabled={portalLoading}>
-                {portalLoading ? "Carregando..." : "Gerenciar assinatura"}
-              </Button>
+              {subscription.productId !== "pix_purchase" && (
+                <Button onClick={handlePortal} variant="outline" className="w-full" disabled={portalLoading}>
+                  {portalLoading ? "Carregando..." : "Gerenciar assinatura"}
+                </Button>
+              )}
               <Button onClick={() => checkSubscription()} variant="ghost" className="w-full text-xs">
                 Atualizar status
               </Button>
@@ -109,22 +125,24 @@ export default function Pricing() {
 
         {!subscription.subscribed && (
           <>
-            {/* Trial banner */}
-            <Card className="border-primary/30 bg-gradient-to-r from-primary/10 to-accent/20 overflow-hidden">
-              <CardContent className="p-5">
-                <div className="flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center shrink-0">
-                    <Gift size={20} className="text-primary" />
+            {/* Trial banner — only for card */}
+            {!isPix && (
+              <Card className="border-primary/30 bg-gradient-to-r from-primary/10 to-accent/20 overflow-hidden">
+                <CardContent className="p-5">
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center shrink-0">
+                      <Gift size={20} className="text-primary" />
+                    </div>
+                    <div>
+                      <p className="font-heading font-bold text-sm">7 dias grátis</p>
+                      <p className="text-xs text-muted-foreground">
+                        Teste completo. Cartão cadastrado, mas cobrado só após 7 dias. Cancele a qualquer momento.
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <p className="font-heading font-bold text-sm">7 dias grátis</p>
-                    <p className="text-xs text-muted-foreground">
-                      Teste completo. Cartão cadastrado, mas cobrado só após 7 dias. Cancele a qualquer momento.
-                    </p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+                </CardContent>
+              </Card>
+            )}
 
             {/* Social proof */}
             <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
@@ -177,6 +195,42 @@ export default function Pricing() {
               </CardContent>
             </Card>
 
+            {/* Payment method selector */}
+            <div>
+              <p className="font-heading font-bold text-sm mb-3 text-center">Forma de pagamento</p>
+              <div className="grid grid-cols-2 gap-3">
+                <button
+                  onClick={() => setPaymentMethod("card")}
+                  className={cn(
+                    "flex items-center justify-center gap-2 p-3 rounded-xl border-2 transition-all text-sm font-medium",
+                    paymentMethod === "card"
+                      ? "border-primary bg-primary/10 text-primary"
+                      : "border-border text-muted-foreground hover:border-primary/40"
+                  )}
+                >
+                  <CreditCard size={18} />
+                  Cartão / Boleto
+                </button>
+                <button
+                  onClick={() => setPaymentMethod("pix")}
+                  className={cn(
+                    "flex items-center justify-center gap-2 p-3 rounded-xl border-2 transition-all text-sm font-medium",
+                    paymentMethod === "pix"
+                      ? "border-primary bg-primary/10 text-primary"
+                      : "border-border text-muted-foreground hover:border-primary/40"
+                  )}
+                >
+                  <QrCode size={18} />
+                  PIX
+                </button>
+              </div>
+              {isPix && (
+                <p className="text-[10px] text-muted-foreground text-center mt-2">
+                  PIX: pagamento único, sem renovação automática. Renove manualmente ao expirar.
+                </p>
+              )}
+            </div>
+
             {/* Plan selector */}
             <div>
               <p className="font-heading font-bold text-sm mb-3 text-center">Escolha seu plano</p>
@@ -219,11 +273,16 @@ export default function Pricing() {
               size="lg"
               disabled={loading !== null}
             >
-              <Gift size={18} />
-              {loading ? "Redirecionando..." : "Começar 7 dias grátis"}
+              {isPix ? <QrCode size={18} /> : <Gift size={18} />}
+              {loading
+                ? "Redirecionando..."
+                : isPix
+                  ? `Pagar com PIX — ${plans.find(p => p.id === selectedPlan)?.priceDisplay}`
+                  : "Começar 7 dias grátis"
+              }
             </Button>
 
-            {/* Payment methods */}
+            {/* Payment methods icons */}
             <div className="flex flex-col items-center gap-2">
               <p className="text-[11px] text-muted-foreground font-medium">Formas de pagamento aceitas</p>
               <div className="flex items-center gap-4">
@@ -243,7 +302,10 @@ export default function Pricing() {
             </div>
 
             <p className="text-[10px] text-muted-foreground text-center leading-relaxed">
-              Teste grátis por 7 dias. Cobrado apenas após o período de teste. Cancele a qualquer momento. Pagamento seguro via Stripe.
+              {isPix
+                ? "Pagamento único via PIX. Sem renovação automática. Renove manualmente quando expirar. Pagamento seguro via Stripe."
+                : "Teste grátis por 7 dias. Cobrado apenas após o período de teste. Cancele a qualquer momento. Pagamento seguro via Stripe."
+              }
             </p>
           </>
         )}
