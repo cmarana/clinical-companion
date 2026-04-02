@@ -4,11 +4,13 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { flashcards, flashcardCategoryLabels, flashcardCategoryColors, type FlashcardCategory } from "@/data/flashcardsData";
-import { reviewCard, getDueCards, getNewCards, getStats, syncProgressFromCloud, type Rating } from "@/lib/spacedRepetition";
+import { reviewCard, getDueCards, getNewCards, getStats, getProgress, syncProgressFromCloud, type Rating } from "@/lib/spacedRepetition";
 import { Brain, RotateCcw, Search, ChevronRight, Zap, BookOpen, Trophy, Clock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthContext";
+import { checkAndUnlock, type AchievementContext } from "@/lib/achievements";
+import { safeLocalStorage } from "@/lib/safeStorage";
 
 type View = "decks" | "review";
 
