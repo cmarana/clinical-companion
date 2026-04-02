@@ -275,16 +275,8 @@ export default function Home() {
         </motion.div>
       )}
 
-      {/* Search — hero element */}
-      <form onSubmit={(e) => { e.preventDefault(); handleSearch(); }} className="relative mb-5">
-        <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
-        <input
-          placeholder="Buscar medicamento, protocolo, CID..."
-          value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
-          className="w-full pl-11 pr-4 h-[52px] text-sm rounded-2xl bg-muted/60 dark:bg-muted/40 border-0 shadow-inner focus:outline-none focus:ring-2 focus:ring-primary/30 transition-all placeholder:text-muted-foreground/60 font-heading"
-        />
-      </form>
+      {/* Smart Search */}
+      <SmartSearch specialty={specialty} />
 
       {/* ── PRIMARY GRID ─────────────────────────────────────── */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-6">
