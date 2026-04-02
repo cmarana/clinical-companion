@@ -8,20 +8,29 @@ import { useToast } from "@/hooks/use-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Eye, EyeOff, Zap, Pill, ClipboardList, Calculator, Shield, Clock,
-  Bot, ChevronRight, ChevronDown, ArrowLeft, Activity
+  Bot, ChevronRight, ChevronDown, ArrowLeft, Activity, Mic, WifiOff,
+  Share2, Trophy, GitBranch, Brain, Newspaper, Stethoscope
 } from "lucide-react";
 import pulsoLogo from "@/assets/pulso-logo.png";
 import { Separator } from "@/components/ui/separator";
 
 const showcaseFeatures = [
   { icon: Zap, label: "Emergência", desc: "PCR, Sepse, IAM, AVC", color: "from-red-500/20 to-red-600/10 text-red-500" },
-  { icon: Bot, label: "IA Clínica", desc: "Conduta em tempo real", color: "from-blue-500/20 to-indigo-600/10 text-blue-500" },
+  { icon: Bot, label: "IA Clínica", desc: "Diagnóstico e conduta por IA", color: "from-blue-500/20 to-indigo-600/10 text-blue-500" },
+  { icon: Mic, label: "Comando por Voz", desc: "Busca e IA mãos-livres", color: "from-violet-500/20 to-purple-600/10 text-violet-500" },
   { icon: Pill, label: "2.000+ Fármacos", desc: "Doses, diluição e ajustes", color: "from-emerald-500/20 to-emerald-600/10 text-emerald-500" },
   { icon: ClipboardList, label: "Prescrições", desc: "Modelos prontos para uso", color: "from-amber-500/20 to-amber-600/10 text-amber-500" },
-  { icon: Calculator, label: "53 Calculadoras", desc: "Scores e doses clínicos", color: "from-violet-500/20 to-violet-600/10 text-violet-500" },
-  { icon: Shield, label: "282 Protocolos", desc: "Diretrizes atualizadas", color: "from-cyan-500/20 to-cyan-600/10 text-cyan-500" },
-  { icon: Clock, label: "Modo Plantão", desc: "Menos cliques, mais conduta", color: "from-orange-500/20 to-orange-600/10 text-orange-500" },
+  { icon: Shield, label: "282 Protocolos", desc: "Fluxogramas interativos", color: "from-cyan-500/20 to-cyan-600/10 text-cyan-500" },
+  { icon: Calculator, label: "53 Calculadoras", desc: "Embutidas nos protocolos", color: "from-indigo-500/20 to-indigo-600/10 text-indigo-500" },
+  { icon: Clock, label: "Modo Plantão", desc: "Timer, leitos e passagem", color: "from-orange-500/20 to-orange-600/10 text-orange-500" },
   { icon: Activity, label: "Timer PCR", desc: "Cronômetro ACLS integrado", color: "from-pink-500/20 to-pink-600/10 text-pink-500" },
+  { icon: GitBranch, label: "Árvores de Decisão", desc: "Fluxogramas clicáveis", color: "from-teal-500/20 to-teal-600/10 text-teal-500" },
+  { icon: Share2, label: "Compartilhamento", desc: "QR Code e link direto", color: "from-sky-500/20 to-sky-600/10 text-sky-500" },
+  { icon: WifiOff, label: "Modo Offline", desc: "Conteúdo salvo sem internet", color: "from-slate-500/20 to-slate-600/10 text-slate-500" },
+  { icon: Brain, label: "Flashcards", desc: "Revisão espaçada e quiz", color: "from-fuchsia-500/20 to-fuchsia-600/10 text-fuchsia-500" },
+  { icon: Trophy, label: "Conquistas", desc: "Badges, streaks e progresso", color: "from-yellow-500/20 to-yellow-600/10 text-yellow-500" },
+  { icon: Newspaper, label: "Atualizações", desc: "Changelog e revisões", color: "from-lime-500/20 to-lime-600/10 text-lime-500" },
+  { icon: Stethoscope, label: "Diagnóstico", desc: "Por sintoma e especialidade", color: "from-rose-500/20 to-rose-600/10 text-rose-500" },
 ];
 
 const stats = [
@@ -332,9 +341,12 @@ export default function Auth() {
       </div>
 
       {/* Footer */}
-      <div className="text-center pb-8 px-4">
+      <div className="text-center pb-8 px-4 space-y-3">
         <p className="text-[9px] text-muted-foreground/60">
           PULSO · Emergência Médica · Feito para quem salva vidas
+        </p>
+        <p className="text-[9px] text-muted-foreground/50 max-w-xs mx-auto leading-relaxed">
+          Ferramenta de apoio à decisão clínica. Não substitui o julgamento médico profissional.
         </p>
       </div>
     </div>
