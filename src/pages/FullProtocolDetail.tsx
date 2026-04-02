@@ -34,12 +34,41 @@ import {
 
 export default function FullProtocolDetail() {
   const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
   const { subscription } = useAuth();
   const { isFavorite, toggleFavorite } = useFavorites();
   const { addEntry } = useRecentHistory();
   const { trackView } = useProtocolAnalytics(id);
   const [protocol, setProtocol] = useState<FullProtocol | null | undefined>(undefined);
+  const [focusMode, setFocusMode] = useState(false);
   const evidence = protocol ? getEvidence(protocol.id) : undefined;
+
+  // Category label for breadcrumbs
+  const categoryLabel = useMemo(() => {
+    if (!protocol) return "";
+    return fullProtocolCategories.find(c => c.id === protocol.categoryId)?.title || protocol.category;
+  }, [protocol]);
+
+  // Arrow key navigation between protocols in same category
+  const siblings = useMemo(() => {
+    if (!protocol) return [];
+    return fullProtocolMetas.filter(p => p.categoryId === protocol.categoryId);
+  }, [protocol]);
+
+  const currentIdx = useMemo(() => siblings.findIndex(s => s.id === id), [siblings, id]);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.target instanceof HTMLInputElement || e.target instanceof HTMLTextAreaElement) return;
+      if (e.key === "ArrowLeft" && currentIdx > 0) {
+        navigate(`/full-protocols/${siblings[currentIdx - 1].id}`);
+      } else if (e.key === "ArrowRight" && currentIdx < siblings.length - 1) {
+        navigate(`/full-protocols/${siblings[currentIdx + 1].id}`);
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [currentIdx, siblings, navigate]);
 
   // Find matching decision tree for this protocol
   const matchedTree = useMemo(() => {
