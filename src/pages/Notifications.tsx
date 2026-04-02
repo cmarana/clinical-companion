@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { useNotifications, NotificationType } from "@/contexts/NotificationsContext";
-import { Bell, Brain, Clock, BookOpen, Info, Check, CheckCheck, Trash2, X } from "lucide-react";
+import { Bell, Brain, Clock, BookOpen, Info, Check, CheckCheck, Trash2, X, BellRing, Settings } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const typeConfig: Record<NotificationType, { icon: typeof Bell; label: string; color: string; bg: string }> = {
