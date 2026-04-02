@@ -15,6 +15,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import RecentHistory from "@/components/RecentHistory";
 import { useNotifications } from "@/contexts/NotificationsContext";
 import OnboardingModal from "@/components/OnboardingModal";
+import { hapticLight, hapticMedium } from "@/lib/haptics";
 import { useModuleAnalytics, setAnalyticsSpecialty } from "@/hooks/useModuleAnalytics";
 
 // ── ALL MODULES WITH TAGS ─────────────────────────────────────
@@ -147,6 +148,7 @@ export default function Home() {
   const [specialty, setSpecialty] = useState<string | null>(null);
 
   const navigateWithTracking = (path: string, label: string) => {
+    hapticLight();
     trackModule(path, label);
     navigate(path);
   };
@@ -229,7 +231,7 @@ export default function Home() {
       <div className="flex items-center justify-between h-12 mb-3">
         <span className="font-heading font-bold text-base tracking-tight">PS Guide</span>
         <div className="flex items-center gap-2">
-          <button onClick={toggleTheme} className="p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground" title={themeLabel}>
+          <button onClick={() => { hapticLight(); toggleTheme(); }} className="p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground" title={themeLabel}>
             {theme === "oled" ? <Eclipse size={16} /> : theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
           </button>
           <button onClick={() => navigate("/notifications")} className="relative p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground">
@@ -319,7 +321,7 @@ export default function Home() {
           {emergencyShortcuts.map((s) => (
             <button
               key={s.path}
-              onClick={() => navigateWithTracking(s.path, s.label)}
+              onClick={() => { hapticMedium(); navigateWithTracking(s.path, s.label); }}
               className="px-4 py-2 rounded-2xl border-0 bg-destructive/8 dark:bg-destructive/15 hover:bg-destructive/15 dark:hover:bg-destructive/25 active:scale-[0.98] transition-all duration-200 font-heading font-medium text-xs text-destructive shadow-sm"
             >
               {s.label}
