@@ -7,6 +7,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import PremiumGate from "@/components/PremiumGate";
 import { fullProtocolCategories } from "@/data/fullProtocols";
 import { fullProtocolMetas } from "@/data/fullProtocols/metadata";
+import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";
 
 export default function FullProtocols() {
   const navigate = useNavigate();
