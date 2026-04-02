@@ -359,8 +359,11 @@ export type Database = {
           created_at: string
           crm: string
           crm_state: string
+          email: string
           full_name: string
           id: string
+          phone: string
+          provider: string
           specialty: string
           updated_at: string
           user_id: string
@@ -370,8 +373,11 @@ export type Database = {
           created_at?: string
           crm?: string
           crm_state?: string
+          email?: string
           full_name?: string
           id?: string
+          phone?: string
+          provider?: string
           specialty?: string
           updated_at?: string
           user_id: string
@@ -381,8 +387,11 @@ export type Database = {
           created_at?: string
           crm?: string
           crm_state?: string
+          email?: string
           full_name?: string
           id?: string
+          phone?: string
+          provider?: string
           specialty?: string
           updated_at?: string
           user_id?: string
