@@ -2198,6 +2198,12 @@ const allRaw: MedicationImportItem[] = [
   ...medicationsLote15,
   ...medicationsLote16,
   ...medicationsLote17,
+  ...medicationsLote18,
+  ...medicationsLote19,
+  ...medicationsLote20,
+  ...medicationsLote21,
+  ...medicationsLote22,
+  ...medicationsLote23,
 ];
 
 export const allMedicationsData: MedicationImportItem[] = removeDuplicateMedications(allRaw);
