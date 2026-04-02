@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { useAuth } from "@/contexts/AuthContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
-import PremiumGate from "@/components/PremiumGate";
+import PremiumPageGuard from "@/components/PremiumPageGuard";
 import DutyShiftTimer from "@/components/duty/DutyShiftTimer";
 import DutyHandoffChecklist from "@/components/duty/DutyHandoffChecklist";
 import DutyBedNotes from "@/components/duty/DutyBedNotes";
