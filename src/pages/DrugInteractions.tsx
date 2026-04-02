@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
+import PremiumPageGuard from "@/components/PremiumPageGuard";
 import TopBar from "@/components/TopBar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
