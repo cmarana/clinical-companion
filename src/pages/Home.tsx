@@ -75,7 +75,7 @@ const studyModules = [
 
 const tabs = [
   { id: "tools", label: "Ferramentas", icon: Wrench, modules: toolsModules },
-  { id: "specialties", label: "Especialidades", icon: Sparkles, modules: specialtyModules },
+  { id: "specialties", label: "Especialidades", icon: Stethoscope, modules: specialtyModules },
   { id: "study", label: "Estudo & Mais", icon: Library, modules: studyModules },
 ];
 
