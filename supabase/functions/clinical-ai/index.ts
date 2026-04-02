@@ -3554,11 +3554,20 @@ REGRAS DE FORMATAÇÃO OBRIGATÓRIAS:
 5. ## AVALIAÇÃO DE GRAVIDADE — classificar: leve / moderado / grave / crítico. Justificar.
 6. ## EXAMES INDICADOS — "Imediatos" e "Complementares" (ADAPTAR AO CENÁRIO).
 7. ## CONDUTA — Ações terapêuticas. Use ATB e doses do motor. PROFILAXIA TVP = profilática (NÃO terapêutica sem indicação).
-8. ## PRESCRIÇÃO SUGERIDA — Copie doses do motor. Mostre fórmula + resultado. Ajuste renal/idade/alergia explícito.
+8. ## PRESCRIÇÃO SUGERIDA — Copie doses do motor. Mostre fórmula + resultado. Ajuste renal/idade/alergia explícito. Ao final desta seção, inclua um bloco de prescrição copiável no formato:
+\`\`\`prescription
+1. [Medicamento] [dose] [via] [intervalo]
+2. [Medicamento] [dose] [via] [intervalo]
+...
+\`\`\`
+Este bloco será detectado pelo app para permitir copiar/exportar a prescrição.
 9. ## INTERAÇÕES MEDICAMENTOSAS — Copie alertas do motor + adicione QT, eletrólitos, renal. Classificar: Baixo risco / Moderado / Alto risco.
 10. ## ALERTAS — contraindicações, segurança. INCLUIR todos os alertas de segurança do motor.
 11. ## PERGUNTAS FALTANTES — 3-5 perguntas OBRIGATÓRIAS. Incluir TODOS os dados faltantes do motor + perguntas de refinamento.
-12. ## REFERÊNCIAS — guidelines brasileiras e internacionais relevantes.
+12. ## PROTOCOLOS RELACIONADOS — Liste 2-4 protocolos do PULSO relevantes ao caso usando o formato:
+[PROTOCOL:id-do-protocolo|Nome do Protocolo]
+IDs válidos incluem: fp-sepse-choque, fp-iam-supra, fp-iam-sem-supra, fp-avc-isquemico, fp-eap, fp-tep-macico, fp-pcr-adulto, fp-asma-grave, fp-dpoc-exacerbado, fp-pneumonia-grave, fp-sdra, fp-hipercalemia, fp-cad, fp-hipoglicemia, fp-hiponatremia, fp-eclampsia, fp-hpp, fp-pre-eclampsia, fp-atls, fp-intoxicacao-opioide, fp-eme, fp-choque-anafilatico, fp-choque-hemorragico, fp-avc-hemorragico, fp-hsa, fp-convulsao-aguda, fp-bradicardia-sintomatica, fp-taquiarritmia-instavel, fp-fa-rvr, fp-crise-hipertensiva, fp-tamponamento, fp-disseccao-aorta, full-pcr-pediatrica-pals, full-sepse-pediatrica, full-convulsao-febril, full-reanimacao-neonatal, full-sepse-neonatal, fp-iot, fp-sri, fp-cvc, fp-pocus, fp-cardioversao, fp-desfibrilacao, fp-sedacao-rapida, entre outros. Use IDs que correspondam ao tema clínico.
+13. ## REFERÊNCIAS — guidelines brasileiras e internacionais relevantes.
 
 Se UTI/grave, adicionar: ## METAS — PAM >=65, diurese >0.5 mL/kg/h, lactato descendente, Sat>92%, glicemia 140-180, K normal, pH>7.2.
 
