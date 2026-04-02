@@ -42,20 +42,12 @@ const iconMap: Record<string, React.ReactNode> = {
   "user-round": <UserRound size={16} className="text-slate-400" />,
 };
 
-export default function Prescriptions() {
+function PrescriptionsContent() {
   const navigate = useNavigate();
   const { subscription } = useAuth();
   const [query, setQuery] = useState("");
   const [expandedCat, setExpandedCat] = useState<string | null>(null);
 
-  if (!subscription.subscribed) {
-    return (
-      <>
-        <TopBar title="Prescrições" />
-        <PremiumGate />
-      </>
-    );
-  }
 
   const filtered = prescriptionCategories.map(cat => ({
     ...cat,
