@@ -445,14 +445,6 @@ export default function Profile() {
 
           {/* ── 2. Endereço ── */}
           <Section icon={MapPin} title="Endereço">
-            <div className="grid grid-cols-3 gap-3">
-              <div className="col-span-2">
-                <Field label="Cidade">
-                  <Input value={profile.city} onChange={e => set("city")(e.target.value)} placeholder="São Paulo" className="rounded-xl" />
-                </Field>
-              </div>
-              <Select label="UF" value={profile.state} onChange={set("state")} options={UF_LIST.map(u => ({ value: u, label: u }))} placeholder="UF" />
-            </div>
             <Field label="CEP">
               <div className="relative">
                 <Input
@@ -469,6 +461,20 @@ export default function Profile() {
                 )}
               </div>
             </Field>
+            <Field label="Logradouro">
+              <Input value={profile.street} onChange={e => set("street")(e.target.value)} placeholder="Rua, Avenida..." className="rounded-xl" />
+            </Field>
+            <Field label="Bairro">
+              <Input value={profile.neighborhood} onChange={e => set("neighborhood")(e.target.value)} placeholder="Centro" className="rounded-xl" />
+            </Field>
+            <div className="grid grid-cols-3 gap-3">
+              <div className="col-span-2">
+                <Field label="Cidade">
+                  <Input value={profile.city} onChange={e => set("city")(e.target.value)} placeholder="São Paulo" className="rounded-xl" />
+                </Field>
+              </div>
+              <Select label="UF" value={profile.state} onChange={set("state")} options={UF_LIST.map(u => ({ value: u, label: u }))} placeholder="UF" />
+            </div>
           </Section>
 
           {/* ── 3. Formação Acadêmica ── */}
