@@ -425,3 +425,11 @@ function ClinicalAIContent() {
     </div>
   );
 }
+
+export default function ClinicalAI() {
+  return (
+    <PremiumPageGuard feature="IA Clínica" title="IA Clínica">
+      <ClinicalAIContent />
+    </PremiumPageGuard>
+  );
+}
