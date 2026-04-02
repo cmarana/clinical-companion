@@ -22,22 +22,23 @@ export const RecoveryEmail = ({
   siteName,
   confirmationUrl,
 }: RecoveryEmailProps) => (
-  <Html lang="en" dir="ltr">
+  <Html lang="pt-BR" dir="ltr">
     <Head />
-    <Preview>Reset your password for {siteName}</Preview>
+    <Preview>Redefinir sua senha no PULSO</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Heading style={h1}>Reset your password</Heading>
+        <Text style={brand}>PULSO</Text>
+        <Heading style={h1}>Redefinir sua senha</Heading>
         <Text style={text}>
-          We received a request to reset your password for {siteName}. Click
-          the button below to choose a new password.
+          Recebemos uma solicitação para redefinir a senha da sua conta no PULSO.
+          Clique no botão abaixo para escolher uma nova senha.
         </Text>
         <Button style={button} href={confirmationUrl}>
-          Reset Password
+          Redefinir Senha
         </Button>
         <Text style={footer}>
-          If you didn't request a password reset, you can safely ignore this
-          email. Your password will not be changed.
+          Se você não solicitou a redefinição de senha, pode ignorar este email.
+          Sua senha não será alterada.
         </Text>
       </Container>
     </Body>
@@ -46,22 +47,29 @@ export const RecoveryEmail = ({
 
 export default RecoveryEmail
 
-const main = { backgroundColor: '#ffffff', fontFamily: 'Arial, sans-serif' }
+const main = { backgroundColor: '#ffffff', fontFamily: 'Inter, Arial, sans-serif' }
 const container = { padding: '20px 25px' }
+const brand = {
+  fontSize: '28px',
+  fontWeight: 'bold' as const,
+  color: '#0a6dd9',
+  margin: '0 0 24px',
+  letterSpacing: '-0.5px',
+}
 const h1 = {
   fontSize: '22px',
   fontWeight: 'bold' as const,
-  color: '#000000',
+  color: '#1e293b',
   margin: '0 0 20px',
 }
 const text = {
   fontSize: '14px',
-  color: '#55575d',
+  color: '#64748b',
   lineHeight: '1.5',
   margin: '0 0 25px',
 }
 const button = {
-  backgroundColor: '#000000',
+  backgroundColor: '#0a6dd9',
   color: '#ffffff',
   fontSize: '14px',
   borderRadius: '8px',
