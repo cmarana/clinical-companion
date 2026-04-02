@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, Crown, LogOut, Sparkles, X, Shield, Zap, Gift } from "lucide-react";
+import { Check, Crown, LogOut, Sparkles, X, Shield, Zap, Gift, CreditCard, QrCode, Receipt } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
