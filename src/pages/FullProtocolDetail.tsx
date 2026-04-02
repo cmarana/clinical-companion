@@ -133,6 +133,12 @@ export default function FullProtocolDetail() {
               <ShieldCheck size={12} />
               Classe {evidence.class} · Nível {evidence.level}
             </span>
+            )}
+          {updateLabel && (
+            <span className="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-primary/10 text-primary">
+              <CalendarCheck size={10} />
+              {updateLabel}
+            </span>
           )}
         </div>
 
