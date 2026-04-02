@@ -84,14 +84,8 @@ function DutyModeContent() {
     return [...matchedProtocols, ...matchedMeds];
   }, [search]);
 
-  if (!subscription.subscribed) {
-    return (
-      <>
-        <TopBar title="Modo Plantão" />
-        <PremiumGate />
-      </>
-    );
-  }
+
+
 
   return (
     <>
