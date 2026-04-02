@@ -140,10 +140,16 @@ export default function Home() {
   const { theme, toggleTheme } = useTheme();
   const { user } = useAuth();
   const { unreadCount } = useNotifications();
+  const { trackModule } = useModuleAnalytics();
   const [avatarUrl, setAvatarUrl] = useState("");
   const [initials, setInitials] = useState("U");
   const [activeTab, setActiveTab] = useState("tools");
   const [specialty, setSpecialty] = useState<string | null>(null);
+
+  const navigateWithTracking = (path: string, label: string) => {
+    trackModule(path, label);
+    navigate(path);
+  };
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [profileLoaded, setProfileLoaded] = useState(false);
 
