@@ -445,6 +445,16 @@ export default function Auth() {
 
                 {/* Email form */}
                 <form onSubmit={handleAuth} className="space-y-3">
+                  {!resetMode && !isLogin && (
+                    <Input
+                      type="text"
+                      placeholder="Nome completo"
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
+                      required
+                      className="h-11 rounded-xl"
+                    />
+                  )}
                   <Input
                     type="email"
                     placeholder="E-mail"
