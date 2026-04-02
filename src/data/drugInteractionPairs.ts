@@ -262,10 +262,6 @@ export const HIGH_RISK_PAIRS: Record<string, InteractionPair[]> = {
     { drugs: ["claritromicina", "eritromicina"], severity: "moderado", desc: "Macrolídeos aumentam nível de sirolimus." },
     { drugs: ["sinvastatina", "atorvastatina"], severity: "moderado", desc: "Risco de rabdomiólise — monitorar CPK." },
   ],
-  "prednisona": [
-    { drugs: ["cetoconazol"], severity: "moderado", desc: "Cetoconazol aumenta exposição a corticoides via CYP3A4." },
-    { drugs: ["rifampicina"], severity: "moderado", desc: "Rifampicina acelera metabolismo da prednisona — pode requerer aumento de dose." },
-  ],
   // === PARES ADICIONAIS ===
   "anfotericina b": [
     { drugs: ["gentamicina", "amicacina", "tobramicina"], severity: "grave", desc: "Nefrotoxicidade sinérgica — monitorar função renal diariamente." },
