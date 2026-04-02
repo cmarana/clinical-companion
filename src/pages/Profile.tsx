@@ -6,8 +6,10 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { User, Camera, Save, LogOut, Shield, Mail, Clock } from "lucide-react";
+import { User, Camera, Save, LogOut, Shield, Mail, Clock, Sun, Moon, Eclipse, Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "@/contexts/ThemeContext";
+import { hapticLight } from "@/lib/haptics";
 
 const SPECIALTIES = [
   "Clínica Médica", "Cirurgia Geral", "Pediatria", "Ginecologia e Obstetrícia",
