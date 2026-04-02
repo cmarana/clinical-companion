@@ -36,6 +36,7 @@ const userItems = [
   { title: "Favoritos", url: "/favorites", icon: Star },
   { title: "Notas", url: "/notes", icon: StickyNote },
   { title: "Questões", url: "/quiz", icon: HelpCircle },
+  { title: "Indique e Ganhe", url: "/referral", icon: Gift },
   { title: "Conta", url: "/pricing", icon: User },
 ];
 
