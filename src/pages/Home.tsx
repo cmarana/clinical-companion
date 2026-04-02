@@ -148,6 +148,7 @@ export default function Home() {
   const [specialty, setSpecialty] = useState<string | null>(null);
 
   const navigateWithTracking = (path: string, label: string) => {
+    hapticLight();
     trackModule(path, label);
     navigate(path);
   };
