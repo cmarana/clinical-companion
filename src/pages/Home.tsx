@@ -212,9 +212,9 @@ export default function Home() {
           >
             <button
               onClick={() => navigateWithTracking(m.path, m.label)}
-              className={`w-full flex items-center gap-3 px-4 py-4 rounded-[20px] border-0 transition-all duration-200 active:scale-[0.98] hover:shadow-md text-left ${cardStyles[m.variant]}`}
+              className={`group w-full flex items-center gap-3 px-4 py-4 rounded-[20px] border-0 transition-all duration-300 active:scale-[0.97] hover:shadow-xl hover:-translate-y-0.5 text-left ${cardStyles[m.variant]}`}
             >
-              <div className={`flex items-center justify-center w-10 h-10 rounded-2xl shrink-0 ${iconStyles[m.variant]}`}>
+              <div className={`flex items-center justify-center w-10 h-10 rounded-2xl shrink-0 transition-transform duration-300 group-hover:scale-110 ${iconStyles[m.variant]}`}>
                 <m.icon size={20} />
               </div>
               <div className="flex flex-col min-w-0">
