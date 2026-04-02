@@ -225,7 +225,10 @@ export default function Home() {
 
       {/* Top bar */}
       <div className="flex items-center justify-between h-12 mb-3">
-        <span className="font-heading font-bold text-base tracking-tight">PS Guide</span>
+        <div className="flex flex-col">
+          <span className="font-heading font-bold text-base tracking-tight">PULSO</span>
+          <span className="text-[9px] text-muted-foreground tracking-wide -mt-0.5">Decida em segundos. Sem margem para erro.</span>
+        </div>
         <div className="flex items-center gap-2">
           <button onClick={() => { hapticLight(); toggleTheme(); }} className="p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground" title={themeLabel}>
             {theme === "oled" ? <Eclipse size={16} /> : theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}

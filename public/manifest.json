@@ -1,7 +1,7 @@
 {
-  "name": "Manual de Plantão",
-  "short_name": "Plantão",
-  "description": "Guia médico de sobrevivência na emergência. Protocolos, medicamentos e quiz offline.",
+  "name": "PULSO: Emergência Médica",
+  "short_name": "PULSO",
+  "description": "Decida em segundos. Sem margem para erro. Protocolos, medicamentos e IA clínica para plantões.",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#0f172a",
