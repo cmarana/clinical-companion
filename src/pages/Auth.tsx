@@ -34,10 +34,39 @@ const showcaseFeatures = [
 ];
 
 const stats = [
-  { value: "2.000+", label: "Medicamentos" },
-  { value: "282", label: "Protocolos" },
-  { value: "53", label: "Calculadoras" },
+  { target: 2000, suffix: "+", label: "Medicamentos" },
+  { target: 282, suffix: "", label: "Protocolos" },
+  { target: 53, suffix: "", label: "Calculadoras" },
 ];
+
+function AnimatedCounter({ target, suffix, delay = 0 }: { target: number; suffix: string; delay?: number }) {
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      const duration = 1800;
+      const steps = 60;
+      const increment = target / steps;
+      let current = 0;
+      const interval = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          setCount(target);
+          clearInterval(interval);
+        } else {
+          setCount(Math.floor(current));
+        }
+      }, duration / steps);
+      return () => clearInterval(interval);
+    }, delay);
+    return () => clearTimeout(timeout);
+  }, [target, delay]);
+
+  const formatted = target >= 1000
+    ? count.toLocaleString("pt-BR")
+    : count.toString();
+
+  return <>{formatted}{suffix}</>;
+}
 
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
@@ -157,9 +186,11 @@ export default function Auth() {
             transition={{ delay: 0.35 }}
             className="flex justify-center gap-6 mt-6"
           >
-            {stats.map((s) => (
+            {stats.map((s, i) => (
               <div key={s.label} className="text-center">
-                <div className="font-heading font-bold text-xl text-primary">{s.value}</div>
+                <div className="font-heading font-bold text-xl text-primary">
+                  <AnimatedCounter target={s.target} suffix={s.suffix} delay={350 + i * 200} />
+                </div>
                 <div className="text-[10px] text-muted-foreground font-medium uppercase tracking-wider">{s.label}</div>
               </div>
             ))}
