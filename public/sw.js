@@ -2,6 +2,7 @@ const CACHE_NAME = 'medcore-v6';
 const CONTENT_CACHE = 'medcore-content-v1';
 const STATIC_ASSETS = [
   '/',
+  '/offline.html',
   '/manifest.json',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
