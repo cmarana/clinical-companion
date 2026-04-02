@@ -582,6 +582,9 @@ export default function DocumentGenerator() {
               </Button>
             </div>
 
+            {/* Auto Drug Interaction Alert */}
+            <PrescriptionInteractionAlert drugNames={medications.map(m => m.name)} />
+
             <div>
               <Label className="text-xs">Observações</Label>
               <Textarea value={prescriptionNotes} onChange={e => setPrescriptionNotes(e.target.value)} placeholder="Orientações adicionais..." className="text-sm min-h-[60px]" />
