@@ -263,10 +263,12 @@ export default function Home() {
                   <span className="font-heading font-semibold text-[12px] leading-tight truncate">{m.label}</span>
                   <span className="text-[10px] leading-tight mt-0.5 truncate text-muted-foreground">{m.sub}</span>
                 </div>
-              </button>
-            ))}
-          </div>
-        )}
+                  </button>
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </div>
   );
