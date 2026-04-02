@@ -151,25 +151,67 @@ export default function FullProtocolDetail() {
 
   return (
     <div className="flex w-full">
-      {/* Split panel - desktop only */}
-      <div className="hidden lg:block w-80 xl:w-96 shrink-0 h-[calc(100vh-2.5rem)] sticky top-10">
-        <ProtocolSplitList activeProtocolId={id} />
-      </div>
+      {/* Split panel - desktop only (hidden in focus mode) */}
+      {!focusMode && (
+        <div className="hidden lg:block w-80 xl:w-96 shrink-0 h-[calc(100vh-2.5rem)] sticky top-10">
+          <ProtocolSplitList activeProtocolId={id} />
+        </div>
+      )}
 
       {/* Main content */}
       <div className="flex-1 min-w-0">
         <TopBar
           title={protocol.title}
           rightContent={
-            <button
-              onClick={() => toggleFavorite({ id: protocol.id, type: "protocol", title: protocol.title })}
-              className="p-1.5 rounded-md hover:bg-accent transition-colors"
-            >
-              <Star size={18} className={cn(fav ? "fill-warning text-warning" : "text-muted-foreground")} />
-            </button>
+            <div className="flex items-center gap-1">
+              {/* Focus mode toggle - desktop only */}
+              <button
+                onClick={() => setFocusMode(f => !f)}
+                className="hidden lg:inline-flex p-1.5 rounded-md hover:bg-accent transition-colors"
+                title={focusMode ? "Sair do modo foco" : "Modo foco"}
+              >
+                {focusMode ? <EyeOff size={16} className="text-primary" /> : <Eye size={16} className="text-muted-foreground" />}
+              </button>
+              <button
+                onClick={() => toggleFavorite({ id: protocol.id, type: "protocol", title: protocol.title })}
+                className="p-1.5 rounded-md hover:bg-accent transition-colors"
+              >
+                <Star size={18} className={cn(fav ? "fill-warning text-warning" : "text-muted-foreground")} />
+              </button>
+            </div>
           }
         />
-        <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-4xl mx-auto pb-24">
+        <div className={cn("px-4 py-4 pb-24 mx-auto", focusMode ? "max-w-2xl" : "max-w-lg md:max-w-3xl lg:max-w-4xl")}>
+          {/* Breadcrumbs */}
+          <Breadcrumb className="mb-3">
+            <BreadcrumbList>
+              <BreadcrumbItem>
+                <BreadcrumbLink href="/full-protocols" className="text-xs font-heading hover:text-primary transition-colors">
+                  Protocolos
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator>
+                <ChevronRight size={12} />
+              </BreadcrumbSeparator>
+              <BreadcrumbItem>
+                <BreadcrumbLink
+                  href={`/full-protocols?cat=${protocol.categoryId}`}
+                  className="text-xs font-heading hover:text-primary transition-colors"
+                >
+                  {categoryLabel}
+                </BreadcrumbLink>
+              </BreadcrumbItem>
+              <BreadcrumbSeparator>
+                <ChevronRight size={12} />
+              </BreadcrumbSeparator>
+              <BreadcrumbItem>
+                <BreadcrumbPage className="text-xs font-heading font-semibold text-foreground truncate max-w-[200px]">
+                  {protocol.title}
+                </BreadcrumbPage>
+              </BreadcrumbItem>
+            </BreadcrumbList>
+          </Breadcrumb>
+
           <div className="flex items-center gap-2 mb-3">
             <p className="text-xs text-muted-foreground font-heading">{protocol.category}</p>
             {evidence && (
