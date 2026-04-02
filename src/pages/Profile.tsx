@@ -6,8 +6,10 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
-import { User, Camera, Save, LogOut, Shield, Mail, Clock } from "lucide-react";
+import { User, Camera, Save, LogOut, Shield, Mail, Clock, Sun, Moon, Eclipse, Check } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useTheme } from "@/contexts/ThemeContext";
+import { hapticLight } from "@/lib/haptics";
 
 const SPECIALTIES = [
   "Clínica Médica", "Cirurgia Geral", "Pediatria", "Ginecologia e Obstetrícia",
@@ -36,8 +38,45 @@ interface ProfileData {
   avatar_url: string;
 }
 
+const themeOptions = [
+  {
+    id: "light" as const,
+    label: "Claro",
+    icon: Sun,
+    bg: "bg-[#F8FAFC]",
+    card: "bg-white",
+    text: "text-[#1E293B]",
+    subtext: "text-[#64748B]",
+    accent: "bg-[#3B82F6]",
+    desc: "Ideal para ambientes bem iluminados",
+  },
+  {
+    id: "dark" as const,
+    label: "Escuro",
+    icon: Moon,
+    bg: "bg-[#0F172A]",
+    card: "bg-[#1E293B]",
+    text: "text-[#F1F5F9]",
+    subtext: "text-[#94A3B8]",
+    accent: "bg-[#3B82F6]",
+    desc: "Conforto visual em baixa luminosidade",
+  },
+  {
+    id: "oled" as const,
+    label: "OLED Noturno",
+    icon: Eclipse,
+    bg: "bg-black",
+    card: "bg-[#0A0A0A]",
+    text: "text-[#E2E8F0]",
+    subtext: "text-[#64748B]",
+    accent: "bg-[#3B82F6]",
+    desc: "True-black para plantões noturnos",
+  },
+];
+
 export default function Profile() {
   const { user, signOut, subscription } = useAuth();
+  const { theme, setTheme } = useTheme();
   const navigate = useNavigate();
   const fileInputRef = useRef<HTMLInputElement>(null);
   const [loading, setLoading] = useState(true);
@@ -257,7 +296,57 @@ export default function Profile() {
             </Button>
           </div>
 
-          {/* Account info */}
+          {/* Theme selector */}
+          <div className="bg-card rounded-2xl border border-border p-4 space-y-3">
+            <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Aparência</h3>
+            <div className="grid grid-cols-3 gap-2.5">
+              {themeOptions.map((opt) => {
+                const isActive = theme === opt.id;
+                const Icon = opt.icon;
+                return (
+                  <button
+                    key={opt.id}
+                    onClick={() => { hapticLight(); setTheme(opt.id); }}
+                    className={`relative flex flex-col items-center gap-2 rounded-xl p-2.5 transition-all border-2 ${
+                      isActive
+                        ? "border-primary ring-2 ring-primary/20"
+                        : "border-transparent hover:border-border"
+                    }`}
+                  >
+                    {/* Mini preview */}
+                    <div className={`w-full aspect-[3/4] rounded-lg ${opt.bg} overflow-hidden p-1.5 flex flex-col gap-1 shadow-inner`}>
+                      <div className={`h-1.5 w-8 rounded-full ${opt.accent}`} />
+                      <div className={`flex-1 rounded-md ${opt.card} p-1 flex flex-col gap-0.5`}>
+                        <div className={`h-1 w-6 rounded-full ${opt.text} opacity-60`} />
+                        <div className={`h-1 w-4 rounded-full ${opt.subtext} opacity-40`} />
+                      </div>
+                      <div className={`h-3 rounded-md ${opt.card} flex items-center justify-center gap-0.5 px-1`}>
+                        <div className={`h-1 w-1 rounded-full ${opt.accent}`} />
+                        <div className={`h-1 w-1 rounded-full ${opt.subtext} opacity-30`} />
+                        <div className={`h-1 w-1 rounded-full ${opt.subtext} opacity-30`} />
+                      </div>
+                    </div>
+                    {/* Label */}
+                    <div className="flex items-center gap-1">
+                      <Icon size={12} className="text-muted-foreground" />
+                      <span className="text-[11px] font-medium">{opt.label}</span>
+                    </div>
+                    {/* Check badge */}
+                    {isActive && (
+                      <div className="absolute -top-1 -right-1 w-5 h-5 rounded-full bg-primary text-primary-foreground flex items-center justify-center">
+                        <Check size={12} />
+                      </div>
+                    )}
+                  </button>
+                );
+              })}
+            </div>
+            <p className="text-[10px] text-muted-foreground text-center">
+              {themeOptions.find(o => o.id === theme)?.desc}
+            </p>
+          </div>
+
+
           <div className="bg-card rounded-2xl border border-border p-4 space-y-3">
             <h3 className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Conta</h3>
             <div className="flex items-center gap-3 text-sm">
