@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
-import { Search, Clock, TrendingUp, X, ArrowRight, FileText, Pill, ClipboardList, BookOpen, Zap, Calculator, Hash, TestTubes, Stethoscope } from "lucide-react";
+import { Search, Clock, TrendingUp, X, ArrowRight, FileText, Pill, ClipboardList, BookOpen, Zap, Calculator, Hash, TestTubes, Stethoscope, Mic, MicOff } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { safeLocalStorage } from "@/lib/safeStorage";
 import { hapticLight } from "@/lib/haptics";
