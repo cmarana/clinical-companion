@@ -17,6 +17,7 @@ import { useNotifications } from "@/contexts/NotificationsContext";
 import OnboardingModal from "@/components/OnboardingModal";
 import { hapticLight, hapticMedium } from "@/lib/haptics";
 import { useModuleAnalytics, setAnalyticsSpecialty } from "@/hooks/useModuleAnalytics";
+import SmartSearch from "@/components/SmartSearch";
 
 // ── ALL MODULES WITH TAGS ─────────────────────────────────────
 interface Module {
