@@ -4,12 +4,14 @@ import TopBar from "@/components/TopBar";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { checkInteractions, severityConfig, type FoundInteraction, type Severity } from "@/data/drugInteractionsDB";
+import { HIGH_RISK_PAIRS } from "@/data/drugInteractionPairs";
 import { streamClinicalAi } from "@/lib/clinicalAiStream";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 import {
   Plus, X, Search, Loader2, AlertTriangle, Shield, ShieldAlert,
-  ShieldX, Info, Pill, ChevronDown, ChevronUp, Zap, Bot, Trash2
+  ShieldX, Info, Pill, ChevronDown, ChevronUp, Zap, Bot, Trash2,
+  Database, Activity, Heart, Brain, Syringe, Beaker, Leaf, FlaskConical
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
