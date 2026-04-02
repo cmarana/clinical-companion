@@ -116,10 +116,7 @@ export const HIGH_RISK_PAIRS: Record<string, InteractionPair[]> = {
     { drugs: ["ácido acetilsalicílico", "aas"], severity: "moderado", desc: "Risco de sangramento aumentado — monitorar." },
     { drugs: ["ibuprofeno", "diclofenaco"], severity: "moderado", desc: "AINEs + HBPM = risco hemorrágico." },
   ],
-  "insulina": [
-    { drugs: ["propranolol", "atenolol"], severity: "moderado", desc: "Betabloqueadores mascaram sintomas de hipoglicemia." },
-    { drugs: ["corticoides", "prednisona", "dexametasona", "hidrocortisona"], severity: "moderado", desc: "Corticoides causam hiperglicemia — ajustar dose de insulina." },
-  ],
+  // insulina moved to Insulinas section below
   "prednisona": [
     { drugs: ["ibuprofeno", "diclofenaco", "naproxeno"], severity: "moderado", desc: "Corticoide + AINE = risco GI aumentado (úlcera, sangramento)." },
     { drugs: ["insulina", "metformina", "glibenclamida"], severity: "moderado", desc: "Corticoides causam hiperglicemia — monitorar glicemia." },
