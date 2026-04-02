@@ -139,8 +139,9 @@
 
 @layer components {
   .protocol-content h2 {
-    @apply text-lg font-semibold mt-6 mb-3 pb-2 border-b border-border;
-    font-family: var(--font-heading);
+    @apply text-xl font-semibold mt-6 mb-3 pb-2 border-b border-border;
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
   }
   .protocol-content h3 {
     @apply text-base font-semibold mt-4 mb-2;
