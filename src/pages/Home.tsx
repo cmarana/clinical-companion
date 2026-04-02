@@ -146,32 +146,18 @@ export default function Home() {
   const { trackModule } = useModuleAnalytics();
   const [avatarUrl, setAvatarUrl] = useState("");
   const [initials, setInitials] = useState("U");
-  const [activeTab, setActiveTab] = useState("tools");
-  const [specialty, setSpecialty] = useState<string | null>(null);
+  const [specialty] = useState<string | null>("todas");
 
   const navigateWithTracking = (path: string, label: string) => {
     hapticLight();
     trackModule(path, label);
     navigate(path);
   };
-  const [showOnboarding, setShowOnboarding] = useState(false);
-  const [profileLoaded, setProfileLoaded] = useState(false);
 
   useEffect(() => {
-    if (!user) {
-      // Check localStorage for non-logged-in users
-      const saved = localStorage.getItem("ps-guide-specialty");
-      const dismissed = localStorage.getItem("ps-guide-onboarding-dismissed");
-      if (saved) {
-        setSpecialty(saved);
-      } else if (!dismissed) {
-        setShowOnboarding(true);
-      }
-      setProfileLoaded(true);
-      return;
-    }
+    if (!user) return;
 
-    supabase.from("profiles").select("full_name, avatar_url, specialty").eq("user_id", user.id).maybeSingle()
+    supabase.from("profiles").select("full_name, avatar_url").eq("user_id", user.id).maybeSingle()
       .then(({ data }) => {
         if (data?.avatar_url) setAvatarUrl(data.avatar_url);
         if (data?.full_name) {
@@ -179,37 +165,10 @@ export default function Home() {
         } else {
           setInitials(user.email?.[0]?.toUpperCase() || "U");
         }
-        if (data?.specialty) {
-          setSpecialty(data.specialty);
-          localStorage.setItem("ps-guide-specialty", data.specialty);
-        } else {
-          const dismissed = localStorage.getItem("ps-guide-onboarding-dismissed");
-          if (!dismissed) setShowOnboarding(true);
-        }
-        setProfileLoaded(true);
       });
   }, [user]);
 
-  const handleOnboardingComplete = async (specialtyId: string) => {
-    setSpecialty(specialtyId);
-    setShowOnboarding(false);
-    localStorage.setItem("ps-guide-specialty", specialtyId);
-    localStorage.removeItem("ps-guide-onboarding-dismissed");
-    setAnalyticsSpecialty(specialtyId);
-
-    if (user) {
-      await supabase.from("profiles").update({ specialty: specialtyId }).eq("user_id", user.id);
-    }
-  };
-
-  const handleOnboardingSkip = () => {
-    setShowOnboarding(false);
-    localStorage.setItem("ps-guide-onboarding-dismissed", "true");
-  };
-
   const primaryModules = useMemo(() => getPrimaryModules(specialty), [specialty]);
-
-  const activeTabData = tabs.find(t => t.id === activeTab);
 
   return (
     <div className="px-4 pt-3 pb-24 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto">
