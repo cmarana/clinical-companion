@@ -221,6 +221,10 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
     } else {
       setNotifications(existing);
     }
+
+    // Start push notification scheduler
+    startReminderScheduler();
+    return () => stopReminderScheduler();
   }, []);
 
   const save = useCallback((notifs: AppNotification[]) => {
