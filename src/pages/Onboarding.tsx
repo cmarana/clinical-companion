@@ -289,10 +289,12 @@ export default function Onboarding() {
       return;
     }
 
-    await recheckProfile();
     toast.success("Perfil completo!");
-    // Redirect to pricing for payment
+    // Navigate to pricing BEFORE updating profile state,
+    // otherwise ProtectedRoute will redirect to Home
     navigate("/pricing", { replace: true });
+    // Update profile state after navigation is queued
+    setTimeout(() => recheckProfile(), 100);
   };
 
   const progress = ((step + 1) / STEPS.length) * 100;
