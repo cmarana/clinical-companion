@@ -62,6 +62,8 @@ const PushNotificationSettings = lazy(() => import("@/pages/PushNotificationSett
 const AdminAnalytics = lazy(() => import("@/pages/AdminAnalytics"));
 const UpdatesFeed = lazy(() => import("@/pages/UpdatesFeed"));
 const PixSuccess = lazy(() => import("@/pages/PixSuccess"));
+const TermsOfUse = lazy(() => import("@/pages/TermsOfUse"));
+const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
 
 const queryClient = new QueryClient();
 
