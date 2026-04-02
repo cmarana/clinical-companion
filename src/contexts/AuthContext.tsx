@@ -15,7 +15,9 @@ interface AuthContextType {
   session: Session | null;
   loading: boolean;
   subscription: SubscriptionInfo;
+  profileComplete: boolean | null; // null = still checking
   checkSubscription: () => Promise<void>;
+  recheckProfile: () => Promise<void>;
   signOut: () => Promise<void>;
 }
 
@@ -32,19 +34,47 @@ const AuthContext = createContext<AuthContextType>({
   session: null,
   loading: true,
   subscription: defaultSub,
+  profileComplete: null,
   checkSubscription: async () => {},
+  recheckProfile: async () => {},
   signOut: async () => {},
 });
+
+const REQUIRED_FIELDS = ["first_name", "last_name", "birth_date", "gender", "phone", "city", "state", "zip_code"];
+
+function isProfileComplete(profile: any): boolean {
+  if (!profile) return false;
+  return REQUIRED_FIELDS.every((f) => {
+    const val = profile[f];
+    return val !== null && val !== undefined && String(val).trim() !== "";
+  });
+}
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(null);
   const [session, setSession] = useState<Session | null>(null);
   const [loading, setLoading] = useState(true);
   const [subscription, setSubscription] = useState<SubscriptionInfo>(defaultSub);
+  const [profileComplete, setProfileComplete] = useState<boolean | null>(null);
 
   const pendingCheck = useRef<Promise<void> | null>(null);
   const lastCheckTime = useRef<number>(0);
   const MIN_CHECK_INTERVAL = 30_000;
+
+  const checkProfile = useCallback(async (userId?: string) => {
+    const uid = userId || user?.id;
+    if (!uid) { setProfileComplete(null); return; }
+    try {
+      const { data } = await supabase
+        .from("profiles")
+        .select("first_name, last_name, birth_date, gender, phone, city, state, zip_code")
+        .eq("user_id", uid)
+        .maybeSingle();
+      setProfileComplete(isProfileComplete(data));
+    } catch {
+      setProfileComplete(false);
+    }
+  }, [user?.id]);
 
   const checkSubscription = useCallback(async (force = false) => {
     if (pendingCheck.current) return pendingCheck.current;
@@ -86,7 +116,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         if (newSession?.user) {
           if (!initialCheckDone) {
             initialCheckDone = true;
-            setTimeout(() => checkSubscription(), 0);
+            setTimeout(() => {
+              checkSubscription();
+              checkProfile(newSession.user.id);
+            }, 0);
           }
           // Send welcome email on first sign-up
           if (event === 'SIGNED_IN' && newSession.user.created_at) {
@@ -105,6 +138,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           }
         } else {
           setSubscription(defaultSub);
+          setProfileComplete(null);
         }
       }
     );
@@ -116,11 +150,12 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       if (s?.user) {
         initialCheckDone = true;
         checkSubscription();
+        checkProfile(s.user.id);
       }
     });
 
     return () => authSub.unsubscribe();
-  }, [checkSubscription]);
+  }, [checkSubscription, checkProfile]);
 
   useEffect(() => {
     if (!user) return;
@@ -133,10 +168,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setUser(null);
     setSession(null);
     setSubscription(defaultSub);
+    setProfileComplete(null);
   };
 
   return (
-    <AuthContext.Provider value={{ user, session, loading, subscription, checkSubscription, signOut }}>
+    <AuthContext.Provider value={{
+      user, session, loading, subscription, profileComplete,
+      checkSubscription, recheckProfile: checkProfile, signOut,
+    }}>
       {children}
     </AuthContext.Provider>
   );
