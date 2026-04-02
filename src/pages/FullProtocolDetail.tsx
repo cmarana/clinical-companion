@@ -26,6 +26,7 @@ export default function FullProtocolDetail() {
   const { subscription } = useAuth();
   const { isFavorite, toggleFavorite } = useFavorites();
   const { addEntry } = useRecentHistory();
+  const { trackView } = useProtocolAnalytics(id);
   const [protocol, setProtocol] = useState<FullProtocol | null | undefined>(undefined);
   const evidence = protocol ? getEvidence(protocol.id) : undefined;
 
