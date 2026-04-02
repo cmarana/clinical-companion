@@ -75,7 +75,8 @@ serve(async (req) => {
       subscription_data: { trial_period_days: 7 },
       success_url: `${req.headers.get("origin")}/pricing?success=true`,
       cancel_url: `${req.headers.get("origin")}/pricing`,
-      payment_method_types: ["card"],
+      payment_method_types: ["card", "boleto"],
+      locale: "pt-BR",
     });
 
     return new Response(JSON.stringify({ url: session.url }), {
