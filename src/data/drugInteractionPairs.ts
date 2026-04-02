@@ -130,15 +130,7 @@ export const HIGH_RISK_PAIRS: Record<string, InteractionPair[]> = {
     { drugs: ["ciprofloxacino"], severity: "grave", desc: "Ciprofloxacino inibe CYP1A2 — aumento perigoso do nível de clozapina." },
     { drugs: ["carbamazepina"], severity: "grave", desc: "Carbamazepina + clozapina — risco de agranulocitose aditivo." },
   ],
-  "rivaroxabana": [
-    { drugs: ["ácido acetilsalicílico", "aas"], severity: "moderado", desc: "Risco de sangramento aumentado com antiagregante." },
-    { drugs: ["cetoconazol", "itraconazol"], severity: "grave", desc: "Azólicos aumentam nível de rivaroxabana — evitar." },
-    { drugs: ["ibuprofeno", "diclofenaco"], severity: "moderado", desc: "AINEs + DOAC = risco hemorrágico." },
-  ],
-  "apixabana": [
-    { drugs: ["ácido acetilsalicílico", "aas"], severity: "moderado", desc: "Risco de sangramento aumentado." },
-    { drugs: ["cetoconazol", "itraconazol"], severity: "grave", desc: "Azólicos aumentam nível de apixabana." },
-  ],
+  // rivaroxabana and apixabana moved to DOACs section below
   // === ANTIRRETROVIRAIS ===
   "ritonavir": [
     { drugs: ["sinvastatina", "atorvastatina", "lovastatina"], severity: "grave", desc: "Contraindicado — inibição potente de CYP3A4 → rabdomiólise." },
@@ -580,6 +572,151 @@ export const HIGH_RISK_PAIRS: Record<string, InteractionPair[]> = {
     { drugs: ["atropina"], severity: "moderado", desc: "Coadministração necessária para prevenir bradicardia — interação terapêutica." },
     { drugs: ["betabloqueadores"], severity: "moderado", desc: "Bradicardia aditiva — associar atropina." },
     { drugs: ["aminoglicosídeos"], severity: "moderado", desc: "Pode antagonizar parcialmente bloqueio potencializado por aminoglicosídeos." },
+  ],
+
+  // ── DOACs (Anticoagulantes Diretos) ──
+  "rivaroxabana": [
+    { drugs: ["cetoconazol", "itraconazol", "voriconazol", "posaconazol"], severity: "grave", desc: "Inibidores potentes de CYP3A4/P-gp — aumento perigoso de rivaroxabana. Contraindicado." },
+    { drugs: ["rifampicina", "carbamazepina", "fenitoína", "fenobarbital"], severity: "grave", desc: "Indutores potentes de CYP3A4 — redução significativa da eficácia anticoagulante." },
+    { drugs: ["ácido acetilsalicílico", "aas", "aspirina"], severity: "grave", desc: "Risco hemorrágico aumentado — usar somente se benefício superar risco." },
+    { drugs: ["clopidogrel", "ticagrelor", "prasugrel"], severity: "grave", desc: "Dupla antitrombótica — risco hemorrágico significativo. Limitar duração." },
+    { drugs: ["ibuprofeno", "diclofenaco", "naproxeno", "cetoprofeno"], severity: "grave", desc: "AINEs aumentam risco de sangramento GI com DOACs." },
+    { drugs: ["amiodarona"], severity: "moderado", desc: "Amiodarona inibe P-gp — aumento moderado de rivaroxabana." },
+    { drugs: ["dronedarona"], severity: "grave", desc: "Inibição de CYP3A4 e P-gp — evitar combinação." },
+    { drugs: ["eritromicina", "claritromicina"], severity: "moderado", desc: "Inibidores moderados de CYP3A4 — monitorar sinais de sangramento." },
+    { drugs: ["verapamil"], severity: "moderado", desc: "Inibição de P-gp — aumento moderado de rivaroxabana." },
+    { drugs: ["heparina", "enoxaparina", "fondaparinux"], severity: "grave", desc: "Anticoagulação dupla — risco hemorrágico grave." },
+  ],
+  "apixabana": [
+    { drugs: ["cetoconazol", "itraconazol", "voriconazol", "posaconazol"], severity: "grave", desc: "Inibidores potentes de CYP3A4/P-gp — contraindicado. Aumento perigoso de apixabana." },
+    { drugs: ["rifampicina", "carbamazepina", "fenitoína"], severity: "grave", desc: "Indutores potentes de CYP3A4 — redução de 50% dos níveis. Evitar." },
+    { drugs: ["ácido acetilsalicílico", "aas", "aspirina"], severity: "grave", desc: "Risco hemorrágico aumentado — avaliar risco-benefício." },
+    { drugs: ["clopidogrel", "ticagrelor", "prasugrel"], severity: "grave", desc: "Tripla terapia antitrombótica — limitar duração e usar menor dose de apixabana." },
+    { drugs: ["ibuprofeno", "diclofenaco", "naproxeno"], severity: "grave", desc: "AINEs aumentam risco de sangramento GI." },
+    { drugs: ["amiodarona"], severity: "moderado", desc: "Inibição de P-gp — aumento leve a moderado de apixabana." },
+    { drugs: ["diltiazem"], severity: "moderado", desc: "Inibidor moderado de CYP3A4 — aumento de 40% na exposição." },
+    { drugs: ["heparina", "enoxaparina"], severity: "grave", desc: "Dupla anticoagulação — risco hemorrágico grave." },
+    { drugs: ["erva de são joão", "hypericum"], severity: "grave", desc: "Indução CYP3A4 — reduz eficácia anticoagulante significativamente." },
+  ],
+  "dabigatrana": [
+    { drugs: ["cetoconazol", "itraconazol", "voriconazol"], severity: "grave", desc: "Inibidores potentes de P-gp — contraindicado com dabigatrana." },
+    { drugs: ["rifampicina", "carbamazepina", "fenitoína"], severity: "grave", desc: "Indutores de P-gp — redução significativa da eficácia." },
+    { drugs: ["amiodarona"], severity: "moderado", desc: "Aumento de 12-60% nos níveis — ajustar dose em insuficiência renal." },
+    { drugs: ["verapamil"], severity: "grave", desc: "Aumento de 150% nos níveis — tomar dabigatrana 2h antes do verapamil." },
+    { drugs: ["dronedarona"], severity: "grave", desc: "Contraindicado — aumento perigoso dos níveis de dabigatrana." },
+    { drugs: ["ticagrelor", "clopidogrel", "prasugrel"], severity: "grave", desc: "Risco hemorrágico significativo — limitar duração." },
+    { drugs: ["ácido acetilsalicílico", "aas"], severity: "grave", desc: "Aumento do risco hemorrágico." },
+    { drugs: ["ibuprofeno", "diclofenaco", "naproxeno"], severity: "grave", desc: "AINEs + DOAC — risco hemorrágico aumentado." },
+    { drugs: ["heparina", "enoxaparina"], severity: "grave", desc: "Dupla anticoagulação — contraindicado." },
+    { drugs: ["claritromicina"], severity: "moderado", desc: "Inibição de P-gp — aumento moderado dos níveis." },
+    { drugs: ["pantoprazol", "omeprazol"], severity: "moderado", desc: "IBPs podem reduzir absorção em 20-30% — administrar sem esmagar cápsula." },
+  ],
+  "edoxabana": [
+    { drugs: ["cetoconazol", "itraconazol"], severity: "moderado", desc: "Inibidores de P-gp — reduzir dose de edoxabana para 30mg." },
+    { drugs: ["rifampicina", "carbamazepina", "fenitoína"], severity: "grave", desc: "Indutores de P-gp — reduzem eficácia. Evitar combinação." },
+    { drugs: ["amiodarona", "verapamil", "quinidina"], severity: "moderado", desc: "Inibidores de P-gp — considerar redução de dose." },
+    { drugs: ["ácido acetilsalicílico", "clopidogrel"], severity: "grave", desc: "Risco hemorrágico aumentado." },
+    { drugs: ["ibuprofeno", "diclofenaco"], severity: "grave", desc: "AINEs aumentam risco de sangramento." },
+    { drugs: ["heparina", "enoxaparina"], severity: "grave", desc: "Dupla anticoagulação contraindicada." },
+    { drugs: ["dronedarona"], severity: "moderado", desc: "Aumento moderado dos níveis — monitorar." },
+  ],
+
+  // ── Antiarrítmicos Classe III ──
+  "dronedarona": [
+    { drugs: ["dabigatrana"], severity: "grave", desc: "Contraindicado — aumento perigoso dos níveis de dabigatrana." },
+    { drugs: ["rivaroxabana", "apixabana"], severity: "grave", desc: "Inibição de CYP3A4/P-gp — risco hemorrágico aumentado." },
+    { drugs: ["digoxina"], severity: "grave", desc: "Aumenta digoxinemia em 150-250% — reduzir dose de digoxina 50%." },
+    { drugs: ["sinvastatina", "atorvastatina"], severity: "moderado", desc: "Inibição CYP3A4 — risco de miopatia. Limitar sinvastatina a 10mg." },
+    { drugs: ["metoprolol", "propranolol", "carvedilol"], severity: "moderado", desc: "Bradicardia e hipotensão aditivas." },
+    { drugs: ["verapamil", "diltiazem"], severity: "grave", desc: "Bradicardia grave e bloqueio AV — contraindicado." },
+    { drugs: ["amiodarona"], severity: "grave", desc: "Contraindicado — prolongamento QT excessivo." },
+    { drugs: ["ciclosporina", "tacrolimus"], severity: "grave", desc: "Inibição CYP3A4 — aumento perigoso de imunossupressores." },
+    { drugs: ["erva de são joão"], severity: "grave", desc: "Indução CYP3A4 — reduz níveis de dronedarona." },
+  ],
+  "sotalol": [
+    { drugs: ["amiodarona"], severity: "grave", desc: "Prolongamento QT aditivo — risco de torsades de pointes." },
+    { drugs: ["dronedarona"], severity: "grave", desc: "QT prolongado — contraindicado." },
+    { drugs: ["haloperidol", "clorpromazina"], severity: "grave", desc: "Prolongamento QT aditivo com antipsicóticos." },
+    { drugs: ["moxifloxacino", "levofloxacino"], severity: "grave", desc: "Quinolonas prolongam QT — risco aditivo." },
+    { drugs: ["ondansetrona"], severity: "moderado", desc: "Prolongamento QT aditivo." },
+    { drugs: ["furosemida", "hidroclorotiazida"], severity: "moderado", desc: "Hipocalemia por diuréticos potencializa QT longo — monitorar K+." },
+    { drugs: ["insulina", "glibenclamida"], severity: "moderado", desc: "Sotalol pode mascarar sinais de hipoglicemia." },
+    { drugs: ["verapamil", "diltiazem"], severity: "grave", desc: "Bradicardia e hipotensão graves — contraindicado." },
+    { drugs: ["clonidina"], severity: "moderado", desc: "Hipertensão rebote se clonidina descontinuada abruptamente." },
+  ],
+  "dofetilida": [
+    { drugs: ["amiodarona"], severity: "grave", desc: "Prolongamento QT excessivo — contraindicado." },
+    { drugs: ["verapamil"], severity: "grave", desc: "Contraindicado — aumenta níveis de dofetilida." },
+    { drugs: ["cimetidina"], severity: "grave", desc: "Contraindicado — aumenta níveis via inibição de secreção tubular renal." },
+    { drugs: ["cetoconazol", "itraconazol"], severity: "grave", desc: "Inibição CYP3A4 — aumento perigoso dos níveis." },
+    { drugs: ["trimetoprima"], severity: "grave", desc: "Inibe secreção tubular — aumenta níveis de dofetilida." },
+    { drugs: ["hidroclorotiazida"], severity: "grave", desc: "Contraindicado — hipocalemia potencializa QT longo." },
+    { drugs: ["metformina"], severity: "moderado", desc: "Competição por transporte catiônico renal." },
+  ],
+
+  // ── Anti-hipertensivos de uso hospitalar ──
+  "nitroprussiato": [
+    { drugs: ["sildenafil", "tadalafil", "vardenafil"], severity: "grave", desc: "Hipotensão grave e potencialmente fatal — contraindicado." },
+    { drugs: ["enalapril", "captopril", "losartana"], severity: "moderado", desc: "Hipotensão aditiva — titular doses cuidadosamente." },
+    { drugs: ["propofol"], severity: "grave", desc: "Hipotensão sinérgica — monitoração invasiva obrigatória." },
+    { drugs: ["metoprolol", "propranolol", "labetalol"], severity: "moderado", desc: "Hipotensão aditiva — monitorar PA continuamente." },
+  ],
+  "nitroglicerina": [
+    { drugs: ["sildenafil", "tadalafil", "vardenafil"], severity: "grave", desc: "Hipotensão grave e potencialmente fatal — contraindicado. Aguardar 24-48h." },
+    { drugs: ["heparina"], severity: "moderado", desc: "Nitroglicerina IV pode reduzir efeito da heparina — monitorar TTPa." },
+    { drugs: ["alteplase", "tenecteplase"], severity: "moderado", desc: "Usar com cautela — monitorar PA rigorosamente." },
+    { drugs: ["propranolol", "metoprolol", "atenolol"], severity: "moderado", desc: "Hipotensão e bradicardia aditivas." },
+  ],
+  "labetalol": [
+    { drugs: ["verapamil", "diltiazem"], severity: "grave", desc: "Bradicardia grave, hipotensão e bloqueio AV — evitar combinação IV." },
+    { drugs: ["clonidina"], severity: "moderado", desc: "Hipertensão rebote se clonidina retirada abruptamente." },
+    { drugs: ["insulina", "glibenclamida"], severity: "moderado", desc: "Mascaramento de sinais de hipoglicemia." },
+    { drugs: ["halotano", "sevoflurano", "isoflurano"], severity: "grave", desc: "Hipotensão sinérgica grave com anestésicos inalatórios." },
+    { drugs: ["nitroglicerina", "nitroprussiato"], severity: "moderado", desc: "Hipotensão aditiva — monitorar PA invasivamente." },
+    { drugs: ["amiodarona"], severity: "grave", desc: "Bradicardia refratária e hipotensão." },
+  ],
+  "hidralazina": [
+    { drugs: ["metoprolol", "propranolol", "atenolol"], severity: "moderado", desc: "Combinação terapêutica — betabloqueador previne taquicardia reflexa." },
+    { drugs: ["diazóxido"], severity: "grave", desc: "Hipotensão grave aditiva — evitar combinação." },
+    { drugs: ["nitroprussiato"], severity: "moderado", desc: "Hipotensão aditiva — titular cuidadosamente." },
+    { drugs: ["epinefrina"], severity: "moderado", desc: "Taquicardia exagerada." },
+  ],
+  "fenoldopam": [
+    { drugs: ["metoprolol", "propranolol", "atenolol", "labetalol"], severity: "moderado", desc: "Evitar betabloqueadores — podem causar hipotensão excessiva." },
+    { drugs: ["acetaminofeno", "paracetamol"], severity: "moderado", desc: "Fenoldopam aumenta níveis de paracetamol em 50%." },
+  ],
+  "clevidipina": [
+    { drugs: ["propofol"], severity: "moderado", desc: "Ambos em emulsão lipídica — monitorar carga lipídica total." },
+    { drugs: ["metoprolol", "labetalol"], severity: "moderado", desc: "Hipotensão e bradicardia aditivas — titular doses." },
+  ],
+  "esmolol": [
+    { drugs: ["verapamil", "diltiazem"], severity: "grave", desc: "Bradicardia grave e assistolia — contraindicado uso IV concomitante." },
+    { drugs: ["digoxina"], severity: "moderado", desc: "Bradicardia aditiva — monitorar FC." },
+    { drugs: ["clonidina"], severity: "moderado", desc: "Hipertensão rebote se clonidina descontinuada." },
+    { drugs: ["insulina"], severity: "moderado", desc: "Mascaramento de hipoglicemia e potencialização do efeito." },
+    { drugs: ["succinilcolina"], severity: "moderado", desc: "Esmolol pode prolongar bloqueio neuromuscular." },
+    { drugs: ["morfina"], severity: "moderado", desc: "Aumento dos níveis de esmolol em 46% — monitorar bradicardia." },
+  ],
+
+  // ── Antiplaquetários avançados ──
+  "ticagrelor": [
+    { drugs: ["cetoconazol", "itraconazol", "voriconazol"], severity: "grave", desc: "Inibidores potentes de CYP3A4 — aumento perigoso dos níveis." },
+    { drugs: ["rifampicina", "carbamazepina", "fenitoína"], severity: "grave", desc: "Indutores de CYP3A4 — redução significativa da eficácia." },
+    { drugs: ["sinvastatina", "lovastatina"], severity: "moderado", desc: "Ticagrelor inibe CYP3A4 — limitar sinvastatina a 40mg." },
+    { drugs: ["digoxina"], severity: "moderado", desc: "Ticagrelor inibe P-gp — aumenta digoxinemia 28%." },
+    { drugs: ["ácido acetilsalicílico", "aspirina"], severity: "moderado", desc: "Dose de AAS >100mg pode reduzir eficácia de ticagrelor." },
+    { drugs: ["morfina"], severity: "moderado", desc: "Morfina retarda absorção e reduz exposição a ticagrelor." },
+  ],
+  "prasugrel": [
+    { drugs: ["varfarina", "rivaroxabana", "apixabana", "dabigatrana"], severity: "grave", desc: "Risco hemorrágico grave — tripla terapia deve ser limitada." },
+    { drugs: ["ibuprofeno", "naproxeno"], severity: "grave", desc: "AINEs + antiplaquetário — risco hemorrágico GI aumentado." },
+    { drugs: ["omeprazol"], severity: "moderado", desc: "Interação menor que com clopidogrel, mas monitorar." },
+  ],
+  "cangrelor": [
+    { drugs: ["clopidogrel"], severity: "grave", desc: "Cangrelor bloqueia ligação de clopidogrel ao receptor P2Y12 — administrar clopidogrel após suspensão." },
+    { drugs: ["prasugrel"], severity: "grave", desc: "Administrar prasugrel somente após descontinuação do cangrelor." },
+    { drugs: ["ticagrelor"], severity: "moderado", desc: "Ticagrelor pode ser administrado durante infusão de cangrelor — interação menor." },
+    { drugs: ["heparina", "enoxaparina"], severity: "moderado", desc: "Risco hemorrágico aditivo — monitorar." },
   ],
 };
 
