@@ -17,6 +17,8 @@ import { ProtocolDetailSkeleton } from "@/components/PageSkeleton";
 import DecisionTree from "@/components/DecisionTree";
 import { decisionTrees } from "@/data/decisionTrees";
 import EmbeddedCalculators, { findCalcsForProtocol } from "@/components/EmbeddedCalculators";
+import { getProtocolUpdateLabel } from "@/data/protocolChangelog";
+import { CalendarCheck } from "lucide-react";
 
 export default function FullProtocolDetail() {
   const { id } = useParams<{ id: string }>();
@@ -96,6 +98,7 @@ export default function FullProtocolDetail() {
   }
 
   const fav = isFavorite(protocol.id);
+  const updateLabel = getProtocolUpdateLabel(protocol.id);
 
   const orderedSections = FULL_SECTION_ORDER
     .map(so => protocol.sections.find(s => s.id === so.id))
@@ -129,6 +132,12 @@ export default function FullProtocolDetail() {
             )}>
               <ShieldCheck size={12} />
               Classe {evidence.class} · Nível {evidence.level}
+            </span>
+            )}
+          {updateLabel && (
+            <span className="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-primary/10 text-primary">
+              <CalendarCheck size={10} />
+              {updateLabel}
             </span>
           )}
         </div>

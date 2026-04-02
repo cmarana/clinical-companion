@@ -4,7 +4,7 @@ import {
   Baby, Heart, Stethoscope, BookOpen, HelpCircle,
   AlertTriangle, Zap, Moon, Sun, ChevronRight, Bot, FlaskConical,
   Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain, GraduationCap,
-  Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Eclipse
+  Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Eclipse, Newspaper
 } from "lucide-react";
 import pulsoLogo from "@/assets/pulso-logo.png";
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -274,6 +274,21 @@ export default function Home() {
 
       {/* Recent History */}
       <RecentHistory />
+
+      {/* Updates Banner */}
+      <button
+        onClick={() => navigate("/updates")}
+        className="w-full mt-4 mb-2 flex items-center gap-3 px-4 py-3 rounded-2xl bg-primary/5 dark:bg-primary/10 ring-1 ring-primary/15 hover:bg-primary/10 active:scale-[0.98] transition-all text-left"
+      >
+        <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-primary/15 text-primary">
+          <Newspaper size={16} />
+        </div>
+        <div className="flex flex-col min-w-0">
+          <span className="font-heading font-semibold text-xs">Atualizações de Protocolos</span>
+          <span className="text-[10px] text-muted-foreground">Veja as últimas revisões e novidades</span>
+        </div>
+        <ChevronRight size={14} className="text-muted-foreground ml-auto shrink-0" />
+      </button>
 
       {/* ── ALL SECONDARY MODULES (stacked sections) ────────── */}
       {tabs.map((tab) => (
