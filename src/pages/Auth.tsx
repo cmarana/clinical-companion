@@ -78,6 +78,7 @@ const PHASE = {
 
 export default function Auth() {
   const [isLogin, setIsLogin] = useState(true);
+  const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -124,7 +125,10 @@ export default function Auth() {
         const { error } = await supabase.auth.signUp({
           email,
           password,
-          options: { emailRedirectTo: window.location.origin },
+          options: {
+            emailRedirectTo: window.location.origin,
+            data: { full_name: fullName.trim() },
+          },
         });
         if (error) throw error;
         toast({ title: "Conta criada!", description: "Verifique seu e-mail para confirmar o cadastro." });
@@ -441,6 +445,16 @@ export default function Auth() {
 
                 {/* Email form */}
                 <form onSubmit={handleAuth} className="space-y-3">
+                  {!resetMode && !isLogin && (
+                    <Input
+                      type="text"
+                      placeholder="Nome completo"
+                      value={fullName}
+                      onChange={(e) => setFullName(e.target.value)}
+                      required
+                      className="h-11 rounded-xl"
+                    />
+                  )}
                   <Input
                     type="email"
                     placeholder="E-mail"
