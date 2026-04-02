@@ -234,10 +234,24 @@ export default function Home() {
         </div>
 
         {/* Tab content grid */}
-        {activeTabData && (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5">
-            {activeTabData.modules.map((m) => (
-              <button
+        <AnimatePresence mode="wait">
+          {activeTabData && (
+            <motion.div
+              key={activeTab}
+              initial={{ opacity: 0, x: 12 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -12 }}
+              transition={{ duration: 0.2 }}
+              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5"
+            >
+              {activeTabData.modules.map((m, i) => (
+                <motion.div
+                  key={m.path}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.2, delay: i * 0.03 }}
+                >
+                  <button
                 key={m.path}
                 onClick={() => navigate(m.path)}
                 className="flex items-center gap-2.5 px-3.5 py-3.5 rounded-2xl bg-card text-card-foreground shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 text-left border-0"
