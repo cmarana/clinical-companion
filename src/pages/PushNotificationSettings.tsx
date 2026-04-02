@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import {
   Bell, BellRing, BellOff, Pill, Clock, Droplets, CheckSquare,
-  Plus, Trash2, AlertTriangle, Shield, X
+  Plus, Trash2, AlertTriangle, Shield, X, BookOpen, Zap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -22,6 +22,8 @@ import {
   type MedicationReminder,
   type ShiftAlertConfig,
 } from "@/lib/pushNotifications";
+import { useAuth } from "@/contexts/AuthContext";
+import { subscribeToPush, unsubscribeFromPush, isPushSubscribed, updatePushPreferences } from "@/lib/webPush";
 
 export default function PushNotificationSettings() {
   const [permission, setPermission] = useState(getPushPermission());
