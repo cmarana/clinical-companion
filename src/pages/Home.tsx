@@ -4,7 +4,7 @@ import {
   Baby, Heart, Stethoscope, BookOpen, HelpCircle,
   AlertTriangle, Zap, Moon, Sun, ChevronRight, Bot, FlaskConical,
   Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain, GraduationCap,
-  Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Sparkles, Eclipse
+  Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Eclipse
 } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -14,9 +14,8 @@ import { supabase } from "@/integrations/supabase/client";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import RecentHistory from "@/components/RecentHistory";
 import { useNotifications } from "@/contexts/NotificationsContext";
-import OnboardingModal from "@/components/OnboardingModal";
-import { hapticLight, hapticMedium } from "@/lib/haptics";
-import { useModuleAnalytics, setAnalyticsSpecialty } from "@/hooks/useModuleAnalytics";
+import { hapticLight } from "@/lib/haptics";
+import { useModuleAnalytics } from "@/hooks/useModuleAnalytics";
 import SmartSearch from "@/components/SmartSearch";
 
 // ── ALL MODULES WITH TAGS ─────────────────────────────────────
@@ -76,7 +75,7 @@ const studyModules = [
 
 const tabs = [
   { id: "tools", label: "Ferramentas", icon: Wrench, modules: toolsModules },
-  { id: "specialties", label: "Especialidades", icon: Sparkles, modules: specialtyModules },
+  { id: "specialties", label: "Especialidades", icon: Stethoscope, modules: specialtyModules },
   { id: "study", label: "Estudo & Mais", icon: Library, modules: studyModules },
 ];
 
@@ -146,32 +145,18 @@ export default function Home() {
   const { trackModule } = useModuleAnalytics();
   const [avatarUrl, setAvatarUrl] = useState("");
   const [initials, setInitials] = useState("U");
-  const [activeTab, setActiveTab] = useState("tools");
-  const [specialty, setSpecialty] = useState<string | null>(null);
+  const [specialty] = useState<string | null>("todas");
 
   const navigateWithTracking = (path: string, label: string) => {
     hapticLight();
     trackModule(path, label);
     navigate(path);
   };
-  const [showOnboarding, setShowOnboarding] = useState(false);
-  const [profileLoaded, setProfileLoaded] = useState(false);
 
   useEffect(() => {
-    if (!user) {
-      // Check localStorage for non-logged-in users
-      const saved = localStorage.getItem("ps-guide-specialty");
-      const dismissed = localStorage.getItem("ps-guide-onboarding-dismissed");
-      if (saved) {
-        setSpecialty(saved);
-      } else if (!dismissed) {
-        setShowOnboarding(true);
-      }
-      setProfileLoaded(true);
-      return;
-    }
+    if (!user) return;
 
-    supabase.from("profiles").select("full_name, avatar_url, specialty").eq("user_id", user.id).maybeSingle()
+    supabase.from("profiles").select("full_name, avatar_url").eq("user_id", user.id).maybeSingle()
       .then(({ data }) => {
         if (data?.avatar_url) setAvatarUrl(data.avatar_url);
         if (data?.full_name) {
@@ -179,50 +164,13 @@ export default function Home() {
         } else {
           setInitials(user.email?.[0]?.toUpperCase() || "U");
         }
-        if (data?.specialty) {
-          setSpecialty(data.specialty);
-          localStorage.setItem("ps-guide-specialty", data.specialty);
-        } else {
-          const dismissed = localStorage.getItem("ps-guide-onboarding-dismissed");
-          if (!dismissed) setShowOnboarding(true);
-        }
-        setProfileLoaded(true);
       });
   }, [user]);
 
-  const handleOnboardingComplete = async (specialtyId: string) => {
-    setSpecialty(specialtyId);
-    setShowOnboarding(false);
-    localStorage.setItem("ps-guide-specialty", specialtyId);
-    localStorage.removeItem("ps-guide-onboarding-dismissed");
-    setAnalyticsSpecialty(specialtyId);
-
-    if (user) {
-      await supabase.from("profiles").update({ specialty: specialtyId }).eq("user_id", user.id);
-    }
-  };
-
-  const handleOnboardingSkip = () => {
-    setShowOnboarding(false);
-    localStorage.setItem("ps-guide-onboarding-dismissed", "true");
-  };
-
   const primaryModules = useMemo(() => getPrimaryModules(specialty), [specialty]);
-
-  const activeTabData = tabs.find(t => t.id === activeTab);
 
   return (
     <div className="px-4 pt-3 pb-24 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto">
-      {/* Onboarding Modal */}
-      <AnimatePresence>
-        {showOnboarding && (
-          <OnboardingModal
-            onComplete={handleOnboardingComplete}
-            onSkip={handleOnboardingSkip}
-          />
-        )}
-      </AnimatePresence>
-
       {/* Top bar */}
       <div className="flex items-center justify-between h-12 mb-3">
         <div className="flex flex-col">
@@ -249,28 +197,6 @@ export default function Home() {
           </button>
         </div>
       </div>
-
-      {/* Specialty badge */}
-      {profileLoaded && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          className="mb-3"
-        >
-          <button
-            onClick={() => setShowOnboarding(true)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-[11px] font-heading font-medium hover:bg-primary/15 transition-colors"
-          >
-            <Sparkles size={12} />
-            {specialty === "todas"
-              ? "Todas as áreas"
-              : specialty
-                ? specialty.replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase())
-                : "Personalizar"}
-            <span className="text-primary/50 ml-0.5">· Alterar</span>
-          </button>
-        </motion.div>
-      )}
 
       {/* Smart Search */}
       <SmartSearch specialty={specialty} />
@@ -316,7 +242,7 @@ export default function Home() {
           {emergencyShortcuts.map((s) => (
             <button
               key={s.path}
-              onClick={() => { hapticMedium(); navigateWithTracking(s.path, s.label); }}
+              onClick={() => { hapticLight(); navigateWithTracking(s.path, s.label); }}
               className="px-4 py-2 rounded-2xl border-0 bg-destructive/8 dark:bg-destructive/15 hover:bg-destructive/15 dark:hover:bg-destructive/25 active:scale-[0.98] transition-all duration-200 font-heading font-medium text-xs text-destructive shadow-sm"
             >
               {s.label}
