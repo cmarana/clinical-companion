@@ -319,7 +319,7 @@ export default function Home() {
           {emergencyShortcuts.map((s) => (
             <button
               key={s.path}
-              onClick={() => navigate(s.path)}
+              onClick={() => navigateWithTracking(s.path, s.label)}
               className="px-4 py-2 rounded-2xl border-0 bg-destructive/8 dark:bg-destructive/15 hover:bg-destructive/15 dark:hover:bg-destructive/25 active:scale-[0.98] transition-all duration-200 font-heading font-medium text-xs text-destructive shadow-sm"
             >
               {s.label}
