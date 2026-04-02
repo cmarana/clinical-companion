@@ -110,15 +110,15 @@ function FavoritesQuickAccess() {
       <SidebarGroupContent>
         <SidebarMenu>
           {recentFavs.map((fav) => {
-            const path = fav.item_type === "protocol"
-              ? `/full-protocols/${fav.item_id}`
-              : fav.item_type === "medication"
-              ? `/bulario/${fav.item_id}`
-              : fav.item_type === "prescription"
-              ? `/prescriptions/${fav.item_id}`
-              : `/full-protocols/${fav.item_id}`;
+            const path = fav.type === "protocol"
+              ? `/full-protocols/${fav.id}`
+              : fav.type === "medication"
+              ? `/bulario/${fav.id}`
+              : fav.type === "prescription"
+              ? `/prescriptions/${fav.id}`
+              : `/full-protocols/${fav.id}`;
             return (
-              <SidebarMenuItem key={fav.item_id}>
+              <SidebarMenuItem key={fav.id}>
                 <SidebarMenuButton
                   onClick={() => navigate(path)}
                   tooltip={fav.title}
