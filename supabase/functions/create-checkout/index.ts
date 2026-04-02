@@ -8,8 +8,8 @@ const corsHeaders = {
 };
 
 const PRICE_MAP: Record<string, string> = {
-  monthly: "price_1T9b7EFLmvoivW0nSUzffFtq",
-  annual: "price_1T9b8KFLmvoivW0n34Lg8P7X",
+  monthly: "price_1THgm6FLmvoivW0nM2oX7iwh",
+  annual: "price_1THgm7FLmvoivW0nIvfRyMSc",
 };
 
 serve(async (req) => {
