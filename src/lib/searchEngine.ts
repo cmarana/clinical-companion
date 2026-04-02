@@ -66,7 +66,7 @@ async function loadSearchData() {
     { protocols },
     { prescriptionCategories },
     { symptomGuides },
-    { fullProtocols },
+    fullProtocolsData,
     { allEmergencyProtocols },
     { cidData },
     { labCategories },
@@ -74,12 +74,12 @@ async function loadSearchData() {
     import("@/data/protocols"),
     import("@/data/prescriptions"),
     import("@/data/symptomGuides"),
-    import("@/data/fullProtocols"),
+    import("@/data/fullProtocols/lazyLoader").then(m => m.loadAllFullProtocols()),
     import("@/data/emergency"),
     import("@/data/cidData"),
     import("@/data/labValues"),
   ]);
-  _dataCache = { protocols, prescriptionCategories, symptomGuides, fullProtocols, allEmergencyProtocols, cidData, labCategories };
+  _dataCache = { protocols, prescriptionCategories, symptomGuides, fullProtocols: fullProtocolsData, allEmergencyProtocols, cidData, labCategories };
   return _dataCache;
 }
 
