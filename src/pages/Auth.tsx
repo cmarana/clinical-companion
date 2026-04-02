@@ -218,15 +218,16 @@ export default function Auth() {
           {/* ── PHASE 3: Tagline ──────────────────────────── */}
           <motion.div {...fadeUp(PHASE.tagline)} className="mt-6 px-6">
             <p className="text-xl font-heading font-semibold text-foreground leading-snug">
-              Decida em segundos.
+              Decida em segundos no plantão
             </p>
             <motion.p
               initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: PHASE.tagline + 0.3, duration: 0.5 }}
-              className="text-xl font-heading font-semibold text-primary leading-snug"
+              className="text-sm text-muted-foreground mt-2 leading-relaxed max-w-xs mx-auto"
             >
-              Sem margem para erro.
+              Protocolos médicos rápidos para emergência.{" "}
+              <span className="text-primary font-semibold">Direto ao ponto. Sem margem para erro.</span>
             </motion.p>
           </motion.div>
 
