@@ -3,13 +3,32 @@
   "short_name": "PULSO",
   "description": "Decida em segundos. Sem margem para erro. Protocolos, medicamentos e IA clínica para plantões.",
   "start_url": "/",
+  "scope": "/",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#0f172a",
   "orientation": "portrait-primary",
+  "categories": ["medical", "health"],
+  "lang": "pt-BR",
+  "dir": "ltr",
   "icons": [
     { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
     { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
     { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Emergência",
+      "short_name": "SOS",
+      "url": "/emergency",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Protocolos",
+      "short_name": "Protocolos",
+      "url": "/full-protocols",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
   ]
 }

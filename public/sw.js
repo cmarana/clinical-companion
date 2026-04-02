@@ -2,6 +2,7 @@ const CACHE_NAME = 'medcore-v6';
 const CONTENT_CACHE = 'medcore-content-v1';
 const STATIC_ASSETS = [
   '/',
+  '/offline.html',
   '/manifest.json',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
@@ -170,7 +171,7 @@ self.addEventListener('fetch', (event) => {
           }
           return response;
         })
-        .catch(() => caches.match('/index.html'))
+        .catch(() => caches.match('/index.html').then(r => r || caches.match('/offline.html')))
     );
     return;
   }

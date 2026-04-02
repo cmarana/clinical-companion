@@ -13,6 +13,7 @@ import { getFullProtocolAsync } from "@/data/fullProtocols/lazyLoader";
 import type { FullProtocol } from "@/data/fullProtocols/types";
 import ProtocolActionBar from "@/components/ProtocolActionBar";
 import { useRecentHistory } from "@/hooks/useRecentHistory";
+import { useProtocolAnalytics } from "@/hooks/useProtocolAnalytics";
 import { ProtocolDetailSkeleton } from "@/components/PageSkeleton";
 import DecisionTree from "@/components/DecisionTree";
 import { decisionTrees } from "@/data/decisionTrees";
@@ -25,6 +26,7 @@ export default function FullProtocolDetail() {
   const { subscription } = useAuth();
   const { isFavorite, toggleFavorite } = useFavorites();
   const { addEntry } = useRecentHistory();
+  const { trackView } = useProtocolAnalytics(id);
   const [protocol, setProtocol] = useState<FullProtocol | null | undefined>(undefined);
   const evidence = protocol ? getEvidence(protocol.id) : undefined;
 
@@ -63,6 +65,7 @@ export default function FullProtocolDetail() {
   useEffect(() => {
     if (protocol) {
       addEntry({ path: `/full-protocols/${id}`, title: protocol.title, type: "fullProtocol" });
+      trackView(protocol.title, protocol.category, "browse");
       cacheContent(`fullProtocol:${id}`, { id: protocol.id, title: protocol.title, category: protocol.category, sections: protocol.sections, tags: protocol.tags });
     }
   }, [protocol, id]);
