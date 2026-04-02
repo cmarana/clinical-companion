@@ -223,6 +223,25 @@ export default function Pricing() {
               {loading ? "Redirecionando..." : "Começar 7 dias grátis"}
             </Button>
 
+            {/* Payment methods */}
+            <div className="flex flex-col items-center gap-2">
+              <p className="text-[11px] text-muted-foreground font-medium">Formas de pagamento aceitas</p>
+              <div className="flex items-center gap-4">
+                <div className="flex items-center gap-1.5 text-muted-foreground">
+                  <CreditCard size={16} className="text-primary" />
+                  <span className="text-[11px]">Cartão</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-muted-foreground">
+                  <QrCode size={16} className="text-primary" />
+                  <span className="text-[11px]">PIX</span>
+                </div>
+                <div className="flex items-center gap-1.5 text-muted-foreground">
+                  <Receipt size={16} className="text-primary" />
+                  <span className="text-[11px]">Boleto</span>
+                </div>
+              </div>
+            </div>
+
             <p className="text-[10px] text-muted-foreground text-center leading-relaxed">
               Teste grátis por 7 dias. Cobrado apenas após o período de teste. Cancele a qualquer momento. Pagamento seguro via Stripe.
             </p>
