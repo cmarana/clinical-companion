@@ -438,7 +438,12 @@ export default function Profile() {
       <TopBar title="Meu Perfil" />
 
       {/* Avatar section */}
-      <div className="flex flex-col items-center pt-8 pb-6 relative">
+      <motion.div
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+        className="flex flex-col items-center pt-8 pb-6 relative"
+      >
         <div className="absolute inset-0 h-28 bg-gradient-to-b from-primary/8 to-transparent rounded-b-3xl" />
         <div className="relative z-10">
           <div className="relative">
@@ -458,7 +463,7 @@ export default function Profile() {
         </div>
         {uploading && <span className="text-xs text-muted-foreground mt-3 animate-pulse">Enviando foto...</span>}
         <p className="text-xs text-muted-foreground mt-3 font-medium">{user.email}</p>
-      </div>
+      </motion.div>
 
       {loading ? (
         <div className="flex justify-center py-8">
