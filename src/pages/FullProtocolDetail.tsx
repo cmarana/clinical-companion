@@ -136,8 +136,16 @@ export default function FullProtocolDetail() {
           protocolSections={orderedSections.map(s => ({ title: s.title, content: s.content }))}
         />
 
-        <Tabs defaultValue={defaultTab} className="w-full">
+        <Tabs defaultValue={matchedTree ? "flowchart" : defaultTab} className="w-full">
           <TabsList className="w-full flex overflow-x-auto no-scrollbar h-auto gap-1 bg-transparent p-0 mb-4">
+            {matchedTree && (
+              <TabsTrigger
+                value="flowchart"
+                className="shrink-0 text-[11px] px-2.5 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground bg-gradient-to-r from-primary/15 to-primary/5 ring-1 ring-primary/20 font-semibold gap-1"
+              >
+                <GitBranch size={12} /> Fluxograma
+              </TabsTrigger>
+            )}
             {orderedSections.map(s => (
               <TabsTrigger
                 key={s.id}
@@ -148,6 +156,18 @@ export default function FullProtocolDetail() {
               </TabsTrigger>
             ))}
           </TabsList>
+
+          {/* Flowchart Tab */}
+          {matchedTree && (
+            <TabsContent value="flowchart">
+              <DecisionTree
+                title={matchedTree.title}
+                root={matchedTree.tree}
+                guideline={matchedTree.guideline}
+              />
+            </TabsContent>
+          )}
+
           {orderedSections.map(s => (
             <TabsContent key={s.id} value={s.id} className="protocol-content">
               <h2 className="text-lg font-semibold mb-3 border-b border-border pb-2 font-heading">
