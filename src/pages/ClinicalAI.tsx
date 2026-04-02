@@ -23,7 +23,7 @@ interface PatientContext {
   scenario?: string;
 }
 
-export default function ClinicalAI() {
+function ClinicalAIContent() {
   const navigate = useNavigate();
   const location = useLocation();
   const prefillHandled = useRef(false);
