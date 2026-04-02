@@ -254,27 +254,40 @@ export default function Home() {
       </div>
 
       {/* ── EMERGENCY SHORTCUTS ──────────────────────────────── */}
-      <div className="mb-6">
+      <motion.div
+        initial={{ opacity: 0, y: 12 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.35, delay: 0.15 }}
+        className="mb-6"
+      >
         <div className="flex items-center justify-between mb-2.5">
-          <h2 className="font-heading font-semibold text-xs flex items-center gap-1.5 text-destructive uppercase tracking-wider">
-            <Zap size={12} /> Acesso Rápido
-          </h2>
-          <button onClick={() => navigate("/emergency")} className="text-[10px] text-muted-foreground flex items-center gap-0.5 hover:text-foreground">
+          <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center w-6 h-6 rounded-md bg-destructive/12 text-destructive">
+              <Zap size={12} />
+            </div>
+            <h2 className="font-heading font-bold text-xs uppercase tracking-wider text-destructive">
+              Acesso Rápido
+            </h2>
+          </div>
+          <button onClick={() => navigate("/emergency")} className="text-[10px] text-muted-foreground flex items-center gap-0.5 hover:text-foreground transition-colors">
             Ver todos <ChevronRight size={10} />
           </button>
         </div>
-        <div className="flex flex-wrap gap-1.5">
-          {emergencyShortcuts.map((s) => (
-            <button
+        <div className="flex flex-wrap gap-2">
+          {emergencyShortcuts.map((s, i) => (
+            <motion.button
               key={s.path}
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.2, delay: 0.2 + i * 0.03 }}
               onClick={() => { hapticLight(); navigateWithTracking(s.path, s.label); }}
-              className="px-4 py-2 rounded-2xl border-0 bg-destructive/8 dark:bg-destructive/15 hover:bg-destructive/15 dark:hover:bg-destructive/25 active:scale-[0.98] transition-all duration-200 font-heading font-medium text-xs text-destructive shadow-sm"
+              className="px-4 py-2 rounded-xl bg-destructive/8 dark:bg-destructive/15 hover:bg-destructive/15 dark:hover:bg-destructive/25 active:scale-[0.96] transition-all duration-200 font-heading font-semibold text-xs text-destructive ring-1 ring-destructive/10 hover:ring-destructive/25"
             >
               {s.label}
-            </button>
+            </motion.button>
           ))}
         </div>
-      </div>
+      </motion.div>
 
       {/* Recent History */}
       <RecentHistory />
