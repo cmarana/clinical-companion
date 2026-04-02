@@ -1,4 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { cacheContent } from "@/lib/offlineCache";
 import TopBar from "@/components/TopBar";
 import { protocols } from "@/data/protocols";
 import { useFavorites } from "@/contexts/FavoritesContext";
