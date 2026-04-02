@@ -2,7 +2,7 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   Stethoscope, Baby, Heart, Brain, Syringe, Pill,
-  ShieldCheck, Activity, X, ChevronRight, Sparkles
+  ShieldCheck, Activity, X, ChevronRight, Sparkles, LayoutGrid
 } from "lucide-react";
 
 export interface SpecialtyChoice {
