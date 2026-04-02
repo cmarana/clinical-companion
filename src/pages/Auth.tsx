@@ -158,7 +158,67 @@ export default function Auth() {
   });
 
   return (
-    <div className="min-h-screen bg-background overflow-y-auto">
+    <div className="min-h-screen bg-background overflow-y-auto lg:flex">
+      {/* ── Desktop Hero Panel ─────────────────────────────── */}
+      <div className="hidden lg:flex lg:w-1/2 xl:w-[55%] relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-primary/5 items-center justify-center">
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-72 h-72 bg-primary/8 rounded-full blur-3xl" />
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-violet-500/6 rounded-full blur-3xl" />
+        </div>
+        <div className="relative z-10 max-w-lg px-12 py-16">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
+          >
+            <img src={pulsoLogo} alt="PULSO" width={72} height={72} className="rounded-2xl shadow-xl shadow-primary/20 mb-8" />
+            <h2 className="font-display text-4xl xl:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-4">
+              A referência clínica<br />
+              <span className="text-primary">do seu plantão</span>
+            </h2>
+            <p className="text-muted-foreground text-base leading-relaxed mb-8 max-w-md">
+              Protocolos baseados em evidência, calculadoras e IA clínica — tudo no seu bolso, a um toque de distância.
+            </p>
+          </motion.div>
+
+          {/* Animated ECG line */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1, duration: 1 }}
+            className="mb-8"
+          >
+            <svg viewBox="0 0 400 60" className="w-full h-12 text-primary/30" fill="none" strokeWidth="2" stroke="currentColor">
+              <motion.path
+                d="M0,30 L60,30 L80,30 L90,10 L100,50 L110,5 L120,55 L130,25 L140,35 L150,30 L200,30 L220,30 L230,10 L240,50 L250,5 L260,55 L270,25 L280,35 L290,30 L400,30"
+                initial={{ pathLength: 0, opacity: 0 }}
+                animate={{ pathLength: 1, opacity: 1 }}
+                transition={{ duration: 3, delay: 1.2, ease: "easeInOut", repeat: Infinity, repeatDelay: 2 }}
+              />
+            </svg>
+          </motion.div>
+
+          {/* Desktop stats */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1.5, duration: 0.6 }}
+            className="grid grid-cols-3 gap-4"
+          >
+            {stats.map((s, i) => (
+              <div key={s.label} className="bg-card/60 backdrop-blur-sm rounded-2xl p-4 ring-1 ring-border/50 text-center">
+                <div className="font-heading font-bold text-2xl text-primary">
+                  <AnimatedCounter target={s.target} suffix={s.suffix} delay={1800 + i * 200} />
+                </div>
+                <div className="text-[10px] text-muted-foreground font-medium uppercase tracking-wider mt-1">{s.label}</div>
+              </div>
+            ))}
+          </motion.div>
+        </div>
+      </div>
+
+      {/* ── Right side / Mobile full-screen ─────────────────── */}
+      <div className="lg:w-1/2 xl:w-[45%] lg:overflow-y-auto lg:h-screen">
       {/* ── Background ─────────────────────────────────────── */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/8 via-background to-background" />
@@ -456,6 +516,7 @@ export default function Auth() {
             Ferramenta de apoio à decisão clínica. Não substitui o julgamento médico profissional.
           </p>
         </motion.div>
+      </div>
       </div>
     </div>
   );
