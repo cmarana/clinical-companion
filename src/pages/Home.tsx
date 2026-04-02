@@ -4,7 +4,7 @@ import {
   Baby, Heart, Stethoscope, BookOpen, HelpCircle,
   AlertTriangle, Zap, Moon, Sun, ChevronRight, Bot, FlaskConical,
   Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain, GraduationCap,
-  Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Sparkles
+  Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Sparkles, Eclipse
 } from "lucide-react";
 import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -137,7 +137,7 @@ function getPrimaryModules(specialty: string | null): Module[] {
 export default function Home() {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, themeLabel } = useTheme();
   const { user } = useAuth();
   const { unreadCount } = useNotifications();
   const { trackModule } = useModuleAnalytics();
@@ -229,8 +229,8 @@ export default function Home() {
       <div className="flex items-center justify-between h-12 mb-3">
         <span className="font-heading font-bold text-base tracking-tight">PS Guide</span>
         <div className="flex items-center gap-2">
-          <button onClick={toggleTheme} className="p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground">
-            {theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
+          <button onClick={toggleTheme} className="p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground" title={themeLabel}>
+            {theme === "oled" ? <Eclipse size={16} /> : theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
           </button>
           <button onClick={() => navigate("/notifications")} className="relative p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground">
             <Bell size={16} />

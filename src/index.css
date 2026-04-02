@@ -83,6 +83,43 @@
     --success: 160 84% 45%;
     --success-foreground: 0 0% 100%;
   }
+
+  .oled {
+    --background: 0 0% 0%;
+    --foreground: 0 0% 92%;
+    --card: 0 0% 5%;
+    --card-foreground: 0 0% 92%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 0 0% 92%;
+    --primary: 213 94% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 0 0% 92%;
+    --muted: 0 0% 8%;
+    --muted-foreground: 0 0% 55%;
+    --accent: 213 30% 12%;
+    --accent-foreground: 213 94% 68%;
+    --destructive: 0 72% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --destructive-surface: 0 40% 8%;
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 213 94% 55%;
+
+    --sidebar-background: 0 0% 0%;
+    --sidebar-foreground: 0 0% 92%;
+    --sidebar-primary: 213 94% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 8%;
+    --sidebar-accent-foreground: 0 0% 92%;
+    --sidebar-border: 0 0% 12%;
+    --sidebar-ring: 213 94% 55%;
+
+    --warning: 38 92% 50%;
+    --warning-foreground: 38 92% 90%;
+    --success: 160 84% 45%;
+    --success-foreground: 0 0% 100%;
+  }
 }
 
 @layer base {
