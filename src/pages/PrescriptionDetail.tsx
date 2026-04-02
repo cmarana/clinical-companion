@@ -10,6 +10,9 @@ import { useFavorites } from "@/contexts/FavoritesContext";
 import { Input } from "@/components/ui/input";
 import { useRecentHistory } from "@/hooks/useRecentHistory";
 import { Label } from "@/components/ui/label";
+import ShareMenu from "@/components/ShareMenu";
+import { formatPrescriptionForShare } from "@/lib/shareUtils";
+import { cacheContent } from "@/lib/offlineCache";
 import {
   Dialog,
   DialogContent,
