@@ -68,6 +68,9 @@ export const HIGH_RISK_PAIRS: Record<string, InteractionPair[]> = {
   "metotrexato": [
     { drugs: ["sulfametoxazol", "trimetoprima"], severity: "grave", desc: "Ambos inibem folato — pancitopenia grave." },
     { drugs: ["ibuprofeno", "diclofenaco", "cetoprofeno", "naproxeno"], severity: "grave", desc: "AINEs reduzem clearance renal do metotrexato — toxicidade." },
+    { drugs: ["penicilina", "amoxicilina", "piperacilina"], severity: "moderado", desc: "Penicilinas reduzem excreção renal do metotrexato — toxicidade." },
+    { drugs: ["omeprazol", "pantoprazol"], severity: "moderado", desc: "IBPs podem retardar eliminação do metotrexato." },
+    { drugs: ["ciprofloxacino"], severity: "moderado", desc: "Quinolonas reduzem clearance renal do metotrexato." },
   ],
   "lítio": [
     { drugs: ["ibuprofeno", "diclofenaco", "cetoprofeno", "naproxeno"], severity: "grave", desc: "AINEs aumentam litemia — risco de intoxicação." },
