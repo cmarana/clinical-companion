@@ -571,7 +571,40 @@ export default function Profile() {
               </div>
             )}
 
-            <Select label="Especialidade" value={profile.specialty} onChange={set("specialty")} options={SPECIALTIES.map(s => ({ value: s, label: s }))} />
+            <Select
+              label="Área da Saúde"
+              value={(() => {
+                for (const [area, specs] of Object.entries(SPECIALTIES_BY_AREA)) {
+                  if (specs.includes(profile.specialty)) return area;
+                }
+                return "";
+              })()}
+              onChange={(area) => {
+                // Reset specialty when area changes
+                const currentSpecs = SPECIALTIES_BY_AREA[area] || [];
+                if (!currentSpecs.includes(profile.specialty)) {
+                  set("specialty")("");
+                }
+              }}
+              options={HEALTH_AREAS.map(a => ({ value: a, label: a }))}
+              placeholder="Selecione sua área..."
+            />
+            <Select
+              label="Especialidade / Atuação"
+              value={profile.specialty}
+              onChange={set("specialty")}
+              options={(() => {
+                // Find which area the current specialty belongs to, or show all
+                for (const [area, specs] of Object.entries(SPECIALTIES_BY_AREA)) {
+                  if (specs.includes(profile.specialty)) {
+                    return specs.map(s => ({ value: s, label: s }));
+                  }
+                }
+                // Show all specialties flat if no area match
+                return Object.values(SPECIALTIES_BY_AREA).flat().map(s => ({ value: s, label: s }));
+              })()}
+              placeholder="Selecione..."
+            />
           </Section>
 
           {/* ── Save button ── */}
