@@ -2,7 +2,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import {
   Bot, AlertTriangle, Zap, Pill, ClipboardList, BookOpen,
   Calculator, FlaskConical, Baby, Heart, Stethoscope, HelpCircle,
-  Search, Star, User, StickyNote, Home
+  Search, Star, User, StickyNote, Home, Gift
 } from "lucide-react";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupLabel,
@@ -36,6 +36,7 @@ const userItems = [
   { title: "Favoritos", url: "/favorites", icon: Star },
   { title: "Notas", url: "/notes", icon: StickyNote },
   { title: "Questões", url: "/quiz", icon: HelpCircle },
+  { title: "Indique e Ganhe", url: "/referral", icon: Gift },
   { title: "Conta", url: "/pricing", icon: User },
 ];
 
