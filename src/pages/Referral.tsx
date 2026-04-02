@@ -151,7 +151,7 @@ export default function Referral() {
           <div className="space-y-2">
             {referrals.map((r) => (
               <div key={r.id} className="flex items-center justify-between bg-card rounded-xl p-3 shadow-sm">
-                <span className="text-sm truncate mr-2">{r.referred_email}</span>
+                <span className="text-sm truncate mr-2">Convite #{referrals.indexOf(r) + 1}</span>
                 <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
                   r.status === "completed" || r.status === "rewarded"
                     ? "bg-green-500/10 text-green-600"
