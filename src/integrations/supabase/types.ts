@@ -173,6 +173,33 @@ export type Database = {
         }
         Relationships: []
       }
+      module_analytics: {
+        Row: {
+          accessed_at: string
+          id: string
+          module_label: string
+          module_path: string
+          specialty: string
+          user_id: string
+        }
+        Insert: {
+          accessed_at?: string
+          id?: string
+          module_label?: string
+          module_path: string
+          specialty?: string
+          user_id: string
+        }
+        Update: {
+          accessed_at?: string
+          id?: string
+          module_label?: string
+          module_path?: string
+          specialty?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       profiles: {
         Row: {
           avatar_url: string

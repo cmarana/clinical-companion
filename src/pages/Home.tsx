@@ -15,6 +15,7 @@ import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import RecentHistory from "@/components/RecentHistory";
 import { useNotifications } from "@/contexts/NotificationsContext";
 import OnboardingModal from "@/components/OnboardingModal";
+import { useModuleAnalytics, setAnalyticsSpecialty } from "@/hooks/useModuleAnalytics";
 
 // ── ALL MODULES WITH TAGS ─────────────────────────────────────
 interface Module {
@@ -139,10 +140,16 @@ export default function Home() {
   const { theme, toggleTheme } = useTheme();
   const { user } = useAuth();
   const { unreadCount } = useNotifications();
+  const { trackModule } = useModuleAnalytics();
   const [avatarUrl, setAvatarUrl] = useState("");
   const [initials, setInitials] = useState("U");
   const [activeTab, setActiveTab] = useState("tools");
   const [specialty, setSpecialty] = useState<string | null>(null);
+
+  const navigateWithTracking = (path: string, label: string) => {
+    trackModule(path, label);
+    navigate(path);
+  };
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [profileLoaded, setProfileLoaded] = useState(false);
 
@@ -184,6 +191,7 @@ export default function Home() {
     setShowOnboarding(false);
     localStorage.setItem("ps-guide-specialty", specialtyId);
     localStorage.removeItem("ps-guide-onboarding-dismissed");
+    setAnalyticsSpecialty(specialtyId);
 
     if (user) {
       await supabase.from("profiles").update({ specialty: specialtyId }).eq("user_id", user.id);
@@ -280,7 +288,7 @@ export default function Home() {
             transition={{ duration: 0.3, delay: i * 0.05 }}
           >
             <button
-              onClick={() => navigate(m.path)}
+              onClick={() => navigateWithTracking(m.path, m.label)}
               className={`w-full flex items-center gap-3 px-4 py-4 rounded-[20px] border-0 transition-all duration-200 active:scale-[0.98] hover:shadow-md text-left ${cardStyles[m.variant]}`}
             >
               <div className={`flex items-center justify-center w-10 h-10 rounded-2xl shrink-0 ${iconStyles[m.variant]}`}>
@@ -311,7 +319,7 @@ export default function Home() {
           {emergencyShortcuts.map((s) => (
             <button
               key={s.path}
-              onClick={() => navigate(s.path)}
+              onClick={() => navigateWithTracking(s.path, s.label)}
               className="px-4 py-2 rounded-2xl border-0 bg-destructive/8 dark:bg-destructive/15 hover:bg-destructive/15 dark:hover:bg-destructive/25 active:scale-[0.98] transition-all duration-200 font-heading font-medium text-xs text-destructive shadow-sm"
             >
               {s.label}
@@ -365,7 +373,7 @@ export default function Home() {
                   transition={{ duration: 0.2, delay: i * 0.03 }}
                 >
                   <button
-                    onClick={() => navigate(m.path)}
+                    onClick={() => navigateWithTracking(m.path, m.label)}
                     className="w-full flex items-center gap-2.5 px-3.5 py-3.5 rounded-2xl bg-card text-card-foreground shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 text-left border-0"
                   >
                     <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 bg-primary/10 text-primary dark:bg-primary/20">
