@@ -71,6 +71,26 @@ serve(async (req) => {
       .select("user_id");
     const uniqueUserSet = new Set((uniqueUsers || []).map(r => r.user_id));
 
+    // Protocol views - top protocols by views
+    const { data: protocolViewsData } = await supabaseAdmin
+      .from("protocol_views")
+      .select("protocol_id, protocol_title, protocol_category, duration_seconds")
+      .order("created_at", { ascending: false })
+      .limit(1000);
+
+    const protocolCounts: Record<string, { title: string; category: string; views: number; totalDuration: number }> = {};
+    for (const row of protocolViewsData || []) {
+      const key = row.protocol_id;
+      if (!protocolCounts[key]) protocolCounts[key] = { title: row.protocol_title, category: row.protocol_category, views: 0, totalDuration: 0 };
+      protocolCounts[key].views++;
+      protocolCounts[key].totalDuration += row.duration_seconds || 0;
+    }
+
+    const topProtocols = Object.entries(protocolCounts)
+      .sort((a, b) => b[1].views - a[1].views)
+      .slice(0, 20)
+      .map(([id, data]) => ({ id, ...data, avgDuration: Math.round(data.totalDuration / data.views) }));
+
     const topModulesList = Object.entries(moduleCounts)
       .sort((a, b) => b[1].count - a[1].count)
       .slice(0, 15)
