@@ -83,6 +83,6 @@ export function formatNoteForShare(title: string, category: string, content: str
   if (patient) text += `👤 ${patient}\n`;
   text += `${"─".repeat(30)}\n\n`;
   text += content;
-  text += `\n\n📱 _Compartilhado via PS Guide_`;
+  text += `\n\n📱 _Compartilhado via PULSO_`;
   return text;
 }

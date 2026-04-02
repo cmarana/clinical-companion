@@ -55,7 +55,7 @@ export default function ShareProtocolDialog({ open, onClose, protocolTitle, shar
   const handleNativeShare = async () => {
     if (navigator.share) {
       try {
-        await navigator.share({ title: protocolTitle, text: `${protocolTitle} - PS Guide`, url: shareUrl });
+        await navigator.share({ title: protocolTitle, text: `${protocolTitle} - PULSO`, url: shareUrl });
       } catch { /* cancelled */ }
     }
   };
