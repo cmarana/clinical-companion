@@ -6,7 +6,7 @@ import { Badge } from "@/components/ui/badge";
 import { toast } from "sonner";
 import {
   Bell, BellRing, BellOff, Pill, Clock, Droplets, CheckSquare,
-  Plus, Trash2, AlertTriangle, Shield, X
+  Plus, Trash2, AlertTriangle, Shield, X, BookOpen, Zap
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -22,11 +22,18 @@ import {
   type MedicationReminder,
   type ShiftAlertConfig,
 } from "@/lib/pushNotifications";
+import { useAuth } from "@/contexts/AuthContext";
+import { subscribeToPush, unsubscribeFromPush, isPushSubscribed, updatePushPreferences } from "@/lib/webPush";
 
 export default function PushNotificationSettings() {
+  const { user } = useAuth();
   const [permission, setPermission] = useState(getPushPermission());
   const [reminders, setReminders] = useState<MedicationReminder[]>(getReminders());
   const [shiftConfig, setShiftConfig] = useState<ShiftAlertConfig>(getShiftAlertConfig());
+  const [pushSubscribed, setPushSubscribed] = useState(false);
+  const [pushStudyReminders, setPushStudyReminders] = useState(true);
+  const [pushProtocolUpdates, setPushProtocolUpdates] = useState(true);
+  const [pushLoading, setPushLoading] = useState(false);
   const [showAddForm, setShowAddForm] = useState(false);
   const [formData, setFormData] = useState({
     medicationName: "",
@@ -35,6 +42,11 @@ export default function PushNotificationSettings() {
     startTime: "08:00",
     notes: "",
   });
+
+
+  useEffect(() => {
+    isPushSubscribed().then(setPushSubscribed);
+  }, []);
 
   const handleRequestPermission = async () => {
     const granted = await requestPushPermission();
@@ -129,7 +141,76 @@ export default function PushNotificationSettings() {
           </div>
         </div>
 
-        {/* Shift Alerts Config */}
+        {/* Web Push Subscription */}
+        {user && (
+          <div className="bg-card rounded-[20px] shadow-sm p-4 space-y-3">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center">
+                <Zap size={16} className="text-primary" />
+              </div>
+              <div className="flex-1">
+                <h3 className="font-heading font-semibold text-sm">Push em Segundo Plano</h3>
+                <p className="text-[10px] text-muted-foreground">Receba notificações mesmo com o app fechado</p>
+              </div>
+              <Switch
+                checked={pushSubscribed}
+                disabled={pushLoading}
+                onCheckedChange={async (checked) => {
+                  setPushLoading(true);
+                  if (checked) {
+                    const ok = await subscribeToPush(user.id);
+                    setPushSubscribed(ok);
+                    if (ok) toast.success("Push em segundo plano ativado!");
+                    else toast.error("Falha ao ativar push. Verifique as permissões.");
+                  } else {
+                    await unsubscribeFromPush(user.id);
+                    setPushSubscribed(false);
+                    toast.success("Push em segundo plano desativado");
+                  }
+                  setPushLoading(false);
+                }}
+              />
+            </div>
+
+            {pushSubscribed && (
+              <div className="space-y-2.5 pt-2 border-t border-border/50">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <BookOpen size={14} className="text-primary" />
+                    <div>
+                      <p className="text-xs font-heading font-medium">Lembretes de Estudo</p>
+                      <p className="text-[10px] text-muted-foreground">Flashcards pendentes e metas</p>
+                    </div>
+                  </div>
+                  <Switch
+                    checked={pushStudyReminders}
+                    onCheckedChange={async (v) => {
+                      setPushStudyReminders(v);
+                      await updatePushPreferences(user.id, { study_reminders: v });
+                    }}
+                  />
+                </div>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Shield size={14} className="text-emerald-500" />
+                    <div>
+                      <p className="text-xs font-heading font-medium">Atualizações de Protocolos</p>
+                      <p className="text-[10px] text-muted-foreground">Novos protocolos e alterações</p>
+                    </div>
+                  </div>
+                  <Switch
+                    checked={pushProtocolUpdates}
+                    onCheckedChange={async (v) => {
+                      setPushProtocolUpdates(v);
+                      await updatePushPreferences(user.id, { protocol_updates: v });
+                    }}
+                  />
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+
         <div className="bg-card rounded-[20px] shadow-sm p-4">
           <div className="flex items-center gap-2 mb-3">
             <div className="w-8 h-8 rounded-xl bg-amber-500/10 flex items-center justify-center">
