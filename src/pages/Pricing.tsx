@@ -303,6 +303,18 @@ export default function Pricing() {
                 : "Teste grátis por 7 dias. Cobrado apenas após o período de teste. Cancele a qualquer momento. Pagamento seguro via Stripe."
               }
             </p>
+
+            {/* Continue free option */}
+            <div className="text-center pt-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => navigate("/")}
+                className="text-xs text-muted-foreground hover:text-foreground"
+              >
+                Continuar com acesso gratuito limitado →
+              </Button>
+            </div>
           </>
         )}
 
