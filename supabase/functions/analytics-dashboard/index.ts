@@ -117,6 +117,7 @@ serve(async (req) => {
         specialties: specialtyList,
         topBySpecialty,
         dailyActivity: Object.entries(dailyActivity).map(([date, count]) => ({ date, count })),
+        topProtocols,
       }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
