@@ -133,3 +133,11 @@ function EmergencyModeContent() {
     </>
   );
 }
+
+export default function EmergencyMode() {
+  return (
+    <PremiumPageGuard feature="Modo Emergência" title="Emergência">
+      <EmergencyModeContent />
+    </PremiumPageGuard>
+  );
+}

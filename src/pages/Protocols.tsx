@@ -7,8 +7,7 @@ import { useState } from "react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
 import { FREE_PROTOCOL_IDS } from "@/lib/plans";
-import { PremiumBadge } from "@/components/PremiumGate";
-import PremiumGate from "@/components/PremiumGate";
+import PremiumGate, { PremiumBadge } from "@/components/PremiumGate";
 
 export default function Protocols() {
   const navigate = useNavigate();
@@ -27,7 +26,7 @@ export default function Protocols() {
         {!isPremium && (
           <div className="flex items-center gap-2">
             <PremiumBadge />
-            <span className="text-xs text-muted-foreground">3 protocolos gratuitos — assine para acesso completo</span>
+            <span className="text-xs text-muted-foreground">10 protocolos gratuitos — assine para acesso completo</span>
           </div>
         )}
 
@@ -65,10 +64,10 @@ export default function Protocols() {
             return (
               <Card
                 key={p.id}
-                onClick={() => navigate(`/protocols/${p.id}`)}
+                onClick={() => !locked && navigate(`/protocols/${p.id}`)}
                 className={cn(
                   "cursor-pointer hover:shadow-sm active:scale-[0.99] transition-all",
-                  locked && "opacity-60"
+                  locked && "opacity-60 cursor-default"
                 )}
               >
                 <CardContent className="flex items-center justify-between p-3.5">
@@ -90,7 +89,7 @@ export default function Protocols() {
         </div>
 
         {!isPremium && (
-          <PremiumGate />
+          <PremiumGate feature="Todos os protocolos" />
         )}
       </div>
     </>
