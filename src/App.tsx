@@ -112,7 +112,7 @@ const AppRoutes = () => (
       <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="/unsubscribe" element={<Unsubscribe />} />
       <Route path="/onboarding" element={<Onboarding />} />
-      <Route element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>
+      <Route element={<ProtectedRoute><PaidRoute><AppLayout /></PaidRoute></ProtectedRoute>}>
         <Route path="/" element={<Home />} />
         <Route path="/protocols" element={<Navigate to="/full-protocols" replace />} />
         <Route path="/protocols/:id" element={<ProtocolDetail />} />
