@@ -209,7 +209,7 @@ export default function Pricing() {
                   )}
                 >
                   <CreditCard size={18} />
-                  Cartão / Boleto
+                  Cartão
                 </button>
                 <button
                   onClick={() => setPaymentMethod("pix")}
