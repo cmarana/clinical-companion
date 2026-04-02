@@ -327,16 +327,35 @@ export default function ClinicalAI() {
           <TabsContent value="chat" className="mt-0">
             <form onSubmit={handleChatSubmit} className="flex gap-2">
               <Textarea value={input} onChange={(e) => setInput(e.target.value)}
-                placeholder="Descreva sintomas, caso clínico ou dúvida..."
+                placeholder={isListening && voiceTarget === "chat" ? "🎤 Ouvindo..." : "Descreva sintomas, caso clínico ou dúvida..."}
                 className="min-h-[44px] max-h-32 text-sm resize-none rounded-xl"
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleChatSubmit(e); }
                 }}
               />
+              {speechSupported && (
+                <Button type="button" size="icon" variant={isListening && voiceTarget === "chat" ? "destructive" : "outline"}
+                  onClick={() => startVoice("chat")}
+                  className={`shrink-0 rounded-xl h-[44px] w-[44px] ${isListening && voiceTarget === "chat" ? "animate-pulse" : ""}`}
+                  title={isListening ? "Parar gravação" : "Ditar relato por voz"}
+                >
+                  {isListening && voiceTarget === "chat" ? <MicOff size={18} /> : <Mic size={18} />}
+                </Button>
+              )}
               <Button type="submit" size="icon" disabled={isLoading || !input.trim()} className="shrink-0 rounded-xl h-[44px] w-[44px]">
                 {isLoading ? <Loader2 size={18} className="animate-spin" /> : <Send size={18} />}
               </Button>
             </form>
+            {isListening && voiceTarget === "chat" && (
+              <motion.div initial={{ opacity: 0, y: -4 }} animate={{ opacity: 1, y: 0 }}
+                className="mt-2 flex items-center justify-center gap-2 py-1.5 px-3 rounded-lg bg-destructive/10 border border-destructive/20">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-destructive opacity-75" />
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-destructive" />
+                </span>
+                <span className="text-[10px] font-heading text-destructive font-medium">Gravando relato... toque no microfone para parar</span>
+              </motion.div>
+            )}
           </TabsContent>
 
           <TabsContent value="structured" className="mt-0">
