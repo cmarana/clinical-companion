@@ -10,6 +10,7 @@ import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { NotificationsProvider } from "@/contexts/NotificationsContext";
 import AppLayout from "@/components/AppLayout";
 import { PWAInstallPrompt, OfflineIndicator } from "@/components/PWAInstallPrompt";
+import FeedbackButton from "@/components/FeedbackButton";
 import { lazy, Suspense } from "react";
 import { ProtocolListSkeleton, ProtocolDetailSkeleton, MedicationListSkeleton } from "@/components/PageSkeleton";
 
@@ -64,6 +65,7 @@ const UpdatesFeed = lazy(() => import("@/pages/UpdatesFeed"));
 const PixSuccess = lazy(() => import("@/pages/PixSuccess"));
 const TermsOfUse = lazy(() => import("@/pages/TermsOfUse"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
+const Referral = lazy(() => import("@/pages/Referral"));
 
 const queryClient = new QueryClient();
 
@@ -140,6 +142,7 @@ const AppRoutes = () => (
         <Route path="/admin/analytics" element={<AdminAnalytics />} />
         <Route path="/updates" element={<UpdatesFeed />} />
         <Route path="/pix-success" element={<PixSuccess />} />
+        <Route path="/referral" element={<Referral />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
@@ -157,9 +160,10 @@ const App = () => (
                 <TooltipProvider>
                 <Toaster />
                   <Sonner />
-                  <OfflineIndicator />
-                  <PWAInstallPrompt />
-                  <AppRoutes />
+                   <OfflineIndicator />
+                   <PWAInstallPrompt />
+                   <FeedbackButton />
+                   <AppRoutes />
                 </TooltipProvider>
               </NotesProvider>
             </FavoritesProvider>
