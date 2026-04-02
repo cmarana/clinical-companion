@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot } from "lucide-react";
+import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot, Mic, MicOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
@@ -8,6 +8,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { streamClinicalAi } from "@/lib/clinicalAiStream";
 import { toast } from "sonner";
 import ClinicalResponseCards from "@/components/ClinicalResponseCards";
+import { motion } from "framer-motion";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
