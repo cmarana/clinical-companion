@@ -433,6 +433,154 @@ export const HIGH_RISK_PAIRS: Record<string, InteractionPair[]> = {
     { drugs: ["carbamazepina"], severity: "moderado", desc: "Carbamazepina reduz nível de amitriptilina." },
     { drugs: ["clonidina"], severity: "moderado", desc: "Tricíclicos antagonizam efeito anti-hipertensivo da clonidina." },
   ],
+
+  // ── Antiepilépticos novos ──
+  "levetiracetam": [
+    { drugs: ["carbamazepina"], severity: "moderado", desc: "Carbamazepina pode reduzir levemente níveis de levetiracetam." },
+    { drugs: ["metotrexato"], severity: "moderado", desc: "Risco de toxicidade hematológica aditiva — monitorar hemograma." },
+    { drugs: ["clozapina"], severity: "moderado", desc: "Risco aditivo de leucopenia — monitorar hemograma." },
+  ],
+  "pregabalina": [
+    { drugs: ["lorazepam", "diazepam", "clonazepam", "midazolam", "alprazolam"], severity: "grave", desc: "Depressão respiratória e sedação aditiva grave — evitar combinação." },
+    { drugs: ["oxicodona", "morfina", "fentanil", "tramadol", "codeína"], severity: "grave", desc: "Depressão respiratória fatal — risco aditivo com opióides." },
+    { drugs: ["gabapentina"], severity: "moderado", desc: "Mecanismo semelhante — sedação e tontura aditivas sem benefício adicional." },
+    { drugs: ["etanol"], severity: "moderado", desc: "Potencialização de sedação e comprometimento cognitivo." },
+    { drugs: ["tioridazina", "clorpromazina"], severity: "moderado", desc: "Sedação aditiva com antipsicóticos de baixa potência." },
+  ],
+  "gabapentina": [
+    { drugs: ["morfina", "oxicodona", "fentanil", "tramadol", "codeína"], severity: "grave", desc: "Depressão respiratória aditiva fatal — evitar ou reduzir doses." },
+    { drugs: ["lorazepam", "diazepam", "clonazepam", "midazolam"], severity: "grave", desc: "Sedação e depressão respiratória aditivas." },
+    { drugs: ["pregabalina"], severity: "moderado", desc: "Sem benefício aditivo — sedação e tontura aumentadas." },
+    { drugs: ["antiácidos"], severity: "moderado", desc: "Antiácidos com alumínio/magnésio reduzem absorção — separar por 2h." },
+  ],
+  "lacosamida": [
+    { drugs: ["carbamazepina", "fenitoína", "fenobarbital"], severity: "moderado", desc: "Indutores enzimáticos reduzem níveis de lacosamida em 25%." },
+    { drugs: ["amiodarona", "sotalol"], severity: "grave", desc: "Prolongamento PR aditivo — risco de bloqueio AV." },
+    { drugs: ["verapamil", "diltiazem"], severity: "grave", desc: "Bloqueio AV aditivo — contraindicado." },
+    { drugs: ["metoprolol", "propranolol", "atenolol"], severity: "moderado", desc: "Risco de bradicardia e bloqueio PR." },
+  ],
+  "topiramato": [
+    { drugs: ["metformina"], severity: "moderado", desc: "Topiramato pode alterar clearance de metformina." },
+    { drugs: ["lítio"], severity: "moderado", desc: "Topiramato pode alterar níveis de lítio — monitorar litemia." },
+    { drugs: ["ácido valproico", "valproato"], severity: "moderado", desc: "Risco de hiperamonemia e encefalopatia — monitorar amônia." },
+    { drugs: ["acetazolamida"], severity: "moderado", desc: "Ambos inibidores de anidrase carbônica — risco de nefrolitíase e acidose." },
+    { drugs: ["anticoncepcionais orais"], severity: "moderado", desc: "Doses >200mg/dia reduzem eficácia contraceptiva." },
+  ],
+  "oxcarbazepina": [
+    { drugs: ["anticoncepcionais orais"], severity: "grave", desc: "Indução CYP3A4 — reduz eficácia contraceptiva significativamente." },
+    { drugs: ["fenitoína"], severity: "moderado", desc: "Aumento de 40% nos níveis de fenitoína." },
+    { drugs: ["lítio"], severity: "moderado", desc: "Risco de neurotoxicidade — monitorar litemia." },
+    { drugs: ["carbamazepina"], severity: "moderado", desc: "Redução mútua de níveis séricos." },
+    { drugs: ["hidroclorotiazida", "furosemida"], severity: "moderado", desc: "Risco aditivo de hiponatremia — monitorar Na+." },
+  ],
+
+  // ── Anestésicos ──
+  "propofol": [
+    { drugs: ["fentanil", "remifentanil", "sufentanil", "alfentanil"], severity: "grave", desc: "Depressão cardiovascular e respiratória sinérgica — titular doses cuidadosamente." },
+    { drugs: ["midazolam", "diazepam"], severity: "grave", desc: "Sedação profunda e apneia — reduzir dose de propofol 30-50%." },
+    { drugs: ["dexmedetomidina"], severity: "moderado", desc: "Hipotensão e bradicardia aditivas." },
+    { drugs: ["succinilcolina"], severity: "moderado", desc: "Propofol pode prolongar bloqueio de succinilcolina." },
+    { drugs: ["lidocaína"], severity: "moderado", desc: "Coadministração IV pode reduzir dor à injeção mas aumentar depressão cardíaca." },
+  ],
+  "cetamina": [
+    { drugs: ["halotano", "sevoflurano", "isoflurano", "desflurano"], severity: "moderado", desc: "Estimulação cardiovascular da cetamina pode ser atenuada — monitorar PA." },
+    { drugs: ["teofilina"], severity: "grave", desc: "Reduz limiar convulsivo — risco de convulsões." },
+    { drugs: ["atropina"], severity: "moderado", desc: "Taquicardia aditiva — monitorar FC." },
+    { drugs: ["diazepam", "midazolam"], severity: "moderado", desc: "Benzodiazepínicos podem prolongar recuperação da cetamina." },
+    { drugs: ["levotiroxina"], severity: "moderado", desc: "Risco de hipertensão e taquicardia em hipertireoidismo." },
+  ],
+  "sevoflurano": [
+    { drugs: ["succinilcolina"], severity: "moderado", desc: "Sevoflurano potencializa bloqueio neuromuscular." },
+    { drugs: ["rocurônio", "atracúrio", "cisatracúrio", "vecurônio", "pancurônio"], severity: "moderado", desc: "Anestésicos inalatórios potencializam bloqueadores neuromusculares — reduzir dose 25-40%." },
+    { drugs: ["amiodarona"], severity: "grave", desc: "Risco de bradicardia refratária e hipotensão grave." },
+    { drugs: ["epinefrina", "adrenalina"], severity: "grave", desc: "Sevoflurano sensibiliza miocárdio a catecolaminas — risco de arritmias." },
+    { drugs: ["isoniazida"], severity: "moderado", desc: "Aumento de nefrotoxicidade pelo composto A." },
+  ],
+  "isoflurano": [
+    { drugs: ["rocurônio", "atracúrio", "cisatracúrio", "vecurônio"], severity: "moderado", desc: "Potencialização do bloqueio neuromuscular — reduzir dose." },
+    { drugs: ["epinefrina", "adrenalina"], severity: "grave", desc: "Sensibilização miocárdica a catecolaminas — arritmias." },
+    { drugs: ["amiodarona"], severity: "grave", desc: "Bradicardia e hipotensão refratárias." },
+    { drugs: ["labetalol"], severity: "moderado", desc: "Hipotensão aditiva — monitorar PA." },
+  ],
+  "lidocaína": [
+    { drugs: ["amiodarona"], severity: "grave", desc: "Risco de bradicardia sinusal grave e convulsões." },
+    { drugs: ["propranolol", "metoprolol"], severity: "moderado", desc: "Betabloqueadores reduzem clearance hepático da lidocaína." },
+    { drugs: ["cimetidina"], severity: "moderado", desc: "Cimetidina inibe metabolismo — risco de toxicidade por lidocaína." },
+    { drugs: ["fenitoína"], severity: "moderado", desc: "Depressão cardíaca aditiva." },
+    { drugs: ["succinilcolina"], severity: "moderado", desc: "Lidocaína IV pode prolongar bloqueio neuromuscular." },
+  ],
+  "bupivacaína": [
+    { drugs: ["ropivacaína"], severity: "grave", desc: "Toxicidade cardiovascular aditiva — não combinar anestésicos locais do mesmo grupo." },
+    { drugs: ["amiodarona"], severity: "grave", desc: "Cardiotoxicidade aditiva — risco de arritmias refratárias." },
+    { drugs: ["propranolol"], severity: "moderado", desc: "Reduz metabolismo hepático — acúmulo de bupivacaína." },
+    { drugs: ["cimetidina"], severity: "moderado", desc: "Inibe metabolismo — risco de toxicidade sistêmica." },
+  ],
+  "dexmedetomidina": [
+    { drugs: ["propofol", "midazolam"], severity: "moderado", desc: "Sedação profunda aditiva — titular doses." },
+    { drugs: ["fentanil", "morfina", "remifentanil"], severity: "moderado", desc: "Bradicardia e depressão respiratória aditivas." },
+    { drugs: ["metoprolol", "atenolol", "propranolol"], severity: "grave", desc: "Bradicardia grave e bloqueio AV — monitorar FC rigorosamente." },
+    { drugs: ["digoxina"], severity: "moderado", desc: "Bradicardia aditiva — monitorar FC." },
+    { drugs: ["verapamil", "diltiazem"], severity: "grave", desc: "Bradicardia e hipotensão sinérgicas graves." },
+  ],
+
+  // ── Bloqueadores neuromusculares ──
+  "succinilcolina": [
+    { drugs: ["neostigmina", "piridostigmina", "fisostigmina"], severity: "grave", desc: "Anticolinesterásicos prolongam bloqueio por succinilcolina (fase II)." },
+    { drugs: ["lidocaína"], severity: "moderado", desc: "Lidocaína IV potencializa bloqueio neuromuscular." },
+    { drugs: ["gentamicina", "amicacina", "tobramicina"], severity: "grave", desc: "Aminoglicosídeos potencializam e prolongam bloqueio — risco de apneia." },
+    { drugs: ["lítio"], severity: "moderado", desc: "Lítio prolonga bloqueio por succinilcolina." },
+    { drugs: ["magnésio"], severity: "grave", desc: "Magnésio IV potencializa bloqueio — risco de paralisia prolongada." },
+    { drugs: ["dantrolene"], severity: "moderado", desc: "Contraindicação relativa — dantrolene pode mascarar hipertermia maligna." },
+    { drugs: ["metoclopramida"], severity: "moderado", desc: "Metoclopramida inibe pseudocolinesterase — prolonga bloqueio." },
+  ],
+  "rocurônio": [
+    { drugs: ["gentamicina", "amicacina", "tobramicina", "neomicina"], severity: "grave", desc: "Aminoglicosídeos potencializam e prolongam bloqueio neuromuscular." },
+    { drugs: ["sevoflurano", "isoflurano", "desflurano"], severity: "moderado", desc: "Anestésicos inalatórios prolongam bloqueio — reduzir dose de rocurônio." },
+    { drugs: ["magnésio"], severity: "grave", desc: "Magnésio potencializa bloqueio — risco de paralisia prolongada." },
+    { drugs: ["carbamazepina", "fenitoína"], severity: "moderado", desc: "Anticonvulsivantes aceleram metabolismo — pode necessitar doses maiores." },
+    { drugs: ["clindamicina"], severity: "moderado", desc: "Clindamicina potencializa bloqueio neuromuscular." },
+    { drugs: ["vancomicina"], severity: "moderado", desc: "Potencialização do bloqueio neuromuscular." },
+    { drugs: ["sugamadex"], severity: "moderado", desc: "Sugamadex reverte rocurônio — interação terapêutica esperada. Pode reduzir eficácia de anticoncepcionais hormonais." },
+  ],
+  "atracúrio": [
+    { drugs: ["gentamicina", "amicacina", "tobramicina"], severity: "grave", desc: "Aminoglicosídeos prolongam bloqueio neuromuscular — monitorar TOF." },
+    { drugs: ["sevoflurano", "isoflurano", "desflurano"], severity: "moderado", desc: "Anestésicos inalatórios potencializam bloqueio — reduzir dose." },
+    { drugs: ["magnésio"], severity: "grave", desc: "Magnésio IV prolonga bloqueio — risco de paralisia." },
+    { drugs: ["lítio"], severity: "moderado", desc: "Lítio pode prolongar bloqueio neuromuscular." },
+    { drugs: ["clindamicina", "polimixina b"], severity: "moderado", desc: "Antibióticos que potencializam bloqueio neuromuscular." },
+    { drugs: ["furosemida"], severity: "moderado", desc: "Em doses altas pode potencializar ou antagonizar bloqueio — monitorar." },
+  ],
+  "cisatracúrio": [
+    { drugs: ["gentamicina", "amicacina", "tobramicina"], severity: "grave", desc: "Aminoglicosídeos prolongam bloqueio — monitorar TOF." },
+    { drugs: ["sevoflurano", "isoflurano"], severity: "moderado", desc: "Potencialização do bloqueio — reduzir dose de cisatracúrio." },
+    { drugs: ["magnésio"], severity: "grave", desc: "Potencialização grave do bloqueio neuromuscular." },
+    { drugs: ["carbamazepina", "fenitoína"], severity: "moderado", desc: "Resistência ao bloqueio — pode necessitar doses maiores." },
+  ],
+  "pancurônio": [
+    { drugs: ["gentamicina", "amicacina", "tobramicina"], severity: "grave", desc: "Potencialização e prolongamento do bloqueio neuromuscular." },
+    { drugs: ["corticosteroides"], severity: "moderado", desc: "Uso prolongado pode causar miopatia do paciente crítico." },
+    { drugs: ["magnésio"], severity: "grave", desc: "Paralisia prolongada — monitorar TOF." },
+    { drugs: ["quinidina"], severity: "grave", desc: "Quinidina pode recuararizar — risco de paralisia recorrente." },
+    { drugs: ["verapamil", "diltiazem"], severity: "moderado", desc: "Potencialização do bloqueio neuromuscular." },
+  ],
+  "vecurônio": [
+    { drugs: ["gentamicina", "amicacina", "tobramicina"], severity: "grave", desc: "Aminoglicosídeos potencializam e prolongam bloqueio." },
+    { drugs: ["sevoflurano", "isoflurano", "desflurano"], severity: "moderado", desc: "Anestésicos inalatórios potencializam bloqueio." },
+    { drugs: ["magnésio"], severity: "grave", desc: "Magnésio potencializa bloqueio — monitorar TOF." },
+    { drugs: ["clindamicina"], severity: "moderado", desc: "Potencialização do bloqueio neuromuscular." },
+    { drugs: ["carbamazepina", "fenitoína"], severity: "moderado", desc: "Resistência ao bloqueio — ajustar dose." },
+  ],
+  "sugamadex": [
+    { drugs: ["rocurônio", "vecurônio"], severity: "moderado", desc: "Interação terapêutica — reverte bloqueio. Pode encapsular progesteronas e reduzir eficácia de anticoncepcionais." },
+    { drugs: ["anticoncepcionais orais"], severity: "moderado", desc: "Sugamadex pode reduzir eficácia contraceptiva — usar método adicional por 7 dias." },
+    { drugs: ["flucloxacilina", "toremifeno", "ácido fusídico"], severity: "moderado", desc: "Podem competir por ligação e reduzir eficácia do sugamadex — monitorar reversão." },
+  ],
+  "neostigmina": [
+    { drugs: ["succinilcolina"], severity: "grave", desc: "Prolonga bloqueio despolarizante (fase II) — evitar." },
+    { drugs: ["atropina"], severity: "moderado", desc: "Coadministração necessária para prevenir bradicardia — interação terapêutica." },
+    { drugs: ["betabloqueadores"], severity: "moderado", desc: "Bradicardia aditiva — associar atropina." },
+    { drugs: ["aminoglicosídeos"], severity: "moderado", desc: "Pode antagonizar parcialmente bloqueio potencializado por aminoglicosídeos." },
+  ],
 };
 
 // Normalize drug name for matching
