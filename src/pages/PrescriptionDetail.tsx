@@ -42,6 +42,7 @@ export default function PrescriptionDetail() {
   useEffect(() => {
     if (prescription) {
       addEntry({ path: `/prescriptions/${id}`, title: prescription.title, type: "prescription" });
+      cacheContent(`prescription:${id}`, { id: prescription.id, title: prescription.title });
     }
   }, [id]);
 
