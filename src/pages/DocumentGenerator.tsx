@@ -1,4 +1,5 @@
 import { useState, useRef, useMemo, useCallback } from "react";
+import PrescriptionInteractionAlert from "@/components/PrescriptionInteractionAlert";
 import TopBar from "@/components/TopBar";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
