@@ -1,5 +1,6 @@
 import { createContext, useContext, useState, useEffect, useCallback } from "react";
 import { safeLocalStorage } from "@/lib/safeStorage";
+import { startReminderScheduler, stopReminderScheduler } from "@/lib/pushNotifications";
 
 export type NotificationType = "study" | "shift" | "protocol" | "system";
 
