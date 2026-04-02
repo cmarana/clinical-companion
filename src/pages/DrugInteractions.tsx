@@ -18,7 +18,7 @@ import { cn } from "@/lib/utils";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
-export default function DrugInteractions() {
+function DrugInteractionsContent() {
   const navigate = useNavigate();
   const [drugs, setDrugs] = useState<string[]>(["", ""]);
   const [hasChecked, setHasChecked] = useState(false);
