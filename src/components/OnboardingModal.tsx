@@ -46,14 +46,15 @@ export default function OnboardingModal({ onComplete, onSkip }: OnboardingModalP
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm"
+      className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/50 backdrop-blur-sm p-0 sm:p-4"
     >
       <motion.div
         initial={{ y: 80, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         exit={{ y: 80, opacity: 0 }}
         transition={{ type: "spring", damping: 25, stiffness: 300 }}
-        className="w-full max-w-md bg-card rounded-t-3xl sm:rounded-3xl shadow-2xl overflow-hidden max-h-[90vh] flex flex-col"
+        className="w-full max-w-md bg-card rounded-t-3xl sm:rounded-3xl shadow-2xl flex flex-col"
+        style={{ maxHeight: "calc(100dvh - env(safe-area-inset-bottom, 0px) - 60px)" }}
       >
         {/* Header */}
         <div className="relative px-6 pt-6 pb-4">
