@@ -1,10 +1,10 @@
-import { useState, useRef, useEffect, useMemo } from "react";
+import { useState, useRef, useEffect, useMemo, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { Search, Clock, TrendingUp, X, ArrowRight, FileText, Pill, ClipboardList, BookOpen, Zap, Calculator, Hash, TestTubes, Stethoscope } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { safeLocalStorage } from "@/lib/safeStorage";
 import { hapticLight } from "@/lib/haptics";
-import { fullTextSearch, typeColors, typeLabels, type SearchResult } from "@/lib/searchEngine";
+import { typeColors, typeLabels, type SearchResult } from "@/lib/searchEngine";
 
 const iconMap: Record<string, React.ReactNode> = {
   protocol: <FileText size={14} />,
@@ -42,8 +42,11 @@ export default function SmartSearch({ specialty }: SmartSearchProps) {
   const navigate = useNavigate();
   const [query, setQuery] = useState("");
   const [focused, setFocused] = useState(false);
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const debounceRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const recentHistory = useMemo(() => {
     try {
@@ -55,16 +58,28 @@ export default function SmartSearch({ specialty }: SmartSearchProps) {
     }
   }, [focused]);
 
-  // Full-text search results
-  const searchResults = useMemo(() => {
-    if (query.trim().length < 2) return [];
-    return fullTextSearch(query.trim()).slice(0, 8);
-  }, [query]);
+  // Debounced async search
+  const doSearch = useCallback(async (q: string) => {
+    if (q.trim().length < 2) {
+      setSearchResults([]);
+      setIsSearching(false);
+      return;
+    }
+    setIsSearching(true);
+    const { fullTextSearch } = await import("@/lib/searchEngine");
+    const results = await fullTextSearch(q.trim());
+    setSearchResults(results.slice(0, 8));
+    setIsSearching(false);
+  }, []);
 
-  // Build suggestions
+  useEffect(() => {
+    if (debounceRef.current) clearTimeout(debounceRef.current);
+    debounceRef.current = setTimeout(() => doSearch(query), 200);
+    return () => { if (debounceRef.current) clearTimeout(debounceRef.current); };
+  }, [query, doSearch]);
+
   const suggestions = useMemo((): Suggestion[] => {
     if (query.trim().length >= 2) {
-      // Show real full-text results
       return searchResults.map(r => ({
         label: r.title,
         path: r.path,
@@ -73,8 +88,6 @@ export default function SmartSearch({ specialty }: SmartSearchProps) {
         snippet: r.snippet,
       }));
     }
-
-    // When empty and focused, show recent history + popular
     const results: Suggestion[] = [];
     recentHistory.slice(0, 4).forEach(h =>
       results.push({ label: h.title, path: h.path, type: "recent" })
@@ -82,7 +95,6 @@ export default function SmartSearch({ specialty }: SmartSearchProps) {
     defaultPopular.slice(0, 3).forEach(p =>
       results.push({ label: p.label, path: p.path, type: "popular" })
     );
-
     const seen = new Set<string>();
     return results.filter(r => {
       const key = r.label.toLowerCase();
@@ -117,7 +129,7 @@ export default function SmartSearch({ specialty }: SmartSearchProps) {
     navigate(s.path);
   };
 
-  const showDropdown = focused && suggestions.length > 0;
+  const showDropdown = focused && (suggestions.length > 0 || isSearching);
   const totalResults = searchResults.length;
 
   return (
@@ -152,12 +164,18 @@ export default function SmartSearch({ specialty }: SmartSearchProps) {
             transition={{ duration: 0.15 }}
             className="absolute top-full left-0 right-0 mt-1.5 bg-card rounded-2xl shadow-lg border border-border overflow-hidden max-h-[400px] overflow-y-auto"
           >
-            {/* Results count header */}
             {query.trim().length >= 2 && totalResults > 0 && (
               <div className="px-4 py-2 bg-muted/30 border-b border-border/50">
                 <span className="text-[10px] font-heading font-medium text-muted-foreground uppercase tracking-wider">
                   {totalResults} resultado{totalResults !== 1 ? "s" : ""} · Busca em conteúdo
                 </span>
+              </div>
+            )}
+
+            {isSearching && suggestions.length === 0 && (
+              <div className="px-4 py-4 flex items-center justify-center gap-2">
+                <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                <span className="text-xs text-muted-foreground">Buscando...</span>
               </div>
             )}
 
