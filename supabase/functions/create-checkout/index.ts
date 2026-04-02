@@ -59,7 +59,7 @@ serve(async (req) => {
         line_items: [{ price: pixPriceId, quantity: 1 }],
         mode: "payment",
         payment_method_types: ["pix"],
-        success_url: `${origin}/pix-success?plan=${planId}`,
+        success_url: `${origin}/pix-success?session_id={CHECKOUT_SESSION_ID}&plan=${planId}`,
         cancel_url: `${origin}/pricing`,
         locale: "pt-BR",
         metadata: {
