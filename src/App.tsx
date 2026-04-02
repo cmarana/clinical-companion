@@ -89,6 +89,8 @@ const AppRoutes = () => (
       <Route path="/index" element={<Navigate to="/" replace />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/reset-password" element={<ResetPassword />} />
+      <Route path="/terms" element={<TermsOfUse />} />
+      <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route element={<AppLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/protocols" element={<Navigate to="/full-protocols" replace />} />
