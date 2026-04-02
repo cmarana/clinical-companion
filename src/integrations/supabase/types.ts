@@ -376,7 +376,6 @@ export type Database = {
           completed_at: string | null
           created_at: string
           id: string
-          referred_email: string
           referred_user_id: string | null
           referrer_id: string
           reward_months: number
@@ -386,7 +385,6 @@ export type Database = {
           completed_at?: string | null
           created_at?: string
           id?: string
-          referred_email: string
           referred_user_id?: string | null
           referrer_id: string
           reward_months?: number
@@ -396,7 +394,6 @@ export type Database = {
           completed_at?: string | null
           created_at?: string
           id?: string
-          referred_email?: string
           referred_user_id?: string | null
           referrer_id?: string
           reward_months?: number
