@@ -445,13 +445,20 @@ export default function Profile() {
               <Select label="UF" value={profile.state} onChange={set("state")} options={UF_LIST.map(u => ({ value: u, label: u }))} placeholder="UF" />
             </div>
             <Field label="CEP">
-              <Input
-                value={maskCEP(profile.zip_code)}
-                onChange={e => set("zip_code")(e.target.value)}
-                placeholder="00000-000"
-                className="rounded-xl"
-                inputMode="numeric"
-              />
+              <div className="relative">
+                <Input
+                  value={maskCEP(profile.zip_code)}
+                  onChange={e => set("zip_code")(e.target.value)}
+                  placeholder="00000-000"
+                  className="rounded-xl"
+                  inputMode="numeric"
+                />
+                {fetchingCep && (
+                  <div className="absolute right-3 top-1/2 -translate-y-1/2">
+                    <div className="w-4 h-4 border-2 border-primary border-t-transparent rounded-full animate-spin" />
+                  </div>
+                )}
+              </div>
             </Field>
           </Section>
 
