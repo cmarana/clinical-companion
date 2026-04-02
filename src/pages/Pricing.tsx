@@ -294,10 +294,6 @@ export default function Pricing() {
                   <QrCode size={16} className="text-primary" />
                   <span className="text-[11px]">PIX</span>
                 </div>
-                <div className="flex items-center gap-1.5 text-muted-foreground">
-                  <Receipt size={16} className="text-primary" />
-                  <span className="text-[11px]">Boleto</span>
-                </div>
               </div>
             </div>
 
