@@ -339,78 +339,33 @@ export default function Home() {
       {/* Recent History */}
       <RecentHistory />
 
-      {/* ── SECONDARY MODULES (tabbed) ───────────────────────── */}
-      <div className="mt-6">
-        {/* Section header */}
-        <h2 className="font-heading font-semibold text-xs uppercase tracking-wider text-muted-foreground mb-3 px-1">
-          Mais Ferramentas
-        </h2>
-
-        {/* Tab selector — prominent pills */}
-        <div className="flex gap-2 mb-4 overflow-x-auto pb-1 -mx-1 px-1">
-          {tabs.map((tab) => {
-            const isActive = activeTab === tab.id;
-            const count = tab.modules.length;
-            return (
+      {/* ── ALL SECONDARY MODULES (stacked sections) ────────── */}
+      {tabs.map((tab) => (
+        <div key={tab.id} className="mt-6">
+          <h2 className="font-heading font-semibold text-sm flex items-center gap-2 mb-3 px-1">
+            <tab.icon size={16} className="text-primary" />
+            {tab.label}
+            <span className="text-[10px] font-normal text-muted-foreground ml-1">({tab.modules.length})</span>
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5">
+            {tab.modules.map((m) => (
               <button
-                key={tab.id}
-                onClick={() => { hapticLight(); setActiveTab(tab.id); }}
-                className={`flex items-center gap-2 px-4 py-3 rounded-2xl text-xs font-heading font-semibold transition-all duration-200 shrink-0 border-2 ${
-                  isActive
-                    ? "bg-primary text-primary-foreground border-primary shadow-md shadow-primary/20"
-                    : "bg-card text-foreground border-border hover:border-primary/40 hover:shadow-sm"
-                }`}
+                key={m.path}
+                onClick={() => navigateWithTracking(m.path, m.label)}
+                className="w-full flex items-center gap-2.5 px-3.5 py-3.5 rounded-2xl bg-card text-card-foreground shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 text-left border-0"
               >
-                <tab.icon size={16} className={isActive ? "text-primary-foreground" : "text-primary"} />
-                <span>{tab.label}</span>
-                <span className={`ml-0.5 w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold ${
-                  isActive
-                    ? "bg-white/20 text-primary-foreground"
-                    : "bg-muted text-muted-foreground"
-                }`}>
-                  {count}
-                </span>
+                <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 bg-primary/10 text-primary dark:bg-primary/20">
+                  <m.icon size={18} />
+                </div>
+                <div className="flex flex-col min-w-0">
+                  <span className="font-heading font-semibold text-[12px] leading-tight truncate">{m.label}</span>
+                  <span className="text-[10px] leading-tight mt-0.5 truncate text-muted-foreground">{m.sub}</span>
+                </div>
               </button>
-            );
-          })}
+            ))}
+          </div>
         </div>
-
-        {/* Tab content grid */}
-        <AnimatePresence mode="wait">
-          {activeTabData && (
-            <motion.div
-              key={activeTab}
-              initial={{ opacity: 0, x: 12 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -12 }}
-              transition={{ duration: 0.2 }}
-              className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5"
-            >
-              {activeTabData.modules.map((m, i) => (
-                <motion.div
-                  key={m.path}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.2, delay: i * 0.03 }}
-                >
-                  <button
-                    onClick={() => navigateWithTracking(m.path, m.label)}
-                    className="w-full flex items-center gap-2.5 px-3.5 py-3.5 rounded-2xl bg-card text-card-foreground shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 text-left border-0"
-                  >
-                    <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 bg-primary/10 text-primary dark:bg-primary/20">
-                      <m.icon size={18} />
-                    </div>
-                    <div className="flex flex-col min-w-0">
-                      <span className="font-heading font-semibold text-[12px] leading-tight truncate">{m.label}</span>
-                      <span className="text-[10px] leading-tight mt-0.5 truncate text-muted-foreground">{m.sub}</span>
-                    </div>
-                  </button>
-                </motion.div>
-              ))}
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </div>
+      ))}
     </div>
   );
 }
