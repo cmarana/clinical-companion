@@ -6,7 +6,7 @@ import {
   Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain, GraduationCap,
   Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Sparkles
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useAuth } from "@/contexts/AuthContext";
@@ -14,15 +14,29 @@ import { supabase } from "@/integrations/supabase/client";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import RecentHistory from "@/components/RecentHistory";
 import { useNotifications } from "@/contexts/NotificationsContext";
+import OnboardingModal from "@/components/OnboardingModal";
 
-// ── PRIMARY MODULES (always visible) ──────────────────────────
-const primaryModules = [
-  { label: "IA Clínica", sub: "Análise de conduta em tempo real", icon: Bot, path: "/clinical-ai", variant: "ai" as const },
-  { label: "Modo Plantão", sub: "Guia completo para o plantão", icon: AlertTriangle, path: "/duty", variant: "emergency" as const },
-  { label: "Emergência", sub: "Algoritmos de urgência / UTI", icon: Zap, path: "/emergency", variant: "emergency" as const },
-  { label: "Bulário", sub: "Mais de 2.000 fármacos", icon: Pill, path: "/bulario", variant: "default" as const },
-  { label: "Prescrições", sub: "Modelos prontos para uso", icon: ClipboardList, path: "/prescriptions", variant: "default" as const },
-  { label: "Protocolos", sub: "Diretrizes atualizadas", icon: BookOpen, path: "/full-protocols", variant: "default" as const },
+// ── ALL MODULES WITH TAGS ─────────────────────────────────────
+interface Module {
+  label: string;
+  sub: string;
+  icon: React.ElementType;
+  path: string;
+  variant: "ai" | "emergency" | "cyan" | "default";
+  tags?: string[];
+}
+
+const allPrimaryModules: Module[] = [
+  { label: "IA Clínica", sub: "Análise de conduta em tempo real", icon: Bot, path: "/clinical-ai", variant: "ai", tags: ["all"] },
+  { label: "Modo Plantão", sub: "Guia completo para o plantão", icon: AlertTriangle, path: "/duty", variant: "emergency", tags: ["emergencia", "clinica-medica", "cirurgia", "generalista"] },
+  { label: "Emergência", sub: "Algoritmos de urgência / UTI", icon: Zap, path: "/emergency", variant: "emergency", tags: ["emergencia", "cirurgia", "generalista"] },
+  { label: "Bulário", sub: "Mais de 2.000 fármacos", icon: Pill, path: "/bulario", variant: "default", tags: ["all"] },
+  { label: "Prescrições", sub: "Modelos prontos para uso", icon: ClipboardList, path: "/prescriptions", variant: "default", tags: ["all"] },
+  { label: "Protocolos", sub: "Diretrizes atualizadas", icon: BookOpen, path: "/full-protocols", variant: "default", tags: ["all"] },
+  { label: "Pediatria", sub: "Protocolos pediátricos", icon: Baby, path: "/pediatrics", variant: "cyan", tags: ["pediatria"] },
+  { label: "Doses Pediátricas", sub: "Calculadora por peso", icon: Calculator, path: "/pediatric-doses", variant: "cyan", tags: ["pediatria"] },
+  { label: "Obstetrícia", sub: "Emergências obstétricas", icon: Heart, path: "/obstetrics", variant: "default", tags: ["ginecologia-obstetricia"] },
+  { label: "Antimicrobianos", sub: "ATB por foco infeccioso", icon: FileText, path: "/antimicrobials", variant: "default", tags: ["infectologia", "emergencia"] },
 ];
 
 // ── GROUPED SECONDARY MODULES ─────────────────────────────────
@@ -88,6 +102,37 @@ const iconStyles = {
   default: "bg-primary/10 text-primary dark:bg-primary/20",
 };
 
+// Default 6 for users without specialty
+const defaultPrimaryPaths = ["/clinical-ai", "/duty", "/emergency", "/bulario", "/prescriptions", "/full-protocols"];
+
+function getPrimaryModules(specialty: string | null): Module[] {
+  if (!specialty || specialty === "generalista") {
+    return allPrimaryModules.filter(m => defaultPrimaryPaths.includes(m.path));
+  }
+
+  // Always include IA + Bulário + Prescrições + Protocolos
+  const alwaysShow = allPrimaryModules.filter(m => m.tags?.includes("all"));
+  // Add specialty-specific
+  const specialtySpecific = allPrimaryModules.filter(
+    m => !m.tags?.includes("all") && m.tags?.includes(specialty)
+  );
+  // Fill remaining slots with defaults
+  const combined = [...alwaysShow, ...specialtySpecific];
+  const paths = new Set(combined.map(m => m.path));
+
+  if (combined.length < 6) {
+    for (const m of allPrimaryModules) {
+      if (!paths.has(m.path)) {
+        combined.push(m);
+        paths.add(m.path);
+      }
+      if (combined.length >= 6) break;
+    }
+  }
+
+  return combined.slice(0, 8); // max 8
+}
+
 export default function Home() {
   const navigate = useNavigate();
   const [searchQuery, setSearchQuery] = useState("");
@@ -97,10 +142,25 @@ export default function Home() {
   const [avatarUrl, setAvatarUrl] = useState("");
   const [initials, setInitials] = useState("U");
   const [activeTab, setActiveTab] = useState("tools");
+  const [specialty, setSpecialty] = useState<string | null>(null);
+  const [showOnboarding, setShowOnboarding] = useState(false);
+  const [profileLoaded, setProfileLoaded] = useState(false);
 
   useEffect(() => {
-    if (!user) return;
-    supabase.from("profiles").select("full_name, avatar_url").eq("user_id", user.id).maybeSingle()
+    if (!user) {
+      // Check localStorage for non-logged-in users
+      const saved = localStorage.getItem("ps-guide-specialty");
+      const dismissed = localStorage.getItem("ps-guide-onboarding-dismissed");
+      if (saved) {
+        setSpecialty(saved);
+      } else if (!dismissed) {
+        setShowOnboarding(true);
+      }
+      setProfileLoaded(true);
+      return;
+    }
+
+    supabase.from("profiles").select("full_name, avatar_url, specialty").eq("user_id", user.id).maybeSingle()
       .then(({ data }) => {
         if (data?.avatar_url) setAvatarUrl(data.avatar_url);
         if (data?.full_name) {
@@ -108,8 +168,34 @@ export default function Home() {
         } else {
           setInitials(user.email?.[0]?.toUpperCase() || "U");
         }
+        if (data?.specialty) {
+          setSpecialty(data.specialty);
+          localStorage.setItem("ps-guide-specialty", data.specialty);
+        } else {
+          const dismissed = localStorage.getItem("ps-guide-onboarding-dismissed");
+          if (!dismissed) setShowOnboarding(true);
+        }
+        setProfileLoaded(true);
       });
   }, [user]);
+
+  const handleOnboardingComplete = async (specialtyId: string) => {
+    setSpecialty(specialtyId);
+    setShowOnboarding(false);
+    localStorage.setItem("ps-guide-specialty", specialtyId);
+    localStorage.removeItem("ps-guide-onboarding-dismissed");
+
+    if (user) {
+      await supabase.from("profiles").update({ specialty: specialtyId }).eq("user_id", user.id);
+    }
+  };
+
+  const handleOnboardingSkip = () => {
+    setShowOnboarding(false);
+    localStorage.setItem("ps-guide-onboarding-dismissed", "true");
+  };
+
+  const primaryModules = useMemo(() => getPrimaryModules(specialty), [specialty]);
 
   const handleSearch = () => {
     if (searchQuery.trim().length >= 2) {
@@ -121,6 +207,16 @@ export default function Home() {
 
   return (
     <div className="px-4 pt-3 pb-24 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto">
+      {/* Onboarding Modal */}
+      <AnimatePresence>
+        {showOnboarding && (
+          <OnboardingModal
+            onComplete={handleOnboardingComplete}
+            onSkip={handleOnboardingSkip}
+          />
+        )}
+      </AnimatePresence>
+
       {/* Top bar */}
       <div className="flex items-center justify-between h-12 mb-3">
         <span className="font-heading font-bold text-base tracking-tight">PS Guide</span>
@@ -145,6 +241,24 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Specialty badge */}
+      {specialty && profileLoaded && (
+        <motion.div
+          initial={{ opacity: 0, height: 0 }}
+          animate={{ opacity: 1, height: "auto" }}
+          className="mb-3"
+        >
+          <button
+            onClick={() => setShowOnboarding(true)}
+            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-[11px] font-heading font-medium hover:bg-primary/15 transition-colors"
+          >
+            <Sparkles size={12} />
+            {specialty.replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase())}
+            <span className="text-primary/50 ml-0.5">· Alterar</span>
+          </button>
+        </motion.div>
+      )}
+
       {/* Search — hero element */}
       <form onSubmit={(e) => { e.preventDefault(); handleSearch(); }} className="relative mb-5">
         <Search size={18} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
@@ -156,8 +270,8 @@ export default function Home() {
         />
       </form>
 
-      {/* ── PRIMARY GRID (6 modules) ─────────────────────────── */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-3 mb-6">
+      {/* ── PRIMARY GRID ─────────────────────────────────────── */}
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 mb-6">
         {primaryModules.map((m, i) => (
           <motion.div
             key={m.path}
@@ -165,21 +279,20 @@ export default function Home() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: i * 0.05 }}
           >
-          <button
-            key={m.path}
-            onClick={() => navigate(m.path)}
-            className={`flex items-center gap-3 px-4 py-4 rounded-[20px] border-0 transition-all duration-200 active:scale-[0.98] hover:shadow-md text-left ${cardStyles[m.variant]}`}
-          >
-            <div className={`flex items-center justify-center w-10 h-10 rounded-2xl shrink-0 ${iconStyles[m.variant]}`}>
-              <m.icon size={20} />
-            </div>
-            <div className="flex flex-col min-w-0">
-              <span className="font-heading font-semibold text-[13px] leading-tight truncate">{m.label}</span>
-              <span className={`text-[11px] leading-tight mt-0.5 truncate ${m.variant === "ai" ? "text-white/70" : "text-muted-foreground"}`}>
-                {m.sub}
-              </span>
-            </div>
-          </button>
+            <button
+              onClick={() => navigate(m.path)}
+              className={`w-full flex items-center gap-3 px-4 py-4 rounded-[20px] border-0 transition-all duration-200 active:scale-[0.98] hover:shadow-md text-left ${cardStyles[m.variant]}`}
+            >
+              <div className={`flex items-center justify-center w-10 h-10 rounded-2xl shrink-0 ${iconStyles[m.variant]}`}>
+                <m.icon size={20} />
+              </div>
+              <div className="flex flex-col min-w-0">
+                <span className="font-heading font-semibold text-[13px] leading-tight truncate">{m.label}</span>
+                <span className={`text-[11px] leading-tight mt-0.5 truncate ${m.variant === "ai" ? "text-white/70" : "text-muted-foreground"}`}>
+                  {m.sub}
+                </span>
+              </div>
+            </button>
           </motion.div>
         ))}
       </div>
@@ -252,17 +365,16 @@ export default function Home() {
                   transition={{ duration: 0.2, delay: i * 0.03 }}
                 >
                   <button
-                key={m.path}
-                onClick={() => navigate(m.path)}
-                className="flex items-center gap-2.5 px-3.5 py-3.5 rounded-2xl bg-card text-card-foreground shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 text-left border-0"
-              >
-                <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 bg-primary/10 text-primary dark:bg-primary/20">
-                  <m.icon size={18} />
-                </div>
-                <div className="flex flex-col min-w-0">
-                  <span className="font-heading font-semibold text-[12px] leading-tight truncate">{m.label}</span>
-                  <span className="text-[10px] leading-tight mt-0.5 truncate text-muted-foreground">{m.sub}</span>
-                </div>
+                    onClick={() => navigate(m.path)}
+                    className="w-full flex items-center gap-2.5 px-3.5 py-3.5 rounded-2xl bg-card text-card-foreground shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 text-left border-0"
+                  >
+                    <div className="flex items-center justify-center w-9 h-9 rounded-xl shrink-0 bg-primary/10 text-primary dark:bg-primary/20">
+                      <m.icon size={18} />
+                    </div>
+                    <div className="flex flex-col min-w-0">
+                      <span className="font-heading font-semibold text-[12px] leading-tight truncate">{m.label}</span>
+                      <span className="text-[10px] leading-tight mt-0.5 truncate text-muted-foreground">{m.sub}</span>
+                    </div>
                   </button>
                 </motion.div>
               ))}
