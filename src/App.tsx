@@ -94,6 +94,7 @@ const AppRoutes = () => (
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/terms" element={<TermsOfUse />} />
       <Route path="/privacy" element={<PrivacyPolicy />} />
+      <Route path="/unsubscribe" element={<Unsubscribe />} />
       <Route element={<AppLayout />}>
         <Route path="/" element={<Home />} />
         <Route path="/protocols" element={<Navigate to="/full-protocols" replace />} />
