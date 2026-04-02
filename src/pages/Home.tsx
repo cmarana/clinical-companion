@@ -213,64 +213,8 @@ export default function Home() {
 
   return (
     <div className="px-4 pt-3 pb-24 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto">
-      {/* Onboarding Modal */}
-      <AnimatePresence>
-        {showOnboarding && (
-          <OnboardingModal
-            onComplete={handleOnboardingComplete}
-            onSkip={handleOnboardingSkip}
-          />
-        )}
-      </AnimatePresence>
 
-      {/* Top bar */}
-      <div className="flex items-center justify-between h-12 mb-3">
-        <div className="flex flex-col">
-          <span className="font-heading font-bold text-base tracking-tight">PULSO</span>
-          <span className="text-[9px] text-muted-foreground tracking-wide -mt-0.5">Decida em segundos. Sem margem para erro.</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <button onClick={() => { hapticLight(); toggleTheme(); }} className="p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground" title={themeLabel}>
-            {theme === "oled" ? <Eclipse size={16} /> : theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
-          </button>
-          <button onClick={() => navigate("/notifications")} className="relative p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground">
-            <Bell size={16} />
-            {unreadCount > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-destructive text-destructive-foreground text-[9px] font-bold flex items-center justify-center">
-                {unreadCount > 9 ? "9+" : unreadCount}
-              </span>
-            )}
-          </button>
-          <button onClick={() => navigate(user ? "/profile" : "/auth")} className="rounded-full hover:ring-2 hover:ring-primary/30 transition-all">
-            <Avatar className="w-8 h-8">
-              {avatarUrl ? <AvatarImage src={avatarUrl} alt="Avatar" /> : null}
-              <AvatarFallback className="text-xs font-bold bg-primary/10 text-primary">{initials}</AvatarFallback>
-            </Avatar>
-          </button>
-        </div>
-      </div>
 
-      {/* Specialty badge */}
-      {profileLoaded && (
-        <motion.div
-          initial={{ opacity: 0, height: 0 }}
-          animate={{ opacity: 1, height: "auto" }}
-          className="mb-3"
-        >
-          <button
-            onClick={() => setShowOnboarding(true)}
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-primary/10 text-primary text-[11px] font-heading font-medium hover:bg-primary/15 transition-colors"
-          >
-            <Sparkles size={12} />
-            {specialty === "todas"
-              ? "Todas as áreas"
-              : specialty
-                ? specialty.replace(/-/g, " ").replace(/\b\w/g, l => l.toUpperCase())
-                : "Personalizar"}
-            <span className="text-primary/50 ml-0.5">· Alterar</span>
-          </button>
-        </motion.div>
-      )}
 
       {/* Smart Search */}
       <SmartSearch specialty={specialty} />
