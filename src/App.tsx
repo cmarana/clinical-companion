@@ -64,6 +64,7 @@ const UpdatesFeed = lazy(() => import("@/pages/UpdatesFeed"));
 const PixSuccess = lazy(() => import("@/pages/PixSuccess"));
 const TermsOfUse = lazy(() => import("@/pages/TermsOfUse"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
+const Referral = lazy(() => import("@/pages/Referral"));
 
 const queryClient = new QueryClient();
 
