@@ -207,9 +207,9 @@ export default function FullProtocolDetail() {
 
             {orderedSections.map(s => (
               <TabsContent key={s.id} value={s.id} className="protocol-content">
-                <h2 className="text-lg font-semibold mb-3 border-b border-border pb-2 font-heading">
-                  {s.title}
-                </h2>
+                <h2 className="text-xl font-semibold mb-3 border-b border-border pb-2 font-display tracking-tight">
+                   {s.title}
+                 </h2>
                 {s.content.split("\n").map((line, i) => (
                   <p key={i} className="mb-2 text-sm leading-relaxed whitespace-pre-wrap">
                     {line}
