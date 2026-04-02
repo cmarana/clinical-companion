@@ -183,7 +183,7 @@ export default function Auth() {
           <motion.div
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.7, delay: PHASE.logo, ease: [0.22, 1, 0.36, 1] }}
+            transition={{ duration: 0.7, delay: PHASE.logo, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           >
             <motion.img
               src={pulsoLogo}
