@@ -267,7 +267,7 @@ export default function Auth() {
                 transition={{
                   delay: PHASE.features + 0.1 + i * 0.06,
                   duration: 0.4,
-                  ease: [0.22, 1, 0.36, 1],
+                  ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
                 }}
                 className={`flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br ${f.color.split(" ")[0]} ${f.color.split(" ")[1]} ring-1 ring-border/30 hover:ring-primary/20 hover:shadow-md active:scale-[0.97] transition-all duration-200`}
               >
