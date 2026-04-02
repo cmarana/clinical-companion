@@ -432,23 +432,26 @@ export default function Profile() {
       <TopBar title="Meu Perfil" />
 
       {/* Avatar section */}
-      <div className="flex flex-col items-center pt-6 pb-4">
-        <div className="relative">
-          <Avatar className="w-24 h-24 border-4 border-primary/20">
-            {profile.avatar_url ? <AvatarImage src={profile.avatar_url} alt="Avatar" /> : null}
-            <AvatarFallback className="text-2xl font-bold bg-primary/10 text-primary">{initials}</AvatarFallback>
-          </Avatar>
-          <button
-            onClick={() => fileInputRef.current?.click()}
-            disabled={uploading}
-            className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg hover:bg-primary/90 transition-colors"
-          >
-            <Camera size={14} />
-          </button>
+      <div className="flex flex-col items-center pt-8 pb-6 relative">
+        <div className="absolute inset-0 h-28 bg-gradient-to-b from-primary/8 to-transparent rounded-b-3xl" />
+        <div className="relative z-10">
+          <div className="relative">
+            <Avatar className="w-28 h-28 border-4 border-background shadow-xl ring-2 ring-primary/20">
+              {profile.avatar_url ? <AvatarImage src={profile.avatar_url} alt="Avatar" /> : null}
+              <AvatarFallback className="text-3xl font-bold bg-gradient-to-br from-primary/20 to-primary/5 text-primary">{initials}</AvatarFallback>
+            </Avatar>
+            <button
+              onClick={() => fileInputRef.current?.click()}
+              disabled={uploading}
+              className="absolute -bottom-1 -right-1 w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-transform"
+            >
+              <Camera size={15} />
+            </button>
+          </div>
           <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleAvatarUpload} />
         </div>
-        {uploading && <span className="text-xs text-muted-foreground mt-2">Enviando foto...</span>}
-        <p className="text-xs text-muted-foreground mt-2">{user.email}</p>
+        {uploading && <span className="text-xs text-muted-foreground mt-3 animate-pulse">Enviando foto...</span>}
+        <p className="text-xs text-muted-foreground mt-3 font-medium">{user.email}</p>
       </div>
 
       {loading ? (
@@ -604,7 +607,7 @@ export default function Profile() {
           </Section>
 
           {/* ── Save button ── */}
-          <Button onClick={handleSave} disabled={saving} className="w-full rounded-2xl gap-2 h-12 text-sm font-bold">
+          <Button onClick={handleSave} disabled={saving} className="w-full rounded-2xl gap-2 h-12 text-sm font-bold shadow-lg shadow-primary/20 hover:shadow-primary/30 transition-shadow">
             <Save size={16} />
             {saving ? "Salvando..." : "Salvar Perfil"}
           </Button>
