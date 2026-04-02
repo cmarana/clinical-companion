@@ -309,28 +309,28 @@ export default function DrugInteractions() {
 
         {/* Info card when idle */}
         {!hasChecked && (
-          <div className="bg-card rounded-[20px] shadow-sm p-4">
-            <div className="flex items-center gap-2 mb-3">
-              <Zap size={16} className="text-primary" />
-              <h3 className="font-heading font-semibold text-sm">Como funciona</h3>
-            </div>
-            <div className="space-y-2">
-              {[
-                { step: "1", text: "Insira 2 ou mais medicamentos nos campos acima" },
-                { step: "2", text: "Clique em 'Verificar' para análise instantânea local" },
-                { step: "3", text: "Veja severidade, mecanismo, conduta e alternativas" },
-                { step: "4", text: "Use 'IA Clínica' para análise aprofundada adicional" },
-              ].map(({ step, text }) => (
-                <div key={step} className="flex items-center gap-2.5">
-                  <span className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-[11px] font-bold shrink-0">{step}</span>
-                  <p className="text-[12px] text-muted-foreground">{text}</p>
-                </div>
-              ))}
-            </div>
-            <div className="mt-3 pt-3 border-t border-border/50">
-              <p className="text-[10px] text-muted-foreground">
-                📚 Base local com 40+ pares de interações de alto risco incluindo anticoagulantes, antiarrítmicos, psiquiátricos, antibióticos e mais.
-              </p>
+          <div className="space-y-3">
+            {/* Database coverage summary */}
+            <DatabaseCoveragePanel />
+
+            <div className="bg-card rounded-[20px] shadow-sm p-4">
+              <div className="flex items-center gap-2 mb-3">
+                <Zap size={16} className="text-primary" />
+                <h3 className="font-heading font-semibold text-sm">Como funciona</h3>
+              </div>
+              <div className="space-y-2">
+                {[
+                  { step: "1", text: "Insira 2 ou mais medicamentos nos campos acima" },
+                  { step: "2", text: "Clique em 'Verificar' para análise instantânea local" },
+                  { step: "3", text: "Veja severidade, mecanismo, conduta e alternativas" },
+                  { step: "4", text: "Use 'IA Clínica' para análise aprofundada adicional" },
+                ].map(({ step, text }) => (
+                  <div key={step} className="flex items-center gap-2.5">
+                    <span className="w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-[11px] font-bold shrink-0">{step}</span>
+                    <p className="text-[12px] text-muted-foreground">{text}</p>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}
