@@ -11,13 +11,14 @@ import { residencyQuestions } from "@/data/residencyQuestions";
 import { safeLocalStorage } from "@/lib/safeStorage";
 import {
   Flame, Target, Trophy, Brain, GraduationCap, TrendingUp,
-  ChevronRight, Calendar, Star, Zap, BarChart3, Settings2, Check
+  ChevronRight, Calendar, Star, Zap, BarChart3, Settings2, Check, Award, Lock
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
   ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig
 } from "@/components/ui/chart";
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import { achievements, getUnlockedAchievements, getAchievementProgress, type AchievementContext } from "@/lib/achievements";
 
 // --- Streak logic ---
 const STREAK_KEY = "study-streak";
