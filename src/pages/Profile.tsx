@@ -459,7 +459,7 @@ export default function Profile() {
           <div className="w-6 h-6 border-2 border-primary border-t-transparent rounded-full animate-spin" />
         </div>
       ) : (
-        <div className="px-4 space-y-4 max-w-lg mx-auto">
+        <div className="px-4 space-y-5 max-w-lg mx-auto [&_input]:h-11 [&_input]:transition-colors [&_input]:focus:ring-2 [&_input]:focus:ring-primary/30 [&_input]:focus:border-primary/50">
 
           {/* ── 1. Dados Pessoais ── */}
           <Section icon={User} title="Dados Pessoais">
