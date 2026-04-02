@@ -22,6 +22,12 @@ export default function ProtocolDetail() {
   const navigate = useNavigate();
   const protocol = protocols.find((p) => p.id === id);
 
+  useEffect(() => {
+    if (protocol) {
+      cacheContent(`protocol:${id}`, { id: protocol.id, title: protocol.title, category: protocol.category, sections: protocol.sections, tags: protocol.tags });
+    }
+  }, [id, protocol]);
+
   if (!protocol) {
     return (
       <>
