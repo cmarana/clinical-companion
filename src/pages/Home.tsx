@@ -209,12 +209,6 @@ export default function Home() {
 
   const primaryModules = useMemo(() => getPrimaryModules(specialty), [specialty]);
 
-  const handleSearch = () => {
-    if (searchQuery.trim().length >= 2) {
-      navigate(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
-    }
-  };
-
   const activeTabData = tabs.find(t => t.id === activeTab);
 
   return (
