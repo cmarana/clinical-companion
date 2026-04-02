@@ -7,9 +7,10 @@ import { toast } from "sonner";
 import {
   Download, CheckCircle, WifiOff, Wifi, HardDrive, RefreshCw,
   Trash2, Shield, Stethoscope, Pill, FileText, Calculator,
-  AlertTriangle, Loader2
+  AlertTriangle, Loader2, BookOpen
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { listCachedContent, clearContentCache } from "@/lib/offlineCache";
 
 type CacheStatus = "idle" | "downloading" | "complete" | "error";
 
@@ -28,6 +29,7 @@ export default function OfflineSetup() {
   const [totalFiles, setTotalFiles] = useState(0);
   const [cachedFiles, setCachedFiles] = useState(0);
   const [cacheCount, setCacheCount] = useState(0);
+  const [contentItems, setContentItems] = useState<Array<{ key: string; cachedAt: string | null }>>([]);
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [swReady, setSwReady] = useState(false);
 
@@ -69,6 +71,10 @@ export default function OfflineSetup() {
       };
 
       navigator.serviceWorker.addEventListener("message", handler);
+
+      // Also load content cache items
+      listCachedContent().then(setContentItems);
+
       return () => navigator.serviceWorker.removeEventListener("message", handler);
     }
   }, []);
@@ -320,13 +326,62 @@ export default function OfflineSetup() {
           </div>
         </div>
 
+        {/* Auto-cached content */}
+        <div className="bg-card rounded-[20px] shadow-sm p-4">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="font-heading font-semibold text-sm flex items-center gap-2">
+              <BookOpen size={14} className="text-primary" />
+              Conteúdo Salvo Automaticamente
+            </h3>
+            {contentItems.length > 0 && (
+              <button
+                onClick={async () => {
+                  await clearContentCache();
+                  setContentItems([]);
+                  toast.success("Cache de conteúdo limpo");
+                }}
+                className="text-[10px] text-destructive font-heading font-medium"
+              >
+                Limpar
+              </button>
+            )}
+          </div>
+          {contentItems.length === 0 ? (
+            <p className="text-[11px] text-muted-foreground text-center py-3">
+              Protocolos e medicamentos que você acessar serão salvos automaticamente para uso offline.
+            </p>
+          ) : (
+            <div className="space-y-1.5">
+              {contentItems.slice(0, 20).map(item => {
+                const [type, id] = item.key.split(":");
+                const typeLabel = type === "fullProtocol" ? "Protocolo Completo" : type === "emergency" ? "Emergência" : "Protocolo";
+                return (
+                  <div key={item.key} className="flex items-center gap-2 px-3 py-2 rounded-xl bg-muted/40">
+                    <div className={cn("w-6 h-6 rounded-md flex items-center justify-center", type === "emergency" ? "bg-destructive/10 text-destructive" : "bg-primary/10 text-primary")}>
+                      {type === "emergency" ? <Shield size={12} /> : <FileText size={12} />}
+                    </div>
+                    <div className="flex-1 min-w-0">
+                      <p className="text-[11px] font-heading font-medium truncate">{id}</p>
+                      <p className="text-[9px] text-muted-foreground">{typeLabel} · {item.cachedAt ? new Date(item.cachedAt).toLocaleDateString("pt-BR") : ""}</p>
+                    </div>
+                    <CheckCircle size={12} className="text-emerald-500 shrink-0" />
+                  </div>
+                );
+              })}
+              {contentItems.length > 20 && (
+                <p className="text-[10px] text-muted-foreground text-center">+ {contentItems.length - 20} mais salvos</p>
+              )}
+            </div>
+          )}
+        </div>
+
         {/* Tips */}
         <div className="bg-card rounded-[20px] shadow-sm p-4">
           <h3 className="font-heading font-semibold text-sm mb-3">💡 Dicas para Plantão</h3>
           <div className="space-y-2 text-[11px] text-muted-foreground">
             <p>• <strong>Instale o app</strong> na tela inicial para acesso rápido</p>
             <p>• <strong>Prepare offline</strong> antes do plantão com Wi-Fi</p>
-            <p>• <strong>Protocolos e medicamentos</strong> ficam 100% acessíveis sem internet</p>
+            <p>• <strong>Protocolos acessados</strong> são salvos automaticamente para offline</p>
             <p>• <strong>IA Clínica e Bulário online</strong> precisam de conexão</p>
             <p>• <strong>Atualize periodicamente</strong> para receber novos protocolos</p>
           </div>

@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { cacheContent } from "@/lib/offlineCache";
 import TopBar from "@/components/TopBar";
 import { useAuth } from "@/contexts/AuthContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
@@ -22,6 +23,8 @@ export default function FullProtocolDetail() {
   useEffect(() => {
     if (protocol) {
       addEntry({ path: `/full-protocols/${id}`, title: protocol.title, type: "fullProtocol" });
+      // Auto-cache for offline access
+      cacheContent(`fullProtocol:${id}`, { id: protocol.id, title: protocol.title, category: protocol.category, sections: protocol.sections, tags: protocol.tags });
     }
   }, [id]);
 

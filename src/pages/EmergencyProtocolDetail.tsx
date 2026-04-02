@@ -1,5 +1,6 @@
 import { useParams } from "react-router-dom";
 import { useEffect } from "react";
+import { cacheContent } from "@/lib/offlineCache";
 import TopBar from "@/components/TopBar";
 import { useAuth } from "@/contexts/AuthContext";
 import PremiumGate from "@/components/PremiumGate";
@@ -17,6 +18,7 @@ export default function EmergencyProtocolDetail() {
   useEffect(() => {
     if (protocol) {
       addEntry({ path: `/emergency/${id}`, title: protocol.title, type: "emergency" });
+      cacheContent(`emergency:${id}`, { id: protocol.id, title: protocol.title, categoryId: protocol.categoryId, sections: protocol.sections });
     }
   }, [id]);
 

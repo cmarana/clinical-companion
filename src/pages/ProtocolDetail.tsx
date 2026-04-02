@@ -1,4 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { cacheContent } from "@/lib/offlineCache";
 import TopBar from "@/components/TopBar";
 import { protocols } from "@/data/protocols";
 import { useFavorites } from "@/contexts/FavoritesContext";
@@ -19,6 +21,12 @@ export default function ProtocolDetail() {
   const { subscription } = useAuth();
   const navigate = useNavigate();
   const protocol = protocols.find((p) => p.id === id);
+
+  useEffect(() => {
+    if (protocol) {
+      cacheContent(`protocol:${id}`, { id: protocol.id, title: protocol.title, category: protocol.category, sections: protocol.sections, tags: protocol.tags });
+    }
+  }, [id, protocol]);
 
   if (!protocol) {
     return (
