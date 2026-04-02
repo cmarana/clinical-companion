@@ -27,14 +27,8 @@ function EmergencyModeContent() {
   const toggleCat = (id: string) =>
     setOpenCats(prev => ({ ...prev, [id]: !prev[id] }));
 
-  if (!subscription.subscribed) {
-    return (
-      <>
-      <TopBar title="Emergência / UTI / SAMU" />
-        <PremiumGate />
-      </>
-    );
-  }
+
+
 
   return (
     <>
