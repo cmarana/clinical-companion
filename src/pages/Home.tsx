@@ -181,6 +181,9 @@ export default function Home() {
       });
   }, [user]);
 
+  // Prefetch critical route chunks when idle
+  useEffect(() => { prefetchRoutes(); }, []);
+
   const primaryModules = useMemo(() => getPrimaryModules(specialty), [specialty]);
 
   return (
