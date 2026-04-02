@@ -561,6 +561,8 @@ export const convulsaoTree: TreeNode = {
   ],
 };
 
+import { decisionTrees2 } from "./decisionTrees2";
+
 export const decisionTrees: Record<string, { title: string; tree: TreeNode; guideline: string }> = {
   pcr: { title: "Fluxograma PCR / RCP", tree: pcrTree, guideline: "AHA 2020 / ACLS" },
   sepse: { title: "Fluxograma Sepse", tree: sepseTree, guideline: "Surviving Sepsis Campaign 2021" },
@@ -575,4 +577,5 @@ export const decisionTrees: Record<string, { title: string; tree: TreeNode; guid
   eap: { title: "Fluxograma EAP", tree: eapTree, guideline: "SBC / ESC" },
   convulsao: { title: "Fluxograma Convulsão", tree: convulsaoTree, guideline: "ABN / AES" },
   "status-epileptico": { title: "Fluxograma Status Epiléptico", tree: convulsaoTree, guideline: "ABN / AES" },
+  ...decisionTrees2,
 };
