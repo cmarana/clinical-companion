@@ -252,12 +252,7 @@ export const HIGH_RISK_PAIRS: Record<string, InteractionPair[]> = {
     { drugs: ["sinvastatina", "atorvastatina"], severity: "moderado", desc: "Risco de rabdomiólise — monitorar CPK." },
   ],
   // === PARES ADICIONAIS ===
-  "anfotericina b": [
-    { drugs: ["gentamicina", "amicacina", "tobramicina"], severity: "grave", desc: "Nefrotoxicidade sinérgica — monitorar função renal diariamente." },
-    { drugs: ["ciclosporina", "tacrolimus"], severity: "grave", desc: "Nefrotoxicidade grave — evitar ou ajustar doses." },
-    { drugs: ["furosemida"], severity: "moderado", desc: "Hipocalemia aditiva — monitorar eletrólitos." },
-    { drugs: ["digoxina"], severity: "moderado", desc: "Hipocalemia por anfotericina aumenta toxicidade digitálica." },
-  ],
+  // anfotericina b moved to Antifúngicos sistêmicos section below
   "rifampicina": [
     { drugs: ["anticoncepcionais", "etinilestradiol", "levonorgestrel"], severity: "grave", desc: "Rifampicina anula eficácia contraceptiva — usar método de barreira." },
     { drugs: ["varfarina"], severity: "grave", desc: "Rifampicina reduz drasticamente efeito da varfarina." },
