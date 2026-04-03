@@ -94,7 +94,7 @@ export const proceduresFullProtocols6: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Acesso Venoso Jugular Interno."
+            "content": "Cateterismo venoso central pela veia jugular interna (VJI), preferida para acesso central em emergências. Vantagens:\n• Alta taxa de sucesso (>95% com USG)\n• Menor risco de pneumotórax vs subclávia\n• Compressível em caso de punção arterial acidental\n• Trajeto retilíneo para cateter de Swan-Ganz\n\nIndicações de acesso central:\n• Drogas vasoativas\n• Nutrição parenteral\n• Monitorização de PVC\n• Acesso venoso periférico impossível\n• Hemodiálise\n• Marcapasso transvenoso\n\nContraindicações relativas: coagulopatia grave, infecção local, trombose prévia, cirurgia cervical ipsilateral. Preferir lado direito (menor risco de lesão do ducto torácico, trajeto mais retilíneo à VCS)"
       },
       {
             "id": "screening",
@@ -124,7 +124,7 @@ export const proceduresFullProtocols6: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Acesso Venoso Jugular Interno."
+            "content": "Técnica de Seldinger guiada por USG (padrão-ouro):\n\n1. Posição: Trendelenburg 15°, cabeça virada para lado contralateral\n2. Paramentação completa: gorro, máscara, avental, luvas estéreis, campo grande\n3. Assepsia com clorexidina alcoólica 2%, aguardar secar\n4. USG: transdutor linear, capa estéril, identificar VJI (compressível, lateral à carótida)\n5. Anestesia local: lidocaína 1-2% SC\n6. Punção com agulha 18G + seringa, visão em tempo real no USG\n   • Eixo curto: agulha a 45°, visualizar ponta entrando na veia\n   • Eixo longo: visão completa da agulha e veia\n7. Aspirar sangue venoso escuro → introduzir fio-guia J\n8. Retirar agulha mantendo fio-guia\n9. Incisão com bisturi nº 11 no ponto de entrada\n10. Dilatar com dilatador sobre o fio-guia\n11. Passar cateter duplo ou triplo lúmen sobre o fio-guia\n12. Retirar fio-guia, aspirar e lavar todas as vias\n13. Fixar com sutura, curativo oclusivo estéril\n14. RX de tórax de controle (ponta do cateter na junção VCS-AD)\n\nMáxima barreira estéril reduz infecção em >6x"
       },
       {
             "id": "treatment",

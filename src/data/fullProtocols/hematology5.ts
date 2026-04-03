@@ -94,7 +94,7 @@ export const hematologyFullProtocols5: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Trombocitopenia Grave."
+            "content": "Contagem de plaquetas <50.000/µL (grave: <20.000/µL; crítica: <10.000/µL). Classificação por mecanismo:\n• Diminuição da produção: aplasia medular, infiltração medular (leucemia, mieloma), quimioterapia, deficiência B12/folato, álcool\n• Aumento da destruição:\n  - Imune: PTI, LES, HIV, drogas (heparina-HIT, quinina)\n  - Não imune: CIVD, PTT, SHU, válvula mecânica, sepse\n• Sequestro: esplenomegalia (hiperesplenismo)\n• Diluição: transfusão maciça\n• Pseudotrombocitopenia: aglutinação por EDTA (verificar com citrato!)\n\nCorrelação clínica:\n• >50.000: geralmente assintomático\n• 20.000-50.000: sangramento pós-trauma/cirurgia\n• 10.000-20.000: sangramento espontâneo cutaneomucoso\n• <10.000: risco de hemorragia grave/SNC"
       },
       {
             "id": "screening",
@@ -124,7 +124,7 @@ export const hematologyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Trombocitopenia Grave."
+            "content": "Conduta inicial:\n1. Avaliar sangramento ativo e sinais vitais\n2. Excluir pseudotrombocitopenia (repetir com tubo citrato)\n3. Esfregaço de sangue periférico OBRIGATÓRIO (esquizócitos → MAT; blastos → leucemia)\n4. Transfusão de plaquetas:\n   • Indicação: <10.000 sem sangramento; <20.000 com febre/infecção; <50.000 com sangramento ativo; <100.000 se sangramento SNC\n   • 1 unidade de aférese ou 1 concentrado/10kg (↑ ~30.000-50.000/µL)\n   • CONTRAINDICADA em: PTT/SHU (piora!), HIT (piora!)\n5. Se suspeita de PTI:\n   • Prednisona 1mg/kg/dia VO (ou Dexametasona 40mg/dia x 4 dias)\n   • Se sangramento grave: Imunoglobulina IV 1g/kg (resposta em 24-48h)\n   • Anti-D 75µg/kg IV (se Rh positivo, com baço)\n6. Se suspeita de PTT (pentade: trombocitopenia + anemia hemolítica microangiopática + febre + alteração neurológica + IRA):\n   • Plasmaférese de URGÊNCIA (reduz mortalidade de 90% para 10-20%)\n   • NÃO transfundir plaquetas!\n7. Se HIT: suspender heparina imediatamente, iniciar anticoagulante alternativo (argatroban, fondaparinux)"
       },
       {
             "id": "treatment",
@@ -328,7 +328,7 @@ export const hematologyFullProtocols5: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Anemia Hemolitica Aguda."
+            "content": "Destruição acelerada de eritrócitos com queda da hemoglobina. Classificação:\n\nIntracorpuscular (defeito do eritrócito):\n• Membrana: esferocitose, eliptocitose\n• Enzimática: deficiência G6PD, piruvato quinase\n• Hemoglobinopatias: falciforme, talassemias\n• HPN (hemoglobinúria paroxística noturna)\n\nExtracorpuscular:\n• Imune: AHAI (Coombs direto +), reação transfusional, DHPN\n• Microangiopática (MAT): PTT, SHU, CIVD, HELLP, HAS maligna\n• Mecânica: válvulas mecânicas, CEC\n• Infecciosa: malária, babesiose, Clostridium\n• Tóxica: veneno de cobra, cobre (Wilson), drogas\n\nMarcadores de hemólise: ↑LDH, ↑bilirrubina indireta, ↓haptoglobina, reticulocitose >2%"
       },
       {
             "id": "screening",
