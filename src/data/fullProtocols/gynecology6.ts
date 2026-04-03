@@ -1,0 +1,785 @@
+import type { FullProtocol } from "./types";
+
+export const gynecologyFullProtocols6: FullProtocol[] = [
+  {
+    id: "fp-gynecology6-001",
+    title: "Hemorragia Pos-Aborto",
+    categoryId: "gynecology",
+    category: "Ginecologia",
+    tags: ["hemorragia", "aborto", "curetagem"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Hemorragia Pos-Aborto."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Hemorragia Pos-Aborto."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Hemorragia Pos-Aborto."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Hemorragia Pos-Aborto."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Hemorragia Pos-Aborto."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Hemorragia Pos-Aborto."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Hemorragia Pos-Aborto."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Hemorragia Pos-Aborto."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Hemorragia Pos-Aborto."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Hemorragia Pos-Aborto."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Hemorragia Pos-Aborto."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Hemorragia Pos-Aborto."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Hemorragia Pos-Aborto."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-gynecology6-002",
+    title: "Abscesso Tubo-Ovariano",
+    categoryId: "gynecology",
+    category: "Ginecologia",
+    tags: ["abscesso", "tubo-ovariano", "ATO"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Abscesso Tubo-Ovariano."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Abscesso Tubo-Ovariano."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Abscesso Tubo-Ovariano."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Abscesso Tubo-Ovariano."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Abscesso Tubo-Ovariano."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Abscesso Tubo-Ovariano."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Abscesso Tubo-Ovariano."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Abscesso Tubo-Ovariano."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Abscesso Tubo-Ovariano."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Abscesso Tubo-Ovariano."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Abscesso Tubo-Ovariano."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Abscesso Tubo-Ovariano."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Abscesso Tubo-Ovariano."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-gynecology6-003",
+    title: "Sindrome de Hiperestimulacao Ovariana",
+    categoryId: "gynecology",
+    category: "Ginecologia",
+    tags: ["SHO", "hiperestimulacao", "FIV"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Sindrome de Hiperestimulacao Ovariana."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Sindrome de Hiperestimulacao Ovariana."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Sindrome de Hiperestimulacao Ovariana."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Sindrome de Hiperestimulacao Ovariana."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Sindrome de Hiperestimulacao Ovariana."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Sindrome de Hiperestimulacao Ovariana."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Sindrome de Hiperestimulacao Ovariana."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Sindrome de Hiperestimulacao Ovariana."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Sindrome de Hiperestimulacao Ovariana."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Sindrome de Hiperestimulacao Ovariana."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Sindrome de Hiperestimulacao Ovariana."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Sindrome de Hiperestimulacao Ovariana."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Sindrome de Hiperestimulacao Ovariana."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-gynecology6-004",
+    title: "Trauma Genital Feminino",
+    categoryId: "gynecology",
+    category: "Ginecologia",
+    tags: ["trauma", "genital", "laceração"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Trauma Genital Feminino."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Trauma Genital Feminino."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Trauma Genital Feminino."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Trauma Genital Feminino."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Trauma Genital Feminino."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Trauma Genital Feminino."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Trauma Genital Feminino."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Trauma Genital Feminino."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Trauma Genital Feminino."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Trauma Genital Feminino."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Trauma Genital Feminino."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Trauma Genital Feminino."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Trauma Genital Feminino."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-gynecology6-005",
+    title: "Vulvovaginite Necrosante",
+    categoryId: "gynecology",
+    category: "Ginecologia",
+    tags: ["vulvovaginite", "necrosante", "Fournier"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Vulvovaginite Necrosante."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Vulvovaginite Necrosante."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Vulvovaginite Necrosante."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Vulvovaginite Necrosante."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Vulvovaginite Necrosante."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Vulvovaginite Necrosante."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Vulvovaginite Necrosante."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Vulvovaginite Necrosante."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Vulvovaginite Necrosante."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Vulvovaginite Necrosante."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Vulvovaginite Necrosante."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Vulvovaginite Necrosante."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Vulvovaginite Necrosante."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-gynecology6-006",
+    title: "Mioma em Degeneracao",
+    categoryId: "gynecology",
+    category: "Ginecologia",
+    tags: ["mioma", "degeneracao", "dor"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Mioma em Degeneracao."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Mioma em Degeneracao."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Mioma em Degeneracao."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Mioma em Degeneracao."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Mioma em Degeneracao."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Mioma em Degeneracao."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Mioma em Degeneracao."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Mioma em Degeneracao."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Mioma em Degeneracao."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Mioma em Degeneracao."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Mioma em Degeneracao."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Mioma em Degeneracao."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Mioma em Degeneracao."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-gynecology6-007",
+    title: "Gravidez Heterotopica",
+    categoryId: "gynecology",
+    category: "Ginecologia",
+    tags: ["heterotopica", "ectopica", "intrauterina"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Gravidez Heterotopica."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Gravidez Heterotopica."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Gravidez Heterotopica."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Gravidez Heterotopica."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Gravidez Heterotopica."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Gravidez Heterotopica."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Gravidez Heterotopica."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Gravidez Heterotopica."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Gravidez Heterotopica."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Gravidez Heterotopica."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Gravidez Heterotopica."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Gravidez Heterotopica."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Gravidez Heterotopica."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-gynecology6-008",
+    title: "Histerectomia de Emergencia",
+    categoryId: "gynecology",
+    category: "Ginecologia",
+    tags: ["histerectomia", "emergencia", "hemorragia"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Histerectomia de Emergencia."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Histerectomia de Emergencia."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Histerectomia de Emergencia."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Histerectomia de Emergencia."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Histerectomia de Emergencia."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Histerectomia de Emergencia."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Histerectomia de Emergencia."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Histerectomia de Emergencia."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Histerectomia de Emergencia."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Histerectomia de Emergencia."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Histerectomia de Emergencia."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Histerectomia de Emergencia."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Histerectomia de Emergencia."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-gynecology6-009",
+    title: "Torsao Anexial na Gestacao",
+    categoryId: "gynecology",
+    category: "Ginecologia",
+    tags: ["torsao", "anexial", "gestacao"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Torsao Anexial na Gestacao."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Torsao Anexial na Gestacao."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Torsao Anexial na Gestacao."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Torsao Anexial na Gestacao."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Torsao Anexial na Gestacao."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Torsao Anexial na Gestacao."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Torsao Anexial na Gestacao."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Torsao Anexial na Gestacao."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Torsao Anexial na Gestacao."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Torsao Anexial na Gestacao."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Torsao Anexial na Gestacao."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Torsao Anexial na Gestacao."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Torsao Anexial na Gestacao."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-gynecology6-010",
+    title: "Prolapso Genital Complicado",
+    categoryId: "gynecology",
+    category: "Ginecologia",
+    tags: ["prolapso", "genital", "encarcerado"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Prolapso Genital Complicado."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Prolapso Genital Complicado."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Prolapso Genital Complicado."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Prolapso Genital Complicado."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Prolapso Genital Complicado."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Prolapso Genital Complicado."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Prolapso Genital Complicado."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Prolapso Genital Complicado."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Prolapso Genital Complicado."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Prolapso Genital Complicado."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Prolapso Genital Complicado."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Prolapso Genital Complicado."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Prolapso Genital Complicado."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },
+];

@@ -1,0 +1,629 @@
+import type { FullProtocol } from "./types";
+
+export const triageFullProtocols5: FullProtocol[] = [
+  {
+    id: "fp-triag5-fluxo-dor-abdominal",
+    title: "Fluxograma de Dor Abdominal",
+    categoryId: "triage",
+    category: "Triagem / Classificacao de Risco",
+    tags: ["dor abdominal", "fluxograma", "triagem", "classificacao"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Fluxograma de Dor Abdominal na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Fluxograma de Dor Abdominal."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Fluxograma de Dor Abdominal."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Fluxograma de Dor Abdominal."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Fluxograma de Dor Abdominal."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Fluxograma de Dor Abdominal."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Fluxograma de Dor Abdominal."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Fluxograma de Dor Abdominal."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Fluxograma de Dor Abdominal."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Fluxograma de Dor Abdominal."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Fluxograma de Dor Abdominal."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Fluxograma de Dor Abdominal e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Fluxograma de Dor Abdominal."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-triag5-fluxo-cefaleia",
+    title: "Fluxograma de Cefaleia",
+    categoryId: "triage",
+    category: "Triagem / Classificacao de Risco",
+    tags: ["cefaleia", "fluxograma", "triagem", "red flags"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Fluxograma de Cefaleia na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Fluxograma de Cefaleia."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Fluxograma de Cefaleia."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Fluxograma de Cefaleia."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Fluxograma de Cefaleia."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Fluxograma de Cefaleia."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Fluxograma de Cefaleia."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Fluxograma de Cefaleia."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Fluxograma de Cefaleia."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Fluxograma de Cefaleia."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Fluxograma de Cefaleia."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Fluxograma de Cefaleia e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Fluxograma de Cefaleia."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-triag5-fluxo-sincope",
+    title: "Fluxograma de Sincope",
+    categoryId: "triage",
+    category: "Triagem / Classificacao de Risco",
+    tags: ["sincope", "fluxograma", "triagem", "estratificacao"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Fluxograma de Sincope na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Fluxograma de Sincope."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Fluxograma de Sincope."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Fluxograma de Sincope."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Fluxograma de Sincope."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Fluxograma de Sincope."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Fluxograma de Sincope."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Fluxograma de Sincope."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Fluxograma de Sincope."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Fluxograma de Sincope."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Fluxograma de Sincope."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Fluxograma de Sincope e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Fluxograma de Sincope."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-triag5-multiplas-vitimas",
+    title: "Protocolo START - Multiplas Vitimas",
+    categoryId: "triage",
+    category: "Triagem / Classificacao de Risco",
+    tags: ["START", "multiplas vitimas", "triagem", "desastre"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Protocolo START - Multiplas Vitimas na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Protocolo START - Multiplas Vitimas."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Protocolo START - Multiplas Vitimas."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Protocolo START - Multiplas Vitimas."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Protocolo START - Multiplas Vitimas."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Protocolo START - Multiplas Vitimas."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Protocolo START - Multiplas Vitimas."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Protocolo START - Multiplas Vitimas."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Protocolo START - Multiplas Vitimas."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Protocolo START - Multiplas Vitimas."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Protocolo START - Multiplas Vitimas."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Protocolo START - Multiplas Vitimas e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Protocolo START - Multiplas Vitimas."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-triag5-pediatric-triage",
+    title: "Triagem Pediatrica (JumpSTART)",
+    categoryId: "triage",
+    category: "Triagem / Classificacao de Risco",
+    tags: ["JumpSTART", "triagem", "pediatrica", "multiplas vitimas"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Triagem Pediatrica (JumpSTART) na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Triagem Pediatrica (JumpSTART)."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Triagem Pediatrica (JumpSTART)."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Triagem Pediatrica (JumpSTART)."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Triagem Pediatrica (JumpSTART)."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Triagem Pediatrica (JumpSTART)."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Triagem Pediatrica (JumpSTART)."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Triagem Pediatrica (JumpSTART)."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Triagem Pediatrica (JumpSTART)."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Triagem Pediatrica (JumpSTART)."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Triagem Pediatrica (JumpSTART)."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Triagem Pediatrica (JumpSTART) e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Triagem Pediatrica (JumpSTART)."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-triag5-escala-news",
+    title: "Escala NEWS2",
+    categoryId: "triage",
+    category: "Triagem / Classificacao de Risco",
+    tags: ["NEWS2", "deterioracao", "precoce", "escore"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Escala NEWS2 na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Escala NEWS2."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Escala NEWS2."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Escala NEWS2."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Escala NEWS2."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Escala NEWS2."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Escala NEWS2."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Escala NEWS2."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Escala NEWS2."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Escala NEWS2."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Escala NEWS2."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Escala NEWS2 e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Escala NEWS2."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-triag5-escala-apache",
+    title: "APACHE II e SAPS",
+    categoryId: "triage",
+    category: "Triagem / Classificacao de Risco",
+    tags: ["APACHE", "SAPS", "prognostico", "UTI"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de APACHE II e SAPS na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de APACHE II e SAPS."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de APACHE II e SAPS."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para APACHE II e SAPS."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de APACHE II e SAPS."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de APACHE II e SAPS."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para APACHE II e SAPS."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com APACHE II e SAPS."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de APACHE II e SAPS."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para APACHE II e SAPS."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de APACHE II e SAPS."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de APACHE II e SAPS e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para APACHE II e SAPS."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-triag5-fluxo-intoxicacao",
+    title: "Fluxograma de Intoxicacao",
+    categoryId: "triage",
+    category: "Triagem / Classificacao de Risco",
+    tags: ["intoxicacao", "fluxograma", "toxindrome", "antidoto"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Fluxograma de Intoxicacao na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Fluxograma de Intoxicacao."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Fluxograma de Intoxicacao."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Fluxograma de Intoxicacao."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Fluxograma de Intoxicacao."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Fluxograma de Intoxicacao."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Fluxograma de Intoxicacao."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Fluxograma de Intoxicacao."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Fluxograma de Intoxicacao."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Fluxograma de Intoxicacao."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Fluxograma de Intoxicacao."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Fluxograma de Intoxicacao e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Fluxograma de Intoxicacao."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },
+];

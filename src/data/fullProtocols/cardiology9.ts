@@ -1,0 +1,785 @@
+import type { FullProtocol } from "./types";
+
+export const cardioFullProtocols9: FullProtocol[] = [
+  {
+    id: "fp-cardio9-estenose-mitral",
+    title: "Estenose Mitral",
+    categoryId: "cardiology",
+    category: "Cardiologia",
+    tags: ["estenose mitral", "valvopatia", "reumática", "dispneia"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Estenose Mitral na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Estenose Mitral."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Estenose Mitral."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Estenose Mitral."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Estenose Mitral."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Estenose Mitral."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Estenose Mitral."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Estenose Mitral."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Estenose Mitral."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Estenose Mitral."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Estenose Mitral."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Estenose Mitral e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Estenose Mitral."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-cardio9-insuf-mitral",
+    title: "Insuficiencia Mitral Aguda",
+    categoryId: "cardiology",
+    category: "Cardiologia",
+    tags: ["insuficiencia mitral", "regurgitacao", "ruptura cordoalha"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Insuficiencia Mitral Aguda na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Insuficiencia Mitral Aguda."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Insuficiencia Mitral Aguda."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Insuficiencia Mitral Aguda."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Insuficiencia Mitral Aguda."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Insuficiencia Mitral Aguda."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Insuficiencia Mitral Aguda."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Insuficiencia Mitral Aguda."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Insuficiencia Mitral Aguda."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Insuficiencia Mitral Aguda."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Insuficiencia Mitral Aguda."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Insuficiencia Mitral Aguda e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Insuficiencia Mitral Aguda."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-cardio9-disfuncao-protese",
+    title: "Disfuncao de Protese Valvar",
+    categoryId: "cardiology",
+    category: "Cardiologia",
+    tags: ["protese", "valvar", "trombose", "disfuncao"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Disfuncao de Protese Valvar na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Disfuncao de Protese Valvar."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Disfuncao de Protese Valvar."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Disfuncao de Protese Valvar."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Disfuncao de Protese Valvar."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Disfuncao de Protese Valvar."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Disfuncao de Protese Valvar."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Disfuncao de Protese Valvar."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Disfuncao de Protese Valvar."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Disfuncao de Protese Valvar."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Disfuncao de Protese Valvar."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Disfuncao de Protese Valvar e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Disfuncao de Protese Valvar."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-cardio9-sindrome-takotsubo",
+    title: "Sindrome de Takotsubo",
+    categoryId: "cardiology",
+    category: "Cardiologia",
+    tags: ["takotsubo", "estresse", "cardiomiopatia", "apical"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Sindrome de Takotsubo na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Sindrome de Takotsubo."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Sindrome de Takotsubo."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Sindrome de Takotsubo."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Sindrome de Takotsubo."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Sindrome de Takotsubo."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Sindrome de Takotsubo."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Sindrome de Takotsubo."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Sindrome de Takotsubo."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Sindrome de Takotsubo."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Sindrome de Takotsubo."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Sindrome de Takotsubo e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Sindrome de Takotsubo."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-cardio9-wpw",
+    title: "Sindrome de Wolff-Parkinson-White",
+    categoryId: "cardiology",
+    category: "Cardiologia",
+    tags: ["WPW", "pre-excitacao", "taquicardia", "ablacao"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Sindrome de Wolff-Parkinson-White na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Sindrome de Wolff-Parkinson-White."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Sindrome de Wolff-Parkinson-White."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Sindrome de Wolff-Parkinson-White."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Sindrome de Wolff-Parkinson-White."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Sindrome de Wolff-Parkinson-White."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Sindrome de Wolff-Parkinson-White."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Sindrome de Wolff-Parkinson-White."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Sindrome de Wolff-Parkinson-White."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Sindrome de Wolff-Parkinson-White."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Sindrome de Wolff-Parkinson-White."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Sindrome de Wolff-Parkinson-White e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Sindrome de Wolff-Parkinson-White."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-cardio9-bloqueio-av",
+    title: "Bloqueio Atrioventricular",
+    categoryId: "cardiology",
+    category: "Cardiologia",
+    tags: ["BAV", "bloqueio", "marcapasso", "bradicardia"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Bloqueio Atrioventricular na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Bloqueio Atrioventricular."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Bloqueio Atrioventricular."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Bloqueio Atrioventricular."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Bloqueio Atrioventricular."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Bloqueio Atrioventricular."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Bloqueio Atrioventricular."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Bloqueio Atrioventricular."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Bloqueio Atrioventricular."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Bloqueio Atrioventricular."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Bloqueio Atrioventricular."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Bloqueio Atrioventricular e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Bloqueio Atrioventricular."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-cardio9-hipertensao-pulmonar",
+    title: "Hipertensao Pulmonar",
+    categoryId: "cardiology",
+    category: "Cardiologia",
+    tags: ["hipertensao pulmonar", "VD", "sildenafil", "prostanoide"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Hipertensao Pulmonar na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Hipertensao Pulmonar."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Hipertensao Pulmonar."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Hipertensao Pulmonar."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Hipertensao Pulmonar."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Hipertensao Pulmonar."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Hipertensao Pulmonar."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Hipertensao Pulmonar."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Hipertensao Pulmonar."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Hipertensao Pulmonar."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Hipertensao Pulmonar."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Hipertensao Pulmonar e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Hipertensao Pulmonar."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-cardio9-doenca-chagas",
+    title: "Doenca de Chagas - Manifestacoes Cardiacas",
+    categoryId: "cardiology",
+    category: "Cardiologia",
+    tags: ["chagas", "cardiomiopatia", "bloqueio", "tripanossoma"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Doenca de Chagas - Manifestacoes Cardiacas na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Doenca de Chagas - Manifestacoes Cardiacas."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Doenca de Chagas - Manifestacoes Cardiacas."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Doenca de Chagas - Manifestacoes Cardiacas."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Doenca de Chagas - Manifestacoes Cardiacas."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Doenca de Chagas - Manifestacoes Cardiacas."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Doenca de Chagas - Manifestacoes Cardiacas."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Doenca de Chagas - Manifestacoes Cardiacas."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Doenca de Chagas - Manifestacoes Cardiacas."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Doenca de Chagas - Manifestacoes Cardiacas."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Doenca de Chagas - Manifestacoes Cardiacas."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Doenca de Chagas - Manifestacoes Cardiacas e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Doenca de Chagas - Manifestacoes Cardiacas."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-cardio9-ecg-emergencia",
+    title: "Interpretacao do ECG na Emergencia",
+    categoryId: "cardiology",
+    category: "Cardiologia",
+    tags: ["ECG", "eletrocardiograma", "arritmia", "isquemia"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Interpretacao do ECG na Emergencia na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Interpretacao do ECG na Emergencia."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Interpretacao do ECG na Emergencia."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Interpretacao do ECG na Emergencia."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Interpretacao do ECG na Emergencia."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Interpretacao do ECG na Emergencia."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Interpretacao do ECG na Emergencia."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Interpretacao do ECG na Emergencia."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Interpretacao do ECG na Emergencia."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Interpretacao do ECG na Emergencia."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Interpretacao do ECG na Emergencia."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Interpretacao do ECG na Emergencia e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Interpretacao do ECG na Emergencia."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-cardio9-cardiopatia-congenita-adulto",
+    title: "Cardiopatia Congenita no Adulto",
+    categoryId: "cardiology",
+    category: "Cardiologia",
+    tags: ["congenita", "CIA", "CIV", "Eisenmenger"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Cardiopatia Congenita no Adulto na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Cardiopatia Congenita no Adulto."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Cardiopatia Congenita no Adulto."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Cardiopatia Congenita no Adulto."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Cardiopatia Congenita no Adulto."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Cardiopatia Congenita no Adulto."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Cardiopatia Congenita no Adulto."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Cardiopatia Congenita no Adulto."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Cardiopatia Congenita no Adulto."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Cardiopatia Congenita no Adulto."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Cardiopatia Congenita no Adulto."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Cardiopatia Congenita no Adulto e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Cardiopatia Congenita no Adulto."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },
+];

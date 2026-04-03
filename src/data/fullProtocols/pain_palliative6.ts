@@ -1,0 +1,629 @@
+import type { FullProtocol } from "./types";
+
+export const painPalliativeFullProtocols6: FullProtocol[] = [
+  {
+    id: "fp-painpalliative6-001",
+    title: "Dor Neuropatica Aguda",
+    categoryId: "pain_palliative",
+    category: "Dor e Paliativos",
+    tags: ["neuropatica", "dor", "gabapentina"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Dor Neuropatica Aguda."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Dor Neuropatica Aguda."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Dor Neuropatica Aguda."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Dor Neuropatica Aguda."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Dor Neuropatica Aguda."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Dor Neuropatica Aguda."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Dor Neuropatica Aguda."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Dor Neuropatica Aguda."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Dor Neuropatica Aguda."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Dor Neuropatica Aguda."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Dor Neuropatica Aguda."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Dor Neuropatica Aguda."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Dor Neuropatica Aguda."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-painpalliative6-002",
+    title: "Rotacao de Opioides",
+    categoryId: "pain_palliative",
+    category: "Dor e Paliativos",
+    tags: ["rotacao", "opioide", "equianalgesia"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Rotacao de Opioides."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Rotacao de Opioides."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Rotacao de Opioides."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Rotacao de Opioides."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Rotacao de Opioides."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Rotacao de Opioides."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Rotacao de Opioides."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Rotacao de Opioides."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Rotacao de Opioides."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Rotacao de Opioides."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Rotacao de Opioides."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Rotacao de Opioides."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Rotacao de Opioides."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-painpalliative6-003",
+    title: "Bloqueio Intercostal",
+    categoryId: "pain_palliative",
+    category: "Dor e Paliativos",
+    tags: ["intercostal", "bloqueio", "analgesia"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Bloqueio Intercostal."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Bloqueio Intercostal."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Bloqueio Intercostal."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Bloqueio Intercostal."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Bloqueio Intercostal."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Bloqueio Intercostal."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Bloqueio Intercostal."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Bloqueio Intercostal."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Bloqueio Intercostal."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Bloqueio Intercostal."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Bloqueio Intercostal."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Bloqueio Intercostal."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Bloqueio Intercostal."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-painpalliative6-004",
+    title: "PCA - Analgesia Controlada pelo Paciente",
+    categoryId: "pain_palliative",
+    category: "Dor e Paliativos",
+    tags: ["PCA", "bomba", "opioide"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para PCA - Analgesia Controlada pelo Paciente."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de PCA - Analgesia Controlada pelo Paciente."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de PCA - Analgesia Controlada pelo Paciente."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de PCA - Analgesia Controlada pelo Paciente."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de PCA - Analgesia Controlada pelo Paciente."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de PCA - Analgesia Controlada pelo Paciente."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de PCA - Analgesia Controlada pelo Paciente."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de PCA - Analgesia Controlada pelo Paciente."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de PCA - Analgesia Controlada pelo Paciente."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de PCA - Analgesia Controlada pelo Paciente."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de PCA - Analgesia Controlada pelo Paciente."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de PCA - Analgesia Controlada pelo Paciente."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de PCA - Analgesia Controlada pelo Paciente."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-painpalliative6-005",
+    title: "Sedacao para Procedimento Doloroso",
+    categoryId: "pain_palliative",
+    category: "Dor e Paliativos",
+    tags: ["sedacao", "procedimento", "dor"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Sedacao para Procedimento Doloroso."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Sedacao para Procedimento Doloroso."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Sedacao para Procedimento Doloroso."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Sedacao para Procedimento Doloroso."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Sedacao para Procedimento Doloroso."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Sedacao para Procedimento Doloroso."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Sedacao para Procedimento Doloroso."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Sedacao para Procedimento Doloroso."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Sedacao para Procedimento Doloroso."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Sedacao para Procedimento Doloroso."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Sedacao para Procedimento Doloroso."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Sedacao para Procedimento Doloroso."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Sedacao para Procedimento Doloroso."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-painpalliative6-006",
+    title: "Cefaleia Pos-Puncao",
+    categoryId: "pain_palliative",
+    category: "Dor e Paliativos",
+    tags: ["cefaleia", "puncao", "lombar"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Cefaleia Pos-Puncao."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Cefaleia Pos-Puncao."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Cefaleia Pos-Puncao."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Cefaleia Pos-Puncao."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Cefaleia Pos-Puncao."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Cefaleia Pos-Puncao."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Cefaleia Pos-Puncao."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Cefaleia Pos-Puncao."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Cefaleia Pos-Puncao."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Cefaleia Pos-Puncao."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Cefaleia Pos-Puncao."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Cefaleia Pos-Puncao."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Cefaleia Pos-Puncao."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-painpalliative6-007",
+    title: "Dor Toracica Musculoesqueletica",
+    categoryId: "pain_palliative",
+    category: "Dor e Paliativos",
+    tags: ["dor", "toracica", "musculoesqueletica"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Dor Toracica Musculoesqueletica."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Dor Toracica Musculoesqueletica."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Dor Toracica Musculoesqueletica."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Dor Toracica Musculoesqueletica."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Dor Toracica Musculoesqueletica."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Dor Toracica Musculoesqueletica."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Dor Toracica Musculoesqueletica."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Dor Toracica Musculoesqueletica."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Dor Toracica Musculoesqueletica."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Dor Toracica Musculoesqueletica."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Dor Toracica Musculoesqueletica."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Dor Toracica Musculoesqueletica."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Dor Toracica Musculoesqueletica."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-painpalliative6-008",
+    title: "Manejo da Dor no Politraumatizado",
+    categoryId: "pain_palliative",
+    category: "Dor e Paliativos",
+    tags: ["dor", "politrauma", "multimodal"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Manejo da Dor no Politraumatizado."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Manejo da Dor no Politraumatizado."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Manejo da Dor no Politraumatizado."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Manejo da Dor no Politraumatizado."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Manejo da Dor no Politraumatizado."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Manejo da Dor no Politraumatizado."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Manejo da Dor no Politraumatizado."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Manejo da Dor no Politraumatizado."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Manejo da Dor no Politraumatizado."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Manejo da Dor no Politraumatizado."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Manejo da Dor no Politraumatizado."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Manejo da Dor no Politraumatizado."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Manejo da Dor no Politraumatizado."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },
+];

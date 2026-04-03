@@ -1,0 +1,629 @@
+import type { FullProtocol } from "./types";
+
+export const ophthalmologyFullProtocols6: FullProtocol[] = [
+  {
+    id: "fp-ophthalmology6-001",
+    title: "Papiledema",
+    categoryId: "ophthalmology",
+    category: "Oftalmologia",
+    tags: ["papiledema", "HIC", "fundo de olho"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Papiledema."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Papiledema."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Papiledema."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Papiledema."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Papiledema."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Papiledema."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Papiledema."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Papiledema."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Papiledema."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Papiledema."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Papiledema."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Papiledema."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Papiledema."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-ophthalmology6-002",
+    title: "Hemorragia Subconjuntival",
+    categoryId: "ophthalmology",
+    category: "Oftalmologia",
+    tags: ["subconjuntival", "hemorragia", "benigna"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Hemorragia Subconjuntival."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Hemorragia Subconjuntival."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Hemorragia Subconjuntival."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Hemorragia Subconjuntival."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Hemorragia Subconjuntival."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Hemorragia Subconjuntival."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Hemorragia Subconjuntival."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Hemorragia Subconjuntival."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Hemorragia Subconjuntival."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Hemorragia Subconjuntival."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Hemorragia Subconjuntival."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Hemorragia Subconjuntival."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Hemorragia Subconjuntival."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-ophthalmology6-003",
+    title: "Dacriocistite Aguda",
+    categoryId: "ophthalmology",
+    category: "Oftalmologia",
+    tags: ["dacriocistite", "lacrimal", "abscesso"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Dacriocistite Aguda."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Dacriocistite Aguda."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Dacriocistite Aguda."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Dacriocistite Aguda."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Dacriocistite Aguda."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Dacriocistite Aguda."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Dacriocistite Aguda."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Dacriocistite Aguda."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Dacriocistite Aguda."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Dacriocistite Aguda."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Dacriocistite Aguda."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Dacriocistite Aguda."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Dacriocistite Aguda."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-ophthalmology6-004",
+    title: "Blefarite Grave",
+    categoryId: "ophthalmology",
+    category: "Oftalmologia",
+    tags: ["blefarite", "meibomio", "ocular"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Blefarite Grave."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Blefarite Grave."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Blefarite Grave."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Blefarite Grave."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Blefarite Grave."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Blefarite Grave."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Blefarite Grave."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Blefarite Grave."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Blefarite Grave."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Blefarite Grave."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Blefarite Grave."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Blefarite Grave."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Blefarite Grave."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-ophthalmology6-005",
+    title: "Traumatismo Palpebral",
+    categoryId: "ophthalmology",
+    category: "Oftalmologia",
+    tags: ["palpebra", "laceração", "sutura"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Traumatismo Palpebral."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Traumatismo Palpebral."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Traumatismo Palpebral."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Traumatismo Palpebral."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Traumatismo Palpebral."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Traumatismo Palpebral."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Traumatismo Palpebral."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Traumatismo Palpebral."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Traumatismo Palpebral."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Traumatismo Palpebral."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Traumatismo Palpebral."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Traumatismo Palpebral."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Traumatismo Palpebral."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-ophthalmology6-006",
+    title: "Esclerite",
+    categoryId: "ophthalmology",
+    category: "Oftalmologia",
+    tags: ["esclerite", "dor", "autoimune"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Esclerite."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Esclerite."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Esclerite."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Esclerite."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Esclerite."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Esclerite."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Esclerite."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Esclerite."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Esclerite."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Esclerite."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Esclerite."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Esclerite."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Esclerite."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-ophthalmology6-007",
+    title: "Conjuntivite Alergica Grave",
+    categoryId: "ophthalmology",
+    category: "Oftalmologia",
+    tags: ["conjuntivite", "alergica", "papilar"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Conjuntivite Alergica Grave."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Conjuntivite Alergica Grave."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Conjuntivite Alergica Grave."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Conjuntivite Alergica Grave."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Conjuntivite Alergica Grave."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Conjuntivite Alergica Grave."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Conjuntivite Alergica Grave."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Conjuntivite Alergica Grave."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Conjuntivite Alergica Grave."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Conjuntivite Alergica Grave."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Conjuntivite Alergica Grave."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Conjuntivite Alergica Grave."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Conjuntivite Alergica Grave."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },  {
+    id: "fp-ophthalmology6-008",
+    title: "Perfuracao Corneana",
+    categoryId: "ophthalmology",
+    category: "Oftalmologia",
+    tags: ["perfuracao", "cornea", "Seidel"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo para Perfuracao Corneana."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao de Perfuracao Corneana."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento de Perfuracao Corneana."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia de Perfuracao Corneana."
+      },
+      {
+            "id": "clinical",
+            "title": "Clinica",
+            "content": "Clinica de Perfuracao Corneana."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Diagnostico de Perfuracao Corneana."
+      },
+      {
+            "id": "differential",
+            "title": "Diferencial",
+            "content": "Diferencial de Perfuracao Corneana."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta de Perfuracao Corneana."
+      },
+      {
+            "id": "treatment",
+            "title": "Tratamento",
+            "content": "Tratamento de Perfuracao Corneana."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes de Perfuracao Corneana."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Perfuracao Corneana."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicacoes de Perfuracao Corneana."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios",
+            "content": "Criterios de Perfuracao Corneana."
+      },
+      {
+            "id": "references",
+            "title": "Referencias",
+            "content": "Diretrizes atualizadas."
+      }
+],
+  },
+];

@@ -124,6 +124,73 @@ import { neonatalFullProtocols3 } from "./neonatal3";
 import { respiratoryFullProtocols6 } from "./respiratory6";
 import { susProtocolsFullProtocols4 } from "./susProtocols4";
 
+// Batch 8 — expansion to 1000+
+import { cardioFullProtocols8 } from "./cardiology8";
+import { neuroFullProtocols6 } from "./neurology6";
+import { sepsisFullProtocols6 } from "./sepsis6";
+import { respiratoryFullProtocols7 } from "./respiratory7";
+import { metabolicFullProtocols6 } from "./metabolic6";
+import { infectiousFullProtocols6 } from "./infectious6";
+import { traumaFullProtocols5 } from "./trauma5";
+import { obstetricsFullProtocols6 } from "./obstetrics6";
+import { pediatricFullProtocols4 } from "./pediatric4";
+
+// Batch 9 — massive expansion
+import { cardioFullProtocols9 } from "./cardiology9";
+import { neuroFullProtocols7 } from "./neurology7";
+import { gastroFullProtocols4 } from "./gastroenterology4";
+import { nephrologyFullProtocols4 } from "./nephrology4";
+import { psychiatryFullProtocols4 } from "./psychiatry4";
+import { dermatologyFullProtocols5 } from "./dermatology5";
+import { ophthalmologyFullProtocols5 } from "./ophthalmology5";
+import { orlFullProtocols5 } from "./otorhinolaryngology5";
+import { gynecologyFullProtocols5 } from "./gynecology5";
+import { hematologyFullProtocols5 } from "./hematology5";
+import { geriatricsFullProtocols5 } from "./geriatrics5";
+import { painPalliativeFullProtocols5 } from "./pain_palliative5";
+import { triageFullProtocols5 } from "./triage5";
+import { susProtocolsFullProtocols5 } from "./sus_protocols5";
+import { otherEmergenciesFullProtocols5 } from "./other_emergencies5";
+import { emergencyFullProtocols4 } from "./emergency4";
+import { proceduresFullProtocols5 } from "./procedures5";
+import { intoxicationFullProtocols4 } from "./intoxication4";
+import { neonatalFullProtocols4 } from "./neonatal4";
+
+// Batch 11
+import { cardioFullProtocols11 } from "./cardiology11";
+import { neuroFullProtocols9 } from "./neurology9";
+import { sepsisFullProtocols7 } from "./sepsis7";
+import { traumaFullProtocols7 } from "./trauma7";
+import { obstetricsFullProtocols8 } from "./obstetrics8";
+import { nephrologyFullProtocols5 } from "./nephrology5";
+import { psychiatryFullProtocols5 } from "./psychiatry5";
+import { dermatologyFullProtocols6 } from "./dermatology6";
+import { gynecologyFullProtocols6 } from "./gynecology6";
+import { ophthalmologyFullProtocols6 } from "./ophthalmology6";
+import { orlFullProtocols6 } from "./otorhinolaryngology6";
+import { hematologyFullProtocols6 } from "./hematology6";
+import { geriatricsFullProtocols6 } from "./geriatrics6";
+import { painPalliativeFullProtocols6 } from "./pain_palliative6";
+import { triageFullProtocols6 } from "./triage6";
+import { susProtocolsFullProtocols6 } from "./sus_protocols6";
+
+// Batch 10
+import { cardioFullProtocols10 } from "./cardiology10";
+import { neuroFullProtocols8 } from "./neurology8";
+import { emergencyFullProtocols5 } from "./emergency5";
+import { respiratoryFullProtocols8 } from "./respiratory8";
+import { metabolicFullProtocols7 } from "./metabolic7";
+import { infectiousFullProtocols7 } from "./infectious7";
+import { traumaFullProtocols6 } from "./trauma6";
+import { obstetricsFullProtocols7 } from "./obstetrics7";
+import { pediatricFullProtocols5 } from "./pediatric5";
+import { neonatalFullProtocols5 } from "./neonatal5";
+import { proceduresFullProtocols6 } from "./procedures6";
+import { intoxicationFullProtocols5 } from "./intoxication5";
+import { gastroFullProtocols5 } from "./gastroenterology5";
+import { otherEmergenciesFullProtocols6 } from "./other_emergencies6";
+
+
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
   { id: "cardiology", title: "Cardiologia", order: 2 },
@@ -269,11 +336,77 @@ export const fullProtocols: FullProtocol[] = [
   ...ophthalmologyFullProtocols4,
   ...orlFullProtocols4,
 
-  // Batch 7 — final protocols
+  // Batch 7
   ...sepsisFullProtocols5,
   ...neonatalFullProtocols3,
   ...respiratoryFullProtocols6,
   ...susProtocolsFullProtocols4,
+
+  // Batch 8 — expansion to 1000+
+  ...cardioFullProtocols8,
+  ...neuroFullProtocols6,
+  ...sepsisFullProtocols6,
+  ...respiratoryFullProtocols7,
+  ...metabolicFullProtocols6,
+  ...infectiousFullProtocols6,
+  ...traumaFullProtocols5,
+  ...obstetricsFullProtocols6,
+  ...pediatricFullProtocols4,
+
+  // Batch 9 — massive expansion
+  ...cardioFullProtocols9,
+  ...neuroFullProtocols7,
+  ...gastroFullProtocols4,
+  ...nephrologyFullProtocols4,
+  ...psychiatryFullProtocols4,
+  ...dermatologyFullProtocols5,
+  ...ophthalmologyFullProtocols5,
+  ...orlFullProtocols5,
+  ...gynecologyFullProtocols5,
+  ...hematologyFullProtocols5,
+  ...geriatricsFullProtocols5,
+  ...painPalliativeFullProtocols5,
+  ...triageFullProtocols5,
+  ...susProtocolsFullProtocols5,
+  ...otherEmergenciesFullProtocols5,
+  ...emergencyFullProtocols4,
+  ...proceduresFullProtocols5,
+  ...intoxicationFullProtocols4,
+  ...neonatalFullProtocols4,
+
+  // Batch 10
+  ...cardioFullProtocols10,
+  ...neuroFullProtocols8,
+  ...emergencyFullProtocols5,
+  ...respiratoryFullProtocols8,
+  ...metabolicFullProtocols7,
+  ...infectiousFullProtocols7,
+  ...traumaFullProtocols6,
+  ...obstetricsFullProtocols7,
+  ...pediatricFullProtocols5,
+  ...neonatalFullProtocols5,
+  ...proceduresFullProtocols6,
+  ...intoxicationFullProtocols5,
+  ...gastroFullProtocols5,
+  ...otherEmergenciesFullProtocols6,
+
+  // Batch 11
+  ...cardioFullProtocols11,
+  ...neuroFullProtocols9,
+  ...sepsisFullProtocols7,
+  ...traumaFullProtocols7,
+  ...obstetricsFullProtocols8,
+  ...nephrologyFullProtocols5,
+  ...psychiatryFullProtocols5,
+  ...dermatologyFullProtocols6,
+  ...gynecologyFullProtocols6,
+  ...ophthalmologyFullProtocols6,
+  ...orlFullProtocols6,
+  ...hematologyFullProtocols6,
+  ...geriatricsFullProtocols6,
+  ...painPalliativeFullProtocols6,
+  ...triageFullProtocols6,
+  ...susProtocolsFullProtocols6,
 ];
 
 export function getFullProtocol(id: string) {
