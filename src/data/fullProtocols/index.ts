@@ -156,6 +156,23 @@ import { proceduresFullProtocols5 } from "./procedures5";
 import { intoxicationFullProtocols4 } from "./intoxication4";
 import { neonatalFullProtocols4 } from "./neonatal4";
 
+// Batch 10
+import { cardioFullProtocols10 } from "./cardiology10";
+import { neuroFullProtocols8 } from "./neurology8";
+import { emergencyFullProtocols5 } from "./emergency5";
+import { respiratoryFullProtocols8 } from "./respiratory8";
+import { metabolicFullProtocols7 } from "./metabolic7";
+import { infectiousFullProtocols7 } from "./infectious7";
+import { traumaFullProtocols6 } from "./trauma6";
+import { obstetricsFullProtocols7 } from "./obstetrics7";
+import { pediatricFullProtocols5 } from "./pediatric5";
+import { neonatalFullProtocols5 } from "./neonatal5";
+import { proceduresFullProtocols6 } from "./procedures6";
+import { intoxicationFullProtocols5 } from "./intoxication5";
+import { gastroFullProtocols5 } from "./gastroenterology5";
+import { otherEmergenciesFullProtocols6 } from "./other_emergencies6";
+
+
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
   { id: "cardiology", title: "Cardiologia", order: 2 },
@@ -338,6 +355,22 @@ export const fullProtocols: FullProtocol[] = [
   ...proceduresFullProtocols5,
   ...intoxicationFullProtocols4,
   ...neonatalFullProtocols4,
+
+  // Batch 10
+  ...cardioFullProtocols10,
+  ...neuroFullProtocols8,
+  ...emergencyFullProtocols5,
+  ...respiratoryFullProtocols8,
+  ...metabolicFullProtocols7,
+  ...infectiousFullProtocols7,
+  ...traumaFullProtocols6,
+  ...obstetricsFullProtocols7,
+  ...pediatricFullProtocols5,
+  ...neonatalFullProtocols5,
+  ...proceduresFullProtocols6,
+  ...intoxicationFullProtocols5,
+  ...gastroFullProtocols5,
+  ...otherEmergenciesFullProtocols6,
 ];
 
 export function getFullProtocol(id: string) {
