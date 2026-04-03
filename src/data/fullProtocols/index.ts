@@ -135,6 +135,27 @@ import { traumaFullProtocols5 } from "./trauma5";
 import { obstetricsFullProtocols6 } from "./obstetrics6";
 import { pediatricFullProtocols4 } from "./pediatric4";
 
+// Batch 9 — massive expansion
+import { cardioFullProtocols9 } from "./cardiology9";
+import { neuroFullProtocols7 } from "./neurology7";
+import { gastroFullProtocols4 } from "./gastroenterology4";
+import { nephrologyFullProtocols4 } from "./nephrology4";
+import { psychiatryFullProtocols4 } from "./psychiatry4";
+import { dermatologyFullProtocols5 } from "./dermatology5";
+import { ophthalmologyFullProtocols5 } from "./ophthalmology5";
+import { orlFullProtocols5 } from "./otorhinolaryngology5";
+import { gynecologyFullProtocols5 } from "./gynecology5";
+import { hematologyFullProtocols5 } from "./hematology5";
+import { geriatricsFullProtocols5 } from "./geriatrics5";
+import { painPalliativeFullProtocols5 } from "./pain_palliative5";
+import { triageFullProtocols5 } from "./triage5";
+import { susProtocolsFullProtocols5 } from "./sus_protocols5";
+import { otherEmergenciesFullProtocols5 } from "./other_emergencies5";
+import { emergencyFullProtocols4 } from "./emergency4";
+import { proceduresFullProtocols5 } from "./procedures5";
+import { intoxicationFullProtocols4 } from "./intoxication4";
+import { neonatalFullProtocols4 } from "./neonatal4";
+
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
   { id: "cardiology", title: "Cardiologia", order: 2 },
