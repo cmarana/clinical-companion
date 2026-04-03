@@ -156,6 +156,24 @@ import { proceduresFullProtocols5 } from "./procedures5";
 import { intoxicationFullProtocols4 } from "./intoxication4";
 import { neonatalFullProtocols4 } from "./neonatal4";
 
+// Batch 11
+import { cardioFullProtocols11 } from "./cardiology11";
+import { neuroFullProtocols9 } from "./neurology9";
+import { sepsisFullProtocols7 } from "./sepsis7";
+import { traumaFullProtocols7 } from "./trauma7";
+import { obstetricsFullProtocols8 } from "./obstetrics8";
+import { nephrologyFullProtocols5 } from "./nephrology5";
+import { psychiatryFullProtocols5 } from "./psychiatry5";
+import { dermatologyFullProtocols6 } from "./dermatology6";
+import { gynecologyFullProtocols6 } from "./gynecology6";
+import { ophthalmologyFullProtocols6 } from "./ophthalmology6";
+import { orlFullProtocols6 } from "./otorhinolaryngology6";
+import { hematologyFullProtocols6 } from "./hematology6";
+import { geriatricsFullProtocols6 } from "./geriatrics6";
+import { painPalliativeFullProtocols6 } from "./pain_palliative6";
+import { triageFullProtocols6 } from "./triage6";
+import { susProtocolsFullProtocols6 } from "./sus_protocols6";
+
 // Batch 10
 import { cardioFullProtocols10 } from "./cardiology10";
 import { neuroFullProtocols8 } from "./neurology8";
@@ -371,6 +389,24 @@ export const fullProtocols: FullProtocol[] = [
   ...intoxicationFullProtocols5,
   ...gastroFullProtocols5,
   ...otherEmergenciesFullProtocols6,
+
+  // Batch 11
+  ...cardioFullProtocols11,
+  ...neuroFullProtocols9,
+  ...sepsisFullProtocols7,
+  ...traumaFullProtocols7,
+  ...obstetricsFullProtocols8,
+  ...nephrologyFullProtocols5,
+  ...psychiatryFullProtocols5,
+  ...dermatologyFullProtocols6,
+  ...gynecologyFullProtocols6,
+  ...ophthalmologyFullProtocols6,
+  ...orlFullProtocols6,
+  ...hematologyFullProtocols6,
+  ...geriatricsFullProtocols6,
+  ...painPalliativeFullProtocols6,
+  ...triageFullProtocols6,
+  ...susProtocolsFullProtocols6,
 ];
 
 export function getFullProtocol(id: string) {
