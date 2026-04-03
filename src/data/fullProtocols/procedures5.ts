@@ -172,7 +172,7 @@ export const proceduresFullProtocols5: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Pericardiocentese - Tecnica."
+            "content": "Procedimento de drenagem do líquido pericárdico por punção percutânea. Indicações:\n\nUrgência/Emergência:\n• Tamponamento cardíaco (tríade de Beck: hipotensão + estase jugular + bulhas abafadas)\n• Derrame pericárdico volumoso com instabilidade hemodinâmica\n\nDiagnóstica:\n• Derrame pericárdico de etiologia indeterminada\n• Suspeita de pericardite bacteriana/tuberculosa\n\nAbordagem:\n• Subxifoide (mais comum e segura): agulha direcionada para ombro esquerdo, 45° com a pele\n• Paraesternal esquerda: 5° EIC, borda esternal\n• Apical: guiada por ecografia\n\nPreferência: sempre guiada por ecografia quando disponível (reduz complicações de 20% para <1%)"
       },
       {
             "id": "screening",
@@ -202,7 +202,7 @@ export const proceduresFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Pericardiocentese - Tecnica."
+            "content": "Técnica de Pericardiocentese Subxifoide (Marfan):\n\n1. Monitorização: ECG contínuo, oximetria, PA\n2. Posição: decúbito dorsal com cabeceira 30-45°\n3. Assepsia e antissepsia ampla, campos estéreis\n4. Anestesia local com lidocaína 1-2% (pele até pericárdio)\n5. Punção: agulha 18G longa (8-12cm) conectada a seringa 50mL\n   • Ponto: ângulo entre apêndice xifoide e rebordo costal esquerdo\n   • Direção: 45° com a pele, em direção ao ombro esquerdo\n   • Avançar aspirando continuamente\n6. Se guiada por ECG: eletrodo no V1 conectado à agulha — corrente de lesão (supra ST) indica contato com epicárdio → recuar levemente\n7. Ao aspirar líquido: introduzir fio-guia (Seldinger) → dilatador → cateter pigtail\n8. Drenar lentamente (máx 1L inicial para evitar dilatação aguda do VD)\n9. Enviar líquido: bioquímica, citologia, cultura, BK, ADA\n10. Fixar cateter para drenagem contínua se necessário\n\nComplicações: laceração miocárdica, arritmia, pneumotórax, punção hepática, lesão de artéria coronária"
       },
       {
             "id": "treatment",
@@ -250,7 +250,7 @@ export const proceduresFullProtocols5: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Artrocentese."
+            "content": "Punção articular para aspiração de líquido sinovial (diagnóstica e/ou terapêutica). Indicações:\n\nDiagnósticas:\n• Monoartrite aguda (excluir artrite séptica — emergência!)\n• Derrame articular de etiologia indeterminada\n• Suspeita de artrite por cristais (gota, pseudogota)\n\nTerapêuticas:\n• Drenagem de artrite séptica (com lavagem articular)\n• Alívio de derrame articular tenso e doloroso\n• Infiltração intra-articular de corticoide\n\nAnálise do líquido sinovial:\n• Normal: transparente, viscoso, <200 céls/µL\n• Não inflamatório: transparente, <2.000 céls/µL (osteoartrose, trauma)\n• Inflamatório: turvo, 2.000-50.000 céls/µL (AR, gota, pseudogota)\n• Séptico: purulento, >50.000 céls/µL (>75% PMN), glicose <40mg/dL\n• Hemorrágico: hemartrose (trauma, coagulopatia, tumor)"
       },
       {
             "id": "screening",

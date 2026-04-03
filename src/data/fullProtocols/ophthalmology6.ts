@@ -597,7 +597,7 @@ export const ophthalmologyFullProtocols6: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Tratamento",
-            "content": "Tratamento de Perfuracao Corneana."
+            "content": "Tratamento — EMERGÊNCIA CIRÚRGICA:\n\nMedidas imediatas (pré-operatório):\n1. Protetor ocular rígido (shield) — NÃO comprimir!\n2. NÃO instilar colírios, NÃO tocar no olho\n3. Profilaxia antitetânica se trauma\n4. ATB sistêmico profilático: Ciprofloxacino 500mg VO 12/12h + Vancomicina 1g IV se CEIO\n5. Antieméticos (Ondansetrona 4mg IV): evitar Valsalva\n6. Analgesia sistêmica (NÃO tópica)\n7. Jejum para cirurgia\n\nCirúrgico:\n• Sutura corneana primária com nylon 10-0 (perfuração <2mm pode usar cola de cianoacrilato + LDC)\n• Remoção de CEIO (se presente)\n• Reforma da câmara anterior\n• Vitrectomia se envolvimento posterior\n\nPós-operatório:\n• Colírios fortificados (Vancomicina 50mg/mL + Ceftazidima 50mg/mL) se risco infeccioso\n• Prednisolona 1% 6x/dia (após 48h)\n• Cicloplégico (atropina 1% 8/8h)\n• Acompanhamento diário nos primeiros dias"
       },
       {
             "id": "prescriptions",

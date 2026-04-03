@@ -16,12 +16,12 @@ export const ophthalmologyFullProtocols5: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Endoftalmite."
+            "content": "Infecção intraocular grave que acomete vítreo e/ou humor aquoso. Classificação:\n• Pós-operatória aguda: <6 semanas da cirurgia (mais comum — 70%)\n• Pós-operatória crônica: >6 semanas (P. acnes, fungos)\n• Pós-traumática: após trauma perfurante\n• Endógena (hematogênica): disseminação por bacteremia/fungemia\n• Associada a blefarite: bolhas filtrantes infectadas\n\nIncidência pós-facectomia: 0,03-0,2%"
       },
       {
             "id": "screening",
             "title": "Rastreamento e Identificacao",
-            "content": "Criterios de rastreamento e identificacao precoce de Endoftalmite."
+            "content": "Suspeitar em todo pós-operatório oftalmológico com:\n• Dor ocular intensa e progressiva (desproporcional ao esperado)\n• Baixa visual acentuada\n• Hiperemia conjuntival difusa\n• Hipópio (nível de pus na câmara anterior)\n• Edema palpebral\n• Secreção purulenta\n\nSinais de alarme:\n• Reflexo vermelho ausente\n• Vitreíte densa (impossibilidade de ver fundo de olho)\n• Dor ao movimento ocular\n• Febre (endoftalmite endógena)"
       },
       {
             "id": "etiology",
@@ -31,7 +31,7 @@ export const ophthalmologyFullProtocols5: FullProtocol[] = [
       {
             "id": "clinical",
             "title": "Apresentacao Clinica",
-            "content": "Sinais e sintomas tipicos e atipicos de Endoftalmite."
+            "content": "Apresentação clínica típica:\n• Dor ocular intensa (90%)\n• BAV acentuada — pode chegar a percepção luminosa\n• Hiperemia conjuntival e periocular\n• Edema corneal\n• Fibrina e hipópio na câmara anterior\n• Vitreíte (opacificação vítrea)\n• Quemose conjuntival\n\nApresentação atípica (crônica):\n• Uveíte granulomatosa recorrente\n• Placa branca na cápsula posterior (P. acnes)\n• Resposta parcial a corticoide\n\nEndoftalmite endógena:\n• Quadro ocular + sepse/foco infeccioso sistêmico\n• Bilateral em 25% dos casos (Candida)"
       },
       {
             "id": "diagnosis",
@@ -46,7 +46,7 @@ export const ophthalmologyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Endoftalmite."
+            "content": "EMERGÊNCIA OFTALMOLÓGICA — tratamento nas primeiras horas!\n\n1. Coleta de material (vitrectomia via pars plana ou aspirado vítreo + humor aquoso)\n2. Injeção intravítrea imediata:\n   • Vancomicina 1mg/0,1mL + Ceftazidima 2,25mg/0,1mL\n   • OU Vancomicina + Amicacina 0,4mg/0,1mL\n3. Protocolo EVS (Endophthalmitis Vitrectomy Study):\n   • AV ≥ percepção luminosa: TAP + antibiótico intravítreo\n   • AV = percepção luminosa apenas: vitrectomia via pars plana + antibiótico intravítreo\n4. Colírios fortificados: Vancomicina 50mg/mL + Ceftazidima 50mg/mL, 1/1h\n5. Corticoide tópico (prednisolona 1%) após 24-48h\n6. Dexametasona intravítrea 0,4mg/0,1mL (controverso — considerar)\n7. ATB sistêmico se endógena: tratar foco primário"
       },
       {
             "id": "treatment",
@@ -250,7 +250,7 @@ export const ophthalmologyFullProtocols5: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Hifema Traumatico."
+            "content": "Sangue na câmara anterior do olho, geralmente por trauma contuso. Classificação de graus:\n• Grau 0 (microhifema): hemácias em suspensão sem nível\n• Grau I: sangue ocupando <1/3 da câmara anterior\n• Grau II: sangue ocupando 1/3 a 1/2\n• Grau III: sangue ocupando >1/2\n• Grau IV (hifema total/\"eight-ball\"): câmara anterior completamente preenchida\n\nRisco de ressangramento: 3-5% (pico 3-5 dias), mais grave que o episódio inicial"
       },
       {
             "id": "screening",
@@ -280,7 +280,7 @@ export const ophthalmologyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Hifema Traumatico."
+            "content": "Conduta inicial:\n1. Repouso com cabeceira elevada a 30-45°\n2. Oclusão ocular com protetor rígido (shield)\n3. NÃO usar curativo compressivo\n4. Medir PIO — tratar se >21mmHg:\n   • Timolol 0,5% 12/12h\n   • Acetazolamida 250mg VO 6/6h (evitar em anemia falciforme!)\n5. Ciclopentolato 1% 8/8h (estabilizar barreira hemato-aquosa)\n6. Prednisolona 1% colírio 4-6x/dia (reduzir inflamação)\n7. EVITAR: aspirina, AINEs, anticoagulantes\n8. Ácido aminocaproico 50mg/kg VO 6/6h por 5 dias (prevenir ressangramento)\n   • Contraindicado em gestantes e coagulopatias\n9. Em anemia falciforme: NÃO usar acetazolamida ou manitol (risco de falcização na câmara anterior)\n10. Cirurgia se: PIO incontrolável, hifema total >5 dias, impregnação hemática corneana"
       },
       {
             "id": "treatment",

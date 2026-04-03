@@ -441,7 +441,7 @@ export const geriatricsFullProtocols6: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Tratamento",
-            "content": "Tratamento de ITU no Idoso."
+            "content": "Tratamento:\n\nCistite não complicada:\n• Nitrofurantoína 100mg VO 6/6h x 5 dias (evitar se ClCr <30)\n• OU Fosfomicina 3g dose única\n• OU Cefalexina 500mg VO 6/6h x 5-7 dias\n• EVITAR fluoroquinolonas como 1ª linha (reservar para complicadas)\n\nPielonefrite leve (sem critérios de internação):\n• Ciprofloxacino 500mg VO 12/12h x 7-10 dias\n• OU Ceftriaxona 1g IM dose de ataque + Cefalexina 500mg VO 6/6h\n\nPielonefrite grave / urossepse (internação):\n• Ceftriaxona 2g IV 1x/dia\n• OU Piperacilina-Tazobactam 4,5g IV 6/6h (se risco de resistência)\n• Se choque: + Amicacina 15mg/kg/dia IV\n• Escalonar por cultura em 48-72h\n\nCAUTI:\n• Trocar SVD antes de iniciar ATB\n• Colher urocultura da nova sonda\n• ATB empírico de acordo com flora local\n\nDuração: cistite 5-7 dias; pielonefrite 10-14 dias (7 dias com fluoroquinolona)"
       },
       {
             "id": "prescriptions",

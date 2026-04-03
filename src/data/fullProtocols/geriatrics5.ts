@@ -250,7 +250,7 @@ export const geriatricsFullProtocols5: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Ulcera por Pressao."
+            "content": "Lesão localizada na pele e/ou tecido subjacente, geralmente sobre proeminência óssea, resultante de pressão ou pressão combinada com cisalhamento. Classificação NPUAP/EPUAP 2019:\n• Estágio 1: Eritema não branqueável em pele intacta\n• Estágio 2: Perda parcial da espessura da pele (bolha, erosão superficial)\n• Estágio 3: Perda total da espessura da pele (gordura visível, sem osso/tendão)\n• Estágio 4: Perda total dos tecidos (osso, tendão ou músculo expostos)\n• Não classificável: Base coberta por escara/esfacelo\n• Lesão tissular profunda: Área arroxeada em pele intacta\n\nLocalizações mais comuns: sacro (36%), calcâneo (30%), trocânter (12%), ísquio (8%)"
       },
       {
             "id": "screening",
@@ -280,7 +280,7 @@ export const geriatricsFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Ulcera por Pressao."
+            "content": "Conduta inicial:\n1. Avaliar estadiamento e mensurar (comprimento x largura x profundidade)\n2. Documentar: localização, borda, leito, exsudato, odor, pele perilesional\n3. Alívio da pressão: colchão pneumático ou viscoelástico, mudança de decúbito 2/2h\n4. Desbridamento de tecido necrótico:\n   • Autolítico: hidrogel\n   • Enzimático: colagenase\n   • Instrumental/cirúrgico: se extensa ou infectada\n5. Cobertura adequada por estágio:\n   • Estágio 1: filme transparente, creme barreira\n   • Estágio 2: hidrocoloide, espuma\n   • Estágio 3-4: alginato de cálcio, espuma com prata (se infectada), terapia por pressão negativa\n6. Suporte nutricional: proteína 1,25-1,5g/kg/dia, vitamina C 500mg 2x/dia, zinco 220mg/dia\n7. Escala de Braden para risco (≤18 = risco): reavaliar a cada admissão e semanalmente"
       },
       {
             "id": "treatment",
@@ -484,7 +484,7 @@ export const geriatricsFullProtocols5: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Delirium na Emergencia do Idoso."
+            "content": "Síndrome neuropsiquiátrica aguda caracterizada por alteração flutuante da atenção e consciência, de causa orgânica. Subtipos:\n• Hiperativo (25%): agitação, alucinações, agressividade\n• Hipoativo (50%): letargia, apatia, sonolência — frequentemente subdiagnosticado\n• Misto (25%): alternância entre hiper e hipoatividade\n\nCritérios DSM-5:\nA. Perturbação da atenção e consciência\nB. Desenvolvimento agudo (horas a dias), curso flutuante\nC. Perturbação cognitiva adicional (memória, orientação, linguagem, percepção)\nD. Não explicado por outra condição neurocognitiva\nE. Evidência de causa orgânica\n\nTriagem: CAM (Confusion Assessment Method) — sensibilidade 94-100%, especificidade 90-95%"
       },
       {
             "id": "screening",
@@ -514,7 +514,7 @@ export const geriatricsFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Delirium na Emergencia do Idoso."
+            "content": "Conduta inicial — TRATAR A CAUSA!\n1. Identificar e corrigir fatores precipitantes (mnemônico DELIRIUM):\n   D - Drogas/medicamentos (benzodiazepínicos, anticolinérgicos, opioides)\n   E - Eletrólitos (Na, K, Ca, Mg, glicemia)\n   L - Lack of drugs (abstinência alcoólica, BZD)\n   I - Infecção (ITU, pneumonia, pele — idoso pode não ter febre!)\n   R - Retenção (urinária, fecal — causa comum e negligenciada)\n   I - Intracraniano (AVC, HSA, hematoma subdural)\n   U - Uremia/insuficiência hepática/hipóxia\n   M - Miocárdio (IAM, ICC descompensada)\n\n2. Medidas não farmacológicas (PRIMEIRA LINHA):\n   • Orientação temporal (relógio, calendário, janela)\n   • Presença de familiar\n   • Mobilização precoce\n   • Correção de déficit sensorial (óculos, prótese auditiva)\n   • Evitar contenção física\n   • Sono noturno protegido\n\n3. Farmacológico (apenas se agitação grave com risco):\n   • Haloperidol 0,5-1mg VO/IM (iniciar com dose baixa!)\n   • Alternativa: Quetiapina 12,5-25mg VO\n   • EVITAR benzodiazepínicos (exceto abstinência alcoólica)"
       },
       {
             "id": "treatment",

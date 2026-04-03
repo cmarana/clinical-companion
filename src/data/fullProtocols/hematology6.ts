@@ -597,7 +597,7 @@ export const hematologyFullProtocols6: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Tratamento",
-            "content": "Tratamento de Microangiopatia Trombotica."
+            "content": "PTT — Tratamento de EMERGÊNCIA:\n1. Plasmaférese diária (1-1,5 volemia): PRINCIPAL medida — iniciar nas primeiras horas!\n   • Se indisponível: infusão de PFC 15-30mL/kg até transferência\n2. Corticoide: Metilprednisolona 1g/dia IV x 3 dias, depois Prednisona 1mg/kg/dia\n3. Rituximab 375mg/m² semanal x 4 semanas (PTT refratária ou recidivante)\n4. Caplacizumab: anti-VWF, reduz tempo para resolução\n5. NÃO TRANSFUNDIR PLAQUETAS (exceto sangramento ameaçador à vida — \"jogar lenha na fogueira\")\n\nSHU típica:\n• Suporte: hidratação, controle de eletrólitos e PA\n• Diálise se IRA grave\n• NÃO usar antibióticos na fase aguda (↑liberação de toxina Shiga)\n• Transfusão de hemácias se Hb <7g/dL\n\nSHU atípica:\n• Eculizumab (anti-C5): tratamento de primeira linha\n• Vacinar contra meningococo ANTES (risco de infecção por Neisseria)\n\nMeta de plasmaférese: plaquetas >150.000 por 2 dias consecutivos + LDH normal + melhora clínica"
       },
       {
             "id": "prescriptions",
