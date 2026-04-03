@@ -11,12 +11,12 @@ export const susProtocolsFullProtocols6: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Fluxo de Atendimento UPA."
+            "content": "O fluxo de atendimento na UPA (Unidade de Pronto Atendimento) segue a Classificação de Risco de Manchester adaptada pelo MS. Pacientes são triados por gravidade (vermelho, laranja, amarelo, verde, azul) com tempos máximos de espera definidos. Portaria GM/MS 10/2017 e PNAU."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao de Fluxo de Atendimento UPA."
+            "content": "UPA 24h: unidade de complexidade intermediária entre UBS e Hospital. Atende urgências clínicas, pediátricas, cirúrgicas de baixa e média complexidade. Classificação de Risco: Vermelho (emergência — atendimento imediato), Laranja (muito urgente — 10min), Amarelo (urgente — 60min), Verde (pouco urgente — 120min), Azul (não urgente — 240min)."
       },
       {
             "id": "screening",
@@ -51,12 +51,12 @@ export const susProtocolsFullProtocols6: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Tratamento",
-            "content": "Tratamento de Fluxo de Atendimento UPA."
+            "content": "FLUXO: 1. Recepção: cadastro/registro; 2. Triagem/Classificação de Risco por enfermeiro treinado (Protocolo de Manchester); 3. Atendimento médico conforme classificação; 4. Exames complementares e medicação; 5. Observação (até 24h); 6. Resolução: alta, transferência para hospital ou encaminhamento para UBS/ambulatório. Permanência máxima: 24h. Se necessário internação >24h: transferir via Central de Regulação (SISREG)."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Fluxo de Atendimento UPA."
+            "content": "1. Ficha de atendimento padronizada (SAE); 2. Classificação de Risco documentada (cor + discriminador); 3. Prescrição em receituário padrão SUS; 4. Se alta: receita + encaminhamento para UBS; 5. Se observação: reavaliação médica a cada 6h; 6. Se transferência: contato com Central de Regulação + relatório de transferência + estabilização; 7. Notificação compulsória quando indicado."
       },
       {
             "id": "followup",
@@ -76,7 +76,7 @@ export const susProtocolsFullProtocols6: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias",
-            "content": "Diretrizes atualizadas."
+            "content": "Portaria GM/MS 10/2017 — Rede de Atenção às Urgências. PNAU — Política Nacional de Atenção às Urgências. MS — Manual de Acolhimento e Classificação de Risco 2009."
       }
 ],
   },  {
@@ -323,12 +323,12 @@ export const susProtocolsFullProtocols6: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Manejo de Hemoderivados no SUS."
+            "content": "O manejo de hemoderivados no SUS segue protocolos rigorosos de indicação, solicitação, compatibilidade e administração. A decisão transfusional deve ser criteriosa (gatilho transfusional). Reações transfusionais devem ser notificadas via hemovigilância. Portaria GM/MS 158/2016 e RDC 34/2014."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao de Manejo de Hemoderivados no SUS."
+            "content": "Hemocomponentes disponíveis no SUS: Concentrado de Hemácias (CH), Plasma Fresco Congelado (PFC), Concentrado de Plaquetas (CP), Crioprecipitado. Hemoderivados: Albumina, Imunoglobulinas, Fatores de Coagulação. Gatilhos transfusionais: CH se Hb <7g/dL (liberal <9-10 em cardiopatas/instáveis); PFC se INR >1,5 com sangramento; CP se <10.000 ou <50.000 com sangramento/procedimento."
       },
       {
             "id": "screening",
@@ -363,12 +363,12 @@ export const susProtocolsFullProtocols6: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Tratamento",
-            "content": "Tratamento de Manejo de Hemoderivados no SUS."
+            "content": "SOLICITAÇÃO: formulário padronizado com indicação clínica + exames (Hb, plaquetas, coagulograma). Tipagem ABO/Rh + prova cruzada obrigatórios. ADMINISTRAÇÃO: verificar identificação paciente, rótulo do hemocomponente, grupo ABO/Rh, validade. Infundir em até 4h (CH) com filtro de 170μm. Sinais vitais: antes, 15min após início e ao término. REAÇÃO TRANSFUSIONAL: suspender transfusão, manter acesso, notificar banco de sangue + NOTIVISA."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Manejo de Hemoderivados no SUS."
+            "content": "1. Concentrado de Hemácias 1-2U (cada unidade eleva Hb em ~1g/dL); 2. Infundir em 1-2h (max 4h), com filtro 170μm; 3. Não adicionar medicamentos ao hemocomponente; 4. Se reação: suspender, SF 0,9% no acesso, Hidrocortisona 200mg IV + Difenidramina 50mg IV (se alérgica); 5. Se reação hemolítica: suporte + enviar amostras ao banco; 6. PFC 10-15mL/kg se coagulopatia; 7. Plaquetas: 1U/10kg de peso."
       },
       {
             "id": "followup",
@@ -388,7 +388,7 @@ export const susProtocolsFullProtocols6: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias",
-            "content": "Diretrizes atualizadas."
+            "content": "Portaria GM/MS 158/2016. RDC 34/2014 ANVISA — Boas Práticas do Ciclo do Sangue. Guia para Uso de Hemocomponentes — MS 2015. AABB Technical Manual 20th ed."
       }
 ],
   },  {
@@ -401,12 +401,12 @@ export const susProtocolsFullProtocols6: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Profilaxia de Raiva."
+            "content": "A profilaxia pós-exposição à raiva é procedimento essencial no SUS para mordeduras/arranhaduras de animais. A decisão terapêutica segue o fluxograma do MS considerando: espécie do animal, tipo de exposição, observação do animal e situação epidemiológica. Vacinação + soro antirrábico conforme indicação."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao de Profilaxia de Raiva."
+            "content": "Raiva: encefalite viral aguda letal (letalidade ~100% após início dos sintomas). Vírus Lyssavirus. Transmissão: mordedura/arranhadura de animal infectado (cão, gato, morcego, primatas). Período de incubação: 20-90 dias (pode ser anos). Exposição: contato com saliva/tecido nervoso de animal suspeito em mucosa ou pele lesada."
       },
       {
             "id": "screening",
@@ -441,12 +441,12 @@ export const susProtocolsFullProtocols6: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Tratamento",
-            "content": "Tratamento de Profilaxia de Raiva."
+            "content": "ESQUEMA PÓS-EXPOSIÇÃO (MS 2021): Acidente LEVE (lambedura em pele lesada, arranhadura, mordedura superficial): Cão/gato observável → observar animal 10 dias (se sadio ao final = sem profilaxia). Se animal morto/desaparecido: vacina dias 0,3,7,14. Acidente GRAVE (lambedura em mucosa, mordedura em cabeça/mãos/pés, múltiplas, profundas, animal silvestre/morcego): Soro antirrábico (SAR 40 UI/kg) + Vacina dias 0,3,7,14. Morcego: SEMPRE considerar grave independente da lesão."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Profilaxia de Raiva."
+            "content": "1. Limpeza da ferida com água e sabão (15min) + antisséptico; 2. NÃO suturar ferida (exceto sangramento ativo); 3. Vacina antirrábica (VERO/cultivo celular) IM deltóide: dias 0, 3, 7, 14; 4. Soro antirrábico (SAR) 40 UI/kg: infiltrar máximo no local da lesão + restante IM (se grave); 5. Profilaxia antitetânica conforme cartão vacinal; 6. ATB se infecção: Amoxicilina-Clavulanato 875mg VO 12/12h; 7. Notificação compulsória."
       },
       {
             "id": "followup",
@@ -466,7 +466,7 @@ export const susProtocolsFullProtocols6: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias",
-            "content": "Diretrizes atualizadas."
+            "content": "MS — Normas Técnicas de Profilaxia da Raiva Humana 2021. OMS — WHO Expert Consultation on Rabies 2018. CRMV — Protocolo de Observação Animal."
       }
 ],
   },  {
@@ -479,12 +479,12 @@ export const susProtocolsFullProtocols6: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Profilaxia de Tetano."
+            "content": "A profilaxia do tétano no SUS segue o esquema vacinal com dT/dTpa e uso de imunoglobulina antitetânica (IGHAT) ou soro antitetânico (SAT) conforme tipo de ferimento e situação vacinal. Todo ferimento deve ser avaliado quanto ao risco tetanogênico. PNI/MS 2023."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao de Profilaxia de Tetano."
+            "content": "Tétano: doença causada pela toxina do Clostridium tetani (anaeróbio). Ferimentos tetanogênicos: profundos, com tecido desvitalizado, corpo estranho, contaminados com terra/fezes, queimaduras, mordeduras, úlceras crônicas. Ferimentos não tetanogênicos: superficiais, limpos, sem corpo estranho."
       },
       {
             "id": "screening",
@@ -519,12 +519,12 @@ export const susProtocolsFullProtocols6: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Tratamento",
-            "content": "Tratamento de Profilaxia de Tetano."
+            "content": "ESQUEMA CONFORME SITUAÇÃO VACINAL: Vacinação completa (3 doses + reforço <5 anos): nenhuma medida (ferida limpa) ou nenhuma medida (ferida tetanogênica). Vacinação completa reforço 5-10 anos: nada (limpa) ou reforço dT (tetanogênica). Vacinação completa reforço >10 anos: reforço dT. Vacinação incompleta ou desconhecida: completar esquema + IGHAT 250UI IM (ou SAT 5000UI se indisponível) para feridas tetanogênicas."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Profilaxia de Tetano."
+            "content": "1. Limpeza cirúrgica da ferida (desbridamento se necessário); 2. Vacina dT (dupla adulto) 0,5mL IM deltóide; 3. IGHAT 250UI IM (se indicada — ferida tetanogênica + vacinação incompleta); 4. OU SAT 5000UI IM (se IGHAT indisponível — teste de sensibilidade antes); 5. Completar esquema vacinal: dT nos meses 0, 2, 4 (se incompleto); 6. ATB se infecção associada; 7. Reforço a cada 10 anos."
       },
       {
             "id": "followup",
@@ -544,7 +544,7 @@ export const susProtocolsFullProtocols6: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias",
-            "content": "Diretrizes atualizadas."
+            "content": "PNI/MS — Manual de Normas e Procedimentos para Vacinação 2023. MS — Guia de Vigilância em Saúde 2022. CDC — Tetanus Prophylaxis in Wound Management."
       }
 ],
   },  {
@@ -557,12 +557,12 @@ export const susProtocolsFullProtocols6: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Profilaxia Pos-Exposicao HIV."
+            "content": "A profilaxia pós-exposição (PEP) ao HIV é medida de urgência que deve ser iniciada em até 72h (idealmente 2h) após exposição de risco. O esquema preferencial é TDF+3TC+DTG por 28 dias. Avaliação de risco e testagem rápida para HIV do paciente-fonte são essenciais. MS/DIAHV 2021."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao de Profilaxia Pos-Exposicao HIV."
+            "content": "Exposição de risco: sexual (relação desprotegida), ocupacional (acidente com material biológico), violência sexual. Material biológico de risco: sangue, sêmen, secreção vaginal, líquidos serosos. SEM risco: urina, fezes, saliva, suor (sem sangue visível)."
       },
       {
             "id": "screening",
@@ -597,12 +597,12 @@ export const susProtocolsFullProtocols6: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Tratamento",
-            "content": "Tratamento de Profilaxia Pos-Exposicao HIV."
+            "content": "AVALIAÇÃO: 1. Teste rápido HIV do paciente-FONTE (se possível); 2. Teste rápido HIV da pessoa EXPOSTA (excluir infecção prévia); 3. Se fonte HIV+ ou desconhecido com risco: iniciar PEP. ESQUEMA: Tenofovir 300mg + Lamivudina 300mg (TDF/3TC comp. combinado) + Dolutegravir 50mg (DTG) — 1 comp. de cada, 1x/dia, por 28 dias. Início: até 72h da exposição (quanto antes, melhor — ideal <2h). Não iniciar se >72h."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Profilaxia Pos-Exposicao HIV."
+            "content": "1. TDF/3TC 300/300mg VO 1 comp. 1x/dia por 28 dias; 2. Dolutegravir 50mg VO 1 comp. 1x/dia por 28 dias; 3. Solicitar: HIV teste rápido (exposto), Hepatite B (HBsAg, Anti-HBs), Hepatite C, VDRL, hemograma, creatinina, TGO/TGP; 4. Retorno 30 dias: repetir sorologias; 5. Retorno 90 dias: HIV final; 6. Se fonte HBsAg+: avaliar IGHAHB + vacina; 7. Notificação: CAT se ocupacional, SINAN se violência sexual."
       },
       {
             "id": "followup",
@@ -622,7 +622,7 @@ export const susProtocolsFullProtocols6: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias",
-            "content": "Diretrizes atualizadas."
+            "content": "MS/DIAHV — Protocolo Clínico e Diretrizes Terapêuticas para PEP 2021. OMS — Updated Recommendations on Post-Exposure Prophylaxis for HIV 2014. CDC — Updated Guidelines for Antiretroviral PEP 2016."
       }
 ],
   },

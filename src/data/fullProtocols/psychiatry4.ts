@@ -11,12 +11,12 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Catatonia na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "A catatonia e uma sindrome neuropsiquiatrica grave, presente em 10-15% das internacoes psiquiatricas. Pode ocorrer em transtornos psiquiatricos (esquizofrenia, bipolar) e condicoes medicas (encefalite, autoimune, metabolica). Lorazepam e o tratamento de primeira linha. DSM-5 e Fink & Taylor 2003."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Catatonia."
+            "content": "Sindrome psicomotora caracterizada por >=3 dos seguintes: estupor, catalepsia (rigidez cerea), flexibilidade cerea (waxy flexibility), mutismo, negativismo, postura fixa, maneirismo, estereotipia, agitacao nao influenciada por estimulos, careta, ecolalia, ecopraxia. Formas: retardada (mais comum), excitada (agitacao extrema), maligna (febre + rigidez + instabilidade autonomica)."
       },
       {
             "id": "screening",
@@ -51,12 +51,12 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento farmacologico e nao farmacologico de Catatonia."
+            "content": "LORAZEPAM (1a linha): teste terapeutico 1-2mg IV/IM. Se resposta em 5-10min (reducao >=50% Bush-Francis) = catatonia confirmada. Manter Lorazepam 1-2mg VO/IM 8/8h, titular ate 8-24mg/dia. Se refrataria (sem resposta em 3-5 dias): ECT (eletroconvulsoterapia) — altamente eficaz. Catatonia maligna: UTI + Lorazepam + ECT + suporte (hidratacao, resfriamento). NUNCA usar antipsicoticos tipicos (haloperidol) na catatonia — risco de SNM!"
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes padronizadas para Catatonia."
+            "content": "1. Lorazepam 2mg IM/IV (dose-teste) — avaliar resposta em 10min; 2. Se resposta: Lorazepam 2mg VO/IM 8/8h (titular ate 8mg/dose); 3. Hidratacao IV: SF 0,9% 2000-3000mL/24h; 4. Profilaxia TVP: Enoxaparina 40mg SC 1x/dia; 5. Monitorizar: temperatura, CPK, funcao renal; 6. Se catatonia maligna: UTI + suporte + ECT de urgencia; 7. Suspender antipsicoticos se em uso."
       },
       {
             "id": "followup",
@@ -76,7 +76,7 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "Fink M, Taylor MA. Catatonia: a Clinician's Guide. Cambridge 2003. DSM-5 (APA 2013). Bush-Francis Catatonia Rating Scale. Rosebush PI et al. J Clin Psychiatry 2004."
       }
 ],
   },  {
@@ -89,12 +89,12 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Transtorno Conversivo / Funcional na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "O transtorno conversivo (transtorno de sintomas neurologicos funcionais) apresenta sintomas neurologicos (paralisia, convulsoes, cegueira) sem substrato organico. Diagnóstico por sinais clinicos POSITIVOS (nao apenas exclusao). A validacao do sofrimento e explicacao adequada sao fundamentais. DSM-5 e Stone J. Lancet Neurol 2016."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Transtorno Conversivo / Funcional."
+            "content": "Sintomas sensoriomotores ou de ataques (crises nao epilepticas psicogenicas — CNEP) incompativeis com condicoes neurologicas reconhecidas. Sinais positivos: sinal de Hoover (fraqueza funcional), teste do arrastar (funcional vs organico), CNEP com olhos fechados e duracao >2min. Prevalencia: 4-12/100.000. Mais comum em mulheres jovens."
       },
       {
             "id": "screening",
@@ -129,12 +129,12 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento farmacologico e nao farmacologico de Transtorno Conversivo / Funcional."
+            "content": "Abordagem multidisciplinar: 1. Explicacao clara e empatica do diagnostico (nao dizer que esta inventando); 2. Validar sofrimento (os sintomas sao reais, o mecanismo e funcional); 3. Fisioterapia especializada em disturbios funcionais; 4. Psicoterapia (TCC e a mais estudada); 5. Tratar comorbidades (depressao, ansiedade, TEPT); 6. CNEP: evitar anticonvulsivantes (nao sao epilepsia), video-EEG para confirmacao diagnostica."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes padronizadas para Transtorno Conversivo / Funcional."
+            "content": "1. Nao ha medicamento especifico para conversivo; 2. Se depressao associada: Sertralina 50-100mg/dia OU Escitalopram 10-20mg/dia; 3. Se ansiedade intensa: Hidroxizina 25-50mg VO SOS (evitar BZD cronico); 4. Encaminhar para fisioterapia de reabilitacao funcional; 5. Encaminhar para psicoterapia (TCC); 6. Se CNEP: desmame gradual de anticonvulsivantes (se em uso indevido)."
       },
       {
             "id": "followup",
@@ -154,7 +154,7 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "Stone J et al. Functional neurological disorders. Lancet Neurol 2016. DSM-5 (APA 2013). LaFrance WC et al. Epilepsia 2013 (CNEP)."
       }
 ],
   },  {
@@ -167,12 +167,12 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Delirium na UCI na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "O delirium em UTI (UCI) afeta 60-80% dos pacientes em ventilacao mecanica. E fator independente de mortalidade, tempo de internacao e deficit cognitivo a longo prazo. Rastreamento com CAM-ICU deve ser rotina. Bundle ABCDEF e a abordagem padrao. Pandharipande PP et al. NEJM 2013."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Delirium na UCI."
+            "content": "Disfuncao cerebral aguda caracterizada por: inicio agudo com flutuacao, desatencao, pensamento desorganizado, alteracao do nivel de consciencia. Subtipos: hiperativo (agitacao — 5%), hipoativo (letargia — 50%, pior prognostico pois subdiagnosticado), misto (45%). CAM-ICU: sensibilidade 93%, especificidade 98%."
       },
       {
             "id": "screening",
@@ -207,12 +207,12 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento farmacologico e nao farmacologico de Delirium na UCI."
+            "content": "PREVENCAO (mais eficaz que tratamento): Bundle ABCDEF — A: Avaliar/tratar dor; B: Breathing (despertar + desmame); C: Choice of sedation (Propofol/Dexmedetomidina > Midazolam); D: Delirium screening (CAM-ICU 2x/dia); E: Early mobilization; F: Family engagement. Tratamento: Dexmedetomidina 0,2-1,5 mcg/kg/h (preferida — reduz delirium vs midazolam). Haloperidol 0,5-2mg IV SOS para agitacao grave (sem evidencia de reducao de delirium, mas controla sintomas). Quetiapina 50-200mg VO/SNG 12/12h. NAO usar benzodiazepinicos (exceto abstinencia alcoolica)."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes padronizadas para Delirium na UCI."
+            "content": "1. CAM-ICU a cada plantao (12/12h); 2. Dexmedetomidina 0,2-0,7 mcg/kg/h (substituir midazolam); 3. Haloperidol 2mg IV SOS agitacao (max 20mg/dia, monitorar QTc); 4. Quetiapina 50mg VO/SNG 12/12h (titular ate 200mg); 5. Mobilizacao precoce (fisioterapia 2x/dia); 6. Ciclo sono-vigilia: cortinas abertas de dia, luzes apagadas a noite; 7. Suspender medicamentos deliriogenicos (benzodiazepinicos, anticolinergicos)."
       },
       {
             "id": "followup",
@@ -232,7 +232,7 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "Pandharipande PP et al. Long-term cognitive impairment after critical illness. NEJM 2013. Ely EW et al. JAMA 2004 (CAM-ICU). Devlin JW et al. Crit Care Med 2018 (PADIS Guidelines)."
       }
 ],
   },  {
@@ -245,12 +245,12 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Sindrome de Abstinencia de Opioides na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "A abstinencia de opioides, embora raramente fatal (diferente do alcool/benzodiazepinicos), causa sofrimento intenso e e a principal causa de recaida. Sintomas iniciam 8-24h apos ultima dose (heroina) ou 36-72h (metadona). Clonidina e metadona/buprenorfina sao tratamentos de primeira linha."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Sindrome de Abstinencia de Opioides."
+            "content": "Sindrome de descontinuacao apos uso cronico de opioides. Sintomas: midriase, lacrimejamento, rinorreia, piloereccao (arrepios), bocejos, diarreia, colicas, mialgia, insonia, ansiedade intensa. Escala COWS (Clinical Opiate Withdrawal Scale): leve 5-12, moderada 13-24, moderada-grave 25-36, grave >36."
       },
       {
             "id": "screening",
@@ -285,12 +285,12 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento farmacologico e nao farmacologico de Sindrome de Abstinencia de Opioides."
+            "content": "OPCAO 1 — Metadona (substituicao): 20-30mg VO dose inicial, titular conforme COWS. OPCAO 2 — Buprenorfina/Naloxona (Suboxone): iniciar com COWS >=12 (evitar precipitacao). Dose inicial 4/1mg SL, titular ate 16/4mg/dia. OPCAO 3 — Clonidina (sintomatico): 0,1-0,3mg VO 8/8h (monitorar PA — hipotensao). Adjuvantes: Loperamida 4mg para diarreia, Ibuprofeno 600mg para mialgia, Diciclomina para colica, Hidroxizina 25-50mg para insonia/ansiedade."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes padronizadas para Sindrome de Abstinencia de Opioides."
+            "content": "1. Clonidina 0,1mg VO 8/8h (monitorar PA); 2. OU Metadona 20mg VO dose inicial → titular; 3. Loperamida 4mg VO SOS (max 16mg/dia); 4. Ibuprofeno 600mg VO 8/8h; 5. Diciclomina 20mg VO 8/8h SOS (colica); 6. Hidroxizina 50mg VO a noite (insonia); 7. SF 0,9% 1500mL/24h IV (hidratacao); 8. Avaliar COWS a cada 4-6h."
       },
       {
             "id": "followup",
@@ -310,7 +310,7 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "ASAM National Practice Guideline for OUD 2020. WHO Guidelines for Opioid Withdrawal. Wesson DR, Ling W. J Psychoactive Drugs 2003."
       }
 ],
   },  {
@@ -323,12 +323,12 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Abstinencia de Benzodiazepinicos na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "A abstinencia de benzodiazepinicos pode ser fatal (similar ao alcool) com risco de convulsoes e delirium. O desmame gradual com benzodiazepinicos de meia-vida longa (diazepam, clonazepam) e a abordagem padrao. Nunca interromper abruptamente apos uso cronico (>4 semanas)."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Abstinencia de Benzodiazepinicos."
+            "content": "Sindrome de descontinuacao apos uso cronico de BZD (geralmente >4 semanas). Sintomas leves: ansiedade rebote, insonia, tremor, irritabilidade. Graves: convulsoes (12-48h), psicose, delirium (similar ao delirium tremens). Meia-vida curta (alprazolam, lorazepam): sintomas mais precoces e intensos. Meia-vida longa (diazepam, clonazepam): sintomas mais tardios e brandos."
       },
       {
             "id": "screening",
@@ -363,12 +363,12 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento farmacologico e nao farmacologico de Abstinencia de Benzodiazepinicos."
+            "content": "DESMAME GRADUAL (ambulatorial): reduzir 10-25% da dose a cada 1-2 semanas. Converter para BZD de meia-vida longa: Diazepam (equivalencia — Alprazolam 1mg = Diazepam 10mg = Clonazepam 0,5mg = Lorazepam 1mg). Se convulsao: Diazepam 10mg IV. Se delirium: UTI + Diazepam IV titulado. Adjuvantes: Carbamazepina 200mg 12/12h (previne convulsoes), Gabapentina 300-900mg/dia."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes padronizadas para Abstinencia de Benzodiazepinicos."
+            "content": "1. Diazepam 10mg VO 8/8h (dose inicial — titular conforme CIWA-B); 2. Reducao gradual: 10% a cada 3-5 dias (internado) ou 1-2 semanas (ambulatorial); 3. Carbamazepina 200mg VO 12/12h (adjuvante); 4. Se convulsao: Diazepam 10mg IV; 5. Tiamina 300mg IV 1x/dia (se uso concomitante de alcool); 6. Monitorizar: sinais vitais 4/4h, escala de abstinencia."
       },
       {
             "id": "followup",
@@ -388,7 +388,7 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "Ashton CH. Benzodiazepines: How They Work and How to Withdraw (The Ashton Manual). APA Practice Guidelines 2010."
       }
 ],
   },  {
@@ -401,12 +401,12 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Intoxicacao por Litio na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "A intoxicacao por litio e emergencia com risco de lesao neurologica permanente (sindrome SILENT). A janela terapeutica estreita (0,6-1,2 mEq/L) facilita toxicidade. Desidratacao, IECA, AINEs e tiazidicos sao precipitantes comuns. Hemodialise e o tratamento definitivo para intoxicacao grave."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Intoxicacao por Litio."
+            "content": "Niveis sericos: terapeutico 0,6-1,2 mEq/L. Intoxicacao leve 1,5-2,0 mEq/L: tremor grosseiro, nauseas, diarreia. Moderada 2,0-2,5 mEq/L: confusao, ataxia, disartria, fasciculacoes. Grave >2,5 mEq/L: convulsoes, coma, arritmias, insuficiencia renal. Intoxicacao cronica e mais perigosa que aguda (maior acumulo tecidual)."
       },
       {
             "id": "screening",
@@ -441,12 +441,12 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento farmacologico e nao farmacologico de Intoxicacao por Litio."
+            "content": "LEVE (1,5-2,0): suspender litio, hidratacao vigorosa SF 0,9% 200-300mL/h, monitorar nivel serico 6/6h. MODERADA (2,0-2,5): hidratacao agressiva + considerar hemodialise se sintomas neurologicos. GRAVE (>2,5) ou sintomas neurologicos significativos: HEMODIALISE (indicacao absoluta). Repetir hemodialise se rebound (nivel sobe 6h apos). NAO usar diureticos (pioram toxicidade). Manter hidratacao ate nivel <1,0 mEq/L e assintomatico."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes padronizadas para Intoxicacao por Litio."
+            "content": "1. Suspender litio IMEDIATAMENTE; 2. SF 0,9% 200-300mL/h IV (meta diurese >1mL/kg/h); 3. Litemia seriada: 0h, 6h, 12h, 24h; 4. Funcao renal, eletrolitos, ECG 6/6h; 5. Se nivel >2,5 ou sintomas graves: solicitar HEMODIALISE; 6. Monitorizar nivel pos-dialise (rebound em 6-12h); 7. NAO administrar diureticos."
       },
       {
             "id": "followup",
@@ -466,7 +466,7 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "Decker BS et al. EXTRIP — Extracorporeal Treatments in Poisoning: Lithium. Clin J Am Soc Nephrol 2015. Grandjean EM, Aubry JM. Int J Neuropsychopharmacol 2009."
       }
 ],
   },  {
@@ -479,12 +479,12 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Anorexia Nervosa - Emergencia Clinica na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "A anorexia nervosa e o transtorno psiquiatrico com maior mortalidade (5-10%). Emergencias incluem: sindrome de realimentacao, bradiaritmias, desidratacao grave, hipoglicemia. Internacao se IMC <15, instabilidade hemodinamica ou risco suicida. NICE NG69 e APA Guidelines."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Anorexia Nervosa - Emergencia Clinica."
+            "content": "Restricao da ingesta alimentar levando a peso significativamente baixo (IMC <18,5, grave <15). Criterios de emergencia medica: IMC <13, FC <40, PA <80/50, hipoglicemia <54mg/dL, K <2,5, Na <125, temperatura <35C, ritmo cardiaco irregular."
       },
       {
             "id": "screening",
@@ -519,12 +519,12 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento farmacologico e nao farmacologico de Anorexia Nervosa - Emergencia Clinica."
+            "content": "INTERNACAO se criterios de gravidade. SINDROME DE REALIMENTACAO (principal risco — dias 1-5): iniciar com 10-20 kcal/kg/dia (max 1000 kcal/dia no inicio), aumentar gradualmente em 200 kcal a cada 1-2 dias. Monitorar fosforo, potassio, magnesio 12/12h nos primeiros 3 dias. Suplementacao PROFILATICA: Tiamina 200-300mg/dia VO/IV ANTES de iniciar alimentacao. Fosfato 0,5-0,8 mmol/kg/dia. Potassio e magnesio conforme niveis."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes padronizadas para Anorexia Nervosa - Emergencia Clinica."
+            "content": "1. Dieta hipocalorica inicial: 10-20 kcal/kg/dia (aumentar lentamente); 2. Tiamina 300mg IV 1x/dia (prevencao de Wernicke); 3. Fosfato 30-50 mmol/dia VO (profilaxia sindrome realimentacao); 4. KCl 600mg VO 12/12h se K <3,5; 5. Sulfato de Mg 2g IV se Mg <1,5; 6. Monitorar P, K, Mg, glicemia 12/12h; 7. ECG diario (QTc, bradicardia); 8. Supervisao pos-refeicoes por 1h (evitar purgacao)."
       },
       {
             "id": "followup",
@@ -544,7 +544,7 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "NICE NG69 — Eating Disorders 2017/2020. APA Practice Guidelines for Eating Disorders 2023. Mehanna HM et al. Refeeding syndrome. BMJ 2008."
       }
 ],
   },  {
@@ -557,12 +557,12 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Psicose Puerperal na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "A psicose puerperal e emergencia psiquiatrica rara (1-2/1000 partos) mas gravissima, com risco de infanticidio e suicidio. Inicio abrupto nos primeiros 2-4 dias pos-parto. Bipolaridade e o principal fator de risco. Internacao psiquiatrica e mandatoria. Jones I et al. Lancet 2014."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Psicose Puerperal."
+            "content": "Episodio psicotico agudo no periodo puerperal (primeiras 4 semanas, pico nos dias 3-10). Sintomas: confusao, delirios (frequentemente sobre o bebe), alucinacoes, insonia total, labilidade extrema, desorganizacao do comportamento. Difere da depressao pos-parto (mais tardia e sem psicose)."
       },
       {
             "id": "screening",
@@ -597,12 +597,12 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento farmacologico e nao farmacologico de Psicose Puerperal."
+            "content": "INTERNACAO PSIQUIATRICA OBRIGATORIA (risco de infanticidio/suicidio). Antipsicotico: Olanzapina 10-20mg/dia OU Quetiapina 200-600mg/dia OU Haloperidol 5-10mg/dia (se necessario IM). Estabilizador: Litio (se bipolar conhecida — cuidado com lactacao) OU Valproato. Benzodiazepinicos para agitacao: Lorazepam 1-2mg IM/VO. ECT: considerar em casos refratarios ou catatonicos. Nao separar mae do bebe se seguranca garantida (unidade mae-bebe)."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes padronizadas para Psicose Puerperal."
+            "content": "1. Olanzapina 10mg VO a noite (titular ate 20mg); 2. OU Haloperidol 5mg IM se agitacao grave; 3. Lorazepam 2mg IM/VO SOS (max 6mg/dia); 4. Avaliar risco: ideacao suicida, pensamentos sobre o bebe (escala de risco); 5. Supervisao 1:1 continua; 6. Suspender amamentacao se uso de litio; 7. Encaminhar para psiquiatria perinatal."
       },
       {
             "id": "followup",
@@ -622,7 +622,7 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "Jones I et al. Bipolar disorder, affective psychosis, and schizophrenia in pregnancy and the post-partum period. Lancet 2014. NICE CG192 — Antenatal and Postnatal Mental Health 2020."
       }
 ],
   },  {
