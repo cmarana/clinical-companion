@@ -5,40 +5,40 @@ export const obstetricsFullProtocols3: FullProtocol[] = [
     id: "fp-pre-eclampsia", title: "Pré-eclâmpsia Grave", categoryId: "obstetrics", category: "Obstetrícia",
     tags: ["pré-eclâmpsia", "HELLP", "sulfato", "magnésio", "hidralazina"],
     sections: [
-      { id: "intro", title: "Introdução", content: "Emergência hipertensiva da gestação (≥ 20 sem) com risco de eclâmpsia, AVC, HELLP e morte. PA ≥ 160/110 + critérios de gravidade. Tratamento definitivo: resolução da gestação." },
-      { id: "def", title: "Definição", content: "PA ≥ 140/90 + proteinúria ou disfunção orgânica após 20 sem. Gravidade: PA ≥ 160/110, cefaleia, distúrbio visual, dor epigástrica, TGO > 2x, PLQ < 100.000, Cr > 1,1, edema pulmonar." },
+      { id: "intro", title: "Introdução", content: "A pré-eclâmpsia afeta 3-5% das gestações e é a principal causa de mortalidade materna no Brasil. Diagnóstico precoce e manejo com sulfato de magnésio e anti-hipertensivos previnem eclâmpsia e complicações graves. ACOG 2020 e FEBRASGO 2021." },
+      { id: "def", title: "Definição", content: "PA ≥140/90 mmHg após 20 semanas + proteinúria ≥300mg/24h OU relação proteína/creatinina ≥0,3 OU fita ≥1+. Pré-eclâmpsia com sinais de gravidade: PA ≥160/110, plaquetas <100.000, creatinina >1,1, transaminases 2x, edema pulmonar, sintomas cerebrais/visuais. Eclâmpsia: convulsão. Síndrome HELLP: hemólise + enzimas hepáticas elevadas + plaquetopenia." },
       { id: "screening", title: "Rastreamento e Identificação", content: "Fatores: primigesta, HAS, DM, LES, SAF, IMC > 35, idade > 40, gestação múltipla, PE prévia. Alerta: cefaleia + escotomas + dor epigástrica = iminência de eclâmpsia." },
       { id: "etiology", title: "Etiologia", content: "Invasão trofoblástica inadequada → isquemia placentária → disfunção endotelial → vasoespasmo → lesão orgânica." },
       { id: "clinical", title: "Apresentação Clínica", content: "HAS grave, cefaleia frontoccipital, escotomas, dor epigástrica/HCD, hiperreflexia, edema, oligúria. HELLP: hemólise + enzimas hepáticas ↑ + plaquetopenia." },
       { id: "diagnosis", title: "Diagnóstico", content: "PA seriada, proteinúria, hemograma (PLQ, esquizócitos), TGO/TGP/DHL/bilirrubinas, creatinina, ácido úrico, coagulograma, USG + Doppler, CTG." },
       { id: "differential", title: "Diagnóstico Diferencial", content: "Emergência hipertensiva, esteatose hepática da gestação, PTT/SHU, LES, feocromocitoma." },
       { id: "conduct", title: "Conduta Inicial", content: "1. MgSO4 Zuspan: 4g IV → 1-2g/h (monitorizar reflexo, FR, DU; antídoto: gluconato de Ca)\n2. Hidralazina 5 mg IV cada 20 min ou Nifedipino 10-20 mg VO (meta PAS 140-150, PAD 90-100; NÃO IECA/BRA)\n3. ≥ 34 sem → parto. < 34 sem → betametasona se estabilizar → parto. HELLP/eclâmpsia → parto" },
-      { id: "treatment", title: "Abordagem Terapêutica", content: "MgSO4 4g IV → 1-2g/h. Hidralazina 5 mg IV. Nifedipino 10 mg VO. Betametasona 12 mg IM × 2 (< 34 sem). Pós-parto: Captopril 25 mg 8/8h." },
-      { id: "prescriptions", title: "Prescrições", content: "1. MgSO4 4g IV → 1-2g/h BIC\n2. Hidralazina 5 mg IV SN\n3. Reflexo + FR + DU 1/1h\n4. Gluconato de Ca à beira do leito\n5. Hemograma, TGO, DHL, Cr seriados\n6. SVD\n7. Betametasona SN\n8. CTG\n9. Avaliação obstétrica" },
+      { id: "treatment", title: "Abordagem Terapêutica", content: "SULFATO DE MAGNÉSIO (MgSO4) — OBRIGATÓRIO se sinais de gravidade ou eclâmpsia: Esquema Zuspan: 4g IV em 20min (ataque) + 1-2g/h EV contínuo (manutenção). Esquema Pritchard: 4g IV + 10g IM (ataque) + 5g IM 4/4h. Anti-hipertensivo de urgência: Nifedipino 10mg VO (repetir em 30min SN) OU Hidralazina 5mg IV (repetir 20/20min, máx 20mg). Meta: PA 140-150/90-100 (não reduzir >25% na 1ª hora). Tratamento definitivo: PARTO (indução ou cesariana conforme condições)." },
+      { id: "prescriptions", title: "Prescrições", content: "1. MgSO4 50% 8mL (4g) + SF 100mL IV em 20min (ataque); 2. MgSO4 50% 24mL (12g) + SF 500mL a 28mL/h (=1g/h manutenção); 3. Nifedipino 10mg VO SN (máx 30mg); 4. Hidralazina 5mg IV lento SN (máx 20mg); 5. Monitorizar: reflexo patelar, FR, diurese, SpO2; 6. Antídoto: Gluconato de Cálcio 1g IV lento se intoxicação por MgSO4." },
       { id: "followup", title: "Acompanhamento", content: "MgSO4 por 24h pós-parto. PA 1/1h. Anti-hipertensivo conforme PA. Vigiar HPP e coagulopatia." },
       { id: "complications", title: "Complicações", content: "Eclâmpsia, AVC hemorrágico, HELLP, CIVD, IRA, DPP, edema pulmonar, ruptura hepática, óbito materno/fetal." },
       { id: "criteria", title: "Critérios de Internação / UTI / Alta", content: "UTI: HELLP, eclâmpsia, edema pulmonar, IRA. Enfermaria: PE grave controlada. Alta: PA controlada, MgSO4 completado, labs estáveis." },
-      { id: "references", title: "Referências Bibliográficas", content: "1. ACOG Practice Bulletin 222, 2020.\n2. Magpie Trial. Lancet 2002.\n3. FEBRASGO 2022.\n4. NICE Guidelines 2019." }
+      { id: "references", title: "Referências Bibliográficas", content: "ACOG Practice Bulletin — Gestational Hypertension and Preeclampsia 2020. FEBRASGO — Pré-eclâmpsia 2021. Magpie Trial (Lancet 2002)." }
     ]
   },
   {
     id: "fp-dpp", title: "Descolamento Prematuro de Placenta", categoryId: "obstetrics", category: "Obstetrícia",
     tags: ["DPP", "descolamento", "placenta", "sangramento", "cesariana"],
     sections: [
-      { id: "intro", title: "Introdução", content: "Separação da placenta normoinserida antes do parto, após 20 sem. Emergência com mortalidade fetal até 60%. Diagnóstico CLÍNICO. Conduta: parto imediato se feto vivo e viável." },
-      { id: "def", title: "Definição", content: "Sher: Grau I (assintomático), Grau II (sangramento, hipertonia, feto vivo), Grau III (sangramento grave, óbito fetal; IIIA sem CIVD, IIIB com CIVD)." },
+      { id: "intro", title: "Introdução", content: "O descolamento prematuro de placenta (DPP) é emergência obstétrica com mortalidade perinatal de 20-40%. Diagnóstico clínico: dor abdominal + sangramento + hipertonia uterina. Conduta imediata: parto + reposição volêmica." },
+      { id: "def", title: "Definição", content: "Separação parcial ou total da placenta normalmente inserida antes do parto, após 20 semanas. Grau 0: assintomático (achado pós-parto). Grau I: sangramento leve, sem sofrimento fetal. Grau II: sangramento moderado, sofrimento fetal. Grau III: óbito fetal ± coagulopatia (IIIA sem CIVD, IIIB com CIVD)." },
       { id: "screening", title: "Rastreamento e Identificação", content: "Fatores: HAS/PE (principal), trauma, cocaína, tabagismo, DPP prévio, polidramnia." },
       { id: "etiology", title: "Etiologia", content: "Ruptura de artérias deciduais → hematoma retroplacentário → separação → comprometimento fetal + coagulopatia de consumo." },
       { id: "clinical", title: "Apresentação Clínica", content: "Sangramento vaginal escuro (80%), dor súbita intensa, hipertonia uterina (útero lenhoso), sofrimento fetal, choque desproporcional ao sangramento visível." },
       { id: "diagnosis", title: "Diagnóstico", content: "CLÍNICO — não esperar USG! CTG: desacelerações. USG: sensibilidade baixa (25-50%). Hemograma, coagulograma, fibrinogênio < 200 = CIVD." },
       { id: "differential", title: "Diagnóstico Diferencial", content: "Placenta prévia (indolor, vermelho vivo), rotura uterina, trabalho de parto prematuro." },
       { id: "conduct", title: "Conduta Inicial", content: "Feto vivo viável → cesariana EMERGÊNCIA (< 20 min). Feto morto → parto vaginal (amniotomia) ou cesariana. Suporte: 2 acessos, cristaloide + hemoderivados, fibrinogênio > 200, PLQ > 50.000." },
-      { id: "treatment", title: "Abordagem Terapêutica", content: "Cristaloide + CH + PFC + crioprecipitado. TXA 1g IV. Ocitocina 20 UI pós-parto. Uterotônicos se atonia." },
-      { id: "prescriptions", title: "Prescrições", content: "1. 2 acessos calibrosos\n2. SF/RL IV\n3. Tipagem + 4 CH + PFC\n4. TXA 1g IV\n5. Hemograma + fibrinogênio seriados\n6. CTG contínua\n7. Cesariana SN\n8. SVD\n9. Ocitocina pós-parto" },
+      { id: "treatment", title: "Abordagem Terapêutica", content: "PARTO IMEDIATO (via mais rápida). Feto vivo + condições: amniotomia + ocitocina (parto vaginal se evolução rápida). Cesariana: se sofrimento fetal, instabilidade materna, colo desfavorável. Reposição volêmica agressiva: cristaloide + hemoderivados. CIVD: PFC 15mL/kg, crioprecipitado se fibrinogênio <100, plaquetas se <50.000. Útero de Couvelaire: tentativa de conservação antes de histerectomia." },
+      { id: "prescriptions", title: "Prescrições", content: "1. SF 0,9% ou RL aquecido — infusão rápida; 2. CH O negativo se extrema urgência; 3. PFC 15mL/kg; 4. Crioprecipitado 10U se fibrinogênio <100; 5. Ocitocina 5UI IV + 20UI em 500mL SF pós-parto; 6. Ácido tranexâmico 1g IV; 7. Monitorização: Hb, plaquetas, fibrinogênio, TP, TTPA 2/2h." },
       { id: "followup", title: "Acompanhamento", content: "UTI SN. Hemograma + coagulograma seriados. Vigiar HPP e atonia. Suporte psicológico. Investigar causas." },
       { id: "complications", title: "Complicações", content: "CIVD, choque hemorrágico, IRA, útero de Couvelaire, histerectomia, óbito fetal/materno." },
       { id: "criteria", title: "Critérios de Internação / UTI / Alta", content: "UTI: CIVD, transfusão maciça, instabilidade. Alta: hemoglobina estável, sem sangramento." },
-      { id: "references", title: "Referências Bibliográficas", content: "1. Oyelese Y. Obstet Gynecol 2006.\n2. FEBRASGO 2022.\n3. ACOG 2020." }
+      { id: "references", title: "Referências Bibliográficas", content: "ACOG Practice Bulletin — Placental Abruption 2021. FEBRASGO — DPP 2019. Oyelese Y, Ananth CV. NEJM 2006." }
     ]
   },
   {

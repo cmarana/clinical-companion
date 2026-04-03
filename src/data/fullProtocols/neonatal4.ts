@@ -11,12 +11,12 @@ export const neonatalFullProtocols4: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Convulsao Neonatal na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "Convulsões neonatais ocorrem em 1-3/1000 nascidos vivos e são a manifestação neurológica mais comum no período neonatal. A principal causa é encefalopatia hipóxico-isquêmica (EHI). Fenobarbital é o anticonvulsivante de primeira linha. SBP 2021."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Convulsao Neonatal."
+            "content": "Descargas elétricas excessivas e sincronizadas no SNC do recém-nascido (0-28 dias). Tipos: clônica (focal/multifocal), tônica, mioclônica, sutil (mais comum — movimentos oculares, sucção, apneia, pedalagem). Diferente do adulto: raramente generalizadas tônico-clônicas."
       },
       {
             "id": "screening",
@@ -51,12 +51,12 @@ export const neonatalFullProtocols4: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento farmacologico e nao farmacologico de Convulsao Neonatal."
+            "content": "FENOBARBITAL (1ª linha): 20mg/kg IV em 20-30min. Se persistir: doses adicionais de 5-10mg/kg (máx total 40mg/kg). Se refratária: Fenitoína/Fosfenitoína 20mg/kg IV OU Midazolam 0,15mg/kg IV bolus → 0,1-0,4mg/kg/h contínuo OU Levetiracetam 40-60mg/kg IV. Tratar causa: Glicose 10% 2mL/kg se hipoglicemia. Gluconato de cálcio 10% 2mL/kg se hipocalcemia. Piridoxina 100mg IV se suspeita de deficiência de piridoxina (tentativa terapêutica)."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes padronizadas para Convulsao Neonatal."
+            "content": "1. Fenobarbital 20mg/kg IV em 20min (diluir em SF); 2. Se persistir: Fenobarbital 5-10mg/kg IV (até 40mg/kg total); 3. Se refratária: Fenitoína 20mg/kg IV em 20min; 4. Alternativa: Midazolam 0,15mg/kg IV → 0,1-0,4mg/kg/h; 5. Glicose 10% 2mL/kg IV se hipoglicemia; 6. Gluconato de Ca 10% 2mL/kg IV em 10min se hipocalcemia; 7. Monitorizar: EEG contínuo, glicemia, Ca, Mg, Na."
       },
       {
             "id": "followup",
@@ -76,7 +76,7 @@ export const neonatalFullProtocols4: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "SBP — Manual de Neonatologia 2021. Volpe JJ. Neurology of the Newborn 6th ed. WHO — Guidelines for Neonatal Seizures 2011."
       }
 ],
   },  {
@@ -323,12 +323,12 @@ export const neonatalFullProtocols4: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Choque Neonatal na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "O choque neonatal é emergência com mortalidade elevada se não reconhecido precocemente. Diferenças fisiológicas do RN (dependência de FC para débito cardíaco, transição circulatória) exigem abordagem específica. Dopamina e Dobutamina são vasopressores de primeira linha no período neonatal."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Choque Neonatal."
+            "content": "Inadequação da perfusão tecidual para atender as demandas metabólicas. Tipos: hipovolêmico (hemorragia feto-materna, DPP, cordão), distributivo (sepse neonatal), cardiogênico (cardiopatia congênita, asfixia), obstrutivo (pneumotórax hipertensivo, tamponamento). RN é frequência-dependente para manter DC."
       },
       {
             "id": "screening",
@@ -363,12 +363,12 @@ export const neonatalFullProtocols4: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento farmacologico e nao farmacologico de Choque Neonatal."
+            "content": "1. Expansão volêmica: SF 0,9% 10-20mL/kg em 10-20min (pode repetir até 60mL/kg se hipovolêmico); 2. Vasopressor de 1ª linha: Dopamina 5-20mcg/kg/min OU Dobutamina 5-20mcg/kg/min; 3. Se refratário: Adrenalina 0,05-0,3mcg/kg/min; 4. Se hipotensão persistente: Hidrocortisona 1mg/kg IV 8/8h (insuficiência adrenal relativa); 5. Corrigir hipoglicemia: Glicose 10% 2mL/kg; 6. ATB empírico se sepse: Ampicilina 50mg/kg + Gentamicina 4mg/kg."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes padronizadas para Choque Neonatal."
+            "content": "1. SF 0,9% 10mL/kg IV em 10min (repetir SN até 60mL/kg); 2. Dopamina 5-20mcg/kg/min EV contínuo; 3. Dobutamina 5-20mcg/kg/min se disfunção miocárdica; 4. Adrenalina 0,05-0,3mcg/kg/min se refratário; 5. Hidrocortisona 1mg/kg IV 8/8h se choque refratário; 6. Glicose 10% 2mL/kg IV se hipoglicemia; 7. Ampicilina 50mg/kg + Gentamicina 4mg/kg se sepse."
       },
       {
             "id": "followup",
@@ -388,7 +388,7 @@ export const neonatalFullProtocols4: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "SBP — Reanimação Neonatal 2022. NRP — Neonatal Resuscitation Program 8th ed. Dempsey EM. Neonatology 2021."
       }
 ],
   },  {

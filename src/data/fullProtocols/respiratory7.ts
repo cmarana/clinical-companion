@@ -11,72 +11,72 @@ export const respiratoryFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introdução",
-            "content": "Protocolo completo para abordagem de TEP de Alto Risco na emergência, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "O tromboembolismo pulmonar (TEP) de alto risco (maciço) é definido pela presença de instabilidade hemodinâmica (PAS <90 mmHg por >15min, necessidade de vasopressor ou PCR). Mortalidade >25% sem tratamento. Requer trombólise sistêmica ou intervenção imediata. Diretriz ESC 2019 e SBPT 2020."
       },
       {
             "id": "def",
             "title": "Definição",
-            "content": "Definição clínica e classificação de TEP de Alto Risco."
+            "content": "TEP com instabilidade hemodinâmica: PAS <90 mmHg sustentada, queda ≥40 mmHg da basal por >15min, choque obstrutivo ou PCR. Representa 5% dos TEPs mas concentra a maioria dos óbitos. Disfunção de VD ao ecocardiograma é achado universal."
       },
       {
             "id": "screening",
             "title": "Rastreamento e Identificação",
-            "content": "Critérios de rastreamento e identificação precoce de TEP de Alto Risco."
+            "content": "Tríade de Virchow: estase, lesão endotelial, hipercoagulabilidade. Fatores de risco: cirurgia recente, imobilização >3 dias, fratura de MMII, neoplasia ativa, trombofilia, ACO, gestação/puerpério, viagem prolongada. Escore de Wells ≥7 = alta probabilidade."
       },
       {
             "id": "etiology",
             "title": "Etiologia",
-            "content": "Principais causas e fatores de risco para TEP de Alto Risco."
+            "content": "TVP proximal (ileofemoral) é a principal fonte. Fatores: pós-operatório (ortopédico, oncológico), imobilização, neoplasia ativa, trombofilias (Fator V Leiden, mutação protrombina, SAF), gestação, ACO + tabagismo."
       },
       {
             "id": "clinical",
             "title": "Apresentação Clínica",
-            "content": "Sinais e sintomas típicos e atípicos de TEP de Alto Risco."
+            "content": "Dispneia súbita e grave, hipotensão/choque, taquicardia >100bpm, síncope, turgência jugular, cianose. Pode apresentar dor torácica pleurítica, hemoptise. PCR com AESP é apresentação possível. Sinais de TVP em 30-50% dos casos."
       },
       {
             "id": "diagnosis",
             "title": "Diagnóstico",
-            "content": "Exames laboratoriais e de imagem para diagnóstico de TEP de Alto Risco."
+            "content": "AngioTC de tórax é padrão-ouro (se estável para transporte). Ecocardiograma à beira-leito: dilatação de VD (VD/VE >0.9), hipocinesia de VD com ápice poupado (sinal de McConnell), IT, septo paradoxal. D-dímero NÃO exclui (alta probabilidade clínica). Troponina e BNP elevados = pior prognóstico. USG de MMII (TVP)."
       },
       {
             "id": "differential",
             "title": "Diagnóstico Diferencial",
-            "content": "Diagnósticos diferenciais importantes para TEP de Alto Risco."
+            "content": "SCA/IAM (ECG, troponina), dissecção de aorta (angioTC), tamponamento cardíaco (eco), pneumotórax hipertensivo (clínico/USG), choque séptico, choque cardiogênico por outras causas."
       },
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilização do paciente com TEP de Alto Risco."
+            "content": "1. MOV + acesso calibroso; 2. Cristaloide 500mL (cautela — VD já dilatado); 3. Noradrenalina 0,1-0,5 mcg/kg/min se choque; 4. Heparina não fracionada 80 UI/kg bolus + 18 UI/kg/h; 5. Se alto risco confirmado → trombólise sistêmica; 6. Eco à beira-leito IMEDIATO se instável."
       },
       {
             "id": "treatment",
             "title": "Abordagem Terapêutica",
-            "content": "Tratamento farmacológico e não farmacológico de TEP de Alto Risco."
+            "content": "TROMBÓLISE SISTÊMICA (primeira linha): Alteplase (rtPA) 100mg EV em 2h (ou 0,6mg/kg em 15min se PCR). Alternativa: Tenecteplase dose única por peso. Anticoagulação: HNF 80 UI/kg bolus → 18 UI/kg/h (TTPA alvo 1,5-2,5x). Se contraindicação à trombólise: trombectomia cirúrgica ou cateter-direcionada (CDT). Pós-trombólise: manter HNF, transicionar para anticoagulação oral após estabilização."
       },
       {
             "id": "prescriptions",
             "title": "Prescrições",
-            "content": "Prescrições padronizadas para TEP de Alto Risco."
+            "content": "1. Alteplase 100mg EV em 2h (ou 50mg em PCR); 2. HNF 80 UI/kg bolus → 18 UI/kg/h (controlar TTPA 6/6h); 3. Noradrenalina 0,1-2 mcg/kg/min SN; 4. Dobutamina 5-15 mcg/kg/min se disfunção VD sem hipotensão grave; 5. SF 0,9% 250-500mL cauteloso; 6. Monitorização em UTI; 7. Controlar plaquetas, TTPA, fibrinogênio."
       },
       {
             "id": "followup",
             "title": "Acompanhamento",
-            "content": "Monitorização e seguimento de TEP de Alto Risco."
+            "content": "UTI mínimo 48-72h. AngioTC controle se piora clínica. Transição para DOAC (rivaroxabana 15mg 12/12h por 21 dias → 20mg/dia) ou varfarina (INR 2-3) após estabilização. Anticoagulação mínima 3 meses (indefinida se TEP não provocado ou câncer). Eco controle para avaliar função de VD."
       },
       {
             "id": "complications",
             "title": "Complicações",
-            "content": "Principais complicações de TEP de Alto Risco e seu manejo."
+            "content": "Sangramento maior (6-10% com trombólise), hemorragia intracraniana (1-3%), choque cardiogênico refratário, hipertensão pulmonar tromboembólica crônica (HPTEC), óbito (mortalidade 25-65% sem tratamento)."
       },
       {
             "id": "criteria",
             "title": "Critérios de Internação / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para TEP de Alto Risco."
+            "content": "Internação em UTI: TODOS os TEPs de alto risco. Critérios de gravidade: troponina elevada, BNP >600, VD/VE >0,9, lactato elevado. Alta hospitalar após estabilização hemodinâmica, anticoagulação oral ajustada, eco com melhora de VD."
       },
       {
             "id": "references",
             "title": "Referências Bibliográficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "ESC/ERS Guidelines on Acute Pulmonary Embolism 2019. SBPT — Recomendações para TEP 2020. Meyer G et al. PEITHO Trial (NEJM 2014). Konstantinides SV et al. Eur Heart J 2020."
       }
 ],
   },
@@ -90,72 +90,72 @@ export const respiratoryFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introdução",
-            "content": "Protocolo completo para abordagem de Derrame Pleural - Protocolo Completo na emergência, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "Protocolo completo para investigação e manejo do derrame pleural, incluindo critérios de Light, indicações de toracocentese e drenagem, e abordagem do empiema. Diretrizes BTS 2023 e SBPT 2021."
       },
       {
             "id": "def",
             "title": "Definição",
-            "content": "Definição clínica e classificação de Derrame Pleural - Protocolo Completo."
+            "content": "Acúmulo patológico de líquido no espaço pleural. Transudato: desequilíbrio de pressões (IC, cirrose, nefrose). Exsudato: inflamação/infecção pleural. Critérios de Light (exsudato se ≥1): Proteína líquido/sérica >0,5; LDH líquido/sérica >0,6; LDH líquido >2/3 do limite superior sérico."
       },
       {
             "id": "screening",
             "title": "Rastreamento e Identificação",
-            "content": "Critérios de rastreamento e identificação precoce de Derrame Pleural - Protocolo Completo."
+            "content": "Rx tórax: velamento de seio costofrênico (>200mL). USG de tórax: sensibilidade >90%, guia punção, identifica septações. TC se suspeita de neoplasia ou abscesso. Derrame >10mm na USG em decúbito lateral → puncionável."
       },
       {
             "id": "etiology",
             "title": "Etiologia",
-            "content": "Principais causas e fatores de risco para Derrame Pleural - Protocolo Completo."
+            "content": "Transudato: IC (mais comum), cirrose hepática, síndrome nefrótica, diálise peritoneal. Exsudato: pneumonia/parapneumônico, TB pleural, neoplasia, TEP, colagenoses (AR, LES), pancreatite, quilotórax, hemotórax."
       },
       {
             "id": "clinical",
             "title": "Apresentação Clínica",
-            "content": "Sinais e sintomas típicos e atípicos de Derrame Pleural - Protocolo Completo."
+            "content": "Dispneia progressiva, dor torácica pleurítica (exsudato), tosse seca. Exame: MV diminuído/abolido, macicez à percussão, frêmito reduzido, egofonia na transição. Volumoso: desvio traqueal contralateral."
       },
       {
             "id": "diagnosis",
             "title": "Diagnóstico",
-            "content": "Exames laboratoriais e de imagem para diagnóstico de Derrame Pleural - Protocolo Completo."
+            "content": "Toracocentese diagnóstica guiada por USG. Análise: aspecto, proteínas, LDH, glicose, pH, celularidade, bacterioscopia, cultura, ADA (>40 = TB), citologia oncótica, triglicérides (>110 = quilotórax). Empiema: pH <7,2 OU glicose <60 OU cultura positiva OU aspecto purulento → drenagem."
       },
       {
             "id": "differential",
             "title": "Diagnóstico Diferencial",
-            "content": "Diagnósticos diferenciais importantes para Derrame Pleural - Protocolo Completo."
+            "content": "Atelectasia (pode mimetizar), consolidação, massa pleural, elevação diafragmática, derrame pericárdico."
       },
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilização do paciente com Derrame Pleural - Protocolo Completo."
+            "content": "1. Rx + USG tórax; 2. Se significativo: toracocentese diagnóstica guiada por USG; 3. Critérios de Light; 4. Transudato → tratar causa; 5. Exsudato → investigar (TB, neoplasia, infecção); 6. Complicado/empiema → drenagem; 7. Alívio se volumoso (máx 1-1,5L/sessão)."
       },
       {
             "id": "treatment",
             "title": "Abordagem Terapêutica",
-            "content": "Tratamento farmacológico e não farmacológico de Derrame Pleural - Protocolo Completo."
+            "content": "Transudato: diurético, tratar IC/cirrose. Parapneumônico simples: ATB apenas. Complicado/empiema: drenagem + ATB (Ceftriaxona 2g IV 1x + Clindamicina 600mg IV 8/8h). TB: esquema RIPE 6 meses. Neoplásico recorrente: pleurodese com talco. Hemotórax: drenagem 28-32Fr."
       },
       {
             "id": "prescriptions",
             "title": "Prescrições",
-            "content": "Prescrições padronizadas para Derrame Pleural - Protocolo Completo."
+            "content": "1. Drenagem torácica em selo d'água; 2. Ceftriaxona 2g IV 1x/dia + Clindamicina 600mg IV 8/8h; 3. Dipirona 1g IV 6/6h + Tramadol 100mg IV 8/8h SN; 4. Rx controle diário; 5. Fisioterapia respiratória; 6. Retirar dreno: débito <100mL/24h e líquido claro."
       },
       {
             "id": "followup",
             "title": "Acompanhamento",
-            "content": "Monitorização e seguimento de Derrame Pleural - Protocolo Completo."
+            "content": "Rx controle pós-drenagem. Se septado: fibrinolítico intrapleural (Alteplase + DNase) ou VATS. RX ambulatorial 4-6 semanas. Neoplásico recorrente: pleurodese. TB: RIPE 6 meses completos."
       },
       {
             "id": "complications",
             "title": "Complicações",
-            "content": "Principais complicações de Derrame Pleural - Protocolo Completo e seu manejo."
+            "content": "Pneumotórax iatrogênico, edema de reexpansão (>1,5L rápido), empiema, septação e encarceramento, fístula broncopleural."
       },
       {
             "id": "criteria",
             "title": "Critérios de Internação / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para Derrame Pleural - Protocolo Completo."
+            "content": "Internação: empiema, derrame grande, necessidade de drenagem. UTI: insuficiência respiratória, sepse. Alta: derrame pequeno estável, causa tratada."
       },
       {
             "id": "references",
             "title": "Referências Bibliográficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "BTS Pleural Disease Guidelines 2023. SBPT Derrame Pleural 2021. Light RW. Pleural Diseases 7th ed. Rahman NM et al. MIST2 Trial NEJM 2011."
       }
 ],
   },
@@ -169,72 +169,72 @@ export const respiratoryFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introdução",
-            "content": "Protocolo completo para abordagem de Pneumonia Nosocomial / PAV na emergência, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "A pneumonia nosocomial (PN) e pneumonia associada à ventilação mecânica (PAV) são as infecções hospitalares mais letais, com mortalidade de 20-50%. Diagnóstico precoce e antibioticoterapia empírica adequada são fundamentais. Diretrizes ATS/IDSA 2016 e ANVISA 2021."
       },
       {
             "id": "def",
             "title": "Definição",
-            "content": "Definição clínica e classificação de Pneumonia Nosocomial / PAV."
+            "content": "Pneumonia nosocomial: pneumonia que ocorre ≥48h após internação, não em incubação à admissão. PAV: pneumonia que surge ≥48h após intubação orotraqueal. Precoce: <5 dias (germes comunitários). Tardia: ≥5 dias (germes MDR — MRSA, Pseudomonas, Acinetobacter)."
       },
       {
             "id": "screening",
             "title": "Rastreamento e Identificação",
-            "content": "Critérios de rastreamento e identificação precoce de Pneumonia Nosocomial / PAV."
+            "content": "Vigiar pacientes com: VM >48h, rebaixamento de consciência, cirurgia recente, uso prévio de ATB, imunossupressão. CPIS (Clinical Pulmonary Infection Score) ≥6 sugere PAV. Monitorar febre, leucocitose, secreção purulenta, piora ventilatória."
       },
       {
             "id": "etiology",
             "title": "Etiologia",
-            "content": "Principais causas e fatores de risco para Pneumonia Nosocomial / PAV."
+            "content": "Precoce (<5d): S. pneumoniae, H. influenzae, MSSA, E. coli. Tardia (≥5d): P. aeruginosa, Acinetobacter baumannii, MRSA, Klebsiella ESBL, Stenotrophomonas. Fatores MDR: ATB prévio 90 dias, internação >5 dias, prevalência local de MDR."
       },
       {
             "id": "clinical",
             "title": "Apresentação Clínica",
-            "content": "Sinais e sintomas típicos e atípicos de Pneumonia Nosocomial / PAV."
+            "content": "Febre ou hipotermia, leucocitose >12.000 ou leucopenia <4.000, secreção traqueal purulenta, piora da oxigenação (queda de P/F), novo infiltrado ou progressão radiológica. Pode ser oligossintomática em idosos e imunossuprimidos."
       },
       {
             "id": "diagnosis",
             "title": "Diagnóstico",
-            "content": "Exames laboratoriais e de imagem para diagnóstico de Pneumonia Nosocomial / PAV."
+            "content": "Rx tórax (novo infiltrado). Colher ANTES de iniciar ATB: hemocultura 2 pares, aspirado traqueal quantitativo (≥10⁶ UFC/mL), lavado broncoalveolar (≥10⁴ UFC/mL se disponível). PCR, procalcitonina (>0,5 ng/mL sugere bacteriana). Gasometria, hemograma, função renal."
       },
       {
             "id": "differential",
             "title": "Diagnóstico Diferencial",
-            "content": "Diagnósticos diferenciais importantes para Pneumonia Nosocomial / PAV."
+            "content": "Atelectasia, SDRA, hemorragia alveolar, TEP, edema pulmonar cardiogênico, pneumonite química (aspiração), febre medicamentosa, sinusite em paciente intubado."
       },
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilização do paciente com Pneumonia Nosocomial / PAV."
+            "content": "1. Colher culturas (hemocultura + aspirado traqueal/LBA); 2. Iniciar ATB empírico IMEDIATO (não esperar cultura); 3. Avaliar fatores de risco para MDR; 4. Ajustar conforme antibiograma em 48-72h; 5. Desescalonar sempre que possível; 6. Duração: 7 dias (pode guiar por procalcitonina)."
       },
       {
             "id": "treatment",
             "title": "Abordagem Terapêutica",
-            "content": "Tratamento farmacológico e não farmacológico de Pneumonia Nosocomial / PAV."
+            "content": "SEM fatores MDR: Ceftriaxona 2g IV 1x/dia OU Ampicilina-Sulbactam 3g IV 6/6h. COM fatores MDR: Piperacilina-Tazobactam 4,5g IV 6/6h (infusão estendida 4h) OU Meropenem 1g IV 8/8h (infusão estendida 3h) + Vancomicina 15-20mg/kg IV 12/12h (se risco MRSA) OU Linezolida 600mg IV 12/12h. Pseudomonas: associar 2 antipseudomonas (beta-lactâmico + aminoglicosídeo/fluoroquinolona) até cultura."
       },
       {
             "id": "prescriptions",
             "title": "Prescrições",
-            "content": "Prescrições padronizadas para Pneumonia Nosocomial / PAV."
+            "content": "1. Meropenem 1g IV 8/8h (infusão em 3h) — se risco MDR; 2. Vancomicina 15-20mg/kg IV 12/12h (dosar vancocinemia no 4º dia — alvo AUC/MIC 400-600); 3. OU Piperacilina-Tazobactam 4,5g IV 6/6h (infusão em 4h); 4. Nebulização com SF 3-4x/dia; 5. Fisioterapia respiratória 2x/dia; 6. Colher culturas D3 para avaliar resposta."
       },
       {
             "id": "followup",
             "title": "Acompanhamento",
-            "content": "Monitorização e seguimento de Pneumonia Nosocomial / PAV."
+            "content": "Reavaliação em 48-72h com culturas. Desescalonar ATB conforme antibiograma. Duração total: 7 dias (procalcitonina seriada pode guiar). Se não melhora em 72h: repetir culturas, considerar TC tórax (abscesso, empiema), avaliar foco extrapulmonar, pensar em fungo."
       },
       {
             "id": "complications",
             "title": "Complicações",
-            "content": "Principais complicações de Pneumonia Nosocomial / PAV e seu manejo."
+            "content": "Abscesso pulmonar, empiema pleural, sepse/choque séptico, SDRA, bacteremia, falência de múltiplos órgãos, resistência antimicrobiana, C. difficile."
       },
       {
             "id": "criteria",
             "title": "Critérios de Internação / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para Pneumonia Nosocomial / PAV."
+            "content": "Internação: todos os casos. UTI: sepse, choque, VM, disfunção orgânica. Alta: afebril >48h, melhora clínica e laboratorial, tolerando VO, ATB pode ser completado ambulatorialmente."
       },
       {
             "id": "references",
             "title": "Referências Bibliográficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "ATS/IDSA Guidelines for HAP/VAP 2016. Torres A et al. Eur Respir J 2017. ANVISA — Critérios Diagnósticos IRAS 2021. Kalil AC et al. Clin Infect Dis 2016."
       }
 ],
   },
@@ -248,72 +248,72 @@ export const respiratoryFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introdução",
-            "content": "Protocolo completo para abordagem de Embolia Gordurosa na emergência, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "A síndrome da embolia gordurosa (SEG) é uma complicação grave de fraturas de ossos longos, com mortalidade de 5-15%. Apresenta tríade clássica: insuficiência respiratória, alteração neurológica e petéquias. Diagnóstico clínico (critérios de Gurd). Tratamento de suporte."
       },
       {
             "id": "def",
             "title": "Definição",
-            "content": "Definição clínica e classificação de Embolia Gordurosa."
+            "content": "Liberação de gordura medular na circulação após fratura de ossos longos (fêmur, tíbia, pelve). A embolização gordurosa ocorre em 90% das fraturas, mas a síndrome clínica (SEG) ocorre em apenas 1-5%. Início: 24-72h após trauma. Critérios de Gurd: ≥2 maiores OU 1 maior + 4 menores."
       },
       {
             "id": "screening",
             "title": "Rastreamento e Identificação",
-            "content": "Critérios de rastreamento e identificação precoce de Embolia Gordurosa."
+            "content": "Pacientes de risco: fratura de fêmur/tíbia bilateral, fraturas múltiplas de ossos longos, fratura pélvica, politrauma, fixação intramedular tardia. Manter vigilância 24-72h pós-fratura. SpO2 contínua, estado mental, exame de pele."
       },
       {
             "id": "etiology",
             "title": "Etiologia",
-            "content": "Principais causas e fatores de risco para Embolia Gordurosa."
+            "content": "Fraturas de ossos longos (fêmur bilateral = maior risco). Causas não traumáticas (raras): lipoaspiração, pancreatite, diabetes, queimaduras, drepanocitose, transplante de medula. Fisiopatologia: obstrução mecânica + resposta inflamatória (ácidos graxos livres → lesão endotelial)."
       },
       {
             "id": "clinical",
             "title": "Apresentação Clínica",
-            "content": "Sinais e sintomas típicos e atípicos de Embolia Gordurosa."
+            "content": "Tríade clássica (ordem de aparecimento): 1. RESPIRATÓRIO (95%): dispneia, taquipneia, hipoxemia 12-24h pós-fratura; 2. NEUROLÓGICO (60%): agitação, confusão, sonolência, coma (edema cerebral); 3. PETÉQUIAS (33%): conjuntiva, axilas, tórax anterior — patognomônico mas transitório (desaparece em 24h)."
       },
       {
             "id": "diagnosis",
             "title": "Diagnóstico",
-            "content": "Exames laboratoriais e de imagem para diagnóstico de Embolia Gordurosa."
+            "content": "CLÍNICO (critérios de Gurd). Maiores: petéquias, hipoxemia (PaO2 <60), alteração neurológica, edema pulmonar. Menores: taquicardia >120, febre >39,4°C, Hb <10, plaquetas <150.000, VHS >71, gotículas de gordura na urina, gotículas de gordura na retina. Rx: infiltrado bilateral difuso (simula SDRA). RNM: lesões puntiformes em substância branca (starfield pattern)."
       },
       {
             "id": "differential",
             "title": "Diagnóstico Diferencial",
-            "content": "Diagnósticos diferenciais importantes para Embolia Gordurosa."
+            "content": "SDRA (qualquer causa), TEP trombótico, contusão pulmonar, pneumonia aspirativa, hemorragia alveolar, embolia aérea, intoxicação. Diferenciar pela cronologia (24-72h pós-fratura) e petéquias."
       },
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilização do paciente com Embolia Gordurosa."
+            "content": "SUPORTE: 1. O2 suplementar (alvo SpO2 >92%); 2. VM protetora se necessário (VC 6 mL/kg, PEEP adequada); 3. Ressuscitação volêmica cautelosa (evitar sobrecarga); 4. Fixação precoce das fraturas (<24h reduz incidência); 5. Corticoterapia profilática controversa."
       },
       {
             "id": "treatment",
             "title": "Abordagem Terapêutica",
-            "content": "Tratamento farmacológico e não farmacológico de Embolia Gordurosa."
+            "content": "Tratamento de SUPORTE — não há terapia específica. Respiratório: O2, VNI ou VM protetora conforme gravidade. Hemodinâmico: cristaloides com cautela, vasopressores SN. Neurológico: controle de PIC se edema cerebral. Profilaxia: fixação precoce de fraturas (idealmente <24h), estabilização provisória com fixador externo. Metilprednisolona 1,5mg/kg IV 8/8h por 3 dias foi estudada como profilaxia (evidência limitada)."
       },
       {
             "id": "prescriptions",
             "title": "Prescrições",
-            "content": "Prescrições padronizadas para Embolia Gordurosa."
+            "content": "1. O2 cateter/máscara para SpO2 >92%; 2. SF 0,9% 1000mL/24h (cautela com volume); 3. Analgesia: Dipirona 1g IV 6/6h + Tramadol 100mg IV 8/8h; 4. Profilaxia TVP: Enoxaparina 40mg SC 1x/dia; 5. Se VM: VC 6mL/kg, PEEP 8-12, FiO2 para SpO2 >92%; 6. Monitorização em UTI."
       },
       {
             "id": "followup",
             "title": "Acompanhamento",
-            "content": "Monitorização e seguimento de Embolia Gordurosa."
+            "content": "Resolução em 3-7 dias na maioria. Monitorizar SpO2, estado mental, plaquetas diariamente. Gasometria seriada se em VM. Rx tórax controle. Acompanhamento neurológico (déficits podem persistir). Fisioterapia precoce."
       },
       {
             "id": "complications",
             "title": "Complicações",
-            "content": "Principais complicações de Embolia Gordurosa e seu manejo."
+            "content": "SDRA (complicação mais grave), insuficiência respiratória refratária, disfunção de múltiplos órgãos, sequela neurológica (rara), CID, IRA, óbito (5-15%)."
       },
       {
             "id": "criteria",
             "title": "Critérios de Internação / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para Embolia Gordurosa."
+            "content": "UTI: todos os casos de SEG confirmada. Internação: qualquer paciente com fratura de ossos longos + sintomas respiratórios/neurológicos nas primeiras 72h. Alta: resolução dos sintomas, SpO2 normal em ar ambiente, estado mental basal."
       },
       {
             "id": "references",
             "title": "Referências Bibliográficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "Mellor A, Soni N. Fat embolism. Anaesthesia 2001. Akhtar S. Fat Embolism Syndrome. Anesthesiol Clin 2009. Gurd AR. Fat Embolism: an aid to diagnosis. J Bone Joint Surg Br 1970."
       }
 ],
   },
@@ -327,72 +327,72 @@ export const respiratoryFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introdução",
-            "content": "Protocolo completo para abordagem de Crise de Asma Leve-Moderada na emergência, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "A crise de asma leve a moderada é a exacerbação mais comum no PS, representando 80% dos atendimentos por asma. Responde bem a broncodilatadores e corticoides. O manejo adequado previne evolução para crise grave. GINA 2023 e SBPT 2023."
       },
       {
             "id": "def",
             "title": "Definição",
-            "content": "Definição clínica e classificação de Crise de Asma Leve-Moderada."
+            "content": "Crise leve: PFE >70% do previsto, fala em frases completas, FR <25, FC <110, SpO2 >95%. Crise moderada: PFE 50-70%, fala em frases curtas, FR 25-30, FC 110-120, SpO2 91-95%. Sem uso intenso de musculatura acessória, sem sinais de gravidade."
       },
       {
             "id": "screening",
             "title": "Rastreamento e Identificação",
-            "content": "Critérios de rastreamento e identificação precoce de Crise de Asma Leve-Moderada."
+            "content": "Fatores de risco para crise: uso irregular de CI, infecção viral, exposição a alérgenos, mudança climática, tabagismo ativo/passivo, DRGE, rinossinusite, estresse emocional. Fatores de risco para crise fatal: internação prévia em UTI, intubação prévia, uso frequente de SABA, uso de ≥2 frascos/mês de SABA."
       },
       {
             "id": "etiology",
             "title": "Etiologia",
-            "content": "Principais causas e fatores de risco para Crise de Asma Leve-Moderada."
+            "content": "Infecção viral (rinovírus 80%), alérgenos ambientais (ácaros, fungos, pólen), poluição, exercício, AINE (AAS), betabloqueadores, mudança de temperatura, estresse, não adesão ao CI, refluxo."
       },
       {
             "id": "clinical",
             "title": "Apresentação Clínica",
-            "content": "Sinais e sintomas típicos e atípicos de Crise de Asma Leve-Moderada."
+            "content": "Dispneia, sibilância difusa, tosse seca, aperto torácico. Leve: fala normal, senta-se confortavelmente, sibilos expiratórios. Moderada: fala entrecortada, prefere sentar, sibilos difusos in/expiratórios, uso leve de acessória."
       },
       {
             "id": "diagnosis",
             "title": "Diagnóstico",
-            "content": "Exames laboratoriais e de imagem para diagnóstico de Crise de Asma Leve-Moderada."
+            "content": "PFE (peak-flow) pré e pós-BD: >70% = leve, 50-70% = moderada. SpO2 >95% = leve, 91-95% = moderada. Gasometria apenas se SpO2 <92%. Rx tórax se: primeira crise, febre, suspeita de complicação, sem resposta ao tratamento. Diagnóstico é CLÍNICO na emergência."
       },
       {
             "id": "differential",
             "title": "Diagnóstico Diferencial",
-            "content": "Diagnósticos diferenciais importantes para Crise de Asma Leve-Moderada."
+            "content": "DPOC exacerbado, insuficiência cardíaca (asma cardíaca), TEP, corpo estranho, anafilaxia, disfunção de cordas vocais, hiperventilação/pânico."
       },
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilização do paciente com Crise de Asma Leve-Moderada."
+            "content": "1. SpO2 + PFE; 2. Salbutamol 400-800mcg (4-8 jatos) com espaçador a cada 20min por 1h (3 doses); 3. Ipratrópio 80mcg (4 jatos) com espaçador a cada 20min por 1h; 4. Prednisona 40-60mg VO (ou Hidrocortisona 200mg IV se não tolerar VO); 5. Reavaliar em 1h; 6. Se melhora: alta com prescrição domiciliar."
       },
       {
             "id": "treatment",
             "title": "Abordagem Terapêutica",
-            "content": "Tratamento farmacológico e não farmacológico de Crise de Asma Leve-Moderada."
+            "content": "FASE 1 (primeira hora): Salbutamol spray 4-8 jatos (400-800mcg) com espaçador, a cada 20min × 3. Ipratrópio spray 4 jatos (80mcg) com espaçador a cada 20min × 3. Corticoide sistêmico: Prednisona 40-60mg VO OU Prednisolona 40-60mg VO (efeito em 4h). REAVALIAÇÃO 1h: Se PFE >70% e SpO2 >95%: alta. Se PFE 50-70%: manter BD 1/1h, considerar internação. ALTA: Prednisona 40mg/dia × 5-7 dias. Salbutamol spray SOS. INICIAR ou AUMENTAR CI (Budesonida ≥400mcg/dia)."
       },
       {
             "id": "prescriptions",
             "title": "Prescrições",
-            "content": "Prescrições padronizadas para Crise de Asma Leve-Moderada."
+            "content": "EMERGÊNCIA: 1. Salbutamol spray 100mcg — 4-8 jatos com espaçador 20/20min (3 doses); 2. Ipratrópio spray 20mcg — 4 jatos com espaçador 20/20min (3 doses); 3. Prednisona 40-60mg VO dose única; 4. O2 cateter nasal para SpO2 93-95%. ALTA: 1. Prednisona 40mg VO 1x/dia por 5-7 dias; 2. Salbutamol spray 200mcg SOS (máx 6x/dia); 3. Budesonida 200mcg spray 2 jatos 12/12h (manutenção); 4. Retorno em 2-7 dias ou se piora."
       },
       {
             "id": "followup",
             "title": "Acompanhamento",
-            "content": "Monitorização e seguimento de Crise de Asma Leve-Moderada."
+            "content": "Reavaliação em 1h: PFE, SpO2, clínica. Se boa resposta (PFE >70%, SpO2 >95%, assintomático): alta com prednisona 5-7 dias + CI. Retorno ambulatorial em 1-2 semanas. Revisar técnica inalatória, adesão, gatilhos. Plano de ação por escrito."
       },
       {
             "id": "complications",
             "title": "Complicações",
-            "content": "Principais complicações de Crise de Asma Leve-Moderada e seu manejo."
+            "content": "Evolução para crise grave/quase-fatal, pneumotórax (raro), atelectasia por tampão mucoso, efeitos adversos do corticoide (cursos repetidos), taquicardia/tremor por SABA."
       },
       {
             "id": "criteria",
             "title": "Critérios de Internação / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para Crise de Asma Leve-Moderada."
+            "content": "Alta: PFE >70%, SpO2 >95%, assintomático após tratamento, com prescrição de corticoide + CI. Observação 4-6h: PFE 50-70% após tratamento inicial. Internação: sem melhora após 4-6h, PFE <50%, comorbidades graves. UTI: sinais de gravidade (rebaixamento, fadiga)."
       },
       {
             "id": "references",
             "title": "Referências Bibliográficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "GINA 2023 — Global Strategy for Asthma Management. SBPT — Diretrizes da Sociedade Brasileira de Pneumologia e Tisiologia para o Manejo da Asma 2023. Reddel HK et al. Lancet 2022."
       }
 ],
   },
@@ -406,72 +406,72 @@ export const respiratoryFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introdução",
-            "content": "Protocolo completo para abordagem de Hemoptise - Manejo na Emergencia na emergência, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "Hemoptise é a expectoração de sangue originário das vias aéreas inferiores. Hemoptise maciça (>600mL/24h ou >100mL/h) é emergência com mortalidade >50% se não tratada. Causa principal de óbito: asfixia (não exsanguinação). SBPT 2023 e BTS 2024."
       },
       {
             "id": "def",
             "title": "Definição",
-            "content": "Definição clínica e classificação de Hemoptise - Manejo na Emergencia."
+            "content": "Leve: <100mL/24h (estrias de sangue). Moderada: 100-600mL/24h. Maciça: >600mL/24h OU >100mL/h OU qualquer volume com instabilidade hemodinâmica/respiratória. O espaço morto traqueobrônquico é de apenas 150-200mL — mesmo volumes pequenos causam asfixia."
       },
       {
             "id": "screening",
             "title": "Rastreamento e Identificação",
-            "content": "Critérios de rastreamento e identificação precoce de Hemoptise - Manejo na Emergencia."
+            "content": "Pacientes de risco: tuberculose (causa mais comum no Brasil), bronquiectasia, câncer de pulmão, infecção fúngica (aspergiloma), coagulopatia, anticoagulação, malformação AV. Diferenciar de hematemese e epistaxe posterior."
       },
       {
             "id": "etiology",
             "title": "Etiologia",
-            "content": "Principais causas e fatores de risco para Hemoptise - Manejo na Emergencia."
+            "content": "Brasil: tuberculose (causa mais comum), bronquiectasia, câncer de pulmão. Mundo: bronquite/bronquiectasia, câncer, TB. Outras: aspergiloma (bola fúngica), abscesso pulmonar, malformação AV, coagulopatia, vasculite (Wegener/GPA), estenose mitral, TEP com infarto."
       },
       {
             "id": "clinical",
             "title": "Apresentação Clínica",
-            "content": "Sinais e sintomas típicos e atípicos de Hemoptise - Manejo na Emergencia."
+            "content": "Sangue vivo rutilante, espumoso, com tosse. Pode ser desde estrias até sangue volumoso. Avaliar: volume estimado, tempo de início, sintomas associados (febre, perda de peso, dispneia). Hemoptise maciça: taquipneia, hipoxemia, instabilidade hemodinâmica."
       },
       {
             "id": "diagnosis",
             "title": "Diagnóstico",
-            "content": "Exames laboratoriais e de imagem para diagnóstico de Hemoptise - Manejo na Emergencia."
+            "content": "Rx tórax (localizar lesão — lado do sangramento). TC tórax com contraste (lesão estrutural, AV malformação). Broncoscopia: localiza sítio de sangramento, pode ser terapêutica. Laboratório: hemograma, coagulograma, tipagem sanguínea, função renal. BAAR + cultura se suspeita de TB."
       },
       {
             "id": "differential",
             "title": "Diagnóstico Diferencial",
-            "content": "Diagnósticos diferenciais importantes para Hemoptise - Manejo na Emergencia."
+            "content": "Hematemese (sangue escuro, com restos alimentares, associada a náuseas), epistaxe posterior (sangue deglutido), gengivorragia."
       },
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilização do paciente com Hemoptise - Manejo na Emergencia."
+            "content": "1. Posicionar em decúbito lateral com lado sangrante para BAIXO (proteger pulmão sadio); 2. O2 suplementar; 3. Acesso calibroso + tipagem; 4. Se maciça: IOT com tubo ≥8.0 (aspirar coágulos); 5. Broncoscopia de urgência; 6. Ácido tranexâmico 1g IV; 7. Corrigir coagulopatia."
       },
       {
             "id": "treatment",
             "title": "Abordagem Terapêutica",
-            "content": "Tratamento farmacológico e não farmacológico de Hemoptise - Manejo na Emergencia."
+            "content": "LEVE-MODERADA: repouso, codeína 30mg VO 6/6h (antitussígeno), investigar causa. MACIÇA: IOT precoce (tubo ≥8.0). Intubação seletiva do pulmão sadio se localizado. Ácido tranexâmico 1g IV (pode repetir). Broncoscopia rígida (hemostasia: adrenalina tópica, balão bloqueador). Embolização de artéria brônquica (radiologia intervencionista — eficácia 85-90%). Cirurgia de urgência se falha da embolização."
       },
       {
             "id": "prescriptions",
             "title": "Prescrições",
-            "content": "Prescrições padronizadas para Hemoptise - Manejo na Emergencia."
+            "content": "1. Ácido Tranexâmico 1g IV em 10min (pode repetir 8/8h); 2. Codeína 30mg VO 6/6h (antitussígeno); 3. SF 0,9% reposição volêmica conforme perdas; 4. Concentrado de hemácias se Hb <7; 5. Vitamina K 10mg IV se INR alargado; 6. Solicitar: Rx tórax, TC tórax, broncoscopia, hemograma, coagulograma, BAAR."
       },
       {
             "id": "followup",
             "title": "Acompanhamento",
-            "content": "Monitorização e seguimento de Hemoptise - Manejo na Emergencia."
+            "content": "Internação para investigação. Acompanhar Hb seriada. Se TB: iniciar RIPE após confirmação. Se bronquiectasia: fisioterapia respiratória, ATB se infecção. Se câncer: estadiamento e encaminhamento oncológico. Retorno ambulatorial em 1-2 semanas após alta."
       },
       {
             "id": "complications",
             "title": "Complicações",
-            "content": "Principais complicações de Hemoptise - Manejo na Emergencia e seu manejo."
+            "content": "Asfixia (causa principal de óbito), choque hipovolêmico, atelectasia por coágulo, pneumonia aspirativa, ressangramento pós-embolização (10-20%)."
       },
       {
             "id": "criteria",
             "title": "Critérios de Internação / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para Hemoptise - Manejo na Emergencia."
+            "content": "UTI: hemoptise maciça, instabilidade hemodinâmica, necessidade de IOT. Internação: hemoptise moderada, necessidade de investigação. Alta: hemoptise leve autolimitada, causa identificada e tratável ambulatorialmente."
       },
       {
             "id": "references",
             "title": "Referências Bibliográficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "SBPT — Hemoptise: abordagem diagnóstica e terapêutica 2023. BTS Guideline for Bronchoscopy 2024. Sakr L, Dutau H. Massive hemoptysis: an update. Respiration 2010."
       }
 ],
   },
