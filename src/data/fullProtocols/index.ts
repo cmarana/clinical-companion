@@ -124,6 +124,17 @@ import { neonatalFullProtocols3 } from "./neonatal3";
 import { respiratoryFullProtocols6 } from "./respiratory6";
 import { susProtocolsFullProtocols4 } from "./susProtocols4";
 
+// Batch 8 — expansion to 1000+
+import { cardioFullProtocols8 } from "./cardiology8";
+import { neuroFullProtocols6 } from "./neurology6";
+import { sepsisFullProtocols6 } from "./sepsis6";
+import { respiratoryFullProtocols7 } from "./respiratory7";
+import { metabolicFullProtocols6 } from "./metabolic6";
+import { infectiousFullProtocols6 } from "./infectious6";
+import { traumaFullProtocols5 } from "./trauma5";
+import { obstetricsFullProtocols6 } from "./obstetrics6";
+import { pediatricFullProtocols4 } from "./pediatric4";
+
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
   { id: "cardiology", title: "Cardiologia", order: 2 },
