@@ -16,7 +16,14 @@ export const neuroFullProtocols6: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definição",
-            "content": "Definição clínica e classificação de Sindrome de Guillain-Barre."
+            "content": "Síndrome de Guillain-Barré (SGB): polirradiculoneuropatia inflamatória aguda, autoimune, desmielinizante (mais comum) ou axonal, caracterizada por fraqueza muscular ascendente simétrica e arreflexia.
+
+Subtipos:
+• AIDP (Polirradiculoneuropatia Inflamatória Desmielinizante Aguda): 85-90% no Ocidente
+• AMAN (Neuropatia Axonal Motora Aguda): mais comum na Ásia
+• AMSAN (Neuropatia Axonal Sensitivo-Motora Aguda): mais grave
+• Síndrome de Miller Fisher: oftalmoplegia + ataxia + arreflexia (anti-GQ1b+)
+• Variantes: faringo-cervico-braquial, paraparética, sensitiva pura"
       },
       {
             "id": "screening",
@@ -31,12 +38,45 @@ export const neuroFullProtocols6: FullProtocol[] = [
       {
             "id": "clinical",
             "title": "Apresentação Clínica",
-            "content": "Sinais e sintomas típicos e atípicos de Sindrome de Guillain-Barre."
+            "content": "Quadro clínico típico (evolução em 2-4 semanas):
+• Fraqueza ascendente simétrica: inicia em MMII → MMSS → face → respiratório
+• Arreflexia ou hiporreflexia generalizada
+• Dor neuropática (65%): lombalgia, dor em membros
+• Parestesias distais (início frequente)
+• Paralisia facial bilateral (50%)
+• Disfagia e disartria (bulbar)
+• Disfunção autonômica (70%): taquicardia, bradicardia, hipotensão postural, retenção urinária, íleo paralítico
+• Insuficiência respiratória (30%): necessidade de VM
+
+História: 60-70% com infecção prévia (1-4 semanas antes):
+• Campylobacter jejuni (mais comum)
+• CMV, EBV, influenza, Zika, COVID-19
+• Vacinação (raro)
+
+Escala de Hughes (incapacidade funcional):
+0 = normal; 1 = sinais menores; 2 = anda sem apoio; 3 = anda com apoio; 4 = acamado; 5 = VM; 6 = óbito"
       },
       {
             "id": "diagnosis",
             "title": "Diagnóstico",
-            "content": "Exames laboratoriais e de imagem para diagnóstico de Sindrome de Guillain-Barre."
+            "content": "Diagnóstico:
+• CLÍNICO: fraqueza progressiva + arreflexia (critérios de Brighton)
+
+Líquor (punção lombar):
+• Dissociação albumino-citológica: proteína elevada (>45mg/dL) com celularidade normal (<10 céls/mm³)
+• Pode ser normal na 1ª semana — repetir se necessário
+• Celularidade >50: pensar em HIV, CMV, linfoma, sarcoidose
+
+Eletroneuromiografia (ENMG):
+• Realizar após 2 semanas do início
+• Desmielinizante (AIDP): redução da velocidade de condução, bloqueio de condução, aumento da latência distal
+• Axonal (AMAN/AMSAN): amplitude reduzida com velocidade preservada
+
+Exames complementares:
+• Anti-gangliosídeo: anti-GM1 (AMAN), anti-GQ1b (Miller Fisher), anti-GD1a
+• Sorologia: Campylobacter, CMV, HIV, Zika
+• RM de coluna: realce de raízes (gadolínio) — diferencial com compressão medular
+• CVF (Capacidade Vital Forçada): monitorizar 4-6x/dia — IOT se <20mL/kg ou queda >30%"
       },
       {
             "id": "differential",
@@ -51,12 +91,52 @@ export const neuroFullProtocols6: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapêutica",
-            "content": "Tratamento farmacológico e não farmacológico de Sindrome de Guillain-Barre."
+            "content": "Tratamento específico:
+• Imunoglobulina IV (IVIG): 0,4g/kg/dia por 5 dias (total 2g/kg)
+  - Iniciar se Hughes ≥3 ou progressão rápida
+  - Preferida em instabilidade autonômica
+• Plasmaférese: 5 sessões em dias alternados (200-250mL/kg volume total)
+  - Eficácia equivalente à IVIG
+  - Preferida se disponível precocemente
+• NÃO usar corticoides (sem benefício, podem piorar)
+• NÃO combinar IVIG + plasmaférese (sem benefício adicional)
+
+Suporte ventilatório:
+• Monitorizar CVF a cada 4-6h
+• IOT se: CVF <20mL/kg, PImax <-30cmH2O, PEmax <40cmH2O, queda >30% da CVF, hipoxemia ou hipercapnia
+• Regra 20-30-40: CVF <20, PImax <-30, PEmax <40 → intubar
+
+Manejo da dor:
+• Gabapentina 300-1200mg/dia VO
+• Pregabalina 75-300mg/dia VO
+• Carbamazepina se dor neuropática intensa
+• Opioides: tramadol como resgate
+
+Disfunção autonômica:
+• Monitorizar em UTI
+• Evitar manobras vagais bruscas
+• Tratar bradicardia sintomática com atropina
+• Hipotensão: volume + vasopressor se necessário"
       },
       {
             "id": "prescriptions",
             "title": "Prescrições",
-            "content": "Prescrições padronizadas para Sindrome de Guillain-Barre."
+            "content": "PRESCRIÇÃO — SGB (Hughes ≥3):
+
+1. Internação em UTI (se envolvimento bulbar ou respiratório)
+2. Jejum OU dieta por SNG (se disfagia)
+3. Imunoglobulina Humana IV 0,4g/kg/dia, diluída em SF 0,9%, infundir em 6-8h, por 5 dias consecutivos
+4. Omeprazol 40mg IV 1x/dia
+5. Enoxaparina 40mg SC 1x/dia (profilaxia TVP)
+6. Gabapentina 300mg VO 8/8h (titular até 1200mg/dia conforme dor)
+7. Metoclopramida 10mg IV 8/8h se náusea
+8. Monitorizar CVF a cada 4-6h — protocolo de IOT se CVF <20mL/kg
+9. Fisioterapia motora e respiratória 2x/dia
+10. Controle de PA e FC contínuo
+11. Balanço hídrico rigoroso
+12. Avaliação fonoaudiológica (deglutição)
+
+* Após IVIG sem melhora em 4 semanas: considerar 2º ciclo de IVIG ou plasmaférese"
       },
       {
             "id": "followup",
@@ -76,7 +156,11 @@ export const neuroFullProtocols6: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referências Bibliográficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "1. Van den Berg B et al. Guillain-Barré syndrome: pathogenesis, diagnosis, treatment and prognosis. Nat Rev Neurol 2014
+2. Willison HJ et al. Guillain-Barré syndrome. Lancet 2016
+3. Fokke C et al. Diagnosis of Guillain-Barré syndrome. Brain 2014
+4. ABN — Academia Brasileira de Neurologia — Consenso GBS 2022
+5. Hughes RA, Swan AV. Randomised trial of plasma exchange, intravenous immunoglobulin, and combined treatments in GBS. Lancet 1997"
       }
 ],
   },
