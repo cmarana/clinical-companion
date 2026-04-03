@@ -125,17 +125,17 @@ export const pediatricFullProtocols4: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilização do paciente com Pneumonia Pediatrica."
+            "content": "1. Classificar gravidade (OMS); 2. Rx torax se duvida diagnostica ou complicacao; 3. Hemograma + PCR se internacao; 4. Hemocultura se grave; 5. Ecografia pleural se derrame; 6. Reavaliar em 48-72h (ambulatorial); 7. Criterios de falha terapeutica: febre persistente >48h de ATB."
       },
       {
             "id": "treatment",
             "title": "Abordagem Terapêutica",
-            "content": "Tratamento farmacológico e não farmacológico de Pneumonia Pediatrica."
+            "content": "Classificacao OMS: Pneumonia (taquipneia isolada — ambulatorial), Pneumonia grave (tiragem subcostal — internacao), Pneumonia muito grave (sinais de perigo — UTI). ATB ambulatorial: Amoxicilina 50 mg/kg/dia VO 8/8h por 7 dias (1a escolha). Internacao: Ampicilina 200 mg/kg/dia EV 6/6h OU Penicilina Cristalina 200.000 UI/kg/dia EV 4/4h. Pneumonia muito grave ou complicada: Oxacilina 200 mg/kg/dia EV 6/6h + Ceftriaxona 100 mg/kg/dia EV 12/12h. Derrame pleural: drenagem se >1cm no decubito lateral (ecografia). Atipicos (>5 anos): Azitromicina 10 mg/kg/dia VO por 5 dias."
       },
       {
             "id": "prescriptions",
             "title": "Prescrições",
-            "content": "Prescrições padronizadas para Pneumonia Pediatrica."
+            "content": "1. Amoxicilina 50 mg/kg/dia VO 8/8h por 7 dias (ambulatorial); 2. Ampicilina 50 mg/kg/dose EV 6/6h (internacao); 3. Oxacilina 50 mg/kg/dose EV 6/6h + Ceftriaxona 50 mg/kg/dose EV 12/12h (complicada); 4. Azitromicina 10 mg/kg/dia VO por 5 dias (atipico); 5. O2 se SpO2 <92%; 6. Dipirona 15 mg/kg EV 6/6h (febre); 7. Hidratacao EV se recusa alimentar."
       },
       {
             "id": "followup",

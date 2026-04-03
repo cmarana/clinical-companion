@@ -46,7 +46,7 @@ export const emergencyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de PCR pos-Afogamento."
+            "content": "1. Retirar da agua com seguranca; 2. A-B-C (ventilacao e prioridade); 3. Imobilizacao cervical se trauma suspeito; 4. Monitorizar temperatura central; 5. Internar em UTI se qualquer sintoma respiratorio."
       },
       {
             "id": "treatment",
@@ -124,7 +124,7 @@ export const emergencyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de PCR no Trauma."
+            "content": "1. C-ABCDE; 2. Controle de hemorragia externa (torniquete, pressao direta); 3. Descompressao toracica bilateral empirica; 4. Pericardiocentese se tamponamento suspeito; 5. Acesso IO se impossibilidade venosa; 6. Toracotomia de ressuscitacao se indicacao."
       },
       {
             "id": "treatment",
@@ -202,7 +202,7 @@ export const emergencyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de PCR na Asma Fatal."
+            "content": "1. Desconectar ventilador e comprimir torax bilateralmente; 2. Descompressao toracica empirica; 3. Adrenalina + broncodilatadores agressivos; 4. VM com FR baixa e TE longo; 5. Pós-PCR: VM com auto-PEEP minima."
       },
       {
             "id": "treatment",
@@ -280,7 +280,7 @@ export const emergencyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de PCR na Anafilaxia."
+            "content": "1. ABCDE com foco em via aerea (edema rapido); 2. Adrenalina EV imediata; 3. Volume agressivo; 4. Identificar e remover alérgeno; 5. Observacao 24-48h (reacao bifasica)."
       },
       {
             "id": "treatment",
@@ -358,7 +358,7 @@ export const emergencyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Capnografia na Emergencia."
+            "content": "1. Instalar capnografia imediatamente apos IOT; 2. Se EtCO2 ausente pos-IOT: reposicionar tubo (intubacao esofagica); 3. Queda subita de EtCO2: verificar desconexao, extubacao acidental, PCR, TEP; 4. Aumento gradual: hipoventilacao, hipertermia maligna."
       },
       {
             "id": "treatment",
@@ -436,7 +436,7 @@ export const emergencyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Oxigenoterapia na Emergencia."
+            "content": "1. Avaliar grau de hipoxemia (relacao P/F); 2. Escolher dispositivo adequado; 3. Monitorizar resposta em 30-60 min; 4. Escalonar se sem resposta; 5. Criterios para IOT: FR >35, uso de musculatura acessoria, acidose respiratoria progressiva, ROX <3,85."
       },
       {
             "id": "treatment",
@@ -514,7 +514,7 @@ export const emergencyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Via Aerea Pediatrica."
+            "content": "1. Preparar 2 laminas e 2 tubos (0,5mm acima e abaixo); 2. Aspiracao sob visao direta; 3. Pre-oxigenacao 3 min; 4. Sequencia rapida de intubacao; 5. Confirmacao: capnografia + ausculta + Rx; 6. Via aerea dificil: mascara laringea como resgate."
       },
       {
             "id": "treatment",
@@ -592,7 +592,7 @@ export const emergencyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Cuidados Pos-Parada (ROSC)."
+            "content": "1. Cateter de PAI + PVC; 2. Ecocardiograma nas primeiras 24h; 3. EEG continuo por 24-48h; 4. TC cranio se coma persistente; 5. Cateterismo se suspeita de SCA; 6. Reaquecimento lento (0,25C/h) apos 24h de TTM."
       },
       {
             "id": "treatment",
@@ -670,7 +670,7 @@ export const emergencyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Triagem em Desastre."
+            "content": "1. Seguranca da cena (perigo para equipe?); 2. Dimensionamento rapido (numero estimado de vitimas); 3. Acionamento de protocolo de IMV; 4. Triagem START/JumpSTART; 5. Tratamento no PMA; 6. Transporte por prioridade (vermelho primeiro)."
       },
       {
             "id": "treatment",
@@ -748,7 +748,7 @@ export const emergencyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Queimadura Quimica."
+            "content": "1. Remover roupas contaminadas com EPI; 2. Irrigacao imediata e prolongada; 3. Identificar agente quimico (FISPQ); 4. Avaliar SCQ e profundidade; 5. Criterios de encaminhamento para CTQ."
       },
       {
             "id": "treatment",
@@ -826,7 +826,7 @@ export const emergencyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Exposicao a Radiacao."
+            "content": "1. Seguranca radiologica (dosimetro, EPI, distancia); 2. Descontaminacao externa; 3. Triagem por tempo de emese (< 1h = dose alta); 4. Hemograma + linfocitos seriados (queda rapida = dose letal); 5. Contatar CNEN e vigilancia sanitaria."
       },
       {
             "id": "treatment",
@@ -904,7 +904,7 @@ export const emergencyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Incidente Quimico (HAZMAT)."
+            "content": "1. NAO entrar na zona quente sem EPI adequado; 2. Descontaminacao ANTES do tratamento; 3. Identificar agente (FISPQ, sinais clinicos); 4. Antidotos especificos precoces; 5. Observacao 24h (edema pulmonar tardio com cloro/fosgenio); 6. Notificar CEATOX + Defesa Civil."
       },
       {
             "id": "treatment",

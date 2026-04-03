@@ -46,7 +46,7 @@ export const pediatricFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Anafilaxia Pediatrica."
+            "content": "1. ABCDE; 2. Adrenalina IM IMEDIATA; 3. Posicao supina com MMII elevados; 4. Acesso venoso calibroso; 5. Volume agressivo; 6. Identificar e remover alérgeno; 7. Encaminhar para alergista na alta."
       },
       {
             "id": "treatment",
@@ -124,7 +124,7 @@ export const pediatricFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de TCE Pediatrico."
+            "content": "1. ABCDE + imobilizacao cervical; 2. Glasgow seriado (a cada 30 min nas primeiras 2h); 3. TC cranio conforme criterios PECARN; 4. IOT se Glasgow <=8; 5. Cabeceira 30 graus, pescoco alinhado; 6. Neurocirurgiao se lesao cirurgica."
       },
       {
             "id": "treatment",
@@ -202,7 +202,7 @@ export const pediatricFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Maus-Tratos na Crianca."
+            "content": "1. Estabilizacao clinica prioritaria; 2. Anamnese detalhada (entrevistar cuidadores separadamente); 3. Exame fisico completo (despir totalmente); 4. Notificacao OBRIGATORIA ao Conselho Tutelar; 5. Ficha de notificacao compulsoria (SINAN); 6. NAO confrontar agressor na emergencia; 7. Equipe multidisciplinar (servico social, psicologia)."
       },
       {
             "id": "treatment",
@@ -358,7 +358,7 @@ export const pediatricFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Corpo Estranho em Via Aerea Pediatrica."
+            "content": "1. Avaliar via aerea (ABCDE); 2. Rx para localizar CE; 3. Identificar tipo de CE (pilha, ima, pontiagudo — urgencia); 4. Pilha em esofago = emergencia endoscopica; 5. Objeto rombudo gastrico: observacao + Rx seriado; 6. Orientar pais sobre sinais de alarme na alta."
       },
       {
             "id": "treatment",
@@ -514,7 +514,7 @@ export const pediatricFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Infeccao Urinaria Pediatrica."
+            "content": "1. Coleta adequada de urina (cateterismo em lactentes); 2. EAS + urocultura ANTES de ATB; 3. ATB empirico conforme idade e gravidade; 4. Ajustar ATB conforme antibiograma; 5. ECO renal; 6. UCM se indicada; 7. Profilaxia com Nitrofurantoina 1 mg/kg/dia se RVU graus III-V."
       },
       {
             "id": "treatment",
@@ -670,7 +670,7 @@ export const pediatricFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Diabetes Tipo 1 - Diagnostico na Crianca."
+            "content": "1. Confirmar CAD (glicemia, pH, cetonas); 2. Peso real do paciente; 3. Hidratacao cautelosa; 4. Insulina EV continua (SEM bolus); 5. Monitorizar K a cada 2h; 6. Avaliar sinais de edema cerebral a cada hora; 7. Glasgow seriado."
       },
       {
             "id": "treatment",
@@ -748,7 +748,7 @@ export const pediatricFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Crise Falcemica Pediatrica."
+            "content": "1. Analgesia imediata (nao retardar por exames); 2. Hemograma + reticulocitos; 3. Rx torax se febre ou sintomas respiratorios; 4. Hemocultura se febre; 5. Tipagem sanguinea + prova cruzada; 6. Avaliar necessidade de transfusao; 7. Contactar hematologista se STA ou AVC."
       },
       {
             "id": "treatment",
@@ -826,7 +826,7 @@ export const pediatricFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Epistaxe Pediatrica."
+            "content": "1. Comprimir e manter calma (tranquilizar pais); 2. Sentar com cabeca levemente inclinada para frente; 3. Se falha em 15 min: tamponamento anterior; 4. Se refratario: avaliacao otorrino; 5. Investigar coagulopatia se recorrente."
       },
       {
             "id": "treatment",
@@ -904,7 +904,7 @@ export const pediatricFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Otite Media Aguda Pediatrica."
+            "content": "1. Otoscopia pneumatica; 2. Classificar gravidade; 3. Decidir: observacao vs ATB imediato; 4. Analgesia SEMPRE; 5. Reavaliacao em 48-72h se observacao; 6. Encaminhar otorrino se OMA recorrente (>=3 em 6 meses ou >=4 em 12 meses)."
       },
       {
             "id": "treatment",

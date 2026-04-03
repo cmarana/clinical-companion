@@ -46,7 +46,7 @@ export const emergencyFullProtocols4: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com PCR na Crianca."
+            "content": "1. Confirmar ausencia de pulso central (braquial <1 ano, carotideo/femoral >1 ano) em <10 segundos; 2. Iniciar compressoes imediatas (C-A-B); 3. Monitorizar ritmo assim que disponivel; 4. Acesso vascular: EV preferencial, IO se falha em 60s; 5. Adrenalina precoce; 6. Identificar e tratar causa reversivel; 7. Cuidados pos-PCR: normotermia terapeutica, evitar hiperoxia, manter SpO2 94-99%."
       },
       {
             "id": "treatment",
@@ -124,7 +124,7 @@ export const emergencyFullProtocols4: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Obstrucao Total de Via Aerea."
+            "content": "1. Avaliar grau de obstrucao (parcial vs total); 2. Obstrucao parcial com boa troca: manter posicao confortavel, encaminhar para broncoscopia; 3. Obstrucao total: manobras imediatas conforme idade; 4. Chamar equipe de via aerea; 5. Preparar material de IOT e cricotireoidostomia."
       },
       {
             "id": "treatment",
@@ -202,7 +202,7 @@ export const emergencyFullProtocols4: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Anafilaxia Refrataria."
+            "content": "1. ABCDE + IOT precoce se edema de via aerea; 2. Adrenalina IM imediata; 3. Dois acessos venosos calibrosos; 4. Expansao volemica agressiva; 5. Se 3 doses IM sem resposta: adrenalina EV continua; 6. Monitorizacao invasiva (PAI); 7. Observacao minima 24h (reacao bifasica em 5-20%)."
       },
       {
             "id": "treatment",
@@ -280,7 +280,7 @@ export const emergencyFullProtocols4: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com PCR na Hipotermia."
+            "content": "1. Mover com cuidado (risco de FV por manipulacao); 2. Monitorizacao continua; 3. Verificar temperatura esofagica/retal; 4. Se T <30C + PCR: considerar ECMO/bypass; 5. NAO declarar obito ate T >35C com RCP prolongada sem resposta."
       },
       {
             "id": "treatment",
@@ -358,7 +358,7 @@ export const emergencyFullProtocols4: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com PCR por Intoxicacao Medicamentosa."
+            "content": "1. ABCDE + descontaminacao se indicada; 2. Identificar agente e dose; 3. Contatar CEATOX; 4. Antidoto especifico precoce; 5. RCP prolongada (drogas podem ser metabolizadas); 6. Considerar emulsao lipidica em intoxicacao grave por lipofílicos."
       },
       {
             "id": "treatment",
@@ -436,7 +436,7 @@ export const emergencyFullProtocols4: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com ECMO na Emergencia."
+            "content": "1. Indicacao por equipe multidisciplinar; 2. Time de canulacao em <30 min; 3. Manter compressoes durante canulacao; 4. Confirmar posicao dos cateteres (Rx/fluoroscopia); 5. Instalar cateter de reperfusao distal (VA); 6. Ecocardiograma diario; 7. Reavaliar indicacao a cada 24-48h."
       },
       {
             "id": "treatment",
@@ -514,7 +514,7 @@ export const emergencyFullProtocols4: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Transporte do Paciente Critico."
+            "content": "1. Decisao medica de transportar (risco-beneficio); 2. Comunicacao com equipe receptora; 3. Checklist SOAP-ME; 4. Equipe minima: medico + enfermeiro; 5. Documentacao completa; 6. Reavaliacao continua durante transporte."
       },
       {
             "id": "treatment",

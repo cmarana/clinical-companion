@@ -46,7 +46,7 @@ export const neonatalFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Taquipneia Transitoria do RN."
+            "content": "1. Excluir outras causas (pneumonia, SAM, cardiopatia); 2. Suporte ventilatório minimo; 3. Rx torax; 4. Se nao melhora em 72h: reavaliar diagnostico; 5. Hemograma se suspeita de infeccao associada."
       },
       {
             "id": "treatment",
@@ -124,7 +124,7 @@ export const neonatalFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Sindrome de Aspiracao Meconial."
+            "content": "1. Avaliar vigor ao nascer; 2. Suporte ventilatorio escalonado; 3. Rx torax (infiltrado grosseiro, hiperinsuflacao); 4. Ecocardiograma se suspeita de HPPN; 5. Monitorizar SpO2 pre e pos-ductal; 6. Se diferenca >5%: HPPN provavel."
       },
       {
             "id": "treatment",
@@ -280,7 +280,7 @@ export const neonatalFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de PCA - Persistencia do Canal Arterial."
+            "content": "1. Ecocardiograma confirmatório; 2. Avaliar significancia hemodinamica; 3. Restricao hidrica; 4. Tratamento farmacologico (ate 2 ciclos); 5. Se falha: ligadura cirurgica; 6. Acompanhamento cardiológico."
       },
       {
             "id": "treatment",
@@ -358,7 +358,7 @@ export const neonatalFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Kernicterus - Prevencao e Manejo."
+            "content": "1. BT + TSB conforme horas de vida; 2. Nomograma de Bhutani (classificar risco); 3. Fototerapia conforme curva AAP; 4. Se sinais de encefalopatia: EST IMEDIATA; 5. Investigar etiologia: isoimunizacao, G6PD, esferocitose; 6. Acompanhamento audiologico (BERA)."
       },
       {
             "id": "treatment",
@@ -670,7 +670,7 @@ export const neonatalFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Hemorragia Intraventricular do Prematuro."
+            "content": "1. USG transfontanelar nas primeiras 72h e com 7 dias; 2. Classificar grau; 3. Prevencao: manipulacao minima, cabeceira elevada, linha media; 4. Monitorizar perimetro cefalico diario; 5. Se dilatacao ventricular progressiva: neurocirurgia."
       },
       {
             "id": "treatment",
@@ -748,7 +748,7 @@ export const neonatalFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Displasia Broncopulmonar."
+            "content": "1. VM protetora (volume corrente baixo, PEEP otimo); 2. Extubar precocemente para CPAP/CNAF; 3. Cafeina precoce (primeiras 72h); 4. Restricao hidrica moderada; 5. Monitorizar ganho ponderal; 6. Alta com O2 domiciliar se necessario."
       },
       {
             "id": "treatment",

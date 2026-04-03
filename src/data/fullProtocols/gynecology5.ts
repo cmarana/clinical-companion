@@ -46,7 +46,7 @@ export const gynecologyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Cisto Ovariano Roto."
+            "content": "1. ABCDE + estabilizacao hemodinamica; 2. beta-hCG para excluir ectopica; 3. USG TV (liquido livre, tamanho do cisto); 4. Hemograma seriado (queda de Hb sugere sangramento ativo); 5. Estavel: tratamento conservador; 6. Instavel ou piora: laparoscopia de emergencia."
       },
       {
             "id": "treatment",
@@ -124,7 +124,7 @@ export const gynecologyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Mola Hidatiforme."
+            "content": "1. Confirmar diagnostico (USG + beta-hCG); 2. Reservar 2 CH; 3. Esvaziamento uterino por vacuoaspiracao; 4. Seguimento rigoroso com beta-hCG; 5. Encaminhar para centro de referencia em DTG; 6. Suspicao de NTG: plato ou ascensão de beta-hCG."
       },
       {
             "id": "treatment",
@@ -202,7 +202,7 @@ export const gynecologyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Mastite e Abscesso Mamario."
+            "content": "1. Manter amamentacao bilateral; 2. Orientar esvaziamento completo da mama; 3. ATB se febre >38,5C por >24h ou piora; 4. USG mamaria se massa palpavel ou sem resposta em 48h; 5. Drenagem se abscesso confirmado; 6. Reavaliar em 48-72h."
       },
       {
             "id": "treatment",
@@ -436,7 +436,7 @@ export const gynecologyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Hiperemese Gravidica."
+            "content": "1. Excluir outras causas de vomitos (ITU, mola, obstrucao); 2. Avaliar grau de desidratacao; 3. Tiamina ANTES de qualquer infusao com glicose; 4. Corrigir eletrolitos; 5. Reintroduzir dieta progressivamente; 6. Alta quando tolerar VO sem vomitos por 24h."
       },
       {
             "id": "treatment",
@@ -592,7 +592,7 @@ export const gynecologyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Contracepcao de Emergencia."
+            "content": "1. Calcular tempo desde a relacao; 2. Excluir gravidez atual; 3. Escolher metodo conforme tempo e IMC; 4. Orientar que NAO é abortiva; 5. Aconselhar metodo contraceptivo de longo prazo; 6. Seguimento se atraso menstrual."
       },
       {
             "id": "treatment",
