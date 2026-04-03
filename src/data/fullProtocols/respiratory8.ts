@@ -11,12 +11,12 @@ export const respiratoryFullProtocols8: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Tuberculose Pulmonar - Manejo Respiratorio na emergencia."
+            "content": "A tuberculose pulmonar (TB) é a doença infecciosa que mais mata no mundo. No Brasil, são 70.000 casos novos/ano. Baciloscopia de escarro (BAAR) e teste rápido molecular (TRM-TB/GeneXpert) são fundamentais para diagnóstico rápido. Esquema RIPE por 6 meses. MS/PNCT 2021."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Tuberculose Pulmonar - Manejo Respiratorio."
+            "content": "Infecção pelo Mycobacterium tuberculosis com acometimento pulmonar. TB pulmonar bacilífera: BAAR positivo no escarro (principal forma de transmissão). Classificação: caso novo, recidiva, retratamento após abandono. TB resistente: monorresistência, polirresistência, MDR (R+H), XDR."
       },
       {
             "id": "screening",
@@ -26,17 +26,17 @@ export const respiratoryFullProtocols8: FullProtocol[] = [
       {
             "id": "etiology",
             "title": "Etiologia",
-            "content": "Causas e fatores de risco para Tuberculose Pulmonar - Manejo Respiratorio."
+            "content": "Mycobacterium tuberculosis (bacilo de Koch). Transmissão por aerossóis. Fatores de risco: HIV (principal), diabetes, imunossupressão, silicose, tabagismo, alcoolismo, uso de drogas, privação de liberdade, situação de rua, contato domiciliar."
       },
       {
             "id": "clinical",
             "title": "Apresentacao Clinica",
-            "content": "Sinais e sintomas de Tuberculose Pulmonar - Manejo Respiratorio."
+            "content": "Tosse produtiva ≥3 semanas (principal — investigar sempre!), hemoptise, febre vespertina, sudorese noturna, emagrecimento. RX: infiltrado em lobos superiores, cavitações. TB miliar: disseminação hematogênica (micronódulos difusos). HIV+: apresentação atípica (sem cavitação, infiltrados em bases)."
       },
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Exames para diagnostico de Tuberculose Pulmonar - Manejo Respiratorio."
+            "content": "Baciloscopia de escarro (BAAR) — 2 amostras. TRM-TB (GeneXpert): resultado em 2h, detecta resistência a rifampicina. Cultura em meio líquido (MGIT) e sólido (Löwenstein-Jensen) — 2-8 semanas. RX tórax. TST/PPD (ILTB). IGRA (quando disponível). HIV obrigatório para todos os casos de TB."
       },
       {
             "id": "differential",
@@ -51,32 +51,32 @@ export const respiratoryFullProtocols8: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento de Tuberculose Pulmonar - Manejo Respiratorio."
+            "content": "Esquema RIPE (2RHZE/4RH): Fase intensiva (2 meses): Rifampicina 600mg + Isoniazida 300mg + Pirazinamida 1600mg + Etambutol 1100mg (doses para >50kg), 1x/dia. Fase de manutenção (4 meses): Rifampicina 600mg + Isoniazida 300mg, 1x/dia. Comprimido de dose fixa combinada (4 em 1). TB meníngea: 12 meses + corticoide. TB MDR: esquema especial com fluoroquinolona, aminoglicosídeo, etc."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes para Tuberculose Pulmonar - Manejo Respiratorio."
+            "content": "1. RIPE dose fixa combinada (>50kg): 4 comprimidos/dia em jejum (Fase I: 2 meses); 2. RH dose fixa combinada: 2 comprimidos/dia (Fase II: 4 meses); 3. Piridoxina (Vit B6) 50mg/dia (prevenção de neuropatia por isoniazida); 4. Solicitar: HIV, hepatograma basal, creatinina, ácido úrico, hemograma; 5. Notificação compulsória; 6. Isolamento respiratório (precaução por aerossóis — máscara N95)."
       },
       {
             "id": "followup",
             "title": "Acompanhamento",
-            "content": "Seguimento de Tuberculose Pulmonar - Manejo Respiratorio."
+            "content": "BAAR mensal (2°, 4° e 6° meses). Cultura no 2° mês (se BAAR+ → suspeitar resistência). Hepatograma se sintomas ou risco (hepatopatia, HIV, >60 anos). Alta por cura: tratamento completo + 2 BAAR negativos. Controle de contatos: TST + RX tórax. DOTS (tratamento diretamente observado): indicado para todos."
       },
       {
             "id": "complications",
             "title": "Complicacoes",
-            "content": "Complicacoes de Tuberculose Pulmonar - Manejo Respiratorio."
+            "content": "Hepatotoxicidade (RIPE — suspender se TGO/TGP >5x), neuropatia periférica (isoniazida — prevenir com piridoxina), artralgia/hiperuricemia (pirazinamida), neurite óptica (etambutol), nefrite intersticial (rifampicina). TB resistente: principal complicação do abandono."
       },
       {
             "id": "criteria",
             "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Criterios para Tuberculose Pulmonar - Manejo Respiratorio."
+            "content": "Isolamento: todos os casos bacilíferos até negativação do BAAR (geralmente 2-3 semanas de RIPE). Internação: TB grave (miliar, meníngea), falência respiratória, comorbidade grave, efeitos adversos graves. Alta: tratamento ambulatorial é a regra."
       },
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Diretrizes atualizadas."
+            "content": "Manual de Recomendações para o Controle da TB — MS/PNCT 2021. WHO — Global Tuberculosis Report 2023. SBPT — III Diretrizes para TB 2009."
       }
 ],
   },  {
@@ -89,12 +89,12 @@ export const respiratoryFullProtocols8: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Bronquiectasia Exacerbada na emergencia."
+            "content": "Bronquiectasia é a dilatação anormal e permanente dos brônquios. As exacerbações são causa frequente de internação e declínio da função pulmonar. Pseudomonas aeruginosa é o patógeno mais relevante. Antibioticoterapia guiada por cultura de escarro é essencial. BTS/ERS 2021."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Bronquiectasia Exacerbada."
+            "content": "Exacerbação de bronquiectasia: piora dos sintomas respiratórios (volume/purulência de escarro, dispneia, tosse, hemoptise) requerendo mudança no tratamento. Diagnóstico de bronquiectasia: TC tórax com dilatação brônquica irreversível (razão brônquio/artéria >1, falta de afilamento, brônquios visíveis na periferia)."
       },
       {
             "id": "screening",
@@ -129,12 +129,12 @@ export const respiratoryFullProtocols8: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento de Bronquiectasia Exacerbada."
+            "content": "ATB empírico guiado por cultura prévia: Sem Pseudomonas anterior: Amoxicilina-Clavulanato 875/125mg VO 12/12h × 14 dias OU Azitromicina 500mg/dia × 3 dias. Com Pseudomonas: Ciprofloxacino 500mg VO 12/12h × 14 dias OU Ceftazidima 2g IV 8/8h (se grave). Colonização crônica por Pseudomonas: tobramicina inalatória. Fisioterapia respiratória: drenagem postural, flutter, exercícios respiratórios (FUNDAMENTAL). Hemoptise: ácido tranexâmico, embolização se maciça."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes para Bronquiectasia Exacerbada."
+            "content": "1. Amoxicilina-Clavulanato 875/125mg VO 12/12h × 14 dias (sem Pseudomonas); 2. OU Ciprofloxacino 500mg VO 12/12h × 14 dias (com Pseudomonas); 3. Salbutamol nebulização 5mg 6/6h; 4. SF 0,9% nebulização (umidificação); 5. Fisioterapia respiratória 2-3x/dia; 6. Colher cultura de escarro ANTES de iniciar ATB; 7. Se grave: Ceftazidima 2g IV 8/8h + Amicacina 15mg/kg/dia."
       },
       {
             "id": "followup",
@@ -154,7 +154,7 @@ export const respiratoryFullProtocols8: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Diretrizes atualizadas."
+            "content": "ERS Guidelines for Bronchiectasis 2017. BTS Guideline for Bronchiectasis 2019. Chalmers JD et al. Lancet Respir Med 2018."
       }
 ],
   },  {
@@ -245,12 +245,12 @@ export const respiratoryFullProtocols8: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Pneumonia Aspirativa na emergencia."
+            "content": "A pneumonia aspirativa resulta da aspiração de conteúdo orofaríngeo colonizado para as vias aéreas inferiores. É responsável por 5-15% das pneumonias comunitárias. Fatores de risco: disfagia, rebaixamento de consciência, DRGE, idade avançada. Cobertura para anaeróbios é classicamente recomendada, embora evidência recente questione."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Pneumonia Aspirativa."
+            "content": "Pneumonite aspirativa: aspiração química (conteúdo gástrico ácido) — resposta inflamatória sem infecção (síndrome de Mendelson). Pneumonia aspirativa: aspiração de material colonizado da orofaringe → infecção bacteriana. Distinção importante para decisão terapêutica."
       },
       {
             "id": "screening",
@@ -285,12 +285,12 @@ export const respiratoryFullProtocols8: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento de Pneumonia Aspirativa."
+            "content": "Pneumonia aspirativa: Amoxicilina-Clavulanato 875/125mg VO 12/12h OU Ampicilina-Sulbactam 3g IV 6/6h OU Clindamicina 600mg IV 8/8h (se alergia a penicilina). Se suspeita de Gram-negativos (nosocomial, aspiração hospitalar): Piperacilina-Tazobactam 4,5g IV 6/6h OU Ceftriaxona + Metronidazol. Pneumonite aspirativa: suporte (O2, VM SN), sem ATB nas primeiras 48h (iniciar se não melhorar). Prevenção: cabeceira elevada 30°, dieta adequada (fonoaudiologia), suspender VO se disfagia grave."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes para Pneumonia Aspirativa."
+            "content": "1. Ampicilina-Sulbactam 3g IV 6/6h (1ª escolha hospitalar); 2. OU Amoxicilina-Clavulanato 875/125mg VO 12/12h × 7-10 dias; 3. OU Clindamicina 600mg IV 8/8h (se alergia penicilina); 4. O2 cateter/máscara para SpO2 >92%; 5. Cabeceira elevada 30-45°; 6. Avaliação fonoaudiológica (disfagia); 7. Dieta suspensa até avaliação de deglutição."
       },
       {
             "id": "followup",
@@ -310,7 +310,7 @@ export const respiratoryFullProtocols8: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Diretrizes atualizadas."
+            "content": "Mandell LA, Niederman MS. NEJM 2019. Marik PE. Aspiration Pneumonitis and Pneumonia. NEJM 2001. IDSA/ATS Guidelines for CAP 2019."
       }
 ],
   },  {
