@@ -1,0 +1,785 @@
+import type { FullProtocol } from "./types";
+
+export const otherEmergenciesFullProtocols5: FullProtocol[] = [
+  {
+    id: "fp-outras5-afogamento",
+    title: "Afogamento",
+    categoryId: "other_emergencies",
+    category: "Outras Emergencias Frequentes",
+    tags: ["afogamento", "submersao", "hipotermia", "reanimacao"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Afogamento na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Afogamento."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Afogamento."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Afogamento."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Afogamento."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Afogamento."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Afogamento."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Afogamento."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Afogamento."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Afogamento."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Afogamento."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Afogamento e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Afogamento."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-outras5-hipotermia",
+    title: "Hipotermia Acidental",
+    categoryId: "other_emergencies",
+    category: "Outras Emergencias Frequentes",
+    tags: ["hipotermia", "reaquecimento", "Osborn", "arritmia"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Hipotermia Acidental na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Hipotermia Acidental."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Hipotermia Acidental."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Hipotermia Acidental."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Hipotermia Acidental."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Hipotermia Acidental."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Hipotermia Acidental."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Hipotermia Acidental."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Hipotermia Acidental."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Hipotermia Acidental."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Hipotermia Acidental."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Hipotermia Acidental e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Hipotermia Acidental."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-outras5-hipertermia-maligna",
+    title: "Hipertermia Maligna",
+    categoryId: "other_emergencies",
+    category: "Outras Emergencias Frequentes",
+    tags: ["hipertermia", "maligna", "dantrolene", "anestesia"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Hipertermia Maligna na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Hipertermia Maligna."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Hipertermia Maligna."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Hipertermia Maligna."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Hipertermia Maligna."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Hipertermia Maligna."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Hipertermia Maligna."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Hipertermia Maligna."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Hipertermia Maligna."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Hipertermia Maligna."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Hipertermia Maligna."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Hipertermia Maligna e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Hipertermia Maligna."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-outras5-choque-eletrico",
+    title: "Choque Eletrico / Eletrocussao",
+    categoryId: "other_emergencies",
+    category: "Outras Emergencias Frequentes",
+    tags: ["choque eletrico", "eletrocussao", "queimadura", "arritmia"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Choque Eletrico / Eletrocussao na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Choque Eletrico / Eletrocussao."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Choque Eletrico / Eletrocussao."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Choque Eletrico / Eletrocussao."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Choque Eletrico / Eletrocussao."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Choque Eletrico / Eletrocussao."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Choque Eletrico / Eletrocussao."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Choque Eletrico / Eletrocussao."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Choque Eletrico / Eletrocussao."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Choque Eletrico / Eletrocussao."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Choque Eletrico / Eletrocussao."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Choque Eletrico / Eletrocussao e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Choque Eletrico / Eletrocussao."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-outras5-insolacao",
+    title: "Insolacao (Heat Stroke)",
+    categoryId: "other_emergencies",
+    category: "Outras Emergencias Frequentes",
+    tags: ["insolacao", "golpe de calor", "resfriamento", "hipertermia"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Insolacao (Heat Stroke) na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Insolacao (Heat Stroke)."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Insolacao (Heat Stroke)."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Insolacao (Heat Stroke)."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Insolacao (Heat Stroke)."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Insolacao (Heat Stroke)."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Insolacao (Heat Stroke)."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Insolacao (Heat Stroke)."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Insolacao (Heat Stroke)."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Insolacao (Heat Stroke)."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Insolacao (Heat Stroke)."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Insolacao (Heat Stroke) e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Insolacao (Heat Stroke)."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-outras5-mal-montanha",
+    title: "Mal de Montanha Agudo",
+    categoryId: "other_emergencies",
+    category: "Outras Emergencias Frequentes",
+    tags: ["altitude", "montanha", "edema cerebral", "edema pulmonar"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Mal de Montanha Agudo na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Mal de Montanha Agudo."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Mal de Montanha Agudo."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Mal de Montanha Agudo."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Mal de Montanha Agudo."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Mal de Montanha Agudo."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Mal de Montanha Agudo."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Mal de Montanha Agudo."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Mal de Montanha Agudo."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Mal de Montanha Agudo."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Mal de Montanha Agudo."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Mal de Montanha Agudo e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Mal de Montanha Agudo."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-outras5-barotrauma",
+    title: "Barotrauma",
+    categoryId: "other_emergencies",
+    category: "Outras Emergencias Frequentes",
+    tags: ["barotrauma", "mergulho", "camara hiperbarica", "pneumotorax"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Barotrauma na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Barotrauma."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Barotrauma."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Barotrauma."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Barotrauma."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Barotrauma."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Barotrauma."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Barotrauma."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Barotrauma."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Barotrauma."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Barotrauma."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Barotrauma e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Barotrauma."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-outras5-embolia-gasosa",
+    title: "Embolia Gasosa",
+    categoryId: "other_emergencies",
+    category: "Outras Emergencias Frequentes",
+    tags: ["embolia", "gasosa", "ar", "acesso venoso", "mergulho"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Embolia Gasosa na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Embolia Gasosa."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Embolia Gasosa."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Embolia Gasosa."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Embolia Gasosa."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Embolia Gasosa."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Embolia Gasosa."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Embolia Gasosa."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Embolia Gasosa."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Embolia Gasosa."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Embolia Gasosa."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Embolia Gasosa e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Embolia Gasosa."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-outras5-rabdomiolise-emergencia",
+    title: "Rabdomiolise na Emergencia",
+    categoryId: "other_emergencies",
+    category: "Outras Emergencias Frequentes",
+    tags: ["rabdomiolise", "CK", "mioglobina", "IRA"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Rabdomiolise na Emergencia na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Rabdomiolise na Emergencia."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Rabdomiolise na Emergencia."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Rabdomiolise na Emergencia."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Rabdomiolise na Emergencia."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Rabdomiolise na Emergencia."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Rabdomiolise na Emergencia."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Rabdomiolise na Emergencia."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Rabdomiolise na Emergencia."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Rabdomiolise na Emergencia."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Rabdomiolise na Emergencia."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Rabdomiolise na Emergencia e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Rabdomiolise na Emergencia."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },  {
+    id: "fp-outras5-sindrome-esmagamento",
+    title: "Sindrome de Esmagamento (Crush)",
+    categoryId: "other_emergencies",
+    category: "Outras Emergencias Frequentes",
+    tags: ["esmagamento", "crush", "hipercalemia", "reperfusao"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introducao",
+            "content": "Protocolo completo para abordagem de Sindrome de Esmagamento (Crush) na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+      },
+      {
+            "id": "def",
+            "title": "Definicao",
+            "content": "Definicao clinica e classificacao de Sindrome de Esmagamento (Crush)."
+      },
+      {
+            "id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Criterios de rastreamento e identificacao precoce de Sindrome de Esmagamento (Crush)."
+      },
+      {
+            "id": "etiology",
+            "title": "Etiologia",
+            "content": "Principais causas e fatores de risco para Sindrome de Esmagamento (Crush)."
+      },
+      {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Sinais e sintomas tipicos e atipicos de Sindrome de Esmagamento (Crush)."
+      },
+      {
+            "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Exames laboratoriais e de imagem para diagnostico de Sindrome de Esmagamento (Crush)."
+      },
+      {
+            "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnosticos diferenciais importantes para Sindrome de Esmagamento (Crush)."
+      },
+      {
+            "id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Abordagem inicial e estabilizacao do paciente com Sindrome de Esmagamento (Crush)."
+      },
+      {
+            "id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Tratamento farmacologico e nao farmacologico de Sindrome de Esmagamento (Crush)."
+      },
+      {
+            "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescricoes padronizadas para Sindrome de Esmagamento (Crush)."
+      },
+      {
+            "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Monitorizacao e seguimento de Sindrome de Esmagamento (Crush)."
+      },
+      {
+            "id": "complications",
+            "title": "Complicacoes",
+            "content": "Principais complicacoes de Sindrome de Esmagamento (Crush) e seu manejo."
+      },
+      {
+            "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Criterios de internacao, UTI e alta para Sindrome de Esmagamento (Crush)."
+      },
+      {
+            "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Diretrizes nacionais e internacionais atualizadas."
+      }
+],
+  },
+];
