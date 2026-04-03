@@ -190,6 +190,26 @@ import { intoxicationFullProtocols5 } from "./intoxication5";
 import { gastroFullProtocols5 } from "./gastroenterology5";
 import { otherEmergenciesFullProtocols6 } from "./other_emergencies6";
 
+// Batch 12 — expansion to 1000+
+import { cardioFullProtocols12 } from "./cardiology12";
+import { neuroFullProtocols10 } from "./neurology10";
+import { sepsisFullProtocols8 } from "./sepsis8";
+import { respiratoryFullProtocols9 } from "./respiratory9";
+import { metabolicFullProtocols8 } from "./metabolic8";
+import { infectiousFullProtocols8 } from "./infectious8";
+import { traumaFullProtocols8 } from "./trauma8";
+import { obstetricsFullProtocols9 } from "./obstetrics9";
+import { pediatricFullProtocols6 } from "./pediatric6";
+import { neonatalFullProtocols6 } from "./neonatal6";
+import { proceduresFullProtocols7 } from "./procedures7";
+import { intoxicationFullProtocols6 } from "./intoxication6";
+import { emergencyFullProtocols6 } from "./emergency6";
+import { gastroFullProtocols6 } from "./gastroenterology6";
+import { nephrologyFullProtocols6 } from "./nephrology6";
+import { psychiatryFullProtocols6 } from "./psychiatry6";
+import { otherEmergenciesFullProtocols7 } from "./other_emergencies7";
+import { dermatologyFullProtocols7 } from "./dermatology7";
+import { finalExpansionProtocols } from "./finalExpansion";
 
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
@@ -407,8 +427,28 @@ export const fullProtocols: FullProtocol[] = [
   ...painPalliativeFullProtocols6,
   ...triageFullProtocols6,
   ...susProtocolsFullProtocols6,
-];
 
+  // Batch 12 — expansion to 1000+
+  ...cardioFullProtocols12,
+  ...neuroFullProtocols10,
+  ...sepsisFullProtocols8,
+  ...respiratoryFullProtocols9,
+  ...metabolicFullProtocols8,
+  ...infectiousFullProtocols8,
+  ...traumaFullProtocols8,
+  ...obstetricsFullProtocols9,
+  ...pediatricFullProtocols6,
+  ...neonatalFullProtocols6,
+  ...proceduresFullProtocols7,
+  ...intoxicationFullProtocols6,
+  ...emergencyFullProtocols6,
+  ...gastroFullProtocols6,
+  ...nephrologyFullProtocols6,
+  ...psychiatryFullProtocols6,
+  ...otherEmergenciesFullProtocols7,
+  ...dermatologyFullProtocols7,
+  ...finalExpansionProtocols,
+];
 export function getFullProtocol(id: string) {
   return fullProtocols.find(p => p.id === id);
 }
