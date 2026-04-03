@@ -16,13 +16,15 @@ export const pediatricFullProtocols4: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definição",
-            "content": "Intussuscepção (invaginação intestinal): telescopagem de um segmento intestinal proximal (intussuscepto) para dentro do segmento distal (intussuscipiente). Causa mais comum de obstrução intestinal em lactentes (3-36 meses, pico 5-9 meses).
+            "content": "Cetoacidose diabética (CAD): emergência metabólica do diabetes mellitus caracterizada pela tríade:
+1. Hiperglicemia (>250mg/dL, geralmente >300)
+2. Cetonemia/cetonúria positiva
+3. Acidose metabólica (pH <7,3 e/ou HCO3 <18mEq/L)
 
-Tipo mais comum: ileocólica (90%)
-
-Classificação:
-• Idiopática (90% em <2 anos): hipertrofia de placas de Peyer pós-viral
-• Secundária a ponto guia (>2 anos): divertículo de Meckel, pólipo, linfoma, púrpura de Henoch-Schönlein"
+Classificação por gravidade:
+• Leve: pH 7,25-7,30, HCO3 15-18, alerta
+• Moderada: pH 7,0-7,24, HCO3 10-14, sonolento
+• Grave: pH <7,0, HCO3 <10, coma/estupor"
       },
       {
             "id": "screening",
@@ -110,52 +112,57 @@ Contraindicações ao enema:
       {
             "id": "treatment",
             "title": "Abordagem Terapêutica",
-            "content": "Redução não operatória:
-• Enema com ar (pneumática) — preferido:
-  - Pressão máxima: 120mmHg
-  - Máximo 3 tentativas de 3 minutos cada
-  - Taxa de sucesso: 80-90%
-  - Cirurgião de sobreaviso durante procedimento
-• Enema com contraste hidrossolúvel (sob fluoroscopia)
-• Enema com SF sob guia de USG (opção sem radiação)
+            "content": "Tratamento — Pilares: Hidratação + Insulina + Potássio
 
-Redução cirúrgica:
-• Indicação: falha do enema, peritonite, perfuração, choque, >48h de evolução
-• Técnica: redução manual (ordenha retrógrada suave)
-• Se necrose intestinal: ressecção segmentar com anastomose primária
-• Apendicectomia incidental pode ser realizada
+1. HIDRATAÇÃO (prioridade!):
+• 1ª hora: SF 0,9% 1.000-1.500mL IV (15-20mL/kg)
+• Após 1ª hora: SF 0,9% 250-500mL/h (avaliar Na+ corrigido)
+  - Na+ corrigido >135: mudar para NaCl 0,45%
+  - Na+ corrigido <135: manter SF 0,9%
+• Quando glicemia ≤200-250: iniciar SG 5% concomitante (evitar hipoglicemia)
+• Total em 24h: 4-6 litros
 
-Suporte:
-• Hidratação IV: SF 0,9% 20mL/kg em bolus se desidratação/choque
-• Manutenção: Holliday-Segar
-• SNG aberta se distensão/vômitos
-• ATB profilático se cirurgia: Cefazolina 30mg/kg IV
-• Analgesia: Dipirona 15mg/kg IV + Morfina 0,05-0,1mg/kg IV SN
+2. INSULINOTERAPIA:
+• Regular IV contínua: 0,1 UI/kg/h (OU bolus 0,1 UI/kg + 0,1 UI/kg/h)
+• Meta: queda de glicemia 50-70mg/dL/h
+• Se glicemia não cair 10% na 1ª hora: bolus 0,14 UI/kg IV
+• Quando glicemia ≤200-250: reduzir para 0,02-0,05 UI/kg/h + SG 5%
+• Manter insulina IV até: pH >7,3 + HCO3 >18 + AG <12 + paciente alimentando
+• Transição para SC: aplicar insulina SC 1-2h ANTES de desligar a bomba
 
-Recorrência: 5-10% após redução pneumática
-• Pode tentar novo enema
-• Cirurgia se >2 recorrências ou ponto guia identificado"
+3. POTÁSSIO (ANTES da insulina se K+ <3,3!):
+• K+ <3,3: NÃO iniciar insulina! Repor KCl 40mEq/h IV até K+ >3,3
+• K+ 3,3-5,3: KCl 20-30mEq em cada litro de soro
+• K+ >5,3: não repor, monitorar 2/2h
+
+4. BICARBONATO (APENAS se pH <6,9):
+• NaHCO3 8,4% 100mEq (100mL) diluído em 400mL AD — infundir em 2h
+• Repetir até pH >7,0
+
+5. FOSFATO: repor se <1,0mg/dL (fosfato de potássio 20-30mmol em 1L de soro)"
       },
       {
             "id": "prescriptions",
             "title": "Prescrições",
-            "content": "PRESCRIÇÃO — Crupe moderado:
+            "content": "PRESCRIÇÃO — CAD moderada:
 
-1. Observação em emergência (mínimo 3-4h)
-2. Dexametasona 0,6mg/kg VO dose única (máx 10mg)
-   - Peso 10kg: Dexametasona 4mg/mL → 1,5mL VO
-3. Nebulização com Adrenalina 1:1000 (1mg/mL):
-   - Dose: 0,5mL/kg (máx 5mL) + SF 0,9% para completar 5mL
-   - Fluxo O2: 6-8 L/min
-   - Observar efeito rebote por 3-4h
-4. Monitorização: SpO2, FR, FC, esforço respiratório
-5. Elevação de cabeceira 30°
-6. EVITAR agitação — manter criança no colo dos pais
-7. Antitérmico se febre: Dipirona 15mg/kg VO 6/6h SN
-8. Após melhora sustentada (4h) → alta com:
-   - Prednisolona 1mg/kg/dia VO por 3 dias OU
-   - Dexametasona 0,15mg/kg/dia VO por 2 dias
-9. Retorno imediato se piora do estridor ou dificuldade respiratória"
+1. UTI ou sala de emergência com monitorização
+2. Jejum inicialmente
+3. SF 0,9% 1.000mL IV em 1h (AGORA)
+4. Após: SF 0,9% 500mL/h por 4h → 250mL/h
+5. Insulina Regular 50UI + SF 0,9% 500mL → BIC a 0,1 UI/kg/h
+   (Ex: 70kg = 7 UI/h = 70mL/h da solução 0,1UI/mL)
+6. KCl 19,1% 10mL (20mEq) em cada SF 500mL (se K+ 3,3-5,3)
+7. Quando glicemia ≤250: iniciar SG 5% 500mL IV em paralelo (100mL/h)
+8. Glicemia capilar a cada 1h
+9. Gasometria venosa + eletrólitos (Na, K, Cl, Mg, P) a cada 2-4h
+10. Sondagem vesical se necessário — controle de diurese horária
+11. Buscar fator precipitante: infecção (hemograma, PCR, urocultura, Rx tórax), IAM, AVC
+12. Omeprazol 40mg IV 1x/dia
+13. Quando pH >7,3 + HCO3 >18 + AG <12 + alimentando:
+    - Insulina NPH 0,5 UI/kg/dia SC + insulina regular SC pré-refeições
+    - Desligar bomba 1-2h APÓS primeira dose SC
+14. Monitorização: ECG (onda T — hipercalemia), PA, FC, SpO2, diurese"
       },
       {
             "id": "followup",
@@ -175,11 +182,11 @@ Recorrência: 5-10% após redução pneumática
       {
             "id": "references",
             "title": "Referências Bibliográficas",
-            "content": "1. SBP — Consenso de Cirurgia Pediátrica: Invaginação Intestinal 2022
-2. Applegate KE. Intussusception in Children. Radiol Clin North Am 2009
-3. Daneman A, Navarro O. Intussusception. Part 1: a review. Pediatr Radiol 2003
-4. Bines JE et al. Safety and immunogenicity of RV3-BB rotavirus vaccine. Lancet Infect Dis 2018
-5. APSA — American Pediatric Surgical Association guidelines 2021"
+            "content": "1. ADA — Standards of Care in Diabetes: Diabetic Ketoacidosis 2024
+2. SBD — Sociedade Brasileira de Diabetes: Posicionamento CAD 2023
+3. Kitabchi AE et al. Hyperglycemic Crises in Adult Patients With Diabetes. Diabetes Care 2009
+4. Joint British Diabetes Societies: DKA Management Guidelines 2023
+5. Dhatariya KK et al. Diabetic ketoacidosis. Nat Rev Dis Primers 2020"
       }
 ],
   },
