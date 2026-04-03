@@ -11,12 +11,12 @@ export const psychiatryFullProtocols5: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Mania Aguda."
+            "content": "A mania aguda e emergencia psiquiatrica caracterizada por euforia/irritabilidade, grandiosidade, reducao do sono, pressao de fala, hipersexualidade e comportamento de risco. Risco de auto e heteroagressao. Antipsicoticos atipicos e estabilizadores sao o tratamento. CANMAT/ISBD 2018."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao de Mania Aguda."
+            "content": "Episodio maniaco (DSM-5): humor elevado/expansivo/irritavel + aumento de energia por >=7 dias + >=3 (4 se irritavel): grandiosidade, reducao do sono, pressao de fala, fuga de ideias, distractibilidade, aumento de atividades direcionadas, comportamento de risco. Com ou sem sintomas psicoticos."
       },
       {
             "id": "screening",
@@ -51,12 +51,12 @@ export const psychiatryFullProtocols5: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Tratamento",
-            "content": "Tratamento de Mania Aguda."
+            "content": "Agitacao aguda: Olanzapina 10mg IM OU Haloperidol 5mg + Midazolam 5mg IM (coquetel). Tratamento de fase aguda: Litio 900-1200mg/dia (litemia 0,8-1,2) OU Valproato 20mg/kg/dia (nivel 80-120) + Antipsicotico atipico (Olanzapina 15-20mg, Quetiapina 400-800mg, Risperidona 4-6mg). Insonia: Quetiapina 100-200mg ou Olanzapina 10mg a noite. Evitar antidepressivos (virada maniaca)."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Mania Aguda."
+            "content": "1. Olanzapina 10mg IM SOS agitacao; 2. Litio 300mg VO 3x/dia (titular para litemia 0,8-1,2); 3. OU Valproato 500mg VO 12/12h (titular para nivel 80-120); 4. Quetiapina 200mg VO a noite (titular ate 600mg); 5. Lorazepam 2mg VO/IM SOS (insonia/agitacao); 6. Hemograma, funcao renal, tireoidiana, hepatica basais; 7. Litemia semanal no inicio."
       },
       {
             "id": "followup",
@@ -76,7 +76,7 @@ export const psychiatryFullProtocols5: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias",
-            "content": "Diretrizes atualizadas."
+            "content": "CANMAT/ISBD Guidelines for Bipolar Disorder 2018. Yatham LN et al. Bipolar Disorders 2018. Cipriani A et al. Lancet 2011."
       }
 ],
   },  {
@@ -89,12 +89,12 @@ export const psychiatryFullProtocols5: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Depressao com Risco Suicida."
+            "content": "A depressao com risco suicida e a emergencia psiquiatrica mais prevalente. O suicidio e a 2a causa de morte em jovens (15-29 anos) no mundo. Avaliacao de risco estruturada (SAD PERSONS, Columbia) e manejo de crise sao essenciais. ABP 2014 e OMS 2021."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao de Depressao com Risco Suicida."
+            "content": "Episodio depressivo maior com ideacao suicida ativa (plano, intencao, meios disponiveis) ou tentativa recente. Fatores de risco: tentativa previa (mais forte), transtorno psiquiatrico (90%), abuso de substancias, isolamento social, desesperanca, doenca cronica, acesso a meios letais, historia familiar."
       },
       {
             "id": "screening",
@@ -129,12 +129,12 @@ export const psychiatryFullProtocols5: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Tratamento",
-            "content": "Tratamento de Depressao com Risco Suicida."
+            "content": "AVALIACAO DE RISCO: perguntar diretamente sobre suicidio (nao aumenta risco). Escala Columbia (C-SSRS). Risco iminente: internacao involuntaria se necessario, retirar meios letais, supervisao 1:1. Medicacao: ISRS (Sertralina 50-100mg, Escitalopram 10-20mg). Resposta rapida: Cetamina IV 0,5mg/kg em 40min (off-label, evidencia crescente). Se psicose: adicionar antipsicotico. Litio: evidencia de reducao de suicidio no bipolar."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Depressao com Risco Suicida."
+            "content": "1. Sertralina 50mg VO 1x/dia (titular ate 200mg); 2. OU Escitalopram 10mg VO 1x/dia; 3. Lorazepam 1mg VO 8/8h SOS (ansiedade/insonia — curto prazo); 4. Supervisao 1:1 continua se risco iminente; 5. Retirar objetos cortantes, medicamentos, cintos da enfermaria; 6. Encaminhar para psicoterapia de crise; 7. Contato com familia (rede de apoio)."
       },
       {
             "id": "followup",
@@ -154,7 +154,7 @@ export const psychiatryFullProtocols5: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias",
-            "content": "Diretrizes atualizadas."
+            "content": "ABP — Suicidio: informando para prevenir 2014. WHO — Suicide Prevention 2021. Mann JJ et al. JAMA 2005. Wilkinson ST et al. Am J Psychiatry 2018 (Ketamine)."
       }
 ],
   },  {
@@ -557,12 +557,12 @@ export const psychiatryFullProtocols5: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Reacao Distonica Aguda."
+            "content": "A reacao distonica aguda e efeito adverso de antipsicoticos e antiemeticos (metoclopramida, bromoprida) que causa contracoes musculares involuntarias, dolorosas e assustadoras. Tratamento imediato com biperideno ou prometazina. Mais comum em jovens e uso de antipsicoticos tipicos."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao de Reacao Distonica Aguda."
+            "content": "Contracoes musculares sustentadas ou intermitentes causadas por bloqueio dopaminergico D2 nos ganglios da base. Apresentacoes: torcicolo, crise oculogirica (olhos desviados para cima), opistotono, protrusao lingual, trismo, laringoespasmo (raro, potencialmente fatal). Inicio: 24-96h apos inicio ou aumento do farmaco."
       },
       {
             "id": "screening",
@@ -597,12 +597,12 @@ export const psychiatryFullProtocols5: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Tratamento",
-            "content": "Tratamento de Reacao Distonica Aguda."
+            "content": "BIPERIDENO (1a linha): 5mg IM ou IV lento. Resposta em 5-15min. Pode repetir em 30min se sem resposta. Manter Biperideno 2mg VO 12/12h por 48-72h (prevenir recorrencia). Alternativa: Prometazina 25-50mg IM. Se laringoespasmo: via aerea + Biperideno IV de urgencia. Prevencao: usar antipsicoticos atipicos, dose minima eficaz, Biperideno profilatico se alto risco."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Reacao Distonica Aguda."
+            "content": "1. Biperideno 5mg IM (pode repetir 1x em 30min); 2. Manter Biperideno 2mg VO 12/12h por 48-72h; 3. OU Prometazina 50mg IM; 4. Reavaliar necessidade do farmaco causador; 5. Se antipsicotico necessario: trocar para atipico (Olanzapina, Quetiapina, Risperidona); 6. Orientar paciente sobre reacao (comum com metoclopramida/bromoprida)."
       },
       {
             "id": "followup",
@@ -622,7 +622,7 @@ export const psychiatryFullProtocols5: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias",
-            "content": "Diretrizes atualizadas."
+            "content": "Stahl SM. Prescriber's Guide — Stahl's Essential Psychopharmacology 7th ed. Van Harten PN et al. J Clin Psychiatry 1999."
       }
 ],
   },  {

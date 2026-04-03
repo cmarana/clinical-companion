@@ -11,7 +11,7 @@ export const orlFullProtocols6: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Laringotraqueobronquite."
+            "content": "A laringotraqueobronquite (crupe) e a causa mais comum de obstrucao de via aerea superior em criancas (6 meses a 6 anos). Etiologia viral (parainfluenza). Escore de Westley classifica gravidade. Dexametasona dose unica e adrenalina nebulizada sao os pilares do tratamento. SBP 2020."
       },
       {
             "id": "def",
@@ -51,12 +51,12 @@ export const orlFullProtocols6: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Tratamento",
-            "content": "Tratamento por gravidade:\n\nCRUPE LEVE (Westley 0-2):\n• Dexametasona 0,15-0,6mg/kg VO dose única (máx 10mg)\n• Observação por 2-4h\n• Alta com orientações se melhora\n\nCRUPE MODERADO (Westley 3-7):\n• Dexametasona 0,6mg/kg VO/IM dose única (máx 10mg)\n• Nebulização com adrenalina L 0,5mL/kg (máx 5mL) diluída em SF, com O2 6L/min\n• Observar por 3-4h após adrenalina (efeito rebote)\n• Se melhora sustentada → alta\n\nCRUPE GRAVE (Westley ≥8):\n• Dexametasona 0,6mg/kg IM/IV\n• Nebulização com adrenalina — repetir a cada 15-20min (máx 3x)\n• O2 suplementar se SpO2 <92%\n• EVITAR agitação da criança (exame mínimo)\n• Preparar material de IOT (tubo 0,5-1,0 menor que o previsto)\n• UTI se falha terapêutica\n\nIOT: apenas se insuficiência respiratória iminente\n• Tubo 0,5-1,0mm menor que o calculado\n• Equipe experiente\n• Priorizar IOT nasotraqueal (se disponível)\n\nAlternativa ao dexametasona:\n• Budesonida nebulização 2mg (se vômitos ou recusa VO)"
+            "content": "TODOS os casos: Dexametasona 0,6mg/kg VO/IM dose unica (max 10mg) — pode ser 0,15mg/kg se leve. MODERADO-GRAVE (estridor em repouso): Adrenalina nebulizada 0,5mL/kg (max 5mL) da solucao 1:1000. Observar por 2-4h apos adrenalina (efeito rebote em 2h). GRAVE: adrenalina nebulizada + Dexametasona + monitoracao. Se falha: IOT (tubo 0,5-1mm menor). Nao usar ATB (viral). Nao usar sedativos (deprimem via aerea)."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "PRESCRIÇÃO — Crupe moderado:\n\n1. Observação em emergência (mínimo 3-4h)\n2. Dexametasona 0,6mg/kg VO dose única (máx 10mg)\n   - Peso 10kg: Dexametasona 4mg/mL → 1,5mL VO\n3. Nebulização com Adrenalina 1:1000 (1mg/mL):\n   - Dose: 0,5mL/kg (máx 5mL) + SF 0,9% para completar 5mL\n   - Fluxo O2: 6-8 L/min\n   - Observar efeito rebote por 3-4h\n4. Monitorização: SpO2, FR, FC, esforço respiratório\n5. Elevação de cabeceira 30°\n6. EVITAR agitação — manter criança no colo dos pais\n7. Antitérmico se febre: Dipirona 15mg/kg VO 6/6h SN\n8. Após melhora sustentada (4h) → alta com:\n   - Prednisolona 1mg/kg/dia VO por 3 dias OU\n   - Dexametasona 0,15mg/kg/dia VO por 2 dias\n9. Retorno imediato se piora do estridor ou dificuldade respiratória"
+            "content": "1. Dexametasona 0,6mg/kg VO dose unica (max 10mg); 2. Se estridor em repouso: Adrenalina 1:1000 nebulizacao — 0,5mL/kg (max 5mL) + SF; 3. Observar 2-4h apos adrenalina; 4. Umidificacao (evidencia fraca mas pratica comum); 5. Se alta: orientar sinais de alarme (estridor em repouso, retracoes, cianose); 6. Retorno se piora."
       },
       {
             "id": "followup",
@@ -76,7 +76,7 @@ export const orlFullProtocols6: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias",
-            "content": "1. SBP — Sociedade Brasileira de Pediatria: Consenso de Crupe 2021\n2. Bjornson CL, Johnson DW. Croup in children. CMAJ 2013;185(15):1317-23\n3. Zoorob R et al. Croup: An Overview. Am Fam Physician 2011;83(9):1067-73\n4. Russell KF et al. Glucocorticoids for croup. Cochrane Database Syst Rev 2011\n5. NICE — Croup guideline 2023"
+            "content": "SBP — Crupe Viral 2020. Russell KF et al. Cochrane 2011 (Glucocorticoids for Croup). Bjornson C et al. NEJM 2004."
       }
 ],
   },  {
@@ -557,12 +557,12 @@ export const orlFullProtocols6: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Paralisia Facial Periferica."
+            "content": "A paralisia facial periferica (PFP) e emergencia ORL/neurologica com incidencia de 20-30/100.000/ano. A paralisia de Bell (idiopatica) e a causa mais comum (70%). Tratamento precoce com corticoides (<72h) melhora o prognostico. House-Brackmann classifica gravidade. Ramsey Hunt (herpes zoster otico) tem pior prognostico."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao de Paralisia Facial Periferica."
+            "content": "Disfuncao do nervo facial (VII par) com fraqueza/paralisia de toda a hemiface ipsilateral (superior + inferior — diferente da lesao central que poupa testa). Bell: idiopatica (provavel reativacao HSV-1). Ramsay Hunt: herpes zoster do ganglio geniculado (vesiculas auriculares + PFP + hipoacusia/vertigem)."
       },
       {
             "id": "screening",
@@ -597,12 +597,12 @@ export const orlFullProtocols6: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Tratamento",
-            "content": "Tratamento de Paralisia Facial Periferica."
+            "content": "PARALISIA DE BELL: Prednisona 1mg/kg/dia (max 60-80mg) por 5-7 dias (iniciar <72h do inicio). Aciclovir/Valaciclovir: controverso em Bell isolada (beneficio marginal), mas OBRIGATORIO em Ramsay Hunt (Valaciclovir 1g VO 8/8h por 7 dias). Protecao ocular: colírio lubrificante (metilcelulose 0,5%) de hora em hora durante o dia + pomada oftálmica à noite + oclusão palpebral (evitar ceratite de exposição). Fisioterapia facial apos fase aguda. Se paralisia completa sem recuperacao em 3 meses: considerar descompressao cirurgica."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Paralisia Facial Periferica."
+            "content": "1. Prednisona 60mg VO 1x/dia por 5 dias → desmame em 5 dias; 2. Valaciclovir 1g VO 8/8h por 7 dias (se Ramsay Hunt ou Bell grave); 3. Colirio metilcelulose 0,5% — 1 gota 1/1h (olho afetado); 4. Pomada oftálmica à noite + oclusão palpebral; 5. Avaliação oftalmológica se não fechar o olho; 6. House-Brackmann: I (normal) a VI (paralisia total); 7. Retorno em 2 semanas."
       },
       {
             "id": "followup",
@@ -622,7 +622,7 @@ export const orlFullProtocols6: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias",
-            "content": "Diretrizes atualizadas."
+            "content": "Gronseth GS, Paduga R. AAN Guideline — Bell's Palsy 2012. Murakami S et al. Ann Intern Med 1997 (HSV em Bell). De Almeida JR et al. JAMA 2009 (Cochrane update)."
       }
 ],
   },

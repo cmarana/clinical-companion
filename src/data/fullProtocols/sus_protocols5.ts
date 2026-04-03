@@ -11,12 +11,12 @@ export const susProtocolsFullProtocols5: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Alta Responsavel - Protocolo SUS na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "A Alta Responsavel e diretriz do SUS que garante continuidade do cuidado apos internacao. Inclui orientacao ao paciente/familia, plano terapeutico domiciliar, agendamento de retorno e articulacao com atencao primaria. Portaria GM/MS 3.390/2013 e RDC 36/2013."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Alta Responsavel - Protocolo SUS."
+            "content": "Processo sistematizado de transicao do cuidado hospitalar para ambulatorial/domiciliar. Componentes obrigatorios: resumo de alta completo, lista de medicamentos com posologia, sinais de alarme, agendamento de retorno, contra-referencia para UBS. Responsabilidade compartilhada entre hospital e atencao primaria."
       },
       {
             "id": "screening",
@@ -51,12 +51,12 @@ export const susProtocolsFullProtocols5: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento farmacologico e nao farmacologico de Alta Responsavel - Protocolo SUS."
+            "content": "Checklist de Alta Responsavel: 1. Resumo de alta com diagnosticos, procedimentos e pendencias; 2. Receita medica legivel com todos os medicamentos (nome generico, dose, via, horarios, duracao); 3. Orientacao verbal + escrita sobre sinais de alarme; 4. Agendamento de retorno ambulatorial; 5. Contra-referencia para UBS (formulario padrao); 6. Encaminhamento para servicos de apoio SN (fisioterapia, nutricao, saude mental); 7. Atestado medico quando indicado."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes padronizadas para Alta Responsavel - Protocolo SUS."
+            "content": "1. Receituario padrao SUS com medicamentos disponiveis na RENAME; 2. Utilizar nome generico OBRIGATORIAMENTE; 3. Receita carbonada (2 vias): 1a via paciente, 2a via prontuario; 4. Antibioticos: receita especial de 2 vias; 5. Psicotrópicos: notificação de receita (A-B conforme Portaria 344/98); 6. Validade da receita: simples 30 dias, antibiotico 10 dias; 7. Dispensação na farmácia da unidade ou Farmácia Popular."
       },
       {
             "id": "followup",
@@ -76,7 +76,7 @@ export const susProtocolsFullProtocols5: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "Portaria GM/MS 3.390/2013 — Política Nacional de Atenção Hospitalar. RDC 36/2013 ANVISA — Segurança do Paciente. MS — Manual de Alta Responsável 2018."
       }
 ],
   },  {
@@ -401,12 +401,12 @@ export const susProtocolsFullProtocols5: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Seguranca do Paciente no PS na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "O Programa Nacional de Seguranca do Paciente (PNSP) estabelece 6 metas internacionais de segurança para redução de eventos adversos no SUS. Estimativas indicam que 1 em cada 10 pacientes sofre evento adverso durante internação hospitalar. Portaria GM/MS 529/2013 e RDC 36/2013."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Seguranca do Paciente no PS."
+            "content": "As 6 Metas Internacionais de Segurança do Paciente (OMS/JCI): 1. Identificação correta do paciente (pulseira com nome completo + data de nascimento); 2. Comunicação efetiva (leitura de retorno — read-back); 3. Segurança na prescrição e administração de medicamentos (5 certos); 4. Cirurgia segura (checklist de Cirurgia Segura da OMS); 5. Higienização das mãos (5 momentos da OMS); 6. Prevenção de quedas e lesão por pressão."
       },
       {
             "id": "screening",
@@ -441,12 +441,12 @@ export const susProtocolsFullProtocols5: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento farmacologico e nao farmacologico de Seguranca do Paciente no PS."
+            "content": "IMPLEMENTAÇÃO: 1. Nucleo de Segurança do Paciente (NSP) obrigatório em todos os hospitais; 2. Notificação de eventos adversos via NOTIVISA/VIGIPÓS; 3. Protocolo de identificação: pulseira em todos os pacientes com 2 identificadores; 4. Time-out cirúrgico: checklist antes da incisão; 5. Prescrição segura: sem abreviaturas perigosas, dose por extenso para medicamentos de alto risco; 6. Reconciliação medicamentosa na admissão e alta; 7. Bundles de prevenção: queda, LPP, infecção de cateter, PAV."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes padronizadas para Seguranca do Paciente no PS."
+            "content": "1. Pulseira de identificação com nome completo + data de nascimento; 2. Checar alergia em TODA prescrição; 3. Dupla checagem para medicamentos de alto risco (eletrólitos concentrados, insulina, heparina, opioides); 4. Higienização das mãos nos 5 momentos; 5. Escala de Braden para risco de LPP; 6. Escala de Morse para risco de queda; 7. Notificar TODO evento adverso ao NSP."
       },
       {
             "id": "followup",
@@ -466,7 +466,7 @@ export const susProtocolsFullProtocols5: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "Portaria GM/MS 529/2013 — PNSP. RDC 36/2013 ANVISA. OMS — World Patient Safety Day. Vincent C. Patient Safety 2nd ed. 2010."
       }
 ],
   },  {
@@ -557,12 +557,12 @@ export const susProtocolsFullProtocols5: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Termo de Consentimento Informado na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
+            "content": "O Termo de Consentimento Livre e Esclarecido (TCLE) é obrigatório ético-legal para procedimentos invasivos, cirurgias e tratamentos de risco. O médico deve informar em linguagem acessível: diagnóstico, tratamento proposto, riscos, alternativas e direito de recusa. CFM Resolução 2.217/2018 (Código de Ética Médica)."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Termo de Consentimento Informado."
+            "content": "Documento que formaliza a autorização do paciente (ou responsável legal) após explicação adequada sobre o procedimento. Deve conter: identificação do paciente e médico, diagnóstico, procedimento proposto, riscos e benefícios, alternativas terapêuticas, possibilidade de recusa/revogação. Não substitui o diálogo — é complemento."
       },
       {
             "id": "screening",
@@ -597,12 +597,12 @@ export const susProtocolsFullProtocols5: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento farmacologico e nao farmacologico de Termo de Consentimento Informado."
+            "content": "Requisitos para TCLE válido: 1. Linguagem clara e acessível (evitar jargão médico); 2. Tempo adequado para decisão (sem coerção); 3. Assinatura do paciente ou responsável legal; 4. Assinatura do médico responsável; 5. Testemunha(s) quando possível; 6. Duas vias: uma para o paciente, uma para o prontuário; 7. Paciente menor de idade: assinatura do responsável legal; 8. Emergência com risco iminente de vida: consentimento presumido (registrar em prontuário)."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes padronizadas para Termo de Consentimento Informado."
+            "content": "1. Modelo de TCLE deve conter: nome completo, RG/CPF, procedimento, riscos, alternativas; 2. Letra legível ou digitado; 3. Guardar cópia no prontuário; 4. Se paciente analfabeto: impressão digital + testemunha; 5. Se menor: responsável legal assina; 6. Se emergência sem possibilidade de consentimento: registrar em prontuário a justificativa; 7. Recusa informada: documentar em prontuário com assinatura do paciente."
       },
       {
             "id": "followup",
@@ -622,7 +622,7 @@ export const susProtocolsFullProtocols5: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "CFM — Código de Ética Médica (Resolução 2.217/2018). Lei 10.406/2002 (Código Civil). Resolução CFM 1.021/1980 (transfusão). Beauchamp TL, Childress JF — Principles of Biomedical Ethics."
       }
 ],
   },
