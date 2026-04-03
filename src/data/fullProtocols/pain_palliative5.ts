@@ -124,7 +124,7 @@ export const painPalliativeFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Hipercalcemia da Malignidade."
+            "content": "1. Calcio corrigido pela albumina; 2. ECG (risco de arritmia); 3. Hidratacao agressiva imediata; 4. Bifosfonato precoce; 5. Calcitonina se Ca >14 (ponte ate bifosfonato agir); 6. Tratar causa de base; 7. Monitorizar funcao renal."
       },
       {
             "id": "treatment",
@@ -202,7 +202,7 @@ export const painPalliativeFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Compressao Medular Oncologica."
+            "content": "1. Dexametasona IMEDIATA (nao aguardar exame); 2. RNM de coluna total em 4-6h; 3. Avaliacão conjunta neurocirurgia + radioterapia; 4. Definir se cirurgia ou RT; 5. Reabilitacao precoce; 6. Avaliar prognostico oncologico global."
       },
       {
             "id": "treatment",
@@ -358,7 +358,7 @@ export const painPalliativeFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Dor Oncologica Refrataria."
+            "content": "1. EVA/Escala de dor a cada 4h; 2. Titular opioide a cada 24-48h; 3. Rotacao de opioide se efeitos adversos intoleraveis; 4. Avaliar dor neuropatica (DN4 >=4); 5. Avaliar dor total (componentes fisico, emocional, social, espiritual); 6. Radioterapia antialgica para metastases osseas."
       },
       {
             "id": "treatment",
@@ -592,7 +592,7 @@ export const painPalliativeFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Agitacao Terminal."
+            "content": "1. Excluir globo vesical e fecaloma; 2. Revisar medicacoes (retirar desnecessarias); 3. Ambiente calmo e familiar; 4. Haloperidol como 1a linha; 5. Se refratario: sedacao paliativa proporcional; 6. Documentar indicacao e consentimento familiar; 7. Equipe interdisciplinar de cuidados paliativos."
       },
       {
             "id": "treatment",
