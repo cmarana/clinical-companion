@@ -16,7 +16,19 @@ export const metabolicFullProtocols6: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definição",
-            "content": "Definição clínica e classificação de Hipocalcemia Aguda."
+            "content": "Hipercalemia: potássio sérico >5,5mEq/L. Emergência médica quando >6,5mEq/L ou com alterações eletrocardiográficas.
+
+Classificação:
+• Leve: 5,5-6,0mEq/L
+• Moderada: 6,1-6,5mEq/L
+• Grave: >6,5mEq/L ou com alterações ECG
+
+Alterações ECG progressivas:
+• Ondas T apiculadas (tent-shaped) — mais precoce
+• Achatamento de onda P
+• Alargamento de QRS
+• Padrão sinusoidal
+• FV / Assistolia"
       },
       {
             "id": "screening",
@@ -46,7 +58,30 @@ export const metabolicFullProtocols6: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilização do paciente com Hipocalcemia Aguda."
+            "content": "Conduta — tratamento escalonado:
+
+1. ECG IMEDIATO (avaliar alterações):
+
+2. ESTABILIZAR MEMBRANA (se alteração ECG ou K+ >6,5):
+• Gluconato de cálcio 10% 10mL IV em 2-5min
+  - Início: 1-3min, duração: 30-60min
+  - Repetir se persistência de alteração ECG
+  - Em uso de digoxina: infundir em 20-30min com cautela
+
+3. SHIFT (redistribuição — mover K+ para dentro da célula):
+• Insulina Regular 10UI IV + SG50% 50mL (ou SG10% 500mL)
+  - Início: 15-30min, duração: 4-6h
+  - Monitorizar glicemia 1/1h por 6h
+• Nebulização com Salbutamol 10-20 gotas em 4mL SF — 10-20min
+  - Início: 15-30min, reduz K+ 0,5-1,0mEq/L
+• NaHCO3 8,4% 50-100mL IV (se pH <7,2 — efeito marginal se pH normal)
+
+4. REMOÇÃO (eliminar K+ do corpo):
+• Furosemida 40-80mg IV (se função renal preservada)
+• Sorcal (poliestirenossulfonato de cálcio) 30-60g VO ou VR
+  - Início: 1-2h VO, 30min VR
+• Patiromer 8,4g VO ou SZC (ciclossilicato de zircônio) 10g VO
+• DIÁLISE: se refratária, anúrica ou K+ >7,0 com instabilidade"
       },
       {
             "id": "treatment",
@@ -56,7 +91,21 @@ export const metabolicFullProtocols6: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescrições",
-            "content": "Prescrições padronizadas para Hipocalcemia Aguda."
+            "content": "PRESCRIÇÃO — Hipercalemia grave (K+ 7,2 com onda T apiculada):
+
+1. Emergência — monitorização contínua com ECG
+2. Gluconato de Cálcio 10% 10mL IV em 3-5min AGORA (pode repetir em 5min)
+3. Insulina Regular 10UI + SG50% 100mL IV em 30min
+4. Nebulização: Salbutamol 20 gotas + SF 3mL (repetir em 20min SN)
+5. NaHCO3 8,4% 50mL IV em 15min (se pH <7,2)
+6. Furosemida 80mg IV (se diurese preservada)
+7. Sorcal 30g + Manitol 100mL VO (ou VR se não tolerar)
+8. Glicemia capilar 1/1h por 6h (risco de hipoglicemia pela insulina)
+9. K+ sérico a cada 1-2h até <6,0mEq/L
+10. ECG seriado a cada 30min até normalização
+11. Suspender: IECA/BRA, espironolactona, suplementos de K+, AINEs
+12. Se refratária: solicitar diálise de urgência
+13. Após estabilização: investigar causa (IRA, DRC, medicamentos, rabdomiólise)"
       },
       {
             "id": "followup",
@@ -76,7 +125,11 @@ export const metabolicFullProtocols6: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referências Bibliográficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "1. AHA — Hyperkalemia Management Guidelines 2020
+2. SBN — Manejo da Hipercalemia 2022
+3. Palmer BF, Clegg DJ. Diagnosis and treatment of hyperkalemia. JAMA 2021
+4. Lindner G et al. Acute hyperkalemia in the emergency department. Am J Emerg Med 2020
+5. NICE — Hyperkalaemia: assessment and management 2023"
       }
 ],
   },
