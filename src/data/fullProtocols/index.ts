@@ -280,11 +280,22 @@ export const fullProtocols: FullProtocol[] = [
   ...ophthalmologyFullProtocols4,
   ...orlFullProtocols4,
 
-  // Batch 7 — final protocols
+  // Batch 7
   ...sepsisFullProtocols5,
   ...neonatalFullProtocols3,
   ...respiratoryFullProtocols6,
   ...susProtocolsFullProtocols4,
+
+  // Batch 8 — expansion to 1000+
+  ...cardioFullProtocols8,
+  ...neuroFullProtocols6,
+  ...sepsisFullProtocols6,
+  ...respiratoryFullProtocols7,
+  ...metabolicFullProtocols6,
+  ...infectiousFullProtocols6,
+  ...traumaFullProtocols5,
+  ...obstetricsFullProtocols6,
+  ...pediatricFullProtocols4,
 ];
 
 export function getFullProtocol(id: string) {
