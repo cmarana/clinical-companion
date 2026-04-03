@@ -285,75 +285,67 @@ export const fullProtocolMetas: FullProtocolMeta[] = [
   { id: "fp-vni-emergencia", title: "Ventilação Não Invasiva (VNI) na Emergência", categoryId: "respiratory", tags: ["vni","cpap","bipap","não invasiva","insuficiência respiratória"] },
   { id: "fp-receituario-controlado", title: "Receituário de Medicamentos Controlados — Normas e Modelos", categoryId: "sus_protocols", tags: ["receituário","controlado","portaria 344","azul","amarelo","anvisa"] },
 
-  // Batch 8 — cardiology8
-  { id: "fp-endocardite-infecciosa", title: "Endocardite Infecciosa — Protocolo Completo", categoryId: "cardiology", tags: ["endocardite","valva","febre","hemocultura","vegetação","Duke"] },
-  { id: "fp-pericardite-aguda", title: "Pericardite Aguda", categoryId: "cardiology", tags: ["pericardite","dor torácica","derrame pericárdico","ECG"] },
-  { id: "fp-miocardite-aguda", title: "Miocardite Aguda", categoryId: "cardiology", tags: ["miocardite","insuficiência cardíaca","troponina","RNM"] },
-  { id: "fp-sindrome-brugada", title: "Síndrome de Brugada", categoryId: "cardiology", tags: ["brugada","morte súbita","ECG","CDI","arritmia"] },
-  { id: "fp-sindrome-coronariana-cronica", title: "Síndrome Coronariana Crônica", categoryId: "cardiology", tags: ["coronária","angina","isquemia","cateterismo"] },
-  { id: "fp-insuficiencia-cardiaca-cronica", title: "Insuficiência Cardíaca Crônica", categoryId: "cardiology", tags: ["IC","fração de ejeção","IECA","betabloqueador"] },
-  { id: "fp-valvopatia-aortica", title: "Valvopatia Aórtica", categoryId: "cardiology", tags: ["valvopatia","estenose aórtica","insuficiência aórtica","TAVI"] },
-  { id: "fp-fibrilacao-atrial-cronica", title: "Fibrilação Atrial Crônica", categoryId: "cardiology", tags: ["FA","anticoagulação","CHA2DS2-VASc","controle de frequência"] },
-  { id: "fp-trombose-venosa-profunda", title: "Trombose Venosa Profunda (TVP)", categoryId: "cardiology", tags: ["TVP","trombose","anticoagulação","heparina","DOAC"] },
-  { id: "fp-tep-submacico", title: "TEP Submaciço", categoryId: "cardiology", tags: ["TEP","submaciço","risco intermediário","anticoagulação"] },
-
-  // Batch 8 — neurology6
-  { id: "fp-guillain-barre", title: "Síndrome de Guillain-Barré", categoryId: "neurology", tags: ["guillain-barré","polirradiculoneuropatia","imunoglobulina","plasmaférese"] },
-  { id: "fp-miastenia-gravis-crise", title: "Crise Miastênica", categoryId: "neurology", tags: ["miastenia gravis","crise","insuficiência respiratória","piridostigmina"] },
+  // Batch 8 - cardiology8
+  { id: "fp-endocardite-cardio8", title: "Endocardite Infecciosa - Protocolo Completo", categoryId: "cardiology", tags: ["endocardite","valva","febre","hemocultura","vegetacao","Duke"] },
+  { id: "fp-pericardite-aguda", title: "Pericardite Aguda", categoryId: "cardiology", tags: ["pericardite","dor toracica","derrame pericardico","ECG"] },
+  { id: "fp-miocardite-aguda", title: "Miocardite Aguda", categoryId: "cardiology", tags: ["miocardite","insuficiencia cardiaca","troponina","RNM"] },
+  { id: "fp-sindrome-brugada", title: "Sindrome de Brugada", categoryId: "cardiology", tags: ["brugada","morte subita","ECG","CDI","arritmia"] },
+  { id: "fp-sindrome-coronariana-cronica", title: "Sindrome Coronariana Cronica", categoryId: "cardiology", tags: ["coronaria","angina","isquemia","cateterismo"] },
+  { id: "fp-insuficiencia-cardiaca-cronica", title: "Insuficiencia Cardiaca Cronica", categoryId: "cardiology", tags: ["IC","fracao de ejecao","IECA","betabloqueador"] },
+  { id: "fp-valvopatia-aortica", title: "Valvopatia Aortica", categoryId: "cardiology", tags: ["valvopatia","estenose aortica","insuficiencia aortica","TAVI"] },
+  { id: "fp-fibrilacao-atrial-cronica", title: "Fibrilacao Atrial Cronica", categoryId: "cardiology", tags: ["FA","anticoagulacao","CHA2DS2-VASc","controle de frequencia"] },
+  { id: "fp-trombose-venosa-profunda-cardio", title: "Trombose Venosa Profunda (TVP)", categoryId: "cardiology", tags: ["TVP","trombose","anticoagulacao","heparina","DOAC"] },
+  { id: "fp-tep-submacico", title: "TEP Submacico", categoryId: "cardiology", tags: ["TEP","submacico","risco intermediario","anticoagulacao"] },
+  // Batch 8 - neurology6
+  { id: "fp-guillain-barre", title: "Sindrome de Guillain-Barre", categoryId: "neurology", tags: ["guillain-barre","polirradiculoneuropatia","imunoglobulina","plasmaferese"] },
+  { id: "fp-miastenia-gravis-crise", title: "Crise Miastenica", categoryId: "neurology", tags: ["miastenia gravis","crise","insuficiencia respiratoria","piridostigmina"] },
   { id: "fp-encefalite-autoimune", title: "Encefalite Autoimune", categoryId: "neurology", tags: ["encefalite","autoimune","anti-NMDA","imunoglobulina"] },
-  { id: "fp-esclerose-multipla-surto", title: "Esclerose Múltipla — Surto Agudo", categoryId: "neurology", tags: ["esclerose múltipla","surto","metilprednisolona","desmielinização"] },
-  { id: "fp-neuralgia-trigeminal", title: "Neuralgia do Trigêmeo", categoryId: "neurology", tags: ["neuralgia","trigêmeo","dor facial","carbamazepina"] },
-  { id: "fp-cefaleia-cluster", title: "Cefaleia em Salvas (Cluster)", categoryId: "neurology", tags: ["cefaleia","salvas","cluster","oxigênio","sumatriptano"] },
-  { id: "fp-status-epilepticus-refratario", title: "Status Epilepticus Refratário", categoryId: "neurology", tags: ["status epilepticus","refratário","anestésico","EEG","UTI"] },
+  { id: "fp-esclerose-multipla-surto", title: "Esclerose Multipla - Surto Agudo", categoryId: "neurology", tags: ["esclerose multipla","surto","metilprednisolona","desmielinizacao"] },
+  { id: "fp-neuralgia-trigeminal", title: "Neuralgia do Trigemeo", categoryId: "neurology", tags: ["neuralgia","trigemeo","dor facial","carbamazepina"] },
+  { id: "fp-cefaleia-cluster", title: "Cefaleia em Salvas (Cluster)", categoryId: "neurology", tags: ["cefaleia","salvas","cluster","oxigenio","sumatriptano"] },
+  { id: "fp-status-epilepticus-refratario", title: "Status Epilepticus Refratario", categoryId: "neurology", tags: ["status epilepticus","refratario","anestesico","EEG","UTI"] },
   { id: "fp-mielopatia-aguda", title: "Mielopatia Aguda", categoryId: "neurology", tags: ["mielopatia","medula","paraplegia","RNM","corticoide"] },
-
-  // Batch 8 — sepsis6
-  { id: "fp-choque-misto", title: "Choque Misto", categoryId: "sepsis", tags: ["choque","misto","cardiogênico","séptico","vasopressor"] },
-  { id: "fp-choque-neurogênico", title: "Choque Neurogênico", categoryId: "sepsis", tags: ["choque","neurogênico","TRM","bradicardia","vasopressor"] },
-  { id: "fp-sepse-foco-abdominal", title: "Sepse de Foco Abdominal", categoryId: "sepsis", tags: ["sepse","abdominal","peritonite","cirurgia","antibiótico"] },
-  { id: "fp-colangite-aguda", title: "Colangite Aguda e Sepse Biliar", categoryId: "sepsis", tags: ["colangite","sepse biliar","CPRE","Charcot","Reynolds"] },
-  { id: "fp-fasciite-necro-sepse", title: "Fasciíte Necrosante com Sepse", categoryId: "sepsis", tags: ["fasciíte","necrosante","sepse","desbridamento","gangrena"] },
-
-  // Batch 8 — respiratory7
-  { id: "fp-tep-alto-risco", title: "TEP de Alto Risco", categoryId: "respiratory", tags: ["TEP","alto risco","trombólise","anticoagulação","embolia"] },
-  { id: "fp-derrame-pleural", title: "Derrame Pleural — Protocolo Completo", categoryId: "respiratory", tags: ["derrame pleural","toracocentese","empiema","Light"] },
-  { id: "fp-pneumonia-nosocomial", title: "Pneumonia Nosocomial / PAV", categoryId: "respiratory", tags: ["pneumonia","nosocomial","PAV","UTI","antibiótico"] },
-  { id: "fp-embolia-gordurosa", title: "Embolia Gordurosa", categoryId: "respiratory", tags: ["embolia gordurosa","fratura","petéquias","hipoxemia"] },
+  // Batch 8 - sepsis6
+  { id: "fp-choque-misto", title: "Choque Misto", categoryId: "sepsis", tags: ["choque","misto","cardiogenico","septico","vasopressor"] },
+  { id: "fp-choque-neurogenico-sepsis", title: "Choque Neurogenico", categoryId: "sepsis", tags: ["choque","neurogenico","TRM","bradicardia","vasopressor"] },
+  { id: "fp-sepse-foco-abdominal", title: "Sepse de Foco Abdominal", categoryId: "sepsis", tags: ["sepse","abdominal","peritonite","cirurgia","antibiotico"] },
+  { id: "fp-colangite-sepse", title: "Colangite Aguda e Sepse Biliar", categoryId: "sepsis", tags: ["colangite","sepse biliar","CPRE","Charcot","Reynolds"] },
+  { id: "fp-fasciite-necro-sepse", title: "Fasciite Necrosante com Sepse", categoryId: "sepsis", tags: ["fasciite","necrosante","sepse","desbridamento","gangrena"] },
+  // Batch 8 - respiratory7
+  { id: "fp-tep-alto-risco", title: "TEP de Alto Risco", categoryId: "respiratory", tags: ["TEP","alto risco","trombolise","anticoagulacao","embolia"] },
+  { id: "fp-derrame-pleural-resp", title: "Derrame Pleural - Protocolo Completo", categoryId: "respiratory", tags: ["derrame pleural","toracocentese","empiema","Light"] },
+  { id: "fp-pneumonia-nosocomial", title: "Pneumonia Nosocomial / PAV", categoryId: "respiratory", tags: ["pneumonia","nosocomial","PAV","UTI","antibiotico"] },
+  { id: "fp-embolia-gordurosa", title: "Embolia Gordurosa", categoryId: "respiratory", tags: ["embolia gordurosa","fratura","petequias","hipoxemia"] },
   { id: "fp-crise-asma-leve-mod", title: "Crise de Asma Leve-Moderada", categoryId: "respiratory", tags: ["asma","leve","moderada","beta2-agonista","corticoide"] },
-  { id: "fp-hemoptise", title: "Hemoptise — Manejo na Emergência", categoryId: "respiratory", tags: ["hemoptise","sangramento","broncoscopia","embolização"] },
-
-  // Batch 8 — metabolic6
-  { id: "fp-hipocalcemia-aguda", title: "Hipocalcemia Aguda", categoryId: "metabolic", tags: ["hipocalcemia","cálcio","tetania","Chvostek","Trousseau"] },
-  { id: "fp-hipercalcemia", title: "Hipercalcemia", categoryId: "metabolic", tags: ["hipercalcemia","cálcio","neoplasia","paratireoide","hidratação"] },
-  { id: "fp-hipofosfatemia", title: "Hipofosfatemia Grave", categoryId: "metabolic", tags: ["hipofosfatemia","fósforo","realimentação","insuficiência respiratória"] },
-  { id: "fp-hipermagnesemia", title: "Hipermagnesemia", categoryId: "metabolic", tags: ["hipermagnesemia","magnésio","insuficiência renal","gluconato de cálcio"] },
-  { id: "fp-sindrome-lise-tumoral", title: "Síndrome de Lise Tumoral", categoryId: "metabolic", tags: ["lise tumoral","hiperuricemia","hipercalemia","rasburicase"] },
-
-  // Batch 8 — infectious6
-  { id: "fp-endocardite-emergencia", title: "Endocardite — Abordagem de Emergência", categoryId: "infectious", tags: ["endocardite","febre","hemocultura","antibiótico"] },
+  { id: "fp-hemoptise-resp", title: "Hemoptise - Manejo na Emergencia", categoryId: "respiratory", tags: ["hemoptise","sangramento","broncoscopia","embolizacao"] },
+  // Batch 8 - metabolic6
+  { id: "fp-hipocalcemia-aguda", title: "Hipocalcemia Aguda", categoryId: "metabolic", tags: ["hipocalcemia","calcio","tetania","Chvostek","Trousseau"] },
+  { id: "fp-hipercalcemia", title: "Hipercalcemia", categoryId: "metabolic", tags: ["hipercalcemia","calcio","neoplasia","paratireoide","hidratacao"] },
+  { id: "fp-hipofosfatemia", title: "Hipofosfatemia Grave", categoryId: "metabolic", tags: ["hipofosfatemia","fosforo","realimentacao","insuficiencia respiratoria"] },
+  { id: "fp-hipermagnesemia", title: "Hipermagnesemia", categoryId: "metabolic", tags: ["hipermagnesemia","magnesio","insuficiencia renal","gluconato de calcio"] },
+  { id: "fp-sindrome-lise-tumoral", title: "Sindrome de Lise Tumoral", categoryId: "metabolic", tags: ["lise tumoral","hiperuricemia","hipercalemia","rasburicase"] },
+  // Batch 8 - infectious6
+  { id: "fp-endocardite-infect", title: "Endocardite - Abordagem de Emergencia", categoryId: "infectious", tags: ["endocardite","febre","hemocultura","antibiotico"] },
   { id: "fp-tuberculose-pulmonar", title: "Tuberculose Pulmonar", categoryId: "infectious", tags: ["tuberculose","TB","BAAR","RIPE","tratamento"] },
-  { id: "fp-hiv-diagnostico-manejo", title: "HIV — Diagnóstico e Manejo Inicial", categoryId: "infectious", tags: ["HIV","AIDS","TARV","teste rápido","CD4"] },
-  { id: "fp-infeccao-pele-partes-moles", title: "Infecções de Pele e Partes Moles", categoryId: "infectious", tags: ["celulite","abscesso","fasciíte","MRSA","antibiótico"] },
-  { id: "fp-infeccao-urinaria", title: "Infecção Urinária — Protocolo Completo", categoryId: "infectious", tags: ["ITU","cistite","pielonefrite","urocultura","antibiótico"] },
-
-  // Batch 8 — trauma5
-  { id: "fp-tce-grave", title: "TCE Grave — Protocolo Completo", categoryId: "trauma", tags: ["TCE","grave","Glasgow","neurocirurgia","HIC"] },
-  { id: "fp-trauma-cervical", title: "Trauma Cervical", categoryId: "trauma", tags: ["cervical","coluna","imobilização","NEXUS","Canadian"] },
-  { id: "fp-trauma-facial", title: "Trauma de Face", categoryId: "trauma", tags: ["face","mandíbula","Le Fort","fratura","maxilofacial"] },
-  { id: "fp-trauma-vascular-periferico", title: "Trauma Vascular Periférico", categoryId: "trauma", tags: ["vascular","artéria","isquemia","reparo","fasciotomia"] },
-  { id: "fp-sindrome-compartimental", title: "Síndrome Compartimental", categoryId: "trauma", tags: ["compartimental","pressão","fasciotomia","isquemia","trauma"] },
-  { id: "fp-lesao-renal-traumatica", title: "Lesão Renal Traumática", categoryId: "trauma", tags: ["rim","lesão renal","trauma","hematúria","AAST"] },
-
-  // Batch 8 — obstetrics6
-  { id: "fp-trabalho-parto-prematuro", title: "Trabalho de Parto Prematuro — Completo", categoryId: "obstetrics", tags: ["TPP","prematuro","tocólise","corticoide","nifedipina"] },
-  { id: "fp-rpmo", title: "Rotura Prematura de Membranas Ovulares (RPMO)", categoryId: "obstetrics", tags: ["RPMO","amniorrexe","prematura","corioamnionite","antibiótico"] },
-  { id: "fp-dheg-classificacao", title: "DHEG — Classificação e Manejo", categoryId: "obstetrics", tags: ["DHEG","hipertensão","gestação","pré-eclâmpsia","classificação"] },
+  { id: "fp-hiv-diagnostico-manejo", title: "HIV - Diagnostico e Manejo Inicial", categoryId: "infectious", tags: ["HIV","AIDS","TARV","teste rapido","CD4"] },
+  { id: "fp-infeccao-pele-partes-moles", title: "Infeccoes de Pele e Partes Moles", categoryId: "infectious", tags: ["celulite","abscesso","fasciite","MRSA","antibiotico"] },
+  { id: "fp-infeccao-urinaria-infect", title: "Infeccao Urinaria - Protocolo Completo", categoryId: "infectious", tags: ["ITU","cistite","pielonefrite","urocultura","antibiotico"] },
+  // Batch 8 - trauma5
+  { id: "fp-tce-grave-trauma", title: "TCE Grave - Protocolo Completo", categoryId: "trauma", tags: ["TCE","grave","Glasgow","neurocirurgia","HIC"] },
+  { id: "fp-trauma-cervical", title: "Trauma Cervical", categoryId: "trauma", tags: ["cervical","coluna","imobilizacao","NEXUS","Canadian"] },
+  { id: "fp-trauma-facial", title: "Trauma de Face", categoryId: "trauma", tags: ["face","mandibula","Le Fort","fratura","maxilofacial"] },
+  { id: "fp-trauma-vascular-periferico", title: "Trauma Vascular Periferico", categoryId: "trauma", tags: ["vascular","arteria","isquemia","reparo","fasciotomia"] },
+  { id: "fp-sindrome-compartimental", title: "Sindrome Compartimental", categoryId: "trauma", tags: ["compartimental","pressao","fasciotomia","isquemia","trauma"] },
+  { id: "fp-lesao-renal-traumatica", title: "Lesao Renal Traumatica", categoryId: "trauma", tags: ["rim","lesao renal","trauma","hematuria","AAST"] },
+  // Batch 8 - obstetrics6
+  { id: "fp-tpp-completo", title: "Trabalho de Parto Prematuro - Completo", categoryId: "obstetrics", tags: ["TPP","prematuro","tocolise","corticoide","nifedipina"] },
+  { id: "fp-rpmo", title: "Rotura Prematura de Membranas Ovulares (RPMO)", categoryId: "obstetrics", tags: ["RPMO","amniorrexe","prematura","corioamnionite","antibiotico"] },
+  { id: "fp-dheg-classificacao", title: "DHEG - Classificacao e Manejo", categoryId: "obstetrics", tags: ["DHEG","hipertensao","gestacao","pre-eclampsia","classificacao"] },
   { id: "fp-diabetes-gestacional", title: "Diabetes Gestacional", categoryId: "obstetrics", tags: ["diabetes","gestacional","insulina","TOTG","rastreamento"] },
-  { id: "fp-hemorragia-1-trimestre", title: "Hemorragia do 1º Trimestre", categoryId: "obstetrics", tags: ["hemorragia","primeiro trimestre","abortamento","ectópica","molar"] },
-
-  // Batch 8 — pediatric4
-  { id: "fp-laringite-viral", title: "Laringite Viral / Crupe — Completo", categoryId: "pediatrics", tags: ["laringite","crupe","estridor","dexametasona","adrenalina"] },
-  { id: "fp-pneumonia-pediatrica", title: "Pneumonia Pediátrica", categoryId: "pediatrics", tags: ["pneumonia","pediatria","antibiótico","amoxicilina","criança"] },
-  { id: "fp-invaginacao-intestinal", title: "Invaginação Intestinal (Intussuscepção)", categoryId: "pediatrics", tags: ["invaginação","intussuscepção","pediatria","enema","abdome agudo"] },
-  { id: "fp-cetoacidose-pediatrica", title: "Cetoacidose Diabética Pediátrica — Completo", categoryId: "pediatrics", tags: ["CAD","diabetes","pediatria","insulina","acidose"] },
+  { id: "fp-hemorragia-1-trimestre", title: "Hemorragia do 1o Trimestre", categoryId: "obstetrics", tags: ["hemorragia","primeiro trimestre","abortamento","ectopica","molar"] },
+  // Batch 8 - pediatric4
+  { id: "fp-laringite-viral-ped", title: "Laringite Viral / Crupe - Completo", categoryId: "pediatrics", tags: ["laringite","crupe","estridor","dexametasona","adrenalina"] },
+  { id: "fp-pneumonia-pediatrica", title: "Pneumonia Pediatrica", categoryId: "pediatrics", tags: ["pneumonia","pediatria","antibiotico","amoxicilina","crianca"] },
+  { id: "fp-invaginacao-intestinal", title: "Invaginacao Intestinal (Intussuscepcao)", categoryId: "pediatrics", tags: ["invaginacao","intussuscepcao","pediatria","enema","abdome agudo"] },
+  { id: "fp-cetoacidose-pediatrica-comp", title: "Cetoacidose Diabetica Pediatrica - Completo", categoryId: "pediatrics", tags: ["CAD","diabetes","pediatria","insulina","acidose"] },
 ];
