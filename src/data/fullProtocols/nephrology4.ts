@@ -16,7 +16,18 @@ export const nephrologyFullProtocols4: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Indicacoes de Dialise de Emergencia."
+            "content": "Síndrome Nefrótica: conjunto de manifestações clínicas decorrentes de proteinúria maciça por lesão glomerular.
+
+Critérios diagnósticos:
+• Proteinúria >3,5g/24h (ou relação P/C >3,5)
+• Hipoalbuminemia (<3,0g/dL)
+• Edema
+• Hiperlipidemia (hipercolesterolemia, hipertrigliceridemia)
+• Lipidúria (cilindros graxos, corpos ovais gordurosos)
+
+Principais causas:
+• Primárias: Doença de Lesões Mínimas (crianças), GESF, Nefropatia Membranosa (adultos >40), Nefropatia por IgA
+• Secundárias: DM (nefropatia diabética — mais comum no mundo), LES (nefrite lúpica), amiloidose, hepatite B/C, HIV, drogas (AINEs, lítio, penicilamina)"
       },
       {
             "id": "screening",
@@ -51,12 +62,45 @@ export const nephrologyFullProtocols4: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento farmacologico e nao farmacologico de Indicacoes de Dialise de Emergencia."
+            "content": "Tratamento geral (todas as causas):
+• IECA ou BRA: Enalapril 5-20mg 12/12h OU Losartana 50-100mg/dia (reduz proteinúria)
+• Restrição de sódio (<2g/dia) e proteína moderada (0,8-1g/kg/dia)
+• Diuréticos para edema:
+  - Furosemida 40-120mg/dia VO (± associar HCTZ 25mg se refratário)
+  - Espironolactona 25-100mg/dia
+  - Albumina 20% 50-100mL IV + Furosemida IV (se anasarca refratária com albumina <2)
+• Estatina: Atorvastatina 20-40mg/dia (dislipidemia)
+• Anticoagulação profilática se albumina <2,0g/dL (alto risco trombótico)
+  - Enoxaparina 40mg SC 1x/dia OU Varfarina (INR 2-3) se evento trombótico
+
+Tratamento específico por etiologia:
+• Lesões Mínimas: Prednisona 1mg/kg/dia (máx 80mg) por 8-16 sem → desmame lento
+  - Recidiva: novo ciclo OU ciclofosfamida/ciclosporina
+• GESF: Prednisona 1mg/kg/dia por 16 sem; se resistente → Ciclosporina 3-5mg/kg/dia
+• Membranosa: Rituximab 1g IV D1 e D15 (1ª linha atual) OU Ciclofosfamida + corticoide (Ponticelli)
+  - Anti-PLA2R: marcador diagnóstico e de atividade
+• Nefropatia diabética: controle glicêmico + IECA/BRA + ISGLT2 (Dapagliflozina 10mg/dia — DAPA-CKD)
+  - Finerenona 10-20mg/dia (FIDELIO-DKD)"
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes padronizadas para Indicacoes de Dialise de Emergencia."
+            "content": "PRESCRIÇÃO — Síndrome Nefrótica (Lesões Mínimas — adulto):
+
+1. Dieta hipossódica (<2g Na/dia), normoproteica (0,8-1g/kg/dia)
+2. Prednisona 1mg/kg/dia VO (máx 80mg) em dose única matinal por 8-16 semanas
+3. Omeprazol 20mg VO 1x/dia (gastroproteção pelo corticoide)
+4. Carbonato de cálcio 500mg + Vitamina D3 1000UI VO 1x/dia
+5. Furosemida 40-80mg VO 1-2x/dia (titular conforme edema)
+6. Espironolactona 25mg VO 1x/dia
+7. Enalapril 10mg VO 12/12h (antiproteinúrico — titular)
+8. Atorvastatina 20mg VO 1x/dia (se LDL >130)
+9. Enoxaparina 40mg SC 1x/dia (se albumina <2,0 — profilaxia trombótica)
+10. Monitorizar: peso diário, PA, proteinúria quantitativa mensal
+11. Labs quinzenais: albumina, creatinina, eletrólitos, glicemia (corticoide)
+12. Se DM induzido por corticoide: Metformina ou insulina conforme
+13. Vacinação atualizada antes de imunossupressão (pneumococo, influenza, COVID, hepatite B)
+14. Desmame de prednisona: reduzir 5-10mg a cada 2 semanas após remissão"
       },
       {
             "id": "followup",
@@ -76,7 +120,11 @@ export const nephrologyFullProtocols4: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "1. KDIGO 2021 — Glomerular Diseases Guidelines
+2. SBN — Diretrizes de Doenças Glomerulares 2023
+3. Rovin BH et al. KDIGO 2021 Clinical Practice Guideline for Glomerulonephritis. Kidney Int 2021
+4. Fervenza FC et al. Rituximab in Membranous Nephropathy (MENTOR). NEJM 2019
+5. Heerspink HJL et al. Dapagliflozin in CKD (DAPA-CKD). NEJM 2020"
       }
 ],
   },  {

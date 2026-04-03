@@ -16,15 +16,19 @@ export const obstetricsFullProtocols7: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Cetoacidose diabética (CAD): emergência metabólica do diabetes mellitus caracterizada pela tríade:
-1. Hiperglicemia (>250mg/dL, geralmente >300)
-2. Cetonemia/cetonúria positiva
-3. Acidose metabólica (pH <7,3 e/ou HCO3 <18mEq/L)
+            "content": "Hipercalemia: potássio sérico >5,5mEq/L. Emergência médica quando >6,5mEq/L ou com alterações eletrocardiográficas.
 
-Classificação por gravidade:
-• Leve: pH 7,25-7,30, HCO3 15-18, alerta
-• Moderada: pH 7,0-7,24, HCO3 10-14, sonolento
-• Grave: pH <7,0, HCO3 <10, coma/estupor"
+Classificação:
+• Leve: 5,5-6,0mEq/L
+• Moderada: 6,1-6,5mEq/L
+• Grave: >6,5mEq/L ou com alterações ECG
+
+Alterações ECG progressivas:
+• Ondas T apiculadas (tent-shaped) — mais precoce
+• Achatamento de onda P
+• Alargamento de QRS
+• Padrão sinusoidal
+• FV / Assistolia"
       },
       {
             "id": "screening",
@@ -54,7 +58,30 @@ Classificação por gravidade:
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Corioamnionite."
+            "content": "Conduta — tratamento escalonado:
+
+1. ECG IMEDIATO (avaliar alterações):
+
+2. ESTABILIZAR MEMBRANA (se alteração ECG ou K+ >6,5):
+• Gluconato de cálcio 10% 10mL IV em 2-5min
+  - Início: 1-3min, duração: 30-60min
+  - Repetir se persistência de alteração ECG
+  - Em uso de digoxina: infundir em 20-30min com cautela
+
+3. SHIFT (redistribuição — mover K+ para dentro da célula):
+• Insulina Regular 10UI IV + SG50% 50mL (ou SG10% 500mL)
+  - Início: 15-30min, duração: 4-6h
+  - Monitorizar glicemia 1/1h por 6h
+• Nebulização com Salbutamol 10-20 gotas em 4mL SF — 10-20min
+  - Início: 15-30min, reduz K+ 0,5-1,0mEq/L
+• NaHCO3 8,4% 50-100mL IV (se pH <7,2 — efeito marginal se pH normal)
+
+4. REMOÇÃO (eliminar K+ do corpo):
+• Furosemida 40-80mg IV (se função renal preservada)
+• Sorcal (poliestirenossulfonato de cálcio) 30-60g VO ou VR
+  - Início: 1-2h VO, 30min VR
+• Patiromer 8,4g VO ou SZC (ciclossilicato de zircônio) 10g VO
+• DIÁLISE: se refratária, anúrica ou K+ >7,0 com instabilidade"
       },
       {
             "id": "treatment",
@@ -91,25 +118,21 @@ Classificação por gravidade:
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "PRESCRIÇÃO — CAD moderada:
+            "content": "PRESCRIÇÃO — Hipercalemia grave (K+ 7,2 com onda T apiculada):
 
-1. UTI ou sala de emergência com monitorização
-2. Jejum inicialmente
-3. SF 0,9% 1.000mL IV em 1h (AGORA)
-4. Após: SF 0,9% 500mL/h por 4h → 250mL/h
-5. Insulina Regular 50UI + SF 0,9% 500mL → BIC a 0,1 UI/kg/h
-   (Ex: 70kg = 7 UI/h = 70mL/h da solução 0,1UI/mL)
-6. KCl 19,1% 10mL (20mEq) em cada SF 500mL (se K+ 3,3-5,3)
-7. Quando glicemia ≤250: iniciar SG 5% 500mL IV em paralelo (100mL/h)
-8. Glicemia capilar a cada 1h
-9. Gasometria venosa + eletrólitos (Na, K, Cl, Mg, P) a cada 2-4h
-10. Sondagem vesical se necessário — controle de diurese horária
-11. Buscar fator precipitante: infecção (hemograma, PCR, urocultura, Rx tórax), IAM, AVC
-12. Omeprazol 40mg IV 1x/dia
-13. Quando pH >7,3 + HCO3 >18 + AG <12 + alimentando:
-    - Insulina NPH 0,5 UI/kg/dia SC + insulina regular SC pré-refeições
-    - Desligar bomba 1-2h APÓS primeira dose SC
-14. Monitorização: ECG (onda T — hipercalemia), PA, FC, SpO2, diurese"
+1. Emergência — monitorização contínua com ECG
+2. Gluconato de Cálcio 10% 10mL IV em 3-5min AGORA (pode repetir em 5min)
+3. Insulina Regular 10UI + SG50% 100mL IV em 30min
+4. Nebulização: Salbutamol 20 gotas + SF 3mL (repetir em 20min SN)
+5. NaHCO3 8,4% 50mL IV em 15min (se pH <7,2)
+6. Furosemida 80mg IV (se diurese preservada)
+7. Sorcal 30g + Manitol 100mL VO (ou VR se não tolerar)
+8. Glicemia capilar 1/1h por 6h (risco de hipoglicemia pela insulina)
+9. K+ sérico a cada 1-2h até <6,0mEq/L
+10. ECG seriado a cada 30min até normalização
+11. Suspender: IECA/BRA, espironolactona, suplementos de K+, AINEs
+12. Se refratária: solicitar diálise de urgência
+13. Após estabilização: investigar causa (IRA, DRC, medicamentos, rabdomiólise)"
       },
       {
             "id": "followup",
@@ -129,11 +152,11 @@ Classificação por gravidade:
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "1. ADA — Standards of Care in Diabetes: Diabetic Ketoacidosis 2024
-2. SBD — Sociedade Brasileira de Diabetes: Posicionamento CAD 2023
-3. Kitabchi AE et al. Hyperglycemic Crises in Adult Patients With Diabetes. Diabetes Care 2009
-4. Joint British Diabetes Societies: DKA Management Guidelines 2023
-5. Dhatariya KK et al. Diabetic ketoacidosis. Nat Rev Dis Primers 2020"
+            "content": "1. AHA — Hyperkalemia Management Guidelines 2020
+2. SBN — Manejo da Hipercalemia 2022
+3. Palmer BF, Clegg DJ. Diagnosis and treatment of hyperkalemia. JAMA 2021
+4. Lindner G et al. Acute hyperkalemia in the emergency department. Am J Emerg Med 2020
+5. NICE — Hyperkalaemia: assessment and management 2023"
       }
 ],
   },  {
