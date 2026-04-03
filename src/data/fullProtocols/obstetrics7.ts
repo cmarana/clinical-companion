@@ -16,7 +16,15 @@ export const obstetricsFullProtocols7: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Corioamnionite."
+            "content": "Cetoacidose diabética (CAD): emergência metabólica do diabetes mellitus caracterizada pela tríade:
+1. Hiperglicemia (>250mg/dL, geralmente >300)
+2. Cetonemia/cetonúria positiva
+3. Acidose metabólica (pH <7,3 e/ou HCO3 <18mEq/L)
+
+Classificação por gravidade:
+• Leve: pH 7,25-7,30, HCO3 15-18, alerta
+• Moderada: pH 7,0-7,24, HCO3 10-14, sonolento
+• Grave: pH <7,0, HCO3 <10, coma/estupor"
       },
       {
             "id": "screening",
@@ -51,12 +59,57 @@ export const obstetricsFullProtocols7: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento de Corioamnionite."
+            "content": "Tratamento — Pilares: Hidratação + Insulina + Potássio
+
+1. HIDRATAÇÃO (prioridade!):
+• 1ª hora: SF 0,9% 1.000-1.500mL IV (15-20mL/kg)
+• Após 1ª hora: SF 0,9% 250-500mL/h (avaliar Na+ corrigido)
+  - Na+ corrigido >135: mudar para NaCl 0,45%
+  - Na+ corrigido <135: manter SF 0,9%
+• Quando glicemia ≤200-250: iniciar SG 5% concomitante (evitar hipoglicemia)
+• Total em 24h: 4-6 litros
+
+2. INSULINOTERAPIA:
+• Regular IV contínua: 0,1 UI/kg/h (OU bolus 0,1 UI/kg + 0,1 UI/kg/h)
+• Meta: queda de glicemia 50-70mg/dL/h
+• Se glicemia não cair 10% na 1ª hora: bolus 0,14 UI/kg IV
+• Quando glicemia ≤200-250: reduzir para 0,02-0,05 UI/kg/h + SG 5%
+• Manter insulina IV até: pH >7,3 + HCO3 >18 + AG <12 + paciente alimentando
+• Transição para SC: aplicar insulina SC 1-2h ANTES de desligar a bomba
+
+3. POTÁSSIO (ANTES da insulina se K+ <3,3!):
+• K+ <3,3: NÃO iniciar insulina! Repor KCl 40mEq/h IV até K+ >3,3
+• K+ 3,3-5,3: KCl 20-30mEq em cada litro de soro
+• K+ >5,3: não repor, monitorar 2/2h
+
+4. BICARBONATO (APENAS se pH <6,9):
+• NaHCO3 8,4% 100mEq (100mL) diluído em 400mL AD — infundir em 2h
+• Repetir até pH >7,0
+
+5. FOSFATO: repor se <1,0mg/dL (fosfato de potássio 20-30mmol em 1L de soro)"
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes para Corioamnionite."
+            "content": "PRESCRIÇÃO — CAD moderada:
+
+1. UTI ou sala de emergência com monitorização
+2. Jejum inicialmente
+3. SF 0,9% 1.000mL IV em 1h (AGORA)
+4. Após: SF 0,9% 500mL/h por 4h → 250mL/h
+5. Insulina Regular 50UI + SF 0,9% 500mL → BIC a 0,1 UI/kg/h
+   (Ex: 70kg = 7 UI/h = 70mL/h da solução 0,1UI/mL)
+6. KCl 19,1% 10mL (20mEq) em cada SF 500mL (se K+ 3,3-5,3)
+7. Quando glicemia ≤250: iniciar SG 5% 500mL IV em paralelo (100mL/h)
+8. Glicemia capilar a cada 1h
+9. Gasometria venosa + eletrólitos (Na, K, Cl, Mg, P) a cada 2-4h
+10. Sondagem vesical se necessário — controle de diurese horária
+11. Buscar fator precipitante: infecção (hemograma, PCR, urocultura, Rx tórax), IAM, AVC
+12. Omeprazol 40mg IV 1x/dia
+13. Quando pH >7,3 + HCO3 >18 + AG <12 + alimentando:
+    - Insulina NPH 0,5 UI/kg/dia SC + insulina regular SC pré-refeições
+    - Desligar bomba 1-2h APÓS primeira dose SC
+14. Monitorização: ECG (onda T — hipercalemia), PA, FC, SpO2, diurese"
       },
       {
             "id": "followup",
@@ -76,7 +129,11 @@ export const obstetricsFullProtocols7: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Diretrizes atualizadas."
+            "content": "1. ADA — Standards of Care in Diabetes: Diabetic Ketoacidosis 2024
+2. SBD — Sociedade Brasileira de Diabetes: Posicionamento CAD 2023
+3. Kitabchi AE et al. Hyperglycemic Crises in Adult Patients With Diabetes. Diabetes Care 2009
+4. Joint British Diabetes Societies: DKA Management Guidelines 2023
+5. Dhatariya KK et al. Diabetic ketoacidosis. Nat Rev Dis Primers 2020"
       }
 ],
   },  {

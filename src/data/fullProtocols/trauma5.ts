@@ -16,7 +16,16 @@ export const traumaFullProtocols5: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definição",
-            "content": "Definição clínica e classificação de TCE Grave - Protocolo Completo."
+            "content": "Traumatismo cranioencefálico (TCE) grave: lesão traumática cerebral com Escala de Coma de Glasgow (ECG) ≤8 após ressuscitação inicial.
+
+Classificação por gravidade:
+• TCE leve: GCS 13-15
+• TCE moderado: GCS 9-12
+• TCE grave: GCS 3-8
+
+Tipos de lesão:
+• Primária: contusão, laceração, lesão axonal difusa, hematomas (epidural, subdural, intraparenquimatoso)
+• Secundária: hipotensão, hipóxia, hipertensão intracraniana, herniação, vasoespasmo"
       },
       {
             "id": "screening",
@@ -46,17 +55,86 @@ export const traumaFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilização do paciente com TCE Grave - Protocolo Completo."
+            "content": "Conduta inicial — ABCDE do TCE grave:
+
+A — Via aérea + proteção cervical:
+• IOT sequência rápida (GCS ≤8 = indicação absoluta de IOT)
+• Colar cervical mantido até exclusão de lesão
+
+B — Ventilação:
+• SpO2 ≥94%, PaO2 ≥80mmHg
+• PaCO2 35-40mmHg (EVITAR hiperventilação profilática)
+• Hiperventilação transitória (PaCO2 30-35) APENAS se herniação iminente
+
+C — Circulação:
+• PAS ≥100mmHg (SBP ≥110mmHg ideal — BTF 2017)
+• EVITAR hipotensão a todo custo (dobra mortalidade)
+• SF 0,9% ou Ringer Lactato — EVITAR soluções hipotônicas
+• Ácido tranexâmico 1g IV em 10min se <3h do trauma (CRASH-3)
+
+D — Neurológico:
+• Glasgow detalhado (motor é o mais importante)
+• Pupilas: tamanho, simetria, fotorreatividade
+• Sinais de herniação: anisocoria + postura + bradicardia
+
+E — Exposição:
+• Normotermia (evitar hipotermia e hipertermia)
+• Glicemia: manter 80-180mg/dL"
       },
       {
             "id": "treatment",
             "title": "Abordagem Terapêutica",
-            "content": "Tratamento farmacológico e não farmacológico de TCE Grave - Protocolo Completo."
+            "content": "Manejo da Hipertensão Intracraniana (HIC):
+
+Meta: PIC <22mmHg e PPC 60-70mmHg (PPC = PAM - PIC)
+
+Medidas escalonadas (Tier 1 → 3):
+
+TIER 1:
+• Cabeceira elevada 30°, cabeça em posição neutra
+• Sedação e analgesia: Propofol 1-4mg/kg/h + Fentanil 1-2mcg/kg/h
+• Drenagem de LCR (se DVE instalada)
+• Normotermia
+• Normocapnia (PaCO2 35-40)
+• Manitol 20% 0,5-1g/kg IV em 20min (repetir 0,25-0,5g/kg 4-6h, manter Osm <320)
+• OU Salina hipertônica 3% 250mL IV em 20min (Na+ alvo 145-155)
+
+TIER 2:
+• Hiperventilação leve (PaCO2 30-35mmHg)
+• Salina hipertônica 23,4% 30mL IV em 15min (se herniação)
+• Coma barbitúrico: Tiopental 5mg/kg bolus → 3-5mg/kg/h
+
+TIER 3:
+• Craniectomia descompressiva (DECRA/RESCUEicp)
+• Hipotermia moderada (33-35°C) — controversa
+
+Cirurgia de emergência:
+• Hematoma epidural >30mL ou desvio de linha média >5mm
+• Hematoma subdural >10mm ou desvio >5mm
+• Contusão >20mL com deterioração neurológica
+• Hidrocefalia aguda"
       },
       {
             "id": "prescriptions",
             "title": "Prescrições",
-            "content": "Prescrições padronizadas para TCE Grave - Protocolo Completo."
+            "content": "PRESCRIÇÃO — TCE grave (UTI):
+
+1. UTI — monitorização multimodal
+2. Jejum
+3. IOT + VM: modo VCV, Vt 6-8mL/kg, FR para PaCO2 35-40, PEEP 5-8, FiO2 para SpO2 ≥94%
+4. Cabeceira elevada 30°, cabeça em posição neutra
+5. Propofol 1% 1-4mg/kg/h IV contínuo (sedação)
+6. Fentanil 50mcg/mL — 1-3mL/h IV contínuo (analgesia)
+7. Manitol 20% 250mL (1g/kg) IV em 20min se PIC >22mmHg — repetir 0,5g/kg 6/6h
+8. OU NaCl 20% 100mL + SF 0,9% 400mL (NaCl 3%) — 250mL IV em 30min
+9. Fenitoína 20mg/kg IV (ataque em 30min) → 100mg IV 8/8h (profilaxia de crise precoce — primeiros 7 dias)
+10. Ácido tranexâmico 1g IV (se <3h do trauma)
+11. Omeprazol 40mg IV 1x/dia
+12. Enoxaparina 40mg SC 1x/dia (após 24-72h se TC estável)
+13. Glicemia capilar 4/4h — insulina se >180mg/dL
+14. Osm sérica a cada 6h (manter <320mOsm/L se usando manitol)
+15. Sódio sérico a cada 6h (se usando salina hipertônica)
+16. TC crânio controle em 6h ou se deterioração clínica"
       },
       {
             "id": "followup",
@@ -76,7 +154,12 @@ export const traumaFullProtocols5: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referências Bibliográficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
+            "content": "1. Brain Trauma Foundation (BTF) Guidelines 4th Edition 2016
+2. Carney N et al. Guidelines for the Management of Severe TBI. Neurosurgery 2017
+3. CRASH-3 Trial Collaborators. Effects of tranexamic acid on death after TBI. Lancet 2019
+4. Hutchinson PJ et al. RESCUEicp Trial. NEJM 2016
+5. ATLS — Advanced Trauma Life Support, 10ª edição
+6. CBN — Colégio Brasileiro de Neurocirurgia — Consenso TCE 2022"
       }
 ],
   },
