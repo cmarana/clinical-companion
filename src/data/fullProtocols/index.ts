@@ -317,6 +317,27 @@ export const fullProtocols: FullProtocol[] = [
   ...traumaFullProtocols5,
   ...obstetricsFullProtocols6,
   ...pediatricFullProtocols4,
+
+  // Batch 9 — massive expansion
+  ...cardioFullProtocols9,
+  ...neuroFullProtocols7,
+  ...gastroFullProtocols4,
+  ...nephrologyFullProtocols4,
+  ...psychiatryFullProtocols4,
+  ...dermatologyFullProtocols5,
+  ...ophthalmologyFullProtocols5,
+  ...orlFullProtocols5,
+  ...gynecologyFullProtocols5,
+  ...hematologyFullProtocols5,
+  ...geriatricsFullProtocols5,
+  ...painPalliativeFullProtocols5,
+  ...triageFullProtocols5,
+  ...susProtocolsFullProtocols5,
+  ...otherEmergenciesFullProtocols5,
+  ...emergencyFullProtocols4,
+  ...proceduresFullProtocols5,
+  ...intoxicationFullProtocols4,
+  ...neonatalFullProtocols4,
 ];
 
 export function getFullProtocol(id: string) {
