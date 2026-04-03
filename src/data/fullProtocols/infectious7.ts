@@ -16,91 +16,27 @@ export const infectiousFullProtocols7: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Síndrome de Guillain-Barré (SGB): polirradiculoneuropatia inflamatória aguda, autoimune, desmielinizante (mais comum) ou axonal, caracterizada por fraqueza muscular ascendente simétrica e arreflexia.
-
-Subtipos:
-• AIDP (Polirradiculoneuropatia Inflamatória Desmielinizante Aguda): 85-90% no Ocidente
-• AMAN (Neuropatia Axonal Motora Aguda): mais comum na Ásia
-• AMSAN (Neuropatia Axonal Sensitivo-Motora Aguda): mais grave
-• Síndrome de Miller Fisher: oftalmoplegia + ataxia + arreflexia (anti-GQ1b+)
-• Variantes: faringo-cervico-braquial, paraparética, sensitiva pura"
+            "content": "Síndrome de Guillain-Barré (SGB): polirradiculoneuropatia inflamatória aguda, autoimune, desmielinizante (mais comum) ou axonal, caracterizada por fraqueza muscular ascendente simétrica e arreflexia.\n\nSubtipos:\n• AIDP (Polirradiculoneuropatia Inflamatória Desmielinizante Aguda): 85-90% no Ocidente\n• AMAN (Neuropatia Axonal Motora Aguda): mais comum na Ásia\n• AMSAN (Neuropatia Axonal Sensitivo-Motora Aguda): mais grave\n• Síndrome de Miller Fisher: oftalmoplegia + ataxia + arreflexia (anti-GQ1b+)\n• Variantes: faringo-cervico-braquial, paraparética, sensitiva pura"
       },
       {
             "id": "screening",
             "title": "Rastreamento e Identificacao",
-            "content": "Suspeitar em todo paciente com:
-• Febre persistente + sopro cardíaco novo
-• Febre + fator de risco (uso de drogas IV, prótese valvar, cardiopatia prévia)
-• Bacteremia por S. aureus sem foco identificado
-• Fenômenos embólicos inexplicados (AVC, embolia pulmonar séptica)
-• Hemoculturas positivas persistentes
-
-Critérios de Duke Modificados:
-MAIORES: (1) Hemoculturas típicas (2 positivas para germe típico); (2) Evidência de envolvimento endocárdico ao ecocardiograma (vegetação, abscesso, deiscência de prótese) ou nova regurgitação valvar
-MENORES: Predisposição, febre ≥38°C, fenômenos vasculares (Janeway, embolia arterial), fenômenos imunológicos (Osler, Roth, FR+, GN), evidência microbiológica não critério maior
-DEFINITIVO: 2 maiores, ou 1 maior + 3 menores, ou 5 menores"
+            "content": "Suspeitar em todo paciente com:\n• Febre persistente + sopro cardíaco novo\n• Febre + fator de risco (uso de drogas IV, prótese valvar, cardiopatia prévia)\n• Bacteremia por S. aureus sem foco identificado\n• Fenômenos embólicos inexplicados (AVC, embolia pulmonar séptica)\n• Hemoculturas positivas persistentes\n\nCritérios de Duke Modificados:\nMAIORES: (1) Hemoculturas típicas (2 positivas para germe típico); (2) Evidência de envolvimento endocárdico ao ecocardiograma (vegetação, abscesso, deiscência de prótese) ou nova regurgitação valvar\nMENORES: Predisposição, febre ≥38°C, fenômenos vasculares (Janeway, embolia arterial), fenômenos imunológicos (Osler, Roth, FR+, GN), evidência microbiológica não critério maior\nDEFINITIVO: 2 maiores, ou 1 maior + 3 menores, ou 5 menores"
       },
       {
             "id": "etiology",
             "title": "Etiologia",
-            "content": "Agentes etiológicos por frequência:
-• Streptococcus viridans: 30-40% (valva nativa, subaguda)
-• Staphylococcus aureus: 25-30% (mais comum em aguda e UDIV)
-• Enterococcus: 10-15%
-• Grupo HACEK: 5-10% (Haemophilus, Aggregatibacter, Cardiobacterium, Eikenella, Kingella)
-• Staphylococcus coagulase-negativo: 5-8% (próteses)
-• Fungos (Candida, Aspergillus): 1-2% (imunossuprimidos, próteses)
-
-Fatores de risco:
-• Doença valvar prévia (reumática, degenerativa, bicúspide)
-• Prótese valvar
-• Uso de drogas intravenosas
-• Dispositivos intracardíacos
-• Procedimentos dentários ou invasivos recentes
-• Hemodiálise crônica"
+            "content": "Agentes etiológicos por frequência:\n• Streptococcus viridans: 30-40% (valva nativa, subaguda)\n• Staphylococcus aureus: 25-30% (mais comum em aguda e UDIV)\n• Enterococcus: 10-15%\n• Grupo HACEK: 5-10% (Haemophilus, Aggregatibacter, Cardiobacterium, Eikenella, Kingella)\n• Staphylococcus coagulase-negativo: 5-8% (próteses)\n• Fungos (Candida, Aspergillus): 1-2% (imunossuprimidos, próteses)\n\nFatores de risco:\n• Doença valvar prévia (reumática, degenerativa, bicúspide)\n• Prótese valvar\n• Uso de drogas intravenosas\n• Dispositivos intracardíacos\n• Procedimentos dentários ou invasivos recentes\n• Hemodiálise crônica"
       },
       {
             "id": "clinical",
             "title": "Apresentacao Clinica",
-            "content": "Quadro clínico típico (evolução em 2-4 semanas):
-• Fraqueza ascendente simétrica: inicia em MMII → MMSS → face → respiratório
-• Arreflexia ou hiporreflexia generalizada
-• Dor neuropática (65%): lombalgia, dor em membros
-• Parestesias distais (início frequente)
-• Paralisia facial bilateral (50%)
-• Disfagia e disartria (bulbar)
-• Disfunção autonômica (70%): taquicardia, bradicardia, hipotensão postural, retenção urinária, íleo paralítico
-• Insuficiência respiratória (30%): necessidade de VM
-
-História: 60-70% com infecção prévia (1-4 semanas antes):
-• Campylobacter jejuni (mais comum)
-• CMV, EBV, influenza, Zika, COVID-19
-• Vacinação (raro)
-
-Escala de Hughes (incapacidade funcional):
-0 = normal; 1 = sinais menores; 2 = anda sem apoio; 3 = anda com apoio; 4 = acamado; 5 = VM; 6 = óbito"
+            "content": "Quadro clínico típico (evolução em 2-4 semanas):\n• Fraqueza ascendente simétrica: inicia em MMII → MMSS → face → respiratório\n• Arreflexia ou hiporreflexia generalizada\n• Dor neuropática (65%): lombalgia, dor em membros\n• Parestesias distais (início frequente)\n• Paralisia facial bilateral (50%)\n• Disfagia e disartria (bulbar)\n• Disfunção autonômica (70%): taquicardia, bradicardia, hipotensão postural, retenção urinária, íleo paralítico\n• Insuficiência respiratória (30%): necessidade de VM\n\nHistória: 60-70% com infecção prévia (1-4 semanas antes):\n• Campylobacter jejuni (mais comum)\n• CMV, EBV, influenza, Zika, COVID-19\n• Vacinação (raro)\n\nEscala de Hughes (incapacidade funcional):\n0 = normal; 1 = sinais menores; 2 = anda sem apoio; 3 = anda com apoio; 4 = acamado; 5 = VM; 6 = óbito"
       },
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnóstico:
-• CLÍNICO: fraqueza progressiva + arreflexia (critérios de Brighton)
-
-Líquor (punção lombar):
-• Dissociação albumino-citológica: proteína elevada (>45mg/dL) com celularidade normal (<10 céls/mm³)
-• Pode ser normal na 1ª semana — repetir se necessário
-• Celularidade >50: pensar em HIV, CMV, linfoma, sarcoidose
-
-Eletroneuromiografia (ENMG):
-• Realizar após 2 semanas do início
-• Desmielinizante (AIDP): redução da velocidade de condução, bloqueio de condução, aumento da latência distal
-• Axonal (AMAN/AMSAN): amplitude reduzida com velocidade preservada
-
-Exames complementares:
-• Anti-gangliosídeo: anti-GM1 (AMAN), anti-GQ1b (Miller Fisher), anti-GD1a
-• Sorologia: Campylobacter, CMV, HIV, Zika
-• RM de coluna: realce de raízes (gadolínio) — diferencial com compressão medular
-• CVF (Capacidade Vital Forçada): monitorizar 4-6x/dia — IOT se <20mL/kg ou queda >30%"
+            "content": "Diagnóstico:\n• CLÍNICO: fraqueza progressiva + arreflexia (critérios de Brighton)\n\nLíquor (punção lombar):\n• Dissociação albumino-citológica: proteína elevada (>45mg/dL) com celularidade normal (<10 céls/mm³)\n• Pode ser normal na 1ª semana — repetir se necessário\n• Celularidade >50: pensar em HIV, CMV, linfoma, sarcoidose\n\nEletroneuromiografia (ENMG):\n• Realizar após 2 semanas do início\n• Desmielinizante (AIDP): redução da velocidade de condução, bloqueio de condução, aumento da latência distal\n• Axonal (AMAN/AMSAN): amplitude reduzida com velocidade preservada\n\nExames complementares:\n• Anti-gangliosídeo: anti-GM1 (AMAN), anti-GQ1b (Miller Fisher), anti-GD1a\n• Sorologia: Campylobacter, CMV, HIV, Zika\n• RM de coluna: realce de raízes (gadolínio) — diferencial com compressão medular\n• CVF (Capacidade Vital Forçada): monitorizar 4-6x/dia — IOT se <20mL/kg ou queda >30%"
       },
       {
             "id": "differential",
@@ -110,138 +46,37 @@ Exames complementares:
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Conduta inicial:
-1. Coletar 3 pares de hemoculturas ANTES de iniciar antibiótico
-2. Solicitar ETT de urgência (ETE se prótese ou alta suspeita)
-3. Iniciar antibioticoterapia empírica após hemoculturas:
-
-• Valva nativa, aguda: Oxacilina 2g IV 4/4h + Gentamicina 3mg/kg/dia IV
-• Valva nativa, subaguda: Ampicilina 2g IV 4/4h + Gentamicina 3mg/kg/dia
-• Prótese valvar: Vancomicina 15-20mg/kg IV 12/12h + Gentamicina 3mg/kg/dia + Rifampicina 300mg VO 8/8h
-• Alérgico a penicilina: Vancomicina 15-20mg/kg IV 12/12h
-
-4. Avaliar necessidade de cirurgia precoce
-5. Avaliação odontológica
-6. Ecocardiograma seriado"
+            "content": "Conduta inicial:\n1. Coletar 3 pares de hemoculturas ANTES de iniciar antibiótico\n2. Solicitar ETT de urgência (ETE se prótese ou alta suspeita)\n3. Iniciar antibioticoterapia empírica após hemoculturas:\n\n• Valva nativa, aguda: Oxacilina 2g IV 4/4h + Gentamicina 3mg/kg/dia IV\n• Valva nativa, subaguda: Ampicilina 2g IV 4/4h + Gentamicina 3mg/kg/dia\n• Prótese valvar: Vancomicina 15-20mg/kg IV 12/12h + Gentamicina 3mg/kg/dia + Rifampicina 300mg VO 8/8h\n• Alérgico a penicilina: Vancomicina 15-20mg/kg IV 12/12h\n\n4. Avaliar necessidade de cirurgia precoce\n5. Avaliação odontológica\n6. Ecocardiograma seriado"
       },
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento específico:
-• Imunoglobulina IV (IVIG): 0,4g/kg/dia por 5 dias (total 2g/kg)
-  - Iniciar se Hughes ≥3 ou progressão rápida
-  - Preferida em instabilidade autonômica
-• Plasmaférese: 5 sessões em dias alternados (200-250mL/kg volume total)
-  - Eficácia equivalente à IVIG
-  - Preferida se disponível precocemente
-• NÃO usar corticoides (sem benefício, podem piorar)
-• NÃO combinar IVIG + plasmaférese (sem benefício adicional)
-
-Suporte ventilatório:
-• Monitorizar CVF a cada 4-6h
-• IOT se: CVF <20mL/kg, PImax <-30cmH2O, PEmax <40cmH2O, queda >30% da CVF, hipoxemia ou hipercapnia
-• Regra 20-30-40: CVF <20, PImax <-30, PEmax <40 → intubar
-
-Manejo da dor:
-• Gabapentina 300-1200mg/dia VO
-• Pregabalina 75-300mg/dia VO
-• Carbamazepina se dor neuropática intensa
-• Opioides: tramadol como resgate
-
-Disfunção autonômica:
-• Monitorizar em UTI
-• Evitar manobras vagais bruscas
-• Tratar bradicardia sintomática com atropina
-• Hipotensão: volume + vasopressor se necessário"
+            "content": "Tratamento específico:\n• Imunoglobulina IV (IVIG): 0,4g/kg/dia por 5 dias (total 2g/kg)\n  - Iniciar se Hughes ≥3 ou progressão rápida\n  - Preferida em instabilidade autonômica\n• Plasmaférese: 5 sessões em dias alternados (200-250mL/kg volume total)\n  - Eficácia equivalente à IVIG\n  - Preferida se disponível precocemente\n• NÃO usar corticoides (sem benefício, podem piorar)\n• NÃO combinar IVIG + plasmaférese (sem benefício adicional)\n\nSuporte ventilatório:\n• Monitorizar CVF a cada 4-6h\n• IOT se: CVF <20mL/kg, PImax <-30cmH2O, PEmax <40cmH2O, queda >30% da CVF, hipoxemia ou hipercapnia\n• Regra 20-30-40: CVF <20, PImax <-30, PEmax <40 → intubar\n\nManejo da dor:\n• Gabapentina 300-1200mg/dia VO\n• Pregabalina 75-300mg/dia VO\n• Carbamazepina se dor neuropática intensa\n• Opioides: tramadol como resgate\n\nDisfunção autonômica:\n• Monitorizar em UTI\n• Evitar manobras vagais bruscas\n• Tratar bradicardia sintomática com atropina\n• Hipotensão: volume + vasopressor se necessário"
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "PRESCRIÇÃO — SGB (Hughes ≥3):
-
-1. Internação em UTI (se envolvimento bulbar ou respiratório)
-2. Jejum OU dieta por SNG (se disfagia)
-3. Imunoglobulina Humana IV 0,4g/kg/dia, diluída em SF 0,9%, infundir em 6-8h, por 5 dias consecutivos
-4. Omeprazol 40mg IV 1x/dia
-5. Enoxaparina 40mg SC 1x/dia (profilaxia TVP)
-6. Gabapentina 300mg VO 8/8h (titular até 1200mg/dia conforme dor)
-7. Metoclopramida 10mg IV 8/8h se náusea
-8. Monitorizar CVF a cada 4-6h — protocolo de IOT se CVF <20mL/kg
-9. Fisioterapia motora e respiratória 2x/dia
-10. Controle de PA e FC contínuo
-11. Balanço hídrico rigoroso
-12. Avaliação fonoaudiológica (deglutição)
-
-* Após IVIG sem melhora em 4 semanas: considerar 2º ciclo de IVIG ou plasmaférese"
+            "content": "PRESCRIÇÃO — SGB (Hughes ≥3):\n\n1. Internação em UTI (se envolvimento bulbar ou respiratório)\n2. Jejum OU dieta por SNG (se disfagia)\n3. Imunoglobulina Humana IV 0,4g/kg/dia, diluída em SF 0,9%, infundir em 6-8h, por 5 dias consecutivos\n4. Omeprazol 40mg IV 1x/dia\n5. Enoxaparina 40mg SC 1x/dia (profilaxia TVP)\n6. Gabapentina 300mg VO 8/8h (titular até 1200mg/dia conforme dor)\n7. Metoclopramida 10mg IV 8/8h se náusea\n8. Monitorizar CVF a cada 4-6h — protocolo de IOT se CVF <20mL/kg\n9. Fisioterapia motora e respiratória 2x/dia\n10. Controle de PA e FC contínuo\n11. Balanço hídrico rigoroso\n12. Avaliação fonoaudiológica (deglutição)\n\n* Após IVIG sem melhora em 4 semanas: considerar 2º ciclo de IVIG ou plasmaférese"
       },
       {
             "id": "followup",
             "title": "Acompanhamento",
-            "content": "Acompanhamento:
-• Hemoculturas de controle 48-72h após início ATB (esperar negativação)
-• Monitorar temperatura diária — febre persistente >7 dias: reavaliar terapia e buscar complicações
-• Ecocardiograma: repetir em 7-10 dias e ao final do tratamento
-• Função renal e níveis séricos de aminoglicosídeos/vancomicina 2x/semana
-• Hemograma e PCR semanais
-• Avaliação odontológica durante internação
-• Após alta:
-  - Retorno em 1, 3 e 6 meses
-  - Ecocardiograma de controle em 1-3 meses
-  - Orientar profilaxia de endocardite em procedimentos de risco
-  - Cartão de profilaxia para portadores de prótese valvar"
+            "content": "Acompanhamento:\n• Hemoculturas de controle 48-72h após início ATB (esperar negativação)\n• Monitorar temperatura diária — febre persistente >7 dias: reavaliar terapia e buscar complicações\n• Ecocardiograma: repetir em 7-10 dias e ao final do tratamento\n• Função renal e níveis séricos de aminoglicosídeos/vancomicina 2x/semana\n• Hemograma e PCR semanais\n• Avaliação odontológica durante internação\n• Após alta:\n  - Retorno em 1, 3 e 6 meses\n  - Ecocardiograma de controle em 1-3 meses\n  - Orientar profilaxia de endocardite em procedimentos de risco\n  - Cartão de profilaxia para portadores de prótese valvar"
       },
       {
             "id": "complications",
             "title": "Complicacoes",
-            "content": "Complicações:
-• Insuficiência cardíaca (30-40%): principal causa de óbito
-• Embolias sistêmicas (20-50%): AVC, embolia esplênica, renal, mesentérica
-• Embolia pulmonar séptica (endocardite direita)
-• Abscesso perianular/paravalvar
-• Bloqueio AV (extensão para septo — abscesso aórtico)
-• Aneurisma micótico (cerebral, aórtico)
-• Glomerulonefrite por imunocomplexos
-• Infarto esplênico / abscesso esplênico
-• Insuficiência renal aguda (multifatorial)
-• Recidiva (5-10%)
-
-Manejo de complicações:
-• ICC: diuréticos + vasodilatadores + cirurgia precoce
-• AVC: TC de crânio urgente — cirurgia cardíaca após 4 semanas se AVC hemorrágico
-• Abscesso: indicação cirúrgica absoluta"
+            "content": "Complicações:\n• Insuficiência cardíaca (30-40%): principal causa de óbito\n• Embolias sistêmicas (20-50%): AVC, embolia esplênica, renal, mesentérica\n• Embolia pulmonar séptica (endocardite direita)\n• Abscesso perianular/paravalvar\n• Bloqueio AV (extensão para septo — abscesso aórtico)\n• Aneurisma micótico (cerebral, aórtico)\n• Glomerulonefrite por imunocomplexos\n• Infarto esplênico / abscesso esplênico\n• Insuficiência renal aguda (multifatorial)\n• Recidiva (5-10%)\n\nManejo de complicações:\n• ICC: diuréticos + vasodilatadores + cirurgia precoce\n• AVC: TC de crânio urgente — cirurgia cardíaca após 4 semanas se AVC hemorrágico\n• Abscesso: indicação cirúrgica absoluta"
       },
       {
             "id": "criteria",
             "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Internação: TODO paciente com endocardite confirmada ou provável
-
-UTI:
-• Choque séptico
-• ICC aguda / edema agudo de pulmão
-• AVC ou evento embólico major
-• Necessidade de suporte vasoativo
-• Pós-operatório de cirurgia valvar
-
-Alta hospitalar:
-• Completou ciclo de ATB IV com boa resposta
-• Hemoculturas negativas
-• Estável hemodinamicamente
-• Sem complicações ativas
-• Opção de OPAT (Outpatient Parenteral Antibiotic Therapy) em casos selecionados
-  - Critérios: >2 sem de ATB IV, sem complicações, adesão garantida
-
-Alta ambulatorial:
-• Profilaxia de endocardite mantida indefinidamente para pacientes de alto risco
-• Amoxicilina 2g VO 1h antes de procedimentos dentários invasivos"
+            "content": "Internação: TODO paciente com endocardite confirmada ou provável\n\nUTI:\n• Choque séptico\n• ICC aguda / edema agudo de pulmão\n• AVC ou evento embólico major\n• Necessidade de suporte vasoativo\n• Pós-operatório de cirurgia valvar\n\nAlta hospitalar:\n• Completou ciclo de ATB IV com boa resposta\n• Hemoculturas negativas\n• Estável hemodinamicamente\n• Sem complicações ativas\n• Opção de OPAT (Outpatient Parenteral Antibiotic Therapy) em casos selecionados\n  - Critérios: >2 sem de ATB IV, sem complicações, adesão garantida\n\nAlta ambulatorial:\n• Profilaxia de endocardite mantida indefinidamente para pacientes de alto risco\n• Amoxicilina 2g VO 1h antes de procedimentos dentários invasivos"
       },
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "1. Van den Berg B et al. Guillain-Barré syndrome: pathogenesis, diagnosis, treatment and prognosis. Nat Rev Neurol 2014
-2. Willison HJ et al. Guillain-Barré syndrome. Lancet 2016
-3. Fokke C et al. Diagnosis of Guillain-Barré syndrome. Brain 2014
-4. ABN — Academia Brasileira de Neurologia — Consenso GBS 2022
-5. Hughes RA, Swan AV. Randomised trial of plasma exchange, intravenous immunoglobulin, and combined treatments in GBS. Lancet 1997"
+            "content": "1. Van den Berg B et al. Guillain-Barré syndrome: pathogenesis, diagnosis, treatment and prognosis. Nat Rev Neurol 2014\n2. Willison HJ et al. Guillain-Barré syndrome. Lancet 2016\n3. Fokke C et al. Diagnosis of Guillain-Barré syndrome. Brain 2014\n4. ABN — Academia Brasileira de Neurologia — Consenso GBS 2022\n5. Hughes RA, Swan AV. Randomised trial of plasma exchange, intravenous immunoglobulin, and combined treatments in GBS. Lancet 1997"
       }
 ],
   },  {
