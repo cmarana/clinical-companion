@@ -16,90 +16,27 @@ export const cardioFullProtocols8: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definição",
-            "content": "Síndrome de Brugada: canalopatia cardíaca hereditária (autossômica dominante) caracterizada por padrão eletrocardiográfico típico (supradesnivelamento de ST em V1-V3 com morfologia tipo 1 'coved' ou tipo 2 'saddleback') associada a risco de arritmias ventriculares malignas e morte súbita cardíaca.
-
-Tipo 1 (Coved): supradesnível de ST ≥2mm com concavidade descendente + onda T negativa em V1-V2 — DIAGNÓSTICO
-Tipo 2 (Saddleback): supradesnível de ST ≥2mm com concavidade ascendente + onda T positiva — SUGESTIVO (necessita teste provocativo)
-Tipo 3: morphologia < 2mm — insuficiente para diagnóstico"
+            "content": "Síndrome de Brugada: canalopatia cardíaca hereditária (autossômica dominante) caracterizada por padrão eletrocardiográfico típico (supradesnivelamento de ST em V1-V3 com morfologia tipo 1 'coved' ou tipo 2 'saddleback') associada a risco de arritmias ventriculares malignas e morte súbita cardíaca.\n\nTipo 1 (Coved): supradesnível de ST ≥2mm com concavidade descendente + onda T negativa em V1-V2 — DIAGNÓSTICO\nTipo 2 (Saddleback): supradesnível de ST ≥2mm com concavidade ascendente + onda T positiva — SUGESTIVO (necessita teste provocativo)\nTipo 3: morphologia < 2mm — insuficiente para diagnóstico"
       },
       {
             "id": "screening",
             "title": "Rastreamento e Identificação",
-            "content": "Suspeitar em todo paciente com:
-• Febre persistente + sopro cardíaco novo
-• Febre + fator de risco (uso de drogas IV, prótese valvar, cardiopatia prévia)
-• Bacteremia por S. aureus sem foco identificado
-• Fenômenos embólicos inexplicados (AVC, embolia pulmonar séptica)
-• Hemoculturas positivas persistentes
-
-Critérios de Duke Modificados:
-MAIORES: (1) Hemoculturas típicas (2 positivas para germe típico); (2) Evidência de envolvimento endocárdico ao ecocardiograma (vegetação, abscesso, deiscência de prótese) ou nova regurgitação valvar
-MENORES: Predisposição, febre ≥38°C, fenômenos vasculares (Janeway, embolia arterial), fenômenos imunológicos (Osler, Roth, FR+, GN), evidência microbiológica não critério maior
-DEFINITIVO: 2 maiores, ou 1 maior + 3 menores, ou 5 menores"
+            "content": "Suspeitar em todo paciente com:\n• Febre persistente + sopro cardíaco novo\n• Febre + fator de risco (uso de drogas IV, prótese valvar, cardiopatia prévia)\n• Bacteremia por S. aureus sem foco identificado\n• Fenômenos embólicos inexplicados (AVC, embolia pulmonar séptica)\n• Hemoculturas positivas persistentes\n\nCritérios de Duke Modificados:\nMAIORES: (1) Hemoculturas típicas (2 positivas para germe típico); (2) Evidência de envolvimento endocárdico ao ecocardiograma (vegetação, abscesso, deiscência de prótese) ou nova regurgitação valvar\nMENORES: Predisposição, febre ≥38°C, fenômenos vasculares (Janeway, embolia arterial), fenômenos imunológicos (Osler, Roth, FR+, GN), evidência microbiológica não critério maior\nDEFINITIVO: 2 maiores, ou 1 maior + 3 menores, ou 5 menores"
       },
       {
             "id": "etiology",
             "title": "Etiologia",
-            "content": "Agentes etiológicos por frequência:
-• Streptococcus viridans: 30-40% (valva nativa, subaguda)
-• Staphylococcus aureus: 25-30% (mais comum em aguda e UDIV)
-• Enterococcus: 10-15%
-• Grupo HACEK: 5-10% (Haemophilus, Aggregatibacter, Cardiobacterium, Eikenella, Kingella)
-• Staphylococcus coagulase-negativo: 5-8% (próteses)
-• Fungos (Candida, Aspergillus): 1-2% (imunossuprimidos, próteses)
-
-Fatores de risco:
-• Doença valvar prévia (reumática, degenerativa, bicúspide)
-• Prótese valvar
-• Uso de drogas intravenosas
-• Dispositivos intracardíacos
-• Procedimentos dentários ou invasivos recentes
-• Hemodiálise crônica"
+            "content": "Agentes etiológicos por frequência:\n• Streptococcus viridans: 30-40% (valva nativa, subaguda)\n• Staphylococcus aureus: 25-30% (mais comum em aguda e UDIV)\n• Enterococcus: 10-15%\n• Grupo HACEK: 5-10% (Haemophilus, Aggregatibacter, Cardiobacterium, Eikenella, Kingella)\n• Staphylococcus coagulase-negativo: 5-8% (próteses)\n• Fungos (Candida, Aspergillus): 1-2% (imunossuprimidos, próteses)\n\nFatores de risco:\n• Doença valvar prévia (reumática, degenerativa, bicúspide)\n• Prótese valvar\n• Uso de drogas intravenosas\n• Dispositivos intracardíacos\n• Procedimentos dentários ou invasivos recentes\n• Hemodiálise crônica"
       },
       {
             "id": "clinical",
             "title": "Apresentação Clínica",
-            "content": "Manifestações clínicas:
-• Maioria assintomáticos (diagnóstico incidental ou screening familiar)
-• Síncope (20-30%): geralmente noturna ou em repouso
-• Morte súbita cardíaca abortada
-• Palpitações
-• Respiração agônica noturna
-
-Características epidemiológicas:
-• Prevalência: 1-5/10.000
-• Predominância masculina (8-10:1)
-• Idade média de eventos: 40 anos
-• Maior prevalência no Sudeste Asiático
-
-Fatores desencadeantes:
-• Febre (pode desmascarar padrão tipo 1)
-• Refeições copiosas (estímulo vagal)
-• Sono / repouso
-• Drogas bloqueadoras de canal de sódio
-• Álcool, cocaína
-• Hipocalemia, hipomagnesemia"
+            "content": "Manifestações clínicas:\n• Maioria assintomáticos (diagnóstico incidental ou screening familiar)\n• Síncope (20-30%): geralmente noturna ou em repouso\n• Morte súbita cardíaca abortada\n• Palpitações\n• Respiração agônica noturna\n\nCaracterísticas epidemiológicas:\n• Prevalência: 1-5/10.000\n• Predominância masculina (8-10:1)\n• Idade média de eventos: 40 anos\n• Maior prevalência no Sudeste Asiático\n\nFatores desencadeantes:\n• Febre (pode desmascarar padrão tipo 1)\n• Refeições copiosas (estímulo vagal)\n• Sono / repouso\n• Drogas bloqueadoras de canal de sódio\n• Álcool, cocaína\n• Hipocalemia, hipomagnesemia"
       },
       {
             "id": "diagnosis",
             "title": "Diagnóstico",
-            "content": "ECG de 12 derivações (com V1-V2 no 2º, 3º e 4º EIC):
-• Padrão tipo 1 espontâneo = diagnóstico se + critério clínico
-
-Teste provocativo (se padrão não tipo 1):
-• Ajmalina 1mg/kg IV em 5min (padrão-ouro)
-• Procainamida 10mg/kg IV em 10min
-• Flecainida 2mg/kg IV em 10min (máx 150mg)
-• POSITIVO: conversão para padrão tipo 1 com ST ≥2mm
-• Monitorização contínua durante teste + material de RCP disponível
-
-Estratificação de risco:
-• ALTO RISCO: parada cardíaca recuperada, síncope arrítmica documentada
-• RISCO INTERMEDIÁRIO: padrão tipo 1 espontâneo + história familiar de MSC <45 anos
-• BAIXO RISCO: assintomático, padrão tipo 1 apenas com provocação
-
-Estudo eletrofisiológico: papel controverso na estratificação
-Teste genético: mutação SCN5A em 20-30% — não muda conduta isoladamente"
+            "content": "ECG de 12 derivações (com V1-V2 no 2º, 3º e 4º EIC):\n• Padrão tipo 1 espontâneo = diagnóstico se + critério clínico\n\nTeste provocativo (se padrão não tipo 1):\n• Ajmalina 1mg/kg IV em 5min (padrão-ouro)\n• Procainamida 10mg/kg IV em 10min\n• Flecainida 2mg/kg IV em 10min (máx 150mg)\n• POSITIVO: conversão para padrão tipo 1 com ST ≥2mm\n• Monitorização contínua durante teste + material de RCP disponível\n\nEstratificação de risco:\n• ALTO RISCO: parada cardíaca recuperada, síncope arrítmica documentada\n• RISCO INTERMEDIÁRIO: padrão tipo 1 espontâneo + história familiar de MSC <45 anos\n• BAIXO RISCO: assintomático, padrão tipo 1 apenas com provocação\n\nEstudo eletrofisiológico: papel controverso na estratificação\nTeste genético: mutação SCN5A em 20-30% — não muda conduta isoladamente"
       },
       {
             "id": "differential",
@@ -109,126 +46,37 @@ Teste genético: mutação SCN5A em 20-30% — não muda conduta isoladamente"
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Conduta inicial:
-1. Coletar 3 pares de hemoculturas ANTES de iniciar antibiótico
-2. Solicitar ETT de urgência (ETE se prótese ou alta suspeita)
-3. Iniciar antibioticoterapia empírica após hemoculturas:
-
-• Valva nativa, aguda: Oxacilina 2g IV 4/4h + Gentamicina 3mg/kg/dia IV
-• Valva nativa, subaguda: Ampicilina 2g IV 4/4h + Gentamicina 3mg/kg/dia
-• Prótese valvar: Vancomicina 15-20mg/kg IV 12/12h + Gentamicina 3mg/kg/dia + Rifampicina 300mg VO 8/8h
-• Alérgico a penicilina: Vancomicina 15-20mg/kg IV 12/12h
-
-4. Avaliar necessidade de cirurgia precoce
-5. Avaliação odontológica
-6. Ecocardiograma seriado"
+            "content": "Conduta inicial:\n1. Coletar 3 pares de hemoculturas ANTES de iniciar antibiótico\n2. Solicitar ETT de urgência (ETE se prótese ou alta suspeita)\n3. Iniciar antibioticoterapia empírica após hemoculturas:\n\n• Valva nativa, aguda: Oxacilina 2g IV 4/4h + Gentamicina 3mg/kg/dia IV\n• Valva nativa, subaguda: Ampicilina 2g IV 4/4h + Gentamicina 3mg/kg/dia\n• Prótese valvar: Vancomicina 15-20mg/kg IV 12/12h + Gentamicina 3mg/kg/dia + Rifampicina 300mg VO 8/8h\n• Alérgico a penicilina: Vancomicina 15-20mg/kg IV 12/12h\n\n4. Avaliar necessidade de cirurgia precoce\n5. Avaliação odontológica\n6. Ecocardiograma seriado"
       },
       {
             "id": "treatment",
             "title": "Abordagem Terapêutica",
-            "content": "CDI (Cardiodesfibrilador Implantável):
-• Classe I: sobrevivente de parada cardíaca; síncope com padrão tipo 1 espontâneo
-• Classe IIa: padrão tipo 1 espontâneo + FV induzida no EEF
-• NÃO indicado: assintomáticos com padrão apenas provocado
-
-Quinidinada:
-• Quinidina 300-600mg VO 8/8h — alternativa se CDI recusado/indisponível
-• Reduz choques em portadores de CDI com tempestade elétrica
-
-Ablação por cateter:
-• Ablação epicárdica do substrato em VSVD — para tempestades elétricas refratárias
-
-Medidas gerais:
-• EVITAR: flecainida, propafenona, ajmalina (exceto teste), antidepressivos tricíclicos, lítio, cocaína
-• Tratar febre agressivamente com antitérmicos (febre desmascara padrão)
-• Evitar álcool em excesso
-• Lista de drogas a evitar: www.brugadadrugs.org
-• Screening familiar de 1º grau obrigatório"
+            "content": "CDI (Cardiodesfibrilador Implantável):\n• Classe I: sobrevivente de parada cardíaca; síncope com padrão tipo 1 espontâneo\n• Classe IIa: padrão tipo 1 espontâneo + FV induzida no EEF\n• NÃO indicado: assintomáticos com padrão apenas provocado\n\nQuinidinada:\n• Quinidina 300-600mg VO 8/8h — alternativa se CDI recusado/indisponível\n• Reduz choques em portadores de CDI com tempestade elétrica\n\nAblação por cateter:\n• Ablação epicárdica do substrato em VSVD — para tempestades elétricas refratárias\n\nMedidas gerais:\n• EVITAR: flecainida, propafenona, ajmalina (exceto teste), antidepressivos tricíclicos, lítio, cocaína\n• Tratar febre agressivamente com antitérmicos (febre desmascara padrão)\n• Evitar álcool em excesso\n• Lista de drogas a evitar: www.brugadadrugs.org\n• Screening familiar de 1º grau obrigatório"
       },
       {
             "id": "prescriptions",
             "title": "Prescrições",
-            "content": "PRESCRIÇÃO — Brugada com tempestade elétrica:
-
-1. UTI — monitorização contínua
-2. Isoproterenol 1-4 mcg/min IV contínuo (aumenta corrente de cálcio, suprime arritmias)
-3. Quinidina 300mg VO 8/8h (quando disponível)
-4. Correção eletrolítica agressiva:
-   - Manter K+ 4,0-4,5 mEq/L
-   - Manter Mg++ >2,0 mEq/L
-5. Controle térmico rigoroso — Dipirona 1g IV 6/6h se T ≥37,5°C
-6. Suspender TODAS as drogas da lista de Brugada
-7. Avaliação para ablação epicárdica de urgência
-8. Programação de CDI: otimizar detecção para reduzir choques inapropriados"
+            "content": "PRESCRIÇÃO — Brugada com tempestade elétrica:\n\n1. UTI — monitorização contínua\n2. Isoproterenol 1-4 mcg/min IV contínuo (aumenta corrente de cálcio, suprime arritmias)\n3. Quinidina 300mg VO 8/8h (quando disponível)\n4. Correção eletrolítica agressiva:\n   - Manter K+ 4,0-4,5 mEq/L\n   - Manter Mg++ >2,0 mEq/L\n5. Controle térmico rigoroso — Dipirona 1g IV 6/6h se T ≥37,5°C\n6. Suspender TODAS as drogas da lista de Brugada\n7. Avaliação para ablação epicárdica de urgência\n8. Programação de CDI: otimizar detecção para reduzir choques inapropriados"
       },
       {
             "id": "followup",
             "title": "Acompanhamento",
-            "content": "Acompanhamento:
-• Hemoculturas de controle 48-72h após início ATB (esperar negativação)
-• Monitorar temperatura diária — febre persistente >7 dias: reavaliar terapia e buscar complicações
-• Ecocardiograma: repetir em 7-10 dias e ao final do tratamento
-• Função renal e níveis séricos de aminoglicosídeos/vancomicina 2x/semana
-• Hemograma e PCR semanais
-• Avaliação odontológica durante internação
-• Após alta:
-  - Retorno em 1, 3 e 6 meses
-  - Ecocardiograma de controle em 1-3 meses
-  - Orientar profilaxia de endocardite em procedimentos de risco
-  - Cartão de profilaxia para portadores de prótese valvar"
+            "content": "Acompanhamento:\n• Hemoculturas de controle 48-72h após início ATB (esperar negativação)\n• Monitorar temperatura diária — febre persistente >7 dias: reavaliar terapia e buscar complicações\n• Ecocardiograma: repetir em 7-10 dias e ao final do tratamento\n• Função renal e níveis séricos de aminoglicosídeos/vancomicina 2x/semana\n• Hemograma e PCR semanais\n• Avaliação odontológica durante internação\n• Após alta:\n  - Retorno em 1, 3 e 6 meses\n  - Ecocardiograma de controle em 1-3 meses\n  - Orientar profilaxia de endocardite em procedimentos de risco\n  - Cartão de profilaxia para portadores de prótese valvar"
       },
       {
             "id": "complications",
             "title": "Complicações",
-            "content": "Complicações:
-• Insuficiência cardíaca (30-40%): principal causa de óbito
-• Embolias sistêmicas (20-50%): AVC, embolia esplênica, renal, mesentérica
-• Embolia pulmonar séptica (endocardite direita)
-• Abscesso perianular/paravalvar
-• Bloqueio AV (extensão para septo — abscesso aórtico)
-• Aneurisma micótico (cerebral, aórtico)
-• Glomerulonefrite por imunocomplexos
-• Infarto esplênico / abscesso esplênico
-• Insuficiência renal aguda (multifatorial)
-• Recidiva (5-10%)
-
-Manejo de complicações:
-• ICC: diuréticos + vasodilatadores + cirurgia precoce
-• AVC: TC de crânio urgente — cirurgia cardíaca após 4 semanas se AVC hemorrágico
-• Abscesso: indicação cirúrgica absoluta"
+            "content": "Complicações:\n• Insuficiência cardíaca (30-40%): principal causa de óbito\n• Embolias sistêmicas (20-50%): AVC, embolia esplênica, renal, mesentérica\n• Embolia pulmonar séptica (endocardite direita)\n• Abscesso perianular/paravalvar\n• Bloqueio AV (extensão para septo — abscesso aórtico)\n• Aneurisma micótico (cerebral, aórtico)\n• Glomerulonefrite por imunocomplexos\n• Infarto esplênico / abscesso esplênico\n• Insuficiência renal aguda (multifatorial)\n• Recidiva (5-10%)\n\nManejo de complicações:\n• ICC: diuréticos + vasodilatadores + cirurgia precoce\n• AVC: TC de crânio urgente — cirurgia cardíaca após 4 semanas se AVC hemorrágico\n• Abscesso: indicação cirúrgica absoluta"
       },
       {
             "id": "criteria",
             "title": "Critérios de Internação / UTI / Alta",
-            "content": "Internação: TODO paciente com endocardite confirmada ou provável
-
-UTI:
-• Choque séptico
-• ICC aguda / edema agudo de pulmão
-• AVC ou evento embólico major
-• Necessidade de suporte vasoativo
-• Pós-operatório de cirurgia valvar
-
-Alta hospitalar:
-• Completou ciclo de ATB IV com boa resposta
-• Hemoculturas negativas
-• Estável hemodinamicamente
-• Sem complicações ativas
-• Opção de OPAT (Outpatient Parenteral Antibiotic Therapy) em casos selecionados
-  - Critérios: >2 sem de ATB IV, sem complicações, adesão garantida
-
-Alta ambulatorial:
-• Profilaxia de endocardite mantida indefinidamente para pacientes de alto risco
-• Amoxicilina 2g VO 1h antes de procedimentos dentários invasivos"
+            "content": "Internação: TODO paciente com endocardite confirmada ou provável\n\nUTI:\n• Choque séptico\n• ICC aguda / edema agudo de pulmão\n• AVC ou evento embólico major\n• Necessidade de suporte vasoativo\n• Pós-operatório de cirurgia valvar\n\nAlta hospitalar:\n• Completou ciclo de ATB IV com boa resposta\n• Hemoculturas negativas\n• Estável hemodinamicamente\n• Sem complicações ativas\n• Opção de OPAT (Outpatient Parenteral Antibiotic Therapy) em casos selecionados\n  - Critérios: >2 sem de ATB IV, sem complicações, adesão garantida\n\nAlta ambulatorial:\n• Profilaxia de endocardite mantida indefinidamente para pacientes de alto risco\n• Amoxicilina 2g VO 1h antes de procedimentos dentários invasivos"
       },
       {
             "id": "references",
             "title": "Referências Bibliográficas",
-            "content": "1. ESC 2022 Guidelines for management of patients with ventricular arrhythmias
-2. Brugada J et al. Brugada Syndrome. Eur Heart J 2018;39:1256-64
-3. Antzelevitch C et al. J-Wave syndromes expert consensus. Heart Rhythm 2016
-4. SBC — Diretriz de Arritmias Cardíacas 2023
-5. www.brugadadrugs.org — lista atualizada de drogas a evitar"
+            "content": "1. ESC 2022 Guidelines for management of patients with ventricular arrhythmias\n2. Brugada J et al. Brugada Syndrome. Eur Heart J 2018;39:1256-64\n3. Antzelevitch C et al. J-Wave syndromes expert consensus. Heart Rhythm 2016\n4. SBC — Diretriz de Arritmias Cardíacas 2023\n5. www.brugadadrugs.org — lista atualizada de drogas a evitar"
       }
 ],
   },

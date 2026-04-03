@@ -16,13 +16,7 @@ export const sepsisFullProtocols6: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definição",
-            "content": "Choque misto: coexistência de dois ou mais tipos de choque no mesmo paciente (distributivo + cardiogênico; hipovolêmico + obstrutivo, etc). Exemplo clássico: sepse com disfunção miocárdica (cardiomiopatia séptica) — choque distributivo + cardiogênico.
-
-Classificação:
-• Distributivo + Cardiogênico: sepse com cardiomiopatia séptica (mais comum)
-• Hipovolêmico + Distributivo: trauma com infecção secundária
-• Obstrutivo + Cardiogênico: TEP maciço com disfunção de VD
-• Hipovolêmico + Cardiogênico: IAM + sangramento"
+            "content": "Choque misto: coexistência de dois ou mais tipos de choque no mesmo paciente (distributivo + cardiogênico; hipovolêmico + obstrutivo, etc). Exemplo clássico: sepse com disfunção miocárdica (cardiomiopatia séptica) — choque distributivo + cardiogênico.\n\nClassificação:\n• Distributivo + Cardiogênico: sepse com cardiomiopatia séptica (mais comum)\n• Hipovolêmico + Distributivo: trauma com infecção secundária\n• Obstrutivo + Cardiogênico: TEP maciço com disfunção de VD\n• Hipovolêmico + Cardiogênico: IAM + sangramento"
       },
       {
             "id": "screening",
@@ -37,37 +31,12 @@ Classificação:
       {
             "id": "clinical",
             "title": "Apresentação Clínica",
-            "content": "Apresentação clínica do choque misto:
-• Hipotensão refratária a volume E vasopressores
-• Sinais de hipoperfusão: lactato elevado, oligúria, alteração do sensório
-• Extremidades quentes (componente distributivo) OU frias (cardiogênico predominante)
-• Pressão de pulso variável
-• Turgência jugular (se componente cardiogênico/obstrutivo)
-• Débito urinário <0,5 mL/kg/h
-
-Parâmetros hemodinâmicos típicos (Swan-Ganz):
-• Cardiomiopatia séptica: DC baixo + RVS baixa + PCP normal/baixa
-• TEP + choque: DC baixo + RVS alta + PCP normal + PSVD elevada
-• IAM + sepse: DC muito baixo + RVS variável + PCP alta"
+            "content": "Apresentação clínica do choque misto:\n• Hipotensão refratária a volume E vasopressores\n• Sinais de hipoperfusão: lactato elevado, oligúria, alteração do sensório\n• Extremidades quentes (componente distributivo) OU frias (cardiogênico predominante)\n• Pressão de pulso variável\n• Turgência jugular (se componente cardiogênico/obstrutivo)\n• Débito urinário <0,5 mL/kg/h\n\nParâmetros hemodinâmicos típicos (Swan-Ganz):\n• Cardiomiopatia séptica: DC baixo + RVS baixa + PCP normal/baixa\n• TEP + choque: DC baixo + RVS alta + PCP normal + PSVD elevada\n• IAM + sepse: DC muito baixo + RVS variável + PCP alta"
       },
       {
             "id": "diagnosis",
             "title": "Diagnóstico",
-            "content": "Avaliação diagnóstica:
-• Ecocardiograma à beira-leito (POCUS/FOCUS): FEVE, função VD, derrame pericárdico, VCI
-• Lactato arterial seriado (a cada 2-4h)
-• Gasometria arterial + SvO2 (cateter venoso central)
-• BNP/NT-proBNP (componente cardiogênico)
-• Troponina (isquemia associada)
-• Hemograma, PCR, procalcitonina (componente séptico)
-• Ecocardiograma formal quando possível
-
-Monitorização avançada:
-• Cateter arterial (PAM contínua)
-• Cateter venoso central (PVC, ScvO2)
-• Monitor de débito cardíaco minimamente invasivo (PiCCO, FloTrac)
-• Swan-Ganz em casos refratários
-• Variação de pressão de pulso (VPP) para avaliar responsividade a volume"
+            "content": "Avaliação diagnóstica:\n• Ecocardiograma à beira-leito (POCUS/FOCUS): FEVE, função VD, derrame pericárdico, VCI\n• Lactato arterial seriado (a cada 2-4h)\n• Gasometria arterial + SvO2 (cateter venoso central)\n• BNP/NT-proBNP (componente cardiogênico)\n• Troponina (isquemia associada)\n• Hemograma, PCR, procalcitonina (componente séptico)\n• Ecocardiograma formal quando possível\n\nMonitorização avançada:\n• Cateter arterial (PAM contínua)\n• Cateter venoso central (PVC, ScvO2)\n• Monitor de débito cardíaco minimamente invasivo (PiCCO, FloTrac)\n• Swan-Ganz em casos refratários\n• Variação de pressão de pulso (VPP) para avaliar responsividade a volume"
       },
       {
             "id": "differential",
@@ -82,50 +51,12 @@ Monitorização avançada:
       {
             "id": "treatment",
             "title": "Abordagem Terapêutica",
-            "content": "Abordagem terapêutica por etapas:
-
-1. RESSUSCITAÇÃO VOLÊMICA:
-• Cristaloide 30mL/kg nas primeiras 3h (se componente distributivo)
-• LIMITAR volume se FEVE <30% ou PCP >18 — bolus de 250mL com reavaliação
-• Avaliar responsividade: elevação de pernas passiva, VPP, ou mini-bolus
-
-2. VASOPRESSORES:
-• Noradrenalina 0,1-2 mcg/kg/min — 1ª linha (PAM ≥65mmHg)
-• Se componente cardiogênico: associar Dobutamina 2,5-20 mcg/kg/min
-• Se choque refratário: Vasopressina 0,03-0,04 UI/min
-• Adrenalina como alternativa em bradicardia ou anafilaxia associada
-
-3. INOTRÓPICOS:
-• Dobutamina 2,5-20 mcg/kg/min — se FEVE <40% ou ScvO2 <70%
-• Milrinona 0,375-0,75 mcg/kg/min — se uso crônico de betabloqueador
-• Levosimendana 0,1-0,2 mcg/kg/min — opção em cardiomiopatia séptica refratária
-
-4. SUPORTE MECÂNICO:
-• Balão intra-aórtico: componente cardiogênico predominante
-• ECMO VA: choque refratário a drogas vasoativas
-
-5. TRATAR A CAUSA:
-• Sepse: antibióticos em 1h, controle de foco
-• IAM: reperfusão
-• TEP: trombólise ou trombectomia"
+            "content": "Abordagem terapêutica por etapas:\n\n1. RESSUSCITAÇÃO VOLÊMICA:\n• Cristaloide 30mL/kg nas primeiras 3h (se componente distributivo)\n• LIMITAR volume se FEVE <30% ou PCP >18 — bolus de 250mL com reavaliação\n• Avaliar responsividade: elevação de pernas passiva, VPP, ou mini-bolus\n\n2. VASOPRESSORES:\n• Noradrenalina 0,1-2 mcg/kg/min — 1ª linha (PAM ≥65mmHg)\n• Se componente cardiogênico: associar Dobutamina 2,5-20 mcg/kg/min\n• Se choque refratário: Vasopressina 0,03-0,04 UI/min\n• Adrenalina como alternativa em bradicardia ou anafilaxia associada\n\n3. INOTRÓPICOS:\n• Dobutamina 2,5-20 mcg/kg/min — se FEVE <40% ou ScvO2 <70%\n• Milrinona 0,375-0,75 mcg/kg/min — se uso crônico de betabloqueador\n• Levosimendana 0,1-0,2 mcg/kg/min — opção em cardiomiopatia séptica refratária\n\n4. SUPORTE MECÂNICO:\n• Balão intra-aórtico: componente cardiogênico predominante\n• ECMO VA: choque refratário a drogas vasoativas\n\n5. TRATAR A CAUSA:\n• Sepse: antibióticos em 1h, controle de foco\n• IAM: reperfusão\n• TEP: trombólise ou trombectomia"
       },
       {
             "id": "prescriptions",
             "title": "Prescrições",
-            "content": "PRESCRIÇÃO — Choque misto (séptico + cardiogênico):
-
-1. UTI — monitorização invasiva
-2. Jejum
-3. SF 0,9% — bolus de 250mL com reavaliação clínica (responsividade a volume)
-4. Noradrenalina 16mg/250mL SG5% — iniciar 5mL/h (0,05 mcg/kg/min), titular para PAM ≥65mmHg
-5. Dobutamina 250mg/250mL SG5% — iniciar 5mL/h (2,5 mcg/kg/min), titular conforme DC e ScvO2
-6. Meropenem 1g IV 8/8h (se sepse de foco abdominal/nosocomial) OU conforme foco
-7. Hidrocortisona 50mg IV 6/6h (se choque refratário após 6h de vasopressor)
-8. Omeprazol 40mg IV 1x/dia
-9. Insulina conforme protocolo se glicemia >180mg/dL
-10. Gasometria arterial + lactato a cada 4h
-11. Controle de diurese horária — meta ≥0,5mL/kg/h
-12. Ecocardiograma de controle em 24-48h"
+            "content": "PRESCRIÇÃO — Choque misto (séptico + cardiogênico):\n\n1. UTI — monitorização invasiva\n2. Jejum\n3. SF 0,9% — bolus de 250mL com reavaliação clínica (responsividade a volume)\n4. Noradrenalina 16mg/250mL SG5% — iniciar 5mL/h (0,05 mcg/kg/min), titular para PAM ≥65mmHg\n5. Dobutamina 250mg/250mL SG5% — iniciar 5mL/h (2,5 mcg/kg/min), titular conforme DC e ScvO2\n6. Meropenem 1g IV 8/8h (se sepse de foco abdominal/nosocomial) OU conforme foco\n7. Hidrocortisona 50mg IV 6/6h (se choque refratário após 6h de vasopressor)\n8. Omeprazol 40mg IV 1x/dia\n9. Insulina conforme protocolo se glicemia >180mg/dL\n10. Gasometria arterial + lactato a cada 4h\n11. Controle de diurese horária — meta ≥0,5mL/kg/h\n12. Ecocardiograma de controle em 24-48h"
       },
       {
             "id": "followup",
@@ -140,31 +71,12 @@ Monitorização avançada:
       {
             "id": "criteria",
             "title": "Critérios de Internação / UTI / Alta",
-            "content": "Internação em UTI: TODOS os pacientes com choque misto
-
-Alta da UTI:
-• PAM >65mmHg sem vasopressores por ≥24h
-• Lactato em queda e <2mmol/L
-• Diurese >0,5mL/kg/h
-• ScvO2 >70%
-• Estabilidade hemodinâmica
-• Resolução do fator desencadeante
-
-Alta hospitalar:
-• Tolerando dieta oral
-• Sem necessidade de drogas vasoativas
-• Completou antibioticoterapia (se séptico)
-• Função cardíaca estável (se cardiogênico)
-• Ecocardiograma de controle antes da alta"
+            "content": "Internação em UTI: TODOS os pacientes com choque misto\n\nAlta da UTI:\n• PAM >65mmHg sem vasopressores por ≥24h\n• Lactato em queda e <2mmol/L\n• Diurese >0,5mL/kg/h\n• ScvO2 >70%\n• Estabilidade hemodinâmica\n• Resolução do fator desencadeante\n\nAlta hospitalar:\n• Tolerando dieta oral\n• Sem necessidade de drogas vasoativas\n• Completou antibioticoterapia (se séptico)\n• Função cardíaca estável (se cardiogênico)\n• Ecocardiograma de controle antes da alta"
       },
       {
             "id": "references",
             "title": "Referências Bibliográficas",
-            "content": "1. Surviving Sepsis Campaign Guidelines 2021
-2. ESC 2021 Guidelines on Heart Failure
-3. Levy B et al. Septic cardiomyopathy. Intensive Care Med 2021
-4. AMIB — Recomendações para manejo do choque 2023
-5. De Backer D et al. Comparison of dopamine and norepinephrine. NEJM 2010"
+            "content": "1. Surviving Sepsis Campaign Guidelines 2021\n2. ESC 2021 Guidelines on Heart Failure\n3. Levy B et al. Septic cardiomyopathy. Intensive Care Med 2021\n4. AMIB — Recomendações para manejo do choque 2023\n5. De Backer D et al. Comparison of dopamine and norepinephrine. NEJM 2010"
       }
 ],
   },

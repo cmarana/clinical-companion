@@ -16,87 +16,27 @@ export const infectiousFullProtocols6: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definição",
-            "content": "Infecção do endocárdio, geralmente valvar, causada por bactérias (mais comum) ou fungos. Classificação:
-• Aguda: evolução rápida (dias a semanas), geralmente S. aureus
-• Subaguda: evolução insidiosa (semanas a meses), geralmente Streptococcus viridans
-• Prótese precoce: <60 dias da cirurgia (S. aureus, S. epidermidis)
-• Prótese tardia: >60 dias (flora semelhante à valva nativa)
-• Associada a dispositivos: marcapasso, CDI"
+            "content": "Infecção do endocárdio, geralmente valvar, causada por bactérias (mais comum) ou fungos. Classificação:\n• Aguda: evolução rápida (dias a semanas), geralmente S. aureus\n• Subaguda: evolução insidiosa (semanas a meses), geralmente Streptococcus viridans\n• Prótese precoce: <60 dias da cirurgia (S. aureus, S. epidermidis)\n• Prótese tardia: >60 dias (flora semelhante à valva nativa)\n• Associada a dispositivos: marcapasso, CDI"
       },
       {
             "id": "screening",
             "title": "Rastreamento e Identificação",
-            "content": "Suspeitar em todo paciente com:
-• Febre persistente + sopro cardíaco novo
-• Febre + fator de risco (uso de drogas IV, prótese valvar, cardiopatia prévia)
-• Bacteremia por S. aureus sem foco identificado
-• Fenômenos embólicos inexplicados (AVC, embolia pulmonar séptica)
-• Hemoculturas positivas persistentes
-
-Critérios de Duke Modificados:
-MAIORES: (1) Hemoculturas típicas (2 positivas para germe típico); (2) Evidência de envolvimento endocárdico ao ecocardiograma (vegetação, abscesso, deiscência de prótese) ou nova regurgitação valvar
-MENORES: Predisposição, febre ≥38°C, fenômenos vasculares (Janeway, embolia arterial), fenômenos imunológicos (Osler, Roth, FR+, GN), evidência microbiológica não critério maior
-DEFINITIVO: 2 maiores, ou 1 maior + 3 menores, ou 5 menores"
+            "content": "Suspeitar em todo paciente com:\n• Febre persistente + sopro cardíaco novo\n• Febre + fator de risco (uso de drogas IV, prótese valvar, cardiopatia prévia)\n• Bacteremia por S. aureus sem foco identificado\n• Fenômenos embólicos inexplicados (AVC, embolia pulmonar séptica)\n• Hemoculturas positivas persistentes\n\nCritérios de Duke Modificados:\nMAIORES: (1) Hemoculturas típicas (2 positivas para germe típico); (2) Evidência de envolvimento endocárdico ao ecocardiograma (vegetação, abscesso, deiscência de prótese) ou nova regurgitação valvar\nMENORES: Predisposição, febre ≥38°C, fenômenos vasculares (Janeway, embolia arterial), fenômenos imunológicos (Osler, Roth, FR+, GN), evidência microbiológica não critério maior\nDEFINITIVO: 2 maiores, ou 1 maior + 3 menores, ou 5 menores"
       },
       {
             "id": "etiology",
             "title": "Etiologia",
-            "content": "Agentes etiológicos por frequência:
-• Streptococcus viridans: 30-40% (valva nativa, subaguda)
-• Staphylococcus aureus: 25-30% (mais comum em aguda e UDIV)
-• Enterococcus: 10-15%
-• Grupo HACEK: 5-10% (Haemophilus, Aggregatibacter, Cardiobacterium, Eikenella, Kingella)
-• Staphylococcus coagulase-negativo: 5-8% (próteses)
-• Fungos (Candida, Aspergillus): 1-2% (imunossuprimidos, próteses)
-
-Fatores de risco:
-• Doença valvar prévia (reumática, degenerativa, bicúspide)
-• Prótese valvar
-• Uso de drogas intravenosas
-• Dispositivos intracardíacos
-• Procedimentos dentários ou invasivos recentes
-• Hemodiálise crônica"
+            "content": "Agentes etiológicos por frequência:\n• Streptococcus viridans: 30-40% (valva nativa, subaguda)\n• Staphylococcus aureus: 25-30% (mais comum em aguda e UDIV)\n• Enterococcus: 10-15%\n• Grupo HACEK: 5-10% (Haemophilus, Aggregatibacter, Cardiobacterium, Eikenella, Kingella)\n• Staphylococcus coagulase-negativo: 5-8% (próteses)\n• Fungos (Candida, Aspergillus): 1-2% (imunossuprimidos, próteses)\n\nFatores de risco:\n• Doença valvar prévia (reumática, degenerativa, bicúspide)\n• Prótese valvar\n• Uso de drogas intravenosas\n• Dispositivos intracardíacos\n• Procedimentos dentários ou invasivos recentes\n• Hemodiálise crônica"
       },
       {
             "id": "clinical",
             "title": "Apresentação Clínica",
-            "content": "Sintomas:
-• Febre (90%): pode ser baixa na subaguda
-• Calafrios, sudorese noturna
-• Astenia, perda ponderal, anorexia
-• Dispneia (insuficiência cardíaca)
-• Dor torácica pleurítica (embolia pulmonar séptica)
-
-Sinais ao exame físico:
-• Sopro cardíaco novo ou mudança de sopro prévio (85%)
-• Esplenomegalia (30%)
-• Petéquias conjuntivais e cutâneas
-• Nódulos de Osler (dolorosos, polpas digitais - imunológico)
-• Lesões de Janeway (indolores, palmas/plantas - embólico)
-• Manchas de Roth (hemorragias retinianas)
-• Hemorragias subungueais (splinter hemorrhages)
-• Baqueteamento digital (subaguda crônica)"
+            "content": "Sintomas:\n• Febre (90%): pode ser baixa na subaguda\n• Calafrios, sudorese noturna\n• Astenia, perda ponderal, anorexia\n• Dispneia (insuficiência cardíaca)\n• Dor torácica pleurítica (embolia pulmonar séptica)\n\nSinais ao exame físico:\n• Sopro cardíaco novo ou mudança de sopro prévio (85%)\n• Esplenomegalia (30%)\n• Petéquias conjuntivais e cutâneas\n• Nódulos de Osler (dolorosos, polpas digitais - imunológico)\n• Lesões de Janeway (indolores, palmas/plantas - embólico)\n• Manchas de Roth (hemorragias retinianas)\n• Hemorragias subungueais (splinter hemorrhages)\n• Baqueteamento digital (subaguda crônica)"
       },
       {
             "id": "diagnosis",
             "title": "Diagnóstico",
-            "content": "Exames laboratoriais:
-• Hemoculturas: 3 pares (aeróbio + anaeróbio), de sítios diferentes, antes do ATB
-  - Intervalo mínimo de 1h entre coletas (idealmente)
-  - Na urgência: 3 pares em 30 min antes de iniciar ATB
-• Hemograma: anemia normocítica, leucocitose
-• PCR e VHS elevados
-• Fator reumatoide positivo (50%)
-• Complemento reduzido
-• EAS: hematúria microscópica (GN por imunocomplexos)
-• Função renal
-
-Imagem:
-• Ecocardiograma transtorácico (ETT): sensibilidade 60-75%
-• Ecocardiograma transesofágico (ETE): sensibilidade 90-95% — indicado se ETT negativo com alta suspeita, prótese valvar, ou complicações
-• PET-CT com 18F-FDG: útil em próteses e dispositivos
-• TC de corpo inteiro: avaliar embolias sépticas
-• RM de crânio: se suspeita de embolia cerebral"
+            "content": "Exames laboratoriais:\n• Hemoculturas: 3 pares (aeróbio + anaeróbio), de sítios diferentes, antes do ATB\n  - Intervalo mínimo de 1h entre coletas (idealmente)\n  - Na urgência: 3 pares em 30 min antes de iniciar ATB\n• Hemograma: anemia normocítica, leucocitose\n• PCR e VHS elevados\n• Fator reumatoide positivo (50%)\n• Complemento reduzido\n• EAS: hematúria microscópica (GN por imunocomplexos)\n• Função renal\n\nImagem:\n• Ecocardiograma transtorácico (ETT): sensibilidade 60-75%\n• Ecocardiograma transesofágico (ETE): sensibilidade 90-95% — indicado se ETT negativo com alta suspeita, prótese valvar, ou complicações\n• PET-CT com 18F-FDG: útil em próteses e dispositivos\n• TC de corpo inteiro: avaliar embolias sépticas\n• RM de crânio: se suspeita de embolia cerebral"
       },
       {
             "id": "differential",
@@ -106,141 +46,37 @@ Imagem:
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Conduta inicial:
-1. Coletar 3 pares de hemoculturas ANTES de iniciar antibiótico
-2. Solicitar ETT de urgência (ETE se prótese ou alta suspeita)
-3. Iniciar antibioticoterapia empírica após hemoculturas:
-
-• Valva nativa, aguda: Oxacilina 2g IV 4/4h + Gentamicina 3mg/kg/dia IV
-• Valva nativa, subaguda: Ampicilina 2g IV 4/4h + Gentamicina 3mg/kg/dia
-• Prótese valvar: Vancomicina 15-20mg/kg IV 12/12h + Gentamicina 3mg/kg/dia + Rifampicina 300mg VO 8/8h
-• Alérgico a penicilina: Vancomicina 15-20mg/kg IV 12/12h
-
-4. Avaliar necessidade de cirurgia precoce
-5. Avaliação odontológica
-6. Ecocardiograma seriado"
+            "content": "Conduta inicial:\n1. Coletar 3 pares de hemoculturas ANTES de iniciar antibiótico\n2. Solicitar ETT de urgência (ETE se prótese ou alta suspeita)\n3. Iniciar antibioticoterapia empírica após hemoculturas:\n\n• Valva nativa, aguda: Oxacilina 2g IV 4/4h + Gentamicina 3mg/kg/dia IV\n• Valva nativa, subaguda: Ampicilina 2g IV 4/4h + Gentamicina 3mg/kg/dia\n• Prótese valvar: Vancomicina 15-20mg/kg IV 12/12h + Gentamicina 3mg/kg/dia + Rifampicina 300mg VO 8/8h\n• Alérgico a penicilina: Vancomicina 15-20mg/kg IV 12/12h\n\n4. Avaliar necessidade de cirurgia precoce\n5. Avaliação odontológica\n6. Ecocardiograma seriado"
       },
       {
             "id": "treatment",
             "title": "Abordagem Terapêutica",
-            "content": "Antibioticoterapia dirigida (após resultado de cultura):
-
-• S. viridans sensível a penicilina (CIM ≤0,12):
-  - Penicilina G 12-18 milhões UI/dia IV contínuo ou 4/4h, 4 semanas
-  - OU Ceftriaxona 2g IV 1x/dia, 4 semanas
-  - Esquema curto: + Gentamicina 3mg/kg/dia IV, 2 semanas (apenas valva nativa)
-
-• S. aureus sensível a oxacilina (MSSA):
-  - Oxacilina 2g IV 4/4h, 6 semanas
-  - Em prótese: + Rifampicina 300mg VO 8/8h + Gentamicina 3mg/kg/dia (2 sem)
-
-• S. aureus resistente (MRSA):
-  - Vancomicina 15-20mg/kg IV 8-12h (manter vale 15-20 mcg/mL), 6 semanas
-  - OU Daptomicina 8-10mg/kg/dia IV
-
-• Enterococcus:
-  - Ampicilina 2g IV 4/4h + Ceftriaxona 2g IV 12/12h, 6 semanas
-  - OU Ampicilina + Gentamicina (se sensível a aminoglicosídeo)
-
-Indicações cirúrgicas (classe I):
-• ICC refratária por disfunção valvar
-• Infecção não controlada (abscesso, fístula, pseudoaneurisma)
-• Vegetação >10mm + evento embólico
-• Endocardite fúngica
-• Deiscência de prótese instável"
+            "content": "Antibioticoterapia dirigida (após resultado de cultura):\n\n• S. viridans sensível a penicilina (CIM ≤0,12):\n  - Penicilina G 12-18 milhões UI/dia IV contínuo ou 4/4h, 4 semanas\n  - OU Ceftriaxona 2g IV 1x/dia, 4 semanas\n  - Esquema curto: + Gentamicina 3mg/kg/dia IV, 2 semanas (apenas valva nativa)\n\n• S. aureus sensível a oxacilina (MSSA):\n  - Oxacilina 2g IV 4/4h, 6 semanas\n  - Em prótese: + Rifampicina 300mg VO 8/8h + Gentamicina 3mg/kg/dia (2 sem)\n\n• S. aureus resistente (MRSA):\n  - Vancomicina 15-20mg/kg IV 8-12h (manter vale 15-20 mcg/mL), 6 semanas\n  - OU Daptomicina 8-10mg/kg/dia IV\n\n• Enterococcus:\n  - Ampicilina 2g IV 4/4h + Ceftriaxona 2g IV 12/12h, 6 semanas\n  - OU Ampicilina + Gentamicina (se sensível a aminoglicosídeo)\n\nIndicações cirúrgicas (classe I):\n• ICC refratária por disfunção valvar\n• Infecção não controlada (abscesso, fístula, pseudoaneurisma)\n• Vegetação >10mm + evento embólico\n• Endocardite fúngica\n• Deiscência de prótese instável"
       },
       {
             "id": "prescriptions",
             "title": "Prescrições",
-            "content": "PRESCRIÇÃO — Endocardite empírica (valva nativa aguda):
-
-1. Dieta livre (se estável hemodinamicamente)
-2. SF 0,9% 500mL IV — conforme necessidade
-3. Oxacilina 2g IV diluída em 100mL SF 0,9%, infundir em 30-60min, 4/4h
-4. Gentamicina 240mg (3mg/kg) IV diluída em 100mL SF 0,9%, infundir em 30-60min, 1x/dia
-5. Dipirona 1g IV 6/6h se febre ≥37,8°C ou dor
-6. Omeprazol 40mg IV 1x/dia (gastroproteção)
-7. Enoxaparina 40mg SC 1x/dia (profilaxia TVP — avaliar contraindicações)
-8. Hemoculturas de controle: repetir 48-72h após início ATB
-9. Monitorizar função renal e níveis de gentamicina
-10. Ecocardiograma de controle semanal
-
-PRESCRIÇÃO — Endocardite MRSA:
-1. Vancomicina 1g IV 12/12h (ajustar por vale sérico)
-2. Meta vancocinemia vale: 15-20 mcg/mL
-3. Dosar vale antes da 4ª dose
-4. Ajustar dose conforme ClCr"
+            "content": "PRESCRIÇÃO — Endocardite empírica (valva nativa aguda):\n\n1. Dieta livre (se estável hemodinamicamente)\n2. SF 0,9% 500mL IV — conforme necessidade\n3. Oxacilina 2g IV diluída em 100mL SF 0,9%, infundir em 30-60min, 4/4h\n4. Gentamicina 240mg (3mg/kg) IV diluída em 100mL SF 0,9%, infundir em 30-60min, 1x/dia\n5. Dipirona 1g IV 6/6h se febre ≥37,8°C ou dor\n6. Omeprazol 40mg IV 1x/dia (gastroproteção)\n7. Enoxaparina 40mg SC 1x/dia (profilaxia TVP — avaliar contraindicações)\n8. Hemoculturas de controle: repetir 48-72h após início ATB\n9. Monitorizar função renal e níveis de gentamicina\n10. Ecocardiograma de controle semanal\n\nPRESCRIÇÃO — Endocardite MRSA:\n1. Vancomicina 1g IV 12/12h (ajustar por vale sérico)\n2. Meta vancocinemia vale: 15-20 mcg/mL\n3. Dosar vale antes da 4ª dose\n4. Ajustar dose conforme ClCr"
       },
       {
             "id": "followup",
             "title": "Acompanhamento",
-            "content": "Acompanhamento:
-• Hemoculturas de controle 48-72h após início ATB (esperar negativação)
-• Monitorar temperatura diária — febre persistente >7 dias: reavaliar terapia e buscar complicações
-• Ecocardiograma: repetir em 7-10 dias e ao final do tratamento
-• Função renal e níveis séricos de aminoglicosídeos/vancomicina 2x/semana
-• Hemograma e PCR semanais
-• Avaliação odontológica durante internação
-• Após alta:
-  - Retorno em 1, 3 e 6 meses
-  - Ecocardiograma de controle em 1-3 meses
-  - Orientar profilaxia de endocardite em procedimentos de risco
-  - Cartão de profilaxia para portadores de prótese valvar"
+            "content": "Acompanhamento:\n• Hemoculturas de controle 48-72h após início ATB (esperar negativação)\n• Monitorar temperatura diária — febre persistente >7 dias: reavaliar terapia e buscar complicações\n• Ecocardiograma: repetir em 7-10 dias e ao final do tratamento\n• Função renal e níveis séricos de aminoglicosídeos/vancomicina 2x/semana\n• Hemograma e PCR semanais\n• Avaliação odontológica durante internação\n• Após alta:\n  - Retorno em 1, 3 e 6 meses\n  - Ecocardiograma de controle em 1-3 meses\n  - Orientar profilaxia de endocardite em procedimentos de risco\n  - Cartão de profilaxia para portadores de prótese valvar"
       },
       {
             "id": "complications",
             "title": "Complicações",
-            "content": "Complicações:
-• Insuficiência cardíaca (30-40%): principal causa de óbito
-• Embolias sistêmicas (20-50%): AVC, embolia esplênica, renal, mesentérica
-• Embolia pulmonar séptica (endocardite direita)
-• Abscesso perianular/paravalvar
-• Bloqueio AV (extensão para septo — abscesso aórtico)
-• Aneurisma micótico (cerebral, aórtico)
-• Glomerulonefrite por imunocomplexos
-• Infarto esplênico / abscesso esplênico
-• Insuficiência renal aguda (multifatorial)
-• Recidiva (5-10%)
-
-Manejo de complicações:
-• ICC: diuréticos + vasodilatadores + cirurgia precoce
-• AVC: TC de crânio urgente — cirurgia cardíaca após 4 semanas se AVC hemorrágico
-• Abscesso: indicação cirúrgica absoluta"
+            "content": "Complicações:\n• Insuficiência cardíaca (30-40%): principal causa de óbito\n• Embolias sistêmicas (20-50%): AVC, embolia esplênica, renal, mesentérica\n• Embolia pulmonar séptica (endocardite direita)\n• Abscesso perianular/paravalvar\n• Bloqueio AV (extensão para septo — abscesso aórtico)\n• Aneurisma micótico (cerebral, aórtico)\n• Glomerulonefrite por imunocomplexos\n• Infarto esplênico / abscesso esplênico\n• Insuficiência renal aguda (multifatorial)\n• Recidiva (5-10%)\n\nManejo de complicações:\n• ICC: diuréticos + vasodilatadores + cirurgia precoce\n• AVC: TC de crânio urgente — cirurgia cardíaca após 4 semanas se AVC hemorrágico\n• Abscesso: indicação cirúrgica absoluta"
       },
       {
             "id": "criteria",
             "title": "Critérios de Internação / UTI / Alta",
-            "content": "Internação: TODO paciente com endocardite confirmada ou provável
-
-UTI:
-• Choque séptico
-• ICC aguda / edema agudo de pulmão
-• AVC ou evento embólico major
-• Necessidade de suporte vasoativo
-• Pós-operatório de cirurgia valvar
-
-Alta hospitalar:
-• Completou ciclo de ATB IV com boa resposta
-• Hemoculturas negativas
-• Estável hemodinamicamente
-• Sem complicações ativas
-• Opção de OPAT (Outpatient Parenteral Antibiotic Therapy) em casos selecionados
-  - Critérios: >2 sem de ATB IV, sem complicações, adesão garantida
-
-Alta ambulatorial:
-• Profilaxia de endocardite mantida indefinidamente para pacientes de alto risco
-• Amoxicilina 2g VO 1h antes de procedimentos dentários invasivos"
+            "content": "Internação: TODO paciente com endocardite confirmada ou provável\n\nUTI:\n• Choque séptico\n• ICC aguda / edema agudo de pulmão\n• AVC ou evento embólico major\n• Necessidade de suporte vasoativo\n• Pós-operatório de cirurgia valvar\n\nAlta hospitalar:\n• Completou ciclo de ATB IV com boa resposta\n• Hemoculturas negativas\n• Estável hemodinamicamente\n• Sem complicações ativas\n• Opção de OPAT (Outpatient Parenteral Antibiotic Therapy) em casos selecionados\n  - Critérios: >2 sem de ATB IV, sem complicações, adesão garantida\n\nAlta ambulatorial:\n• Profilaxia de endocardite mantida indefinidamente para pacientes de alto risco\n• Amoxicilina 2g VO 1h antes de procedimentos dentários invasivos"
       },
       {
             "id": "references",
             "title": "Referências Bibliográficas",
-            "content": "1. AHA/ACC 2023 Guidelines for Management of Infective Endocarditis
-2. ESC 2023 Guidelines on Endocarditis
-3. SBC — Diretriz Brasileira de Valvopatias 2022
-4. Baddour LM et al. Infective Endocarditis in Adults. Circulation 2015;132:1435-86
-5. Habib G et al. 2015 ESC Guidelines for the management of infective endocarditis. Eur Heart J 2015
-6. ANVISA — Protocolo de uso de antimicrobianos 2023
-7. UpToDate — Infective endocarditis in adults (2024)"
+            "content": "1. AHA/ACC 2023 Guidelines for Management of Infective Endocarditis\n2. ESC 2023 Guidelines on Endocarditis\n3. SBC — Diretriz Brasileira de Valvopatias 2022\n4. Baddour LM et al. Infective Endocarditis in Adults. Circulation 2015;132:1435-86\n5. Habib G et al. 2015 ESC Guidelines for the management of infective endocarditis. Eur Heart J 2015\n6. ANVISA — Protocolo de uso de antimicrobianos 2023\n7. UpToDate — Infective endocarditis in adults (2024)"
       }
 ],
   },

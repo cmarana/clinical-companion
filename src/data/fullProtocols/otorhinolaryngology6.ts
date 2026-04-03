@@ -16,13 +16,7 @@ export const orlFullProtocols6: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Crupe (laringotraqueobronquite aguda): inflamação da via aérea subglótica de etiologia viral, mais comum em crianças de 6 meses a 6 anos (pico 1-2 anos). Causa mais comum de obstrução de via aérea superior na infância.
-
-Classificação por gravidade (Escore de Westley):
-• Leve (0-2): tosse ladrante, sem estridor em repouso
-• Moderado (3-7): estridor em repouso, retrações moderadas
-• Grave (8-11): estridor em repouso, retrações graves, agitação
-• Insuficiência respiratória (≥12): letargia, cianose, estridor diminuído"
+            "content": "Crupe (laringotraqueobronquite aguda): inflamação da via aérea subglótica de etiologia viral, mais comum em crianças de 6 meses a 6 anos (pico 1-2 anos). Causa mais comum de obstrução de via aérea superior na infância.\n\nClassificação por gravidade (Escore de Westley):\n• Leve (0-2): tosse ladrante, sem estridor em repouso\n• Moderado (3-7): estridor em repouso, retrações moderadas\n• Grave (8-11): estridor em repouso, retrações graves, agitação\n• Insuficiência respiratória (≥12): letargia, cianose, estridor diminuído"
       },
       {
             "id": "screening",
@@ -32,25 +26,7 @@ Classificação por gravidade (Escore de Westley):
       {
             "id": "etiology",
             "title": "Etiologia",
-            "content": "Etiologia:
-• Parainfluenza tipo 1 (75%): mais comum
-• Parainfluenza tipos 2 e 3
-• VSR (Vírus Sincicial Respiratório)
-• Influenza A e B
-• Adenovírus
-• Metapneumovírus humano
-• SARS-CoV-2 (raramente)
-• Mycoplasma pneumoniae (raro)
-
-Sazonalidade: outono e inverno
-
-Diagnóstico diferencial:
-• Epiglotite aguda (Haemophilus influenzae tipo b — raro pós-vacina)
-• Traqueíte bacteriana (S. aureus — crupe que não melhora)
-• Corpo estranho
-• Abscesso retrofaríngeo/periamigdaliano
-• Angioedema/anafilaxia
-• Estenose subglótica congênita"
+            "content": "Etiologia:\n• Parainfluenza tipo 1 (75%): mais comum\n• Parainfluenza tipos 2 e 3\n• VSR (Vírus Sincicial Respiratório)\n• Influenza A e B\n• Adenovírus\n• Metapneumovírus humano\n• SARS-CoV-2 (raramente)\n• Mycoplasma pneumoniae (raro)\n\nSazonalidade: outono e inverno\n\nDiagnóstico diferencial:\n• Epiglotite aguda (Haemophilus influenzae tipo b — raro pós-vacina)\n• Traqueíte bacteriana (S. aureus — crupe que não melhora)\n• Corpo estranho\n• Abscesso retrofaríngeo/periamigdaliano\n• Angioedema/anafilaxia\n• Estenose subglótica congênita"
       },
       {
             "id": "clinical",
@@ -75,55 +51,12 @@ Diagnóstico diferencial:
       {
             "id": "treatment",
             "title": "Tratamento",
-            "content": "Tratamento por gravidade:
-
-CRUPE LEVE (Westley 0-2):
-• Dexametasona 0,15-0,6mg/kg VO dose única (máx 10mg)
-• Observação por 2-4h
-• Alta com orientações se melhora
-
-CRUPE MODERADO (Westley 3-7):
-• Dexametasona 0,6mg/kg VO/IM dose única (máx 10mg)
-• Nebulização com adrenalina L 0,5mL/kg (máx 5mL) diluída em SF, com O2 6L/min
-• Observar por 3-4h após adrenalina (efeito rebote)
-• Se melhora sustentada → alta
-
-CRUPE GRAVE (Westley ≥8):
-• Dexametasona 0,6mg/kg IM/IV
-• Nebulização com adrenalina — repetir a cada 15-20min (máx 3x)
-• O2 suplementar se SpO2 <92%
-• EVITAR agitação da criança (exame mínimo)
-• Preparar material de IOT (tubo 0,5-1,0 menor que o previsto)
-• UTI se falha terapêutica
-
-IOT: apenas se insuficiência respiratória iminente
-• Tubo 0,5-1,0mm menor que o calculado
-• Equipe experiente
-• Priorizar IOT nasotraqueal (se disponível)
-
-Alternativa ao dexametasona:
-• Budesonida nebulização 2mg (se vômitos ou recusa VO)"
+            "content": "Tratamento por gravidade:\n\nCRUPE LEVE (Westley 0-2):\n• Dexametasona 0,15-0,6mg/kg VO dose única (máx 10mg)\n• Observação por 2-4h\n• Alta com orientações se melhora\n\nCRUPE MODERADO (Westley 3-7):\n• Dexametasona 0,6mg/kg VO/IM dose única (máx 10mg)\n• Nebulização com adrenalina L 0,5mL/kg (máx 5mL) diluída em SF, com O2 6L/min\n• Observar por 3-4h após adrenalina (efeito rebote)\n• Se melhora sustentada → alta\n\nCRUPE GRAVE (Westley ≥8):\n• Dexametasona 0,6mg/kg IM/IV\n• Nebulização com adrenalina — repetir a cada 15-20min (máx 3x)\n• O2 suplementar se SpO2 <92%\n• EVITAR agitação da criança (exame mínimo)\n• Preparar material de IOT (tubo 0,5-1,0 menor que o previsto)\n• UTI se falha terapêutica\n\nIOT: apenas se insuficiência respiratória iminente\n• Tubo 0,5-1,0mm menor que o calculado\n• Equipe experiente\n• Priorizar IOT nasotraqueal (se disponível)\n\nAlternativa ao dexametasona:\n• Budesonida nebulização 2mg (se vômitos ou recusa VO)"
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "PRESCRIÇÃO — Crupe moderado:
-
-1. Observação em emergência (mínimo 3-4h)
-2. Dexametasona 0,6mg/kg VO dose única (máx 10mg)
-   - Peso 10kg: Dexametasona 4mg/mL → 1,5mL VO
-3. Nebulização com Adrenalina 1:1000 (1mg/mL):
-   - Dose: 0,5mL/kg (máx 5mL) + SF 0,9% para completar 5mL
-   - Fluxo O2: 6-8 L/min
-   - Observar efeito rebote por 3-4h
-4. Monitorização: SpO2, FR, FC, esforço respiratório
-5. Elevação de cabeceira 30°
-6. EVITAR agitação — manter criança no colo dos pais
-7. Antitérmico se febre: Dipirona 15mg/kg VO 6/6h SN
-8. Após melhora sustentada (4h) → alta com:
-   - Prednisolona 1mg/kg/dia VO por 3 dias OU
-   - Dexametasona 0,15mg/kg/dia VO por 2 dias
-9. Retorno imediato se piora do estridor ou dificuldade respiratória"
+            "content": "PRESCRIÇÃO — Crupe moderado:\n\n1. Observação em emergência (mínimo 3-4h)\n2. Dexametasona 0,6mg/kg VO dose única (máx 10mg)\n   - Peso 10kg: Dexametasona 4mg/mL → 1,5mL VO\n3. Nebulização com Adrenalina 1:1000 (1mg/mL):\n   - Dose: 0,5mL/kg (máx 5mL) + SF 0,9% para completar 5mL\n   - Fluxo O2: 6-8 L/min\n   - Observar efeito rebote por 3-4h\n4. Monitorização: SpO2, FR, FC, esforço respiratório\n5. Elevação de cabeceira 30°\n6. EVITAR agitação — manter criança no colo dos pais\n7. Antitérmico se febre: Dipirona 15mg/kg VO 6/6h SN\n8. Após melhora sustentada (4h) → alta com:\n   - Prednisolona 1mg/kg/dia VO por 3 dias OU\n   - Dexametasona 0,15mg/kg/dia VO por 2 dias\n9. Retorno imediato se piora do estridor ou dificuldade respiratória"
       },
       {
             "id": "followup",
@@ -143,11 +76,7 @@ Alternativa ao dexametasona:
       {
             "id": "references",
             "title": "Referencias",
-            "content": "1. SBP — Sociedade Brasileira de Pediatria: Consenso de Crupe 2021
-2. Bjornson CL, Johnson DW. Croup in children. CMAJ 2013;185(15):1317-23
-3. Zoorob R et al. Croup: An Overview. Am Fam Physician 2011;83(9):1067-73
-4. Russell KF et al. Glucocorticoids for croup. Cochrane Database Syst Rev 2011
-5. NICE — Croup guideline 2023"
+            "content": "1. SBP — Sociedade Brasileira de Pediatria: Consenso de Crupe 2021\n2. Bjornson CL, Johnson DW. Croup in children. CMAJ 2013;185(15):1317-23\n3. Zoorob R et al. Croup: An Overview. Am Fam Physician 2011;83(9):1067-73\n4. Russell KF et al. Glucocorticoids for croup. Cochrane Database Syst Rev 2011\n5. NICE — Croup guideline 2023"
       }
 ],
   },  {

@@ -16,19 +16,7 @@ export const obstetricsFullProtocols7: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Hipercalemia: potássio sérico >5,5mEq/L. Emergência médica quando >6,5mEq/L ou com alterações eletrocardiográficas.
-
-Classificação:
-• Leve: 5,5-6,0mEq/L
-• Moderada: 6,1-6,5mEq/L
-• Grave: >6,5mEq/L ou com alterações ECG
-
-Alterações ECG progressivas:
-• Ondas T apiculadas (tent-shaped) — mais precoce
-• Achatamento de onda P
-• Alargamento de QRS
-• Padrão sinusoidal
-• FV / Assistolia"
+            "content": "Hipercalemia: potássio sérico >5,5mEq/L. Emergência médica quando >6,5mEq/L ou com alterações eletrocardiográficas.\n\nClassificação:\n• Leve: 5,5-6,0mEq/L\n• Moderada: 6,1-6,5mEq/L\n• Grave: >6,5mEq/L ou com alterações ECG\n\nAlterações ECG progressivas:\n• Ondas T apiculadas (tent-shaped) — mais precoce\n• Achatamento de onda P\n• Alargamento de QRS\n• Padrão sinusoidal\n• FV / Assistolia"
       },
       {
             "id": "screening",
@@ -58,81 +46,17 @@ Alterações ECG progressivas:
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Conduta — tratamento escalonado:
-
-1. ECG IMEDIATO (avaliar alterações):
-
-2. ESTABILIZAR MEMBRANA (se alteração ECG ou K+ >6,5):
-• Gluconato de cálcio 10% 10mL IV em 2-5min
-  - Início: 1-3min, duração: 30-60min
-  - Repetir se persistência de alteração ECG
-  - Em uso de digoxina: infundir em 20-30min com cautela
-
-3. SHIFT (redistribuição — mover K+ para dentro da célula):
-• Insulina Regular 10UI IV + SG50% 50mL (ou SG10% 500mL)
-  - Início: 15-30min, duração: 4-6h
-  - Monitorizar glicemia 1/1h por 6h
-• Nebulização com Salbutamol 10-20 gotas em 4mL SF — 10-20min
-  - Início: 15-30min, reduz K+ 0,5-1,0mEq/L
-• NaHCO3 8,4% 50-100mL IV (se pH <7,2 — efeito marginal se pH normal)
-
-4. REMOÇÃO (eliminar K+ do corpo):
-• Furosemida 40-80mg IV (se função renal preservada)
-• Sorcal (poliestirenossulfonato de cálcio) 30-60g VO ou VR
-  - Início: 1-2h VO, 30min VR
-• Patiromer 8,4g VO ou SZC (ciclossilicato de zircônio) 10g VO
-• DIÁLISE: se refratária, anúrica ou K+ >7,0 com instabilidade"
+            "content": "Conduta — tratamento escalonado:\n\n1. ECG IMEDIATO (avaliar alterações):\n\n2. ESTABILIZAR MEMBRANA (se alteração ECG ou K+ >6,5):\n• Gluconato de cálcio 10% 10mL IV em 2-5min\n  - Início: 1-3min, duração: 30-60min\n  - Repetir se persistência de alteração ECG\n  - Em uso de digoxina: infundir em 20-30min com cautela\n\n3. SHIFT (redistribuição — mover K+ para dentro da célula):\n• Insulina Regular 10UI IV + SG50% 50mL (ou SG10% 500mL)\n  - Início: 15-30min, duração: 4-6h\n  - Monitorizar glicemia 1/1h por 6h\n• Nebulização com Salbutamol 10-20 gotas em 4mL SF — 10-20min\n  - Início: 15-30min, reduz K+ 0,5-1,0mEq/L\n• NaHCO3 8,4% 50-100mL IV (se pH <7,2 — efeito marginal se pH normal)\n\n4. REMOÇÃO (eliminar K+ do corpo):\n• Furosemida 40-80mg IV (se função renal preservada)\n• Sorcal (poliestirenossulfonato de cálcio) 30-60g VO ou VR\n  - Início: 1-2h VO, 30min VR\n• Patiromer 8,4g VO ou SZC (ciclossilicato de zircônio) 10g VO\n• DIÁLISE: se refratária, anúrica ou K+ >7,0 com instabilidade"
       },
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "Tratamento — Pilares: Hidratação + Insulina + Potássio
-
-1. HIDRATAÇÃO (prioridade!):
-• 1ª hora: SF 0,9% 1.000-1.500mL IV (15-20mL/kg)
-• Após 1ª hora: SF 0,9% 250-500mL/h (avaliar Na+ corrigido)
-  - Na+ corrigido >135: mudar para NaCl 0,45%
-  - Na+ corrigido <135: manter SF 0,9%
-• Quando glicemia ≤200-250: iniciar SG 5% concomitante (evitar hipoglicemia)
-• Total em 24h: 4-6 litros
-
-2. INSULINOTERAPIA:
-• Regular IV contínua: 0,1 UI/kg/h (OU bolus 0,1 UI/kg + 0,1 UI/kg/h)
-• Meta: queda de glicemia 50-70mg/dL/h
-• Se glicemia não cair 10% na 1ª hora: bolus 0,14 UI/kg IV
-• Quando glicemia ≤200-250: reduzir para 0,02-0,05 UI/kg/h + SG 5%
-• Manter insulina IV até: pH >7,3 + HCO3 >18 + AG <12 + paciente alimentando
-• Transição para SC: aplicar insulina SC 1-2h ANTES de desligar a bomba
-
-3. POTÁSSIO (ANTES da insulina se K+ <3,3!):
-• K+ <3,3: NÃO iniciar insulina! Repor KCl 40mEq/h IV até K+ >3,3
-• K+ 3,3-5,3: KCl 20-30mEq em cada litro de soro
-• K+ >5,3: não repor, monitorar 2/2h
-
-4. BICARBONATO (APENAS se pH <6,9):
-• NaHCO3 8,4% 100mEq (100mL) diluído em 400mL AD — infundir em 2h
-• Repetir até pH >7,0
-
-5. FOSFATO: repor se <1,0mg/dL (fosfato de potássio 20-30mmol em 1L de soro)"
+            "content": "Tratamento — Pilares: Hidratação + Insulina + Potássio\n\n1. HIDRATAÇÃO (prioridade!):\n• 1ª hora: SF 0,9% 1.000-1.500mL IV (15-20mL/kg)\n• Após 1ª hora: SF 0,9% 250-500mL/h (avaliar Na+ corrigido)\n  - Na+ corrigido >135: mudar para NaCl 0,45%\n  - Na+ corrigido <135: manter SF 0,9%\n• Quando glicemia ≤200-250: iniciar SG 5% concomitante (evitar hipoglicemia)\n• Total em 24h: 4-6 litros\n\n2. INSULINOTERAPIA:\n• Regular IV contínua: 0,1 UI/kg/h (OU bolus 0,1 UI/kg + 0,1 UI/kg/h)\n• Meta: queda de glicemia 50-70mg/dL/h\n• Se glicemia não cair 10% na 1ª hora: bolus 0,14 UI/kg IV\n• Quando glicemia ≤200-250: reduzir para 0,02-0,05 UI/kg/h + SG 5%\n• Manter insulina IV até: pH >7,3 + HCO3 >18 + AG <12 + paciente alimentando\n• Transição para SC: aplicar insulina SC 1-2h ANTES de desligar a bomba\n\n3. POTÁSSIO (ANTES da insulina se K+ <3,3!):\n• K+ <3,3: NÃO iniciar insulina! Repor KCl 40mEq/h IV até K+ >3,3\n• K+ 3,3-5,3: KCl 20-30mEq em cada litro de soro\n• K+ >5,3: não repor, monitorar 2/2h\n\n4. BICARBONATO (APENAS se pH <6,9):\n• NaHCO3 8,4% 100mEq (100mL) diluído em 400mL AD — infundir em 2h\n• Repetir até pH >7,0\n\n5. FOSFATO: repor se <1,0mg/dL (fosfato de potássio 20-30mmol em 1L de soro)"
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "PRESCRIÇÃO — Hipercalemia grave (K+ 7,2 com onda T apiculada):
-
-1. Emergência — monitorização contínua com ECG
-2. Gluconato de Cálcio 10% 10mL IV em 3-5min AGORA (pode repetir em 5min)
-3. Insulina Regular 10UI + SG50% 100mL IV em 30min
-4. Nebulização: Salbutamol 20 gotas + SF 3mL (repetir em 20min SN)
-5. NaHCO3 8,4% 50mL IV em 15min (se pH <7,2)
-6. Furosemida 80mg IV (se diurese preservada)
-7. Sorcal 30g + Manitol 100mL VO (ou VR se não tolerar)
-8. Glicemia capilar 1/1h por 6h (risco de hipoglicemia pela insulina)
-9. K+ sérico a cada 1-2h até <6,0mEq/L
-10. ECG seriado a cada 30min até normalização
-11. Suspender: IECA/BRA, espironolactona, suplementos de K+, AINEs
-12. Se refratária: solicitar diálise de urgência
-13. Após estabilização: investigar causa (IRA, DRC, medicamentos, rabdomiólise)"
+            "content": "PRESCRIÇÃO — Hipercalemia grave (K+ 7,2 com onda T apiculada):\n\n1. Emergência — monitorização contínua com ECG\n2. Gluconato de Cálcio 10% 10mL IV em 3-5min AGORA (pode repetir em 5min)\n3. Insulina Regular 10UI + SG50% 100mL IV em 30min\n4. Nebulização: Salbutamol 20 gotas + SF 3mL (repetir em 20min SN)\n5. NaHCO3 8,4% 50mL IV em 15min (se pH <7,2)\n6. Furosemida 80mg IV (se diurese preservada)\n7. Sorcal 30g + Manitol 100mL VO (ou VR se não tolerar)\n8. Glicemia capilar 1/1h por 6h (risco de hipoglicemia pela insulina)\n9. K+ sérico a cada 1-2h até <6,0mEq/L\n10. ECG seriado a cada 30min até normalização\n11. Suspender: IECA/BRA, espironolactona, suplementos de K+, AINEs\n12. Se refratária: solicitar diálise de urgência\n13. Após estabilização: investigar causa (IRA, DRC, medicamentos, rabdomiólise)"
       },
       {
             "id": "followup",
@@ -152,11 +76,7 @@ Alterações ECG progressivas:
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "1. AHA — Hyperkalemia Management Guidelines 2020
-2. SBN — Manejo da Hipercalemia 2022
-3. Palmer BF, Clegg DJ. Diagnosis and treatment of hyperkalemia. JAMA 2021
-4. Lindner G et al. Acute hyperkalemia in the emergency department. Am J Emerg Med 2020
-5. NICE — Hyperkalaemia: assessment and management 2023"
+            "content": "1. AHA — Hyperkalemia Management Guidelines 2020\n2. SBN — Manejo da Hipercalemia 2022\n3. Palmer BF, Clegg DJ. Diagnosis and treatment of hyperkalemia. JAMA 2021\n4. Lindner G et al. Acute hyperkalemia in the emergency department. Am J Emerg Med 2020\n5. NICE — Hyperkalaemia: assessment and management 2023"
       }
 ],
   },  {
