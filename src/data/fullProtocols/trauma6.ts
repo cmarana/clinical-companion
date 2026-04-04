@@ -11,7 +11,7 @@ export const traumaFullProtocols6: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Trauma Penetrante de Torax na emergencia."
+            "content": "O trauma penetrante de tórax é emergência cirúrgica com alta mortalidade se não tratado prontamente. Principais lesões: hemotórax, pneumotórax, tamponamento cardíaco, lesão de grandes vasos. A drenagem pleural resolve 85% dos casos; 15% necessitam toracotomia. Diretriz: ATLS 10ª ed, EAST."
       },
       {
             "id": "def",
@@ -36,7 +36,7 @@ export const traumaFullProtocols6: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Exames para diagnostico de Trauma Penetrante de Torax."
+            "content": "Rx tórax: hemotórax, pneumotórax, alargamento mediastinal. eFAST: líquido pericárdico (tamponamento), hemotórax. TC tórax com contraste: lesão vascular, hemotórax retido. Monitorar débito do dreno (> 1500mL inicial = toracotomia)."
       },
       {
             "id": "differential",
@@ -46,7 +46,7 @@ export const traumaFullProtocols6: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Trauma Penetrante de Torax."
+            "content": "1. ABCDE do trauma\n2. Drenagem de tórax (dreno 28-32F no 5° EIC, linha axilar média)\n3. Indicações de toracotomia: débito inicial > 1500mL, sangramento contínuo > 200mL/h por 2-4h, hemotórax retido, tamponamento cardíaco\n4. Toracotomia de reanimação: PCR traumática com < 10min de RCP\n5. Antibioticoprofilaxia: Cefazolina 2g IV"
       },
       {
             "id": "treatment",
@@ -56,7 +56,7 @@ export const traumaFullProtocols6: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes para Trauma Penetrante de Torax."
+            "content": "1. SF 0,9% aquecido 1000mL IV (2 acessos 14G)\n2. Drenagem pleural fechada (dreno 28-32F)\n3. Cefazolina 2g IV (profilaxia)\n4. Tipagem + reserva de hemoderivados\n5. Protocolo de transfusão maciça se instável (CH:PFC:PLQ 1:1:1)\n6. Analgesia: Dipirona 2g IV + Tramadol 100mg IV SN\n7. Rx tórax pós-drenagem + TC se estável"
       },
       {
             "id": "followup",
@@ -869,7 +869,7 @@ export const traumaFullProtocols6: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Damage Control Surgery na emergencia."
+            "content": "Damage Control Surgery (DCS) é estratégia cirúrgica para pacientes com trauma grave e a tríade letal (hipotermia + acidose + coagulopatia). Consiste em cirurgia abreviada para controle de hemorragia e contaminação, seguida de ressuscitação em UTI e cirurgia definitiva posterior. Diretriz: ATLS 10ª ed, Trauma Surgery guidelines."
       },
       {
             "id": "def",
@@ -894,7 +894,7 @@ export const traumaFullProtocols6: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Exames para diagnostico de Damage Control Surgery."
+            "content": "Indicação de damage control: ISS > 25, hipotermia < 35°C, pH < 7,2, coagulopatia (INR > 1,5), lactato > 5, transfusão > 10 CH em 24h, tempo cirúrgico > 90min sem controle, lesões multifocais. Avaliação pré-definitiva: TC total body, coagulograma, tromboelastografia."
       },
       {
             "id": "differential",
@@ -904,7 +904,7 @@ export const traumaFullProtocols6: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Damage Control Surgery."
+            "content": "Tríade letal: hipotermia + acidose + coagulopatia\nFASE 1 — Cirurgia abreviada: controlar hemorragia (packing, clampeamento, shunt), controlar contaminação (grampeamento intestinal), fechamento temporário (bolsa de Bogotá/VAC)\nFASE 2 — UTI: ressuscitar, aquecer (meta T > 36°C), corrigir coagulopatia (1:1:1), corrigir acidose\nFASE 3 — Cirurgia definitiva: após 24-72h com fisiologia normalizada"
       },
       {
             "id": "treatment",
@@ -914,7 +914,7 @@ export const traumaFullProtocols6: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes para Damage Control Surgery."
+            "content": "1. Protocolo de transfusão maciça: CH:PFC:PLQ 1:1:1\n2. Ácido tranexâmico 1g IV em 10min (< 3h do trauma) + 1g em 8h\n3. Aquecimento ativo (manta térmica, fluidos 39-40°C)\n4. Cloreto de cálcio 1g IV a cada 4 CH transfundidos\n5. Fibrinogênio (crioprecipitado 10U) se < 150\n6. Meta: pH > 7,25, T > 36°C, PLQ > 50.000, fibrinogênio > 150"
       },
       {
             "id": "followup",

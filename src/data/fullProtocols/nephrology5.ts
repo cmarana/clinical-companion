@@ -11,7 +11,7 @@ export const nephrologyFullProtocols5: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Estenose de Arteria Renal."
+            "content": "A estenose de artéria renal é causa de HAS secundária potencialmente curável. Etiologia aterosclerótica (> 90% dos casos, bilateral em 30%) ou displasia fibromuscular (jovens, mulheres). Pode causar HAS refratária, edema agudo flash e DRC isquêmica progressiva. Diretriz: AHA/ACC 2017."
       },
       {
             "id": "def",
@@ -36,7 +36,7 @@ export const nephrologyFullProtocols5: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Estenose de Arteria Renal."
+            "content": "DopplerUS renal: assimetria renal > 1,5cm, índice de resistência > 0,80, velocidade de pico sistólico > 200cm/s. AngioTC ou AngioRM: estenose > 70%. Arteriografia (padrão-ouro). Cintilografia renal com captopril: assimetria de captação."
       },
       {
             "id": "differential",
@@ -46,7 +46,7 @@ export const nephrologyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Estenose de Arteria Renal."
+            "content": "1. Controle pressórico: IECA/BRA (monitorar creatinina — suspender se aumento > 30%)\n2. Anlodipino 5-10mg/dia como adjuvante\n3. Estatina (aterosclerose)\n4. AAS 100mg/dia\n5. Angioplastia com stent: apenas se HAS refratária (3+ drogas), edema agudo de pulmão flash, ou DRC progressiva\n6. Displasia fibromuscular: angioplastia é 1ª linha (cura em 60-80%)"
       },
       {
             "id": "treatment",
@@ -56,7 +56,7 @@ export const nephrologyFullProtocols5: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Estenose de Arteria Renal."
+            "content": "1. Enalapril 10-20mg VO 12/12h (iniciar com cautela, monitorar Cr e K)\n2. Anlodipino 5mg VO 1x/dia\n3. AAS 100mg VO 1x/dia\n4. Atorvastatina 40mg VO 1x/dia\n5. Creatinina e K em 48h e 7 dias após IECA\n6. DopplerUS renal de controle em 6 meses"
       },
       {
             "id": "followup",
@@ -167,7 +167,7 @@ export const nephrologyFullProtocols5: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para IRA Pre-Renal."
+            "content": "A IRA pré-renal é a causa mais comum de injúria renal aguda (60-70%), resultando de hipoperfusão renal sem lesão parenquimatosa. Rapidamente reversível com restauração da perfusão. Se não tratada, evolui para necrose tubular aguda. Diretriz: KDIGO 2012."
       },
       {
             "id": "def",
@@ -192,7 +192,7 @@ export const nephrologyFullProtocols5: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de IRA Pre-Renal."
+            "content": "FENa < 1% (ou FEUreia < 35% se uso de diurético). Na urinário < 20 mEq/L. Osmolaridade urinária > 500 mOsm/kg. Relação ureia/creatinina > 40:1. Sedimento urinário sem cilindros (ou cilindros hialinos). USG renal: rins de tamanho normal, sem hidronefrose. Resposta a volume: melhora da creatinina em 24-48h."
       },
       {
             "id": "differential",
@@ -202,7 +202,7 @@ export const nephrologyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de IRA Pre-Renal."
+            "content": "1. Expansão volêmica: SF 0,9% 20-30 mL/kg nas primeiras 1-3h\n2. Suspender nefrotóxicos (AINEs, IECA/BRA, aminoglicosídeos)\n3. Suspender diuréticos\n4. Tratar causa: sepse (ATB + fluidos), IC (inotrópico), hemorragia (hemotransfusão)\n5. Monitorar diurese (meta > 0,5 mL/kg/h)\n6. Se não responde a volume → pensar em IRA intrínseca"
       },
       {
             "id": "treatment",
@@ -212,7 +212,7 @@ export const nephrologyFullProtocols5: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de IRA Pre-Renal."
+            "content": "1. SF 0,9% 1000mL IV em 1h (repetir SN guiado por resposta)\n2. Suspender AINEs, IECA/BRA, metformina\n3. Sonda vesical de demora (controle de diurese)\n4. Balanço hídrico rigoroso\n5. Creatinina, ureia, eletrólitos 12/12h\n6. Na urinário, osmolaridade urinária, FENa\n7. USG renal (descartar obstrutiva)"
       },
       {
             "id": "followup",
@@ -401,7 +401,7 @@ export const nephrologyFullProtocols5: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Nefropatia por Contraste."
+            "content": "A nefropatia induzida por contraste (NIC) é a 3ª causa de IRA hospitalar. Definida como elevação da creatinina ≥ 0,3 mg/dL ou ≥ 25% em 48-72h após administração de contraste iodado. Prevenção é a estratégia mais eficaz. Diretriz: KDIGO 2012, ACR 2021."
       },
       {
             "id": "def",
@@ -426,7 +426,7 @@ export const nephrologyFullProtocols5: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Nefropatia por Contraste."
+            "content": "Elevação da creatinina ≥ 0,3 mg/dL ou ≥ 25% do basal em 48-72h após exposição ao contraste. Pico em 3-5 dias, resolução em 7-14 dias. Fatores de risco: DRC prévia (TFG < 60), diabetes, IC, desidratação, volume de contraste > 100mL, contrastes hiperosmolares."
       },
       {
             "id": "differential",
@@ -436,7 +436,7 @@ export const nephrologyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Nefropatia por Contraste."
+            "content": "1. PREVENÇÃO É A CHAVE\n2. Hidratação pré/pós: SF 0,9% 1-1,5 mL/kg/h por 6-12h antes e 6-12h após\n3. Usar menor volume de contraste possível (< 100mL)\n4. Preferir contraste iso-osmolar (iodixanol)\n5. Suspender metformina 48h antes\n6. Suspender nefrotóxicos\n7. N-acetilcisteína 600-1200mg VO 12/12h — benefício controverso\n8. Evitar exames contrastados repetidos em < 72h"
       },
       {
             "id": "treatment",
@@ -446,7 +446,7 @@ export const nephrologyFullProtocols5: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Nefropatia por Contraste."
+            "content": "1. SF 0,9% 1mL/kg/h IV — iniciar 6-12h antes do procedimento\n2. SF 0,9% 1mL/kg/h IV — manter 6-12h após o procedimento\n3. N-acetilcisteína 600mg VO 12/12h (iniciar na véspera, total 4 doses)\n4. Suspender metformina 48h antes\n5. Creatinina basal e em 48-72h após contraste\n6. Alternativa: Bicarbonato de sódio 8,4% 150mL + SG5% 850mL IV 3mL/kg/h 1h antes"
       },
       {
             "id": "followup",
@@ -635,7 +635,7 @@ export const nephrologyFullProtocols5: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Emergencia Dialitica."
+            "content": "As emergências dialíticas representam indicações absolutas de terapia renal substitutiva, quando medidas conservadoras falharam ou são insuficientes. O mnemônico AEIOU resume as principais indicações. A hemodiálise convencional é o método de escolha na urgência; CRRT para pacientes instáveis. Diretriz: KDIGO 2012."
       },
       {
             "id": "def",
@@ -660,7 +660,7 @@ export const nephrologyFullProtocols5: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Emergencia Dialitica."
+            "content": "Indicação clínica + laboratorial. Gasometria: pH < 7,1, HCO3 < 10 (acidose grave). K > 6,5 com alterações ECG (onda T apiculada, alargamento QRS). Ureia > 200 ou sintomas urêmicos. Edema agudo de pulmão sem resposta a furosemida. Intoxicação por substância dialisável."
       },
       {
             "id": "differential",
@@ -670,7 +670,7 @@ export const nephrologyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Emergencia Dialitica."
+            "content": "INDICAÇÕES URGENTES DE DIÁLISE (mnemônico AEIOU):\nA — Acidose metabólica grave (pH < 7,1) refratária a bicarbonato\nE — Eletrólitos (hipercalemia > 6,5 refratária)\nI — Intoxicação (metanol, etilenoglicol, lítio, salicilato)\nO — Overload (hipervolemia refratária a diurético)\nU — Uremia sintomática (encefalopatia, pericardite, sangramento)\n\nModalidade: Hemodiálise convencional (aguda). CRRT se instabilidade hemodinâmica."
       },
       {
             "id": "treatment",
@@ -680,7 +680,7 @@ export const nephrologyFullProtocols5: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Emergencia Dialitica."
+            "content": "1. Acesso venoso central (jugular interna D ou femoral — cateter duplo-lúmen)\n2. Hemodiálise urgente — prescrição pelo nefrologista\n3. Enquanto aguarda diálise:\n   - Gluconato de cálcio 10% 10mL IV em 10min (cardioproteção se K > 6,5)\n   - Insulina regular 10UI + Glicose 50% 50mL IV\n   - Bicarbonato de sódio 8,4% 150mL IV se pH < 7,1\n4. ECG contínuo\n5. Eletrólitos e gasometria seriados"
       },
       {
             "id": "followup",

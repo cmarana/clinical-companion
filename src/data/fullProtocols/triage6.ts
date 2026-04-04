@@ -11,7 +11,7 @@ export const triageFullProtocols6: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Escala de Ramsay."
+            "content": "A classificação de risco da dor torácica é uma das situações mais críticas na triagem de emergência. O ECG deve ser realizado em menos de 10 minutos da chegada (meta porta-ECG). Protocolos como Manchester e HEART score auxiliam a estratificação. Diretriz: Manchester Triage System, AHA 2021."
       },
       {
             "id": "def",
@@ -36,7 +36,7 @@ export const triageFullProtocols6: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Escala de Ramsay."
+            "content": "HEART score: History, ECG, Age, Risk factors, Troponin. Score 0-3: baixo risco (alta precoce). Score 4-6: moderado (observação). Score ≥ 7: alto risco (internação). ECG: supra-ST (IAMCSST), infra-ST (IAMSSST), normal (não exclui SCA)."
       },
       {
             "id": "differential",
@@ -46,7 +46,7 @@ export const triageFullProtocols6: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Escala de Ramsay."
+            "content": "Classificação Manchester — Dor Torácica:\n1. DOR TORÁCICA + dispneia, sudorese, irradiação — VERMELHO (emergência)\n2. ECG em < 10 min da chegada\n3. Se supra-ST: ativar protocolo IAM (cateterismo < 90min ou trombólise < 30min)\n4. ECG normal + dor típica: LARANJA — troponina + observação\n5. Dor atípica, jovem, sem fatores de risco: AMARELO — troponina seriada"
       },
       {
             "id": "treatment",
@@ -56,7 +56,7 @@ export const triageFullProtocols6: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Escala de Ramsay."
+            "content": "Protocolo de dor torácica na triagem:\n1. ECG 12 derivações em < 10 min\n2. AAS 200mg mastigar (se suspeita coronariana)\n3. Monitorização contínua (SpO2, ECG, PA)\n4. Acesso venoso periférico\n5. Troponina + hemograma + eletrólitos\n6. Rx tórax\n7. Classificar: Vermelho (instável), Laranja (típica + ECG normal), Amarelo (atípica)"
       },
       {
             "id": "followup",
@@ -167,7 +167,7 @@ export const triageFullProtocols6: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Escore de SOFA."
+            "content": "A dispneia aguda na triagem exige avaliação rápida para diferenciar causas potencialmente letais (TEP, pneumotórax hipertensivo, anafilaxia, DPOC exacerbada grave) de causas menos urgentes. A oximetria de pulso é o sinal vital mais importante na triagem da dispneia. Diretriz: Manchester Triage System."
       },
       {
             "id": "def",
@@ -192,7 +192,7 @@ export const triageFullProtocols6: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Escore de SOFA."
+            "content": "Diagnóstico diferencial por padrão:\n- Sibilos + dispneia: asma/DPOC\n- Crepitações + ortopneia: ICC\n- Dor pleurítica + taquicardia: TEP\n- Estridor: obstrução alta (corpo estranho, epiglotite)\n- Febre + tosse: pneumonia\nGasometria: tipo I (hipoxêmica) vs tipo II (hipercápnica)"
       },
       {
             "id": "differential",
@@ -202,7 +202,7 @@ export const triageFullProtocols6: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Escore de SOFA."
+            "content": "Classificação Manchester — Dispneia:\n1. Estridor/obstrução de via aérea — VERMELHO (IOT)\n2. SpO2 < 92% ou FR > 30 — VERMELHO\n3. SpO2 92-94% + sinais de esforço — LARANJA\n4. Dispneia aguda sem hipoxemia — AMARELO\n5. Dispneia crônica agudizada leve — VERDE\n6. Avaliar se consegue falar frases completas (não = grave)"
       },
       {
             "id": "treatment",
@@ -212,7 +212,7 @@ export const triageFullProtocols6: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Escore de SOFA."
+            "content": "Protocolo de dispneia na triagem:\n1. Oximetria de pulso imediata\n2. O2 suplementar se SpO2 < 92%\n3. Monitorização contínua\n4. Acesso venoso\n5. Gasometria arterial se SpO2 < 94%\n6. Rx tórax\n7. Classificar: Vermelho (FR>30 ou SpO2<92%), Laranja (SpO2 92-94%), Amarelo (SpO2>94% + dispneia nova)"
       },
       {
             "id": "followup",
@@ -323,7 +323,7 @@ export const triageFullProtocols6: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Indice de Gravidade PRISM."
+            "content": "A triagem do paciente traumatizado segue os critérios do CDC/ACS para ativação de equipe de trauma, combinados com o protocolo Manchester. O mecanismo de trauma, sinais vitais e lesões anatômicas determinam a classificação. Diretriz: CDC Field Triage 2011, ATLS 10ª ed, Manchester."
       },
       {
             "id": "def",
@@ -348,7 +348,7 @@ export const triageFullProtocols6: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Indice de Gravidade PRISM."
+            "content": "Critérios de ativação de equipe de trauma (CDC 2011):\n- PAS < 90\n- Glasgow < 14\n- FR < 10 ou > 29\n- Ferimento penetrante (pescoço, tórax, abdome, pelve)\n- Fratura de pelve instável\n- Fratura de 2+ ossos longos proximais\n- Amputação proximal\n- Paralisia"
       },
       {
             "id": "differential",
@@ -358,7 +358,7 @@ export const triageFullProtocols6: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Indice de Gravidade PRISM."
+            "content": "Classificação Manchester — Trauma/Queda:\n1. Mecanismo de alta energia + instável — VERMELHO (ativar trauma)\n2. Glasgow < 15, déficit focal, amnésia — VERMELHO/LARANJA\n3. Fratura exposta, sangramento ativo — LARANJA\n4. Dor intensa (EVA ≥ 7) + impotência funcional — AMARELO\n5. Escoriações sem deformidade — VERDE\n6. Ferimento pequeno sem sangramento — AZUL"
       },
       {
             "id": "treatment",
@@ -368,7 +368,7 @@ export const triageFullProtocols6: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Indice de Gravidade PRISM."
+            "content": "Protocolo de trauma na triagem:\n1. ABCDE primário\n2. Imobilização cervical se mecanismo de risco\n3. Acesso venoso calibroso (14-16G)\n4. Tipagem sanguínea\n5. Analgesia precoce: Dipirona 2g IV\n6. Rx conforme localização da lesão\n7. eFAST se trauma toraco-abdominal\n8. Classificar conforme Glasgow, hemodinâmica e mecanismo"
       },
       {
             "id": "followup",
@@ -479,7 +479,7 @@ export const triageFullProtocols6: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Escala de Coma de Glasgow."
+            "content": "A triagem pediátrica exige adaptação dos protocolos de adultos para a fisiologia da criança. O Triângulo de Avaliação Pediátrica (TAP) é a ferramenta inicial: avalia Aparência, Respiração e Circulação em segundos. Sinais vitais normais variam por faixa etária. Diretriz: Manchester adaptado, PALS/AHA."
       },
       {
             "id": "def",
@@ -504,7 +504,7 @@ export const triageFullProtocols6: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Escala de Coma de Glasgow."
+            "content": "Sinais de alarme pediátricos na triagem:\n- Idade < 3 meses com febre\n- Fontanela abaulada\n- Petéquias/púrpura com febre\n- Desidratação (olhos fundos, turgor pastoso, choro sem lágrimas)\n- Estridor em repouso\n- Tiragem subcostal\n- Recusa alimentar > 12h\n- Convulsão\n- Irritabilidade inconsolável ou letargia"
       },
       {
             "id": "differential",
@@ -514,7 +514,7 @@ export const triageFullProtocols6: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Escala de Coma de Glasgow."
+            "content": "Classificação Manchester — Pediátrico:\n1. TAP: Aparência, Respiração, Circulação\n2. Criança hipotônica, cianótica ou em apneia — VERMELHO\n3. Febre + petéquias/púrpura — VERMELHO (meningococcemia)\n4. Febre > 38°C em < 3 meses — LARANJA (mínimo)\n5. Desidratação moderada — AMARELO\n6. IVAS sem sinais de alarme — VERDE\n7. SEMPRE pesar na triagem (doses por kg)"
       },
       {
             "id": "treatment",
@@ -524,7 +524,7 @@ export const triageFullProtocols6: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Escala de Coma de Glasgow."
+            "content": "Protocolo pediátrico na triagem:\n1. Peso em kg (OBRIGATÓRIO)\n2. TAP (Triângulo de Avaliação Pediátrica)\n3. Sinais vitais por faixa etária (FC, FR, PA, T, SpO2)\n4. Glasgow pediátrico (< 2 anos: escala modificada)\n5. Acesso venoso (ou IO se < 90s sem acesso em emergência)\n6. Glicemia capilar (hipoglicemia frequente em < 2 anos)\n7. Classificar conforme protocolos Manchester pediátricos"
       },
       {
             "id": "followup",

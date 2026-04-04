@@ -11,7 +11,7 @@ export const neuroFullProtocols8: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Status Migranoso na emergencia."
+            "content": "O status migranoso é uma enxaqueca debilitante que dura > 72h de forma contínua, com possíveis períodos de alívio < 12h. Associado a desidratação, uso excessivo de analgésicos e estresse emocional. Requer tratamento intravenoso em pronto-socorro. Diretriz: AHS 2019, IHS (ICHD-3)."
       },
       {
             "id": "def",
@@ -36,7 +36,7 @@ export const neuroFullProtocols8: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Exames para diagnostico de Status Migranoso."
+            "content": "Critérios ICHD-3: enxaqueca (com ou sem aura) contínua por > 72h, apesar de tratamento adequado. Períodos de alívio < 12h (sono/medicação) não descaracterizam. Exclusão: TC crânio (afastar HSA, trombose venosa). Investigar cefaleia por uso excessivo de analgésicos (> 15 dias/mês)."
       },
       {
             "id": "differential",
@@ -46,7 +46,7 @@ export const neuroFullProtocols8: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Status Migranoso."
+            "content": "Status Migranoso: enxaqueca > 72h contínua\n1. Hidratação: SF 0,9% 1000mL IV\n2. Dexametasona 10mg IV (dose única — previne recorrência)\n3. Metoclopramida 10mg IV + Difenidramina 25mg IV (evitar acatisia)\n4. Cetorolaco 30mg IV (ou Tenoxicam 20mg IV)\n5. Sulfato de magnésio 1-2g IV em 30min (especialmente se com aura)\n6. Valproato 400-1000mg IV em 30min (se refratário)\n7. EVITAR opioides (pioram cronificação)"
       },
       {
             "id": "treatment",
@@ -56,7 +56,7 @@ export const neuroFullProtocols8: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes para Status Migranoso."
+            "content": "1. SF 0,9% 1000mL IV\n2. Dexametasona 10mg IV dose única\n3. Metoclopramida 10mg IV lento\n4. Difenidramina 25mg IV (com metoclopramida)\n5. Cetorolaco 30mg IV 8/8h (máx 48h)\n6. MgSO4 50% 2mL (1g) + SF 100mL IV em 30min\n7. Se refratário: Valproato 1000mg + SF 100mL IV em 30min\n8. Sumatriptana 6mg SC (se < 72h e sem contraindicação vascular)"
       },
       {
             "id": "followup",
@@ -167,7 +167,7 @@ export const neuroFullProtocols8: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Botulismo na emergencia."
+            "content": "O botulismo é doença neuroparalítica grave causada pela toxina do Clostridium botulinum. Notificação compulsória imediata. Tipos: alimentar (mais comum no Brasil), ferida, intestinal (infantil) e inalatório. A toxina bloqueia a liberação de acetilcolina na junção neuromuscular. Mortalidade 5-10% com suporte adequado. Diretriz: MS Brasil, CDC."
       },
       {
             "id": "def",
@@ -192,7 +192,7 @@ export const neuroFullProtocols8: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Exames para diagnostico de Botulismo."
+            "content": "Quadro clínico: paralisia flácida descendente simétrica, pupilas fixas e dilatadas, boca seca, disfagia, disartria, sem febre e sem alteração sensitiva. EMG: padrão incremental na estimulação repetitiva rápida. Toxina botulínica no soro, fezes ou alimento. Tipos: alimentar (alimento contaminado), ferida, infantil (< 1 ano), inalatório."
       },
       {
             "id": "differential",
@@ -202,7 +202,7 @@ export const neuroFullProtocols8: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Botulismo."
+            "content": "NOTIFICAÇÃO COMPULSÓRIA IMEDIATA\n1. Antitoxina botulínica trivalente (ABE) — solicitar ao SVS/MS\n2. Administrar o mais precoce possível (antes de 24h dos sintomas)\n3. Suporte ventilatório: IOT + VM se CVF < 30% ou insuficiência respiratória\n4. Sonda nasoenteral (disfagia)\n5. NÃO usar aminoglicosídeos (pioram bloqueio neuromuscular)\n6. Descontaminação intestinal se alimentar (lavagem + carvão)"
       },
       {
             "id": "treatment",
@@ -212,7 +212,7 @@ export const neuroFullProtocols8: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes para Botulismo."
+            "content": "1. Antitoxina botulínica trivalente — dose conforme protocolo MS (via SVS)\n2. IOT + VM se CVF < 30% predito\n3. SNE para alimentação (se disfagia)\n4. Metoclopramida 10mg IV 8/8h (procinético)\n5. CVF seriada (4/4h nas primeiras 48h)\n6. Monitorização contínua (SpO2, ECG)\n7. Profilaxia TVP: Enoxaparina 40mg SC 1x/dia"
       },
       {
             "id": "followup",
@@ -245,7 +245,7 @@ export const neuroFullProtocols8: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Tetano na emergencia."
+            "content": "O tétano é infecção causada pela toxina tetanospasmina do Clostridium tetani, que bloqueia neurotransmissores inibitórios (GABA e glicina) causando espasmos musculares e disautonomia. Mortalidade 10-50% mesmo com UTI. Prevenível por vacinação. Notificação compulsória. Diretriz: MS Brasil, WHO 2018."
       },
       {
             "id": "def",
@@ -270,7 +270,7 @@ export const neuroFullProtocols8: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Exames para diagnostico de Tetano."
+            "content": "Diagnóstico CLÍNICO: trismo, riso sardônico, opistótono, espasmos musculares provocados por estímulos. Classificação de Ablett: Grau I (leve — trismo), II (moderado — disfagia + rigidez), III (grave — espasmos generalizados + insuficiência respiratória), IV (muito grave — disautonomia). Escala de Dakar para prognóstico."
       },
       {
             "id": "differential",
@@ -280,7 +280,7 @@ export const neuroFullProtocols8: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Tetano."
+            "content": "1. Imunoglobulina antitetânica (IGHAT) 3.000-5.000 UI IM (neutralizar toxina circulante)\n2. Metronidazol 500mg IV 8/8h por 7-10 dias (1ª escolha)\n3. Desbridamento do foco\n4. Benzodiazepínicos: Diazepam 10mg IV 4/4h ou Midazolam BIC 0,1-0,3mg/kg/h\n5. Sulfato de magnésio 4g bolus → 2-3g/h BIC (controle de disautonomia)\n6. IOT + VM precoce (espasmo laríngeo = risco de morte)\n7. Vacinar na alta (tétano não confere imunidade)"
       },
       {
             "id": "treatment",
@@ -290,7 +290,7 @@ export const neuroFullProtocols8: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes para Tetano."
+            "content": "1. IGHAT 5.000 UI IM (dose única)\n2. Metronidazol 500mg IV 8/8h por 10 dias\n3. Diazepam 10mg IV 4/4h (titular conforme espasmos)\n4. MgSO4 50% 8mL (4g) IV em 20min → 2-3g/h BIC\n5. Ambiente escuro, silencioso, mínimo estímulo\n6. IOT precoce se espasmo laríngeo ou CVF < 30%\n7. Profilaxia TVP: Enoxaparina 40mg SC 1x/dia\n8. Vacina dT na alta hospitalar"
       },
       {
             "id": "followup",
