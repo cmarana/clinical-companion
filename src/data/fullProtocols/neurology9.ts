@@ -11,7 +11,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Hemorragia Epidural."
+            "content": "A hemorragia epidural (HED) resulta tipicamente de ruptura da artéria meníngea média após TCE com fratura temporal. Representa 1-2% dos TCE graves. Intervalo lúcido clássico em 30-50% dos casos."
       },
       {
             "id": "def",
@@ -46,7 +46,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Hemorragia Epidural."
+            "content": "• ABC → IOT se GCS ≤ 8\n• TC de crânio urgente: hematoma biconvexo (lenticular)\n• Manitol 20% 1 g/kg IV se herniação iminente (anisocoria)\n• Craniotomia de emergência se hematoma > 30 mL ou espessura > 15 mm ou desvio de linha média > 5 mm\n• Monitorização PIC pós-operatória\n• Manter PPC > 60 mmHg"
       },
       {
             "id": "treatment",
@@ -56,7 +56,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Hemorragia Epidural."
+            "content": "1. Manitol 20% 250 mL IV em 20 min (1 g/kg)\n2. Fenitoína 20 mg/kg IV (dose de ataque) → 100 mg 8/8h\n3. SF 0,9% para manter PAS > 90 mmHg\n4. Analgesia: Dipirona 1g IV 6/6h"
       },
       {
             "id": "followup",
@@ -89,7 +89,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Hemorragia Subdural Aguda."
+            "content": "HSDA ocorre por ruptura de veias-ponte entre córtex e seios durais. Alta mortalidade (50-90%). Associada a TCE grave, uso de anticoagulantes e idade avançada."
       },
       {
             "id": "def",
@@ -124,7 +124,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Hemorragia Subdural Aguda."
+            "content": "• TC: coleção hiperdensa em crescente (côncavo-convexa)\n• Indicação cirúrgica: espessura > 10 mm, desvio > 5 mm, queda GCS ≥ 2 pontos\n• Craniotomia descompressiva ampla\n• Reversão de anticoagulação: CCP 25-50 UI/kg se varfarina; Idarucizumab se dabigatrana"
       },
       {
             "id": "treatment",
@@ -134,7 +134,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Hemorragia Subdural Aguda."
+            "content": "1. CCP 25-50 UI/kg IV (reversão de ACO)\n2. Vitamina K 10 mg IV\n3. Ácido tranexâmico 1g IV em 10 min\n4. Fenitoína 20 mg/kg ataque\n5. Manitol 20% 1 g/kg se herniação"
       },
       {
             "id": "followup",
@@ -167,7 +167,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Hemorragia Subdural Cronica."
+            "content": "HSDC acomete principalmente idosos (>65 anos) e etilistas. Pode ocorrer sem trauma evidente. Cápsula fibrovascular com micro-hemorragias recorrentes."
       },
       {
             "id": "def",
@@ -202,7 +202,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Hemorragia Subdural Cronica."
+            "content": "• TC: coleção hipodensa/isodensa em crescente\n• Sintomático ou > 10 mm: trepanação com drenagem\n• Assintomático e pequeno: observação com TC seriada\n• Suspender anticoagulantes/antiplaquetários\n• Recidiva em 10-20%: considerar shunt subduro-peritoneal"
       },
       {
             "id": "treatment",
@@ -212,7 +212,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Hemorragia Subdural Cronica."
+            "content": "1. Dexametasona 4 mg IV/VO 6/6h (redução de recidiva)\n2. Fenitoína profilática 100 mg 8/8h\n3. Analgesia: Paracetamol 750 mg 6/6h\n4. Hidratação adequada pós-drenagem"
       },
       {
             "id": "followup",
@@ -245,7 +245,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Crise Convulsiva Focal."
+            "content": "Crise focal origina-se em uma região cortical circunscrita. Pode ser com ou sem perda de consciência. Aura pode indicar foco (visual = occipital, déjà vu = temporal)."
       },
       {
             "id": "def",
@@ -280,7 +280,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Crise Convulsiva Focal."
+            "content": "• EEG: atividade epileptiforme focal\n• RNM de crânio: excluir lesão estrutural (tumor, MAV, esclerose mesial)\n• 1ª crise focal: iniciar FAE se lesão estrutural ou EEG alterado\n• Carbamazepina 200 mg 12/12h → titular até 600-1200 mg/dia\n• Alternativa: Lamotrigina 25 mg/dia → titular até 200-400 mg/dia\n• Refratário: Levetiracetam 500 mg 12/12h"
       },
       {
             "id": "treatment",
@@ -290,7 +290,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Crise Convulsiva Focal."
+            "content": "1. Carbamazepina 200 mg 12/12h (primeira escolha focal)\n2. Ou Lamotrigina 25 mg/dia → 100-200 mg 12/12h\n3. Levetiracetam 500 mg 12/12h (se intolerância)\n4. Dosagem sérica de FAE em 2 semanas\n5. RNM de crânio com protocolo para epilepsia"
       },
       {
             "id": "followup",
@@ -323,7 +323,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Encefalopatia de Wernicke."
+            "content": "Tríade clássica: confusão mental + ataxia + oftalmoplegia. Causada por deficiência de tiamina (B1). Mortalidade de 20% se não tratada. Pode evoluir para Korsakoff."
       },
       {
             "id": "def",
@@ -358,7 +358,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Encefalopatia de Wernicke."
+            "content": "• Tiamina 500 mg IV 3x/dia por 3 dias → 250 mg IV 1x/dia por 5 dias\n• SEMPRE administrar tiamina ANTES de glicose\n• Magnésio 2g IV (cofator da tiamina)\n• Hidratação com SF 0,9%\n• Avaliação nutricional completa\n• TC/RNM: lesões em corpos mamilares e tálamo medial"
       },
       {
             "id": "treatment",
@@ -368,7 +368,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Encefalopatia de Wernicke."
+            "content": "1. Tiamina 500 mg IV 8/8h por 3 dias\n2. Sulfato de magnésio 2g IV em 100 mL SF\n3. Após 3 dias: Tiamina 250 mg IV 1x/dia por 5 dias\n4. Complexo B VO após fase aguda\n5. Ácido fólico 5 mg/dia VO\n6. NÃO administrar glicose antes da tiamina"
       },
       {
             "id": "followup",
@@ -401,7 +401,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Sindrome de Korsakoff."
+            "content": "Síndrome amnéstica crônica por lesão dos corpos mamilares e tálamo. Sequela de Wernicke não tratada. Amnésia anterógrada grave com confabulação. Irreversível na maioria."
       },
       {
             "id": "def",
@@ -436,7 +436,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Sindrome de Korsakoff."
+            "content": "• Diagnóstico clínico: amnésia anterógrada + confabulação + desorientação temporal\n• RNM: atrofia de corpos mamilares\n• Tratamento: suplementação de tiamina (pode estabilizar mas raramente reverte)\n• Reabilitação cognitiva\n• Suporte social e familiar\n• Abstinência alcoólica obrigatória"
       },
       {
             "id": "treatment",
@@ -446,7 +446,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Sindrome de Korsakoff."
+            "content": "1. Tiamina 100 mg VO/dia indefinidamente\n2. Complexo B VO\n3. Ácido fólico 5 mg/dia\n4. Reabilitação neuropsicológica\n5. Suporte familiar e assistência social"
       },
       {
             "id": "followup",
@@ -479,7 +479,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Apoplexia Hipofisaria."
+            "content": "Emergência endocrinológica-neurológica. Infarto ou hemorragia hipofisária, geralmente em macroadenoma. Cefaleia súbita intensa + déficit visual (quiasma) + insuficiência adrenal aguda."
       },
       {
             "id": "def",
@@ -514,7 +514,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Apoplexia Hipofisaria."
+            "content": "• RNM de sela túrcica URGENTE: massa hipofisária com hemorragia\n• Hidrocortisona 100 mg IV bolus → 50 mg 6/6h (ANTES de qualquer exame)\n• Campimetria: hemianopsia bitemporal\n• Hormônios: cortisol, TSH, T4L, LH, FSH, GH, prolactina\n• Descompressão cirúrgica transesfenoidal: se déficit visual progressivo ou redução de consciência\n• Se estável visualmente: manejo conservador com reposição hormonal"
       },
       {
             "id": "treatment",
@@ -524,7 +524,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Apoplexia Hipofisaria."
+            "content": "1. Hidrocortisona 100 mg IV bolus → 50 mg IV 6/6h\n2. Levotiroxina NÃO iniciar antes do cortisol (risco de crise adrenal)\n3. SF 0,9% IV (suporte hemodinâmico)\n4. Analgesia: Dipirona 1g IV 6/6h\n5. Após estabilização: reposição hormonal conforme dosagens"
       },
       {
             "id": "followup",
@@ -557,7 +557,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Trombose de Seio Cavernoso."
+            "content": "Trombose séptica do seio cavernoso. Foco primário: sinusite esfenoidal/etmoidal ou infecção facial (triângulo perigoso). Proptose, oftalmoplegia, quemose, febre."
       },
       {
             "id": "def",
@@ -592,7 +592,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Trombose de Seio Cavernoso."
+            "content": "• TC/RNM com contraste + angioRM venosa\n• Antibioticoterapia empírica: Ceftriaxona 2g IV 12/12h + Metronidazol 500 mg IV 8/8h + Vancomicina 1g IV 12/12h\n• Anticoagulação: controversa — considerar Heparina plena se sem hemorragia\n• Drenagem cirúrgica do foco primário (sinusite)\n• Corticoide: Dexametasona 4 mg IV 6/6h (reduzir edema)\n• Duração ATB: 4-6 semanas IV"
       },
       {
             "id": "treatment",
@@ -602,7 +602,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Trombose de Seio Cavernoso."
+            "content": "1. Ceftriaxona 2g IV 12/12h\n2. Metronidazol 500 mg IV 8/8h\n3. Vancomicina 1g IV 12/12h (ajustar por nível sérico)\n4. Heparina não-fracionada IV (se indicada)\n5. Dexametasona 4 mg IV 6/6h\n6. Duração: 4-6 semanas mínimo"
       },
       {
             "id": "followup",
@@ -635,7 +635,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Neurite Vestibular."
+            "content": "Causa mais comum de vertigem aguda prolongada. Origem viral (reativação HSV-1). Vertigem intensa, náuseas, nistagmo horizontal-rotatório unidirecional. Sem hipoacusia."
       },
       {
             "id": "def",
@@ -670,7 +670,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Neurite Vestibular."
+            "content": "• Teste de impulso cefálico (HIT) positivo ipsilateral\n• HINTS: diferencia de AVC de fossa posterior\n• Fase aguda (48-72h): Dimenidrinato 50 mg IV 8/8h + Ondansetrona 4 mg IV\n• Após 72h: reabilitação vestibular precoce\n• Corticoide: Metilprednisolona 100 mg/dia com redução em 3 semanas"
       },
       {
             "id": "treatment",
@@ -680,7 +680,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Neurite Vestibular."
+            "content": "1. Dimenidrinato 50 mg IV 8/8h (máx 72h)\n2. Ondansetrona 4 mg IV 8/8h\n3. Metilprednisolona 100 mg/dia → redução gradual em 21 dias\n4. Betaístina 24 mg 12/12h VO (após fase aguda)\n5. Iniciar reabilitação vestibular no 3º dia"
       },
       {
             "id": "followup",
@@ -713,7 +713,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para VPPB."
+            "content": "VPPB: causa mais comum de vertigem (17-42%). Otólitos deslocados nos canais semicirculares. Canal posterior em 80% dos casos."
       },
       {
             "id": "def",
@@ -748,7 +748,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de VPPB."
+            "content": "• Diagnóstico: Manobra de Dix-Hallpike positiva\n• Canal posterior: Manobra de Epley (1-2 sessões resolvem 80%)\n• Canal lateral: Manobra de Lempert/Barbecue\n• Não usar supressores vestibulares cronicamente\n• Recidiva em 15-30%/ano"
       },
       {
             "id": "treatment",
@@ -758,7 +758,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de VPPB."
+            "content": "1. Manobra de Epley — tratamento principal\n2. Dimenidrinato 50 mg VO 30 min antes (se náusea intensa)\n3. Meclizina 25 mg VO apenas se muito incapacitante (máx 3 dias)\n4. Vitamina D 1000 UI/dia (deficiência associada a recidiva)"
       },
       {
             "id": "followup",
@@ -791,7 +791,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Sindrome de Horner."
+            "content": "Tríade de Horner: miose + ptose + anidrose ipsilateral. Lesão da via simpática (central, pré-ganglionar ou pós-ganglionar). Causa grave: dissecção de carótida, tumor de Pancoast."
       },
       {
             "id": "def",
@@ -826,7 +826,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Sindrome de Horner."
+            "content": "• Teste farmacológico: cocaína 4% (confirma Horner), hidroxianfetamina (localiza lesão)\n• Horner agudo + dor cervical/facial: AngioTC/angioRM de carótida URGENTE (dissecção)\n• RNM de crânio, coluna cervical e ápice pulmonar\n• TC de tórax se suspeita de Pancoast\n• Horner congênito: heterocromia de íris"
       },
       {
             "id": "treatment",
@@ -836,7 +836,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Sindrome de Horner."
+            "content": "1. AngioTC cervical URGENTE se Horner agudo + dor\n2. Se dissecção carotídea: Heparina plena → AAS + Clopidogrel por 3-6 meses\n3. RNM de coluna cervical + ápice pulmonar\n4. Avaliação oftalmológica completa"
       },
       {
             "id": "followup",
@@ -869,7 +869,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Neuropatia Optica Isquemica."
+            "content": "NOIA anterior: perda visual súbita, indolor, altitudinal. Causas: arterítica (arterite de células gigantes — EMERGÊNCIA) e não-arterítica (fatores de risco cardiovascular + disco de risco)."
       },
       {
             "id": "def",
@@ -904,7 +904,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Neuropatia Optica Isquemica."
+            "content": "• Fundo de olho: edema de papila setorial, hemorragias peripapilares\n• VHS + PCR URGENTES: se elevados → suspeita de arterítica\n• NOIA arterítica: Metilprednisolona 1g IV/dia por 3 dias → Prednisona 1 mg/kg/dia\n• Biópsia de artéria temporal em < 2 semanas\n• NOIA não-arterítica: sem tratamento comprovado, controlar fatores de risco\n• Risco de bilateralização na forma arterítica: 50% sem tratamento"
       },
       {
             "id": "treatment",
@@ -914,7 +914,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Neuropatia Optica Isquemica."
+            "content": "1. Se arterítica: Metilprednisolona 1g IV/dia por 3 dias\n2. Prednisona 1 mg/kg/dia VO após pulsoterapia\n3. AAS 100 mg/dia (reduz risco de bilateralização)\n4. Biópsia de artéria temporal\n5. Tocilizumabe 162 mg SC/semana (poupador de corticoide)"
       },
       {
             "id": "followup",
@@ -947,7 +947,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Lesao de Plexo Braquial."
+            "content": "Lesão traumática do plexo braquial (C5-T1). Causas: tração no parto (Erb-Duchenne, Klumpke), trauma motociclístico, compressão. Déficit motor + sensitivo do membro superior."
       },
       {
             "id": "def",
@@ -982,7 +982,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Lesao de Plexo Braquial."
+            "content": "• Exame segmentar: C5-C6 (Erb) = abdução e rotação externa; C8-T1 (Klumpke) = mão em garra\n• ENMG após 3-4 semanas (degeneração walleriana)\n• RNM de plexo braquial + mielografia-TC (avulsão radicular)\n• Avulsão radicular (pregangliônica): pior prognóstico, não regenera\n• Cirurgia: neurorrafia, enxerto nervoso ou transferência (idealmente < 6 meses)\n• Fisioterapia precoce para manter amplitude articular"
       },
       {
             "id": "treatment",
@@ -992,7 +992,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Lesao de Plexo Braquial."
+            "content": "1. Gabapentina 300 mg → 1200 mg/dia (dor neuropática)\n2. Amitriptilina 25-75 mg/noite\n3. Fisioterapia: mobilização passiva + ativa assistida\n4. ENMG em 4 semanas\n5. Encaminhamento microcirurgia se sem recuperação em 3 meses"
       },
       {
             "id": "followup",
@@ -1025,7 +1025,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Paralisia do III Nervo."
+            "content": "Paralisia do III nervo (oculomotor): ptose + midríase + olho em abdução e infraversão. Causas: aneurisma de comunicante posterior (EMERGÊNCIA), diabetes (isquêmica, pupila poupada)."
       },
       {
             "id": "def",
@@ -1060,7 +1060,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Paralisia do III Nervo."
+            "content": "• Pupila dilatada + III nervo = ANEURISMA até prova contrária → AngioTC/arteriografia URGENTE\n• Pupila poupada + III nervo parcial = provável isquêmica (DM, HAS)\n• RNM + angioRM de crânio\n• Se aneurisma: clipagem ou embolização endovascular\n• Se isquêmica: controle glicêmico, observação, recuperação em 8-12 semanas"
       },
       {
             "id": "treatment",
@@ -1070,7 +1070,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Paralisia do III Nervo."
+            "content": "1. AngioTC cerebral URGENTE se midríase\n2. Se aneurisma: encaminhar neurocirurgia/neurovascular\n3. Se isquêmica: controle glicêmico + AAS 100 mg/dia\n4. Oclusão alternada de olhos (evitar diplopia)\n5. Revisão em 4-6 semanas"
       },
       {
             "id": "followup",
@@ -1103,7 +1103,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Compressao Medular Neoplasica."
+            "content": "Emergência oncológica: compressão medular por metástase epidural. Mama, pulmão e próstata são os primários mais comuns. Dor dorsal precede déficit neurológico em semanas."
       },
       {
             "id": "def",
@@ -1138,7 +1138,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Compressao Medular Neoplasica."
+            "content": "• RNM de coluna total URGENTE\n• Dexametasona 10 mg IV bolus → 4 mg 6/6h\n• Neurocirurgia: descompressão em < 24-48h se déficit motor < 48h\n• Radioterapia: 30 Gy em 10 frações\n• Se paraplegia > 48h: prognóstico de recuperação < 5%"
       },
       {
             "id": "treatment",
@@ -1148,7 +1148,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Compressao Medular Neoplasica."
+            "content": "1. Dexametasona 10 mg IV bolus → 4 mg IV 6/6h\n2. Ranitidina 50 mg IV 12/12h\n3. Morfina 5-10 mg SC 4/4h (dor neuropática)\n4. Gabapentina 300 mg → 900-1200 mg/dia\n5. Enoxaparina 40 mg SC 1x/dia (profilaxia TVP)"
       },
       {
             "id": "followup",
@@ -1181,7 +1181,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Siringomielia."
+            "content": "Cavidade tubular preenchida por líquor dentro da medula espinhal. Associada a malformação de Chiari I. Síndrome siringomiélica: perda dissociada de sensibilidade (dor/temperatura preservando tato)."
       },
       {
             "id": "def",
@@ -1216,7 +1216,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Siringomielia."
+            "content": "• RNM de coluna: cavidade intramedular (cervical ou torácica)\n• RNM de crânio: avaliar Chiari I (herniação tonsilar > 5 mm)\n• Chiari com siringomielia: descompressão da fossa posterior\n• Sem Chiari: investigar etiologia (pós-traumática, tumoral)\n• Shunt síringo-subaracnóideo ou síringo-peritoneal (refratários)\n• Monitorizar progressão com RNM anual"
       },
       {
             "id": "treatment",
@@ -1226,7 +1226,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Siringomielia."
+            "content": "1. Gabapentina 300-1200 mg/dia (dor neuropática)\n2. RNM coluna cervical + crânio\n3. Fisioterapia para manter força e ADM\n4. Evitar manobras de Valsalva\n5. Cirurgia: descompressão de fossa posterior se Chiari associado"
       },
       {
             "id": "followup",
@@ -1259,7 +1259,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Sindrome da Cauda Equina."
+            "content": "Emergência neurocirúrgica: compressão de raízes da cauda equina (L2-S5). Causa mais comum: hérnia discal volumosa. Anestesia em sela, retenção urinária, fraqueza MMII bilateral."
       },
       {
             "id": "def",
@@ -1294,7 +1294,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Sindrome da Cauda Equina."
+            "content": "• RNM lombar urgente\n• Descompressão cirúrgica em < 24-48h (idealmente < 24h)\n• Avaliação de resíduo vesical (cateterismo se > 200 mL)\n• Sinais de alarme: retenção urinária, anestesia perianal, déficit motor bilateral progressivo"
       },
       {
             "id": "treatment",
@@ -1304,7 +1304,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Sindrome da Cauda Equina."
+            "content": "1. Dexametasona 10 mg IV (se edema compressivo)\n2. Cateterismo vesical de alívio\n3. Tramadol 100 mg IV 6/6h + Dipirona 1g IV 6/6h\n4. Gabapentina 300 mg 8/8h\n5. Enoxaparina 40 mg SC/dia\n6. Encaminhamento neurocirúrgico URGENTE"
       },
       {
             "id": "followup",
@@ -1337,7 +1337,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Mielite Transversa."
+            "content": "Inflamação aguda da medula espinhal. Causas: autoimune (NMO, EM), pós-infecciosa, idiopática. Déficit motor + sensitivo + autonômico com nível sensitivo definido. Nível sensitivo = localização da lesão."
       },
       {
             "id": "def",
@@ -1372,7 +1372,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Mielite Transversa."
+            "content": "• RNM de coluna: lesão hiperintensa em T2, realce com gadolínio\n• Líquor: pleocitose linfocítica, bandas oligoclonais\n• Anti-AQP4 (NMO) e Anti-MOG\n• Pulsoterapia: Metilprednisolona 1g IV/dia por 5 dias\n• Plasmaférese se refratário ao corticoide\n• Investigar EM: RNM de crânio + coluna completa"
       },
       {
             "id": "treatment",
@@ -1382,7 +1382,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Mielite Transversa."
+            "content": "1. Metilprednisolona 1g IV/dia por 5 dias\n2. Omeprazol 40 mg IV/dia\n3. Se refratário: Plasmaférese 5-7 sessões\n4. Cateterismo vesical intermitente (bexiga neurogênica)\n5. Enoxaparina 40 mg SC/dia (profilaxia TVP)\n6. Fisioterapia motora precoce"
       },
       {
             "id": "followup",
@@ -1415,7 +1415,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Sindrome de Locked-In."
+            "content": "Lesão bilateral da base da ponte. Quadriplegia + anartria com consciência preservada. Comunicação apenas por movimentos oculares verticais e piscamento. Causa mais comum: trombose da artéria basilar."
       },
       {
             "id": "def",
@@ -1450,7 +1450,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Sindrome de Locked-In."
+            "content": "• RNM de crânio: lesão pontina bilateral ventral\n• AngioRM/angioTC: oclusão de artéria basilar\n• Diferencial: coma, mutismo acinético, estado vegetativo\n• EEG: atividade cortical preservada (diferencia de coma)\n• Suporte ventilatório (frequente necessidade de VM)\n• Comunicação: sistema de rastreamento ocular\n• Prognóstico reservado, mas consciência intacta"
       },
       {
             "id": "treatment",
@@ -1460,7 +1460,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Sindrome de Locked-In."
+            "content": "1. IOT + VM se insuficiência respiratória\n2. Anticoagulação se trombose basilar\n3. SNE para nutrição\n4. Profilaxia de TVP: Enoxaparina 40 mg SC/dia\n5. Prevenção de úlcera de pressão\n6. Sistema de comunicação alternativa (eye-tracking)"
       },
       {
             "id": "followup",
@@ -1493,7 +1493,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Morte Encefalica - Diagnostico."
+            "content": "Diagnóstico de morte encefálica (ME) segue Resolução CFM 2.173/2017. Requer 2 exames clínicos por médicos diferentes + 1 exame complementar. Coma aperceptivo, ausência de reflexos de tronco e apneia."
       },
       {
             "id": "def",
@@ -1528,7 +1528,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Morte Encefalica - Diagnostico."
+            "content": "• Pré-requisitos: causa conhecida, T > 35°C, PAS > 100 mmHg, sem drogas depressoras do SNC\n• 1º exame clínico: médico com experiência em coma\n• Intervalo: ≥ 1h (adulto), ≥ 12h (< 2 anos), ≥ 24h (< 2 meses)\n• 2º exame: outro médico (um deve ser neurologista/neurocirurgião)\n• Teste de apneia: PaCO2 ≥ 55 mmHg sem drive respiratório\n• Exame complementar: EEG isoelétrico ou arteriografia sem fluxo\n• Notificar Central de Transplantes obrigatoriamente"
       },
       {
             "id": "treatment",
@@ -1538,7 +1538,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Morte Encefalica - Diagnostico."
+            "content": "Protocolo de manutenção do potencial doador:\n1. SF 0,9% para manter PAS > 90 mmHg\n2. Noradrenalina 0,05-0,3 mcg/kg/min se hipotensão\n3. Vasopressina 1 U/h IV (diabetes insipidus)\n4. DDAVP 1-4 mcg IV se débito urinário > 4 mL/kg/h\n5. Metilprednisolona 15 mg/kg IV\n6. Manter T > 35°C, SpO2 > 95%, Na < 160"
       },
       {
             "id": "followup",

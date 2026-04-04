@@ -11,7 +11,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Trauma Hepatico."
+            "content": "Órgão sólido abdominal mais lesado no trauma contuso. Classificação AAST (I-VI). TNO em 80-90% dos traumas contusos se estabilidade hemodinâmica."
       },
       {
             "id": "def",
@@ -46,7 +46,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Trauma Hepatico."
+            "content": "• FAST + TC com contraste (padrão-ouro)\n• TNO: estabilidade hemodinâmica + sem peritonite + graus I-III\n• Arteriografia com embolização: blush na TC\n• Cirurgia: instabilidade refratária, peritonite, graus V-VI\n• Damage control: packing perihepático → reoperação 24-48h\n• Manobra de Pringle: clampeamento do pedículo hepático (máx 60 min)"
       },
       {
             "id": "treatment",
@@ -56,7 +56,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Trauma Hepatico."
+            "content": "1. Ácido tranexâmico 1g IV em 10 min (< 3h do trauma)\n2. Protocolo de transfusão maciça CH:PFC:PLQ 1:1:1\n3. Cefazolina 2g IV (se cirurgia)\n4. Omeprazol 40 mg IV 12/12h\n5. Enoxaparina 40 mg SC/dia (após 48h se hemostasia)"
       },
       {
             "id": "followup",
@@ -89,7 +89,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Trauma Esplenico."
+            "content": "Segundo órgão mais lesado no trauma contuso. Classificação AAST (I-V). TNO possível em 60-90% com estabilidade hemodinâmica."
       },
       {
             "id": "def",
@@ -124,7 +124,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Trauma Esplenico."
+            "content": "• FAST positivo + instabilidade = laparotomia exploradora\n• TC com contraste: estadiamento graus I-V\n• TNO: repouso absoluto, Hb seriado 6/6h, TC controle 48-72h\n• Embolização arterial: blush ativo, grau IV\n• Esplenectomia: instabilidade refratária, grau V, lesão hilar\n• Pós-esplenectomia: vacinas (Pneumococo, Meningococo, Hib) em 14 dias"
       },
       {
             "id": "treatment",
@@ -134,7 +134,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Trauma Esplenico."
+            "content": "1. Ácido tranexâmico 1g IV\n2. CH O- se choque (transfusão maciça)\n3. Cefazolina 2g IV (peri-operatório)\n4. Pós-esplenectomia: Penicilina V 250 mg 12/12h por 2 anos\n5. Vacinas: Pneumo23 + MenACWY + Hib em 14 dias"
       },
       {
             "id": "followup",
@@ -167,7 +167,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Trauma Duodenal."
+            "content": "Trauma duodenal: 3-5% dos traumas abdominais. Diagnóstico difícil (retroperitoneal). Mecanismo: compressão contra coluna vertebral (guidão, cinto de segurança)."
       },
       {
             "id": "def",
@@ -202,7 +202,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Trauma Duodenal."
+            "content": "• TC com contraste oral e IV: espessamento duodenal, ar retroperitoneal\n• Hematoma intramural: TNO com SNG + NPT → reabsorve em 2-3 semanas\n• Laceração grau I-II: reparo primário\n• Grau III-IV: diverticulização duodenal ou exclusão pilórica\n• Grau V (destruição maciça): duodenopancreatectomia (Whipple)\n• Sempre pesquisar lesão pancreática associada"
       },
       {
             "id": "treatment",
@@ -212,7 +212,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Trauma Duodenal."
+            "content": "1. SNG descompressiva\n2. NPT se TNO de hematoma duodenal\n3. Octreotide 100 mcg SC 8/8h (redução secreção)\n4. Cefazolina 2g IV + Metronidazol 500 mg IV (se cirurgia)\n5. Omeprazol 40 mg IV 12/12h"
       },
       {
             "id": "followup",
@@ -245,7 +245,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Trauma de Bexiga."
+            "content": "Trauma vesical: intraperitoneal (ruptura de cúpula — bexiga cheia) ou extraperitoneal (fratura pélvica). Hematúria macroscópica é o principal sinal."
       },
       {
             "id": "def",
@@ -280,7 +280,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Trauma de Bexiga."
+            "content": "• Cistografia retrógrada: padrão-ouro\n• Extraperitoneal: tratamento conservador com sonda vesical de demora por 10-14 dias\n• Intraperitoneal: laparotomia com rafia vesical em 2 planos\n• Cistografia controle antes de retirar SVD\n• Associação com fratura pélvica em 85% dos casos extraperitoneais"
       },
       {
             "id": "treatment",
@@ -290,7 +290,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Trauma de Bexiga."
+            "content": "1. SVD de calibre adequado (20-22 Fr)\n2. Ciprofloxacino 500 mg VO 12/12h (profilaxia ITU)\n3. Analgesia: Dipirona 1g IV 6/6h\n4. Cistografia controle em 10-14 dias\n5. Cirurgia: rafia vesical se intraperitoneal"
       },
       {
             "id": "followup",
@@ -323,7 +323,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Trauma de Diafragma."
+            "content": "Lesão diafragmática: mais comum à esquerda (75%). Trauma contuso ou penetrante. Diagnóstico frequentemente tardio. Herniação visceral para tórax."
       },
       {
             "id": "def",
@@ -358,7 +358,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Trauma de Diafragma."
+            "content": "• RX tórax: elevação de hemidiafragma, vísceras em tórax, SNG em tórax\n• TC com reconstrução coronal/sagital\n• Videolaparoscopia: padrão-ouro para lesão esquerda\n• Videotoracoscopia: melhor para lesão direita\n• Reparo: sutura primária com fio inabsorvível (Prolene 0)\n• Lesões antigas grandes: tela de polipropileno"
       },
       {
             "id": "treatment",
@@ -368,7 +368,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Trauma de Diafragma."
+            "content": "1. SNG descompressiva\n2. Dreno de tórax se hemopneumotórax\n3. Cefazolina 2g IV (profilaxia)\n4. Reparo cirúrgico: sutura contínua Prolene 0\n5. RX tórax controle pós-operatório"
       },
       {
             "id": "followup",
@@ -401,7 +401,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Trauma de Grandes Vasos."
+            "content": "Lesão de aorta torácica: 90% no istmo aórtico. Mortalidade pré-hospitalar 80-90%. Mecanismo: desaceleração."
       },
       {
             "id": "def",
@@ -436,7 +436,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Trauma de Grandes Vasos."
+            "content": "• RX tórax: alargamento de mediastino > 8 cm, desvio de traqueia\n• AngioTC de tórax (padrão-ouro)\n• Controle de PA: PAS < 100 mmHg, FC < 80 bpm\n• Reparo endovascular (TEVAR) preferencial\n• Cirurgia aberta: bypass cardiopulmonar parcial"
       },
       {
             "id": "treatment",
@@ -446,7 +446,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Trauma de Grandes Vasos."
+            "content": "1. Esmolol 500 mcg/kg bolus → 50-200 mcg/kg/min IV\n2. Labetalol 20 mg IV → 40-80 mg a cada 10 min\n3. Ácido tranexâmico 1g IV\n4. Tipagem + reserva de 6-10 UCH\n5. Manter Hb > 7 g/dL"
       },
       {
             "id": "followup",
@@ -479,7 +479,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Sindrome de Crush - Detalhado."
+            "content": "Rabdomiólise traumática por compressão muscular prolongada (>1h). IRA em 30-50%. Tríade: mialgia + fraqueza + urina escura."
       },
       {
             "id": "def",
@@ -514,7 +514,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Sindrome de Crush - Detalhado."
+            "content": "• Hidratação AGRESSIVA: SF 0,9% 1-1,5 L/h (iniciar ANTES da liberação)\n• Meta de diurese: > 200-300 mL/h\n• Bicarbonato de sódio: manter pH urinário > 6,5\n• Monitorizar K+ de hora em hora\n• Gluconato de cálcio 10% 10 mL IV se hipercalemia com alteração ECG\n• Manitol 20% 1 g/kg\n• Hemodiálise se K+ > 6,5 ou acidose refratária"
       },
       {
             "id": "treatment",
@@ -524,7 +524,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Sindrome de Crush - Detalhado."
+            "content": "1. SF 0,9% 1000-1500 mL/h nas primeiras 6h\n2. NaHCO3 8,4% 100 mL em 500 mL SG5%\n3. Gluconato de cálcio 10% 10 mL IV se K+ > 6,0\n4. Insulina 10 UI + SG50% 100 mL se K+ > 6,5\n5. Manitol 20% 0,5-1 g/kg IV\n6. CPK, K+, Cr seriados 4/4h"
       },
       {
             "id": "followup",
@@ -557,7 +557,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Lesao por Explosao (Blast)."
+            "content": "Mecanismos: primário (onda de pressão → pulmão, ouvido, intestino), secundário (fragmentos), terciário (arremesso), quaternário (queimaduras)."
       },
       {
             "id": "def",
@@ -592,7 +592,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Lesao por Explosao (Blast)."
+            "content": "• Avaliação ABC com atenção a via aérea (queimadura inalatória)\n• Otoscopia: perfuração timpânica (marcador de exposição)\n• RX tórax: infiltrados bilaterais (blast lung)\n• Ventilação protetora se IOT: VC 6 mL/kg, PEEP baixa\n• FAST: perfuração intestinal pode ter apresentação tardia (6-48h)\n• Observação mínima 24h"
       },
       {
             "id": "treatment",
@@ -602,7 +602,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Lesao por Explosao (Blast)."
+            "content": "1. IOT com VC 6 mL/kg peso predito\n2. Dreno de tórax se pneumo/hemotórax\n3. Cefazolina 2g IV (feridas abertas)\n4. SAT + toxoide tetânico\n5. Cetamina 0,3 mg/kg IV (analgesia)"
       },
       {
             "id": "followup",
@@ -635,7 +635,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Trauma Ocular Penetrante."
+            "content": "Trauma ocular penetrante: laceração de espessura total da córnea e/ou esclera. Urgência oftalmológica. Não manipular o globo. Protetor ocular rígido (Fox shield)."
       },
       {
             "id": "def",
@@ -670,7 +670,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Trauma Ocular Penetrante."
+            "content": "• NÃO remover corpo estranho\n• Protetor ocular rígido (sem curativo compressivo)\n• Antibioticoterapia sistêmica: Ciprofloxacino 500 mg VO 12/12h\n• Profilaxia antitetânica\n• TC de órbita (sem RNM se corpo estranho metálico)\n• Cirurgia: reparo primário em < 24h\n• Antibiótico intravítreo se endoftalmite"
       },
       {
             "id": "treatment",
@@ -680,7 +680,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Trauma Ocular Penetrante."
+            "content": "1. Protetor ocular rígido (Fox shield)\n2. Ciprofloxacino 500 mg VO 12/12h\n3. Ondansetrona 4 mg IV (evitar vômitos — aumentam PIO)\n4. SAT 250 UI + toxoide tetânico\n5. Encaminhamento oftalmológico URGENTE\n6. NÃO usar colírios tópicos antes da avaliação"
       },
       {
             "id": "followup",
@@ -713,7 +713,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Amputacao - Cuidados do Coto."
+            "content": "Amputação traumática: reimplante indicado em polegar, múltiplos dedos, mão, punho, criança. Contraindicado: esmagamento grave, tempo > 6h (quente) ou > 12h (frio)."
       },
       {
             "id": "def",
@@ -748,7 +748,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Amputacao - Cuidados do Coto."
+            "content": "• Controle de sangramento: compressão direta (não garroteamento se possível)\n• Membro amputado: envolver em gaze úmida com SF → saco plástico → gelo (não congelar)\n• Tempo de isquemia quente: < 6h (dedo), < 12h (membro proximal)\n• Antibioticoprofilaxia: Cefazolina 2g IV\n• SAT + toxoide tetânico\n• Encaminhar para centro de microcirurgia"
       },
       {
             "id": "treatment",
@@ -758,7 +758,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Amputacao - Cuidados do Coto."
+            "content": "1. Cefazolina 2g IV → 1g 8/8h\n2. SAT 250 UI IM + toxoide tetânico\n3. Heparina 5000 UI SC 12/12h (pós-reimplante)\n4. AAS 100 mg/dia (pós-reimplante)\n5. Cuidados com coto: curativo compressivo, elevação"
       },
       {
             "id": "followup",
@@ -791,7 +791,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Empalamento."
+            "content": "Empalamento: objeto penetrante retido no corpo. NÃO remover no pré-hospitalar. Remoção apenas em centro cirúrgico com controle vascular."
       },
       {
             "id": "def",
@@ -826,7 +826,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Empalamento."
+            "content": "• Estabilizar o objeto (curativo volumoso ao redor)\n• NÃO remover o objeto (tampona sangramento)\n• TC com reconstrução 3D: trajeto e estruturas envolvidas\n• Centro cirúrgico: remoção sob visão direta com cirurgião vascular disponível\n• Se objeto longo: cortar para facilitar transporte (sem tração)\n• Antibioticoprofilaxia ampla"
       },
       {
             "id": "treatment",
@@ -836,7 +836,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Empalamento."
+            "content": "1. Cefazolina 2g IV + Metronidazol 500 mg IV\n2. SAT 250 UI IM + toxoide tetânico\n3. Tipagem + reserva de 4-6 UCH\n4. TC com reconstrução 3D\n5. Analgesia: Cetamina 0,3 mg/kg IV ou Morfina 0,1 mg/kg IV"
       },
       {
             "id": "followup",
@@ -869,7 +869,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Ferimento por Arma de Fogo."
+            "content": "FAF causam lesão por cavitação temporária e permanente. Balística: baixa velocidade (<350 m/s = pistola) vs. alta velocidade (>600 m/s = fuzil). Alta velocidade = maior destruição tissular."
       },
       {
             "id": "def",
@@ -904,7 +904,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Ferimento por Arma de Fogo."
+            "content": "• ABC do trauma\n• Orifícios de entrada e saída: documentar todos\n• RX: trajeto de projétil + fragmentos\n• Abdome: laparotomia se penetrou peritônio (controverso: seletivo em flancos)\n• Tórax: drenagem torácica → toracotomia se > 1500 mL imediato ou > 200 mL/h\n• Pescoço: zona I/III = angioTC; zona II = exploração ou angioTC\n• Fasciotomia se síndrome compartimental"
       },
       {
             "id": "treatment",
@@ -914,7 +914,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Ferimento por Arma de Fogo."
+            "content": "1. Cefazolina 2g IV (profilaxia)\n2. SAT + toxoide tetânico\n3. Ácido tranexâmico 1g IV se < 3h\n4. Hemograma + amilase seriados 6/6h (se abdominal)\n5. TC com triplo contraste (abdome)\n6. Dreno de tórax 28-32 Fr (se hemopneumotórax)"
       },
       {
             "id": "followup",
@@ -947,7 +947,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Ferimento por Arma Branca."
+            "content": "Trauma penetrante por FAB. Tendência atual: exploração seletiva em abdome anterior."
       },
       {
             "id": "def",
@@ -982,7 +982,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Ferimento por Arma Branca."
+            "content": "• Hemotórax/pneumotórax: drenagem torácica\n• Abdome anterior sem evisceração/peritonite: TC + observação 24h\n• Laparotomia: peritonite, evisceração, instabilidade, queda Hb\n• Toracoabdominal: laparoscopia/toracoscopia para avaliar diafragma\n• Zona II cervical: exploração vs. AngioTC"
       },
       {
             "id": "treatment",
@@ -992,7 +992,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Ferimento por Arma Branca."
+            "content": "1. Cefazolina 2g IV\n2. SAT 250 UI IM + toxoide tetânico\n3. Hemograma + amilase seriados 6/6h\n4. TC abdome com triplo contraste se estável\n5. Observação com exame físico seriado 6/6h por 24h"
       },
       {
             "id": "followup",
@@ -1025,7 +1025,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Trauma em Gestante."
+            "content": "Descolamento prematório de placenta é a principal causa de morte fetal. Atender a mãe primeiro. DLE após 20 semanas. Cesárea perimortem em 4 min de PCR."
       },
       {
             "id": "def",
@@ -1060,7 +1060,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Trauma em Gestante."
+            "content": "• ABC materno prioritário\n• DLE 15-30° após 20 sem\n• Anti-D (Rh-) até 72h do trauma\n• Cardiotocografia: > 4h de monitorização\n• Teste de Kleihauer-Betke\n• Cesárea perimortem: iniciar em 4 min de PCR, feto fora em 5 min"
       },
       {
             "id": "treatment",
@@ -1070,7 +1070,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Trauma em Gestante."
+            "content": "1. Anti-D 300 mcg IM (se Rh negativo)\n2. Sulfato de magnésio 4-6g IV se eclâmpsia\n3. Betametasona 12 mg IM (24-34 sem)\n4. Monitorização CTG contínua mínimo 4h"
       },
       {
             "id": "followup",
@@ -1103,7 +1103,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Trauma Pediatrico - ATLS."
+            "content": "ATLS pediátrico: diferenças anatômicas (cabeça proporcionalmente maior, vísceras menos protegidas, hipotermia mais rápida). Reposição volêmica: 20 mL/kg de cristaloide."
       },
       {
             "id": "def",
@@ -1138,7 +1138,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Trauma Pediatrico - ATLS."
+            "content": "• Via aérea: tamanho do tubo = (idade/4) + 3,5 (com cuff)\n• Acesso IO se falha venosa em 90 segundos\n• Bolus: SF 0,9% 20 mL/kg → repetir até 3x → sangue 10 mL/kg\n• FAST + TC (sedação para TC)\n• Manta térmica: crianças perdem calor rapidamente\n• Maus-tratos: sempre considerar (padrão de lesão inconsistente)"
       },
       {
             "id": "treatment",
@@ -1148,7 +1148,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Trauma Pediatrico - ATLS."
+            "content": "1. SF 0,9% 20 mL/kg bolus IV/IO\n2. CH 10 mL/kg se choque refratário\n3. Fentanil 1-2 mcg/kg IV (analgesia)\n4. Succinilcolina 2 mg/kg (ISR em criança < 2 anos)\n5. Aquecimento ativo (Bair Hugger, fluidos aquecidos)"
       },
       {
             "id": "followup",
@@ -1181,7 +1181,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Atendimento Pre-Hospitalar."
+            "content": "APH: segurança da cena → triagem → estabilização → transporte. Tempo-cena ideal < 10 min (trauma). Golden hour. Conceito de scoop and run vs. stay and play."
       },
       {
             "id": "def",
@@ -1216,7 +1216,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Atendimento Pre-Hospitalar."
+            "content": "• xABCDE pré-hospitalar\n• Hemorragia exsanguinante: torniquete ANTES de via aérea\n• Via aérea: jaw-thrust (trauma cervical), aspiração, SGA\n• Imobilização cervical: colar cervical + prancha\n• Acesso venoso: 2 acessos calibrosos (14-16G)\n• Comunicação com regulação: METHANE (incidente com múltiplas vítimas)\n• Transporte para centro de trauma"
       },
       {
             "id": "treatment",
@@ -1226,7 +1226,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Atendimento Pre-Hospitalar."
+            "content": "1. Torniquete se hemorragia de extremidade\n2. Ácido tranexâmico 1g IV (se disponível no APH)\n3. SF 0,9% 250 mL em bolus (reposição restritiva)\n4. Colar cervical + prancha rígida\n5. Curativo de 3 pontos (pneumotórax aberto)"
       },
       {
             "id": "followup",
@@ -1259,7 +1259,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Triagem Militar (TCCC)."
+            "content": "TCCC (Tactical Combat Casualty Care): atendimento em 3 fases — Care Under Fire, Tactical Field Care, TACEVAC. Torniquete é prioridade."
       },
       {
             "id": "def",
@@ -1294,7 +1294,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Triagem Militar (TCCC)."
+            "content": "• Care Under Fire: torniquete + extração\n• Tactical Field Care: MARCH (Massive hemorrhage, Airway, Respiration, Circulation, Hypothermia)\n• Torniquete: alto e apertado\n• Via aérea: cricotireoidostomia se necessário\n• Pneumotórax: agulha no 2º EIC ou selo torácico com válvula\n• Ácido tranexâmico 1g IV/IO\n• Manta térmica: prevenção de hipotermia"
       },
       {
             "id": "treatment",
@@ -1304,7 +1304,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Triagem Militar (TCCC)."
+            "content": "1. Torniquete (CAT/SOFTT-W)\n2. Ácido tranexâmico 1g IV/IO\n3. Cetamina 50-100 mg IM (analgesia de campo)\n4. Agulha de descompressão 14G, 8 cm (2º EIC LMC)\n5. Selo torácico com válvula unidirecional\n6. Manta aluminizada + aquecimento"
       },
       {
             "id": "followup",
@@ -1337,7 +1337,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Trauma por Esmagamento em Edificacao."
+            "content": "Trauma por esmagamento em edificações colapsadas. Risco principal: síndrome de esmagamento (crush syndrome) na extricação. Iniciar hidratação ANTES de liberar o membro."
       },
       {
             "id": "def",
@@ -1372,7 +1372,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Trauma por Esmagamento em Edificacao."
+            "content": "• Acesso IV ANTES da liberação do membro comprimido\n• SF 0,9% 1-2 L/h antes da extricação\n• Monitorizar ECG: hipercalemia pode causar PCR na reperfusão\n• Bicarbonato de sódio profilático\n• Tourniquet proximal se não for possível hidratar antes\n• Fasciotomia precoce se síndrome compartimental"
       },
       {
             "id": "treatment",
@@ -1382,7 +1382,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Trauma por Esmagamento em Edificacao."
+            "content": "1. SF 0,9% 1-2 L/h (iniciar ANTES da extricação)\n2. NaHCO3 50 mEq em 1L SF\n3. Gluconato de cálcio 10% 10 mL IV (profilático)\n4. ECG contínuo durante extricação\n5. Tourniquete disponível\n6. Cetamina 1-2 mg/kg IM (analgesia + sedação)"
       },
       {
             "id": "followup",
@@ -1415,7 +1415,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Hipotermia Traumatica."
+            "content": "Componente da tríade letal (hipotermia + acidose + coagulopatia). T < 36°C define hipotermia no trauma."
       },
       {
             "id": "def",
@@ -1450,7 +1450,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Hipotermia Traumatica."
+            "content": "• Classificação: leve (36-34°C), moderada (34-32°C), grave (< 32°C)\n• Reaquecimento passivo: retirar roupas úmidas, cobertores\n• Ativo externo: Bair Hugger, fluidos aquecidos a 40°C\n• Ativo interno: lavagem peritoneal/pleural com SF aquecido (grave)\n• ECMO: hipotermia grave com instabilidade\n• Drogas e desfibrilação ineficazes se T < 30°C"
       },
       {
             "id": "treatment",
@@ -1460,7 +1460,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Hipotermia Traumatica."
+            "content": "1. SF 0,9% aquecido a 40°C IV\n2. Manta térmica de ar forçado\n3. Ringer Lactato aquecido para lavagem cavitária\n4. Monitorização cardíaca contínua\n5. Gasometria com correção para temperatura\n6. PFC + Crioprecipitado se coagulopatia"
       },
       {
             "id": "followup",
@@ -1493,7 +1493,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Coagulopatia Traumatica."
+            "content": "Coagulopatia induzida por trauma (TIC): presente em 25-35% dos traumas graves na admissão. Ativação de proteína C, hiperfibrinólise, consumo de fatores."
       },
       {
             "id": "def",
@@ -1528,7 +1528,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Coagulopatia Traumatica."
+            "content": "• Protocolo de Transfusão Maciça: CH:PFC:PLQ 1:1:1\n• Ácido tranexâmico 1g IV em < 3h (CRASH-2)\n• Fibrinogênio-alvo > 1,5 g/L\n• TEG/ROTEM: guiar reposição\n• Cálcio ionizado > 1,1 mmol/L\n• Manter T > 36°C, pH > 7,2\n• Evitar cristaloide excessivo"
       },
       {
             "id": "treatment",
@@ -1538,7 +1538,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Coagulopatia Traumatica."
+            "content": "1. Ácido tranexâmico 1g IV em 10 min → 1g em 8h\n2. CH:PFC:PLQ 1:1:1\n3. Crioprecipitado 10 U se Fibrinogênio < 1,5\n4. Gluconato de cálcio 10% 10 mL a cada 4 UCH\n5. CCP 25 UI/kg se ACO\n6. Manter T > 36°C com Bair Hugger"
       },
       {
             "id": "followup",
