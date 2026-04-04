@@ -11,7 +11,7 @@ export const sepsisFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Sepse Neonatal Tardia."
+            "content": "A sepse neonatal tardia ocorre após 72h de vida, geralmente associada a dispositivos invasivos (cateter venoso central, TOT) e internação prolongada em UTI neonatal. Patógenos hospitalares predominam: Staphylococcus coagulase-negativo, S. aureus, Enterococcus, Candida e Gram-negativos MR. Mortalidade 10-20% em RNPT. Diretriz: SBP 2022, NeoSepsis."
       },
       {
             "id": "def",
@@ -36,7 +36,7 @@ export const sepsisFullProtocols7: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Sepse Neonatal Tardia."
+            "content": "RN com instabilidade térmica, apneia, letargia, intolerância alimentar, distensão abdominal. Lab: leucocitose ou leucopenia, relação I/T > 0,2, PCR > 10mg/L, procalcitonina > 2ng/mL. Hemocultura (padrão-ouro). Principais agentes: S. coagulase-negativo, S. aureus, Enterococcus, Candida, Gram-negativos MR."
       },
       {
             "id": "differential",
@@ -46,7 +46,7 @@ export const sepsisFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Sepse Neonatal Tardia."
+            "content": "1. Hemoculturas (2 amostras de sítios diferentes) antes de ATB\n2. ATB empírico: Vancomicina 15mg/kg IV 12/12h + Meropenem 20mg/kg IV 8/8h\n3. Considerar antifúngico (Anfotericina B) se: < 1500g, NPT, ATB > 7 dias\n4. Suporte hemodinâmico: SF 10-20mL/kg em 30min (máx 60mL/kg na 1ª hora)\n5. Dopamina 5-20 mcg/kg/min se refratário a volume\n6. Hidrocortisona 1mg/kg IV se choque refratário a catecolaminas"
       },
       {
             "id": "treatment",
@@ -56,7 +56,7 @@ export const sepsisFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Sepse Neonatal Tardia."
+            "content": "1. Vancomicina 15mg/kg IV em 1h 12/12h\n2. Meropenem 20mg/kg IV em 30min 8/8h\n3. SF 0,9% 10mL/kg IV em 30min (repetir até 60mL/kg SN)\n4. Dopamina 5-20 mcg/kg/min IV BIC (se refratário a volume)\n5. Hemoculturas, PCR, procalcitonina, hemograma seriados\n6. Glicemia capilar 4/4h (meta 50-120 mg/dL)\n7. Anfotericina B lipossomal 3-5mg/kg/dia IV (se candidemia suspeitada)"
       },
       {
             "id": "followup",
@@ -323,7 +323,7 @@ export const sepsisFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Sepse Foco Urinario."
+            "content": "A sepse de foco urinário é uma das causas mais comuns de sepse em adultos, especialmente em mulheres, idosos, diabéticos e portadores de cateter vesical. O foco urinário geralmente tem melhor prognóstico comparado a outros focos, exceto quando há obstrução. Diretriz: SSC 2021, AUA/IDSA."
       },
       {
             "id": "def",
@@ -348,7 +348,7 @@ export const sepsisFullProtocols7: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Sepse Foco Urinario."
+            "content": "Sepse (SOFA ≥ 2) + foco urinário. Urocultura > 100.000 UFC/mL. EAS: leucocitúria, nitrito positivo, bacteriúria. USG renal: hidronefrose, abscesso perinefrético. TC se complicação suspeitada. Fatores de risco: litíase, DM, bexiga neurogênica, cateter vesical."
       },
       {
             "id": "differential",
@@ -358,7 +358,7 @@ export const sepsisFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Sepse Foco Urinario."
+            "content": "1. Hemoculturas + urocultura ANTES de ATB\n2. ATB empírico: Ceftriaxona 1g IV 12/12h OU Piperacilina-tazobactam 4,5g IV 8/8h\n3. Se risco de MDR: Meropenem 1g IV 8/8h\n4. Se obstrução (hidronefrose): nefrostomia ou cateter duplo J de urgência\n5. Ressuscitação volêmica: SF 30mL/kg nas primeiras 3h\n6. Noradrenalina se PAM < 65 após fluidos"
       },
       {
             "id": "treatment",
@@ -368,7 +368,7 @@ export const sepsisFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Sepse Foco Urinario."
+            "content": "1. Ceftriaxona 1g IV 12/12h (ou Pip-tazo 4,5g IV 8/8h)\n2. SF 0,9% 30mL/kg IV nas primeiras 3h\n3. Noradrenalina 0,1-2 mcg/kg/min se PAM < 65 após volume\n4. Urocultura + hemoculturas 2 amostras\n5. USG renal (descartar obstrução)\n6. Lactato seriado (meta clearance > 10%/h)\n7. Sonda vesical (monitorar diurese — meta > 0,5mL/kg/h)"
       },
       {
             "id": "followup",
@@ -635,7 +635,7 @@ export const sepsisFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Monitorizacao Hemodinamica na Sepse."
+            "content": "A monitorização hemodinâmica na sepse evoluiu significativamente. As metas estáticas (PVC, SvO2) deram lugar à avaliação dinâmica de responsividade a fluidos. A ecografia point-of-care tornou-se ferramenta essencial. O objetivo é otimizar perfusão sem sobrecarga hídrica. Diretriz: SSC 2021."
       },
       {
             "id": "def",
@@ -660,7 +660,7 @@ export const sepsisFullProtocols7: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Monitorizacao Hemodinamica na Sepse."
+            "content": "Responsividade a fluidos: PPV > 13% (VM com VT > 8mL/kg), variação da VCI > 18% (respiração espontânea), leg raising test (aumento DC > 10% = responsivo). Metas SSC 2021: PAM ≥ 65, lactato normalizing, diurese > 0,5 mL/kg/h."
       },
       {
             "id": "differential",
@@ -670,7 +670,7 @@ export const sepsisFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Monitorizacao Hemodinamica na Sepse."
+            "content": "Escalonamento de monitorização:\n1. Básico: PA, FC, SpO2, diurese, lactato seriado\n2. Intermediário: PVC, PPV/SVV (se VM), ecografia à beira-leito\n3. Avançado: Swan-Ganz, PiCCO, monitor de DC não invasivo\n4. Ecografia point-of-care: VCI (colapsibilidade), função cardíaca\n5. Metas: PAM ≥ 65, lactato em queda, diurese > 0,5 mL/kg/h"
       },
       {
             "id": "treatment",
@@ -680,7 +680,7 @@ export const sepsisFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Monitorizacao Hemodinamica na Sepse."
+            "content": "1. PAI (pressão arterial invasiva) — acesso arterial radial\n2. Cateter venoso central (PVC contínua)\n3. Gasometria arterial + venosa central 6/6h\n4. Lactato sérico 2/2h até normalizar\n5. ECO point-of-care à beira-leito (VCI, função VE/VD)\n6. Balanço hídrico rigoroso (12/12h)\n7. Diurese horária (meta > 0,5 mL/kg/h)"
       },
       {
             "id": "followup",
@@ -869,7 +869,7 @@ export const sepsisFullProtocols7: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Desmame de Vasopressores."
+            "content": "O desmame de vasopressores na sepse é etapa crítica que deve ser realizada de forma gradual e sistematizada. A retirada precoce pode causar hipotensão recorrente; a manutenção desnecessária aumenta risco de isquemia periférica e arritmias. Diretriz: SSC 2021."
       },
       {
             "id": "def",
@@ -894,7 +894,7 @@ export const sepsisFullProtocols7: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Desmame de Vasopressores."
+            "content": "Critérios para iniciar desmame: PAM ≥ 65 por 1-2h sem aumento de dose, lactato em queda ou normal, diurese adequada, sem novas disfunções orgânicas, foco infeccioso controlado. Falha: hipotensão recorrente (PAM < 60) ou reintrodução dentro de 4h."
       },
       {
             "id": "differential",
@@ -904,7 +904,7 @@ export const sepsisFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Desmame de Vasopressores."
+            "content": "1. Desmame GRADUAL (10-15% da dose a cada 15-30min)\n2. Ordem de desmame: Vasopressina → Noradrenalina (último a retirar)\n3. Se 2+ vasopressores: reduzir adrenalina/vasopressina primeiro\n4. Pré-requisitos: lactato em queda, PAM estável ≥ 65 por > 1h\n5. Se hipotensão no desmame: retornar à dose anterior, tentar em 1-2h\n6. Hidrocortisona (se choque refratário): facilita desmame"
       },
       {
             "id": "treatment",
@@ -914,7 +914,7 @@ export const sepsisFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Desmame de Vasopressores."
+            "content": "1. Noradrenalina: reduzir 0,02-0,05 mcg/kg/min a cada 15-30min\n2. Vasopressina (se em uso): desmamar primeiro (0,01 U/min a cada 15min)\n3. Monitorar PAM continuamente durante desmame\n4. Hidrocortisona 50mg IV 6/6h (se desmame difícil)\n5. Lactato pré e pós-desmame\n6. Manter acesso venoso central por 24h após retirada"
       },
       {
             "id": "followup",

@@ -11,12 +11,12 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Angina de Prinzmetal."
+            "content": "A angina de Prinzmetal (vasoespástica) resulta de espasmo coronariano transitório, causando isquemia sem obstrução fixa. Prevalência maior em tabagistas, uso de cocaína e mulheres jovens. Crises predominam no repouso/madrugada com supra-ST transitório. Diretriz: AHA/ACC 2014, ESC 2019."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao de Angina de Prinzmetal."
+            "content": "Angina causada por vasoespasmo coronariano focal ou difuso, com supradesnivelamento transitório de ST ao ECG. Diferencia-se da angina estável por ocorrer em repouso e responder a nitratos/bloqueadores de canal de cálcio, e não a betabloqueadores."
       },
       {
             "id": "screening",
@@ -36,7 +36,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Angina de Prinzmetal."
+            "content": "ECG na crise: supradesnivelamento de ST transitório (resolve com nitrato). Holter 24h: episódios de supra-ST. Cateterismo: coronárias normais ou lesão não obstrutiva + teste provocativo com ergonovina/acetilcolina (espasmo > 90%). Troponina geralmente normal (pode elevar se espasmo prolongado)."
       },
       {
             "id": "differential",
@@ -46,17 +46,17 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Angina de Prinzmetal."
+            "content": "1. Nitrato sublingual 5mg (repetir até 3x a cada 5min)\n2. Diltiazem 60mg VO 8/8h ou Anlodipino 5-10mg/dia\n3. Nitrato de longa ação: Mononitrato de isossorbida 20-40mg 12/12h\n4. EVITAR betabloqueadores (podem piorar vasoespasmo)\n5. AAS 100mg/dia se aterosclerose associada\n6. Cateterismo se dúvida diagnóstica ou refratário"
       },
       {
             "id": "treatment",
             "title": "Tratamento",
-            "content": "Tratamento de Angina de Prinzmetal."
+            "content": "Manutenção: BCC (anlodipino 5-10mg/dia ou diltiazem 120-360mg/dia) por tempo indeterminado. Nitrato de longa ação como adjuvante. Refratário: associar 2 BCC de classes diferentes. Nicorandil 10-20mg 12/12h (ativador de canal de K). Stent apenas se lesão obstrutiva > 70% concomitante. Cessar tabagismo e cocaína."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Angina de Prinzmetal."
+            "content": "1. Mononitrato de isossorbida 20mg VO 12/12h\n2. Anlodipino 5mg VO 1x/dia\n3. Nitroglicerina SL 0,4mg SN (máx 3 doses)\n4. AAS 100mg VO 1x/dia (se aterosclerose)\n5. Cessar tabagismo\n6. ECG seriado + monitorização contínua na crise"
       },
       {
             "id": "followup",
@@ -89,7 +89,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Insuficiencia Aortica Aguda."
+            "content": "A insuficiência aórtica aguda é emergência cardiovascular com alta mortalidade sem intervenção cirúrgica. Causas: endocardite infecciosa, dissecção aórtica tipo A, trauma torácico. Diferente da IAo crônica, o VE não tem tempo para dilatar e adaptar-se, levando a edema pulmonar agudo e choque. Diretriz: AHA/ACC 2020."
       },
       {
             "id": "def",
@@ -114,7 +114,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Insuficiencia Aortica Aguda."
+            "content": "ECO TT/TE: jato regurgitante holodiastólico, fechamento precoce da valva mitral (sinal de gravidade), flutter do folheto mitral anterior. Radiografia: congestão pulmonar SEM cardiomegalia (aguda). Cateterismo: pressão diastólica final do VE elevada, equalização de pressões."
       },
       {
             "id": "differential",
@@ -124,7 +124,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Insuficiencia Aortica Aguda."
+            "content": "EMERGÊNCIA CIRÚRGICA!\n1. Vasodilatador IV: Nitroprussiato 0,3-5 mcg/kg/min (reduzir pós-carga)\n2. Dobutamina 5-20 mcg/kg/min se baixo débito\n3. EVITAR betabloqueadores (impedem taquicardia compensatória)\n4. EVITAR BIA (contraindicado na IAo)\n5. Cirurgia de emergência: troca valvar aórtica\n6. ATB empírico se endocardite suspeita"
       },
       {
             "id": "treatment",
@@ -134,7 +134,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Insuficiencia Aortica Aguda."
+            "content": "1. Nitroprussiato 50mg + SG5% 250mL IV BIC 0,3-5 mcg/kg/min\n2. Dobutamina 250mg + SG5% 250mL IV BIC 5-20 mcg/kg/min SN\n3. Solicitar ecocardiograma transesofágico urgente\n4. Hemoculturas 3 amostras (se febre)\n5. Interconsulta cirurgia cardíaca URGENTE\n6. Monitorização invasiva (PAI + Swan-Ganz)"
       },
       {
             "id": "followup",
@@ -323,7 +323,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Sindrome de QT Longo."
+            "content": "A síndrome do QT longo (SQTL) é canalalopatia que predispõe a arritmias ventriculares malignas, especialmente Torsades de Pointes (TdP). Pode ser congênita (LQT1-15) ou adquirida (drogas, distúrbios eletrolíticos). QTc > 500ms = alto risco de morte súbita. Diretriz: HRS/EHRA 2022."
       },
       {
             "id": "def",
@@ -348,7 +348,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Sindrome de QT Longo."
+            "content": "ECG: QTc > 500ms (Bazett: QT/√RR). Onda T alternante, onda U proeminente. TdP: taquicardia polimórfica com QRS girando ao redor da linha de base. Genético: LQT1 (exercício), LQT2 (estímulo auditivo), LQT3 (repouso/sono). Score de Schwartz ≥ 3,5 = alta probabilidade."
       },
       {
             "id": "differential",
@@ -358,7 +358,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Sindrome de QT Longo."
+            "content": "EMERGÊNCIA se Torsades de Pointes (TdP):\n1. Sulfato de Magnésio 2g IV em 2min (1ª linha para TdP)\n2. Isoproterenol 2-10 mcg/min IV (aumenta FC, encurta QT)\n3. Marcapasso temporário transvenoso (overdrive pacing FC 90-110)\n4. SUSPENDER TODA droga que prolonga QT\n5. Corrigir K > 4,5 e Mg > 2,0\n6. Desfibrilação se TdP sustentada com instabilidade"
       },
       {
             "id": "treatment",
@@ -368,7 +368,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Sindrome de QT Longo."
+            "content": "1. MgSO4 50% 4mL (2g) + SF 100mL IV em 2-5min → manutenção 1-2g/h\n2. KCl 19,1% — manter K > 4,5 mEq/L\n3. Suspender QTc-prolongadores (amiodarona, haloperidol, ondansetrona, macrolídeos)\n4. Monitorização contínua com QTc seriado\n5. Se congênito: Propranolol 40-80mg 8/8h (exceto LQT3)\n6. Avaliar CDI se QTc > 500ms + síncope"
       },
       {
             "id": "followup",
@@ -635,7 +635,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Insuficiencia Cardiaca Direita."
+            "content": "A insuficiência cardíaca direita isolada ou predominante é menos comum que a esquerda, mas pode ser devastadora. Causas: TEP maciço, IAM de VD, HAP, SDRA com ventilação mecânica agressiva. O VD é sensível a aumento de pós-carga e intolerante a hipovolemia. Diretriz: ESC 2021, AHA 2022."
       },
       {
             "id": "def",
@@ -660,7 +660,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Insuficiencia Cardiaca Direita."
+            "content": "ECO: dilatação VD, TAPSE < 17mm, achatamento septal (sinal de D). BNP/NT-proBNP elevado. ECG: sobrecarga direita (P pulmonale, desvio eixo D, BRD). TC angio se suspeita TEP. Cateterismo direito: PAPm > 25mmHg, PCP normal (HAP pré-capilar)."
       },
       {
             "id": "differential",
@@ -670,7 +670,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Insuficiencia Cardiaca Direita."
+            "content": "1. Tratar causa base (TEP, SDRA, IAM VD)\n2. Volume CAUTELOSO: SF 250mL em desafio (PVC-guiado)\n3. Dobutamina 5-15 mcg/kg/min (inotrópico de escolha)\n4. Milrinona 0,375-0,75 mcg/kg/min (reduz RVP)\n5. Vasodilatador pulmonar: sildenafila, óxido nítrico inalatório\n6. EVITAR ventilação com alta PEEP (aumenta pós-carga VD)\n7. Manter ritmo sinusal (FA piora muito ICD)"
       },
       {
             "id": "treatment",
@@ -680,7 +680,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Insuficiencia Cardiaca Direita."
+            "content": "1. Dobutamina 250mg + SG5% 250mL IV BIC 5-15 mcg/kg/min\n2. Furosemida 20-40mg IV SN (com cautela — evitar hipovolemia)\n3. Sildenafila 20mg VO 8/8h (se HAP)\n4. Heparina profilática (enoxaparina 40mg SC 1x/dia)\n5. Monitorização: PVC, ecocardiograma seriado, BNP\n6. Restrição hídrica 1-1,5L/dia"
       },
       {
             "id": "followup",
@@ -713,7 +713,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Cor Pulmonale Agudo."
+            "content": "Cor pulmonale agudo é a disfunção aguda do ventrículo direito secundária a aumento súbito da resistência vascular pulmonar, mais frequentemente por TEP maciço. Alta mortalidade sem tratamento imediato. Outras causas: SDRA, pneumotórax hipertensivo, crise de HAP. Diretriz: ESC 2019 (TEP), ATLS."
       },
       {
             "id": "def",
@@ -738,7 +738,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Cor Pulmonale Agudo."
+            "content": "ECO à beira-leito: VD dilatado > VE, movimento paradoxal do septo, TAPSE < 17mm, McConnell sign (acinesia parede livre VD com base hipercinética). AngioTC: trombo em artéria pulmonar. BNP/troponina elevados (disfunção e lesão VD). ECG: S1Q3T3, BRD novo, taquicardia sinusal."
       },
       {
             "id": "differential",
@@ -748,7 +748,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Cor Pulmonale Agudo."
+            "content": "TRATAR A CAUSA (geralmente TEP maciço):\n1. Anticoagulação plena: Heparina bolus 80UI/kg + 18UI/kg/h\n2. Trombólise se instável: Alteplase 100mg IV em 2h\n3. Suporte hemodinâmico: Noradrenalina 0,1-2 mcg/kg/min\n4. Dobutamina 5-20 mcg/kg/min\n5. Oxigenoterapia (SpO2 > 92%)\n6. ECMO VA se refratário\n7. EVITAR volume excessivo (piora dilatação VD)"
       },
       {
             "id": "treatment",
@@ -758,7 +758,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Cor Pulmonale Agudo."
+            "content": "1. Heparina não fracionada 80UI/kg bolus → 18UI/kg/h BIC (TTPa 1,5-2,5x)\n2. Alteplase 100mg IV em 2h (se TEP maciço com choque)\n3. Noradrenalina 0,1-2 mcg/kg/min (meta PAM ≥ 65)\n4. Dobutamina 5-20 mcg/kg/min\n5. O2 cateter nasal/máscara (SpO2 > 92%)\n6. Monitorização invasiva (PAI + cateter central)"
       },
       {
             "id": "followup",
@@ -1103,7 +1103,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Pericardite Constritiva."
+            "content": "A pericardite constritiva resulta de espessamento e fibrose do pericárdio que restringe o enchimento diastólico de ambos os ventrículos. Causas: pós-cirúrgica, pós-radiação, TB (principal no Brasil), idiopática. Apresenta-se como IC direita predominante. Diretriz: ESC 2015."
       },
       {
             "id": "def",
@@ -1128,7 +1128,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Pericardite Constritiva."
+            "content": "ECO: espessamento pericárdico, variação respiratória exagerada dos fluxos mitral/tricúspide (> 25%), bounce septal. RM: pericárdio > 4mm, realce tardio. Cateterismo: dip-and-plateau (raiz quadrada), equalização de pressões diastólicas. Diferencial com restritiva: BNP baixo na constritiva."
       },
       {
             "id": "differential",
@@ -1138,7 +1138,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Pericardite Constritiva."
+            "content": "1. Diuréticos: Furosemida 40-80mg/dia + Espironolactona 25-50mg/dia\n2. Restrição de sódio e líquidos\n3. Anti-inflamatórios NÃO são eficazes (diferente de pericardite aguda)\n4. Tratamento definitivo: PERICARDIECTOMIA\n5. Cirurgia precoce melhora prognóstico (antes de caquexia cardíaca)\n6. Tratar causa base (TB: RIPE 6 meses)"
       },
       {
             "id": "treatment",
@@ -1148,7 +1148,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Pericardite Constritiva."
+            "content": "1. Furosemida 40mg VO 1-2x/dia\n2. Espironolactona 25mg VO 1x/dia\n3. Dieta hipossódica (< 2g Na/dia)\n4. Restrição hídrica 1,5L/dia\n5. ECO + RM cardíaca (espessamento pericárdico)\n6. Cateterismo direito (equalização de pressões diastólicas)\n7. Avaliar pericardiectomia com equipe de cirurgia cardíaca"
       },
       {
             "id": "followup",
