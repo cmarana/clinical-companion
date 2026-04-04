@@ -167,7 +167,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Prolapso Valvar Mitral."
+            "content": "Prolapso de valva mitral (PVM): válvula mixomatosa com deslocamento > 2 mm. Prevalência 2-3%. Maioria assintomática. Complicação: insuficiência mitral grave."
       },
       {
             "id": "def",
@@ -202,7 +202,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Prolapso Valvar Mitral."
+            "content": "• Click mesossistólico ± sopro telessistólico\n• Eco TT: prolapso > 2 mm, espessura > 5 mm\n• Sem regurgitação: reavaliação a cada 3-5 anos\n• IM grave: cirurgia (plastiagem mitral preferencial)\n• Profilaxia de endocardite: APENAS se prótese ou endocardite prévia"
       },
       {
             "id": "treatment",
@@ -212,7 +212,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Prolapso Valvar Mitral."
+            "content": "1. Propranolol 20-40 mg 12/12h (se palpitações)\n2. Eco TT anual se regurgitação mitral\n3. Encaminhar cirurgia se IM grave ou FEVE < 60%"
       },
       {
             "id": "followup",
@@ -245,7 +245,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Mixoma Atrial."
+            "content": "Tumor cardíaco primário mais comum (50%). 75% no AE. Tríade: obstrução, embolização sistêmica, sintomas constitucionais."
       },
       {
             "id": "def",
@@ -280,7 +280,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Mixoma Atrial."
+            "content": "• Eco TT/TE: massa pediculada no septo interatrial\n• RNM cardíaca\n• Cirurgia: ressecção com margem de septo\n• Síndrome de Carney: mixomas múltiplos/recorrentes"
       },
       {
             "id": "treatment",
@@ -290,7 +290,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Mixoma Atrial."
+            "content": "1. Heparina plena se embolia (ponte para cirurgia)\n2. NÃO usar trombolítico\n3. Cirurgia com CEC: ressecção + reconstrução septal\n4. Eco TT anual pós-ressecção (recidiva 1-3%)"
       },
       {
             "id": "followup",
@@ -401,7 +401,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Sindrome de QT Curto."
+            "content": "Síndrome do QT curto: intervalo QTc < 340 ms. Alto risco de morte súbita. Genético (canais de K+). Raro, mas letal."
       },
       {
             "id": "def",
@@ -436,7 +436,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Sindrome de QT Curto."
+            "content": "• ECG: QTc < 340 ms, ondas T apiculadas\n• Teste genético: KCNH2, KCNQ1, KCNJ2\n• CDI: indicação primária para prevenção de morte súbita\n• Quinidina: prolonga QT, pode ser alternativa ao CDI\n• Rastreio familiar obrigatório\n• Evitar: hipercalemia, digoxina"
       },
       {
             "id": "treatment",
@@ -446,7 +446,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Sindrome de QT Curto."
+            "content": "1. CDI: prevenção primária de morte súbita\n2. Quinidina 200-400 mg 8/8h (alternativa ao CDI)\n3. Evitar digoxina, hipercalemia\n4. ECG + Holter semestrais\n5. Avaliação genética familiar"
       },
       {
             "id": "followup",
@@ -479,7 +479,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Taquicardia Juncional."
+            "content": "Taquicardia juncional: ritmo originado na junção AV. FC 40-60 bpm (juncional acelerado > 60). Causas: intoxicação digitálica, pós-operatório cardíaco, miocardite."
       },
       {
             "id": "def",
@@ -514,7 +514,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Taquicardia Juncional."
+            "content": "• ECG: QRS estreito, ausência de onda P ou P retrógrada\n• Se intoxicação digitálica: suspender digital, anticorpo Fab (Digibind)\n• Taquicardia juncional não-paroxística: observação\n• Taquicardia juncional paroxística: manobra vagal → adenosina\n• Se refratário: ablação por cateter"
       },
       {
             "id": "treatment",
@@ -524,7 +524,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Taquicardia Juncional."
+            "content": "1. Se digitálica: suspender → Digibind 40 mg/frasco (dose conforme nível sérico)\n2. Adenosina 6 mg IV rápida → 12 mg se sem resposta\n3. Se instável: cardioversão sincronizada 50 J\n4. Amiodarona 150 mg IV se refratário"
       },
       {
             "id": "followup",
@@ -557,7 +557,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Ritmo Idioventricular."
+            "content": "Ritmo idioventricular acelerado (RIVA): FC 60-120 bpm, QRS largo. Comum na reperfusão miocárdica (bom sinal). Benigno, geralmente autolimitado."
       },
       {
             "id": "def",
@@ -592,7 +592,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Ritmo Idioventricular."
+            "content": "• ECG: QRS largo, FC 60-120 bpm, sem atividade atrial\n• Contexto de reperfusão (pós-fibrinolítico/ICP): benigno\n• NÃO tratar com antiarrítmicos (pode piorar)\n• Se instabilidade hemodinâmica (raro): atropina 0,5 mg IV\n• Monitorização contínua 24h\n• Diferenciar de TV (RIVA é mais lento)"
       },
       {
             "id": "treatment",
@@ -602,7 +602,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Ritmo Idioventricular."
+            "content": "1. Observação e monitorização (maioria resolve sozinho)\n2. Atropina 0,5 mg IV se bradicardia sintomática\n3. NÃO usar lidocaína ou amiodarona\n4. ECG seriado 6/6h\n5. Se pós-ICP: verificar fluxo TIMI"
       },
       {
             "id": "followup",
@@ -791,7 +791,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Contusao Miocardica."
+            "content": "Lesão cardíaca por trauma contuso torácico. VD mais afetado (posição anterior). Diagnóstico de exclusão."
       },
       {
             "id": "def",
@@ -826,7 +826,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Contusao Miocardica."
+            "content": "• ECG seriado: arritmias (FA, TV, BAV, BRD novo)\n• Troponina seriada 6/6h por 24h\n• Eco TT: disfunção segmentar de VD\n• Monitorização contínua 24-48h se ECG ou troponina alterados\n• Se ECG + troponina normais em 24h: baixo risco"
       },
       {
             "id": "treatment",
@@ -836,7 +836,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Contusao Miocardica."
+            "content": "1. Monitorização cardíaca contínua 24-48h\n2. Troponina I 0h, 6h, 12h, 24h\n3. Se TV: Amiodarona 150 mg IV em 10 min\n4. Se BAV: marcapasso transvenoso\n5. Eco TT nas primeiras 24h"
       },
       {
             "id": "followup",
@@ -869,7 +869,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Ruptura de Septo IV."
+            "content": "Complicação mecânica do IAM (0,2%). Ocorre 3-5 dias pós-IAM. Sopro holossistólico novo + choque cardiogênico. Mortalidade sem cirurgia > 90%."
       },
       {
             "id": "def",
@@ -904,7 +904,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Ruptura de Septo IV."
+            "content": "• Sopro novo + choque pós-IAM\n• Eco TT com Doppler: shunt E→D pelo septo\n• BIA como ponte para cirurgia\n• Cirurgia: correção com patch\n• ECMO se choque refratário"
       },
       {
             "id": "treatment",
@@ -914,7 +914,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Ruptura de Septo IV."
+            "content": "1. Dobutamina 5-15 mcg/kg/min\n2. Noradrenalina se PAS < 80 mmHg\n3. BIA (contrapulsação)\n4. Furosemida 40-80 mg IV\n5. Cirurgia cardíaca URGENTE"
       },
       {
             "id": "followup",
@@ -947,7 +947,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Ruptura de Musculo Papilar."
+            "content": "Complicação do IAM inferior (músculo papilar posteromedial). IM aguda grave. EAP fulminante. Mortalidade sem cirurgia 75% em 24h."
       },
       {
             "id": "def",
@@ -982,7 +982,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Ruptura de Musculo Papilar."
+            "content": "• Sopro sistólico novo + EAP pós-IAM\n• Eco TE: flail mitral leaflet\n• Estabilização: vasodilatador + BIA\n• Cirurgia EMERGENCIAL: troca valvar mitral"
       },
       {
             "id": "treatment",
@@ -992,7 +992,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Ruptura de Musculo Papilar."
+            "content": "1. Nitroprussiato 0,3-5 mcg/kg/min\n2. BIA\n3. Dobutamina 5-10 mcg/kg/min\n4. Furosemida 80-120 mg IV\n5. Cirurgia cardíaca de EMERGÊNCIA"
       },
       {
             "id": "followup",
@@ -1025,7 +1025,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Aneurisma Ventricular."
+            "content": "Aneurisma ventricular: complicação tardia do IAM transmural (2-4 semanas). Discinesia ou acinesia de parede com afinamento. Risco: trombo mural, arritmias, IC."
       },
       {
             "id": "def",
@@ -1060,7 +1060,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Aneurisma Ventricular."
+            "content": "• Eco TT: afinamento e discinesia da parede, trombo mural\n• RNM cardíaca: padrão de realce tardio transmural (fibrose)\n• Anticoagulação: se trombo mural (varfarina INR 2-3 por 3-6 meses)\n• IC: tratamento padrão (IECA + BB + diuréticos)\n• Cirurgia de Dor (ventriculoplastia): casos selecionados com IC refratária\n• CDI: se TV sustentada"
       },
       {
             "id": "treatment",
@@ -1070,7 +1070,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Aneurisma Ventricular."
+            "content": "1. Varfarina (INR 2-3) se trombo mural por 3-6 meses\n2. Enalapril 10-20 mg 12/12h\n3. Carvedilol 12,5-25 mg 12/12h\n4. Furosemida 40-80 mg/dia\n5. CDI se TV sustentada\n6. Eco TT de controle em 3 meses"
       },
       {
             "id": "followup",
@@ -1103,7 +1103,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "A pericardite constritiva resulta de espessamento e fibrose do pericárdio que restringe o enchimento diastólico de ambos os ventrículos. Causas: pós-cirúrgica, pós-radiação, TB (principal no Brasil), idiopática. Apresenta-se como IC direita predominante. Diretriz: ESC 2015."
+            "content": "Pericárdio espessado e rígido que restringe enchimento diastólico. Causas: pós-viral, TB, pós-cirúrgica. Diferencial com cardiomiopatia restritiva."
       },
       {
             "id": "def",
@@ -1138,7 +1138,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "1. Diuréticos: Furosemida 40-80mg/dia + Espironolactona 25-50mg/dia\n2. Restrição de sódio e líquidos\n3. Anti-inflamatórios NÃO são eficazes (diferente de pericardite aguda)\n4. Tratamento definitivo: PERICARDIECTOMIA\n5. Cirurgia precoce melhora prognóstico (antes de caquexia cardíaca)\n6. Tratar causa base (TB: RIPE 6 meses)"
+            "content": "• IC direita: ascite > edema MMII, Kussmaul\n• TC/RNM: espessamento pericárdico > 4 mm\n• Cateterismo: equalização de pressões diastólicas, dip-and-plateau\n• Tratamento definitivo: pericardiectomia\n• TB: RIPE por 6 meses antes"
       },
       {
             "id": "treatment",
@@ -1148,7 +1148,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "1. Furosemida 40mg VO 1-2x/dia\n2. Espironolactona 25mg VO 1x/dia\n3. Dieta hipossódica (< 2g Na/dia)\n4. Restrição hídrica 1,5L/dia\n5. ECO + RM cardíaca (espessamento pericárdico)\n6. Cateterismo direito (equalização de pressões diastólicas)\n7. Avaliar pericardiectomia com equipe de cirurgia cardíaca"
+            "content": "1. Furosemida 40 mg/dia VO\n2. Restrição de sódio < 2g/dia\n3. Se TB: RIPE\n4. Colchicina 0,5 mg 12/12h (pós-viral)\n5. Pericardiectomia: tratamento definitivo"
       },
       {
             "id": "followup",
@@ -1181,7 +1181,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Derrame Pericardico."
+            "content": "Acúmulo de líquido pericárdico. Transudativo (IC, hipotireoidismo) ou exsudativo (infeccioso, neoplásico). Tamponamento se acúmulo rápido."
       },
       {
             "id": "def",
@@ -1216,7 +1216,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Derrame Pericardico."
+            "content": "• Eco TT: quantificação\n• Sinais de tamponamento: colapso de AD/VD, variação respiratória\n• Pericardiocentese: se tamponamento ou derrame grande sintomático\n• Via subxifoidea guiada por eco\n• Janela pericárdica: derrames recorrentes"
       },
       {
             "id": "treatment",
@@ -1226,7 +1226,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Derrame Pericardico."
+            "content": "1. Pericardiocentese se tamponamento\n2. SF 0,9% 500-1000 mL IV rápido se tamponamento\n3. Ibuprofeno 600 mg 8/8h por 2 semanas (se pericardite)\n4. Colchicina 0,5 mg 12/12h por 3 meses\n5. Enviar líquido: citologia + ADA + cultura"
       },
       {
             "id": "followup",
@@ -1259,7 +1259,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Estenose Pulmonar."
+            "content": "Estenose pulmonar: obstrução ao fluxo de saída do VD. Congênita (valvar mais comum) ou adquirida (carcinoide). Sopro sistólico ejetivo em foco pulmonar."
       },
       {
             "id": "def",
@@ -1294,7 +1294,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Estenose Pulmonar."
+            "content": "• Eco TT: gradiente transvalvar\n• Leve (< 36 mmHg): observação\n• Moderada (36-64 mmHg): acompanhamento anual\n• Grave (> 64 mmHg) ou sintomática: valvoplastia por balão (1ª escolha)\n• Displásica (Noonan): pode necessitar cirurgia\n• ECG: desvio do eixo para direita, P pulmonale"
       },
       {
             "id": "treatment",
@@ -1304,7 +1304,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Estenose Pulmonar."
+            "content": "1. Valvoplastia por balão (tratamento de escolha se valvar)\n2. Propranolol em crises de hipóxia (Fallot)\n3. Eco TT anual se moderada\n4. Profilaxia de endocardite: NÃO indicada (exceto se prótese)\n5. Encaminhamento para hemodinâmica se grave"
       },
       {
             "id": "followup",
@@ -1337,7 +1337,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Coarctacao de Aorta."
+            "content": "Estreitamento da aorta distal à subclávia esquerda. Hipertensão em MMSS + hipotensão/pulsos fracos em MMII. Associação: valva aórtica bicúspide (50-80%), aneurisma de Willis."
       },
       {
             "id": "def",
@@ -1372,7 +1372,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Coarctacao de Aorta."
+            "content": "• Diferença de PA MMSS-MMII > 20 mmHg\n• Pulsos femorais fracos ou retardados\n• RX tórax: sinal do 3 invertido, erosão de costelas (Roesler)\n• AngioTC/angioRM: localização e extensão\n• Tratamento: stenting endovascular ou cirurgia (ressecção + anastomose)\n• RNM cerebral: rastreio de aneurismas intracranianos"
       },
       {
             "id": "treatment",
@@ -1382,7 +1382,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Coarctacao de Aorta."
+            "content": "1. Controle de HAS: IECA + BCC (MMSS)\n2. Atenolol 50-100 mg/dia\n3. AngioTC de aorta\n4. RNM cerebral (rastreio aneurisma)\n5. Stenting ou cirurgia conforme anatomia\n6. Profilaxia de endocardite se valva bicúspide associada"
       },
       {
             "id": "followup",
@@ -1415,7 +1415,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Sindrome de Leriche."
+            "content": "Oclusão aortoilíaca crônica. Tríade: claudicação MMII + impotência + ausência de pulsos femorais."
       },
       {
             "id": "def",
@@ -1450,7 +1450,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Sindrome de Leriche."
+            "content": "• ITB < 0,9\n• AngioTC: padrão-ouro para planejamento\n• Tratamento clínico: AAS + estatina + cilostazol + cessar tabagismo\n• Bypass aortobifemoral (padrão-ouro cirúrgico)\n• Stenting aortoilíaco (TASC A e B)"
       },
       {
             "id": "treatment",
@@ -1460,7 +1460,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Sindrome de Leriche."
+            "content": "1. AAS 100 mg/dia\n2. Atorvastatina 40-80 mg/dia\n3. Cilostazol 100 mg 12/12h\n4. Cessação tabágica\n5. Exercícios supervisionados"
       },
       {
             "id": "followup",
@@ -1493,7 +1493,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Protocolo para Tromboangiite Obliterante."
+            "content": "Tromboangiite obliterante (Doença de Buerger): vasculite segmentar de artérias e veias de médio e pequeno calibre. Homens jovens tabagistas (< 45 anos). Isquemia digital, úlceras, gangrena."
       },
       {
             "id": "def",
@@ -1528,7 +1528,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Tromboangiite Obliterante."
+            "content": "• Critérios de Shionoya: tabagista < 45 anos + isquemia de extremidades + ausência de fatores ateroscleróticos clássicos\n• Arteriografia: padrão de saca-rolhas (corkscrew) em colaterais\n• Cessação ABSOLUTA do tabaco (única medida que altera prognóstico)\n• Iloprost IV: vasodilatação na fase aguda\n• Simpatectomia: alívio de dor isquêmica refratária\n• Amputação: gangrena seca sem opção de revascularização"
       },
       {
             "id": "treatment",
@@ -1538,7 +1538,7 @@ export const cardioFullProtocols11: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Tromboangiite Obliterante."
+            "content": "1. Cessação tabágica OBRIGATÓRIA (incluir cannabis)\n2. Iloprost 0,5-2 ng/kg/min IV por 6h/dia por 21-28 dias\n3. AAS 100 mg/dia\n4. Cilostazol 100 mg 12/12h\n5. Analgesia: Gabapentina 300-1200 mg/dia\n6. Cuidados com feridas: desbridamento + curativo oclusivo"
       },
       {
             "id": "followup",
