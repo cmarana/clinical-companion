@@ -36,7 +36,7 @@ export const intoxicationFullProtocols5: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Exames para diagnostico de Intoxicacao por Cianeto."
+            "content": "Diagnóstico:\n• Fontes: combustão de plásticos/nylon/tecidos sintéticos, indústria (galvanoplastia, mineração), pesticidas (fumigantes), laboratórios\n• Quadro clínico bifásico: cefaleia, tontura, náusea → confusão, convulsão, coma, PCR\n• Achado clássico: pele vermelho-cereja (cianose tardia)\n• Odor de amêndoas amargas (40% da população não consegue detectar)\n• CHAVE diagnóstica: Lactato > 8 mmol/L + SvO2 elevada (célula não consome O2)\n• Gasometria: acidose metabólica com AG elevado\n• PaO2 normal com lactato muito elevado (paradoxo)\n• Co-intoxicação por CO: frequente em incêndios\n• Dosagem de cianeto sérico: > 0,5 mg/L tóxico, > 3 mg/L potencialmente fatal"
       },
       {
             "id": "differential",
@@ -46,7 +46,7 @@ export const intoxicationFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Intoxicacao por Cianeto."
+            "content": "Intoxicação por Escopolamina (Boa Noite Cinderela):\n1. Medidas de suporte: monitorização, acesso venoso\n2. Via aérea: proteger se rebaixamento (IOT se necessário)\n3. Antídoto - Fisostigmina:\n• 1-2 mg EV lento (em 5 min) - pode repetir a cada 20-30 min\n• Monitorização cardíaca contínua (risco de bradicardia, convulsão)\n• Indicação: agitação grave, delírio anticolinérgico, taquicardia sintomática\n• Contraindicação: QRS alargado, bloqueio cardíaco, asma\n4. Benzodiazepínico se agitação: Midazolam 5 mg IM/EV\n5. Resfriamento se hipertermia (>39°C): medidas físicas\n6. Sondagem vesical se retenção urinária\n7. Observação mínima: 12-24h\n8. Acionar polícia se suspeita de crime (violência sexual, roubo)\n9. Coleta toxicológica: sangue + urina para documentação forense"
       },
       {
             "id": "treatment",

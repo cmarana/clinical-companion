@@ -46,7 +46,7 @@ export const emergencyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "1. Retirar da agua com seguranca; 2. A-B-C (ventilacao e prioridade); 3. Imobilizacao cervical se trauma suspeito; 4. Monitorizar temperatura central; 5. Internar em UTI se qualquer sintoma respiratorio."
+            "content": "PCR pós-Afogamento - Particularidades:\n1. Iniciar ventilações PRIMEIRO (sequência A-B-C, não C-A-B)\n• 5 ventilações de resgate iniciais\n2. Hipotermia frequente: continuar RCP até reaquecimento (32-34°C)\n• Ninguém está morto até estar quente e morto\n3. NÃO tentar drenar água dos pulmões (ineficaz e atrasa RCP)\n4. IOT precoce: edema pulmonar, broncoespasmo, aspiração\n5. PEEP 5-10 cmH2O (manter recrutamento alveolar)\n6. Desfibrilação: se temp < 30°C, limitar a 3 tentativas até reaquecer\n7. Drogas: espaçar intervalos se temp < 30°C (metabolismo reduzido)\n8. ECMO: considerar se refratário e submersão < 60 min em água fria\n9. Reaquecimento ativo: fluidos aquecidos 42°C, lavagem pleural/peritoneal, ECMO\n10. Pós-ROSC: VM protetiva (VT 6 mL/kg, PEEP 8-10, FiO2 titulada SpO2 92-96%)"
       },
       {
             "id": "treatment",
@@ -56,7 +56,7 @@ export const emergencyFullProtocols5: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes para PCR pos-Afogamento."
+            "content": "Prescrições pós-PCR:\n• Sedação: Propofol 1-4 mg/kg/h + Fentanil 1-2 mcg/kg/h\n• Alternativa: Midazolam 0,05-0,2 mg/kg/h\n• Shivering no TTM: Cisatracúrio 1-3 mcg/kg/min ou Buspirone 30 mg SNG\n• Noradrenalina 8 mg/50 mL SF dose titulada para PAM ≥ 65 mmHg\n• Insulina Regular protocolo para glicemia 140-180 mg/dL\n• Omeprazol 40 mg EV 1x/dia (proteção gástrica)\n• Enoxaparina 40 mg SC 1x/dia (profilaxia TVP após 24h)\n• Levetiracetam 1000 mg EV 12/12h se crise convulsiva\n• Dieta: iniciar trófica enteral precoce (se hemodinâmica estável)"
       },
       {
             "id": "followup",
