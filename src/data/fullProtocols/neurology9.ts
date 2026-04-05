@@ -36,7 +36,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Hemorragia Epidural."
+            "content": "Diagnóstico:\n• Critérios de Caine (sensibilidade 85% - necessários 2 de 4):\n  1. Deficiência nutricional ou alcoolismo\n  2. Alteração oculomotora (nistagmo, oftalmoplegia do VI par)\n  3. Disfunção cerebelar (ataxia de marcha)\n  4. Alteração do estado mental (confusão, apatia)\n• RM: hipersinal T2/FLAIR bilateral em corpos mamilares, tálamo medial, região periaquedutal, tecto do IV ventrículo\n• Tiamina sérica < 70 nmol/L (resultado demora - tratar empiricamente)\n• Diagnóstico diferencial: intoxicação aguda, delirium tremens, encefalite, lesão de tronco\n• Mortalidade: 17% sem tratamento adequado\n• Fatores de risco: alcoolismo crônico, desnutrição, hiperemese, cirurgia bariátrica"
       },
       {
             "id": "differential",
@@ -46,7 +46,7 @@ export const neuroFullProtocols9: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "• ABC → IOT se GCS ≤ 8\n• TC de crânio urgente: hematoma biconvexo (lenticular)\n• Manitol 20% 1 g/kg IV se herniação iminente (anisocoria)\n• Craniotomia de emergência se hematoma > 30 mL ou espessura > 15 mm ou desvio de linha média > 5 mm\n• Monitorização PIC pós-operatória\n• Manter PPC > 60 mmHg"
+            "content": "Conduta na VPPB (Vertigem Posicional Paroxística Benigna):\n1. Canal posterior (80% dos casos) → Manobra de Epley:\n• Sentado com cabeça 45° para lado afetado → deitar com extensão cervical → manter 30s\n• Girar cabeça 90° para lado oposto → manter 30s\n• Girar corpo para decúbito lateral (nariz para baixo) → manter 30s → sentar\n• Taxa de sucesso: 80% na 1ª sessão, 95% em 3 sessões\n2. Canal lateral → Manobra de Lempert (BBQ roll): rotação de 360°\n3. NÃO usar supressores vestibulares de rotina (retardam compensação central)\n4. Meclizina 25 mg ou Dimenidrinato apenas se náusea intensa (máx 48-72h)\n5. Exercícios de Brandt-Daroff: prevenção de recorrência\n6. Recorrência: 15-20% no 1° ano; repetir manobra\n7. Refratário (> 3 sessões): considerar oclusão do canal posterior (raro)"
       },
       {
             "id": "treatment",

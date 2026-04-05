@@ -46,7 +46,7 @@ export const cardioFullProtocols10: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Conduta inicial:\n1. Coletar 3 pares de hemoculturas ANTES de iniciar antibiótico\n2. Solicitar ETT de urgência (ETE se prótese ou alta suspeita)\n3. Iniciar antibioticoterapia empírica após hemoculturas:\n\n• Valva nativa, aguda: Oxacilina 2g IV 4/4h + Gentamicina 3mg/kg/dia IV\n• Valva nativa, subaguda: Ampicilina 2g IV 4/4h + Gentamicina 3mg/kg/dia\n• Prótese valvar: Vancomicina 15-20mg/kg IV 12/12h + Gentamicina 3mg/kg/dia + Rifampicina 300mg VO 8/8h\n• Alérgico a penicilina: Vancomicina 15-20mg/kg IV 12/12h\n\n4. Avaliar necessidade de cirurgia precoce\n5. Avaliação odontológica\n6. Ecocardiograma seriado"
+            "content": "Conduta - SCA sem supra ST (AI/IAMSSST):\n1. Dupla antiagregação:\n• AAS 200 mg mastigar + Ticagrelor 180 mg ataque (ou Clopidogrel 300-600 mg)\n2. Anticoagulação:\n• Enoxaparina 1 mg/kg SC 12/12h ou HNF 60 UI/kg bolus + 12 UI/kg/h\n3. Anti-isquêmicos:\n• Metoprolol 25-50 mg VO (se FC > 70 e sem contraindicação)\n• Dinitrato de isossorbida 5 mg SL ou NTG EV se dor persistente\n4. Estatina: Atorvastatina 80 mg (alta potência)\n5. Estratificação invasiva pelo escore GRACE:\n• GRACE > 140: cateterismo em < 24h\n• GRACE 109-140: cateterismo em < 72h\n• GRACE < 109: estratégia conservadora ou invasiva seletiva\n6. Morfina 2-4 mg EV apenas se dor refratária (uso criterioso - ↓ absorção de antiagregantes)\n7. NÃO usar IECA/BRA na fase aguda se instável hemodinamicamente"
       },
       {
             "id": "treatment",

@@ -36,7 +36,7 @@ export const obstetricsFullProtocols8: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Desproporção Cefalopelvica."
+            "content": "Diagnóstico da Distocia de Ombro:\n• Sinal da tartaruga: retração da cabeça fetal contra o períneo após desprendimento\n• Incidência: 0,6-1,4% dos partos vaginais (até 5% em diabéticas com macrossomia)\n• Fatores de risco: macrossomia > 4000g, diabetes gestacional, obesidade materna, pós-datismo, distocia prévia, 2° estágio prolongado\n• Complicações neonatais: lesão de plexo braquial (Erb-Duchenne 4-16%), fratura clavícula, fratura úmero, asfixia perinatal\n• Complicações maternas: laceração 3°/4° grau, hemorragia pós-parto, ruptura uterina\n• 50% dos casos são imprevisíveis (sem fatores de risco identificáveis)"
       },
       {
             "id": "differential",
@@ -46,7 +46,7 @@ export const obstetricsFullProtocols8: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Desproporção Cefalopelvica."
+            "content": "EMERGÊNCIA OBSTÉTRICA - Mnemônico HELPERR:\n• H: Help - chamar ajuda (anestesia, neonatal, 2° obstetra)\n• E: Episiotomia - avaliar se necessário (não resolve sozinha)\n• L: Legs - Manobra de McRoberts (hiperflexão das coxas sobre abdome)\n• P: Pressão suprapúbica (Rubin I) - 30-60 segundos, direção posterior\n• E: Enter - Manobra de Rubin II (pressão no ombro anterior via vaginal) ou Woods (rotação)\n• R: Remove posterior arm - Manobra de Jacquemier (extração do braço posterior)\n• R: Roll - posição de quatro apoios (Manobra de Gaskin)\n\nTempo máximo: 5-7 minutos para prevenir asfixia neonatal\nManobra de Zavanelli (reintrodução cefálica + cesárea): último recurso\nNUNCA fazer tração excessiva da cabeça (risco de lesão de plexo braquial)\nNão usar fundal pressure (empurrar fundo uterino)\nDocumentar horário e manobras realizadas"
       },
       {
             "id": "treatment",
@@ -56,7 +56,7 @@ export const obstetricsFullProtocols8: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "Prescricoes de Desproporção Cefalopelvica."
+            "content": "Prescrições Pós-Cesárea:\n• Ocitocina 20 UI em 500 mL SF 0,9% (125 mL/h por 4h)\n• Dipirona 1g EV 6/6h\n• Tramadol 100 mg EV 8/8h (primeiras 24h) ou Morfina 2 mg EV SOS\n• Cetoprofeno 100 mg EV 12/12h (após 6h)\n• Ondansetrona 4 mg EV 8/8h se náusea\n• Cefazolina 2g EV dose única (profilaxia)\n• Enoxaparina 40 mg SC 1x/dia (se alto risco tromboembólico)\n• Dieta líquida 6h pós, progredir conforme aceitação\n• Deambulação precoce 6-12h\n• Retirada de sonda vesical em 12-24h\n• Cuidados com ferida operatória"
       },
       {
             "id": "followup",
