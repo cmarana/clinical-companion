@@ -36,7 +36,7 @@ export const dermatologyFullProtocols6: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Herpes Simples Disseminado."
+            "content": "Diagnóstico:\n• Placas hiperceratóticas/crostosas extensas, descamação generalizada\n• Distribuição: mãos, pés, couro cabeludo (atípica comparada à escabiose clássica)\n• Prurido pode ser MÍNIMO ou AUSENTE (imunossuprimido)\n• Carga parasitária: milhares a milhões de ácaros (vs 10-15 na escabiose clássica)\n• Raspado cutâneo: ácaros, ovos e fezes facilmente visualizados (alta positividade)\n• Fatores de risco: HIV/AIDS, transplante, uso de corticóides, institucionalizados\n• Altamente contagiosa: surtos em hospitais/asilos\n• Diferencial: psoríase, eczema, dermatite seborréica"
       },
       {
             "id": "differential",
@@ -46,7 +46,7 @@ export const dermatologyFullProtocols6: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Herpes Simples Disseminado."
+            "content": "Conduta na Psoríase Eritrodérmica:\n1. Internação hospitalar (descompensação termorreguladora, hemodinâmica)\n2. Suporte clínico:\n  - Reposição volêmica e eletrolítica\n  - Correção de hipoalbuminemia (albumina EV se < 2 g/dL)\n  - Controle térmico\n3. Tratamento sistêmico (1ª linha):\n  - Ciclosporina 3-5 mg/kg/dia (resposta mais rápida)\n  - Metotrexato 15-25 mg/semana IM/SC\n  - Acitretina 25-50 mg/dia\n4. Biológicos (refratários): Infliximabe 5 mg/kg EV (ação rápida)\n5. Emolientes generosos (vaselina, ceramidas)\n6. Corticóide tópico de média potência (evitar alta potência em grandes áreas)\n7. NÃO usar corticóide sistêmico: rebound e piora da psoríase\n8. Tratar infecção/gatilho: suspender medicação causadora, ATB se infecção"
       },
       {
             "id": "treatment",

@@ -36,7 +36,7 @@ export const geriatricsFullProtocols6: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Delirium Pos-Operatorio no Idoso."
+            "content": "Diagnóstico:\n• Apresentação atípica no idoso: delirium, queda, prostração, inapetência\n• Sintomas clássicos (disúria, polaciúria) podem estar ausentes\n• Bacteriúria assintomática: muito prevalente (20-50% dos idosos institucionalizados)\n  - NÃO tratar (exceto pré-operatório urológico)\n  - Piúria isolada NÃO indica ITU\n• Urinocultura: ≥ 10⁵ UFC/mL (jato médio) ou ≥ 10³ (cateter)\n• EAS: leucocitúria, nitrito, esterase leucocitária\n• Hemograma, PCR, função renal\n• USG rins e vias urinárias: se pielonefrite ou obstrução\n• Agentes: E. coli (60%), Klebsiella, Proteus, Enterococcus\n• Idoso institucionalizado: mais resistência (ESBL, MDR)"
       },
       {
             "id": "differential",
@@ -46,7 +46,7 @@ export const geriatricsFullProtocols6: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Delirium Pos-Operatorio no Idoso."
+            "content": "Conduta na Síndrome de Imobilização:\n1. Mobilização precoce e progressiva (principal intervenção):\n  - Dia 1: exercícios no leito (isométricos, amplitude)\n  - Dia 2-3: sentar na beira do leito, ortostase assistida\n  - Progressão: deambulação com andador → marcha independente\n2. Fisioterapia motora e respiratória diária\n3. Prevenção de complicações:\n  - TVP: Enoxaparina 40 mg SC 1x/dia\n  - Úlcera por pressão: mudança de decúbito 2/2h, colchão especial\n  - Pneumonia aspirativa: cabeceira 30°, higiene oral 3x/dia\n  - Constipação: fibras, hidratação, Lactulose SN\n  - Retenção urinária: evitar SVD prolongada\n4. Suporte nutricional: proteína 1,2-1,5 g/kg/dia\n5. Terapia ocupacional: treino de AVDs\n6. Avaliação geriátrica ampla: cognição, humor, funcionalidade"
       },
       {
             "id": "treatment",

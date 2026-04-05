@@ -36,7 +36,7 @@ export const dermatologyFullProtocols5: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Exames laboratoriais e de imagem para diagnostico de Eczema Herpetico."
+            "content": "Diagnóstico por gênero:\n\nBothrops (botrópico): dor + edema progressivo + equimose, coagulopatia (TP/INR alargado, plaquetopenia), sangramento (gengivorragia, hematúria)\n\nCrotalus (crotálico): fácies miastênica (ptose, oftalmoplegia), visão turva, mialgia difusa, urina escura (mioglobinúria), sem edema local significativo\n\nLachesis (laquético): semelhante ao botrópico + síndrome vagal (bradicardia, hipotensão, diarreia, vômitos)\n\nMicrurus (elapídico): parestesia local → paralisia motora descendente, dispneia, insuficiência respiratória\n\nDiferenciar de serpentes não-peçonhentas: sem presas isoestéricas, sem fosseta loreal (exceto coral)\nExames: hemograma, coagulograma, CPK, função renal, EAS"
       },
       {
             "id": "differential",
@@ -46,7 +46,7 @@ export const dermatologyFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Eczema Herpetico."
+            "content": "Conduta na Eritrodermia (Dermatite Esfoliativa):\n1. Internação (maioria dos casos - descompensação clínica frequente)\n2. Suporte:\n  - Reposição volêmica agressiva (perda insensível aumentada)\n  - Correção de distúrbios eletrolíticos e proteicos (hipoalbuminemia)\n  - Controle térmico (hipotermia frequente pela vasodilatação)\n3. Investigar causa base:\n  - Psoríase (25%), dermatite atópica/eczema (20%), farmacodermia (15%), CTCL/Sézary (5-10%)\n4. Emolientes generosos: vaselina, ceramidas\n5. Corticóide tópico de média potência (áreas limitadas)\n6. Corticóide sistêmico: Prednisona 0,5-1 mg/kg/dia (controverso, evitar na psoríase)\n7. Tratar causa base quando identificada\n8. Anti-histamínico: Hidroxizina 25-50 mg 8/8h para prurido\n9. Biópsia cutânea: 2 fragmentos de áreas diferentes"
       },
       {
             "id": "treatment",

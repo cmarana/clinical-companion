@@ -36,7 +36,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Trauma Hepatico."
+            "content": "Diagnóstico da Coagulopatia Traumática:\n• Presente em 25-35% dos traumas graves na admissão\n• Tríade letal: hipotermia (< 35°C) + acidose (pH < 7,2) + coagulopatia\n• Mecanismos: consumo de fatores, diluição, fibrinólise, hipotermia\n• Exames: INR, aPTT, fibrinogênio, plaquetas, cálcio ionizado\n• Tromboelastografia (TEG) / ROTEM: avaliação funcional em tempo real\n• Score ABC (Assessment of Blood Consumption): prediz necessidade de transfusão maciça\n  - ≥ 2 de: PAS ≤ 90, FC ≥ 120, FAST+, trauma penetrante\n• Hiperfibrinólise: sangramento difuso, sem coágulo em feridas"
       },
       {
             "id": "differential",
@@ -46,7 +46,7 @@ export const traumaFullProtocols7: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta",
-            "content": "• FAST + TC com contraste (padrão-ouro)\n• TNO: estabilidade hemodinâmica + sem peritonite + graus I-III\n• Arteriografia com embolização: blush na TC\n• Cirurgia: instabilidade refratária, peritonite, graus V-VI\n• Damage control: packing perihepático → reoperação 24-48h\n• Manobra de Pringle: clampeamento do pedículo hepático (máx 60 min)"
+            "content": "Conduta no Trauma em Gestante:\n1. Prioridade: tratar a mãe = tratar o feto\n2. Posicionar em DLE (decúbito lateral esquerdo) ou deslocar útero manualmente\n3. Volume agressivo: gestante tolera perda de 30-35% da volemia antes de hipotensão\n4. Avaliação fetal: CTG contínua por mínimo 4-6h (descolamento pode ser tardio)\n5. Rh negativo: anti-D (RhoGAM) 300 mcg IM\n6. Teste de Kleihauer-Betke: quantifica hemorragia fetomaterna\n7. Ultrassom obstétrico: viabilidade, IG, placenta, líquido amniótico\n8. Cesárea perimortem: < 5 min após PCR materna (a partir de 24 sem)\n9. Contraindicações relativas: RX (benefício > risco - proteger abdome), contraste iodado\n10. Medicações seguras: SF 0,9%, RL, O2, AAS, antibióticos beta-lactâmicos\n• Evitar: IECA, varfarina, AINES no 3° trimestre"
       },
       {
             "id": "treatment",

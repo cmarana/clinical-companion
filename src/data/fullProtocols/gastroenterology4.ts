@@ -36,7 +36,7 @@ export const gastroFullProtocols4: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Exames laboratoriais e de imagem para diagnostico de Isquemia Mesenterica Aguda."
+            "content": "Diagnóstico:\n• Dor periumbilical → migração para FID (McBurney) em 12-24h\n• Sinais clássicos: McBurney, Blumberg (descompressão), Rovsing, Psoas, Obturador\n• Score de Alvarado (MANTRELS): ≥ 7 pontos = alta probabilidade\n  - Migration, Anorexia, Nausea, Tenderness RLQ, Rebound, Elevation temp, Leukocytosis, Shift\n• TC abdome: padrão-ouro (sensibilidade 94%, especificidade 95%)\n  - Apêndice > 6 mm, borramento da gordura, apendicolito, abscesso\n• USG: alternativa (gestante, criança), operador-dependente\n• Leucocitose com desvio, PCR elevada\n• Diagnóstico diferencial: linfadenite mesentérica, Crohn, torção de ovário, gravidez ectópica, ITU"
       },
       {
             "id": "differential",
@@ -46,7 +46,7 @@ export const gastroFullProtocols4: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Isquemia Mesenterica Aguda."
+            "content": "Conduta na Isquemia Mesentérica Aguda:\n1. Ressuscitação volêmica + ATB (translocação bacteriana):\n  - Ceftriaxona 2g EV + Metronidazol 500 mg EV 8/8h\n2. Anticoagulação com HNF: bolus 80 UI/kg + 18 UI/kg/h\n3. AngioTC de abdome com contraste = padrão-ouro diagnóstico\n4. Tratamento conforme etiologia:\n  - Embólica (AMS): embolectomia cirúrgica ou trombólise dirigida por cateter\n  - Trombótica: revascularização cirúrgica ou endovascular (stent)\n  - Não-oclusiva (NOMI): tratar causa base (choque, ICC), papaverina intra-arterial 30-60 mg/h\n  - Venosa (TVM): anticoagulação plena (resolução em 90%)\n5. Laparotomia: avaliar viabilidade intestinal (second-look em 24-48h)\n6. Ressecção de alças necróticas\n7. Mortalidade: 50-80% (diagnóstico precoce é fundamental)"
       },
       {
             "id": "treatment",

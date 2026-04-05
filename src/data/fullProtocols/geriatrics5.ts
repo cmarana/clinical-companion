@@ -36,7 +36,7 @@ export const geriatricsFullProtocols5: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Exames laboratoriais e de imagem para diagnostico de Hipotermia no Idoso."
+            "content": "Diagnóstico:\n• CAM (Confusion Assessment Method) - 4 critérios:\n  1. Início agudo e curso flutuante (OBRIGATÓRIO)\n  2. Desatenção (OBRIGATÓRIO)\n  3. Pensamento desorganizado\n  4. Alteração do nível de consciência\n• Positivo: critérios 1 + 2 + (3 ou 4)\n• Tipos: hiperativo (25%), hipoativo (50% - mais perigoso, subdiagnosticado), misto (25%)\n• Diferencial com demência: delirium é agudo, flutuante, com desatenção\n• Fatores predisponentes: idade > 70, demência prévia, déficit sensorial, desidratação\n• Fatores precipitantes: infecção (ITU, pneumonia), medicações, constipação, retenção urinária, dor\n• Exames: hemograma, Na, Ca, glicemia, Cr, EAS/urocultura, RX tórax, gasometria"
       },
       {
             "id": "differential",
@@ -46,7 +46,7 @@ export const geriatricsFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Hipotermia no Idoso."
+            "content": "Conduta no Delirium no Idoso:\n1. Investigar e tratar causa precipitante (mnemônico DELIRIUM):\n  - Drugs, Electrolytes, Low O2, Infection, Retention (urinária/fecal), Intracranial, Undernutrition, Metabolic\n2. Medidas não farmacológicas (PRIMEIRA LINHA):\n  - Reorientação temporal/espacial, relógio/calendário visíveis\n  - Estimulação cognitiva, presença de familiar\n  - Iluminação adequada, evitar contenção física\n  - Protocolo de sono: evitar medicação noturna desnecessária\n  - Corrigir déficits sensoriais (óculos, aparelho auditivo)\n3. Farmacológico (APENAS se agitação grave com risco):\n  - Haloperidol 0,5-1 mg VO/IM (dose mínima efetiva)\n  - Quetiapina 12,5-25 mg VO à noite (alternativa)\n  - EVITAR benzodiazepínicos (exceto abstinência alcoólica)\n4. Suspender medicações anticolinérgicas, sedativas\n5. Mobilização precoce, fisioterapia"
       },
       {
             "id": "treatment",
