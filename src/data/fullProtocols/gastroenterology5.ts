@@ -36,7 +36,7 @@ export const gastroFullProtocols5: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Exames para diagnostico de Varizes Esofagicas - Sangramento."
+            "content": "Diagnóstico:\n• Diarreia aquosa (> 3 episódios/dia) durante ou até 8 sem após ATB\n• Febre, dor abdominal, leucocitose (pode ser > 30.000)\n• ATBs mais associados: clindamicina, fluoroquinolonas, cefalosporinas, ampicilina\n• Toxinas A e B por imunoensaio (GDH + toxina): screening\n• PCR (NAAT): alta sensibilidade, pode detectar colonização\n• Algoritmo diagnóstico: GDH+ → Toxina+ = CDI confirmada; GDH+ Toxina- → NAAT\n• TC: espessamento da parede colônica (sinal do acordeão), ascite\n• EDA/colonoscopia: pseudomembranas amareladas (patognomônico)\n• Complicações: megacólon tóxico (> 6 cm), perfuração, sepse"
       },
       {
             "id": "differential",
@@ -46,7 +46,7 @@ export const gastroFullProtocols5: FullProtocol[] = [
       {
             "id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Varizes Esofagicas - Sangramento."
+            "content": "Conduta na Hemorragia por Varizes Esofágicas:\n1. Ressuscitação: acesso calibroso, CH se Hb < 7 (alvo 7-8 g/dL)\n2. Droga vasoativa (iniciar antes da EDA):\n  - Octreotida 50 mcg bolus + 50 mcg/h EV por 3-5 dias\n  - OU Terlipressina 2 mg EV 4/4h (1ª escolha europeia)\n3. ATB profilaxia (reduz mortalidade):\n  - Ceftriaxona 1g EV 1x/dia por 7 dias\n4. EDA terapêutica em < 12h:\n  - Ligadura elástica (1ª linha) ou escleroterapia\n5. Se sangramento incontrolável:\n  - Balão de Sengstaken-Blakemore (máx 24h, ponte para TIPS)\n  - TIPS (shunt portossistêmico transjugular) de resgate\n6. Profilaxia secundária: Propranolol + Ligadura elástica seriada\n7. Profilaxia primária (varizes de médio/grande calibre):\n  - Propranolol 40-320 mg/dia (FC alvo 55-60 bpm) OU Carvedilol 6,25-12,5 mg/dia"
       },
       {
             "id": "treatment",
