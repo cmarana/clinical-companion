@@ -450,7 +450,14 @@ const Rounds = () => {
               {totalUrgent > 0 && <span className="text-destructive font-medium"> · {totalUrgent} urgente{totalUrgent !== 1 ? "s" : ""}</span>}
             </p>
           </div>
-          <VisitTimer />
+          <div className="flex items-center gap-1">
+            <VisitTimer />
+            {patients.length > 0 && (
+              <Button variant="ghost" size="icon" onClick={exportPDF} title="Exportar PDF">
+                <FileDown className="h-4 w-4" />
+              </Button>
+            )}
+          </div>
         </div>
       </div>
 
