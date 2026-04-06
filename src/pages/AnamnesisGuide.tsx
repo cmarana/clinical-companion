@@ -5532,6 +5532,478 @@ Síndromes hereditárias:
 📌 Sempre registrar a IDADE ao diagnóstico de cada familiar afetado — muda conduta de rastreamento`,
     tips: "ECOG ≥3 geralmente contraindica QT citotóxica. Neutropenia febril = ATB empírico em <1h, não esperar culturas. Compressão medular = dexametasona imediata + RM em <4h. Na dor oncológica, não tenha medo de escalar opioide — não há dose-teto para morfina. Perda de peso >10% em 6 meses é critério de caquexia e muda prognóstico.",
   },
+  {
+    id: "psiquiatria-adulto",
+    title: "Anamnese em Psiquiatria do Adulto",
+    emoji: "🧠",
+    tags: ["psiquiatria", "saúde mental", "transtornos mentais"],
+    content: `═══════════════════════════════════════════
+  ANAMNESE PSIQUIÁTRICA DO ADULTO
+═══════════════════════════════════════════
+
+1. QUEIXA PRINCIPAL E MOTIVO DA CONSULTA
+   • Nas palavras do paciente (entre aspas)
+   • Quem encaminhou? (demanda espontânea, familiar, judicial, emergência)
+   • Motivação para buscar ajuda neste momento
+   • Expectativas em relação ao tratamento
+
+2. HISTÓRIA DA DOENÇA ATUAL (HDA) — Mnemônico PSIQUE
+   P — Precipitantes (estressores, perdas, mudanças de vida)
+   S — Sintomas principais (humor, pensamento, comportamento, sono, apetite)
+   I — Início e evolução temporal (agudo vs. insidioso, contínuo vs. episódico)
+   Q — Quantidade/intensidade (escalas: PHQ-9, GAD-7, AUDIT, CAGE)
+   U — Uso de substâncias (álcool, drogas, medicamentos sem prescrição)
+   E — Efeito funcional (trabalho, relações, autocuidado, lazer)
+
+3. EXAME DO ESTADO MENTAL (EEM) — Mnemônico ACHAMPSC
+   A — Aparência (higiene, vestimenta, postura, idade aparente)
+   C — Consciência e orientação (auto e alopsíquica)
+   H — Humor e afeto
+       • Humor: estado subjetivo referido pelo paciente
+       • Afeto: expressão observada (congruente? Lábil? Embotado? Aplanado?)
+   A — Atenção (vigilância, tenacidade, concentração)
+   M — Memória (imediata, recente, remota)
+   P — Pensamento
+       • Forma: lógico, tangencial, circunstancial, frouxo, incoerente
+       • Conteúdo: delírios, ideias sobrevalorizadas, obsessões, fobias
+       • Curso: acelerado, lentificado, bloqueio
+   S — Sensopercepção
+       • Alucinações: auditivas, visuais, táteis, olfativas, cenestésicas
+       • Ilusões, despersonalização, desrealização
+   C — Conduta e psicomotricidade
+       • Agitação, estupor, maneirismos, estereotipias, tiques, acatisia
+
+4. AVALIAÇÃO DE RISCO — OBRIGATÓRIA
+   ⚠️ IDEAÇÃO SUICIDA — Perguntar SEMPRE e de forma direta:
+   "Você tem pensado em se machucar ou em não querer mais viver?"
+   
+   Escala Columbia (C-SSRS) simplificada:
+   ( ) Desejo de estar morto sem plano
+   ( ) Ideação suicida ativa sem plano
+   ( ) Ideação com plano, sem intenção
+   ( ) Ideação com plano E intenção
+   ( ) Tentativa recente de suicídio
+   
+   Fatores de risco:
+   ( ) Tentativa prévia (maior preditor isolado)
+   ( ) Plano estruturado + acesso a meios letais
+   ( ) Desesperança intensa (Beck Hopelessness Scale)
+   ( ) Isolamento social / perdas recentes
+   ( ) Abuso de álcool/drogas
+   ( ) Doença psiquiátrica grave (depressão, bipolar, esquizofrenia)
+   ( ) Dor crônica / doença terminal
+   ( ) História familiar de suicídio
+   
+   Fatores de proteção:
+   ( ) Rede de suporte (família, amigos, religião)
+   ( ) Filhos dependentes
+   ( ) Acesso a tratamento
+   ( ) Razões para viver identificadas
+
+   RISCO DE HETEROAGRESSÃO:
+   ( ) Ideação homicida / ameaças verbais
+   ( ) Comportamento violento prévio
+   ( ) Acesso a armas
+
+5. HISTÓRIA PSIQUIÁTRICA PREGRESSA
+   Episódios anteriores:
+   • Número de episódios: ____
+   • Internações psiquiátricas: ( ) Sim ( ) Não — Quantas: ____
+   • Tratamentos anteriores:
+     - Medicamentos já usados (dose, duração, resposta, efeitos adversos):
+       _______________________________________________
+     - Psicoterapia: ( ) TCC  ( ) Psicodinâmica  ( ) Outras: ____
+     - ECT: ( ) Sim ( ) Não — Resposta: ____
+     - EMT: ( ) Sim ( ) Não
+
+6. HISTÓRIA DE USO DE SUBSTÂNCIAS — Mnemônico CAGE ampliado
+   Álcool:
+   ( ) Alguma vez sentiu que deveria diminuir a bebida? (Cut down)
+   ( ) As pessoas o aborrecem criticando seu modo de beber? (Annoyed)
+   ( ) Alguma vez se sentiu culpado por beber? (Guilty)
+   ( ) Alguma vez bebeu de manhã para aliviar ressaca? (Eye-opener)
+   AUDIT-C: Frequência ____ Quantidade ____ Binge ____
+   
+   Outras substâncias (para cada uma):
+   | Substância | Idade início | Frequência | Via | Última vez | Abstinência |
+   |------------|-------------|-----------|-----|-----------|-------------|
+   | Cannabis   |             |           |     |           |             |
+   | Cocaína    |             |           |     |           |             |
+   | Crack      |             |           |     |           |             |
+   | Anfetaminas|             |           |     |           |             |
+   | Opioides   |             |           |     |           |             |
+   | Benzodiaz. |             |           |     |           |             |
+   | Tabaco     |             |           |     |           |             |
+
+7. HISTÓRIA PESSOAL — Mnemônico DESENVOLVIMENTO
+   • Gestação e parto (intercorrências neonatais)
+   • DNPM (marcos motores, fala, controle esfincteriano)
+   • Infância (temperamento, socialização, maus-tratos, abuso)
+   • Adolescência (comportamento, relações, experimentação)
+   • Escolaridade (rendimento, bullying, dificuldades de aprendizagem)
+   • Vida profissional (estabilidade, satisfação, conflitos)
+   • Relacionamentos afetivos (padrões, qualidade, violência doméstica)
+   • Sexualidade (orientação, disfunções, comportamento de risco)
+   • Padrão de personalidade pré-mórbido
+
+8. HISTÓRIA FAMILIAR PSIQUIÁTRICA
+   | Parentesco | Diagnóstico | Internação? | Suicídio? | Uso substâncias? |
+   |-----------|-------------|-------------|-----------|-----------------|
+   | Pai       |             |             |           |                 |
+   | Mãe       |             |             |           |                 |
+   | Irmãos    |             |             |           |                 |
+   | Avós      |             |             |           |                 |
+
+9. ESCALAS PADRONIZADAS RECOMENDADAS
+   • Depressão: PHQ-9 (≥10 = moderada, ≥20 = grave)
+   • Ansiedade: GAD-7 (≥10 = moderada, ≥15 = grave)
+   • Bipolar: MDQ (Mood Disorder Questionnaire) — screening
+   • Psicose: BPRS (Brief Psychiatric Rating Scale)
+   • TEPT: PCL-5
+   • TOC: Y-BOCS
+   • TDAH adulto: ASRS v1.1
+   • Personalidade: SCID-II (entrevista estruturada)
+   • Funcionalidade: GAF / WHODAS 2.0
+
+📌 DICA FINAL: Sempre fazer exame físico completo + solicitar hemograma, função tireoidiana, glicemia, função hepática e renal, eletrólitos, B12, folato, VDRL e HIV para descartar causas orgânicas de sintomas psiquiátricos.`,
+    tips: "Sempre pergunte diretamente sobre suicídio — perguntar NÃO induz o ato. Use PHQ-9 ≥20 ou GAD-7 ≥15 como sinais de alarme. Sintomas psicóticos de primeira vez em >40 anos → sempre descartar organicidade. Lítio em bipolar exige litemia a cada 3-6 meses + função renal e tireoidiana. Insônia isolada pode ser sintoma sentinela de depressão, mania ou TEPT.",
+  },
+  {
+    id: "alergologia-imunologia",
+    title: "Anamnese em Alergologia e Imunologia",
+    emoji: "🤧",
+    tags: ["alergia", "imunologia", "hipersensibilidade", "anafilaxia"],
+    content: `═══════════════════════════════════════════
+  ANAMNESE EM ALERGOLOGIA / IMUNOLOGIA
+═══════════════════════════════════════════
+
+1. QUEIXA ALÉRGICA PRINCIPAL — Mnemônico ALERGIA
+   A — Agente suspeito (alimento, medicamento, inseto, inalante, látex)
+   L — Latência (tempo entre exposição e sintomas: imediata <1h vs. tardia >6h)
+   E — Expressão clínica (urticária, angioedema, broncoespasmo, anafilaxia)
+   R — Reprodutibilidade (sempre que exposto? Esporádica?)
+   G — Gravidade (leve/localizada vs. sistêmica/anafilaxia)
+   I — Intervenções feitas (anti-histamínicos, adrenalina, corticoide)
+   A — Atualmente em uso de algum tratamento preventivo?
+
+2. ALERGIA RESPIRATÓRIA — Rinite/Asma
+   ARIA (Rinite alérgica):
+   Frequência:
+   ( ) Intermitente (<4 dias/semana OU <4 semanas)
+   ( ) Persistente (≥4 dias/semana E ≥4 semanas)
+   Gravidade:
+   ( ) Leve (sono normal, atividades normais)
+   ( ) Moderada-grave (sono perturbado, limitação de atividades)
+   
+   Sintomas nasais:
+   ( ) Espirros em salva
+   ( ) Prurido nasal intenso (saudação alérgica)
+   ( ) Rinorreia aquosa
+   ( ) Obstrução nasal (bilateral alternante?)
+   ( ) Gotejamento pós-nasal
+   ( ) Hiposmia/anosmia
+   
+   Sinais clássicos:
+   ( ) Olheiras alérgicas (shiners)
+   ( ) Prega nasal transversa (allergic crease)
+   ( ) Respiração bucal crônica
+   ( ) Linha de Dennie-Morgan (dupla prega infrapalpebral)
+   
+   Asma associada — Classificação GINA:
+   Nos últimos 4 semanas:
+   ( ) Sintomas diurnos >2x/semana
+   ( ) Despertar noturno por asma
+   ( ) Necessidade de SABA >2x/semana
+   ( ) Limitação de atividades
+
+   Controle:  ( ) Bem controlada (0)  ( ) Parcial (1-2)  ( ) Não controlada (3-4)
+
+3. ALERGIA ALIMENTAR
+   Mnemônico BIG-8 (alérgenos mais comuns):
+   ( ) Leite de vaca (caseína, β-lactoglobulina)
+   ( ) Ovo (ovomucoide, ovalbumina)
+   ( ) Amendoim
+   ( ) Castanhas (nozes, cajú, amêndoa, pistache)
+   ( ) Trigo
+   ( ) Soja
+   ( ) Peixe
+   ( ) Crustáceos (camarão, lagosta, caranguejo)
+   
+   Classificação:
+   | Tipo         | Mecanismo    | Tempo   | Exemplos                    |
+   |-------------|-------------|---------|----------------------------|
+   | IgE-mediada | Tipo I      | <1-2h   | Urticária, anafilaxia      |
+   | Não-IgE     | Celular     | >4-72h  | FPIES, proctocolite        |
+   | Mista       | IgE+celular | Variável| Esofagite eosinofílica     |
+   
+   Diário alimentar: 72h com registro de horário, alimento e sintomas
+   
+   ⚠️ ANAFILAXIA PRÉVIA POR ALIMENTO?
+   ( ) Sim → Prescrever adrenalina auto-injetável
+   Plano de ação escrito obrigatório
+
+4. ALERGIA A MEDICAMENTOS
+   Medicamento suspeito: _________________________
+   Classe farmacológica: _________________________
+   
+   Cronologia:
+   • Início do medicamento: ___/___/___
+   • Início dos sintomas: ___/___/___ (intervalo: ____)
+   • Suspensão: ___/___/___ → Melhora em: ____
+   • Re-exposição? ( ) Sim — Recorreu? ( ) Sim ( ) Não
+   
+   Classificação temporal:
+   ( ) Imediata (<1h): urticária, angioedema, anafilaxia → IgE-mediada
+   ( ) Tardia (>1h a dias): exantema maculopapular, DRESS, SJS/NET → Tipo IV
+   
+   Red Flags — Reações graves:
+   ( ) Acometimento mucoso (SJS/NET)
+   ( ) Febre alta + eosinofilia + envolvimento visceral (DRESS)
+   ( ) Vasculite cutânea
+   ( ) Citopenias
+   
+   Reatividade cruzada:
+   • Penicilinas ↔ Cefalosporinas (~2%)
+   • Sulfonamidas ATB ↔ Sulfonamidas não-ATB (risco mínimo)
+   • AINEs → Reação pseudoalérgica (inibição COX-1)
+
+5. URTICÁRIA CRÔNICA (>6 semanas)
+   Classificação:
+   ( ) Espontânea (sem trigger identificável)
+   ( ) Induzível:
+     ( ) Dermografismo
+     ( ) Colinérgica (exercício/calor)
+     ( ) Frio (teste do cubo de gelo)
+     ( ) Pressão tardia
+     ( ) Solar
+     ( ) Aquagênica
+   
+   UAS7 (Urticaria Activity Score 7 dias):
+   • Pápulas: 0=nenhuma, 1=leve(<20), 2=moderada(20-50), 3=intensa(>50)
+   • Prurido: 0=nenhum, 1=leve, 2=moderado, 3=intenso
+   Score diário 0-6, semanal 0-42
+   Bem controlada: ≤6 | Não controlada: ≥16
+
+6. IMUNODEFICIÊNCIAS — Sinais de Alerta (Fundação Jeffrey Modell)
+   ≥2 = investigar imunodeficiência primária:
+   ( ) ≥8 otites em 1 ano
+   ( ) ≥2 sinusites graves em 1 ano
+   ( ) ≥2 meses de ATB com pouca melhora
+   ( ) ≥2 pneumonias em 1 ano
+   ( ) Falha de crescimento (crianças)
+   ( ) Abscessos de repetição (pele/órgãos)
+   ( ) Candidíase oral persistente ou infecções fúngicas em pele/unhas
+   ( ) Necessidade de ATB IV para infecções comuns
+   ( ) ≥2 infecções profundas (meningite, osteomielite, sepse)
+   ( ) História familiar de imunodeficiência
+
+   Screening laboratorial:
+   • Hemograma com diferencial (linfopenia? Neutropenia?)
+   • Imunoglobulinas quantitativas (IgG, IgA, IgM, IgE)
+   • Subclasses de IgG (se IgG total normal mas infecções recorrentes)
+   • Sorologias vacinais (tétano, pneumococo)
+   • Complemento: CH50, C3, C4
+   • Imunofenotipagem linfocitária (CD3, CD4, CD8, CD19, CD16/56)
+
+7. TESTE ALÉRGICO PRÉVIO
+   ( ) Prick test — Resultados: _______________
+   ( ) IgE específica sérica — Resultados: _______________
+   ( ) Patch test (contato) — Resultados: _______________
+   ( ) Teste de provocação oral — Resultados: _______________
+   ( ) Espirometria com broncodilatador — Resultados: _______________
+   ( ) Teste de provocação brônquica — Resultados: _______________
+
+8. AMBIENTE E EXPOSIÇÕES
+   Domicílio:
+   ( ) Animais domésticos: ______ (dentro de casa?)
+   ( ) Mofo/umidade visível
+   ( ) Carpete/cortinas/tapetes
+   ( ) Ar condicionado (manutenção: ______)
+   ( ) Travesseiro/colchão com capa anti-ácaro
+   ( ) Fumante no domicílio
+   
+   Trabalho:
+   ( ) Exposição ocupacional: ______________
+   ( ) Melhora nos fins de semana/férias?
+
+📌 DICA: Sempre perguntar sobre reações a LÁTEX (luvas, preservativos, balões) — existe reatividade cruzada com banana, kiwi, abacate, castanha. Pacientes com mielomeningocele e profissionais de saúde têm risco aumentado.`,
+    tips: "Anafilaxia é diagnóstico CLÍNICO — não espere exames para tratar. Adrenalina IM na coxa anterolateral é PRIMEIRA LINHA (0,3-0,5mg adulto). Anti-histamínicos e corticoides são adjuvantes, NÃO substituem adrenalina. Na urticária crônica, anti-H1 pode ser escalonado até 4x a dose padrão antes de adicionar omalizumabe. IgA < 7mg/dL = deficiência seletiva de IgA (mais comum) — contraindicar hemoderivados sem lavagem.",
+  },
+  {
+    id: "medicina-fetal",
+    title: "Anamnese em Medicina Fetal",
+    emoji: "🤰",
+    tags: ["medicina fetal", "pré-natal", "malformações", "diagnóstico pré-natal"],
+    content: `═══════════════════════════════════════════
+  ANAMNESE EM MEDICINA FETAL
+═══════════════════════════════════════════
+
+1. DADOS OBSTÉTRICOS ATUAIS — Mnemônico GESTA
+   G — Gestações: G__P__A__  (para + cesariana + aborto)
+   E — Embrião/feto: IG atual ____ semanas (DUM: ___/___/___)
+   S — Singleton ou gemelar? ( ) Único ( ) Gemelar → Corionicidade: ____
+   T — Tipo sanguíneo materno: ____ Rh: ____ Coombs indireto: ____
+   A — Antecedentes obstétricos relevantes (perdas prévias, malformações)
+
+2. MOTIVO DO ENCAMINHAMENTO
+   ( ) Achado ultrassonográfico anormal
+   ( ) Rastreamento de primeiro trimestre alterado
+   ( ) Idade materna avançada (≥35 anos ao parto)
+   ( ) História familiar de anomalia genética/cromossômica
+   ( ) Exposição teratogênica (medicamento, infecção, radiação)
+   ( ) Gestação prévia com anomalia fetal
+   ( ) Translucência nucal aumentada (≥ ____ mm, percentil ____)
+   ( ) Marcadores bioquímicos alterados (PAPP-A, β-hCG livre)
+   ( ) NIPT (DNA fetal livre) alterado
+   ( ) Crescimento fetal restrito (PFE < percentil ____)
+   ( ) Oligoâmnio/polidrâmnio
+   ( ) Hidropsia fetal não imune
+
+3. ULTRASSONOGRAFIA MORFOLÓGICA — Checklist de Achados
+   Primeiro trimestre (11-14 semanas):
+   • Translucência nucal: ____ mm (p95 = 2,5mm para 45mm de CCN)
+   • Osso nasal: ( ) Presente ( ) Ausente/hipoplásico
+   • Ducto venoso: ( ) Onda A positiva ( ) Reversa
+   • Regurgitação tricúspide: ( ) Presente ( ) Ausente
+   • Ângulo facial: ____°
+   
+   Segundo trimestre (20-24 semanas) — Anomalias por sistema:
+   SNC:
+   ( ) Anencefalia  ( ) Encefalocele  ( ) Holoprosencefalia
+   ( ) Ventriculomegalia (≥10mm) → Leve 10-12 | Moderada 12-15 | Grave >15mm
+   ( ) Malformação de Dandy-Walker  ( ) Agenesia de corpo caloso
+   ( ) Espinha bífida (mielomeningocele)
+   
+   Face:
+   ( ) Fenda labial  ( ) Fenda palatina  ( ) Micrognatia
+   ( ) Probóscide  ( ) Ciclopia  ( ) Hipotelorismo/hipertelorismo
+   
+   Coração (ecocardiografia fetal):
+   ( ) Defeito septal (CIV, CIA)
+   ( ) Tetralogia de Fallot
+   ( ) Transposição de grandes artérias (TGA)
+   ( ) Coração esquerdo hipoplásico (SHLE)
+   ( ) Coarctação de aorta
+   ( ) Canal atrioventricular (DSAV) → associação com T21
+   
+   Tórax:
+   ( ) Hérnia diafragmática congênita → Lado: ____ LHR: ____
+   ( ) CPAM (malformação adenomatoide cística) → Tipo: ____
+   ( ) Derrame pleural / Hidrotórax
+   
+   Abdome:
+   ( ) Onfalocele  ( ) Gastrosquise
+   ( ) Atresia duodenal (sinal da dupla bolha)
+   ( ) Atresia esofágica (estômago não visualizado)
+   ( ) Ascite fetal
+   
+   Trato urinário:
+   ( ) Hidronefrose (DAP: ____mm) → Leve <7 | Moderada 7-10 | Grave >10 (2ºT)
+   ( ) Megabexiga (>7mm no 1ºT)
+   ( ) Rim multicístico displásico
+   ( ) Agenesia renal bilateral (Potter)
+   
+   Esquelético:
+   ( ) Encurtamento de ossos longos (<p5)
+   ( ) Fêmur curvo / arqueado → Displasia esquelética
+   ( ) Polidactilia  ( ) Pé torto congênito
+   ( ) Hipomineralização / fraturas in utero
+
+4. RASTREAMENTO CROMOSSÔMICO
+   Primeiro trimestre combinado:
+   • Risco calculado para T21: 1: ______
+   • Risco calculado para T18: 1: ______
+   • Risco calculado para T13: 1: ______
+   
+   NIPT (cfDNA) — se realizado:
+   • T21 (Down): ( ) Baixo risco ( ) Alto risco
+   • T18 (Edwards): ( ) Baixo risco ( ) Alto risco
+   • T13 (Patau): ( ) Baixo risco ( ) Alto risco
+   • Sexo cromossômico: ( ) XX ( ) XY
+   • Aneuploidias sexuais: ( ) Rastreado ( ) Não rastreado
+   • Microdeleções: ( ) Rastreado ( ) Não rastreado
+   • Fração fetal: ____% (adequada se ≥4%)
+   
+   Procedimento invasivo — se indicado:
+   ( ) Biópsia de vilo corial (BVC) — 11-14 sem
+   ( ) Amniocentese — ≥15 sem
+   ( ) Cordocentese — ≥18 sem
+   Resultado: ________________________
+   Cariótipo / Microarray / Exoma: ________________________
+
+5. INFECÇÕES CONGÊNITAS — STORCH + Zika
+   | Infecção     | Sorologia    | Achados fetais típicos                    |
+   |-------------|-------------|------------------------------------------|
+   | Sífilis     | VDRL/FTA-Abs| Hidropsia, hepatomegalia, placentomegalia |
+   | Toxoplasma  | IgM/IgG    | Calcificações cerebrais difusas, hidrocefalia|
+   | Rubéola     | IgM/IgG    | Cardiopatia, catarata, microcefalia       |
+   | CMV         | IgM/IgG    | Calcificações periventriculares, microcefalia|
+   | Herpes      | IgM/IgG    | Microcefalia, coriorretinite              |
+   | Zika        | RT-PCR     | Microcefalia grave, artrogripose          |
+   | Parvovírus  | IgM/IgG    | Hidropsia fetal, anemia fetal             |
+   
+   Avidez de IgG (se IgM+):
+   • Alta avidez (>60%) → infecção antiga (>16 semanas)
+   • Baixa avidez (<30%) → infecção recente → risco maior
+
+6. EXPOSIÇÃO TERATOGÊNICA
+   Medicamentos — FDA/Categoria de risco:
+   ⚠️ Teratógenos comprovados:
+   ( ) Isotretinoína (embriopatia retinóica)
+   ( ) Ácido valproico (defeitos tubo neural, dismorfismos faciais)
+   ( ) Metotrexato (aminopterina-like syndrome)
+   ( ) Warfarina (condrodisplasia punctata, hipoplasia nasal)
+   ( ) Talidomida (focomelia)
+   ( ) Lítio (anomalia de Ebstein — risco real ~1%)
+   ( ) Carbamazepina/fenitoína (síndrome fetal)
+   ( ) Misoprostol (síndrome de Möbius, defeitos de membros)
+   ( ) IECA/BRA (displasia renal, oligoâmnio — 2º/3º trimestre)
+   ( ) Álcool (SAF — microcefalia, filtro liso, fenda palpebral curta)
+   
+   Período de exposição: ______ semanas de IG
+   Dose e duração: ______________________________
+
+7. LÍQUIDO AMNIÓTICO
+   ILA (Índice de Líquido Amniótico):
+   • Normal: 8-18 cm
+   • Oligoâmnio: <5 cm (ou MBV <2 cm)
+   • Polidrâmnio: >24 cm (ou MBV >8 cm)
+   
+   Causas de oligoâmnio:
+   ( ) RPMO  ( ) Insuficiência placentária  ( ) Uropatia obstrutiva
+   ( ) Agenesia renal  ( ) Medicamento (IECA)
+   
+   Causas de polidrâmnio:
+   ( ) Diabetes materno  ( ) Atresia esofágica/duodenal
+   ( ) Anomalia de SNC (deglutição prejudicada)
+   ( ) Hidropsia fetal  ( ) Idiopático (~60%)
+
+8. GESTAÇÃO GEMELAR — Complicações Específicas
+   Corionicidade (determinar no 1ºT!):
+   ( ) Dicoriônica-diamniótica (DCDA) — sinal lambda/twin peak
+   ( ) Monocoriônica-diamniótica (MCDA) — sinal T
+   ( ) Monocoriônica-monoamniótica (MCMA) — rara, alto risco
+   
+   Complicações MCDA:
+   ( ) STFF — Síndrome de Transfusão Feto-Fetal (Quintero I-V)
+   ( ) TAPS — Sequência Anemia-Policitemia
+   ( ) sIUGR — Restrição seletiva (classificação I, II, III)
+   ( ) TRAP — Sequência de perfusão arterial reversa
+   
+   Acompanhamento MCDA: US a cada 2 semanas a partir de 16 sem
+
+9. INTERVENÇÕES FETAIS — Indicações
+   ( ) Laser para STFF (Quintero ≥II ou insuficiência cardíaca)
+   ( ) Cirurgia fetal aberta para mielomeningocele (MOMS trial)
+   ( ) Fetoscopia para hérnia diafragmática (FETO/TOTAL trial)
+   ( ) Derivação vesico-amniótica (uropatia obstrutiva baixa)
+   ( ) Transfusão intrauterina (anemia fetal — PVS-ACM >1,5 MoM)
+   ( ) Shunt toracoamniótico (derrame pleural volumoso)
+   ( ) EXIT procedure (obstrução de via aérea fetal)
+
+📌 SEMPRE registrar se houve aconselhamento genético e a decisão compartilhada com a família sobre prognóstico, opções de manejo e acompanhamento multidisciplinar.`,
+    tips: "TN ≥3,5mm mesmo com cariótipo normal → investigar cardiopatia congênita (ECO fetal). NIPT tem alta sensibilidade para T21 (~99%) mas é RASTREAMENTO, não diagnóstico — confirmar com amniocentese. Ventriculomegalia isolada leve (10-12mm) → 90% evolução normal, mas acompanhar. Hérnia diafragmática com LHR <1,0 e fígado herniado = prognóstico reservado. Na STFF, Quintero ≥II com polidrâmnio grave → laser é tratamento de escolha. Hidropsia fetal não-imune → sempre investigar parvovírus B19 (PCR), arritmia fetal e anemia.",
+  },
 ];
 export default function AnamnesisGuide() {
   const [active, setActive] = useState<string | null>(null);
