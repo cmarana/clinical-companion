@@ -60,6 +60,11 @@ serve(async (req) => {
         line_items: [{ price: priceId, quantity: 1 }],
         mode: "subscription",
         subscription_data: hadTrial ? undefined : { trial_period_days: 7 },
+        payment_method_options: {
+          card: {
+            request_three_d_secure: "automatic",
+          },
+        },
         success_url: `${origin}/pricing?success=true`,
         cancel_url: `${origin}/pricing`,
         payment_method_types: ["card"],
@@ -78,6 +83,11 @@ serve(async (req) => {
       line_items: [{ price: priceId, quantity: 1 }],
       mode: "subscription",
       subscription_data: { trial_period_days: 7 },
+      payment_method_options: {
+        card: {
+          request_three_d_secure: "automatic",
+        },
+      },
       success_url: `${origin}/pricing?success=true`,
       cancel_url: `${origin}/pricing`,
       payment_method_types: ["card"],
