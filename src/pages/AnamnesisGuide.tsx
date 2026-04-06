@@ -1905,6 +1905,467 @@ Substâncias experimentadas:
 ☐ Outras: ___________________________`,
     tips: "Na psiquiatria infantojuvenil, SEMPRE colher história com múltiplos informantes (pais, escola, criança). TDAH exige sintomas em ≥2 ambientes e início antes dos 12 anos. Para TEA, investigar ativamente em toda criança com atraso de linguagem/socialização. A avaliação de risco suicida é OBRIGATÓRIA em adolescentes com queixas emocionais. O M-CHAT-R é rastreio, não diagnóstico. Tempo de tela é fator de risco emergente para ansiedade e TDAH-like.",
   },
+  {
+    id: "pre-hospitalar-samu",
+    title: "Anamnese Pré-Hospitalar (SAMU/APH)",
+    emoji: "🚑",
+    tags: ["SAMU", "pré-hospitalar", "APH", "emergência", "resgate", "SAMPLE", "ABCDE"],
+    content: `═══════════════════════════════════════
+ANAMNESE PRÉ-HOSPITALAR — SAMU / APH
+═══════════════════════════════════════
+
+1️⃣ DADOS DA OCORRÊNCIA
+• Data: ___/___/___   Hora do chamado: ____:____
+• Hora chegada à cena: ____:____
+• Hora saída da cena: ____:____
+• Hora chegada ao hospital: ____:____
+• Local: ___________________________
+• Tipo de ocorrência: ( ) Clínico ( ) Trauma ( ) Psiquiátrico ( ) Obstétrico ( ) Pediátrico
+• USA ( ) ou USB ( )   Equipe: ___________________________
+• Regulação médica: Dr(a). ___________________________
+
+2️⃣ AVALIAÇÃO PRIMÁRIA — ABCDE
+A — VIA AÉREA (com controle cervical no trauma):
+• Perviedade: ( ) Livre ( ) Obstruída parcial ( ) Obstruída total
+• Colar cervical: ( ) Sim ( ) Não ( ) N/A
+• Manobra realizada: ( ) Chin-lift ( ) Jaw-thrust ( ) Aspiração ( ) Cânula orofaríngea ( ) IOT
+• Cânula nº: ____   IOT tubo nº: ____  Fixação: ____ cm
+
+B — VENTILAÇÃO:
+• FR: ____ irpm   SpO2: ____%   FiO2: ____%
+• Padrão: ( ) Normal ( ) Taquipneia ( ) Bradipneia ( ) Apneia ( ) Dispneia
+• Ausculta: ( ) MV bilateral ( ) Reduzido em ____ ( ) Abolido em ____
+• Desvio traqueal: ( ) Sim ( ) Não
+• Enfisema subcutâneo: ( ) Sim ( ) Não
+• Suporte: ( ) O2 cateter ____ L/min ( ) Máscara ____ L/min ( ) BVM ( ) VM
+
+C — CIRCULAÇÃO:
+• FC: ____ bpm   PA: ____x____ mmHg
+• Pulso: ( ) Cheio ( ) Filiforme ( ) Ausente
+• Perfusão periférica: ( ) <2s ( ) 2-4s ( ) >4s
+• Pele: ( ) Corada ( ) Pálida ( ) Cianótica ( ) Fria ( ) Úmida
+• Sangramento externo: ( ) Sim — local: ____________ Controle: ____________ ( ) Não
+• Acesso venoso: ( ) Periférico ____G  MSE/MSD ( ) IO ( ) Não obtido
+• Volume infundido: SF 0,9% ____ mL   RL ____ mL
+• Drogas vasoativas: ___________________________
+
+D — DÉFICIT NEUROLÓGICO:
+• Glasgow: AO (__) + RV (__) + RM (__) = ____/15
+• Pupilas: ( ) Isocóricas ( ) Anisocóricas   D: ____ mm  E: ____ mm
+• Fotorreagentes: ( ) Sim ( ) Não
+• Lateralização motora: ( ) Sim — lado: ____ ( ) Não
+• Glicemia capilar: ____ mg/dL
+• Convulsão: ( ) Sim — duração: ____ min ( ) Não
+
+E — EXPOSIÇÃO:
+• Temperatura: ____°C
+• Lesões identificadas: ___________________________
+• Hipotermia prevenida: ( ) Sim ( ) N/A
+
+3️⃣ MNEMÔNICO SAMPLE / AMPLE
+S — Sinais e Sintomas: ___________________________
+A — Alergias: ___________________________
+M — Medicações em uso: ___________________________
+P — Passado médico (doenças prévias): ___________________________
+L — Last meal (última refeição): ____h atrás
+E — Eventos relacionados: ___________________________
+
+4️⃣ AVALIAÇÃO ESPECÍFICA POR CENÁRIO
+
+TRAUMA — Cinemática:
+• Mecanismo: ( ) Colisão auto ( ) Moto ( ) Atropelamento ( ) Queda ____ m
+  ( ) FAB ( ) FAF ( ) Agressão ( ) Esmagamento ( ) Queimadura
+• Uso de cinto: ( ) Sim ( ) Não   Airbag: ( ) Sim ( ) Não
+• Ejeção do veículo: ( ) Sim ( ) Não
+• Óbito no veículo: ( ) Sim ( ) Não
+• Deformidade do veículo: ___________________________
+• Tempo de extricação: ____ min
+
+Escala de Trauma:
+• RTS (Revised Trauma Score): ____ (GCS + PAS + FR)
+• START (triagem múltiplas vítimas): ( ) Verde ( ) Amarelo ( ) Vermelho ( ) Preto
+
+CLÍNICO — Dor torácica:
+• Início: ____h   Duração: ____ min
+• Caráter: ( ) Opressiva ( ) Pontada ( ) Queimação
+• Irradiação: ___________________________
+• ECG 12 derivações: ( ) Realizado ( ) Não disponível
+  Achado: ___________________________
+
+PCR:
+• Ritmo inicial: ( ) FV ( ) TVSP ( ) AESP ( ) Assistolia
+• Hora da PCR: ____:____   RCE: ( ) Sim ____:____ ( ) Não
+• Ciclos de RCP: ____   Choques: ____
+• Drogas: Adrenalina ____ mg (____x)   Amiodarona ____ mg (____x)
+
+5️⃣ ESCALA DE COMA DE GLASGOW (detalhada)
+┌──────────────────────────────────────┐
+│ ABERTURA OCULAR           Pontos    │
+│ Espontânea                   4      │
+│ Ao estímulo verbal           3      │
+│ À pressão/dor                2      │
+│ Ausente                      1      │
+├──────────────────────────────────────┤
+│ RESPOSTA VERBAL                     │
+│ Orientada                    5      │
+│ Confusa                      4      │
+│ Palavras inapropriadas       3      │
+│ Sons incompreensíveis        2      │
+│ Ausente                      1      │
+├──────────────────────────────────────┤
+│ RESPOSTA MOTORA                     │
+│ Obedece comandos             6      │
+│ Localiza dor                 5      │
+│ Retirada (flexão normal)     4      │
+│ Flexão anormal (decorticação)3      │
+│ Extensão (descerebração)     2      │
+│ Ausente                      1      │
+└──────────────────────────────────────┘
+• Reatividade pupilar: -0 (bilateral) / -1 (unilateral) / -2 (ausente)
+• Glasgow-P = GCS - Reatividade pupilar = ____
+
+6️⃣ PASSAGEM DE CASO (HANDOFF — ISBAR)
+I — Identificação: ___________________________
+S — Situação: ___________________________
+B — Background (antecedentes): ___________________________
+A — Avaliação (achados): ___________________________
+R — Recomendação (conduta sugerida): ___________________________
+
+Destino: Hospital ___________________________
+Setor: ( ) Sala vermelha ( ) Sala amarela ( ) CC ( ) Outro`,
+    tips: "No APH, rapidez e sistematização são vitais. O ABCDE deve ser completado em <2 min na avaliação primária. SAMPLE é colhido simultaneamente (equipe). A cinemática do trauma prediz 90% das lesões — sempre documentar mecanismo. Use ISBAR no handoff para o hospital. Documente TODOS os horários (chamado, chegada, saída, hospital). Glasgow-P (com pupilas) é o padrão atual.",
+  },
+  {
+    id: "medicina-legal",
+    title: "Anamnese em Medicina Legal",
+    emoji: "🔍",
+    tags: ["medicina legal", "perícia", "IML", "lesão corporal", "corpo de delito", "laudo"],
+    content: `═══════════════════════════════════════
+ANAMNESE EM MEDICINA LEGAL / PERÍCIA
+═══════════════════════════════════════
+
+1️⃣ IDENTIFICAÇÃO DO PERICIANDO
+• Nome: ___________________________
+• Idade: ____ anos   DN: ___/___/___
+• Sexo: ____________   Estado civil: ____________
+• Profissão: ___________________________
+• RG: _______________   CPF: _______________
+• Endereço: ___________________________
+• Naturalidade: ____________   Nacionalidade: ____________
+
+Dados do exame:
+• Data/hora do exame: ___/___/___ ____:____
+• Local do exame: ( ) IML ( ) Hospital ( ) Delegacia ( ) Outro
+• Requisição: BO nº ____________   Delegacia: ____________
+• Autoridade requisitante: ___________________________
+• Perito responsável: ___________________________
+• Acompanhante presente: ( ) Sim — quem: ____________ ( ) Não
+
+2️⃣ HISTÓRICO DO EVENTO (versão do periciando)
+• Data e hora do evento: ___/___/___ ____:____
+• Local da ocorrência: ___________________________
+• Descrição dos fatos (palavras do periciando):
+  "___________________________________________
+   ___________________________________________"
+• Agressor(es): ( ) Conhecido ( ) Desconhecido ( ) Não se aplica
+• Instrumento/meio utilizado (referido): ___________________________
+• Número de golpes/agressões referidos: ____
+• Perda de consciência: ( ) Sim — duração: ____________ ( ) Não
+• Atendimento médico prévio: ( ) Sim — local: ____________ ( ) Não
+• Tempo decorrido entre evento e exame: ____h/dias
+
+3️⃣ EXAME PERICIAL — LESÕES CORPORAIS
+Classificação das lesões:
+┌────────────────────────────────────────────────┐
+│ NATUREZA DA LESÃO                              │
+├────────────────────────────────────────────────┤
+│ ( ) Escoriação   ( ) Equimose   ( ) Hematoma   │
+│ ( ) Ferida contusa   ( ) Ferida incisa         │
+│ ( ) Ferida perfurante   ( ) Ferida corto-contusa│
+│ ( ) Ferida perfuro-contusa   ( ) Ferida LAB    │
+│ ( ) Queimadura (____ grau, ____% SCQ)          │
+│ ( ) Fratura   ( ) Luxação   ( ) Entorse        │
+│ ( ) Mordedura   ( ) Marca de ligadura          │
+│ ( ) Sem lesão aparente                         │
+└────────────────────────────────────────────────┘
+
+Descrição topográfica (para CADA lesão):
+Lesão nº ____:
+• Tipo: ___________________________
+• Localização anatômica: ___________________________
+• Dimensões: ____ x ____ cm
+• Coloração (equimose): ___________________________
+• Bordas: ( ) Regulares ( ) Irregulares ( ) Escoriadas
+• Profundidade: ( ) Superficial ( ) Profunda ( ) Transfixante
+• Vitalidade: ( ) Vital (ante-mortem) ( ) Avital (post-mortem)
+• Instrumento compatível: ___________________________
+
+📌 CRONOLOGIA DAS EQUIMOSES (Espectro de Legrand du Saulle):
+• Vermelho-violáceo: 1-3 dias
+• Azulado: 3-6 dias
+• Esverdeado: 7-12 dias
+• Amarelado: 12-20 dias
+• Desaparecimento: 15-25 dias
+
+4️⃣ QUALIFICAÇÃO JURÍDICA DA LESÃO (Art. 129 CP)
+Lesão corporal LEVE (caput):
+• Ofensa à integridade corporal/saúde sem gravidade
+
+Lesão corporal GRAVE (§1º):
+☐ Incapacidade para ocupações habituais >30 dias
+☐ Perigo de vida
+☐ Debilidade permanente de membro, sentido ou função
+☐ Aceleração de parto
+
+Lesão corporal GRAVÍSSIMA (§2º):
+☐ Incapacidade permanente para o trabalho
+☐ Enfermidade incurável
+☐ Perda ou inutilização de membro, sentido ou função
+☐ Deformidade permanente
+☐ Aborto
+
+Lesão corporal seguida de MORTE (§3º)
+
+5️⃣ EXAMES ESPECÍFICOS POR TIPO DE PERÍCIA
+
+VIOLÊNCIA SEXUAL:
+⚠️ Coleta de vestígios em até 72h (ideal <24h)
+• Vestimenta: ( ) Íntegra ( ) Danificada — descrição: ____________
+• Região genital:
+  Grandes lábios: ___________________________
+  Pequenos lábios: ___________________________
+  Hímen: ( ) Íntegro ( ) Rotura — posição: ____h
+    Rotura: ( ) Recente (<10 dias) ( ) Cicatrizada ( ) Complacente
+  Fúrcula: ___________________________
+  Períneo: ___________________________
+• Região anal:
+  Pregueamento: ( ) Preservado ( ) Apagado
+  Tônus esfincteriano: ( ) Normal ( ) Diminuído
+  Fissuras: ( ) Sim — posição: ____h ( ) Não
+  Sinal de Lacassagne: ( ) Presente ( ) Ausente
+• Coleta de material:
+  ☐ Swab vaginal   ☐ Swab anal   ☐ Swab oral
+  ☐ Raspado subungueal   ☐ Fio de cabelo/pelo
+  ☐ Sangue para DNA   ☐ Urina (toxicológico)
+  ☐ Preservativo/material biológico
+
+EMBRIAGUEZ ALCOÓLICA:
+• Etilômetro: ____ mg/L (limite legal: 0,05 mg/L para direção)
+• Sinais clínicos:
+  ☐ Hálito etílico   ☐ Fala pastosa   ☐ Marcha atáxica
+  ☐ Olhos avermelhados   ☐ Desorientação
+  ☐ Agressividade   ☐ Sonolência
+• Coleta de sangue para alcoolemia: ( ) Sim ( ) Recusa
+
+LESÃO POR ARMA DE FOGO:
+• Orifício de entrada:
+  Localização: ___________________________
+  Dimensão: ____ cm   Forma: ( ) Circular ( ) Oval ( ) Irregular
+  Orla de escoriação: ( ) Sim ( ) Não
+  Tatuagem: ( ) Sim ( ) Não
+  Zona de esfumaçamento: ( ) Sim ( ) Não
+  Zona de chamuscamento: ( ) Sim ( ) Não
+• Distância estimada do disparo:
+  ( ) Encostado (sinal de Werkgärtner)
+  ( ) Curta distância (<15cm — tatuagem)
+  ( ) Média distância (esfumaçamento)
+  ( ) Longa distância (apenas orla)
+• Orifício de saída: ( ) Presente — local: ____________ ( ) Ausente
+• Trajeto: ___________________________
+
+6️⃣ ANTECEDENTES RELEVANTES PARA PERÍCIA
+• Lesões/cirurgias preexistentes na região: ___________________________
+• Doenças que afetam cicatrização: ___________________________
+• Uso de anticoagulantes: ( ) Sim ( ) Não
+• Distúrbios de coagulação: ( ) Sim ( ) Não
+• Lesões autoinfligidas prévias: ( ) Sim ( ) Não
+
+7️⃣ CONCLUSÃO PERICIAL (estrutura)
+• Há lesão corporal: ( ) Sim ( ) Não
+• Instrumento/meio produtor: ___________________________
+• Qualificação: ( ) Leve ( ) Grave ( ) Gravíssima
+• Nexo causal com o evento: ( ) Sim ( ) Não ( ) Inconclusivo
+• Necessidade de exame complementar: ( ) Sim — qual: ____________ ( ) Não
+• Data para retorno (se necessário): ___/___/___`,
+    tips: "Na medicina legal, DESCREVA com precisão topográfica e métrica — nunca interprete a causa na descrição. Use linguagem técnica padronizada (ferida incisa, não 'corte'). A cronologia das equimoses é estimativa, não exata. Em violência sexual, priorize coleta de vestígios (<72h). O perito responde aos QUESITOS — não extrapole. Fotografe todas as lesões com régua métrica. Equimoses em crianças em áreas não proeminentes são red flags para maus-tratos.",
+  },
+  {
+    id: "idoso-institucionalizado",
+    title: "Anamnese — Idoso Institucionalizado (ILPI)",
+    emoji: "🏥",
+    tags: ["geriatria", "ILPI", "institucionalizado", "idoso", "cuidados prolongados", "funcionalidade"],
+    content: `═══════════════════════════════════════
+ANAMNESE DO IDOSO INSTITUCIONALIZADO (ILPI)
+═══════════════════════════════════════
+
+1️⃣ IDENTIFICAÇÃO E CONTEXTO INSTITUCIONAL
+• Nome: ___________________________
+• Idade: ____ anos   DN: ___/___/___
+• Sexo: ____________
+• Estado civil: ____________
+• Escolaridade: ____________
+• Profissão pregressa: ___________________________
+• Religião: ____________
+• ILPI: ___________________________
+• Data de admissão na ILPI: ___/___/___
+• Motivo da institucionalização:
+  ( ) Ausência de cuidador familiar
+  ( ) Dependência funcional grave
+  ( ) Demência avançada
+  ( ) Decisão do idoso
+  ( ) Negligência/abandono
+  ( ) Questão financeira
+  ( ) Outro: ___________________________
+• Recebe visitas: ( ) Sim — frequência: ____________ ( ) Não
+• Responsável legal/contato: ___________________________
+• Curatela: ( ) Sim ( ) Não ( ) Em processo
+
+2️⃣ AVALIAÇÃO GERIÁTRICA AMPLA (AGA) — RESUMIDA
+
+FUNCIONALIDADE — Atividades Básicas (Katz):
+☐ Banho: ( ) Independente ( ) Ajuda parcial ( ) Dependente
+☐ Vestir: ( ) Independente ( ) Ajuda parcial ( ) Dependente
+☐ Toilete: ( ) Independente ( ) Ajuda parcial ( ) Dependente
+☐ Transferência: ( ) Independente ( ) Ajuda parcial ( ) Dependente
+☐ Continência: ( ) Continente ( ) Incontinente ocasional ( ) Incontinente
+☐ Alimentação: ( ) Independente ( ) Ajuda parcial ( ) Dependente
+Katz: ____/6
+
+FUNCIONALIDADE — Atividades Instrumentais (Lawton):
+☐ Telefone: 3 ( ) 2 ( ) 1 ( )
+☐ Compras: 3 ( ) 2 ( ) 1 ( )
+☐ Preparo de refeições: 3 ( ) 2 ( ) 1 ( )
+☐ Tarefas domésticas: 3 ( ) 2 ( ) 1 ( )
+☐ Lavanderia: 3 ( ) 2 ( ) 1 ( )
+☐ Transporte: 3 ( ) 2 ( ) 1 ( )
+☐ Medicações: 3 ( ) 2 ( ) 1 ( )
+☐ Finanças: 3 ( ) 2 ( ) 1 ( )
+Lawton: ____/27
+
+COGNIÇÃO:
+• MEEM: ____/30 (corte: analfabeto ≥20 | 1-4 anos ≥25 | 5-8 anos ≥26 | >8 anos ≥28)
+• Teste do relógio: ____/5
+• Fluência verbal (animais/1min): ____ (normal ≥12)
+• Diagnóstico cognitivo:
+  ( ) Normal para idade
+  ( ) Comprometimento cognitivo leve (CCL)
+  ( ) Demência leve ( ) Demência moderada ( ) Demência avançada
+• Tipo: ( ) Alzheimer ( ) Vascular ( ) Mista ( ) Corpos de Lewy ( ) Frontotemporal ( ) Outro
+• CDR (Clinical Dementia Rating): ____
+
+HUMOR:
+• GDS-15 (Geriatric Depression Scale): ____/15
+  Normal: 0-5 | Depressão leve: 6-10 | Grave: 11-15
+• Sintomas comportamentais: ( ) Agitação ( ) Apatia ( ) Agressividade
+  ( ) Perambulação ( ) Sundowning ( ) Gritos ( ) Desinibição
+
+3️⃣ AVALIAÇÃO NUTRICIONAL
+• Peso: ____ kg   Altura: ____ m   IMC: ____ kg/m²
+  (Idoso: baixo peso <22 | eutrófico 22-27 | sobrepeso >27)
+• Circunferência da panturrilha: ____ cm (depleção <31 cm)
+• Circunferência do braço: ____ cm
+• MNA-SF (Mini Nutritional Assessment Short Form): ____/14
+  Normal ≥12 | Risco de desnutrição 8-11 | Desnutrido ≤7
+• Via de alimentação: ( ) Oral ( ) SNE ( ) Gastrostomia ( ) Parenteral
+• Consistência: ( ) Livre ( ) Branda ( ) Pastosa ( ) Líquida espessada
+• Suplementação: ( ) Sim — qual: ____________ ( ) Não
+• Disfagia: ( ) Sim — grau: ____________ ( ) Não
+• Hidratação: ____ mL/dia estimado
+
+4️⃣ MOBILIDADE E RISCO DE QUEDAS
+• Deambulação: ( ) Independente ( ) Com auxílio — qual: ____________ ( ) Cadeirante ( ) Acamado
+• Timed Up and Go (TUG): ____ segundos
+  Normal <10s | Risco moderado 10-20s | Alto risco >20s
+• Teste de Tinetti: Equilíbrio ____/16 + Marcha ____/12 = ____/28
+  Alto risco de queda <19
+• Histórico de quedas (último ano): ____ quedas
+• Última queda: ___/___/___  Consequência: ___________________________
+• Fraturas prévias por fragilidade: ___________________________
+• Medo de cair: ( ) Sim ( ) Não
+• Contenção física: ( ) Sim — tipo: ____________ ( ) Não
+
+Fatores de risco para queda:
+☐ Hipotensão ortostática (PA deitado vs em pé)
+☐ Polifarmácia (≥5 medicamentos)
+☐ Uso de psicotrópicos/benzodiazepínicos
+☐ Déficit visual
+☐ Déficit auditivo
+☐ Calçado inadequado
+☐ Ambiente institucional inadequado
+
+5️⃣ SÍNDROMES GERIÁTRICAS — 7 Is
+☐ Imobilidade: ( ) Presente — grau: ____________ ( ) Ausente
+☐ Instabilidade postural: ( ) Presente ( ) Ausente
+☐ Incontinência urinária: ( ) Urgência ( ) Esforço ( ) Mista ( ) Funcional ( ) Ausente
+  Incontinência fecal: ( ) Presente ( ) Ausente
+☐ Insuficiência cognitiva: ( ) Presente — ver AGA ( ) Ausente
+☐ Iatrogenia: medicações potencialmente inapropriadas (Beers/STOPP):
+  ___________________________
+☐ Isolamento social: ( ) Sim ( ) Não
+  Participação em atividades da ILPI: ( ) Sim ( ) Recusa ( ) Impossibilitado
+☐ Insuficiência familiar: ( ) Presente ( ) Ausente
+
+6️⃣ POLIFARMÁCIA E RECONCILIAÇÃO MEDICAMENTOSA
+Medicações em uso (com horários):
+┌──────────────────────────────────────────────────┐
+│ Medicamento  │ Dose  │ Via │ Horário │ Indicação │
+├──────────────┼───────┼─────┼─────────┼───────────┤
+│              │       │     │         │           │
+│              │       │     │         │           │
+│              │       │     │         │           │
+│              │       │     │         │           │
+│              │       │     │         │           │
+└──────────────┴───────┴─────┴─────────┴───────────┘
+• Total de medicamentos: ____
+• Polifarmácia: ( ) Sim (≥5) ( ) Não
+• Critérios de Beers aplicados: ___________________________
+• Medicamentos potencialmente inapropriados identificados:
+  ___________________________
+• Cascata medicamentosa identificada: ( ) Sim ( ) Não
+• Desprescrição sugerida: ___________________________
+
+7️⃣ INTEGRIDADE CUTÂNEA E ÚLCERAS POR PRESSÃO
+• Escala de Braden: ____/23
+  Alto risco ≤12 | Risco moderado 13-14 | Risco baixo 15-18 | Sem risco ≥19
+• Úlceras de pressão atuais:
+  Local: ____________ Estágio: ____ Dimensão: ____x____cm
+  Local: ____________ Estágio: ____ Dimensão: ____x____cm
+• Superfície de apoio: ( ) Colchão comum ( ) Pneumático ( ) Piramidal ( ) Outro
+• Reposicionamento: a cada ____ horas
+• Dermatite associada à incontinência: ( ) Sim ( ) Não
+
+Classificação das úlceras por pressão:
+• Estágio 1: Eritema não branqueável
+• Estágio 2: Perda parcial da espessura da pele
+• Estágio 3: Perda total da espessura da pele
+• Estágio 4: Perda total com exposição de osso/tendão
+• Não classificável: base coberta por escara/esfacelo
+
+8️⃣ DIRETIVAS ANTECIPADAS DE VONTADE (DAV)
+• DAV registradas: ( ) Sim ( ) Não ( ) Em discussão
+• Preferências documentadas:
+  Reanimação cardiopulmonar: ( ) Sim ( ) Não
+  Intubação orotraqueal/VM: ( ) Sim ( ) Não
+  Diálise: ( ) Sim ( ) Não
+  Nutrição artificial (SNE/gastro): ( ) Sim ( ) Não
+  Internação hospitalar: ( ) Sim ( ) Não
+  Sedação paliativa: ( ) Sim ( ) Não
+• Nível de intervenção definido: ( ) Pleno ( ) Limitado ( ) Conforto
+• Decisor substituto designado: ___________________________
+• Paliação indicada: ( ) Sim ( ) Não ( ) Em discussão
+
+9️⃣ PLANO DE CUIDADOS INTERDISCIPLINAR
+• Médico responsável: ___________________________
+• Enfermagem: ___________________________
+• Fisioterapia: ( ) Sim — freq: ____________ ( ) Não
+• Terapia ocupacional: ( ) Sim ( ) Não
+• Fonoaudiologia: ( ) Sim ( ) Não
+• Nutrição: ( ) Sim ( ) Não
+• Psicologia: ( ) Sim ( ) Não
+• Serviço social: ( ) Sim ( ) Não
+• Próxima revisão do plano: ___/___/___`,
+    tips: "Na ILPI, a AGA é obrigatória e deve ser revisada a cada 3-6 meses. Quedas são a principal causa de morbidade — TUG >20s exige intervenção. Braden <12 demanda protocolo intensivo de prevenção de UPP. Polifarmácia é epidêmica: aplique Beers/STOPP-START em toda consulta. SEMPRE discutir DAV precocemente — em demência avançada, o momento já passou. Circunferência da panturrilha <31 cm é o melhor marcador de sarcopenia no idoso institucionalizado.",
+  },
 ];
 
 export default function AnamnesisGuide() {
