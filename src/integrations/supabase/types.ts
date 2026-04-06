@@ -657,6 +657,83 @@ export type Database = {
         }
         Relationships: []
       }
+      rounds_patients: {
+        Row: {
+          admission_date: string | null
+          bed_number: string
+          created_at: string
+          diagnosis: string
+          id: string
+          notes: string
+          patient_name: string
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          admission_date?: string | null
+          bed_number?: string
+          created_at?: string
+          diagnosis?: string
+          id?: string
+          notes?: string
+          patient_name?: string
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          admission_date?: string | null
+          bed_number?: string
+          created_at?: string
+          diagnosis?: string
+          id?: string
+          notes?: string
+          patient_name?: string
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      rounds_tasks: {
+        Row: {
+          completed: boolean
+          created_at: string
+          description: string
+          id: string
+          patient_id: string
+          priority: string
+          user_id: string
+        }
+        Insert: {
+          completed?: boolean
+          created_at?: string
+          description?: string
+          id?: string
+          patient_id: string
+          priority?: string
+          user_id: string
+        }
+        Update: {
+          completed?: boolean
+          created_at?: string
+          description?: string
+          id?: string
+          patient_id?: string
+          priority?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "rounds_tasks_patient_id_fkey"
+            columns: ["patient_id"]
+            isOneToOne: false
+            referencedRelation: "rounds_patients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       suppressed_emails: {
         Row: {
           created_at: string
