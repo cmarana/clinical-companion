@@ -70,6 +70,7 @@ const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
 const Referral = lazy(() => import("@/pages/Referral"));
 const Unsubscribe = lazy(() => import("@/pages/Unsubscribe"));
 const Onboarding = lazy(() => import("@/pages/Onboarding"));
+const ClinicalCaseSimulator = lazy(() => import("@/pages/ClinicalCaseSimulator"));
 
 const queryClient = new QueryClient();
 
@@ -156,6 +157,7 @@ const AppRoutes = () => (
         <Route path="/updates" element={<UpdatesFeed />} />
         <Route path="/pix-success" element={<PixSuccess />} />
         <Route path="/referral" element={<Referral />} />
+        <Route path="/case-simulator" element={<ClinicalCaseSimulator />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>

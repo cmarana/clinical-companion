@@ -82,6 +82,7 @@ const specialtyModules = [
 ];
 
 const studyModules = [
+  { label: "Simulador de Casos", sub: "Casos clínicos com IA", icon: Brain, path: "/case-simulator" },
   { label: "Questões", sub: "Estudo por questões", icon: HelpCircle, path: "/quiz" },
   { label: "Flashcards", sub: "Revisão espaçada (Anki)", icon: Brain, path: "/flashcards" },
   { label: "Residência", sub: "Questões por banca", icon: GraduationCap, path: "/residency-quiz" },
