@@ -399,7 +399,7 @@ function SimulatorContent() {
 
 export default function ClinicalCaseSimulator() {
   return (
-    <PremiumPageGuard featureName="Simulador de Casos Clínicos">
+    <PremiumPageGuard feature="case-simulator" title="Simulador de Casos Clínicos">
       <SimulatorContent />
     </PremiumPageGuard>
   );
