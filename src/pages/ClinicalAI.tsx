@@ -10,6 +10,7 @@ import { streamClinicalAi } from "@/lib/clinicalAiStream";
 import { toast } from "sonner";
 import ClinicalResponseCards from "@/components/ClinicalResponseCards";
 import { motion } from "framer-motion";
+import OfflineBadge from "@/components/OfflineBadge";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -429,6 +430,7 @@ function ClinicalAIContent() {
 export default function ClinicalAI() {
   return (
     <PremiumPageGuard feature="IA Clínica" title="IA Clínica">
+      <OfflineBadge message="A IA Clínica requer conexão com a internet para funcionar" />
       <ClinicalAIContent />
     </PremiumPageGuard>
   );

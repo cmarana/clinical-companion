@@ -6,6 +6,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 import PremiumPageGuard from "@/components/PremiumPageGuard";
+import OfflineBadge from "@/components/OfflineBadge";
 
 type Format = "SOAP" | "I-PASS";
 

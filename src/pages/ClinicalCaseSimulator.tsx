@@ -8,6 +8,7 @@ import { supabase } from "@/integrations/supabase/client";
 import ReactMarkdown from "react-markdown";
 import { motion, AnimatePresence } from "framer-motion";
 import PremiumPageGuard from "@/components/PremiumPageGuard";
+import OfflineBadge from "@/components/OfflineBadge";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
