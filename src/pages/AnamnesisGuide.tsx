@@ -2874,6 +2874,437 @@ Hipnóticos em uso:
   ( ) TDAH`,
     tips: "A TCC-I é o tratamento de 1ª linha para insônia crônica — superior a hipnóticos no longo prazo. Epworth ≥11 indica sonolência diurna excessiva, mas não diferencia a causa (AOS, narcolepsia, sono insuficiente). STOP-BANG ≥5 tem alta sensibilidade para AOS moderada-grave. Ferritina <75 ng/mL em paciente com SPI → repor ferro antes de iniciar dopaminérgicos. TCR isolado em >50 anos evolui para Parkinson/DCL em 80-90% dos casos em 10-15 anos — é um sinal prodrômico. Restrição de tempo na cama (janela de sono) é a técnica mais potente da TCC-I: comece com TTS + 30 min e expanda conforme eficiência >85%.",
   },
+  {
+    id: "exercicio-reabilitacao",
+    title: "Anamnese em Medicina do Exercício e Reabilitação",
+    emoji: "🏋️",
+    tags: ["exercício", "reabilitação", "esporte", "fisiatria"],
+    content: `═══════════════════════════════════════════
+  ANAMNESE EM MEDICINA DO EXERCÍCIO E REABILITAÇÃO
+═══════════════════════════════════════════
+
+1️⃣ PERFIL DO PACIENTE
+• Idade: ____ Sexo: ____
+• Modalidade esportiva / atividade física principal: ___________
+• Nível: ( ) Sedentário ( ) Recreativo ( ) Amador competitivo ( ) Profissional
+• Frequência semanal: ____ dias  Duração média da sessão: ____ min
+• Volume semanal (km/h/repetições): __________
+• Anos de prática: ____
+• Objetivo: ( ) Saúde ( ) Performance ( ) Emagrecimento ( ) Reabilitação ( ) Retorno ao esporte
+
+2️⃣ HISTÓRICO DE LESÕES — MNEMÔNICO "SALTOM"
+S — Segmento acometido: ___________
+A — Atividade que causou a lesão: ___________
+L — Lateralidade: ( ) D ( ) E ( ) Bilateral
+T — Tempo desde a lesão / Tempo de afastamento: ____
+O — Operado? ( ) Sim ( ) Não — Procedimento: ___________
+M — Mecanismo de lesão:
+    ( ) Trauma direto (contato)
+    ( ) Trauma indireto (desaceleração, rotação)
+    ( ) Sobrecarga/overuse (aumento >10%/semana)
+    ( ) Estresse repetitivo (tendinopatia, fratura por estresse)
+
+3️⃣ DOR RELACIONADA AO EXERCÍCIO
+• Localização: ___________
+• Momento:
+  ( ) Início do exercício (warm-up pain) → sugere inflamação ativa
+  ( ) Durante (após __ min/km) → sugere isquemia/mecânico
+  ( ) Após exercício → sugere sobrecarga
+  ( ) Em repouso/noturna → sinal de alarme 🚩
+• EVA em atividade: ___/10   EVA em repouso: ___/10
+• Melhora com aquecimento? ( ) Sim → tendinopatia crônica  ( ) Não
+
+4️⃣ AVALIAÇÃO FUNCIONAL
+┌─────────────────────────────────────┐
+│ TESTES PRÉ-PARTICIPAÇÃO            │
+├─────────────────────────────────────┤
+│ PAR-Q+: ( ) Positivo ( ) Negativo  │
+│ ECG repouso: ( ) Normal ( ) Alt.   │
+│ TE / Ergoespirometria:             │
+│   VO₂máx: ____ mL/kg/min           │
+│   FC máx: ____   LA: ____ bpm      │
+│   Classificação AHA: ___________   │
+│ Composição corporal:               │
+│   IMC: ____  %G: ____              │
+│   Massa magra: ____ kg             │
+│ FMS (Functional Movement Screen):  │
+│   Score: ____/21                   │
+│   Assimetrias: ___________         │
+└─────────────────────────────────────┘
+
+5️⃣ TREINAMENTO ATUAL
+• Periodização: ( ) Linear ( ) Ondulada ( ) Bloco ( ) Sem plano
+• Fase atual: ( ) Preparação geral ( ) Específica ( ) Competitiva ( ) Transição
+• Última competição: ___/___/___  Próxima: ___/___/___
+• Progressão recente (últimas 4 sem):
+  Volume: ( ) Estável ( ) ↑ <10% ( ) ↑ >10% 🚩
+  Intensidade: ( ) Estável ( ) ↑ progressiva ( ) ↑ abrupta 🚩
+• Aquecimento adequado? ( ) Sim ( ) Não
+• Recuperação: ( ) Sono ≥7h ( ) Descanso ativo ( ) Crioterapia ( ) Compressão
+
+6️⃣ NUTRIÇÃO ESPORTIVA
+• Hidratação: ____ L/dia  Durante exercício: ____ mL/h
+• Suplementação:
+  ( ) Whey ( ) Creatina ( ) BCAA ( ) Cafeína ( ) β-alanina
+  ( ) Ferro ( ) Vit D ( ) Outros: ___________
+• RED-S (Relative Energy Deficiency in Sport):
+  ( ) Perda de peso não intencional
+  ( ) Amenorreia / irregularidade menstrual
+  ( ) Fraturas por estresse
+  ( ) ↓ Performance inexplicada
+  ( ) Fadiga crônica / lesões recorrentes
+  → ≥2 sinais = rastrear RED-S (antigo "tríade da atleta feminina")
+
+7️⃣ REABILITAÇÃO — CRITÉRIOS DE RETORNO AO ESPORTE
+┌──────────────────────────────────────────┐
+│ CHECKLIST RETURN-TO-SPORT (RTS)         │
+├──────────────────────────────────────────┤
+│ ( ) Sem dor em repouso e em atividade   │
+│ ( ) ADM completa e simétrica            │
+│ ( ) Força ≥90% do membro contralateral  │
+│     (dinamometria isocinética)          │
+│ ( ) Testes funcionais:                  │
+│     - Single-leg hop ≥90% LSI           │
+│     - Y-balance test simétrico          │
+│     - Triple hop / crossover hop        │
+│ ( ) Propriocepção restaurada            │
+│ ( ) Critérios psicológicos:             │
+│     - ACL-RSI ≥56 (se LCA)             │
+│     - Sem cinesiofobia (Tampa <37)      │
+│ ( ) Treino esporte-específico ≥4 sem    │
+│ ( ) Liberação médica formal             │
+└──────────────────────────────────────────┘
+
+8️⃣ PRESCRIÇÃO DE EXERCÍCIO — FITT-VP
+F — Frequência: ____x/semana
+I — Intensidade: ( ) Leve ( ) Moderada ( ) Vigorosa
+    Zona FC: ____–____ bpm  |  PSE Borg: ____/20
+T — Tempo: ____ min/sessão
+T — Tipo: ( ) Aeróbico ( ) Resistido ( ) Flexibilidade ( ) Neuromotor
+V — Volume: ____ séries x ____ reps ou ____ min total/semana
+P — Progressão: ↑ ≤10%/semana  |  Reavaliação a cada ____ semanas
+
+📌 RECOMENDAÇÕES OMS/ACSM ADULTOS:
+• Aeróbico: 150-300 min/sem moderado OU 75-150 min/sem vigoroso
+• Resistência: ≥2x/semana, todos os grandes grupos musculares
+• Flexibilidade: ≥2-3x/semana, 10-30s por alongamento
+• Equilíbrio: ≥3x/semana (especialmente >65 anos)`,
+    tips: "A regra dos 10% (não aumentar volume >10%/semana) é o principal fator modificável para prevenir lesões por overuse. O FMS score <14 ou assimetria ≥2 pontos prediz risco aumentado de lesão. Para retorno ao esporte após LCA, o critério LSI ≥90% em bateria de hops + ACL-RSI ≥56 reduz risco de re-ruptura. RED-S substituiu o conceito de 'tríade da atleta' e afeta ambos os sexos. VO₂máx <20 mL/kg/min em adulto jovem indica descondicionamento severo; >60 mL/kg/min sugere atleta de elite de endurance.",
+  },
+  {
+    id: "uti-intensiva",
+    title: "Anamnese em Medicina Intensiva (UTI)",
+    emoji: "🏥",
+    tags: ["UTI", "terapia intensiva", "crítico", "ventilação"],
+    content: `═══════════════════════════════════════════
+  ANAMNESE EM MEDICINA INTENSIVA (UTI)
+═══════════════════════════════════════════
+
+1️⃣ ADMISSÃO — MNEMÔNICO "FAST-HUG-MAIDENS"
+(Checklist de Cuidados Diários na UTI)
+
+F — Feeding (Nutrição)
+    Via: ( ) Oral ( ) SNE ( ) SNJ ( ) NPT
+    Meta calórica: ____ kcal/dia  Proteica: ____ g/kg/dia
+    Resíduo gástrico: ____ mL  Tolerância: ( ) Sim ( ) Não
+
+A — Analgesia
+    Escala: ( ) EVA ____/10 ( ) BPS ____/12 ( ) CPOT ____/8
+    Esquema: ___________
+
+S — Sedation (Sedação)
+    RASS alvo: ____  RASS atual: ____
+    Fármaco: ___________  Dose: ____
+    ( ) Despertar diário programado (SAT)
+
+T — Thromboembolic prophylaxis
+    ( ) Enoxaparina 40 mg/dia SC
+    ( ) HNF 5.000 UI 8/8h SC
+    ( ) Mecânica (CPI)
+    ( ) Contraindicação: ___________
+
+H — Head of bed elevation (Cabeceira ≥30°)
+    ( ) Sim ( ) Não — Justificativa: ___________
+
+U — Ulcer prophylaxis (Profilaxia de úlcera de estresse)
+    ( ) Omeprazol 40 mg/dia IV
+    ( ) Pantoprazol 40 mg/dia IV
+    Indicação: ( ) VM >48h ( ) Coagulopatia ( ) Politrauma ( ) TCE grave
+
+G — Glucose control (Controle glicêmico)
+    Glicemia capilar: ____ mg/dL  Protocolo insulina: ___________
+    Alvo: 140-180 mg/dL (NICE-SUGAR)
+
+2️⃣ AVALIAÇÃO HEMODINÂMICA
+┌────────────────────────────────────────────┐
+│ PARÂMETROS HEMODINÂMICOS                  │
+├────────────────────────────────────────────┤
+│ PA: ____/____ mmHg   PAM: ____ mmHg       │
+│ FC: ____ bpm   Ritmo: ___________         │
+│ PVC: ____ mmHg (se CVC)                   │
+│ Lactato: ____ mmol/L                      │
+│ SvO₂/ScvO₂: ____%                        │
+│ Débito urinário: ____ mL/kg/h             │
+│ Enchimento capilar: ____ seg              │
+│ Delta PP: ____%  (se VM e ritmo sinusal)  │
+│ IVC USG: ____ mm / Colapsibilidade: ___% │
+│                                           │
+│ DVA em uso:                               │
+│ ( ) Noradrenalina: ____ mcg/kg/min        │
+│ ( ) Adrenalina: ____ mcg/kg/min           │
+│ ( ) Vasopressina: ____ UI/min             │
+│ ( ) Dobutamina: ____ mcg/kg/min           │
+│ ( ) Milrinona: ____ mcg/kg/min            │
+└────────────────────────────────────────────┘
+
+3️⃣ VENTILAÇÃO MECÂNICA
+• Modo: ( ) VCV ( ) PCV ( ) PSV ( ) PRVC ( ) APRV
+• Parâmetros:
+  FiO₂: ____%   PEEP: ____ cmH₂O
+  VT: ____ mL (____ mL/kg peso predito)
+  FR programada: ____/min   FR total: ____/min
+  Ppico: ____ cmH₂O   Pplatô: ____ cmH₂O
+  Driving Pressure: ____ cmH₂O (alvo <15)
+  Complacência estática: ____ mL/cmH₂O
+• Gasometria:
+  pH: ____  pCO₂: ____  pO₂: ____  HCO₃: ____  BE: ____
+  P/F: ____ (PaO₂/FiO₂)
+  Classificação SDRA: ( ) Leve 200-300 ( ) Moderada 100-200 ( ) Grave <100
+
+• Estratégia protetora:
+  ( ) VT ≤6 mL/kg peso predito
+  ( ) Pplatô ≤30 cmH₂O
+  ( ) Driving Pressure ≤15 cmH₂O
+  ( ) PEEP tabela PEEP-FiO₂ (ARDSNet)
+  ( ) Pronação (se P/F <150 com FiO₂ ≥0.6 e PEEP ≥5)
+
+4️⃣ DISFUNÇÕES ORGÂNICAS — SOFA SCORE
+┌──────────────────────────────────────────────┐
+│     SOFA SCORE DIÁRIO                        │
+├──────────────┬───────────────────────────────┤
+│ Respiratório │ P/F: ____ → Score: ____       │
+│ Coagulação   │ Plaquetas: ____ → Score: ____ │
+│ Hepático     │ Bilirrubina: ____ → Score: ___│
+│ Cardiovasc.  │ PAM/DVA: ____ → Score: ____   │
+│ Neurológico  │ Glasgow: ____ → Score: ____   │
+│ Renal        │ Cr/DU: ____ → Score: ____     │
+├──────────────┼───────────────────────────────┤
+│ TOTAL        │ ____/24                       │
+└──────────────┴───────────────────────────────┘
+Variação SOFA ≥2 = sepse (Sepsis-3)
+
+5️⃣ BUNDLES E PROTOCOLOS ATIVOS
+( ) Bundle de Sepse (Hour-1)
+( ) Protocolo de Ventilação Protetora
+( ) Protocolo de Desmame Ventilatório (TRE)
+( ) Despertar diário (SAT + SBT)
+( ) Protocolo de Mobilização Precoce
+( ) Bundle de Prevenção PAV
+( ) Bundle de Prevenção ITU associada a cateter
+( ) Bundle de Prevenção de IPCS
+( ) Protocolo de Controle de Temperatura (TTM)
+( ) Protocolo de Neuroproteção (TCE/AVC)
+
+6️⃣ MEDICAÇÕES DE ALTA VIGILÂNCIA
+┌──────────────────────────────────────┐
+│ RECONCILIAÇÃO UTI                   │
+├──────────────────────────────────────┤
+│ Antimicrobianos:                    │
+│  _______________ Dia: ___/___       │
+│  _______________ Dia: ___/___       │
+│ Corticoides: ( ) Sim → ___________  │
+│ Anticoagulação terapêutica:         │
+│  ( ) Sim → ___________ Dose: ____   │
+│ Insulina: ( ) Protocolo contínuo    │
+│ Hemoderivados últimas 24h:          │
+│  ( ) CH ____ UI ( ) PFC ( ) PLQ     │
+│ Diálise: ( ) Sim → Modalidade: ____ │
+│  ( ) HD intermitente ( ) SLED       │
+│  ( ) CRRT (CVVHDF)                  │
+└──────────────────────────────────────┘
+
+7️⃣ PROGNÓSTICO E COMUNICAÇÃO
+• APACHE II: ____  Mortalidade estimada: ____%
+• SAPS 3: ____  Mortalidade estimada: ____%
+• Decisão sobre limitação terapêutica: ( ) Sim ( ) Não
+  ( ) DNR ( ) Sem DVA ( ) Sem diálise ( ) Cuidados de conforto
+• Conferência familiar realizada: ( ) Sim — Data: ___/___/___
+• Diretivas antecipadas registradas: ( ) Sim ( ) Não`,
+    tips: "O FAST-HUG é o checklist diário mais utilizado em UTIs — garante que nenhum item essencial seja esquecido na passagem de plantão. Driving Pressure (Pplatô - PEEP) <15 cmH₂O é o parâmetro mais associado a sobrevida na SDRA. Despertar diário (SAT) + teste de respiração espontânea (SBT) combinados reduzem tempo de VM em ~1,5 dias vs. SBT isolado. NICE-SUGAR mostrou que alvo glicêmico 140-180 mg/dL é superior ao controle estrito (80-110) na UTI. SOFA ≥2 tem sensibilidade >90% para identificar sepse — substituiu os critérios SIRS no Sepsis-3. Mobilização precoce (até D1-D2) reduz tempo de internação e melhora funcionalidade na alta.",
+  },
+  {
+    id: "genetica-clinica",
+    title: "Anamnese em Genética Clínica",
+    emoji: "🧬",
+    tags: ["genética", "dismorfologia", "aconselhamento", "heredograma"],
+    content: `═══════════════════════════════════════════
+  ANAMNESE EM GENÉTICA CLÍNICA
+═══════════════════════════════════════════
+
+1️⃣ MOTIVO DO ENCAMINHAMENTO
+( ) Malformação congênita
+( ) Atraso do DNPM / deficiência intelectual
+( ) Dismorfias faciais / características atípicas
+( ) Diagnóstico pré-natal alterado
+( ) Abortos de repetição (≥2)
+( ) Consanguinidade com desejo reprodutivo
+( ) Doença genética conhecida na família
+( ) Câncer hereditário (suspeita de síndrome)
+( ) Erro inato do metabolismo (triagem neonatal alterada)
+( ) Aconselhamento genético pré-concepcional
+( ) Outro: ___________
+
+2️⃣ HEREDOGRAMA — MÍNIMO 3 GERAÇÕES
+📌 SÍMBOLOS PADRÃO:
+□ = Masculino   ○ = Feminino   ◇ = Sexo indeterminado
+■ ● = Afetado(a)   / = Falecido(a)
+═══ = Consanguinidade   ─── = Casal
+│ = Filiação   ∥ = Gêmeos dizigóticos   ||| = Monozigóticos
+
+Para cada membro afetado registrar:
+• Idade atual ou de óbito
+• Diagnóstico confirmado ou suspeita
+• Idade de início dos sintomas
+• Exames genéticos realizados
+
+PADRÃO DE HERANÇA SUGERIDO:
+( ) Autossômica dominante (AD) — afetados em todas gerações, ♂=♀
+( ) Autossômica recessiva (AR) — pais saudáveis, consanguinidade
+( ) Ligada ao X recessiva — ♂ afetados, ♀ portadoras
+( ) Ligada ao X dominante — ♂ e ♀, mais grave em ♂, letal em ♂?
+( ) Mitocondrial — herança materna exclusiva
+( ) Multifatorial — agregação familiar sem padrão mendeliano
+( ) Esporádico / Mutação de novo
+
+3️⃣ HISTÓRIA GESTACIONAL E PERINATAL
+• Gestação: ( ) Planejada ( ) Espontânea ( ) TRA (FIV/ICSI)
+• IG ao nascimento: ____ semanas  Peso: ____ g  Comprimento: ____ cm  PC: ____ cm
+• Classificação: ( ) AIG ( ) PIG ( ) GIG
+• Intercorrências gestacionais:
+  ( ) Infecção (TORCH): ___________
+  ( ) Diabetes gestacional  ( ) Pré-eclâmpsia
+  ( ) Sangramento 1º/2º/3º trimestre
+  ( ) Exposição teratogênica: ___________
+  ( ) Oligoâmnio ( ) Polidrâmnio
+  ( ) Restrição de crescimento intrauterino
+• Rastreamento pré-natal:
+  ( ) USG morfológico: ___________
+  ( ) TN: ____ mm  ( ) Bioquímico: ___________
+  ( ) NIPT/cfDNA: ( ) Baixo risco ( ) Alto risco — Cromossomo: ____
+  ( ) Amniocentese/Biópsia de vilo: ___________
+  ( ) Cariótipo fetal: ___________
+• Apgar: ___/___ (1'/5')
+• Intercorrências neonatais: ___________
+
+4️⃣ DESENVOLVIMENTO NEUROPSICOMOTOR (DNPM)
+┌─────────────────────────────────────────┐
+│ MARCOS DO DESENVOLVIMENTO              │
+├─────────────────────────────────────────┤
+│ Sustento cefálico: ____ meses (N: 3m)  │
+│ Sentar sem apoio: ____ meses (N: 6-7m) │
+│ Engatinhar: ____ meses (N: 8-10m)      │
+│ Andar independente: ____ meses (N: 12m)│
+│ Primeiras palavras: ____ meses (N: 12m)│
+│ Frases: ____ meses (N: 24m)            │
+│ Controle esfincteriano: ____ meses     │
+│                                        │
+│ REGRESSÃO? ( ) Sim → Idade: ____       │
+│ Marcos perdidos: ___________           │
+│ → Suspeitar: dça metabólica, Rett,     │
+│   dça neurodegenerativa               │
+└─────────────────────────────────────────┘
+
+5️⃣ EXAME DISMORFOLÓGICO SISTEMÁTICO
+📌 MNEMÔNICO "FACES-HANDS" para avaliar dismorfias
+
+F — Face: formato (redonda/triangular/alongada), assimetria
+A — Auricular: implantação baixa, rotação posterior, tags pré-auriculares
+C — Cranial: micro/macrocefalia, fontanelas, plagiocefalia
+E — Eyes (olhos): epicanto, telecanto, hipertelorismo, fendas palpebrais
+S — Skull/Sutures: craniossinostose, bossa frontal
+
+H — Hands/Feet: clinodactilia, braquidactilia, polidactilia, sindactilia
+A — Abdominal: hérnia umbilical, diástase de retos, genitália
+N — Neck: pescoço alado, implantação baixa de cabelos
+D — Dermatoglíficos: prega palmar única, dermatóglifos atípicos
+S — Skin: manchas café com leite (>6 = NF1), hipopigmentação (ET)
+
+MEDIDAS ANTROPOMÉTRICAS OBRIGATÓRIAS:
+• PC (perímetro cefálico): ____ cm → Percentil: ____
+• Distância interpupilar: ____ mm
+• Comprimento da orelha: ____ cm
+• Comprimento da mão: ____ cm
+• Relação segmento superior/inferior: ____
+• Envergadura: ____ cm  (Envergadura > altura → Marfan?)
+
+6️⃣ TRIAGEM NEONATAL E EXAMES GENÉTICOS
+┌──────────────────────────────────────────────┐
+│ EXAMES REALIZADOS                            │
+├──────────────────────────────────────────────┤
+│ Teste do Pezinho (triagem neonatal):         │
+│ ( ) Básico (6 doenças) ( ) Expandido         │
+│ Resultado: ___________                       │
+│                                              │
+│ Cariótipo: ( ) Normal ( ) Alterado           │
+│ Resultado: ___________                       │
+│                                              │
+│ FISH: ( ) Realizado — Resultado: ___         │
+│                                              │
+│ Array-CGH / SNP-array:                       │
+│ ( ) Normal ( ) CNV patogênica                │
+│ Resultado: ___________                       │
+│                                              │
+│ Exoma / Genoma:                              │
+│ ( ) Solo ( ) Trio (paciente + pais)          │
+│ Variante identificada: ___________           │
+│ Classificação ACMG: ( ) Patogênica           │
+│ ( ) Provavelmente patogênica ( ) VUS         │
+│ ( ) Provavelmente benigna ( ) Benigna        │
+│                                              │
+│ Painel gênico específico:                    │
+│ Nome do painel: ___________                  │
+│ Resultado: ___________                       │
+│                                              │
+│ Dosagens enzimáticas (EIM):                  │
+│ _______________ Resultado: ___________       │
+│ Cromatografia de aminoácidos: ___________    │
+│ Ácidos orgânicos urinários: ___________      │
+│ Acilcarnitinas: ___________                  │
+└──────────────────────────────────────────────┘
+
+7️⃣ ACONSELHAMENTO GENÉTICO
+• Risco de recorrência informado: ____%
+• Padrão de herança explicado: ( ) Sim ( ) Não
+• Teste genético oferecido a familiares em risco: ( ) Sim ( ) Não
+• Diagnóstico pré-natal disponível: ( ) Sim ( ) Não
+  Método: ( ) CVS ( ) Amniocentese ( ) PGT-M ( ) NIPT
+• Encaminhamentos:
+  ( ) Estimulação precoce  ( ) Fonoterapia  ( ) TO
+  ( ) Fisioterapia  ( ) Psicologia  ( ) Serviço Social
+  ( ) APAE / AACD / Centro de referência
+• Associação de pacientes indicada: ___________
+• Registro em DATASUS/SINAN (se doença de notificação): ( ) Sim ( ) Não
+
+📌 SÍNDROMES GENÉTICAS — RED FLAGS:
+
+→ Down (T21): hipotonia neonatal, fenda palpebral oblíqua para cima, 
+  prega palmar única, espaço sandália
+→ Edwards (T18): CIUR, mão cerrada (2º e 5º sobre 3º e 4º), 
+  pé em mata-borrão, micrognatia
+→ Patau (T13): holoprosencefalia, fenda labiopalatina, polidactilia
+→ Turner (45,X): pescoço alado, linfedema neonatal, baixa estatura
+→ Klinefelter (47,XXY): alta estatura, ginecomastia, infertilidade
+→ Marfan: alta estatura, aracnodactilia, luxação de cristalino, 
+  dilatação aórtica (Ghent criteria)
+→ NF1: ≥6 manchas café com leite, neurofibromas, Lisch, glioma óptico
+→ Williams: face de "elfo", estenose aórtica supravalvar, hipercalcemia
+→ Prader-Willi: hipotonia neonatal grave, hiperfagia, obesidade, 
+  hipogonadismo
+→ Angelman: riso imotivado, ataxia, ausência de fala, EEG típico
+→ DiGeorge (22q11): cardiopatia conotruncal, hipocalcemia, 
+  palato insuficiente, imunodeficiência`,
+    tips: "O heredograma de 3 gerações é obrigatório — ele sozinho pode sugerir o padrão de herança e direcionar a investigação. O array-CGH (microarray) substituiu o cariótipo como exame de 1ª linha para investigação de deficiência intelectual e malformações múltiplas (rendimento diagnóstico 15-20% vs 3-5% do cariótipo convencional). O exoma clínico (trio) tem rendimento diagnóstico de 25-40% quando bem indicado. VUS (variante de significado incerto) NÃO deve ser usada para aconselhamento genético — reclassificação periódica é essencial. >6 manchas café com leite >5 mm pré-puberal ou >15 mm pós-puberal = critério diagnóstico de NF1. A classificação ACMG em 5 categorias (patogênica a benigna) é o padrão-ouro para interpretação de variantes.",
+  },
 ];
 
 export default function AnamnesisGuide() {
