@@ -9,9 +9,10 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import {
   User, Camera, Save, LogOut, Shield, Mail, Clock, Sun, Moon, Eclipse, Check,
-  GraduationCap, MapPin, Heart, Stethoscope, Building2, Calendar
+  GraduationCap, MapPin, Heart, Stethoscope, Building2, Calendar, CreditCard, Crown, ExternalLink
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { Badge } from "@/components/ui/badge";
 import { useTheme } from "@/contexts/ThemeContext";
 import { hapticLight } from "@/lib/haptics";
 
@@ -684,11 +685,51 @@ export default function Profile() {
                       : "Premium ativo"
                     : "Plano gratuito"}
                 </span>
+                {subscription.subscribed && (
+                  <Badge variant="outline" className="text-[9px] ml-auto bg-primary/10 text-primary border-primary/20">
+                    <Crown size={10} className="mr-1" /> Pro
+                  </Badge>
+                )}
               </div>
               <div className="flex items-center gap-3 text-sm">
                 <Clock size={16} className="text-muted-foreground shrink-0" />
                 <span>Membro desde {new Date(user.created_at).toLocaleDateString("pt-BR")}</span>
               </div>
+
+              {/* Gerenciar Assinatura */}
+              {subscription.subscribed ? (
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-full rounded-xl gap-2 mt-2"
+                  onClick={async () => {
+                    try {
+                      const { data: { session } } = await supabase.auth.getSession();
+                      const resp = await supabase.functions.invoke("customer-portal", {
+                        headers: { Authorization: `Bearer ${session?.access_token}` },
+                      });
+                      if (resp.data?.url) window.open(resp.data.url, "_blank");
+                      else toast.error("Erro ao abrir portal de assinatura");
+                    } catch {
+                      toast.error("Erro ao acessar gerenciamento");
+                    }
+                  }}
+                >
+                  <CreditCard size={14} />
+                  Gerenciar Assinatura
+                  <ExternalLink size={12} className="ml-auto opacity-50" />
+                </Button>
+              ) : (
+                <Button
+                  variant="default"
+                  size="sm"
+                  className="w-full rounded-xl gap-2 mt-2"
+                  onClick={() => navigate("/pricing")}
+                >
+                  <Crown size={14} />
+                  Assinar Premium
+                </Button>
+              )}
             </div>
           </Section>
 
