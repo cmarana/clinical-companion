@@ -1,5 +1,6 @@
 import type { FullProtocol } from "./types";
 
+
 export const cardioFullProtocols10: FullProtocol[] = [
   {
     id: "fp-c10-valvopatia-mitral-reumática",
