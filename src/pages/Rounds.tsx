@@ -362,6 +362,68 @@ const Rounds = () => {
   const totalPending = tasks.filter((t) => !t.completed).length;
   const totalUrgent = tasks.filter((t) => t.priority === "urgent" && !t.completed).length;
 
+  const exportPDF = useCallback(() => {
+    const now = new Date();
+    const dateStr = now.toLocaleDateString("pt-BR");
+    const timeStr = now.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+
+    const buildPatientSection = (p: RoundsPatient) => {
+      const pTasks = tasks.filter((t) => t.patient_id === p.id);
+      const pendingTasks = pTasks.filter((t) => !t.completed);
+      const completedTasks = pTasks.filter((t) => t.completed);
+
+      return `
+        <div style="border:1px solid #ddd;border-radius:8px;padding:16px;margin-bottom:12px;page-break-inside:avoid;">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+            <div style="background:#2563eb;color:#fff;padding:6px 12px;border-radius:6px;font-weight:bold;font-size:16px;">${p.bed_number || "—"}</div>
+            <div>
+              <div style="font-weight:bold;font-size:14px;">${p.patient_name || "Sem nome"}</div>
+              <div style="color:#666;font-size:12px;">${p.diagnosis || "Sem diagnóstico"}</div>
+            </div>
+            <div style="margin-left:auto;font-size:11px;color:#888;">${p.status === "discharged" ? "🟢 Alta" : "🔵 Ativo"}</div>
+          </div>
+          ${p.notes ? `<div style="background:#f8f9fa;padding:10px;border-radius:6px;font-size:12px;margin-bottom:10px;white-space:pre-wrap;"><strong>Evolução:</strong><br/>${p.notes}</div>` : ""}
+          ${pendingTasks.length > 0 ? `
+            <div style="margin-bottom:6px;font-size:12px;font-weight:600;color:#d97706;">Pendências (${pendingTasks.length}):</div>
+            <ul style="margin:0;padding-left:18px;font-size:12px;">
+              ${pendingTasks.map((t) => `<li style="margin-bottom:2px;${t.priority === "urgent" ? "color:#dc2626;font-weight:600;" : ""}">${t.priority === "urgent" ? "⚠️ " : ""}${t.description}</li>`).join("")}
+            </ul>
+          ` : ""}
+          ${completedTasks.length > 0 ? `
+            <div style="margin-top:6px;font-size:11px;color:#888;">✅ Concluídas: ${completedTasks.map((t) => t.description).join(", ")}</div>
+          ` : ""}
+        </div>`;
+    };
+
+    const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Round ${dateStr}</title>
+      <style>
+        body{font-family:-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,sans-serif;max-width:800px;margin:0 auto;padding:20px;color:#1a1a1a;}
+        @media print{body{padding:10px;}}
+        h1{font-size:20px;margin-bottom:4px;}
+        .summary{display:flex;gap:16px;margin-bottom:16px;padding:12px;background:#f0f4ff;border-radius:8px;font-size:13px;}
+        .summary span{font-weight:600;}
+      </style></head><body>
+      <h1>📋 Relatório de Round</h1>
+      <div style="color:#666;font-size:13px;margin-bottom:16px;">${dateStr} às ${timeStr}</div>
+      <div class="summary">
+        <div>Pacientes ativos: <span>${activePatients.length}</span></div>
+        <div>Pendências: <span>${totalPending}</span></div>
+        ${totalUrgent > 0 ? `<div style="color:#dc2626;">Urgentes: <span>${totalUrgent}</span></div>` : ""}
+        <div>Altas: <span>${dischargedPatients.length}</span></div>
+      </div>
+      ${activePatients.length > 0 ? `<h2 style="font-size:15px;margin-bottom:8px;">Pacientes Ativos</h2>${activePatients.map(buildPatientSection).join("")}` : ""}
+      ${dischargedPatients.length > 0 ? `<h2 style="font-size:15px;margin-bottom:8px;margin-top:20px;">Pacientes com Alta</h2>${dischargedPatients.map(buildPatientSection).join("")}` : ""}
+      <div style="margin-top:24px;padding-top:12px;border-top:1px solid #ddd;font-size:11px;color:#aaa;text-align:center;">Gerado pelo PULSO — ${dateStr} ${timeStr}</div>
+    </body></html>`;
+
+    const w = window.open("", "_blank");
+    if (!w) { toast.error("Permita pop-ups para exportar o PDF"); return; }
+    w.document.write(html);
+    w.document.close();
+    setTimeout(() => { w.print(); }, 400);
+    toast.success("PDF pronto para salvar");
+  }, [patients, tasks, activePatients, dischargedPatients, totalPending, totalUrgent]);
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-background">
