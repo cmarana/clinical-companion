@@ -4,7 +4,7 @@ import {
   Baby, Heart, Stethoscope, BookOpen, HelpCircle,
   AlertTriangle, Zap, Moon, Sun, ChevronRight, Bot, FlaskConical,
   Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain, GraduationCap,
-  Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Eclipse, Newspaper, Building2
+  Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Eclipse, Newspaper, Building2, Mic
 } from "lucide-react";
 import pulsoLogo from "@/assets/pulso-logo.png";
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -88,6 +88,7 @@ const studyModules = [
   { label: "Flashcards", sub: "Revisão espaçada (Anki)", icon: Brain, path: "/flashcards" },
   { label: "Residência", sub: "Questões por banca", icon: GraduationCap, path: "/residency-quiz" },
   { label: "Dashboard", sub: "Streak e progresso", icon: BarChart3, path: "/study-dashboard" },
+  { label: "Evolução por Voz", sub: "Voz → SOAP / I-PASS com IA", icon: Mic, path: "/voice-evolution" },
   { label: "Evoluções", sub: "Templates de evolução", icon: FileEdit, path: "/evolution-templates" },
   { label: "Documentos", sub: "Receitas e atestados", icon: FileText, path: "/documents" },
   { label: "Modo Offline", sub: "Plantão sem internet", icon: WifiOff, path: "/offline" },
