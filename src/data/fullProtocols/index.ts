@@ -210,6 +210,7 @@ import { psychiatryFullProtocols6 } from "./psychiatry6";
 import { otherEmergenciesFullProtocols7 } from "./other_emergencies7";
 import { dermatologyFullProtocols7 } from "./dermatology7";
 import { finalExpansionProtocols } from "./finalExpansion";
+import { finalExpansionProtocols2 } from "./finalExpansion2";
 
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
@@ -448,6 +449,7 @@ export const fullProtocols: FullProtocol[] = [
   ...otherEmergenciesFullProtocols7,
   ...dermatologyFullProtocols7,
   ...finalExpansionProtocols,
+  ...finalExpansionProtocols2,
 ];
 export function getFullProtocol(id: string) {
   return fullProtocols.find(p => p.id === id);
