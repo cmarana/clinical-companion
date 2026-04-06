@@ -4,7 +4,7 @@ import {
   Baby, Heart, Stethoscope, BookOpen, HelpCircle,
   AlertTriangle, Zap, Moon, Sun, ChevronRight, Bot, FlaskConical,
   Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain, GraduationCap,
-  Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Eclipse, Newspaper, Building2, Mic, ShieldCheck, BedDouble
+  Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Eclipse, Newspaper, Building2, Mic, ShieldCheck, BedDouble, ArrowRightLeft
 } from "lucide-react";
 import pulsoLogo from "@/assets/pulso-logo.png";
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -60,6 +60,7 @@ const allPrimaryModules: Module[] = [
 
 // ── GROUPED SECONDARY MODULES ─────────────────────────────────
 const toolsModules = [
+  { label: "Comparar Condutas", sub: "SUS × Sociedades × Internacional", icon: ArrowRightLeft, path: "/conduct-comparator" },
   { label: "Checar Prescrição", sub: "IA verifica interações e doses", icon: ShieldCheck, path: "/prescription-checker" },
   { label: "Modo Rounds", sub: "Visita de leito com checklist", icon: BedDouble, path: "/rounds" },
   { label: "Calculadoras", sub: "Scores e doses", icon: Calculator, path: "/calculators" },

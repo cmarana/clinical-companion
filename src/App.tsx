@@ -76,6 +76,7 @@ const VoiceEvolution = lazy(() => import("@/pages/VoiceEvolution"));
 const PrescriptionChecker = lazy(() => import("@/pages/PrescriptionChecker"));
 const Rounds = lazy(() => import("@/pages/Rounds"));
 const DischargeSummary = lazy(() => import("@/pages/DischargeSummary"));
+const ConductComparator = lazy(() => import("@/pages/ConductComparator"));
 
 const queryClient = new QueryClient();
 
@@ -168,6 +169,7 @@ const AppRoutes = () => (
         <Route path="/prescription-checker" element={<PrescriptionChecker />} />
         <Route path="/rounds" element={<Rounds />} />
         <Route path="/discharge-summary" element={<DischargeSummary />} />
+        <Route path="/conduct-comparator" element={<ConductComparator />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
