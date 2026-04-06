@@ -4,7 +4,7 @@ import {
   Baby, Heart, Stethoscope, BookOpen, HelpCircle,
   AlertTriangle, Zap, Moon, Sun, ChevronRight, Bot, FlaskConical,
   Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain, GraduationCap,
-  Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Eclipse, Newspaper
+  Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Eclipse, Newspaper, Building2
 } from "lucide-react";
 import pulsoLogo from "@/assets/pulso-logo.png";
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -68,6 +68,7 @@ const toolsModules = [
   { label: "CID-10", sub: "Busca de códigos", icon: Hash, path: "/cid" },
   { label: "Valores de Ref.", sub: "Exames laboratoriais", icon: TestTubes, path: "/lab-reference" },
   { label: "Checklists", sub: "Verificações de segurança", icon: CheckSquare, path: "/checklists" },
+  { label: "Prot. Institucionais", sub: "Protocolos do seu hospital", icon: Building2, path: "/institutional-protocols" },
 ];
 
 const specialtyModules = [
