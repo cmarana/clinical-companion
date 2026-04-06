@@ -72,6 +72,7 @@ const Unsubscribe = lazy(() => import("@/pages/Unsubscribe"));
 const Onboarding = lazy(() => import("@/pages/Onboarding"));
 const ClinicalCaseSimulator = lazy(() => import("@/pages/ClinicalCaseSimulator"));
 const InstitutionalProtocols = lazy(() => import("@/pages/InstitutionalProtocols"));
+const VoiceEvolution = lazy(() => import("@/pages/VoiceEvolution"));
 
 const queryClient = new QueryClient();
 
@@ -160,6 +161,7 @@ const AppRoutes = () => (
         <Route path="/referral" element={<Referral />} />
         <Route path="/case-simulator" element={<ClinicalCaseSimulator />} />
         <Route path="/institutional-protocols" element={<InstitutionalProtocols />} />
+        <Route path="/voice-evolution" element={<VoiceEvolution />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
