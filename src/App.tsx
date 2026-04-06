@@ -62,6 +62,7 @@ const AnamnesisGuide = lazy(() => import("@/pages/AnamnesisGuide"));
 const OfflineSetup = lazy(() => import("@/pages/OfflineSetup"));
 const PushNotificationSettings = lazy(() => import("@/pages/PushNotificationSettings"));
 const AdminAnalytics = lazy(() => import("@/pages/AdminAnalytics"));
+const AdminFeedback = lazy(() => import("@/pages/AdminFeedback"));
 const UserAnalytics = lazy(() => import("@/pages/UserAnalytics"));
 const UpdatesFeed = lazy(() => import("@/pages/UpdatesFeed"));
 
@@ -158,8 +159,9 @@ const AppRoutes = () => (
         <Route path="/anamnesis-guide" element={<AnamnesisGuide />} />
         <Route path="/offline" element={<OfflineSetup />} />
         <Route path="/push-notifications" element={<PushNotificationSettings />} />
-        <Route path="/admin/analytics" element={<AdminAnalytics />} />
-        <Route path="/admin/users" element={<UserAnalytics />} />
+          <Route path="/admin/analytics" element={<AdminAnalytics />} />
+          <Route path="/admin/feedback" element={<AdminFeedback />} />
+          <Route path="/admin/users" element={<UserAnalytics />} />
         <Route path="/updates" element={<UpdatesFeed />} />
         
         <Route path="/referral" element={<Referral />} />
