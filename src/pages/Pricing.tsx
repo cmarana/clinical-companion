@@ -47,7 +47,14 @@ export default function Pricing() {
         title: "🎉 Assinatura realizada!",
         description: "Bem-vindo ao PULSO Pro! Aproveite 7 dias grátis.",
       });
-      checkSubscription();
+      // Force recheck with retries to allow Stripe webhook to process
+      const recheck = async () => {
+        for (let i = 0; i < 5; i++) {
+          await new Promise(r => setTimeout(r, 2000));
+          await checkSubscription(true);
+        }
+      };
+      recheck();
     }
   }, [searchParams]);
 
