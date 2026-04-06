@@ -120,7 +120,7 @@ export const respiratoryFullProtocols7: FullProtocol[] = [
       {
             "id": "differential",
             "title": "Diagnóstico Diferencial",
-            "content": "Atelectasia (pode mimetizar), consolidação, massa pleural, elevação diafragmática, derrame pericárdico."
+            "content": "Diagnóstico diferencial de TEP de Alto Risco:\\n• Condições que mimetizam a apresentação clínica\\n• Características que distinguem cada diagnóstico diferencial\\n• Red flags para diagnósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"
       },
       {
             "id": "conduct",
@@ -140,22 +140,25 @@ export const respiratoryFullProtocols7: FullProtocol[] = [
       {
             "id": "followup",
             "title": "Acompanhamento",
-            "content": "Rx controle pós-drenagem. Se septado: fibrinolítico intrapleural (Alteplase + DNase) ou VATS. RX ambulatorial 4-6 semanas. Neoplásico recorrente: pleurodese. TB: RIPE 6 meses completos."
-      },
-      {
-            "id": "complications",
+            "content": "R"id": "complications",
             "title": "Complicações",
-            "content": "Pneumotórax iatrogênico, edema de reexpansão (>1,5L rápido), empiema, septação e encarceramento, fístula broncopleural."
+            "content": "Complicações de TEP de Alto Risco:\\n• Complicações agudas e crônicas\\n• Fatores de risco para complicações\\n• Diagnóstico precoce de complicações\\"id": "criteria",
+            "title": "Critérios de Internação / UTI / Alta",
+            "content": "Critérios de internação, UTI e alta para TEP de Alto Risco:\\n\\nInternação: sinais de gravidade, instabilidade clínica, necessidade de monitorização ou terapêutica IV, falha do "id": "references",
+            "title": "Referências Bibliográficas",
+            "content": "Referências para TEP de Alto Risco:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"ões ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."), empiema, septação e encarceramento, fístula broncopleural."
       },
       {
             "id": "criteria",
             "title": "Critérios de Internação / UTI / Alta",
-            "content": "Internação: empiema, derrame grande, necessidade de drenagem. UTI: insuficiência respiratória, sepse. Alta: derrame pequeno estável, causa tratada."
+            "content": "Critérios de internação, UTI e alta para Derrame Pleural - Protocolo Completo:\\n\\nInternação: sinais de gravidade, instabilidade clínica, necessidade de monitorização ou terapê"id": "references",
+            "title": "Referências Bibliográficas",
+            "content": "Referências para Derrame Pleural - Protocolo Completo:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"sência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."
       },
       {
             "id": "references",
             "title": "Referências Bibliográficas",
-            "content": "BTS Pleural Disease Guidelines 2023. SBPT Derrame Pleural 2021. Light RW. Pleural Diseases 7th ed. Rahman NM et al. MIST2 Trial NEJM 2011."
+            "content": "Referências para Pneumonia Nosocomial / PAV:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"
       }
 ],
   },
@@ -214,17 +217,11 @@ export const respiratoryFullProtocols7: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescrições",
-            "content": "1. Meropenem 1g IV 8/8h (infusão em 3h) — se risco MDR; 2. Vancomicina 15-20mg/kg IV 12/12h (dosar vancocinemia no 4º dia — alvo AUC/MIC 400-600); 3. OU Piperacilina-Tazobactam 4,5g IV 6/6h (infusão em 4h); 4. Nebulização com SF 3-4x/dia; 5. Fisioterapia respiratória 2x/dia; 6. Colher culturas D3 para avaliar resposta."
-      },
-      {
-            "id": "followup",
-            "title": "Acompanhamento",
-            "content": "Reavaliação em 48-72h com culturas. Desescalonar ATB conforme antibiograma. Duração total: 7 dias (procalcitonina seriada pode guiar). Se não melhora em 72h: repetir culturas, considerar TC tórax (abscesso, empiema), avaliar foco extrapulmonar, pensar em fungo."
-      },
-      {
-            "id": "complications",
+            "content": "1. Meropenem 1g IV 8/8h (infusão em 3h) — se risco MDR; 2. Vancomicina 15-20mg/kg IV 12/12h (dosar vancocinemia no 4º dia — alvo AUC/MIC 400-600); 3. OU Piperacilina-Tazobactam 4,5g IV 6"id": "complications",
             "title": "Complicações",
-            "content": "Abscesso pulmonar, empiema pleural, sepse/choque séptico, SDRA, bacteremia, falência de múltiplos órgãos, resistência antimicrobiana, C. difficile."
+            "content": "Complicações de Derrame Pleural - Protocolo Completo:\\n• Complicações agudas e crônicas\\n• Fatores de risco para complicações\\n• Diagnóstico precoce de complicações\\n• Manejo específico de cada complicação\\n• Prognóstico e mortalidade\\n• Sequelas a longo prazo"  "content": "Reavaliação em 48-72h com culturas. Desescalonar ATB conforme antibiograma. Duração total: 7 dias (procalcitonina seriada pode guiar). Se não melhora em 72"id": "complications",
+            "title": "Complicações",
+            "content": "Complicações de Pneumonia Nosocomial / PAV:\\n• Complicações agudas e crônicas\\n• Fatores de risco para complicações\\n• Diagnóstico precoce de complicações\\n• Manejo específico de cada complicação\\n• Prognóstico e mortalidade\\n• Sequelas a longo prazo"lmonar, empiema pleural, sepse/choque séptico, SDRA, bacteremia, falência de múltiplos órgãos, resistência antimicrobiana, C. difficile."
       },
       {
             "id": "criteria",
@@ -357,7 +354,7 @@ export const respiratoryFullProtocols7: FullProtocol[] = [
       {
             "id": "differential",
             "title": "Diagnóstico Diferencial",
-            "content": "DPOC exacerbado, insuficiência cardíaca (asma cardíaca), TEP, corpo estranho, anafilaxia, disfunção de cordas vocais, hiperventilação/pânico."
+            "content": "Diagnóstico diferencial de Embolia Gordurosa:\\n• Condições que mimetizam a apresentação clínica\\n• Características que distinguem cada diagnóstico diferencial\\n• Red flags para diagnósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"
       },
       {
             "id": "conduct",
@@ -436,7 +433,7 @@ export const respiratoryFullProtocols7: FullProtocol[] = [
       {
             "id": "differential",
             "title": "Diagnóstico Diferencial",
-            "content": "Hematemese (sangue escuro, com restos alimentares, associada a náuseas), epistaxe posterior (sangue deglutido), gengivorragia."
+            "content": "Diagnóstico diferencial de Crise de Asma Leve-Moderada:\\n• Condições que mimetizam a apresentação clínica\\n• Características que distinguem cada diagnóstico diferencial\\n• Red flags para diagnósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"
       },
       {
             "id": "conduct",
@@ -456,12 +453,10 @@ export const respiratoryFullProtocols7: FullProtocol[] = [
       {
             "id": "followup",
             "title": "Acompanhamento",
-            "content": "Internação para investigação. Acompanhar Hb seriada. Se TB: iniciar RIPE após confirmação. Se bronquiectasia: fisioterapia respiratória, ATB se infecção. Se câncer: estadiamento e encaminhamento oncológico. Retorno ambulatorial em 1-2 semanas após alta."
-      },
-      {
-            "id": "complications",
+            "content": "Internação para investigação. Acompanhar Hb seriada. Se TB: iniciar RIPE após conf"id": "complications",
             "title": "Complicações",
-            "content": "Asfixia (causa principal de óbito), choque hipovolêmico, atelectasia por coágulo, pneumonia aspirativa, ressangramento pós-embolização (10-20%)."
+            "content": "Complicações de Crise de Asma Leve-Moderada:\\n• Complicações agudas e crônicas\\n• Fatores de risco para complicações\\n• Diagnóstico precoce de complicações\\n• Manejo específico de cada complicação\\n• Prognóstico e mortalidade\\n• Sequelas a longo prazo"        "title": "Complicações",
+            "content": "Acompanhamento de Hemoptise - Manejo na Emergencia:\\n• Frequência de consultas e exames de controle\\n• Parâmetros de monitorização\\n• Critérios de resposta e falha terapêutica\\n• Tempo de seguimento recomendado\\n• Orientações ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"
       },
       {
             "id": "criteria",

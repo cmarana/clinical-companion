@@ -21,7 +21,7 @@ export const respiratoryFullProtocols8: FullProtocol[] = [
       {
             "id": "screening",
             "title": "Rastreamento e Identificacao",
-            "content": "Criterios de rastreamento de Tuberculose Pulmonar - Manejo Respiratorio."
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Tuberculose Pulmonar - Manejo Respiratorio\\n• Sinais de alerta (red flags)\\n• Critérios de suspeita clínica\\n• Escores de risco validados\\n• População de risco para rastreamento ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"
       },
       {
             "id": "etiology",
@@ -36,7 +36,11 @@ export const respiratoryFullProtocols8: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Baciloscopia de escarro (BAAR) — 2 amostras. TRM-TB (GeneXpert): resultado em 2h, detecta resistência a rifampicina. Cultura em meio líquido (MGIT) e sólido (Löwenstein-Jensen) — 2-8 semanas. RX tórax. TST/PPD (ILTB). IGRA (quando disponível). HIV obrigatório para todos os casos de TB."
+            "content": "Baciloscopia de escarro (BAAR) — 2 "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnóstico diferencial de Tuberculose Pulmonar - Manejo Respiratorio:\\n• Condições que m"id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Conduta inicial para Tuberculose Pulmonar - Manejo Respiratorio:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"s\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"s. RX tórax. TST/PPD (ILTB). IGRA (quando disponível). HIV obrigatório para todos os casos de TB."
       },
       {
             "id": "differential",
@@ -61,12 +65,9 @@ export const respiratoryFullProtocols8: FullProtocol[] = [
       {
             "id": "followup",
             "title": "Acompanhamento",
-            "content": "BAAR mensal (2°, 4° e 6° meses). Cultura no 2° mês (se BAAR+ → suspeitar resistência). Hepatograma se sintomas ou risco (hepatopatia, HIV, >60 anos). Alta por cura: tratamento completo + 2 BAAR negativos. Controle de contatos: TST + RX tórax. DOTS (tratamento diretamente observado): indicado para todos."
-      },
-      {
-            "id": "complications",
-            "title": "Complicacoes",
-            "content": "Hepatotoxicidade (RIPE — suspender se TGO/TGP >5x), neuropatia periférica (isoniazida — prevenir com piridoxina), artralgia/hiperuricemia (pirazinamida), neurite óptica (etambutol), nefrite intersticial (rifampicina). TB resistente: principal complicação do abandono."
+            "content": "BAAR mensal (2°, 4° e 6° meses). Cultura no 2° mês (se BAAR+ → suspeitar resistência). Hepatograma se sintomas ou risco (hepatopatia, HIV, >60 anos). Alta por cura: tratamento completo + 2 BAAR negativos. Controle de contatos: TST + RX tórax. DOTS (tratamento diretamente observa"id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Referências para Tuberculose Pulmonar - Manejo Respiratorio:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"enir com piridoxina), artralgia/hiperuricemia (pirazinamida), neurite óptica (etambutol), nefrite intersticial (rifampicina). TB resistente: principal complicação do abandono."
       },
       {
             "id": "criteria",
@@ -76,88 +77,209 @@ export const respiratoryFullProtocols8: FullProtocol[] = [
       {
             "id": "references",
             "title": "Referencias Bibliograficas",
-            "content": "Manual de Recomendações para o Controle da TB — MS/PNCT 2021. WHO — Global Tuberculosis Report 2023. SBPT — III Diretrizes para TB 2009."
+            "content": "Referências para Bronquiectasia Exacerbada:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"
       }
 ],
   },  {
     id: "fp-r8-bronquiectasia-exacerbada",
-    title: "Bronquiectasia Exacerbada",
-    categoryId: "respiratory",
-    category: "Respiratorio",
-    tags: ["bronquiectasia", "exacerbacao", "antibiotico", "hemoptise"],
-    sections: [
+    title: "Bronquiectasia Exacerb"id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Tuberculose Pulmonar -"id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Tuberculose Pulmonar - Manejo Respiratorio:\\n• Causas pri"id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Apresentação clínica de Tuberculose Pulmonar - Manejo Respiratorio:\\n• Sintom"id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Tuberculose Pulmonar - Manejo Respiratorio:\\n• Exames"id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnóstico diferencial de Tuberculose Pulmonar - Manejo Respiratorio:\\n"id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Conduta inicial para Tuberculose Pulmonar - Manejo Respiratorio:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"ra diagnósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"ionais e eletrofisiológicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico" (aguda, subaguda, crônica)\\n• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"tantes\\n• Classificação etiológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"e risco para rastreamento ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar": [
       {
             "id": "intro",
             "title": "Introducao",
-            "content": "Bronquiectasia é a dilatação anormal e permanente dos brônquios. As exacerbações são causa frequente de internação e declínio da função pulmonar. Pseudomonas aeruginosa é o patógeno mais relevante. Antibioticoterapia guiada por cultura de escarro é essencial. BTS/ERS 2021."
+            "con"id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Tuberculose Pulmonar - Manejo Respiratorio:\\n• Frequ"id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicações de Tuberculose Pulmonar - Manejo Respiratorio:\\n• Complicaç"id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Critérios de internação, UTI e alta para Tuberculose Pulmonar - Manejo R"id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Referências para Tuberculose Pulmonar - Manejo Respiratorio:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"ria, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."• Prognóstico e mortalidade\\n• S"id": "def",
+            "title": "Definicao",
+            "content": "Definição clínica, classificação e epidemiologia de Tuberculose Pulmonar - Manejo Respiratorio. Inclui cr"id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Tuberculose Pulmonar - Manejo Res"id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Tuberculose Pulmonar - Manejo Respiratorio:\\n• Causas primárias e se"id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Apresentação clínica de Tuberculose Pulmonar - Manejo Respiratorio:\\n• Sintomas cardinai"id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Tuberculose Pulmonar - Manejo Respiratorio:\\n• Exames laboratori"id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnóstico diferencial de Tuberculose Pulmonar - Manejo Respiratorio:\\n• Condições"id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Conduta inicial para Tuberculose Pulmonar - Manejo Respiratorio:\\n• Estabilização (ABCDE"id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Abordagem terapêutica de Tuberculose Pulmonar - Manejo Respiratorio:\\n• Tratament"id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescrições-modelo para Tuberculose Pulmonar - Manejo Respiratorio:\\n• Esquema compl"id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Tuberculose Pulmonar - Manejo Respiratorio:\\n• Frequência de co"id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicações de Tuberculose Pulmonar - Manejo Respiratorio:\\n• Complicações agudas "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Critérios de internação, UTI e alta para Tuberculose Pulmonar - Manejo Respiratorio"id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Referências para Tuberculose Pulmonar - Manejo Respiratorio:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)" tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."idade\\n• Sequelas a longo prazo"dado\\n• Orientações ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"al/hepática\\n• Ajustes para idosos e gestantes\\n• Interações medicamentosas relevantes\\n• Monitorização laboratorial durante tratamento"cações de procedimentos invasivos\\n• Indicações cirúrgicas\\n• Manejo de complicações\\n• Duração do tratamento\\n• Critérios de resposta terapêutica" Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"ativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"gicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"nica)\\n• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"ão etiológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"nto ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"ados" e declínio da função pulmonar. Pseudomonas aeruginosa é o patógeno mais relevante. Antibioticoterapia guiada por cultura de escarro é essencial. BTS/ERS 2021."
       },
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Exacerbação de bronquiectasia: piora dos sintomas respiratórios (volume/purulência de escarro, dispneia, tosse, hemoptise) requerendo mudança no tratamento. Diagnóstico de bronquiectasia: TC tórax com dilatação brônquica irreversível (razão brônquio/artéria >1, falta de afilamento, brônquios visíveis na periferia)."
-      },
-      {
-            "id": "screening",
+            "content": "Exacerbação de bronquiectasia: piora dos sintomas respiratórios (volume/purulência de escarro, dispneia, tosse, hemoptise) requerendo mudança no tratamento. Diagnóstico de bronquiectasia: TC tórax com dilataçã"id": "screening",
             "title": "Rastreamento e Identificacao",
-            "content": "Criterios de rastreamento de Bronquiectasia Exacerbada."
-      },
-      {
-            "id": "etiology",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Bronquiectasia Exacerb"id": "etiology",
             "title": "Etiologia",
-            "content": "Causas e fatores de risco para Bronquiectasia Exacerbada."
-      },
-      {
+            "content": "Etiologia e fisiopatologia de Bronquiectasia Exacerbada:\\n• Causas primárias e secundár"id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Apresentação clínica de Bronquiectasia Exacerbada:\\n• Sintomas cardinais e ma"id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Bronquiectasia Exacerbada:\\n• Exames laboratoriais (h"id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnóstico diferencial de Bronquiectasia Exacerbada:\\n• Condições que m"id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Conduta inicial para Bronquiectasia Exacerbada:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"lternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"siológicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico", crônica)\\n• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"ficação etiológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"reamento ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"ng",
+            "title": "Rastreamento e Identificacao",
+            "content": "Definição clínica, classificação e epidemiologia de Fibrose Pulmonar - Exacerbacao Agu"id": "etiology",
+      "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Bronquiectasia Exacerbada:\\n• Frequência de consulta"id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicações de Bronquiectasia Exacerbada:\\n• Complicações agudas e crôn"id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Critérios de internação, UTI e alta para Bronquiectasia Exacerbada:\\n\\"id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Referências para Bronquiectasia Exacerbada:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)" de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."ortalidade\\n• Sequelas a longo prazo"comendado\\n• Orientações ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"    {
             "id": "clinical",
             "title": "Apresentacao Clinica",
-            "content": "Sinais e sintomas de Bronquiectasia Exacerbada."
-      },
-      {
-            "id": "diagnosis",
+            "content": "Etiologia e fisiopatologia de Fibrose Pulmonar - Exacerbacao Aguda:\\n• Causas"id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Exames para diagnostico de Bronquiectasia Exacerbada."
-      },
-      {
-            "id": "differential",
+            "content": "Investigação diagnóstica para Fibrose Pulmonar - Exacerbacao Aguda:\\n• Exames labor"id": "differential",
             "title": "Diagnostico Diferencial",
-            "content": "Diferenciais de Bronquiectasia Exacerbada."
-      },
-      {
-            "id": "conduct",
+            "content": "Diagnóstico diferencial de Fibrose Pulmonar - Exacerbacao Aguda:\\n• Cond"id": "conduct",
             "title": "Conduta Inicial",
-            "content": "Abordagem inicial de Bronquiectasia Exacerbada."
+            "content": "Conduta inicial para Fibrose Pulmonar - Exacerbacao Aguda:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"gnósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição" e eletrofisiológicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"recipitantes\\n• Classificação etiológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"o e profilaxias\\n• Encaminhamentos especializados"    {
+            "id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Definição clínica, classificação e epidemiologia de Pneumonia Aspirativa. Incl"id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Pneumonia Aspirativa:\\n• Exames laboratoriais (hemogr"id": "differential",
+"id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Fibrose Pulmonar - Exacerbacao Aguda:\\n• Frequência "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicações de Fibrose Pulmonar - Exacerbacao Aguda:\\n• Complicações ag"id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Critérios de internação, UTI e alta para Fibrose Pulmonar - Exacerbacao "id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Referências para Fibrose Pulmonar - Exacerbacao Aguda:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"ebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."nóstico e mortalidade\\n• Sequelas a longo pr"id": "def",
+            "title": "Definicao",
+            "content": "Definição clínica, classificação e epidemiologia de Fibrose Pulmonar - Exacerbacao Aguda. Inclui critério"id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Fibrose Pulmonar - Exacerbacao Ag"id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Fibrose Pulmonar - Exacerbacao Aguda:\\n• Causas primárias e secundár"id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Apresentação clínica de Fibrose Pulmonar - Exacerbacao Aguda:\\n• Sintomas cardinais e manifestações iniciais\\n• Sinais ao exame físico (inspeção, palpação, ausculta, percussão)\\n• Formas de apresentação (aguda, subaguda, crônica)\\n• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"ológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"ivo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"d": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Diagnóstico diferencial de Pneumonia Aspirativa:\\n• Condições que mimetizam a apresentação clínica\\n• Características que distinguem cada diagnóstico diferencial\\n• Red flags para diagnósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"a)\\n• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"ológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"ivo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"d": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Etiologia e fisiopatologia de Edema Pulmonar Nao Cardiogenico:\\n• Causas primárias e secundárias\\n• Mecanismos fisiopatológicos envolvidos\\n• Fatores genéticos e ambientais\\n• Fatores predisponentes e precipitantes\\n• Classificação etiológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"
       },
       {
             "id": "treatment",
             "title": "Abordagem Terapeutica",
-            "content": "ATB empírico guiado por cultura prévia: Sem Pseudomonas anterior: Amoxicilina-Clavulanato 875/125mg VO 12/12h × 14 dias OU Azitromicina 500mg/dia × 3 dias. Com Pseudomonas: Ciprofloxacino 500mg VO 12/12h × 14 dias OU Ceftazidima 2g IV 8/8h (se grave). Colonização crônica por Pseudomonas: tobramicina inalatória. Fisioterapia respiratória: drenagem postural, flutter, exercícios respiratórios (FUNDAMENTAL). Hemoptise: ácido tranexâmico, embolização se maciça."
+            "content": "ATB empírico guiado por cultura prévia: Sem Pseudomonas anterior: Amoxicilina-Clavulanato 875/125mg VO 12/12h × 14 dias OU Azitromicina 500mg/dia × 3 dias. Com Pseudomonas: Ciprofloxacino 500mg VO 12/12h × 14 "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Pneumonia Aspirativa:\\n• Frequência de consultas e e"id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicações de Pneumonia Aspirativa:\\n• Complicações agudas e crônicas\"id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Critérios de internação, UTI e alta para Pneumonia Aspirativa:\\n\\nInte"id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Referências para Pneumonia Aspirativa:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"onsciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."idade\\n• Sequelas a longo prazo"dado\\n• Orientações ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"ratória: drenagem postural, flutter, exercícios respiratórios (FUNDAMENTAL). Hemoptise: ácido tranexâmico, embolização se maciça."
       },
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "1. Amoxicilina-Clavulanato 875/125mg VO 12/12h × 14 dias (sem Pseudomonas); 2. OU Ciprofloxacino 500mg VO 12/12h × 14 dias (com Pseudomonas); 3. Salbutamol nebulização 5mg 6/6h; 4. SF 0,9% nebulização (umidificação); 5. Fisioterapia respiratória 2-3x/dia; 6. Colher cultura de escarro ANTES de iniciar ATB; 7. Se grave: Ceftazidima 2g IV 8/8h + Amicacina 15mg/kg/dia."
+            "content": "1. Amoxicilina-Clavulanato 875/125mg VO 12/12h × 14 dias (sem Pseudomonas); 2. OU Ciprofloxacino 500mg VO 12"id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Edema Pulmonar Nao Cardiogenico:\\n• Frequência de co"id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicações de Edema Pulmonar Nao Cardiogenico:\\n• Complicações agudas "id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Critérios de internação, UTI e alta para Edema Pulmonar Nao Cardiogenico"id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Referências para Edema Pulmonar Nao Cardiogenico:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"amento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."co e mortalidade\\n• Sequelas a longo prazo"nto recomen"id": "def",
+            "title": "Definicao",
+            "content": "Definição clínica, classificação e epidemiologia de Edema Pulmonar Nao Cardiogenico. Inclui critérios dia"id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Edema Pulmonar Nao Cardiogenico\\"id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Edema Pulmonar Nao Cardiogenico:\\n• Causas primárias e secundárias\\"id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Apresentação clínica de Edema Pulmonar Nao Cardiogenico:\\n• Sintomas cardinais e manifes"id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Edema Pulmonar Nao Cardiogenico:\\n• Exames laboratoriais (hemogr"id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnóstico diferencial de Edema Pulmonar Nao Cardiogenico:\\n• Condições que mimeti"id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Conduta inicial para Edema Pulmonar Nao Cardiogenico:\\n• Estabilização (ABCDE)\\n• Monit"id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Abordagem terapêutica de Edema Pulmonar Nao Cardiogenico:\\n• Tratamento farmacoló"id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescrições-modelo para Edema Pulmonar Nao Cardiogenico:\\n• Esquema completo com dos"id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Edema Pulmonar Nao Cardiogenico:\\n• Frequência de consultas e exames de controle\\n• Parâmetros de monitorização\\n• Critérios de resposta e falha terapêutica\\n• Tempo de seguimento recomendado\\n• Orientações ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"\\n• Ajustes para idosos e gestantes\\n• Interações medicamentosas relevantes\\n• Monitorização laboratorial durante tratamento"rocedimentos invasivos\\n• Indicações cirúrgicas\\n• Manejo de complicações\\n• Duração do tratamento\\n• Critérios de resposta terapêutica" de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"es\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"ritérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"ariações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"ca\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"arro ANTES de iniciar ATB; 7. Se grave: Ceftazidima 2g IV 8/8h + Amicacina 15mg/kg/dia."
       },
       {
             "id": "followup",
             "title": "Acompanhamento",
-            "content": "Seguimento de Bronquiectasia Exacerbada."
-      },
-      {
-            "id": "complications",
+            "content": "Acompanhamento de Traqueomalacia:\\n• Frequência de consultas e exames "id": "complications",
             "title": "Complicacoes",
-            "content": "Complicacoes de Bronquiectasia Exacerbada."
+            "content": "Complicações de Traqueomalacia:\\n• Complicações agudas e crônicas\\n• Fa"id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Critérios de internação, UTI e alta para Traqueomalacia:\\n\\nInternação"id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Referências para Traqueomalacia:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"ncia, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."\n• Sequelas a longo prazo"n• Orientações ao paciente e familiares\\n• Vacinação e profil"id": "def",
+            "title": "Definicao",
+            "content": "Definição clínica, classificação e epidemiologia de Traqueomalacia. Inclui critérios diagnósticos padronizados conforme diretrizes nacionais e internacionais vigentes (2022-2024). Prevalência, incidência e fatores de risco populacionais."ntent": "Complicacoes de Bronquiectasia Exacerbada."
       },
       {
             "id": "criteria",
             "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Criterios para Bronquiectasia Exacerbada."
+            "content": "Critérios de internação, UTI e alta para Pneumomediastino:\\n\\nInternaç"id": "references",
+            "title": "Referencias Bibliograficas",
+            "content": "Referências para Pneumomediastino:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"iência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."
       },
       {
             "id": "references",
-            "title": "Referencias Bibliograficas",
-            "content": "ERS Guidelines for Bronchiectasis 2017. BTS Guideline for Bronchiectasis 2019. Chalmers JD et al. Lancet Respir Med 2018."
-      }
-],
-  },  {
+            "title": "Referencias B"id": "def",
+            "title": "Definicao",
+            "content": "Definição clínica, classificação e epidemiologia de Pneumomediastino. Inclui critérios diagnósticos padro"id": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Pneumomediastino\\n• Sinais de al"id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Pneumomediastino:\\n• Causas primárias e secundárias\\n• Mecanismos f"id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Apresentação clínica de Pneumomediastino:\\n• Sintomas cardinais e manifestações iniciais"id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Pneumomediastino:\\n• Exames laboratoriais (hemograma, bioquímica"id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnóstico diferencial de Pneumomediastino:\\n• Condições que mimetizam a apresenta"id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Conduta inicial para Pneumomediastino:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"ue auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"sticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"ixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"logia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"  },  {
     id: "fp-r8-fibrose-pulmonar",
     title: "Fibrose Pulmonar - Exacerbacao Aguda",
     categoryId: "respiratory",
@@ -172,27 +294,96 @@ export const respiratoryFullProtocols8: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Fibrose Pulmonar - Exacerbacao Aguda."
-      },
-      {
-            "id": "screening",
+            "content": "Definição clínica, classificação e epidemiologia de Quilotorax. Inclui critérios diagnósticos padronizado"id": "screening",
             "title": "Rastreamento e Identificacao",
-            "content": "Criterios de rastreamento de Fibrose Pulmonar - Exacerbacao Aguda."
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Quilotorax\\n• Sinais de alerta ("id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Quilotorax:\\n• Causas primárias e secundárias\\n• Mecanismos fisiopa"id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Apresentação clínica de Quilotorax:\\n• Sintomas cardinais e manifestações iniciais\\n• S"id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Quilotorax:\\n• Exames laboratoriais (hemograma, bioquímica, marc"id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnóstico diferencial de Quilotorax:\\n• Condições que mimetizam a apresentação cl"id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Conduta inicial para Quilotorax:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n•"id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Abordagem terapêutica de Quilotorax:\\n• Tratamento farmacológico de primeira e segunda linha\\n• Posologia detalhada com doses por peso e ajustes\\n• Tratamento não farmacológico\\n• Indicações de procedimentos invasivos\\n• Indicações cirúrgicas\\n• Manejo de complicações\\n• Duração do tratamento\\n• Critérios de resposta terapêutica"n• Interconsultas necessárias\\n• Exames prioritários"iliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição" formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"ária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"(quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"agem rápida (escalas, questionários)\\n• Indicações de investigação complementar": "screening",
+            "title": "Rastreamento e Identificacao",
+            "content": "Definição clínica, classificação e epidemiologia de Sarcoidose Pulmonar. Inclui critérios diagnós"id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Sarcoidose Pulmonar:\\n• Causas primárias e secundárias\\n• Mecanismo"id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Apresentação clínica de Sarcoidose Pulmonar:\\n• Sintomas cardinais e manifestações inici"id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Sarcoidose Pulmonar:\\n• Exames laboratoriais (hemograma, bioquím"id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnóstico diferencial de Sarcoidose Pulmonar:\\n• Condições que mimetizam a aprese"id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Conduta inicial para Sarcoidose Pulmonar:\\n• Estabilização (ABCDE)\\n• Monitorização ind"id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Abordagem terapêutica de Sarcoidose Pulmonar:\\n• Tratamento farmacológico de prim"id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescrições-modelo para Sarcoidose Pulmonar:\\n• Esquema completo com doses, vias, intervalos e duração\\n• Prescrição de internação\\n• Prescrição ambulatorial\\n• Ajustes para insuficiência renal/hepática\\n• Ajustes para idosos e gestantes\\n• Interações medicamentosas relevantes\\n• Monitorização laboratorial durante tratamento" invasivos\\n• Indicações cirúrgicas\\n• Manejo de complicações\\n• Duração do tratamento\\n• Critérios de resposta terapêutica"clínica\\n• Interconsultas necessárias\\n• Exames prioritários"s que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"gnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico" faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"biologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis""
       },
       {
             "id": "etiology",
             "title": "Etiologia",
-            "content": "Causas e fatores de risco para Fibrose Pulmonar - Exacerbacao Aguda."
+            "content": "Etiologia e fisiopatologia de Hipertensao Pulmonar Aguda:\\n• Causas primárias e secundárias\\n• Me"id": "clinical",
+            "title": "Apresentacao Clinica",
+            "content": "Apresentação clínica de Hipertensao Pulmonar Aguda:\\n• Sintomas cardinais e manifestaçõe"id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Hipertensao Pulmonar Aguda:\\n• Exames laboratoriais (hemograma, "id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnóstico diferencial de Hipertensao Pulmonar Aguda:\\n• Condições que mimetizam a"id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Conduta inicial para Hipertensao Pulmonar Aguda:\\n• Estabilização (ABCDE)\\n• Monitoriza"id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Abordagem terapêutica de Hipertensao Pulmonar Aguda:\\n• Tratamento farmacológico "id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescrições-modelo para Hipertensao Pulmonar Aguda:\\n• Esquema completo com doses, v"id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Hipertensao Pulmonar Aguda:\\n• Frequência de consultas e exames"id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicações de Hipertensao Pulmonar Aguda:\\n• Complicações agudas e crônicas\\n• Fatores de risco para complicações\\n• Diagnóstico precoce de complicações\\n• Manejo específico de cada complicação\\n• Prognóstico e mortalidade\\n• Sequelas a longo prazo"ções ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"Ajustes para idosos e gestantes\\n• Interações medicamentosas relevantes\\n• Monitorização laboratorial durante tratamento"imentos invasivos\\n• Indicações cirúrgicas\\n• Manejo de complicações\\n• Duração do tratamento\\n• Critérios de resposta terapêutica"ecisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"ios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"ões por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"
       },
       {
             "id": "clinical",
             "title": "Apresentacao Clinica",
-            "content": "Sinais e sintomas de Fibrose Pulmonar - Exacerbacao Aguda."
+            "content": "Apresentação clínica de Atelectasia:\\n• Sintomas cardinais e manifestações iniciais\\n• "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Atelectasia:\\n• Exames laboratoriais (hemograma, bioquímica, mar"id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnóstico diferencial de Atelectasia:\\n• Condições que mimetizam a apresentação c"id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Conduta inicial para Atelectasia:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n"id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Abordagem terapêutica de Atelectasia:\\n• Tratamento farmacológico de primeira e s"id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescrições-modelo para Atelectasia:\\n• Esquema completo com doses, vias, intervalos"id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Atelectasia:\\n• Frequência de consultas e exames de controle\\n"id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicações de Atelectasia:\\n• Complicações agudas e crônicas\\n• Fatores de risco"id": "criteria",
+            "title": "Criterios de Internacao / UTI / Alta",
+            "content": "Critérios de internação, UTI e alta para Atelectasia:\\n\\nInternação: sinais de gravidade, instabilidade clínica, necessidade de monitorização ou terapêutica IV, falha do tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."o"e e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"osos e gestantes\\n• Interações medicamentosas relevantes\\n• Monitorização laboratorial durante tratamento"os\\n• Indicações cirúrgicas\\n• Manejo de complicações\\n• Duração do tratamento\\n• Critérios de resposta terapêutica"\n• Interconsultas necessárias\\n• Exames prioritários"xiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"s formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"tária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"
       },
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Exames para diagnostico de Fibrose Pulmonar - Exacerbacao Aguda."
+            "content": "Investigação diagnóstica para Edema Subglotico Pos-Extubacao:\\n• Exames laboratoriais (hemogra"id": "differential",
+            "title": "Diagnostico Diferencial",
+            "content": "Diagnóstico diferencial de Edema Subglotico Pos-Extubacao:\\n• Condições que mimetiz"id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Conduta inicial para Edema Subglotico Pos-Extubacao:\\n• Estabilização (ABCDE)\\n• Monito"id": "treatment",
+            "title": "Abordagem Terapeutica",
+            "content": "Abordagem terapêutica de Edema Subglotico Pos-Extubacao:\\n• Tratamento farmacológ"id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescrições-modelo para Edema Subglotico Pos-Extubacao:\\n• Esquema completo com dose"id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Edema Subglotico Pos-Extubacao:\\n• Frequência de consultas e ex"id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicações de Edema Subglotico Pos-Extubacao:\\n• Complicações agudas e crônicas\\n• Fatores de risco para complicações\\n• Diagnóstico precoce de complicações\\n• Manejo específico de cada complicação\\n• Prognóstico e mortalidade\\n• Sequelas a longo prazo"entações ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"\n• Ajustes para idosos e gestantes\\n• Interações medicamentosas relevantes\\n• Monitorização laboratorial durante tratamento"ocedimentos invasivos\\n• Indicações cirúrgicas\\n• Manejo de complicações\\n• Duração do tratamento\\n• Critérios de resposta terapêutica"de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"s\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"itérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"
       },
       {
             "id": "differential",
