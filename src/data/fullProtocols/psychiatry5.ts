@@ -21,37 +21,114 @@ export const psychiatryFullProtocols5: FullProtocol[] = [
       {
             "id": "screening",
             "title": "Rastreamento",
-            "content": "Rastreamento de Mania Aguda."
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Mania Aguda:\\n• Causas pr"id": "clinical",
+            "title": "Clinica",
+            "content": "Apresentação clínica de Mania Aguda:\\n• Sintomas card"id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Mania Aguda:\\n• Exames labo"id": "differential",
+            "title": "Diferencial",
+            "content": "Diagnóstico diferencial de Mania Aguda:\\n• Condições que "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta inicial para Mania Aguda:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"\n• Red flags para diagnósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"hados)\\n• Exames funcionais e eletrofisiológicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"mas de apresentação (aguda, subaguda, crônica)\\n• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"s\\n• Fatores predisponentes e precipitantes\\n• Classificação etiológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"co validados\\"id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Mania Aguda:\\n• Frequência de consultas e "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicações de Mania Aguda:\\n• Complicações agudas e crôn"id": "criteria",
+            "title": "Criterios",
+            "content": "Critérios de internação, UTI e alta para Mania Aguda:\\n"id": "references",
+            "title": "Referencias",
+            "content": "Referências para Mania Aguda:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"ria, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."ico de cada complicação\\n• Prognóstico e mortalidade\\n• Sequelas a longo prazo"uimento recomendado\\n• Orientações ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"icações de investigação complementar"
       },
       {
             "id": "etiology",
             "title": "Etiologia",
-            "content": "Etiologia de Mania Aguda."
-      },
-      {
-            "id": "clinical",
+            "content": "Etiologia e fisiopatologia de Depressao com Risco Suicid"id": "clinical",
             "title": "Clinica",
-            "content": "Clinica de Mania Aguda."
-      },
-      {
-            "id": "diagnosis",
+            "content": "Apresentação clínica de Depressao com Risco Suicida:\\"id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Mania Aguda."
-      },
-      {
-            "id": "differential",
+           "id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Mania Aguda"id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Mania Aguda:\\n• Causas primárias e secund"id": "clinical",
+            "title": "Clinica",
+            "content": "Apresentação clínica de Mania Aguda:\\n• Sintomas cardinais e manifest"id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Mania Aguda:\\n• Exames laboratoriais (hemog"id": "differential",
             "title": "Diferencial",
+            "content": "Diagnóstico diferencial de Mania Aguda:\\n• Condições que mimetizam a apre"id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta inicial para Mania Aguda:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"letrofisiológicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"guda, crônica)\\n• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"recipitantes\\n• Classificação etiológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"sco para rastreamento ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"l",
+            "content": "Investigação diagnóstica para Depressao com Risco Suicida:\\n• Exames laboratoriais (hemograma, bioquímica, marcadores específicos)\\n• Exames de imagem (USG, TC, RNM — indicações e achados)\\n• Exames funcionais e eletrofisiológicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"omuns\\n• Síndromes de sobreposição"letrofisiológicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"guda, crônica)\\n• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"recipitantes\\n• Classificação etiológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"sco para rastreamento ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"l",
             "content": "Diferencial de Mania Aguda."
       },
       {
-            "id": "conduct",
+       "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Mania Aguda:\\n• Frequência de consultas e exames de contro"id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicações de Mania Aguda:\\n• Complicações agudas e crônicas\\n• Fatores"id": "criteria",
+            "title": "Criterios",
+            "content": "Critérios de internação, UTI e alta para Mania Aguda:\\n\\nInternação: sinais de gravidade, instabilidade clínica, necessidade de monitorização ou terapêutica IV, falha do tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."nóstico e mortalidade\\n• Sequelas a longo prazo"ões ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"    "id": "treatment",
+     "id": "def",
+            "title": "Definicao",
+            "content": "Definição clínica, classificação e epidemiologia de Mania Aguda. Inc"id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Mania A"id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Mania Aguda:\\n• Causas primárias e se"id": "clinical",
+            "title": "Clinica",
+            "content": "Apresentação clínica de Mania Aguda:\\n• Sintomas cardinais e mani"id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Mania Aguda:\\n• Exames laboratoriais (h"id": "differential",
+            "title": "Diferencial",
+            "content": "Diagnóstico diferencial de Mania Aguda:\\n• Condições que mimetizam a "id": "conduct",
             "title": "Conduta",
-            "content": "Conduta de Mania Aguda."
-      },
-      {
-            "id": "treatment",
+            "content": "Conduta inicial para Mania Aguda:\\n• Estabilização (ABCDE)\\n• Mo"id": "treatment",
             "title": "Tratamento",
-            "content": "Agitacao aguda: Olanzapina 10mg IM OU Haloperidol 5mg + Midazolam 5mg IM (coquetel). Tratamento de fase aguda: Litio 900-1200mg/dia (litemia 0,8-1,2) OU Valproato 20mg/kg/dia (nivel 80-120) + Antipsicotico atipico (Olanzapina 15-20mg, Quetiapina 400-800mg, Risperidona 4-6mg). Insonia: Quetiapina 100-200mg ou Olanzapina 10mg a noite. Evitar antidepressivos (virada maniaca)."
+            "content": "Abordagem terapêutica de Mania Aguda:\\n• Tratamento farmacológico de"id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescrições-modelo para Mania Aguda:\\n• Esquema completo com doses, v"id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Mania Aguda:\\n• Frequência de consultas e exames de co"id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicações de Mania Aguda:\\n• Complicações agudas e crônicas\\n• Fat"id": "criteria",
+            "title": "Criterios",
+            "content": "Critérios de internação, UTI e alta para Mania Aguda:\\n\\nInternaçã"id": "references",
+            "title": "Referencias",
+            "content": "Referências para Mania Aguda:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade d"id": "def",
+            "title": "Definicao",
+            "content": "Definição clínica, classificação e epidemiologia de Mania Aguda."id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Man"id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Mania Aguda:\\n• Causas primárias "id": "clinical",
+            "title": "Clinica",
+            "content": "Apresentação clínica de Mania Aguda:\\n• Sintomas cardinais e "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Mania Aguda:\\n• Exames laboratoriai"id": "differential",
+            "title": "Diferencial",
+            "content": "Diagnóstico diferencial de Mania Aguda:\\n• Condições que mimetiza"id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta inicial para Mania Aguda:\\n• Estabilização (ABCDE)\\n"id": "treatment",
+            "title": "Tratamento",
+            "content": "Abordagem terapêutica de Mania Aguda:\\n• Tratamento farmacológic"id": "prescriptions",
+            "title": "Prescricoes",
+            "content": "Prescrições-modelo para Mania Aguda:\\n• Esquema completo com dose"id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Mania Aguda:\\n• Frequência de consultas e exames d"id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicações de Mania Aguda:\\n• Complicações agudas e crônicas\\n•"id": "criteria",
+            "title": "Criterios",
+            "content": "Critérios de internação, UTI e alta para Mania Aguda:\\n\\nInter"id": "references",
+            "title": "Referencias",
+            "content": "Referências para Mania Aguda:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)" do tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessi"id": "def",
+            "title": "Definicao",
+            "content": "Definição clínica, classificação e epidemiologia de Mania Aguda"id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Mania Aguda\\n• Sinais de alerta (red flags)\\n• Critérios de suspeita clínica\\n• Escores de risco validados\\n• População de risco para rastreamento ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"evalência, incidência e fatores de risco populacionais."cações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."licação\\n• Prognóstico e mortalidade\\n• Sequelas a longo prazo"ado\\n• Orientações ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"nal/hepática\\n• Ajustes para idosos e gestantes\\n• Interações medicamentosas relevantes\\n• Monitorização laboratorial durante tratamento" Indicações de procedimentos invasivos\\n• Indicações cirúrgicas\\n• Manejo de complicações\\n• Duração do tratamento\\n• Critérios de resposta terapêutica"ravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"ra diagnósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"s funcionais e eletrofisiológicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"ção (aguda, subaguda, crônica)\\n• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"edisponentes e precipitantes\\n• Classificação etiológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis" População de risco para rastreamento ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"alência, incidência e fatores de risco populacionais."ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."\n• Prognóstico e mortalidade\\n• Sequelas a longo prazo"Orientações ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"tica\\n• Ajustes para idosos e gestantes\\n• Interações medicamentosas relevantes\\n• Monitorização laboratorial durante tratamento"ões de procedimentos invasivos\\n• Indicações cirúrgicas\\n• Manejo de complicações\\n• Duração do tratamento\\n• Critérios de resposta terapêutica" e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"ósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"nais e eletrofisiológicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"da, subaguda, crônica)\\n• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"ntes e precipitantes\\n• Classificação etiológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"ão de risco para rastreamento ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar" incidência e fatores de risco populacionais." Midazolam 5mg IM (coquetel). Tratamento de fase aguda: Litio 900-1200mg/dia (litemia 0,8-1,2) OU Valproato 20mg/kg/dia (nivel 80-120) + Antipsicotico atipico (Olanzapina 15-20mg, Quetiapina 400-800mg, Risperidona 4-6mg). Insonia: Quetiapina 100-200mg ou Olanzapina 10mg a noite. Evitar antidepressivos (virada maniaca)."
       },
       {
             "id": "prescriptions",
@@ -61,22 +138,33 @@ export const psychiatryFullProtocols5: FullProtocol[] = [
       {
             "id": "followup",
             "title": "Acompanhamento",
-            "content": "Acompanhamento de Mania Aguda."
+            "content": "Acompanhamento de Transtorno Dissociativo:\\n• Frequência de "id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicações de Transtorno Dissociativo:\\n• Complicações a"id": "criteria",
+            "title": "Criterios",
+            "content": "Critérios de internação, UTI e alta para Transtorno Diss"id": "references",
+            "title": "Referencias",
+            "content": "Referências para Transtorno Dissociativo:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"ia respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."nejo específico de cada complicação\\n• Prognóstico e mortalidade\\n• Sequelas a longo prazo"Tempo de seguimento recomendado\\n• Orientações ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"
       },
       {
             "id": "complications",
             "title": "Complicacoes",
-            "content": "Complicacoes de Mania Aguda."
+            "content": "Complicações de Transtorno Facticio:\\n• Complicações aguda"id": "criteria",
+            "title": "Criterios",
+            "content": "Critérios de internação, UTI e alta para Transtorno Facticio:\\n\\nInternação: sinais de gravidade, instabilidade clínica, necessidade de monitorização ou terapêutica IV, falha do tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme." específico de cada complicação\\n• Prognóstico e mortalidade\\n• Sequelas a longo prazo"
       },
       {
             "id": "criteria",
             "title": "Criterios",
-            "content": "Criterios de Mania Aguda."
+            "content": "Critérios de internação, UTI e alta para Estupor Catatonico:\\n\\nInternação: sinais de gravidade, instabilidade clínica, necessidade de monitorização ou terapêutica IV, falha do tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."
       },
       {
             "id": "references",
-            "title": "Referencias",
-            "content": "CANMAT/ISBD Guidelines for Bipolar Disorder 2018. Yatham LN et al. Bipolar Disorders 2018. Cipriani A et al. Lancet 2011."
+            "title":"id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Transtorno "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Transtorno Dissociativo:\\n• Causas primárias e secundárias\\n• Mecanismos fisiopatológicos envolvidos\\n• Fatores genéticos e ambientais\\n• Fatores predisponentes e precipitantes\\n• Classificação etiológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"ulação de risco para rastreamento ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"2018. Cipriani A et al. Lancet 2011."
       }
 ],
   },  {
@@ -88,43 +176,83 @@ export const psychiatryFullProtocols5: FullProtocol[] = [
     sections: [
       {
             "id": "intro",
-            "title": "Introducao",
-            "content": "A depressao com risco suicida e a emergencia psiquiatrica mais prevalente. O suicidio e a 2a causa de morte em jovens (15-29 anos) no mundo. Avaliacao de risco estruturada (SAD PERSONS, Columbia) e manejo de crise sao essenciais. ABP 2014 e OMS 2021."
-      },
-      {
-            "id": "def",
-            "title": "Definicao",
+            "title": "Introd"id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Transtorno "id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Transtorno Facticio:\\n• Causas primárias "id": "clinical",
+            "title": "Clinica",
+            "content": "Apresentação clínica de Transtorno Facticio:\\n• Sintomas cardinais e "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Transtorno Facticio:\\n• Exames laboratoriai"id": "differential",
+            "title": "Diferencial",
+            "content": "Diagnóstico diferencial de Transtorno Facticio:\\n• Condições que mimetizam a apresentação clínica\\n• Características que distinguem cada diagnóstico diferencial\\n• Red flags para diagnósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"nais e eletrofisiológicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"da, subaguda, crônica)\\n• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"ntes e precipitantes\\n• Classificação etiológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"ão de risco para rastreamento ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"ausa de morte em jovens (15-29 anos) no mundo. Avaliacao de risco estruturada (SAD PERSONS, Colum"id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Estupor Cat"id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Estupor Catatonico:\\n• Causas primárias e"id": "clinical",
+            "title": "Clinica",
+            "content": "Apresentação clínica de Estupor Catatonico:\\n• Sintomas cardinais e m"id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Estupor Catatonico:\\n• Exames laboratoriais"id": "differential",
+            "title": "Diferencial",
+            "content": "Diagnóstico diferencial de Estupor Catatonico:\\n• Condições que mimetizam a apresentação clínica\\n• Características que distinguem cada diagnóstico diferencial\\n• Red flags para diagnósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"ais e eletrofisiológicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"a, subaguda, crônica)\\n• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"tes e precipitantes\\n• Classificação etiológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"o de risco para rastreamento ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"Definicao",
             "content": "Episodio depressivo maior com ideacao suicida ativa (plano, intencao, meios disponiveis) ou tentativa recente. Fatores de risco: tentativa previa (mais forte), transtorno psiquiatrico (90%), abuso de substancias, isolamento social, desesperanca, doenca cronica, acesso a meios letais, historia familiar."
       },
       {
             "id": "screening",
             "title": "Rastreamento",
-            "content": "Rastreamento de Depressao com Risco Suicida."
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Automutilac"id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Automutilacao Grave:\\n• Causas primárias "id": "clinical",
+            "title": "Clinica",
+            "content": "Apresentação clínica de Automutilacao Grave:\\n• Sintomas cardinais e "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Automutilacao Grave:\\n• Exames laboratoriai"id": "differential",
+            "title": "Diferencial",
+            "content": "Diagnóstico diferencial de Automutilacao Grave:\\n• Condições que mimetiza"id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta inicial para Automutilacao Grave:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"ósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"nais e eletrofisiológicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"da, subaguda, crônica)\\n• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"ntes e precipitantes\\n• Classificação etiológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"ão de risco para rastreamento ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"
       },
       {
             "id": "etiology",
             "title": "Etiologia",
-            "content": "Etiologia de Depressao com Risco Suicida."
+            "content": "Etiologia e fisiopatologia de Intoxicacao por Drogas Ilicitas:\\n• Causa"id": "clinical",
+            "title": "Clinica",
+            "content": "Apresentação clínica de Intoxicacao por Drogas Ilicitas:\\n• Sintomas "id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Intoxicacao por Drogas Ilicitas:\\n• Exames "id": "differential",
+            "title": "Diferencial",
+            "content": "Diagnóstico diferencial de Intoxicacao por Drogas Ilicitas:\\n• Condições "id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta inicial para Intoxicacao por Drogas Ilicitas:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"s para diagnósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"xames funcionais e eletrofisiológicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"entação (aguda, subaguda, crônica)\\n• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"s predisponentes e precipitantes\\n• Classificação etiológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"
       },
       {
             "id": "clinical",
             "title": "Clinica",
-            "content": "Clinica de Depressao com Risco Suicida."
+            "content": "Apresentação clínica de Reacao Distonica Aguda:\\n• Sintomas cardinais"id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Reacao Distonica Aguda:\\n• Exames laborator"id": "differential",
+            "title": "Diferencial",
+            "content": "Diagnóstico diferencial de Reacao Distonica Aguda:\\n• Condições que mimet"id": "conduct",
+            "title": "Conduta",
+            "content": "Conduta inicial para Reacao Distonica Aguda:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"agnósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"cionais e eletrofisiológicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"aguda, subaguda, crônica)\\n• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"
       },
       {
             "id": "diagnosis",
             "title": "Diagnostico",
-            "content": "Diagnostico de Depressao com Risco Suicida."
+            "content": "Investigação diagnóstica para Sindrome de Abstinencia de Cocaina:\\n• Exames laboratoriais (hemograma, bioquímica, marcadores específicos)\\n• Exames de imagem (USG, TC, RNM — indicações e achados)\\n• Exames funcionais e eletrofisiológicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"
       },
       {
             "id": "differential",
             "title": "Diferencial",
-            "content": "Diferencial de Depressao com Risco Suicida."
-      },
-      {
-            "id": "conduct",
-            "title": "Conduta",
-            "content": "Conduta de Depressao com Risco Suicida."
+            "content": "Diferencial de Depressao com Risco "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Reacao Distonica Aguda:\\n• Frequência de consultas e exame"id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicações de Reacao Distonica Aguda:\\n• Complicações agudas e crônicas\"id": "criteria",
+            "title": "Criterios",
+            "content": "Critérios de internação, UTI e alta para Reacao Distonica Aguda:\\n\\nInternação: sinais de gravidade, instabilidade clínica, necessidade de monitorização ou terapêutica IV, falha do tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."ão\\n• Prognóstico e mortalidade\\n• Sequelas a longo prazo"n• Orientações ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"ssao com Risco Suicida."
       },
       {
             "id": "treatment",
@@ -134,16 +262,36 @@ export const psychiatryFullProtocols5: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescricoes",
-            "content": "1. Sertralina 50mg VO 1x/dia (titular ate 200mg); 2. OU Escitalopram 10mg VO 1x/dia; 3. Lorazepam 1mg VO 8/8h SOS (ansiedade/insonia — curto prazo); 4. Supervisao 1:1 continua se risco iminente; 5. Retirar objetos cortantes, medicamentos, cintos da enfermaria; 6. Encaminhar para psicoterapia de crise; 7. Contato com familia (rede de apoio)."
+            "content": "1. Sertralina 50mg VO 1x/dia (titular ate 200mg); 2. OU "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Sindrome de Abstinencia de Cocaina:\\n• Frequência de consu"id": "complications",
+            "title": "Complicacoes",
+            "content": "Complicações de Sindrome de Abstinencia de Cocaina:\\n• Complicações agudas"id": "criteria",
+            "title": "Criterios",
+            "content": "Critérios de internação, UTI e alta para Sindrome de Abstinencia de Cocaina:\\n\\nInternação: sinais de gravidade, instabilidade clínica, necessidade de monitorização ou terapêutica IV, falha do tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."da complicação\\n• Prognóstico e mortalidade\\n• Sequelas a longo prazo"ecomendado\\n• Orientações ao paciente e familiares\\n• Vacinação e profil"id": "def",
+            "title": "Definicao",
+            "content": "Definição clínica, classificação e epidemiologia de Sindrome de Abst"id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Sindrom"id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Sindrome de Abstinencia de Cocaina:\\n"id": "clinical",
+            "title": "Clinica",
+            "content": "Apresentação clínica de Sindrome de Abstinencia de Cocaina:\\n• Si"id": "diagnosis",
+            "title": "Diagnostico",
+            "content": "Investigação diagnóstica para Sindrome de Abstinencia de Cocaina:\\n• Exames laboratoriais (hemograma, bioquímica, marcadores específicos)\\n• Exames de imagem (USG, TC, RNM — indicações e achados)\\n• Exames funcionais e eletrofisiológicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"as de apresentação (aguda, subaguda, crônica)\\n• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"\\n• Fatores predisponentes e precipitantes\\n• Classificação etiológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"o validados\\n• População de risco para rastreamento ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"022-2024). Prevalência, incidência e fatores de risco populacionais."ermaria; 6. Encaminhar para psicoterapia de crise; 7. Contato com familia (rede de apoio)."
       },
       {
             "id": "followup",
             "title": "Acompanhamento",
-            "content": "Acompanhamento de Depressao com Risco Suicida."
-      },
-      {
-            "id": "complications",
+            "content": "Acompanhamento de Transtorno de Estresse Agudo:\\n• Frequência de consultas e"id": "complications",
             "title": "Complicacoes",
+            "content": "Complicações de Transtorno de Estresse Agudo:\\n• Complicações agudas e crô"id": "criteria",
+            "title": "Criterios",
+            "content": "Critérios de internação, UTI e alta para Transtorno de Estresse Agudo:\\n\\nInternação: sinais de gravidade, instabilidade clínica, necessidade de monitorização ou terapêutica IV, falha do tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."plicação\\n• Prognóstico e mortalidade\\n• Sequelas a longo prazo"dado\\n• Orientações ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminh"id": "def",
+            "title": "Definicao",
+            "content": "Definição clínica, classificação e epidemiologia de Transtorno de Es"id": "screening",
+            "title": "Rastreamento",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Transtorno de Estresse Agudo\\n• Sinais de alerta (red flags)\\n• Critérios de suspeita clínica\\n• Escores de risco validados\\n• População de risco para rastreamento ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"24). Prevalência, incidência e fatores de risco populacionais."s",
             "content": "Complicacoes de Depressao com Risco Suicida."
       },
       {

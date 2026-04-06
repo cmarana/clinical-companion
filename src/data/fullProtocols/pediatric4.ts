@@ -21,7 +21,7 @@ export const pediatricFullProtocols4: FullProtocol[] = [
       {
             "id": "screening",
             "title": "Rastreamento e Identificação",
-            "content": "Critérios de rastreamento e identificação precoce de Laringite Viral / Crupe - Completo."
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Laringite Viral / Crupe - Completo\\n• Sinais de alerta (red flags)\\n• Critérios de suspeita clínica\\n• Escores de risco validados\\n• População de risco para rastreamento ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"
       },
       {
             "id": "etiology",
@@ -36,7 +36,9 @@ export const pediatricFullProtocols4: FullProtocol[] = [
       {
             "id": "diagnosis",
             "title": "Diagnóstico",
-            "content": "Exames:\n• USG abdominal (padrão-ouro): sinal do alvo/donut (corte transversal) e sinal do pseudo-rim (corte longitudinal)\n  - Sensibilidade >95%, especificidade >98%\n• Radiografia de abdome: pode ser normal no início; sinais tardios: ausência de gás no QID, massa de partes moles, sinais de obstrução\n• Enema (diagnóstico + terapêutico): imagem em cálice/taça/mola de relógio\n\nCritérios para redução NÃO operatória (enema):\n• Sintomas <48h\n• Sem sinais de peritonite ou perfuração\n• Sem pneumoperitônio\n• Sem choque refratário\n• Idade 3 meses - 5 anos\n\nContraindicações ao enema:\n• Peritonite\n• Pneumoperitônio\n• Choque refratário\n• Perfuração intestinal suspeita"
+            "content": "Exames:\n• USG abdominal (padrão-ouro): sinal do alvo/donut (corte transversal) e sinal do pseudo-rim (corte longitudinal)\n  - Sensibilidade >95%, especificidade >98%\n• Radiografia de abdome: pode ser normal no início; sinais tardios: ausência de gás no QID, massa de partes moles, sinais de obstrução\n• Enema (diagnóstico + terapêutico): imagem em cálice/taça/mola de relógio\n\nCritérios para redução NÃO operatória (enema):\n• Sintomas <48h\n• Sem"id": "differential",
+            "title": "Diagnóstico Diferencial",
+            "content": "Diagnóstico diferencial de Laringite Viral / Crupe - Completo:\\n• Condições que mimetizam a apresentação clínica\\n• Características que distinguem cada diagnóstico diferencial\\n• Red flags para diagnósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"n• Choque refratário\n• Perfuração intestinal suspeita"
       },
       {
             "id": "differential",
@@ -56,36 +58,62 @@ export const pediatricFullProtocols4: FullProtocol[] = [
       {
             "id": "prescriptions",
             "title": "Prescrições",
-            "content": "PRESCRIÇÃO — Hipercalemia grave (K+ 7,2 com onda T apiculada):\n\n1. Emergência — monitorização contínua com ECG\n2. Gluconato de Cálcio 10% 10mL IV em 3-5min AGORA (pode repetir em 5min)\n3. Insulina Regular 10UI + SG50% 100mL IV em 30min\n4. Nebulização: Salbutamol 20 gotas + SF 3mL (repetir em 20min SN)\n5. NaHCO3 8,4% 50mL IV em 15min (se pH <7,2)\n6. Furosemida 80mg IV (se diurese preservada)\n7. Sorcal 30g + Manitol 100mL VO (ou VR se não tolerar)\n8. Glicemia capilar 1/1h por 6h (risco de hipoglicemia pela insulina)\n9. K+ sérico a cada 1-2h até <6,0mEq/L\n10. ECG seriado a cada 30min até normalização\n11. Suspender: IECA/BRA, espironolactona, suplementos de K+, AINEs\n12. Se refratária: solicitar diálise de urgência\n13. Após estabilização: investigar causa (IRA, DRC, medicamentos, rabdomiólise)"
+            "content": "PRESCRIÇÃO — Hipercalemia grave (K+ 7,2 com onda T apiculada):\n\n1. Emergência — monitorização contínua com ECG\n2. Gluconato de Cálcio 10% 10mL IV em 3-5min AGORA (pode repetir em 5min)\n3. Insulina Regular 10UI + SG50% 100mL IV em 30min\n4. Nebulização: Salbutamol 20 gotas + SF 3mL (repetir em 20min SN)\n5. NaHCO3 8,4% 50mL I"id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Laringite Viral / Crupe - Completo:\\n• Frequência de consultas e exames de co"id": "complications",
+            "title": "Complicações",
+            "content": "Complicações de Laringite Viral / Crupe - Completo:\\n• Complicações agudas e crônicas\\n• Fatores de risc"id": "criteria",
+            "title": "Critérios de Internação / UTI / Alta",
+            "content": "Critérios de internação, UTI e alta para Laringite Viral / Crupe - Completo:\\n\\nInternação: sinais de gravidade, instabilidade clínica, necessidade de monitorização ou terapêutica IV, falha do tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."filaxias\\n• Encaminhamentos especializados"r 1/1h por 6h (risco de hipoglicemia pela insulina)\n9. K+ sérico a cada 1-2h até <6,0mEq/L\n10. ECG seriado a cada 30min até normalização\n11. Suspender: IECA/BRA, espironolactona, suplementos de K+, AINEs\n12. Se refratária: solicitar diálise de urgência\n13. Após estabilização: investigar causa (IRA, DRC, medicamentos, rabdomiólise)"
       },
       {
             "id": "followup",
             "title": "Acompanhamento",
-            "content": "Monitorização e seguimento de Laringite Viral / Crupe - Completo."
-      },
-      {
-            "id": "complications",
-            "title": "Complicações",
-            "content": "Principais complicações de Laringite Viral / Crupe - Completo e seu manejo."
+            "content":"id": "def",
+            "title": "Definição",
+            "content": "Definição clínica, classificação e epidemiologia de Laringite Viral / Crupe - Completo. I"id": "screening",
+            "title": "Rastreamento e Identificação",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Laringite Viral / Crupe - Completo\\n• Si"id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Laringite Viral / Crupe - Completo:\\n• Causas primárias e secun"id": "clinical",
+            "title": "Apresentação Clínica",
+            "content": "Apresentação clínica de Laringite Viral / Crupe - Completo:\\n• Sintomas cardinais e manifes"id": "diagnosis",
+            "title": "Diagnóstico",
+            "content": "Investigação diagnóstica para Laringite Viral / Crupe - Completo:\\n• Exames laboratoriais (hemograma, bi"id": "differential",
+            "title": "Diagnóstico Diferencial",
+            "content": "Diagnóstico diferencial de Laringite Viral / Crupe - Completo:\\n• Condições que mimetizam a apresentação clínica\\n• Características que distinguem cada diagnóstico diferencial\\n• Red flags para diagnósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"cos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"or faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"ológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar" "title": "Complicações",
+            "content": "Acompanhamento de Pneumonia Pediatrica:\\n• Frequência de consultas e exames de controle\\n• Parâmetros de"id": "criteria",
+            "title": "Critérios de Internação / UTI / Alta",
+            "content": "Critérios de internação, UTI e alta para Pneumonia Pediatrica:\\n\\nInternação: sinais de gravidade, instabilidade clínica, necessidade de monitorização ou terapêutica IV, falha do tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."entos especializados"
       },
       {
             "id": "criteria",
+            "titl"id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Laringite Viral / Crupe - Completo:\\n• Frequência de consultas "id": "complications",
+            "title": "Complicações",
+            "content": "Complicações de Laringite Viral / Crupe - Completo:\\n• Complicações agudas e crônicas\\n• F"id": "criteria",
             "title": "Critérios de Internação / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para Laringite Viral / Crupe - Completo."
-      },
-      {
-            "id": "references",
+            "content": "Critérios de internação, UTI e alta para Laringite Viral / Crupe - Completo:\\n\\nInternação:"id": "references",
             "title": "Referências Bibliográficas",
-            "content": "1. AHA — Hyperkalemia Management Guidelines 2020\n2. SBN — Manejo da Hipercalemia 2022\n3. Palmer BF, Clegg DJ. Diagnosis and treatment of hyperkalemia. JAMA 2021\n4. Lindner G et al. Acute hyperkalemia in the emergency department. Am J Emerg Med 2020\n5. NICE — Hyperkalaemia: assessment and management 2023"
-      }
-],
-  },
-  {
-    id: "fp-pneumonia-pediatrica",
-    title: "Pneumonia Pediatrica",
-    categoryId: "pediatrics",
-    category: "Pediatria de Emergencia",
-    tags: ["pneumonia", "pediatria", "antibiotico", "amoxicilina", "crianca"],
+            "content": "Referências para Laringite Viral / Crupe - Completo:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"dade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme." prazo"ções ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"rianca"],
+    sections: [
+      {
+            "id": "intro",
+            "title": "Introdução",
+            "content": "Acompanhamento de Pneumonia Pediatrica:\\n• Frequência de consultas e exames de controle\\n• Parâmetros de monitorização\\n• Critérios de resposta e falha terapêutica"id": "def",
+            "title": "Definição",
+            "content": "Definição clínica, classificação e epidemiologia de Pneumonia Pediatrica. Inclui critério"id": "screening",
+            "title": "Rastreamento e Identificação",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Pneumonia Pediatrica\\n• Sinais de alerta"id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Pneumonia Pediatrica:\\n• Causas primárias e secundárias\\n• Mec"id": "clinical",
+            "title": "Apresentação Clínica",
+            "content": "Apresentação clínica de Pneumonia Pediatrica:\\n• Sintomas cardinais e manifestações iniciai"id": "diagnosis",
+            "title": "Diagnóstico",
+            "content": "Investigação diagnóstica para Pneumonia Pediatrica:\\n• Exames laboratoriais (hemograma, bioquímica, marc"id": "differential",
+            "title": "Diagnóstico Diferencial",
+            "content": "Diagnóstico diferencial de Pneumonia Pediatrica:\\n• Condições que mimetizam a apresentação clínica\\n• Características que distinguem cada diagnóstico diferencial\\n• Red flags para diagnósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"a e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"crobiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis" de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"ancet, JAMA, BMJ)"dade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme." prazo"ções ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"rianca"],
     sections: [
       {
             "id": "intro",
@@ -95,22 +123,55 @@ export const pediatricFullProtocols4: FullProtocol[] = [
       {
             "id": "def",
             "title": "Definição",
-            "content": "Definição clínica e classificação de Pneumonia Pediatrica."
-      },
-      {
-            "id": "screening",
+            "content": "Definição clínica, classificação e epidemiologia de Invaginacao Intestinal (Intussuscepca"id": "screening",
             "title": "Rastreamento e Identificação",
-            "content": "Critérios de rastreamento e identificação precoce de Pneumonia Pediatrica."
-      },
-      {
-            "id": "etiology",
+    "id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Pneumonia Pediatrica:\\n• Frequência de consultas e exames de co"id": "complications",
+            "title": "Complicações",
+            "content": "Complicações de Pneumonia Pediatrica:\\n• Complicações agudas e crônicas\\n• Fatores de risc"id": "criteria",
+            "title": "Critérios de Internação / UTI / Alta",
+            "content": "Critérios de internação, UTI e alta para Pneumonia Pediatrica:\\n\\nInternação: sinais de gra"id": "references",
+            "title": "Referências Bibliográficas",
+            "content": "Referências para Pneumonia Pediatrica:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"ica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."miliares\\n• Vacinação e profilaxias\\n• Encaminhamentos e"id": "def",
+            "title": "Definição",
+            "content": "Definição clínica, classificação e epidemiologia de Pneumonia Pediatrica. Inclui critérios diagnósticos padr"id": "screening",
+            "title": "Rastreamento e Identificação",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Pneumonia Pediatrica\\n• Sinais de alerta (red flags)\\n• Cr"id": "etiology",
             "title": "Etiologia",
-            "content": "Principais causas e fatores de risco para Pneumonia Pediatrica."
-      },
-      {
-            "id": "clinical",
+            "content": "Etiologia e fisiopatologia de Pneumonia Pediatrica:\\n• Causas primárias e secundárias\\n• Mecanismos fisiopatoló"id": "clinical",
             "title": "Apresentação Clínica",
-            "content": "Sinais e sintomas típicos e atípicos de Pneumonia Pediatrica."
+            "content": "Apresentação clínica de Pneumonia Pediatrica:\\n• Sintomas cardinais e manifestações iniciais\\n• Sinais ao exa"id": "diagnosis",
+            "title": "Diagnóstico",
+            "content": "Investigação diagnóstica para Pneumonia Pediatrica:\\n• Exames laboratoriais (hemograma, bioquímica, marcadores específicos)"id": "differential",
+            "title": "Diagnóstico Diferencial",
+            "content": "Diagnóstico diferencial de Pneumonia Pediatrica:\\n• Condições que mimetizam a apresentação clínica\\n• Caracterís"id": "conduct",
+            "title": "Conduta Inicial",
+            "content": "Conduta inicial para Pneumonia Pediatrica:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de s"id": "treatment",
+            "title": "Abordagem Terapêutica",
+            "content": "Abordagem terapêutica de Pneumonia Pediatrica:\\n• Tratamento farmacológico de primeira e segunda linha\\n• Posologia d"id": "prescriptions",
+            "title": "Prescrições",
+            "content": "Prescrições-modelo para Pneumonia Pediatrica:\\n• Esquema completo com doses, vias, intervalos e dura"id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Pneumonia Pediatrica:\\n• Frequência de consultas e exames de controle\\n• Parâmetr"id": "complications",
+            "title": "Complicações",
+            "content": "Complicações de Pneumonia Pediatrica:\\n• Complicações agudas e crônicas\\n• Fatores de risco para complicações"id": "criteria",
+            "title": "Critérios de Internação / UTI / Alta",
+            "content": "Critérios de internação, UTI e alta para Pneumonia Pediatrica:\\n\\nInternação: sinais de gravidade, instabilida"id": "references",
+            "title": "Referências Bibliográficas",
+            "content": "Referências para Pneumonia Pediatrica:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."s medicamentosas relevantes\\n• Monitorização laboratorial durante tratame"id": "def",
+            "title": "Definição",
+            "content": "Definição clínica, classificação e epidemiologia de Pneumonia Pediatrica. Inclui critérios diagnósticos padronizados conforme diretrizes nacionais e internacionais vigentes (2022-2024). Prevalência, incidência e fatores de risco populacionais."co"picas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"ores de risco modificáveis e não modificáveis"rios)\\n• Indicações de investigação complementar"   "title": "Apresentação Clínica",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Invaginacao Intestinal (Intu"id": "diagnosis",
+            "title": "Diagnóstico",
+            "content": "Investigação diagnóstica para Invaginacao Intestinal (Intussuscepcao):\\n• Exames laboratoriais (hemogram"id": "differential",
+            "title": "Diagnóstico Diferencial",
+            "content": "Diagnóstico diferencial de Invaginacao Intestinal (Intussuscepcao):\\n• Condições que mimetizam a apresentação clínica\\n• Características que distinguem cada diagnóstico diferencial\\n• Red flags para diagnósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"nósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"vo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"modificáveis e não modificáveis"rios)\\n• Indicações de investigação complementar"   "title": "Apresentação Clínica",
+            "content": "Definição clínica, classificação e epidemiologia de Cetoacidose Diabetica Pediatrica - Compl"id": "diagnosis",
+            "title": "Diagnóstico",
+            "content": "Investigação diagnóstica para Cetoacidose Diabetica Pediatrica - Completo:\\n• Exames laboratoriais (hemo"id": "differential",
+            "title": "Diagnóstico Diferencial",
+            "content": "Diagnóstico diferencial de Cetoacidose Diabetica Pediatrica - Completo:\\n• Condições que mimetizam a apresentação clínica\\n• Características que distinguem cada diagnóstico diferencial\\n• Red flags para diagnósticos alternativos graves\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"risco populacionais."
       },
       {
             "id": "diagnosis",
@@ -130,7 +191,35 @@ export const pediatricFullProtocols4: FullProtocol[] = [
       {
             "id": "treatment",
             "title": "Abordagem Terapêutica",
-            "content": "Classificacao OMS: Pneumonia (taquipneia isolada — ambulatorial), Pneumonia grave (tiragem subcostal — internacao), Pneumonia muito grave (sinais de perigo — UTI). ATB ambulatorial: Amoxicilina 50 mg/kg/dia VO 8/8h por 7 dias (1a escolha). Internacao: Ampicilina 200 mg/kg/dia EV 6/6h OU Penicilina Cristalina 200.000 UI/kg/dia EV 4/4h. Pneumonia muito grave ou complicada: Oxacilina 200 mg/kg/dia EV 6/6h + Ceftriaxona 100 mg/kg/dia EV 12/12h. Derrame pleural: drenagem se >1cm no decubito lateral (ecografia). Atipicos (>5 anos): Azitromicina 10 mg/kg/dia VO por 5 dias."
+            "content": "Class"id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Invaginacao Intestinal (Intussuscepcao):\\n• Frequência de consu"id": "complications",
+            "title": "Complicações",
+            "content": "Complicações de Invaginacao Intestinal (Intussuscepcao):\\n• Complicações agudas e crônicas\"id": "criteria",
+            "title": "Critérios de Internação / UTI / Alta",
+            "content": "Critérios de internação, UTI e alta para Invaginacao Intestinal (Intussuscepcao):\\n\\nIntern"id": "references",
+            "title": "Referências Bibliográficas",
+            "content": "Referências para Invaginacao Intestinal (Intussuscepcao):\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"abilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."longo prazo"ientaçõe"id": "def",
+            "title": "Definição",
+            "content": "Definição clínica, classificação e epidemiologia de Invaginacao Intestinal (Intussuscepcao). Inclui critério"id": "screening",
+            "title": "Rastreamento e Identificação",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Invaginacao Intestinal (Intussuscepcao)\\n• Sinais de alerta (red flags)\\n• Critérios de suspeita clínica\\n• Escores de risco validados\\n• População de risco para rastreamento ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"colha). Internacao: Ampicilina 200 mg/kg/dia EV 6/6h O"id": "followup",
+            "title": "Acompanhamento",
+            "content": "Acompanhamento de Cetoacidose Diabetica Pediatrica - Completo:\\n• Frequência de c"id": "complications",
+            "title": "Complicações",
+            "content": "Complicações de Cetoacidose Diabetica Pediatrica - Completo:\\n• Complicações agudas e crôni"id": "criteria",
+            "title": "Critérios de Internação / UTI / Alta",
+            "content": "Critérios de internação, UTI e alta para Cetoacidose Diabetica Pediatrica - Completo:\\n\\nIn"id": "references",
+            "title": "Referências Bibliográficas",
+            "content": "Referências para Cetoacidose Diabetica Pediatrica - Completo:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."s a longo pr"id": "def",
+            "title": "Definição",
+            "content": "Definição clínica, classificação e epidemiologia de Cetoacidose Diabetica Pediatrica - Completo. Inclui crit"id": "screening",
+            "title": "Rastreamento e Identificação",
+            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Cetoacidose Diabetica Pediatrica - Completo\\n• Sinais de al"id": "etiology",
+            "title": "Etiologia",
+            "content": "Etiologia e fisiopatologia de Cetoacidose Diabetica Pediatrica - Completo:\\n• Causas primárias e secundárias\\n•"id": "clinical",
+            "title": "Apresentação Clínica",
+            "content": "Apresentação clínica de Cetoacidose Diabetica Pediatrica - Completo:\\n• Sintomas cardinais e manifestações iniciais\\n• Sinais ao exame físico (inspeção, palpação, ausculta, percussão)\\n• Formas de apresentação (aguda, subaguda, crônica)\\n• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"ando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"ida (escalas, questionários)\\n• Indicações de investigação complementar"teral (ecografia). Atipicos (>5 anos): Azitromicina 10 mg/kg/dia VO por 5 dias."
       },
       {
             "id": "prescriptions",
