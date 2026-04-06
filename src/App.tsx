@@ -10,7 +10,7 @@ import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { NotificationsProvider } from "@/contexts/NotificationsContext";
 import AppLayout from "@/components/AppLayout";
 import { PWAInstallPrompt, OfflineIndicator } from "@/components/PWAInstallPrompt";
-import FeedbackButton from "@/components/FeedbackButton";
+
 import { lazy, Suspense } from "react";
 import { ProtocolListSkeleton, ProtocolDetailSkeleton, MedicationListSkeleton } from "@/components/PageSkeleton";
 
@@ -189,7 +189,7 @@ const App = () => (
                   <Sonner />
                    <OfflineIndicator />
                    <PWAInstallPrompt />
-                   <FeedbackButton />
+                   
                    <AppRoutes />
                 </TooltipProvider>
               </NotesProvider>

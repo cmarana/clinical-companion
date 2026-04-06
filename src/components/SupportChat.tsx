@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { MessageCircleQuestion, X, Send, Loader2, Mail, ArrowLeft } from "lucide-react";
+import { MessageCircleQuestion, X, Send, Loader2, Mail, ArrowLeft, Bug, Lightbulb, MessageSquarePlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
@@ -9,18 +9,27 @@ import { motion, AnimatePresence } from "framer-motion";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
+const feedbackTypes = [
+  { id: "bug", label: "Bug", icon: Bug, color: "text-red-500" },
+  { id: "suggestion", label: "Sugestão", icon: Lightbulb, color: "text-amber-500" },
+  { id: "other", label: "Outro", icon: MessageSquarePlus, color: "text-blue-500" },
+] as const;
+
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/support-chat`;
 
 export default function SupportChat() {
   const { user } = useAuth();
   const [open, setOpen] = useState(false);
-  const [view, setView] = useState<"chat" | "email">("chat");
+  const [view, setView] = useState<"chat" | "email" | "feedback">("chat");
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [emailSubject, setEmailSubject] = useState("");
   const [emailBody, setEmailBody] = useState("");
   const [sendingEmail, setSendingEmail] = useState(false);
+  const [feedbackType, setFeedbackType] = useState("suggestion");
+  const [feedbackMessage, setFeedbackMessage] = useState("");
+  const [sendingFeedback, setSendingFeedback] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -136,9 +145,42 @@ export default function SupportChat() {
     }
   };
 
+  const handleSendFeedback = async () => {
+    if (!feedbackMessage.trim() || !user) return;
+    setSendingFeedback(true);
+    try {
+      const feedbackId = crypto.randomUUID();
+      const { error } = await supabase.from("feedback").insert({
+        id: feedbackId,
+        user_id: user.id,
+        type: feedbackType,
+        message: feedbackMessage.trim(),
+        page_url: window.location.pathname,
+      });
+      if (error) throw error;
+      toast.success("Feedback enviado! Obrigado 🙏");
+      setFeedbackMessage("");
+      setView("chat");
+
+      supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "feedback-confirmation",
+          recipientEmail: user.email,
+          idempotencyKey: `feedback-confirm-${feedbackId}`,
+          templateData: { type: feedbackType },
+        },
+      }).catch(() => {});
+    } catch {
+      toast.error("Erro ao enviar feedback");
+    } finally {
+      setSendingFeedback(false);
+    }
+  };
+
+  const viewTitle = view === "chat" ? "Suporte PULSO" : view === "email" ? "Contato por E-mail" : "Enviar Feedback";
+
   return (
     <>
-      {/* Trigger button - visible on mobile and desktop */}
       <button
         onClick={() => setOpen(true)}
         className="fixed bottom-20 right-4 md:bottom-6 md:right-6 z-40 h-12 w-12 rounded-full bg-primary text-primary-foreground shadow-lg flex items-center justify-center hover:scale-105 active:scale-95 transition-transform"
@@ -168,22 +210,26 @@ export default function SupportChat() {
               {/* Header */}
               <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-primary/5">
                 <div className="flex items-center gap-2">
-                  {view === "email" && (
+                  {view !== "chat" && (
                     <button onClick={() => setView("chat")} className="p-1 rounded hover:bg-muted">
                       <ArrowLeft size={16} />
                     </button>
                   )}
                   <MessageCircleQuestion size={18} className="text-primary" />
-                  <span className="font-heading font-bold text-sm">
-                    {view === "chat" ? "Suporte PULSO" : "Contato por E-mail"}
-                  </span>
+                  <span className="font-heading font-bold text-sm">{viewTitle}</span>
                 </div>
                 <div className="flex items-center gap-1">
                   {view === "chat" && (
-                    <Button variant="ghost" size="sm" onClick={() => setView("email")} className="gap-1 text-xs h-7 px-2">
-                      <Mail size={13} />
-                      E-mail
-                    </Button>
+                    <>
+                      <Button variant="ghost" size="sm" onClick={() => setView("feedback")} className="gap-1 text-xs h-7 px-2">
+                        <MessageSquarePlus size={13} />
+                        Feedback
+                      </Button>
+                      <Button variant="ghost" size="sm" onClick={() => setView("email")} className="gap-1 text-xs h-7 px-2">
+                        <Mail size={13} />
+                        E-mail
+                      </Button>
+                    </>
                   )}
                   <button onClick={() => setOpen(false)} className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground">
                     <X size={16} />
@@ -252,8 +298,7 @@ export default function SupportChat() {
                     </Button>
                   </div>
                 </>
-              ) : (
-                /* Email form */
+              ) : view === "email" ? (
                 <div className="flex-1 overflow-y-auto p-4 space-y-4" style={{ paddingBottom: "max(env(safe-area-inset-bottom, 0px), 16px)" }}>
                   <p className="text-xs text-muted-foreground">
                     Não conseguiu resolver sua dúvida? Envie uma mensagem e responderemos por e-mail.
@@ -282,6 +327,49 @@ export default function SupportChat() {
                       {sendingEmail ? "Enviando..." : "Enviar Mensagem"}
                     </Button>
                   </div>
+                </div>
+              ) : (
+                /* Feedback form */
+                <div className="flex-1 overflow-y-auto p-4 space-y-4" style={{ paddingBottom: "max(env(safe-area-inset-bottom, 0px), 16px)" }}>
+                  <div className="flex gap-2">
+                    {feedbackTypes.map((ft) => (
+                      <button
+                        key={ft.id}
+                        onClick={() => setFeedbackType(ft.id)}
+                        className={`flex items-center gap-1.5 px-3 py-2 rounded-xl text-xs font-semibold transition-all ${
+                          feedbackType === ft.id
+                            ? "ring-2 ring-primary bg-primary/5"
+                            : "bg-muted/50 hover:bg-muted"
+                        }`}
+                      >
+                        <ft.icon size={14} className={ft.color} />
+                        {ft.label}
+                      </button>
+                    ))}
+                  </div>
+                  <textarea
+                    value={feedbackMessage}
+                    onChange={(e) => setFeedbackMessage(e.target.value)}
+                    placeholder={
+                      feedbackType === "bug"
+                        ? "Descreva o bug encontrado..."
+                        : feedbackType === "suggestion"
+                        ? "Sua sugestão de melhoria..."
+                        : "Seu comentário..."
+                    }
+                    className="w-full h-28 rounded-xl bg-muted/50 border border-border p-3 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary/40"
+                  />
+                  <p className="text-[10px] text-muted-foreground">
+                    Página: {window.location.pathname}
+                  </p>
+                  <Button
+                    onClick={handleSendFeedback}
+                    disabled={!feedbackMessage.trim() || sendingFeedback || !user}
+                    className="w-full gap-2"
+                  >
+                    {sendingFeedback ? <Loader2 size={16} className="animate-spin" /> : <Send size={16} />}
+                    {sendingFeedback ? "Enviando..." : "Enviar Feedback"}
+                  </Button>
                 </div>
               )}
             </motion.div>
