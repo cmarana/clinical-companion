@@ -4643,8 +4643,390 @@ S — Sistêmicos
   • Sinais de uremia: hálito urêmico, flapping, pericardite`,
     tips: "A tríade proteinúria + hematúria dismórfica + cilindros hemáticos = síndrome nefrítica até prova contrária. Sempre verifique nefrotoxinas antes de atribuir IRA a causas intrínsecas. Na DRC, classifique pelo KDIGO (GxAx) para padronizar a comunicação.",
   },
-];
+  {
+    id: "ortopedia",
+    title: "Anamnese em Ortopedia e Traumatologia",
+    emoji: "🦴",
+    tags: ["ortopedia", "fratura", "trauma", "articulação", "coluna", "prótese"],
+    content: `═══════════════════════════════════════════
+ ANAMNESE EM ORTOPEDIA E TRAUMATOLOGIA
+═══════════════════════════════════════════
 
+📋 1. DOR MUSCULOESQUELÉTICA — Mnemônico ARTICULAR
+
+A — Articulação(ões) acometida(s)
+  • Monoarticular vs oligoarticular (2-4) vs poliarticular (≥ 5)
+  • Simétrica (AR) vs assimétrica (espondiloartrite, gota)
+  • Grandes articulações (OA, séptica) vs pequenas (AR, gota)
+
+R — Rigidez matinal
+  • > 30 min → inflamatória (AR, LES)
+  • < 30 min → mecânica (osteoartrose)
+  • "Gelling" → rigidez após inatividade (OA)
+
+T — Tipo da dor
+  • Mecânica: piora com atividade, melhora com repouso
+  • Inflamatória: piora em repouso/noturna, melhora com movimento
+  • Neuropática: queimação, choque, parestesias no dermátomo
+
+I — Início e evolução
+  • Agudo (trauma, séptica, gota) vs insidioso (OA, AR)
+  • Migratória (febre reumática) vs aditiva (AR)
+
+C — Circunstância do trauma (se aplicável)
+  • Mecanismo: queda, torção, impacto direto, esmagamento
+  • Energia: alta (acidente automobilístico) vs baixa (queda da própria altura)
+  • Posição do membro no momento
+
+U — Uso funcional / Limitação
+  • Consegue apoiar peso? Andar?
+  • Amplitude de movimento preservada?
+  • Atividades da vida diária comprometidas?
+
+L — Localização e irradiação
+  • Dor referida: ombro → diafragma, quadril → joelho
+  • Radiculopatia: seguir o dermátomo
+
+A — Antecedentes (fraturas, luxações, cirurgias prévias)
+
+R — "Red flags" (bandeiras vermelhas)
+  • Fratura patológica: dor óssea + perda de peso
+  • Síndrome da cauda equina: anestesia em sela, retenção urinária
+  • Artrite séptica: monoartrite + febre + toxemia
+  • Síndrome compartimental: dor desproporcional + parestesia
+
+📋 2. TRAUMA — Mnemônico TRAUMA
+
+T — Tempo (quando ocorreu?)
+R — Relato do mecanismo (como aconteceu?)
+A — Ambiente (trabalho, esporte, trânsito, domiciliar)
+U — Uso de equipamento de proteção (capacete, cinto, EPI)
+M — Membro acometido (lateralidade, dominância)
+A — Atendimento prévio (imobilização, medicação, raio-X?)
+
+📋 3. COLUNA VERTEBRAL — Bandeiras Vermelhas
+
+  ┌──────────────────────────────────────────────────┐
+  │ 🔴 RED FLAGS — Lombalgia                         │
+  ├──────────────────────────────────────────────────┤
+  │ ( ) Idade < 20 ou > 55 anos (1º episódio)       │
+  │ ( ) Trauma significativo                         │
+  │ ( ) Dor noturna que não melhora com repouso      │
+  │ ( ) Perda de peso inexplicada                    │
+  │ ( ) História de câncer                           │
+  │ ( ) Uso de corticoides crônico                   │
+  │ ( ) Febre                                        │
+  │ ( ) Déficit neurológico progressivo              │
+  │ ( ) Anestesia em sela / retenção urinária        │
+  │ ( ) Uso de drogas EV (discite/abscesso)          │
+  └──────────────────────────────────────────────────┘
+
+  📌 Qualquer red flag → imagem e avaliação urgente
+
+📋 4. OMBRO — Avaliação Estruturada
+
+  • Dominância (destro/canhoto)
+  • Arco doloroso (60-120° → manguito rotador)
+  • Instabilidade (luxações prévias, apreensão)
+  • Atividade repetitiva overhead (esporte, trabalho)
+  • Força por grupo: supraespinhal (Jobe), infraespinhal (RE), subescapular (Gerber)
+  • Movimento passivo > ativo → ruptura tendínea
+  • Capsulite adesiva: restrição global passiva e ativa
+
+📋 5. JOELHO — Mnemônico JOELHO
+
+J — Jogo / mecanismo (torção, hiperextensão, valgo/varo forçado)
+O — Onset: edema imediato (hemartrose = LCA) vs tardio (menisco)
+E — Estalo ou falseio (giving way → LCA)
+L — Locking (bloqueio mecânico → menisco, corpo livre)
+H — História de lesões prévias / cirurgias
+O — Outros: degraus, agachamento (femoropatelar)
+
+📋 6. FRATURAS — Classificação e Dados
+
+  • Localização anatômica precisa
+  • Aberta (Gustilo I-IIIC) vs fechada
+  • Desvio / cominuição
+  • Comprometimento neurovascular distal
+  • Status vacinal antitetânico (fraturas expostas)
+  • Classificações específicas: Neer (úmero proximal), Garden (colo femoral), Weber (tornozelo), AO
+
+📋 7. PRÓTESES E IMPLANTES
+
+  • Tipo: artroplastia total (ATQ, ATJ), parcial, artrodese
+  • Data da cirurgia
+  • Material: cimentada vs não cimentada
+  • Complicações: luxação, afrouxamento, infecção periprotética
+  • Sinais de infecção: dor persistente, fístula, VHS/PCR elevados
+  • Restrições de movimento orientadas
+
+📋 8. EXAME ORTOPÉDICO DIRECIONADO
+
+  • Inspeção: edema, equimose, deformidade, atrofia
+  • Palpação: pontos dolorosos específicos
+  • ADM: ativa e passiva (comparar com contralateral)
+  • Testes especiais: Lachman, gaveta, McMurray, Phalen, Tinel, Finkelstein, Thompson
+  • Exame neurovascular distal: pulsos, sensibilidade, motricidade
+  • Marcha: antálgica, Trendelenburg, claudicante`,
+    tips: "Na lombalgia, red flags exigem investigação imediata. Edema imediato no joelho (hemartrose) = LCA até prova contrária. Sempre compare com o lado contralateral e documente dominância do membro.",
+  },
+  {
+    id: "otorrinolaringologia",
+    title: "Anamnese em Otorrinolaringologia",
+    emoji: "👂",
+    tags: ["ORL", "otorrino", "ouvido", "nariz", "garganta", "vertigem", "surdez", "sinusite"],
+    content: `═══════════════════════════════════════════
+ ANAMNESE EM OTORRINOLARINGOLOGIA
+═══════════════════════════════════════════
+
+📋 1. OUVIDO — Mnemônico OUVIDO
+
+O — Otalgia (uni/bilateral, profunda/superficial)
+  • Primária: otite externa, OMA, colesteatoma
+  • Referida: ATM, dental, faríngea (IX par), cervical
+U — Uni ou bilateral
+V — Vertigem associada (rotatória vs tontura inespecífica)
+I — Infecção/Inflamação (febre, otorreia)
+D — Diminuição da audição (início, progressão, uni/bilateral)
+O — Otorreia (aspecto: purulenta, fétida, sanguinolenta, clara)
+
+📋 2. PERDA AUDITIVA — Condutiva vs Neurossensorial
+
+  ┌─────────────────────┬──────────────────────────┐
+  │    CONDUTIVA        │    NEUROSSENSORIAL       │
+  ├─────────────────────┼──────────────────────────┤
+  │ Rolha de cerume     │ Presbiacusia (bilateral)  │
+  │ Otite serosa/OMA    │ Trauma acústico           │
+  │ Perfuração timpânica│ Ototóxicos (aminoglic.)   │
+  │ Otosclerose         │ Doença de Ménière         │
+  │ Colesteatoma        │ Neurinoma do acústico     │
+  │ Weber: lateraliza   │ Weber: lateraliza p/      │
+  │  p/ ouvido afetado  │  ouvido normal            │
+  │ Rinne: negativo     │ Rinne: positivo           │
+  └─────────────────────┴──────────────────────────┘
+
+  📌 Perda unilateral neurossensorial → excluir schwannoma vestibular (RM)
+  📌 Ototóxicos: aminoglicosídeos, cisplatina, furosemida, AAS (altas doses)
+
+📋 3. VERTIGEM — Mnemônico VERTIGO
+
+V — Vertiginosa verdadeira? (rotatória vs tontura/instabilidade)
+E — Episódica ou contínua?
+R — Recorrência (frequência, duração dos episódios)
+T — Triggers (mudança de posição → VPPB; estresse → vestibular)
+I — Intensidade e impacto funcional
+G — Gatilhos: posição da cabeça, levantar, girar
+O — Outros: náusea, vômito, nistagmo, zumbido, plenitude auricular
+
+  Diagnóstico diferencial por duração:
+  • Segundos → VPPB (posicional, Dix-Hallpike +)
+  • Minutos a horas → Ménière (tríade: vertigem + hipoacusia + zumbido)
+  • Dias → neurite vestibular (pós-viral, sem hipoacusia)
+  • Contínua + déficit → AVC/AIT de fossa posterior
+
+  📌 HINTS (Head Impulse, Nistagmo, Test of Skew):
+  • Padrão periférico (benigno): HI +, nistagmo unidirecional, skew −
+  • Padrão central (perigoso): HI −, nistagmo multidirecional, skew +
+
+📋 4. ZUMBIDO (TINNITUS) — Avaliação
+
+  • Uni ou bilateral
+  • Contínuo ou pulsátil
+  • Tom: agudo (neurossensorial) vs grave (condutivo)
+  • Pulsátil → vascular (glomus, MAV, estenose carotídea, HIC benigna)
+  • Fatores de piora: silêncio, estresse, cafeína, ruído
+  • Impacto: sono, concentração, humor (THI — Tinnitus Handicap Inventory)
+  • Medicações ototóxicas em uso
+
+📋 5. NARIZ E SEIOS PARANASAIS — Mnemônico NARIZ
+
+N — Nasal obstruction (uni/bilateral, alternante, fixa)
+A — Anosmia / hiposmia (COVID, polipose, trauma)
+R — Rinorreia (anterior/posterior, aquosa/purulenta/sanguinolenta)
+I — Inflamação / infecção (sinusite aguda < 4 sem vs crônica > 12 sem)
+Z — Zumbido associado (disfunção tubária)
+
+  📌 Sinusite:
+  • Aguda viral (< 10 dias) vs bacteriana (> 10 dias ou bifásica)
+  • Critérios de complicação: edema periorbitário, cefaleia intensa, febre alta, diplopia → TC urgente
+  • Rinossinusite crônica COM vs SEM pólipos (fenótipos diferentes)
+
+📋 6. EPISTAXE — Avaliação
+
+  • Anterior (90%) vs posterior (Kiesselbach vs esfenopalatina)
+  • Lateralidade e frequência
+  • Volume estimado
+  • Uso de anticoagulantes/antiplaquetários
+  • HAS descontrolada
+  • Coagulopatias (von Willebrand, plaquetopenia)
+  • Trauma digital (manipulação nasal)
+  • Telangiectasia hemorrágica hereditária (Osler-Weber-Rendu)
+
+📋 7. GARGANTA / FARINGE / LARINGE
+
+  • Odinofagia (dor ao engolir) vs disfagia (dificuldade)
+  • Disfagia: para sólidos (mecânica) vs líquidos (motora/neurológica)
+  • Rouquidão/disfonia:
+    - < 3 semanas: laringite, IVAS
+    - > 3 semanas: laringoscopia obrigatória (excluir neoplasia)
+  • Estridor: obstrução de via aérea superior (emergência se inspiratório)
+  • Ronco e SAHOS (ver seção de sono)
+  • Globus faríngeo (sensação de "bola na garganta")
+  • Amigdalites de repetição (≥ 7/ano ou ≥ 5/ano por 2 anos → tonsilectomia)
+
+📋 8. EXAME ORL DIRECIONADO
+
+  • Otoscopia: membrana timpânica (íntegra, abaulada, retraída, perfurada)
+  • Rinoscopia anterior: mucosa, septal desvio, pólipos, secreção
+  • Oroscopia: amígdalas (Brodsky 0-4), pilares, palato, úvula
+  • Palpação cervical: linfonodos, glândulas salivares, tireoide
+  • Acumetria: Weber e Rinne (diapasão 512 Hz)
+  • Dix-Hallpike: VPPB (canal posterior)
+  • Nistagmo: direção, fatigabilidade, habituação`,
+    tips: "Rouquidão > 3 semanas = laringoscopia obrigatória. No HINTS, padrão 'central' (HI negativo + nistagmo multidirecional) é emergência neurológica. VPPB é a causa mais comum de vertigem e se diagnostica com Dix-Hallpike.",
+  },
+  {
+    id: "oftalmologia",
+    title: "Anamnese em Oftalmologia",
+    emoji: "👁️",
+    tags: ["oftalmologia", "olho", "visão", "glaucoma", "catarata", "retina", "olho vermelho"],
+    content: `═══════════════════════════════════════════
+ ANAMNESE EM OFTALMOLOGIA
+═══════════════════════════════════════════
+
+📋 1. PERDA VISUAL — Mnemônico VISÃO
+
+V — Velocidade de instalação
+  • Súbita (segundos-minutos): OACR, OVCR, descolamento de retina, neurite óptica, amaurose fugaz
+  • Gradual (semanas-meses): catarata, glaucoma, retinopatia diabética, DMRI
+
+I — Intensidade
+  • Total (amaurose) vs parcial (escotoma, embaçamento)
+  • Quantificar: conta dedos, vultos, percepção luminosa, SPL (sem percepção de luz)
+
+S — Simetria (uni ou bilateral)
+  • Unilateral → causa ocular/nervo óptico
+  • Bilateral simultânea → cortical, tóxica, papiledema bilateral
+
+Ã — Área do campo visual afetada
+  • Central → maculopatia, neurite óptica
+  • Periférico → glaucoma, descolamento de retina
+  • Hemianopsia → quiasma/vias visuais
+  • Quadrantanopsia → radiação óptica
+
+O — Outros sintomas associados
+  • Dor → glaucoma agudo, neurite, uveíte, ceratite
+  • Fotopsia (flashes) → tração vitreorretiniana
+  • Moscas volantes (floaters) → descolamento vítreo posterior
+  • Halos coloridos → glaucoma agudo, edema corneano
+  • Diplopia → paralisia de nervos cranianos (III, IV, VI)
+  • Metamorfopsia (linhas tortas) → DMRI, membrana epirretiniana
+
+📋 2. OLHO VERMELHO — Diagnóstico Diferencial
+
+  ┌──────────────────┬───────────┬───────────┬──────────┬──────────┐
+  │                  │Conjuntiv. │Uveíte ant.│Glaucoma  │Ceratite  │
+  │                  │           │           │agudo     │          │
+  ├──────────────────┼───────────┼───────────┼──────────┼──────────┤
+  │ Dor              │ Ardência  │ Moderada  │ Intensa  │ Intensa  │
+  │ Visão            │ Normal    │ ↓ leve    │ ↓↓↓      │ ↓↓       │
+  │ Pupila           │ Normal    │ Miótica   │Midriática│ Normal   │
+  │ Secreção         │ Sim       │ Não       │ Não      │ Lacrimej.│
+  │ Hiperemia        │ Difusa    │ Pericerát.│Pericerát.│ Mista    │
+  │ PIO              │ Normal    │ Normal/↓  │ ↑↑↑      │ Normal   │
+  │ Fotofobia        │ Não       │ Sim       │ Sim      │ Sim      │
+  │ Urgência         │ Ambulat.  │ < 24h     │ Imediata │ < 24h    │
+  └──────────────────┴───────────┴───────────┴──────────┴──────────┘
+
+  📌 Glaucoma agudo: dor + olho vermelho + pupila fixa + PIO > 40 → emergência
+
+📋 3. GLAUCOMA — Avaliação
+
+  Fatores de risco:
+  • PIO elevada (> 21 mmHg)
+  • Idade > 40 anos
+  • Raça negra (GPAA)
+  • História familiar (1º grau: risco 4-9x)
+  • Miopia alta (GPAA)
+  • Hipermetropia (ângulo estreito)
+  • Uso de corticoides (tópico ou sistêmico)
+  • Escavação aumentada (C/D > 0,5 ou assimétrica)
+
+  📌 Perguntar:
+  • Já mediu pressão do olho?
+  • Usa colírios? Quais? Adesão?
+  • Já fez campo visual / OCT?
+  • Cirurgia de glaucoma prévia (trabeculectomia, implante)?
+
+📋 4. CATARATA — Avaliação
+
+  • Embaçamento progressivo bilateral
+  • Piora com claridade (catarata subcapsular posterior)
+  • Melhora em ambientes escuros (pupila dilata = menos opacidade central)
+  • Visão amarelada / mudança na percepção de cores
+  • Dificuldade para dirigir à noite (glare)
+  • Troca frequente de óculos
+  • Fatores: idade, DM, corticoide crônico, trauma, radiação UV
+
+📋 5. RETINOPATIA DIABÉTICA — Rastreio
+
+  • DM tipo 1: iniciar rastreio 5 anos após diagnóstico
+  • DM tipo 2: rastreio ao diagnóstico (pode já ter retinopatia)
+  • Gestante com DM: rastreio no 1º trimestre
+  • Frequência: anual (ou mais se retinopatia já presente)
+  
+  Classificação:
+  • RDNP leve → microaneurismas
+  • RDNP moderada → exsudatos, hemorragias
+  • RDNP grave → regra 4-2-1 (hemorragias 4 quadrantes, veias em rosário 2 quadrantes, IRMA 1 quadrante)
+  • RDP → neovasos (disco ou retina)
+
+  📌 Perguntar: HbA1c, tempo de DM, último exame de fundo de olho, laser prévio, anti-VEGF
+
+📋 6. TRAUMA OCULAR — Avaliação Urgente
+
+  • Mecanismo: contuso, perfurante, corpo estranho, químico
+  • Proteção ocular no momento (óculos, EPI)
+  • Status do tétano
+  
+  Queimadura química:
+  • IRRIGAÇÃO IMEDIATA (antes de qualquer avaliação)
+  • Álcali > ácido em gravidade (penetra mais profundamente)
+  • Tempo de exposição
+  
+  Perfuração ocular:
+  • NÃO manipular, NÃO remover corpo estranho
+  • Protetor rígido (sem compressão)
+  • ATB sistêmico + antitetânica
+  • TC de órbita (sem RM se suspeita de corpo estranho metálico)
+
+📋 7. HISTÓRIA OFTALMOLÓGICA
+
+  • Uso de óculos/lentes (grau, tipo, desde quando)
+  • Cirurgias oculares prévias (catarata, refrativa, retina, estrabismo)
+  • Colírios em uso (incluir lubrificantes)
+  • Olho seco (questionário OSDI)
+  • Lentes de contato: tipo, tempo de uso diário, higiene
+  • Alergias oculares (sazonalidade, prurido)
+  • Uso de telas (tempo de exposição, fadiga visual)
+  • Histórico familiar: glaucoma, DMRI, retinose pigmentar, estrabismo
+
+📋 8. EXAME OFTALMOLÓGICO BÁSICO (não especialista)
+
+  • Acuidade visual: Snellen (cada olho separado, com e sem correção)
+  • Campo visual por confrontação
+  • Reflexo pupilar: direto e consensual
+  • DPAR (defeito pupilar aferente relativo = Marcus Gunn)
+  • Motilidade ocular extrínseca (6 posições)
+  • Cover test (estrabismo)
+  • Inspeção: pálpebras, conjuntiva, córnea (fluoresceína se trauma)
+  • Fundoscopia direta: disco óptico, vasos, mácula
+  • Tonometria (se disponível): PIO normal 10-21 mmHg
+  
+  📌 DPAR positivo = lesão do nervo óptico ipsilateral (neurite, isquemia, compressão)`,
+    tips: "Queimadura química = irrigar ANTES de tudo, perguntar depois. Floaters + fotopsias súbitos = descolamento de retina até prova contrária → encaminhar urgente. No olho vermelho, pupila fixa + dor intensa + PIO alta = glaucoma agudo → emergência.",
+  },
+];
 export default function AnamnesisGuide() {
   const [active, setActive] = useState<string | null>(null);
   const [copied, setCopied] = useState<string | null>(null);
