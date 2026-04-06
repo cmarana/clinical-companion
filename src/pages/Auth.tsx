@@ -9,7 +9,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import {
   Eye, EyeOff, Zap, Pill, ClipboardList, Calculator, Shield, Clock,
   Bot, ChevronRight, ArrowLeft, Activity, Mic, WifiOff,
-  Share2, Trophy, GitBranch, Brain, Newspaper, Stethoscope
+  Share2, Trophy, GitBranch, Brain, Newspaper, Stethoscope,
+  ShieldCheck, BedDouble, FileText
 } from "lucide-react";
 import pulsoLogo from "@/assets/pulso-logo.png";
 import { Separator } from "@/components/ui/separator";
@@ -31,6 +32,10 @@ const showcaseFeatures = [
   { icon: Trophy, label: "Conquistas", desc: "Badges, streaks e progresso", color: "from-yellow-500/20 to-yellow-600/10 text-yellow-500" },
   { icon: Newspaper, label: "Atualizações", desc: "Changelog e revisões", color: "from-lime-500/20 to-lime-600/10 text-lime-500" },
   { icon: Stethoscope, label: "Diagnóstico", desc: "Por sintoma e especialidade", color: "from-rose-500/20 to-rose-600/10 text-rose-500" },
+  { icon: ShieldCheck, label: "Checagem Prescrição", desc: "IA verifica interações e doses", color: "from-red-400/20 to-red-500/10 text-red-400" },
+  { icon: BedDouble, label: "Modo Rounds", desc: "Visita de leito com voz e checklist", color: "from-blue-400/20 to-blue-500/10 text-blue-400" },
+  { icon: FileText, label: "Resumo de Alta", desc: "IA gera documento formatado", color: "from-emerald-400/20 to-emerald-500/10 text-emerald-400" },
+  { icon: Mic, label: "Evolução por Voz", desc: "Fale e a IA estrutura em SOAP", color: "from-purple-400/20 to-purple-500/10 text-purple-400" },
 ];
 
 const stats = [
