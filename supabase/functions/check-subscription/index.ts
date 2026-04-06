@@ -57,8 +57,16 @@ serve(async (req) => {
     const activeSub = subscriptions.data.find(s => s.status === "active" || s.status === "trialing");
 
     if (activeSub) {
-      const subscriptionEnd = new Date(activeSub.current_period_end * 1000).toISOString();
-      const productId = activeSub.items.data[0].price.product;
+      let subscriptionEnd = null;
+      try {
+        const endTs = activeSub.current_period_end;
+        if (endTs && typeof endTs === "number") {
+          subscriptionEnd = new Date(endTs * 1000).toISOString();
+        }
+      } catch {
+        subscriptionEnd = null;
+      }
+      const productId = activeSub.items.data[0]?.price?.product ?? null;
 
       return new Response(JSON.stringify({
         subscribed: true,
