@@ -237,6 +237,7 @@ export default function SupportChat() {
                   </button>
                 </div>
               </div>
+              <OfflineBadge message="O chat e envio de mensagens requerem conexão" />
 
               {view === "chat" ? (
                 <>
