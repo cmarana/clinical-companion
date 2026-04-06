@@ -35,7 +35,7 @@ const showcaseFeatures = [
   { icon: ShieldCheck, label: "Checagem Prescrição", desc: "IA verifica interações e doses", color: "from-red-400/20 to-red-500/10 text-red-400" },
   { icon: BedDouble, label: "Modo Rounds", desc: "Visita de leito com voz e checklist", color: "from-blue-400/20 to-blue-500/10 text-blue-400" },
   { icon: FileText, label: "Resumo de Alta", desc: "IA gera documento formatado", color: "from-emerald-400/20 to-emerald-500/10 text-emerald-400" },
-  { icon: Mic, label: "Evolução por Voz", desc: "Fale e a IA estrutura em SOAP", color: "from-purple-400/20 to-purple-500/10 text-purple-400" },
+  { icon: GitBranch, label: "Evolução por Voz", desc: "Fale e a IA estrutura em SOAP", color: "from-purple-400/20 to-purple-500/10 text-purple-400" },
 ];
 
 const stats = [
