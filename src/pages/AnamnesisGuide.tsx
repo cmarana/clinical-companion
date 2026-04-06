@@ -586,6 +586,439 @@ E — Eventos
 • SAMU/bombeiros que trouxeram`,
     tips: "No trauma, o SAMPLE é obrigatório e pode ser feito simultaneamente ao exame primário (ABCDE). Treinar para ser ágil e objetivo.",
   },
+  {
+    id: "ocupacional",
+    title: "Anamnese Ocupacional",
+    emoji: "🏗️",
+    tags: ["trabalho", "ocupação", "exposição", "risco"],
+    content: `═══════════════════════════════════════
+  ANAMNESE OCUPACIONAL DETALHADA
+═══════════════════════════════════════
+
+1️⃣ HISTÓRIA OCUPACIONAL CRONOLÓGICA:
+   Listar TODOS os empregos/atividades, do primeiro ao atual:
+
+   Emprego 1:
+   • Função: ___________________________
+   • Empresa/Local: ____________________
+   • Período: ___/___/___ a ___/___/___
+   • Jornada: ____ h/dia, ____ dias/semana
+   • Atividades realizadas: _____________
+   • Exposições: ( ) Ruído ( ) Poeira ( ) Químicos
+     ( ) Vibração ( ) Calor ( ) Frio ( ) Radiação
+     ( ) Agentes biológicos ( ) Ergonômicos
+   • EPI utilizado: _____________________
+   • Afastamentos neste período: ________
+
+   [Repetir para cada emprego]
+
+2️⃣ EMPREGO ATUAL:
+   • Cargo/Função: _____________________
+   • Tempo na função: __________________
+   • Descrição detalhada do dia de trabalho:
+     ____________________________________
+   • Postura predominante: ( ) Sentado ( ) Em pé
+     ( ) Alternada ( ) Agachado ( ) Ajoelhado
+   • Esforço físico: ( ) Leve ( ) Moderado ( ) Intenso
+   • Movimentos repetitivos: ( ) Sim ( ) Não
+     Qual? ______________________________
+   • Levantamento de peso: ( ) Sim ( ) Não
+     Quanto? ____ kg, frequência: ________
+   • Trabalho noturno/turnos: ( ) Sim ( ) Não
+   • Horas extras frequentes: ( ) Sim ( ) Não
+
+3️⃣ EXPOSIÇÕES ESPECÍFICAS:
+   AGENTES QUÍMICOS:
+   • Solventes (benzeno, tolueno, xileno): ____
+   • Metais pesados (chumbo, mercúrio, cromo): ____
+   • Agrotóxicos/pesticidas: _______________
+   • Poeiras minerais (sílica, amianto): ______
+   • Poeiras orgânicas (algodão, madeira): _____
+   • Gases/vapores: ________________________
+   • Tempo e intensidade de exposição: ________
+
+   AGENTES FÍSICOS:
+   • Ruído: ____ dB, ____ h/dia de exposição
+   • Vibração: ( ) Corpo inteiro ( ) Mãos/braços
+   • Temperaturas extremas: _________________
+   • Radiação: ( ) Ionizante ( ) Não-ionizante
+   • Pressão anormal: ( ) Hiperbárica ( ) Hipobárica
+
+   AGENTES BIOLÓGICOS:
+   • Contato com pacientes/material biológico: ___
+   • Animais: ______________________________
+   • Acidente com perfurocortante: ( ) Sim ( ) Não
+
+   FATORES ERGONÔMICOS:
+   • Posto de trabalho adequado: ( ) Sim ( ) Não
+   • Pausas regulares: ( ) Sim ( ) Não
+   • Mobiliário: ___________________________
+
+   FATORES PSICOSSOCIAIS:
+   • Ritmo de trabalho: ( ) Adequado ( ) Intenso
+   • Autonomia: ( ) Sim ( ) Não
+   • Assédio moral/sexual: ( ) Sim ( ) Não
+   • Satisfação no trabalho: _______________
+
+4️⃣ RELAÇÃO TEMPORAL SINTOMA-TRABALHO:
+   • Os sintomas melhoram nos fins de semana/férias?
+     ( ) Sim ( ) Não ( ) Parcialmente
+   • Os sintomas pioram durante/após o trabalho?
+     ( ) Sim ( ) Não
+   • Quando começaram em relação ao emprego atual?
+     ____________________________________________
+   • Colegas com sintomas semelhantes?
+     ( ) Sim ( ) Não. Quantos? ____
+
+5️⃣ DOCUMENTAÇÃO E EXAMES OCUPACIONAIS:
+   • ASO mais recente: ___/___/___ Resultado: ____
+   • PCMSO da empresa: ( ) Sim ( ) Não
+   • CAT emitida: ( ) Sim ( ) Não
+     Data: ___/___/___ Motivo: ________________
+   • Afastamento pelo INSS: ( ) Sim ( ) Não
+     B31 ( ) B91 ( )  Período: ________________
+   • Laudos de insalubridade/periculosidade: ____
+
+6️⃣ NEXO CAUSAL — CHECKLIST:
+   ☐ Exposição compatível com a doença?
+   ☐ Tempo de exposição suficiente (latência)?
+   ☐ Relação temporal adequada?
+   ☐ Exclusão de causas não-ocupacionais?
+   ☐ Evidência epidemiológica em co-workers?
+   ☐ Lista Nacional de Doenças Relacionadas ao Trabalho consultada?
+
+📌 PRINCIPAIS DOENÇAS OCUPACIONAIS:
+• LER/DORT (NR-17)
+• PAIR — Perda Auditiva Induzida por Ruído
+• Pneumoconioses (silicose, asbestose, bissinose)
+• Dermatoses ocupacionais
+• Intoxicações (chumbo, mercúrio, organofosforados)
+• Distúrbios psíquicos (burnout, depressão)
+• Câncer ocupacional (mesotelioma, leucemia por benzeno)
+• Hepatopatias tóxicas`,
+    tips: "A anamnese ocupacional é obrigatória em toda consulta médica (Resolução CFM). Sempre perguntar: 'O que você faz no trabalho?' e 'Seus sintomas melhoram nos fins de semana?'. Essas duas perguntas simples podem revelar doenças ocupacionais subdiagnosticadas.",
+  },
+  {
+    id: "nutricional",
+    title: "Anamnese Nutricional",
+    emoji: "🥗",
+    tags: ["nutrição", "alimentação", "dieta", "peso"],
+    content: `═══════════════════════════════════════
+  ANAMNESE NUTRICIONAL DETALHADA
+═══════════════════════════════════════
+
+1️⃣ DADOS ANTROPOMÉTRICOS:
+   • Peso atual: ______ kg
+   • Peso habitual: ______ kg
+   • Altura: ______ m
+   • IMC: ______ kg/m²
+     ( ) <18.5 Baixo peso
+     ( ) 18.5-24.9 Eutrófico
+     ( ) 25-29.9 Sobrepeso
+     ( ) 30-34.9 Obesidade I
+     ( ) 35-39.9 Obesidade II
+     ( ) ≥40 Obesidade III
+   • Circunferência abdominal: ______ cm
+     (Risco: H >102cm / M >88cm)
+   • Circunferência do braço: ______ cm
+   • Prega tricipital: ______ mm
+   • Perda de peso recente:
+     ( ) Sim — Quanto: ____ kg em ____ semanas/meses
+     ( ) Não
+   • Perda >10% em 6 meses = DESNUTRIÇÃO GRAVE
+
+2️⃣ RECORDATÓRIO ALIMENTAR 24h:
+   MANHÃ (horário: ____):
+   • Alimento: _____________ Quantidade: _______
+   • Alimento: _____________ Quantidade: _______
+   • Alimento: _____________ Quantidade: _______
+
+   LANCHE DA MANHÃ (horário: ____):
+   • ______________________________________
+
+   ALMOÇO (horário: ____):
+   • Alimento: _____________ Quantidade: _______
+   • Alimento: _____________ Quantidade: _______
+   • Alimento: _____________ Quantidade: _______
+   • Alimento: _____________ Quantidade: _______
+
+   LANCHE DA TARDE (horário: ____):
+   • ______________________________________
+
+   JANTAR (horário: ____):
+   • Alimento: _____________ Quantidade: _______
+   • Alimento: _____________ Quantidade: _______
+   • Alimento: _____________ Quantidade: _______
+
+   CEIA (horário: ____):
+   • ______________________________________
+
+   LÍQUIDOS/DIA:
+   • Água: ______ mL/dia
+   • Sucos: ______ mL/dia
+   • Refrigerante: ______ mL/dia
+   • Café: ______ xícaras/dia
+   • Álcool: ______ doses/semana
+
+3️⃣ FREQUÊNCIA ALIMENTAR SEMANAL:
+   GRUPO            Diário  3-6x  1-2x  Raro  Nunca
+   Frutas            ( )    ( )   ( )   ( )   ( )
+   Verduras/legumes  ( )    ( )   ( )   ( )   ( )
+   Leite/derivados   ( )    ( )   ( )   ( )   ( )
+   Carnes vermelhas  ( )    ( )   ( )   ( )   ( )
+   Frango/peixe      ( )    ( )   ( )   ( )   ( )
+   Ovos              ( )    ( )   ( )   ( )   ( )
+   Arroz/feijão      ( )    ( )   ( )   ( )   ( )
+   Pães/massas       ( )    ( )   ( )   ( )   ( )
+   Cereais integrais ( )    ( )   ( )   ( )   ( )
+   Frituras          ( )    ( )   ( )   ( )   ( )
+   Doces/açúcar      ( )    ( )   ( )   ( )   ( )
+   Embutidos         ( )    ( )   ( )   ( )   ( )
+   Ultraprocessados  ( )    ( )   ( )   ( )   ( )
+   Oleaginosas       ( )    ( )   ( )   ( )   ( )
+
+4️⃣ HÁBITOS E COMPORTAMENTO ALIMENTAR:
+   • Quem prepara as refeições: _______________
+   • Onde costuma comer: ( ) Casa ( ) Restaurante
+     ( ) Trabalho ( ) Fast-food
+   • Come assistindo TV/celular: ( ) Sim ( ) Não
+   • Tempo gasto nas refeições: ____ minutos
+   • Mastiga bem os alimentos: ( ) Sim ( ) Não
+   • Pula refeições: ( ) Sim — Qual(is)? ______
+   • Come por ansiedade/estresse: ( ) Sim ( ) Não
+   • Compulsão alimentar: ( ) Sim ( ) Não
+   • Purgação/vômitos induzidos: ( ) Sim ( ) Não
+   • Uso de laxantes: ( ) Sim ( ) Não
+   • Restrição calórica severa: ( ) Sim ( ) Não
+
+5️⃣ RESTRIÇÕES E DIETAS ESPECIAIS:
+   • Alergias alimentares: __________________
+   • Intolerâncias: ( ) Lactose ( ) Glúten ( ) Outra: ___
+   • Dieta vegetariana/vegana: ( ) Sim ( ) Não
+   • Dieta por condição médica:
+     ( ) Hipossódica ( ) Hipocalórica ( ) Hipolipídica
+     ( ) Diabética ( ) Renal ( ) Sem glúten
+     ( ) Cetogênica ( ) Outra: ________________
+   • Suplementos nutricionais: _______________
+   • Vitaminas/minerais em uso: ______________
+   • Suplemento proteico: ( ) Sim ( ) Não
+
+6️⃣ AVALIAÇÃO DE RISCO NUTRICIONAL (NRS-2002):
+   Triagem inicial:
+   ☐ IMC < 20,5?
+   ☐ Perda de peso nos últimos 3 meses?
+   ☐ Redução da ingesta na última semana?
+   ☐ Doença grave (UTI, cirurgia grande)?
+   → Se ≥1 SIM: aplicar triagem completa
+
+7️⃣ SINAIS FÍSICOS DE CARÊNCIA NUTRICIONAL:
+   • Cabelos: ( ) quebradiços ( ) queda ( ) sem brilho
+   • Unhas: ( ) quebradiças ( ) coiloníquia ( ) estrias
+   • Pele: ( ) seca ( ) descamativa ( ) petéquias
+     ( ) dermatite pelagroide ( ) acantose nigricans
+   • Mucosas: ( ) descoradas ( ) queilite angular
+     ( ) glossite ( ) estomatite
+   • Edema: ( ) MMII ( ) anasarca ( ) Kwashiorkor
+   • Musculatura: ( ) preservada ( ) hipotrofia
+     Temporal ( ) Interósseos ( ) Quadríceps ( )
+   • Tecido subcutâneo: ( ) preservado ( ) reduzido
+
+📌 DEFICIÊNCIAS COMUNS E SINAIS:
+• Ferro: palidez, coiloníquia, glossite
+• B12: glossite, parestesias, ataxia
+• Folato: glossite, anemia megaloblástica
+• Vitamina D: dor óssea, fraqueza proximal
+• Vitamina C: petéquias, gengivorragia (escorbuto)
+• Zinco: alopecia, disgeusia, diarreia, acrodermatite
+• Vitamina A: xeroftalmia, cegueira noturna
+• Tiamina (B1): Beribéri, Wernicke-Korsakoff`,
+    tips: "A avaliação nutricional é essencial em idosos, pacientes oncológicos, pré-operatório, UTI e doenças crônicas. A perda de peso >5% em 1 mês ou >10% em 6 meses indica desnutrição grave e impacta mortalidade. Use NRS-2002 (internados) ou MAN (idosos).",
+  },
+  {
+    id: "cuidados-paliativos",
+    title: "Anamnese em Cuidados Paliativos",
+    emoji: "🕊️",
+    tags: ["paliativo", "fim de vida", "dor", "qualidade de vida"],
+    content: `═══════════════════════════════════════
+  ANAMNESE EM CUIDADOS PALIATIVOS
+═══════════════════════════════════════
+
+1️⃣ IDENTIFICAÇÃO E CONTEXTO:
+   • Doença de base: ________________________
+   • Data do diagnóstico: ___/___/___
+   • Estadiamento/Prognóstico: _______________
+   • Tratamentos prévios realizados:
+     ( ) Cirurgia ( ) Quimioterapia ( ) Radioterapia
+     ( ) Imunoterapia ( ) Outros: _____________
+   • Tratamento atual: ______________________
+   • Performance Status (PPS ou Karnofsky):
+     PPS: _____%    Karnofsky: _____%
+   • Funcionalidade (ECOG): _____
+
+2️⃣ AVALIAÇÃO MULTIDIMENSIONAL DA DOR:
+   Mnemônico "PQRST" da dor:
+
+   P — PROVOCAÇÃO/PALIAÇÃO:
+   • O que provoca/piora? ___________________
+   • O que alivia? __________________________
+
+   Q — QUALIDADE:
+   • Como é a dor? ( ) Pontada ( ) Queimação
+     ( ) Cólica ( ) Pressão ( ) Choque
+     ( ) Latejante ( ) Peso ( ) Formigamento
+
+   R — REGIÃO/RADIAÇÃO:
+   • Onde dói? _____________________________
+   • Irradia para? __________________________
+
+   S — SEVERIDADE (EVA 0-10):
+   • Agora: ____/10
+   • Pior nas últimas 24h: ____/10
+   • Melhor nas últimas 24h: ____/10
+   • Média: ____/10
+
+   T — TEMPO:
+   • Início: ________________________________
+   • Duração: _______________________________
+   • Padrão: ( ) Contínua ( ) Intermitente
+     ( ) Incidental ( ) Irruptiva
+
+   CLASSIFICAÇÃO DA DOR:
+   ( ) Nociceptiva somática (bem localizada, pressão/pontada)
+   ( ) Nociceptiva visceral (difusa, cólica, aperto)
+   ( ) Neuropática (choque, queimação, formigamento)
+   ( ) Mista
+   ( ) Dor total (sofrimento existencial associado)
+
+3️⃣ ESCALA DE SINTOMAS — ESAS (0-10):
+   Marcar intensidade de 0 (nenhum) a 10 (pior possível):
+
+   Dor:              ____/10
+   Cansaço:          ____/10
+   Náusea:           ____/10
+   Depressão:        ____/10
+   Ansiedade:        ____/10
+   Sonolência:       ____/10
+   Apetite:          ____/10
+   Dispneia:         ____/10
+   Bem-estar geral:  ____/10
+   Outro: _________  ____/10
+
+4️⃣ AVALIAÇÃO DE OUTROS SINTOMAS:
+   GASTROINTESTINAIS:
+   • Náusea/vômito: frequência ____, trigger: ____
+   • Constipação: última evacuação ___/___/___
+     ( ) Bristol 1-2: endurecidas
+   • Diarreia: ____ episódios/dia
+   • Mucosite: ( ) Grau 1 ( ) 2 ( ) 3 ( ) 4
+   • Disfagia: ( ) Sólidos ( ) Líquidos ( ) Ambos
+   • Ascite sintomática: ( ) Sim ( ) Não
+   • Obstrução intestinal: ( ) Sim ( ) Não
+
+   RESPIRATÓRIOS:
+   • Dispneia: ( ) Repouso ( ) Esforço mínimo
+     ( ) Esforço moderado
+   • Tosse: ( ) Seca ( ) Produtiva
+   • Hemoptise: ( ) Sim ( ) Não
+   • Secreção excessiva (sororoca): ( ) Sim ( ) Não
+   • Derrame pleural: ( ) Sim ( ) Não
+
+   NEUROPSIQUIÁTRICOS:
+   • Delirium: ( ) Hiperativo ( ) Hipoativo ( ) Misto
+     CAM: ( ) Positivo ( ) Negativo
+   • Insônia: ____h de sono/noite
+   • Depressão: PHQ-2 positivo? ( ) Sim ( ) Não
+   • Ansiedade: ( ) Sim ( ) Não
+   • Convulsões: ( ) Sim ( ) Não
+
+   PELE E FERIDAS:
+   • Úlcera por pressão: ( ) Sim Grau: ____
+   • Ferida tumoral: ( ) Sim ( ) Não
+     ( ) Odor ( ) Sangramento ( ) Exsudato
+   • Prurido: ( ) Sim ( ) Não
+   • Linfedema: ( ) Sim ( ) Não
+
+5️⃣ DIMENSÃO PSICOSSOCIAL E ESPIRITUAL:
+   EMOCIONAL:
+   • Como o paciente se sente sobre sua doença?
+     ____________________________________________
+   • Medos principais: ( ) Dor ( ) Morte ( ) Dependência
+     ( ) Solidão ( ) Perda de dignidade ( ) Outro: ____
+   • Luto antecipatório: ( ) Presente ( ) Ausente
+   • Desejo de morte: ( ) Sim — explorar com cuidado
+
+   SOCIAL:
+   • Rede de apoio: _________________________
+   • Cuidador principal: ____________________
+   • Sobrecarga do cuidador: ( ) Sim ( ) Não
+   • Situação financeira impacta cuidado: ( ) Sim ( ) Não
+   • Filhos/dependentes menores: ( ) Sim ( ) Não
+
+   ESPIRITUAL:
+   • Tem fé/religião/espiritualidade: ( ) Sim ( ) Não
+   • A espiritualidade ajuda no enfrentamento?
+     ( ) Sim ( ) Não ( ) Causa sofrimento
+   • Deseja suporte espiritual/capelão: ( ) Sim ( ) Não
+   • Pendências espirituais/relacionais: ( ) Sim ( ) Não
+
+6️⃣ DIRETIVAS ANTECIPADAS DE VONTADE (DAV):
+   • Paciente foi abordado sobre DAV: ( ) Sim ( ) Não
+   • Tem DAV registrada: ( ) Sim ( ) Não
+   • Procurador de saúde designado: ( ) Sim ( ) Não
+     Nome: ______________ Contato: ___________
+
+   PREFERÊNCIAS DO PACIENTE:
+   • Em caso de parada cardiorrespiratória:
+     ( ) Reanimar (RCP) ( ) Não reanimar (ONR)
+   • Intubação orotraqueal:
+     ( ) Aceita ( ) Não deseja
+   • Ventilação mecânica:
+     ( ) Aceita ( ) Não deseja
+   • Diálise:
+     ( ) Aceita ( ) Não deseja
+   • Nutrição artificial:
+     ( ) Aceita ( ) Não deseja
+   • Internação em UTI:
+     ( ) Aceita ( ) Não deseja
+   • Hidratação artificial:
+     ( ) Aceita ( ) Não deseja
+   • Transfusão sanguínea:
+     ( ) Aceita ( ) Não deseja
+
+   LOCAL DE CUIDADO PREFERIDO:
+   ( ) Hospital ( ) Domicílio ( ) Hospice
+   LOCAL DE ÓBITO PREFERIDO:
+   ( ) Hospital ( ) Domicílio ( ) Sem preferência
+
+7️⃣ PLANO DE CUIDADOS — CHECKLIST:
+   ☐ Dor controlada (EVA ≤ 3)?
+   ☐ Sintomas desconfortáveis manejados?
+   ☐ Medicações via adequada ao paciente?
+   ☐ Prescrição de resgate orientada?
+   ☐ Família orientada sobre evolução esperada?
+   ☐ Suporte psicológico ofertado?
+   ☐ Suporte espiritual ofertado?
+   ☐ DAV discutida e registrada?
+   ☐ Plano de sedação paliativa discutido se necessário?
+   ☐ Equipe multiprofissional envolvida?
+
+📌 "5 COISAS" DE IRA BYOCK:
+Encorajar o paciente a expressar:
+1. "Me perdoe"
+2. "Eu te perdoo"
+3. "Obrigado"
+4. "Eu te amo"
+5. "Adeus"
+
+📌 ESCALA PPS (Palliative Performance Scale):
+• 100%: Atividade normal, sem doença
+• 70%: Incapaz de trabalho, autocuidado total
+• 50%: Sentado/deitado >50%, ajuda considerável
+• 30%: Acamado, dependência total
+• 10%: Acamado, cuidado total, mínima ingesta
+• 0%: Morte`,
+    tips: "Em cuidados paliativos, a anamnese vai além do biológico — abrange sofrimento total (dor física, psíquica, social e espiritual). Use ESAS em toda consulta para monitorar sintomas. Sempre pergunte sobre DAV precocemente, não apenas em fase final.",
+  },
 ];
 
 export default function AnamnesisGuide() {
