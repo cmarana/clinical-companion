@@ -163,6 +163,7 @@ const AppRoutes = () => (
           <Route path="/admin/analytics" element={<AdminAnalytics />} />
           <Route path="/admin/feedback" element={<AdminFeedback />} />
           <Route path="/admin/users" element={<UserAnalytics />} />
+          <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/updates" element={<UpdatesFeed />} />
         
         <Route path="/referral" element={<Referral />} />
