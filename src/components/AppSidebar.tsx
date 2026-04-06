@@ -1,10 +1,11 @@
 import { useLocation, useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 import {
   Bot, AlertTriangle, Zap, Pill, ClipboardList, BookOpen,
   Calculator, FlaskConical, Baby, Heart, Stethoscope, HelpCircle,
   Search, Star, User, StickyNote, Home, Gift, Timer, Hash, 
   TestTubes, Droplets, Brain, GraduationCap, BarChart3, FileEdit,
-  Syringe, ScanLine, WifiOff, ChevronRight
+  Syringe, ScanLine, WifiOff, ChevronRight, Shield
 } from "lucide-react";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupLabel,
@@ -14,6 +15,7 @@ import {
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import { supabase } from "@/integrations/supabase/client";
 import pulsoLogo from "@/assets/pulso-logo.png";
 
 const mainItems = [
@@ -149,6 +151,15 @@ function FavoritesQuickAccess() {
 
 export function AppSidebar() {
   const { user } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    if (!user) { setIsAdmin(false); return; }
+    supabase.rpc("has_role", { _user_id: user.id, _role: "admin" })
+      .then(({ data }) => setIsAdmin(!!data));
+  }, [user]);
 
   return (
     <Sidebar collapsible="icon" className="hidden md:flex">
@@ -169,6 +180,28 @@ export function AppSidebar() {
           <NavGroup label="Especialidades" items={specialtyItems} />
           <NavGroup label="Estudo" items={studyItems} />
           <NavGroup label="Pessoal" items={userItems} />
+          {isAdmin && (
+            <SidebarGroup>
+              <SidebarGroupLabel>
+                <Shield className="h-3 w-3 mr-1 text-red-500" />
+                Admin
+              </SidebarGroupLabel>
+              <SidebarGroupContent>
+                <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton
+                      isActive={location.pathname.startsWith("/admin")}
+                      onClick={() => navigate("/admin")}
+                      tooltip="Painel Admin"
+                    >
+                      <Shield className="h-4 w-4 text-red-500" />
+                      <span>Painel Admin</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                </SidebarMenu>
+              </SidebarGroupContent>
+            </SidebarGroup>
+          )}
         </ScrollArea>
       </SidebarContent>
       <SidebarFooter className="p-3 group-data-[collapsible=icon]:hidden">
