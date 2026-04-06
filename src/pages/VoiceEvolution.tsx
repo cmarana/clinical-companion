@@ -132,7 +132,7 @@ const VoiceEvolution = () => {
   }, [result]);
 
   return (
-    <PremiumPageGuard featureName="Gerador de Evolução por Voz">
+    <PremiumPageGuard feature="voice-evolution" title="Evolução por Voz">
       <div className="min-h-screen bg-background pb-24">
         {/* Header */}
         <div className="sticky top-0 z-30 bg-background/95 backdrop-blur border-b border-border px-4 py-3 flex items-center gap-3">
