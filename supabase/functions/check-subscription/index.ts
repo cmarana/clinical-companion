@@ -29,7 +29,6 @@ serve(async (req) => {
     const token = authHeader.replace("Bearer ", "");
     const { data: userData, error: userError } = await supabaseClient.auth.getUser(token);
     if (userError || !userData?.user?.email) {
-      // No valid user session — return unsubscribed instead of error
       return new Response(JSON.stringify({ subscribed: false }), {
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
@@ -48,49 +47,29 @@ serve(async (req) => {
     }
 
     const customerId = customers.data[0].id;
+
+    // Check active subscriptions (includes trialing)
     const subscriptions = await stripe.subscriptions.list({
       customer: customerId,
-      status: "active",
       limit: 1,
     });
 
-    const hasActiveSub = subscriptions.data.length > 0;
-    let productId = null;
-    let subscriptionEnd = null;
+    const activeSub = subscriptions.data.find(s => s.status === "active" || s.status === "trialing");
 
-    if (hasActiveSub) {
-      const sub = subscriptions.data[0];
-      subscriptionEnd = new Date(sub.current_period_end * 1000).toISOString();
-      productId = sub.items.data[0].price.product;
+    if (activeSub) {
+      const subscriptionEnd = new Date(activeSub.current_period_end * 1000).toISOString();
+      const productId = activeSub.items.data[0].price.product;
+
+      return new Response(JSON.stringify({
+        subscribed: true,
+        product_id: productId,
+        subscription_end: subscriptionEnd,
+      }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
     }
 
-    // Also check PIX one-time purchases
-    if (!hasActiveSub) {
-      const { data: pixPurchases } = await supabaseClient
-        .from("pix_purchases")
-        .select("access_end, plan_type")
-        .eq("user_id", user.id)
-        .eq("status", "active")
-        .gte("access_end", new Date().toISOString())
-        .order("access_end", { ascending: false })
-        .limit(1);
-
-      if (pixPurchases && pixPurchases.length > 0) {
-        return new Response(JSON.stringify({
-          subscribed: true,
-          product_id: "pix_purchase",
-          subscription_end: pixPurchases[0].access_end,
-        }), {
-          headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
-      }
-    }
-
-    return new Response(JSON.stringify({
-      subscribed: hasActiveSub,
-      product_id: productId,
-      subscription_end: subscriptionEnd,
-    }), {
+    return new Response(JSON.stringify({ subscribed: false }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (error) {

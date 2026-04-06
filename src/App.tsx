@@ -64,7 +64,7 @@ const PushNotificationSettings = lazy(() => import("@/pages/PushNotificationSett
 const AdminAnalytics = lazy(() => import("@/pages/AdminAnalytics"));
 const UserAnalytics = lazy(() => import("@/pages/UserAnalytics"));
 const UpdatesFeed = lazy(() => import("@/pages/UpdatesFeed"));
-const PixSuccess = lazy(() => import("@/pages/PixSuccess"));
+
 const TermsOfUse = lazy(() => import("@/pages/TermsOfUse"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
 const Referral = lazy(() => import("@/pages/Referral"));
@@ -161,7 +161,7 @@ const AppRoutes = () => (
         <Route path="/admin/analytics" element={<AdminAnalytics />} />
         <Route path="/admin/users" element={<UserAnalytics />} />
         <Route path="/updates" element={<UpdatesFeed />} />
-        <Route path="/pix-success" element={<PixSuccess />} />
+        
         <Route path="/referral" element={<Referral />} />
         <Route path="/case-simulator" element={<ClinicalCaseSimulator />} />
         <Route path="/institutional-protocols" element={<InstitutionalProtocols />} />
