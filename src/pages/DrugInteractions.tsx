@@ -15,6 +15,7 @@ import {
   Database, Activity, Heart, Brain, Syringe, Beaker, Leaf, FlaskConical
 } from "lucide-react";
 import { cn } from "@/lib/utils";
+import OfflineBadge from "@/components/OfflineBadge";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -117,6 +118,7 @@ function DrugInteractionsContent() {
   return (
     <div className="min-h-screen bg-background pb-24">
       <TopBar title="Interações Medicamentosas" showBack />
+      <OfflineBadge message="A análise por IA requer conexão com a internet" />
 
       <div className="px-4 pt-3 max-w-lg mx-auto space-y-3">
         {/* Drug inputs */}

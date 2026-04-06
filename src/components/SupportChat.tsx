@@ -6,6 +6,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 import { motion, AnimatePresence } from "framer-motion";
+import OfflineBadge from "@/components/OfflineBadge";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
