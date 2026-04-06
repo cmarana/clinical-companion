@@ -62,6 +62,7 @@ const AnamnesisGuide = lazy(() => import("@/pages/AnamnesisGuide"));
 const OfflineSetup = lazy(() => import("@/pages/OfflineSetup"));
 const PushNotificationSettings = lazy(() => import("@/pages/PushNotificationSettings"));
 const AdminAnalytics = lazy(() => import("@/pages/AdminAnalytics"));
+const AdminFeedback = lazy(() => import("@/pages/AdminFeedback"));
 const UserAnalytics = lazy(() => import("@/pages/UserAnalytics"));
 const UpdatesFeed = lazy(() => import("@/pages/UpdatesFeed"));
 
