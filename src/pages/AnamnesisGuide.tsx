@@ -3686,6 +3686,479 @@ VI — Nunca queima, pele muito pigmentada
 □ Diurese horária monitorizada`,
     tips: "A Regra dos 9 de Wallace é rápida para adultos, mas em crianças use Lund-Browder (cabeça = 18% no RN vs 9% no adulto). A fórmula de Parkland é um GUIA — titular pela diurese (0,5-1 mL/kg/h). Queimadura de 1º grau NÃO entra no cálculo de SCQ para Parkland. Queimadura circunferencial de extremidade pode causar síndrome compartimental — escarotomia de urgência. Na lesão inalatória, a intubação precoce salva vidas — edema de glote pode tornar a via aérea impossível em horas. Queimadura elétrica: a lesão real é sempre maior que a cutânea visível (efeito iceberg) — monitorizar rabdomiólise e arritmias. Na estética, o rastreio de BDD é obrigatório — operar paciente com dismorfismo corporal gera insatisfação crônica e litígios. Fitzpatrick orienta risco de cicatrização — fototipos IV-VI têm maior risco de queloide e hiperpigmentação pós-inflamatória.",
   },
+  {
+    id: "infectologia",
+    title: "Anamnese em Infectologia (HIV/AIDS e Tuberculose)",
+    emoji: "🦠",
+    tags: ["infectologia", "HIV", "AIDS", "tuberculose", "TARV", "IST"],
+    content: `═══════════════════════════════════════════
+ ANAMNESE EM INFECTOLOGIA — HIV/AIDS E TB
+═══════════════════════════════════════════
+
+📋 1. RASTREIO DE RISCO PARA HIV
+□ Relações sexuais desprotegidas (anal/vaginal/oral)
+□ Número de parceiros nos últimos 12 meses
+□ Uso de preservativo: ( ) sempre ( ) às vezes ( ) nunca
+□ Parceiro(a) com HIV ou status desconhecido
+□ ISTs prévias: sífilis, gonorreia, clamídia, HPV, herpes
+□ Uso de drogas injetáveis / compartilhamento de agulhas
+□ Transfusão sanguínea antes de 1993
+□ Acidente com material biológico (profissional)
+□ Exposição vertical (gestante ou neonato)
+
+📋 2. ESTADIAMENTO HIV — CATEGORIAS CDC
+┌────────────────┬──────────────────────┐
+│ CATEGORIA      │ CRITÉRIOS            │
+├────────────────┼──────────────────────┤
+│ A (assintomát.)│ Infecção aguda,      │
+│                │ adenopatia generaliz. │
+│ B (sintomátic.)│ Candidíase oral,     │
+│                │ herpes-zóster >1     │
+│                │ dermátomo, diarreia  │
+│                │ >1 mês, febre >1 mês│
+│ C (AIDS)       │ Doenças definidoras  │
+│                │ de AIDS              │
+└────────────────┴──────────────────────┘
+
+CD4 (células/mm³):
+≥500 → Categoria 1
+200-499 → Categoria 2
+<200 → Categoria 3 (AIDS independente de sintomas)
+
+📋 3. DOENÇAS DEFINIDORAS DE AIDS (principais)
+Mnemônico: CCCC-TTTML-PKS
+□ Candidíase esofágica/traqueal/pulmonar
+□ Criptococose extrapulmonar (meningite)
+□ CMV (retinite ou outro órgão exceto fígado/baço/linfonodo)
+□ Criptosporidiose intestinal crônica (>1 mês)
+□ Toxoplasmose cerebral
+□ Tuberculose extrapulmonar ou disseminada
+□ Tuberculose pulmonar
+□ Tumor: linfoma não-Hodgkin/Hodgkin/Burkitt
+□ Mycobacterium avium disseminado
+□ Leucoencefalopatia multifocal progressiva (LMP)
+□ Pneumocistose (PCP — Pneumocystis jirovecii)
+□ Kaposi (sarcoma)
+□ Síndrome consuntiva do HIV (wasting)
+
+📋 4. AVALIAÇÃO PRÉ-TARV
+□ Data do diagnóstico: ___/___/___
+□ Contagem CD4 mais recente: ____ cél/mm³
+□ Carga viral mais recente: ____ cópias/mL
+□ Genotipagem pré-tratamento realizada? ( ) sim ( ) não
+□ HLA-B*5701 (se uso de abacavir): ( ) negativo ( ) positivo
+□ Coinfecções: ( ) HBV ( ) HCV ( ) sífilis ( ) TB ( ) HTLV
+□ Comorbidades: DM, HAS, dislipidemia, doença renal, psiquiátrica
+□ Medicações em uso (interações com TARV!)
+□ Tabagismo / etilismo / drogas ilícitas
+□ Gestação atual ou planejada?
+□ Função renal (TFG) e hepática (transaminases)
+□ Perfil lipídico e glicemia
+
+📋 5. ESQUEMA TARV — REGISTRO E ADESÃO
+Esquema atual: ______________________________
+Data de início: ___/___/___
+Esquemas anteriores e motivos de troca: _________
+□ Adesão auto-referida:
+  ( ) >95% (ótima) ( ) 80-95% ( ) <80% (crítica)
+□ Barreiras à adesão:
+  ( ) Esquecimento ( ) Efeitos adversos
+  ( ) Estigma ( ) Custo/acesso
+  ( ) Comprimidos grandes/muitos
+  ( ) Uso de álcool/drogas
+□ Efeitos adversos da TARV:
+  ( ) Náusea/diarreia ( ) Cefaleia ( ) Insônia/sonhos vívidos
+  ( ) Lipodistrofia ( ) Neuropatia ( ) Nefrolitíase (IDV/ATV)
+  ( ) Alteração renal (TDF) ( ) Anemia (AZT) ( ) Rash
+
+📋 6. PROFILAXIAS E IMUNIZAÇÕES
+□ Profilaxia primária para PCP (CD4 <200):
+  SMX-TMP 800/160mg/dia → ( ) em uso ( ) não indicada
+□ Profilaxia para MAC (CD4 <50):
+  Azitromicina 1200mg/sem → ( ) em uso ( ) não indicada
+□ ILTB: Prova tuberculínica (PPD) ≥5mm = tratar
+  Esquema: ( ) Isoniazida 270 doses ( ) Rifampicina 120 doses
+□ Imunizações (SE CD4 >200):
+  ( ) Hepatite B ( ) Pneumococo 23v ( ) Influenza anual
+  ( ) HPV (até 45 anos) ( ) dT/dTpa ( ) COVID-19
+  ⚠️ CONTRAINDICADAS se CD4<200: BCG, febre amarela, varicela
+
+═══════════════════════════════════════════
+ SEÇÃO TUBERCULOSE (TB)
+═══════════════════════════════════════════
+
+📋 7. RASTREIO DE TB — SINTOMAS CLÁSSICOS
+Mnemônico: TEFE (Tosse-Emagrecimento-Febre-Escarros)
+□ Tosse ≥3 semanas (qualquer padrão)
+□ Febre (geralmente vespertina) ≥2 semanas
+□ Sudorese noturna
+□ Emagrecimento não intencional
+□ Hemoptise (escarro com sangue)
+□ Astenia / hiporexia
+
+⚠️ Em PVHIV: qualquer tosse = investigar TB (sem exigir ≥3 semanas!)
+
+📋 8. FATORES DE RISCO PARA TB
+□ Contato domiciliar/próximo com caso de TB
+□ Populações vulneráveis:
+  ( ) Privados de liberdade ( ) Indígenas
+  ( ) Pessoas em situação de rua ( ) PVHIV
+  ( ) Profissionais de saúde
+□ Comorbidades: HIV, diabetes, silicose, neoplasias,
+  insuficiência renal, uso de imunossupressores
+□ Uso de corticoide sistêmico >15mg/dia por >2 semanas
+□ TB prévia? Data: ___ Esquema: ___ Desfecho: ___
+□ Tabagismo / etilismo
+
+📋 9. INVESTIGAÇÃO DIAGNÓSTICA
+□ Baciloscopia de escarro (BAAR): 2 amostras
+  1ª amostra: ( ) positivo ( ) negativo
+  2ª amostra: ( ) positivo ( ) negativo
+□ TRM-TB (GeneXpert / Teste Rápido Molecular):
+  ( ) MTB detectado ( ) não detectado
+  ( ) Resistência à rifampicina detectada
+□ Cultura para micobactérias + TSA (se disponível)
+□ Rx de tórax: _______________________
+□ PPD/IGRA (para ILTB, não para TB ativa)
+□ Em TB extrapulmonar: biópsia, líquor, líquido pleural (ADA)
+
+📋 10. TRATAMENTO — ESQUEMA BÁSICO (RIPE)
+┌─────────┬──────────────────────────────────┐
+│ FASE     │ MEDICAMENTOS                    │
+├─────────┼──────────────────────────────────┤
+│ Intensiva│ 2 meses: RIPE                   │
+│ (2RHZE)  │ R=Rifampicina H=Isoniazida      │
+│          │ Z=Pirazinamida E=Etambutol       │
+├─────────┼──────────────────────────────────┤
+│ Manuten. │ 4 meses: RH                     │
+│ (4RH)    │ R=Rifampicina H=Isoniazida      │
+└─────────┴──────────────────────────────────┘
+
+□ Peso: ___kg → Dose ajustada (comp. dose fixa combinada)
+□ Hepatotoxicidade: monitorar TGO/TGP basal e mensal
+□ Neuropatia por isoniazida → Piridoxina (B6) 50mg/dia
+□ Hiperuricemia por pirazinamida → monitorar ácido úrico
+□ Neurite óptica por etambutol → avaliar acuidade visual
+
+📋 11. TDO E ADESÃO
+□ Tratamento Diretamente Observado indicado? ( ) sim ( ) não
+□ Local de TDO: ( ) UBS ( ) domicílio ( ) outro
+□ Barreiras à adesão: ___________________________
+□ Comunicantes rastreados? ( ) sim → nº: ___ ( ) não
+□ Notificação SINAN realizada? ( ) sim ( ) não
+
+📋 CHECKLIST FINAL — INFECTOLOGIA HIV/TB
+□ Estadiamento HIV (CDC) determinado
+□ CD4 e CV solicitados/revisados
+□ Coinfecções rastreadas (HBV/HCV/sífilis/TB)
+□ TARV prescrita conforme protocolo DCCI/MS
+□ Profilaxias indicadas conforme CD4
+□ Adesão avaliada e barreiras identificadas
+□ Se TB: baciloscopia/TRM-TB solicitados
+□ Comunicantes convocados e rastreados
+□ Notificação compulsória realizada
+□ Retorno agendado e plano terapêutico explicado`,
+    tips: "Em PVHIV, QUALQUER tosse deve ser investigada para TB — não exigir ≥3 semanas. A coinfecção TB-HIV é a principal causa de óbito em PVHIV no Brasil. Sempre verificar interações entre TARV e tuberculostáticos: rifampicina reduz drasticamente níveis de inibidores de protease e dolutegravir (DTG requer dose dobrada 50mg 12/12h). CD4 <200 define AIDS independente de sintomas. A adesão >95% ao TARV é essencial para supressão viral — adesão de 80% pode gerar falha virológica e resistência. PPD ≥5mm em PVHIV = tratar ILTB. Nunca usar BCG ou febre amarela em imunodeprimidos graves (CD4 <200). Na TB, o TRM-TB (GeneXpert) detecta simultaneamente MTB e resistência à rifampicina em 2 horas — é o teste inicial preferencial no SUS. Piridoxina (B6) previne neuropatia pela isoniazida — sempre prescrever em PVHIV, gestantes, diabéticos e etilistas.",
+  },
+  {
+    id: "hematologia",
+    title: "Anamnese em Hematologia",
+    emoji: "🩸",
+    tags: ["hematologia", "anemia", "coagulopatia", "leucemia", "linfoma", "hemograma"],
+    content: `═══════════════════════════════════════════
+ ANAMNESE EM HEMATOLOGIA
+═══════════════════════════════════════════
+
+📋 1. QUEIXA HEMATOLÓGICA — TRÍADE SINTOMÁTICA
+Avaliar os 3 eixos da medula óssea:
+
+A) SÉRIE VERMELHA (anemia):
+□ Fadiga / cansaço progressivo
+□ Dispneia aos esforços (escalonada)
+□ Palidez cutaneomucosa
+□ Taquicardia / palpitações
+□ Tontura / lipotimia
+□ Cefaleia
+□ Pica (pagofagia, geofagia) → pensar ferropenia
+□ Síndrome de pernas inquietas → ferropenia
+
+B) SÉRIE BRANCA (leucócitos):
+□ Infecções de repetição
+□ Febre sem foco identificável
+□ Úlceras orais recorrentes
+□ Herpes recorrente / candidíase
+
+C) PLAQUETAS / COAGULAÇÃO:
+□ Petéquias / equimoses espontâneas
+□ Epistaxe / gengivorragia
+□ Menorragia (quantificar: troca de absorvente/hora)
+□ Sangramento pós-procedimentos (extração dentária, cirurgia)
+□ Hematúria / melena / hematoquezia
+□ Sangramento desproporcional ao trauma
+
+📋 2. CLASSIFICAÇÃO DA ANEMIA
+Mnemônico por VCM:
+
+MICROCÍTICA (VCM <80): FAST
+□ Ferropenia (causa mais comum no mundo)
+□ Anemia de doença crônica (pode ser normo)
+□ Sideroblástica
+□ Talassemia
+
+NORMOCÍTICA (VCM 80-100): HIDRA
+□ Hemolítica
+□ Insuficiência renal (↓EPO)
+□ Doença crônica
+□ Reticulocitose (regenerativa)
+□ Aplasia medular
+
+MACROCÍTICA (VCM >100): BALM
+□ B12 deficiência (anemia megaloblástica)
+□ Ácido fólico deficiência
+□ Liver disease (hepatopatia / etilismo)
+□ Mielodisplasia / medicamentos (MTX, AZT, hidroxiureia)
+
+📋 3. HISTÓRIA ALIMENTAR E CARENCIAL
+□ Dieta: vegetariana/vegana? (risco B12)
+□ Consumo de carne vermelha / vísceras (ferro heme)
+□ Consumo de folhas verdes escuras (ácido fólico)
+□ Consumo de leite e derivados (B12)
+□ Fatores que reduzem absorção de ferro:
+  ( ) Chá/café junto às refeições
+  ( ) Uso de IBP/antiácidos crônicos
+  ( ) Cirurgia bariátrica (bypass)
+  ( ) Doença celíaca
+□ Fatores que aumentam absorção:
+  ( ) Vitamina C junto ao ferro
+  ( ) Carne junto a vegetais ricos em ferro
+
+📋 4. HISTÓRIA DE SANGRAMENTO
+Escore de sangramento (ISTH-BAT simplificado):
+□ Epistaxe: ( ) raro ( ) >5 episódios ( ) necessitou cauterização
+□ Sangramento cutâneo: ( ) equimoses >1cm sem trauma ( ) petéquias
+□ Sangramento oral: ( ) gengivorragia espontânea ( ) pós-extração
+□ Menorragia: ( ) >7 dias ( ) troca absorvente <2h ( ) coágulos >2,5cm
+□ Sangramento pós-cirúrgico: ( ) nunca operou ( ) normal ( ) excessivo
+□ Sangramento pós-parto: ( ) normal ( ) hemorragia ( ) transfusão
+□ Sangramento GI: ( ) melena ( ) hematoquezia
+□ Hematúria: ( ) macro ( ) micro
+□ Hemartrose: ( ) sim → pensar hemofilia
+
+📋 5. HISTÓRIA TRANSFUSIONAL
+□ Já recebeu transfusão? ( ) sim ( ) não
+□ Quantas vezes? ____  Última: ___/___/___
+□ Componentes: ( ) concentrado hemácias ( ) plaquetas
+  ( ) plasma ( ) crioprecipitado
+□ Reação transfusional prévia?
+  ( ) Febre ( ) Urticária ( ) Anafilaxia
+  ( ) TRALI ( ) Hemólise ( ) Nenhuma
+□ Aloimunização conhecida? Anticorpos: _____________
+
+📋 6. RASTREIO DE HEMOGLOBINOPATIAS
+□ Etnia/origem: ( ) Afrodescendente ( ) Mediterrâneo
+  ( ) Asiático ( ) Indígena
+□ Eletroforese de hemoglobina prévia? Resultado: ____
+□ Traço falciforme conhecido na família?
+□ Episódios de crise vaso-oclusiva:
+  ( ) Dor óssea intensa ( ) Priapismo
+  ( ) Síndrome torácica aguda ( ) AVC
+  ( ) Sequestro esplênico
+□ Esplenectomia prévia? ( ) sim → vacinação OK?
+□ Úlceras de MMII crônicas?
+□ Uso de hidroxiureia? ( ) sim ( ) não
+
+📋 7. RASTREIO DE NEOPLASIAS HEMATOLÓGICAS
+Sinais de alarme — "RED FLAGS":
+□ Linfadenopatia >2cm, endurecida, aderida, indolor
+□ Esplenomegalia (sensação de plenitude, massa em HE)
+□ Hepatomegalia
+□ Febre prolongada sem foco (>2 semanas)
+□ Sudorese noturna (encharca roupa/lençol)
+□ Perda ponderal >10% em 6 meses (sintomas B)
+□ Prurido generalizado sem causa dermatológica
+□ Dor óssea (mieloma, leucemia)
+□ Hipercalcemia sintomática (mieloma): sede, poliúria, confusão
+□ Infecções oportunistas recorrentes
+
+📋 8. DISTÚRBIOS DA COAGULAÇÃO
+□ História familiar de sangramento excessivo?
+□ Consanguinidade parental?
+□ Uso de anticoagulantes/antiplaquetários:
+  ( ) Varfarina (RNI alvo: ___) ( ) Heparina
+  ( ) DOACs: ( ) Rivaroxabana ( ) Apixabana ( ) Dabigatrana
+  ( ) AAS ( ) Clopidogrel ( ) Ticagrelor
+□ Trombose prévia?
+  ( ) TVP ( ) TEP ( ) Trombose arterial ( ) AVC
+  ( ) Trombose em sítio atípico (esplâncnica, cerebral)
+□ Rastreio de trombofilia:
+  ( ) Fator V Leiden ( ) Mutação protrombina G20210A
+  ( ) Deficiência proteína C/S ( ) Antitrombina
+  ( ) SAF (anticorpos antifosfolípides)
+□ Perdas gestacionais recorrentes? → SAF?
+
+📋 CHECKLIST FINAL — HEMATOLOGIA
+□ Tríade medular avaliada (série vermelha/branca/plaquetas)
+□ Anemia classificada por VCM e reticulócitos
+□ História carencial/alimentar completa
+□ Escore de sangramento aplicado
+□ História transfusional documentada
+□ Hemoglobinopatia rastreada (se indicado)
+□ Red flags de neoplasia hematológica investigados
+□ Distúrbios de coagulação e trombofilia avaliados
+□ Hemograma, reticulócitos, ferritina, B12, folato solicitados
+□ Esfregaço de sangue periférico solicitado`,
+    tips: "Ferritina é o PRIMEIRO exame a alterar na ferropenia — cai antes do VCM e da hemoglobina. Mas ferritina é proteína de fase aguda: em infecção/inflamação pode estar falsamente normal mesmo com estoques depletados (usar saturação de transferrina <20% como alternativa). Reticulócitos dividem anemias em HIPO e HIPERPROLIFERATIVAS — esse dado muda completamente a investigação. Anemia + plaquetopenia + leucopenia = pensar PANCITOPENIA → mielograma/biópsia de MO. Os 'sintomas B' (febre, sudorese noturna, perda >10% peso) são obrigatórios no estadiamento de linfomas. Na hemofilia, o sangramento é tardio e profundo (hemartrose, hematoma muscular) — diferente da plaquetopenia (petéquias, mucosas). SAF é a trombofilia adquirida mais comum — sempre investigar em trombose em jovem, AVC inexplicado ou perdas gestacionais de repetição. DOACs não requerem monitorização laboratorial de rotina, mas não têm antídoto universal facilmente disponível (idarucizumabe para dabigatrana, andexanet alfa para anti-Xa).",
+  },
+  {
+    id: "medicina-viajante",
+    title: "Anamnese em Medicina do Viajante",
+    emoji: "✈️",
+    tags: ["medicina do viajante", "viagem", "vacinas", "malária", "febre amarela", "profilaxia"],
+    content: `═══════════════════════════════════════════
+ ANAMNESE EM MEDICINA DO VIAJANTE
+═══════════════════════════════════════════
+
+📋 1. CONSULTA PRÉ-VIAGEM — DADOS DA VIAGEM
+Mnemônico: DESTINO
+□ Destino(s): país/região específica
+□ Estadia: duração da viagem (dias/semanas/meses)
+□ Saída: data de partida ___/___/___
+□ Tipo de viagem:
+  ( ) Turismo ( ) Trabalho ( ) Voluntariado/missão
+  ( ) Aventura/ecoturismo ( ) Visita familiares (VFR)
+  ( ) Estudo/intercâmbio
+□ Itinerário: urbano vs rural? Áreas remotas?
+□ Noites: hospedagem
+  ( ) Hotel ( ) Hostel ( ) Camping ( ) Casas locais
+□ Orçamento: acesso a atendimento médico local?
+
+📋 2. PERFIL DO VIAJANTE
+□ Idade: ____ anos
+□ Comorbidades: _______________________________
+□ Medicações em uso: __________________________
+□ Alergias (especialmente a vacinas/ovos/gelatina): ___
+□ Imunossupressão? ( ) sim → contraindicações para vacinas vivas!
+□ Gestante? ( ) sim → restrições medicamentosas e vacinais
+□ História vacinal prévia (cartão de vacinação):
+  ( ) Febre amarela ( ) Hepatite A ( ) Hepatite B
+  ( ) Tétano ( ) Febre tifoide ( ) Meningococo
+  ( ) Raiva ( ) Poliomielite ( ) COVID-19
+  ( ) Encefalite japonesa ( ) Cólera oral
+□ Viagens anteriores e doenças adquiridas em viagem: ___
+
+📋 3. AVALIAÇÃO DE RISCOS POR REGIÃO
+┌────────────────┬──────────────────────────────┐
+│ RISCO          │ REGIÕES ENDÊMICAS            │
+├────────────────┼──────────────────────────────┤
+│ Malária        │ África subsaariana, Amazônia, │
+│                │ Sudeste Asiático, Oceania     │
+│ Febre amarela  │ Brasil (exceto litoral Sul/SE)│
+│                │ África equatorial             │
+│ Dengue/Zika/   │ Tropicais/subtropicais       │
+│ Chikungunya    │ América Latina, Ásia, África  │
+│ Febre tifoide  │ Sul da Ásia, África, Am. Lat. │
+│ Cólera         │ África, Haiti, Sul da Ásia   │
+│ Esquistossomose│ África, Brasil (MG/BA/PE/AL) │
+│ Raiva          │ Ásia (Índia), África, Am.Lat.│
+│ Meningococo    │ Cinturão meningítico africano│
+│ Altitude       │ Andes, Himalaias, Kilimanjaro│
+└────────────────┴──────────────────────────────┘
+
+📋 4. PROFILAXIAS RECOMENDADAS
+A) QUIMIOPROFILAXIA PARA MALÁRIA:
+□ Indicada para área de risco?
+  ( ) Atovaquona-proguanil: iniciar 1-2 dias antes
+  ( ) Doxiciclina: iniciar 1-2 dias antes
+  ( ) Mefloquina: iniciar 2-3 semanas antes
+□ Contraindicações verificadas?
+□ Medidas anti-mosquito complementares:
+  ( ) Repelente DEET ≥30% ( ) Roupas longas ao entardecer
+  ( ) Mosquiteiro impregnado com permetrina
+  ( ) Ar condicionado (reduz picadas)
+
+B) DIARREIA DO VIAJANTE:
+□ Orientações de higiene alimentar:
+  "Boil it, cook it, peel it, or forget it"
+□ Kit de auto-tratamento:
+  ( ) Loperamida (se não-disentérica)
+  ( ) Azitromicina 1000mg dose única (se disentérica/febre)
+  ( ) Sais de reidratação oral
+□ Rifaximina profilática (em situações especiais)
+
+C) MAL DE ALTITUDE:
+□ Destino >2.500m? Tempo de aclimatação planejado?
+□ Acetazolamida profilática 125mg 12/12h
+  (iniciar 24h antes da ascensão)
+□ Orientar: ascensão gradual, hidratação, evitar álcool
+□ Sinais de alarme: cefaleia intensa, ataxia, edema pulmonar
+
+📋 5. IMUNIZAÇÕES DO VIAJANTE
+□ Vacinas OBRIGATÓRIAS (exigência sanitária):
+  ( ) Febre amarela → CIVP (certificado internacional)
+  ( ) Meningococo ACWY → exigência para Hajj/Arábia Saudita
+  ( ) Poliomielite → exigência para alguns países
+□ Vacinas RECOMENDADAS conforme destino:
+  ( ) Hepatite A (2 doses: 0, 6 meses)
+  ( ) Febre tifoide (oral ou injetável)
+  ( ) Raiva pré-exposição (0, 7, 21-28 dias)
+  ( ) Cólera oral (áreas de surto)
+  ( ) Encefalite japonesa (Ásia rural)
+□ Vacinas de ROTINA atualizadas:
+  ( ) dT/dTpa ( ) Tríplice viral ( ) Influenza
+
+⚠️ Vacinas vivas contraindicadas em imunossuprimidos:
+  Febre amarela, BCG, tríplice viral, varicela
+
+📋 6. CONSULTA PÓS-VIAGEM — FEBRE NO RETORNO
+Mnemônico: VIAGEM (para avaliar febre pós-viagem)
+□ Viagem: destino, itinerário, datas exatas
+□ Incubação: período entre exposição e sintomas
+  Malária: 7-30 dias (até meses com P.vivax)
+  Dengue: 4-10 dias
+  Febre tifoide: 7-14 dias
+  Febre amarela: 3-6 dias
+  Esquistossomose aguda: 2-8 semanas
+□ Atividades de risco: banho em água doce, trilhas,
+  alimentação de rua, relações sexuais
+□ Gravidade: sinais de alarme (icterícia, sangramento,
+  confusão, oligúria, dispneia)
+□ Exames urgentes:
+  ( ) Gota espessa / teste rápido para malária
+  ( ) Hemograma com plaquetas
+  ( ) Hemocultura ( ) Função hepática
+  ( ) Sorologia dengue (NS1 + IgM)
+  ( ) Parasitológico de fezes
+□ Malária é EMERGÊNCIA — tratar presuntivamente
+  se gota espessa demorar e clínica sugestiva
+
+📋 7. FARMÁCIA DO VIAJANTE
+Kit médico pessoal recomendado:
+□ Repelente DEET ≥30%
+□ Protetor solar FPS ≥30
+□ Antidiarreico (loperamida) + SRO
+□ Antibiótico (azitromicina ou ciprofloxacino)
+□ Antialérgico (loratadina/cetirizina)
+□ Analgésico/antitérmico (paracetamol)
+  ⚠️ Evitar AAS/ibuprofeno em áreas de dengue!
+□ Curativos, antisséptico, termômetro
+□ Preservativos
+□ Medicações de uso contínuo (dose extra para imprevistos)
+□ Cópia das receitas médicas (em inglês)
+□ Seguro viagem com cobertura médica
+
+📋 CHECKLIST FINAL — MEDICINA DO VIAJANTE
+□ Itinerário detalhado e riscos mapeados
+□ Perfil do viajante e comorbidades avaliados
+□ Vacinas indicadas e aplicadas (tempo hábil?)
+□ Quimioprofilaxia para malária prescrita (se indicada)
+□ Orientações sobre diarreia do viajante fornecidas
+□ Kit farmácia do viajante orientado
+□ CIVP emitido (se febre amarela)
+□ Seguro viagem recomendado
+□ Plano de ação para febre no retorno explicado
+□ Consulta pós-viagem agendada (se viagem longa)`,
+    tips: "VFR (Visiting Friends and Relatives) é o grupo de MAIOR risco — geralmente não buscam consulta pré-viagem e frequentam áreas rurais. Malária por P.falciparum mata em 48h se não tratada — toda febre em viajante de área endêmica é malária até prova contrária. P.vivax pode recidivar meses depois por hipnozoítos hepáticos (tratar com primaquina após G6PD). Febre amarela vacinal tem risco de eventos adversos graves em >60 anos e primovacinados imunodeprimidos — avaliar risco-benefício. Não prescrever doxiciclina para profilaxia de malária em gestantes e crianças <8 anos. Mefloquina é contraindicada em epilepsia e transtornos psiquiátricos. Na diarreia do viajante, fluoroquinolonas têm alta resistência no Sudeste Asiático — preferir azitromicina. Acetazolamida para altitude é contraindicada em alergia a sulfa. Lembrar que o período de incubação ajuda a diferenciar diagnósticos: dengue (curto), malária (médio), esquistossomose aguda (longo). Sempre perguntar sobre banho em água doce na África e Brasil (esquistossomose) e contato com animais (raiva).",
+  },
 ];
 
 export default function AnamnesisGuide() {
