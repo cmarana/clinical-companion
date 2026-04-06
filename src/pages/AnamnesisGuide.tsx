@@ -1470,6 +1470,441 @@ Encorajar o paciente a expressar:
 • Padrão geral: ___________________________`,
     tips: "Na dermatologia, a anamnese estruturada é metade do diagnóstico. As '7 perguntas de ouro' cobrem 90% dos casos. Sempre pergunte sobre fotossensibilidade, medicamentos novos e contato com irritantes. A regra ABCDE é mandatória para toda lesão melanocítica. Não esqueça: 'se a lesão sangra, muda ou coça de forma diferente — biopsie'.",
   },
+  {
+    id: "pericia-trabalho",
+    title: "Anamnese Pericial — Medicina do Trabalho",
+    emoji: "⚖️",
+    tags: ["perícia", "medicina do trabalho", "nexo causal", "INSS", "CAT"],
+    content: `═══════════════════════════════════════
+ANAMNESE PERICIAL — MEDICINA DO TRABALHO
+═══════════════════════════════════════
+
+1️⃣ IDENTIFICAÇÃO FUNCIONAL
+• Nome completo: ___________________________
+• Idade: ____ anos   Sexo: ____________
+• CPF: _______________   NIT/PIS: _______________
+• Empresa atual: ___________________________
+• CNPJ: _______________   CNAE: _______________
+• Cargo/Função: ___________________________
+• Setor: _______________   CBO: _______________
+• Data de admissão: ___/___/___
+• Regime: ( ) CLT ( ) Estatutário ( ) Temporário ( ) Outro
+• Jornada: ____ h/dia   Turno: _______________
+• Salário base: R$ _______________
+
+2️⃣ HISTÓRICO OCUPACIONAL CRONOLÓGICO
+Para CADA emprego anterior, registrar:
+┌─────────────────────────────────────────────┐
+│ Empresa: ________________  Período: ___-___ │
+│ Função: ___________________________________ │
+│ Riscos: ___________________________________ │
+│ EPI utilizados: ___________________________ │
+│ ASO periódicos realizados: ( ) Sim ( ) Não  │
+│ Afastamentos neste emprego: _______________ │
+│ Motivo de saída: __________________________ │
+└─────────────────────────────────────────────┘
+(Repetir para cada vínculo — mínimo 5 anos ou toda a vida laboral)
+
+3️⃣ DESCRIÇÃO DETALHADA DA ATIVIDADE ATUAL
+• Descreva passo a passo as atividades diárias:
+  ___________________________________________
+• Postura predominante: ( ) Sentado ( ) Em pé ( ) Alternada ( ) Agachado
+• Movimentos repetitivos: ( ) Sim — quais: ____________ ( ) Não
+• Carga manual: ( ) Sim — peso médio: ____ kg  Freq: ____ x/dia ( ) Não
+• Vibração: ( ) Corpo inteiro ( ) Mãos/braços ( ) Ausente
+• Ruído: ( ) < 80 dB ( ) 80-85 dB ( ) > 85 dB ( ) Desconhece
+• Exposição química: _______________________
+  FISPQ disponível: ( ) Sim ( ) Não
+• Exposição biológica: _____________________
+• Temperaturas extremas: ( ) Calor ( ) Frio ( ) Não
+• Radiação: ( ) Ionizante ( ) Não ionizante ( ) Ausente
+• Fatores psicossociais: ( ) Pressão por produção ( ) Assédio ( ) Isolamento ( ) Monotonia
+
+4️⃣ EVENTO/DOENÇA EM PERÍCIA
+• Data do início dos sintomas: ___/___/___
+• Data do afastamento: ___/___/___
+• CAT emitida: ( ) Sim — nº ____________ ( ) Não
+• Tipo: ( ) Acidente típico ( ) Acidente de trajeto ( ) Doença ocupacional
+• CID principal: ____ — Descrição: _______________
+• CID secundários: ___________________________
+• Descrição detalhada do evento/quadro:
+  ___________________________________________
+
+5️⃣ NEXO CAUSAL — CHECKLIST PERICIAL
+Critérios para estabelecimento de nexo (todos devem ser avaliados):
+☐ Nexo epidemiológico (NTEP): Lista C do Decreto 3.048 — CID × CNAE
+☐ Nexo profissional: exposição comprovada ao agente
+☐ Nexo cronológico: tempo de exposição compatível
+☐ Exclusão de causas extralaborais
+☐ Documentação de suporte: ASOs, PPRA/PGR, LTCAT, PCMSO
+☐ Exames complementares compatíveis
+
+📌 TIPOS DE NEXO (IN 77/INSS):
+• Nexo profissional: doença listada no Anexo II (Lista A/B/C)
+• NTEP: nexo técnico epidemiológico (estatístico)
+• Nexo individual: quando perito estabelece por evidência clínica
+
+6️⃣ TRATAMENTOS E AFASTAMENTOS PRÉVIOS
+• Tratamento atual: _________________________
+• Medicações em uso: _______________________
+• Cirurgias relacionadas: ___________________
+• Reabilitação: ( ) Fisioterapia ( ) TO ( ) Psicologia ( ) Não
+• Afastamentos INSS prévios:
+  B31 (previdenciário): ( ) Sim — períodos: ____________
+  B91 (acidentário): ( ) Sim — períodos: ____________
+• Reabilitação profissional INSS: ( ) Sim ( ) Não
+• Restrições funcionais atuais: _____________
+
+7️⃣ CAPACIDADE LABORATIVA
+• Consegue exercer a função habitual: ( ) Sim ( ) Não ( ) Parcialmente
+• Limitações funcionais objetivas: ___________
+• Necessidade de readaptação: ( ) Sim ( ) Não
+• Sugestão de função compatível: ____________
+• Prognóstico funcional: ( ) Favorável ( ) Reservado ( ) Desfavorável
+• Previsão de consolidação: ____ dias/meses
+
+8️⃣ DOCUMENTAÇÃO PERICIAL NECESSÁRIA
+☐ Atestados médicos com CID e período
+☐ Exames complementares (imagem, laboratório)
+☐ Relatórios de especialistas
+☐ CAT (se acidente/doença do trabalho)
+☐ PPRA/PGR e PCMSO da empresa
+☐ LTCAT (Laudo Técnico de Condições Ambientais)
+☐ ASOs (admissional, periódicos, demissional)
+☐ PPP (Perfil Profissiográfico Previdenciário)
+☐ Receituários e prescrições`,
+    tips: "Na perícia trabalhista, o nexo causal é o ponto central. Documente cronologicamente a exposição, use os critérios do NTEP (Nexo Técnico Epidemiológico) e sempre verifique a Lista C do Decreto 3.048. A CAT deve ser emitida em até 1 dia útil do diagnóstico. Diferencia B31 (auxílio-doença previdenciário) de B91 (acidentário) — este último garante estabilidade de 12 meses.",
+  },
+  {
+    id: "reumatologica",
+    title: "Anamnese Reumatológica",
+    emoji: "🦴",
+    tags: ["reumatologia", "articular", "autoimune", "dor articular"],
+    content: `═══════════════════════════════════════
+ANAMNESE REUMATOLÓGICA ESTRUTURADA
+═══════════════════════════════════════
+
+1️⃣ QUEIXA ARTICULAR — MNEMÔNICO "ARTICULAR"
+A — Articulação(ões) acometida(s): _______________
+R — Ritmo da dor: ( ) Inflamatório (piora repouso/manhã) ( ) Mecânico (piora movimento/fim do dia)
+T — Tempo de evolução: ____ dias/semanas/meses/anos
+I — Início: ( ) Agudo (<6 sem) ( ) Crônico (>6 sem) ( ) Insidioso ( ) Súbito
+C — Característica: ( ) Aditiva ( ) Migratória ( ) Intermitente ( ) Fixa
+U — Uniarticular ( ) Oligoarticular (2-4) ( ) Poliarticular (≥5) ( )
+L — Lateralidade: ( ) Simétrica ( ) Assimétrica
+A — Associações sistêmicas: ___________________
+R — Rigidez matinal: ____ minutos (>30 min → inflamatória)
+
+2️⃣ PADRÃO ARTICULAR — DIAGNÓSTICO DIFERENCIAL
+┌──────────────────────────────────────────────┐
+│ INFLAMATÓRIO vs MECÂNICO                     │
+├──────────────┬───────────────────────────────┤
+│ Inflamatório │ Mecânico                      │
+├──────────────┼───────────────────────────────┤
+│ Rigidez >30m │ Rigidez <15min (protocinética)│
+│ Piora repouso│ Piora com uso/sobrecarga      │
+│ Edema quente │ Sem sinais flogísticos        │
+│ Melhora movim│ Piora ao longo do dia         │
+│ PCR/VHS ↑    │ Provas inflamat. normais      │
+└──────────────┴───────────────────────────────┘
+
+┌──────────────────────────────────────────────┐
+│ DISTRIBUIÇÃO ARTICULAR — Pistas diagnósticas │
+├──────────────────────────────────────────────┤
+│ IFP + MCF simétrica → Artrite reumatoide    │
+│ IFD + 1ª CMC → Osteoartrite                 │
+│ 1ª MTF (podagra) → Gota                     │
+│ Sacroilíacas + coluna → Espondiloartrite     │
+│ Grandes articulações migratória → Febre reum.│
+│ Joelhos + punhos + pele → Artrite psoriásica │
+└──────────────────────────────────────────────┘
+
+3️⃣ MANIFESTAÇÕES EXTRA-ARTICULARES — CHECKLIST
+Pele:
+☐ Rash malar (lúpus)
+☐ Placas psoriásicas
+☐ Nódulos subcutâneos (AR, gota)
+☐ Eritema nodoso
+☐ Fenômeno de Raynaud
+☐ Esclerodactilia / espessamento cutâneo
+☐ Fotossensibilidade
+☐ Úlceras orais/nasais
+
+Olhos:
+☐ Olho seco (Sjögren)
+☐ Uveíte anterior (espondiloartrites)
+☐ Episclerite/esclerite
+☐ Conjuntivite (artrite reativa)
+
+Boca/TGI:
+☐ Xerostomia
+☐ Disfagia (esclerose sistêmica, miopatias)
+☐ Dor abdominal recorrente
+☐ Diarreia crônica (enteroartropatias)
+
+Pulmão:
+☐ Dispneia progressiva (DPI)
+☐ Tosse seca crônica
+☐ Derrame pleural
+
+Rim:
+☐ Hematúria/proteinúria (nefrite lúpica)
+☐ Insuficiência renal
+
+Vascular:
+☐ TVP/TEP recorrente (SAF)
+☐ Abortos de repetição (SAF)
+☐ Livedo reticular
+
+Neurológico:
+☐ Neuropatia periférica
+☐ Cefaleia/AVC em jovem
+☐ Fraqueza muscular proximal (miopatias)
+
+4️⃣ HISTÓRICO REUMATOLÓGICO
+• Diagnóstico prévio de doença reumática: ( ) Sim — qual: ____________ ( ) Não
+• FAN prévio: ( ) Positivo — padrão/título: ____________ ( ) Negativo ( ) Nunca dosado
+• Fator reumatoide: ( ) Positivo ( ) Negativo ( ) Nunca dosado
+• Anti-CCP: ( ) Positivo ( ) Negativo ( ) Nunca dosado
+• HLA-B27: ( ) Positivo ( ) Negativo ( ) Nunca dosado
+• Ácido úrico prévio: ____ mg/dL
+• Medicações reumatológicas prévias/atuais:
+  ☐ Metotrexato   ☐ Leflunomida   ☐ Sulfassalazina
+  ☐ Hidroxicloroquina   ☐ Azatioprina   ☐ Micofenolato
+  ☐ Ciclofosfamida   ☐ Biológico — qual: ____________
+  ☐ Corticoide — dose: ____ mg/dia  Tempo: ____________
+  ☐ Colchicina   ☐ Alopurinol/Febuxostate
+
+5️⃣ CRITÉRIOS DIAGNÓSTICOS RÁPIDOS
+
+ACR/EULAR 2010 — Artrite Reumatoide (≥6/10 pontos):
+• Articulações: 1 grande (0) | 1-3 pequenas (2) | 4-10 pequenas (3) | >10 com pelo menos 1 pequena (5)
+• Sorologia: FR e Anti-CCP negativos (0) | baixo título (2) | alto título (3)
+• Provas inflamatórias: normais (0) | PCR ou VHS elevados (1)
+• Duração: <6 semanas (0) | ≥6 semanas (1)
+
+SLICC 2012 — LES (≥4 critérios OU nefrite + FAN/anti-dsDNA):
+Clínicos: lúpus cutâneo agudo/crônico, úlceras orais, alopecia, artrite, serosite, renal, neurológico, anemia hemolítica, leucopenia, trombocitopenia
+Imunológicos: FAN, anti-dsDNA, anti-Sm, antifosfolípide, complemento baixo, Coombs direto
+
+6️⃣ AVALIAÇÃO FUNCIONAL
+• HAQ (Health Assessment Questionnaire): ____/3
+• DAS28: ____ (remissão <2,6 | baixa 2,6-3,2 | moderada 3,2-5,1 | alta >5,1)
+• BASDAI (espondiloartrite): ____/10
+• EVA dor (0-10): ____
+• EVA atividade global (médico): ____
+• EVA atividade global (paciente): ____
+• Capacidade funcional: ( ) Classe I ( ) II ( ) III ( ) IV`,
+    tips: "Na reumatologia, distinguir dor INFLAMATÓRIA de MECÂNICA é o primeiro passo. Rigidez matinal >30 min é o marcador clínico mais prático. O padrão articular (distribuição + simetria) direciona 70% dos diagnósticos. Sempre pesquisar manifestações extra-articulares — LES e vasculites são doenças sistêmicas. Anti-CCP é mais específico que FR para AR.",
+  },
+  {
+    id: "saude-mental-infantojuvenil",
+    title: "Anamnese em Saúde Mental Infantojuvenil",
+    emoji: "🧒",
+    tags: ["psiquiatria infantil", "TDAH", "autismo", "adolescente", "saúde mental", "criança"],
+    content: `═══════════════════════════════════════
+ANAMNESE EM SAÚDE MENTAL INFANTOJUVENIL
+═══════════════════════════════════════
+
+1️⃣ IDENTIFICAÇÃO DA CRIANÇA/ADOLESCENTE
+• Nome: ___________________________
+• Idade: ____ anos e ____ meses
+• Sexo: ____________   Gênero: ____________
+• Escolaridade: ____ ano do ____________
+• Escola: ( ) Pública ( ) Privada
+• Nome: ___________________________
+• Informante: ____________ (parentesco: ____________)
+• Responsável legal: ___________________________
+• Quem mora com a criança: ___________________________
+
+2️⃣ QUEIXA PRINCIPAL E HDA
+• Motivo do encaminhamento: ___________________________
+• Quem encaminhou: ( ) Escola ( ) Pediatra ( ) Família ( ) Conselho tutelar ( ) Outro
+• Queixa nas palavras do responsável: "___________________________"
+• Queixa nas palavras da criança/adolescente (se aplicável): "___________________________"
+• Início dos sintomas: ___________________________
+• Evolução: ( ) Progressiva ( ) Estável ( ) Flutuante ( ) Episódica
+• Fatores desencadeantes: ___________________________
+• Tratamentos prévios em saúde mental:
+  ☐ Psicólogo — tempo: ____________ Abordagem: ____________
+  ☐ Psiquiatra — medicações: ___________________________
+  ☐ Fonoaudiólogo   ☐ Terapeuta ocupacional   ☐ Neuropediatra
+  ☐ Nenhum tratamento prévio
+
+3️⃣ DESENVOLVIMENTO NEUROPSICOMOTOR (DNPM)
+Gestação e parto:
+• Pré-natal: ( ) Completo ( ) Incompleto ( ) Sem pré-natal
+• Intercorrências gestacionais: ___________________________
+• Parto: ( ) Vaginal ( ) Cesárea   IG: ____ semanas
+• Peso ao nascer: ____ g   Apgar: ____/____
+• Intercorrências neonatais: ( ) UTI neo ( ) Icterícia ( ) Infecção ( ) Não
+
+Marcos do desenvolvimento:
+• Sustento cefálico: ____ meses (esperado: 3m)
+• Sentou sem apoio: ____ meses (esperado: 6-9m)
+• Andou: ____ meses (esperado: 12-18m)
+• Primeiras palavras: ____ meses (esperado: 12m)
+• Frases: ____ meses (esperado: 24m)
+• Controle esfincteriano diurno: ____ meses  Noturno: ____ meses
+• Lateralidade definida: ( ) Destro ( ) Canhoto ( ) Indefinida
+
+📌 SINAIS DE ALERTA NO DNPM:
+⚠️ Não balbucia aos 12 meses
+⚠️ Não aponta/não faz gestos aos 12 meses
+⚠️ Nenhuma palavra aos 16 meses
+⚠️ Nenhuma frase de 2 palavras aos 24 meses
+⚠️ Perda de qualquer habilidade em qualquer idade
+
+4️⃣ RASTREIO TEA (Transtorno do Espectro Autista)
+Comunicação social:
+☐ Contato visual pobre ou atípico
+☐ Não responde ao nome
+☐ Não aponta para compartilhar interesse
+☐ Dificuldade em brincadeiras de faz-de-conta
+☐ Dificuldade em entender sentimentos dos outros
+☐ Linguagem ecolálica ou peculiar
+☐ Dificuldade em conversação recíproca
+
+Padrões restritos/repetitivos:
+☐ Interesses intensos e restritos
+☐ Estereotipias motoras (flapping, girar)
+☐ Adesão rígida a rotinas
+☐ Hiper ou hiporreatividade sensorial
+☐ Alinhamento/organização de objetos
+
+Nível de suporte necessário:
+( ) Nível 1 — necessita suporte
+( ) Nível 2 — necessita suporte substancial
+( ) Nível 3 — necessita suporte muito substancial
+
+M-CHAT-R (18-24 meses): ____/20 (risco ≥3)
+
+5️⃣ RASTREIO TDAH
+Desatenção (≥6/9 para diagnóstico, ≥5 em >17 anos):
+☐ Não presta atenção a detalhes / erros por descuido
+☐ Dificuldade em manter atenção em tarefas
+☐ Parece não ouvir quando falam diretamente
+☐ Não segue instruções / não termina tarefas
+☐ Dificuldade em organizar tarefas
+☐ Evita tarefas que exigem esforço mental prolongado
+☐ Perde coisas necessárias para as atividades
+☐ Facilmente distraído por estímulos externos
+☐ Esquecido nas atividades diárias
+Total: ____/9
+
+Hiperatividade/Impulsividade (≥6/9, ≥5 em >17 anos):
+☐ Remexe mãos/pés ou se contorce na cadeira
+☐ Levanta da cadeira quando deveria ficar sentado
+☐ Corre/escala em situações inapropriadas
+☐ Dificuldade em brincar calmamente
+☐ "A mil" / "ligado no motor"
+☐ Fala excessivamente
+☐ Responde antes da pergunta ser completada
+☐ Dificuldade em esperar sua vez
+☐ Interrompe ou se intromete
+Total: ____/9
+
+Apresentação: ( ) Predominante desatenta ( ) Predominante hiperativa-impulsiva ( ) Combinada
+Sintomas presentes ANTES dos 12 anos: ( ) Sim ( ) Não
+Prejuízo em ≥2 ambientes: ( ) Sim — quais: ____________ ( ) Não
+
+6️⃣ RASTREIO TRANSTORNOS EMOCIONAIS
+Ansiedade:
+☐ Preocupação excessiva com diversas situações
+☐ Medos específicos intensos (fobias)
+☐ Ansiedade de separação (não adequada à idade)
+☐ Recusa escolar
+☐ Queixas somáticas (dor de barriga, cefaleia)
+☐ Rituais/compulsões (TOC)
+☐ Ataques de pânico
+Escala: SCARED ____/41 (ponto de corte ≥25)
+
+Depressão:
+☐ Humor irritável ou triste persistente (≥2 semanas)
+☐ Perda de interesse em atividades prazerosas
+☐ Isolamento social
+☐ Alteração do sono
+☐ Alteração do apetite/peso
+☐ Fadiga/diminuição de energia
+☐ Culpa excessiva / baixa autoestima
+☐ Dificuldade de concentração
+☐ Pensamentos de morte/ideação suicida
+PHQ-A: ____/27 (leve 5-9 | moderada 10-14 | grave ≥15)
+
+⚠️ AVALIAÇÃO DE RISCO — OBRIGATÓRIA em >10 anos:
+• Ideação suicida: ( ) Sim ( ) Não
+• Plano: ( ) Sim ( ) Não
+• Tentativa prévia: ( ) Sim — quando: ____________ ( ) Não
+• Autolesão não suicida: ( ) Sim ( ) Não
+• Acesso a meios letais: ( ) Sim ( ) Não
+
+7️⃣ CONTEXTO ESCOLAR
+• Rendimento acadêmico: ( ) Adequado ( ) Dificuldade leve ( ) Dificuldade significativa ( ) Reprovação
+• Reprovações: ( ) Sim — quantas/séries: ____________ ( ) Não
+• Relação com colegas: ( ) Boa ( ) Regular ( ) Conflituosa ( ) Isolamento
+• Bullying: ( ) Vítima ( ) Autor ( ) Ambos ( ) Não
+• Laudo/apoio escolar: ( ) Sim ( ) Não ( ) Em processo
+• Queixas da escola: ___________________________
+
+8️⃣ DINÂMICA FAMILIAR E FATORES DE RISCO
+• Estrutura familiar: ___________________________
+• Relação entre pais: ( ) Estável ( ) Conflituosa ( ) Separados ( ) Ausente
+• Conflitos familiares significativos: ___________________________
+• História familiar psiquiátrica:
+  ☐ TDAH   ☐ TEA   ☐ Depressão   ☐ Bipolar
+  ☐ Esquizofrenia   ☐ Ansiedade   ☐ Uso de substâncias
+  ☐ Suicídio na família
+  Quem: ___________________________
+
+Fatores de risco:
+☐ Violência doméstica (física/psicológica/sexual)
+☐ Negligência
+☐ Uso de substâncias pelos pais
+☐ Institucionalização/acolhimento
+☐ Situação socioeconômica precária
+☐ Luto recente
+☐ Mudança significativa de ambiente
+
+9️⃣ TELAS E SONO (AVALIAÇÃO MODERNA)
+Telas:
+• Tempo de tela diário: ____ h/dia
+• Dispositivos: ☐ Celular ☐ Tablet ☐ TV ☐ Computador ☐ Videogame
+• Acesso a redes sociais: ( ) Sim — quais: ____________ ( ) Não
+• Conteúdo inapropriado: ( ) Sim ( ) Não ( ) Desconhece
+• Cyberbullying: ( ) Sim ( ) Não
+
+📌 Recomendações SBP para telas:
+• <2 anos: EVITAR
+• 2-5 anos: máx. 1h/dia
+• 6-10 anos: máx. 1-2h/dia
+• 11-18 anos: máx. 2-3h/dia
+
+Sono:
+• Horário de dormir: ____h  Acordar: ____h
+• Dorme sozinho: ( ) Sim ( ) Não
+• Dificuldade para adormecer: ( ) Sim ( ) Não
+• Despertares noturnos: ( ) Sim ( ) Não
+• Pesadelos/terror noturno: ( ) Sim ( ) Não
+• Usa tela antes de dormir: ( ) Sim ( ) Não
+
+🔟 USO DE SUBSTÂNCIAS (ADOLESCENTES)
+CRAFFT/CESARE:
+☐ C — Já andou em CARRO dirigido por alguém (ou você) sob efeito?
+☐ R — Usa para RELAXAR ou se sentir melhor?
+☐ A — Usa quando está ALONE (sozinho)?
+☐ F — FORGET (esquece) o que fez sob efeito?
+☐ F — Família/FRIENDS dizem para parar?
+☐ T — Já se meteu em TROUBLE (problema) por uso?
+Score: ____/6 (≥2 → risco)
+
+Substâncias experimentadas:
+☐ Álcool — idade de início: ____
+☐ Tabaco/vape — idade de início: ____
+☐ Maconha — idade de início: ____
+☐ Inalantes — idade de início: ____
+☐ Outras: ___________________________`,
+    tips: "Na psiquiatria infantojuvenil, SEMPRE colher história com múltiplos informantes (pais, escola, criança). TDAH exige sintomas em ≥2 ambientes e início antes dos 12 anos. Para TEA, investigar ativamente em toda criança com atraso de linguagem/socialização. A avaliação de risco suicida é OBRIGATÓRIA em adolescentes com queixas emocionais. O M-CHAT-R é rastreio, não diagnóstico. Tempo de tela é fator de risco emergente para ansiedade e TDAH-like.",
+  },
 ];
 
 export default function AnamnesisGuide() {
