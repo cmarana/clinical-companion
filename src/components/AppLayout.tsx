@@ -47,6 +47,7 @@ export default function AppLayout() {
         </div>
       </div>
       <CommandPalette />
+      <SupportChat />
       <ScrollToTop />
       {/* BottomNav only on mobile */}
       <div className="md:hidden">
