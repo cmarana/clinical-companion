@@ -6415,6 +6415,430 @@ Síndromes hereditárias:
 📌 DICA: OHB não é tratamento isolado — sempre associar ao tratamento convencional (desbridamento, ATB, controle glicêmico, revascularização). A câmara hiperbárica NÃO é claustrofóbica nas câmaras multipaciente. Diabéticos devem verificar glicemia antes de cada sessão (risco de hipoglicemia).`,
     tips: "Pneumotórax não drenado é a ÚNICA contraindicação absoluta à OHB — pode causar pneumotórax hipertensivo fatal. Na intoxicação por CO, a meia-vida da COHb é: 5h em ar ambiente → 90min com O₂ 100% normobárico → 23min com OHB a 3 ATA. Barotrauma de ouvido é o efeito adverso mais comum — ensinar Valsalva antes da sessão. TcPO₂ <40 mmHg prediz falha de cicatrização. Síndrome de Fournier = emergência → OHB 2x/dia + desbridamento cirúrgico + ATB largo espectro.",
   },
+  {
+    id: "nutrologia-clinica",
+    title: "Anamnese em Nutrologia Clínica",
+    emoji: "🥗",
+    tags: ["nutrologia", "nutrição", "desnutrição", "obesidade", "micronutrientes"],
+    content: `═══════════════════════════════════════════
+  ANAMNESE EM NUTROLOGIA CLÍNICA
+═══════════════════════════════════════════
+
+1. AVALIAÇÃO NUTRICIONAL GLOBAL — Mnemônico NUTRIR
+   N — Nível de ingestão alimentar atual (% do habitual, apetite)
+   U — Uso de suplementos (vitaminas, minerais, fórmulas enterais)
+   T — Trajetória ponderal (peso habitual, atual, variação nos últimos 3-6 meses)
+   R — Restrições alimentares (alergias, intolerâncias, dietas restritivas, vegano)
+   I — Intercorrências GI (náuseas, vômitos, diarreia, constipação, disfagia)
+   R — Risco nutricional (NRS-2002, MNA, MUST, ASG)
+
+   Perda de peso involuntária — Classificação:
+   | Período    | Perda significativa | Perda grave |
+   |-----------|--------------------|-----------  |
+   | 1 semana  | 1-2%               | >2%         |
+   | 1 mês     | 5%                 | >5%         |
+   | 3 meses   | 7,5%               | >7,5%       |
+   | 6 meses   | 10%                | >10%        |
+
+2. RECORDATÓRIO ALIMENTAR 24H
+   Refeição     | Horário | Alimento/bebida         | Quantidade
+   Desjejum     | ____    | ______________________ | __________
+   Lanche manhã | ____    | ______________________ | __________
+   Almoço       | ____    | ______________________ | __________
+   Lanche tarde | ____    | ______________________ | __________
+   Jantar       | ____    | ______________________ | __________
+   Ceia         | ____    | ______________________ | __________
+   
+   Ingestão hídrica: ____ mL/dia
+   Consumo de álcool: ( ) Não ( ) Sim → ____ doses/semana
+   Consumo de ultraprocessados: ( ) Raro ( ) Frequente ( ) Diário
+
+3. AVALIAÇÃO SUBJETIVA GLOBAL (ASG — Detsky)
+   A. História:
+   ( ) Alteração de peso nos últimos 6 meses: ____kg (___%)
+   ( ) Alteração nas últimas 2 semanas: ( ) Aumento ( ) Estável ( ) Diminuição
+   ( ) Alteração da ingestão alimentar: ( ) Sem alteração ( ) Diminuída → duração: ____
+     Tipo: ( ) Dieta sólida subótima ( ) Líquidos hipocalóricos ( ) Jejum
+   ( ) Sintomas GI (>2 semanas): ( ) Náuseas ( ) Vômitos ( ) Diarreia ( ) Anorexia
+   ( ) Capacidade funcional: ( ) Normal ( ) Disfunção → ( ) Ambulatorial ( ) Acamado
+   ( ) Demanda metabólica: ( ) Sem estresse ( ) Baixo ( ) Moderado ( ) Alto
+   
+   B. Exame físico:
+   ( ) Perda de gordura subcutânea (tríceps, tórax)
+   ( ) Perda muscular (quadríceps, deltoide, temporal)
+   ( ) Edema sacral / maleolar
+   ( ) Ascite
+   
+   Classificação ASG:
+   ( ) A — Bem nutrido
+   ( ) B — Moderadamente desnutrido / suspeita
+   ( ) C — Gravemente desnutrido
+
+4. ANTROPOMETRIA
+   Peso atual: ____ kg    Peso habitual: ____ kg
+   Estatura: ____ m       IMC: ____ kg/m²
+   
+   IMC — Classificação OMS (adultos):
+   ( ) <16,0 — Magreza grau III (grave)
+   ( ) 16,0-16,9 — Magreza grau II
+   ( ) 17,0-18,4 — Magreza grau I
+   ( ) 18,5-24,9 — Eutrófico
+   ( ) 25,0-29,9 — Sobrepeso
+   ( ) 30,0-34,9 — Obesidade grau I
+   ( ) 35,0-39,9 — Obesidade grau II
+   ( ) ≥40,0 — Obesidade grau III (mórbida)
+   
+   IMC Idosos (≥60 anos — Lipschitz):
+   ( ) <22 — Baixo peso  ( ) 22-27 — Eutrófico  ( ) >27 — Sobrepeso
+   
+   Circunferências:
+   • Cintura: ____ cm (risco ♂ >102 / ♀ >88 cm)
+   • Braço (CB): ____ cm → Adequação: ____%
+   • Panturrilha (CP): ____ cm (depleção muscular se <31 cm em idosos)
+   
+   Pregas cutâneas (se disponível):
+   • Tricipital: ____ mm  • Bicipital: ____ mm
+   • Subescapular: ____ mm  • Suprailíaca: ____ mm
+   
+   Dinamometria (força de preensão palmar): ____ kgf
+   → Depleção se ♂ <26 kgf / ♀ <18 kgf
+
+5. DEFICIÊNCIAS DE MICRONUTRIENTES — Sinais Clínicos
+   | Nutriente    | Sinais clínicos                                    |
+   |-------------|---------------------------------------------------|
+   | Ferro       | Palidez, coiloníquia, queilite, pagofagia          |
+   | Vitamina B12| Glossite, neuropatia periférica, anemia macrocítica|
+   | Folato      | Glossite, anemia megaloblástica, defeitos tubo neural|
+   | Vitamina D  | Dor óssea, fraqueza proximal, osteomalácia         |
+   | Vitamina A  | Xeroftalmia, cegueira noturna, hiperqueratose      |
+   | Vitamina C  | Escorbuto: gengivite, petéquias, má cicatrização   |
+   | Zinco       | Disgeusia, alopecia, acrodermatite, diarreia       |
+   | Vitamina B1 | Beribéri (seco: neuropatia / úmido: ICC), Wernicke |
+   | Vitamina B3 | Pelagra (dermatite, diarreia, demência — 3 Ds)     |
+   | Cálcio      | Tetania, Chvostek/Trousseau, QT longo              |
+   | Magnésio    | Câimbras, arritmia, hipocalcemia refratária         |
+   | Selênio     | Cardiomiopatia (Keshan), hipotireoidismo            |
+
+6. NUTRIÇÃO ENTERAL / PARENTERAL — Avaliação
+   Via de alimentação atual:
+   ( ) Via oral exclusiva
+   ( ) Suplemento oral (tipo: ____ volume: ____ kcal/dia)
+   ( ) Sonda nasoentérica / nasogástrica
+   ( ) Gastrostomia ( ) Jejunostomia
+   ( ) Nutrição parenteral periférica
+   ( ) Nutrição parenteral total (central)
+   
+   Necessidades estimadas:
+   • Calórica: 25-30 kcal/kg/dia (ajustar por estresse metabólico)
+   • Proteica: 1,2-2,0 g/kg/dia (crítico/queimado: até 2,0)
+   • Hídrica: 30-35 mL/kg/dia
+
+7. DIETAS RESTRITIVAS — Avaliação de Riscos
+   ( ) Vegetariano estrito/vegano → B12, ferro, zinco, ômega-3, cálcio
+   ( ) Sem glúten (não celíaco) → fibras, ferro, folato, B vitaminas
+   ( ) Low carb / cetogênica → fibras, micronutrientes, cetoacidose
+   ( ) Jejum intermitente → risco de hipoglicemia, compulsão
+   ( ) Dietas da moda / detox → desnutrição, desequilíbrio eletrolítico
+   
+   ⚠️ Transtornos alimentares associados:
+   ( ) Anorexia nervosa  ( ) Bulimia nervosa
+   ( ) Transtorno de compulsão alimentar  ( ) Ortorexia
+
+📌 DICA: Síndrome de realimentação = complicação potencialmente fatal ao reiniciar alimentação em desnutridos graves → monitorar P, K, Mg, tiamina nas primeiras 72h. Começar com 10-15 kcal/kg/dia e progredir lentamente.`,
+    tips: "ASG-C + albumina <2,5 = desnutrição grave → risco cirúrgico elevado. Na síndrome de realimentação, hipofosfatemia é o marco — pode causar arritmia e insuficiência respiratória. Sempre dosar 25-OH vitamina D (deficiência <20ng/mL é epidêmica). Perda >10% do peso em 6 meses = investigar neoplasia. Panturrilha <31cm em idoso = sarcopenia provável. Veganos PRECISAM de suplementação de B12 — não há fonte vegetal confiável.",
+  },
+  {
+    id: "medicina-aeroespacial",
+    title: "Anamnese em Medicina Aeroespacial",
+    emoji: "✈️",
+    tags: ["aeroespacial", "aviação", "aptidão", "piloto", "tripulante"],
+    content: `═══════════════════════════════════════════
+  ANAMNESE EM MEDICINA AEROESPACIAL
+═══════════════════════════════════════════
+
+1. IDENTIFICAÇÃO AERONÁUTICA
+   Nome: ______________________________
+   Categoria: ( ) Piloto privado ( ) Piloto comercial ( ) Linha aérea
+              ( ) Comissário de bordo ( ) Controlador de tráfego aéreo
+              ( ) Astronauta ( ) Paraquedista ( ) Piloto militar
+   CMA (Certificado Médico Aeronáutico): ( ) 1ª classe ( ) 2ª classe ( ) 3ª classe
+   Horas totais de voo: ______  Horas último ano: ______
+   Tipo de aeronave: __________________________
+   Operação: ( ) VFR ( ) IFR ( ) Noturno ( ) Acrobático
+
+2. APTIDÃO FÍSICA — RBAC 67 (ANAC)
+   Exame: ( ) Inicial ( ) Revalidação → Validade: ___/___/___
+   
+   Sistema cardiovascular:
+   ( ) PA: ___/___ mmHg (limite: <155/95 para 1ª classe)
+   ( ) ECG em repouso: ( ) Normal ( ) Alterado: ____________
+   ( ) Teste ergométrico (se indicado): ____________
+   ( ) Eco (se indicado): ____________
+   ( ) Arritmias: ( ) Não ( ) Sim: ____________
+   ( ) Doença coronariana: ( ) Não ( ) Sim → Status: ____________
+   ⚠️ IAM, revascularização, arritmia significativa = geralmente inaptidão
+   
+   Sistema neurológico:
+   ( ) Epilepsia/convulsão: ( ) Não ( ) Sim → INAPTO
+   ( ) Síncope: ( ) Não ( ) Sim → investigação obrigatória
+   ( ) Enxaqueca com aura: ( ) Não ( ) Sim → avaliação especial
+   ( ) AVC/AIT prévio: ( ) Não ( ) Sim
+   ( ) Traumatismo craniano: ( ) Não ( ) Sim → sequelas?
+   ( ) Distúrbio do sono: ( ) Não ( ) Sim (SAOS? → PSG)
+   
+   Sistema oftalmológico:
+   • Acuidade visual: OD _____ OE _____ (corrigida: OD _____ OE _____)
+   • 1ª classe: 20/20 corrigida em cada olho
+   • 2ª/3ª classe: 20/40 corrigida em cada olho
+   ( ) Visão de cores: ( ) Normal (Ishihara) ( ) Alterada → tipo: ____
+   ( ) Campo visual: ( ) Normal ( ) Alterado
+   ( ) Cirurgia refrativa: ( ) Não ( ) Sim → tipo: ____ data: ____
+     → Período de observação pós-operatório obrigatório
+
+   Sistema otorrinolaringológico:
+   • Audiometria tonal: OD ____dB OE ____dB (limites por frequência)
+   • Limites 1ª classe: ≤35dB em 500-2000Hz, ≤50dB em 3000Hz
+   ( ) Vertigem/tontura: ( ) Não ( ) Sim → investigação vestibular
+   ( ) Doença de Ménière: ( ) Não ( ) Sim → geralmente INAPTO
+   ( ) Perfuração timpânica: ( ) Não ( ) Sim
+
+3. FATORES HUMANOS — Mnemônico IMSAFE (checklist pré-voo)
+   I — Illness (doença): Estou doente ou com mal-estar?
+   M — Medication (medicação): Estou tomando algum medicamento?
+   S — Stress (estresse): Estou sob estresse emocional significativo?
+   A — Alcohol (álcool): Ingeri álcool nas últimas 8-12 horas?
+   F — Fatigue (fadiga): Estou descansado? Dormi o suficiente?
+   E — Eating/Emotion: Estou alimentado? Emocionalmente estável?
+
+4. MEDICAMENTOS E APTIDÃO
+   ⚠️ Medicamentos PROIBIDOS em tripulantes:
+   ( ) Benzodiazepínicos / hipnóticos
+   ( ) Antipsicóticos
+   ( ) Anticonvulsivantes
+   ( ) Antidepressivos (maioria — alguns ISRS podem ser avaliados caso a caso)
+   ( ) Opioides
+   ( ) Anti-histamínicos sedativos (1ª geração)
+   ( ) Anticoagulantes orais
+   ( ) Insulina (pilotos — avaliação especial em alguns países)
+   ( ) Cannabis/THC (qualquer forma)
+   
+   Medicamentos geralmente PERMITIDOS (com avaliação):
+   ( ) Anti-hipertensivos (alguns: IECA, BRA, BCC)
+   ( ) Estatinas
+   ( ) Anti-histamínicos não sedativos (2ª geração: loratadina, cetirizina)
+   ( ) Paracetamol / dipirona (dose habitual)
+   ( ) IBP (omeprazol, pantoprazol)
+
+5. SAÚDE MENTAL — Avaliação Aeronáutica
+   ( ) Transtorno depressivo: ( ) Não ( ) Sim → em tratamento?
+   ( ) Transtorno de ansiedade: ( ) Não ( ) Sim
+   ( ) TEPT: ( ) Não ( ) Sim
+   ( ) Dependência química: ( ) Não ( ) Sim → INAPTO
+   ( ) Ideação suicida/homicida: ( ) Não ( ) Sim → INAPTO IMEDIATO
+   ( ) Incidente/acidente aéreo prévio → avaliação psicológica obrigatória
+   
+   ⚠️ Pilotos com depressão tratada com ISRS podem ser considerados para
+   certificação especial (Special Issuance) em algumas agências (FAA, EASA)
+   após período de estabilidade documentada (geralmente 6-12 meses)
+
+6. FISIOLOGIA DE VOO — Condições Relevantes
+   Hipóxia de altitude:
+   • Altitude de cabine pressurizada: ~6.000-8.000 pés
+   • Pacientes com SpO₂ basal <92% ou pO₂ <70mmHg → O₂ suplementar
+   • Pneumotórax recente, cirurgia torácica <2 semanas → contraindicado
+   
+   Disbarismo:
+   ( ) Pneumotórax nos últimos 6 meses → INAPTO temporário
+   ( ) Cirurgia abdominal com gás <10 dias → risco de expansão gasosa
+   ( ) Procedimento com gás intraocular (SF6/C3F8) → INAPTO até reabsorção
+   ( ) Mergulho <24h antes do voo → risco de doença descompressiva
+   
+   Jet lag / Fadiga:
+   ( ) Voos transmeridionais frequentes → disrupção circadiana
+   ( ) Turnos noturnos → avaliação de sonolência (Epworth: ____)
+   ( ) SAOS diagnosticada → CPAP → compliance: ____%
+
+7. CONDIÇÕES ESPECIAIS DE APTIDÃO
+   Diabetes mellitus:
+   ( ) DM1 — geralmente INAPTO para piloto (variável por país)
+   ( ) DM2 — em dieta/metformina: pode ser apto com monitoramento
+   ( ) DM2 — em sulfonilureia/insulina: avaliação especial, risco hipoglicemia
+   
+   Gravidez:
+   • Comissárias: geralmente afastadas a partir de 26-32 semanas
+   • Passageiras: voos domésticos até 36 sem, internacionais até 35 sem
+   
+   Pós-operatório — Tempo mínimo de afastamento:
+   | Procedimento          | Tempo mínimo |
+   |----------------------|-------------|
+   | Cirurgia menor       | 48-72h      |
+   | Laparoscopia         | 7-14 dias   |
+   | Cirurgia abdominal   | 4-6 semanas |
+   | Cirurgia cardíaca    | 3-6 meses   |
+   | Catarata             | 2-4 semanas |
+   | Refrativa (LASIK)    | 3-6 meses   |
+   | Fratura simples      | Até consolidação |
+
+📌 DICA: Regra das 8 horas (bottle to throttle) — mínimo de 8h entre última ingesta de álcool e voo. Na prática, muitas companhias exigem 12h. Alcoolemia ZERO é obrigatória. O ambiente de cabine tem umidade ~15% → desidratação é comum e pode mascarar cálculos renais.`,
+    tips: "IMSAFE é o checklist obrigatório antes de cada voo — memorize. Daltonismo severo = inaptidão para pilotos (não distingue luzes de navegação). Pneumotórax espontâneo com resolução pode ser apto após pleurodese + 6 meses. SAOS com CPAP e compliance >70% pode manter aptidão. Qualquer perda de consciência inexplicada = afastamento até investigação completa. A expansão gasosa a 8.000 pés é ~30% — gás intestinal, pneumotórax e gás intraocular são problemas reais.",
+  },
+  {
+    id: "cirurgia-bariatrica",
+    title: "Anamnese em Cirurgia Bariátrica",
+    emoji: "⚖️",
+    tags: ["bariátrica", "obesidade", "metabólica", "bypass", "sleeve"],
+    content: `═══════════════════════════════════════════
+  ANAMNESE EM CIRURGIA BARIÁTRICA
+═══════════════════════════════════════════
+
+1. CRITÉRIOS DE INDICAÇÃO — CFM / SBCBM
+   Indicações (resolução CFM 2.131/2015 + atualizações):
+   ( ) IMC ≥40 kg/m² (obesidade grau III) — independente de comorbidades
+   ( ) IMC ≥35 kg/m² com comorbidades:
+     ( ) DM2  ( ) HAS  ( ) Dislipidemia  ( ) SAOS
+     ( ) Artropatia degenerativa  ( ) DHGNA/NASH
+     ( ) Incontinência urinária de esforço  ( ) DRGE
+     ( ) Insuficiência venosa / estase  ( ) Asma grave não controlada
+   ( ) IMC 30-34,9 com DM2 refratário ao tratamento clínico (cirurgia metabólica)
+   
+   Pré-requisitos obrigatórios:
+   ( ) Tratamento clínico prévio ≥2 anos sem sucesso (controverso)
+   ( ) Idade: 16-65 anos (fora dessa faixa: avaliação individualizada)
+   ( ) Avaliação psicológica/psiquiátrica favorável
+   ( ) Compreensão dos riscos e comprometimento com acompanhamento
+   ( ) Ausência de contraindicações absolutas
+   
+   Contraindicações:
+   ( ) Dependência ativa de álcool/drogas
+   ( ) Transtorno psiquiátrico grave não controlado
+   ( ) Risco anestésico-cirúrgico inaceitável (ASA IV-V descompensado)
+   ( ) Doença endócrina tratável como causa da obesidade (Cushing, hipotireoidismo)
+
+2. HISTÓRIA DA OBESIDADE — Mnemônico PESO
+   P — Peso ao longo da vida (peso máximo, peso mínimo adulto, trajetória)
+   E — Etiologia e fatores contribuintes:
+     ( ) Genética/familiar (pais, irmãos obesos)
+     ( ) Sedentarismo  ( ) Compulsão alimentar
+     ( ) Medicamentos obesogênicos (corticoide, antipsicóticos, insulina, valproato)
+     ( ) Endócrina (hipotireoidismo, Cushing, SOP — descartar)
+     ( ) Emocional (ansiedade, depressão → comer emocional)
+   S — Sucesso/fracasso de tratamentos prévios:
+     ( ) Dietas: ____________ resultado: ____________
+     ( ) Exercício programado: ____________
+     ( ) Farmacoterapia: ( ) Sibutramina ( ) Orlistat ( ) Liraglutida
+       ( ) Semaglutida ( ) Tirzepatida ( ) Topiramato ( ) Outros: ____
+       Resultado: ____________ Efeitos adversos: ____________
+     ( ) Balão intragástrico: ( ) Sim → resultado: ____________
+     ( ) Cirurgia bariátrica prévia: ( ) Sim → Técnica: ____ Data: ____
+       Peso pré-op: ____ Peso mínimo pós-op: ____ Reganho: ____kg
+   O — Objetivo e expectativas do paciente
+
+3. COMORBIDADES — Avaliação Sistêmica
+   Metabólicas:
+   ( ) DM2 → HbA1c: ____% Medicações: ____________ Insulina: ____ UI/dia
+   ( ) HAS → PA: ___/___ Medicações: ____________ Número de drogas: ____
+   ( ) Dislipidemia → CT: ____ LDL: ____ HDL: ____ TG: ____
+   ( ) Síndrome metabólica (critérios IDF/ATP-III)
+   ( ) Hiperuricemia/gota
+   ( ) DHGNA → Grau esteatose: ____ Fibrose: ____
+   
+   Respiratórias:
+   ( ) SAOS → IAH: ____ eventos/h (leve 5-14 | moderada 15-29 | grave ≥30)
+     CPAP: ( ) Sim → pressão: ____ cmH₂O  Compliance: ____%
+   ( ) Síndrome de Pickwick (hipoventilação da obesidade)
+   ( ) Asma
+   
+   Cardiovascular:
+   ( ) ICC  ( ) Doença coronariana  ( ) FA  ( ) TVP/TEP prévia
+   ( ) Hipertensão pulmonar
+   
+   Musculoesquelético:
+   ( ) Gonartrose  ( ) Lombalgia crônica  ( ) Artropatia de quadril
+   ( ) Limitação de mobilidade: ____________
+   
+   Outras:
+   ( ) DRGE  ( ) Hérnia hiatal → tamanho: ____ cm
+   ( ) Colelitíase  ( ) SOP  ( ) Infertilidade
+   ( ) Incontinência urinária  ( ) Depressão/ansiedade
+
+4. AVALIAÇÃO PSICOLÓGICA/PSIQUIÁTRICA
+   ( ) Transtorno de compulsão alimentar (BED): ( ) Sim ( ) Não
+     → Frequência: ____ episódios/semana
+   ( ) Comer noturno (Night Eating Syndrome)
+   ( ) Comer emocional (ansiedade, tristeza, tédio)
+   ( ) Bulimia nervosa: ( ) Sim ( ) Não → CONTRAINDICAÇÃO relativa
+   ( ) Depressão: ( ) Sim → PHQ-9: ____ Em tratamento: ____
+   ( ) Ansiedade: ( ) Sim → GAD-7: ____
+   ( ) Uso de álcool: AUDIT: ____ (atenção: risco de transferência de adicção pós-op)
+   ( ) Tabagismo: ( ) Sim → cessação ≥8 semanas pré-op obrigatória
+   ( ) Expectativas realistas sobre resultado? ( ) Sim ( ) Não
+   ( ) Rede de apoio familiar: ( ) Adequada ( ) Insuficiente
+   ( ) Capacidade de aderir ao acompanhamento: ( ) Sim ( ) Duvidosa
+
+5. EXAMES PRÉ-OPERATÓRIOS — Checklist
+   Laboratorial:
+   ( ) Hemograma ( ) Coagulograma ( ) Glicemia/HbA1c ( ) Insulina
+   ( ) Perfil lipídico ( ) Função renal ( ) Função hepática
+   ( ) TSH/T4L ( ) Cortisol (se suspeita de Cushing)
+   ( ) Ferro, ferritina, B12, folato, 25-OH vitamina D
+   ( ) Cálcio, PTH, magnésio, zinco
+   ( ) Ácido úrico ( ) PCR ( ) Albumina/pré-albumina
+   ( ) Sorologia: HIV, HBsAg, Anti-HCV, VDRL
+   
+   Imagem e complementares:
+   ( ) EDA (endoscopia digestiva alta) — obrigatória
+     Achados: ( ) Normal ( ) Esofagite ( ) Hérnia hiatal (____ cm)
+     ( ) H. pylori: ( ) Positivo → tratar antes ( ) Negativo
+     ( ) Barrett ( ) Úlcera ( ) Pólipo
+   ( ) US abdome total (colelitíase: ____%)
+   ( ) ECG ( ) Eco (se indicado)
+   ( ) Espirometria ( ) Rx tórax
+   ( ) Polissonografia (se suspeita de SAOS)
+   ( ) Densitometria óssea (se fatores de risco)
+
+6. TÉCNICAS CIRÚRGICAS — Comparação
+   | Técnica        | Restritiva | Disabsortiva | Remissão DM2 | Perda excesso |
+   |---------------|-----------|-------------|-------------|--------------|
+   | Sleeve (VSG)   | +++       | +           | 60-70%      | 60-70%       |
+   | Bypass (RYGB)  | ++        | ++          | 75-85%      | 70-80%       |
+   | SADI-S / DS    | +         | +++         | 85-95%      | 75-85%       |
+   | Banda gástrica | +++       | -           | 40-50%      | 40-50%       |
+   
+   Técnica proposta: ________________________________
+   Justificativa: ________________________________
+
+7. ACOMPANHAMENTO PÓS-OPERATÓRIO — Protocolo
+   Suplementação OBRIGATÓRIA vitalícia (bypass/SADI-S):
+   ( ) Polivitamínico (2x/dia nos primeiros 6 meses)
+   ( ) Cálcio citrato: 1200-1500 mg/dia
+   ( ) Vitamina D3: 3000-6000 UI/dia (manter 25OH >30 ng/mL)
+   ( ) Vitamina B12: sublingual diária ou IM mensal
+   ( ) Ferro elementar: 45-60 mg/dia (principalmente mulheres)
+   ( ) Ácido fólico: 400-800 mcg/dia
+   ( ) Tiamina (B1): se vômitos persistentes → risco de Wernicke
+   
+   Consultas de retorno:
+   • 1º mês, 3º, 6º, 9º, 12º mês → depois semestral → depois anual VITALÍCIO
+   • Exames laboratoriais: 3, 6, 12 meses → depois anual
+   
+   Metas:
+   • Perda de 50-80% do excesso de peso em 12-18 meses
+   • Melhora/remissão de comorbidades
+   • Ingestão proteica ≥60g/dia (ideal 80-100g)
+
+   ⚠️ Complicações a monitorar:
+   ( ) Dumping syndrome (precoce: 30min / tardio: 1-3h pós-refeição)
+   ( ) Estenose de anastomose (disfagia progressiva)
+   ( ) Úlcera marginal (dor epigástrica, sangramento)
+   ( ) Hérnia interna (dor abdominal tipo cólica intermitente → TC urgente)
+   ( ) Colelitíase pós-op (perda rápida de peso → ácido ursodesoxicólico profilático)
+   ( ) Deficiências nutricionais (anemia, neuropatia, alopecia, osteoporose)
+   ( ) Reganho de peso (>15-20% do peso mínimo atingido)
+   ( ) Transferência de adicção (álcool — absorção 3x mais rápida pós-bypass)
+
+📌 DICA: H. pylori DEVE ser erradicado antes do bypass — estômago excluso não será mais acessível por EDA convencional. Cessação do tabagismo ≥8 semanas antes é OBRIGATÓRIA. Acompanhamento nutricional vitalício — deficiência de B1 (tiamina) pós-op com vômitos = emergência (Wernicke).`,
+    tips: "Bypass gástrico é padrão-ouro para DM2 com IMC 35-50. Sleeve é preferível se DRGE grave/Barrett (contraindicado na verdade — bypass é melhor para DRGE). Hérnia interna pós-bypass = abdome agudo → TC com contraste e cirurgia urgente. Alcoolismo pós-bariátrica afeta até 20% dos pacientes — SEMPRE rastrear. Gravidez deve ser evitada nos primeiros 12-18 meses pós-op. Reganho >20% = considerar revisão cirúrgica ou tratamento farmacológico adjuvante (semaglutida).",
+  },
 ];
 export default function AnamnesisGuide() {
   const [active, setActive] = useState<string | null>(null);
