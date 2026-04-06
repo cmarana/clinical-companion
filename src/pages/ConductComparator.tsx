@@ -1,11 +1,11 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { ArrowLeft, Search, Mic, MicOff, Loader2, AlertTriangle, Pill, Stethoscope, Globe, Building2, BookOpen, ArrowRightLeft } from "lucide-react";
+import { ArrowLeft, Search, Mic, MicOff, Loader2, AlertTriangle, Pill, Stethoscope, Globe, Building2, BookOpen, ArrowRightLeft, History, Trash2, Clock, ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -146,6 +146,26 @@ function SourceCard({ source }: { source: Source }) {
   );
 }
 
+interface HistoryEntry {
+  diagnosis: string;
+  context?: string;
+  result: ComparisonResult;
+  timestamp: number;
+}
+
+const HISTORY_KEY = "pulso_conduct_history";
+const MAX_HISTORY = 20;
+
+function loadHistory(): HistoryEntry[] {
+  try {
+    return JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
+  } catch { return []; }
+}
+
+function saveHistory(entries: HistoryEntry[]) {
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(entries.slice(0, MAX_HISTORY)));
+}
+
 export default function ConductComparator() {
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -154,6 +174,8 @@ export default function ConductComparator() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<ComparisonResult | null>(null);
   const [listening, setListening] = useState(false);
+  const [history, setHistory] = useState<HistoryEntry[]>(loadHistory);
+  const [showHistory, setShowHistory] = useState(false);
 
   const toggleVoice = useCallback(() => {
     if (!("webkitSpeechRecognition" in window || "SpeechRecognition" in window)) {
@@ -186,12 +208,35 @@ export default function ConductComparator() {
       if (error) throw error;
       if (data?.error) throw new Error(data.error);
       setResult(data);
+      // Save to history
+      const entry: HistoryEntry = { diagnosis: diagnosis.trim(), context: context.trim() || undefined, result: data, timestamp: Date.now() };
+      const updated = [entry, ...history.filter(h => h.diagnosis.toLowerCase() !== diagnosis.trim().toLowerCase())].slice(0, MAX_HISTORY);
+      setHistory(updated);
+      saveHistory(updated);
     } catch (err: any) {
       toast({ title: "Erro", description: err.message || "Falha ao comparar condutas", variant: "destructive" });
     } finally {
       setLoading(false);
     }
-  }, [diagnosis, context, toast]);
+  }, [diagnosis, context, toast, history]);
+
+  const loadFromHistory = useCallback((entry: HistoryEntry) => {
+    setDiagnosis(entry.diagnosis);
+    setContext(entry.context || "");
+    setResult(entry.result);
+    setShowHistory(false);
+  }, []);
+
+  const removeFromHistory = useCallback((idx: number) => {
+    const updated = history.filter((_, i) => i !== idx);
+    setHistory(updated);
+    saveHistory(updated);
+  }, [history]);
+
+  const clearHistory = useCallback(() => {
+    setHistory([]);
+    localStorage.removeItem(HISTORY_KEY);
+  }, []);
 
   return (
     <PremiumPageGuard feature="Comparador de Condutas" title="Comparador de Condutas">
@@ -207,10 +252,56 @@ export default function ConductComparator() {
               <p className="text-[11px] text-muted-foreground">SUS × Sociedades × Internacional</p>
             </div>
             <ArrowRightLeft size={20} className="text-primary shrink-0" />
+            {history.length > 0 && (
+              <Button variant="ghost" size="icon" onClick={() => setShowHistory(!showHistory)} className="shrink-0 relative">
+                <History size={20} className={showHistory ? "text-primary" : ""} />
+                <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-primary text-primary-foreground text-[9px] font-bold flex items-center justify-center">{history.length}</span>
+              </Button>
+            )}
           </div>
         </div>
 
         <div className="px-4 py-4 max-w-4xl mx-auto space-y-4">
+          {/* History panel */}
+          {showHistory && history.length > 0 && (
+            <Card className="border-primary/20 animate-in fade-in-0 slide-in-from-top-2 duration-300">
+              <CardHeader className="pb-2 flex flex-row items-center justify-between">
+                <CardTitle className="text-sm flex items-center gap-2">
+                  <History size={14} className="text-primary" /> Histórico ({history.length})
+                </CardTitle>
+                <Button variant="ghost" size="sm" onClick={clearHistory} className="text-destructive hover:text-destructive text-xs h-7 gap-1">
+                  <Trash2 size={12} /> Limpar
+                </Button>
+              </CardHeader>
+              <CardContent className="pt-0 max-h-64 overflow-y-auto space-y-1.5">
+                {history.map((entry, i) => (
+                  <div
+                    key={entry.timestamp}
+                    className="flex items-center gap-2 p-2 rounded-lg hover:bg-muted/50 cursor-pointer group transition-colors"
+                    onClick={() => loadFromHistory(entry)}
+                  >
+                    <Clock size={12} className="text-muted-foreground shrink-0" />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium truncate">{entry.result.diagnosis_title || entry.diagnosis}</p>
+                      <p className="text-[10px] text-muted-foreground">
+                        {new Date(entry.timestamp).toLocaleDateString("pt-BR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}
+                        {entry.result.icd10 && ` · ${entry.result.icd10}`}
+                      </p>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
+                      onClick={e => { e.stopPropagation(); removeFromHistory(i); }}
+                    >
+                      <Trash2 size={12} className="text-muted-foreground" />
+                    </Button>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          )}
+
           {/* Input */}
           <Card>
             <CardContent className="pt-4 space-y-3">
