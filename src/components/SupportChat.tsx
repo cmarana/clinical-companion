@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { MessageCircleQuestion, X, Send, Loader2, Mail, ArrowLeft } from "lucide-react";
+import { MessageCircleQuestion, X, Send, Loader2, Mail, ArrowLeft, Bug, Lightbulb, MessageSquarePlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
@@ -9,18 +9,27 @@ import { motion, AnimatePresence } from "framer-motion";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
+const feedbackTypes = [
+  { id: "bug", label: "Bug", icon: Bug, color: "text-red-500" },
+  { id: "suggestion", label: "Sugestão", icon: Lightbulb, color: "text-amber-500" },
+  { id: "other", label: "Outro", icon: MessageSquarePlus, color: "text-blue-500" },
+] as const;
+
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/support-chat`;
 
 export default function SupportChat() {
   const { user } = useAuth();
   const [open, setOpen] = useState(false);
-  const [view, setView] = useState<"chat" | "email">("chat");
+  const [view, setView] = useState<"chat" | "email" | "feedback">("chat");
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [emailSubject, setEmailSubject] = useState("");
   const [emailBody, setEmailBody] = useState("");
   const [sendingEmail, setSendingEmail] = useState(false);
+  const [feedbackType, setFeedbackType] = useState("suggestion");
+  const [feedbackMessage, setFeedbackMessage] = useState("");
+  const [sendingFeedback, setSendingFeedback] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
