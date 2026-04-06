@@ -92,6 +92,7 @@ const studyModules = [
   { label: "Dashboard", sub: "Streak e progresso", icon: BarChart3, path: "/study-dashboard" },
   { label: "Evolução por Voz", sub: "Voz → SOAP / I-PASS com IA", icon: Mic, path: "/voice-evolution" },
   { label: "Evoluções", sub: "Templates de evolução", icon: FileEdit, path: "/evolution-templates" },
+  { label: "Resumo de Alta", sub: "IA gera alta completa", icon: FileText, path: "/discharge-summary" },
   { label: "Documentos", sub: "Receitas e atestados", icon: FileText, path: "/documents" },
   { label: "Modo Offline", sub: "Plantão sem internet", icon: WifiOff, path: "/offline" },
 ];
