@@ -27,8 +27,8 @@ export default function SupportChat() {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [messages]);
 
-  const sendMessage = useCallback(async () => {
-    const text = input.trim();
+  const sendMessage = useCallback(async (directText?: string) => {
+    const text = (directText || input).trim();
     if (!text || isLoading) return;
 
     const userMsg: Msg = { role: "user", content: text };
@@ -205,7 +205,7 @@ export default function SupportChat() {
                           {["Como usar a IA Clínica?", "Como cancelar assinatura?", "O app funciona offline?"].map((q) => (
                             <button
                               key={q}
-                              onClick={() => { setInput(q); }}
+                              onClick={() => sendMessage(q)}
                               className="text-xs px-3 py-1.5 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
                             >
                               {q}
@@ -247,7 +247,7 @@ export default function SupportChat() {
                       placeholder="Digite sua dúvida..."
                       className="flex-1 bg-muted/50 border border-border rounded-xl px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                     />
-                    <Button size="icon" onClick={sendMessage} disabled={!input.trim() || isLoading} className="h-9 w-9 rounded-xl shrink-0">
+                    <Button size="icon" onClick={() => sendMessage()} disabled={!input.trim() || isLoading} className="h-9 w-9 rounded-xl shrink-0">
                       <Send size={16} />
                     </Button>
                   </div>
