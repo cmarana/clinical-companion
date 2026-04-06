@@ -5026,6 +5026,512 @@ O — Outros sintomas associados
   📌 DPAR positivo = lesão do nervo óptico ipsilateral (neurite, isquemia, compressão)`,
     tips: "Queimadura química = irrigar ANTES de tudo, perguntar depois. Floaters + fotopsias súbitos = descolamento de retina até prova contrária → encaminhar urgente. No olho vermelho, pupila fixa + dor intensa + PIO alta = glaucoma agudo → emergência.",
   },
+  {
+    id: "neurologia",
+    title: "Anamnese em Neurologia",
+    emoji: "🧠",
+    tags: ["neurologia", "cefaleia", "AVC", "epilepsia", "neuropatia"],
+    content: `═══════════════════════════════════════════
+  ANAMNESE EM NEUROLOGIA
+═══════════════════════════════════════════
+
+1️⃣ CEFALEIA — Mnemônico PQRST + BANDEIRAS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+P — Provocação: O que desencadeia? (estresse, alimento, menstruação, esforço)
+Q — Qualidade: Pulsátil (enxaqueca), em pressão (tensional), em facada (trigêmeo), em trovoada (HSA)
+R — Região: Unilateral (enxaqueca, cluster), bilateral (tensional), occipital (hipertensão, Arnold-Chiari)
+S — Severidade: EVA 0-10
+T — Tempo: Início (súbito vs gradual), duração (segundos, horas, dias), frequência
+
+🚩 RED FLAGS ("SNOOP10"):
+  S — Sintomas sistêmicos (febre, perda de peso, HIV, câncer)
+  N — Neurológico (déficit focal, papiledema, rigidez de nuca)
+  O — Onset súbito ("thunderclap" → HSA até prova contrária)
+  O — Older: início após 50 anos (arterite temporal → VSG)
+  P — Pattern change: mudança de padrão em cefaleia prévia
+  + Posicional, Papilledema, Progressive, Pregnancy, Painful eye, Post-trauma
+
+Aura: ( ) Visual  ( ) Sensitiva  ( ) Motora  ( ) Linguagem
+Duração da aura: _____ min  (>60 min = aura prolongada → considerar AVC)
+Profilaxia atual: _________________ Dose: _____
+Resposta a triptanos: ( ) Boa  ( ) Parcial  ( ) Sem resposta
+Diário de cefaleia: _____ dias/mês (≥15 dias = crônica; ≥8 com enxaqueca = migr. crônica)
+
+2️⃣ AVC / AIT — Mnemônico FAST-ED
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+F — Face: desvio de rima? ( ) Sim  ( ) Não
+A — Arms: queda de membro? ( ) Sim  ( ) Não → qual lado? ____
+S — Speech: disartria/afasia? ( ) Sim  ( ) Não
+T — Time: hora de início / "última vez visto bem": ____:____
+E — Eye deviation: desvio conjugado do olhar? ( ) Sim
+D — Denial (anosognosia) / negligência? ( ) Sim
+
+Tempo de evolução: _____ h/min
+Janela de trombólise (≤4,5h): ( ) Dentro  ( ) Fora
+Janela de trombectomia (≤24h com mismatch): ( ) Dentro  ( ) Fora
+NIHSS estimado: _____
+
+Fatores de risco — CHA₂DS₂-VASc:
+  ( ) ICC  ( ) HAS  ( ) Idade ≥75  ( ) DM  ( ) AVC/AIT prévio
+  ( ) Doença vascular  ( ) Idade 65-74  ( ) Sexo feminino
+Score: _____ → Anticoagulação indicada se ≥2 (homem) ou ≥3 (mulher)
+
+AIT: resolução completa em <24h? ( ) Sim → ABCD² score:
+  A — Age ≥60 (+1)  B — BP ≥140/90 (+1)  C — Clinical (paresia +2, fala +1)
+  D — Duration (≥60min +2, 10-59min +1)  D — DM (+1)
+  Score: _____ (≥4 = alto risco → internar)
+
+3️⃣ EPILEPSIA E CRISES CONVULSIVAS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Descrição da crise (testemunha):
+  Tipo: ( ) Tônico-clônica  ( ) Ausência  ( ) Focal com/sem awareness  ( ) Mioclônica
+  Aura pré-ictal: ( ) Déjà vu  ( ) Epigástrica  ( ) Olfatória  ( ) Visual  ( ) Nenhuma
+  Duração: _____ seg/min
+  Pós-ictal: ( ) Confusão  ( ) Todd (paresia)  ( ) Automatismos  ( ) Sem sequela
+  Mordedura de língua: ( ) Lateral (epiléptica)  ( ) Ponta (pseudocrise)
+  Incontinência: ( ) Sim  ( ) Não
+  Cianose: ( ) Sim  ( ) Não
+
+Frequência de crises: _____ /mês
+FAE atual: _________________ Dose: _____ Nível sérico: _____
+Adesão: ( ) Boa  ( ) Irregular → motivo: __________
+Triggers: ( ) Privação de sono  ( ) Álcool  ( ) Estresse  ( ) Fotoestimulação  ( ) Febre
+
+Status epilepticus: crise >5 min ou crises recorrentes sem recuperação? ( ) Sim → EMERGÊNCIA
+
+4️⃣ NEUROPATIA PERIFÉRICA — Mnemônico DANG THERAPIST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+D — Diabetes / Drogas
+A — Álcool / Amiloidose
+N — Nutricional (B12, B1, B6, folato)
+G — Guillain-Barré
+T — Tóxicos (metais pesados, quimioterápicos)
+H — Hereditária (CMT)
+E — Endócrina (hipotireoidismo)
+R — Renal (uremia)
+A — Autoimune (vasculite, Sjögren)
+P — Paraneoplásica
+I — Infecciosa (HIV, hanseníase, hepatite C)
+S — Sistêmica (sarcoidose)
+T — Trauma / compressão
+
+Padrão: ( ) Luvas e meias  ( ) Mononeurite múltipla  ( ) Proximal  ( ) Assimétrica
+Tipo: ( ) Sensitiva  ( ) Motora  ( ) Mista  ( ) Autonômica
+Início: ( ) Agudo  ( ) Subagudo  ( ) Crônico
+Progressão: ( ) Ascendente (Guillain-Barré)  ( ) Descendente  ( ) Estável
+
+5️⃣ DISTÚRBIOS DO MOVIMENTO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Tipo: ( ) Tremor  ( ) Rigidez  ( ) Bradicinesia  ( ) Coreia  ( ) Distonia  ( ) Mioclonia  ( ) Ataxia
+
+Tremor:
+  ( ) Repouso (parkinsonismo) → "pill rolling"
+  ( ) Postural (essencial, fisiológico)
+  ( ) Intencional (cerebelar)
+  ( ) Melhora com álcool? → tremor essencial
+
+Parkinsonismo — Mnemônico TRAP:
+  T — Tremor de repouso
+  R — Rigidez (roda dentada)
+  A — Akinesia / bradicinesia
+  P — Postural instability
+  Lateralidade: ( ) Assimétrico (Parkinson idiopático)  ( ) Simétrico (parkinsonismo atípico)
+  Resposta à levodopa: ( ) Boa  ( ) Pobre → considerar MSA, PSP, DCL
+
+Sinais de alarme para parkinsonismo atípico:
+  ( ) Quedas precoces (PSP)  ( ) Disautonomia grave (MSA)
+  ( ) Alucinações precoces (DCL)  ( ) Apraxia de membro (DCB)
+
+6️⃣ ALTERAÇÕES COGNITIVAS E DEMÊNCIA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Queixa de memória: ( ) Paciente  ( ) Familiar/cuidador
+Início: _________  Progressão: ( ) Gradual  ( ) Escalonada  ( ) Flutuante  ( ) Rápida
+
+Mnemônico DEMÊNCIA:
+  D — Depressão (pseudodemência)
+  E — Endócrina (hipotireoidismo)
+  M — Metabólica (B12, folato, hipo/hiperCa)
+  Ê — Êtanol (Wernicke-Korsakoff)
+  N — Neurossífilis / Neoplasia
+  C — Cardíaca (multi-infartos)
+  I — Infecção (HIV, príon, fungos)
+  A — Alzheimer / Autoimune (encefalite límbica)
+
+Perfil cognitivo:
+  Memória episódica: _____ (Alzheimer — amnésia anterógrada precoce)
+  Funções executivas: _____ (Frontotemporal — desinibição, apatia)
+  Visuoespacial: _____ (DCL — alucinações visuais + flutuação)
+  Linguagem: _____ (APP — anomia progressiva)
+
+Funcionalidade (AVD/AIVD): ( ) Independente  ( ) Parcialmente dependente  ( ) Dependente
+MEEM: ___/30  MoCA: ___/30  CDR: ___
+
+7️⃣ EXAME NEUROLÓGICO DIRECIONADO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Estado mental: Glasgow ___/15  Orientação: T-E  Atenção  Linguagem
+Nervos cranianos:
+  II: acuidade, campos, fundoscopia
+  III/IV/VI: pupilas (tamanho, simetria, fotomotor), motilidade ocular
+  V: sensibilidade facial, reflexo corneopalpebral
+  VII: mímica facial (central vs periférica)
+  VIII: audição, Rinne, Weber
+  IX/X: reflexo de deglutição, véu palatino
+  XI: trapézio, ECM
+  XII: língua (desvio, fasciculações)
+  
+Motor: Força (MRC 0-5), tônus (espástico vs rígido vs flácido)
+Reflexos: bicipital, tricipital, braquiorradial, patelar, aquileu
+  Babinski: ( ) Presente (lesão piramidal)
+  Hoffmann: ( ) Presente
+Sensibilidade: tátil, dolorosa, vibratória, proprioceptiva
+Coordenação: index-nariz, calcanhar-joelho, diadococinesia
+Marcha: ( ) Normal  ( ) Espástica  ( ) Atáxica  ( ) Parkinsoniana  ( ) Vestibular  ( ) Steppage
+Equilíbrio: Romberg ( ) Positivo  ( ) Negativo
+Sinais meníngeos: Kernig, Brudzinski, rigidez de nuca
+
+📌 Déficit motor + sensitivo + reflexo no mesmo nível = lesão medular → RM urgente`,
+    tips: "Cefaleia 'thunderclap' (pior da vida, início em segundos) = hemorragia subaracnóidea até TC + líquor excluírem. NIHSS deve ser aplicado em <10 min no AVC agudo. No tremor, sempre perguntar se melhora com álcool (essencial) ou piora com movimento intencional (cerebelar). Demência rapidamente progressiva (<2 anos) = investigar príon, autoimune, paraneoplásica.",
+  },
+  {
+    id: "gastroenterologia",
+    title: "Anamnese em Gastroenterologia",
+    emoji: "🫁",
+    tags: ["gastroenterologia", "abdome", "fígado", "intestino", "dispepsia"],
+    content: `═══════════════════════════════════════════
+  ANAMNESE EM GASTROENTEROLOGIA
+═══════════════════════════════════════════
+
+1️⃣ DOR ABDOMINAL — Mnemônico ABDOME
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+A — Aparecimento: súbito (perfuração, torção), gradual (inflamatório, obstrutivo)
+B — Base / localização:
+    Epigástrio: dispepsia, pancreatite, IAM inferior
+    HCD: colecistite (Murphy+), hepatite, abscesso
+    HCE: esplenomegalia, pancreatite cauda
+    FID: apendicite (McBurney), Crohn terminal, ovárico
+    FIE: diverticulite, colite, ovárico
+    Periumbilical: obstrução de delgado, isquemia mesentérica precoce
+    Suprapúbico: ITU, retenção urinária, DIP
+    Difusa: peritonite, obstrução tardia, isquemia mesentérica
+B — intensidade (escala 0-10)
+D — Duração e periodicidade
+O — Outros sintomas: náuseas, vômitos, febre, icterícia, alteração do hábito intestinal
+M — Melhora/piora: alimentação, AINEs, antiácidos, posição, evacuação
+E — Episódios anteriores semelhantes?
+
+Sinais de alarme:
+  🚩 Rigidez abdominal (abdome em tábua → peritonite)
+  🚩 Sinal de Blumberg (descompressão dolorosa)
+  🚩 Distensão + parada de eliminação de gases e fezes (obstrução)
+  🚩 Dor + hipotensão + taquicardia (choque → sangramento/perfuração)
+
+2️⃣ DISPEPSIA E DRGE — Critérios de Roma IV
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Dispepsia funcional (≥1 por ≥3 meses, início ≥6 meses):
+  ( ) Plenitude pós-prandial
+  ( ) Saciedade precoce
+  ( ) Dor epigástrica
+  ( ) Queimação epigástrica
+  Subtipos: ( ) Síndrome do desconforto pós-prandial  ( ) Síndrome da dor epigástrica
+
+DRGE — Mnemônico REFLUXO:
+  R — Regurgitação ácida
+  E — Eructação excessiva
+  F — Frequência dos sintomas: ___/semana (>2x = moderado)
+  L — Laringite, rouquidão, tosse crônica (manifestações extra-esofágicas)
+  U — Uso de IBP: ( ) Resposta  ( ) Sem resposta
+  X — eXacerbação: decúbito, pós-prandial, alimentos gordurosos/ácidos
+  O — Odinofagia / disfagia? → EDA obrigatória
+
+Alarmes para EDA imediata ("DISPEPSIA"):
+  D — Disfagia / odinofagia
+  I — Idade ≥45 anos com sintomas novos
+  S — Sangramento (hematêmese, melena)
+  P — Perda de peso involuntária
+  E — Emagrecimento
+  P — Plenitude persistente / massa palpável
+  S — Sinais de anemia
+  I — Icterícia
+  A — Antecedente de câncer gástrico familiar
+
+3️⃣ DOENÇA HEPÁTICA — Mnemônico FÍGADO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+F — Fatores de risco: álcool (quantidade em g/dia), drogas IV, transfusão pré-1993, tatuagem
+I — Icterícia: início, progressão, colúria, acolia
+G — Gordura: esteatose (síndrome metabólica, IMC, CA)
+A — Autoimune: FAN, anti-LKM, IgG elevada
+D — Drogas hepatotóxicas: paracetamol, estatinas, ATB, fitoterápicos, anabolizantes
+O — Outras: Wilson (anel KF, ceruloplasmina), hemocromatose (ferritina, sat. transferrina)
+
+Consumo de álcool:
+  Tipo: ________  Volume: ____ ml/dia  Frequência: ____
+  Cálculo: volume (ml) × teor alcoólico × 0,8 = ____ g/dia
+  Risco: homem >40g/dia, mulher >20g/dia
+  CAGE: ( ) Cut down  ( ) Annoyed  ( ) Guilty  ( ) Eye-opener  Score: ___/4
+
+Classificação de Child-Pugh:
+  Encefalopatia: ( ) Nenhuma  ( ) Grau I-II  ( ) Grau III-IV
+  Ascite: ( ) Ausente  ( ) Leve  ( ) Moderada-severa
+  Bilirrubina: ___ mg/dL    Albumina: ___ g/dL    INR/TP: ___
+  Score: ___ → ( ) A (5-6)  ( ) B (7-9)  ( ) C (10-15)
+
+MELD: ___  (Cr ___, BT ___, INR ___)
+
+4️⃣ DOENÇAS INFLAMATÓRIAS INTESTINAIS (DII)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Mnemônico CROHN vs RCU:
+
+CROHN:
+  C — Contínua? Não → salteada ("skip lesions")
+  R — Região: qualquer segmento (boca ao ânus), mais comum íleo terminal
+  O — Obstrução / estenoses / fístulas
+  H — Histologia: granulomas não caseosos, transmural
+  N — Nutrição comprometida (má absorção, B12, ferro)
+
+RCU (Retocolite Ulcerativa):
+  R — Reto sempre envolvido
+  C — Contínua e ascendente
+  U — Úlceras superficiais, mucosa e submucosa
+
+Manifestações extra-intestinais:
+  ( ) Artrite  ( ) Eritema nodoso  ( ) Pioderma gangrenoso
+  ( ) Uveíte  ( ) Colangite esclerosante (RCU)  ( ) Amiloidose
+
+Índice de atividade:
+  Crohn → Harvey-Bradshaw: ___
+  RCU → Mayo parcial: ___
+
+5️⃣ HÁBITO INTESTINAL E SÍNDROME DO INTESTINO IRRITÁVEL (SII)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Frequência evacuatória: ___/dia ou ___/semana
+Consistência (Bristol): ( ) 1-2 (constipação)  ( ) 3-4 (normal)  ( ) 5-7 (diarreia)
+Sangue: ( ) Vivo (hematoquezia)  ( ) Escuro (melena)
+Muco: ( ) Sim  ( ) Não
+Tenesmo: ( ) Sim  ( ) Não
+Urgência: ( ) Sim  ( ) Não
+
+SII — Critérios de Roma IV:
+  Dor abdominal recorrente ≥1 dia/semana nos últimos 3 meses + ≥2 de:
+  ( ) Relacionada à defecação
+  ( ) Mudança na frequência das fezes
+  ( ) Mudança na forma das fezes
+  Subtipo: ( ) SII-C (constipação)  ( ) SII-D (diarreia)  ( ) SII-M (misto)
+
+Diarreia crônica (>4 semanas) — investigar:
+  ( ) Osmótica: melhora com jejum (intolerância lactose, sorbitol)
+  ( ) Secretória: persiste com jejum (VIPoma, carcinoide, colite microscópica)
+  ( ) Inflamatória: sangue/muco, calprotectina elevada
+  ( ) Esteatorreia: gordura, insuficiência pancreática, doença celíaca
+  ( ) Funcional: SII após exclusão orgânica
+
+6️⃣ SANGRAMENTO DIGESTIVO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Alto (acima de Treitz):
+  ( ) Hematêmese  ( ) Vômitos borra de café  ( ) Melena
+  Causas comuns: úlcera péptica, varizes esofágicas, Mallory-Weiss, neoplasia
+  Rockall score pré-endoscópico: ___
+  Glasgow-Blatchford score: ___ (0 = baixo risco → alta precoce)
+
+Baixo (abaixo de Treitz):
+  ( ) Hematoquezia  ( ) Enterorragia maciça
+  Causas comuns: diverticular, angiodisplasia, neoplasia, hemorroidas, DII
+
+Sinais de instabilidade hemodinâmica:
+  FC: ___  PA: ___/___  Índice de choque (FC/PAS): ___ (>1 = choque)
+  Necessidade de hemotransfusão: ( ) Sim  ( ) Não
+  Hb: ___  Plaquetas: ___  INR: ___
+
+7️⃣ EXAME ABDOMINAL DIRECIONADO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Inspeção: distensão, cicatrizes, circulação colateral (caput medusae), herniações
+Ausculta: RHA (hiper → obstrução; ausentes → íleo paralítico)
+Percussão: timpanismo, macicez (ascite → sinal do piparote, semicírculo de Skoda)
+Palpação superficial e profunda:
+  Murphy: ( ) Positivo (colecistite)
+  McBurney: ( ) Positivo (apendicite)
+  Rovsing: ( ) Positivo (apendicite)
+  Giordano: ( ) Positivo (pielonefrite)
+Hepatimetria: ___ cm (normal 6-12 cm LHC)
+Ponto de Murphy, sinal de Courvoisier (icterícia + vesícula palpável indolor → neoplasia periampular)
+
+Toque retal: tônus, massas, sangue, impactação fecal, próstata
+
+📌 Dor abdominal + rigidez + silêncio abdominal = abdome agudo cirúrgico → cirurgia imediata`,
+    tips: "Na dor abdominal aguda, sempre excluir causas não-abdominais: IAM inferior, pneumonia de base, cetoacidose diabética. CAGE ≥2 = forte suspeita de alcoolismo. Na diarreia crônica, calprotectina fecal >250 μg/g = inflamatória. Glasgow-Blatchford 0 = seguro para alta ambulatorial no sangramento digestivo alto.",
+  },
+  {
+    id: "oncologia",
+    title: "Anamnese em Oncologia",
+    emoji: "🎗️",
+    tags: ["oncologia", "câncer", "rastreamento", "quimioterapia", "estadiamento"],
+    content: `═══════════════════════════════════════════
+  ANAMNESE EM ONCOLOGIA
+═══════════════════════════════════════════
+
+1️⃣ HISTÓRIA DA DOENÇA ONCOLÓGICA — Mnemônico CÂNCER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+C — Cronologia: data do diagnóstico, método diagnóstico (biópsia, imagem, marcador)
+ — Anatomia patológica: tipo histológico, grau de diferenciação, receptores (ER/PR/HER2, PDL1, ALK, EGFR, BRAF, MSI)
+N — Nível de estadiamento: TNM (T___N___M___), estádio clínico (I-IV), performance status
+C — Ciclos de tratamento realizados: QT, RT, cirurgia, imunoterapia, hormonioterapia, terapia-alvo
+E — Efeitos adversos do tratamento atual e prévio
+R — Resposta ao tratamento: RC (remissão completa), RP, DE (doença estável), PD (progressão)
+
+Diagnóstico:
+  Topografia: _________________
+  Histologia: _________________ Grau: ( ) G1  ( ) G2  ( ) G3  ( ) GX
+  Data da biópsia: ___/___/___
+  Estadiamento:
+    T: ___  N: ___  M: ___ → Estádio: _____
+  Marcadores moleculares/IHQ: __________________
+
+2️⃣ PERFORMANCE STATUS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ECOG/Zubrod:
+  ( ) 0 — Assintomático, atividade normal
+  ( ) 1 — Sintomático, ambulatorial, restrição para atividades extenuantes
+  ( ) 2 — Ambulatorial >50% do tempo, autocuidado, incapaz de trabalhar
+  ( ) 3 — Acamado >50% do tempo, autocuidado limitado
+  ( ) 4 — Acamado, totalmente dependente
+
+Karnofsky: ___% (100% normal → 0% óbito)
+
+⚠️ ECOG ≥3 = geralmente contraindicação a QT citotóxica convencional
+
+3️⃣ TRATAMENTO ONCOLÓGICO — Histórico Detalhado
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Cirurgia oncológica:
+  Tipo: _______________  Data: ___/___/___
+  Margens: ( ) Livres (R0)  ( ) Comprometidas (R1/R2)
+  Complicações: _________________
+
+Quimioterapia:
+  Protocolo: _________________
+  Ciclos realizados: ___/___  Último ciclo: ___/___/___
+  Via: ( ) IV  ( ) VO  ( ) Intratecal
+  Efeitos adversos CTCAE:
+    ( ) Neutropenia febril  ( ) Mucosite  ( ) Neuropatia periférica
+    ( ) Cardiotoxicidade  ( ) Nefrotoxicidade  ( ) Ototoxicidade
+    ( ) Náusea/vômito (grau: ___)  ( ) Diarreia  ( ) Fadiga
+    ( ) Hepatotoxicidade  ( ) Reação infusional  ( ) Síndrome mão-pé
+  Reduções de dose: ( ) Sim → motivo: __________
+
+Radioterapia:
+  Campo: _______________  Dose total: ___ Gy em ___ frações
+  Efeitos: ( ) Mucosite  ( ) Esofagite  ( ) Enterite  ( ) Dermatite
+  ( ) Pneumonite actínica  ( ) Fibrose  ( ) Radiodermite
+
+Imunoterapia:
+  Droga: _________________ (anti-PD1, anti-PDL1, anti-CTLA4)
+  irAEs (eventos adversos imunomediados):
+    ( ) Dermatite  ( ) Colite  ( ) Hepatite  ( ) Pneumonite
+    ( ) Tireoidite  ( ) Hipofisarite  ( ) Miocardite  ( ) Nefrite
+  Grau CTCAE do irAE: ___
+
+Hormonioterapia: ( ) Tamoxifeno  ( ) Inibidor de aromatase  ( ) Análogo GnRH  ( ) Anti-andrógeno
+  Efeitos: ( ) Fogachos  ( ) Artralgia  ( ) Osteoporose  ( ) TVP/TEP  ( ) Disfunção sexual
+
+Terapia-alvo: Droga: _________ Alvo: _________ Efeitos: _____________
+
+4️⃣ SINAIS E SINTOMAS ONCOLÓGICOS — RED FLAGS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Mnemônico "ALARMES":
+  A — Adenomegalia >2 cm, endurecida, aderida, >6 semanas
+  L — Loss of weight (>10% em 6 meses involuntária)
+  A — Anemia inexplicada (Hb <10)
+  R — Rash / lesão cutânea que não cicatriza >3 semanas
+  M — Massa palpável nova (mama, tireoide, testículo, partes moles)
+  E — Exsudação (derrame pleural/ascite novos)
+  S — Sangramento inexplicado (hematúria, hematoquezia, metrorragia pós-menopausa)
+
+Síndromes paraneoplásicas:
+  ( ) Hipercalcemia (PTHrp — pulmão escamoso, mama)
+  ( ) SIADH (pulmão pequenas células)
+  ( ) Síndrome de Cushing ectópica (ACTH — pulmão pequenas células, carcinoide)
+  ( ) Síndrome de Eaton-Lambert (pulmão pequenas células)
+  ( ) Eritrocitose (renal, hepatocarcinoma)
+  ( ) Acantose nigricans (gástrico)
+  ( ) Dermatomiosite (ovário, pulmão, mama)
+  ( ) Tromboflebite migratória (Trousseau — pâncreas)
+
+5️⃣ RASTREAMENTO ONCOLÓGICO — Protocolos INCA/MS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Mama:
+  Mamografia bienal 50-69 anos (MS/INCA)
+  ( ) Alto risco (BRCA, história familiar 1º grau): início 35 anos + RM
+
+Colo uterino:
+  Citopatológico (Pap): 25-64 anos, a cada 3 anos após 2 normais anuais
+  ( ) HPV positivo? → genotipagem e colposcopia
+
+Colorretal:
+  Sangue oculto nas fezes anual: 50-75 anos
+  ( ) Colonoscopia a cada 10 anos (ou 5 com adenoma)
+  ( ) Alto risco (Lynch, PAF, DII): colonoscopia a partir de 20-25 anos ou 10 anos antes do caso índice
+
+Próstata:
+  PSA + toque retal: decisão compartilhada 50-75 anos (ou 45 se negro/HF+)
+
+Pulmão:
+  TC de baixa dose anual: 50-80 anos, ≥20 maços-ano, fumante atual ou parou <15 anos (USPSTF)
+
+6️⃣ DOR ONCOLÓGICA
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Escada analgésica da OMS (modificada):
+  Degrau 1: Não-opioide (dipirona, paracetamol, AINE) ± adjuvante
+  Degrau 2: Opioide fraco (tramadol, codeína) + não-opioide ± adjuvante
+  Degrau 3: Opioide forte (morfina, oxicodona, metadona, fentanil) ± não-opioide ± adjuvante
+  Degrau 4: Procedimentos intervencionistas (bloqueio, bomba intratecal)
+
+Adjuvantes:
+  Dor neuropática: gabapentina, pregabalina, duloxetina, amitriptilina
+  Dor óssea: bifosfonatos (ácido zoledrônico), denosumabe, RT paliativa
+  Dor visceral: corticoide (dexametasona)
+
+Breakthrough pain (dor incidental): dose de resgate = 10-15% da dose diária total de opioide
+
+Avaliação:
+  EVA: ___/10  DN4 (neuropática): ___/10 (≥4 = neuropática)
+  Locais: _______________
+  Impacto funcional: ( ) Sono  ( ) Apetite  ( ) Humor  ( ) Mobilidade
+
+7️⃣ EMERGÊNCIAS ONCOLÓGICAS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+( ) Neutropenia febril: neutrófilos <500 + febre ≥38°C → ATB empírico em <1h (cefepime/pipe-tazo)
+    MASCC score: ___ (≥21 = baixo risco)
+( ) Síndrome de compressão medular: dor dorsal + fraqueza MMII + disfunção esfincteriana
+    → dexametasona 10 mg IV + RM urgente + RT/cirurgia
+( ) Síndrome de veia cava superior: edema facial, turgência jugular, circulação colateral torácica
+    → elevação da cabeceira + corticoide + stent/RT conforme etiologia
+( ) Hipercalcemia maligna: Ca >14 ou sintomático → SF 0,9% + ácido zoledrônico 4 mg IV
+( ) Síndrome de lise tumoral: ↑K, ↑P, ↑ác. úrico, ↓Ca, ↑LDH → hidratação vigorosa + alopurinol/rasburicase
+( ) CIVD: alargamento de TP/TTPa + ↓plaquetas + ↑D-dímero + ↓fibrinogênio
+
+8️⃣ HISTÓRIA FAMILIAR ONCOLÓGICA — Heredograma
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Parente 1: __________ Tipo: __________ Idade dx: ___
+Parente 2: __________ Tipo: __________ Idade dx: ___
+Parente 3: __________ Tipo: __________ Idade dx: ___
+
+Critérios para encaminhamento genético:
+  ( ) ≥3 parentes com mesmo tumor no mesmo lado da família
+  ( ) Câncer bilateral ou multifocal
+  ( ) Câncer em idade <50 anos
+  ( ) Múltiplos tumores primários no mesmo indivíduo
+  ( ) Tumores raros (feocromocitoma, retinoblastoma, meduloblastoma)
+  ( ) Descendência judaica Ashkenazi + mama/ovário
+
+Síndromes hereditárias:
+  ( ) BRCA1/2 (mama, ovário, pâncreas, próstata)
+  ( ) Lynch/HNPCC (colorretal, endométrio, ovário, urológico)
+  ( ) Li-Fraumeni (sarcomas, mama, SNC, adrenocortical)
+  ( ) PAF (polipose adenomatosa familiar → colectomia profilática)
+  ( ) VHL (hemangioblastoma, feocromocitoma, renal)
+  ( ) MEN 1/2 (adenomas pituitários, paratireoide, CMT, feocromocitoma)
+
+📌 Sempre registrar a IDADE ao diagnóstico de cada familiar afetado — muda conduta de rastreamento`,
+    tips: "ECOG ≥3 geralmente contraindica QT citotóxica. Neutropenia febril = ATB empírico em <1h, não esperar culturas. Compressão medular = dexametasona imediata + RM em <4h. Na dor oncológica, não tenha medo de escalar opioide — não há dose-teto para morfina. Perda de peso >10% em 6 meses é critério de caquexia e muda prognóstico.",
+  },
 ];
 export default function AnamnesisGuide() {
   const [active, setActive] = useState<string | null>(null);
