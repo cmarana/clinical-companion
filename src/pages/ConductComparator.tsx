@@ -286,6 +286,11 @@ export default function ConductComparator() {
               <p className="text-[11px] text-muted-foreground">SUS × Sociedades × Internacional</p>
             </div>
             <ArrowRightLeft size={20} className="text-primary shrink-0" />
+            {result && (
+              <Button variant="ghost" size="icon" onClick={exportPDF} className="shrink-0" title="Exportar PDF">
+                <FileDown size={20} />
+              </Button>
+            )}
             {history.length > 0 && (
               <Button variant="ghost" size="icon" onClick={() => setShowHistory(!showHistory)} className="shrink-0 relative">
                 <History size={20} className={showHistory ? "text-primary" : ""} />
