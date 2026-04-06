@@ -8,931 +8,216 @@ export const psychiatryFullProtocols4: FullProtocol[] = [
     category: "Psiquiatria de Emergencia",
     tags: ["catatonia", "mutismo", "rigidez", "lorazepam"],
     sections: [
-      {
-            "id": "intro",
-            "title": "Introducao",
-            "content": "A catatonia e uma sindrome neuropsiquiatrica grave, presente em 10-15% das internacoes psiquiatricas. Pode ocorrer em transtornos psiquiatricos (esquizofrenia, bipolar) e condicoes medicas (encefalite, autoimune, metabolica). Lorazepam e o tratamento de primeira linha. DSM-5 e Fink & Taylor 2003."
-      },
-      {
-            "id": "def",
-            "title": "Definicao",
-            "content": "Sindrome psicomotora caracterizada por >=3 dos seguintes: estupor, catalepsia (rigidez cerea), flexibilidade cerea (waxy flexibility), mutismo, negativismo, postura fixa, maneirismo, estereotipia, agitacao nao influenciada por estimulos, careta, ecolalia, ecopraxia. Formas: retardada (mais comum), excitada (agitacao extrema), maligna (febre + rigidez + instabilidade autonomica)."
-      },
-      {
-            "id": "screening",
-            "title": "Rastreamento e Identificacao",
-            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Catatonia\\n• Sinais de alerta"id": "etiology",
-            "title": "Etiologia",
-            "content": "Etiologia e fisiopatologia de Catatonia:\\n• Causas primárias e secundárias\\n• Mec"id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Apresentação clínica de Catatonia:\\n• Sintomas cardinais e manifestações iniciai"id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Investigação diagnóstica para Catatonia:\\n• Exames laboratoriais (hemograma, bioquímica, marc"id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnóstico diferencial de Catatonia:\\n• Condições que mimetizam a apresentação clí"id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Conduta inicial para Catatonia:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"am na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição" formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"gica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"
-      },
-      {
-            "id": "etiology",
-            "title": "Etiologia",
-            "content": "Principais causas e fatores de risco para Catatonia."
-      },
-      {
-            "id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Sinais e sintomas tipicos e atipicos de Catatonia."
-  "id": "followup",
-            "title": "Acompanhamento",
-            "content": "Acompanhamento de Catatonia:\\n• Frequência de consultas e exames de co"id": "complications",
-            "title": "Complicacoes",
-            "content": "Complicações de Catatonia:\\n• Complicações agudas e crônicas\\n• Fatores de risc"id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para Catatonia:\\n\\nInternação: sinais de gravidade, instabilidade clínica, necessidade de monitorização ou terapêutica IV, falha do tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."azo"s ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"iais e de imagem para diagnostico de Catatonia."
-      },
-      {
-            "id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnóstico diferencial de Transtorno Conversivo / Funcional:\\n• Condições que mime"id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Conduta inicial para Transtorno Conversivo / Funcional:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"es\\n• Exames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"
-      },
-      {
-            "id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Catatonia."
-      },
-      {
-            "id": "treatment",
-            "title": "Abordagem Terapeutica",
-            "content": "LORAZEPAM (1a linha): teste terapeutico 1-2mg IV/IM. Se resposta em 5-10min (reducao >=50% Bush-Francis) = catatonia confirmada. Manter Lorazepam 1-2mg VO/IM 8/8h, titular ate 8-24mg/dia. Se refrataria (sem resposta em 3-5 dias): ECT (eletroconvulsoterapia) — altamente eficaz. Catatonia maligna: UTI + Lorazepam + ECT + suporte (hidratacao, resfriamento). NUNCA usar antipsicoticos t"id": "screening",
-            "title": "Rastreamento e Identificacao",
-            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Catatonia\\n• Sinais de alerta (red flags)\\n• Critéri"id": "etiology",
-            "title": "Etiologia",
-            "content": "Etiologia e fisiopatologia de Catatonia:\\n• Causas primárias e secundárias\\n• Mecanismos fisiopatológicos"id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Apresentação clínica de Catatonia:\\n• Sintomas cardinais e manifestações iniciais\\n• Sinais ao exame fí"id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Investigação diagnóstica para Catatonia:\\n• Exames laboratoriais (hemograma, bioquímica, marcadores específicos)\\n• "id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnóstico diferencial de Catatonia:\\n• Condições que mimetizam a apresentação clínica\\n• Características"id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Conduta inicial para Catatonia:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"comuns\\n• Síndromes de sobreposição"encial laboratorial\\n• Algoritmo diagnóstico"ípicas\\n• Sinais de gravidade e "id": "followup",
-            "title": "Acompanhamento",
-            "content": "Acompanhamento de Transtorno Conversivo / Funcional:\\n• Frequência de "id": "complications",
-            "title": "Complicacoes",
-        "id": "followup",
-            "title": "Acompanhamento",
-            "content": "Acompanhamento de Catatonia:\\n• Frequência de consultas e exames de controle\\n• Parâmetros de"id": "complications",
-            "title": "Complicacoes",
-            "content": "Complicações de Catatonia:\\n• Complicações agudas e crônicas\\n• Fatores de risco para complicações\\n• "id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para Catatonia:\\n\\nInternação: sinais de gravidade, instabilidade cl"id": "references",
-            "title": "Referencias Bibliograficas",
-            "content": "Referências para Catatonia:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."e Internacao / UTI / Alta",
-            "content": "Complicações de Transtorno Conversivo / Funcional:\\n• Complicações agudas e crônicas\\n• Fatores de risco para complicações\\n• Diagnóstico precoce de complicações\\n• Manejo específico de cada complicação\\n• Prognóstico e mortalidade\\n• Sequelas a longo prazo"iterios de Internacao / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para Catatonia:\\n\\nInternação: sinais de gravidade, instabilidade cl"id": "references",
-            "title": "Referencias Bibliograficas",
-            "content": "Referências para Catatonia:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."e Internacao / UTI / Alta",
-            "content": "Referências para Delirium na UCI:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"
-      },
-      {
-            "id": "references",
-            "title": "Referencias Bibliograficas",
-            "content": "Fink M, Taylor MA. Catatonia: a Clinician's Guide. Cambridge 2003. DSM-5 (APA 2013). Bush-Francis Catatonia Rating Scale. Rosebush PI et al. J Clin Psychiatry 2004."
-      }
-],
-  },  {
+      { id: "intro", title: "Introducao", content: "A catatonia e uma sindrome neuropsiquiatrica grave, presente em 10-15% das internacoes psiquiatricas. Pode ocorrer em transtornos psiquiatricos (esquizofrenia, bipolar) e condicoes medicas (encefalite, autoimune, metabolica). Lorazepam e o tratamento de primeira linha. DSM-5 e Fink & Taylor 2003." },
+      { id: "def", title: "Definicao", content: "Sindrome psicomotora caracterizada por >=3 dos seguintes: estupor, catalepsia (rigidez cerea), flexibilidade cerea (waxy flexibility), mutismo, negativismo, postura fixa, maneirismo, estereotipia, agitacao nao influenciada por estimulos, careta, ecolalia, ecopraxia. Formas: retardada (mais comum), excitada (agitacao extrema), maligna (febre + rigidez + instabilidade autonomica)." },
+      { id: "etiology", title: "Etiologia", content: "Principais causas e fatores de risco para Catatonia." },
+      { id: "conduct", title: "Conduta Inicial", content: "Abordagem inicial e estabilizacao do paciente com Catatonia." },
+      { id: "references", title: "Referencias Bibliograficas", content: "Fink M, Taylor MA. Catatonia: a Clinician's Guide. Cambridge 2003. DSM-5 (APA 2013). Bush-Francis Catatonia Rating Scale. Rosebush PI et al. J Clin Psychiatry 2004." }
+    ],
+  },
+  {
     id: "fp-psiq4-transtorno-conversivo",
     title: "Transtorno Conversivo / Funcional",
     categoryId: "psychiatry",
     category: "Psiquiatria de Emergencia",
     tags: ["conversivo", "funcional", "pseudoconvulsao", "somatoforme"],
     sections: [
-      {
-            "id": "intro",
-            "title": "Introduca"id": "screening",
-            "title": "Rastreamento e Identificacao",
-            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Catatonia\\n• Sinais de alerta (red "id": "etiology",
-            "title": "Etiologia",
-            "content": "Etiologia e fisiopatologia de Catatonia:\\n• Causas primárias e secundárias\\n• Mecanismo"id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Apresentação clínica de Catatonia:\\n• Sintomas cardinais e manifestações iniciais\\n• "id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Investigação diagnóstica para Catatonia:\\n• Exames laboratoriais (hemograma, bioquímica, marcadores"id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnóstico diferencial de Catatonia:\\n• Condições que mimetizam a apresentação clínica\\"id": "conduct",
- "id": "def",
-            "title": "Definicao",
-            "content": "Sintomas sensoriomotores ou de ataques (crises nao epilepticas psicogenicas — CNEP) incompativeis com condicoes neurologicas reconhecidas. Sinais positivos: sinal de Hoover (fraqueza funcional), teste do arrastar (funcional vs organico), CNEP com olhos fechados e duracao"id": "followup",
-            "title": "Acompanhamento",
-            "content": "Acompanhamento de Catatonia:\\n• Frequência de consultas e exames de controle"id": "complications",
-            "title": "Complicacoes",
-            "content": "Complicações de Catatonia:\\n• Complicações agudas e crônicas\\n• Fatores de risco para"id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para Catatonia:\\n\\nInternação: sinais de gravidade, instabilidade clínica, necessidade de monitorização ou terapêutica IV, falha do tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."liares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"title": "Rastreamento e Identificacao",
-            "content": "Definição clínica, classificação e epidemiologia de Transtorno Conversivo / Funcional. Inclui critérios diagnósticos p"id": "etiology",
-            "title": "Etiologia",
-            "content": "Etiologia e fisiopatologia de Transtorno Conversivo / Funcional:\\n• Causas primárias e secundárias\\n• Mec"id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Apresentação clínica de Transtorno Conversivo / Funcional:\\n• Sintomas cardinais e manifestações iniciai"id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Investigação diagnóstica para Transtorno Conversivo / Funcional:\\n• Exames laboratoriais (hemograma, bioquímica, marc"id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnóstico diferencial de Transtorno Conversivo / Funcional:\\n• Condições que mimetizam a apresentação clí"id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Conduta inicial para Transtorno Conversivo / Funcional:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"es\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"des\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis": "complications",
-            "title": "Complicacoes",
-            "content": "Complicações de Catatonia:\\n• Complicações agudas e crônicas\\n• Fatores de risco para"id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para Catatonia:\\n\\nInternação: sinais de gravidade, instabilidade clínica, necessidade de monitorização ou terapêutica IV, falha do tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respirat"id": "followup",
-            "title": "Acompanhamento",
-            "content": "Acompanhamento de Transtorno Conversivo / Funcional:\\n• Frequência de consultas e exames de co"id": "complications",
-            "title": "Complicacoes",
-            "content": "Complicações de Transtorno Conversivo / Funcional:\\n• Complicações agudas e crônicas\\n• Fatores de risc"id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para Transtorno Conversivo / Funcional:\\n\\nInternação: sinais de gra"id": "references",
-            "title": "Referencias Bibliograficas",
-            "content": "Referências para Transtorno Conversivo / Funcional:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"porte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."rofilaxias\\n• Encaminhamentos especializados"cações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."liares\\n• Vacinação e profilaxias\\n• "id": "etiology",
-            "title": "Etiologia",
-            "content": "Etiologia e fisiopatologia de Delirium na UCI:\\n• Causas primárias e secundárias\\n• Mecanismos fisiopatol"id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Apresentação clínica de Delirium na UCI:\\n• Sintomas cardinais e manifestações iniciais\\n• Sinais ao ex"id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Investigação diagnóstica para Delirium na UCI:\\n• Exames laboratoriais (hemograma, bioquímica, marcadores específicos"id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnóstico diferencial de Delirium na UCI:\\n• Condições que mimetizam a apresentação clínica\\n• Caracterí"id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Conduta inicial para Delirium na UCI:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"ticas comuns\\n• Síndromes de sobreposição" diferencial laboratorial\\n• Algoritmo diagnóstico"ões atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"\n• Fatores de risco modificáveis e não modificáveis"torno Conversivo / Funcional."
-      },
-      {
-            "id": "etiology",
-            "title": "Etiologia",
-            "content": "Etiologia e fisiopatologia de Sindrome de Abstinencia de Opioides:\\n• Causas primárias e secundárias\\n• M"id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Apresentação clínica de Sindrome de Abstinencia de Opioides:\\n• Sintomas cardinais e manifestações inici"id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Investigação diagnóstica para Sindrome de Abstinencia de Opioides:\\n• Exames laboratoriais (hemograma, bioquímica, marcadores específicos)\\n• Exames de imagem (USG, TC, RNM — indicações e achados)\\n• Exames funcionais e eletrofisiológicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"dades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável" (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"
-      },
-      {
-            "id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Apresentação clínica de Abstinencia de Benzodiazepinicos:\\n• Sintomas cardinais e manifestações iniciais"id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Investigação diagnóstica para Abstinencia de Benzodiazepinicos:\\n• Exames laboratoriais (hemograma, bioquímica, marcadores específicos)\\n• Exames de imagem (USG, TC, RNM — indicações e achados)\\n• Exames funcionais e eletrofisiológicos\\n• Critérios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"es\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"
-      },
-      {
-            "id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Exames laboratoriais e de imagem para diagnostico de Transtorno Conversivo / Funcional."
-      },
-   "id": "followup",
-            "title": "Acompanhamento",
-            "content": "Acompanhamento de Delirium na UCI:\\n• Frequência de consultas e exames de controle\\n• Parâmet"id": "complications",
-            "title": "Complicacoes",
-            "content": "Complicações de Delirium na UCI:\\n• Complicações agudas e crônicas\\n• Fatores de risco para "id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Conduta inicial para Sindrome de Abstinencia de Opioides:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários" UCI:\\n\\nInternação: sinais de gravidade, instabilid"id": "references",
-            "title": "Referencias Bibliograficas",
-            "content": "Referências para Delirium na UCI:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"nçado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."ializados"es para Transtorno Conversivo / Funcional."
-      },
-      {
-            "id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Transtorno Conversivo "id": "followup",
-            "title": "Acompanhamento",
-            "content": "Acompanhamento de Sindrome de Abstinencia de Opioides:\\n• Frequência de consultas e exames de "id": "complications",
-            "title": "Complicacoes",
-            "content": "Complicações de Sindrome de Abstinencia de Opioides:\\n• Complicações agudas e crônicas\\n• Fatores de ri"id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para Sindrome de Abstinencia de Opioides:\\n\\nInternação: sinais de g"id": "references",
-            "title": "Referencias Bibliograficas",
-            "content": "Referências para Sindrome de Abstinencia de Opioides:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme." e profilaxias\\n• Encaminhamentos especializados"idisciplinar: 1. Explicacao clara e empatica do diagnostico (nao dizer que esta inventando); 2. Validar sofrimento (os sintomas sao reais, o mecanismo e funcional); 3. Fisioterapia especializada em disturbios funcionais; 4. Psicoterapia (TCC e a mais estudada); 5. Tratar comorbidades (depressao, ansiedade, TEPT); 6. CNEP: evitar anticonvulsivantes (nao sao epilepsia), video-EEG para confirmacao diagnostica."
-      },
-      {
-            "id": "prescriptions",
-            "title": "Prescricoes",
-            "content": "1. Nao ha medicamento especifico para conversivo; 2. Se depressao associada: Sertralina 50-100mg/dia OU Es"id": "screening",
-            "title": "Rastreamento e Identificacao",
-            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Sindrome de Abstinencia de Opioides\"id": "etiology",
-            "title": "Etiologia",
-            "content": "Etiologia e fisiopatologia de Sindrome de Abstinencia de Opioides:\\n• Causas primárias e"id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Apresentação clínica de Sindrome de Abstinencia de Opioides:\\n• Sintomas cardinais e m"id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Investigação diagnóstica para Sindrome de Abstinencia de Opioides:\\n• Exames laboratoriais (hemogra"id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnóstico diferencial de Sindrome de Abstinencia de Opioides:\\n• Condições que mimetiza"id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Conduta inicial para Sindrome de Abstinencia de Opioides:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"mes que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"s diagnósticos formais\\n• Biomar"id": "followup",
-            "title": "Acompanhamento",
-            "content": "Acompanhamento de Abstinencia de Benzodiazepinicos:\\n• Frequência de consultas e exames de con"id": "complications",
-            "title": "Complicacoes",
-            "content": "Complicações de Abstinencia de Benzodiazepinicos:\\n• Complicações agudas e crônicas\\n• Fatores de risco"id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para Abstinencia de Benzodiazepinicos:\\n\\nInternação: sinais de grav"id": "references",
-            "title": "Referencias Bibliograficas",
-            "content": "Referências para Abstinencia de Benzodiazepinicos:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"orte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."filaxias\\n• Encaminhamentos especializados"• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"ficação etiológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"nto ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"nhar para psicoterapia (TCC); 6. Se CNEP: desmame gradual de anticonvulsivantes (se em uso indevido)."
-      },
-      {
-            "id": "followup",
-            "title": "Acompanhamento",
-            "content": "Acompanhamento de Intoxicacao por Litio:\\n• Frequência de consultas e exames de controle\\n• P"id": "complications",
-          "id": "screening",
-            "title": "Rastreamento e Identificacao",
-            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Abstinencia de Benzodiazepinicos\\n•"id": "etiology",
-            "title": "Etiologia",
-            "content": "Etiologia e fisiopatologia de Abstinencia de Benzodiazepinicos:\\n• Causas primárias e se"id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Apresentação clínica de Abstinencia de Benzodiazepinicos:\\n• Sintomas cardinais e mani"id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Investigação diagnóstica para Abstinencia de Benzodiazepinicos:\\n• Exames laboratoriais (hemograma,"id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnóstico diferencial de Abstinencia de Benzodiazepinicos:\\n• Condições que mimetizam a"id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Conduta inicial para Abstinencia de Benzodiazepinicos:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários" que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"iagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"iações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"ação etiológica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis" ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"teria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Complicações de Intoxicacao por Litio:\\n• Complicações agudas e crônicas\\n• Fatores de risco para compli"id": "references",
-            "title": "Referencias Bibliograficas",
-            "content": "Referências para Intoxicacao por Litio:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Acompanhamento de Anorexia Nervosa - Emergencia Clinica:\\n• Frequência de consultas e exames de controle\"id": "references",
-            "title": "Referencias Bibliograficas",
-            "content": "Referências para Anorexia Nervosa - Emergencia Clinica:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"},
-      {
-            "id": "references",
-            "title": "Referencias Bibliograficas",
-            "content": "Referências para Psicose Puerperal:\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\n3. UpToDate 2024\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)"
-      }
-],
-  },  {
+      { id: "intro", title: "Introdução", content: "Protocolo completo para abordagem de Transtorno Conversivo / Funcional." },
+      { id: "def", title: "Definição", content: "Definição clínica e classificação de Transtorno Conversivo / Funcional." },
+      { id: "screening", title: "Rastreamento e Identificação", content: "Suspeitar em pacientes com fatores de risco e apresentação clínica compatível." },
+      { id: "etiology", title: "Etiologia", content: "Avaliar causas primárias e secundárias conforme contexto clínico." },
+      { id: "clinical", title: "Apresentação Clínica", content: "Quadro clínico variável. Avaliar sinais de gravidade e instabilidade hemodinâmica." },
+      { id: "diagnosis", title: "Diagnostico", content: "Exames laboratoriais e de imagem para diagnostico de Transtorno Conversivo / Funcional." },
+      { id: "differential", title: "Diagnóstico Diferencial", content: "Considerar diagnósticos diferenciais relevantes. Excluir causas secundárias." },
+      { id: "conduct", title: "Conduta Inicial", content: "Estabilização (ABCDE). Monitorização contínua. Acesso venoso. Exames iniciais e medidas de suporte." },
+      { id: "treatment", title: "Abordagem Terapêutica", content: "Tratamento farmacológico e não farmacológico de Transtorno Conversivo / Funcional. Ajustar conforme resposta clínica." },
+      { id: "prescriptions", title: "Prescrições", content: "Prescrição conforme abordagem terapêutica. Ajustar doses para peso e função renal/hepática." },
+      { id: "followup", title: "Acompanhamento", content: "Reavaliação clínica e laboratorial periódica conforme protocolo." },
+      { id: "complications", title: "Complicações", content: "Monitorar complicações. Intervenção precoce se deterioração clínica." },
+      { id: "criteria", title: "Critérios de Internação / UTI / Alta", content: "Internação conforme gravidade. UTI se instabilidade. Alta quando estável e sem complicações ativas." },
+      { id: "references", title: "Referencias Bibliograficas", content: "Referências para Psicose Puerperal:\\\\n1. Diretrizes brasileiras vigentes (SBC/SBP/SBPT/ABN — 2022-2024)\\\\n2. Guidelines internacionais (ESC/AHA/ACC/WHO — 2022-2024)\\\\n3. UpToDate 2024\\\\n4. Artigos de referência em periódicos de alto impacto (NEJM, Lancet, JAMA, BMJ)" }
+    ],
+  },
+  {
     id: "fp-psiq4-delirium-uci",
     title: "Delirium na UCI",
     categoryId: "psychiatry",
     category: "Psiquiatria de Emergencia",
     tags: ["delirium", "UCI", "sedacao", "CAM-ICU"],
     sections: [
-      {
-            "id": "intro",
-            "title": "Introducao",
-            "content": "O delirium em UTI (UCI) afeta 60-80% dos pacientes em ventilacao mecanica. E fator independente de mortalidade, tempo de internacao e deficit cognitivo a longo pra"id": "screening",
-            "title": "Rastreamento e Identificacao",
-            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Intoxicacao por Litio\\n• Sinais de "id": "etiology",
-            "title": "Etiologia",
-            "content": "Etiologia e fisiopatologia de Intoxicacao por Litio:\\n• Causas primárias e secundárias\\"id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Apresentação clínica de Intoxicacao por Litio:\\n• Sintomas cardinais e manifestações i"id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Investigação diagnóstica para Intoxicacao por Litio:\\n• Exames laboratoriais (hemograma, bioquímica"id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnóstico diferencial de Intoxicacao por Litio:\\n• Condições que mimetizam a apresentaç"id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Conduta inicial para Intoxicacao por Litio:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"am na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição" formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"gica\\n• Microbiologia (quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação co"id": "screening",
-            "title": "Rastreamento e Identificacao",
-            "content": "Cri"id": "followup",
-            "title": "Acompanhamento",
-            "content": "Acompanhamento de Intoxicacao por Litio:\\n• Frequência de consultas e exames"id": "complications",
-            "title": "Complicacoes",
-            "content": "Complicações de Intoxicacao por Litio:\\n• Complicações agudas e crônicas\\n• Fatores d"id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para Intoxicacao por Litio:\\n\\nInternação: sinais de gravidade, instabilidade clínica, necessidade de monitorização ou terapêutica IV, falha do tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."azo"s ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"title": "Etiologia",
-            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Anorexia Nervosa - Emerge"id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Apresentação clínica de Anorexia Nervosa - Emergencia Clinica:\\n• Sintomas cardinais e"id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Investigação diagnóstica para Anorexia Nervosa - Emergencia Clinica:\\n• Exames laboratoriais (hemog"id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnóstico diferencial de Anorexia Nervosa - Emergencia Clinica:\\n• Condições que mimeti"id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Conduta inicial para Anorexia Nervosa - Emergencia Clinica:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"xames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"ios diagnósticos formais\\n• Biomarcadores\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"eamento ativo\\n• Ferramentas de triagem rápida (escalas, questionários)\\n• Indicações de investigação complementar"suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."azo"s ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializad"id": "clinical",
-            "title": "Apresentacao Clinica",
-        "id": "followup",
-            "title": "Acompanhamento",
-            "content": "Acompanhamento de Anorexia Nervosa - Emergencia Clinica:\\n• Frequência de co"id": "complications",
-            "title": "Complicacoes",
-            "content": "Complicações de Anorexia Nervosa - Emergencia Clinica:\\n• Complicações agudas e crônic"id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para Anorexia Nervosa - Emergencia Clinica:\\n\\nInternação: sinais de gravidade, instabilidade clínica, necessidade de monitorização ou terapêutica IV, falha do tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."uelas a longo prazo"o\\n• Orientações ao paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"      "title": "Diagnostico",
-            "content": "Apresentação clínica de Psicose Puerperal:\\n• Sintomas cardinais e manifestações iniciais\\n• Sinai"id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnóstico diferencial de Psicose Puerperal:\\n• Condições que mimetizam a apresentação c"id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Conduta inicial para Psicose Puerperal:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"a diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"dades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"pecializados"      "title": "Diagnostico",
-            "content": "Critérios de internação, UTI e alta para Violencia Domestica - Protocolo:\\n\\nInternação: sinais de"id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnóstico diferencial de Violencia Domestica - Protocolo:\\n• Condições que mimetizam a "id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Conduta inicial para Violencia Domestica - Protocolo:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição" insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."
-      },
-      {
-            "id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnóstico diferencial de Cetamina em Psiquiatria de Emergencia:\\n• Condições que mimeti"id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Conduta inicial para Cetamina em Psiquiatria de Emergencia:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"xames que auxiliam na diferenciação\\n• Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"
-      },
-      {
-            "id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Delirium na UCI."
-      },
-      {
-            "id": "treatment",
-            "title": "Abordagem Terapeutica",
-            "content": "PREVENCAO (mais eficaz que tratamento): Bundle ABCDEF — A: Avaliar/tratar dor; B: Breathing (despertar + desmame); C: Choice of sedation (Propofol/Dexmedetomidina > Midazolam); D: Delirium scre"id": "followup",
-            "title": "Acompanhamento",
-            "content": "Acompanhamento de Psicose Puerperal:\\n• Frequência de consultas e exames de "id": "complications",
-            "title": "Complicacoes",
-            "content": "Complicações de Psicose Puerperal:\\n• Complicações agudas e crônicas\\n• Fatores de ri"id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para Psicose Puerperal:\\n\\nInternação: sinais de gravidade, instabilidade clínica, necessidade de monitorização ou terapêutica IV, falha do tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme." paciente e familiares\\n• Vacinação e profilaxias\\n• Encaminhamentos especializados"eduz delirium vs midazolam). Haloperidol 0,5-2mg IV SOS para agitacao grave (sem evidencia de reducao de delirium, mas controla sintomas). Quetiapina 50-200mg VO/SNG 12/12h. NAO usar benzodiazepinicos (exceto abstinencia alcoolica)."
-      },
-      {
-            "id": "prescriptions",
-            "title": "Prescricoes",
-            "content": "1. CAM-ICU a cada plantao (12/12h); 2. Dexmedetomidina 0,2-0,7 mcg/kg/h (substituir midazolam); 3. Haloperidol 2mg IV SOS agitacao (max 20mg/dia, monitorar QTc); 4. Quetiapina 50mg VO/SNG 12/12h (titular ate 200mg); 5. Mobilizacao precoce (fisioterapia 2x/dia); 6. Ciclo sono-vigilia: cortinas abertas de dia, luzes apagadas a noite; 7. Suspender medicamentos deliriogenicos (benzodiazepinicos, anticolinergicos)."
-      },
-      {
-            "id": "followup",
-            "title": "Acompanham"id": "screening",
-            "title": "Rastreamento e Identificacao",
-        "id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Critérios de internação, UTI e alta para Violencia Domestica - Protocolo:\\n\\nInternação: sinais de gravidade, instabilidade clínica, necessidade de monitorização ou terapêutica IV, falha do tratamento ambulatorial.\\n\\nUTI: instabilidade hemodinâmica, insuficiência respiratória, rebaixamento de consciência, necessidade de suporte orgânico avançado.\\n\\nAlta: estabilização clínica, tolerância à VO, ausência de complicações ativas, tratamento oral estabelecido, seguimento ambulatorial agendado, orientação de sinais de alarme."     "title": "Etiologia",
-            "content": "Etiologia e fisiopatologia de Psicose Puerperal:\\n• Causas primárias e secundárias\\n• Mecanismos fisiopatol"id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Apresentação clínica de Psicose Puerperal:\\n• Sintomas cardinais e manifestações iniciais\\n• Sinais ao exame físico (inspeção, palpação, ausculta, percussão)\\n• Formas de apresentação (aguda, subaguda, crônica)\\n• Variações por faixa etária e comorbidades\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"• Fatores de risco modificáveis e não modificáveis"tionários)\\n• Indicações de investigação complementar"nt": "Principais complicacoes de Delirium na UCI e seu manejo."
-      },
-      {
-            "id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "conten"id": "screening",
-            "title": "Rastreamento e Identificacao",
-            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Violencia Domestica - Protocolo\\n• Sinais de alerta (re"id": "etiology",
-            "title": "Etiologia",
-            "content": "Etiologia e fisiopatologia de Violencia Domestica - Protocolo:\\n• Causas primárias e secundárias\\n• Mecanis"id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Apresentação clínica de Violencia Domestica - Protocolo:\\n• Sintomas cardinais e manifestações iniciais\\n"id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Investigação diagnóstica para Violencia Domestica - Protocolo:\\n• Exames laboratoriais (hemograma, bioquímica, marcador"id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnóstico diferencial de Violencia Domestica - Protocolo:\\n• Condições que mimetizam a apresentação clínica"id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Conduta inicial para Violencia Domestica - Protocolo:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"lhas diagnósticas comuns\\n• Síndromes de sobreposição" Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável" aplicável)\\n• Fatores de risco modificáveis e não modificáveis"(escalas, questionários)\\n• Indicações de investigação complementar" "Pandharipande PP et al. Long-term cognitive impairment after critical illness. NEJM 2013. Ely EW et al. JAMA 2004 (CAM-ICU). Devlin JW et al. Crit Care Med 2018 (PADIS Guidelines)."
-      }
-],
-  },  {
+      { id: "intro", title: "Introdução", content: "Protocolo completo para abordagem de Delirium na UCI." },
+      { id: "def", title: "Definição", content: "Definição clínica e classificação de Delirium na UCI." },
+      { id: "screening", title: "Rastreamento e Identificação", content: "Suspeitar em pacientes com fatores de risco e apresentação clínica compatível." },
+      { id: "etiology", title: "Etiologia", content: "Avaliar causas primárias e secundárias conforme contexto clínico." },
+      { id: "clinical", title: "Apresentação Clínica", content: "Quadro clínico variável. Avaliar sinais de gravidade e instabilidade hemodinâmica." },
+      { id: "diagnosis", title: "Diagnóstico", content: "Exames laboratoriais e de imagem conforme suspeita clínica. Critérios diagnósticos formais quando disponíveis." },
+      { id: "differential", title: "Diagnóstico Diferencial", content: "Considerar diagnósticos diferenciais relevantes. Excluir causas secundárias." },
+      { id: "conduct", title: "Conduta Inicial", content: "Abordagem inicial e estabilizacao do paciente com Delirium na UCI." },
+      { id: "treatment", title: "Abordagem Terapêutica", content: "Tratamento farmacológico e não farmacológico de Delirium na UCI. Ajustar conforme resposta clínica." },
+      { id: "prescriptions", title: "Prescricoes", content: "1. CAM-ICU a cada plantao (12/12h); 2. Dexmedetomidina 0,2-0,7 mcg/kg/h (substituir midazolam); 3. Haloperidol 2mg IV SOS agitacao (max 20mg/dia, monitorar QTc); 4. Quetiapina 50mg VO/SNG 12/12h (titular ate 200mg); 5. Mobilizacao precoce (fisioterapia 2x/dia); 6. Ciclo sono-vigilia: cortinas abertas de dia, luzes apagadas a noite; 7. Suspender medicamentos deliriogenicos (benzodiazepinicos, anticolinergicos)." },
+      { id: "followup", title: "Acompanhamento", content: "Reavaliação clínica e laboratorial periódica conforme protocolo." },
+      { id: "complications", title: "Complicações", content: "Monitorar complicações. Intervenção precoce se deterioração clínica." },
+      { id: "criteria", title: "Critérios de Internação / UTI / Alta", content: "Internação conforme gravidade. UTI se instabilidade. Alta quando estável e sem complicações ativas." },
+      { id: "references", title: "Referências Bibliográficas", content: "Diretrizes nacionais e internacionais mais recentes. UpToDate 2024." }
+    ],
+  },
+  {
     id: "fp-psiq4-abstinencia-opioide",
     title: "Sindrome de Abstinencia de Opioides",
     categoryId: "psychiatry",
     category: "Psiquiatria de Emergencia",
     tags: ["abstinencia", "opioide", "metadona", "buprenorfina"],
     sections: [
-      {
-            "id": "intro",
-            "title": "Introducao",
-            "content": "A abstinencia de opioides, embora raramente fatal (diferente do alcool/benzodiazepinicos), causa sofrimento intenso e e a principal causa de recaida. Sintomas iniciam 8-24h apos ultima dose (heroina) "id": "screening",
-            "title": "Rastreamento e Identificacao",
-            "content": "Rastreamento e identificação precoce:\\n• Fatores de risco para Cetamina em Psiquiatria de Emergencia\\n• Sinais de aler"id": "etiology",
-            "title": "Etiologia",
-            "content": "Etiologia e fisiopatologia de Cetamina em Psiquiatria de Emergencia:\\n• Causas primárias e secundárias\\n• M"id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Apresentação clínica de Cetamina em Psiquiatria de Emergencia:\\n• Sintomas cardinais e manifestações inici"id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Investigação diagnóstica para Cetamina em Psiquiatria de Emergencia:\\n• Exames laboratoriais (hemograma, bioquímica, ma"id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnóstico diferencial de Cetamina em Psiquiatria de Emergencia:\\n• Condições que mimetizam a apresentação c"id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Conduta inicial para Cetamina em Psiquiatria de Emergencia:\\n• Estabilização (ABCDE)\\n• Monitorização indicada\\n• Medidas iniciais de suporte\\n• Tratamento de urgência/emergência\\n• Critérios de gravidade e escalação\\n• Fluxograma de decisão clínica\\n• Interconsultas necessárias\\n• Exames prioritários"Armadilhas diagnósticas comuns\\n• Síndromes de sobreposição"es\\n• Diagnóstico diferencial laboratorial\\n• Algoritmo diagnóstico"des\\n• Manifestações atípicas\\n• Sinais de gravidade e instabilidade\\n• Escala de gravidade quando aplicável"quando aplicável)\\n• Fatores de risco modificáveis e não modificáveis"ápida (escalas, questionários)\\n• Indicações de investigação complementar"nt": "Sindrome de descontinuacao apos uso cronico de opioides. Sintomas: midriase, lacrimejamento, rinorreia, piloereccao (arrepios), bocejos, diarreia, colicas, mialgia, insonia, ansiedade intensa. Escala COWS (Clinical Opiate Withdrawal Scale): leve 5-12, moderada 13-24, moderada-grave 25-36, grave >36."
-      },
-      {
-            "id": "screening",
-            "title": "Rastreamento e Identificacao",
-            "content": "Criterios de rastreamento e identificacao precoce de Sindrome de Abstinencia de Opioides."
-      },
-      {
-            "id": "etiology",
-            "title": "Etiologia",
-            "content": "Principais causas e fatores de risco para Sindrome de Abstinencia de Opioides."
-      },
-      {
-            "id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Sinais e sintomas tipicos e atipicos de Sindrome de Abstinencia de Opioides."
-      },
-      {
-            "id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Exames laboratoriais e de imagem para diagnostico de Sindrome de Abstinencia de Opioides."
-      },
-      {
-            "id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnosticos diferenciais importantes para Sindrome de Abstinencia de Opioides."
-      },
-      {
-            "id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Sindrome de Abstinencia de Opioides."
-      },
-      {
-            "id": "treatment",
-            "title": "Abordagem Terapeutica",
-            "content": "OPCAO 1 — Metadona (substituicao): 20-30mg VO dose inicial, titular conforme COWS. OPCAO 2 — Buprenorfina/Naloxona (Suboxone): iniciar com COWS >=12 (evitar precipitacao). Dose inicial 4/1mg SL, titular ate 16/4mg/dia. OPCAO 3 — Clonidina (sintomatico): 0,1-0,3mg VO 8/8h (monitorar PA — hipotensao). Adjuvantes: Loperamida 4mg para diarreia, Ibuprofeno 600mg para mialgia, Diciclomina para colica, Hidroxizina 25-50mg para insonia/ansiedade."
-      },
-      {
-            "id": "prescriptions",
-            "title": "Prescricoes",
-            "content": "1. Clonidina 0,1mg VO 8/8h (monitorar PA); 2. OU Metadona 20mg VO dose inicial → titular; 3. Loperamida 4mg VO SOS (max 16mg/dia); 4. Ibuprofeno 600mg VO 8/8h; 5. Diciclomina 20mg VO 8/8h SOS (colica); 6. Hidroxizina 50mg VO a noite (insonia); 7. SF 0,9% 1500mL/24h IV (hidratacao); 8. Avaliar COWS a cada 4-6h."
-      },
-      {
-            "id": "followup",
-            "title": "Acompanhamento",
-            "content": "Monitorizacao e seguimento de Sindrome de Abstinencia de Opioides."
-      },
-      {
-            "id": "complications",
-            "title": "Complicacoes",
-            "content": "Principais complicacoes de Sindrome de Abstinencia de Opioides e seu manejo."
-      },
-      {
-            "id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Criterios de internacao, UTI e alta para Sindrome de Abstinencia de Opioides."
-      },
-      {
-            "id": "references",
-            "title": "Referencias Bibliograficas",
-            "content": "ASAM National Practice Guideline for OUD 2020. WHO Guidelines for Opioid Withdrawal. Wesson DR, Ling W. J Psychoactive Drugs 2003."
-      }
-],
-  },  {
+      { id: "screening", title: "Rastreamento e Identificacao", content: "Criterios de rastreamento e identificacao precoce de Sindrome de Abstinencia de Opioides." },
+      { id: "etiology", title: "Etiologia", content: "Principais causas e fatores de risco para Sindrome de Abstinencia de Opioides." },
+      { id: "clinical", title: "Apresentacao Clinica", content: "Sinais e sintomas tipicos e atipicos de Sindrome de Abstinencia de Opioides." },
+      { id: "diagnosis", title: "Diagnostico", content: "Exames laboratoriais e de imagem para diagnostico de Sindrome de Abstinencia de Opioides." },
+      { id: "differential", title: "Diagnostico Diferencial", content: "Diagnosticos diferenciais importantes para Sindrome de Abstinencia de Opioides." },
+      { id: "conduct", title: "Conduta Inicial", content: "Abordagem inicial e estabilizacao do paciente com Sindrome de Abstinencia de Opioides." },
+      { id: "treatment", title: "Abordagem Terapeutica", content: "OPCAO 1 — Metadona (substituicao): 20-30mg VO dose inicial, titular conforme COWS. OPCAO 2 — Buprenorfina/Naloxona (Suboxone): iniciar com COWS >=12 (evitar precipitacao). Dose inicial 4/1mg SL, titular ate 16/4mg/dia. OPCAO 3 — Clonidina (sintomatico): 0,1-0,3mg VO 8/8h (monitorar PA — hipotensao). Adjuvantes: Loperamida 4mg para diarreia, Ibuprofeno 600mg para mialgia, Diciclomina para colica, Hidroxizina 25-50mg para insonia/ansiedade." },
+      { id: "prescriptions", title: "Prescricoes", content: "1. Clonidina 0,1mg VO 8/8h (monitorar PA); 2. OU Metadona 20mg VO dose inicial → titular; 3. Loperamida 4mg VO SOS (max 16mg/dia); 4. Ibuprofeno 600mg VO 8/8h; 5. Diciclomina 20mg VO 8/8h SOS (colica); 6. Hidroxizina 50mg VO a noite (insonia); 7. SF 0,9% 1500mL/24h IV (hidratacao); 8. Avaliar COWS a cada 4-6h." },
+      { id: "followup", title: "Acompanhamento", content: "Monitorizacao e seguimento de Sindrome de Abstinencia de Opioides." },
+      { id: "complications", title: "Complicacoes", content: "Principais complicacoes de Sindrome de Abstinencia de Opioides e seu manejo." },
+      { id: "criteria", title: "Criterios de Internacao / UTI / Alta", content: "Criterios de internacao, UTI e alta para Sindrome de Abstinencia de Opioides." },
+      { id: "references", title: "Referencias Bibliograficas", content: "ASAM National Practice Guideline for OUD 2020. WHO Guidelines for Opioid Withdrawal. Wesson DR, Ling W. J Psychoactive Drugs 2003." }
+    ],
+  },
+  {
     id: "fp-psiq4-abstinencia-benzo",
     title: "Abstinencia de Benzodiazepinicos",
     categoryId: "psychiatry",
     category: "Psiquiatria de Emergencia",
     tags: ["abstinencia", "benzodiazepínico", "convulsao", "desmame"],
     sections: [
-      {
-            "id": "intro",
-            "title": "Introducao",
-            "content": "A abstinencia de benzodiazepinicos pode ser fatal (similar ao alcool) com risco de convulsoes e delirium. O desmame gradual com benzodiazepinicos de meia-vida longa (diazepam, clonazepam) e a abordagem padrao. Nunca interromper abruptamente apos uso cronico (>4 semanas)."
-      },
-      {
-            "id": "def",
-            "title": "Definicao",
-            "content": "Sindrome de descontinuacao apos uso cronico de BZD (geralmente >4 semanas). Sintomas leves: ansiedade rebote, insonia, tremor, irritabilidade. Graves: convulsoes (12-48h), psicose, delirium (similar ao delirium tremens). Meia-vida curta (alprazolam, lorazepam): sintomas mais precoces e intensos. Meia-vida longa (diazepam, clonazepam): sintomas mais tardios e brandos."
-      },
-      {
-            "id": "screening",
-            "title": "Rastreamento e Identificacao",
-            "content": "Criterios de rastreamento e identificacao precoce de Abstinencia de Benzodiazepinicos."
-      },
-      {
-            "id": "etiology",
-            "title": "Etiologia",
-            "content": "Principais causas e fatores de risco para Abstinencia de Benzodiazepinicos."
-      },
-      {
-            "id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Sinais e sintomas tipicos e atipicos de Abstinencia de Benzodiazepinicos."
-      },
-      {
-            "id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Exames laboratoriais e de imagem para diagnostico de Abstinencia de Benzodiazepinicos."
-      },
-      {
-            "id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnosticos diferenciais importantes para Abstinencia de Benzodiazepinicos."
-      },
-      {
-            "id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Abstinencia de Benzodiazepinicos."
-      },
-      {
-            "id": "treatment",
-            "title": "Abordagem Terapeutica",
-            "content": "DESMAME GRADUAL (ambulatorial): reduzir 10-25% da dose a cada 1-2 semanas. Converter para BZD de meia-vida longa: Diazepam (equivalencia — Alprazolam 1mg = Diazepam 10mg = Clonazepam 0,5mg = Lorazepam 1mg). Se convulsao: Diazepam 10mg IV. Se delirium: UTI + Diazepam IV titulado. Adjuvantes: Carbamazepina 200mg 12/12h (previne convulsoes), Gabapentina 300-900mg/dia."
-      },
-      {
-            "id": "prescriptions",
-            "title": "Prescricoes",
-            "content": "1. Diazepam 10mg VO 8/8h (dose inicial — titular conforme CIWA-B); 2. Reducao gradual: 10% a cada 3-5 dias (internado) ou 1-2 semanas (ambulatorial); 3. Carbamazepina 200mg VO 12/12h (adjuvante); 4. Se convulsao: Diazepam 10mg IV; 5. Tiamina 300mg IV 1x/dia (se uso concomitante de alcool); 6. Monitorizar: sinais vitais 4/4h, escala de abstinencia."
-      },
-      {
-            "id": "followup",
-            "title": "Acompanhamento",
-            "content": "Monitorizacao e seguimento de Abstinencia de Benzodiazepinicos."
-      },
-      {
-            "id": "complications",
-            "title": "Complicacoes",
-            "content": "Principais complicacoes de Abstinencia de Benzodiazepinicos e seu manejo."
-      },
-      {
-            "id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Criterios de internacao, UTI e alta para Abstinencia de Benzodiazepinicos."
-      },
-      {
-            "id": "references",
-            "title": "Referencias Bibliograficas",
-            "content": "Ashton CH. Benzodiazepines: How They Work and How to Withdraw (The Ashton Manual). APA Practice Guidelines 2010."
-      }
-],
-  },  {
+      { id: "intro", title: "Introducao", content: "A abstinencia de benzodiazepinicos pode ser fatal (similar ao alcool) com risco de convulsoes e delirium. O desmame gradual com benzodiazepinicos de meia-vida longa (diazepam, clonazepam) e a abordagem padrao. Nunca interromper abruptamente apos uso cronico (>4 semanas)." },
+      { id: "def", title: "Definicao", content: "Sindrome de descontinuacao apos uso cronico de BZD (geralmente >4 semanas). Sintomas leves: ansiedade rebote, insonia, tremor, irritabilidade. Graves: convulsoes (12-48h), psicose, delirium (similar ao delirium tremens). Meia-vida curta (alprazolam, lorazepam): sintomas mais precoces e intensos. Meia-vida longa (diazepam, clonazepam): sintomas mais tardios e brandos." },
+      { id: "screening", title: "Rastreamento e Identificacao", content: "Criterios de rastreamento e identificacao precoce de Abstinencia de Benzodiazepinicos." },
+      { id: "etiology", title: "Etiologia", content: "Principais causas e fatores de risco para Abstinencia de Benzodiazepinicos." },
+      { id: "clinical", title: "Apresentacao Clinica", content: "Sinais e sintomas tipicos e atipicos de Abstinencia de Benzodiazepinicos." },
+      { id: "diagnosis", title: "Diagnostico", content: "Exames laboratoriais e de imagem para diagnostico de Abstinencia de Benzodiazepinicos." },
+      { id: "differential", title: "Diagnostico Diferencial", content: "Diagnosticos diferenciais importantes para Abstinencia de Benzodiazepinicos." },
+      { id: "conduct", title: "Conduta Inicial", content: "Abordagem inicial e estabilizacao do paciente com Abstinencia de Benzodiazepinicos." },
+      { id: "treatment", title: "Abordagem Terapeutica", content: "DESMAME GRADUAL (ambulatorial): reduzir 10-25% da dose a cada 1-2 semanas. Converter para BZD de meia-vida longa: Diazepam (equivalencia — Alprazolam 1mg = Diazepam 10mg = Clonazepam 0,5mg = Lorazepam 1mg). Se convulsao: Diazepam 10mg IV. Se delirium: UTI + Diazepam IV titulado. Adjuvantes: Carbamazepina 200mg 12/12h (previne convulsoes), Gabapentina 300-900mg/dia." },
+      { id: "prescriptions", title: "Prescricoes", content: "1. Diazepam 10mg VO 8/8h (dose inicial — titular conforme CIWA-B); 2. Reducao gradual: 10% a cada 3-5 dias (internado) ou 1-2 semanas (ambulatorial); 3. Carbamazepina 200mg VO 12/12h (adjuvante); 4. Se convulsao: Diazepam 10mg IV; 5. Tiamina 300mg IV 1x/dia (se uso concomitante de alcool); 6. Monitorizar: sinais vitais 4/4h, escala de abstinencia." },
+      { id: "followup", title: "Acompanhamento", content: "Monitorizacao e seguimento de Abstinencia de Benzodiazepinicos." },
+      { id: "complications", title: "Complicacoes", content: "Principais complicacoes de Abstinencia de Benzodiazepinicos e seu manejo." },
+      { id: "criteria", title: "Criterios de Internacao / UTI / Alta", content: "Criterios de internacao, UTI e alta para Abstinencia de Benzodiazepinicos." },
+      { id: "references", title: "Referencias Bibliograficas", content: "Ashton CH. Benzodiazepines: How They Work and How to Withdraw (The Ashton Manual). APA Practice Guidelines 2010." }
+    ],
+  },
+  {
     id: "fp-psiq4-intoxicacao-litio",
     title: "Intoxicacao por Litio",
     categoryId: "psychiatry",
     category: "Psiquiatria de Emergencia",
     tags: ["litio", "intoxicacao", "tremor", "dialise"],
     sections: [
-      {
-            "id": "intro",
-            "title": "Introducao",
-            "content": "A intoxicacao por litio e emergencia com risco de lesao neurologica permanente (sindrome SILENT). A janela terapeutica estreita (0,6-1,2 mEq/L) facilita toxicidade. Desidratacao, IECA, AINEs e tiazidicos sao precipitantes comuns. Hemodialise e o tratamento definitivo para intoxicacao grave."
-      },
-      {
-            "id": "def",
-            "title": "Definicao",
-            "content": "Niveis sericos: terapeutico 0,6-1,2 mEq/L. Intoxicacao leve 1,5-2,0 mEq/L: tremor grosseiro, nauseas, diarreia. Moderada 2,0-2,5 mEq/L: confusao, ataxia, disartria, fasciculacoes. Grave >2,5 mEq/L: convulsoes, coma, arritmias, insuficiencia renal. Intoxicacao cronica e mais perigosa que aguda (maior acumulo tecidual)."
-      },
-      {
-            "id": "screening",
-            "title": "Rastreamento e Identificacao",
-            "content": "Criterios de rastreamento e identificacao precoce de Intoxicacao por Litio."
-      },
-      {
-            "id": "etiology",
-            "title": "Etiologia",
-            "content": "Principais causas e fatores de risco para Intoxicacao por Litio."
-      },
-      {
-            "id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Sinais e sintomas tipicos e atipicos de Intoxicacao por Litio."
-      },
-      {
-            "id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Exames laboratoriais e de imagem para diagnostico de Intoxicacao por Litio."
-      },
-      {
-            "id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnosticos diferenciais importantes para Intoxicacao por Litio."
-      },
-      {
-            "id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Intoxicacao por Litio."
-      },
-      {
-            "id": "treatment",
-            "title": "Abordagem Terapeutica",
-            "content": "LEVE (1,5-2,0): suspender litio, hidratacao vigorosa SF 0,9% 200-300mL/h, monitorar nivel serico 6/6h. MODERADA (2,0-2,5): hidratacao agressiva + considerar hemodialise se sintomas neurologicos. GRAVE (>2,5) ou sintomas neurologicos significativos: HEMODIALISE (indicacao absoluta). Repetir hemodialise se rebound (nivel sobe 6h apos). NAO usar diureticos (pioram toxicidade). Manter hidratacao ate nivel <1,0 mEq/L e assintomatico."
-      },
-      {
-            "id": "prescriptions",
-            "title": "Prescricoes",
-            "content": "1. Suspender litio IMEDIATAMENTE; 2. SF 0,9% 200-300mL/h IV (meta diurese >1mL/kg/h); 3. Litemia seriada: 0h, 6h, 12h, 24h; 4. Funcao renal, eletrolitos, ECG 6/6h; 5. Se nivel >2,5 ou sintomas graves: solicitar HEMODIALISE; 6. Monitorizar nivel pos-dialise (rebound em 6-12h); 7. NAO administrar diureticos."
-      },
-      {
-            "id": "followup",
-            "title": "Acompanhamento",
-            "content": "Monitorizacao e seguimento de Intoxicacao por Litio."
-      },
-      {
-            "id": "complications",
-            "title": "Complicacoes",
-            "content": "Principais complicacoes de Intoxicacao por Litio e seu manejo."
-      },
-      {
-            "id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Criterios de internacao, UTI e alta para Intoxicacao por Litio."
-      },
-      {
-            "id": "references",
-            "title": "Referencias Bibliograficas",
-            "content": "Decker BS et al. EXTRIP — Extracorporeal Treatments in Poisoning: Lithium. Clin J Am Soc Nephrol 2015. Grandjean EM, Aubry JM. Int J Neuropsychopharmacol 2009."
-      }
-],
-  },  {
+      { id: "intro", title: "Introducao", content: "A intoxicacao por litio e emergencia com risco de lesao neurologica permanente (sindrome SILENT). A janela terapeutica estreita (0,6-1,2 mEq/L) facilita toxicidade. Desidratacao, IECA, AINEs e tiazidicos sao precipitantes comuns. Hemodialise e o tratamento definitivo para intoxicacao grave." },
+      { id: "def", title: "Definicao", content: "Niveis sericos: terapeutico 0,6-1,2 mEq/L. Intoxicacao leve 1,5-2,0 mEq/L: tremor grosseiro, nauseas, diarreia. Moderada 2,0-2,5 mEq/L: confusao, ataxia, disartria, fasciculacoes. Grave >2,5 mEq/L: convulsoes, coma, arritmias, insuficiencia renal. Intoxicacao cronica e mais perigosa que aguda (maior acumulo tecidual)." },
+      { id: "screening", title: "Rastreamento e Identificacao", content: "Criterios de rastreamento e identificacao precoce de Intoxicacao por Litio." },
+      { id: "etiology", title: "Etiologia", content: "Principais causas e fatores de risco para Intoxicacao por Litio." },
+      { id: "clinical", title: "Apresentacao Clinica", content: "Sinais e sintomas tipicos e atipicos de Intoxicacao por Litio." },
+      { id: "diagnosis", title: "Diagnostico", content: "Exames laboratoriais e de imagem para diagnostico de Intoxicacao por Litio." },
+      { id: "differential", title: "Diagnostico Diferencial", content: "Diagnosticos diferenciais importantes para Intoxicacao por Litio." },
+      { id: "conduct", title: "Conduta Inicial", content: "Abordagem inicial e estabilizacao do paciente com Intoxicacao por Litio." },
+      { id: "treatment", title: "Abordagem Terapeutica", content: "LEVE (1,5-2,0): suspender litio, hidratacao vigorosa SF 0,9% 200-300mL/h, monitorar nivel serico 6/6h. MODERADA (2,0-2,5): hidratacao agressiva + considerar hemodialise se sintomas neurologicos. GRAVE (>2,5) ou sintomas neurologicos significativos: HEMODIALISE (indicacao absoluta). Repetir hemodialise se rebound (nivel sobe 6h apos). NAO usar diureticos (pioram toxicidade). Manter hidratacao ate nivel <1,0 mEq/L e assintomatico." },
+      { id: "prescriptions", title: "Prescricoes", content: "1. Suspender litio IMEDIATAMENTE; 2. SF 0,9% 200-300mL/h IV (meta diurese >1mL/kg/h); 3. Litemia seriada: 0h, 6h, 12h, 24h; 4. Funcao renal, eletrolitos, ECG 6/6h; 5. Se nivel >2,5 ou sintomas graves: solicitar HEMODIALISE; 6. Monitorizar nivel pos-dialise (rebound em 6-12h); 7. NAO administrar diureticos." },
+      { id: "followup", title: "Acompanhamento", content: "Monitorizacao e seguimento de Intoxicacao por Litio." },
+      { id: "complications", title: "Complicacoes", content: "Principais complicacoes de Intoxicacao por Litio e seu manejo." },
+      { id: "criteria", title: "Criterios de Internacao / UTI / Alta", content: "Criterios de internacao, UTI e alta para Intoxicacao por Litio." },
+      { id: "references", title: "Referencias Bibliograficas", content: "Decker BS et al. EXTRIP — Extracorporeal Treatments in Poisoning: Lithium. Clin J Am Soc Nephrol 2015. Grandjean EM, Aubry JM. Int J Neuropsychopharmacol 2009." }
+    ],
+  },
+  {
     id: "fp-psiq4-anorexia-emergencia",
     title: "Anorexia Nervosa - Emergencia Clinica",
     categoryId: "psychiatry",
     category: "Psiquiatria de Emergencia",
     tags: ["anorexia", "realimentacao", "sindrome", "desnutricao"],
     sections: [
-      {
-            "id": "intro",
-            "title": "Introducao",
-            "content": "A anorexia nervosa e o transtorno psiquiatrico com maior mortalidade (5-10%). Emergencias incluem: sindrome de realimentacao, bradiaritmias, desidratacao grave, hipoglicemia. Internacao se IMC <15, instabilidade hemodinamica ou risco suicida. NICE NG69 e APA Guidelines."
-      },
-      {
-            "id": "def",
-            "title": "Definicao",
-            "content": "Restricao da ingesta alimentar levando a peso significativamente baixo (IMC <18,5, grave <15). Criterios de emergencia medica: IMC <13, FC <40, PA <80/50, hipoglicemia <54mg/dL, K <2,5, Na <125, temperatura <35C, ritmo cardiaco irregular."
-      },
-      {
-            "id": "screening",
-            "title": "Rastreamento e Identificacao",
-            "content": "Criterios de rastreamento e identificacao precoce de Anorexia Nervosa - Emergencia Clinica."
-      },
-      {
-            "id": "etiology",
-            "title": "Etiologia",
-            "content": "Principais causas e fatores de risco para Anorexia Nervosa - Emergencia Clinica."
-      },
-      {
-            "id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Sinais e sintomas tipicos e atipicos de Anorexia Nervosa - Emergencia Clinica."
-      },
-      {
-            "id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Exames laboratoriais e de imagem para diagnostico de Anorexia Nervosa - Emergencia Clinica."
-      },
-      {
-            "id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnosticos diferenciais importantes para Anorexia Nervosa - Emergencia Clinica."
-      },
-      {
-            "id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Anorexia Nervosa - Emergencia Clinica."
-      },
-      {
-            "id": "treatment",
-            "title": "Abordagem Terapeutica",
-            "content": "INTERNACAO se criterios de gravidade. SINDROME DE REALIMENTACAO (principal risco — dias 1-5): iniciar com 10-20 kcal/kg/dia (max 1000 kcal/dia no inicio), aumentar gradualmente em 200 kcal a cada 1-2 dias. Monitorar fosforo, potassio, magnesio 12/12h nos primeiros 3 dias. Suplementacao PROFILATICA: Tiamina 200-300mg/dia VO/IV ANTES de iniciar alimentacao. Fosfato 0,5-0,8 mmol/kg/dia. Potassio e magnesio conforme niveis."
-      },
-      {
-            "id": "prescriptions",
-            "title": "Prescricoes",
-            "content": "1. Dieta hipocalorica inicial: 10-20 kcal/kg/dia (aumentar lentamente); 2. Tiamina 300mg IV 1x/dia (prevencao de Wernicke); 3. Fosfato 30-50 mmol/dia VO (profilaxia sindrome realimentacao); 4. KCl 600mg VO 12/12h se K <3,5; 5. Sulfato de Mg 2g IV se Mg <1,5; 6. Monitorar P, K, Mg, glicemia 12/12h; 7. ECG diario (QTc, bradicardia); 8. Supervisao pos-refeicoes por 1h (evitar purgacao)."
-      },
-      {
-            "id": "followup",
-            "title": "Acompanhamento",
-            "content": "Monitorizacao e seguimento de Anorexia Nervosa - Emergencia Clinica."
-      },
-      {
-            "id": "complications",
-            "title": "Complicacoes",
-            "content": "Principais complicacoes de Anorexia Nervosa - Emergencia Clinica e seu manejo."
-      },
-      {
-            "id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Criterios de internacao, UTI e alta para Anorexia Nervosa - Emergencia Clinica."
-      },
-      {
-            "id": "references",
-            "title": "Referencias Bibliograficas",
-            "content": "NICE NG69 — Eating Disorders 2017/2020. APA Practice Guidelines for Eating Disorders 2023. Mehanna HM et al. Refeeding syndrome. BMJ 2008."
-      }
-],
-  },  {
+      { id: "intro", title: "Introducao", content: "A anorexia nervosa e o transtorno psiquiatrico com maior mortalidade (5-10%). Emergencias incluem: sindrome de realimentacao, bradiaritmias, desidratacao grave, hipoglicemia. Internacao se IMC <15, instabilidade hemodinamica ou risco suicida. NICE NG69 e APA Guidelines." },
+      { id: "def", title: "Definicao", content: "Restricao da ingesta alimentar levando a peso significativamente baixo (IMC <18,5, grave <15). Criterios de emergencia medica: IMC <13, FC <40, PA <80/50, hipoglicemia <54mg/dL, K <2,5, Na <125, temperatura <35C, ritmo cardiaco irregular." },
+      { id: "screening", title: "Rastreamento e Identificacao", content: "Criterios de rastreamento e identificacao precoce de Anorexia Nervosa - Emergencia Clinica." },
+      { id: "etiology", title: "Etiologia", content: "Principais causas e fatores de risco para Anorexia Nervosa - Emergencia Clinica." },
+      { id: "clinical", title: "Apresentacao Clinica", content: "Sinais e sintomas tipicos e atipicos de Anorexia Nervosa - Emergencia Clinica." },
+      { id: "diagnosis", title: "Diagnostico", content: "Exames laboratoriais e de imagem para diagnostico de Anorexia Nervosa - Emergencia Clinica." },
+      { id: "differential", title: "Diagnostico Diferencial", content: "Diagnosticos diferenciais importantes para Anorexia Nervosa - Emergencia Clinica." },
+      { id: "conduct", title: "Conduta Inicial", content: "Abordagem inicial e estabilizacao do paciente com Anorexia Nervosa - Emergencia Clinica." },
+      { id: "treatment", title: "Abordagem Terapeutica", content: "INTERNACAO se criterios de gravidade. SINDROME DE REALIMENTACAO (principal risco — dias 1-5): iniciar com 10-20 kcal/kg/dia (max 1000 kcal/dia no inicio), aumentar gradualmente em 200 kcal a cada 1-2 dias. Monitorar fosforo, potassio, magnesio 12/12h nos primeiros 3 dias. Suplementacao PROFILATICA: Tiamina 200-300mg/dia VO/IV ANTES de iniciar alimentacao. Fosfato 0,5-0,8 mmol/kg/dia. Potassio e magnesio conforme niveis." },
+      { id: "prescriptions", title: "Prescricoes", content: "1. Dieta hipocalorica inicial: 10-20 kcal/kg/dia (aumentar lentamente); 2. Tiamina 300mg IV 1x/dia (prevencao de Wernicke); 3. Fosfato 30-50 mmol/dia VO (profilaxia sindrome realimentacao); 4. KCl 600mg VO 12/12h se K <3,5; 5. Sulfato de Mg 2g IV se Mg <1,5; 6. Monitorar P, K, Mg, glicemia 12/12h; 7. ECG diario (QTc, bradicardia); 8. Supervisao pos-refeicoes por 1h (evitar purgacao)." },
+      { id: "followup", title: "Acompanhamento", content: "Monitorizacao e seguimento de Anorexia Nervosa - Emergencia Clinica." },
+      { id: "complications", title: "Complicacoes", content: "Principais complicacoes de Anorexia Nervosa - Emergencia Clinica e seu manejo." },
+      { id: "criteria", title: "Criterios de Internacao / UTI / Alta", content: "Criterios de internacao, UTI e alta para Anorexia Nervosa - Emergencia Clinica." },
+      { id: "references", title: "Referencias Bibliograficas", content: "NICE NG69 — Eating Disorders 2017/2020. APA Practice Guidelines for Eating Disorders 2023. Mehanna HM et al. Refeeding syndrome. BMJ 2008." }
+    ],
+  },
+  {
     id: "fp-psiq4-psicose-puerperal",
     title: "Psicose Puerperal",
     categoryId: "psychiatry",
     category: "Psiquiatria de Emergencia",
     tags: ["psicose", "puerperal", "pos-parto", "delírio"],
     sections: [
-      {
-            "id": "intro",
-            "title": "Introducao",
-            "content": "A psicose puerperal e emergencia psiquiatrica rara (1-2/1000 partos) mas gravissima, com risco de infanticidio e suicidio. Inicio abrupto nos primeiros 2-4 dias pos-parto. Bipolaridade e o principal fator de risco. Internacao psiquiatrica e mandatoria. Jones I et al. Lancet 2014."
-      },
-      {
-            "id": "def",
-            "title": "Definicao",
-            "content": "Episodio psicotico agudo no periodo puerperal (primeiras 4 semanas, pico nos dias 3-10). Sintomas: confusao, delirios (frequentemente sobre o bebe), alucinacoes, insonia total, labilidade extrema, desorganizacao do comportamento. Difere da depressao pos-parto (mais tardia e sem psicose)."
-      },
-      {
-            "id": "screening",
-            "title": "Rastreamento e Identificacao",
-            "content": "Criterios de rastreamento e identificacao precoce de Psicose Puerperal."
-      },
-      {
-            "id": "etiology",
-            "title": "Etiologia",
-            "content": "Principais causas e fatores de risco para Psicose Puerperal."
-      },
-      {
-            "id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Sinais e sintomas tipicos e atipicos de Psicose Puerperal."
-      },
-      {
-            "id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Exames laboratoriais e de imagem para diagnostico de Psicose Puerperal."
-      },
-      {
-            "id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnosticos diferenciais importantes para Psicose Puerperal."
-      },
-      {
-            "id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Psicose Puerperal."
-      },
-      {
-            "id": "treatment",
-            "title": "Abordagem Terapeutica",
-            "content": "INTERNACAO PSIQUIATRICA OBRIGATORIA (risco de infanticidio/suicidio). Antipsicotico: Olanzapina 10-20mg/dia OU Quetiapina 200-600mg/dia OU Haloperidol 5-10mg/dia (se necessario IM). Estabilizador: Litio (se bipolar conhecida — cuidado com lactacao) OU Valproato. Benzodiazepinicos para agitacao: Lorazepam 1-2mg IM/VO. ECT: considerar em casos refratarios ou catatonicos. Nao separar mae do bebe se seguranca garantida (unidade mae-bebe)."
-      },
-      {
-            "id": "prescriptions",
-            "title": "Prescricoes",
-            "content": "1. Olanzapina 10mg VO a noite (titular ate 20mg); 2. OU Haloperidol 5mg IM se agitacao grave; 3. Lorazepam 2mg IM/VO SOS (max 6mg/dia); 4. Avaliar risco: ideacao suicida, pensamentos sobre o bebe (escala de risco); 5. Supervisao 1:1 continua; 6. Suspender amamentacao se uso de litio; 7. Encaminhar para psiquiatria perinatal."
-      },
-      {
-            "id": "followup",
-            "title": "Acompanhamento",
-            "content": "Monitorizacao e seguimento de Psicose Puerperal."
-      },
-      {
-            "id": "complications",
-            "title": "Complicacoes",
-            "content": "Principais complicacoes de Psicose Puerperal e seu manejo."
-      },
-      {
-            "id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Criterios de internacao, UTI e alta para Psicose Puerperal."
-      },
-      {
-            "id": "references",
-            "title": "Referencias Bibliograficas",
-            "content": "Jones I et al. Bipolar disorder, affective psychosis, and schizophrenia in pregnancy and the post-partum period. Lancet 2014. NICE CG192 — Antenatal and Postnatal Mental Health 2020."
-      }
-],
-  },  {
+      { id: "intro", title: "Introducao", content: "A psicose puerperal e emergencia psiquiatrica rara (1-2/1000 partos) mas gravissima, com risco de infanticidio e suicidio. Inicio abrupto nos primeiros 2-4 dias pos-parto. Bipolaridade e o principal fator de risco. Internacao psiquiatrica e mandatoria. Jones I et al. Lancet 2014." },
+      { id: "def", title: "Definicao", content: "Episodio psicotico agudo no periodo puerperal (primeiras 4 semanas, pico nos dias 3-10). Sintomas: confusao, delirios (frequentemente sobre o bebe), alucinacoes, insonia total, labilidade extrema, desorganizacao do comportamento. Difere da depressao pos-parto (mais tardia e sem psicose)." },
+      { id: "screening", title: "Rastreamento e Identificacao", content: "Criterios de rastreamento e identificacao precoce de Psicose Puerperal." },
+      { id: "etiology", title: "Etiologia", content: "Principais causas e fatores de risco para Psicose Puerperal." },
+      { id: "clinical", title: "Apresentacao Clinica", content: "Sinais e sintomas tipicos e atipicos de Psicose Puerperal." },
+      { id: "diagnosis", title: "Diagnostico", content: "Exames laboratoriais e de imagem para diagnostico de Psicose Puerperal." },
+      { id: "differential", title: "Diagnostico Diferencial", content: "Diagnosticos diferenciais importantes para Psicose Puerperal." },
+      { id: "conduct", title: "Conduta Inicial", content: "Abordagem inicial e estabilizacao do paciente com Psicose Puerperal." },
+      { id: "treatment", title: "Abordagem Terapeutica", content: "INTERNACAO PSIQUIATRICA OBRIGATORIA (risco de infanticidio/suicidio). Antipsicotico: Olanzapina 10-20mg/dia OU Quetiapina 200-600mg/dia OU Haloperidol 5-10mg/dia (se necessario IM). Estabilizador: Litio (se bipolar conhecida — cuidado com lactacao) OU Valproato. Benzodiazepinicos para agitacao: Lorazepam 1-2mg IM/VO. ECT: considerar em casos refratarios ou catatonicos. Nao separar mae do bebe se seguranca garantida (unidade mae-bebe)." },
+      { id: "prescriptions", title: "Prescricoes", content: "1. Olanzapina 10mg VO a noite (titular ate 20mg); 2. OU Haloperidol 5mg IM se agitacao grave; 3. Lorazepam 2mg IM/VO SOS (max 6mg/dia); 4. Avaliar risco: ideacao suicida, pensamentos sobre o bebe (escala de risco); 5. Supervisao 1:1 continua; 6. Suspender amamentacao se uso de litio; 7. Encaminhar para psiquiatria perinatal." },
+      { id: "followup", title: "Acompanhamento", content: "Monitorizacao e seguimento de Psicose Puerperal." },
+      { id: "complications", title: "Complicacoes", content: "Principais complicacoes de Psicose Puerperal e seu manejo." },
+      { id: "criteria", title: "Criterios de Internacao / UTI / Alta", content: "Criterios de internacao, UTI e alta para Psicose Puerperal." },
+      { id: "references", title: "Referencias Bibliograficas", content: "Jones I et al. Bipolar disorder, affective psychosis, and schizophrenia in pregnancy and the post-partum period. Lancet 2014. NICE CG192 — Antenatal and Postnatal Mental Health 2020." }
+    ],
+  },
+  {
     id: "fp-psiq4-violencia-domiciliaria",
     title: "Violencia Domestica - Protocolo",
     categoryId: "psychiatry",
     category: "Psiquiatria de Emergencia",
     tags: ["violencia", "domestica", "notificacao", "acolhimento"],
     sections: [
-      {
-            "id": "intro",
-            "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Violencia Domestica - Protocolo na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
-      },
-      {
-            "id": "def",
-            "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Violencia Domestica - Protocolo."
-      },
-      {
-            "id": "screening",
-            "title": "Rastreamento e Identificacao",
-            "content": "Criterios de rastreamento e identificacao precoce de Violencia Domestica - Protocolo."
-      },
-      {
-            "id": "etiology",
-            "title": "Etiologia",
-            "content": "Principais causas e fatores de risco para Violencia Domestica - Protocolo."
-      },
-      {
-            "id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Sinais e sintomas tipicos e atipicos de Violencia Domestica - Protocolo."
-      },
-      {
-            "id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Exames laboratoriais e de imagem para diagnostico de Violencia Domestica - Protocolo."
-      },
-      {
-            "id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnosticos diferenciais importantes para Violencia Domestica - Protocolo."
-      },
-      {
-            "id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Violencia Domestica - Protocolo."
-      },
-      {
-            "id": "treatment",
-            "title": "Abordagem Terapeutica",
-            "content": "Tratamento farmacologico e nao farmacologico de Violencia Domestica - Protocolo."
-      },
-      {
-            "id": "prescriptions",
-            "title": "Prescricoes",
-            "content": "Prescricoes padronizadas para Violencia Domestica - Protocolo."
-      },
-      {
-            "id": "followup",
-            "title": "Acompanhamento",
-            "content": "Monitorizacao e seguimento de Violencia Domestica - Protocolo."
-      },
-      {
-            "id": "complications",
-            "title": "Complicacoes",
-            "content": "Principais complicacoes de Violencia Domestica - Protocolo e seu manejo."
-      },
-      {
-            "id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Criterios de internacao, UTI e alta para Violencia Domestica - Protocolo."
-      },
-      {
-            "id": "references",
-            "title": "Referencias Bibliograficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
-      }
-],
-  },  {
+      { id: "intro", title: "Introducao", content: "Protocolo completo para abordagem de Violencia Domestica - Protocolo na emergencia, com base em diretrizes nacionais e internacionais atualizadas." },
+      { id: "def", title: "Definicao", content: "Definicao clinica e classificacao de Violencia Domestica - Protocolo." },
+      { id: "screening", title: "Rastreamento e Identificacao", content: "Criterios de rastreamento e identificacao precoce de Violencia Domestica - Protocolo." },
+      { id: "etiology", title: "Etiologia", content: "Principais causas e fatores de risco para Violencia Domestica - Protocolo." },
+      { id: "clinical", title: "Apresentacao Clinica", content: "Sinais e sintomas tipicos e atipicos de Violencia Domestica - Protocolo." },
+      { id: "diagnosis", title: "Diagnostico", content: "Exames laboratoriais e de imagem para diagnostico de Violencia Domestica - Protocolo." },
+      { id: "differential", title: "Diagnostico Diferencial", content: "Diagnosticos diferenciais importantes para Violencia Domestica - Protocolo." },
+      { id: "conduct", title: "Conduta Inicial", content: "Abordagem inicial e estabilizacao do paciente com Violencia Domestica - Protocolo." },
+      { id: "treatment", title: "Abordagem Terapeutica", content: "Tratamento farmacologico e nao farmacologico de Violencia Domestica - Protocolo." },
+      { id: "prescriptions", title: "Prescricoes", content: "Prescricoes padronizadas para Violencia Domestica - Protocolo." },
+      { id: "followup", title: "Acompanhamento", content: "Monitorizacao e seguimento de Violencia Domestica - Protocolo." },
+      { id: "complications", title: "Complicacoes", content: "Principais complicacoes de Violencia Domestica - Protocolo e seu manejo." },
+      { id: "criteria", title: "Criterios de Internacao / UTI / Alta", content: "Criterios de internacao, UTI e alta para Violencia Domestica - Protocolo." },
+      { id: "references", title: "Referencias Bibliograficas", content: "Diretrizes nacionais e internacionais atualizadas." }
+    ],
+  },
+  {
     id: "fp-psiq4-cetamina-psiq",
     title: "Cetamina em Psiquiatria de Emergencia",
     categoryId: "psychiatry",
     category: "Psiquiatria de Emergencia",
     tags: ["cetamina", "dissociativo", "agitacao", "anestesia"],
     sections: [
-      {
-            "id": "intro",
-            "title": "Introducao",
-            "content": "Protocolo completo para abordagem de Cetamina em Psiquiatria de Emergencia na emergencia, com base em diretrizes nacionais e internacionais atualizadas."
-      },
-      {
-            "id": "def",
-            "title": "Definicao",
-            "content": "Definicao clinica e classificacao de Cetamina em Psiquiatria de Emergencia."
-      },
-      {
-            "id": "screening",
-            "title": "Rastreamento e Identificacao",
-            "content": "Criterios de rastreamento e identificacao precoce de Cetamina em Psiquiatria de Emergencia."
-      },
-      {
-            "id": "etiology",
-            "title": "Etiologia",
-            "content": "Principais causas e fatores de risco para Cetamina em Psiquiatria de Emergencia."
-      },
-      {
-            "id": "clinical",
-            "title": "Apresentacao Clinica",
-            "content": "Sinais e sintomas tipicos e atipicos de Cetamina em Psiquiatria de Emergencia."
-      },
-      {
-            "id": "diagnosis",
-            "title": "Diagnostico",
-            "content": "Exames laboratoriais e de imagem para diagnostico de Cetamina em Psiquiatria de Emergencia."
-      },
-      {
-            "id": "differential",
-            "title": "Diagnostico Diferencial",
-            "content": "Diagnosticos diferenciais importantes para Cetamina em Psiquiatria de Emergencia."
-      },
-      {
-            "id": "conduct",
-            "title": "Conduta Inicial",
-            "content": "Abordagem inicial e estabilizacao do paciente com Cetamina em Psiquiatria de Emergencia."
-      },
-      {
-            "id": "treatment",
-            "title": "Abordagem Terapeutica",
-            "content": "Tratamento farmacologico e nao farmacologico de Cetamina em Psiquiatria de Emergencia."
-      },
-      {
-            "id": "prescriptions",
-            "title": "Prescricoes",
-            "content": "Prescricoes padronizadas para Cetamina em Psiquiatria de Emergencia."
-      },
-      {
-            "id": "followup",
-            "title": "Acompanhamento",
-            "content": "Monitorizacao e seguimento de Cetamina em Psiquiatria de Emergencia."
-      },
-      {
-            "id": "complications",
-            "title": "Complicacoes",
-            "content": "Principais complicacoes de Cetamina em Psiquiatria de Emergencia e seu manejo."
-      },
-      {
-            "id": "criteria",
-            "title": "Criterios de Internacao / UTI / Alta",
-            "content": "Criterios de internacao, UTI e alta para Cetamina em Psiquiatria de Emergencia."
-      },
-      {
-            "id": "references",
-            "title": "Referencias Bibliograficas",
-            "content": "Diretrizes nacionais e internacionais atualizadas."
-      }
-],
-  },
+      { id: "intro", title: "Introducao", content: "Protocolo completo para abordagem de Cetamina em Psiquiatria de Emergencia na emergencia, com base em diretrizes nacionais e internacionais atualizadas." },
+      { id: "def", title: "Definicao", content: "Definicao clinica e classificacao de Cetamina em Psiquiatria de Emergencia." },
+      { id: "screening", title: "Rastreamento e Identificacao", content: "Criterios de rastreamento e identificacao precoce de Cetamina em Psiquiatria de Emergencia." },
+      { id: "etiology", title: "Etiologia", content: "Principais causas e fatores de risco para Cetamina em Psiquiatria de Emergencia." },
+      { id: "clinical", title: "Apresentacao Clinica", content: "Sinais e sintomas tipicos e atipicos de Cetamina em Psiquiatria de Emergencia." },
+      { id: "diagnosis", title: "Diagnostico", content: "Exames laboratoriais e de imagem para diagnostico de Cetamina em Psiquiatria de Emergencia." },
+      { id: "differential", title: "Diagnostico Diferencial", content: "Diagnosticos diferenciais importantes para Cetamina em Psiquiatria de Emergencia." },
+      { id: "conduct", title: "Conduta Inicial", content: "Abordagem inicial e estabilizacao do paciente com Cetamina em Psiquiatria de Emergencia." },
+      { id: "treatment", title: "Abordagem Terapeutica", content: "Tratamento farmacologico e nao farmacologico de Cetamina em Psiquiatria de Emergencia." },
+      { id: "prescriptions", title: "Prescricoes", content: "Prescricoes padronizadas para Cetamina em Psiquiatria de Emergencia." },
+      { id: "followup", title: "Acompanhamento", content: "Monitorizacao e seguimento de Cetamina em Psiquiatria de Emergencia." },
+      { id: "complications", title: "Complicacoes", content: "Principais complicacoes de Cetamina em Psiquiatria de Emergencia e seu manejo." },
+      { id: "criteria", title: "Criterios de Internacao / UTI / Alta", content: "Criterios de internacao, UTI e alta para Cetamina em Psiquiatria de Emergencia." },
+      { id: "references", title: "Referencias Bibliograficas", content: "Diretrizes nacionais e internacionais atualizadas." }
+    ],
+  }
 ];
