@@ -75,6 +75,7 @@ const InstitutionalProtocols = lazy(() => import("@/pages/InstitutionalProtocols
 const VoiceEvolution = lazy(() => import("@/pages/VoiceEvolution"));
 const PrescriptionChecker = lazy(() => import("@/pages/PrescriptionChecker"));
 const Rounds = lazy(() => import("@/pages/Rounds"));
+const DischargeSummary = lazy(() => import("@/pages/DischargeSummary"));
 
 const queryClient = new QueryClient();
 
