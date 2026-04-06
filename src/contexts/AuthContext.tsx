@@ -16,7 +16,7 @@ interface AuthContextType {
   loading: boolean;
   subscription: SubscriptionInfo;
   profileComplete: boolean | null; // null = still checking
-  checkSubscription: () => Promise<void>;
+  checkSubscription: (force?: boolean) => Promise<void>;
   recheckProfile: () => Promise<void>;
   signOut: () => Promise<void>;
 }

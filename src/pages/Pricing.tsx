@@ -51,7 +51,7 @@ export default function Pricing() {
       const recheck = async () => {
         for (let i = 0; i < 5; i++) {
           await new Promise(r => setTimeout(r, 2000));
-          await checkSubscription(true);
+          await checkSubscription();
         }
       };
       recheck();
