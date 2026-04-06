@@ -78,6 +78,7 @@ const specialtyModules = [
   { label: "Clínica", sub: "Diagnóstico por sintoma", icon: Stethoscope, path: "/diagnosis" },
   { label: "Atlas Clínico", sub: "ECG, Dermato, Radiologia", icon: ScanLine, path: "/clinical-atlas" },
   { label: "Procedimentos", sub: "IOT, CVC, drenagem, sutura", icon: Syringe, path: "/procedure-guides" },
+  { label: "Anamnese", sub: "Roteiro completo estruturado", icon: ClipboardList, path: "/anamnesis-guide" },
 ];
 
 const studyModules = [
