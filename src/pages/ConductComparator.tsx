@@ -238,6 +238,40 @@ export default function ConductComparator() {
     localStorage.removeItem(HISTORY_KEY);
   }, []);
 
+  const exportPDF = useCallback(() => {
+    if (!result) return;
+    const buildSourceHTML = (s: any) => `
+      <div style="border:1px solid #ddd;border-radius:8px;padding:16px;margin-bottom:12px;break-inside:avoid">
+        <h3 style="margin:0 0 8px;color:${s.source_type === 'sus' ? '#16a34a' : s.source_type === 'brazilian_society' ? '#2563eb' : '#7c3aed'}">${s.source_name}</h3>
+        <p style="font-size:11px;color:#888;margin:0 0 12px">${s.guideline_name} (${s.year})</p>
+        <h4 style="margin:8px 0 4px;font-size:13px">Tratamento 1ª linha</h4>
+        <p style="font-size:12px;color:#444">${s.first_line_treatment}</p>
+        ${s.medications?.length ? `<h4 style="margin:8px 0 4px;font-size:13px">Medicamentos</h4><table style="width:100%;border-collapse:collapse;font-size:11px;margin-bottom:8px"><tr style="background:#f5f5f5"><th style="text-align:left;padding:4px;border:1px solid #ddd">Medicamento</th><th style="text-align:left;padding:4px;border:1px solid #ddd">Dose</th><th style="text-align:left;padding:4px;border:1px solid #ddd">Via</th><th style="text-align:left;padding:4px;border:1px solid #ddd">Duração</th></tr>${s.medications.map((m: any) => `<tr><td style="padding:4px;border:1px solid #ddd">${m.name}</td><td style="padding:4px;border:1px solid #ddd">${m.dose}</td><td style="padding:4px;border:1px solid #ddd">${m.route}</td><td style="padding:4px;border:1px solid #ddd">${m.duration}</td></tr>`).join("")}</table>` : ""}
+        ${s.alternative_treatments?.length ? `<h4 style="margin:8px 0 4px;font-size:13px">Alternativas</h4><p style="font-size:12px;color:#444">${s.alternative_treatments.join(", ")}</p>` : ""}
+        ${s.red_flags?.length ? `<h4 style="margin:8px 0 4px;font-size:13px;color:#dc2626">⚠ Sinais de Alarme</h4><ul style="font-size:12px;color:#444;margin:0;padding-left:16px">${s.red_flags.map((r: string) => `<li>${r}</li>`).join("")}</ul>` : ""}
+        ${s.follow_up ? `<h4 style="margin:8px 0 4px;font-size:13px">Seguimento</h4><p style="font-size:12px;color:#444">${s.follow_up}</p>` : ""}
+        ${s.notes ? `<p style="font-size:11px;color:#888;font-style:italic;margin-top:8px">${s.notes}</p>` : ""}
+      </div>`;
+
+    const html = `<!DOCTYPE html><html><head><meta charset="utf-8"><title>Comparação - ${result.diagnosis_title}</title>
+      <style>@media print{body{margin:0;padding:16px}@page{margin:1cm}}</style></head>
+      <body style="font-family:-apple-system,sans-serif;max-width:900px;margin:0 auto;padding:24px;color:#222">
+        <div style="text-align:center;border-bottom:2px solid #2563eb;padding-bottom:12px;margin-bottom:16px">
+          <h1 style="margin:0;font-size:20px">PULSO — Comparador de Condutas</h1>
+          <p style="margin:4px 0 0;font-size:12px;color:#888">${new Date().toLocaleDateString("pt-BR",{day:"2-digit",month:"long",year:"numeric"})}</p>
+        </div>
+        <h2 style="margin:0 0 4px">${result.diagnosis_title} <span style="font-size:13px;color:#888;font-weight:normal">(${result.icd10})</span></h2>
+        <p style="font-size:13px;color:#555;margin:0 0 4px">Nível de evidência: ${result.evidence_level}</p>
+        <p style="font-size:13px;color:#555;margin:0 0 16px">${result.summary}</p>
+        ${result.sources?.map(buildSourceHTML).join("") || ""}
+        ${result.key_differences?.length ? `<div style="background:#fffbeb;border:1px solid #fbbf24;border-radius:8px;padding:16px;margin-top:12px"><h3 style="margin:0 0 8px;font-size:14px">Principais Diferenças</h3><ol style="margin:0;padding-left:18px;font-size:12px;color:#555">${result.key_differences.map(d => `<li style="margin-bottom:4px">${d}</li>`).join("")}</ol></div>` : ""}
+        <p style="text-align:center;font-size:10px;color:#aaa;margin-top:24px">${result.last_update_check} · Gerado por PULSO Emergência Médica</p>
+      </body></html>`;
+
+    const w = window.open("", "_blank");
+    if (w) { w.document.write(html); w.document.close(); setTimeout(() => w.print(), 400); }
+  }, [result]);
+
   return (
     <PremiumPageGuard feature="Comparador de Condutas" title="Comparador de Condutas">
       <div className="min-h-screen bg-background pb-24">
