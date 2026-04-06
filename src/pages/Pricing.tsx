@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, Crown, LogOut, Sparkles, X, Shield, Zap, Gift, CreditCard, QrCode, Receipt } from "lucide-react";
+import { Check, Crown, LogOut, Sparkles, X, Shield, Zap, Gift, CreditCard } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -30,29 +30,22 @@ const premiumFeatures = [
   { feature: "Atualizações contínuas", free: false, premium: true },
 ];
 
-type PaymentMethod = "card" | "pix";
-
 export default function Pricing() {
   const { user, subscription, checkSubscription, signOut } = useAuth();
   const [loading, setLoading] = useState<string | null>(null);
   const [portalLoading, setPortalLoading] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("annual");
-  const [paymentMethod, setPaymentMethod] = useState<PaymentMethod>("card");
   const navigate = useNavigate();
   const { toast } = useToast();
   const [searchParams] = useSearchParams();
 
   useEffect(() => {
-    // Clear onboarding flag now that we're on pricing
     sessionStorage.removeItem("pulso_just_onboarded");
 
     if (searchParams.get("success") === "true") {
-      const method = searchParams.get("method");
       toast({
         title: "🎉 Assinatura realizada!",
-        description: method === "pix"
-          ? "Pagamento PIX confirmado! Aproveite o PULSO Pro."
-          : "Bem-vindo ao PULSO Pro! Aproveite 7 dias grátis.",
+        description: "Bem-vindo ao PULSO Pro! Aproveite 7 dias grátis.",
       });
       checkSubscription();
     }
@@ -63,7 +56,7 @@ export default function Pricing() {
     setLoading(planId);
     try {
       const { data, error } = await supabase.functions.invoke("create-checkout", {
-        body: { planId, paymentMethod },
+        body: { planId },
       });
       if (error) throw error;
       if (data?.url) window.location.href = data.url;
@@ -82,8 +75,6 @@ export default function Pricing() {
       toast({ title: "Erro", description: err.message, variant: "destructive" });
     } finally { setPortalLoading(false); }
   };
-
-  const isPix = paymentMethod === "pix";
 
   return (
     <>
@@ -109,16 +100,14 @@ export default function Pricing() {
                 Assinatura ativa
                 {subscription.subscriptionEnd && (
                   <span className="block text-xs text-muted-foreground mt-1">
-                    {subscription.productId === "pix_purchase" ? "Acesso até" : "Renova em"}{" "}
+                    Renova em{" "}
                     {new Date(subscription.subscriptionEnd).toLocaleDateString("pt-BR")}
                   </span>
                 )}
               </div>
-              {subscription.productId !== "pix_purchase" && (
-                <Button onClick={handlePortal} variant="outline" className="w-full" disabled={portalLoading}>
-                  {portalLoading ? "Carregando..." : "Gerenciar assinatura"}
-                </Button>
-              )}
+              <Button onClick={handlePortal} variant="outline" className="w-full" disabled={portalLoading}>
+                {portalLoading ? "Carregando..." : "Gerenciar assinatura"}
+              </Button>
               <Button onClick={() => checkSubscription()} variant="ghost" className="w-full text-xs">
                 Atualizar status
               </Button>
@@ -128,24 +117,22 @@ export default function Pricing() {
 
         {!subscription.subscribed && (
           <>
-            {/* Trial banner — only for card */}
-            {!isPix && (
-              <Card className="border-primary/30 bg-gradient-to-r from-primary/10 to-accent/20 overflow-hidden">
-                <CardContent className="p-5">
-                  <div className="flex items-center gap-3">
-                    <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center shrink-0">
-                      <Gift size={20} className="text-primary" />
-                    </div>
-                    <div>
-                      <p className="font-heading font-bold text-sm">7 dias grátis</p>
-                      <p className="text-xs text-muted-foreground">
-                        Teste completo. Cartão cadastrado, mas cobrado só após 7 dias. Cancele a qualquer momento.
-                      </p>
-                    </div>
+            {/* Trial banner */}
+            <Card className="border-primary/30 bg-gradient-to-r from-primary/10 to-accent/20 overflow-hidden">
+              <CardContent className="p-5">
+                <div className="flex items-center gap-3">
+                  <div className="w-10 h-10 rounded-full bg-primary/15 flex items-center justify-center shrink-0">
+                    <Gift size={20} className="text-primary" />
                   </div>
-                </CardContent>
-              </Card>
-            )}
+                  <div>
+                    <p className="font-heading font-bold text-sm">7 dias grátis</p>
+                    <p className="text-xs text-muted-foreground">
+                      Teste completo. Cartão cadastrado, mas cobrado só após 7 dias. Cancele a qualquer momento.
+                    </p>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
 
             {/* Social proof */}
             <div className="flex items-center justify-center gap-2 text-xs text-muted-foreground">
@@ -198,42 +185,6 @@ export default function Pricing() {
               </CardContent>
             </Card>
 
-            {/* Payment method selector */}
-            <div>
-              <p className="font-heading font-bold text-sm mb-3 text-center">Forma de pagamento</p>
-              <div className="grid grid-cols-2 gap-3">
-                <button
-                  onClick={() => setPaymentMethod("card")}
-                  className={cn(
-                    "flex items-center justify-center gap-2 p-3 rounded-xl border-2 transition-all text-sm font-medium",
-                    paymentMethod === "card"
-                      ? "border-primary bg-primary/10 text-primary"
-                      : "border-border text-muted-foreground hover:border-primary/40"
-                  )}
-                >
-                  <CreditCard size={18} />
-                  Cartão
-                </button>
-                <button
-                  onClick={() => setPaymentMethod("pix")}
-                  className={cn(
-                    "flex items-center justify-center gap-2 p-3 rounded-xl border-2 transition-all text-sm font-medium",
-                    paymentMethod === "pix"
-                      ? "border-primary bg-primary/10 text-primary"
-                      : "border-border text-muted-foreground hover:border-primary/40"
-                  )}
-                >
-                  <QrCode size={18} />
-                  PIX
-                </button>
-              </div>
-              {isPix && (
-                <p className="text-[10px] text-muted-foreground text-center mt-2">
-                  PIX: pagamento único, sem renovação automática. Renove manualmente ao expirar.
-                </p>
-              )}
-            </div>
-
             {/* Plan selector */}
             <div>
               <p className="font-heading font-bold text-sm mb-3 text-center">Escolha seu plano</p>
@@ -276,13 +227,8 @@ export default function Pricing() {
               size="lg"
               disabled={loading !== null}
             >
-              {isPix ? <QrCode size={18} /> : <Gift size={18} />}
-              {loading
-                ? "Redirecionando..."
-                : isPix
-                  ? `Pagar com PIX — ${plans.find(p => p.id === selectedPlan)?.priceDisplay}`
-                  : "Começar 7 dias grátis"
-              }
+              <Gift size={18} />
+              {loading ? "Redirecionando..." : "Começar 7 dias grátis"}
             </Button>
 
             {/* Payment methods icons */}
@@ -291,20 +237,13 @@ export default function Pricing() {
               <div className="flex items-center gap-4">
                 <div className="flex items-center gap-1.5 text-muted-foreground">
                   <CreditCard size={16} className="text-primary" />
-                  <span className="text-[11px]">Cartão</span>
-                </div>
-                <div className="flex items-center gap-1.5 text-muted-foreground">
-                  <QrCode size={16} className="text-primary" />
-                  <span className="text-[11px]">PIX</span>
+                  <span className="text-[11px]">Cartão de crédito e débito</span>
                 </div>
               </div>
             </div>
 
             <p className="text-[10px] text-muted-foreground text-center leading-relaxed">
-              {isPix
-                ? "Pagamento único via PIX. Sem renovação automática. Renove manualmente quando expirar. Pagamento seguro via Stripe."
-                : "Teste grátis por 7 dias. Cobrado apenas após o período de teste. Cancele a qualquer momento. Pagamento seguro via Stripe."
-              }
+              Teste grátis por 7 dias. Cobrado apenas após o período de teste. Cancele a qualquer momento. Pagamento seguro via Stripe.
             </p>
 
             {/* Continue free option */}
