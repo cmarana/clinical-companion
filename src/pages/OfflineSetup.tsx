@@ -18,7 +18,7 @@ type CacheStatus = "idle" | "downloading" | "complete" | "error";
 
 const OFFLINE_FEATURES = [
   { icon: Shield, label: "Protocolos de Emergência", desc: "PCR, Sepse, IAM, AVC e 200+ protocolos", color: "text-destructive", available: true },
-  { icon: BookOpen, label: "Protocolos Completos", desc: "950+ protocolos em 26 especialidades", color: "text-primary", available: true },
+  { icon: BookOpen, label: "Protocolos Completos", desc: "1.000+ protocolos em 26 especialidades", color: "text-primary", available: true },
   { icon: Pill, label: "Guia de Medicamentos", desc: "1500+ fármacos com posologia", color: "text-emerald-500", available: true },
   { icon: ClipboardList, label: "Prescrições", desc: "1200+ modelos prontos", color: "text-amber-500", available: true },
   { icon: Calculator, label: "Calculadoras Médicas", desc: "53 scores e calculadoras", color: "text-blue-500", available: true },

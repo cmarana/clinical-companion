@@ -11,7 +11,7 @@ import { plans } from "@/lib/plans";
 import { cn } from "@/lib/utils";
 
 const premiumFeatures = [
-  { feature: "Protocolos clínicos", free: "10 protocolos", premium: "950+ protocolos completos" },
+  { feature: "Protocolos clínicos", free: "10 protocolos", premium: "1.000+ protocolos completos" },
   { feature: "Medicamentos", free: "10 fármacos", premium: "2.000+ com doses e interações" },
   { feature: "Bulário completo", free: "10 itens", premium: "Acesso total" },
   { feature: "IA Clínica", free: false, premium: true },
