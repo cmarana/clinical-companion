@@ -34,7 +34,7 @@ const tourSteps = [
     features: [
       { icon: Bot, label: "IA Clínica", desc: "Análise de conduta em tempo real com sugestão de protocolos" },
       { icon: AlertTriangle, label: "Modo Plantão", desc: "Timer, checklist de passagem e notas por leito" },
-      { icon: BookOpen, label: "282 Protocolos", desc: "Diretrizes atualizadas com fluxogramas interativos" },
+      { icon: BookOpen, label: "950+ Protocolos", desc: "Diretrizes atualizadas com fluxogramas interativos" },
     ],
   },
   {
