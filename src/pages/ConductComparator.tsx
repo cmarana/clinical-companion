@@ -5,7 +5,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { ArrowLeft, Search, Mic, MicOff, Loader2, AlertTriangle, Pill, Stethoscope, Globe, Building2, BookOpen, ArrowRightLeft, History, Trash2, Clock, ChevronDown } from "lucide-react";
+import { ArrowLeft, Search, Mic, MicOff, Loader2, AlertTriangle, Pill, Stethoscope, Globe, Building2, BookOpen, ArrowRightLeft, History, Trash2, Clock, ChevronDown, FileDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
