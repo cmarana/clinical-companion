@@ -7,6 +7,7 @@ import MedicalDisclaimer from "./MedicalDisclaimer";
 import OfflineErrorBoundary from "./OfflineErrorBoundary";
 import { AnimatePresence, motion } from "framer-motion";
 import CommandPalette from "./CommandPalette";
+import SupportChat from "./SupportChat";
 
 export default function AppLayout() {
   const location = useLocation();
@@ -46,6 +47,7 @@ export default function AppLayout() {
         </div>
       </div>
       <CommandPalette />
+      <SupportChat />
       <ScrollToTop />
       {/* BottomNav only on mobile */}
       <div className="md:hidden">
