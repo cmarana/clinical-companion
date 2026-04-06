@@ -4,7 +4,7 @@ import {
   Baby, Heart, Stethoscope, BookOpen, HelpCircle,
   AlertTriangle, Zap, Moon, Sun, ChevronRight, Bot, FlaskConical,
   Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain, GraduationCap,
-  Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Eclipse, Newspaper, Building2, Mic, ShieldCheck, BedDouble, ArrowRightLeft
+  Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Eclipse, Newspaper, Building2, Mic, ShieldCheck, BedDouble, ArrowRightLeft, Shield
 } from "lucide-react";
 import pulsoLogo from "@/assets/pulso-logo.png";
 import { useState, useEffect, useMemo, useCallback } from "react";
@@ -171,6 +171,13 @@ export default function Home() {
   const [avatarUrl, setAvatarUrl] = useState("");
   const [initials, setInitials] = useState("U");
   const [specialty] = useState<string | null>("todas");
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    if (!user) { setIsAdmin(false); return; }
+    supabase.rpc("has_role", { _user_id: user.id, _role: "admin" })
+      .then(({ data }) => setIsAdmin(!!data));
+  }, [user]);
 
   const navigateWithTracking = (path: string, label: string) => {
     hapticLight();
@@ -209,6 +216,11 @@ export default function Home() {
           </div>
         </div>
         <div className="flex items-center gap-2">
+          {isAdmin && (
+            <button onClick={() => navigate("/admin")} className="p-2 rounded-xl hover:bg-accent transition-colors text-destructive" title="Painel Admin">
+              <Shield size={16} />
+            </button>
+          )}
           <button onClick={() => { hapticLight(); toggleTheme(); }} className="p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground" title={themeLabel}>
             {theme === "oled" ? <Eclipse size={16} /> : theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
           </button>
