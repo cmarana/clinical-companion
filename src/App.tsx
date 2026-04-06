@@ -73,6 +73,7 @@ const Onboarding = lazy(() => import("@/pages/Onboarding"));
 const ClinicalCaseSimulator = lazy(() => import("@/pages/ClinicalCaseSimulator"));
 const InstitutionalProtocols = lazy(() => import("@/pages/InstitutionalProtocols"));
 const VoiceEvolution = lazy(() => import("@/pages/VoiceEvolution"));
+const PrescriptionChecker = lazy(() => import("@/pages/PrescriptionChecker"));
 
 const queryClient = new QueryClient();
 
