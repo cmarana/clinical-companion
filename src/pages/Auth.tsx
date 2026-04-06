@@ -20,7 +20,7 @@ const showcaseFeatures = [
   { icon: Mic, label: "Comando por Voz", desc: "Busca e IA mãos-livres", color: "from-violet-500/20 to-purple-600/10 text-violet-500" },
   { icon: Pill, label: "2.000+ Fármacos", desc: "Doses, diluição e ajustes", color: "from-emerald-500/20 to-emerald-600/10 text-emerald-500" },
   { icon: ClipboardList, label: "Prescrições", desc: "Modelos prontos para uso", color: "from-amber-500/20 to-amber-600/10 text-amber-500" },
-  { icon: Shield, label: "282 Protocolos", desc: "Fluxogramas interativos", color: "from-cyan-500/20 to-cyan-600/10 text-cyan-500" },
+  { icon: Shield, label: "950+ Protocolos", desc: "Fluxogramas interativos", color: "from-cyan-500/20 to-cyan-600/10 text-cyan-500" },
   { icon: Calculator, label: "53 Calculadoras", desc: "Embutidas nos protocolos", color: "from-indigo-500/20 to-indigo-600/10 text-indigo-500" },
   { icon: Clock, label: "Modo Plantão", desc: "Timer, leitos e passagem", color: "from-orange-500/20 to-orange-600/10 text-orange-500" },
   { icon: Activity, label: "Timer PCR", desc: "Cronômetro ACLS integrado", color: "from-pink-500/20 to-pink-600/10 text-pink-500" },
@@ -35,7 +35,7 @@ const showcaseFeatures = [
 
 const stats = [
   { target: 2000, suffix: "+", label: "Medicamentos" },
-  { target: 282, suffix: "", label: "Protocolos" },
+  { target: 950, suffix: "+", label: "Protocolos" },
   { target: 53, suffix: "", label: "Calculadoras" },
 ];
 
