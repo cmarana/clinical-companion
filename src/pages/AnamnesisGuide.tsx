@@ -2366,6 +2366,514 @@ Classificação das úlceras por pressão:
 • Próxima revisão do plano: ___/___/___`,
     tips: "Na ILPI, a AGA é obrigatória e deve ser revisada a cada 3-6 meses. Quedas são a principal causa de morbidade — TUG >20s exige intervenção. Braden <12 demanda protocolo intensivo de prevenção de UPP. Polifarmácia é epidêmica: aplique Beers/STOPP-START em toda consulta. SEMPRE discutir DAV precocemente — em demência avançada, o momento já passou. Circunferência da panturrilha <31 cm é o melhor marcador de sarcopenia no idoso institucionalizado.",
   },
+  {
+    id: "aps-esf",
+    title: "Anamnese em Medicina de Família (APS/ESF)",
+    emoji: "🏠",
+    tags: ["atenção primária", "ESF", "família", "comunidade"],
+    content: `══════════════════════════════════════════════
+   ANAMNESE EM MEDICINA DE FAMÍLIA (APS/ESF)
+══════════════════════════════════════════════
+
+1️⃣ MOTIVO DA CONSULTA — ABORDAGEM CENTRADA NA PESSOA
+• Queixa principal (palavras do paciente): "____________________"
+• O que o(a) trouxe HOJE especificamente?
+• Sentimentos sobre a queixa: _______________________
+• Ideias próprias sobre o que pode ser: _______________________
+• Impacto na vida cotidiana (funcionalidade): _______________________
+• Expectativas em relação à consulta: _______________________
+
+Método SOAP (para registro):
+  S (Subjetivo): narrativa do paciente
+  O (Objetivo): exame físico e dados mensuráveis
+  A (Avaliação): hipóteses/diagnósticos (CIAP-2 + CID-10)
+  P (Plano): conduta, encaminhamentos, retorno
+
+2️⃣ CONTEXTO FAMILIAR — GENOGRAMA E ECOMAPA
+• Composição familiar (quem mora junto):
+  Nome: __________ Parentesco: __________ Idade: ____ Saúde: __________
+  Nome: __________ Parentesco: __________ Idade: ____ Saúde: __________
+  Nome: __________ Parentesco: __________ Idade: ____ Saúde: __________
+  Nome: __________ Parentesco: __________ Idade: ____ Saúde: __________
+• Tipo de família: ( ) Nuclear ( ) Extensa ( ) Monoparental ( ) Reconstituída ( ) Unipessoal
+• Ciclo de vida familiar (Duvall):
+  ( ) Formação do casal
+  ( ) Família com filhos pequenos
+  ( ) Família com filhos adolescentes
+  ( ) Família com filhos adultos (plataforma de lançamento)
+  ( ) Família no estágio tardio
+• Dinâmica familiar:
+  Conflitos identificados: _______________________
+  Rede de apoio: _______________________
+  Cuidador principal (se aplicável): _______________________
+• Ecomapa — Redes de suporte:
+  Saúde (UBS, hospital): _______________________
+  Escola/trabalho: _______________________
+  Igreja/religião: _______________________
+  Lazer/amigos: _______________________
+  Assistência social (CRAS/CREAS): _______________________
+
+3️⃣ CLASSIFICAÇÃO CIAP-2 E ABORDAGEM POR PROBLEMAS
+• Problema 1: _____________ CIAP-2: _____ CID-10: _____
+  Status: ( ) Ativo ( ) Inativo  Início: ___/___/___
+• Problema 2: _____________ CIAP-2: _____ CID-10: _____
+  Status: ( ) Ativo ( ) Inativo  Início: ___/___/___
+• Problema 3: _____________ CIAP-2: _____ CID-10: _____
+  Status: ( ) Ativo ( ) Inativo  Início: ___/___/___
+
+📌 CIAP-2 prioriza o motivo da consulta, não o diagnóstico final.
+   Componentes: 1-Queixas/Sintomas | 2-Procedimentos | 3-Medicações | 
+   4-Resultados | 5-Administrativo | 6-Encaminhamento | 7-Diagnósticos
+
+4️⃣ RASTREAMENTOS E PREVENÇÃO (ciclo de vida)
+CRIANÇAS (0-10 anos):
+  ( ) Puericultura em dia (calendário de consultas)
+  ( ) Vacinação atualizada (PNI)
+  ( ) Desenvolvimento neuropsicomotor (Denver II/DNPM)
+  ( ) Teste do olhinho, orelhinha, coraçãozinho, pezinho
+  ( ) Suplementação de ferro e vitamina A
+  ( ) Saúde bucal — primeira consulta até 1 ano
+  ( ) Avaliação nutricional (curvas OMS)
+
+ADOLESCENTES (10-19 anos):
+  ( ) Tanner/maturação sexual
+  ( ) Saúde mental (PHQ-A, uso de substâncias)
+  ( ) Contracepção e ISTs
+  ( ) Violência/bullying
+  ( ) HPV — esquema vacinal
+
+ADULTOS:
+  ( ) PA a cada consulta (≥18 anos)
+  ( ) Glicemia de jejum a cada 3 anos (≥45 anos ou FR)
+  ( ) Lipidograma (homens ≥35a; mulheres ≥45a ou FR)
+  ( ) Papanicolaou (25-64 anos, a cada 3 anos)
+  ( ) Mamografia (50-69 anos, a cada 2 anos — INCA)
+  ( ) Pesquisa de sangue oculto (50-75 anos, anual)
+  ( ) Rastreio de depressão (PHQ-2/PHQ-9)
+  ( ) Rastreio de tabagismo e etilismo (AUDIT)
+
+IDOSOS (≥60 anos):
+  ( ) Avaliação multidimensional da pessoa idosa (AMPI)
+  ( ) Rastreio cognitivo (Mini-Cog/MEEM)
+  ( ) Risco de quedas
+  ( ) Vacinação (influenza, pneumococo, herpes-zóster)
+  ( ) Revisão de polifarmácia
+
+5️⃣ ESTRATIFICAÇÃO DE RISCO CARDIOVASCULAR E METABÓLICO
+• Escore de Framingham: _____ pontos → Risco: ( ) Baixo ( ) Intermediário ( ) Alto
+• HAS — Classificação de risco:
+  ( ) Baixo (E1 sem FR) ( ) Moderado (E1-2 com 1-2 FR)
+  ( ) Alto (E3 ou LOA ou DM) ( ) Muito alto (DCV estabelecida)
+• DM — Classificação:
+  ( ) Sem complicações ( ) Com complicação micro ( ) Com complicação macro
+• Tabagismo — estágio motivacional (Prochaska):
+  ( ) Pré-contemplação ( ) Contemplação ( ) Preparação ( ) Ação ( ) Manutenção
+
+6️⃣ TERRITORIALIZAÇÃO E DETERMINANTES SOCIAIS
+• Área/Microárea: __________ ACS responsável: __________
+• Acesso à água tratada: ( ) Sim ( ) Não
+• Esgotamento sanitário: ( ) Rede ( ) Fossa ( ) Céu aberto
+• Moradia: ( ) Alvenaria ( ) Madeira ( ) Outro: __________
+  Cômodos: ____ Moradores: ____ (aglomeração: >2 pessoas/cômodo)
+• Renda familiar: R$ _________ | Per capita: R$ _________
+  ( ) <1/4 SM ( ) 1/4-1/2 SM ( ) 1/2-1 SM ( ) 1-2 SM ( ) >2 SM
+• Cadastro Único: ( ) Sim — NIS: ____________ ( ) Não
+• Bolsa Família/BPC: ( ) Sim ( ) Não
+• Segurança alimentar (EBIA): ( ) Segurança ( ) Insegurança leve ( ) Moderada ( ) Grave
+• Violência doméstica/comunitária: ( ) Rastreada ( ) Identificada → notificação
+
+7️⃣ SAÚDE DA MULHER NA APS
+• Menarca: ____ anos  DUM: ___/___/___
+• G___P___A___C___ | IG (se gestante): ____ sem
+• Pré-natal: ( ) Em acompanhamento ( ) Nº consultas: ____
+  Estratificação (caderneta): ( ) Risco habitual ( ) Alto risco
+• Anticoncepção atual: _______________________
+• Último Papanicolaou: ___/___/___ Resultado: _______________
+• Última mamografia (se aplicável): ___/___/___ BI-RADS: _____
+• Climatério/menopausa: ( ) Não ( ) Sim — sintomas: ______________
+
+8️⃣ SAÚDE MENTAL NA APS
+• PHQ-2 (rastreio): Nas últimas 2 semanas:
+  1) Pouco interesse ou prazer: ( ) 0 ( ) 1 ( ) 2 ( ) 3
+  2) Sentir-se deprimido/sem esperança: ( ) 0 ( ) 1 ( ) 2 ( ) 3
+  Total: ____ (≥3 → aplicar PHQ-9)
+• PHQ-9 (se positivo): Total: ____ / 27
+  ( ) Mínima (0-4) ( ) Leve (5-9) ( ) Moderada (10-14) ( ) Mod-grave (15-19) ( ) Grave (20-27)
+• GAD-7 (ansiedade): Total: ____ / 21
+• AUDIT (álcool): Total: ____ / 40
+  ( ) Uso de baixo risco (0-7) ( ) Uso de risco (8-15) ( ) Uso nocivo (16-19) ( ) Provável dependência (≥20)
+• ASSIST (outras substâncias): _______________________
+• Ideação suicida: ( ) Não ( ) Sim → escala Columbia (C-SSRS)
+• Matriciamento com NASF/CAPS: ( ) Indicado ( ) Já em acompanhamento
+
+9️⃣ VISITA DOMICILIAR — ROTEIRO
+• Data: ___/___/___ Profissionais presentes: _______________________
+• Motivo: ( ) Busca ativa ( ) Acamado ( ) Puerpério ( ) Pós-alta ( ) Outro: __________
+• Condições do domicílio:
+  Higiene: ( ) Adequada ( ) Inadequada
+  Acessibilidade: ( ) Adequada ( ) Barreiras: __________
+  Riscos identificados: _______________________
+• Avaliação do paciente:
+  Estado geral: _______________________
+  Medicações em uso (conferir embalagens): _______________________
+  Adesão ao tratamento: ( ) Boa ( ) Regular ( ) Ruim
+  Sinais vitais: PA: ___/___ FC: ___ Tax: ___ SpO2: ___
+• Orientações fornecidas: _______________________
+• Encaminhamentos necessários: _______________________
+• Próxima visita: ___/___/___`,
+    tips: "Na APS, use SEMPRE a CIAP-2 como classificação primária (o CID-10 é complementar). O genograma é ferramenta essencial — desenhe na primeira consulta e atualize. A abordagem centrada na pessoa (método Calgary-Cambridge) melhora adesão em 30%. Lembre: 80% dos problemas de saúde se resolvem na APS — evite encaminhamentos desnecessários. O SOAP é o padrão-ouro de registro no prontuário da ESF.",
+  },
+  {
+    id: "toxicologia",
+    title: "Anamnese em Toxicologia Clínica",
+    emoji: "☠️",
+    tags: ["intoxicação", "toxicologia", "envenenamento", "drogas"],
+    content: `══════════════════════════════════════════════
+      ANAMNESE EM TOXICOLOGIA CLÍNICA
+══════════════════════════════════════════════
+
+1️⃣ IDENTIFICAÇÃO DO AGENTE TÓXICO
+• Agente suspeito/confirmado: _______________________________
+• Classe do agente:
+  ( ) Medicamento — qual: _______________________
+  ( ) Agrotóxico/pesticida — classe: ( ) Organofosforado ( ) Carbamato ( ) Piretroide ( ) Herbicida ( ) Rodenticida ( ) Outro
+  ( ) Produto de limpeza — qual: _______________________
+  ( ) Droga de abuso — qual: _______________________
+  ( ) Planta tóxica — qual: _______________________
+  ( ) Animal peçonhento — qual: _______________________
+  ( ) Metal pesado — qual: _______________________
+  ( ) Gás/inalante — qual: _______________________
+  ( ) Alimento (intoxicação alimentar)
+  ( ) Substância industrial/ocupacional — qual: _______________________
+  ( ) Desconhecido
+
+• Fonte de informação do agente:
+  ( ) Paciente ( ) Familiar ( ) Embalagem/rótulo ( ) Bombeiros/SAMU
+  ( ) CIT — Centro de Informação Toxicológica: 0800-722-6001 (DISQUE-INTOXICAÇÃO)
+
+2️⃣ CIRCUNSTÂNCIAS DA EXPOSIÇÃO
+• Via de exposição:
+  ( ) Oral/ingestão ( ) Inalatória ( ) Dérmica/cutânea ( ) Ocular
+  ( ) Parenteral (IV/IM/SC) ( ) Retal ( ) Mucosa ( ) Picada/mordedura
+• Quantidade estimada: _______________________________
+  Medicamentos: ____ comprimidos × ____ mg = ____ mg total
+  Peso do paciente: ____ kg → Dose: ____ mg/kg
+• Horário da exposição: ___:___  Tempo decorrido: ____ h ____ min
+• Local da exposição: ( ) Domicílio ( ) Trabalho ( ) Via pública ( ) Rural ( ) Outro
+• Circunstância:
+  ( ) Acidental ( ) Tentativa de suicídio ( ) Homicídio/criminosa
+  ( ) Ocupacional ( ) Abuso/uso recreativo ( ) Reação adversa a medicamento
+  ( ) Erro de medicação ( ) Ambiental ( ) Alimentar
+  ( ) Automedicação
+
+⚠️ Se TENTATIVA DE SUICÍDIO:
+  • Intencionalidade: ( ) Impulsiva ( ) Planejada
+  • Meios disponíveis em casa: _______________________
+  • Carta/mensagem de despedida: ( ) Sim ( ) Não
+  • Tentativas prévias: ( ) Sim — quantas: ____ ( ) Não
+  • Acompanhamento psiquiátrico: ( ) Sim ( ) Não
+  → Acionar CAPS/psiquiatria e notificação compulsória (SINAN)
+
+3️⃣ TOXÍNDROMES — RECONHECIMENTO CLÍNICO
+┌─────────────────────────────────────────────────────────────────┐
+│ TOXÍNDROME        │ SINAIS CLÁSSICOS                           │
+├─────────────────────────────────────────────────────────────────┤
+│ Colinérgica       │ SLUDGE: Salivação, Lacrimejamento,         │
+│ (organofosf.)     │ Urina, Diarreia, GI (cólica), Emese       │
+│                   │ + Miose, bradicardia, broncoespasmo         │
+│                   │ → Antídoto: ATROPINA + PRALIDOXIMA          │
+├─────────────────────────────────────────────────────────────────┤
+│ Anticolinérgica   │ "Quente como uma lebre, seco como um       │
+│ (atropínicos)     │ osso, cego como um morcego, louco como     │
+│                   │ um chapeleiro, vermelho como beterraba"     │
+│                   │ Midríase, taquicardia, retenção urinária    │
+│                   │ → Antídoto: FISOSTIGMINA (se grave)         │
+├─────────────────────────────────────────────────────────────────┤
+│ Simpatomimética   │ Midríase, taquicardia, HAS, hipertermia,   │
+│ (cocaína, anfet.) │ agitação, sudorese, convulsões              │
+│                   │ → BZD + suporte                             │
+├─────────────────────────────────────────────────────────────────┤
+│ Opioide           │ Miose puntiforme, bradipneia, ↓consciência │
+│                   │ hipotensão, hipotermia                      │
+│                   │ → Antídoto: NALOXONA 0,4-2 mg IV            │
+├─────────────────────────────────────────────────────────────────┤
+│ Sedativo-hipnót.  │ Sedação, ataxia, disartria, hipotensão     │
+│ (BZD, barbit.)    │ → BZD: FLUMAZENIL 0,2 mg IV (com cautela)  │
+├─────────────────────────────────────────────────────────────────┤
+│ Serotoninérgica   │ Tríade: alteração mental + hiperatividade   │
+│                   │ autonômica + neuromuscular (clônus, hiper-  │
+│                   │ reflexia, tremor) → CIPROEPTADINA            │
+├─────────────────────────────────────────────────────────────────┤
+│ Extrapiramidal    │ Distonia, acatisia, rigidez, opisthótonos   │
+│ (antipsicóticos)  │ → BIPERIDENO 2-5 mg IM/IV                   │
+└─────────────────────────────────────────────────────────────────┘
+
+4️⃣ QUADRO CLÍNICO ATUAL
+• Nível de consciência: Glasgow: ____ /15 (O:__ V:__ M:__)
+• Pupilas: ( ) Miose ( ) Midríase ( ) Isocóricas ( ) Anisocoria
+  Fotorreação: ( ) Presente ( ) Ausente
+• Pele: ( ) Seca ( ) Sudorese ( ) Rubor ( ) Palidez ( ) Cianose
+• Mucosas: ( ) Secas ( ) Úmidas ( ) Queimaduras químicas ( ) Sialorreia
+• Sinais vitais:
+  PA: ___/___ mmHg  FC: ___ bpm  FR: ___ irpm  Tax: ___°C  SpO2: ___%
+  Glicemia capilar: ___ mg/dL
+• Cardiovascular: ( ) Taqui ( ) Bradi ( ) Arritmia — tipo: __________
+  QTc no ECG: ____ ms (>500 ms = risco de Torsades)
+  QRS alargado: ( ) Sim — largura: ____ ms ( ) Não
+• Respiratório: ( ) Bradipneia ( ) Taquipneia ( ) Broncoespasmo ( ) Edema pulmonar
+• GI: ( ) Vômitos ( ) Diarreia ( ) Dor abdominal ( ) Hematêmese
+• Neurológico: ( ) Convulsões ( ) Fasciculações ( ) Tremor ( ) Nistagmo ( ) Ataxia ( ) Coma
+• Odores característicos:
+  ( ) Alho (organofosforado) ( ) Amêndoas amargas (cianeto)
+  ( ) Acetona (cetoacidose) ( ) Naftalina (paradiclorobenzeno)
+
+5️⃣ MEDIDAS DE DESCONTAMINAÇÃO (verificar indicação)
+□ LAVAGEM GÁSTRICA: indicada até 1-2h da ingestão
+  Contraindicações: ( ) Cáusticos ( ) Hidrocarbonetos ( ) Rebaixamento sem IOT ( ) Convulsões
+  Realizada: ( ) Sim — horário: ___:___ Volume: ____ mL ( ) Não — motivo: __________
+□ CARVÃO ATIVADO: 1 g/kg (máx 50g) em água
+  Indicado até 1-2h da ingestão (exceção: doses múltiplas para teofilina, carbamazepina, dapsona)
+  Administrado: ( ) Sim — dose: ____ g horário: ___:___ ( ) Não — motivo: __________
+  CI: cáusticos, hidrocarbonetos, metais, álcoois, íleo
+□ IRRIGAÇÃO INTESTINAL TOTAL (PEG): para body packers, ferro, lítio, sustained-release
+□ DESCONTAMINAÇÃO CUTÂNEA: lavagem com água corrente × 15-20 min
+□ DESCONTAMINAÇÃO OCULAR: irrigação com SF 0,9% × 15-30 min
+
+6️⃣ ANTÍDOTOS — REFERÊNCIA RÁPIDA
+┌──────────────────────────────────────────────────┐
+│ TÓXICO              │ ANTÍDOTO                   │
+├──────────────────────────────────────────────────┤
+│ Paracetamol          │ N-acetilcisteína (NAC)     │
+│ Organofosforado      │ Atropina + Pralidoxima     │
+│ Benzodiazepínico     │ Flumazenil (com cautela)   │
+│ Opioide              │ Naloxona                   │
+│ Betabloqueador       │ Glucagon                   │
+│ BCC (verapamil/dilt) │ Cálcio IV + insulina HD    │
+│ Warfarina            │ Vitamina K + PFC/CCP       │
+│ Ferro                │ Deferoxamina               │
+│ Cianeto              │ Hidroxocobalamina           │
+│ Metanol/Etilenoglicol│ Fomepizol (ou etanol)      │
+│ Isoniazida           │ Piridoxina (Vit B6)        │
+│ Digoxina             │ Anticorpos antidigoxina     │
+│ Heparina             │ Protamina                  │
+│ Metemoglobinemia      │ Azul de metileno           │
+│ Anticolinérgico       │ Fisostigmina               │
+│ Antipsicótico (DEP)   │ Biperideno                 │
+│ Cumarínico (rato)     │ Vitamina K1 (fitomenadiona)│
+│ Sulfoniluréia         │ Octreotida                 │
+│ Tricíclico            │ Bicarbonato de sódio        │
+└──────────────────────────────────────────────────┘
+
+7️⃣ EXAMES COMPLEMENTARES
+Laboratoriais:
+  ( ) Hemograma ( ) Eletrólitos (Na, K, Ca, Mg, P)
+  ( ) Função renal (Ur, Cr) ( ) Função hepática (TGO, TGP, BT, INR)
+  ( ) Gasometria arterial com lactato
+  ( ) Glicemia ( ) Amilase/lipase
+  ( ) CPK/CK-MB/troponina (rabdomiólise/cardiotoxicidade)
+  ( ) Coagulograma (TP, TTPa, INR, fibrinogênio)
+  ( ) Nível sérico do tóxico: ____________ Resultado: ___________
+  ( ) Screening toxicológico urinário (ETS)
+  ( ) Colinesterase sérica/eritrocitária (organofosforados)
+  ( ) Metemoglobina ( ) Carboxiemoglobina
+  ( ) Osmolalidade sérica (gap osmolar para álcoois tóxicos)
+  GAP osmolar = Osm medida - Osm calculada (>10 = significativo)
+  GAP aniônico = Na - (Cl + HCO3) (normal 8-12)
+
+ECG:
+  ( ) QTc prolongado ( ) QRS alargado ( ) Brugada-like ( ) Bradicardia
+  ( ) Taquicardia sinusal ( ) Arritmia ventricular
+
+8️⃣ NOTIFICAÇÃO COMPULSÓRIA
+• SINAN — Ficha de investigação de intoxicação exógena
+  ( ) Notificação realizada — Nº: _______________
+• CIT contactado: ( ) Sim — orientação: _______________________ ( ) Não
+• Caso ocupacional → CAT emitida: ( ) Sim ( ) Não ( ) NA`,
+    tips: "Ligue SEMPRE para o CIT (0800-722-6001) em caso de dúvida — funciona 24h. O carvão ativado NÃO adsorve: metais (ferro, lítio), álcoois (metanol, etanol), cáusticos e hidrocarbonetos. QRS >100ms no tricíclico → bicarbonato de sódio. NAC é mais eficaz nas primeiras 8h pós-paracetamol (use o nomograma de Rumack-Matthew). Organofosforado: atropinize até secar secreções (pode precisar de doses muito altas). Síndrome serotoninérgica ≠ Síndrome neuroléptica maligna — a primeira tem clônus e hiperreflexia, a segunda tem rigidez em cano de chumbo. NUNCA induza vômitos com xarope de ipeca — prática abandonada.",
+  },
+  {
+    id: "medicina-sono",
+    title: "Anamnese em Medicina do Sono",
+    emoji: "😴",
+    tags: ["sono", "insônia", "apneia", "sonolência"],
+    content: `══════════════════════════════════════════════
+       ANAMNESE EM MEDICINA DO SONO
+══════════════════════════════════════════════
+
+1️⃣ QUEIXA PRINCIPAL RELACIONADA AO SONO
+• Queixa: ( ) Dificuldade para dormir ( ) Sonolência diurna excessiva
+  ( ) Ronco ( ) Apneias presenciadas ( ) Movimentos anormais no sono
+  ( ) Comportamento anormal no sono ( ) Horário de sono irregular
+  ( ) Outro: _______________________
+• Duração da queixa: _______________________
+• Frequência: ( ) Toda noite ( ) >3x/sem ( ) 1-3x/sem ( ) Esporádica
+• Fator desencadeante identificado: _______________________
+
+2️⃣ DIÁRIO DO SONO (últimas 2 semanas)
+• Horário de deitar: ___:___
+• Latência do sono (tempo para adormecer): ____ min
+  Normal <30 min | Patológico >30 min
+• Horário de adormecer: ___:___
+• Despertares noturnos: ____ vezes/noite
+  Causa: ( ) Espontâneo ( ) Dor ( ) Noctúria ( ) Ansiedade ( ) Dispneia ( ) Outro
+  Tempo para readormecer: ____ min
+• Despertar final: ___:___
+• Horário de levantar: ___:___
+• Tempo total na cama (TTC): ____ h ____ min
+• Tempo total de sono estimado (TTS): ____ h ____ min
+• Eficiência do sono = TTS/TTC × 100 = ____%
+  Normal ≥85% | Insônia <85%
+
+• Qualidade subjetiva do sono: ( ) Boa ( ) Regular ( ) Ruim ( ) Péssima
+• Sensação ao acordar: ( ) Descansado ( ) Cansado ( ) Pior que antes de dormir
+
+3️⃣ HIGIENE DO SONO — CHECKLIST
+Hábitos inadequados (marcar os presentes):
+  ( ) Horários irregulares de dormir/acordar
+  ( ) Tempo excessivo na cama (sem dormir)
+  ( ) Cochilos diurnos >30 min ou após 15h
+  ( ) Uso de telas (celular/TV/computador) <1h antes de dormir
+  ( ) Cafeína após 14h — quantidade/dia: ____ xícaras
+  ( ) Álcool como indutor de sono
+  ( ) Exercício físico intenso <3h antes de dormir
+  ( ) Refeição pesada noturna (jantar tardio)
+  ( ) Ambiente inadequado: ( ) Luz ( ) Ruído ( ) Temperatura ( ) Colchão
+  ( ) Trabalho/estudo na cama
+  ( ) Uso de celular durante despertares noturnos
+
+4️⃣ ESCALAS E QUESTIONÁRIOS VALIDADOS
+
+EPWORTH (Sonolência Diurna) — Chance de cochilar (0-3):
+  Sentado lendo: ____
+  Assistindo TV: ____
+  Sentado em local público: ____
+  Passageiro em carro por 1h: ____
+  Deitado à tarde: ____
+  Sentado conversando: ____
+  Sentado após almoço sem álcool: ____
+  No carro parado por minutos no trânsito: ____
+  TOTAL: ____ /24
+  Interpretação: ≤10 normal | 11-14 leve | 15-17 moderada | ≥18 grave
+
+ISI — Índice de Gravidade da Insônia (0-4 cada):
+  1) Dificuldade para iniciar o sono: ____
+  2) Dificuldade para manter o sono: ____
+  3) Despertar precoce: ____
+  4) Satisfação com o sono: ____
+  5) Interferência na funcionalidade: ____
+  6) Percepção do problema por outros: ____
+  7) Preocupação com o sono: ____
+  TOTAL: ____ /28
+  0-7: sem insônia | 8-14: subclínica | 15-21: moderada | 22-28: grave
+
+STOP-BANG (Rastreio de AOS):
+  S — Snoring (ronco alto): ( ) Sim ( ) Não
+  T — Tired (cansaço/sonolência diurna): ( ) Sim ( ) Não
+  O — Observed apnea (apneias presenciadas): ( ) Sim ( ) Não
+  P — Pressure (HAS em tratamento): ( ) Sim ( ) Não
+  B — BMI >35: ( ) Sim ( ) Não
+  A — Age >50 anos: ( ) Sim ( ) Não
+  N — Neck >40 cm (♀) ou >43 cm (♂): ( ) Sim ( ) Não
+  G — Gender masculino: ( ) Sim ( ) Não
+  TOTAL: ____ /8
+  0-2: baixo risco | 3-4: intermediário | 5-8: alto risco de AOS
+
+5️⃣ RONCO E APNEIA OBSTRUTIVA DO SONO (AOS)
+• Ronco: ( ) Presente ( ) Ausente
+  Intensidade: ( ) Leve ( ) Incomoda parceiro ( ) Ouvido em outro cômodo
+  Posicional: ( ) Pior em decúbito dorsal ( ) Todas posições
+  Há quanto tempo: _______________________
+• Apneias presenciadas por parceiro: ( ) Sim ( ) Não
+  Engasgos/sufocamento noturno: ( ) Sim ( ) Não
+• Noctúria (>2x): ( ) Sim — ___x/noite ( ) Não
+• Cefaleia matinal: ( ) Sim ( ) Não
+• Boca seca ao acordar: ( ) Sim ( ) Não
+• Refluxo noturno: ( ) Sim ( ) Não
+• Avaliação anatômica:
+  Mallampati: ( ) I ( ) II ( ) III ( ) IV
+  Circunferência cervical: ____ cm
+  Retrognatia: ( ) Sim ( ) Não
+  Hipertrofia de amígdalas: ( ) 0 ( ) I ( ) II ( ) III ( ) IV
+  Desvio de septo/obstrução nasal: ( ) Sim ( ) Não
+
+• Polissonografia (PSG) prévia: ( ) Sim — IAH: ____ /h ( ) Não
+  Classificação AOS: <5 normal | 5-14 leve | 15-29 moderada | ≥30 grave
+  SpO2 mínima: ___% | Tempo SpO2 <90%: ____ min
+• CPAP/BiPAP em uso: ( ) Sim — pressão: ____ cmH2O ( ) Não
+  Adesão (h/noite média): ____ h | ≥4h em ≥70% das noites = adequada
+
+6️⃣ INSÔNIA — AVALIAÇÃO DETALHADA
+• Tipo: ( ) Inicial (dificuldade para iniciar)
+  ( ) Manutenção (despertares) ( ) Terminal (despertar precoce)
+  ( ) Mista
+• Duração: ( ) Aguda (<3 meses) ( ) Crônica (≥3 meses, ≥3x/sem)
+• Modelo 3P de Spielman:
+  Predisponentes: ( ) Ansiedade-traço ( ) Perfeccionismo ( ) Hipervigilância ( ) HF insônia
+  Precipitantes: _______________________
+  Perpetuantes: ( ) Tempo excessivo na cama ( ) Cochilos ( ) Preocupação com sono ( ) Substâncias
+• Cognições disfuncionais sobre o sono:
+  ( ) "Preciso dormir 8h" ( ) "Amanhã será terrível se não dormir"
+  ( ) "Algo está errado comigo" ( ) "Nunca mais vou dormir bem"
+• TCC-I (Terapia Cognitivo-Comportamental para Insônia) — 1ª linha:
+  ( ) Já tentou ( ) Em andamento ( ) Não oferecida
+
+7️⃣ PARASSONIAS E OUTROS DISTÚRBIOS
+NREM (1ª metade da noite):
+  ( ) Sonambulismo ( ) Terror noturno ( ) Despertar confusional
+  ( ) Sexsônia ( ) Alimentação noturna relacionada ao sono
+REM (2ª metade da noite):
+  ( ) Transtorno comportamental do sono REM (TCR)
+    Atuação de sonhos (socos, chutes, gritos, queda da cama)
+    ⚠️ TCR é fator de risco para sinucleinopatias (Parkinson, DCL)
+  ( ) Pesadelos recorrentes
+  ( ) Paralisia do sono
+
+Movimentos relacionados ao sono:
+  ( ) Síndrome das pernas inquietas (SPI/RLS)
+    Urgência para mover as pernas com sensação desagradável
+    Piora: ( ) Repouso ( ) Noite/final do dia → Alívio: ( ) Movimento
+    Ferritina sérica: ____ ng/mL (tratar se <75 na SPI)
+  ( ) Movimentos periódicos dos membros (PLMS)
+  ( ) Bruxismo do sono
+  ( ) Câimbras noturnas
+
+Distúrbios do ritmo circadiano:
+  ( ) Fase atrasada (coruja extrema — dorme ~3-5h, acorda ~11-13h)
+  ( ) Fase avançada (idosos — dorme ~19-21h, acorda ~3-5h)
+  ( ) Trabalho em turnos/noturno
+  ( ) Jet lag
+  Cronotipo: ( ) Matutino ( ) Vespertino ( ) Intermediário
+
+8️⃣ MEDICAÇÕES E SUBSTÂNCIAS QUE AFETAM O SONO
+Medicações em uso que podem causar insônia:
+  ( ) Corticoides ( ) ISRS/IRSN ( ) Betabloqueadores ( ) Hormônios tireoidianos
+  ( ) Descongestionantes ( ) Estimulantes (metilfenidato) ( ) Broncodilatadores
+Medicações em uso que podem causar sonolência:
+  ( ) Anti-histamínicos ( ) Benzodiazepínicos ( ) Opioides ( ) Anticonvulsivantes
+  ( ) Antipsicóticos ( ) Mirtazapina ( ) Trazodona ( ) Gabapentina/pregabalina
+Substâncias:
+  ( ) Cafeína: ____ mg/dia (1 xícara ≈ 100 mg) | Horário último café: ___:___
+  ( ) Álcool — freq/quantidade: _______________________
+  ( ) Cannabis ( ) Nicotina ( ) Energéticos ( ) Outros: __________
+
+Hipnóticos em uso:
+  Medicação: _________________ Dose: ______ Há quanto tempo: ____________
+  ( ) Uso contínuo ( ) Uso conforme necessidade
+  Tentativas de retirada: ( ) Sim ( ) Não
+
+9️⃣ COMORBIDADES RELEVANTES PARA O SONO
+  ( ) Depressão ( ) Ansiedade generalizada ( ) TEPT
+  ( ) Dor crônica — localização: _______________________
+  ( ) DRGE/refluxo ( ) IC/dispneia paroxística noturna
+  ( ) DPOC ( ) Asma noturna
+  ( ) Fibromialgia ( ) Noctúria (HPB, DM, IC)
+  ( ) Hipotireoidismo ( ) Hipertireoidismo
+  ( ) Gravidez — IG: ____ semanas
+  ( ) Menopausa (fogachos noturnos)
+  ( ) Parkinson/doenças neurodegenerativas
+  ( ) TDAH`,
+    tips: "A TCC-I é o tratamento de 1ª linha para insônia crônica — superior a hipnóticos no longo prazo. Epworth ≥11 indica sonolência diurna excessiva, mas não diferencia a causa (AOS, narcolepsia, sono insuficiente). STOP-BANG ≥5 tem alta sensibilidade para AOS moderada-grave. Ferritina <75 ng/mL em paciente com SPI → repor ferro antes de iniciar dopaminérgicos. TCR isolado em >50 anos evolui para Parkinson/DCL em 80-90% dos casos em 10-15 anos — é um sinal prodrômico. Restrição de tempo na cama (janela de sono) é a técnica mais potente da TCC-I: comece com TTS + 30 min e expanda conforme eficiência >85%.",
+  },
 ];
 
 export default function AnamnesisGuide() {
