@@ -1019,6 +1019,457 @@ Encorajar o paciente a expressar:
 • 0%: Morte`,
     tips: "Em cuidados paliativos, a anamnese vai além do biológico — abrange sofrimento total (dor física, psíquica, social e espiritual). Use ESAS em toda consulta para monitorar sintomas. Sempre pergunte sobre DAV precocemente, não apenas em fase final.",
   },
+  {
+    id: "pre-operatoria",
+    title: "Anamnese Pré-Operatória",
+    emoji: "🏥",
+    tags: ["cirurgia", "pré-op", "risco cirúrgico", "anestesia"],
+    content: `═══════════════════════════════════════
+  ANAMNESE PRÉ-OPERATÓRIA COMPLETA
+═══════════════════════════════════════
+
+1️⃣ PROCEDIMENTO PROPOSTO:
+   • Cirurgia: ______________________________
+   • Porte: ( ) Pequeno ( ) Médio ( ) Grande
+   • Urgência: ( ) Eletiva ( ) Urgência ( ) Emergência
+   • Anestesia prevista: ( ) Geral ( ) Raqui ( ) Peridural
+     ( ) Local ( ) Sedação ( ) Combinada
+   • Cirurgião responsável: __________________
+   • Data prevista: ___/___/___
+
+2️⃣ ANTECEDENTES CIRÚRGICOS E ANESTÉSICOS:
+   • Cirurgias prévias:
+     1. ________________ Data: ____ Anestesia: ____
+     2. ________________ Data: ____ Anestesia: ____
+     3. ________________ Data: ____ Anestesia: ____
+   • Complicações anestésicas prévias:
+     ( ) Nenhuma ( ) Náusea/vômito pós-op
+     ( ) Intubação difícil ( ) Anafilaxia
+     ( ) Hipertermia maligna ( ) Despertar intraoperatório
+     ( ) Outra: _____________________________
+   • História familiar de complicação anestésica:
+     ( ) Sim — Qual? __________ ( ) Não ( ) Desconhece
+   • Hipertermia maligna na família: ( ) Sim ( ) Não
+
+3️⃣ AVALIAÇÃO DE VIA AÉREA (MALLAMPATI):
+   • Mallampati: ( ) I ( ) II ( ) III ( ) IV
+   • Abertura oral: ______ cm (normal >3cm)
+   • Distância tireo-mentoniana: ______ cm (normal >6cm)
+   • Extensão cervical: ( ) Normal ( ) Limitada
+   • Dentes: ( ) Íntegros ( ) Prótese ( ) Dentes soltos
+   • Barba espessa: ( ) Sim ( ) Não
+   • Obesidade cervical: ( ) Sim ( ) Não
+   • Preditores de IOT difícil: ( ) Sim ( ) Não
+
+4️⃣ COMORBIDADES — CHECKLIST SISTÊMICO:
+   CARDIOVASCULAR:
+   • HAS: ( ) Sim — PA habitual: ___x___ mmHg
+   • Cardiopatia: ( ) Sim — Qual? _____________
+   • ICC: ( ) Sim — NYHA: ( ) I ( ) II ( ) III ( ) IV
+   • DAC/IAM prévio: ( ) Sim — Data: __________
+   • Stent/CRVM: ( ) Sim — Data: ______________
+   • Arritmia: ( ) Sim — Tipo: ________________
+   • Marca-passo/CDI: ( ) Sim
+   • Valvopatia: ( ) Sim — Qual? ______________
+   • Capacidade funcional: ______ METs
+     ( ) ≥4 METs (sobe escada, caminha 2 quarteirões)
+     ( ) <4 METs — ALTO RISCO
+
+   PULMONAR:
+   • Asma/DPOC: ( ) Sim — GOLD: ____
+   • Tabagismo: ( ) Sim ____ maços/ano ( ) Ex-tabagista
+   • SAOS: ( ) Sim — Usa CPAP: ( ) Sim ( ) Não
+   • Espirometria recente: VEF1 ____% CVF ____%
+
+   ENDÓCRINO/METABÓLICO:
+   • DM: ( ) Sim — Tipo: ____ HbA1c: ____%
+   • Tireoide: ( ) Hipo ( ) Hiper ( ) Eutireoidiano
+   • Insuficiência adrenal/corticoide crônico: ( ) Sim
+     → Necessita stress dose? ( ) Sim
+   • Obesidade: IMC ____
+
+   HEPÁTICO:
+   • Hepatopatia: ( ) Sim — Child-Pugh: ( ) A ( ) B ( ) C
+   • MELD: ____
+
+   RENAL:
+   • DRC: ( ) Sim — TFG: ____ mL/min
+   • Diálise: ( ) Sim — Tipo: ____ Último: ___/___
+
+   HEMATOLÓGICO:
+   • Coagulopatia: ( ) Sim — Qual? ___________
+   • Anticoagulante: ( ) Sim — Qual? __________
+     Último uso: ___/___/___ Suspenso: ( ) Sim ( ) Não
+   • Antiagregante: ( ) Sim — Qual? ___________
+     Último uso: ___/___/___
+   • Bridging com heparina: ( ) Sim ( ) Não
+   • Anemia: ( ) Sim — Hb: ____
+
+   NEUROLÓGICO:
+   • Epilepsia: ( ) Sim ( ) Não
+   • AVC prévio: ( ) Sim ( ) Não
+   • Doença neuromuscular: ( ) Sim — Qual? _____
+
+5️⃣ MEDICAÇÕES EM USO — MANEJO PERIOPERATÓRIO:
+   Medicação        Dose     Manter?  Suspender quando?
+   ______________   ______   ( )M ( )S  ________________
+   ______________   ______   ( )M ( )S  ________________
+   ______________   ______   ( )M ( )S  ________________
+   ______________   ______   ( )M ( )S  ________________
+
+   📌 REGRAS GERAIS:
+   • MANTER: anti-hipertensivos (exceto IECA/BRA manhã),
+     betabloqueadores, estatinas, anticonvulsivantes,
+     corticoides, broncodilatadores
+   • SUSPENDER: metformina (24-48h), IECA/BRA (dia),
+     anticoagulantes (ver protocolo específico),
+     AINEs (3-5 dias), fitoterápicos (7 dias)
+
+6️⃣ ALERGIAS:
+   • Medicamentos: _________________________
+   • Látex: ( ) Sim ( ) Não
+   • Iodo/contraste: ( ) Sim ( ) Não
+   • Alimentos: ____________________________
+   • Tipo de reação: ( ) Anafilaxia ( ) Rash
+     ( ) Broncoespasmo ( ) Outra: ____________
+
+7️⃣ JEJUM PRÉ-OPERATÓRIO:
+   • Última refeição sólida: ___/___/___ ____:____
+   • Último líquido claro: ___/___/___ ____:____
+   • Protocolo ASA:
+     ☐ Líquidos claros: 2h de jejum
+     ☐ Leite materno: 4h
+     ☐ Fórmula/leite: 6h
+     ☐ Refeição leve: 6h
+     ☐ Refeição completa/gordurosa: 8h
+
+8️⃣ CLASSIFICAÇÃO DE RISCO:
+   • ASA: ( ) I ( ) II ( ) III ( ) IV ( ) V ( ) VI
+   • Índice de Lee (RCRI): ____/6 pontos
+     ☐ Cirurgia de alto risco
+     ☐ DAC
+     ☐ ICC
+     ☐ DCV (AVC/AIT)
+     ☐ DM insulino-dependente
+     ☐ Creatinina >2
+   • Risco cardíaco estimado: ____%
+   • CAPRINI (risco TEV): ____ pontos
+     ( ) Baixo ( ) Moderado ( ) Alto ( ) Muito alto
+   • Profilaxia TEV: ( ) Mecânica ( ) Farmacológica ( ) Ambas
+
+9️⃣ CONSENTIMENTO E ORIENTAÇÕES:
+   ☐ Paciente informado sobre riscos/benefícios
+   ☐ TCLE assinado
+   ☐ Reserva de hemoderivados (se necessário)
+   ☐ Tipagem sanguínea: ____
+   ☐ Exames pré-op revisados e adequados
+   ☐ Avaliação cardiológica (se indicada)
+   ☐ Profilaxia antibiótica planejada
+   ☐ Profilaxia TEV planejada`,
+    tips: "A avaliação pré-operatória deve ser proporcional ao porte cirúrgico e às comorbidades. Capacidade funcional ≥4 METs é o principal preditor. Sempre avaliar via aérea (Mallampati), risco de TEV (CAPRINI) e manejo de anticoagulantes. O índice de Lee (RCRI) estratifica risco cardíaco.",
+  },
+  {
+    id: "medicina-esporte",
+    title: "Anamnese em Medicina do Esporte",
+    emoji: "🏃",
+    tags: ["esporte", "atleta", "exercício", "aptidão física"],
+    content: `═══════════════════════════════════════
+  ANAMNESE EM MEDICINA DO ESPORTE
+═══════════════════════════════════════
+
+1️⃣ PERFIL DO ATLETA/PRATICANTE:
+   • Modalidade(s) praticada(s): _____________
+   • Nível: ( ) Recreativo ( ) Amador ( ) Profissional
+     ( ) Alto rendimento ( ) Paradesportivo
+   • Tempo de prática: ______ anos/meses
+   • Frequência: ______ x/semana
+   • Duração do treino: ______ minutos
+   • Volume semanal: ______ horas
+   • Fase do treinamento:
+     ( ) Pré-temporada ( ) Competitivo ( ) Transição
+   • Treinador/preparador físico: ( ) Sim ( ) Não
+   • Acompanhamento médico prévio: ( ) Sim ( ) Não
+
+2️⃣ HISTÓRIA DE LESÕES ESPORTIVAS:
+   Lesão 1:
+   • Tipo: _________________________________
+   • Local anatômico: ______________________
+   • Data: ___/___/___
+   • Mecanismo: ( ) Agudo/traumático ( ) Overuse
+   • Tratamento: ( ) Conservador ( ) Cirúrgico
+   • Tempo de afastamento: __________________
+   • Retorno completo: ( ) Sim ( ) Não
+
+   [Repetir para cada lesão]
+
+   • Lesões recorrentes na mesma região: ( ) Sim ( ) Não
+   • Concussão prévia: ( ) Sim — Quantas? ____
+   • Fratura por estresse: ( ) Sim ( ) Não
+   • Entorse recidivante: ( ) Sim ( ) Não
+
+3️⃣ AVALIAÇÃO CARDIOVASCULAR PRÉ-PARTICIPAÇÃO:
+   ☐ Já desmaiou durante exercício?
+   ☐ Dor no peito durante exercício?
+   ☐ Palpitações ou taquicardia durante exercício?
+   ☐ Falta de ar desproporcional ao esforço?
+   ☐ Cansaço excessivo comparado a colegas?
+   ☐ Sopro cardíaco conhecido?
+   ☐ Hipertensão arterial?
+   ☐ Morte súbita em familiar <50 anos?
+   ☐ Familiar com miocardiopatia hipertrófica?
+   ☐ Familiar com síndrome de Marfan?
+   ☐ Familiar com arritmias (QT longo, Brugada)?
+
+   → Se ≥1 SIM: ECG + avaliação cardiológica obrigatória
+
+4️⃣ TREINAMENTO E CARGA:
+   • Tipo predominante: ( ) Aeróbico ( ) Anaeróbico
+     ( ) Misto ( ) Força ( ) Flexibilidade
+   • Método de controle: ( ) FC ( ) Pace ( ) PSE
+     ( ) Potência ( ) GPS ( ) Nenhum
+   • FC repouso: ______ bpm
+   • FC máxima conhecida: ______ bpm
+   • VO2máx estimado/medido: ______ mL/kg/min
+   • Periodização: ( ) Linear ( ) Ondulada ( ) Bloco
+
+   SEMANA TÍPICA:
+   • Seg: ________________________________
+   • Ter: ________________________________
+   • Qua: ________________________________
+   • Qui: ________________________________
+   • Sex: ________________________________
+   • Sáb: ________________________________
+   • Dom: ________________________________
+
+   • Aquecimento: ( ) Sempre ( ) Às vezes ( ) Nunca
+   • Alongamento: ( ) Antes ( ) Após ( ) Ambos ( ) Não
+   • Descanso/recovery: ____ dias/semana
+
+5️⃣ NUTRIÇÃO ESPORTIVA:
+   • Refeição pré-treino: ___________________
+     Tempo antes do treino: ______ min
+   • Hidratação durante treino:
+     ( ) Água ( ) Isotônico ( ) Nada
+     Volume: ______ mL/hora
+   • Refeição pós-treino: ___________________
+     Tempo após treino: ______ min
+   • Suplementos em uso:
+     ( ) Whey protein ( ) Creatina ( ) Cafeína
+     ( ) BCAA ( ) Beta-alanina ( ) Maltodextrina
+     ( ) Vitaminas ( ) Ferro ( ) Outro: _______
+   • Substâncias proibidas (WADA):
+     ( ) Anabolizantes ( ) Estimulantes ( ) EPO
+     ( ) Diuréticos ( ) Hormônios ( ) Nenhuma
+   • Peso em competição vs. habitual: ________
+   • Faz restrição para peso: ( ) Sim ( ) Não
+
+6️⃣ SAÚDE MUSCULOESQUELÉTICA:
+   • Dor atual: ( ) Sim ( ) Não
+     Local: ______________ EVA: ____/10
+     Piora com: ( ) Treino ( ) Repouso ( ) Movimento específico
+   • Instabilidade articular: ( ) Sim — Onde? ___
+   • Limitação de ADM: ( ) Sim — Onde? ________
+   • Assimetria de força/mobilidade: ( ) Sim ( ) Não
+   • Uso de órteses/bandagens: ( ) Sim — Qual? __
+
+   TESTES FUNCIONAIS (marcar resultado):
+   • Agachamento unipodal: ( ) Normal ( ) Valgo ( ) Dor
+   • Y-Balance Test: Ant ____ PL ____ PM ____
+   • FMS Score: ____/21
+   • Single Leg Hop: D ____ cm  E ____ cm
+     LSI: ____% (normal >90%)
+
+7️⃣ SAÚDE MENTAL DO ATLETA:
+   • Motivação atual: ( ) Alta ( ) Moderada ( ) Baixa
+   • Burnout/overtraining: ( ) Sim ( ) Não
+     Sinais: ( ) Insônia ( ) Irritabilidade ( ) Queda rendimento
+     ( ) Infecções frequentes ( ) Perda de apetite
+   • Ansiedade pré-competição: ( ) Sim ( ) Não
+   • Pressão por resultados: ( ) Sim ( ) Não
+   • Imagem corporal: ( ) Adequada ( ) Distorcida
+   • Tríade da atleta feminina:
+     ☐ Disfunção menstrual
+     ☐ Baixa disponibilidade energética (RED-S)
+     ☐ Baixa densidade mineral óssea
+   • Acompanhamento psicológico: ( ) Sim ( ) Não
+
+8️⃣ SONO E RECUPERAÇÃO:
+   • Horas de sono/noite: ______
+   • Qualidade: ( ) Boa ( ) Regular ( ) Ruim
+   • Cochilos: ( ) Sim — ______ min
+   • Métodos de recuperação:
+     ( ) Crioterapia ( ) Massagem ( ) Compressão
+     ( ) Foam roller ( ) Alongamento ( ) Nenhum
+
+📌 SINAIS DE OVERTRAINING:
+• Queda persistente de rendimento >2 semanas
+• FC repouso elevada (>5 bpm acima do habitual)
+• Variabilidade da FC reduzida
+• Infecções de repetição (IVAS)
+• Lesões frequentes
+• Distúrbios do sono e humor`,
+    tips: "A avaliação pré-participação esportiva deve sempre incluir screening cardiovascular (questionário + ECG). Em atletas de alto rendimento, monitorar sinais de overtraining e RED-S. A tríade da atleta feminina é subdiagnosticada e tem consequências graves a longo prazo.",
+  },
+  {
+    id: "dermatologica",
+    title: "Anamnese Dermatológica",
+    emoji: "🔬",
+    tags: ["pele", "lesão", "dermatose", "dermatologia"],
+    content: `═══════════════════════════════════════
+  ANAMNESE DERMATOLÓGICA COMPLETA
+═══════════════════════════════════════
+
+1️⃣ QUEIXA DERMATOLÓGICA PRINCIPAL:
+   • Lesão/sintoma: _________________________
+   • Localização inicial: ____________________
+   • Tempo de evolução: _____________________
+   • Evolução: ( ) Estável ( ) Crescendo ( ) Diminuindo
+     ( ) Recorrente ( ) Migratória
+   • Lesão única ou múltipla: ________________
+
+2️⃣ CARACTERIZAÇÃO DA LESÃO — "7 PERGUNTAS DE OURO":
+   1. QUANDO começou? ______________________
+   2. ONDE iniciou? (primeiro local) _________
+   3. COMO era no início? ___________________
+   4. COMO evoluiu? (mudou cor, tamanho, forma?)
+      ______________________________________
+   5. ESPALHOU? Para onde? __________________
+   6. O que PIORA? ( ) Sol ( ) Calor ( ) Frio ( ) Suor
+      ( ) Estresse ( ) Alimento ( ) Medicamento
+      ( ) Menstruação ( ) Atrito ( ) Outro: ____
+   7. O que MELHORA? _______________________
+
+3️⃣ SINTOMAS ASSOCIADOS:
+   • Prurido: ( ) Sim — Intensidade: ____/10
+     ( ) Localizado ( ) Generalizado
+     ( ) Piora à noite ( ) Piora com calor
+   • Dor/ardência: ( ) Sim ( ) Não
+   • Sangramento: ( ) Sim ( ) Não
+   • Secreção: ( ) Sim — Tipo: ( ) Purulenta ( ) Serosa
+     ( ) Sanguinolenta ( ) Fétida
+   • Descamação: ( ) Sim ( ) Não
+   • Alteração de sensibilidade: ( ) Sim ( ) Não
+   • Sintomas sistêmicos: ( ) Febre ( ) Artralgia
+     ( ) Mal-estar ( ) Emagrecimento ( ) Linfadenopatia
+
+4️⃣ TRATAMENTOS JÁ REALIZADOS:
+   • Automedicação: ( ) Sim — O quê? __________
+   • Tratamentos tópicos prévios: ____________
+   • Tratamentos sistêmicos prévios: _________
+   • Procedimentos dermatológicos: ___________
+   • Resposta aos tratamentos: _______________
+   • Uso de produtos cosméticos na lesão: _____
+
+5️⃣ ANTECEDENTES DERMATOLÓGICOS:
+   • Dermatoses prévias: _____________________
+   • Atopia (eczema, asma, rinite): ( ) Sim ( ) Não
+   • Psoríase: ( ) Sim ( ) Não
+   • Vitiligo: ( ) Sim ( ) Não
+   • Câncer de pele: ( ) Sim — Tipo: __________
+   • Melanoma pessoal/familiar: ( ) Sim ( ) Não
+   • Nevos atípicos/displásicos: ( ) Sim ( ) Não
+   • Alergia de contato conhecida: ___________
+   • Reação a medicamentos cutânea: __________
+
+   HISTÓRIA FAMILIAR DERMATOLÓGICA:
+   • Psoríase: ( ) Sim ( ) Não
+   • Atopia: ( ) Sim ( ) Não
+   • Melanoma: ( ) Sim ( ) Não
+   • Outras dermatoses hereditárias: _________
+
+6️⃣ FATORES DE RISCO E EXPOSIÇÃO:
+   EXPOSIÇÃO SOLAR:
+   • Fototipo (Fitzpatrick):
+     ( ) I — Sempre queima, nunca bronzeia
+     ( ) II — Sempre queima, bronzeia pouco
+     ( ) III — Queima moderado, bronzeia gradual
+     ( ) IV — Queima pouco, bronzeia fácil
+     ( ) V — Raramente queima, bronzeia muito
+     ( ) VI — Nunca queima, pigmentação intensa
+   • Exposição solar ocupacional: ( ) Sim ( ) Não
+   • Exposição solar recreativa: ( ) Sim ( ) Não
+   • Uso de protetor solar: ( ) Diário ( ) Eventual ( ) Não
+     FPS: ____ Reaplicação: ( ) Sim ( ) Não
+   • Câmara de bronzeamento: ( ) Sim ( ) Não
+   • Queimaduras solares graves na infância: ( ) Sim ( ) Não
+   • Fotossensibilidade: ( ) Sim ( ) Não
+
+   CONTATO/EXPOSIÇÃO:
+   • Produtos químicos: _____________________
+   • Cosméticos novos: ______________________
+   • Metais (bijuterias, níquel): ( ) Sim ( ) Não
+   • Plantas: ( ) Sim ( ) Não
+   • Animais de estimação: ( ) Sim — Qual? _____
+   • Viagem recente: ( ) Sim — Para onde? ______
+   • Contato com pessoa com lesões de pele: ( ) Sim ( ) Não
+   • Picada de inseto: ( ) Sim ( ) Não
+
+7️⃣ MEDICAÇÕES E CORRELAÇÃO COM PELE:
+   • Medicamentos em uso (listar todos):
+     ______________________________________
+   • Início de medicação nova antes da lesão:
+     ( ) Sim — Qual? ________ Tempo: _________
+   • Medicamentos sabidamente causadores:
+     ☐ Antibióticos (sulfa, penicilina, quinolona)
+     ☐ AINEs
+     ☐ Anticonvulsivantes (carbamazepina, fenitoína)
+     ☐ Alopurinol
+     ☐ Quimioterápicos/imunoterápicos
+     ☐ Anti-hipertensivos (IECA — angioedema)
+
+8️⃣ DESCRIÇÃO SEMIOLÓGICA DA LESÃO:
+   (Preencher após exame físico dermatológico)
+
+   LESÃO ELEMENTAR:
+   ( ) Mácula/Mancha   ( ) Pápula         ( ) Placa
+   ( ) Nódulo          ( ) Tumor           ( ) Vesícula
+   ( ) Bolha           ( ) Pústula         ( ) Úlcera
+   ( ) Erosão          ( ) Fissura         ( ) Escama
+   ( ) Crosta          ( ) Cicatriz        ( ) Atrofia
+   ( ) Esclerose       ( ) Liquenificação  ( ) Púrpura
+   ( ) Petéquia        ( ) Equimose        ( ) Telangiectasia
+   ( ) Comedão         ( ) Cisto           ( ) Urtica
+
+   COR: ( ) Eritematosa ( ) Hipocrômica ( ) Hipercrômica
+   ( ) Violácea ( ) Amarelada ( ) Acastanhada
+   ( ) Enegrecida ( ) Cor da pele
+
+   FORMATO: ( ) Circular ( ) Oval ( ) Irregular
+   ( ) Linear ( ) Anular ( ) Serpiginosa ( ) Policíclica
+
+   BORDAS: ( ) Regulares ( ) Irregulares ( ) Elevadas
+   ( ) Infiltradas ( ) Peroladas
+
+   SUPERFÍCIE: ( ) Lisa ( ) Rugosa ( ) Verrucosa
+   ( ) Vegetante ( ) Ulcerada ( ) Crostosa
+
+   DISTRIBUIÇÃO: ( ) Localizada ( ) Disseminada ( ) Universal
+   ( ) Simétrica ( ) Assimétrica ( ) Segmentar
+   ( ) Fotodistribuída ( ) Áreas de dobra
+   ( ) Acral ( ) Dermatômero
+
+   TAMANHO: ______ x ______ cm
+
+9️⃣ REGRA ABCDE PARA LESÕES MELANOCÍTICAS:
+   A — Assimetria: ( ) Sim ( ) Não
+   B — Bordas irregulares: ( ) Sim ( ) Não
+   C — Cores múltiplas (>2): ( ) Sim ( ) Não
+   D — Diâmetro >6mm: ( ) Sim ( ) Não
+   E — Evolução/mudança recente: ( ) Sim ( ) Não
+   → Se ≥2 positivos: BIÓPSIA EXCISIONAL
+
+   "UGLY DUCKLING SIGN":
+   • Lesão diferente de todas as outras? ( ) Sim ( ) Não
+
+📌 DERMATOSCOPIA — ACHADOS CHAVE:
+• Rede pigmentada: ( ) Regular ( ) Irregular ( ) Ausente
+• Glóbulos: ( ) Regulares ( ) Irregulares
+• Estrias: ( ) Regulares ( ) Irregulares
+• Véu azul-esbranquiçado: ( ) Presente ( ) Ausente
+• Estruturas vasculares: ___________________
+• Padrão geral: ___________________________`,
+    tips: "Na dermatologia, a anamnese estruturada é metade do diagnóstico. As '7 perguntas de ouro' cobrem 90% dos casos. Sempre pergunte sobre fotossensibilidade, medicamentos novos e contato com irritantes. A regra ABCDE é mandatória para toda lesão melanocítica. Não esqueça: 'se a lesão sangra, muda ou coça de forma diferente — biopsie'.",
+  },
 ];
 
 export default function AnamnesisGuide() {
