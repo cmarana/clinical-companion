@@ -6004,6 +6004,417 @@ Síndromes hereditárias:
 📌 SEMPRE registrar se houve aconselhamento genético e a decisão compartilhada com a família sobre prognóstico, opções de manejo e acompanhamento multidisciplinar.`,
     tips: "TN ≥3,5mm mesmo com cariótipo normal → investigar cardiopatia congênita (ECO fetal). NIPT tem alta sensibilidade para T21 (~99%) mas é RASTREAMENTO, não diagnóstico — confirmar com amniocentese. Ventriculomegalia isolada leve (10-12mm) → 90% evolução normal, mas acompanhar. Hérnia diafragmática com LHR <1,0 e fígado herniado = prognóstico reservado. Na STFF, Quintero ≥II com polidrâmnio grave → laser é tratamento de escolha. Hidropsia fetal não-imune → sempre investigar parvovírus B19 (PCR), arritmia fetal e anemia.",
   },
+  {
+    id: "angiologia-vascular",
+    title: "Anamnese em Angiologia / Cirurgia Vascular",
+    emoji: "🫀",
+    tags: ["vascular", "angiologia", "varizes", "arterial", "trombose"],
+    content: `═══════════════════════════════════════════
+  ANAMNESE EM ANGIOLOGIA / CIRURGIA VASCULAR
+═══════════════════════════════════════════
+
+1. DOENÇA ARTERIAL PERIFÉRICA (DAP) — Mnemônico CLAUDICA
+   C — Claudicação intermitente (distância de claudicação: ____ metros)
+   L — Localização da dor (panturrilha, coxa, glúteo → indica nível da obstrução)
+   A — Alívio com repouso? Tempo até alívio: ____ minutos
+   U — Úlceras (localização: ponta dos dedos, calcâneo, maléolo lateral)
+   D — Dor em repouso? (principalmente noturna, alivia pendurando a perna)
+   I — ITB (Índice Tornozelo-Braquial): ____
+   C — Coloração e temperatura dos pés (palidez à elevação, rubor pendente?)
+   A — Antecedentes (DM, tabagismo, HAS, dislipidemia, DRC)
+
+   Classificação de Fontaine:
+   ( ) I — Assintomático
+   ( ) IIa — Claudicação >200m
+   ( ) IIb — Claudicação <200m
+   ( ) III — Dor em repouso
+   ( ) IV — Úlcera/gangrena (isquemia crítica)
+
+   Classificação de Rutherford:
+   ( ) 0 — Assintomático  ( ) 1 — Claudicação leve
+   ( ) 2 — Claudicação moderada  ( ) 3 — Claudicação grave
+   ( ) 4 — Dor em repouso  ( ) 5 — Perda tecidual menor
+   ( ) 6 — Perda tecidual maior
+
+   ITB — Interpretação:
+   • >1,3: Calcificação arterial (não compressível — comum em DM/DRC)
+   • 0,9-1,3: Normal
+   • 0,7-0,9: DAP leve (claudicação)
+   • 0,4-0,7: DAP moderada-grave
+   • <0,4: Isquemia crítica
+
+2. DOENÇA VENOSA CRÔNICA — Mnemônico VARIZES
+   V — Veias varicosas visíveis (localização, distribuição)
+   A — Antecedentes (TVP prévia? Gestações? Trombofilia?)
+   R — Refluxo venoso (tempo em pé que piora? Edema vespertino?)
+   I — Insuficiência venosa (dermatite ocre, lipodermatoesclerose)
+   Z — Zona de úlcera (maléolo medial — úlcera venosa clássica)
+   E — Edema (uni/bilateral, cacifo, horário do dia)
+   S — Sintomas (peso, cansaço, queimação, câimbras noturnas, prurido)
+
+   Classificação CEAP:
+   C — Clínica:
+   ( ) C0 — Sem sinais visíveis
+   ( ) C1 — Telangiectasias/reticulares
+   ( ) C2 — Varizes tronculares
+   ( ) C3 — Edema
+   ( ) C4a — Pigmentação/eczema  ( ) C4b — Lipodermatoesclerose/atrofia branca
+   ( ) C5 — Úlcera cicatrizada
+   ( ) C6 — Úlcera ativa
+   E — Etiologia: ( ) Ec (congênita) ( ) Ep (primária) ( ) Es (secundária/pós-TVP)
+   A — Anatomia: ( ) As (superficial) ( ) Ad (profunda) ( ) Ap (perfurantes)
+   P — Patofisiologia: ( ) Pr (refluxo) ( ) Po (obstrução) ( ) Pr+o (ambos)
+
+3. TROMBOSE VENOSA PROFUNDA (TVP) — Score de Wells
+   ( ) Câncer ativo (+1)
+   ( ) Paralisia/imobilização de MMII (+1)
+   ( ) Cirurgia recente ou acamado >3 dias (+1)
+   ( ) Dor localizada ao longo do sistema venoso profundo (+1)
+   ( ) Edema de toda a perna (+1)
+   ( ) Edema de panturrilha >3cm vs. contralateral (+1)
+   ( ) Edema depressível (cacifo) (+1)
+   ( ) Veias colaterais superficiais (+1)
+   ( ) TVP prévia (+1)
+   ( ) Diagnóstico alternativo mais provável (-2)
+   Score: ____ → ≤0: baixo | 1-2: moderado | ≥3: alto risco
+
+   ⚠️ Red Flags para TEP associado:
+   ( ) Dispneia súbita  ( ) Dor torácica pleurítica
+   ( ) Hemoptise  ( ) Taquicardia  ( ) Síncope
+
+4. ANEURISMA DE AORTA
+   ( ) Abdominal (AAA) — screening: homens >65a, tabagistas
+     • Tamanho: ____ cm (cirurgia se ≥5,5cm ou crescimento >0,5cm/6m)
+     • Sintomático? (dor abdominal/lombar, massa pulsátil)
+   ( ) Torácico — associado a Marfan, Ehlers-Danlos, válvula aórtica bicúspide
+     • Critério cirúrgico: ≥5,5cm (≥5,0 se Marfan)
+
+5. DOENÇA CAROTÍDEA
+   ( ) Sintomática? (AIT, AVC prévio, amaurose fugaz)
+   ( ) Sopro carotídeo ao exame físico
+   ( ) Estenose: ____% (NASCET) → Endarterectomia se ≥70% sintomática
+   
+6. FATORES DE RISCO CARDIOVASCULAR
+   ( ) Tabagismo: ____ maços-ano (PRINCIPAL fator para DAP)
+   ( ) Diabetes mellitus → Tipo: ____ HbA1c: ____%
+   ( ) Hipertensão arterial
+   ( ) Dislipidemia → LDL: ____ mg/dL
+   ( ) DRC → TFG: ____ mL/min
+   ( ) Fibrilação atrial (risco de embolização)
+   ( ) Trombofilias: ( ) Investigada ( ) Fator V Leiden ( ) Mutação protrombina
+     ( ) Deficiência proteína C/S ( ) Antitrombina III ( ) SAF
+
+7. EXAME VASCULAR — Checklist
+   Arterial:
+   ( ) Pulsos: femoral, poplíteo, tibial posterior, pedioso → 0/+/++/+++
+   ( ) Tempo de enchimento capilar: ____ seg
+   ( ) Teste de Buerger (palidez à elevação 60° + rubor pendente)
+   ( ) Sopros femorais
+   ( ) Temperatura e trofismo da pele dos pés
+   
+   Venoso:
+   ( ) Teste de Trendelenburg (insuficiência de safena)
+   ( ) Teste de Perthes (perviedade do sistema profundo)
+   ( ) Sinal de Homans (TVP — baixa sensibilidade)
+   ( ) Phlegmasia cerulea/alba dolens
+
+📌 DICA: Paciente com claudicação + ITB <0,9 = DAP confirmada. Úlcera em maléolo medial = venosa até prova em contrário. Úlcera em ponta de dedo/calcâneo = arterial. Dor em repouso que alivia pendurando a perna = isquemia crítica (Fontaine III).`,
+    tips: "Tabagismo é o fator de risco MAIS FORTE para DAP — cessação muda história natural. ITB <0,4 = isquemia crítica → revascularização urgente. Na TVP, Wells ≤0 + D-dímero negativo = exclui com segurança. AAA roto = dor abdominal + hipotensão + massa pulsátil → cirurgia emergencial sem esperar exame. Varizes C4-C6 = indicação cirúrgica. Phlegmasia cerulea dolens = TVP maciça com isquemia → trombólise/trombectomia de urgência.",
+  },
+  {
+    id: "coloproctologia",
+    title: "Anamnese em Coloproctologia",
+    emoji: "🩺",
+    tags: ["coloproctologia", "proctologia", "hemorroidas", "colorretal"],
+    content: `═══════════════════════════════════════════
+  ANAMNESE EM COLOPROCTOLOGIA
+═══════════════════════════════════════════
+
+1. QUEIXA PRINCIPAL — Mnemônico ANORRETAL
+   A — Alteração do hábito intestinal (constipação vs. diarreia, duração)
+   N — Necessidade de esforço evacuatório (straining)
+   O — Obstrução ao esvaziamento (sensação de bloqueio, evacuação incompleta)
+   R — Retorragia/hematoquezia (sangue vivo nas fezes, gotejamento, no papel)
+   R — Rastreamento oncológico (idade, história familiar)
+   E — Escape fecal (incontinência — sólidos, líquidos, gases)
+   T — Tenesmo (sensação de evacuação incompleta)
+   A — Abscesso/fístula (drenagem perianal, dor, febre)
+   L — Lesão/massa perianal palpável (prolapso, condiloma, tumor)
+
+2. SANGRAMENTO RETAL — Caracterização
+   Cor:
+   ( ) Sangue vivo rutilante → sugere baixo (hemorroidas, fissura, pólipo retal)
+   ( ) Sangue escuro/coágulos → sugere alto (cólon proximal)
+   ( ) Melena (fezes enegrecidas) → TGI alto ou cólon direito
+   ( ) Sangue oculto (sem sangramento visível)
+   
+   Padrão:
+   ( ) Gotejamento no vaso/papel → hemorroida interna
+   ( ) Sangue misturado às fezes → lesão colônica
+   ( ) Sangue na superfície das fezes → lesão retal/anal
+   ( ) Sangue + muco → doença inflamatória, pólipo, neoplasia
+   
+   Volume:
+   ( ) Escasso  ( ) Moderado  ( ) Volumoso (instabilidade hemodinâmica?)
+   
+   ⚠️ Red Flags:
+   ( ) Sangramento + perda de peso  ( ) Anemia ferropriva inexplicada
+   ( ) Alteração do calibre das fezes  ( ) >50 anos sem colonoscopia
+   ( ) História familiar de CCR
+
+3. HÁBITO INTESTINAL
+   Frequência: ____ evacuações/dia ou /semana
+   Consistência — Escala de Bristol:
+   ( ) 1-2 — Endurecidas (constipação)
+   ( ) 3-4 — Normal (ideal = tipo 4)
+   ( ) 5-6 — Amolecidas (tendência a diarreia)
+   ( ) 7 — Líquidas (diarreia franca)
+   
+   Constipação — Critérios de Roma IV (≥2 nos últimos 3 meses):
+   ( ) Esforço em >25% das evacuações
+   ( ) Fezes endurecidas (Bristol 1-2) em >25%
+   ( ) Sensação de evacuação incompleta em >25%
+   ( ) Sensação de obstrução anorretal em >25%
+   ( ) Manobras manuais para facilitar em >25%
+   ( ) <3 evacuações espontâneas/semana
+   
+   Incontinência fecal — Score de Wexner (0-20):
+   | Tipo          | Nunca | Raro | Às vezes | Frequente | Sempre |
+   |--------------|-------|------|----------|-----------|--------|
+   | Sólidos      |  0    |  1   |    2     |     3     |   4    |
+   | Líquidos     |  0    |  1   |    2     |     3     |   4    |
+   | Gases        |  0    |  1   |    2     |     3     |   4    |
+   | Uso de forro |  0    |  1   |    2     |     3     |   4    |
+   | Alt. estilo vida| 0  |  1   |    2     |     3     |   4    |
+   Score total: ____ /20
+
+4. DOENÇA HEMORROIDÁRIA — Classificação de Goligher
+   ( ) Grau I — Sangramento sem prolapso
+   ( ) Grau II — Prolapso com redução espontânea
+   ( ) Grau III — Prolapso com redução manual
+   ( ) Grau IV — Prolapso irredutível (encarcerada/trombosada)
+   
+   Localização (posição litotômica):
+   ( ) 3h  ( ) 7h  ( ) 11h (mamilos principais)
+   ( ) Outras: ____
+   
+   Tratamento prévio:
+   ( ) Conservador (fibras, banho de assento)
+   ( ) Ligadura elástica
+   ( ) Escleroterapia
+   ( ) Hemorroidectomia → Técnica: ____
+
+5. FISSURA ANAL
+   Localização:
+   ( ) Posterior (90% — linha média) → mais comum
+   ( ) Anterior (10% — mais comum em mulheres)
+   ( ) Lateral → ⚠️ Investigar: Crohn, sífilis, HIV, TB, neoplasia
+   
+   Evolução:
+   ( ) Aguda (<6 semanas) — tratamento conservador
+   ( ) Crônica (≥6 semanas) — plicoma sentinela, papila hipertrófica
+   
+   Espasmo esfincteriano associado: ( ) Sim ( ) Não
+   Hipertonia à manometria: ( ) Sim ( ) Não
+
+6. DOENÇA INFLAMATÓRIA INTESTINAL (DII)
+   ( ) Doença de Crohn — padrão: ( ) Ileocecal ( ) Cólica ( ) Perianal
+   ( ) Retocolite ulcerativa — extensão (Montreal):
+     ( ) E1 Proctite  ( ) E2 Colite esquerda  ( ) E3 Pancolite
+   
+   Manifestações perianais (Crohn):
+   ( ) Fístula perianal → Classificação de Parks:
+     ( ) Interesfincteriana  ( ) Transesfincteriana
+     ( ) Supraesfincteriana  ( ) Extraesfincteriana
+   ( ) Abscesso perianal recorrente
+   ( ) Estenose anal
+   ( ) Skin tags volumosas
+   
+   Atividade — Índices:
+   • Crohn: CDAI (Harvey-Bradshaw simplificado)
+   • RCU: Mayo parcial (frequência evacuatória + sangramento + avaliação médica)
+
+7. RASTREAMENTO DE CÂNCER COLORRETAL (CCR)
+   Risco médio (sem fatores):
+   • Início aos 45 anos → colonoscopia a cada 10 anos
+   
+   Alto risco:
+   ( ) Familiar 1º grau com CCR <60 anos → colonoscopia aos 40 ou 10 anos antes
+   ( ) ≥2 familiares 1º grau com CCR → colonoscopia aos 40 anos, cada 5 anos
+   ( ) PAF → retossigmoidoscopia anual desde 10-12 anos
+   ( ) Lynch/HNPCC → colonoscopia desde 20-25 anos, cada 1-2 anos
+   ( ) DII >8-10 anos de evolução → colonoscopia anual
+   ( ) Pólipo adenomatoso prévio → conforme guideline de vigilância
+
+8. EXAME PROCTOLÓGICO — Checklist
+   ( ) Inspeção estática (posição, lesões, fístulas, condilomas, dermatite)
+   ( ) Inspeção dinâmica (esforço: prolapso? Descenso perineal?)
+   ( ) Toque retal:
+     • Tônus esfincteriano: ( ) Normal ( ) Aumentado ( ) Diminuído
+     • Massas palpáveis: ( ) Sim → localização: ____
+     • Próstata (homens): tamanho, consistência, nódulos
+     • Fundo de saco de Douglas: abaulamento?
+   ( ) Anuscopia
+   ( ) Retossigmoidoscopia rígida (até 25cm)
+
+📌 DICA: Fissura lateral = NUNCA é "simples" → investigar Crohn, IST, neoplasia. Sangramento + alteração do hábito intestinal em >45 anos = colonoscopia obrigatória. Hemorroida grau IV trombosada com <72h = hemorroidectomia de urgência é opção.`,
+    tips: "Hemorroidas NÃO doem (a menos que trombosadas/estranguladas) — dor anal aguda + sangramento = pensar fissura. Fissura posterior crônica com hipertonia = esfincterotomia lateral interna é padrão-ouro. Abscesso perianal = drenagem cirúrgica SEMPRE (ATB sozinho não resolve). Na incontinência, Wexner ≥9 = impacto significativo na qualidade de vida. CCR é o 3º câncer mais comum no Brasil — rastreamento salva vidas.",
+  },
+  {
+    id: "medicina-hiperbarica",
+    title: "Anamnese em Medicina Hiperbárica",
+    emoji: "🫁",
+    tags: ["hiperbárica", "oxigenoterapia", "feridas", "OHB"],
+    content: `═══════════════════════════════════════════
+  ANAMNESE EM MEDICINA HIPERBÁRICA
+═══════════════════════════════════════════
+
+1. INDICAÇÕES — Resolução CFM 1.457/95 (atualizada)
+   ⚠️ Indicações aprovadas para Oxigenoterapia Hiperbárica (OHB):
+   
+   Emergências:
+   ( ) Embolia gasosa arterial
+   ( ) Doença descompressiva (mergulhadores)
+   ( ) Intoxicação por CO (monóxido de carbono)
+   ( ) Gangrena gasosa (Clostridium)
+   ( ) Síndrome de Fournier
+   ( ) Fasciíte necrosante
+   ( ) Isquemias traumáticas agudas (crush injury, síndrome compartimental)
+   
+   Eletivas:
+   ( ) Úlceras diabéticas (Wagner ≥3, refratárias)
+   ( ) Osteomielite refratária
+   ( ) Lesão por radiação (osteoradionecrose, cistite/proctite actínica)
+   ( ) Enxertos e retalhos comprometidos
+   ( ) Queimaduras térmicas/elétricas
+   ( ) Abscessos intracavitários
+   ( ) Anemia aguda (quando transfusão não disponível/recusada)
+
+2. FERIDA / LESÃO PRINCIPAL — Mnemônico FERIDA
+   F — Forma e localização anatômica: ____________________
+   E — Extensão: ____ x ____ x ____ cm (comprimento x largura x profundidade)
+   R — Região do leito:
+     ( ) Tecido de granulação (vermelho/rosa)
+     ( ) Tecido desvitalizado/esfacelo (amarelo)
+     ( ) Necrose/escara (preta)
+     ( ) Exposição óssea/tendínea
+   I — Infecção local? (secreção purulenta, odor, celulite perilesional)
+   D — Duração da ferida: ____ semanas/meses
+   A — Avaliações e tratamentos prévios: ____________________
+
+   Classificação de Wagner (úlceras diabéticas):
+   ( ) 0 — Pé em risco (sem úlcera)
+   ( ) 1 — Úlcera superficial
+   ( ) 2 — Úlcera profunda (tendão, cápsula, osso — sem infecção)
+   ( ) 3 — Úlcera profunda com infecção (abscesso, osteomielite)
+   ( ) 4 — Gangrena localizada (antepé ou calcâneo)
+   ( ) 5 — Gangrena extensa (todo o pé)
+
+   Classificação da University of Texas:
+   | Grau | 0 (pré/pós-ulcerativo) | 1 (superficial) | 2 (tendão/cápsula) | 3 (osso/articulação) |
+   |------|----------------------|-----------------|-------------------|---------------------|
+   | A    | Sem infecção/isquemia | Sem inf/isq     | Sem inf/isq       | Sem inf/isq         |
+   | B    | Com infecção          | Com infecção    | Com infecção      | Com infecção        |
+   | C    | Com isquemia          | Com isquemia    | Com isquemia      | Com isquemia        |
+   | D    | Infecção + isquemia   | Inf + isq       | Inf + isq         | Inf + isq           |
+
+3. AVALIAÇÃO PRÉ-OHB — Contraindicações
+   Absolutas:
+   ( ) Pneumotórax não tratado (risco de pneumotórax hipertensivo)
+   
+   Relativas (avaliar risco-benefício):
+   ( ) DPOC grave / bolhas enfisematosas
+   ( ) Pneumotórax prévio espontâneo
+   ( ) Cirurgia torácica recente
+   ( ) Cirurgia de ouvido médio / timpanoplastia
+   ( ) Sinusite aguda / IVAS
+   ( ) Claustrofobia grave
+   ( ) Epilepsia não controlada
+   ( ) Febre alta (>38,5°C) → aumenta risco de convulsão por O₂
+   ( ) Gestação (relativa — avaliar indicação emergencial)
+   ( ) Uso de bleomicina (toxicidade pulmonar por O₂)
+   ( ) Uso de doxorrubicina (cardiotoxicidade)
+   ( ) Uso de dissulfiram (bloqueia superóxido dismutase)
+   ( ) Marca-passo/dispositivo implantável → verificar compatibilidade
+
+4. HISTÓRICO DE MERGULHO (se doença descompressiva)
+   Perfil do mergulho:
+   • Profundidade máxima: ____ metros
+   • Tempo de fundo: ____ minutos
+   • Número de mergulhos nas últimas 24h: ____
+   • Mistura gasosa: ( ) Ar  ( ) Nitrox (___%O₂)  ( ) Trimix  ( ) Hélio
+   • Paradas de descompressão realizadas? ( ) Sim ( ) Não
+   • Computador de mergulho disponível? → log de mergulho: ____
+   • Tempo entre último mergulho e início dos sintomas: ____ min/horas
+   • Viagem aérea recente após mergulho? ( ) Sim → intervalo: ____h
+   
+   Classificação — Doença Descompressiva:
+   ( ) Tipo I (leve): dor articular/muscular, prurido, rash cutâneo
+   ( ) Tipo II (grave): neurológica (paraplegia, hemiparesia, vertigem, confusão)
+                        cardiopulmonar ("chokes" — dor torácica, dispneia)
+                        vestibular (nistagmo, vertigem intensa)
+
+5. INTOXICAÇÃO POR MONÓXIDO DE CARBONO (CO)
+   Fonte de exposição: ____________________________
+   Tempo de exposição: ____ horas
+   Ambiente: ( ) Fechado ( ) Semi-aberto
+   
+   COHb (carboxihemoglobina): ____%
+   • <10%: leve (cefaleia, náusea)
+   • 10-25%: moderada (confusão, taquicardia)
+   • 25-40%: grave (convulsão, coma)
+   • >40%: potencialmente letal
+   
+   ⚠️ Critérios para OHB na intoxicação por CO:
+   ( ) COHb >25% (ou >15% em gestante)
+   ( ) Perda de consciência (mesmo transitória)
+   ( ) Déficit neurológico
+   ( ) Isquemia miocárdica (ECG alterado, troponina+)
+   ( ) Gestante
+   ( ) Sintomas neurológicos persistentes após NBO por 4-6h
+   
+   Síndrome neurológica tardia (até 40 dias após):
+   ( ) Déficit cognitivo  ( ) Alteração de personalidade
+   ( ) Parkinsonismo  ( ) Incontinência
+
+6. PROTOCOLO DE TRATAMENTO OHB
+   Pressão: ____ ATA (geralmente 2,0-2,8 ATA)
+   Duração: ____ minutos por sessão (geralmente 60-120 min a pressão)
+   Frequência: ( ) Diária  ( ) 2x/dia (emergência)
+   Número de sessões previstas: ____ (máximo habitual: 30-60 para feridas)
+   
+   Tabelas de tratamento (mergulho/embolia):
+   ( ) USN Table 5 (embolia cerebral)
+   ( ) USN Table 6 (doença descompressiva tipo II)
+   ( ) USN Table 6A (recompressão profunda)
+
+7. EFEITOS ADVERSOS DA OHB — Monitorar
+   ( ) Barotrauma de ouvido médio (mais comum — Teed grau: ____)
+     Grau 0: normal  | Grau 1: hiperemia  | Grau 2: hemorragia
+     Grau 3: hemotímpano  | Grau 4: perfuração timpânica
+   ( ) Barotrauma de seios paranasais (dor frontal/maxilar)
+   ( ) Barotrauma pulmonar (dor torácica, pneumotórax, embolia gasosa)
+   ( ) Toxicidade pulmonar por O₂ (tosse, dor retroesternal — exposição prolongada)
+   ( ) Convulsão por O₂ (efeito Paul Bert — rara, autolimitada)
+   ( ) Miopia transitória (reversível ao término do tratamento)
+   ( ) Catarata (exposição prolongada — >150-200 sessões)
+   ( ) Claustrofobia / ansiedade
+   ( ) Hipoglicemia em diabéticos (OHB ↓ glicemia → monitorar)
+
+8. AVALIAÇÃO DE RESPOSTA AO TRATAMENTO
+   Parâmetros objetivos:
+   • Redução do tamanho da ferida: ____% em ____ sessões
+   • Aparecimento de tecido de granulação
+   • Medida transcutânea de O₂ (TcPO₂):
+     - <40 mmHg em ar ambiente = hipóxia local
+     - >200 mmHg durante OHB = boa resposta
+     - Incremento <50% durante OHB = resposta insatisfatória
+   • Controle de infecção (PCR, leucograma)
+   • Oximetria de pulso (baseline e durante sessão)
+
+📌 DICA: OHB não é tratamento isolado — sempre associar ao tratamento convencional (desbridamento, ATB, controle glicêmico, revascularização). A câmara hiperbárica NÃO é claustrofóbica nas câmaras multipaciente. Diabéticos devem verificar glicemia antes de cada sessão (risco de hipoglicemia).`,
+    tips: "Pneumotórax não drenado é a ÚNICA contraindicação absoluta à OHB — pode causar pneumotórax hipertensivo fatal. Na intoxicação por CO, a meia-vida da COHb é: 5h em ar ambiente → 90min com O₂ 100% normobárico → 23min com OHB a 3 ATA. Barotrauma de ouvido é o efeito adverso mais comum — ensinar Valsalva antes da sessão. TcPO₂ <40 mmHg prediz falha de cicatrização. Síndrome de Fournier = emergência → OHB 2x/dia + desbridamento cirúrgico + ATB largo espectro.",
+  },
 ];
 export default function AnamnesisGuide() {
   const [active, setActive] = useState<string | null>(null);
