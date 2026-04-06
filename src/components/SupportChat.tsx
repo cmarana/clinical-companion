@@ -27,8 +27,8 @@ export default function SupportChat() {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
   }, [messages]);
 
-  const sendMessage = useCallback(async () => {
-    const text = input.trim();
+  const sendMessage = useCallback(async (directText?: string) => {
+    const text = (directText || input).trim();
     if (!text || isLoading) return;
 
     const userMsg: Msg = { role: "user", content: text };
