@@ -146,6 +146,26 @@ function SourceCard({ source }: { source: Source }) {
   );
 }
 
+interface HistoryEntry {
+  diagnosis: string;
+  context?: string;
+  result: ComparisonResult;
+  timestamp: number;
+}
+
+const HISTORY_KEY = "pulso_conduct_history";
+const MAX_HISTORY = 20;
+
+function loadHistory(): HistoryEntry[] {
+  try {
+    return JSON.parse(localStorage.getItem(HISTORY_KEY) || "[]");
+  } catch { return []; }
+}
+
+function saveHistory(entries: HistoryEntry[]) {
+  localStorage.setItem(HISTORY_KEY, JSON.stringify(entries.slice(0, MAX_HISTORY)));
+}
+
 export default function ConductComparator() {
   const navigate = useNavigate();
   const { toast } = useToast();
@@ -154,6 +174,8 @@ export default function ConductComparator() {
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<ComparisonResult | null>(null);
   const [listening, setListening] = useState(false);
+  const [history, setHistory] = useState<HistoryEntry[]>(loadHistory);
+  const [showHistory, setShowHistory] = useState(false);
 
   const toggleVoice = useCallback(() => {
     if (!("webkitSpeechRecognition" in window || "SpeechRecognition" in window)) {
@@ -186,12 +208,35 @@ export default function ConductComparator() {
       if (error) throw error;
       if (data?.error) throw new Error(data.error);
       setResult(data);
+      // Save to history
+      const entry: HistoryEntry = { diagnosis: diagnosis.trim(), context: context.trim() || undefined, result: data, timestamp: Date.now() };
+      const updated = [entry, ...history.filter(h => h.diagnosis.toLowerCase() !== diagnosis.trim().toLowerCase())].slice(0, MAX_HISTORY);
+      setHistory(updated);
+      saveHistory(updated);
     } catch (err: any) {
       toast({ title: "Erro", description: err.message || "Falha ao comparar condutas", variant: "destructive" });
     } finally {
       setLoading(false);
     }
-  }, [diagnosis, context, toast]);
+  }, [diagnosis, context, toast, history]);
+
+  const loadFromHistory = useCallback((entry: HistoryEntry) => {
+    setDiagnosis(entry.diagnosis);
+    setContext(entry.context || "");
+    setResult(entry.result);
+    setShowHistory(false);
+  }, []);
+
+  const removeFromHistory = useCallback((idx: number) => {
+    const updated = history.filter((_, i) => i !== idx);
+    setHistory(updated);
+    saveHistory(updated);
+  }, [history]);
+
+  const clearHistory = useCallback(() => {
+    setHistory([]);
+    localStorage.removeItem(HISTORY_KEY);
+  }, []);
 
   return (
     <PremiumPageGuard feature="Comparador de Condutas" title="Comparador de Condutas">
