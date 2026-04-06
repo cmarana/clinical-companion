@@ -290,6 +290,115 @@ export type Database = {
         }
         Relationships: []
       }
+      institution_members: {
+        Row: {
+          id: string
+          institution_id: string
+          joined_at: string
+          role: string
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          institution_id: string
+          joined_at?: string
+          role?: string
+          user_id: string
+        }
+        Update: {
+          id?: string
+          institution_id?: string
+          joined_at?: string
+          role?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "institution_members_institution_id_fkey"
+            columns: ["institution_id"]
+            isOneToOne: false
+            referencedRelation: "institutions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      institutional_protocols: {
+        Row: {
+          author_id: string
+          category: string
+          content: string
+          created_at: string
+          id: string
+          institution_id: string
+          status: string
+          title: string
+          updated_at: string
+          updated_by: string | null
+        }
+        Insert: {
+          author_id: string
+          category?: string
+          content?: string
+          created_at?: string
+          id?: string
+          institution_id: string
+          status?: string
+          title: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Update: {
+          author_id?: string
+          category?: string
+          content?: string
+          created_at?: string
+          id?: string
+          institution_id?: string
+          status?: string
+          title?: string
+          updated_at?: string
+          updated_by?: string | null
+        }
+        Relationships: [
+          {
+            foreignKeyName: "institutional_protocols_institution_id_fkey"
+            columns: ["institution_id"]
+            isOneToOne: false
+            referencedRelation: "institutions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      institutions: {
+        Row: {
+          created_at: string
+          created_by: string
+          description: string
+          id: string
+          invite_code: string
+          name: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          created_by: string
+          description?: string
+          id?: string
+          invite_code?: string
+          name: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string
+          description?: string
+          id?: string
+          invite_code?: string
+          name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       module_analytics: {
         Row: {
           accessed_at: string
@@ -683,6 +792,14 @@ export type Database = {
       enqueue_email: {
         Args: { payload: Json; queue_name: string }
         Returns: number
+      }
+      get_institution_role: {
+        Args: { _institution_id: string; _user_id: string }
+        Returns: string
+      }
+      is_institution_member: {
+        Args: { _institution_id: string; _user_id: string }
+        Returns: boolean
       }
       move_to_dlq: {
         Args: {
