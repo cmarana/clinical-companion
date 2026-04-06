@@ -163,6 +163,7 @@ const AppRoutes = () => (
         <Route path="/case-simulator" element={<ClinicalCaseSimulator />} />
         <Route path="/institutional-protocols" element={<InstitutionalProtocols />} />
         <Route path="/voice-evolution" element={<VoiceEvolution />} />
+        <Route path="/prescription-checker" element={<PrescriptionChecker />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>

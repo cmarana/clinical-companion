@@ -60,6 +60,7 @@ const allPrimaryModules: Module[] = [
 
 // ── GROUPED SECONDARY MODULES ─────────────────────────────────
 const toolsModules = [
+  { label: "Checar Prescrição", sub: "IA verifica interações e doses", icon: ShieldCheck, path: "/prescription-checker" },
   { label: "Calculadoras", sub: "Scores e doses", icon: Calculator, path: "/calculators" },
   { label: "Interações", sub: "Checagem medicamentosa", icon: FlaskConical, path: "/drug-interactions" },
   { label: "Compat. Drogas", sub: "Compatibilidade EV", icon: GitBranch, path: "/drug-compatibility" },
