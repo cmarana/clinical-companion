@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef, useCallback } from "react";
-import { ArrowLeft, Plus, Mic, MicOff, Trash2, Check, Clock, ChevronDown, ChevronUp, BedDouble, AlertTriangle, User, Loader2 } from "lucide-react";
+import { ArrowLeft, Plus, Mic, MicOff, Trash2, Check, Clock, ChevronDown, ChevronUp, BedDouble, AlertTriangle, User, Loader2, FileDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
