@@ -401,6 +401,7 @@ function SimulatorContent() {
 export default function ClinicalCaseSimulator() {
   return (
     <PremiumPageGuard feature="case-simulator" title="Simulador de Casos Clínicos">
+      <OfflineBadge message="O simulador de casos requer conexão com a internet" />
       <SimulatorContent />
     </PremiumPageGuard>
   );
