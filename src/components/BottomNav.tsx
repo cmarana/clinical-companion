@@ -8,7 +8,7 @@ const tabs = [
   { path: "/duty", icon: Activity, label: "Plantão" },
   { path: "/bulario", icon: Pill, label: "Bulário" },
   { path: "/favorites", icon: Star, label: "Favoritos" },
-  { path: "/pricing", icon: User, label: "Conta" },
+  { path: "/profile", icon: User, label: "Conta" },
 ];
 
 export default function BottomNav() {
