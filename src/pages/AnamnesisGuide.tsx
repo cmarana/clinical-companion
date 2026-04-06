@@ -3305,6 +3305,387 @@ MEDIDAS ANTROPOMÉTRICAS OBRIGATÓRIAS:
   palato insuficiente, imunodeficiência`,
     tips: "O heredograma de 3 gerações é obrigatório — ele sozinho pode sugerir o padrão de herança e direcionar a investigação. O array-CGH (microarray) substituiu o cariótipo como exame de 1ª linha para investigação de deficiência intelectual e malformações múltiplas (rendimento diagnóstico 15-20% vs 3-5% do cariótipo convencional). O exoma clínico (trio) tem rendimento diagnóstico de 25-40% quando bem indicado. VUS (variante de significado incerto) NÃO deve ser usada para aconselhamento genético — reclassificação periódica é essencial. >6 manchas café com leite >5 mm pré-puberal ou >15 mm pós-puberal = critério diagnóstico de NF1. A classificação ACMG em 5 categorias (patogênica a benigna) é o padrão-ouro para interpretação de variantes.",
   },
+  {
+    id: "endocrinologia",
+    title: "Anamnese em Endocrinologia",
+    emoji: "🦋",
+    tags: ["tireoide", "diabetes", "hormônios", "metabolismo"],
+    content: `═══════════════════════════════════════
+ ANAMNESE ENDOCRINOLÓGICA COMPLETA
+═══════════════════════════════════════
+
+📋 MOTIVO DA CONSULTA ENDÓCRINA
+• Alteração de peso (ganho/perda involuntária)
+• Poliúria / polidipsia / polifagia
+• Fadiga / astenia / fraqueza muscular
+• Intolerância ao calor ou frio
+• Alterações menstruais / infertilidade
+• Alterações de crescimento / puberdade
+• Nódulo cervical / bócio
+• Alterações de pele / cabelo / unhas
+• Fraturas de fragilidade / dor óssea
+
+🩸 DIABETES MELLITUS — Mnemônico "4P + LICA"
+• Poliúria (noctúria? quantos episódios?)
+• Polidipsia (quantos litros/dia?)
+• Polifagia (paradoxal com perda de peso?)
+• Perda de peso (quanto em quanto tempo?)
+• Lesões de pele (acantose nigricans, micose)
+• Infecções de repetição (ITU, candidíase)
+• Cicatrização lenta
+• Alteração visual (embaçamento)
+
+📌 Rastreio de complicações crônicas:
+→ Retinopatia: última fundoscopia? queixa visual?
+→ Nefropatia: edema? urina espumosa?
+→ Neuropatia: parestesias? queimação plantar? 
+  disfunção erétil? gastroparesia?
+→ Pé diabético: calosidades? úlceras? amputações?
+→ Cardiovascular: IAM? AVC? claudicação?
+
+🦋 TIREOIDE — Mnemônico "BONFIM" (hipotireoidismo)
+• Bradicardia / bradipsiquismo
+• Obstipação
+• Nodosidade/bócio (crescimento cervical?)
+• Frio (intolerância)
+• Inchaço (edema / mixedema)
+• Menorragia / menstruação irregular
+
+📌 Hipertireoidismo — Mnemônico "TREMA"
+• Taquicardia / tremor fino / perda de peso
+• Reflexos exaltados / retração palpebral
+• Exoftalmia (Graves? — oftalmopatia?)
+• Menstruação escassa / amenorreia
+• Ansiedade / agitação / insônia / sudorese
+
+⚖️ OBESIDADE — Avaliação completa
+• IMC atual e histórico de peso (peso máximo/mínimo)
+• Ganho de peso: quando começou? fatores associados?
+• Dieta habitual (recordatório 24h)
+• Atividade física (tipo, frequência, duração)
+• Tentativas prévias de emagrecimento
+• Medicações que engordam (corticoide, antipsicóticos, 
+  insulina, sulfonilureias, betabloqueadores)
+• Apneia do sono (roncos? sonolência diurna?)
+• Transtorno de compulsão alimentar (binge eating)
+• SOP associada? (hirsutismo, acne, irregularidade menstrual)
+
+🦴 METABOLISMO ÓSSEO
+• Fraturas prévias (local, mecanismo, idade)
+• Fraturas de fragilidade? (vértebra, fêmur, rádio distal)
+• Perda de altura? (cifose dorsal?)
+• Quedas (frequência, circunstâncias)
+• Cálcio/vitamina D (suplementação? sol?)
+• Menopausa (idade? TRH?)
+• Corticoterapia crônica?
+• Causas 2árias: hiperparatireoidismo, hipogonadismo
+
+🧪 ADRENAL — Mnemônico "CUSHMA"
+Síndrome de Cushing:
+• Central obesity / moon face / buffalo hump
+• Úlceras / estrias violáceas
+• Skin thin / bruising fácil
+• Hipertensão / hiperglicemia
+• Miopatia proximal / fraqueza
+• Acne / hirsutismo
+
+Insuficiência adrenal — "HAPA":
+• Hipotensão ortostática / hiperpigmentação
+• Astenia / fadiga profunda
+• Perda de peso / apetite por sal
+• Anorexia / náuseas / vômitos
+
+🧬 EIXO HIPOTÁLAMO-HIPÓFISE
+• Cefaleia (compressão de quiasma?)
+• Alteração de campo visual (hemianopsia bitemporal)
+• Galactorreia (prolactinoma?)
+• Amenorreia / disfunção erétil / libido
+• Acromegalia: crescimento de extremidades, prognatismo
+• Diabetes insipidus: poliúria aquosa (>3L/dia)
+
+📋 EXAMES A SOLICITAR (checklist)
+□ Glicemia jejum / HbA1c / TOTG 75g
+□ TSH / T4 livre (± T3, anti-TPO, anti-Tg)
+□ Perfil lipídico completo
+□ Cortisol basal / ACTH / cortisol salivar noturno
+□ Ca / P / PTH / 25-OH vitamina D
+□ Densitometria óssea (DEXA)
+□ USGTC (se nódulo/bócio)
+□ Prolactina / IGF-1 / GH
+□ Testosterona / DHEA-S / 17-OH progesterona`,
+    tips: "O mnemônico '4P + LICA' cobre os sintomas clássicos de DM descompensado. Na tireoide, BONFIM (hipotireoidismo) e TREMA (hipertireoidismo) são úteis para direcionar o raciocínio. Sempre perguntar sobre medicações que causam ganho de peso e sobre história familiar endócrina (DM, tireoide, osteoporose). Na avaliação de nódulo tireoidiano, o TI-RADS da USGTC e o sistema Bethesda da PAAF guiam a conduta. HbA1c ≥6,5% confirma DM; entre 5,7-6,4% indica pré-diabetes. O FRAX estima risco de fratura em 10 anos e auxilia na decisão terapêutica da osteoporose.",
+  },
+  {
+    id: "urologia",
+    title: "Anamnese em Urologia",
+    emoji: "🫘",
+    tags: ["próstata", "urinário", "litíase", "disfunção erétil"],
+    content: `═══════════════════════════════════════
+ ANAMNESE UROLÓGICA COMPLETA
+═══════════════════════════════════════
+
+📋 SINTOMAS DO TRATO URINÁRIO INFERIOR (LUTS)
+Mnemônico "FINO JIPE" (armazenamento + esvaziamento)
+
+Armazenamento:
+• Frequência (>8x/dia?)
+• Incontinência (esforço? urgência? mista?)
+• Noctúria (quantas vezes?)
+• Overactive bladder (urgência miccional?)
+
+Esvaziamento:
+• Jato fraco / intermitente
+• Início hesitante (hesitância)
+• Push (esforço abdominal para urinar)
+• Esvaziamento incompleto (sensação de resíduo)
+
+📊 IPSS — International Prostate Symptom Score
+(Aplicar questionário padronizado — 7 perguntas + QoL)
+• Esvaziamento incompleto (0-5)
+• Frequência (0-5)
+• Intermitência (0-5)
+• Urgência (0-5)
+• Jato fraco (0-5)
+• Esforço (0-5)
+• Noctúria (0-5)
+• Qualidade de vida (0-6)
+→ Leve: 0-7 | Moderado: 8-19 | Grave: 20-35
+
+🪨 LITÍASE URINÁRIA — Mnemônico "COLICA"
+• Cólica lombar (início súbito, irradiação?)
+• Onset (quando começou? duração?)
+• Localização (lombar → flanco → fossa ilíaca → escroto)
+• Irradiação (flanco → genitália? testículo?)
+• Cor da urina (hematúria macro/micro?)
+• Antecedentes (cálculos prévios? litotripsia? cirurgia?)
+
+📌 Perguntar sempre:
+→ Ingestão hídrica (quantos litros/dia?)
+→ Dieta (excesso de proteína, sal, oxalato?)
+→ Composição do cálculo (se análise prévia)
+→ Medicações (indinavir, topiramato, vitamina C)
+→ Doenças associadas (hiperparatireoidismo, gota, Crohn)
+→ História familiar de litíase (1º grau)
+
+🫘 PRÓSTATA — Avaliação completa
+HPB (Hiperplasia Prostática Benigna):
+• LUTS obstrutivos (jato fraco, hesitância)
+• LUTS irritativos (urgência, frequência, noctúria)
+• Retenção urinária aguda? (globo vesical?)
+• Hematúria macroscópica?
+• ITU de repetição?
+• Uso de alfa-bloqueadores / inibidores 5α-redutase?
+
+Câncer de próstata:
+• PSA prévio? (valores e evolução?)
+• Toque retal prévio? (alterações?)
+• Biópsia prévia? (Gleason? ISUP?)
+• HF de Ca próstata (1º grau <65 anos?)
+• Sintomas de doença avançada: dor óssea, 
+  perda de peso, compressão medular
+
+💧 INCONTINÊNCIA URINÁRIA — "DIAPPERS"
+(causas reversíveis — mnemônico de Resnick)
+• Delirium
+• Infecção (ITU)
+• Atrofia vaginal (pós-menopausa)
+• Pharmaceuticals (diuréticos, alfa-bloqueadores)
+• Psychological (depressão)
+• Excessive urine output (DM, IC, hipercalcemia)
+• Restricted mobility
+• Stool impaction (fecaloma)
+
+📌 Classificação funcional:
+→ Esforço: perda com tosse/espirro/exercício
+→ Urgência: perda precedida de desejo imperioso
+→ Mista: ambos os componentes
+→ Overflow: bexigoma / resíduo pós-miccional elevado
+→ Funcional: limitação física/cognitiva
+
+🔴 HEMATÚRIA — Roteiro diagnóstico
+• Macro ou microscópica?
+• Início, meio ou final da micção? (uretral/vesical/renal)
+• Coágulos? (formato — vermiforme = ureteral)
+• Sintomas associados (dor? disúria? febre?)
+• Idade >40 anos + hematúria = EXCLUIR neoplasia
+• Medicações (anticoagulantes, AINEs)
+• Exercício intenso recente?
+
+🍆 DISFUNÇÃO ERÉTIL — Mnemônico "ESCORE"
+• Ereção: matinal preservada? (sugere causa psicogênica)
+• Sustentação: mantém durante o ato?
+• Curso: início gradual (orgânico) vs súbito (psicogênico)
+• Orgasmo: preservado? ejaculação normal?
+• Relação: satisfação do casal? parceira/o?
+• Etiologia: DM? HAS? tabagismo? medicações? 
+  (ISRS, betabloqueadores, espironolactona)
+
+📌 Escala IIEF-5 (International Index of Erectile Function)
+→ 5 perguntas, score 5-25
+→ Grave: 5-7 | Moderada: 8-11 | Leve-mod: 12-16 | 
+  Leve: 17-21 | Normal: 22-25
+
+📋 EXAMES INICIAIS (checklist urológico)
+□ Urina tipo I / Urocultura
+□ Creatinina / Ureia / TFG
+□ PSA total e livre (se indicado)
+□ USGTRU (rins e vias urinárias)
+□ Urofluxometria (se LUTS)
+□ Resíduo pós-miccional (USG ou BladderScan)
+□ TC sem contraste (se litíase)
+□ Citologia urinária (se hematúria >40 anos)
+□ Estudo urodinâmico (se incontinência complexa)`,
+    tips: "O IPSS é o instrumento padrão para quantificar LUTS — aplicar em toda consulta urológica masculina >50 anos. O mnemônico DIAPPERS de Resnick identifica causas reversíveis de incontinência antes de investigar causas estruturais. Hematúria macroscópica indolor em >40 anos é câncer de bexiga até que se prove o contrário — cistoscopia é mandatória. PSA deve ser interpretado com velocidade (variação anual), densidade (PSA/volume prostático) e relação livre/total. Na litíase, cálculos <5mm têm 90% de chance de eliminação espontânea; 5-10mm ~50%; >10mm geralmente requer intervenção. Ereção matinal preservada + disfunção durante o ato = forte indicativo de causa psicogênica.",
+  },
+  {
+    id: "cirurgia-plastica-queimaduras",
+    title: "Anamnese em Cirurgia Plástica e Queimaduras",
+    emoji: "🔥",
+    tags: ["queimadura", "enxerto", "reconstrutiva", "estética"],
+    content: `═══════════════════════════════════════
+ ANAMNESE EM CIRURGIA PLÁSTICA E QUEIMADURAS
+═══════════════════════════════════════
+
+🔥 QUEIMADURAS — Avaliação Primária (ABCDE + F)
+A — Airway: inalação? rouquidão? estridor? fuligem?
+B — Breathing: dispneia? queimadura circunferencial torax?
+C — Circulation: acesso venoso? reposição volêmica
+D — Disability: nível de consciência (CO? cianeto?)
+E — Exposure: SCQ? profundidade? circunferencial?
+F — Fluid resuscitation (Parkland)
+
+📊 REGRA DOS 9 DE WALLACE (Adulto)
+┌──────────────────────────┬────────┐
+│ Região                   │   %    │
+├──────────────────────────┼────────┤
+│ Cabeça/pescoço           │   9%   │
+│ Membro superior (cada)   │   9%   │
+│ Tronco anterior          │  18%   │
+│ Tronco posterior         │  18%   │
+│ Membro inferior (cada)   │  18%   │
+│ Períneo/genitália        │   1%   │
+└──────────────────────────┴────────┘
+Total = 100%
+
+📌 Criança: usar Lund-Browder (cabeça maior proporcionalmente)
+📌 Palma do paciente ≈ 1% SCQ (útil para queimaduras irregulares)
+
+🎯 CLASSIFICAÇÃO DE PROFUNDIDADE
+1º grau (superficial):
+  → Eritema, dor, sem bolha — ex: queimadura solar
+  → NÃO entra no cálculo de SCQ para Parkland
+
+2º grau superficial (espessura parcial superficial):
+  → Bolhas, base rósea, muito dolorosa, branqueia
+  → Cicatriza em 7-14 dias sem sequelas
+
+2º grau profunda (espessura parcial profunda):
+  → Bolhas, base esbranquiçada/mosqueada
+  → Dor variável, pode precisar de enxerto
+  → Cicatriza em 14-21 dias com risco de cicatriz
+
+3º grau (espessura total):
+  → Escara branca/marrom/preta, indolor, não branqueia
+  → Textura de couro — SEMPRE precisa de enxerto
+
+4º grau: compromete músculo/osso/tendão
+
+💧 FÓRMULA DE PARKLAND
+Volume = 4 mL × peso (kg) × SCQ (%)
+→ 50% nas primeiras 8h (desde a queimadura, não da chegada!)
+→ 50% nas próximas 16h
+→ Ringer Lactato como cristaloide de escolha
+→ Meta: diurese 0,5-1 mL/kg/h (adulto), 1 mL/kg/h (criança)
+
+📌 Critérios de INTERNAÇÃO / Centro de Queimados:
+→ SCQ ≥20% (adulto) ou ≥10% (criança/idoso)
+→ Queimadura 3º grau ≥5%
+→ Face / mãos / pés / períneo / articulações
+→ Queimadura circunferencial (risco de síndrome compartimental)
+→ Lesão inalatória (rouquidão, fuligem oronasal, escarro carbonáceo)
+→ Queimadura elétrica / química
+→ Trauma associado
+→ Comorbidades graves (DM, IC, imunossupressão)
+
+🧪 LESÃO INALATÓRIA — Mnemônico "FUMAÇA"
+• Fuligem em narinas/orofaringe
+• Ulceração de mucosa oral
+• Mudança de voz (rouquidão/estridor)
+• Ambiente fechado (incêndio confinado)
+• Carbonácea (expectoração)
+• Edema facial/cervical progressivo
+→ Intubação precoce se 2+ critérios!
+→ Dosagem de carboxihemoglobina (COHb)
+→ COHb >15% = intoxicação por CO significativa
+
+⚡ QUEIMADURA ELÉTRICA — Particularidades
+• Lesão maior do que aparenta (iceberg effect)
+• Entrada + saída do arco elétrico
+• Rabdomiólise → CPK / mioglobina / clearance de Cr
+• Arritmias → monitorização cardíaca 24-48h (ECG seriado)
+• Síndrome compartimental → fasciotomia precoce
+• Lesão renal (mioglobinúria → hidratação agressiva + 
+  alcalinização da urina se CPK >5000)
+
+🏥 CIRURGIA PLÁSTICA RECONSTRUTIVA — "Escada Reconstrutiva"
+1. Cicatrização por segunda intenção
+2. Fechamento primário direto
+3. Enxerto de pele (parcial ou total)
+4. Retalho local (avanço, rotação, transposição)
+5. Retalho regional (pediculado)
+6. Retalho livre (microcirúrgico)
+
+📌 Enxerto de pele:
+→ Parcial (EPEP): derme parcial, área doadora cicatriza sozinha
+→ Total (EPTC): derme completa, melhor resultado estético, 
+  área doadora precisa de fechamento
+→ Leito receptor: vascularizado, sem infecção, sem osso 
+  exposto sem periósteo
+
+💉 CIRURGIA PLÁSTICA ESTÉTICA — Avaliação pré-operatória
+
+Anamnese específica:
+• Motivação real (expectativa realista?)
+• Dismorfismo corporal? (BDD — Body Dysmorphic Disorder)
+  → Preocupação excessiva com "defeito" mínimo/inexistente
+  → CONTRAINDICAÇÃO a procedimento estético
+• Cirurgias prévias (ficha técnica de próteses?)
+• Uso de tabaco (risco de necrose — suspender 4-6 sem antes)
+• Medicações: AAS, anticoagulantes, vitamina E, fitoterápicos
+• Alergias (anestésicos locais, latex, fitas)
+• Cicatrização: queloide? cicatriz hipertrófica prévia?
+• Expectativa do paciente vs possibilidade cirúrgica
+
+📌 Red flags para NÃO operar:
+→ Expectativas irrealistas
+→ Motivação por terceiros (parceiro/a exige)
+→ Histórico de múltiplas cirurgias insatisfatórias
+→ BDD (Body Dysmorphic Disorder)
+→ Instabilidade emocional / transtorno psiquiátrico ativo
+
+📊 CLASSIFICAÇÃO DE FITZPATRICK (fototipo cutâneo)
+I — Sempre queima, nunca bronzeia (pele muito clara)
+II — Sempre queima, bronzeia minimamente
+III — Queima moderadamente, bronzeia gradualmente
+IV — Queima minimamente, bronzeia facilmente
+V — Raramente queima, bronzeia profusamente
+VI — Nunca queima, pele muito pigmentada
+→ Importante para: risco de cicatriz, 
+  hiperpigmentação pós-inflamatória, laser
+
+📋 CHECKLIST DOCUMENTAÇÃO (queimados)
+□ Hora e mecanismo da queimadura
+□ SCQ (Regra dos 9 ou Lund-Browder)
+□ Profundidade (1º, 2º sup, 2º prof, 3º, 4º grau)
+□ Regiões acometidas (mapear em diagrama)
+□ Circunferencial? (risco compartimental)
+□ Lesão inalatória? (critérios FUMAÇA)
+□ Parkland calculado e iniciado
+□ Vacina antitetânica (última dose?)
+□ Foto-documentação (com consentimento)
+□ Diurese horária monitorizada`,
+    tips: "A Regra dos 9 de Wallace é rápida para adultos, mas em crianças use Lund-Browder (cabeça = 18% no RN vs 9% no adulto). A fórmula de Parkland é um GUIA — titular pela diurese (0,5-1 mL/kg/h). Queimadura de 1º grau NÃO entra no cálculo de SCQ para Parkland. Queimadura circunferencial de extremidade pode causar síndrome compartimental — escarotomia de urgência. Na lesão inalatória, a intubação precoce salva vidas — edema de glote pode tornar a via aérea impossível em horas. Queimadura elétrica: a lesão real é sempre maior que a cutânea visível (efeito iceberg) — monitorizar rabdomiólise e arritmias. Na estética, o rastreio de BDD é obrigatório — operar paciente com dismorfismo corporal gera insatisfação crônica e litígios. Fitzpatrick orienta risco de cicatrização — fototipos IV-VI têm maior risco de queloide e hiperpigmentação pós-inflamatória.",
+  },
 ];
 
 export default function AnamnesisGuide() {
