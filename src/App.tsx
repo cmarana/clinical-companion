@@ -165,6 +165,7 @@ const AppRoutes = () => (
         <Route path="/institutional-protocols" element={<InstitutionalProtocols />} />
         <Route path="/voice-evolution" element={<VoiceEvolution />} />
         <Route path="/prescription-checker" element={<PrescriptionChecker />} />
+        <Route path="/rounds" element={<Rounds />} />
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
