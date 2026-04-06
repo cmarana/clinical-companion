@@ -4159,6 +4159,490 @@ Kit médico pessoal recomendado:
 □ Consulta pós-viagem agendada (se viagem longa)`,
     tips: "VFR (Visiting Friends and Relatives) é o grupo de MAIOR risco — geralmente não buscam consulta pré-viagem e frequentam áreas rurais. Malária por P.falciparum mata em 48h se não tratada — toda febre em viajante de área endêmica é malária até prova contrária. P.vivax pode recidivar meses depois por hipnozoítos hepáticos (tratar com primaquina após G6PD). Febre amarela vacinal tem risco de eventos adversos graves em >60 anos e primovacinados imunodeprimidos — avaliar risco-benefício. Não prescrever doxiciclina para profilaxia de malária em gestantes e crianças <8 anos. Mefloquina é contraindicada em epilepsia e transtornos psiquiátricos. Na diarreia do viajante, fluoroquinolonas têm alta resistência no Sudeste Asiático — preferir azitromicina. Acetazolamida para altitude é contraindicada em alergia a sulfa. Lembrar que o período de incubação ajuda a diferenciar diagnósticos: dengue (curto), malária (médio), esquistossomose aguda (longo). Sempre perguntar sobre banho em água doce na África e Brasil (esquistossomose) e contato com animais (raiva).",
   },
+  {
+    id: "cardiologia",
+    title: "Anamnese em Cardiologia",
+    emoji: "❤️",
+    tags: ["cardiologia", "dor torácica", "dispneia", "ICC", "arritmia", "coronária"],
+    content: `═══════════════════════════════════════════
+ ANAMNESE EM CARDIOLOGIA
+═══════════════════════════════════════════
+
+📋 1. DOR TORÁCICA — Mnemônico PQRST-DA
+
+P — Provocação/Paliação
+  • O que provoca? (esforço, repouso, alimentação, respiração)
+  • O que alivia? (repouso, nitrato, posição, AINEs)
+  • Esforço → isquêmica | Respiração → pleurítica/pericárdica
+  • Alivia com nitrato sublingual → sugestivo coronariano
+  • Alivia com inclinação para frente → pericardite
+
+Q — Qualidade
+  • Opressiva/peso → isquêmica (típica)
+  • Pontada/facada → pleurítica / musculoesquelética
+  • Rasgando/dilacerante → dissecção de aorta
+  • Queimação → DRGE / síndrome coronariana
+
+R — Região/Irradiação
+  • Retroesternal → coronariana
+  • Irradiação para MSE, mandíbula, dorso → IAM
+  • Irradiação para dorso interescapular → dissecção
+  • Precordial puntiforme → musculoesquelética
+
+S — Severidade (escala 0-10)
+  • > 7 → emergência cardiovascular
+  • Desproporção dor/achado → pensar em dissecção
+
+T — Tempo
+  • > 20 min contínua → IAM até prova contrária
+  • Segundos → improvável coronariana
+  • Horas-dias → pericardite, musculoesquelética
+
+D — Duração e frequência
+  • Estável: mesmo padrão há semanas
+  • Instável: piora recente, menor limiar, repouso
+
+A — Associados
+  • Sudorese, náusea, dispneia → alto risco
+  • Síncope → arritmia ou obstrução
+
+📋 2. DISPNEIA — Classificação NYHA
+
+Classe I  — Sem limitação; atividades habituais sem sintomas
+Classe II — Limitação leve; dispneia em atividades habituais
+Classe III — Limitação acentuada; dispneia em atividades menores
+Classe IV — Incapacidade; dispneia em repouso
+
+📌 Avaliar:
+  • Ortopneia: quantos travesseiros? (1, 2, 3?)
+  • DPN: acorda à noite com falta de ar?
+  • Bendopneia: dispneia ao inclinar para frente
+  • Platipneia: piora ao sentar (shunt intracardíaco)
+  • Trepopneia: piora em um decúbito lateral
+
+📋 3. PALPITAÇÕES — Mnemônico PALPIT
+
+P — Padrão (regular/irregular, rápido/lento)
+A — Atividade no momento (repouso, esforço, emoção)
+L — Latência (início súbito ou gradual)
+P — Provocadores (café, álcool, estresse, drogas)
+I — Intensidade e impacto funcional
+T — Tempo (duração: segundos, minutos, horas)
+
+📌 Manobras no episódio:
+  • Vagais (Valsalva, água gelada) → TSV se reverte
+  • Sopro antes das palpitações → valvopatia
+  • Síncope associada → alto risco (TV, BAVT)
+
+📋 4. FATORES DE RISCO CARDIOVASCULAR — DIABESHOL
+
+D — Diabetes mellitus (HbA1c, tempo de DM)
+I — Inatividade física (sedentarismo)
+A — Antecedente familiar (DAC < 55 anos ♂ / < 65 anos ♀)
+B — Baixo HDL / Dislipidemia (LDL > 190, uso de estatina)
+E — Estresse e depressão
+S — Sexo masculino / pós-menopausa
+H — Hipertensão arterial (tempo, controle, LOA)
+O — Obesidade (IMC, circunferência abdominal)
+L — Lípides/Tabagismo (anos-maço, ex-tabagista há quanto?)
+
+📋 5. HISTÓRIA DE ICC — Mnemônico CONGEST
+
+C — Congestão (edema MMII, ascite, turgência jugular)
+O — Ortopneia / DPN
+N — Noctúria (> 2x/noite)
+G — Ganho de peso recente (> 2 kg em 3 dias)
+E — Esforço (tolerância reduzida, fadiga)
+S — Sinais de baixo débito (extremidades frias, hipotensão)
+T — Tosse seca noturna (congestão pulmonar)
+
+📋 6. ANTECEDENTES CARDIOLÓGICOS
+
+  • Cirurgias cardíacas prévias (CRM, troca valvar, TAVI)
+  • Cateterismos (achados, stents, data)
+  • Dispositivos (marcapasso, CDI, CRT — marca, data, última revisão)
+  • Febre reumática na infância
+  • Sopros cardíacos conhecidos
+  • Kawasaki na infância
+  • Cardiopatias congênitas
+
+📋 7. MEDICAÇÕES CARDIOLÓGICAS — Checar
+
+  • Anticoagulantes: warfarina (INR), DOACs (dose, função renal)
+  • Antiplaquetários: AAS, clopidogrel, ticagrelor (dupla antiagregação)
+  • Beta-bloqueadores: FC alvo 50-70 bpm na ICC
+  • IECA/BRA/ARNI: dose otimizada? Tosse?
+  • Diuréticos: dose, potássio, creatinina
+  • Estatinas: miopatia? LDL atual?
+  • Antiarrítmicos: amiodarona (tireoide), sotalol (QT)
+
+📋 8. ESCORES DE RISCO
+
+  • HEART Score (dor torácica): H-história, E-ECG, A-idade, R-risco, T-troponina
+  • Framingham / PCE (risco 10 anos)
+  • CHA₂DS₂-VASc (FA → anticoagulação)
+  • HAS-BLED (risco sangramento)
+  • GRACE (SCA → mortalidade)
+  • TIMI (IAM com/sem supra)
+
+📋 9. EXAME CARDIOVASCULAR DIRECIONADO
+
+  • PA em ambos os braços (diferença > 20 mmHg → dissecção)
+  • FC e ritmo
+  • Turgência jugular (45°)
+  • Pulsos periféricos (simétricos, amplitude)
+  • Índice tornozelo-braquial (ITB < 0,9 → DAOP)
+  • Refluxo hepatojugular
+  • Sopros: localização, irradiação, intensidade (Levine I-VI)
+  • B3 (ICC), B4 (hipertrofia), atrito pericárdico`,
+    tips: "Na dor torácica, sempre aplique o HEART Score para estratificação rápida. Ortopneia quantificada em travesseiros é mais objetiva que 'falta de ar ao deitar'. O CHA₂DS₂-VASc ≥ 2 em homens e ≥ 3 em mulheres indica anticoagulação na FA.",
+  },
+  {
+    id: "pneumologia",
+    title: "Anamnese em Pneumologia",
+    emoji: "🫁",
+    tags: ["pneumologia", "tosse", "dispneia", "asma", "DPOC", "tabagismo", "tuberculose"],
+    content: `═══════════════════════════════════════════
+ ANAMNESE EM PNEUMOLOGIA
+═══════════════════════════════════════════
+
+📋 1. TOSSE — Mnemônico TOSSE-P
+
+T — Tempo de evolução
+  • Aguda: < 3 semanas (IVAS, pneumonia)
+  • Subaguda: 3-8 semanas (pós-infecciosa, coqueluche)
+  • Crônica: > 8 semanas (asma, DRGE, gotejamento pós-nasal, IECA)
+
+O — Oleosa ou seca?
+  • Produtiva: bronquiectasia, DPOC, pneumonia, TB
+  • Seca: asma, fibrose, IECA, linfoma
+
+S — Secreção (aspecto do escarro)
+  • Mucóide → alergia, asma
+  • Purulento → infecção bacteriana
+  • Hemoptóico → TB, TEP, neoplasia, bronquiectasia
+  • Róseo espumoso → EAP
+  • Escuro (vômica) → abscesso
+
+S — Situação (gatilhos)
+  • Noturna → asma, ICC, DRGE
+  • Pós-prandial → DRGE, aspiração
+  • Ocupacional (melhora no fim de semana) → asma ocupacional
+  • Mudança de posição → bronquiectasia, abscesso
+  • Exercício → broncoespasmo induzido
+
+E — Evolução (piora/melhora, tratamentos prévios)
+
+P — Precedentes (infecções, cirurgias, intubação, tabagismo)
+
+📋 2. DISPNEIA RESPIRATÓRIA — Escala mMRC
+
+Grau 0 — Dispneia apenas com exercício intenso
+Grau 1 — Falta de ar ao subir ladeira ou andar rápido
+Grau 2 — Anda mais devagar que pessoas da mesma idade
+Grau 3 — Para para respirar após andar ~100 m
+Grau 4 — Falta de ar ao vestir-se ou em repouso
+
+📌 Caracterizar:
+  • Início (súbito → TEP, pneumotórax | gradual → DPOC, fibrose)
+  • Posição: ortopneia (ICC/DPOC), platipneia (hepatopulmonar)
+  • Sibilância associada → obstrução de via aérea
+  • Estridor → obstrução de via aérea superior
+
+📋 3. TABAGISMO — Carga Tabágica
+
+  Anos-maço = (cigarros/dia ÷ 20) × anos de uso
+
+  Perguntas essenciais:
+  • Idade de início: ___ anos
+  • Quantidade: ___ cigarros/dia (ou ___ maços)
+  • Tempo total: ___ anos
+  • Parou? Quando? Tentativas prévias?
+  • Carga: ___ anos-maço
+  • Teste de Fagerström (dependência nicotínica)
+
+  📌 > 20 anos-maço → rastreio com TC de baixa dose (55-80 anos)
+  📌 > 10 anos-maço → risco elevado de DPOC
+
+📋 4. EXPOSIÇÕES — Mnemônico PANO
+
+P — Profissional
+  • Asbesto → mesotelioma, asbestose (latência 20-40 anos)
+  • Sílica → silicose (mineração, jateamento)
+  • Poeiras orgânicas → pneumonite por hipersensibilidade
+  • Isocianatos → asma ocupacional
+
+A — Ambiental
+  • Mofo, pássaros → pneumonite por hipersensibilidade
+  • Fogão a lenha → DPOC/bronquiectasia
+  • Poluição → exacerbação de asma/DPOC
+
+N — Nosocomial
+  • Internação recente, ventilação mecânica → PAV
+  • Imunossupressão → oportunistas
+
+O — Outros
+  • Viagens (histoplasmose, coccidioidomicose)
+  • Contato com TB (intradomiciliar, institucional)
+  • Drogas inalatórias (crack → "pulmão de crack")
+
+📋 5. ASMA — Controle (GINA)
+
+  Nas últimas 4 semanas:
+  ┌──────────────────────────────────────────────┐
+  │ 1. Sintomas diurnos > 2x/semana?            │
+  │ 2. Despertar noturno por asma?               │
+  │ 3. Uso de SABA > 2x/semana?                  │
+  │ 4. Limitação de atividades?                   │
+  ├──────────────────────────────────────────────┤
+  │ 0 sim → Controlada                           │
+  │ 1-2 sim → Parcialmente controlada            │
+  │ 3-4 sim → Não controlada                     │
+  └──────────────────────────────────────────────┘
+
+  📌 Avaliar também:
+  • Fatores de risco para exacerbação (VEF1 < 60%, eosinofilia, uso excessivo de SABA)
+  • Adesão e técnica inalatória
+  • Comorbidades: rinite, DRGE, obesidade, ansiedade
+
+📋 6. DPOC — Avaliação GOLD ABE
+
+  Espirometria: VEF1/CVF < 0,7 pós-broncodilatador
+  
+  Classificação de obstrução:
+  • GOLD 1 — VEF1 ≥ 80%
+  • GOLD 2 — 50-79%
+  • GOLD 3 — 30-49%
+  • GOLD 4 — < 30%
+
+  Grupo (exacerbações + sintomas):
+  • A — ≤ 1 exacerbação (sem internação) + poucos sintomas
+  • B — ≤ 1 exacerbação (sem internação) + muitos sintomas
+  • E — ≥ 2 exacerbações OU ≥ 1 com internação
+
+  📌 Perguntar:
+  • Exacerbações no último ano (número, antibiótico, corticoide, internação)
+  • Uso de O₂ domiciliar
+  • Vacinação (influenza, pneumococo, COVID)
+  • Reabilitação pulmonar prévia
+
+📋 7. HEMOPTISE — Mnemônico SANGUE
+
+S — Severidade (volume: leve < 100 mL, maciça > 500 mL/24h)
+A — Aspecto (sangue vivo, escuro, misturado com escarro)
+N — Número de episódios
+G — Gatilhos (esforço, tosse, posição)
+U — Urgência (comprometimento hemodinâmico/respiratório?)
+E — Exclusão de hematêmese e epistaxe posterior
+
+  📌 Causas principais por frequência:
+  1. Bronquiectasia
+  2. Tuberculose
+  3. Neoplasia pulmonar
+  4. TEP
+  5. Pneumonia necrosante
+
+📋 8. SONO E RESPIRAÇÃO
+
+  • Ronco habitual? Intensidade?
+  • Apneias testemunhadas?
+  • Sonolência diurna excessiva (Epworth > 10)?
+  • IMC e circunferência cervical (> 43 cm ♂ / > 41 cm ♀)
+  • STOP-BANG:
+    S — Snoring (ronco alto)
+    T — Tired (cansaço diurno)
+    O — Observed apneas
+    P — Pressure (HAS)
+    B — BMI > 35
+    A — Age > 50
+    N — Neck > 40 cm
+    G — Gender masculino
+  • ≥ 3 → alto risco de SAHOS
+
+📋 9. EXAME RESPIRATÓRIO DIRECIONADO
+
+  • FR, SpO₂ (repouso e esforço)
+  • Padrão respiratório (Kussmaul, Cheyne-Stokes)
+  • Tiragem, uso de musculatura acessória
+  • Percussão: timpanismo (pneumotórax), macicez (derrame)
+  • Ausculta: MV reduzido, sibilos, roncos, estertores, atrito
+  • Baqueteamento digital → fibrose, bronquiectasia, neoplasia
+  • Teste da caminhada de 6 minutos (TC6M)`,
+    tips: "Na tosse crônica, as 3 causas mais comuns são: gotejamento pós-nasal, asma e DRGE (tríade de Irwin). Sempre calcule a carga tabágica em anos-maço. O mMRC ≥ 2 já indica limitação funcional significativa na DPOC.",
+  },
+  {
+    id: "nefrologia",
+    title: "Anamnese em Nefrologia",
+    emoji: "🫘",
+    tags: ["nefrologia", "rins", "diálise", "proteinúria", "hematúria", "IRA", "DRC"],
+    content: `═══════════════════════════════════════════
+ ANAMNESE EM NEFROLOGIA
+═══════════════════════════════════════════
+
+📋 1. QUEIXAS URINÁRIAS — Mnemônico URINA-S
+
+U — Urina (volume estimado)
+  • Oligúria: < 400 mL/dia (ou < 0,5 mL/kg/h)
+  • Anúria: < 100 mL/dia
+  • Poliúria: > 3 L/dia
+
+R — Ritmo miccional
+  • Noctúria (quantas vezes?)
+  • Polaciúria
+  • Urgência
+
+I — Início (agudo vs crônico)
+  • Agudo: horas-dias → pensar IRA
+  • Crônico: meses-anos → DRC
+
+N — Natureza (aspecto da urina)
+  • Hematúria: macro/microscópica
+  • Espumosa → proteinúria (> 300 mg/dia)
+  • Colúria/Turva
+
+A — Associados
+  • Edema (periorbital matinal, MMII vespertino)
+  • HAS de difícil controle
+  • Dor lombar
+
+S — Sistêmicos
+  • Febre, perda de peso → vasculite, neoplasia
+  • Artralgia, rash → LES, vasculite
+  • Hemoptise → síndrome pulmão-rim (Goodpasture, ANCA)
+
+📋 2. HEMATÚRIA — Glomerular vs Urológica
+
+  ┌─────────────────────┬──────────────────────┐
+  │    GLOMERULAR       │     UROLÓGICA        │
+  ├─────────────────────┼──────────────────────┤
+  │ Cor "coca-cola"     │ Sangue vivo          │
+  │ Cilindros hemáticos │ Coágulos             │
+  │ Dismorfismo > 80%   │ Hemácias isomórficas │
+  │ Proteinúria > 500mg │ Sem proteinúria      │
+  │ Indolor             │ Pode ter disúria     │
+  │ Início insidioso    │ Início/fim jato      │
+  └─────────────────────┴──────────────────────┘
+
+  📌 Hematúria + proteinúria = biópsia renal na maioria dos casos
+
+📋 3. EDEMA RENAL — Características
+
+  • Periorbital matinal (síndrome nefrótica)
+  • Anasarca: face, MMII, ascite, derrame pleural
+  • Ganho de peso rápido (> 1 kg/dia = retenção hídrica)
+  • Cacifo (Godet): grau I-IV
+
+  📌 Diferenciar de edema cardíaco:
+  • Renal: inicia na face, pior pela manhã
+  • Cardíaco: inicia em MMII, pior à tarde
+  • Hepático: ascite predominante
+
+📋 4. FUNÇÃO RENAL — Avaliação
+
+  • Creatinina basal conhecida? Valor mais antigo?
+  • Taxa de filtração glomerular (TFG) — CKD-EPI
+  • Estágios DRC:
+    G1 — TFG ≥ 90 (com marcador de lesão)
+    G2 — TFG 60-89
+    G3a — TFG 45-59
+    G3b — TFG 30-44
+    G4 — TFG 15-29
+    G5 — TFG < 15 (dialítica se < 10-15 com sintomas)
+
+  • Albuminúria:
+    A1 — < 30 mg/g (normal)
+    A2 — 30-300 mg/g (moderadamente aumentada)
+    A3 — > 300 mg/g (gravemente aumentada)
+
+  📌 KDIGO: classificar sempre GxAx (ex: G3bA2)
+
+📋 5. LESÃO RENAL AGUDA — Mnemônico PRÉ-RENAL-PÓS
+
+  PRÉ-RENAL (70% dos casos):
+  • Desidratação, hemorragia, sepse, ICC
+  • Medicações: IECA/BRA + diurético + AINE = "triple whammy"
+  • Contraste iodado recente? (NIC: 48-72h após)
+
+  RENAL (intrínseca):
+  • NTA: aminoglicosídeo, contraste, rabdomiólise
+  • NIA: antibióticos (betalactâmicos), AINEs, omeprazol
+  • Glomerulonefrite: ANCA, anti-GBM, imunocomplexos
+  • Microangiopatia: SHU, PTT, HELLP
+
+  PÓS-RENAL (obstrução):
+  • HPB, neoplasia, cálculo bilateral, bexiga neurogênica
+  • Anúria + bexigoma → sondagem de alívio
+
+📋 6. DIÁLISE — Histórico
+
+  • Tipo: hemodiálise (HD) ou diálise peritoneal (DP)?
+  • Acesso: FAV (localização, maturação), cateter (tipo, tempo)
+  • Frequência e duração das sessões
+  • Peso seco e interdialítico
+  • Complicações: hipotensão intradialítica, câimbras, prurido
+  • KT/V (adequação): alvo > 1,2 (HD) / > 1,7 (DP)
+  • Fila de transplante? Tempo de espera?
+  • PRA (reatividade contra painel) — sensibilização
+
+📋 7. NEFROTOXINAS — Checklist
+
+  ┌──────────────────────────────────────────────┐
+  │ ( ) AINEs (tempo de uso)                     │
+  │ ( ) Aminoglicosídeos                         │
+  │ ( ) Anfotericina B                           │
+  │ ( ) Contraste iodado (< 72h)                 │
+  │ ( ) Lítio                                    │
+  │ ( ) IECA/BRA (em estenose bilateral)         │
+  │ ( ) Ciclosporina / Tacrolimus                │
+  │ ( ) Quimioterápicos (cisplatina)              │
+  │ ( ) Suplementos e fitoterápicos               │
+  │ ( ) Inibidores de bomba (NIA)                 │
+  └──────────────────────────────────────────────┘
+
+📋 8. DISTÚRBIOS ELETROLÍTICOS — Sinais de Alerta
+
+  HIPERCALEMIA (K > 5,5):
+  • Fraqueza muscular, parestesias
+  • ECG: onda T apiculada → alargamento QRS → FV
+  • Causas: IRA, IECA, espironolactona, rabdomiólise
+
+  HIPOCALEMIA (K < 3,5):
+  • Câimbras, fraqueza, íleo paralítico
+  • ECG: onda U, achatamento T
+  • Causas: diuréticos de alça, vômitos, diarreia
+
+  HIPONATREMIA (Na < 135):
+  • Confusão, convulsão (se aguda < 120)
+  • Sempre avaliar volemia e osmolaridade
+
+  HIPERCALCEMIA:
+  • Náusea, constipação, poliúria, confusão
+  • "Stones, bones, groans, moans, psychiatric overtones"
+
+📋 9. ANTECEDENTES E COMORBIDADES RENAIS
+
+  • DM (principal causa de DRC no Brasil)
+  • HAS (segunda causa)
+  • LES, vasculites
+  • Doença policística renal (ADPKD) — história familiar
+  • Refluxo vesicoureteral na infância
+  • Cálculos renais de repetição (composição?)
+  • Infecções urinárias de repetição
+  • Biópsia renal prévia (resultado?)
+  • Transplante renal prévio (doador, tempo, rejeições?)
+
+📋 10. EXAME NEFROLÓGICO DIRECIONADO
+
+  • PA (preferencialmente MAPA/MRPA)
+  • Edema: Godet I-IV, localização, evolução
+  • Palpação renal (rim aumentado → ADPKD, hidronefrose)
+  • Sopro em flanco/abdome → estenose de artéria renal
+  • Globo vesical
+  • Fístula arteriovenosa (frêmito, thrill)
+  • Fundoscopia: retinopatia hipertensiva/diabética
+  • Sinais de uremia: hálito urêmico, flapping, pericardite`,
+    tips: "A tríade proteinúria + hematúria dismórfica + cilindros hemáticos = síndrome nefrítica até prova contrária. Sempre verifique nefrotoxinas antes de atribuir IRA a causas intrínsecas. Na DRC, classifique pelo KDIGO (GxAx) para padronizar a comunicação.",
+  },
 ];
 
 export default function AnamnesisGuide() {
