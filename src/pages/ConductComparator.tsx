@@ -262,6 +262,46 @@ export default function ConductComparator() {
         </div>
 
         <div className="px-4 py-4 max-w-4xl mx-auto space-y-4">
+          {/* History panel */}
+          {showHistory && history.length > 0 && (
+            <Card className="border-primary/20 animate-in fade-in-0 slide-in-from-top-2 duration-300">
+              <CardHeader className="pb-2 flex flex-row items-center justify-between">
+                <CardTitle className="text-sm flex items-center gap-2">
+                  <History size={14} className="text-primary" /> Histórico ({history.length})
+                </CardTitle>
+                <Button variant="ghost" size="sm" onClick={clearHistory} className="text-destructive hover:text-destructive text-xs h-7 gap-1">
+                  <Trash2 size={12} /> Limpar
+                </Button>
+              </CardHeader>
+              <CardContent className="pt-0 max-h-64 overflow-y-auto space-y-1.5">
+                {history.map((entry, i) => (
+                  <div
+                    key={entry.timestamp}
+                    className="flex items-center gap-2 p-2 rounded-lg hover:bg-muted/50 cursor-pointer group transition-colors"
+                    onClick={() => loadFromHistory(entry)}
+                  >
+                    <Clock size={12} className="text-muted-foreground shrink-0" />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-sm font-medium truncate">{entry.result.diagnosis_title || entry.diagnosis}</p>
+                      <p className="text-[10px] text-muted-foreground">
+                        {new Date(entry.timestamp).toLocaleDateString("pt-BR", { day: "2-digit", month: "short", hour: "2-digit", minute: "2-digit" })}
+                        {entry.result.icd10 && ` · ${entry.result.icd10}`}
+                      </p>
+                    </div>
+                    <Button
+                      variant="ghost"
+                      size="icon"
+                      className="h-6 w-6 opacity-0 group-hover:opacity-100 transition-opacity shrink-0"
+                      onClick={e => { e.stopPropagation(); removeFromHistory(i); }}
+                    >
+                      <Trash2 size={12} className="text-muted-foreground" />
+                    </Button>
+                  </div>
+                ))}
+              </CardContent>
+            </Card>
+          )}
+
           {/* Input */}
           <Card>
             <CardContent className="pt-4 space-y-3">
