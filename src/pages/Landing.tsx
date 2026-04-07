@@ -6,7 +6,9 @@ import {
   Activity, Pill, Calculator, FileText, Siren,
   Sun, Moon, Eclipse, Check, WifiOff, Mic, Bot,
   Users, Lock, RefreshCw, Download, Search, Smartphone,
-  ChevronDown, HelpCircle
+  ChevronDown, HelpCircle, ClipboardList, Baby, Beaker,
+  Scissors, Eye, HeartPulse, Timer, Bookmark, Globe,
+  ScrollText, Layers, ListChecks, GraduationCap, FlaskConical
 } from "lucide-react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -46,25 +48,27 @@ const howItWorks = [
   { step: "03", icon: Smartphone, title: "Use no plantão", desc: "Acesse offline, salve favoritos e tome decisões com confiança." },
 ];
 
-const scenarios = [
-  {
-    time: "03:12",
-    title: "Dor torácica na emergência",
-    desc: "Paciente 58a, dor precordial, sudorese. Abra o protocolo de IAM, calcule TIMI, verifique interações e gere a prescrição — tudo em 30 segundos.",
-    tags: ["Protocolo IAM", "TIMI Score", "Prescrição"],
-  },
-  {
-    time: "14:45",
-    title: "Criança com febre alta",
-    desc: "Pediatria, 3 anos, 39.2°C. Consulte dose por kg, verifique diluição de dipirona IV e acesse o fluxograma de febre sem foco.",
-    tags: ["Dose pediátrica", "Diluição IV", "Fluxograma"],
-  },
-  {
-    time: "22:30",
-    title: "Intubação orotraqueal",
-    desc: "Sequência rápida com checklist interativo, doses de indução por peso e timer de apneia integrado.",
-    tags: ["IOT", "Checklist", "Timer"],
-  },
+const allModules = [
+  { icon: Siren, title: "Modo Emergência", desc: "Algoritmos de PCR, Sepse, IAM, AVC com fluxogramas interativos", color: "text-red-500 bg-red-500/10" },
+  { icon: Bot, title: "IA Clínica", desc: "Diagnóstico diferencial, conduta e raciocínio clínico por IA", color: "text-blue-500 bg-blue-500/10" },
+  { icon: Pill, title: "2.000+ Medicamentos", desc: "Doses, diluições, interações, ajuste renal/hepático", color: "text-emerald-500 bg-emerald-500/10" },
+  { icon: BookOpen, title: "1.004 Protocolos", desc: "26 categorias, baseados em evidência com referências", color: "text-cyan-500 bg-cyan-500/10" },
+  { icon: Calculator, title: "53 Calculadoras", desc: "Glasgow, SOFA, Wells, HEART, MELD, NEWS, APACHE II", color: "text-indigo-500 bg-indigo-500/10" },
+  { icon: FileText, title: "Prescrições Prontas", desc: "Modelos por diagnóstico + checagem de interações por IA", color: "text-amber-500 bg-amber-500/10" },
+  { icon: FlaskConical, title: "Diluições IV", desc: "Matriz de compatibilidade e diluições em Y", color: "text-violet-500 bg-violet-500/10" },
+  { icon: Baby, title: "Doses Pediátricas", desc: "Cálculo automático por peso e idade", color: "text-pink-500 bg-pink-500/10" },
+  { icon: Timer, title: "Timer de PCR (ACLS)", desc: "Ciclos de 2 min com alertas sonoros integrados", color: "text-red-400 bg-red-400/10" },
+  { icon: ListChecks, title: "Checklists Médicos", desc: "IOT, ATLS, Sepse — procedimentos passo a passo", color: "text-teal-500 bg-teal-500/10" },
+  { icon: ScrollText, title: "Evoluções Médicas", desc: "Templates SOAP, I-PASS, UTI, Pediatria, Psiquiatria", color: "text-orange-500 bg-orange-500/10" },
+  { icon: Mic, title: "Evolução por Voz", desc: "Dite evoluções por voz e gere documentos clínicos", color: "text-fuchsia-500 bg-fuchsia-500/10" },
+  { icon: Beaker, title: "Valores Laboratoriais", desc: "Referências para exames com alertas de valores críticos", color: "text-lime-500 bg-lime-500/10" },
+  { icon: Stethoscope, title: "Diagnóstico por Sintoma", desc: "Guias de diagnóstico diferencial por queixa", color: "text-sky-500 bg-sky-500/10" },
+  { icon: Search, title: "Busca CID-10", desc: "Pesquise códigos CID por nome ou número", color: "text-slate-500 bg-slate-500/10" },
+  { icon: Layers, title: "Guia Antimicrobiano", desc: "Antibióticos por foco infeccioso e patógeno", color: "text-green-500 bg-green-500/10" },
+  { icon: GraduationCap, title: "Flashcards & Quiz", desc: "Revisão espaçada e simulados para residência", color: "text-yellow-500 bg-yellow-500/10" },
+  { icon: HeartPulse, title: "Sala Vermelha", desc: "Modo de atendimento de emergência imediata", color: "text-rose-500 bg-rose-500/10" },
+  { icon: WifiOff, title: "100% Offline", desc: "Todo o conteúdo disponível sem internet", color: "text-purple-500 bg-purple-500/10" },
+  { icon: Bookmark, title: "Favoritos & Notas", desc: "Salve protocolos e adicione anotações pessoais", color: "text-amber-400 bg-amber-400/10" },
 ];
 
 const testimonials = [
@@ -502,54 +506,45 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ═══ SCENARIOS ════════════════════════════════════════ */}
+      {/* ═══ ALL MODULES ═════════════════════════════════════ */}
       <section className="py-20 px-4 relative">
-        <div className="max-w-4xl mx-auto relative z-10">
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             className="text-center mb-14"
             initial="hidden" whileInView="visible" viewport={{ once: true }}
             variants={fadeUp} custom={0}
           >
-            <span className="text-[10px] font-heading font-bold text-primary uppercase tracking-[0.2em]">Na prática</span>
+            <span className="text-[10px] font-heading font-bold text-primary uppercase tracking-[0.2em]">Completo</span>
             <h2 className="font-heading text-3xl sm:text-4xl font-extrabold mt-2 tracking-tight">
-              Cenários reais de plantão
+              20+ ferramentas em um só app
             </h2>
-            <p className="text-muted-foreground mt-3 max-w-md mx-auto text-sm leading-relaxed">
-              Veja como o PULSO funciona quando cada segundo importa.
+            <p className="text-muted-foreground mt-3 max-w-lg mx-auto text-sm leading-relaxed">
+              Tudo que um médico precisa no plantão, na enfermaria e no estudo — sem precisar de vários apps.
             </p>
           </motion.div>
 
           <motion.div
-            className="space-y-4"
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3"
             initial="hidden" whileInView="visible" viewport={{ once: true }}
             variants={stagger}
           >
-            {scenarios.map((s) => (
-              <motion.div
-                key={s.title}
-                variants={fadeUp}
-                custom={0}
-                className="group flex gap-4 sm:gap-6 p-5 sm:p-6 rounded-2xl bg-card ring-1 ring-border/30 hover:ring-primary/20 hover:shadow-lg transition-all duration-300"
-              >
-                <div className="shrink-0 flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <span className="font-mono text-xs font-bold text-primary">{s.time}</span>
+            {allModules.map((m) => {
+              const [textColor, bgColor] = m.color.split(" ");
+              return (
+                <motion.div
+                  key={m.title}
+                  variants={fadeUp}
+                  custom={0}
+                  className="group p-4 rounded-2xl bg-card ring-1 ring-border/30 hover:ring-primary/30 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5 transition-all duration-300 text-center"
+                >
+                  <div className={`w-10 h-10 rounded-xl ${bgColor} flex items-center justify-center mx-auto mb-3`}>
+                    <m.icon size={18} className={textColor} />
                   </div>
-                  <div className="w-px h-full bg-border/50 mt-2 hidden sm:block" />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="font-heading font-bold text-sm mb-1.5">{s.title}</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed mb-3">{s.desc}</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {s.tags.map((tag) => (
-                      <span key={tag} className="text-[10px] font-heading font-semibold px-2.5 py-1 rounded-full bg-primary/8 text-primary ring-1 ring-primary/15">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                  <h3 className="font-heading font-bold text-xs mb-1">{m.title}</h3>
+                  <p className="text-[10px] text-muted-foreground leading-snug">{m.desc}</p>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
