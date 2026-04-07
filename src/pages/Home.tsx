@@ -249,20 +249,17 @@ export default function Home() {
 
       {/* ── PRIMARY GRID ─────────────────────────────────────── */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 lg:gap-4 mb-6">
-        {primaryModules.map((m, i) => (
-          <motion.div
+        {primaryModules.map((m) => (
+          <div
             key={m.path}
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: i * 0.05 }}
             className={m.variant === "ai" ? "col-span-2" : ""}
           >
             <button
               onClick={() => navigateWithTracking(m.path, m.label)}
               data-tour={m.path === "/clinical-ai" ? "ai" : m.path === "/emergency" ? "emergency" : undefined}
-              className={`group w-full flex items-center gap-3 px-4 py-4 lg:py-5 rounded-[20px] border-0 transition-all duration-300 active:scale-[0.97] hover:shadow-xl hover:-translate-y-0.5 text-left ${cardStyles[m.variant]}`}
+              className={`group w-full flex items-center gap-3 px-4 py-4 lg:py-5 rounded-[20px] border-0 transition-all duration-200 active:scale-[0.97] hover:shadow-xl hover:-translate-y-0.5 text-left ${cardStyles[m.variant]}`}
             >
-              <div className={`flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-2xl shrink-0 transition-transform duration-300 group-hover:scale-110 ${iconStyles[m.variant]}`}>
+              <div className={`flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-2xl shrink-0 ${iconStyles[m.variant]}`}>
                 <m.icon size={20} className="lg:hidden" />
                 <m.icon size={24} className="hidden lg:block" />
               </div>
@@ -273,17 +270,12 @@ export default function Home() {
                 </span>
               </div>
             </button>
-          </motion.div>
+          </div>
         ))}
       </div>
 
       {/* ── EMERGENCY SHORTCUTS ──────────────────────────────── */}
-      <motion.div
-        initial={{ opacity: 0, y: 12 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.35, delay: 0.15 }}
-        className="mb-6"
-      >
+      <div className="mb-6">
         <div className="flex items-center justify-between mb-2.5">
           <div className="flex items-center gap-2">
             <div className="flex items-center justify-center w-6 h-6 rounded-md bg-destructive/12 text-destructive">
@@ -298,20 +290,17 @@ export default function Home() {
           </button>
         </div>
         <div className="flex flex-wrap gap-2">
-          {emergencyShortcuts.map((s, i) => (
-            <motion.button
+          {emergencyShortcuts.map((s) => (
+            <button
               key={s.path}
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.2, delay: 0.2 + i * 0.03 }}
               onClick={() => { hapticLight(); navigateWithTracking(s.path, s.label); }}
               className="px-4 py-2 rounded-xl bg-destructive/8 dark:bg-destructive/15 hover:bg-destructive/15 dark:hover:bg-destructive/25 active:scale-[0.96] transition-all duration-200 font-heading font-semibold text-xs text-destructive ring-1 ring-destructive/10 hover:ring-destructive/25"
             >
               {s.label}
-            </motion.button>
+            </button>
           ))}
         </div>
-      </motion.div>
+      </div>
 
       {/* Recent History */}
       <RecentHistory />
@@ -332,16 +321,9 @@ export default function Home() {
       </button>
 
       {/* ── ALL SECONDARY MODULES (stacked sections) ────────── */}
-      {tabs.map((tab, tabIdx) => (
-        <motion.div
-          key={tab.id}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.15 + tabIdx * 0.1 }}
-          className="mt-7"
-        >
-          {/* Section header with colored accent bar */}
-          <div className={`flex items-center gap-2.5 mb-3.5 px-1`}>
+      {tabs.map((tab) => (
+        <div key={tab.id} className="mt-7">
+          <div className="flex items-center gap-2.5 mb-3.5 px-1">
             <div className={`flex items-center justify-center w-7 h-7 rounded-lg ${tab.iconBg}`}>
               <tab.icon size={14} />
             </div>
@@ -351,26 +333,23 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2.5 lg:gap-3">
-            {tab.modules.map((m, i) => (
-              <motion.button
+            {tab.modules.map((m) => (
+              <button
                 key={m.path}
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.25, delay: 0.2 + tabIdx * 0.1 + i * 0.03 }}
                 onClick={() => navigateWithTracking(m.path, m.label)}
-                className={`group w-full flex items-center gap-2.5 px-3.5 py-3.5 rounded-2xl bg-card text-card-foreground ring-1 ${tab.ringColor} hover:ring-2 hover:shadow-lg hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-300 text-left border-0`}
+                className={`group w-full flex items-center gap-2.5 px-3.5 py-3.5 rounded-2xl bg-card text-card-foreground ring-1 ${tab.ringColor} hover:ring-2 hover:shadow-lg hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 text-left border-0`}
               >
-                <div className={`flex items-center justify-center w-9 h-9 rounded-xl shrink-0 ${tab.iconBg} transition-transform duration-300 group-hover:scale-110`}>
+                <div className={`flex items-center justify-center w-9 h-9 rounded-xl shrink-0 ${tab.iconBg}`}>
                   <m.icon size={18} />
                 </div>
                 <div className="flex flex-col min-w-0">
                   <span className="font-heading font-semibold text-[12px] leading-tight truncate">{m.label}</span>
                   <span className="text-[10px] leading-tight mt-0.5 truncate text-muted-foreground">{m.sub}</span>
                 </div>
-              </motion.button>
+              </button>
             ))}
           </div>
-        </motion.div>
+        </div>
       ))}
 
       {/* Voice Features Banner */}
