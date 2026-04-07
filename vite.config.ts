@@ -50,10 +50,21 @@ export default defineConfig(({ mode }) => {
               "./src/data/labValues.ts",
               "./src/data/symptomGuides.ts",
             ],
+            "data-interactions": [
+              "./src/data/drugInteractionPairs.ts",
+              "./src/data/drugInteractionsDB.ts",
+            ],
+            "data-prescriptions": [
+              "./src/data/prescriptions/index.ts",
+              "./src/data/prescriptions/types.ts",
+            ],
           },
         },
       },
       chunkSizeWarningLimit: 600,
+      target: "es2020",
+      minify: "esbuild",
+      cssMinify: true,
     },
   };
 });

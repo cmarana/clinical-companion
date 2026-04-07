@@ -75,12 +75,12 @@ function AnimatedCounter({ target, suffix, delay = 0 }: { target: number; suffix
 
 /* ── Intro phase timings (seconds) ───────────────────────────── */
 const PHASE = {
-  logo: 0,          // logo appears immediately
-  name: 0.6,        // PULSO + Emergência Médica
-  tagline: 1.4,     // Decida em segundos...
-  stats: 2.2,       // numbers
-  features: 3.0,    // grid
-  cta: 3.8,         // buttons
+  logo: 0,
+  name: 0.3,
+  tagline: 0.6,
+  stats: 0.9,
+  features: 1.2,
+  cta: 1.5,
 };
 
 export default function Auth() {
@@ -235,19 +235,6 @@ export default function Auth() {
       {/* ── Background ─────────────────────────────────────── */}
       <div className="fixed inset-0 pointer-events-none">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/8 via-background to-background" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.4 }}
-          transition={{ delay: 1, duration: 2 }}
-          className="absolute top-20 right-10 w-32 h-32 bg-violet-500/10 rounded-full blur-2xl"
-        />
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.3 }}
-          transition={{ delay: 1.5, duration: 2 }}
-          className="absolute bottom-40 left-5 w-40 h-40 bg-cyan-500/8 rounded-full blur-2xl"
-        />
       </div>
 
       <div className="relative z-10">
@@ -258,20 +245,12 @@ export default function Auth() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.7, delay: PHASE.logo, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
           >
-            <motion.img
+            <img
               src={pulsoLogo}
               alt="PULSO"
               width={96}
               height={96}
               className="mx-auto rounded-3xl shadow-2xl shadow-primary/30"
-              animate={{
-                boxShadow: [
-                  "0 0 0px hsl(var(--primary) / 0.2)",
-                  "0 0 40px hsl(var(--primary) / 0.35)",
-                  "0 0 0px hsl(var(--primary) / 0.2)",
-                ],
-              }}
-              transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
             />
           </motion.div>
 
@@ -333,17 +312,10 @@ export default function Auth() {
           </motion.h2>
 
           <div className="grid grid-cols-2 gap-2">
-            {showcaseFeatures.map((f, i) => (
-              <motion.div
+            {showcaseFeatures.map((f) => (
+              <div
                 key={f.label}
-                initial={{ opacity: 0, y: 16, scale: 0.95 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                transition={{
-                  delay: PHASE.features + 0.1 + i * 0.06,
-                  duration: 0.4,
-                  ease: [0.22, 1, 0.36, 1] as [number, number, number, number],
-                }}
-                className={`flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br ${f.color.split(" ")[0]} ${f.color.split(" ")[1]} ring-1 ring-border/30 hover:ring-primary/20 hover:shadow-md active:scale-[0.97] transition-all duration-200`}
+                className={`flex items-center gap-2.5 p-3 rounded-2xl bg-gradient-to-br ${f.color.split(" ")[0]} ${f.color.split(" ")[1]} ring-1 ring-border/30`}
               >
                 <div className={`w-9 h-9 rounded-xl bg-gradient-to-br ${f.color.split(" ")[0]} ${f.color.split(" ")[1]} flex items-center justify-center shrink-0`}>
                   <f.icon size={18} className={f.color.split(" ")[2]} />
@@ -352,7 +324,7 @@ export default function Auth() {
                   <span className="font-heading font-semibold text-[11px] leading-tight block truncate">{f.label}</span>
                   <span className="text-[9px] text-muted-foreground leading-tight block truncate">{f.desc}</span>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </motion.div>
