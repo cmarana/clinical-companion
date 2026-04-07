@@ -12,6 +12,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { useTheme } from "@/contexts/ThemeContext";
 import { hapticLight } from "@/lib/haptics";
 import pulsoLogoLight from "@/assets/pulso-logo-light.png";
+import appMockup from "@/assets/app-mockup-hero.jpg";
 import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
 import { useRef, useState, useEffect } from "react";
 
@@ -310,7 +311,42 @@ export default function Landing() {
               ))}
               <span className="text-[10px] text-muted-foreground ml-1">5.0 — avaliação dos usuários</span>
             </div>
-          </motion.div>
+        </motion.div>
+
+        {/* iPhone Mockup */}
+        <motion.div
+          className="max-w-sm mx-auto mt-16 relative z-10"
+          initial={{ opacity: 0, y: 40, scale: 0.92 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ delay: 0.6, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+        >
+          {/* Glow behind phone */}
+          <div className="absolute inset-0 bg-primary/20 blur-[80px] rounded-full scale-75" />
+          
+          {/* iPhone frame */}
+          <div className="relative mx-auto w-[260px] sm:w-[280px]">
+            {/* Outer bezel */}
+            <div className="rounded-[3rem] bg-gradient-to-b from-zinc-700 to-zinc-900 p-[6px] shadow-2xl shadow-black/40">
+              {/* Inner bezel */}
+              <div className="rounded-[2.7rem] bg-black p-[3px] relative overflow-hidden">
+                {/* Notch */}
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[100px] h-[28px] bg-black rounded-b-2xl z-20" />
+                {/* Screen */}
+                <div className="rounded-[2.5rem] overflow-hidden">
+                  <img
+                    src={appMockup}
+                    alt="PULSO App - Interface de protocolos médicos"
+                    width={640}
+                    height={1280}
+                    className="w-full h-auto block"
+                  />
+                </div>
+                {/* Home indicator */}
+                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[90px] h-[4px] bg-white/20 rounded-full z-20" />
+              </div>
+            </div>
+          </div>
+        </motion.div>
         </motion.div>
 
         {/* Animated ECG divider */}
