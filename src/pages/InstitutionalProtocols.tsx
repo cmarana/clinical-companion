@@ -153,21 +153,15 @@ function InstitutionalContent() {
   const createInstitution = async () => {
     if (!instName.trim()) { toast.error("Nome da instituição é obrigatório"); return; }
     const { data, error } = await supabase
-      .from("institutions")
-      .insert({ name: instName.trim(), description: instDesc.trim(), created_by: user!.id })
-      .select()
-      .single();
+      .rpc("create_institution_with_admin", {
+        _name: instName.trim(),
+        _description: instDesc.trim(),
+      });
 
     if (error) { toast.error("Erro ao criar instituição"); return; }
 
-    // Add creator as admin
-    await supabase.from("institution_members").insert({
-      institution_id: data.id,
-      user_id: user!.id,
-      role: "admin",
-    });
-
     toast.success("Instituição criada! Você é o administrador.");
+    const institutionId = data;
     setInstName("");
     setInstDesc("");
     setView("list");
