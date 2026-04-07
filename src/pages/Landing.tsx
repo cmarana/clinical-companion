@@ -42,6 +42,9 @@ const stats = [
 
 export default function Landing() {
   const navigate = useNavigate();
+  const { theme, cycleTheme } = useTheme();
+
+  const themeIcon = theme === "light" ? <Sun size={18} /> : theme === "dark" ? <Moon size={18} /> : <EyeOff size={18} />;
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
