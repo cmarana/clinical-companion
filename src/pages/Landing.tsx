@@ -407,6 +407,137 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* ═══ PRICING ══════════════════════════════════════════ */}
+      <section className="py-20 px-4 bg-gradient-to-b from-muted/20 via-background to-background relative">
+        <FloatingOrbs />
+        <div className="max-w-4xl mx-auto relative z-10">
+          <motion.div
+            className="text-center mb-14"
+            initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={fadeUp} custom={0}
+          >
+            <span className="text-[10px] font-heading font-bold text-primary uppercase tracking-[0.2em]">Planos</span>
+            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold mt-2 tracking-tight">
+              Simples e transparente
+            </h2>
+            <p className="text-muted-foreground mt-3 max-w-md mx-auto text-sm leading-relaxed">
+              Comece grátis. Faça upgrade quando quiser acesso completo.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="grid sm:grid-cols-2 gap-5 max-w-2xl mx-auto"
+            initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={stagger}
+          >
+            {/* Free Plan */}
+            <motion.div
+              variants={fadeUp}
+              custom={0}
+              className="p-6 rounded-2xl bg-card ring-1 ring-border/40 flex flex-col"
+            >
+              <div className="mb-5">
+                <h3 className="font-heading font-bold text-lg">Grátis</h3>
+                <p className="text-muted-foreground text-xs mt-1">Para experimentar o essencial</p>
+              </div>
+              <div className="mb-6">
+                <span className="font-heading font-extrabold text-4xl">R$0</span>
+                <span className="text-muted-foreground text-xs ml-1">/sempre</span>
+              </div>
+              <ul className="space-y-2.5 mb-8 flex-1">
+                {[
+                  "15 protocolos",
+                  "15 medicamentos",
+                  "Calculadoras básicas",
+                  "Modo emergência limitado",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-xs text-muted-foreground">
+                    <Check size={14} className="text-muted-foreground/50 shrink-0 mt-0.5" />
+                    {item}
+                  </li>
+                ))}
+                {[
+                  "IA Clínica",
+                  "Modo offline",
+                  "Prescrições prontas",
+                  "Flashcards e quiz",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-xs text-muted-foreground/40 line-through">
+                    <span className="w-3.5 shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Button
+                variant="outline"
+                onClick={() => navigate("/auth")}
+                className="w-full h-11 rounded-xl font-heading font-semibold"
+              >
+                Criar conta grátis
+              </Button>
+            </motion.div>
+
+            {/* Pro Plan */}
+            <motion.div
+              variants={fadeUp}
+              custom={1}
+              className="p-6 rounded-2xl bg-card ring-2 ring-primary/40 shadow-xl shadow-primary/10 flex flex-col relative overflow-hidden"
+            >
+              {/* Popular badge */}
+              <div className="absolute top-0 right-0">
+                <div className="bg-primary text-primary-foreground text-[9px] font-heading font-bold uppercase tracking-wider px-3 py-1 rounded-bl-xl">
+                  Mais popular
+                </div>
+              </div>
+
+              <div className="mb-5">
+                <h3 className="font-heading font-bold text-lg">Pro</h3>
+                <p className="text-muted-foreground text-xs mt-1">Acesso completo para o plantão</p>
+              </div>
+              <div className="mb-1">
+                <span className="font-heading font-extrabold text-4xl text-primary">R$9,90</span>
+                <span className="text-muted-foreground text-xs ml-1">/mês</span>
+              </div>
+              <p className="text-[10px] text-muted-foreground mb-6">
+                ou <span className="font-semibold text-foreground">R$89,90/ano</span>{" "}
+                <span className="text-primary font-semibold">(24% off)</span>
+              </p>
+              <ul className="space-y-2.5 mb-8 flex-1">
+                {[
+                  "1.000+ protocolos completos",
+                  "2.000+ medicamentos",
+                  "53 calculadoras médicas",
+                  "IA Clínica ilimitada",
+                  "Modo offline completo",
+                  "Prescrições prontas",
+                  "Flashcards e quiz",
+                  "Timer PCR (ACLS)",
+                  "Atualizações prioritárias",
+                ].map((item) => (
+                  <li key={item} className="flex items-start gap-2 text-xs">
+                    <Check size={14} className="text-primary shrink-0 mt-0.5" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <Button
+                onClick={() => navigate("/auth")}
+                className="w-full h-12 rounded-xl font-heading font-bold shadow-lg shadow-primary/20 relative overflow-hidden group"
+              >
+                <span className="absolute inset-0 bg-gradient-to-r from-primary via-primary to-primary/80 group-hover:from-primary/90 group-hover:to-primary transition-all" />
+                <span className="relative flex items-center gap-2">
+                  <Sparkles size={14} />
+                  Começar 7 dias grátis
+                </span>
+              </Button>
+              <p className="text-[9px] text-muted-foreground text-center mt-2">
+                Teste grátis por 7 dias. Cancele quando quiser.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
       {/* ═══ TRUST BAR ════════════════════════════════════════ */}
       <section className="py-10 px-4 border-y border-border/30 bg-muted/20">
         <div className="max-w-4xl mx-auto">
