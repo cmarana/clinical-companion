@@ -65,17 +65,36 @@ export default function GuidedTour() {
     }
   }, []);
 
+  const findVisibleStep = useCallback((startIdx: number, direction: 1 | -1 = 1): number => {
+    let idx = startIdx;
+    while (idx >= 0 && idx < steps.length) {
+      const sel = steps[idx]?.targetSelector;
+      if (sel) {
+        const el = document.querySelector(sel);
+        if (el && el.getClientRects().length > 0) return idx;
+      }
+      idx += direction;
+    }
+    return -1;
+  }, []);
+
   const updateTarget = useCallback((idx: number) => {
     const sel = steps[idx]?.targetSelector;
     if (!sel) return;
     const el = document.querySelector(sel);
-    if (el) {
+    if (el && el.getClientRects().length > 0) {
       el.scrollIntoView({ behavior: "smooth", block: "center" });
       setTimeout(() => setTargetRect(el.getBoundingClientRect()), 300);
     } else {
-      setTargetRect(null);
+      // Element not visible (e.g. hidden on desktop) — skip to next visible step
+      const nextVisible = findVisibleStep(idx + 1, 1);
+      if (nextVisible >= 0) {
+        setStep(nextVisible);
+      } else {
+        close();
+      }
     }
-  }, []);
+  }, [findVisibleStep]);
 
   useEffect(() => {
     if (active) updateTarget(step);
