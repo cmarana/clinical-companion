@@ -21,7 +21,7 @@ import { useModuleAnalytics } from "@/hooks/useModuleAnalytics";
 import SmartSearch from "@/components/SmartSearch";
 import WeeklySummaryWidget from "@/components/WeeklySummaryWidget";
 import VoiceFeaturesBanner from "@/components/VoiceFeaturesBanner";
-import GuidedTour from "@/components/GuidedTour";
+
 import WelcomeScreen from "@/components/WelcomeScreen";
 
 // ── PREFETCH critical chunks after Home mounts ──
@@ -176,7 +176,7 @@ export default function Home() {
   const [fullName, setFullName] = useState("");
   const [specialty] = useState<string | null>("todas");
   const [isAdmin, setIsAdmin] = useState(false);
-  const [welcomeDone, setWelcomeDone] = useState(false);
+  
   const pulsoLogo = theme === "light" ? pulsoLogoLight : pulsoLogoDark;
 
   useEffect(() => {
@@ -366,8 +366,7 @@ export default function Home() {
         <WeeklySummaryWidget />
       </div>
 
-      <WelcomeScreen userName={fullName} onComplete={() => setWelcomeDone(true)} />
-      {welcomeDone && <GuidedTour />}
+      <WelcomeScreen userName={fullName} onComplete={() => {}} />
     </div>
   );
 }
