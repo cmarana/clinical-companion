@@ -9,7 +9,8 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import {
   User, Camera, Save, LogOut, Shield, Mail, Clock, Sun, Moon, Eclipse, Check,
-  GraduationCap, MapPin, Heart, Stethoscope, Building2, Calendar, CreditCard, Crown, ExternalLink
+  GraduationCap, MapPin, Heart, Stethoscope, Building2, Calendar, CreditCard, Crown, ExternalLink,
+  RotateCcw
 } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
@@ -731,6 +732,20 @@ export default function Profile() {
                 </Button>
               )}
             </div>
+            {/* Refazer tour */}
+              <Button
+                variant="ghost"
+                size="sm"
+                className="w-full rounded-xl gap-2 mt-1 text-muted-foreground hover:text-foreground"
+                onClick={() => {
+                  localStorage.removeItem("pulso_tour_completed");
+                  toast.success("Tour resetado! Volte à Home para rever o guia.");
+                  hapticLight();
+                }}
+              >
+                <RotateCcw size={14} />
+                Refazer tour guiado
+              </Button>
           </Section>
 
           {/* ── Sign out ── */}
