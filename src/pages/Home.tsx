@@ -6,7 +6,8 @@ import {
   Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain, GraduationCap,
   Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Eclipse, Newspaper, Building2, Mic, ShieldCheck, BedDouble, ArrowRightLeft, Shield
 } from "lucide-react";
-import pulsoLogo from "@/assets/pulso-logo.png";
+import pulsoLogoLight from "@/assets/pulso-logo-light.png";
+import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -173,6 +174,7 @@ export default function Home() {
   const [initials, setInitials] = useState("U");
   const [specialty] = useState<string | null>("todas");
   const [isAdmin, setIsAdmin] = useState(false);
+  const pulsoLogo = theme === "light" ? pulsoLogoLight : pulsoLogoDark;
 
   useEffect(() => {
     if (!user) { setIsAdmin(false); return; }
