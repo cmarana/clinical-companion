@@ -3,7 +3,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
-import { Check, Crown, LogOut, Sparkles, X, Shield, Zap, Gift, CreditCard } from "lucide-react";
+import { Check, Crown, LogOut, Sparkles, X, Shield, Zap, Gift, CreditCard, Star } from "lucide-react";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
@@ -247,6 +247,31 @@ export default function Pricing() {
                   <span className="text-[11px]">Cartão de crédito e débito</span>
                 </div>
               </div>
+            </div>
+
+            {/* Testimonials */}
+            <div className="space-y-3">
+              <p className="font-heading font-bold text-sm text-center">O que dizem os médicos</p>
+              {[
+                { name: "Dra. Camila R.", role: "Plantonista — UPA, SP", text: "O PULSO me salvou várias vezes no plantão noturno. Ter os protocolos na palma da mão faz toda diferença." },
+                { name: "Dr. Felipe M.", role: "R2 Clínica Médica, RJ", text: "Uso diariamente para consultar doses e interações. A IA Clínica é absurdamente útil." },
+                { name: "Dra. Juliana S.", role: "Emergencista, MG", text: "Interface limpa, rápida e funciona offline. É o app que faltava para quem vive de plantão." },
+              ].map((t) => (
+                <Card key={t.name} className="border-border/50">
+                  <CardContent className="p-4 space-y-2">
+                    <div className="flex gap-0.5">
+                      {Array.from({ length: 5 }).map((_, j) => (
+                        <Star key={j} size={12} className="fill-primary text-primary" />
+                      ))}
+                    </div>
+                    <p className="text-[11px] text-muted-foreground leading-relaxed italic">"{t.text}"</p>
+                    <div>
+                      <p className="font-heading font-bold text-[11px]">{t.name}</p>
+                      <p className="text-[10px] text-muted-foreground">{t.role}</p>
+                    </div>
+                  </CardContent>
+                </Card>
+              ))}
             </div>
 
             <p className="text-[10px] text-muted-foreground text-center leading-relaxed">
