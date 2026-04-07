@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Download, X, Wifi, WifiOff, Share, MoreVertical } from "lucide-react";
+import { Download, X, Wifi, WifiOff, Share, MoreVertical, Monitor, Zap, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { safeSessionStorage } from "@/lib/safeStorage";
 
@@ -15,6 +15,10 @@ const isIOS = () => {
 const isInStandaloneMode = () => {
   return ('standalone' in window.navigator && (window.navigator as any).standalone) ||
     window.matchMedia('(display-mode: standalone)').matches;
+};
+
+const isMobile = () => {
+  return /android|iphone|ipad|ipod|mobile/i.test(navigator.userAgent);
 };
 
 export function PWAInstallPrompt() {
@@ -57,7 +61,7 @@ export function PWAInstallPrompt() {
   // iOS manual instructions
   if (showIOSPrompt && !deferredPrompt) {
     return (
-      <div className="fixed bottom-20 left-4 right-4 z-50 mx-auto max-w-md rounded-xl border border-border bg-card p-4 shadow-lg animate-in slide-in-from-bottom-4">
+      <div className="fixed bottom-20 left-4 right-4 z-50 mx-auto max-w-md rounded-xl border border-border bg-card p-4 shadow-lg animate-in slide-in-from-bottom-4 md:bottom-6 md:left-auto md:right-6 md:max-w-sm">
         <button onClick={dismiss} className="absolute right-2 top-2 text-muted-foreground"><X className="h-4 w-4" /></button>
         <div className="flex items-start gap-3">
           <div className="rounded-lg bg-primary/10 p-2 shrink-0"><Download className="h-5 w-5 text-primary" /></div>
@@ -79,9 +83,46 @@ export function PWAInstallPrompt() {
     );
   }
 
-  // Android / Chrome native install prompt
+  // Desktop banner
+  if (!isMobile()) {
+    return (
+      <div className="fixed bottom-6 right-6 z-50 w-[420px] rounded-2xl border border-border bg-card p-5 shadow-2xl animate-in slide-in-from-bottom-4 fade-in">
+        <button onClick={dismiss} className="absolute right-3 top-3 text-muted-foreground hover:text-foreground transition-colors"><X className="h-4 w-4" /></button>
+        <div className="flex items-center gap-2 mb-3">
+          <div className="rounded-xl bg-primary/10 p-2.5"><Monitor className="h-6 w-6 text-primary" /></div>
+          <div>
+            <p className="text-base font-semibold text-foreground">Instale o PULSO no seu computador</p>
+            <p className="text-xs text-muted-foreground">Acesse como um app nativo, sem abrir o navegador</p>
+          </div>
+        </div>
+        <div className="grid grid-cols-3 gap-3 mb-4">
+          <div className="flex flex-col items-center gap-1.5 rounded-lg bg-muted/50 p-2.5">
+            <Zap className="h-4 w-4 text-primary" />
+            <span className="text-[10px] text-muted-foreground text-center">Acesso rápido</span>
+          </div>
+          <div className="flex flex-col items-center gap-1.5 rounded-lg bg-muted/50 p-2.5">
+            <Download className="h-4 w-4 text-primary" />
+            <span className="text-[10px] text-muted-foreground text-center">Funciona offline</span>
+          </div>
+          <div className="flex flex-col items-center gap-1.5 rounded-lg bg-muted/50 p-2.5">
+            <Globe className="h-4 w-4 text-primary" />
+            <span className="text-[10px] text-muted-foreground text-center">Sempre atualizado</span>
+          </div>
+        </div>
+        <div className="flex gap-2">
+          <Button variant="outline" size="sm" className="flex-1" onClick={dismiss}>Agora não</Button>
+          <Button size="sm" className="flex-1" onClick={install}>
+            <Download className="h-4 w-4 mr-1.5" />
+            Instalar app
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
+  // Mobile Android / Chrome native install prompt
   return (
-    <div className="fixed bottom-20 left-4 right-4 z-50 mx-auto max-w-md rounded-xl border border-border bg-card p-4 shadow-lg animate-in slide-in-from-bottom-4">
+    <div className="fixed bottom-20 left-4 right-4 z-50 mx-auto max-w-md rounded-xl border border-border bg-card p-4 shadow-lg animate-in slide-in-from-bottom-4 md:bottom-6 md:left-auto md:right-6">
       <button onClick={dismiss} className="absolute right-2 top-2 text-muted-foreground"><X className="h-4 w-4" /></button>
       <div className="flex items-center gap-3">
         <div className="rounded-lg bg-primary/10 p-2"><Download className="h-5 w-5 text-primary" /></div>
