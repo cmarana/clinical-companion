@@ -22,6 +22,7 @@ import SmartSearch from "@/components/SmartSearch";
 import WeeklySummaryWidget from "@/components/WeeklySummaryWidget";
 import VoiceFeaturesBanner from "@/components/VoiceFeaturesBanner";
 import GuidedTour from "@/components/GuidedTour";
+import WelcomeScreen from "@/components/WelcomeScreen";
 
 // ── PREFETCH critical chunks after Home mounts ──
 const prefetchRoutes = () => {
@@ -172,8 +173,10 @@ export default function Home() {
   const { trackModule } = useModuleAnalytics();
   const [avatarUrl, setAvatarUrl] = useState("");
   const [initials, setInitials] = useState("U");
+  const [fullName, setFullName] = useState("");
   const [specialty] = useState<string | null>("todas");
   const [isAdmin, setIsAdmin] = useState(false);
+  const [welcomeDone, setWelcomeDone] = useState(false);
   const pulsoLogo = theme === "light" ? pulsoLogoLight : pulsoLogoDark;
 
   useEffect(() => {
@@ -195,6 +198,7 @@ export default function Home() {
       .then(({ data }) => {
         if (data?.avatar_url) setAvatarUrl(data.avatar_url);
         if (data?.full_name) {
+          setFullName(data.full_name);
           setInitials(data.full_name.split(" ").map((n: string) => n[0]).slice(0, 2).join("").toUpperCase());
         } else {
           setInitials(user.email?.[0]?.toUpperCase() || "U");
@@ -362,7 +366,8 @@ export default function Home() {
         <WeeklySummaryWidget />
       </div>
 
-      <GuidedTour />
+      <WelcomeScreen userName={fullName} onComplete={() => setWelcomeDone(true)} />
+      {welcomeDone && <GuidedTour />}
     </div>
   );
 }
