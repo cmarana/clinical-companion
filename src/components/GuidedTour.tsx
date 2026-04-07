@@ -78,6 +78,11 @@ export default function GuidedTour() {
     return -1;
   }, []);
 
+  const close = useCallback(() => {
+    setActive(false);
+    localStorage.setItem(TOUR_KEY, "true");
+  }, []);
+
   const updateTarget = useCallback((idx: number) => {
     const sel = steps[idx]?.targetSelector;
     if (!sel) return;
@@ -86,7 +91,6 @@ export default function GuidedTour() {
       el.scrollIntoView({ behavior: "smooth", block: "center" });
       setTimeout(() => setTargetRect(el.getBoundingClientRect()), 300);
     } else {
-      // Element not visible (e.g. hidden on desktop) — skip to next visible step
       const nextVisible = findVisibleStep(idx + 1, 1);
       if (nextVisible >= 0) {
         setStep(nextVisible);
@@ -94,28 +98,25 @@ export default function GuidedTour() {
         close();
       }
     }
-  }, [findVisibleStep]);
+  }, [findVisibleStep, close]);
 
   useEffect(() => {
     if (active) updateTarget(step);
   }, [active, step, updateTarget]);
 
-  const close = useCallback(() => {
-    setActive(false);
-    localStorage.setItem(TOUR_KEY, "true");
-  }, []);
-
   const next = useCallback(() => {
-    if (step < steps.length - 1) {
-      setStep((s) => s + 1);
+    const nextVisible = findVisibleStep(step + 1, 1);
+    if (nextVisible >= 0) {
+      setStep(nextVisible);
     } else {
       close();
     }
-  }, [step, close]);
+  }, [step, close, findVisibleStep]);
 
   const prev = useCallback(() => {
-    if (step > 0) setStep((s) => s - 1);
-  }, [step]);
+    const prevVisible = findVisibleStep(step - 1, -1);
+    if (prevVisible >= 0) setStep(prevVisible);
+  }, [step, findVisibleStep]);
 
   if (!active) return null;
 
