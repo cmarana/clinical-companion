@@ -41,7 +41,7 @@ serve(async (req) => {
       apiVersion: "2025-08-27.basil",
     });
 
-    const origin = req.headers.get("origin") || "https://pronto-socorro-guide.lovable.app";
+    const origin = req.headers.get("origin") || "https://pulsoemergencia.com.br";
 
     const customers = await stripe.customers.list({ email: user.email, limit: 1 });
     let customerId: string | undefined;
