@@ -17,12 +17,12 @@ const corsHeaders = {
 }
 
 const EMAIL_SUBJECTS: Record<string, string> = {
-  signup: 'Confirm your email',
-  invite: "You've been invited",
-  magiclink: 'Your login link',
-  recovery: 'Reset your password',
-  email_change: 'Confirm your new email',
-  reauthentication: 'Your verification code',
+  signup: 'Confirme seu email - PULSO',
+  invite: 'Você foi convidado - PULSO',
+  magiclink: 'Seu link de acesso - PULSO',
+  recovery: 'Redefinir sua senha - PULSO',
+  email_change: 'Confirme seu novo email - PULSO',
+  reauthentication: 'Seu código de verificação - PULSO',
 }
 
 // Template mapping
@@ -36,7 +36,7 @@ const EMAIL_TEMPLATES: Record<string, React.ComponentType<any>> = {
 }
 
 // Configuration
-const SITE_NAME = "pronto-socorro-guide"
+const SITE_NAME = "PULSO"
 const SENDER_DOMAIN = "notify.pulsoemergencia.com.br"
 const ROOT_DOMAIN = "pulsoemergencia.com.br"
 const FROM_DOMAIN = "pulsoemergencia.com.br" // Domain shown in From address (may be root or sender subdomain)
