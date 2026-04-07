@@ -41,17 +41,19 @@ export const plans: Plan[] = [
 export const FREE_PROTOCOL_IDS = [
   "dor-toracica", "dispneia", "itu", "pneumonia", "sepse",
   "hipertensao-emergencia", "cetoacidose-diabetica", "anafilaxia",
-  "crise-asmatica", "iam"
+  "crise-asmatica", "iam",
+  "avc", "edema-agudo-pulmao", "hipoglicemia", "convulsao", "tep"
 ];
 
 // Free medications: 10 most common drugs
 export const FREE_MEDICATION_IDS = [
   "dipirona", "omeprazol", "ondansetrona", "paracetamol", "amoxicilina",
-  "metoclopramida", "ibuprofeno", "dexametasona", "furosemida", "enoxaparina"
+  "metoclopramida", "ibuprofeno", "dexametasona", "furosemida", "enoxaparina",
+  "amiodarona", "tramadol", "cefalexina", "azitromicina", "salbutamol"
 ];
 
 // Free bulario: 10 medications accessible in the full drug reference
-export const FREE_BULARIO_COUNT = 10;
+export const FREE_BULARIO_COUNT = 15;
 
 // Free protocol sections visible for free protocols
 export const FREE_PROTOCOL_SECTIONS = ["def", "diag"];
