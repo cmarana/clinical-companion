@@ -3,6 +3,7 @@ import { ArrowLeft, Moon, Sun, Settings, WifiOff, Wifi } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
+import { hapticLight } from "@/lib/haptics";
 import FontSizeSelector from "./FontSizeSelector";
 
 interface TopBarProps {
