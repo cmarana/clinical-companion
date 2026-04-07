@@ -176,7 +176,7 @@ export default function Home() {
   const [fullName, setFullName] = useState("");
   const [specialty] = useState<string | null>("todas");
   const [isAdmin, setIsAdmin] = useState(false);
-  const [welcomeDone, setWelcomeDone] = useState(false);
+  
   const pulsoLogo = theme === "light" ? pulsoLogoLight : pulsoLogoDark;
 
   useEffect(() => {
