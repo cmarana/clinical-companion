@@ -18,10 +18,22 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
   const { theme, toggleTheme } = useTheme();
   const [showSettings, setShowSettings] = useState(false);
   const [offline, setOffline] = useState(!navigator.onLine);
+  const [showReconnected, setShowReconnected] = useState(false);
+  const wasOfflineRef = useState(() => ({ current: !navigator.onLine }))[0];
 
   useEffect(() => {
-    const on = () => setOffline(false);
-    const off = () => setOffline(true);
+    const on = () => {
+      setOffline(false);
+      if (wasOfflineRef.current) {
+        setShowReconnected(true);
+        setTimeout(() => setShowReconnected(false), 3000);
+      }
+      wasOfflineRef.current = false;
+    };
+    const off = () => {
+      setOffline(true);
+      wasOfflineRef.current = true;
+    };
     window.addEventListener("online", on);
     window.addEventListener("offline", off);
     return () => {
