@@ -366,7 +366,8 @@ export default function Home() {
         <WeeklySummaryWidget />
       </div>
 
-      <GuidedTour />
+      <WelcomeScreen userName={fullName} onComplete={() => setWelcomeDone(true)} />
+      {welcomeDone && <GuidedTour />}
     </div>
   );
 }
