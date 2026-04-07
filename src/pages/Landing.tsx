@@ -12,6 +12,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { useTheme } from "@/contexts/ThemeContext";
 import { hapticLight } from "@/lib/haptics";
 import pulsoLogoLight from "@/assets/pulso-logo-light.png";
+import appMockup from "@/assets/app-mockup-hero.jpg";
 import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
 import { useRef, useState, useEffect } from "react";
 
