@@ -311,6 +311,7 @@ export default function Landing() {
               ))}
               <span className="text-[10px] text-muted-foreground ml-1">5.0 — avaliação dos usuários</span>
             </div>
+          </motion.div>
         </motion.div>
 
         {/* App Feature Showcase — replaces iPhone mockup */}
