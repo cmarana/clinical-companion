@@ -122,7 +122,7 @@ export default function GuidedTour() {
 
   const current = steps[step];
   const Icon = current.icon;
-  const isLast = step === steps.length - 1;
+  const isLast = findVisibleStep(step + 1, 1) < 0;
 
   // Tooltip position
   const tooltipStyle: React.CSSProperties = {};
