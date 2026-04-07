@@ -32,7 +32,7 @@ export default function Medications() {
         {!isPremium && (
           <div className="flex items-center gap-2">
             <PremiumBadge />
-            <span className="text-xs text-muted-foreground">10 medicamentos gratuitos — assine para acesso completo</span>
+            <span className="text-xs text-muted-foreground">15 medicamentos gratuitos — assine para acesso completo</span>
           </div>
         )}
         <div className="relative">
