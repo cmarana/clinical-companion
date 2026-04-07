@@ -65,10 +65,14 @@ workflows:
     environment:
       node: 18
       java: 17
+      android_signing:
+        - keystore_reference
       groups:
-        - google_play_credentials  # Configure no Codemagic: GCLOUD_SERVICE_ACCOUNT_CREDENTIALS
+        - google_play_credentials
+        - keystore_credentials
       vars:
         BUNDLE_ID: "app.lovable.aacf366df8e043b2abf55d860c297835"
+        PACKAGE_NAME: "app.lovable.aacf366df8e043b2abf55d860c297835"
     scripts:
       - name: Install dependencies
         script: |
@@ -82,7 +86,11 @@ workflows:
       - name: Sync Capacitor
         script: |
           npx cap sync android
-      - name: Build Android AAB
+      - name: Set Android package name
+        script: |
+          cd android
+          sed -i "s/applicationId .*/applicationId \"$PACKAGE_NAME\"/" app/build.gradle
+      - name: Build signed Android AAB
         script: |
           cd android
           chmod +x gradlew
