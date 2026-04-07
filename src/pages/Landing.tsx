@@ -524,7 +524,7 @@ export default function Landing() {
           >
             <span className="text-[10px] font-heading font-bold text-primary uppercase tracking-[0.2em]">Completo</span>
             <h2 className="font-heading text-3xl sm:text-4xl font-extrabold mt-2 tracking-tight">
-              20+ ferramentas em um só app
+              28+ ferramentas em um só app
             </h2>
             <p className="text-muted-foreground mt-3 max-w-lg mx-auto text-sm leading-relaxed">
               Tudo que um médico precisa no plantão, na enfermaria e no estudo — sem precisar de vários apps.
