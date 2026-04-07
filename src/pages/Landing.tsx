@@ -506,54 +506,45 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* ═══ SCENARIOS ════════════════════════════════════════ */}
+      {/* ═══ ALL MODULES ═════════════════════════════════════ */}
       <section className="py-20 px-4 relative">
-        <div className="max-w-4xl mx-auto relative z-10">
+        <div className="max-w-6xl mx-auto relative z-10">
           <motion.div
             className="text-center mb-14"
             initial="hidden" whileInView="visible" viewport={{ once: true }}
             variants={fadeUp} custom={0}
           >
-            <span className="text-[10px] font-heading font-bold text-primary uppercase tracking-[0.2em]">Na prática</span>
+            <span className="text-[10px] font-heading font-bold text-primary uppercase tracking-[0.2em]">Completo</span>
             <h2 className="font-heading text-3xl sm:text-4xl font-extrabold mt-2 tracking-tight">
-              Cenários reais de plantão
+              20+ ferramentas em um só app
             </h2>
-            <p className="text-muted-foreground mt-3 max-w-md mx-auto text-sm leading-relaxed">
-              Veja como o PULSO funciona quando cada segundo importa.
+            <p className="text-muted-foreground mt-3 max-w-lg mx-auto text-sm leading-relaxed">
+              Tudo que um médico precisa no plantão, na enfermaria e no estudo — sem precisar de vários apps.
             </p>
           </motion.div>
 
           <motion.div
-            className="space-y-4"
+            className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3"
             initial="hidden" whileInView="visible" viewport={{ once: true }}
             variants={stagger}
           >
-            {scenarios.map((s) => (
-              <motion.div
-                key={s.title}
-                variants={fadeUp}
-                custom={0}
-                className="group flex gap-4 sm:gap-6 p-5 sm:p-6 rounded-2xl bg-card ring-1 ring-border/30 hover:ring-primary/20 hover:shadow-lg transition-all duration-300"
-              >
-                <div className="shrink-0 flex flex-col items-center">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
-                    <span className="font-mono text-xs font-bold text-primary">{s.time}</span>
+            {allModules.map((m) => {
+              const [textColor, bgColor] = m.color.split(" ");
+              return (
+                <motion.div
+                  key={m.title}
+                  variants={fadeUp}
+                  custom={0}
+                  className="group p-4 rounded-2xl bg-card ring-1 ring-border/30 hover:ring-primary/30 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5 transition-all duration-300 text-center"
+                >
+                  <div className={`w-10 h-10 rounded-xl ${bgColor} flex items-center justify-center mx-auto mb-3`}>
+                    <m.icon size={18} className={textColor} />
                   </div>
-                  <div className="w-px h-full bg-border/50 mt-2 hidden sm:block" />
-                </div>
-                <div className="min-w-0">
-                  <h3 className="font-heading font-bold text-sm mb-1.5">{s.title}</h3>
-                  <p className="text-xs text-muted-foreground leading-relaxed mb-3">{s.desc}</p>
-                  <div className="flex flex-wrap gap-1.5">
-                    {s.tags.map((tag) => (
-                      <span key={tag} className="text-[10px] font-heading font-semibold px-2.5 py-1 rounded-full bg-primary/8 text-primary ring-1 ring-primary/15">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </motion.div>
-            ))}
+                  <h3 className="font-heading font-bold text-xs mb-1">{m.title}</h3>
+                  <p className="text-[10px] text-muted-foreground leading-snug">{m.desc}</p>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
       </section>
