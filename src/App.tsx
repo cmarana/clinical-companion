@@ -73,6 +73,7 @@ const Referral = lazy(() => import("@/pages/Referral"));
 const Unsubscribe = lazy(() => import("@/pages/Unsubscribe"));
 
 const Onboarding = lazy(() => import("@/pages/Onboarding"));
+const Landing = lazy(() => import("@/pages/Landing"));
 const ClinicalCaseSimulator = lazy(() => import("@/pages/ClinicalCaseSimulator"));
 const InstitutionalProtocols = lazy(() => import("@/pages/InstitutionalProtocols"));
 const VoiceEvolution = lazy(() => import("@/pages/VoiceEvolution"));
@@ -113,10 +114,17 @@ const LazyFallback = () => (
   </div>
 );
 
+const PublicIndex = () => {
+  const { user } = useAuth();
+  if (user) return <Navigate to="/" replace />;
+  return <Landing />;
+};
+
 const AppRoutes = () => (
   <Suspense fallback={<LazyFallback />}>
     <Routes>
-      <Route path="/index" element={<Navigate to="/" replace />} />
+      <Route path="/index" element={<PublicIndex />} />
+      <Route path="/landing" element={<Landing />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/terms" element={<TermsOfUse />} />
