@@ -30,6 +30,7 @@
   <url><loc>https://pulsoemergencia.com.br/obstetrics</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pulsoemergencia.com.br/study-dashboard</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pulsoemergencia.com.br/pricing</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/about</loc><changefreq>monthly</changefreq><priority>0.5</priority></url>
   <url><loc>https://pulsoemergencia.com.br/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://pulsoemergencia.com.br/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>
