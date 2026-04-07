@@ -126,14 +126,36 @@
 @layer base {
   * {
     @apply border-border;
+    -webkit-tap-highlight-color: transparent;
   }
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: none;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  /* Allow text selection only in content areas */
+  .protocol-content, textarea, input, [contenteditable="true"], .selectable {
+    user-select: text;
+    -webkit-user-select: text;
   }
   h1, h2, h3, h4, h5, h6, button, label, nav, [role="tab"] {
     font-family: var(--font-heading);
+  }
+  /* Native-feel touch active states */
+  button:active, a:active, [role="button"]:active {
+    opacity: 0.7;
+    transition: opacity 0.1s ease;
+  }
+  /* Safe area padding for notched devices */
+  .safe-area-top {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
   }
 }
 
