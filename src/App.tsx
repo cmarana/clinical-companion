@@ -124,6 +124,7 @@ const AppRoutes = () => (
   <Suspense fallback={<LazyFallback />}>
     <Routes>
       <Route path="/index" element={<PublicIndex />} />
+      <Route path="/landing" element={<Landing />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/terms" element={<TermsOfUse />} />
