@@ -118,7 +118,7 @@ const SmartRoot = () => {
   const { user, loading } = useAuth();
   if (loading) return <LazyFallback />;
   if (!user) return <Landing />;
-  return <ProtectedRoute><AppLayout /></ProtectedRoute>;
+  return <Navigate to="/home" replace />;
 };
 
 const AppRoutes = () => (
