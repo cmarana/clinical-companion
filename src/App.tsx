@@ -114,10 +114,16 @@ const LazyFallback = () => (
   </div>
 );
 
+const PublicIndex = () => {
+  const { user } = useAuth();
+  if (user) return <Navigate to="/" replace />;
+  return <Landing />;
+};
+
 const AppRoutes = () => (
   <Suspense fallback={<LazyFallback />}>
     <Routes>
-      <Route path="/index" element={<Navigate to="/" replace />} />
+      <Route path="/index" element={<PublicIndex />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/terms" element={<TermsOfUse />} />
