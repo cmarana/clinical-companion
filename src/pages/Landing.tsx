@@ -825,8 +825,9 @@ export default function Landing() {
 
             {/* Legal */}
             <div>
-              <h4 className="font-heading font-semibold text-foreground text-sm mb-4">Legal</h4>
+              <h4 className="font-heading font-semibold text-foreground text-sm mb-4">Institucional</h4>
               <ul className="space-y-2.5 text-sm text-muted-foreground">
+                <li><button onClick={() => navigate("/about")} className="hover:text-foreground transition-colors">Sobre o PULSO</button></li>
                 <li><button onClick={() => navigate("/terms")} className="hover:text-foreground transition-colors">Termos de Uso</button></li>
                 <li><button onClick={() => navigate("/privacy")} className="hover:text-foreground transition-colors">Política de Privacidade</button></li>
               </ul>
