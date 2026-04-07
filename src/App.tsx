@@ -10,6 +10,7 @@ import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { NotificationsProvider } from "@/contexts/NotificationsContext";
 import AppLayout from "@/components/AppLayout";
 import { PWAInstallPrompt, OfflineIndicator } from "@/components/PWAInstallPrompt";
+import FloatingThemeToggle from "@/components/FloatingThemeToggle";
 
 import { lazy, Suspense } from "react";
 import { ProtocolListSkeleton, ProtocolDetailSkeleton, MedicationListSkeleton } from "@/components/PageSkeleton";
@@ -208,12 +209,12 @@ const App = () => (
             <FavoritesProvider>
               <NotesProvider>
                 <TooltipProvider>
-                <Toaster />
+                  <Toaster />
                   <Sonner />
-                   <OfflineIndicator />
-                   <PWAInstallPrompt />
-                   
-                   <AppRoutes />
+                  <OfflineIndicator />
+                  <PWAInstallPrompt />
+                  <FloatingThemeToggle className="md:hidden" />
+                  <AppRoutes />
                 </TooltipProvider>
               </NotesProvider>
             </FavoritesProvider>
