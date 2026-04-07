@@ -198,6 +198,7 @@ export default function Home() {
       .then(({ data }) => {
         if (data?.avatar_url) setAvatarUrl(data.avatar_url);
         if (data?.full_name) {
+          setFullName(data.full_name);
           setInitials(data.full_name.split(" ").map((n: string) => n[0]).slice(0, 2).join("").toUpperCase());
         } else {
           setInitials(user.email?.[0]?.toUpperCase() || "U");
