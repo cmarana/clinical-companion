@@ -910,6 +910,10 @@ export type Database = {
         Args: { _institution_id: string; _user_id: string }
         Returns: boolean
       }
+      join_institution_by_invite: {
+        Args: { _invite_code: string }
+        Returns: string
+      }
       move_to_dlq: {
         Args: {
           dlq_name: string
