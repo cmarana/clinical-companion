@@ -114,10 +114,11 @@ const LazyFallback = () => (
   </div>
 );
 
-const PublicIndex = () => {
-  const { user } = useAuth();
-  if (user) return <Navigate to="/" replace />;
-  return <Landing />;
+const SmartRoot = () => {
+  const { user, loading } = useAuth();
+  if (loading) return <LazyFallback />;
+  if (!user) return <Landing />;
+  return <ProtectedRoute><AppLayout /></ProtectedRoute>;
 };
 
 const AppRoutes = () => (
