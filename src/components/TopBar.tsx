@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, Moon, Sun, Settings, WifiOff } from "lucide-react";
+import { ArrowLeft, Moon, Sun, Settings, WifiOff, Wifi } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
@@ -18,10 +18,22 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
   const { theme, toggleTheme } = useTheme();
   const [showSettings, setShowSettings] = useState(false);
   const [offline, setOffline] = useState(!navigator.onLine);
+  const [showReconnected, setShowReconnected] = useState(false);
+  const wasOfflineRef = useState(() => ({ current: !navigator.onLine }))[0];
 
   useEffect(() => {
-    const on = () => setOffline(false);
-    const off = () => setOffline(true);
+    const on = () => {
+      setOffline(false);
+      if (wasOfflineRef.current) {
+        setShowReconnected(true);
+        setTimeout(() => setShowReconnected(false), 3000);
+      }
+      wasOfflineRef.current = false;
+    };
+    const off = () => {
+      setOffline(true);
+      wasOfflineRef.current = true;
+    };
     window.addEventListener("online", on);
     window.addEventListener("offline", off);
     return () => {
@@ -63,6 +75,13 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
           <Settings size={18} />
         </button>
       </header>
+
+      {showReconnected && (
+        <div className="sticky top-12 z-40 flex items-center justify-center gap-1.5 py-1.5 bg-emerald-500/15 border-b border-emerald-500/25 animate-in slide-in-from-top fade-in duration-300">
+          <Wifi size={13} className="text-emerald-500" />
+          <span className="text-[11px] font-heading font-semibold text-emerald-500">Conexão restabelecida</span>
+        </div>
+      )}
 
       {/* Settings dropdown */}
       {showSettings && (
