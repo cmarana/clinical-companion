@@ -124,7 +124,7 @@ const SmartRoot = () => {
 const AppRoutes = () => (
   <Suspense fallback={<LazyFallback />}>
     <Routes>
-      <Route path="/index" element={<PublicIndex />} />
+      <Route path="/index" element={<Navigate to="/" replace />} />
       <Route path="/landing" element={<Landing />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/reset-password" element={<ResetPassword />} />
@@ -134,7 +134,7 @@ const AppRoutes = () => (
       <Route path="/onboarding" element={<Onboarding />} />
       
       <Route element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/protocols" element={<Navigate to="/full-protocols" replace />} />
         <Route path="/protocols/:id" element={<ProtocolDetail />} />
         <Route path="/medications" element={<Navigate to="/bulario" replace />} />
