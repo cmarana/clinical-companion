@@ -798,16 +798,62 @@ export default function Landing() {
       </section>
 
       {/* ═══ FOOTER ═══════════════════════════════════════════ */}
-      <footer className="py-8 px-4 border-t border-border/30">
-        <div className="max-w-5xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-muted-foreground">
-          <div className="flex items-center gap-2.5">
-            <img src={pulsoLogo} alt="PULSO" width={20} height={20} className="rounded-md" />
-            <span className="font-heading font-semibold text-foreground">PULSO</span>
-            <span>© {new Date().getFullYear()}</span>
+      <footer className="border-t border-border/30 bg-muted/30">
+        <div className="max-w-6xl mx-auto px-4 py-12 sm:py-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
+            {/* Brand */}
+            <div className="sm:col-span-2 lg:col-span-1">
+              <div className="flex items-center gap-2.5 mb-4">
+                <img src={pulsoLogo} alt="PULSO" width={28} height={28} className="rounded-lg" />
+                <span className="font-heading font-bold text-lg text-foreground">PULSO</span>
+              </div>
+              <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
+                Apoio à decisão clínica para profissionais de saúde. Protocolos, medicamentos e calculadoras baseados em evidência.
+              </p>
+            </div>
+
+            {/* Produto */}
+            <div>
+              <h4 className="font-heading font-semibold text-foreground text-sm mb-4">Produto</h4>
+              <ul className="space-y-2.5 text-sm text-muted-foreground">
+                <li><button onClick={() => { navigate("/auth"); hapticLight(); }} className="hover:text-foreground transition-colors">Criar conta</button></li>
+                <li><button onClick={() => { navigate("/pricing"); hapticLight(); }} className="hover:text-foreground transition-colors">Planos e preços</button></li>
+                <li><button onClick={() => document.getElementById("ferramentas")?.scrollIntoView({ behavior: "smooth" })} className="hover:text-foreground transition-colors">Funcionalidades</button></li>
+                <li><button onClick={() => document.getElementById("faq")?.scrollIntoView({ behavior: "smooth" })} className="hover:text-foreground transition-colors">Perguntas frequentes</button></li>
+              </ul>
+            </div>
+
+            {/* Legal */}
+            <div>
+              <h4 className="font-heading font-semibold text-foreground text-sm mb-4">Legal</h4>
+              <ul className="space-y-2.5 text-sm text-muted-foreground">
+                <li><button onClick={() => navigate("/terms")} className="hover:text-foreground transition-colors">Termos de Uso</button></li>
+                <li><button onClick={() => navigate("/privacy")} className="hover:text-foreground transition-colors">Política de Privacidade</button></li>
+              </ul>
+            </div>
+
+            {/* Contato */}
+            <div>
+              <h4 className="font-heading font-semibold text-foreground text-sm mb-4">Contato</h4>
+              <ul className="space-y-2.5 text-sm text-muted-foreground">
+                <li>
+                  <a href="mailto:contato@pulsoemergencia.com.br" className="hover:text-foreground transition-colors">
+                    contato@pulsoemergencia.com.br
+                  </a>
+                </li>
+                <li>
+                  <a href="https://pulsoemergencia.com.br" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
+                    pulsoemergencia.com.br
+                  </a>
+                </li>
+              </ul>
+            </div>
           </div>
-          <div className="flex gap-6">
-            <button onClick={() => navigate("/terms")} className="hover:text-foreground transition-colors">Termos de Uso</button>
-            <button onClick={() => navigate("/privacy")} className="hover:text-foreground transition-colors">Privacidade</button>
+
+          {/* Bottom bar */}
+          <div className="mt-10 pt-6 border-t border-border/20 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-muted-foreground">
+            <span>© {new Date().getFullYear()} PULSO. Todos os direitos reservados.</span>
+            <span className="text-[11px]">As informações não substituem o julgamento médico profissional.</span>
           </div>
         </div>
       </footer>
