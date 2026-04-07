@@ -14,6 +14,9 @@ import { hapticLight } from "@/lib/haptics";
 
 export default function AppLayout() {
   const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
+
+  const themeIcon = theme === "oled" ? <Eclipse size={16} /> : theme === "dark" ? <Sun size={16} /> : <Moon size={16} />;
 
   return (
     <SidebarProvider>
