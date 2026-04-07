@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, Moon, Sun, Settings, WifiOff, Wifi } from "lucide-react";
+import { ArrowLeft, Moon, Sun, Settings, WifiOff, Wifi, Eclipse } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";

@@ -8,6 +8,9 @@ import OfflineErrorBoundary from "./OfflineErrorBoundary";
 import { AnimatePresence, motion } from "framer-motion";
 import CommandPalette from "./CommandPalette";
 import SupportChat from "./SupportChat";
+import { useTheme } from "@/contexts/ThemeContext";
+import { Moon, Sun, Eclipse } from "lucide-react";
+import { hapticLight } from "@/lib/haptics";
 
 export default function AppLayout() {
   const location = useLocation();
