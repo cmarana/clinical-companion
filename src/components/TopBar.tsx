@@ -1,8 +1,8 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, Moon, Sun, Settings } from "lucide-react";
+import { ArrowLeft, Moon, Sun, Settings, WifiOff } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FontSizeSelector from "./FontSizeSelector";
 
 interface TopBarProps {
@@ -17,6 +17,18 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
   const [showSettings, setShowSettings] = useState(false);
+  const [offline, setOffline] = useState(!navigator.onLine);
+
+  useEffect(() => {
+    const on = () => setOffline(false);
+    const off = () => setOffline(true);
+    window.addEventListener("online", on);
+    window.addEventListener("offline", off);
+    return () => {
+      window.removeEventListener("online", on);
+      window.removeEventListener("offline", off);
+    };
+  }, []);
 
   const canGoBack = showBack ?? location.pathname !== "/";
 
@@ -38,6 +50,12 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
         )}
         {!title && <div className="flex-1" />}
         {rightContent}
+        {offline && (
+          <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/25 animate-in fade-in">
+            <WifiOff size={12} className="text-amber-500" />
+            <span className="text-[10px] font-heading font-semibold text-amber-500">Offline</span>
+          </div>
+        )}
         <button
           onClick={() => setShowSettings(!showSettings)}
           className="p-1.5 rounded-md hover:bg-accent transition-colors text-muted-foreground"
