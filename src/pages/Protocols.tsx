@@ -26,7 +26,7 @@ export default function Protocols() {
         {!isPremium && (
           <div className="flex items-center gap-2">
             <PremiumBadge />
-            <span className="text-xs text-muted-foreground">10 protocolos gratuitos — assine para acesso completo</span>
+            <span className="text-xs text-muted-foreground">15 protocolos gratuitos — assine para acesso completo</span>
           </div>
         )}
 
