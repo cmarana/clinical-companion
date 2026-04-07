@@ -4,9 +4,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import {
   Stethoscope, Shield, Zap, Brain, Clock, BookOpen,
   ChevronRight, Star, ArrowRight, Sparkles, Heart,
-  Activity, Pill, Calculator, FileText, Siren
+  Activity, Pill, Calculator, FileText, Siren,
+  Sun, Moon, EyeOff
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -40,6 +42,9 @@ const stats = [
 
 export default function Landing() {
   const navigate = useNavigate();
+  const { theme, toggleTheme } = useTheme();
+
+  const themeIcon = theme === "light" ? <Sun size={18} /> : theme === "dark" ? <Moon size={18} /> : <EyeOff size={18} />;
 
   return (
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
@@ -52,7 +57,10 @@ export default function Landing() {
             </div>
             <span className="font-heading font-bold text-lg">PULSO</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
+            <Button variant="ghost" size="icon" onClick={toggleTheme} className="h-8 w-8" aria-label="Alternar tema">
+              {themeIcon}
+            </Button>
             <Button variant="ghost" size="sm" onClick={() => navigate("/auth")} className="text-sm font-heading">
               Entrar
             </Button>
