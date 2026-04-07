@@ -1,5 +1,5 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, Moon, Sun, Settings, WifiOff, Wifi } from "lucide-react";
+import { ArrowLeft, Moon, Sun, Settings, WifiOff, Wifi, Eclipse } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
@@ -69,6 +69,13 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
             <span className="text-[10px] font-heading font-semibold text-amber-500">Offline</span>
           </div>
         )}
+        <button
+          onClick={() => { hapticLight(); toggleTheme(); }}
+          className="p-1.5 rounded-md hover:bg-accent transition-colors text-muted-foreground"
+          title={theme === "light" ? "Modo Escuro" : theme === "dark" ? "Plantão Noturno" : "Modo Claro"}
+        >
+          {theme === "oled" ? <Eclipse size={18} /> : theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
         <button
           onClick={() => setShowSettings(!showSettings)}
           className="p-1.5 rounded-md hover:bg-accent transition-colors text-muted-foreground"
