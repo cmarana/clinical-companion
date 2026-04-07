@@ -57,7 +57,10 @@ export default function Landing() {
             </div>
             <span className="font-heading font-bold text-lg">PULSO</span>
           </div>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
+            <Button variant="ghost" size="icon" onClick={toggleTheme} className="h-8 w-8" aria-label="Alternar tema">
+              {themeIcon}
+            </Button>
             <Button variant="ghost" size="sm" onClick={() => navigate("/auth")} className="text-sm font-heading">
               Entrar
             </Button>
