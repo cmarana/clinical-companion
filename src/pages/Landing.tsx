@@ -12,7 +12,7 @@ import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion"
 import { useTheme } from "@/contexts/ThemeContext";
 import { hapticLight } from "@/lib/haptics";
 import pulsoLogoLight from "@/assets/pulso-logo-light.png";
-import appMockup from "@/assets/app-screenshot-real.jpg";
+
 import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
 import { useRef, useState, useEffect } from "react";
 
@@ -311,42 +311,65 @@ export default function Landing() {
               ))}
               <span className="text-[10px] text-muted-foreground ml-1">5.0 — avaliação dos usuários</span>
             </div>
+          </motion.div>
         </motion.div>
 
-        {/* iPhone Mockup */}
+        {/* App Feature Showcase — replaces iPhone mockup */}
         <motion.div
-          className="max-w-sm mx-auto mt-16 relative z-10"
-          initial={{ opacity: 0, y: 40, scale: 0.92 }}
-          animate={{ opacity: 1, y: 0, scale: 1 }}
-          transition={{ delay: 0.6, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          className="max-w-5xl mx-auto mt-16 relative z-10 px-4"
+          initial={{ opacity: 0, y: 40 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* Glow behind phone */}
-          <div className="absolute inset-0 bg-primary/20 blur-[80px] rounded-full scale-75" />
-          
-          {/* iPhone frame */}
-          <div className="relative mx-auto w-[260px] sm:w-[280px]">
-            {/* Outer bezel */}
-            <div className="rounded-[3rem] bg-gradient-to-b from-zinc-700 to-zinc-900 p-[6px] shadow-2xl shadow-black/40">
-              {/* Inner bezel */}
-              <div className="rounded-[2.7rem] bg-black p-[3px] relative overflow-hidden">
-                {/* Notch */}
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[100px] h-[28px] bg-black rounded-b-2xl z-20" />
-                {/* Screen */}
-                <div className="rounded-[2.5rem] overflow-hidden">
-                  <img
-                    src={appMockup}
-                    alt="PULSO App - Interface de protocolos médicos"
-                    width={640}
-                    height={1280}
-                    className="w-full h-auto block"
-                  />
+          {/* Glow */}
+          <div className="absolute inset-0 bg-primary/10 blur-[100px] rounded-full scale-50 pointer-events-none" />
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 relative">
+            {[
+              { icon: Siren, label: "Modo Emergência", detail: "PCR, Sepse, IAM, AVC", accent: "from-red-500/20 to-red-500/5 text-red-500", ring: "ring-red-500/20" },
+              { icon: Bot, label: "IA Clínica", detail: "Diagnóstico diferencial por IA", accent: "from-blue-500/20 to-blue-500/5 text-blue-500", ring: "ring-blue-500/20" },
+              { icon: Pill, label: "2.000+ Fármacos", detail: "Doses, diluições, interações", accent: "from-emerald-500/20 to-emerald-500/5 text-emerald-500", ring: "ring-emerald-500/20" },
+              { icon: BookOpen, label: "1.004 Protocolos", detail: "26 categorias, baseados em evidência", accent: "from-cyan-500/20 to-cyan-500/5 text-cyan-500", ring: "ring-cyan-500/20" },
+              { icon: Calculator, label: "53 Calculadoras", detail: "Glasgow, SOFA, Wells, HEART…", accent: "from-indigo-500/20 to-indigo-500/5 text-indigo-500", ring: "ring-indigo-500/20" },
+              { icon: FileText, label: "Prescrições Prontas", detail: "Modelos por diagnóstico + IA", accent: "from-amber-500/20 to-amber-500/5 text-amber-500", ring: "ring-amber-500/20" },
+              { icon: WifiOff, label: "100% Offline", detail: "Funciona sem internet", accent: "from-violet-500/20 to-violet-500/5 text-violet-500", ring: "ring-violet-500/20" },
+              { icon: Mic, label: "Voz & Evolução", detail: "Dite evoluções por voz", accent: "from-pink-500/20 to-pink-500/5 text-pink-500", ring: "ring-pink-500/20" },
+            ].map((f, i) => (
+              <motion.div
+                key={f.label}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.7 + i * 0.06, duration: 0.5 }}
+                className={`relative group rounded-2xl bg-gradient-to-br ${f.accent} ring-1 ${f.ring} p-4 flex flex-col items-center text-center gap-2 hover:scale-[1.04] transition-transform cursor-default`}
+              >
+                <div className="w-10 h-10 rounded-xl bg-background/60 backdrop-blur flex items-center justify-center shadow-sm">
+                  <f.icon size={20} />
                 </div>
-                {/* Home indicator */}
-                <div className="absolute bottom-2 left-1/2 -translate-x-1/2 w-[90px] h-[4px] bg-white/20 rounded-full z-20" />
-              </div>
-            </div>
+                <span className="font-heading font-bold text-xs text-foreground leading-tight">{f.label}</span>
+                <span className="text-[10px] text-muted-foreground leading-snug">{f.detail}</span>
+              </motion.div>
+            ))}
           </div>
-        </motion.div>
+
+          {/* Differentials banner */}
+          <motion.div
+            className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-2"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2, duration: 0.6 }}
+          >
+            {[
+              { icon: Zap, text: "Decisões em <5s" },
+              { icon: Shield, text: "Dados criptografados" },
+              { icon: RefreshCw, text: "Atualizado 2024-25" },
+              { icon: Users, text: "Feito por médicos" },
+            ].map((d) => (
+              <div key={d.text} className="flex items-center gap-2 px-3 py-2.5 rounded-xl bg-muted/40 ring-1 ring-border/30">
+                <d.icon size={14} className="text-primary shrink-0" />
+                <span className="text-[10px] font-heading font-semibold text-foreground">{d.text}</span>
+              </div>
+            ))}
+          </motion.div>
         </motion.div>
 
         {/* Animated ECG divider */}
