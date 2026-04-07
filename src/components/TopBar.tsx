@@ -50,6 +50,12 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
         )}
         {!title && <div className="flex-1" />}
         {rightContent}
+        {offline && (
+          <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/25 animate-in fade-in">
+            <WifiOff size={12} className="text-amber-500" />
+            <span className="text-[10px] font-heading font-semibold text-amber-500">Offline</span>
+          </div>
+        )}
         <button
           onClick={() => setShowSettings(!showSettings)}
           className="p-1.5 rounded-md hover:bg-accent transition-colors text-muted-foreground"
