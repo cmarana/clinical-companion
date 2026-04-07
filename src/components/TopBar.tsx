@@ -76,6 +76,13 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
         </button>
       </header>
 
+      {showReconnected && (
+        <div className="sticky top-12 z-40 flex items-center justify-center gap-1.5 py-1.5 bg-emerald-500/15 border-b border-emerald-500/25 animate-in slide-in-from-top fade-in duration-300">
+          <Wifi size={13} className="text-emerald-500" />
+          <span className="text-[11px] font-heading font-semibold text-emerald-500">Conexão restabelecida</span>
+        </div>
+      )}
+
       {/* Settings dropdown */}
       {showSettings && (
         <>
