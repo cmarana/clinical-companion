@@ -24,6 +24,11 @@
   <url><loc>https://pulsoemergencia.com.br/anamnesis-guide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://pulsoemergencia.com.br/flashcards</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pulsoemergencia.com.br/residency-quiz</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/documents</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/duty</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/pediatrics</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/obstetrics</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/study-dashboard</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pulsoemergencia.com.br/pricing</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://pulsoemergencia.com.br/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
   <url><loc>https://pulsoemergencia.com.br/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
