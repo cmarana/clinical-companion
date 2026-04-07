@@ -70,6 +70,13 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
           </div>
         )}
         <button
+          onClick={() => { hapticLight(); toggleTheme(); }}
+          className="p-1.5 rounded-md hover:bg-accent transition-colors text-muted-foreground"
+          title={theme === "light" ? "Modo Escuro" : theme === "dark" ? "Plantão Noturno" : "Modo Claro"}
+        >
+          {theme === "oled" ? <Eclipse size={18} /> : theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
+        <button
           onClick={() => setShowSettings(!showSettings)}
           className="p-1.5 rounded-md hover:bg-accent transition-colors text-muted-foreground"
         >
