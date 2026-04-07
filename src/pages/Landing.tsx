@@ -6,7 +6,9 @@ import {
   Activity, Pill, Calculator, FileText, Siren,
   Sun, Moon, Eclipse, Check, WifiOff, Mic, Bot,
   Users, Lock, RefreshCw, Download, Search, Smartphone,
-  ChevronDown, HelpCircle
+  ChevronDown, HelpCircle, ClipboardList, Baby, Beaker,
+  Scissors, Eye, HeartPulse, Timer, Bookmark, Globe,
+  ScrollText, Layers, ListChecks, GraduationCap, FlaskConical
 } from "lucide-react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
