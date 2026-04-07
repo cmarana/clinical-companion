@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://pulsoemergencia.com.br/</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/auth</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/full-protocols</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/bulario</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/emergency</loc><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/calculators</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/prescriptions</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/clinical-ai</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/drug-interactions</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/diagnosis</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/cpr-timer</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/antimicrobials</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/pediatric-doses</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/iv-dilutions</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/lab-reference</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/cid</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/drug-compatibility</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/checklists</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/clinical-atlas</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/evolution-templates</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/procedure-guides</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/anamnesis-guide</loc><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/flashcards</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/residency-quiz</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/pricing</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/terms</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://pulsoemergencia.com.br/privacy</loc><changefreq>yearly</changefreq><priority>0.3</priority></url>
+</urlset>
