@@ -883,6 +883,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      create_institution_with_admin: {
+        Args: { _description?: string; _name: string }
+        Returns: string
+      }
       delete_email: {
         Args: { message_id: number; queue_name: string }
         Returns: boolean
