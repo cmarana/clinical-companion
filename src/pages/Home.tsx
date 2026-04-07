@@ -173,8 +173,10 @@ export default function Home() {
   const { trackModule } = useModuleAnalytics();
   const [avatarUrl, setAvatarUrl] = useState("");
   const [initials, setInitials] = useState("U");
+  const [fullName, setFullName] = useState("");
   const [specialty] = useState<string | null>("todas");
   const [isAdmin, setIsAdmin] = useState(false);
+  const [welcomeDone, setWelcomeDone] = useState(false);
   const pulsoLogo = theme === "light" ? pulsoLogoLight : pulsoLogoDark;
 
   useEffect(() => {
