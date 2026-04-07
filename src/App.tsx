@@ -72,6 +72,7 @@ const TermsOfUse = lazy(() => import("@/pages/TermsOfUse"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
 const Referral = lazy(() => import("@/pages/Referral"));
 const Unsubscribe = lazy(() => import("@/pages/Unsubscribe"));
+const About = lazy(() => import("@/pages/About"));
 
 const Onboarding = lazy(() => import("@/pages/Onboarding"));
 const Landing = lazy(() => import("@/pages/Landing"));
