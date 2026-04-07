@@ -29,6 +29,7 @@ export default function BottomNav() {
             <button
               key={tab.path}
               onClick={() => navigate(tab.path)}
+              data-tour={tab.path === "/favorites" ? "favorites" : undefined}
               className={cn(
                 "flex flex-col items-center justify-center gap-0.5 flex-1 h-full transition-colors",
                 active ? "text-primary" : "text-muted-foreground",

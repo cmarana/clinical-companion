@@ -20,6 +20,7 @@ import { useModuleAnalytics } from "@/hooks/useModuleAnalytics";
 import SmartSearch from "@/components/SmartSearch";
 import WeeklySummaryWidget from "@/components/WeeklySummaryWidget";
 import VoiceFeaturesBanner from "@/components/VoiceFeaturesBanner";
+import GuidedTour from "@/components/GuidedTour";
 
 // ── PREFETCH critical chunks after Home mounts ──
 const prefetchRoutes = () => {
@@ -242,7 +243,9 @@ export default function Home() {
       </div>
 
       {/* Smart Search */}
-      <SmartSearch specialty={specialty} />
+      <div data-tour="search">
+        <SmartSearch specialty={specialty} />
+      </div>
 
       {/* ── PRIMARY GRID ─────────────────────────────────────── */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 lg:gap-4 mb-6">
@@ -256,6 +259,7 @@ export default function Home() {
           >
             <button
               onClick={() => navigateWithTracking(m.path, m.label)}
+              data-tour={m.path === "/clinical-ai" ? "ai" : m.path === "/emergency" ? "emergency" : undefined}
               className={`group w-full flex items-center gap-3 px-4 py-4 lg:py-5 rounded-[20px] border-0 transition-all duration-300 active:scale-[0.97] hover:shadow-xl hover:-translate-y-0.5 text-left ${cardStyles[m.variant]}`}
             >
               <div className={`flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-2xl shrink-0 transition-transform duration-300 group-hover:scale-110 ${iconStyles[m.variant]}`}>
@@ -373,9 +377,11 @@ export default function Home() {
       <VoiceFeaturesBanner />
 
       {/* Weekly Summary Widget — lower priority, below modules */}
-      <div className="mt-8 pt-6 border-t border-border/40">
+      <div className="mt-8 pt-6 border-t border-border/40" data-tour="tools">
         <WeeklySummaryWidget />
       </div>
+
+      <GuidedTour />
     </div>
   );
 }
