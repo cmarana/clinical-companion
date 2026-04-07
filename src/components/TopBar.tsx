@@ -54,7 +54,7 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
         )}
       >
         {canGoBack && (
-          <button onClick={() => navigate(-1)} className="p-1.5 -ml-1 rounded-md hover:bg-accent transition-colors text-foreground">
+          <button onClick={() => { hapticLight(); navigate(-1); }} className="p-1.5 -ml-1 rounded-md hover:bg-accent active:scale-90 transition-all text-foreground">
             <ArrowLeft size={20} />
           </button>
         )}
