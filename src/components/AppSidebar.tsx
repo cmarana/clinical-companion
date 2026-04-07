@@ -204,7 +204,12 @@ export function AppSidebar() {
           )}
         </ScrollArea>
       </SidebarContent>
-      <SidebarFooter className="p-3 group-data-[collapsible=icon]:hidden">
+      <SidebarFooter className="p-3 group-data-[collapsible=icon]:hidden space-y-1">
+        <div className="flex items-center justify-center gap-2 text-[9px] text-muted-foreground">
+          <button onClick={() => navigate("/privacy")} className="hover:text-foreground transition-colors">Privacidade</button>
+          <span>·</span>
+          <button onClick={() => navigate("/terms")} className="hover:text-foreground transition-colors">Termos</button>
+        </div>
         <p className="text-[9px] text-muted-foreground text-center">
           © 2025 PULSO
         </p>

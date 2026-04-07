@@ -746,6 +746,23 @@ export default function Profile() {
                 <RotateCcw size={14} />
                 Refazer tour guiado
               </Button>
+
+              {/* Legal links */}
+              <div className="flex items-center justify-center gap-3 mt-3 pt-3 border-t border-border/40">
+                <button
+                  onClick={() => navigate("/privacy")}
+                  className="text-[11px] text-muted-foreground hover:text-foreground transition-colors underline underline-offset-2"
+                >
+                  Política de Privacidade
+                </button>
+                <span className="text-muted-foreground/50 text-[10px]">·</span>
+                <button
+                  onClick={() => navigate("/terms")}
+                  className="text-[11px] text-muted-foreground hover:text-foreground transition-colors underline underline-offset-2"
+                >
+                  Termos de Uso
+                </button>
+              </div>
           </Section>
 
           {/* ── Sign out ── */}
