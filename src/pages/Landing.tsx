@@ -5,14 +5,15 @@ import {
   ChevronRight, Star, ArrowRight, Sparkles, Heart,
   Activity, Pill, Calculator, FileText, Siren,
   Sun, Moon, Eclipse, Check, WifiOff, Mic, Bot,
-  Users, Lock, RefreshCw
+  Users, Lock, RefreshCw, Download, Search, Smartphone,
+  ChevronDown, HelpCircle
 } from "lucide-react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { hapticLight } from "@/lib/haptics";
 import pulsoLogoLight from "@/assets/pulso-logo-light.png";
 import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 /* ── Animation variants ─────────────────────────────────────── */
 const fadeUp = {
@@ -36,6 +37,12 @@ const features = [
   { icon: BookOpen, title: "1.000+ Protocolos", desc: "Protocolos clínicos baseados em evidência com níveis de recomendação e referências.", accent: "bg-cyan-500/10 text-cyan-500" },
   { icon: Calculator, title: "53 Calculadoras", desc: "Glasgow, SOFA, Wells, HEART, MELD, NEWS e dezenas de scores integrados aos protocolos.", accent: "bg-indigo-500/10 text-indigo-500" },
   { icon: FileText, title: "Prescrições Prontas", desc: "Modelos por diagnóstico, prontos para copiar e adaptar. Checagem de interações por IA.", accent: "bg-amber-500/10 text-amber-500" },
+];
+
+const howItWorks = [
+  { step: "01", icon: Download, title: "Crie sua conta", desc: "Cadastro em 30 segundos. Sem cartão de crédito para começar." },
+  { step: "02", icon: Search, title: "Busque o que precisa", desc: "Pesquise qualquer protocolo, medicamento ou calculadora instantaneamente." },
+  { step: "03", icon: Smartphone, title: "Use no plantão", desc: "Acesse offline, salve favoritos e tome decisões com confiança." },
 ];
 
 const scenarios = [
@@ -81,15 +88,75 @@ const stats = [
   { value: "24/7", label: "Offline", icon: WifiOff },
 ];
 
+const faqs = [
+  {
+    q: "O teste grátis é realmente sem compromisso?",
+    a: "Sim. Você tem 7 dias de acesso completo sem precisar cadastrar cartão de crédito. Após o período, você decide se quer assinar.",
+  },
+  {
+    q: "Funciona sem internet?",
+    a: "Sim. Todo o conteúdo pode ser baixado para uso offline — ideal para plantões em locais sem sinal ou Wi-Fi instável.",
+  },
+  {
+    q: "Posso cancelar a qualquer momento?",
+    a: "Sim. Sem multa, sem burocracia. Cancele direto no app e seu acesso continua até o fim do período pago.",
+  },
+  {
+    q: "O conteúdo é baseado em evidência?",
+    a: "Sim. Todos os protocolos incluem referências bibliográficas e níveis de evidência. O conteúdo é revisado continuamente por especialistas.",
+  },
+  {
+    q: "Funciona no computador também?",
+    a: "Sim. O PULSO funciona em qualquer dispositivo com navegador — celular, tablet ou computador. Também pode ser instalado como app (PWA).",
+  },
+];
+
 /* ── Floating orbs ───────────────────────────────────────────── */
-function FloatingOrbs({ className = "" }: { className?: string }) {
+function FloatingOrbs() {
   return (
-    <div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-primary/[0.04] rounded-full blur-[140px]" />
       <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-violet-500/[0.03] rounded-full blur-[120px]" />
       <div className="absolute -bottom-40 left-1/4 w-[400px] h-[400px] bg-cyan-500/[0.03] rounded-full blur-[100px]" />
     </div>
   );
+}
+
+/* ── FAQ Accordion Item ──────────────────────────────────────── */
+function FaqItem({ q, a }: { q: string; a: string }) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="border-b border-border/30 last:border-0">
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-center justify-between py-4 text-left group"
+      >
+        <span className="font-heading font-semibold text-sm pr-4">{q}</span>
+        <ChevronDown
+          size={16}
+          className={`text-muted-foreground shrink-0 transition-transform duration-300 ${open ? "rotate-180" : ""}`}
+        />
+      </button>
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: "auto", opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.25 }}
+            className="overflow-hidden"
+          >
+            <p className="text-xs text-muted-foreground leading-relaxed pb-4">{a}</p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+/* ── Smooth scroll helper ────────────────────────────────────── */
+function scrollTo(id: string) {
+  document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 }
 
 export default function Landing() {
@@ -99,6 +166,14 @@ export default function Landing() {
   const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 80]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
+  // Show sticky CTA after scrolling past hero
+  const [showStickyCta, setShowStickyCta] = useState(false);
+  useEffect(() => {
+    const onScroll = () => setShowStickyCta(window.scrollY > 600);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const pulsoLogo = theme === "light" ? pulsoLogoLight : pulsoLogoDark;
   const themeIcon = theme === "oled" ? <Eclipse size={16} /> : theme === "dark" ? <Sun size={16} /> : <Moon size={16} />;
@@ -113,6 +188,14 @@ export default function Landing() {
             <img src={pulsoLogo} alt="PULSO" width={30} height={30} className="rounded-lg" />
             <span className="font-heading font-bold text-base">PULSO</span>
           </div>
+
+          {/* Desktop nav links */}
+          <div className="hidden md:flex items-center gap-6 text-xs font-heading font-medium text-muted-foreground">
+            <button onClick={() => scrollTo("features")} className="hover:text-foreground transition-colors">Recursos</button>
+            <button onClick={() => scrollTo("pricing")} className="hover:text-foreground transition-colors">Planos</button>
+            <button onClick={() => scrollTo("faq")} className="hover:text-foreground transition-colors">FAQ</button>
+          </div>
+
           <div className="flex items-center gap-1.5">
             <Button
               variant="ghost"
@@ -193,7 +276,7 @@ export default function Landing() {
             <Button
               variant="outline"
               size="lg"
-              onClick={() => document.getElementById("features")?.scrollIntoView({ behavior: "smooth" })}
+              onClick={() => scrollTo("features")}
               className="w-full sm:w-auto h-14 px-8 text-base font-heading"
             >
               Ver recursos <ArrowRight size={16} />
@@ -202,22 +285,31 @@ export default function Landing() {
 
           {/* Social proof */}
           <motion.div
-            className="mt-8 flex items-center justify-center gap-3"
+            className="mt-8 flex flex-col items-center gap-2"
             initial="hidden" animate="visible" variants={fadeUp} custom={4}
           >
-            <div className="flex -space-x-2.5">
-              {[...Array(5)].map((_, i) => (
-                <div
-                  key={i}
-                  className="w-8 h-8 rounded-full bg-primary/10 ring-2 ring-background flex items-center justify-center"
-                >
-                  <Stethoscope size={12} className="text-primary" />
-                </div>
-              ))}
+            <div className="flex items-center gap-3">
+              <div className="flex -space-x-2.5">
+                {[...Array(5)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="w-8 h-8 rounded-full bg-primary/10 ring-2 ring-background flex items-center justify-center"
+                  >
+                    <Stethoscope size={12} className="text-primary" />
+                  </div>
+                ))}
+              </div>
+              <div className="text-left">
+                <p className="text-xs font-semibold text-foreground">Usado por médicos e residentes</p>
+                <p className="text-[10px] text-muted-foreground">em plantões por todo o Brasil</p>
+              </div>
             </div>
-            <p className="text-xs text-muted-foreground">
-              <span className="font-semibold text-foreground">Médicos e residentes</span> já usam no plantão
-            </p>
+            <div className="flex items-center gap-1 mt-1">
+              {[...Array(5)].map((_, i) => (
+                <Star key={i} size={12} className="fill-primary text-primary" />
+              ))}
+              <span className="text-[10px] text-muted-foreground ml-1">5.0 — avaliação dos usuários</span>
+            </div>
           </motion.div>
         </motion.div>
 
@@ -263,8 +355,52 @@ export default function Landing() {
         </div>
       </section>
 
+      {/* ═══ HOW IT WORKS ═════════════════════════════════════ */}
+      <section className="py-20 px-4 relative">
+        <div className="max-w-4xl mx-auto relative z-10">
+          <motion.div
+            className="text-center mb-14"
+            initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={fadeUp} custom={0}
+          >
+            <span className="text-[10px] font-heading font-bold text-primary uppercase tracking-[0.2em]">Simples</span>
+            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold mt-2 tracking-tight">
+              Comece em 3 passos
+            </h2>
+          </motion.div>
+
+          <motion.div
+            className="grid sm:grid-cols-3 gap-6"
+            initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={stagger}
+          >
+            {howItWorks.map((item, i) => (
+              <motion.div
+                key={item.step}
+                variants={fadeUp}
+                custom={0}
+                className="text-center relative"
+              >
+                {/* Connector line (desktop) */}
+                {i < howItWorks.length - 1 && (
+                  <div className="hidden sm:block absolute top-8 left-[60%] w-[80%] h-px bg-border/50" />
+                )}
+                <div className="w-16 h-16 rounded-2xl bg-primary/10 ring-1 ring-primary/20 flex items-center justify-center mx-auto mb-4 relative">
+                  <item.icon size={24} className="text-primary" />
+                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-primary text-primary-foreground text-[10px] font-heading font-bold flex items-center justify-center">
+                    {item.step}
+                  </span>
+                </div>
+                <h3 className="font-heading font-bold text-sm mb-1.5">{item.title}</h3>
+                <p className="text-xs text-muted-foreground leading-relaxed max-w-[200px] mx-auto">{item.desc}</p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       {/* ═══ FEATURES ═════════════════════════════════════════ */}
-      <section id="features" className="py-20 px-4 relative">
+      <section id="features" className="py-20 px-4 relative bg-gradient-to-b from-muted/20 via-background to-background">
         <FloatingOrbs />
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.div
@@ -308,7 +444,7 @@ export default function Landing() {
       </section>
 
       {/* ═══ SCENARIOS ════════════════════════════════════════ */}
-      <section className="py-20 px-4 bg-gradient-to-b from-muted/30 via-background to-background relative">
+      <section className="py-20 px-4 relative">
         <div className="max-w-4xl mx-auto relative z-10">
           <motion.div
             className="text-center mb-14"
@@ -336,14 +472,12 @@ export default function Landing() {
                 custom={0}
                 className="group flex gap-4 sm:gap-6 p-5 sm:p-6 rounded-2xl bg-card ring-1 ring-border/30 hover:ring-primary/20 hover:shadow-lg transition-all duration-300"
               >
-                {/* Time badge */}
                 <div className="shrink-0 flex flex-col items-center">
                   <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
                     <span className="font-mono text-xs font-bold text-primary">{s.time}</span>
                   </div>
                   <div className="w-px h-full bg-border/50 mt-2 hidden sm:block" />
                 </div>
-
                 <div className="min-w-0">
                   <h3 className="font-heading font-bold text-sm mb-1.5">{s.title}</h3>
                   <p className="text-xs text-muted-foreground leading-relaxed mb-3">{s.desc}</p>
@@ -362,7 +496,7 @@ export default function Landing() {
       </section>
 
       {/* ═══ TESTIMONIALS ═════════════════════════════════════ */}
-      <section className="py-20 px-4 relative">
+      <section className="py-20 px-4 relative bg-gradient-to-b from-muted/20 via-background to-background">
         <FloatingOrbs />
         <div className="max-w-5xl mx-auto relative z-10">
           <motion.div
@@ -374,9 +508,6 @@ export default function Landing() {
             <h2 className="font-heading text-3xl sm:text-4xl font-extrabold mt-2 tracking-tight">
               O que dizem os médicos
             </h2>
-            <p className="text-muted-foreground mt-3 text-sm">
-              Usado por plantonistas em todo o Brasil
-            </p>
           </motion.div>
 
           <motion.div
@@ -408,7 +539,7 @@ export default function Landing() {
       </section>
 
       {/* ═══ PRICING ══════════════════════════════════════════ */}
-      <section className="py-20 px-4 bg-gradient-to-b from-muted/20 via-background to-background relative">
+      <section id="pricing" className="py-20 px-4 relative">
         <FloatingOrbs />
         <div className="max-w-4xl mx-auto relative z-10">
           <motion.div
@@ -445,23 +576,13 @@ export default function Landing() {
                 <span className="text-muted-foreground text-xs ml-1">/sempre</span>
               </div>
               <ul className="space-y-2.5 mb-8 flex-1">
-                {[
-                  "15 protocolos",
-                  "15 medicamentos",
-                  "Calculadoras básicas",
-                  "Modo emergência limitado",
-                ].map((item) => (
+                {["15 protocolos", "15 medicamentos", "Calculadoras básicas", "Modo emergência limitado"].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-xs text-muted-foreground">
                     <Check size={14} className="text-muted-foreground/50 shrink-0 mt-0.5" />
                     {item}
                   </li>
                 ))}
-                {[
-                  "IA Clínica",
-                  "Modo offline",
-                  "Prescrições prontas",
-                  "Flashcards e quiz",
-                ].map((item) => (
+                {["IA Clínica", "Modo offline", "Prescrições prontas", "Flashcards e quiz"].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-xs text-muted-foreground/40 line-through">
                     <span className="w-3.5 shrink-0" />
                     {item}
@@ -483,13 +604,11 @@ export default function Landing() {
               custom={1}
               className="p-6 rounded-2xl bg-card ring-2 ring-primary/40 shadow-xl shadow-primary/10 flex flex-col relative overflow-hidden"
             >
-              {/* Popular badge */}
               <div className="absolute top-0 right-0">
                 <div className="bg-primary text-primary-foreground text-[9px] font-heading font-bold uppercase tracking-wider px-3 py-1 rounded-bl-xl">
                   Mais popular
                 </div>
               </div>
-
               <div className="mb-5">
                 <h3 className="font-heading font-bold text-lg">Pro</h3>
                 <p className="text-muted-foreground text-xs mt-1">Acesso completo para o plantão</p>
@@ -534,6 +653,32 @@ export default function Landing() {
                 Teste grátis por 7 dias. Cancele quando quiser.
               </p>
             </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ═══ FAQ ══════════════════════════════════════════════ */}
+      <section id="faq" className="py-20 px-4 bg-gradient-to-b from-muted/20 via-background to-background">
+        <div className="max-w-2xl mx-auto">
+          <motion.div
+            className="text-center mb-10"
+            initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={fadeUp} custom={0}
+          >
+            <span className="text-[10px] font-heading font-bold text-primary uppercase tracking-[0.2em]">Dúvidas</span>
+            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold mt-2 tracking-tight">
+              Perguntas frequentes
+            </h2>
+          </motion.div>
+
+          <motion.div
+            className="bg-card rounded-2xl ring-1 ring-border/30 px-5 sm:px-6"
+            initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={fadeUp} custom={1}
+          >
+            {faqs.map((faq) => (
+              <FaqItem key={faq.q} q={faq.q} a={faq.a} />
+            ))}
           </motion.div>
         </div>
       </section>
@@ -604,6 +749,31 @@ export default function Landing() {
           </div>
         </div>
       </footer>
+
+      {/* ═══ STICKY MOBILE CTA ════════════════════════════════ */}
+      <AnimatePresence>
+        {showStickyCta && (
+          <motion.div
+            initial={{ y: 100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 100, opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            className="fixed bottom-0 left-0 right-0 z-50 sm:hidden bg-background/95 backdrop-blur-xl border-t border-border/40 px-4 py-3 safe-area-bottom"
+          >
+            <Button
+              onClick={() => navigate("/auth")}
+              className="w-full h-12 rounded-xl font-heading font-bold shadow-lg shadow-primary/20 relative overflow-hidden group"
+            >
+              <span className="absolute inset-0 bg-gradient-to-r from-primary via-primary to-primary/80" />
+              <span className="relative flex items-center gap-2 text-sm">
+                <Sparkles size={14} />
+                Começar 7 dias grátis
+                <ChevronRight size={14} />
+              </span>
+            </Button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
