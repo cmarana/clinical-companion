@@ -17,6 +17,18 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
   const [showSettings, setShowSettings] = useState(false);
+  const [offline, setOffline] = useState(!navigator.onLine);
+
+  useEffect(() => {
+    const on = () => setOffline(false);
+    const off = () => setOffline(true);
+    window.addEventListener("online", on);
+    window.addEventListener("offline", off);
+    return () => {
+      window.removeEventListener("online", on);
+      window.removeEventListener("offline", off);
+    };
+  }, []);
 
   const canGoBack = showBack ?? location.pathname !== "/";
 
