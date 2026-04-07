@@ -22,6 +22,7 @@ import SmartSearch from "@/components/SmartSearch";
 import WeeklySummaryWidget from "@/components/WeeklySummaryWidget";
 import VoiceFeaturesBanner from "@/components/VoiceFeaturesBanner";
 import GuidedTour from "@/components/GuidedTour";
+import WelcomeScreen from "@/components/WelcomeScreen";
 
 // ── PREFETCH critical chunks after Home mounts ──
 const prefetchRoutes = () => {
