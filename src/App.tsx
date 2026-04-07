@@ -133,6 +133,7 @@ const AppRoutes = () => (
       <Route path="/terms" element={<TermsOfUse />} />
       <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="/unsubscribe" element={<Unsubscribe />} />
+      <Route path="/about" element={<About />} />
       <Route path="/onboarding" element={<Onboarding />} />
       
       <Route element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>
