@@ -1,4 +1,5 @@
 import { Eclipse, Moon, Sun } from "lucide-react";
+import { useLocation } from "react-router-dom";
 import { useTheme } from "@/contexts/ThemeContext";
 import { hapticLight } from "@/lib/haptics";
 
@@ -6,8 +7,15 @@ interface FloatingThemeToggleProps {
   className?: string;
 }
 
+const HIDDEN_ROUTES = ["/landing", "/index", "/"];
+
 export default function FloatingThemeToggle({ className = "" }: FloatingThemeToggleProps) {
   const { theme, toggleTheme } = useTheme();
+  const location = useLocation();
+
+  if (HIDDEN_ROUTES.includes(location.pathname)) {
+    return null;
+  }
 
   const title = theme === "light"
     ? "Modo Escuro"

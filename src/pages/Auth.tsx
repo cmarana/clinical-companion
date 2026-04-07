@@ -10,12 +10,13 @@ import {
   Eye, EyeOff, Zap, Pill, ClipboardList, Calculator, Shield, Clock,
   Bot, ChevronRight, ArrowLeft, Activity, Mic, WifiOff,
   Share2, Trophy, GitBranch, Brain, Newspaper, Stethoscope,
-  ShieldCheck, BedDouble, FileText
+  ShieldCheck, BedDouble, FileText, Moon, Sun, Eclipse
 } from "lucide-react";
 import pulsoLogoLight from "@/assets/pulso-logo-light.png";
 import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Separator } from "@/components/ui/separator";
+import { hapticLight } from "@/lib/haptics";
 
 const showcaseFeatures = [
   { icon: Zap, label: "Emergência", desc: "PCR, Sepse, IAM, AVC", color: "from-red-500/20 to-red-600/10 text-red-500" },
@@ -96,8 +97,9 @@ export default function Auth() {
   const navigate = useNavigate();
   const { toast } = useToast();
   const formRef = useRef<HTMLDivElement>(null);
-  const { theme } = useTheme();
+  const { theme, toggleTheme } = useTheme();
   const pulsoLogo = theme === "light" ? pulsoLogoLight : pulsoLogoDark;
+  const themeIcon = theme === "oled" ? <Eclipse size={18} /> : theme === "dark" ? <Sun size={18} /> : <Moon size={18} />;
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
@@ -172,6 +174,17 @@ export default function Auth() {
 
   return (
     <div className="min-h-screen bg-background overflow-y-auto lg:flex">
+      <button
+        onClick={() => {
+          hapticLight();
+          toggleTheme();
+        }}
+        aria-label="Alternar tema"
+        title={theme === "light" ? "Modo Escuro" : theme === "dark" ? "Plantão Noturno" : "Modo Claro"}
+        className="fixed top-3 right-3 z-[95] rounded-2xl border border-border bg-card/95 p-2.5 text-muted-foreground shadow-lg backdrop-blur-md transition-colors hover:bg-accent hover:text-foreground lg:hidden"
+      >
+        {themeIcon}
+      </button>
       {/* ── Desktop Hero Panel ─────────────────────────────── */}
       <div className="hidden lg:flex lg:w-1/2 xl:w-[55%] relative overflow-hidden bg-gradient-to-br from-primary/10 via-background to-primary/5 items-center justify-center">
         <div className="absolute inset-0">
