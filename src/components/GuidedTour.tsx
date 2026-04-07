@@ -65,44 +65,64 @@ export default function GuidedTour() {
     }
   }, []);
 
-  const updateTarget = useCallback((idx: number) => {
-    const sel = steps[idx]?.targetSelector;
-    if (!sel) return;
-    const el = document.querySelector(sel);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "center" });
-      setTimeout(() => setTargetRect(el.getBoundingClientRect()), 300);
-    } else {
-      setTargetRect(null);
+  const findVisibleStep = useCallback((startIdx: number, direction: 1 | -1 = 1): number => {
+    let idx = startIdx;
+    while (idx >= 0 && idx < steps.length) {
+      const sel = steps[idx]?.targetSelector;
+      if (sel) {
+        const el = document.querySelector(sel);
+        if (el && el.getClientRects().length > 0) return idx;
+      }
+      idx += direction;
     }
+    return -1;
   }, []);
-
-  useEffect(() => {
-    if (active) updateTarget(step);
-  }, [active, step, updateTarget]);
 
   const close = useCallback(() => {
     setActive(false);
     localStorage.setItem(TOUR_KEY, "true");
   }, []);
 
+  const updateTarget = useCallback((idx: number) => {
+    const sel = steps[idx]?.targetSelector;
+    if (!sel) return;
+    const el = document.querySelector(sel);
+    if (el && el.getClientRects().length > 0) {
+      el.scrollIntoView({ behavior: "smooth", block: "center" });
+      setTimeout(() => setTargetRect(el.getBoundingClientRect()), 300);
+    } else {
+      const nextVisible = findVisibleStep(idx + 1, 1);
+      if (nextVisible >= 0) {
+        setStep(nextVisible);
+      } else {
+        close();
+      }
+    }
+  }, [findVisibleStep, close]);
+
+  useEffect(() => {
+    if (active) updateTarget(step);
+  }, [active, step, updateTarget]);
+
   const next = useCallback(() => {
-    if (step < steps.length - 1) {
-      setStep((s) => s + 1);
+    const nextVisible = findVisibleStep(step + 1, 1);
+    if (nextVisible >= 0) {
+      setStep(nextVisible);
     } else {
       close();
     }
-  }, [step, close]);
+  }, [step, close, findVisibleStep]);
 
   const prev = useCallback(() => {
-    if (step > 0) setStep((s) => s - 1);
-  }, [step]);
+    const prevVisible = findVisibleStep(step - 1, -1);
+    if (prevVisible >= 0) setStep(prevVisible);
+  }, [step, findVisibleStep]);
 
   if (!active) return null;
 
   const current = steps[step];
   const Icon = current.icon;
-  const isLast = step === steps.length - 1;
+  const isLast = findVisibleStep(step + 1, 1) < 0;
 
   // Tooltip position
   const tooltipStyle: React.CSSProperties = {};
