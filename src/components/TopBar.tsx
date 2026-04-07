@@ -1,8 +1,8 @@
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, Moon, Sun, Settings } from "lucide-react";
+import { ArrowLeft, Moon, Sun, Settings, WifiOff } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { cn } from "@/lib/utils";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FontSizeSelector from "./FontSizeSelector";
 
 interface TopBarProps {
