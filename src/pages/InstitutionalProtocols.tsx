@@ -153,21 +153,15 @@ function InstitutionalContent() {
   const createInstitution = async () => {
     if (!instName.trim()) { toast.error("Nome da instituição é obrigatório"); return; }
     const { data, error } = await supabase
-      .from("institutions")
-      .insert({ name: instName.trim(), description: instDesc.trim(), created_by: user!.id })
-      .select()
-      .single();
+      .rpc("create_institution_with_admin", {
+        _name: instName.trim(),
+        _description: instDesc.trim(),
+      });
 
     if (error) { toast.error("Erro ao criar instituição"); return; }
 
-    // Add creator as admin
-    await supabase.from("institution_members").insert({
-      institution_id: data.id,
-      user_id: user!.id,
-      role: "admin",
-    });
-
     toast.success("Instituição criada! Você é o administrador.");
+    const institutionId = data;
     setInstName("");
     setInstDesc("");
     setView("list");
@@ -177,35 +171,23 @@ function InstitutionalContent() {
   const joinInstitution = async () => {
     if (!joinCode.trim()) { toast.error("Insira o código de convite"); return; }
 
-    // Find institution by invite code
-    const { data: inst, error } = await supabase
-      .from("institutions")
-      .select("*")
-      .eq("invite_code", joinCode.trim().toLowerCase())
-      .single();
+    const { data, error } = await supabase
+      .rpc("join_institution_by_invite", {
+        _invite_code: joinCode.trim().toLowerCase(),
+      });
 
-    if (error || !inst) { toast.error("Código de convite inválido"); return; }
+    if (error) {
+      if (error.message?.includes("Already a member")) {
+        toast.info("Você já faz parte desta instituição");
+      } else if (error.message?.includes("Invalid invite code")) {
+        toast.error("Código de convite inválido");
+      } else {
+        toast.error("Erro ao entrar na instituição");
+      }
+      return;
+    }
 
-    // Check if already a member
-    const { data: existing } = await supabase
-      .from("institution_members")
-      .select("id")
-      .eq("institution_id", inst.id)
-      .eq("user_id", user!.id)
-      .maybeSingle();
-
-    if (existing) { toast.info("Você já faz parte desta instituição"); return; }
-
-    // Join as viewer
-    const { error: joinError } = await supabase.from("institution_members").insert({
-      institution_id: inst.id,
-      user_id: user!.id,
-      role: "viewer",
-    });
-
-    if (joinError) { toast.error("Erro ao entrar na instituição"); return; }
-
-    toast.success(`Você entrou em ${inst.name}!`);
+    toast.success("Você entrou na instituição!");
     setJoinCode("");
     setView("list");
     fetchInstitutions();

@@ -883,6 +883,10 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      create_institution_with_admin: {
+        Args: { _description?: string; _name: string }
+        Returns: string
+      }
       delete_email: {
         Args: { message_id: number; queue_name: string }
         Returns: boolean
@@ -905,6 +909,10 @@ export type Database = {
       is_institution_member: {
         Args: { _institution_id: string; _user_id: string }
         Returns: boolean
+      }
+      join_institution_by_invite: {
+        Args: { _invite_code: string }
+        Returns: string
       }
       move_to_dlq: {
         Args: {
