@@ -214,7 +214,7 @@ export default function Home() {
   return (
     <div className="px-4 pt-3 pb-24 max-w-lg md:max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto">
       {/* Top bar */}
-      <div className="flex items-center justify-between h-12 mb-3">
+      <div className="sticky top-0 z-40 flex items-center justify-between h-12 mb-3 bg-background/90 backdrop-blur-md -mx-4 px-4">
         <div className="flex items-center gap-2.5">
           <img src={pulsoLogo} alt="PULSO" width={32} height={32} className="rounded-lg" />
           <div className="flex flex-col">
