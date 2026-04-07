@@ -195,6 +195,9 @@ const AppRoutes = () => (
         <Route path="/discharge-summary" element={<DischargeSummary />} />
         <Route path="/conduct-comparator" element={<ConductComparator />} />
       </Route>
+      <Route path="/" element={<SmartRoot />}>
+        <Route index element={<Home />} />
+      </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
   </Suspense>
