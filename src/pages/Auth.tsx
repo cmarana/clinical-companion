@@ -12,7 +12,9 @@ import {
   Share2, Trophy, GitBranch, Brain, Newspaper, Stethoscope,
   ShieldCheck, BedDouble, FileText
 } from "lucide-react";
-import pulsoLogo from "@/assets/pulso-logo.png";
+import pulsoLogoLight from "@/assets/pulso-logo-light.png";
+import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
+import { useTheme } from "@/contexts/ThemeContext";
 import { Separator } from "@/components/ui/separator";
 
 const showcaseFeatures = [
@@ -94,6 +96,8 @@ export default function Auth() {
   const navigate = useNavigate();
   const { toast } = useToast();
   const formRef = useRef<HTMLDivElement>(null);
+  const { theme } = useTheme();
+  const pulsoLogo = theme === "light" ? pulsoLogoLight : pulsoLogoDark;
 
   useEffect(() => {
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
