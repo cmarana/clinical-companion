@@ -71,6 +71,7 @@ const TermsOfUse = lazy(() => import("@/pages/TermsOfUse"));
 const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
 const Referral = lazy(() => import("@/pages/Referral"));
 const Unsubscribe = lazy(() => import("@/pages/Unsubscribe"));
+const Demo = lazy(() => import("@/pages/Demo"));
 const Onboarding = lazy(() => import("@/pages/Onboarding"));
 const ClinicalCaseSimulator = lazy(() => import("@/pages/ClinicalCaseSimulator"));
 const InstitutionalProtocols = lazy(() => import("@/pages/InstitutionalProtocols"));
