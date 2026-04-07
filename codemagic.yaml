@@ -50,6 +50,8 @@ workflows:
     artifacts:
       - ios/App/build/ios/ipa/*.ipa
       - ios/App/build/App.xcarchive
+    integrations:
+      app_store_connect: codemagic
     publishing:
       app_store_connect:
         auth: integration
