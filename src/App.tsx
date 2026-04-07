@@ -115,16 +115,17 @@ const LazyFallback = () => (
   </div>
 );
 
-const PublicIndex = () => {
-  const { user } = useAuth();
-  if (user) return <Navigate to="/" replace />;
-  return <Landing />;
+const SmartRoot = () => {
+  const { user, loading } = useAuth();
+  if (loading) return <LazyFallback />;
+  if (!user) return <Landing />;
+  return <Navigate to="/home" replace />;
 };
 
 const AppRoutes = () => (
   <Suspense fallback={<LazyFallback />}>
     <Routes>
-      <Route path="/index" element={<PublicIndex />} />
+      <Route path="/index" element={<Navigate to="/" replace />} />
       <Route path="/landing" element={<Landing />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/reset-password" element={<ResetPassword />} />
@@ -134,7 +135,7 @@ const AppRoutes = () => (
       <Route path="/onboarding" element={<Onboarding />} />
       
       <Route element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>
-        <Route path="/" element={<Home />} />
+        <Route path="/home" element={<Home />} />
         <Route path="/protocols" element={<Navigate to="/full-protocols" replace />} />
         <Route path="/protocols/:id" element={<ProtocolDetail />} />
         <Route path="/medications" element={<Navigate to="/bulario" replace />} />
@@ -195,6 +196,7 @@ const AppRoutes = () => (
         <Route path="/discharge-summary" element={<DischargeSummary />} />
         <Route path="/conduct-comparator" element={<ConductComparator />} />
       </Route>
+      <Route path="/" element={<SmartRoot />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </Suspense>
