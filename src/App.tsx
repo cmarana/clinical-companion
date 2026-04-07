@@ -73,6 +73,7 @@ const Referral = lazy(() => import("@/pages/Referral"));
 const Unsubscribe = lazy(() => import("@/pages/Unsubscribe"));
 
 const Onboarding = lazy(() => import("@/pages/Onboarding"));
+const Landing = lazy(() => import("@/pages/Landing"));
 const ClinicalCaseSimulator = lazy(() => import("@/pages/ClinicalCaseSimulator"));
 const InstitutionalProtocols = lazy(() => import("@/pages/InstitutionalProtocols"));
 const VoiceEvolution = lazy(() => import("@/pages/VoiceEvolution"));
