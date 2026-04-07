@@ -367,7 +367,6 @@ export default function Home() {
       </div>
 
       <WelcomeScreen userName={fullName} onComplete={() => setWelcomeDone(true)} />
-      {welcomeDone && <GuidedTour />}
     </div>
   );
 }
