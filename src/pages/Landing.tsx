@@ -4,9 +4,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import {
   Stethoscope, Shield, Zap, Brain, Clock, BookOpen,
   ChevronRight, Star, ArrowRight, Sparkles, Heart,
-  Activity, Pill, Calculator, FileText, Siren
+  Activity, Pill, Calculator, FileText, Siren,
+  Sun, Moon, EyeOff
 } from "lucide-react";
 import { motion } from "framer-motion";
+import { useTheme } from "@/contexts/ThemeContext";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
