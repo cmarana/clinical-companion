@@ -43,7 +43,7 @@ const features = [
 ];
 
 const howItWorks = [
-  { step: "01", icon: Download, title: "Crie sua conta", desc: "Cadastro em 30 segundos. Sem cartão de crédito para começar." },
+  { step: "01", icon: Download, title: "Crie sua conta", desc: "Cadastro rápido em 30 segundos. Comece a usar imediatamente." },
   { step: "02", icon: Search, title: "Busque o que precisa", desc: "Pesquise qualquer protocolo, medicamento ou calculadora instantaneamente." },
   { step: "03", icon: Smartphone, title: "Use no plantão", desc: "Acesse offline, salve favoritos e tome decisões com confiança." },
 ];
@@ -241,7 +241,7 @@ export default function Landing() {
           <motion.div initial="hidden" animate="visible" variants={fadeUp} custom={0}>
             <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full text-xs font-heading font-semibold bg-primary/10 text-primary ring-1 ring-primary/20 mb-6">
               <Sparkles size={12} className="animate-pulse" />
-              7 dias grátis — sem cartão de crédito
+              7 dias grátis para assinantes Pro
             </span>
           </motion.div>
 
@@ -772,7 +772,7 @@ export default function Landing() {
               <span className="text-primary">Grátis.</span>
             </h2>
             <p className="text-sm text-muted-foreground mt-3 max-w-md mx-auto leading-relaxed">
-              Acesso completo por 7 dias. Sem cartão de crédito. Sem compromisso.
+              Teste o acesso completo por 7 dias grátis.
               Decida depois se o PULSO faz diferença no seu plantão.
             </p>
             <Button
