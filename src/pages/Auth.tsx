@@ -184,7 +184,7 @@ export default function Auth() {
 
       {!resetMode && (
         <p className="text-xs text-muted-foreground text-center -mt-1">
-          {isLogin ? "Entre para acessar seus protocolos" : "7 dias grátis — sem cartão de crédito"}
+          {isLogin ? "Entre para acessar seus protocolos" : "Crie sua conta e comece a usar"}
         </p>
       )}
 
