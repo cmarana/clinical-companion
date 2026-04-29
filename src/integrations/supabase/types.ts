@@ -173,6 +173,190 @@ export type Database = {
         }
         Relationships: []
       }
+      clinical_checklist_executions: {
+        Row: {
+          checklist_id: string
+          completed_at: string | null
+          completed_items: number
+          completion_pct: number
+          id: string
+          institution_id: string | null
+          notes: string
+          shift: string
+          started_at: string
+          total_items: number
+          unit: string
+          user_id: string
+        }
+        Insert: {
+          checklist_id: string
+          completed_at?: string | null
+          completed_items?: number
+          completion_pct?: number
+          id?: string
+          institution_id?: string | null
+          notes?: string
+          shift?: string
+          started_at?: string
+          total_items?: number
+          unit?: string
+          user_id: string
+        }
+        Update: {
+          checklist_id?: string
+          completed_at?: string | null
+          completed_items?: number
+          completion_pct?: number
+          id?: string
+          institution_id?: string | null
+          notes?: string
+          shift?: string
+          started_at?: string
+          total_items?: number
+          unit?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "clinical_checklist_executions_checklist_id_fkey"
+            columns: ["checklist_id"]
+            isOneToOne: false
+            referencedRelation: "clinical_checklists"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "clinical_checklist_executions_institution_id_fkey"
+            columns: ["institution_id"]
+            isOneToOne: false
+            referencedRelation: "institutions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      clinical_checklist_items: {
+        Row: {
+          checklist_id: string
+          created_at: string
+          critical: boolean
+          id: string
+          position: number
+          text: string
+        }
+        Insert: {
+          checklist_id: string
+          created_at?: string
+          critical?: boolean
+          id?: string
+          position?: number
+          text: string
+        }
+        Update: {
+          checklist_id?: string
+          created_at?: string
+          critical?: boolean
+          id?: string
+          position?: number
+          text?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "clinical_checklist_items_checklist_id_fkey"
+            columns: ["checklist_id"]
+            isOneToOne: false
+            referencedRelation: "clinical_checklists"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      clinical_checklist_responses: {
+        Row: {
+          checked: boolean
+          checked_at: string | null
+          execution_id: string
+          id: string
+          item_id: string
+        }
+        Insert: {
+          checked?: boolean
+          checked_at?: string | null
+          execution_id: string
+          id?: string
+          item_id: string
+        }
+        Update: {
+          checked?: boolean
+          checked_at?: string | null
+          execution_id?: string
+          id?: string
+          item_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "clinical_checklist_responses_execution_id_fkey"
+            columns: ["execution_id"]
+            isOneToOne: false
+            referencedRelation: "clinical_checklist_executions"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "clinical_checklist_responses_item_id_fkey"
+            columns: ["item_id"]
+            isOneToOne: false
+            referencedRelation: "clinical_checklist_items"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      clinical_checklists: {
+        Row: {
+          active: boolean
+          category: string
+          code: string
+          created_at: string
+          created_by: string | null
+          description: string
+          id: string
+          institution_id: string | null
+          is_global: boolean
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          category?: string
+          code: string
+          created_at?: string
+          created_by?: string | null
+          description?: string
+          id?: string
+          institution_id?: string | null
+          is_global?: boolean
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          category?: string
+          code?: string
+          created_at?: string
+          created_by?: string | null
+          description?: string
+          id?: string
+          institution_id?: string | null
+          is_global?: boolean
+          title?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "clinical_checklists_institution_id_fkey"
+            columns: ["institution_id"]
+            isOneToOne: false
+            referencedRelation: "institutions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       email_send_log: {
         Row: {
           created_at: string
@@ -260,6 +444,95 @@ export type Database = {
         }
         Relationships: []
       }
+      error_baselines: {
+        Row: {
+          baseline_period_end: string
+          baseline_period_start: string
+          baseline_unit: string
+          baseline_value: number
+          category: string
+          code: string
+          created_at: string
+          id: string
+          label: string
+          notes: string
+          source: string
+        }
+        Insert: {
+          baseline_period_end: string
+          baseline_period_start: string
+          baseline_unit?: string
+          baseline_value: number
+          category?: string
+          code: string
+          created_at?: string
+          id?: string
+          label: string
+          notes?: string
+          source?: string
+        }
+        Update: {
+          baseline_period_end?: string
+          baseline_period_start?: string
+          baseline_unit?: string
+          baseline_value?: number
+          category?: string
+          code?: string
+          created_at?: string
+          id?: string
+          label?: string
+          notes?: string
+          source?: string
+        }
+        Relationships: []
+      }
+      error_events: {
+        Row: {
+          baseline_code: string
+          category: string
+          created_at: string
+          description: string
+          id: string
+          institution_id: string | null
+          occurred_at: string
+          severity: string
+          user_id: string | null
+          was_mitigated: boolean
+        }
+        Insert: {
+          baseline_code: string
+          category?: string
+          created_at?: string
+          description?: string
+          id?: string
+          institution_id?: string | null
+          occurred_at?: string
+          severity?: string
+          user_id?: string | null
+          was_mitigated?: boolean
+        }
+        Update: {
+          baseline_code?: string
+          category?: string
+          created_at?: string
+          description?: string
+          id?: string
+          institution_id?: string | null
+          occurred_at?: string
+          severity?: string
+          user_id?: string | null
+          was_mitigated?: boolean
+        }
+        Relationships: [
+          {
+            foreignKeyName: "error_events_institution_id_fkey"
+            columns: ["institution_id"]
+            isOneToOne: false
+            referencedRelation: "institutions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       feedback: {
         Row: {
           created_at: string
@@ -289,6 +562,104 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      guideline_curation: {
+        Row: {
+          created_at: string
+          current_version: string
+          evidence_grade: string
+          guideline_code: string
+          id: string
+          last_review_date: string | null
+          next_review_date: string
+          notes: string
+          responsible_committee: string
+          responsible_user: string | null
+          source: string
+          specialty: string
+          status: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          created_at?: string
+          current_version?: string
+          evidence_grade?: string
+          guideline_code: string
+          id?: string
+          last_review_date?: string | null
+          next_review_date: string
+          notes?: string
+          responsible_committee?: string
+          responsible_user?: string | null
+          source?: string
+          specialty?: string
+          status?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          created_at?: string
+          current_version?: string
+          evidence_grade?: string
+          guideline_code?: string
+          id?: string
+          last_review_date?: string | null
+          next_review_date?: string
+          notes?: string
+          responsible_committee?: string
+          responsible_user?: string | null
+          source?: string
+          specialty?: string
+          status?: string
+          title?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      guideline_curation_history: {
+        Row: {
+          action: string
+          actor_id: string
+          comment: string
+          created_at: string
+          from_status: string
+          guideline_id: string
+          id: string
+          to_status: string
+          version_after: string
+        }
+        Insert: {
+          action: string
+          actor_id: string
+          comment?: string
+          created_at?: string
+          from_status?: string
+          guideline_id: string
+          id?: string
+          to_status?: string
+          version_after?: string
+        }
+        Update: {
+          action?: string
+          actor_id?: string
+          comment?: string
+          created_at?: string
+          from_status?: string
+          guideline_id?: string
+          id?: string
+          to_status?: string
+          version_after?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "guideline_curation_history_guideline_id_fkey"
+            columns: ["guideline_id"]
+            isOneToOne: false
+            referencedRelation: "guideline_curation"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       institution_members: {
         Row: {
@@ -395,6 +766,84 @@ export type Database = {
           id?: string
           invite_code?: string
           name?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      kpi_phase_progress: {
+        Row: {
+          created_at: string
+          id: string
+          kpi_code: string
+          measured_at: string
+          measured_value: number
+          notes: string
+          phase: string
+          sample_size: number
+          source: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          kpi_code: string
+          measured_at?: string
+          measured_value: number
+          notes?: string
+          phase: string
+          sample_size?: number
+          source?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          kpi_code?: string
+          measured_at?: string
+          measured_value?: number
+          notes?: string
+          phase?: string
+          sample_size?: number
+          source?: string
+        }
+        Relationships: []
+      }
+      kpi_phase_targets: {
+        Row: {
+          active: boolean
+          created_at: string
+          description: string
+          direction: string
+          id: string
+          kpi_code: string
+          kpi_label: string
+          phase: string
+          target_value: number
+          unit: string
+          updated_at: string
+        }
+        Insert: {
+          active?: boolean
+          created_at?: string
+          description?: string
+          direction?: string
+          id?: string
+          kpi_code: string
+          kpi_label: string
+          phase: string
+          target_value: number
+          unit?: string
+          updated_at?: string
+        }
+        Update: {
+          active?: boolean
+          created_at?: string
+          description?: string
+          direction?: string
+          id?: string
+          kpi_code?: string
+          kpi_label?: string
+          phase?: string
+          target_value?: number
+          unit?: string
           updated_at?: string
         }
         Relationships: []
@@ -757,6 +1206,65 @@ export type Database = {
           reason?: string
         }
         Relationships: []
+      }
+      ttp_events: {
+        Row: {
+          created_at: string
+          id: string
+          institution_id: string | null
+          is_outlier: boolean
+          protocol_id: string
+          protocol_opened_at: string
+          protocol_title: string
+          shift: string
+          started_at: string
+          trigger_label: string
+          trigger_source: string
+          ttp_seconds: number
+          unit: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          institution_id?: string | null
+          is_outlier?: boolean
+          protocol_id?: string
+          protocol_opened_at?: string
+          protocol_title?: string
+          shift?: string
+          started_at: string
+          trigger_label?: string
+          trigger_source?: string
+          ttp_seconds?: number
+          unit?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          institution_id?: string | null
+          is_outlier?: boolean
+          protocol_id?: string
+          protocol_opened_at?: string
+          protocol_title?: string
+          shift?: string
+          started_at?: string
+          trigger_label?: string
+          trigger_source?: string
+          ttp_seconds?: number
+          unit?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "ttp_events_institution_id_fkey"
+            columns: ["institution_id"]
+            isOneToOne: false
+            referencedRelation: "institutions"
+            referencedColumns: ["id"]
+          },
+        ]
       }
       user_favorites: {
         Row: {
