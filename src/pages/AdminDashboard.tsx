@@ -333,6 +333,14 @@ export default function AdminDashboard() {
               Demographics
             </Button>
           </div>
+          <Button
+            variant="default"
+            className="w-full h-auto py-3 flex-col gap-1 text-xs"
+            onClick={() => navigate("/admin/governance")}
+          >
+            <Shield size={16} />
+            Governança Clínica (KPIs, Checklists, EPM, Curadoria, TTP)
+          </Button>
         </div>
       )}
 
