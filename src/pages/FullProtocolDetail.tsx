@@ -17,6 +17,7 @@ import type { FullProtocol } from "@/data/fullProtocols/types";
 import ProtocolActionBar from "@/components/ProtocolActionBar";
 import { useRecentHistory } from "@/hooks/useRecentHistory";
 import { useProtocolAnalytics } from "@/hooks/useProtocolAnalytics";
+import { useTTPTracking } from "@/hooks/useTTPTracking";
 import { ProtocolDetailSkeleton } from "@/components/PageSkeleton";
 import DecisionTree from "@/components/DecisionTree";
 import { decisionTrees } from "@/data/decisionTrees";
@@ -39,6 +40,7 @@ export default function FullProtocolDetail() {
   const { isFavorite, toggleFavorite } = useFavorites();
   const { addEntry } = useRecentHistory();
   const { trackView } = useProtocolAnalytics(id);
+  const { trackProtocolOpened } = useTTPTracking();
   const [protocol, setProtocol] = useState<FullProtocol | null | undefined>(undefined);
   const [focusMode, setFocusMode] = useState(false);
   const evidence = protocol ? getEvidence(protocol.id) : undefined;
@@ -106,6 +108,7 @@ export default function FullProtocolDetail() {
     if (protocol) {
       addEntry({ path: `/full-protocols/${id}`, title: protocol.title, type: "fullProtocol" });
       trackView(protocol.title, protocol.category, "browse");
+      trackProtocolOpened(protocol.id, protocol.title);
       cacheContent(`fullProtocol:${id}`, { id: protocol.id, title: protocol.title, category: protocol.category, sections: protocol.sections, tags: protocol.tags });
     }
   }, [protocol, id]);
