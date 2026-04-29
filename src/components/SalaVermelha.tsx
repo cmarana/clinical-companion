@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { Heart, Wind, Zap, Bug, Brain, Syringe, AlertTriangle, Activity } from "lucide-react";
+import { startTTPSession } from "@/hooks/useTTPTracking";
 
 const items = [
   { id: "em-pcr-adulto", label: "PCR / RCP", icon: Heart, desc: "ACLS • Compressões • Drogas" },
@@ -15,6 +16,11 @@ const items = [
 export default function SalaVermelha() {
   const navigate = useNavigate();
 
+  const handleClick = (id: string, label: string) => {
+    startTTPSession("sala_vermelha", label);
+    navigate(`/emergency/${id}`);
+  };
+
   return (
     <div className="space-y-3">
       <div className="flex items-center gap-2 mb-1">
@@ -26,7 +32,7 @@ export default function SalaVermelha() {
         {items.map(item => (
           <button
             key={item.id}
-            onClick={() => navigate(`/emergency/${item.id}`)}
+            onClick={() => handleClick(item.id, item.label)}
             className="flex items-center gap-3 p-4 rounded-xl border border-destructive/20 bg-destructive/5 hover:bg-destructive/10 active:scale-[0.97] transition-all text-left"
           >
             <div className="w-10 h-10 rounded-lg bg-destructive/15 flex items-center justify-center shrink-0">
@@ -42,3 +48,4 @@ export default function SalaVermelha() {
     </div>
   );
 }
+

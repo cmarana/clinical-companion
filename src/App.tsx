@@ -65,6 +65,7 @@ const PushNotificationSettings = lazy(() => import("@/pages/PushNotificationSett
 const AdminAnalytics = lazy(() => import("@/pages/AdminAnalytics"));
 const AdminFeedback = lazy(() => import("@/pages/AdminFeedback"));
 const AdminDashboard = lazy(() => import("@/pages/AdminDashboard"));
+const GovernanceDashboard = lazy(() => import("@/pages/GovernanceDashboard"));
 const UserAnalytics = lazy(() => import("@/pages/UserAnalytics"));
 const UpdatesFeed = lazy(() => import("@/pages/UpdatesFeed"));
 
@@ -187,6 +188,7 @@ const AppRoutes = () => (
           <Route path="/admin/feedback" element={<AdminFeedback />} />
           <Route path="/admin/users" element={<UserAnalytics />} />
           <Route path="/admin" element={<AdminDashboard />} />
+          <Route path="/admin/governance" element={<GovernanceDashboard />} />
         <Route path="/updates" element={<UpdatesFeed />} />
         
         <Route path="/referral" element={<Referral />} />
