@@ -14,6 +14,75 @@ export type Database = {
   }
   public: {
     Tables: {
+      ai_response_cache: {
+        Row: {
+          created_at: string
+          expires_at: string
+          feature: string
+          hits: number
+          id: string
+          last_hit_at: string
+          mode: string
+          model: string
+          prompt_hash: string
+          response: string
+        }
+        Insert: {
+          created_at?: string
+          expires_at?: string
+          feature?: string
+          hits?: number
+          id?: string
+          last_hit_at?: string
+          mode?: string
+          model?: string
+          prompt_hash: string
+          response: string
+        }
+        Update: {
+          created_at?: string
+          expires_at?: string
+          feature?: string
+          hits?: number
+          id?: string
+          last_hit_at?: string
+          mode?: string
+          model?: string
+          prompt_hash?: string
+          response?: string
+        }
+        Relationships: []
+      }
+      ai_usage: {
+        Row: {
+          count: number
+          created_at: string
+          feature: string
+          id: string
+          updated_at: string
+          user_id: string
+          year_month: string
+        }
+        Insert: {
+          count?: number
+          created_at?: string
+          feature?: string
+          id?: string
+          updated_at?: string
+          user_id: string
+          year_month: string
+        }
+        Update: {
+          count?: number
+          created_at?: string
+          feature?: string
+          id?: string
+          updated_at?: string
+          user_id?: string
+          year_month?: string
+        }
+        Relationships: []
+      }
       bulario_medications: {
         Row: {
           ajuste_hepatico: string
@@ -1403,6 +1472,10 @@ export type Database = {
         Args: { payload: Json; queue_name: string }
         Returns: number
       }
+      get_ai_usage: {
+        Args: { _feature?: string; _user_id: string }
+        Returns: number
+      }
       get_institution_role: {
         Args: { _institution_id: string; _user_id: string }
         Returns: string
@@ -1413,6 +1486,10 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      increment_ai_usage: {
+        Args: { _feature?: string; _user_id: string }
+        Returns: number
       }
       is_institution_member: {
         Args: { _institution_id: string; _user_id: string }
