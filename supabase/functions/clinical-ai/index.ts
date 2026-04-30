@@ -4074,6 +4074,31 @@ Após estruturar, prossiga com a análise no formato padrão de 12 seções.
 Use os dados estruturados acima para calcular doses, ajustes, alertas.` });
     }
 
+    // ─── Modelo otimizado por modo (escala custo-eficiente) ───
+    // - plantao/structured/interactions: respostas curtas → flash-lite (~5x mais barato)
+    // - narrative/default: respostas longas com nuance → flash
+    const model =
+      mode === "plantao" || mode === "interactions" || mode === "structured"
+        ? "google/gemini-2.5-flash-lite"
+        : "google/gemini-2.5-flash";
+
+    // ─── Cache lookup global (somente se não for stream-dependente extremo) ───
+    const lastUserMsg = messages[messages.length - 1]?.content ?? "";
+    const cacheKey = await hashPrompt(`${model}|${mode || "default"}|${lastUserMsg}`);
+    const cached = await lookupCache(serviceClient, cacheKey, "clinical-ai", model, mode || "default");
+
+    if (cached.hit && cached.response) {
+      // Devolve resposta cacheada como SSE chunk único + [DONE]
+      console.log(`[cache HIT] user=${userId} mode=${mode}`);
+      const sseBody =
+        `data: ${JSON.stringify({ choices: [{ delta: { content: cached.response } }] })}\n\n` +
+        `data: [DONE]\n\n`;
+      // Cache hit não consome quota (usuário não paga por resposta gravada)
+      return new Response(sseBody, {
+        headers: { ...corsHeaders, "Content-Type": "text/event-stream", "X-Cache": "HIT" },
+      });
+    }
+
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -4081,7 +4106,7 @@ Use os dados estruturados acima para calcular doses, ajustes, alertas.` });
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
+        model,
         messages: [...systemMessages, ...messages],
         stream: true,
       }),
@@ -4105,8 +4130,45 @@ Use os dados estruturados acima para calcular doses, ajustes, alertas.` });
       });
     }
 
-    return new Response(response.body, {
-      headers: { ...corsHeaders, "Content-Type": "text/event-stream" },
+    // ─── Intercepta stream para: 1) gravar cache 2) bump quota apenas no fim ───
+    let fullText = "";
+    const transform = new TransformStream({
+      transform(chunk, controller) {
+        try {
+          const text = new TextDecoder().decode(chunk);
+          // extrai content de cada chunk SSE para reconstruir resposta completa
+          for (const line of text.split("\n")) {
+            if (!line.startsWith("data: ")) continue;
+            const payload = line.slice(6).trim();
+            if (payload === "[DONE]") continue;
+            try {
+              const parsed = JSON.parse(payload);
+              const c = parsed?.choices?.[0]?.delta?.content;
+              if (typeof c === "string") fullText += c;
+            } catch { /* chunk parcial — ok */ }
+          }
+        } catch { /* nunca quebra o stream */ }
+        controller.enqueue(chunk);
+      },
+      async flush() {
+        // Stream terminou com sucesso → conta uso + grava cache (best-effort)
+        if (fullText.length > 50) {
+          await Promise.allSettled([
+            bumpAiUsage(serviceClient, userId, "clinical-ai"),
+            storeCache(serviceClient, cacheKey, "clinical-ai", model, mode || "default", fullText),
+          ]);
+          console.log(`[ai-quota] user=${userId} tier=${tier} used=${used + 1}/${limit}`);
+        }
+      },
+    });
+
+    return new Response(response.body!.pipeThrough(transform), {
+      headers: {
+        ...corsHeaders,
+        "Content-Type": "text/event-stream",
+        "X-Cache": "MISS",
+        "X-AI-Model": model,
+      },
     });
   } catch (e) {
     console.error("clinical-ai error:", e);
