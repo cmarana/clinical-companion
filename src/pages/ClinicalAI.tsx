@@ -159,7 +159,7 @@ function ClinicalAIContent() {
         mode: sendMode,
         onDelta: upsertAssistant,
         onDone: () => setIsLoading(false),
-        onError: (err) => { toast.error(err); setIsLoading(false); },
+        onError: (err) => { toast.error(err, { duration: 6000 }); setIsLoading(false); },
       });
     } catch {
       toast.error("Erro ao conectar com a IA");
