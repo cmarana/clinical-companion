@@ -3905,91 +3905,24 @@ Se K ≥ 5,5 detectado:
 
 DISCLAIMER: Apoio à decisão clínica — responsabilidade final é do médico.`;
 
-// ─── Auth + Premium helper ────────────────────────────────────────
-async function verifyAuthAndPremium(req: Request): Promise<{ userId: string } | Response> {
-  const { createClient } = await import("https://esm.sh/@supabase/supabase-js@2.49.4");
-
-  const authHeader = req.headers.get("Authorization");
-  if (!authHeader?.startsWith("Bearer ")) {
-    return new Response(JSON.stringify({ error: "Autenticação necessária" }), {
-      status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
-  }
-
-  const supabase = createClient(
-    Deno.env.get("SUPABASE_URL")!,
-    Deno.env.get("SUPABASE_ANON_KEY")!,
-    { global: { headers: { Authorization: authHeader } } }
-  );
-
-  const token = authHeader.replace("Bearer ", "");
-  const { data, error } = await supabase.auth.getClaims(token);
-  if (error || !data?.claims?.sub) {
-    return new Response(JSON.stringify({ error: "Token inválido" }), {
-      status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
-  }
-
-  const userId = data.claims.sub as string;
-
-  // Check premium: Stripe subscription or active PIX purchase
-  const { default: Stripe } = await import("https://esm.sh/stripe@18.5.0");
-  const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", { apiVersion: "2025-08-27.basil" });
-
-  const serviceClient = createClient(
-    Deno.env.get("SUPABASE_URL")!,
-    Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
-    { auth: { persistSession: false } }
-  );
-
-  // Get user email for Stripe lookup
-  const { data: userData } = await serviceClient.auth.admin.getUserById(userId);
-  const email = userData?.user?.email;
-
-  let isPremium = false;
-
-  // Check Stripe subscription
-  if (email) {
-    try {
-      const customers = await stripe.customers.list({ email, limit: 1 });
-      if (customers.data.length > 0) {
-        const subs = await stripe.subscriptions.list({ customer: customers.data[0].id, status: "active", limit: 1 });
-        isPremium = subs.data.length > 0;
-      }
-    } catch (e) {
-      console.error("Stripe check error:", e);
-    }
-  }
-
-  // Check PIX purchase if no Stripe sub
-  if (!isPremium) {
-    const { data: pixData } = await serviceClient
-      .from("pix_purchases")
-      .select("id")
-      .eq("user_id", userId)
-      .eq("status", "active")
-      .gte("access_end", new Date().toISOString())
-      .limit(1);
-    isPremium = !!(pixData && pixData.length > 0);
-  }
-
-  if (!isPremium) {
-    return new Response(JSON.stringify({ error: "Recurso exclusivo para assinantes Premium" }), {
-      status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
-  }
-
-  return { userId };
-}
+// ─── Auth + Quota (Free=3, Pro=200, Admin=∞) — ver _shared/aiQuota.ts ───
+import {
+  verifyAuthAndQuota,
+  bumpAiUsage,
+  hashPrompt,
+  lookupCache,
+  storeCache,
+} from "../_shared/aiQuota.ts";
 
 // ─── Serve ───────────────────────────────────────────────────────
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    // Auth + Premium verification
-    const authResult = await verifyAuthAndPremium(req.clone());
+    // Auth + Quota verification
+    const authResult = await verifyAuthAndQuota(req.clone(), "clinical-ai");
     if (authResult instanceof Response) return authResult;
+    const { userId, serviceClient, tier, used, limit } = authResult;
 
     const body = await req.json();
     const mode = body?.mode;
