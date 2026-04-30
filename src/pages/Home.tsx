@@ -21,6 +21,7 @@ import { useModuleAnalytics } from "@/hooks/useModuleAnalytics";
 import SmartSearch from "@/components/SmartSearch";
 import WeeklySummaryWidget from "@/components/WeeklySummaryWidget";
 import VoiceFeaturesBanner from "@/components/VoiceFeaturesBanner";
+import DailyBriefingWidget from "@/components/DailyBriefingWidget";
 
 import WelcomeScreen from "@/components/WelcomeScreen";
 
