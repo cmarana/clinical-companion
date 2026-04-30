@@ -6,7 +6,7 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { flashcards, flashcardCategoryLabels, type FlashcardCategory } from "@/data/flashcardsData";
-import { getProgress, getStats, type CardProgress } from "@/lib/spacedRepetition";
+import { getProgress, getStats, estimateRetention, getLeechCards, type CardProgress } from "@/lib/spacedRepetition";
 import { residencyQuestions } from "@/data/residencyQuestions";
 import { safeLocalStorage } from "@/lib/safeStorage";
 import {
@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 import {
   ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig
 } from "@/components/ui/chart";
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, CartesianGrid } from "recharts";
 import { achievements, getUnlockedAchievements, getAchievementProgress, type AchievementContext } from "@/lib/achievements";
 
 // --- Streak logic ---
