@@ -9,8 +9,9 @@ import {
   Download, CheckCircle, WifiOff, Wifi, HardDrive, RefreshCw,
   Trash2, Shield, Pill, Calculator, AlertTriangle, Loader2,
   BookOpen, Clock, Zap, ClipboardList, Heart, Brain, Baby,
-  Bug, Wind, Utensils, Thermometer, Siren, Crown
+  Bug, Wind, Utensils, Thermometer, Siren, Crown, CheckSquare, Square, Infinity as InfinityIcon
 } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
 import {
@@ -40,6 +41,7 @@ export default function OfflineSetup() {
   const [allProgress, setAllProgress] = useState({ completed: 0, total: 0, label: "" });
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [savedCount, setSavedCount] = useState(0);
+  const [selected, setSelected] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     const on = () => setIsOnline(true);
@@ -90,7 +92,43 @@ export default function OfflineSetup() {
     }
     setDownloaded([]);
     setSavedCount(0);
+    setSelected(new Set());
     toast.success("Cache offline limpo.");
+  };
+
+  const toggleSelect = (id: string) => {
+    setSelected(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+  };
+
+  const selectAll = () => {
+    const pending = OFFLINE_MODULES.filter(m => !downloaded.includes(m.id)).map(m => m.id);
+    setSelected(new Set(pending));
+  };
+
+  const clearSelection = () => setSelected(new Set());
+
+  const handleDownloadSelected = async () => {
+    if (!isOnline) { toast.error("Conecte-se à internet para baixar."); return; }
+    const list = OFFLINE_MODULES.filter(m => selected.has(m.id) && !downloaded.includes(m.id));
+    if (list.length === 0) { toast.info("Nenhum módulo selecionado."); return; }
+    setDownloadingAll(true);
+    setAllProgress({ completed: 0, total: list.length, label: list[0].label });
+    for (let i = 0; i < list.length; i++) {
+      const mod = list[i];
+      setAllProgress({ completed: i, total: list.length, label: mod.label });
+      try {
+        await downloadModule(mod);
+        setDownloaded(prev => prev.includes(mod.id) ? prev : [...prev, mod.id]);
+      } catch { /* segue */ }
+    }
+    setAllProgress({ completed: list.length, total: list.length, label: "Completo" });
+    setDownloadingAll(false);
+    setSelected(new Set());
+    toast.success(`${list.length} módulo(s) salvo(s) para offline!`);
   };
 
   const totalSize = OFFLINE_MODULES.reduce((s, m) => s + m.sizeMb, 0);
@@ -131,9 +169,14 @@ export default function OfflineSetup() {
               {isOnline ? <Wifi size={20} className="text-emerald-500" /> : <WifiOff size={20} className="text-amber-500" />}
             </div>
             <div className="flex-1">
-              <h2 className="font-heading font-bold text-sm">{isOnline ? "Conectado" : "Sem Internet"}</h2>
+              <h2 className="font-heading font-bold text-sm flex items-center gap-1.5">
+                {isOnline ? "Conectado" : "Sem Internet"}
+                <Badge variant="outline" className="text-[9px] gap-1 bg-primary/5 border-primary/20 text-primary">
+                  <InfinityIcon size={10} /> sem limite
+                </Badge>
+              </h2>
               <p className="text-[11px] text-muted-foreground">
-                {downloaded.length} de {OFFLINE_MODULES.length} módulos baixados ({downloadedSize.toFixed(1)} MB)
+                {downloaded.length} de {OFFLINE_MODULES.length} módulos baixados ({downloadedSize.toFixed(1)} MB) — baixe quantos quiser
               </p>
             </div>
           </div>
@@ -188,24 +231,77 @@ export default function OfflineSetup() {
 
         {/* Module Grid */}
         <div className="bg-card rounded-2xl shadow-sm overflow-hidden">
-          <div className="px-4 py-3 border-b border-border/50">
-            <h3 className="font-heading font-bold text-sm flex items-center gap-2">
-              <BookOpen size={14} className="text-primary" />
-              Módulos por Especialidade
-            </h3>
-            <p className="text-[10px] text-muted-foreground mt-0.5">
-              Selecione os módulos que deseja baixar para uso offline
-            </p>
+          <div className="px-4 py-3 border-b border-border/50 flex items-center justify-between gap-2">
+            <div className="min-w-0">
+              <h3 className="font-heading font-bold text-sm flex items-center gap-2">
+                <BookOpen size={14} className="text-primary" />
+                Módulos por Especialidade
+              </h3>
+              <p className="text-[10px] text-muted-foreground mt-0.5">
+                Selecione quantos quiser — não há limite de quantidade
+              </p>
+            </div>
+            <div className="flex items-center gap-1 shrink-0">
+              <Button
+                size="sm"
+                variant="ghost"
+                className="h-7 text-[10px] rounded-lg gap-1 px-2"
+                onClick={selectAll}
+                disabled={downloadingAll}
+              >
+                <CheckSquare size={12} /> Todos
+              </Button>
+              {selected.size > 0 && (
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="h-7 text-[10px] rounded-lg gap-1 px-2"
+                  onClick={clearSelection}
+                  disabled={downloadingAll}
+                >
+                  <Square size={12} /> Limpar
+                </Button>
+              )}
+            </div>
           </div>
+
+          {/* Bulk action bar */}
+          {selected.size > 0 && (
+            <div className="px-4 py-2.5 bg-primary/5 border-b border-primary/10 flex items-center justify-between gap-2">
+              <p className="text-[11px] font-heading font-semibold text-primary">
+                {selected.size} selecionado(s)
+              </p>
+              <Button
+                size="sm"
+                onClick={handleDownloadSelected}
+                disabled={downloadingAll || !isOnline}
+                className="h-8 text-[10px] rounded-xl gap-1"
+              >
+                {downloadingAll
+                  ? <><Loader2 size={12} className="animate-spin" /> Baixando…</>
+                  : <><Download size={12} /> Baixar selecionados</>}
+              </Button>
+            </div>
+          )}
 
           <div className="divide-y divide-border/30">
             {OFFLINE_MODULES.map(mod => {
               const Icon = getIcon(mod.icon);
               const isDownloaded = downloaded.includes(mod.id);
               const isLoading = downloading === mod.id;
+              const isSelected = selected.has(mod.id);
 
               return (
                 <div key={mod.id} className="flex items-center gap-3 px-4 py-3">
+                  {!isDownloaded && (
+                    <Checkbox
+                      checked={isSelected}
+                      onCheckedChange={() => toggleSelect(mod.id)}
+                      disabled={downloadingAll || isLoading}
+                      className="shrink-0"
+                      aria-label={`Selecionar ${mod.label}`}
+                    />
+                  )}
                   <div className={cn("w-9 h-9 rounded-xl flex items-center justify-center shrink-0",
                     isDownloaded ? "bg-emerald-500/10" : "bg-muted/50"
                   )}>
