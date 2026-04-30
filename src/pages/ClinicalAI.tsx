@@ -128,7 +128,7 @@ function ClinicalAIContent() {
     return parts.length ? `[CONTEXTO DO PACIENTE: ${parts.join(" | ")}]\n\n` : "";
   };
 
-  const sendMessage = async (text: string, sendMode: "chat" | "structured" = "chat") => {
+  const sendMessage = async (text: string, sendMode: "chat" | "structured" | "plantao" | "narrative" = "chat") => {
     if (!text.trim() || isLoading) return;
 
     const fullText = buildContextPrefix() + text;
