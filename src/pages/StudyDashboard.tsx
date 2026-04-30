@@ -6,7 +6,7 @@ import { Progress } from "@/components/ui/progress";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { flashcards, flashcardCategoryLabels, type FlashcardCategory } from "@/data/flashcardsData";
-import { getProgress, getStats, type CardProgress } from "@/lib/spacedRepetition";
+import { getProgress, getStats, estimateRetention, getLeechCards, type CardProgress } from "@/lib/spacedRepetition";
 import { residencyQuestions } from "@/data/residencyQuestions";
 import { safeLocalStorage } from "@/lib/safeStorage";
 import {
@@ -17,7 +17,7 @@ import { cn } from "@/lib/utils";
 import {
   ChartContainer, ChartTooltip, ChartTooltipContent, type ChartConfig
 } from "@/components/ui/chart";
-import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell } from "recharts";
+import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer, PieChart, Pie, Cell, LineChart, Line, CartesianGrid } from "recharts";
 import { achievements, getUnlockedAchievements, getAchievementProgress, type AchievementContext } from "@/lib/achievements";
 
 // --- Streak logic ---
@@ -195,6 +195,41 @@ export default function StudyDashboard() {
     cards: { label: "Cards revisados", color: "hsl(var(--primary))" },
   };
 
+  // ====== Previsão de carga (próximos 7 dias) ======
+  const forecastData = useMemo(() => {
+    const progress = getProgress();
+    const now = Date.now();
+    const dayMs = 86400000;
+    const buckets: Array<{ day: string; cards: number; date: Date }> = [];
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(now + i * dayMs);
+      buckets.push({ day: i === 0 ? "Hoje" : weekLabels[d.getDay()], cards: 0, date: d });
+    }
+    Object.values(progress).forEach((p: CardProgress) => {
+      if (!p.nextReview) return;
+      const diff = Math.floor((p.nextReview - now) / dayMs);
+      if (diff >= 0 && diff < 7) {
+        buckets[diff].cards += 1;
+      } else if (diff < 0 && p.nextReview <= now) {
+        // overdue conta no "Hoje"
+        buckets[0].cards += 1;
+      }
+    });
+    return buckets.map(({ day, cards }) => ({ day, cards }));
+  }, []);
+
+  const forecastConfig: ChartConfig = {
+    cards: { label: "Cards previstos", color: "hsl(var(--primary))" },
+  };
+
+  // ====== Retenção e leech ======
+  const retention = useMemo(() => estimateRetention(allCardIds), [allCardIds]);
+  const leechCount = useMemo(() => getLeechCards(allCardIds).length, [allCardIds]);
+  const peakDay = useMemo(() => {
+    const max = forecastData.reduce((acc, d) => (d.cards > acc.cards ? d : acc), forecastData[0]);
+    return max;
+  }, [forecastData]);
+
   return (
     <div className="min-h-screen bg-background pb-24">
       <TopBar title="Dashboard de Estudo" showBack />
@@ -315,6 +350,61 @@ export default function StudyDashboard() {
               <ChartTooltip content={<ChartTooltipContent />} />
             </BarChart>
           </ChartContainer>
+        </Card>
+
+        {/* Previsão de carga (próx. 7 dias) */}
+        <Card className="p-4">
+          <div className="flex items-center justify-between mb-1">
+            <h3 className="font-heading font-semibold text-sm flex items-center gap-2">
+              <TrendingUp size={16} className="text-primary" /> Previsão de Revisões
+            </h3>
+            {peakDay && peakDay.cards > 0 && (
+              <Badge variant="outline" className="text-[10px] px-1.5 py-0">
+                Pico: {peakDay.day} ({peakDay.cards})
+              </Badge>
+            )}
+          </div>
+          <p className="text-[11px] text-muted-foreground mb-3">Cards previstos para os próximos 7 dias com base no SM-2.</p>
+          <ChartContainer config={forecastConfig} className="h-[140px]">
+            <LineChart data={forecastData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" vertical={false} />
+              <XAxis dataKey="day" tick={{ fontSize: 11 }} tickLine={false} axisLine={false} />
+              <YAxis hide />
+              <Line type="monotone" dataKey="cards" stroke="hsl(var(--primary))" strokeWidth={2.5} dot={{ r: 3, fill: "hsl(var(--primary))" }} />
+              <ChartTooltip content={<ChartTooltipContent />} />
+            </LineChart>
+          </ChartContainer>
+        </Card>
+
+        {/* Retenção estimada + Leech */}
+        <Card className="p-4">
+          <h3 className="font-heading font-semibold text-sm mb-3 flex items-center gap-2">
+            <Brain size={16} className="text-emerald-500" /> Saúde da Memória
+          </h3>
+          <div className="space-y-3">
+            <div>
+              <div className="flex items-center justify-between mb-1.5">
+                <span className="text-xs font-medium">Retenção estimada</span>
+                <span className="text-xs font-mono font-bold text-emerald-500">{Math.round(retention * 100)}%</span>
+              </div>
+              <div className="h-2 bg-muted rounded-full overflow-hidden">
+                <div className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full transition-all" style={{ width: `${retention * 100}%` }} />
+              </div>
+              <p className="text-[10px] text-muted-foreground mt-1">Curva de Ebbinghaus aplicada ao seu progresso.</p>
+            </div>
+            <div className="grid grid-cols-2 gap-2">
+              <div className="rounded-xl bg-muted/40 p-2.5">
+                <p className="text-[10px] text-muted-foreground">Cards travados</p>
+                <p className="text-lg font-bold text-red-500">{leechCount}</p>
+                <p className="text-[9px] text-muted-foreground">≥ 4 lapsos consecutivos</p>
+              </div>
+              <div className="rounded-xl bg-muted/40 p-2.5">
+                <p className="text-[10px] text-muted-foreground">Total de lapsos</p>
+                <p className="text-lg font-bold text-orange-500">{stats.lapses ?? 0}</p>
+                <p className="text-[9px] text-muted-foreground">Erros após graduação</p>
+              </div>
+            </div>
+          </div>
         </Card>
 
         {/* Specialty Ranking */}
