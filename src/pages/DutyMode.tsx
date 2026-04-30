@@ -9,8 +9,8 @@ import DutyBedNotes from "@/components/duty/DutyBedNotes";
 import DutySection from "@/components/duty/DutySection";
 import {
   Zap, Pill, ClipboardList, Calculator, FileText, Baby, Heart,
-  Search, Star, Stethoscope, Sparkles,
-  ChevronRight
+  Search, Star, Stethoscope, Sparkles, Timer, Mic, Users, Bot,
+  ChevronRight, Activity, Beaker
 } from "lucide-react";
 import { useState, useMemo } from "react";
 import { protocols } from "@/data/protocols";
@@ -94,6 +94,40 @@ function DutyModeContent() {
 
         {/* ── Shift Timer ── */}
         <DutyShiftTimer />
+
+        {/* ── Critical Tools (Bedside) ── */}
+        <DutySection title="Ferramentas de Plantão" icon={<Activity size={14} className="text-destructive" />}>
+          <div className="grid grid-cols-4 gap-2">
+            <button
+              onClick={() => navigate("/cpr-timer")}
+              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl bg-destructive/10 text-destructive hover:bg-destructive/20 active:scale-95 transition-all"
+            >
+              <Timer size={20} />
+              <span className="text-[10px] font-heading font-bold leading-tight text-center">PCR Timer</span>
+            </button>
+            <button
+              onClick={() => navigate("/rounds")}
+              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl bg-primary/10 text-primary hover:bg-primary/20 active:scale-95 transition-all"
+            >
+              <Users size={20} />
+              <span className="text-[10px] font-heading font-bold leading-tight text-center">Round / Leitos</span>
+            </button>
+            <button
+              onClick={() => navigate("/voice-evolution")}
+              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl bg-accent text-accent-foreground hover:bg-accent/80 active:scale-95 transition-all"
+            >
+              <Mic size={20} />
+              <span className="text-[10px] font-heading font-bold leading-tight text-center">Evolução por Voz</span>
+            </button>
+            <button
+              onClick={() => navigate("/prescription-checker")}
+              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl bg-orange-500/10 text-orange-600 dark:text-orange-400 hover:bg-orange-500/20 active:scale-95 transition-all"
+            >
+              <Beaker size={20} />
+              <span className="text-[10px] font-heading font-bold leading-tight text-center">Checagem Rx</span>
+            </button>
+          </div>
+        </DutySection>
 
         {/* ── Search ── */}
         <div className="relative">

@@ -19,6 +19,14 @@ import OfflineBadge from "@/components/OfflineBadge";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
+interface PatientCtx {
+  age?: string;
+  weight?: string;
+  creatinine?: string;
+  allergies?: string;
+  conditions?: string;
+}
+
 function DrugInteractionsContent() {
   const navigate = useNavigate();
   const [drugs, setDrugs] = useState<string[]>(["", ""]);
@@ -27,6 +35,8 @@ function DrugInteractionsContent() {
   const [aiResult, setAiResult] = useState("");
   const [aiLoading, setAiLoading] = useState(false);
   const [showAi, setShowAi] = useState(false);
+  const [patient, setPatient] = useState<PatientCtx>({});
+  const [showPatientPanel, setShowPatientPanel] = useState(false);
   const resultRef = useRef<HTMLDivElement>(null);
 
   const filledDrugs = drugs.filter(d => d.trim().length >= 2);
@@ -77,9 +87,17 @@ function DrugInteractionsContent() {
     setAiResult("");
     setShowAi(true);
 
+    const ctxParts: string[] = [];
+    if (patient.age) ctxParts.push(`Idade: ${patient.age}`);
+    if (patient.weight) ctxParts.push(`Peso: ${patient.weight} kg`);
+    if (patient.creatinine) ctxParts.push(`Creatinina: ${patient.creatinine} mg/dL`);
+    if (patient.allergies) ctxParts.push(`Alergias: ${patient.allergies}`);
+    if (patient.conditions) ctxParts.push(`Comorbidades: ${patient.conditions}`);
+    const ctxBlock = ctxParts.length ? `\n\n[CONTEXTO DO PACIENTE: ${ctxParts.join(" | ")}]\n\nLeve em conta função renal, idade, alergias e comorbidades ao classificar a severidade e ajustar a conduta.\n` : "";
+
     const userMsg: Msg = {
       role: "user",
-      content: `Analise TODAS as interações medicamentosas entre:\n\n${filledDrugs.map((d, i) => `${i + 1}. ${d}`).join("\n")}\n\nPara cada par com interação, inclua:\n- Severidade (Contraindicado/Grave/Moderado/Leve)\n- Mecanismo farmacológico\n- Efeito clínico\n- Conduta recomendada\n- Alternativa terapêutica quando aplicável\n- Monitoramento necessário\n\nSe não houver interação significativa entre algum par, mencione brevemente. Seja rigoroso, completo e baseado em evidências.`,
+      content: `Analise TODAS as interações medicamentosas entre:\n\n${filledDrugs.map((d, i) => `${i + 1}. ${d}`).join("\n")}${ctxBlock}\n\nPara cada par com interação, inclua:\n- Severidade (Contraindicado/Grave/Moderado/Leve) — ajustada ao paciente\n- Mecanismo farmacológico\n- Efeito clínico\n- Conduta recomendada (cite ajustes por ClCr/idade quando aplicável)\n- Alternativa terapêutica brasileira (preferir SUS/PCDT)\n- Monitoramento necessário\n\nSe não houver interação significativa entre algum par, mencione brevemente. Cite fontes brasileiras (ANVISA, SBC, SBI, PCDT/MS) sempre que possível. Seja rigoroso, completo e baseado em evidências.`,
     };
 
     let full = "";
@@ -172,7 +190,63 @@ function DrugInteractionsContent() {
           </div>
         </div>
 
-        {/* Results */}
+        {/* Patient context panel — improves AI severity classification */}
+        <div className="bg-card rounded-[20px] shadow-sm overflow-hidden">
+          <button
+            onClick={() => setShowPatientPanel(v => !v)}
+            className="w-full flex items-center justify-between px-4 py-3 hover:bg-muted/30 transition-colors"
+          >
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center">
+                <Activity size={14} className="text-primary" />
+              </div>
+              <div className="text-left">
+                <h3 className="font-heading font-semibold text-sm">Contexto do paciente</h3>
+                <p className="text-[10px] text-muted-foreground">
+                  {Object.values(patient).filter(Boolean).length > 0
+                    ? `${Object.values(patient).filter(Boolean).length} dado(s) — IA personaliza severidade`
+                    : "Opcional — melhora a precisão da IA"}
+                </p>
+              </div>
+            </div>
+            {showPatientPanel ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          </button>
+          {showPatientPanel && (
+            <div className="px-4 pb-3 grid grid-cols-2 gap-2 border-t border-border/50 pt-3">
+              <input
+                placeholder="Idade (anos)"
+                value={patient.age || ""}
+                onChange={e => setPatient(p => ({ ...p, age: e.target.value }))}
+                className="h-9 text-xs px-3 rounded-xl bg-muted/50 border-0 focus:outline-none focus:ring-2 focus:ring-primary/30"
+              />
+              <input
+                placeholder="Peso (kg)"
+                value={patient.weight || ""}
+                onChange={e => setPatient(p => ({ ...p, weight: e.target.value }))}
+                className="h-9 text-xs px-3 rounded-xl bg-muted/50 border-0 focus:outline-none focus:ring-2 focus:ring-primary/30"
+              />
+              <input
+                placeholder="Creatinina (mg/dL)"
+                value={patient.creatinine || ""}
+                onChange={e => setPatient(p => ({ ...p, creatinine: e.target.value }))}
+                className="h-9 text-xs px-3 rounded-xl bg-muted/50 border-0 focus:outline-none focus:ring-2 focus:ring-primary/30"
+              />
+              <input
+                placeholder="Alergias"
+                value={patient.allergies || ""}
+                onChange={e => setPatient(p => ({ ...p, allergies: e.target.value }))}
+                className="h-9 text-xs px-3 rounded-xl bg-muted/50 border-0 focus:outline-none focus:ring-2 focus:ring-primary/30"
+              />
+              <input
+                placeholder="Comorbidades (HAS, DM, IC...)"
+                value={patient.conditions || ""}
+                onChange={e => setPatient(p => ({ ...p, conditions: e.target.value }))}
+                className="h-9 text-xs px-3 rounded-xl bg-muted/50 border-0 focus:outline-none focus:ring-2 focus:ring-primary/30 col-span-2"
+              />
+            </div>
+          )}
+        </div>
+
         {hasChecked && (
           <div ref={resultRef} className="space-y-3">
             {/* Summary bar */}
