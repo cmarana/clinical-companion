@@ -171,11 +171,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setProfileComplete(null);
   };
 
-  return (
-    <AuthContext.Provider value={{
+  const value = useMemo(
+    () => ({
       user, session, loading, subscription, profileComplete,
       checkSubscription, recheckProfile: checkProfile, signOut,
-    }}>
+    }),
+    [user, session, loading, subscription, profileComplete, checkSubscription, checkProfile]
+  );
+
+  return (
+    <AuthContext.Provider value={value}>
       {children}
     </AuthContext.Provider>
   );

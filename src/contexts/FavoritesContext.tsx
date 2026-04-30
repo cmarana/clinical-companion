@@ -111,7 +111,7 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
     return () => { cancelled = true; };
   }, [user?.id]);
 
-  const isFavorite = (id: string) => favorites.some((f) => f.id === id);
+  const isFavorite = useCallback((id: string) => favorites.some((f) => f.id === id), [favorites]);
 
   const toggleFavorite = useCallback((item: FavoriteItem) => {
     const exists = favorites.some((f) => f.id === item.id);
