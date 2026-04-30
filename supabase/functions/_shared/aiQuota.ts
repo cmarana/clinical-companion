@@ -4,7 +4,7 @@
 import { createClient, SupabaseClient } from "https://esm.sh/@supabase/supabase-js@2.49.4";
 
 export const FREE_MONTHLY_QUOTA = 3;
-export const PRO_MONTHLY_QUOTA = 200;
+export const PRO_MONTHLY_QUOTA = 50;
 
 export type UserTier = "free" | "pro" | "admin";
 
