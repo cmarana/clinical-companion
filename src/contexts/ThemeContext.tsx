@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, useMemo, type ReactNode } from "react";
 import { safeLocalStorage } from "@/lib/safeStorage";
 
 type Theme = "light" | "dark" | "oled";
