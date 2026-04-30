@@ -545,7 +545,7 @@ export default function Onboarding() {
                         <button
                           key={n}
                           type="button"
-                          onClick={() => set("weekly_goal" as any)(n as any)}
+                          onClick={() => setForm(p => ({ ...p, weekly_goal: n }))}
                           className={`py-3 rounded-xl text-sm font-bold transition-all ${
                             form.weekly_goal === n
                               ? "bg-primary text-primary-foreground shadow-md ring-2 ring-primary/30"
