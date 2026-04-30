@@ -190,7 +190,63 @@ function DrugInteractionsContent() {
           </div>
         </div>
 
-        {/* Results */}
+        {/* Patient context panel — improves AI severity classification */}
+        <div className="bg-card rounded-[20px] shadow-sm overflow-hidden">
+          <button
+            onClick={() => setShowPatientPanel(v => !v)}
+            className="w-full flex items-center justify-between px-4 py-3 hover:bg-muted/30 transition-colors"
+          >
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-xl bg-primary/10 flex items-center justify-center">
+                <Activity size={14} className="text-primary" />
+              </div>
+              <div className="text-left">
+                <h3 className="font-heading font-semibold text-sm">Contexto do paciente</h3>
+                <p className="text-[10px] text-muted-foreground">
+                  {Object.values(patient).filter(Boolean).length > 0
+                    ? `${Object.values(patient).filter(Boolean).length} dado(s) — IA personaliza severidade`
+                    : "Opcional — melhora a precisão da IA"}
+                </p>
+              </div>
+            </div>
+            {showPatientPanel ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+          </button>
+          {showPatientPanel && (
+            <div className="px-4 pb-3 grid grid-cols-2 gap-2 border-t border-border/50 pt-3">
+              <input
+                placeholder="Idade (anos)"
+                value={patient.age || ""}
+                onChange={e => setPatient(p => ({ ...p, age: e.target.value }))}
+                className="h-9 text-xs px-3 rounded-xl bg-muted/50 border-0 focus:outline-none focus:ring-2 focus:ring-primary/30"
+              />
+              <input
+                placeholder="Peso (kg)"
+                value={patient.weight || ""}
+                onChange={e => setPatient(p => ({ ...p, weight: e.target.value }))}
+                className="h-9 text-xs px-3 rounded-xl bg-muted/50 border-0 focus:outline-none focus:ring-2 focus:ring-primary/30"
+              />
+              <input
+                placeholder="Creatinina (mg/dL)"
+                value={patient.creatinine || ""}
+                onChange={e => setPatient(p => ({ ...p, creatinine: e.target.value }))}
+                className="h-9 text-xs px-3 rounded-xl bg-muted/50 border-0 focus:outline-none focus:ring-2 focus:ring-primary/30"
+              />
+              <input
+                placeholder="Alergias"
+                value={patient.allergies || ""}
+                onChange={e => setPatient(p => ({ ...p, allergies: e.target.value }))}
+                className="h-9 text-xs px-3 rounded-xl bg-muted/50 border-0 focus:outline-none focus:ring-2 focus:ring-primary/30"
+              />
+              <input
+                placeholder="Comorbidades (HAS, DM, IC...)"
+                value={patient.conditions || ""}
+                onChange={e => setPatient(p => ({ ...p, conditions: e.target.value }))}
+                className="h-9 text-xs px-3 rounded-xl bg-muted/50 border-0 focus:outline-none focus:ring-2 focus:ring-primary/30 col-span-2"
+              />
+            </div>
+          )}
+        </div>
+
         {hasChecked && (
           <div ref={resultRef} className="space-y-3">
             {/* Summary bar */}
