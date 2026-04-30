@@ -4,8 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { flashcards, flashcardCategoryLabels, flashcardCategoryColors, type FlashcardCategory } from "@/data/flashcardsData";
-import { reviewCard, getDueCards, getNewCards, getStats, getProgress, syncProgressFromCloud, type Rating } from "@/lib/spacedRepetition";
-import { Brain, RotateCcw, Search, ChevronRight, Zap, BookOpen, Trophy, Clock } from "lucide-react";
+import { reviewCard, getStats, getProgress, syncProgressFromCloud, getPrioritizedSession, getLeechCards, estimateRetention, type Rating } from "@/lib/spacedRepetition";
+import { Brain, RotateCcw, Search, ChevronRight, Zap, BookOpen, Trophy, Clock, AlertTriangle, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthContext";
@@ -17,7 +17,7 @@ type View = "decks" | "review";
 export default function Flashcards() {
   const { user } = useAuth();
   const [view, setView] = useState<View>("decks");
-  const [activeCat, setActiveCat] = useState<FlashcardCategory | "all" | "due">("all");
+  const [activeCat, setActiveCat] = useState<FlashcardCategory | "all" | "due" | "leech">("all");
   const [search, setSearch] = useState("");
   const [currentIdx, setCurrentIdx] = useState(0);
   const [flipped, setFlipped] = useState(false);
@@ -43,29 +43,32 @@ export default function Flashcards() {
   }, [sessionDone]);
 
   const globalStats = useMemo(() => getStats(flashcards.map((f) => f.id)), [sessionDone]);
+  const retention = useMemo(() => estimateRetention(flashcards.map((f) => f.id)), [sessionDone]);
+  const leechCount = useMemo(() => getLeechCards(flashcards.map((f) => f.id)).length, [sessionDone]);
 
   const filteredCats = categories.filter((c) =>
     !search || c.label.toLowerCase().includes(search.toLowerCase())
   );
 
-  const startReview = useCallback((cat: FlashcardCategory | "all" | "due") => {
+  const startReview = useCallback((cat: FlashcardCategory | "all" | "due" | "leech") => {
     let cardIds: string[];
     if (cat === "due") {
-      cardIds = getDueCards(flashcards.map((f) => f.id));
+      cardIds = flashcards.map((f) => f.id);
+    } else if (cat === "leech") {
+      cardIds = getLeechCards(flashcards.map((f) => f.id));
     } else if (cat === "all") {
       cardIds = flashcards.map((f) => f.id);
     } else {
       cardIds = flashcards.filter((f) => f.category === cat).map((f) => f.id);
     }
 
-    // Prioritize: due cards first, then new cards
-    const due = getDueCards(cardIds);
-    const newC = getNewCards(cardIds);
-    const ordered = [...due.filter((id) => !newC.includes(id)), ...newC];
-    const limited = ordered.slice(0, 20); // max 20 per session
+    // Sessão priorizada: leech/overdue primeiro, novos intercalados (1 a cada 4)
+    const limited = cat === "leech"
+      ? cardIds.slice(0, 20)
+      : getPrioritizedSession(cardIds, 20);
 
     if (limited.length === 0) {
-      toast.info("Nenhum card para revisar agora! 🎉");
+      toast.info(cat === "leech" ? "Nenhum card travado 🎉" : "Nenhum card para revisar agora! 🎉");
       return;
     }
 
@@ -132,10 +135,30 @@ export default function Flashcards() {
             <span className="text-xs text-muted-foreground font-mono">{currentIdx + 1}/{sessionCards.length}</span>
           </div>
 
-          {/* Category badge */}
-          <Badge className={cn("self-start text-[10px] px-2 py-0.5 mb-3", flashcardCategoryColors[currentCard.category])}>
-            {flashcardCategoryLabels[currentCard.category]}
-          </Badge>
+          {/* Category badge + leech */}
+          <div className="flex items-center gap-2 mb-3">
+            <Badge className={cn("text-[10px] px-2 py-0.5", flashcardCategoryColors[currentCard.category])}>
+              {flashcardCategoryLabels[currentCard.category]}
+            </Badge>
+            {(() => {
+              const p = getProgress()[currentCard.id];
+              if (p?.leech) {
+                return (
+                  <Badge variant="outline" className="text-[10px] px-2 py-0.5 border-red-500/40 text-red-500 gap-1">
+                    <AlertTriangle size={10} /> Travado
+                  </Badge>
+                );
+              }
+              if ((p?.lapses ?? 0) >= 2) {
+                return (
+                  <Badge variant="outline" className="text-[10px] px-2 py-0.5 border-orange-500/40 text-orange-500">
+                    {p.lapses} lapsos
+                  </Badge>
+                );
+              }
+              return null;
+            })()}
+          </div>
 
           {/* Card */}
           <div
@@ -229,10 +252,35 @@ export default function Flashcards() {
           </div>
         </div>
 
+        {/* Retenção estimada */}
+        <div className="bg-card rounded-2xl p-3 mb-3 flex items-center gap-3 shadow-sm">
+          <TrendingUp size={18} className="text-emerald-500 shrink-0" />
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-[11px] font-semibold">Retenção estimada</span>
+              <span className="text-[11px] font-mono text-emerald-500">{Math.round(retention * 100)}%</span>
+            </div>
+            <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+              <div className="h-full bg-emerald-500 rounded-full transition-all" style={{ width: `${retention * 100}%` }} />
+            </div>
+          </div>
+        </div>
+
         {/* Start all due */}
-        <Button className="w-full rounded-2xl h-12 gap-2 mb-4 text-sm font-semibold" onClick={() => startReview("due")}>
+        <Button className="w-full rounded-2xl h-12 gap-2 mb-2 text-sm font-semibold" onClick={() => startReview("due")}>
           <Brain size={18} /> Revisar cards pendentes ({globalStats.review + globalStats.new})
         </Button>
+
+        {/* Leech (cards travados) */}
+        {leechCount > 0 && (
+          <Button
+            variant="outline"
+            className="w-full rounded-2xl h-10 gap-2 mb-4 text-xs border-red-500/30 text-red-500 hover:bg-red-500/10"
+            onClick={() => startReview("leech")}
+          >
+            <AlertTriangle size={14} /> Cards travados (leech) — {leechCount}
+          </Button>
+        )}
 
         {/* Search */}
         <div className="relative mb-4">
