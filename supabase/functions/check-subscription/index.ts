@@ -35,6 +35,28 @@ serve(async (req) => {
     }
     const user = userData.user;
 
+    // 1) Check internal test-access override first (free Pro for test accounts)
+    try {
+      const { data: override } = await supabaseClient
+        .from("test_access_overrides")
+        .select("expires_at")
+        .eq("user_id", user.id)
+        .gt("expires_at", new Date().toISOString())
+        .maybeSingle();
+
+      if (override) {
+        return new Response(JSON.stringify({
+          subscribed: true,
+          product_id: "test_override",
+          subscription_end: override.expires_at,
+        }), {
+          headers: { ...corsHeaders, "Content-Type": "application/json" },
+        });
+      }
+    } catch (e) {
+      console.error("override check failed:", e);
+    }
+
     const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
       apiVersion: "2025-08-27.basil",
     });
