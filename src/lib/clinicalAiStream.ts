@@ -12,7 +12,7 @@ export async function streamClinicalAi({
   onError,
 }: {
   messages: Msg[];
-  mode?: "chat" | "structured" | "interactions";
+  mode?: "chat" | "structured" | "interactions" | "plantao" | "narrative";
   onDelta: (text: string) => void;
   onDone: () => void;
   onError?: (error: string) => void;
