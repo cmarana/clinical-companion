@@ -349,6 +349,14 @@ export default function AdminDashboard() {
             <BarChart3 size={16} />
             Custos de IA (uso mensal, margem, top usuários)
           </Button>
+          <Button
+            variant="outline"
+            className="w-full h-auto py-3 flex-col gap-1 text-xs"
+            onClick={() => navigate("/admin/test-users")}
+          >
+            <Shield size={16} />
+            Criar contas de teste Pro (acesso temporário)
+          </Button>
         </div>
       )}
 
