@@ -195,6 +195,41 @@ export default function StudyDashboard() {
     cards: { label: "Cards revisados", color: "hsl(var(--primary))" },
   };
 
+  // ====== Previsão de carga (próximos 7 dias) ======
+  const forecastData = useMemo(() => {
+    const progress = getProgress();
+    const now = Date.now();
+    const dayMs = 86400000;
+    const buckets: Array<{ day: string; cards: number; date: Date }> = [];
+    for (let i = 0; i < 7; i++) {
+      const d = new Date(now + i * dayMs);
+      buckets.push({ day: i === 0 ? "Hoje" : weekLabels[d.getDay()], cards: 0, date: d });
+    }
+    Object.values(progress).forEach((p: CardProgress) => {
+      if (!p.nextReview) return;
+      const diff = Math.floor((p.nextReview - now) / dayMs);
+      if (diff >= 0 && diff < 7) {
+        buckets[diff].cards += 1;
+      } else if (diff < 0 && p.nextReview <= now) {
+        // overdue conta no "Hoje"
+        buckets[0].cards += 1;
+      }
+    });
+    return buckets.map(({ day, cards }) => ({ day, cards }));
+  }, []);
+
+  const forecastConfig: ChartConfig = {
+    cards: { label: "Cards previstos", color: "hsl(var(--primary))" },
+  };
+
+  // ====== Retenção e leech ======
+  const retention = useMemo(() => estimateRetention(allCardIds), [allCardIds]);
+  const leechCount = useMemo(() => getLeechCards(allCardIds).length, [allCardIds]);
+  const peakDay = useMemo(() => {
+    const max = forecastData.reduce((acc, d) => (d.cards > acc.cards ? d : acc), forecastData[0]);
+    return max;
+  }, [forecastData]);
+
   return (
     <div className="min-h-screen bg-background pb-24">
       <TopBar title="Dashboard de Estudo" showBack />
