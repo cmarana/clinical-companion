@@ -67,6 +67,7 @@ const AdminFeedback = lazy(() => import("@/pages/AdminFeedback"));
 const AdminDashboard = lazy(() => import("@/pages/AdminDashboard"));
 const GovernanceDashboard = lazy(() => import("@/pages/GovernanceDashboard"));
 const AdminAiCosts = lazy(() => import("@/pages/AdminAiCosts"));
+const AdminTestUsers = lazy(() => import("@/pages/AdminTestUsers"));
 const UserAnalytics = lazy(() => import("@/pages/UserAnalytics"));
 const UpdatesFeed = lazy(() => import("@/pages/UpdatesFeed"));
 
