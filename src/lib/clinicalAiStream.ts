@@ -4,7 +4,13 @@ type Msg = { role: "user" | "assistant"; content: string };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/clinical-ai`;
 
-export type ClinicalAiErrorCode = "credits" | "rate_limit" | "auth" | "server" | "unknown";
+export type ClinicalAiErrorCode =
+  | "credits"
+  | "rate_limit"
+  | "quota_exceeded"
+  | "auth"
+  | "server"
+  | "unknown";
 
 export async function streamClinicalAi({
   messages,
@@ -33,13 +39,19 @@ export async function streamClinicalAi({
   });
 
   if (!resp.ok) {
-    const errorData = await resp.json().catch(() => ({} as { error?: string }));
+    const errorData = await resp
+      .json()
+      .catch(() => ({} as { error?: string; code?: string }));
     let friendly: string;
     let code: ClinicalAiErrorCode = "unknown";
     if (resp.status === 402) {
       friendly =
         "A IA clínica está temporariamente sem créditos. Adicione créditos no workspace para continuar.";
       code = "credits";
+    } else if (resp.status === 429 && errorData.code === "quota_exceeded") {
+      // Mensagem do backend já vem amigável (Free=3 ou Pro=200)
+      friendly = errorData.error || "Limite mensal de consultas IA atingido.";
+      code = "quota_exceeded";
     } else if (resp.status === 429) {
       friendly = "Muitas requisições em sequência. Aguarde alguns segundos e tente de novo.";
       code = "rate_limit";
