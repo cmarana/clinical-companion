@@ -1,4 +1,8 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { verifyAuthAndQuota, bumpAiUsage, hashPrompt, lookupCache, storeCache } from "../_shared/aiQuota.ts";
+
+const FEATURE = "prescription-check";
+const MODEL = "google/gemini-2.5-flash";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -9,6 +13,9 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
+    const ctx = await verifyAuthAndQuota(req, FEATURE);
+    if (ctx instanceof Response) return ctx;
+
     const { prescription, allergies, patient_info } = await req.json();
     if (!prescription) {
       return new Response(JSON.stringify({ error: "prescription is required" }), {
@@ -32,48 +39,26 @@ serve(async (req) => {
 ### 2. DOSES EXCESSIVAS OU INADEQUADAS
 - Verifique se as doses estão dentro da faixa terapêutica
 - Considere informações do paciente (peso, idade, função renal se informados)
-- Alerte sobre doses subterapêuticas ou supraterapêuticas
 
 ### 3. ALERGIAS CRUZADAS
-- Se alergias foram informadas, verifique reações cruzadas com TODOS os medicamentos
-- Ex: alergia a penicilina → risco com cefalosporinas
-- Ex: alergia a AINEs → risco com outros AINEs
-- Ex: alergia a sulfa → risco com sulfoniluréias, tiazídicos
+- Se alergias foram informadas, verifique reações cruzadas
 
-### 4. INCOMPATIBILIDADES EV (INTRAVENOSAS)
-- Se houver medicamentos EV na prescrição, verifique compatibilidade em Y
-- Alerte sobre precipitações, mudanças de pH, inativações
+### 4. INCOMPATIBILIDADES EV
+- Compatibilidade em Y para medicamentos EV
 
 ### 5. DUPLICIDADES TERAPÊUTICAS
-- Identifique se há dois ou mais fármacos da mesma classe sem justificativa
-- Ex: dois AINEs, dois IBPs, dois benzodiazepínicos
 
 ### 6. OMISSÕES IMPORTANTES
-- Sugira proteções que podem estar faltando (ex: IBP com corticoide + AINE, antiemético com opioide)
 
-## Formato de resposta (em Markdown):
-
+## Formato (Markdown):
 ### 📊 Resumo da Análise
-- Total de medicamentos: X
-- Alertas graves: X | Moderados: X | Leves: X
-
 ### 🔴 Alertas Graves
-(listar cada um com medicamentos envolvidos, mecanismo e conduta)
-
 ### 🟡 Alertas Moderados
-(listar cada um)
-
 ### 🟢 Alertas Leves
-(listar cada um)
-
 ### 💊 Sugestões de Otimização
-(ajustes de dose, horário, proteções faltando)
-
 ### ✅ Medicamentos sem alertas
-(listar os que não apresentaram problemas)
 
-Se não houver alertas em alguma categoria, escreva "Nenhum alerta nesta categoria."
-Seja preciso e baseado em evidências. Cite referências quando possível.`;
+Seja preciso e baseado em evidências.`;
 
     const userMessage = [
       "Prescrição completa para análise:",
@@ -82,14 +67,25 @@ Seja preciso e baseado em evidências. Cite referências quando possível.`;
       patient_info ? `\nDados do paciente: ${patient_info}` : "",
     ].filter(Boolean).join("\n");
 
+    // Cache lookup (global)
+    const promptHash = await hashPrompt(`${systemPrompt}::${userMessage}`);
+    const cached = await lookupCache(ctx.serviceClient, promptHash, FEATURE, MODEL, "default");
+    if (cached.hit && cached.response) {
+      const stream = new ReadableStream({
+        start(controller) {
+          const chunk = `data: ${JSON.stringify({ choices: [{ delta: { content: cached.response } }] })}\n\ndata: [DONE]\n\n`;
+          controller.enqueue(new TextEncoder().encode(chunk));
+          controller.close();
+        },
+      });
+      return new Response(stream, { headers: { ...corsHeaders, "Content-Type": "text/event-stream" } });
+    }
+
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
-      headers: {
-        Authorization: `Bearer ${LOVABLE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
+      headers: { Authorization: `Bearer ${LOVABLE_API_KEY}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
+        model: MODEL,
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: userMessage },
@@ -99,24 +95,47 @@ Seja preciso e baseado em evidências. Cite referências quando possível.`;
     });
 
     if (!response.ok) {
-      const status = response.status;
-      if (status === 429) {
-        return new Response(JSON.stringify({ error: "Limite de requisições excedido. Tente novamente em instantes." }), {
+      if (response.status === 429) {
+        return new Response(JSON.stringify({ error: "Limite de requisições excedido.", code: "rate_limit" }), {
           status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
-      if (status === 402) {
-        return new Response(JSON.stringify({ error: "Créditos de IA esgotados." }), {
+      if (response.status === 402) {
+        return new Response(JSON.stringify({ error: "Créditos de IA esgotados.", code: "credits" }), {
           status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" },
         });
       }
-      console.error("AI gateway error:", status);
       return new Response(JSON.stringify({ error: "Erro interno do servidor" }), {
         status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    return new Response(response.body, {
+    // Intercepta stream para cachear + bumpar quota
+    let fullResponse = "";
+    const transform = new TransformStream({
+      transform(chunk, controller) {
+        const text = new TextDecoder().decode(chunk);
+        const lines = text.split("\n");
+        for (const line of lines) {
+          if (line.startsWith("data: ") && !line.includes("[DONE]")) {
+            try {
+              const json = JSON.parse(line.slice(6));
+              const delta = json.choices?.[0]?.delta?.content;
+              if (delta) fullResponse += delta;
+            } catch { /* ignore */ }
+          }
+        }
+        controller.enqueue(chunk);
+      },
+      async flush() {
+        if (fullResponse.length > 0) {
+          await bumpAiUsage(ctx.serviceClient, ctx.userId, FEATURE);
+          await storeCache(ctx.serviceClient, promptHash, FEATURE, MODEL, "default", fullResponse);
+        }
+      },
+    });
+
+    return new Response(response.body!.pipeThrough(transform), {
       headers: { ...corsHeaders, "Content-Type": "text/event-stream" },
     });
   } catch (e) {
