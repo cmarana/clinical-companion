@@ -4,8 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { flashcards, flashcardCategoryLabels, flashcardCategoryColors, type FlashcardCategory } from "@/data/flashcardsData";
-import { reviewCard, getDueCards, getNewCards, getStats, getProgress, syncProgressFromCloud, type Rating } from "@/lib/spacedRepetition";
-import { Brain, RotateCcw, Search, ChevronRight, Zap, BookOpen, Trophy, Clock } from "lucide-react";
+import { reviewCard, getDueCards, getNewCards, getStats, getProgress, syncProgressFromCloud, getPrioritizedSession, getLeechCards, estimateRetention, type Rating } from "@/lib/spacedRepetition";
+import { Brain, RotateCcw, Search, ChevronRight, Zap, BookOpen, Trophy, Clock, AlertTriangle, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { useAuth } from "@/contexts/AuthContext";
@@ -17,7 +17,7 @@ type View = "decks" | "review";
 export default function Flashcards() {
   const { user } = useAuth();
   const [view, setView] = useState<View>("decks");
-  const [activeCat, setActiveCat] = useState<FlashcardCategory | "all" | "due">("all");
+  const [activeCat, setActiveCat] = useState<FlashcardCategory | "all" | "due" | "leech">("all");
   const [search, setSearch] = useState("");
   const [currentIdx, setCurrentIdx] = useState(0);
   const [flipped, setFlipped] = useState(false);
@@ -43,29 +43,32 @@ export default function Flashcards() {
   }, [sessionDone]);
 
   const globalStats = useMemo(() => getStats(flashcards.map((f) => f.id)), [sessionDone]);
+  const retention = useMemo(() => estimateRetention(flashcards.map((f) => f.id)), [sessionDone]);
+  const leechCount = useMemo(() => getLeechCards(flashcards.map((f) => f.id)).length, [sessionDone]);
 
   const filteredCats = categories.filter((c) =>
     !search || c.label.toLowerCase().includes(search.toLowerCase())
   );
 
-  const startReview = useCallback((cat: FlashcardCategory | "all" | "due") => {
+  const startReview = useCallback((cat: FlashcardCategory | "all" | "due" | "leech") => {
     let cardIds: string[];
     if (cat === "due") {
-      cardIds = getDueCards(flashcards.map((f) => f.id));
+      cardIds = flashcards.map((f) => f.id);
+    } else if (cat === "leech") {
+      cardIds = getLeechCards(flashcards.map((f) => f.id));
     } else if (cat === "all") {
       cardIds = flashcards.map((f) => f.id);
     } else {
       cardIds = flashcards.filter((f) => f.category === cat).map((f) => f.id);
     }
 
-    // Prioritize: due cards first, then new cards
-    const due = getDueCards(cardIds);
-    const newC = getNewCards(cardIds);
-    const ordered = [...due.filter((id) => !newC.includes(id)), ...newC];
-    const limited = ordered.slice(0, 20); // max 20 per session
+    // Sessão priorizada: leech/overdue primeiro, novos intercalados (1 a cada 4)
+    const limited = cat === "leech"
+      ? cardIds.slice(0, 20)
+      : getPrioritizedSession(cardIds, 20);
 
     if (limited.length === 0) {
-      toast.info("Nenhum card para revisar agora! 🎉");
+      toast.info(cat === "leech" ? "Nenhum card travado 🎉" : "Nenhum card para revisar agora! 🎉");
       return;
     }
 
