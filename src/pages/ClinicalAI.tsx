@@ -199,6 +199,28 @@ function ClinicalAIContent() {
     setExams(""); setMedications(""); setAdditionalInfo("");
   };
 
+  const handlePlantaoSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!plantaoQuery.trim()) {
+      toast.error("Descreva a situação em 1-2 linhas");
+      return;
+    }
+    const text = `[MODO PLANTÃO — RESPOSTA DIRETA]\n\nSituação: ${plantaoQuery}`;
+    sendMessage(text, "plantao");
+    setPlantaoQuery("");
+  };
+
+  const handleNarrativeSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (narrative.trim().length < 30) {
+      toast.error("Cole o relato completo do paciente (mínimo 30 caracteres)");
+      return;
+    }
+    const text = `[RELATO LIVRE — ESTRUTURE E ANALISE]\n\n${narrative}`;
+    sendMessage(text, "narrative");
+    setNarrative("");
+  };
+
   const clearChat = () => { setMessages([]); };
 
   return (
