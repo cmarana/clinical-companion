@@ -341,6 +341,14 @@ export default function AdminDashboard() {
             <Shield size={16} />
             Governança Clínica (KPIs, Checklists, EPM, Curadoria, TTP)
           </Button>
+          <Button
+            variant="default"
+            className="w-full h-auto py-3 flex-col gap-1 text-xs bg-primary hover:bg-primary/90"
+            onClick={() => navigate("/admin/ai-costs")}
+          >
+            <BarChart3 size={16} />
+            Custos de IA (uso mensal, margem, top usuários)
+          </Button>
         </div>
       )}
 
