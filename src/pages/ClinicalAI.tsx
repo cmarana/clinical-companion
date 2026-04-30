@@ -31,7 +31,9 @@ function ClinicalAIContent() {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [mode, setMode] = useState<"chat" | "structured">("chat");
+  const [mode, setMode] = useState<"chat" | "structured" | "plantao" | "narrative">("chat");
+  const [narrative, setNarrative] = useState("");
+  const [plantaoQuery, setPlantaoQuery] = useState("");
   const [patientCtx, setPatientCtx] = useState<PatientContext>({});
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
