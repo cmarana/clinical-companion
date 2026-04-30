@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, useCallback } from "react";
+import { createContext, useContext, useState, useEffect, useCallback, useMemo } from "react";
 import { safeLocalStorage } from "@/lib/safeStorage";
 import { startReminderScheduler, stopReminderScheduler } from "@/lib/pushNotifications";
 
@@ -260,10 +260,15 @@ export function NotificationsProvider({ children }: { children: React.ReactNode 
     save([]);
   }, [save]);
 
-  const unreadCount = notifications.filter(n => !n.read).length;
+  const unreadCount = useMemo(() => notifications.filter(n => !n.read).length, [notifications]);
+
+  const value = useMemo(
+    () => ({ notifications, unreadCount, markAsRead, markAllAsRead, dismissNotification, clearAll }),
+    [notifications, unreadCount, markAsRead, markAllAsRead, dismissNotification, clearAll]
+  );
 
   return (
-    <NotificationsContext.Provider value={{ notifications, unreadCount, markAsRead, markAllAsRead, dismissNotification, clearAll }}>
+    <NotificationsContext.Provider value={value}>
       {children}
     </NotificationsContext.Provider>
   );

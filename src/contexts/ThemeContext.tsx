@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState, type ReactNode } from "react";
+import { createContext, useContext, useEffect, useState, useMemo, type ReactNode } from "react";
 import { safeLocalStorage } from "@/lib/safeStorage";
 
 type Theme = "light" | "dark" | "oled";
@@ -82,8 +82,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     label: fontSizeLabels[k],
   }));
 
+  const value = useMemo(
+    () => ({ theme, toggleTheme, setTheme, themeLabel: themeLabels[theme], fontSize, setFontSize, fontSizeOptions }),
+    [theme, fontSize]
+  );
+
   return (
-    <ThemeContext.Provider value={{ theme, toggleTheme, setTheme, themeLabel: themeLabels[theme], fontSize, setFontSize, fontSizeOptions }}>
+    <ThemeContext.Provider value={value}>
       {children}
     </ThemeContext.Provider>
   );

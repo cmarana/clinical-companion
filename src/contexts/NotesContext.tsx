@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, useEffect, useCallback, useRef, type ReactNode } from "react";
+import { createContext, useContext, useState, useEffect, useCallback, useMemo, useRef, type ReactNode } from "react";
 import type { Note, NoteCategory } from "@/types/medical";
 import { safeLocalStorage } from "@/lib/safeStorage";
 import { supabase } from "@/integrations/supabase/client";
@@ -145,8 +145,13 @@ export function NotesProvider({ children }: { children: ReactNode }) {
     }
   }, [notes, user]);
 
+  const value = useMemo(
+    () => ({ notes, addNote, updateNote, deleteNote, duplicateNote, syncing }),
+    [notes, addNote, updateNote, deleteNote, duplicateNote, syncing]
+  );
+
   return (
-    <NotesContext.Provider value={{ notes, addNote, updateNote, deleteNote, duplicateNote, syncing }}>
+    <NotesContext.Provider value={value}>
       {children}
     </NotesContext.Provider>
   );
