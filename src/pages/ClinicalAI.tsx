@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import ClinicalResponseCards from "@/components/ClinicalResponseCards";
 import { motion } from "framer-motion";
 import OfflineBadge from "@/components/OfflineBadge";
+import { AiUsageBadge } from "@/components/AiUsageBadge";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -234,6 +235,9 @@ function ClinicalAIContent() {
         <div className="flex-1 min-w-0">
           <h1 className="font-heading font-bold text-sm">IA Clínica</h1>
           <p className="text-[10px] text-muted-foreground truncate">Diagnóstico • Conduta • Prescrição • Interações</p>
+        </div>
+        <div className="hidden sm:block">
+          <AiUsageBadge feature="clinical-ai" />
         </div>
         <button onClick={clearChat} className="p-1.5 rounded-md hover:bg-accent text-muted-foreground" title="Nova consulta">
           <RotateCcw size={16} />
