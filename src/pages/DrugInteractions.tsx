@@ -19,6 +19,14 @@ import OfflineBadge from "@/components/OfflineBadge";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
+interface PatientCtx {
+  age?: string;
+  weight?: string;
+  creatinine?: string;
+  allergies?: string;
+  conditions?: string;
+}
+
 function DrugInteractionsContent() {
   const navigate = useNavigate();
   const [drugs, setDrugs] = useState<string[]>(["", ""]);
@@ -27,6 +35,8 @@ function DrugInteractionsContent() {
   const [aiResult, setAiResult] = useState("");
   const [aiLoading, setAiLoading] = useState(false);
   const [showAi, setShowAi] = useState(false);
+  const [patient, setPatient] = useState<PatientCtx>({});
+  const [showPatientPanel, setShowPatientPanel] = useState(false);
   const resultRef = useRef<HTMLDivElement>(null);
 
   const filledDrugs = drugs.filter(d => d.trim().length >= 2);
