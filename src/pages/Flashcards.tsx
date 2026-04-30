@@ -135,10 +135,30 @@ export default function Flashcards() {
             <span className="text-xs text-muted-foreground font-mono">{currentIdx + 1}/{sessionCards.length}</span>
           </div>
 
-          {/* Category badge */}
-          <Badge className={cn("self-start text-[10px] px-2 py-0.5 mb-3", flashcardCategoryColors[currentCard.category])}>
-            {flashcardCategoryLabels[currentCard.category]}
-          </Badge>
+          {/* Category badge + leech */}
+          <div className="flex items-center gap-2 mb-3">
+            <Badge className={cn("text-[10px] px-2 py-0.5", flashcardCategoryColors[currentCard.category])}>
+              {flashcardCategoryLabels[currentCard.category]}
+            </Badge>
+            {(() => {
+              const p = getProgress()[currentCard.id];
+              if (p?.leech) {
+                return (
+                  <Badge variant="outline" className="text-[10px] px-2 py-0.5 border-red-500/40 text-red-500 gap-1">
+                    <AlertTriangle size={10} /> Travado
+                  </Badge>
+                );
+              }
+              if ((p?.lapses ?? 0) >= 2) {
+                return (
+                  <Badge variant="outline" className="text-[10px] px-2 py-0.5 border-orange-500/40 text-orange-500">
+                    {p.lapses} lapsos
+                  </Badge>
+                );
+              }
+              return null;
+            })()}
+          </div>
 
           {/* Card */}
           <div
