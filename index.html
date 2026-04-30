@@ -29,7 +29,11 @@
     <link rel="apple-touch-icon" href="/icons/icon-192.png" />
     <link rel="manifest" href="/manifest.json" />
 
-    <!-- JSON-LD Structured Data -->
+    <!-- Performance hints -->
+    <link rel="preconnect" href="https://xwmqqwqynyhccmyqtxje.supabase.co" crossorigin />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+
+    <!-- JSON-LD: MobileApplication -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -54,6 +58,51 @@
         "name": "PULSO"
       },
       "inLanguage": "pt-BR"
+    }
+    </script>
+
+    <!-- JSON-LD: Organization -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "PULSO Emergência",
+      "url": "https://pulsoemergencia.com.br",
+      "logo": "https://pulsoemergencia.com.br/icons/icon-512.png"
+    }
+    </script>
+
+    <!-- JSON-LD: FAQ -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "O PULSO substitui o julgamento clínico?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Não. O PULSO é uma ferramenta de apoio à decisão baseada em diretrizes brasileiras (SBC, SBP, Ministério da Saúde) e internacionais. O julgamento clínico do médico assistente é sempre soberano."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quais protocolos estão incluídos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Mais de 1.000 protocolos clínicos cobrindo emergência, UTI, pediatria, obstetrícia, cardiologia, neurologia e infectologia, baseados em PCDT/SUS, SBC, SBP e diretrizes internacionais."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Funciona offline durante o plantão?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Após a primeira carga, protocolos, calculadoras e bulário ficam disponíveis offline através do modo PWA."
+          }
+        }
+      ]
     }
     </script>
 

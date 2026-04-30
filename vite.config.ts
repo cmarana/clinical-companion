@@ -33,31 +33,39 @@ export default defineConfig(({ mode }) => {
     build: {
       rollupOptions: {
         output: {
-          manualChunks: {
-            "vendor-react": ["react", "react-dom", "react-router-dom"],
-            "vendor-supabase": ["@supabase/supabase-js"],
-            "vendor-ui": ["framer-motion"],
-            "vendor-charts": ["recharts"],
-            "data-protocols-legacy": [
-              "./src/data/protocols.ts",
-              "./src/data/emergency/index.ts",
-            ],
-            "data-medications-core": [
-              "./src/data/medications.ts",
-            ],
-            "data-reference": [
-              "./src/data/cidData.ts",
-              "./src/data/labValues.ts",
-              "./src/data/symptomGuides.ts",
-            ],
-            "data-interactions": [
-              "./src/data/drugInteractionPairs.ts",
-              "./src/data/drugInteractionsDB.ts",
-            ],
-            "data-prescriptions": [
-              "./src/data/prescriptions/index.ts",
-              "./src/data/prescriptions/types.ts",
-            ],
+          manualChunks: (id) => {
+            // Vendor splits — granular for better caching
+            if (id.includes("node_modules")) {
+              if (id.includes("react-router")) return "vendor-router";
+              if (id.includes("react-dom") || id.includes("/react/")) return "vendor-react";
+              if (id.includes("@supabase")) return "vendor-supabase";
+              if (id.includes("framer-motion")) return "vendor-motion";
+              if (id.includes("recharts") || id.includes("d3-")) return "vendor-charts";
+              if (id.includes("@radix-ui")) return "vendor-radix";
+              if (id.includes("lucide-react")) return "vendor-icons";
+              if (id.includes("@tanstack")) return "vendor-query";
+              if (id.includes("zod") || id.includes("react-hook-form")) return "vendor-forms";
+              if (id.includes("date-fns")) return "vendor-date";
+              return "vendor";
+            }
+            // Data splits — keep heavy clinical content out of the main chunk
+            if (id.includes("/src/data/full-protocols/")) return "data-full-protocols";
+            if (id.includes("/src/data/prescriptions/")) return "data-prescriptions";
+            if (
+              id.includes("/src/data/drugInteractionPairs") ||
+              id.includes("/src/data/drugInteractionsDB")
+            ) return "data-interactions";
+            if (
+              id.includes("/src/data/cidData") ||
+              id.includes("/src/data/labValues") ||
+              id.includes("/src/data/symptomGuides")
+            ) return "data-reference";
+            if (id.includes("/src/data/medications")) return "data-medications";
+            if (
+              id.includes("/src/data/protocols.ts") ||
+              id.includes("/src/data/emergency/")
+            ) return "data-protocols-legacy";
+            if (id.includes("/src/data/flashcards")) return "data-flashcards";
           },
         },
       },
