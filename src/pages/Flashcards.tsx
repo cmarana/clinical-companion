@@ -4,7 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { flashcards, flashcardCategoryLabels, flashcardCategoryColors, type FlashcardCategory } from "@/data/flashcardsData";
-import { reviewCard, getDueCards, getNewCards, getStats, getProgress, syncProgressFromCloud, getPrioritizedSession, getLeechCards, estimateRetention, type Rating } from "@/lib/spacedRepetition";
+import { reviewCard, getStats, getProgress, syncProgressFromCloud, getPrioritizedSession, getLeechCards, estimateRetention, type Rating } from "@/lib/spacedRepetition";
 import { Brain, RotateCcw, Search, ChevronRight, Zap, BookOpen, Trophy, Clock, AlertTriangle, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
