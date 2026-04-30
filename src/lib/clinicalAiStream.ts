@@ -31,14 +31,27 @@ export async function streamClinicalAi({
   });
 
   if (!resp.ok) {
-    const errorData = await resp.json().catch(() => ({ error: "Erro de conexão" }));
-    onError?.(errorData.error || `Erro ${resp.status}`);
+    const errorData = await resp.json().catch(() => ({} as { error?: string }));
+    let friendly: string;
+    if (resp.status === 402) {
+      friendly =
+        "A IA clínica está temporariamente sem créditos. O administrador já foi notificado — tente novamente em instantes.";
+    } else if (resp.status === 429) {
+      friendly = "Muitas requisições em sequência. Aguarde alguns segundos e tente de novo.";
+    } else if (resp.status === 401 || resp.status === 403) {
+      friendly = "Sessão expirada. Faça login novamente para usar a IA clínica.";
+    } else if (resp.status >= 500) {
+      friendly = "A IA clínica está instável no momento. Tente novamente em instantes.";
+    } else {
+      friendly = errorData.error || `Erro ${resp.status} ao consultar a IA.`;
+    }
+    onError?.(friendly);
     onDone();
     return;
   }
 
   if (!resp.body) {
-    onError?.("Resposta vazia do servidor");
+    onError?.("Resposta vazia do servidor. Tente novamente.");
     onDone();
     return;
   }
