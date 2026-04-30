@@ -66,6 +66,7 @@ const AdminAnalytics = lazy(() => import("@/pages/AdminAnalytics"));
 const AdminFeedback = lazy(() => import("@/pages/AdminFeedback"));
 const AdminDashboard = lazy(() => import("@/pages/AdminDashboard"));
 const GovernanceDashboard = lazy(() => import("@/pages/GovernanceDashboard"));
+const AdminAiCosts = lazy(() => import("@/pages/AdminAiCosts"));
 const UserAnalytics = lazy(() => import("@/pages/UserAnalytics"));
 const UpdatesFeed = lazy(() => import("@/pages/UpdatesFeed"));
 
@@ -189,6 +190,7 @@ const AppRoutes = () => (
           <Route path="/admin/users" element={<UserAnalytics />} />
           <Route path="/admin" element={<AdminDashboard />} />
           <Route path="/admin/governance" element={<GovernanceDashboard />} />
+          <Route path="/admin/ai-costs" element={<AdminAiCosts />} />
         <Route path="/updates" element={<UpdatesFeed />} />
         
         <Route path="/referral" element={<Referral />} />

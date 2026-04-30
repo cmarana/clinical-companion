@@ -4,7 +4,7 @@
 import { createClient, SupabaseClient } from "https://esm.sh/@supabase/supabase-js@2.49.4";
 
 export const FREE_MONTHLY_QUOTA = 3;
-export const PRO_MONTHLY_QUOTA = 200;
+export const PRO_MONTHLY_QUOTA = 50;
 
 export type UserTier = "free" | "pro" | "admin";
 
@@ -126,7 +126,7 @@ export async function verifyAuthAndQuota(
       JSON.stringify({
         error:
           tier === "free"
-            ? `Limite mensal grátis atingido (${FREE_MONTHLY_QUOTA} consultas). Assine o PULSO Pro para liberar 200 consultas/mês.`
+            ? `Limite mensal grátis atingido (${FREE_MONTHLY_QUOTA} consultas). Assine o PULSO Pro para liberar ${PRO_MONTHLY_QUOTA} consultas/mês.`
             : `Limite mensal Pro atingido (${PRO_MONTHLY_QUOTA} consultas). Renova no dia 1 do próximo mês.`,
         code: "quota_exceeded",
         tier,

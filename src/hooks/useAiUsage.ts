@@ -12,7 +12,7 @@ export interface AiUsageStatus {
 
 /**
  * Busca uso atual de IA do usuário (consultas no mês corrente).
- * Free=3, Pro=200, Admin=ilimitado.
+ * Free=3, Pro=50, Admin=ilimitado.
  */
 export function useAiUsage(feature: string = "clinical-ai") {
   const { user } = useAuth();

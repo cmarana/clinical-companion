@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 /**
  * Badge compacto mostrando uso mensal de IA.
  * Free: "2/3 grátis" → link para /pricing
- * Pro: "47/200 este mês"
+ * Pro: "47/50 este mês"
  * Admin: "∞"
  */
 export function AiUsageBadge({ feature = "clinical-ai" }: { feature?: string }) {
