@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { useTheme } from "@/contexts/ThemeContext";
 import { hapticLight } from "@/lib/haptics";
+import MyProgressSection from "@/components/MyProgressSection";
 
 const SPECIALTIES_BY_AREA: Record<string, string[]> = {
   "Medicina": [
