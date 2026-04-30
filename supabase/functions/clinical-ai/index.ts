@@ -3905,91 +3905,24 @@ Se K ≥ 5,5 detectado:
 
 DISCLAIMER: Apoio à decisão clínica — responsabilidade final é do médico.`;
 
-// ─── Auth + Premium helper ────────────────────────────────────────
-async function verifyAuthAndPremium(req: Request): Promise<{ userId: string } | Response> {
-  const { createClient } = await import("https://esm.sh/@supabase/supabase-js@2.49.4");
-
-  const authHeader = req.headers.get("Authorization");
-  if (!authHeader?.startsWith("Bearer ")) {
-    return new Response(JSON.stringify({ error: "Autenticação necessária" }), {
-      status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
-  }
-
-  const supabase = createClient(
-    Deno.env.get("SUPABASE_URL")!,
-    Deno.env.get("SUPABASE_ANON_KEY")!,
-    { global: { headers: { Authorization: authHeader } } }
-  );
-
-  const token = authHeader.replace("Bearer ", "");
-  const { data, error } = await supabase.auth.getClaims(token);
-  if (error || !data?.claims?.sub) {
-    return new Response(JSON.stringify({ error: "Token inválido" }), {
-      status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
-  }
-
-  const userId = data.claims.sub as string;
-
-  // Check premium: Stripe subscription or active PIX purchase
-  const { default: Stripe } = await import("https://esm.sh/stripe@18.5.0");
-  const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", { apiVersion: "2025-08-27.basil" });
-
-  const serviceClient = createClient(
-    Deno.env.get("SUPABASE_URL")!,
-    Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
-    { auth: { persistSession: false } }
-  );
-
-  // Get user email for Stripe lookup
-  const { data: userData } = await serviceClient.auth.admin.getUserById(userId);
-  const email = userData?.user?.email;
-
-  let isPremium = false;
-
-  // Check Stripe subscription
-  if (email) {
-    try {
-      const customers = await stripe.customers.list({ email, limit: 1 });
-      if (customers.data.length > 0) {
-        const subs = await stripe.subscriptions.list({ customer: customers.data[0].id, status: "active", limit: 1 });
-        isPremium = subs.data.length > 0;
-      }
-    } catch (e) {
-      console.error("Stripe check error:", e);
-    }
-  }
-
-  // Check PIX purchase if no Stripe sub
-  if (!isPremium) {
-    const { data: pixData } = await serviceClient
-      .from("pix_purchases")
-      .select("id")
-      .eq("user_id", userId)
-      .eq("status", "active")
-      .gte("access_end", new Date().toISOString())
-      .limit(1);
-    isPremium = !!(pixData && pixData.length > 0);
-  }
-
-  if (!isPremium) {
-    return new Response(JSON.stringify({ error: "Recurso exclusivo para assinantes Premium" }), {
-      status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
-  }
-
-  return { userId };
-}
+// ─── Auth + Quota (Free=3, Pro=200, Admin=∞) — ver _shared/aiQuota.ts ───
+import {
+  verifyAuthAndQuota,
+  bumpAiUsage,
+  hashPrompt,
+  lookupCache,
+  storeCache,
+} from "../_shared/aiQuota.ts";
 
 // ─── Serve ───────────────────────────────────────────────────────
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
-    // Auth + Premium verification
-    const authResult = await verifyAuthAndPremium(req.clone());
+    // Auth + Quota verification
+    const authResult = await verifyAuthAndQuota(req.clone(), "clinical-ai");
     if (authResult instanceof Response) return authResult;
+    const { userId, serviceClient, tier, used, limit } = authResult;
 
     const body = await req.json();
     const mode = body?.mode;
@@ -4141,6 +4074,31 @@ Após estruturar, prossiga com a análise no formato padrão de 12 seções.
 Use os dados estruturados acima para calcular doses, ajustes, alertas.` });
     }
 
+    // ─── Modelo otimizado por modo (escala custo-eficiente) ───
+    // - plantao/structured/interactions: respostas curtas → flash-lite (~5x mais barato)
+    // - narrative/default: respostas longas com nuance → flash
+    const model =
+      mode === "plantao" || mode === "interactions" || mode === "structured"
+        ? "google/gemini-2.5-flash-lite"
+        : "google/gemini-2.5-flash";
+
+    // ─── Cache lookup global (somente se não for stream-dependente extremo) ───
+    const lastUserMsg = messages[messages.length - 1]?.content ?? "";
+    const cacheKey = await hashPrompt(`${model}|${mode || "default"}|${lastUserMsg}`);
+    const cached = await lookupCache(serviceClient, cacheKey, "clinical-ai", model, mode || "default");
+
+    if (cached.hit && cached.response) {
+      // Devolve resposta cacheada como SSE chunk único + [DONE]
+      console.log(`[cache HIT] user=${userId} mode=${mode}`);
+      const sseBody =
+        `data: ${JSON.stringify({ choices: [{ delta: { content: cached.response } }] })}\n\n` +
+        `data: [DONE]\n\n`;
+      // Cache hit não consome quota (usuário não paga por resposta gravada)
+      return new Response(sseBody, {
+        headers: { ...corsHeaders, "Content-Type": "text/event-stream", "X-Cache": "HIT" },
+      });
+    }
+
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
       headers: {
@@ -4148,7 +4106,7 @@ Use os dados estruturados acima para calcular doses, ajustes, alertas.` });
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
+        model,
         messages: [...systemMessages, ...messages],
         stream: true,
       }),
@@ -4172,8 +4130,45 @@ Use os dados estruturados acima para calcular doses, ajustes, alertas.` });
       });
     }
 
-    return new Response(response.body, {
-      headers: { ...corsHeaders, "Content-Type": "text/event-stream" },
+    // ─── Intercepta stream para: 1) gravar cache 2) bump quota apenas no fim ───
+    let fullText = "";
+    const transform = new TransformStream({
+      transform(chunk, controller) {
+        try {
+          const text = new TextDecoder().decode(chunk);
+          // extrai content de cada chunk SSE para reconstruir resposta completa
+          for (const line of text.split("\n")) {
+            if (!line.startsWith("data: ")) continue;
+            const payload = line.slice(6).trim();
+            if (payload === "[DONE]") continue;
+            try {
+              const parsed = JSON.parse(payload);
+              const c = parsed?.choices?.[0]?.delta?.content;
+              if (typeof c === "string") fullText += c;
+            } catch { /* chunk parcial — ok */ }
+          }
+        } catch { /* nunca quebra o stream */ }
+        controller.enqueue(chunk);
+      },
+      async flush() {
+        // Stream terminou com sucesso → conta uso + grava cache (best-effort)
+        if (fullText.length > 50) {
+          await Promise.allSettled([
+            bumpAiUsage(serviceClient, userId, "clinical-ai"),
+            storeCache(serviceClient, cacheKey, "clinical-ai", model, mode || "default", fullText),
+          ]);
+          console.log(`[ai-quota] user=${userId} tier=${tier} used=${used + 1}/${limit}`);
+        }
+      },
+    });
+
+    return new Response(response.body!.pipeThrough(transform), {
+      headers: {
+        ...corsHeaders,
+        "Content-Type": "text/event-stream",
+        "X-Cache": "MISS",
+        "X-AI-Model": model,
+      },
     });
   } catch (e) {
     console.error("clinical-ai error:", e);

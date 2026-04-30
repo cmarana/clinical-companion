@@ -14,6 +14,7 @@ const FRIENDLY_MESSAGES: Partial<Record<ClinicalAiErrorCode, string>> = {
   server: "A IA clínica está temporariamente indisponível. Tente novamente em instantes.",
   rate_limit: "Muitas solicitações. Aguarde alguns segundos e tente novamente.",
   auth: "Sua sessão expirou. Faça login novamente.",
+  // quota_exceeded usa a mensagem do backend (já vem amigável e específica)
 };
 
 let cachedIsAdmin: boolean | null = null;
@@ -47,6 +48,20 @@ async function checkIsAdmin(): Promise<boolean> {
  */
 export async function showClinicalAiError(message: string, code?: ClinicalAiErrorCode) {
   const isAdmin = await checkIsAdmin();
+
+  // Quota exceeded: TODOS veem (é informação útil, não técnica). Free → upgrade Pro.
+  if (code === "quota_exceeded") {
+    toast.error(message, {
+      duration: 9000,
+      action: {
+        label: "Ver planos",
+        onClick: () => {
+          window.location.href = "/pricing";
+        },
+      },
+    });
+    return;
+  }
 
   if (!isAdmin) {
     const friendly = (code && FRIENDLY_MESSAGES[code]) || "Algo deu errado. Tente novamente.";
