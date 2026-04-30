@@ -232,10 +232,35 @@ export default function Flashcards() {
           </div>
         </div>
 
+        {/* Retenção estimada */}
+        <div className="bg-card rounded-2xl p-3 mb-3 flex items-center gap-3 shadow-sm">
+          <TrendingUp size={18} className="text-emerald-500 shrink-0" />
+          <div className="flex-1 min-w-0">
+            <div className="flex items-center justify-between mb-1">
+              <span className="text-[11px] font-semibold">Retenção estimada</span>
+              <span className="text-[11px] font-mono text-emerald-500">{Math.round(retention * 100)}%</span>
+            </div>
+            <div className="h-1.5 bg-muted rounded-full overflow-hidden">
+              <div className="h-full bg-emerald-500 rounded-full transition-all" style={{ width: `${retention * 100}%` }} />
+            </div>
+          </div>
+        </div>
+
         {/* Start all due */}
-        <Button className="w-full rounded-2xl h-12 gap-2 mb-4 text-sm font-semibold" onClick={() => startReview("due")}>
+        <Button className="w-full rounded-2xl h-12 gap-2 mb-2 text-sm font-semibold" onClick={() => startReview("due")}>
           <Brain size={18} /> Revisar cards pendentes ({globalStats.review + globalStats.new})
         </Button>
+
+        {/* Leech (cards travados) */}
+        {leechCount > 0 && (
+          <Button
+            variant="outline"
+            className="w-full rounded-2xl h-10 gap-2 mb-4 text-xs border-red-500/30 text-red-500 hover:bg-red-500/10"
+            onClick={() => startReview("leech")}
+          >
+            <AlertTriangle size={14} /> Cards travados (leech) — {leechCount}
+          </Button>
+        )}
 
         {/* Search */}
         <div className="relative mb-4">
