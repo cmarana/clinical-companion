@@ -4025,11 +4025,120 @@ serve(async (req) => {
       { role: "system", content: engineContext },
     ];
 
+    // Reforço de fontes confiáveis brasileiras + internacionais (anti-alucinação)
+    const SOURCE_GUARD = `═══ FONTES OBRIGATÓRIAS (BASE DE CONHECIMENTO) ═══
+Toda recomendação DEVE estar ancorada em pelo menos UMA destas fontes (citar na seção REFERÊNCIAS):
+
+LIVROS DE REFERÊNCIA (Brasil):
+- Tratado de Medicina Interna — USP (Martins/Velasco)
+- Medicina de Emergência — USP / HC-FMUSP (Martins, Brandão Neto, Velasco)
+- Clínica Médica — USP (7 volumes, Martins et al.)
+- PROAMI / PROURGEN / PROCAD (SBCM/AMIB — Programa de Atualização)
+- Tratado de Pediatria — SBP (Sociedade Brasileira de Pediatria)
+- Rotinas em Obstetrícia — Freitas / FEBRASGO
+- Tratado de Infectologia — Veronesi-Focaccia
+- Manual de Antibioticoterapia — Tavares / Sanford (versão Brasil)
+- Condutas em UTI — AMIB / Knobel
+- Cardiologia — SBC (Sociedade Brasileira de Cardiologia)
+
+DIRETRIZES BRASILEIRAS (priorizar):
+- SBC — Sociedade Brasileira de Cardiologia (Diretrizes IAM, IC, FA, HAS, Dislipidemia)
+- AMIB — Associação de Medicina Intensiva Brasileira (Sepse, VM, Choque)
+- SBP — Sociedade Brasileira de Pediatria
+- FEBRASGO — Ginecologia/Obstetrícia
+- SBI — Sociedade Brasileira de Infectologia
+- SBN — Nefrologia (DRC, Hemodiálise)
+- SBPT — Pneumologia (Asma, DPOC, TEP)
+- SBED — Endocrinologia/Diabetes (SBD)
+- ABN — Neurologia (AVC, Status Epilepticus)
+- ANVISA — RDCs, alertas de segurança, bulário oficial
+- Ministério da Saúde — Protocolos Clínicos e Diretrizes Terapêuticas (PCDT/SUS), Cadernos de Atenção Básica, Linhas de Cuidado
+- CFM — Resoluções (prescrição, telemedicina, óbito)
+
+DIRETRIZES INTERNACIONAIS (complementares, nunca substituem brasileiras quando houver):
+- AHA/ACC, ESC (cardio); SSC 2021 (sepse); GINA (asma); GOLD (DPOC); KDIGO (renal); ADA/EASD (diabetes); IDSA (infecto); WHO; NICE; UpToDate; Harrison; Cecil; Goldman.
+
+REGRAS ANTI-ERRO:
+1. Se uma conduta NÃO está em nenhuma fonte acima → NÃO recomendar.
+2. Se houver conflito entre Brasil e internacional → seguir BRASIL e citar a divergência.
+3. Doses de medicamentos: usar bulário ANVISA + PCDT/SUS como referência primária.
+4. Sempre citar a fonte específica na seção REFERÊNCIAS (ex.: "Diretriz SBC IAM 2024", "PCDT Sepse MS 2022", "Veronesi-Focaccia 6ª ed").
+5. Se incerto → declarar incerteza explicitamente. NUNCA inventar referência ou dose.
+6. NÃO citar fontes que não existem. NÃO inventar números de diretriz.`;
+
+    systemMessages.push({ role: "system", content: SOURCE_GUARD });
+
     if (mode === "structured") {
       systemMessages.push({ role: "system", content: "Modo estruturado: priorize checklist de ações imediatas e validação de dados." });
     }
     if (mode === "interactions") {
       systemMessages.push({ role: "system", content: "Modo interações: classifique cada combinação como Alto risco / Moderado / Baixo risco, mecanismo, impacto, conduta." });
+    }
+    if (mode === "plantao") {
+      systemMessages.push({ role: "system", content: `MODO PLANTÃO — RESPOSTA ULTRA-DIRETA (BEDSIDE)
+
+REGRAS ABSOLUTAS:
+- IGNORAR a estrutura de 12 seções. Substituir pelo formato abaixo.
+- Máximo 250 palavras. Sem floreios. Sem explicação histórica. Sem fisiopatologia.
+- Linguagem de plantão: imperativa, telegráfica, números antes de palavras.
+- ZERO emojis. ZERO disclaimers longos.
+- Se faltar dado crítico (peso, Cr, alergia) → 1 linha "FALTA: ..." e seguir com plano padrão.
+
+FORMATO OBRIGATÓRIO (use exatamente estes títulos):
+
+## IMPRESSÃO
+[1 frase: diagnóstico provável + gravidade]
+
+## AGORA (0-10 min)
+1. [ação] — [dose/parâmetro]
+2. [ação] — [dose/parâmetro]
+3. [ação] — [dose/parâmetro]
+(máximo 5 itens)
+
+## EXAMES URGENTES
+- [exame] — [motivo curto]
+(máximo 4 itens)
+
+## PRESCRIÇÃO
+\`\`\`prescription
+1. [Droga] [dose] [via] [intervalo]
+2. ...
+\`\`\`
+
+## ALERTAS
+- [risco crítico em 1 linha]
+(máximo 3 itens — só o que pode matar)
+
+## PROTOCOLOS
+[PROTOCOL:id|nome] (1-2 apenas)
+
+## FONTE
+[1 referência principal — ex.: "SBC IAM 2024" ou "PCDT Sepse MS 2022"]` });
+    }
+    if (mode === "narrative") {
+      systemMessages.push({ role: "system", content: `MODO TEXTO LIVRE — IA ESTRUTURA O CASO
+
+O médico colou um relato corrido (sem campos). Sua tarefa em DUAS PARTES:
+
+## PARTE 1 — CASO ESTRUTURADO (extraído do texto)
+Organize APENAS o que o médico escreveu, em formato:
+
+**Identificação:** idade, sexo, peso (se citado)
+**Queixa principal:** ...
+**HDA:** ...
+**Antecedentes:** ...
+**Medicações em uso:** ...
+**Alergias:** ...
+**Exame físico:** ... (sinais vitais primeiro)
+**Exames complementares:** ...
+**Cenário:** UBS / PS / UTI / SAMU / Enfermaria
+
+NÃO INVENTAR. Se algo não foi dito → escrever "não informado".
+Se houver dado ambíguo → marcar com [?] e perguntar no final.
+
+## PARTE 2 — ANÁLISE CLÍNICA
+Após estruturar, prossiga com a análise no formato padrão de 12 seções.
+Use os dados estruturados acima para calcular doses, ajustes, alertas.` });
     }
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {

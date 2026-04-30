@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot, Mic, MicOff } from "lucide-react";
+import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot, Mic, MicOff, Zap, FileText } from "lucide-react";
 import PremiumPageGuard from "@/components/PremiumPageGuard";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -31,7 +31,9 @@ function ClinicalAIContent() {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [mode, setMode] = useState<"chat" | "structured">("chat");
+  const [mode, setMode] = useState<"chat" | "structured" | "plantao" | "narrative">("chat");
+  const [narrative, setNarrative] = useState("");
+  const [plantaoQuery, setPlantaoQuery] = useState("");
   const [patientCtx, setPatientCtx] = useState<PatientContext>({});
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -126,7 +128,7 @@ function ClinicalAIContent() {
     return parts.length ? `[CONTEXTO DO PACIENTE: ${parts.join(" | ")}]\n\n` : "";
   };
 
-  const sendMessage = async (text: string, sendMode: "chat" | "structured" = "chat") => {
+  const sendMessage = async (text: string, sendMode: "chat" | "structured" | "plantao" | "narrative" = "chat") => {
     if (!text.trim() || isLoading) return;
 
     const fullText = buildContextPrefix() + text;
@@ -195,6 +197,28 @@ function ClinicalAIContent() {
     sendMessage(text, "structured");
     setSymptoms(""); setHistory(""); setVitals("");
     setExams(""); setMedications(""); setAdditionalInfo("");
+  };
+
+  const handlePlantaoSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!plantaoQuery.trim()) {
+      toast.error("Descreva a situação em 1-2 linhas");
+      return;
+    }
+    const text = `[MODO PLANTÃO — RESPOSTA DIRETA]\n\nSituação: ${plantaoQuery}`;
+    sendMessage(text, "plantao");
+    setPlantaoQuery("");
+  };
+
+  const handleNarrativeSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (narrative.trim().length < 30) {
+      toast.error("Cole o relato completo do paciente (mínimo 30 caracteres)");
+      return;
+    }
+    const text = `[RELATO LIVRE — ESTRUTURE E ANALISE]\n\n${narrative}`;
+    sendMessage(text, "narrative");
+    setNarrative("");
   };
 
   const clearChat = () => { setMessages([]); };
@@ -316,13 +340,19 @@ function ClinicalAIContent() {
 
       {/* Input */}
       <div className="border-t border-border bg-card/80 backdrop-blur-sm p-3">
-        <Tabs value={mode} onValueChange={(v) => setMode(v as "chat" | "structured")} className="w-full">
-          <TabsList className="w-full mb-2 h-8">
-            <TabsTrigger value="chat" className="flex-1 text-xs gap-1.5 h-7">
-              <MessageSquare size={12} /> Chat Livre
+        <Tabs value={mode} onValueChange={(v) => setMode(v as typeof mode)} className="w-full">
+          <TabsList className="w-full mb-2 h-8 grid grid-cols-4">
+            <TabsTrigger value="chat" className="text-[10px] gap-1 h-7 px-1">
+              <MessageSquare size={11} /> Chat
             </TabsTrigger>
-            <TabsTrigger value="structured" className="flex-1 text-xs gap-1.5 h-7">
-              <ClipboardList size={12} /> Caso Estruturado
+            <TabsTrigger value="structured" className="text-[10px] gap-1 h-7 px-1">
+              <ClipboardList size={11} /> Caso
+            </TabsTrigger>
+            <TabsTrigger value="plantao" className="text-[10px] gap-1 h-7 px-1 data-[state=active]:bg-destructive data-[state=active]:text-destructive-foreground">
+              <Zap size={11} /> Plantão
+            </TabsTrigger>
+            <TabsTrigger value="narrative" className="text-[10px] gap-1 h-7 px-1">
+              <FileText size={11} /> Texto
             </TabsTrigger>
           </TabsList>
 
@@ -415,6 +445,102 @@ function ClinicalAIContent() {
               <Button type="submit" disabled={isLoading} className="w-full h-9 text-xs rounded-xl">
                 {isLoading ? <><Loader2 size={14} className="animate-spin mr-1.5" /> Analisando...</> : "🔍 Analisar Caso Clínico"}
               </Button>
+            </form>
+          </TabsContent>
+
+          <TabsContent value="plantao" className="mt-0">
+            <form onSubmit={handlePlantaoSubmit} className="space-y-2">
+              <div className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-destructive/10 border border-destructive/20">
+                <Zap size={11} className="text-destructive shrink-0" />
+                <p className="text-[10px] text-destructive font-medium leading-tight">
+                  Resposta direta beira-leito: ações 0-10min, prescrição, alertas. Sem texto longo.
+                </p>
+              </div>
+              <Textarea
+                value={plantaoQuery}
+                onChange={(e) => setPlantaoQuery(e.target.value)}
+                placeholder="Ex.: Homem 60a, dor torácica 2h + sudorese, PA 90x60, ECG supra V1-V4"
+                className="min-h-[60px] max-h-32 text-sm resize-none rounded-xl"
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" && !e.shiftKey && (e.ctrlKey || e.metaKey)) {
+                    e.preventDefault();
+                    handlePlantaoSubmit(e);
+                  }
+                }}
+              />
+              <Button
+                type="submit"
+                disabled={isLoading || !plantaoQuery.trim()}
+                variant="destructive"
+                className="w-full h-9 text-xs rounded-xl font-heading font-bold"
+              >
+                {isLoading ? <><Loader2 size={14} className="animate-spin mr-1.5" /> Calculando...</> : <><Zap size={14} className="mr-1.5" /> RESPOSTA DE PLANTÃO</>}
+              </Button>
+            </form>
+          </TabsContent>
+
+          <TabsContent value="narrative" className="mt-0">
+            <form onSubmit={handleNarrativeSubmit} className="space-y-2">
+              <div className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-primary/10 border border-primary/20">
+                <FileText size={11} className="text-primary shrink-0" />
+                <p className="text-[10px] text-primary font-medium leading-tight">
+                  Cole o relato corrido do paciente. A IA estrutura e analisa.
+                </p>
+              </div>
+              <Textarea
+                value={narrative}
+                onChange={(e) => setNarrative(e.target.value)}
+                placeholder="Ex.: Paciente do sexo masculino, 58 anos, hipertenso, diabético, deu entrada com dor torácica retroesternal há 3 horas, irradiando para braço esquerdo, associada a náuseas. PA 150x90, FC 98, sat 96%. Em uso de losartana e metformina. Nega alergias..."
+                className="min-h-[140px] max-h-[260px] text-sm resize-y rounded-xl leading-relaxed"
+              />
+              <div className="flex gap-2">
+                {speechSupported && (
+                  <Button
+                    type="button"
+                    variant={isListening && voiceTarget === "history" ? "destructive" : "outline"}
+                    size="sm"
+                    onClick={() => {
+                      // Reuse history voice target to fill narrative via setHistory; we instead reuse "history" trick
+                      const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+                      if (!SpeechRecognition) { toast.error("Sem suporte de voz"); return; }
+                      if (isListening && recognitionRef.current) { recognitionRef.current.stop(); setIsListening(false); return; }
+                      const r = new SpeechRecognition();
+                      r.lang = "pt-BR"; r.continuous = true; r.interimResults = true;
+                      recognitionRef.current = r; setVoiceTarget("history");
+                      let final = "";
+                      r.onstart = () => setIsListening(true);
+                      r.onresult = (ev: any) => {
+                        let interim = "";
+                        for (let i = ev.resultIndex; i < ev.results.length; i++) {
+                          const t = ev.results[i][0].transcript;
+                          if (ev.results[i].isFinal) final += t + " ";
+                          else interim = t;
+                        }
+                        setNarrative((prev) => (prev ? prev + " " : "") + (final + interim).trim());
+                        final = "";
+                      };
+                      r.onerror = () => { setIsListening(false); toast.error("Erro voz"); };
+                      r.onend = () => setIsListening(false);
+                      r.start();
+                      toast.success("🎤 Ditando relato...");
+                    }}
+                    className="rounded-xl h-9"
+                  >
+                    {isListening ? <MicOff size={14} className="mr-1.5" /> : <Mic size={14} className="mr-1.5" />}
+                    {isListening ? "Parar" : "Ditar"}
+                  </Button>
+                )}
+                <Button
+                  type="submit"
+                  disabled={isLoading || narrative.trim().length < 30}
+                  className="flex-1 h-9 text-xs rounded-xl"
+                >
+                  {isLoading ? <><Loader2 size={14} className="animate-spin mr-1.5" /> Estruturando...</> : <><FileText size={14} className="mr-1.5" /> Estruturar e Analisar</>}
+                </Button>
+              </div>
+              <p className="text-[9px] text-muted-foreground text-center">
+                A IA primeiro organiza o caso (sem inventar nada), depois analisa.
+              </p>
             </form>
           </TabsContent>
         </Tabs>
