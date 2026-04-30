@@ -9,8 +9,8 @@ import DutyBedNotes from "@/components/duty/DutyBedNotes";
 import DutySection from "@/components/duty/DutySection";
 import {
   Zap, Pill, ClipboardList, Calculator, FileText, Baby, Heart,
-  Search, Star, Stethoscope, Sparkles,
-  ChevronRight
+  Search, Star, Stethoscope, Sparkles, Timer, Mic, Users, Bot,
+  ChevronRight, Activity, Beaker
 } from "lucide-react";
 import { useState, useMemo } from "react";
 import { protocols } from "@/data/protocols";
