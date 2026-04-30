@@ -126,7 +126,7 @@ export async function verifyAuthAndQuota(
       JSON.stringify({
         error:
           tier === "free"
-            ? `Limite mensal grátis atingido (${FREE_MONTHLY_QUOTA} consultas). Assine o PULSO Pro para liberar 200 consultas/mês.`
+            ? `Limite mensal grátis atingido (${FREE_MONTHLY_QUOTA} consultas). Assine o PULSO Pro para liberar ${PRO_MONTHLY_QUOTA} consultas/mês.`
             : `Limite mensal Pro atingido (${PRO_MONTHLY_QUOTA} consultas). Renova no dia 1 do próximo mês.`,
         code: "quota_exceeded",
         tier,
