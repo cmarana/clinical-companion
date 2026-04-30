@@ -14,6 +14,7 @@ const FRIENDLY_MESSAGES: Partial<Record<ClinicalAiErrorCode, string>> = {
   server: "A IA clínica está temporariamente indisponível. Tente novamente em instantes.",
   rate_limit: "Muitas solicitações. Aguarde alguns segundos e tente novamente.",
   auth: "Sua sessão expirou. Faça login novamente.",
+  // quota_exceeded usa a mensagem do backend (já vem amigável e específica)
 };
 
 let cachedIsAdmin: boolean | null = null;
