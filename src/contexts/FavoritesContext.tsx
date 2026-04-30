@@ -150,8 +150,13 @@ export function FavoritesProvider({ children }: { children: ReactNode }) {
     [grouped]
   );
 
+  const value = useMemo(
+    () => ({ favorites, isFavorite, toggleFavorite, grouped, specialties, syncing }),
+    [favorites, isFavorite, toggleFavorite, grouped, specialties, syncing]
+  );
+
   return (
-    <FavoritesContext.Provider value={{ favorites, isFavorite, toggleFavorite, grouped, specialties, syncing }}>
+    <FavoritesContext.Provider value={value}>
       {children}
     </FavoritesContext.Provider>
   );
