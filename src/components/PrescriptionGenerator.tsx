@@ -5,6 +5,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { streamClinicalAi } from "@/lib/clinicalAiStream";
+import { showClinicalAiError } from "@/lib/clinicalAiToast";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 
@@ -64,7 +65,7 @@ NÃO incluir emojis. Usar formatação markdown com negrito e listas.`;
           setResult(content);
         },
         onDone: () => setIsLoading(false),
-        onError: (err) => { toast.error(err); setIsLoading(false); },
+        onError: (err, code) => { showClinicalAiError(err, code); setIsLoading(false); },
       });
     } catch {
       toast.error("Erro ao gerar prescrição");

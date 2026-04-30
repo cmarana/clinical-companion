@@ -4,6 +4,8 @@ type Msg = { role: "user" | "assistant"; content: string };
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/clinical-ai`;
 
+export type ClinicalAiErrorCode = "credits" | "rate_limit" | "auth" | "server" | "unknown";
+
 export async function streamClinicalAi({
   messages,
   mode = "chat",
@@ -15,7 +17,7 @@ export async function streamClinicalAi({
   mode?: "chat" | "structured" | "interactions" | "plantao" | "narrative";
   onDelta: (text: string) => void;
   onDone: () => void;
-  onError?: (error: string) => void;
+  onError?: (error: string, code?: ClinicalAiErrorCode) => void;
 }) {
   // Get the user's actual session token for auth
   const { data: { session } } = await supabase.auth.getSession();
@@ -33,19 +35,24 @@ export async function streamClinicalAi({
   if (!resp.ok) {
     const errorData = await resp.json().catch(() => ({} as { error?: string }));
     let friendly: string;
+    let code: ClinicalAiErrorCode = "unknown";
     if (resp.status === 402) {
       friendly =
-        "A IA clínica está temporariamente sem créditos. O administrador já foi notificado — tente novamente em instantes.";
+        "A IA clínica está temporariamente sem créditos. Adicione créditos no workspace para continuar.";
+      code = "credits";
     } else if (resp.status === 429) {
       friendly = "Muitas requisições em sequência. Aguarde alguns segundos e tente de novo.";
+      code = "rate_limit";
     } else if (resp.status === 401 || resp.status === 403) {
       friendly = "Sessão expirada. Faça login novamente para usar a IA clínica.";
+      code = "auth";
     } else if (resp.status >= 500) {
       friendly = "A IA clínica está instável no momento. Tente novamente em instantes.";
+      code = "server";
     } else {
       friendly = errorData.error || `Erro ${resp.status} ao consultar a IA.`;
     }
-    onError?.(friendly);
+    onError?.(friendly, code);
     onDone();
     return;
   }

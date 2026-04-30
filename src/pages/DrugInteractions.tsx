@@ -7,6 +7,7 @@ import { Badge } from "@/components/ui/badge";
 import { checkInteractions, severityConfig, type FoundInteraction, type Severity } from "@/data/drugInteractionsDB";
 import { HIGH_RISK_PAIRS } from "@/data/drugInteractionPairs";
 import { streamClinicalAi } from "@/lib/clinicalAiStream";
+import { showClinicalAiError } from "@/lib/clinicalAiToast";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 import {
@@ -107,7 +108,7 @@ function DrugInteractionsContent() {
         mode: "interactions",
         onDelta: (chunk) => { full += chunk; setAiResult(full); },
         onDone: () => setAiLoading(false),
-        onError: (err) => { toast.error(err); setAiLoading(false); },
+        onError: (err, code) => { showClinicalAiError(err, code); setAiLoading(false); },
       });
     } catch {
       toast.error("Erro ao consultar IA");

@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Input } from "@/components/ui/input";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { streamClinicalAi } from "@/lib/clinicalAiStream";
+import { showClinicalAiError } from "@/lib/clinicalAiToast";
 import { toast } from "sonner";
 import ClinicalResponseCards from "@/components/ClinicalResponseCards";
 import { motion } from "framer-motion";
@@ -159,7 +160,7 @@ function ClinicalAIContent() {
         mode: sendMode,
         onDelta: upsertAssistant,
         onDone: () => setIsLoading(false),
-        onError: (err) => { toast.error(err, { duration: 6000 }); setIsLoading(false); },
+        onError: (err, code) => { showClinicalAiError(err, code); setIsLoading(false); },
       });
     } catch {
       toast.error("Erro ao conectar com a IA");
