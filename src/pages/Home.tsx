@@ -21,6 +21,7 @@ import { useModuleAnalytics } from "@/hooks/useModuleAnalytics";
 import SmartSearch from "@/components/SmartSearch";
 import WeeklySummaryWidget from "@/components/WeeklySummaryWidget";
 import VoiceFeaturesBanner from "@/components/VoiceFeaturesBanner";
+import DailyBriefingWidget from "@/components/DailyBriefingWidget";
 
 import WelcomeScreen from "@/components/WelcomeScreen";
 
@@ -251,6 +252,11 @@ export default function Home() {
       {/* Smart Search */}
       <div data-tour="search">
         <SmartSearch specialty={specialty} />
+      </div>
+
+      {/* Daily Briefing — resumo do dia, streak, flashcards pendentes */}
+      <div className="mt-4">
+        <DailyBriefingWidget />
       </div>
 
       {/* ── PRIMARY GRID ─────────────────────────────────────── */}
