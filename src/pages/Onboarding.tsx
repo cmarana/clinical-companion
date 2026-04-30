@@ -170,6 +170,7 @@ interface FormData {
   academic_status: string; university: string; course: string; graduation_year: string;
   registration_type: string; registration_number: string; registration_state: string;
   selectedArea: string; specialty: string;
+  daily_goal: number; weekly_goal: number;
 }
 
 const defaultForm: FormData = {
@@ -178,6 +179,7 @@ const defaultForm: FormData = {
   academic_status: "", university: "", course: "", graduation_year: "",
   registration_type: "", registration_number: "", registration_state: "",
   selectedArea: "", specialty: "",
+  daily_goal: 10, weekly_goal: 50,
 };
 
 export default function Onboarding() {
