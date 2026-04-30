@@ -3,6 +3,7 @@ import { Home, Search, Activity, Star, User, Pill } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { hapticLight } from "@/lib/haptics";
 import { motion } from "framer-motion";
+import { prefetchRoute } from "@/hooks/useRoutePrefetch";
 
 const tabs = [
   { path: "/", icon: Home, label: "Início" },
@@ -36,6 +37,8 @@ export default function BottomNav() {
             <motion.button
               key={tab.path}
               onClick={() => handleTap(tab.path)}
+              onTouchStart={() => prefetchRoute(tab.path === "/" ? "/home" : tab.path)}
+              onMouseEnter={() => prefetchRoute(tab.path === "/" ? "/home" : tab.path)}
               whileTap={{ scale: 0.85 }}
               transition={{ type: "spring", stiffness: 400, damping: 17 }}
               data-tour={tab.path === "/favorites" ? "favorites" : undefined}

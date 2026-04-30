@@ -11,10 +11,21 @@ import SupportChat from "./SupportChat";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Moon, Sun, Eclipse } from "lucide-react";
 import { hapticLight } from "@/lib/haptics";
+import { useIdlePrefetch } from "@/hooks/useRoutePrefetch";
+
+const IDLE_PREFETCH_ROUTES = [
+  "/home",
+  "/full-protocols",
+  "/duty",
+  "/bulario",
+  "/search",
+  "/favorites",
+];
 
 export default function AppLayout() {
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
+  useIdlePrefetch(IDLE_PREFETCH_ROUTES);
 
   const themeIcon = theme === "oled" ? <Eclipse size={16} /> : theme === "dark" ? <Sun size={16} /> : <Moon size={16} />;
 
