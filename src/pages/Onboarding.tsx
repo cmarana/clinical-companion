@@ -350,7 +350,7 @@ export default function Onboarding() {
                   {isDone ? <Check size={16} /> : <Icon size={16} />}
                 </div>
                 {i < STEPS.length - 1 && (
-                  <div className={`w-8 sm:w-12 h-0.5 mx-1 transition-colors duration-300 ${
+                  <div className={`w-5 sm:w-10 h-0.5 mx-1 transition-colors duration-300 ${
                     i < step ? "bg-primary" : "bg-muted"
                   }`} />
                 )}
