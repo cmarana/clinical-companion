@@ -1,4 +1,8 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { verifyAuthAndQuota, bumpAiUsage, hashPrompt, lookupCache, storeCache } from "../_shared/aiQuota.ts";
+
+const FEATURE = "discharge-summary";
+const MODEL = "google/gemini-2.5-flash";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -9,6 +13,9 @@ serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
   try {
+    const ctx = await verifyAuthAndQuota(req, FEATURE);
+    if (ctx instanceof Response) return ctx;
+
     const body = await req.json();
     const { patient_name, age, sex, admission_date, discharge_date, diagnosis, comorbidities, hospital_course, procedures, exams, medications_discharge, follow_up, extra_notes } = body;
 
@@ -21,59 +28,13 @@ serve(async (req) => {
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
     if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
-    const systemPrompt = `Você é um médico hospitalar experiente. Gere um RESUMO DE ALTA HOSPITALAR completo, profissional e formatado para impressão, com base nas informações fornecidas.
+    const systemPrompt = `Você é um médico hospitalar experiente. Gere um RESUMO DE ALTA HOSPITALAR completo, profissional e formatado para impressão.
 
-## Estrutura obrigatória do Resumo de Alta:
+Estrutura: IDENTIFICAÇÃO, DIAGNÓSTICOS (com CID-10), HISTÓRIA DA INTERNAÇÃO, PROCEDIMENTOS, EXAMES, CONDIÇÃO DE ALTA, PRESCRIÇÃO DE ALTA, ORIENTAÇÕES, SEGUIMENTO, MÉDICO RESPONSÁVEL.
 
-### IDENTIFICAÇÃO
-- Nome, idade, sexo
-- Data de internação e alta
-- Tempo de internação
+Regras: omitir seções sem informação, linguagem médica formal, formatado para impressão.`;
 
-### DIAGNÓSTICOS
-- Diagnóstico principal (com CID-10)
-- Diagnósticos secundários / comorbidades
-
-### HISTÓRIA DA INTERNAÇÃO
-- Motivo da internação
-- Evolução clínica durante a internação
-- Intercorrências relevantes
-
-### PROCEDIMENTOS REALIZADOS
-- Cirurgias, procedimentos invasivos, transfusões
-
-### EXAMES RELEVANTES
-- Últimos resultados laboratoriais
-- Exames de imagem relevantes
-
-### CONDIÇÃO DE ALTA
-- Estado clínico na alta
-- Sinais vitais de alta (se informados)
-
-### PRESCRIÇÃO DE ALTA
-- Medicamentos com dose, via, posologia e duração
-- Formatado em lista numerada
-
-### ORIENTAÇÕES AO PACIENTE
-- Cuidados domiciliares
-- Sinais de alerta para retorno ao PS
-- Restrições (dieta, atividade física)
-
-### SEGUIMENTO
-- Retorno ambulatorial (especialidade, prazo)
-- Exames de controle solicitados
-
-### MÉDICO RESPONSÁVEL
-- Espaço para assinatura, nome e CRM
-
-## Regras:
-- Se alguma informação não foi fornecida, omita a seção (NÃO escreva "não informado")
-- Use linguagem médica formal e objetiva
-- Inclua CID-10 quando possível
-- Formate para impressão: use headers claros e espaçamento
-- O resumo deve ser pronto para anexar ao prontuário`;
-
-    const userParts = [];
+    const userParts: string[] = [];
     if (patient_name) userParts.push(`Nome: ${patient_name}`);
     if (age) userParts.push(`Idade: ${age}`);
     if (sex) userParts.push(`Sexo: ${sex}`);
@@ -88,32 +49,70 @@ serve(async (req) => {
     if (follow_up) userParts.push(`Seguimento: ${follow_up}`);
     if (extra_notes) userParts.push(`Observações adicionais:\n${extra_notes}`);
 
+    const userMessage = userParts.join("\n");
+    const promptHash = await hashPrompt(`${systemPrompt}::${userMessage}`);
+    const cached = await lookupCache(ctx.serviceClient, promptHash, FEATURE, MODEL, "default");
+    if (cached.hit && cached.response) {
+      const stream = new ReadableStream({
+        start(controller) {
+          const chunk = `data: ${JSON.stringify({ choices: [{ delta: { content: cached.response } }] })}\n\ndata: [DONE]\n\n`;
+          controller.enqueue(new TextEncoder().encode(chunk));
+          controller.close();
+        },
+      });
+      return new Response(stream, { headers: { ...corsHeaders, "Content-Type": "text/event-stream" } });
+    }
+
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
-      headers: {
-        Authorization: `Bearer ${LOVABLE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
+      headers: { Authorization: `Bearer ${LOVABLE_API_KEY}`, "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
+        model: MODEL,
         messages: [
           { role: "system", content: systemPrompt },
-          { role: "user", content: userParts.join("\n") },
+          { role: "user", content: userMessage },
         ],
         stream: true,
       }),
     });
 
     if (!response.ok) {
-      const status = response.status;
-      if (status === 429) return new Response(JSON.stringify({ error: "Limite de requisições excedido." }), { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } });
-      if (status === 402) return new Response(JSON.stringify({ error: "Créditos de IA esgotados." }), { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+      if (response.status === 429) return new Response(JSON.stringify({ error: "Limite de requisições excedido.", code: "rate_limit" }), { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+      if (response.status === 402) return new Response(JSON.stringify({ error: "Créditos de IA esgotados.", code: "credits" }), { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } });
       return new Response(JSON.stringify({ error: "Erro interno do servidor" }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } });
     }
 
-    return new Response(response.body, { headers: { ...corsHeaders, "Content-Type": "text/event-stream" } });
+    let fullResponse = "";
+    const transform = new TransformStream({
+      transform(chunk, controller) {
+        const text = new TextDecoder().decode(chunk);
+        const lines = text.split("\n");
+        for (const line of lines) {
+          if (line.startsWith("data: ") && !line.includes("[DONE]")) {
+            try {
+              const json = JSON.parse(line.slice(6));
+              const delta = json.choices?.[0]?.delta?.content;
+              if (delta) fullResponse += delta;
+            } catch { /* ignore */ }
+          }
+        }
+        controller.enqueue(chunk);
+      },
+      async flush() {
+        if (fullResponse.length > 0) {
+          await bumpAiUsage(ctx.serviceClient, ctx.userId, FEATURE);
+          await storeCache(ctx.serviceClient, promptHash, FEATURE, MODEL, "default", fullResponse);
+        }
+      },
+    });
+
+    return new Response(response.body!.pipeThrough(transform), {
+      headers: { ...corsHeaders, "Content-Type": "text/event-stream" },
+    });
   } catch (e) {
     console.error("discharge-summary error:", e);
-    return new Response(JSON.stringify({ error: "Erro interno do servidor" }), { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+    return new Response(JSON.stringify({ error: "Erro interno do servidor" }), {
+      status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
   }
 });
