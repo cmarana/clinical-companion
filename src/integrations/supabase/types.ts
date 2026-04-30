@@ -1276,6 +1276,33 @@ export type Database = {
         }
         Relationships: []
       }
+      test_access_overrides: {
+        Row: {
+          created_at: string
+          created_by: string | null
+          expires_at: string
+          id: string
+          note: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          created_by?: string | null
+          expires_at: string
+          id?: string
+          note?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          created_by?: string | null
+          expires_at?: string
+          id?: string
+          note?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       ttp_events: {
         Row: {
           created_at: string
