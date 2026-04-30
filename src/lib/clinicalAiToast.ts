@@ -49,6 +49,20 @@ async function checkIsAdmin(): Promise<boolean> {
 export async function showClinicalAiError(message: string, code?: ClinicalAiErrorCode) {
   const isAdmin = await checkIsAdmin();
 
+  // Quota exceeded: TODOS veem (é informação útil, não técnica). Free → upgrade Pro.
+  if (code === "quota_exceeded") {
+    toast.error(message, {
+      duration: 9000,
+      action: {
+        label: "Ver planos",
+        onClick: () => {
+          window.location.href = "/pricing";
+        },
+      },
+    });
+    return;
+  }
+
   if (!isAdmin) {
     const friendly = (code && FRIENDLY_MESSAGES[code]) || "Algo deu errado. Tente novamente.";
     toast.error(friendly, { duration: 5000 });
