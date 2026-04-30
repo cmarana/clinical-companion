@@ -160,6 +160,7 @@ const STEPS = [
   { icon: MapPin, title: "Endereço", desc: "Onde você está localizado(a)" },
   { icon: GraduationCap, title: "Formação", desc: "Sua trajetória acadêmica" },
   { icon: Stethoscope, title: "Profissional", desc: "Área e especialidade" },
+  { icon: Target, title: "Metas de Estudo", desc: "Defina seu ritmo (opcional)" },
 ];
 
 interface FormData {
