@@ -500,6 +500,69 @@ export default function Onboarding() {
                   )}
                 </>
               )}
+
+              {/* Step 4: Study goals */}
+              {step === 4 && (
+                <>
+                  <div className="rounded-2xl bg-primary/5 ring-1 ring-primary/15 p-4 flex gap-3 items-start">
+                    <Flame size={18} className="text-primary shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-heading font-bold text-sm">Defina seu ritmo de estudo</p>
+                      <p className="text-[11px] text-muted-foreground mt-0.5">
+                        Você pode mudar a qualquer momento no Perfil. Vamos sugerir flashcards e protocolos pra cada meta.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-heading font-semibold mb-2 flex items-center gap-1.5">
+                      <Brain size={13} className="text-primary" /> Flashcards por dia
+                    </label>
+                    <div className="grid grid-cols-5 gap-2">
+                      {[5, 10, 15, 20, 30].map(n => (
+                        <button
+                          key={n}
+                          type="button"
+                          onClick={() => set("daily_goal" as any)(n as any)}
+                          className={`py-3 rounded-xl text-sm font-bold transition-all ${
+                            form.daily_goal === n
+                              ? "bg-primary text-primary-foreground shadow-md ring-2 ring-primary/30"
+                              : "bg-muted/40 text-muted-foreground hover:bg-muted"
+                          }`}
+                        >
+                          {n}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-heading font-semibold mb-2 flex items-center gap-1.5">
+                      <BookOpen size={13} className="text-primary" /> Protocolos por semana
+                    </label>
+                    <div className="grid grid-cols-4 gap-2">
+                      {[20, 50, 80, 120].map(n => (
+                        <button
+                          key={n}
+                          type="button"
+                          onClick={() => set("weekly_goal" as any)(n as any)}
+                          className={`py-3 rounded-xl text-sm font-bold transition-all ${
+                            form.weekly_goal === n
+                              ? "bg-primary text-primary-foreground shadow-md ring-2 ring-primary/30"
+                              : "bg-muted/40 text-muted-foreground hover:bg-muted"
+                          }`}
+                        >
+                          {n}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <p className="text-[10px] text-center text-muted-foreground pt-2">
+                    💡 Dica: começar com {form.daily_goal} cards/dia mantém um streak sustentável
+                  </p>
+                </>
+              )}
             </div>
           </motion.div>
         </AnimatePresence>
