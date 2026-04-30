@@ -92,7 +92,43 @@ export default function OfflineSetup() {
     }
     setDownloaded([]);
     setSavedCount(0);
+    setSelected(new Set());
     toast.success("Cache offline limpo.");
+  };
+
+  const toggleSelect = (id: string) => {
+    setSelected(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id); else next.add(id);
+      return next;
+    });
+  };
+
+  const selectAll = () => {
+    const pending = OFFLINE_MODULES.filter(m => !downloaded.includes(m.id)).map(m => m.id);
+    setSelected(new Set(pending));
+  };
+
+  const clearSelection = () => setSelected(new Set());
+
+  const handleDownloadSelected = async () => {
+    if (!isOnline) { toast.error("Conecte-se à internet para baixar."); return; }
+    const list = OFFLINE_MODULES.filter(m => selected.has(m.id) && !downloaded.includes(m.id));
+    if (list.length === 0) { toast.info("Nenhum módulo selecionado."); return; }
+    setDownloadingAll(true);
+    setAllProgress({ completed: 0, total: list.length, label: list[0].label });
+    for (let i = 0; i < list.length; i++) {
+      const mod = list[i];
+      setAllProgress({ completed: i, total: list.length, label: mod.label });
+      try {
+        await downloadModule(mod);
+        setDownloaded(prev => prev.includes(mod.id) ? prev : [...prev, mod.id]);
+      } catch { /* segue */ }
+    }
+    setAllProgress({ completed: list.length, total: list.length, label: "Completo" });
+    setDownloadingAll(false);
+    setSelected(new Set());
+    toast.success(`${list.length} módulo(s) salvo(s) para offline!`);
   };
 
   const totalSize = OFFLINE_MODULES.reduce((s, m) => s + m.sizeMb, 0);
