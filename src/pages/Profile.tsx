@@ -16,6 +16,7 @@ import { useNavigate } from "react-router-dom";
 import { Badge } from "@/components/ui/badge";
 import { useTheme } from "@/contexts/ThemeContext";
 import { hapticLight } from "@/lib/haptics";
+import MyProgressSection from "@/components/MyProgressSection";
 
 const SPECIALTIES_BY_AREA: Record<string, string[]> = {
   "Medicina": [
@@ -473,6 +474,9 @@ export default function Profile() {
         </div>
       ) : (
         <div className="px-4 space-y-5 max-w-lg mx-auto [&_input]:h-11 [&_input]:transition-colors [&_input]:focus:ring-2 [&_input]:focus:ring-primary/30 [&_input]:focus:border-primary/50">
+
+          {/* ── 0. Meu Progresso (flashcards, trilhas, metas) ── */}
+          <MyProgressSection />
 
           {/* ── 1. Dados Pessoais ── */}
           <Section icon={User} title="Dados Pessoais" index={0}>

@@ -7,9 +7,11 @@ import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 import {
-  User, MapPin, GraduationCap, Stethoscope, ChevronRight, ChevronLeft, Check, Loader2
+  User, MapPin, GraduationCap, Stethoscope, ChevronRight, ChevronLeft, Check, Loader2,
+  Target, Brain, BookOpen, Flame,
 } from "lucide-react";
 import pulsoLogo from "@/assets/pulso-logo.png";
+import { safeLocalStorage } from "@/lib/safeStorage";
 
 /* ── Constants ── */
 const UF_LIST = [
@@ -158,6 +160,7 @@ const STEPS = [
   { icon: MapPin, title: "Endereço", desc: "Onde você está localizado(a)" },
   { icon: GraduationCap, title: "Formação", desc: "Sua trajetória acadêmica" },
   { icon: Stethoscope, title: "Profissional", desc: "Área e especialidade" },
+  { icon: Target, title: "Metas de Estudo", desc: "Defina seu ritmo (opcional)" },
 ];
 
 interface FormData {
@@ -167,6 +170,7 @@ interface FormData {
   academic_status: string; university: string; course: string; graduation_year: string;
   registration_type: string; registration_number: string; registration_state: string;
   selectedArea: string; specialty: string;
+  daily_goal: number; weekly_goal: number;
 }
 
 const defaultForm: FormData = {
@@ -175,6 +179,7 @@ const defaultForm: FormData = {
   academic_status: "", university: "", course: "", graduation_year: "",
   registration_type: "", registration_number: "", registration_state: "",
   selectedArea: "", specialty: "",
+  daily_goal: 10, weekly_goal: 50,
 };
 
 export default function Onboarding() {
@@ -289,6 +294,10 @@ export default function Onboarding() {
       return;
     }
 
+    // Persist study goals locally (used by DailyBriefingWidget + MyProgressSection)
+    safeLocalStorage.setItem("psguide_daily_goal", String(form.daily_goal));
+    safeLocalStorage.setItem("psguide_weekly_goal", String(form.weekly_goal));
+
     toast.success("Perfil completo!");
     // Mark that user just finished onboarding so ProtectedRoute won't redirect away from /pricing
     sessionStorage.setItem("pulso_just_onboarded", "1");
@@ -341,7 +350,7 @@ export default function Onboarding() {
                   {isDone ? <Check size={16} /> : <Icon size={16} />}
                 </div>
                 {i < STEPS.length - 1 && (
-                  <div className={`w-8 sm:w-12 h-0.5 mx-1 transition-colors duration-300 ${
+                  <div className={`w-5 sm:w-10 h-0.5 mx-1 transition-colors duration-300 ${
                     i < step ? "bg-primary" : "bg-muted"
                   }`} />
                 )}
@@ -489,6 +498,69 @@ export default function Onboarding() {
                       options={(SPECIALTIES_BY_AREA[form.selectedArea] || []).map(s => ({ value: s, label: s }))}
                     />
                   )}
+                </>
+              )}
+
+              {/* Step 4: Study goals */}
+              {step === 4 && (
+                <>
+                  <div className="rounded-2xl bg-primary/5 ring-1 ring-primary/15 p-4 flex gap-3 items-start">
+                    <Flame size={18} className="text-primary shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-heading font-bold text-sm">Defina seu ritmo de estudo</p>
+                      <p className="text-[11px] text-muted-foreground mt-0.5">
+                        Você pode mudar a qualquer momento no Perfil. Vamos sugerir flashcards e protocolos pra cada meta.
+                      </p>
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-heading font-semibold mb-2 flex items-center gap-1.5">
+                      <Brain size={13} className="text-primary" /> Flashcards por dia
+                    </label>
+                    <div className="grid grid-cols-5 gap-2">
+                      {[5, 10, 15, 20, 30].map(n => (
+                        <button
+                          key={n}
+                          type="button"
+                          onClick={() => setForm(p => ({ ...p, daily_goal: n }))}
+                          className={`py-3 rounded-xl text-sm font-bold transition-all ${
+                            form.daily_goal === n
+                              ? "bg-primary text-primary-foreground shadow-md ring-2 ring-primary/30"
+                              : "bg-muted/40 text-muted-foreground hover:bg-muted"
+                          }`}
+                        >
+                          {n}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-heading font-semibold mb-2 flex items-center gap-1.5">
+                      <BookOpen size={13} className="text-primary" /> Protocolos por semana
+                    </label>
+                    <div className="grid grid-cols-4 gap-2">
+                      {[20, 50, 80, 120].map(n => (
+                        <button
+                          key={n}
+                          type="button"
+                          onClick={() => setForm(p => ({ ...p, weekly_goal: n }))}
+                          className={`py-3 rounded-xl text-sm font-bold transition-all ${
+                            form.weekly_goal === n
+                              ? "bg-primary text-primary-foreground shadow-md ring-2 ring-primary/30"
+                              : "bg-muted/40 text-muted-foreground hover:bg-muted"
+                          }`}
+                        >
+                          {n}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
+                  <p className="text-[10px] text-center text-muted-foreground pt-2">
+                    💡 Dica: começar com {form.daily_goal} cards/dia mantém um streak sustentável
+                  </p>
                 </>
               )}
             </div>
