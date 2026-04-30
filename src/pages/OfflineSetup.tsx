@@ -231,24 +231,77 @@ export default function OfflineSetup() {
 
         {/* Module Grid */}
         <div className="bg-card rounded-2xl shadow-sm overflow-hidden">
-          <div className="px-4 py-3 border-b border-border/50">
-            <h3 className="font-heading font-bold text-sm flex items-center gap-2">
-              <BookOpen size={14} className="text-primary" />
-              Módulos por Especialidade
-            </h3>
-            <p className="text-[10px] text-muted-foreground mt-0.5">
-              Selecione os módulos que deseja baixar para uso offline
-            </p>
+          <div className="px-4 py-3 border-b border-border/50 flex items-center justify-between gap-2">
+            <div className="min-w-0">
+              <h3 className="font-heading font-bold text-sm flex items-center gap-2">
+                <BookOpen size={14} className="text-primary" />
+                Módulos por Especialidade
+              </h3>
+              <p className="text-[10px] text-muted-foreground mt-0.5">
+                Selecione quantos quiser — não há limite de quantidade
+              </p>
+            </div>
+            <div className="flex items-center gap-1 shrink-0">
+              <Button
+                size="sm"
+                variant="ghost"
+                className="h-7 text-[10px] rounded-lg gap-1 px-2"
+                onClick={selectAll}
+                disabled={downloadingAll}
+              >
+                <CheckSquare size={12} /> Todos
+              </Button>
+              {selected.size > 0 && (
+                <Button
+                  size="sm"
+                  variant="ghost"
+                  className="h-7 text-[10px] rounded-lg gap-1 px-2"
+                  onClick={clearSelection}
+                  disabled={downloadingAll}
+                >
+                  <Square size={12} /> Limpar
+                </Button>
+              )}
+            </div>
           </div>
+
+          {/* Bulk action bar */}
+          {selected.size > 0 && (
+            <div className="px-4 py-2.5 bg-primary/5 border-b border-primary/10 flex items-center justify-between gap-2">
+              <p className="text-[11px] font-heading font-semibold text-primary">
+                {selected.size} selecionado(s)
+              </p>
+              <Button
+                size="sm"
+                onClick={handleDownloadSelected}
+                disabled={downloadingAll || !isOnline}
+                className="h-8 text-[10px] rounded-xl gap-1"
+              >
+                {downloadingAll
+                  ? <><Loader2 size={12} className="animate-spin" /> Baixando…</>
+                  : <><Download size={12} /> Baixar selecionados</>}
+              </Button>
+            </div>
+          )}
 
           <div className="divide-y divide-border/30">
             {OFFLINE_MODULES.map(mod => {
               const Icon = getIcon(mod.icon);
               const isDownloaded = downloaded.includes(mod.id);
               const isLoading = downloading === mod.id;
+              const isSelected = selected.has(mod.id);
 
               return (
                 <div key={mod.id} className="flex items-center gap-3 px-4 py-3">
+                  {!isDownloaded && (
+                    <Checkbox
+                      checked={isSelected}
+                      onCheckedChange={() => toggleSelect(mod.id)}
+                      disabled={downloadingAll || isLoading}
+                      className="shrink-0"
+                      aria-label={`Selecionar ${mod.label}`}
+                    />
+                  )}
                   <div className={cn("w-9 h-9 rounded-xl flex items-center justify-center shrink-0",
                     isDownloaded ? "bg-emerald-500/10" : "bg-muted/50"
                   )}>
