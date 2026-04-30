@@ -254,6 +254,11 @@ export default function Home() {
         <SmartSearch specialty={specialty} />
       </div>
 
+      {/* Daily Briefing — resumo do dia, streak, flashcards pendentes */}
+      <div className="mt-4">
+        <DailyBriefingWidget />
+      </div>
+
       {/* ── PRIMARY GRID ─────────────────────────────────────── */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 lg:gap-4 mb-6">
         {primaryModules.map((m) => (
