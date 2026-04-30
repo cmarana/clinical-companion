@@ -9,8 +9,9 @@ import {
   Download, CheckCircle, WifiOff, Wifi, HardDrive, RefreshCw,
   Trash2, Shield, Pill, Calculator, AlertTriangle, Loader2,
   BookOpen, Clock, Zap, ClipboardList, Heart, Brain, Baby,
-  Bug, Wind, Utensils, Thermometer, Siren, Crown
+  Bug, Wind, Utensils, Thermometer, Siren, Crown, CheckSquare, Square, Infinity as InfinityIcon
 } from "lucide-react";
+import { Checkbox } from "@/components/ui/checkbox";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
 import {
