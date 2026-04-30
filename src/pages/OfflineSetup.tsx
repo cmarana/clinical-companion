@@ -169,9 +169,14 @@ export default function OfflineSetup() {
               {isOnline ? <Wifi size={20} className="text-emerald-500" /> : <WifiOff size={20} className="text-amber-500" />}
             </div>
             <div className="flex-1">
-              <h2 className="font-heading font-bold text-sm">{isOnline ? "Conectado" : "Sem Internet"}</h2>
+              <h2 className="font-heading font-bold text-sm flex items-center gap-1.5">
+                {isOnline ? "Conectado" : "Sem Internet"}
+                <Badge variant="outline" className="text-[9px] gap-1 bg-primary/5 border-primary/20 text-primary">
+                  <InfinityIcon size={10} /> sem limite
+                </Badge>
+              </h2>
               <p className="text-[11px] text-muted-foreground">
-                {downloaded.length} de {OFFLINE_MODULES.length} módulos baixados ({downloadedSize.toFixed(1)} MB)
+                {downloaded.length} de {OFFLINE_MODULES.length} módulos baixados ({downloadedSize.toFixed(1)} MB) — baixe quantos quiser
               </p>
             </div>
           </div>
