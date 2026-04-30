@@ -87,9 +87,17 @@ function DrugInteractionsContent() {
     setAiResult("");
     setShowAi(true);
 
+    const ctxParts: string[] = [];
+    if (patient.age) ctxParts.push(`Idade: ${patient.age}`);
+    if (patient.weight) ctxParts.push(`Peso: ${patient.weight} kg`);
+    if (patient.creatinine) ctxParts.push(`Creatinina: ${patient.creatinine} mg/dL`);
+    if (patient.allergies) ctxParts.push(`Alergias: ${patient.allergies}`);
+    if (patient.conditions) ctxParts.push(`Comorbidades: ${patient.conditions}`);
+    const ctxBlock = ctxParts.length ? `\n\n[CONTEXTO DO PACIENTE: ${ctxParts.join(" | ")}]\n\nLeve em conta função renal, idade, alergias e comorbidades ao classificar a severidade e ajustar a conduta.\n` : "";
+
     const userMsg: Msg = {
       role: "user",
-      content: `Analise TODAS as interações medicamentosas entre:\n\n${filledDrugs.map((d, i) => `${i + 1}. ${d}`).join("\n")}\n\nPara cada par com interação, inclua:\n- Severidade (Contraindicado/Grave/Moderado/Leve)\n- Mecanismo farmacológico\n- Efeito clínico\n- Conduta recomendada\n- Alternativa terapêutica quando aplicável\n- Monitoramento necessário\n\nSe não houver interação significativa entre algum par, mencione brevemente. Seja rigoroso, completo e baseado em evidências.`,
+      content: `Analise TODAS as interações medicamentosas entre:\n\n${filledDrugs.map((d, i) => `${i + 1}. ${d}`).join("\n")}${ctxBlock}\n\nPara cada par com interação, inclua:\n- Severidade (Contraindicado/Grave/Moderado/Leve) — ajustada ao paciente\n- Mecanismo farmacológico\n- Efeito clínico\n- Conduta recomendada (cite ajustes por ClCr/idade quando aplicável)\n- Alternativa terapêutica brasileira (preferir SUS/PCDT)\n- Monitoramento necessário\n\nSe não houver interação significativa entre algum par, mencione brevemente. Cite fontes brasileiras (ANVISA, SBC, SBI, PCDT/MS) sempre que possível. Seja rigoroso, completo e baseado em evidências.`,
     };
 
     let full = "";
