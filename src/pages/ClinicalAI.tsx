@@ -340,13 +340,19 @@ function ClinicalAIContent() {
 
       {/* Input */}
       <div className="border-t border-border bg-card/80 backdrop-blur-sm p-3">
-        <Tabs value={mode} onValueChange={(v) => setMode(v as "chat" | "structured")} className="w-full">
-          <TabsList className="w-full mb-2 h-8">
-            <TabsTrigger value="chat" className="flex-1 text-xs gap-1.5 h-7">
-              <MessageSquare size={12} /> Chat Livre
+        <Tabs value={mode} onValueChange={(v) => setMode(v as typeof mode)} className="w-full">
+          <TabsList className="w-full mb-2 h-8 grid grid-cols-4">
+            <TabsTrigger value="chat" className="text-[10px] gap-1 h-7 px-1">
+              <MessageSquare size={11} /> Chat
             </TabsTrigger>
-            <TabsTrigger value="structured" className="flex-1 text-xs gap-1.5 h-7">
-              <ClipboardList size={12} /> Caso Estruturado
+            <TabsTrigger value="structured" className="text-[10px] gap-1 h-7 px-1">
+              <ClipboardList size={11} /> Caso
+            </TabsTrigger>
+            <TabsTrigger value="plantao" className="text-[10px] gap-1 h-7 px-1 data-[state=active]:bg-destructive data-[state=active]:text-destructive-foreground">
+              <Zap size={11} /> Plantão
+            </TabsTrigger>
+            <TabsTrigger value="narrative" className="text-[10px] gap-1 h-7 px-1">
+              <FileText size={11} /> Texto
             </TabsTrigger>
           </TabsList>
 
