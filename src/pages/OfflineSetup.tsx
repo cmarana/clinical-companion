@@ -41,6 +41,7 @@ export default function OfflineSetup() {
   const [allProgress, setAllProgress] = useState({ completed: 0, total: 0, label: "" });
   const [isOnline, setIsOnline] = useState(navigator.onLine);
   const [savedCount, setSavedCount] = useState(0);
+  const [selected, setSelected] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     const on = () => setIsOnline(true);
