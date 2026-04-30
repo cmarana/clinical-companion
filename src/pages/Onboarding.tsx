@@ -294,6 +294,10 @@ export default function Onboarding() {
       return;
     }
 
+    // Persist study goals locally (used by DailyBriefingWidget + MyProgressSection)
+    safeLocalStorage.setItem("psguide_daily_goal", String(form.daily_goal));
+    safeLocalStorage.setItem("psguide_weekly_goal", String(form.weekly_goal));
+
     toast.success("Perfil completo!");
     // Mark that user just finished onboarding so ProtectedRoute won't redirect away from /pricing
     sessionStorage.setItem("pulso_just_onboarded", "1");
