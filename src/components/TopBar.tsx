@@ -48,9 +48,8 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
   return (
     <>
       <header
-        style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
         className={cn(
-          "sticky top-0 z-40 border-b border-border bg-card/95 backdrop-blur-md",
+          "sticky top-0 z-40 border-b border-border bg-card/95 backdrop-blur-md safe-area-top",
           className
         )}
       >
@@ -89,8 +88,7 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
 
       {showReconnected && (
         <div
-          style={{ top: "calc(env(safe-area-inset-top, 0px) + 3rem)" }}
-          className="sticky z-40 flex items-center justify-center gap-1.5 py-1.5 bg-emerald-500/15 border-b border-emerald-500/25 animate-in slide-in-from-top fade-in duration-300"
+          className="sticky z-40 top-after-topbar flex items-center justify-center gap-1.5 py-1.5 bg-emerald-500/15 border-b border-emerald-500/25 animate-in slide-in-from-top fade-in duration-300"
         >
           <Wifi size={13} className="text-emerald-500" />
           <span className="text-[11px] font-heading font-semibold text-emerald-500">Conexão restabelecida</span>
@@ -102,8 +100,7 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
         <>
           <div className="fixed inset-0 z-30" onClick={() => setShowSettings(false)} />
           <div
-            className="sticky z-35 mx-3 mt-0 bg-card border border-border rounded-2xl shadow-lg p-4 space-y-4"
-            style={{ zIndex: 35, top: "calc(env(safe-area-inset-top, 0px) + 3rem)" }}
+            className="sticky z-[35] top-after-topbar mx-3 mt-0 bg-card border border-border rounded-2xl shadow-lg p-4 space-y-4"
           >
             {/* Theme toggle */}
             <div className="flex items-center justify-between">
