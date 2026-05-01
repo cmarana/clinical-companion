@@ -1348,6 +1348,25 @@ function ClinicalAIContent() {
                             {h.primaryModality}
                             <span className="text-muted-foreground font-normal"> · {dateLabel}</span>
                           </span>
+                          {(() => {
+                            const crit = h.alerts?.filter((a) => a.level === "critico").length ?? 0;
+                            const att = h.alerts?.filter((a) => a.level === "atencao").length ?? 0;
+                            if (crit > 0) {
+                              return (
+                                <span className="shrink-0 px-1.5 py-0.5 rounded-full bg-destructive text-destructive-foreground text-[9px] font-bold leading-none flex items-center gap-0.5">
+                                  🚨 {crit}
+                                </span>
+                              );
+                            }
+                            if (att > 0) {
+                              return (
+                                <span className="shrink-0 px-1.5 py-0.5 rounded-full bg-amber-500 text-white text-[9px] font-bold leading-none flex items-center gap-0.5">
+                                  ⚠️ {att}
+                                </span>
+                              );
+                            }
+                            return null;
+                          })()}
                         </div>
                         <div className="text-[10px] text-muted-foreground truncate">{tags}</div>
                         {h.context && (
