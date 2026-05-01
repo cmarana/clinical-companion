@@ -80,8 +80,8 @@ describe("StatusBarScrim · contrato visual", () => {
     expect(cls).toMatch(/\bright-0\b/);
     expect(cls).toMatch(/\bbg-background\b/);
     expect(cls).toMatch(/\bpointer-events-none\b/);
-    // z-index >= 50 (acima de headers sticky comuns z-30/z-40/z-50)
-    expect(cls).toMatch(/\bz-\[?(?:50|60|70|80|90|100)\]?\b/);
+    // Token semântico (z-status-bar = 60), acima de headers sticky comuns.
+    expect(cls).toMatch(/\bz-status-bar\b/);
 
     // Altura inline = env(safe-area-inset-top, 0px)
     expect((el.getAttribute("style") || "").replace(/\s+/g, ""))

@@ -91,6 +91,41 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
       },
+      /**
+       * Sistema de camadas (z-index) — fonte única da verdade.
+       * ──────────────────────────────────────────────────────
+       * Use SEMPRE estes tokens (z-nav, z-toast…) em vez de números mágicos
+       * (z-50, z-[100]) para evitar conflitos de sobreposição.
+       *
+       *   base       (1)   — empilhamento mínimo dentro do fluxo
+       *   sticky-low (10)  — sub-headers/listas internas
+       *   sticky-mid (20)  — pinned cards
+       *   page-header(30)  — cabeçalhos de páginas internas (Rounds, Voice…)
+       *   app-chrome (40)  — TopBar/AppSidebar do AppLayout
+       *   nav        (50)  — NavBar fixa (Landing, BottomNav)
+       *   status-bar (60)  — Faixa opaca cobrindo relógio/bateria (StatusBarScrim)
+       *   banner     (65)  — Banners globais (offline, PWA install, update)
+       *   floating   (70)  — Botões flutuantes (FAB, FloatingThemeToggle)
+       *   toast      (80)  — Notificações
+       *   modal      (90)  — Dialogs, Sheets, Drawers
+       *   tour       (100) — Overlay full-screen do tour guiado / WelcomeScreen
+       *   tour-pop   (110) — Tooltip do tour (acima do overlay)
+       */
+      zIndex: {
+        base: "1",
+        "sticky-low": "10",
+        "sticky-mid": "20",
+        "page-header": "30",
+        "app-chrome": "40",
+        nav: "50",
+        "status-bar": "60",
+        banner: "65",
+        floating: "70",
+        toast: "80",
+        modal: "90",
+        tour: "100",
+        "tour-pop": "110",
+      },
     },
   },
   plugins: [require("tailwindcss-animate")],

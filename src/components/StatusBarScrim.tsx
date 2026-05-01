@@ -20,7 +20,7 @@ export default function StatusBarScrim() {
   return (
     <div
       aria-hidden="true"
-      className="fixed top-0 left-0 right-0 z-[60] pointer-events-none bg-background"
+      className="fixed top-0 left-0 right-0 z-status-bar pointer-events-none bg-background"
       style={{ height: "env(safe-area-inset-top, 0px)" }}
     />
   );
