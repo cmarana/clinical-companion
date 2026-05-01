@@ -70,6 +70,7 @@ const AdminDashboard = lazy(() => import("@/pages/AdminDashboard"));
 const GovernanceDashboard = lazy(() => import("@/pages/GovernanceDashboard"));
 const AdminAiCosts = lazy(() => import("@/pages/AdminAiCosts"));
 const AdminTestUsers = lazy(() => import("@/pages/AdminTestUsers"));
+const AdminGuidelineReview = lazy(() => import("@/pages/AdminGuidelineReview"));
 const UserAnalytics = lazy(() => import("@/pages/UserAnalytics"));
 const UpdatesFeed = lazy(() => import("@/pages/UpdatesFeed"));
 
@@ -199,6 +200,7 @@ const AppRoutes = () => (
           <Route path="/admin/governance" element={<GovernanceDashboard />} />
           <Route path="/admin/ai-costs" element={<AdminAiCosts />} />
           <Route path="/admin/test-users" element={<AdminTestUsers />} />
+          <Route path="/admin/guideline-review" element={<AdminGuidelineReview />} />
         <Route path="/updates" element={<UpdatesFeed />} />
         
         <Route path="/referral" element={<Referral />} />

@@ -357,6 +357,14 @@ export default function AdminDashboard() {
             <Shield size={16} />
             Criar contas de teste Pro (acesso temporário)
           </Button>
+          <Button
+            variant="outline"
+            className="w-full h-auto py-3 flex-col gap-1 text-xs"
+            onClick={() => navigate("/admin/guideline-review")}
+          >
+            <RefreshCw size={16} />
+            Revisão de diretrizes 2026 (IA + aprovação manual)
+          </Button>
         </div>
       )}
 
