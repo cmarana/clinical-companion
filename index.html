@@ -36,47 +36,49 @@
 
     <!-- Inline splash screen — paints instantly, before JS loads -->
     <style>
-      :root { color-scheme: light dark; }
-      html, body { margin: 0; padding: 0; background: #0a0a0a; }
+      :root { color-scheme: light; }
+      html, body { margin: 0; padding: 0; background: #ffffff; }
       #pulso-splash {
         position: fixed; inset: 0; z-index: 2147483647;
         display: flex; flex-direction: column; align-items: center; justify-content: center;
-        background: radial-gradient(ellipse at center, #0f1d2e 0%, #0a0a0a 70%);
-        transition: opacity .35s ease, visibility .35s ease;
+        background: #ffffff;
+        transition: opacity .4s ease, visibility .4s ease;
         -webkit-tap-highlight-color: transparent;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
       }
       #pulso-splash.pulso-hide { opacity: 0; visibility: hidden; pointer-events: none; }
       #pulso-splash .pulso-logo {
-        width: 96px; height: 96px; border-radius: 22px;
-        box-shadow: 0 10px 40px rgba(10, 109, 217, .35), 0 0 0 1px rgba(255,255,255,.04);
-        animation: pulso-pop .6s cubic-bezier(.22,1,.36,1) both, pulso-beat 1.6s ease-in-out .6s infinite;
+        width: 112px; height: 112px; border-radius: 26px;
+        background: #ffffff;
+        box-shadow: 0 18px 50px rgba(10, 109, 217, .28), 0 0 0 1px rgba(10, 109, 217, .08);
+        animation: pulso-pop .55s cubic-bezier(.22,1,.36,1) both, pulso-beat 1.6s ease-in-out .55s infinite;
+        display: block;
       }
       #pulso-splash .pulso-name {
-        margin-top: 22px;
-        font: 700 22px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        letter-spacing: .28em; color: #fff;
+        margin-top: 26px;
+        font: 800 24px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        letter-spacing: .28em; color: #0a1628;
         opacity: 0; animation: pulso-fade .5s ease-out .25s forwards;
       }
       #pulso-splash .pulso-tag {
         margin-top: 10px;
-        font: 500 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        letter-spacing: .14em; text-transform: uppercase; color: #6b8aad;
+        font: 600 11px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        letter-spacing: .22em; text-transform: uppercase; color: #0a6dd9;
         opacity: 0; animation: pulso-fade .5s ease-out .45s forwards;
       }
       #pulso-splash .pulso-ecg {
-        position: absolute; bottom: 14%; left: 50%; transform: translateX(-50%);
-        width: 220px; height: 36px; overflow: hidden;
+        position: absolute; bottom: 18%; left: 50%; transform: translateX(-50%);
+        width: 240px; height: 40px; overflow: hidden;
         opacity: 0; animation: pulso-fade .5s ease-out .6s forwards;
       }
       #pulso-splash .pulso-ecg svg { width: 100%; height: 100%; display: block; }
       #pulso-splash .pulso-ecg path {
-        stroke: #0a6dd9; stroke-width: 2; fill: none;
+        stroke: #0a6dd9; stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round;
         stroke-dasharray: 600; stroke-dashoffset: 600;
         animation: pulso-ecg 1.8s linear infinite;
-        filter: drop-shadow(0 0 4px rgba(10,109,217,.6));
+        filter: drop-shadow(0 0 4px rgba(10,109,217,.45));
       }
-      @keyframes pulso-pop { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+      @keyframes pulso-pop { from { transform: scale(.78); opacity: 0; } to { transform: scale(1); opacity: 1; } }
       @keyframes pulso-beat { 0%,100% { transform: scale(1); } 12% { transform: scale(1.06); } 24% { transform: scale(1); } 36% { transform: scale(1.04); } 48% { transform: scale(1); } }
       @keyframes pulso-fade { to { opacity: 1; } }
       @keyframes pulso-ecg { to { stroke-dashoffset: 0; } }
@@ -170,38 +172,63 @@
 
   <body>
     <div id="pulso-splash" aria-hidden="true">
-      <img class="pulso-logo" src="/icons/icon-192.png" alt="" width="96" height="96" decoding="async" fetchpriority="high" />
+      <img class="pulso-logo" src="/icons/icon-192.png" alt="PULSO" width="112" height="112" decoding="async" fetchpriority="high" />
       <div class="pulso-name">PULSO</div>
       <div class="pulso-tag">Emergência Médica</div>
       <div class="pulso-ecg">
-        <svg viewBox="0 0 220 36" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M0,18 L40,18 L55,18 L62,8 L70,28 L78,4 L86,32 L94,18 L130,18 L145,18 L152,10 L160,26 L168,18 L220,18" />
+        <svg viewBox="0 0 240 40" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0,20 L50,20 L60,20 L68,8 L76,32 L84,4 L92,36 L100,20 L140,20 L155,20 L163,10 L171,30 L179,20 L240,20" />
         </svg>
       </div>
     </div>
     <div id="root"></div>
     <script>
-      // Hide splash as soon as React mounts the app, with a safety timeout
+      // Keep splash visible until the REAL app renders (not just the Suspense spinner).
+      // Hide criteria: #root contains a node taller than 200px (i.e. real page content),
+      // OR a hard cap of 8s, OR explicit __pulsoHideSplash() call from the app.
       (function(){
         var splash = document.getElementById('pulso-splash');
         if (!splash) return;
         var hidden = false;
-        function hide(){
+        var startedAt = Date.now();
+        var MIN_SHOW_MS = 700; // avoid flash if app loads instantly
+
+        function doHide(){
           if (hidden) return; hidden = true;
           splash.classList.add('pulso-hide');
-          setTimeout(function(){ splash && splash.parentNode && splash.parentNode.removeChild(splash); }, 400);
+          setTimeout(function(){
+            if (splash && splash.parentNode) splash.parentNode.removeChild(splash);
+          }, 450);
         }
-        // Watch for React mounting content into #root
+        function hide(){
+          var elapsed = Date.now() - startedAt;
+          if (elapsed < MIN_SHOW_MS) {
+            setTimeout(doHide, MIN_SHOW_MS - elapsed);
+          } else {
+            doHide();
+          }
+        }
+
         var root = document.getElementById('root');
+        function hasRealContent(){
+          if (!root) return false;
+          // Real content = at least one child node taller than 200px (skips spinner fallbacks)
+          var nodes = root.querySelectorAll('*');
+          for (var i = 0; i < Math.min(nodes.length, 50); i++) {
+            var r = nodes[i].getBoundingClientRect();
+            if (r.height > 200) return true;
+          }
+          return false;
+        }
+
         if (root && 'MutationObserver' in window) {
           var obs = new MutationObserver(function(){
-            if (root.childElementCount > 0) { obs.disconnect(); hide(); }
+            if (hasRealContent()) { obs.disconnect(); hide(); }
           });
-          obs.observe(root, { childList: true });
+          obs.observe(root, { childList: true, subtree: true });
         }
-        // Safety nets
-        window.addEventListener('load', function(){ setTimeout(hide, 300); });
-        setTimeout(hide, 6000);
+        // Safety: hard cap so the user never gets stuck on splash
+        setTimeout(hide, 8000);
         window.__pulsoHideSplash = hide;
       })();
     </script>
