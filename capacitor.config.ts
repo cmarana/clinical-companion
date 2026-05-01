@@ -5,7 +5,12 @@ const config: CapacitorConfig = {
   appName: 'PULSO',
   webDir: 'dist',
   ios: {
-    contentInset: 'automatic',
+    // 'never' = WebView desenha edge-to-edge sob a status bar.
+    // Necessário para que env(safe-area-inset-top) retorne o valor real
+    // (~47px em iPhones com notch / Dynamic Island) e empurre o header
+    // para baixo do horário/bateria. Com 'automatic', o WebKit aplica
+    // inset por conta própria e zera o env(), causando sobreposição.
+    contentInset: 'never',
     allowsLinkPreview: false,
     scrollEnabled: true,
     backgroundColor: '#0a0a0a',
