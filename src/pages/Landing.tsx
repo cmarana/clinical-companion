@@ -205,7 +205,8 @@ export default function Landing() {
 
       {/* ═══ NAVBAR ═══════════════════════════════════════════ */}
       <nav
-        className="sticky top-0 z-50 backdrop-blur-xl bg-background/95 border-b border-border/40 pt-safe-0"
+        className="sticky top-safe z-50 backdrop-blur-xl bg-background/80 border-b border-border/40 pt-safe-0"
+        style={{ paddingTop: "env(safe-area-inset-top)" }}
       >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
