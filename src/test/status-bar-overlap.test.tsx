@@ -27,9 +27,7 @@ function mount(node: React.ReactElement, hostId = "root"): HTMLElement {
   document.body.appendChild(host);
   return host.firstElementChild as HTMLElement;
 }
-import { readFileSync } from "fs";
-import { resolve } from "path";
-import StatusBarScrim from "@/components/StatusBarScrim";
+import type { ReactElement } from "react";
 
 interface DeviceProfile {
   name: string;
