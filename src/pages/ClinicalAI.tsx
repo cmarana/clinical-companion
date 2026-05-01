@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot, Mic, MicOff, Zap, FileText, Image as ImageIcon, Camera, Upload, X, ScanSearch } from "lucide-react";
+import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot, Mic, MicOff, Zap, FileText, Image as ImageIcon, Camera, Upload, X, ScanSearch, ShieldCheck } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import PremiumPageGuard from "@/components/PremiumPageGuard";
 import { Button } from "@/components/ui/button";
@@ -36,9 +36,13 @@ function ClinicalAIContent() {
   const [isLoading, setIsLoading] = useState(false);
   const [mode, setMode] = useState<"chat" | "structured" | "plantao" | "narrative" | "image">("chat");
   // Image analysis state
-  const [imageFile, setImageFile] = useState<string | null>(null); // data URL
+  const [originalImage, setOriginalImage] = useState<string | null>(null); // raw upload (data URL)
+  const [imageFile, setImageFile] = useState<string | null>(null); // what gets sent (possibly anonymized)
   const [imageContext, setImageContext] = useState("");
   const [imageAnalyzing, setImageAnalyzing] = useState(false);
+  const [anonymize, setAnonymize] = useState(true);
+  const [anonTopPct, setAnonTopPct] = useState(12); // % altura barra superior
+  const [anonBottomPct, setAnonBottomPct] = useState(8); // % altura barra inferior
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
   const [narrative, setNarrative] = useState("");
@@ -246,11 +250,74 @@ function ClinicalAIContent() {
     const reader = new FileReader();
     reader.onload = () => {
       const dataUrl = typeof reader.result === "string" ? reader.result : null;
-      if (dataUrl) setImageFile(dataUrl);
+      if (dataUrl) {
+        setOriginalImage(dataUrl);
+      }
     };
     reader.onerror = () => toast.error("Falha ao ler a imagem");
     reader.readAsDataURL(file);
   };
+
+  // Aplica tarjas pretas nas faixas superior e inferior (onde geralmente há nome,
+  // prontuário, data, instituição). Retorna data URL JPEG.
+  const applyAnonymization = useCallback(
+    (src: string, topPct: number, bottomPct: number): Promise<string> => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+          try {
+            const canvas = document.createElement("canvas");
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            const ctx = canvas.getContext("2d");
+            if (!ctx) return reject(new Error("Canvas indisponível"));
+            ctx.drawImage(img, 0, 0);
+            ctx.fillStyle = "#000";
+            const topH = Math.round((canvas.height * topPct) / 100);
+            const botH = Math.round((canvas.height * bottomPct) / 100);
+            if (topH > 0) ctx.fillRect(0, 0, canvas.width, topH);
+            if (botH > 0) ctx.fillRect(0, canvas.height - botH, canvas.width, botH);
+            // marca visual discreta
+            ctx.fillStyle = "rgba(255,255,255,0.85)";
+            ctx.font = `${Math.max(10, Math.round(canvas.height * 0.018))}px sans-serif`;
+            ctx.fillText("ANONIMIZADO • PULSO", 8, Math.max(14, topH - 6));
+            resolve(canvas.toDataURL("image/jpeg", 0.9));
+          } catch (e) {
+            reject(e);
+          }
+        };
+        img.onerror = () => reject(new Error("Falha ao processar imagem"));
+        img.src = src;
+      });
+    },
+    [],
+  );
+
+  // Recalcula a imagem que será enviada sempre que original / toggle / faixas mudam
+  useEffect(() => {
+    if (!originalImage) {
+      setImageFile(null);
+      return;
+    }
+    if (!anonymize) {
+      setImageFile(originalImage);
+      return;
+    }
+    let cancelled = false;
+    applyAnonymization(originalImage, anonTopPct, anonBottomPct)
+      .then((url) => {
+        if (!cancelled) setImageFile(url);
+      })
+      .catch(() => {
+        if (!cancelled) {
+          toast.error("Não foi possível anonimizar — enviando original");
+          setImageFile(originalImage);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [originalImage, anonymize, anonTopPct, anonBottomPct, applyAnonymization]);
 
   const handleImageAnalyze = async () => {
     if (!imageFile) {
@@ -266,6 +333,7 @@ function ClinicalAIContent() {
     if (patientCtx.weight) ctxParts.push(`Peso: ${patientCtx.weight}kg`);
     if (patientCtx.scenario) ctxParts.push(`Cenário: ${patientCtx.scenario}`);
     if (imageContext.trim()) ctxParts.push(`Indicação clínica: ${imageContext.trim()}`);
+    if (anonymize) ctxParts.push("Imagem anonimizada (faixas superior/inferior cobertas — ignore áreas pretas)");
     const fullContext = ctxParts.join(" | ");
 
     // Push user message with thumbnail marker
@@ -292,6 +360,7 @@ function ClinicalAIContent() {
       } else {
         const analysis: string = data?.analysis || "Sem resposta da IA.";
         setMessages((prev) => [...prev, { role: "assistant", content: analysis }]);
+        setOriginalImage(null);
         setImageFile(null);
         setImageContext("");
       }
@@ -561,7 +630,7 @@ function ClinicalAIContent() {
                 onChange={(e) => handleImageSelect(e.target.files?.[0] ?? null)}
               />
 
-              {!imageFile ? (
+              {!originalImage ? (
                 <div className="grid grid-cols-2 gap-2">
                   <button
                     type="button"
@@ -583,21 +652,90 @@ function ClinicalAIContent() {
                   </button>
                 </div>
               ) : (
-                <div className="relative rounded-xl overflow-hidden border border-border bg-muted/30">
-                  <img
-                    src={imageFile}
-                    alt="Pré-visualização do exame"
-                    className="w-full max-h-64 object-contain bg-black/5"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setImageFile(null)}
-                    className="absolute top-1.5 right-1.5 w-7 h-7 rounded-full bg-background/90 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors"
-                    title="Remover imagem"
-                  >
-                    <X size={14} />
-                  </button>
-                </div>
+                <>
+                  <div className="relative rounded-xl overflow-hidden border border-border bg-muted/30">
+                    <img
+                      src={imageFile || originalImage}
+                      alt="Pré-visualização do exame"
+                      className="w-full max-h-64 object-contain bg-black/5"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => { setOriginalImage(null); setImageFile(null); }}
+                      className="absolute top-1.5 right-1.5 w-7 h-7 rounded-full bg-background/90 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors"
+                      title="Remover imagem"
+                    >
+                      <X size={14} />
+                    </button>
+                    {anonymize && (
+                      <div className="absolute bottom-1.5 left-1.5 flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/90 text-white text-[9px] font-heading font-semibold backdrop-blur-sm">
+                        <ShieldCheck size={10} /> Anonimizado
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Anonymization controls */}
+                  <div className="rounded-xl border border-border bg-card/60 p-2.5 space-y-2">
+                    <label className="flex items-center justify-between gap-2 cursor-pointer">
+                      <span className="flex items-center gap-1.5 text-[11px] font-heading font-semibold">
+                        <ShieldCheck size={13} className="text-emerald-600 dark:text-emerald-400" />
+                        Anonimizar dados sensíveis
+                      </span>
+                      <button
+                        type="button"
+                        role="switch"
+                        aria-checked={anonymize}
+                        onClick={() => setAnonymize((v) => !v)}
+                        className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${
+                          anonymize ? "bg-primary" : "bg-muted"
+                        }`}
+                      >
+                        <span
+                          className={`inline-block h-4 w-4 transform rounded-full bg-background shadow transition-transform ${
+                            anonymize ? "translate-x-4" : "translate-x-0.5"
+                          }`}
+                        />
+                      </button>
+                    </label>
+                    <p className="text-[9px] text-muted-foreground leading-tight">
+                      Cobre nome, prontuário, data e instituição (faixas superior e inferior) antes do envio. Ajuste a cobertura se necessário.
+                    </p>
+                    {anonymize && (
+                      <div className="grid grid-cols-2 gap-2 pt-1">
+                        <div>
+                          <div className="flex items-center justify-between text-[9px] text-muted-foreground mb-0.5">
+                            <span>Topo</span>
+                            <span className="font-mono">{anonTopPct}%</span>
+                          </div>
+                          <input
+                            type="range"
+                            min={0}
+                            max={30}
+                            step={1}
+                            value={anonTopPct}
+                            onChange={(e) => setAnonTopPct(Number(e.target.value))}
+                            className="w-full accent-primary"
+                          />
+                        </div>
+                        <div>
+                          <div className="flex items-center justify-between text-[9px] text-muted-foreground mb-0.5">
+                            <span>Rodapé</span>
+                            <span className="font-mono">{anonBottomPct}%</span>
+                          </div>
+                          <input
+                            type="range"
+                            min={0}
+                            max={30}
+                            step={1}
+                            value={anonBottomPct}
+                            onChange={(e) => setAnonBottomPct(Number(e.target.value))}
+                            className="w-full accent-primary"
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </>
               )}
 
               <Input
