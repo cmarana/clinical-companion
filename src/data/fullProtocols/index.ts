@@ -466,6 +466,18 @@ export const fullProtocols: FullProtocol[] = [
 
   // ===== Edição 2026 — Protocolos críticos novos =====
   ...newProtocols2026,
+
+  // ===== Batch 13 — Expansão clínica 2026 =====
+  ...cardioFullProtocols13,
+  ...neuroFullProtocols11,
+  ...pediatricFullProtocols7,
+  ...infectiousFullProtocols9,
+  ...traumaFullProtocols9,
+  ...obstetricsFullProtocols10,
+  ...metabolicFullProtocols9,
+  ...psychiatryFullProtocols7,
+  ...geriatricsFullProtocols7,
+  ...respiratoryFullProtocols10,
 ];
 
 // ==================== Aplicar atualizações 2025/2026 ====================
