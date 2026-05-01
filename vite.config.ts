@@ -65,6 +65,12 @@ export default defineConfig(({ mode }) => {
       "import.meta.env.VITE_BUILD_ID": JSON.stringify(BUILD_ID),
     },
     plugins: [react(), mode === "development" && componentTagger(), versionPlugin()].filter(Boolean),
+    // Pre-bundle Capacitor packages so Vite doesn't trigger a runtime
+    // re-optimization (which invalidates chunk hashes and causes
+    // "Importing a module script failed" errors after first dynamic import).
+    optimizeDeps: {
+      include: ["@capacitor/core", "@capacitor/status-bar"],
+    },
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),
