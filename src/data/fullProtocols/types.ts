@@ -36,6 +36,8 @@ export interface FullProtocol {
   evidence?: EvidenceLevel;
   /** Diretrizes/fontes oficiais citadas (com link para auditoria e atualização). */
   guidelines?: GuidelineSource[];
+  /** Marca da última revisão editorial PULSO (formato "YYYY-MM"). Usado para badge "Revisado em". */
+  lastReviewed?: string;
   sections: FullProtocolSection[];
 }
 
