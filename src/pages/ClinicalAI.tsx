@@ -36,12 +36,15 @@ function ClinicalAIContent() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [mode, setMode] = useState<"chat" | "structured" | "plantao" | "narrative" | "image">("chat");
-  // Image analysis state — suporta lote (até MAX_IMAGES)
+  // Image / Document analysis state — suporta lote
   const MAX_IMAGES = 5;
+  const MAX_DOCS = 3;
   const [originalImages, setOriginalImages] = useState<string[]>([]); // raw uploads
   const [imageFiles, setImageFiles] = useState<string[]>([]); // versões enviadas (possivelmente anonimizadas)
+  const [documents, setDocuments] = useState<ExtractedPdf[]>([]); // PDFs com texto extraído
   const [imageContext, setImageContext] = useState("");
   const [imageAnalyzing, setImageAnalyzing] = useState(false);
+  const [pdfLoading, setPdfLoading] = useState(false);
   const [anonymize, setAnonymize] = useState(true);
   const [anonTopPct, setAnonTopPct] = useState(12);
   const [anonBottomPct, setAnonBottomPct] = useState(8);
