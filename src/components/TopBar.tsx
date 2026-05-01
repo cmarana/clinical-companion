@@ -100,7 +100,7 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
         <>
           <div className="fixed inset-0 z-30" onClick={() => setShowSettings(false)} />
           <div
-            className="sticky z-[35] top-after-topbar mx-3 mt-0 bg-card border border-border rounded-2xl shadow-lg p-4 space-y-4"
+            className="sticky z-page-header top-after-topbar mx-3 mt-0 bg-card border border-border rounded-2xl shadow-lg p-4 space-y-4"
           >
             {/* Theme toggle */}
             <div className="flex items-center justify-between">

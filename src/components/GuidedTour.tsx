@@ -147,7 +147,7 @@ export default function GuidedTour() {
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
-        className="fixed inset-0 z-[100]"
+        className="fixed inset-0 z-tour"
         onClick={(e) => {
           if (e.target === overlayRef.current) next();
         }}
@@ -199,7 +199,7 @@ export default function GuidedTour() {
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, scale: 0.95 }}
           transition={{ duration: 0.25 }}
-          className="absolute z-[101] w-[calc(100%-32px)] max-w-[320px] bg-card border border-border rounded-2xl shadow-2xl p-4"
+          className="absolute z-tour-pop w-[calc(100%-32px)] max-w-[320px] bg-card border border-border rounded-2xl shadow-2xl p-4"
           style={tooltipStyle}
         >
           {/* Skip button */}
