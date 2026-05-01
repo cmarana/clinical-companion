@@ -646,8 +646,12 @@ function ClinicalAIContent() {
                 ref={fileInputRef}
                 type="file"
                 accept="image/*"
+                multiple
                 className="hidden"
-                onChange={(e) => handleImageSelect(e.target.files?.[0] ?? null)}
+                onChange={(e) => {
+                  handleImageSelect(e.target.files);
+                  e.target.value = "";
+                }}
               />
               <input
                 ref={cameraInputRef}
@@ -655,10 +659,13 @@ function ClinicalAIContent() {
                 accept="image/*"
                 capture="environment"
                 className="hidden"
-                onChange={(e) => handleImageSelect(e.target.files?.[0] ?? null)}
+                onChange={(e) => {
+                  handleImageSelect(e.target.files);
+                  e.target.value = "";
+                }}
               />
 
-              {!originalImage ? (
+              {originalImages.length === 0 ? (
                 <div className="grid grid-cols-2 gap-2">
                   <button
                     type="button"
@@ -675,31 +682,63 @@ function ClinicalAIContent() {
                     className="flex flex-col items-center justify-center gap-1.5 py-4 rounded-xl border-2 border-dashed border-border bg-muted/30 hover:bg-muted/60 active:scale-[0.98] transition-all"
                   >
                     <Upload size={22} className="text-muted-foreground" />
-                    <span className="text-[11px] font-heading font-semibold">Enviar arquivo</span>
-                    <span className="text-[9px] text-muted-foreground">JPG, PNG (até 6MB)</span>
+                    <span className="text-[11px] font-heading font-semibold">Enviar arquivos</span>
+                    <span className="text-[9px] text-muted-foreground">Até {MAX_IMAGES} • 6MB cada</span>
                   </button>
                 </div>
               ) : (
                 <>
-                  <div className="relative rounded-xl overflow-hidden border border-border bg-muted/30">
-                    <img
-                      src={imageFile || originalImage}
-                      alt="Pré-visualização do exame"
-                      className="w-full max-h-64 object-contain bg-black/5"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => { setOriginalImage(null); setImageFile(null); }}
-                      className="absolute top-1.5 right-1.5 w-7 h-7 rounded-full bg-background/90 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors"
-                      title="Remover imagem"
-                    >
-                      <X size={14} />
-                    </button>
-                    {anonymize && (
-                      <div className="absolute bottom-1.5 left-1.5 flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/90 text-white text-[9px] font-heading font-semibold backdrop-blur-sm">
-                        <ShieldCheck size={10} /> Anonimizado
-                      </div>
-                    )}
+                  {/* Galeria do lote */}
+                  <div className="rounded-xl border border-border bg-muted/30 p-2">
+                    <div className="flex items-center justify-between mb-1.5 px-0.5">
+                      <span className="text-[10px] font-heading font-semibold text-muted-foreground">
+                        {originalImages.length} de {MAX_IMAGES} imagem{originalImages.length > 1 ? "ns" : ""}
+                      </span>
+                      {originalImages.length < MAX_IMAGES && (
+                        <div className="flex gap-1">
+                          <button
+                            type="button"
+                            onClick={() => cameraInputRef.current?.click()}
+                            className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-primary/10 text-primary text-[10px] font-heading font-semibold hover:bg-primary/20 transition-colors"
+                          >
+                            <Camera size={11} /> Foto
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => fileInputRef.current?.click()}
+                            className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-muted text-foreground text-[10px] font-heading font-semibold hover:bg-accent transition-colors"
+                          >
+                            <Upload size={11} /> Adicionar
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                    <div className="grid grid-cols-3 gap-1.5">
+                      {originalImages.map((src, idx) => {
+                        const preview = imageFiles[idx] || src;
+                        return (
+                          <div key={idx} className="relative aspect-square rounded-lg overflow-hidden border border-border bg-black/5 group">
+                            <img src={preview} alt={`Imagem ${idx + 1}`} className="w-full h-full object-cover" />
+                            <div className="absolute top-0.5 left-0.5 px-1.5 py-0.5 rounded bg-background/80 backdrop-blur-sm text-[9px] font-heading font-bold">
+                              {idx + 1}
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => removeImageAt(idx)}
+                              className="absolute top-0.5 right-0.5 w-5 h-5 rounded-full bg-background/90 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors"
+                              title="Remover"
+                            >
+                              <X size={11} />
+                            </button>
+                            {anonymize && (
+                              <div className="absolute bottom-0.5 left-0.5 right-0.5 flex items-center justify-center gap-0.5 px-1 py-0.5 rounded bg-emerald-500/90 text-white text-[8px] font-heading font-semibold backdrop-blur-sm">
+                                <ShieldCheck size={8} /> Anon.
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
 
                   {/* Anonymization controls */}
@@ -726,7 +765,7 @@ function ClinicalAIContent() {
                       </button>
                     </label>
                     <p className="text-[9px] text-muted-foreground leading-tight">
-                      Cobre nome, prontuário, data e instituição (faixas superior e inferior) antes do envio. Ajuste a cobertura se necessário.
+                      Cobre nome, prontuário, data e instituição (faixas superior e inferior) em todas as imagens do lote.
                     </p>
                     {anonymize && (
                       <div className="grid grid-cols-2 gap-2 pt-1">
@@ -777,13 +816,13 @@ function ClinicalAIContent() {
               <Button
                 type="button"
                 onClick={handleImageAnalyze}
-                disabled={!imageFile || imageAnalyzing}
+                disabled={imageFiles.length === 0 || imageAnalyzing}
                 className="w-full h-9 text-xs rounded-xl"
               >
                 {imageAnalyzing ? (
-                  <><Loader2 size={14} className="animate-spin mr-1.5" /> Analisando imagem...</>
+                  <><Loader2 size={14} className="animate-spin mr-1.5" /> Analisando {imageFiles.length > 1 ? `${imageFiles.length} imagens` : "imagem"}...</>
                 ) : (
-                  <><ScanSearch size={14} className="mr-1.5" /> Analisar imagem</>
+                  <><ScanSearch size={14} className="mr-1.5" /> Analisar {imageFiles.length > 1 ? `${imageFiles.length} imagens` : "imagem"}</>
                 )}
               </Button>
 
