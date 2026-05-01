@@ -200,6 +200,7 @@ const AppRoutes = () => (
           <Route path="/admin/governance" element={<GovernanceDashboard />} />
           <Route path="/admin/ai-costs" element={<AdminAiCosts />} />
           <Route path="/admin/test-users" element={<AdminTestUsers />} />
+          <Route path="/admin/guideline-review" element={<AdminGuidelineReview />} />
         <Route path="/updates" element={<UpdatesFeed />} />
         
         <Route path="/referral" element={<Referral />} />
