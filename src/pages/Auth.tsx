@@ -293,25 +293,44 @@ export default function Auth() {
         </>
       )}
 
+      {/* Banner de erro inline (acessível) */}
+      {errorMsg && (
+        <motion.div
+          role="alert"
+          aria-live="assertive"
+          initial={{ opacity: 0, y: -6 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex items-start gap-2 rounded-xl border border-destructive/30 bg-destructive/10 px-3 py-2.5 text-xs text-destructive"
+        >
+          <AlertCircle size={14} className="mt-0.5 shrink-0" />
+          <span className="leading-snug">{errorMsg}</span>
+        </motion.div>
+      )}
+
       {/* Email form */}
-      <form onSubmit={handleAuth} className="space-y-3">
+      <form onSubmit={handleAuth} className="space-y-3" aria-busy={loading}>
         {!resetMode && !isLogin && (
           <Input
             type="text"
             placeholder="Nome completo"
             value={fullName}
-            onChange={(e) => setFullName(e.target.value)}
+            onChange={(e) => { setFullName(e.target.value); if (errorMsg) setErrorMsg(null); }}
             required
-            className="h-12 rounded-xl bg-muted/50 border-border/50 focus:bg-background transition-colors"
+            disabled={loading}
+            autoComplete="name"
+            className="h-12 rounded-xl bg-muted/50 border-border/50 focus:bg-background transition-colors disabled:opacity-60"
           />
         )}
         <Input
           type="email"
           placeholder="E-mail"
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => { setEmail(e.target.value); if (errorMsg) setErrorMsg(null); }}
           required
-          className="h-12 rounded-xl bg-muted/50 border-border/50 focus:bg-background transition-colors"
+          disabled={loading}
+          autoComplete="email"
+          inputMode="email"
+          className="h-12 rounded-xl bg-muted/50 border-border/50 focus:bg-background transition-colors disabled:opacity-60"
         />
         {!resetMode && (
           <div className="relative">
@@ -319,15 +338,19 @@ export default function Auth() {
               type={showPassword ? "text" : "password"}
               placeholder="Senha"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => { setPassword(e.target.value); if (errorMsg) setErrorMsg(null); }}
               required
               minLength={6}
-              className="h-12 rounded-xl bg-muted/50 border-border/50 focus:bg-background transition-colors"
+              disabled={loading}
+              autoComplete={isLogin ? "current-password" : "new-password"}
+              className="h-12 rounded-xl bg-muted/50 border-border/50 focus:bg-background transition-colors disabled:opacity-60"
             />
             <button
               type="button"
               onClick={() => setShowPassword(!showPassword)}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors"
+              disabled={loading}
+              aria-label={showPassword ? "Ocultar senha" : "Mostrar senha"}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground hover:text-foreground transition-colors disabled:opacity-50"
             >
               {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
             </button>
@@ -336,9 +359,16 @@ export default function Auth() {
         <Button
           type="submit"
           className="w-full h-12 rounded-xl font-heading font-semibold text-sm shadow-lg shadow-primary/20"
-          disabled={loading}
+          disabled={loading || socialLoading !== null}
         >
-          {loading ? "Aguarde..." : resetMode ? "Enviar link de recuperação" : isLogin ? "Entrar" : "Criar conta grátis"}
+          {loading ? (
+            <span className="inline-flex items-center gap-2">
+              <Loader2 size={16} className="animate-spin" />
+              {resetMode ? "Enviando link..." : isLogin ? "Entrando..." : "Criando conta..."}
+            </span>
+          ) : (
+            resetMode ? "Enviar link de recuperação" : isLogin ? "Entrar" : "Criar conta grátis"
+          )}
         </Button>
       </form>
 
