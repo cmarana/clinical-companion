@@ -15,6 +15,9 @@ const config: CapacitorConfig = {
     backgroundColor: '#0a0a0a',
     allowMixedContent: false,
     useLegacyBridge: false,
+    // Draw under the system bars so we can use CSS env(safe-area-inset-*)
+    // to keep the clock, signal and battery icons visible on top.
+    adjustMarginsForEdgeToEdge: 'force',
   },
   plugins: {
     SplashScreen: {
@@ -31,7 +34,7 @@ const config: CapacitorConfig = {
     },
     StatusBar: {
       style: 'DARK',
-      backgroundColor: '#0a0a0a',
+      backgroundColor: '#00000000',
       overlaysWebView: true,
     },
     Keyboard: {

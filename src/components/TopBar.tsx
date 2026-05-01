@@ -48,11 +48,13 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
   return (
     <>
       <header
+        style={{ paddingTop: "env(safe-area-inset-top, 0px)" }}
         className={cn(
-          "sticky top-0 z-40 flex items-center h-12 px-3 border-b border-border bg-card/95 backdrop-blur-md gap-2",
+          "sticky top-0 z-40 border-b border-border bg-card/95 backdrop-blur-md",
           className
         )}
       >
+        <div className="flex items-center h-12 px-3 gap-2">
         {canGoBack && (
           <button onClick={() => { hapticLight(); navigate(-1); }} className="p-1.5 -ml-1 rounded-md hover:bg-accent active:scale-90 transition-all text-foreground">
             <ArrowLeft size={20} />
@@ -82,10 +84,14 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
         >
           <Settings size={18} />
         </button>
+        </div>
       </header>
 
       {showReconnected && (
-        <div className="sticky top-12 z-40 flex items-center justify-center gap-1.5 py-1.5 bg-emerald-500/15 border-b border-emerald-500/25 animate-in slide-in-from-top fade-in duration-300">
+        <div
+          style={{ top: "calc(env(safe-area-inset-top, 0px) + 3rem)" }}
+          className="sticky z-40 flex items-center justify-center gap-1.5 py-1.5 bg-emerald-500/15 border-b border-emerald-500/25 animate-in slide-in-from-top fade-in duration-300"
+        >
           <Wifi size={13} className="text-emerald-500" />
           <span className="text-[11px] font-heading font-semibold text-emerald-500">Conexão restabelecida</span>
         </div>
@@ -95,7 +101,10 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
       {showSettings && (
         <>
           <div className="fixed inset-0 z-30" onClick={() => setShowSettings(false)} />
-          <div className="sticky top-12 z-35 mx-3 mt-0 bg-card border border-border rounded-2xl shadow-lg p-4 space-y-4" style={{ zIndex: 35 }}>
+          <div
+            className="sticky z-35 mx-3 mt-0 bg-card border border-border rounded-2xl shadow-lg p-4 space-y-4"
+            style={{ zIndex: 35, top: "calc(env(safe-area-inset-top, 0px) + 3rem)" }}
+          >
             {/* Theme toggle */}
             <div className="flex items-center justify-between">
               <span className="text-xs font-semibold">Modo escuro</span>

@@ -150,12 +150,21 @@
     opacity: 0.7;
     transition: opacity 0.1s ease;
   }
-  /* Safe area padding for notched devices */
+  /* Safe area padding for notched devices (iPhone) and edge-to-edge Android */
   .safe-area-top {
     padding-top: env(safe-area-inset-top, 0px);
   }
   .safe-area-bottom {
     padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .pt-safe {
+    padding-top: calc(env(safe-area-inset-top, 0px) + 0.75rem);
+  }
+  .pt-safe-0 {
+    padding-top: env(safe-area-inset-top, 0px);
+  }
+  .top-safe {
+    top: env(safe-area-inset-top, 0px);
   }
 }
 
