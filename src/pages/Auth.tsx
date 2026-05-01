@@ -102,6 +102,7 @@ export default function Auth() {
     return "";
   };
   const [email, setEmail] = useState(getInitialEmail);
+  const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
