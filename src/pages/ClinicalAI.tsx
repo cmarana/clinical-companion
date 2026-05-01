@@ -359,6 +359,7 @@ function ClinicalAIContent() {
       } else {
         const analysis: string = data?.analysis || "Sem resposta da IA.";
         setMessages((prev) => [...prev, { role: "assistant", content: analysis }]);
+        setOriginalImage(null);
         setImageFile(null);
         setImageContext("");
       }
