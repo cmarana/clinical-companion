@@ -242,14 +242,42 @@
         }
 
         // Hard safety cap
-        setTimeout(hide, 6000);
+        setTimeout(hide, 4500);
 
-        // If main script fails to load/execute, show a friendly error after 10s
-        setTimeout(function(){
+        function showError(reason){
+          if (!splash || !splash.parentNode) return;
+          splash.classList.remove('pulso-hide');
+          splash.style.opacity = '1';
+          splash.style.visibility = 'visible';
+          splash.innerHTML = '<div style="text-align:center;font-family:-apple-system,sans-serif;color:#0a1628;padding:24px;max-width:340px"><div style="font-weight:800;letter-spacing:.2em;font-size:20px;margin-bottom:12px;color:#0a6dd9">PULSO</div><div style="font-size:14px;line-height:1.5;margin-bottom:16px">Não foi possível carregar o aplicativo. Toque em recarregar para tentar novamente.</div><button id="pulso-reload" style="background:#0a6dd9;color:#fff;border:0;padding:12px 24px;border-radius:10px;font-weight:600;font-size:14px">Recarregar</button><div style="font-size:10px;color:#64748b;margin-top:12px;opacity:.7">' + (reason || '') + '</div></div>';
+          var btn = document.getElementById('pulso-reload');
+          if (btn) btn.onclick = function(){
+            try {
+              if ('caches' in window) caches.keys().then(function(k){ k.forEach(function(n){ caches.delete(n); }); });
+              if ('serviceWorker' in navigator) navigator.serviceWorker.getRegistrations().then(function(r){ r.forEach(function(x){ x.unregister(); }); });
+            } catch(e) {}
+            setTimeout(function(){ location.reload(); }, 150);
+          };
+        }
+
+        // If the JS bundle itself errors out (e.g. TDZ in a vendor chunk),
+        // show the recovery screen IMMEDIATELY instead of waiting 10s.
+        window.addEventListener('error', function(ev){
           if (root && root.childNodes.length === 0) {
-            splash.innerHTML = '<div style="text-align:center;font-family:-apple-system,sans-serif;color:#0a1628;padding:24px;max-width:320px"><div style="font-weight:800;letter-spacing:.2em;font-size:20px;margin-bottom:12px;color:#0a6dd9">PULSO</div><div style="font-size:14px;line-height:1.5;margin-bottom:16px">Não foi possível carregar o aplicativo. Verifique sua conexão e tente novamente.</div><button onclick="location.reload()" style="background:#0a6dd9;color:#fff;border:0;padding:12px 24px;border-radius:10px;font-weight:600;font-size:14px">Recarregar</button></div>';
+            showError(ev && ev.message ? ev.message : 'Erro de carregamento');
           }
-        }, 10000);
+        });
+        window.addEventListener('unhandledrejection', function(ev){
+          if (root && root.childNodes.length === 0) {
+            var msg = ev && ev.reason && ev.reason.message ? ev.reason.message : 'Falha ao carregar';
+            showError(msg);
+          }
+        });
+
+        // Last-resort: if main script fails to ever render anything in 8s
+        setTimeout(function(){
+          if (root && root.childNodes.length === 0) showError('Tempo esgotado');
+        }, 8000);
       })();
     </script>
     <script>
