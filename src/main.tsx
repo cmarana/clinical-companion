@@ -1,5 +1,6 @@
 import { createRoot } from "react-dom/client";
 import "./index.css";
+import { startVersionWatcher } from "./lib/version-check";
 
 // Shim storage ASAP — before ANY other module touches localStorage
 const createMemStore = (): Storage => {
