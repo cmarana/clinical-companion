@@ -491,6 +491,25 @@ function ClinicalAIContent() {
           ? `> 🔎 **Classificação automática:** ${cls.map((c) => `Imagem ${c.i} — ${c.modality} (${c.region})`).join(" · ")}\n\n`
           : "";
         setMessages((prev) => [...prev, { role: "assistant", content: clsBanner + analysis }]);
+
+        // Salva no histórico (best-effort, não bloqueia UX)
+        try {
+          const thumb = originalImages[0] ? await makeThumbnail(originalImages[0]) : undefined;
+          const primaryModality = cls[0]?.modality || (documents.length > 0 ? "DOC" : "OUTRO");
+          addImageHistoryEntry({
+            imagesCount: originalImages.length,
+            docsCount: documents.length,
+            docNames: documents.map((d) => d.fileName),
+            context: imageContext.trim(),
+            classifications: cls,
+            primaryModality,
+            analysis: clsBanner + analysis,
+            thumbnail: thumb,
+          });
+        } catch (err) {
+          console.warn("[history] save failed:", err);
+        }
+
         setOriginalImages([]);
         setImageFiles([]);
         setDocuments([]);
