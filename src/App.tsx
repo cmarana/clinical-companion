@@ -100,10 +100,10 @@ const queryClient = new QueryClient({
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading, profileComplete } = useAuth();
-  if (loading) return <div className="min-h-screen flex items-center justify-center bg-background text-muted-foreground">Carregando...</div>;
+  if (loading) return <LazyFallback />;
   if (!user) return <Navigate to="/auth" replace />;
   // Wait for profile check to finish
-  if (profileComplete === null) return <div className="min-h-screen flex items-center justify-center bg-background"><div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" /></div>;
+  if (profileComplete === null) return <LazyFallback />;
   // Skip onboarding redirect if user just completed it (heading to /pricing)
   const justOnboarded = sessionStorage.getItem("pulso_just_onboarded") === "1";
   if (!profileComplete && !justOnboarded) return <Navigate to="/onboarding" replace />;
@@ -112,9 +112,11 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 
 const LazyFallback = () => (
   <div className="min-h-screen flex items-center justify-center bg-background">
-    <div className="flex flex-col items-center gap-3">
-      <div className="w-8 h-8 border-2 border-primary border-t-transparent rounded-full animate-spin" />
-      <span className="text-muted-foreground text-sm">Carregando...</span>
+    <div className="flex flex-col items-center gap-4">
+      <div className="relative w-12 h-12">
+        <div className="absolute inset-0 rounded-full border-2 border-primary/20" />
+        <div className="absolute inset-0 rounded-full border-2 border-primary border-t-transparent animate-spin" />
+      </div>
     </div>
   </div>
 );
