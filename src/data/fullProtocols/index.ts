@@ -261,6 +261,28 @@ import { pediFullProtocols10 } from "./pediatric10";
 import { obstFullProtocols13 } from "./obstetrics13";
 import { nephrologyFullProtocols7 } from "./nephrology7";
 
+// Batch 17 e 18 — expansão clínica 2026
+import { cardioFullProtocols17 } from "./cardiology17";
+import { neuroFullProtocols15 } from "./neurology15";
+import { sepsisFullProtocols12 } from "./sepsis12";
+import { respiraFullProtocols14 } from "./respiratory14";
+import { metaboFullProtocols13 } from "./metabolic13";
+import { infectFullProtocols13 } from "./infectious13";
+import { traumaFullProtocols13 } from "./trauma13";
+import { pediFullProtocols11 } from "./pediatric11";
+import { obstFullProtocols14 } from "./obstetrics14";
+import { hematoFullProtocols9 } from "./hematology9";
+import { cardioFullProtocols18 } from "./cardiology18";
+import { neuroFullProtocols16 } from "./neurology16";
+import { emergencyFullProtocols7 } from "./emergency7";
+import { intoxFullProtocols7 } from "./intoxication7";
+import { proceduresFullProtocols8 } from "./procedures8";
+import { gynecologyFullProtocols7 } from "./gynecology7";
+import { dermatologyFullProtocols8 } from "./dermatology8";
+import { ophthalmologyFullProtocols7 } from "./ophthalmology7";
+import { geriatricsFullProtocols8 } from "./geriatrics8";
+import { nephrologyFullProtocols8 } from "./nephrology8";
+
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
   { id: "cardiology", title: "Cardiologia", order: 2 },
@@ -550,6 +572,28 @@ export const fullProtocols: FullProtocol[] = [
   ...pediFullProtocols10,
   ...obstFullProtocols13,
   ...nephrologyFullProtocols7,
+
+  // ===== Batch 17 e 18 — Expansão clínica 2026 =====
+  ...cardioFullProtocols17,
+  ...neuroFullProtocols15,
+  ...sepsisFullProtocols12,
+  ...respiraFullProtocols14,
+  ...metaboFullProtocols13,
+  ...infectFullProtocols13,
+  ...traumaFullProtocols13,
+  ...pediFullProtocols11,
+  ...obstFullProtocols14,
+  ...hematoFullProtocols9,
+  ...cardioFullProtocols18,
+  ...neuroFullProtocols16,
+  ...emergencyFullProtocols7,
+  ...intoxFullProtocols7,
+  ...proceduresFullProtocols8,
+  ...gynecologyFullProtocols7,
+  ...dermatologyFullProtocols8,
+  ...ophthalmologyFullProtocols7,
+  ...geriatricsFullProtocols8,
+  ...nephrologyFullProtocols8,
 ];
 
 // ==================== Aplicar atualizações 2025/2026 ====================
