@@ -538,6 +538,18 @@ export const fullProtocols: FullProtocol[] = [
   ...pediFullProtocols9,
   ...obstFullProtocols12,
   ...hematoFullProtocols8,
+
+  // ===== Batch 16 — Expansão clínica 2026 =====
+  ...cardioFullProtocols16,
+  ...neuroFullProtocols14,
+  ...sepsisFullProtocols11,
+  ...respiraFullProtocols13,
+  ...metaboFullProtocols12,
+  ...infectFullProtocols12,
+  ...traumaFullProtocols12,
+  ...pediFullProtocols10,
+  ...obstFullProtocols13,
+  ...nephrologyFullProtocols7,
 ];
 
 // ==================== Aplicar atualizações 2025/2026 ====================
