@@ -335,7 +335,7 @@ export default function Landing() {
             initial="hidden" animate="visible" variants={fadeUp} custom={2}
           >
             A plataforma mais completa para médicos plantonistas.{" "}
-            Protocolos, IA clínica multimodal, calculadoras e 1.400+ fármacos —{" "}
+            Protocolos, IA clínica multimodal, calculadoras e 1.500+ fármacos —{" "}
             <span className="text-foreground font-medium">tudo offline, no seu bolso.</span>
           </motion.p>
 
