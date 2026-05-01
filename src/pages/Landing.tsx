@@ -188,6 +188,15 @@ export default function Landing() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  // Hide the inline HTML splash as soon as the Landing actually paints.
+  useEffect(() => {
+    const hide = (window as unknown as { __pulsoHideSplash?: () => void }).__pulsoHideSplash;
+    if (typeof hide === "function") {
+      // wait one frame so the first content has painted
+      requestAnimationFrame(() => requestAnimationFrame(hide));
+    }
+  }, []);
+
   const pulsoLogo = theme === "light" ? pulsoLogoLight : pulsoLogoDark;
   const themeIcon = theme === "oled" ? <Eclipse size={16} /> : theme === "dark" ? <Sun size={16} /> : <Moon size={16} />;
 
