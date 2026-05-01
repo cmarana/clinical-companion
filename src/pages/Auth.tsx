@@ -132,8 +132,37 @@ export default function Auth() {
     }
   }, [showAuthForm]);
 
+  // Mapeia erros do Supabase Auth para mensagens em PT-BR claras e acionáveis
+  const mapAuthError = (err: any, ctx: "login" | "signup" | "reset"): string => {
+    const raw = (err?.message || err?.error_description || "").toString();
+    const code = (err?.code || err?.error || "").toString().toLowerCase();
+    const m = raw.toLowerCase();
+    if (m.includes("invalid login credentials") || code === "invalid_credentials")
+      return "E-mail ou senha incorretos. Verifique seus dados ou use “Esqueceu a senha?”.";
+    if (m.includes("email not confirmed") || code === "email_not_confirmed")
+      return "Confirme seu e-mail antes de entrar. Reenviamos o link para a sua caixa de entrada.";
+    if (m.includes("user already registered") || m.includes("already been registered") || code === "user_already_exists")
+      return "Já existe uma conta com este e-mail. Entre normalmente ou recupere sua senha.";
+    if (m.includes("password should be at least"))
+      return "A senha deve ter pelo menos 6 caracteres.";
+    if (m.includes("weak password") || code === "weak_password")
+      return "Senha muito fraca. Use letras, números e pelo menos 6 caracteres.";
+    if (m.includes("rate limit") || m.includes("too many requests") || code === "over_request_rate_limit")
+      return "Muitas tentativas em pouco tempo. Aguarde 1 minuto e tente novamente.";
+    if (m.includes("network") || m.includes("failed to fetch") || m.includes("load failed"))
+      return "Sem conexão com a internet. Verifique sua rede e tente de novo.";
+    if (m.includes("invalid email") || code === "validation_failed")
+      return "E-mail inválido. Confira a digitação.";
+    if (m.includes("user not found"))
+      return ctx === "reset"
+        ? "Não encontramos uma conta com este e-mail."
+        : "Conta não encontrada. Cadastre-se para começar.";
+    return raw || "Ocorreu um erro inesperado. Tente novamente em instantes.";
+  };
+
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrorMsg(null);
     setLoading(true);
     try {
       if (resetMode) {
@@ -159,10 +188,13 @@ export default function Auth() {
         });
         if (error) throw error;
         try { localStorage.setItem("pulso_last_email", email); } catch { /* noop */ }
-        toast({ title: "Conta criada!", description: "Verifique seu e-mail para confirmar o cadastro." });
+        toast({ title: "Conta criada!", description: "Enviamos um link de confirmação para o seu e-mail." });
       }
     } catch (err: any) {
-      toast({ title: "Erro", description: err.message, variant: "destructive" });
+      const ctx = resetMode ? "reset" : isLogin ? "login" : "signup";
+      const msg = mapAuthError(err, ctx);
+      setErrorMsg(msg);
+      toast({ title: "Não foi possível continuar", description: msg, variant: "destructive" });
     } finally {
       setLoading(false);
     }
