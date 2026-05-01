@@ -249,6 +249,18 @@ import { pediFullProtocols9 } from "./pediatric9";
 import { obstFullProtocols12 } from "./obstetrics12";
 import { hematoFullProtocols8 } from "./hematology8";
 
+// Batch 16 — expansão clínica 2026
+import { cardioFullProtocols16 } from "./cardiology16";
+import { neuroFullProtocols14 } from "./neurology14";
+import { sepsisFullProtocols11 } from "./sepsis11";
+import { respiraFullProtocols13 } from "./respiratory13";
+import { metaboFullProtocols12 } from "./metabolic12";
+import { infectFullProtocols12 } from "./infectious12";
+import { traumaFullProtocols12 } from "./trauma12";
+import { pediFullProtocols10 } from "./pediatric10";
+import { obstFullProtocols13 } from "./obstetrics13";
+import { nephrologyFullProtocols7 } from "./nephrology7";
+
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
   { id: "cardiology", title: "Cardiologia", order: 2 },
@@ -526,6 +538,18 @@ export const fullProtocols: FullProtocol[] = [
   ...pediFullProtocols9,
   ...obstFullProtocols12,
   ...hematoFullProtocols8,
+
+  // ===== Batch 16 — Expansão clínica 2026 =====
+  ...cardioFullProtocols16,
+  ...neuroFullProtocols14,
+  ...sepsisFullProtocols11,
+  ...respiraFullProtocols13,
+  ...metaboFullProtocols12,
+  ...infectFullProtocols12,
+  ...traumaFullProtocols12,
+  ...pediFullProtocols10,
+  ...obstFullProtocols13,
+  ...nephrologyFullProtocols7,
 ];
 
 // ==================== Aplicar atualizações 2025/2026 ====================
