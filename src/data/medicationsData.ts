@@ -2184,6 +2184,7 @@ import { medicationsLote24 } from "./medicationsLote24";
 import { medicationsLote25 } from "./medicationsLote25";
 import { medicationsLote26 } from "./medicationsLote26";
 import { medicationsLote27 } from "./medicationsLote27";
+import { medicationsLote28 } from "./medicationsLote28";
 
 const allRaw: MedicationImportItem[] = [
   ...medicationsData,
@@ -2212,6 +2213,7 @@ const allRaw: MedicationImportItem[] = [
   ...medicationsLote25,
   ...medicationsLote26,
   ...medicationsLote27,
+  ...medicationsLote28,
 ];
 
 export const allMedicationsData: MedicationImportItem[] = removeDuplicateMedications(allRaw);
