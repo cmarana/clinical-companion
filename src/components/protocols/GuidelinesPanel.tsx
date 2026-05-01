@@ -1,12 +1,19 @@
-import { ExternalLink, BookOpen, ShieldCheck, Sparkles } from "lucide-react";
+import { ExternalLink, BookOpen, ShieldCheck, Sparkles, BookX } from "lucide-react";
 import type { GuidelineSource } from "@/data/fullProtocols/types";
 import { cn } from "@/lib/utils";
+import { EmptyHint } from "@/components/protocols/EmptyHint";
 
 interface GuidelinesPanelProps {
   guidelines: GuidelineSource[];
   /** Quando true, renderiza com cabeçalho próprio (uso fora da aba "Referências"). */
   withHeader?: boolean;
   className?: string;
+  /**
+   * Quando true e `guidelines` estiver vazio, mostra um indicador
+   * "Sem diretrizes bibliográficas" em vez de retornar null.
+   * Default: true (evita áreas em branco).
+   */
+  showEmptyState?: boolean;
 }
 
 const RECENT_YEAR_THRESHOLD = 2025;
@@ -16,8 +23,24 @@ const RECENT_YEAR_THRESHOLD = 2025;
  * Permite auditoria e verificação rápida da última atualização.
  * Diretrizes ≥2025 recebem badge "Atualizado" e destaque visual.
  */
-export function GuidelinesPanel({ guidelines, withHeader = true, className }: GuidelinesPanelProps) {
-  if (!guidelines || guidelines.length === 0) return null;
+export function GuidelinesPanel({
+  guidelines,
+  withHeader = true,
+  className,
+  showEmptyState = true,
+}: GuidelinesPanelProps) {
+  if (!guidelines || guidelines.length === 0) {
+    if (!showEmptyState) return null;
+    return (
+      <EmptyHint
+        icon={BookX}
+        tone="neutral"
+        title="Sem diretrizes bibliográficas"
+        description="Este protocolo ainda não possui fontes oficiais indexadas. A equipe PULSO está revisando continuamente — novas diretrizes serão adicionadas em breve."
+        className={className}
+      />
+    );
+  }
 
   // Mais recentes primeiro
   const sorted = [...guidelines].sort((a, b) => b.year - a.year);
