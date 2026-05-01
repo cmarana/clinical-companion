@@ -1629,5 +1629,51 @@ MEDIDAS COMPORTAMENTAIS:
     warnings: "Adrenalina IM é a PRIMEIRA e MAIS IMPORTANTE droga. NÃO atrasar por anti-histamínicos ou corticoides. Via EV apenas em anafilaxia refratária com monitorização.",
     guideline: "WAO / EAACI / SBP / ASBAI",
   },
+  {
+    id: "rx-ped-dengue",
+    title: "Dengue Pediátrica — Classificação e Manejo",
+    type: "Prescrição Pediátrica",
+    prescription: `CLASSIFICAÇÃO MS 2024 (criança):
+• Grupo A: sem sinais de alarme, sem comorbidade, sem sangramento
+• Grupo B: sangramento espontâneo de pele (petéquias) OU prova do laço (+) OU comorbidade/lactente <2 anos/gestante
+• Grupo C: sinais de alarme — dor abdominal intensa, vômito persistente, hipotensão postural, hepatomegalia >2cm, sangramento de mucosa, letargia, aumento progressivo do Ht
+• Grupo D: choque, sangramento grave, disfunção orgânica
+
+GRUPO A (manejo ambulatorial):
+1. Hidratação oral 60mL/kg/dia (1/3 SRO + 2/3 líquidos caseiros)
+   - <10kg: 130mL/kg/dia
+   - 10-20kg: 100mL/kg/dia
+   - >20kg: 80mL/kg/dia
+2. Paracetamol 10-15mg/kg/dose VO 6/6h se febre (máx 4 doses/dia)
+3. Dipirona 25mg/kg/dose VO 6/6h (alternativa, >3 meses)
+4. Reavaliação diária até afebril por 48h
+5. Orientar sinais de alarme por escrito (cartão)
+
+GRUPO B (observação + exames):
+6. Hemograma + Ht (resultado em 2h)
+7. Hidratação oral supervisionada na unidade
+8. Se Ht normal e hemodinamicamente estável: alta com retorno em 24h
+9. Se Ht aumentado >10% do basal: tratar como Grupo C
+
+GRUPO C (internação obrigatória):
+10. SF 0,9% ou Ringer lactato 10mL/kg EV em 1h
+11. Reavaliar a cada hora — se melhora: reduzir para 5-7mL/kg/h por 2-4h, depois 3-5mL/kg/h por 24-48h
+12. Hemograma + Ht 4/4h nas primeiras 12h, depois 6/6h
+13. Acompanhar diurese (meta: 1-1,5mL/kg/h)
+14. NÃO transfundir plaquetas profilaticamente
+
+GRUPO D (UTI pediátrica — choque):
+15. SF 0,9% ou RL 20mL/kg EV em 20min — repetir até 3x se necessário
+16. Se sem resposta após 60mL/kg: expansor coloide (albumina 5% 10mL/kg)
+17. Drogas vasoativas se choque refratário: Noradrenalina 0,05-0,5mcg/kg/min
+18. Concentrado de hemácias 10mL/kg se sangramento + Hb <7
+19. Plaquetas apenas se sangramento ativo + plaq <50mil
+20. Plasma fresco 10mL/kg se coagulopatia + sangramento
+
+NOTIFICAÇÃO COMPULSÓRIA imediata (SINAN) em todos os casos suspeitos.`,
+    warnings: "PROIBIDO: AAS, AINEs (ibuprofeno, diclofenaco), corticoide profilático, ATB rotineiro. Fase crítica = quando a febre BAIXA (3º-7º dia) — atenção redobrada. Lactentes <2 anos têm maior risco de gravidade.",
+    notes: "Sinais de alarme = piora 24-48h após defervescência. Sempre internar lactentes <6 meses, gestantes adolescentes, comorbidades (anemia falciforme, cardiopatia, asma grave).",
+    guideline: "MS Brasil 2024 — Dengue: diagnóstico e manejo clínico criança / SBP 2024",
+  },
 ];
 

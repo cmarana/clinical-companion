@@ -960,4 +960,53 @@ ENQUANTO AGUARDA:
     warnings: "Mortalidade fetal sem intervenção: >50%. Manter mão na vagina elevando a apresentação ATÉ a cesárea. NÃO perder tempo com exames.",
     guideline: "FEBRASGO / ACOG / RCOG / NICE",
   },
+  {
+    id: "rx-obst-dengue",
+    title: "Dengue na Gestante / Puérpera",
+    type: "Prescrição Obstétrica",
+    prescription: `IMPORTANTE: gestante = GRUPO DE RISCO (Grupo B no mínimo) — internação em qualquer trimestre se sinais de alarme, em qualquer grupo no 3º trimestre/puerpério.
+
+GRUPO A (rara em gestante — sempre observar):
+1. Hidratação oral 60-80mL/kg/dia (SRO + líquidos)
+2. Paracetamol 500-750mg VO 6/6h se febre (1ª escolha — seguro)
+3. Repouso relativo
+4. Reavaliação em 24h (não dar alta se 3º trimestre)
+
+GRUPO B (com prova do laço + ou sangramento de pele):
+5. Internação para hidratação supervisionada
+6. Hemograma + Ht 6/6h
+7. SF 0,9% 10mL/kg EV em 1h se Ht subindo
+8. USG obstétrica + cardiotocografia (se >26 sem)
+9. Avaliar vitalidade fetal diariamente
+
+GRUPO C (sinais de alarme — UTI obstétrica):
+10. SF 0,9% ou Ringer lactato 10mL/kg EV em 1h
+11. Reavaliação contínua — se estável: 5-7mL/kg/h por 2-4h
+12. Sonda vesical (controle diurese — meta 0,5-1mL/kg/h)
+13. Hemograma + Ht 4/4h, coagulograma, função renal/hepática
+14. Cardiotocografia contínua se viável
+15. Corticoide para maturação pulmonar SE 24-34 semanas (Betametasona 12mg IM 24/24h × 2 doses)
+16. Sulfato de magnésio se pré-eclâmpsia associada
+
+GRUPO D (choque — UTI):
+17. SF 0,9% 20mL/kg EV em 20min (repetir até 3x)
+18. Noradrenalina 0,05-0,5mcg/kg/min se choque refratário
+19. Hemoderivados conforme sangramento (CH 10mL/kg, plaquetas se <50mil + sangramento, plasma se coagulopatia)
+20. Avaliar interrupção da gestação SE sangramento incontrolável OU sofrimento fetal agudo
+
+PARTO/CESÁREA:
+21. EVITAR parto na fase crítica (3º-7º dia) — alto risco de hemorragia
+22. Se inevitável: transfusão de plaquetas profilática SE plaq <50mil pré-cesárea
+23. Plasma fresco se TP/TTPa alargados
+24. Ácido tranexâmico 1g EV (prevenção HPP)
+25. Ocitocina 10UI EV após dequitação (manejo ativo do 3º período)
+
+PUERPÉRIO:
+26. Vigilância 48h pós-parto (risco de sangramento aumentado)
+27. Evitar AINEs no pós-operatório
+28. Tromboprofilaxia mecânica (compressão pneumática) — anticoagulação só após plaq normalizar`,
+    warnings: "PROIBIDO em gestante: AAS, AINEs, corticoide rotineiro. Dengue na gestação aumenta risco de: aborto, parto pré-termo, HPP, transmissão vertical (raro). Notificação compulsória imediata.",
+    notes: "Pré-eclâmpsia + dengue: cuidado com hidratação (risco de EAP). Discutir caso a caso com obstetrícia + infectologia + UTI.",
+    guideline: "MS Brasil 2024 / FEBRASGO 2024 / Protocolo Gestante e Dengue",
+  },
 ];
