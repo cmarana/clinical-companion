@@ -43,6 +43,7 @@ const FullProtocolDetail = lazy(() => import("@/pages/FullProtocolDetail"));
 const Bulario = lazy(() => import("@/pages/Bulario"));
 const BularioDetail = lazy(() => import("@/pages/BularioDetail"));
 const NotFound = lazy(() => import("@/pages/NotFound"));
+const Status = lazy(() => import("@/pages/Status"));
 const CPRTimer = lazy(() => import("@/pages/CPRTimer"));
 const Checklists = lazy(() => import("@/pages/Checklists"));
 const CIDSearch = lazy(() => import("@/pages/CIDSearch"));
@@ -210,6 +211,7 @@ const AppRoutes = () => (
         <Route path="/conduct-comparator" element={<ConductComparator />} />
       </Route>
       <Route path="/" element={<SmartRoot />} />
+      <Route path="/status" element={<Status />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </Suspense>
