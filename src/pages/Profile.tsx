@@ -440,32 +440,130 @@ export default function Profile() {
     <div className="min-h-screen bg-background pb-24">
       <TopBar title="Meu Perfil" />
 
-      {/* Avatar section */}
+      {/* Hero Header */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.9 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
-        className="flex flex-col items-center pt-8 pb-6 relative"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5 }}
+        className="relative overflow-hidden"
       >
-        <div className="absolute inset-0 h-28 bg-gradient-to-b from-primary/8 to-transparent rounded-b-3xl" />
-        <div className="relative z-10">
-          <div className="relative">
-            <Avatar className="w-28 h-28 border-4 border-background shadow-xl ring-2 ring-primary/20">
-              {profile.avatar_url ? <AvatarImage src={profile.avatar_url} alt="Avatar" /> : null}
-              <AvatarFallback className="text-3xl font-bold bg-gradient-to-br from-primary/20 to-primary/5 text-primary">{initials}</AvatarFallback>
-            </Avatar>
-            <button
-              onClick={() => fileInputRef.current?.click()}
-              disabled={uploading}
-              className="absolute -bottom-1 -right-1 w-9 h-9 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-transform"
+        {/* Background gradient + ECG line */}
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/15 via-primary/5 to-transparent" />
+        <div className="absolute inset-x-0 top-0 h-48 bg-[radial-gradient(ellipse_at_top,hsl(var(--primary)/0.18),transparent_70%)]" />
+        <svg
+          className="absolute bottom-0 left-0 right-0 w-full h-12 text-primary/20"
+          viewBox="0 0 400 40"
+          preserveAspectRatio="none"
+          fill="none"
+        >
+          <path
+            d="M0 20 L80 20 L95 20 L100 8 L108 32 L116 12 L124 28 L132 20 L200 20 L215 20 L220 6 L228 34 L236 14 L244 26 L252 20 L400 20"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+        </svg>
+
+        <div className="relative pt-8 pb-10 px-4 max-w-lg mx-auto">
+          <div className="flex flex-col items-center">
+            <motion.div
+              initial={{ scale: 0.85, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="relative"
             >
-              <Camera size={15} />
-            </button>
+              {/* Glow ring */}
+              <div className="absolute -inset-2 rounded-full bg-gradient-to-tr from-primary/40 via-primary/10 to-primary/40 blur-md opacity-60" />
+              <Avatar className="relative w-32 h-32 border-4 border-background shadow-2xl ring-2 ring-primary/30">
+                {profile.avatar_url ? <AvatarImage src={profile.avatar_url} alt="Avatar" /> : null}
+                <AvatarFallback className="text-4xl font-bold bg-gradient-to-br from-primary/25 to-primary/5 text-primary">
+                  {initials}
+                </AvatarFallback>
+              </Avatar>
+              <button
+                onClick={() => fileInputRef.current?.click()}
+                disabled={uploading}
+                className="absolute -bottom-1 -right-1 w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center shadow-lg hover:scale-105 active:scale-95 transition-transform ring-2 ring-background"
+                aria-label="Trocar foto"
+              >
+                <Camera size={16} />
+              </button>
+              <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleAvatarUpload} />
+            </motion.div>
+
+            {uploading && (
+              <span className="text-xs text-muted-foreground mt-3 animate-pulse">Enviando foto...</span>
+            )}
+
+            {/* Identity */}
+            <motion.div
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.15, duration: 0.4 }}
+              className="mt-4 text-center space-y-1.5"
+            >
+              <h1 className="text-xl font-bold tracking-tight">
+                {[profile.first_name, profile.last_name].filter(Boolean).join(" ") || profile.full_name || "Profissional PULSO"}
+              </h1>
+              <p className="text-xs text-muted-foreground flex items-center justify-center gap-1.5">
+                <Mail size={11} />
+                {user.email}
+              </p>
+
+              <div className="flex flex-wrap items-center justify-center gap-1.5 pt-2">
+                {subscription.subscribed && (
+                  <Badge className="bg-gradient-to-r from-primary to-primary/80 text-primary-foreground border-0 gap-1 text-[10px] px-2.5 py-0.5 shadow-md shadow-primary/30">
+                    <Crown size={10} />
+                    {subscription.isTrial ? `Trial · ${subscription.trialDaysLeft}d` : "PRO"}
+                  </Badge>
+                )}
+                {profile.specialty && (
+                  <Badge variant="outline" className="gap-1 text-[10px] bg-background/60 backdrop-blur border-border/60">
+                    <Stethoscope size={10} />
+                    {profile.specialty}
+                  </Badge>
+                )}
+                {profile.registration_type && profile.registration_number && (
+                  <Badge variant="outline" className="gap-1 text-[10px] bg-background/60 backdrop-blur border-border/60">
+                    <Shield size={10} />
+                    {profile.registration_type} {profile.registration_number}{profile.registration_state ? `/${profile.registration_state}` : ""}
+                  </Badge>
+                )}
+              </div>
+            </motion.div>
+
+            {/* Quick stats grid */}
+            <motion.div
+              initial={{ y: 10, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.25, duration: 0.4 }}
+              className="grid grid-cols-3 gap-2 w-full mt-5"
+            >
+              <div className="bg-card/70 backdrop-blur-sm border border-border/60 rounded-2xl p-2.5 text-center shadow-sm">
+                <GraduationCap size={14} className="mx-auto text-primary mb-1" />
+                <p className="text-[9px] text-muted-foreground uppercase tracking-wider font-semibold">Status</p>
+                <p className="text-[11px] font-bold truncate mt-0.5">
+                  {ACADEMIC_STATUSES.find(s => s.value === profile.academic_status)?.label || "—"}
+                </p>
+              </div>
+              <div className="bg-card/70 backdrop-blur-sm border border-border/60 rounded-2xl p-2.5 text-center shadow-sm">
+                <MapPin size={14} className="mx-auto text-primary mb-1" />
+                <p className="text-[9px] text-muted-foreground uppercase tracking-wider font-semibold">Local</p>
+                <p className="text-[11px] font-bold truncate mt-0.5">
+                  {profile.city ? `${profile.city}${profile.state ? `/${profile.state}` : ""}` : "—"}
+                </p>
+              </div>
+              <div className="bg-card/70 backdrop-blur-sm border border-border/60 rounded-2xl p-2.5 text-center shadow-sm">
+                <Calendar size={14} className="mx-auto text-primary mb-1" />
+                <p className="text-[9px] text-muted-foreground uppercase tracking-wider font-semibold">Membro</p>
+                <p className="text-[11px] font-bold truncate mt-0.5">
+                  {new Date(user.created_at).toLocaleDateString("pt-BR", { month: "short", year: "2-digit" })}
+                </p>
+              </div>
+            </motion.div>
           </div>
-          <input ref={fileInputRef} type="file" accept="image/*" className="hidden" onChange={handleAvatarUpload} />
         </div>
-        {uploading && <span className="text-xs text-muted-foreground mt-3 animate-pulse">Enviando foto...</span>}
-        <p className="text-xs text-muted-foreground mt-3 font-medium">{user.email}</p>
       </motion.div>
 
       {loading ? (
