@@ -172,38 +172,63 @@
 
   <body>
     <div id="pulso-splash" aria-hidden="true">
-      <img class="pulso-logo" src="/icons/icon-192.png" alt="" width="96" height="96" decoding="async" fetchpriority="high" />
+      <img class="pulso-logo" src="/icons/icon-192.png" alt="PULSO" width="112" height="112" decoding="async" fetchpriority="high" />
       <div class="pulso-name">PULSO</div>
       <div class="pulso-tag">Emergência Médica</div>
       <div class="pulso-ecg">
-        <svg viewBox="0 0 220 36" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M0,18 L40,18 L55,18 L62,8 L70,28 L78,4 L86,32 L94,18 L130,18 L145,18 L152,10 L160,26 L168,18 L220,18" />
+        <svg viewBox="0 0 240 40" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0,20 L50,20 L60,20 L68,8 L76,32 L84,4 L92,36 L100,20 L140,20 L155,20 L163,10 L171,30 L179,20 L240,20" />
         </svg>
       </div>
     </div>
     <div id="root"></div>
     <script>
-      // Hide splash as soon as React mounts the app, with a safety timeout
+      // Keep splash visible until the REAL app renders (not just the Suspense spinner).
+      // Hide criteria: #root contains a node taller than 200px (i.e. real page content),
+      // OR a hard cap of 8s, OR explicit __pulsoHideSplash() call from the app.
       (function(){
         var splash = document.getElementById('pulso-splash');
         if (!splash) return;
         var hidden = false;
-        function hide(){
+        var startedAt = Date.now();
+        var MIN_SHOW_MS = 700; // avoid flash if app loads instantly
+
+        function doHide(){
           if (hidden) return; hidden = true;
           splash.classList.add('pulso-hide');
-          setTimeout(function(){ splash && splash.parentNode && splash.parentNode.removeChild(splash); }, 400);
+          setTimeout(function(){
+            if (splash && splash.parentNode) splash.parentNode.removeChild(splash);
+          }, 450);
         }
-        // Watch for React mounting content into #root
+        function hide(){
+          var elapsed = Date.now() - startedAt;
+          if (elapsed < MIN_SHOW_MS) {
+            setTimeout(doHide, MIN_SHOW_MS - elapsed);
+          } else {
+            doHide();
+          }
+        }
+
         var root = document.getElementById('root');
+        function hasRealContent(){
+          if (!root) return false;
+          // Real content = at least one child node taller than 200px (skips spinner fallbacks)
+          var nodes = root.querySelectorAll('*');
+          for (var i = 0; i < Math.min(nodes.length, 50); i++) {
+            var r = nodes[i].getBoundingClientRect();
+            if (r.height > 200) return true;
+          }
+          return false;
+        }
+
         if (root && 'MutationObserver' in window) {
           var obs = new MutationObserver(function(){
-            if (root.childElementCount > 0) { obs.disconnect(); hide(); }
+            if (hasRealContent()) { obs.disconnect(); hide(); }
           });
-          obs.observe(root, { childList: true });
+          obs.observe(root, { childList: true, subtree: true });
         }
-        // Safety nets
-        window.addEventListener('load', function(){ setTimeout(hide, 300); });
-        setTimeout(hide, 6000);
+        // Safety: hard cap so the user never gets stuck on splash
+        setTimeout(hide, 8000);
         window.__pulsoHideSplash = hide;
       })();
     </script>
