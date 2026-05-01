@@ -535,6 +535,98 @@ function ClinicalAIContent() {
             </form>
           </TabsContent>
 
+          <TabsContent value="image" className="mt-0">
+            <div className="space-y-2">
+              <div className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-primary/10 border border-primary/20">
+                <ScanSearch size={11} className="text-primary shrink-0" />
+                <p className="text-[10px] text-primary font-medium leading-tight">
+                  Envie ou tire foto de exame de imagem (RX, TC, RM, USG, ECG, lesão).
+                </p>
+              </div>
+
+              {/* Hidden inputs */}
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={(e) => handleImageSelect(e.target.files?.[0] ?? null)}
+              />
+              <input
+                ref={cameraInputRef}
+                type="file"
+                accept="image/*"
+                capture="environment"
+                className="hidden"
+                onChange={(e) => handleImageSelect(e.target.files?.[0] ?? null)}
+              />
+
+              {!imageFile ? (
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => cameraInputRef.current?.click()}
+                    className="flex flex-col items-center justify-center gap-1.5 py-4 rounded-xl border-2 border-dashed border-primary/40 bg-primary/5 hover:bg-primary/10 active:scale-[0.98] transition-all"
+                  >
+                    <Camera size={22} className="text-primary" />
+                    <span className="text-[11px] font-heading font-semibold text-primary">Tirar foto</span>
+                    <span className="text-[9px] text-muted-foreground">Câmera traseira</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="flex flex-col items-center justify-center gap-1.5 py-4 rounded-xl border-2 border-dashed border-border bg-muted/30 hover:bg-muted/60 active:scale-[0.98] transition-all"
+                  >
+                    <Upload size={22} className="text-muted-foreground" />
+                    <span className="text-[11px] font-heading font-semibold">Enviar arquivo</span>
+                    <span className="text-[9px] text-muted-foreground">JPG, PNG (até 6MB)</span>
+                  </button>
+                </div>
+              ) : (
+                <div className="relative rounded-xl overflow-hidden border border-border bg-muted/30">
+                  <img
+                    src={imageFile}
+                    alt="Pré-visualização do exame"
+                    className="w-full max-h-64 object-contain bg-black/5"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setImageFile(null)}
+                    className="absolute top-1.5 right-1.5 w-7 h-7 rounded-full bg-background/90 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors"
+                    title="Remover imagem"
+                  >
+                    <X size={14} />
+                  </button>
+                </div>
+              )}
+
+              <Input
+                value={imageContext}
+                onChange={(e) => setImageContext(e.target.value)}
+                placeholder="Indicação clínica (opcional): ex.: dor torácica, dispneia, trauma..."
+                className="h-9 text-xs rounded-xl"
+                maxLength={500}
+              />
+
+              <Button
+                type="button"
+                onClick={handleImageAnalyze}
+                disabled={!imageFile || imageAnalyzing}
+                className="w-full h-9 text-xs rounded-xl"
+              >
+                {imageAnalyzing ? (
+                  <><Loader2 size={14} className="animate-spin mr-1.5" /> Analisando imagem...</>
+                ) : (
+                  <><ScanSearch size={14} className="mr-1.5" /> Analisar imagem</>
+                )}
+              </Button>
+
+              <p className="text-[9px] text-muted-foreground text-center leading-tight">
+                ⚠️ Análise auxiliar por IA — <strong>não substitui laudo formal de radiologista</strong>. Correlação clínica obrigatória.
+              </p>
+            </div>
+          </TabsContent>
+
           <TabsContent value="plantao" className="mt-0">
             <form onSubmit={handlePlantaoSubmit} className="space-y-2">
               <div className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-destructive/10 border border-destructive/20">
