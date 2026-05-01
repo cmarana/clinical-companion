@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { flashcards, flashcardCategoryLabels, flashcardCategoryColors, type FlashcardCategory } from "@/data/flashcardsData";
+import { fmt } from "@/data/datasetCounts";
 import { reviewCard, getStats, getProgress, syncProgressFromCloud, getPrioritizedSession, getLeechCards, estimateRetention, type Rating } from "@/lib/spacedRepetition";
 import { Brain, RotateCcw, Search, ChevronRight, Zap, BookOpen, Trophy, Clock, AlertTriangle, TrendingUp } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -225,7 +226,9 @@ export default function Flashcards() {
       <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto pb-24">
         <div className="mb-4">
           <h1 className="text-xl font-bold font-heading">Revisão Espaçada</h1>
-          <p className="text-xs text-muted-foreground mt-1">Sistema inteligente tipo Anki — {flashcards.length} flashcards</p>
+          <p className="text-xs text-muted-foreground mt-1">
+            Sistema inteligente tipo Anki — <span className="font-semibold text-foreground">{fmt(flashcards.length)}</span> flashcards no total
+          </p>
         </div>
 
         {/* Global stats */}

@@ -22,6 +22,7 @@ import SmartSearch from "@/components/SmartSearch";
 import WeeklySummaryWidget from "@/components/WeeklySummaryWidget";
 import VoiceFeaturesBanner from "@/components/VoiceFeaturesBanner";
 import DailyBriefingWidget from "@/components/DailyBriefingWidget";
+import { DATASET_COUNTS, QUIZ_TOTAL, fmt } from "@/data/datasetCounts";
 
 import WelcomeScreen from "@/components/WelcomeScreen";
 
@@ -91,8 +92,8 @@ const specialtyModules = [
 
 const studyModules = [
   { label: "Simulador de Casos", sub: "Casos clínicos com IA", icon: Brain, path: "/case-simulator" },
-  { label: "Questões", sub: "1.000+ questões comentadas", icon: HelpCircle, path: "/quiz" },
-  { label: "Flashcards", sub: "500+ cards · revisão espaçada", icon: Brain, path: "/flashcards" },
+  { label: "Questões", sub: `${fmt(QUIZ_TOTAL)} questões comentadas`, icon: HelpCircle, path: "/quiz" },
+  { label: "Flashcards", sub: `${fmt(DATASET_COUNTS.flashcards)} cards · revisão espaçada`, icon: Brain, path: "/flashcards" },
   { label: "Residência", sub: "Questões por banca", icon: GraduationCap, path: "/residency-quiz" },
   { label: "Dashboard", sub: "Streak e progresso", icon: BarChart3, path: "/study-dashboard" },
   { label: "Evolução por Voz", sub: "Voz → SOAP / I-PASS com IA", icon: Mic, path: "/voice-evolution" },

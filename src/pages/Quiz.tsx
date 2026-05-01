@@ -69,7 +69,9 @@ export default function Quiz() {
       <>
         <TopBar title="Quiz Interativo" />
         <div className="px-4 py-5 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4">
-          <p className="text-sm text-muted-foreground">Escolha uma categoria para começar:</p>
+          <p className="text-sm text-muted-foreground">
+            Banco com <span className="font-semibold text-foreground">{quizQuestions.length.toLocaleString("pt-BR")}</span> questões comentadas. Escolha uma categoria para começar:
+          </p>
           <div className="space-y-2">
             {categories.map((cat) => (
               <Card key={cat} onClick={() => startQuiz(cat)} className="cursor-pointer hover:shadow-sm active:scale-[0.99] transition-all">
