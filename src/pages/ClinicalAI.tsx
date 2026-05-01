@@ -36,9 +36,13 @@ function ClinicalAIContent() {
   const [isLoading, setIsLoading] = useState(false);
   const [mode, setMode] = useState<"chat" | "structured" | "plantao" | "narrative" | "image">("chat");
   // Image analysis state
-  const [imageFile, setImageFile] = useState<string | null>(null); // data URL
+  const [originalImage, setOriginalImage] = useState<string | null>(null); // raw upload (data URL)
+  const [imageFile, setImageFile] = useState<string | null>(null); // what gets sent (possibly anonymized)
   const [imageContext, setImageContext] = useState("");
   const [imageAnalyzing, setImageAnalyzing] = useState(false);
+  const [anonymize, setAnonymize] = useState(true);
+  const [anonTopPct, setAnonTopPct] = useState(12); // % altura barra superior
+  const [anonBottomPct, setAnonBottomPct] = useState(8); // % altura barra inferior
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
   const [narrative, setNarrative] = useState("");
