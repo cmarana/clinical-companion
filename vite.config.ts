@@ -34,19 +34,33 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         output: {
           manualChunks: (id) => {
-            // Vendor splits — granular for better caching
+            // Vendor splits — keep the React ecosystem together to avoid
+            // temporal-dead-zone errors caused by circular vendor chunks
+            // (e.g. "Cannot access 'L' before initialization").
             if (id.includes("node_modules")) {
-              if (id.includes("react-router")) return "vendor-router";
-              if (id.includes("react-dom") || id.includes("/react/")) return "vendor-react";
+              // React runtime + everything that ships with React refs
+              if (
+                id.includes("/react/") ||
+                id.includes("/react-dom/") ||
+                id.includes("/scheduler/") ||
+                id.includes("/react-router") ||
+                id.includes("/@remix-run/") ||
+                id.includes("/@tanstack/react-query") ||
+                id.includes("/use-sync-external-store/") ||
+                id.includes("/react-is/")
+              ) return "vendor-react";
+
               if (id.includes("@supabase")) return "vendor-supabase";
               if (id.includes("framer-motion")) return "vendor-motion";
               if (id.includes("recharts") || id.includes("d3-")) return "vendor-charts";
               if (id.includes("@radix-ui")) return "vendor-radix";
               if (id.includes("lucide-react")) return "vendor-icons";
-              if (id.includes("@tanstack")) return "vendor-query";
               if (id.includes("zod") || id.includes("react-hook-form")) return "vendor-forms";
               if (id.includes("date-fns")) return "vendor-date";
-              return "vendor";
+              // Everything else stays in Vite's default vendor chunk —
+              // do NOT return a name here, otherwise Rollup may create
+              // circular references between vendor-* groups.
+              return undefined;
             }
             // Data splits — keep heavy clinical content out of the main chunk
             if (id.includes("/src/data/full-protocols/")) return "data-full-protocols";
