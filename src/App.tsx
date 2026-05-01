@@ -111,7 +111,9 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
 }
 
 const LazyFallback = () => (
-  <div className="min-h-screen flex items-center justify-center bg-background">
+  // Transparent background so the inline splash screen (white) shows through
+  // during the initial lazy-chunk load — prevents a black flash in dark themes.
+  <div className="min-h-screen flex items-center justify-center bg-transparent">
     <div className="flex flex-col items-center gap-4">
       <div className="relative w-12 h-12">
         <div className="absolute inset-0 rounded-full border-2 border-primary/20" />
