@@ -241,53 +241,90 @@ function ClinicalAIContent() {
 
   const clearChat = () => { setMessages([]); };
 
-  // ─── Image analysis (lote) ───
-  const handleImageSelect = (files: FileList | File[] | null) => {
+  // ─── Image / Document analysis (lote) ───
+  const handleImageSelect = async (files: FileList | File[] | null) => {
     if (!files) return;
     const incoming = Array.from(files as ArrayLike<File>);
     if (incoming.length === 0) return;
 
-    const remaining = MAX_IMAGES - originalImages.length;
-    if (remaining <= 0) {
-      toast.error(`Máximo de ${MAX_IMAGES} imagens por lote`);
-      return;
-    }
-
-    const accepted: File[] = [];
+    // Separa imagens, PDFs e o que for ignorado
+    const imageFiles2: File[] = [];
+    const pdfFiles: File[] = [];
     let skippedType = 0;
     let skippedSize = 0;
-    for (const f of incoming.slice(0, remaining)) {
-      if (!f.type.startsWith("image/")) { skippedType++; continue; }
-      if (f.size > 6 * 1024 * 1024) { skippedSize++; continue; }
-      accepted.push(f);
+    for (const f of incoming) {
+      const isImage = f.type.startsWith("image/");
+      const isPdf = f.type === "application/pdf" || /\.pdf$/i.test(f.name);
+      if (!isImage && !isPdf) { skippedType++; continue; }
+      if (isImage && f.size > 6 * 1024 * 1024) { skippedSize++; continue; }
+      if (isPdf && f.size > 15 * 1024 * 1024) { skippedSize++; continue; }
+      if (isImage) imageFiles2.push(f);
+      else pdfFiles.push(f);
     }
     if (skippedType) toast.error(`${skippedType} arquivo(s) ignorado(s) — formato inválido`);
-    if (skippedSize) toast.error(`${skippedSize} imagem(ns) acima de 6MB ignorada(s)`);
-    if (incoming.length > remaining) toast.message(`Apenas ${remaining} imagem(ns) adicionada(s) (limite ${MAX_IMAGES})`);
-    if (accepted.length === 0) return;
+    if (skippedSize) toast.error(`${skippedSize} arquivo(s) acima do limite ignorado(s)`);
 
-    Promise.all(
-      accepted.map(
-        (file) =>
-          new Promise<string | null>((resolve) => {
-            const reader = new FileReader();
-            reader.onload = () => resolve(typeof reader.result === "string" ? reader.result : null);
-            reader.onerror = () => resolve(null);
-            reader.readAsDataURL(file);
-          }),
-      ),
-    ).then((urls) => {
+    // Imagens
+    const remainingImg = MAX_IMAGES - originalImages.length;
+    const acceptedImgs = imageFiles2.slice(0, Math.max(0, remainingImg));
+    if (imageFiles2.length > acceptedImgs.length) {
+      toast.message(`Apenas ${acceptedImgs.length} imagem(ns) adicionada(s) (limite ${MAX_IMAGES})`);
+    }
+    if (acceptedImgs.length > 0) {
+      const urls = await Promise.all(
+        acceptedImgs.map(
+          (file) =>
+            new Promise<string | null>((resolve) => {
+              const reader = new FileReader();
+              reader.onload = () => resolve(typeof reader.result === "string" ? reader.result : null);
+              reader.onerror = () => resolve(null);
+              reader.readAsDataURL(file);
+            }),
+        ),
+      );
       const valid = urls.filter((u): u is string => !!u);
-      if (valid.length === 0) {
+      if (valid.length > 0) {
+        setOriginalImages((prev) => [...prev, ...valid].slice(0, MAX_IMAGES));
+      } else {
         toast.error("Falha ao ler as imagens");
-        return;
       }
-      setOriginalImages((prev) => [...prev, ...valid].slice(0, MAX_IMAGES));
-    });
+    }
+
+    // PDFs
+    const remainingPdf = MAX_DOCS - documents.length;
+    const acceptedPdfs = pdfFiles.slice(0, Math.max(0, remainingPdf));
+    if (pdfFiles.length > acceptedPdfs.length) {
+      toast.message(`Apenas ${acceptedPdfs.length} PDF(s) adicionado(s) (limite ${MAX_DOCS})`);
+    }
+    if (acceptedPdfs.length > 0) {
+      setPdfLoading(true);
+      try {
+        for (const file of acceptedPdfs) {
+          try {
+            const extracted = await extractPdfText(file);
+            if (!extracted.text || extracted.text.trim().length < 20) {
+              toast.error(`PDF "${file.name}" sem texto legível (digitalizado?). Tire foto de cada página.`);
+              continue;
+            }
+            setDocuments((prev) => [...prev, extracted].slice(0, MAX_DOCS));
+            toast.success(`📄 ${file.name} — ${extracted.pagesAnalyzed}/${extracted.pages} páginas processadas`);
+          } catch (e) {
+            console.error("PDF extract error:", e);
+            toast.error(`Falha ao processar "${file.name}"`);
+          }
+        }
+      } finally {
+        setPdfLoading(false);
+      }
+    }
   };
 
   const removeImageAt = (idx: number) => {
     setOriginalImages((prev) => prev.filter((_, i) => i !== idx));
+  };
+
+  const removeDocumentAt = (idx: number) => {
+    setDocuments((prev) => prev.filter((_, i) => i !== idx));
   };
 
   // Aplica tarjas pretas nas faixas superior e inferior (onde geralmente há nome,
