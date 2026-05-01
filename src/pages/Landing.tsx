@@ -1024,7 +1024,8 @@ export default function Landing() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-0 left-0 right-0 z-nav sm:hidden bg-background/95 backdrop-blur-xl border-t border-border/40 px-4 py-3 safe-area-bottom"
+            className="fixed bottom-0 left-0 right-0 z-nav sm:hidden bg-background/95 backdrop-blur-xl border-t border-border/40 px-4 pt-3"
+            style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1rem)" }}
           >
             <Button
               onClick={() => navigate("/auth")}
