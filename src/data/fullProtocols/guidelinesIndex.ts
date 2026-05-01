@@ -70,6 +70,24 @@ const INDEX = buildIndex();
 /** Map<protocolId, entry> para lookup O(1) na lista. */
 export const protocolGuidelinesIndex = INDEX;
 
+/**
+ * Conjunto de IDs com revisão editorial PULSO 2026 aplicada via patch.
+ * Usado para renderizar o badge "Atualizado em 2026" na listagem
+ * sem precisar carregar o objeto completo do protocolo.
+ */
+export const patched2026Ids: Set<string> = new Set(
+  PATCHES_2026
+    .filter((p) => p.lastReviewed.startsWith("2026"))
+    .map((p) => p.protocolId),
+);
+
+/** Retorna o rótulo "YYYY/MM" se o protocolo foi revisado em 2026. */
+export function getReview2026Label(protocolId: string): string | null {
+  const p = PATCHES_2026.find((x) => x.protocolId === protocolId);
+  if (!p || !p.lastReviewed.startsWith("2026")) return null;
+  return p.lastReviewed.replace("-", "/");
+}
+
 /** Universo de sociedades disponíveis (para popular o filtro multi-select). */
 export const allSocieties: string[] = Array.from(
   new Set(Array.from(INDEX.values()).flatMap((e) => e.societies)),
