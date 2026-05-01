@@ -1011,31 +1011,7 @@ export default function Landing() {
         </div>
       </footer>
 
-      {/* ═══ STICKY MOBILE CTA ════════════════════════════════ */}
-      <AnimatePresence>
-        {showStickyCta && (
-          <motion.div
-            initial={{ y: 100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: 100, opacity: 0 }}
-            transition={{ duration: 0.3 }}
-            className="fixed bottom-0 left-0 right-0 z-nav sm:hidden bg-background/95 backdrop-blur-xl border-t border-border/40 px-4 pt-3"
-            style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 1rem)" }}
-          >
-            <Button
-              onClick={() => navigate("/auth")}
-              className="w-full h-12 rounded-xl font-heading font-bold shadow-lg shadow-primary/20 relative overflow-hidden group"
-            >
-              <span className="absolute inset-0 bg-gradient-to-r from-primary via-primary to-primary/80" />
-              <span className="relative flex items-center gap-2 text-sm">
-                <Sparkles size={14} />
-                Começar 7 dias grátis
-                <ChevronRight size={14} />
-              </span>
-            </Button>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* CTA mobile fixo removido — botão agora apenas inline no Hero/Planos. */}
     </div>
   );
 }
