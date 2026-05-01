@@ -32,6 +32,58 @@
     <!-- Performance hints -->
     <link rel="preconnect" href="https://xwmqqwqynyhccmyqtxje.supabase.co" crossorigin />
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+    <link rel="preload" as="image" href="/icons/icon-192.png" fetchpriority="high" />
+
+    <!-- Inline splash screen — paints instantly, before JS loads -->
+    <style>
+      :root { color-scheme: light dark; }
+      html, body { margin: 0; padding: 0; background: #0a0a0a; }
+      #pulso-splash {
+        position: fixed; inset: 0; z-index: 2147483647;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        background: radial-gradient(ellipse at center, #0f1d2e 0%, #0a0a0a 70%);
+        transition: opacity .35s ease, visibility .35s ease;
+        -webkit-tap-highlight-color: transparent;
+        padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+      }
+      #pulso-splash.pulso-hide { opacity: 0; visibility: hidden; pointer-events: none; }
+      #pulso-splash .pulso-logo {
+        width: 96px; height: 96px; border-radius: 22px;
+        box-shadow: 0 10px 40px rgba(10, 109, 217, .35), 0 0 0 1px rgba(255,255,255,.04);
+        animation: pulso-pop .6s cubic-bezier(.22,1,.36,1) both, pulso-beat 1.6s ease-in-out .6s infinite;
+      }
+      #pulso-splash .pulso-name {
+        margin-top: 22px;
+        font: 700 22px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        letter-spacing: .28em; color: #fff;
+        opacity: 0; animation: pulso-fade .5s ease-out .25s forwards;
+      }
+      #pulso-splash .pulso-tag {
+        margin-top: 10px;
+        font: 500 12px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        letter-spacing: .14em; text-transform: uppercase; color: #6b8aad;
+        opacity: 0; animation: pulso-fade .5s ease-out .45s forwards;
+      }
+      #pulso-splash .pulso-ecg {
+        position: absolute; bottom: 14%; left: 50%; transform: translateX(-50%);
+        width: 220px; height: 36px; overflow: hidden;
+        opacity: 0; animation: pulso-fade .5s ease-out .6s forwards;
+      }
+      #pulso-splash .pulso-ecg svg { width: 100%; height: 100%; display: block; }
+      #pulso-splash .pulso-ecg path {
+        stroke: #0a6dd9; stroke-width: 2; fill: none;
+        stroke-dasharray: 600; stroke-dashoffset: 600;
+        animation: pulso-ecg 1.8s linear infinite;
+        filter: drop-shadow(0 0 4px rgba(10,109,217,.6));
+      }
+      @keyframes pulso-pop { from { transform: scale(.7); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+      @keyframes pulso-beat { 0%,100% { transform: scale(1); } 12% { transform: scale(1.06); } 24% { transform: scale(1); } 36% { transform: scale(1.04); } 48% { transform: scale(1); } }
+      @keyframes pulso-fade { to { opacity: 1; } }
+      @keyframes pulso-ecg { to { stroke-dashoffset: 0; } }
+      @media (prefers-reduced-motion: reduce) {
+        #pulso-splash .pulso-logo, #pulso-splash .pulso-name, #pulso-splash .pulso-tag, #pulso-splash .pulso-ecg, #pulso-splash .pulso-ecg path { animation: none; opacity: 1; }
+      }
+    </style>
 
     <!-- JSON-LD: MobileApplication -->
     <script type="application/ld+json">
@@ -117,7 +169,16 @@
   </head>
 
   <body>
-    <div id="root"></div>
+    <div id="pulso-splash" aria-hidden="true">
+      <img class="pulso-logo" src="/icons/icon-192.png" alt="" width="96" height="96" decoding="async" fetchpriority="high" />
+      <div class="pulso-name">PULSO</div>
+      <div class="pulso-tag">Emergência Médica</div>
+      <div class="pulso-ecg">
+        <svg viewBox="0 0 220 36" preserveAspectRatio="none" aria-hidden="true">
+          <path d="M0,18 L40,18 L55,18 L62,8 L70,28 L78,4 L86,32 L94,18 L130,18 L145,18 L152,10 L160,26 L168,18 L220,18" />
+        </svg>
+      </div>
+    </div>
     <script>
       // Emergency SW cleanup for preview/iframe — runs before React
       (function(){
