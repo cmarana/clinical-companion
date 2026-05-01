@@ -87,6 +87,23 @@ export default function FullProtocols() {
       );
     }
 
+    // Filtro por sociedades selecionadas (ex.: AHA/ASA, SBC, ESC)
+    if (selectedSocieties.length > 0) {
+      const wanted = new Set(selectedSocieties);
+      list = list.filter(p => {
+        const entry = protocolGuidelinesIndex.get(p.id);
+        return entry ? entry.societies.some(s => wanted.has(s)) : false;
+      });
+    }
+
+    // Filtro por ano mínimo da diretriz mais recente
+    if (minYear > yearRange[0]) {
+      list = list.filter(p => {
+        const entry = protocolGuidelinesIndex.get(p.id);
+        return entry ? entry.latestYear >= minYear : false;
+      });
+    }
+
     const sorted = [...list];
     if (sort === "alpha") {
       sorted.sort((a, b) => a.title.localeCompare(b.title, "pt-BR"));
@@ -102,9 +119,16 @@ export default function FullProtocols() {
         if (fa !== fb) return fb - fa;
         return a.title.localeCompare(b.title, "pt-BR");
       });
+    } else if (sort === "guideline_year") {
+      sorted.sort((a, b) => {
+        const ya = protocolGuidelinesIndex.get(a.id)?.latestYear ?? 0;
+        const yb = protocolGuidelinesIndex.get(b.id)?.latestYear ?? 0;
+        if (ya !== yb) return yb - ya; // mais recente primeiro
+        return a.title.localeCompare(b.title, "pt-BR");
+      });
     }
     return sorted;
-  }, [activeCat, search, sort, showFavOnly, favs, counts]);
+  }, [activeCat, search, sort, showFavOnly, favs, counts, selectedSocieties, minYear]);
 
   // Gating Pro: itens permitidos vs. bloqueados (preview)
   const { visibleItems, lockedCount } = useMemo(() => {
