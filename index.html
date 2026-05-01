@@ -8,6 +8,14 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="PULSO" />
 
+    <!-- Cache-busting fallback for environments without a Service Worker.
+         Tells browsers (and most CDNs that respect it) never to keep the HTML shell.
+         Hashed JS/CSS assets remain long-cacheable; only this entry document is volatile. -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="pulso-build-id" content="__BUILD_ID__" />
+
     <title>PULSO — Protocolos Médicos e Calculadora Médica para Plantão</title>
     <meta name="description" content="App de protocolos médicos para emergência e plantão. +2.000 medicamentos, 282 protocolos, calculadoras clínicas, IA médica e prescrições prontas. Decida em segundos.">
     <meta name="author" content="PULSO - Emergência Médica" />
