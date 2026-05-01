@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot, Mic, MicOff, Zap, FileText } from "lucide-react";
+import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot, Mic, MicOff, Zap, FileText, Image as ImageIcon, Camera, Upload, X, ScanSearch } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import PremiumPageGuard from "@/components/PremiumPageGuard";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -33,7 +34,13 @@ function ClinicalAIContent() {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [mode, setMode] = useState<"chat" | "structured" | "plantao" | "narrative">("chat");
+  const [mode, setMode] = useState<"chat" | "structured" | "plantao" | "narrative" | "image">("chat");
+  // Image analysis state
+  const [imageFile, setImageFile] = useState<string | null>(null); // data URL
+  const [imageContext, setImageContext] = useState("");
+  const [imageAnalyzing, setImageAnalyzing] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const cameraInputRef = useRef<HTMLInputElement>(null);
   const [narrative, setNarrative] = useState("");
   const [plantaoQuery, setPlantaoQuery] = useState("");
   const [patientCtx, setPatientCtx] = useState<PatientContext>({});
