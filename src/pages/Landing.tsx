@@ -274,7 +274,7 @@ export default function Landing() {
             initial="hidden" animate="visible" variants={fadeUp} custom={2}
           >
             A plataforma mais completa para médicos plantonistas.{" "}
-            Protocolos, IA clínica, calculadoras e 2.000+ fármacos —{" "}
+            Protocolos, IA clínica multimodal, calculadoras e 1.400+ fármacos —{" "}
             <span className="text-foreground font-medium">tudo offline, no seu bolso.</span>
           </motion.p>
 
@@ -362,9 +362,9 @@ export default function Landing() {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 relative">
             {[
               { icon: Siren, label: "Modo Emergência", detail: "PCR, Sepse, IAM, AVC", accent: "from-red-500/20 to-red-500/5 text-red-500", ring: "ring-red-500/20" },
-              { icon: Bot, label: "IA Clínica", detail: "Diagnóstico diferencial por IA", accent: "from-blue-500/20 to-blue-500/5 text-blue-500", ring: "ring-blue-500/20" },
-              { icon: Pill, label: "2.000+ Fármacos", detail: "Doses, diluições, interações", accent: "from-emerald-500/20 to-emerald-500/5 text-emerald-500", ring: "ring-emerald-500/20" },
-              { icon: BookOpen, label: "1.004 Protocolos", detail: "26 categorias, baseados em evidência", accent: "from-cyan-500/20 to-cyan-500/5 text-cyan-500", ring: "ring-cyan-500/20" },
+              { icon: Bot, label: "IA Clínica multimodal", detail: "Chat · Caso · Exames · Plantão · Texto", accent: "from-blue-500/20 to-blue-500/5 text-blue-500", ring: "ring-blue-500/20" },
+              { icon: Pill, label: "1.400+ Fármacos", detail: "Doses, diluições, interações", accent: "from-emerald-500/20 to-emerald-500/5 text-emerald-500", ring: "ring-emerald-500/20" },
+              { icon: BookOpen, label: "1.047 Protocolos", detail: "26 categorias, baseados em evidência", accent: "from-cyan-500/20 to-cyan-500/5 text-cyan-500", ring: "ring-cyan-500/20" },
               { icon: Calculator, label: "53 Calculadoras", detail: "Glasgow, SOFA, Wells, HEART…", accent: "from-indigo-500/20 to-indigo-500/5 text-indigo-500", ring: "ring-indigo-500/20" },
               { icon: FileText, label: "Prescrições Prontas", detail: "Modelos por diagnóstico + IA", accent: "from-amber-500/20 to-amber-500/5 text-amber-500", ring: "ring-amber-500/20" },
               { icon: WifiOff, label: "100% Offline", detail: "Funciona sem internet", accent: "from-violet-500/20 to-violet-500/5 text-violet-500", ring: "ring-violet-500/20" },
@@ -667,7 +667,7 @@ export default function Landing() {
                     {item}
                   </li>
                 ))}
-                {["IA Clínica", "Modo offline", "Prescrições prontas", "Flashcards e quiz"].map((item) => (
+                {["IA Clínica multimodal", "Modo offline", "Prescrições prontas", "Flashcards e quiz"].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-xs text-muted-foreground/40 line-through">
                     <span className="w-3.5 shrink-0" />
                     {item}
@@ -708,13 +708,13 @@ export default function Landing() {
               </p>
               <ul className="space-y-2.5 mb-8 flex-1">
                 {[
-                  "1.000+ protocolos completos",
-                  "2.000+ medicamentos",
+                  "1.047 protocolos completos",
+                  "1.400+ medicamentos",
                   "53 calculadoras médicas",
-                  "IA Clínica ilimitada",
+                  "IA Clínica multimodal (Chat, Caso, Exames, Plantão, Texto)",
+                  "500+ flashcards · 1.000+ questões",
                   "Modo offline completo",
                   "Prescrições prontas",
-                  "Flashcards e quiz",
                   "Timer PCR (ACLS)",
                   "Atualizações prioritárias",
                 ].map((item) => (
