@@ -10,7 +10,7 @@ import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { NotificationsProvider } from "@/contexts/NotificationsContext";
 import AppLayout from "@/components/AppLayout";
 import { PWAInstallPrompt, OfflineIndicator } from "@/components/PWAInstallPrompt";
-import FloatingThemeToggle from "@/components/FloatingThemeToggle";
+
 import UpdatePromptDialog from "@/components/UpdatePromptDialog";
 
 import { lazy, Suspense, useEffect } from "react";
