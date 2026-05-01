@@ -374,17 +374,17 @@ export default function Auth() {
 
       <div className="text-center space-y-2">
         {!resetMode && isLogin && (
-          <button onClick={() => setResetMode(true)} className="text-xs text-muted-foreground hover:text-primary transition-colors">
+          <button onClick={() => { setErrorMsg(null); setResetMode(true); }} className="text-xs text-muted-foreground hover:text-primary transition-colors">
             Esqueceu a senha?
           </button>
         )}
         <p className="text-xs text-muted-foreground">
           {resetMode ? (
-            <button onClick={() => setResetMode(false)} className="text-primary hover:underline font-medium">← Voltar ao login</button>
+            <button onClick={() => { setErrorMsg(null); setResetMode(false); }} className="text-primary hover:underline font-medium">← Voltar ao login</button>
           ) : isLogin ? (
-            <>Não tem conta?{" "}<button onClick={() => setIsLogin(false)} className="text-primary hover:underline font-semibold">Cadastre-se grátis</button></>
+            <>Não tem conta?{" "}<button onClick={() => { setErrorMsg(null); setIsLogin(false); }} className="text-primary hover:underline font-semibold">Cadastre-se grátis</button></>
           ) : (
-            <>Já tem conta?{" "}<button onClick={() => setIsLogin(true)} className="text-primary hover:underline font-semibold">Entrar</button></>
+            <>Já tem conta?{" "}<button onClick={() => { setErrorMsg(null); setIsLogin(true); }} className="text-primary hover:underline font-semibold">Entrar</button></>
           )}
         </p>
       </div>
