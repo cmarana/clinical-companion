@@ -241,13 +241,14 @@ export default function FullProtocols() {
           )}
         </div>
 
-        {/* Toolbar: ordenação + favoritos */}
-        <div className="flex items-center justify-between gap-2">
-          <div className="flex items-center gap-1 bg-muted/60 rounded-xl p-0.5">
+        {/* Toolbar: ordenação + filtros */}
+        <div className="flex items-center justify-between gap-2 flex-wrap">
+          <div className="flex items-center gap-1 bg-muted/60 rounded-xl p-0.5 flex-wrap">
             {[
               { id: "popular" as const, label: "Mais usados", icon: TrendingUp },
               { id: "alpha" as const, label: "A–Z", icon: ArrowDownAZ },
               { id: "favorites" as const, label: "Favoritos", icon: Star },
+              { id: "guideline_year" as const, label: "Diretriz recente", icon: CalendarDays },
             ].map(opt => (
               <button
                 key={opt.id}
@@ -264,19 +265,107 @@ export default function FullProtocols() {
             ))}
           </div>
 
-          <button
-            onClick={() => { hapticLight(); setShowFavOnly(v => !v); }}
-            className={cn(
-              "flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-[10px] font-heading font-semibold transition-all ring-1",
-              showFavOnly
-                ? "bg-amber-500/15 text-amber-700 dark:text-amber-400 ring-amber-500/30"
-                : "bg-card text-muted-foreground ring-border hover:text-foreground"
-            )}
-            title="Mostrar somente favoritos"
-          >
-            <Star size={11} className={showFavOnly ? "fill-current" : ""} />
-            {favs.size}
-          </button>
+          <div className="flex items-center gap-2">
+            {/* Filtros por diretriz (sociedade + ano) */}
+            <Popover>
+              <PopoverTrigger asChild>
+                <button
+                  onClick={() => hapticLight()}
+                  className={cn(
+                    "flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-[10px] font-heading font-semibold transition-all ring-1",
+                    hasGuidelineFilter
+                      ? "bg-primary/15 text-primary ring-primary/30"
+                      : "bg-card text-muted-foreground ring-border hover:text-foreground"
+                  )}
+                  title="Filtrar por sociedade e ano da diretriz"
+                  aria-label="Abrir filtros de diretriz"
+                >
+                  <BookOpen size={11} />
+                  Diretriz
+                  {hasGuidelineFilter && (
+                    <span className="ml-0.5 px-1 rounded-full bg-primary text-primary-foreground text-[9px] leading-none py-0.5">
+                      {selectedSocieties.length + (minYear > yearRange[0] ? 1 : 0)}
+                    </span>
+                  )}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent className="w-72 p-3 space-y-3" align="end">
+                <div>
+                  <p className="text-[10px] font-heading font-semibold text-muted-foreground uppercase tracking-wide mb-1.5">
+                    Sociedade emissora
+                  </p>
+                  {allSocieties.length === 0 ? (
+                    <p className="text-[11px] text-muted-foreground">
+                      Nenhuma sociedade indexada ainda.
+                    </p>
+                  ) : (
+                    <div className="flex flex-wrap gap-1.5">
+                      {allSocieties.map(s => {
+                        const active = selectedSocieties.includes(s);
+                        return (
+                          <button
+                            key={s}
+                            onClick={() => toggleSociety(s)}
+                            className={cn(
+                              "px-2 py-1 rounded-lg text-[10px] font-heading font-semibold transition-all ring-1",
+                              active
+                                ? "bg-primary text-primary-foreground ring-primary"
+                                : "bg-card text-muted-foreground ring-border hover:text-foreground"
+                            )}
+                          >
+                            {s}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  )}
+                </div>
+
+                <div>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <p className="text-[10px] font-heading font-semibold text-muted-foreground uppercase tracking-wide">
+                      Ano mínimo
+                    </p>
+                    <span className="text-[11px] font-bold text-foreground">{minYear}</span>
+                  </div>
+                  <Slider
+                    min={yearRange[0]}
+                    max={yearRange[1]}
+                    step={1}
+                    value={[minYear]}
+                    onValueChange={(v) => setMinYear(v[0] ?? yearRange[0])}
+                  />
+                  <div className="flex justify-between text-[9px] text-muted-foreground mt-1">
+                    <span>{yearRange[0]}</span>
+                    <span>{yearRange[1]}</span>
+                  </div>
+                </div>
+
+                {hasGuidelineFilter && (
+                  <button
+                    onClick={() => { setSelectedSocieties([]); setMinYear(yearRange[0]); }}
+                    className="w-full text-[10px] text-primary hover:underline font-medium pt-1"
+                  >
+                    Limpar filtros de diretriz
+                  </button>
+                )}
+              </PopoverContent>
+            </Popover>
+
+            <button
+              onClick={() => { hapticLight(); setShowFavOnly(v => !v); }}
+              className={cn(
+                "flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-[10px] font-heading font-semibold transition-all ring-1",
+                showFavOnly
+                  ? "bg-amber-500/15 text-amber-700 dark:text-amber-400 ring-amber-500/30"
+                  : "bg-card text-muted-foreground ring-border hover:text-foreground"
+              )}
+              title="Mostrar somente favoritos"
+            >
+              <Star size={11} className={showFavOnly ? "fill-current" : ""} />
+              {favs.size}
+            </button>
+          </div>
         </div>
 
         {/* Category pills com contador */}
