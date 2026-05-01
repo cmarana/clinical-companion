@@ -1402,14 +1402,26 @@ function ClinicalAIContent() {
                 </p>
               </details>
 
-              <Button
-                type="button"
-                onClick={() => handleExportPdf(historyDetail)}
-                className="w-full h-9 text-xs rounded-xl"
-              >
-                <FileDown size={14} className="mr-1.5" />
-                Exportar PDF
-              </Button>
+              <div className="flex items-center gap-2">
+                <Button
+                  type="button"
+                  onClick={() => handleExportPdf(historyDetail)}
+                  className="flex-1 h-9 text-xs rounded-xl"
+                >
+                  <FileDown size={14} className="mr-1.5" />
+                  Exportar PDF
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => handleReanalyze(historyDetail)}
+                  className="flex-1 h-9 text-xs rounded-xl"
+                  title="Reaproveitar este contexto clínico para um novo exame"
+                >
+                  <RotateCcw size={14} className="mr-1.5" />
+                  Reanalisar
+                </Button>
+              </div>
 
               <div className="prose prose-sm dark:prose-invert max-w-none text-xs">
                 <ReactMarkdown>{historyDetail.analysis}</ReactMarkdown>
