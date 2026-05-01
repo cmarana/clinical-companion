@@ -556,10 +556,32 @@ function ClinicalAIContent() {
       } else {
         const analysis: string = data?.analysis || "Sem resposta da IA.";
         const cls: Array<{ i: number; modality: string; region: string }> = Array.isArray(data?.classifications) ? data.classifications : [];
+        const summary: string = typeof data?.summary === "string" ? data.summary : "";
+        const alerts: import("@/hooks/useImageAnalysisHistory").CriticalAlert[] = Array.isArray(data?.alerts) ? data.alerts : [];
         const clsBanner = cls.length > 0
           ? `> 🔎 **Classificação automática:** ${cls.map((c) => `Imagem ${c.i} — ${c.modality} (${c.region})`).join(" · ")}\n\n`
           : "";
-        setMessages((prev) => [...prev, { role: "assistant", content: clsBanner + analysis }]);
+
+        // Banner de resumo + alertas (markdown) no topo da resposta no chat
+        let summaryBanner = "";
+        if (summary || alerts.length > 0) {
+          const lines: string[] = [];
+          if (summary) lines.push(`> 📝 **Resumo clínico:** ${summary}`);
+          if (alerts.length > 0) {
+            const icon = (l: string) => (l === "critico" ? "🚨" : l === "atencao" ? "⚠️" : "ℹ️");
+            lines.push(`>`);
+            lines.push(`> **Alertas (${alerts.length}):**`);
+            alerts.forEach((a) => {
+              const value = a.value ? ` — ${a.value}` : "";
+              const ref = a.reference ? ` (ref: ${a.reference})` : "";
+              const action = a.action ? ` · ${a.action}` : "";
+              lines.push(`> ${icon(a.level)} **${a.label}**${value}${ref}${action}`);
+            });
+          }
+          summaryBanner = lines.join("\n") + "\n\n";
+        }
+
+        setMessages((prev) => [...prev, { role: "assistant", content: summaryBanner + clsBanner + analysis }]);
 
         // Salva no histórico (best-effort, não bloqueia UX)
         try {
@@ -572,8 +594,10 @@ function ClinicalAIContent() {
             context: imageContext.trim(),
             classifications: cls,
             primaryModality,
-            analysis: clsBanner + analysis,
+            analysis: summaryBanner + clsBanner + analysis,
             thumbnail: thumb,
+            summary,
+            alerts,
           });
         } catch (err) {
           console.warn("[history] save failed:", err);
