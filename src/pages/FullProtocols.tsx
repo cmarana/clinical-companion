@@ -162,9 +162,26 @@ export default function FullProtocols() {
     setActiveCat("all");
     setShowFavOnly(false);
     setSort("popular");
+    setSelectedSocieties([]);
+    setMinYear(yearRange[0]);
   };
 
-  const hasActiveFilters = search.length > 0 || activeCat !== "all" || showFavOnly || sort !== "popular";
+  const hasGuidelineFilter =
+    selectedSocieties.length > 0 || minYear > yearRange[0];
+
+  const hasActiveFilters =
+    search.length > 0 ||
+    activeCat !== "all" ||
+    showFavOnly ||
+    sort !== "popular" ||
+    hasGuidelineFilter;
+
+  const toggleSociety = (s: string) => {
+    hapticLight();
+    setSelectedSocieties(prev =>
+      prev.includes(s) ? prev.filter(x => x !== s) : [...prev, s],
+    );
+  };
 
   return (
     <>
