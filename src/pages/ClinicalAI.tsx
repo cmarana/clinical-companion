@@ -752,120 +752,168 @@ function ClinicalAIContent() {
                 </div>
               ) : (
                 <>
-                  {/* Galeria do lote */}
-                  <div className="rounded-xl border border-border bg-muted/30 p-2">
-                    <div className="flex items-center justify-between mb-1.5 px-0.5">
-                      <span className="text-[10px] font-heading font-semibold text-muted-foreground">
-                        {originalImages.length} de {MAX_IMAGES} imagem{originalImages.length > 1 ? "ns" : ""}
-                      </span>
-                      {originalImages.length < MAX_IMAGES && (
-                        <div className="flex gap-1">
-                          <button
-                            type="button"
-                            onClick={() => cameraInputRef.current?.click()}
-                            className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-primary/10 text-primary text-[10px] font-heading font-semibold hover:bg-primary/20 transition-colors"
-                          >
-                            <Camera size={11} /> Foto
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => fileInputRef.current?.click()}
-                            className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-muted text-foreground text-[10px] font-heading font-semibold hover:bg-accent transition-colors"
-                          >
-                            <Upload size={11} /> Adicionar
-                          </button>
-                        </div>
-                      )}
+                  {/* Galeria de imagens */}
+                  {originalImages.length > 0 && (
+                    <div className="rounded-xl border border-border bg-muted/30 p-2">
+                      <div className="flex items-center justify-between mb-1.5 px-0.5">
+                        <span className="text-[10px] font-heading font-semibold text-muted-foreground">
+                          {originalImages.length} de {MAX_IMAGES} imagem{originalImages.length > 1 ? "ns" : ""}
+                        </span>
+                        {originalImages.length < MAX_IMAGES && (
+                          <div className="flex gap-1">
+                            <button
+                              type="button"
+                              onClick={() => cameraInputRef.current?.click()}
+                              className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-primary/10 text-primary text-[10px] font-heading font-semibold hover:bg-primary/20 transition-colors"
+                            >
+                              <Camera size={11} /> Foto
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                      <div className="grid grid-cols-3 gap-1.5">
+                        {originalImages.map((src, idx) => {
+                          const preview = imageFiles[idx] || src;
+                          return (
+                            <div key={idx} className="relative aspect-square rounded-lg overflow-hidden border border-border bg-black/5 group">
+                              <img src={preview} alt={`Imagem ${idx + 1}`} className="w-full h-full object-cover" />
+                              <div className="absolute top-0.5 left-0.5 px-1.5 py-0.5 rounded bg-background/80 backdrop-blur-sm text-[9px] font-heading font-bold">
+                                {idx + 1}
+                              </div>
+                              <button
+                                type="button"
+                                onClick={() => removeImageAt(idx)}
+                                className="absolute top-0.5 right-0.5 w-5 h-5 rounded-full bg-background/90 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors"
+                                title="Remover"
+                              >
+                                <X size={11} />
+                              </button>
+                              {anonymize && (
+                                <div className="absolute bottom-0.5 left-0.5 right-0.5 flex items-center justify-center gap-0.5 px-1 py-0.5 rounded bg-emerald-500/90 text-white text-[8px] font-heading font-semibold backdrop-blur-sm">
+                                  <ShieldCheck size={8} /> Anon.
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
-                    <div className="grid grid-cols-3 gap-1.5">
-                      {originalImages.map((src, idx) => {
-                        const preview = imageFiles[idx] || src;
-                        return (
-                          <div key={idx} className="relative aspect-square rounded-lg overflow-hidden border border-border bg-black/5 group">
-                            <img src={preview} alt={`Imagem ${idx + 1}`} className="w-full h-full object-cover" />
-                            <div className="absolute top-0.5 left-0.5 px-1.5 py-0.5 rounded bg-background/80 backdrop-blur-sm text-[9px] font-heading font-bold">
-                              {idx + 1}
+                  )}
+
+                  {/* Galeria de PDFs */}
+                  {documents.length > 0 && (
+                    <div className="rounded-xl border border-border bg-muted/30 p-2">
+                      <div className="flex items-center justify-between mb-1.5 px-0.5">
+                        <span className="text-[10px] font-heading font-semibold text-muted-foreground">
+                          {documents.length} de {MAX_DOCS} PDF{documents.length > 1 ? "s" : ""}
+                        </span>
+                      </div>
+                      <div className="space-y-1.5">
+                        {documents.map((doc, idx) => (
+                          <div key={idx} className="flex items-center gap-2 p-2 rounded-lg border border-border bg-card/60">
+                            <div className="w-9 h-9 rounded-lg bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0">
+                              <FileType2 size={18} />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="text-[11px] font-heading font-semibold truncate">{doc.fileName}</div>
+                              <div className="text-[9px] text-muted-foreground">
+                                {doc.pagesAnalyzed}/{doc.pages} pág. • {Math.round(doc.text.length / 1000)}k caracteres
+                                {doc.truncated && " • truncado"}
+                              </div>
                             </div>
                             <button
                               type="button"
-                              onClick={() => removeImageAt(idx)}
-                              className="absolute top-0.5 right-0.5 w-5 h-5 rounded-full bg-background/90 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors"
+                              onClick={() => removeDocumentAt(idx)}
+                              className="w-7 h-7 rounded-full bg-background/90 border border-border flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors shrink-0"
                               title="Remover"
                             >
-                              <X size={11} />
+                              <X size={12} />
                             </button>
-                            {anonymize && (
-                              <div className="absolute bottom-0.5 left-0.5 right-0.5 flex items-center justify-center gap-0.5 px-1 py-0.5 rounded bg-emerald-500/90 text-white text-[8px] font-heading font-semibold backdrop-blur-sm">
-                                <ShieldCheck size={8} /> Anon.
-                              </div>
-                            )}
                           </div>
-                        );
-                      })}
+                        ))}
+                      </div>
                     </div>
+                  )}
+
+                  {/* Botões para adicionar mais */}
+                  <div className="flex gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => fileInputRef.current?.click()}
+                      disabled={pdfLoading || (originalImages.length >= MAX_IMAGES && documents.length >= MAX_DOCS)}
+                      className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg border border-dashed border-border bg-muted/30 hover:bg-muted/60 text-[11px] font-heading font-semibold transition-all disabled:opacity-50"
+                    >
+                      {pdfLoading ? (
+                        <><Loader2 size={13} className="animate-spin" /> Processando PDF...</>
+                      ) : (
+                        <><Upload size={13} /> Adicionar imagem ou PDF</>
+                      )}
+                    </button>
                   </div>
 
-                  {/* Anonymization controls */}
-                  <div className="rounded-xl border border-border bg-card/60 p-2.5 space-y-2">
-                    <label className="flex items-center justify-between gap-2 cursor-pointer">
-                      <span className="flex items-center gap-1.5 text-[11px] font-heading font-semibold">
-                        <ShieldCheck size={13} className="text-emerald-600 dark:text-emerald-400" />
-                        Anonimizar dados sensíveis
-                      </span>
-                      <button
-                        type="button"
-                        role="switch"
-                        aria-checked={anonymize}
-                        onClick={() => setAnonymize((v) => !v)}
-                        className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${
-                          anonymize ? "bg-primary" : "bg-muted"
-                        }`}
-                      >
-                        <span
-                          className={`inline-block h-4 w-4 transform rounded-full bg-background shadow transition-transform ${
-                            anonymize ? "translate-x-4" : "translate-x-0.5"
+                  {/* Anonymization controls — só faz sentido com imagens */}
+                  {originalImages.length > 0 && (
+                    <div className="rounded-xl border border-border bg-card/60 p-2.5 space-y-2">
+                      <label className="flex items-center justify-between gap-2 cursor-pointer">
+                        <span className="flex items-center gap-1.5 text-[11px] font-heading font-semibold">
+                          <ShieldCheck size={13} className="text-emerald-600 dark:text-emerald-400" />
+                          Anonimizar dados sensíveis
+                        </span>
+                        <button
+                          type="button"
+                          role="switch"
+                          aria-checked={anonymize}
+                          onClick={() => setAnonymize((v) => !v)}
+                          className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${
+                            anonymize ? "bg-primary" : "bg-muted"
                           }`}
-                        />
-                      </button>
-                    </label>
-                    <p className="text-[9px] text-muted-foreground leading-tight">
-                      Cobre nome, prontuário, data e instituição (faixas superior e inferior) em todas as imagens do lote.
-                    </p>
-                    {anonymize && (
-                      <div className="grid grid-cols-2 gap-2 pt-1">
-                        <div>
-                          <div className="flex items-center justify-between text-[9px] text-muted-foreground mb-0.5">
-                            <span>Topo</span>
-                            <span className="font-mono">{anonTopPct}%</span>
-                          </div>
-                          <input
-                            type="range"
-                            min={0}
-                            max={30}
-                            step={1}
-                            value={anonTopPct}
-                            onChange={(e) => setAnonTopPct(Number(e.target.value))}
-                            className="w-full accent-primary"
+                        >
+                          <span
+                            className={`inline-block h-4 w-4 transform rounded-full bg-background shadow transition-transform ${
+                              anonymize ? "translate-x-4" : "translate-x-0.5"
+                            }`}
                           />
-                        </div>
-                        <div>
-                          <div className="flex items-center justify-between text-[9px] text-muted-foreground mb-0.5">
-                            <span>Rodapé</span>
-                            <span className="font-mono">{anonBottomPct}%</span>
+                        </button>
+                      </label>
+                      <p className="text-[9px] text-muted-foreground leading-tight">
+                        Cobre nome, prontuário, data e instituição (faixas superior e inferior) em todas as imagens.
+                      </p>
+                      {anonymize && (
+                        <div className="grid grid-cols-2 gap-2 pt-1">
+                          <div>
+                            <div className="flex items-center justify-between text-[9px] text-muted-foreground mb-0.5">
+                              <span>Topo</span>
+                              <span className="font-mono">{anonTopPct}%</span>
+                            </div>
+                            <input
+                              type="range"
+                              min={0}
+                              max={30}
+                              step={1}
+                              value={anonTopPct}
+                              onChange={(e) => setAnonTopPct(Number(e.target.value))}
+                              className="w-full accent-primary"
+                            />
                           </div>
-                          <input
-                            type="range"
-                            min={0}
-                            max={30}
-                            step={1}
-                            value={anonBottomPct}
-                            onChange={(e) => setAnonBottomPct(Number(e.target.value))}
-                            className="w-full accent-primary"
-                          />
+                          <div>
+                            <div className="flex items-center justify-between text-[9px] text-muted-foreground mb-0.5">
+                              <span>Rodapé</span>
+                              <span className="font-mono">{anonBottomPct}%</span>
+                            </div>
+                            <input
+                              type="range"
+                              min={0}
+                              max={30}
+                              step={1}
+                              value={anonBottomPct}
+                              onChange={(e) => setAnonBottomPct(Number(e.target.value))}
+                              className="w-full accent-primary"
+                            />
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
+                      )}
+                    </div>
+                  )}
                 </>
               )}
 
@@ -880,13 +928,13 @@ function ClinicalAIContent() {
               <Button
                 type="button"
                 onClick={handleImageAnalyze}
-                disabled={imageFiles.length === 0 || imageAnalyzing}
+                disabled={(imageFiles.length === 0 && documents.length === 0) || imageAnalyzing || pdfLoading}
                 className="w-full h-9 text-xs rounded-xl"
               >
                 {imageAnalyzing ? (
-                  <><Loader2 size={14} className="animate-spin mr-1.5" /> Analisando {imageFiles.length > 1 ? `${imageFiles.length} imagens` : "imagem"}...</>
+                  <><Loader2 size={14} className="animate-spin mr-1.5" /> Analisando...</>
                 ) : (
-                  <><ScanSearch size={14} className="mr-1.5" /> Analisar {imageFiles.length > 1 ? `${imageFiles.length} imagens` : "imagem"}</>
+                  <><ScanSearch size={14} className="mr-1.5" /> Analisar {imageFiles.length + documents.length > 1 ? `${imageFiles.length + documents.length} arquivos` : "arquivo"}</>
                 )}
               </Button>
 
