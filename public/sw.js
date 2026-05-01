@@ -161,6 +161,12 @@ self.addEventListener('fetch', (event) => {
   if (url.hostname.includes('supabase') || url.pathname.startsWith('/auth')) return;
   if (!url.protocol.startsWith('http')) return;
 
+  // version.json must ALWAYS be fresh — never cache, never serve from SW
+  if (isSameOrigin(url) && url.pathname === '/version.json') {
+    event.respondWith(fetch(event.request, { cache: 'no-store' }));
+    return;
+  }
+
   // Navigation requests: Network first, fallback to cache
   if (event.request.mode === 'navigate') {
     event.respondWith(
