@@ -333,6 +333,7 @@ function ClinicalAIContent() {
     if (patientCtx.weight) ctxParts.push(`Peso: ${patientCtx.weight}kg`);
     if (patientCtx.scenario) ctxParts.push(`Cenário: ${patientCtx.scenario}`);
     if (imageContext.trim()) ctxParts.push(`Indicação clínica: ${imageContext.trim()}`);
+    if (anonymize) ctxParts.push("Imagem anonimizada (faixas superior/inferior cobertas — ignore áreas pretas)");
     const fullContext = ctxParts.join(" | ");
 
     // Push user message with thumbnail marker
