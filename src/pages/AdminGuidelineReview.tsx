@@ -98,8 +98,8 @@ export default function AdminGuidelineReview() {
       supabase.from("guideline_review_jobs").select("*").order("created_at", { ascending: false }).limit(10),
       supabase.from("guideline_review_suggestions").select("*").order("created_at", { ascending: false }).limit(200),
     ]);
-    setJobs((jobRows ?? []) as Job[]);
-    setSuggestions((sugRows ?? []) as Suggestion[]);
+    setJobs((jobRows ?? []) as unknown as Job[]);
+    setSuggestions((sugRows ?? []) as unknown as Suggestion[]);
   }, []);
 
   useEffect(() => {
