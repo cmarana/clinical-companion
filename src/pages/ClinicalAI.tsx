@@ -79,6 +79,46 @@ function ClinicalAIContent() {
       return next;
     });
   };
+  /**
+   * Reaproveita o contexto de uma análise antiga: garante o modo "Exames",
+   * pré-preenche a indicação clínica com a hipótese/modalidade esperada
+   * e abre o seletor de arquivo para o usuário anexar o novo PDF/imagem.
+   */
+  const handleReanalyze = (entry: ImageAnalysisHistoryEntry) => {
+    // Sair de qualquer dialog aberto
+    setHistoryDetail(null);
+    setHistoryOpen(false);
+    setCompareOpen(false);
+
+    // Forçar a aba "Exames" (modo image)
+    setMode("image");
+
+    // Limpar uploads atuais para evitar mistura com o item anterior
+    setOriginalImages([]);
+    setImageFiles([]);
+    setDocuments([]);
+
+    // Montar a indicação clínica pré-preenchida
+    const parts: string[] = [];
+    if (entry.context?.trim()) parts.push(entry.context.trim());
+    if (entry.classifications.length > 0) {
+      const tags = entry.classifications
+        .map((c) => `${c.modality}${c.region ? ` (${c.region})` : ""}`)
+        .join(", ");
+      parts.push(`Comparar com exame anterior: ${tags}.`);
+    } else if (entry.docsCount > 0 && entry.docNames.length > 0) {
+      parts.push(`Comparar com documento anterior: ${entry.docNames.join(", ")}.`);
+    }
+    setImageContext(parts.join(" "));
+
+    toast.success("Contexto reaproveitado. Anexe o novo arquivo.");
+
+    // Abrir o seletor de arquivo após o React aplicar o estado
+    setTimeout(() => {
+      fileInputRef.current?.click();
+    }, 150);
+  };
+
   const handleExportPdf = (entry: ImageAnalysisHistoryEntry) => {
     exportAnalysisAsPdf({
       modality: entry.primaryModality,
@@ -1267,6 +1307,13 @@ function ClinicalAIContent() {
                             <Eye size={10} /> Reabrir
                           </button>
                           <button
+                            onClick={() => handleReanalyze(h)}
+                            className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-[10px] font-heading font-semibold hover:bg-emerald-500/20"
+                            title="Reaproveitar contexto e anexar novo arquivo"
+                          >
+                            <RotateCcw size={10} /> Reanalisar
+                          </button>
+                          <button
                             onClick={() => {
                               if (confirm("Remover esta análise do histórico?")) {
                                 removeImageHistoryEntry(h.id);
@@ -1355,14 +1402,26 @@ function ClinicalAIContent() {
                 </p>
               </details>
 
-              <Button
-                type="button"
-                onClick={() => handleExportPdf(historyDetail)}
-                className="w-full h-9 text-xs rounded-xl"
-              >
-                <FileDown size={14} className="mr-1.5" />
-                Exportar PDF
-              </Button>
+              <div className="flex items-center gap-2">
+                <Button
+                  type="button"
+                  onClick={() => handleExportPdf(historyDetail)}
+                  className="flex-1 h-9 text-xs rounded-xl"
+                >
+                  <FileDown size={14} className="mr-1.5" />
+                  Exportar PDF
+                </Button>
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => handleReanalyze(historyDetail)}
+                  className="flex-1 h-9 text-xs rounded-xl"
+                  title="Reaproveitar este contexto clínico para um novo exame"
+                >
+                  <RotateCcw size={14} className="mr-1.5" />
+                  Reanalisar
+                </Button>
+              </div>
 
               <div className="prose prose-sm dark:prose-invert max-w-none text-xs">
                 <ReactMarkdown>{historyDetail.analysis}</ReactMarkdown>
