@@ -1305,12 +1305,65 @@ function ClinicalAIContent() {
             </DialogTitle>
           </DialogHeader>
           {historyDetail && (
-            <div className="flex-1 overflow-y-auto pr-1">
+            <div className="flex-1 overflow-y-auto pr-1 space-y-2">
               {historyDetail.context && (
-                <p className="text-[11px] text-muted-foreground italic mb-2">
+                <p className="text-[11px] text-muted-foreground italic">
                   Indicação clínica: {historyDetail.context}
                 </p>
               )}
+
+              {/* Cabeçalho do paciente para PDF */}
+              <details className="rounded-lg border border-border bg-muted/30 p-2 text-[11px]" open>
+                <summary className="cursor-pointer font-heading font-semibold flex items-center gap-1.5">
+                  <FileDown size={12} className="text-primary" />
+                  Cabeçalho do paciente (para o PDF)
+                </summary>
+                <div className="grid grid-cols-2 gap-1.5 mt-2">
+                  <Input
+                    value={patientHeader.name || ""}
+                    onChange={(e) => updatePatientHeader({ name: e.target.value })}
+                    placeholder="Nome do paciente"
+                    className="h-8 text-xs col-span-2"
+                  />
+                  <Input
+                    value={patientHeader.age || ""}
+                    onChange={(e) => updatePatientHeader({ age: e.target.value })}
+                    placeholder="Idade"
+                    className="h-8 text-xs"
+                  />
+                  <Input
+                    value={patientHeader.sex || ""}
+                    onChange={(e) => updatePatientHeader({ sex: e.target.value })}
+                    placeholder="Sexo (M/F)"
+                    className="h-8 text-xs"
+                  />
+                  <Input
+                    value={patientHeader.record || ""}
+                    onChange={(e) => updatePatientHeader({ record: e.target.value })}
+                    placeholder="Prontuário/Atendimento"
+                    className="h-8 text-xs"
+                  />
+                  <Input
+                    value={patientHeader.professional || ""}
+                    onChange={(e) => updatePatientHeader({ professional: e.target.value })}
+                    placeholder="Médico responsável"
+                    className="h-8 text-xs"
+                  />
+                </div>
+                <p className="text-[9px] text-muted-foreground mt-1.5 leading-tight">
+                  Os dados ficam salvos localmente neste dispositivo para reuso. Nunca são enviados ao servidor.
+                </p>
+              </details>
+
+              <Button
+                type="button"
+                onClick={() => handleExportPdf(historyDetail)}
+                className="w-full h-9 text-xs rounded-xl"
+              >
+                <FileDown size={14} className="mr-1.5" />
+                Exportar PDF
+              </Button>
+
               <div className="prose prose-sm dark:prose-invert max-w-none text-xs">
                 <ReactMarkdown>{historyDetail.analysis}</ReactMarkdown>
               </div>
