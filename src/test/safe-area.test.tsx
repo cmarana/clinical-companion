@@ -66,16 +66,12 @@ describe("Safe area · AppLayout (mobile + desktop)", () => {
 describe("Safe area · Home (header institucional)", () => {
   const src = read("src/pages/Home.tsx");
 
-  it("container raiz aplica paddingTop com env(safe-area-inset-top)", () => {
-    expect(src).toMatch(
-      /paddingTop:\s*["']calc\(env\(safe-area-inset-top[^)]*\)\s*\+\s*0\.75rem\)["']/
-    );
+  it("container raiz usa a utility .pt-safe-fb (com fallback 44px)", () => {
+    expect(src).toMatch(/className="[^"]*\bpt-safe-fb\b/);
   });
 
-  it("header sticky usa top: env(safe-area-inset-top) (não cobre relógio/bateria)", () => {
-    expect(src).toMatch(
-      /className="[^"]*\bsticky\b[^"]*"\s*\n?\s*style=\{\{\s*top:\s*["']env\(safe-area-inset-top[^)]*\)["']/
-    );
+  it("header sticky usa .top-safe-fb (não cobre relógio/bateria)", () => {
+    expect(src).toMatch(/className="[^"]*\bsticky\b[^"]*\btop-safe-fb\b/);
   });
 });
 
