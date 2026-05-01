@@ -630,7 +630,7 @@ function ClinicalAIContent() {
                 onChange={(e) => handleImageSelect(e.target.files?.[0] ?? null)}
               />
 
-              {!imageFile ? (
+              {!originalImage ? (
                 <div className="grid grid-cols-2 gap-2">
                   <button
                     type="button"
@@ -652,21 +652,90 @@ function ClinicalAIContent() {
                   </button>
                 </div>
               ) : (
-                <div className="relative rounded-xl overflow-hidden border border-border bg-muted/30">
-                  <img
-                    src={imageFile}
-                    alt="Pré-visualização do exame"
-                    className="w-full max-h-64 object-contain bg-black/5"
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setImageFile(null)}
-                    className="absolute top-1.5 right-1.5 w-7 h-7 rounded-full bg-background/90 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors"
-                    title="Remover imagem"
-                  >
-                    <X size={14} />
-                  </button>
-                </div>
+                <>
+                  <div className="relative rounded-xl overflow-hidden border border-border bg-muted/30">
+                    <img
+                      src={imageFile || originalImage}
+                      alt="Pré-visualização do exame"
+                      className="w-full max-h-64 object-contain bg-black/5"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => { setOriginalImage(null); setImageFile(null); }}
+                      className="absolute top-1.5 right-1.5 w-7 h-7 rounded-full bg-background/90 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors"
+                      title="Remover imagem"
+                    >
+                      <X size={14} />
+                    </button>
+                    {anonymize && (
+                      <div className="absolute bottom-1.5 left-1.5 flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/90 text-white text-[9px] font-heading font-semibold backdrop-blur-sm">
+                        <ShieldCheck size={10} /> Anonimizado
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Anonymization controls */}
+                  <div className="rounded-xl border border-border bg-card/60 p-2.5 space-y-2">
+                    <label className="flex items-center justify-between gap-2 cursor-pointer">
+                      <span className="flex items-center gap-1.5 text-[11px] font-heading font-semibold">
+                        <ShieldCheck size={13} className="text-emerald-600 dark:text-emerald-400" />
+                        Anonimizar dados sensíveis
+                      </span>
+                      <button
+                        type="button"
+                        role="switch"
+                        aria-checked={anonymize}
+                        onClick={() => setAnonymize((v) => !v)}
+                        className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${
+                          anonymize ? "bg-primary" : "bg-muted"
+                        }`}
+                      >
+                        <span
+                          className={`inline-block h-4 w-4 transform rounded-full bg-background shadow transition-transform ${
+                            anonymize ? "translate-x-4" : "translate-x-0.5"
+                          }`}
+                        />
+                      </button>
+                    </label>
+                    <p className="text-[9px] text-muted-foreground leading-tight">
+                      Cobre nome, prontuário, data e instituição (faixas superior e inferior) antes do envio. Ajuste a cobertura se necessário.
+                    </p>
+                    {anonymize && (
+                      <div className="grid grid-cols-2 gap-2 pt-1">
+                        <div>
+                          <div className="flex items-center justify-between text-[9px] text-muted-foreground mb-0.5">
+                            <span>Topo</span>
+                            <span className="font-mono">{anonTopPct}%</span>
+                          </div>
+                          <input
+                            type="range"
+                            min={0}
+                            max={30}
+                            step={1}
+                            value={anonTopPct}
+                            onChange={(e) => setAnonTopPct(Number(e.target.value))}
+                            className="w-full accent-primary"
+                          />
+                        </div>
+                        <div>
+                          <div className="flex items-center justify-between text-[9px] text-muted-foreground mb-0.5">
+                            <span>Rodapé</span>
+                            <span className="font-mono">{anonBottomPct}%</span>
+                          </div>
+                          <input
+                            type="range"
+                            min={0}
+                            max={30}
+                            step={1}
+                            value={anonBottomPct}
+                            onChange={(e) => setAnonBottomPct(Number(e.target.value))}
+                            className="w-full accent-primary"
+                          />
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </>
               )}
 
               <Input
