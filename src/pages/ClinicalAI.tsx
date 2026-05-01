@@ -589,7 +589,7 @@ function ClinicalAIContent() {
               <ClipboardList size={11} /> Caso
             </TabsTrigger>
             <TabsTrigger value="image" className="text-[10px] gap-1 h-7 px-1 data-[state=active]:bg-primary/15 data-[state=active]:text-primary">
-              <ImageIcon size={11} /> Imagem
+              <ImageIcon size={11} /> Exames
             </TabsTrigger>
             <TabsTrigger value="plantao" className="text-[10px] gap-1 h-7 px-1 data-[state=active]:bg-destructive data-[state=active]:text-destructive-foreground">
               <Zap size={11} /> Plantão
