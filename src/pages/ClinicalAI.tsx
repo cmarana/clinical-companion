@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot, Mic, MicOff, Zap, FileText, Image as ImageIcon, Camera, Upload, X, ScanSearch, ShieldCheck, FileType2, History, Trash2, Eye, FileDown } from "lucide-react";
+import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot, Mic, MicOff, Zap, FileText, Image as ImageIcon, Camera, Upload, X, ScanSearch, ShieldCheck, FileType2, History, Trash2, Eye, FileDown, Download } from "lucide-react";
+import { downloadAnonymizedAttachments } from "@/lib/downloadAttachments";
 import { extractPdfText, type ExtractedPdf } from "@/lib/pdfExtract";
 import { useImageAnalysisHistory, makeThumbnail, type ImageAnalysisHistoryEntry } from "@/hooks/useImageAnalysisHistory";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
