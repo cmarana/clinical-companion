@@ -71,9 +71,9 @@ export default function ValidationChecklist() {
   };
 
   useEffect(() => {
-    loadAll();
+    if (authorized) loadAll();
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [authorized]);
 
   const summaries = useMemo<TabSummary[]>(() => {
     return integrityResults.map((integrity) => {
