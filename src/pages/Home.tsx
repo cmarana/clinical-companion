@@ -215,12 +215,14 @@ export default function Home() {
   return (
     <div
       className="px-4 pb-24 max-w-lg md:max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto"
-      style={{ paddingTop: "calc(env(safe-area-inset-top, 0px) + 0.75rem)" }}
+      // Fallback de 44px (altura típica de status bar iOS/Android) caso o
+      // env() retorne 0 — garante que o conteúdo nunca cole no horário/bateria.
+      style={{ paddingTop: "calc(env(safe-area-inset-top, 44px) + 0.75rem)" }}
     >
       {/* Top bar */}
       <div
         className="sticky z-40 flex items-center justify-between h-12 mb-3 bg-background/90 backdrop-blur-md -mx-4 px-4"
-        style={{ top: "env(safe-area-inset-top, 0px)" }}
+        style={{ top: "env(safe-area-inset-top, 44px)" }}
       >
         <div className="flex items-center gap-2.5">
           <img src={pulsoLogo} alt="PULSO" width={32} height={32} className="rounded-lg" />
