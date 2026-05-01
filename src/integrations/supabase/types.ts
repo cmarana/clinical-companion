@@ -730,6 +730,122 @@ export type Database = {
           },
         ]
       }
+      guideline_review_jobs: {
+        Row: {
+          completed_at: string | null
+          created_at: string
+          error_message: string
+          id: string
+          processed_items: number
+          scope: string[]
+          source_policy: string
+          started_at: string | null
+          status: string
+          suggestions_count: number
+          target_year: number
+          total_items: number
+          triggered_by: string
+        }
+        Insert: {
+          completed_at?: string | null
+          created_at?: string
+          error_message?: string
+          id?: string
+          processed_items?: number
+          scope?: string[]
+          source_policy?: string
+          started_at?: string | null
+          status?: string
+          suggestions_count?: number
+          target_year?: number
+          total_items?: number
+          triggered_by: string
+        }
+        Update: {
+          completed_at?: string | null
+          created_at?: string
+          error_message?: string
+          id?: string
+          processed_items?: number
+          scope?: string[]
+          source_policy?: string
+          started_at?: string | null
+          status?: string
+          suggestions_count?: number
+          target_year?: number
+          total_items?: number
+          triggered_by?: string
+        }
+        Relationships: []
+      }
+      guideline_review_suggestions: {
+        Row: {
+          applied_at: string | null
+          change_summary: string
+          created_at: string
+          current_version: string
+          evidence_sources: Json
+          id: string
+          impact: string
+          item_id: string
+          item_title: string
+          item_type: string
+          job_id: string
+          proposed_patch: string
+          proposed_version: string
+          reviewed_at: string | null
+          reviewer_id: string | null
+          reviewer_note: string
+          status: string
+        }
+        Insert: {
+          applied_at?: string | null
+          change_summary?: string
+          created_at?: string
+          current_version?: string
+          evidence_sources?: Json
+          id?: string
+          impact?: string
+          item_id: string
+          item_title: string
+          item_type: string
+          job_id: string
+          proposed_patch?: string
+          proposed_version?: string
+          reviewed_at?: string | null
+          reviewer_id?: string | null
+          reviewer_note?: string
+          status?: string
+        }
+        Update: {
+          applied_at?: string | null
+          change_summary?: string
+          created_at?: string
+          current_version?: string
+          evidence_sources?: Json
+          id?: string
+          impact?: string
+          item_id?: string
+          item_title?: string
+          item_type?: string
+          job_id?: string
+          proposed_patch?: string
+          proposed_version?: string
+          reviewed_at?: string | null
+          reviewer_id?: string | null
+          reviewer_note?: string
+          status?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "guideline_review_suggestions_job_id_fkey"
+            columns: ["job_id"]
+            isOneToOne: false
+            referencedRelation: "guideline_review_jobs"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       institution_members: {
         Row: {
           id: string
@@ -1479,6 +1595,54 @@ export type Database = {
           next_review?: number
           repetitions?: number
           user_id?: string
+        }
+        Relationships: []
+      }
+      versioned_items: {
+        Row: {
+          category: string
+          created_at: string
+          current_version: string
+          current_year: number
+          id: string
+          item_id: string
+          item_type: string
+          last_check_result: string
+          last_checked_at: string | null
+          notes: string
+          source: string
+          title: string
+          updated_at: string
+        }
+        Insert: {
+          category?: string
+          created_at?: string
+          current_version?: string
+          current_year?: number
+          id?: string
+          item_id: string
+          item_type: string
+          last_check_result?: string
+          last_checked_at?: string | null
+          notes?: string
+          source?: string
+          title: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          created_at?: string
+          current_version?: string
+          current_year?: number
+          id?: string
+          item_id?: string
+          item_type?: string
+          last_check_result?: string
+          last_checked_at?: string | null
+          notes?: string
+          source?: string
+          title?: string
+          updated_at?: string
         }
         Relationships: []
       }
