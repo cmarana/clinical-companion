@@ -166,16 +166,45 @@
     --bottomnav-h: 4rem;     /* h-16 */
   }
 
-  /* Padding utilities */
+  /* ────────────────────────────────────────────────────────────────
+     Safe-area utilities (família coesa)
+
+     • Padding (reservar espaço para a status bar):
+         .safe-area-top   → padding-top = inset (sem respiro extra)
+         .pt-safe-0       → idem (alias usado em headers sticky)
+         .pt-safe         → padding-top = inset + 0.75rem (respiro)
+         .pt-safe-fb      → idem .pt-safe, com fallback 44px (web/desktop)
+                            usar quando o container ESTÁ no topo do viewport
+                            e não pode encostar no relógio mesmo sem inset.
+
+     • Position (sticky abaixo da status bar):
+         .top-safe        → top = inset
+         .top-safe-fb     → top = inset com fallback 44px
+         .top-safe-3      → top = inset + 0.75rem (FAB/toggle flutuante)
+         .top-after-topbar→ top = inset + altura do TopBar
+
+     • Bottom:
+         .safe-area-bottom→ padding-bottom = inset
+         .pb-nav          → reserva BottomNav + inset
+         .pb-nav-extra    → idem + 1rem de respiro
+
+     SEMPRE prefira essas utilities a `style={{ paddingTop: "env(...)" }}`.
+     Inline-styles burlam o sistema e quebram os testes anti-regressão.
+  */
   .safe-area-top    { padding-top: var(--safe-top); }
   .safe-area-bottom { padding-bottom: var(--safe-bottom); }
   .safe-area-x      { padding-left: var(--safe-left); padding-right: var(--safe-right); }
 
-  .pt-safe   { padding-top: calc(var(--safe-top) + 0.75rem); }
-  .pt-safe-0 { padding-top: var(--safe-top); }
-  .top-safe  { top: var(--safe-top); }
+  .pt-safe    { padding-top: calc(var(--safe-top) + 0.75rem); }
+  .pt-safe-0  { padding-top: var(--safe-top); }
+  /* Variante com fallback 44px — usar em páginas standalone (Home, Landing)
+     onde o container está no topo absoluto e pode ser aberto fora do PWA. */
+  .pt-safe-fb { padding-top: calc(env(safe-area-inset-top, 44px) + 0.75rem); }
+
+  .top-safe    { top: var(--safe-top); }
+  .top-safe-fb { top: env(safe-area-inset-top, 44px); }
   /* Floating overlays (toasts, fab, theme toggle) — top + 0.75rem breathing room */
-  .top-safe-3 { top: calc(var(--safe-top) + 0.75rem); }
+  .top-safe-3  { top: calc(var(--safe-top) + 0.75rem); }
 
   /* Reserve full bottom space = nav height + home indicator */
   .pb-nav        { padding-bottom: calc(var(--bottomnav-h) + var(--safe-bottom)); }
