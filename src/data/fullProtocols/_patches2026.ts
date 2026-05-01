@@ -369,6 +369,508 @@ export const PATCHES_2026: ProtocolPatch2026[] = [
       },
     ],
   },
+  {
+    protocolId: "fp-asma-grave",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "GINA",
+        title: "GINA 2025 — Severe Asthma Exacerbations",
+        year: 2025,
+        recommendation:
+          "Crise grave: O₂ alvo SpO₂ 93-95%, salbutamol contínuo nebulizado + ipratrópio nas primeiras 1-2h, corticoide sistêmico (prednisolona 50 mg VO ou metilprednisolona 60-125 mg IV). Sulfato de magnésio 2 g IV em 20 min se refratária. VNI ou IOT precoce em falência ventilatória; ECMO em casos selecionados.",
+        url: "https://ginasthma.org/2025-gina-main-report/",
+        class: "I",
+        level: "A",
+      },
+      {
+        society: "SBPT",
+        title: "Diretrizes da Sociedade Brasileira de Pneumologia e Tisiologia — Asma 2025",
+        year: 2025,
+        recommendation:
+          "Reforça uso de ICS-formoterol como resgate (MART/SMART). Internação em UTI se PFE <33% pós-tratamento, hipercapnia, alteração de consciência ou exaustão.",
+        url: "https://sbpt.org.br/portal/diretrizes/",
+        class: "I",
+        level: "B",
+      },
+    ],
+  },
+  {
+    protocolId: "fp-dpoc-exacerbado",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "GOLD",
+        title: "GOLD 2025 — Global Strategy for Prevention, Diagnosis and Management of COPD",
+        year: 2025,
+        recommendation:
+          "Exacerbação: broncodilatador inalatório curto (SABA + SAMA), corticoide sistêmico 5 dias (prednisona 40 mg/dia), antibiótico se ≥2 critérios de Anthonisen ou necessidade de VM. VNI (BiPAP) em acidose respiratória pH ≤7,35. Alvo SpO₂ 88-92%.",
+        url: "https://goldcopd.org/2025-gold-report/",
+        class: "I",
+        level: "A",
+      },
+    ],
+  },
+  {
+    protocolId: "fp-pneumonia-grave",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "ATS/IDSA",
+        title: "ATS/IDSA Guidelines on Community-Acquired Pneumonia — 2024 Update",
+        year: 2024,
+        recommendation:
+          "PAC grave (UTI): β-lactâmico (ceftriaxona/ampicilina-sulbactam) + macrolídeo OU β-lactâmico + fluoroquinolona respiratória. Cobertura para Pseudomonas/MRSA conforme fatores de risco. Corticoide (hidrocortisona 200 mg/dia) reduz mortalidade em PAC grave (CAPE COD).",
+        url: "https://www.atsjournals.org/doi/10.1164/rccm.201908-1581ST",
+        class: "I",
+        level: "A",
+      },
+      {
+        society: "SBPT",
+        title: "Diretrizes Brasileiras de Pneumonia Adquirida na Comunidade 2025",
+        year: 2025,
+        recommendation:
+          "CURB-65/PSI para estratificação. Antibioticoterapia em ≤4h da chegada ao PS. Hemoculturas + antígenos urinários em PAC grave.",
+        url: "https://sbpt.org.br/portal/diretrizes/",
+        class: "I",
+        level: "B",
+      },
+    ],
+  },
+  {
+    protocolId: "fp-sdra",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "ESICM",
+        title: "ESICM Guidelines on Acute Respiratory Distress Syndrome 2024",
+        year: 2024,
+        recommendation:
+          "Ventilação protetora: VC 4-6 mL/kg peso predito, Pplat ≤30 cmH₂O, driving pressure ≤15 cmH₂O. Posição prona ≥16h em SDRA grave (PaO₂/FiO₂ <150). PEEP titulada. ECMO V-V em refratários após otimização.",
+        url: "https://www.esicm.org/",
+        class: "I",
+        level: "A",
+      },
+      {
+        society: "ATS/AMIB",
+        title: "Recomendações Brasileiras AMIB para Manejo da SDRA 2025",
+        year: 2025,
+        recommendation:
+          "Reforça prona precoce e VM protetora. Bloqueio neuromuscular nas primeiras 48 h em SDRA grave. Evitar excesso de fluidos após estabilização.",
+        url: "https://www.amib.org.br/diretrizes/",
+        class: "IIa",
+        level: "B",
+      },
+    ],
+  },
+
+  // ==================== INFECTOLOGIA ====================
+  {
+    protocolId: "fp-meningite-completo",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "IDSA",
+        title: "IDSA Guidelines for Bacterial Meningitis — 2024 Update",
+        year: 2024,
+        recommendation:
+          "ATB empírico em ≤1h da suspeita: ceftriaxona 2 g IV 12/12h + vancomicina 15-20 mg/kg IV 8-12h (+ ampicilina 2 g 4/4h se >50 anos ou imunossuprimido). Dexametasona 0,15 mg/kg IV 6/6h por 4 dias, antes ou junto com a 1ª dose de ATB. TC antes da PL apenas se sinais de hipertensão intracraniana ou imunocomprometido.",
+        url: "https://www.idsociety.org/practice-guideline/bacterial-meningitis/",
+        class: "I",
+        level: "A",
+      },
+      {
+        society: "MS Brasil",
+        title: "PCDT — Meningites Bacterianas 2025",
+        year: 2025,
+        recommendation:
+          "Notificação compulsória imediata. Quimioprofilaxia para contatos próximos: rifampicina ou ceftriaxona dose única. Vacinação meningocócica conjugada na rotina infantil (Meningo C aos 3 e 5 m + reforço 12 m).",
+        url: "https://www.gov.br/saude/pt-br/assuntos/protocolos-clinicos-e-diretrizes-terapeuticas-pcdt",
+        class: "I",
+        level: "B",
+      },
+    ],
+  },
+  {
+    protocolId: "fp-itu-complicada",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "EAU",
+        title: "European Association of Urology Guidelines on Urological Infections 2025",
+        year: 2025,
+        recommendation:
+          "Pielonefrite/ITU complicada: ceftriaxona 1 g IV/dia ou piperacilina-tazobactam se sepse; descalonamento conforme cultura. Duração 7-14 dias. Drenagem urgente em obstrução (cateterização ureteral/nefrostomia).",
+        url: "https://uroweb.org/guidelines/urological-infections",
+        class: "I",
+        level: "A",
+      },
+      {
+        society: "MS Brasil / SBI",
+        title: "Diretrizes Brasileiras de ITU em Adultos 2024",
+        year: 2024,
+        recommendation:
+          "ITU baixa não complicada: nitrofurantoína 100 mg 6/6h × 5 dias ou fosfomicina 3 g VO dose única. Evitar fluoroquinolonas em casos não complicados (RAM e resistência).",
+        url: "https://infectologia.org.br/diretrizes/",
+        class: "I",
+        level: "B",
+      },
+    ],
+  },
+  {
+    protocolId: "fp-celulite-erisipela",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "IDSA",
+        title: "IDSA Guidelines for Skin and Soft Tissue Infections 2025 Update",
+        year: 2025,
+        recommendation:
+          "Erisipela/celulite não purulenta: cefalexina 500 mg VO 6/6h ou cefazolina 1-2 g IV 8/8h por 5-7 dias. Cobertura MRSA (clindamicina/SMX-TMP) se purulência, abscesso, trauma penetrante ou colonização prévia.",
+        url: "https://academic.oup.com/cid/article/59/2/e10/2895845",
+        class: "I",
+        level: "A",
+      },
+    ],
+  },
+
+  // ==================== METABÓLICO / ENDÓCRINO ====================
+  {
+    protocolId: "fp-cad",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "ADA",
+        title: "ADA Standards of Care in Diabetes — 2025 (Capítulo Hyperglycemic Crises)",
+        year: 2025,
+        recommendation:
+          "Reposição volêmica com SF 0,9% 15-20 mL/kg na 1ª hora, depois ajuste por sódio corrigido. Insulina regular 0,1 U/kg/h IV em infusão (sem bolus em crianças). K+ antes de iniciar insulina: <3,3 reponha antes; 3,3-5,2 reponha junto. Bicarbonato apenas se pH <6,9. Transição para SC quando HCO₃ ≥18, AG ≤12, paciente comendo.",
+        url: "https://diabetesjournals.org/care/issue/48/Supplement_1",
+        class: "I",
+        level: "A",
+      },
+      {
+        society: "SBD",
+        title: "Diretrizes da Sociedade Brasileira de Diabetes 2024-2025 — Crises Hiperglicêmicas",
+        year: 2025,
+        recommendation:
+          "Cristaloides balanceados (Plasma-Lyte/Ringer) preferenciais sobre SF em CAD para reduzir acidose hiperclorêmica (PLUS-IS-LESS, SCOPE-DKA). Insulina SC análoga (lispro/aspart) em CAD leve a moderada como alternativa à infusão IV.",
+        url: "https://diretriz.diabetes.org.br/",
+        class: "IIa",
+        level: "B",
+      },
+    ],
+  },
+  {
+    protocolId: "fp-hipoglicemia",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "ADA",
+        title: "ADA — Hypoglycemia in Diabetes 2025",
+        year: 2025,
+        recommendation:
+          "Consciente: 15 g de carboidrato VO, repetir em 15 min se glicemia <70. Inconsciente: glicose hipertônica 25 g IV (50 mL G50% ou 100 mL G25%) ou glucagon 1 mg IM/SC/IN se sem acesso. Hipoglicemia por sulfonilureia: internação 24-48h pelo risco de recidiva (octreotida 50-100 µg SC 8/8h em refratária).",
+        url: "https://diabetesjournals.org/care",
+        class: "I",
+        level: "B",
+      },
+    ],
+  },
+  {
+    protocolId: "fp-hipercalemia",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "KDIGO / ERA",
+        title: "KDIGO Clinical Practice Guideline on Potassium Management 2024",
+        year: 2024,
+        recommendation:
+          "K+ ≥6,5 ou alterações ECG: gluconato de cálcio 10% 10 mL IV em 2-3 min (estabilização miocárdica), insulina regular 10 U + glicose 25 g IV, salbutamol 10-20 mg nebulizado. Remoção: furosemida (se diurese), patiromer/SZC (resinas modernas) ou hemodiálise em refratários/anúricos.",
+        url: "https://kdigo.org/guidelines/",
+        class: "I",
+        level: "A",
+      },
+    ],
+  },
+  {
+    protocolId: "fp-hiponatremia",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "European Societies",
+        title: "European Clinical Practice Guideline on Hyponatremia — 2024 Update",
+        year: 2024,
+        recommendation:
+          "Hiponatremia sintomática grave: salina hipertônica 3% 150 mL IV em 10-20 min (ou 2 mL/kg), repetir até 2-3 vezes ou ↑Na 5 mEq/L. Limite de correção: ≤10 mEq/L em 24h e ≤18 mEq/L em 48h (prevenir mielinólise). Dose-resposta com Na sérico de 1/1h nas primeiras 6h.",
+        url: "https://academic.oup.com/ndt",
+        class: "I",
+        level: "B",
+      },
+    ],
+  },
+
+  // ==================== OBSTETRÍCIA ====================
+  {
+    protocolId: "fp-eclampsia",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "FIGO / ISSHP",
+        title: "International Society for the Study of Hypertension in Pregnancy — 2024 Recommendations",
+        year: 2024,
+        recommendation:
+          "Sulfato de magnésio: 4-6 g IV em 20 min (ataque) + 1-2 g/h IV manutenção por 24h pós-parto/última crise. Anti-hipertensivo se PA ≥160/110: hidralazina 5 mg IV ou nifedipino 10 mg VO ou labetalol 20 mg IV. Resolução obstétrica após estabilização materna.",
+        url: "https://www.isshp.org/",
+        class: "I",
+        level: "A",
+      },
+      {
+        society: "FEBRASGO / MS Brasil",
+        title: "Manual de Gestação de Alto Risco — MS 2025 e Protocolo FEBRASGO de Eclâmpsia",
+        year: 2025,
+        recommendation:
+          "Notificação compulsória de near-miss materno. Sulfato de magnésio mantém-se 1ª linha (Esquema Pritchard IM como alternativa em UBS sem bomba). Corticoide para maturação fetal entre 24-34s.",
+        url: "https://www.febrasgo.org.br/",
+        class: "I",
+        level: "A",
+      },
+    ],
+  },
+  {
+    protocolId: "fp-hpp",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "WHO / FIGO",
+        title: "WHO Recommendations on the Prevention and Treatment of Postpartum Haemorrhage 2024",
+        year: 2024,
+        recommendation:
+          "MOTIVE bundle (Massage uterus, Oxytocin, TXA 1 g IV em ≤3h, IV fluids, Examination, Escalation). Misoprostol 800 µg SL se sem ocitocina. Balão intrauterino (Bakri) e sutura B-Lynch precoces em refratários. Histerectomia como último recurso.",
+        url: "https://www.who.int/publications/i/item/9789240088450",
+        class: "I",
+        level: "A",
+      },
+      {
+        society: "FEBRASGO",
+        title: "Protocolo FEBRASGO — Hemorragia Pós-Parto 2025",
+        year: 2025,
+        recommendation:
+          "Implementação de carrinho de HPP em todos os centros obstétricos. Treinamento simulado obrigatório. TXA em até 3h reduz mortalidade (WOMAN Trial).",
+        url: "https://www.febrasgo.org.br/",
+        class: "I",
+        level: "A",
+      },
+    ],
+  },
+  {
+    protocolId: "fp-gravidez-ectopica",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "ACOG / ESHRE",
+        title: "ACOG Practice Bulletin — Tubal Ectopic Pregnancy 2024",
+        year: 2024,
+        recommendation:
+          "Conduta expectante apenas se β-hCG <200 e em queda. Metotrexato 50 mg/m² IM em ectópica não rota com β-hCG <5000, sem BCF, sem hemoperitônio. Cirurgia (salpingostomia/salpingectomia) em rotura, instabilidade, falha clínica ou contraindicação ao MTX.",
+        url: "https://www.acog.org/clinical/clinical-guidance/practice-bulletin",
+        class: "I",
+        level: "B",
+      },
+    ],
+  },
+
+  // ==================== PEDIATRIA ====================
+  {
+    protocolId: "fp-febre-sem-foco-ped",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "AAP / NICE",
+        title: "AAP Clinical Practice Guideline — Evaluation and Management of Well-Appearing Febrile Infants 2024",
+        year: 2024,
+        recommendation:
+          "0-21 dias: avaliação completa (HMG, PCR, PCT, urocultura, hemocultura, LCR) + ATB empírico (ampicilina + cefotaxima/ceftazidima). 22-28 dias: avaliação completa, ATB se anormal. 29-60 dias: PCT ≥0,5 ou PCR ≥20 → expansão investigação. Lactato/PCR seriados em sepse oculta.",
+        url: "https://publications.aap.org/pediatrics/article/148/2/e2021052228/179783",
+        class: "I",
+        level: "A",
+      },
+      {
+        society: "SBP",
+        title: "Sociedade Brasileira de Pediatria — Febre Sem Sinais Localizatórios 2025",
+        year: 2025,
+        recommendation:
+          "Ferramenta YIOS/PCT para estratificação de risco. Antibioticoterapia empírica em <90 dias com critérios de risco. Vigilância para SARS-CoV-2 e dengue conforme cenário epidemiológico.",
+        url: "https://www.sbp.com.br/",
+        class: "IIa",
+        level: "B",
+      },
+    ],
+  },
+  {
+    protocolId: "fp-laringite-crupe",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "AAP",
+        title: "American Academy of Pediatrics — Croup Management 2024",
+        year: 2024,
+        recommendation:
+          "Dexametasona 0,15-0,6 mg/kg VO/IM/IV dose única em todos os graus (incluindo leve). Adrenalina nebulizada (L-epi 5 mL ou racêmica 0,5 mL) em moderado-grave; observação 3-4h pós-dose pelo rebote. O₂ se hipoxemia.",
+        url: "https://publications.aap.org/pediatrics",
+        class: "I",
+        level: "A",
+      },
+    ],
+  },
+
+  // ==================== GERIATRIA ====================
+  {
+    protocolId: "fp-delirium",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "AGS / NICE",
+        title: "American Geriatrics Society — Delirium Clinical Practice Guideline 2024",
+        year: 2024,
+        recommendation:
+          "Prevenção não farmacológica multicomponente (HELP) é 1ª linha. Tratar causa subjacente (sepse, dor, fármacos). Antipsicótico (haloperidol 0,5-1 mg ou quetiapina 12,5-25 mg) apenas em agitação que coloca em risco; evitar benzodiazepínicos exceto abstinência alcoólica.",
+        url: "https://www.americangeriatrics.org/",
+        class: "I",
+        level: "B",
+      },
+    ],
+  },
+  {
+    protocolId: "fp-geri5-fratura-quadril",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "AAOS / NICE",
+        title: "AAOS Clinical Practice Guideline — Hip Fractures in the Elderly 2025 Update",
+        year: 2025,
+        recommendation:
+          "Cirurgia em ≤24-48h reduz mortalidade. Bloqueio de nervo femoral/fascia ilíaca para analgesia; evitar opioides em altas doses. Profilaxia de TEV (HBPM) e antibiótica perioperatória. Mobilização precoce no 1º DPO.",
+        url: "https://www.aaos.org/quality/quality-programs/lower-extremity-programs/hip-fractures/",
+        class: "I",
+        level: "B",
+      },
+    ],
+  },
+
+  // ==================== CARDIOLOGIA EXTRA ====================
+  {
+    protocolId: "fp-iam-sem-supra",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "ESC",
+        title: "2023 ESC Guidelines for the Management of Acute Coronary Syndromes (NSTE-ACS)",
+        year: 2023,
+        recommendation:
+          "Estratificação com GRACE 2.0/TIMI. Estratégia invasiva em ≤24h em alto risco (GRACE >140, troponina dinâmica, alterações ST/T). DAPT com AAS + ticagrelor (ou prasugrel pós-anatomia coronária). Anticoagulação com fondaparinux ou enoxaparina.",
+        url: "https://academic.oup.com/eurheartj/article/44/38/3720/7243210",
+        class: "I",
+        level: "A",
+      },
+      {
+        society: "SBC",
+        title: "Diretriz SBC sobre Síndromes Coronarianas Agudas Sem Supra de ST — Atualização 2025",
+        year: 2025,
+        recommendation:
+          "GRACE 2.0 para risco. Estratégia invasiva precoce (<24h) em alto risco. Inibidor de PCSK9 ou ezetimiba na alta para LDL <55 mg/dL.",
+        url: "https://abccardiol.org/",
+        class: "I",
+        level: "B",
+      },
+    ],
+  },
+
+  // ==================== NEUROLOGIA EXTRA ====================
+  {
+    protocolId: "fp-status-epilepticus-refratario",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "NCS / ESETT",
+        title: "Neurocritical Care Society — Status Epilepticus Guidelines 2024 Update",
+        year: 2024,
+        recommendation:
+          "1ª linha (5-20 min): benzodiazepínico (midazolam 10 mg IM ou diazepam 0,15 mg/kg IV ou lorazepam 0,1 mg/kg IV). 2ª linha (20-40 min, ESETT): levetiracetam 60 mg/kg, fosfenitoína 20 mg/kg ou valproato 40 mg/kg — equivalência demonstrada. 3ª linha (>40 min, refratário): IOT + midazolam/propofol/cetamina em infusão; EEG contínuo. Super-refratário: cetamina, anestésicos inalatórios, dieta cetogênica, imunoterapia.",
+        url: "https://www.neurocriticalcare.org/",
+        class: "I",
+        level: "A",
+      },
+    ],
+  },
+
+  // ==================== GASTRO ====================
+  {
+    protocolId: "fp-pancreatite-aguda",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "ACG / AGA",
+        title: "ACG Clinical Guideline — Acute Pancreatitis 2024 Update",
+        year: 2024,
+        recommendation:
+          "Reanimação volêmica controlada com Ringer lactato 5-10 mL/kg/h nas primeiras 24h (não mais 'agressiva' — WATERFALL trial). Dieta oral precoce em pancreatite leve. ATB apenas em necrose infectada documentada. CPRE em ≤24-72h em colangite associada.",
+        url: "https://journals.lww.com/ajg/Fulltext/2024/03000/",
+        class: "I",
+        level: "A",
+      },
+    ],
+  },
+  {
+    protocolId: "fp-hda",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "ACG",
+        title: "ACG Clinical Guideline — Upper GI Bleeding 2024",
+        year: 2024,
+        recommendation:
+          "Estratificação com Glasgow-Blatchford. EDA em ≤24h (≤12h em instabilidade). IBP IV em bolus + infusão (omeprazol 80 mg + 8 mg/h) pré-EDA em alto risco. Transfusão restritiva (Hb alvo 7-8 g/dL). Eritromicina 250 mg IV 30 min pré-EDA melhora visualização.",
+        url: "https://journals.lww.com/ajg/",
+        class: "I",
+        level: "A",
+      },
+    ],
+  },
+  {
+    protocolId: "fp-hda-choque",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "Baveno VII",
+        title: "Baveno VII Consensus Workshop — Portal Hypertension and Variceal Bleeding 2024 Update",
+        year: 2024,
+        recommendation:
+          "HDA varicosa: terlipressina 2 mg IV 4/4h ou octreotida; ceftriaxona 1 g/dia IV por 7 dias (profilaxia PBE). EDA com ligadura elástica em ≤12h. TIPS precoce (≤72h) em alto risco (Child-Pugh C ou B com sangramento ativo).",
+        url: "https://www.journal-of-hepatology.eu/article/S0168-8278(23)05021-X/fulltext",
+        class: "I",
+        level: "B",
+      },
+    ],
+  },
+
+  // ==================== ANAFILAXIA ====================
+  {
+    protocolId: "fp-anafilaxia-cutanea",
+    lastReviewed: "2026-01",
+    guidelines: [
+      {
+        society: "WAO / EAACI",
+        title: "World Allergy Organization Anaphylaxis Guidance 2025",
+        year: 2025,
+        recommendation:
+          "Adrenalina IM 0,3-0,5 mg (face anterolateral da coxa) é 1ª linha — repetir a cada 5-15 min se necessário. Decúbito dorsal com MMII elevados. Adrenalina IV em infusão (0,1 µg/kg/min, titular) em refratários. Anti-histamínicos e corticoides são adjuvantes (não substituem adrenalina). Observação ≥6-8h pós-resolução pelo risco de bifásica.",
+        url: "https://www.worldallergy.org/",
+        class: "I",
+        level: "A",
+      },
+    ],
+  },
 ];
 
 /** Mescla guidelines do patch ao protocolo, evitando duplicatas (society+year+title). */
