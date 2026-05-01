@@ -246,7 +246,7 @@ export default function FullProtocolDetail() {
           />
 
           <Tabs defaultValue={matchedTree ? "flowchart" : defaultTab} className="w-full">
-            <TabsList className="w-full flex overflow-x-auto no-scrollbar h-auto gap-1 bg-transparent p-0 mb-4">
+            <TabsList className="w-full flex flex-wrap h-auto gap-1.5 bg-transparent p-0 mb-4 justify-start">
               {matchedTree && (
                 <TabsTrigger
                   value="flowchart"
