@@ -445,7 +445,11 @@ function ClinicalAIContent() {
         setMessages((prev) => prev.slice(0, -1));
       } else {
         const analysis: string = data?.analysis || "Sem resposta da IA.";
-        setMessages((prev) => [...prev, { role: "assistant", content: analysis }]);
+        const cls: Array<{ i: number; modality: string; region: string }> = Array.isArray(data?.classifications) ? data.classifications : [];
+        const clsBanner = cls.length > 0
+          ? `> 🔎 **Classificação automática:** ${cls.map((c) => `Imagem ${c.i} — ${c.modality} (${c.region})`).join(" · ")}\n\n`
+          : "";
+        setMessages((prev) => [...prev, { role: "assistant", content: clsBanner + analysis }]);
         setOriginalImages([]);
         setImageFiles([]);
         setDocuments([]);

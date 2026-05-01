@@ -6,6 +6,27 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { verifyAuthAndQuota, bumpAiUsage, corsHeaders } from "../_shared/aiQuota.ts";
 
+// Checklists direcionados por modalidade + região anatômica
+const CHECKLISTS: Record<string, string> = {
+  "rx_torax": `- Vias aéreas (traqueia centrada, calibre)\n- Parênquima (consolidações, infiltrados, nódulos, massas)\n- Pleura (derrame, pneumotórax, espessamento)\n- Mediastino e silhueta cardíaca (ICT, alargamento)\n- Hilos pulmonares\n- Diafragma e seios costofrênicos\n- Arcos costais e partes moles\n- Dispositivos (TOT, SNG, CVC, marcapasso)`,
+  "rx_abdome": `- Padrão gasoso (distensão, níveis hidroaéreos, alças sentinela)\n- Pneumoperitônio (ar livre subdiafragmático)\n- Calcificações (litíase, vasculares, fecalomas)\n- Silhueta hepática, esplênica e renal\n- Psoas e linha pré-peritoneal\n- Esqueleto visível (coluna lombar, bacia)`,
+  "rx_ossos": `- Alinhamento e cortical óssea\n- Linha de fratura, traços, desvios, angulação\n- Articulações (luxação, derrame, espaço articular)\n- Partes moles (edema, enfisema subcutâneo, corpos estranhos)\n- Lesões líticas/blásticas`,
+  "tc_cranio": `- Sistema ventricular (tamanho, simetria, hidrocefalia)\n- Sulcos corticais e cisternas basais\n- Hipodensidades (isquemia, edema) / hiperdensidades (sangue)\n- Hemorragias (epidural, subdural, subaracnoide, intraparenquimatosa, IV)\n- Desvio de linha média / herniações\n- Calota craniana e seios paranasais\n- ASPECTS se suspeita de AVCi`,
+  "tc_torax": `- Parênquima pulmonar (consolidação, vidro fosco, nódulos, enfisema)\n- TEP (falha de enchimento se contrastada)\n- Mediastino, linfonodos, grandes vasos\n- Pleura e pericárdio (derrame)\n- Esqueleto (fraturas costais, vertebrais)\n- Aorta (dissecção, aneurisma)`,
+  "tc_abdome": `- Fígado, vias biliares, vesícula\n- Baço, pâncreas, suprarrenais\n- Rins e vias urinárias (litíase, hidronefrose)\n- Alças intestinais (distensão, espessamento, pneumatose)\n- Líquido livre / coleções\n- Aorta e vasos mesentéricos\n- Apêndice (se FID)`,
+  "rm_cranio": `- Sequências disponíveis (T1/T2/FLAIR/DWI/SWI)\n- Restrição à difusão (DWI/ADC) — isquemia aguda\n- Lesões T2/FLAIR hiperintensas (desmielinização, gliose)\n- Realce pelo gadolínio (se contrastada)\n- Hemorragias (SWI/T2*)\n- Sistema ventricular e linha média`,
+  "usg_abdome": `- Fígado (ecotextura, dimensões, lesões focais)\n- Vesícula (cálculos, espessamento parietal, sinal de Murphy US)\n- Vias biliares (calibre)\n- Pâncreas (quando visível)\n- Rins (dimensões, hidronefrose, cálculos)\n- Baço, bexiga, líquido livre`,
+  "usg_obstetrica": `- BCF, vitalidade fetal\n- Idade gestacional / biometria\n- Placenta (localização, espessura, descolamento)\n- Líquido amniótico (ILA)\n- Apresentação fetal\n- Anatomia fetal (se trimestre adequado)`,
+  "usg_doppler": `- Estrutura vascular avaliada\n- Fluxo (presente/ausente, fásico/contínuo)\n- Trombose (compressibilidade, eco intraluminal)\n- Velocidades / índices`,
+  "ecg": `- Ritmo (sinusal, FA, flutter, juncional, ventricular)\n- Frequência cardíaca\n- Eixo elétrico (normal, desvio para esquerda/direita)\n- Intervalos: PR, QRS, QTc\n- Onda P (morfologia, sobrecarga atrial)\n- Complexo QRS (bloqueios de ramo, hipertrofias)\n- Segmento ST (supra/infra, localização)\n- Onda T (inversão, achatamento, apiculada)\n- Onda Q patológica\n- Sinais de isquemia/IAM, sobrecarga, distúrbios eletrolíticos`,
+  "pele_ferida": `- Localização e dimensões\n- Bordas (regulares, irregulares, infiltradas)\n- Coloração e pigmentação (regra ABCDE se lesão pigmentada)\n- Sinais inflamatórios (rubor, edema, calor)\n- Exsudato, necrose, fibrina\n- Sinais de infecção (pus, celulite perilesional)\n- Profundidade aparente`,
+  "generico": `- Descrição objetiva do que é visível\n- Estruturas anatômicas reconhecíveis\n- Alterações morfológicas evidentes\n- Sinais de gravidade`,
+};
+
+const CLASSIFIER_PROMPT = `Você é um classificador de imagens médicas. Para CADA imagem enviada, responda APENAS com JSON válido (sem markdown, sem texto extra) no formato:
+{"items":[{"i":1,"modality":"RX|TC|RM|USG|ECG|FOTO_PELE|FOTO_FERIDA|OUTRO","region":"texto curto em PT-BR","key":"rx_torax|rx_abdome|rx_ossos|tc_cranio|tc_torax|tc_abdome|rm_cranio|usg_abdome|usg_obstetrica|usg_doppler|ecg|pele_ferida|generico"}]}
+A "key" deve ser a melhor correspondência aos checklists disponíveis. Use "generico" apenas se nenhum se encaixar.`;
+
 const SYSTEM_PROMPT_IMAGE = `Você é um médico radiologista assistente do PULSO Emergência.
 Analise a imagem clínica enviada (radiografia, TC, RM, USG, ECG impresso, ferida, lesão de pele, etc.) com o máximo rigor.
 
@@ -16,14 +37,19 @@ REGRAS OBRIGATÓRIAS:
 4. Seja CAUTELOSO: laudos automáticos por IA têm taxa de erro. Sempre recomendar correlação clínica e laudo formal por radiologista.
 5. NÃO dê diagnóstico definitivo — apenas hipóteses ordenadas por probabilidade.
 6. Para ECG: comente ritmo, frequência, eixo, intervalos (PR/QRS/QT), alterações ST-T, sinais de isquemia/sobrecarga.
+7. Use o CHECKLIST DIRECIONADO fornecido (quando disponível) como roteiro mínimo de itens a comentar — marque cada item como presente, ausente ou não avaliável.
 
 FORMATO OBRIGATÓRIO (markdown, exatamente estes H2):
 
 ## TIPO DE EXAME
-[Modalidade + região + projeção/corte]
+[Modalidade + região + projeção/corte — confirmar ou corrigir a classificação automática]
 
 ## QUALIDADE TÉCNICA
 [Adequada / Limitada — descrever limitações]
+
+## CHECKLIST DIRECIONADO
+- [item 1: presente/ausente/não avaliável — descrição]
+- [item 2: ...]
 
 ## ACHADOS
 - [achado objetivo 1]
@@ -219,6 +245,51 @@ serve(async (req) => {
         ? SYSTEM_PROMPT_IMAGE
         : SYSTEM_PROMPT_DOCUMENT;
 
+    // ─── Passo 1: classificação automática (modalidade + região) ───
+    interface Classification { i: number; modality: string; region: string; key: string }
+    let classifications: Classification[] = [];
+    if (hasImages) {
+      try {
+        const clsContent: Array<Record<string, unknown>> = [
+          { type: "text", text: `Classifique as ${images.length} imagem(ns) abaixo na ordem.` },
+        ];
+        images.forEach((url) => clsContent.push({ type: "image_url", image_url: { url } }));
+
+        const clsResp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+          method: "POST",
+          headers: { Authorization: `Bearer ${LOVABLE_API_KEY}`, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            model: "google/gemini-2.5-flash-lite",
+            messages: [
+              { role: "system", content: CLASSIFIER_PROMPT },
+              { role: "user", content: clsContent },
+            ],
+            response_format: { type: "json_object" },
+          }),
+        });
+        if (clsResp.ok) {
+          const clsData = await clsResp.json();
+          const raw = clsData?.choices?.[0]?.message?.content ?? "{}";
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed?.items)) {
+            classifications = parsed.items
+              .filter((x: any) => x && typeof x === "object")
+              .map((x: any, idx: number) => ({
+                i: typeof x.i === "number" ? x.i : idx + 1,
+                modality: typeof x.modality === "string" ? x.modality : "OUTRO",
+                region: typeof x.region === "string" ? x.region : "não identificada",
+                key: typeof x.key === "string" && CHECKLISTS[x.key] ? x.key : "generico",
+              }))
+              .slice(0, images.length);
+          }
+        } else {
+          console.warn("[image-analysis] classifier failed status=", clsResp.status);
+        }
+      } catch (e) {
+        console.warn("[image-analysis] classifier error:", e);
+      }
+    }
+
     const isBatchImg = images.length > 1;
     const headerParts: string[] = [];
     if (hasImages && isBatchImg) {
@@ -227,9 +298,23 @@ serve(async (req) => {
     if (hasDocs) {
       headerParts.push(`${documents.length} documento(s) PDF anexado(s) (texto já extraído abaixo).`);
     }
-    const header = headerParts.length ? headerParts.join(" ") + "\n\n" : "";
 
-    const userText = header + (context.trim()
+    // Bloco de classificação + checklists direcionados
+    let classificationBlock = "";
+    if (classifications.length > 0) {
+      const lines = classifications.map((c) => `- Imagem ${c.i}: ${c.modality} — ${c.region}`).join("\n");
+      const uniqueKeys = Array.from(new Set(classifications.map((c) => c.key)));
+      const checklistBlocks = uniqueKeys
+        .map((k) => `### Checklist (${k}):\n${CHECKLISTS[k] ?? CHECKLISTS["generico"]}`)
+        .join("\n\n");
+      classificationBlock =
+        `\n\nCLASSIFICAÇÃO AUTOMÁTICA (confirme ou corrija no laudo):\n${lines}\n\n` +
+        `CHECKLISTS DIRECIONADOS — use como roteiro mínimo de itens a comentar:\n\n${checklistBlocks}\n`;
+    }
+
+    const header = headerParts.length ? headerParts.join(" ") + "\n" : "";
+
+    const userText = header + classificationBlock + "\n" + (context.trim()
       ? `Contexto clínico fornecido pelo médico:\n${context}\n\nAnalise os materiais em anexo seguindo o formato obrigatório.`
       : `Analise os materiais em anexo seguindo o formato obrigatório. Sem contexto clínico fornecido.`);
 
@@ -301,9 +386,9 @@ serve(async (req) => {
     bumpAiUsage(serviceClient, userId, "clinical-ai").catch((e) =>
       console.error("bumpAiUsage failed:", e),
     );
-    console.log(`[image-analysis] user=${userId} tier=${tier} used=${used + 1}/${limit} batch=${images.length}`);
+    console.log(`[image-analysis] user=${userId} tier=${tier} used=${used + 1}/${limit} batch=${images.length} cls=${classifications.length}`);
 
-    return new Response(JSON.stringify({ analysis }), {
+    return new Response(JSON.stringify({ analysis, classifications }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (e) {
