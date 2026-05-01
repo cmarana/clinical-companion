@@ -35,9 +35,9 @@ const stagger = {
 /* ── Data ────────────────────────────────────────────────────── */
 const features = [
   { icon: Zap, title: "Modo Emergência", desc: "Algoritmos de PCR, Sepse, IAM e AVC com fluxogramas interativos. Decisões em segundos.", accent: "bg-red-500/10 text-red-500" },
-  { icon: Bot, title: "IA Clínica", desc: "Diagnóstico diferencial, conduta e raciocínio clínico assistido por inteligência artificial.", accent: "bg-blue-500/10 text-blue-500" },
-  { icon: Pill, title: "2.000+ Medicamentos", desc: "Doses, diluições, interações, ajustes renais e hepáticos. Bulário completo no bolso.", accent: "bg-emerald-500/10 text-emerald-500" },
-  { icon: BookOpen, title: "1.000+ Protocolos", desc: "Protocolos clínicos baseados em evidência com níveis de recomendação e referências.", accent: "bg-cyan-500/10 text-cyan-500" },
+  { icon: Bot, title: "IA Clínica multimodal", desc: "5 modos: Chat, Caso estruturado, Análise de Exames (imagem), Plantão e Texto narrativo — com Gemini 2.5.", accent: "bg-blue-500/10 text-blue-500" },
+  { icon: Pill, title: "1.400+ Medicamentos", desc: "Doses, diluições, interações, ajustes renais e hepáticos. Bulário completo no bolso.", accent: "bg-emerald-500/10 text-emerald-500" },
+  { icon: BookOpen, title: "1.047 Protocolos", desc: "Protocolos clínicos baseados em evidência com níveis de recomendação e referências.", accent: "bg-cyan-500/10 text-cyan-500" },
   { icon: Calculator, title: "53 Calculadoras", desc: "Glasgow, SOFA, Wells, HEART, MELD, NEWS e dezenas de scores integrados aos protocolos.", accent: "bg-indigo-500/10 text-indigo-500" },
   { icon: FileText, title: "Prescrições Prontas", desc: "Modelos por diagnóstico, prontos para copiar e adaptar. Checagem de interações por IA.", accent: "bg-amber-500/10 text-amber-500" },
 ];
