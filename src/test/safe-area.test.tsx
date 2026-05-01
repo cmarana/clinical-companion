@@ -88,3 +88,51 @@ describe("Safe area · AdminAiCosts", () => {
     );
   });
 });
+
+/**
+ * Guard global: nenhum elemento fixed/sticky pode ficar grudado em top-0
+ * sem aplicar uma utility de safe-area (safe-area-top, top-safe, top-safe-3,
+ * pt-safe, pt-safe-0 ou top-after-topbar). Evita que um novo banner /
+ * dropdown / modal volte a passar por baixo do relógio em PWA.
+ */
+import { readdirSync, statSync } from "fs";
+import { join } from "path";
+
+function walk(dir: string, out: string[] = []): string[] {
+  for (const entry of readdirSync(dir)) {
+    const full = join(dir, entry);
+    const st = statSync(full);
+    if (st.isDirectory()) {
+      if (full.endsWith("/test")) continue;
+      walk(full, out);
+    } else if (/\.(tsx?|jsx?)$/.test(entry)) {
+      out.push(full);
+    }
+  }
+  return out;
+}
+
+describe("Safe area · guard global de overlays fixos", () => {
+  const files = walk(resolve(process.cwd(), "src"));
+  const SAFE_TOKENS = /\b(safe-area-top|top-safe|top-safe-3|pt-safe|pt-safe-0|top-after-topbar)\b/;
+  // className com fixed|sticky e top-0
+  const RISKY = /className=(?:"([^"]*)"|`([^`]*)`|\{`([^`]*)`\})/g;
+
+  it("nenhum 'fixed/sticky top-0' sem utility de safe-area em src/", () => {
+    const offenders: string[] = [];
+    for (const f of files) {
+      const src = readFileSync(f, "utf8");
+      let m: RegExpExecArray | null;
+      while ((m = RISKY.exec(src))) {
+        const classes = m[1] || m[2] || m[3] || "";
+        const hasFixedOrSticky = /\b(fixed|sticky)\b/.test(classes);
+        const hasTop0 = /\btop-0\b/.test(classes);
+        if (hasFixedOrSticky && hasTop0 && !SAFE_TOKENS.test(classes)) {
+          offenders.push(`${f.replace(process.cwd() + "/", "")} → ${classes}`);
+        }
+      }
+    }
+    expect(offenders, `Overlays sem safe-area:\n${offenders.join("\n")}`).toEqual([]);
+  });
+});
+
