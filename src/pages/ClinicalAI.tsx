@@ -66,6 +66,33 @@ function ClinicalAIContent() {
   const [historyDetail, setHistoryDetail] = useState<ImageAnalysisHistoryEntry | null>(null);
   const [compareSelection, setCompareSelection] = useState<string[]>([]);
   const [compareOpen, setCompareOpen] = useState(false);
+  const [patientHeader, setPatientHeader] = useState<PatientHeader>(() => {
+    try {
+      const raw = localStorage.getItem("psguide_pdf_patient_header");
+      return raw ? JSON.parse(raw) : {};
+    } catch { return {}; }
+  });
+  const updatePatientHeader = (patch: Partial<PatientHeader>) => {
+    setPatientHeader((prev) => {
+      const next = { ...prev, ...patch };
+      try { localStorage.setItem("psguide_pdf_patient_header", JSON.stringify(next)); } catch {}
+      return next;
+    });
+  };
+  const handleExportPdf = (entry: ImageAnalysisHistoryEntry) => {
+    exportAnalysisAsPdf({
+      modality: entry.primaryModality,
+      timestamp: entry.timestamp,
+      context: entry.context,
+      classifications: entry.classifications,
+      analysisMarkdown: entry.analysis,
+      patient: patientHeader,
+      thumbnail: entry.thumbnail,
+      docNames: entry.docNames,
+      imagesCount: entry.imagesCount,
+      docsCount: entry.docsCount,
+    });
+  };
 
   const historyModalities = useMemo(() => {
     const set = new Set<string>();
