@@ -425,12 +425,15 @@ function ClinicalAIContent() {
       {/* Input */}
       <div className="border-t border-border bg-card/80 backdrop-blur-sm p-3">
         <Tabs value={mode} onValueChange={(v) => setMode(v as typeof mode)} className="w-full">
-          <TabsList className="w-full mb-2 h-8 grid grid-cols-4">
+          <TabsList className="w-full mb-2 h-8 grid grid-cols-5">
             <TabsTrigger value="chat" className="text-[10px] gap-1 h-7 px-1">
               <MessageSquare size={11} /> Chat
             </TabsTrigger>
             <TabsTrigger value="structured" className="text-[10px] gap-1 h-7 px-1">
               <ClipboardList size={11} /> Caso
+            </TabsTrigger>
+            <TabsTrigger value="image" className="text-[10px] gap-1 h-7 px-1 data-[state=active]:bg-primary/15 data-[state=active]:text-primary">
+              <ImageIcon size={11} /> Imagem
             </TabsTrigger>
             <TabsTrigger value="plantao" className="text-[10px] gap-1 h-7 px-1 data-[state=active]:bg-destructive data-[state=active]:text-destructive-foreground">
               <Zap size={11} /> Plantão
