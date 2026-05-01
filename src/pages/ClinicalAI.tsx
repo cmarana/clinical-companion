@@ -1125,6 +1125,200 @@ function ClinicalAIContent() {
           ⚠️ Apoio à decisão clínica — não substitui o julgamento médico
         </p>
       </div>
+
+      {/* ─── Histórico de análises ─── */}
+      <Dialog open={historyOpen} onOpenChange={setHistoryOpen}>
+        <DialogContent className="max-w-lg max-h-[85vh] flex flex-col overflow-hidden">
+          <DialogHeader>
+            <DialogTitle className="flex items-center gap-2 text-sm">
+              <History size={16} /> Histórico de análises
+            </DialogTitle>
+          </DialogHeader>
+
+          {imageHistory.length === 0 ? (
+            <div className="py-10 text-center text-xs text-muted-foreground">
+              Nenhuma análise salva ainda.<br />
+              Suas próximas análises aparecerão aqui automaticamente.
+            </div>
+          ) : (
+            <>
+              {/* Filtros + ações */}
+              <div className="flex items-center gap-1.5 flex-wrap pb-1">
+                <button
+                  onClick={() => setHistoryFilter("ALL")}
+                  className={`px-2 py-0.5 rounded-full text-[10px] font-heading font-semibold border transition-colors ${
+                    historyFilter === "ALL" ? "bg-primary text-primary-foreground border-primary" : "bg-card border-border hover:bg-muted/60"
+                  }`}
+                >
+                  Todos ({imageHistory.length})
+                </button>
+                {historyModalities.map((m) => (
+                  <button
+                    key={m}
+                    onClick={() => setHistoryFilter(m)}
+                    className={`px-2 py-0.5 rounded-full text-[10px] font-heading font-semibold border transition-colors ${
+                      historyFilter === m ? "bg-primary text-primary-foreground border-primary" : "bg-card border-border hover:bg-muted/60"
+                    }`}
+                  >
+                    {m}
+                  </button>
+                ))}
+                <div className="ml-auto flex items-center gap-1">
+                  {compareSelection.length === 2 && (
+                    <button
+                      onClick={() => setCompareOpen(true)}
+                      className="px-2 py-0.5 rounded-full bg-emerald-600 text-white text-[10px] font-heading font-semibold hover:bg-emerald-700"
+                    >
+                      Comparar 2
+                    </button>
+                  )}
+                  <button
+                    onClick={() => {
+                      if (confirm("Limpar todo o histórico de análises?")) {
+                        clearImageHistory();
+                        setCompareSelection([]);
+                      }
+                    }}
+                    className="p-1 rounded-md text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+                    title="Limpar tudo"
+                  >
+                    <Trash2 size={12} />
+                  </button>
+                </div>
+              </div>
+
+              <p className="text-[9px] text-muted-foreground -mt-1 mb-1">
+                Marque até 2 itens para comparar lado a lado.
+              </p>
+
+              <div className="flex-1 overflow-y-auto space-y-1.5 pr-1">
+                {filteredHistory.map((h) => {
+                  const date = new Date(h.timestamp);
+                  const dateLabel = date.toLocaleString("pt-BR", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" });
+                  const tags = h.classifications.length > 0
+                    ? h.classifications.map((c) => `${c.modality} ${c.region}`).join(" · ")
+                    : h.docsCount > 0 ? `${h.docsCount} PDF(s)` : "—";
+                  const checked = compareSelection.includes(h.id);
+                  return (
+                    <div
+                      key={h.id}
+                      className={`flex items-stretch gap-2 p-2 rounded-lg border transition-colors ${
+                        checked ? "border-primary bg-primary/5" : "border-border bg-card/60 hover:bg-muted/40"
+                      }`}
+                    >
+                      <input
+                        type="checkbox"
+                        checked={checked}
+                        onChange={() => toggleCompare(h.id)}
+                        className="mt-1 accent-primary shrink-0"
+                        aria-label="Selecionar para comparar"
+                      />
+                      {h.thumbnail ? (
+                        <img src={h.thumbnail} alt="" className="w-12 h-12 rounded-md object-cover border border-border shrink-0" />
+                      ) : (
+                        <div className="w-12 h-12 rounded-md bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-border flex items-center justify-center shrink-0">
+                          <FileType2 size={18} />
+                        </div>
+                      )}
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="text-[11px] font-heading font-semibold truncate">
+                            {h.primaryModality}
+                            <span className="text-muted-foreground font-normal"> · {dateLabel}</span>
+                          </span>
+                        </div>
+                        <div className="text-[10px] text-muted-foreground truncate">{tags}</div>
+                        {h.context && (
+                          <div className="text-[9px] text-muted-foreground italic truncate">"{h.context}"</div>
+                        )}
+                        <div className="flex items-center gap-1 mt-1">
+                          <button
+                            onClick={() => setHistoryDetail(h)}
+                            className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-primary/10 text-primary text-[10px] font-heading font-semibold hover:bg-primary/20"
+                          >
+                            <Eye size={10} /> Reabrir
+                          </button>
+                          <button
+                            onClick={() => {
+                              if (confirm("Remover esta análise do histórico?")) {
+                                removeImageHistoryEntry(h.id);
+                                setCompareSelection((prev) => prev.filter((x) => x !== h.id));
+                              }
+                            }}
+                            className="p-1 rounded text-muted-foreground hover:text-destructive hover:bg-destructive/10"
+                            title="Remover"
+                          >
+                            <X size={11} />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+                {filteredHistory.length === 0 && (
+                  <p className="text-center text-xs text-muted-foreground py-6">
+                    Nenhuma análise para esse filtro.
+                  </p>
+                )}
+              </div>
+            </>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* ─── Detalhe (reabrir análise individual) ─── */}
+      <Dialog open={!!historyDetail} onOpenChange={(o) => !o && setHistoryDetail(null)}>
+        <DialogContent className="max-w-2xl max-h-[85vh] flex flex-col overflow-hidden">
+          <DialogHeader>
+            <DialogTitle className="text-sm flex items-center gap-2">
+              <Eye size={14} />
+              {historyDetail?.primaryModality} ·{" "}
+              {historyDetail && new Date(historyDetail.timestamp).toLocaleString("pt-BR")}
+            </DialogTitle>
+          </DialogHeader>
+          {historyDetail && (
+            <div className="flex-1 overflow-y-auto pr-1">
+              {historyDetail.context && (
+                <p className="text-[11px] text-muted-foreground italic mb-2">
+                  Indicação clínica: {historyDetail.context}
+                </p>
+              )}
+              <div className="prose prose-sm dark:prose-invert max-w-none text-xs">
+                <ReactMarkdown>{historyDetail.analysis}</ReactMarkdown>
+              </div>
+            </div>
+          )}
+        </DialogContent>
+      </Dialog>
+
+      {/* ─── Comparação lado a lado ─── */}
+      <Dialog open={compareOpen} onOpenChange={setCompareOpen}>
+        <DialogContent className="max-w-5xl max-h-[90vh] flex flex-col overflow-hidden">
+          <DialogHeader>
+            <DialogTitle className="text-sm flex items-center gap-2">
+              <ScanSearch size={14} /> Comparar análises
+            </DialogTitle>
+          </DialogHeader>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3 flex-1 overflow-hidden">
+            {compareEntries.map((h) => (
+              <div key={h.id} className="flex flex-col rounded-lg border border-border bg-card/60 overflow-hidden">
+                <div className="px-2 py-1.5 border-b border-border bg-muted/40">
+                  <div className="text-[11px] font-heading font-semibold">
+                    {h.primaryModality}
+                    <span className="text-muted-foreground font-normal"> · {new Date(h.timestamp).toLocaleString("pt-BR")}</span>
+                  </div>
+                  {h.context && (
+                    <div className="text-[10px] text-muted-foreground italic truncate">"{h.context}"</div>
+                  )}
+                </div>
+                <div className="flex-1 overflow-y-auto p-2 prose prose-sm dark:prose-invert max-w-none text-[11px]">
+                  <ReactMarkdown>{h.analysis}</ReactMarkdown>
+                </div>
+              </div>
+            ))}
+          </div>
+        </DialogContent>
+      </Dialog>
     </div>
   );
 }
