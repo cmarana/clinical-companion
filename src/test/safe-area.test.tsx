@@ -118,9 +118,17 @@ describe("Safe area · guard global de overlays fixos", () => {
   // className com fixed|sticky e top-0
   const RISKY = /className=(?:"([^"]*)"|`([^`]*)`|\{`([^`]*)`\})/g;
 
+  // Allowlist: arquivos cuja função É justamente cobrir a status bar
+  // (definem fisicamente a faixa opaca sobre env(safe-area-inset-top)).
+  const ALLOWLIST = new Set<string>([
+    "src/components/StatusBarScrim.tsx",
+  ]);
+
   it("nenhum 'fixed/sticky top-0' sem utility de safe-area em src/", () => {
     const offenders: string[] = [];
     for (const f of files) {
+      const rel = f.replace(process.cwd() + "/", "");
+      if (ALLOWLIST.has(rel)) continue;
       const src = readFileSync(f, "utf8");
       let m: RegExpExecArray | null;
       while ((m = RISKY.exec(src))) {
@@ -128,7 +136,7 @@ describe("Safe area · guard global de overlays fixos", () => {
         const hasFixedOrSticky = /\b(fixed|sticky)\b/.test(classes);
         const hasTop0 = /\btop-0\b/.test(classes);
         if (hasFixedOrSticky && hasTop0 && !SAFE_TOKENS.test(classes)) {
-          offenders.push(`${f.replace(process.cwd() + "/", "")} → ${classes}`);
+          offenders.push(`${rel} → ${classes}`);
         }
       }
     }
