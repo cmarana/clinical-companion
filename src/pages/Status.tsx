@@ -47,9 +47,19 @@ export default function Status() {
     return () => clearInterval(id);
   }, []);
 
-  // Initial fetch of remote info
+  // Set page metadata + initial fetch
   useEffect(() => {
+    const prevTitle = document.title;
+    document.title = "Status do App | PULSO";
+    const meta = document.createElement("meta");
+    meta.name = "robots";
+    meta.content = "noindex";
+    document.head.appendChild(meta);
     void runCheck();
+    return () => {
+      document.title = prevTitle;
+      meta.remove();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
