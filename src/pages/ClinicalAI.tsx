@@ -1,10 +1,11 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot, Mic, MicOff, Zap, FileText, Image as ImageIcon, Camera, Upload, X, ScanSearch, ShieldCheck, FileType2, History, Trash2, Eye } from "lucide-react";
+import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot, Mic, MicOff, Zap, FileText, Image as ImageIcon, Camera, Upload, X, ScanSearch, ShieldCheck, FileType2, History, Trash2, Eye, FileDown } from "lucide-react";
 import { extractPdfText, type ExtractedPdf } from "@/lib/pdfExtract";
 import { useImageAnalysisHistory, makeThumbnail, type ImageAnalysisHistoryEntry } from "@/hooks/useImageAnalysisHistory";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import ReactMarkdown from "react-markdown";
+import { exportAnalysisAsPdf, type PatientHeader } from "@/lib/exportAnalysisPdf";
 import { supabase } from "@/integrations/supabase/client";
 import PremiumPageGuard from "@/components/PremiumPageGuard";
 import { Button } from "@/components/ui/button";
