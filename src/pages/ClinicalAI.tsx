@@ -250,11 +250,74 @@ function ClinicalAIContent() {
     const reader = new FileReader();
     reader.onload = () => {
       const dataUrl = typeof reader.result === "string" ? reader.result : null;
-      if (dataUrl) setImageFile(dataUrl);
+      if (dataUrl) {
+        setOriginalImage(dataUrl);
+      }
     };
     reader.onerror = () => toast.error("Falha ao ler a imagem");
     reader.readAsDataURL(file);
   };
+
+  // Aplica tarjas pretas nas faixas superior e inferior (onde geralmente há nome,
+  // prontuário, data, instituição). Retorna data URL JPEG.
+  const applyAnonymization = useCallback(
+    (src: string, topPct: number, bottomPct: number): Promise<string> => {
+      return new Promise((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => {
+          try {
+            const canvas = document.createElement("canvas");
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            const ctx = canvas.getContext("2d");
+            if (!ctx) return reject(new Error("Canvas indisponível"));
+            ctx.drawImage(img, 0, 0);
+            ctx.fillStyle = "#000";
+            const topH = Math.round((canvas.height * topPct) / 100);
+            const botH = Math.round((canvas.height * bottomPct) / 100);
+            if (topH > 0) ctx.fillRect(0, 0, canvas.width, topH);
+            if (botH > 0) ctx.fillRect(0, canvas.height - botH, canvas.width, botH);
+            // marca visual discreta
+            ctx.fillStyle = "rgba(255,255,255,0.85)";
+            ctx.font = `${Math.max(10, Math.round(canvas.height * 0.018))}px sans-serif`;
+            ctx.fillText("ANONIMIZADO • PULSO", 8, Math.max(14, topH - 6));
+            resolve(canvas.toDataURL("image/jpeg", 0.9));
+          } catch (e) {
+            reject(e);
+          }
+        };
+        img.onerror = () => reject(new Error("Falha ao processar imagem"));
+        img.src = src;
+      });
+    },
+    [],
+  );
+
+  // Recalcula a imagem que será enviada sempre que original / toggle / faixas mudam
+  useEffect(() => {
+    if (!originalImage) {
+      setImageFile(null);
+      return;
+    }
+    if (!anonymize) {
+      setImageFile(originalImage);
+      return;
+    }
+    let cancelled = false;
+    applyAnonymization(originalImage, anonTopPct, anonBottomPct)
+      .then((url) => {
+        if (!cancelled) setImageFile(url);
+      })
+      .catch(() => {
+        if (!cancelled) {
+          toast.error("Não foi possível anonimizar — enviando original");
+          setImageFile(originalImage);
+        }
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [originalImage, anonymize, anonTopPct, anonBottomPct, applyAnonymization]);
 
   const handleImageAnalyze = async () => {
     if (!imageFile) {
