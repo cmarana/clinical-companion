@@ -19,6 +19,9 @@ type VersionEvent =
   | "version_check_failed"
   | "version_check_ok"
   | "build_update_detected"
+  | "update_prompt_shown"
+  | "update_prompt_accepted"
+  | "update_prompt_dismissed"
   | "cache_purge_started"
   | "cache_purge_completed"
   | "cache_purge_failed"
@@ -61,6 +64,20 @@ async function fetchRemoteBuildId(): Promise<string | null> {
     return null;
   }
 }
+
+// Event dispatched on the window when a new build is detected. The UI layer
+// (UpdatePromptDialog) listens for this and renders a confirmation modal.
+// detail.confirm() runs the purge + reload only after user accepts.
+export const BUILD_UPDATE_EVENT = "pulso:build-update-available";
+
+export interface BuildUpdateEventDetail {
+  currentBuild: string;
+  remoteBuild: string;
+  confirm: () => Promise<void>;
+  dismiss: () => void;
+}
+
+let pendingRemoteBuild: string | null = null;
 
 async function purgeAndReload(remoteBuildId: string) {
   if (reloading) return;
@@ -110,6 +127,34 @@ async function purgeAndReload(remoteBuildId: string) {
   window.location.replace(url.toString());
 }
 
+function promptUserForUpdate(remoteBuildId: string, trigger: string) {
+  // De-dup: if we already prompted for this exact build, don't spam.
+  if (pendingRemoteBuild === remoteBuildId) return;
+  pendingRemoteBuild = remoteBuildId;
+
+  let settled = false;
+  const detail: BuildUpdateEventDetail = {
+    currentBuild: CURRENT_BUILD_ID,
+    remoteBuild: remoteBuildId,
+    confirm: async () => {
+      if (settled) return;
+      settled = true;
+      track("update_prompt_accepted", { remote_build: remoteBuildId, trigger });
+      await purgeAndReload(remoteBuildId);
+    },
+    dismiss: () => {
+      if (settled) return;
+      settled = true;
+      track("update_prompt_dismissed", { remote_build: remoteBuildId, trigger });
+      // Allow the prompt to reappear later (e.g. on next interval check)
+      pendingRemoteBuild = null;
+    },
+  };
+
+  track("update_prompt_shown", { remote_build: remoteBuildId, trigger });
+  window.dispatchEvent(new CustomEvent<BuildUpdateEventDetail>(BUILD_UPDATE_EVENT, { detail }));
+}
+
 export async function checkBuildVersion(trigger: string = "manual"): Promise<void> {
   const now = Date.now();
   if (now - lastCheck < MIN_RECHECK_MS) return;
@@ -122,7 +167,7 @@ export async function checkBuildVersion(trigger: string = "manual"): Promise<voi
 
   if (remote !== CURRENT_BUILD_ID) {
     track("build_update_detected", { remote_build: remote, trigger });
-    await purgeAndReload(remote);
+    promptUserForUpdate(remote, trigger);
   } else {
     track("version_check_ok", { remote_build: remote });
   }

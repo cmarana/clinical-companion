@@ -110,6 +110,9 @@ const bootstrap = async () => {
   try {
     const { default: App } = await import("./App.tsx");
     createRoot(rootEl).render(<App />);
+    // Signal to the inline pre-React version probe that React is alive,
+    // so it defers stale-build handling to the in-app confirmation modal.
+    (window as unknown as { __pulsoReactMounted?: boolean }).__pulsoReactMounted = true;
   } catch (e) {
     rootEl.innerHTML = '<div style="color:red;padding:20px">Erro ao carregar: ' + String(e) + '</div>';
   }

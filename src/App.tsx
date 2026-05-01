@@ -11,6 +11,7 @@ import { NotificationsProvider } from "@/contexts/NotificationsContext";
 import AppLayout from "@/components/AppLayout";
 import { PWAInstallPrompt, OfflineIndicator } from "@/components/PWAInstallPrompt";
 import FloatingThemeToggle from "@/components/FloatingThemeToggle";
+import UpdatePromptDialog from "@/components/UpdatePromptDialog";
 
 import { lazy, Suspense, useEffect } from "react";
 import { ProtocolListSkeleton, ProtocolDetailSkeleton, MedicationListSkeleton } from "@/components/PageSkeleton";
@@ -243,6 +244,7 @@ const App = () => (
                   <OfflineIndicator />
                   <PWAInstallPrompt />
                   <FloatingThemeToggle className="md:hidden" />
+                  <UpdatePromptDialog />
                   <AppRoutes />
                 </TooltipProvider>
               </NotesProvider>
