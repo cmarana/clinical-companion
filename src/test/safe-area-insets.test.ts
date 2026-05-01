@@ -41,11 +41,16 @@ const PT_SAFE_EXTRA = 12; // 0.75rem
  * computaria após resolver `env(safe-area-inset-*)`.
  */
 function buildResolvedCss(d: DeviceProfile): string {
+  // Variantes "-fb" usam fallback 44px; quando o device tem inset 0 isso é
+  // exatamente o que esperamos (web/desktop sem PWA).
+  const insetWithFb = d.insetTop > 0 ? d.insetTop : 44;
   return `
     .safe-area-top    { padding-top: ${d.insetTop}px; }
     .pt-safe          { padding-top: ${d.insetTop + PT_SAFE_EXTRA}px; }
     .pt-safe-0        { padding-top: ${d.insetTop}px; }
+    .pt-safe-fb       { padding-top: ${insetWithFb + PT_SAFE_EXTRA}px; }
     .top-safe         { top: ${d.insetTop}px; }
+    .top-safe-fb      { top: ${insetWithFb}px; }
     .top-after-topbar { top: ${d.insetTop + TOPBAR_H}px; }
     .pb-nav           { padding-bottom: ${BOTTOMNAV_H + d.insetBottom}px; }
   `;
@@ -55,7 +60,10 @@ beforeAll(() => {
   // Sanity-check: as utilities testadas existem no index.css de produção
   // E ainda usam env(safe-area-inset-*) / var(--safe-*).
   const css = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");
-  for (const cls of ["safe-area-top", "pt-safe", "pt-safe-0", "top-safe", "top-after-topbar", "pb-nav"]) {
+  for (const cls of [
+    "safe-area-top", "pt-safe", "pt-safe-0", "pt-safe-fb",
+    "top-safe", "top-safe-fb", "top-after-topbar", "pb-nav",
+  ]) {
     expect(css.includes(`.${cls}`), `Utility .${cls} ausente em src/index.css`).toBe(true);
   }
   expect(css).toMatch(/env\(safe-area-inset-top/);

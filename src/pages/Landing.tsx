@@ -204,10 +204,7 @@ export default function Landing() {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
 
       {/* ═══ NAVBAR ═══════════════════════════════════════════ */}
-      <nav
-        className="sticky top-safe z-50 backdrop-blur-xl bg-background/80 border-b border-border/40 pt-safe-0"
-        style={{ paddingTop: "env(safe-area-inset-top)" }}
-      >
+      <nav className="sticky top-safe z-nav backdrop-blur-xl bg-background/80 border-b border-border/40 pt-safe-0">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <img src={pulsoLogo} alt="PULSO" width={30} height={30} className="rounded-lg" />
@@ -893,7 +890,7 @@ export default function Landing() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 100, opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed bottom-0 left-0 right-0 z-50 sm:hidden bg-background/95 backdrop-blur-xl border-t border-border/40 px-4 py-3 safe-area-bottom"
+            className="fixed bottom-0 left-0 right-0 z-nav sm:hidden bg-background/95 backdrop-blur-xl border-t border-border/40 px-4 py-3 safe-area-bottom"
           >
             <Button
               onClick={() => navigate("/auth")}
