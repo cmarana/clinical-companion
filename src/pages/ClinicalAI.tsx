@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot, Mic, MicOff, Zap, FileText, Image as ImageIcon, Camera, Upload, X, ScanSearch } from "lucide-react";
+import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot, Mic, MicOff, Zap, FileText, Image as ImageIcon, Camera, Upload, X, ScanSearch, ShieldCheck } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import PremiumPageGuard from "@/components/PremiumPageGuard";
 import { Button } from "@/components/ui/button";
