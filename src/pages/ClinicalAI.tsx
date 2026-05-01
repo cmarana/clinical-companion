@@ -237,26 +237,53 @@ function ClinicalAIContent() {
 
   const clearChat = () => { setMessages([]); };
 
-  // ─── Image analysis ───
-  const handleImageSelect = (file: File | null) => {
-    if (!file) return;
-    if (!file.type.startsWith("image/")) {
-      toast.error("Selecione um arquivo de imagem (JPG, PNG, HEIC)");
+  // ─── Image analysis (lote) ───
+  const handleImageSelect = (files: FileList | File[] | null) => {
+    if (!files) return;
+    const incoming = Array.from(files as ArrayLike<File>);
+    if (incoming.length === 0) return;
+
+    const remaining = MAX_IMAGES - originalImages.length;
+    if (remaining <= 0) {
+      toast.error(`Máximo de ${MAX_IMAGES} imagens por lote`);
       return;
     }
-    if (file.size > 6 * 1024 * 1024) {
-      toast.error("Imagem maior que 6MB. Reduza a resolução antes de enviar.");
-      return;
+
+    const accepted: File[] = [];
+    let skippedType = 0;
+    let skippedSize = 0;
+    for (const f of incoming.slice(0, remaining)) {
+      if (!f.type.startsWith("image/")) { skippedType++; continue; }
+      if (f.size > 6 * 1024 * 1024) { skippedSize++; continue; }
+      accepted.push(f);
     }
-    const reader = new FileReader();
-    reader.onload = () => {
-      const dataUrl = typeof reader.result === "string" ? reader.result : null;
-      if (dataUrl) {
-        setOriginalImage(dataUrl);
+    if (skippedType) toast.error(`${skippedType} arquivo(s) ignorado(s) — formato inválido`);
+    if (skippedSize) toast.error(`${skippedSize} imagem(ns) acima de 6MB ignorada(s)`);
+    if (incoming.length > remaining) toast.message(`Apenas ${remaining} imagem(ns) adicionada(s) (limite ${MAX_IMAGES})`);
+    if (accepted.length === 0) return;
+
+    Promise.all(
+      accepted.map(
+        (file) =>
+          new Promise<string | null>((resolve) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(file);
+          }),
+      ),
+    ).then((urls) => {
+      const valid = urls.filter((u): u is string => !!u);
+      if (valid.length === 0) {
+        toast.error("Falha ao ler as imagens");
+        return;
       }
-    };
-    reader.onerror = () => toast.error("Falha ao ler a imagem");
-    reader.readAsDataURL(file);
+      setOriginalImages((prev) => [...prev, ...valid].slice(0, MAX_IMAGES));
+    });
+  };
+
+  const removeImageAt = (idx: number) => {
+    setOriginalImages((prev) => prev.filter((_, i) => i !== idx));
   };
 
   // Aplica tarjas pretas nas faixas superior e inferior (onde geralmente há nome,
@@ -278,7 +305,6 @@ function ClinicalAIContent() {
             const botH = Math.round((canvas.height * bottomPct) / 100);
             if (topH > 0) ctx.fillRect(0, 0, canvas.width, topH);
             if (botH > 0) ctx.fillRect(0, canvas.height - botH, canvas.width, botH);
-            // marca visual discreta
             ctx.fillStyle = "rgba(255,255,255,0.85)";
             ctx.font = `${Math.max(10, Math.round(canvas.height * 0.018))}px sans-serif`;
             ctx.fillText("ANONIMIZADO • PULSO", 8, Math.max(14, topH - 6));
@@ -294,51 +320,47 @@ function ClinicalAIContent() {
     [],
   );
 
-  // Recalcula a imagem que será enviada sempre que original / toggle / faixas mudam
+  // Recalcula as imagens enviadas sempre que originais / toggle / faixas mudam
   useEffect(() => {
-    if (!originalImage) {
-      setImageFile(null);
+    if (originalImages.length === 0) {
+      setImageFiles([]);
       return;
     }
     if (!anonymize) {
-      setImageFile(originalImage);
+      setImageFiles(originalImages);
       return;
     }
     let cancelled = false;
-    applyAnonymization(originalImage, anonTopPct, anonBottomPct)
-      .then((url) => {
-        if (!cancelled) setImageFile(url);
-      })
-      .catch(() => {
-        if (!cancelled) {
-          toast.error("Não foi possível anonimizar — enviando original");
-          setImageFile(originalImage);
-        }
-      });
+    Promise.all(
+      originalImages.map((src) =>
+        applyAnonymization(src, anonTopPct, anonBottomPct).catch(() => src),
+      ),
+    ).then((urls) => {
+      if (!cancelled) setImageFiles(urls);
+    });
     return () => {
       cancelled = true;
     };
-  }, [originalImage, anonymize, anonTopPct, anonBottomPct, applyAnonymization]);
+  }, [originalImages, anonymize, anonTopPct, anonBottomPct, applyAnonymization]);
 
   const handleImageAnalyze = async () => {
-    if (!imageFile) {
-      toast.error("Anexe uma imagem primeiro");
+    if (imageFiles.length === 0) {
+      toast.error("Anexe ao menos uma imagem");
       return;
     }
     setImageAnalyzing(true);
 
-    // Compose context message including patient context
     const ctxParts: string[] = [];
     if (patientCtx.age) ctxParts.push(`Idade: ${patientCtx.age}`);
     if (patientCtx.sex) ctxParts.push(`Sexo: ${patientCtx.sex}`);
     if (patientCtx.weight) ctxParts.push(`Peso: ${patientCtx.weight}kg`);
     if (patientCtx.scenario) ctxParts.push(`Cenário: ${patientCtx.scenario}`);
     if (imageContext.trim()) ctxParts.push(`Indicação clínica: ${imageContext.trim()}`);
-    if (anonymize) ctxParts.push("Imagem anonimizada (faixas superior/inferior cobertas — ignore áreas pretas)");
+    if (anonymize) ctxParts.push("Imagens anonimizadas (faixas superior/inferior cobertas — ignore áreas pretas)");
+    if (imageFiles.length > 1) ctxParts.push(`Lote com ${imageFiles.length} imagens da mesma investigação — analise como sequência`);
     const fullContext = ctxParts.join(" | ");
 
-    // Push user message with thumbnail marker
-    const userLabel = `📷 **Análise de imagem solicitada**${fullContext ? `\n${fullContext}` : ""}`;
+    const userLabel = `📷 **Análise de ${imageFiles.length > 1 ? `${imageFiles.length} imagens (lote)` : "imagem"} solicitada**${fullContext ? `\n${fullContext}` : ""}`;
     setMessages((prev) => [...prev, { role: "user", content: userLabel }]);
 
     try {
@@ -348,7 +370,12 @@ function ClinicalAIContent() {
       const resp = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ imageDataUrl: imageFile, context: fullContext }),
+        // backwards-compat: envia imageDataUrls (novo) e imageDataUrl (primeira, fallback)
+        body: JSON.stringify({
+          imageDataUrls: imageFiles,
+          imageDataUrl: imageFiles[0],
+          context: fullContext,
+        }),
       });
       const data = await resp.json().catch(() => ({}));
       if (!resp.ok) {
@@ -357,12 +384,12 @@ function ClinicalAIContent() {
           msg,
           resp.status === 402 ? "credits" : resp.status === 429 ? "rate_limit" : resp.status === 401 ? "auth" : "server",
         );
-        setMessages((prev) => prev.slice(0, -1)); // rollback user msg
+        setMessages((prev) => prev.slice(0, -1));
       } else {
         const analysis: string = data?.analysis || "Sem resposta da IA.";
         setMessages((prev) => [...prev, { role: "assistant", content: analysis }]);
-        setOriginalImage(null);
-        setImageFile(null);
+        setOriginalImages([]);
+        setImageFiles([]);
         setImageContext("");
       }
     } catch (e) {
