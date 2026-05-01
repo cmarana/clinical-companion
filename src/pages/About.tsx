@@ -37,7 +37,7 @@ export default function About() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Header */}
-      <div className="sticky top-0 z-40 bg-background/80 backdrop-blur-xl border-b border-border/30">
+      <div className="sticky top-safe z-40 bg-background/80 backdrop-blur-xl border-b border-border/30 pt-safe-0">
         <div className="max-w-4xl mx-auto px-4 py-3 flex items-center gap-3">
           <button onClick={() => navigate(-1)} className="p-2 -ml-2 rounded-xl hover:bg-muted/60 transition-colors">
             <ArrowLeft size={18} />

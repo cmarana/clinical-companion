@@ -137,7 +137,7 @@ const VoiceEvolution = () => {
       <OfflineBadge message="A evolução por voz requer conexão com a internet" />
       <div className="min-h-screen bg-background pb-24">
         {/* Header */}
-        <div className="sticky top-0 z-30 bg-background/95 backdrop-blur border-b border-border px-4 py-3 flex items-center gap-3">
+        <div className="sticky top-safe z-30 bg-background/95 backdrop-blur border-b border-border px-4 py-3 pt-safe-0 flex items-center gap-3">
           <Button variant="ghost" size="icon" onClick={() => navigate(-1)}>
             <ArrowLeft className="h-5 w-5" />
           </Button>

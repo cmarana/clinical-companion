@@ -150,7 +150,7 @@ export function OfflineIndicator() {
   if (online) return null;
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-[60] flex items-center justify-center gap-2 bg-destructive py-1.5 text-destructive-foreground text-xs font-medium">
+    <div className="fixed top-0 left-0 right-0 z-[60] safe-area-top flex items-center justify-center gap-2 bg-destructive py-1.5 text-destructive-foreground text-xs font-medium">
       <WifiOff className="h-3.5 w-3.5" />
       Modo Offline — dados em cache
     </div>

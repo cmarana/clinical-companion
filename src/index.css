@@ -174,6 +174,8 @@
   .pt-safe   { padding-top: calc(var(--safe-top) + 0.75rem); }
   .pt-safe-0 { padding-top: var(--safe-top); }
   .top-safe  { top: var(--safe-top); }
+  /* Floating overlays (toasts, fab, theme toggle) — top + 0.75rem breathing room */
+  .top-safe-3 { top: calc(var(--safe-top) + 0.75rem); }
 
   /* Reserve full bottom space = nav height + home indicator */
   .pb-nav        { padding-bottom: calc(var(--bottomnav-h) + var(--safe-bottom)); }

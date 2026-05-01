@@ -193,7 +193,7 @@ function SimulatorContent() {
   if (phase === "setup") {
     return (
       <div className="min-h-screen bg-background">
-        <div className="sticky top-0 z-30 bg-background/95 backdrop-blur-md border-b border-border/50 px-4 py-3">
+        <div className="sticky top-safe z-30 bg-background/95 backdrop-blur-md border-b border-border/50 px-4 py-3 pt-safe-0">
           <div className="flex items-center gap-3">
             <Button variant="ghost" size="icon" onClick={() => navigate(-1)} className="shrink-0">
               <ArrowLeft className="h-5 w-5" />
@@ -275,7 +275,7 @@ function SimulatorContent() {
   return (
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
-      <div className="sticky top-0 z-30 bg-background/95 backdrop-blur-md border-b border-border/50 px-4 py-3">
+      <div className="sticky top-safe z-30 bg-background/95 backdrop-blur-md border-b border-border/50 px-4 py-3 pt-safe-0">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Button variant="ghost" size="icon" onClick={() => { setPhase("setup"); setMessages([]); }} className="shrink-0">
