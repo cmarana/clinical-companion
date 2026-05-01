@@ -1307,6 +1307,13 @@ function ClinicalAIContent() {
                             <Eye size={10} /> Reabrir
                           </button>
                           <button
+                            onClick={() => handleReanalyze(h)}
+                            className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 text-[10px] font-heading font-semibold hover:bg-emerald-500/20"
+                            title="Reaproveitar contexto e anexar novo arquivo"
+                          >
+                            <RotateCcw size={10} /> Reanalisar
+                          </button>
+                          <button
                             onClick={() => {
                               if (confirm("Remover esta análise do histórico?")) {
                                 removeImageHistoryEntry(h.id);
