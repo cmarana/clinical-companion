@@ -12,6 +12,8 @@ export interface ExtractedPdf {
   pagesAnalyzed: number;
   text: string;
   truncated: boolean;
+  /** Bytes originais do PDF, mantidos em memória para permitir re-download local. */
+  originalBlob?: Blob;
 }
 
 const MAX_PAGES = 20;
