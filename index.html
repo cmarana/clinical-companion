@@ -318,6 +318,14 @@
       // the live /version.json. On mismatch, hard-reloads with a versioned query
       // string so the browser pulls a fresh shell instead of a cached one.
       (function(){
+        function emit(name, params){
+          try { console.info('[pulso:version] ' + name, params || {}); } catch(e) {}
+          try {
+            if (typeof window.gtag === 'function') {
+              window.gtag('event', name, Object.assign({ event_category: 'build_version', source: 'inline_probe' }, params || {}));
+            }
+          } catch(e) {}
+        }
         try {
           var meta = document.querySelector('meta[name="pulso-build-id"]');
           var current = meta ? meta.getAttribute('content') : '';
@@ -327,26 +335,50 @@
           // Avoid reload loops: if URL already has ?v= within last 60s, bail.
           var url = new URL(location.href);
           var lastBust = parseInt(url.searchParams.get('v') || '0', 10);
-          if (lastBust && (Date.now() - lastBust) < 60000) return;
+          if (lastBust && (Date.now() - lastBust) < 60000) {
+            emit('version_reload_skipped', { reason: 'cooldown', current_build: current });
+            return;
+          }
 
+          emit('version_check_started', { trigger: 'inline_probe', current_build: current });
           fetch('/version.json?_=' + Date.now(), { cache: 'no-store', credentials: 'omit' })
-            .then(function(r){ return r.ok ? r.json() : null; })
+            .then(function(r){
+              if (!r.ok) { emit('version_check_failed', { reason: 'http', status: r.status }); return null; }
+              return r.json();
+            })
             .then(function(data){
-              if (!data || !data.buildId || data.buildId === current) return;
-              // Stale shell detected — purge whatever caches exist and hard reload.
+              if (!data || !data.buildId) return;
+              if (data.buildId === current) {
+                emit('version_check_ok', { current_build: current, remote_build: data.buildId });
+                return;
+              }
+              emit('build_update_detected', { current_build: current, remote_build: data.buildId, source: 'inline_probe' });
+              var cleared = 0;
               try {
                 if ('caches' in window) {
+                  emit('cache_purge_started', { source: 'inline_probe' });
                   caches.keys().then(function(keys){
-                    keys.forEach(function(k){ caches.delete(k); });
+                    Promise.all(keys.map(function(k){ return caches.delete(k).catch(function(){ return false; }); }))
+                      .then(function(results){
+                        cleared = results.filter(Boolean).length;
+                        emit('cache_purge_completed', { caches_cleared: cleared, source: 'inline_probe' });
+                      });
                   });
                 }
-              } catch(e) {}
+              } catch(e) {
+                emit('cache_purge_failed', { message: String(e && e.message || e) });
+              }
               var next = new URL(location.href);
               next.searchParams.set('v', Date.now().toString());
+              emit('version_reload_triggered', { remote_build: data.buildId, source: 'inline_probe' });
               location.replace(next.toString());
             })
-            .catch(function(){ /* offline or blocked — ignore */ });
-        } catch(e) { /* never break boot */ }
+            .catch(function(err){
+              emit('version_check_failed', { reason: 'network', message: String(err && err.message || err) });
+            });
+        } catch(e) {
+          emit('version_check_failed', { reason: 'exception', message: String(e && e.message || e) });
+        }
       })();
     </script>
     <script type="module" src="/src/main.tsx"></script>

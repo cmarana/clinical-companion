@@ -10,57 +10,121 @@ const MIN_RECHECK_MS = 30 * 1000;        // never thrash faster than 30s
 let lastCheck = 0;
 let reloading = false;
 
+// ── Telemetry ────────────────────────────────────────────────────────────
+// Emits structured events to Google Analytics (gtag, already loaded in
+// index.html) and mirrors them to console so they're visible in production
+// devtools and remote debugging sessions.
+type VersionEvent =
+  | "version_check_started"
+  | "version_check_failed"
+  | "version_check_ok"
+  | "build_update_detected"
+  | "cache_purge_started"
+  | "cache_purge_completed"
+  | "cache_purge_failed"
+  | "sw_unregistered"
+  | "version_reload_triggered";
+
+function track(event: VersionEvent, params: Record<string, unknown> = {}) {
+  const payload = {
+    current_build: CURRENT_BUILD_ID,
+    ts: new Date().toISOString(),
+    ...params,
+  };
+  try {
+    // eslint-disable-next-line no-console
+    console.info(`[pulso:version] ${event}`, payload);
+  } catch { /* noop */ }
+  try {
+    const w = window as unknown as { gtag?: (...args: unknown[]) => void };
+    w.gtag?.("event", event, { event_category: "build_version", ...payload });
+  } catch { /* gtag may be blocked */ }
+}
+
 async function fetchRemoteBuildId(): Promise<string | null> {
   try {
     const res = await fetch(`/version.json?_=${Date.now()}`, {
       cache: "no-store",
       credentials: "omit",
     });
-    if (!res.ok) return null;
+    if (!res.ok) {
+      track("version_check_failed", { reason: "http", status: res.status });
+      return null;
+    }
     const data = (await res.json()) as { buildId?: string };
     return data.buildId ?? null;
-  } catch {
+  } catch (err) {
+    track("version_check_failed", {
+      reason: "network",
+      message: err instanceof Error ? err.message : String(err),
+    });
     return null;
   }
 }
 
-async function purgeAndReload() {
+async function purgeAndReload(remoteBuildId: string) {
   if (reloading) return;
   reloading = true;
+
+  track("cache_purge_started", { remote_build: remoteBuildId });
+  let cachesCleared = 0;
+  let swsUnregistered = 0;
+
   try {
     if ("caches" in window) {
       const keys = await caches.keys();
-      await Promise.all(keys.map((k) => caches.delete(k)));
+      const results = await Promise.all(keys.map((k) => caches.delete(k).catch(() => false)));
+      cachesCleared = results.filter(Boolean).length;
     }
     if ("serviceWorker" in navigator) {
       const regs = await navigator.serviceWorker.getRegistrations();
-      await Promise.all(
+      const results = await Promise.all(
         regs.map(async (r) => {
-          // Tell waiting SW (if any) to activate, then drop the registration
-          r.waiting?.postMessage({ type: "SKIP_WAITING" });
-          await r.unregister();
+          try {
+            r.waiting?.postMessage({ type: "SKIP_WAITING" });
+            const ok = await r.unregister();
+            if (ok) track("sw_unregistered", { scope: r.scope });
+            return ok;
+          } catch {
+            return false;
+          }
         })
       );
+      swsUnregistered = results.filter(Boolean).length;
     }
-  } catch {
-    /* best effort */
+    track("cache_purge_completed", {
+      remote_build: remoteBuildId,
+      caches_cleared: cachesCleared,
+      sws_unregistered: swsUnregistered,
+    });
+  } catch (err) {
+    track("cache_purge_failed", {
+      remote_build: remoteBuildId,
+      message: err instanceof Error ? err.message : String(err),
+    });
   }
-  // Cache-bust the navigation so the browser fetches fresh HTML
+
   const url = new URL(window.location.href);
   url.searchParams.set("v", Date.now().toString());
+  track("version_reload_triggered", { remote_build: remoteBuildId, url: url.pathname });
   window.location.replace(url.toString());
 }
 
-export async function checkBuildVersion(): Promise<void> {
+export async function checkBuildVersion(trigger: string = "manual"): Promise<void> {
   const now = Date.now();
   if (now - lastCheck < MIN_RECHECK_MS) return;
   lastCheck = now;
 
+  track("version_check_started", { trigger });
   const remote = await fetchRemoteBuildId();
   if (!remote) return;
   if (CURRENT_BUILD_ID === "dev") return; // never reload in dev
+
   if (remote !== CURRENT_BUILD_ID) {
-    await purgeAndReload();
+    track("build_update_detected", { remote_build: remote, trigger });
+    await purgeAndReload(remote);
+  } else {
+    track("version_check_ok", { remote_build: remote });
   }
 }
 
@@ -68,16 +132,12 @@ export function startVersionWatcher() {
   if (typeof window === "undefined") return;
   if (!import.meta.env.PROD) return;
 
-  // Initial check shortly after load
-  setTimeout(() => void checkBuildVersion(), 4000);
+  setTimeout(() => void checkBuildVersion("initial"), 4000);
+  setInterval(() => void checkBuildVersion("interval"), CHECK_INTERVAL_MS);
 
-  // Periodic check
-  setInterval(() => void checkBuildVersion(), CHECK_INTERVAL_MS);
-
-  // Recheck when the tab regains focus / connectivity
-  window.addEventListener("focus", () => void checkBuildVersion());
-  window.addEventListener("online", () => void checkBuildVersion());
+  window.addEventListener("focus", () => void checkBuildVersion("focus"));
+  window.addEventListener("online", () => void checkBuildVersion("online"));
   document.addEventListener("visibilitychange", () => {
-    if (document.visibilityState === "visible") void checkBuildVersion();
+    if (document.visibilityState === "visible") void checkBuildVersion("visibilitychange");
   });
 }
