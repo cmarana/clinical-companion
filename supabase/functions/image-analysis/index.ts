@@ -187,7 +187,7 @@ serve(async (req) => {
     bumpAiUsage(serviceClient, userId, "clinical-ai").catch((e) =>
       console.error("bumpAiUsage failed:", e),
     );
-    console.log(`[image-analysis] user=${userId} tier=${tier} used=${used + 1}/${limit}`);
+    console.log(`[image-analysis] user=${userId} tier=${tier} used=${used + 1}/${limit} batch=${images.length}`);
 
     return new Response(JSON.stringify({ analysis }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
