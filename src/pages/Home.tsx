@@ -50,12 +50,12 @@ interface Module {
 }
 
 const allPrimaryModules: Module[] = [
-  { label: "IA Clínica", sub: "Análise de conduta em tempo real", icon: Bot, path: "/clinical-ai", variant: "ai", tags: ["all"] },
+  { label: "IA Clínica", sub: "Chat, Caso, Exames, Plantão e Texto", icon: Bot, path: "/clinical-ai", variant: "ai", tags: ["all"] },
   { label: "Modo Plantão", sub: "Guia completo para o plantão", icon: AlertTriangle, path: "/duty", variant: "emergency", tags: ["emergencia", "clinica-medica", "cirurgia", "generalista"] },
   { label: "Emergência", sub: "Algoritmos de urgência / UTI", icon: Zap, path: "/emergency", variant: "emergency", tags: ["emergencia", "cirurgia", "generalista"] },
-  { label: "Bulário", sub: "Mais de 2.000 fármacos", icon: Pill, path: "/bulario", variant: "default", tags: ["all"] },
+  { label: "Bulário", sub: "1.400+ fármacos", icon: Pill, path: "/bulario", variant: "default", tags: ["all"] },
   { label: "Prescrições", sub: "Modelos prontos para uso", icon: ClipboardList, path: "/prescriptions", variant: "default", tags: ["all"] },
-  { label: "Protocolos", sub: "Mais de 1.000 protocolos", icon: BookOpen, path: "/full-protocols", variant: "default", tags: ["all"] },
+  { label: "Protocolos", sub: "1.047 protocolos clínicos", icon: BookOpen, path: "/full-protocols", variant: "default", tags: ["all"] },
   { label: "Pediatria", sub: "Protocolos pediátricos", icon: Baby, path: "/pediatrics", variant: "cyan", tags: ["pediatria"] },
   { label: "Doses Pediátricas", sub: "Calculadora por peso", icon: Calculator, path: "/pediatric-doses", variant: "cyan", tags: ["pediatria"] },
   { label: "Obstetrícia", sub: "Emergências obstétricas", icon: Heart, path: "/obstetrics", variant: "default", tags: ["ginecologia-obstetricia"] },
@@ -91,8 +91,8 @@ const specialtyModules = [
 
 const studyModules = [
   { label: "Simulador de Casos", sub: "Casos clínicos com IA", icon: Brain, path: "/case-simulator" },
-  { label: "Questões", sub: "Estudo por questões", icon: HelpCircle, path: "/quiz" },
-  { label: "Flashcards", sub: "Revisão espaçada (Anki)", icon: Brain, path: "/flashcards" },
+  { label: "Questões", sub: "1.000+ questões comentadas", icon: HelpCircle, path: "/quiz" },
+  { label: "Flashcards", sub: "500+ cards · revisão espaçada", icon: Brain, path: "/flashcards" },
   { label: "Residência", sub: "Questões por banca", icon: GraduationCap, path: "/residency-quiz" },
   { label: "Dashboard", sub: "Streak e progresso", icon: BarChart3, path: "/study-dashboard" },
   { label: "Evolução por Voz", sub: "Voz → SOAP / I-PASS com IA", icon: Mic, path: "/voice-evolution" },

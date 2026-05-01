@@ -101,8 +101,20 @@ describe("StatusBarScrim · sem blur, sem opacidade (anti-artefato)", () => {
     expect(scrimSrc).not.toMatch(/\bfilter:/);
   });
 
-  it("ocupa exatamente env(safe-area-inset-top, 0px) de altura", () => {
+  it("cobre o inset-top com altura = env(safe-area-inset-top, 0px)", () => {
     expect(scrimSrc).toMatch(/height:\s*["']env\(safe-area-inset-top,\s*0px\)["']/);
+  });
+
+  it("cobre o inset-bottom (home indicator) com altura = env(safe-area-inset-bottom, 0px)", () => {
+    expect(scrimSrc).toMatch(/height:\s*["']env\(safe-area-inset-bottom,\s*0px\)["']/);
+  });
+
+  it("cobre o inset-left (notch landscape) com largura = env(safe-area-inset-left, 0px)", () => {
+    expect(scrimSrc).toMatch(/width:\s*["']env\(safe-area-inset-left,\s*0px\)["']/);
+  });
+
+  it("cobre o inset-right (notch landscape) com largura = env(safe-area-inset-right, 0px)", () => {
+    expect(scrimSrc).toMatch(/width:\s*["']env\(safe-area-inset-right,\s*0px\)["']/);
   });
 
   it("não captura toques (pointer-events-none preservado)", () => {

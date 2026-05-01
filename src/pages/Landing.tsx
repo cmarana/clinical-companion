@@ -35,9 +35,9 @@ const stagger = {
 /* ── Data ────────────────────────────────────────────────────── */
 const features = [
   { icon: Zap, title: "Modo Emergência", desc: "Algoritmos de PCR, Sepse, IAM e AVC com fluxogramas interativos. Decisões em segundos.", accent: "bg-red-500/10 text-red-500" },
-  { icon: Bot, title: "IA Clínica", desc: "Diagnóstico diferencial, conduta e raciocínio clínico assistido por inteligência artificial.", accent: "bg-blue-500/10 text-blue-500" },
-  { icon: Pill, title: "2.000+ Medicamentos", desc: "Doses, diluições, interações, ajustes renais e hepáticos. Bulário completo no bolso.", accent: "bg-emerald-500/10 text-emerald-500" },
-  { icon: BookOpen, title: "1.000+ Protocolos", desc: "Protocolos clínicos baseados em evidência com níveis de recomendação e referências.", accent: "bg-cyan-500/10 text-cyan-500" },
+  { icon: Bot, title: "IA Clínica multimodal", desc: "5 modos: Chat, Caso estruturado, Análise de Exames (imagem), Plantão e Texto narrativo — com Gemini 2.5.", accent: "bg-blue-500/10 text-blue-500" },
+  { icon: Pill, title: "1.400+ Medicamentos", desc: "Doses, diluições, interações, ajustes renais e hepáticos. Bulário completo no bolso.", accent: "bg-emerald-500/10 text-emerald-500" },
+  { icon: BookOpen, title: "1.047 Protocolos", desc: "Protocolos clínicos baseados em evidência com níveis de recomendação e referências.", accent: "bg-cyan-500/10 text-cyan-500" },
   { icon: Calculator, title: "53 Calculadoras", desc: "Glasgow, SOFA, Wells, HEART, MELD, NEWS e dezenas de scores integrados aos protocolos.", accent: "bg-indigo-500/10 text-indigo-500" },
   { icon: FileText, title: "Prescrições Prontas", desc: "Modelos por diagnóstico, prontos para copiar e adaptar. Checagem de interações por IA.", accent: "bg-amber-500/10 text-amber-500" },
 ];
@@ -50,9 +50,9 @@ const howItWorks = [
 
 const allModules = [
   { icon: Siren, title: "Modo Emergência", desc: "PCR, Sepse, IAM, AVC com fluxogramas interativos", color: "text-red-500 bg-red-500/10" },
-  { icon: Bot, title: "IA Clínica", desc: "Diagnóstico diferencial e conduta assistida por IA", color: "text-blue-500 bg-blue-500/10" },
-  { icon: Pill, title: "2.000+ Medicamentos", desc: "Doses, diluições, interações, ajuste renal/hepático", color: "text-emerald-500 bg-emerald-500/10" },
-  { icon: BookOpen, title: "1.004 Protocolos", desc: "26 categorias com referências e níveis de evidência", color: "text-cyan-500 bg-cyan-500/10" },
+  { icon: Bot, title: "IA Clínica multimodal", desc: "Chat · Caso · Exames (imagem) · Plantão · Texto", color: "text-blue-500 bg-blue-500/10" },
+  { icon: Pill, title: "1.400+ Medicamentos", desc: "Doses, diluições, interações, ajuste renal/hepático", color: "text-emerald-500 bg-emerald-500/10" },
+  { icon: BookOpen, title: "1.047 Protocolos", desc: "26 categorias com referências e níveis de evidência", color: "text-cyan-500 bg-cyan-500/10" },
   { icon: Calculator, title: "53 Calculadoras", desc: "Glasgow, SOFA, Wells, HEART, MELD, NEWS, APACHE II", color: "text-indigo-500 bg-indigo-500/10" },
   { icon: FileText, title: "Prescrições Prontas", desc: "Modelos por diagnóstico + checagem de interações", color: "text-amber-500 bg-amber-500/10" },
   { icon: HeartPulse, title: "Sala Vermelha", desc: "Atendimento de emergência imediata", color: "text-rose-500 bg-rose-500/10" },
@@ -71,7 +71,7 @@ const allModules = [
   { icon: Scissors, title: "Guias de Procedimentos", desc: "CVC, IOT, drenagem, punção lombar", color: "text-gray-500 bg-gray-500/10" },
   { icon: ClipboardList, title: "Anamnese Guiada", desc: "Roteiros estruturados por queixa", color: "text-blue-400 bg-blue-400/10" },
   { icon: FileText, title: "Gerador de Documentos", desc: "Atestados, relatórios, resumos de alta", color: "text-emerald-400 bg-emerald-400/10" },
-  { icon: GraduationCap, title: "Flashcards & Quiz", desc: "Revisão espaçada para residência", color: "text-yellow-500 bg-yellow-500/10" },
+  { icon: GraduationCap, title: "500+ Flashcards & 1.000+ Questões", desc: "Revisão espaçada (SM-2) para residência", color: "text-yellow-500 bg-yellow-500/10" },
   { icon: Brain, title: "Simulador de Casos", desc: "Casos clínicos interativos com IA", color: "text-purple-400 bg-purple-400/10" },
   { icon: Globe, title: "Modo Plantão", desc: "Timer de turno, leitos e passagem de plantão", color: "text-indigo-400 bg-indigo-400/10" },
   { icon: Users, title: "Visita / Rounds", desc: "Gestão de pacientes e pendências", color: "text-teal-400 bg-teal-400/10" },
@@ -95,8 +95,8 @@ const trustPoints = [
 ];
 
 const stats = [
-  { value: "2.000+", label: "Medicamentos", icon: Pill },
-  { value: "1.000+", label: "Protocolos", icon: BookOpen },
+  { value: "1.400+", label: "Medicamentos", icon: Pill },
+  { value: "1.047", label: "Protocolos", icon: BookOpen },
   { value: "53", label: "Calculadoras", icon: Calculator },
   { value: "24/7", label: "Offline", icon: WifiOff },
 ];
@@ -274,7 +274,7 @@ export default function Landing() {
             initial="hidden" animate="visible" variants={fadeUp} custom={2}
           >
             A plataforma mais completa para médicos plantonistas.{" "}
-            Protocolos, IA clínica, calculadoras e 2.000+ fármacos —{" "}
+            Protocolos, IA clínica multimodal, calculadoras e 1.400+ fármacos —{" "}
             <span className="text-foreground font-medium">tudo offline, no seu bolso.</span>
           </motion.p>
 
@@ -362,9 +362,9 @@ export default function Landing() {
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 relative">
             {[
               { icon: Siren, label: "Modo Emergência", detail: "PCR, Sepse, IAM, AVC", accent: "from-red-500/20 to-red-500/5 text-red-500", ring: "ring-red-500/20" },
-              { icon: Bot, label: "IA Clínica", detail: "Diagnóstico diferencial por IA", accent: "from-blue-500/20 to-blue-500/5 text-blue-500", ring: "ring-blue-500/20" },
-              { icon: Pill, label: "2.000+ Fármacos", detail: "Doses, diluições, interações", accent: "from-emerald-500/20 to-emerald-500/5 text-emerald-500", ring: "ring-emerald-500/20" },
-              { icon: BookOpen, label: "1.004 Protocolos", detail: "26 categorias, baseados em evidência", accent: "from-cyan-500/20 to-cyan-500/5 text-cyan-500", ring: "ring-cyan-500/20" },
+              { icon: Bot, label: "IA Clínica multimodal", detail: "Chat · Caso · Exames · Plantão · Texto", accent: "from-blue-500/20 to-blue-500/5 text-blue-500", ring: "ring-blue-500/20" },
+              { icon: Pill, label: "1.400+ Fármacos", detail: "Doses, diluições, interações", accent: "from-emerald-500/20 to-emerald-500/5 text-emerald-500", ring: "ring-emerald-500/20" },
+              { icon: BookOpen, label: "1.047 Protocolos", detail: "26 categorias, baseados em evidência", accent: "from-cyan-500/20 to-cyan-500/5 text-cyan-500", ring: "ring-cyan-500/20" },
               { icon: Calculator, label: "53 Calculadoras", detail: "Glasgow, SOFA, Wells, HEART…", accent: "from-indigo-500/20 to-indigo-500/5 text-indigo-500", ring: "ring-indigo-500/20" },
               { icon: FileText, label: "Prescrições Prontas", detail: "Modelos por diagnóstico + IA", accent: "from-amber-500/20 to-amber-500/5 text-amber-500", ring: "ring-amber-500/20" },
               { icon: WifiOff, label: "100% Offline", detail: "Funciona sem internet", accent: "from-violet-500/20 to-violet-500/5 text-violet-500", ring: "ring-violet-500/20" },
@@ -667,7 +667,7 @@ export default function Landing() {
                     {item}
                   </li>
                 ))}
-                {["IA Clínica", "Modo offline", "Prescrições prontas", "Flashcards e quiz"].map((item) => (
+                {["IA Clínica multimodal", "Modo offline", "Prescrições prontas", "Flashcards e quiz"].map((item) => (
                   <li key={item} className="flex items-start gap-2 text-xs text-muted-foreground/40 line-through">
                     <span className="w-3.5 shrink-0" />
                     {item}
@@ -708,13 +708,13 @@ export default function Landing() {
               </p>
               <ul className="space-y-2.5 mb-8 flex-1">
                 {[
-                  "1.000+ protocolos completos",
-                  "2.000+ medicamentos",
+                  "1.047 protocolos completos",
+                  "1.400+ medicamentos",
                   "53 calculadoras médicas",
-                  "IA Clínica ilimitada",
+                  "IA Clínica multimodal (Chat, Caso, Exames, Plantão, Texto)",
+                  "500+ flashcards · 1.000+ questões",
                   "Modo offline completo",
                   "Prescrições prontas",
-                  "Flashcards e quiz",
                   "Timer PCR (ACLS)",
                   "Atualizações prioritárias",
                 ].map((item) => (
