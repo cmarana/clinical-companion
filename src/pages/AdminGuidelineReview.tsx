@@ -277,15 +277,18 @@ export default function AdminGuidelineReview() {
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-3 text-sm">
-                  <p className="font-medium">{s.change_summary}</p>
-                  {s.proposed_patch && (
-                    <details className="rounded-md border bg-muted/30 p-3">
-                      <summary className="cursor-pointer text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                        Patch sugerido
-                      </summary>
-                      <pre className="mt-2 whitespace-pre-wrap text-xs">{s.proposed_patch}</pre>
-                    </details>
-                  )}
+                  <div className="flex flex-wrap items-start justify-between gap-2">
+                    <p className="font-medium flex-1 min-w-0">{s.change_summary}</p>
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      onClick={() => setDiffOpenId(s.id)}
+                      className="shrink-0"
+                    >
+                      <GitCompare className="mr-2 h-4 w-4" />
+                      Revisar diff
+                    </Button>
+                  </div>
                   {s.evidence_sources?.length > 0 && (
                     <div className="text-xs text-muted-foreground">
                       <strong>Fontes:</strong>{" "}
