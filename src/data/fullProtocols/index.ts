@@ -241,13 +241,13 @@ import { hematologyFullProtocols7 } from "./hematology7";
 import { cardioFullProtocols15 } from "./cardiology15";
 import { neuroFullProtocols13 } from "./neurology13";
 import { sepsisFullProtocols10 } from "./sepsis10";
-import { respiratoryFullProtocols12 } from "./respiratory12";
-import { metabolicFullProtocols11 } from "./metabolic11";
-import { infectiousFullProtocols11 } from "./infectious11";
+import { respiraFullProtocols12 } from "./respiratory12";
+import { metaboFullProtocols11 } from "./metabolic11";
+import { infectFullProtocols11 } from "./infectious11";
 import { traumaFullProtocols11 } from "./trauma11";
-import { pediatricFullProtocols9 } from "./pediatric9";
-import { obstetricsFullProtocols12 } from "./obstetrics12";
-import { hematologyFullProtocols8 } from "./hematology8";
+import { pediFullProtocols9 } from "./pediatric9";
+import { obstFullProtocols12 } from "./obstetrics12";
+import { hematoFullProtocols8 } from "./hematology8";
 
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
