@@ -696,7 +696,7 @@ function ClinicalAIContent() {
               <div className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-primary/10 border border-primary/20">
                 <ScanSearch size={11} className="text-primary shrink-0" />
                 <p className="text-[10px] text-primary font-medium leading-tight">
-                  Envie ou tire foto de exame de imagem (RX, TC, RM, USG, ECG, lesão).
+                  Fotos de exames (RX, TC, USG, ECG, lesão) ou PDFs (laboratório, laudos).
                 </p>
               </div>
 
@@ -704,7 +704,7 @@ function ClinicalAIContent() {
               <input
                 ref={fileInputRef}
                 type="file"
-                accept="image/*"
+                accept="image/*,application/pdf,.pdf"
                 multiple
                 className="hidden"
                 onChange={(e) => {
