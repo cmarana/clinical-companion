@@ -382,13 +382,126 @@ serve(async (req) => {
       });
     }
 
+    // ─── Passo 3: extração estruturada (resumo + alertas críticos) ───
+    // Roda em paralelo ao retorno; se falhar, devolvemos a análise sem o bloco estruturado.
+    interface CriticalAlert {
+      level: "critico" | "atencao" | "informativo";
+      label: string;
+      value?: string;
+      reference?: string;
+      action?: string;
+    }
+    let summary = "";
+    let alerts: CriticalAlert[] = [];
+    try {
+      const extractResp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${LOVABLE_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "google/gemini-2.5-flash-lite",
+          messages: [
+            {
+              role: "system",
+              content:
+                "Você extrai um resumo clínico e a lista de alertas críticos a partir de um laudo de IA já formatado em markdown. " +
+                "REGRAS: (1) Português do Brasil. (2) Resumo: 2-3 frases focadas no que o médico precisa saber AGORA. " +
+                "(3) Alertas SOMENTE para achados que exigem ação ou correlação imediata — valores fora da faixa, red flags clínicas, achados de imagem graves. " +
+                "(4) Use 'critico' apenas para achados de pânico/risco iminente; 'atencao' para alterações relevantes; 'informativo' para observações úteis. " +
+                "(5) Se não houver alteração relevante, retorne lista vazia. Não invente valores que não estejam no laudo.",
+            },
+            { role: "user", content: `Laudo a resumir:\n\n${analysis}` },
+          ],
+          tools: [
+            {
+              type: "function",
+              function: {
+                name: "extract_summary_and_alerts",
+                description: "Extrai resumo executivo e lista de alertas críticos do laudo.",
+                parameters: {
+                  type: "object",
+                  properties: {
+                    summary: {
+                      type: "string",
+                      description: "Resumo clínico em 2-3 frases (máx. 400 caracteres).",
+                    },
+                    alerts: {
+                      type: "array",
+                      description: "Lista de alertas críticos. Vazia se nada relevante.",
+                      items: {
+                        type: "object",
+                        properties: {
+                          level: {
+                            type: "string",
+                            enum: ["critico", "atencao", "informativo"],
+                          },
+                          label: {
+                            type: "string",
+                            description: "Nome curto do achado (ex.: 'Hipercalemia', 'Pneumotórax', 'Supra de ST'). Máx. 60 chars.",
+                          },
+                          value: {
+                            type: "string",
+                            description: "Valor medido quando aplicável (ex.: 'K+ 6,8 mEq/L'). Opcional.",
+                          },
+                          reference: {
+                            type: "string",
+                            description: "Faixa de referência quando aplicável (ex.: '3,5-5,0 mEq/L'). Opcional.",
+                          },
+                          action: {
+                            type: "string",
+                            description: "Ação imediata sugerida em até 80 chars. Opcional.",
+                          },
+                        },
+                        required: ["level", "label"],
+                        additionalProperties: false,
+                      },
+                    },
+                  },
+                  required: ["summary", "alerts"],
+                  additionalProperties: false,
+                },
+              },
+            },
+          ],
+          tool_choice: { type: "function", function: { name: "extract_summary_and_alerts" } },
+        }),
+      });
+      if (extractResp.ok) {
+        const extractData = await extractResp.json();
+        const toolCall = extractData?.choices?.[0]?.message?.tool_calls?.[0];
+        const args = toolCall?.function?.arguments;
+        if (typeof args === "string") {
+          const parsed = JSON.parse(args);
+          if (typeof parsed?.summary === "string") summary = parsed.summary.slice(0, 600);
+          if (Array.isArray(parsed?.alerts)) {
+            alerts = parsed.alerts
+              .filter((a: any) => a && typeof a === "object" && typeof a.label === "string")
+              .map((a: any) => ({
+                level: ["critico", "atencao", "informativo"].includes(a.level) ? a.level : "atencao",
+                label: String(a.label).slice(0, 80),
+                value: typeof a.value === "string" ? a.value.slice(0, 80) : undefined,
+                reference: typeof a.reference === "string" ? a.reference.slice(0, 80) : undefined,
+                action: typeof a.action === "string" ? a.action.slice(0, 120) : undefined,
+              }))
+              .slice(0, 12);
+          }
+        }
+      } else {
+        console.warn("[image-analysis] extractor failed status=", extractResp.status);
+      }
+    } catch (e) {
+      console.warn("[image-analysis] extractor error:", e);
+    }
+
     // Conta uso (best-effort)
     bumpAiUsage(serviceClient, userId, "clinical-ai").catch((e) =>
       console.error("bumpAiUsage failed:", e),
     );
-    console.log(`[image-analysis] user=${userId} tier=${tier} used=${used + 1}/${limit} batch=${images.length} cls=${classifications.length}`);
+    console.log(`[image-analysis] user=${userId} tier=${tier} used=${used + 1}/${limit} batch=${images.length} cls=${classifications.length} alerts=${alerts.length}`);
 
-    return new Response(JSON.stringify({ analysis, classifications }), {
+    return new Response(JSON.stringify({ analysis, classifications, summary, alerts }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (e) {
