@@ -450,6 +450,9 @@ export const fullProtocols: FullProtocol[] = [
   ...dermatologyFullProtocols7,
   ...finalExpansionProtocols,
   ...finalExpansionProtocols2,
+
+  // ===== Edição 2026 — Protocolos críticos novos =====
+  ...newProtocols2026,
 ];
 
 // ==================== Aplicar atualizações 2025/2026 ====================
