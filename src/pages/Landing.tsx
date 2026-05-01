@@ -50,9 +50,9 @@ const howItWorks = [
 
 const allModules = [
   { icon: Siren, title: "Modo Emergência", desc: "PCR, Sepse, IAM, AVC com fluxogramas interativos", color: "text-red-500 bg-red-500/10" },
-  { icon: Bot, title: "IA Clínica", desc: "Diagnóstico diferencial e conduta assistida por IA", color: "text-blue-500 bg-blue-500/10" },
-  { icon: Pill, title: "2.000+ Medicamentos", desc: "Doses, diluições, interações, ajuste renal/hepático", color: "text-emerald-500 bg-emerald-500/10" },
-  { icon: BookOpen, title: "1.004 Protocolos", desc: "26 categorias com referências e níveis de evidência", color: "text-cyan-500 bg-cyan-500/10" },
+  { icon: Bot, title: "IA Clínica multimodal", desc: "Chat · Caso · Exames (imagem) · Plantão · Texto", color: "text-blue-500 bg-blue-500/10" },
+  { icon: Pill, title: "1.400+ Medicamentos", desc: "Doses, diluições, interações, ajuste renal/hepático", color: "text-emerald-500 bg-emerald-500/10" },
+  { icon: BookOpen, title: "1.047 Protocolos", desc: "26 categorias com referências e níveis de evidência", color: "text-cyan-500 bg-cyan-500/10" },
   { icon: Calculator, title: "53 Calculadoras", desc: "Glasgow, SOFA, Wells, HEART, MELD, NEWS, APACHE II", color: "text-indigo-500 bg-indigo-500/10" },
   { icon: FileText, title: "Prescrições Prontas", desc: "Modelos por diagnóstico + checagem de interações", color: "text-amber-500 bg-amber-500/10" },
   { icon: HeartPulse, title: "Sala Vermelha", desc: "Atendimento de emergência imediata", color: "text-rose-500 bg-rose-500/10" },
