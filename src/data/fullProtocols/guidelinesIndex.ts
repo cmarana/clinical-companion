@@ -8,6 +8,7 @@
  * adicione-o ao array `SOURCES` abaixo.
  */
 import type { FullProtocol, GuidelineSource } from "./types";
+import { PATCHES_2026, mergeGuidelines } from "./_patches2026";
 
 import { cardioFullProtocols } from "./cardiology";
 import { cardioFullProtocols4 } from "./cardiology4";
@@ -15,6 +16,7 @@ import { emergencyFullProtocols } from "./emergency";
 import { neuroFullProtocols } from "./neurology";
 import { neuroFullProtocols3 } from "./neurology3";
 import { sepsisFullProtocols } from "./sepsis";
+import { pediatricFullProtocols2 } from "./pediatric2";
 
 const SOURCES: FullProtocol[][] = [
   cardioFullProtocols,
@@ -23,6 +25,7 @@ const SOURCES: FullProtocol[][] = [
   neuroFullProtocols,
   neuroFullProtocols3,
   sepsisFullProtocols,
+  pediatricFullProtocols2,
 ];
 
 export interface ProtocolGuidelinesEntry {
@@ -36,13 +39,28 @@ export interface ProtocolGuidelinesEntry {
 
 const buildIndex = (): Map<string, ProtocolGuidelinesEntry> => {
   const map = new Map<string, ProtocolGuidelinesEntry>();
+  // 1) Coleta diretrizes nativas dos arquivos-fonte
+  const native = new Map<string, GuidelineSource[]>();
   for (const list of SOURCES) {
     for (const p of list) {
       if (!p.guidelines || p.guidelines.length === 0) continue;
-      const societies = Array.from(new Set(p.guidelines.map((g) => g.society))).sort();
-      const latestYear = p.guidelines.reduce((max, g) => Math.max(max, g.year), 0);
-      map.set(p.id, { protocolId: p.id, guidelines: p.guidelines, societies, latestYear });
+      native.set(p.id, p.guidelines);
     }
+  }
+
+  // 2) Aplica os patches 2025/2026 (mescla por society+year+title)
+  const patchMap = new Map(PATCHES_2026.map((pt) => [pt.protocolId, pt]));
+  const allIds = new Set<string>([...native.keys(), ...patchMap.keys()]);
+
+  for (const id of allIds) {
+    const base = native.get(id);
+    const patch = patchMap.get(id);
+    const merged = patch ? mergeGuidelines(base, patch.guidelines) : base!;
+    if (!merged || merged.length === 0) continue;
+
+    const societies = Array.from(new Set(merged.map((g) => g.society))).sort();
+    const latestYear = merged.reduce((max, g) => Math.max(max, g.year), 0);
+    map.set(id, { protocolId: id, guidelines: merged, societies, latestYear });
   }
   return map;
 };
