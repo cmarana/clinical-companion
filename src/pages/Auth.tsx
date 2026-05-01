@@ -201,6 +201,7 @@ export default function Auth() {
   };
 
   const handleSocialLogin = async (provider: "google" | "apple") => {
+    setErrorMsg(null);
     setSocialLoading(provider);
     try {
       const result = await lovable.auth.signInWithOAuth(provider, {
@@ -208,7 +209,9 @@ export default function Auth() {
       });
       if (result.error) throw result.error;
     } catch (err: any) {
-      toast({ title: "Erro", description: err.message || "Falha ao conectar", variant: "destructive" });
+      const msg = mapAuthError(err, "login") || `Não foi possível conectar com ${provider === "google" ? "Google" : "Apple"}.`;
+      setErrorMsg(msg);
+      toast({ title: "Falha no login social", description: msg, variant: "destructive" });
     } finally {
       setSocialLoading(null);
     }
