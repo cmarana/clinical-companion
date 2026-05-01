@@ -2084,6 +2084,64 @@ CIRURGIA INFECTADA:
     warnings: "Infecção do espaço submandibular bilateral + sublingual. Mortalidade sem tratamento: >50%. Pode evoluir para mediastinite em horas. IOT precoce salva vidas.",
     guideline: "AAO-HNS / IDSA / SBO",
   },
+  {
+    id: "rx-emerg-dengue-grave",
+    title: "Dengue Grave / Choque por Dengue (Grupo D)",
+    type: "Prescrição de Emergência / UTI",
+    prescription: `DEFINIÇÃO (MS 2024 — Grupo D):
+• Choque (PA convergente, PAD <60, enchimento capilar >3s, taquicardia, oligúria)
+• Sangramento grave (SNC, TGI, hematúria macroscópica)
+• Disfunção orgânica (hepática TGO/TGP >1000, miocardite, encefalite, IRA)
+
+EXPANSÃO VOLÊMICA INICIAL:
+1. SF 0,9% ou Ringer lactato 20mL/kg EV em 20 minutos (bolus)
+2. Reavaliar — se sem resposta: REPETIR bolus 20mL/kg em 20min (até 3 vezes = 60mL/kg na 1ª hora)
+3. Se resposta: reduzir para 10mL/kg/h × 1-2h, depois 7mL/kg/h × 2h, depois 5mL/kg/h × 4h, depois 3mL/kg/h até 48h pós-choque
+
+CHOQUE REFRATÁRIO (sem resposta a 60mL/kg):
+4. Albumina humana 5% 10-20mL/kg EV em 1h
+   OU Coloide sintético (HES contraindicado em sepse — preferir albumina)
+5. Noradrenalina 0,05-0,5mcg/kg/min EV em BIC (PAM alvo ≥65mmHg)
+6. Adrenalina 0,05-0,3mcg/kg/min se refratário a NA
+7. Considerar corticoide (hidrocortisona 50mg EV 6/6h) APENAS se choque refratário a vasopressor
+8. Avaliar disfunção miocárdica → ECO bedside; Dobutamina 5-10mcg/kg/min se IC baixo
+
+HEMORRAGIA GRAVE:
+9. Concentrado de hemácias 10mL/kg (ou 1-2 UI no adulto) se Hb <7 OU sangramento ativo + instabilidade
+10. Plaquetas: APENAS se sangramento ativo + plaquetas <50.000 (NÃO transfundir profilaticamente)
+11. Plasma fresco congelado 10-15mL/kg se INR >1,5 OU TTPa >1,5× + sangramento
+12. Crioprecipitado se fibrinogênio <100mg/dL
+13. Ácido tranexâmico 1g EV em 10min + 1g em 8h (sangramento maior)
+14. Vitamina K 10mg EV se coagulopatia hepática
+
+MONITORIZAÇÃO:
+15. PAi, PVC, SVO2 (se possível)
+16. Diurese horária (sonda vesical) — meta ≥0,5mL/kg/h
+17. Hemograma + Ht a cada 2-4h (Ht subindo = extravasamento; Ht caindo = sangramento)
+18. Coagulograma, função renal/hepática 6/6h
+19. Lactato seriado, gasometria
+20. ECG + troponina (miocardite)
+
+SUPORTE:
+21. O2 suplementar (SpO2 ≥94%); IOT se IRpA, choque refratário ou rebaixamento
+22. Cabeceira 30°
+23. Omeprazol 40mg EV 1x/dia (profilaxia úlcera de estresse)
+24. Glicemia capilar 6/6h (hipoglicemia comum em hepatite por dengue)
+25. NÃO usar profilaxia anticoagulante na fase aguda (risco de sangramento)
+26. Suporte renal (hemodiálise) se IRA + hipercalemia/acidose/sobrecarga refratária
+
+EVITAR ESTRITAMENTE:
+• AAS, AINEs (ibuprofeno, diclofenaco, cetoprofeno)
+• Corticoide profilático (sem evidência)
+• Heparina/enoxaparina profilática na fase de extravasamento
+• Hiperidratação (risco de EAP/derrame quando reabsorve)
+
+NOTIFICAÇÃO COMPULSÓRIA IMEDIATA (SINAN — em <24h)
+COMUNICAR HEMOVIGILÂNCIA SE TRANSFUSÃO`,
+    warnings: "MORTALIDADE do choque por dengue não tratado: 20-40%. Tratado precocemente: <1%. Fase crítica = 24-48h após defervescência (3º-7º dia da doença). Reavaliar a cada 15-30min na 1ª hora.",
+    notes: "Marcadores de extravasamento: hemoconcentração (Ht ↑20%), derrame pleural/ascite à USG, hipoalbuminemia. Reabsorção (após 48-72h) → risco de EAP — REDUZIR hidratação progressivamente.",
+    guideline: "MS Brasil 2024 — Dengue: diagnóstico e manejo clínico adulto e criança / OPAS/OMS 2022 / SBI",
+  },
 ];
 
 
