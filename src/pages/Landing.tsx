@@ -241,8 +241,19 @@ export default function Landing() {
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 80]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  // Sticky mobile CTA removido — botão agora é apenas inline (no Hero e na seção de Planos),
-  // evitando que cubra texto, footer e o home indicator do iOS.
+  // CTA flutuante: aparece somente quando a seção de Planos entra na viewport
+  // e desaparece ao sair (rolando para cima ou ao chegar no footer).
+  const [showPricingCta, setShowPricingCta] = useState(false);
+  useEffect(() => {
+    const target = document.getElementById("pricing");
+    if (!target) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setShowPricingCta(entry.isIntersecting),
+      { threshold: 0.15 }
+    );
+    observer.observe(target);
+    return () => observer.disconnect();
+  }, []);
 
   // Hide the inline HTML splash as soon as the Landing actually paints.
   useEffect(() => {
@@ -1011,7 +1022,28 @@ export default function Landing() {
         </div>
       </footer>
 
-      {/* CTA mobile fixo removido — botão agora apenas inline no Hero/Planos. */}
+      {/* CTA flutuante — aparece apenas quando a seção de Planos está visível */}
+      <AnimatePresence>
+        {showPricingCta && (
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: 24 }}
+            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+            className="fixed left-1/2 -translate-x-1/2 z-50 px-4 w-full max-w-md pointer-events-none"
+            style={{ bottom: "calc(env(safe-area-inset-bottom) + 1rem)" }}
+          >
+            <Button
+              onClick={() => { navigate("/auth"); hapticLight(); }}
+              size="lg"
+              className="pointer-events-auto w-full h-14 rounded-2xl bg-primary text-primary-foreground font-heading font-bold text-base shadow-2xl shadow-primary/40 hover:bg-primary/90 active:scale-[0.98] transition-all"
+            >
+              Começar 7 dias grátis
+              <ArrowRight className="ml-2" size={18} />
+            </Button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
