@@ -387,6 +387,44 @@ export default function AdminGuidelineReview() {
       <p className="mt-6 text-xs text-muted-foreground">
         O PULSO é uma ferramenta de apoio à decisão clínica. O julgamento médico é soberano.
       </p>
+
+      {/* Modal de diff antes/depois com navegação e atalhos */}
+      {(() => {
+        if (!diffOpenId) {
+          return (
+            <SuggestionDiffModal
+              suggestion={null}
+              open={false}
+              acting={false}
+              onOpenChange={() => setDiffOpenId(null)}
+              onAction={() => {}}
+            />
+          );
+        }
+        const idx = visible.findIndex((x) => x.id === diffOpenId);
+        const current = idx >= 0 ? visible[idx] : null;
+        const prevId = idx > 0 ? visible[idx - 1].id : null;
+        const nextId = idx >= 0 && idx < visible.length - 1 ? visible[idx + 1].id : null;
+        return (
+          <SuggestionDiffModal
+            suggestion={current}
+            position={idx >= 0 ? { current: idx + 1, total: visible.length } : undefined}
+            open={!!current}
+            acting={acting === diffOpenId}
+            onOpenChange={(o) => !o && setDiffOpenId(null)}
+            onAction={async (action, note) => {
+              if (!current) return;
+              setNotes((p) => ({ ...p, [current.id]: note }));
+              await reviewSuggestion(current, action);
+              // Pular para o próximo pendente após ação
+              const nextPending = visible.slice(idx + 1).find((x) => x.status === "pending");
+              setDiffOpenId(nextPending ? nextPending.id : null);
+            }}
+            onPrev={prevId ? () => setDiffOpenId(prevId) : undefined}
+            onNext={nextId ? () => setDiffOpenId(nextId) : undefined}
+          />
+        );
+      })()}
     </div>
   );
 }
