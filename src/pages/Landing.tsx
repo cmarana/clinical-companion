@@ -8,7 +8,7 @@ import {
   Users, Lock, RefreshCw, Download, Search, Smartphone,
   ChevronDown, HelpCircle, ClipboardList, Baby, Beaker,
   Scissors, Eye, HeartPulse, Timer, Bookmark, Globe,
-  ScrollText, Layers, ListChecks, GraduationCap, FlaskConical
+  ScrollText, Layers, ListChecks, GraduationCap, FlaskConical, LogIn
 } from "lucide-react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -288,7 +288,7 @@ export default function Landing() {
           >
             <Button
               size="lg"
-              onClick={() => navigate("/auth")}
+              onClick={() => navigate("/auth", { state: { mode: "signup" } })}
               className="w-full sm:w-auto h-14 px-10 text-base font-heading font-bold gap-2 shadow-xl shadow-primary/25 relative overflow-hidden group"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-primary via-primary to-primary/80 group-hover:from-primary/90 group-hover:to-primary transition-all" />
@@ -301,11 +301,25 @@ export default function Landing() {
             <Button
               variant="outline"
               size="lg"
-              onClick={() => scrollTo("features")}
-              className="w-full sm:w-auto h-14 px-8 text-base font-heading"
+              onClick={() => navigate("/auth", { state: { mode: "login" } })}
+              className="w-full sm:w-auto h-14 px-8 text-base font-heading font-semibold gap-2"
             >
-              Ver recursos <ArrowRight size={16} />
+              <LogIn size={16} />
+              Entrar
             </Button>
+          </motion.div>
+
+          {/* Link secundário "Ver recursos" */}
+          <motion.div
+            className="mt-4 flex justify-center"
+            initial="hidden" animate="visible" variants={fadeUp} custom={4}
+          >
+            <button
+              onClick={() => scrollTo("features")}
+              className="text-sm text-muted-foreground hover:text-foreground font-heading inline-flex items-center gap-1 transition-colors"
+            >
+              Ver recursos <ArrowRight size={14} />
+            </button>
           </motion.div>
 
           {/* Social proof */}
