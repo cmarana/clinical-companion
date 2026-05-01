@@ -79,6 +79,46 @@ function ClinicalAIContent() {
       return next;
     });
   };
+  /**
+   * Reaproveita o contexto de uma análise antiga: garante o modo "Exames",
+   * pré-preenche a indicação clínica com a hipótese/modalidade esperada
+   * e abre o seletor de arquivo para o usuário anexar o novo PDF/imagem.
+   */
+  const handleReanalyze = (entry: ImageAnalysisHistoryEntry) => {
+    // Sair de qualquer dialog aberto
+    setHistoryDetail(null);
+    setHistoryOpen(false);
+    setCompareOpen(false);
+
+    // Forçar a aba "Exames" (modo image)
+    setMode("image");
+
+    // Limpar uploads atuais para evitar mistura com o item anterior
+    setOriginalImages([]);
+    setImageFiles([]);
+    setDocuments([]);
+
+    // Montar a indicação clínica pré-preenchida
+    const parts: string[] = [];
+    if (entry.context?.trim()) parts.push(entry.context.trim());
+    if (entry.classifications.length > 0) {
+      const tags = entry.classifications
+        .map((c) => `${c.modality}${c.region ? ` (${c.region})` : ""}`)
+        .join(", ");
+      parts.push(`Comparar com exame anterior: ${tags}.`);
+    } else if (entry.docsCount > 0 && entry.docNames.length > 0) {
+      parts.push(`Comparar com documento anterior: ${entry.docNames.join(", ")}.`);
+    }
+    setImageContext(parts.join(" "));
+
+    toast.success("Contexto reaproveitado. Anexe o novo arquivo.");
+
+    // Abrir o seletor de arquivo após o React aplicar o estado
+    setTimeout(() => {
+      fileInputRef.current?.click();
+    }, 150);
+  };
+
   const handleExportPdf = (entry: ImageAnalysisHistoryEntry) => {
     exportAnalysisAsPdf({
       modality: entry.primaryModality,
