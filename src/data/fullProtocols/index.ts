@@ -451,6 +451,18 @@ export const fullProtocols: FullProtocol[] = [
   ...finalExpansionProtocols,
   ...finalExpansionProtocols2,
 ];
+
+// ==================== Aplicar atualizações 2025/2026 ====================
+import { PATCHES_2026, mergeGuidelines } from "./_patches2026";
+const patchMap = new Map(PATCHES_2026.map((p) => [p.protocolId, p]));
+for (const protocol of fullProtocols) {
+  const patch = patchMap.get(protocol.id);
+  if (patch) {
+    protocol.guidelines = mergeGuidelines(protocol.guidelines, patch.guidelines);
+    protocol.lastReviewed = patch.lastReviewed;
+  }
+}
+
 export function getFullProtocol(id: string) {
   return fullProtocols.find(p => p.id === id);
 }
