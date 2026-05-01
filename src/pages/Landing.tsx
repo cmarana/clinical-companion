@@ -95,8 +95,8 @@ const trustPoints = [
 ];
 
 const stats = [
-  { value: "2.000+", label: "Medicamentos", icon: Pill },
-  { value: "1.000+", label: "Protocolos", icon: BookOpen },
+  { value: "1.400+", label: "Medicamentos", icon: Pill },
+  { value: "1.047", label: "Protocolos", icon: BookOpen },
   { value: "53", label: "Calculadoras", icon: Calculator },
   { value: "24/7", label: "Offline", icon: WifiOff },
 ];
