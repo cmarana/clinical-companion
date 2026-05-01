@@ -9,7 +9,7 @@ import {
   ChevronDown, HelpCircle, ClipboardList, Baby, Beaker,
   Scissors, Eye, HeartPulse, Timer, Bookmark, Globe,
   ScrollText, Layers, ListChecks, GraduationCap, FlaskConical, LogIn,
-  MessageSquare, ScanLine, Image as ImageIcon
+  MessageSquare, ScanLine
 } from "lucide-react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
