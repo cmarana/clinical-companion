@@ -211,6 +211,7 @@ const AppRoutes = () => (
         <Route path="/conduct-comparator" element={<ConductComparator />} />
       </Route>
       <Route path="/" element={<SmartRoot />} />
+      <Route path="/status" element={<Status />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   </Suspense>
