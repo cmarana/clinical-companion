@@ -110,8 +110,43 @@
         --pulso-letter-stop-2: #0a1628;
         --pulso-ecg-stroke: #3aa9ff;
       }
-      #pulso-splash { background: var(--pulso-bg); }
-      #pulso-splash.pulso-hide { opacity: 0; visibility: hidden; pointer-events: none; }
+      #pulso-splash {
+        background: var(--pulso-bg);
+        transition: opacity 520ms cubic-bezier(.22,.61,.36,1), visibility 0s linear 520ms;
+        will-change: opacity;
+      }
+      #pulso-splash.pulso-hide {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 520ms cubic-bezier(.22,.61,.36,1), visibility 0s linear 520ms;
+      }
+      #pulso-splash.pulso-hide .pulso-logo,
+      #pulso-splash.pulso-hide .pulso-name,
+      #pulso-splash.pulso-hide .pulso-tag,
+      #pulso-splash.pulso-hide .pulso-ecg {
+        transform: scale(.96);
+        opacity: 0;
+        transition: transform 520ms cubic-bezier(.22,.61,.36,1), opacity 380ms ease-out;
+      }
+      /* Bloqueia scroll/jank enquanto o splash está visível */
+      html.pulso-splash-active, html.pulso-splash-active body { overflow: hidden; }
+      /* Fade-in sutil do app por baixo do splash — sincronizado com o fade-out */
+      #root.pulso-app-enter {
+        animation: pulso-app-enter 560ms cubic-bezier(.22,.61,.36,1) both;
+      }
+      @keyframes pulso-app-enter {
+        from { opacity: 0; transform: scale(.992); }
+        to   { opacity: 1; transform: scale(1); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #pulso-splash, #pulso-splash.pulso-hide { transition: opacity 200ms linear, visibility 0s linear 200ms; }
+        #pulso-splash.pulso-hide .pulso-logo,
+        #pulso-splash.pulso-hide .pulso-name,
+        #pulso-splash.pulso-hide .pulso-tag,
+        #pulso-splash.pulso-hide .pulso-ecg { transform: none; transition: opacity 200ms linear; }
+        #root.pulso-app-enter { animation: none; }
+      }
 
       /* Glow radial atrás da logo */
       #pulso-splash::before {
