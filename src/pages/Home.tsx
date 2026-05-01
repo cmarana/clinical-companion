@@ -91,8 +91,8 @@ const specialtyModules = [
 
 const studyModules = [
   { label: "Simulador de Casos", sub: "Casos clínicos com IA", icon: Brain, path: "/case-simulator" },
-  { label: "Questões", sub: "Estudo por questões", icon: HelpCircle, path: "/quiz" },
-  { label: "Flashcards", sub: "Revisão espaçada (Anki)", icon: Brain, path: "/flashcards" },
+  { label: "Questões", sub: "1.000+ questões comentadas", icon: HelpCircle, path: "/quiz" },
+  { label: "Flashcards", sub: "500+ cards · revisão espaçada", icon: Brain, path: "/flashcards" },
   { label: "Residência", sub: "Questões por banca", icon: GraduationCap, path: "/residency-quiz" },
   { label: "Dashboard", sub: "Streak e progresso", icon: BarChart3, path: "/study-dashboard" },
   { label: "Evolução por Voz", sub: "Voz → SOAP / I-PASS com IA", icon: Mic, path: "/voice-evolution" },
