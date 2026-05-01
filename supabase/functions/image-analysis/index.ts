@@ -6,45 +6,117 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { verifyAuthAndQuota, bumpAiUsage, corsHeaders } from "../_shared/aiQuota.ts";
 
-const SYSTEM_PROMPT = `Você é um médico radiologista assistente do PULSO Emergência.
+const SYSTEM_PROMPT_IMAGE = `Você é um médico radiologista assistente do PULSO Emergência.
 Analise a imagem clínica enviada (radiografia, TC, RM, USG, ECG impresso, ferida, lesão de pele, etc.) com o máximo rigor.
 
 REGRAS OBRIGATÓRIAS:
 1. Português do Brasil. Linguagem técnica mas clara para o médico generalista de plantão.
-2. Baseie-se em diretrizes brasileiras (CBR — Colégio Brasileiro de Radiologia, SBC, MS, AMIB) e internacionais (Fleischner, ACR, ESR) quando aplicáveis.
-3. NUNCA invente achados. Se a imagem tem qualidade ruim, ângulo ruim ou não permite análise → declarar explicitamente.
+2. Baseie-se em diretrizes brasileiras (CBR, SBC, MS, AMIB) e internacionais (Fleischner, ACR, ESR) quando aplicáveis.
+3. NUNCA invente achados. Se a imagem tem qualidade ruim ou não permite análise → declarar explicitamente.
 4. Seja CAUTELOSO: laudos automáticos por IA têm taxa de erro. Sempre recomendar correlação clínica e laudo formal por radiologista.
 5. NÃO dê diagnóstico definitivo — apenas hipóteses ordenadas por probabilidade.
 6. Para ECG: comente ritmo, frequência, eixo, intervalos (PR/QRS/QT), alterações ST-T, sinais de isquemia/sobrecarga.
 
-FORMATO OBRIGATÓRIO (markdown, use exatamente estes títulos H2):
+FORMATO OBRIGATÓRIO (markdown, exatamente estes H2):
 
 ## TIPO DE EXAME
-[Modalidade identificada + região anatômica + projeção/corte]
+[Modalidade + região + projeção/corte]
 
 ## QUALIDADE TÉCNICA
-[Adequada / Limitada — descrever limitações se houver]
+[Adequada / Limitada — descrever limitações]
 
 ## ACHADOS
-- [achado 1 — descrição objetiva]
-- [achado 2]
-(o que VOCÊ está vendo na imagem; descreva sem interpretar)
+- [achado objetivo 1]
+- [achado objetivo 2]
 
 ## HIPÓTESES DIAGNÓSTICAS
 1. **[mais provável]** — fundamento
 2. **[diferencial 1]** — fundamento
-3. **[diferencial 2]** — fundamento
 
 ## CONDUTA SUGERIDA
 - [exame complementar / interconsulta / urgência]
-- [tratamento empírico se aplicável]
 
 ## ALERTAS / RED FLAGS
-- [se houver achado crítico que requer ação imediata]
-- [se não houver, escrever "Nenhum achado de gravidade imediata identificado"]
+- [achados críticos OU "Nenhum achado de gravidade imediata identificado"]
 
 ## OBSERVAÇÃO
 ⚠️ Análise de IA auxiliar — NÃO substitui laudo formal de radiologista. Correlação clínica obrigatória.`;
+
+const SYSTEM_PROMPT_DOCUMENT = `Você é um médico assistente do PULSO Emergência analisando documentos clínicos em PDF
+(resultados de exames laboratoriais, laudos radiológicos, sumários de alta, prescrições, evoluções).
+
+REGRAS OBRIGATÓRIAS:
+1. Português do Brasil. Linguagem técnica e objetiva.
+2. Baseie-se em diretrizes brasileiras (SBPC, MS, SBC, AMIB) e valores de referência adultos quando aplicável.
+3. NUNCA invente valores ou achados. Se o texto extraído está fragmentado, ilegível ou incompleto → declarar.
+4. Para LABORATÓRIO: identificar valores ALTERADOS, classificar gravidade (leve/moderado/crítico), interpretar conjunto (ex.: anemia + ferritina baixa = ferropriva).
+5. Para LAUDOS: extrair achados principais, traduzir jargão e sinalizar urgências (BI-RADS 4/5, Lung-RADS 4, lesões críticas).
+6. Para PRESCRIÇÕES/SUMÁRIOS: identificar medicações ativas, interações relevantes e pendências.
+7. Sinalize valores de PÂNICO/CRÍTICOS que exijam ação imediata (K+ >6,5; Hb <7; troponina elevada; lactato >4; INR >5; etc.).
+
+FORMATO OBRIGATÓRIO (markdown, exatamente estes H2):
+
+## TIPO DE DOCUMENTO
+[Hemograma / Bioquímica / Laudo TC / Sumário de alta / etc.]
+
+## VALORES / ACHADOS RELEVANTES
+- [parâmetro: valor (referência) — alterado/normal/crítico]
+- agrupar por sistema quando fizer sentido
+
+## INTERPRETAÇÃO CLÍNICA
+[Síntese integrada dos achados — o que isso significa em conjunto]
+
+## HIPÓTESES / CORRELAÇÕES
+1. **[hipótese 1]** — fundamento
+2. **[hipótese 2]** — fundamento
+
+## CONDUTA SUGERIDA
+- [exames complementares / repetição / interconsulta / tratamento]
+
+## ALERTAS / VALORES CRÍTICOS
+- [achados que exigem ação imediata OU "Nenhum valor crítico identificado"]
+
+## OBSERVAÇÃO
+⚠️ Análise de IA auxiliar — sempre confirmar valores no documento original e correlacionar clinicamente.`;
+
+const SYSTEM_PROMPT_MIXED = `Você é um médico assistente do PULSO Emergência analisando MÚLTIPLOS materiais clínicos
+de um mesmo paciente: imagens (RX/TC/USG/ECG) E documentos PDF (laboratório, laudos, sumários).
+
+INTEGRE todas as fontes em uma análise única e coerente:
+1. Português do Brasil, técnico e objetivo.
+2. Para cada IMAGEM: descrever achados (sem inventar).
+3. Para cada DOCUMENTO: extrair valores/achados relevantes e alterações.
+4. Sintetizar TUDO em uma interpretação integrada (correlacionar imagem + laboratório + clínica).
+5. Sinalizar valores críticos e red flags.
+6. NÃO dê diagnóstico definitivo — hipóteses ordenadas + correlação clínica obrigatória.
+
+FORMATO OBRIGATÓRIO (markdown, exatamente estes H2):
+
+## MATERIAIS RECEBIDOS
+- Imagem(ns): [tipo + número]
+- Documento(s): [tipo + nome]
+
+## ACHADOS DE IMAGEM
+- [por imagem, breve]
+
+## ACHADOS DOCUMENTAIS
+- [valores alterados / achados relevantes]
+
+## INTERPRETAÇÃO INTEGRADA
+[síntese clínica unindo imagem + laboratório/laudo]
+
+## HIPÓTESES DIAGNÓSTICAS
+1. **[mais provável]** — fundamento
+2. **[diferencial 1]** — fundamento
+
+## CONDUTA SUGERIDA
+- [próximos passos clínicos / exames / interconsulta]
+
+## ALERTAS / RED FLAGS
+- [crítico OU "Nenhum achado de gravidade imediata"]
+
+## OBSERVAÇÃO
+⚠️ Análise de IA auxiliar — não substitui avaliação clínica e laudo formal.`;
 
 serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -67,9 +139,10 @@ serve(async (req) => {
 
     const imageDataUrl: string | undefined = body.imageDataUrl;
     const imageDataUrls: unknown = body.imageDataUrls;
+    const documentsRaw: unknown = body.documents;
     const context: string = typeof body.context === "string" ? body.context.slice(0, 2000) : "";
 
-    // Normaliza para array (suporta lote + retrocompatibilidade)
+    // Imagens
     let images: string[] = [];
     if (Array.isArray(imageDataUrls)) {
       images = imageDataUrls.filter(
@@ -79,8 +152,25 @@ serve(async (req) => {
       images = [imageDataUrl];
     }
 
-    if (images.length === 0) {
-      return new Response(JSON.stringify({ error: "Nenhuma imagem válida fornecida" }), {
+    // Documentos PDF (texto extraído no client)
+    interface DocPayload { fileName: string; pages: number; pagesAnalyzed: number; truncated?: boolean; text: string }
+    let documents: DocPayload[] = [];
+    if (Array.isArray(documentsRaw)) {
+      documents = documentsRaw
+        .filter((d): d is Record<string, unknown> => !!d && typeof d === "object")
+        .map((d) => ({
+          fileName: typeof d.fileName === "string" ? d.fileName.slice(0, 200) : "documento.pdf",
+          pages: typeof d.pages === "number" ? d.pages : 0,
+          pagesAnalyzed: typeof d.pagesAnalyzed === "number" ? d.pagesAnalyzed : 0,
+          truncated: !!d.truncated,
+          text: typeof d.text === "string" ? d.text.slice(0, 80_000) : "",
+        }))
+        .filter((d) => d.text.trim().length >= 20)
+        .slice(0, 3);
+    }
+
+    if (images.length === 0 && documents.length === 0) {
+      return new Response(JSON.stringify({ error: "Nenhuma imagem ou documento válido fornecido" }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
@@ -94,21 +184,22 @@ serve(async (req) => {
       });
     }
 
-    // Limite individual ~6MB base64 e payload total ~25MB
-    const totalSize = images.reduce((acc, u) => acc + u.length, 0);
-    for (const u of images) {
-      if (u.length > 8_500_000) {
+    if (images.length > 0) {
+      const totalSize = images.reduce((acc, u) => acc + u.length, 0);
+      for (const u of images) {
+        if (u.length > 8_500_000) {
+          return new Response(
+            JSON.stringify({ error: "Uma das imagens excede 6MB. Reduza a resolução." }),
+            { status: 413, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+          );
+        }
+      }
+      if (totalSize > 35_000_000) {
         return new Response(
-          JSON.stringify({ error: "Uma das imagens excede 6MB. Reduza a resolução." }),
+          JSON.stringify({ error: "Lote muito grande (>25MB total). Reduza imagens ou envie menos." }),
           { status: 413, headers: { ...corsHeaders, "Content-Type": "application/json" } },
         );
       }
-    }
-    if (totalSize > 35_000_000) {
-      return new Response(
-        JSON.stringify({ error: "Lote muito grande (>25MB total). Reduza imagens ou envie menos." }),
-        { status: 413, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
     }
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
@@ -119,22 +210,45 @@ serve(async (req) => {
       });
     }
 
-    const isBatch = images.length > 1;
-    const batchHeader = isBatch
-      ? `Lote com ${images.length} imagens da MESMA investigação clínica enviadas em sequência (numeradas de 1 a ${images.length}). Analise como SÉRIE: descreva achados de cada imagem individualmente e depois faça uma síntese integrada.\n\n`
-      : "";
+    // Seleciona prompt baseado no tipo de material
+    const hasImages = images.length > 0;
+    const hasDocs = documents.length > 0;
+    const systemPrompt = hasImages && hasDocs
+      ? SYSTEM_PROMPT_MIXED
+      : hasImages
+        ? SYSTEM_PROMPT_IMAGE
+        : SYSTEM_PROMPT_DOCUMENT;
 
-    const userText = batchHeader + (context.trim()
-      ? `Contexto clínico fornecido pelo médico:\n${context}\n\nAnalise ${isBatch ? "as imagens" : "a imagem"} em anexo seguindo o formato obrigatório.`
-      : `Analise ${isBatch ? "as imagens" : "a imagem"} em anexo seguindo o formato obrigatório. Sem contexto clínico fornecido.`);
+    const isBatchImg = images.length > 1;
+    const headerParts: string[] = [];
+    if (hasImages && isBatchImg) {
+      headerParts.push(`Lote com ${images.length} imagens da MESMA investigação — analise como sequência.`);
+    }
+    if (hasDocs) {
+      headerParts.push(`${documents.length} documento(s) PDF anexado(s) (texto já extraído abaixo).`);
+    }
+    const header = headerParts.length ? headerParts.join(" ") + "\n\n" : "";
 
-    // Monta content multimodal: 1 texto + N imagens
+    const userText = header + (context.trim()
+      ? `Contexto clínico fornecido pelo médico:\n${context}\n\nAnalise os materiais em anexo seguindo o formato obrigatório.`
+      : `Analise os materiais em anexo seguindo o formato obrigatório. Sem contexto clínico fornecido.`);
+
+    // Monta content multimodal
     const userContent: Array<Record<string, unknown>> = [{ type: "text", text: userText }];
+
     images.forEach((url, idx) => {
-      if (isBatch) {
+      if (isBatchImg) {
         userContent.push({ type: "text", text: `\n--- Imagem ${idx + 1} de ${images.length} ---` });
       }
       userContent.push({ type: "image_url", image_url: { url } });
+    });
+
+    documents.forEach((doc, idx) => {
+      const truncNote = doc.truncated ? " (truncado)" : "";
+      userContent.push({
+        type: "text",
+        text: `\n--- Documento ${idx + 1}${hasDocs && documents.length > 1 ? ` de ${documents.length}` : ""}: ${doc.fileName} (${doc.pagesAnalyzed}/${doc.pages} pág.${truncNote}) ---\n\n${doc.text}`,
+      });
     });
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {

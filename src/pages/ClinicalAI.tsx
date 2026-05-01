@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot, Mic, MicOff, Zap, FileText, Image as ImageIcon, Camera, Upload, X, ScanSearch, ShieldCheck } from "lucide-react";
+import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot, Mic, MicOff, Zap, FileText, Image as ImageIcon, Camera, Upload, X, ScanSearch, ShieldCheck, FileType2 } from "lucide-react";
+import { extractPdfText, type ExtractedPdf } from "@/lib/pdfExtract";
 import { supabase } from "@/integrations/supabase/client";
 import PremiumPageGuard from "@/components/PremiumPageGuard";
 import { Button } from "@/components/ui/button";
@@ -35,12 +36,15 @@ function ClinicalAIContent() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [mode, setMode] = useState<"chat" | "structured" | "plantao" | "narrative" | "image">("chat");
-  // Image analysis state — suporta lote (até MAX_IMAGES)
+  // Image / Document analysis state — suporta lote
   const MAX_IMAGES = 5;
+  const MAX_DOCS = 3;
   const [originalImages, setOriginalImages] = useState<string[]>([]); // raw uploads
   const [imageFiles, setImageFiles] = useState<string[]>([]); // versões enviadas (possivelmente anonimizadas)
+  const [documents, setDocuments] = useState<ExtractedPdf[]>([]); // PDFs com texto extraído
   const [imageContext, setImageContext] = useState("");
   const [imageAnalyzing, setImageAnalyzing] = useState(false);
+  const [pdfLoading, setPdfLoading] = useState(false);
   const [anonymize, setAnonymize] = useState(true);
   const [anonTopPct, setAnonTopPct] = useState(12);
   const [anonBottomPct, setAnonBottomPct] = useState(8);
@@ -237,53 +241,90 @@ function ClinicalAIContent() {
 
   const clearChat = () => { setMessages([]); };
 
-  // ─── Image analysis (lote) ───
-  const handleImageSelect = (files: FileList | File[] | null) => {
+  // ─── Image / Document analysis (lote) ───
+  const handleImageSelect = async (files: FileList | File[] | null) => {
     if (!files) return;
     const incoming = Array.from(files as ArrayLike<File>);
     if (incoming.length === 0) return;
 
-    const remaining = MAX_IMAGES - originalImages.length;
-    if (remaining <= 0) {
-      toast.error(`Máximo de ${MAX_IMAGES} imagens por lote`);
-      return;
-    }
-
-    const accepted: File[] = [];
+    // Separa imagens, PDFs e o que for ignorado
+    const imageFiles2: File[] = [];
+    const pdfFiles: File[] = [];
     let skippedType = 0;
     let skippedSize = 0;
-    for (const f of incoming.slice(0, remaining)) {
-      if (!f.type.startsWith("image/")) { skippedType++; continue; }
-      if (f.size > 6 * 1024 * 1024) { skippedSize++; continue; }
-      accepted.push(f);
+    for (const f of incoming) {
+      const isImage = f.type.startsWith("image/");
+      const isPdf = f.type === "application/pdf" || /\.pdf$/i.test(f.name);
+      if (!isImage && !isPdf) { skippedType++; continue; }
+      if (isImage && f.size > 6 * 1024 * 1024) { skippedSize++; continue; }
+      if (isPdf && f.size > 15 * 1024 * 1024) { skippedSize++; continue; }
+      if (isImage) imageFiles2.push(f);
+      else pdfFiles.push(f);
     }
     if (skippedType) toast.error(`${skippedType} arquivo(s) ignorado(s) — formato inválido`);
-    if (skippedSize) toast.error(`${skippedSize} imagem(ns) acima de 6MB ignorada(s)`);
-    if (incoming.length > remaining) toast.message(`Apenas ${remaining} imagem(ns) adicionada(s) (limite ${MAX_IMAGES})`);
-    if (accepted.length === 0) return;
+    if (skippedSize) toast.error(`${skippedSize} arquivo(s) acima do limite ignorado(s)`);
 
-    Promise.all(
-      accepted.map(
-        (file) =>
-          new Promise<string | null>((resolve) => {
-            const reader = new FileReader();
-            reader.onload = () => resolve(typeof reader.result === "string" ? reader.result : null);
-            reader.onerror = () => resolve(null);
-            reader.readAsDataURL(file);
-          }),
-      ),
-    ).then((urls) => {
+    // Imagens
+    const remainingImg = MAX_IMAGES - originalImages.length;
+    const acceptedImgs = imageFiles2.slice(0, Math.max(0, remainingImg));
+    if (imageFiles2.length > acceptedImgs.length) {
+      toast.message(`Apenas ${acceptedImgs.length} imagem(ns) adicionada(s) (limite ${MAX_IMAGES})`);
+    }
+    if (acceptedImgs.length > 0) {
+      const urls = await Promise.all(
+        acceptedImgs.map(
+          (file) =>
+            new Promise<string | null>((resolve) => {
+              const reader = new FileReader();
+              reader.onload = () => resolve(typeof reader.result === "string" ? reader.result : null);
+              reader.onerror = () => resolve(null);
+              reader.readAsDataURL(file);
+            }),
+        ),
+      );
       const valid = urls.filter((u): u is string => !!u);
-      if (valid.length === 0) {
+      if (valid.length > 0) {
+        setOriginalImages((prev) => [...prev, ...valid].slice(0, MAX_IMAGES));
+      } else {
         toast.error("Falha ao ler as imagens");
-        return;
       }
-      setOriginalImages((prev) => [...prev, ...valid].slice(0, MAX_IMAGES));
-    });
+    }
+
+    // PDFs
+    const remainingPdf = MAX_DOCS - documents.length;
+    const acceptedPdfs = pdfFiles.slice(0, Math.max(0, remainingPdf));
+    if (pdfFiles.length > acceptedPdfs.length) {
+      toast.message(`Apenas ${acceptedPdfs.length} PDF(s) adicionado(s) (limite ${MAX_DOCS})`);
+    }
+    if (acceptedPdfs.length > 0) {
+      setPdfLoading(true);
+      try {
+        for (const file of acceptedPdfs) {
+          try {
+            const extracted = await extractPdfText(file);
+            if (!extracted.text || extracted.text.trim().length < 20) {
+              toast.error(`PDF "${file.name}" sem texto legível (digitalizado?). Tire foto de cada página.`);
+              continue;
+            }
+            setDocuments((prev) => [...prev, extracted].slice(0, MAX_DOCS));
+            toast.success(`📄 ${file.name} — ${extracted.pagesAnalyzed}/${extracted.pages} páginas processadas`);
+          } catch (e) {
+            console.error("PDF extract error:", e);
+            toast.error(`Falha ao processar "${file.name}"`);
+          }
+        }
+      } finally {
+        setPdfLoading(false);
+      }
+    }
   };
 
   const removeImageAt = (idx: number) => {
     setOriginalImages((prev) => prev.filter((_, i) => i !== idx));
+  };
+
+  const removeDocumentAt = (idx: number) => {
+    setDocuments((prev) => prev.filter((_, i) => i !== idx));
   };
 
   // Aplica tarjas pretas nas faixas superior e inferior (onde geralmente há nome,
@@ -344,8 +385,8 @@ function ClinicalAIContent() {
   }, [originalImages, anonymize, anonTopPct, anonBottomPct, applyAnonymization]);
 
   const handleImageAnalyze = async () => {
-    if (imageFiles.length === 0) {
-      toast.error("Anexe ao menos uma imagem");
+    if (imageFiles.length === 0 && documents.length === 0) {
+      toast.error("Anexe ao menos uma imagem ou PDF");
       return;
     }
     setImageAnalyzing(true);
@@ -356,11 +397,28 @@ function ClinicalAIContent() {
     if (patientCtx.weight) ctxParts.push(`Peso: ${patientCtx.weight}kg`);
     if (patientCtx.scenario) ctxParts.push(`Cenário: ${patientCtx.scenario}`);
     if (imageContext.trim()) ctxParts.push(`Indicação clínica: ${imageContext.trim()}`);
-    if (anonymize) ctxParts.push("Imagens anonimizadas (faixas superior/inferior cobertas — ignore áreas pretas)");
+    if (imageFiles.length > 0 && anonymize) ctxParts.push("Imagens anonimizadas (faixas superior/inferior cobertas — ignore áreas pretas)");
     if (imageFiles.length > 1) ctxParts.push(`Lote com ${imageFiles.length} imagens da mesma investigação — analise como sequência`);
+    if (documents.length > 0) ctxParts.push(`${documents.length} PDF(s) anexado(s) com texto extraído`);
     const fullContext = ctxParts.join(" | ");
 
-    const userLabel = `📷 **Análise de ${imageFiles.length > 1 ? `${imageFiles.length} imagens (lote)` : "imagem"} solicitada**${fullContext ? `\n${fullContext}` : ""}`;
+    // Monta payload de documentos (texto extraído dos PDFs)
+    const docsPayload = documents.map((d) => ({
+      fileName: d.fileName,
+      pages: d.pages,
+      pagesAnalyzed: d.pagesAnalyzed,
+      truncated: d.truncated,
+      text: d.text,
+    }));
+
+    const parts: string[] = [];
+    if (imageFiles.length > 0) parts.push(`${imageFiles.length} imagem(ns)`);
+    if (documents.length > 0) parts.push(`${documents.length} PDF(s)`);
+    const userLabel = `📎 **Análise solicitada — ${parts.join(" + ")}**${
+      documents.length > 0
+        ? `\n${documents.map((d) => `📄 ${d.fileName} (${d.pagesAnalyzed}/${d.pages} pág.)`).join("\n")}`
+        : ""
+    }${fullContext ? `\n${fullContext}` : ""}`;
     setMessages((prev) => [...prev, { role: "user", content: userLabel }]);
 
     try {
@@ -370,16 +428,16 @@ function ClinicalAIContent() {
       const resp = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-        // backwards-compat: envia imageDataUrls (novo) e imageDataUrl (primeira, fallback)
         body: JSON.stringify({
           imageDataUrls: imageFiles,
           imageDataUrl: imageFiles[0],
+          documents: docsPayload,
           context: fullContext,
         }),
       });
       const data = await resp.json().catch(() => ({}));
       if (!resp.ok) {
-        const msg = data?.error || `Erro ${resp.status} ao analisar imagem`;
+        const msg = data?.error || `Erro ${resp.status} ao analisar`;
         showClinicalAiError(
           msg,
           resp.status === 402 ? "credits" : resp.status === 429 ? "rate_limit" : resp.status === 401 ? "auth" : "server",
@@ -390,6 +448,7 @@ function ClinicalAIContent() {
         setMessages((prev) => [...prev, { role: "assistant", content: analysis }]);
         setOriginalImages([]);
         setImageFiles([]);
+        setDocuments([]);
         setImageContext("");
       }
     } catch (e) {
@@ -530,7 +589,7 @@ function ClinicalAIContent() {
               <ClipboardList size={11} /> Caso
             </TabsTrigger>
             <TabsTrigger value="image" className="text-[10px] gap-1 h-7 px-1 data-[state=active]:bg-primary/15 data-[state=active]:text-primary">
-              <ImageIcon size={11} /> Imagem
+              <ImageIcon size={11} /> Exames
             </TabsTrigger>
             <TabsTrigger value="plantao" className="text-[10px] gap-1 h-7 px-1 data-[state=active]:bg-destructive data-[state=active]:text-destructive-foreground">
               <Zap size={11} /> Plantão
@@ -637,7 +696,7 @@ function ClinicalAIContent() {
               <div className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-primary/10 border border-primary/20">
                 <ScanSearch size={11} className="text-primary shrink-0" />
                 <p className="text-[10px] text-primary font-medium leading-tight">
-                  Envie ou tire foto de exame de imagem (RX, TC, RM, USG, ECG, lesão).
+                  Fotos de exames (RX, TC, USG, ECG, lesão) ou PDFs (laboratório, laudos).
                 </p>
               </div>
 
@@ -645,7 +704,7 @@ function ClinicalAIContent() {
               <input
                 ref={fileInputRef}
                 type="file"
-                accept="image/*"
+                accept="image/*,application/pdf,.pdf"
                 multiple
                 className="hidden"
                 onChange={(e) => {
@@ -665,7 +724,7 @@ function ClinicalAIContent() {
                 }}
               />
 
-              {originalImages.length === 0 ? (
+              {originalImages.length === 0 && documents.length === 0 ? (
                 <div className="grid grid-cols-2 gap-2">
                   <button
                     type="button"
@@ -679,129 +738,182 @@ function ClinicalAIContent() {
                   <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
-                    className="flex flex-col items-center justify-center gap-1.5 py-4 rounded-xl border-2 border-dashed border-border bg-muted/30 hover:bg-muted/60 active:scale-[0.98] transition-all"
+                    disabled={pdfLoading}
+                    className="flex flex-col items-center justify-center gap-1.5 py-4 rounded-xl border-2 border-dashed border-border bg-muted/30 hover:bg-muted/60 active:scale-[0.98] transition-all disabled:opacity-60"
                   >
-                    <Upload size={22} className="text-muted-foreground" />
+                    {pdfLoading ? (
+                      <Loader2 size={22} className="text-muted-foreground animate-spin" />
+                    ) : (
+                      <Upload size={22} className="text-muted-foreground" />
+                    )}
                     <span className="text-[11px] font-heading font-semibold">Enviar arquivos</span>
-                    <span className="text-[9px] text-muted-foreground">Até {MAX_IMAGES} • 6MB cada</span>
+                    <span className="text-[9px] text-muted-foreground">Imagem ou PDF</span>
                   </button>
                 </div>
               ) : (
                 <>
-                  {/* Galeria do lote */}
-                  <div className="rounded-xl border border-border bg-muted/30 p-2">
-                    <div className="flex items-center justify-between mb-1.5 px-0.5">
-                      <span className="text-[10px] font-heading font-semibold text-muted-foreground">
-                        {originalImages.length} de {MAX_IMAGES} imagem{originalImages.length > 1 ? "ns" : ""}
-                      </span>
-                      {originalImages.length < MAX_IMAGES && (
-                        <div className="flex gap-1">
-                          <button
-                            type="button"
-                            onClick={() => cameraInputRef.current?.click()}
-                            className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-primary/10 text-primary text-[10px] font-heading font-semibold hover:bg-primary/20 transition-colors"
-                          >
-                            <Camera size={11} /> Foto
-                          </button>
-                          <button
-                            type="button"
-                            onClick={() => fileInputRef.current?.click()}
-                            className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-muted text-foreground text-[10px] font-heading font-semibold hover:bg-accent transition-colors"
-                          >
-                            <Upload size={11} /> Adicionar
-                          </button>
-                        </div>
-                      )}
+                  {/* Galeria de imagens */}
+                  {originalImages.length > 0 && (
+                    <div className="rounded-xl border border-border bg-muted/30 p-2">
+                      <div className="flex items-center justify-between mb-1.5 px-0.5">
+                        <span className="text-[10px] font-heading font-semibold text-muted-foreground">
+                          {originalImages.length} de {MAX_IMAGES} imagem{originalImages.length > 1 ? "ns" : ""}
+                        </span>
+                        {originalImages.length < MAX_IMAGES && (
+                          <div className="flex gap-1">
+                            <button
+                              type="button"
+                              onClick={() => cameraInputRef.current?.click()}
+                              className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-primary/10 text-primary text-[10px] font-heading font-semibold hover:bg-primary/20 transition-colors"
+                            >
+                              <Camera size={11} /> Foto
+                            </button>
+                          </div>
+                        )}
+                      </div>
+                      <div className="grid grid-cols-3 gap-1.5">
+                        {originalImages.map((src, idx) => {
+                          const preview = imageFiles[idx] || src;
+                          return (
+                            <div key={idx} className="relative aspect-square rounded-lg overflow-hidden border border-border bg-black/5 group">
+                              <img src={preview} alt={`Imagem ${idx + 1}`} className="w-full h-full object-cover" />
+                              <div className="absolute top-0.5 left-0.5 px-1.5 py-0.5 rounded bg-background/80 backdrop-blur-sm text-[9px] font-heading font-bold">
+                                {idx + 1}
+                              </div>
+                              <button
+                                type="button"
+                                onClick={() => removeImageAt(idx)}
+                                className="absolute top-0.5 right-0.5 w-5 h-5 rounded-full bg-background/90 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors"
+                                title="Remover"
+                              >
+                                <X size={11} />
+                              </button>
+                              {anonymize && (
+                                <div className="absolute bottom-0.5 left-0.5 right-0.5 flex items-center justify-center gap-0.5 px-1 py-0.5 rounded bg-emerald-500/90 text-white text-[8px] font-heading font-semibold backdrop-blur-sm">
+                                  <ShieldCheck size={8} /> Anon.
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
                     </div>
-                    <div className="grid grid-cols-3 gap-1.5">
-                      {originalImages.map((src, idx) => {
-                        const preview = imageFiles[idx] || src;
-                        return (
-                          <div key={idx} className="relative aspect-square rounded-lg overflow-hidden border border-border bg-black/5 group">
-                            <img src={preview} alt={`Imagem ${idx + 1}`} className="w-full h-full object-cover" />
-                            <div className="absolute top-0.5 left-0.5 px-1.5 py-0.5 rounded bg-background/80 backdrop-blur-sm text-[9px] font-heading font-bold">
-                              {idx + 1}
+                  )}
+
+                  {/* Galeria de PDFs */}
+                  {documents.length > 0 && (
+                    <div className="rounded-xl border border-border bg-muted/30 p-2">
+                      <div className="flex items-center justify-between mb-1.5 px-0.5">
+                        <span className="text-[10px] font-heading font-semibold text-muted-foreground">
+                          {documents.length} de {MAX_DOCS} PDF{documents.length > 1 ? "s" : ""}
+                        </span>
+                      </div>
+                      <div className="space-y-1.5">
+                        {documents.map((doc, idx) => (
+                          <div key={idx} className="flex items-center gap-2 p-2 rounded-lg border border-border bg-card/60">
+                            <div className="w-9 h-9 rounded-lg bg-rose-500/10 text-rose-600 dark:text-rose-400 flex items-center justify-center shrink-0">
+                              <FileType2 size={18} />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="text-[11px] font-heading font-semibold truncate">{doc.fileName}</div>
+                              <div className="text-[9px] text-muted-foreground">
+                                {doc.pagesAnalyzed}/{doc.pages} pág. • {Math.round(doc.text.length / 1000)}k caracteres
+                                {doc.truncated && " • truncado"}
+                              </div>
                             </div>
                             <button
                               type="button"
-                              onClick={() => removeImageAt(idx)}
-                              className="absolute top-0.5 right-0.5 w-5 h-5 rounded-full bg-background/90 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors"
+                              onClick={() => removeDocumentAt(idx)}
+                              className="w-7 h-7 rounded-full bg-background/90 border border-border flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors shrink-0"
                               title="Remover"
                             >
-                              <X size={11} />
+                              <X size={12} />
                             </button>
-                            {anonymize && (
-                              <div className="absolute bottom-0.5 left-0.5 right-0.5 flex items-center justify-center gap-0.5 px-1 py-0.5 rounded bg-emerald-500/90 text-white text-[8px] font-heading font-semibold backdrop-blur-sm">
-                                <ShieldCheck size={8} /> Anon.
-                              </div>
-                            )}
                           </div>
-                        );
-                      })}
+                        ))}
+                      </div>
                     </div>
+                  )}
+
+                  {/* Botões para adicionar mais */}
+                  <div className="flex gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => fileInputRef.current?.click()}
+                      disabled={pdfLoading || (originalImages.length >= MAX_IMAGES && documents.length >= MAX_DOCS)}
+                      className="flex-1 flex items-center justify-center gap-1.5 py-2 rounded-lg border border-dashed border-border bg-muted/30 hover:bg-muted/60 text-[11px] font-heading font-semibold transition-all disabled:opacity-50"
+                    >
+                      {pdfLoading ? (
+                        <><Loader2 size={13} className="animate-spin" /> Processando PDF...</>
+                      ) : (
+                        <><Upload size={13} /> Adicionar imagem ou PDF</>
+                      )}
+                    </button>
                   </div>
 
-                  {/* Anonymization controls */}
-                  <div className="rounded-xl border border-border bg-card/60 p-2.5 space-y-2">
-                    <label className="flex items-center justify-between gap-2 cursor-pointer">
-                      <span className="flex items-center gap-1.5 text-[11px] font-heading font-semibold">
-                        <ShieldCheck size={13} className="text-emerald-600 dark:text-emerald-400" />
-                        Anonimizar dados sensíveis
-                      </span>
-                      <button
-                        type="button"
-                        role="switch"
-                        aria-checked={anonymize}
-                        onClick={() => setAnonymize((v) => !v)}
-                        className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${
-                          anonymize ? "bg-primary" : "bg-muted"
-                        }`}
-                      >
-                        <span
-                          className={`inline-block h-4 w-4 transform rounded-full bg-background shadow transition-transform ${
-                            anonymize ? "translate-x-4" : "translate-x-0.5"
+                  {/* Anonymization controls — só faz sentido com imagens */}
+                  {originalImages.length > 0 && (
+                    <div className="rounded-xl border border-border bg-card/60 p-2.5 space-y-2">
+                      <label className="flex items-center justify-between gap-2 cursor-pointer">
+                        <span className="flex items-center gap-1.5 text-[11px] font-heading font-semibold">
+                          <ShieldCheck size={13} className="text-emerald-600 dark:text-emerald-400" />
+                          Anonimizar dados sensíveis
+                        </span>
+                        <button
+                          type="button"
+                          role="switch"
+                          aria-checked={anonymize}
+                          onClick={() => setAnonymize((v) => !v)}
+                          className={`relative inline-flex h-5 w-9 shrink-0 items-center rounded-full transition-colors ${
+                            anonymize ? "bg-primary" : "bg-muted"
                           }`}
-                        />
-                      </button>
-                    </label>
-                    <p className="text-[9px] text-muted-foreground leading-tight">
-                      Cobre nome, prontuário, data e instituição (faixas superior e inferior) em todas as imagens do lote.
-                    </p>
-                    {anonymize && (
-                      <div className="grid grid-cols-2 gap-2 pt-1">
-                        <div>
-                          <div className="flex items-center justify-between text-[9px] text-muted-foreground mb-0.5">
-                            <span>Topo</span>
-                            <span className="font-mono">{anonTopPct}%</span>
-                          </div>
-                          <input
-                            type="range"
-                            min={0}
-                            max={30}
-                            step={1}
-                            value={anonTopPct}
-                            onChange={(e) => setAnonTopPct(Number(e.target.value))}
-                            className="w-full accent-primary"
+                        >
+                          <span
+                            className={`inline-block h-4 w-4 transform rounded-full bg-background shadow transition-transform ${
+                              anonymize ? "translate-x-4" : "translate-x-0.5"
+                            }`}
                           />
-                        </div>
-                        <div>
-                          <div className="flex items-center justify-between text-[9px] text-muted-foreground mb-0.5">
-                            <span>Rodapé</span>
-                            <span className="font-mono">{anonBottomPct}%</span>
+                        </button>
+                      </label>
+                      <p className="text-[9px] text-muted-foreground leading-tight">
+                        Cobre nome, prontuário, data e instituição (faixas superior e inferior) em todas as imagens.
+                      </p>
+                      {anonymize && (
+                        <div className="grid grid-cols-2 gap-2 pt-1">
+                          <div>
+                            <div className="flex items-center justify-between text-[9px] text-muted-foreground mb-0.5">
+                              <span>Topo</span>
+                              <span className="font-mono">{anonTopPct}%</span>
+                            </div>
+                            <input
+                              type="range"
+                              min={0}
+                              max={30}
+                              step={1}
+                              value={anonTopPct}
+                              onChange={(e) => setAnonTopPct(Number(e.target.value))}
+                              className="w-full accent-primary"
+                            />
                           </div>
-                          <input
-                            type="range"
-                            min={0}
-                            max={30}
-                            step={1}
-                            value={anonBottomPct}
-                            onChange={(e) => setAnonBottomPct(Number(e.target.value))}
-                            className="w-full accent-primary"
-                          />
+                          <div>
+                            <div className="flex items-center justify-between text-[9px] text-muted-foreground mb-0.5">
+                              <span>Rodapé</span>
+                              <span className="font-mono">{anonBottomPct}%</span>
+                            </div>
+                            <input
+                              type="range"
+                              min={0}
+                              max={30}
+                              step={1}
+                              value={anonBottomPct}
+                              onChange={(e) => setAnonBottomPct(Number(e.target.value))}
+                              className="w-full accent-primary"
+                            />
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
+                      )}
+                    </div>
+                  )}
                 </>
               )}
 
@@ -816,13 +928,13 @@ function ClinicalAIContent() {
               <Button
                 type="button"
                 onClick={handleImageAnalyze}
-                disabled={imageFiles.length === 0 || imageAnalyzing}
+                disabled={(imageFiles.length === 0 && documents.length === 0) || imageAnalyzing || pdfLoading}
                 className="w-full h-9 text-xs rounded-xl"
               >
                 {imageAnalyzing ? (
-                  <><Loader2 size={14} className="animate-spin mr-1.5" /> Analisando {imageFiles.length > 1 ? `${imageFiles.length} imagens` : "imagem"}...</>
+                  <><Loader2 size={14} className="animate-spin mr-1.5" /> Analisando...</>
                 ) : (
-                  <><ScanSearch size={14} className="mr-1.5" /> Analisar {imageFiles.length > 1 ? `${imageFiles.length} imagens` : "imagem"}</>
+                  <><ScanSearch size={14} className="mr-1.5" /> Analisar {imageFiles.length + documents.length > 1 ? `${imageFiles.length + documents.length} arquivos` : "arquivo"}</>
                 )}
               </Button>
 
