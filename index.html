@@ -8,6 +8,14 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="PULSO" />
 
+    <!-- Cache-busting fallback for environments without a Service Worker.
+         Tells browsers (and most CDNs that respect it) never to keep the HTML shell.
+         Hashed JS/CSS assets remain long-cacheable; only this entry document is volatile. -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="pulso-build-id" content="__BUILD_ID__" />
+
     <title>PULSO — Protocolos Médicos e Calculadora Médica para Plantão</title>
     <meta name="description" content="App de protocolos médicos para emergência e plantão. +2.000 medicamentos, 282 protocolos, calculadoras clínicas, IA médica e prescrições prontas. Decida em segundos.">
     <meta name="author" content="PULSO - Emergência Médica" />
@@ -301,6 +309,44 @@
             }
           }
         } catch(e) {}
+      })();
+    </script>
+    <script>
+      // Pre-React no-SW cache-busting fallback.
+      // Runs in EVERY environment (incognito, SW disabled, old browsers, CDNs that
+      // ignore Cache-Control). Compares the BUILD_ID stamped into this HTML against
+      // the live /version.json. On mismatch, hard-reloads with a versioned query
+      // string so the browser pulls a fresh shell instead of a cached one.
+      (function(){
+        try {
+          var meta = document.querySelector('meta[name="pulso-build-id"]');
+          var current = meta ? meta.getAttribute('content') : '';
+          // If the token wasn't replaced, we're in dev/preview — skip.
+          if (!current || current.indexOf('__BUILD') === 0) return;
+
+          // Avoid reload loops: if URL already has ?v= within last 60s, bail.
+          var url = new URL(location.href);
+          var lastBust = parseInt(url.searchParams.get('v') || '0', 10);
+          if (lastBust && (Date.now() - lastBust) < 60000) return;
+
+          fetch('/version.json?_=' + Date.now(), { cache: 'no-store', credentials: 'omit' })
+            .then(function(r){ return r.ok ? r.json() : null; })
+            .then(function(data){
+              if (!data || !data.buildId || data.buildId === current) return;
+              // Stale shell detected — purge whatever caches exist and hard reload.
+              try {
+                if ('caches' in window) {
+                  caches.keys().then(function(keys){
+                    keys.forEach(function(k){ caches.delete(k); });
+                  });
+                }
+              } catch(e) {}
+              var next = new URL(location.href);
+              next.searchParams.set('v', Date.now().toString());
+              location.replace(next.toString());
+            })
+            .catch(function(){ /* offline or blocked — ignore */ });
+        } catch(e) { /* never break boot */ }
       })();
     </script>
     <script type="module" src="/src/main.tsx"></script>

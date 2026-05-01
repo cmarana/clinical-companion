@@ -17,6 +17,14 @@ const BUILD_ID =
 const versionPlugin = (): Plugin => ({
   name: "pulso-version-stamp",
   apply: "build",
+  // Stamp BUILD_ID into index.html so the inline pre-React probe
+  // (the no-SW fallback) can detect stale HTML before the bundle loads.
+  transformIndexHtml: {
+    order: "post",
+    handler(html) {
+      return html.replace(/__BUILD_ID__/g, BUILD_ID);
+    },
+  },
   generateBundle() {
     this.emitFile({
       type: "asset",
