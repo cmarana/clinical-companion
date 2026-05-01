@@ -1074,6 +1074,35 @@ function ClinicalAIContent() {
                 maxLength={500}
               />
 
+              {(imageFiles.length > 0 || documents.length > 0) && (
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={async () => {
+                    try {
+                      const count = await downloadAnonymizedAttachments({
+                        images: imageFiles,
+                        pdfs: documents.map((d) => ({ fileName: d.fileName, blob: d.originalBlob })),
+                      });
+                      if (count === 0) {
+                        toast.error("Nenhum anexo disponível para baixar.");
+                      } else {
+                        toast.success(`ZIP gerado com ${count} arquivo(s) ${anonymize ? "anonimizado(s)" : ""}.`);
+                      }
+                    } catch (e) {
+                      console.error(e);
+                      toast.error("Falha ao gerar o ZIP.");
+                    }
+                  }}
+                  disabled={imageAnalyzing || pdfLoading}
+                  className="w-full h-9 text-xs rounded-xl"
+                  title="Baixar imagens (com faixas pretas) e PDFs em um único ZIP local"
+                >
+                  <Download size={14} className="mr-1.5" />
+                  Baixar anexos {anonymize && imageFiles.length > 0 ? "anonimizados" : ""} (.zip)
+                </Button>
+              )}
+
               <Button
                 type="button"
                 onClick={handleImageAnalyze}
