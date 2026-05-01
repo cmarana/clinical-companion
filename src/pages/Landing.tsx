@@ -8,7 +8,8 @@ import {
   Users, Lock, RefreshCw, Download, Search, Smartphone,
   ChevronDown, HelpCircle, ClipboardList, Baby, Beaker,
   Scissors, Eye, HeartPulse, Timer, Bookmark, Globe,
-  ScrollText, Layers, ListChecks, GraduationCap, FlaskConical, LogIn
+  ScrollText, Layers, ListChecks, GraduationCap, FlaskConical, LogIn,
+  MessageSquare, ScanLine, Image as ImageIcon
 } from "lucide-react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
