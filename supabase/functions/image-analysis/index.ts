@@ -139,9 +139,10 @@ serve(async (req) => {
 
     const imageDataUrl: string | undefined = body.imageDataUrl;
     const imageDataUrls: unknown = body.imageDataUrls;
+    const documentsRaw: unknown = body.documents;
     const context: string = typeof body.context === "string" ? body.context.slice(0, 2000) : "";
 
-    // Normaliza para array (suporta lote + retrocompatibilidade)
+    // Imagens
     let images: string[] = [];
     if (Array.isArray(imageDataUrls)) {
       images = imageDataUrls.filter(
@@ -151,8 +152,25 @@ serve(async (req) => {
       images = [imageDataUrl];
     }
 
-    if (images.length === 0) {
-      return new Response(JSON.stringify({ error: "Nenhuma imagem válida fornecida" }), {
+    // Documentos PDF (texto extraído no client)
+    interface DocPayload { fileName: string; pages: number; pagesAnalyzed: number; truncated?: boolean; text: string }
+    let documents: DocPayload[] = [];
+    if (Array.isArray(documentsRaw)) {
+      documents = documentsRaw
+        .filter((d): d is Record<string, unknown> => !!d && typeof d === "object")
+        .map((d) => ({
+          fileName: typeof d.fileName === "string" ? d.fileName.slice(0, 200) : "documento.pdf",
+          pages: typeof d.pages === "number" ? d.pages : 0,
+          pagesAnalyzed: typeof d.pagesAnalyzed === "number" ? d.pagesAnalyzed : 0,
+          truncated: !!d.truncated,
+          text: typeof d.text === "string" ? d.text.slice(0, 80_000) : "",
+        }))
+        .filter((d) => d.text.trim().length >= 20)
+        .slice(0, 3);
+    }
+
+    if (images.length === 0 && documents.length === 0) {
+      return new Response(JSON.stringify({ error: "Nenhuma imagem ou documento válido fornecido" }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
@@ -166,21 +184,22 @@ serve(async (req) => {
       });
     }
 
-    // Limite individual ~6MB base64 e payload total ~25MB
-    const totalSize = images.reduce((acc, u) => acc + u.length, 0);
-    for (const u of images) {
-      if (u.length > 8_500_000) {
+    if (images.length > 0) {
+      const totalSize = images.reduce((acc, u) => acc + u.length, 0);
+      for (const u of images) {
+        if (u.length > 8_500_000) {
+          return new Response(
+            JSON.stringify({ error: "Uma das imagens excede 6MB. Reduza a resolução." }),
+            { status: 413, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+          );
+        }
+      }
+      if (totalSize > 35_000_000) {
         return new Response(
-          JSON.stringify({ error: "Uma das imagens excede 6MB. Reduza a resolução." }),
+          JSON.stringify({ error: "Lote muito grande (>25MB total). Reduza imagens ou envie menos." }),
           { status: 413, headers: { ...corsHeaders, "Content-Type": "application/json" } },
         );
       }
-    }
-    if (totalSize > 35_000_000) {
-      return new Response(
-        JSON.stringify({ error: "Lote muito grande (>25MB total). Reduza imagens ou envie menos." }),
-        { status: 413, headers: { ...corsHeaders, "Content-Type": "application/json" } },
-      );
     }
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
@@ -191,22 +210,45 @@ serve(async (req) => {
       });
     }
 
-    const isBatch = images.length > 1;
-    const batchHeader = isBatch
-      ? `Lote com ${images.length} imagens da MESMA investigação clínica enviadas em sequência (numeradas de 1 a ${images.length}). Analise como SÉRIE: descreva achados de cada imagem individualmente e depois faça uma síntese integrada.\n\n`
-      : "";
+    // Seleciona prompt baseado no tipo de material
+    const hasImages = images.length > 0;
+    const hasDocs = documents.length > 0;
+    const systemPrompt = hasImages && hasDocs
+      ? SYSTEM_PROMPT_MIXED
+      : hasImages
+        ? SYSTEM_PROMPT_IMAGE
+        : SYSTEM_PROMPT_DOCUMENT;
 
-    const userText = batchHeader + (context.trim()
-      ? `Contexto clínico fornecido pelo médico:\n${context}\n\nAnalise ${isBatch ? "as imagens" : "a imagem"} em anexo seguindo o formato obrigatório.`
-      : `Analise ${isBatch ? "as imagens" : "a imagem"} em anexo seguindo o formato obrigatório. Sem contexto clínico fornecido.`);
+    const isBatchImg = images.length > 1;
+    const headerParts: string[] = [];
+    if (hasImages && isBatchImg) {
+      headerParts.push(`Lote com ${images.length} imagens da MESMA investigação — analise como sequência.`);
+    }
+    if (hasDocs) {
+      headerParts.push(`${documents.length} documento(s) PDF anexado(s) (texto já extraído abaixo).`);
+    }
+    const header = headerParts.length ? headerParts.join(" ") + "\n\n" : "";
 
-    // Monta content multimodal: 1 texto + N imagens
+    const userText = header + (context.trim()
+      ? `Contexto clínico fornecido pelo médico:\n${context}\n\nAnalise os materiais em anexo seguindo o formato obrigatório.`
+      : `Analise os materiais em anexo seguindo o formato obrigatório. Sem contexto clínico fornecido.`);
+
+    // Monta content multimodal
     const userContent: Array<Record<string, unknown>> = [{ type: "text", text: userText }];
+
     images.forEach((url, idx) => {
-      if (isBatch) {
+      if (isBatchImg) {
         userContent.push({ type: "text", text: `\n--- Imagem ${idx + 1} de ${images.length} ---` });
       }
       userContent.push({ type: "image_url", image_url: { url } });
+    });
+
+    documents.forEach((doc, idx) => {
+      const truncNote = doc.truncated ? " (truncado)" : "";
+      userContent.push({
+        type: "text",
+        text: `\n--- Documento ${idx + 1}${hasDocs && documents.length > 1 ? ` de ${documents.length}` : ""}: ${doc.fileName} (${doc.pagesAnalyzed}/${doc.pages} pág.${truncNote}) ---\n\n${doc.text}`,
+      });
     });
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
