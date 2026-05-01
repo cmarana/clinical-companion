@@ -179,6 +179,32 @@
         </svg>
       </div>
     </div>
+    <div id="root"></div>
+    <script>
+      // Hide splash as soon as React mounts the app, with a safety timeout
+      (function(){
+        var splash = document.getElementById('pulso-splash');
+        if (!splash) return;
+        var hidden = false;
+        function hide(){
+          if (hidden) return; hidden = true;
+          splash.classList.add('pulso-hide');
+          setTimeout(function(){ splash && splash.parentNode && splash.parentNode.removeChild(splash); }, 400);
+        }
+        // Watch for React mounting content into #root
+        var root = document.getElementById('root');
+        if (root && 'MutationObserver' in window) {
+          var obs = new MutationObserver(function(){
+            if (root.childElementCount > 0) { obs.disconnect(); hide(); }
+          });
+          obs.observe(root, { childList: true });
+        }
+        // Safety nets
+        window.addEventListener('load', function(){ setTimeout(hide, 300); });
+        setTimeout(hide, 6000);
+        window.__pulsoHideSplash = hide;
+      })();
+    </script>
     <script>
       // Emergency SW cleanup for preview/iframe — runs before React
       (function(){
