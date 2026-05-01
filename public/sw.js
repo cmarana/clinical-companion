@@ -1,5 +1,9 @@
-const CACHE_NAME = 'medcore-v7';
-const CONTENT_CACHE = 'medcore-content-v1';
+// __BUILD_ID__ is replaced by the Vite versionPlugin at build time.
+// In dev / unbuilt environments it stays as the literal token, which is fine —
+// the SW only runs in production where the replacement always happens.
+const BUILD_ID = '__BUILD_ID__';
+const CACHE_NAME = 'pulso-' + BUILD_ID;
+const CONTENT_CACHE = 'pulso-content-v1';
 const STATIC_ASSETS = [
   '/',
   '/offline.html',
