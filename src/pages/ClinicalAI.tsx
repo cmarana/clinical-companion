@@ -385,8 +385,8 @@ function ClinicalAIContent() {
   }, [originalImages, anonymize, anonTopPct, anonBottomPct, applyAnonymization]);
 
   const handleImageAnalyze = async () => {
-    if (imageFiles.length === 0) {
-      toast.error("Anexe ao menos uma imagem");
+    if (imageFiles.length === 0 && documents.length === 0) {
+      toast.error("Anexe ao menos uma imagem ou PDF");
       return;
     }
     setImageAnalyzing(true);
@@ -397,11 +397,28 @@ function ClinicalAIContent() {
     if (patientCtx.weight) ctxParts.push(`Peso: ${patientCtx.weight}kg`);
     if (patientCtx.scenario) ctxParts.push(`Cenário: ${patientCtx.scenario}`);
     if (imageContext.trim()) ctxParts.push(`Indicação clínica: ${imageContext.trim()}`);
-    if (anonymize) ctxParts.push("Imagens anonimizadas (faixas superior/inferior cobertas — ignore áreas pretas)");
+    if (imageFiles.length > 0 && anonymize) ctxParts.push("Imagens anonimizadas (faixas superior/inferior cobertas — ignore áreas pretas)");
     if (imageFiles.length > 1) ctxParts.push(`Lote com ${imageFiles.length} imagens da mesma investigação — analise como sequência`);
+    if (documents.length > 0) ctxParts.push(`${documents.length} PDF(s) anexado(s) com texto extraído`);
     const fullContext = ctxParts.join(" | ");
 
-    const userLabel = `📷 **Análise de ${imageFiles.length > 1 ? `${imageFiles.length} imagens (lote)` : "imagem"} solicitada**${fullContext ? `\n${fullContext}` : ""}`;
+    // Monta payload de documentos (texto extraído dos PDFs)
+    const docsPayload = documents.map((d) => ({
+      fileName: d.fileName,
+      pages: d.pages,
+      pagesAnalyzed: d.pagesAnalyzed,
+      truncated: d.truncated,
+      text: d.text,
+    }));
+
+    const parts: string[] = [];
+    if (imageFiles.length > 0) parts.push(`${imageFiles.length} imagem(ns)`);
+    if (documents.length > 0) parts.push(`${documents.length} PDF(s)`);
+    const userLabel = `📎 **Análise solicitada — ${parts.join(" + ")}**${
+      documents.length > 0
+        ? `\n${documents.map((d) => `📄 ${d.fileName} (${d.pagesAnalyzed}/${d.pages} pág.)`).join("\n")}`
+        : ""
+    }${fullContext ? `\n${fullContext}` : ""}`;
     setMessages((prev) => [...prev, { role: "user", content: userLabel }]);
 
     try {
@@ -411,16 +428,16 @@ function ClinicalAIContent() {
       const resp = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-        // backwards-compat: envia imageDataUrls (novo) e imageDataUrl (primeira, fallback)
         body: JSON.stringify({
           imageDataUrls: imageFiles,
           imageDataUrl: imageFiles[0],
+          documents: docsPayload,
           context: fullContext,
         }),
       });
       const data = await resp.json().catch(() => ({}));
       if (!resp.ok) {
-        const msg = data?.error || `Erro ${resp.status} ao analisar imagem`;
+        const msg = data?.error || `Erro ${resp.status} ao analisar`;
         showClinicalAiError(
           msg,
           resp.status === 402 ? "credits" : resp.status === 429 ? "rate_limit" : resp.status === 401 ? "auth" : "server",
@@ -431,6 +448,7 @@ function ClinicalAIContent() {
         setMessages((prev) => [...prev, { role: "assistant", content: analysis }]);
         setOriginalImages([]);
         setImageFiles([]);
+        setDocuments([]);
         setImageContext("");
       }
     } catch (e) {
