@@ -110,8 +110,43 @@
         --pulso-letter-stop-2: #0a1628;
         --pulso-ecg-stroke: #3aa9ff;
       }
-      #pulso-splash { background: var(--pulso-bg); }
-      #pulso-splash.pulso-hide { opacity: 0; visibility: hidden; pointer-events: none; }
+      #pulso-splash {
+        background: var(--pulso-bg);
+        transition: opacity 520ms cubic-bezier(.22,.61,.36,1), visibility 0s linear 520ms;
+        will-change: opacity;
+      }
+      #pulso-splash.pulso-hide {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 520ms cubic-bezier(.22,.61,.36,1), visibility 0s linear 520ms;
+      }
+      #pulso-splash.pulso-hide .pulso-logo,
+      #pulso-splash.pulso-hide .pulso-name,
+      #pulso-splash.pulso-hide .pulso-tag,
+      #pulso-splash.pulso-hide .pulso-ecg {
+        transform: scale(.96);
+        opacity: 0;
+        transition: transform 520ms cubic-bezier(.22,.61,.36,1), opacity 380ms ease-out;
+      }
+      /* Bloqueia scroll/jank enquanto o splash está visível */
+      html.pulso-splash-active, html.pulso-splash-active body { overflow: hidden; }
+      /* Fade-in sutil do app por baixo do splash — sincronizado com o fade-out */
+      #root.pulso-app-enter {
+        animation: pulso-app-enter 560ms cubic-bezier(.22,.61,.36,1) both;
+      }
+      @keyframes pulso-app-enter {
+        from { opacity: 0; transform: scale(.992); }
+        to   { opacity: 1; transform: scale(1); }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        #pulso-splash, #pulso-splash.pulso-hide { transition: opacity 200ms linear, visibility 0s linear 200ms; }
+        #pulso-splash.pulso-hide .pulso-logo,
+        #pulso-splash.pulso-hide .pulso-name,
+        #pulso-splash.pulso-hide .pulso-tag,
+        #pulso-splash.pulso-hide .pulso-ecg { transform: none; transition: opacity 200ms linear; }
+        #root.pulso-app-enter { animation: none; }
+      }
 
       /* Glow radial atrás da logo */
       #pulso-splash::before {
@@ -356,12 +391,25 @@
         var startedAt = Date.now();
         var MIN_SHOW_MS = 350;
 
+        // Trava o scroll enquanto o splash está visível para evitar layout shift
+        document.documentElement.classList.add('pulso-splash-active');
+
         function doHide(){
           if (hidden) return; hidden = true;
+          // Dispara a entrada suave do app (fade + scale sutil) no MESMO frame
+          // do início do fade-out do splash — sem layout shift, ambos cobrem
+          // a mesma área (root é normal flow, splash é position:fixed).
+          var root = document.getElementById('root');
+          if (root) {
+            root.classList.add('pulso-app-enter');
+            // Remove a classe após a animação para não interferir com o app
+            setTimeout(function(){ root.classList.remove('pulso-app-enter'); }, 700);
+          }
           splash.classList.add('pulso-hide');
           setTimeout(function(){
             if (splash && splash.parentNode) splash.parentNode.removeChild(splash);
-          }, 400);
+            document.documentElement.classList.remove('pulso-splash-active');
+          }, 560);
         }
         function hide(){
           var elapsed = Date.now() - startedAt;
