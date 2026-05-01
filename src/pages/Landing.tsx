@@ -272,7 +272,10 @@ export default function Landing() {
   const themeIcon = theme === "oled" ? <Eclipse size={16} /> : theme === "dark" ? <Sun size={16} /> : <Moon size={16} />;
 
   return (
-    <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
+    <div
+      className="min-h-screen bg-background text-foreground overflow-x-hidden"
+      style={{ paddingBottom: "calc(env(safe-area-inset-bottom) + 96px)" }}
+    >
 
       {/* ═══ NAVBAR ═══════════════════════════════════════════ */}
       <nav className="sticky top-safe z-nav backdrop-blur-xl bg-background/80 border-b border-border/40 pt-safe-0">
@@ -966,7 +969,7 @@ export default function Landing() {
 
       {/* ═══ FOOTER ═══════════════════════════════════════════ */}
       <footer className="border-t border-border/30 bg-muted/30">
-        <div className="max-w-6xl mx-auto px-4 py-12 sm:py-16">
+        <div className="max-w-6xl mx-auto px-4 py-12 sm:py-16 pb-20 sm:pb-24">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {/* Brand */}
             <div className="sm:col-span-2 lg:col-span-1">
