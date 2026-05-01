@@ -1,7 +1,38 @@
-import { defineConfig, loadEnv } from "vite";
+import { defineConfig, loadEnv, type Plugin } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
+import fs from "fs";
 import { componentTagger } from "lovable-tagger";
+
+// Build-time version stamp. Used by the SW + client to detect new releases
+// and force cache invalidation. Changes on every build.
+const BUILD_ID =
+  process.env.BUILD_ID ||
+  process.env.VERCEL_GIT_COMMIT_SHA ||
+  process.env.COMMIT_REF ||
+  `${Date.now()}`;
+
+// Plugin: writes /version.json into the final build and injects BUILD_ID
+// into the service worker so its cache name rotates per release.
+const versionPlugin = (): Plugin => ({
+  name: "pulso-version-stamp",
+  apply: "build",
+  generateBundle() {
+    this.emitFile({
+      type: "asset",
+      fileName: "version.json",
+      source: JSON.stringify({ buildId: BUILD_ID, builtAt: new Date().toISOString() }),
+    });
+  },
+  closeBundle() {
+    // Stamp the static SW with the build id (replaces __BUILD_ID__ token).
+    const swPath = path.resolve(__dirname, "dist", "sw.js");
+    if (fs.existsSync(swPath)) {
+      const src = fs.readFileSync(swPath, "utf8");
+      fs.writeFileSync(swPath, src.replace(/__BUILD_ID__/g, BUILD_ID), "utf8");
+    }
+  },
+});
 
 export default defineConfig(({ mode }) => {
   const env = loadEnv(mode, process.cwd(), "");
