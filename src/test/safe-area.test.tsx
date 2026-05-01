@@ -1,26 +1,16 @@
 /**
  * Verificação automatizada de safe-areas (iPhone notch / Android status bar).
  *
- * Garantias cobertas:
- *  1. Os tokens CSS de safe-area existem em src/index.css e usam env(safe-area-inset-*).
- *  2. TopBar renderiza com a classe `safe-area-top` (padding-top respeitando o notch).
- *  3. AppLayout reserva espaço inferior com `pb-nav` (home indicator iOS / nav Android)
- *     e o header desktop também aplica `safe-area-top`.
- *  4. Home aplica padding-top usando env(safe-area-inset-top) no header sticky.
- *  5. AdminAiCosts usa as utilities `top-safe` + `pt-safe-0` no header sticky.
+ * Estratégia: snapshot estático sobre o código-fonte. Garante que TopBar, Home,
+ * AdminAiCosts e AppLayout NUNCA percam o tratamento de safe-area que evita
+ * sobreposição com relógio, bateria e barra de status (iOS e Android).
  *
- * Estes testes são independentes de plataforma — validam a *contratação* de estilos
- * que o CSS já resolve em iOS (env nativo) e Android (Capacitor StatusBar overlay
- * + WebView env). Quebrar qualquer asserção indica risco de sobreposição com a
- * barra de status / relógio / bateria.
+ * Quebrar qualquer asserção indica risco de o conteúdo passar por baixo da
+ * status bar nativa em PWA standalone, Capacitor iOS ou Capacitor Android.
  */
-import { describe, it, expect, beforeAll } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { describe, it, expect } from "vitest";
 import { readFileSync } from "fs";
 import { resolve } from "path";
-import { MemoryRouter } from "react-router-dom";
-import { ThemeProvider } from "@/contexts/ThemeContext";
-import TopBar from "@/components/TopBar";
 
 const read = (p: string) => readFileSync(resolve(process.cwd(), p), "utf8");
 
@@ -39,50 +29,36 @@ describe("Safe area · tokens CSS globais (index.css)", () => {
     expect(css).toMatch(/\.safe-area-top\s*\{[^}]*padding-top:\s*var\(--safe-top\)/);
     expect(css).toMatch(/\.pt-safe\s*\{[^}]*var\(--safe-top\)/);
     expect(css).toMatch(/\.top-safe\s*\{[^}]*top:\s*var\(--safe-top\)/);
-    expect(css).toMatch(/\.top-after-topbar\s*\{[^}]*calc\(var\(--safe-top\)\s*\+\s*var\(--topbar-h\)\)/);
+    expect(css).toMatch(
+      /\.top-after-topbar\s*\{[^}]*calc\(var\(--safe-top\)\s*\+\s*var\(--topbar-h\)\)/
+    );
     expect(css).toMatch(/\.pb-nav\s*\{[^}]*var\(--safe-bottom\)/);
   });
 });
 
 describe("Safe area · TopBar", () => {
-  beforeAll(() => {
-    // jsdom não implementa matchMedia para o ThemeProvider
-    if (!window.matchMedia) {
-      // @ts-ignore
-      window.matchMedia = () => ({
-        matches: false, media: "", onchange: null,
-        addListener: () => {}, removeListener: () => {},
-        addEventListener: () => {}, removeEventListener: () => {},
-        dispatchEvent: () => false,
-      });
-    }
+  const src = read("src/components/TopBar.tsx");
+
+  it("<header> usa sticky top-0 + safe-area-top (não fica sob status bar)", () => {
+    // Header é renderizado uma vez; valida classes essenciais juntas
+    expect(src).toMatch(
+      /<header[\s\S]*?className=\{cn\(\s*["'][^"']*\bsticky\b[^"']*\btop-0\b[^"']*\bsafe-area-top\b/
+    );
   });
 
-  it("aplica safe-area-top + sticky top-0 no <header> para não passar por baixo da status bar", () => {
-    render(
-      <MemoryRouter initialEntries={["/algum"]}>
-        <ThemeProvider>
-          <TopBar title="Teste" />
-        </ThemeProvider>
-      </MemoryRouter>
-    );
-    const header = screen.getByRole("banner");
-    expect(header).toBeInTheDocument();
-    const cls = header.className;
-    expect(cls).toMatch(/\bsafe-area-top\b/);
-    expect(cls).toMatch(/\bsticky\b/);
-    expect(cls).toMatch(/\btop-0\b/);
+  it("usa top-after-topbar para overlays sticky abaixo do header", () => {
+    expect(src).toMatch(/\btop-after-topbar\b/);
   });
 });
 
 describe("Safe area · AppLayout (mobile + desktop)", () => {
   const src = read("src/components/AppLayout.tsx");
 
-  it("header desktop usa safe-area-top", () => {
+  it("header desktop aplica safe-area-top", () => {
     expect(src).toMatch(/<header[^>]*className="[^"]*\bsafe-area-top\b/);
   });
 
-  it("<main> reserva espaço inferior com pb-nav (home indicator + bottom nav)", () => {
+  it("<main> usa pb-nav (reserva para bottom nav + home indicator)", () => {
     expect(src).toMatch(/<main[^>]*className="[^"]*\bpb-nav\b/);
   });
 });
@@ -91,19 +67,24 @@ describe("Safe area · Home (header institucional)", () => {
   const src = read("src/pages/Home.tsx");
 
   it("container raiz aplica paddingTop com env(safe-area-inset-top)", () => {
-    expect(src).toMatch(/paddingTop:\s*["']calc\(env\(safe-area-inset-top[^)]*\)\s*\+\s*0\.75rem\)["']/);
+    expect(src).toMatch(
+      /paddingTop:\s*["']calc\(env\(safe-area-inset-top[^)]*\)\s*\+\s*0\.75rem\)["']/
+    );
   });
 
-  it("header sticky usa top: env(safe-area-inset-top) para não cobrir o relógio", () => {
-    expect(src).toMatch(/top:\s*["']env\(safe-area-inset-top[^)]*\)["']/);
-    expect(src).toMatch(/className="[^"]*\bsticky\b[^"]*"\s*\n?\s*style=\{\{\s*top:\s*["']env\(safe-area-inset-top/);
+  it("header sticky usa top: env(safe-area-inset-top) (não cobre relógio/bateria)", () => {
+    expect(src).toMatch(
+      /className="[^"]*\bsticky\b[^"]*"\s*\n?\s*style=\{\{\s*top:\s*["']env\(safe-area-inset-top[^)]*\)["']/
+    );
   });
 });
 
 describe("Safe area · AdminAiCosts", () => {
   const src = read("src/pages/AdminAiCosts.tsx");
 
-  it("header sticky usa top-safe + pt-safe-0", () => {
-    expect(src).toMatch(/className="[^"]*\bsticky\b[^"]*\btop-safe\b[^"]*\bpt-safe-0\b/);
+  it("header sticky combina top-safe + pt-safe-0", () => {
+    expect(src).toMatch(
+      /className="[^"]*\bsticky\b[^"]*\btop-safe\b[^"]*\bpt-safe-0\b/
+    );
   });
 });
