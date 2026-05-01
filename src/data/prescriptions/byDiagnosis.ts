@@ -113,7 +113,7 @@ Grave:
     id: "rx-iam-diag",
     title: "IAM com Supra de ST",
     type: "Prescrição no Pronto Socorro",
-    prescription: `1. AAS 200mg VO (mastigar)
+    prescription: `1. AAS 300mg VO (mastigar)
 2. Clopidogrel 300mg VO
 3. Heparina não fracionada 60UI/kg EV bolus → 12UI/kg/h em BIC
 4. Morfina 2-4mg EV se dor refratária

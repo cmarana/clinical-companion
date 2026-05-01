@@ -31,7 +31,7 @@ export const symptomGuides: SymptomGuide[] = [
       "Hemograma, função renal, eletrólitos",
     ],
     conduct: `1. MOV (Monitor, Oxigênio se SpO2 <94%, Veia)
-2. AAS 200mg mastigado se suspeita de SCA
+2. AAS 300mg mastigado se suspeita de SCA
 3. Nitrato SL se dor anginosa (exceto se PAS <100, FC <50 ou uso de sildenafil)
 4. Morfina 2-4mg EV se dor refratária
 5. Anticoagulação conforme diagnóstico

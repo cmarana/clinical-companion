@@ -184,7 +184,7 @@ Investigar se >4 semanas:
 2. Troponina + CK-MB
 3. RX tórax
 4. Monitorização contínua
-5. AAS 200mg VO (mastigar) se suspeita de SCA
+5. AAS 300mg VO (mastigar) se suspeita de SCA
 6. Nitroglicerina SL (se PA >100 e sem CI)
 7. Morfina 2-4mg EV se dor refratária
 8. O2 se SpO2 <94%
@@ -985,7 +985,7 @@ ICTERÍCIA PÓS-HEPÁTICA (BD elevada):
 1. ECG 12 derivações (<10min da chegada)
 2. Sinais vitais + SpO2
 3. Acesso venoso + coleta: Troponina, hemograma, Cr, eletrólitos
-4. AAS 200mg mastigar (se SCA não descartada)
+4. AAS 300mg mastigar (se SCA não descartada)
 
 CAUSAS LETAIS (descartar primeiro):
 A - SCA (síndrome coronariana aguda): ECG + Troponina seriada (0h/1h/3h)
@@ -1455,7 +1455,7 @@ MANEJO:
 1. ECG 12 derivações em <10min da chegada
 2. Monitorização contínua
 3. Acesso venoso calibroso
-4. AAS 200mg mastigar (se suspeita de SCA)
+4. AAS 300mg mastigar (se suspeita de SCA)
 5. O2 se SpO2 <94%
 
 ESTRATIFICAÇÃO:
