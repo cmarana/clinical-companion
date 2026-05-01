@@ -14,7 +14,19 @@
  *      status bar — nem menos (sobreposição), nem mais (gap de UI).
  */
 import { describe, it, expect, beforeAll, beforeEach } from "vitest";
-import { render } from "@testing-library/react";
+import { renderToStaticMarkup } from "react-dom/server";
+import { readFileSync } from "fs";
+import { resolve } from "path";
+import StatusBarScrim from "@/components/StatusBarScrim";
+
+/** Renderiza o componente e devolve o primeiro elemento já anexado ao DOM. */
+function mount(node: React.ReactElement, hostId = "root"): HTMLElement {
+  const host = document.createElement("div");
+  host.id = hostId;
+  host.innerHTML = renderToStaticMarkup(node);
+  document.body.appendChild(host);
+  return host.firstElementChild as HTMLElement;
+}
 import { readFileSync } from "fs";
 import { resolve } from "path";
 import StatusBarScrim from "@/components/StatusBarScrim";
