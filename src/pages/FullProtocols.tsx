@@ -41,16 +41,27 @@ export default function FullProtocols() {
   const [sort, setSort] = useState<SortKey>(initialSort);
   const [showFavOnly, setShowFavOnly] = useState(false);
 
+  // Filtros por diretriz
+  const [selectedSocieties, setSelectedSocieties] = useState<string[]>(
+    () => searchParams.get("societies")?.split(",").filter(Boolean) ?? [],
+  );
+  const [minYear, setMinYear] = useState<number>(() => {
+    const v = Number(searchParams.get("minYear"));
+    return Number.isFinite(v) && v >= yearRange[0] ? v : yearRange[0];
+  });
+
   const { getCount, counts, loading: loadingTop } = useTopProtocols();
   const { isFavorite, toggle: toggleFav, favs } = useProtocolFavorites();
 
-  // Sincroniza categoria/sort na URL
+  // Sincroniza categoria/sort/filtros na URL
   useEffect(() => {
     const params: Record<string, string> = {};
     if (activeCat !== "all") params.cat = activeCat;
     if (sort !== "popular") params.sort = sort;
+    if (selectedSocieties.length > 0) params.societies = selectedSocieties.join(",");
+    if (minYear > yearRange[0]) params.minYear = String(minYear);
     setSearchParams(params, { replace: true });
-  }, [activeCat, sort, setSearchParams]);
+  }, [activeCat, sort, selectedSocieties, minYear, setSearchParams]);
 
   // Contador por categoria (sempre sobre o universo total)
   const countByCat = useMemo(() => {
