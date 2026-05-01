@@ -353,25 +353,38 @@
                 return;
               }
               emit('build_update_detected', { current_build: current, remote_build: data.buildId, source: 'inline_probe' });
-              var cleared = 0;
-              try {
-                if ('caches' in window) {
-                  emit('cache_purge_started', { source: 'inline_probe' });
-                  caches.keys().then(function(keys){
-                    Promise.all(keys.map(function(k){ return caches.delete(k).catch(function(){ return false; }); }))
-                      .then(function(results){
-                        cleared = results.filter(Boolean).length;
-                        emit('cache_purge_completed', { caches_cleared: cleared, source: 'inline_probe' });
-                      });
-                  });
+              // If React has mounted, defer to the in-app confirmation modal.
+              // The inline probe should only force-reload when the bundle itself
+              // failed to boot (stale HTML pinning users to a dead build).
+              var deadline = Date.now() + 12000;
+              (function waitForReact(){
+                if (window.__pulsoReactMounted) {
+                  emit('inline_probe_deferred_to_react', { remote_build: data.buildId });
+                  return; // React watcher will dispatch the modal event
                 }
-              } catch(e) {
-                emit('cache_purge_failed', { message: String(e && e.message || e) });
-              }
-              var next = new URL(location.href);
-              next.searchParams.set('v', Date.now().toString());
-              emit('version_reload_triggered', { remote_build: data.buildId, source: 'inline_probe' });
-              location.replace(next.toString());
+                if (Date.now() > deadline) {
+                  // Bundle never mounted — force reload as last resort
+                  try {
+                    if ('caches' in window) {
+                      emit('cache_purge_started', { source: 'inline_probe' });
+                      caches.keys().then(function(keys){
+                        Promise.all(keys.map(function(k){ return caches.delete(k).catch(function(){ return false; }); }))
+                          .then(function(results){
+                            emit('cache_purge_completed', { caches_cleared: results.filter(Boolean).length, source: 'inline_probe' });
+                          });
+                      });
+                    }
+                  } catch(e) {
+                    emit('cache_purge_failed', { message: String(e && e.message || e) });
+                  }
+                  var next = new URL(location.href);
+                  next.searchParams.set('v', Date.now().toString());
+                  emit('version_reload_triggered', { remote_build: data.buildId, source: 'inline_probe_fallback' });
+                  location.replace(next.toString());
+                  return;
+                }
+                setTimeout(waitForReact, 500);
+              })();
             })
             .catch(function(err){
               emit('version_check_failed', { reason: 'network', message: String(err && err.message || err) });
