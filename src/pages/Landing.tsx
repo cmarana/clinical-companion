@@ -195,7 +195,10 @@ export default function Landing() {
     <div className="min-h-screen bg-background text-foreground overflow-x-hidden">
 
       {/* ═══ NAVBAR ═══════════════════════════════════════════ */}
-      <nav className="sticky top-0 z-50 backdrop-blur-xl bg-background/80 border-b border-border/40">
+      <nav
+        className="sticky top-0 z-50 backdrop-blur-xl bg-background/80 border-b border-border/40"
+        style={{ paddingTop: "env(safe-area-inset-top)" }}
+      >
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <img src={pulsoLogo} alt="PULSO" width={30} height={30} className="rounded-lg" />
