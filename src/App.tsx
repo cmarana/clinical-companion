@@ -244,6 +244,7 @@ const App = () => (
                   <OfflineIndicator />
                   <PWAInstallPrompt />
                   <FloatingThemeToggle className="md:hidden" />
+                  <UpdatePromptDialog />
                   <AppRoutes />
                 </TooltipProvider>
               </NotesProvider>
