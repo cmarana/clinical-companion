@@ -35,14 +35,15 @@ function ClinicalAIContent() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [mode, setMode] = useState<"chat" | "structured" | "plantao" | "narrative" | "image">("chat");
-  // Image analysis state
-  const [originalImage, setOriginalImage] = useState<string | null>(null); // raw upload (data URL)
-  const [imageFile, setImageFile] = useState<string | null>(null); // what gets sent (possibly anonymized)
+  // Image analysis state — suporta lote (até MAX_IMAGES)
+  const MAX_IMAGES = 5;
+  const [originalImages, setOriginalImages] = useState<string[]>([]); // raw uploads
+  const [imageFiles, setImageFiles] = useState<string[]>([]); // versões enviadas (possivelmente anonimizadas)
   const [imageContext, setImageContext] = useState("");
   const [imageAnalyzing, setImageAnalyzing] = useState(false);
   const [anonymize, setAnonymize] = useState(true);
-  const [anonTopPct, setAnonTopPct] = useState(12); // % altura barra superior
-  const [anonBottomPct, setAnonBottomPct] = useState(8); // % altura barra inferior
+  const [anonTopPct, setAnonTopPct] = useState(12);
+  const [anonBottomPct, setAnonBottomPct] = useState(8);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const cameraInputRef = useRef<HTMLInputElement>(null);
   const [narrative, setNarrative] = useState("");
@@ -236,26 +237,53 @@ function ClinicalAIContent() {
 
   const clearChat = () => { setMessages([]); };
 
-  // ─── Image analysis ───
-  const handleImageSelect = (file: File | null) => {
-    if (!file) return;
-    if (!file.type.startsWith("image/")) {
-      toast.error("Selecione um arquivo de imagem (JPG, PNG, HEIC)");
+  // ─── Image analysis (lote) ───
+  const handleImageSelect = (files: FileList | File[] | null) => {
+    if (!files) return;
+    const incoming = Array.from(files as ArrayLike<File>);
+    if (incoming.length === 0) return;
+
+    const remaining = MAX_IMAGES - originalImages.length;
+    if (remaining <= 0) {
+      toast.error(`Máximo de ${MAX_IMAGES} imagens por lote`);
       return;
     }
-    if (file.size > 6 * 1024 * 1024) {
-      toast.error("Imagem maior que 6MB. Reduza a resolução antes de enviar.");
-      return;
+
+    const accepted: File[] = [];
+    let skippedType = 0;
+    let skippedSize = 0;
+    for (const f of incoming.slice(0, remaining)) {
+      if (!f.type.startsWith("image/")) { skippedType++; continue; }
+      if (f.size > 6 * 1024 * 1024) { skippedSize++; continue; }
+      accepted.push(f);
     }
-    const reader = new FileReader();
-    reader.onload = () => {
-      const dataUrl = typeof reader.result === "string" ? reader.result : null;
-      if (dataUrl) {
-        setOriginalImage(dataUrl);
+    if (skippedType) toast.error(`${skippedType} arquivo(s) ignorado(s) — formato inválido`);
+    if (skippedSize) toast.error(`${skippedSize} imagem(ns) acima de 6MB ignorada(s)`);
+    if (incoming.length > remaining) toast.message(`Apenas ${remaining} imagem(ns) adicionada(s) (limite ${MAX_IMAGES})`);
+    if (accepted.length === 0) return;
+
+    Promise.all(
+      accepted.map(
+        (file) =>
+          new Promise<string | null>((resolve) => {
+            const reader = new FileReader();
+            reader.onload = () => resolve(typeof reader.result === "string" ? reader.result : null);
+            reader.onerror = () => resolve(null);
+            reader.readAsDataURL(file);
+          }),
+      ),
+    ).then((urls) => {
+      const valid = urls.filter((u): u is string => !!u);
+      if (valid.length === 0) {
+        toast.error("Falha ao ler as imagens");
+        return;
       }
-    };
-    reader.onerror = () => toast.error("Falha ao ler a imagem");
-    reader.readAsDataURL(file);
+      setOriginalImages((prev) => [...prev, ...valid].slice(0, MAX_IMAGES));
+    });
+  };
+
+  const removeImageAt = (idx: number) => {
+    setOriginalImages((prev) => prev.filter((_, i) => i !== idx));
   };
 
   // Aplica tarjas pretas nas faixas superior e inferior (onde geralmente há nome,
@@ -277,7 +305,6 @@ function ClinicalAIContent() {
             const botH = Math.round((canvas.height * bottomPct) / 100);
             if (topH > 0) ctx.fillRect(0, 0, canvas.width, topH);
             if (botH > 0) ctx.fillRect(0, canvas.height - botH, canvas.width, botH);
-            // marca visual discreta
             ctx.fillStyle = "rgba(255,255,255,0.85)";
             ctx.font = `${Math.max(10, Math.round(canvas.height * 0.018))}px sans-serif`;
             ctx.fillText("ANONIMIZADO • PULSO", 8, Math.max(14, topH - 6));
@@ -293,51 +320,47 @@ function ClinicalAIContent() {
     [],
   );
 
-  // Recalcula a imagem que será enviada sempre que original / toggle / faixas mudam
+  // Recalcula as imagens enviadas sempre que originais / toggle / faixas mudam
   useEffect(() => {
-    if (!originalImage) {
-      setImageFile(null);
+    if (originalImages.length === 0) {
+      setImageFiles([]);
       return;
     }
     if (!anonymize) {
-      setImageFile(originalImage);
+      setImageFiles(originalImages);
       return;
     }
     let cancelled = false;
-    applyAnonymization(originalImage, anonTopPct, anonBottomPct)
-      .then((url) => {
-        if (!cancelled) setImageFile(url);
-      })
-      .catch(() => {
-        if (!cancelled) {
-          toast.error("Não foi possível anonimizar — enviando original");
-          setImageFile(originalImage);
-        }
-      });
+    Promise.all(
+      originalImages.map((src) =>
+        applyAnonymization(src, anonTopPct, anonBottomPct).catch(() => src),
+      ),
+    ).then((urls) => {
+      if (!cancelled) setImageFiles(urls);
+    });
     return () => {
       cancelled = true;
     };
-  }, [originalImage, anonymize, anonTopPct, anonBottomPct, applyAnonymization]);
+  }, [originalImages, anonymize, anonTopPct, anonBottomPct, applyAnonymization]);
 
   const handleImageAnalyze = async () => {
-    if (!imageFile) {
-      toast.error("Anexe uma imagem primeiro");
+    if (imageFiles.length === 0) {
+      toast.error("Anexe ao menos uma imagem");
       return;
     }
     setImageAnalyzing(true);
 
-    // Compose context message including patient context
     const ctxParts: string[] = [];
     if (patientCtx.age) ctxParts.push(`Idade: ${patientCtx.age}`);
     if (patientCtx.sex) ctxParts.push(`Sexo: ${patientCtx.sex}`);
     if (patientCtx.weight) ctxParts.push(`Peso: ${patientCtx.weight}kg`);
     if (patientCtx.scenario) ctxParts.push(`Cenário: ${patientCtx.scenario}`);
     if (imageContext.trim()) ctxParts.push(`Indicação clínica: ${imageContext.trim()}`);
-    if (anonymize) ctxParts.push("Imagem anonimizada (faixas superior/inferior cobertas — ignore áreas pretas)");
+    if (anonymize) ctxParts.push("Imagens anonimizadas (faixas superior/inferior cobertas — ignore áreas pretas)");
+    if (imageFiles.length > 1) ctxParts.push(`Lote com ${imageFiles.length} imagens da mesma investigação — analise como sequência`);
     const fullContext = ctxParts.join(" | ");
 
-    // Push user message with thumbnail marker
-    const userLabel = `📷 **Análise de imagem solicitada**${fullContext ? `\n${fullContext}` : ""}`;
+    const userLabel = `📷 **Análise de ${imageFiles.length > 1 ? `${imageFiles.length} imagens (lote)` : "imagem"} solicitada**${fullContext ? `\n${fullContext}` : ""}`;
     setMessages((prev) => [...prev, { role: "user", content: userLabel }]);
 
     try {
@@ -347,7 +370,12 @@ function ClinicalAIContent() {
       const resp = await fetch(url, {
         method: "POST",
         headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
-        body: JSON.stringify({ imageDataUrl: imageFile, context: fullContext }),
+        // backwards-compat: envia imageDataUrls (novo) e imageDataUrl (primeira, fallback)
+        body: JSON.stringify({
+          imageDataUrls: imageFiles,
+          imageDataUrl: imageFiles[0],
+          context: fullContext,
+        }),
       });
       const data = await resp.json().catch(() => ({}));
       if (!resp.ok) {
@@ -356,12 +384,12 @@ function ClinicalAIContent() {
           msg,
           resp.status === 402 ? "credits" : resp.status === 429 ? "rate_limit" : resp.status === 401 ? "auth" : "server",
         );
-        setMessages((prev) => prev.slice(0, -1)); // rollback user msg
+        setMessages((prev) => prev.slice(0, -1));
       } else {
         const analysis: string = data?.analysis || "Sem resposta da IA.";
         setMessages((prev) => [...prev, { role: "assistant", content: analysis }]);
-        setOriginalImage(null);
-        setImageFile(null);
+        setOriginalImages([]);
+        setImageFiles([]);
         setImageContext("");
       }
     } catch (e) {
@@ -618,8 +646,12 @@ function ClinicalAIContent() {
                 ref={fileInputRef}
                 type="file"
                 accept="image/*"
+                multiple
                 className="hidden"
-                onChange={(e) => handleImageSelect(e.target.files?.[0] ?? null)}
+                onChange={(e) => {
+                  handleImageSelect(e.target.files);
+                  e.target.value = "";
+                }}
               />
               <input
                 ref={cameraInputRef}
@@ -627,10 +659,13 @@ function ClinicalAIContent() {
                 accept="image/*"
                 capture="environment"
                 className="hidden"
-                onChange={(e) => handleImageSelect(e.target.files?.[0] ?? null)}
+                onChange={(e) => {
+                  handleImageSelect(e.target.files);
+                  e.target.value = "";
+                }}
               />
 
-              {!originalImage ? (
+              {originalImages.length === 0 ? (
                 <div className="grid grid-cols-2 gap-2">
                   <button
                     type="button"
@@ -647,31 +682,63 @@ function ClinicalAIContent() {
                     className="flex flex-col items-center justify-center gap-1.5 py-4 rounded-xl border-2 border-dashed border-border bg-muted/30 hover:bg-muted/60 active:scale-[0.98] transition-all"
                   >
                     <Upload size={22} className="text-muted-foreground" />
-                    <span className="text-[11px] font-heading font-semibold">Enviar arquivo</span>
-                    <span className="text-[9px] text-muted-foreground">JPG, PNG (até 6MB)</span>
+                    <span className="text-[11px] font-heading font-semibold">Enviar arquivos</span>
+                    <span className="text-[9px] text-muted-foreground">Até {MAX_IMAGES} • 6MB cada</span>
                   </button>
                 </div>
               ) : (
                 <>
-                  <div className="relative rounded-xl overflow-hidden border border-border bg-muted/30">
-                    <img
-                      src={imageFile || originalImage}
-                      alt="Pré-visualização do exame"
-                      className="w-full max-h-64 object-contain bg-black/5"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => { setOriginalImage(null); setImageFile(null); }}
-                      className="absolute top-1.5 right-1.5 w-7 h-7 rounded-full bg-background/90 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors"
-                      title="Remover imagem"
-                    >
-                      <X size={14} />
-                    </button>
-                    {anonymize && (
-                      <div className="absolute bottom-1.5 left-1.5 flex items-center gap-1 px-2 py-0.5 rounded-full bg-emerald-500/90 text-white text-[9px] font-heading font-semibold backdrop-blur-sm">
-                        <ShieldCheck size={10} /> Anonimizado
-                      </div>
-                    )}
+                  {/* Galeria do lote */}
+                  <div className="rounded-xl border border-border bg-muted/30 p-2">
+                    <div className="flex items-center justify-between mb-1.5 px-0.5">
+                      <span className="text-[10px] font-heading font-semibold text-muted-foreground">
+                        {originalImages.length} de {MAX_IMAGES} imagem{originalImages.length > 1 ? "ns" : ""}
+                      </span>
+                      {originalImages.length < MAX_IMAGES && (
+                        <div className="flex gap-1">
+                          <button
+                            type="button"
+                            onClick={() => cameraInputRef.current?.click()}
+                            className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-primary/10 text-primary text-[10px] font-heading font-semibold hover:bg-primary/20 transition-colors"
+                          >
+                            <Camera size={11} /> Foto
+                          </button>
+                          <button
+                            type="button"
+                            onClick={() => fileInputRef.current?.click()}
+                            className="flex items-center gap-1 px-2 py-0.5 rounded-md bg-muted text-foreground text-[10px] font-heading font-semibold hover:bg-accent transition-colors"
+                          >
+                            <Upload size={11} /> Adicionar
+                          </button>
+                        </div>
+                      )}
+                    </div>
+                    <div className="grid grid-cols-3 gap-1.5">
+                      {originalImages.map((src, idx) => {
+                        const preview = imageFiles[idx] || src;
+                        return (
+                          <div key={idx} className="relative aspect-square rounded-lg overflow-hidden border border-border bg-black/5 group">
+                            <img src={preview} alt={`Imagem ${idx + 1}`} className="w-full h-full object-cover" />
+                            <div className="absolute top-0.5 left-0.5 px-1.5 py-0.5 rounded bg-background/80 backdrop-blur-sm text-[9px] font-heading font-bold">
+                              {idx + 1}
+                            </div>
+                            <button
+                              type="button"
+                              onClick={() => removeImageAt(idx)}
+                              className="absolute top-0.5 right-0.5 w-5 h-5 rounded-full bg-background/90 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors"
+                              title="Remover"
+                            >
+                              <X size={11} />
+                            </button>
+                            {anonymize && (
+                              <div className="absolute bottom-0.5 left-0.5 right-0.5 flex items-center justify-center gap-0.5 px-1 py-0.5 rounded bg-emerald-500/90 text-white text-[8px] font-heading font-semibold backdrop-blur-sm">
+                                <ShieldCheck size={8} /> Anon.
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
                   </div>
 
                   {/* Anonymization controls */}
@@ -698,7 +765,7 @@ function ClinicalAIContent() {
                       </button>
                     </label>
                     <p className="text-[9px] text-muted-foreground leading-tight">
-                      Cobre nome, prontuário, data e instituição (faixas superior e inferior) antes do envio. Ajuste a cobertura se necessário.
+                      Cobre nome, prontuário, data e instituição (faixas superior e inferior) em todas as imagens do lote.
                     </p>
                     {anonymize && (
                       <div className="grid grid-cols-2 gap-2 pt-1">
@@ -749,13 +816,13 @@ function ClinicalAIContent() {
               <Button
                 type="button"
                 onClick={handleImageAnalyze}
-                disabled={!imageFile || imageAnalyzing}
+                disabled={imageFiles.length === 0 || imageAnalyzing}
                 className="w-full h-9 text-xs rounded-xl"
               >
                 {imageAnalyzing ? (
-                  <><Loader2 size={14} className="animate-spin mr-1.5" /> Analisando imagem...</>
+                  <><Loader2 size={14} className="animate-spin mr-1.5" /> Analisando {imageFiles.length > 1 ? `${imageFiles.length} imagens` : "imagem"}...</>
                 ) : (
-                  <><ScanSearch size={14} className="mr-1.5" /> Analisar imagem</>
+                  <><ScanSearch size={14} className="mr-1.5" /> Analisar {imageFiles.length > 1 ? `${imageFiles.length} imagens` : "imagem"}</>
                 )}
               </Button>
 
