@@ -232,6 +232,78 @@ function ClinicalAIContent() {
 
   const clearChat = () => { setMessages([]); };
 
+  // ─── Image analysis ───
+  const handleImageSelect = (file: File | null) => {
+    if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      toast.error("Selecione um arquivo de imagem (JPG, PNG, HEIC)");
+      return;
+    }
+    if (file.size > 6 * 1024 * 1024) {
+      toast.error("Imagem maior que 6MB. Reduza a resolução antes de enviar.");
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const dataUrl = typeof reader.result === "string" ? reader.result : null;
+      if (dataUrl) setImageFile(dataUrl);
+    };
+    reader.onerror = () => toast.error("Falha ao ler a imagem");
+    reader.readAsDataURL(file);
+  };
+
+  const handleImageAnalyze = async () => {
+    if (!imageFile) {
+      toast.error("Anexe uma imagem primeiro");
+      return;
+    }
+    setImageAnalyzing(true);
+
+    // Compose context message including patient context
+    const ctxParts: string[] = [];
+    if (patientCtx.age) ctxParts.push(`Idade: ${patientCtx.age}`);
+    if (patientCtx.sex) ctxParts.push(`Sexo: ${patientCtx.sex}`);
+    if (patientCtx.weight) ctxParts.push(`Peso: ${patientCtx.weight}kg`);
+    if (patientCtx.scenario) ctxParts.push(`Cenário: ${patientCtx.scenario}`);
+    if (imageContext.trim()) ctxParts.push(`Indicação clínica: ${imageContext.trim()}`);
+    const fullContext = ctxParts.join(" | ");
+
+    // Push user message with thumbnail marker
+    const userLabel = `📷 **Análise de imagem solicitada**${fullContext ? `\n${fullContext}` : ""}`;
+    setMessages((prev) => [...prev, { role: "user", content: userLabel }]);
+
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const token = session?.access_token || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+      const url = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/image-analysis`;
+      const resp = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ imageDataUrl: imageFile, context: fullContext }),
+      });
+      const data = await resp.json().catch(() => ({}));
+      if (!resp.ok) {
+        const msg = data?.error || `Erro ${resp.status} ao analisar imagem`;
+        showClinicalAiError(
+          msg,
+          resp.status === 402 ? "credits" : resp.status === 429 ? "rate_limit" : resp.status === 401 ? "auth" : "server",
+        );
+        setMessages((prev) => prev.slice(0, -1)); // rollback user msg
+      } else {
+        const analysis: string = data?.analysis || "Sem resposta da IA.";
+        setMessages((prev) => [...prev, { role: "assistant", content: analysis }]);
+        setImageFile(null);
+        setImageContext("");
+      }
+    } catch (e) {
+      console.error(e);
+      toast.error("Falha de conexão com a IA");
+      setMessages((prev) => prev.slice(0, -1));
+    } finally {
+      setImageAnalyzing(false);
+    }
+  };
+
   return (
     <div className="flex flex-col h-[calc(100vh-4rem)] max-w-2xl mx-auto">
       {/* Header */}
