@@ -9,8 +9,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, Loader2, RefreshCw, Sparkles, CheckCircle2, XCircle, Play, AlertTriangle } from "lucide-react";
+import { ArrowLeft, Loader2, RefreshCw, Sparkles, CheckCircle2, XCircle, Play, AlertTriangle, GitCompare } from "lucide-react";
 import { toast } from "sonner";
+import { SuggestionDiffModal } from "@/components/admin/SuggestionDiffModal";
 
 const SCOPES: { id: string; label: string }[] = [
   { id: "protocol", label: "Protocolos clínicos" },
@@ -77,6 +78,7 @@ export default function AdminGuidelineReview() {
   const [filter, setFilter] = useState<"pending" | "all">("pending");
   const [acting, setActing] = useState<string | null>(null);
   const [notes, setNotes] = useState<Record<string, string>>({});
+  const [diffOpenId, setDiffOpenId] = useState<string | null>(null);
 
   // Auth gate
   useEffect(() => {
@@ -275,15 +277,18 @@ export default function AdminGuidelineReview() {
                   </div>
                 </CardHeader>
                 <CardContent className="space-y-3 text-sm">
-                  <p className="font-medium">{s.change_summary}</p>
-                  {s.proposed_patch && (
-                    <details className="rounded-md border bg-muted/30 p-3">
-                      <summary className="cursor-pointer text-xs font-medium uppercase tracking-wide text-muted-foreground">
-                        Patch sugerido
-                      </summary>
-                      <pre className="mt-2 whitespace-pre-wrap text-xs">{s.proposed_patch}</pre>
-                    </details>
-                  )}
+                  <div className="flex flex-wrap items-start justify-between gap-2">
+                    <p className="font-medium flex-1 min-w-0">{s.change_summary}</p>
+                    <Button
+                      size="sm"
+                      variant="secondary"
+                      onClick={() => setDiffOpenId(s.id)}
+                      className="shrink-0"
+                    >
+                      <GitCompare className="mr-2 h-4 w-4" />
+                      Revisar diff
+                    </Button>
+                  </div>
                   {s.evidence_sources?.length > 0 && (
                     <div className="text-xs text-muted-foreground">
                       <strong>Fontes:</strong>{" "}
@@ -382,6 +387,44 @@ export default function AdminGuidelineReview() {
       <p className="mt-6 text-xs text-muted-foreground">
         O PULSO é uma ferramenta de apoio à decisão clínica. O julgamento médico é soberano.
       </p>
+
+      {/* Modal de diff antes/depois com navegação e atalhos */}
+      {(() => {
+        if (!diffOpenId) {
+          return (
+            <SuggestionDiffModal
+              suggestion={null}
+              open={false}
+              acting={false}
+              onOpenChange={() => setDiffOpenId(null)}
+              onAction={() => {}}
+            />
+          );
+        }
+        const idx = visible.findIndex((x) => x.id === diffOpenId);
+        const current = idx >= 0 ? visible[idx] : null;
+        const prevId = idx > 0 ? visible[idx - 1].id : null;
+        const nextId = idx >= 0 && idx < visible.length - 1 ? visible[idx + 1].id : null;
+        return (
+          <SuggestionDiffModal
+            suggestion={current}
+            position={idx >= 0 ? { current: idx + 1, total: visible.length } : undefined}
+            open={!!current}
+            acting={acting === diffOpenId}
+            onOpenChange={(o) => !o && setDiffOpenId(null)}
+            onAction={async (action, note) => {
+              if (!current) return;
+              setNotes((p) => ({ ...p, [current.id]: note }));
+              await reviewSuggestion(current, action);
+              // Pular para o próximo pendente após ação
+              const nextPending = visible.slice(idx + 1).find((x) => x.status === "pending");
+              setDiffOpenId(nextPending ? nextPending.id : null);
+            }}
+            onPrev={prevId ? () => setDiffOpenId(prevId) : undefined}
+            onNext={nextId ? () => setDiffOpenId(nextId) : undefined}
+          />
+        );
+      })()}
     </div>
   );
 }

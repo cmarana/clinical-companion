@@ -15,6 +15,7 @@ import { getFullProtocolAsync } from "@/data/fullProtocols/lazyLoader";
 import { fullProtocolMetas } from "@/data/fullProtocols/metadata";
 import type { FullProtocol } from "@/data/fullProtocols/types";
 import ProtocolActionBar from "@/components/ProtocolActionBar";
+import { GuidelinesPanel } from "@/components/protocols/GuidelinesPanel";
 import { useRecentHistory } from "@/hooks/useRecentHistory";
 import { useProtocolAnalytics } from "@/hooks/useProtocolAnalytics";
 import { useTTPTracking } from "@/hooks/useTTPTracking";
@@ -294,6 +295,11 @@ export default function FullProtocolDetail() {
                 <h2 className="text-xl font-semibold mb-3 border-b border-border pb-2 font-display tracking-tight">
                    {s.title}
                  </h2>
+                {s.id === "references" && protocol.guidelines && protocol.guidelines.length > 0 && (
+                  <div className="mb-4">
+                    <GuidelinesPanel guidelines={protocol.guidelines} />
+                  </div>
+                )}
                 {s.content.split("\n").map((line, i) => (
                   <p key={i} className="mb-2 text-sm leading-relaxed whitespace-pre-wrap">
                     {line}
