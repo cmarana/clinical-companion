@@ -34,38 +34,44 @@ const BOTTOMNAV_H = 64;  // 4rem
 const PT_SAFE_EXTRA = 12; // 0.75rem
 
 /** Mini-CSS replicando as utilities reais (extraído de src/index.css). */
-const UTILITIES_CSS = `
-  .safe-area-top    { padding-top: var(--safe-top); }
-  .pt-safe          { padding-top: calc(var(--safe-top) + 0.75rem); }
-  .pt-safe-0        { padding-top: var(--safe-top); }
-  .top-safe         { top: var(--safe-top); }
-  .top-after-topbar { top: calc(var(--safe-top) + var(--topbar-h)); }
-  .pb-nav           { padding-bottom: calc(var(--bottomnav-h) + var(--safe-bottom)); }
-`;
+/**
+ * jsdom não resolve `var(--x)` em getComputedStyle, então geramos uma
+ * folha de estilo concreta por device (substituímos as variáveis pelos
+ * valores em px). Isso valida o resultado FINAL que o navegador real
+ * computaria após resolver `env(safe-area-inset-*)`.
+ */
+function buildResolvedCss(d: DeviceProfile): string {
+  return `
+    .safe-area-top    { padding-top: ${d.insetTop}px; }
+    .pt-safe          { padding-top: ${d.insetTop + PT_SAFE_EXTRA}px; }
+    .pt-safe-0        { padding-top: ${d.insetTop}px; }
+    .top-safe         { top: ${d.insetTop}px; }
+    .top-after-topbar { top: ${d.insetTop + TOPBAR_H}px; }
+    .pb-nav           { padding-bottom: ${BOTTOMNAV_H + d.insetBottom}px; }
+  `;
+}
 
 beforeAll(() => {
-  // Sanity-check: as utilities testadas existem no index.css de produção.
+  // Sanity-check: as utilities testadas existem no index.css de produção
+  // E ainda usam env(safe-area-inset-*) / var(--safe-*).
   const css = readFileSync(resolve(process.cwd(), "src/index.css"), "utf8");
   for (const cls of ["safe-area-top", "pt-safe", "pt-safe-0", "top-safe", "top-after-topbar", "pb-nav"]) {
     expect(css.includes(`.${cls}`), `Utility .${cls} ausente em src/index.css`).toBe(true);
   }
-
-  const style = document.createElement("style");
-  style.id = "safe-area-utils";
-  style.textContent = UTILITIES_CSS;
-  document.head.appendChild(style);
+  expect(css).toMatch(/env\(safe-area-inset-top/);
+  expect(css).toMatch(/env\(safe-area-inset-bottom/);
 });
 
 beforeEach(() => {
   document.body.innerHTML = "";
+  document.getElementById("safe-area-utils")?.remove();
 });
 
 function applyDevice(d: DeviceProfile) {
-  const root = document.documentElement;
-  root.style.setProperty("--safe-top", `${d.insetTop}px`);
-  root.style.setProperty("--safe-bottom", `${d.insetBottom}px`);
-  root.style.setProperty("--topbar-h", `${TOPBAR_H}px`);
-  root.style.setProperty("--bottomnav-h", `${BOTTOMNAV_H}px`);
+  const style = document.createElement("style");
+  style.id = "safe-area-utils";
+  style.textContent = buildResolvedCss(d);
+  document.head.appendChild(style);
 }
 
 function px(el: Element, prop: keyof CSSStyleDeclaration): number {
