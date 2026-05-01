@@ -44,7 +44,7 @@ export default function AppLayout() {
         <AppSidebar />
         <div className="flex-1 flex flex-col min-w-0">
           {/* Desktop sidebar trigger */}
-          <header className="hidden md:flex h-10 items-center border-b border-border bg-card/80 backdrop-blur-sm px-3 pt-safe-0">
+          <header className="hidden md:flex h-10 items-center border-b border-border bg-card/80 backdrop-blur-sm px-3 safe-area-top">
             <SidebarTrigger />
             <span className="ml-2 font-heading font-semibold text-xs text-primary">PULSO</span>
             <div className="ml-auto flex items-center gap-2">
@@ -62,7 +62,7 @@ export default function AppLayout() {
               </kbd>
             </div>
           </header>
-          <main className="flex-1 bg-background text-foreground pb-16 md:pb-0">
+          <main className="flex-1 bg-background text-foreground pb-nav md:pb-0">
             <OfflineErrorBoundary>
               <AnimatePresence mode="wait" initial={false}>
                 <motion.div
