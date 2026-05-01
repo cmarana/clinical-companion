@@ -7,6 +7,8 @@ project_id = "xwmqqwqynyhccmyqtxje"
     verify_jwt = false
   [functions.clinical-ai]
     verify_jwt = false
+  [functions.image-analysis]
+    verify_jwt = false
   [functions.create-checkout]
     verify_jwt = false
   [functions.customer-portal]

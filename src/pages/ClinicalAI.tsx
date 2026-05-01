@@ -1,6 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot, Mic, MicOff, Zap, FileText } from "lucide-react";
+import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Bot, Mic, MicOff, Zap, FileText, Image as ImageIcon, Camera, Upload, X, ScanSearch } from "lucide-react";
+import { supabase } from "@/integrations/supabase/client";
 import PremiumPageGuard from "@/components/PremiumPageGuard";
 import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
@@ -33,7 +34,13 @@ function ClinicalAIContent() {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [mode, setMode] = useState<"chat" | "structured" | "plantao" | "narrative">("chat");
+  const [mode, setMode] = useState<"chat" | "structured" | "plantao" | "narrative" | "image">("chat");
+  // Image analysis state
+  const [imageFile, setImageFile] = useState<string | null>(null); // data URL
+  const [imageContext, setImageContext] = useState("");
+  const [imageAnalyzing, setImageAnalyzing] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const cameraInputRef = useRef<HTMLInputElement>(null);
   const [narrative, setNarrative] = useState("");
   const [plantaoQuery, setPlantaoQuery] = useState("");
   const [patientCtx, setPatientCtx] = useState<PatientContext>({});
@@ -225,6 +232,78 @@ function ClinicalAIContent() {
 
   const clearChat = () => { setMessages([]); };
 
+  // ─── Image analysis ───
+  const handleImageSelect = (file: File | null) => {
+    if (!file) return;
+    if (!file.type.startsWith("image/")) {
+      toast.error("Selecione um arquivo de imagem (JPG, PNG, HEIC)");
+      return;
+    }
+    if (file.size > 6 * 1024 * 1024) {
+      toast.error("Imagem maior que 6MB. Reduza a resolução antes de enviar.");
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = () => {
+      const dataUrl = typeof reader.result === "string" ? reader.result : null;
+      if (dataUrl) setImageFile(dataUrl);
+    };
+    reader.onerror = () => toast.error("Falha ao ler a imagem");
+    reader.readAsDataURL(file);
+  };
+
+  const handleImageAnalyze = async () => {
+    if (!imageFile) {
+      toast.error("Anexe uma imagem primeiro");
+      return;
+    }
+    setImageAnalyzing(true);
+
+    // Compose context message including patient context
+    const ctxParts: string[] = [];
+    if (patientCtx.age) ctxParts.push(`Idade: ${patientCtx.age}`);
+    if (patientCtx.sex) ctxParts.push(`Sexo: ${patientCtx.sex}`);
+    if (patientCtx.weight) ctxParts.push(`Peso: ${patientCtx.weight}kg`);
+    if (patientCtx.scenario) ctxParts.push(`Cenário: ${patientCtx.scenario}`);
+    if (imageContext.trim()) ctxParts.push(`Indicação clínica: ${imageContext.trim()}`);
+    const fullContext = ctxParts.join(" | ");
+
+    // Push user message with thumbnail marker
+    const userLabel = `📷 **Análise de imagem solicitada**${fullContext ? `\n${fullContext}` : ""}`;
+    setMessages((prev) => [...prev, { role: "user", content: userLabel }]);
+
+    try {
+      const { data: { session } } = await supabase.auth.getSession();
+      const token = session?.access_token || import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+      const url = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/image-analysis`;
+      const resp = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", Authorization: `Bearer ${token}` },
+        body: JSON.stringify({ imageDataUrl: imageFile, context: fullContext }),
+      });
+      const data = await resp.json().catch(() => ({}));
+      if (!resp.ok) {
+        const msg = data?.error || `Erro ${resp.status} ao analisar imagem`;
+        showClinicalAiError(
+          msg,
+          resp.status === 402 ? "credits" : resp.status === 429 ? "rate_limit" : resp.status === 401 ? "auth" : "server",
+        );
+        setMessages((prev) => prev.slice(0, -1)); // rollback user msg
+      } else {
+        const analysis: string = data?.analysis || "Sem resposta da IA.";
+        setMessages((prev) => [...prev, { role: "assistant", content: analysis }]);
+        setImageFile(null);
+        setImageContext("");
+      }
+    } catch (e) {
+      console.error(e);
+      toast.error("Falha de conexão com a IA");
+      setMessages((prev) => prev.slice(0, -1));
+    } finally {
+      setImageAnalyzing(false);
+    }
+  };
+
   return (
     <div className="flex flex-col h-[calc(100vh-4rem)] max-w-2xl mx-auto">
       {/* Header */}
@@ -346,12 +425,15 @@ function ClinicalAIContent() {
       {/* Input */}
       <div className="border-t border-border bg-card/80 backdrop-blur-sm p-3">
         <Tabs value={mode} onValueChange={(v) => setMode(v as typeof mode)} className="w-full">
-          <TabsList className="w-full mb-2 h-8 grid grid-cols-4">
+          <TabsList className="w-full mb-2 h-8 grid grid-cols-5">
             <TabsTrigger value="chat" className="text-[10px] gap-1 h-7 px-1">
               <MessageSquare size={11} /> Chat
             </TabsTrigger>
             <TabsTrigger value="structured" className="text-[10px] gap-1 h-7 px-1">
               <ClipboardList size={11} /> Caso
+            </TabsTrigger>
+            <TabsTrigger value="image" className="text-[10px] gap-1 h-7 px-1 data-[state=active]:bg-primary/15 data-[state=active]:text-primary">
+              <ImageIcon size={11} /> Imagem
             </TabsTrigger>
             <TabsTrigger value="plantao" className="text-[10px] gap-1 h-7 px-1 data-[state=active]:bg-destructive data-[state=active]:text-destructive-foreground">
               <Zap size={11} /> Plantão
@@ -451,6 +533,98 @@ function ClinicalAIContent() {
                 {isLoading ? <><Loader2 size={14} className="animate-spin mr-1.5" /> Analisando...</> : "🔍 Analisar Caso Clínico"}
               </Button>
             </form>
+          </TabsContent>
+
+          <TabsContent value="image" className="mt-0">
+            <div className="space-y-2">
+              <div className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-primary/10 border border-primary/20">
+                <ScanSearch size={11} className="text-primary shrink-0" />
+                <p className="text-[10px] text-primary font-medium leading-tight">
+                  Envie ou tire foto de exame de imagem (RX, TC, RM, USG, ECG, lesão).
+                </p>
+              </div>
+
+              {/* Hidden inputs */}
+              <input
+                ref={fileInputRef}
+                type="file"
+                accept="image/*"
+                className="hidden"
+                onChange={(e) => handleImageSelect(e.target.files?.[0] ?? null)}
+              />
+              <input
+                ref={cameraInputRef}
+                type="file"
+                accept="image/*"
+                capture="environment"
+                className="hidden"
+                onChange={(e) => handleImageSelect(e.target.files?.[0] ?? null)}
+              />
+
+              {!imageFile ? (
+                <div className="grid grid-cols-2 gap-2">
+                  <button
+                    type="button"
+                    onClick={() => cameraInputRef.current?.click()}
+                    className="flex flex-col items-center justify-center gap-1.5 py-4 rounded-xl border-2 border-dashed border-primary/40 bg-primary/5 hover:bg-primary/10 active:scale-[0.98] transition-all"
+                  >
+                    <Camera size={22} className="text-primary" />
+                    <span className="text-[11px] font-heading font-semibold text-primary">Tirar foto</span>
+                    <span className="text-[9px] text-muted-foreground">Câmera traseira</span>
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => fileInputRef.current?.click()}
+                    className="flex flex-col items-center justify-center gap-1.5 py-4 rounded-xl border-2 border-dashed border-border bg-muted/30 hover:bg-muted/60 active:scale-[0.98] transition-all"
+                  >
+                    <Upload size={22} className="text-muted-foreground" />
+                    <span className="text-[11px] font-heading font-semibold">Enviar arquivo</span>
+                    <span className="text-[9px] text-muted-foreground">JPG, PNG (até 6MB)</span>
+                  </button>
+                </div>
+              ) : (
+                <div className="relative rounded-xl overflow-hidden border border-border bg-muted/30">
+                  <img
+                    src={imageFile}
+                    alt="Pré-visualização do exame"
+                    className="w-full max-h-64 object-contain bg-black/5"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setImageFile(null)}
+                    className="absolute top-1.5 right-1.5 w-7 h-7 rounded-full bg-background/90 backdrop-blur-sm border border-border flex items-center justify-center hover:bg-destructive hover:text-destructive-foreground transition-colors"
+                    title="Remover imagem"
+                  >
+                    <X size={14} />
+                  </button>
+                </div>
+              )}
+
+              <Input
+                value={imageContext}
+                onChange={(e) => setImageContext(e.target.value)}
+                placeholder="Indicação clínica (opcional): ex.: dor torácica, dispneia, trauma..."
+                className="h-9 text-xs rounded-xl"
+                maxLength={500}
+              />
+
+              <Button
+                type="button"
+                onClick={handleImageAnalyze}
+                disabled={!imageFile || imageAnalyzing}
+                className="w-full h-9 text-xs rounded-xl"
+              >
+                {imageAnalyzing ? (
+                  <><Loader2 size={14} className="animate-spin mr-1.5" /> Analisando imagem...</>
+                ) : (
+                  <><ScanSearch size={14} className="mr-1.5" /> Analisar imagem</>
+                )}
+              </Button>
+
+              <p className="text-[9px] text-muted-foreground text-center leading-tight">
+                ⚠️ Análise auxiliar por IA — <strong>não substitui laudo formal de radiologista</strong>. Correlação clínica obrigatória.
+              </p>
+            </div>
           </TabsContent>
 
           <TabsContent value="plantao" className="mt-0">
