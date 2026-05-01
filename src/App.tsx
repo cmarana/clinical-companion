@@ -249,7 +249,7 @@ const App = () => (
                   <Sonner />
                   <OfflineIndicator />
                   <PWAInstallPrompt />
-                  <FloatingThemeToggle className="md:hidden" />
+                  
                   <UpdatePromptDialog />
                   <AppRoutes />
                 </TooltipProvider>
