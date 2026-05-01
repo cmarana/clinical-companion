@@ -49,7 +49,7 @@ export default function ResetPassword() {
             toggleTheme();
           }}
           aria-label="Alternar tema"
-          className="fixed top-3 right-3 z-[95] rounded-2xl border border-border bg-card/95 p-2.5 text-muted-foreground shadow-lg backdrop-blur-md transition-colors hover:bg-accent hover:text-foreground"
+          className="fixed top-safe-3 right-3 z-[95] rounded-2xl border border-border bg-card/95 p-2.5 text-muted-foreground shadow-lg backdrop-blur-md transition-colors hover:bg-accent hover:text-foreground"
         >
           {themeIcon}
         </button>
@@ -70,7 +70,7 @@ export default function ResetPassword() {
           toggleTheme();
         }}
         aria-label="Alternar tema"
-        className="fixed top-3 right-3 z-[95] rounded-2xl border border-border bg-card/95 p-2.5 text-muted-foreground shadow-lg backdrop-blur-md transition-colors hover:bg-accent hover:text-foreground"
+        className="fixed top-safe-3 right-3 z-[95] rounded-2xl border border-border bg-card/95 p-2.5 text-muted-foreground shadow-lg backdrop-blur-md transition-colors hover:bg-accent hover:text-foreground"
       >
         {themeIcon}
       </button>
