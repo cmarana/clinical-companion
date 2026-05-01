@@ -9,8 +9,9 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
-import { ArrowLeft, Loader2, RefreshCw, Sparkles, CheckCircle2, XCircle, Play, AlertTriangle } from "lucide-react";
+import { ArrowLeft, Loader2, RefreshCw, Sparkles, CheckCircle2, XCircle, Play, AlertTriangle, GitCompare } from "lucide-react";
 import { toast } from "sonner";
+import { SuggestionDiffModal } from "@/components/admin/SuggestionDiffModal";
 
 const SCOPES: { id: string; label: string }[] = [
   { id: "protocol", label: "Protocolos clínicos" },
@@ -77,6 +78,7 @@ export default function AdminGuidelineReview() {
   const [filter, setFilter] = useState<"pending" | "all">("pending");
   const [acting, setActing] = useState<string | null>(null);
   const [notes, setNotes] = useState<Record<string, string>>({});
+  const [diffOpenId, setDiffOpenId] = useState<string | null>(null);
 
   // Auth gate
   useEffect(() => {
