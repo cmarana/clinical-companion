@@ -1,4 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import BottomNav from "./BottomNav";
 import ScrollToTop from "./ScrollToTop";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
@@ -26,6 +27,14 @@ export default function AppLayout() {
   const location = useLocation();
   const { theme, toggleTheme } = useTheme();
   useIdlePrefetch(IDLE_PREFETCH_ROUTES);
+
+  // Hide the inline HTML splash once the authenticated app shell mounts.
+  useEffect(() => {
+    const hide = (window as unknown as { __pulsoHideSplash?: () => void }).__pulsoHideSplash;
+    if (typeof hide === "function") {
+      requestAnimationFrame(() => requestAnimationFrame(hide));
+    }
+  }, []);
 
   const themeIcon = theme === "oled" ? <Eclipse size={16} /> : theme === "dark" ? <Sun size={16} /> : <Moon size={16} />;
 
