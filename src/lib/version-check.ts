@@ -3,12 +3,45 @@
 // /version.json on the server. When they differ, the user is on a stale
 // build — we purge caches, unregister the SW, and reload to the new one.
 
-const CURRENT_BUILD_ID = (import.meta.env.VITE_BUILD_ID as string | undefined) || "dev";
+export const CURRENT_BUILD_ID = (import.meta.env.VITE_BUILD_ID as string | undefined) || "dev";
 const CHECK_INTERVAL_MS = 5 * 60 * 1000; // 5 min
 const MIN_RECHECK_MS = 30 * 1000;        // never thrash faster than 30s
 
 let lastCheck = 0;
+let lastCheckResult: "ok" | "update" | "error" | "idle" = "idle";
+let lastRemoteBuild: string | null = null;
 let reloading = false;
+
+export interface VersionStatus {
+  currentBuild: string;
+  lastCheckAt: number | null;
+  lastResult: "ok" | "update" | "error" | "idle";
+  lastRemoteBuild: string | null;
+  isDev: boolean;
+}
+
+export function getVersionStatus(): VersionStatus {
+  return {
+    currentBuild: CURRENT_BUILD_ID,
+    lastCheckAt: lastCheck || null,
+    lastResult: lastCheckResult,
+    lastRemoteBuild,
+    isDev: CURRENT_BUILD_ID === "dev",
+  };
+}
+
+export async function fetchRemoteVersion(): Promise<{ buildId: string; builtAt?: string } | null> {
+  try {
+    const res = await fetch(`/version.json?_=${Date.now()}`, {
+      cache: "no-store",
+      credentials: "omit",
+    });
+    if (!res.ok) return null;
+    return (await res.json()) as { buildId: string; builtAt?: string };
+  } catch {
+    return null;
+  }
+}
 
 // ── Telemetry ────────────────────────────────────────────────────────────
 // Emits structured events to Google Analytics (gtag, already loaded in
