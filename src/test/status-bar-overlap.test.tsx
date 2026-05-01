@@ -69,8 +69,7 @@ describe("StatusBarScrim · contrato visual", () => {
   });
 
   it("renderiza um <div> aria-hidden, sem captura de toques, no topo", () => {
-    const { container } = render(<StatusBarScrim />);
-    const el = container.firstElementChild as HTMLElement;
+    const el = mount(<StatusBarScrim />, "scrim-host-1");
     expect(el).toBeTruthy();
     expect(el.getAttribute("aria-hidden")).toBe("true");
 
@@ -110,17 +109,19 @@ describe.each(DEVICES)("Sobreposição com status bar · $name", (device) => {
   });
 
   it(`scrim cobre exatamente ${device.insetTop}px do topo (área do horário/bateria)`, () => {
-    const { container } = render(
+    // Monta o scrim dentro de um wrapper marcado para forçar a altura simulada.
+    const host = document.createElement("div");
+    host.innerHTML = renderToStaticMarkup(
       <>
-        {/* Conteúdo arbitrário da página que normalmente vazaria sob a status bar */}
         <p className="sim-content">Texto do app que NÃO pode aparecer sob o relógio</p>
         <div data-status-bar-scrim>
           <StatusBarScrim />
         </div>
       </>,
     );
+    document.body.appendChild(host);
 
-    const wrapper = container.querySelector("[data-status-bar-scrim]") as HTMLElement;
+    const wrapper = host.querySelector("[data-status-bar-scrim]") as HTMLElement;
     const scrim = wrapper.firstElementChild as HTMLElement;
     expect(scrim).toBeTruthy();
 
