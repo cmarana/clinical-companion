@@ -245,6 +245,18 @@ function ClinicalAIContent() {
     }
   }, [location.state]);
 
+  // Permite abrir uma aba específica via URL (?tab=image|chat|structured|plantao|narrative)
+  // Usado pelo tile dedicado "Exames (imagem)" na Home.
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const tab = params.get("tab");
+    const valid = ["chat", "structured", "image", "plantao", "narrative"] as const;
+    if (tab && (valid as readonly string[]).includes(tab)) {
+      setMode(tab as typeof mode);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [location.search]);
+
   const buildContextPrefix = () => {
     const parts: string[] = [];
     if (patientCtx.weight) parts.push(`Peso: ${patientCtx.weight}kg`);

@@ -52,6 +52,7 @@ interface Module {
 
 const allPrimaryModules: Module[] = [
   { label: "IA Clínica", sub: "Chat, Caso, Exames, Plantão e Texto", icon: Bot, path: "/clinical-ai", variant: "ai", tags: ["all"] },
+  { label: "Exames (imagem)", sub: "RX, TC, RM, US, ECG por IA", icon: ScanLine, path: "/clinical-ai?tab=image", variant: "ai", tags: ["all"] },
   { label: "Modo Plantão", sub: "Guia completo para o plantão", icon: AlertTriangle, path: "/duty", variant: "emergency", tags: ["emergencia", "clinica-medica", "cirurgia", "generalista"] },
   { label: "Emergência", sub: "Algoritmos de urgência / UTI", icon: Zap, path: "/emergency", variant: "emergency", tags: ["emergencia", "cirurgia", "generalista"] },
   { label: "Bulário", sub: "1.400+ fármacos", icon: Pill, path: "/bulario", variant: "default", tags: ["all"] },
