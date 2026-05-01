@@ -71,7 +71,7 @@ const allModules = [
   { icon: Scissors, title: "Guias de Procedimentos", desc: "CVC, IOT, drenagem, punção lombar", color: "text-gray-500 bg-gray-500/10" },
   { icon: ClipboardList, title: "Anamnese Guiada", desc: "Roteiros estruturados por queixa", color: "text-blue-400 bg-blue-400/10" },
   { icon: FileText, title: "Gerador de Documentos", desc: "Atestados, relatórios, resumos de alta", color: "text-emerald-400 bg-emerald-400/10" },
-  { icon: GraduationCap, title: "Flashcards & Quiz", desc: "Revisão espaçada para residência", color: "text-yellow-500 bg-yellow-500/10" },
+  { icon: GraduationCap, title: "500+ Flashcards & 1.000+ Questões", desc: "Revisão espaçada (SM-2) para residência", color: "text-yellow-500 bg-yellow-500/10" },
   { icon: Brain, title: "Simulador de Casos", desc: "Casos clínicos interativos com IA", color: "text-purple-400 bg-purple-400/10" },
   { icon: Globe, title: "Modo Plantão", desc: "Timer de turno, leitos e passagem de plantão", color: "text-indigo-400 bg-indigo-400/10" },
   { icon: Users, title: "Visita / Rounds", desc: "Gestão de pacientes e pendências", color: "text-teal-400 bg-teal-400/10" },
