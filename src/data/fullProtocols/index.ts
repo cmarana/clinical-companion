@@ -49,6 +49,7 @@ import { infectiousFullProtocols4 } from "./infectious4";
 import { otherEmergenciesFullProtocols } from "./otherEmergencies";
 import { otherEmergenciesFullProtocols2 } from "./otherEmergencies2";
 import { otherEmergenciesFullProtocols3 } from "./otherEmergencies3";
+import { newProtocols2026 } from "./_newProtocols2026";
 
 // New categories
 import { gastroFullProtocols } from "./gastroenterology";
