@@ -19,7 +19,7 @@ const MAX_CHARS = 60_000;
 
 export async function extractPdfText(file: File): Promise<ExtractedPdf> {
   const buffer = await file.arrayBuffer();
-  const pdf = await pdfjsLib.getDocument({ data: buffer, disableWorker: false }).promise;
+  const pdf = await pdfjsLib.getDocument({ data: buffer }).promise;
   const total = pdf.numPages;
   const toRead = Math.min(total, MAX_PAGES);
 
