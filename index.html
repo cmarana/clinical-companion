@@ -42,18 +42,19 @@
         position: fixed; inset: 0; z-index: 2147483647;
         display: flex; flex-direction: column; align-items: center; justify-content: center;
         background: #ffffff;
-        transition: opacity .4s ease, visibility .4s ease;
+        transition: opacity .35s ease, visibility .35s ease;
         -webkit-tap-highlight-color: transparent;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
       }
       #pulso-splash.pulso-hide { opacity: 0; visibility: hidden; pointer-events: none; }
       #pulso-splash .pulso-logo {
         width: 112px; height: 112px; border-radius: 26px;
-        background: #ffffff;
+        background: linear-gradient(160deg, #0f1e36 0%, #0a1628 100%);
         box-shadow: 0 18px 50px rgba(10, 109, 217, .28), 0 0 0 1px rgba(10, 109, 217, .08);
-        animation: pulso-pop .55s cubic-bezier(.22,1,.36,1) both, pulso-beat 1.6s ease-in-out .55s infinite;
-        display: block;
+        animation: pulso-pop .45s cubic-bezier(.22,1,.36,1) both, pulso-beat 1.6s ease-in-out .45s infinite;
+        display: flex; align-items: center; justify-content: center;
       }
+      #pulso-splash .pulso-logo svg { width: 64%; height: 64%; display: block; }
       #pulso-splash .pulso-name {
         margin-top: 26px;
         font: 800 24px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -172,7 +173,21 @@
 
   <body>
     <div id="pulso-splash" aria-hidden="true">
-      <img class="pulso-logo" src="/icons/icon-192.png" alt="PULSO" width="112" height="112" decoding="async" fetchpriority="high" />
+      <div class="pulso-logo">
+        <!-- Inline SVG: paints instantly, no network request -->
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <defs>
+            <linearGradient id="pg" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#3aa9ff"/>
+              <stop offset="100%" stop-color="#0a6dd9"/>
+            </linearGradient>
+          </defs>
+          <!-- Letter P -->
+          <path d="M28 18 H56 a18 18 0 0 1 0 36 H40 V82 H28 Z M40 30 V42 H54 a6 6 0 0 0 0-12 Z" fill="url(#pg)"/>
+          <!-- ECG line through the P -->
+          <path d="M18 50 L36 50 L42 38 L48 62 L54 32 L60 58 L66 50 L82 50" stroke="#7fcdff" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
       <div class="pulso-name">PULSO</div>
       <div class="pulso-tag">Emergência Médica</div>
       <div class="pulso-ecg">
@@ -183,22 +198,23 @@
     </div>
     <div id="root"></div>
     <script>
-      // Keep splash visible until the REAL app renders (not just the Suspense spinner).
-      // Hide criteria: #root contains a node taller than 200px (i.e. real page content),
-      // OR a hard cap of 8s, OR explicit __pulsoHideSplash() call from the app.
+      // Splash hides when:
+      //  (a) React app explicitly calls window.__pulsoHideSplash() after first paint, OR
+      //  (b) #root gets any meaningful child node (fallback), OR
+      //  (c) hard cap of 6s (safety net so user is never stuck)
       (function(){
         var splash = document.getElementById('pulso-splash');
         if (!splash) return;
         var hidden = false;
         var startedAt = Date.now();
-        var MIN_SHOW_MS = 700; // avoid flash if app loads instantly
+        var MIN_SHOW_MS = 350;
 
         function doHide(){
           if (hidden) return; hidden = true;
           splash.classList.add('pulso-hide');
           setTimeout(function(){
             if (splash && splash.parentNode) splash.parentNode.removeChild(splash);
-          }, 450);
+          }, 400);
         }
         function hide(){
           var elapsed = Date.now() - startedAt;
@@ -209,27 +225,31 @@
           }
         }
 
-        var root = document.getElementById('root');
-        function hasRealContent(){
-          if (!root) return false;
-          // Real content = at least one child node taller than 200px (skips spinner fallbacks)
-          var nodes = root.querySelectorAll('*');
-          for (var i = 0; i < Math.min(nodes.length, 50); i++) {
-            var r = nodes[i].getBoundingClientRect();
-            if (r.height > 200) return true;
-          }
-          return false;
-        }
+        window.__pulsoHideSplash = hide;
 
+        // Fallback: hide as soon as React renders ANY content into root
+        var root = document.getElementById('root');
         if (root && 'MutationObserver' in window) {
           var obs = new MutationObserver(function(){
-            if (hasRealContent()) { obs.disconnect(); hide(); }
+            if (root.childNodes.length > 0) {
+              // Wait one more frame so React has time to paint before fading out
+              requestAnimationFrame(function(){
+                requestAnimationFrame(function(){ obs.disconnect(); hide(); });
+              });
+            }
           });
-          obs.observe(root, { childList: true, subtree: true });
+          obs.observe(root, { childList: true });
         }
-        // Safety: hard cap so the user never gets stuck on splash
-        setTimeout(hide, 8000);
-        window.__pulsoHideSplash = hide;
+
+        // Hard safety cap
+        setTimeout(hide, 6000);
+
+        // If main script fails to load/execute, show a friendly error after 10s
+        setTimeout(function(){
+          if (root && root.childNodes.length === 0) {
+            splash.innerHTML = '<div style="text-align:center;font-family:-apple-system,sans-serif;color:#0a1628;padding:24px;max-width:320px"><div style="font-weight:800;letter-spacing:.2em;font-size:20px;margin-bottom:12px;color:#0a6dd9">PULSO</div><div style="font-size:14px;line-height:1.5;margin-bottom:16px">Não foi possível carregar o aplicativo. Verifique sua conexão e tente novamente.</div><button onclick="location.reload()" style="background:#0a6dd9;color:#fff;border:0;padding:12px 24px;border-radius:10px;font-weight:600;font-size:14px">Recarregar</button></div>';
+          }
+        }, 10000);
       })();
     </script>
     <script>

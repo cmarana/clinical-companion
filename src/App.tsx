@@ -12,7 +12,7 @@ import AppLayout from "@/components/AppLayout";
 import { PWAInstallPrompt, OfflineIndicator } from "@/components/PWAInstallPrompt";
 import FloatingThemeToggle from "@/components/FloatingThemeToggle";
 
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { ProtocolListSkeleton, ProtocolDetailSkeleton, MedicationListSkeleton } from "@/components/PageSkeleton";
 
 const Home = lazy(() => import("@/pages/Home"));
@@ -214,6 +214,20 @@ const AppRoutes = () => (
   </Suspense>
 );
 
+const SplashHider = () => {
+  useEffect(() => {
+    // Hide splash as soon as React has mounted (next frame after first paint)
+    const id = requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const fn = (window as any).__pulsoHideSplash;
+        if (typeof fn === "function") fn();
+      });
+    });
+    return () => cancelAnimationFrame(id);
+  }, []);
+  return null;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <BrowserRouter>
@@ -223,6 +237,7 @@ const App = () => (
             <FavoritesProvider>
               <NotesProvider>
                 <TooltipProvider>
+                  <SplashHider />
                   <Toaster />
                   <Sonner />
                   <OfflineIndicator />
