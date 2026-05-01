@@ -8,7 +8,8 @@ import {
   Users, Lock, RefreshCw, Download, Search, Smartphone,
   ChevronDown, HelpCircle, ClipboardList, Baby, Beaker,
   Scissors, Eye, HeartPulse, Timer, Bookmark, Globe,
-  ScrollText, Layers, ListChecks, GraduationCap, FlaskConical, LogIn
+  ScrollText, Layers, ListChecks, GraduationCap, FlaskConical, LogIn,
+  MessageSquare, ScanLine
 } from "lucide-react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -42,6 +43,65 @@ const features = [
   { icon: Calculator, title: "53 Calculadoras", desc: "Glasgow, SOFA, Wells, HEART, MELD, NEWS e dezenas de scores integrados aos protocolos.", accent: "bg-indigo-500/10 text-indigo-500" },
   { icon: FileText, title: "Prescrições Prontas", desc: "Modelos por diagnóstico, prontos para copiar e adaptar. Checagem de interações por IA.", accent: "bg-amber-500/10 text-amber-500" },
 ];
+
+/**
+ * 5 modalidades da IA Clínica multimodal — espelham as abas reais
+ * de /clinical-ai. Cada CTA abre direto no modo correspondente
+ * via deep-link `?tab=`.
+ */
+const aiModes = [
+  {
+    id: "chat",
+    icon: MessageSquare,
+    title: "Chat",
+    tagline: "Conversa livre com a IA",
+    desc: "Tire dúvidas clínicas, peça diagnósticos diferenciais e raciocínio passo-a-passo. Suporta voz.",
+    cta: "Abrir Chat",
+    accent: "from-blue-500/15 to-blue-500/5 text-blue-500 ring-blue-500/20",
+    iconBg: "bg-blue-500/15 text-blue-500",
+  },
+  {
+    id: "structured",
+    icon: ClipboardList,
+    title: "Caso estruturado",
+    tagline: "Anamnese guiada",
+    desc: "Preencha queixa, antecedentes, exame físico e exames. A IA devolve hipóteses, conduta e prescrição.",
+    cta: "Montar caso",
+    accent: "from-emerald-500/15 to-emerald-500/5 text-emerald-500 ring-emerald-500/20",
+    iconBg: "bg-emerald-500/15 text-emerald-500",
+  },
+  {
+    id: "image",
+    icon: ScanLine,
+    title: "Exames (imagem)",
+    tagline: "Análise multimodal",
+    desc: "Envie RX, TC, RM, US ou ECG. A IA descreve achados, sugere hipóteses e gera resumo + alertas críticos.",
+    cta: "Analisar exame",
+    accent: "from-primary/15 to-primary/5 text-primary ring-primary/25",
+    iconBg: "bg-primary/15 text-primary",
+    badge: "Novo",
+  },
+  {
+    id: "plantao",
+    icon: Zap,
+    title: "Plantão",
+    tagline: "Resposta ultrarrápida",
+    desc: "Pergunta direta, resposta direta. Otimizado para o ritmo do pronto-socorro — sem rodeios, beira do leito.",
+    cta: "Modo Plantão",
+    accent: "from-red-500/15 to-red-500/5 text-red-500 ring-red-500/20",
+    iconBg: "bg-red-500/15 text-red-500",
+  },
+  {
+    id: "narrative",
+    icon: FileText,
+    title: "Texto narrativo",
+    tagline: "Cole evolução / discussão",
+    desc: "Cole prontuário, evolução ou texto livre. A IA extrai dados, organiza e propõe próximos passos.",
+    cta: "Analisar texto",
+    accent: "from-amber-500/15 to-amber-500/5 text-amber-500 ring-amber-500/20",
+    iconBg: "bg-amber-500/15 text-amber-500",
+  },
+] as const;
 
 const howItWorks = [
   { step: "01", icon: Download, title: "Crie sua conta", desc: "Cadastro rápido em 30 segundos. Comece a usar imediatamente." },
@@ -535,6 +595,79 @@ export default function Landing() {
               );
             })}
           </motion.div>
+        </div>
+      </section>
+
+      {/* ═══ IA CLÍNICA · 5 MODALIDADES ═══════════════════════ */}
+      <section id="ai-modes" className="py-20 px-4 relative bg-gradient-to-b from-background via-primary/[0.03] to-background">
+        <div className="max-w-6xl mx-auto relative z-10">
+          <motion.div
+            className="text-center mb-12"
+            initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={fadeUp} custom={0}
+          >
+            <span className="inline-flex items-center gap-1.5 text-[10px] font-heading font-bold text-primary uppercase tracking-[0.2em]">
+              <Bot size={12} /> IA Clínica multimodal
+            </span>
+            <h2 className="font-heading text-3xl sm:text-4xl font-extrabold mt-2 tracking-tight">
+              5 modos de raciocínio em uma só IA
+            </h2>
+            <p className="text-muted-foreground mt-3 max-w-xl mx-auto text-sm leading-relaxed">
+              Escolha o modo certo para o momento — do chat livre à análise de imagem de exames.
+              Tudo com Gemini 2.5 e contexto clínico do paciente.
+            </p>
+          </motion.div>
+
+          <motion.div
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"
+            initial="hidden" whileInView="visible" viewport={{ once: true }}
+            variants={stagger}
+          >
+            {aiModes.map((m) => (
+              <motion.div
+                key={m.id}
+                variants={fadeUp}
+                custom={0}
+                className={`group relative p-5 rounded-2xl bg-card ring-1 ${m.accent.split(" ").pop()} hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5 transition-all duration-300 flex flex-col`}
+              >
+                {"badge" in m && m.badge && (
+                  <span className="absolute top-3 right-3 text-[9px] font-heading font-bold uppercase tracking-wider bg-primary text-primary-foreground px-2 py-0.5 rounded-full">
+                    {m.badge}
+                  </span>
+                )}
+                <div className={`w-11 h-11 rounded-xl ${m.iconBg} flex items-center justify-center mb-4`}>
+                  <m.icon size={20} />
+                </div>
+                <div className="mb-1">
+                  <h3 className="font-heading font-bold text-base">{m.title}</h3>
+                  <p className="text-[11px] font-heading font-semibold text-muted-foreground uppercase tracking-wider mt-0.5">
+                    {m.tagline}
+                  </p>
+                </div>
+                <p className="text-xs text-muted-foreground leading-relaxed mb-4 flex-1">
+                  {m.desc}
+                </p>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => { hapticLight(); navigate(`/clinical-ai?tab=${m.id}`); }}
+                  className="w-full h-9 rounded-xl text-xs font-heading font-semibold group-hover:border-primary/40 group-hover:text-primary transition-colors"
+                >
+                  {m.cta}
+                  <ArrowRight size={13} className="ml-1.5 group-hover:translate-x-0.5 transition-transform" />
+                </Button>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          <motion.p
+            className="text-center text-[11px] text-muted-foreground mt-8 max-w-md mx-auto"
+            initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }}
+            transition={{ delay: 0.3 }}
+          >
+            <Sparkles size={11} className="inline mr-1 text-primary" />
+            Todos os modos respeitam o disclaimer médico — a IA é assistente, nunca substitui julgamento clínico.
+          </motion.p>
         </div>
       </section>
 
