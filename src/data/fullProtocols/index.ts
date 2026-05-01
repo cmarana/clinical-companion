@@ -519,13 +519,13 @@ export const fullProtocols: FullProtocol[] = [
   ...cardioFullProtocols15,
   ...neuroFullProtocols13,
   ...sepsisFullProtocols10,
-  ...respiratoryFullProtocols12,
-  ...metabolicFullProtocols11,
-  ...infectiousFullProtocols11,
+  ...respiraFullProtocols12,
+  ...metaboFullProtocols11,
+  ...infectFullProtocols11,
   ...traumaFullProtocols11,
-  ...pediatricFullProtocols9,
-  ...obstetricsFullProtocols12,
-  ...hematologyFullProtocols8,
+  ...pediFullProtocols9,
+  ...obstFullProtocols12,
+  ...hematoFullProtocols8,
 ];
 
 // ==================== Aplicar atualizações 2025/2026 ====================
