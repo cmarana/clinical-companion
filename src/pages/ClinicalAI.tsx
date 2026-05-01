@@ -58,6 +58,44 @@ function ClinicalAIContent() {
   const [patientCtx, setPatientCtx] = useState<PatientContext>({});
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
+  // Histórico local de análises de exames (Imagem/PDF)
+  const { history: imageHistory, addEntry: addImageHistoryEntry, removeEntry: removeImageHistoryEntry, clearHistory: clearImageHistory } = useImageAnalysisHistory();
+  const [historyOpen, setHistoryOpen] = useState(false);
+  const [historyFilter, setHistoryFilter] = useState<string>("ALL");
+  const [historyDetail, setHistoryDetail] = useState<ImageAnalysisHistoryEntry | null>(null);
+  const [compareSelection, setCompareSelection] = useState<string[]>([]);
+  const [compareOpen, setCompareOpen] = useState(false);
+
+  const historyModalities = useMemo(() => {
+    const set = new Set<string>();
+    imageHistory.forEach((h) => {
+      if (h.classifications.length === 0 && h.docsCount > 0) set.add("DOC");
+      h.classifications.forEach((c) => set.add(c.modality || "OUTRO"));
+    });
+    return Array.from(set).sort();
+  }, [imageHistory]);
+
+  const filteredHistory = useMemo(() => {
+    if (historyFilter === "ALL") return imageHistory;
+    return imageHistory.filter((h) => {
+      if (historyFilter === "DOC") return h.classifications.length === 0 && h.docsCount > 0;
+      return h.classifications.some((c) => c.modality === historyFilter);
+    });
+  }, [imageHistory, historyFilter]);
+
+  const toggleCompare = (id: string) => {
+    setCompareSelection((prev) => {
+      if (prev.includes(id)) return prev.filter((x) => x !== id);
+      if (prev.length >= 2) return [prev[1], id];
+      return [...prev, id];
+    });
+  };
+
+  const compareEntries = useMemo(
+    () => compareSelection.map((id) => imageHistory.find((h) => h.id === id)).filter(Boolean) as ImageAnalysisHistoryEntry[],
+    [compareSelection, imageHistory],
+  );
+
   // Structured form
   const [symptoms, setSymptoms] = useState("");
   const [history, setHistory] = useState("");
