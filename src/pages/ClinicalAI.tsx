@@ -556,10 +556,32 @@ function ClinicalAIContent() {
       } else {
         const analysis: string = data?.analysis || "Sem resposta da IA.";
         const cls: Array<{ i: number; modality: string; region: string }> = Array.isArray(data?.classifications) ? data.classifications : [];
+        const summary: string = typeof data?.summary === "string" ? data.summary : "";
+        const alerts: import("@/hooks/useImageAnalysisHistory").CriticalAlert[] = Array.isArray(data?.alerts) ? data.alerts : [];
         const clsBanner = cls.length > 0
           ? `> 🔎 **Classificação automática:** ${cls.map((c) => `Imagem ${c.i} — ${c.modality} (${c.region})`).join(" · ")}\n\n`
           : "";
-        setMessages((prev) => [...prev, { role: "assistant", content: clsBanner + analysis }]);
+
+        // Banner de resumo + alertas (markdown) no topo da resposta no chat
+        let summaryBanner = "";
+        if (summary || alerts.length > 0) {
+          const lines: string[] = [];
+          if (summary) lines.push(`> 📝 **Resumo clínico:** ${summary}`);
+          if (alerts.length > 0) {
+            const icon = (l: string) => (l === "critico" ? "🚨" : l === "atencao" ? "⚠️" : "ℹ️");
+            lines.push(`>`);
+            lines.push(`> **Alertas (${alerts.length}):**`);
+            alerts.forEach((a) => {
+              const value = a.value ? ` — ${a.value}` : "";
+              const ref = a.reference ? ` (ref: ${a.reference})` : "";
+              const action = a.action ? ` · ${a.action}` : "";
+              lines.push(`> ${icon(a.level)} **${a.label}**${value}${ref}${action}`);
+            });
+          }
+          summaryBanner = lines.join("\n") + "\n\n";
+        }
+
+        setMessages((prev) => [...prev, { role: "assistant", content: summaryBanner + clsBanner + analysis }]);
 
         // Salva no histórico (best-effort, não bloqueia UX)
         try {
@@ -572,8 +594,10 @@ function ClinicalAIContent() {
             context: imageContext.trim(),
             classifications: cls,
             primaryModality,
-            analysis: clsBanner + analysis,
+            analysis: summaryBanner + clsBanner + analysis,
             thumbnail: thumb,
+            summary,
+            alerts,
           });
         } catch (err) {
           console.warn("[history] save failed:", err);
@@ -1324,6 +1348,25 @@ function ClinicalAIContent() {
                             {h.primaryModality}
                             <span className="text-muted-foreground font-normal"> · {dateLabel}</span>
                           </span>
+                          {(() => {
+                            const crit = h.alerts?.filter((a) => a.level === "critico").length ?? 0;
+                            const att = h.alerts?.filter((a) => a.level === "atencao").length ?? 0;
+                            if (crit > 0) {
+                              return (
+                                <span className="shrink-0 px-1.5 py-0.5 rounded-full bg-destructive text-destructive-foreground text-[9px] font-bold leading-none flex items-center gap-0.5">
+                                  🚨 {crit}
+                                </span>
+                              );
+                            }
+                            if (att > 0) {
+                              return (
+                                <span className="shrink-0 px-1.5 py-0.5 rounded-full bg-amber-500 text-white text-[9px] font-bold leading-none flex items-center gap-0.5">
+                                  ⚠️ {att}
+                                </span>
+                              );
+                            }
+                            return null;
+                          })()}
                         </div>
                         <div className="text-[10px] text-muted-foreground truncate">{tags}</div>
                         {h.context && (
@@ -1387,6 +1430,55 @@ function ClinicalAIContent() {
                 <p className="text-[11px] text-muted-foreground italic">
                   Indicação clínica: {historyDetail.context}
                 </p>
+              )}
+
+              {/* Painel de Resumo + Alertas Críticos */}
+              {(historyDetail.summary || (historyDetail.alerts?.length ?? 0) > 0) && (
+                <div className="rounded-xl border border-primary/30 bg-primary/5 p-2.5 space-y-1.5">
+                  {historyDetail.summary && (
+                    <div>
+                      <div className="text-[10px] uppercase tracking-wide font-heading font-bold text-primary mb-0.5">
+                        Resumo clínico
+                      </div>
+                      <p className="text-[11px] leading-snug">{historyDetail.summary}</p>
+                    </div>
+                  )}
+                  {(historyDetail.alerts?.length ?? 0) > 0 && (
+                    <div>
+                      <div className="text-[10px] uppercase tracking-wide font-heading font-bold text-primary mb-1 flex items-center gap-1">
+                        <ShieldCheck size={10} />
+                        Alertas ({historyDetail.alerts!.length})
+                      </div>
+                      <ul className="space-y-1">
+                        {historyDetail.alerts!.map((a, idx) => {
+                          const styles =
+                            a.level === "critico"
+                              ? "border-destructive/40 bg-destructive/10 text-destructive"
+                              : a.level === "atencao"
+                                ? "border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-400"
+                                : "border-sky-500/40 bg-sky-500/10 text-sky-700 dark:text-sky-400";
+                          const icon = a.level === "critico" ? "🚨" : a.level === "atencao" ? "⚠️" : "ℹ️";
+                          return (
+                            <li
+                              key={idx}
+                              className={`rounded-md border px-2 py-1 text-[11px] leading-snug ${styles}`}
+                            >
+                              <span className="mr-1">{icon}</span>
+                              <strong>{a.label}</strong>
+                              {a.value && <span> — {a.value}</span>}
+                              {a.reference && (
+                                <span className="opacity-70"> (ref: {a.reference})</span>
+                              )}
+                              {a.action && (
+                                <div className="text-[10px] opacity-80 mt-0.5">→ {a.action}</div>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  )}
+                </div>
               )}
 
               {/* Cabeçalho do paciente para PDF */}
