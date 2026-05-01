@@ -81,10 +81,27 @@ const fadeUp = (delay: number, y = 20) => ({
 
 export default function Auth() {
   const location = useLocation();
-  const initialMode = (location.state as { mode?: "login" | "signup" } | null)?.mode;
+  const locState = (location.state as { mode?: "login" | "signup"; email?: string } | null) ?? null;
+  const initialMode = locState?.mode;
   const [isLogin, setIsLogin] = useState(initialMode !== "signup");
   const [fullName, setFullName] = useState("");
-  const [email, setEmail] = useState("");
+
+  // Pré-preenche o email a partir de (em ordem de prioridade):
+  // 1) location.state.email (navegação interna)
+  // 2) query string ?email= (links de convite/recuperação)
+  // 3) localStorage "pulso_last_email" (última sessão neste dispositivo)
+  const getInitialEmail = () => {
+    try {
+      if (locState?.email) return locState.email;
+      const params = new URLSearchParams(window.location.search);
+      const fromQuery = params.get("email") || params.get("invite_email");
+      if (fromQuery) return decodeURIComponent(fromQuery);
+      const last = localStorage.getItem("pulso_last_email");
+      if (last) return last;
+    } catch { /* noop */ }
+    return "";
+  };
+  const [email, setEmail] = useState(getInitialEmail);
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -128,6 +145,7 @@ export default function Auth() {
       } else if (isLogin) {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
+        try { localStorage.setItem("pulso_last_email", email); } catch { /* noop */ }
         navigate("/");
       } else {
         const { error } = await supabase.auth.signUp({
@@ -139,6 +157,7 @@ export default function Auth() {
           },
         });
         if (error) throw error;
+        try { localStorage.setItem("pulso_last_email", email); } catch { /* noop */ }
         toast({ title: "Conta criada!", description: "Verifique seu e-mail para confirmar o cadastro." });
       }
     } catch (err: any) {
