@@ -1,5 +1,6 @@
 import { createRoot } from "react-dom/client";
 import "./index.css";
+import { startVersionWatcher } from "./lib/version-check";
 
 // Shim storage ASAP — before ANY other module touches localStorage
 const createMemStore = (): Storage => {
@@ -67,9 +68,32 @@ if ("serviceWorker" in navigator) {
         .register("/sw.js")
         .then((reg) => {
           console.log("SW registered:", reg.scope);
+          // Hourly SW update probe
           setInterval(() => reg.update(), 60 * 60 * 1000);
+
+          // When a new SW is installed and waiting, activate it immediately
+          reg.addEventListener("updatefound", () => {
+            const sw = reg.installing;
+            if (!sw) return;
+            sw.addEventListener("statechange", () => {
+              if (sw.state === "installed" && navigator.serviceWorker.controller) {
+                reg.waiting?.postMessage({ type: "SKIP_WAITING" });
+              }
+            });
+          });
         })
         .catch((err) => console.log("SW registration failed:", err));
+
+      // Reload exactly once when a new SW takes control
+      let reloadedForSW = false;
+      navigator.serviceWorker.addEventListener("controllerchange", () => {
+        if (reloadedForSW) return;
+        reloadedForSW = true;
+        window.location.reload();
+      });
+
+      // Start polling /version.json so stale clients self-heal
+      startVersionWatcher();
       return;
     }
 

@@ -1,5 +1,9 @@
-const CACHE_NAME = 'medcore-v7';
-const CONTENT_CACHE = 'medcore-content-v1';
+// __BUILD_ID__ is replaced by the Vite versionPlugin at build time.
+// In dev / unbuilt environments it stays as the literal token, which is fine —
+// the SW only runs in production where the replacement always happens.
+const BUILD_ID = '__BUILD_ID__';
+const CACHE_NAME = 'pulso-' + BUILD_ID;
+const CONTENT_CACHE = 'pulso-content-v1';
 const STATIC_ASSETS = [
   '/',
   '/offline.html',
@@ -40,6 +44,12 @@ self.addEventListener('activate', (event) => {
 
 // Message handler
 self.addEventListener('message', (event) => {
+  // Allow the page to force this waiting SW to take control immediately
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+    return;
+  }
+
   if (event.data && event.data.type === 'PRECACHE_ASSETS') {
     const urls = event.data.urls || [];
     event.waitUntil(
@@ -156,6 +166,12 @@ self.addEventListener('fetch', (event) => {
   if (url.pathname.startsWith('/~oauth')) return;
   if (url.hostname.includes('supabase') || url.pathname.startsWith('/auth')) return;
   if (!url.protocol.startsWith('http')) return;
+
+  // version.json must ALWAYS be fresh — never cache, never serve from SW
+  if (isSameOrigin(url) && url.pathname === '/version.json') {
+    event.respondWith(fetch(event.request, { cache: 'no-store' }));
+    return;
+  }
 
   // Navigation requests: Network first, fallback to cache
   if (event.request.mode === 'navigate') {
