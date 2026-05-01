@@ -1,6 +1,7 @@
 import type { QuizQuestion } from "@/types/medical";
+import { quizQuestionsExtra } from "./quizQuestionsExtra";
 
-export const quizQuestions: QuizQuestion[] = [
+const quizQuestionsBase: QuizQuestion[] = [
   // PCR
   { id: 1, question: "Qual a frequência ideal de compressões torácicas durante a RCP?", options: ["60-80/min", "80-100/min", "100-120/min", "120-140/min"], correctIndex: 2, explanation: "As diretrizes da AHA recomendam compressões a uma frequência de 100-120/min, com profundidade de 5-6 cm em adultos, permitindo retorno completo do tórax.", category: "PCR" },
   { id: 2, question: "Qual a dose de adrenalina na PCR em adultos?", options: ["0,5mg IV a cada 3-5 min", "1mg IV a cada 3-5 min", "1mg IV a cada 5-10 min", "2mg IV a cada 3-5 min"], correctIndex: 1, explanation: "Adrenalina 1mg IV/IO a cada 3-5 minutos é a dose padrão durante a RCP, tanto para ritmos chocáveis quanto não-chocáveis.", category: "PCR" },
@@ -117,3 +118,5 @@ export const quizQuestions: QuizQuestion[] = [
   { id: 99, question: "Qual o tratamento do Delirium na emergência?", options: ["Benzodiazepínicos em dose alta", "Haloperidol 2,5-5mg IM/IV", "Midazolam contínuo", "Fenitoína IV"], correctIndex: 1, explanation: "Haloperidol 2,5-5mg IM/IV é o tratamento de primeira linha do delirium hiperativo na emergência. Tratar causa de base (infecção, metabólica, medicamentos). BZD é primeira linha APENAS no delirium por abstinência alcoólica.", category: "Clínica" },
   { id: 100, question: "Qual a indicação de Sugamadex?", options: ["Reverter opioides", "Reverter benzodiazepínicos", "Reverter bloqueio neuromuscular por Rocurônio", "Reverter intoxicação por paracetamol"], correctIndex: 2, explanation: "Sugamadex reverte o bloqueio neuromuscular causado por Rocurônio e Vecurônio. Dose: 2-4 mg/kg (reversão de rotina) ou 16 mg/kg (reversão imediata/emergencial). Início de ação: 2-3 minutos.", category: "Medicações" },
 ];
+
+export const quizQuestions: QuizQuestion[] = [...quizQuestionsBase, ...quizQuestionsExtra];
