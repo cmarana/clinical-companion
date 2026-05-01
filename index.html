@@ -391,12 +391,25 @@
         var startedAt = Date.now();
         var MIN_SHOW_MS = 350;
 
+        // Trava o scroll enquanto o splash está visível para evitar layout shift
+        document.documentElement.classList.add('pulso-splash-active');
+
         function doHide(){
           if (hidden) return; hidden = true;
+          // Dispara a entrada suave do app (fade + scale sutil) no MESMO frame
+          // do início do fade-out do splash — sem layout shift, ambos cobrem
+          // a mesma área (root é normal flow, splash é position:fixed).
+          var root = document.getElementById('root');
+          if (root) {
+            root.classList.add('pulso-app-enter');
+            // Remove a classe após a animação para não interferir com o app
+            setTimeout(function(){ root.classList.remove('pulso-app-enter'); }, 700);
+          }
           splash.classList.add('pulso-hide');
           setTimeout(function(){
             if (splash && splash.parentNode) splash.parentNode.removeChild(splash);
-          }, 400);
+            document.documentElement.classList.remove('pulso-splash-active');
+          }, 560);
         }
         function hide(){
           var elapsed = Date.now() - startedAt;
