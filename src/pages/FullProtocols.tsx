@@ -2,20 +2,27 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import {
   ChevronRight, Search, Star, TrendingUp, ArrowDownAZ, Filter,
-  Lock, Crown, X, Sparkles,
+  Lock, Crown, X, Sparkles, BookOpen, CalendarDays,
 } from "lucide-react";
 import { useState, useMemo, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
 import { fullProtocolCategories } from "@/data/fullProtocols";
 import { fullProtocolMetas, type FullProtocolMeta } from "@/data/fullProtocols/metadata";
+import {
+  protocolGuidelinesIndex,
+  allSocieties,
+  yearRange,
+} from "@/data/fullProtocols/guidelinesIndex";
 import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";
+import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
+import { Slider } from "@/components/ui/slider";
 import { useTopProtocols } from "@/hooks/useTopProtocols";
 import { useProtocolFavorites } from "@/hooks/useProtocolFavorites";
 import { hapticLight } from "@/lib/haptics";
 import { motion, AnimatePresence } from "framer-motion";
 
-type SortKey = "popular" | "alpha" | "favorites";
+type SortKey = "popular" | "alpha" | "favorites" | "guideline_year";
 
 const FREE_PREVIEW_PER_CAT = 5; // Free vê 5 protocolos por categoria, com badge de bloqueio nos demais
 const FREE_TOTAL_LIMIT = 25;    // Limite global free
