@@ -66,21 +66,49 @@ serve(async (req) => {
     }
 
     const imageDataUrl: string | undefined = body.imageDataUrl;
+    const imageDataUrls: unknown = body.imageDataUrls;
     const context: string = typeof body.context === "string" ? body.context.slice(0, 2000) : "";
 
-    if (!imageDataUrl || typeof imageDataUrl !== "string" || !imageDataUrl.startsWith("data:image/")) {
-      return new Response(JSON.stringify({ error: "Imagem não fornecida ou formato inválido" }), {
+    // Normaliza para array (suporta lote + retrocompatibilidade)
+    let images: string[] = [];
+    if (Array.isArray(imageDataUrls)) {
+      images = imageDataUrls.filter(
+        (u): u is string => typeof u === "string" && u.startsWith("data:image/"),
+      );
+    } else if (typeof imageDataUrl === "string" && imageDataUrl.startsWith("data:image/")) {
+      images = [imageDataUrl];
+    }
+
+    if (images.length === 0) {
+      return new Response(JSON.stringify({ error: "Nenhuma imagem válida fornecida" }), {
         status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-    // Limite de tamanho (~6MB em base64 ≈ 4.5MB binário)
-    if (imageDataUrl.length > 8_500_000) {
-      return new Response(JSON.stringify({ error: "Imagem muito grande (máx 6MB). Reduza a resolução." }), {
-        status: 413,
+    const MAX_IMAGES = 5;
+    if (images.length > MAX_IMAGES) {
+      return new Response(JSON.stringify({ error: `Máximo de ${MAX_IMAGES} imagens por análise` }), {
+        status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
+    }
+
+    // Limite individual ~6MB base64 e payload total ~25MB
+    const totalSize = images.reduce((acc, u) => acc + u.length, 0);
+    for (const u of images) {
+      if (u.length > 8_500_000) {
+        return new Response(
+          JSON.stringify({ error: "Uma das imagens excede 6MB. Reduza a resolução." }),
+          { status: 413, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
+      }
+    }
+    if (totalSize > 35_000_000) {
+      return new Response(
+        JSON.stringify({ error: "Lote muito grande (>25MB total). Reduza imagens ou envie menos." }),
+        { status: 413, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+      );
     }
 
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
@@ -91,9 +119,23 @@ serve(async (req) => {
       });
     }
 
-    const userText = context.trim()
-      ? `Contexto clínico fornecido pelo médico:\n${context}\n\nAnalise a imagem em anexo seguindo o formato obrigatório.`
-      : "Analise a imagem em anexo seguindo o formato obrigatório. Sem contexto clínico fornecido.";
+    const isBatch = images.length > 1;
+    const batchHeader = isBatch
+      ? `Lote com ${images.length} imagens da MESMA investigação clínica enviadas em sequência (numeradas de 1 a ${images.length}). Analise como SÉRIE: descreva achados de cada imagem individualmente e depois faça uma síntese integrada.\n\n`
+      : "";
+
+    const userText = batchHeader + (context.trim()
+      ? `Contexto clínico fornecido pelo médico:\n${context}\n\nAnalise ${isBatch ? "as imagens" : "a imagem"} em anexo seguindo o formato obrigatório.`
+      : `Analise ${isBatch ? "as imagens" : "a imagem"} em anexo seguindo o formato obrigatório. Sem contexto clínico fornecido.`);
+
+    // Monta content multimodal: 1 texto + N imagens
+    const userContent: Array<Record<string, unknown>> = [{ type: "text", text: userText }];
+    images.forEach((url, idx) => {
+      if (isBatch) {
+        userContent.push({ type: "text", text: `\n--- Imagem ${idx + 1} de ${images.length} ---` });
+      }
+      userContent.push({ type: "image_url", image_url: { url } });
+    });
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -105,13 +147,7 @@ serve(async (req) => {
         model: "google/gemini-2.5-flash",
         messages: [
           { role: "system", content: SYSTEM_PROMPT },
-          {
-            role: "user",
-            content: [
-              { type: "text", text: userText },
-              { type: "image_url", image_url: { url: imageDataUrl } },
-            ],
-          },
+          { role: "user", content: userContent },
         ],
       }),
     });
