@@ -230,6 +230,12 @@ export default function FullProtocolDetail() {
                 Classe {evidence.class} · Nível {evidence.level}
               </span>
             )}
+            {protocol.lastReviewed && (
+              <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                <CalendarCheck size={10} />
+                Revisado {protocol.lastReviewed.replace("-", "/")}
+              </span>
+            )}
             {updateLabel && (
               <span className="inline-flex items-center gap-1 text-[10px] font-medium px-2 py-0.5 rounded-full bg-primary/10 text-primary">
                 <CalendarCheck size={10} />
