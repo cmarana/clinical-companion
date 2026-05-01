@@ -724,7 +724,7 @@ function ClinicalAIContent() {
                 }}
               />
 
-              {originalImages.length === 0 ? (
+              {originalImages.length === 0 && documents.length === 0 ? (
                 <div className="grid grid-cols-2 gap-2">
                   <button
                     type="button"
@@ -738,11 +738,16 @@ function ClinicalAIContent() {
                   <button
                     type="button"
                     onClick={() => fileInputRef.current?.click()}
-                    className="flex flex-col items-center justify-center gap-1.5 py-4 rounded-xl border-2 border-dashed border-border bg-muted/30 hover:bg-muted/60 active:scale-[0.98] transition-all"
+                    disabled={pdfLoading}
+                    className="flex flex-col items-center justify-center gap-1.5 py-4 rounded-xl border-2 border-dashed border-border bg-muted/30 hover:bg-muted/60 active:scale-[0.98] transition-all disabled:opacity-60"
                   >
-                    <Upload size={22} className="text-muted-foreground" />
+                    {pdfLoading ? (
+                      <Loader2 size={22} className="text-muted-foreground animate-spin" />
+                    ) : (
+                      <Upload size={22} className="text-muted-foreground" />
+                    )}
                     <span className="text-[11px] font-heading font-semibold">Enviar arquivos</span>
-                    <span className="text-[9px] text-muted-foreground">Até {MAX_IMAGES} • 6MB cada</span>
+                    <span className="text-[9px] text-muted-foreground">Imagem ou PDF</span>
                   </button>
                 </div>
               ) : (
