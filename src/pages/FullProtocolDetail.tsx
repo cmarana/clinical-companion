@@ -263,28 +263,28 @@ export default function FullProtocolDetail() {
           />
 
           <Tabs defaultValue={matchedTree ? "flowchart" : defaultTab} className="w-full">
-            <TabsList className="w-full flex flex-wrap h-auto gap-1.5 bg-transparent p-0 mb-4 justify-start">
+            <TabsList className="w-full flex flex-wrap h-auto gap-1.5 bg-transparent p-0 mb-5 justify-start">
               {matchedTree && (
                 <TabsTrigger
                   value="flowchart"
-                  className="shrink-0 text-[11px] px-2.5 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground bg-gradient-to-r from-primary/15 to-primary/5 ring-1 ring-primary/20 font-semibold gap-1"
+                  className="shrink-0 inline-flex items-center gap-1.5 text-[11px] tracking-tight px-3 py-1.5 rounded-full font-heading font-medium text-primary bg-primary/8 ring-1 ring-primary/15 hover:bg-primary/12 transition-all duration-200 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:ring-transparent data-[state=active]:shadow-[0_2px_8px_-2px_hsl(var(--primary)/0.4)]"
                 >
-                  <GitBranch size={12} /> Fluxograma
+                  <GitBranch size={11} strokeWidth={2.25} /> Fluxograma
                 </TabsTrigger>
               )}
               {hasCalcs && (
                 <TabsTrigger
                   value="calculadoras"
-                  className="shrink-0 text-[11px] px-2.5 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground bg-gradient-to-r from-amber-500/15 to-amber-500/5 ring-1 ring-amber-500/20 font-semibold gap-1"
+                  className="shrink-0 inline-flex items-center gap-1.5 text-[11px] tracking-tight px-3 py-1.5 rounded-full font-heading font-medium text-amber-700 dark:text-amber-400 bg-amber-500/8 ring-1 ring-amber-500/15 hover:bg-amber-500/12 transition-all duration-200 data-[state=active]:bg-amber-500 data-[state=active]:text-white data-[state=active]:ring-transparent data-[state=active]:shadow-[0_2px_8px_-2px_hsl(38_92%_50%/0.45)]"
                 >
-                  <Calculator size={12} /> Calculadoras
+                  <Calculator size={11} strokeWidth={2.25} /> Calculadoras
                 </TabsTrigger>
               )}
               {orderedSections.map(s => (
                 <TabsTrigger
                   key={s.id}
                   value={s.id}
-                  className="shrink-0 text-[11px] px-2.5 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground bg-secondary"
+                  className="shrink-0 text-[11px] tracking-tight px-3 py-1.5 rounded-full font-heading font-medium text-muted-foreground bg-muted/50 hover:bg-muted hover:text-foreground transition-all duration-200 data-[state=active]:bg-foreground data-[state=active]:text-background data-[state=active]:shadow-[0_2px_8px_-2px_hsl(var(--foreground)/0.25)]"
                 >
                   {s.title}
                 </TabsTrigger>
