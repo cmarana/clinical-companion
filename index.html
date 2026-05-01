@@ -241,8 +241,11 @@
           obs.observe(root, { childList: true });
         }
 
-        // Hard safety cap
-        setTimeout(hide, 4500);
+        // Do not hide the splash unless React has rendered content. If startup
+        // fails, keep the branded recovery UI visible instead of a blank screen.
+        setTimeout(function(){
+          if (root && root.childNodes.length > 0) hide();
+        }, 4500);
 
         function showError(reason){
           if (!splash || !splash.parentNode) return;

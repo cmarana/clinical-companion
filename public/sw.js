@@ -1,4 +1,4 @@
-const CACHE_NAME = 'medcore-v6';
+const CACHE_NAME = 'medcore-v7';
 const CONTENT_CACHE = 'medcore-content-v1';
 const STATIC_ASSETS = [
   '/',

@@ -34,34 +34,11 @@ export default defineConfig(({ mode }) => {
       rollupOptions: {
         output: {
           manualChunks: (id) => {
-            // Vendor splits — keep the React ecosystem together to avoid
-            // temporal-dead-zone errors caused by circular vendor chunks
-            // (e.g. "Cannot access 'L' before initialization").
-            if (id.includes("node_modules")) {
-              // React runtime + everything that ships with React refs
-              if (
-                id.includes("/react/") ||
-                id.includes("/react-dom/") ||
-                id.includes("/scheduler/") ||
-                id.includes("/react-router") ||
-                id.includes("/@remix-run/") ||
-                id.includes("/@tanstack/react-query") ||
-                id.includes("/use-sync-external-store/") ||
-                id.includes("/react-is/")
-              ) return "vendor-react";
+            // Do not manually split node_modules. Recharts/d3 and other CJS-heavy
+            // packages can form circular vendor chunks in production, causing
+            // TDZ crashes such as "Cannot access 'S' before initialization".
+            if (id.includes("node_modules")) return undefined;
 
-              if (id.includes("@supabase")) return "vendor-supabase";
-              if (id.includes("framer-motion")) return "vendor-motion";
-              if (id.includes("recharts") || id.includes("d3-")) return "vendor-charts";
-              if (id.includes("@radix-ui")) return "vendor-radix";
-              if (id.includes("lucide-react")) return "vendor-icons";
-              if (id.includes("zod") || id.includes("react-hook-form")) return "vendor-forms";
-              if (id.includes("date-fns")) return "vendor-date";
-              // Everything else stays in Vite's default vendor chunk —
-              // do NOT return a name here, otherwise Rollup may create
-              // circular references between vendor-* groups.
-              return undefined;
-            }
             // Data splits — keep heavy clinical content out of the main chunk
             if (id.includes("/src/data/full-protocols/")) return "data-full-protocols";
             if (id.includes("/src/data/prescriptions/")) return "data-prescriptions";
