@@ -241,13 +241,8 @@ export default function Landing() {
   const heroY = useTransform(scrollYProgress, [0, 1], [0, 80]);
   const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
-  // Show sticky CTA after scrolling past hero
-  const [showStickyCta, setShowStickyCta] = useState(false);
-  useEffect(() => {
-    const onScroll = () => setShowStickyCta(window.scrollY > 600);
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
+  // Sticky mobile CTA removido — botão agora é apenas inline (no Hero e na seção de Planos),
+  // evitando que cubra texto, footer e o home indicator do iOS.
 
   // Hide the inline HTML splash as soon as the Landing actually paints.
   useEffect(() => {
@@ -955,7 +950,7 @@ export default function Landing() {
       </section>
 
       {/* ═══ FOOTER ═══════════════════════════════════════════ */}
-      <footer className="border-t border-border/30 bg-muted/30 pb-[calc(env(safe-area-inset-bottom)+88px)] sm:pb-0">
+      <footer className="border-t border-border/30 bg-muted/30">
         <div className="max-w-6xl mx-auto px-4 py-12 sm:py-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {/* Brand */}
