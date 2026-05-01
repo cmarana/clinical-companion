@@ -145,6 +145,7 @@ export default function Auth() {
       } else if (isLogin) {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
+        try { localStorage.setItem("pulso_last_email", email); } catch { /* noop */ }
         navigate("/");
       } else {
         const { error } = await supabase.auth.signUp({
@@ -156,6 +157,7 @@ export default function Auth() {
           },
         });
         if (error) throw error;
+        try { localStorage.setItem("pulso_last_email", email); } catch { /* noop */ }
         toast({ title: "Conta criada!", description: "Verifique seu e-mail para confirmar o cadastro." });
       }
     } catch (err: any) {
