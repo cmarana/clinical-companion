@@ -31,7 +31,7 @@ export default function FloatingThemeToggle({ className = "" }: FloatingThemeTog
       }}
       aria-label="Alternar tema"
       title={title}
-      className={`fixed top-3 right-3 z-[90] safe-area-top rounded-2xl border border-border bg-card/95 p-2.5 text-muted-foreground shadow-lg backdrop-blur-md transition-colors hover:bg-accent hover:text-foreground ${className}`}
+      className={`fixed top-safe-3 right-3 z-[90] rounded-2xl border border-border bg-card/95 p-2.5 text-muted-foreground shadow-lg backdrop-blur-md transition-colors hover:bg-accent hover:text-foreground ${className}`}
     >
       {theme === "oled" ? <Eclipse size={18} /> : theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
     </button>
