@@ -10,7 +10,7 @@ import {
   Eye, EyeOff, Zap, Pill, Bot, Calculator, Shield, Clock,
   ChevronRight, ArrowLeft, Activity, Heart,
   Moon, Sun, Eclipse, Sparkles, Star, Check,
-  Stethoscope, Users
+  Stethoscope, Users, Loader2, AlertCircle
 } from "lucide-react";
 import pulsoLogoLight from "@/assets/pulso-logo-light.png";
 import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
