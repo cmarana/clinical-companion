@@ -132,7 +132,7 @@ describe.each(DEVICES)("Sobreposição com status bar · $name", (device) => {
     // O conteúdo simulado começa em y=0 → seria sobreposto pela status bar
     // SEM o scrim. Com o scrim opaco e z-index alto, a faixa fica visível
     // POR CIMA do conteúdo, prevenindo a leitura do texto sob o horário.
-    const sim = container.querySelector(".sim-content") as HTMLElement;
+    const sim = host.querySelector(".sim-content") as HTMLElement;
     expect(sim).toBeTruthy();
 
     // Sanity: o scrim usa fundo do tema (token semântico), nunca transparente.
