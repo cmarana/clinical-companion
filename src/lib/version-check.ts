@@ -188,22 +188,32 @@ function promptUserForUpdate(remoteBuildId: string, trigger: string) {
   window.dispatchEvent(new CustomEvent<BuildUpdateEventDetail>(BUILD_UPDATE_EVENT, { detail }));
 }
 
-export async function checkBuildVersion(trigger: string = "manual"): Promise<void> {
+export async function checkBuildVersion(trigger: string = "manual", force = false): Promise<VersionStatus> {
   const now = Date.now();
-  if (now - lastCheck < MIN_RECHECK_MS) return;
+  if (!force && now - lastCheck < MIN_RECHECK_MS) return getVersionStatus();
   lastCheck = now;
 
   track("version_check_started", { trigger });
   const remote = await fetchRemoteBuildId();
-  if (!remote) return;
-  if (CURRENT_BUILD_ID === "dev") return; // never reload in dev
+  if (!remote) {
+    lastCheckResult = "error";
+    return getVersionStatus();
+  }
+  lastRemoteBuild = remote;
+  if (CURRENT_BUILD_ID === "dev") {
+    lastCheckResult = "ok";
+    return getVersionStatus();
+  }
 
   if (remote !== CURRENT_BUILD_ID) {
+    lastCheckResult = "update";
     track("build_update_detected", { remote_build: remote, trigger });
     promptUserForUpdate(remote, trigger);
   } else {
+    lastCheckResult = "ok";
     track("version_check_ok", { remote_build: remote });
   }
+  return getVersionStatus();
 }
 
 export function startVersionWatcher() {
