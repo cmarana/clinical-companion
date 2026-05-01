@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useState, useMemo, type ReactNode } from "react";
 import { safeLocalStorage } from "@/lib/safeStorage";
+import { applyNativeStatusBarStyle } from "@/lib/native-statusbar";
 
 type Theme = "light" | "dark" | "oled";
 type FontSize = "small" | "normal" | "large" | "xlarge";
@@ -59,6 +60,8 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
     if (theme === "dark") el.classList.add("dark");
     if (theme === "oled") el.classList.add("dark", "oled");
     safeLocalStorage.setItem("app-theme", theme);
+    // Sync native StatusBar icons (iOS + Android) with the app theme.
+    applyNativeStatusBarStyle(theme);
   }, [theme]);
 
   useEffect(() => {
