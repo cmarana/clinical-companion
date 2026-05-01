@@ -335,7 +335,7 @@ export default function Landing() {
             initial="hidden" animate="visible" variants={fadeUp} custom={2}
           >
             A plataforma mais completa para médicos plantonistas.{" "}
-            Protocolos, IA clínica multimodal, calculadoras e 1.500+ fármacos —{" "}
+            Protocolos, IA clínica multimodal, calculadoras e 1.600+ fármacos —{" "}
             <span className="text-foreground font-medium">tudo offline, no seu bolso.</span>
           </motion.p>
 
@@ -842,8 +842,8 @@ export default function Landing() {
               </p>
               <ul className="space-y-2.5 mb-8 flex-1">
                 {[
-                  "1.150+ protocolos completos",
-                  "1.500+ medicamentos",
+                  "1.250+ protocolos completos",
+                  "1.600+ medicamentos",
                   "53 calculadoras médicas",
                   "IA Clínica multimodal (Chat, Caso, Exames, Plantão, Texto)",
                   `${fmt(DATASET_COUNTS.flashcards)} flashcards · ${fmt(QUIZ_TOTAL)} questões`,

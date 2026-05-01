@@ -56,7 +56,6 @@ const allPrimaryModules: Module[] = [
   { label: "Modo Plantão", sub: "Guia completo para o plantão", icon: AlertTriangle, path: "/duty", variant: "emergency", tags: ["emergencia", "clinica-medica", "cirurgia", "generalista"] },
   { label: "Emergência", sub: "Algoritmos de urgência / UTI", icon: Zap, path: "/emergency", variant: "emergency", tags: ["emergencia", "cirurgia", "generalista"] },
   { label: "Bulário", sub: "1.600+ fármacos", icon: Pill, path: "/bulario", variant: "default", tags: ["all"] },
-{[search_line_59]}
   { label: "Protocolos", sub: "1.250+ protocolos clínicos", icon: BookOpen, path: "/full-protocols", variant: "default", tags: ["all"] },
   { label: "Pediatria", sub: "Protocolos pediátricos", icon: Baby, path: "/pediatrics", variant: "cyan", tags: ["pediatria"] },
   { label: "Doses Pediátricas", sub: "Calculadora por peso", icon: Calculator, path: "/pediatric-doses", variant: "cyan", tags: ["pediatria"] },
