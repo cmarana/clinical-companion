@@ -16,6 +16,7 @@ import { fullProtocolMetas } from "@/data/fullProtocols/metadata";
 import type { FullProtocol } from "@/data/fullProtocols/types";
 import ProtocolActionBar from "@/components/ProtocolActionBar";
 import { GuidelinesPanel } from "@/components/protocols/GuidelinesPanel";
+import { EmptyHint } from "@/components/protocols/EmptyHint";
 import { useRecentHistory } from "@/hooks/useRecentHistory";
 import { useProtocolAnalytics } from "@/hooks/useProtocolAnalytics";
 import { useTTPTracking } from "@/hooks/useTTPTracking";
@@ -306,23 +307,37 @@ export default function FullProtocolDetail() {
               </TabsContent>
             )}
 
-            {orderedSections.map(s => (
-              <TabsContent key={s.id} value={s.id} className="protocol-content">
-                <h2 className="text-xl font-semibold mb-3 border-b border-border pb-2 font-display tracking-tight">
-                   {s.title}
-                 </h2>
-                {s.id === "references" && protocol.guidelines && protocol.guidelines.length > 0 && (
-                  <div className="mb-4">
-                    <GuidelinesPanel guidelines={protocol.guidelines} />
-                  </div>
-                )}
-                {s.content.split("\n").map((line, i) => (
-                  <p key={i} className="mb-2 text-sm leading-relaxed whitespace-pre-wrap">
-                    {line}
-                  </p>
-                ))}
-              </TabsContent>
-            ))}
+            {orderedSections.map(s => {
+              const hasGuidelines = !!(protocol.guidelines && protocol.guidelines.length > 0);
+              const trimmed = s.content?.trim() ?? "";
+              const isEmpty = trimmed.length === 0;
+              return (
+                <TabsContent key={s.id} value={s.id} className="protocol-content">
+                  <h2 className="text-xl font-semibold mb-3 border-b border-border pb-2 font-display tracking-tight">
+                    {s.title}
+                  </h2>
+                  {s.id === "references" && (
+                    <div className="mb-4">
+                      <GuidelinesPanel guidelines={protocol.guidelines ?? []} />
+                    </div>
+                  )}
+                  {isEmpty ? (
+                    s.id === "references" && hasGuidelines ? null : (
+                      <EmptyHint
+                        title={`Sem conteúdo em "${s.title}"`}
+                        description="Esta seção ainda não foi preenchida para este protocolo. Outras abas podem conter as informações que você procura."
+                      />
+                    )
+                  ) : (
+                    s.content.split("\n").map((line, i) => (
+                      <p key={i} className="mb-2 text-sm leading-relaxed whitespace-pre-wrap">
+                        {line}
+                      </p>
+                    ))
+                  )}
+                </TabsContent>
+              );
+            })}
           </Tabs>
         </div>
       </div>
