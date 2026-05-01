@@ -955,7 +955,7 @@ export default function Landing() {
       </section>
 
       {/* ═══ FOOTER ═══════════════════════════════════════════ */}
-      <footer className="border-t border-border/30 bg-muted/30">
+      <footer className="border-t border-border/30 bg-muted/30 pb-[calc(env(safe-area-inset-bottom)+88px)] sm:pb-0">
         <div className="max-w-6xl mx-auto px-4 py-12 sm:py-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
             {/* Brand */}
