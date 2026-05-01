@@ -9,6 +9,24 @@ export interface EvidenceLevel {
   level: "A" | "B" | "C";
 }
 
+/** Fonte/diretriz citada em um protocolo, com link clicável para auditoria. */
+export interface GuidelineSource {
+  /** Sociedade/órgão emissor. Ex.: "SBC", "AHA/ACC", "ESC", "SSC", "MS Brasil". */
+  society: string;
+  /** Título resumido da diretriz. Ex.: "Diretriz de IAM com Supra de ST". */
+  title: string;
+  /** Ano da publicação ou da última atualização. */
+  year: number;
+  /** Recomendação/escopo principal extraído da diretriz para este protocolo. */
+  recommendation: string;
+  /** URL oficial (DOI, site da sociedade, PDF). Deve abrir em nova aba. */
+  url: string;
+  /** Classe de recomendação opcional (ACC/AHA). */
+  class?: "I" | "IIa" | "IIb" | "III";
+  /** Nível de evidência opcional. */
+  level?: "A" | "B" | "C";
+}
+
 export interface FullProtocol {
   id: string;
   title: string;
@@ -16,6 +34,8 @@ export interface FullProtocol {
   category: string;
   tags: string[];
   evidence?: EvidenceLevel;
+  /** Diretrizes/fontes oficiais citadas (com link para auditoria e atualização). */
+  guidelines?: GuidelineSource[];
   sections: FullProtocolSection[];
 }
 
