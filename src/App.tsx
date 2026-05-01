@@ -12,6 +12,7 @@ import AppLayout from "@/components/AppLayout";
 import { PWAInstallPrompt, OfflineIndicator } from "@/components/PWAInstallPrompt";
 
 import UpdatePromptDialog from "@/components/UpdatePromptDialog";
+import StatusBarScrim from "@/components/StatusBarScrim";
 
 import { lazy, Suspense, useEffect } from "react";
 import { ProtocolListSkeleton, ProtocolDetailSkeleton, MedicationListSkeleton } from "@/components/PageSkeleton";
@@ -245,6 +246,7 @@ const App = () => (
               <NotesProvider>
                 <TooltipProvider>
                   <SplashHider />
+                  <StatusBarScrim />
                   <Toaster />
                   <Sonner />
                   <OfflineIndicator />
