@@ -245,6 +245,51 @@ serve(async (req) => {
         ? SYSTEM_PROMPT_IMAGE
         : SYSTEM_PROMPT_DOCUMENT;
 
+    // ─── Passo 1: classificação automática (modalidade + região) ───
+    interface Classification { i: number; modality: string; region: string; key: string }
+    let classifications: Classification[] = [];
+    if (hasImages) {
+      try {
+        const clsContent: Array<Record<string, unknown>> = [
+          { type: "text", text: `Classifique as ${images.length} imagem(ns) abaixo na ordem.` },
+        ];
+        images.forEach((url) => clsContent.push({ type: "image_url", image_url: { url } }));
+
+        const clsResp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
+          method: "POST",
+          headers: { Authorization: `Bearer ${LOVABLE_API_KEY}`, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            model: "google/gemini-2.5-flash-lite",
+            messages: [
+              { role: "system", content: CLASSIFIER_PROMPT },
+              { role: "user", content: clsContent },
+            ],
+            response_format: { type: "json_object" },
+          }),
+        });
+        if (clsResp.ok) {
+          const clsData = await clsResp.json();
+          const raw = clsData?.choices?.[0]?.message?.content ?? "{}";
+          const parsed = JSON.parse(raw);
+          if (Array.isArray(parsed?.items)) {
+            classifications = parsed.items
+              .filter((x: any) => x && typeof x === "object")
+              .map((x: any, idx: number) => ({
+                i: typeof x.i === "number" ? x.i : idx + 1,
+                modality: typeof x.modality === "string" ? x.modality : "OUTRO",
+                region: typeof x.region === "string" ? x.region : "não identificada",
+                key: typeof x.key === "string" && CHECKLISTS[x.key] ? x.key : "generico",
+              }))
+              .slice(0, images.length);
+          }
+        } else {
+          console.warn("[image-analysis] classifier failed status=", clsResp.status);
+        }
+      } catch (e) {
+        console.warn("[image-analysis] classifier error:", e);
+      }
+    }
+
     const isBatchImg = images.length > 1;
     const headerParts: string[] = [];
     if (hasImages && isBatchImg) {
@@ -253,9 +298,23 @@ serve(async (req) => {
     if (hasDocs) {
       headerParts.push(`${documents.length} documento(s) PDF anexado(s) (texto já extraído abaixo).`);
     }
-    const header = headerParts.length ? headerParts.join(" ") + "\n\n" : "";
 
-    const userText = header + (context.trim()
+    // Bloco de classificação + checklists direcionados
+    let classificationBlock = "";
+    if (classifications.length > 0) {
+      const lines = classifications.map((c) => `- Imagem ${c.i}: ${c.modality} — ${c.region}`).join("\n");
+      const uniqueKeys = Array.from(new Set(classifications.map((c) => c.key)));
+      const checklistBlocks = uniqueKeys
+        .map((k) => `### Checklist (${k}):\n${CHECKLISTS[k] ?? CHECKLISTS["generico"]}`)
+        .join("\n\n");
+      classificationBlock =
+        `\n\nCLASSIFICAÇÃO AUTOMÁTICA (confirme ou corrija no laudo):\n${lines}\n\n` +
+        `CHECKLISTS DIRECIONADOS — use como roteiro mínimo de itens a comentar:\n\n${checklistBlocks}\n`;
+    }
+
+    const header = headerParts.length ? headerParts.join(" ") + "\n" : "";
+
+    const userText = header + classificationBlock + "\n" + (context.trim()
       ? `Contexto clínico fornecido pelo médico:\n${context}\n\nAnalise os materiais em anexo seguindo o formato obrigatório.`
       : `Analise os materiais em anexo seguindo o formato obrigatório. Sem contexto clínico fornecido.`);
 
