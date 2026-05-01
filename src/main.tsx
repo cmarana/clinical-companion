@@ -1,6 +1,7 @@
 import { createRoot } from "react-dom/client";
 import "./index.css";
 import { startVersionWatcher } from "./lib/version-check";
+import { configureNativeStatusBar } from "./lib/native-statusbar";
 
 // Shim storage ASAP — before ANY other module touches localStorage
 const createMemStore = (): Storage => {
@@ -106,6 +107,9 @@ if ("serviceWorker" in navigator) {
 const bootstrap = async () => {
   const rootEl = document.getElementById("root");
   if (!rootEl) return;
+
+  // Configure native status bar (no-op on web/PWA)
+  void configureNativeStatusBar();
 
   try {
     const { default: App } = await import("./App.tsx");
