@@ -842,8 +842,8 @@ export default function Landing() {
               </p>
               <ul className="space-y-2.5 mb-8 flex-1">
                 {[
-                  "1.047 protocolos completos",
-                  "1.400+ medicamentos",
+                  "1.150+ protocolos completos",
+                  "1.500+ medicamentos",
                   "53 calculadoras médicas",
                   "IA Clínica multimodal (Chat, Caso, Exames, Plantão, Texto)",
                   `${fmt(DATASET_COUNTS.flashcards)} flashcards · ${fmt(QUIZ_TOTAL)} questões`,
