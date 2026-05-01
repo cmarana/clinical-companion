@@ -44,6 +44,65 @@ const features = [
   { icon: FileText, title: "Prescrições Prontas", desc: "Modelos por diagnóstico, prontos para copiar e adaptar. Checagem de interações por IA.", accent: "bg-amber-500/10 text-amber-500" },
 ];
 
+/**
+ * 5 modalidades da IA Clínica multimodal — espelham as abas reais
+ * de /clinical-ai. Cada CTA abre direto no modo correspondente
+ * via deep-link `?tab=`.
+ */
+const aiModes = [
+  {
+    id: "chat",
+    icon: MessageSquare,
+    title: "Chat",
+    tagline: "Conversa livre com a IA",
+    desc: "Tire dúvidas clínicas, peça diagnósticos diferenciais e raciocínio passo-a-passo. Suporta voz.",
+    cta: "Abrir Chat",
+    accent: "from-blue-500/15 to-blue-500/5 text-blue-500 ring-blue-500/20",
+    iconBg: "bg-blue-500/15 text-blue-500",
+  },
+  {
+    id: "structured",
+    icon: ClipboardList,
+    title: "Caso estruturado",
+    tagline: "Anamnese guiada",
+    desc: "Preencha queixa, antecedentes, exame físico e exames. A IA devolve hipóteses, conduta e prescrição.",
+    cta: "Montar caso",
+    accent: "from-emerald-500/15 to-emerald-500/5 text-emerald-500 ring-emerald-500/20",
+    iconBg: "bg-emerald-500/15 text-emerald-500",
+  },
+  {
+    id: "image",
+    icon: ScanLine,
+    title: "Exames (imagem)",
+    tagline: "Análise multimodal",
+    desc: "Envie RX, TC, RM, US ou ECG. A IA descreve achados, sugere hipóteses e gera resumo + alertas críticos.",
+    cta: "Analisar exame",
+    accent: "from-primary/15 to-primary/5 text-primary ring-primary/25",
+    iconBg: "bg-primary/15 text-primary",
+    badge: "Novo",
+  },
+  {
+    id: "plantao",
+    icon: Zap,
+    title: "Plantão",
+    tagline: "Resposta ultrarrápida",
+    desc: "Pergunta direta, resposta direta. Otimizado para o ritmo do pronto-socorro — sem rodeios, beira do leito.",
+    cta: "Modo Plantão",
+    accent: "from-red-500/15 to-red-500/5 text-red-500 ring-red-500/20",
+    iconBg: "bg-red-500/15 text-red-500",
+  },
+  {
+    id: "narrative",
+    icon: FileText,
+    title: "Texto narrativo",
+    tagline: "Cole evolução / discussão",
+    desc: "Cole prontuário, evolução ou texto livre. A IA extrai dados, organiza e propõe próximos passos.",
+    cta: "Analisar texto",
+    accent: "from-amber-500/15 to-amber-500/5 text-amber-500 ring-amber-500/20",
+    iconBg: "bg-amber-500/15 text-amber-500",
+  },
+] as const;
+
 const howItWorks = [
   { step: "01", icon: Download, title: "Crie sua conta", desc: "Cadastro rápido em 30 segundos. Comece a usar imediatamente." },
   { step: "02", icon: Search, title: "Busque o que precisa", desc: "Pesquise qualquer protocolo, medicamento ou calculadora instantaneamente." },
