@@ -213,6 +213,18 @@ import { dermatologyFullProtocols7 } from "./dermatology7";
 import { finalExpansionProtocols } from "./finalExpansion";
 import { finalExpansionProtocols2 } from "./finalExpansion2";
 
+// Batch 13 — expansão clínica 2026 (rumo a 2.000 protocolos)
+import { cardioFullProtocols13 } from "./cardiology13";
+import { neuroFullProtocols11 } from "./neurology11";
+import { pediatricFullProtocols7 } from "./pediatric7";
+import { infectiousFullProtocols9 } from "./infectious9";
+import { traumaFullProtocols9 } from "./trauma9";
+import { obstetricsFullProtocols10 } from "./obstetrics10";
+import { metabolicFullProtocols9 } from "./metabolic9";
+import { psychiatryFullProtocols7 } from "./psychiatry7";
+import { geriatricsFullProtocols7 } from "./geriatrics7";
+import { respiratoryFullProtocols10 } from "./respiratory10";
+
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
   { id: "cardiology", title: "Cardiologia", order: 2 },
