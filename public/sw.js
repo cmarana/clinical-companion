@@ -44,6 +44,12 @@ self.addEventListener('activate', (event) => {
 
 // Message handler
 self.addEventListener('message', (event) => {
+  // Allow the page to force this waiting SW to take control immediately
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+    return;
+  }
+
   if (event.data && event.data.type === 'PRECACHE_ASSETS') {
     const urls = event.data.urls || [];
     event.waitUntil(
