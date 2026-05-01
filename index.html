@@ -42,57 +42,192 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="preload" as="image" href="/icons/icon-192.png" fetchpriority="high" />
 
-    <!-- Inline splash screen — paints instantly, before JS loads -->
+    <!-- Inline splash screen — paints instantly, before JS loads. Adapta-se ao tema. -->
+    <script>
+      // Detecta tema salvo (light/dark/oled) ou prefers-color-scheme do sistema.
+      (function(){
+        try {
+          var stored = localStorage.getItem('app-theme');
+          var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+          var theme = (stored === 'light' || stored === 'dark' || stored === 'oled')
+            ? stored
+            : (prefersDark ? 'dark' : 'light');
+          document.documentElement.setAttribute('data-splash-theme', theme);
+        } catch(e) {
+          document.documentElement.setAttribute('data-splash-theme', 'light');
+        }
+      })();
+    </script>
     <style>
-      :root { color-scheme: light; }
-      html, body { margin: 0; padding: 0; background: #ffffff; }
+      :root { color-scheme: light dark; }
+      html, body { margin: 0; padding: 0; }
+      html[data-splash-theme="light"], html[data-splash-theme="light"] body { background: #ffffff; }
+      html[data-splash-theme="dark"], html[data-splash-theme="dark"] body { background: #0b1220; }
+      html[data-splash-theme="oled"], html[data-splash-theme="oled"] body { background: #000000; }
+
       #pulso-splash {
         position: fixed; inset: 0; z-index: 2147483647;
         display: flex; flex-direction: column; align-items: center; justify-content: center;
-        background: #ffffff;
-        transition: opacity .35s ease, visibility .35s ease;
+        transition: opacity .4s ease, visibility .4s ease;
         -webkit-tap-highlight-color: transparent;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+        overflow: hidden;
+        --pulso-bg: #ffffff;
+        --pulso-fg: #0a1628;
+        --pulso-fg-soft: rgba(10, 22, 40, .6);
+        --pulso-accent: #0a6dd9;
+        --pulso-accent-glow: #3aa9ff;
+        --pulso-ring: rgba(10, 109, 217, .18);
+        --pulso-logo-bg: linear-gradient(160deg, #0f1e36 0%, #0a1628 100%);
+        --pulso-logo-shadow: 0 18px 50px rgba(10, 109, 217, .28), 0 0 0 1px rgba(10, 109, 217, .08);
+        --pulso-letter-stop-1: #3aa9ff;
+        --pulso-letter-stop-2: #0a6dd9;
+        --pulso-ecg-stroke: #7fcdff;
       }
+      html[data-splash-theme="dark"] #pulso-splash {
+        --pulso-bg: #0b1220;
+        --pulso-fg: #f4f7fb;
+        --pulso-fg-soft: rgba(244, 247, 251, .65);
+        --pulso-accent: #3aa9ff;
+        --pulso-accent-glow: #7fcdff;
+        --pulso-ring: rgba(127, 205, 255, .22);
+        --pulso-logo-bg: linear-gradient(160deg, #f4f7fb 0%, #d6e4f5 100%);
+        --pulso-logo-shadow: 0 18px 60px rgba(127, 205, 255, .32), 0 0 0 1px rgba(127, 205, 255, .15);
+        --pulso-letter-stop-1: #0a6dd9;
+        --pulso-letter-stop-2: #0a1628;
+        --pulso-ecg-stroke: #0a6dd9;
+      }
+      html[data-splash-theme="oled"] #pulso-splash {
+        --pulso-bg: #000000;
+        --pulso-fg: #ffffff;
+        --pulso-fg-soft: rgba(255, 255, 255, .55);
+        --pulso-accent: #3aa9ff;
+        --pulso-accent-glow: #7fcdff;
+        --pulso-ring: rgba(127, 205, 255, .25);
+        --pulso-logo-bg: linear-gradient(160deg, #ffffff 0%, #d8e8f7 100%);
+        --pulso-logo-shadow: 0 18px 60px rgba(127, 205, 255, .4), 0 0 0 1px rgba(127, 205, 255, .2);
+        --pulso-letter-stop-1: #0a6dd9;
+        --pulso-letter-stop-2: #0a1628;
+        --pulso-ecg-stroke: #3aa9ff;
+      }
+      #pulso-splash { background: var(--pulso-bg); }
       #pulso-splash.pulso-hide { opacity: 0; visibility: hidden; pointer-events: none; }
+
+      /* Glow radial atrás da logo */
+      #pulso-splash::before {
+        content: ''; position: absolute; top: 50%; left: 50%;
+        width: 420px; height: 420px; transform: translate(-50%, -62%);
+        background: radial-gradient(circle, var(--pulso-ring) 0%, transparent 65%);
+        animation: pulso-glow 3s ease-in-out infinite;
+        pointer-events: none;
+      }
+
+      /* Anéis orbitais expansivos */
+      #pulso-splash .pulso-ring {
+        position: absolute; top: 50%; left: 50%;
+        width: 130px; height: 130px; margin: -65px 0 0 -65px;
+        border-radius: 50%;
+        border: 1.5px solid var(--pulso-accent);
+        opacity: 0;
+        animation: pulso-ripple 2.4s ease-out infinite;
+        transform: translate(0, -22%);
+      }
+      #pulso-splash .pulso-ring.r2 { animation-delay: .8s; }
+      #pulso-splash .pulso-ring.r3 { animation-delay: 1.6s; }
+
       #pulso-splash .pulso-logo {
-        width: 112px; height: 112px; border-radius: 26px;
-        background: linear-gradient(160deg, #0f1e36 0%, #0a1628 100%);
-        box-shadow: 0 18px 50px rgba(10, 109, 217, .28), 0 0 0 1px rgba(10, 109, 217, .08);
-        animation: pulso-pop .45s cubic-bezier(.22,1,.36,1) both, pulso-beat 1.6s ease-in-out .45s infinite;
+        position: relative; z-index: 2;
+        width: 116px; height: 116px; border-radius: 28px;
+        background: var(--pulso-logo-bg);
+        box-shadow: var(--pulso-logo-shadow);
+        animation: pulso-pop .55s cubic-bezier(.22,1,.36,1) both, pulso-beat 1.6s ease-in-out .55s infinite;
         display: flex; align-items: center; justify-content: center;
       }
       #pulso-splash .pulso-logo svg { width: 64%; height: 64%; display: block; }
+      #pulso-splash .pulso-letter-grad-1 { stop-color: var(--pulso-letter-stop-1); }
+      #pulso-splash .pulso-letter-grad-2 { stop-color: var(--pulso-letter-stop-2); }
+      #pulso-splash .pulso-letter-ecg { stroke: var(--pulso-ecg-stroke); }
+
       #pulso-splash .pulso-name {
-        margin-top: 26px;
-        font: 800 24px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        letter-spacing: .28em; color: #0a1628;
-        opacity: 0; animation: pulso-fade .5s ease-out .25s forwards;
+        position: relative; z-index: 2;
+        margin-top: 30px;
+        font: 800 26px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        letter-spacing: .32em; color: var(--pulso-fg);
+        opacity: 0; transform: translateY(8px);
+        animation: pulso-rise .55s cubic-bezier(.22,1,.36,1) .35s forwards;
       }
       #pulso-splash .pulso-tag {
-        margin-top: 10px;
+        position: relative; z-index: 2;
+        margin-top: 12px;
         font: 600 11px/1 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-        letter-spacing: .22em; text-transform: uppercase; color: #0a6dd9;
-        opacity: 0; animation: pulso-fade .5s ease-out .45s forwards;
+        letter-spacing: .24em; text-transform: uppercase; color: var(--pulso-accent);
+        opacity: 0; transform: translateY(8px);
+        animation: pulso-rise .55s cubic-bezier(.22,1,.36,1) .55s forwards;
       }
       #pulso-splash .pulso-ecg {
-        position: absolute; bottom: 18%; left: 50%; transform: translateX(-50%);
-        width: 240px; height: 40px; overflow: hidden;
-        opacity: 0; animation: pulso-fade .5s ease-out .6s forwards;
+        position: absolute; bottom: 16%; left: 50%; transform: translateX(-50%);
+        width: 260px; height: 44px; overflow: hidden;
+        opacity: 0; animation: pulso-fade .5s ease-out .8s forwards;
       }
       #pulso-splash .pulso-ecg svg { width: 100%; height: 100%; display: block; }
       #pulso-splash .pulso-ecg path {
-        stroke: #0a6dd9; stroke-width: 2.4; fill: none; stroke-linecap: round; stroke-linejoin: round;
+        stroke: var(--pulso-accent); stroke-width: 2.4; fill: none;
+        stroke-linecap: round; stroke-linejoin: round;
         stroke-dasharray: 600; stroke-dashoffset: 600;
         animation: pulso-ecg 1.8s linear infinite;
-        filter: drop-shadow(0 0 4px rgba(10,109,217,.45));
+        filter: drop-shadow(0 0 6px var(--pulso-accent-glow));
       }
-      @keyframes pulso-pop { from { transform: scale(.78); opacity: 0; } to { transform: scale(1); opacity: 1; } }
-      @keyframes pulso-beat { 0%,100% { transform: scale(1); } 12% { transform: scale(1.06); } 24% { transform: scale(1); } 36% { transform: scale(1.04); } 48% { transform: scale(1); } }
+      /* Ponto luminoso percorrendo o ECG */
+      #pulso-splash .pulso-spark {
+        position: absolute; bottom: 16%; left: 50%;
+        width: 10px; height: 10px; margin-bottom: 12px;
+        border-radius: 50%;
+        background: var(--pulso-accent-glow);
+        box-shadow: 0 0 12px var(--pulso-accent-glow), 0 0 24px var(--pulso-accent);
+        opacity: 0;
+        animation: pulso-spark 1.8s linear .8s infinite;
+      }
+
+      @keyframes pulso-pop {
+        0% { transform: scale(.6) rotate(-6deg); opacity: 0; }
+        60% { transform: scale(1.06) rotate(2deg); opacity: 1; }
+        100% { transform: scale(1) rotate(0); opacity: 1; }
+      }
+      @keyframes pulso-beat {
+        0%, 100% { transform: scale(1); }
+        12% { transform: scale(1.07); }
+        24% { transform: scale(1); }
+        36% { transform: scale(1.04); }
+        48% { transform: scale(1); }
+      }
+      @keyframes pulso-rise { to { opacity: 1; transform: translateY(0); } }
       @keyframes pulso-fade { to { opacity: 1; } }
       @keyframes pulso-ecg { to { stroke-dashoffset: 0; } }
+      @keyframes pulso-glow {
+        0%, 100% { opacity: .7; transform: translate(-50%, -62%) scale(1); }
+        50% { opacity: 1; transform: translate(-50%, -62%) scale(1.12); }
+      }
+      @keyframes pulso-ripple {
+        0% { opacity: .8; transform: translate(0, -22%) scale(.6); }
+        100% { opacity: 0; transform: translate(0, -22%) scale(2.4); }
+      }
+      @keyframes pulso-spark {
+        0% { opacity: 0; transform: translateX(-130px); }
+        10% { opacity: 1; }
+        90% { opacity: 1; }
+        100% { opacity: 0; transform: translateX(130px); }
+      }
       @media (prefers-reduced-motion: reduce) {
-        #pulso-splash .pulso-logo, #pulso-splash .pulso-name, #pulso-splash .pulso-tag, #pulso-splash .pulso-ecg, #pulso-splash .pulso-ecg path { animation: none; opacity: 1; }
+        #pulso-splash::before,
+        #pulso-splash .pulso-ring,
+        #pulso-splash .pulso-spark { display: none; }
+        #pulso-splash .pulso-logo,
+        #pulso-splash .pulso-name,
+        #pulso-splash .pulso-tag,
+        #pulso-splash .pulso-ecg,
+        #pulso-splash .pulso-ecg path {
+          animation: none; opacity: 1; transform: none;
+        }
       }
     </style>
 
