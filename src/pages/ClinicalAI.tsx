@@ -1413,6 +1413,55 @@ function ClinicalAIContent() {
                 </p>
               )}
 
+              {/* Painel de Resumo + Alertas Críticos */}
+              {(historyDetail.summary || (historyDetail.alerts?.length ?? 0) > 0) && (
+                <div className="rounded-xl border border-primary/30 bg-primary/5 p-2.5 space-y-1.5">
+                  {historyDetail.summary && (
+                    <div>
+                      <div className="text-[10px] uppercase tracking-wide font-heading font-bold text-primary mb-0.5">
+                        Resumo clínico
+                      </div>
+                      <p className="text-[11px] leading-snug">{historyDetail.summary}</p>
+                    </div>
+                  )}
+                  {(historyDetail.alerts?.length ?? 0) > 0 && (
+                    <div>
+                      <div className="text-[10px] uppercase tracking-wide font-heading font-bold text-primary mb-1 flex items-center gap-1">
+                        <ShieldCheck size={10} />
+                        Alertas ({historyDetail.alerts!.length})
+                      </div>
+                      <ul className="space-y-1">
+                        {historyDetail.alerts!.map((a, idx) => {
+                          const styles =
+                            a.level === "critico"
+                              ? "border-destructive/40 bg-destructive/10 text-destructive"
+                              : a.level === "atencao"
+                                ? "border-amber-500/40 bg-amber-500/10 text-amber-700 dark:text-amber-400"
+                                : "border-sky-500/40 bg-sky-500/10 text-sky-700 dark:text-sky-400";
+                          const icon = a.level === "critico" ? "🚨" : a.level === "atencao" ? "⚠️" : "ℹ️";
+                          return (
+                            <li
+                              key={idx}
+                              className={`rounded-md border px-2 py-1 text-[11px] leading-snug ${styles}`}
+                            >
+                              <span className="mr-1">{icon}</span>
+                              <strong>{a.label}</strong>
+                              {a.value && <span> — {a.value}</span>}
+                              {a.reference && (
+                                <span className="opacity-70"> (ref: {a.reference})</span>
+                              )}
+                              {a.action && (
+                                <div className="text-[10px] opacity-80 mt-0.5">→ {a.action}</div>
+                              )}
+                            </li>
+                          );
+                        })}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              )}
+
               {/* Cabeçalho do paciente para PDF */}
               <details className="rounded-lg border border-border bg-muted/30 p-2 text-[11px]" open>
                 <summary className="cursor-pointer font-heading font-semibold flex items-center gap-1.5">
