@@ -225,6 +225,18 @@ import { psychiatryFullProtocols7 } from "./psychiatry7";
 import { geriatricsFullProtocols7 } from "./geriatrics7";
 import { respiratoryFullProtocols10 } from "./respiratory10";
 
+// Batch 14 — expansão clínica 2026 (rumo a 2.000 protocolos)
+import { cardioFullProtocols14 } from "./cardiology14";
+import { neuroFullProtocols12 } from "./neurology12";
+import { sepsisFullProtocols9 } from "./sepsis9";
+import { respiratoryFullProtocols11 } from "./respiratory11";
+import { metabolicFullProtocols10 } from "./metabolic10";
+import { infectiousFullProtocols10 } from "./infectious10";
+import { traumaFullProtocols10 } from "./trauma10";
+import { pediatricFullProtocols8 } from "./pediatric8";
+import { obstetricsFullProtocols11 } from "./obstetrics11";
+import { hematologyFullProtocols7 } from "./hematology7";
+
 export const fullProtocolCategories: FullProtocolCategory[] = [
   { id: "emergency", title: "Emergência e Ressuscitação", order: 1 },
   { id: "cardiology", title: "Cardiologia", order: 2 },
@@ -478,6 +490,18 @@ export const fullProtocols: FullProtocol[] = [
   ...psychiatryFullProtocols7,
   ...geriatricsFullProtocols7,
   ...respiratoryFullProtocols10,
+
+  // ===== Batch 14 — Expansão clínica 2026 =====
+  ...cardioFullProtocols14,
+  ...neuroFullProtocols12,
+  ...sepsisFullProtocols9,
+  ...respiratoryFullProtocols11,
+  ...metabolicFullProtocols10,
+  ...infectiousFullProtocols10,
+  ...traumaFullProtocols10,
+  ...pediatricFullProtocols8,
+  ...obstetricsFullProtocols11,
+  ...hematologyFullProtocols7,
 ];
 
 // ==================== Aplicar atualizações 2025/2026 ====================
