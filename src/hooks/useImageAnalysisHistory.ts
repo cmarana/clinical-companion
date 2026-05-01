@@ -7,6 +7,14 @@ export interface ImageAnalysisClassification {
   region: string;
 }
 
+export interface CriticalAlert {
+  level: "critico" | "atencao" | "informativo";
+  label: string;
+  value?: string;
+  reference?: string;
+  action?: string;
+}
+
 export interface ImageAnalysisHistoryEntry {
   id: string;
   timestamp: number;
@@ -25,6 +33,10 @@ export interface ImageAnalysisHistoryEntry {
   analysis: string;
   // optional thumbnail (data URL, downscaled) of the first image, for visual recognition
   thumbnail?: string;
+  // executive summary (2-3 sentences) — extracted from analysis by the AI
+  summary?: string;
+  // structured critical alerts list
+  alerts?: CriticalAlert[];
 }
 
 const STORAGE_KEY = "psguide_image_analysis_history";
