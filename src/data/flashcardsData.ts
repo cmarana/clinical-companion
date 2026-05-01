@@ -1,5 +1,6 @@
 import { flashcardsExtra as flashcardsExtraImport } from "./flashcardsExtra";
 import { flashcardsExtra2 as flashcardsExtraImport2 } from "./flashcardsExtra2";
+import { flashcardsExtra3 as flashcardsExtraImport3 } from "./flashcardsExtra3";
 
 export interface Flashcard {
   id: string;
@@ -276,4 +277,5 @@ export const flashcards: Flashcard[] = [
   { id: "fc-geri-13", front: "Hidrocefalia de pressão normal — tríade e diagnóstico?", back: "Tríade de Hakim-Adams:\n1. Demência (subcortical — lentificação, apatia)\n2. Ataxia da marcha (magnética — passos curtos, base alargada, pés 'grudados no chão')\n3. Incontinência urinária\n\nA MARCHA é o primeiro sintoma e o que mais responde ao tratamento.\n\nDiagnóstico:\n• TC/RM: ventriculomegalia desproporcional aos sulcos\n• Índice de Evans > 0.3 (razão dos cornos frontais/diâmetro craniano)\n• Tap test (punção lombar de alívio — 30-50ml): melhora da marcha em 24-48h\n\nTratamento definitivo: derivação ventriculoperitoneal (DVP).", category: "geriatria", tags: ["hidrocefalia", "hakim-adams", "dvp"] },
   ...flashcardsExtraImport,
   ...flashcardsExtraImport2,
+  ...flashcardsExtraImport3,
 ];
