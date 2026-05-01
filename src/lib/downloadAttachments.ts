@@ -118,7 +118,8 @@ function buildZip(entries: ZipEntry[]): Blob {
   ev.setUint32(16, centralOffset, true);
   ev.setUint16(20, 0, true);
 
-  return new Blob([...localParts, ...centralParts, end], { type: "application/zip" });
+  const blobParts: BlobPart[] = [...localParts, ...centralParts, end].map((p) => p.slice().buffer);
+  return new Blob(blobParts, { type: "application/zip" });
 }
 
 /** Converte um data URL (base64 ou plain) em Uint8Array. */
