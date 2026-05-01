@@ -125,7 +125,7 @@ export default function AdminAiCosts() {
 
   return (
     <div className="min-h-screen bg-background pb-12">
-      <div className="sticky top-0 z-10 bg-background/95 backdrop-blur border-b">
+      <div className="sticky top-safe z-10 bg-background/95 backdrop-blur border-b pt-safe-0">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center gap-3">
           <Button variant="ghost" size="icon" onClick={() => navigate("/admin")}>
             <ArrowLeft className="w-5 h-5" />
