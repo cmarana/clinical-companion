@@ -757,11 +757,27 @@ function ClinicalAIContent() {
 
           <TabsContent value="image" className="mt-0">
             <div className="space-y-2">
-              <div className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-primary/10 border border-primary/20">
-                <ScanSearch size={11} className="text-primary shrink-0" />
-                <p className="text-[10px] text-primary font-medium leading-tight">
-                  Fotos de exames (RX, TC, USG, ECG, lesão) ou PDFs (laboratório, laudos).
-                </p>
+              <div className="flex items-center gap-1.5">
+                <div className="flex-1 flex items-center gap-1.5 px-2 py-1 rounded-lg bg-primary/10 border border-primary/20">
+                  <ScanSearch size={11} className="text-primary shrink-0" />
+                  <p className="text-[10px] text-primary font-medium leading-tight">
+                    Fotos de exames (RX, TC, USG, ECG, lesão) ou PDFs (laboratório, laudos).
+                  </p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setHistoryOpen(true)}
+                  className="relative flex items-center gap-1 px-2 py-1 rounded-lg border border-border bg-card hover:bg-muted/60 text-[10px] font-heading font-semibold transition-colors"
+                  title="Histórico de análises"
+                >
+                  <History size={12} />
+                  Histórico
+                  {imageHistory.length > 0 && (
+                    <span className="ml-0.5 px-1 rounded-full bg-primary text-primary-foreground text-[8px] font-bold leading-none py-0.5">
+                      {imageHistory.length}
+                    </span>
+                  )}
+                </button>
               </div>
 
               {/* Hidden inputs */}
