@@ -35,16 +35,24 @@ interface TabSummary {
 
 export default function ValidationChecklist() {
   const navigate = useNavigate();
-  const { isAdmin } = useAuth();
+  const { user } = useAuth();
+  const [authorized, setAuthorized] = useState(false);
   const [loading, setLoading] = useState(true);
   const [versionRows, setVersionRows] = useState<VersionRow[]>([]);
   const [integrityResults, setIntegrityResults] = useState<IntegrityResult[]>([]);
 
   useEffect(() => {
-    if (!isAdmin) {
-      navigate("/");
-    }
-  }, [isAdmin, navigate]);
+    if (!user) return;
+    (async () => {
+      const { data } = await supabase.rpc("has_role", { _user_id: user.id, _role: "admin" });
+      if (!data) {
+        toast.error("Acesso negado — apenas administradores");
+        navigate("/");
+        return;
+      }
+      setAuthorized(true);
+    })();
+  }, [user, navigate]);
 
   const loadAll = async () => {
     setLoading(true);
