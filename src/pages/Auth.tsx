@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
 import { lovable } from "@/integrations/lovable/index";
 import { Button } from "@/components/ui/button";
@@ -80,7 +80,9 @@ const fadeUp = (delay: number, y = 20) => ({
 });
 
 export default function Auth() {
-  const [isLogin, setIsLogin] = useState(true);
+  const location = useLocation();
+  const initialMode = (location.state as { mode?: "login" | "signup" } | null)?.mode;
+  const [isLogin, setIsLogin] = useState(initialMode !== "signup");
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
