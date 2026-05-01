@@ -3,7 +3,6 @@
 import * as pdfjsLib from "pdfjs-dist";
 
 // Worker URL versionado — evita mismatch ao atualizar a lib
-// @ts-expect-error - version exposta em runtime
 const PDFJS_VERSION: string = pdfjsLib.version;
 pdfjsLib.GlobalWorkerOptions.workerSrc = `https://cdn.jsdelivr.net/npm/pdfjs-dist@${PDFJS_VERSION}/build/pdf.worker.min.mjs`;
 
