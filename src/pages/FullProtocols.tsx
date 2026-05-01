@@ -2,7 +2,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import {
   ChevronRight, Search, Star, TrendingUp, ArrowDownAZ, Filter,
-  Lock, Crown, X, Sparkles, BookOpen, CalendarDays,
+  Lock, Crown, X, Sparkles, BookOpen, CalendarDays, CalendarCheck,
 } from "lucide-react";
 import { useState, useMemo, useEffect } from "react";
 import { cn } from "@/lib/utils";
@@ -13,6 +13,7 @@ import {
   protocolGuidelinesIndex,
   allSocieties,
   yearRange,
+  patched2026Ids,
 } from "@/data/fullProtocols/guidelinesIndex";
 import { HoverCard, HoverCardTrigger, HoverCardContent } from "@/components/ui/hover-card";
 import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
@@ -424,7 +425,18 @@ export default function FullProtocols() {
                       >
                         <div className="flex items-center justify-between p-4 gap-2">
                           <div className="min-w-0 flex-1">
-                            <p className="font-heading font-semibold text-sm truncate">{p.title}</p>
+                            <div className="flex items-center gap-1.5 flex-wrap">
+                              <p className="font-heading font-semibold text-sm truncate">{p.title}</p>
+                              {patched2026Ids.has(p.id) && (
+                                <span
+                                  className="inline-flex items-center gap-0.5 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 ring-1 ring-emerald-500/30 shrink-0"
+                                  title="Diretrizes revisadas em 2026 pela equipe PULSO"
+                                >
+                                  <CalendarCheck size={9} />
+                                  Atualizado 2026
+                                </span>
+                              )}
+                            </div>
                             <div className="flex items-center gap-2 mt-1">
                               <span className="text-[10px] text-muted-foreground truncate">
                                 {catLabel(p.categoryId)}

@@ -231,9 +231,19 @@ export default function FullProtocolDetail() {
               </span>
             )}
             {protocol.lastReviewed && (
-              <span className="inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+              <span
+                className={cn(
+                  "inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full ring-1",
+                  protocol.lastReviewed.startsWith("2026")
+                    ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 ring-emerald-500/30"
+                    : "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 ring-emerald-500/20",
+                )}
+                title="Revisão editorial PULSO com diretrizes 2025/2026"
+              >
                 <CalendarCheck size={10} />
-                Revisado {protocol.lastReviewed.replace("-", "/")}
+                {protocol.lastReviewed.startsWith("2026")
+                  ? `Atualizado em ${protocol.lastReviewed.replace("-", "/")}`
+                  : `Revisado ${protocol.lastReviewed.replace("-", "/")}`}
               </span>
             )}
             {updateLabel && (
