@@ -365,6 +365,14 @@ export default function AdminDashboard() {
             <RefreshCw size={16} />
             Revisão de diretrizes 2026 (IA + aprovação manual)
           </Button>
+          <Button
+            variant="outline"
+            className="w-full h-auto py-3 flex-col gap-1 text-xs"
+            onClick={() => navigate("/admin/validation")}
+          >
+            <Shield size={16} />
+            Checklist de validação 2026 (status por aba + integridade)
+          </Button>
         </div>
       )}
 
