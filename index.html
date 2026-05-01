@@ -316,19 +316,22 @@
 
   <body>
     <div id="pulso-splash" aria-hidden="true">
+      <span class="pulso-ring r1"></span>
+      <span class="pulso-ring r2"></span>
+      <span class="pulso-ring r3"></span>
       <div class="pulso-logo">
-        <!-- Inline SVG: paints instantly, no network request -->
+        <!-- Inline SVG: paints instantly, no network request. Cores via CSS vars (theme-aware). -->
         <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
           <defs>
             <linearGradient id="pg" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stop-color="#3aa9ff"/>
-              <stop offset="100%" stop-color="#0a6dd9"/>
+              <stop offset="0%" class="pulso-letter-grad-1"/>
+              <stop offset="100%" class="pulso-letter-grad-2"/>
             </linearGradient>
           </defs>
           <!-- Letter P -->
           <path d="M28 18 H56 a18 18 0 0 1 0 36 H40 V82 H28 Z M40 30 V42 H54 a6 6 0 0 0 0-12 Z" fill="url(#pg)"/>
           <!-- ECG line through the P -->
-          <path d="M18 50 L36 50 L42 38 L48 62 L54 32 L60 58 L66 50 L82 50" stroke="#7fcdff" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <path class="pulso-letter-ecg" d="M18 50 L36 50 L42 38 L48 62 L54 32 L60 58 L66 50 L82 50" stroke-width="3.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
       <div class="pulso-name">PULSO</div>
@@ -337,6 +340,7 @@
         <svg viewBox="0 0 240 40" preserveAspectRatio="none" aria-hidden="true">
           <path d="M0,20 L50,20 L60,20 L68,8 L76,32 L84,4 L92,36 L100,20 L140,20 L155,20 L163,10 L171,30 L179,20 L240,20" />
         </svg>
+        <span class="pulso-spark"></span>
       </div>
     </div>
     <div id="root"></div>
