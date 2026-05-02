@@ -244,10 +244,9 @@ function scrollTo(id: string) {
 export default function Landing() {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
-  const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  // Parallax (useScroll/useTransform) removido: causava recálculo a cada
+  // frame de scroll no iOS WebView, gerando jank perceptível na Landing.
+
 
   // CTA flutuante colapsável: aparece somente quando a seção de Planos entra na viewport.
   // Inicia colapsado (pílula compacta) e expande ao toque mostrando o botão completo.
@@ -321,11 +320,10 @@ export default function Landing() {
       </nav>
 
       {/* ═══ HERO ═════════════════════════════════════════════ */}
-      <section ref={heroRef} className="relative pt-16 sm:pt-24 pb-20 px-4 overflow-hidden">
+      <section className="relative pt-16 sm:pt-24 pb-20 px-4 overflow-hidden">
         <FloatingOrbs />
 
         <motion.div
-          style={{ y: heroY, opacity: heroOpacity }}
           className="max-w-4xl mx-auto text-center relative z-10"
         >
           {/* Badge */}
