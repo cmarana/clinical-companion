@@ -226,19 +226,31 @@
 
   <body>
     <div id="pulso-splash" aria-hidden="true">
-      <div class="pulso-logo">
-        <!-- Logo original: letra "P" + linha de ECG, dentro da caixa branca. -->
-        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <path d="M28 18 H56 a18 18 0 0 1 0 36 H40 V82 H28 Z M40 30 V42 H54 a6 6 0 0 0 0-12 Z"
-                fill="#0a6dd9"/>
-          <path class="pulso-ecg-line"
-                d="M18 50 L36 50 L42 38 L48 62 L54 32 L60 58 L66 50 L82 50"
-                fill="none"
-                stroke="#0a6dd9"
-                stroke-width="3.2"
-                stroke-linecap="round"
-                stroke-linejoin="round"/>
-        </svg>
+      <div class="pulso-brand">
+        <div class="pulso-icon">
+          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="pulso-p-grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#5fb0ff"/>
+                <stop offset="55%" stop-color="#1f7dea"/>
+                <stop offset="100%" stop-color="#0a4fb8"/>
+              </linearGradient>
+            </defs>
+            <!-- Letra P em gradiente azul -->
+            <path d="M24 12 H58 a20 20 0 0 1 0 40 H38 V88 H24 Z M38 26 V38 H56 a6 6 0 0 0 0-12 Z"
+                  fill="url(#pulso-p-grad)"/>
+            <!-- Linha de ECG cruzando o "P" -->
+            <path class="pulso-ecg-line"
+                  d="M14 50 L34 50 L40 38 L46 64 L52 30 L58 60 L64 50 L86 50"
+                  fill="none"
+                  stroke="#5fb0ff"
+                  stroke-width="3.4"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"/>
+          </svg>
+        </div>
+        <div class="pulso-wordmark">PULSO</div>
+        <div class="pulso-tagline">EMERGÊNCIA MÉDICA</div>
       </div>
     </div>
     <div id="root"></div>
