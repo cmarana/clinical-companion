@@ -248,23 +248,7 @@ export default function Landing() {
   // frame de scroll no iOS WebView, gerando jank perceptível na Landing.
 
 
-  // CTA flutuante colapsável: aparece somente quando a seção de Planos entra na viewport.
-  // Inicia colapsado (pílula compacta) e expande ao toque mostrando o botão completo.
-  const [showPricingCta, setShowPricingCta] = useState(false);
-  const [ctaExpanded, setCtaExpanded] = useState(false);
-  useEffect(() => {
-    const target = document.getElementById("pricing");
-    if (!target) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setShowPricingCta(entry.isIntersecting);
-        if (!entry.isIntersecting) setCtaExpanded(false);
-      },
-      { threshold: 0.15 }
-    );
-    observer.observe(target);
-    return () => observer.disconnect();
-  }, []);
+  // CTA flutuante removido a pedido do usuário (ficava cortado na lateral em iPhone).
 
   // Hide the inline HTML splash as soon as the Landing actually paints.
   useEffect(() => {
@@ -1039,64 +1023,7 @@ export default function Landing() {
         </div>
       </footer>
 
-      {/* CTA flutuante colapsável — aparece apenas quando a seção de Planos está visível */}
-      <AnimatePresence>
-        {showPricingCta && (
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: 24 }}
-            transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
-            className="fixed left-1/2 -translate-x-1/2 z-50 px-4 w-full max-w-md flex justify-center"
-            style={{ bottom: "calc(env(safe-area-inset-bottom) + 1rem)" }}
-          >
-            <AnimatePresence mode="wait" initial={false}>
-              {ctaExpanded ? (
-                <motion.div
-                  key="expanded"
-                  initial={{ opacity: 0, scale: 0.9, y: 8 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.9, y: 8 }}
-                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                  className="w-full flex items-center gap-2"
-                >
-                  <Button
-                    onClick={() => { navigate("/auth"); hapticLight(); }}
-                    size="lg"
-                    className="flex-1 h-14 rounded-2xl bg-primary text-primary-foreground font-heading font-bold text-base shadow-2xl shadow-primary/40 hover:bg-primary/90 active:scale-[0.98] transition-all"
-                  >
-                    Começar 7 dias grátis
-                    <ArrowRight className="ml-2" size={18} />
-                  </Button>
-                  <button
-                    type="button"
-                    aria-label="Recolher CTA"
-                    onClick={() => { setCtaExpanded(false); hapticLight(); }}
-                    className="h-14 w-14 shrink-0 rounded-2xl bg-card/95 border border-border text-foreground shadow-xl flex items-center justify-center active:scale-95 transition-all"
-                  >
-                    <X size={20} />
-                  </button>
-                </motion.div>
-              ) : (
-                <motion.button
-                  key="collapsed"
-                  type="button"
-                  aria-label="Mostrar oferta de 7 dias grátis"
-                  onClick={() => { setCtaExpanded(true); hapticLight(); }}
-                  initial={{ opacity: 0, scale: 0.85, y: 8 }}
-                  animate={{ opacity: 1, scale: 1, y: 0 }}
-                  exit={{ opacity: 0, scale: 0.85, y: 8 }}
-                  transition={{ duration: 0.22, ease: [0.22, 1, 0.36, 1] }}
-                  className="h-12 px-5 rounded-full bg-primary text-primary-foreground font-heading font-bold text-sm shadow-2xl shadow-primary/40 flex items-center gap-2 active:scale-95 transition-all"
-                >
-                  <Sparkles size={16} />
-                  7 dias grátis
-                </motion.button>
-              )}
-            </AnimatePresence>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* CTA flutuante removido a pedido do usuário (ficava cortado na lateral em iPhone). */}
     </div>
   );
 }
