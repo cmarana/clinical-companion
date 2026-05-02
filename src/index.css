@@ -200,6 +200,8 @@
   /* Variante com fallback 44px — usar em páginas standalone (Home, Landing)
      onde o container está no topo absoluto e pode ser aberto fora do PWA. */
   .pt-safe-fb { padding-top: calc(env(safe-area-inset-top, 44px) + 0.75rem); }
+  /* Mesmo que .pt-safe-0 mas com fallback 44px — para sticky headers em landing/PWA fora do standalone */
+  .pt-safe-0-fb { padding-top: env(safe-area-inset-top, 44px); }
 
   .top-safe    { top: var(--safe-top); }
   .top-safe-fb { top: env(safe-area-inset-top, 44px); }
