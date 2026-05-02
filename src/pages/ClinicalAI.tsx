@@ -961,7 +961,7 @@ function ClinicalAIContent() {
                           const preview = imageFiles[idx] || src;
                           return (
                             <div key={idx} className="relative aspect-square rounded-lg overflow-hidden border border-border bg-black/5 group">
-                              <img src={preview} alt={`Imagem ${idx + 1}`} className="w-full h-full object-cover" />
+                              <img src={preview} alt={`Imagem ${idx + 1}`} loading="lazy" decoding="async" className="w-full h-full object-cover" />
                               <div className="absolute top-0.5 left-0.5 px-1.5 py-0.5 rounded bg-background/80 backdrop-blur-sm text-[9px] font-heading font-bold">
                                 {idx + 1}
                               </div>
@@ -1348,7 +1348,7 @@ function ClinicalAIContent() {
                         aria-label="Selecionar para comparar"
                       />
                       {h.thumbnail ? (
-                        <img src={h.thumbnail} alt="" className="w-12 h-12 rounded-md object-cover border border-border shrink-0" />
+                        <img src={h.thumbnail} alt="" loading="lazy" decoding="async" className="w-12 h-12 rounded-md object-cover border border-border shrink-0" />
                       ) : (
                         <div className="w-12 h-12 rounded-md bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-border flex items-center justify-center shrink-0">
                           <FileType2 size={18} />

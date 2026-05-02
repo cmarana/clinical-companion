@@ -536,7 +536,7 @@ export default function AdminDashboard() {
             <div key={u.user_id} className="bg-card rounded-xl border border-border p-3">
               <div className="flex items-start gap-3">
                 {u.avatar_url ? (
-                  <img src={u.avatar_url} alt="" className="w-10 h-10 rounded-full object-cover" />
+                  <img src={u.avatar_url} alt="" loading="lazy" decoding="async" className="w-10 h-10 rounded-full object-cover" />
                 ) : (
                   <div className="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary font-bold text-sm">
                     {(u.first_name?.[0] || u.full_name?.[0] || "?").toUpperCase()}
