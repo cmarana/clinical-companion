@@ -1,7 +1,6 @@
-import { memo, type ComponentType } from "react";
-import type { LucideProps } from "lucide-react";
+import { memo, type ElementType } from "react";
 
-type IconType = ComponentType<LucideProps>;
+type IconType = ElementType;
 
 /**
  * Cards memoizados da Home.
