@@ -9,7 +9,7 @@ import {
   ChevronDown, HelpCircle, ClipboardList, Baby, Beaker,
   Scissors, Eye, HeartPulse, Timer, Bookmark, Globe,
   ScrollText, Layers, ListChecks, GraduationCap, FlaskConical, LogIn,
-  MessageSquare, ScanLine, X
+  MessageSquare, ScanLine, X, ArrowRightLeft, ShieldCheck, GitBranch, Building2, BarChart3
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
