@@ -1,10 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import {
-  Search, Pill, ClipboardList, FileText, Calculator,
-  Baby, Heart, Stethoscope, BookOpen, HelpCircle,
-  AlertTriangle, Zap, Moon, Sun, ChevronRight, Bot, FlaskConical,
-  Timer, CheckSquare, Hash, GitBranch, FileEdit, TestTubes, ScanLine, Brain, GraduationCap,
-  Droplets, BarChart3, Bell, Syringe, WifiOff, Wrench, Library, Eclipse, Newspaper, Building2, Mic, ShieldCheck, BedDouble, ArrowRightLeft, Shield
+  Sun, Moon, ChevronRight, Bell, Wrench, Library,
+  Eclipse, Newspaper, Stethoscope, Zap, Shield,
 } from "lucide-react";
 import pulsoLogoLight from "@/assets/pulso-logo-light.png";
 import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
@@ -22,8 +19,13 @@ import SmartSearch from "@/components/SmartSearch";
 import WeeklySummaryWidget from "@/components/WeeklySummaryWidget";
 import VoiceFeaturesBanner from "@/components/VoiceFeaturesBanner";
 import DailyBriefingWidget from "@/components/DailyBriefingWidget";
-import { DATASET_COUNTS, QUIZ_TOTAL, fmt } from "@/data/datasetCounts";
 import { PrimaryCard, SecondaryCard, EmergencyShortcut } from "@/components/home/HomeCards";
+import {
+  HOME_PRIMARY_MODULES,
+  getHomeSection,
+  type AppModule,
+  type HomeVariant,
+} from "@/config/appModules";
 
 import WelcomeScreen from "@/components/WelcomeScreen";
 
@@ -41,68 +43,36 @@ const prefetchRoutes = () => {
   });
 };
 
-// ── ALL MODULES WITH TAGS ─────────────────────────────────────
-interface Module {
+// ── PRIMARY MODULES (vindos da config compartilhada) ─────────
+interface PrimaryModule {
   label: string;
   sub: string;
   icon: React.ElementType;
   path: string;
-  variant: "ai" | "emergency" | "cyan" | "default";
-  tags?: string[];
+  variant: HomeVariant;
+  tags: string[];
 }
 
-const allPrimaryModules: Module[] = [
-  { label: "IA Clínica", sub: "Chat, Caso, Exames, Plantão e Texto", icon: Bot, path: "/clinical-ai", variant: "ai", tags: ["all"] },
-  { label: "Exames (imagem)", sub: "RX, TC, RM, US, ECG por IA", icon: ScanLine, path: "/clinical-ai?tab=image", variant: "ai", tags: ["all"] },
-  { label: "Modo Plantão", sub: "Guia completo para o plantão", icon: AlertTriangle, path: "/duty", variant: "emergency", tags: ["emergencia", "clinica-medica", "cirurgia", "generalista"] },
-  { label: "Emergência", sub: "Algoritmos de urgência / UTI", icon: Zap, path: "/emergency", variant: "emergency", tags: ["emergencia", "cirurgia", "generalista"] },
-  { label: "Bulário", sub: "2.000+ fármacos", icon: Pill, path: "/bulario", variant: "default", tags: ["all"] },
-  { label: "Protocolos", sub: "1.600+ protocolos clínicos", icon: BookOpen, path: "/full-protocols", variant: "default", tags: ["all"] },
-  { label: "Pediatria", sub: "Protocolos pediátricos", icon: Baby, path: "/pediatrics", variant: "cyan", tags: ["pediatria"] },
-  { label: "Doses Pediátricas", sub: "Calculadora por peso", icon: Calculator, path: "/pediatric-doses", variant: "cyan", tags: ["pediatria"] },
-  { label: "Obstetrícia", sub: "Emergências obstétricas", icon: Heart, path: "/obstetrics", variant: "default", tags: ["ginecologia-obstetricia"] },
-  { label: "Antimicrobianos", sub: "ATB por foco infeccioso", icon: FileText, path: "/antimicrobials", variant: "default", tags: ["infectologia", "emergencia"] },
-];
+const allPrimaryModules: PrimaryModule[] = HOME_PRIMARY_MODULES.map((m) => ({
+  label: m.homeLabel,
+  sub: m.homeSub,
+  icon: m.homeIcon,
+  path: m.path,
+  variant: m.homePrimary!.variant,
+  tags: m.homePrimary!.tags,
+}));
 
-// ── GROUPED SECONDARY MODULES ─────────────────────────────────
-const toolsModules = [
-  { label: "Comparar Condutas", sub: "SUS × Sociedades × Internacional", icon: ArrowRightLeft, path: "/conduct-comparator" },
-  { label: "Checar Prescrição", sub: "IA verifica interações e doses", icon: ShieldCheck, path: "/prescription-checker" },
-  { label: "Modo Rounds", sub: "Visita de leito com checklist", icon: BedDouble, path: "/rounds" },
-  { label: "Calculadoras", sub: "Scores e doses", icon: Calculator, path: "/calculators" },
-  { label: "Interações", sub: "Checagem medicamentosa", icon: FlaskConical, path: "/drug-interactions" },
-  { label: "Compat. Drogas", sub: "Compatibilidade EV", icon: GitBranch, path: "/drug-compatibility" },
-  { label: "Diluições IV", sub: "Reconstituição e infusão", icon: Droplets, path: "/iv-dilutions" },
-  { label: "Timer PCR", sub: "Cronômetro ACLS", icon: Timer, path: "/cpr-timer" },
-  { label: "CID-10", sub: "Busca de códigos", icon: Hash, path: "/cid" },
-  { label: "Valores de Ref.", sub: "Exames laboratoriais", icon: TestTubes, path: "/lab-reference" },
-  { label: "Checklists", sub: "Verificações de segurança", icon: CheckSquare, path: "/checklists" },
-  { label: "Prot. Institucionais", sub: "Protocolos do seu hospital", icon: Building2, path: "/institutional-protocols" },
-];
+// ── SECONDARY SECTIONS (também da config) ────────────────────
+const mapSection = (m: AppModule) => ({
+  label: m.homeLabel,
+  sub: m.homeSub,
+  icon: m.homeIcon,
+  path: m.path,
+});
 
-const specialtyModules = [
-  { label: "Pediatria", sub: "Protocolos pediátricos", icon: Baby, path: "/pediatrics" },
-  { label: "Doses Pediátricas", sub: "Calculadora por peso", icon: Calculator, path: "/pediatric-doses" },
-  { label: "Obstetrícia", sub: "Emergências obstétricas", icon: Heart, path: "/obstetrics" },
-  { label: "Antimicrobianos", sub: "ATB por foco infeccioso", icon: FileText, path: "/antimicrobials" },
-  { label: "Clínica", sub: "Diagnóstico por sintoma", icon: Stethoscope, path: "/diagnosis" },
-  { label: "Atlas Clínico", sub: "ECG, Dermato, Radiologia", icon: ScanLine, path: "/clinical-atlas" },
-  { label: "Procedimentos", sub: "IOT, CVC, drenagem, sutura", icon: Syringe, path: "/procedure-guides" },
-  { label: "Anamnese", sub: "Roteiro completo estruturado", icon: ClipboardList, path: "/anamnesis-guide" },
-];
-
-const studyModules = [
-  { label: "Simulador de Casos", sub: "Casos clínicos com IA", icon: Brain, path: "/case-simulator" },
-  { label: "Questões", sub: `${fmt(QUIZ_TOTAL)} questões comentadas`, icon: HelpCircle, path: "/quiz" },
-  { label: "Flashcards", sub: `${fmt(DATASET_COUNTS.flashcards)} cards · revisão espaçada`, icon: Brain, path: "/flashcards" },
-  { label: "Residência", sub: "Questões por banca", icon: GraduationCap, path: "/residency-quiz" },
-  { label: "Dashboard", sub: "Streak e progresso", icon: BarChart3, path: "/study-dashboard" },
-  { label: "Evolução por Voz", sub: "Voz → SOAP / I-PASS com IA", icon: Mic, path: "/voice-evolution" },
-  { label: "Evoluções", sub: "Templates de evolução", icon: FileEdit, path: "/evolution-templates" },
-  { label: "Resumo de Alta", sub: "IA gera alta completa", icon: FileText, path: "/discharge-summary" },
-  { label: "Documentos", sub: "Receitas e atestados", icon: FileText, path: "/documents" },
-  { label: "Modo Offline", sub: "Plantão sem internet", icon: WifiOff, path: "/offline" },
-];
+const toolsModules = getHomeSection("tools").map(mapSection);
+const specialtyModules = getHomeSection("specialties").map(mapSection);
+const studyModules = getHomeSection("study").map(mapSection);
 
 const tabs = [
   { id: "tools", label: "Ferramentas", icon: Wrench, modules: toolsModules, accent: "primary", gradient: "from-primary/8 to-primary/3 dark:from-primary/15 dark:to-primary/5", iconBg: "bg-primary/12 text-primary dark:bg-primary/20", ringColor: "ring-primary/20" },
@@ -120,8 +90,6 @@ const emergencyShortcuts = [
   { label: "IOT", path: "/protocols/iot" },
   { label: "Convulsão", path: "/protocols/convulsao" },
 ];
-
-// Card styles moved to src/components/home/HomeCards.tsx (memoized).
 
 // Default 6 for users without specialty
 const defaultPrimaryPaths = ["/clinical-ai", "/duty", "/emergency", "/bulario", "/prescriptions", "/full-protocols"];
