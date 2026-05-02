@@ -185,14 +185,22 @@ const faqs = [
   },
 ];
 
-/* ── Floating orbs ───────────────────────────────────────────── */
+/* ── Floating orbs ───────────────────────────────────────────────
+ * NOTA DE PERFORMANCE: removido blur-[140px] em 3 elementos × 5 instâncias.
+ * No iOS WebView (Capacitor), filter:blur em camadas grandes força
+ * recomposição GPU a cada frame de scroll, causando jank severo.
+ * Substituído por gradientes radiais estáticos (composição única).
+ */
 function FloatingOrbs() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-primary/[0.04] rounded-full blur-[140px]" />
-      <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-violet-500/[0.03] rounded-full blur-[120px]" />
-      <div className="absolute -bottom-40 left-1/4 w-[400px] h-[400px] bg-cyan-500/[0.03] rounded-full blur-[100px]" />
-    </div>
+    <div
+      aria-hidden="true"
+      className="absolute inset-0 overflow-hidden pointer-events-none opacity-60"
+      style={{
+        backgroundImage:
+          "radial-gradient(600px 400px at 10% 10%, hsl(var(--primary) / 0.05), transparent 60%), radial-gradient(500px 350px at 90% 40%, hsl(262 83% 58% / 0.04), transparent 60%), radial-gradient(400px 300px at 30% 90%, hsl(190 90% 50% / 0.04), transparent 60%)",
+      }}
+    />
   );
 }
 
