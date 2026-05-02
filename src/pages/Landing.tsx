@@ -19,6 +19,7 @@ import pulsoLogoLight from "@/assets/pulso-logo-light.png";
 import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
 import { useState, useEffect } from "react";
 import { DATASET_COUNTS, QUIZ_TOTAL, fmt } from "@/data/datasetCounts";
+import { LANDING_MODULES, APP_MODULES_COUNT } from "@/config/appModules";
 
 /* ── Animation variants ─────────────────────────────────────── */
 const fadeUp = {
@@ -109,42 +110,17 @@ const howItWorks = [
   { step: "03", icon: Smartphone, title: "Use no plantão", desc: "Acesse offline, salve favoritos e tome decisões com confiança." },
 ];
 
-const allModules = [
-  { icon: Siren, title: "Modo Emergência", desc: "PCR, Sepse, IAM, AVC com fluxogramas interativos", color: "text-red-500 bg-red-500/10", path: "/emergency" },
-  { icon: Bot, title: "IA Clínica multimodal", desc: "Chat · Caso · Exames (imagem) · Plantão · Texto", color: "text-blue-500 bg-blue-500/10", path: "/clinical-ai" },
-  { icon: Pill, title: "2.000+ Medicamentos", desc: "Doses, diluições, interações, ajuste renal/hepático", color: "text-emerald-500 bg-emerald-500/10", path: "/bulario" },
-  { icon: BookOpen, title: "1.600+ Protocolos", desc: "26 categorias com referências e níveis de evidência", color: "text-cyan-500 bg-cyan-500/10", path: "/full-protocols" },
-  { icon: Calculator, title: "53 Calculadoras", desc: "Glasgow, SOFA, Wells, HEART, MELD, NEWS, APACHE II", color: "text-indigo-500 bg-indigo-500/10", path: "/calculators" },
-  { icon: FileText, title: "Prescrições Prontas", desc: "Modelos por diagnóstico + checagem de interações", color: "text-amber-500 bg-amber-500/10", path: "/prescriptions" },
-  { icon: HeartPulse, title: "Sala Vermelha", desc: "Atendimento de emergência imediata", color: "text-rose-500 bg-rose-500/10", path: "/emergency" },
-  { icon: Timer, title: "Timer de PCR (ACLS)", desc: "Ciclos de 2 min com alertas sonoros", color: "text-red-400 bg-red-400/10", path: "/cpr-timer" },
-  { icon: ListChecks, title: "Checklists", desc: "IOT, ATLS, Sepse — passo a passo", color: "text-teal-500 bg-teal-500/10", path: "/checklists" },
-  { icon: FlaskConical, title: "Diluições IV", desc: "Matriz de compatibilidade em Y", color: "text-violet-500 bg-violet-500/10", path: "/iv-dilutions" },
-  { icon: Baby, title: "Doses Pediátricas", desc: "Cálculo automático por peso e idade", color: "text-pink-500 bg-pink-500/10", path: "/pediatric-doses" },
-  { icon: Stethoscope, title: "Diagnóstico por Sintoma", desc: "Guias de diagnóstico diferencial", color: "text-sky-500 bg-sky-500/10", path: "/diagnosis" },
-  { icon: ScrollText, title: "Evoluções Médicas", desc: "SOAP, I-PASS, UTI, Pediatria, Psiquiatria", color: "text-orange-500 bg-orange-500/10", path: "/evolution-templates" },
-  { icon: Mic, title: "Evolução por Voz", desc: "Dite evoluções e gere documentos clínicos", color: "text-fuchsia-500 bg-fuchsia-500/10", path: "/voice-evolution" },
-  { icon: Beaker, title: "Valores Laboratoriais", desc: "Referências com alertas de valores críticos", color: "text-lime-500 bg-lime-500/10", path: "/lab-reference" },
-  { icon: Layers, title: "Guia Antimicrobiano", desc: "ATB por foco infeccioso e patógeno", color: "text-green-500 bg-green-500/10", path: "/antimicrobials" },
-  { icon: Search, title: "Busca CID-10", desc: "Pesquise códigos por nome ou número", color: "text-slate-500 bg-slate-500/10", path: "/cid" },
-  { icon: Activity, title: "Interações Medicamentosas", desc: "Verificação cruzada entre fármacos", color: "text-red-300 bg-red-300/10", path: "/drug-interactions" },
-  { icon: Eye, title: "Atlas Clínico", desc: "Imagens de referência por especialidade", color: "text-cyan-400 bg-cyan-400/10", path: "/clinical-atlas" },
-  { icon: Scissors, title: "Guias de Procedimentos", desc: "CVC, IOT, drenagem, punção lombar", color: "text-gray-500 bg-gray-500/10", path: "/procedure-guides" },
-  { icon: ClipboardList, title: "Anamnese Guiada", desc: "Roteiros estruturados por queixa", color: "text-blue-400 bg-blue-400/10", path: "/anamnesis-guide" },
-  { icon: FileText, title: "Gerador de Documentos", desc: "Atestados, relatórios, resumos de alta", color: "text-emerald-400 bg-emerald-400/10", path: "/documents" },
-  { icon: GraduationCap, title: `${fmt(DATASET_COUNTS.flashcards)} Flashcards & ${fmt(QUIZ_TOTAL)} Questões`, desc: "Revisão espaçada (SM-2) para residência", color: "text-yellow-500 bg-yellow-500/10", path: "/flashcards" },
-  { icon: Brain, title: "Simulador de Casos", desc: "Casos clínicos interativos com IA", color: "text-purple-400 bg-purple-400/10", path: "/case-simulator" },
-  { icon: Globe, title: "Modo Plantão", desc: "Timer de turno, leitos e passagem de plantão", color: "text-indigo-400 bg-indigo-400/10", path: "/duty" },
-  { icon: Users, title: "Visita / Rounds", desc: "Gestão de pacientes e pendências", color: "text-teal-400 bg-teal-400/10", path: "/rounds" },
-  { icon: Bookmark, title: "Favoritos & Notas", desc: "Salve protocolos e anotações pessoais", color: "text-amber-400 bg-amber-400/10", path: "/favorites" },
-  { icon: WifiOff, title: "100% Offline", desc: "Todo o conteúdo sem internet", color: "text-purple-500 bg-purple-500/10", path: "/offline" },
-  { icon: ArrowRightLeft, title: "Comparar Condutas", desc: "SUS × Sociedades × Internacional lado a lado", color: "text-blue-600 bg-blue-600/10", path: "/conduct-comparator" },
-  { icon: ShieldCheck, title: "Checar Prescrição", desc: "IA verifica interações, doses e alergias", color: "text-emerald-600 bg-emerald-600/10", path: "/prescription-checker" },
-  { icon: GitBranch, title: "Compatibilidade EV", desc: "Matriz Y-site para infusões simultâneas", color: "text-violet-600 bg-violet-600/10", path: "/drug-compatibility" },
-  { icon: FileText, title: "Resumo de Alta", desc: "IA gera alta hospitalar completa em segundos", color: "text-cyan-600 bg-cyan-600/10", path: "/discharge-summary" },
-  { icon: Building2, title: "Protocolos Institucionais", desc: "Diretrizes do seu hospital sempre à mão", color: "text-amber-600 bg-amber-600/10", path: "/institutional-protocols" },
-  { icon: BarChart3, title: "Dashboard de Estudo", desc: "Streak, metas e desempenho por especialidade", color: "text-rose-400 bg-rose-400/10", path: "/study-dashboard" },
-];
+/**
+ * Landing modules vêm da config compartilhada (src/config/appModules.ts)
+ * para garantir paridade automática com a Home.
+ */
+const allModules = LANDING_MODULES.map((m) => ({
+  icon: m.landingIcon,
+  title: m.landingTitle,
+  desc: m.landingDesc,
+  color: m.landingColor,
+  path: m.path,
+}));
 
 const testimonials = [
   { name: "Dra. Camila R.", role: "Plantonista — UPA, SP", text: "Me salvou várias vezes no noturno. Ter tudo na palma da mão faz toda diferença quando cada segundo conta.", stars: 5 },
@@ -694,7 +670,7 @@ export default function Landing() {
           >
             <span className="text-[10px] font-heading font-bold text-primary uppercase tracking-[0.2em]">Completo</span>
             <h2 className="font-heading text-3xl sm:text-4xl font-extrabold mt-2 tracking-tight">
-              {allModules.length} ferramentas em um só app
+              {APP_MODULES_COUNT} ferramentas em um só app
             </h2>
             <p className="text-muted-foreground mt-3 max-w-lg mx-auto text-sm leading-relaxed">
               Tudo que um médico precisa no plantão, na enfermaria e no estudo — sem precisar de vários apps.
