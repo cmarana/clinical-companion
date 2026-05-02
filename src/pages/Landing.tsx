@@ -11,13 +11,13 @@ import {
   ScrollText, Layers, ListChecks, GraduationCap, FlaskConical, LogIn,
   MessageSquare, ScanLine, X
 } from "lucide-react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { hapticLight } from "@/lib/haptics";
 import pulsoLogoLight from "@/assets/pulso-logo-light.png";
 
 import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { DATASET_COUNTS, QUIZ_TOTAL, fmt } from "@/data/datasetCounts";
 
 /* ── Animation variants ─────────────────────────────────────── */
