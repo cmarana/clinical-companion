@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-    <meta name="theme-color" content="#0f172a" />
+    <meta name="theme-color" content="#0b1220" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
     <meta name="apple-mobile-web-app-title" content="PULSO" />
@@ -42,19 +42,27 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="preload" as="image" href="/icons/icon-192.png" fetchpriority="high" />
 
-    <!-- Inline splash screen — paints instantly, before JS loads. Adapta-se ao tema. -->
+    <!-- Inline splash — pinta instantaneamente, antes do JS carregar.
+         Em apps NATIVOS (Capacitor iOS/Android), força tema escuro para combinar
+         com o LaunchScreen nativo (#0b1220) e eliminar o "flash branco" inicial. -->
     <script>
-      // Detecta tema salvo (light/dark/oled) ou prefers-color-scheme do sistema.
       (function(){
         try {
+          var isNative = !!(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform())
+            || /(iPhone|iPad|iPod|Android).*AppleWebKit(?!.*Safari)/i.test(navigator.userAgent);
           var stored = localStorage.getItem('app-theme');
           var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-          var theme = (stored === 'light' || stored === 'dark' || stored === 'oled')
-            ? stored
-            : (prefersDark ? 'dark' : 'light');
+          var theme;
+          if (isNative) {
+            theme = (stored === 'light' || stored === 'dark' || stored === 'oled') ? stored : 'dark';
+          } else {
+            theme = (stored === 'light' || stored === 'dark' || stored === 'oled')
+              ? stored
+              : (prefersDark ? 'dark' : 'light');
+          }
           document.documentElement.setAttribute('data-splash-theme', theme);
         } catch(e) {
-          document.documentElement.setAttribute('data-splash-theme', 'light');
+          document.documentElement.setAttribute('data-splash-theme', 'dark');
         }
       })();
     </script>
