@@ -281,7 +281,7 @@ export default function Landing() {
       <nav className="sticky top-safe z-nav backdrop-blur-xl bg-background/80 border-b border-border/40 pt-safe-0">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <img src={pulsoLogo} alt="PULSO" width={30} height={30} className="rounded-lg" />
+            <img src={pulsoLogo} alt="PULSO" width={30} height={30} fetchPriority="high" decoding="async" className="rounded-lg" />
             <span className="font-heading font-bold text-base">PULSO</span>
           </div>
 

@@ -218,7 +218,7 @@ export default function Home() {
       {/* Top bar */}
       <div className="sticky z-app-chrome top-safe-fb flex items-center justify-between h-12 mb-3 bg-background/90 backdrop-blur-md -mx-4 px-4">
         <div className="flex items-center gap-2.5">
-          <img src={pulsoLogo} alt="PULSO" width={32} height={32} className="rounded-lg" />
+          <img src={pulsoLogo} alt="PULSO" width={32} height={32} fetchPriority="high" decoding="async" className="rounded-lg" />
           <div className="flex flex-col">
             <span className="font-heading font-bold text-base tracking-tight">PULSO</span>
             <span className="text-[9px] text-muted-foreground tracking-wide -mt-0.5">Decida em segundos. Sem margem para erro.</span>
