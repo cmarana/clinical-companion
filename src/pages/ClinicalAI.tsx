@@ -1348,7 +1348,7 @@ function ClinicalAIContent() {
                         aria-label="Selecionar para comparar"
                       />
                       {h.thumbnail ? (
-                        <img src={h.thumbnail} alt="" loading="lazy" decoding="async" className="w-12 h-12 rounded-md object-cover border border-border shrink-0" />
+                        <img src={h.thumbnail} alt="" width={48} height={48} loading="lazy" decoding="async" className="w-12 h-12 rounded-md object-cover border border-border shrink-0" />
                       ) : (
                         <div className="w-12 h-12 rounded-md bg-rose-500/10 text-rose-600 dark:text-rose-400 border border-border flex items-center justify-center shrink-0">
                           <FileType2 size={18} />
