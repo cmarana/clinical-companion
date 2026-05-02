@@ -138,6 +138,12 @@ const allModules = [
   { icon: Users, title: "Visita / Rounds", desc: "Gestão de pacientes e pendências", color: "text-teal-400 bg-teal-400/10" },
   { icon: Bookmark, title: "Favoritos & Notas", desc: "Salve protocolos e anotações pessoais", color: "text-amber-400 bg-amber-400/10" },
   { icon: WifiOff, title: "100% Offline", desc: "Todo o conteúdo sem internet", color: "text-purple-500 bg-purple-500/10" },
+  { icon: ArrowRightLeft, title: "Comparar Condutas", desc: "SUS × Sociedades × Internacional lado a lado", color: "text-blue-600 bg-blue-600/10" },
+  { icon: ShieldCheck, title: "Checar Prescrição", desc: "IA verifica interações, doses e alergias", color: "text-emerald-600 bg-emerald-600/10" },
+  { icon: GitBranch, title: "Compatibilidade EV", desc: "Matriz Y-site para infusões simultâneas", color: "text-violet-600 bg-violet-600/10" },
+  { icon: FileText, title: "Resumo de Alta", desc: "IA gera alta hospitalar completa em segundos", color: "text-cyan-600 bg-cyan-600/10" },
+  { icon: Building2, title: "Protocolos Institucionais", desc: "Diretrizes do seu hospital sempre à mão", color: "text-amber-600 bg-amber-600/10" },
+  { icon: BarChart3, title: "Dashboard de Estudo", desc: "Streak, metas e desempenho por especialidade", color: "text-rose-400 bg-rose-400/10" },
 ];
 
 const testimonials = [
