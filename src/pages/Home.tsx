@@ -23,6 +23,7 @@ import WeeklySummaryWidget from "@/components/WeeklySummaryWidget";
 import VoiceFeaturesBanner from "@/components/VoiceFeaturesBanner";
 import DailyBriefingWidget from "@/components/DailyBriefingWidget";
 import { DATASET_COUNTS, QUIZ_TOTAL, fmt } from "@/data/datasetCounts";
+import { PrimaryCard, SecondaryCard, EmergencyShortcut } from "@/components/home/HomeCards";
 
 import WelcomeScreen from "@/components/WelcomeScreen";
 
@@ -120,19 +121,7 @@ const emergencyShortcuts = [
   { label: "Convulsão", path: "/protocols/convulsao" },
 ];
 
-const cardStyles = {
-  ai: "col-span-2 bg-gradient-to-br from-blue-600 via-indigo-600 to-violet-600 dark:from-blue-500 dark:via-indigo-500 dark:to-violet-500 text-white shadow-lg shadow-blue-500/25 dark:shadow-blue-500/40 ring-1 ring-white/10",
-  emergency: "bg-gradient-to-br from-card to-card dark:from-card dark:to-[hsl(var(--card)/0.8)] shadow-md shadow-destructive/5 dark:shadow-destructive/10 ring-1 ring-destructive/15 dark:ring-destructive/25",
-  cyan: "bg-gradient-to-br from-card to-card dark:from-card dark:to-[hsl(var(--card)/0.8)] shadow-md shadow-cyan-500/5 dark:shadow-cyan-500/10 ring-1 ring-cyan-500/15 dark:ring-cyan-500/25",
-  default: "bg-gradient-to-br from-card to-card dark:from-card dark:to-[hsl(var(--card)/0.8)] shadow-md shadow-primary/5 dark:shadow-primary/10 ring-1 ring-border/50 dark:ring-border/30",
-};
-
-const iconStyles = {
-  ai: "bg-white/20 text-white backdrop-blur-sm",
-  emergency: "bg-gradient-to-br from-destructive/10 to-destructive/20 text-destructive dark:from-destructive/15 dark:to-destructive/30",
-  cyan: "bg-gradient-to-br from-cyan-500/10 to-cyan-500/20 text-cyan-600 dark:from-cyan-500/15 dark:to-cyan-500/30 dark:text-cyan-400",
-  default: "bg-gradient-to-br from-primary/10 to-primary/20 text-primary dark:from-primary/15 dark:to-primary/30",
-};
+// Card styles moved to src/components/home/HomeCards.tsx (memoized).
 
 // Default 6 for users without specialty
 const defaultPrimaryPaths = ["/clinical-ai", "/duty", "/emergency", "/bulario", "/prescriptions", "/full-protocols"];
@@ -187,11 +176,13 @@ export default function Home() {
       .then(({ data }) => setIsAdmin(!!data));
   }, [user]);
 
-  const navigateWithTracking = (path: string, label: string) => {
+  // Stable callback so memoized cards skip re-renders when parent updates
+  // (theme toggle, unreadCount, avatar load, etc.).
+  const navigateWithTracking = useCallback((path: string, label: string) => {
     hapticLight();
     trackModule(path, label);
     navigate(path);
-  };
+  }, [navigate, trackModule]);
 
   useEffect(() => {
     if (!user) return;
@@ -263,27 +254,15 @@ export default function Home() {
       {/* ── PRIMARY GRID ─────────────────────────────────────── */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 lg:gap-4 mb-6">
         {primaryModules.map((m) => (
-          <div
+          <PrimaryCard
             key={m.path}
-            className={m.variant === "ai" ? "col-span-2" : ""}
-          >
-            <button
-              onClick={() => navigateWithTracking(m.path, m.label)}
-              data-tour={m.path === "/clinical-ai" ? "ai" : m.path === "/emergency" ? "emergency" : undefined}
-              className={`group w-full flex items-center gap-3 px-4 py-4 lg:py-5 rounded-[20px] border-0 transition-all duration-200 active:scale-[0.97] hover:shadow-xl hover:-translate-y-0.5 text-left ${cardStyles[m.variant]}`}
-            >
-              <div className={`flex items-center justify-center w-10 h-10 lg:w-12 lg:h-12 rounded-2xl shrink-0 ${iconStyles[m.variant]}`}>
-                <m.icon size={20} className="lg:hidden" />
-                <m.icon size={24} className="hidden lg:block" />
-              </div>
-              <div className="flex flex-col min-w-0">
-                <span className="font-heading font-semibold text-[13px] lg:text-sm leading-tight truncate">{m.label}</span>
-                <span className={`text-[11px] lg:text-xs leading-tight mt-0.5 truncate ${m.variant === "ai" ? "text-white/70" : "text-muted-foreground"}`}>
-                  {m.sub}
-                </span>
-              </div>
-            </button>
-          </div>
+            path={m.path}
+            label={m.label}
+            sub={m.sub}
+            icon={m.icon}
+            variant={m.variant}
+            onNavigate={navigateWithTracking}
+          />
         ))}
       </div>
 
@@ -304,13 +283,12 @@ export default function Home() {
         </div>
         <div className="flex flex-wrap gap-2">
           {emergencyShortcuts.map((s) => (
-            <button
+            <EmergencyShortcut
               key={s.path}
-              onClick={() => { hapticLight(); navigateWithTracking(s.path, s.label); }}
-              className="px-4 py-2 rounded-xl bg-destructive/8 dark:bg-destructive/15 hover:bg-destructive/15 dark:hover:bg-destructive/25 active:scale-[0.96] transition-all duration-200 font-heading font-semibold text-xs text-destructive ring-1 ring-destructive/10 hover:ring-destructive/25"
-            >
-              {s.label}
-            </button>
+              path={s.path}
+              label={s.label}
+              onNavigate={navigateWithTracking}
+            />
           ))}
         </div>
       </div>
@@ -347,19 +325,16 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2.5 lg:gap-3">
             {tab.modules.map((m) => (
-              <button
+              <SecondaryCard
                 key={m.path}
-                onClick={() => navigateWithTracking(m.path, m.label)}
-                className={`group w-full flex items-center gap-2.5 px-3.5 py-3.5 rounded-2xl bg-card text-card-foreground ring-1 ${tab.ringColor} hover:ring-2 hover:shadow-lg hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 text-left border-0`}
-              >
-                <div className={`flex items-center justify-center w-9 h-9 rounded-xl shrink-0 ${tab.iconBg}`}>
-                  <m.icon size={18} />
-                </div>
-                <div className="flex flex-col min-w-0">
-                  <span className="font-heading font-semibold text-[12px] leading-tight truncate">{m.label}</span>
-                  <span className="text-[10px] leading-tight mt-0.5 truncate text-muted-foreground">{m.sub}</span>
-                </div>
-              </button>
+                path={m.path}
+                label={m.label}
+                sub={m.sub}
+                icon={m.icon}
+                iconBg={tab.iconBg}
+                ringColor={tab.ringColor}
+                onNavigate={navigateWithTracking}
+              />
             ))}
           </div>
         </div>
