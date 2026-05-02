@@ -269,7 +269,7 @@ export default function Landing() {
     >
 
       {/* ═══ NAVBAR ═══════════════════════════════════════════ */}
-      <nav className="sticky top-safe-fb z-nav bg-background/95 supports-[backdrop-filter]:bg-background/80 backdrop-blur-xl border-b border-border/60 pt-safe-fb shadow-sm shadow-foreground/5">
+      <nav className="sticky top-safe-fb z-nav bg-background/95 supports-[backdrop-filter]:bg-background/80 backdrop-blur-xl border-b border-border/60 pt-safe-0-fb shadow-sm shadow-foreground/5">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <img src={pulsoLogo} alt="PULSO" width={30} height={30} fetchPriority="high" decoding="async" className="rounded-lg" />
