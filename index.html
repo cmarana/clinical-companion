@@ -300,7 +300,8 @@
         if (!splash) return;
         var hidden = false;
         var startedAt = Date.now();
-        var MIN_SHOW_MS = 350;
+        // Casa com o fim da sequência CSS (tagline termina em ~1820ms)
+        var MIN_SHOW_MS = 1850;
 
         // Trava o scroll enquanto o splash está visível para evitar layout shift
         document.documentElement.classList.add('pulso-splash-active');
