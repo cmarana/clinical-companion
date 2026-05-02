@@ -56,7 +56,7 @@ const allPrimaryModules: Module[] = [
   { label: "Exames (imagem)", sub: "RX, TC, RM, US, ECG por IA", icon: ScanLine, path: "/clinical-ai?tab=image", variant: "ai", tags: ["all"] },
   { label: "Modo Plantão", sub: "Guia completo para o plantão", icon: AlertTriangle, path: "/duty", variant: "emergency", tags: ["emergencia", "clinica-medica", "cirurgia", "generalista"] },
   { label: "Emergência", sub: "Algoritmos de urgência / UTI", icon: Zap, path: "/emergency", variant: "emergency", tags: ["emergencia", "cirurgia", "generalista"] },
-  { label: "Bulário", sub: "900+ fármacos", icon: Pill, path: "/bulario", variant: "default", tags: ["all"] },
+  { label: "Bulário", sub: "2.000+ fármacos", icon: Pill, path: "/bulario", variant: "default", tags: ["all"] },
   { label: "Protocolos", sub: "1.600+ protocolos clínicos", icon: BookOpen, path: "/full-protocols", variant: "default", tags: ["all"] },
   { label: "Pediatria", sub: "Protocolos pediátricos", icon: Baby, path: "/pediatrics", variant: "cyan", tags: ["pediatria"] },
   { label: "Doses Pediátricas", sub: "Calculadora por peso", icon: Calculator, path: "/pediatric-doses", variant: "cyan", tags: ["pediatria"] },
