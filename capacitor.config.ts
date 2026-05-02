@@ -16,11 +16,11 @@ const config: CapacitorConfig = {
     // Fundo do WebView combinando com o splash HTML em dark/OLED.
     // Evita o "flash branco" entre o LaunchScreen nativo do iOS e o
     // momento em que o React monta + esconde o splash inline.
-    backgroundColor: '#0b1220',
+    backgroundColor: '#ffffff',
     preferredContentMode: 'mobile',
   },
   android: {
-    backgroundColor: '#0b1220',
+    backgroundColor: '#ffffff',
     allowMixedContent: false,
     useLegacyBridge: false,
     // Draw under the system bars so we can use CSS env(safe-area-inset-*)
@@ -36,7 +36,7 @@ const config: CapacitorConfig = {
       launchAutoHide: true,
       launchShowDuration: 0,
       launchFadeOutDuration: 200,
-      backgroundColor: '#0b1220',
+      backgroundColor: '#ffffff',
       showSpinner: false,
       androidScaleType: 'CENTER_CROP',
       splashFullScreen: true,
@@ -45,6 +45,7 @@ const config: CapacitorConfig = {
       useDialog: false,
     },
     StatusBar: {
+      // Fundo branco do splash → ícones escuros (DARK = conteúdo escuro sobre fundo claro)
       style: 'DARK',
       backgroundColor: '#00000000',
       overlaysWebView: true,
