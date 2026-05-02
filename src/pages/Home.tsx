@@ -94,7 +94,7 @@ const emergencyShortcuts = [
 // Default 6 for users without specialty
 const defaultPrimaryPaths = ["/clinical-ai", "/duty", "/emergency", "/bulario", "/prescriptions", "/full-protocols"];
 
-function getPrimaryModules(specialty: string | null): Module[] {
+function getPrimaryModules(specialty: string | null): PrimaryModule[] {
   // "todas" = show all primary modules (no filtering)
   if (specialty === "todas") {
     return allPrimaryModules;
