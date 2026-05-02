@@ -207,7 +207,7 @@ export default function Home() {
   return (
     <div className="px-4 pb-24 max-w-lg md:max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto pt-safe-fb">
       {/* Top bar */}
-      <div className="sticky z-app-chrome top-safe-fb flex items-center justify-between h-12 mb-3 bg-background/90 backdrop-blur-md -mx-4 px-4">
+      <div className="sticky z-app-chrome top-safe-fb flex items-center justify-between h-12 mb-3 bg-background -mx-4 px-4 border-b border-border/40">
         <div className="flex items-center gap-2.5">
           <img src={pulsoLogo} alt="PULSO" width={32} height={32} fetchPriority="high" decoding="async" className="rounded-lg" />
           <div className="flex flex-col">

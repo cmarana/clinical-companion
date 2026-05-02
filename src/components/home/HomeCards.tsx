@@ -28,7 +28,7 @@ const cardStyles: Record<Variant, string> = {
 };
 
 const iconStyles: Record<Variant, string> = {
-  ai: "bg-white/20 text-white backdrop-blur-sm",
+  ai: "bg-white/20 text-white",
   emergency: "bg-gradient-to-br from-destructive/10 to-destructive/20 text-destructive dark:from-destructive/15 dark:to-destructive/30",
   cyan: "bg-gradient-to-br from-cyan-500/10 to-cyan-500/20 text-cyan-600 dark:from-cyan-500/15 dark:to-cyan-500/30 dark:text-cyan-400",
   default: "bg-gradient-to-br from-primary/10 to-primary/20 text-primary dark:from-primary/15 dark:to-primary/30",
