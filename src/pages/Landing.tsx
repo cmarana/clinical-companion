@@ -19,6 +19,7 @@ import pulsoLogoLight from "@/assets/pulso-logo-light.png";
 import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
 import { useState, useEffect } from "react";
 import { DATASET_COUNTS, QUIZ_TOTAL, fmt } from "@/data/datasetCounts";
+import { LANDING_MODULES, APP_MODULES_COUNT } from "@/config/appModules";
 
 /* ── Animation variants ─────────────────────────────────────── */
 const fadeUp = {
