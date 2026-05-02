@@ -11,13 +11,13 @@ import {
   ScrollText, Layers, ListChecks, GraduationCap, FlaskConical, LogIn,
   MessageSquare, ScanLine, X
 } from "lucide-react";
-import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { hapticLight } from "@/lib/haptics";
 import pulsoLogoLight from "@/assets/pulso-logo-light.png";
 
 import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
-import { useRef, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { DATASET_COUNTS, QUIZ_TOTAL, fmt } from "@/data/datasetCounts";
 
 /* ── Animation variants ─────────────────────────────────────── */
@@ -185,14 +185,22 @@ const faqs = [
   },
 ];
 
-/* ── Floating orbs ───────────────────────────────────────────── */
+/* ── Floating orbs ───────────────────────────────────────────────
+ * NOTA DE PERFORMANCE: removido blur-[140px] em 3 elementos × 5 instâncias.
+ * No iOS WebView (Capacitor), filter:blur em camadas grandes força
+ * recomposição GPU a cada frame de scroll, causando jank severo.
+ * Substituído por gradientes radiais estáticos (composição única).
+ */
 function FloatingOrbs() {
   return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <div className="absolute -top-40 -left-40 w-[600px] h-[600px] bg-primary/[0.04] rounded-full blur-[140px]" />
-      <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] bg-violet-500/[0.03] rounded-full blur-[120px]" />
-      <div className="absolute -bottom-40 left-1/4 w-[400px] h-[400px] bg-cyan-500/[0.03] rounded-full blur-[100px]" />
-    </div>
+    <div
+      aria-hidden="true"
+      className="absolute inset-0 overflow-hidden pointer-events-none opacity-60"
+      style={{
+        backgroundImage:
+          "radial-gradient(600px 400px at 10% 10%, hsl(var(--primary) / 0.05), transparent 60%), radial-gradient(500px 350px at 90% 40%, hsl(262 83% 58% / 0.04), transparent 60%), radial-gradient(400px 300px at 30% 90%, hsl(190 90% 50% / 0.04), transparent 60%)",
+      }}
+    />
   );
 }
 
@@ -236,10 +244,9 @@ function scrollTo(id: string) {
 export default function Landing() {
   const navigate = useNavigate();
   const { theme, toggleTheme } = useTheme();
-  const heroRef = useRef<HTMLElement>(null);
-  const { scrollYProgress } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
-  const heroY = useTransform(scrollYProgress, [0, 1], [0, 80]);
-  const heroOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+  // Parallax (useScroll/useTransform) removido: causava recálculo a cada
+  // frame de scroll no iOS WebView, gerando jank perceptível na Landing.
+
 
   // CTA flutuante colapsável: aparece somente quando a seção de Planos entra na viewport.
   // Inicia colapsado (pílula compacta) e expande ao toque mostrando o botão completo.
@@ -278,7 +285,7 @@ export default function Landing() {
     >
 
       {/* ═══ NAVBAR ═══════════════════════════════════════════ */}
-      <nav className="sticky top-safe z-nav backdrop-blur-xl bg-background/80 border-b border-border/40 pt-safe-0">
+      <nav className="sticky top-safe z-nav bg-background border-b border-border/40 pt-safe-0">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <img src={pulsoLogo} alt="PULSO" width={30} height={30} fetchPriority="high" decoding="async" className="rounded-lg" />
@@ -313,11 +320,10 @@ export default function Landing() {
       </nav>
 
       {/* ═══ HERO ═════════════════════════════════════════════ */}
-      <section ref={heroRef} className="relative pt-16 sm:pt-24 pb-20 px-4 overflow-hidden">
+      <section className="relative pt-16 sm:pt-24 pb-20 px-4 overflow-hidden">
         <FloatingOrbs />
 
         <motion.div
-          style={{ y: heroY, opacity: heroOpacity }}
           className="max-w-4xl mx-auto text-center relative z-10"
         >
           {/* Badge */}
@@ -430,8 +436,12 @@ export default function Landing() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* Glow */}
-          <div className="absolute inset-0 bg-primary/10 blur-[100px] rounded-full scale-50 pointer-events-none" />
+          {/* Glow estático: gradiente radial em vez de blur GPU pesado */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 pointer-events-none"
+            style={{ backgroundImage: "radial-gradient(60% 40% at 50% 50%, hsl(var(--primary) / 0.10), transparent 70%)" }}
+          />
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 relative">
             {[
@@ -451,7 +461,7 @@ export default function Landing() {
                 transition={{ delay: 0.7 + i * 0.06, duration: 0.5 }}
                 className={`relative group rounded-2xl bg-gradient-to-br ${f.accent} ring-1 ${f.ring} p-4 flex flex-col items-center text-center gap-2 hover:scale-[1.04] transition-transform cursor-default`}
               >
-                <div className="w-10 h-10 rounded-xl bg-background/60 backdrop-blur flex items-center justify-center shadow-sm">
+                <div className="w-10 h-10 rounded-xl bg-background/80 flex items-center justify-center shadow-sm">
                   <f.icon size={20} />
                 </div>
                 <span className="font-heading font-bold text-xs text-foreground leading-tight">{f.label}</span>
