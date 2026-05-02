@@ -42,7 +42,7 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="preload" as="image" href="/icons/icon-192.png" fetchpriority="high" />
 
-    <!-- Splash inline — fundo branco fixo, logo limpa sem caixa. -->
+    <!-- Splash inline — fundo branco com caixa/logo "P" + ECG (versão original). -->
     <style>
       :root { color-scheme: light; }
       html, body { margin: 0; padding: 0; background: #ffffff; }
@@ -78,40 +78,39 @@
         to   { opacity: 1; }
       }
 
+      /* Caixa branca com sombra suave envolvendo a logo */
       #pulso-splash .pulso-logo {
-        width: min(78vw, 360px);
+        width: min(62vw, 220px);
+        height: min(62vw, 220px);
+        background: #ffffff;
+        border-radius: 28px;
+        box-shadow:
+          0 1px 2px rgba(10, 22, 40, 0.06),
+          0 12px 32px rgba(10, 109, 217, 0.12),
+          0 24px 64px rgba(10, 22, 40, 0.08);
         display: flex; align-items: center; justify-content: center;
+        padding: 18%;
+        box-sizing: border-box;
         opacity: 0;
         animation: pulso-rise .7s cubic-bezier(.22,1,.36,1) .05s forwards;
       }
-      #pulso-splash .pulso-logo svg { width: 100%; height: auto; display: block; }
+      #pulso-splash .pulso-logo svg { width: 100%; height: 100%; display: block; }
 
-      /* Linha de ECG desenha-se da esquerda para a direita */
       #pulso-splash .pulso-ecg-line {
-        stroke-dasharray: 320;
-        stroke-dashoffset: 320;
+        stroke-dasharray: 200;
+        stroke-dashoffset: 200;
         animation: pulso-draw 1.4s cubic-bezier(.65,0,.35,1) .35s forwards;
-      }
-      /* Pulso sutil no ponto luminoso */
-      #pulso-splash .pulso-dot {
-        transform-origin: center;
-        opacity: 0;
-        animation: pulso-dot 1.6s ease-in-out 1.4s infinite;
       }
 
       @keyframes pulso-rise {
-        0%   { opacity: 0; transform: translateY(8px); }
-        100% { opacity: 1; transform: translateY(0); }
+        0%   { opacity: 0; transform: translateY(8px) scale(.98); }
+        100% { opacity: 1; transform: translateY(0) scale(1); }
       }
       @keyframes pulso-draw { to { stroke-dashoffset: 0; } }
-      @keyframes pulso-dot {
-        0%, 100% { opacity: .9; transform: scale(1); }
-        50%      { opacity: .35; transform: scale(.7); }
-      }
+
       @media (prefers-reduced-motion: reduce) {
         #pulso-splash .pulso-logo,
-        #pulso-splash .pulso-ecg-line,
-        #pulso-splash .pulso-dot { animation: none; opacity: 1; stroke-dashoffset: 0; }
+        #pulso-splash .pulso-ecg-line { animation: none; opacity: 1; stroke-dashoffset: 0; }
         #root.pulso-app-enter { animation: none; }
       }
     </style>
@@ -202,38 +201,17 @@
   <body>
     <div id="pulso-splash" aria-hidden="true">
       <div class="pulso-logo">
-        <!-- Wordmark PULSO sofisticado: tipografia leve + linha de ECG cortando o "L",
-             tagline "EMERGÊNCIA MÉDICA" com tracking largo. SVG inline (zero requisições). -->
-        <svg viewBox="0 0 320 140" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <!-- Wordmark -->
-          <text x="160" y="70"
-                text-anchor="middle"
-                font-family="'Helvetica Neue', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
-                font-size="58"
-                font-weight="300"
-                letter-spacing="14"
-                fill="#0a1628">PULSO</text>
-
-          <!-- Linha de ECG cruzando a palavra (acento clínico) -->
+        <!-- Logo original: letra "P" + linha de ECG, dentro da caixa branca. -->
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <path d="M28 18 H56 a18 18 0 0 1 0 36 H40 V82 H28 Z M40 30 V42 H54 a6 6 0 0 0 0-12 Z"
+                fill="#0a6dd9"/>
           <path class="pulso-ecg-line"
-                d="M40 92 L120 92 L132 80 L142 104 L152 70 L162 110 L172 92 L280 92"
+                d="M18 50 L36 50 L42 38 L48 62 L54 32 L60 58 L66 50 L82 50"
                 fill="none"
                 stroke="#0a6dd9"
-                stroke-width="2"
+                stroke-width="3.2"
                 stroke-linecap="round"
                 stroke-linejoin="round"/>
-
-          <!-- Ponto luminoso (heartbeat) -->
-          <circle class="pulso-dot" cx="280" cy="92" r="3.2" fill="#0a6dd9"/>
-
-          <!-- Tagline -->
-          <text x="160" y="124"
-                text-anchor="middle"
-                font-family="'Helvetica Neue', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif"
-                font-size="10"
-                font-weight="500"
-                letter-spacing="6"
-                fill="#0a6dd9">EMERGÊNCIA MÉDICA</text>
         </svg>
       </div>
     </div>
