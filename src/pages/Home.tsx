@@ -23,6 +23,7 @@ import WeeklySummaryWidget from "@/components/WeeklySummaryWidget";
 import VoiceFeaturesBanner from "@/components/VoiceFeaturesBanner";
 import DailyBriefingWidget from "@/components/DailyBriefingWidget";
 import { DATASET_COUNTS, QUIZ_TOTAL, fmt } from "@/data/datasetCounts";
+import { PrimaryCard, SecondaryCard, EmergencyShortcut } from "@/components/home/HomeCards";
 
 import WelcomeScreen from "@/components/WelcomeScreen";
 
