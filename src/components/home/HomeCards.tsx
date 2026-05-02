@@ -39,7 +39,7 @@ interface PrimaryCardProps {
   path: string;
   label: string;
   sub: string;
-  icon: LucideIcon;
+  icon: IconType;
   variant: Variant;
   onNavigate: (path: string, label: string) => void;
 }
@@ -73,7 +73,7 @@ interface SecondaryCardProps {
   path: string;
   label: string;
   sub: string;
-  icon: LucideIcon;
+  icon: IconType;
   iconBg: string;
   ringColor: string;
   onNavigate: (path: string, label: string) => void;
