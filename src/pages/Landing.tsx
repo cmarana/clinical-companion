@@ -286,7 +286,7 @@ export default function Landing() {
     >
 
       {/* ═══ NAVBAR ═══════════════════════════════════════════ */}
-      <nav className="sticky top-safe z-nav backdrop-blur-xl bg-background/80 border-b border-border/40 pt-safe-0">
+      <nav className="sticky top-safe z-nav bg-background border-b border-border/40 pt-safe-0">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
             <img src={pulsoLogo} alt="PULSO" width={30} height={30} fetchPriority="high" decoding="async" className="rounded-lg" />
@@ -438,8 +438,12 @@ export default function Landing() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.6, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-          {/* Glow */}
-          <div className="absolute inset-0 bg-primary/10 blur-[100px] rounded-full scale-50 pointer-events-none" />
+          {/* Glow estático: gradiente radial em vez de blur GPU pesado */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 pointer-events-none"
+            style={{ backgroundImage: "radial-gradient(60% 40% at 50% 50%, hsl(var(--primary) / 0.10), transparent 70%)" }}
+          />
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 relative">
             {[
@@ -459,7 +463,7 @@ export default function Landing() {
                 transition={{ delay: 0.7 + i * 0.06, duration: 0.5 }}
                 className={`relative group rounded-2xl bg-gradient-to-br ${f.accent} ring-1 ${f.ring} p-4 flex flex-col items-center text-center gap-2 hover:scale-[1.04] transition-transform cursor-default`}
               >
-                <div className="w-10 h-10 rounded-xl bg-background/60 backdrop-blur flex items-center justify-center shadow-sm">
+                <div className="w-10 h-10 rounded-xl bg-background/80 flex items-center justify-center shadow-sm">
                   <f.icon size={20} />
                 </div>
                 <span className="font-heading font-bold text-xs text-foreground leading-tight">{f.label}</span>
