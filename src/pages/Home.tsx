@@ -325,19 +325,16 @@ export default function Home() {
 
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2.5 lg:gap-3">
             {tab.modules.map((m) => (
-              <button
+              <SecondaryCard
                 key={m.path}
-                onClick={() => navigateWithTracking(m.path, m.label)}
-                className={`group w-full flex items-center gap-2.5 px-3.5 py-3.5 rounded-2xl bg-card text-card-foreground ring-1 ${tab.ringColor} hover:ring-2 hover:shadow-lg hover:-translate-y-0.5 active:scale-[0.97] transition-all duration-200 text-left border-0`}
-              >
-                <div className={`flex items-center justify-center w-9 h-9 rounded-xl shrink-0 ${tab.iconBg}`}>
-                  <m.icon size={18} />
-                </div>
-                <div className="flex flex-col min-w-0">
-                  <span className="font-heading font-semibold text-[12px] leading-tight truncate">{m.label}</span>
-                  <span className="text-[10px] leading-tight mt-0.5 truncate text-muted-foreground">{m.sub}</span>
-                </div>
-              </button>
+                path={m.path}
+                label={m.label}
+                sub={m.sub}
+                icon={m.icon}
+                iconBg={tab.iconBg}
+                ringColor={tab.ringColor}
+                onNavigate={navigateWithTracking}
+              />
             ))}
           </div>
         </div>
