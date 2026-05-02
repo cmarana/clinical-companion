@@ -42,9 +42,23 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="preload" as="image" href="/icons/icon-192.png" fetchpriority="high" />
 
-    <!-- Splash inline — ícone escuro arredondado com "P" + ECG e wordmark abaixo. -->
+    <!-- Splash inline — sequência: ícone → ECG → PULSO → tagline. -->
     <style>
-      :root { color-scheme: light; }
+      :root {
+        color-scheme: light;
+        /* Timings centralizados — alterar aqui propaga para tudo */
+        --pulso-ease: cubic-bezier(.22, 1, .36, 1);
+        --pulso-ease-draw: cubic-bezier(.65, 0, .35, 1);
+        --pulso-icon-delay: 60ms;
+        --pulso-icon-dur: 520ms;
+        --pulso-ecg-delay: 480ms;   /* começa antes do ícone terminar (overlap suave) */
+        --pulso-ecg-dur: 900ms;
+        --pulso-word-delay: 1100ms; /* logo após o ECG completar */
+        --pulso-word-dur: 480ms;
+        --pulso-tag-delay: 1340ms;
+        --pulso-tag-dur: 480ms;
+        /* Sequência total ≈ 1820ms — usado como MIN_SHOW_MS no JS */
+      }
       html, body { margin: 0; padding: 0; background: #ffffff; }
 
       #pulso-splash {
@@ -70,14 +84,19 @@
 
       html.pulso-splash-active, html.pulso-splash-active body { overflow: hidden; }
 
-      #root.pulso-app-enter { animation: pulso-app-enter 480ms ease both; }
+      #root.pulso-app-enter {
+        -webkit-animation: pulso-app-enter 480ms ease both;
+                animation: pulso-app-enter 480ms ease both;
+      }
+      @-webkit-keyframes pulso-app-enter { from { opacity: 0; } to { opacity: 1; } }
       @keyframes pulso-app-enter { from { opacity: 0; } to { opacity: 1; } }
 
       .pulso-brand {
         display: flex; flex-direction: column; align-items: center;
       }
 
-      /* Ícone sem fundo — menor e mais próximo do texto */
+      /* 1) Ícone — sobe e dá fade-in (sem mexer no scale para evitar
+         interpolação inconsistente entre WebKit/Blink/Gecko) */
       .pulso-icon {
         position: relative;
         width: min(30vw, 112px);
@@ -85,10 +104,10 @@
         display: flex; align-items: center; justify-content: center;
         background: transparent;
         opacity: 0;
-        transform: translateY(8px) scale(.96);
-        animation: pulso-rise .55s cubic-bezier(.22,1,.36,1) .05s forwards;
+        will-change: opacity, transform;
+        -webkit-animation: pulso-fade-up var(--pulso-icon-dur) var(--pulso-ease) var(--pulso-icon-delay) both;
+                animation: pulso-fade-up var(--pulso-icon-dur) var(--pulso-ease) var(--pulso-icon-delay) both;
       }
-      /* Halo externo bem suave */
       .pulso-icon::before {
         content: "";
         position: absolute; inset: -16%;
@@ -98,13 +117,16 @@
       }
       .pulso-icon svg { width: 100%; height: 100%; display: block; }
 
-      /* ECG desenha após o ícone aparecer */
+      /* 2) ECG — desenha a partir da esquerda (stroke-dashoffset → 0) */
       .pulso-ecg-line {
         stroke-dasharray: 200;
         stroke-dashoffset: 200;
-        animation: pulso-draw 1s cubic-bezier(.65,0,.35,1) .55s forwards;
+        will-change: stroke-dashoffset;
+        -webkit-animation: pulso-draw var(--pulso-ecg-dur) var(--pulso-ease-draw) var(--pulso-ecg-delay) both;
+                animation: pulso-draw var(--pulso-ecg-dur) var(--pulso-ease-draw) var(--pulso-ecg-delay) both;
       }
 
+      /* 3) Wordmark "PULSO" */
       .pulso-wordmark {
         margin-top: 14px;
         font-family: 'Helvetica Neue', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -114,9 +136,12 @@
         color: #0a1628;
         text-align: center;
         opacity: 0;
-        transform: translateY(6px);
-        animation: pulso-rise .5s cubic-bezier(.22,1,.36,1) .85s forwards;
+        will-change: opacity, transform;
+        -webkit-animation: pulso-fade-up var(--pulso-word-dur) var(--pulso-ease) var(--pulso-word-delay) both;
+                animation: pulso-fade-up var(--pulso-word-dur) var(--pulso-ease) var(--pulso-word-delay) both;
       }
+
+      /* 4) Tagline */
       .pulso-tagline {
         margin-top: 6px;
         font-family: 'Helvetica Neue', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -126,20 +151,29 @@
         color: #0a6dd9;
         text-align: center;
         opacity: 0;
-        transform: translateY(6px);
-        animation: pulso-rise .5s cubic-bezier(.22,1,.36,1) 1.05s forwards;
+        will-change: opacity, transform;
+        -webkit-animation: pulso-fade-up var(--pulso-tag-dur) var(--pulso-ease) var(--pulso-tag-delay) both;
+                animation: pulso-fade-up var(--pulso-tag-dur) var(--pulso-ease) var(--pulso-tag-delay) both;
       }
 
-      @keyframes pulso-rise {
-        to { opacity: 1; transform: translateY(0) scale(1); }
+      /* Keyframes únicos e isolados (sem compartilhamento ambíguo) */
+      @-webkit-keyframes pulso-fade-up {
+        0%   { opacity: 0; -webkit-transform: translate3d(0, 8px, 0); transform: translate3d(0, 8px, 0); }
+        100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0);   transform: translate3d(0, 0, 0); }
       }
+      @keyframes pulso-fade-up {
+        0%   { opacity: 0; -webkit-transform: translate3d(0, 8px, 0); transform: translate3d(0, 8px, 0); }
+        100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0);   transform: translate3d(0, 0, 0); }
+      }
+      @-webkit-keyframes pulso-draw { to { stroke-dashoffset: 0; } }
       @keyframes pulso-draw { to { stroke-dashoffset: 0; } }
 
       @media (prefers-reduced-motion: reduce) {
         .pulso-icon, .pulso-wordmark, .pulso-tagline, .pulso-ecg-line {
-          animation: none; opacity: 1; transform: none; stroke-dashoffset: 0;
+          -webkit-animation: none; animation: none;
+          opacity: 1; transform: none; stroke-dashoffset: 0;
         }
-        #root.pulso-app-enter { animation: none; }
+        #root.pulso-app-enter { -webkit-animation: none; animation: none; }
       }
     </style>
 
@@ -266,7 +300,8 @@
         if (!splash) return;
         var hidden = false;
         var startedAt = Date.now();
-        var MIN_SHOW_MS = 350;
+        // Casa com o fim da sequência CSS (tagline termina em ~1820ms)
+        var MIN_SHOW_MS = 1850;
 
         // Trava o scroll enquanto o splash está visível para evitar layout shift
         document.documentElement.classList.add('pulso-splash-active');
