@@ -709,18 +709,20 @@ export default function Landing() {
             {allModules.map((m) => {
               const [textColor, bgColor] = m.color.split(" ");
               return (
-                <motion.div
+                <motion.button
                   key={m.title}
+                  type="button"
+                  onClick={() => { hapticLight(); navigate(m.path); }}
                   variants={fadeUp}
                   custom={0}
-                  className="group p-4 rounded-2xl bg-card ring-1 ring-border/30 hover:ring-primary/30 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5 transition-all duration-300 text-center"
+                  className="group p-4 rounded-2xl bg-card ring-1 ring-border/30 hover:ring-primary/30 hover:shadow-lg hover:shadow-primary/5 hover:-translate-y-0.5 transition-all duration-300 text-center cursor-pointer"
                 >
                   <div className={`w-10 h-10 rounded-xl ${bgColor} flex items-center justify-center mx-auto mb-3`}>
                     <m.icon size={18} className={textColor} />
                   </div>
                   <h3 className="font-heading font-bold text-xs mb-1">{m.title}</h3>
                   <p className="text-[10px] text-muted-foreground leading-snug">{m.desc}</p>
-                </motion.div>
+                </motion.button>
               );
             })}
           </motion.div>
