@@ -45,7 +45,8 @@ const config: CapacitorConfig = {
       useDialog: false,
     },
     StatusBar: {
-      style: 'LIGHT',
+      // Fundo branco do splash → ícones escuros (DARK = conteúdo escuro sobre fundo claro)
+      style: 'DARK',
       backgroundColor: '#00000000',
       overlaysWebView: true,
     },
