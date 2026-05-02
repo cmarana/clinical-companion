@@ -248,23 +248,7 @@ export default function Landing() {
   // frame de scroll no iOS WebView, gerando jank perceptível na Landing.
 
 
-  // CTA flutuante colapsável: aparece somente quando a seção de Planos entra na viewport.
-  // Inicia colapsado (pílula compacta) e expande ao toque mostrando o botão completo.
-  const [showPricingCta, setShowPricingCta] = useState(false);
-  const [ctaExpanded, setCtaExpanded] = useState(false);
-  useEffect(() => {
-    const target = document.getElementById("pricing");
-    if (!target) return;
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        setShowPricingCta(entry.isIntersecting);
-        if (!entry.isIntersecting) setCtaExpanded(false);
-      },
-      { threshold: 0.15 }
-    );
-    observer.observe(target);
-    return () => observer.disconnect();
-  }, []);
+  // CTA flutuante removido a pedido do usuário (ficava cortado na lateral em iPhone).
 
   // Hide the inline HTML splash as soon as the Landing actually paints.
   useEffect(() => {
