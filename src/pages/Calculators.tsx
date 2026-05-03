@@ -904,41 +904,7 @@ export default function Calculators() {
       c.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  if (!subscription.subscribed) {
-    return (
-      <>
-        <TopBar title="Calculadoras" />
-        <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4">
-          <div className="relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-            <Input
-              placeholder="Buscar calculadora..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="pl-9 rounded-2xl bg-card border-0 shadow-sm"
-            />
-          </div>
-          <p className="text-xs text-muted-foreground text-center">{calculators.length} calculadoras disponíveis</p>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
-            {filtered.map((calc) => (
-              <Card key={calc.id} className="opacity-60">
-                <CardContent className="flex items-center gap-3 p-3.5">
-                  <div className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center text-muted-foreground">
-                    {calc.icon}
-                  </div>
-                  <div className="flex-1 min-w-0">
-                    <p className="font-heading font-semibold text-xs">🔒 {calc.title}</p>
-                    <p className="text-[10px] text-muted-foreground">{calc.description}</p>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-          <PremiumGate />
-        </div>
-      </>
-    );
-  }
+  // Calculadoras liberadas para todos os usuários (sem gate Premium)
 
   const ActiveComponent = activeCalc ? calculators.find((c) => c.id === activeCalc)?.component : null;
 
