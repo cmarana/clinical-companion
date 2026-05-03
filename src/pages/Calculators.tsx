@@ -891,7 +891,6 @@ const calculators: CalculatorConfig[] = [
 ];
 
 export default function Calculators() {
-  const { subscription } = useAuth();
   const [activeCalc, setActiveCalc] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
 
