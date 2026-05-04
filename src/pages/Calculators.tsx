@@ -1,4 +1,5 @@
 import { useState, useRef, useEffect } from "react";
+import { useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
@@ -891,7 +892,11 @@ const calculators: CalculatorConfig[] = [
 ];
 
 export default function Calculators() {
-  const [activeCalc, setActiveCalc] = useState<string | null>(null);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const initialScore = searchParams.get("score");
+  const [activeCalc, setActiveCalc] = useState<string | null>(() =>
+    initialScore && calculators.some((c) => c.id === initialScore) ? initialScore : null
+  );
   const [searchTerm, setSearchTerm] = useState("");
   const activeRef = useRef<HTMLDivElement | null>(null);
 
@@ -901,7 +906,25 @@ export default function Calculators() {
       c.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  const ActiveComponent = activeCalc ? calculators.find((c) => c.id === activeCalc)?.component : null;
+  const activeCalculator = activeCalc ? calculators.find((c) => c.id === activeCalc) : null;
+  const ActiveComponent = activeCalculator?.component;
+
+  const closeCalculator = () => {
+    setActiveCalc(null);
+    setSearchParams({}, { replace: true });
+  };
+
+  const openCalculator = (calcId: string) => {
+    setActiveCalc(calcId);
+    setSearchParams({ score: calcId }, { replace: true });
+  };
+
+  useEffect(() => {
+    const score = searchParams.get("score");
+    if (score && score !== activeCalc && calculators.some((c) => c.id === score)) {
+      setActiveCalc(score);
+    }
+  }, [searchParams, activeCalc]);
 
   useEffect(() => {
     if (activeCalc && activeRef.current) {
@@ -924,12 +947,15 @@ export default function Calculators() {
         </div>
         <p className="text-xs text-muted-foreground text-center">{filtered.length} de {calculators.length} calculadoras</p>
 
-        {ActiveComponent && (
-          <div ref={activeRef} className="bg-card rounded-[20px] shadow-sm border-0 scroll-mt-20">
+        {ActiveComponent && activeCalculator && (
+          <div ref={activeRef} className="bg-card rounded-[20px] shadow-sm border border-primary/15 scroll-mt-20">
             <div className="flex items-center justify-between pb-2 pt-5 px-5">
-              <h3 className="text-sm font-heading font-bold">{calculators.find((c) => c.id === activeCalc)?.title}</h3>
+              <div>
+                <h3 className="text-sm font-heading font-bold">{activeCalculator.title}</h3>
+                <p className="text-xs text-muted-foreground">Preencha os campos abaixo para calcular.</p>
+              </div>
               <button
-                onClick={() => setActiveCalc(null)}
+                onClick={closeCalculator}
                 className="text-xs text-muted-foreground hover:text-foreground font-heading"
                 aria-label="Fechar calculadora"
               >
@@ -944,12 +970,14 @@ export default function Calculators() {
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {filtered.map((calc) => (
-            <div
+            <button
+              type="button"
               key={calc.id}
-              onClick={() => setActiveCalc(activeCalc === calc.id ? null : calc.id)}
-              className={`cursor-pointer bg-card rounded-[20px] shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 border-0 ${
+              onClick={() => openCalculator(calc.id)}
+              className={`text-left bg-card rounded-[20px] shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 border-0 ${
                 activeCalc === calc.id ? "ring-2 ring-primary shadow-md" : ""
               }`}
+              aria-pressed={activeCalc === calc.id}
             >
               <div className="flex items-center gap-3 p-4">
                 <div className="w-10 h-10 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
@@ -960,7 +988,7 @@ export default function Calculators() {
                   <p className="text-[11px] text-muted-foreground mt-0.5">{calc.description}</p>
                 </div>
               </div>
-            </div>
+            </button>
           ))}
         </div>
       </div>
