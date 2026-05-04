@@ -893,6 +893,7 @@ const calculators: CalculatorConfig[] = [
 export default function Calculators() {
   const [activeCalc, setActiveCalc] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const activeRef = useRef<HTMLDivElement | null>(null);
 
   const filtered = calculators.filter(
     (c) =>
@@ -900,14 +901,18 @@ export default function Calculators() {
       c.description.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
-  // Calculadoras liberadas para todos os usuários (sem gate Premium)
-
   const ActiveComponent = activeCalc ? calculators.find((c) => c.id === activeCalc)?.component : null;
+
+  useEffect(() => {
+    if (activeCalc && activeRef.current) {
+      activeRef.current.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  }, [activeCalc]);
 
   return (
     <>
       <TopBar title="Calculadoras" />
-      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4">
+      <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto space-y-4 pb-24">
         <div className="relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
           <Input
@@ -918,6 +923,24 @@ export default function Calculators() {
           />
         </div>
         <p className="text-xs text-muted-foreground text-center">{filtered.length} de {calculators.length} calculadoras</p>
+
+        {ActiveComponent && (
+          <div ref={activeRef} className="bg-card rounded-[20px] shadow-sm border-0 scroll-mt-20">
+            <div className="flex items-center justify-between pb-2 pt-5 px-5">
+              <h3 className="text-sm font-heading font-bold">{calculators.find((c) => c.id === activeCalc)?.title}</h3>
+              <button
+                onClick={() => setActiveCalc(null)}
+                className="text-xs text-muted-foreground hover:text-foreground font-heading"
+                aria-label="Fechar calculadora"
+              >
+                Fechar ✕
+              </button>
+            </div>
+            <div className="px-5 pb-5">
+              <ActiveComponent />
+            </div>
+          </div>
+        )}
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {filtered.map((calc) => (
@@ -940,17 +963,6 @@ export default function Calculators() {
             </div>
           ))}
         </div>
-
-        {ActiveComponent && (
-          <div className="bg-card rounded-[20px] shadow-sm border-0">
-            <div className="pb-2 pt-5 px-5">
-              <h3 className="text-sm font-heading font-bold">{calculators.find((c) => c.id === activeCalc)?.title}</h3>
-            </div>
-            <div className="px-5 pb-5">
-              <ActiveComponent />
-            </div>
-          </div>
-        )}
       </div>
     </>
   );
