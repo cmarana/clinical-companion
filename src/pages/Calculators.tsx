@@ -945,7 +945,7 @@ export default function Calculators() {
           <Input
             placeholder="Buscar calculadora..."
             value={searchTerm}
-            onChange={(e) => { setSearchTerm(e.target.value); setActiveCalc(null); }}
+            onChange={(e) => { setSearchTerm(e.target.value); closeCalculator(); }}
             className="pl-9 rounded-2xl bg-card border-0 shadow-sm"
           />
         </div>
