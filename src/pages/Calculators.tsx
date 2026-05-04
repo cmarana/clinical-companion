@@ -911,12 +911,16 @@ export default function Calculators() {
 
   const closeCalculator = () => {
     setActiveCalc(null);
-    setSearchParams({}, { replace: true });
+    const nextParams = new URLSearchParams(searchParams);
+    nextParams.delete("score");
+    setSearchParams(nextParams, { replace: true });
   };
 
   const openCalculator = (calcId: string) => {
     setActiveCalc(calcId);
-    setSearchParams({ score: calcId }, { replace: true });
+    const nextParams = new URLSearchParams(searchParams);
+    nextParams.set("score", calcId);
+    setSearchParams(nextParams, { replace: true });
   };
 
   useEffect(() => {
@@ -947,28 +951,28 @@ export default function Calculators() {
         </div>
         <p className="text-xs text-muted-foreground text-center">{filtered.length} de {calculators.length} calculadoras</p>
 
-        {ActiveComponent && activeCalculator && (
-          <div ref={activeRef} className="bg-card rounded-[20px] shadow-sm border border-primary/15 scroll-mt-20">
-            <div className="flex items-center justify-between pb-2 pt-5 px-5">
-              <div>
-                <h3 className="text-sm font-heading font-bold">{activeCalculator.title}</h3>
-                <p className="text-xs text-muted-foreground">Preencha os campos abaixo para calcular.</p>
+        {ActiveComponent && activeCalculator ? (
+          <div ref={activeRef} className="bg-card rounded-[20px] shadow-sm border border-primary/15 scroll-mt-20 overflow-hidden">
+            <div className="border-b border-border px-5 py-4 space-y-3">
+              <Button type="button" variant="ghost" size="sm" onClick={closeCalculator} className="-ml-2 h-8 px-2 text-xs">
+                ← Voltar para calculadoras
+              </Button>
+              <div className="flex items-start gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary shrink-0">
+                  {activeCalculator.icon}
+                </div>
+                <div className="min-w-0">
+                  <h3 className="text-base font-heading font-bold">{activeCalculator.title}</h3>
+                  <p className="text-xs text-muted-foreground">{activeCalculator.description}</p>
+                </div>
               </div>
-              <button
-                onClick={closeCalculator}
-                className="text-xs text-muted-foreground hover:text-foreground font-heading"
-                aria-label="Fechar calculadora"
-              >
-                Fechar ✕
-              </button>
             </div>
-            <div className="px-5 pb-5">
+            <div className="px-5 py-5">
               <ActiveComponent />
             </div>
           </div>
-        )}
-
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+        ) : (
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
           {filtered.map((calc) => (
             <button
               type="button"
@@ -990,7 +994,8 @@ export default function Calculators() {
               </div>
             </button>
           ))}
-        </div>
+          </div>
+        )}
       </div>
     </>
   );
