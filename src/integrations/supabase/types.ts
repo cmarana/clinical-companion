@@ -14,41 +14,149 @@ export type Database = {
   }
   public: {
     Tables: {
+      ai_curated_answers: {
+        Row: {
+          answer: string
+          approved_at: string
+          approved_by: string | null
+          created_at: string
+          embedding: string | null
+          hits: number
+          id: string
+          intent: string
+          is_active: boolean
+          question_pattern: string
+          source_refs: Json
+          updated_at: string
+        }
+        Insert: {
+          answer: string
+          approved_at?: string
+          approved_by?: string | null
+          created_at?: string
+          embedding?: string | null
+          hits?: number
+          id?: string
+          intent?: string
+          is_active?: boolean
+          question_pattern: string
+          source_refs?: Json
+          updated_at?: string
+        }
+        Update: {
+          answer?: string
+          approved_at?: string
+          approved_by?: string | null
+          created_at?: string
+          embedding?: string | null
+          hits?: number
+          id?: string
+          intent?: string
+          is_active?: boolean
+          question_pattern?: string
+          source_refs?: Json
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      ai_query_log: {
+        Row: {
+          cache_hit: boolean
+          chunks_used: Json
+          complexity: string
+          cost_estimate: number
+          created_at: string
+          curated_hit: boolean
+          id: string
+          intent: string
+          latency_ms: number
+          model_used: string
+          question: string
+          response: string
+          tokens_in: number
+          tokens_out: number
+          user_id: string
+        }
+        Insert: {
+          cache_hit?: boolean
+          chunks_used?: Json
+          complexity?: string
+          cost_estimate?: number
+          created_at?: string
+          curated_hit?: boolean
+          id?: string
+          intent?: string
+          latency_ms?: number
+          model_used?: string
+          question: string
+          response?: string
+          tokens_in?: number
+          tokens_out?: number
+          user_id: string
+        }
+        Update: {
+          cache_hit?: boolean
+          chunks_used?: Json
+          complexity?: string
+          cost_estimate?: number
+          created_at?: string
+          curated_hit?: boolean
+          id?: string
+          intent?: string
+          latency_ms?: number
+          model_used?: string
+          question?: string
+          response?: string
+          tokens_in?: number
+          tokens_out?: number
+          user_id?: string
+        }
+        Relationships: []
+      }
       ai_response_cache: {
         Row: {
+          chunks_hash: string
           created_at: string
           expires_at: string
           feature: string
           hits: number
           id: string
+          intent: string
           last_hit_at: string
           mode: string
           model: string
           prompt_hash: string
+          question_embedding: string | null
           response: string
         }
         Insert: {
+          chunks_hash?: string
           created_at?: string
           expires_at?: string
           feature?: string
           hits?: number
           id?: string
+          intent?: string
           last_hit_at?: string
           mode?: string
           model?: string
           prompt_hash: string
+          question_embedding?: string | null
           response: string
         }
         Update: {
+          chunks_hash?: string
           created_at?: string
           expires_at?: string
           feature?: string
           hits?: number
           id?: string
+          intent?: string
           last_hit_at?: string
           mode?: string
           model?: string
           prompt_hash?: string
+          question_embedding?: string | null
           response?: string
         }
         Relationships: []
@@ -1033,6 +1141,69 @@ export type Database = {
         }
         Relationships: []
       }
+      medical_knowledge: {
+        Row: {
+          category: string
+          chunk_index: number
+          content: string
+          created_at: string
+          embedding: string | null
+          id: string
+          is_active: boolean
+          keywords: unknown
+          last_reviewed: string | null
+          source_id: string
+          source_type: string
+          specialty: string
+          subtitle: string
+          tags: string[]
+          title: string
+          tokens: number
+          updated_at: string
+          version: number
+        }
+        Insert: {
+          category?: string
+          chunk_index?: number
+          content: string
+          created_at?: string
+          embedding?: string | null
+          id?: string
+          is_active?: boolean
+          keywords?: unknown
+          last_reviewed?: string | null
+          source_id: string
+          source_type: string
+          specialty?: string
+          subtitle?: string
+          tags?: string[]
+          title: string
+          tokens?: number
+          updated_at?: string
+          version?: number
+        }
+        Update: {
+          category?: string
+          chunk_index?: number
+          content?: string
+          created_at?: string
+          embedding?: string | null
+          id?: string
+          is_active?: boolean
+          keywords?: unknown
+          last_reviewed?: string | null
+          source_id?: string
+          source_type?: string
+          specialty?: string
+          subtitle?: string
+          tags?: string[]
+          title?: string
+          tokens?: number
+          updated_at?: string
+          version?: number
+        }
+        Relationships: []
+      }
       module_analytics: {
         Row: {
           accessed_at: string
@@ -1689,6 +1860,30 @@ export type Database = {
       join_institution_by_invite: {
         Args: { _invite_code: string }
         Returns: string
+      }
+      match_medical_knowledge: {
+        Args: {
+          filter_source_types?: string[]
+          match_count?: number
+          query_embedding: string
+          query_text?: string
+          similarity_threshold?: number
+        }
+        Returns: {
+          category: string
+          chunk_index: number
+          combined_score: number
+          content: string
+          id: string
+          similarity: number
+          source_id: string
+          source_type: string
+          specialty: string
+          subtitle: string
+          tags: string[]
+          text_rank: number
+          title: string
+        }[]
       }
       move_to_dlq: {
         Args: {
