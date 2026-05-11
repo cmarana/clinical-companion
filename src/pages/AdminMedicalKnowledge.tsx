@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Helmet } from "react-helmet-async";
+
 import { supabase } from "@/integrations/supabase/client";
 import { useIsAdmin } from "@/hooks/useIsAdmin";
 import { Navigate } from "react-router-dom";
@@ -124,7 +124,7 @@ export default function AdminMedicalKnowledge() {
 
   return (
     <div className="container max-w-5xl py-8 space-y-6">
-      <Helmet><title>Base Médica RAG — Admin PULSO</title></Helmet>
+      
 
       <header>
         <h1 className="text-3xl font-bold tracking-tight">Base Médica RAG</h1>
