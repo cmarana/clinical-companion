@@ -25,3 +25,9 @@ project_id = "xwmqqwqynyhccmyqtxje"
     verify_jwt = false
   [functions.stripe-webhook]
     verify_jwt = false
+  [functions.embed-text]
+    verify_jwt = false
+  [functions.medical-rag-query]
+    verify_jwt = false
+  [functions.ingest-medical-knowledge]
+    verify_jwt = false
