@@ -255,17 +255,13 @@ serve(async (req) => {
         ];
         images.forEach((url) => clsContent.push({ type: "image_url", image_url: { url } }));
 
-        const clsResp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-          method: "POST",
-          headers: { Authorization: `Bearer ${LOVABLE_API_KEY}`, "Content-Type": "application/json" },
-          body: JSON.stringify({
-            model: "google/gemini-2.5-flash-lite",
-            messages: [
-              { role: "system", content: CLASSIFIER_PROMPT },
-              { role: "user", content: clsContent },
-            ],
-            response_format: { type: "json_object" },
-          }),
+        const clsResp = await geminiChat({
+          model: "google/gemini-2.5-flash-lite",
+          messages: [
+            { role: "system", content: CLASSIFIER_PROMPT },
+            { role: "user", content: clsContent as any },
+          ],
+          response_format: { type: "json_object" },
         });
         if (clsResp.ok) {
           const clsData = await clsResp.json();
