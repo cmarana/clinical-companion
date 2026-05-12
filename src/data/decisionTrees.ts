@@ -577,5 +577,210 @@ export const decisionTrees: Record<string, { title: string; tree: TreeNode; guid
   eap: { title: "Fluxograma EAP", tree: eapTree, guideline: "SBC / ESC" },
   convulsao: { title: "Fluxograma Convulsão", tree: convulsaoTree, guideline: "ABN / AES" },
   "status-epileptico": { title: "Fluxograma Status Epiléptico", tree: convulsaoTree, guideline: "ABN / AES" },
+  "tep": { title: "Fluxograma TEP", tree: {
+    id: "tep-start", label: "Suspeita de TEP", type: "decision",
+    detail: "Dispneia súbita, dor pleurítica, taquicardia, hipoxemia\nFatores de risco: imobilização, cirurgia, TVP, neoplasia, gestação",
+    children: [
+      { label: "Instabilidade hemodinâmica? (PAS <90 ou queda >40mmHg)", node: {
+        id: "tep-instavel", label: "TEP de alto risco", type: "decision",
+        children: [
+          { label: "Sim → TEP maciço", node: {
+            id: "tep-massico", label: "Trombólise sistêmica", type: "action",
+            detail: "Alteplase 100mg EV em 2h (ou 0,6mg/kg se parada)\nAnticoagulação: HNF sem bolus durante trombólise\nSe contraindicação à trombólise → embolectomia cirúrgica ou trombectomia percutânea\nMonitorização em UTI",
+            children: [
+              { label: "Melhora?", node: { id: "tep-melhora", label: "Anticoagulação plena + UTI", type: "endpoint",
+                detail: "HNF 80 UI/kg bolus → 18 UI/kg/h\nTransição para anticoagulante oral após estabilização\nEcocardiograma para avaliar sobrecarga de VD" }}
+            ]
+          }},
+          { label: "Não → Calcular Wells/PESI", node: {
+            id: "tep-wells", label: "Estratificação de risco", type: "decision",
+            detail: "Wells TEP: TVP clínica (+3), diagnóstico alternativo menos provável (+3), FC>100 (+1,5), imobilização/cirurgia (+1,5), TVP/TEP prévio (+1,5), hemoptise (+1), neoplasia (+1)",
+            children: [
+              { label: "Wells >4 ou alta probabilidade → AngioTC tórax", node: {
+                id: "tep-angiotc", label: "AngioTC confirma TEP?", type: "decision",
+                children: [
+                  { label: "Sim → Anticoagular", node: { id: "tep-ac", label: "Anticoagulação plena", type: "endpoint",
+                    detail: "HBPM: enoxaparina 1mg/kg 12/12h SC\nRivaroxabana 15mg 12/12h × 21 dias → 20mg/dia\nApixabana 10mg 12/12h × 7 dias → 5mg 12/12h\nDuração mínima: 3 meses" }},
+                  { label: "Não → Investigar outras causas", node: { id: "tep-neg", label: "TEP excluído", type: "endpoint",
+                    detail: "Investigar pneumonia, pneumotórax, SCA, pericardite\nD-dímero negativo com baixa probabilidade exclui TEP" }}
+                ]
+              }},
+              { label: "Wells ≤4 → D-dímero", node: {
+                id: "tep-ddimero", label: "D-dímero < 500 ng/mL?", type: "decision",
+                children: [
+                  { label: "Sim → TEP excluído", node: { id: "tep-excluido", label: "Alta se clinicamente estável", type: "endpoint",
+                    detail: "D-dímero negativo com probabilidade baixa/intermediária exclui TEP\nOrientar retorno se piora" }},
+                  { label: "Não → AngioTC tórax", node: { id: "tep-angiotc2", label: "AngioTC para confirmação", type: "endpoint",
+                    detail: "Mesmo fluxo acima para resultado positivo/negativo" }}
+                ]
+              }}
+            ]
+          }}
+        ]
+      }}
+    ]
+  }, guideline: "ESC 2019 / SBP" },
+
+  "cetoacidose": { title: "Fluxograma Cetoacidose Diabética", tree: {
+    id: "cad-start", label: "Suspeita de CAD", type: "decision",
+    detail: "Glicemia >250mg/dL + pH <7,3 + Bicarbonato <15 + Cetonúria/cetonemia\nSintomas: poliúria, polidipsia, vômitos, dor abdominal, hálito cetônico",
+    children: [
+      { label: "Classificar gravidade", node: {
+        id: "cad-grav", label: "CAD: Leve / Moderada / Grave", type: "decision",
+        detail: "Leve: pH 7,25-7,3 / Bic 15-18 / Glasgow 15\nModerada: pH 7,0-7,25 / Bic 10-15 / Glasgow 13-14\nGrave: pH <7,0 / Bic <10 / Glasgow <13",
+        children: [
+          { label: "Leve → Hidratação VO + Insulina SC", node: {
+            id: "cad-leve", label: "Tratamento ambulatorial supervisionado", type: "endpoint",
+            detail: "Hidratação oral agressiva\nInsulina regular SC 0,1-0,3 UI/kg 4/4h\nMonitorar glicemia e cetonúria\nIdentificar e tratar fator precipitante" }},
+          { label: "Moderada/Grave → Internar + EV", node: {
+            id: "cad-grave", label: "Fase 1: Expansão volêmica", type: "action",
+            detail: "SF 0,9% 1L na 1ª hora → 500mL/h nas próximas 2h → 250mL/h\nPotássio: se K+ <3,5 → repor antes da insulina / se K+ 3,5-5,5 → 20-40mEq/h / se K+ >5,5 → aguardar",
+            children: [
+              { label: "K+ ≥ 3,5 mEq/L → Iniciar insulina", node: {
+                id: "cad-insulina", label: "Insulina Regular EV 0,1 UI/kg/h", type: "action",
+                detail: "Alvo: redução de 50-75 mg/dL/h\nQuando glicemia <250: adicionar SG 5% ao hidrato\nManter insulina até pH >7,3 + Bic >18 + fechamento do ânion gap\nTransição para SC: sobrepor 1-2h",
+                children: [
+                  { label: "Resolução da CAD", node: { id: "cad-resolucao", label: "Transição para insulina SC", type: "endpoint",
+                    detail: "Insulina basal SC com sobreposição de 1-2h antes de suspender EV\nIdentificar e tratar fator precipitante (infecção, não adesão)\nEducação em diabetes antes da alta" }}
+                ]
+              }},
+              { label: "K+ <3,5 → Repor K+ antes da insulina", node: {
+                id: "cad-k-baixo", label: "KCl 20-40mEq/h até K+ ≥ 3,5", type: "action",
+                detail: "Insulina pode reduzir ainda mais o K+ → risco de arritmia\nMonitorar K+ a cada 1-2h até estabilização" }}
+            ]
+          }}
+        ]
+      }}
+    ]
+  }, guideline: "ADA 2024 / SBD" },
+
+  "hipercalemia": { title: "Fluxograma Hipercalemia", tree: {
+    id: "hk-start", label: "K+ > 5,5 mEq/L", type: "decision",
+    detail: "Causas: IRA/IRC, acidose, medicamentos (IECA, espironolactona, AINE), rabdomiólise, pseudohipercalemia",
+    children: [
+      { label: "K+ > 6,5 ou alterações no ECG?", node: {
+        id: "hk-ecg", label: "Avaliar ECG", type: "decision",
+        detail: "Progressão ECG: ondas T apiculadas → PR longo → QRS alargado → onda sinusoidal → FV",
+        children: [
+          { label: "Sim → Estabilização de membrana imediata", node: {
+            id: "hk-ca", label: "Gluconato de Cálcio 10% 10-20mL EV em 2-3 min", type: "action",
+            detail: "Estabiliza membrana cardíaca — efeito em 1-3 min, duração 30-60 min\nRepetir se ECG não melhorar em 5 min\nNÃO reduz o K+ sérico — apenas protege o coração",
+            children: [
+              { label: "Shift intracelular de K+", node: {
+                id: "hk-shift", label: "Insulina + Glicose + Salbutamol", type: "action",
+                detail: "Insulina regular 10 UI EV + SG 50% 50mL (evitar hipoglicemia)\nSalbutamol 10-20mg nebulizado (reduz K+ 0,5-1,5 mEq/L)\nBicarbonato de sódio se acidose metabólica (pH <7,2)",
+                children: [
+                  { label: "Eliminar K+ do organismo", node: {
+                    id: "hk-eliminar", label: "Resinas + Diurético + Diálise", type: "endpoint",
+                    detail: "Patiromer ou Sevelamer (resinas)\nFurosemida 40-80mg EV se função renal preservada\nHemodiálise de urgência: K+ >7 ou refratário / IRA anúrica / ECG grave\nMonitorar K+ a cada 1-2h" }}
+                ]
+              }}
+            ]
+          }},
+          { label: "Não → K+ 5,5-6,5 sem alteração ECG", node: {
+            id: "hk-leve", label: "Hipercalemia leve-moderada", type: "action",
+            detail: "Dieta com restrição de K+\nRevisar medicamentos (suspender IECA/BRA/poupadores de K+ se possível)\nFurosemida se função renal preservada\nResinas de troca: patiromer 8,4g/dia VO\nMonitorar K+ em 4-6h",
+            children: [
+              { label: "K+ normalizado?", node: {
+                id: "hk-ok", label: "Alta com seguimento", type: "endpoint",
+                detail: "Identificar e corrigir causa\nSeguimento em 24-48h\nEducação sobre dieta e medicamentos" }}
+            ]
+          }}
+        ]
+      }}
+    ]
+  }, guideline: "SBC / KDIGO 2022" },
+
+  "crise-hipertensiva": { title: "Fluxograma Crise Hipertensiva", tree: {
+    id: "ch-start", label: "PA ≥ 180/120 mmHg", type: "decision",
+    detail: "Classificar: Urgência (sem LOA) vs Emergência (com LOA aguda)",
+    children: [
+      { label: "Lesão aguda de órgão-alvo (LOA)?", node: {
+        id: "ch-loa", label: "Avaliar LOA", type: "decision",
+        detail: "LOA: encefalopatia/AVC, SCA/IC descompensada, dissecção aórtica, IRA, eclâmpsia, retinopatia grau III-IV",
+        children: [
+          { label: "Sim → Emergência Hipertensiva", node: {
+            id: "ch-emergencia", label: "Internação + Redução IV controlada", type: "decision",
+            detail: "Redução máxima: 25% da PAM na 1ª hora → 160/100 em 2-6h → normal em 24-48h\nEXCEÇÃO: AVC isquêmico → não reduzir se PA <220/120 (a menos que trombólise)\nDissecção aórtica: alvo PAS <120 em 20 min",
+            children: [
+              { label: "Encefalopatia / Eclâmpsia", node: { id: "ch-encef", label: "Nicardipina ou Labetalol EV", type: "endpoint",
+                detail: "Nicardipina 5mg/h → titular até 15mg/h\nLabetalol 20mg EV bolus → 40-80mg a cada 10 min (máx 300mg)\nEclâmpsia: hidralazina 5mg EV + MgSO4" }},
+              { label: "SCA / EAP", node: { id: "ch-sca", label: "Nitroglicerina EV", type: "endpoint",
+                detail: "NTG 5mcg/min → titular até 100mcg/min\nFurosemida 40-80mg EV se congestão\nMorfina 2-4mg EV se dor" }},
+              { label: "Dissecção aórtica", node: { id: "ch-ao", label: "Esmolol + Nitroprussiato", type: "endpoint",
+                detail: "Esmolol 500mcg/kg bolus → 50-200mcg/kg/min\nNitroprussiato 0,3-10mcg/kg/min\nAlvo: PAS <120 mmHg em 20 min\nCirurgia de urgência se tipo A" }}
+            ]
+          }},
+          { label: "Não → Urgência Hipertensiva", node: {
+            id: "ch-urgencia", label: "Redução oral gradual em 24-48h", type: "endpoint",
+            detail: "Captopril 25mg SL (início 15-30min) ou VO\nClonidina 0,1-0,2mg VO (repetir a cada hora se necessário)\nAmlodipina 5-10mg VO\nNÃO reduzir abruptamente — risco de isquemia\nRetorno em 24h para reavaliação\nInvestigar adesão e causa secundária" }}
+        ]
+      }}
+    ]
+  }, guideline: "SBC 2021 / ESH 2023" },
+
+  "asma": { title: "Fluxograma Crise Asmática", tree: {
+    id: "asma-start", label: "Crise Asmática", type: "decision",
+    detail: "Classificar gravidade: SpO2, FR, fala, uso de musculatura acessória, sibilos, nível de consciência",
+    children: [
+      { label: "Classificar gravidade", node: {
+        id: "asma-grav", label: "Leve / Moderada / Grave / Iminência de parada", type: "decision",
+        detail: "Leve: SpO2 >95%, fala normal, sem tiragem\nModerada: SpO2 91-95%, fala em frases, tiragem leve\nGrave: SpO2 <91%, fala em palavras, tiragem intensa, cianose\nIminência: exaustão, confusão, bradipneia, silêncio",
+        children: [
+          { label: "Leve/Moderada", node: {
+            id: "asma-leve", label: "Beta-2 + Corticoide", type: "action",
+            detail: "Salbutamol spray 4-8 jatos com espaçador a cada 20 min × 3 (1ª hora)\nOU nebulização 2,5-5mg a cada 20 min\nPrednisolona 40-60mg VO (ou Metilprednisolona 125mg EV)\nO2 suplementar se SpO2 <95% (alvo 93-95%)",
+            children: [
+              { label: "Melhora em 1h?", node: {
+                id: "asma-melhora", label: "Alta com plano de ação", type: "endpoint",
+                detail: "Manter beta-2 de resgate a cada 4-6h\nCorticoide oral 5-7 dias\nRevisar técnica inalatória\nRetorno se piora ou em 24-48h" }},
+              { label: "Sem melhora → Tratamento intensificar", node: {
+                id: "asma-sem-melhora", label: "Ipratrópio + Sulfato de magnésio", type: "action",
+                detail: "Ipratrópio 0,5mg nebulizado a cada 20 min × 3\nSulfato de magnésio 2g EV em 20 min\nConsiderar heliox se disponível" }}
+            ]
+          }},
+          { label: "Grave / Iminência de parada", node: {
+            id: "asma-grave", label: "Tratamento máximo + IOT precoce", type: "action",
+            detail: "O2 alto fluxo + VNI se cooperativo\nSalbutamol contínuo nebulizado\nMgSO4 2g EV em 20 min\nAdrenalina IM 0,3mg se broncoespasmo grave\nPreparar intubação: ketamina 1-2mg/kg (broncodilatadora) + succinilcolina\nVentilar com baixa FR (10-12irpm) e alto fluxo (broncoespasmo grave → auto-PEEP)",
+            children: [
+              { label: "Após IOT", node: { id: "asma-iot", label: "UTI + Ventilar com estratégia protetora para asma", type: "endpoint",
+                detail: "FR baixa (10-12), Vt 6-8mL/kg, PEEP 0-5, I:E 1:3-1:5\nSedação + analgesia adequadas\nBroncodilatadores via TET\nGarantir expiração completa (auto-PEEP)" }}
+            ]
+          }}
+        ]
+      }}
+    ]
+  }, guideline: "GINA 2024 / SBPT" },
+
+  "dpoc": { title: "Fluxograma Exacerbação DPOC", tree: {
+    id: "dpoc-start", label: "Exacerbação de DPOC", type: "decision",
+    detail: "Aumento de dispneia, escarro e/ou purulência além da variabilidade diária\nCausas: infecção (50-70%), poluição, embolia pulmonar",
+    children: [
+      { label: "Avaliar gravidade", node: {
+        id: "dpoc-grav", label: "Gasometria + SpO2 + Nível de consciência", type: "decision",
+        detail: "Grave: SpO2 <88%, pH <7,35, PCO2 >45 com piora\nCritérios de internação: dispneia grave em repouso, cianose, edema novo, falha ambulatorial, comorbidades",
+        children: [
+          { label: "Hipoxemia (SpO2 <88%) → O2 controlado", node: {
+            id: "dpoc-o2", label: "O2 alvo SpO2 88-92%", type: "action",
+            detail: "Cateter nasal 1-2 L/min ou Venturi 24-28%\nNÃO usar O2 alto fluxo sem gasometria — risco de hipercapnia\nGasometria arterial em 30-60 min após ajuste",
+            children: [
+              { label: "pH <7,35 e PCO2 elevado → VNI", node: {
+                id: "dpoc-vni", label: "VNI (BiPAP)", type: "action",
+                detail: "IPAP 12-20 cmH2O / EPAP 4-8 cmH2O\nAlvo: FR <25 irpm, SpO2 88-92%, pH >7,35\nReavaliar em 1-2h\nIndicação IOT: falha VNI, rebaixamento consciência, instabilidade hemodinâmica",
+                children: [
+                  { label: "Melhora", node: { id: "dpoc-melhora", label: "Manter VNI + Broncodilatadores", type: "endpoint",
+                    detail: "Desmame gradual da VNI\nSalbutamol + Ipratrópio inalatórios\nCorticoide: metilprednisolona 0,5mg/kg 12/12h 5-7 dias\nATB se escarro purulento: amoxicilina-clavulanato ou azitromicina 5 dias" }}
+                ]
+              }},
+              { label: "pH ≥7,35 → Tratamento clínico", node: {
+                id: "dpoc-clinico", label: "Broncodilatadores + Corticoide", type: "endpoint",
+                detail: "Salbutamol 2,5mg + Ipratrópio 0,5mg nebulizados a cada 20 min × 3 → 4/4h\nMetilprednisolona 40mg EV 12/12h ou prednisolona 40mg VO por 5 dias\nATB se ≥2: piora dispneia, aumento escarro, escarro purulento" }}
+            ]
+          }}
+        ]
+      }}
+    ]
+  }, guideline: "GOLD 2024 / SBPT" },
+
   ...decisionTrees2,
 };
