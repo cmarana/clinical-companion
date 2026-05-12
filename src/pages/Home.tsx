@@ -3,8 +3,7 @@ import {
   Sun, Moon, ChevronRight, Bell, Wrench, Library,
   Eclipse, Newspaper, Stethoscope, Zap, Shield,
 } from "lucide-react";
-import pulsoLogoLight from "@/assets/pulso-logo-light.png";
-import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
+import { PulsoLogo } from "@/components/PulsoLogo";
 import { useState, useEffect, useMemo, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
