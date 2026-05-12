@@ -215,7 +215,18 @@ export default function ConductComparator() {
       setHistory(updated);
       saveHistory(updated);
     } catch (err: any) {
-      toast({ title: "Erro", description: err.message || "Falha ao comparar condutas", variant: "destructive" });
+      const msg = err?.message || err?.error_description || "Falha ao comparar condutas";
+      const isAuth = msg.toLowerCase().includes("jwt") || msg.toLowerCase().includes("token") || msg.toLowerCase().includes("auth");
+      const isMissing = msg.toLowerCase().includes("not found") || msg.toLowerCase().includes("404");
+      toast({
+        title: "Erro no comparador",
+        description: isAuth
+          ? "Sessão expirada. Faça login novamente."
+          : isMissing
+          ? "Serviço temporariamente indisponível. Tente em instantes."
+          : msg,
+        variant: "destructive",
+      });
     } finally {
       setLoading(false);
     }
