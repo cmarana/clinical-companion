@@ -24,8 +24,6 @@ serve(async (req) => {
       });
     }
 
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
     const soapPrompt = `Você é um médico especialista em documentação clínica. Estruture o relato no formato SOAP (Subjetivo, Objetivo, Avaliação, Plano). Use linguagem médica formal, organize em tópicos, inclua CID-10 quando possível. Se faltar informação, escreva "Não informado".`;
     const ipassPrompt = `Você é um médico especialista em passagem de plantão. Estruture o relato no formato I-PASS (Illness Severity, Patient Summary, Action List, Situation Awareness, Synthesis). Linguagem formal, priorize segurança do paciente, destaque alertas críticos.`;
