@@ -763,7 +763,7 @@ function ClinicalAIContent() {
           <div key={i} className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
             {msg.role === "assistant" && (
               <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-1">
-                <Bot size={14} className="text-primary" />
+                <PulsoMark size={14} />
               </div>
             )}
             <div className={`max-w-[95%] rounded-lg text-sm ${
