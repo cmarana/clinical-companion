@@ -320,7 +320,7 @@ export default function PrelaunchLanding() {
                   {/* App header */}
                   <div className="mt-2.5 flex items-center justify-between">
                     <div className="flex items-center gap-2">
-                      <div className="h-7 w-7 rounded-lg bg-white/95 flex items-center justify-center shadow-md shadow-blue-500/30 p-1">
+                      <div className="h-7 w-7 flex items-center justify-center">
                         <img src={logo} alt="PULSO" className="h-full w-full object-contain" />
                       </div>
                       <div className="leading-tight">
