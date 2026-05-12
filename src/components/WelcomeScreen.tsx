@@ -22,7 +22,6 @@ interface WelcomeScreenProps {
 
 export default function WelcomeScreen({ userName, onComplete }: WelcomeScreenProps) {
   const [visible, setVisible] = useState(false);
-  const { theme } = useTheme();
 
   useEffect(() => {
     const seen = localStorage.getItem(WELCOME_KEY);
