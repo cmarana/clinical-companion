@@ -531,7 +531,7 @@ export default function PrelaunchLanding() {
           <div className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-3xl">
             {[
               { n: `${TOTAL_TOOLS}`, l: "ferramentas clínicas" },
-              { n: "1", l: "IA clínica integrada" },
+              { n: "IA", l: "clínica integrada" },
               { n: "Acesso", l: "rápido · objetivo" },
               { n: "Plantão", l: "feito para médicos" },
             ].map((c) => (
