@@ -1,4 +1,5 @@
 import { verifyAuthAndQuota, bumpAiUsage, hashPrompt, lookupCache, storeCache } from "../_shared/aiQuota.ts";
+import { geminiChat } from "../_shared/gemini.ts";
 
 const FEATURE = "conduct-comparator";
 const MODEL = "google/gemini-2.5-flash";
@@ -23,8 +24,6 @@ Deno.serve(async (req) => {
       });
     }
 
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
     const contextNote = context ? `\nContexto adicional: ${context}` : "";
 
@@ -59,16 +58,13 @@ Compare as condutas das 3 fontes. Seja específico com doses, nomes de medicamen
       } catch { /* falha cache → segue */ }
     }
 
-    const aiRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", Authorization: `Bearer ${LOVABLE_API_KEY}` },
-      body: JSON.stringify({
-        model: MODEL,
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: userPrompt },
-        ],
-      }),
+    const aiRes = await geminiChat({
+      model: MODEL,
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userPrompt },
+      ],
+      response_format: { type: "json_object" },
     });
 
     if (!aiRes.ok) {

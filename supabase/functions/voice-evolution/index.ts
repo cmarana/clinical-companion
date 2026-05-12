@@ -1,5 +1,6 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { verifyAuthAndQuota, bumpAiUsage, hashPrompt, lookupCache, storeCache } from "../_shared/aiQuota.ts";
+import { geminiChat } from "../_shared/gemini.ts";
 
 const FEATURE = "voice-evolution";
 const MODEL = "google/gemini-2.5-flash-lite"; // Estruturação simples → modelo barato
@@ -23,8 +24,6 @@ serve(async (req) => {
       });
     }
 
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
     const soapPrompt = `Você é um médico especialista em documentação clínica. Estruture o relato no formato SOAP (Subjetivo, Objetivo, Avaliação, Plano). Use linguagem médica formal, organize em tópicos, inclua CID-10 quando possível. Se faltar informação, escreva "Não informado".`;
     const ipassPrompt = `Você é um médico especialista em passagem de plantão. Estruture o relato no formato I-PASS (Illness Severity, Patient Summary, Action List, Situation Awareness, Synthesis). Linguagem formal, priorize segurança do paciente, destaque alertas críticos.`;
@@ -45,17 +44,13 @@ serve(async (req) => {
       return new Response(stream, { headers: { ...corsHeaders, "Content-Type": "text/event-stream" } });
     }
 
-    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-      method: "POST",
-      headers: { Authorization: `Bearer ${LOVABLE_API_KEY}`, "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: MODEL,
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: userMessage },
-        ],
-        stream: true,
-      }),
+    const response = await geminiChat({
+      model: MODEL,
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userMessage },
+      ],
+      stream: true,
     });
 
     if (!response.ok) {

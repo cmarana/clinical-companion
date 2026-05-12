@@ -5,6 +5,7 @@
 // ─────────────────────────────────────────────────────────────
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { verifyAuthAndQuota, bumpAiUsage, corsHeaders } from "../_shared/aiQuota.ts";
+import { geminiChat } from "../_shared/gemini.ts";
 
 // Checklists direcionados por modalidade + região anatômica
 const CHECKLISTS: Record<string, string> = {
@@ -228,9 +229,8 @@ serve(async (req) => {
       }
     }
 
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    if (!LOVABLE_API_KEY) {
-      return new Response(JSON.stringify({ error: "AI gateway não configurado" }), {
+    if (!Deno.env.get("GEMINI_API_KEY")) {
+      return new Response(JSON.stringify({ error: "GEMINI_API_KEY não configurada" }), {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
@@ -255,17 +255,13 @@ serve(async (req) => {
         ];
         images.forEach((url) => clsContent.push({ type: "image_url", image_url: { url } }));
 
-        const clsResp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-          method: "POST",
-          headers: { Authorization: `Bearer ${LOVABLE_API_KEY}`, "Content-Type": "application/json" },
-          body: JSON.stringify({
-            model: "google/gemini-2.5-flash-lite",
-            messages: [
-              { role: "system", content: CLASSIFIER_PROMPT },
-              { role: "user", content: clsContent },
-            ],
-            response_format: { type: "json_object" },
-          }),
+        const clsResp = await geminiChat({
+          model: "google/gemini-2.5-flash-lite",
+          messages: [
+            { role: "system", content: CLASSIFIER_PROMPT },
+            { role: "user", content: clsContent as any },
+          ],
+          response_format: { type: "json_object" },
         });
         if (clsResp.ok) {
           const clsData = await clsResp.json();
@@ -336,19 +332,12 @@ serve(async (req) => {
       });
     });
 
-    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${LOVABLE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
-        messages: [
-          { role: "system", content: systemPrompt },
-          { role: "user", content: userContent },
-        ],
-      }),
+    const response = await geminiChat({
+      model: "google/gemini-2.5-flash",
+      messages: [
+        { role: "system", content: systemPrompt },
+        { role: "user", content: userContent as any },
+      ],
     });
 
     if (!response.ok) {
@@ -394,79 +383,55 @@ serve(async (req) => {
     let summary = "";
     let alerts: CriticalAlert[] = [];
     try {
-      const extractResp = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${LOVABLE_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model: "google/gemini-2.5-flash-lite",
-          messages: [
-            {
-              role: "system",
-              content:
-                "Você extrai um resumo clínico e a lista de alertas críticos a partir de um laudo de IA já formatado em markdown. " +
-                "REGRAS: (1) Português do Brasil. (2) Resumo: 2-3 frases focadas no que o médico precisa saber AGORA. " +
-                "(3) Alertas SOMENTE para achados que exigem ação ou correlação imediata — valores fora da faixa, red flags clínicas, achados de imagem graves. " +
-                "(4) Use 'critico' apenas para achados de pânico/risco iminente; 'atencao' para alterações relevantes; 'informativo' para observações úteis. " +
-                "(5) Se não houver alteração relevante, retorne lista vazia. Não invente valores que não estejam no laudo.",
-            },
-            { role: "user", content: `Laudo a resumir:\n\n${analysis}` },
-          ],
-          tools: [
-            {
-              type: "function",
-              function: {
-                name: "extract_summary_and_alerts",
-                description: "Extrai resumo executivo e lista de alertas críticos do laudo.",
-                parameters: {
-                  type: "object",
-                  properties: {
-                    summary: {
-                      type: "string",
-                      description: "Resumo clínico em 2-3 frases (máx. 400 caracteres).",
-                    },
-                    alerts: {
-                      type: "array",
-                      description: "Lista de alertas críticos. Vazia se nada relevante.",
-                      items: {
-                        type: "object",
-                        properties: {
-                          level: {
-                            type: "string",
-                            enum: ["critico", "atencao", "informativo"],
-                          },
-                          label: {
-                            type: "string",
-                            description: "Nome curto do achado (ex.: 'Hipercalemia', 'Pneumotórax', 'Supra de ST'). Máx. 60 chars.",
-                          },
-                          value: {
-                            type: "string",
-                            description: "Valor medido quando aplicável (ex.: 'K+ 6,8 mEq/L'). Opcional.",
-                          },
-                          reference: {
-                            type: "string",
-                            description: "Faixa de referência quando aplicável (ex.: '3,5-5,0 mEq/L'). Opcional.",
-                          },
-                          action: {
-                            type: "string",
-                            description: "Ação imediata sugerida em até 80 chars. Opcional.",
-                          },
-                        },
-                        required: ["level", "label"],
-                        additionalProperties: false,
+      const extractResp = await geminiChat({
+        model: "google/gemini-2.5-flash-lite",
+        messages: [
+          {
+            role: "system",
+            content:
+              "Você extrai um resumo clínico e a lista de alertas críticos a partir de um laudo de IA já formatado em markdown. " +
+              "REGRAS: (1) Português do Brasil. (2) Resumo: 2-3 frases focadas no que o médico precisa saber AGORA. " +
+              "(3) Alertas SOMENTE para achados que exigem ação ou correlação imediata — valores fora da faixa, red flags clínicas, achados de imagem graves. " +
+              "(4) Use 'critico' apenas para achados de pânico/risco iminente; 'atencao' para alterações relevantes; 'informativo' para observações úteis. " +
+              "(5) Se não houver alteração relevante, retorne lista vazia. Não invente valores que não estejam no laudo.",
+          },
+          { role: "user", content: `Laudo a resumir:\n\n${analysis}` },
+        ],
+        tools: [
+          {
+            type: "function",
+            function: {
+              name: "extract_summary_and_alerts",
+              description: "Extrai resumo executivo e lista de alertas críticos do laudo.",
+              parameters: {
+                type: "object",
+                properties: {
+                  summary: {
+                    type: "string",
+                    description: "Resumo clínico em 2-3 frases (máx. 400 caracteres).",
+                  },
+                  alerts: {
+                    type: "array",
+                    description: "Lista de alertas críticos. Vazia se nada relevante.",
+                    items: {
+                      type: "object",
+                      properties: {
+                        level: { type: "string", enum: ["critico", "atencao", "informativo"] },
+                        label: { type: "string", description: "Nome curto do achado. Máx. 60 chars." },
+                        value: { type: "string", description: "Valor medido quando aplicável. Opcional." },
+                        reference: { type: "string", description: "Faixa de referência quando aplicável. Opcional." },
+                        action: { type: "string", description: "Ação imediata sugerida em até 80 chars. Opcional." },
                       },
+                      required: ["level", "label"],
                     },
                   },
-                  required: ["summary", "alerts"],
-                  additionalProperties: false,
                 },
+                required: ["summary", "alerts"],
               },
             },
-          ],
-          tool_choice: { type: "function", function: { name: "extract_summary_and_alerts" } },
-        }),
+          },
+        ],
+        tool_choice: { type: "function", function: { name: "extract_summary_and_alerts" } },
       });
       if (extractResp.ok) {
         const extractData = await extractResp.json();
