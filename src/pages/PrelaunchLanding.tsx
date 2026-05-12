@@ -133,7 +133,6 @@ const PERFIS = ["Médico", "Residente", "Acadêmico de medicina", "Enfermeiro", 
 
 export default function PrelaunchLanding() {
   const navigate = useNavigate();
-  const { resolvedTheme } = useTheme();
   const [submitted, setSubmitted] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
@@ -141,7 +140,7 @@ export default function PrelaunchLanding() {
     especialidade: "", cidade_estado: "", aceitou_comunicacao: true,
   });
   const [activeGroup, setActiveGroup] = useState<string>(GROUPS[0].id);
-  const logo = resolvedTheme === "light" ? pulsoLogoLight : pulsoLogoDark;
+  const logo = pulsoLogoDark;
 
   const visibleTools = useMemo(
     () => GROUPS.find((g) => g.id === activeGroup)?.tools ?? [],
