@@ -1,9 +1,7 @@
 import { ArrowLeft, Heart, Shield, Zap, BookOpen, Users, Target, Sparkles, Globe } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useTheme } from "@/contexts/ThemeContext";
-import pulsoLogoLight from "@/assets/pulso-logo-light.png";
-import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
+import { PulsoLogo } from "@/components/PulsoLogo";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
