@@ -135,7 +135,7 @@ export default function Home() {
   const [specialty] = useState<string | null>("todas");
   const [isAdmin, setIsAdmin] = useState(false);
   
-  const pulsoLogo = theme === "light" ? pulsoLogoLight : pulsoLogoDark;
+  
 
   useEffect(() => {
     if (!user) { setIsAdmin(false); return; }
