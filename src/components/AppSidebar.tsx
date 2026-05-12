@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {
   Bot, AlertTriangle, Zap, Pill, ClipboardList, BookOpen,
   Calculator, FlaskConical, Baby, Heart, Stethoscope, HelpCircle,
-  Search, Star, User, StickyNote, Home, Gift, Timer, Hash, 
+  Search, Star, User, StickyNote, Home, Gift, Timer, Hash, Calendar, 
   TestTubes, Droplets, Brain, GraduationCap, BarChart3, FileEdit,
   Syringe, ScanLine, WifiOff, ChevronRight, Shield, Database
 } from "lucide-react";
