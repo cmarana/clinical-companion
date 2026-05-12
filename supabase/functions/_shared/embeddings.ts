@@ -1,8 +1,9 @@
 // Helper compartilhado para gerar embeddings via Google text-embedding-004 (gratuito).
 // Dimensão: 768. Usado por embed-text, ingest-medical-knowledge e medical-rag-query.
 
+// Usa gemini-embedding-001 (GA) com outputDimensionality=768 para casar com a coluna pgvector(768).
 const EMBED_URL =
-  "https://generativelanguage.googleapis.com/v1beta/models/text-embedding-004:embedContent";
+  "https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-001:embedContent";
 
 export async function embedText(text: string): Promise<number[]> {
   const key = Deno.env.get("GEMINI_API_KEY");
@@ -14,8 +15,9 @@ export async function embedText(text: string): Promise<number[]> {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-      model: "models/text-embedding-004",
+      model: "models/gemini-embedding-001",
       content: { parts: [{ text: clean }] },
+      outputDimensionality: 768,
     }),
   });
   if (!res.ok) {

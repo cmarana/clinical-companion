@@ -231,9 +231,19 @@ Deno.serve(async (req) => {
     }), { headers: { ...corsHeaders, "Content-Type": "application/json" } });
   } catch (e) {
     console.error("medical-rag-query error:", e);
-    return new Response(JSON.stringify({ error: "Erro no pipeline RAG" }), {
-      status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" },
-    });
+    // Nunca devolver 500 — devolve fallback para o cliente cair para o LLM normal.
+    return new Response(
+      JSON.stringify({
+        answer: "",
+        source: "deterministic",
+        intent: "general",
+        complexity: "low",
+        chunks: [],
+        fallback: true,
+        error: "RAG_UNAVAILABLE",
+      }),
+      { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+    );
   }
 });
 
