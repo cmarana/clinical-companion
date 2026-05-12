@@ -162,6 +162,8 @@ const AppRoutes = () => (
         <Route path="/notes" element={<Notes />} />
         <Route path="/emergency" element={<Suspense fallback={<ProtocolListSkeleton />}><EmergencyMode /></Suspense>} />
         <Route path="/emergency/:id" element={<Suspense fallback={<ProtocolDetailSkeleton />}><EmergencyProtocolDetail /></Suspense>} />
+        <Route path="/emergency-doses" element={<Navigate to="/emergency" replace />} />
+        <Route path="/doses-emergencia" element={<Navigate to="/emergency" replace />} />
         <Route path="/duty" element={<DutyMode />} />
         <Route path="/prescriptions" element={<Suspense fallback={<ProtocolListSkeleton />}><Prescriptions /></Suspense>} />
         <Route path="/prescriptions/:id" element={<Suspense fallback={<ProtocolDetailSkeleton />}><PrescriptionDetail /></Suspense>} />
