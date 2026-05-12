@@ -722,7 +722,7 @@ function ClinicalAIContent() {
         {messages.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full text-center px-4">
             <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-3">
-              <PulsoMark size={32} />
+              <PulsoLogo size={32} />
             </div>
             <h2 className="font-heading font-bold text-base mb-1">Dra. Clara — IA Clínica</h2>
             <p className="text-[12px] text-foreground/80 max-w-sm mb-2">
@@ -754,7 +754,7 @@ function ClinicalAIContent() {
           <div key={i} className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
             {msg.role === "assistant" && (
               <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-1">
-                <PulsoMark size={14} />
+                <PulsoLogo size={14} />
               </div>
             )}
             <div className={`max-w-[95%] rounded-lg text-sm ${
@@ -785,7 +785,7 @@ function ClinicalAIContent() {
         {isLoading && messages[messages.length - 1]?.role !== "assistant" && (
           <div className="flex gap-2 justify-start">
             <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-              <PulsoMark size={14} />
+              <PulsoLogo size={14} />
             </div>
             <div className="bg-muted rounded-2xl rounded-bl-md px-4 py-3 flex items-center gap-2">
               <Loader2 size={14} className="animate-spin text-muted-foreground" />
