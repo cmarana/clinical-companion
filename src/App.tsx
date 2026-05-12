@@ -213,6 +213,7 @@ const AppRoutes = () => (
         <Route path="/profile" element={<Profile />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/antimicrobials" element={<AntimicrobialGuide />} />
+        <Route path="/toxicology" element={<Toxicology />} />
         <Route path="/pediatric-doses" element={<PediatricDoseCalculator />} />
         <Route path="/documents" element={<DocumentGenerator />} />
         <Route path="/procedure-guides" element={<ProcedureGuides />} />
