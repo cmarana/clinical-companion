@@ -193,8 +193,21 @@ function ClinicalAIContent() {
       return;
     }
 
+    if (typeof window === "undefined") {
+      toast.error("Reconhecimento de voz não disponível neste ambiente.");
+      return;
+    }
+
+    if (window.location.protocol !== "https:" && window.location.hostname !== "localhost") {
+      toast.error("Reconhecimento de voz requer HTTPS. Acesse pelo navegador em modo seguro.");
+      return;
+    }
+
     const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
-    if (!SpeechRecognition) { toast.error("Navegador não suporta reconhecimento de voz"); return; }
+    if (!SpeechRecognition) {
+      toast.error("Use o Chrome ou Edge para reconhecimento de voz. Safari e Firefox não suportam esta função.");
+      return;
+    }
 
     const recognition = new SpeechRecognition();
     recognition.lang = "pt-BR";
@@ -212,14 +225,10 @@ function ClinicalAIContent() {
       let interim = "";
       for (let i = event.resultIndex; i < event.results.length; i++) {
         const t = event.results[i][0].transcript;
-        if (event.results[i].isFinal) {
-          finalTranscript += t + " ";
-        } else {
-          interim = t;
-        }
+        if (event.results[i].isFinal) finalTranscript += t + " ";
+        else interim = t;
       }
       const combined = (finalTranscript + interim).trim();
-      
       switch (target) {
         case "chat": setInput(combined); break;
         case "symptoms": setSymptoms(combined); break;
@@ -229,9 +238,20 @@ function ClinicalAIContent() {
       }
     };
 
-    recognition.onerror = () => { setIsListening(false); toast.error("Erro no reconhecimento de voz"); };
-    recognition.onend = () => setIsListening(false);
+    recognition.onerror = (event: any) => {
+      setIsListening(false);
+      const erros: Record<string, string> = {
+        "not-allowed": "Permissão de microfone negada. Libere o acesso nas configurações do navegador.",
+        "no-speech": "Nenhuma fala detectada. Tente novamente.",
+        "network": "Erro de rede no reconhecimento de voz. Verifique sua conexão.",
+        "aborted": "Gravação cancelada.",
+        "audio-capture": "Microfone não encontrado ou sem acesso.",
+        "service-not-allowed": "Serviço de voz bloqueado. Use HTTPS.",
+      };
+      toast.error(erros[event.error] || `Erro de voz: ${event.error}`);
+    };
 
+    recognition.onend = () => setIsListening(false);
     recognition.start();
     toast.success("🎤 Ouvindo... fale o relato do paciente");
   }, [isListening]);
