@@ -739,7 +739,13 @@ function ClinicalAIContent() {
                 : "rounded-bl-sm"
             }`}>
               {msg.role === "assistant" ? (
-                <ClinicalResponseCards content={msg.content} />
+                <ClinicalResponseCards
+                  content={msg.content}
+                  ragSource={i === messages.length - 1 ? lastRagMeta?.source : undefined}
+                  ragIntent={i === messages.length - 1 ? lastRagMeta?.intent : undefined}
+                  ragModel={i === messages.length - 1 ? lastRagMeta?.model : undefined}
+                  ragChunks={i === messages.length - 1 ? lastRagMeta?.chunks : undefined}
+                />
               ) : (
                 <div className="whitespace-pre-wrap text-[13px]">{msg.content}</div>
               )}
