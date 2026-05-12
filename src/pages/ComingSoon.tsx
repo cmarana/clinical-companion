@@ -9,7 +9,7 @@ export default function ComingSoon() {
   const { user } = useAuth();
   return (
     <div className="min-h-screen bg-[#0A0F1F] text-slate-100 flex flex-col items-center justify-center px-6 text-center">
-      <img src={pulsoLogoDark} alt="PULSO" className="h-9 w-auto mb-8 opacity-90" />
+      <PulsoLogo size={36} forceVariant="dark" className="mb-8 opacity-90" priority />
       <div className="inline-flex items-center gap-2 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-3 py-1 text-xs text-cyan-300">
         <Sparkles className="h-3.5 w-3.5" /> Pré-lançamento
       </div>
