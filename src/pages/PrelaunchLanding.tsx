@@ -332,33 +332,36 @@ export default function PrelaunchLanding() {
                   </div>
 
                   {/* Saudação */}
-                  <div className="mt-2.5 text-[10px] text-slate-400">Bom plantão, Dr.</div>
-                  <div className="text-[12px] font-medium text-slate-100 leading-tight">Suas ferramentas</div>
+                  <div className="mt-2.5 flex items-end justify-between">
+                    <div>
+                      <div className="text-[10px] text-slate-400">Bom plantão, Dr.</div>
+                      <div className="text-[12px] font-medium text-slate-100 leading-tight">Suas {TOTAL_TOOLS} ferramentas</div>
+                    </div>
+                    <div className="text-[8.5px] text-blue-300/80 uppercase tracking-wider">Tudo no app</div>
+                  </div>
 
-                  {/* Lista de blocos (igual ao app) */}
-                  <div className="mt-2 flex-1 overflow-hidden grid grid-cols-3 gap-1.5 content-start">
-                    {[
-                      { i: Siren, l: "Emergência", c: "from-red-500/25 to-red-500/5 text-red-300 border-red-400/20" },
-                      { i: AlertTriangle, l: "Plantão", c: "from-orange-500/25 to-orange-500/5 text-orange-300 border-orange-400/20" },
-                      { i: Bot, l: "Dra. Clara", c: "from-blue-500/30 to-blue-500/5 text-blue-300 border-blue-400/30" },
-                      { i: ScanLine, l: "Imagem IA", c: "from-sky-500/25 to-sky-500/5 text-sky-300 border-sky-400/20" },
-                      { i: BookOpen, l: "Protocolos", c: "from-cyan-500/25 to-cyan-500/5 text-cyan-300 border-cyan-400/20" },
-                      { i: Pill, l: "Bulário", c: "from-emerald-500/25 to-emerald-500/5 text-emerald-300 border-emerald-400/20" },
-                      { i: Calculator, l: "Scores", c: "from-indigo-500/25 to-indigo-500/5 text-indigo-300 border-indigo-400/20" },
-                      { i: FileText, l: "Prescrição", c: "from-amber-500/25 to-amber-500/5 text-amber-300 border-amber-400/20" },
-                      { i: Baby, l: "Pediatria", c: "from-pink-500/25 to-pink-500/5 text-pink-300 border-pink-400/20" },
-                      { i: FlaskConical, l: "Interações", c: "from-violet-500/25 to-violet-500/5 text-violet-300 border-violet-400/20" },
-                      { i: Mic, l: "Voz → SOAP", c: "from-fuchsia-500/25 to-fuchsia-500/5 text-fuchsia-300 border-fuchsia-400/20" },
-                      { i: Brain, l: "Casos IA", c: "from-purple-500/25 to-purple-500/5 text-purple-300 border-purple-400/20" },
-                    ].map((t) => (
-                      <div
-                        key={t.l}
-                        className={`rounded-xl border bg-gradient-to-b ${t.c} px-1.5 py-2 flex flex-col items-center justify-center gap-1 aspect-square`}
-                      >
-                        <t.i className="h-3.5 w-3.5" />
-                        <div className="text-[8.5px] text-slate-200 text-center leading-tight font-medium">{t.l}</div>
-                      </div>
-                    ))}
+                  {/* Lista das 39 ferramentas com auto-scroll */}
+                  <div className="mt-2 flex-1 overflow-hidden relative">
+                    <motion.div
+                      className="grid grid-cols-4 gap-1.5"
+                      animate={{ y: ["0%", "-55%", "0%"] }}
+                      transition={{ duration: 28, repeat: Infinity, ease: "linear" }}
+                    >
+                      {GROUPS.flatMap((g) => g.tools).map((t, i) => (
+                        <div
+                          key={`${t.name}-${i}`}
+                          className="rounded-lg border border-white/10 bg-gradient-to-b from-white/[0.06] to-transparent px-1 py-1.5 flex flex-col items-center justify-center gap-0.5 aspect-square"
+                        >
+                          <t.icon className="h-3 w-3 text-blue-300" />
+                          <div className="text-[7.5px] text-slate-300 text-center leading-[1.05] font-medium line-clamp-2 px-0.5">
+                            {t.name}
+                          </div>
+                        </div>
+                      ))}
+                    </motion.div>
+                    {/* Fades top/bottom */}
+                    <div className="pointer-events-none absolute inset-x-0 top-0 h-6 bg-gradient-to-b from-[#0A1322] to-transparent" />
+                    <div className="pointer-events-none absolute inset-x-0 bottom-0 h-6 bg-gradient-to-t from-[#0A1322] to-transparent" />
                   </div>
 
                   {/* Bottom nav simulada */}
@@ -377,28 +380,6 @@ export default function PrelaunchLanding() {
                   </div>
                 </div>
               </div>
-
-              {/* Floating chips */}
-              <motion.div
-                initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.6 }}
-                className="absolute -left-4 top-12 hidden md:flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 backdrop-blur px-3 py-2 shadow-xl"
-              >
-                <Calculator className="h-4 w-4 text-indigo-300" />
-                <div className="text-xs">
-                  <div className="font-medium">53 calculadoras</div>
-                  <div className="text-slate-400">Glasgow · SOFA · Wells</div>
-                </div>
-              </motion.div>
-              <motion.div
-                initial={{ opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.8 }}
-                className="absolute -right-4 bottom-16 hidden md:flex items-center gap-2 rounded-2xl border border-white/10 bg-white/5 backdrop-blur px-3 py-2 shadow-xl"
-              >
-                <Pill className="h-4 w-4 text-emerald-300" />
-                <div className="text-xs">
-                  <div className="font-medium">2.000+ fármacos</div>
-                  <div className="text-slate-400">Doses · Diluições</div>
-                </div>
-              </motion.div>
             </motion.div>
           </div>
         </div>
