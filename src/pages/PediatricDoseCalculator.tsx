@@ -209,6 +209,19 @@ function DrugResultCard({ drug, weight }: { drug: PediatricDrug; weight: number 
             </div>
           )}
 
+          {/* Receituário para os pais */}
+          {calc.formulations.length > 0 && calc.drug.dosePerKg > 0 && (
+            <PrescriptionForParents
+              drugName={drug.name}
+              weight={weight}
+              doseMg={calc.singleDoseCapped}
+              frequency={drug.frequency}
+              route={drug.route}
+              formulations={calc.formulations}
+              notes={drug.notes}
+            />
+          )}
+
           {/* All formulations */}
           <div>
             <h5 className="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-1.5 flex items-center gap-1">
