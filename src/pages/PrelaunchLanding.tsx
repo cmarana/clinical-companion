@@ -755,6 +755,9 @@ export default function PrelaunchLanding() {
           <div className="text-sm text-slate-300 space-y-2">
             <Link to="/privacy" className="block hover:text-blue-300">Política de Privacidade</Link>
             <Link to="/terms" className="block hover:text-blue-300">Termos de Uso</Link>
+            <Link to="/auth" className="inline-flex items-center gap-1.5 text-slate-400 hover:text-blue-300">
+              <Lock className="h-3.5 w-3.5" /> Acesso restrito
+            </Link>
           </div>
           <div className="text-xs text-slate-500 sm:text-right">
             PULSO Emergência Médica © {new Date().getFullYear()}.<br />Todos os direitos reservados.
