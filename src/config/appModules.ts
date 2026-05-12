@@ -66,9 +66,9 @@ export const APP_MODULES: AppModule[] = [
   {
     id: "clinical-ai",
     path: "/clinical-ai",
-    homeLabel: "IA Clínica", homeSub: "Chat, Caso, Exames, Plantão e Texto", homeIcon: Bot,
-    landingTitle: "IA Clínica multimodal",
-    landingDesc: "Chat · Caso · Exames (imagem) · Plantão · Texto",
+    homeLabel: "Dra. Clara — IA Clínica", homeSub: "Assistente clínica · Chat, Caso, Exames e Plantão", homeIcon: Bot,
+    landingTitle: "Dra. Clara — IA Clínica multimodal",
+    landingDesc: "Sua assistente clínica · Chat · Caso · Exames (imagem) · Plantão · Texto",
     landingIcon: Bot, landingColor: "text-blue-500 bg-blue-500/10",
     homePrimary: { variant: "ai", tags: ["all"] },
   },
