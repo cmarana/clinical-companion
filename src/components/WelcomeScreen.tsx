@@ -2,9 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Zap, Pill, Bot, Calculator, BookOpen, Shield, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
-import pulsoLogoLight from "@/assets/pulso-logo-light.png";
-import { useTheme } from "@/contexts/ThemeContext";
+import { PulsoLogo } from "@/components/PulsoLogo";
 
 const WELCOME_KEY = "pulso_welcome_seen";
 
