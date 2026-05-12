@@ -1141,6 +1141,45 @@ export type Database = {
         }
         Relationships: []
       }
+      launch_signups: {
+        Row: {
+          aceitou_comunicacao: boolean
+          cidade_estado: string
+          created_at: string
+          email: string
+          especialidade: string
+          id: string
+          nome: string
+          origem: string
+          perfil_profissional: string
+          whatsapp: string
+        }
+        Insert: {
+          aceitou_comunicacao?: boolean
+          cidade_estado?: string
+          created_at?: string
+          email: string
+          especialidade?: string
+          id?: string
+          nome: string
+          origem?: string
+          perfil_profissional?: string
+          whatsapp?: string
+        }
+        Update: {
+          aceitou_comunicacao?: boolean
+          cidade_estado?: string
+          created_at?: string
+          email?: string
+          especialidade?: string
+          id?: string
+          nome?: string
+          origem?: string
+          perfil_profissional?: string
+          whatsapp?: string
+        }
+        Relationships: []
+      }
       medical_knowledge: {
         Row: {
           category: string
@@ -1908,7 +1947,7 @@ export type Database = {
       }
     }
     Enums: {
-      app_role: "admin" | "moderator" | "user"
+      app_role: "admin" | "moderator" | "user" | "tester" | "developer"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -2036,7 +2075,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["admin", "moderator", "user"],
+      app_role: ["admin", "moderator", "user", "tester", "developer"],
     },
   },
 } as const
