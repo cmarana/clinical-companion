@@ -584,14 +584,24 @@ export default function PrelaunchLanding() {
             Por que o PULSO chama atenção logo no primeiro uso?
           </h2>
         </div>
+        <p className="mt-4 text-slate-300 max-w-2xl">
+          Cada detalhe foi pensado para que a primeira abertura já mostre, na prática, o que muda
+          quando o plantão tem o app certo na mão.
+        </p>
         <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[
-            { icon: Activity, t: "Interface feita para o plantão", d: "Sem telas confusas. Acesso rápido, direto e intuitivo." },
-            { icon: Layers, t: "Informação organizada", d: "Ferramentas clínicas reunidas em uma experiência limpa." },
-            { icon: ShieldCheck, t: "Apoio na tomada de decisão", d: "Recursos pensados para momentos de pressão e urgência." },
-            { icon: Bot, t: "IA clínica integrada", d: "A Dra. Clara amplia a experiência com apoio inteligente." },
-            { icon: Lock, t: "Acesso restrito durante os testes", d: "O app é preparado com cuidado antes da liberação pública." },
-            { icon: Sparkles, t: "Benefícios no lançamento", d: "Cadastrados poderão receber novidades e condições especiais." },
+            { icon: Activity, t: "Interface feita para o plantão", d: "Layout direto, contraste alto e fluxos pensados para usar com uma mão só." },
+            { icon: Layers, t: "Tudo em um só lugar", d: `${TOTAL_TOOLS} ferramentas clínicas integradas — sem trocar de app, sem abrir 10 abas.` },
+            { icon: Bot, t: "Dra. Clara, IA clínica", d: "Pergunte em linguagem natural, envie exames de imagem e receba leitura estruturada." },
+            { icon: Siren, t: "Modo Sala Vermelha", d: "Bundles de PCR, sepse, IAM e AVC ao alcance de um toque, com cronômetro ACLS." },
+            { icon: Pill, t: "2.000+ medicamentos", d: "Doses, diluições, ajuste renal/hepático e checagem de interações cruzada." },
+            { icon: Calculator, t: "53 calculadoras clínicas", d: "Glasgow, SOFA, Wells, HEART, MELD, NEWS, APACHE II e muito mais." },
+            { icon: BookOpen, t: "1.600+ protocolos", d: "Bibliotecas baseadas em evidência, com referências e níveis de evidência." },
+            { icon: ScanLine, t: "Exames por imagem com IA", d: "RX, TC, RM, US e ECG analisados por IA multimodal em segundos." },
+            { icon: Mic, t: "Evolução por voz", d: "Dite e gere SOAP / I-PASS estruturados sem digitar uma linha." },
+            { icon: WifiOff, t: "100% offline no plantão", d: "Funciona sem internet — protocolos, doses e calculadoras sempre disponíveis." },
+            { icon: ShieldCheck, t: "Apoio à decisão segura", d: "Alertas de interações, doses críticas e incompatibilidades em Y-site." },
+            { icon: Sparkles, t: "Benefícios no lançamento", d: "Cadastrados podem receber acesso antecipado e condições especiais." },
           ].map((b) => (
             <Card key={b.t} className="bg-white/[0.04] border-white/10 text-slate-100">
               <CardContent className="p-5">
