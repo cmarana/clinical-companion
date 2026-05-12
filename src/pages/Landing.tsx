@@ -950,7 +950,7 @@ export default function Landing() {
             {/* Brand */}
             <div className="sm:col-span-2 lg:col-span-1">
               <div className="flex items-center gap-2.5 mb-4">
-                <img src={pulsoLogo} alt="PULSO" width={28} height={28} loading="lazy" decoding="async" className="rounded-lg" />
+                <PulsoLogo size={28} />
                 <span className="font-heading font-bold text-lg text-foreground">PULSO</span>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">
