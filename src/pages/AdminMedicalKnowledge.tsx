@@ -1,77 +1,687 @@
-import { useEffect, useState } from "react";
-
+import { useEffect, useState, useCallback } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useIsAdmin } from "@/hooks/useIsAdmin";
 import { Navigate } from "react-router-dom";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
-import { useToast } from "@/hooks/use-toast";
-import { buildAllChunks } from "@/lib/knowledgeIngest";
-import { askMedicalRag, type RagAnswer } from "@/lib/medicalRag";
+import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Loader2, Database, Sparkles, FileText } from "lucide-react";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { toast } from "sonner";
+import { buildAllChunks } from "@/lib/knowledgeIngest";
+import { askMedicalRag, getRagSessionCacheStats, clearRagSessionCache, type RagAnswer } from "@/lib/medicalRag";
+import {
+  Loader2, Database, Sparkles, Search, Trash2, CheckCircle2,
+  RefreshCw, ChevronDown, ChevronUp, AlertTriangle, BookOpen, Zap,
+} from "lucide-react";
+import {
+  BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid,
+} from "recharts";
+
+interface KnowledgeItem {
+  id: string;
+  source_type: string;
+  source_id: string;
+  title: string;
+  subtitle?: string;
+  specialty?: string;
+  content: string;
+  tags?: string[];
+  chunk_index?: number;
+  version?: number;
+  is_active: boolean;
+  last_reviewed?: string;
+  created_at: string;
+}
+
+interface QueryLogItem {
+  id: string;
+  question: string;
+  intent: string;
+  model_used?: string;
+  cache_hit: boolean;
+  tokens_in?: number;
+  tokens_out?: number;
+  cost_estimate?: number;
+  latency_ms?: number;
+  chunks_used?: { title: string; source_type: string; score: number }[];
+  response?: string;
+  created_at: string;
+}
+
+interface CuratedAnswer {
+  id: string;
+  question_pattern: string;
+  answer: string;
+  approved_by?: string;
+  approved_at?: string;
+  created_at: string;
+}
 
 interface Stats {
   total: number;
   bySource: Record<string, number>;
   recentQueries: number;
   cacheHits: number;
+  cacheRate: number;
+  avgLatency: number;
 }
+
+const SOURCE_LABELS: Record<string, string> = {
+  full_protocol: "Protocolo",
+  medication: "Medicamento",
+  emergency: "Emergência",
+  prescription: "Prescrição",
+  antimicrobial: "Antimicrobiano",
+  dilution: "Diluição",
+  calculator: "Calculadora",
+  interaction: "Interação",
+  score: "Score",
+};
+
+const SOURCE_COLORS: Record<string, string> = {
+  full_protocol: "#0a6dd9",
+  medication: "#22c55e",
+  emergency: "#ef4444",
+  antimicrobial: "#f59e0b",
+  dilution: "#8b5cf6",
+  calculator: "#06b6d4",
+  interaction: "#ec4899",
+  score: "#f97316",
+};
 
 export default function AdminMedicalKnowledge() {
   const { isAdmin, loading: roleLoading } = useIsAdmin();
-  const { toast } = useToast();
+
+  if (roleLoading) {
+    return (
+      <div className="flex items-center justify-center min-h-[60vh]">
+        <Loader2 className="animate-spin h-6 w-6 text-muted-foreground" />
+      </div>
+    );
+  }
+  if (!isAdmin) return <Navigate to="/" replace />;
+
+  return (
+    <div className="container max-w-6xl mx-auto p-4 md:p-6 space-y-6">
+      <div>
+        <h1 className="text-2xl md:text-3xl font-bold font-heading">Base Médica RAG</h1>
+        <p className="text-sm text-muted-foreground mt-1">
+          Conteúdo interno do PULSO indexado para a IA Clínica responder com fonte rastreável.
+        </p>
+      </div>
+
+      <Tabs defaultValue="overview">
+        <TabsList>
+          <TabsTrigger value="overview">Visão geral</TabsTrigger>
+          <TabsTrigger value="queries">Consultas</TabsTrigger>
+          <TabsTrigger value="curated">Curadas</TabsTrigger>
+          <TabsTrigger value="ingest">Ingestão</TabsTrigger>
+        </TabsList>
+        <TabsContent value="overview"><OverviewTab /></TabsContent>
+        <TabsContent value="queries"><QueriesTab /></TabsContent>
+        <TabsContent value="curated"><CuratedTab /></TabsContent>
+        <TabsContent value="ingest"><IngestTab /></TabsContent>
+      </Tabs>
+    </div>
+  );
+}
+
+function OverviewTab() {
   const [stats, setStats] = useState<Stats | null>(null);
-  const [loadingStats, setLoadingStats] = useState(true);
+  const [loading, setLoading] = useState(true);
+  const [search, setSearch] = useState("");
+  const [items, setItems] = useState<KnowledgeItem[]>([]);
+  const [loadingItems, setLoadingItems] = useState(false);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const sessionStats = getRagSessionCacheStats();
+
+  const loadStats = useCallback(async () => {
+    setLoading(true);
+    try {
+      const { count: total } = await supabase
+        .from("medical_knowledge")
+        .select("*", { count: "exact", head: true })
+        .eq("is_active", true);
+
+      const { data: rows } = await supabase
+        .from("medical_knowledge")
+        .select("source_type")
+        .eq("is_active", true)
+        .limit(10000);
+
+      const bySource: Record<string, number> = {};
+      (rows || []).forEach((r: any) => {
+        bySource[r.source_type] = (bySource[r.source_type] || 0) + 1;
+      });
+
+      const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+      const { count: recentQueries } = await supabase
+        .from("ai_query_log")
+        .select("*", { count: "exact", head: true })
+        .gte("created_at", since);
+
+      const { count: cacheHits } = await supabase
+        .from("ai_query_log")
+        .select("*", { count: "exact", head: true })
+        .gte("created_at", since)
+        .eq("cache_hit", true);
+
+      const { data: latRows } = await supabase
+        .from("ai_query_log")
+        .select("latency_ms")
+        .gte("created_at", since)
+        .not("latency_ms", "is", null)
+        .limit(200);
+
+      const avgLatency =
+        latRows && latRows.length > 0
+          ? Math.round(latRows.reduce((acc: number, r: any) => acc + (r.latency_ms || 0), 0) / latRows.length)
+          : 0;
+
+      const rq = recentQueries || 0;
+      const ch = cacheHits || 0;
+      setStats({
+        total: total || 0,
+        bySource,
+        recentQueries: rq,
+        cacheHits: ch,
+        cacheRate: rq > 0 ? Math.round((ch / rq) * 100) : 0,
+        avgLatency,
+      });
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
+  useEffect(() => { loadStats(); }, [loadStats]);
+
+  const searchItems = async () => {
+    if (!search.trim()) return;
+    setLoadingItems(true);
+    const { data } = await supabase
+      .from("medical_knowledge")
+      .select("id,source_type,source_id,title,subtitle,specialty,content,tags,chunk_index,version,is_active,last_reviewed,created_at")
+      .eq("is_active", true)
+      .ilike("title", `%${search}%`)
+      .limit(20);
+    setItems((data as KnowledgeItem[]) || []);
+    setLoadingItems(false);
+  };
+
+  const toggleActive = async (item: KnowledgeItem) => {
+    const { error } = await supabase
+      .from("medical_knowledge")
+      .update({ is_active: !item.is_active })
+      .eq("id", item.id);
+    if (error) { toast.error("Erro ao atualizar"); return; }
+    toast.success(item.is_active ? "Chunk desativado" : "Chunk reativado");
+    setItems((prev) => prev.map((i) => i.id === item.id ? { ...i, is_active: !i.is_active } : i));
+  };
+
+  const chartData = stats
+    ? Object.entries(stats.bySource).map(([k, v]) => ({
+        name: SOURCE_LABELS[k] ?? k,
+        chunks: v,
+        fill: SOURCE_COLORS[k] ?? "#888",
+      }))
+    : [];
+
+  if (loading) {
+    return (
+      <div className="flex justify-center py-12">
+        <Loader2 className="animate-spin h-6 w-6 text-muted-foreground" />
+      </div>
+    );
+  }
+
+  return (
+    <div className="space-y-6 mt-4">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+        <KpiCard label="Chunks ativos" value={String(stats?.total ?? 0)} icon={<Database size={12} />} />
+        <KpiCard label="Consultas (7d)" value={String(stats?.recentQueries ?? 0)} icon={<Sparkles size={12} />} />
+        <KpiCard
+          label="Cache hit rate"
+          value={`${stats?.cacheRate ?? 0}%`}
+          sub={`${stats?.cacheHits ?? 0} hits`}
+          icon={<Zap size={12} />}
+        />
+        <KpiCard
+          label="Latência média"
+          value={`${stats?.avgLatency ?? 0}ms`}
+          icon={<RefreshCw size={12} />}
+        />
+      </div>
+
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-sm flex items-center justify-between">
+            <span>Cache de sessão (client-side)</span>
+            <Button
+              size="sm"
+              variant="ghost"
+              className="h-7 px-2 text-[11px]"
+              onClick={() => { clearRagSessionCache(); toast.success("Cache de sessão limpo"); }}
+            >
+              <Trash2 size={12} className="mr-1" /> Limpar
+            </Button>
+          </CardTitle>
+        </CardHeader>
+        <CardContent className="space-y-2">
+          <p className="text-xs text-muted-foreground">
+            {sessionStats.size} / {sessionStats.max} entradas em memória (similaridade bigram ≥ 92%)
+          </p>
+          {sessionStats.entries.length > 0 && (
+            <div className="space-y-1 max-h-40 overflow-y-auto">
+              {sessionStats.entries.map((e, i) => (
+                <div key={i} className="flex items-center gap-2 text-[11px]">
+                  <Badge variant="secondary" className="text-[9px] shrink-0">{e.source}</Badge>
+                  <span className="truncate text-muted-foreground flex-1">{e.question}</span>
+                  <Badge variant="outline" className="text-[9px] shrink-0">{e.intent}</Badge>
+                </div>
+              ))}
+            </div>
+          )}
+        </CardContent>
+      </Card>
+
+      {chartData.length > 0 && (
+        <Card>
+          <CardHeader className="pb-2">
+            <CardTitle className="text-sm">Distribuição por fonte</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <div className="h-64">
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={chartData}>
+                  <CartesianGrid strokeDasharray="3 3" stroke="hsl(var(--border))" />
+                  <XAxis dataKey="name" tick={{ fontSize: 10 }} />
+                  <YAxis tick={{ fontSize: 10 }} />
+                  <Tooltip />
+                  <Bar dataKey="chunks" />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+          </CardContent>
+        </Card>
+      )}
+
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-sm">Buscar na base</CardTitle>
+          <CardDescription className="text-xs">
+            Pesquise chunks por título para inspecionar ou desativar.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-3">
+          <div className="flex gap-2">
+            <Input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              placeholder="Ex.: ceftriaxona, sepse, STEMI..."
+              className="h-9 text-sm"
+              onKeyDown={(e) => { if (e.key === "Enter") searchItems(); }}
+            />
+            <Button size="sm" onClick={searchItems} disabled={loadingItems}>
+              {loadingItems ? <Loader2 size={14} className="animate-spin" /> : <Search size={14} />}
+            </Button>
+          </div>
+
+          {items.length > 0 && (
+            <div className="space-y-2">
+              {items.map((item) => (
+                <div key={item.id} className="rounded-lg border border-border bg-card p-3 space-y-1.5">
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap gap-1 mb-1">
+                        <Badge variant="secondary" className="text-[9px]">
+                          {SOURCE_LABELS[item.source_type] ?? item.source_type}
+                        </Badge>
+                        {item.specialty && (
+                          <Badge variant="outline" className="text-[9px]">{item.specialty}</Badge>
+                        )}
+                        {item.chunk_index !== undefined && item.chunk_index > 0 && (
+                          <Badge variant="outline" className="text-[9px]">chunk #{item.chunk_index}</Badge>
+                        )}
+                      </div>
+                      <p className="text-[13px] font-medium leading-snug">{item.title}</p>
+                      {item.subtitle && (
+                        <p className="text-[11px] text-muted-foreground">{item.subtitle}</p>
+                      )}
+                    </div>
+                    <div className="flex gap-1 shrink-0">
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="h-7 px-2"
+                        onClick={() => setExpandedId(expandedId === item.id ? null : item.id)}
+                      >
+                        {expandedId === item.id ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+                      </Button>
+                      <Button
+                        size="sm"
+                        variant="ghost"
+                        className="h-7 px-2 text-[10px]"
+                        onClick={() => toggleActive(item)}
+                      >
+                        {item.is_active ? "Desativar" : "Reativar"}
+                      </Button>
+                    </div>
+                  </div>
+                  {expandedId === item.id && (
+                    <pre className="pt-2 border-t border-border text-[10px] whitespace-pre-wrap leading-relaxed bg-muted/40 rounded p-2 max-h-48 overflow-y-auto font-sans">
+                      {item.content}
+                    </pre>
+                  )}
+                </div>
+              ))}
+            </div>
+          )}
+        </CardContent>
+      </Card>
+    </div>
+  );
+}
+
+function QueriesTab() {
+  const [logs, setLogs] = useState<QueryLogItem[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState<"all" | "cache" | "llm">("all");
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+  const [promoting, setPromoting] = useState<string | null>(null);
+
+  const loadLogs = useCallback(async () => {
+    setLoading(true);
+    let q = supabase
+      .from("ai_query_log")
+      .select("id,question,intent,model_used,cache_hit,tokens_in,tokens_out,cost_estimate,latency_ms,chunks_used,response,created_at")
+      .order("created_at", { ascending: false })
+      .limit(50);
+    if (filter === "cache") q = q.eq("cache_hit", true);
+    if (filter === "llm") q = q.eq("cache_hit", false);
+    const { data, error } = await q;
+    if (error) toast.error("Erro ao carregar consultas");
+    setLogs((data as QueryLogItem[]) || []);
+    setLoading(false);
+  }, [filter]);
+
+  useEffect(() => { loadLogs(); }, [loadLogs]);
+
+  const promoteToCurated = async (log: QueryLogItem) => {
+    if (!log.response) { toast.error("Essa consulta não tem resposta salva"); return; }
+    setPromoting(log.id);
+    const { error } = await supabase.from("ai_curated_answers").insert({
+      question_pattern: log.question,
+      answer: log.response,
+      approved_at: new Date().toISOString(),
+    });
+    if (error) toast.error("Erro ao promover");
+    else toast.success("Resposta promovida para curadas!");
+    setPromoting(null);
+  };
+
+  return (
+    <div className="space-y-4 mt-4">
+      <div className="flex flex-wrap items-center gap-2">
+        <span className="text-xs text-muted-foreground">Filtro:</span>
+        {(["all", "cache", "llm"] as const).map((f) => (
+          <button
+            key={f}
+            onClick={() => setFilter(f)}
+            className={`px-3 py-1 rounded-full text-[11px] font-heading font-semibold border transition-colors ${
+              filter === f ? "bg-primary text-primary-foreground border-primary" : "border-border hover:bg-muted/60"
+            }`}
+          >
+            {f === "all" ? "Todas" : f === "cache" ? "Cache" : "LLM"}
+          </button>
+        ))}
+        <Button size="sm" variant="ghost" className="h-7 px-2 text-[11px] ml-auto" onClick={loadLogs}>
+          <RefreshCw size={12} className="mr-1" /> Atualizar
+        </Button>
+      </div>
+
+      {loading ? (
+        <div className="flex justify-center py-8">
+          <Loader2 className="animate-spin h-5 w-5 text-muted-foreground" />
+        </div>
+      ) : logs.length === 0 ? (
+        <p className="text-center text-sm text-muted-foreground py-8">Nenhuma consulta encontrada.</p>
+      ) : (
+        <div className="space-y-2">
+          {logs.map((log) => (
+            <div key={log.id} className="rounded-lg border border-border bg-card p-3 space-y-1.5">
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex-1 min-w-0">
+                  <div className="flex flex-wrap gap-1 mb-1">
+                    <Badge
+                      variant="secondary"
+                      className={`text-[9px] ${log.cache_hit ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400" : ""}`}
+                    >
+                      {log.cache_hit ? "cache" : "llm"}
+                    </Badge>
+                    {log.intent && <Badge variant="outline" className="text-[9px]">{log.intent}</Badge>}
+                    {log.model_used && <Badge variant="outline" className="text-[9px]">{log.model_used}</Badge>}
+                    {log.latency_ms && <Badge variant="outline" className="text-[9px]">{log.latency_ms}ms</Badge>}
+                    {log.cost_estimate ? (
+                      <Badge variant="outline" className="text-[9px]">R$ {log.cost_estimate.toFixed(4)}</Badge>
+                    ) : null}
+                  </div>
+                  <p className="text-[13px] font-medium leading-snug">{log.question}</p>
+                  <p className="text-[10px] text-muted-foreground">
+                    {new Date(log.created_at).toLocaleString("pt-BR")}
+                  </p>
+                </div>
+                <div className="flex gap-1 shrink-0">
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-7 px-2"
+                    onClick={() => setExpandedId(expandedId === log.id ? null : log.id)}
+                  >
+                    {expandedId === log.id ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+                  </Button>
+                  {log.response && (
+                    <Button
+                      size="sm"
+                      variant="ghost"
+                      className="h-7 px-2"
+                      onClick={() => promoteToCurated(log)}
+                      disabled={promoting === log.id}
+                      title="Promover para respostas curadas"
+                    >
+                      {promoting === log.id ? <Loader2 size={12} className="animate-spin" /> : <CheckCircle2 size={12} />}
+                    </Button>
+                  )}
+                </div>
+              </div>
+
+              {expandedId === log.id && (
+                <div className="pt-2 border-t border-border space-y-2">
+                  {log.chunks_used && (log.chunks_used as any[]).length > 0 && (
+                    <div>
+                      <p className="text-[10px] font-heading font-semibold text-muted-foreground mb-1">Chunks usados</p>
+                      <div className="space-y-1">
+                        {(log.chunks_used as any[]).map((c: any, i: number) => (
+                          <div key={i} className="flex items-center gap-2 text-[11px]">
+                            <Badge variant="secondary" className="text-[9px] shrink-0">
+                              {SOURCE_LABELS[c.source_type] ?? c.source_type}
+                            </Badge>
+                            <span className="text-muted-foreground truncate flex-1">{c.title}</span>
+                            {c.score && (
+                              <span className="shrink-0 text-[9px] font-mono">{(c.score * 100).toFixed(0)}%</span>
+                            )}
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                  {log.response && (
+                    <div>
+                      <p className="text-[10px] font-heading font-semibold text-muted-foreground mb-1">Resposta</p>
+                      <pre className="text-[10px] whitespace-pre-wrap leading-relaxed bg-muted/40 rounded p-2 max-h-48 overflow-y-auto font-sans">
+                        {log.response}
+                      </pre>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CuratedTab() {
+  const [curated, setCurated] = useState<CuratedAnswer[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [newPattern, setNewPattern] = useState("");
+  const [newAnswer, setNewAnswer] = useState("");
+  const [saving, setSaving] = useState(false);
+  const [expandedId, setExpandedId] = useState<string | null>(null);
+
+  const load = useCallback(async () => {
+    setLoading(true);
+    const { data } = await supabase
+      .from("ai_curated_answers")
+      .select("id,question_pattern,answer,approved_by,approved_at,created_at")
+      .order("created_at", { ascending: false })
+      .limit(100);
+    setCurated((data as CuratedAnswer[]) || []);
+    setLoading(false);
+  }, []);
+
+  useEffect(() => { load(); }, [load]);
+
+  const save = async () => {
+    if (!newPattern.trim() || !newAnswer.trim()) {
+      toast.error("Preencha o padrão e a resposta");
+      return;
+    }
+    setSaving(true);
+    const { error } = await supabase.from("ai_curated_answers").insert({
+      question_pattern: newPattern.trim(),
+      answer: newAnswer.trim(),
+      approved_at: new Date().toISOString(),
+    });
+    if (error) toast.error("Erro ao salvar");
+    else {
+      toast.success("Resposta curada salva!");
+      setNewPattern("");
+      setNewAnswer("");
+      load();
+    }
+    setSaving(false);
+  };
+
+  const remove = async (id: string) => {
+    if (!confirm("Remover essa resposta curada?")) return;
+    const { error } = await supabase.from("ai_curated_answers").delete().eq("id", id);
+    if (error) toast.error("Erro ao remover");
+    else { toast.success("Removida"); setCurated((prev) => prev.filter((c) => c.id !== id)); }
+  };
+
+  return (
+    <div className="space-y-4 mt-4">
+      <Card>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-sm flex items-center gap-2">
+            <BookOpen size={14} /> Nova resposta curada
+          </CardTitle>
+          <CardDescription className="text-xs">
+            Respostas curadas têm prioridade absoluta sobre o RAG e o LLM.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-2">
+          <Input
+            value={newPattern}
+            onChange={(e) => setNewPattern(e.target.value)}
+            placeholder="Padrão de pergunta (ex.: dose de amoxicilina adulto)"
+            className="h-9 text-sm"
+          />
+          <Textarea
+            value={newAnswer}
+            onChange={(e) => setNewAnswer(e.target.value)}
+            placeholder="Resposta aprovada em markdown..."
+            rows={4}
+            className="text-sm"
+          />
+          <Button size="sm" onClick={save} disabled={saving}>
+            {saving ? <Loader2 size={14} className="animate-spin mr-1.5" /> : <CheckCircle2 size={14} className="mr-1.5" />}
+            Salvar resposta curada
+          </Button>
+        </CardContent>
+      </Card>
+
+      {loading ? (
+        <div className="flex justify-center py-8">
+          <Loader2 className="animate-spin h-5 w-5 text-muted-foreground" />
+        </div>
+      ) : curated.length === 0 ? (
+        <p className="text-center text-sm text-muted-foreground py-8">
+          Nenhuma resposta curada ainda. Promova respostas na aba Consultas ou adicione acima.
+        </p>
+      ) : (
+        <div className="space-y-2">
+          {curated.map((c) => (
+            <div key={c.id} className="rounded-lg border border-border bg-card p-3 space-y-1.5">
+              <div className="flex items-start justify-between gap-2">
+                <div className="flex-1 min-w-0">
+                  <p className="text-[13px] font-medium leading-snug">{c.question_pattern}</p>
+                  <p className="text-[10px] text-muted-foreground">
+                    {c.approved_at
+                      ? `Aprovada em ${new Date(c.approved_at).toLocaleDateString("pt-BR")}`
+                      : `Criada em ${new Date(c.created_at).toLocaleDateString("pt-BR")}`}
+                    {c.approved_by && ` por ${c.approved_by}`}
+                  </p>
+                </div>
+                <div className="flex gap-1 shrink-0">
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-7 px-2"
+                    onClick={() => setExpandedId(expandedId === c.id ? null : c.id)}
+                  >
+                    {expandedId === c.id ? <ChevronUp size={12} /> : <ChevronDown size={12} />}
+                  </Button>
+                  <Button
+                    size="sm"
+                    variant="ghost"
+                    className="h-7 px-2 text-destructive hover:text-destructive"
+                    onClick={() => remove(c.id)}
+                  >
+                    <Trash2 size={12} />
+                  </Button>
+                </div>
+              </div>
+              {expandedId === c.id && (
+                <pre className="pt-2 border-t border-border text-[10px] whitespace-pre-wrap leading-relaxed text-foreground bg-muted/40 rounded p-2 max-h-48 overflow-y-auto font-sans">
+                  {c.answer}
+                </pre>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function IngestTab() {
   const [ingesting, setIngesting] = useState(false);
   const [progress, setProgress] = useState(0);
   const [progressTotal, setProgressTotal] = useState(0);
+  const [lastResult, setLastResult] = useState<{ inserted: number; failed: number } | null>(null);
   const [question, setQuestion] = useState("");
   const [testAnswer, setTestAnswer] = useState<RagAnswer | null>(null);
   const [testing, setTesting] = useState(false);
 
-  const loadStats = async () => {
-    setLoadingStats(true);
-    const { count: total } = await supabase
-      .from("medical_knowledge")
-      .select("*", { count: "exact", head: true })
-      .eq("is_active", true);
-    const { data: rows } = await supabase
-      .from("medical_knowledge")
-      .select("source_type")
-      .eq("is_active", true)
-      .limit(10000);
-    const bySource: Record<string, number> = {};
-    (rows || []).forEach((r: any) => {
-      bySource[r.source_type] = (bySource[r.source_type] || 0) + 1;
-    });
-    const since = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
-    const { count: recentQueries } = await supabase
-      .from("ai_query_log")
-      .select("*", { count: "exact", head: true })
-      .gte("created_at", since);
-    const { count: cacheHits } = await supabase
-      .from("ai_query_log")
-      .select("*", { count: "exact", head: true })
-      .gte("created_at", since)
-      .eq("cache_hit", true);
-    setStats({
-      total: total || 0,
-      bySource,
-      recentQueries: recentQueries || 0,
-      cacheHits: cacheHits || 0,
-    });
-    setLoadingStats(false);
-  };
-
-  useEffect(() => {
-    if (isAdmin) loadStats();
-  }, [isAdmin]);
-
   const handleIngest = async () => {
     setIngesting(true);
     setProgress(0);
+    setLastResult(null);
     try {
       const chunks = buildAllChunks();
       setProgressTotal(chunks.length);
@@ -83,7 +693,6 @@ export default function AdminMedicalKnowledge() {
           body: { items: batch },
         });
         if (error) {
-          console.error("ingest batch error", error);
           failed += batch.length;
         } else {
           inserted += (data as any)?.inserted || 0;
@@ -91,13 +700,10 @@ export default function AdminMedicalKnowledge() {
         }
         setProgress(i + batch.length);
       }
-      toast({
-        title: "Ingestão concluída",
-        description: `${inserted} chunks indexados, ${failed} falharam.`,
-      });
-      await loadStats();
+      setLastResult({ inserted, failed });
+      toast.success(`Ingestão concluída: ${inserted} indexados, ${failed} falharam.`);
     } catch (e) {
-      toast({ title: "Erro na ingestão", description: String(e), variant: "destructive" });
+      toast.error(`Erro: ${String(e)}`);
     } finally {
       setIngesting(false);
     }
@@ -111,116 +717,116 @@ export default function AdminMedicalKnowledge() {
       const ans = await askMedicalRag(question.trim());
       setTestAnswer(ans);
     } catch (e) {
-      toast({ title: "Erro no teste", description: String(e), variant: "destructive" });
+      toast.error(`Erro: ${String(e)}`);
     } finally {
       setTesting(false);
     }
   };
 
-  if (roleLoading) {
-    return <div className="flex items-center justify-center h-64"><Loader2 className="animate-spin" /></div>;
-  }
-  if (!isAdmin) return <Navigate to="/home" replace />;
-
   return (
-    <div className="container max-w-5xl py-8 space-y-6">
-      
-
-      <header>
-        <h1 className="text-3xl font-bold tracking-tight">Base Médica RAG</h1>
-        <p className="text-muted-foreground mt-1">
-          Conteúdo interno do PULSO indexado para a IA Clínica responder com fonte.
-        </p>
-      </header>
-
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-        <Card>
-          <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><Database className="h-4 w-4" />Chunks indexados</CardTitle></CardHeader>
-          <CardContent><p className="text-3xl font-bold">{loadingStats ? "…" : stats?.total ?? 0}</p></CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><Sparkles className="h-4 w-4" />Consultas (7d)</CardTitle></CardHeader>
-          <CardContent><p className="text-3xl font-bold">{loadingStats ? "…" : stats?.recentQueries ?? 0}</p></CardContent>
-        </Card>
-        <Card>
-          <CardHeader className="pb-2"><CardTitle className="text-sm flex items-center gap-2"><FileText className="h-4 w-4" />Cache hits (7d)</CardTitle></CardHeader>
-          <CardContent>
-            <p className="text-3xl font-bold">{loadingStats ? "…" : stats?.cacheHits ?? 0}</p>
-            {stats && stats.recentQueries > 0 && (
-              <p className="text-xs text-muted-foreground">
-                {Math.round((stats.cacheHits / stats.recentQueries) * 100)}% do volume
-              </p>
-            )}
-          </CardContent>
-        </Card>
-      </div>
-
+    <div className="space-y-6 mt-4">
       <Card>
-        <CardHeader>
-          <CardTitle>Distribuição por fonte</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <div className="flex flex-wrap gap-2">
-            {stats && Object.entries(stats.bySource).map(([k, v]) => (
-              <Badge key={k} variant="secondary">{k}: {v}</Badge>
-            ))}
-            {stats && Object.keys(stats.bySource).length === 0 && (
-              <p className="text-sm text-muted-foreground">Nenhum conteúdo indexado ainda.</p>
-            )}
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Reindexar base do PULSO</CardTitle>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-sm flex items-center gap-2">
+            <Database size={14} /> Reindexar base do PULSO
+          </CardTitle>
+          <CardDescription className="text-xs">
+            Lê os datasets estáticos do app, gera embeddings com Gemini text-embedding-004 (gratuito) e faz upsert em lotes de 25.
+          </CardDescription>
         </CardHeader>
         <CardContent className="space-y-3">
-          <p className="text-sm text-muted-foreground">
-            Lê os protocolos completos e o dataset de medicamentos do app, gera embeddings (Gemini text-embedding-004 — gratuito) e faz upsert na base. Usa lotes de 25 itens.
-          </p>
-          <Button onClick={handleIngest} disabled={ingesting}>
-            {ingesting ? <><Loader2 className="h-4 w-4 mr-2 animate-spin" />{progress}/{progressTotal}</> : "Iniciar ingestão"}
+          {ingesting && (
+            <div className="space-y-1">
+              <div className="flex justify-between text-xs text-muted-foreground">
+                <span>{progress} / {progressTotal} chunks</span>
+                <span>{progressTotal > 0 ? Math.round((progress / progressTotal) * 100) : 0}%</span>
+              </div>
+              <div className="w-full bg-muted rounded-full h-2">
+                <div
+                  className="bg-primary h-2 rounded-full transition-all duration-300"
+                  style={{ width: `${progressTotal > 0 ? (progress / progressTotal) * 100 : 0}%` }}
+                />
+              </div>
+            </div>
+          )}
+          {lastResult && !ingesting && (
+            <div className="flex items-center gap-2 text-xs">
+              <CheckCircle2 size={14} className="text-emerald-600 dark:text-emerald-400" />
+              <span>{lastResult.inserted} chunks indexados</span>
+              {lastResult.failed > 0 && (
+                <>
+                  <AlertTriangle size={14} className="text-amber-500 ml-2" />
+                  <span className="text-amber-600 dark:text-amber-400">{lastResult.failed} falharam</span>
+                </>
+              )}
+            </div>
+          )}
+          <Button onClick={handleIngest} disabled={ingesting} size="sm">
+            {ingesting ? (
+              <><Loader2 size={14} className="animate-spin mr-1.5" /> Indexando...</>
+            ) : (
+              <><Database size={14} className="mr-1.5" /> Iniciar ingestão</>
+            )}
           </Button>
         </CardContent>
       </Card>
 
       <Card>
-        <CardHeader>
-          <CardTitle>Testar RAG</CardTitle>
+        <CardHeader className="pb-2">
+          <CardTitle className="text-sm flex items-center gap-2">
+            <Sparkles size={14} /> Testar RAG
+          </CardTitle>
         </CardHeader>
         <CardContent className="space-y-3">
           <Textarea
             value={question}
             onChange={(e) => setQuestion(e.target.value)}
-            placeholder="Ex.: Dose de ceftriaxona para pneumonia comunitária"
+            placeholder="Ex.: Dose de ceftriaxona para pneumonia comunitária em adulto"
             rows={3}
+            className="text-sm"
           />
-          <Button onClick={handleTest} disabled={testing || !question.trim()}>
-            {testing ? <Loader2 className="h-4 w-4 mr-2 animate-spin" /> : null}
+          <Button size="sm" onClick={handleTest} disabled={testing || !question.trim()}>
+            {testing ? <Loader2 size={14} className="animate-spin mr-1.5" /> : <Sparkles size={14} className="mr-1.5" />}
             Perguntar à IA Clínica
           </Button>
+
           {testAnswer && (
             <div className="space-y-3 rounded-lg border bg-muted/30 p-4">
-              <div className="flex flex-wrap gap-2 text-xs">
-                <Badge>fonte: {testAnswer.source}</Badge>
-                <Badge variant="outline">intent: {testAnswer.intent}</Badge>
-                <Badge variant="outline">complexity: {testAnswer.complexity}</Badge>
-                {testAnswer.model && <Badge variant="outline">{testAnswer.model}</Badge>}
+              <div className="flex flex-wrap gap-2">
+                <Badge className={`text-[10px] ${testAnswer.source === "cache" ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20" : "bg-primary/10 text-primary border-primary/20"}`}>
+                  fonte: {testAnswer.source}
+                </Badge>
+                <Badge variant="outline" className="text-[10px]">intent: {testAnswer.intent}</Badge>
+                <Badge variant="outline" className="text-[10px]">complexity: {testAnswer.complexity}</Badge>
+                {testAnswer.model && <Badge variant="outline" className="text-[10px]">{testAnswer.model}</Badge>}
+                {testAnswer.latency_ms && <Badge variant="outline" className="text-[10px]">{testAnswer.latency_ms}ms</Badge>}
+                {testAnswer.cached && (
+                  <Badge className="text-[10px] bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20">
+                    session cache hit
+                  </Badge>
+                )}
               </div>
-              <div className="prose prose-sm dark:prose-invert max-w-none whitespace-pre-wrap">
+              <pre className="text-[11px] whitespace-pre-wrap leading-relaxed text-foreground font-sans">
                 {testAnswer.answer}
-              </div>
+              </pre>
               {testAnswer.chunks?.length > 0 && (
                 <div>
-                  <p className="text-xs font-semibold mb-1">Chunks usados:</p>
-                  <ul className="text-xs space-y-1">
+                  <p className="text-[10px] font-heading font-semibold text-muted-foreground mb-1">Chunks usados</p>
+                  <div className="space-y-1">
                     {testAnswer.chunks.map((c, i) => (
-                      <li key={i} className="text-muted-foreground">
-                        • [{c.source_type}] {c.title} {c.score && `(${c.score.toFixed(4)})`}
-                      </li>
+                      <div key={i} className="flex items-center gap-2 text-[11px]">
+                        <Badge variant="secondary" className="text-[9px] shrink-0">
+                          {SOURCE_LABELS[c.source_type] ?? c.source_type}
+                        </Badge>
+                        <span className="text-muted-foreground truncate">{c.title}</span>
+                        {c.score && (
+                          <span className="shrink-0 text-[9px] font-mono">
+                            {(c.score * 100).toFixed(0)}%
+                          </span>
+                        )}
+                      </div>
                     ))}
-                  </ul>
+                  </div>
                 </div>
               )}
             </div>
@@ -228,5 +834,31 @@ export default function AdminMedicalKnowledge() {
         </CardContent>
       </Card>
     </div>
+  );
+}
+
+function KpiCard({
+  label,
+  value,
+  sub,
+  icon,
+}: {
+  label: string;
+  value: string;
+  sub?: string;
+  icon: React.ReactNode;
+}) {
+  return (
+    <Card>
+      <CardHeader className="pb-1 pt-4 px-4">
+        <CardTitle className="text-xs font-heading text-muted-foreground flex items-center gap-1.5">
+          {icon} {label}
+        </CardTitle>
+      </CardHeader>
+      <CardContent className="px-4 pb-4">
+        <p className="text-2xl font-bold font-heading">{value}</p>
+        {sub && <p className="text-[10px] text-muted-foreground mt-0.5">{sub}</p>}
+      </CardContent>
+    </Card>
   );
 }
