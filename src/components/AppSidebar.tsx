@@ -208,6 +208,16 @@ export function AppSidebar() {
                       <span>Base Médica (RAG)</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton
+                      isActive={location.pathname.startsWith("/admin/launch-signups")}
+                      onClick={() => navigate("/admin/launch-signups")}
+                      tooltip="Cadastros do pré-lançamento"
+                    >
+                      <Shield className="h-4 w-4 text-red-500" />
+                      <span>Cadastros (Lançamento)</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
                 </SidebarMenu>
               </SidebarGroupContent>
             </SidebarGroup>
