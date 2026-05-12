@@ -12,8 +12,7 @@ import {
   Moon, Sun, Eclipse, Sparkles, Star, Check,
   Stethoscope, Users, Loader2, AlertCircle
 } from "lucide-react";
-import pulsoLogoLight from "@/assets/pulso-logo-light.png";
-import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
+import { PulsoLogo } from "@/components/PulsoLogo";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Separator } from "@/components/ui/separator";
 import { hapticLight } from "@/lib/haptics";
@@ -113,7 +112,6 @@ export default function Auth() {
   const { toast } = useToast();
   const formRef = useRef<HTMLDivElement>(null);
   const { theme, toggleTheme } = useTheme();
-  const pulsoLogo = theme === "light" ? pulsoLogoLight : pulsoLogoDark;
   const themeIcon = theme === "oled" ? <Eclipse size={18} /> : theme === "dark" ? <Sun size={18} /> : <Moon size={18} />;
 
   useEffect(() => {
@@ -498,12 +496,10 @@ export default function Auth() {
           {/* ── Mobile hero ────────────────────────────────────── */}
           <div className="pt-16 pb-4 text-center lg:pt-20">
             <motion.div {...fadeUp(0)}>
-              <img
-                src={pulsoLogo}
-                alt="PULSO"
-                width={80}
-                height={80}
+              <PulsoLogo
+                size={80}
                 className="mx-auto rounded-[22px] shadow-2xl shadow-primary/25 ring-1 ring-border/20"
+                priority
               />
             </motion.div>
 

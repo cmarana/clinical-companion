@@ -14,9 +14,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { hapticLight } from "@/lib/haptics";
-import pulsoLogoLight from "@/assets/pulso-logo-light.png";
-
-import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
+import { PulsoLogo } from "@/components/PulsoLogo";
 import { useState, useEffect } from "react";
 import { DATASET_COUNTS, QUIZ_TOTAL, fmt } from "@/data/datasetCounts";
 import { LANDING_MODULES, APP_MODULES_COUNT } from "@/config/appModules";
@@ -241,7 +239,7 @@ export default function Landing() {
     }
   }, []);
 
-  const pulsoLogo = theme === "light" ? pulsoLogoLight : pulsoLogoDark;
+  
   const themeIcon = theme === "oled" ? <Eclipse size={16} /> : theme === "dark" ? <Sun size={16} /> : <Moon size={16} />;
 
   return (
@@ -254,7 +252,7 @@ export default function Landing() {
       <nav className="sticky top-safe-fb z-nav bg-background/95 supports-[backdrop-filter]:bg-background/80 backdrop-blur-xl border-b border-border/60 pt-safe-0-fb shadow-sm shadow-foreground/5">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
           <div className="flex items-center gap-2.5">
-            <img src={pulsoLogo} alt="PULSO" width={30} height={30} fetchPriority="high" decoding="async" className="rounded-lg" />
+            <PulsoLogo size={30} priority />
             <span className="font-heading font-bold text-base">PULSO</span>
           </div>
 
@@ -952,7 +950,7 @@ export default function Landing() {
             {/* Brand */}
             <div className="sm:col-span-2 lg:col-span-1">
               <div className="flex items-center gap-2.5 mb-4">
-                <img src={pulsoLogo} alt="PULSO" width={28} height={28} loading="lazy" decoding="async" className="rounded-lg" />
+                <PulsoLogo size={28} />
                 <span className="font-heading font-bold text-lg text-foreground">PULSO</span>
               </div>
               <p className="text-sm text-muted-foreground leading-relaxed max-w-xs">

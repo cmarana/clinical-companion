@@ -1,9 +1,7 @@
 import { ArrowLeft, Heart, Shield, Zap, BookOpen, Users, Target, Sparkles, Globe } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { useTheme } from "@/contexts/ThemeContext";
-import pulsoLogoLight from "@/assets/pulso-logo-light.png";
-import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
+import { PulsoLogo } from "@/components/PulsoLogo";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -31,8 +29,6 @@ const numbers = [
 
 export default function About() {
   const navigate = useNavigate();
-  const { theme } = useTheme();
-  const pulsoLogo = theme === "dark" ? pulsoLogoDark : pulsoLogoLight;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -54,7 +50,7 @@ export default function About() {
           className="text-center space-y-6"
         >
           <motion.div variants={fadeUp} custom={0} className="flex justify-center">
-            <img src={pulsoLogo} alt="PULSO" width={72} height={72} decoding="async" className="rounded-2xl shadow-lg" />
+            <PulsoLogo size={72} className="rounded-2xl shadow-lg" priority />
           </motion.div>
           <motion.h2 variants={fadeUp} custom={1} className="font-heading text-3xl sm:text-4xl font-black tracking-tight">
             Decisão clínica com{" "}

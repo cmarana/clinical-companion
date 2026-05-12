@@ -2,9 +2,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Zap, Pill, Bot, Calculator, BookOpen, Shield, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
-import pulsoLogoLight from "@/assets/pulso-logo-light.png";
-import { useTheme } from "@/contexts/ThemeContext";
+import { PulsoLogo } from "@/components/PulsoLogo";
 
 const WELCOME_KEY = "pulso_welcome_seen";
 
@@ -24,7 +22,6 @@ interface WelcomeScreenProps {
 
 export default function WelcomeScreen({ userName, onComplete }: WelcomeScreenProps) {
   const [visible, setVisible] = useState(false);
-  const { theme } = useTheme();
 
   useEffect(() => {
     const seen = localStorage.getItem(WELCOME_KEY);
@@ -44,7 +41,6 @@ export default function WelcomeScreen({ userName, onComplete }: WelcomeScreenPro
   if (!visible) return null;
 
   const firstName = userName?.split(" ")[0] || "Doutor(a)";
-  const logo = theme === "dark" ? pulsoLogoDark : pulsoLogoLight;
 
   return (
     <AnimatePresence>
@@ -64,14 +60,14 @@ export default function WelcomeScreen({ userName, onComplete }: WelcomeScreenPro
             className="w-full max-w-md mx-4 flex flex-col items-center text-center px-6 py-8"
           >
             {/* Logo */}
-            <motion.img
-              src={logo}
-              alt="PULSO"
-              className="w-16 h-16 mb-4"
+            <motion.div
+              className="mb-4"
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            />
+            >
+              <PulsoLogo size={64} priority />
+            </motion.div>
 
             {/* Greeting */}
             <motion.h1

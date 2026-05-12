@@ -16,7 +16,7 @@ import { useFavorites } from "@/contexts/FavoritesContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { supabase } from "@/integrations/supabase/client";
-import pulsoLogo from "@/assets/pulso-logo.png";
+import { PulsoLogo } from "@/components/PulsoLogo";
 
 const mainItems = [
   { title: "Início", url: "/", icon: Home },
@@ -165,7 +165,7 @@ export function AppSidebar() {
     <Sidebar collapsible="icon" className="hidden md:flex">
       <SidebarHeader className="p-3">
         <div className="flex items-center gap-2">
-          <img src={pulsoLogo} alt="PULSO" width={28} height={28} fetchPriority="high" decoding="async" className="rounded-lg" />
+          <PulsoLogo size={28} priority />
           <div className="flex flex-col group-data-[collapsible=icon]:hidden">
             <span className="font-heading font-bold text-sm tracking-tight text-primary">PULSO</span>
             <span className="text-[9px] text-muted-foreground -mt-0.5">Emergência Médica</span>

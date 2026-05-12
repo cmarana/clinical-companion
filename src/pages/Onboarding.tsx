@@ -10,7 +10,7 @@ import {
   User, MapPin, GraduationCap, Stethoscope, ChevronRight, ChevronLeft, Check, Loader2,
   Target, Brain, BookOpen, Flame,
 } from "lucide-react";
-import pulsoLogo from "@/assets/pulso-logo.png";
+import { PulsoLogo } from "@/components/PulsoLogo";
 import { safeLocalStorage } from "@/lib/safeStorage";
 
 /* ── Constants ── */
@@ -313,16 +313,14 @@ export default function Onboarding() {
     <div className="min-h-screen bg-background flex flex-col">
       {/* Header */}
       <div className="pt-8 pb-4 px-4 text-center">
-        <motion.img
-          src={pulsoLogo}
-          alt="PULSO"
-          width={56}
-          height={56}
-          className="mx-auto rounded-2xl shadow-lg shadow-primary/20 mb-4"
+        <motion.div
+          className="mx-auto mb-4 inline-block rounded-2xl shadow-lg shadow-primary/20"
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.5 }}
-        />
+        >
+          <PulsoLogo size={56} priority />
+        </motion.div>
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
