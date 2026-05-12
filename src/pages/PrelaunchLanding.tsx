@@ -219,12 +219,6 @@ export default function PrelaunchLanding() {
             <button onClick={() => scrollTo("cadastro")} className="hover:text-white transition">Cadastro</button>
           </nav>
           <div className="flex items-center gap-2">
-            <Link
-              to="/auth"
-              className="hidden sm:inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-blue-300 transition px-3 py-2"
-            >
-              <Lock className="h-3.5 w-3.5" /> Acesso restrito
-            </Link>
             <Button
               onClick={() => scrollTo("cadastro")}
               className="bg-blue-500 hover:bg-blue-400 text-[#0A0F1F] font-semibold rounded-full px-4 sm:px-5"
