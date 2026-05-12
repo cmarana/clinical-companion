@@ -1,6 +1,7 @@
 import { useState, useMemo } from "react";
 import TopBar from "@/components/TopBar";
-import { Search, Baby, AlertTriangle, Scale, Pill, Clock, Syringe, ChevronDown, ChevronUp, Shield, Info } from "lucide-react";
+import { Search, Baby, AlertTriangle, Scale, Pill, Clock, Syringe, ChevronDown, ChevronUp, Shield, Info, Copy, Check, FileText } from "lucide-react";
+import { toast } from "sonner";
 import { pediatricDrugs, calculatePediatricDose, getPediatricCategories, type CalculatedDose, type PediatricDrug } from "@/data/pediatricDoses";
 import { cn } from "@/lib/utils";
 
