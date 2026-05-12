@@ -25,8 +25,6 @@ serve(async (req) => {
       });
     }
 
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    if (!LOVABLE_API_KEY) throw new Error("LOVABLE_API_KEY is not configured");
 
     const systemPrompt = `Você é um farmacêutico clínico especialista em segurança de prescrições médicas. Analise a prescrição completa abaixo e retorne TODOS os alertas encontrados.
 
