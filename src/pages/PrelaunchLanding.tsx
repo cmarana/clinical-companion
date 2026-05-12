@@ -416,11 +416,12 @@ export default function PrelaunchLanding() {
               </h2>
               <p className="mt-5 text-slate-300 leading-relaxed">
                 A Dra. Clara foi criada para apoiar o médico na busca por informações clínicas, organização
-                de raciocínio e consulta rápida durante a rotina de plantão.
+                de raciocínio, análise de exames de imagem e consulta rápida durante a rotina de plantão.
               </p>
               <p className="mt-3 text-slate-400 text-sm leading-relaxed">
-                Ela funciona como uma assistente clínica inteligente dentro do PULSO, ajudando a encontrar
-                caminhos, revisar condutas, consultar informações e tornar a experiência mais rápida e objetiva.
+                Ela funciona como uma assistente clínica inteligente dentro do PULSO, ajudando a interpretar
+                <span className="text-blue-200"> RX, TC, RM, US e ECG</span>, revisar condutas, consultar
+                informações e tornar a experiência mais rápida e objetiva.
               </p>
               <p className="mt-6 text-[11px] text-slate-500 italic max-w-md">
                 A Dra. Clara é uma ferramenta de apoio clínico e não substitui o julgamento médico,
