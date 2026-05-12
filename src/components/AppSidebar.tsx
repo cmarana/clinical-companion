@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import {
   Bot, AlertTriangle, Zap, Pill, ClipboardList, BookOpen,
   Calculator, FlaskConical, Baby, Heart, Stethoscope, HelpCircle,
-  Search, Star, User, StickyNote, Home, Gift, Timer, Hash, 
+  Search, Star, User, StickyNote, Home, Gift, Timer, Hash, Calendar, 
   TestTubes, Droplets, Brain, GraduationCap, BarChart3, FileEdit,
   Syringe, ScanLine, WifiOff, ChevronRight, Shield, Database
 } from "lucide-react";
@@ -34,6 +34,7 @@ const clinicalItems = [
   { title: "Interações", url: "/drug-interactions", icon: FlaskConical },
   { title: "Diluições IV", url: "/iv-dilutions", icon: Droplets },
   { title: "Timer PCR", url: "/cpr-timer", icon: Timer },
+  { title: "Gestão de Plantão", url: "/shift-manager", icon: Calendar },
 ];
 
 const specialtyItems = [
