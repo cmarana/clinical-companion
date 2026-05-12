@@ -1,8 +1,137 @@
 import { useState, useMemo } from "react";
 import TopBar from "@/components/TopBar";
-import { Search, Baby, AlertTriangle, Scale, Pill, Clock, Syringe, ChevronDown, ChevronUp, Shield, Info } from "lucide-react";
+import { Search, Baby, AlertTriangle, Scale, Pill, Clock, Syringe, ChevronDown, ChevronUp, Shield, Info, Copy, Check, FileText } from "lucide-react";
+import { toast } from "sonner";
 import { pediatricDrugs, calculatePediatricDose, getPediatricCategories, type CalculatedDose, type PediatricDrug } from "@/data/pediatricDoses";
 import { cn } from "@/lib/utils";
+
+function buildPrescriptionText(
+  drugName: string,
+  weight: number,
+  doseMg: number,
+  frequency: string,
+  route: string,
+  formulations: { form: string; volume: string }[],
+  notes?: string
+): string {
+  const lines: string[] = [];
+  lines.push(`RECEITUÁRIO MÉDICO`);
+  lines.push(`Paciente: ___________________________ Peso: ${weight} kg`);
+  lines.push(`Data: ${new Date().toLocaleDateString("pt-BR")}`);
+  lines.push(``);
+  lines.push(`Medicamento: ${drugName}`);
+  lines.push(`Dose: ${doseMg} mg por dose`);
+  lines.push(`Frequência: ${frequency}`);
+  lines.push(`Via: ${route}`);
+  lines.push(``);
+
+  if (formulations.length > 0) {
+    lines.push(`Como administrar:`);
+    formulations.forEach(f => {
+      const isGotas = f.form.toLowerCase().includes("gota");
+      const volStr = f.volume;
+
+      if (isGotas) {
+        lines.push(`  ✓ ${f.form}: ${volStr} por dose`);
+        lines.push(`     (pingue diretamente na boca ou misture em água)`);
+      } else if (f.form.toLowerCase().includes("suspensão") || f.form.toLowerCase().includes("xarope") || f.form.toLowerCase().includes("solução")) {
+        const mlMatch = volStr.match(/^([\d.,]+)\s*mL/);
+        if (mlMatch) {
+          const ml = parseFloat(mlMatch[1].replace(",", "."));
+          const gotas = Math.round(ml * 20);
+          lines.push(`  ✓ ${f.form}: ${volStr} por dose`);
+          lines.push(`     (equivale a ≈ ${gotas} gotas de conta-gotas padrão)`);
+          lines.push(`     (use seringa dosadora para maior precisão)`);
+        } else {
+          lines.push(`  ✓ ${f.form}: ${volStr} por dose`);
+        }
+      } else {
+        lines.push(`  ✓ ${f.form}: ${volStr} por dose`);
+      }
+    });
+    lines.push(``);
+  }
+
+  lines.push(`Instruções para os responsáveis:`);
+  lines.push(`  • Administre nos horários corretos sem pular doses`);
+  lines.push(`  • Agite bem o frasco antes de usar (suspensões)`);
+  lines.push(`  • Mantenha em local fresco e protegido da luz`);
+  lines.push(`  • Em caso de vômito logo após a dose, consulte o médico antes de repetir`);
+  lines.push(`  • Não interrompa o tratamento antes do prazo indicado`);
+
+  if (notes) {
+    lines.push(``);
+    lines.push(`Observações: ${notes}`);
+  }
+
+  lines.push(``);
+  lines.push(`_________________________________`);
+  lines.push(`Médico(a) / CRM:`);
+
+  return lines.join("\n");
+}
+
+function PrescriptionForParents({
+  drugName, weight, doseMg, frequency, route, formulations, notes
+}: {
+  drugName: string;
+  weight: number;
+  doseMg: number;
+  frequency: string;
+  route: string;
+  formulations: { form: string; volume: string }[];
+  notes?: string;
+}) {
+  const [copied, setCopied] = useState(false);
+  const [open, setOpen] = useState(false);
+
+  const text = useMemo(
+    () => buildPrescriptionText(drugName, weight, doseMg, frequency, route, formulations, notes),
+    [drugName, weight, doseMg, frequency, route, formulations, notes]
+  );
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText(text).then(() => {
+      setCopied(true);
+      toast.success("Receituário copiado!");
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+
+  return (
+    <div className="rounded-lg border border-primary/20 bg-primary/5 overflow-hidden">
+      <button
+        onClick={() => setOpen(v => !v)}
+        className="w-full flex items-center justify-between px-3 py-2 hover:bg-primary/10 transition-colors"
+      >
+        <span className="flex items-center gap-1.5 text-[11px] font-heading font-bold text-primary uppercase tracking-wider">
+          <FileText size={12} />
+          Receituário para os pais
+        </span>
+        <span className="text-[10px] text-primary">
+          {open ? "▲ fechar" : "▼ ver texto"}
+        </span>
+      </button>
+
+      {open && (
+        <div className="border-t border-primary/20">
+          <div className="flex justify-end px-3 pt-2">
+            <button
+              onClick={handleCopy}
+              className="inline-flex items-center gap-1 px-2 py-1 rounded text-[11px] font-medium text-primary hover:bg-primary/15 transition-colors"
+            >
+              {copied ? <Check size={11} /> : <Copy size={11} />}
+              {copied ? "Copiado!" : "Copiar"}
+            </button>
+          </div>
+          <pre className="px-3 pb-3 text-[11px] leading-relaxed whitespace-pre-wrap font-mono text-foreground">
+            {text}
+          </pre>
+        </div>
+      )}
+    </div>
+  );
+}
 
 function DrugResultCard({ drug, weight }: { drug: PediatricDrug; weight: number }) {
   const [expanded, setExpanded] = useState(false);
@@ -78,6 +207,19 @@ function DrugResultCard({ drug, weight }: { drug: PediatricDrug; weight: number 
                 ))}
               </div>
             </div>
+          )}
+
+          {/* Receituário para os pais */}
+          {calc.formulations.length > 0 && calc.drug.dosePerKg > 0 && (
+            <PrescriptionForParents
+              drugName={drug.name}
+              weight={weight}
+              doseMg={calc.singleDoseCapped}
+              frequency={drug.frequency}
+              route={drug.route}
+              formulations={calc.formulations}
+              notes={drug.notes}
+            />
           )}
 
           {/* All formulations */}
