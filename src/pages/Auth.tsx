@@ -112,7 +112,6 @@ export default function Auth() {
   const { toast } = useToast();
   const formRef = useRef<HTMLDivElement>(null);
   const { theme, toggleTheme } = useTheme();
-  const pulsoLogo = theme === "light" ? pulsoLogoLight : pulsoLogoDark;
   const themeIcon = theme === "oled" ? <Eclipse size={18} /> : theme === "dark" ? <Sun size={18} /> : <Moon size={18} />;
 
   useEffect(() => {
