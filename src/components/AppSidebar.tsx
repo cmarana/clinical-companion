@@ -5,7 +5,7 @@ import {
   Calculator, FlaskConical, Baby, Heart, Stethoscope, HelpCircle,
   Search, Star, User, StickyNote, Home, Gift, Timer, Hash, 
   TestTubes, Droplets, Brain, GraduationCap, BarChart3, FileEdit,
-  Syringe, ScanLine, WifiOff, ChevronRight, Shield
+  Syringe, ScanLine, WifiOff, ChevronRight, Shield, Database
 } from "lucide-react";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupLabel,
@@ -190,12 +190,22 @@ export function AppSidebar() {
                 <SidebarMenu>
                   <SidebarMenuItem>
                     <SidebarMenuButton
-                      isActive={location.pathname.startsWith("/admin")}
+                      isActive={location.pathname === "/admin"}
                       onClick={() => navigate("/admin")}
                       tooltip="Painel Admin"
                     >
                       <Shield className="h-4 w-4 text-red-500" />
                       <span>Painel Admin</span>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton
+                      isActive={location.pathname.startsWith("/admin/medical-knowledge")}
+                      onClick={() => navigate("/admin/medical-knowledge")}
+                      tooltip="Base de Conhecimento"
+                    >
+                      <Database className="h-4 w-4 text-red-500" />
+                      <span>Base Médica (RAG)</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
                 </SidebarMenu>
