@@ -496,12 +496,10 @@ export default function Auth() {
           {/* ── Mobile hero ────────────────────────────────────── */}
           <div className="pt-16 pb-4 text-center lg:pt-20">
             <motion.div {...fadeUp(0)}>
-              <img
-                src={pulsoLogo}
-                alt="PULSO"
-                width={80}
-                height={80}
+              <PulsoLogo
+                size={80}
                 className="mx-auto rounded-[22px] shadow-2xl shadow-primary/25 ring-1 ring-border/20"
+                priority
               />
             </motion.div>
 
