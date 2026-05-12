@@ -85,6 +85,9 @@ const About = lazy(() => import("@/pages/About"));
 
 const Onboarding = lazy(() => import("@/pages/Onboarding"));
 const Landing = lazy(() => import("@/pages/Landing"));
+const PrelaunchLanding = lazy(() => import("@/pages/PrelaunchLanding"));
+const ComingSoon = lazy(() => import("@/pages/ComingSoon"));
+const AdminLaunchSignups = lazy(() => import("@/pages/AdminLaunchSignups"));
 const ClinicalCaseSimulator = lazy(() => import("@/pages/ClinicalCaseSimulator"));
 const InstitutionalProtocols = lazy(() => import("@/pages/InstitutionalProtocols"));
 const VoiceEvolution = lazy(() => import("@/pages/VoiceEvolution"));
