@@ -7,6 +7,14 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 import PremiumPageGuard from "@/components/PremiumPageGuard";
+import { supabase } from "@/integrations/supabase/client";
+
+const getAuthHeader = async () => {
+  const { data: { session } } = await supabase.auth.getSession();
+  return session?.access_token
+    ? `Bearer ${session.access_token}`
+    : `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`;
+};
 
 const PrescriptionChecker = () => {
   const navigate = useNavigate();
@@ -54,7 +62,7 @@ const PrescriptionChecker = () => {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+          Authorization: await getAuthHeader(),
         },
         body: JSON.stringify({
           prescription: prescription.trim(),

@@ -7,6 +7,14 @@ import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 import PremiumPageGuard from "@/components/PremiumPageGuard";
 import OfflineBadge from "@/components/OfflineBadge";
+import { supabase } from "@/integrations/supabase/client";
+
+const getAuthHeader = async () => {
+  const { data: { session } } = await supabase.auth.getSession();
+  return session?.access_token
+    ? `Bearer ${session.access_token}`
+    : `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`;
+};
 
 type Format = "SOAP" | "I-PASS";
 
@@ -79,7 +87,7 @@ const VoiceEvolution = () => {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`,
+            Authorization: await getAuthHeader(),
           },
           body: JSON.stringify({ transcription: transcription.trim(), format }),
         }

@@ -8,6 +8,14 @@ import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 import PremiumPageGuard from "@/components/PremiumPageGuard";
 import OfflineBadge from "@/components/OfflineBadge";
+import { supabase } from "@/integrations/supabase/client";
+
+const getAuthHeader = async () => {
+  const { data: { session } } = await supabase.auth.getSession();
+  return session?.access_token
+    ? `Bearer ${session.access_token}`
+    : `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}`;
+};
 
 const DischargeSummary = () => {
   const navigate = useNavigate();
@@ -54,7 +62,7 @@ const DischargeSummary = () => {
     try {
       const resp = await fetch(`${import.meta.env.VITE_SUPABASE_URL}/functions/v1/discharge-summary`, {
         method: "POST",
-        headers: { "Content-Type": "application/json", Authorization: `Bearer ${import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY}` },
+        headers: { "Content-Type": "application/json", Authorization: await getAuthHeader() },
         body: JSON.stringify(form),
       });
       if (!resp.ok) { const e = await resp.json().catch(() => ({})); throw new Error(e.error || "Erro"); }
