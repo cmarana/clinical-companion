@@ -12,8 +12,7 @@ import {
   Moon, Sun, Eclipse, Sparkles, Star, Check,
   Stethoscope, Users, Loader2, AlertCircle
 } from "lucide-react";
-import pulsoLogoLight from "@/assets/pulso-logo-light.png";
-import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
+import { PulsoLogo } from "@/components/PulsoLogo";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Separator } from "@/components/ui/separator";
 import { hapticLight } from "@/lib/haptics";
