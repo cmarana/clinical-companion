@@ -1838,6 +1838,10 @@ export type Database = {
         Args: { _feature?: string; _user_id: string }
         Returns: number
       }
+      get_institution_invite_code: {
+        Args: { _institution_id: string }
+        Returns: string
+      }
       get_institution_role: {
         Args: { _institution_id: string; _user_id: string }
         Returns: string
