@@ -302,6 +302,22 @@ function ClinicalAIContent() {
     apiMessages.push({ role: "user", content: fullText });
 
     try {
+      const ragIntents = ["dose","dilution","antibiotic","protocol","emergency","conduct","calculator","score","interaction"];
+      const isRagCandidate = sendMode === "chat" || sendMode === "plantao";
+      if (isRagCandidate) {
+        try {
+          const ragAnswer = await askMedicalRag(fullText);
+          if (ragAnswer?.answer && ragAnswer.intent && ragIntents.includes(ragAnswer.intent)) {
+            setLastRagMeta({ source: ragAnswer.source, intent: ragAnswer.intent, model: ragAnswer.model, chunks: ragAnswer.chunks });
+            setMessages((prev) => [...prev, { role: "assistant" as const, content: ragAnswer.answer }]);
+            setIsLoading(false);
+            return;
+          }
+        } catch { }
+      }
+      setLastRagMeta(null);
+      const apiMessages = messages.map(m => ({ role: m.role, content: m.content }));
+      apiMessages.push({ role: "user", content: fullText });
       await streamClinicalAi({
         messages: apiMessages,
         mode: sendMode,
