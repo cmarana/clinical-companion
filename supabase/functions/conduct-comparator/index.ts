@@ -1,4 +1,5 @@
 import { verifyAuthAndQuota, bumpAiUsage, hashPrompt, lookupCache, storeCache } from "../_shared/aiQuota.ts";
+import { geminiChat } from "../_shared/gemini.ts";
 
 const FEATURE = "conduct-comparator";
 const MODEL = "google/gemini-2.5-flash";
