@@ -34,6 +34,7 @@ const clinicalItems = [
   { title: "Interações", url: "/drug-interactions", icon: FlaskConical },
   { title: "Diluições IV", url: "/iv-dilutions", icon: Droplets },
   { title: "Timer PCR", url: "/cpr-timer", icon: Timer },
+  { title: "Gestão de Plantão", url: "/shift-manager", icon: Calendar },
 ];
 
 const specialtyItems = [
