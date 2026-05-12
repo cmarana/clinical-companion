@@ -158,6 +158,9 @@ const AppRoutes = () => (
     <Routes>
       <Route path="/index" element={<Navigate to="/" replace />} />
       <Route path="/landing" element={<Landing />} />
+      <Route path="/landing-original" element={<Landing />} />
+      <Route path="/coming-soon" element={<ComingSoon />} />
+      <Route path="/prelaunch" element={<PrelaunchLanding />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/terms" element={<TermsOfUse />} />
