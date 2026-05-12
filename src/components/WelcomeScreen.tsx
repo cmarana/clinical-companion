@@ -60,14 +60,14 @@ export default function WelcomeScreen({ userName, onComplete }: WelcomeScreenPro
             className="w-full max-w-md mx-4 flex flex-col items-center text-center px-6 py-8"
           >
             {/* Logo */}
-            <motion.img
-              src={logo}
-              alt="PULSO"
-              className="w-16 h-16 mb-4"
+            <motion.div
+              className="mb-4"
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            />
+            >
+              <PulsoLogo size={64} priority />
+            </motion.div>
 
             {/* Greeting */}
             <motion.h1
