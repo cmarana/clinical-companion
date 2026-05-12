@@ -207,7 +207,10 @@ export default function PrelaunchLanding() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 h-16 flex items-center justify-between">
           <button onClick={() => scrollTo("hero")} className="flex items-center gap-2.5">
             <img src={logo} alt="PULSO" className="h-7 w-auto" />
-            <span className="hidden sm:inline text-xs uppercase tracking-[0.22em] text-blue-300/80">Emergência Médica</span>
+            <span className="hidden sm:inline text-sm font-semibold tracking-tight text-slate-100">
+              PULSO <span className="text-slate-500 font-normal mx-1">|</span>
+              <span className="text-blue-300/90 font-medium">Emergência Médica</span>
+            </span>
           </button>
           <nav className="hidden md:flex items-center gap-7 text-sm text-slate-300">
             <button onClick={() => scrollTo("clara")} className="hover:text-white transition">Dra. Clara</button>
