@@ -17,6 +17,8 @@ import { streamClinicalAi } from "@/lib/clinicalAiStream";
 import { showClinicalAiError } from "@/lib/clinicalAiToast";
 import { toast } from "sonner";
 import ClinicalResponseCards from "@/components/ClinicalResponseCards";
+import { askMedicalRag } from "@/lib/medicalRag";
+import type { RagSourceChunk } from "@/components/ClinicalResponseCards";
 import { motion } from "framer-motion";
 import OfflineBadge from "@/components/OfflineBadge";
 import { AiUsageBadge } from "@/components/AiUsageBadge";
@@ -41,6 +43,12 @@ function ClinicalAIContent() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [mode, setMode] = useState<"chat" | "structured" | "plantao" | "narrative" | "image">("chat");
+  const [lastRagMeta, setLastRagMeta] = useState<{
+    source?: "cache" | "llm" | "deterministic";
+    intent?: string;
+    model?: string;
+    chunks?: RagSourceChunk[];
+  } | null>(null);
   // Image / Document analysis state — suporta lote
   const MAX_IMAGES = 5;
   const MAX_DOCS = 3;
@@ -289,11 +297,23 @@ function ClinicalAIContent() {
       });
     };
 
-    // Build message history with context injected in latest user msg
-    const apiMessages = messages.map(m => ({ role: m.role, content: m.content }));
-    apiMessages.push({ role: "user", content: fullText });
-
     try {
+      const ragIntents = ["dose","dilution","antibiotic","protocol","emergency","conduct","calculator","score","interaction"];
+      const isRagCandidate = sendMode === "chat" || sendMode === "plantao";
+      if (isRagCandidate) {
+        try {
+          const ragAnswer = await askMedicalRag(fullText);
+          if (ragAnswer?.answer && ragAnswer.intent && ragIntents.includes(ragAnswer.intent)) {
+            setLastRagMeta({ source: ragAnswer.source, intent: ragAnswer.intent, model: ragAnswer.model, chunks: ragAnswer.chunks });
+            setMessages((prev) => [...prev, { role: "assistant" as const, content: ragAnswer.answer }]);
+            setIsLoading(false);
+            return;
+          }
+        } catch { }
+      }
+      setLastRagMeta(null);
+      const apiMessages = messages.map(m => ({ role: m.role, content: m.content }));
+      apiMessages.push({ role: "user", content: fullText });
       await streamClinicalAi({
         messages: apiMessages,
         mode: sendMode,
@@ -719,7 +739,13 @@ function ClinicalAIContent() {
                 : "rounded-bl-sm"
             }`}>
               {msg.role === "assistant" ? (
-                <ClinicalResponseCards content={msg.content} />
+                <ClinicalResponseCards
+                  content={msg.content}
+                  ragSource={i === messages.length - 1 ? lastRagMeta?.source : undefined}
+                  ragIntent={i === messages.length - 1 ? lastRagMeta?.intent : undefined}
+                  ragModel={i === messages.length - 1 ? lastRagMeta?.model : undefined}
+                  ragChunks={i === messages.length - 1 ? lastRagMeta?.chunks : undefined}
+                />
               ) : (
                 <div className="whitespace-pre-wrap text-[13px]">{msg.content}</div>
               )}
