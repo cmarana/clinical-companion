@@ -29,8 +29,6 @@ const numbers = [
 
 export default function About() {
   const navigate = useNavigate();
-  const { theme } = useTheme();
-  const pulsoLogo = theme === "dark" ? pulsoLogoDark : pulsoLogoLight;
 
   return (
     <div className="min-h-screen bg-background text-foreground">
