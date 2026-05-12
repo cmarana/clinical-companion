@@ -3,7 +3,7 @@ import { Lock, Sparkles, ArrowRight, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
-import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
+import { PulsoLogo } from "@/components/PulsoLogo";
 
 export default function ComingSoon() {
   const { user } = useAuth();
