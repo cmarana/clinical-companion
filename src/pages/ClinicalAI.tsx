@@ -794,7 +794,7 @@ function ClinicalAIContent() {
         {isLoading && messages[messages.length - 1]?.role !== "assistant" && (
           <div className="flex gap-2 justify-start">
             <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
-              <Bot size={14} className="text-primary" />
+              <PulsoMark size={14} />
             </div>
             <div className="bg-muted rounded-2xl rounded-bl-md px-4 py-3 flex items-center gap-2">
               <Loader2 size={14} className="animate-spin text-muted-foreground" />
