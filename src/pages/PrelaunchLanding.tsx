@@ -17,9 +17,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { Card, CardContent } from "@/components/ui/card";
 import { toast } from "sonner";
 import { supabase } from "@/integrations/supabase/client";
-import pulsoLogoLight from "@/assets/pulso-logo-light.png";
 import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
-import { useTheme } from "@/contexts/ThemeContext";
 
 type Tool = { name: string; desc: string; icon: LucideIcon; path: string };
 type Group = { id: string; title: string; subtitle: string; accent: string; icon: LucideIcon; tools: Tool[] };
