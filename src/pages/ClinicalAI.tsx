@@ -687,7 +687,7 @@ function ClinicalAIContent() {
           <ArrowLeft size={18} />
         </button>
         <div className="flex-1 min-w-0">
-          <h1 className="font-heading font-bold text-sm">IA Clínica</h1>
+          <h1 className="font-heading font-bold text-sm">Dra. Clara — IA Clínica</h1>
           <p className="text-[10px] text-muted-foreground truncate">Diagnóstico • Conduta • Prescrição • Interações</p>
         </div>
         <div className="hidden sm:block">
@@ -730,10 +730,13 @@ function ClinicalAIContent() {
       <div className="flex-1 overflow-y-auto px-3 py-3 space-y-3">
         {messages.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full text-center px-4">
-            <div className="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center mb-3">
-              <Bot size={24} className="text-primary" />
+            <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-3">
+              <PulsoMark size={32} />
             </div>
-            <h2 className="font-heading font-bold text-base mb-1">Assistente Clínico IA</h2>
+            <h2 className="font-heading font-bold text-base mb-1">Dra. Clara — IA Clínica</h2>
+            <p className="text-[12px] text-foreground/80 max-w-sm mb-2">
+              Olá! Sou a Dra. Clara. Como posso auxiliar na sua decisão clínica agora?
+            </p>
             <p className="text-[10px] text-muted-foreground max-w-sm mb-1">
               Respostas estruturadas em 10 seções: resumo, diagnóstico, diferenciais, algoritmo, exames, conduta, prescrição, interações, alertas e referências.
             </p>
