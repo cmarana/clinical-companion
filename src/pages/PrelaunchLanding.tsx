@@ -306,44 +306,76 @@ export default function PrelaunchLanding() {
               transition={{ duration: 0.8, delay: 0.15 }}
               className="lg:col-span-5 relative"
             >
-              <div className="relative mx-auto max-w-[360px] aspect-[9/19] rounded-[44px] border border-white/10 bg-gradient-to-b from-slate-900 to-[#06101F] shadow-[0_40px_120px_-30px_rgba(6,182,212,0.45)] p-3">
+              <div className="relative mx-auto max-w-[360px] aspect-[9/19] rounded-[44px] border border-white/10 bg-gradient-to-b from-slate-900 to-[#06101F] shadow-[0_40px_120px_-30px_rgba(10,109,217,0.55)] p-3">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 rounded-b-2xl bg-black/80" />
-                <div className="h-full w-full rounded-[34px] bg-gradient-to-b from-[#0E1A2E] to-[#0A1322] p-5 overflow-hidden flex flex-col">
-                  <div className="flex items-center justify-between text-[10px] text-slate-400">
+                <div className="h-full w-full rounded-[34px] bg-gradient-to-b from-[#0E1A2E] to-[#0A1322] p-4 overflow-hidden flex flex-col">
+                  {/* Status bar */}
+                  <div className="flex items-center justify-between text-[10px] text-slate-400 px-1">
                     <span>9:41</span>
-                    <span className="flex items-center gap-1"><HeartPulse className="h-3 w-3 text-blue-300" /> PULSO</span>
+                    <span className="flex items-center gap-1">
+                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      online
+                    </span>
                   </div>
-                  <div className="mt-4">
-                    <div className="text-[11px] uppercase tracking-widest text-blue-300/70">Sala Vermelha</div>
-                    <div className="mt-1 text-base font-semibold">Choque séptico</div>
+                  {/* App header */}
+                  <div className="mt-3 flex items-center justify-between">
+                    <div className="flex items-center gap-2">
+                      <div className="h-7 w-7 rounded-lg bg-gradient-to-br from-[#0A6DD9] to-[#1E4FA8] flex items-center justify-center shadow-md shadow-blue-500/30">
+                        <HeartPulse className="h-4 w-4 text-white" />
+                      </div>
+                      <div className="leading-tight">
+                        <div className="text-[13px] font-semibold text-white">PULSO</div>
+                        <div className="text-[9px] uppercase tracking-wider text-blue-300/80">Emergência Médica</div>
+                      </div>
+                    </div>
+                    <Search className="h-4 w-4 text-slate-400" />
                   </div>
-                  {/* ECG line */}
-                  <svg viewBox="0 0 300 80" className="mt-3 w-full h-14">
-                    <motion.path
-                      d="M0 40 L60 40 L70 20 L80 60 L90 10 L100 70 L110 40 L300 40"
-                      stroke="hsl(180 100% 60%)" strokeWidth="2" fill="none"
-                      initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
-                      transition={{ duration: 1.6, repeat: Infinity, repeatType: "loop", ease: "linear" }}
-                    />
-                  </svg>
-                  <div className="mt-2 grid grid-cols-2 gap-2">
+
+                  {/* Saudação */}
+                  <div className="mt-3 text-[11px] text-slate-400">Bom plantão, Dr.</div>
+                  <div className="text-[13px] font-medium text-slate-100">O que você precisa agora?</div>
+
+                  {/* Grade de atalhos */}
+                  <div className="mt-3 grid grid-cols-4 gap-2">
                     {[
-                      { l: "Conduta", v: "Bundle 1h" },
-                      { l: "Lactato", v: "4.2 ↑" },
-                      { l: "PAM alvo", v: "≥ 65" },
-                      { l: "ATB empírico", v: "Pip-Tazo" },
-                    ].map((c) => (
-                      <div key={c.l} className="rounded-xl bg-white/5 border border-white/10 px-3 py-2">
-                        <div className="text-[9px] uppercase tracking-wider text-slate-400">{c.l}</div>
-                        <div className="text-sm font-medium text-slate-100">{c.v}</div>
+                      { i: Siren, l: "Emergência", c: "from-red-500/30 to-red-500/10 text-red-300" },
+                      { i: Bot, l: "Dra. Clara", c: "from-blue-500/30 to-blue-500/10 text-blue-300" },
+                      { i: Pill, l: "Bulário", c: "from-emerald-500/30 to-emerald-500/10 text-emerald-300" },
+                      { i: Calculator, l: "Scores", c: "from-indigo-500/30 to-indigo-500/10 text-indigo-300" },
+                    ].map((t) => (
+                      <div key={t.l} className="flex flex-col items-center gap-1">
+                        <div className={`h-10 w-10 rounded-xl bg-gradient-to-b ${t.c} border border-white/10 flex items-center justify-center`}>
+                          <t.i className="h-4 w-4" />
+                        </div>
+                        <div className="text-[9px] text-slate-300 text-center leading-tight">{t.l}</div>
                       </div>
                     ))}
                   </div>
-                  <div className="mt-3 rounded-xl bg-blue-500/10 border border-blue-400/20 p-3 flex items-start gap-2">
-                    <Bot className="h-4 w-4 text-blue-300 mt-0.5" />
-                    <div className="text-[11px] leading-snug">
+
+                  {/* Card protocolo ativo */}
+                  <div className="mt-3 rounded-xl border border-blue-400/20 bg-gradient-to-br from-blue-500/15 to-blue-500/5 p-2.5">
+                    <div className="flex items-center justify-between">
+                      <div className="text-[9px] uppercase tracking-wider text-blue-200/80">Protocolo ativo</div>
+                      <div className="text-[9px] text-slate-400">Sala Vermelha</div>
+                    </div>
+                    <div className="mt-0.5 text-[12px] font-semibold text-white">Choque séptico — Bundle 1h</div>
+                    {/* ECG */}
+                    <svg viewBox="0 0 300 60" className="mt-1 w-full h-9">
+                      <motion.path
+                        d="M0 30 L50 30 L60 14 L70 46 L80 6 L90 54 L100 30 L300 30"
+                        stroke="#0A6DD9" strokeWidth="2" fill="none"
+                        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
+                        transition={{ duration: 1.6, repeat: Infinity, repeatType: "loop", ease: "linear" }}
+                      />
+                    </svg>
+                  </div>
+
+                  {/* Dra. Clara */}
+                  <div className="mt-2 rounded-xl bg-blue-500/10 border border-blue-400/20 p-2.5 flex items-start gap-2">
+                    <div className="h-6 w-6 rounded-full bg-gradient-to-br from-blue-400 to-blue-700 flex items-center justify-center text-[9px] font-semibold text-white shrink-0">DC</div>
+                    <div className="text-[10.5px] leading-snug">
                       <span className="text-blue-200 font-medium">Dra. Clara: </span>
-                      Reavaliar volume após 30 mL/kg. Considerar noradrenalina precoce.
+                      <span className="text-slate-200">Reavaliar volume após 30 mL/kg. Considerar noradrenalina precoce.</span>
                     </div>
                   </div>
                 </div>
