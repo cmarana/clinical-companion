@@ -16,6 +16,8 @@ import StatusBarScrim from "@/components/StatusBarScrim";
 
 import { lazy, Suspense, useEffect } from "react";
 import { ProtocolListSkeleton, ProtocolDetailSkeleton, MedicationListSkeleton } from "@/components/PageSkeleton";
+import { APP_LAUNCH_STATUS } from "@/config/launchStatus";
+import { useAppAccess } from "@/hooks/useAppAccess";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Protocols = lazy(() => import("@/pages/Protocols"));
