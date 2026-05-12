@@ -109,19 +109,21 @@ const queryClient = new QueryClient({
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading, profileComplete } = useAuth();
+  const { hasAccess, loading: accessLoading } = useAppAccess();
   if (loading) return <LazyFallback />;
   if (!user) return <Navigate to="/auth" replace />;
-  // Wait for profile check to finish
+  // Pre-launch gate: only admin/tester/developer can enter the app.
+  if (APP_LAUNCH_STATUS === "prelaunch") {
+    if (accessLoading || hasAccess === null) return <LazyFallback />;
+    if (!hasAccess) return <Navigate to="/coming-soon" replace />;
+  }
   if (profileComplete === null) return <LazyFallback />;
-  // Skip onboarding redirect if user just completed it (heading to /pricing)
   const justOnboarded = sessionStorage.getItem("pulso_just_onboarded") === "1";
   if (!profileComplete && !justOnboarded) return <Navigate to="/onboarding" replace />;
   return <>{children}</>;
 }
 
 const LazyFallback = () => (
-  // Transparent background so the inline splash screen (white) shows through
-  // during the initial lazy-chunk load — prevents a black flash in dark themes.
   <div className="min-h-screen flex items-center justify-center bg-transparent">
     <div className="flex flex-col items-center gap-4">
       <div className="relative w-12 h-12">
@@ -134,6 +136,16 @@ const LazyFallback = () => (
 
 const SmartRoot = () => {
   const { user, loading } = useAuth();
+  const { hasAccess, loading: accessLoading } = useAppAccess();
+  if (APP_LAUNCH_STATUS === "prelaunch") {
+    // Provisional landing for everyone; authorized users get sent to /home.
+    if (loading) return <LazyFallback />;
+    if (user) {
+      if (accessLoading || hasAccess === null) return <LazyFallback />;
+      if (hasAccess) return <Navigate to="/home" replace />;
+    }
+    return <PrelaunchLanding />;
+  }
   if (loading) return <LazyFallback />;
   if (!user) return <Landing />;
   return <Navigate to="/home" replace />;
