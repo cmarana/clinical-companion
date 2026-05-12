@@ -43,6 +43,12 @@ function ClinicalAIContent() {
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [mode, setMode] = useState<"chat" | "structured" | "plantao" | "narrative" | "image">("chat");
+  const [lastRagMeta, setLastRagMeta] = useState<{
+    source?: "cache" | "llm" | "deterministic";
+    intent?: string;
+    model?: string;
+    chunks?: RagSourceChunk[];
+  } | null>(null);
   // Image / Document analysis state — suporta lote
   const MAX_IMAGES = 5;
   const MAX_DOCS = 3;
