@@ -10,9 +10,18 @@ Deno.serve(async (req) => {
     return new Response("ok", { headers: corsHeaders });
   }
 
+  // ── Auth: require service_role token (cron/admin trigger) ──
+  const authHeader = req.headers.get("Authorization");
+  const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
+  if (!authHeader?.startsWith("Bearer ") || authHeader.slice(7) !== serviceKey) {
+    return new Response(JSON.stringify({ error: "Unauthorized" }), {
+      status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+
   const supabase = createClient(
     Deno.env.get("SUPABASE_URL")!,
-    Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
+    serviceKey,
   );
 
   try {
@@ -39,15 +48,14 @@ Deno.serve(async (req) => {
     // Get unique user IDs
     const userIds = [...new Set(expiringPurchases.map((p) => p.user_id))];
 
-    // Send push notification via existing function
+    // Send push notification via existing function (use service role for internal call)
     const origin = Deno.env.get("SUPABASE_URL")!;
-    const anonKey = Deno.env.get("SUPABASE_ANON_KEY")!;
 
     const pushResponse = await fetch(`${origin}/functions/v1/send-push-notification`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${anonKey}`,
+        Authorization: `Bearer ${serviceKey}`,
       },
       body: JSON.stringify({
         type: "protocol_update",
