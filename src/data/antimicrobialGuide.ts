@@ -752,6 +752,415 @@ export const antimicrobialGuide: InfectiousFocus[] = [
       },
     ],
   },
+  // ==================== IST / DST ====================
+  {
+    id: "ist",
+    category: "IST / DST",
+    icon: "🧬",
+    color: "text-pink-600 dark:text-pink-400",
+    scenarios: [
+      {
+        id: "gonorreia",
+        name: "Gonorreia (uretrite/cervicite)",
+        severity: "Ambulatorial",
+        context: "N. gonorrhoeae — tratar sempre a clamídia associada",
+        firstLine: [
+          { drug: "Ceftriaxona", dose: "500mg IM", route: "IM", duration: "Dose única" },
+          { drug: "Azitromicina", dose: "1g", route: "VO", duration: "Dose única (+ ceftriaxona)", notes: "Cobrir clamídia" },
+        ],
+        secondLine: [
+          { drug: "Cefixima", dose: "800mg", route: "VO", duration: "Dose única", notes: "Se IM indisponível" },
+        ],
+        keyPoints: [
+          "Tratar sempre clamídia concomitantemente",
+          "Notificação compulsória",
+          "Rastrear outras IST (HIV, sífilis, hepatites)",
+          "Tratar parceiros sexuais",
+        ],
+      },
+      {
+        id: "clamídia",
+        name: "Clamídia (uretrite/cervicite)",
+        severity: "Ambulatorial",
+        context: "Chlamydia trachomatis",
+        firstLine: [
+          { drug: "Doxiciclina", dose: "100mg 12/12h", route: "VO", duration: "7 dias" },
+        ],
+        secondLine: [
+          { drug: "Azitromicina", dose: "1g", route: "VO", duration: "Dose única" },
+        ],
+        keyPoints: ["Evitar doxiciclina na gestação — usar azitromicina", "Tratar parceiros"],
+      },
+      {
+        id: "sifilis-primaria",
+        name: "Sífilis primária e secundária",
+        severity: "Ambulatorial / Internação se neurossífilis",
+        context: "Treponema pallidum",
+        firstLine: [
+          { drug: "Penicilina G Benzatina", dose: "2.400.000 UI IM (1.200.000 UI em cada glúteo)", route: "IM", duration: "Dose única (primária/secundária)" },
+        ],
+        secondLine: [
+          { drug: "Doxiciclina", dose: "100mg 12/12h", route: "VO", duration: "14 dias", notes: "Se alergia a penicilina (não gestante)" },
+        ],
+        keyPoints: [
+          "Sífilis terciária / neurossífilis: Penicilina G cristalina 3-4 milhões UI EV 4/4h 10-14 dias",
+          "Gestante: dessensibilização à penicilina se alérgica",
+          "Notificação compulsória",
+        ],
+      },
+      {
+        id: "herpes-genital",
+        name: "Herpes genital",
+        severity: "Ambulatorial",
+        context: "HSV-1/HSV-2 — primeiro episódio",
+        firstLine: [
+          { drug: "Aciclovir", dose: "400mg 8/8h", route: "VO", duration: "7-10 dias" },
+          { drug: "Valaciclovir", dose: "1g 12/12h", route: "VO", duration: "7-10 dias" },
+        ],
+        secondLine: [],
+        keyPoints: [
+          "Episódios recorrentes: 5 dias de tratamento",
+          "Supressão crônica se ≥ 6 episódios/ano",
+          "Herpes neonatal: aciclovir EV 20mg/kg 8/8h 14-21 dias",
+        ],
+      },
+      {
+        id: "dip",
+        name: "Doença Inflamatória Pélvica (DIP)",
+        severity: "URGÊNCIA se abscesso tubo-ovariano",
+        context: "Polimicrobiana: gonococos, clamídia, anaeróbios",
+        firstLine: [
+          { drug: "Ceftriaxona", dose: "500mg IM dose única", route: "IM", duration: "Dose única" },
+          { drug: "Doxiciclina", dose: "100mg 12/12h", route: "VO", duration: "14 dias" },
+          { drug: "Metronidazol", dose: "500mg 12/12h", route: "VO", duration: "14 dias" },
+        ],
+        secondLine: [
+          { drug: "Ofloxacino", dose: "400mg 12/12h", route: "VO", duration: "14 dias" },
+          { drug: "Metronidazol", dose: "500mg 12/12h", route: "VO", duration: "14 dias" },
+        ],
+        keyPoints: [
+          "Internação se: abscesso tubo-ovariano, falha ambulatorial 72h, gestação, imunocomprometida",
+          "Internação EV: cefoxitina + doxiciclina ou clindamicina + gentamicina",
+        ],
+      },
+    ],
+  },
+
+  // ==================== OFTÁLMICO ====================
+  {
+    id: "oftalmico",
+    category: "Infecções Oftálmicas",
+    icon: "👁️",
+    color: "text-cyan-600 dark:text-cyan-400",
+    scenarios: [
+      {
+        id: "conjuntivite-bacteriana",
+        name: "Conjuntivite bacteriana",
+        severity: "Ambulatorial",
+        context: "S. aureus, S. pneumoniae, H. influenzae",
+        firstLine: [
+          { drug: "Ciprofloxacino colírio 0,3%", dose: "1-2 gotas 6/6h", route: "Tópico", duration: "5-7 dias" },
+          { drug: "Tobramicina colírio 0,3%", dose: "1-2 gotas 6/6h", route: "Tópico", duration: "5-7 dias" },
+        ],
+        secondLine: [
+          { drug: "Cloranfenicol colírio 0,5%", dose: "1-2 gotas 6/6h", route: "Tópico", duration: "5-7 dias" },
+        ],
+        keyPoints: [
+          "Maioria viral (adenovírus) — autolimitada",
+          "Tratar bacteriana se: secreção purulenta abundante, bilateral, recém-nascido",
+          "Neonatal por gonococos: ceftriaxona 25-50mg/kg IM dose única",
+        ],
+      },
+      {
+        id: "ceratite-bacteriana",
+        name: "Ceratite bacteriana (úlcera de córnea)",
+        severity: "URGÊNCIA — risco de cegueira",
+        context: "Pseudomonas (lente de contato), S. aureus, S. pneumoniae",
+        firstLine: [
+          { drug: "Ciprofloxacino colírio 0,3% fortif.", dose: "1 gota a cada 30-60 min (1ª hora) → 1 gota 1/1h", route: "Tópico", duration: "Até melhora (titulado por oftalmologista)", notes: "URGÊNCIA — encaminhar oftalmologista" },
+        ],
+        secondLine: [
+          { drug: "Moxifloxacino colírio 0,5%", dose: "1 gota a cada 30-60 min", route: "Tópico", duration: "Conforme evolução" },
+        ],
+        keyPoints: [
+          "URGÊNCIA oftalmológica — risco de perfuração e cegueira",
+          "Suspender lentes de contato imediatamente",
+          "Coleta de raspado para cultura antes do antibiótico",
+        ],
+      },
+      {
+        id: "endoftalmite",
+        name: "Endoftalmite",
+        severity: "EMERGÊNCIA — risco de perda do olho",
+        context: "Pós-cirúrgica ou endógena — S. aureus, S. epidermidis, Bacillus",
+        firstLine: [
+          { drug: "Vancomicina intravítrea", dose: "1mg/0,1mL", route: "Intravítrea", duration: "Conforme oftalmologista", notes: "EMERGÊNCIA — contactar oftalmologia imediatamente" },
+          { drug: "Ceftazidima intravítrea", dose: "2,25mg/0,1mL", route: "Intravítrea", duration: "Conforme oftalmologista" },
+        ],
+        secondLine: [],
+        keyPoints: [
+          "EMERGÊNCIA — contactar oftalmologista de plantão imediatamente",
+          "Vitrectomia via pars plana indicada se VA ≤ percepção de luz",
+        ],
+      },
+    ],
+  },
+
+  // ==================== ODONTOGÊNICO ====================
+  {
+    id: "odontogenico",
+    category: "Infecções Odontogênicas",
+    icon: "🦷",
+    color: "text-amber-600 dark:text-amber-400",
+    scenarios: [
+      {
+        id: "abscesso-dente",
+        name: "Abscesso dentoalveolar",
+        severity: "Ambulatorial",
+        context: "Flora oral mista — estreptococos, anaeróbios",
+        firstLine: [
+          { drug: "Amoxicilina", dose: "500mg 8/8h", route: "VO", duration: "5-7 dias" },
+          { drug: "Metronidazol", dose: "400mg 8/8h", route: "VO", duration: "5-7 dias", notes: "Associar se coleção extensa ou celulite facial" },
+        ],
+        secondLine: [
+          { drug: "Clindamicina", dose: "300mg 8/8h", route: "VO", duration: "5-7 dias", notes: "Alergia a penicilina" },
+        ],
+        keyPoints: [
+          "Drenagem cirúrgica é o tratamento principal",
+          "Antibiótico complementar — NÃO substitui drenagem",
+          "Reavaliar em 48-72h",
+        ],
+      },
+      {
+        id: "angina-ludwig",
+        name: "Angina de Ludwig",
+        severity: "EMERGÊNCIA — risco de obstrução de via aérea",
+        context: "Celulite difusa do assoalho bucal — flora mista, anaeróbios",
+        firstLine: [
+          { drug: "Penicilina G Cristalina", dose: "3-4 milhões UI 4/4h", route: "EV", duration: "Até melhora → VO 10-14 dias total" },
+          { drug: "Metronidazol", dose: "500mg 8/8h", route: "EV", duration: "Até melhora" },
+        ],
+        secondLine: [
+          { drug: "Ampicilina-Sulbactam", dose: "3g 6/6h", route: "EV", duration: "10-14 dias" },
+          { drug: "Clindamicina", dose: "900mg 8/8h", route: "EV", duration: "10-14 dias", notes: "Se alergia a penicilina" },
+        ],
+        keyPoints: [
+          "EMERGÊNCIA — via aérea em risco",
+          "Intubação precoce ou traqueostomia de urgência",
+          "Drenagem cirúrgica imediata obrigatória",
+          "UTI para monitoramento",
+        ],
+      },
+      {
+        id: "sinusite-odontogenica",
+        name: "Sinusite de origem odontogênica",
+        severity: "Ambulatorial / Hospitalar se complicada",
+        context: "Extensão de infecção dentária para seio maxilar",
+        firstLine: [
+          { drug: "Amoxicilina-Clavulanato", dose: "875/125mg 12/12h", route: "VO", duration: "10-14 dias" },
+          { drug: "Metronidazol", dose: "400mg 8/8h", route: "VO", duration: "10-14 dias" },
+        ],
+        secondLine: [
+          { drug: "Clindamicina", dose: "300mg 8/8h", route: "VO", duration: "10-14 dias" },
+        ],
+        keyPoints: [
+          "Tratamento definitivo: extração/tratamento do dente causador",
+          "Lavagem do seio maxilar se necessário",
+        ],
+      },
+    ],
+  },
+
+  // ==================== GINECOLÓGICO ====================
+  {
+    id: "ginecologico",
+    category: "Infecções Ginecológicas",
+    icon: "🩺",
+    color: "text-rose-600 dark:text-rose-400",
+    scenarios: [
+      {
+        id: "vulvovaginite-candidose",
+        name: "Vulvovaginite por Candida",
+        severity: "Ambulatorial",
+        context: "C. albicans (90%), C. non-albicans",
+        firstLine: [
+          { drug: "Fluconazol", dose: "150mg", route: "VO", duration: "Dose única" },
+          { drug: "Miconazol creme 2%", dose: "Aplicador vaginal à noite", route: "Vaginal", duration: "7 dias" },
+        ],
+        secondLine: [
+          { drug: "Clotrimazol óvulo 500mg", dose: "1 óvulo vaginal", route: "Vaginal", duration: "Dose única" },
+        ],
+        keyPoints: [
+          "Candidose recorrente (≥ 4/ano): fluconazol semanal por 6 meses",
+          "C. glabrata e não-albicans: menor sensibilidade ao fluconazol → ácido bórico vaginal",
+          "Não tratar parceiro assintomático",
+        ],
+      },
+      {
+        id: "vaginose-bacteriana",
+        name: "Vaginose bacteriana",
+        severity: "Ambulatorial",
+        context: "Gardnerella, Mobiluncus, anaeróbios — pH vaginal > 4,5",
+        firstLine: [
+          { drug: "Metronidazol", dose: "500mg 12/12h", route: "VO", duration: "7 dias" },
+          { drug: "Metronidazol gel 0,75%", dose: "1 aplicador vaginal à noite", route: "Vaginal", duration: "5 dias" },
+        ],
+        secondLine: [
+          { drug: "Clindamicina creme 2%", dose: "1 aplicador vaginal à noite", route: "Vaginal", duration: "7 dias" },
+        ],
+        keyPoints: [
+          "Gestante: tratar VO — risco de parto prematuro",
+          "Não tratar parceiro — não é IST",
+        ],
+      },
+      {
+        id: "endometrite",
+        name: "Endometrite pós-parto",
+        severity: "URGÊNCIA — internação",
+        context: "Polimicrobiana: anaeróbios, enterococos, gram-negativos",
+        firstLine: [
+          { drug: "Clindamicina", dose: "900mg 8/8h", route: "EV", duration: "Até 48h afebril → VO 5-7 dias" },
+          { drug: "Gentamicina", dose: "5mg/kg 24h", route: "EV", duration: "Junto à clindamicina" },
+        ],
+        secondLine: [
+          { drug: "Ampicilina-Sulbactam", dose: "3g 6/6h", route: "EV", duration: "Até melhora clínica" },
+        ],
+        keyPoints: [
+          "Adicionar ampicilina se enterococo suspeito",
+          "Afebril por 48h EV → descontinuar (não precisa VO adicional)",
+          "US para descartar retenção de produto conceptual",
+        ],
+      },
+    ],
+  },
+
+  // ==================== NEUTROPENIA FEBRIL ====================
+  {
+    id: "neutropenia",
+    category: "Neutropenia Febril",
+    icon: "🧪",
+    color: "text-violet-600 dark:text-violet-400",
+    scenarios: [
+      {
+        id: "neutropenia-baixo-risco",
+        name: "Neutropenia febril — baixo risco (MASCC ≥ 21)",
+        severity: "Ambulatorial / Observação 4-24h",
+        context: "Neutrófilos < 500/mm³ + febre — score MASCC ≥ 21",
+        firstLine: [
+          { drug: "Ciprofloxacino", dose: "500-750mg 12/12h", route: "VO", duration: "Até resolução neutropenia + 48h afebril" },
+          { drug: "Amoxicilina-Clavulanato", dose: "875/125mg 12/12h", route: "VO", duration: "Junto ao ciprofloxacino" },
+        ],
+        secondLine: [],
+        keyPoints: [
+          "MASCC < 21 → internar e tratar EV",
+          "Reavaliação obrigatória em 48-72h",
+          "Se profilaxia com fluoroquinolona prévia → não usar ciprofloxacino",
+        ],
+      },
+      {
+        id: "neutropenia-alto-risco",
+        name: "Neutropenia febril — alto risco (MASCC < 21)",
+        severity: "EMERGÊNCIA — internação + EV imediato",
+        context: "Neutrófilos < 500/mm³, MASCC < 21 ou instabilidade hemodinâmica",
+        firstLine: [
+          { drug: "Piperacilina-Tazobactam", dose: "4,5g 6/6h", route: "EV", duration: "Até 48h afebril + neutrófilos > 500" },
+          { drug: "Cefepima", dose: "2g 8/8h", route: "EV", duration: "Alternativa à pip-tazo" },
+        ],
+        secondLine: [
+          { drug: "Meropeném", dose: "1g 8/8h", route: "EV", duration: "Se colonização ESBL ou falha em 48-72h" },
+        ],
+        keyPoints: [
+          "Hemoculturas (2 pares) ANTES do antibiótico — não atrasar tratamento",
+          "Adicionar vancomicina se: cateter central, mucosite grave, pneumonia, instabilidade",
+          "Antifúngico empírico se febre persistente > 4-7 dias sem foco",
+          "G-CSF (filgrastima) não recomendado de rotina — discutir com oncologia",
+        ],
+      },
+      {
+        id: "neutropenia-candida",
+        name: "Candidemia no neutropênico",
+        severity: "EMERGÊNCIA",
+        context: "Candida spp — febre persistente sem resposta a antibióticos",
+        firstLine: [
+          { drug: "Caspofungina", dose: "70mg EV D1 → 50mg/dia", route: "EV", duration: "14 dias após última hemocultura negativa" },
+          { drug: "Anidulafungina", dose: "200mg EV D1 → 100mg/dia", route: "EV", duration: "14 dias após última hemocultura negativa" },
+        ],
+        secondLine: [
+          { drug: "Fluconazol", dose: "800mg D1 → 400mg/dia", route: "EV", duration: "Se C. albicans sensível e estável", notes: "Evitar se azólico-profilático prévio" },
+        ],
+        keyPoints: [
+          "Retirar cateter venoso central se possível",
+          "Ecocardiograma + fundo de olho para descartar disseminação",
+          "Equinocandina preferível a fluconazol no neutropênico grave",
+        ],
+      },
+    ],
+  },
+
+  // ==================== CARDIOVASCULAR ====================
+  {
+    id: "cardiovascular",
+    category: "Cardiovascular / Mediastino",
+    icon: "❤️",
+    color: "text-red-600 dark:text-red-400",
+    scenarios: [
+      {
+        id: "endocardite-valva-nativa",
+        name: "Endocardite — válva nativa (estreptococo)",
+        severity: "URGÊNCIA — internação + hemocultura",
+        context: "S. viridans, S. bovis — válva nativa",
+        firstLine: [
+          { drug: "Penicilina G Cristalina", dose: "12-18 milhões UI/dia em infusão contínua ou 4/4h", route: "EV", duration: "4 semanas" },
+          { drug: "Gentamicina", dose: "3mg/kg/dia 24h", route: "EV", duration: "2 semanas (sinergismo)", notes: "Associar nas primeiras 2 semanas" },
+        ],
+        secondLine: [
+          { drug: "Ceftriaxona", dose: "2g/dia", route: "EV", duration: "4 semanas", notes: "Alternativa à penicilina" },
+          { drug: "Vancomicina", dose: "30mg/kg/dia 12/12h", route: "EV", duration: "4-6 semanas", notes: "Alergia a penicilina" },
+        ],
+        keyPoints: [
+          "3 pares de hemocultura com 30min de intervalo ANTES do antibiótico",
+          "Ecocardiograma (transesofágico se TT negativo)",
+          "Critérios de Duque para diagnóstico",
+          "Endocardite S. aureus (válva nativa): oxacilina 12g/dia EV 6 semanas",
+        ],
+      },
+      {
+        id: "endocardite-protese",
+        name: "Endocardite — prótese valvar",
+        severity: "EMERGÊNCIA — mortalidade 40-80%",
+        context: "Precoce (< 12m): S. epidermidis, S. aureus. Tardia: S. viridans",
+        firstLine: [
+          { drug: "Vancomicina", dose: "30mg/kg/dia 12/12h (guiar por nível)", route: "EV", duration: "6 semanas" },
+          { drug: "Rifampicina", dose: "300mg 8/8h", route: "VO", duration: "6 semanas" },
+          { drug: "Gentamicina", dose: "3mg/kg/dia 24h", route: "EV", duration: "2 semanas" },
+        ],
+        secondLine: [],
+        keyPoints: [
+          "Cirurgia de urgência se: insuficiência cardíaca, abscesso perivalvar, êmbolo séptico, falha antibiótica",
+          "Ecocardiograma transesofágico obrigatório",
+          "Hemoculturas seriadas para documentar clearance",
+        ],
+      },
+      {
+        id: "mediastinite",
+        name: "Mediastinite (pós-esternotomia ou descendente)",
+        severity: "EMERGÊNCIA — mortalidade 20-50%",
+        context: "S. aureus (MRSA possível), gram-negativos, anaeróbios",
+        firstLine: [
+          { drug: "Vancomicina", dose: "30mg/kg/dia 12/12h", route: "EV", duration: "4-6 semanas" },
+          { drug: "Piperacilina-Tazobactam", dose: "4,5g 6/6h", route: "EV", duration: "4-6 semanas" },
+        ],
+        secondLine: [
+          { drug: "Meropeném", dose: "1g 8/8h", route: "EV", duration: "4-6 semanas" },
+        ],
+        keyPoints: [
+          "Desbridamento cirúrgico urgente obrigatório",
+          "Cultura intraoperatória guia o ajuste antibiótico",
+          "MRSA muito provável em pós-operatório — manter vancomicina empírica",
+        ],
+      },
+    ],
+  },
 ];
 
 // Helper to get all categories
