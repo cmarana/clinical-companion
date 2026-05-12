@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from "react";
-import { Helmet } from "react-helmet-async";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { Navigate } from "react-router-dom";
@@ -11,15 +10,14 @@ import { Download, Search, Users } from "lucide-react";
 
 interface Signup {
   id: string;
-  full_name: string | null;
+  nome: string;
   email: string;
-  phone: string | null;
-  profession: string | null;
-  specialty: string | null;
-  workplace: string | null;
-  state: string | null;
-  source: string | null;
-  notes: string | null;
+  whatsapp: string;
+  perfil_profissional: string;
+  especialidade: string;
+  cidade_estado: string;
+  origem: string;
+  aceitou_comunicacao: boolean;
   created_at: string;
 }
 
@@ -28,8 +26,12 @@ export default function AdminLaunchSignups() {
   const [isAdmin, setIsAdmin] = useState<boolean | null>(null);
   const [rows, setRows] = useState<Signup[]>([]);
   const [q, setQ] = useState("");
-  const [profession, setProfession] = useState("");
+  const [perfil, setPerfil] = useState("");
   const [busy, setBusy] = useState(true);
+
+  useEffect(() => {
+    document.title = "Cadastros do Pré-lançamento · PULSO";
+  }, []);
 
   useEffect(() => {
     if (!user) return;
@@ -55,46 +57,32 @@ export default function AdminLaunchSignups() {
   const filtered = useMemo(() => {
     const term = q.trim().toLowerCase();
     return rows.filter((r) => {
-      if (profession && r.profession !== profession) return false;
+      if (perfil && r.perfil_profissional !== perfil) return false;
       if (!term) return true;
-      return [r.full_name, r.email, r.phone, r.workplace, r.specialty, r.state]
+      return [r.nome, r.email, r.whatsapp, r.especialidade, r.cidade_estado]
         .filter(Boolean)
         .some((v) => v!.toLowerCase().includes(term));
     });
-  }, [rows, q, profession]);
+  }, [rows, q, perfil]);
 
-  const professions = useMemo(
-    () => Array.from(new Set(rows.map((r) => r.profession).filter(Boolean))) as string[],
+  const perfis = useMemo(
+    () => Array.from(new Set(rows.map((r) => r.perfil_profissional).filter(Boolean))),
     [rows]
   );
 
   const exportCSV = () => {
     const header = [
-      "Data",
-      "Nome",
-      "Email",
-      "Telefone",
-      "Profissão",
-      "Especialidade",
-      "Local de Trabalho",
-      "UF",
-      "Origem",
-      "Notas",
+      "Data", "Nome", "Email", "WhatsApp", "Perfil",
+      "Especialidade", "Cidade/Estado", "Origem", "Aceita comunicação",
     ];
     const lines = filtered.map((r) =>
       [
         new Date(r.created_at).toLocaleString("pt-BR"),
-        r.full_name ?? "",
-        r.email,
-        r.phone ?? "",
-        r.profession ?? "",
-        r.specialty ?? "",
-        r.workplace ?? "",
-        r.state ?? "",
-        r.source ?? "",
-        (r.notes ?? "").replace(/\n/g, " "),
+        r.nome, r.email, r.whatsapp, r.perfil_profissional,
+        r.especialidade, r.cidade_estado, r.origem,
+        r.aceitou_comunicacao ? "Sim" : "Não",
       ]
-        .map((v) => `"${String(v).replace(/"/g, '""')}"`)
+        .map((v) => `"${String(v ?? "").replace(/"/g, '""')}"`)
         .join(",")
     );
     const csv = [header.join(","), ...lines].join("\n");
@@ -115,10 +103,6 @@ export default function AdminLaunchSignups() {
 
   return (
     <div className="container max-w-7xl mx-auto p-4 md:p-6 space-y-4">
-      <Helmet>
-        <title>Cadastros do Pré-lançamento · PULSO</title>
-      </Helmet>
-
       <div className="flex items-center justify-between gap-3 flex-wrap">
         <div className="flex items-center gap-3">
           <div className="p-2 rounded-lg bg-primary/10">
@@ -146,20 +130,18 @@ export default function AdminLaunchSignups() {
             <Input
               value={q}
               onChange={(e) => setQ(e.target.value)}
-              placeholder="Buscar por nome, e-mail, telefone, local…"
+              placeholder="Buscar por nome, e-mail, WhatsApp, cidade…"
               className="pl-9"
             />
           </div>
           <select
             className="h-10 rounded-md border bg-background px-3 text-sm"
-            value={profession}
-            onChange={(e) => setProfession(e.target.value)}
+            value={perfil}
+            onChange={(e) => setPerfil(e.target.value)}
           >
-            <option value="">Todas as profissões</option>
-            {professions.map((p) => (
-              <option key={p} value={p}>
-                {p}
-              </option>
+            <option value="">Todos os perfis</option>
+            {perfis.map((p) => (
+              <option key={p} value={p}>{p}</option>
             ))}
           </select>
         </CardContent>
@@ -188,22 +170,22 @@ export default function AdminLaunchSignups() {
                     <td className="p-3 whitespace-nowrap text-muted-foreground">
                       {new Date(r.created_at).toLocaleString("pt-BR")}
                     </td>
-                    <td className="p-3 font-medium">{r.full_name || "—"}</td>
+                    <td className="p-3 font-medium">{r.nome || "—"}</td>
                     <td className="p-3">
                       <div>{r.email}</div>
-                      {r.phone && (
-                        <div className="text-xs text-muted-foreground">{r.phone}</div>
+                      {r.whatsapp && (
+                        <div className="text-xs text-muted-foreground">{r.whatsapp}</div>
                       )}
                     </td>
                     <td className="p-3">
-                      {r.profession && <Badge variant="secondary">{r.profession}</Badge>}
-                      {r.specialty && (
-                        <div className="text-xs text-muted-foreground mt-1">{r.specialty}</div>
+                      {r.perfil_profissional && (
+                        <Badge variant="secondary">{r.perfil_profissional}</Badge>
+                      )}
+                      {r.especialidade && (
+                        <div className="text-xs text-muted-foreground mt-1">{r.especialidade}</div>
                       )}
                     </td>
-                    <td className="p-3 text-muted-foreground">
-                      {[r.workplace, r.state].filter(Boolean).join(" · ") || "—"}
-                    </td>
+                    <td className="p-3 text-muted-foreground">{r.cidade_estado || "—"}</td>
                   </tr>
                 ))}
               </tbody>
