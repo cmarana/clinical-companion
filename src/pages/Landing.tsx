@@ -239,7 +239,7 @@ export default function Landing() {
     }
   }, []);
 
-  const pulsoLogo = theme === "light" ? pulsoLogoLight : pulsoLogoDark;
+  
   const themeIcon = theme === "oled" ? <Eclipse size={16} /> : theme === "dark" ? <Sun size={16} /> : <Moon size={16} />;
 
   return (
