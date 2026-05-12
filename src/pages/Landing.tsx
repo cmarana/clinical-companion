@@ -14,9 +14,7 @@ import {
 import { motion, AnimatePresence } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { hapticLight } from "@/lib/haptics";
-import pulsoLogoLight from "@/assets/pulso-logo-light.png";
-
-import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
+import { PulsoLogo } from "@/components/PulsoLogo";
 import { useState, useEffect } from "react";
 import { DATASET_COUNTS, QUIZ_TOTAL, fmt } from "@/data/datasetCounts";
 import { LANDING_MODULES, APP_MODULES_COUNT } from "@/config/appModules";
