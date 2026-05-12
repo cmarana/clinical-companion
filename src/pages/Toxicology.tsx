@@ -153,7 +153,7 @@ export default function Toxicology() {
   }, [search, activeCategory]);
 
   return (
-    <PremiumPageGuard>
+    <PremiumPageGuard feature="toxicologia" title="Toxicologia de Emergência">
       <TopBar title="Toxicologia" />
       <div className="container max-w-3xl mx-auto px-4 py-4 space-y-4 pb-24">
         <header className="space-y-2">
