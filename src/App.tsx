@@ -16,6 +16,8 @@ import StatusBarScrim from "@/components/StatusBarScrim";
 
 import { lazy, Suspense, useEffect } from "react";
 import { ProtocolListSkeleton, ProtocolDetailSkeleton, MedicationListSkeleton } from "@/components/PageSkeleton";
+import { APP_LAUNCH_STATUS } from "@/config/launchStatus";
+import { useAppAccess } from "@/hooks/useAppAccess";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Protocols = lazy(() => import("@/pages/Protocols"));
@@ -85,6 +87,9 @@ const About = lazy(() => import("@/pages/About"));
 
 const Onboarding = lazy(() => import("@/pages/Onboarding"));
 const Landing = lazy(() => import("@/pages/Landing"));
+const PrelaunchLanding = lazy(() => import("@/pages/PrelaunchLanding"));
+const ComingSoon = lazy(() => import("@/pages/ComingSoon"));
+const AdminLaunchSignups = lazy(() => import("@/pages/AdminLaunchSignups"));
 const ClinicalCaseSimulator = lazy(() => import("@/pages/ClinicalCaseSimulator"));
 const InstitutionalProtocols = lazy(() => import("@/pages/InstitutionalProtocols"));
 const VoiceEvolution = lazy(() => import("@/pages/VoiceEvolution"));
@@ -106,19 +111,21 @@ const queryClient = new QueryClient({
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading, profileComplete } = useAuth();
+  const { hasAccess, loading: accessLoading } = useAppAccess();
   if (loading) return <LazyFallback />;
   if (!user) return <Navigate to="/auth" replace />;
-  // Wait for profile check to finish
+  // Pre-launch gate: only admin/tester/developer can enter the app.
+  if (APP_LAUNCH_STATUS === "prelaunch") {
+    if (accessLoading || hasAccess === null) return <LazyFallback />;
+    if (!hasAccess) return <Navigate to="/coming-soon" replace />;
+  }
   if (profileComplete === null) return <LazyFallback />;
-  // Skip onboarding redirect if user just completed it (heading to /pricing)
   const justOnboarded = sessionStorage.getItem("pulso_just_onboarded") === "1";
   if (!profileComplete && !justOnboarded) return <Navigate to="/onboarding" replace />;
   return <>{children}</>;
 }
 
 const LazyFallback = () => (
-  // Transparent background so the inline splash screen (white) shows through
-  // during the initial lazy-chunk load — prevents a black flash in dark themes.
   <div className="min-h-screen flex items-center justify-center bg-transparent">
     <div className="flex flex-col items-center gap-4">
       <div className="relative w-12 h-12">
@@ -131,6 +138,16 @@ const LazyFallback = () => (
 
 const SmartRoot = () => {
   const { user, loading } = useAuth();
+  const { hasAccess, loading: accessLoading } = useAppAccess();
+  if (APP_LAUNCH_STATUS === "prelaunch") {
+    // Provisional landing for everyone; authorized users get sent to /home.
+    if (loading) return <LazyFallback />;
+    if (user) {
+      if (accessLoading || hasAccess === null) return <LazyFallback />;
+      if (hasAccess) return <Navigate to="/home" replace />;
+    }
+    return <PrelaunchLanding />;
+  }
   if (loading) return <LazyFallback />;
   if (!user) return <Landing />;
   return <Navigate to="/home" replace />;
@@ -141,6 +158,9 @@ const AppRoutes = () => (
     <Routes>
       <Route path="/index" element={<Navigate to="/" replace />} />
       <Route path="/landing" element={<Landing />} />
+      <Route path="/landing-original" element={<Landing />} />
+      <Route path="/coming-soon" element={<ComingSoon />} />
+      <Route path="/prelaunch" element={<PrelaunchLanding />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/terms" element={<TermsOfUse />} />
@@ -208,6 +228,7 @@ const AppRoutes = () => (
           <Route path="/admin/test-users" element={<AdminTestUsers />} />
           <Route path="/admin/guideline-review" element={<AdminGuidelineReview />} />
           <Route path="/admin/validation" element={<ValidationChecklist />} />
+          <Route path="/admin/launch-signups" element={<AdminLaunchSignups />} />
         <Route path="/updates" element={<UpdatesFeed />} />
         
         <Route path="/referral" element={<Referral />} />
