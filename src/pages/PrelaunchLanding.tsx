@@ -42,8 +42,8 @@ const GROUPS: Group[] = [
   },
   {
     id: "ia",
-    title: "IA Clínica & Dra. Clara",
-    subtitle: "Apoio inteligente para raciocínio e documentação.",
+    title: "IA Clínica - Dra. Clara",
+    subtitle: "Apoio inteligente para raciocínio, exames de imagem e documentação.",
     accent: "from-blue-500/20 to-blue-500/5 ring-blue-500/30 text-blue-300",
     icon: Bot,
     tools: [
