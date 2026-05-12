@@ -19,7 +19,10 @@ export default function Favorites() {
     type === "protocol" ? "Protocolo" : type === "prescription" ? "Prescrição" : "Medicamento";
 
   const getPath = (f: { type: string; id: string }) =>
-    f.type === "protocol" ? `/protocols/${f.id}` : f.type === "prescription" ? `/prescriptions/${f.id}` : `/medications/${f.id}`;
+    f.type === "protocol" ? `/full-protocols/${f.id}`
+    : f.type === "prescription" ? `/prescriptions/${f.id}`
+    : f.type === "medication" ? `/bulario/${f.id}`
+    : `/bulario/${f.id}`;
 
   return (
     <>
@@ -35,10 +38,10 @@ export default function Favorites() {
               <p className="text-muted-foreground text-xs max-w-[260px] mx-auto">Toque na ⭐ em protocolos, prescrições ou medicamentos para acessar rapidamente aqui.</p>
             </div>
             <div className="flex gap-2 justify-center">
-              <button onClick={() => navigate("/protocols")} className="px-4 py-2 rounded-xl bg-primary text-primary-foreground text-xs font-heading font-medium">
+              <button onClick={() => navigate("/full-protocols")} className="px-4 py-2 rounded-xl bg-primary text-primary-foreground text-xs font-heading font-medium">
                 Explorar Protocolos
               </button>
-              <button onClick={() => navigate("/medications")} className="px-4 py-2 rounded-xl bg-secondary text-secondary-foreground text-xs font-heading font-medium">
+              <button onClick={() => navigate("/bulario")} className="px-4 py-2 rounded-xl bg-secondary text-secondary-foreground text-xs font-heading font-medium">
                 Ver Medicações
               </button>
             </div>
