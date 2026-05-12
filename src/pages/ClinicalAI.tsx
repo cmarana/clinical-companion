@@ -297,10 +297,6 @@ function ClinicalAIContent() {
       });
     };
 
-    // Build message history with context injected in latest user msg
-    const apiMessages = messages.map(m => ({ role: m.role, content: m.content }));
-    apiMessages.push({ role: "user", content: fullText });
-
     try {
       const ragIntents = ["dose","dilution","antibiotic","protocol","emergency","conduct","calculator","score","interaction"];
       const isRagCandidate = sendMode === "chat" || sendMode === "plantao";
