@@ -308,7 +308,7 @@ export default function PrelaunchLanding() {
             >
               <div className="relative mx-auto max-w-[360px] aspect-[9/19] rounded-[44px] border border-white/10 bg-gradient-to-b from-slate-900 to-[#06101F] shadow-[0_40px_120px_-30px_rgba(10,109,217,0.55)] p-3">
                 <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-6 rounded-b-2xl bg-black/80" />
-                <div className="h-full w-full rounded-[34px] bg-gradient-to-b from-[#0E1A2E] to-[#0A1322] p-4 overflow-hidden flex flex-col">
+                <div className="h-full w-full rounded-[34px] bg-gradient-to-b from-[#0E1A2E] to-[#0A1322] p-3.5 overflow-hidden flex flex-col">
                   {/* Status bar */}
                   <div className="flex items-center justify-between text-[10px] text-slate-400 px-1">
                     <span>9:41</span>
@@ -318,65 +318,62 @@ export default function PrelaunchLanding() {
                     </span>
                   </div>
                   {/* App header */}
-                  <div className="mt-3 flex items-center justify-between">
+                  <div className="mt-2.5 flex items-center justify-between">
                     <div className="flex items-center gap-2">
                       <div className="h-7 w-7 rounded-lg bg-gradient-to-br from-[#0A6DD9] to-[#1E4FA8] flex items-center justify-center shadow-md shadow-blue-500/30">
                         <HeartPulse className="h-4 w-4 text-white" />
                       </div>
                       <div className="leading-tight">
-                        <div className="text-[13px] font-semibold text-white">PULSO</div>
-                        <div className="text-[9px] uppercase tracking-wider text-blue-300/80">Emergência Médica</div>
+                        <div className="text-[12px] font-semibold text-white">PULSO</div>
+                        <div className="text-[8.5px] uppercase tracking-wider text-blue-300/80">Emergência Médica</div>
                       </div>
                     </div>
                     <Search className="h-4 w-4 text-slate-400" />
                   </div>
 
                   {/* Saudação */}
-                  <div className="mt-3 text-[11px] text-slate-400">Bom plantão, Dr.</div>
-                  <div className="text-[13px] font-medium text-slate-100">O que você precisa agora?</div>
+                  <div className="mt-2.5 text-[10px] text-slate-400">Bom plantão, Dr.</div>
+                  <div className="text-[12px] font-medium text-slate-100 leading-tight">Suas ferramentas</div>
 
-                  {/* Grade de atalhos */}
-                  <div className="mt-3 grid grid-cols-4 gap-2">
+                  {/* Lista de blocos (igual ao app) */}
+                  <div className="mt-2 flex-1 overflow-hidden grid grid-cols-3 gap-1.5 content-start">
                     {[
-                      { i: Siren, l: "Emergência", c: "from-red-500/30 to-red-500/10 text-red-300" },
-                      { i: Bot, l: "Dra. Clara", c: "from-blue-500/30 to-blue-500/10 text-blue-300" },
-                      { i: Pill, l: "Bulário", c: "from-emerald-500/30 to-emerald-500/10 text-emerald-300" },
-                      { i: Calculator, l: "Scores", c: "from-indigo-500/30 to-indigo-500/10 text-indigo-300" },
+                      { i: Siren, l: "Emergência", c: "from-red-500/25 to-red-500/5 text-red-300 border-red-400/20" },
+                      { i: AlertTriangle, l: "Plantão", c: "from-orange-500/25 to-orange-500/5 text-orange-300 border-orange-400/20" },
+                      { i: Bot, l: "Dra. Clara", c: "from-blue-500/30 to-blue-500/5 text-blue-300 border-blue-400/30" },
+                      { i: ScanLine, l: "Imagem IA", c: "from-sky-500/25 to-sky-500/5 text-sky-300 border-sky-400/20" },
+                      { i: BookOpen, l: "Protocolos", c: "from-cyan-500/25 to-cyan-500/5 text-cyan-300 border-cyan-400/20" },
+                      { i: Pill, l: "Bulário", c: "from-emerald-500/25 to-emerald-500/5 text-emerald-300 border-emerald-400/20" },
+                      { i: Calculator, l: "Scores", c: "from-indigo-500/25 to-indigo-500/5 text-indigo-300 border-indigo-400/20" },
+                      { i: FileText, l: "Prescrição", c: "from-amber-500/25 to-amber-500/5 text-amber-300 border-amber-400/20" },
+                      { i: Baby, l: "Pediatria", c: "from-pink-500/25 to-pink-500/5 text-pink-300 border-pink-400/20" },
+                      { i: FlaskConical, l: "Interações", c: "from-violet-500/25 to-violet-500/5 text-violet-300 border-violet-400/20" },
+                      { i: Mic, l: "Voz → SOAP", c: "from-fuchsia-500/25 to-fuchsia-500/5 text-fuchsia-300 border-fuchsia-400/20" },
+                      { i: Brain, l: "Casos IA", c: "from-purple-500/25 to-purple-500/5 text-purple-300 border-purple-400/20" },
                     ].map((t) => (
-                      <div key={t.l} className="flex flex-col items-center gap-1">
-                        <div className={`h-10 w-10 rounded-xl bg-gradient-to-b ${t.c} border border-white/10 flex items-center justify-center`}>
-                          <t.i className="h-4 w-4" />
-                        </div>
-                        <div className="text-[9px] text-slate-300 text-center leading-tight">{t.l}</div>
+                      <div
+                        key={t.l}
+                        className={`rounded-xl border bg-gradient-to-b ${t.c} px-1.5 py-2 flex flex-col items-center justify-center gap-1 aspect-square`}
+                      >
+                        <t.i className="h-3.5 w-3.5" />
+                        <div className="text-[8.5px] text-slate-200 text-center leading-tight font-medium">{t.l}</div>
                       </div>
                     ))}
                   </div>
 
-                  {/* Card protocolo ativo */}
-                  <div className="mt-3 rounded-xl border border-blue-400/20 bg-gradient-to-br from-blue-500/15 to-blue-500/5 p-2.5">
-                    <div className="flex items-center justify-between">
-                      <div className="text-[9px] uppercase tracking-wider text-blue-200/80">Protocolo ativo</div>
-                      <div className="text-[9px] text-slate-400">Sala Vermelha</div>
-                    </div>
-                    <div className="mt-0.5 text-[12px] font-semibold text-white">Choque séptico — Bundle 1h</div>
-                    {/* ECG */}
-                    <svg viewBox="0 0 300 60" className="mt-1 w-full h-9">
-                      <motion.path
-                        d="M0 30 L50 30 L60 14 L70 46 L80 6 L90 54 L100 30 L300 30"
-                        stroke="#0A6DD9" strokeWidth="2" fill="none"
-                        initial={{ pathLength: 0 }} animate={{ pathLength: 1 }}
-                        transition={{ duration: 1.6, repeat: Infinity, repeatType: "loop", ease: "linear" }}
-                      />
-                    </svg>
-                  </div>
-
-                  {/* Dra. Clara */}
-                  <div className="mt-2 rounded-xl bg-blue-500/10 border border-blue-400/20 p-2.5 flex items-start gap-2">
-                    <div className="h-6 w-6 rounded-full bg-gradient-to-br from-blue-400 to-blue-700 flex items-center justify-center text-[9px] font-semibold text-white shrink-0">DC</div>
-                    <div className="text-[10.5px] leading-snug">
-                      <span className="text-blue-200 font-medium">Dra. Clara: </span>
-                      <span className="text-slate-200">Reavaliar volume após 30 mL/kg. Considerar noradrenalina precoce.</span>
-                    </div>
+                  {/* Bottom nav simulada */}
+                  <div className="mt-2 -mx-3.5 -mb-3.5 px-3.5 py-2 border-t border-white/10 bg-[#06101F]/80 flex items-center justify-around">
+                    {[
+                      { i: HeartPulse, l: "Início", active: true },
+                      { i: Search, l: "Buscar" },
+                      { i: Bot, l: "Clara" },
+                      { i: Bookmark, l: "Salvos" },
+                    ].map((n) => (
+                      <div key={n.l} className="flex flex-col items-center gap-0.5">
+                        <n.i className={`h-3.5 w-3.5 ${n.active ? "text-blue-300" : "text-slate-500"}`} />
+                        <div className={`text-[8px] ${n.active ? "text-blue-300" : "text-slate-500"}`}>{n.l}</div>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -584,14 +581,24 @@ export default function PrelaunchLanding() {
             Por que o PULSO chama atenção logo no primeiro uso?
           </h2>
         </div>
+        <p className="mt-4 text-slate-300 max-w-2xl">
+          Cada detalhe foi pensado para que a primeira abertura já mostre, na prática, o que muda
+          quando o plantão tem o app certo na mão.
+        </p>
         <div className="mt-10 grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
           {[
-            { icon: Activity, t: "Interface feita para o plantão", d: "Sem telas confusas. Acesso rápido, direto e intuitivo." },
-            { icon: Layers, t: "Informação organizada", d: "Ferramentas clínicas reunidas em uma experiência limpa." },
-            { icon: ShieldCheck, t: "Apoio na tomada de decisão", d: "Recursos pensados para momentos de pressão e urgência." },
-            { icon: Bot, t: "IA clínica integrada", d: "A Dra. Clara amplia a experiência com apoio inteligente." },
-            { icon: Lock, t: "Acesso restrito durante os testes", d: "O app é preparado com cuidado antes da liberação pública." },
-            { icon: Sparkles, t: "Benefícios no lançamento", d: "Cadastrados poderão receber novidades e condições especiais." },
+            { icon: Activity, t: "Interface feita para o plantão", d: "Layout direto, contraste alto e fluxos pensados para usar com uma mão só." },
+            { icon: Layers, t: "Tudo em um só lugar", d: `${TOTAL_TOOLS} ferramentas clínicas integradas — sem trocar de app, sem abrir 10 abas.` },
+            { icon: Bot, t: "Dra. Clara, IA clínica", d: "Pergunte em linguagem natural, envie exames de imagem e receba leitura estruturada." },
+            { icon: Siren, t: "Modo Sala Vermelha", d: "Bundles de PCR, sepse, IAM e AVC ao alcance de um toque, com cronômetro ACLS." },
+            { icon: Pill, t: "2.000+ medicamentos", d: "Doses, diluições, ajuste renal/hepático e checagem de interações cruzada." },
+            { icon: Calculator, t: "53 calculadoras clínicas", d: "Glasgow, SOFA, Wells, HEART, MELD, NEWS, APACHE II e muito mais." },
+            { icon: BookOpen, t: "1.600+ protocolos", d: "Bibliotecas baseadas em evidência, com referências e níveis de evidência." },
+            { icon: ScanLine, t: "Exames por imagem com IA", d: "RX, TC, RM, US e ECG analisados por IA multimodal em segundos." },
+            { icon: Mic, t: "Evolução por voz", d: "Dite e gere SOAP / I-PASS estruturados sem digitar uma linha." },
+            { icon: WifiOff, t: "100% offline no plantão", d: "Funciona sem internet — protocolos, doses e calculadoras sempre disponíveis." },
+            { icon: ShieldCheck, t: "Apoio à decisão segura", d: "Alertas de interações, doses críticas e incompatibilidades em Y-site." },
+            { icon: Sparkles, t: "Benefícios no lançamento", d: "Cadastrados podem receber acesso antecipado e condições especiais." },
           ].map((b) => (
             <Card key={b.t} className="bg-white/[0.04] border-white/10 text-slate-100">
               <CardContent className="p-5">
