@@ -432,8 +432,8 @@ export default function PrelaunchLanding() {
             <div className="lg:col-span-7 grid sm:grid-cols-2 gap-4">
               {[
                 { icon: Mic, t: "Perguntas em linguagem natural", d: "Converse com a Dra. Clara como se buscasse apoio em tempo real." },
+                { icon: ScanLine, t: "Análise de exames de imagem", d: "Envie RX, TC, RM, US e ECG e receba leitura estruturada com achados, hipóteses e próximos passos." },
                 { icon: Brain, t: "Apoio ao raciocínio médico", d: "Organize hipóteses e próximos passos com mais clareza." },
-                { icon: Layers, t: "Integração com o PULSO", d: "Conectada às ferramentas do app, ela guia sua navegação." },
                 { icon: Activity, t: "Clareza em momentos críticos", d: "Respostas objetivas, com linguagem médica e foco na prática." },
               ].map((c) => (
                 <div key={c.t} className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent p-5">
