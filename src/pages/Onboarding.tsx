@@ -10,7 +10,7 @@ import {
   User, MapPin, GraduationCap, Stethoscope, ChevronRight, ChevronLeft, Check, Loader2,
   Target, Brain, BookOpen, Flame,
 } from "lucide-react";
-import pulsoLogo from "@/assets/pulso-logo.png";
+import { PulsoLogo } from "@/components/PulsoLogo";
 import { safeLocalStorage } from "@/lib/safeStorage";
 
 /* ── Constants ── */
