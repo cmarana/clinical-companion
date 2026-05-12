@@ -43,6 +43,7 @@ const specialtyItems = [
   { title: "Clínica", url: "/diagnosis", icon: Stethoscope },
   { title: "Atlas Clínico", url: "/clinical-atlas", icon: ScanLine },
   { title: "Antimicrobianos", url: "/antimicrobials", icon: Syringe },
+  { title: "Toxicologia", url: "/toxicology", icon: FlaskConical },
   { title: "Procedimentos", url: "/procedure-guides", icon: Syringe },
   { title: "CID-10", url: "/cid", icon: Hash },
   { title: "Valores de Ref.", url: "/lab-reference", icon: TestTubes },

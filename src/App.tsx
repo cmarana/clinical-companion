@@ -61,6 +61,7 @@ const StudyDashboard = lazy(() => import("@/pages/StudyDashboard"));
 const Profile = lazy(() => import("@/pages/Profile"));
 const Notifications = lazy(() => import("@/pages/Notifications"));
 const AntimicrobialGuide = lazy(() => import("@/pages/AntimicrobialGuide"));
+const Toxicology = lazy(() => import("@/pages/Toxicology"));
 const PediatricDoseCalculator = lazy(() => import("@/pages/PediatricDoseCalculator"));
 const DocumentGenerator = lazy(() => import("@/pages/DocumentGenerator"));
 const ProcedureGuides = lazy(() => import("@/pages/ProcedureGuides"));
@@ -212,6 +213,7 @@ const AppRoutes = () => (
         <Route path="/profile" element={<Profile />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/antimicrobials" element={<AntimicrobialGuide />} />
+        <Route path="/toxicology" element={<Toxicology />} />
         <Route path="/pediatric-doses" element={<PediatricDoseCalculator />} />
         <Route path="/documents" element={<DocumentGenerator />} />
         <Route path="/procedure-guides" element={<ProcedureGuides />} />
