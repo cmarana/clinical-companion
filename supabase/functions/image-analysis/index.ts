@@ -5,6 +5,7 @@
 // ─────────────────────────────────────────────────────────────
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { verifyAuthAndQuota, bumpAiUsage, corsHeaders } from "../_shared/aiQuota.ts";
+import { geminiChat } from "../_shared/gemini.ts";
 
 // Checklists direcionados por modalidade + região anatômica
 const CHECKLISTS: Record<string, string> = {
