@@ -289,7 +289,7 @@ export default function PrelaunchLanding() {
               <div className="mt-10 grid grid-cols-3 gap-3 max-w-lg">
                 {[
                   { n: TOTAL_TOOLS.toString(), l: "ferramentas clínicas" },
-                  { n: "1", l: "IA — Dra. Clara" },
+                  { n: "IA", l: "Dra. Clara integrada" },
                   { n: "24/7", l: "pronto para o plantão" },
                 ].map((s) => (
                   <div key={s.l} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
