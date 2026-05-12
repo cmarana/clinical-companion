@@ -17,6 +17,8 @@ import { streamClinicalAi } from "@/lib/clinicalAiStream";
 import { showClinicalAiError } from "@/lib/clinicalAiToast";
 import { toast } from "sonner";
 import ClinicalResponseCards from "@/components/ClinicalResponseCards";
+import { askMedicalRag } from "@/lib/medicalRag";
+import type { RagSourceChunk } from "@/components/ClinicalResponseCards";
 import { motion } from "framer-motion";
 import OfflineBadge from "@/components/OfflineBadge";
 import { AiUsageBadge } from "@/components/AiUsageBadge";
