@@ -41,7 +41,6 @@ export default function WelcomeScreen({ userName, onComplete }: WelcomeScreenPro
   if (!visible) return null;
 
   const firstName = userName?.split(" ")[0] || "Doutor(a)";
-  const logo = theme === "dark" ? pulsoLogoDark : pulsoLogoLight;
 
   return (
     <AnimatePresence>
