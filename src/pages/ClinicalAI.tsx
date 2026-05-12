@@ -1,16 +1,7 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Mic, MicOff, Zap, FileText, Image as ImageIcon, Camera, Upload, X, ScanSearch, ShieldCheck, FileType2, History, Trash2, Eye, FileDown, Download } from "lucide-react";
-import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
-import pulsoLogoLight from "@/assets/pulso-logo-light.png";
-
-/** Logo PULSO que se adapta ao tema (branca no dark, azul no light). */
-const PulsoMark = ({ size = 16, className = "" }: { size?: number; className?: string }) => (
-  <span className={`inline-flex items-center justify-center ${className}`} style={{ width: size, height: size }}>
-    <img src={pulsoLogoLight} alt="" className="block dark:hidden w-full h-full object-contain" />
-    <img src={pulsoLogoDark} alt="" className="hidden dark:block w-full h-full object-contain" />
-  </span>
-);
+import { PulsoLogo } from "@/components/PulsoLogo";
 import { downloadAnonymizedAttachments } from "@/lib/downloadAttachments";
 import { extractPdfText, type ExtractedPdf } from "@/lib/pdfExtract";
 import { useImageAnalysisHistory, makeThumbnail, type ImageAnalysisHistoryEntry } from "@/hooks/useImageAnalysisHistory";
