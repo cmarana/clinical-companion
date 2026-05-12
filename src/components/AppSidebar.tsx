@@ -16,7 +16,7 @@ import { useFavorites } from "@/contexts/FavoritesContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { supabase } from "@/integrations/supabase/client";
-import pulsoLogo from "@/assets/pulso-logo.png";
+import { PulsoLogo } from "@/components/PulsoLogo";
 
 const mainItems = [
   { title: "Início", url: "/", icon: Home },
