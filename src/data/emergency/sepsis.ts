@@ -2,15 +2,6 @@ import type { EmergencyProtocol } from "./types";
 
 export const sepsisProtocols: EmergencyProtocol[] = [
   {
-    // ============================================================
-// PULSO — PATCH DE ATUALIZAÇÃO: SEPSE
-// Fonte: Surviving Sepsis Campaign 2026 (ESICM/SCCM)
-// Publicado: 23 março 2026 · doi:10.1097/CCM.0000000000007075
-// Aplicar em: src/data/emergency/sepsis.ts
-// Instrução: substituir o objeto id="sepse-choque-septico" por este
-// ============================================================
-
-{
   id: "sepse-choque-septico",
   title: "Sepse e Choque Séptico",
   categoryId: "sepsis",

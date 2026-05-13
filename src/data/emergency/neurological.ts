@@ -2,8 +2,6 @@ import type { EmergencyProtocol } from "./types";
 
 export const neurologicalProtocols: EmergencyProtocol[] = [
   {
-    neurological.ts
-  {
     id: "avc-hemorragico",
     title: "AVC Hemorrágico (HIP)",
     categoryId: "neurological",

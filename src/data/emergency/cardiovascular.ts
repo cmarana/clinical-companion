@@ -21,17 +21,6 @@ export const cardiovascularProtocols: EmergencyProtocol[] = [
     ],
   },
   {
-   // ============================================================
-// PULSO — PATCH DE ATUALIZAÇÃO: IAM COM SUPRA (IAMCSST)
-// Fonte: ESC Guidelines for Management of ACS 2023
-//        (Byrne RA et al. Eur Heart J. 2023;44:3720-3826)
-//        Diretriz SBC de SCA 2024
-// NOVIDADE: ESC 2023 unificou STEMI + NSTEMI em 1 documento
-// Aplicar em: src/data/emergency/cardiovascular.ts
-// Instrução: substituir o objeto id="em-iam-supra" por este
-// ============================================================
-
-{
   id: "em-iam-supra",
   title: "IAM com Supradesnivelamento de ST (IAMCSST)",
   categoryId: "cardiovascular",
