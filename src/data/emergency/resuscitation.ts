@@ -2,15 +2,6 @@ import type { EmergencyProtocol } from "./types";
 
 export const resuscitationProtocols: EmergencyProtocol[] = [
   {
-    // ============================================================
-// PULSO — PATCH DE ATUALIZAÇÃO: PCR ADULTO
-// Fonte: AHA Guidelines for CPR and ECC 2025 (outubro/2025)
-// Primeira revisão completa desde 2020.
-// Aplicar em: src/data/emergency/resuscitation.ts
-// Instrução: substituir o objeto id="em-pcr-adulto" por este
-// ============================================================
-
-{
   id: "em-pcr-adulto",
   title: "PCR Adulto",
   categoryId: "resuscitation",
