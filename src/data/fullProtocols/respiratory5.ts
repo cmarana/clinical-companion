@@ -4,7 +4,8 @@ export const respiratoryFullProtocols5: FullProtocol[] = [
   {
   id: "fp-ventilacao-mecanica",
   title: "Ventilação Mecânica Invasiva",
-  specialty: "Emergência / UTI",
+  category: "Emergência / UTI",
+  categoryId: "respiratory",
   tags: ["ventilação mecânica", "vm", "respirador", "parâmetros", "modalidades", "PEEP", "desmame"],
   lastReviewed: "2026-05",
   guidelines: [{ society: "AMIB", year: 2024, title: "Diretrizes AMIB de Ventilação Mecânica 2024", recommendation: "Estratégia protetora pulmonar universal: VT 6 mL/kg PP, Pplat ≤30, ΔP ≤15, PEEP titulada, desmame precoce.", url: "https://www.amib.org.br/" }],
