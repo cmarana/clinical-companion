@@ -599,9 +599,12 @@ export const fullProtocols: FullProtocol[] = [
 // ==================== Aplicar atualizações 2025/2026 ====================
 import { PATCHES_2026, mergeGuidelines } from "./_patches2026";
 import { SECTION_PATCHES_2026 } from "./_sectionPatches2026";
+import { SECTION_PATCHES_2026_B } from "./_sectionPatches2026B";
 
 const patchMap = new Map(PATCHES_2026.map((p) => [p.protocolId, p]));
-const sectionPatchMap = new Map(SECTION_PATCHES_2026.map((p) => [p.protocolId, p]));
+const sectionPatchMap = new Map(
+  [...SECTION_PATCHES_2026, ...SECTION_PATCHES_2026_B].map((p) => [p.protocolId, p])
+);
 
 for (const protocol of fullProtocols) {
   const patch = patchMap.get(protocol.id);
