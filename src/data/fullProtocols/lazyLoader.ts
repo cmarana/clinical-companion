@@ -87,8 +87,8 @@ const categoryLoaders: Record<string, () => Promise<FullProtocol[]>> = {
       a.metabolicFullProtocols, b.metabolicFullProtocols2, c.metabolicFullProtocols3,
       d.metabolicFullProtocols4, e.metabolicFullProtocols5, f.metabolicFullProtocols6,
       g.metabolicFullProtocols7, h.metabolicFullProtocols8, i.metabolicFullProtocols9,
-      j.metabolicFullProtocols10, k.metabolicFullProtocols11, l.metabolicFullProtocols12,
-      m.metabolicFullProtocols13,
+      j.metabolicFullProtocols10, k.metaboFullProtocols11, l.metaboFullProtocols12,
+      m.metaboFullProtocols13,
     ]);
   },
 
