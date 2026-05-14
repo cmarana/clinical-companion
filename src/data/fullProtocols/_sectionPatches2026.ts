@@ -253,7 +253,7 @@ export const SECTION_PATCHES_2026: SectionPatch2026[] = [
 
 1. **Via aérea + ventilação:** SpO₂ 94-98%, PaCO₂ 35-45 mmHg (evitar hipocapnia).
 2. **Hemodinâmica:** PAM ≥65-80 mmHg; noradrenalina + dobutamina conforme função; ECO precoce.
-3. **Controle ativo de temperatura (TTM):** **alvo 32-37,5 °C por ≥24 h, evitando ativamente febre por 72 h** — TTM2 mostrou equivalência entre 33 °C e normotermia controlada. A maioria dos serviços adota **36 °C ou normotermia rigorosa <37,5 °C**.
+3. **🆕 Controle ativo de temperatura — AHA/ERC 2025/2026:** alvo é **NORMOTERMIA RIGOROSA** — manter **T central ≤ 37,5 °C e evitar ATIVAMENTE febre >37,7 °C por pelo menos 72 h** após RCE (TTM2, ILCOR 2024/2025). **A hipotermia induzida agressiva (32-34 °C) NÃO é mais recomendada de rotina** — pode ser considerada apenas em subgrupos selecionados a critério do intensivista. O foco é prevenção de febre com manta/cateter endovascular + sedação.
 4. **Sedação/analgesia + bloqueio neuromuscular** se tremores impedirem controle térmico.
 5. **Glicemia 140-180 mg/dL.**
 6. **EEG contínuo/intermitente** — tratar status epilepticus não convulsivo.
