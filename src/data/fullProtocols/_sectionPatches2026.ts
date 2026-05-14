@@ -227,7 +227,7 @@ export const SECTION_PATCHES_2026: SectionPatch2026[] = [
     protocolId: "fp-pcr-adulto",
     lastReviewed: "2026-03",
     sections: {
-      conduct: `**ACLS 2025 (AHA Focused Update + ERC 2025):**
+      conduct: `**ACLS 2025/2026 (AHA Focused Update Out/2025 + ERC 2025 + ILCOR CoSTR):**
 
 **RCP de alta qualidade — pilar absoluto:**
 - Compressões: 100-120/min, profundidade 5-6 cm, retorno torácico completo, fração ≥80%.
@@ -235,15 +235,19 @@ export const SECTION_PATCHES_2026: SectionPatch2026[] = [
 - Ventilação: 1 a cada 6 s (10/min) com via aérea avançada; 30:2 sem via aérea.
 - **Capnografia (EtCO₂)** obrigatória — alvo >10 mmHg; aumento súbito = RCE.
 
-**Algoritmo:**
-1. **Ritmos chocáveis (FV/TV sem pulso):** desfibrilação imediata (bifásica 200 J ou conforme fabricante) → 2 min RCP → checar ritmo.
-2. **Ritmos não chocáveis (AESP/assistolia):** RCP + adrenalina **assim que possível** (aumenta sobrevida — PARAMEDIC2).
-3. **Adrenalina 1 mg EV/IO a cada 3-5 min** (após 2º choque em FV/TV; imediata em AESP/assistolia).
-4. **Amiodarona 300 mg** EV em bolus após 3º choque → 150 mg após 5º. **Lidocaína 1-1,5 mg/kg** alternativa.
-5. **Via aérea avançada**: dispositivo supraglótico (i-gel, LMA) ou IOT — não atrasar compressões.
-6. **Causas reversíveis (5H + 5T):** hipóxia, hipovolemia, H+ (acidose), hipo/hipercalemia, hipotermia, tensão (pneumotórax), tamponamento, toxinas, trombose (pulmonar/coronária).
+**🆕 Acesso vascular — AHA 2024/2025 (PARAMEDIC-3):** **acesso EV é a 1ª escolha absoluta** na PCR adulta (recomendação fortalecida). **Acesso IO** entra como 2ª linha **se a primeira tentativa EV falhar** ou estiver claramente impraticável — não mais "EV ou IO indistintamente". Sítio IO preferencial: úmero proximal > tíbia proximal.
 
-**RCP extracorpórea (ECPR):** considerar em PCR refratária presenciada, ritmo chocável, <60 min de RCP, candidato selecionado em centro com ECMO (ARREST, EROCA).`,
+**🆕 Desfibrilação em FV/TV refratária — AHA 2025:** a **mudança de vetor** (reposicionamento das pás de antero-lateral para antero-posterior) é **preferível à desfibrilação sequencial dupla (DSD)**. **DSD não é recomendada de rotina** — DOSE-VF mostrou benefício do vector change isolado, e a sobreposição de choques aumenta risco de dano ao desfibrilador e ao paciente sem ganho consistente.
+
+**Algoritmo:**
+1. **Ritmos chocáveis (FV/TV sem pulso):** desfibrilação imediata (bifásica 200 J ou conforme fabricante) → 2 min RCP → checar ritmo. Em refratariedade após 3 choques: **trocar vetor (AP) antes de considerar DSD**.
+2. **Ritmos não chocáveis (AESP/assistolia):** RCP + adrenalina **o mais cedo possível** (PARAMEDIC2) — meta <5 min.
+3. **Adrenalina 1 mg EV (preferencial) ou IO a cada 3-5 min** — após 2º choque em FV/TV; imediata em AESP/assistolia.
+4. **Amiodarona 300 mg** EV em bolus após 3º choque → 150 mg após 5º. **Lidocaína 1-1,5 mg/kg** alternativa.
+5. **Via aérea avançada:** dispositivo supraglótico (i-gel, LMA) ou IOT — não atrasar compressões; AIRWAYS-2 mantém SGA ≥ IOT em pré-hospitalar.
+6. **Causas reversíveis (5H + 5T):** hipóxia, hipovolemia, H⁺ (acidose), hipo/hipercalemia, hipotermia, tensão (pneumotórax), tamponamento, toxinas, trombose (pulmonar/coronária).
+
+**RCP extracorpórea (ECPR):** considerar em PCR refratária presenciada, ritmo chocável, <60 min de RCP, candidato selecionado em centro com ECMO (ARREST, EROCA, ARREST-ECMO 2024).`,
 
       treatment: `**Pós-RCE (cuidado neuroprotetor — ERC/AHA 2025):**
 
