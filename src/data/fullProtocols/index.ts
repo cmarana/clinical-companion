@@ -600,10 +600,11 @@ export const fullProtocols: FullProtocol[] = [
 import { PATCHES_2026, mergeGuidelines } from "./_patches2026";
 import { SECTION_PATCHES_2026 } from "./_sectionPatches2026";
 import { SECTION_PATCHES_2026_B } from "./_sectionPatches2026B";
+import { SECTION_PATCHES_2026_C } from "./_sectionPatches2026C";
 
 const patchMap = new Map(PATCHES_2026.map((p) => [p.protocolId, p]));
 const sectionPatchMap = new Map(
-  [...SECTION_PATCHES_2026, ...SECTION_PATCHES_2026_B].map((p) => [p.protocolId, p])
+  [...SECTION_PATCHES_2026, ...SECTION_PATCHES_2026_B, ...SECTION_PATCHES_2026_C].map((p) => [p.protocolId, p])
 );
 
 for (const protocol of fullProtocols) {
