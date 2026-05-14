@@ -24,34 +24,46 @@ export const SECTION_PATCHES_2026: SectionPatch2026[] = [
     protocolId: "fp-sepse-choque",
     lastReviewed: "2026-03",
     sections: {
-      conduct: `**Bundle de 1 hora (SSC 2024 + ILAS 2025) — iniciar em paralelo:**
+      conduct: `**Bundle de 1 hora (SSC 2026 — publicada 23/mar/2026 + ILAS 2025) — iniciar em paralelo:**
+
+> 🆕 **Atualização SSC 2026:** triagem com **NEWS / NEW2 / MEWS / SIRS** preferencial sobre qSOFA (recomendação forte). Em sepse **provável/definida** (com OU sem choque): ATB em ≤1 h. Em sepse **possível** sem choque: investigação rápida + ATB em ≤3 h se persistir suspeita. Cristaloide **balanceado** sobre SF 0,9% (exceto TCE). Iniciar **noradrenalina em veia periférica** sem aguardar acesso central. PAM alvo **65 mmHg** (60-65 se ≥65 anos).
 
 1. **Lactato sérico** — repetir em 2-4 h se inicial >2 mmol/L. Meta: clareamento ≥10%/h.
 2. **Hemoculturas (2 pares) ANTES do antibiótico** — não atrasar ATB >45 min para colher.
-3. **Antibiótico de amplo espectro EV em ≤1 h** (choque séptico) ou ≤3 h (sepse sem choque). Janela "door-to-antibiotic" auditada.
-4. **Cristaloide balanceado 30 mL/kg em 3 h** se PAS <90, PAM <65 ou lactato ≥4 mmol/L. **Ringer lactato ou Plasma-Lyte preferenciais sobre SF 0,9%** (PLUS, BaSICS, SMART trials).
-5. **Vasopressor precoce — noradrenalina 1ª linha** para PAM ≥65 mmHg. Iniciar em veia periférica calibrosa enquanto se obtém acesso central; não atrasar.
-6. **Reavaliação dinâmica de fluidoresponsividade** (elevação passiva de pernas, ΔPP, VTI aórtico, POCUS pulmonar/cardíaco) — evitar sobrecarga hídrica.
+3. **Antibiótico de amplo espectro EV em ≤1 h** (sepse provável/definida) — janela "door-to-antibiotic" auditada.
+4. **Cristaloide balanceado 30 mL/kg em 3 h** (Ringer lactato/Plasma-Lyte preferenciais — PLUS, BaSICS, SMART).
+5. **Noradrenalina precoce em veia periférica** para PAM ≥65 mmHg, sem aguardar acesso central.
+6. **Reavaliação dinâmica de fluidoresponsividade** (elevação passiva de pernas, ΔPP, VTI aórtico, POCUS) — evitar sobrecarga.
 
-**Foco infeccioso — controle em ≤6-12 h:** drenagem de abscessos, retirada de cateteres infectados, desbridamento cirúrgico (fasciite), CPRE em colangite.`,
+**Foco infeccioso — controle em ≤6 h (SSC 2026):** drenagem de abscessos, retirada de cateteres infectados, desbridamento cirúrgico (fasciite), CPRE em colangite.`,
 
       treatment: `**Antibioticoterapia empírica (ajustar por foco e ecologia local):**
 - Foco indeterminado / nosocomial: piperacilina-tazobactam 4,5 g 6/6 h **OU** meropeném 1 g 8/8 h.
 - Suspeita de MRSA (cateter, pele/partes moles, ICS): adicionar vancomicina (alvo vale 15-20 mg/L) ou linezolida 600 mg 12/12 h.
 - Choque séptico de origem comunitária pulmonar grave: ceftriaxona 2 g + azitromicina 500 mg.
+- 🆕 **SSC 2026 (forte):** **infusão prolongada de β-lactâmico** após dose de ataque (vs bólus) — reduz mortalidade.
 - Descalonar em 48-72 h conforme cultura/PCR multiplex; duração 7-10 dias na maioria.
 
-**Suporte hemodinâmico:**
-- Noradrenalina 0,05-1 mcg/kg/min titulada para PAM ≥65 (alvo individualizado: 80-85 em hipertensos crônicos — SEPSISPAM).
-- **Vasopressina 0,03 U/min fixa** como 2ª linha quando NA >0,25-0,5 mcg/kg/min (poupador de catecolamina, VANISH/VASST).
-- **Adrenalina** ou angiotensina II como 3ª linha em choque refratário.
-- **Hidrocortisona 200 mg/dia EV** (50 mg 6/6 h ou infusão contínua) em choque refratário ao vasopressor (ADRENAL, APROCCHSS).
+**Suporte hemodinâmico (SSC 2026):**
+- Noradrenalina 0,05-1 mcg/kg/min titulada para PAM ≥65 (60-65 se ≥65 anos; 80-85 em hipertensos crônicos — SEPSISPAM).
+- **Vasopressina 0,03 U/min fixa** quando NA escala (>0,25-0,5 mcg/kg/min) — VANISH/VASST.
+- **Adrenalina** como 3ª linha; angiotensina II em refratário.
+- **Hidrocortisona 200 mg/dia EV** em choque refratário ao vasopressor (ADRENAL, APROCCHSS).
+- 🆕 **Contra (SSC 2026):** terlipressina, beta-bloqueadores em choque, levosimendana.
 
-**Ventilação:** se SDRA → VT 6 mL/kg peso predito, Pplatô ≤30, PEEP titulada, prona ≥16 h se PaO₂/FiO₂ <150.
+**Ventilação (SSC 2026):**
+- IRpA hipoxêmica não intubada → **HFNC preferencial sobre VNI**; **awake proning** sugerido.
+- SDRA → VT 6 mL/kg, Pplatô ≤30, PEEP titulada (mais alta em moderada-grave), prona >12 h se PaO₂/FiO₂ <150, NMBA em bólus intermitente (não infusão contínua), ECMO V-V em centros experientes.
 
-**Não recomendado de rotina (SSC 2024):** vitamina C em altas doses, tiamina, IgIV, hemoperfusão, bicarbonato (exceto pH <7,2 + IRA).
+**🆕 Outras atualizações SSC 2026:**
+- **Transfusão restritiva** (Hb alvo 7 g/dL).
+- **Insulina** se glicemia ≥180 mg/dL (alvo 140-180).
+- **LMWH > HNF** para profilaxia TEV (forte).
+- **Remoção ativa de fluidos** após fase de ressuscitação (diuréticos; ultrafiltração se refratário).
+- **Nutrição enteral precoce** (≤72 h).
+- **Goals of care** discutidos em ≤72 h.
 
-**Glicemia:** alvo 140-180 mg/dL com insulina contínua se >180.`,
+**Não recomendado (SSC 2026):** vitamina C, vitamina D, IgIV, hemoperfusão, polimixina B, plasmaférese, antipiréticos rotineiros, probióticos, bicarbonato (exceto pH ≤7,2 + IRA AKIN 2-3).`,
 
       prescriptions: `\`\`\`
 1. Ringer lactato 1.000 mL EV em 30 min — repetir até 30 mL/kg em 3 h, reavaliando responsividade.
@@ -151,41 +163,48 @@ export const SECTION_PATCHES_2026: SectionPatch2026[] = [
 - **NIHSS** (gravidade, indicação de trombectomia se ≥6 com OGV).
 - **ASPECTS** ≥6 favorece trombectomia (até ≤3 em casos selecionados — SELECT2, RESCUE-Japan LIMIT).`,
 
-      conduct: `**Janelas terapêuticas (atualização 2024-2025):**
+      conduct: `**Janelas terapêuticas (AHA/ASA 2026 — publicada mar/2026):**
+
+> 🆕 **Atualização AHA/ASA 2026:** triagem pré-hospitalar de OGV com **VAN, NIHSS≥6 ou RACE≥5** (Classe 1 / LOE A) → transporte direto a centro de trombectomia. **Mobile Stroke Units** (CT + tele em ambulância) ↑30-40% reperfusão. Metas: porta-TC ≤25 min, **DTN <60 min**, **DTP <90 min**, **DIDO ≤90 min** (door-in/door-out em transferência).
 
 | Tratamento | Janela | Critério |
 |---|---|---|
 | Trombólise IV (alteplase 0,9 mg/kg) | ≤4,5 h | Sem hemorragia, PA ≤185×110 |
-| Trombólise IV (tenecteplase 0,25 mg/kg) | ≤4,5 h | Alternativa preferencial (AcT, NOR-TEST 2) |
-| Trombectomia mecânica | ≤24 h | OGV (ACI, M1, basilar) + perfil favorável |
-| Trombectomia em ASPECTS baixo | ≤24 h | SELECT2/ANGEL-ASPECT — core grande aceito |
+| Trombólise IV (tenecteplase 0,25 mg/kg) | ≤4,5 h | **Equivalente/preferencial** (AcT, NOR-TEST 2, AHA/ASA 2026) |
+| Trombectomia mecânica — OGV anterior | ≤24 h | NIHSS≥6, mRS pré 0-1, ASPECTS≥6 (DAWN/DEFUSE-3) |
+| Trombectomia em **ASPECTS 3-5** | ≤24 h | SELECT2, ANGEL-ASPECT (Classe 1) |
+| Trombectomia em **ASPECTS 0-2** | ≤24 h | LASTE — COR 2a, seleção rigorosa |
+| Trombectomia em **basilar** | ≤24 h | NIHSS≥10 + PC-ASPECTS≥6 (ATTENTION/BAOCHE) |
+| 🆕 Trombectomia **pediátrica** | ≤6-24 h | ≥6 anos + PedNIHSS≥6 (COR 2a — Save ChildS Pro) |
 
-**Controle de PA:**
-- Antes de trombólise: PAS <185 e PAD <110 (labetalol 10-20 mg EV; nitroprussiato se refratária).
-- Pós-trombólise/trombectomia: PAS <180 por 24 h.
-- Sem reperfusão: tolerar até 220×120 (queda gradual de 15% em 24 h).
+**Controle de PA (AHA/ASA 2026):**
+- Antes de reperfusão: PAS <185 e PAD <110 (labetalol 10-20 mg EV; nicardipino 5-15 mg/h).
+- Pós-trombólise/trombectomia: <180/105 por 24 h (sICH 3-7%).
+- Sem reperfusão: tolerar até 220×120 (queda gradual ≤15% em 24 h).
 
-**Outras medidas:**
-- Glicemia 140-180 mg/dL.
-- Temperatura <37,5 °C (paracetamol).
-- Cabeceira a 0° antes da reperfusão; 30° após.
-- Disfagia rastreada antes de qualquer VO.
-- Profilaxia TEV com compressão pneumática + enoxaparina após 24 h da trombólise.`,
+**🆕 Outras medidas (AHA/ASA 2026):**
+- **Disfagia rastreada em ≤4 h** da admissão (NPO até liberação) → ↓50-70% pneumonia aspirativa. Estimulação faríngea elétrica (PES) em disfagia grave.
+- Glicemia 140-180 mg/dL; temperatura <37,5 °C.
+- Cabeceira a 0° pré-reperfusão; 30° após.
+- **Profilaxia TEV: compressão pneumática intermitente (IPC) 1ª linha** (CLOTS3); **NÃO usar meias elásticas** (úlceras de pele); LMWH após 24 h.
+- **Mobilização interdisciplinar nos primeiros 3 dias, mas evitar mobilização agressiva nas primeiras 24 h** (AVERT — ↑mortalidade).
+- Triagem nutricional em 24 h; SNG precoce se disfagia (preferencial sobre PEG na fase aguda).`,
 
       treatment: `**Trombólise IV — alteplase 0,9 mg/kg (máx 90 mg):** 10% bolus em 1 min + 90% em 60 min.
-**Trombólise IV — tenecteplase 0,25 mg/kg (máx 25 mg)** EV bolus único — preferencial em centros que adotaram (não fraciona dose, facilita transferência).
+**🆕 Tenecteplase 0,25 mg/kg (máx 25 mg) bolus único — preferencial pela AHA/ASA 2026** em centros que adotaram (não fraciona dose, facilita transferência inter-hospitalar).
 
 **Contraindicações absolutas (resumo):** hemorragia ativa, AVCh prévio em qualquer tempo, AVCi <3 meses, neoplasia/MAV intracraniana com risco hemorrágico, cirurgia/trauma cranioencefálico maior <3 meses, dissecção aórtica, plaquetas <100 mil, INR >1,7, uso de DOAC <48 h.
 
-**Trombectomia mecânica:** stent retriever ± aspiração (técnica combinada). Anestesia geral vs sedação consciente — escolha conforme estabilidade.
+**Trombectomia mecânica:** stent retriever ± aspiração (técnica combinada — COMPASS/ASTER equivalentes; aspiração preferencial em anatomia tortuosa). Anestesia geral vs sedação consciente — equivalentes (AMETIS/DIRECT-MT). 🆕 **Não usar tirofiban pré-EVT** (RESCUE-BT — ↑sICH).
 
-**Após reperfusão:**
+**Após reperfusão (AHA/ASA 2026):**
 - Antiagregação simples (AAS 100-300 mg) iniciada 24 h pós-trombólise.
-- Em AVC menor (NIHSS ≤3) ou AIT alto risco: **DAPT por 21 dias** (AAS + clopidogrel 75 mg, com ataque 300 mg) — CHANCE/POINT.
-- Estatina alta intensidade.
-- Investigar etiologia: ECG/Holter, ECO TT/TE, Doppler de carótidas/transcraniano.
+- 🆕 **AVCi menor (NIHSS 0-5) ou AIT alto risco: DAPT (AAS + clopidogrel 75 mg, ataque 300 mg) por 21-90 dias** (CHANCE/POINT/THALES). Em **maus metabolizadores CYP2C19**: ticagrelor.
+- 🆕 **FA + AVCi (regra ELAN, não mais 1-3-6-12):** iniciar **DOAC em 24-48 h em AVCi leve/moderado**; aguardar mais em AVCi grande.
+- Estatina alta intensidade (atorvastatina 80 mg).
+- Investigar etiologia: ECG/Holter prolongado, ECO TT/TE, Doppler de carótidas/transcraniano.
 
-**FA + AVCi:** anticoagulação (DOAC) iniciada conforme regra 1-3-6-12 dias (AIT-AVC pequeno-moderado-grande).`,
+**🆕 Não recomendado (AHA/ASA 2026):** hemodiluição, vasodilatadores, neuroprotetores, endarterectomia carotídea de urgência <48 h, anticonvulsivantes profiláticos, antipiréticos só por outcome.`,
 
       prescriptions: `\`\`\`
 1. Alteplase 0,9 mg/kg EV (máx 90 mg) — 10% em bolus em 1 min + 90% em infusão de 60 min, se janela ≤4,5 h e sem contraindicações.
