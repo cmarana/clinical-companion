@@ -103,8 +103,18 @@ export const PATCHES_2026: ProtocolPatch2026[] = [
   // ==================== NEUROLOGIA ====================
   {
     protocolId: "fp-avc-isquemico",
-    lastReviewed: "2026-01",
+    lastReviewed: "2026-03",
     guidelines: [
+      {
+        society: "AHA/ASA",
+        title: "2026 Guideline for the Early Management of Patients With Acute Ischemic Stroke",
+        year: 2026,
+        recommendation:
+          "Substitui a diretriz de 2018 e a atualização de 2019. Triagem pré-hospitalar de OGV com VAN, NIHSS≥6 ou RACE≥5 (Classe 1 / LOE A). Tenecteplase 0,25 mg/kg considerada equivalente/preferencial à alteplase em centros que adotaram. Unidades móveis de AVC (mobile stroke units) ↑30-40% reperfusão. Metas: porta-TC ≤25 min, DTN <60 min, DTP <90 min, DIDO ≤90 min. Trombectomia até 24 h em OGV com perfil favorável; expandida para ASPECTS 3-5 (SELECT2, ANGEL-ASPECT) e até 0-2 em casos selecionados (LASTE, COR 2a). Oclusão de basilar: trombectomia até 24 h se NIHSS≥10 e PC-ASPECTS≥6 (ATTENTION/BAOCHE). PA <185/110 pré-reperfusão; <180/105 por 24 h pós. DAPT (AAS+clopidogrel 21-90 d) em AVCi menor (NIHSS 0-5)/AIT alto risco — CHANCE/POINT/THALES; ticagrelor em maus metabolizadores CYP2C19. DOAC em FA: 24-48 h pós-AVCi leve/moderado (ELAN). Disfagia: rastreio em ≤4 h. Mobilização ≥24 h pós-início (evitar muito precoce — AVERT). IPC 1ª linha p/ TEV; meias elásticas NÃO recomendadas. PRIMEIRA orientação pediátrica: trombectomia em ≥6 anos com PedNIHSS≥6 (COR 2a) — Save ChildS Pro registry.",
+        url: "https://www.ahajournals.org/doi/10.1161/STR.0000000000000513",
+        class: "I",
+        level: "A",
+      },
       {
         society: "AHA/ASA",
         title: "2024 AHA/ASA Guideline for the Early Management of Patients With Acute Ischemic Stroke",
