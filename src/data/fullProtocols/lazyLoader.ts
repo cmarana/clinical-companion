@@ -376,7 +376,12 @@ export async function getFullProtocolAsync(id: string): Promise<FullProtocol | u
   if (!meta) return undefined;
 
   const protocols = await loadCategoryProtocols(meta.categoryId);
-  return protocols.find(p => p.id === id);
+  const found = protocols.find(p => p.id === id);
+  if (found) return found;
+
+  // Fallback: search in newProtocols2026 (cross-category new protocols)
+  const { newProtocols2026 } = await import("./_newProtocols2026");
+  return newProtocols2026.find(p => p.id === id);
 }
 
 /** Load ALL protocols (for search — loads everything) */
