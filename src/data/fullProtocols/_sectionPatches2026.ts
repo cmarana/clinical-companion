@@ -227,7 +227,7 @@ export const SECTION_PATCHES_2026: SectionPatch2026[] = [
     protocolId: "fp-pcr-adulto",
     lastReviewed: "2026-03",
     sections: {
-      conduct: `**ACLS 2025 (AHA Focused Update + ERC 2025):**
+      conduct: `**ACLS 2025/2026 (AHA Focused Update Out/2025 + ERC 2025 + ILCOR CoSTR):**
 
 **RCP de alta qualidade — pilar absoluto:**
 - Compressões: 100-120/min, profundidade 5-6 cm, retorno torácico completo, fração ≥80%.
@@ -235,21 +235,25 @@ export const SECTION_PATCHES_2026: SectionPatch2026[] = [
 - Ventilação: 1 a cada 6 s (10/min) com via aérea avançada; 30:2 sem via aérea.
 - **Capnografia (EtCO₂)** obrigatória — alvo >10 mmHg; aumento súbito = RCE.
 
-**Algoritmo:**
-1. **Ritmos chocáveis (FV/TV sem pulso):** desfibrilação imediata (bifásica 200 J ou conforme fabricante) → 2 min RCP → checar ritmo.
-2. **Ritmos não chocáveis (AESP/assistolia):** RCP + adrenalina **assim que possível** (aumenta sobrevida — PARAMEDIC2).
-3. **Adrenalina 1 mg EV/IO a cada 3-5 min** (após 2º choque em FV/TV; imediata em AESP/assistolia).
-4. **Amiodarona 300 mg** EV em bolus após 3º choque → 150 mg após 5º. **Lidocaína 1-1,5 mg/kg** alternativa.
-5. **Via aérea avançada**: dispositivo supraglótico (i-gel, LMA) ou IOT — não atrasar compressões.
-6. **Causas reversíveis (5H + 5T):** hipóxia, hipovolemia, H+ (acidose), hipo/hipercalemia, hipotermia, tensão (pneumotórax), tamponamento, toxinas, trombose (pulmonar/coronária).
+**🆕 Acesso vascular — AHA 2024/2025 (PARAMEDIC-3):** **acesso EV é a 1ª escolha absoluta** na PCR adulta (recomendação fortalecida). **Acesso IO** entra como 2ª linha **se a primeira tentativa EV falhar** ou estiver claramente impraticável — não mais "EV ou IO indistintamente". Sítio IO preferencial: úmero proximal > tíbia proximal.
 
-**RCP extracorpórea (ECPR):** considerar em PCR refratária presenciada, ritmo chocável, <60 min de RCP, candidato selecionado em centro com ECMO (ARREST, EROCA).`,
+**🆕 Desfibrilação em FV/TV refratária — AHA 2025:** a **mudança de vetor** (reposicionamento das pás de antero-lateral para antero-posterior) é **preferível à desfibrilação sequencial dupla (DSD)**. **DSD não é recomendada de rotina** — DOSE-VF mostrou benefício do vector change isolado, e a sobreposição de choques aumenta risco de dano ao desfibrilador e ao paciente sem ganho consistente.
+
+**Algoritmo:**
+1. **Ritmos chocáveis (FV/TV sem pulso):** desfibrilação imediata (bifásica 200 J ou conforme fabricante) → 2 min RCP → checar ritmo. Em refratariedade após 3 choques: **trocar vetor (AP) antes de considerar DSD**.
+2. **Ritmos não chocáveis (AESP/assistolia):** RCP + adrenalina **o mais cedo possível** (PARAMEDIC2) — meta <5 min.
+3. **Adrenalina 1 mg EV (preferencial) ou IO a cada 3-5 min** — após 2º choque em FV/TV; imediata em AESP/assistolia.
+4. **Amiodarona 300 mg** EV em bolus após 3º choque → 150 mg após 5º. **Lidocaína 1-1,5 mg/kg** alternativa.
+5. **Via aérea avançada:** dispositivo supraglótico (i-gel, LMA) ou IOT — não atrasar compressões; AIRWAYS-2 mantém SGA ≥ IOT em pré-hospitalar.
+6. **Causas reversíveis (5H + 5T):** hipóxia, hipovolemia, H⁺ (acidose), hipo/hipercalemia, hipotermia, tensão (pneumotórax), tamponamento, toxinas, trombose (pulmonar/coronária).
+
+**RCP extracorpórea (ECPR):** considerar em PCR refratária presenciada, ritmo chocável, <60 min de RCP, candidato selecionado em centro com ECMO (ARREST, EROCA, ARREST-ECMO 2024).`,
 
       treatment: `**Pós-RCE (cuidado neuroprotetor — ERC/AHA 2025):**
 
 1. **Via aérea + ventilação:** SpO₂ 94-98%, PaCO₂ 35-45 mmHg (evitar hipocapnia).
 2. **Hemodinâmica:** PAM ≥65-80 mmHg; noradrenalina + dobutamina conforme função; ECO precoce.
-3. **Controle ativo de temperatura (TTM):** **alvo 32-37,5 °C por ≥24 h, evitando ativamente febre por 72 h** — TTM2 mostrou equivalência entre 33 °C e normotermia controlada. A maioria dos serviços adota **36 °C ou normotermia rigorosa <37,5 °C**.
+3. **🆕 Controle ativo de temperatura — AHA/ERC 2025/2026:** alvo é **NORMOTERMIA RIGOROSA** — manter **T central ≤ 37,5 °C e evitar ATIVAMENTE febre >37,7 °C por pelo menos 72 h** após RCE (TTM2, ILCOR 2024/2025). **A hipotermia induzida agressiva (32-34 °C) NÃO é mais recomendada de rotina** — pode ser considerada apenas em subgrupos selecionados a critério do intensivista. O foco é prevenção de febre com manta/cateter endovascular + sedação.
 4. **Sedação/analgesia + bloqueio neuromuscular** se tremores impedirem controle térmico.
 5. **Glicemia 140-180 mg/dL.**
 6. **EEG contínuo/intermitente** — tratar status epilepticus não convulsivo.
@@ -698,6 +702,919 @@ PÓS-PARTO (manter por 24 h):
 13. Manter MgSO₄ 1 g/h EV em BIC.
 14. Anti-hipertensivo de manutenção VO: nifedipino retard 20 mg 12/12 h ou metildopa 250-500 mg 8/8 h.
 15. Vigilância clínica 1/1 h nas primeiras 12 h: PA, FC, FR, reflexo patelar, diurese, nível de consciência.
+\`\`\``,
+    },
+  },
+
+  // ==================== 11. DM2 — EMERGÊNCIA / AMBULATORIAL (PCDT 2026) ====================
+  {
+    protocolId: "fp-m7-diabetes-tipo2-emergencia",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**🆕 PCDT DM2 2026 (CONITEC/MS) + ADA Standards of Care 2026 + SBD 2025-2026:**
+
+**Estratificação inicial (todo paciente DM2 na emergência/UBS):**
+1. Avaliar **risco cardiorrenal**: idade, DCV estabelecida (IAM, AVC, DAC), IC (EF preservada ou reduzida), DRC (TFG, albuminúria).
+2. **HbA1c, glicemia, TFG, RAC urinário, perfil lipídico, ECG.**
+3. Sinais de descompensação aguda → triar para CAD/EHH (ver protocolos específicos).
+
+**🆕 Fluxograma terapêutico DM2 no SUS — PCDT 2026:**
+- **1ª linha (todos):** **metformina** (titular até 2 g/dia, suspender se TFG <30).
+- **🆕 Adicionar precocemente (não esperar falha da metformina) se:**
+  - **DCV estabelecida, DRC (TFG 20-60 e/ou RAC ≥30), IC (HFrEF ou HFpEF), ou idade ≥65 com risco CV alto** → **iSGLT2 (dapagliflozina 10 mg/dia)** — agora **incorporada ao SUS para >65 a com DCV/DRC** (CONITEC 2025/2026). Empagliflozina como alternativa.
+  - **Obesidade (IMC ≥30) + DCV/IC/DRC** → **AR-GLP1 (semaglutida ou liraglutida)** — incorporados ao SUS conforme PCDT 2026 para subgrupos selecionados.
+- **🆕 IC com fração de ejeção preservada (HFpEF) + obesidade:** AR-GLP1 (semaglutida) com benefício cardiovascular e funcional demonstrado (STEP-HFpEF, SELECT, FLOW 2024-2025).
+- **Insulinoterapia:** **análogos de ação rápida (lispro, asparte, glulisina) e prolongada (glargina, degludeca)** agora **integrados ao PCDT nacional** — não exigir mais NPH/regular como pré-requisito em todos os casos.
+- Sulfonilureia (gliclazida MR) e pioglitazona como 3ª/4ª linha; evitar em IC e idosos frágeis.
+
+**Metas glicêmicas individualizadas:**
+- HbA1c <7% adulto saudável; <7,5-8% idoso frágil; <6,5% gestante/pré-concepção.
+- Glicemia capilar pré-prandial 80-130; pós-prandial <180.
+
+**Rastreios obrigatórios anuais:** retinografia, monofilamento + diapasão (pé diabético), RAC urinário, TFG, perfil lipídico, ECG.`,
+
+      treatment: `**🆕 Algoritmo prático PCDT 2026:**
+
+| Cenário | Conduta |
+|---|---|
+| DM2 recém-diagnosticado, sem comorbidades | Metformina + MEV |
+| DM2 + DCV estabelecida | Metformina + **iSGLT2 (dapa/empa)** OU **AR-GLP1** |
+| DM2 + IC (HFrEF ou **HFpEF**) | Metformina + **iSGLT2** (1ª escolha — DAPA-HF, EMPEROR, DELIVER) |
+| DM2 + DRC (TFG 20-60, RAC ≥30) | Metformina + **iSGLT2 (dapa)** ± finerenona (CKD + albuminúria) |
+| DM2 + obesidade + HFpEF | **AR-GLP1 (semaglutida 2,4 mg)** + iSGLT2 (STEP-HFpEF) |
+| DM2 ≥65 a com risco CV/renal | **🆕 Dapagliflozina padrão SUS (PCDT 2026)** |
+| HbA1c >9% sintomático | Insulinização precoce (basal + bolus, análogos liberados pelo SUS) |
+
+**🆕 Outros pilares 2026:**
+- **Estatina alta intensidade** se DCV ou risco ≥7,5%/10a (atorvastatina 40-80 ou rosuvastatina 20-40).
+- **iECA/BRA** se HAS ou RAC ≥30.
+- **AAS 100 mg** apenas em prevenção secundária.
+- **Finerenona** (PCDT em revisão) se DRC + albuminúria persistente apesar de iECA/BRA + iSGLT2.
+- **Tirzepatida** (agonista duplo GIP/GLP-1) — não SUS, mencionar como opção privada em obesidade refratária.
+
+**Não recomendado de rotina:** glibenclamida em idosos (hipoglicemia), pioglitazona em IC, DPP-4 em IC (saxagliptina).`,
+
+      prescriptions: `\`\`\`
+DM2 ESTÁVEL — INÍCIO/AJUSTE (PCDT 2026):
+1. Metformina 500 mg VO 12/12 h após refeições — titular até 1 g 12/12 h em 2-4 sem (suspender se TFG <30).
+2. Dapagliflozina 10 mg VO 1×/dia — se DCV, DRC (TFG ≥20), IC (qualquer FE) ou ≥65 a com risco CV alto. ATENÇÃO: orientar hidratação, suspender em jejum prolongado/cirurgia (risco de CAD euglicêmica).
+3. Semaglutida 0,25 mg SC 1×/sem por 4 sem → 0,5 mg/sem → 1 mg/sem (se obesidade + DCV/HFpEF).
+   - ALTERNATIVA: liraglutida 0,6 mg SC 1×/dia, titular até 1,8 mg/dia.
+4. Atorvastatina 40 mg VO à noite (alta intensidade).
+5. Losartana 50 mg VO 1×/dia se HAS ou RAC ≥30 (titular a 100 mg).
+6. AAS 100 mg VO 1×/dia APENAS em prevenção secundária.
+
+DM2 + HBA1C >9% OU SINTOMÁTICO — INSULINIZAÇÃO (análogos liberados SUS):
+7. Insulina glargina 100 U/mL: iniciar 0,2 U/kg SC à noite — titular +2 U a cada 3 dias até glicemia jejum 80-130.
+8. Insulina lispro/asparte SC 4 U pré-refeição se pós-prandial >180 — titular conforme contagem de carboidrato.
+9. Glicemia capilar 4×/dia (jejum + pré-refeições) por 1 sem após cada ajuste.
+
+CONTROLE/RASTREIO ANUAL:
+10. HbA1c 3/3 m, perfil lipídico 6/6 m, TFG + RAC 6/6 m, retinografia anual, exame dos pés a cada consulta.
+\`\`\``,
+    },
+  },
+
+  // ==================== 12. CHIKUNGUNYA (Brasil 2026) ====================
+  {
+    protocolId: "fp-i7-chikungunya",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**🆕 Nota Técnica MS/SVSA 2025-2026 + SBI 2026:**
+
+**Definição de caso:** febre súbita >38,5 °C + **poliartralgia intensa (geralmente simétrica, mãos/pés/punhos)** + área com circulação viral (todo Brasil considerado endêmico em 2025-2026, com surtos no NE, SE e CO).
+
+**Classificação clínica:**
+1. **Aguda (0-14 d):** febre + artralgia + exantema maculopapular (40-50%) + cefaleia.
+2. **Subaguda (15 d-3 m):** persistência ou recidiva de poliartrite.
+3. **Crônica (>3 m):** poliartrite simétrica, tenossinovite, fadiga — pode durar meses/anos.
+
+**Sinais de gravidade (internar):** cardite, encefalite, mielite, hepatite fulminante, insuf. renal, sangramento, gestante 3º trim, RN de mãe virêmica, idoso frágil, descompensação de comorbidade, sepse bacteriana secundária.
+
+**Diagnóstico:**
+- **0-7 d sintomas:** RT-PCR (preferencial) OU NS1 não disponível para CHIKV → **antígeno/PCR**.
+- **>5-8 d:** IgM (ELISA) — pode persistir até 3-6 meses.
+- **Conv. IgG** confirma exposição.
+- **Diferenciar de dengue e zika** (sempre testar os 3 em área de cocirculação).
+
+**🆕 Vacina IXCHIQ (live-attenuated, dose única) — incorporada ao PNI 2025/2026:**
+- **Indicação:** adultos **18-59 anos** em áreas de surto/alta transmissão, viajantes para áreas endêmicas, profissionais de saúde de áreas afetadas.
+- **🆕 CONTRAINDICAÇÕES (excluir antes de aplicar):**
+  - **Imunossupressão** (HIV com CD4 <200, quimio, biológicos, corticoide alto, transplantados).
+  - **Gestantes e lactantes.**
+  - **<18 anos e ≥60 anos** (dados limitados; alerta de eventos graves em idosos — FDA/EMA/Anvisa 2024-2025).
+  - Hipersensibilidade prévia.
+- **Eventos adversos:** febre, mialgia, artralgia leve por 3-5 d; raros eventos graves neuro/cardíacos em ≥60 a.
+
+**Notificação compulsória imediata** (SINAN) em até 24 h.`,
+
+      treatment: `**Sintomático (não há antiviral específico):**
+- **Hidratação oral abundante** (60 mL/kg/dia adulto).
+- **Analgesia ESCALONADA:**
+  - Fase aguda: **paracetamol** ou **dipirona** (NÃO usar AINE/AAS nos primeiros 14 dias até excluir dengue — risco hemorrágico).
+  - Após excluir dengue (NS1 negativo + plaquetas estáveis): **ibuprofeno/naproxeno** se dor refratária.
+  - Crônica: AINE ciclo curto + **fisioterapia precoce** + corticoide curto (prednisona 0,5 mg/kg 5-7 d) em poliartrite intensa.
+  - Refratária >3 m: avaliar **hidroxicloroquina, metotrexato, sulfassalazina** com reumatologia (DMARDs, conforme protocolo SBR).
+- **Repouso articular relativo + crioterapia** nas articulações mais afetadas.
+- Educação: sintomas crônicos comuns; retorno em 14 d.
+
+**Gestantes:** paracetamol exclusivo; vigiar transmissão vertical perinatal (febre periparto = altíssimo risco neonatal — encaminhar UTI neo).
+**Crianças:** paracetamol/dipirona; hidratação; alerta para encefalite.
+
+**🆕 Não recomendado:** ivermectina, cloroquina como antiviral, opioides de rotina, corticoide na fase aguda febril.`,
+
+      prescriptions: `\`\`\`
+ADULTO — FASE AGUDA AMBULATORIAL:
+1. Dipirona 500 mg-1 g VO 6/6 h se dor/febre.
+2. Paracetamol 750 mg VO 6/6 h (alternativa, máx 3 g/dia).
+3. Soro de reidratação oral (envelope) — 1 envelope em 1 L de água, livre demanda + 60 mL/kg/dia.
+4. Repouso relativo, compressas frias nas articulações, elevação dos membros.
+5. NÃO USAR AAS, ibuprofeno, naproxeno, diclofenaco nas primeiras 2 semanas (até excluir dengue concomitante).
+6. Solicitar: hemograma, plaquetas, RT-PCR CHIKV (se ≤7 d), IgM CHIKV (se >5 d), NS1 dengue, sorologias dengue/zika.
+7. Notificação SINAN em 24 h.
+8. Retorno em 48 h e em 14 d (avaliar fase subaguda).
+
+FASE SUBAGUDA/CRÔNICA (após excluir dengue):
+9. Ibuprofeno 600 mg VO 8/8 h por 7-10 d OU naproxeno 500 mg 12/12 h.
+10. Prednisona 0,5 mg/kg/dia VO 5-7 d em poliartrite incapacitante (após excluir infecção bacteriana ativa).
+11. Encaminhar fisioterapia + reumatologia se persistência >6 sem.
+
+VACINAÇÃO IXCHIQ (PNI 2025-2026):
+12. Aplicar 0,5 mL SC dose única em adultos 18-59 a sem contraindicação. Observar 30 min pós-aplicação.
+13. CONTRAINDICAR em: gestantes, lactantes, <18 a, ≥60 a, imunossuprimidos.
+\`\`\``,
+    },
+  },
+
+  // ==================== 13. DENGUE GRAVE (Brasil 2026) ====================
+  {
+    protocolId: "fp-new-dengue-grave",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**🆕 Diretrizes MS/SVSA 2025-2026 + OPAS 2025 + SBI:**
+
+**Estadiamento (OMS/MS):**
+- **Grupo A:** sem sinais de alarme, sem comorbidade, sem risco social — manejo domiciliar.
+- **Grupo B:** sem sinais de alarme COM comorbidade/risco (gestante, <2 a, **≥65 a — grupo de maior risco em 2025/2026**, comorbidades, risco social) — observação + hidratação supervisionada.
+- **Grupo C:** **sinais de alarme** (dor abdominal intensa, vômitos persistentes, hepatomegalia >2 cm, sangramento mucoso, letargia/irritabilidade, hipotensão postural, ↑Hct + queda plaquetas) — **internação + hidratação parenteral imediata**.
+- **Grupo D:** **dengue grave** — choque, sangramento grave, disfunção orgânica (hepatite, miocardite, encefalite) — **UTI**.
+
+**🆕 Estratificação de risco precoce — FOCO 2026:**
+- **Idosos ≥65 a são o grupo com MAIOR letalidade** atual no Brasil — limiar baixo para internar; sinais clássicos podem estar atenuados (sem febre alta, sem dor articular típica); **monitorar pressão postural, perfusão, lactato e Hct mesmo sem sinais de alarme exuberantes**.
+- Solicitar **NS1 (D1-D5), PCR DENV-1/2/3/4 (D1-D7), IgM (≥D6)**, sorotipagem em surto.
+
+**🆕 Calculadora de hidratação por peso e fase (PCDT 2025/2026):**
+
+**Grupo A (oral):** 60 mL/kg/dia adulto; 1/3 SRO + 2/3 líquidos caseiros. Crianças: 1º hora 5 mL/kg + manutenção Holliday-Segar.
+
+**Grupo B (oral supervisionada + observação):** mesma dose oral; reavaliar em 4 h com Hct e plaquetas.
+
+**Grupo C — EXPANSÃO PARENTERAL:**
+- **Adulto:** SF 0,9% ou Ringer lactato **10 mL/kg na 1ª hora** → reavaliar.
+  - Melhora (Hct ↓, diurese ≥1 mL/kg/h, PA estável): manter **25 mL/kg em 6-8 h** → **25 mL/kg em 8-12 h** → suspender em 24-48 h.
+  - Sem melhora: repetir 10 mL/kg em 1 h até 3 vezes (máx 30 mL/kg na fase de expansão); se persistir → Grupo D.
+- **Criança:** 20 mL/kg em 2 h → reavaliar.
+
+**Grupo D — CHOQUE:**
+- **Cristaloide 20 mL/kg em 15-30 min** (até 3 bolus); se refratário, **noradrenalina precoce** + considerar coloide (albumina) e transferir UTI.
+- Não retardar drogas vasoativas aguardando resposta a fluidos > 30 mL/kg.
+- **Transfundir concentrado de hemácias** se sangramento + queda Hb >2 g/dL ou choque persistente; **plaquetas APENAS se sangramento ativo + plaquetas <50 mil** (não profilático).
+
+**🆕 Não recomendado:** plaquetas profiláticas, corticoide, IgIV, AAS/AINE, soluções hipotônicas.
+
+**Notificação compulsória imediata.** Vacina QDenga incorporada PNI para 10-14 anos em áreas selecionadas (não muda manejo do caso agudo).`,
+
+      treatment: `**Princípios:**
+1. **Reposição volêmica precoce e titulada** — evitar tanto hipoperfusão quanto sobrecarga (SDRA, derrame).
+2. **Reavaliação a cada 1 h em Grupo C/D**: PA, FC, FR, perfusão, diurese, Hct, plaquetas, lactato.
+3. **Antitérmico:** paracetamol ou dipirona (NUNCA AAS/AINE).
+4. **Sangramento:** ácido tranexâmico 1 g EV se hemorragia digestiva/ginecológica; transfusão guiada (CH se Hb <7 ou sangramento; plaquetas só se sangramento + <50; PFC se INR >1,5 + sangramento).
+5. **Hepatite grave:** N-acetilcisteína 150 mg/kg + 50 mg/kg + 100 mg/kg conforme protocolo (off-label, evidência observacional).
+6. **Critérios de alta (Grupo C/D):** afebril >48 h, sem sinais de alarme, plaquetas em ascensão, Hct estável, diurese normal, tolerando dieta.`,
+
+      prescriptions: `\`\`\`
+GRUPO C — ADULTO 70 KG (EXPANSÃO INICIAL):
+1. Ringer lactato 700 mL EV em 1 h (10 mL/kg). Reavaliar Hct, PA, diurese, perfusão.
+2. Se melhora: Ringer lactato 1.750 mL EV em 6-8 h (25 mL/kg) → 1.750 mL EV em 8-12 h.
+3. Se sem melhora: repetir 700 mL em 1 h (até 3×, máx 30 mL/kg de expansão). Se refratário, transferir Grupo D.
+4. Dipirona 1 g EV 6/6 h se febre/dor.
+5. Ondansetrona 4-8 mg EV 8/8 h se vômitos.
+6. NÃO USAR: AAS, ibuprofeno, diclofenaco, corticoide, plaquetas profiláticas.
+7. Hemograma com plaquetas + Hct 4/4 h; função renal/hepática 1×/dia; gasometria + lactato se choque.
+8. Diurese horária (cateter se Grupo D); PA não-invasiva 1/1 h (PAi se UTI).
+9. Notificação SINAN imediata.
+
+GRUPO D — CHOQUE:
+10. Ringer lactato 1.400 mL EV em 15-30 min (20 mL/kg) — repetir até 3 bolus.
+11. Noradrenalina 0,05-0,5 mcg/kg/min EV BIC se PAM <65 após 30 mL/kg.
+12. Albumina 5% 250-500 mL EV se refratário a cristaloide e Hct elevado.
+13. Concentrado de hemácias se Hb <7 ou sangramento ativo.
+14. Plaquetas APENAS se sangramento + <50 mil; PFC 10-15 mL/kg se INR >1,5 + sangramento.
+15. Ácido tranexâmico 1 g EV em 10 min + 1 g em 8 h se hemorragia maior.
+
+IDOSO ≥65 A (GRUPO B/C — vigiar):
+16. Mesmas doses por kg, MAS reavaliar a cada 2 h, monitorar BNP/POCUS para evitar sobrecarga, alvo Hct e diurese mais conservador.
+\`\`\``,
+    },
+  },
+
+  // ==================== 14. ENDOMETRIOSE / DOR PÉLVICA (PCDT 2025-2026) ====================
+  {
+    protocolId: "fp-endometriose-emergencia",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**🆕 PCDT Endometriose 2025-2026 (CONITEC) + ESHRE 2024 + ACOG 2025:**
+
+**Suspeita clínica:** dismenorreia progressiva, dispareunia profunda, dor pélvica crônica >6 m, infertilidade, dor à evacuação/miccional cíclica, sangramento retal/urinário cíclico.
+
+**Investigação:**
+- **USTV especializado** (com preparo intestinal) — 1ª linha.
+- **RM de pelve** (protocolo endometriose) se suspeita de endometriose profunda (DIE), envolvimento intestinal/urinário ou planejamento cirúrgico.
+- CA-125 não tem valor diagnóstico isolado.
+- Laparoscopia diagnóstica **não é mais obrigatória** para iniciar tratamento clínico empírico.
+
+**Manejo da dor aguda na emergência:**
+1. AINE (ibuprofeno, naproxeno, ketoprofeno) — 1ª escolha.
+2. Dipirona/paracetamol associados.
+3. Antiespasmódico (escopolamina) se cólica intensa.
+4. Opioide fraco (codeína, tramadol) por ciclo curto se refratário.
+5. Bloqueio de plexo hipogástrico em centros especializados para crise refratária.
+6. Iniciar/escalonar terapia hormonal supressora (ver tratamento) e encaminhar ginecologia.`,
+
+      treatment: `**🆕 Fluxograma terapêutico PCDT 2025-2026:**
+
+**1ª linha (todas as formas, incluindo dor pélvica crônica não-cirúrgica):**
+- **Progestagênio contínuo:** **dienogeste 2 mg VO 1×/dia** OU **noretisterona 5-10 mg/dia** OU **desogestrel 75 mcg/dia** — **agora dispensados pelo SUS para endometriose** (PCDT 2025-2026).
+- **🆕 DIU de levonorgestrel 52 mg (Mirena/Kyleena)** — **incorporado ao SUS para endometriose, adenomiose e dor pélvica crônica** (CONITEC 2025) — alternativa de 1ª linha, especialmente em adenomiose ou contraindicação a estrogênio.
+- ACO combinado contínuo (sem pausa) como alternativa em pacientes sem contraindicação.
+
+**2ª linha (refratário ou DIE com sintomas graves):**
+- **🆕 Análogos de GnRH (leuprorrelina 3,75 mg IM/mês ou 11,25 mg IM/3 meses, gosserrelina 3,6 mg SC/mês)** — **fluxo SUS atualizado 2025-2026**: até **6 meses de uso**, com **add-back therapy obrigatória** (estradiol 1 mg + noretisterona 0,5 mg/dia OU tibolona 2,5 mg/dia) a partir do 1º-3º mês para preservar massa óssea e aliviar sintomas climatéricos.
+- Antagonista de GnRH oral (elagolix, relugolix + add-back) — não SUS, mencionar em assistência suplementar.
+
+**3ª linha:** cirurgia laparoscópica conservadora (ressecção de focos/DIE) em centro especializado; histerectomia ± ooforectomia em casos selecionados refratários, paridade completa.
+
+**Fertilidade:** encaminhar reprodução assistida precocemente se infertilidade + endometriose moderada/grave.
+
+**Adenomiose:** **DIU-LNG 52 mg é 1ª linha**; análogo GnRH + add-back se refratário; ablação endometrial/embolização/HTA conforme caso.`,
+
+      prescriptions: `\`\`\`
+CRISE DE DOR — EMERGÊNCIA:
+1. Cetoprofeno 100 mg EV em 100 mL SF em 30 min OU ibuprofeno 600 mg VO 8/8 h.
+2. Dipirona 1 g EV/VO 6/6 h.
+3. Escopolamina + dipirona (Buscopan composto) 1 amp EV se cólica intensa.
+4. Tramadol 50-100 mg EV/VO 6/6 h se refratário (ciclo curto ≤72 h).
+5. Iniciar/escalonar terapia hormonal (ver abaixo) e encaminhar ginecologia.
+
+TRATAMENTO CRÔNICO — 1ª LINHA (PCDT 2025-2026 SUS):
+6. Dienogeste 2 mg VO 1×/dia uso contínuo (orientar amenorreia esperada; sangramentos irregulares nos 3 primeiros meses).
+   OU
+7. DIU de levonorgestrel 52 mg — inserir em consulta ginecológica; eficácia 5-7 anos.
+   OU
+8. Desogestrel 75 mcg VO 1×/dia uso contínuo.
+
+REFRATÁRIO / DIE — 2ª LINHA:
+9. Leuprorrelina 3,75 mg IM 1×/mês (ou 11,25 mg IM 1×/3 meses) por até 6 meses.
+10. ADD-BACK obrigatório a partir do 1º-3º mês: estradiol 1 mg + noretisterona acetato 0,5 mg VO 1×/dia (ou tibolona 2,5 mg/dia).
+11. Densitometria óssea basal e ao final do tratamento; cálcio 1.000 mg + vit D 1.000 UI/dia.
+
+ENCAMINHAMENTOS:
+12. Ginecologia especializada em endometriose (ambulatório de referência) em ≤30 dias.
+13. Reprodução assistida se infertilidade.
+14. Fisioterapia pélvica + psicologia da dor.
+\`\`\``,
+    },
+  },
+
+  // ==================== 15. AVC HEMORRÁGICO (AHA/ASA 2022 + atualização 2025) ====================
+  {
+    protocolId: "fp-avc-hemorragico",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**AHA/ASA 2022 Guideline for ICH + Update 2024-2025 + ESO 2025:**
+
+1. **TC sem contraste em ≤25 min da chegada** (door-to-CT). Considerar **AngioTC** para "spot sign" e excluir MAV/aneurisma; **TC perfusão** se dúvida diagnóstica.
+2. **Score ICH (volume, idade, GCS, infratentorial, hemoventricular)** + **FUNC score** para prognóstico.
+3. **Reverter anticoagulação imediatamente:**
+   - **Varfarina:** **CCP 4 fatores 25-50 UI/kg + vitamina K 10 mg EV** (não usar PFC isolado — INCH).
+   - **DOAC anti-Xa (riva/apixa/edoxa):** **andexanet alfa** se disponível (ANNEXA-I 2024 — neutralização superior ao CCP, mas com sinal de aumento de eventos trombóticos; **CCP 50 UI/kg** segue alternativa).
+   - **Dabigatrana:** **idarucizumabe 5 g EV**.
+   - **HNF:** protamina 1 mg / 100 U.
+   - **Antiplaquetário:** **NÃO transfundir plaquetas** (PATCH — pior desfecho); exceção: neurocirurgia iminente.
+4. **🆕 Controle pressórico INTENSIVO precoce — INTERACT3/2024:** alvo **PAS 130-140 mmHg em até 1 h** (queda controlada, não <120) — feixe completo INTERACT3 (PA + glicemia + temperatura + reversão anticoagulação) reduziu desfecho funcional ruim. Nicardipina/clevidipina EV 1ª linha; labetalol alternativa.
+5. **Glicemia 110-180 mg/dL**; tratar T >37,5 °C (paracetamol).
+6. **Profilaxia TEV: compressão pneumática IMEDIATA**; HBPM em dose profilática **após 24-48 h** se hematoma estável.
+7. **Cirurgia:**
+   - **🆕 Hematoma supratentorial lobar (10-100 mL) — ENRICH 2024:** **evacuação minimamente invasiva precoce (≤24 h)** com cateter/endoscopia melhorou desfecho funcional (mRS 0-3) — recomendação reforçada.
+   - **Hemorragia cerebelar >3 cm com deterioração ou hidrocefalia obstrutiva:** **craniectomia descompressiva urgente**.
+   - **Hidrocefalia:** DVE.
+   - **HSA aneurismática:** ver protocolo HSA.
+8. **EME pós-ICH:** EEG contínuo se RNC desproporcional; tratar crises.
+9. **Não recomendado:** corticoide, hemostático rotineiro (FATOR VII NÃO indicado — STOP-AUST/FAST), manitol profilático, hiperventilação prolongada.`,
+
+      treatment: `**Internação em UTI/U-AVC** com monitorização neurológica seriada (NIHSS/GCS 1/1 h nas 24 h).
+
+- Cabeceira 30°, normocapnia, normoglicemia, normotermia.
+- HIC: terapia escalonada (sedação, salina hipertônica 3%, manitol 0,5-1 g/kg, drenagem ventricular, craniectomia).
+- Iniciar **estatina não obrigatória** na fase aguda (individualizar — risco/benefício).
+- **Não reiniciar anticoagulação** antes de 4-8 sem; em FA de alto risco, considerar **oclusão de apêndice atrial** (Watchman).
+- Reabilitação multidisciplinar precoce (≥24 h se estável).`,
+
+      prescriptions: `\`\`\`
+1. TC crânio sem contraste + AngioTC arterial intracraniana imediatas.
+2. Cabeceira 30°, O₂ para SpO₂ ≥94%, IOT se GCS ≤8 ou via aérea instável.
+3. Nicardipina 5 mg/h EV BIC, titular +2,5 mg/h cada 5-15 min até PAS 130-140 (máx 15 mg/h).
+   OU clevidipina 1-2 mg/h EV, dobrar cada 90 s.
+   OU labetalol 10-20 mg EV em bólus a cada 10 min (máx 300 mg).
+4. REVERSÃO ANTICOAGULAÇÃO:
+   - Varfarina: CCP 4F 25-50 UI/kg EV (INR-dependente) + vitamina K 10 mg EV em 30 min.
+   - DOAC anti-Xa: andexanet alfa (bólus + infusão 2 h) OU CCP 50 UI/kg.
+   - Dabigatrana: idarucizumabe 5 g EV (2 frascos de 2,5 g).
+   - HNF: protamina 1 mg / 100 U nas últimas 2-3 h.
+5. Insulina contínua se glicemia >180; evitar <110.
+6. Paracetamol 1 g EV 6/6 h se T >37,5 °C.
+7. Compressão pneumática intermitente AGORA; enoxaparina 40 mg SC após 24-48 h se hematoma estável.
+8. Manitol 20% 0,5-1 g/kg EV em 20 min OU NaCl 3% 250 mL EV se sinais de HIC/herniação.
+9. Hemograma, coagulograma, INR, fibrinogênio, plaquetas, função renal/hepática, ECG, troponina.
+10. Avaliação neurocirúrgica imediata se: cerebelar >3 cm, hidrocefalia, lobar 10-100 mL com indicação ENRICH, deterioração.
+11. EEG contínuo se RNC inexplicado.
+\`\`\``,
+    },
+  },
+
+  // ==================== 16. HSA ANEURISMÁTICA ====================
+  {
+    protocolId: "fp-hsa",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**AHA/ASA 2023 + ESO 2025 + Neurocritical Care 2024:**
+
+1. **TC sem contraste em <6 h** — sensibilidade ~100%; se >6 h ou TC negativa com alta suspeita → **punção lombar** (xantocromia).
+2. **AngioTC ou angiografia digital** para identificar aneurisma (padrão-ouro angiografia).
+3. Classificar **Hunt-Hess** e **WFNS**; **Fisher modificado** para risco de vasoespasmo.
+4. **Tratamento do aneurisma em ≤24 h:** **embolização endovascular (coiling)** preferencial sobre clipagem na maioria (ISAT, BRAT) — exceção: aneurismas MCA grandes/com hematoma.
+5. **Controle pressórico ANTES de oclusão:** PAS <140-160; após oclusão, permitir PAS até 200 se vasoespasmo.
+6. **Nimodipina 60 mg VO/SNG 4/4 h por 21 dias** — reduz desfecho ruim por vasoespasmo (todos os pacientes).
+7. **🆕 Vasoespasmo (D4-D14):** **doppler transcraniano diário + vigilância clínica**; tratar isquemia tardia com **terapia hipertensiva (PAS alvo individualizado, evitar hipervolemia agressiva — SAHIT)**, angioplastia química (verapamil/nicardipina intra-arterial) ou mecânica.
+8. **Hidrocefalia aguda (15-20%):** DVE.
+9. **Crises:** profilaxia anticonvulsivante NÃO é rotina; tratar se crise documentada (levetiracetam 1ª linha).
+10. **Hiponatremia (SIADH/CSWS):** evitar restrição hídrica; usar fludrocortisona/salina hipertônica em CSWS.
+11. **🆕 Não recomendado:** ácido tranexâmico prolongado (ULTRA: sem benefício e ↑isquemia), estatina aguda para vasoespasmo (STASH), magnésio profilático (MASH-2).`,
+
+      treatment: `**UTI neurológica** com monitorização contínua, escala neurológica horária.
+
+- Analgesia rigorosa (paracetamol + opioide curto), antiemético, repouso.
+- Profilaxia TEV mecânica imediata; HBPM após oclusão segura.
+- **Reabilitação precoce**; reavaliar neurocognição ambulatorial.
+- Rastreio de outros aneurismas em ATCD familiar.`,
+
+      prescriptions: `\`\`\`
+1. TC crânio sem contraste IMEDIATA + AngioTC.
+2. Cabeceira 30°, repouso absoluto, ambiente calmo.
+3. Nimodipina 60 mg VO/SNG 4/4 h por 21 dias (iniciar em <24 h).
+4. Nicardipina/labetalol EV para PAS <140-160 ANTES da oclusão; após oclusão, alvo individualizado.
+5. Paracetamol 1 g EV 6/6 h + morfina 2-4 mg EV se dor intensa.
+6. Ondansetrona 8 mg EV 8/8 h; laxativo (lactulose 15 mL 8/8 h) — evitar Valsalva.
+7. Soro fisiológico isotônico 1,5-2 mL/kg/h — evitar restrição e hipervolemia.
+8. Compressão pneumática intermitente; enoxaparina 40 mg SC após 24 h da oclusão.
+9. Levetiracetam 500-1.000 mg EV 12/12 h APENAS se crise documentada.
+10. Avaliação neurocirurgia/intervencionista <6 h para programar coiling/clipagem em ≤24 h.
+11. Doppler transcraniano diário D4-D14; vigilância de vasoespasmo.
+12. NÃO USAR: ácido tranexâmico prolongado, estatina aguda para vasoespasmo, magnésio profilático.
+\`\`\``,
+    },
+  },
+
+  // ==================== 17. ESTADO DE MAL EPILÉPTICO ====================
+  {
+    protocolId: "fp-eme",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**Neurocritical Care Society 2024 + ILAE 2025:**
+
+**Definição operacional:** crise contínua >5 min OU ≥2 crises sem recuperação completa.
+
+**T1 = 5 min** (tratar como EME); **T2 = 30 min** (risco de lesão neuronal).
+
+**Algoritmo escalonado:**
+
+1. **Estabilização (0-5 min):** ABC, O₂, glicemia capilar, 2 acessos, monitor, IOT se via aérea instável.
+2. **🆕 Fase inicial (5-20 min) — BENZODIAZEPÍNICO em DOSE PLENA (subdose é o erro mais comum):**
+   - **Midazolam 10 mg IM** (1ª escolha pré-hospitalar/sem acesso — RAMPART) OU **5-10 mg EV/IN/bucal**.
+   - **Diazepam 0,15-0,2 mg/kg EV** (máx 10 mg) — pode repetir 1×.
+   - **Lorazepam 4 mg EV** (não disponível BR) — repetir 1×.
+3. **Fase de controle (20-40 min) — SE PERSISTIR após benzo:** ESETT mostrou **equivalência entre as 3 opções**:
+   - **Levetiracetam 60 mg/kg EV** (máx 4.500 mg) em 15 min — preferencial (segurança).
+   - **Fenitoína 20 mg/kg EV** (máx 1.500 mg) em ≤50 mg/min — monitorar PA/ECG.
+   - **Ácido valproico 40 mg/kg EV** (máx 3.000 mg) em 10 min — evitar em hepatopata, gestante, mitocondriopatia.
+4. **EME refratário (>40 min) — IOT + UTI + EEG contínuo:**
+   - **Midazolam BIC 0,2 mg/kg bolus → 0,05-2 mg/kg/h.**
+   - **Propofol BIC 1-2 mg/kg bolus → 1-10 mg/kg/h** (cuidado com PRIS).
+   - **Pentobarbital/tiopental** se super-refratário.
+   - Alvo: **supressão de descargas no EEG por 24-48 h**, depois desmame.
+5. **EME super-refratário (>24 h):** ketamina BIC, dieta cetogênica, imunoterapia (corticoide, IgIV, plasmaférese) se suspeita autoimune (anti-NMDA, LGI1), magnésio em eclâmpsia.
+
+**Investigação paralela:** glicemia, eletrólitos (Na, Ca, Mg), função renal/hepática, gasometria, hemograma, screen tóxico, nível sérico de antiepilépticos, TC crânio, punção lombar se febre/imunossupressão, RM e EEG contínuo.
+
+**Causas — sempre tratar:** hipoglicemia (50 mL G50% + tiamina 100 mg EV), hiponatremia, eclâmpsia (MgSO₄), encefalite (aciclovir + ATB), AVC, intoxicação.
+
+**🆕 EME não convulsivo:** suspeitar em todo paciente com RNC inexplicado pós-evento; **EEG contínuo é mandatório** em UTI neurológica.`,
+
+      treatment: `Após controle: **manter antiepiléptico de manutenção** (geralmente o usado na fase de controle), ajustar dose, dosar nível sérico, investigar etiologia (RM, LCR, EEG ambulatorial), encaminhar epileptologia. Orientar sobre direção, trabalho em altura, gatilhos.`,
+
+      prescriptions: `\`\`\`
+0-5 MIN — ESTABILIZAÇÃO:
+1. O₂ 10 L/min máscara, monitor, oximetria, 2 acessos calibrosos, glicemia capilar.
+2. Tiamina 100 mg EV (antes de glicose se desnutrido/etilista) + glicose 50% 50 mL EV se HGT <60.
+
+5-20 MIN — BENZODIAZEPÍNICO (DOSE PLENA, NÃO SUBDOSAR):
+3. Midazolam 10 mg IM (sem acesso) OU midazolam 0,2 mg/kg EV (5-10 mg).
+4. OU diazepam 10 mg EV em bolus — repetir 10 mg em 5 min se persistir.
+
+20-40 MIN — ANTIEPILÉPTICO (se persistir após 2ª dose de benzo):
+5. Levetiracetam 60 mg/kg EV (máx 4.500 mg) em 100 mL SF em 15 min. (1ª escolha — segurança)
+   OU
+6. Fenitoína 20 mg/kg EV em SF 0,9% (NUNCA glicose), velocidade ≤50 mg/min, monitor cardíaco contínuo.
+   OU
+7. Ácido valproico 40 mg/kg EV em 10 min (máx 3 g) — evitar gestante/hepatopata.
+
+>40 MIN REFRATÁRIO — IOT + UTI + EEG CONTÍNUO:
+8. Sequência rápida de IOT: etomidato 0,3 mg/kg + rocurônio 1,2 mg/kg.
+9. Midazolam bolus 0,2 mg/kg + BIC 0,05-2 mg/kg/h, titular para supressão no EEG.
+   OU propofol bolus 2 mg/kg + BIC 1-10 mg/kg/h (vigiar PRIS, triglicerídeos, lactato).
+10. Manter supressão 24-48 h, depois desmame com manutenção do antiepiléptico oral/SNG.
+
+INVESTIGAÇÃO:
+11. HGT, Na, K, Mg, Ca iônico, ureia, creatinina, TGO/TGP, gasometria, lactato, CK, hemograma, screen tóxico, β-HCG.
+12. Nível sérico do antiepiléptico em uso prévio.
+13. TC crânio assim que estável; punção lombar se febre/imunossupressão; RM e EEG contínuo.
+\`\`\``,
+    },
+  },
+
+  // ==================== 18. HIPERCALEMIA ====================
+  {
+    protocolId: "fp-hipercalemia",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**KDIGO 2024 + UK Renal Association 2023 + ERC 2025:**
+
+**Estratificação por K e ECG:**
+- **Leve 5,5-5,9** — ambulatorial, ajustar drogas/dieta.
+- **Moderada 6,0-6,4** — observação + tratamento.
+- **Grave ≥6,5 OU qualquer K com alteração de ECG** — emergência.
+
+**Alterações ECG progressivas:** T apiculada → PR alargado → P achatada → QRS alargado → padrão sinusoidal → FV/assistolia.
+
+**Sequência terapêutica (K ≥6,5 ou ECG alterado):**
+
+1. **🆕 ESTABILIZAR MEMBRANA (≤2 min):**
+   - **Gluconato de cálcio 10% 10-30 mL EV em 5-10 min** (preferido em acesso periférico) OU **cloreto de cálcio 10% 10 mL EV central**.
+   - Repetir em 5 min se ECG não normalizar.
+   - Cuidado em **digitálico**: infundir lentamente em 20 min (não contraindicado absoluto — UK 2023).
+
+2. **DESLOCAR K PARA INTRACELULAR (15-60 min):**
+   - **Insulina regular 10 U EV + Glicose 50% 50 mL** (25 g) — OU **5 U + 25 g** se IRC/risco hipoglicemia (KDIGO 2024 — ↓ hipoglicemia sem perder eficácia).
+   - **β2-agonista nebulizado:** **salbutamol 10-20 mg neb** (4-8× dose broncodilatadora) — sinérgico à insulina.
+   - **Bicarbonato 8,4% 50-100 mL EV** APENAS em acidose metabólica (pH <7,2) — não usar isoladamente.
+
+3. **🆕 REMOVER K DO CORPO:**
+   - **Patiromer 8,4 g VO/SNG OU ciclosilicato de zircônio (SZC) 10 g VO 3×/dia** — **novas resinas, ação em horas, melhor tolerância que poliestireno** (KDIGO 2024 prioriza estas).
+   - **Poliestirenossulfonato de cálcio (Sorcal) 15-30 g VO ou 30-60 g enema** — alternativa SUS; cuidado com necrose intestinal (NÃO associar a sorbitol).
+   - **Furosemida 40-80 mg EV** se euvolêmico/hipervolêmico com diurese preservada.
+   - **HEMODIÁLISE EMERGENCIAL** se: K ≥6,5 refratário, ECG persistente, IRC dialítica, lesão tecidual maciça, oligoanúria.
+
+4. **Corrigir causa:** suspender iECA/BRA/espironolactona/AINE/heparina/trimetoprim/digital, repor volume se hipovolemia, tratar rabdomiólise/hemólise/lise tumoral.
+
+**🆕 PCR por hipercalemia (ERC 2025):** cálcio + insulina/glicose + bicarbonato durante RCP; **diálise intra-PCR** em centros capacitados.`,
+
+      treatment: `**Após estabilização:**
+- Monitor cardíaco contínuo até K <6,0.
+- Dosar K 1/1 h nas primeiras 4 h, depois 4/4 h.
+- Ajuste dietético (evitar banana, laranja, tomate, chocolate, batata).
+- **Iniciar/manter patiromer ou SZC ambulatorialmente** em IC/DRC para permitir manter iECA/BRA otimizados (substitui suspensão crônica — KDIGO 2024).
+- Investigar etiologia: IRC, hipoaldosteronismo, drogas, acidose tubular tipo IV.`,
+
+      prescriptions: `\`\`\`
+EMERGÊNCIA — K ≥6,5 OU ECG ALTERADO:
+1. Gluconato de cálcio 10% 20 mL EV em 10 min (repetir em 5 min se ECG persistir).
+   OU cloreto de cálcio 10% 10 mL EV central em 10 min.
+2. Insulina regular 10 U EV em bolus + Glicose 50% 50 mL EV simultâneo.
+   (Se TFG <30 ou risco hipoglicemia: insulina 5 U + glicose 25 g).
+3. Salbutamol 10-20 mg (40-80 gotas) nebulização contínua em 15 min.
+4. Bicarbonato de sódio 8,4% 100 mL EV em 30 min APENAS se pH <7,2.
+5. Furosemida 40-80 mg EV se diurese preservada e euvolêmico/hipervolêmico.
+6. Patiromer 8,4 g VO/SNG dose única.
+   OU ciclosilicato de zircônio 10 g VO/SNG.
+   OU poliestirenossulfonato de cálcio 30 g VO + 100 mL manitol (NÃO sorbitol).
+7. ECG contínuo, K capilar/sérico em 1, 2 e 4 h.
+8. Acionar nefrologia para HEMODIÁLISE se: K ≥6,5 refratário a 1 h de tratamento, ECG persistente, IRC dialítica, oligoanúria, lise tumoral.
+9. Glicemia capilar 1/1 h por 6 h (risco hipoglicemia tardia da insulina).
+10. SUSPENDER: iECA/BRA, espironolactona, AINE, trimetoprim, heparina, digital (revisar), suplemento de K.
+
+MANUTENÇÃO AMBULATORIAL (DRC/IC):
+11. Patiromer 8,4-25,2 g VO 1×/dia OU SZC 5-10 g VO 1×/dia para permitir manter iECA/BRA otimizados.
+12. Dieta orientada por nutricionista; revisão K em 7-14 d.
+\`\`\``,
+    },
+  },
+
+  // ==================== 19. HIPONATREMIA ====================
+  {
+    protocolId: "fp-hiponatremia",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**European Hyponatraemia Guideline 2014 + Atualização 2024 + Endocrine Society 2023:**
+
+**Classificação:**
+- **Leve 130-134 / Moderada 125-129 / Grave <125 mmol/L.**
+- **Aguda <48 h** vs **crônica ≥48 h** (ou desconhecida → tratar como crônica).
+- Sintomas **graves** (convulsão, coma, vômitos persistentes, RNC) — emergência independente do valor.
+
+**Diagnóstico:**
+1. **Osmolaridade plasmática** — excluir pseudo (hiperproteinemia) e hipertônica (hiperglicemia: corrigir +1,6 mEq Na para cada 100 mg glicose >100).
+2. **Estado volêmico:** hipovolêmica (perdas GI/renais/diurético), euvolêmica (SIADH, hipotireoidismo, insuf adrenal), hipervolêmica (IC, cirrose, SN, IRC).
+3. **Na urinário, osm urinária, ácido úrico, cortisol, TSH.**
+
+**Tratamento — Princípio fundamental: VELOCIDADE DE CORREÇÃO:**
+
+- **🆕 Limite máximo: 8-10 mmol/L em 24 h e 18 mmol/L em 48 h** (reduzido para **6-8 mmol/L/24 h em alto risco de SDO**: Na <105, hipocalemia, etilismo, desnutrição, hepatopatia, hipóxia).
+- **Sintomas graves:** **NaCl 3% 100-150 mL EV em 10-20 min, repetir até 3×** até melhora clínica OU ↑Na 4-6 mmol — **basta para reverter sintomas**, depois manter.
+- **Risco de hipercorreção (especialmente em hipovolêmica após volume, SIADH transitório, suspensão de diurético):** se Na subir >8/24 h, **REVERTER ATIVAMENTE** com **DDAVP 2-4 mcg EV/SC + glicose 5%** para baixar Na em 1-2 mmol/h até voltar ao alvo (estratégia "DDAVP clamp").
+
+**Por etiologia:**
+- **Hipovolêmica:** SF 0,9% para repor volume — vigiar overshoot.
+- **SIADH (euvolêmica):** **restrição hídrica <800-1.000 mL/dia** + sal/ureia oral; **tolvaptana** se refratária ou Na <125 sintomática (suspender em 30 d, monitorar hepatotoxicidade — **não usar em hepatopata**); furosemida + NaCl em SIADH refratário.
+- **Insuficiência adrenal:** hidrocortisona 100 mg EV.
+- **Hipotireoidismo grave:** levotiroxina + hidrocortisona.
+- **Hipervolêmica (IC/cirrose):** restrição hídrica + diurético; tolvaptana off-label.
+
+**🆕 Síndrome de desmielinização osmótica (SDO):** evitar é tudo — correção lenta + vigilância. Se ocorrer, suporte; sem terapia específica.`,
+
+      treatment: `Investigação ambulatorial: TSH, cortisol AM, função renal/hepática, glicemia, osm plasmática e urinária, Na urinário, ECG. Revisar drogas (tiazídicos, ISRS, carbamazepina, antipsicóticos).
+
+**Educação:** restrição hídrica em SIADH crônico; sinal de alerta (cefaleia, náusea, RNC).`,
+
+      prescriptions: `\`\`\`
+SINTOMÁTICA GRAVE (convulsão, coma, vômitos, RNC):
+1. NaCl 3% 100 mL EV em 10 min — REPETIR até 3 doses ou até melhora clínica/aumento de Na 4-6 mmol.
+   (Preparo: NaCl 20% 15 mL + SF 0,9% 85 mL = 100 mL de NaCl ~3%).
+2. Reavaliar Na sérico após cada bolus (15-30 min); meta de elevação 4-6 mmol nas primeiras 6 h.
+3. Após melhora, manter NaCl 0,9% ou 3% conforme cálculo (Adrogué-Madias) com ALVO máximo 8 mmol/24 h.
+
+ASSINTOMÁTICA CRÔNICA — POR ETIOLOGIA:
+4. Hipovolêmica: SF 0,9% 1 mL/kg/h, vigiar overshoot ao restaurar volume.
+5. SIADH: restrição hídrica 800 mL/dia + NaCl VO 3-9 g/dia; furosemida 20-40 mg/dia se refratário.
+6. SIADH refratário/Na <125 sintomática: tolvaptana 15 mg VO 1×/dia (em internação, monitor Na 6/6 h, suspender se ↑>10/24 h).
+7. Insuf adrenal suspeita: hidrocortisona 100 mg EV em bolus + 50 mg 6/6 h.
+8. Hipervolêmica (IC/cirrose): restrição hídrica + furosemida; otimizar terapia de base.
+
+VIGILÂNCIA / PREVENÇÃO DE SDO:
+9. Na sérico 2/2 h nas primeiras 12 h; 4/4 h até 48 h.
+10. SE Na subir >8 mmol em 24 h (hipercorreção):
+    - Glicose 5% 3 mL/kg/h EV
+    - Desmopressina (DDAVP) 2-4 mcg EV ou SC, repetir cada 6-8 h
+    - Meta: REDUZIR Na em 1-2 mmol/h até voltar ao alvo.
+11. Suspender drogas suspeitas (tiazídicos, ISRS, carbamazepina, antipsicóticos) após investigação.
+\`\`\``,
+    },
+  },
+
+  // ==================== 20. SDRA ====================
+  {
+    protocolId: "fp-sdra",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**🆕 ESICM/ATS Global Definition of ARDS 2023 + ESICM Guideline 2023 + Update 2025:**
+
+**Critérios diagnósticos (Berlim modificado/Global 2023):**
+- Início <7 d de insulto.
+- Opacidades bilaterais à imagem (RX, TC ou **POCUS** — agora aceito).
+- Edema não explicado por IC/sobrecarga.
+- Hipoxemia: **PaO₂/FiO₂ ≤300 com PEEP/CPAP ≥5** OU **SpO₂/FiO₂ ≤315 (com SpO₂ ≤97%)** OU **em HFNC ≥30 L/min**.
+- **Leve 200-300 / Moderada 100-200 / Grave ≤100.**
+
+**Manejo (ESICM 2023 + atualização):**
+
+1. **Tratar a causa** (sepse, pneumonia, aspiração, trauma, transfusão).
+2. **🆕 Suporte ventilatório escalonado:**
+   - **HFNC** 1ª linha em hipoxemia leve-moderada não intubada (FLORALI).
+   - **VNI/CPAP** em DPOC/cardiogênico/imunossuprimido — não retardar IOT se falha em 1-2 h.
+   - **Awake proning** em SDRA leve-moderada não intubada — recomendação 2023 (PROFLO, COVID-PRONE).
+3. **Ventilação protetora (IOT):**
+   - **VT 4-8 mL/kg peso predito** (alvo 6).
+   - **Pplatô ≤30 cmH₂O**, **driving pressure ≤14**.
+   - **PEEP titulada** — alta em moderada-grave (tabela ARDSNet alta ou stress index/oclusão); evitar hiperinsuflação.
+   - **FiO₂ mínima para SpO₂ 88-95%** (PaO₂ 55-80).
+4. **🆕 Prona >12 h (preferencialmente 16 h) em SDRA moderada-grave (PaO₂/FiO₂ <150)** — recomendação **forte** (PROSEVA, atualização meta-análise 2024).
+5. **Bloqueio neuromuscular:** **bólus intermitentes** (cisatracúrio) em assincronia/Pplatô alto; **infusão contínua não rotineira** (ROSE) — apenas SDRA grave nas primeiras 48 h.
+6. **🆕 Manobras de recrutamento agressivas (PEEP escalonada >40 cmH₂O):** **NÃO recomendadas** (ART — aumenta mortalidade).
+7. **ECMO V-V em centros experientes:** PaO₂/FiO₂ <80 por ≥6 h ou hipercapnia refratária com pH <7,25 (EOLIA, ESICM 2023).
+8. **Conservação hídrica:** **estratégia restritiva** após ressuscitação (FACTT) — diurético/ultrafiltração para balanço negativo.
+9. **Corticoide:** **dexametasona 6 mg/dia 10 d em SDRA por COVID-19 (RECOVERY)**; em **SDRA precoce moderada-grave não-COVID, considerar metilprednisolona 1 mg/kg/dia** (DEXA-ARDS, CoDEX) — evidência heterogênea, individualizar.
+10. **Não recomendado:** β2-agonista profilático, surfactante, óxido nítrico rotineiro (apenas resgate temporário em hipoxemia refratária pré-ECMO), estatinas.
+
+**Vigilância:** mecânica respiratória 1×/turno, gasometria, balanço hídrico, sedação direcionada (RASS −2 a 0 quando possível, despertar diário, ABCDEF).`,
+
+      treatment: `**Desmame:** TRE (tubo T ou PSV 8/PEEP 5 por 30-120 min) diário; extubar para HFNC ± VNI profilática em alto risco. Reabilitação precoce (mobilização ≤48 h se hemodinâmica estável). Acompanhamento pós-UTI (PICS).`,
+
+      prescriptions: `\`\`\`
+1. IOT com VC, peso predito (homem: 50 + 0,91×(alt cm−152,4); mulher: 45,5 + 0,91×(alt cm−152,4)).
+2. VC volume-controlado: VT 6 mL/kg PP, FR 16-30 (alvo pH ≥7,20, PaCO₂ permissivo até 60-70).
+3. PEEP conforme tabela ARDSNet alta (PEEP 14-18 em FiO₂ 0,8-1,0).
+4. FiO₂ titulada para SpO₂ 88-95%; Pplatô ≤30, driving pressure ≤14.
+5. Sedação: fentanil 1-3 mcg/kg/h + propofol 1-3 mg/kg/h ou midazolam 0,03-0,2 mg/kg/h — RASS −3/−4 nas primeiras 48 h se SDRA grave.
+6. Cisatracúrio 0,15 mg/kg bolus + 0,03-0,6 mg/kg/h BIC por até 48 h se PaO₂/FiO₂ <120 ou assincronia (NMBA).
+7. PRONA por 16 h/dia se PaO₂/FiO₂ <150 — manter até PaO₂/FiO₂ >150 em supino por 4 h.
+8. Furosemida 20-40 mg EV 6/6 h após estabilização para balanço hídrico negativo (FACTT).
+9. Dexametasona 6 mg EV 1×/dia por 10 dias se SDRA por COVID-19.
+   (SDRA grave precoce não-COVID: metilprednisolona 1 mg/kg/dia EV — individualizar.)
+10. Profilaxia: enoxaparina 40 mg SC/dia, pantoprazol 40 mg EV/dia, cabeceira 30°.
+11. Acionar centro ECMO se: PaO₂/FiO₂ <80 por ≥6 h, pH <7,25 com PaCO₂ >60 apesar de ventilação otimizada.
+12. NÃO USAR: manobra de recrutamento agressiva, β2 profilático, surfactante, NO de rotina.
+\`\`\``,
+    },
+  },
+
+  // ==================== 21. PNEUMONIA GRAVE (PAC) ====================
+  {
+    protocolId: "fp-pneumonia-grave",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**ATS/IDSA 2019 + ERS/ESCMID 2023 + SBPT 2024-2025:**
+
+**Avaliação de gravidade:** **CURB-65** (≥2 internação, ≥3 UTI) e **PSI**; **critérios IDSA/ATS** para UTI (1 maior: choque com vasopressor / IRpA com IOT — OU 3 menores: FR ≥30, PaO₂/FiO₂ ≤250, multilobar, confusão, ureia ≥50, leucopenia, plaquetopenia, hipotermia, hipotensão respondedora a fluidos).
+
+**Diagnóstico microbiológico (PAC grave):**
+- **Hemocultura, escarro/aspirado traqueal cultura + Gram, antígeno urinário pneumococo + Legionella, PCR multiplex respiratório (incluir SARS-CoV-2, influenza A/B, VSR), procalcitonina seriada.**
+
+**Tratamento empírico (UTI, **sem fatores para Pseudomonas/MRSA**):**
+- **β-lactâmico (ceftriaxona 2 g/d OU ampicilina-sulbactam 3 g 6/6 h) + macrolídeo (azitromicina 500 mg/d) OU fluoroquinolona respiratória (levofloxacino 750 mg/d, moxifloxacino 400 mg/d).**
+
+**Cobertura para Pseudomonas** (DPOC grave, bronquiectasias, ATB recente, internação recente, imunossupressão):
+- **Piperacilina-tazobactam 4,5 g 6/6 h OU cefepima 2 g 8/8 h OU meropeném 1 g 8/8 h** + macrolídeo/quinolona.
+
+**Cobertura para MRSA** (cultura prévia, drogas IV, cavitação, gripe grave, IRA):
+- **Vancomicina** (alvo vale 15-20) **OU linezolida 600 mg 12/12 h**.
+
+**🆕 Influenza/SARS-CoV-2:**
+- **Oseltamivir 75 mg 12/12 h por 5 d** em **TODA PAC grave em temporada**, mesmo PCR pendente — iniciar ≤48 h (idealmente).
+- **COVID-19 grave:** **dexametasona 6 mg/d 10 d** + considerar **remdesivir** (≤7 d sintomas + IRpA não invasiva) + **anti-IL-6 (tocilizumabe) ou baricitinibe** se inflamação progressiva (CRP↑, escalonamento O₂).
+
+**Suporte:**
+- HFNC 1ª linha em hipoxemia; **awake proning**; VNI restrita a DPOC/cardiogênico.
+- IOT precoce se trabalho respiratório/IRpA progressiva — não retardar.
+- Cristaloide balanceado guiado por responsividade; noradrenalina em choque (ver sepse).
+- **Corticoide adjuvante (hidrocortisona 200 mg/d 4-7 d)** — **CAPE-COD 2023**: reduz mortalidade em PAC grave por germe não-influenza/não-COVID. Considerar em UTI sem contraindicação.
+
+**Duração ATB:** 5-7 d em melhora clínica (procalcitonina pode guiar suspensão); 10-14 d em Pseudomonas/MRSA/empiema/bacteremia complicada.
+
+**Não recomendado:** corticoide profilático em PAC leve, fluoroquinolona em monoterapia se suspeita de resistência local, broncodilatador rotineiro sem broncoespasmo.`,
+
+      treatment: `Reavaliar resposta em 48-72 h (clínica + procalcitonina). **Falha terapêutica**: rever foco (empiema, abscesso, derrame parapneumônico complicado → drenar), agente atípico/oportunista, complicação extrapulmonar.
+
+**Vacinação na alta:** pneumocócica (PCV20 ou PCV15+PPV23), influenza, COVID-19, VSR (≥60 a, gestante 32-36 sem).`,
+
+      prescriptions: `\`\`\`
+PAC GRAVE — UTI (sem risco Pseudomonas/MRSA):
+1. Ceftriaxona 2 g EV 1×/dia + Azitromicina 500 mg EV 1×/dia.
+   OU Levofloxacino 750 mg EV 1×/dia (monoterapia se alergia β-lactâmico).
+2. Oseltamivir 75 mg VO/SNG 12/12 h por 5 dias (suspender se PCR influenza negativo).
+3. Hidrocortisona 50 mg EV 6/6 h por 4-7 dias (se sem contraindicação — CAPE-COD).
+4. Cristaloide balanceado conforme responsividade (POCUS/PLR); noradrenalina se PAM <65 após 30 mL/kg.
+5. O₂ por HFNC 30-60 L/min FiO₂ titulada (alvo SpO₂ 92-96%); awake proning.
+6. Profilaxia: enoxaparina 40 mg SC/dia, pantoprazol 40 mg EV/dia, cabeceira 30-45°.
+
+COBERTURA PSEUDOMONAS (DPOC/bronquiectasia/ATB recente):
+7. Piperacilina-tazobactam 4,5 g EV 6/6 h (infusão estendida 4 h preferencial) + Azitromicina 500 mg/dia.
+   OU Cefepima 2 g EV 8/8 h.
+
+COBERTURA MRSA (cavitação/gripe/IRA):
+8. Vancomicina 25-30 mg/kg ataque + 15-20 mg/kg 12/12 h (vale 15-20).
+   OU Linezolida 600 mg EV/VO 12/12 h.
+
+COVID-19 GRAVE:
+9. Dexametasona 6 mg EV/VO 1×/dia por 10 dias.
+10. Remdesivir 200 mg D1 + 100 mg/dia D2-D5 (se ≤7 d de sintomas + necessidade de O₂ não invasivo).
+11. Tocilizumabe 8 mg/kg EV (máx 800 mg) dose única se progressão (CRP alta, escalonamento O₂) e sem contraindicação.
+
+INVESTIGAÇÃO:
+12. RX/TC tórax, gasometria, lactato, hemograma, função renal/hepática, PCR, procalcitonina.
+13. 2 hemoculturas + escarro/aspirado cultura + Gram + antígeno urinário pneumococo/Legionella + PCR multiplex respiratório.
+14. Notificar SARS-CoV-2 e influenza conforme protocolo SINAN.
+\`\`\``,
+    },
+  },
+
+  // ==================== 22. CHOQUE HEMORRÁGICO / TRAUMA (ATLS 11ª + STAMP 2024) ====================
+  {
+    protocolId: "fp-choque-hemorragico",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**ATLS 11ª edição (2023-2024) + EAST/STAMP 2024 + ERC Trauma 2025:**
+
+**Identificação precoce:** taquicardia + pulso fino + ↑FR + ↓pulso + AMS + lividez. **Classes I-IV abandonadas isoladamente** — usar **Shock Index (FC/PAS) ≥1,0** + **lactato ≥2** + **base déficit ≤−6** + **resposta a 1 L cristaloide** como triagem dinâmica.
+
+**Princípios atualizados:**
+
+1. **🆕 Hipotensão permissiva** (PAS alvo **80-90 mmHg / PAM 50-65** em sangrante não controlado, exceto **TCE** — alvo PAS ≥110/PAM ≥80).
+2. **🆕 Damage Control Resuscitation (DCR):**
+   - **Reposição com hemocomponentes em proporção 1:1:1** (CH:PFC:plaquetas) **OU sangue total (whole blood)** quando disponível — evitar cristaloide além de 1 L (PROPPR, STAMP 2024).
+   - **Limitar cristaloide a ≤1 L** na fase inicial.
+3. **🆕 Ácido tranexâmico 1 g EV em 10 min + 1 g em 8 h em ≤3 h do trauma** (CRASH-2/3) — recomendação forte; iniciar pré-hospitalar se possível.
+4. **Cálcio:** **gluconato 1-2 g EV após 1ª unidade de hemocomponente** e a cada 4 unidades — hipocalcemia da transfusão maciça é fator independente de mortalidade.
+5. **Controle definitivo do sangramento:**
+   - **Compressão direta + torniquete** em sangramento exsanguinante de extremidade (CoTCCC).
+   - **Sutura/grampo, balão tamponador (Foley) em ferimento penetrante de junção.**
+   - **REBOA** zona 1 ou 3 em hemorragia infradiafragmática refratária (centros experientes).
+   - **Cirurgia/embolização** definitivas em até 60 min ("damage control").
+6. **🆕 Reversão de anticoagulantes:**
+   - Varfarina: CCP 4F 25-50 UI/kg + vit K 10 mg.
+   - DOAC anti-Xa: andexanet alfa OU CCP 50 UI/kg.
+   - Dabigatrana: idarucizumabe 5 g.
+   - Antiplaquetário: NÃO transfundir plaquetas profilaticamente (PATCH); exceção: cirurgia iminente ou TCE.
+7. **TEG/ROTEM** preferencial sobre coagulograma para guiar reposição em centros equipados.
+8. **Aquecimento agressivo** (manta, fluido aquecido, ambiente >24 °C) — tríade letal: hipotermia + acidose + coagulopatia.
+
+**Não recomendado:** cristaloide >1 L em hemorragia ativa, coloide sintético (HES — proibido), fator VIIa rotineiro, vasopressor como substituto de volume/sangue.`,
+
+      treatment: `**Pós-controle do sangramento:** monitorização UTI, normalizar lactato/BD, profilaxia TEV em 24-48 h, profilaxia úlcera de estresse, antibiótico se trauma penetrante/contaminado, reabilitação precoce.
+
+**Doação compatível com religião:** sangue total reconstituído; em testemunhas de Jeová: ácido tranexâmico, ferro EV, EPO, fator VIIa em casos selecionados.`,
+
+      prescriptions: `\`\`\`
+ATIVAÇÃO PROTOCOLO TRANSFUSÃO MACIÇA (PTM):
+1. Acionar banco de sangue para PTM: 6 CH : 6 PFC : 1 pool plaquetas (1ª remessa); repetir até controle.
+2. Cristaloide balanceado (Ringer lactato) MÁXIMO 1 L se hemocomponente disponível.
+3. Ácido tranexâmico 1 g EV em 10 min IMEDIATO + 1 g EV em 8 h (se ≤3 h do trauma).
+4. Gluconato de cálcio 10% 20 mL EV após 1ª UI de hemocomponente; repetir a cada 4 UI ou se Ca iônico <1,1.
+5. Aquecer todos os fluidos/sangue (38-40 °C); manta térmica, ambiente >24 °C.
+6. 2 acessos calibrosos (16G ou maior) ou IO/CVC; sondagem vesical para débito.
+7. Reverter anticoagulação:
+   - Varfarina: CCP 4F 25-50 UI/kg + vit K 10 mg EV.
+   - DOAC anti-Xa: andexanet alfa OU CCP 50 UI/kg.
+   - Dabigatrana: idarucizumabe 5 g EV.
+8. Hemograma, gasometria + lactato + BD + Ca iônico, coagulograma (TP, TTPa, fibrinogênio), TEG/ROTEM se disponível, tipagem + prova cruzada urgente.
+9. FAST + AngioTC tórax/abdome/pelve assim que minimamente estável; cirurgia/embolização em ≤60 min.
+10. ALVOS: PAS 80-90 (≥110 se TCE), Hb ≥7-8, plaquetas ≥50 mil (≥100 mil em TCE/SNC), fibrinogênio ≥1,5 g/L, TP/TTPa <1,5×, T ≥36 °C, pH ≥7,2, Ca iônico >1,1.
+11. Profilaxia ATB se penetrante: cefazolina 2 g EV (limpo) ou ceftriaxona + metronidazol (abdome).
+12. Antitetânica conforme cartão.
+
+PÓS-CONTROLE:
+13. UTI; reavaliar PTM/encerrar; iniciar profilaxia TEV em 24-48 h após hemostasia.
+\`\`\``,
+    },
+  },
+
+  // ==================== 23. HEMORRAGIA PÓS-PARTO (HPP) ====================
+  {
+    protocolId: "fp-hpp",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**FIGO/WHO 2022-2024 + ACOG 2024 + Febrasgo 2025:**
+
+**Definição:** sangramento ≥500 mL parto vaginal OU ≥1.000 mL cesárea OU qualquer sangramento com instabilidade hemodinâmica.
+
+**🆕 Bundle E-MOTIVE (WHO 2023, Lancet):** redução >60% em desfechos graves quando aplicado em **TODAS as parturientes**:
+- **E**arly detection — coletor de sangue calibrado (drape) sob a paciente.
+- **M**assage uterina + **O**xitocina + **T**ranexâmico + **I**V fluids + **V**aginal/uterine examination + **E**scalation simultâneos (não sequenciais).
+
+**Avaliação 4 T:** **Tônus** (atonia 70%), **Trauma** (laceração, ruptura), **Tecido** (restos), **Trombina** (coagulopatia, embolia LA).
+
+**Conduta — TODAS simultâneas:**
+
+1. **2 acessos calibrosos (≥16G), O₂, monitor, decúbito esquerdo se anteparto.**
+2. **Massagem uterina bimanual** + **esvaziamento vesical** (cateter Foley).
+3. **🆕 Uterotônicos em sequência rápida:**
+   - **Oxitocina 10 UI IM imediata + 20-40 UI EV em 500-1.000 mL Ringer a 250 mL/h** (evitar bolus rápido — hipotensão).
+   - **Carbetocina 100 mcg EV/IM dose única** (preferencial em cesárea — termoestável; CHAMPION OMS).
+   - **🆕 Ácido tranexâmico 1 g EV em 10 min — IMEDIATO em qualquer HPP**, repetir 1 g em 30 min se persistir (WOMAN trial).
+   - **Metilergometrina 0,2 mg IM** (contraindicado em HAS, pré-eclâmpsia).
+   - **Misoprostol 800 mcg sublingual ou retal**.
+   - **Carboprost (PG F2α) 250 mcg IM** a cada 15 min, máx 8 doses (contraindicado em asma).
+4. **Revisar canal de parto** (reparar lacerações, drenar hematoma).
+5. **Curagem/curetagem** se restos placentários.
+6. **🆕 Tamponamento uterino:**
+   - **Balão de Bakri / sonda Foley com 60-80 mL** ou **pacote de gaze** se balão indisponível.
+   - **🆕 Suction tube uterine tamponade (SUTU/Jada System)** — alternativa por sucção a vácuo (FDA 2020, recomendação ACOG 2024).
+7. **Cirúrgico se refratário:**
+   - Suturas compressivas (B-Lynch).
+   - Ligadura de uterinas/hipogástricas.
+   - Embolização arterial seletiva (se hemodinamicamente estável).
+   - **Histerectomia** como recurso final.
+8. **🆕 Reposição volêmica — DCR obstétrico:**
+   - Limitar cristaloide a ≤2 L; iniciar hemocomponentes precocemente em proporção 1:1:1.
+   - Fibrinogênio é o 1º fator a cair em HPP — **manter ≥2 g/L** (CRYOSTAT-2 2024 sugere benefício de criopreciptado/concentrado de fibrinogênio precoce).
+   - Cálcio após cada 4 UI hemocomponente.
+
+**Pré-eclâmpsia/eclâmpsia associada:** sulfato de magnésio (ver protocolo eclâmpsia); evitar metilergometrina/carboprost se HAS.`,
+
+      treatment: `**Pós-controle:** UTI obstétrica, vigilância de Sheehan (hipopituitarismo), coagulopatia, IRA. Profilaxia TEV após hemostasia. Aleitamento orientado. Acompanhamento ambulatorial em 7-14 d.`,
+
+      prescriptions: `\`\`\`
+ATIVAÇÃO BUNDLE E-MOTIVE — IMEDIATO:
+1. Posicionar coletor calibrado sob a paciente; massagem uterina bimanual; esvaziar bexiga (Foley).
+2. Oxitocina 10 UI IM + Oxitocina 20 UI em 500 mL Ringer EV a 250 mL/h (até 40 UI/L).
+3. Ácido tranexâmico 1 g EV em 10 min IMEDIATO; repetir 1 g em 30 min se persistir (≤3 h pós-início).
+4. Ringer lactato EV em 2 acessos calibrosos — máximo 2 L; depois hemocomponentes.
+5. Metilergometrina 0,2 mg IM (CONTRAINDICADO em HAS/pré-eclâmpsia) — repetir em 5 min se necessário.
+6. Misoprostol 800 mcg sublingual OU retal dose única.
+7. Carboprost 250 mcg IM a cada 15 min (máx 8 doses) — CONTRAINDICADO em asma.
+8. Carbetocina 100 mcg EV/IM dose única (alternativa à oxitocina, especialmente em cesárea).
+
+REFRATÁRIO:
+9. Balão de Bakri 250-500 mL OU 2 sondas Foley 24F com 80 mL cada.
+   OU SUTU/Jada (sucção uterina a vácuo) se disponível.
+10. Acionar PTM: 4 CH : 4 PFC : 1 pool plaquetas; manter Hb ≥7-8, fibrinogênio ≥2 g/L, plaq ≥50 mil.
+11. Crioprecipitado 10 UI OU concentrado de fibrinogênio 2-4 g se fibrinogênio <2 g/L.
+12. Gluconato de cálcio 10% 20 mL EV após cada 4 UI de hemocomponente.
+13. Cirurgia: B-Lynch / ligadura uterina/hipogástrica / embolização / histerectomia conforme resposta.
+
+INVESTIGAÇÃO E SUPORTE:
+14. Hemograma, coagulograma, fibrinogênio, ROTEM/TEG, função renal, gasometria + lactato + Ca iônico.
+15. Aquecer fluidos e ambiente; manta térmica; alvo T ≥36 °C, pH ≥7,2.
+16. Antibiótico profilático (cefazolina 2 g EV) se manipulação intrauterina/cirurgia.
+17. UTI obstétrica; profilaxia TEV (enoxaparina 40 mg SC) após hemostasia confirmada por 12-24 h.
+\`\`\``,
+    },
+  },
+
+  // ==================== 24. ATLS — TRAUMA INICIAL ====================
+  {
+    protocolId: "fp-atls",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**🆕 ATLS 11ª edição (2023-2024) + ERC Trauma 2025 + EAST 2024:**
+
+**Avaliação primária — XABCDE:**
+
+- **🆕 X — eXsanguinating hemorrhage:** controle de sangramento exsanguinante **ANTES de via aérea** — torniquete, compressão, hemostáticos (Combat Gauze).
+- **A — Airway + proteção cervical:** colar + IOT se GCS ≤8, queimadura facial, trauma maxilofacial; sequência rápida (etomidato/cetamina + rocurônio); **videolaringoscopia preferencial em trauma**.
+- **B — Breathing:** descomprimir pneumotórax hipertensivo (5º EIC linha axilar média, agulha 14G ≥8 cm OU **toracostomia digital** — ATLS 11 prioriza no adulto), drenar hemotórax, fechar pneumotórax aberto (3 lados).
+- **C — Circulation:** controlar sangramento + 2 acessos calibrosos + DCR (ver choque hemorrágico). **POCUS-FAST estendido** (e-FAST: + tórax para PNX/derrame).
+- **D — Disability:** GCS, pupilas, glicemia, foco de TCE.
+- **E — Exposure + ambiente:** despir + manta aquecida; T alvo ≥36 °C.
+
+**Avaliação secundária:** história AMPLA, exame de cabeça aos pés, exames-alvo (RX tórax/pelve, FAST, AngioTC com contraste se hemodinamicamente respondedor — "pan-scan" em trauma fechado de alta energia).
+
+**🆕 TCE moderado-grave (GCS 3-12):**
+- **PAS ≥110 mmHg / PAM ≥80** (BTF 2023) — **NÃO usar hipotensão permissiva**.
+- **SpO₂ ≥94%, PaCO₂ 35-40** (evitar hiper/hipocapnia).
+- **Reverter anticoagulação imediatamente** (CCP, andexanet, idarucizumabe).
+- **Ácido tranexâmico** se ≤3 h (CRASH-3 — benefício em TCE leve-moderado).
+- **Monitor PIC** (alvo <22 mmHg, PPC 60-70) se GCS ≤8 + TC anormal ou ≥40 a + hipotensão.
+- **Salina hipertônica 3% bolus 250 mL** preferencial sobre manitol em hipertensão intracraniana; manitol 0,5-1 g/kg alternativa.
+- **Craniectomia descompressiva** em HIC refratária (RESCUE-icp).
+- **Profilaxia anticonvulsivante (levetiracetam 7 d)** em TCE grave/contusão/hematoma.
+- **Profilaxia TEV (HBPM)** em 24-48 h se hematoma estável.
+
+**🆕 Trauma raquimedular:**
+- **Não usar metilprednisolona** (NASCIS — sem benefício, dano).
+- Imobilização em prancha **apenas para transporte**; remover ASAP (úlcera de pressão).
+- PAM ≥85-90 por 7 d em lesão cervical/torácica alta.
+- Cirurgia descompressiva precoce (<24 h) em lesão cervical incompleta.
+
+**Trauma pediátrico:** tubo sem cuff até 8 a (cuff também aceito modernamente), reposição 20 mL/kg, dose única tranexâmico se evidência de sangramento.
+
+**Trauma em gestante ≥20 sem:** decúbito lateral esquerdo (ou desviar útero), CTG ≥4 h, anti-D se Rh−, perimortem cesárea em PCR materna em ≤5 min.
+
+**Não recomendado:** corticoide em TCE, manobra de Sellick rotineira, IOT antes de controle de sangramento maciço de extremidade.`,
+
+      treatment: `**Encaminhamento definitivo:** centro de trauma nível I em politrauma com ISS ≥16, TCE grave, lesão raquimedular, queimadura grande, trauma pediátrico complexo.
+
+**Prevenção secundária:** vacina antitetânica, profilaxia raiva se mordedura, ATB profilático em fratura exposta (cefazolina ± gentamicina), suporte psicológico (PTSD).`,
+
+      prescriptions: `\`\`\`
+PRIMEIRA HORA — XABCDE:
+1. Torniquete em sangramento exsanguinante de extremidade; compressão + hemostático em troncos.
+2. Colar cervical rígido + prancha (apenas transporte); IOT se GCS ≤8 ou via aérea instável (etomidato 0,3 mg/kg + rocurônio 1,2 mg/kg, videolaringoscopia).
+3. Toracostomia digital + dreno torácico 28-32F se pneumotórax/hemotórax.
+4. 2 acessos calibrosos (16G); ativar PTM se choque (1 CH:1 PFC:1 plaq, 1:1:1 OU sangue total).
+5. Ácido tranexâmico 1 g EV em 10 min + 1 g em 8 h (≤3 h do trauma).
+6. Gluconato de cálcio 10% 20 mL EV após 1ª UI de hemocomponente e a cada 4 UI.
+7. Cobertor térmico + fluido aquecido + ambiente >24 °C — alvo T ≥36 °C.
+8. Glicemia capilar; tiamina 100 mg EV se etilista/desnutrido; glicose 50% 50 mL se HGT <60.
+
+TCE MODERADO-GRAVE (GCS ≤12):
+9. Cabeceira 30°, normocapnia, SpO₂ ≥94%, PAM ≥80 (PAS ≥110).
+10. Salina hipertônica 3% 250 mL EV em 15 min (preferencial) OU manitol 20% 0,5-1 g/kg EV em 20 min se sinais de HIC/herniação.
+11. Reverter anticoagulação (ver protocolo AVCH/choque hemorrágico).
+12. Levetiracetam 1.000 mg EV ataque + 500-1.000 mg 12/12 h por 7 dias (profilaxia em TCE grave).
+13. Sedação dirigida (RASS −2 a −3) com fentanil + propofol; cisatracúrio em refratariedade.
+14. Avaliar neurocirurgia para monitor PIC (alvo <22) e craniectomia se HIC refratária.
+
+EXAMES E DESTINO:
+15. RX tórax + pelve + FAST/e-FAST na sala vermelha; AngioTC pan-scan se respondedor.
+16. Hemograma, gasometria + lactato + BD + Ca iônico, coagulograma, função renal/hepática, β-HCG (mulher), tipagem + prova cruzada.
+17. Antitetânica conforme cartão; ATB se fratura exposta (cefazolina 2 g EV ± gentamicina) ou trauma penetrante.
+18. Acionar centro de trauma nível I; cirurgia/embolização em ≤60 min se hemorragia interna.
+
+NÃO FAZER:
+- Hipotensão permissiva em TCE (alvo PAS ≥110).
+- Metilprednisolona em trauma raquimedular.
+- Corticoide em TCE.
+- Cristaloide >2 L se hemocomponente disponível.
+- Manobra de Sellick rotineira.
 \`\`\``,
     },
   },
