@@ -1,85 +1,26 @@
 import type { EmergencyProtocol } from "./types";
-
+ 
 export const sepsisProtocols: EmergencyProtocol[] = [
   {
-  id: "sepse-choque-septico",
-  title: "Sepse e Choque Séptico",
-  categoryId: "sepsis",
-  sections: [
-    {
-      id: "intro",
-      title: "Introdução",
-      content:
-        "A sepse é a principal causa de morte em UTIs no Brasil e no mundo. Define-se como disfunção orgânica ameaçadora à vida causada por resposta desregulada do hospedeiro à infecção. O choque séptico é o subgrupo mais grave, com mortalidade de 40–60%.\n\nO reconhecimento precoce e o tratamento imediato são os fatores mais determinantes de sobrevida. As diretrizes da Surviving Sepsis Campaign (SSC) 2026 — a atualização mais abrangente desde 2021, com 129 recomendações e 46 novas — enfatizam tratamento individualizado precoce, antimicrobial stewardship e continuidade do cuidado pós-alta.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026 · SSC 2026.",
-    },
-    {
-      id: "def",
-      title: "Definição",
-      content:
-        "Sepse (Sepsis-3, mantida na SSC 2026):\n• Infecção suspeita ou confirmada + disfunção orgânica\n• SOFA ≥ 2 pontos (ou aumento ≥ 2 do basal)\n\nChoque séptico:\n• Sepse + necessidade de vasopressor para manter PAM ≥ 65 mmHg\n• Lactato > 2 mmol/L (18 mg/dL) APESAR de ressuscitação volêmica adequada\n\n⚠️ TRIAGEM — SSC 2026 (mudança importante):\n• NEWS ou MEWS: RECOMENDADOS para triagem fora da UTI\n• qSOFA: NÃO mais recomendado como ferramenta de triagem (baixa sensibilidade — perdeu casos graves em estudos de validação pós-2021)\n• SOFA: permanece como critério diagnóstico e de disfunção orgânica\n\nSOFA (avaliação de disfunção orgânica):\n• PaO2/FiO2 (respiratório)\n• Plaquetas (coagulação)\n• Bilirrubina (hepático)\n• PAM / vasopressores (cardiovascular)\n• Glasgow (neurológico)\n• Creatinina / débito urinário (renal)",
-    },
-    {
-      id: "screening",
-      title: "Rastreamento e Identificação",
-      content:
-        "TRIAGEM RÁPIDA — Suspeitar de sepse se:\n• Infecção suspeita/confirmada + ≥ 1 disfunção orgânica:\n  — Hipotensão (PAS < 100)\n  — Taquicardia > 100 + taquipneia > 22\n  — Alteração de consciência\n  — Oligúria\n  — Lactato > 2 mmol/L\n  — SpO2 < 90%\n  — Pele mosqueada/livedo\n\nFerramenta de triagem recomendada (SSC 2026):\n• NEWS (National Early Warning Score) ou MEWS: preferidos ao qSOFA fora da UTI\n• qSOFA pode ser usado como complemento, não como ferramenta primária\n\nFoco infeccioso mais comum:\n• Pneumonia (40–50%)\n• Infecção urinária/pielonefrite (20%)\n• Infecção intra-abdominal (15%)\n• Pele e partes moles (10%)\n• Corrente sanguínea (cateter)\n• SNC (meningite)\n\nPopulações de risco:\n• Idosos > 65 anos\n• Imunossuprimidos\n• Diabéticos\n• Portadores de dispositivos invasivos\n• Pós-operatório",
-    },
-    {
-      id: "etiology",
-      title: "Etiologia",
-      content:
-        "Agentes mais comuns por foco:\n\nPneumonia comunitária:\n• S. pneumoniae, H. influenzae, Legionella, S. aureus\n• Atípicos: Mycoplasma, Chlamydia\n\nPneumonia hospitalar/VM:\n• P. aeruginosa, Acinetobacter, MRSA, Klebsiella KPC\n\nInfecção urinária:\n• E. coli (principal), Klebsiella, Enterococcus, Pseudomonas\n\nInfecção intra-abdominal:\n• Flora mista: E. coli, Bacteroides fragilis, Enterococcus\n\nPele e partes moles:\n• S. aureus (MSSA/MRSA), Streptococcus pyogenes\n• Fasciite necrosante: polimicrobiana ou GAS\n\nCateter venoso central:\n• S. aureus, S. epidermidis, Candida spp.\n\nNeutropenia febril:\n• P. aeruginosa, E. coli, Klebsiella, S. aureus",
-    },
-    {
-      id: "clinical",
-      title: "Apresentação Clínica",
-      content:
-        "Sinais de sepse (disfunção orgânica):\n\nCardiovascular:\n• Hipotensão (PAS < 90 ou PAM < 65 ou queda > 40 mmHg do basal)\n• Taquicardia\n• Pele fria, mosqueada, livedo reticular\n• TEC > 3 segundos\n\nRespiratório:\n• Taquipneia > 22 irpm\n• SpO2 < 90%, necessidade de O2\n• PaO2/FiO2 < 300 (lesão pulmonar)\n\nRenal:\n• Oligúria < 0,5 mL/kg/h\n• Creatinina elevada\n\nNeurológico:\n• Confusão, agitação, sonolência\n• Glasgow < 15\n\nHematológico:\n• Plaquetopenia\n• Coagulopatia (INR elevado, CIVD)\n\nHepático:\n• Icterícia\n• Bilirrubina e transaminases elevadas\n\nMetabólico:\n• Lactato > 2 mmol/L (hipoperfusão tecidual)\n• Acidose metabólica\n• Hiperglicemia de estresse\n\nChoque séptico:\n• Hipotensão refratária a volume (> 30 mL/kg)\n• Necessidade de vasopressor\n• Lactato > 2 mmol/L",
-    },
-    {
-      id: "diagnosis",
-      title: "Diagnóstico",
-      content:
-        "EXAMES IMEDIATOS (antes ou junto ao antibiótico):\n\n1. Lactato sérico (FUNDAMENTAL)\n   • > 2 mmol/L: hipoperfusão\n   • > 4 mmol/L: choque séptico provável\n   • Repetir em 2h (meta: clearance > 10–20%)\n\n2. Hemoculturas (2 pares, de sítios diferentes)\n   • Coletar ANTES do antibiótico (mas NÃO atrasar ATB)\n   • SSC 2026: em cenários de baixo recurso (UPA/SUS), 1 único par pode ser justificado — evidência de rendimento similar vs múltiplos pares (revisão sistemática 2025)\n   • Puncionar perifericamente + de cateter central se presente\n\n3. Culturas do foco suspeito:\n   • Urocultura, cultura de escarro/aspirado traqueal\n   • Cultura de líquido abdominal, ferida, LCR\n\n4. Exames laboratoriais:\n   • Hemograma completo\n   • Creatinina, ureia, eletrólitos\n   • Gasometria arterial com lactato\n   • Bilirrubinas, TGO, TGP\n   • Coagulograma (TP, INR, TTPa, fibrinogênio)\n   • PCR, procalcitonina (também para guiar descalonamento — SSC 2026)\n   • Glicemia\n\n5. Imagem conforme foco:\n   • RX tórax (pneumonia)\n   • TC abdome (abscesso, perfuração)\n   • USG (colecistite, pielonefrite)\n   • Ecocardiograma (endocardite)",
-    },
-    {
-      id: "differential",
-      title: "Diagnóstico Diferencial",
-      content:
-        "Outras causas de choque:\n• Choque cardiogênico (IAM, IC descompensada)\n• Choque hipovolêmico (hemorragia, desidratação)\n• Choque obstrutivo (TEP, tamponamento)\n• Choque anafilático\n\nOutras causas de SIRS sem infecção:\n• Pancreatite aguda\n• Grandes queimaduras\n• Politrauma\n• Pós-operatório\n• Crise adrenal\n• Síndrome de ativação macrofágica\n• Reação transfusional",
-    },
-    {
-      id: "conduct",
-      title: "Conduta",
-      content:
-        "BUNDLE SSC 2026 — INICIAR IMEDIATAMENTE:\n\n1. MEDIR LACTATO sérico\n   • Se > 2: repetir em 2h (meta: clearance ≥ 10–20%)\n   • TEC (tempo de enchimento capilar): usar como monitor adjunto de ressuscitação\n\n2. COLETAR HEMOCULTURAS antes do ATB\n   • NÃO atrasar ATB se demora na coleta\n   • Em UPA/SUS: 1 par pode ser suficiente (SSC 2026)\n\n3. ANTIBIÓTICO — TIMELINE SSC 2026 (novo e importante):\n   ┌─────────────────────────────────────────────────────┐\n   │ CHOQUE SÉPTICO ou SEPSE provável/definitiva:        │\n   │   → ATB IMEDIATO, idealmente em < 1 hora           │\n   │                                                     │\n   │ SUSPEITA de sepse SEM choque, BAIXO risco:          │\n   │   → Avaliação rápida por até 3h é aceitável         │\n   │   → NÃO atrasar em paciente instável!               │\n   └─────────────────────────────────────────────────────┘\n\n   Escolha empírica por foco:\n   • Comunitária sem foco definido:\n     — Ceftriaxona 2g IV + Azitromicina 500mg IV\n   • Comunitária abdominal:\n     — Piperacilina-Tazobactam 4,5g IV 6/6h\n     — OU Meropenem 1g IV 8/8h (se grave/ESBL)\n   • Hospitalar/associada à assistência:\n     — Meropenem 1g IV 8/8h + Vancomicina 15–20 mg/kg IV\n   • Se risco de Candida:\n     — Adicionar Anidulafungina 200mg IV D1, depois 100mg/dia\n\n4. RESSUSCITAÇÃO VOLÊMICA — SSC 2026:\n   • Cristaloide balanceado (Ringer Lactato, PlasmaLyte): SUGERIDO sobre SF 0,9% — evidência moderada\n     (Exceção: TCE → usar SF 0,9%)\n   • 30 mL/kg nas primeiras 3h + reavaliação frequente\n   • Após 30 mL/kg com hipoperfusão persistente: estratégia liberal OU restritiva conforme clínica\n   • Albumina: cristaloide sozinho sugerido sobre cristaloide + albumina na ressuscitação inicial\n   • NOVO SSC 2026: desescalonamento ativo de volume após fase aguda — evitar sobrecarga hídrica\n   • Avaliar responsividade: PLR (passive leg raising), VPP, IVC, TEC seriado\n\n5. VASOPRESSOR — SSC 2026 (mudanças importantes):\n   • Noradrenalina: PRIMEIRA ESCOLHA\n   • NOVO: Iniciar por acesso periférico — NÃO esperar CVC\n   • PAM alvo: ≥ 65 mmHg (padrão)\n   • NOVO para idosos ≥ 65 anos: PAM 60–65 mmHg é suficiente — sem benefício em alvos mais altos\n   • Se instabilidade grave (pele mosqueada, cianose, alteração mental): vasopressor pode ser iniciado concomitante ao volume\n   • Vasopressina 0,03–0,04 UI/min: adicionar se NE > 0,25–0,5 mcg/kg/min\n   • Corticosteroide: hidrocortisona 200 mg/dia para choque refratário (NE dose alta por > 4h)\n\nCONTROLE DE FOCO INFECCIOSO:\n• Drenagem de abscesso, coleção\n• Retirada de cateter/dispositivo infectado\n• Desbridamento de tecido necrótico\n• Realizar nas primeiras 6–12 horas\n\nCODE SEPSE (SSC 2026 — novo):\n• Protocolo institucional de resposta multidisciplinar recomendado\n• Reduz tempo até antibiótico e vasopressor (similar ao código PCR)",
-    },
-    {
-      id: "followup",
-      title: "Acompanhamento",
-      content:
-        "Primeiras 6 horas:\n• Reavaliação hemodinâmica a cada 30–60 min\n• Clearance de lactato (meta: queda > 10–20%/2h)\n• TEC seriado (meta: < 3 segundos)\n• Débito urinário (meta: > 0,5 mL/kg/h)\n• Avaliação de responsividade a fluidos antes de mais volume\n• Ajuste de vasopressor para PAM ≥ 65 (ou 60–65 se ≥ 65 anos)\n\n24–48 horas:\n• Resultado de culturas → descalonar antibiótico (antimicrobial stewardship — SSC 2026)\n• Procalcitonina seriada: reduzir ATB se queda > 80% do pico\n• Avaliar controle de foco\n• SOFA diário\n• Desescalonamento ativo de volume (evitar balanço hídrico positivo acumulado)\n\nMetas de ressuscitação:\n• PAM ≥ 65 mmHg (60–65 se idoso)\n• Lactato normalizando\n• TEC < 3 segundos\n• Débito urinário > 0,5 mL/kg/h\n\nDuração do antibiótico:\n• Procalcitonina guiada (SSC 2026 reforçada)\n• Geralmente 7–10 dias (individualizar por foco)\n• Descalonamento precoce quando possível\n\nPÓS-SEPSE — SSC 2026 (novo):\n• Síndrome pós-sepse: comprometimento cognitivo, TEPT, depressão, dor crônica (30–40% dos sobreviventes)\n• Reabilitação física e psicológica formalmente recomendada\n• Planejamento de alta com acompanhamento específico pós-sepse",
-    },
-    {
-      id: "treatment",
-      title: "Abordagem Terapêutica",
-      content:
-        "Vasopressores:\n• Noradrenalina (1ª escolha): 0,1–2 mcg/kg/min IV BIC\n  — Diluição: 4 amp (16mg) + SG 5% 234 mL = 64 mcg/mL\n  — INICIAR POR ACESSO PERIFÉRICO (SSC 2026) — não esperar CVC\n• Vasopressina: 0,03–0,04 UI/min (associar se NE > 0,25 mcg/kg/min)\n• Adrenalina: 0,1–1 mcg/kg/min (2ª ou 3ª linha)\n• Dobutamina: 2–20 mcg/kg/min (se disfunção miocárdica)\n\nCorticosteroide (choque refratário):\n• Hidrocortisona 200 mg/dia (50 mg IV 6/6h OU BIC)\n• Indicação: NE ≥ 0,25 mcg/kg/min por > 4h sem resposta\n• Desmame gradual\n\nFluidos:\n• Cristaloide balanceado (RL, PlasmaLyte): preferido sobre SF 0,9%\n• SF 0,9%: usar se TCE (hipercloremia reduzida)\n• Albumina: não recomendada rotineiramente na ressuscitação inicial\n\nControle glicêmico:\n• Meta: < 180 mg/dL\n• Insulina regular IV contínua se glicemia > 180\n• Evitar hipoglicemia (< 70)\n\nTransfusão:\n• Hb alvo > 7 g/dL (restritiva)\n• Hb > 9–10 se isquemia miocárdica ativa\n\nProfilaxia de TVP:\n• Enoxaparina 40 mg SC 1x/dia OU HNF 5000 UI SC 8/8h\n\nProfilaxia de úlcera de estresse:\n• Omeprazol 40 mg IV 1x/dia (se VM ou coagulopatia)",
-    },
-    {
-      id: "prescriptions",
-      title: "Guia de Prescrições",
-      content:
-        "PRESCRIÇÃO: CHOQUE SÉPTICO — UTI (SSC 2026)\n\n1. Dieta zero → dieta enteral precoce em 24–48h\n2. Ringer Lactato 1000 mL IV em 30 min (repetir até 30 mL/kg em 3h)\n3. Noradrenalina: 4 amp (16 mg) + SG 5% 234 mL IV BIC\n   — Iniciar por acesso periférico calibroso (não esperar CVC)\n   — Iniciar 5 mL/h (~ 0,05 mcg/kg/min), titular para PAM ≥ 65 mmHg\n   — (se paciente ≥ 65 anos: alvo PAM 60–65 mmHg)\n4. Vasopressina 20 UI + SF 0,9% 100 mL IV BIC a 3 mL/h (se NE ≥ 0,25 mcg/kg/min)\n5. Ceftriaxona 2 g + SF 0,9% 100 mL IV 12/12h (foco comunitário)\n   OU Meropenem 1 g + SF 0,9% 100 mL IV 8/8h (foco hospitalar/grave)\n6. Vancomicina ____ mg IV 12/12h (15–20 mg/kg/dose — se risco MRSA)\n7. Hidrocortisona 50 mg IV 6/6h (se NE ≥ 0,25 mcg/kg/min por > 4h)\n8. Omeprazol 40 mg IV 1x/dia\n9. Enoxaparina 40 mg SC 1x/dia (quando estável hemodinamicamente)\n10. Insulina regular SC conforme protocolo de glicemia (meta 140–180)\n11. Dipirona 1 g IV 6/6h se T ≥ 38°C\n12. Monitorização: PAM invasiva, SvO2, lactato 2/2h, TEC seriado, débito urinário horário\n13. Gasometria arterial com lactato a cada 2h (meta: clearance lactato ≥ 10%)\n14. Hemoculturas de controle em 48–72h\n15. Procalcitonina seriada para guiar descalonamento\n16. Balanço hídrico rigoroso — planejar desescalonamento ativo após fase aguda",
-    },
-    {
-      id: "references",
-      title: "Referências Bibliográficas",
-      content:
-        "1. Prescott H et al. Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026. Crit Care Med. 2026 Mar. doi:10.1097/CCM.0000000000007075\n2. Weiss SL et al. SSC International Guidelines for Management of Sepsis and Septic Shock in Children 2026. Intensive Care Med. 2026.\n3. Singer M et al. The Third International Consensus Definitions for Sepsis (Sepsis-3). JAMA 2016;315(8):801–810.\n4. Evans L et al. Surviving Sepsis Campaign: International Guidelines 2021. Crit Care Med 2021.\n5. Instituto Latino Americano de Sepse (ILAS) — Protocolo Brasileiro de Sepse, 2022.\n6. Levy MM et al. The Surviving Sepsis Campaign Bundle: 2018 Update. Crit Care Med 2018.\n7. ESICM. The 2026 Surviving Sepsis Campaign Guidelines. esicm.org, Mar 2026.",
-    },
-  ],
-},
+    id: "sepse-choque-septico",
+    title: "Sepse e Choque Séptico",
+    categoryId: "sepsis",
+    sections: [
+      { id: "intro", title: "Introdução", content: "A sepse é a principal causa de morte em UTIs no Brasil e no mundo. Define-se como disfunção orgânica ameaçadora à vida causada por resposta desregulada do hospedeiro à infecção. O choque séptico é o subgrupo mais grave, com mortalidade de 40–60%.\n\nAs diretrizes SSC 2026 — 129 recomendações, 46 novas — enfatizam tratamento individualizado precoce, antimicrobial stewardship e continuidade do cuidado pós-alta.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026 · SSC 2026." },
+      { id: "def", title: "Definição", content: "Sepse (Sepsis-3, mantida na SSC 2026):\n• Infecção suspeita ou confirmada + disfunção orgânica\n• SOFA ≥ 2 pontos (ou aumento ≥ 2 do basal)\n\nChoque séptico:\n• Sepse + vasopressor para PAM ≥ 65 mmHg\n• Lactato > 2 mmol/L APESAR de ressuscitação adequada\n\n⚠️ TRIAGEM SSC 2026 (mudança importante):\n• NEWS ou MEWS: RECOMENDADOS fora da UTI\n• qSOFA: NÃO mais recomendado (baixa sensibilidade)\n• SOFA: permanece como critério diagnóstico" },
+      { id: "screening", title: "Rastreamento e Identificação", content: "Suspeitar de sepse se infecção + ≥ 1:\n• Hipotensão (PAS < 100) • Taquicardia > 100 + taquipneia > 22\n• Alteração de consciência • Oligúria • Lactato > 2 mmol/L\n• SpO2 < 90% • Pele mosqueada/livedo\n\nFerramenta (SSC 2026): NEWS ou MEWS fora da UTI (não mais qSOFA)\n\nFocos mais comuns: Pneumonia (40–50%), ITU (20%), Intra-abdominal (15%), Pele (10%)" },
+      { id: "etiology", title: "Etiologia", content: "Por foco:\nPneumonia comunitária: S. pneumoniae, H. influenzae, Legionella, S. aureus\nPneumonia hospitalar/VM: P. aeruginosa, Acinetobacter, MRSA, Klebsiella KPC\nITU: E. coli, Klebsiella, Enterococcus, Pseudomonas\nIntra-abdominal: E. coli, Bacteroides fragilis, Enterococcus\nPele/partes moles: S. aureus (MSSA/MRSA), S. pyogenes\nCVP: S. aureus, S. epidermidis, Candida spp.\nNeutropenia febril: P. aeruginosa, E. coli, Klebsiella, S. aureus" },
+      { id: "clinical", title: "Apresentação Clínica", content: "Cardiovascular: Hipotensão, taquicardia, pele fria/mosqueada, TEC > 3s\nRespiratório: Taquipneia > 22, SpO2 < 90%, PaO2/FiO2 < 300\nRenal: Oligúria < 0,5 mL/kg/h, creatinina elevada\nNeurológico: Confusão, agitação, Glasgow < 15\nHematológico: Plaquetopenia, coagulopatia (CIVD)\nMetabólico: Lactato > 2 mmol/L, acidose, hiperglicemia de estresse\nChoque séptico: Hipotensão refratária a volume + vasopressor + lactato > 2" },
+      { id: "diagnosis", title: "Diagnóstico", content: "EXAMES IMEDIATOS:\n1. Lactato sérico: > 2 = hipoperfusão; repetir em 2h (meta: clearance ≥ 10–20%)\n2. Hemoculturas (SSC 2026): coletar antes do ATB; em UPA/SUS: 1 par pode ser suficiente\n3. Culturas do foco suspeito\n4. Laboratório: hemograma, creatinina, gasometria com lactato, bilirrubinas, coagulograma, PCR, procalcitonina, glicemia\n5. Imagem: RX tórax, TC abdome, USG, ecocardiograma (conforme foco)" },
+      { id: "differential", title: "Diagnóstico Diferencial", content: "Choque cardiogênico (IAM, IC), hipovolêmico (hemorragia, desidratação), obstrutivo (TEP, tamponamento), anafilático.\nSIRS sem infecção: pancreatite aguda, queimaduras, politrauma, crise adrenal, síndrome de ativação macrofágica." },
+      { id: "conduct", title: "Conduta", content: "BUNDLE SSC 2026 — INICIAR IMEDIATAMENTE:\n\n1. LACTATO sérico → repetir em 2h se > 2 (meta clearance ≥ 10–20%)\n\n2. HEMOCULTURAS antes do ATB (NÃO atrasar ATB)\n\n3. ANTIBIÓTICO — SSC 2026:\n• CHOQUE ou SEPSE provável: ATB em < 1 hora\n• SUSPEITA sem choque, baixo risco: avaliar até 3h (NÃO atrasar se instável)\n• Comunitária: Ceftriaxona 2g IV + Azitromicina 500mg IV\n• Abdominal: Piperacilina-Tazobactam 4,5g IV 6/6h\n• Hospitalar: Meropenem 1g IV 8/8h + Vancomicina 15–20 mg/kg IV\n\n4. FLUIDOS (SSC 2026):\n• Cristaloide balanceado (Ringer Lactato): preferido sobre SF 0,9%\n• 30 mL/kg nas primeiras 3h + reavaliação frequente\n• PLR/VPP/TEC antes de mais volume\n• Desescalonamento ativo após fase aguda (NOVO)\n\n5. VASOPRESSOR (SSC 2026):\n• Noradrenalina: PRIMEIRA ESCOLHA\n• NOVO: iniciar por acesso PERIFÉRICO — não esperar CVC\n• PAM alvo ≥ 65 mmHg (60–65 se ≥ 65 anos)\n• Vasopressina 0,03–0,04 UI/min se NE > 0,25 mcg/kg/min\n\n6. CORTICOSTEROIDE:\n• Hidrocortisona 200 mg/dia se NE ≥ 0,25 por > 4h" },
+      { id: "followup", title: "Acompanhamento", content: "6h: Lactato 2/2h (clearance ≥ 10–20%), TEC (< 3s), DU (> 0,5 mL/kg/h), ajuste NE para PAM ≥ 65\n24–48h: Culturas → descalonar ATB, procalcitonina seriada, SOFA diário, desescalonamento de volume\n\nPÓS-SEPSE — SSC 2026 (novo):\n• Síndrome pós-sepse: comprometimento cognitivo, TEPT, depressão, dor crônica (30–40% dos sobreviventes)\n• Reabilitação física e psicológica recomendada formalmente\n• Planejamento de alta com acompanhamento específico" },
+      { id: "treatment", title: "Abordagem Terapêutica", content: "Vasopressores:\n• Noradrenalina (1ª linha): 0,1–2 mcg/kg/min IV BIC | Diluição: 4 amp (16mg) + SG 5% 234 mL = 64 mcg/mL | INICIAR PERIFÉRICO\n• Vasopressina: 0,03–0,04 UI/min (associar se NE > 0,25)\n• Adrenalina: 0,1–1 mcg/kg/min (2ª/3ª linha)\n• Dobutamina: 2–20 mcg/kg/min (se disfunção miocárdica)\n\nCorticosteroide: Hidrocortisona 200 mg/dia (50 mg IV 6/6h) se refratário\nFluidos: RL preferido; desescalonar após fase aguda\nGlicemia: meta < 180 mg/dL | Hb: alvo > 7 g/dL\nTVP: Enoxaparina 40 mg SC | Úlcera: Omeprazol 40 mg IV" },
+      { id: "prescriptions", title: "Guia de Prescrições", content: "PRESCRIÇÃO: CHOQUE SÉPTICO — UTI (SSC 2026)\n1. Dieta zero → enteral precoce 24–48h\n2. Ringer Lactato 1000 mL IV em 30 min (até 30 mL/kg em 3h)\n3. Noradrenalina 4 amp (16mg) + SG5% 234 mL BIC — INICIAR PERIFÉRICO — 5 mL/h, titular PAM ≥ 65 (60–65 se ≥ 65 anos)\n4. Vasopressina 20 UI + SF 100 mL BIC 3 mL/h (se NE ≥ 0,25)\n5. Ceftriaxona 2g + SF 100 mL IV 12/12h | OU Meropenem 1g + SF 100 mL IV 8/8h\n6. Vancomicina ____ mg IV 12/12h (se risco MRSA)\n7. Hidrocortisona 50 mg IV 6/6h (se NE ≥ 0,25 por > 4h)\n8. Omeprazol 40 mg IV 1x/dia\n9. Enoxaparina 40 mg SC 1x/dia (quando estável)\n10. Insulina conforme protocolo (meta < 180)\n11. Lactato 2/2h, TEC seriado, DU horário, balanço hídrico rigoroso\n12. Hemoculturas controle 48–72h | Procalcitonina seriada (guiar descalonamento)" },
+      { id: "references", title: "Referências Bibliográficas", content: "1. Prescott H et al. Surviving Sepsis Campaign 2026. Crit Care Med. doi:10.1097/CCM.0000000000007075\n2. Singer M et al. Sepsis-3. JAMA 2016;315(8):801–810.\n3. Evans L et al. SSC 2021. Crit Care Med 2021.\n4. ILAS — Protocolo Brasileiro de Sepse, 2022." }
+    ]
+  },
+ 
   {
     id: "choque-hipovolemico",
     title: "Choque Hipovolêmico",

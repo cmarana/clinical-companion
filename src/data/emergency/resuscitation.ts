@@ -1,79 +1,25 @@
 import type { EmergencyProtocol } from "./types";
-
+ 
 export const resuscitationProtocols: EmergencyProtocol[] = [
   {
-  id: "em-pcr-adulto",
-  title: "PCR Adulto",
-  categoryId: "resuscitation",
-  sections: [
-    {
-      id: "intro",
-      title: "Introdução",
-      content:
-        "A parada cardiorrespiratória (PCR) é a cessação súbita da atividade mecânica cardíaca, confirmada pela ausência de pulso central detectável, irresponsividade e apneia ou respiração agônica (gasping). Representa a emergência médica de maior gravidade, sendo a principal causa de morte evitável quando o atendimento é imediato.\n\nEm outubro de 2025, a AHA publicou a primeira revisão completa das diretrizes de RCP e ECC desde 2020 (AHA Guidelines for CPR and ECC 2025). A estrutura dos algoritmos se manteve, com atualizações clínicas em OVACE, capnografia, acesso vascular, comunicação em equipe e naloxona.\n\nNo Brasil, estima-se mais de 200.000 PCRs/ano, sendo aproximadamente metade extra-hospitalar. A sobrevida depende diretamente da aplicação da cadeia de sobrevivência.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026 · AHA 2025.",
-    },
-    {
-      id: "def",
-      title: "Definição",
-      content:
-        "Parada Cardiorrespiratória (PCR): interrupção súbita e inesperada da circulação sistêmica e da respiração espontânea eficaz.\n\nRitmos de parada:\n• Fibrilação Ventricular (FV): atividade elétrica desorganizada, sem contração eficaz. Ritmo chocável.\n• Taquicardia Ventricular sem Pulso (TVSP): ritmo organizado com QRS alargado, porém sem débito cardíaco. Ritmo chocável.\n• Atividade Elétrica Sem Pulso (AESP): atividade elétrica organizada no monitor, porém sem pulso palpável. Ritmo não chocável.\n• Assistolia: ausência de atividade elétrica ventricular. Ritmo não chocável. Confirmar em 2 derivações.",
-    },
-    {
-      id: "screening",
-      title: "Rastreamento e Identificação",
-      content:
-        "Reconhecimento em até 10 segundos:\n1. Verificar responsividade: chamar o paciente, tocar nos ombros.\n2. Avaliar respiração: apneia ou gasping (respiração agônica não é respiração efetiva).\n3. Checar pulso central (carotídeo ou femoral) por no máximo 10 segundos.\n\nSe irresponsivo + sem respiração efetiva + sem pulso → PCR confirmada.\n\nSinais de alerta pré-PCR:\n• Taquicardia ou bradicardia súbita\n• Hipotensão refratária\n• Alteração aguda do nível de consciência\n• Padrão respiratório anormal\n• Dessaturação rápida\n\nEscalas de alerta precoce (NEWS, MEWS) auxiliam na identificação de deterioração.",
-    },
-    {
-      id: "etiology",
-      title: "Etiologia",
-      content:
-        "Causas reversíveis — 5H e 5T:\n\n5H:\n• Hipovolemia: hemorragia, desidratação grave\n• Hipóxia: obstrução de via aérea, pneumotórax, afogamento\n• Hidrogênio (acidose): cetoacidose, acidose lática, IRC\n• Hipocalemia / Hipercalemia: distúrbios eletrolíticos\n• Hipotermia: exposição ambiental, afogamento\n\n5T:\n• Tensão no tórax (pneumotórax hipertensivo)\n• Tamponamento cardíaco\n• Toxinas: intoxicação, overdose de opioides\n• Trombose coronariana (IAM)\n• Tromboembolismo pulmonar (TEP)",
-    },
-    {
-      id: "clinical",
-      title: "Apresentação Clínica",
-      content:
-        "Manifestações imediatas:\n• Perda súbita da consciência\n• Ausência de pulso central\n• Apneia ou respiração agônica (gasping)\n• Cianose progressiva\n• Midríase (após 60–90 segundos)\n\nSinais premonitórios (quando presentes):\n• Dor torácica súbita\n• Palpitações intensas seguidas de síncope\n• Dispneia aguda\n• Sudorese fria e palidez extrema",
-    },
-    {
-      id: "diagnosis",
-      title: "Diagnóstico",
-      content:
-        "Diagnóstico clínico em até 10 segundos:\n1. Irresponsivo\n2. Sem respiração efetiva\n3. Sem pulso central\n\nNão atrasar RCP para monitorização. Após início:\n\n• Monitor cardíaco/desfibrilador: identificar ritmo\n• Capnografia (ETCO2): confirma IOT e monitora qualidade da RCP\n  — ETCO2 < 10 mmHg: compressões ineficazes ou baixo débito\n  — Elevação súbita ETCO2 > 40 mmHg: possível RCE (AHA 2025: uso fortemente recomendado)\n• Glicemia capilar\n• POCUS: identificar causas reversíveis (tamponamento, pneumotórax, hipovolemia, TEP)",
-    },
-    {
-      id: "conduct",
-      title: "Conduta",
-      content:
-        "ALGORITMO ACLS — AHA 2025:\n\n1. RECONHECIMENTO E ATIVAÇÃO:\n• Confirmar PCR em < 10 segundos\n• Chamar ajuda e solicitar desfibrilador/carrinho de emergência\n• Iniciar RCP imediatamente\n\n2. RCP DE ALTA QUALIDADE:\n• Compressões: 100–120/min, profundidade 5–6 cm\n• Permitir retorno completo do tórax\n• Minimizar interrupções (< 10 segundos)\n• Relação 30:2 sem via aérea avançada\n• Com VAA: compressões contínuas + 1 ventilação a cada 6 segundos\n• Trocar compressor a cada 2 minutos\n• AHA 2025: CPR em pacientes com obesidade — MESMA técnica. Sem modificações indicadas (revisão ILCOR 2024, 34 estudos)\n\n3. RITMO CHOCÁVEL (FV / TVSP):\n• Desfibrilação: 200J bifásico → RCP 2 min → reavaliar\n• Adrenalina 1mg IV/IO após 2º choque, depois a cada 3–5 min\n• Amiodarona 300mg IV/IO após 3º choque, depois 150mg\n• Alternativa: Lidocaína 1–1,5 mg/kg\n\n4. RITMO NÃO CHOCÁVEL (AESP / ASSISTOLIA):\n• RCP contínua\n• Adrenalina 1mg IV/IO o mais precoce possível, repetir a cada 3–5 min\n• Buscar e tratar causas reversíveis (5H e 5T)\n\n5. ACESSO VASCULAR — AHA 2025 (atualizado):\n• Acesso IV periférico: PRIMEIRA ESCOLHA\n• IO (intraósseo): quando IV não obtido rapidamente — PREFERIDO sobre acesso central\n• Acesso venoso central: NÃO recomendado rotineiramente durante PCR\n\n6. CAPNOGRAFIA — AHA 2025 (reforçado):\n• Uso fortemente recomendado durante toda a ressuscitação\n• ETCO2 > 10 mmHg: meta de qualidade de compressões\n• Elevação súbita → possível RCE\n\n7. COMUNICAÇÃO EM EQUIPE — AHA 2025 (novo foco):\n• Loop fechado (closed-loop): executor repete a ordem e confirma execução\n• Líder anuncia ação → membro confirma → líder confirma execução\n• Erros em ressuscitação têm forte componente de comunicação\n\n8. OVACE — MUDANÇA AHA 2025 (importante):\n• Adultos e crianças: 5 TAPAS NAS COSTAS (interescapular) ANTES das compressões abdominais (Heimlich)\n• Evidência: revisão ILCOR 2024\n• Lactentes: eliminar técnica de 2 dedos → usar calcâneo de 1 mão ou 2 polegares (encircling)\n\n9. NALOXONA NO BLS — AHA 2025 (novo):\n• Naloxona integrada ao BLS para PCR por suspeita de opioide\n• 4 mg intranasal por leigos antes do SAMU\n• Profissionais: 0,4–2 mg IV/IO se suspeita de opioide",
-    },
-    {
-      id: "followup",
-      title: "Acompanhamento",
-      content:
-        "CUIDADOS PÓS-PCR — AHA 2025:\n\n1. Via aérea e ventilação:\n• Manter IOT com VM\n• SpO2 alvo: 92–98% (evitar hiperóxia)\n• PaCO2 alvo: 35–45 mmHg\n• ETCO2 contínua\n\n2. Hemodinâmica:\n• PAM alvo ≥ 65 mmHg\n• Noradrenalina: 1ª escolha\n• ECG 12D imediato → se IAMCSST → cateterismo de emergência (mesmo comatoso)\n\n3. Neuroproteção:\n• Controle direcionado de temperatura (TTM): 36–37,5°C (normotermia ativa)\n  — Hipotermia 33°C NÃO mostrou benefício adicional vs normotermia em grandes RCTs\n  — Evitar febre agressivamente por 72h\n• Controlar convulsões (levetiracetam)\n• EEG contínuo 24–72h\n\n4. Metabólico:\n• Glicemia 140–180 mg/dL\n• Corrigir eletrólitos\n• Lactato seriado\n\n5. Prognóstico neurológico:\n• Avaliação multimodal após 72h de normotermia\n• EEG, PESS, neuroimagem, NSE sérica",
-    },
-    {
-      id: "treatment",
-      title: "Abordagem Terapêutica",
-      content:
-        "MEDICAÇÕES DURANTE A PCR:\n\nAdrenalina (Epinefrina):\n• Dose: 1mg IV/IO a cada 3–5 minutos\n• Preparo: 1 ampola (1mg) + 9mL SF 0,9% = 1:10.000\n• FV/TVSP: após 2º choque\n• AESP/Assistolia: o mais precoce possível\n\nAmiodarona:\n• 1ª dose: 300mg IV/IO em bolus (após 3º choque em FV/TVSP refratária)\n• 2ª dose: 150mg IV/IO\n• Diluir em 20mL de SG 5%\n\nLidocaína (alternativa):\n• 1–1,5 mg/kg IV\n• Doses subsequentes: 0,5–0,75 mg/kg a cada 5–10 min (máx 3 mg/kg)\n\nMagnésio:\n• Indicação: Torsades de Pointes\n• 1–2g IV em 15 min\n\nBicarbonato de Sódio 8,4%:\n• Indicação: hipercalemia conhecida, acidose grave, intoxicação por tricíclicos\n• 1 mEq/kg IV\n\nGluconato de Cálcio 10%:\n• Indicação: hipercalemia, hipocalcemia, intoxicação por BCC\n• 30mL IV em 2–5 min\n\nNaloxona (AHA 2025 — novo no algoritmo BLS):\n• PCR por suspeita de opioide\n• 0,4–2 mg IV/IO\n• Leigos: 4 mg intranasal\n\nAtropina: NÃO recomendada na PCR\nVasopressina: removida do algoritmo ACLS",
-    },
-    {
-      id: "prescriptions",
-      title: "Guia de Prescrições",
-      content:
-        "PRESCRIÇÃO PÓS-PCR — ADMISSÃO EM UTI (AHA 2025):\n\n1. Dieta: zero → avaliar enteral precoce em 24–48h\n2. Acesso venoso central\n3. Cateter arterial para PA invasiva\n4. SVD para débito urinário horário\n5. Ventilação mecânica:\n   • VC 6–8 mL/kg, PEEP 5–8 cmH2O\n   • FiO2: titular SpO2 92–98%\n   • FR: ajustar para PaCO2 35–45 mmHg\n6. Noradrenalina: 0,1–2 mcg/kg/min IV BIC — titular PAM ≥ 65 mmHg\n7. Sedação:\n   • Midazolam 0,05–0,2 mg/kg/h + Fentanil 1–3 mcg/kg/h IV BIC\n8. Controle de temperatura:\n   • Alvo: normotermia ativa 36–37,5°C (AHA 2025)\n   • Dipirona 1g IV 6/6h se T > 37,5°C\n9. Levetiracetam 1500mg IV 12/12h (profilaxia convulsões pós-anóxica)\n10. Glicemia capilar 4/4h — insulina conforme protocolo\n11. Omeprazol 40mg IV 1x/dia\n12. Enoxaparina 40mg SC 1x/dia (após 48h, se sem sangramento ativo)\n13. ECG 12D imediato → se IAMCSST → cateterismo emergência\n14. Exames: gasometria 6/6h, lactato 6/6h, troponina 0–6–12h, eletrólitos 12/12h, Rx tórax, eco em 24h\n15. EEG contínuo por 24–72h",
-    },
-    {
-      id: "references",
-      title: "Referências Bibliográficas",
-      content:
-        "1. American Heart Association (AHA). Guidelines for Cardiopulmonary Resuscitation and Emergency Cardiovascular Care 2025. Circulation, 2025.\n2. AHA Highlights of the 2025 Guidelines for CPR and ECC. heartandstroke.ca, 2025.\n3. Panchal AR et al. Part 3: Adult Basic and Advanced Life Support. Circulation, 2020;142(suppl 2):S366–S468. [base estrutural]\n4. Soar J et al. European Resuscitation Council Guidelines 2021: Adult ALS. Resuscitation, 2021.\n5. ILCOR CoSTR 2020–2025. Consensus on Science and Treatment Recommendations.\n6. SBC. Diretriz de RCP e Cuidados Cardiovasculares de Emergência, 2019.\n7. Dankiewicz J et al. TTM2 Trial — Hypothermia vs Normothermia. N Engl J Med, 2021.\n8. Kudenchuk PJ et al. ALPS Trial — Amiodarone, Lidocaine vs Placebo. N Engl J Med, 2016.",
-    },
-  ],
-},
+    id: "em-pcr-adulto",
+    title: "PCR Adulto",
+    categoryId: "resuscitation",
+    sections: [
+      { id: "intro", title: "Introdução", content: "A parada cardiorrespiratória (PCR) é a cessação súbita da atividade mecânica cardíaca, confirmada pela ausência de pulso central, irresponsividade e apneia ou respiração agônica. É a emergência médica de maior gravidade.\n\nEm outubro de 2025, a AHA publicou a primeira revisão completa das diretrizes de RCP e ECC desde 2020 (AHA Guidelines 2025). Estrutura mantida, com atualizações em OVACE, capnografia, acesso vascular, naloxona e comunicação em equipe.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026 · AHA 2025." },
+      { id: "def", title: "Definição", content: "Ritmos de parada:\n• Fibrilação Ventricular (FV): ritmo chocável. Atividade elétrica desorganizada.\n• Taquicardia Ventricular sem Pulso (TVSP): ritmo chocável. QRS alargado sem débito.\n• Atividade Elétrica Sem Pulso (AESP): ritmo não chocável. ECG organizado sem pulso.\n• Assistolia: ritmo não chocável. Confirmar em 2 derivações." },
+      { id: "screening", title: "Rastreamento e Identificação", content: "Reconhecimento em ≤ 10 segundos:\n1. Verificar responsividade (chamar, tocar nos ombros)\n2. Avaliar respiração (apneia ou gasping não é respiração efetiva)\n3. Checar pulso central por ≤ 10 segundos\n→ Irresponsivo + sem respiração + sem pulso = PCR\n\nSinais de alerta pré-PCR: taquicardia/bradicardia súbita, hipotensão refratária, alteração aguda de consciência, dessaturação rápida" },
+      { id: "etiology", title: "Etiologia", content: "Causas reversíveis — 5H e 5T:\n5H: Hipovolemia, Hipóxia, Hidrogênio (acidose), Hipocalemia/Hipercalemia, Hipotermia\n5T: Tensão no tórax (pneumotórax), Tamponamento, Toxinas, Trombose coronariana (IAM), Tromboembolismo pulmonar (TEP)" },
+      { id: "clinical", title: "Apresentação Clínica", content: "Manifestações imediatas:\n• Perda súbita da consciência • Ausência de pulso central\n• Apneia ou gasping • Cianose progressiva • Midríase (após 60–90s)" },
+      { id: "diagnosis", title: "Diagnóstico", content: "Diagnóstico clínico em ≤ 10 segundos. Após início da RCP:\n• Monitor/desfibrilador: identificar ritmo\n• Capnografia (ETCO2): confirma IOT, monitora qualidade da RCP\n  — ETCO2 < 10 mmHg: compressões ineficazes\n  — Elevação súbita ETCO2 > 40: possível RCE (AHA 2025: uso fortemente recomendado)\n• POCUS: causas reversíveis (tamponamento, pneumotórax, hipovolemia, TEP)" },
+      { id: "conduct", title: "Conduta", content: "ALGORITMO ACLS — AHA 2025:\n\n1. RECONHECIMENTO + ATIVAÇÃO < 10 segundos\n\n2. RCP DE ALTA QUALIDADE:\n• Compressões: 100–120/min, profundidade 5–6 cm\n• Retorno completo do tórax, interrupções < 10s\n• 30:2 sem VAA; com VAA: contínuas + 1 vent/6s\n• Trocar compressor a cada 2 min\n• AHA 2025: CPR em obesidade — MESMA técnica (ILCOR 2024)\n\n3. RITMO CHOCÁVEL (FV/TVSP):\n• 200J bifásico → RCP 2 min → reavaliar\n• Adrenalina 1mg após 2º choque, repetir 3–5 min\n• Amiodarona 300mg após 3º choque, depois 150mg\n\n4. RITMO NÃO CHOCÁVEL (AESP/ASSISTOLIA):\n• RCP contínua\n• Adrenalina 1mg o mais precoce possível, repetir 3–5 min\n• Buscar e tratar 5H e 5T\n\n5. ACESSO VASCULAR — AHA 2025:\n• IV periférico: PRIMEIRA ESCOLHA\n• IO (intraósseo): preferido sobre CVC quando IV não obtido rápido\n• CVC: NÃO recomendado rotineiramente durante PCR\n\n6. CAPNOGRAFIA — AHA 2025 (fortemente recomendada):\n• Durante toda a ressuscitação\n• ETCO2 > 10 mmHg = meta de compressões\n• Elevação súbita = possível RCE\n\n7. OVACE — AHA 2025 (MUDANÇA IMPORTANTE):\n• Adultos e crianças: 5 TAPAS NAS COSTAS (interescapular) ANTES do Heimlich (ILCOR 2024)\n• Lactentes: 2 polegares (encircling) ou calcâneo de 1 mão\n\n8. NALOXONA — AHA 2025 (novo no BLS):\n• PCR por suspeita de opioide: 0,4–2 mg IV/IO\n• Leigos: 4 mg intranasal\n\n9. COMUNICAÇÃO — AHA 2025 (loop fechado):\n• Líder anuncia → executor repete → líder confirma execução" },
+      { id: "followup", title: "Acompanhamento", content: "CUIDADOS PÓS-PCR (após RCE) — AHA 2025:\n\nVia aérea: SpO2 92–98% (evitar hiperóxia), PaCO2 35–45 mmHg\nHemodinâmica: PAM ≥ 65 mmHg, noradrenalina 1ª escolha, ECG 12D imediato → se IAMCSST → cateterismo\nNeuroproteção: TTM 36–37,5°C (normotermia ativa — AHA 2025) | Hipotermia 33°C NÃO mostrou benefício adicional\nMetabólico: Glicemia 140–180 mg/dL, corrigir eletrólitos\nPrognóstico: avaliação multimodal após 72h" },
+      { id: "treatment", title: "Abordagem Terapêutica", content: "Adrenalina: 1mg IV/IO a cada 3–5 min | Preparo: 1 amp (1mg) + 9mL SF = 1:10.000\nAmiodarona: 300mg IV bolus (3º choque), depois 150mg | Diluir em 20mL SG 5%\nLidocaína (alternativa): 1–1,5 mg/kg IV\nMagnésio: 1–2g IV em 15 min (Torsades de Pointes)\nBicarbonato 8,4%: 1 mEq/kg IV (hipercalemia, acidose grave, tricíclicos)\nGluconato de Cálcio 10%: 30mL IV 2–5 min (hipercalemia, hipocalcemia, BCC)\nNaloxona: 0,4–2 mg IV/IO (opioide) | Leigos: 4 mg nasal\nAtropina: NÃO recomendada na PCR | Vasopressina: removida do algoritmo" },
+      { id: "prescriptions", title: "Guia de Prescrições", content: "PRESCRIÇÃO PÓS-PCR — UTI (AHA 2025):\n1. Dieta zero → enteral precoce 24–48h\n2. CVC + cateter arterial + SVD\n3. VM: VC 6–8 mL/kg, PEEP 5–8, FiO2 titular SpO2 92–98%, FR para PaCO2 35–45\n4. Noradrenalina BIC titular PAM ≥ 65\n5. Midazolam 0,05–0,2 mg/kg/h + Fentanil 1–3 mcg/kg/h BIC\n6. TTM: normotermia ativa 36–37,5°C | Dipirona 1g IV 6/6h se T > 37,5°C\n7. Levetiracetam 1.500mg IV 12/12h (pós-anóxica)\n8. Glicemia 4/4h — insulina protocolo (meta 140–180)\n9. Omeprazol 40mg IV 1x/dia\n10. Enoxaparina 40mg SC 1x/dia (após 48h)\n11. ECG 12D → se IAMCSST → cateterismo emergência\n12. Gasometria 6/6h, lactato 6/6h, troponina 0–6–12h, Rx tórax, eco 24h\n13. EEG contínuo 24–72h" },
+      { id: "references", title: "Referências Bibliográficas", content: "1. American Heart Association. Guidelines for CPR and ECC 2025. Circulation 2025.\n2. Panchal AR et al. Part 3: Adult BLS and ALS. Circulation 2020;142(suppl 2):S366–S468.\n3. Dankiewicz J et al. TTM2 Trial — Hypothermia vs Normothermia. N Engl J Med 2021.\n4. ILCOR CoSTR 2020–2025. Consensus on Science and Treatment Recommendations.\n5. SBC. Diretriz de RCP e Cuidados Cardiovasculares de Emergência, 2019." }
+    ]
+  },
+ 
   {
     id: "em-pcr-pediatrica",
     title: "PCR Pediátrica",
@@ -265,3 +211,4 @@ export const resuscitationProtocols: EmergencyProtocol[] = [
     ],
   },
 ];
+ 
