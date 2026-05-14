@@ -296,7 +296,7 @@ const categoryLoaders: Record<string, () => Promise<FullProtocol[]>> = {
     ]);
     return merge([
       a.hematologyFullProtocols, b.hematologyFullProtocols2, c.hematologyFullProtocols3, d.hematologyFullProtocols4,
-      e.hematologyFullProtocols5, f.hematologyFullProtocols6, g.hematologyFullProtocols7, h.hematologyFullProtocols8,
+      e.hematologyFullProtocols5, f.hematologyFullProtocols6, g.hematologyFullProtocols7, h.hematoFullProtocols8,
       i.hematoFullProtocols9,
     ]);
   },
