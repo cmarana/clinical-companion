@@ -24,16 +24,18 @@ export const SECTION_PATCHES_2026: SectionPatch2026[] = [
     protocolId: "fp-sepse-choque",
     lastReviewed: "2026-03",
     sections: {
-      conduct: `**Bundle de 1 hora (SSC 2024 + ILAS 2025) — iniciar em paralelo:**
+      conduct: `**Bundle de 1 hora (SSC 2026 — publicada 23/mar/2026 + ILAS 2025) — iniciar em paralelo:**
+
+> 🆕 **Atualização SSC 2026:** triagem com **NEWS / NEW2 / MEWS / SIRS** preferencial sobre qSOFA (recomendação forte). Em sepse **provável/definida** (com OU sem choque): ATB em ≤1 h. Em sepse **possível** sem choque: investigação rápida + ATB em ≤3 h se persistir suspeita. Cristaloide **balanceado** sobre SF 0,9% (exceto TCE). Iniciar **noradrenalina em veia periférica** sem aguardar acesso central. PAM alvo **65 mmHg** (60-65 se ≥65 anos).
 
 1. **Lactato sérico** — repetir em 2-4 h se inicial >2 mmol/L. Meta: clareamento ≥10%/h.
 2. **Hemoculturas (2 pares) ANTES do antibiótico** — não atrasar ATB >45 min para colher.
-3. **Antibiótico de amplo espectro EV em ≤1 h** (choque séptico) ou ≤3 h (sepse sem choque). Janela "door-to-antibiotic" auditada.
-4. **Cristaloide balanceado 30 mL/kg em 3 h** se PAS <90, PAM <65 ou lactato ≥4 mmol/L. **Ringer lactato ou Plasma-Lyte preferenciais sobre SF 0,9%** (PLUS, BaSICS, SMART trials).
-5. **Vasopressor precoce — noradrenalina 1ª linha** para PAM ≥65 mmHg. Iniciar em veia periférica calibrosa enquanto se obtém acesso central; não atrasar.
-6. **Reavaliação dinâmica de fluidoresponsividade** (elevação passiva de pernas, ΔPP, VTI aórtico, POCUS pulmonar/cardíaco) — evitar sobrecarga hídrica.
+3. **Antibiótico de amplo espectro EV em ≤1 h** (sepse provável/definida) — janela "door-to-antibiotic" auditada.
+4. **Cristaloide balanceado 30 mL/kg em 3 h** (Ringer lactato/Plasma-Lyte preferenciais — PLUS, BaSICS, SMART).
+5. **Noradrenalina precoce em veia periférica** para PAM ≥65 mmHg, sem aguardar acesso central.
+6. **Reavaliação dinâmica de fluidoresponsividade** (elevação passiva de pernas, ΔPP, VTI aórtico, POCUS) — evitar sobrecarga.
 
-**Foco infeccioso — controle em ≤6-12 h:** drenagem de abscessos, retirada de cateteres infectados, desbridamento cirúrgico (fasciite), CPRE em colangite.`,
+**Foco infeccioso — controle em ≤6 h (SSC 2026):** drenagem de abscessos, retirada de cateteres infectados, desbridamento cirúrgico (fasciite), CPRE em colangite.`,
 
       treatment: `**Antibioticoterapia empírica (ajustar por foco e ecologia local):**
 - Foco indeterminado / nosocomial: piperacilina-tazobactam 4,5 g 6/6 h **OU** meropeném 1 g 8/8 h.
