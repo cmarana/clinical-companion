@@ -373,6 +373,14 @@ export default function AdminDashboard() {
             <Shield size={16} />
             Checklist de validação 2026 (status por aba + integridade)
           </Button>
+          <Button
+            variant="outline"
+            className="w-full h-auto py-3 flex-col gap-1 text-xs"
+            onClick={() => navigate("/admin/coverage-audit")}
+          >
+            <Shield size={16} />
+            Auditoria de cobertura 2025/2026 (master list por setor)
+          </Button>
         </div>
       )}
 
