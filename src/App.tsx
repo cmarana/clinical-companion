@@ -78,6 +78,7 @@ const AdminMedicalKnowledge = lazy(() => import("@/pages/AdminMedicalKnowledge")
 const AdminTestUsers = lazy(() => import("@/pages/AdminTestUsers"));
 const AdminGuidelineReview = lazy(() => import("@/pages/AdminGuidelineReview"));
 const ValidationChecklist = lazy(() => import("@/pages/ValidationChecklist"));
+const CoverageAudit = lazy(() => import("@/pages/CoverageAudit"));
 const UserAnalytics = lazy(() => import("@/pages/UserAnalytics"));
 const UpdatesFeed = lazy(() => import("@/pages/UpdatesFeed"));
 
