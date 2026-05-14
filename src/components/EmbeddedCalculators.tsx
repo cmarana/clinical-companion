@@ -278,6 +278,319 @@ function HEARTCalc() {
 
 // ── Calculator registry mapped to protocol keywords ──
 
+// ── Dengue / Chikungunya: hidratação por peso e fase ──
+function DengueHidratacaoCalc() {
+  const [peso, setPeso] = useState<number>(70);
+  const [grupo, setGrupo] = useState<"A" | "B" | "C" | "D">("A");
+  const [faixa, setFaixa] = useState<"adulto" | "crianca" | "idoso">("adulto");
+  const isCrianca = faixa === "crianca";
+  const isIdoso = faixa === "idoso";
+
+  const oralDiaria = Math.round(peso * 60);
+  const cExpansao1h = Math.round(peso * 10);
+  const cFase2 = Math.round(peso * 25);
+  const cFase3 = Math.round(peso * 25);
+  const dBolus = Math.round(peso * 20);
+  const cMax = Math.round(peso * 30);
+
+  const blocos: Record<string, { titulo: string; passos: string[]; alerta?: string }> = {
+    A: {
+      titulo: "Grupo A — Hidratação oral domiciliar",
+      passos: [
+        `Volume diário total: ${oralDiaria} mL/dia (≈ 60 mL/kg)`,
+        "1/3 do volume com SRO + 2/3 líquidos caseiros",
+        "Reavaliação em 48 h ou imediato se sinais de alarme",
+      ],
+    },
+    B: {
+      titulo: "Grupo B — Observação + hidratação supervisionada",
+      passos: [
+        `Mesmo volume oral (${oralDiaria} mL/dia)`,
+        "Hemograma + Hct + plaquetas a cada 4-6 h",
+        "Se Hct ↑ >10% ou plaquetas em queda → conduzir como Grupo C",
+      ],
+      alerta: isIdoso ? "≥65 a: limiar baixo para internação. Monitorar PA postural, lactato e perfusão." : undefined,
+    },
+    C: {
+      titulo: "Grupo C — Expansão parenteral (sinais de alarme)",
+      passos: isCrianca
+        ? [
+            `Fase 1 (criança): SF/Ringer ${Math.round(peso * 20)} mL EV em 2 h (20 mL/kg)`,
+            "Reavaliar Hct, PA, diurese e perfusão",
+            "Se melhora: manutenção Holliday-Segar; se sem melhora: repetir fase",
+          ]
+        : [
+            `Fase 1: SF 0,9% ou Ringer ${cExpansao1h} mL EV em 1 h (10 mL/kg)`,
+            `Se MELHORA: ${cFase2} mL EV em 6-8 h (25 mL/kg) → ${cFase3} mL EV em 8-12 h`,
+            `Se sem melhora: repetir 10 mL/kg em 1 h até 3× (teto ${cMax} mL na expansão)`,
+            "Se persistir após 30 mL/kg → tratar como Grupo D",
+          ],
+      alerta: isIdoso ? "≥65 a: reavaliar a cada 2 h, vigiar BNP/POCUS para evitar sobrecarga." : undefined,
+    },
+    D: {
+      titulo: "Grupo D — Choque (UTI)",
+      passos: [
+        `Bolus: Ringer lactato ${dBolus} mL EV em 15-30 min (20 mL/kg) — repetir até 3×`,
+        "Se PAM <65 após 30 mL/kg: noradrenalina 0,05-0,5 mcg/kg/min EV BIC",
+        "Albumina 5% 250-500 mL se refratário e Hct elevado",
+        "Hemácias se Hb <7 ou sangramento; plaquetas só se ativo + <50 mil",
+      ],
+    },
+  };
+  const b = blocos[grupo];
+
+  return (
+    <div className="space-y-3">
+      <div className="grid grid-cols-2 gap-3">
+        <div className="space-y-1">
+          <Label className="font-heading text-xs">Peso (kg)</Label>
+          <Input type="number" min={3} max={200} value={peso} onChange={(e) => setPeso(Number(e.target.value) || 0)} className="h-8 text-xs" />
+        </div>
+        <div className="space-y-1">
+          <Label className="font-heading text-xs">Faixa etária</Label>
+          <Select value={faixa} onValueChange={(v) => setFaixa(v as typeof faixa)}>
+            <SelectTrigger className="h-8 text-xs"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="adulto">Adulto (15-64 a)</SelectItem>
+              <SelectItem value="idoso">Idoso ≥65 a (alto risco)</SelectItem>
+              <SelectItem value="crianca">Criança</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+      <div className="space-y-1">
+        <Label className="font-heading text-xs">Estrato de risco / fase</Label>
+        <Select value={grupo} onValueChange={(v) => setGrupo(v as typeof grupo)}>
+          <SelectTrigger className="h-8 text-xs"><SelectValue /></SelectTrigger>
+          <SelectContent>
+            <SelectItem value="A">Grupo A — sem alarme, sem comorbidade</SelectItem>
+            <SelectItem value="B">Grupo B — sem alarme, com comorbidade/risco</SelectItem>
+            <SelectItem value="C">Grupo C — sinais de alarme</SelectItem>
+            <SelectItem value="D">Grupo D — choque / dengue grave</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+      <div className="bg-muted rounded-xl p-4 space-y-2">
+        <p className="font-heading text-sm font-bold text-primary">{b.titulo}</p>
+        <ul className="space-y-1.5">
+          {b.passos.map((p, i) => (
+            <li key={i} className="text-xs leading-relaxed flex gap-2">
+              <span className="text-primary font-bold shrink-0">•</span><span>{p}</span>
+            </li>
+          ))}
+        </ul>
+        {b.alerta && (
+          <p className="text-[11px] font-semibold text-amber-700 dark:text-amber-400 border-l-2 border-amber-500 pl-2 mt-2">⚠ {b.alerta}</p>
+        )}
+        <p className="text-[10px] text-muted-foreground italic pt-1">
+          Base: PCDT Dengue MS 2025-2026 + OPAS 2025. Reavaliar a cada 1 h em Grupo C/D.
+        </p>
+      </div>
+    </div>
+  );
+}
+
+// ── Estratificador de risco Dengue / Chikungunya ──
+function ArbovirusRiskCalc() {
+  const [doenca, setDoenca] = useState<"dengue" | "chikungunya">("dengue");
+  const [idade, setIdade] = useState<"<2" | "2-14" | "15-64" | "≥65">("15-64");
+  const [gestante, setGestante] = useState(false);
+  const [comorbidade, setComorbidade] = useState(false);
+
+  const alarmeItens = [
+    "Dor abdominal intensa contínua",
+    "Vômitos persistentes",
+    "Hepatomegalia >2 cm",
+    "Sangramento de mucosa",
+    "Letargia / irritabilidade",
+    "Hipotensão postural / lipotimia",
+    "↑ Hct + queda de plaquetas",
+  ];
+  const graveItens = [
+    "Choque (PAS <90 / PAM <65 / pulso fino)",
+    "Sangramento grave (digestivo, SNC)",
+    "Disfunção orgânica (hepatite, miocardite, encefalite)",
+    "Insuficiência respiratória",
+  ];
+  const chikGraveItens = [
+    "Cardite / miocardite",
+    "Encefalite / mielite",
+    "Hepatite fulminante",
+    "Sepse bacteriana secundária",
+    "Gestante 3º trimestre periparto",
+  ];
+
+  const [alarme, setAlarme] = useState<boolean[]>(new Array(alarmeItens.length).fill(false));
+  const [grave, setGrave] = useState<boolean[]>(new Array(graveItens.length).fill(false));
+  const [chikGrave, setChikGrave] = useState<boolean[]>(new Array(chikGraveItens.length).fill(false));
+
+  const hasAlarme = alarme.some(Boolean);
+  const hasGrave = grave.some(Boolean);
+  const hasChikGrave = chikGrave.some(Boolean);
+  const grupoRisco = comorbidade || gestante || idade === "<2" || idade === "≥65";
+
+  let classif: { grupo: string; cor: string; conduta: string[] };
+  if (doenca === "dengue") {
+    if (hasGrave) classif = {
+      grupo: "Grupo D — Dengue grave",
+      cor: "bg-red-500/15 text-red-600 dark:text-red-400 border-red-500/40",
+      conduta: [
+        "UTI imediata + monitorização invasiva",
+        "Cristaloide 20 mL/kg em 15-30 min (até 3 bolus)",
+        "Noradrenalina precoce se PAM <65 após 30 mL/kg",
+        "Hemoderivados conforme sangramento; plaquetas só se ativo + <50 mil",
+        "Notificação SINAN imediata",
+      ],
+    };
+    else if (hasAlarme) classif = {
+      grupo: "Grupo C — Sinais de alarme",
+      cor: "bg-orange-500/15 text-orange-600 dark:text-orange-400 border-orange-500/40",
+      conduta: [
+        "Internação + hidratação parenteral (10 mL/kg em 1 h)",
+        "Hct, plaquetas, PA e diurese a cada 1 h",
+        "Escalonar a Grupo D se sem melhora após 30 mL/kg",
+      ],
+    };
+    else if (grupoRisco) classif = {
+      grupo: "Grupo B — Risco aumentado",
+      cor: "bg-amber-500/15 text-amber-700 dark:text-amber-400 border-amber-500/40",
+      conduta: [
+        "Observação 24-48 h em unidade de saúde",
+        "Hidratação oral supervisionada (60 mL/kg/dia)",
+        "Hemograma seriado 4-6 h",
+        idade === "≥65" ? "≥65 a: maior letalidade em 2025/2026 — limiar baixo para internar" : "Vigiar surgimento de sinais de alarme",
+      ],
+    };
+    else classif = {
+      grupo: "Grupo A — Manejo domiciliar",
+      cor: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/40",
+      conduta: [
+        "Hidratação oral 60 mL/kg/dia (1/3 SRO + 2/3 líquidos)",
+        "Paracetamol/dipirona — vedado AAS, AINE, corticoide",
+        "Retorno em 48 h ou imediato se sinais de alarme",
+      ],
+    };
+  } else {
+    if (hasChikGrave) classif = {
+      grupo: "Chikungunya grave / atípica",
+      cor: "bg-red-500/15 text-red-600 dark:text-red-400 border-red-500/40",
+      conduta: [
+        "Internação (UTI se cardite/encefalite/hepatite fulminante)",
+        "Suporte de órgão + analgesia escalonada",
+        "Avaliar transmissão vertical se gestante periparto",
+        "Notificação SINAN em ≤24 h",
+      ],
+    };
+    else if (grupoRisco) classif = {
+      grupo: "Chikungunya com risco aumentado",
+      cor: "bg-amber-500/15 text-amber-700 dark:text-amber-400 border-amber-500/40",
+      conduta: [
+        "Observação + analgesia (paracetamol/dipirona)",
+        "AINE somente após excluir dengue (NS1 negativo + plaquetas estáveis)",
+        "Reavaliação em 48 h e em 14 d (fase subaguda)",
+        gestante ? "Gestante: paracetamol exclusivo; vigiar transmissão vertical" : "Idoso/<2 a: vigiar formas atípicas e desidratação",
+      ],
+    };
+    else classif = {
+      grupo: "Chikungunya aguda — manejo ambulatorial",
+      cor: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/40",
+      conduta: [
+        "Hidratação oral + paracetamol/dipirona",
+        "NÃO usar AAS/AINE nas primeiras 2 sem (até excluir dengue)",
+        "Repouso relativo + crioterapia articular",
+        "Reavaliar em 14 d; encaminhar reumato se >6 sem",
+      ],
+    };
+  }
+
+  return (
+    <div className="space-y-3">
+      <div className="grid grid-cols-2 gap-3">
+        <div className="space-y-1">
+          <Label className="font-heading text-xs">Doença</Label>
+          <Select value={doenca} onValueChange={(v) => setDoenca(v as typeof doenca)}>
+            <SelectTrigger className="h-8 text-xs"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="dengue">Dengue</SelectItem>
+              <SelectItem value="chikungunya">Chikungunya</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+        <div className="space-y-1">
+          <Label className="font-heading text-xs">Faixa etária</Label>
+          <Select value={idade} onValueChange={(v) => setIdade(v as typeof idade)}>
+            <SelectTrigger className="h-8 text-xs"><SelectValue /></SelectTrigger>
+            <SelectContent>
+              <SelectItem value="<2">&lt; 2 anos</SelectItem>
+              <SelectItem value="2-14">2-14 anos</SelectItem>
+              <SelectItem value="15-64">15-64 anos</SelectItem>
+              <SelectItem value="≥65">≥ 65 anos (maior letalidade)</SelectItem>
+            </SelectContent>
+          </Select>
+        </div>
+      </div>
+      <div className="flex flex-wrap gap-3">
+        <label className="flex items-center gap-2 text-xs">
+          <input type="checkbox" checked={gestante} onChange={(e) => setGestante(e.target.checked)} className="w-4 h-4" /> Gestante
+        </label>
+        <label className="flex items-center gap-2 text-xs">
+          <input type="checkbox" checked={comorbidade} onChange={(e) => setComorbidade(e.target.checked)} className="w-4 h-4" />
+          Comorbidade (DM, HAS, DRC, IC, hemoglobinopatia, imunossupressão)
+        </label>
+      </div>
+
+      {doenca === "dengue" && (
+        <>
+          <div className="space-y-1">
+            <p className="font-heading text-xs font-semibold">Sinais de alarme (qualquer = Grupo C)</p>
+            {alarmeItens.map((it, i) => (
+              <label key={i} className="flex items-center gap-2 text-xs cursor-pointer">
+                <input type="checkbox" checked={alarme[i]} onChange={() => { const c = [...alarme]; c[i] = !c[i]; setAlarme(c); }} className="w-4 h-4" />
+                <span>{it}</span>
+              </label>
+            ))}
+          </div>
+          <div className="space-y-1">
+            <p className="font-heading text-xs font-semibold text-destructive">Sinais de gravidade (qualquer = Grupo D)</p>
+            {graveItens.map((it, i) => (
+              <label key={i} className="flex items-center gap-2 text-xs cursor-pointer">
+                <input type="checkbox" checked={grave[i]} onChange={() => { const c = [...grave]; c[i] = !c[i]; setGrave(c); }} className="w-4 h-4" />
+                <span>{it}</span>
+              </label>
+            ))}
+          </div>
+        </>
+      )}
+
+      {doenca === "chikungunya" && (
+        <div className="space-y-1">
+          <p className="font-heading text-xs font-semibold text-destructive">Sinais de gravidade / forma atípica</p>
+          {chikGraveItens.map((it, i) => (
+            <label key={i} className="flex items-center gap-2 text-xs cursor-pointer">
+              <input type="checkbox" checked={chikGrave[i]} onChange={() => { const c = [...chikGrave]; c[i] = !c[i]; setChikGrave(c); }} className="w-4 h-4" />
+              <span>{it}</span>
+            </label>
+          ))}
+        </div>
+      )}
+
+      <div className={`rounded-xl p-4 border-2 ${classif.cor}`}>
+        <p className="font-heading text-sm font-bold mb-2">{classif.grupo}</p>
+        <ul className="space-y-1.5">
+          {classif.conduta.map((c, i) => (
+            <li key={i} className="text-xs leading-relaxed flex gap-2">
+              <span className="font-bold shrink-0">→</span><span>{c}</span>
+            </li>
+          ))}
+        </ul>
+        <p className="text-[10px] text-muted-foreground italic pt-2 mt-2 border-t border-current/20">
+          Base: PCDT Dengue/Chikungunya MS 2025-2026 + SBI 2026.
+        </p>
+      </div>
+    </div>
+  );
+}
+
 interface EmbeddedCalc {
   id: string;
   title: string;
@@ -293,9 +606,10 @@ const CALC_REGISTRY: Record<string, EmbeddedCalc> = {
   nihss: { id: "nihss", title: "NIHSS", description: "Gravidade do AVC", component: NIHSSCalc },
   curb65: { id: "curb65", title: "CURB-65", description: "Gravidade de pneumonia", component: CURB65Calc },
   heart: { id: "heart", title: "HEART Score", description: "Risco na dor torácica", component: HEARTCalc },
+  "dengue-hidratacao": { id: "dengue-hidratacao", title: "Hidratação na Dengue", description: "Volume por peso, fase e estrato (PCDT 2026)", component: DengueHidratacaoCalc },
+  "arbovirus-risco": { id: "arbovirus-risco", title: "Estratificador Dengue / Chikungunya", description: "Classifica grupo A-D e gera conduta", component: ArbovirusRiskCalc },
 };
 
-// Map protocol ID keywords → calculator IDs
 const PROTOCOL_CALC_MAP: Record<string, string[]> = {
   "sepse": ["qsofa", "sofa"],
   "choque-septico": ["qsofa", "sofa"],
@@ -315,6 +629,8 @@ const PROTOCOL_CALC_MAP: Record<string, string[]> = {
   "tce": ["glasgow"],
   "pcr": ["glasgow"],
   "meningite": ["glasgow"],
+  "dengue": ["arbovirus-risco", "dengue-hidratacao"],
+  "chikungunya": ["arbovirus-risco"],
 };
 
 function findCalcsForProtocol(protocolId: string): EmbeddedCalc[] {
