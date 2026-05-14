@@ -17,4 +17,4 @@ export const respiratoryFullProtocols5: FullProtocol[] = [
     { id: "references", title: "Referências", content: "1. AMIB. Diretrizes Brasileiras de Ventilação Mecânica 2024.\n2. Papazian L et al. Neuromuscular blockers in early ARDS. N Engl J Med 2010.\n3. Guérin C et al. Prone Positioning in Severe ARDS. N Engl J Med 2013.\n4. ARMA Trial — ARDSNet. Ventilation with Lower Tidal Volumes. N Engl J Med 2000.\n5. Amato MB et al. Driving Pressure and Survival in ARDS. N Engl J Med 2015.\n6. Burns KE et al. Trials Comparing Early vs Late Extubation. Crit Care Med 2014.\n7. Esteban A et al. Spontaneous Breathing Trial and Extubation. JAMA 2002." }
   ]
 },
-];\
+];
