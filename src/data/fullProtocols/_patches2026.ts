@@ -167,8 +167,18 @@ export const PATCHES_2026: ProtocolPatch2026[] = [
   // ==================== SEPSE ====================
   {
     protocolId: "fp-sepse-choque",
-    lastReviewed: "2026-01",
+    lastReviewed: "2026-03",
     guidelines: [
+      {
+        society: "SSC",
+        title: "Surviving Sepsis Campaign: International Guidelines for Management of Sepsis and Septic Shock 2026",
+        year: 2026,
+        recommendation:
+          "Publicada 23/mar/2026 (Prescott, Antonelli, Alhazzani et al.). Triagem com NEWS/NEW2/MEWS/SIRS preferencial sobre qSOFA. ATB em ≤1 h em sepse provável/definida (com ou sem choque); ≤3 h em sepse 'possível'. Cristaloide balanceado 30 mL/kg em 3 h (preferencial sobre SF 0,9%, exceto TCE). Noradrenalina 1ª linha — iniciar em veia periférica antes do central. PAM alvo 65 (60-65 se ≥65 anos). Vasopressina 0,03 U/min ao escalar NA. Hidrocortisona EV em choque refratário. Infusão prolongada de β-lactâmico (RECOMENDAÇÃO FORTE — nova). LMWH > HNF para profilaxia TEV (forte). HFNC > VNI em IRpA hipoxêmica. Awake proning sugerido. Remoção ativa de fluidos pós-ressuscitação. Transfusão restritiva. Insulina se glicemia ≥180. Contra: vit C, vit D, IgIV, hemoperfusão, polimixina B, beta-bloqueadores, terlipressina, antipiréticos rotineiros.",
+        url: "https://www.sccm.org/clinical-resources/guidelines/guidelines/surviving-sepsis-campaign-international-guidelines-for-management-of-sepsis-and-septic-shock-2026",
+        class: "I",
+        level: "A",
+      },
       {
         society: "SSC",
         title: "Surviving Sepsis Campaign 2024 Update — Adult Patients",
