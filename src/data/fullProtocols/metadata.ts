@@ -1178,4 +1178,15 @@ export const fullProtocolMetas: FullProtocolMeta[] = [
   { id: "fp-nef-18-08", title: "Trauma Renal Grau IV", categoryId: "nephrology", tags: ["nephrology"] },
   { id: "fp-nef-18-09", title: "Sd Nefrótica com TVP de Veia Renal", categoryId: "nephrology", tags: ["nephrology"] },
   { id: "fp-nef-18-10", title: "Necrose Cortical Aguda Pós-Choque", categoryId: "nephrology", tags: ["nephrology"] },
+  // 2026 new protocols
+  { id: "fp-2026-crise-tireotoxica", title: "Crise Tireotóxica (Tempestade Tireoidiana)", categoryId: "metabolic", tags: ["tireoide", "tempestade tireoidiana", "endócrino", "emergência", "2026"] },
+  { id: "fp-2026-crise-adrenal", title: "Crise Adrenal (Insuficiência Adrenal Aguda)", categoryId: "metabolic", tags: ["adrenal", "addison", "cortisol", "endócrino", "emergência", "2026"] },
+  { id: "fp-2026-coma-mixedematoso", title: "Coma Mixedematoso", categoryId: "metabolic", tags: ["hipotireoidismo", "mixedema", "endócrino", "coma", "emergência", "2026"] },
+  { id: "fp-2026-pre-eclampsia-grave", title: "Pré-Eclâmpsia Grave / Síndrome HELLP", categoryId: "obstetrics", tags: ["pré-eclâmpsia", "HELLP", "obstetrícia", "emergência", "2026"] },
+  { id: "fp-2026-anafilaxia-refrataria", title: "Anafilaxia Refratária (Bifásica e Choque)", categoryId: "emergency", tags: ["anafilaxia", "refratária", "bifásica", "choque", "emergência", "2026"] },
+  { id: "fp-2026-hipertermia-maligna", title: "Hipertermia Maligna", categoryId: "emergency", tags: ["hipertermia", "maligna", "anestesia", "emergência", "2026"] },
+  { id: "fp-2026-intoxicacao-organofosforado", title: "Intoxicação por Organofosforado e Carbamato", categoryId: "intoxication", tags: ["organofosforado", "carbamato", "intoxicação", "emergência", "2026"] },
+  { id: "fp-2026-encefalite-autoimune", title: "Encefalite Autoimune (Anti-NMDA e outros)", categoryId: "neurology", tags: ["encefalite", "autoimune", "NMDA", "neurologia", "emergência", "2026"] },
+  { id: "fp-2026-sindrome-serotoninergica", title: "Síndrome Serotoninérgica", categoryId: "intoxication", tags: ["serotoninérgica", "síndrome", "intoxicação", "emergência", "2026"] },
+  { id: "fp-2026-rabdomiolise-grave", title: "Rabdomiólise Grave", categoryId: "metabolic", tags: ["rabdomiólise", "mioglobina", "renal", "emergência", "2026"] },
 ];
