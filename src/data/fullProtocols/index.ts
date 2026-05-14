@@ -598,12 +598,27 @@ export const fullProtocols: FullProtocol[] = [
 
 // ==================== Aplicar atualizações 2025/2026 ====================
 import { PATCHES_2026, mergeGuidelines } from "./_patches2026";
+import { SECTION_PATCHES_2026 } from "./_sectionPatches2026";
+
 const patchMap = new Map(PATCHES_2026.map((p) => [p.protocolId, p]));
+const sectionPatchMap = new Map(SECTION_PATCHES_2026.map((p) => [p.protocolId, p]));
+
 for (const protocol of fullProtocols) {
   const patch = patchMap.get(protocol.id);
   if (patch) {
     protocol.guidelines = mergeGuidelines(protocol.guidelines, patch.guidelines);
     protocol.lastReviewed = patch.lastReviewed;
+  }
+  // Reescrita editorial PULSO 2026 das seções clínicas
+  const sectionPatch = sectionPatchMap.get(protocol.id);
+  if (sectionPatch) {
+    for (const section of protocol.sections) {
+      const newContent = sectionPatch.sections[section.id];
+      if (newContent !== undefined) {
+        section.content = newContent;
+      }
+    }
+    protocol.lastReviewed = sectionPatch.lastReviewed;
   }
 }
 

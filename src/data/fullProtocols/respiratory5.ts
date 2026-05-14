@@ -4,10 +4,11 @@ export const respiratoryFullProtocols5: FullProtocol[] = [
   {
   id: "fp-ventilacao-mecanica",
   title: "Ventilação Mecânica Invasiva",
-  specialty: "Emergência / UTI",
+  category: "Emergência / UTI",
+  categoryId: "respiratory",
   tags: ["ventilação mecânica", "vm", "respirador", "parâmetros", "modalidades", "PEEP", "desmame"],
   lastReviewed: "2026-05",
-  guidelines: [{ society: "AMIB", year: "2024", title: "Diretrizes AMIB de Ventilação Mecânica 2024" }],
+  guidelines: [{ society: "AMIB", year: 2024, title: "Diretrizes AMIB de Ventilação Mecânica 2024", recommendation: "Estratégia protetora pulmonar universal: VT 6 mL/kg PP, Pplat ≤30, ΔP ≤15, PEEP titulada, desmame precoce.", url: "https://www.amib.org.br/" }],
   sections: [
     { id: "intro", title: "Introdução", content: "A ventilação mecânica invasiva (VMI) é uma das intervenções mais frequentes na emergência e UTI. O ajuste adequado dos parâmetros iniciais é fundamental para evitar a lesão pulmonar induzida pelo ventilador (VILI), que aumenta mortalidade.\n\nAs Diretrizes AMIB 2024 reforçam a estratégia protetora pulmonar universal, o uso guiado de PEEP, a avaliação precoce de desmame e a sedação-analgesia direcionada a objetivos.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026 · AMIB 2024." },
     { id: "def", title: "Definição e Modalidades", content: "Modalidades ventilatórias principais:\n\nVCV (Volume Controlado a Volume):\n• Volume corrente fixo a cada ciclo\n• Pico de pressão varia com complacência pulmonar\n• Indicado: SARA, DPOC, maioria das situações\n\nPCV (Pressão Controlada):\n• Pressão de insuflação fixa\n• Volume corrente varia — atenção à hipoventilação\n• Indicado: quando pico de pressão elevado preocupa\n\nPSV (Pressão de Suporte):\n• Modo espontâneo assistido\n• Paciente dispara o ciclo, ventilador fornece suporte\n• Principal modo de desmame\n\nSIMV (Sincronizado Intermitente com VM):\n• Não mais recomendado como modo de desmame — prolonga VMI\n\nConceitos essenciais:\n• Volume Corrente (VC): volume por ciclo\n• PEEP: pressão positiva ao final da expiração\n• FiO2: fração inspirada de O2\n• Pressão de Platô (Pplat): pressão alveolar — surrogate de distensão\n• Driving Pressure (ΔP): Pplat − PEEP — melhor preditor de VILI\n• Complacência estática: VC / (Pplat − PEEP)" },
@@ -17,4 +18,4 @@ export const respiratoryFullProtocols5: FullProtocol[] = [
     { id: "references", title: "Referências", content: "1. AMIB. Diretrizes Brasileiras de Ventilação Mecânica 2024.\n2. Papazian L et al. Neuromuscular blockers in early ARDS. N Engl J Med 2010.\n3. Guérin C et al. Prone Positioning in Severe ARDS. N Engl J Med 2013.\n4. ARMA Trial — ARDSNet. Ventilation with Lower Tidal Volumes. N Engl J Med 2000.\n5. Amato MB et al. Driving Pressure and Survival in ARDS. N Engl J Med 2015.\n6. Burns KE et al. Trials Comparing Early vs Late Extubation. Crit Care Med 2014.\n7. Esteban A et al. Spontaneous Breathing Trial and Extubation. JAMA 2002." }
   ]
 },
-];\
+];
