@@ -874,6 +874,148 @@ export const PATCHES_2026: ProtocolPatch2026[] = [
     ],
   },
 
+  // ==================== DM2 — PCDT 2026 ====================
+  {
+    protocolId: "fp-m7-diabetes-tipo2-emergencia",
+    lastReviewed: "2026-03",
+    guidelines: [
+      {
+        society: "MS Brasil / CONITEC",
+        title: "PCDT Diabetes Mellitus Tipo 2 — Atualização 2026 (incorporação de iSGLT2 e análogos de GLP-1 no SUS)",
+        year: 2026,
+        recommendation:
+          "Metformina como 1ª linha. Dapagliflozina (iSGLT2) incorporada ao SUS para DM2 ≥65 a com DCV/DRC e para IC (qualquer FE). Análogos de GLP-1 (semaglutida/liraglutida) para DM2 + obesidade + DCV/IC. Análogos de insulina (glargina, degludeca, lispro, asparte, glulisina) integrados ao PCDT — não exigir falha de NPH/regular. Sulfonilureia e pioglitazona como 3ª/4ª linha; evitar em IC e idoso frágil.",
+        url: "https://www.gov.br/conitec/pt-br/assuntos/pcdt",
+        class: "I",
+        level: "A",
+      },
+      {
+        society: "ADA",
+        title: "Standards of Care in Diabetes — 2026",
+        year: 2026,
+        recommendation:
+          "iSGLT2 e GLP-1 RA como 1ª linha (independente de HbA1c) em DM2 com DCV estabelecida, IC (HFrEF/HFpEF) ou DRC. Metas individualizadas (HbA1c <7% adulto, <8% idoso frágil). Estatina alta intensidade em DCV ou risco ≥7,5%/10a. Finerenona em DRC + albuminúria.",
+        url: "https://diabetesjournals.org/care/issue/49/Supplement_1",
+        class: "I",
+        level: "A",
+      },
+      {
+        society: "SBD",
+        title: "Diretrizes da Sociedade Brasileira de Diabetes 2025-2026",
+        year: 2026,
+        recommendation:
+          "Algoritmo terapêutico alinhado ao PCDT 2026: estratificação cardiorrenal precoce, iSGLT2/GLP-1 como pilar de proteção CV, insulinização precoce em HbA1c >9% sintomático com análogos.",
+        url: "https://diretriz.diabetes.org.br/",
+        class: "I",
+        level: "B",
+      },
+    ],
+  },
+
+  // ==================== CHIKUNGUNYA — Brasil 2026 ====================
+  {
+    protocolId: "fp-i7-chikungunya",
+    lastReviewed: "2026-03",
+    guidelines: [
+      {
+        society: "MS Brasil / SVSA",
+        title: "Nota Técnica de Manejo Clínico da Chikungunya 2025-2026 + incorporação da vacina IXCHIQ ao PNI",
+        year: 2026,
+        recommendation:
+          "Manejo sintomático com hidratação e analgesia escalonada (paracetamol/dipirona; AINE só após excluir dengue). Vacina IXCHIQ dose única SC para 18-59 a em áreas de surto/risco. Contraindicações: gestantes, lactantes, <18 a, ≥60 a, imunossupressão. Notificação SINAN imediata (≤24 h).",
+        url: "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/chikungunya",
+        class: "I",
+        level: "B",
+      },
+      {
+        society: "SBI",
+        title: "Diretriz SBI Arboviroses 2026 — Chikungunya aguda, subaguda e crônica",
+        year: 2026,
+        recommendation:
+          "Diferenciar dengue/zika/chikungunya por testagem combinada. Fisioterapia precoce e DMARDs (hidroxicloroquina, metotrexato) para artrite crônica >3 m em conjunto com reumatologia.",
+        url: "https://www.infectologia.org.br/",
+        class: "I",
+        level: "B",
+      },
+    ],
+  },
+
+  // ==================== DENGUE — Brasil 2026 ====================
+  {
+    protocolId: "fp-new-dengue-grave",
+    lastReviewed: "2026-03",
+    guidelines: [
+      {
+        society: "MS Brasil",
+        title: "Dengue: Diagnóstico e Manejo Clínico — Adulto e Criança (Edição 2025-2026)",
+        year: 2026,
+        recommendation:
+          "Estadiamento A/B/C/D com calculadora de hidratação por peso e fase. Idosos ≥65 a são grupo de maior letalidade — limiar baixo para internação. Expansão parenteral 10 mL/kg em 1 h (Grupo C); 20 mL/kg em 15-30 min (Grupo D) com noradrenalina precoce. Plaquetas APENAS se sangramento ativo + <50.000. Vedado AAS/AINE e corticoide rotineiro.",
+        url: "https://www.gov.br/saude/pt-br/centrais-de-conteudo/publicacoes/svsa/dengue",
+        class: "I",
+        level: "A",
+      },
+      {
+        society: "OPAS/OMS",
+        title: "Guidelines for the Clinical Diagnosis and Treatment of Dengue, Chikungunya, and Zika — 2025",
+        year: 2025,
+        recommendation:
+          "Reavaliação a cada 1 h em Grupo C/D com Hct, plaquetas, perfusão e diurese. Cristaloide titulado evitando sobrecarga. Critérios de alta: afebril >48 h, plaquetas em ascensão, Hct estável, diurese normal.",
+        url: "https://iris.paho.org/handle/10665.2/57021",
+        class: "I",
+        level: "A",
+      },
+      {
+        society: "MS Brasil / PNI",
+        title: "Incorporação da vacina QDenga ao Calendário Nacional 2024-2026 (10-14 anos em áreas selecionadas)",
+        year: 2026,
+        recommendation:
+          "Vacinação populacional não substitui manejo agudo; reforça vigilância e notificação compulsória imediata.",
+        url: "https://www.gov.br/saude/pt-br/vacinacao/vacinas/dengue",
+        class: "IIa",
+        level: "B",
+      },
+    ],
+  },
+
+  // ==================== ENDOMETRIOSE — PCDT 2025-2026 ====================
+  {
+    protocolId: "fp-endometriose-emergencia",
+    lastReviewed: "2026-03",
+    guidelines: [
+      {
+        society: "MS Brasil / CONITEC",
+        title: "PCDT Endometriose 2025-2026 — incorporação de DIU de levonorgestrel 52 mg e fluxo de análogos de GnRH com add-back",
+        year: 2026,
+        recommendation:
+          "1ª linha: progestagênio contínuo (dienogeste 2 mg/dia, desogestrel, noretisterona) OU DIU-LNG 52 mg (incorporado ao SUS para endometriose, adenomiose e dor pélvica crônica). 2ª linha: análogos de GnRH (leuprorrelina/gosserrelina) por até 6 meses com add-back obrigatório (estradiol 1 mg + noretisterona 0,5 mg ou tibolona 2,5 mg) a partir do 1º-3º mês.",
+        url: "https://www.gov.br/conitec/pt-br/assuntos/pcdt",
+        class: "I",
+        level: "A",
+      },
+      {
+        society: "ESHRE",
+        title: "ESHRE Guideline: Endometriosis — 2024 update",
+        year: 2024,
+        recommendation:
+          "Tratamento empírico clínico antes de laparoscopia. RM de pelve para endometriose profunda. Cirurgia conservadora em centros especializados. Encaminhamento precoce à reprodução assistida em infertilidade associada.",
+        url: "https://www.eshre.eu/Guidelines-and-Legal/Guidelines/Endometriosis-guideline",
+        class: "I",
+        level: "A",
+      },
+      {
+        society: "ACOG",
+        title: "ACOG Practice Bulletin: Management of Endometriosis — 2025 reaffirmed",
+        year: 2025,
+        recommendation:
+          "DIU-LNG e progestagênios contínuos como 1ª linha. Análogos de GnRH com add-back para evitar perda óssea e sintomas climatéricos. Antagonistas orais de GnRH (elagolix/relugolix + add-back) como alternativa.",
+        url: "https://www.acog.org/clinical/clinical-guidance/practice-bulletin",
+        class: "I",
+        level: "B",
+      },
+    ],
+  },
+
   // ==================== ANAFILAXIA ====================
   {
     protocolId: "fp-anafilaxia-cutanea",
