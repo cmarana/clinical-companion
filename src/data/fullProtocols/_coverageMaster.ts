@@ -27,7 +27,7 @@ export interface CoverageEntry {
   /** Prioridade clínica. P1 = risco de vida imediato. */
   priority: Priority;
   /** Ano alvo da revisão (`lastReviewed` mínimo aceitável). */
-  targetYear: 2025 | 2026;
+  targetYear: number;
   /** Sociedades/órgãos esperados como fonte (qualquer match conta). */
   expectedSocieties: string[];
   /** Diretriz de referência mais recente. */
