@@ -373,11 +373,12 @@ export async function getFullProtocolAsync(id: string): Promise<FullProtocol | u
   // Find category from metadata
   const { fullProtocolMetas } = await import("./metadata");
   const meta = fullProtocolMetas.find(m => m.id === id);
-  if (!meta) return undefined;
 
-  const protocols = await loadCategoryProtocols(meta.categoryId);
-  const found = protocols.find(p => p.id === id);
-  if (found) return found;
+  if (meta) {
+    const protocols = await loadCategoryProtocols(meta.categoryId);
+    const found = protocols.find(p => p.id === id);
+    if (found) return found;
+  }
 
   // Fallback: search in newProtocols2026 (cross-category new protocols)
   const { newProtocols2026 } = await import("./_newProtocols2026");
