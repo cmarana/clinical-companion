@@ -41,19 +41,29 @@ export const SECTION_PATCHES_2026: SectionPatch2026[] = [
 - Foco indeterminado / nosocomial: piperacilina-tazobactam 4,5 g 6/6 h **OU** meropeném 1 g 8/8 h.
 - Suspeita de MRSA (cateter, pele/partes moles, ICS): adicionar vancomicina (alvo vale 15-20 mg/L) ou linezolida 600 mg 12/12 h.
 - Choque séptico de origem comunitária pulmonar grave: ceftriaxona 2 g + azitromicina 500 mg.
+- 🆕 **SSC 2026 (forte):** **infusão prolongada de β-lactâmico** após dose de ataque (vs bólus) — reduz mortalidade.
 - Descalonar em 48-72 h conforme cultura/PCR multiplex; duração 7-10 dias na maioria.
 
-**Suporte hemodinâmico:**
-- Noradrenalina 0,05-1 mcg/kg/min titulada para PAM ≥65 (alvo individualizado: 80-85 em hipertensos crônicos — SEPSISPAM).
-- **Vasopressina 0,03 U/min fixa** como 2ª linha quando NA >0,25-0,5 mcg/kg/min (poupador de catecolamina, VANISH/VASST).
-- **Adrenalina** ou angiotensina II como 3ª linha em choque refratário.
-- **Hidrocortisona 200 mg/dia EV** (50 mg 6/6 h ou infusão contínua) em choque refratário ao vasopressor (ADRENAL, APROCCHSS).
+**Suporte hemodinâmico (SSC 2026):**
+- Noradrenalina 0,05-1 mcg/kg/min titulada para PAM ≥65 (60-65 se ≥65 anos; 80-85 em hipertensos crônicos — SEPSISPAM).
+- **Vasopressina 0,03 U/min fixa** quando NA escala (>0,25-0,5 mcg/kg/min) — VANISH/VASST.
+- **Adrenalina** como 3ª linha; angiotensina II em refratário.
+- **Hidrocortisona 200 mg/dia EV** em choque refratário ao vasopressor (ADRENAL, APROCCHSS).
+- 🆕 **Contra (SSC 2026):** terlipressina, beta-bloqueadores em choque, levosimendana.
 
-**Ventilação:** se SDRA → VT 6 mL/kg peso predito, Pplatô ≤30, PEEP titulada, prona ≥16 h se PaO₂/FiO₂ <150.
+**Ventilação (SSC 2026):**
+- IRpA hipoxêmica não intubada → **HFNC preferencial sobre VNI**; **awake proning** sugerido.
+- SDRA → VT 6 mL/kg, Pplatô ≤30, PEEP titulada (mais alta em moderada-grave), prona >12 h se PaO₂/FiO₂ <150, NMBA em bólus intermitente (não infusão contínua), ECMO V-V em centros experientes.
 
-**Não recomendado de rotina (SSC 2024):** vitamina C em altas doses, tiamina, IgIV, hemoperfusão, bicarbonato (exceto pH <7,2 + IRA).
+**🆕 Outras atualizações SSC 2026:**
+- **Transfusão restritiva** (Hb alvo 7 g/dL).
+- **Insulina** se glicemia ≥180 mg/dL (alvo 140-180).
+- **LMWH > HNF** para profilaxia TEV (forte).
+- **Remoção ativa de fluidos** após fase de ressuscitação (diuréticos; ultrafiltração se refratário).
+- **Nutrição enteral precoce** (≤72 h).
+- **Goals of care** discutidos em ≤72 h.
 
-**Glicemia:** alvo 140-180 mg/dL com insulina contínua se >180.`,
+**Não recomendado (SSC 2026):** vitamina C, vitamina D, IgIV, hemoperfusão, polimixina B, plasmaférese, antipiréticos rotineiros, probióticos, bicarbonato (exceto pH ≤7,2 + IRA AKIN 2-3).`,
 
       prescriptions: `\`\`\`
 1. Ringer lactato 1.000 mL EV em 30 min — repetir até 30 mL/kg em 3 h, reavaliando responsividade.
