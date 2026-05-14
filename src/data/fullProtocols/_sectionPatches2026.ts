@@ -1618,4 +1618,706 @@ NÃO FAZER:
 \`\`\``,
     },
   },
+
+  // ==================== 25. IAM SEM SUPRA (NSTE-ACS) ====================
+  {
+    protocolId: "fp-iam-sem-supra",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**ESC NSTE-ACS 2023 + AHA/ACC/SCAI 2025 + SBC 2025:**
+
+**ECG em ≤10 min** + **troponina ultrassensível 0/1 h ou 0/2 h** (algoritmos ESC validados — descarta/inclui rapidamente). Avaliar GRACE 2.0, TIMI, HEART para estratificação.
+
+**Estratificação de risco e timing da angiografia:**
+- **🆕 Risco MUITO ALTO (angio <2 h):** instabilidade hemodinâmica, choque cardiogênico, dor refratária, arritmia ventricular instável, complicação mecânica, ICA aguda relacionada, supra transitório recorrente.
+- **🆕 Risco ALTO (angio <24 h):** troponina dinâmica + critérios isquêmicos, alterações dinâmicas de ST/T, GRACE >140. **Estratégia rotineira <24 h** (TIMACS, VERDICT) — recomendação ESC 2023.
+- **Risco intermediário/baixo:** investigação não invasiva ou angio eletiva.
+
+**🆕 Pré-tratamento com P2Y12:** **NÃO recomendado de rotina antes da anatomia coronária ser conhecida** (ESC 2023 — exceto se angio será >24 h). Em ICP imediata, carregar na sala. Isso muda prática brasileira que ainda carrega no PA.
+
+**MONABCH adaptado:** O₂ só se SpO₂ <90%, AAS 300 mg, anticoagulação (fondaparinux 2,5 mg SC/dia preferencial fora de ICP imediata — OASIS-5; enoxaparina/HNF se ICP iminente), nitrato/morfina conforme dor (cuidado com morfina + P2Y12), β-bloqueador se sem ICA/Killip ≥II.`,
+
+      treatment: `**Antiplaquetários após anatomia:**
+- **AAS 300 mg → 100 mg/dia indefinido.**
+- **Prasugrel 60 mg → 10 mg/dia** (preferencial em ICP — ISAR-REACT 5; CONTRAINDICADO se AVC/AIT prévio; ajuste se ≥75 a ou <60 kg para 5 mg).
+- **Ticagrelor 180 → 90 mg 12/12 h** alternativa.
+- Clopidogrel apenas se prasugrel/ticagrelor contraindicados.
+- **DAPT 12 meses pós-stent farmacológico**; encurtar para 3-6 m em alto risco hemorrágico (MASTER-DAPT, STOPDAPT-2); estender com ticagrelor 60 mg em alto risco isquêmico (PEGASUS).
+
+**Anticoagulação:**
+- **Fondaparinux 2,5 mg SC/dia** se estratégia conservadora ou ICP >24 h.
+- **Enoxaparina 1 mg/kg SC 12/12 h** OU **HNF 60-70 U/kg ataque + 12-15 U/kg/h** se ICP <24 h.
+- **🆕 Suspender anticoagulante após ICP** (não manter rotineiramente — ESC 2023).
+
+**Adjuvantes:** estatina alta intensidade (atorva 80 / rosuva 20-40), iECA/BRA se FEVE <40 / DM / HAS, β-bloqueador VO em 24 h se sem contraindicação, espironolactona/eplerenona se FEVE ≤40 + IC/DM.
+
+**Pacientes em FA + SCA pós-ICP:** **terapia tripla curta (1-7 d)** → **DOAC + clopidogrel por 12 m** → DOAC isolado (AUGUSTUS, ENTRUST, RE-DUAL).
+
+**Não recomendado:** O₂ se SpO₂ ≥90%, pré-tratamento rotineiro com P2Y12 antes de angio em <24 h, bivalirudina rotineira em ICP eletiva, GP IIb/IIIa profilático.`,
+
+      prescriptions: `\`\`\`
+0-30 MIN — TRIAGEM:
+1. ECG 12 derivações em ≤10 min + monitor + 2 acessos.
+2. Troponina ultrassensível 0 h e 1 h (ou 2 h conforme kit).
+3. AAS 300 mg VO mastigar agora → 100 mg VO 1×/dia.
+4. Atorvastatina 80 mg VO 1×/dia.
+5. O₂ por cateter 2 L/min APENAS se SpO₂ <90%.
+6. Nitroglicerina sublingual 5 mg até 3× se dor + PAS >100 (não usar se VD/sildenafil <24h).
+
+ANTICOAGULAÇÃO:
+7. Fondaparinux 2,5 mg SC 1×/dia (preferencial se conservador ou ICP >24 h).
+   OU Enoxaparina 1 mg/kg SC 12/12 h (0,75 mg/kg se ≥75 a; ajustar se TFG <30).
+   OU HNF 60-70 U/kg ataque (máx 5.000) + 12-15 U/kg/h BIC (alvo TTPa 1,5-2,5×) se ICP iminente.
+
+P2Y12 — APÓS ANATOMIA (na sala) ou se angio >24 h:
+8. Prasugrel 60 mg VO ataque → 10 mg/dia (5 mg se ≥75 a ou <60 kg; CI se AVC/AIT prévio).
+   OU Ticagrelor 180 mg ataque → 90 mg 12/12 h.
+   OU Clopidogrel 600 mg → 75 mg/dia (se contraindicação aos anteriores).
+
+ADJUVANTES NAS PRIMEIRAS 24 H:
+9. Metoprolol tartarato 25 mg VO 12/12 h (sem Killip ≥II, FC >60, PAS >120, sem broncoespasmo).
+10. Captopril 6,25 mg VO 8/8 h se FEVE <40, DM, HAS (titular para enalapril/losartana).
+11. Espironolactona 25 mg/dia VO se FEVE ≤40 + IC/DM (após estabilização).
+12. Pantoprazol 40 mg EV/VO 1×/dia (proteção gástrica em DAPT + anticoag).
+
+INVESTIGAÇÃO:
+13. ECO transtorácico em ≤24 h; cinecoronariografia conforme estratificação (≤2 h muito alto risco, ≤24 h alto risco).
+14. Hemograma, função renal, eletrólitos, perfil lipídico, HbA1c, TSH.
+\`\`\``,
+    },
+  },
+
+  // ==================== 26. BRADICARDIA SINTOMÁTICA ====================
+  {
+    protocolId: "fp-bradicardia-sintomatica",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**ACLS 2025 (AHA Focused Update Out/2025) + ESC Bradycardia 2021:**
+
+**Definição operacional:** FC <50 bpm com **sinais de instabilidade** (hipotensão sintomática, choque, RNC, isquemia, IC aguda).
+
+**Algoritmo escalonado:**
+
+1. **ABC + monitor + ECG 12D + acesso EV + O₂ se SpO₂ <94%.**
+2. **Identificar e tratar a causa (5H + 5T + drogas):** hipóxia, hipercalemia, hipotermia, IAM (especialmente inferior — bradi por reflexo de Bezold-Jarisch), drogas (β-bloq, BCC, digital, opioide, clonidina, amiodarona, ivermectina alta dose, organofosforado), bloqueio AV.
+3. **🆕 1ª LINHA — ATROPINA 1 mg EV em bolus (dose ↑ vs antiga 0,5 mg)**, repetir a cada 3-5 min até **3 mg total** (AHA 2020/2025). Pouco eficaz em bloqueio AV de 2º grau Mobitz II e BAVT — pular para marcapasso/drogas.
+4. **2ª LINHA — se atropina ineficaz:**
+   - **Marcapasso transcutâneo IMEDIATO** (frequência inicial 70-80 bpm, escalonar mA até captura elétrica + mecânica; sedar com fentanil/midazolam).
+   - OU **drogas em BIC** (preferíveis em pós-IAM, pré-MP definitivo):
+     - **Adrenalina 2-10 mcg/min EV** (preferencial se choque/hipoperfusão).
+     - **Dopamina 5-20 mcg/kg/min EV** (alternativa).
+     - **Isoproterenol 2-10 mcg/min** (em bloqueio AV congênito/hereditário).
+5. **🆕 Bradicardia por overdose:**
+   - **β-bloqueador / BCC:** **glucagon 5-10 mg EV** + **insulina alta dose euglicêmica (1 U/kg bolus + 1 U/kg/h, manter glicemia 100-250)** + cálcio + lipídio 20% (LipidRescue) em colapso.
+   - **Digital:** **Fab antidigital** (DigiFab/Digibind).
+   - **Opioide:** naloxona.
+   - **Organofosforado:** atropina em alta dose (escalonar a cada 5 min até secura) + pralidoxima.
+6. **Marcapasso transvenoso/definitivo** se persistir — acionar hemodinâmica/eletrofisiologia.
+
+**Indicações de MP definitivo (ESC 2021):** BAVT, Mobitz II, doença do nó sinusal sintomática, FA com pausas >5 s, bradicardia sintomática reversível persistente.`,
+
+      treatment: `Internação em unidade monitorizada; ECO + provas isquêmicas; suspender drogas cronotrópicas negativas após avaliação; encaminhar eletrofisiologia. Educação sobre sintomas de recidiva.`,
+
+      prescriptions: `\`\`\`
+EMERGÊNCIA — BRADICARDIA INSTÁVEL:
+1. O₂ se SpO₂ <94%, monitor cardíaco contínuo, 2 acessos calibrosos, ECG 12 derivações.
+2. Atropina 1 mg EV em bolus — repetir a cada 3-5 min até 3 mg total.
+3. Se sem resposta OU BAV 2º Mobitz II / BAVT:
+   - Marcapasso transcutâneo: iniciar 70 bpm, ↑mA até captura (geralmente 50-100 mA); sedação com fentanil 1-2 mcg/kg + midazolam 1-2 mg EV.
+   - E/OU Adrenalina 2-10 mcg/min EV BIC (preparo: 1 mg em SF 250 mL = 4 mcg/mL).
+   - E/OU Dopamina 5-20 mcg/kg/min EV BIC.
+4. Solicitar marcapasso transvenoso urgente; acionar hemodinâmica.
+
+BRADICARDIA POR INTOXICAÇÃO:
+5. β-bloqueador/BCC: glucagon 5-10 mg EV bolus + 2-5 mg/h BIC; insulina regular 1 U/kg bolus + 1 U/kg/h BIC com glicose 50% conforme glicemia (alvo 100-250); gluconato de cálcio 10% 30 mL EV; intralipid 20% 1,5 mL/kg em colapso.
+6. Digital: Fab antidigital (Digibind) — dose conforme tabela (carga corporal × 38 mg/0,5 mg digoxina).
+7. Opioide: naloxona 0,4-2 mg EV repetir; BIC 2/3 da dose efetiva/h.
+8. Organofosforado: atropina 2-5 mg EV dobrando cada 5 min até secura + pralidoxima 30 mg/kg EV em 30 min.
+
+INVESTIGAÇÃO:
+9. ECG seriado, troponina, K, Mg, função renal/tireoidiana, gasometria, nível digoxina se uso.
+10. ECO transtorácico, holter na alta; encaminhar eletrofisiologia.
+\`\`\``,
+    },
+  },
+
+  // ==================== 27. TAQUIARRITMIA INSTÁVEL / TV-FV ====================
+  {
+    protocolId: "fp-taquiarritmia-instavel",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**ACLS 2025 + ESC VA/SCD 2022 + AHA/ACC/HRS 2017:**
+
+**Definição de instabilidade:** taquicardia + 1 dos: hipotensão sintomática, choque, RNC, isquemia aguda, IC aguda.
+
+**Algoritmo:**
+
+1. **Instável → CARDIOVERSÃO ELÉTRICA SINCRONIZADA IMEDIATA** após sedação rápida (etomidato 0,1-0,15 mg/kg OU midazolam 1-2 mg + fentanil 50-100 mcg). Energias bifásicas:
+   - **TSV / FA estreita:** 50-100 J → escalonar.
+   - **FA / flutter:** 120-200 J.
+   - **TV monomórfica com pulso:** 100 J → escalonar.
+   - **TV polimórfica / FV:** **DESFIBRILAÇÃO ASSINCRÔNICA 200 J** (não tentar sincronizar).
+2. **Estável** — diferenciar QRS estreito × largo:
+   - **Estreito regular (TSV):** **manobra vagal** (Valsalva modificada — REVERT trial: deitar + elevar pernas após esforço; sucesso ↑ ~40 → 50%) → **adenosina 6 mg EV em bolus rápido (veia cubital, flush 20 mL)**, repetir 12 mg até 2×.
+   - **Estreito irregular (FA-RVR):** controle de frequência (β-bloq EV ou diltiazem) ou cardioversão se <48 h ou TEE/anticoagulação adequada.
+   - **Largo regular:** **TV até prova contrário** — **amiodarona 150 mg EV em 10 min** + 1 mg/min 6 h + 0,5 mg/min 18 h. **Procainamida 10-17 mg/kg em 30-60 min** (PROCAMIO — superior em algumas séries) ou **lidocaína 1-1,5 mg/kg** alternativas.
+   - **Largo irregular:** suspeitar **FA com pré-excitação (WPW)** → **NÃO usar adenosina, β-bloq, BCC, digital** (risco FV) — **procainamida ou cardioversão elétrica**.
+3. **TV polimórfica:**
+   - **Torsades de pointes (QT longo):** **MgSO₄ 2 g EV em 5 min** + corrigir K/Mg, suspender drogas QT-longantes, marcapasso/isoproterenol para overdrive.
+   - **Sem QT longo (isquemia):** desfibrilar + tratar isquemia + β-bloq + amiodarona.
+4. **🆕 Tempestade elétrica:** sedação profunda + β-bloq EV (esmolol/propranolol) + amiodarona + considerar **bloqueio do gânglio estrelado** e ablação precoce.`,
+
+      treatment: `Investigar causa (isquemia, eletrólitos, drogas, cardiopatia estrutural, canalopatia) com ECG, ECO, troponina, K/Mg/Ca, RM cardíaca/genética em casos selecionados. Indicação de **CDI** em prevenção secundária (TV/FV sem causa reversível) e primária conforme FEVE ≤35% + sintomas após terapia otimizada (DANISH revisado, ESC 2022).`,
+
+      prescriptions: `\`\`\`
+INSTÁVEL — CARDIOVERSÃO IMEDIATA:
+1. O₂, monitor, acesso, pás de desfibrilador prontas.
+2. Sedação: etomidato 0,15 mg/kg EV OU midazolam 1-2 mg + fentanil 50-100 mcg EV.
+3. Cardioversão sincronizada:
+   - TSV: 50-100 J bifásico, escalonar.
+   - FA/flutter: 120-200 J.
+   - TV monomórfica com pulso: 100 J, escalonar.
+4. TV polimórfica/FV: desfibrilação ASSINCRÔNICA 200 J → seguir algoritmo PCR.
+
+ESTÁVEL — TSV (QRS estreito regular):
+5. Manobra de Valsalva modificada (REVERT): paciente sentado faz esforço expiratório por 15 s → deitar e elevar pernas a 45° por 15 s.
+6. Adenosina 6 mg EV em bolus RÁPIDO (veia cubital + flush 20 mL); se sem reversão em 1-2 min → 12 mg; se sem reversão → 12 mg (máx 2 doses de 12 mg).
+7. Alternativa: verapamil 5 mg EV em 2 min (não usar com β-bloq EV recente; CI em IC) OU diltiazem 0,25 mg/kg EV em 2 min.
+
+ESTÁVEL — TV MONOMÓRFICA (QRS largo regular):
+8. Amiodarona 150 mg EV em 10 min (em SG 5%); repetir até 2×; manutenção 1 mg/min × 6 h → 0,5 mg/min × 18 h.
+   OU Procainamida 17 mg/kg EV em 30 min (parar se ↓PA, QRS ↑50%, supressão).
+   OU Lidocaína 1-1,5 mg/kg EV bolus + 1-4 mg/min BIC.
+
+TORSADES DE POINTES:
+9. Sulfato de magnésio 50% 4 mL (2 g) EV em 5 min — repetir 2 g se persistir.
+10. Suspender drogas QT-longantes (haloperidol, ondansetrona, quinolonas, macrolídeos, metadona, antifúngicos azólicos, etc.).
+11. Corrigir K (alvo 4,5-5,0) e Mg (alvo >2,0).
+12. Isoproterenol 2-10 mcg/min OU marcapasso transvenoso 90-100 bpm para overdrive se bradi-dependente.
+
+WPW + FA (largo irregular):
+13. NÃO USAR adenosina, β-bloqueador, BCC, digital, amiodarona EV (debate).
+14. Procainamida 17 mg/kg EV em 30 min OU cardioversão elétrica 200 J sincronizada.
+
+INVESTIGAÇÃO:
+15. ECG 12D antes/depois, troponina, K, Mg, Ca iônico, função renal/tireoidiana, β-HCG.
+16. ECO + holter; avaliar eletrofisiologia (CDI/ablação).
+\`\`\``,
+    },
+  },
+
+  // ==================== 28. FIBRILAÇÃO ATRIAL COM RVR ====================
+  {
+    protocolId: "fp-fa-rvr",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**🆕 ESC AF 2024 (atualizada) + AHA/ACC/HRS 2023:**
+
+**Avaliação inicial AF-CARE:**
+- **C** — Comorbidades/causas (HAS, DM, IC, obesidade, AOS, álcool, hipertireoidismo).
+- **A** — Anticoagulação para prevenção de AVC.
+- **R** — Redução de sintomas (controle de FC ou ritmo).
+- **E** — Evaluation/educação dinâmica.
+
+**🆕 Mudança 2024:** **estratégia precoce de controle do ritmo (≤1 ano do dx)** é preferível ao controle isolado de FC em sintomáticos, jovens, IC, alto risco — **EAST-AFNET 4** + meta-análises 2023-2024. Considerar **ablação por cateter como 1ª linha** em FA paroxística sintomática (CABANA, EARLY-AF, STOP-AF First).
+
+**Conduta na emergência:**
+
+1. **Avaliar instabilidade** → cardioversão elétrica imediata (ver taquiarritmia instável).
+2. **Estável + RVR:**
+   - **Controle de frequência (alvo FC <110 em repouso — RACE II; <80 se sintomático):**
+     - **β-bloqueador EV** (metoprolol 2,5-5 mg em 2 min, repetir 3× — preferencial em DAC/IC compensada / esmolol BIC).
+     - **Diltiazem EV** 0,25 mg/kg em 2 min → BIC 5-15 mg/h (preferencial em DPOC/asma; **EVITAR em IC com FE reduzida**).
+     - **Digoxina 0,25-0,5 mg EV** (lenta, alternativa em IC; combinar com β-bloq).
+     - **Amiodarona 150 mg EV + 1 mg/min** em IC descompensada/instabilidade limítrofe (cuidado com cardioversão química inadvertida em FA >48 h não anticoagulada).
+3. **Estratégia de ritmo (cardioversão):**
+   - **<48 h de início claro:** cardioversão (elétrica 120-200 J ou farmacológica — **propafenona 600 mg VO ou flecainida 300 mg VO "pill in pocket"** se sem cardiopatia estrutural).
+   - **≥48 h ou início incerto:** **anticoagulação ≥3 sem antes** OU **TEE para excluir trombo no apêndice** + cardioversão + anticoagulação ≥4 sem após (independente do CHA₂DS₂-VA).
+
+**🆕 Anticoagulação — ESC 2024 usa CHA₂DS₂-VA (sem o "Sc" — sexo removido como variável isolada):**
+- **CHA₂DS₂-VA ≥2: anticoagular** com DOAC (apixabana, rivaroxabana, edoxabana, dabigatrana — preferenciais sobre varfarina, exceto valvar reumática moderada-grave/prótese mecânica).
+- **=1: discutir** individualmente.
+- **=0: não anticoagular.**
+- Avaliar **HAS-BLED** para identificar/corrigir fatores modificáveis (não como CI).
+- **Oclusão de apêndice atrial** (Watchman) se CI absoluta a anticoagulante.
+
+**🆕 Não recomendado:** AAS isolado para prevenção de AVC em FA, dronedarona em IC, sotalol em IRC grave/QT longo, pré-tratamento P2Y12 em SCA + FA.`,
+
+      treatment: `**Manutenção:**
+- **Apixabana 5 mg 12/12 h** (2,5 mg se 2 dos 3: ≥80 a, ≤60 kg, Cr ≥1,5) — 1ª escolha em maioria.
+- **Rivaroxabana 20 mg/dia** (15 mg se TFG 15-50).
+- **Dabigatrana 150 mg 12/12 h** (110 mg se ≥80 a / risco hemorrágico).
+- **Edoxabana 60 mg/dia** (30 mg conforme critérios).
+- **Varfarina** apenas em valvar reumática mod-grave / prótese mecânica.
+
+**Antiarrítmicos para manutenção do ritmo:**
+- Sem cardiopatia: flecainida, propafenona, sotalol, dronedarona.
+- Cardiopatia estrutural/IC: amiodarona, dofetilida.
+- **Ablação por cateter** precocemente em sintomáticos.
+
+**Modificáveis:** perda de peso (≥10% — LEGACY), tratar AOS (CPAP), exercício aeróbico, abstinência alcoólica.`,
+
+      prescriptions: `\`\`\`
+EMERGÊNCIA — FA-RVR ESTÁVEL:
+1. ECG 12D, monitor, 2 acessos, K + Mg + função tireoidiana + troponina + ECO bedside.
+2. CONTROLE DE FREQUÊNCIA (alvo <110 repouso):
+   - Metoprolol tartarato 5 mg EV em 2 min, repetir 5 mg em 5 min (até 3 doses); manutenção 25-100 mg VO 12/12 h.
+     OU Esmolol 500 mcg/kg bolus + 50-200 mcg/kg/min BIC (preferencial em titulação fina).
+   - Diltiazem 0,25 mg/kg EV em 2 min (média 20 mg) → 5-15 mg/h BIC; manutenção 30-90 mg VO 6/6 h.
+   - Digoxina 0,25-0,5 mg EV lento em 5 min (até 1 mg/24 h, fracionado) — adjuvante em IC.
+   - Amiodarona 150 mg EV em 10 min + 1 mg/min × 6 h → 0,5 mg/min × 18 h se IC descompensada.
+
+CARDIOVERSÃO (FA <48 h OU TEE-/anticoag adequada):
+3. Sedação (etomidato 0,15 mg/kg ou midazolam + fentanil) + cardioversão elétrica sincronizada 120-200 J.
+4. Pill in pocket (sem cardiopatia): propafenona 600 mg VO dose única OU flecainida 300 mg VO.
+
+ANTICOAGULAÇÃO:
+5. Apixabana 5 mg VO 12/12 h (2,5 mg se 2 de: ≥80 a, ≤60 kg, Cr ≥1,5 mg/dL).
+   OU Rivaroxabana 20 mg VO 1×/dia com refeição (15 mg se TFG 15-50).
+   OU Dabigatrana 150 mg VO 12/12 h (110 mg se ≥80 a).
+   OU Edoxabana 60 mg VO 1×/dia.
+   (Varfarina alvo INR 2-3 só em valvar reumática mod-grave / prótese mecânica.)
+6. Iniciar imediatamente após CHA₂DS₂-VA ≥2; se cardioversão programada, ≥3 sem antes ou TEE-.
+
+INVESTIGAÇÃO:
+7. TSH/T4L, eletrólitos, função renal/hepática, ECO transtorácico, holter, polissonografia se suspeita AOS.
+8. Encaminhar arritmologia para discussão de ritmo precoce/ablação se sintomático ou IC.
+\`\`\``,
+    },
+  },
+
+  // ==================== 29. EDEMA AGUDO DE PULMÃO / IC AGUDA ====================
+  {
+    protocolId: "fp-insuficiencia-cardiaca-cronica",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**🆕 ESC HF 2021 + Update 2023 + AHA/ACC/HFSA 2022 + atualizações 2025 + SBC 2024:**
+
+**Apresentações da IC aguda:** **edema agudo de pulmão (EAP), choque cardiogênico, IC direita aguda, descompensação congestiva**.
+
+**Avaliação imediata (Forrester/Stevenson):**
+- **Wet-Warm** (congesto + perfundido): diurético + vasodilatador.
+- **Wet-Cold** (congesto + hipoperfundido): inotrópico + diurético cauteloso.
+- **Dry-Cold** (seco + hipoperfundido): volume cuidadoso + inotrópico se necessário.
+- **Dry-Warm:** otimização ambulatorial.
+
+**EAP / wet-warm:**
+
+1. **Posição sentada, O₂ para SpO₂ 92-96% (88-92% em DPOC).**
+2. **🆕 VNI (CPAP 8-10 cmH₂O ou BiPAP) PRECOCE** em IRpA — reduz IOT (3CPO, recente meta 2024).
+3. **Furosemida EV** — em **virgens de diurético: 20-40 mg**; **em uso crônico: 1-2,5× a dose oral diária EV** em bólus, OU **infusão contínua 5-20 mg/h** se diurese insuficiente em 1 h. Reavaliar diurese em 2 h (DOSE).
+4. **Vasodilatador** se PAS >110:
+   - **Nitroglicerina EV 5-200 mcg/min** (alvo redução PAS ≤25%; CI em IAM VD/sildenafil).
+   - **Nitroprussiato 0,3-5 mcg/kg/min** em emergência hipertensiva associada (cuidado com tiocianato).
+5. **Morfina:** **NÃO de rotina** (ASCEND-HF: associada a maior mortalidade) — apenas se ansiedade/dor refratária em pequenas doses.
+6. **🆕 Inotrópicos APENAS em hipoperfusão**: dobutamina 2,5-10 mcg/kg/min OU milrinona 0,125-0,375 mcg/kg/min (preferencial se uso de β-bloq) OU levosimendana 0,1-0,2 mcg/kg/min (sem bólus em hipotensão).
+7. **🆕 Iniciar/manter quadrupla (4 pilares) ANTES da alta — "in-hospital initiation" (STRONG-HF):**
+   - **iSGLT2 (dapagliflozina 10 mg ou empagliflozina 10 mg/dia)** — iniciar IMEDIATAMENTE em qualquer FE (DAPA-HF, EMPEROR, DELIVER).
+   - **iECA/BRA OU sacubitril-valsartana (ARNI) 24-49 mg 12/12 h titular** — preferir ARNI em FE reduzida (PIONEER-HF; iniciar com sistólica ≥100).
+   - **β-bloqueador (carvedilol/bisoprolol/metoprolol succinato)** após estabilização hemodinâmica e suspensão do diurético EV — não suspender em descompensação salvo choque.
+   - **Antagonista mineralocorticoide (espironolactona 25 mg/eplerenona)** se K <5 e Cr <2,5.
+8. **🆕 Finerenona** (não esteroide, MRA) — incorporada em **HFmrEF/HFpEF + DRC + albuminúria** (FINEARTS-HF 2024) — alternativa/aditiva à espironolactona.
+9. **🆕 Vericiguate** (estimulador de guanilato-ciclase) — VICTORIA: HFrEF pós-descompensação.
+10. **Tratar fatores precipitantes:** SCA, FA, HAS descontrolada, infecção, anemia, DRC, não adesão, AINE, álcool.
+
+**Choque cardiogênico (wet-cold):** ver protocolo específico — noradrenalina + dobutamina/milrinona, ECMO/Impella, revascularização precoce.`,
+
+      treatment: `**Antes da alta:**
+- 4 pilares em dose-alvo (titular em consultas semanais nos primeiros 1-2 m — STRONG-HF) + diurético na menor dose efetiva.
+- BNP/NT-proBNP basal e na alta.
+- Reabilitação cardiovascular precoce (REHAB-HF).
+- Vacinação (influenza anual, pneumocócica, COVID-19, VSR ≥60 a).
+- Educação: peso diário, dieta hipossódica, restrição hídrica em hipo-Na, sinais de descompensação.
+- Telemonitoramento/CardioMEMS em casos selecionados.
+
+**HFpEF (FE ≥50%):** **iSGLT2 é 1ª linha de evidência forte** (EMPEROR-Preserved, DELIVER); diurético sintomático; AR-GLP1 (semaglutida) se obesidade (STEP-HFpEF); finerenona (FINEARTS); espironolactona (TOPCAT — controverso). ARNI/sacubitril em FE limítrofe 50-57%.
+
+**Dispositivos:** TRC (FE ≤35% + BCRE QRS ≥130 ms); CDI (FE ≤35% pós-IAM ≥40 d ou MNI ≥3 m + sintomas).`,
+
+      prescriptions: `\`\`\`
+EAP — EMERGÊNCIA:
+1. Sentar paciente, O₂ até SpO₂ 92-96% (88-92% se DPOC).
+2. CPAP 8-10 cmH₂O OU BiPAP IPAP 12 / EPAP 5-8; ajustar conforme conforto/SpO₂. IOT se falha em 1 h.
+3. Furosemida 40-80 mg EV em bolus (1-2,5× dose VO diária se uso crônico). Repetir em 30-60 min se diurese <0,5 mL/kg/h; ou BIC 5-20 mg/h se refratário.
+4. Nitroglicerina 5 mcg/min EV BIC, dobrar a cada 5 min até alívio (máx 200 mcg/min); se PAS >180, considerar nitroprussiato 0,3-5 mcg/kg/min.
+5. Captopril 6,25-25 mg VO/SL se PAS >120 e sem CI (ponte para ARNI/iECA otimizado).
+6. NÃO USAR morfina de rotina; se necessário, 2 mg EV em dose única.
+
+INOTRÓPICO APENAS SE WET-COLD/CHOQUE:
+7. Dobutamina 2,5-10 mcg/kg/min EV BIC.
+   OU Milrinona 0,125-0,375 mcg/kg/min (se em β-bloq, evitar bólus se PAS limítrofe).
+   OU Levosimendana 0,1-0,2 mcg/kg/min × 24 h (sem bólus se PAS <100).
+8. Noradrenalina 0,05-0,5 mcg/kg/min se PAM <65; acionar UTI/centro de SCA mecânico se choque refratário (ECMO/Impella).
+
+INICIAR ANTES DA ALTA (4 PILARES — STRONG-HF):
+9. Dapagliflozina 10 mg VO 1×/dia (iniciar enquanto internado, qualquer FE, TFG ≥20).
+10. Sacubitril-valsartana 24/26 mg VO 12/12 h se HFrEF e PAS ≥100 (iniciar 36 h após última dose de iECA); titular para 49/51 → 97/103 a cada 2 sem.
+    OU Enalapril 2,5-5 mg VO 12/12 h (titular) / Losartana 25-50 mg/dia se intolerância.
+11. Carvedilol 3,125 mg VO 12/12 h (titular a cada 2 sem até 25-50 mg 12/12 h) — após suspender diurético EV e euvolemia.
+    OU Bisoprolol 1,25 mg/dia / Metoprolol succinato 12,5-25 mg/dia.
+12. Espironolactona 25 mg VO 1×/dia (se K <5, Cr <2,5 ou TFG ≥30).
+    OU Finerenona 10-20 mg/dia (HFmrEF/HFpEF + DRC + albuminúria).
+13. Furosemida 20-40 mg VO/dia menor dose efetiva após euvolemia.
+
+VIGILÂNCIA:
+14. Peso diário, balanço hídrico, função renal/eletrólitos D2, D5 e na alta; BNP/NT-proBNP na admissão e alta.
+15. Reavaliação ambulatorial em 7-14 dias para titulação dos 4 pilares (STRONG-HF).
+\`\`\``,
+    },
+  },
+
+  // ==================== 30. CRISE / EMERGÊNCIA HIPERTENSIVA ====================
+  {
+    protocolId: "fp-crise-hipertensiva",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**ACC/AHA 2017 + ESC/ESH 2024 + SBC/SBN/SBH 2025:**
+
+**Diferenciar:**
+- **🆕 Urgência hipertensiva** (PA ≥180/120 SEM lesão de órgão-alvo): redução **VO em horas-dias**, ambulatorial; **NÃO usar nifedipino sublingual** (risco de queda abrupta, AVC, IAM).
+- **Emergência hipertensiva** (PA elevada **COM lesão aguda de órgão-alvo**: encefalopatia, AVC, EAP, IAM/SCA, dissecção, eclâmpsia, IRA, microangiopatia, hemorragia retiniana grau IV): redução **EV em UTI**.
+- **🆕 Pseudocrise:** PA elevada por dor/ansiedade/abstinência — tratar gatilho, NÃO anti-hipertensivo agressivo.
+
+**Metas de redução (alvo individual por órgão acometido):**
+
+| Cenário | Redução |
+|---|---|
+| Genérica (não dissecção/AVCi) | ↓25% PAM em 1ª hora → 160/100-110 em 2-6 h → normalização em 24-48 h |
+| **🆕 Dissecção aórtica** | **PAS 100-120 e FC <60** em ≤20 min; **β-bloq EV ANTES de vasodilatador** (esmolol/labetalol → nitroprussiato/clevidipina) |
+| **🆕 AVC isquêmico SEM trombólise** | Tratar só se PA >220/120; alvo ↓15% em 24 h |
+| **AVC isquêmico COM trombólise/trombectomia** | <185/110 antes; <180/105 por 24 h |
+| **🆕 AVC hemorrágico** | **PAS 130-140 em ≤1 h** (INTERACT3) |
+| **EAP/IC aguda** | ↓PA + vasodilatador (NTG/nitroprussiato) + diurético |
+| **SCA** | Tratar isquemia (β-bloq EV + nitrato), evitar PAS <120 |
+| **Eclâmpsia/pré-eclâmpsia grave** | PA 140-150/90-100 com hidralazina/labetalol/nifedipino; MgSO₄ |
+| **Encefalopatia hipertensiva** | ↓25% PAM em 1 h |
+| **Crise adrenérgica (feocromocitoma, cocaína)** | **Fentolamina** ou nitroprussiato; **NÃO β-bloq isolado** (vasoespasmo paradoxal — usar α-bloq antes) |
+
+**🆕 Drogas EV de escolha (ESC 2024):**
+- **Clevidipina** 1-2 mg/h, dobrar cada 90 s — preferida em IC, AVC, dissecção, gravidez (titulação rápida, sem efeito CV).
+- **Nicardipina** 5-15 mg/h.
+- **Labetalol** 10-20 mg EV bolus a cada 10 min (máx 300) ou BIC 0,5-2 mg/min — gravidez, dissecção (com esmolol prévio), AVC.
+- **Esmolol** 500 mcg/kg bolus + 50-200 mcg/kg/min — dissecção, taquiarritmia.
+- **Nitroglicerina** 5-200 mcg/min — SCA/EAP.
+- **Nitroprussiato** 0,3-5 mcg/kg/min — emergências sem isquemia/gravidez (toxicidade cianeto/tiocianato; evitar IRC e uso >24 h).
+- **Hidralazina** 5-10 mg EV bolus — eclâmpsia/gravidez.
+- **Fentolamina** 5-10 mg EV bolus — feocromocitoma/cocaína.
+- **Furosemida** EV adjuvante em EAP/sobrecarga.
+
+**Não recomendado:** nifedipino sublingual, captopril sublingual rotineiro (variabilidade), redução >25% PAM na 1ª hora (exceto dissecção/eclâmpsia/EAP), β-bloqueador isolado em cocaína/feocromocitoma.`,
+
+      treatment: `**Urgência hipertensiva** (sem lesão aguda):
+- **Reiniciar/ajustar terapia VO** (captopril 25 mg, clonidina 0,1-0,2 mg, anlodipino 5-10 mg, losartana 50-100 mg) e observar 1-2 h.
+- Encaminhar ambulatório em 7 d; investigar adesão, drogas (AINE, simpaticomimético), HAS secundária se <30 a/refratária.
+
+**Pós-emergência:** desmame de EV ≤24 h após estabilidade, otimizar VO (combinação tripla iECA/BRA + BCC + tiazídico ± espironolactona — PATHWAY-2 em refratária), MAPA, busca de causa secundária (renovascular, feocromocitoma, hiperaldo, AOS).`,
+
+      prescriptions: `\`\`\`
+EMERGÊNCIA HIPERTENSIVA (UTI, PAi recomendada):
+1. Acesso EV; monitor; ECG; gasometria; eletrólitos; função renal; troponina se suspeita SCA; TC se suspeita AVC; RX/ECO se suspeita dissecção.
+2. Escolher droga conforme órgão-alvo (ver tabela).
+
+DISSECÇÃO AÓRTICA (alvo PAS 100-120, FC <60, em ≤20 min):
+3. Esmolol 500 mcg/kg EV bolus + 50-200 mcg/kg/min BIC.
+   OU Labetalol 20 mg EV bolus, repetir até 300 mg ou BIC 0,5-2 mg/min.
+4. APÓS β-bloq atingir FC <60: Nitroprussiato 0,3 mcg/kg/min EV BIC (titular cada 5 min até PAS 100-120) OU Clevidipina 1-2 mg/h.
+5. Analgesia: morfina 2-4 mg EV; antiemético; cirurgia/intervencionista urgente.
+
+AVC HEMORRÁGICO (PAS 130-140 em ≤1 h):
+6. Nicardipina 5 mg/h EV BIC, ↑2,5 mg/h cada 5-15 min (máx 15 mg/h).
+   OU Clevidipina 1-2 mg/h, dobrar cada 90 s.
+   OU Labetalol 10-20 mg EV bolus.
+
+EAP HIPERTENSIVO:
+7. Nitroglicerina 5-200 mcg/min EV BIC (alvo redução PAS ≤25%).
+8. Furosemida 40-80 mg EV bolus (1-2,5× dose VO diária).
+9. CPAP/BiPAP precoce.
+
+ECLÂMPSIA/PRÉ-ECLÂMPSIA GRAVE (alvo PA 140-150/90-100):
+10. Hidralazina 5 mg EV em bolus a cada 20 min (máx 30 mg).
+    OU Labetalol 20 mg EV (40-80 mg, máx 300 mg) OU Nifedipino 10 mg VO 20/20 min (máx 50 mg/h).
+11. MgSO₄ conforme protocolo eclâmpsia.
+
+CRISE ADRENÉRGICA (cocaína/feocromocitoma):
+12. Fentolamina 5-10 mg EV em bolus, repetir cada 10 min.
+    Diazepam 5-10 mg EV se cocaína/agitação.
+    NÃO USAR β-bloqueador isolado (vasoespasmo coronário).
+
+URGÊNCIA HIPERTENSIVA (sem lesão aguda) — VO:
+13. Captopril 25 mg VO (repetir em 30 min se PA persistente).
+    OU Clonidina 0,1-0,2 mg VO (até 0,8 mg/24 h).
+    OU Anlodipino 5-10 mg VO.
+14. Reiniciar/ajustar terapia crônica; encaminhar ambulatório em 7 dias; investigar HAS secundária se refratária.
+
+NUNCA: nifedipino sublingual.
+\`\`\``,
+    },
+  },
+
+  // ==================== 31. DISSECÇÃO AGUDA DE AORTA ====================
+  {
+    protocolId: "fp-disseccao-aorta",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**🆕 ACC/AHA Aortic Disease Guideline 2022 + ESC Aorta 2024 + STS 2025:**
+
+**Suspeita:** dor torácica/dorsal "rasgante" súbita máxima no início, assimetria de pulsos/PA >20 mmHg, sopro de IAo nova, déficit neurológico, sinais de má-perfusão de órgão.
+
+**Classificação Stanford:**
+- **Tipo A:** envolve aorta ascendente — **CIRURGIA EMERGENCIAL** (mortalidade 1-2%/h sem cirurgia).
+- **Tipo B:** descendente apenas — **manejo médico**; **TEVAR** se complicada (má-perfusão, expansão, dor refratária, ruptura iminente, hipertensão refratária).
+
+**Diagnóstico:**
+- **AngioTC tórax-abdome com contraste** (padrão em <15 min).
+- ECO transtorácico/transesofágico em instabilidade.
+- D-dímero **negativo (<500 ng/mL)** torna dissecção improvável (sensibilidade alta) — útil em baixo risco; **NÃO substitui imagem** em alto risco (ADD score ≥2).
+- ECG (excluir IAM concomitante por dissecção em coronária — geralmente direita).
+
+**Tratamento médico imediato (todos):**
+
+1. **Analgesia potente** (morfina/fentanil) + ambiente calmo.
+2. **🆕 Anti-impulso (controle FC PRIMEIRO, depois PA — sequência crítica):**
+   - **β-bloqueador EV: esmolol** 500 mcg/kg bolus + 50-200 mcg/kg/min BIC (titulação fina) **OU labetalol** 20 mg EV → 0,5-2 mg/min — alvo **FC <60 bpm**.
+   - **APÓS atingir FC <60:** vasodilatador para **PAS 100-120**: **nitroprussiato 0,3-5 mcg/kg/min** OU **clevidipina 1-2 mg/h**.
+   - **NUNCA** vasodilatador antes de β-bloqueador (taquicardia reflexa aumenta dP/dt e propaga dissecção).
+3. **Em asma/broncoespasmo grave:** diltiazem EV como alternativa de controle de FC.
+4. Reservar **2 acessos calibrosos + tipagem + prova cruzada (10 UI CH)**; cabeceira 30°; sondagem; UTI imediata.
+
+**Indicações cirúrgicas urgentes:**
+- **Tipo A:** sempre.
+- **Tipo B complicada:** TEVAR ± cirurgia híbrida.
+- Ruptura, má-perfusão visceral/membro/medula, expansão >5 mm, dor/hipertensão refratárias.
+
+**Não recomendado:** anticoagulação, fibrinólise, hidralazina isolada (taquicardia reflexa), nitroprussiato isolado sem β-bloq.`,
+
+      treatment: `**Pós-cirurgia/manejo crônico:**
+- Anti-hipertensivo VO com β-bloqueador (carvedilol/bisoprolol) + iECA/BRA — alvo PAS <120, FC <60.
+- Estatina, controle DM, abstinência tabagismo, evitar isometria pesada.
+- TC/RM seriadas: 1, 3, 6, 12 m e anual.
+- Avaliar genética (Marfan, Loeys-Dietz, vascular Ehlers-Danlos, válvula aórtica bicúspide) em <60 a / família.`,
+
+      prescriptions: `\`\`\`
+EMERGÊNCIA — DISSECÇÃO AÓRTICA:
+1. UTI; PAi nos 2 braços; 2 acessos calibrosos; sondagem vesical; tipagem + 10 UI CH reservadas.
+2. Cabeceira 30°; ambiente calmo; AngioTC tórax-abdome com contraste IMEDIATA.
+3. Morfina 2-4 mg EV cada 5 min até alívio; fentanil 50-100 mcg EV alternativo.
+4. Esmolol 500 mcg/kg EV bolus + 50 mcg/kg/min BIC, titular cada 5 min até FC <60 (máx 200 mcg/kg/min).
+   OU Labetalol 20 mg EV em bolus, repetir 40-80 mg cada 10 min (máx 300) ou BIC 0,5-2 mg/min.
+5. Após FC <60: Nitroprussiato 0,3 mcg/kg/min EV BIC, titular até PAS 100-120 (máx 5 mcg/kg/min, idealmente <24 h).
+   OU Clevidipina 1-2 mg/h EV, dobrar cada 90 s.
+6. Diltiazem 0,25 mg/kg EV em 2 min + 5-15 mg/h BIC se asma/CI a β-bloq.
+7. Hemograma, coagulograma, função renal, eletrólitos, troponina, gasometria, lactato.
+8. Acionar IMEDIATAMENTE cirurgia cardiovascular (Tipo A) ou cirurgia vascular/intervencionista (Tipo B complicada).
+
+NUNCA:
+- Anticoagulação ou fibrinólise.
+- Vasodilatador (nitroprussiato/hidralazina) ANTES de β-bloq.
+- Hidralazina/minoxidil/diazoxida isolados.
+\`\`\``,
+    },
+  },
+
+  // ==================== 32. CHOQUE CARDIOGÊNICO ====================
+  {
+    protocolId: "fp-choque-cardiogenico",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**🆕 AHA/ACC/SCAI Cardiogenic Shock 2022 + DanGer Shock 2024 + ESC 2023:**
+
+**Definição:** PAS <90 por ≥30 min (ou vasopressor para manter ≥90) + sinais de hipoperfusão (oligúria, AMS, lactato >2, extremidades frias) — secundário a falência cardíaca (geralmente IAM em ~80%).
+
+**🆕 Estadiamento SCAI (2019, adotado universalmente):** A (At risk) → B (Beginning) → C (Classic) → D (Deteriorating) → E (Extremis).
+
+**Conduta — **time-is-myocardium**:**
+
+1. **Diagnóstico em <30 min:** ECG, troponina, ECO bedside (FE, RV, complicações mecânicas — CIV, regurgitação mitral aguda, ruptura), POCUS pulmonar (B-lines, derrame), gasometria + lactato.
+2. **Cinecoronariografia + revascularização do vaso culpado IMEDIATA** se SCA (CULPRIT-SHOCK: **revascularização SOMENTE da artéria culpada**, **NÃO completa de rotina** na fase aguda — multivaso eletivo após estabilização).
+3. **Suporte ventilatório:** O₂ → VNI/CPAP → IOT precoce se IRpA/exaustão; sedação cardiovascular (etomidato/cetamina; evitar propofol bolus em PA limítrofe).
+4. **Hemodinâmica — ALVOS: PAM ≥65 (≥80 em pacientes hipertensos crônicos), lactato ↓, diurese ≥0,5 mL/kg/h:**
+   - **Noradrenalina 0,05-1 mcg/kg/min** = vasopressor de 1ª linha (SOAP-II — superior à dopamina em mortalidade e arritmia).
+   - **Dobutamina 2,5-10 mcg/kg/min** = inotrópico de 1ª linha.
+   - **Milrinona 0,125-0,375 mcg/kg/min** alternativa (preferencial se em β-bloq).
+   - **Vasopressina 0,03 U/min** se NA >0,25 mcg/kg/min.
+   - **Adrenalina** evitar em SCA (↑arritmia/lactato — OptimaCC).
+5. **🆕 Suporte mecânico — DanGer Shock 2024 (mudança de paradigma):**
+   - **Impella CP** em IAM-CSST com choque cardiogênico: **redução de mortalidade em 6 meses** (NEJM 2024, primeiro RCT positivo) — agora recomendação **forte** em centros experientes.
+   - **VA-ECMO** em choque refratário, especialmente se RV envolvido / pré-transplante / ponte para decisão (ECMO-CS 2023: sem benefício em uso indiscriminado precoce).
+   - **BIA (balão intra-aórtico)** = NÃO recomendado de rotina em IAM (IABP-SHOCK II — sem benefício); pode ser ponte em IM aguda/CIV.
+6. **Anticoagulação plena** se ECMO/Impella; reverter se sangramento.
+7. **Evitar:** sobrecarga de fluidos (avaliar responsividade), múltiplos inotrópicos sem objetivo, atraso a hemodinâmica.
+
+**Choque por VD (IAM inferior, TEP):** **CUIDADO com diurético/vasodilatador** — manter pré-carga (cristaloide cauteloso 250 mL guiado por POCUS), inotrópico (dobutamina), revascularização, considerar óxido nítrico inalado/iloprost na hipertensão pulmonar aguda.`,
+
+      treatment: `**Plano após estabilização:**
+- Otimizar 4 pilares de IC (ver protocolo).
+- Avaliação para ICP em outras lesões, cirurgia (CRM, MR/CIV), CDI, transplante, LVAD.
+- Reabilitação cardíaca, suporte psicossocial.
+- Discussão precoce de objetivos de cuidado em SCAI E refratário.`,
+
+      prescriptions: `\`\`\`
+PRIMEIRA HORA — UTI/SALA DE HEMODINÂMICA:
+1. ABCDE; PAi; CVC central; sonda vesical; ECG seriado; ECO bedside.
+2. O₂ titulada, VNI/IOT se IRpA. Sedação cardio-segura (etomidato 0,15 mg/kg, cetamina 1 mg/kg).
+3. Cristaloide CAUTELOSO 250 mL e reavaliar com POCUS/ECO/PLR.
+
+VASOPRESSOR + INOTRÓPICO:
+4. Noradrenalina 0,05-1 mcg/kg/min EV BIC (preparo: 16 mg em SF 0,9% 250 mL = 64 mcg/mL); alvo PAM ≥65.
+5. Dobutamina 2,5-10 mcg/kg/min EV BIC (250 mg em SG 5% 250 mL = 1.000 mcg/mL).
+   OU Milrinona 0,125-0,375 mcg/kg/min se em β-bloq.
+6. Vasopressina 0,03 U/min EV (sem titulação) se NA >0,25 mcg/kg/min.
+
+REPERFUSÃO/SUPORTE MECÂNICO:
+7. Acionar hemodinâmica para angio + ICP do vaso culpado em <90 min.
+8. AAS 300 mg + Heparina não fracionada 60-100 U/kg + P2Y12 na sala (cangrelor EV se intubado/sem VO).
+9. Acionar centro de SCA mecânico para Impella CP (DanGer Shock) ou VA-ECMO em SCAI D/E ou refratariedade.
+10. Atorvastatina 80 mg VO/SNG.
+
+EVITAR:
+- BIA de rotina em IAM (sem benefício).
+- Bólus de propofol/midazolam em PA limítrofe.
+- Diurético/vasodilatador em choque por VD.
+- Revascularização completa multivaso na fase aguda (CULPRIT-SHOCK).
+
+VIGILÂNCIA:
+11. Lactato 2/2 h; ScvO₂; gasometria; função renal/hepática D1, D3, D5; ECO seriado.
+\`\`\``,
+    },
+  },
+
+  // ==================== 33. TAMPONAMENTO CARDÍACO ====================
+  {
+    protocolId: "fp-tamponamento",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**ESC Pericardial Diseases 2015 + Update 2024 + AHA 2022:**
+
+**Tríade de Beck** (hipotensão + bulhas abafadas + turgência jugular) — tardia em apenas 30%. **Pulso paradoxal >10 mmHg** = sinal sensível.
+
+**Diagnóstico:**
+- **ECO transtorácico bedside IMEDIATO** (padrão-ouro): derrame circunferencial, colapso AD/VD na diástole, **swinging heart**, VCI dilatada sem variação respiratória, fluxo mitral/tricúspide com variação respiratória >25%.
+- ECG: baixa voltagem, alternância elétrica.
+- RX: silhueta em "moringa" (subagudo).
+
+**Etiologia em emergência:** trauma penetrante (sala vermelha — toracotomia se PCR), pós-cirurgia cardíaca, dissecção aórtica com rotura (NÃO drenar — sala de cirurgia direto), neoplasia, urêmico, infeccioso (TB, viral), pós-IAM (Dressler/ruptura).
+
+**Tratamento — DRENAR é o tratamento; tudo mais é PONTE:**
+
+1. **🆕 Pericardiocentese guiada por ECO** (subxifoide ou paraesternal/apical conforme melhor janela) — **padrão atual** sobre cega; cateter pigtail por Seldinger para drenagem prolongada.
+2. **Janela pericárdica cirúrgica** em derrame loculado, recidivante, hemorrágico (trauma/pós-cirúrgico/dissecção), purulento.
+3. **🆕 Ponte hemodinâmica enquanto aguarda drenagem:**
+   - **Cristaloide 500 mL EV em bolus** (efeito limitado, mas pode estabilizar) — não retardar drenagem.
+   - **Noradrenalina/dobutamina** se choque.
+   - **EVITAR ventilação com pressão positiva agressiva** antes da drenagem (reduz retorno venoso e precipita PCR).
+   - **Sedação minimalista**, manter respiração espontânea o máximo possível.
+4. **NÃO USAR diurético/vasodilatador** (piora pré-carga já comprometida).
+5. **Dissecção aórtica com tamponamento:** **NÃO drenar** — sala cirúrgica imediata; pericardiocentese controlada de pequenos volumes (50-100 mL apenas se PCR iminente) — drenagem completa pode reiniciar sangramento e matar.
+
+**Drenagem cirúrgica de emergência (toracotomia ressuscitativa)** em PCR por trauma penetrante torácico testemunhado.`,
+
+      treatment: `**Investigação após estabilização:**
+- Análise do líquido (proteína, LDH, ADA, citologia, BAAR + cultura, PCR, gram + cultura geral, hematócrito).
+- Hemograma, função renal, TSH, ANA, FR, sorologia HIV, prova tuberculínica.
+- TC tórax/RM cardíaca para massas, espessamento, restrição.
+
+**Específico:**
+- **Idiopático/viral:** AINE (ibuprofeno 600 mg 8/8 h ou AAS 750-1.000 mg 8/8 h) + **colchicina 0,5 mg/d (≤70 kg) ou 0,5 mg 12/12 h** por 3 m (CORE, ICAP).
+- **Bacteriano/purulento:** drenagem + ATB de amplo espectro + cirurgia.
+- **TB:** RIPE 6 m + corticoide 4-6 sem.
+- **Neoplásico:** janela pericárdica + tratamento oncológico ± esclerose intracavitária.
+- **Urêmico:** intensificar diálise.
+- **Pericardite recorrente refratária:** anakinra (IL-1 antagonista — AIRTRIP, RHAPSODY).`,
+
+      prescriptions: `\`\`\`
+EMERGÊNCIA — TAMPONAMENTO CARDÍACO:
+1. UTI/Sala de hemodinâmica; PAi; 2 acessos calibrosos; ECG seriado; ECO bedside IMEDIATO.
+2. O₂ máscara reservatório; EVITAR IOT/VPP até drenagem (se inevitável: cetamina 1-2 mg/kg + rocurônio com PEEP mínima).
+3. Cristaloide 500 mL EV em bolus rápido (Ringer/SF) como ponte; repetir uma vez.
+4. Noradrenalina 0,05-0,5 mcg/kg/min se PAM <65.
+5. Acionar cardiologista intervencionista/cirurgião CV para PERICARDIOCENTESE GUIADA POR ECO IMEDIATA (subxifoide); deixar pigtail ≥24-48 h.
+6. Análise do líquido: proteína, LDH, ADA, citologia, gram + cultura, BAAR + cultura para TB, PCR, hematócrito.
+7. Hemograma, coagulograma, função renal, TSH, troponina, gasometria.
+
+CONTRAINDICAÇÃO RELATIVA À PERICARDIOCENTESE:
+- Dissecção aórtica → cirurgia direto (drenar apenas 50-100 mL se PCR iminente).
+- Trauma penetrante com PCR testemunhada → toracotomia ressuscitativa de emergência.
+
+NUNCA: diurético, vasodilatador, ventilação com PEEP alta antes da drenagem.
+
+ETIOLOGIA — TRATAMENTO ESPECÍFICO:
+8. Idiopático/viral: ibuprofeno 600 mg VO 8/8 h por 1-2 sem (titular dose) + colchicina 0,5 mg VO 1×/dia (≤70 kg) ou 12/12 h por 3 m + omeprazol 20 mg/dia.
+9. Purulento: drenagem cirúrgica + vancomicina + cefepima EV; ajustar conforme cultura.
+10. TB: iniciar RIPE + prednisona 0,5 mg/kg/d (desmame em 6-8 sem).
+11. Urêmico: hemodiálise diária; pericardiectomia se constritivo.
+\`\`\``,
+    },
+  },
+
+  // ==================== 34. SÍNCOPE NA EMERGÊNCIA ====================
+  {
+    protocolId: "fp-sincope-emergencia",
+    lastReviewed: "2026-03",
+    sections: {
+      conduct: `**ESC Syncope 2018 + Update 2024 + AHA/ACC/HRS 2017:**
+
+**Avaliação inicial obrigatória:** história + exame físico + **ECG 12 derivações** + **PA ortostática (3 min)** + glicemia.
+
+**🆕 Estratificação de risco — CSRS (Canadian Syncope Risk Score) preferencial sobre San Francisco/OESIL** (mais validada — atualizações 2023-2024 reforçam):
+
+**Fatores de ALTO risco (internar/observar 24-48 h em monitor):**
+- Síncope durante esforço, em decúbito, sem pródromos.
+- Palpitação precedendo, dor torácica, dispneia.
+- Cardiopatia estrutural conhecida, IC, FE reduzida.
+- ECG anormal: bloqueio bi/trifascicular, BRE novo, QRS ≥120 ms, BAV 2-3, FA com FC <50, TVNS, QT longo (>460 ms M / 480 F) ou curto (<340 ms), Brugada, WPW, sinais de isquemia, HVE com onda Q.
+- Idade >60 anos, sexo masculino, ATCD familiar de morte súbita <50 a.
+- Hb <9, troponina elevada, creatinina ↑, BNP ↑.
+
+**Baixo risco (alta com investigação ambulatorial):**
+- Pródromos vasovagais clássicos, gatilho (calor, dor, micção, defecação), sem cardiopatia, ECG normal, sem ATCD familiar.
+
+**Investigação direcionada:**
+- **🆕 Holter 24-72 h** se palpitação/baixo limiar; **Looper externo 14-30 d** se síncope esporádica; **monitor implantável (Reveal LINQ)** em síncope inexplicada de alto risco — recomendação reforçada (POST 4, evidência 2024).
+- **ECO** em sopro/cardiopatia/IAM prévio.
+- **Tilt test** para vasovagal/POTS atípico, **massagem do seio carotídeo** se >40 a com síncope inexplicada (CI: AVC <3 m, sopro carotídeo, IAM <3 m, TV/FV).
+- **EEG/RM/TC** apenas se sintoma neurológico associado (não rotineiro).
+- **ALPS / D-dímero / TEP** se síncope + dispneia/taquicardia/dor torácica/CV ↓ (PESIT — TEP em ~1/6 hospitalizados por síncope; usar Wells/PERC).
+
+**Síncope cardiogênica/elétrica suspeita:** UTI/monitor; tratar conforme arritmia/SCA/EAP/dissecção/TEP/tamponamento.
+
+**Síncope reflexa/ortostática (manejo):**
+- Educação (gatilhos, contramanobras físicas), hidratação 2-2,5 L, sal 6-10 g/d (sem CI), meias compressivas 20-30 mmHg.
+- Revisar drogas hipotensoras (diuréticos, α-bloq, antidepressivos).
+- **Midodrina 2,5-10 mg 8/8 h** OU **fludrocortisona 0,1-0,2 mg/d** em ortostática refratária.
+
+**🆕 Não recomendado:** β-bloqueador para vasovagal jovem (sem benefício), uso rotineiro de TC cabeça em síncope sem trauma/foco neurológico.`,
+
+      treatment: `Encaminhamento conforme etiologia: arritmologia (CDI/MP), neurologia (epilepsia), psiquiatria (pseudossíncope), geriatria (quedas em idoso). Direção/atividade de risco: orientar suspensão por 1-6 m conforme classe (DETRAN/CFM).`,
+
+      prescriptions: `\`\`\`
+TRIAGEM (TODA SÍNCOPE):
+1. ECG 12 derivações em ≤10 min; PA decúbito + ortostática (1 min e 3 min); glicemia capilar.
+2. Hemograma, eletrólitos, função renal, troponina, β-HCG (mulher fértil).
+3. Calcular CSRS (Canadian Syncope Risk Score) e classificar risco.
+
+ALTO RISCO — INTERNAR EM MONITOR:
+4. UTI/Unidade coronariana 24-48 h; monitor cardíaco contínuo.
+5. ECO transtorácico em ≤24 h.
+6. Holter / monitor de eventos / Reveal conforme suspeita.
+7. Investigação dirigida: D-dímero/AngioTC se suspeita TEP; angio/troponina seriada se SCA; TC/AngioTC se dissecção; EEG se foco neurológico.
+8. Tratar etiologia específica (ver protocolos arritmia, SCA, TEP, dissecção, tamponamento).
+
+BAIXO RISCO (vasovagal clássico, ECG e exames normais):
+9. Alta com orientação: hidratação 2-2,5 L/dia, sal 6-10 g/dia (sem CI), evitar gatilhos, contramanobras físicas (cruzar pernas, tensionar braços).
+10. Meias compressivas 20-30 mmHg.
+11. Reavaliação ambulatorial em 2-4 sem; encaminhar arritmologia se recorrência.
+
+ORTOSTÁTICA REFRATÁRIA:
+12. Midodrina 2,5 mg VO 8/8 h, titular até 10 mg 8/8 h (3ª dose ≤18h para evitar HAS noturna).
+    OU Fludrocortisona 0,1 mg VO/dia, titular até 0,2 mg/dia (vigiar K, edema, HAS supina).
+13. Revisar e desprescrever drogas hipotensoras se possível.
+
+ORIENTAÇÃO LEGAL:
+14. Suspender direção e atividade de risco por 1-6 m conforme etiologia (CFM/DETRAN).
+\`\`\``,
+    },
+  },
 ];
