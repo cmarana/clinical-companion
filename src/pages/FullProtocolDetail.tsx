@@ -341,6 +341,55 @@ export default function FullProtocolDetail() {
           </Tabs>
         </div>
       </div>
+
+      {/* Área imprimível — só visível durante window.print() (PDF/print export) */}
+      <div className="print-area" aria-hidden="true">
+        <div className="print-header">
+          <h1>{protocol.title}</h1>
+          <p style={{ fontSize: "10pt", color: "#444", margin: "4px 0" }}>
+            {protocol.category}
+            {evidence && ` · Classe ${evidence.class} · Nível ${evidence.level}`}
+          </p>
+          <p style={{ fontSize: "9pt", color: "#666", margin: "4px 0" }}>
+            ID: {protocol.id}
+            {protocol.lastReviewed && ` · Revisão PULSO: ${protocol.lastReviewed.replace("-", "/")}`}
+            {` · Exportado em ${new Date().toLocaleDateString("pt-BR")}`}
+          </p>
+        </div>
+
+        {orderedSections.map((s) => {
+          const trimmed = s.content?.trim() ?? "";
+          if (!trimmed) return null;
+          return (
+            <div key={s.id} className="print-section">
+              <h2>{s.title}</h2>
+              <div style={{ whiteSpace: "pre-wrap", fontSize: "10.5pt" }}>{s.content}</div>
+            </div>
+          );
+        })}
+
+        {protocol.guidelines && protocol.guidelines.length > 0 && (
+          <div className="print-section">
+            <h2>Fontes e diretrizes oficiais</h2>
+            <ol style={{ paddingLeft: "18px", margin: 0 }}>
+              {[...protocol.guidelines].sort((a, b) => b.year - a.year).map((g, i) => (
+                <li key={i} style={{ marginBottom: "8px", fontSize: "9.5pt" }}>
+                  <strong>{g.society} ({g.year})</strong>
+                  {g.class ? ` — Classe ${g.class}${g.level ? `/${g.level}` : ""}` : ""}<br />
+                  <em>{g.title}</em><br />
+                  <span>{g.recommendation}</span><br />
+                  <span style={{ fontSize: "8.5pt", color: "#0a6dd9", wordBreak: "break-all" }}>{g.url}</span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        )}
+
+        <div className="print-footer">
+          PULSO Emergência · pulsoemergencia.com.br · Conteúdo de apoio à decisão clínica.
+          Verifique sempre a versão mais recente das diretrizes nos sites oficiais. Não substitui julgamento médico.
+        </div>
+      </div>
     </div>
   );
 }
