@@ -163,41 +163,48 @@ export const SECTION_PATCHES_2026: SectionPatch2026[] = [
 - **NIHSS** (gravidade, indicação de trombectomia se ≥6 com OGV).
 - **ASPECTS** ≥6 favorece trombectomia (até ≤3 em casos selecionados — SELECT2, RESCUE-Japan LIMIT).`,
 
-      conduct: `**Janelas terapêuticas (atualização 2024-2025):**
+      conduct: `**Janelas terapêuticas (AHA/ASA 2026 — publicada mar/2026):**
+
+> 🆕 **Atualização AHA/ASA 2026:** triagem pré-hospitalar de OGV com **VAN, NIHSS≥6 ou RACE≥5** (Classe 1 / LOE A) → transporte direto a centro de trombectomia. **Mobile Stroke Units** (CT + tele em ambulância) ↑30-40% reperfusão. Metas: porta-TC ≤25 min, **DTN <60 min**, **DTP <90 min**, **DIDO ≤90 min** (door-in/door-out em transferência).
 
 | Tratamento | Janela | Critério |
 |---|---|---|
 | Trombólise IV (alteplase 0,9 mg/kg) | ≤4,5 h | Sem hemorragia, PA ≤185×110 |
-| Trombólise IV (tenecteplase 0,25 mg/kg) | ≤4,5 h | Alternativa preferencial (AcT, NOR-TEST 2) |
-| Trombectomia mecânica | ≤24 h | OGV (ACI, M1, basilar) + perfil favorável |
-| Trombectomia em ASPECTS baixo | ≤24 h | SELECT2/ANGEL-ASPECT — core grande aceito |
+| Trombólise IV (tenecteplase 0,25 mg/kg) | ≤4,5 h | **Equivalente/preferencial** (AcT, NOR-TEST 2, AHA/ASA 2026) |
+| Trombectomia mecânica — OGV anterior | ≤24 h | NIHSS≥6, mRS pré 0-1, ASPECTS≥6 (DAWN/DEFUSE-3) |
+| Trombectomia em **ASPECTS 3-5** | ≤24 h | SELECT2, ANGEL-ASPECT (Classe 1) |
+| Trombectomia em **ASPECTS 0-2** | ≤24 h | LASTE — COR 2a, seleção rigorosa |
+| Trombectomia em **basilar** | ≤24 h | NIHSS≥10 + PC-ASPECTS≥6 (ATTENTION/BAOCHE) |
+| 🆕 Trombectomia **pediátrica** | ≤6-24 h | ≥6 anos + PedNIHSS≥6 (COR 2a — Save ChildS Pro) |
 
-**Controle de PA:**
-- Antes de trombólise: PAS <185 e PAD <110 (labetalol 10-20 mg EV; nitroprussiato se refratária).
-- Pós-trombólise/trombectomia: PAS <180 por 24 h.
-- Sem reperfusão: tolerar até 220×120 (queda gradual de 15% em 24 h).
+**Controle de PA (AHA/ASA 2026):**
+- Antes de reperfusão: PAS <185 e PAD <110 (labetalol 10-20 mg EV; nicardipino 5-15 mg/h).
+- Pós-trombólise/trombectomia: <180/105 por 24 h (sICH 3-7%).
+- Sem reperfusão: tolerar até 220×120 (queda gradual ≤15% em 24 h).
 
-**Outras medidas:**
-- Glicemia 140-180 mg/dL.
-- Temperatura <37,5 °C (paracetamol).
-- Cabeceira a 0° antes da reperfusão; 30° após.
-- Disfagia rastreada antes de qualquer VO.
-- Profilaxia TEV com compressão pneumática + enoxaparina após 24 h da trombólise.`,
+**🆕 Outras medidas (AHA/ASA 2026):**
+- **Disfagia rastreada em ≤4 h** da admissão (NPO até liberação) → ↓50-70% pneumonia aspirativa. Estimulação faríngea elétrica (PES) em disfagia grave.
+- Glicemia 140-180 mg/dL; temperatura <37,5 °C.
+- Cabeceira a 0° pré-reperfusão; 30° após.
+- **Profilaxia TEV: compressão pneumática intermitente (IPC) 1ª linha** (CLOTS3); **NÃO usar meias elásticas** (úlceras de pele); LMWH após 24 h.
+- **Mobilização interdisciplinar nos primeiros 3 dias, mas evitar mobilização agressiva nas primeiras 24 h** (AVERT — ↑mortalidade).
+- Triagem nutricional em 24 h; SNG precoce se disfagia (preferencial sobre PEG na fase aguda).`,
 
       treatment: `**Trombólise IV — alteplase 0,9 mg/kg (máx 90 mg):** 10% bolus em 1 min + 90% em 60 min.
-**Trombólise IV — tenecteplase 0,25 mg/kg (máx 25 mg)** EV bolus único — preferencial em centros que adotaram (não fraciona dose, facilita transferência).
+**🆕 Tenecteplase 0,25 mg/kg (máx 25 mg) bolus único — preferencial pela AHA/ASA 2026** em centros que adotaram (não fraciona dose, facilita transferência inter-hospitalar).
 
 **Contraindicações absolutas (resumo):** hemorragia ativa, AVCh prévio em qualquer tempo, AVCi <3 meses, neoplasia/MAV intracraniana com risco hemorrágico, cirurgia/trauma cranioencefálico maior <3 meses, dissecção aórtica, plaquetas <100 mil, INR >1,7, uso de DOAC <48 h.
 
-**Trombectomia mecânica:** stent retriever ± aspiração (técnica combinada). Anestesia geral vs sedação consciente — escolha conforme estabilidade.
+**Trombectomia mecânica:** stent retriever ± aspiração (técnica combinada — COMPASS/ASTER equivalentes; aspiração preferencial em anatomia tortuosa). Anestesia geral vs sedação consciente — equivalentes (AMETIS/DIRECT-MT). 🆕 **Não usar tirofiban pré-EVT** (RESCUE-BT — ↑sICH).
 
-**Após reperfusão:**
+**Após reperfusão (AHA/ASA 2026):**
 - Antiagregação simples (AAS 100-300 mg) iniciada 24 h pós-trombólise.
-- Em AVC menor (NIHSS ≤3) ou AIT alto risco: **DAPT por 21 dias** (AAS + clopidogrel 75 mg, com ataque 300 mg) — CHANCE/POINT.
-- Estatina alta intensidade.
-- Investigar etiologia: ECG/Holter, ECO TT/TE, Doppler de carótidas/transcraniano.
+- 🆕 **AVCi menor (NIHSS 0-5) ou AIT alto risco: DAPT (AAS + clopidogrel 75 mg, ataque 300 mg) por 21-90 dias** (CHANCE/POINT/THALES). Em **maus metabolizadores CYP2C19**: ticagrelor.
+- 🆕 **FA + AVCi (regra ELAN, não mais 1-3-6-12):** iniciar **DOAC em 24-48 h em AVCi leve/moderado**; aguardar mais em AVCi grande.
+- Estatina alta intensidade (atorvastatina 80 mg).
+- Investigar etiologia: ECG/Holter prolongado, ECO TT/TE, Doppler de carótidas/transcraniano.
 
-**FA + AVCi:** anticoagulação (DOAC) iniciada conforme regra 1-3-6-12 dias (AIT-AVC pequeno-moderado-grande).`,
+**🆕 Não recomendado (AHA/ASA 2026):** hemodiluição, vasodilatadores, neuroprotetores, endarterectomia carotídea de urgência <48 h, anticonvulsivantes profiláticos, antipiréticos só por outcome.`,
 
       prescriptions: `\`\`\`
 1. Alteplase 0,9 mg/kg EV (máx 90 mg) — 10% em bolus em 1 min + 90% em infusão de 60 min, se janela ≤4,5 h e sem contraindicações.
