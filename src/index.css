@@ -508,30 +508,30 @@
   white-space: nowrap;
 }
 
-/* Print styles for prescription export */
+/* Print styles for prescription / protocol export */
+.print-area { display: none; }
+
 @media print {
-  body * {
-    visibility: hidden;
-  }
-  .print-area, .print-area * {
-    visibility: visible;
-  }
+  body * { visibility: hidden; }
+  .print-area { display: block !important; }
+  .print-area, .print-area * { visibility: visible; }
   .print-area {
     position: absolute;
     left: 0;
     top: 0;
     width: 100%;
     padding: 24px;
-    font-size: 12pt;
-    line-height: 1.6;
+    font-size: 11pt;
+    line-height: 1.5;
     color: #000 !important;
     background: #fff !important;
   }
-  .print-area h1 { font-size: 16pt; font-weight: 700; margin-bottom: 4px; }
-  .print-area h2 { font-size: 13pt; font-weight: 600; margin-top: 16px; margin-bottom: 4px; }
-  .print-area .print-header { border-bottom: 2px solid #000; padding-bottom: 8px; margin-bottom: 16px; }
-  .print-area .print-section { margin-bottom: 12px; }
+  .print-area h1 { font-size: 18pt; font-weight: 700; margin: 0 0 4px 0; color: #0a6dd9; }
+  .print-area h2 { font-size: 13pt; font-weight: 700; margin: 14px 0 6px 0; padding-bottom: 3px; border-bottom: 1px solid #ccc; }
+  .print-area .print-header { border-bottom: 2px solid #0a6dd9; padding-bottom: 10px; margin-bottom: 16px; }
+  .print-area .print-section { margin-bottom: 14px; page-break-inside: avoid; }
   .print-area .print-warning { border: 1px solid #000; padding: 8px; margin-top: 8px; }
-  .print-area .print-footer { margin-top: 32px; border-top: 1px solid #999; padding-top: 8px; font-size: 9pt; color: #666; }
+  .print-area .print-footer { margin-top: 24px; border-top: 1px solid #999; padding-top: 8px; font-size: 8.5pt; color: #555; }
   .no-print { display: none !important; }
+  @page { margin: 14mm; }
 }
