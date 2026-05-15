@@ -25,6 +25,8 @@ project_id = "xwmqqwqynyhccmyqtxje"
     verify_jwt = false
   [functions.stripe-webhook]
     verify_jwt = false
+  [functions.asaas-webhook]
+    verify_jwt = false
   [functions.embed-text]
     verify_jwt = false
   [functions.medical-rag-query]
