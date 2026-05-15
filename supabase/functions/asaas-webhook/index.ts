@@ -34,13 +34,34 @@ function parseUserId(payment: any, existing?: any) {
   return userId && userId.length > 10 ? userId : null;
 }
 
+function timingSafeEqual(a: string, b: string): boolean {
+  if (a.length !== b.length) return false;
+  let result = 0;
+  for (let i = 0; i < a.length; i++) result |= a.charCodeAt(i) ^ b.charCodeAt(i);
+  return result === 0;
+}
+
 serve(async (req) => {
   if (req.method !== "POST") return new Response("Method not allowed", { status: 405 });
 
   const webhookToken = Deno.env.get("ASAAS_WEBHOOK_TOKEN");
-  const receivedToken = req.headers.get("asaas-access-token");
-  if (webhookToken && receivedToken !== webhookToken) {
-    return new Response("Unauthorized", { status: 401 });
+  if (!webhookToken) {
+    logStep("ASAAS_WEBHOOK_TOKEN not configured - rejecting webhook for security");
+    return new Response(JSON.stringify({ error: "Webhook not configured" }), {
+      status: 503,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+
+  const receivedToken =
+    req.headers.get("asaas-access-token") ?? req.headers.get("asaas-Access-Token") ?? "";
+
+  if (!receivedToken || !timingSafeEqual(receivedToken, webhookToken)) {
+    logStep("Unauthorized webhook attempt", { hasToken: !!receivedToken });
+    return new Response(JSON.stringify({ error: "Unauthorized" }), {
+      status: 401,
+      headers: { "Content-Type": "application/json" },
+    });
   }
 
   const supabaseAdmin = createClient(
