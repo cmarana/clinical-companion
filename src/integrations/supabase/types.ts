@@ -1270,14 +1270,49 @@ export type Database = {
         }
         Relationships: []
       }
+      payment_webhook_events: {
+        Row: {
+          created_at: string
+          event_id: string
+          event_type: string
+          id: string
+          payload: Json
+          provider: string
+          resource_id: string | null
+        }
+        Insert: {
+          created_at?: string
+          event_id: string
+          event_type: string
+          id?: string
+          payload: Json
+          provider: string
+          resource_id?: string | null
+        }
+        Update: {
+          created_at?: string
+          event_id?: string
+          event_type?: string
+          id?: string
+          payload?: Json
+          provider?: string
+          resource_id?: string | null
+        }
+        Relationships: []
+      }
       pix_purchases: {
         Row: {
           access_end: string | null
           access_start: string | null
           amount: number
+          asaas_checkout_id: string | null
+          asaas_customer_id: string | null
+          asaas_payment_id: string | null
+          asaas_subscription_id: string | null
           created_at: string
           id: string
           plan_type: string
+          provider: string | null
           status: string
           stripe_session_id: string
           user_id: string
@@ -1286,9 +1321,14 @@ export type Database = {
           access_end?: string | null
           access_start?: string | null
           amount: number
+          asaas_checkout_id?: string | null
+          asaas_customer_id?: string | null
+          asaas_payment_id?: string | null
+          asaas_subscription_id?: string | null
           created_at?: string
           id?: string
           plan_type?: string
+          provider?: string | null
           status?: string
           stripe_session_id: string
           user_id: string
@@ -1297,9 +1337,14 @@ export type Database = {
           access_end?: string | null
           access_start?: string | null
           amount?: number
+          asaas_checkout_id?: string | null
+          asaas_customer_id?: string | null
+          asaas_payment_id?: string | null
+          asaas_subscription_id?: string | null
           created_at?: string
           id?: string
           plan_type?: string
+          provider?: string | null
           status?: string
           stripe_session_id?: string
           user_id?: string

@@ -70,44 +70,16 @@ export async function verifyAuthAndQuota(
   let tier: UserTier = "free";
   if (adminCheck === true) tier = "admin";
 
-  // 2. Se não for admin, verificar Pro (Stripe ou PIX)
+  // 2. Se não for admin, verificar Pro via assinatura Asaas (tabela pix_purchases)
   if (tier !== "admin") {
-    const { data: userData } = await serviceClient.auth.admin.getUserById(userId);
-    const email = userData?.user?.email;
-
-    let isPro = false;
-    if (email) {
-      try {
-        const { default: Stripe } = await import("https://esm.sh/stripe@18.5.0");
-        const stripe = new Stripe(Deno.env.get("STRIPE_SECRET_KEY") || "", {
-          apiVersion: "2025-08-27.basil",
-        });
-        const customers = await stripe.customers.list({ email, limit: 1 });
-        if (customers.data.length > 0) {
-          const subs = await stripe.subscriptions.list({
-            customer: customers.data[0].id,
-            status: "active",
-            limit: 1,
-          });
-          isPro = subs.data.length > 0;
-        }
-      } catch (e) {
-        console.error("Stripe check error:", e);
-      }
-    }
-
-    if (!isPro) {
-      const { data: pixData } = await serviceClient
-        .from("pix_purchases")
-        .select("id")
-        .eq("user_id", userId)
-        .eq("status", "active")
-        .gte("access_end", new Date().toISOString())
-        .limit(1);
-      isPro = !!(pixData && pixData.length > 0);
-    }
-
-    if (isPro) tier = "pro";
+    const { data: purchaseData } = await serviceClient
+      .from("pix_purchases")
+      .select("id")
+      .eq("user_id", userId)
+      .eq("status", "active")
+      .gte("access_end", new Date().toISOString())
+      .limit(1);
+    if (purchaseData && purchaseData.length > 0) tier = "pro";
   }
 
   // 3. Buscar uso atual
