@@ -39,6 +39,12 @@ import { infectiousProtocols } from "./infectious";
 import { infectiousProtocols2 } from "./infectious2";
 import { otherEmergencyProtocols } from "./other_emergencies";
 import { psychiatryEmergencyProtocols } from "./psychiatry";
+import { nephrologyEmergencyProtocols } from "./nephrology";
+import { traumaProtocols5 } from "./trauma5";
+import { hematologyEmergencyProtocols } from "./hematology";
+import { infectiousProtocols3 } from "./infectious3";
+import { metabolicProtocols5 } from "./metabolic5";
+import { gastroenterologyEmergencyProtocols } from "./gastroenterology";
 
 export { SECTION_ORDER } from "./types";
 export type { EmergencyProtocol, EmergencyCategory, EmergencySection } from "./types";
@@ -48,17 +54,17 @@ export const emergencyCategories: EmergencyCategory[] = [
   { id: "cardiovascular", title: "Cardiovasculares de Emergência", protocols: [...cardiovascularProtocols, ...cardiovascularProtocols2, ...cardiovascularProtocols3] },
   { id: "respiratory", title: "Respiratório", protocols: [...respiratoryProtocols, ...respiratoryProtocols2] },
   { id: "neurological", title: "Neurológico", protocols: [...neurologicalProtocols, ...neurologicalProtocols2, ...neurologicalProtocols3, ...neurologicalProtocols4] },
-  { id: "sepsis", title: "Sepse e Choque", protocols: [...sepsisProtocols, ...sepsisProtocols2, ...sepsisProtocols3] },
-  { id: "metabolic", title: "Metabólico e Eletrolítico", protocols: [...metabolicProtocols, ...metabolicProtocols2, ...metabolicProtocols3, ...metabolicProtocols4] },
-  { id: "trauma", title: "Trauma (ATLS)", protocols: [...traumaProtocols, ...traumaProtocols2, ...traumaProtocols3, ...traumaProtocols4] },
+  { id: "sepsis", title: "Sepse e Choque", protocols: [...sepsisProtocols, ...sepsisProtocols2, ...sepsisProtocols3, ...hematologyEmergencyProtocols] },
+  { id: "metabolic", title: "Metabólico e Eletrolítico", protocols: [...metabolicProtocols, ...metabolicProtocols2, ...metabolicProtocols3, ...metabolicProtocols4, ...metabolicProtocols5, ...nephrologyEmergencyProtocols] },
+  { id: "trauma", title: "Trauma (ATLS)", protocols: [...traumaProtocols, ...traumaProtocols2, ...traumaProtocols3, ...traumaProtocols4, ...traumaProtocols5] },
   { id: "obstetrics", title: "Obstetrícia de Emergência", protocols: [...obstetricsProtocols, ...obstetricsProtocols2, ...obstetricsProtocols4, ...obstetricsProtocols5] },
   { id: "intoxication", title: "Intoxicações", protocols: [...intoxicationProtocols, ...intoxicationProtocols4, ...intoxicationProtocols5] },
   { id: "procedures", title: "Procedimentos de Emergência", protocols: [...proceduresProtocols, ...proceduresProtocols4] },
   { id: "pediatric-emergency", title: "Pediatria de Emergência", protocols: [...pediatricEmergencyProtocols, ...pediatricEmergencyProtocols2] },
   { id: "neonatal", title: "Neonatal", protocols: neonatalProtocols },
-  { id: "infectious", title: "Infectologia de Emergência", protocols: [...infectiousProtocols, ...infectiousProtocols2] },
+  { id: "infectious", title: "Infectologia de Emergência", protocols: [...infectiousProtocols, ...infectiousProtocols2, ...infectiousProtocols3] },
   { id: "psychiatry-emergency", title: "Psiquiatria de Emergência", protocols: psychiatryEmergencyProtocols },
-  { id: "other-emergencies", title: "Outras Emergências Frequentes", protocols: otherEmergencyProtocols },
+  { id: "other-emergencies", title: "Outras Emergências Frequentes", protocols: [...otherEmergencyProtocols, ...gastroenterologyEmergencyProtocols] },
 ];
 
 // Flat list for search/lookup
