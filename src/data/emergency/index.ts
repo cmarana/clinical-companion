@@ -90,3 +90,83 @@ export function getEmergencyProtocol(id: string) {
 export function getEmergencyCategory(id: string) {
   return emergencyCategories.find(c => c.id === id);
 }
+
+/** Categorias adicionadas/atualizadas em Mai/2026 (exibem badge "Novo"). */
+export const NEW_EMERGENCY_CATEGORY_IDS = new Set<string>([
+  "hematology-emergency",
+  "gastroenterology-emergency",
+  "ophthalmology-emergency",
+  "otorhino-emergency",
+  "vascular-emergency",
+  "dermatology-emergency",
+  "orthopedic-emergency",
+]);
+
+/** Protocolos novos ou atualizados nesta release (badge "Atualizado"). */
+export const UPDATED_EMERGENCY_PROTOCOL_IDS = new Set<string>([
+  "endocarditis",
+  "cerebral-venous-thrombosis",
+  "airway-obstruction-foreign-body",
+  "snakebite-bothrops",
+  "hellp-syndrome",
+  "psychomotor-agitation",
+]);
+
+let _validated = false;
+export function validateEmergencyData() {
+  const emptyCategories: string[] = [];
+  const protocolsWithoutSections: string[] = [];
+  const emptySections: { protocolId: string; sectionId: string }[] = [];
+  const seenIds = new Map<string, number>();
+  const duplicateIds: string[] = [];
+
+  for (const cat of emergencyCategories) {
+    if (!cat.protocols || cat.protocols.length === 0) emptyCategories.push(cat.id);
+    for (const p of cat.protocols ?? []) {
+      seenIds.set(p.id, (seenIds.get(p.id) ?? 0) + 1);
+      if (!p.sections || p.sections.length === 0) {
+        protocolsWithoutSections.push(p.id);
+      } else {
+        for (const s of p.sections) {
+          if (!s.content || s.content.trim().length === 0) {
+            emptySections.push({ protocolId: p.id, sectionId: s.id });
+          }
+        }
+      }
+    }
+  }
+  for (const [id, count] of seenIds) {
+    if (count > 1) duplicateIds.push(`${id} (x${count})`);
+  }
+
+  if (!_validated && import.meta.env?.DEV) {
+    _validated = true;
+    if (emptyCategories.length) console.warn("[emergency] categorias vazias:", emptyCategories);
+    if (protocolsWithoutSections.length) console.warn("[emergency] protocolos sem seções:", protocolsWithoutSections);
+    if (emptySections.length) console.warn("[emergency] seções vazias:", emptySections);
+    if (duplicateIds.length) console.warn("[emergency] IDs duplicados:", duplicateIds);
+  }
+  return {
+    emptyCategories, protocolsWithoutSections, emptySections, duplicateIds,
+    totalCategories: emergencyCategories.length,
+    totalProtocols: allEmergencyProtocols.length,
+  };
+}
+
+if (typeof window !== "undefined" && import.meta.env?.DEV) {
+  validateEmergencyData();
+}
+
+/** Extrai "Última revisão" e versão da seção de introdução, se presentes. */
+export function extractProtocolMeta(protocol: import("./types").EmergencyProtocol) {
+  if (protocol.version || protocol.lastReviewed) {
+    return { version: protocol.version, lastReviewed: protocol.lastReviewed };
+  }
+  const intro = protocol.sections.find(s => s.id === "intro")?.content ?? "";
+  const reviewMatch = intro.match(/Última revisão:\s*([^·.\n]+)/i);
+  const versionMatch = intro.match(/\bv(\d+(?:\.\d+)*)\b/i);
+  return {
+    lastReviewed: reviewMatch ? reviewMatch[1].trim() : undefined,
+    version: versionMatch ? `v${versionMatch[1]}` : undefined,
+  };
+}

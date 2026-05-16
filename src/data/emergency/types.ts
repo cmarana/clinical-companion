@@ -8,7 +8,14 @@ export interface EmergencyProtocol {
   id: string;
   title: string;
   categoryId: string;
+  /** Versão semântica opcional (ex.: "1.0", "2.1"). */
+  version?: string;
+  /** Data de última revisão (ex.: "Mai/2026"). */
+  lastReviewed?: string;
+  /** Marcador opcional para destacar conteúdos novos/atualizados. */
+  badge?: "new" | "updated";
   sections: EmergencySection[];
+  tags?: string[];
 }
 
 export interface EmergencyCategory {

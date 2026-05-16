@@ -5,7 +5,7 @@ import PremiumPageGuard from "@/components/PremiumPageGuard";
 import { Input } from "@/components/ui/input";
 import { useState, useMemo } from "react";
 import { Search, ChevronRight, ChevronDown } from "lucide-react";
-import { emergencyCategories, allEmergencyProtocols } from "@/data/emergency";
+import { emergencyCategories, allEmergencyProtocols, NEW_EMERGENCY_CATEGORY_IDS } from "@/data/emergency";
 import SalaVermelha from "@/components/SalaVermelha";
 
 function EmergencyModeContent() {
@@ -93,36 +93,57 @@ function EmergencyModeContent() {
         )}
 
         {/* Categories */}
-        {!searchResults && emergencyCategories.map(cat => (
-          <div key={cat.id} className="duty-card overflow-hidden">
-            <button
-              onClick={() => toggleCat(cat.id)}
-              className="w-full flex items-center justify-between p-4 active:scale-[0.98] transition-all duration-200"
-            >
-              <h2 className="font-heading font-semibold text-xs uppercase tracking-wider text-muted-foreground">
-                {cat.title}
-              </h2>
-              <ChevronDown
-                size={14}
-                className={`text-muted-foreground transition-transform ${openCats[cat.id] ? "rotate-180" : ""}`}
-              />
-            </button>
-            {openCats[cat.id] && (
-              <div className="px-4 pb-4 grid grid-cols-2 gap-2">
-                {cat.protocols.map(p => (
+        {!searchResults && emergencyCategories.map(cat => {
+          const isNew = NEW_EMERGENCY_CATEGORY_IDS.has(cat.id);
+          return (
+            <div key={cat.id} className="duty-card overflow-hidden">
+              <button
+                onClick={() => toggleCat(cat.id)}
+                className="w-full flex items-center justify-between p-4 active:scale-[0.98] transition-all duration-200"
+              >
+                <div className="flex items-center gap-2 min-w-0">
+                  <h2 className="font-heading font-semibold text-xs uppercase tracking-wider text-muted-foreground truncate">
+                    {cat.title}
+                  </h2>
+                  {isNew && (
+                    <span className="text-[9px] font-heading font-bold uppercase tracking-wider px-1.5 py-0.5 rounded-full bg-primary/15 text-primary border border-primary/30">
+                      Novo
+                    </span>
+                  )}
+                  <span className="text-[10px] text-muted-foreground/70">
+                    · {cat.protocols.length}
+                  </span>
+                </div>
+                <ChevronDown
+                  size={14}
+                  className={`text-muted-foreground transition-transform ${openCats[cat.id] ? "rotate-180" : ""}`}
+                />
+              </button>
+              {openCats[cat.id] && (
+                <div className="px-4 pb-4 space-y-3">
+                  <div className="grid grid-cols-2 gap-2">
+                    {cat.protocols.map(p => (
+                      <button
+                        key={p.id}
+                        onClick={() => navigate(`/emergency/${p.id}`)}
+                        className="duty-list-item"
+                      >
+                        <span className="flex-1 text-left text-xs">{p.title}</span>
+                        <ChevronRight size={13} className="text-muted-foreground" />
+                      </button>
+                    ))}
+                  </div>
                   <button
-                    key={p.id}
-                    onClick={() => navigate(`/emergency/${p.id}`)}
-                    className="duty-list-item"
+                    onClick={() => navigate(`/emergency/category/${cat.id}`)}
+                    className="w-full text-[11px] font-heading font-semibold py-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/15 transition"
                   >
-                    <span className="flex-1 text-left text-xs">{p.title}</span>
-                    <ChevronRight size={13} className="text-muted-foreground" />
+                    Ver categoria com seções expandíveis →
                   </button>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
+                </div>
+              )}
+            </div>
+          );
+        })}
       </div>
     </>
   );
