@@ -5,7 +5,8 @@ import TopBar from "@/components/TopBar";
 import { useAuth } from "@/contexts/AuthContext";
 import PremiumGate from "@/components/PremiumGate";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { getEmergencyProtocol, SECTION_ORDER } from "@/data/emergency";
+import { getEmergencyProtocol, SECTION_ORDER, extractProtocolMeta, UPDATED_EMERGENCY_PROTOCOL_IDS, NEW_EMERGENCY_CATEGORY_IDS } from "@/data/emergency";
+import { Calendar, Tag } from "lucide-react";
 import ProtocolActionBar from "@/components/ProtocolActionBar";
 import { useRecentHistory } from "@/hooks/useRecentHistory";
 
@@ -49,10 +50,34 @@ export default function EmergencyProtocolDetail() {
 
   const defaultTab = orderedSections[0]?.id || "";
 
+  const meta = extractProtocolMeta(protocol);
+  const isUpdated =
+    UPDATED_EMERGENCY_PROTOCOL_IDS.has(protocol.id) ||
+    NEW_EMERGENCY_CATEGORY_IDS.has(protocol.categoryId);
+
   return (
     <>
       <TopBar title={protocol.title} />
       <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto pb-24">
+        {(meta.version || meta.lastReviewed || isUpdated) && (
+          <div className="flex items-center gap-2 flex-wrap mb-3 text-[10px] font-heading font-medium text-muted-foreground">
+            {isUpdated && (
+              <span className="px-2 py-0.5 rounded-full bg-primary/15 text-primary border border-primary/30 font-semibold">
+                Atualizado
+              </span>
+            )}
+            {meta.version && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-muted">
+                <Tag size={10} /> {meta.version}
+              </span>
+            )}
+            {meta.lastReviewed && (
+              <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-muted">
+                <Calendar size={10} /> Última revisão: {meta.lastReviewed}
+              </span>
+            )}
+          </div>
+        )}
         <ProtocolActionBar
           protocolId={protocol.id}
           protocolTitle={protocol.title}
