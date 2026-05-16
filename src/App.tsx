@@ -29,6 +29,7 @@ const Favorites = lazy(() => import("@/pages/Favorites"));
 const Notes = lazy(() => import("@/pages/Notes"));
 const EmergencyMode = lazy(() => import("@/pages/EmergencyMode"));
 const EmergencyProtocolDetail = lazy(() => import("@/pages/EmergencyProtocolDetail"));
+const EmergencyCategoryPage = lazy(() => import("@/pages/EmergencyCategoryPage"));
 const DutyMode = lazy(() => import("@/pages/DutyMode"));
 const Prescriptions = lazy(() => import("@/pages/Prescriptions"));
 const PrescriptionDetail = lazy(() => import("@/pages/PrescriptionDetail"));
@@ -184,6 +185,7 @@ const AppRoutes = () => (
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/notes" element={<Notes />} />
         <Route path="/emergency" element={<Suspense fallback={<ProtocolListSkeleton />}><EmergencyMode /></Suspense>} />
+        <Route path="/emergency/category/:categoryId" element={<Suspense fallback={<ProtocolListSkeleton />}><EmergencyCategoryPage /></Suspense>} />
         <Route path="/emergency/:id" element={<Suspense fallback={<ProtocolDetailSkeleton />}><EmergencyProtocolDetail /></Suspense>} />
         <Route path="/emergency-doses" element={<Navigate to="/emergency" replace />} />
         <Route path="/doses-emergencia" element={<Navigate to="/emergency" replace />} />
