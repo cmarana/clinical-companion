@@ -34,6 +34,26 @@ serve(async (req) => {
       });
     }
 
+    // Admin/tester/developer roles always get premium access
+    const { data: roleRows } = await supabaseAdmin
+      .from("user_roles")
+      .select("role")
+      .eq("user_id", user.id)
+      .in("role", ["admin", "tester", "developer"]);
+
+    if (roleRows && roleRows.length > 0) {
+      const role = roleRows[0].role;
+      return new Response(
+        JSON.stringify({
+          subscribed: true,
+          provider: "role_override",
+          product_id: `role_${role}`,
+          subscription_end: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toISOString(),
+        }),
+        { headers: { ...corsHeaders, "Content-Type": "application/json" } },
+      );
+    }
+
     const { data: override } = await supabaseAdmin
       .from("test_access_overrides")
       .select("expires_at")
