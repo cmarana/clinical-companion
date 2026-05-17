@@ -38,10 +38,15 @@ import { obstetricsProtocols5 } from "./obstetrics5";
 import { infectiousProtocols } from "./infectious";
 import { infectiousProtocols2 } from "./infectious2";
 import { infectiousProtocols3 } from "./infectious3";
+import { infectiousProtocols4 } from "./infectious4";
 import { hematologyEmergencyProtocols } from "./hematology";
+import { oncologyEmergencyProtocols } from "./oncology";
 import { gastroenterologyEmergencyProtocols } from "./gastroenterology";
+import { surgeryEmergencyProtocols } from "./surgery";
+import { urologyEmergencyProtocols } from "./urology";
 import { otherEmergencyProtocols } from "./other_emergencies";
 import { psychiatryEmergencyProtocols } from "./psychiatry";
+import { psychiatryEmergencyProtocols2 } from "./psychiatry2";
 import {
   ophthalmologyEmergencyProtocols,
   otorhinolaryngologyEmergencyProtocols,
