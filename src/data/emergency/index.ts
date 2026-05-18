@@ -66,17 +66,17 @@ export type { EmergencyProtocol, EmergencyCategory, EmergencySection } from "./t
 export const emergencyCategories: EmergencyCategory[] = [
   { id: "resuscitation", title: "Ressuscitação e Via Aérea", protocols: resuscitationProtocols },
   { id: "cardiovascular", title: "Cardiovasculares de Emergência", protocols: [...cardiovascularProtocols, ...cardiovascularProtocols2, ...cardiovascularProtocols3] },
-  { id: "respiratory", title: "Respiratório", protocols: [...respiratoryProtocols, ...respiratoryProtocols2] },
-  { id: "neurological", title: "Neurológico", protocols: [...neurologicalProtocols, ...neurologicalProtocols2, ...neurologicalProtocols3, ...neurologicalProtocols4] },
-  { id: "sepsis", title: "Sepse e Choque", protocols: [...sepsisProtocols, ...sepsisProtocols2, ...sepsisProtocols3] },
-  { id: "metabolic", title: "Metabólico e Eletrolítico", protocols: [...metabolicProtocols, ...metabolicProtocols2, ...metabolicProtocols3, ...metabolicProtocols4, ...metabolicProtocols5, ...nephrologyEmergencyProtocols, ...urologyEmergencyProtocols] },
+  { id: "respiratory", title: "Respiratório", protocols: [...respiratoryProtocols, ...respiratoryProtocols2, ...thoracicEntEmergencyProtocols.filter(p => p.id === "pleural-empyema")] },
+  { id: "neurological", title: "Neurológico", protocols: [...neurologicalProtocols, ...neurologicalProtocols2, ...neurologicalProtocols3, ...neurologicalProtocols4, ...neurologicalProtocols5] },
+  { id: "sepsis", title: "Sepse e Choque", protocols: [...sepsisProtocols, ...sepsisProtocols2, ...sepsisProtocols3, ...vascularGeriatricsEmergencyProtocols.filter(p => p.id === "ruptured-aaa" || p.id === "massive-pe-hemodynamic")] },
+  { id: "metabolic", title: "Metabólico e Eletrolítico", protocols: [...metabolicProtocols, ...metabolicProtocols2, ...metabolicProtocols3, ...metabolicProtocols4, ...metabolicProtocols5, ...nephrologyEmergencyProtocols, ...urologyEmergencyProtocols, ...thoracicEntEmergencyProtocols.filter(p => p.id === "adrenal-crisis")] },
   { id: "trauma", title: "Trauma (ATLS)", protocols: [...traumaProtocols, ...traumaProtocols2, ...traumaProtocols3, ...traumaProtocols4, ...traumaProtocols5] },
   { id: "obstetrics", title: "Obstetrícia de Emergência", protocols: [...obstetricsProtocols, ...obstetricsProtocols2, ...obstetricsProtocols4, ...obstetricsProtocols5] },
   { id: "intoxication", title: "Intoxicações e Envenenamentos", protocols: [...intoxicationProtocols, ...intoxicationProtocols4, ...intoxicationProtocols5] },
   { id: "procedures", title: "Procedimentos de Emergência", protocols: [...proceduresProtocols, ...proceduresProtocols4] },
   { id: "infectious", title: "Infectologia de Emergência", protocols: [...infectiousProtocols, ...infectiousProtocols2, ...infectiousProtocols3, ...infectiousProtocols4] },
   { id: "hematology-emergency", title: "Hematologia e Oncologia de Emergência", protocols: [...hematologyEmergencyProtocols, ...oncologyEmergencyProtocols] },
-  { id: "gastroenterology-emergency", title: "Gastroenterologia e Cirurgia de Emergência", protocols: [...gastroenterologyEmergencyProtocols, ...surgeryEmergencyProtocols] },
+  { id: "gastroenterology-emergency", title: "Gastroenterologia e Cirurgia de Emergência", protocols: [...gastroenterologyEmergencyProtocols, ...surgeryEmergencyProtocols, ...thoracicEntEmergencyProtocols.filter(p => p.id === "boerhaave-esophageal-perforation")] },
   { id: "pediatric-emergency", title: "Pediatria de Emergência", protocols: [...pediatricEmergencyProtocols, ...pediatricEmergencyProtocols2, ...pediatricEmergencyProtocols3] },
   { id: "neonatal", title: "Neonatal", protocols: neonatalProtocols },
   { id: "psychiatry-emergency", title: "Psiquiatria de Emergência", protocols: [...psychiatryEmergencyProtocols, ...psychiatryEmergencyProtocols2] },
@@ -85,7 +85,7 @@ export const emergencyCategories: EmergencyCategory[] = [
   { id: "vascular-emergency", title: "Vascular Periférico de Emergência", protocols: vascularEmergencyProtocols },
   { id: "dermatology-emergency", title: "Dermatologia de Emergência", protocols: dermatologyEmergencyProtocols },
   { id: "orthopedic-emergency", title: "Ortopedia de Emergência", protocols: orthopedicEmergencyProtocols },
-  { id: "other-emergencies", title: "Outras Emergências Frequentes", protocols: [...otherEmergencyProtocols, ...allergyEmergencyProtocols] },
+  { id: "other-emergencies", title: "Outras Emergências Frequentes", protocols: [...otherEmergencyProtocols, ...allergyEmergencyProtocols, ...vascularGeriatricsEmergencyProtocols.filter(p => p.id === "delirium-elderly" || p.id === "hip-fracture-elderly"), ...thoracicEntEmergencyProtocols.filter(p => p.id === "central-vertigo-emergency")] },
 ];
 
 // Flat list for search/lookup
