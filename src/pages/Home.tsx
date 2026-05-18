@@ -1,11 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import {
-  Sun, Moon, ChevronRight, Bell, Wrench, Library,
-  Eclipse, Newspaper, Stethoscope, Zap, Shield,
+  Sun, Moon, Bell, Eclipse, Shield, Search, Mic, Activity,
+  Zap, Bot, Stethoscope, Wrench, GraduationCap, FileText,
+  ArrowRight, ChevronRight, ScanLine, MessageSquareText, FlaskConical,
 } from "lucide-react";
 import { PulsoLogo } from "@/components/PulsoLogo";
-import { useState, useEffect, useMemo, useCallback } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useCallback } from "react";
+import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
@@ -14,114 +15,49 @@ import RecentHistory from "@/components/RecentHistory";
 import { useNotifications } from "@/contexts/NotificationsContext";
 import { hapticLight } from "@/lib/haptics";
 import { useModuleAnalytics } from "@/hooks/useModuleAnalytics";
-import SmartSearch from "@/components/SmartSearch";
-import WeeklySummaryWidget from "@/components/WeeklySummaryWidget";
-import VoiceFeaturesBanner from "@/components/VoiceFeaturesBanner";
-import DailyBriefingWidget from "@/components/DailyBriefingWidget";
-import { PrimaryCard, SecondaryCard, EmergencyShortcut } from "@/components/home/HomeCards";
-import {
-  HOME_PRIMARY_MODULES,
-  getHomeSection,
-  type AppModule,
-  type HomeVariant,
-} from "@/config/appModules";
-
 import WelcomeScreen from "@/components/WelcomeScreen";
 
-// ── PREFETCH critical chunks after Home mounts ──
+// Prefetch routes idle
 const prefetchRoutes = () => {
-  const idleCallback = (window as any).requestIdleCallback || ((cb: () => void) => setTimeout(cb, 200));
-  idleCallback(() => {
-    // Most-used routes: prefetch their chunks
-    import("@/pages/FullProtocols");
+  const idle = (window as any).requestIdleCallback || ((cb: () => void) => setTimeout(cb, 200));
+  idle(() => {
+    import("@/pages/SearchPage");
+    import("@/pages/DutyMode");
     import("@/pages/EmergencyMode");
-    import("@/pages/Prescriptions");
-    import("@/pages/Calculators");
-    import("@/pages/Bulario");
     import("@/pages/ClinicalAI");
+    import("@/pages/Calculators");
+    import("@/pages/FullProtocols");
   });
 };
-
-// ── PRIMARY MODULES (vindos da config compartilhada) ─────────
-interface PrimaryModule {
-  label: string;
-  sub: string;
-  icon: React.ElementType;
-  path: string;
-  variant: HomeVariant;
-  tags: string[];
-}
-
-const allPrimaryModules: PrimaryModule[] = HOME_PRIMARY_MODULES.map((m) => ({
-  label: m.homeLabel,
-  sub: m.homeSub,
-  icon: m.homeIcon,
-  path: m.path,
-  variant: m.homePrimary!.variant,
-  tags: m.homePrimary!.tags,
-}));
-
-// ── SECONDARY SECTIONS (também da config) ────────────────────
-const mapSection = (m: AppModule) => ({
-  label: m.homeLabel,
-  sub: m.homeSub,
-  icon: m.homeIcon,
-  path: m.path,
-});
-
-const toolsModules = getHomeSection("tools").map(mapSection);
-const specialtyModules = getHomeSection("specialties").map(mapSection);
-const studyModules = getHomeSection("study").map(mapSection);
-
-const tabs = [
-  { id: "tools", label: "Ferramentas", icon: Wrench, modules: toolsModules, accent: "primary", gradient: "from-primary/8 to-primary/3 dark:from-primary/15 dark:to-primary/5", iconBg: "bg-primary/12 text-primary dark:bg-primary/20", ringColor: "ring-primary/20" },
-  { id: "specialties", label: "Especialidades", icon: Stethoscope, modules: specialtyModules, accent: "emerald", gradient: "from-emerald-500/8 to-emerald-500/3 dark:from-emerald-500/15 dark:to-emerald-500/5", iconBg: "bg-emerald-500/12 text-emerald-600 dark:bg-emerald-500/20 dark:text-emerald-400", ringColor: "ring-emerald-500/20" },
-  { id: "study", label: "Estudo & Mais", icon: Library, modules: studyModules, accent: "amber", gradient: "from-amber-500/8 to-amber-500/3 dark:from-amber-500/15 dark:to-amber-500/5", iconBg: "bg-amber-500/12 text-amber-600 dark:bg-amber-500/20 dark:text-amber-400", ringColor: "ring-amber-500/20" },
-];
 
 const emergencyShortcuts = [
   { label: "PCR", path: "/protocols/pcr" },
   { label: "Sepse", path: "/protocols/sepse" },
   { label: "IAM", path: "/protocols/iam" },
   { label: "AVC", path: "/protocols/avc" },
-  { label: "Anafilaxia", path: "/protocols/anafilaxia" },
   { label: "Choque", path: "/protocols/choque-hipovolemico" },
+  { label: "Anafilaxia", path: "/protocols/anafilaxia" },
   { label: "IOT", path: "/protocols/iot" },
   { label: "Convulsão", path: "/protocols/convulsao" },
 ];
 
-// Default 6 for users without specialty
-const defaultPrimaryPaths = ["/clinical-ai", "/duty", "/emergency", "/bulario", "/prescriptions", "/full-protocols"];
+const modes = [
+  { label: "Plantão", sub: "Atendimento em tempo real", icon: Activity, path: "/duty", tone: "primary" },
+  { label: "Emergência", sub: "Protocolos críticos", icon: Zap, path: "/emergency", tone: "danger" },
+  { label: "Ferramentas", sub: "Cálculos, doses e checagens", icon: Wrench, path: "/calculators", tone: "slate" },
+  { label: "Especialidades", sub: "Pediatria, obstetrícia, clínica", icon: Stethoscope, path: "/full-protocols", tone: "emerald" },
+  { label: "Estudo", sub: "Flashcards, questões e residência", icon: GraduationCap, path: "/study-dashboard", tone: "amber" },
+  { label: "Documentos", sub: "Prescrições, evoluções e alta", icon: FileText, path: "/prescriptions", tone: "violet" },
+];
 
-function getPrimaryModules(specialty: string | null): PrimaryModule[] {
-  // "todas" = show all primary modules (no filtering)
-  if (specialty === "todas") {
-    return allPrimaryModules;
-  }
-
-  if (!specialty || specialty === "generalista") {
-    return allPrimaryModules.filter(m => defaultPrimaryPaths.includes(m.path));
-  }
-
-  const alwaysShow = allPrimaryModules.filter(m => m.tags?.includes("all"));
-  const specialtySpecific = allPrimaryModules.filter(
-    m => !m.tags?.includes("all") && m.tags?.includes(specialty)
-  );
-  const combined = [...alwaysShow, ...specialtySpecific];
-  const paths = new Set(combined.map(m => m.path));
-
-  if (combined.length < 6) {
-    for (const m of allPrimaryModules) {
-      if (!paths.has(m.path)) {
-        combined.push(m);
-        paths.add(m.path);
-      }
-      if (combined.length >= 6) break;
-    }
-  }
-
-  return combined.slice(0, 10);
-}
+const toneStyles: Record<string, { icon: string; ring: string }> = {
+  primary: { icon: "bg-primary/10 text-primary", ring: "ring-border/60" },
+  danger: { icon: "bg-destructive/10 text-destructive", ring: "ring-border/60" },
+  slate: { icon: "bg-slate-500/10 text-slate-600 dark:text-slate-300", ring: "ring-border/60" },
+  emerald: { icon: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400", ring: "ring-border/60" },
+  amber: { icon: "bg-amber-500/10 text-amber-600 dark:text-amber-400", ring: "ring-border/60" },
+  violet: { icon: "bg-violet-500/10 text-violet-600 dark:text-violet-400", ring: "ring-border/60" },
+};
 
 export default function Home() {
   const navigate = useNavigate();
@@ -132,10 +68,8 @@ export default function Home() {
   const [avatarUrl, setAvatarUrl] = useState("");
   const [initials, setInitials] = useState("U");
   const [fullName, setFullName] = useState("");
-  const [specialty] = useState<string | null>("todas");
+  const [firstName, setFirstName] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
-  
-  
 
   useEffect(() => {
     if (!user) { setIsAdmin(false); return; }
@@ -143,9 +77,7 @@ export default function Home() {
       .then(({ data }) => setIsAdmin(!!data));
   }, [user]);
 
-  // Stable callback so memoized cards skip re-renders when parent updates
-  // (theme toggle, unreadCount, avatar load, etc.).
-  const navigateWithTracking = useCallback((path: string, label: string) => {
+  const go = useCallback((path: string, label: string) => {
     hapticLight();
     trackModule(path, label);
     navigate(path);
@@ -153,12 +85,12 @@ export default function Home() {
 
   useEffect(() => {
     if (!user) return;
-
     supabase.from("profiles").select("full_name, avatar_url").eq("user_id", user.id).maybeSingle()
       .then(({ data }) => {
         if (data?.avatar_url) setAvatarUrl(data.avatar_url);
         if (data?.full_name) {
           setFullName(data.full_name);
+          setFirstName(data.full_name.split(" ")[0]);
           setInitials(data.full_name.split(" ").map((n: string) => n[0]).slice(0, 2).join("").toUpperCase());
         } else {
           setInitials(user.email?.[0]?.toUpperCase() || "U");
@@ -166,40 +98,37 @@ export default function Home() {
       });
   }, [user]);
 
-  // Prefetch critical route chunks when idle
   useEffect(() => { prefetchRoutes(); }, []);
 
-  const primaryModules = useMemo(() => getPrimaryModules(specialty), [specialty]);
-
   return (
-    <div className="px-4 pb-24 max-w-lg md:max-w-4xl lg:max-w-6xl xl:max-w-7xl mx-auto pt-safe-fb">
-      {/* Top bar */}
-      <div className="sticky z-app-chrome top-safe-fb flex items-center justify-between h-12 mb-3 bg-background -mx-4 px-4 border-b border-border/40">
-        <div className="flex items-center gap-2.5">
-          <PulsoLogo size={32} priority />
-          <div className="flex flex-col">
-            <span className="font-heading font-bold text-base tracking-tight">PULSO</span>
-            <span className="text-[9px] text-muted-foreground tracking-wide -mt-0.5">Decida em segundos. Sem margem para erro.</span>
-          </div>
-        </div>
-        <div className="flex items-center gap-2">
+    <div className="pb-28 max-w-lg md:max-w-4xl lg:max-w-5xl mx-auto pt-safe-fb">
+      {/* ── HEADER ──────────────────────────────────────── */}
+      <div className="sticky z-app-chrome top-safe-fb flex items-center justify-between h-14 px-4 bg-background/85 backdrop-blur-md border-b border-border/40">
+        <button
+          onClick={() => navigate("/")}
+          className="flex items-center gap-2.5 select-none"
+        >
+          <PulsoLogo size={30} priority />
+          <span className="font-heading font-bold text-base tracking-tight">PULSO</span>
+        </button>
+        <div className="flex items-center gap-1">
           {isAdmin && (
-            <button onClick={() => navigate("/admin")} className="p-2 rounded-xl hover:bg-accent transition-colors text-destructive" title="Painel Admin">
+            <button onClick={() => navigate("/admin")} className="p-2 rounded-full hover:bg-accent text-destructive" title="Painel Admin">
               <Shield size={16} />
             </button>
           )}
-          <button onClick={() => { hapticLight(); toggleTheme(); }} className="p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground" title={themeLabel}>
+          <button onClick={() => { hapticLight(); toggleTheme(); }} className="p-2 rounded-full hover:bg-accent text-muted-foreground" title={themeLabel}>
             {theme === "oled" ? <Eclipse size={16} /> : theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
           </button>
-          <button onClick={() => navigate("/notifications")} className="relative p-2 rounded-xl hover:bg-accent transition-colors text-muted-foreground">
+          <button onClick={() => navigate("/notifications")} className="relative p-2 rounded-full hover:bg-accent text-muted-foreground">
             <Bell size={16} />
             {unreadCount > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 w-4 h-4 rounded-full bg-destructive text-destructive-foreground text-[9px] font-bold flex items-center justify-center">
+              <span className="absolute top-0.5 right-0.5 w-4 h-4 rounded-full bg-destructive text-destructive-foreground text-[9px] font-bold flex items-center justify-center">
                 {unreadCount > 9 ? "9+" : unreadCount}
               </span>
             )}
           </button>
-          <button onClick={() => navigate(user ? "/profile" : "/auth")} className="rounded-full hover:ring-2 hover:ring-primary/30 transition-all">
+          <button onClick={() => navigate(user ? "/profile" : "/auth")} className="ml-1 rounded-full hover:ring-2 hover:ring-primary/30 transition-all">
             <Avatar className="w-8 h-8">
               {avatarUrl ? <AvatarImage src={avatarUrl} alt="Avatar" /> : null}
               <AvatarFallback className="text-xs font-bold bg-primary/10 text-primary">{initials}</AvatarFallback>
@@ -208,112 +137,205 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Smart Search */}
-      <div data-tour="search">
-        <SmartSearch specialty={specialty} />
+      {/* ── GREETING ───────────────────────────────────── */}
+      <div className="px-4 pt-5 pb-3">
+        <h1 className="font-heading font-bold text-[22px] leading-tight tracking-tight text-foreground">
+          {firstName ? `Olá, ${firstName}` : "Olá, doutor(a)"}
+        </h1>
+        <p className="text-[13px] text-muted-foreground mt-0.5">
+          Apoio clínico rápido para decisões mais seguras.
+        </p>
       </div>
 
-      {/* Daily Briefing — resumo do dia, streak, flashcards pendentes */}
-      <div className="mt-4">
-        <DailyBriefingWidget />
+      {/* ── SEARCH ─────────────────────────────────────── */}
+      <div className="px-4">
+        <button
+          onClick={() => navigate("/search")}
+          className="group w-full flex items-center gap-3 h-14 px-4 rounded-2xl bg-card border border-border/70 shadow-sm hover:shadow-md hover:border-primary/30 active:scale-[0.99] transition-all text-left"
+          data-tour="search"
+        >
+          <Search size={18} className="text-muted-foreground shrink-0" />
+          <span className="flex-1 text-[13px] text-muted-foreground truncate">
+            Buscar conduta, medicamento, CID ou cálculo
+          </span>
+          <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-primary/8 text-primary">
+            <Mic size={16} />
+          </span>
+        </button>
       </div>
 
-      {/* ── PRIMARY GRID ─────────────────────────────────────── */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-3 lg:gap-4 mb-6">
-        {primaryModules.map((m) => (
-          <PrimaryCard
-            key={m.path}
-            path={m.path}
-            label={m.label}
-            sub={m.sub}
-            icon={m.icon}
-            variant={m.variant}
-            onNavigate={navigateWithTracking}
-          />
-        ))}
-      </div>
+      {/* ── HERO: MODO PLANTÃO ─────────────────────────── */}
+      <div className="px-4 mt-5">
+        <motion.button
+          whileTap={{ scale: 0.985 }}
+          onClick={() => go("/duty", "Modo Plantão")}
+          className="relative w-full overflow-hidden rounded-3xl text-left text-white shadow-xl shadow-primary/20 ring-1 ring-white/10"
+          style={{
+            background:
+              "linear-gradient(135deg, hsl(212 90% 28%) 0%, hsl(212 88% 38%) 50%, hsl(212 86% 48%) 100%)",
+          }}
+        >
+          {/* decorative ECG line */}
+          <svg
+            className="absolute inset-x-0 bottom-0 w-full h-24 opacity-25"
+            viewBox="0 0 400 100"
+            preserveAspectRatio="none"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+          >
+            <path d="M0 60 L80 60 L95 60 L105 30 L115 85 L130 60 L200 60 L215 60 L225 20 L235 90 L250 60 L400 60" />
+          </svg>
+          {/* glow */}
+          <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-white/15 blur-3xl" />
 
-      {/* ── EMERGENCY SHORTCUTS ──────────────────────────────── */}
-      <div className="mb-6">
-        <div className="flex items-center justify-between mb-2.5">
-          <div className="flex items-center gap-2">
-            <div className="flex items-center justify-center w-6 h-6 rounded-md bg-destructive/12 text-destructive">
-              <Zap size={12} />
+          <div className="relative p-5 lg:p-7">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/15 backdrop-blur-sm text-[10px] font-semibold uppercase tracking-wider">
+                <span className="w-1.5 h-1.5 rounded-full bg-emerald-300 animate-pulse" />
+                Modo principal
+              </span>
             </div>
-            <h2 className="font-heading font-bold text-xs uppercase tracking-wider text-destructive">
-              Acesso Rápido
+            <h2 className="font-heading font-bold text-[22px] lg:text-2xl leading-tight">
+              Modo Plantão
             </h2>
+            <p className="text-[13px] lg:text-sm text-white/80 mt-1.5 max-w-sm leading-snug">
+              Emergências, condutas, doses, prescrições e ferramentas em um fluxo rápido.
+            </p>
+            <div className="mt-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white text-primary font-heading font-semibold text-[13px] shadow-md">
+              Iniciar plantão
+              <ArrowRight size={15} />
+            </div>
           </div>
-          <button onClick={() => navigate("/emergency")} className="text-[10px] text-muted-foreground flex items-center gap-0.5 hover:text-foreground transition-colors">
-            Ver todos <ChevronRight size={10} />
+        </motion.button>
+      </div>
+
+      {/* ── EMERGÊNCIA EM 1 TOQUE ──────────────────────── */}
+      <section className="mt-7 px-4">
+        <div className="flex items-end justify-between mb-2.5">
+          <div>
+            <h3 className="font-heading font-bold text-[15px] tracking-tight text-foreground">
+              Emergência em 1 toque
+            </h3>
+            <p className="text-[11.5px] text-muted-foreground mt-0.5">
+              Protocolos críticos para acesso imediato.
+            </p>
+          </div>
+          <button
+            onClick={() => navigate("/emergency")}
+            className="text-[11px] font-medium text-primary flex items-center gap-0.5 hover:underline shrink-0"
+          >
+            Ver todos <ChevronRight size={12} />
           </button>
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex gap-2 overflow-x-auto -mx-4 px-4 pb-1 scrollbar-none">
           {emergencyShortcuts.map((s) => (
-            <EmergencyShortcut
+            <button
               key={s.path}
-              path={s.path}
-              label={s.label}
-              onNavigate={navigateWithTracking}
-            />
+              onClick={() => go(s.path, s.label)}
+              className="shrink-0 px-3.5 h-9 rounded-full bg-card border border-destructive/20 hover:border-destructive/50 hover:bg-destructive/5 active:scale-95 transition-all font-heading font-semibold text-[12px] text-destructive"
+            >
+              {s.label}
+            </button>
           ))}
         </div>
-      </div>
+      </section>
 
-      {/* Recent History */}
-      <RecentHistory />
-
-      {/* Updates Banner */}
-      <button
-        onClick={() => navigate("/updates")}
-        className="w-full mt-4 mb-2 flex items-center gap-3 px-4 py-3 rounded-2xl bg-primary/5 dark:bg-primary/10 ring-1 ring-primary/15 hover:bg-primary/10 active:scale-[0.98] transition-all text-left"
-      >
-        <div className="flex items-center justify-center w-8 h-8 rounded-xl bg-primary/15 text-primary">
-          <Newspaper size={16} />
-        </div>
-        <div className="flex flex-col min-w-0">
-          <span className="font-heading font-semibold text-xs">Atualizações de Protocolos</span>
-          <span className="text-[10px] text-muted-foreground">Veja as últimas revisões e novidades</span>
-        </div>
-        <ChevronRight size={14} className="text-muted-foreground ml-auto shrink-0" />
-      </button>
-
-      {/* ── ALL SECONDARY MODULES (stacked sections) ────────── */}
-      {tabs.map((tab) => (
-        <div key={tab.id} className="mt-7">
-          <div className="flex items-center gap-2.5 mb-3.5 px-1">
-            <div className={`flex items-center justify-center w-7 h-7 rounded-lg ${tab.iconBg}`}>
-              <tab.icon size={14} />
+      {/* ── DRA. CLARA — IA CLÍNICA ────────────────────── */}
+      <section className="mt-6 px-4">
+        <motion.button
+          whileTap={{ scale: 0.99 }}
+          onClick={() => go("/clinical-ai", "Dra. Clara")}
+          className="relative w-full overflow-hidden rounded-2xl text-left text-white shadow-lg ring-1 ring-white/10"
+          style={{
+            background:
+              "linear-gradient(120deg, hsl(220 90% 56%) 0%, hsl(255 80% 60%) 100%)",
+          }}
+        >
+          <div className="absolute -bottom-12 -right-8 w-44 h-44 rounded-full bg-white/10 blur-2xl" />
+          <div className="relative p-5 flex items-center gap-4">
+            <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-sm shrink-0">
+              <Bot size={22} />
             </div>
-            <h2 className="font-heading font-bold text-sm tracking-tight">{tab.label}</h2>
-            <div className={`h-px flex-1 bg-gradient-to-r ${tab.gradient} rounded-full`} />
-            <span className="text-[10px] font-medium text-muted-foreground bg-muted/50 px-2 py-0.5 rounded-full">{tab.modules.length}</span>
+            <div className="flex-1 min-w-0">
+              <h3 className="font-heading font-bold text-[15px] leading-tight">
+                Dra. Clara — IA Clínica
+              </h3>
+              <p className="text-[12px] text-white/80 mt-0.5 leading-snug">
+                Pergunte, analise casos e interprete exames.
+              </p>
+            </div>
+            <ArrowRight size={16} className="shrink-0 text-white/80" />
           </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-2.5 lg:gap-3">
-            {tab.modules.map((m) => (
-              <SecondaryCard
-                key={m.path}
-                path={m.path}
-                label={m.label}
-                sub={m.sub}
-                icon={m.icon}
-                iconBg={tab.iconBg}
-                ringColor={tab.ringColor}
-                onNavigate={navigateWithTracking}
-              />
+          <div className="relative px-5 pb-4 flex gap-2 flex-wrap">
+            {[
+              { label: "Chat", icon: MessageSquareText, path: "/clinical-ai" },
+              { label: "Caso", icon: FlaskConical, path: "/case-simulator" },
+              { label: "Exames", icon: ScanLine, path: "/clinical-ai?tab=image" },
+            ].map((c) => (
+              <span
+                key={c.label}
+                onClick={(e) => { e.stopPropagation(); go(c.path, `IA · ${c.label}`); }}
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/15 hover:bg-white/25 text-[11px] font-medium backdrop-blur-sm transition-colors cursor-pointer"
+              >
+                <c.icon size={12} />
+                {c.label}
+              </span>
             ))}
           </div>
+        </motion.button>
+      </section>
+
+      {/* ── ESCOLHA SEU MODO ───────────────────────────── */}
+      <section className="mt-8 px-4">
+        <div className="mb-3">
+          <h3 className="font-heading font-bold text-[15px] tracking-tight text-foreground">
+            Escolha seu modo
+          </h3>
+          <p className="text-[11.5px] text-muted-foreground mt-0.5">
+            Organize sua rotina conforme o momento clínico.
+          </p>
         </div>
-      ))}
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5">
+          {modes.map((m) => {
+            const t = toneStyles[m.tone];
+            return (
+              <motion.button
+                key={m.path}
+                whileTap={{ scale: 0.97 }}
+                onClick={() => go(m.path, m.label)}
+                className={`group p-3.5 rounded-2xl bg-card border border-border/60 hover:border-primary/30 hover:shadow-md transition-all text-left`}
+              >
+                <div className={`flex items-center justify-center w-9 h-9 rounded-xl mb-2.5 ${t.icon}`}>
+                  <m.icon size={18} strokeWidth={2} />
+                </div>
+                <div className="font-heading font-semibold text-[13px] text-foreground leading-tight">
+                  {m.label}
+                </div>
+                <div className="text-[11px] text-muted-foreground mt-0.5 leading-snug">
+                  {m.sub}
+                </div>
+              </motion.button>
+            );
+          })}
+        </div>
+      </section>
 
-      {/* Voice Features Banner */}
-      <VoiceFeaturesBanner />
+      {/* ── CONTINUE DE ONDE PAROU ─────────────────────── */}
+      <section className="mt-8 px-4">
+        <div className="mb-2">
+          <h3 className="font-heading font-bold text-[15px] tracking-tight text-foreground">
+            Continue de onde parou
+          </h3>
+        </div>
+        <RecentHistory />
+      </section>
 
-      {/* Weekly Summary Widget — lower priority, below modules */}
-      <div className="mt-8 pt-6 border-t border-border/40" data-tour="tools">
-        <WeeklySummaryWidget />
-      </div>
+      {/* ── DISCLAIMER ─────────────────────────────────── */}
+      <p className="mt-8 px-6 text-center text-[10.5px] leading-relaxed text-muted-foreground/80">
+        O Pulso é uma ferramenta de apoio à decisão clínica. As informações
+        apresentadas não substituem o julgamento médico profissional.
+      </p>
 
       <WelcomeScreen userName={fullName} onComplete={() => {}} />
     </div>
