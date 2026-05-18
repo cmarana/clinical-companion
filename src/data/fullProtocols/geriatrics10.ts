@@ -1,10 +1,10 @@
 import type { FullProtocol } from "./types";
 
-export const geriatricsFullProtocols2: FullProtocol[] = [
+export const geriatricsFullProtocols10: FullProtocol[] = [
   {
     id: "fp-sindrome-imobilidade",
     title: "Síndrome de Imobilidade e Sarcopenia",
-    categoryId: "geriatrics",
+    categoryId: "geriatrics", category: "Geriatria",
     tags: ["imobilidade", "sarcopenia", "acamado", "funcionalidade", "reabilitação"],
     sections: [
       { id: "intro", title: "Introdução", content: "Síndrome de Imobilidade (SI) é grande síndrome geriátrica caracterizada por restrição prolongada ao leito ou cadeira, acompanhada de complicações sistêmicas — úlceras de pressão, contraturas, sarcopenia, broncopneumonia, TEP, depressão, óbito. A imobilidade no idoso é fator de risco independente para mortalidade. A prevenção começa na primeira hora de internação: mobilização precoce reduz desfechos adversos em > 50%.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026." },
@@ -24,7 +24,7 @@ export const geriatricsFullProtocols2: FullProtocol[] = [
   {
     id: "fp-geri5-desnutricao-idoso",
     title: "Desnutrição no Idoso",
-    categoryId: "geriatrics",
+    categoryId: "geriatrics", category: "Geriatria",
     tags: ["desnutrição", "idoso", "albumina", "sarcopenia", "MNA", "suplementação"],
     sections: [
       { id: "intro", title: "Introdução", content: "Desnutrição afeta 5–10% dos idosos da comunidade, 30–50% dos hospitalizados e 50–85% dos institucionalizados. Está associada a aumento de mortalidade, infecções, úlceras, hospitalização prolongada e disabilidade. O rastreio universal com MNA-SF é recomendado para todo idoso > 65 anos em todos os níveis de atenção. Intervenções nutricionais reduzem mortalidade quando implementadas precocemente.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026 · ESPEN 2022." },
@@ -44,7 +44,7 @@ export const geriatricsFullProtocols2: FullProtocol[] = [
   {
     id: "fp-geri5-ulcera-pressao",
     title: "Úlceras por Pressão (Lesão por Pressão)",
-    categoryId: "geriatrics",
+    categoryId: "geriatrics", category: "Geriatria",
     tags: ["úlcera de pressão", "lesão por pressão", "escara", "Braden", "idoso", "prevenção"],
     sections: [
       { id: "intro", title: "Introdução", content: "Lesão por Pressão (LPP, antiga 'úlcera de decúbito' ou 'escara') é dano localizado da pele e tecidos subjacentes por pressão prolongada, geralmente sobre proeminências ósseas. Afeta 5–25% dos hospitalizados, especialmente idosos imobilizados, com mortalidade atribuída de até 6%. A prevenção é altamente efetiva — quase todas as LPP são preveníveis. Casos avançados (estágios 3–4) requerem manejo prolongado e podem evoluir para osteomielite e sepse.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026 · NPIAP/EPUAP/PPPIA 2019." },
@@ -64,7 +64,7 @@ export const geriatricsFullProtocols2: FullProtocol[] = [
   {
     id: "fp-geri5-incontinencia-urinaria",
     title: "Incontinência Urinária no Idoso",
-    categoryId: "geriatrics",
+    categoryId: "geriatrics", category: "Geriatria",
     tags: ["incontinência urinária", "idoso", "bexiga hiperativa", "estresse", "DIAPPERS"],
     sections: [
       { id: "intro", title: "Introdução", content: "Incontinência urinária (IU) afeta 30–50% das idosas e 10–20% dos idosos > 65 anos. É subdiagnosticada (vergonha) e subtratada — apenas 25–50% buscam atenção médica. Causa isolamento social, depressão, quedas (corrida para o banheiro), dermatites e perda de qualidade de vida. NÃO é parte normal do envelhecimento. Muitas causas são reversíveis (mnemônico DIAPPERS).\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026." },
@@ -84,7 +84,7 @@ export const geriatricsFullProtocols2: FullProtocol[] = [
   {
     id: "fp-geri5-constipacao-idoso",
     title: "Constipação Crônica e Fecaloma no Idoso",
-    categoryId: "geriatrics",
+    categoryId: "geriatrics", category: "Geriatria",
     tags: ["constipação", "fecaloma", "idoso", "laxante", "obstrução intestinal"],
     sections: [
       { id: "intro", title: "Introdução", content: "Constipação afeta 25–35% dos idosos, especialmente institucionalizados. Não tratada, pode evoluir para fecaloma, com complicações graves: obstrução intestinal, perfuração colônica, megacólon, incontinência fecal por transbordamento, sepse abdominal. O manejo combina medidas não-farmacológicas e laxantes, evitando laxantes irritativos crônicos.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026." },
@@ -104,7 +104,7 @@ export const geriatricsFullProtocols2: FullProtocol[] = [
   {
     id: "fp-iatrogenia-idoso",
     title: "Iatrogenia e Eventos Adversos no Idoso",
-    categoryId: "geriatrics",
+    categoryId: "geriatrics", category: "Geriatria",
     tags: ["iatrogenia", "evento adverso", "medicamento", "idoso", "segurança", "deprescrição"],
     sections: [
       { id: "intro", title: "Introdução", content: "Iatrogenia (dano causado pelo cuidado em saúde) é causa importante de morbidade e mortalidade no idoso, frequentemente relacionada a medicamentos, infecção hospitalar, procedimentos e queda. Eventos adversos medicamentosos afetam 20–35% dos idosos hospitalizados. Prevenção exige cultura de segurança, deprescrição ativa, multidisciplinaridade e reconciliação medicamentosa.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026." },
@@ -124,7 +124,7 @@ export const geriatricsFullProtocols2: FullProtocol[] = [
   {
     id: "fp-delirium-hipoativo-idoso",
     title: "Delirium Hipoativo no Idoso",
-    categoryId: "geriatrics",
+    categoryId: "geriatrics", category: "Geriatria",
     tags: ["delirium", "hipoativo", "idoso", "confusão", "subdiagnosticado", "CAM"],
     sections: [
       { id: "intro", title: "Introdução", content: "O delirium hipoativo é a forma mais comum (50% dos casos) e mais perigosa de delirium — frequentemente NÃO reconhecido pela equipe, pois o paciente está quieto, sonolento e 'cooperativo'. Tem PIOR prognóstico que o delirium hiperativo (mortalidade 30–50% em 6 meses). O CAM deve ser aplicado ativamente para identificar esta forma silenciosa.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026." },

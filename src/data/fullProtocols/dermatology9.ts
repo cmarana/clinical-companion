@@ -1,10 +1,10 @@
 import type { FullProtocol } from "./types";
 
-export const dermatologyFullProtocols1: FullProtocol[] = [
+export const dermatologyFullProtocols9: FullProtocol[] = [
   {
     id: "fp-derm5-reacao-droga-dress",
     title: "DRESS — Reação a Droga com Eosinofilia e Sintomas Sistêmicos",
-    categoryId: "dermatology",
+    categoryId: "dermatology", category: "Dermatologia",
     tags: ["DRESS", "farmacodermia", "eosinofilia", "febre", "orgao", "reativacao viral"],
     sections: [
       { id: "intro", title: "Introdução", content: "DRESS (Drug Reaction with Eosinophilia and Systemic Symptoms) é farmacodermia grave com mortalidade de 10–20%, caracterizada por reação tardia (2–8 semanas após início da droga) com exantema, febre, eosinofilia, linfadenopatia e acometimento sistêmico. O diagnóstico é frequentemente tardio porque a apresentação simula infecção viral. A suspensão imediata do agente causador e corticoide sistêmico são o tratamento padrão.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026 · RegiSCAR." },
@@ -24,7 +24,7 @@ export const dermatologyFullProtocols1: FullProtocol[] = [
   {
     id: "fp-derm5-eritrodermia",
     title: "Eritrodermia",
-    categoryId: "dermatology",
+    categoryId: "dermatology", category: "Dermatologia",
     tags: ["eritrodermia", "descamacao", "generalizada", "psoríase", "dermatite", "linfoma cutâneo"],
     sections: [
       { id: "intro", title: "Introdução", content: "Eritrodermia (dermatite esfoliativa) é estado de eritema e descamação generalizados que acomete > 90% da superfície corporal, com complicações sistêmicas potencialmente fatais — distúrbio termorregulatório, perdas hídricas e proteicas, insuficiência cardíaca de alto débito, infecção secundária. Mortalidade de 18–64% por sepse, ICC, falência multiorgânica. É emergência dermatológica que requer internação.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026." },
@@ -44,7 +44,7 @@ export const dermatologyFullProtocols1: FullProtocol[] = [
   {
     id: "fp-derm-18-03",
     title: "Pênfigo Vulgar Extenso",
-    categoryId: "dermatology",
+    categoryId: "dermatology", category: "Dermatologia",
     tags: ["pênfigo vulgar", "doença bolhosa autoimune", "nikolsky", "corticoide", "rituximabe"],
     sections: [
       { id: "intro", title: "Introdução", content: "Pênfigo vulgar é doença bolhosa autoimune potencialmente fatal causada por autoanticorpos contra desmogleínas 3 e 1 dos desmossomos epidérmicos, resultando em acantólise intraepidérmica. Antes da era dos corticoides, mortalidade era de 70–100%. Atualmente, com corticoide + imunossupressores e rituximabe, mortalidade é de 5–10%, principalmente por complicações infecciosas. Acomete pele e mucosas, sendo o envolvimento oral a manifestação inicial em 50–70% dos casos.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026 · International Pemphigus Guidelines 2020." },
@@ -64,7 +64,7 @@ export const dermatologyFullProtocols1: FullProtocol[] = [
   {
     id: "fp-derm-18-09",
     title: "Síndrome de Pele Escaldada Estafilocócica (SSSS)",
-    categoryId: "dermatology",
+    categoryId: "dermatology", category: "Dermatologia",
     tags: ["SSSS", "Staphylococcus aureus", "toxina esfoliativa", "criança", "Ritter", "Nikolsky"],
     sections: [
       { id: "intro", title: "Introdução", content: "A Síndrome de Pele Escaldada Estafilocócica (SSSS — Staphylococcal Scalded Skin Syndrome) é doença mediada por toxinas esfoliativas (ETA, ETB) produzidas por Staphylococcus aureus, causando descolamento intraepidérmico superficial. Acomete principalmente crianças < 5 anos (mais comum em lactentes) e adultos imunossuprimidos. Em crianças, mortalidade é baixa (< 4%); em adultos com comorbidades, pode chegar a 60%. Diferencia-se de NET por idade, pele perilesional, mucosa preservada e ausência de droga gatilho.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026." },
@@ -84,7 +84,7 @@ export const dermatologyFullProtocols1: FullProtocol[] = [
   {
     id: "fp-derm-18-06",
     title: "Pustulose Exantemática Generalizada Aguda (PEGA / AGEP)",
-    categoryId: "dermatology",
+    categoryId: "dermatology", category: "Dermatologia",
     tags: ["PEGA", "AGEP", "pustulose", "farmacodermia", "neutrofilica", "exantematica"],
     sections: [
       { id: "intro", title: "Introdução", content: "PEGA (Pustulose Exantemática Generalizada Aguda, ou AGEP em inglês) é farmacodermia neutrofílica caracterizada por surgimento súbito de pústulas não-foliculares estéreis sobre eritema generalizado. Mortalidade é baixa (< 5%), mas pode ser confundida com infecções sistêmicas pústulosas, levando a tratamento antibiótico desnecessário. A suspensão do fármaco causal leva à resolução em 1–2 semanas. Sequência típica: febre + eritema + pústulas centenas a milhares em < 24h após exposição.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026 · EuroSCAR." },
@@ -104,7 +104,7 @@ export const dermatologyFullProtocols1: FullProtocol[] = [
   {
     id: "fp-derm5-eczema-herpetico",
     title: "Eczema Herpético (Erupção Varioliforme de Kaposi)",
-    categoryId: "dermatology",
+    categoryId: "dermatology", category: "Dermatologia",
     tags: ["eczema herpetico", "kaposi", "HSV", "aciclovir", "atopia", "imunocomprometido"],
     sections: [
       { id: "intro", title: "Introdução", content: "Eczema herpético (erupção varioliforme de Kaposi) é infecção disseminada cutânea por HSV-1 (raramente HSV-2 ou outros vírus) em paciente com dermatose preexistente — mais comumente dermatite atópica. É emergência dermatológica com risco de queratite, encefalite e sepse bacteriana secundária. Mortalidade chega a 6% sem tratamento adequado. Início precoce de aciclovir IV é fundamental.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026." },
@@ -124,7 +124,7 @@ export const dermatologyFullProtocols1: FullProtocol[] = [
   {
     id: "fp-derm5-vasculite-cutanea",
     title: "Vasculite Cutânea (Vasculite de Pequenos Vasos)",
-    categoryId: "dermatology",
+    categoryId: "dermatology", category: "Dermatologia",
     tags: ["vasculite", "purpura palpável", "leucocitoclástica", "biopsia", "autoimune"],
     sections: [
       { id: "intro", title: "Introdução", content: "Vasculite cutânea de pequenos vasos é inflamação das paredes vasculares dérmicas, manifestando-se classicamente como púrpura palpável em membros inferiores. Pode ser limitada à pele (vasculite cutânea isolada) ou parte de doença sistêmica (vasculites ANCA, vasculite por IgA, doenças do tecido conjuntivo). A avaliação deve sempre investigar envolvimento sistêmico — especialmente renal — pois condiciona o prognóstico.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026 · ACR/EULAR 2022." },

@@ -1,10 +1,10 @@
 import type { FullProtocol } from "./types";
 
-export const geriatricsFullProtocols1: FullProtocol[] = [
+export const geriatricsFullProtocols9: FullProtocol[] = [
   {
     id: "fp-queda-idoso",
     title: "Queda no Idoso",
-    categoryId: "geriatrics",
+    categoryId: "geriatrics", category: "Geriatria",
     tags: ["queda", "idoso", "fratura", "equilíbrio", "prevenção de quedas"],
     sections: [
       { id: "intro", title: "Introdução", content: "A queda no idoso é evento sentinela com mortalidade e morbidade significativas. 30% dos idosos > 65 anos caem ao menos uma vez por ano, e este número sobe para 50% após os 80 anos. Após uma queda, o risco de uma nova queda em 1 ano dobra. As consequências incluem fratura de quadril (mortalidade de 20–30% em 1 ano), TCE, e síndrome pós-queda (medo de cair, restrição de mobilidade, declínio funcional progressivo).\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026 · STEADI/CDC 2023." },
@@ -24,7 +24,7 @@ export const geriatricsFullProtocols1: FullProtocol[] = [
   {
     id: "fp-polifarmacia-idoso",
     title: "Polifarmácia e Medicamentos Potencialmente Inapropriados no Idoso",
-    categoryId: "geriatrics",
+    categoryId: "geriatrics", category: "Geriatria",
     tags: ["polifarmácia", "beers", "stopp", "idoso", "iatrogenia", "interação medicamentosa"],
     sections: [
       { id: "intro", title: "Introdução", content: "Polifarmácia (uso simultâneo de ≥ 5 medicamentos) afeta 30–50% dos idosos brasileiros e é fator de risco independente para iatrogenia, hospitalização e mortalidade. Os critérios de Beers (americano) e STOPP/START (europeu) listam medicamentos potencialmente inapropriados para idosos e devem ser revisados em cada consulta. A deprescrição é arte clínica baseada em evidência e fundamental para a qualidade de vida do idoso.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026 · AGS Beers 2023 · STOPP/START v3 2023." },
@@ -44,7 +44,7 @@ export const geriatricsFullProtocols1: FullProtocol[] = [
   {
     id: "fp-sindrome-fragilidade",
     title: "Síndrome de Fragilidade no Idoso",
-    categoryId: "geriatrics",
+    categoryId: "geriatrics", category: "Geriatria",
     tags: ["fragilidade", "sarcopenia", "idoso", "funcionalidade", "síndrome geriátrica"],
     sections: [
       { id: "intro", title: "Introdução", content: "A síndrome de fragilidade é estado de vulnerabilidade fisiológica aumentada, com declínio da reserva e função em múltiplos sistemas. O idoso frágil tem maior risco de eventos adversos: quedas, hospitalização, dependência funcional e morte. A identificação precoce permite intervenções (exercício, nutrição) que podem reverter ou retardar a progressão. A fragilidade NÃO é sinônimo de idade avançada — pode ocorrer em idosos jovens e está ausente em idosos longevos vigorosos.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026." },
@@ -64,7 +64,7 @@ export const geriatricsFullProtocols1: FullProtocol[] = [
   {
     id: "fp-infeccao-idoso",
     title: "Infecção no Idoso — Particularidades",
-    categoryId: "geriatrics",
+    categoryId: "geriatrics", category: "Geriatria",
     tags: ["infecção", "idoso", "pneumonia", "itu", "sepse", "atípica"],
     sections: [
       { id: "intro", title: "Introdução", content: "Infecções no idoso apresentam quadro frequentemente ATÍPICO: ausência de febre, alteração de comportamento sem foco aparente, declínio funcional súbito. A alta suspeição é fundamental — o atraso diagnóstico é a principal causa de mortalidade. Pneumonia, ITU, infecção de pele e bacteremia são as mais frequentes. O idoso institucionalizado tem risco adicional de germes resistentes.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026." },
@@ -84,7 +84,7 @@ export const geriatricsFullProtocols1: FullProtocol[] = [
   {
     id: "fp-desidratacao-idoso",
     title: "Desidratação no Idoso",
-    categoryId: "geriatrics",
+    categoryId: "geriatrics", category: "Geriatria",
     tags: ["desidratação", "idoso", "hipovolemia", "hipernatremia", "reidratação"],
     sections: [
       { id: "intro", title: "Introdução", content: "Desidratação no idoso é causa frequente de hospitalização e mortalidade. A redução fisiológica da sede, a diminuição da capacidade renal de concentrar urina e a polifarmácia (diuréticos, laxativos) aumentam o risco. A apresentação clínica é frequentemente atípica: delirium, hipotensão postural, queda, declínio funcional súbito. O reconhecimento precoce evita complicações graves (LRA, choque, AVC).\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026." },
@@ -104,7 +104,7 @@ export const geriatricsFullProtocols1: FullProtocol[] = [
   {
     id: "fp-geri5-disfagia-idoso",
     title: "Disfagia no Idoso",
-    categoryId: "geriatrics",
+    categoryId: "geriatrics", category: "Geriatria",
     tags: ["disfagia", "idoso", "deglutição", "aspiração", "pneumonia aspirativa", "fonoaudiologia"],
     sections: [
       { id: "intro", title: "Introdução", content: "Disfagia (dificuldade de deglutição) atinge 15–22% dos idosos comunitários e até 60% dos institucionalizados. É causa principal de pneumonia aspirativa, desnutrição, desidratação e mortalidade no idoso. A avaliação multidisciplinar (médico + fonoaudiólogo + nutricionista) é fundamental. Pode ser modificada com técnicas compensatórias e reabilitação.\n\n⚕️ Uso exclusivo por profissional de saúde habilitado. Última revisão: Mai/2026." },
