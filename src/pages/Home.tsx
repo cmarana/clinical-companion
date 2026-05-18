@@ -328,7 +328,7 @@ export default function Home() {
             Continue de onde parou
           </h3>
         </div>
-        <RecentHistory />
+        <ContinueWhereLeftOff />
       </section>
 
       {/* ── DISCLAIMER ─────────────────────────────────── */}
