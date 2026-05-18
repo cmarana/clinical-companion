@@ -596,6 +596,24 @@ export const fullProtocols: FullProtocol[] = [
   ...nephrologyFullProtocols8,
 ];
 
+// ── Lote Mai/2026: substituições editoriais ──────────────────
+import { geriatricsFullProtocols9 } from "./geriatrics9";
+import { geriatricsFullProtocols10 } from "./geriatrics10";
+import { dermatologyFullProtocols9 } from "./dermatology9";
+
+const _REPLACEMENT_PROTOCOLS: FullProtocol[] = [
+  ...geriatricsFullProtocols9,
+  ...geriatricsFullProtocols10,
+  ...dermatologyFullProtocols9,
+];
+const _replacementIds = new Set(_REPLACEMENT_PROTOCOLS.map(p => p.id));
+// Remover versões antigas e anexar as novas
+for (let i = fullProtocols.length - 1; i >= 0; i--) {
+  if (_replacementIds.has(fullProtocols[i].id)) fullProtocols.splice(i, 1);
+}
+fullProtocols.push(..._REPLACEMENT_PROTOCOLS);
+
+
 // ==================== Aplicar atualizações 2025/2026 ====================
 import { PATCHES_2026, mergeGuidelines } from "./_patches2026";
 import { SECTION_PATCHES_2026 } from "./_sectionPatches2026";
