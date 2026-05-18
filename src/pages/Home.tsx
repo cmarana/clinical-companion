@@ -11,7 +11,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import RecentHistory from "@/components/RecentHistory";
+import ContinueWhereLeftOff from "@/components/ContinueWhereLeftOff";
 import { useNotifications } from "@/contexts/NotificationsContext";
 import { hapticLight } from "@/lib/haptics";
 import { useModuleAnalytics } from "@/hooks/useModuleAnalytics";
@@ -328,7 +328,7 @@ export default function Home() {
             Continue de onde parou
           </h3>
         </div>
-        <RecentHistory />
+        <ContinueWhereLeftOff />
       </section>
 
       {/* ── DISCLAIMER ─────────────────────────────────── */}
