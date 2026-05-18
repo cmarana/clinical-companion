@@ -56,6 +56,9 @@ import {
   orthopedicEmergencyProtocols,
   pediatricEmergencyProtocols3,
 } from "./combined_remaining";
+import { neurologicalProtocols5 } from "./neurological5";
+import { vascularGeriatricsEmergencyProtocols } from "./vascular_geriatrics";
+import { thoracicEntEmergencyProtocols } from "./thoracic_ent";
 
 export { SECTION_ORDER } from "./types";
 export type { EmergencyProtocol, EmergencyCategory, EmergencySection } from "./types";
