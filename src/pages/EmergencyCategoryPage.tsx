@@ -10,13 +10,11 @@ import {
   NEW_EMERGENCY_CATEGORY_IDS,
   UPDATED_EMERGENCY_PROTOCOL_IDS,
 } from "@/data/emergency";
+import { GRADIENT_DANGER } from "@/lib/design-tokens";
 
 function Badge({ kind }: { kind: "new" | "updated" }) {
   const label = kind === "new" ? "Novo" : "Atualizado";
-  const cls =
-    kind === "new"
-      ? "bg-primary/15 text-primary border border-primary/30"
-      : "bg-accent/20 text-accent-foreground border border-accent/40";
+  const cls = "bg-white/16 text-white border border-white/28";
   return (
     <span className={`text-[10px] font-heading font-semibold px-2 py-0.5 rounded-full ${cls}`}>
       {label}
@@ -47,14 +45,14 @@ function EmergencyCategoryContent() {
           <ArrowLeft size={14} /> Todas as categorias
         </button>
 
-        <header className="duty-card p-5 space-y-2">
+        <header className="p-5 space-y-2 rounded-[18px] text-white shadow-md ring-1 ring-white/15" style={{ background: GRADIENT_DANGER }}>
           <div className="flex items-center gap-2 flex-wrap">
-            <h1 className="font-heading font-bold text-base tracking-tight">
+            <h1 className="font-heading font-bold text-base tracking-tight text-white">
               {category.title}
             </h1>
             {isNewCategory && <Badge kind="new" />}
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-white/82">
             {category.protocols.length} protocolo{category.protocols.length === 1 ? "" : "s"} · toque em um protocolo para expandir suas seções ou abrir em tela cheia.
           </p>
         </header>
@@ -70,20 +68,20 @@ function EmergencyCategoryContent() {
             const open = expanded[p.id];
 
             return (
-              <article key={p.id} className="duty-card overflow-hidden">
+              <article key={p.id} className="overflow-hidden rounded-[18px] text-white shadow-md ring-1 ring-white/15" style={{ background: GRADIENT_DANGER }}>
                 <button
                   onClick={() => toggle(p.id)}
                   className="w-full flex items-center gap-3 p-4 text-left active:scale-[0.99] transition"
                 >
                   <div className="flex-1 min-w-0 space-y-1">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h2 className="font-heading font-semibold text-sm">{p.title}</h2>
+                      <h2 className="font-heading font-semibold text-sm text-white">{p.title}</h2>
                       {(isUpdated || isNewCategory) && (
                         <Badge kind={isUpdated ? "updated" : "new"} />
                       )}
                     </div>
                     {(meta.version || meta.lastReviewed) && (
-                      <div className="flex items-center gap-3 text-[10px] text-muted-foreground font-medium">
+                          <div className="flex items-center gap-3 text-[10px] text-white/76 font-medium">
                         {meta.version && (
                           <span className="inline-flex items-center gap-1">
                             <Tag size={10} /> {meta.version}
@@ -98,9 +96,9 @@ function EmergencyCategoryContent() {
                     )}
                   </div>
                   {open ? (
-                    <ChevronDown size={16} className="text-muted-foreground shrink-0" />
+                    <ChevronDown size={16} className="text-white/78 shrink-0" />
                   ) : (
-                    <ChevronRight size={16} className="text-muted-foreground shrink-0" />
+                    <ChevronRight size={16} className="text-white/78 shrink-0" />
                   )}
                 </button>
 
@@ -109,7 +107,7 @@ function EmergencyCategoryContent() {
                     {sections.map(s => {
                       const isOpen = openSection[p.id] === s.id;
                       return (
-                        <div key={s.id} className="rounded-lg bg-muted/40">
+                            <div key={s.id} className="rounded-lg bg-white/12 ring-1 ring-white/15">
                           <button
                             onClick={() =>
                               setOpenSection(prev => ({
@@ -124,11 +122,11 @@ function EmergencyCategoryContent() {
                             </span>
                             <ChevronDown
                               size={13}
-                              className={`text-muted-foreground transition-transform ${isOpen ? "rotate-180" : ""}`}
+                              className={`text-white/78 transition-transform ${isOpen ? "rotate-180" : ""}`}
                             />
                           </button>
                           {isOpen && (
-                            <div className="px-3 pb-3 text-xs leading-relaxed whitespace-pre-wrap text-foreground/90">
+                            <div className="px-3 pb-3 text-xs leading-relaxed whitespace-pre-wrap text-white/88">
                               {s.content}
                             </div>
                           )}

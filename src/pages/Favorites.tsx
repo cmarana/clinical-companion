@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { FileText, Pill, Star, ClipboardList, FolderOpen, ChevronDown, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { GRADIENT_DEEP_BLUE } from "@/lib/design-tokens";
 
 export default function Favorites() {
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ export default function Favorites() {
         {favorites.length === 0 ? (
           <div className="text-center py-16 space-y-4">
             <div className="w-16 h-16 rounded-2xl bg-warning/10 flex items-center justify-center mx-auto">
-              <Star size={28} className="text-warning/60" />
+              <Star size={28} className="text-destructive/70" />
             </div>
             <div className="space-y-1">
               <p className="font-heading font-semibold text-sm">Nenhum favorito ainda</p>
@@ -54,42 +55,46 @@ export default function Favorites() {
               const items = grouped[spec] || [];
               const isOpen = !collapsed[spec];
               return (
-                <div key={spec} className="rounded-2xl border bg-card overflow-hidden">
+                <div
+                  key={spec}
+                  className="rounded-2xl overflow-hidden text-white shadow-md ring-1 ring-white/15"
+                  style={{ background: GRADIENT_DEEP_BLUE }}
+                >
                   <button
                     onClick={() => toggle(spec)}
-                    className="w-full flex items-center gap-3 p-3.5 hover:bg-accent/50 transition-colors"
+                    className="w-full flex items-center gap-3 p-3.5 hover:bg-white/10 transition-colors"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <FolderOpen size={16} className="text-primary" />
+                    <div className="w-8 h-8 rounded-lg bg-white/15 ring-1 ring-white/25 flex items-center justify-center">
+                      <FolderOpen size={16} className="text-white" />
                     </div>
                     <div className="flex-1 text-left">
-                      <p className="font-heading font-semibold text-sm">{spec}</p>
-                      <p className="text-[10px] text-muted-foreground">{items.length} item{items.length !== 1 ? "s" : ""}</p>
+                      <p className="font-heading font-semibold text-sm text-white">{spec}</p>
+                      <p className="text-[10px] text-white/76">{items.length} item{items.length !== 1 ? "s" : ""}</p>
                     </div>
-                    {isOpen ? <ChevronDown size={16} className="text-muted-foreground" /> : <ChevronRight size={16} className="text-muted-foreground" />}
+                    {isOpen ? <ChevronDown size={16} className="text-white/78" /> : <ChevronRight size={16} className="text-white/78" />}
                   </button>
 
                   {isOpen && (
-                    <div className="border-t">
+                    <div className="border-t border-white/15">
                       {items.map((f) => (
-                        <div key={f.id} className="flex items-center gap-3 px-3.5 py-2.5 hover:bg-accent/30 transition-colors">
+                        <div key={f.id} className="flex items-center gap-3 px-3.5 py-2.5 hover:bg-white/10 transition-colors">
                           <button
                             onClick={() => navigate(getPath(f))}
                             className="flex items-center gap-3 flex-1 min-w-0"
                           >
-                            <div className="w-7 h-7 rounded-md bg-accent flex items-center justify-center text-accent-foreground shrink-0">
+                            <div className="w-7 h-7 rounded-md bg-white/15 ring-1 ring-white/20 flex items-center justify-center text-white shrink-0">
                               {typeIcon(f.type)}
                             </div>
                             <div className="min-w-0">
-                              <p className="font-heading font-medium text-xs truncate">{f.title}</p>
-                              <p className="text-[10px] text-muted-foreground">{typeLabel(f.type)}</p>
+                              <p className="font-heading font-medium text-xs text-white truncate">{f.title}</p>
+                              <p className="text-[10px] text-white/74">{typeLabel(f.type)}</p>
                             </div>
                           </button>
                           <button
                             onClick={() => toggleFavorite(f)}
                             className="p-1.5 rounded-md hover:bg-accent transition-colors shrink-0"
                           >
-                            <Star size={14} className="fill-warning text-warning" />
+                            <Star size={14} className="fill-destructive text-destructive" />
                           </button>
                         </div>
                       ))}

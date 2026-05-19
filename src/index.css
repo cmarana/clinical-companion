@@ -7,29 +7,29 @@
 
 @layer base {
   :root {
-    --background: 212 42% 95%;
+    --background: 0 0% 100%;
     --foreground: 212 64% 14%;
-    --card: 212 42% 95%;
+    --card: 0 0% 100%;
     --card-foreground: 217 33% 17%;
-    --popover: 212 42% 95%;
+    --popover: 0 0% 100%;
     --popover-foreground: 217 33% 17%;
-    --primary: 212 72% 28%;
+    --primary: 212 72% 26%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 212 36% 90%;
+    --secondary: 212 35% 94%;
     --secondary-foreground: 217 33% 17%;
-    --muted: 212 36% 90%;
+    --muted: 212 35% 94%;
     --muted-foreground: 212 48% 24%;
-    --accent: 212 40% 88%;
-    --accent-foreground: 212 72% 22%;
-    --destructive: 358 58% 38%;
+    --accent: 212 36% 91%;
+    --accent-foreground: 212 72% 18%;
+    --destructive: 358 68% 40%;
     --destructive-foreground: 0 0% 100%;
-    --destructive-surface: 358 42% 90%;
-    --border: 212 30% 82%;
-    --input: 212 30% 82%;
-    --ring: 212 72% 28%;
+    --destructive-surface: 358 45% 94%;
+    --border: 212 26% 84%;
+    --input: 212 26% 84%;
+    --ring: 212 72% 26%;
     --radius: 0.5rem;
 
-    --sidebar-background: 212 42% 95%;
+    --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 212 64% 18%;
     --sidebar-primary: 212 72% 28%;
     --sidebar-primary-foreground: 0 0% 98%;
@@ -38,9 +38,9 @@
     --sidebar-border: 212 30% 82%;
     --sidebar-ring: 212 72% 28%;
 
-    --warning: 358 58% 38%;
+    --warning: 358 68% 40%;
     --warning-foreground: 0 0% 100%;
-    --success: 212 72% 28%;
+    --success: 212 72% 26%;
     --success-foreground: 0 0% 100%;
 
     --font-heading: 'Sora', system-ui, sans-serif;
@@ -56,7 +56,7 @@
     --popover: 217 33% 17%;
     --popover-foreground: 210 40% 96%;
     --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 212 64% 14%;
     --secondary: 217 33% 17%;
     --secondary-foreground: 210 40% 96%;
     --muted: 217 33% 17%;
@@ -93,7 +93,7 @@
     --popover: 0 0% 5%;
     --popover-foreground: 0 0% 92%;
     --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 100%;
+    --primary-foreground: 0 0% 0%;
     --secondary: 0 0% 8%;
     --secondary-foreground: 0 0% 92%;
     --muted: 0 0% 8%;
@@ -427,15 +427,26 @@
 
 /* ─── Duty Mode (Modo Plantão) ─── */
 .duty-card {
-  background: hsl(var(--muted) / 0.62);
-  border: 1px solid hsl(var(--primary) / 0.14);
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, hsl(212 64% 12%) 0%, hsl(212 72% 24%) 100%);
+  border: 1px solid hsl(0 0% 100% / 0.16);
   border-radius: 18px;
-  box-shadow: inset 0 0 0 1px hsl(var(--background) / 0.35);
+  color: hsl(0 0% 100%);
+  box-shadow: 0 10px 28px -18px hsl(212 72% 20% / 0.45);
 }
 
 .dark .duty-card {
-  background: hsl(var(--muted) / 0.52);
-  border-color: hsl(var(--primary) / 0.14);
+  background: linear-gradient(135deg, hsl(212 58% 11%) 0%, hsl(212 58% 18%) 100%);
+  border-color: hsl(0 0% 100% / 0.14);
+}
+
+.duty-card :is(h1,h2,h3,p,span,button,svg) {
+  color: inherit;
+}
+
+.duty-card :is(.text-muted-foreground,.text-foreground,.text-primary,.text-accent-foreground) {
+  color: hsl(0 0% 100% / 0.82);
 }
 
 .duty-grid-btn {
@@ -445,9 +456,9 @@
   gap: 6px;
   padding: 14px 6px;
   border-radius: 16px;
-  border: 1px solid hsl(var(--primary) / 0.14);
-  background: hsl(var(--muted) / 0.7);
-  color: hsl(var(--primary));
+  border: 1px solid hsl(0 0% 100% / 0.18);
+  background: hsl(0 0% 100% / 0.12);
+  color: hsl(0 0% 100%);
   font-family: var(--font-heading);
   transition: all 200ms;
   box-shadow: none;
@@ -458,17 +469,17 @@
 }
 
 .duty-grid-btn:hover {
-  background: hsl(var(--accent));
-  box-shadow: inset 0 0 0 1px hsl(var(--primary) / 0.12);
+  background: hsl(0 0% 100% / 0.2);
+  box-shadow: inset 0 0 0 1px hsl(0 0% 100% / 0.16);
 }
 
 .dark .duty-grid-btn {
-  background: hsl(var(--muted) / 0.62);
+  background: hsl(0 0% 100% / 0.12);
   box-shadow: none;
 }
 
 .dark .duty-grid-btn:hover {
-  background: hsl(var(--accent));
+  background: hsl(0 0% 100% / 0.2);
 }
 
 .duty-list-item {
@@ -480,17 +491,17 @@
   border-radius: 12px;
   font-family: var(--font-heading);
   font-size: 13px;
-  color: hsl(var(--foreground));
+  color: hsl(0 0% 100%);
   transition: all 200ms;
 }
 
 .duty-list-item:hover {
-  background: hsl(var(--accent));
-  box-shadow: inset 0 0 0 1px hsl(var(--primary) / 0.1);
+  background: hsl(0 0% 100% / 0.13);
+  box-shadow: inset 0 0 0 1px hsl(0 0% 100% / 0.12);
 }
 
 .dark .duty-list-item:hover {
-  background: hsl(var(--accent));
+  background: hsl(0 0% 100% / 0.13);
 }
 
 .duty-list-item:active {
@@ -503,8 +514,8 @@
   font-weight: 500;
   padding: 3px 8px;
   border-radius: 10px;
-  background: hsl(var(--primary) / 0.1);
-  color: hsl(var(--primary));
+  background: hsl(0 0% 100% / 0.14);
+  color: hsl(0 0% 100% / 0.9);
   white-space: nowrap;
 }
 
