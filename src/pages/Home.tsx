@@ -330,12 +330,32 @@ export default function Home() {
           {modes.map((m) => {
             const t = toneStyles[m.tone];
             const isDuty = m.path === "/duty";
+            const isLeaving = leavingMode === m.path;
             return (
               <motion.button
                 key={m.path}
                 whileTap={{ scale: 0.97 }}
+                animate={isLeaving ? {
+                  scale: [1, 1.08, 1.04],
+                  filter: ["brightness(1)", "brightness(1.35)", "brightness(1.2)"],
+                  boxShadow: [
+                    "0 10px 15px -3px rgba(0,0,0,0.1)",
+                    "0 25px 50px -12px rgba(255,255,255,0.35)",
+                    "0 15px 30px -5px rgba(255,255,255,0.2)",
+                  ],
+                } : {
+                  scale: 1,
+                  filter: "brightness(1)",
+                  boxShadow: "0 10px 15px -3px rgba(0,0,0,0.1)",
+                }}
+                transition={isLeaving ? {
+                  duration: 0.28,
+                  ease: "easeOut",
+                } : {
+                  duration: 0.2,
+                }}
                 onClick={() => go(m.path, m.label)}
-                className={`group relative overflow-hidden p-3.5 rounded-2xl text-left text-white shadow-lg ${t.glow} ring-1 ring-white/10 hover:-translate-y-0.5 hover:shadow-xl transition-all`}
+                className={`group relative overflow-hidden p-3.5 rounded-2xl text-left text-white shadow-lg ${t.glow} ring-1 ring-white/10 hover:-translate-y-0.5 hover:shadow-xl transition-all ${isLeaving ? "z-10" : ""}`}
                 style={{ background: t.gradient }}
               >
                 {/* ECG decorativa */}
@@ -353,13 +373,21 @@ export default function Home() {
                 <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-white/15 blur-2xl pointer-events-none" />
 
                 <div className="relative">
-                  <div className="flex items-center justify-center w-9 h-9 rounded-xl mb-2.5 bg-white/15 backdrop-blur-sm ring-1 ring-white/20">
+                  <motion.div
+                    animate={isLeaving ? { scale: [1, 1.2, 1.1], rotate: [0, -5, 0] } : { scale: 1, rotate: 0 }}
+                    transition={{ duration: 0.28 }}
+                    className="flex items-center justify-center w-9 h-9 rounded-xl mb-2.5 bg-white/15 backdrop-blur-sm ring-1 ring-white/20"
+                  >
                     <m.icon size={18} strokeWidth={2.2} className="text-white" />
-                  </div>
+                  </motion.div>
                   <div className="flex items-center gap-1.5">
-                    <span className="font-heading font-semibold text-[13px] leading-tight">
+                    <motion.span
+                      animate={isLeaving ? { y: [0, -2, 0], fontWeight: 600 } : { y: 0 }}
+                      transition={{ duration: 0.28 }}
+                      className="font-heading font-semibold text-[13px] leading-tight"
+                    >
                       {m.label}
-                    </span>
+                    </motion.span>
                     {isDuty && (
                       <span className="relative flex h-1.5 w-1.5">
                         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75" />
@@ -371,6 +399,17 @@ export default function Home() {
                     {m.sub}
                   </div>
                 </div>
+
+                {/* Ripple de confirmação */}
+                {isLeaving && (
+                  <motion.div
+                    initial={{ scale: 0, opacity: 0.6 }}
+                    animate={{ scale: 2.5, opacity: 0 }}
+                    transition={{ duration: 0.5, ease: "easeOut" }}
+                    className="absolute inset-0 rounded-2xl bg-white/40 pointer-events-none"
+                    style={{ originX: 0.5, originY: 0.5 }}
+                  />
+                )}
               </motion.button>
             );
           })}
