@@ -51,13 +51,36 @@ const modes = [
   { label: "Prescrições", sub: "Modelos, evoluções e alta", icon: FileText, path: "/prescriptions", tone: "violet" },
 ];
 
-const toneStyles: Record<string, { icon: string; ring: string }> = {
-  primary: { icon: "bg-primary/10 text-primary", ring: "ring-border/60" },
-  danger: { icon: "bg-destructive/10 text-destructive", ring: "ring-border/60" },
-  slate: { icon: "bg-slate-500/10 text-slate-600 dark:text-slate-300", ring: "ring-border/60" },
-  emerald: { icon: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400", ring: "ring-border/60" },
-  amber: { icon: "bg-amber-500/10 text-amber-600 dark:text-amber-400", ring: "ring-border/60" },
-  violet: { icon: "bg-violet-500/10 text-violet-600 dark:text-violet-400", ring: "ring-border/60" },
+// Cada modo herda a mesma linguagem visual do hero Modo Plantão:
+// gradiente sólido + linha ECG decorativa + glow sutil + texto branco.
+// Apenas a paleta do gradiente muda por tom, mantendo coerência cromática
+// com o restante do app (primary/destructive/etc.) e bom contraste em
+// light/dark/OLED.
+const toneStyles: Record<string, { gradient: string; glow: string }> = {
+  primary: {
+    gradient: "linear-gradient(135deg, hsl(212 90% 28%) 0%, hsl(212 88% 38%) 50%, hsl(212 86% 48%) 100%)",
+    glow: "shadow-primary/25",
+  },
+  danger: {
+    gradient: "linear-gradient(135deg, hsl(0 72% 32%) 0%, hsl(0 75% 42%) 50%, hsl(0 80% 55%) 100%)",
+    glow: "shadow-destructive/25",
+  },
+  slate: {
+    gradient: "linear-gradient(135deg, hsl(215 25% 22%) 0%, hsl(215 22% 32%) 50%, hsl(215 20% 42%) 100%)",
+    glow: "shadow-slate-700/25",
+  },
+  emerald: {
+    gradient: "linear-gradient(135deg, hsl(160 80% 20%) 0%, hsl(158 75% 30%) 50%, hsl(156 70% 40%) 100%)",
+    glow: "shadow-emerald-700/25",
+  },
+  amber: {
+    gradient: "linear-gradient(135deg, hsl(28 85% 32%) 0%, hsl(32 88% 42%) 50%, hsl(38 92% 52%) 100%)",
+    glow: "shadow-amber-600/25",
+  },
+  violet: {
+    gradient: "linear-gradient(135deg, hsl(265 60% 30%) 0%, hsl(262 65% 42%) 50%, hsl(258 70% 55%) 100%)",
+    glow: "shadow-violet-600/25",
+  },
 };
 
 export default function Home() {
@@ -303,26 +326,53 @@ export default function Home() {
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5">
           {modes.map((m) => {
             const t = toneStyles[m.tone];
+            const isDuty = m.path === "/duty";
             return (
               <motion.button
                 key={m.path}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => go(m.path, m.label)}
-                className={`group p-3.5 rounded-2xl bg-card border border-border/60 hover:border-primary/30 hover:shadow-md transition-all text-left`}
+                className={`group relative overflow-hidden p-3.5 rounded-2xl text-left text-white shadow-lg ${t.glow} ring-1 ring-white/10 hover:-translate-y-0.5 hover:shadow-xl transition-all`}
+                style={{ background: t.gradient }}
               >
-                <div className={`flex items-center justify-center w-9 h-9 rounded-xl mb-2.5 ${t.icon}`}>
-                  <m.icon size={18} strokeWidth={2} />
-                </div>
-                <div className="font-heading font-semibold text-[13px] text-foreground leading-tight">
-                  {m.label}
-                </div>
-                <div className="text-[11px] text-muted-foreground mt-0.5 leading-snug">
-                  {m.sub}
+                {/* ECG decorativa */}
+                <svg
+                  className="absolute inset-x-0 bottom-0 w-full h-12 opacity-20 pointer-events-none"
+                  viewBox="0 0 200 60"
+                  preserveAspectRatio="none"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.2"
+                >
+                  <path d="M0 35 L50 35 L58 18 L66 52 L74 35 L120 35 L128 12 L136 58 L144 35 L200 35" />
+                </svg>
+                {/* glow */}
+                <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-white/15 blur-2xl pointer-events-none" />
+
+                <div className="relative">
+                  <div className="flex items-center justify-center w-9 h-9 rounded-xl mb-2.5 bg-white/15 backdrop-blur-sm ring-1 ring-white/20">
+                    <m.icon size={18} strokeWidth={2.2} className="text-white" />
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <span className="font-heading font-semibold text-[13px] leading-tight">
+                      {m.label}
+                    </span>
+                    {isDuty && (
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-300" />
+                      </span>
+                    )}
+                  </div>
+                  <div className="text-[11px] text-white/75 mt-0.5 leading-snug">
+                    {m.sub}
+                  </div>
                 </div>
               </motion.button>
             );
           })}
         </div>
+
       </section>
 
       {/* ── CONTINUE DE ONDE PAROU ─────────────────────── */}
