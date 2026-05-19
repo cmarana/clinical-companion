@@ -84,12 +84,12 @@ export default function EmergencyProtocolDetail() {
         />
         <Tabs defaultValue={defaultTab} className="w-full">
           <div className="w-full overflow-x-auto no-scrollbar mb-4">
-            <TabsList className="inline-flex h-auto gap-0.5 bg-secondary p-1 rounded-full">
+            <TabsList className="inline-flex h-auto gap-0 bg-secondary p-1 rounded-full">
               {orderedSections.map(s => (
                 <TabsTrigger
                   key={s.id}
                   value={s.id}
-                  className="shrink-0 text-[11px] px-2.5 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm bg-transparent text-foreground/80 hover:text-foreground transition-colors"
+                  className="shrink-0 text-[11px] px-3 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm bg-transparent text-foreground/80 hover:text-foreground transition-colors"
                 >
                   {s.title}
                 </TabsTrigger>
