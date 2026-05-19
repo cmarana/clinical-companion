@@ -43,8 +43,17 @@ export default function BottomNav() {
               data-tour={tab.path === "/favorites" ? "favorites" : undefined}
               className={cn(
                 "flex flex-col items-center justify-center gap-0.5 flex-1 h-full transition-colors select-none",
-                active ? "text-primary" : "text-muted-foreground",
-                tab.path === "/duty" && "text-destructive"
+                tab.path === "/emergency"
+                  ? active
+                    ? "text-destructive"
+                    : "text-destructive/60"
+                  : tab.path === "/duty"
+                    ? active
+                      ? "text-muted-foreground"
+                      : "text-muted-foreground/60"
+                    : active
+                      ? "text-primary"
+                      : "text-muted-foreground"
               )}
             >
               <tab.icon size={20} strokeWidth={active ? 2.5 : 2} />
