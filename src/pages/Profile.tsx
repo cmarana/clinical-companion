@@ -772,6 +772,11 @@ export default function Profile() {
             </p>
           </div>
 
+          {/* ── Segurança (2FA) ── */}
+          <Section icon={ShieldCheck2FA} title="Segurança" index={4}>
+            <TwoFactorSettings />
+          </Section>
+
           {/* ── Account info ── */}
           <Section icon={Shield} title="Conta" index={5}>
             <div className="space-y-2.5">
