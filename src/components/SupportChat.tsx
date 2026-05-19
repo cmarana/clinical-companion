@@ -249,8 +249,13 @@ export default function SupportChat() {
               {/* Header */}
               <div className="flex items-center justify-between px-4 py-3 border-b border-border bg-primary/5">
                 <div className="flex items-center gap-2">
-                  {view !== "chat" && (
-                    <button onClick={() => setView("chat")} className="p-1 rounded hover:bg-muted">
+                  {view !== "triage" && view !== "chat" && (
+                    <button onClick={goBackFromSub} className="p-1 rounded hover:bg-muted">
+                      <ArrowLeft size={16} />
+                    </button>
+                  )}
+                  {view === "chat" && messages.length > 0 && (
+                    <button onClick={() => setView("triage")} className="p-1 rounded hover:bg-muted" aria-label="Nova dúvida">
                       <ArrowLeft size={16} />
                     </button>
                   )}
@@ -258,17 +263,17 @@ export default function SupportChat() {
                   <span className="font-heading font-bold text-sm">{viewTitle}</span>
                 </div>
                 <div className="flex items-center gap-1">
-                  {view === "chat" && (
-                    <>
-                      <Button variant="ghost" size="sm" onClick={() => setView("feedback")} className="gap-1 text-xs h-7 px-2">
-                        <MessageSquarePlus size={13} />
-                        Feedback
-                      </Button>
-                      <Button variant="ghost" size="sm" onClick={() => setView("email")} className="gap-1 text-xs h-7 px-2">
-                        <Mail size={13} />
-                        E-mail
-                      </Button>
-                    </>
+                  {view === "chat" && showContactShortcuts && (
+                    <Button variant="ghost" size="sm" onClick={() => setView("email")} className="gap-1 text-xs h-7 px-2">
+                      <Mail size={13} />
+                      Humano
+                    </Button>
+                  )}
+                  {(view === "chat" || view === "triage") && (
+                    <Button variant="ghost" size="sm" onClick={() => setView("feedback")} className="gap-1 text-xs h-7 px-2">
+                      <MessageSquarePlus size={13} />
+                      Feedback
+                    </Button>
                   )}
                   <button onClick={() => setOpen(false)} className="p-1.5 rounded-lg hover:bg-muted text-muted-foreground">
                     <X size={16} />
@@ -277,29 +282,70 @@ export default function SupportChat() {
               </div>
               <OfflineBadge message="O chat e envio de mensagens requerem conexão" />
 
-              {view === "chat" ? (
+              {view === "triage" ? (
+                <div className="flex-1 overflow-y-auto p-4 space-y-4" style={{ paddingBottom: "max(env(safe-area-inset-bottom, 0px), 16px)" }}>
+                  <div className="text-center space-y-1">
+                    <MessageCircleQuestion size={32} className="mx-auto text-primary" />
+                    <h3 className="font-heading font-bold text-base text-foreground">Como posso ajudar?</h3>
+                    <p className="text-xs text-muted-foreground">Nossa IA tenta resolver primeiro. Se não conseguir, conectamos você com nossa equipe.</p>
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-semibold text-foreground mb-2 block">1. Qual a categoria da sua dúvida? <span className="text-destructive">*</span></label>
+                    <div className="grid grid-cols-2 gap-2">
+                      {triageCategories.map(c => {
+                        const Icon = c.icon;
+                        const active = triageCategory === c.id;
+                        return (
+                          <button
+                            key={c.id}
+                            onClick={() => setTriageCategory(c.id)}
+                            className={`flex items-center gap-2 px-3 py-2.5 rounded-xl text-xs font-medium border text-left transition-all ${
+                              active
+                                ? "bg-primary/10 border-primary text-foreground ring-1 ring-primary"
+                                : "bg-muted/40 border-border text-muted-foreground hover:bg-muted"
+                            }`}
+                          >
+                            <Icon size={14} className={active ? "text-primary" : ""} />
+                            {c.label}
+                          </button>
+                        );
+                      })}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label className="text-xs font-semibold text-foreground mb-2 block">2. Descreva sua dúvida em detalhes <span className="text-destructive">*</span></label>
+                    <textarea
+                      value={triageDescription}
+                      onChange={e => setTriageDescription(e.target.value)}
+                      rows={4}
+                      placeholder="Ex.: Como faço para cancelar minha assinatura e pedir reembolso?"
+                      className="w-full rounded-xl bg-muted/50 border border-border px-3 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40 resize-none"
+                    />
+                    <p className="text-[10px] text-muted-foreground mt-1">Mínimo 10 caracteres. Não inclua dados de pacientes.</p>
+                  </div>
+
+                  <Button
+                    onClick={handleStartTriage}
+                    disabled={!triageCategory || triageDescription.trim().length < 10}
+                    className="w-full gap-2"
+                  >
+                    <Bot size={16} />
+                    Perguntar à IA de Suporte
+                  </Button>
+
+                  <button
+                    onClick={() => { setOpen(false); navigate("/help"); }}
+                    className="w-full text-xs text-primary hover:underline text-center"
+                  >
+                    Ver Central de Ajuda completa →
+                  </button>
+                </div>
+              ) : view === "chat" ? (
                 <>
                   {/* Messages */}
                   <div ref={scrollRef} className="flex-1 overflow-y-auto px-4 py-3 space-y-3">
-                    {messages.length === 0 && (
-                      <div className="text-center py-8 space-y-3">
-                        <MessageCircleQuestion size={36} className="mx-auto text-primary/40" />
-                        <p className="text-sm text-muted-foreground">
-                          Olá! Como posso ajudar?
-                        </p>
-                        <div className="flex flex-wrap gap-2 justify-center">
-                          {["Como usar a IA Clínica?", "Como cancelar assinatura?", "O app funciona offline?"].map((q) => (
-                            <button
-                              key={q}
-                              onClick={() => sendMessage(q)}
-                              className="text-xs px-3 py-1.5 rounded-full bg-primary/10 text-primary hover:bg-primary/20 transition-colors"
-                            >
-                              {q}
-                            </button>
-                          ))}
-                        </div>
-                      </div>
-                    )}
                     {messages.map((m, i) => (
                       <div key={i} className={`flex ${m.role === "user" ? "justify-end" : "justify-start"}`}>
                         <div className={`max-w-[85%] rounded-2xl px-3.5 py-2.5 text-sm ${
@@ -322,7 +368,19 @@ export default function SupportChat() {
                         </div>
                       </div>
                     )}
+                    {!isLoading && aiTriedAtLeastOnce && messages[messages.length - 1]?.role === "assistant" && (
+                      <div className="pt-1">
+                        <div className="rounded-xl border border-border bg-muted/30 p-3 text-center space-y-2">
+                          <p className="text-xs text-muted-foreground">Não resolveu sua dúvida?</p>
+                          <Button size="sm" variant="outline" onClick={() => setView("email")} className="gap-1.5 text-xs h-8">
+                            <Mail size={13} />
+                            Falar com atendimento humano
+                          </Button>
+                        </div>
+                      </div>
+                    )}
                   </div>
+
 
                   {/* Input */}
                   <div className="border-t border-border p-3 flex gap-2" style={{ paddingBottom: "max(env(safe-area-inset-bottom, 0px), 12px)" }}>
