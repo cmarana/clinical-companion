@@ -5,6 +5,7 @@ import {
   Heart, Brain, Activity, Wind, Bone, Baby, Stethoscope, Bug, Pill, Droplets,
   ShieldAlert, ScanLine, AlertTriangle, Sparkles, Eye, Ear, Hand, FlaskConical,
   ClipboardList, Users, Flame, FileText, Layers, Search, ChevronRight, Beaker,
+  Soup, MessagesSquare,
 } from "lucide-react";
 import TopBar from "@/components/TopBar";
 import { Input } from "@/components/ui/input";
