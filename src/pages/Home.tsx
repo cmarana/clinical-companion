@@ -92,6 +92,7 @@ export default function Home() {
   const [fullName, setFullName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [isAdmin, setIsAdmin] = useState(false);
+  const [leavingMode, setLeavingMode] = useState<string | null>(null);
 
   useEffect(() => {
     if (!user) { setIsAdmin(false); return; }
@@ -102,7 +103,11 @@ export default function Home() {
   const go = useCallback((path: string, label: string) => {
     hapticLight();
     trackModule(path, label);
-    navigate(path);
+    setLeavingMode(path);
+    setTimeout(() => {
+      navigate(path);
+      setLeavingMode(null);
+    }, 280);
   }, [navigate, trackModule]);
 
   useEffect(() => {
