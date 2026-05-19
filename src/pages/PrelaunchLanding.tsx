@@ -227,7 +227,7 @@ export default function PrelaunchLanding() {
             </Link>
             <Button
               onClick={() => scrollTo("cadastro")}
-              className="bg-primary hover:bg-primary text-[#0A0F1F] font-semibold rounded-full px-4 sm:px-5"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-4 sm:px-5"
             >
               Cadastrar
             </Button>
@@ -267,7 +267,7 @@ export default function PrelaunchLanding() {
                 <Button
                   size="lg"
                   onClick={() => scrollTo("cadastro")}
-                  className="bg-primary hover:bg-primary text-[#0A0F1F] font-semibold rounded-full px-6"
+                  className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-6"
                 >
                   Quero me cadastrar para o lançamento
                   <ArrowRight className="h-4 w-4" />
@@ -458,7 +458,7 @@ export default function PrelaunchLanding() {
               {/* Chat preview */}
               <div className="sm:col-span-2 rounded-2xl border border-white/10 bg-[#0B1426] p-5 mt-2">
                 <div className="flex items-start gap-3">
-                  <div className="h-9 w-9 rounded-full bg-gradient-to-br from-primary to-primary flex items-center justify-center text-white text-sm font-semibold">DC</div>
+                  <div className="h-9 w-9 rounded-full bg-gradient-to-br from-primary to-primary flex items-center justify-center text-primary-foreground text-sm font-semibold">DC</div>
                   <div className="flex-1">
                     <div className="text-xs text-slate-400">Você · agora</div>
                     <div className="mt-1 rounded-2xl rounded-tl-sm bg-white/5 px-4 py-2.5 text-sm">
@@ -704,7 +704,7 @@ export default function PrelaunchLanding() {
                   <div className="sm:col-span-2 mt-2">
                     <Button
                       type="submit" disabled={submitting}
-                      className="w-full bg-primary hover:bg-primary text-[#0A0F1F] font-semibold rounded-full h-11"
+                      className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full h-11"
                     >
                       {submitting ? "Enviando…" : "Quero receber benefícios no lançamento"}
                     </Button>
@@ -734,7 +734,7 @@ export default function PrelaunchLanding() {
             </p>
             <Button
               size="lg" onClick={() => scrollTo("cadastro")}
-              className="mt-8 bg-primary hover:bg-primary text-[#0A0F1F] font-semibold rounded-full px-7"
+              className="mt-8 bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-full px-7"
             >
               Quero receber benefícios no lançamento
               <ArrowRight className="h-4 w-4" />
