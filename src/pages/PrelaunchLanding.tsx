@@ -500,13 +500,13 @@ export default function PrelaunchLanding() {
                   onClick={() => setActiveGroup(g.id)}
                   className={`group inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition ${
                     active
-                      ? "bg-primary text-[#0A0F1F] shadow-lg shadow-primary/20"
+                      ? "bg-primary text-primary-foreground shadow-lg shadow-primary/20"
                       : "bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10"
                   }`}
                 >
                   <g.icon className="h-3.5 w-3.5" />
                   {g.title}
-                  <span className={`text-[10px] rounded-full px-1.5 py-0.5 ${active ? "bg-[#0A0F1F]/20" : "bg-white/10"}`}>
+                  <span className={`text-[10px] rounded-full px-1.5 py-0.5 ${active ? "bg-primary-foreground/20" : "bg-white/10"}`}>
                     {g.tools.length}
                   </span>
                 </button>
