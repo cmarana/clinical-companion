@@ -7,40 +7,40 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 217 33% 17%;
-    --card: 0 0% 100%;
+    --background: 212 42% 95%;
+    --foreground: 212 64% 14%;
+    --card: 212 42% 95%;
     --card-foreground: 217 33% 17%;
-    --popover: 0 0% 100%;
+    --popover: 212 42% 95%;
     --popover-foreground: 217 33% 17%;
-    --primary: 213 94% 44%;
+    --primary: 212 72% 28%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96%;
+    --secondary: 212 36% 90%;
     --secondary-foreground: 217 33% 17%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 213 94% 94%;
-    --accent-foreground: 213 94% 44%;
-    --destructive: 0 84% 60%;
+    --muted: 212 36% 90%;
+    --muted-foreground: 212 48% 24%;
+    --accent: 212 40% 88%;
+    --accent-foreground: 212 72% 22%;
+    --destructive: 358 58% 38%;
     --destructive-foreground: 0 0% 100%;
-    --destructive-surface: 0 70% 97%;
-    --border: 214 20% 90%;
-    --input: 214 20% 90%;
-    --ring: 213 94% 44%;
+    --destructive-surface: 358 42% 90%;
+    --border: 212 30% 82%;
+    --input: 212 30% 82%;
+    --ring: 212 72% 28%;
     --radius: 0.5rem;
 
-    --sidebar-background: 210 40% 96%;
-    --sidebar-foreground: 215 16% 47%;
-    --sidebar-primary: 217 33% 17%;
+    --sidebar-background: 212 42% 95%;
+    --sidebar-foreground: 212 64% 18%;
+    --sidebar-primary: 212 72% 28%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 210 40% 96%;
-    --sidebar-accent-foreground: 217 33% 17%;
-    --sidebar-border: 214 32% 91%;
-    --sidebar-ring: 213 94% 44%;
+    --sidebar-accent: 212 40% 88%;
+    --sidebar-accent-foreground: 212 72% 22%;
+    --sidebar-border: 212 30% 82%;
+    --sidebar-ring: 212 72% 28%;
 
-    --warning: 38 92% 50%;
-    --warning-foreground: 38 80% 12%;
-    --success: 160 84% 39%;
+    --warning: 358 58% 38%;
+    --warning-foreground: 0 0% 100%;
+    --success: 212 72% 28%;
     --success-foreground: 0 0% 100%;
 
     --font-heading: 'Sora', system-ui, sans-serif;
