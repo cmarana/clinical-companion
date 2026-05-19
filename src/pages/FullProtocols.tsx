@@ -534,7 +534,7 @@ function CategoryPill({
         "shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-2xl text-xs font-heading font-medium transition-all duration-200 active:scale-[0.97]",
         active
           ? "bg-primary text-primary-foreground shadow-sm"
-          : "bg-card text-secondary-foreground shadow-sm hover:bg-accent"
+          : "bg-muted/60 text-foreground ring-1 ring-primary/15 hover:bg-primary/10 hover:ring-primary/30"
       )}
     >
       <span>{label}</span>
