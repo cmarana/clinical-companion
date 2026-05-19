@@ -1,4 +1,3 @@
-import { createRoot } from "react-dom/client";
 import "./index.css";
 import { startVersionWatcher } from "./lib/version-check";
 import { configureNativeStatusBar } from "./lib/native-statusbar";
@@ -129,8 +128,12 @@ const bootstrap = async () => {
 
   try {
     await previewCleanupPromise;
-    const { default: App } = await import("./App.tsx");
-    createRoot(rootEl).render(<App />);
+    const [{ createRoot }, React, { default: App }] = await Promise.all([
+      import("react-dom/client"),
+      import("react"),
+      import("./App.tsx"),
+    ]);
+    createRoot(rootEl).render(React.createElement(App));
     sessionStorage.removeItem("pulso-module-reload-attempted");
     // Signal to the inline pre-React version probe that React is alive,
     // so it defers stale-build handling to the in-app confirmation modal.
