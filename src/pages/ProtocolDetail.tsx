@@ -166,7 +166,7 @@ export default function ProtocolDetail() {
                 <TabsTrigger
                   key={s.id}
                   value={s.id}
-                  className="shrink-0 text-xs px-3.5 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm bg-transparent text-foreground/80 hover:text-foreground transition-colors first:rounded-r-none last:rounded-l-none [&:not(:first-child):not(:last-child)]:rounded-none"
+                  className="shrink-0 text-xs px-3.5 py-1.5 rounded-none first:rounded-l-full last:rounded-r-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm bg-transparent text-foreground/80 hover:text-foreground transition-colors"
                 >
                   {s.title}
                 </TabsTrigger>
@@ -174,7 +174,7 @@ export default function ProtocolDetail() {
               {lockedSections.map((s) => (
                 <span
                   key={s.id}
-                  className="shrink-0 text-xs px-3.5 py-1.5 rounded-full text-muted-foreground opacity-60 cursor-not-allowed"
+                  className="shrink-0 text-xs px-3.5 py-1.5 rounded-none first:rounded-l-full last:rounded-r-full text-muted-foreground opacity-60 cursor-not-allowed"
                 >
                   🔒 {s.title}
                 </span>
