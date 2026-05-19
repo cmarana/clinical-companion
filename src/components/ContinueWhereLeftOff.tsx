@@ -30,6 +30,11 @@ function timeAgo(ts: number): string {
 export default function ContinueWhereLeftOff() {
   const navigate = useNavigate();
   const { history } = useRecentHistory();
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setReady(true), 0);
+    return () => clearTimeout(t);
+  }, []);
 
   const lastProtocols = useMemo(
     () => pickLast(history, (e) => PROTOCOL_TYPES.has(e.type), 2),
