@@ -150,14 +150,14 @@ export const EmergencyChip: React.FC<EmergencyChipProps> = ({
   <button
     type="button"
     onClick={onClick}
-    className="flex items-center gap-1.5 px-3.5 py-2 rounded-full whitespace-nowrap transition-transform active:scale-[0.96] bg-emergency-50 border border-emergency-100 dark:bg-emergency-500/10 dark:border-emergency-500/20 focus:outline-none focus:ring-2 focus:ring-emergency-300"
+    className="flex items-center gap-1.5 px-3.5 py-2 rounded-full whitespace-nowrap transition-transform active:scale-[0.96] bg-destructive/10 border border-destructive/20 focus:outline-none focus:ring-2 focus:ring-ring"
   >
     <Icon
       size={14}
       strokeWidth={2.3}
-      className="text-emergency-500 dark:text-emergency-400"
+      className="text-destructive"
     />
-    <span className="text-[12.5px] font-semibold font-display text-emergency-500 dark:text-emergency-400 tracking-tight">
+    <span className="text-[12.5px] font-semibold font-display text-destructive tracking-tight">
       {label}
     </span>
   </button>
@@ -181,12 +181,12 @@ export const SpecialtyChip: React.FC<SpecialtyChipProps> = ({
   <button
     type="button"
     onClick={onClick}
-    className="flex flex-col items-center gap-2 py-3 rounded-2xl bg-white dark:bg-neutral-800 border border-neutral-100 dark:border-neutral-700 transition-transform active:scale-[0.96] focus:outline-none focus:ring-2 focus:ring-primary-300"
+    className="flex flex-col items-center gap-2 py-3 rounded-2xl bg-card border border-border transition-transform active:scale-[0.96] focus:outline-none focus:ring-2 focus:ring-ring"
   >
-    <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-primary-50 text-primary-500 dark:bg-primary-500/15 dark:text-primary-400">
+    <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary">
       <Icon size={16} strokeWidth={2.2} />
     </div>
-    <span className="text-[10.5px] font-semibold font-display text-neutral-900 dark:text-neutral-50 tracking-tight">
+    <span className="text-[10.5px] font-semibold font-display text-card-foreground tracking-tight">
       {label}
     </span>
   </button>
@@ -206,9 +206,9 @@ export const AICard: React.FC<AICardProps> = ({ title, subtitle, onClick }) => (
   <button
     type="button"
     onClick={onClick}
-    className="w-full flex items-center gap-3 p-3.5 rounded-2xl bg-primary-50 dark:bg-primary-500/10 border border-primary-100 dark:border-primary-500/15 text-left transition-transform active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-primary-300"
+    className="w-full flex items-center gap-3 p-3.5 rounded-2xl bg-primary/10 border border-primary/20 text-left transition-transform active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-ring"
   >
-    <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-primary-500 text-white flex-shrink-0">
+    <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-primary text-primary-foreground flex-shrink-0">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
         <rect x="3" y="11" width="18" height="10" rx="2" />
         <circle cx="12" cy="5" r="2" />
