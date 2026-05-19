@@ -9,7 +9,7 @@ import {
 } from "lucide-react";
 import TopBar from "@/components/TopBar";
 import { Input } from "@/components/ui/input";
-import { fullProtocolCategories } from "@/data/fullProtocols";
+import { fullProtocolCategories } from "@/data/fullProtocols/categories";
 import { fullProtocolMetas } from "@/data/fullProtocols/metadata";
 import { hapticLight } from "@/lib/haptics";
 

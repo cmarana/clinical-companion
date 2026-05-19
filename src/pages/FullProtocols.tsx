@@ -7,7 +7,7 @@ import {
 import { useState, useMemo, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
-import { fullProtocolCategories } from "@/data/fullProtocols";
+import { fullProtocolCategories } from "@/data/fullProtocols/categories";
 import { fullProtocolMetas, type FullProtocolMeta } from "@/data/fullProtocols/metadata";
 import {
   protocolGuidelinesIndex,

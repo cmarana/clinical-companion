@@ -2,7 +2,7 @@ import { useState, useMemo } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { Search, ChevronRight, BookOpen } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { fullProtocolCategories } from "@/data/fullProtocols";
+import { fullProtocolCategories } from "@/data/fullProtocols/categories";
 import { fullProtocolMetas } from "@/data/fullProtocols/metadata";
 import { ScrollArea } from "@/components/ui/scroll-area";
 

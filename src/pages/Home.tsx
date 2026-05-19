@@ -25,9 +25,7 @@ const prefetchRoutes = () => {
     import("@/pages/SearchPage");
     import("@/pages/DutyMode");
     import("@/pages/EmergencyMode");
-    import("@/pages/ClinicalAI");
     import("@/pages/Calculators");
-    import("@/pages/FullProtocols");
   });
 };
 
