@@ -257,7 +257,7 @@ export default function FullProtocols() {
                 className={cn(
                   "flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-[10px] font-heading font-semibold transition-all",
                   sort === opt.id
-                    ? "bg-background text-foreground shadow-sm"
+                    ? "bg-primary text-primary-foreground shadow-sm"
                     : "text-muted-foreground hover:text-foreground"
                 )}
               >
