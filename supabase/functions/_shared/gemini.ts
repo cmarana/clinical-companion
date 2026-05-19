@@ -106,8 +106,9 @@ export async function geminiChat(req: OpenAIRequest): Promise<Response> {
     }
   }
 
-  const url =
-    `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
+  const url = req.stream
+    ? `https://generativelanguage.googleapis.com/v1beta/models/${model}:streamGenerateContent?alt=sse&key=${apiKey}`
+    : `https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent?key=${apiKey}`;
 
   const upstream = await fetch(url, {
     method: "POST",
@@ -123,6 +124,44 @@ export async function geminiChat(req: OpenAIRequest): Promise<Response> {
       JSON.stringify({ error: { message: text || "Erro Gemini API" } }),
       { status: upstream.status, headers: { "Content-Type": "application/json" } },
     );
+  }
+
+  if (req.stream) {
+    const decoder = new TextDecoder();
+    const encoder = new TextEncoder();
+    let buffer = "";
+
+    const transform = new TransformStream({
+      transform(chunk, controller) {
+        buffer += decoder.decode(chunk, { stream: true });
+        let newlineIndex: number;
+        while ((newlineIndex = buffer.indexOf("\n")) !== -1) {
+          const line = buffer.slice(0, newlineIndex).trim();
+          buffer = buffer.slice(newlineIndex + 1);
+          if (!line.startsWith("data:")) continue;
+          const payload = line.slice(5).trim();
+          if (!payload) continue;
+          try {
+            const parsed = JSON.parse(payload);
+            const textContent = (parsed?.candidates?.[0]?.content?.parts ?? [])
+              .map((p: { text?: string }) => p.text ?? "")
+              .join("");
+            if (textContent) {
+              controller.enqueue(encoder.encode(
+                `data: ${JSON.stringify({ choices: [{ delta: { content: textContent } }] })}\n\n`,
+              ));
+            }
+          } catch { /* ignora chunks parciais */ }
+        }
+      },
+      flush(controller) {
+        controller.enqueue(encoder.encode("data: [DONE]\n\n"));
+      },
+    });
+
+    return new Response(upstream.body!.pipeThrough(transform), {
+      headers: { "Content-Type": "text/event-stream" },
+    });
   }
 
   const data = await upstream.json();
@@ -146,15 +185,6 @@ export async function geminiChat(req: OpenAIRequest): Promise<Response> {
 
   const message: any = { role: "assistant", content: textContent || null };
   if (toolCalls.length) message.tool_calls = toolCalls;
-
-  if (req.stream) {
-    const sse =
-      `data: ${JSON.stringify({ choices: [{ delta: { content: textContent } }] })}\n\n` +
-      `data: [DONE]\n\n`;
-    return new Response(sse, {
-      headers: { "Content-Type": "text/event-stream" },
-    });
-  }
 
   const openaiResp = {
     id: "chatcmpl-gemini",
