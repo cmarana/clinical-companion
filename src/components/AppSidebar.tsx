@@ -108,7 +108,7 @@ function FavoritesQuickAccess() {
   return (
     <SidebarGroup>
       <SidebarGroupLabel>
-        <Star className="h-3 w-3 mr-1 text-amber-500" />
+        <Star className="h-3 w-3 mr-1 text-primary" />
         Favoritos Rápidos
       </SidebarGroupLabel>
       <SidebarGroupContent>
@@ -128,7 +128,7 @@ function FavoritesQuickAccess() {
                   tooltip={fav.title}
                   className="text-xs"
                 >
-                  <Star className="h-3 w-3 text-amber-500 fill-amber-500" />
+                  <Star className="h-3 w-3 text-primary fill-primary" />
                   <span className="truncate">{fav.title}</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
