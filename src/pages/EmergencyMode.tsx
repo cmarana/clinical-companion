@@ -1,16 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import TopBar from "@/components/TopBar";
-import { useAuth } from "@/contexts/AuthContext";
-import PremiumPageGuard from "@/components/PremiumPageGuard";
-import { Input } from "@/components/ui/input";
 import { useState, useMemo } from "react";
 import { Search, ChevronRight, ChevronDown } from "lucide-react";
-import { emergencyCategories, allEmergencyProtocols, NEW_EMERGENCY_CATEGORY_IDS } from "@/data/emergency";
+import TopBar from "@/components/TopBar";
+import PremiumPageGuard from "@/components/PremiumPageGuard";
 import SalaVermelha from "@/components/SalaVermelha";
+import { emergencyCategories, allEmergencyProtocols, NEW_EMERGENCY_CATEGORY_IDS } from "@/data/emergency";
 
 function EmergencyModeContent() {
   const navigate = useNavigate();
-  const { subscription } = useAuth();
   const [search, setSearch] = useState("");
   const [openCats, setOpenCats] = useState<Record<string, boolean>>(() =>
     Object.fromEntries(emergencyCategories.map(c => [c.id, true]))
