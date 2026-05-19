@@ -188,13 +188,17 @@
         55%  { opacity: 1; transform: scale(1.08); }
         100% { opacity: 1; transform: scale(1); }
       }
-      @-webkit-keyframes pulso-glow {
-        0%, 100% { opacity: .3; -webkit-transform: scale(1);    transform: scale(1); }
-        50%      { opacity: .9; -webkit-transform: scale(1.12); transform: scale(1.12); }
+      @-webkit-keyframes pulso-heartbeat {
+        0%, 60%, 100% { -webkit-transform: scale(1); transform: scale(1); }
+        15%           { -webkit-transform: scale(1.08); transform: scale(1.08); }
+        30%           { -webkit-transform: scale(.98); transform: scale(.98); }
+        45%           { -webkit-transform: scale(1.04); transform: scale(1.04); }
       }
-      @keyframes pulso-glow {
-        0%, 100% { opacity: .3; transform: scale(1); }
-        50%      { opacity: .9; transform: scale(1.12); }
+      @keyframes pulso-heartbeat {
+        0%, 60%, 100% { transform: scale(1); }
+        15%           { transform: scale(1.08); }
+        30%           { transform: scale(.98); }
+        45%           { transform: scale(1.04); }
       }
       @-webkit-keyframes pulso-fade-in { to { opacity: 1; } }
       @keyframes pulso-fade-in { to { opacity: 1; } }
@@ -210,7 +214,7 @@
       }
 
       @media (prefers-reduced-motion: reduce) {
-        .pulso-icon, .pulso-wordmark, .pulso-tagline, .pulso-ecg, .pulso-ecg-line, .pulso-icon::before {
+        .pulso-icon, .pulso-wordmark, .pulso-tagline, .pulso-ecg, .pulso-ecg-line {
           -webkit-animation: none; animation: none;
           opacity: 1; transform: none; stroke-dashoffset: 0;
         }
