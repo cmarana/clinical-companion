@@ -43,27 +43,26 @@ const emergencyShortcuts = [
 const modes = [
   { label: "Plantão", sub: "Atendimento em tempo real", icon: Activity, path: "/duty", tone: "deep" },
   { label: "Emergência", sub: "Protocolos críticos", icon: Zap, path: "/emergency", tone: "danger" },
-  { label: "Ferramentas", sub: "Calculadoras, bulário, diagnóstico", icon: Wrench, path: "/tools", tone: "soft" },
-  { label: "Especialidades", sub: "Protocolos por área clínica", icon: Stethoscope, path: "/specialties", tone: "soft" },
-  { label: "Estudo", sub: "Flashcards, questões e residência", icon: GraduationCap, path: "/study-dashboard", tone: "soft" },
-  { label: "Prescrições", sub: "Modelos, evoluções e alta", icon: FileText, path: "/prescriptions", tone: "soft" },
+  { label: "Ferramentas", sub: "Calculadoras, bulário, diagnóstico", icon: Wrench, path: "/tools", tone: "deep" },
+  { label: "Especialidades", sub: "Protocolos por área clínica", icon: Stethoscope, path: "/specialties", tone: "deep" },
+  { label: "Estudo", sub: "Flashcards, questões e residência", icon: GraduationCap, path: "/study-dashboard", tone: "deep" },
+  { label: "Prescrições", sub: "Modelos, evoluções e alta", icon: FileText, path: "/prescriptions", tone: "deep" },
 ];
 
-// Paleta única e sóbria: azul dominante. Vermelho só semântico (emergência),
-// roxo só para IA. Modos em variações de azul/branco/navy para unidade visual.
+// Paleta única: azul Plantão dominante. Vermelho APENAS em Emergência (semântico).
+// Texto da Emergência em azul para contrastar com as demais caixas azuis.
 type ToneStyle = {
-  background: string;       // fundo do card
-  iconBg: string;           // pill do ícone
-  iconColor: string;        // cor do ícone
-  titleColor: string;       // título
-  subColor: string;         // subtítulo
-  ring: string;             // borda
-  ecgColor: string;         // cor da linha ECG decorativa
-  accent?: React.ReactNode; // chip/indicador opcional
+  background: string;
+  iconBg: string;
+  iconColor: string;
+  titleColor: string;
+  subColor: string;
+  ring: string;
+  ecgColor: string;
 };
 
 const toneStyles: Record<string, ToneStyle> = {
-  // Plantão — azul profundo, hero secundário
+  // Plantão e demais — mesma tonalidade azul profundo
   deep: {
     background: "linear-gradient(135deg, hsl(212 60% 18%) 0%, hsl(212 70% 26%) 100%)",
     iconBg: "bg-white/15 ring-1 ring-white/25",
@@ -73,25 +72,15 @@ const toneStyles: Record<string, ToneStyle> = {
     ring: "ring-1 ring-white/10",
     ecgColor: "text-white",
   },
-  // Emergência — branco/azul-claro com acento vermelho semântico
+  // Emergência — vermelho semântico com texto azul para contraste
   danger: {
-    background: "hsl(var(--card))",
-    iconBg: "bg-destructive/10 ring-1 ring-destructive/25",
-    iconColor: "text-destructive",
-    titleColor: "text-foreground",
-    subColor: "text-muted-foreground",
-    ring: "ring-1 ring-destructive/20",
-    ecgColor: "text-destructive",
-  },
-  // Demais — azul suave, ícone primary, título navy
-  soft: {
-    background: "hsl(212 100% 97%)",
-    iconBg: "bg-primary/10 ring-1 ring-primary/20",
+    background: "linear-gradient(135deg, hsl(0 75% 45%) 0%, hsl(0 80% 55%) 100%)",
+    iconBg: "bg-white ring-1 ring-white/40",
     iconColor: "text-primary",
-    titleColor: "text-foreground",
-    subColor: "text-muted-foreground",
-    ring: "ring-1 ring-primary/10",
-    ecgColor: "text-primary",
+    titleColor: "text-white",
+    subColor: "text-white/85",
+    ring: "ring-1 ring-white/15",
+    ecgColor: "text-white",
   },
 };
 
