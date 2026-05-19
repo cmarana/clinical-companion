@@ -7,16 +7,16 @@
 
 // ============== Gradientes ==============
 export const GRADIENT_DEEP_BLUE =
-  "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)";
+  "linear-gradient(135deg, hsl(212 64% 12%) 0%, hsl(212 72% 24%) 100%)";
 
 export const GRADIENT_DEEP_BLUE_SOFT =
-  "linear-gradient(135deg, hsl(212 60% 18%) 0%, hsl(212 70% 26%) 100%)";
+  "linear-gradient(135deg, hsl(212 58% 14%) 0%, hsl(212 68% 22%) 100%)";
 
 export const GRADIENT_BRIGHT_BLUE =
-  "linear-gradient(135deg, hsl(212 90% 28%) 0%, hsl(212 88% 38%) 50%, hsl(212 86% 48%) 100%)";
+  "linear-gradient(135deg, hsl(212 66% 13%) 0%, hsl(212 76% 22%) 58%, hsl(212 70% 28%) 100%)";
 
 export const GRADIENT_DANGER =
-  "linear-gradient(135deg, hsl(355 52% 20%) 0%, hsl(358 48% 28%) 55%, hsl(0 45% 34%) 100%)";
+  "linear-gradient(135deg, hsl(355 46% 17%) 0%, hsl(358 44% 24%) 58%, hsl(0 42% 29%) 100%)";
 
 // Aliases retrocompatíveis
 export const PULSO_BG = GRADIENT_DEEP_BLUE;
