@@ -23,6 +23,7 @@ import type { RagSourceChunk } from "@/components/ClinicalResponseCards";
 import { motion } from "framer-motion";
 import OfflineBadge from "@/components/OfflineBadge";
 import { AiUsageBadge } from "@/components/AiUsageBadge";
+import { GRADIENT_DEEP_BLUE_SOFT } from "@/lib/design-tokens";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -729,7 +730,7 @@ function ClinicalAIContent() {
               className="relative w-full max-w-sm overflow-hidden rounded-2xl text-left text-white shadow-md ring-1 ring-white/10 mb-5"
               style={{
                 background:
-                  "linear-gradient(135deg, hsl(212 60% 18%) 0%, hsl(212 70% 26%) 100%)",
+                  GRADIENT_DEEP_BLUE_SOFT,
               }}
             >
               <div className="absolute -bottom-10 -right-6 w-32 h-32 rounded-full bg-white/10 blur-2xl" />

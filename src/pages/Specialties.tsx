@@ -2,6 +2,7 @@ import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
+import { GRADIENT_DEEP_BLUE } from "@/lib/design-tokens";
   Heart, Brain, Activity, Wind, Bone, Baby, Stethoscope, Bug, Pill, Droplets,
   ShieldAlert, ScanLine, AlertTriangle, Sparkles, Eye, Ear, Hand, FlaskConical,
   ClipboardList, Users, Flame, FileText, Layers, Search, ChevronRight, Beaker,
@@ -111,7 +112,7 @@ export default function Specialties() {
           whileTap={{ scale: 0.99 }}
           onClick={() => { hapticLight(); navigate("/full-protocols"); }}
           className="relative overflow-hidden w-full flex items-center gap-3 p-3.5 rounded-2xl text-white shadow-md ring-1 ring-white/15 transition-all text-left mb-4"
-          style={{ background: "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)" }}
+          style={{ background: GRADIENT_DEEP_BLUE }}
         >
           <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-white/10 blur-2xl pointer-events-none" />
           <div className="relative flex items-center justify-center w-9 h-9 rounded-xl bg-white/18 ring-1 ring-white/30 shrink-0">
@@ -137,7 +138,7 @@ export default function Specialties() {
                 whileTap={{ scale: 0.97 }}
                 onClick={() => go(c.id)}
                 className="relative overflow-hidden p-3 rounded-2xl text-left text-white shadow-md ring-1 ring-white/15 transition-all"
-                style={{ background: "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)" }}
+                style={{ background: GRADIENT_DEEP_BLUE }}
               >
                 <svg
                   className="absolute inset-x-0 bottom-0 w-full h-9 opacity-[0.18] pointer-events-none text-white"

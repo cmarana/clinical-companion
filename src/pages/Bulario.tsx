@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import type { MedicationImportItem } from "@/data/medicationsData";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
+import { GRADIENT_DEEP_BLUE } from "@/lib/design-tokens";
 
 // Lazy-load the heavy medications data (45K+ lines) only when needed
 let _cachedMedsData: MedicationImportItem[] | null = null;
@@ -154,7 +155,7 @@ export default function Bulario() {
               key={m.id}
               onClick={() => navigate(`/bulario/${m.id}`)}
               className="cursor-pointer relative overflow-hidden rounded-2xl text-white shadow-md ring-1 ring-white/15 hover:shadow-lg active:scale-[0.98] transition-all"
-              style={{ background: "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)" }}
+              style={{ background: GRADIENT_DEEP_BLUE }}
             >
               <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-white/10 blur-2xl pointer-events-none" />
               <div className="relative flex items-center gap-3 px-3.5 py-3">

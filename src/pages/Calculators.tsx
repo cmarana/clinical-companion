@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calculator, Activity, Brain, Droplets, Heart, Scale, Baby, Stethoscope, Syringe, Search } from "lucide-react";
 import {
+import { GRADIENT_DEEP_BLUE } from "@/lib/design-tokens";
   HASBLEDCalculator, PERCCalculator, GRACECalculator, BishopCalculator, RansonCalculator,
   NEWSCalculator, MEWSCalculator, RoxIndexCalculator, SIRS_Calculator, MASCCCalculator,
   GlasgowBlatchfordCalculator, WellsTVPCalculator, CentorCalculator, ABCD2Calculator,
@@ -981,7 +982,7 @@ export default function Calculators() {
               className={`text-left relative overflow-hidden rounded-2xl text-white shadow-md ring-1 ring-white/15 hover:shadow-lg active:scale-[0.98] transition-all ${
                 activeCalc === calc.id ? "ring-2 ring-white/60" : ""
               }`}
-              style={{ background: "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)" }}
+              style={{ background: GRADIENT_DEEP_BLUE }}
               aria-pressed={activeCalc === calc.id}
             >
               <div className="absolute -top-6 -right-6 w-16 h-16 rounded-full bg-white/10 blur-2xl pointer-events-none" />
