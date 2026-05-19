@@ -46,41 +46,45 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
 
   const canGoBack = showBack ?? location.pathname !== "/";
 
+  const isEmergency = location.pathname.startsWith("/emergency");
+  const headerGradient = isEmergency ? GRADIENT_DANGER : GRADIENT_DEEP_BLUE;
+
   return (
     <>
       <header
         className={cn(
-          "sticky top-0 z-40 border-b border-border bg-card/95 backdrop-blur-md safe-area-top",
+          "sticky top-0 z-40 border-b border-white/10 safe-area-top text-white",
           className
         )}
+        style={{ background: headerGradient }}
       >
         <div className="flex items-center h-12 px-3 gap-2">
         {canGoBack && (
-          <button onClick={() => { hapticLight(); navigate(-1); }} className="p-1.5 -ml-1 rounded-md hover:bg-accent active:scale-90 transition-all text-foreground">
+          <button onClick={() => { hapticLight(); navigate(-1); }} className="p-1.5 -ml-1 rounded-md hover:bg-white/15 active:scale-90 transition-all text-white">
             <ArrowLeft size={20} />
           </button>
         )}
         {title && (
-          <h1 className="font-heading font-semibold text-sm truncate flex-1">{title}</h1>
+          <h1 className="font-heading font-semibold text-sm truncate flex-1 text-white">{title}</h1>
         )}
         {!title && <div className="flex-1" />}
         {rightContent}
         {offline && (
-          <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-destructive/15 border border-destructive/25 animate-in fade-in">
-            <WifiOff size={12} className="text-destructive" />
-            <span className="text-[10px] font-heading font-semibold text-destructive">Offline</span>
+          <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/15 border border-white/25 animate-in fade-in">
+            <WifiOff size={12} className="text-white" />
+            <span className="text-[10px] font-heading font-semibold text-white">Offline</span>
           </div>
         )}
         <button
           onClick={() => { hapticLight(); toggleTheme(); }}
-          className="p-1.5 rounded-md hover:bg-accent transition-colors text-muted-foreground"
+          className="p-1.5 rounded-md hover:bg-white/15 transition-colors text-white/85"
           title={theme === "light" ? "Modo Escuro" : theme === "dark" ? "Plantão Noturno" : "Modo Claro"}
         >
           {theme === "oled" ? <Eclipse size={18} /> : theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
         </button>
         <button
           onClick={() => setShowSettings(!showSettings)}
-          className="p-1.5 rounded-md hover:bg-accent transition-colors text-muted-foreground"
+          className="p-1.5 rounded-md hover:bg-white/15 transition-colors text-white/85"
         >
           <Settings size={18} />
         </button>
