@@ -182,10 +182,14 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
           // Reivindica o dispositivo no SIGNED_IN (caso login social, ou retorno após confirmação)
           if (event === "SIGNED_IN") {
             setTimeout(() => {
-              supabase.rpc("claim_active_device", {
-                _device_id: getDeviceId(),
-                _device_label: getDeviceLabel(),
-              }).catch(() => {});
+              (async () => {
+                try {
+                  await supabase.rpc("claim_active_device", {
+                    _device_id: getDeviceId(),
+                    _device_label: getDeviceLabel(),
+                  });
+                } catch { /* noop */ }
+              })();
             }, 0);
           }
           // Verifica dispositivo ativo e assina mudanças em tempo real
