@@ -279,45 +279,45 @@ export default function Home() {
         <motion.button
           whileTap={{ scale: 0.99 }}
           onClick={() => go("/clinical-ai", "Dra. Clara")}
-          className="relative w-full overflow-hidden rounded-2xl text-left text-white shadow-lg ring-1 ring-white/10"
+          className="relative w-full overflow-hidden rounded-2xl text-left text-white shadow-md ring-1 ring-white/10"
           style={{
             background:
-              "linear-gradient(120deg, hsl(220 90% 56%) 0%, hsl(255 80% 60%) 100%)",
+              "linear-gradient(135deg, hsl(212 60% 18%) 0%, hsl(212 70% 26%) 100%)",
           }}
         >
-          <div className="absolute -bottom-12 -right-8 w-44 h-44 rounded-full bg-white/10 blur-2xl" />
-          <div className="relative p-5 flex items-center gap-4">
-            <div className="flex items-center justify-center w-12 h-12 rounded-2xl bg-white/20 backdrop-blur-sm shrink-0">
-              <Bot size={22} />
+          <div className="absolute -bottom-10 -right-6 w-32 h-32 rounded-full bg-white/10 blur-2xl" />
+          <div className="relative px-4 py-3 flex items-center gap-3">
+            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/15 ring-1 ring-white/25 shrink-0">
+              <Bot size={18} />
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-heading font-bold text-[15px] leading-tight">
+              <h3 className="font-heading font-bold text-[14px] leading-tight">
                 Dra. Clara — IA Clínica
               </h3>
-              <p className="text-[12px] text-white/80 mt-0.5 leading-snug">
+              <p className="text-[11.5px] text-white/75 mt-0.5 leading-snug">
                 Pergunte, analise casos e interprete exames.
               </p>
             </div>
-            <ArrowRight size={16} className="shrink-0 text-white/80" />
-          </div>
-          <div className="relative px-5 pb-4 flex gap-2 flex-wrap">
-            {[
-              { label: "Chat", icon: MessageSquareText, path: "/clinical-ai" },
-              { label: "Caso", icon: FlaskConical, path: "/case-simulator" },
-              { label: "Exames", icon: ScanLine, path: "/clinical-ai?tab=image" },
-            ].map((c) => (
-              <span
-                key={c.label}
-                onClick={(e) => { e.stopPropagation(); go(c.path, `IA · ${c.label}`); }}
-                className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg bg-white/15 hover:bg-white/25 text-[11px] font-medium backdrop-blur-sm transition-colors cursor-pointer"
-              >
-                <c.icon size={12} />
-                {c.label}
-              </span>
-            ))}
+            <div className="flex gap-1.5 shrink-0">
+              {[
+                { label: "Chat", icon: MessageSquareText, path: "/clinical-ai" },
+                { label: "Caso", icon: FlaskConical, path: "/case-simulator" },
+                { label: "Exames", icon: ScanLine, path: "/clinical-ai?tab=image" },
+              ].map((c) => (
+                <span
+                  key={c.label}
+                  onClick={(e) => { e.stopPropagation(); go(c.path, `IA · ${c.label}`); }}
+                  title={c.label}
+                  className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-white/15 hover:bg-white/25 backdrop-blur-sm transition-colors cursor-pointer"
+                >
+                  <c.icon size={13} />
+                </span>
+              ))}
+            </div>
           </div>
         </motion.button>
       </section>
+
 
       {/* ── ESCOLHA SEU MODO ───────────────────────────── */}
       <section className="mt-8 px-4">
