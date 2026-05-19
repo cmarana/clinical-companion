@@ -359,7 +359,7 @@ export default function FullProtocols() {
                 "flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-[10px] font-heading font-semibold transition-all ring-1",
                 showFavOnly
                   ? "bg-primary/15 text-primary ring-primary/30"
-                  : "bg-card text-muted-foreground ring-border hover:text-foreground"
+                  : "bg-muted/60 text-muted-foreground ring-primary/15 hover:text-foreground hover:ring-primary/30"
               )}
               title="Mostrar somente favoritos"
             >
