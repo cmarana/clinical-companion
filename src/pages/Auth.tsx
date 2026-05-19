@@ -339,6 +339,20 @@ export default function Auth() {
             className="h-12 rounded-xl bg-muted/50 border-border/50 focus:bg-background transition-colors disabled:opacity-60"
           />
         )}
+        {!resetMode && !isLogin && (
+          <Input
+            type="text"
+            placeholder="CPF (apenas um cadastro por CPF)"
+            value={cpf}
+            onChange={(e) => { setCpf(maskCpf(e.target.value)); if (errorMsg) setErrorMsg(null); }}
+            required
+            disabled={loading}
+            inputMode="numeric"
+            autoComplete="off"
+            maxLength={14}
+            className="h-12 rounded-xl bg-muted/50 border-border/50 focus:bg-background transition-colors disabled:opacity-60"
+          />
+        )}
         <Input
           type="email"
           placeholder="E-mail"
