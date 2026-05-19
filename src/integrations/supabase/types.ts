@@ -1354,6 +1354,9 @@ export type Database = {
       profiles: {
         Row: {
           academic_status: string
+          active_device_id: string
+          active_device_label: string
+          active_device_updated_at: string
           avatar_url: string
           birth_date: string | null
           city: string
@@ -1385,6 +1388,9 @@ export type Database = {
         }
         Insert: {
           academic_status?: string
+          active_device_id?: string
+          active_device_label?: string
+          active_device_updated_at?: string
           avatar_url?: string
           birth_date?: string | null
           city?: string
@@ -1416,6 +1422,9 @@ export type Database = {
         }
         Update: {
           academic_status?: string
+          active_device_id?: string
+          active_device_label?: string
+          active_device_updated_at?: string
           avatar_url?: string
           birth_date?: string | null
           city?: string
@@ -1999,6 +2008,11 @@ export type Database = {
       [_ in never]: never
     }
     Functions: {
+      claim_active_device: {
+        Args: { _device_id: string; _device_label: string }
+        Returns: undefined
+      }
+      cpf_exists: { Args: { _cpf: string }; Returns: boolean }
       create_institution_with_admin: {
         Args: { _description?: string; _name: string }
         Returns: string
