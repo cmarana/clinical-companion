@@ -57,6 +57,10 @@ export default function ContinueWhereLeftOff() {
 
   const hasAny = lastProtocols.length > 0 || !!lastMedication || pendingFlashcards > 0;
 
+  if (!ready) {
+    return <ListSkeleton count={2} />;
+  }
+
   if (!hasAny) {
     return (
       <div className="rounded-2xl bg-card border border-border/60 p-5 text-center space-y-2">
