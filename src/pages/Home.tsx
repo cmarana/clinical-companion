@@ -41,43 +41,57 @@ const emergencyShortcuts = [
 ];
 
 const modes = [
-  { label: "Plantão", sub: "Atendimento em tempo real", icon: Activity, path: "/duty", tone: "primary" },
+  { label: "Plantão", sub: "Atendimento em tempo real", icon: Activity, path: "/duty", tone: "deep" },
   { label: "Emergência", sub: "Protocolos críticos", icon: Zap, path: "/emergency", tone: "danger" },
-  { label: "Ferramentas", sub: "Calculadoras, bulário, diagnóstico", icon: Wrench, path: "/tools", tone: "slate" },
-  { label: "Especialidades", sub: "Protocolos por área clínica", icon: Stethoscope, path: "/specialties", tone: "emerald" },
-  { label: "Estudo", sub: "Flashcards, questões e residência", icon: GraduationCap, path: "/study-dashboard", tone: "amber" },
-  { label: "Prescrições", sub: "Modelos, evoluções e alta", icon: FileText, path: "/prescriptions", tone: "violet" },
+  { label: "Ferramentas", sub: "Calculadoras, bulário, diagnóstico", icon: Wrench, path: "/tools", tone: "soft" },
+  { label: "Especialidades", sub: "Protocolos por área clínica", icon: Stethoscope, path: "/specialties", tone: "soft" },
+  { label: "Estudo", sub: "Flashcards, questões e residência", icon: GraduationCap, path: "/study-dashboard", tone: "soft" },
+  { label: "Prescrições", sub: "Modelos, evoluções e alta", icon: FileText, path: "/prescriptions", tone: "soft" },
 ];
 
-// Cada modo herda a mesma linguagem visual do hero Modo Plantão:
-// gradiente sólido + linha ECG decorativa + glow sutil + texto branco.
-// Apenas a paleta do gradiente muda por tom, mantendo coerência cromática
-// com o restante do app (primary/destructive/etc.) e bom contraste em
-// light/dark/OLED.
-const toneStyles: Record<string, { gradient: string; glow: string }> = {
-  primary: {
-    gradient: "linear-gradient(135deg, hsl(212 90% 28%) 0%, hsl(212 88% 38%) 50%, hsl(212 86% 48%) 100%)",
-    glow: "shadow-primary/25",
+// Paleta única e sóbria: azul dominante. Vermelho só semântico (emergência),
+// roxo só para IA. Modos em variações de azul/branco/navy para unidade visual.
+type ToneStyle = {
+  background: string;       // fundo do card
+  iconBg: string;           // pill do ícone
+  iconColor: string;        // cor do ícone
+  titleColor: string;       // título
+  subColor: string;         // subtítulo
+  ring: string;             // borda
+  ecgColor: string;         // cor da linha ECG decorativa
+  accent?: React.ReactNode; // chip/indicador opcional
+};
+
+const toneStyles: Record<string, ToneStyle> = {
+  // Plantão — azul profundo, hero secundário
+  deep: {
+    background: "linear-gradient(135deg, hsl(212 60% 18%) 0%, hsl(212 70% 26%) 100%)",
+    iconBg: "bg-white/15 ring-1 ring-white/25",
+    iconColor: "text-white",
+    titleColor: "text-white",
+    subColor: "text-white/75",
+    ring: "ring-1 ring-white/10",
+    ecgColor: "text-white",
   },
+  // Emergência — branco/azul-claro com acento vermelho semântico
   danger: {
-    gradient: "linear-gradient(135deg, hsl(0 72% 32%) 0%, hsl(0 75% 42%) 50%, hsl(0 80% 55%) 100%)",
-    glow: "shadow-destructive/25",
+    background: "hsl(var(--card))",
+    iconBg: "bg-destructive/10 ring-1 ring-destructive/25",
+    iconColor: "text-destructive",
+    titleColor: "text-foreground",
+    subColor: "text-muted-foreground",
+    ring: "ring-1 ring-destructive/20",
+    ecgColor: "text-destructive",
   },
-  slate: {
-    gradient: "linear-gradient(135deg, hsl(215 25% 22%) 0%, hsl(215 22% 32%) 50%, hsl(215 20% 42%) 100%)",
-    glow: "shadow-slate-700/25",
-  },
-  emerald: {
-    gradient: "linear-gradient(135deg, hsl(160 80% 20%) 0%, hsl(158 75% 30%) 50%, hsl(156 70% 40%) 100%)",
-    glow: "shadow-emerald-700/25",
-  },
-  amber: {
-    gradient: "linear-gradient(135deg, hsl(28 85% 32%) 0%, hsl(32 88% 42%) 50%, hsl(38 92% 52%) 100%)",
-    glow: "shadow-amber-600/25",
-  },
-  violet: {
-    gradient: "linear-gradient(135deg, hsl(265 60% 30%) 0%, hsl(262 65% 42%) 50%, hsl(258 70% 55%) 100%)",
-    glow: "shadow-violet-600/25",
+  // Demais — azul suave, ícone primary, título navy
+  soft: {
+    background: "hsl(212 100% 97%)",
+    iconBg: "bg-primary/10 ring-1 ring-primary/20",
+    iconColor: "text-primary",
+    titleColor: "text-foreground",
+    subColor: "text-muted-foreground",
+    ring: "ring-1 ring-primary/10",
+    ecgColor: "text-primary",
   },
 };
 
