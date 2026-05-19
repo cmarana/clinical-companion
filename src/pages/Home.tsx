@@ -64,22 +64,22 @@ type ToneStyle = {
 const toneStyles: Record<string, ToneStyle> = {
   // Plantão e demais — mesma tonalidade azul profundo
   deep: {
-    background: "linear-gradient(135deg, hsl(212 60% 18%) 0%, hsl(212 70% 26%) 100%)",
-    iconBg: "bg-white/15 ring-1 ring-white/25",
+    background: "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)",
+    iconBg: "bg-white/18 ring-1 ring-white/30",
     iconColor: "text-white",
-    titleColor: "text-white",
-    subColor: "text-white/75",
-    ring: "ring-1 ring-white/10",
-    ecgColor: "text-white",
-  },
-  // Emergência — vermelho semântico com texto azul para contraste
-  danger: {
-    background: "linear-gradient(135deg, hsl(0 75% 45%) 0%, hsl(0 80% 55%) 100%)",
-    iconBg: "bg-white ring-1 ring-white/40",
-    iconColor: "text-primary",
     titleColor: "text-white",
     subColor: "text-white/85",
     ring: "ring-1 ring-white/15",
+    ecgColor: "text-white",
+  },
+  // Emergência — vermelho semântico com texto branco e ícone azul
+  danger: {
+    background: "linear-gradient(135deg, hsl(0 78% 42%) 0%, hsl(0 82% 54%) 100%)",
+    iconBg: "bg-white ring-1 ring-white/50",
+    iconColor: "text-primary",
+    titleColor: "text-white",
+    subColor: "text-white/90",
+    ring: "ring-1 ring-white/20",
     ecgColor: "text-white",
   },
 };
@@ -329,7 +329,7 @@ export default function Home() {
             Organize sua rotina conforme o momento clínico.
           </p>
         </div>
-        <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
           {modes.map((m) => {
             const t = toneStyles[m.tone];
             const isDuty = m.path === "/duty";
@@ -340,41 +340,55 @@ export default function Home() {
                 whileTap={{ scale: 0.97 }}
                 animate={isLeaving ? {
                   scale: [1, 1.06, 1.03],
-                  filter: ["brightness(1)", "brightness(1.1)", "brightness(1.05)"],
+                  filter: ["brightness(1)", "brightness(1.15)", "brightness(1.05)"],
                 } : {
                   scale: 1,
                   filter: "brightness(1)",
                 }}
                 transition={isLeaving ? { duration: 0.28, ease: "easeOut" } : { duration: 0.2 }}
                 onClick={() => go(m.path, m.label)}
-                className={`group relative overflow-hidden p-3.5 rounded-2xl text-left shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all ${t.ring} ${isLeaving ? "z-10" : ""}`}
+                className={`group relative overflow-hidden p-4 min-h-[110px] rounded-2xl text-left shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all ${t.ring} ${isLeaving ? "z-10" : ""}`}
                 style={{ background: t.background }}
               >
-                {/* ECG decorativa */}
+                {/* ECG pulsante de fundo — padronizado em todas as caixas */}
                 <svg
-                  className={`absolute inset-x-0 bottom-0 w-full h-12 opacity-[0.08] pointer-events-none ${t.ecgColor}`}
+                  className={`absolute inset-x-0 bottom-0 w-full h-14 opacity-[0.18] pointer-events-none ${t.ecgColor}`}
                   viewBox="0 0 200 60"
                   preserveAspectRatio="none"
                   fill="none"
                   stroke="currentColor"
-                  strokeWidth="1.2"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 >
-                  <path d="M0 35 L50 35 L58 18 L66 52 L74 35 L120 35 L128 12 L136 58 L144 35 L200 35" />
+                  <motion.path
+                    d="M0 35 L40 35 L48 35 L56 18 L64 52 L72 35 L110 35 L118 35 L126 12 L134 58 L142 35 L200 35"
+                    initial={{ pathLength: 0, opacity: 0.2 }}
+                    animate={{ pathLength: 1, opacity: [0.2, 1, 0.4] }}
+                    transition={{
+                      duration: 2.4,
+                      ease: "easeInOut",
+                      repeat: Infinity,
+                      repeatType: "loop",
+                    }}
+                  />
                 </svg>
+                {/* glow sutil */}
+                <div className="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-white/10 blur-2xl pointer-events-none" />
 
                 <div className="relative">
                   <motion.div
                     animate={isLeaving ? { scale: [1, 1.2, 1.1], rotate: [0, -5, 0] } : { scale: 1, rotate: 0 }}
                     transition={{ duration: 0.28 }}
-                    className={`flex items-center justify-center w-9 h-9 rounded-xl mb-2.5 ${t.iconBg}`}
+                    className={`flex items-center justify-center w-10 h-10 rounded-xl mb-3 ${t.iconBg}`}
                   >
-                    <m.icon size={18} strokeWidth={2.2} className={t.iconColor} />
+                    <m.icon size={20} strokeWidth={2.3} className={t.iconColor} />
                   </motion.div>
                   <div className="flex items-center gap-1.5">
                     <motion.span
                       animate={isLeaving ? { y: [0, -2, 0] } : { y: 0 }}
                       transition={{ duration: 0.28 }}
-                      className={`font-heading font-semibold text-[13px] leading-tight ${t.titleColor}`}
+                      className={`font-heading font-bold text-[14.5px] leading-tight tracking-tight ${t.titleColor}`}
                     >
                       {m.label}
                     </motion.span>
@@ -385,7 +399,7 @@ export default function Home() {
                       </span>
                     )}
                   </div>
-                  <div className={`text-[11px] mt-0.5 leading-snug ${t.subColor}`}>
+                  <div className={`text-[12px] mt-1 leading-snug font-medium ${t.subColor}`}>
                     {m.sub}
                   </div>
                 </div>
@@ -393,10 +407,10 @@ export default function Home() {
                 {/* Ripple de confirmação */}
                 {isLeaving && (
                   <motion.div
-                    initial={{ scale: 0, opacity: 0.35 }}
+                    initial={{ scale: 0, opacity: 0.4 }}
                     animate={{ scale: 2.5, opacity: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="absolute inset-0 rounded-2xl bg-primary/30 pointer-events-none"
+                    className="absolute inset-0 rounded-2xl bg-white/30 pointer-events-none"
                     style={{ originX: 0.5, originY: 0.5 }}
                   />
                 )}
