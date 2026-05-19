@@ -120,7 +120,7 @@ export default function ContinueWhereLeftOff() {
               Último medicamento
             </p>
             <p className="font-heading font-semibold text-[13px] text-foreground truncate mt-0.5">
-              {lastMedication.title}
+              {shortenIfNeeded(lastMedication.title, 28)}
             </p>
             <p className="text-[10.5px] text-muted-foreground mt-0.5">
               {timeAgo(lastMedication.timestamp)}
