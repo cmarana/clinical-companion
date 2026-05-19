@@ -90,6 +90,7 @@ const PrivacyPolicy = lazy(() => import("@/pages/PrivacyPolicy"));
 const Referral = lazy(() => import("@/pages/Referral"));
 const Unsubscribe = lazy(() => import("@/pages/Unsubscribe"));
 const About = lazy(() => import("@/pages/About"));
+const HelpCenter = lazy(() => import("@/pages/HelpCenter"));
 
 const Onboarding = lazy(() => import("@/pages/Onboarding"));
 const Landing = lazy(() => import("@/pages/Landing"));
@@ -173,6 +174,9 @@ const AppRoutes = () => (
       <Route path="/privacy" element={<PrivacyPolicy />} />
       <Route path="/unsubscribe" element={<Unsubscribe />} />
       <Route path="/about" element={<About />} />
+      <Route path="/help" element={<HelpCenter />} />
+      <Route path="/ajuda" element={<Navigate to="/help" replace />} />
+      <Route path="/faq" element={<Navigate to="/help" replace />} />
       <Route path="/onboarding" element={<Onboarding />} />
       
       <Route element={<ProtectedRoute><AppLayout /></ProtectedRoute>}>

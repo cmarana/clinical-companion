@@ -850,7 +850,14 @@ export default function Profile() {
               </Button>
 
               {/* Legal links */}
-              <div className="flex items-center justify-center gap-3 mt-3 pt-3 border-t border-border/40">
+              <div className="flex items-center justify-center gap-3 mt-3 pt-3 border-t border-border/40 flex-wrap">
+                <button
+                  onClick={() => navigate("/help")}
+                  className="text-[11px] text-muted-foreground hover:text-foreground transition-colors underline underline-offset-2"
+                >
+                  Central de Ajuda
+                </button>
+                <span className="text-muted-foreground/50 text-[10px]">·</span>
                 <button
                   onClick={() => navigate("/privacy")}
                   className="text-[11px] text-muted-foreground hover:text-foreground transition-colors underline underline-offset-2"
