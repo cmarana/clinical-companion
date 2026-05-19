@@ -551,3 +551,17 @@
   .no-print { display: none !important; }
   @page { margin: 14mm; }
 }
+
+/* PULSO logo heartbeat animation */
+@keyframes pulso-heartbeat {
+  0%, 100% { transform: scale(1); }
+  15% { transform: scale(1.12); }
+  30% { transform: scale(1); }
+  45% { transform: scale(1.08); }
+  60% { transform: scale(1); }
+}
+.pulso-animate {
+  animation: pulso-heartbeat 1.6s ease-in-out infinite;
+  transform-origin: center;
+  will-change: transform;
+}
