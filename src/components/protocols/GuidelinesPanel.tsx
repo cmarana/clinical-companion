@@ -77,7 +77,7 @@ export function GuidelinesPanel({
               key={`${g.society}-${g.year}-${i}`}
               className={cn(
                 "p-3 transition-colors",
-                isRecent && "bg-primary/5 border-l-2 border-l-emerald-500/40",
+                isRecent && "bg-primary/5 border-l-2 border-l-primary/40",
               )}
             >
               <div className="flex items-start gap-2">
