@@ -210,7 +210,13 @@ export default function SupportChat() {
     }
   };
 
-  const viewTitle = view === "chat" ? "Suporte PULSO" : view === "email" ? "Contato por E-mail" : "Enviar Feedback";
+  const viewTitle =
+    view === "triage" ? "Suporte PULSO"
+    : view === "chat" ? "Suporte PULSO"
+    : view === "email" ? "Falar com atendimento"
+    : "Enviar Feedback";
+
+  const goBackFromSub = () => setView(messages.length > 0 ? "chat" : "triage");
 
   return (
     <>
