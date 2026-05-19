@@ -41,43 +41,57 @@ const emergencyShortcuts = [
 ];
 
 const modes = [
-  { label: "Plantão", sub: "Atendimento em tempo real", icon: Activity, path: "/duty", tone: "primary" },
+  { label: "Plantão", sub: "Atendimento em tempo real", icon: Activity, path: "/duty", tone: "deep" },
   { label: "Emergência", sub: "Protocolos críticos", icon: Zap, path: "/emergency", tone: "danger" },
-  { label: "Ferramentas", sub: "Calculadoras, bulário, diagnóstico", icon: Wrench, path: "/tools", tone: "slate" },
-  { label: "Especialidades", sub: "Protocolos por área clínica", icon: Stethoscope, path: "/specialties", tone: "emerald" },
-  { label: "Estudo", sub: "Flashcards, questões e residência", icon: GraduationCap, path: "/study-dashboard", tone: "amber" },
-  { label: "Prescrições", sub: "Modelos, evoluções e alta", icon: FileText, path: "/prescriptions", tone: "violet" },
+  { label: "Ferramentas", sub: "Calculadoras, bulário, diagnóstico", icon: Wrench, path: "/tools", tone: "soft" },
+  { label: "Especialidades", sub: "Protocolos por área clínica", icon: Stethoscope, path: "/specialties", tone: "soft" },
+  { label: "Estudo", sub: "Flashcards, questões e residência", icon: GraduationCap, path: "/study-dashboard", tone: "soft" },
+  { label: "Prescrições", sub: "Modelos, evoluções e alta", icon: FileText, path: "/prescriptions", tone: "soft" },
 ];
 
-// Cada modo herda a mesma linguagem visual do hero Modo Plantão:
-// gradiente sólido + linha ECG decorativa + glow sutil + texto branco.
-// Apenas a paleta do gradiente muda por tom, mantendo coerência cromática
-// com o restante do app (primary/destructive/etc.) e bom contraste em
-// light/dark/OLED.
-const toneStyles: Record<string, { gradient: string; glow: string }> = {
-  primary: {
-    gradient: "linear-gradient(135deg, hsl(212 90% 28%) 0%, hsl(212 88% 38%) 50%, hsl(212 86% 48%) 100%)",
-    glow: "shadow-primary/25",
+// Paleta única e sóbria: azul dominante. Vermelho só semântico (emergência),
+// roxo só para IA. Modos em variações de azul/branco/navy para unidade visual.
+type ToneStyle = {
+  background: string;       // fundo do card
+  iconBg: string;           // pill do ícone
+  iconColor: string;        // cor do ícone
+  titleColor: string;       // título
+  subColor: string;         // subtítulo
+  ring: string;             // borda
+  ecgColor: string;         // cor da linha ECG decorativa
+  accent?: React.ReactNode; // chip/indicador opcional
+};
+
+const toneStyles: Record<string, ToneStyle> = {
+  // Plantão — azul profundo, hero secundário
+  deep: {
+    background: "linear-gradient(135deg, hsl(212 60% 18%) 0%, hsl(212 70% 26%) 100%)",
+    iconBg: "bg-white/15 ring-1 ring-white/25",
+    iconColor: "text-white",
+    titleColor: "text-white",
+    subColor: "text-white/75",
+    ring: "ring-1 ring-white/10",
+    ecgColor: "text-white",
   },
+  // Emergência — branco/azul-claro com acento vermelho semântico
   danger: {
-    gradient: "linear-gradient(135deg, hsl(0 72% 32%) 0%, hsl(0 75% 42%) 50%, hsl(0 80% 55%) 100%)",
-    glow: "shadow-destructive/25",
+    background: "hsl(var(--card))",
+    iconBg: "bg-destructive/10 ring-1 ring-destructive/25",
+    iconColor: "text-destructive",
+    titleColor: "text-foreground",
+    subColor: "text-muted-foreground",
+    ring: "ring-1 ring-destructive/20",
+    ecgColor: "text-destructive",
   },
-  slate: {
-    gradient: "linear-gradient(135deg, hsl(215 25% 22%) 0%, hsl(215 22% 32%) 50%, hsl(215 20% 42%) 100%)",
-    glow: "shadow-slate-700/25",
-  },
-  emerald: {
-    gradient: "linear-gradient(135deg, hsl(160 80% 20%) 0%, hsl(158 75% 30%) 50%, hsl(156 70% 40%) 100%)",
-    glow: "shadow-emerald-700/25",
-  },
-  amber: {
-    gradient: "linear-gradient(135deg, hsl(28 85% 32%) 0%, hsl(32 88% 42%) 50%, hsl(38 92% 52%) 100%)",
-    glow: "shadow-amber-600/25",
-  },
-  violet: {
-    gradient: "linear-gradient(135deg, hsl(265 60% 30%) 0%, hsl(262 65% 42%) 50%, hsl(258 70% 55%) 100%)",
-    glow: "shadow-violet-600/25",
+  // Demais — azul suave, ícone primary, título navy
+  soft: {
+    background: "hsl(212 100% 97%)",
+    iconBg: "bg-primary/10 ring-1 ring-primary/20",
+    iconColor: "text-primary",
+    titleColor: "text-foreground",
+    subColor: "text-muted-foreground",
+    ring: "ring-1 ring-primary/10",
+    ecgColor: "text-primary",
   },
 };
 
@@ -336,31 +350,20 @@ export default function Home() {
                 key={m.path}
                 whileTap={{ scale: 0.97 }}
                 animate={isLeaving ? {
-                  scale: [1, 1.08, 1.04],
-                  filter: ["brightness(1)", "brightness(1.35)", "brightness(1.2)"],
-                  boxShadow: [
-                    "0 10px 15px -3px rgba(0,0,0,0.1)",
-                    "0 25px 50px -12px rgba(255,255,255,0.35)",
-                    "0 15px 30px -5px rgba(255,255,255,0.2)",
-                  ],
+                  scale: [1, 1.06, 1.03],
+                  filter: ["brightness(1)", "brightness(1.1)", "brightness(1.05)"],
                 } : {
                   scale: 1,
                   filter: "brightness(1)",
-                  boxShadow: "0 10px 15px -3px rgba(0,0,0,0.1)",
                 }}
-                transition={isLeaving ? {
-                  duration: 0.28,
-                  ease: "easeOut",
-                } : {
-                  duration: 0.2,
-                }}
+                transition={isLeaving ? { duration: 0.28, ease: "easeOut" } : { duration: 0.2 }}
                 onClick={() => go(m.path, m.label)}
-                className={`group relative overflow-hidden p-3.5 rounded-2xl text-left text-white shadow-lg ${t.glow} ring-1 ring-white/10 hover:-translate-y-0.5 hover:shadow-xl transition-all ${isLeaving ? "z-10" : ""}`}
-                style={{ background: t.gradient }}
+                className={`group relative overflow-hidden p-3.5 rounded-2xl text-left shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all ${t.ring} ${isLeaving ? "z-10" : ""}`}
+                style={{ background: t.background }}
               >
                 {/* ECG decorativa */}
                 <svg
-                  className="absolute inset-x-0 bottom-0 w-full h-12 opacity-20 pointer-events-none"
+                  className={`absolute inset-x-0 bottom-0 w-full h-12 opacity-[0.08] pointer-events-none ${t.ecgColor}`}
                   viewBox="0 0 200 60"
                   preserveAspectRatio="none"
                   fill="none"
@@ -369,33 +372,31 @@ export default function Home() {
                 >
                   <path d="M0 35 L50 35 L58 18 L66 52 L74 35 L120 35 L128 12 L136 58 L144 35 L200 35" />
                 </svg>
-                {/* glow */}
-                <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-white/15 blur-2xl pointer-events-none" />
 
                 <div className="relative">
                   <motion.div
                     animate={isLeaving ? { scale: [1, 1.2, 1.1], rotate: [0, -5, 0] } : { scale: 1, rotate: 0 }}
                     transition={{ duration: 0.28 }}
-                    className="flex items-center justify-center w-9 h-9 rounded-xl mb-2.5 bg-white/15 backdrop-blur-sm ring-1 ring-white/20"
+                    className={`flex items-center justify-center w-9 h-9 rounded-xl mb-2.5 ${t.iconBg}`}
                   >
-                    <m.icon size={18} strokeWidth={2.2} className="text-white" />
+                    <m.icon size={18} strokeWidth={2.2} className={t.iconColor} />
                   </motion.div>
                   <div className="flex items-center gap-1.5">
                     <motion.span
-                      animate={isLeaving ? { y: [0, -2, 0], fontWeight: 600 } : { y: 0 }}
+                      animate={isLeaving ? { y: [0, -2, 0] } : { y: 0 }}
                       transition={{ duration: 0.28 }}
-                      className="font-heading font-semibold text-[13px] leading-tight"
+                      className={`font-heading font-semibold text-[13px] leading-tight ${t.titleColor}`}
                     >
                       {m.label}
                     </motion.span>
                     {isDuty && (
                       <span className="relative flex h-1.5 w-1.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-300 opacity-75" />
-                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-300" />
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75" />
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-400" />
                       </span>
                     )}
                   </div>
-                  <div className="text-[11px] text-white/75 mt-0.5 leading-snug">
+                  <div className={`text-[11px] mt-0.5 leading-snug ${t.subColor}`}>
                     {m.sub}
                   </div>
                 </div>
@@ -403,10 +404,10 @@ export default function Home() {
                 {/* Ripple de confirmação */}
                 {isLeaving && (
                   <motion.div
-                    initial={{ scale: 0, opacity: 0.6 }}
+                    initial={{ scale: 0, opacity: 0.35 }}
                     animate={{ scale: 2.5, opacity: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="absolute inset-0 rounded-2xl bg-white/40 pointer-events-none"
+                    className="absolute inset-0 rounded-2xl bg-primary/30 pointer-events-none"
                     style={{ originX: 0.5, originY: 0.5 }}
                   />
                 )}
