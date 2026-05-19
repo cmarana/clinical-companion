@@ -186,9 +186,7 @@ export default function SalaVermelha() {
               className="flex items-center gap-3 p-3 rounded-xl text-white ring-1 ring-white/15 active:scale-[0.97] transition-all text-left shadow-md"
               style={{ background: GRADIENT_DANGER }}
             >
-              <div className="w-9 h-9 rounded-lg bg-white/15 ring-1 ring-white/25 flex items-center justify-center shrink-0">
-                <item.icon size={18} className="text-white" />
-              </div>
+              <item.icon size={20} className="text-white shrink-0" />
               <div className="min-w-0 flex-1">
                 <p className="font-heading font-bold text-xs text-white truncate">{item.label}</p>
                 <p className="text-[9px] text-white/78 leading-tight line-clamp-2">{item.desc}</p>
