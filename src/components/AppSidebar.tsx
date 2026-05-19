@@ -168,7 +168,7 @@ export function AppSidebar() {
     <Sidebar collapsible="icon" className="hidden md:flex">
       <SidebarHeader className="p-3">
         <div className="flex items-center gap-2">
-          <PulsoLogo size={28} priority animate />
+          <span className="text-primary"><PulsoLogoECG size={26} /></span>
           <div className="flex flex-col group-data-[collapsible=icon]:hidden">
             <span className="font-heading font-bold text-sm tracking-tight text-primary">PULSO</span>
             <span className="text-[9px] text-muted-foreground -mt-0.5">Emergência</span>
