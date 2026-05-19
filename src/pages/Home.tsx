@@ -51,13 +51,36 @@ const modes = [
   { label: "Prescrições", sub: "Modelos, evoluções e alta", icon: FileText, path: "/prescriptions", tone: "violet" },
 ];
 
-const toneStyles: Record<string, { icon: string; ring: string }> = {
-  primary: { icon: "bg-primary/10 text-primary", ring: "ring-border/60" },
-  danger: { icon: "bg-destructive/10 text-destructive", ring: "ring-border/60" },
-  slate: { icon: "bg-slate-500/10 text-slate-600 dark:text-slate-300", ring: "ring-border/60" },
-  emerald: { icon: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400", ring: "ring-border/60" },
-  amber: { icon: "bg-amber-500/10 text-amber-600 dark:text-amber-400", ring: "ring-border/60" },
-  violet: { icon: "bg-violet-500/10 text-violet-600 dark:text-violet-400", ring: "ring-border/60" },
+// Cada modo herda a mesma linguagem visual do hero Modo Plantão:
+// gradiente sólido + linha ECG decorativa + glow sutil + texto branco.
+// Apenas a paleta do gradiente muda por tom, mantendo coerência cromática
+// com o restante do app (primary/destructive/etc.) e bom contraste em
+// light/dark/OLED.
+const toneStyles: Record<string, { gradient: string; glow: string }> = {
+  primary: {
+    gradient: "linear-gradient(135deg, hsl(212 90% 28%) 0%, hsl(212 88% 38%) 50%, hsl(212 86% 48%) 100%)",
+    glow: "shadow-primary/25",
+  },
+  danger: {
+    gradient: "linear-gradient(135deg, hsl(0 72% 32%) 0%, hsl(0 75% 42%) 50%, hsl(0 80% 55%) 100%)",
+    glow: "shadow-destructive/25",
+  },
+  slate: {
+    gradient: "linear-gradient(135deg, hsl(215 25% 22%) 0%, hsl(215 22% 32%) 50%, hsl(215 20% 42%) 100%)",
+    glow: "shadow-slate-700/25",
+  },
+  emerald: {
+    gradient: "linear-gradient(135deg, hsl(160 80% 20%) 0%, hsl(158 75% 30%) 50%, hsl(156 70% 40%) 100%)",
+    glow: "shadow-emerald-700/25",
+  },
+  amber: {
+    gradient: "linear-gradient(135deg, hsl(28 85% 32%) 0%, hsl(32 88% 42%) 50%, hsl(38 92% 52%) 100%)",
+    glow: "shadow-amber-600/25",
+  },
+  violet: {
+    gradient: "linear-gradient(135deg, hsl(265 60% 30%) 0%, hsl(262 65% 42%) 50%, hsl(258 70% 55%) 100%)",
+    glow: "shadow-violet-600/25",
+  },
 };
 
 export default function Home() {
