@@ -14,14 +14,14 @@ export interface SpecialtyChoice {
 
 export const specialties: SpecialtyChoice[] = [
   { id: "todas", label: "Ver Tudo", icon: LayoutGrid, color: "bg-slate-500/15 text-slate-600 dark:text-slate-400" },
-  { id: "clinica-medica", label: "Clínica Médica", icon: Stethoscope, color: "bg-blue-500/15 text-blue-600 dark:text-blue-400" },
-  { id: "emergencia", label: "Emergência / UTI", icon: Activity, color: "bg-red-500/15 text-red-600 dark:text-red-400" },
-  { id: "pediatria", label: "Pediatria", icon: Baby, color: "bg-cyan-500/15 text-cyan-600 dark:text-cyan-400" },
-  { id: "ginecologia-obstetricia", label: "GO / Obstetrícia", icon: Heart, color: "bg-pink-500/15 text-pink-600 dark:text-pink-400" },
-  { id: "cirurgia", label: "Cirurgia Geral", icon: Syringe, color: "bg-orange-500/15 text-orange-600 dark:text-orange-400" },
-  { id: "psiquiatria-neuro", label: "Psiquiatria / Neuro", icon: Brain, color: "bg-purple-500/15 text-purple-600 dark:text-purple-400" },
-  { id: "infectologia", label: "Infectologia", icon: ShieldCheck, color: "bg-green-500/15 text-green-600 dark:text-green-400" },
-  { id: "generalista", label: "Generalista / Residente", icon: Pill, color: "bg-amber-500/15 text-amber-600 dark:text-amber-400" },
+  { id: "clinica-medica", label: "Clínica Médica", icon: Stethoscope, color: "bg-primary0/15 text-primary dark:text-primary" },
+  { id: "emergencia", label: "Emergência / UTI", icon: Activity, color: "bg-destructive0/15 text-destructive dark:text-destructive" },
+  { id: "pediatria", label: "Pediatria", icon: Baby, color: "bg-primary0/15 text-primary dark:text-primary" },
+  { id: "ginecologia-obstetricia", label: "GO / Obstetrícia", icon: Heart, color: "bg-destructive0/15 text-destructive dark:text-destructive" },
+  { id: "cirurgia", label: "Cirurgia Geral", icon: Syringe, color: "bg-destructive0/15 text-destructive dark:text-destructive" },
+  { id: "psiquiatria-neuro", label: "Psiquiatria / Neuro", icon: Brain, color: "bg-primary0/15 text-primary dark:text-primary" },
+  { id: "infectologia", label: "Infectologia", icon: ShieldCheck, color: "bg-primary0/15 text-primary dark:text-primary" },
+  { id: "generalista", label: "Generalista / Residente", icon: Pill, color: "bg-destructive0/15 text-destructive dark:text-destructive" },
 ];
 
 const tourSteps = [
@@ -39,8 +39,8 @@ const tourSteps = [
   },
   {
     icon: Bot,
-    iconColor: "text-violet-500",
-    iconBg: "bg-violet-500/10",
+    iconColor: "text-primary0",
+    iconBg: "bg-primary0/10",
     title: "IA Clínica Contextual",
     description: "Digite um caso clínico e receba análise de conduta, protocolos relacionados e prescrições pré-preenchidas — tudo baseado em evidências.",
     features: [
@@ -51,8 +51,8 @@ const tourSteps = [
   },
   {
     icon: AlertTriangle,
-    iconColor: "text-red-500",
-    iconBg: "bg-red-500/10",
+    iconColor: "text-destructive0",
+    iconBg: "bg-destructive0/10",
     title: "Modo Plantão Completo",
     description: "Projetado para o beira-leito: acesso one-tap a emergências, cronômetro de turno, checklist de passagem e anotações por leito.",
     features: [

@@ -81,7 +81,7 @@ export default function ContinueWhereLeftOff() {
           p.type === "emergency"
             ? "bg-destructive/10 text-destructive"
             : p.type === "fullProtocol"
-            ? "bg-violet-500/10 text-violet-600 dark:text-violet-400"
+            ? "bg-primary0/10 text-primary dark:text-primary"
             : "bg-primary/10 text-primary";
         return (
           <button
@@ -112,7 +112,7 @@ export default function ContinueWhereLeftOff() {
           onClick={() => go(lastMedication.path)}
           className="w-full flex items-center gap-3 p-3.5 rounded-2xl bg-card border border-border/60 hover:border-primary/30 hover:shadow-md active:scale-[0.99] transition-all text-left"
         >
-          <div className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0 bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+          <div className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0 bg-primary0/10 text-primary dark:text-primary">
             <Pill size={18} />
           </div>
           <div className="flex-1 min-w-0">
@@ -134,9 +134,9 @@ export default function ContinueWhereLeftOff() {
       {pendingFlashcards > 0 && (
         <button
           onClick={() => go("/flashcards")}
-          className="w-full flex items-center gap-3 p-3.5 rounded-2xl bg-card border border-border/60 hover:border-amber-500/40 hover:shadow-md active:scale-[0.99] transition-all text-left"
+          className="w-full flex items-center gap-3 p-3.5 rounded-2xl bg-card border border-border/60 hover:border-destructive0/40 hover:shadow-md active:scale-[0.99] transition-all text-left"
         >
-          <div className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0 bg-amber-500/10 text-amber-600 dark:text-amber-400">
+          <div className="flex items-center justify-center w-10 h-10 rounded-xl shrink-0 bg-destructive0/10 text-destructive dark:text-destructive">
             <Brain size={18} />
           </div>
           <div className="flex-1 min-w-0">
@@ -150,7 +150,7 @@ export default function ContinueWhereLeftOff() {
               Revisão espaçada (SM-2)
             </p>
           </div>
-          <span className="inline-flex items-center gap-1 px-2.5 h-7 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-[11px] font-semibold shrink-0">
+          <span className="inline-flex items-center gap-1 px-2.5 h-7 rounded-full bg-destructive0/10 text-destructive dark:text-destructive text-[11px] font-semibold shrink-0">
             Revisar <ArrowRight size={12} />
           </span>
         </button>

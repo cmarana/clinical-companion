@@ -487,7 +487,7 @@ export default function DocumentGenerator() {
                     "flex-1 px-3 py-2 rounded-xl text-xs font-medium transition-all border",
                     prescriptionType === pt.id
                       ? pt.id === "special"
-                        ? "bg-amber-500/10 border-amber-500 text-amber-600 dark:text-amber-400"
+                        ? "bg-destructive0/10 border-destructive0 text-destructive dark:text-destructive"
                         : "bg-primary/10 border-primary text-primary"
                       : "bg-card border-border text-muted-foreground"
                   )}
@@ -664,8 +664,8 @@ export default function DocumentGenerator() {
                 ))}
               </div>
 
-              <div className="bg-amber-500/10 dark:bg-amber-500/5 rounded-xl p-3 space-y-2">
-                <h4 className="text-xs font-semibold text-amber-600 dark:text-amber-400">⚕️ Resolução CFM nº 2.299/2021</h4>
+              <div className="bg-destructive0/10 dark:bg-destructive0/5 rounded-xl p-3 space-y-2">
+                <h4 className="text-xs font-semibold text-destructive dark:text-destructive">⚕️ Resolução CFM nº 2.299/2021</h4>
                 <ul className="text-[11px] text-muted-foreground space-y-1">
                   <li>• Prescrições digitais devem usar certificado ICP-Brasil</li>
                   <li>• Validade para receitas simples, especiais e antimicrobianos</li>

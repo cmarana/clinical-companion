@@ -11,19 +11,19 @@ import {
 } from "lucide-react";
 
 const categoryColors: Record<string, string> = {
-  "Vasopressor": "bg-red-500/15 text-red-700 dark:text-red-400",
-  "Inotrópico": "bg-orange-500/15 text-orange-700 dark:text-orange-400",
-  "Sedativo": "bg-purple-500/15 text-purple-700 dark:text-purple-400",
-  "Analgésico": "bg-blue-500/15 text-blue-700 dark:text-blue-400",
-  "Antiarrítmico": "bg-yellow-500/15 text-yellow-700 dark:text-yellow-400",
-  "Anti-hipertensivo": "bg-emerald-500/15 text-emerald-700 dark:text-emerald-400",
-  "Antibiótico": "bg-teal-500/15 text-teal-700 dark:text-teal-400",
-  "Anticoagulante": "bg-pink-500/15 text-pink-700 dark:text-pink-400",
-  "Eletrólito": "bg-cyan-500/15 text-cyan-700 dark:text-cyan-400",
-  "Antifúngico": "bg-amber-500/15 text-amber-700 dark:text-amber-400",
-  "Corticoide": "bg-indigo-500/15 text-indigo-700 dark:text-indigo-400",
-  "Broncodilatador": "bg-lime-500/15 text-lime-700 dark:text-lime-400",
-  "Hemoderivado": "bg-rose-500/15 text-rose-700 dark:text-rose-400",
+  "Vasopressor": "bg-destructive0/15 text-destructive dark:text-destructive",
+  "Inotrópico": "bg-destructive0/15 text-destructive dark:text-destructive",
+  "Sedativo": "bg-primary0/15 text-primary dark:text-primary",
+  "Analgésico": "bg-primary0/15 text-primary dark:text-primary",
+  "Antiarrítmico": "bg-destructive0/15 text-destructive dark:text-destructive",
+  "Anti-hipertensivo": "bg-primary0/15 text-primary dark:text-primary",
+  "Antibiótico": "bg-primary0/15 text-primary dark:text-primary",
+  "Anticoagulante": "bg-destructive0/15 text-destructive dark:text-destructive",
+  "Eletrólito": "bg-primary0/15 text-primary dark:text-primary",
+  "Antifúngico": "bg-destructive0/15 text-destructive dark:text-destructive",
+  "Corticoide": "bg-primary0/15 text-primary dark:text-primary",
+  "Broncodilatador": "bg-primary0/15 text-primary dark:text-primary",
+  "Hemoderivado": "bg-destructive0/15 text-destructive dark:text-destructive",
   "Outros": "bg-gray-500/15 text-gray-700 dark:text-gray-400",
 };
 
@@ -167,8 +167,8 @@ function DrugCard({ drug }: { drug: IVDrug }) {
 
           {/* Sem bomba */}
           {drug.noBombTip && (
-            <div className="bg-yellow-500/10 rounded-lg p-2 border border-yellow-500/20">
-              <p className="text-[10px] font-bold text-yellow-700 dark:text-yellow-400 mb-0.5">💡 SEM BOMBA DE INFUSÃO</p>
+            <div className="bg-destructive0/10 rounded-lg p-2 border border-destructive0/20">
+              <p className="text-[10px] font-bold text-destructive dark:text-destructive mb-0.5">💡 SEM BOMBA DE INFUSÃO</p>
               <p className="text-[10px] text-foreground">{drug.noBombTip}</p>
             </div>
           )}
@@ -177,7 +177,7 @@ function DrugCard({ drug }: { drug: IVDrug }) {
           <Section icon={<Check size={12} />} title="Compatível em Y">
             <div className="flex flex-wrap gap-1">
               {drug.compatibilities.length > 0
-                ? drug.compatibilities.map(c => <Badge key={c} variant="outline" className="text-[9px] border-green-500/30 text-green-700 dark:text-green-400">{c}</Badge>)
+                ? drug.compatibilities.map(c => <Badge key={c} variant="outline" className="text-[9px] border-primary0/30 text-primary dark:text-primary">{c}</Badge>)
                 : <span className="text-[10px] text-muted-foreground">Sem dados confiáveis — via exclusiva</span>
               }
             </div>
@@ -186,15 +186,15 @@ function DrugCard({ drug }: { drug: IVDrug }) {
           <Section icon={<X size={12} />} title="Incompatível em Y">
             <div className="flex flex-wrap gap-1">
               {drug.incompatibilities.length > 0
-                ? drug.incompatibilities.map(c => <Badge key={c} variant="outline" className="text-[9px] border-red-500/30 text-red-700 dark:text-red-400">{c}</Badge>)
+                ? drug.incompatibilities.map(c => <Badge key={c} variant="outline" className="text-[9px] border-destructive0/30 text-destructive dark:text-destructive">{c}</Badge>)
                 : <span className="text-[10px] text-muted-foreground">Sem incompatibilidades conhecidas</span>
               }
             </div>
           </Section>
 
           {/* Alertas */}
-          <div className="bg-red-500/5 rounded-lg p-2 border border-red-500/20 space-y-1">
-            <p className="text-[10px] font-bold text-red-700 dark:text-red-400 flex items-center gap-1">
+          <div className="bg-destructive0/5 rounded-lg p-2 border border-destructive0/20 space-y-1">
+            <p className="text-[10px] font-bold text-destructive dark:text-destructive flex items-center gap-1">
               <ShieldAlert size={12} /> ALERTAS
             </p>
             {drug.warnings.map((w, i) => (
@@ -271,7 +271,7 @@ export default function IVDilutions() {
           </div>
         )}
 
-        <Card className="border-yellow-500/20">
+        <Card className="border-destructive0/20">
           <CardContent className="p-3">
             <p className="text-[10px] text-muted-foreground leading-relaxed">
               ⚠ <strong>Fonte:</strong> Baseado em Trissel's™ 2 IV Compatibility, King Guide®, bulas e protocolos institucionais.

@@ -341,9 +341,9 @@ const procedures: Procedure[] = [
 ];
 
 const difficultyColors = {
-  "básico": "bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/30",
-  "intermediário": "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/30",
-  "avançado": "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/30",
+  "básico": "bg-primary0/10 text-primary dark:text-primary border-primary0/30",
+  "intermediário": "bg-destructive0/10 text-destructive dark:text-destructive border-destructive0/30",
+  "avançado": "bg-destructive0/10 text-destructive dark:text-destructive border-destructive0/30",
 };
 
 export default function ProcedureGuides() {
@@ -489,9 +489,9 @@ export default function ProcedureGuides() {
                               <p className="text-xs font-semibold text-foreground">{s.title}</p>
                               <p className="text-xs text-foreground/70 mt-0.5 leading-relaxed">{s.detail}</p>
                               {s.tip && (
-                                <div className="mt-1.5 flex gap-1.5 bg-amber-500/10 dark:bg-amber-500/5 rounded-lg p-2">
-                                  <Info size={12} className="text-amber-500 shrink-0 mt-0.5" />
-                                  <p className="text-[11px] text-amber-700 dark:text-amber-400 leading-relaxed">{s.tip}</p>
+                                <div className="mt-1.5 flex gap-1.5 bg-destructive0/10 dark:bg-destructive0/5 rounded-lg p-2">
+                                  <Info size={12} className="text-destructive0 shrink-0 mt-0.5" />
+                                  <p className="text-[11px] text-destructive dark:text-destructive leading-relaxed">{s.tip}</p>
                                 </div>
                               )}
                             </div>
@@ -509,7 +509,7 @@ export default function ProcedureGuides() {
                       <ul className="space-y-1">
                         {proc.complications.map((c, i) => (
                           <li key={i} className="text-xs text-foreground/80 flex gap-2">
-                            <AlertTriangle size={12} className="text-amber-500 shrink-0 mt-0.5" /> {c}
+                            <AlertTriangle size={12} className="text-destructive0 shrink-0 mt-0.5" /> {c}
                           </li>
                         ))}
                       </ul>
@@ -533,7 +533,7 @@ export default function ProcedureGuides() {
                         href={`https://www.google.com/search?tbm=vid&q=${encodeURIComponent(proc.videoSearch)}`}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex-1 flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-red-500/10 text-red-600 dark:text-red-400 text-xs font-medium hover:bg-red-500/20 transition-colors"
+                        className="flex-1 flex items-center justify-center gap-1.5 p-2.5 rounded-xl bg-destructive0/10 text-destructive dark:text-destructive text-xs font-medium hover:bg-destructive0/20 transition-colors"
                       >
                         <ExternalLink size={13} /> Ver Vídeos
                       </a>

@@ -7,9 +7,9 @@ import { toast } from "sonner";
 import { motion, AnimatePresence } from "framer-motion";
 
 const feedbackTypes = [
-  { id: "bug", label: "Bug", icon: Bug, color: "text-red-500 bg-red-500/10" },
-  { id: "suggestion", label: "Sugestão", icon: Lightbulb, color: "text-amber-500 bg-amber-500/10" },
-  { id: "other", label: "Outro", icon: MessageSquarePlus, color: "text-blue-500 bg-blue-500/10" },
+  { id: "bug", label: "Bug", icon: Bug, color: "text-destructive0 bg-destructive0/10" },
+  { id: "suggestion", label: "Sugestão", icon: Lightbulb, color: "text-destructive0 bg-destructive0/10" },
+  { id: "other", label: "Outro", icon: MessageSquarePlus, color: "text-primary0 bg-primary0/10" },
 ] as const;
 
 export default function FeedbackButton() {

@@ -456,7 +456,7 @@ function QueriesTab() {
                   <div className="flex flex-wrap gap-1 mb-1">
                     <Badge
                       variant="secondary"
-                      className={`text-[9px] ${log.cache_hit ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400" : ""}`}
+                      className={`text-[9px] ${log.cache_hit ? "bg-primary0/10 text-primary dark:text-primary" : ""}`}
                     >
                       {log.cache_hit ? "cache" : "llm"}
                     </Badge>
@@ -751,12 +751,12 @@ function IngestTab() {
           )}
           {lastResult && !ingesting && (
             <div className="flex items-center gap-2 text-xs">
-              <CheckCircle2 size={14} className="text-emerald-600 dark:text-emerald-400" />
+              <CheckCircle2 size={14} className="text-primary dark:text-primary" />
               <span>{lastResult.inserted} chunks indexados</span>
               {lastResult.failed > 0 && (
                 <>
-                  <AlertTriangle size={14} className="text-amber-500 ml-2" />
-                  <span className="text-amber-600 dark:text-amber-400">{lastResult.failed} falharam</span>
+                  <AlertTriangle size={14} className="text-destructive0 ml-2" />
+                  <span className="text-destructive dark:text-destructive">{lastResult.failed} falharam</span>
                 </>
               )}
             </div>
@@ -793,7 +793,7 @@ function IngestTab() {
           {testAnswer && (
             <div className="space-y-3 rounded-lg border bg-muted/30 p-4">
               <div className="flex flex-wrap gap-2">
-                <Badge className={`text-[10px] ${testAnswer.source === "cache" ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20" : "bg-primary/10 text-primary border-primary/20"}`}>
+                <Badge className={`text-[10px] ${testAnswer.source === "cache" ? "bg-primary0/10 text-primary dark:text-primary border-primary0/20" : "bg-primary/10 text-primary border-primary/20"}`}>
                   fonte: {testAnswer.source}
                 </Badge>
                 <Badge variant="outline" className="text-[10px]">intent: {testAnswer.intent}</Badge>
@@ -801,7 +801,7 @@ function IngestTab() {
                 {testAnswer.model && <Badge variant="outline" className="text-[10px]">{testAnswer.model}</Badge>}
                 {testAnswer.latency_ms && <Badge variant="outline" className="text-[10px]">{testAnswer.latency_ms}ms</Badge>}
                 {testAnswer.cached && (
-                  <Badge className="text-[10px] bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20">
+                  <Badge className="text-[10px] bg-primary0/10 text-primary dark:text-primary border-primary0/20">
                     session cache hit
                   </Badge>
                 )}

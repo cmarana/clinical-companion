@@ -143,16 +143,16 @@ export default function CPRTimer() {
         <div className="space-y-2">
           <p className="font-heading text-xs font-semibold text-muted-foreground">MEDICAÇÕES</p>
           <div className="grid grid-cols-2 gap-2">
-            <Button variant="outline" onClick={() => logDrug("Adrenalina")} className="gap-2 h-11 border-red-500/30 text-red-600 hover:bg-red-500/10">
+            <Button variant="outline" onClick={() => logDrug("Adrenalina")} className="gap-2 h-11 border-destructive0/30 text-destructive hover:bg-destructive0/10">
               <Pill size={14} /> Adrenalina 1mg
             </Button>
-            <Button variant="outline" onClick={() => logDrug("Amiodarona 300mg")} disabled={rhythm !== "shockable"} className="gap-2 h-11 border-violet-500/30 text-violet-600 hover:bg-violet-500/10">
+            <Button variant="outline" onClick={() => logDrug("Amiodarona 300mg")} disabled={rhythm !== "shockable"} className="gap-2 h-11 border-primary0/30 text-primary hover:bg-primary0/10">
               <Pill size={14} /> Amiodarona 300mg
             </Button>
-            <Button variant="outline" onClick={() => logDrug("Amiodarona 150mg")} disabled={rhythm !== "shockable"} className="gap-2 h-11 border-violet-500/30 text-violet-600 hover:bg-violet-500/10">
+            <Button variant="outline" onClick={() => logDrug("Amiodarona 150mg")} disabled={rhythm !== "shockable"} className="gap-2 h-11 border-primary0/30 text-primary hover:bg-primary0/10">
               <Pill size={14} /> Amiodarona 150mg
             </Button>
-            <Button variant="outline" onClick={() => logDrug("Choque aplicado")} disabled={rhythm !== "shockable"} className="gap-2 h-11 border-yellow-500/30 text-yellow-600 hover:bg-yellow-500/10">
+            <Button variant="outline" onClick={() => logDrug("Choque aplicado")} disabled={rhythm !== "shockable"} className="gap-2 h-11 border-destructive0/30 text-destructive hover:bg-destructive0/10">
               <Zap size={14} /> Choque (200J)
             </Button>
           </div>

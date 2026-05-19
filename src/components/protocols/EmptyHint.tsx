@@ -30,7 +30,7 @@ export function EmptyHint({
   const tones = {
     neutral: "bg-muted/40 ring-border/60 text-muted-foreground",
     info: "bg-primary/5 ring-primary/20 text-primary",
-    warning: "bg-amber-500/10 ring-amber-500/30 text-amber-700 dark:text-amber-400",
+    warning: "bg-destructive0/10 ring-destructive0/30 text-destructive dark:text-destructive",
   } as const;
 
   return (
@@ -48,7 +48,7 @@ export function EmptyHint({
           "flex items-center justify-center w-9 h-9 rounded-full",
           tone === "neutral" && "bg-background/60",
           tone === "info" && "bg-primary/10",
-          tone === "warning" && "bg-amber-500/15",
+          tone === "warning" && "bg-destructive0/15",
         )}
       >
         <Icon size={16} aria-hidden />

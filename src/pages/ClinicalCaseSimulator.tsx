@@ -23,9 +23,9 @@ const specialties = [
 ];
 
 const difficulties = [
-  { id: "basico", label: "Básico", desc: "Casos clássicos — 5º/6º ano", icon: BookOpen, color: "text-emerald-500" },
-  { id: "intermediario", label: "Intermediário", desc: "Comorbidades — Internato/R1", icon: Stethoscope, color: "text-amber-500" },
-  { id: "avancado", label: "Avançado", desc: "Casos atípicos — R2+", icon: Brain, color: "text-red-500" },
+  { id: "basico", label: "Básico", desc: "Casos clássicos — 5º/6º ano", icon: BookOpen, color: "text-primary0" },
+  { id: "intermediario", label: "Intermediário", desc: "Comorbidades — Internato/R1", icon: Stethoscope, color: "text-destructive0" },
+  { id: "avancado", label: "Avançado", desc: "Casos atípicos — R2+", icon: Brain, color: "text-destructive0" },
 ];
 
 type Phase = "setup" | "running" | "summary";
@@ -291,7 +291,7 @@ function SimulatorContent() {
           <div className="flex items-center gap-2">
             {score.total > 0 && (
               <Badge variant="outline" className="text-xs gap-1">
-                <Trophy className="h-3 w-3 text-amber-500" />
+                <Trophy className="h-3 w-3 text-destructive0" />
                 {score.correct}/{score.total}
               </Badge>
             )}
@@ -381,7 +381,7 @@ function SimulatorContent() {
         <div className="fixed bottom-0 left-0 right-0 bg-background/95 backdrop-blur-md border-t border-border/50 p-4 safe-area-bottom z-20">
           <div className="max-w-lg mx-auto space-y-3">
             <div className="flex items-center justify-center gap-2 text-sm">
-              <Trophy className="h-5 w-5 text-amber-500" />
+              <Trophy className="h-5 w-5 text-destructive0" />
               <span className="font-bold text-foreground">
                 Resultado: {score.correct}/{score.total} acertos
                 {score.total > 0 && ` (${Math.round((score.correct / score.total) * 100)}%)`}

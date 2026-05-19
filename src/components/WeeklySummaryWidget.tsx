@@ -83,10 +83,10 @@ export default function WeeklySummaryWidget() {
         {/* Next review */}
         <button
           onClick={() => navigate("/flashcards")}
-          className="flex-1 flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-gradient-to-br from-amber-500/5 to-amber-500/10 dark:from-amber-500/10 dark:to-amber-500/20 ring-1 ring-amber-500/15 hover:ring-amber-500/30 active:scale-[0.98] transition-all text-left"
+          className="flex-1 flex items-center gap-3 px-4 py-3.5 rounded-2xl bg-gradient-to-br from-destructive0/5 to-destructive0/10 dark:from-destructive0/10 dark:to-destructive0/20 ring-1 ring-destructive0/15 hover:ring-destructive0/30 active:scale-[0.98] transition-all text-left"
         >
-          <div className="w-9 h-9 rounded-xl bg-amber-500/15 flex items-center justify-center shrink-0">
-            <Clock size={18} className="text-amber-600 dark:text-amber-400" />
+          <div className="w-9 h-9 rounded-xl bg-destructive0/15 flex items-center justify-center shrink-0">
+            <Clock size={18} className="text-destructive dark:text-destructive" />
           </div>
           <div className="min-w-0">
             {data.nextReviewHours !== null ? (

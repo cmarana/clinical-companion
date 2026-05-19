@@ -19,12 +19,12 @@ import { hapticLight } from "@/lib/haptics";
 
 /* ── Top features for the showcase ─────────────────────────── */
 const topFeatures = [
-  { icon: Zap, label: "Emergência", desc: "PCR, Sepse, IAM, AVC — algoritmos em segundos", accent: "text-red-500 bg-red-500/10" },
-  { icon: Bot, label: "IA Clínica", desc: "Diagnóstico diferencial e conduta com IA", accent: "text-blue-500 bg-blue-500/10" },
-  { icon: Pill, label: "2.000+ Fármacos", desc: "Doses, diluição, interações e ajustes", accent: "text-emerald-500 bg-emerald-500/10" },
-  { icon: Shield, label: "1.000+ Protocolos", desc: "Fluxogramas interativos baseados em evidência", accent: "text-cyan-500 bg-cyan-500/10" },
-  { icon: Calculator, label: "53 Calculadoras", desc: "Glasgow, SOFA, Wells, HEART e mais", accent: "text-indigo-500 bg-indigo-500/10" },
-  { icon: Clock, label: "Modo Plantão", desc: "Timer PCR, passagem de leito, modo offline", accent: "text-amber-500 bg-amber-500/10" },
+  { icon: Zap, label: "Emergência", desc: "PCR, Sepse, IAM, AVC — algoritmos em segundos", accent: "text-destructive0 bg-destructive0/10" },
+  { icon: Bot, label: "IA Clínica", desc: "Diagnóstico diferencial e conduta com IA", accent: "text-primary0 bg-primary0/10" },
+  { icon: Pill, label: "2.000+ Fármacos", desc: "Doses, diluição, interações e ajustes", accent: "text-primary0 bg-primary0/10" },
+  { icon: Shield, label: "1.000+ Protocolos", desc: "Fluxogramas interativos baseados em evidência", accent: "text-primary0 bg-primary0/10" },
+  { icon: Calculator, label: "53 Calculadoras", desc: "Glasgow, SOFA, Wells, HEART e mais", accent: "text-primary0 bg-primary0/10" },
+  { icon: Clock, label: "Modo Plantão", desc: "Timer PCR, passagem de leito, modo offline", accent: "text-destructive0 bg-destructive0/10" },
 ];
 
 const trustPoints = [
@@ -65,8 +65,8 @@ function FloatingOrbs() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
       <div className="absolute -top-32 -left-32 w-[500px] h-[500px] bg-primary/6 rounded-full blur-[120px] animate-pulse" />
-      <div className="absolute top-1/2 -right-32 w-[400px] h-[400px] bg-violet-500/5 rounded-full blur-[100px]" style={{ animationDelay: "1s", animationDuration: "4s" }} />
-      <div className="absolute -bottom-32 left-1/3 w-[350px] h-[350px] bg-cyan-500/4 rounded-full blur-[100px]" style={{ animationDelay: "2s", animationDuration: "5s" }} />
+      <div className="absolute top-1/2 -right-32 w-[400px] h-[400px] bg-primary0/5 rounded-full blur-[100px]" style={{ animationDelay: "1s", animationDuration: "4s" }} />
+      <div className="absolute -bottom-32 left-1/3 w-[350px] h-[350px] bg-primary0/4 rounded-full blur-[100px]" style={{ animationDelay: "2s", animationDuration: "5s" }} />
     </div>
   );
 }
@@ -477,7 +477,7 @@ export default function Auth() {
             <motion.div {...fadeUp(1.2)} className="flex flex-wrap gap-x-5 gap-y-2">
               {trustPoints.map((t) => (
                 <div key={t} className="flex items-center gap-1.5 text-xs text-muted-foreground">
-                  <Check size={13} className="text-emerald-500 shrink-0" />
+                  <Check size={13} className="text-primary0 shrink-0" />
                   {t}
                 </div>
               ))}

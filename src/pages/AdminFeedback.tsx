@@ -17,16 +17,16 @@ interface Feedback {
 }
 
 const typeConfig: Record<string, { label: string; icon: typeof Bug; color: string }> = {
-  bug: { label: "Bug", icon: Bug, color: "text-red-500 bg-red-500/10" },
-  suggestion: { label: "Sugestão", icon: Lightbulb, color: "text-amber-500 bg-amber-500/10" },
-  support: { label: "Suporte", icon: MessageSquare, color: "text-blue-500 bg-blue-500/10" },
+  bug: { label: "Bug", icon: Bug, color: "text-destructive0 bg-destructive0/10" },
+  suggestion: { label: "Sugestão", icon: Lightbulb, color: "text-destructive0 bg-destructive0/10" },
+  support: { label: "Suporte", icon: MessageSquare, color: "text-primary0 bg-primary0/10" },
   other: { label: "Outro", icon: MessageSquarePlus, color: "text-muted-foreground bg-muted" },
 };
 
 const statusConfig: Record<string, { label: string; color: string }> = {
-  new: { label: "Novo", color: "bg-blue-500/10 text-blue-500 border-blue-500/20" },
-  reviewing: { label: "Em análise", color: "bg-amber-500/10 text-amber-500 border-amber-500/20" },
-  resolved: { label: "Resolvido", color: "bg-green-500/10 text-green-500 border-green-500/20" },
+  new: { label: "Novo", color: "bg-primary0/10 text-primary0 border-primary0/20" },
+  reviewing: { label: "Em análise", color: "bg-destructive0/10 text-destructive0 border-destructive0/20" },
+  resolved: { label: "Resolvido", color: "bg-primary0/10 text-primary0 border-primary0/20" },
 };
 
 export default function AdminFeedback() {
@@ -118,9 +118,9 @@ export default function AdminFeedback() {
       <div className="grid grid-cols-4 gap-2 px-4 py-3">
         {[
           { label: "Total", value: counts.total, color: "text-foreground" },
-          { label: "Novos", value: counts.new, color: "text-blue-500" },
-          { label: "Bugs", value: counts.bug, color: "text-red-500" },
-          { label: "Suporte", value: counts.support, color: "text-blue-500" },
+          { label: "Novos", value: counts.new, color: "text-primary0" },
+          { label: "Bugs", value: counts.bug, color: "text-destructive0" },
+          { label: "Suporte", value: counts.support, color: "text-primary0" },
         ].map(s => (
           <div key={s.label} className="bg-card rounded-xl p-3 text-center border border-border">
             <p className={`text-lg font-bold ${s.color}`}>{s.value}</p>
@@ -214,7 +214,7 @@ export default function AdminFeedback() {
                     </Button>
                   )}
                   {f.status !== "resolved" && (
-                    <Button size="sm" variant="outline" className="h-7 text-xs gap-1 text-green-600" onClick={() => updateStatus(f.id, "resolved")}>
+                    <Button size="sm" variant="outline" className="h-7 text-xs gap-1 text-primary" onClick={() => updateStatus(f.id, "resolved")}>
                       <CheckCircle size={12} /> Resolvido
                     </Button>
                   )}

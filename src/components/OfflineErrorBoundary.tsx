@@ -83,7 +83,7 @@ export default class OfflineErrorBoundary extends Component<Props, State> {
 
           {/* Subtle connectivity status */}
           <div className="flex items-center gap-2 mt-4">
-            <span className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+            <span className="w-2 h-2 rounded-full bg-destructive0 animate-pulse" />
             <span className="text-[11px] text-muted-foreground font-heading">
               Aguardando conexão...
             </span>

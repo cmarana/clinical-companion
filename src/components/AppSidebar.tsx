@@ -185,7 +185,7 @@ export function AppSidebar() {
           {isAdmin && (
             <SidebarGroup>
               <SidebarGroupLabel>
-                <Shield className="h-3 w-3 mr-1 text-red-500" />
+                <Shield className="h-3 w-3 mr-1 text-destructive0" />
                 Admin
               </SidebarGroupLabel>
               <SidebarGroupContent>
@@ -196,7 +196,7 @@ export function AppSidebar() {
                       onClick={() => navigate("/admin")}
                       tooltip="Painel Admin"
                     >
-                      <Shield className="h-4 w-4 text-red-500" />
+                      <Shield className="h-4 w-4 text-destructive0" />
                       <span>Painel Admin</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -206,7 +206,7 @@ export function AppSidebar() {
                       onClick={() => navigate("/admin/medical-knowledge")}
                       tooltip="Base de Conhecimento"
                     >
-                      <Database className="h-4 w-4 text-red-500" />
+                      <Database className="h-4 w-4 text-destructive0" />
                       <span>Base Médica (RAG)</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -216,7 +216,7 @@ export function AppSidebar() {
                       onClick={() => navigate("/admin/launch-signups")}
                       tooltip="Cadastros do pré-lançamento"
                     >
-                      <Shield className="h-4 w-4 text-red-500" />
+                      <Shield className="h-4 w-4 text-destructive0" />
                       <span>Cadastros (Lançamento)</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>

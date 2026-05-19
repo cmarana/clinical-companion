@@ -127,12 +127,12 @@ export default function ValidationChecklist() {
       </div>
 
       {/* Banner global */}
-      <Card className={allPassing ? "border-emerald-500/50 bg-emerald-500/5" : "border-amber-500/50 bg-amber-500/5"}>
+      <Card className={allPassing ? "border-primary0/50 bg-primary0/5" : "border-destructive0/50 bg-destructive0/5"}>
         <CardHeader className="flex flex-row items-center gap-3 space-y-0">
           {allPassing ? (
-            <CheckCircle2 className="h-6 w-6 text-emerald-600" />
+            <CheckCircle2 className="h-6 w-6 text-primary" />
           ) : (
-            <AlertTriangle className="h-6 w-6 text-amber-600" />
+            <AlertTriangle className="h-6 w-6 text-destructive" />
           )}
           <div>
             <CardTitle className="text-base">
@@ -200,7 +200,7 @@ function TabCard({ summary }: { summary: TabSummary }) {
             {summary.integrity.checks.map((c, i) => (
               <li key={i} className="flex items-start gap-2 text-xs">
                 {c.passed ? (
-                  <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600 mt-0.5 shrink-0" />
+                  <CheckCircle2 className="h-3.5 w-3.5 text-primary mt-0.5 shrink-0" />
                 ) : (
                   <XCircle className="h-3.5 w-3.5 text-destructive mt-0.5 shrink-0" />
                 )}
@@ -228,8 +228,8 @@ function StatusBadge({ ok, okLabel, failLabel }: { ok: boolean; okLabel: string;
       variant="outline"
       className={
         ok
-          ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/30"
-          : "bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/30"
+          ? "bg-primary0/10 text-primary dark:text-primary border-primary0/30"
+          : "bg-destructive0/10 text-destructive dark:text-destructive border-destructive0/30"
       }
     >
       {ok ? <CheckCircle2 className="h-3 w-3 mr-1" /> : <AlertTriangle className="h-3 w-3 mr-1" />}
@@ -240,8 +240,8 @@ function StatusBadge({ ok, okLabel, failLabel }: { ok: boolean; okLabel: string;
 
 function Stat({ label, value, tone }: { label: string; value: number; tone: "ok" | "warn" | "err" }) {
   const colorMap = {
-    ok: "text-emerald-600",
-    warn: "text-amber-600",
+    ok: "text-primary",
+    warn: "text-destructive",
     err: "text-destructive",
   };
   return (

@@ -118,9 +118,9 @@ export default function Status() {
       )}
 
       {!updateAvailable && status.lastResult === "ok" && !isDev && (
-        <Card className="mb-6 border-green-500/30 bg-green-500/5">
+        <Card className="mb-6 border-primary0/30 bg-primary0/5">
           <CardHeader className="flex flex-row items-center gap-3 space-y-0">
-            <CheckCircle2 className="h-5 w-5 text-green-600 dark:text-green-400" aria-hidden />
+            <CheckCircle2 className="h-5 w-5 text-primary dark:text-primary" aria-hidden />
             <div>
               <CardTitle className="text-base">Você está na versão mais recente</CardTitle>
               <CardDescription>Nenhuma atualização pendente.</CardDescription>
@@ -225,7 +225,7 @@ function ResultBadge({ result }: { result: VersionStatus["lastResult"] }) {
   switch (result) {
     case "ok":
       return (
-        <Badge className="bg-green-600 hover:bg-green-600">
+        <Badge className="bg-primary hover:bg-primary">
           <CheckCircle2 className="mr-1 h-3 w-3" /> Atualizado
         </Badge>
       );

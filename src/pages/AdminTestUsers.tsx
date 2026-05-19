@@ -112,10 +112,10 @@ export default function AdminTestUsers() {
       </div>
 
       <div className="px-4 py-5 max-w-2xl mx-auto space-y-5">
-        <div className="bg-amber-500/10 border border-amber-500/30 rounded-xl p-3 flex gap-2 text-xs">
-          <AlertTriangle size={16} className="text-amber-500 shrink-0 mt-0.5" />
+        <div className="bg-destructive0/10 border border-destructive0/30 rounded-xl p-3 flex gap-2 text-xs">
+          <AlertTriangle size={16} className="text-destructive0 shrink-0 mt-0.5" />
           <div>
-            <p className="font-semibold text-amber-500">Importante</p>
+            <p className="font-semibold text-destructive0">Importante</p>
             <p className="text-muted-foreground mt-1">
               As senhas são geradas e mostradas <b>apenas uma vez</b>. Baixe o CSV ou copie a lista
               imediatamente após criar — depois disso, não há como recuperar as senhas.
@@ -192,7 +192,7 @@ export default function AdminTestUsers() {
                     <tr key={i} className="border-b border-border/50">
                       <td className="py-1.5 pr-2 font-mono text-[11px]">{r.email}</td>
                       <td className="py-1.5 pr-2 font-mono text-[11px] select-all">{r.password || "—"}</td>
-                      <td className={`py-1.5 ${r.status === "ok" ? "text-green-500" : "text-red-500"}`}>
+                      <td className={`py-1.5 ${r.status === "ok" ? "text-primary0" : "text-destructive0"}`}>
                         {r.status}{r.error ? ` (${r.error})` : ""}
                       </td>
                     </tr>

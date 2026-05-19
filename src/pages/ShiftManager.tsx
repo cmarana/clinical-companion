@@ -83,8 +83,8 @@ function monthLabel(ym: string) {
 }
 
 const STATUS_CONFIG: Record<ShiftStatus, { label: string; color: string }> = {
-  agendado:  { label: "Agendado",  color: "bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20" },
-  realizado: { label: "Realizado", color: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20" },
+  agendado:  { label: "Agendado",  color: "bg-primary0/10 text-primary dark:text-primary border-primary0/20" },
+  realizado: { label: "Realizado", color: "bg-primary0/10 text-primary dark:text-primary border-primary0/20" },
   cancelado: { label: "Cancelado", color: "bg-destructive/10 text-destructive border-destructive/20" },
 };
 
@@ -259,7 +259,7 @@ function ShiftCard({ shift, onDelete, onTogglePaid, onToggleStatus }: {
             <p className="text-sm font-heading font-semibold truncate">{shift.local}</p>
             <Badge variant="outline" className={`text-[10px] ${status.color}`}>{status.label}</Badge>
             {shift.paid && (
-              <Badge variant="outline" className="text-[10px] bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20">
+              <Badge variant="outline" className="text-[10px] bg-primary0/10 text-primary dark:text-primary border-primary0/20">
                 Pago ✓
               </Badge>
             )}
@@ -310,7 +310,7 @@ function ShiftCard({ shift, onDelete, onTogglePaid, onToggleStatus }: {
               onClick={() => onTogglePaid(shift.id)}
               className={`px-2 py-1 rounded-full text-[10px] font-heading font-semibold border transition-colors ml-auto ${
                 shift.paid
-                  ? "bg-emerald-500/10 text-emerald-700 dark:text-emerald-400 border-emerald-500/20"
+                  ? "bg-primary0/10 text-primary dark:text-primary border-primary0/20"
                   : "border-border text-muted-foreground hover:bg-muted/60"
               }`}
             >
@@ -528,7 +528,7 @@ export default function ShiftManager() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="px-3 pb-3">
-                  <p className="text-lg font-heading font-bold text-emerald-600 dark:text-emerald-400">{formatCurrency(kpis.totalPaid)}</p>
+                  <p className="text-lg font-heading font-bold text-primary dark:text-primary">{formatCurrency(kpis.totalPaid)}</p>
                 </CardContent>
               </Card>
               <Card>
@@ -538,7 +538,7 @@ export default function ShiftManager() {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="px-3 pb-3">
-                  <p className="text-lg font-heading font-bold text-amber-600 dark:text-amber-400">{formatCurrency(kpis.totalPending)}</p>
+                  <p className="text-lg font-heading font-bold text-destructive dark:text-destructive">{formatCurrency(kpis.totalPending)}</p>
                 </CardContent>
               </Card>
             </div>
@@ -554,7 +554,7 @@ export default function ShiftManager() {
                     <p className="text-sm font-heading font-bold">{formatCurrency(s.valueTotal)}</p>
                     <button
                       onClick={() => togglePaid(s.id)}
-                      className={`text-[10px] font-semibold ${s.paid ? "text-emerald-600 dark:text-emerald-400" : "text-amber-600 dark:text-amber-400"}`}
+                      className={`text-[10px] font-semibold ${s.paid ? "text-primary dark:text-primary" : "text-destructive dark:text-destructive"}`}
                     >
                       {s.paid ? "✓ Pago" : "Pendente →"}
                     </button>

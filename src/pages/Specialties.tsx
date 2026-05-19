@@ -48,10 +48,10 @@ const toneStyles: Record<(typeof tones)[number], string> = {
   primary: "bg-primary/10 text-primary",
   danger: "bg-destructive/10 text-destructive",
   slate: "bg-slate-500/10 text-slate-600 dark:text-slate-300",
-  emerald: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
-  amber: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
-  violet: "bg-violet-500/10 text-violet-600 dark:text-violet-400",
-  sky: "bg-sky-500/10 text-sky-600 dark:text-sky-400",
+  emerald: "bg-primary0/10 text-primary dark:text-primary",
+  amber: "bg-destructive0/10 text-destructive dark:text-destructive",
+  violet: "bg-primary0/10 text-primary dark:text-primary",
+  sky: "bg-primary0/10 text-primary dark:text-primary",
 };
 
 export default function Specialties() {
@@ -86,7 +86,7 @@ export default function Specialties() {
       <div className="pb-28 max-w-lg md:max-w-4xl lg:max-w-5xl mx-auto px-4 pt-4">
         <div className="mb-5">
           <div className="flex items-center gap-2 mb-1">
-            <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+            <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-primary0/10 text-primary dark:text-primary">
               <Stethoscope size={18} />
             </div>
             <h1 className="font-heading font-bold text-[20px] tracking-tight">Especialidades</h1>

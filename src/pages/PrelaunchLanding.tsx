@@ -27,7 +27,7 @@ const GROUPS: Group[] = [
     id: "condutas",
     title: "Condutas & Protocolos",
     subtitle: "Decisões clínicas com referência e velocidade.",
-    accent: "from-blue-500/20 to-blue-500/5 ring-blue-500/30 text-blue-300",
+    accent: "from-primary0/20 to-primary0/5 ring-primary0/30 text-primary",
     icon: BookOpen,
     tools: [
       { name: "Modo Emergência", desc: "PCR, sepse, IAM, AVC com fluxogramas", icon: Siren, path: "/emergency" },
@@ -44,7 +44,7 @@ const GROUPS: Group[] = [
     id: "ia",
     title: "IA Clínica - Dra. Clara",
     subtitle: "Apoio inteligente para raciocínio, exames de imagem e documentação.",
-    accent: "from-blue-500/20 to-blue-500/5 ring-blue-500/30 text-blue-300",
+    accent: "from-primary0/20 to-primary0/5 ring-primary0/30 text-primary",
     icon: Bot,
     tools: [
       { name: "IA Clínica", desc: "Chat, Caso, Exames, Plantão e Texto", icon: Bot, path: "/clinical-ai" },
@@ -59,7 +59,7 @@ const GROUPS: Group[] = [
     id: "medicamentos",
     title: "Medicamentos & Doses",
     subtitle: "Bulário, interações e diluições à mão.",
-    accent: "from-emerald-500/20 to-emerald-500/5 ring-emerald-500/30 text-emerald-300",
+    accent: "from-primary0/20 to-primary0/5 ring-primary0/30 text-primary",
     icon: Pill,
     tools: [
       { name: "Bulário", desc: "2.000+ fármacos com posologia", icon: Pill, path: "/bulario" },
@@ -74,7 +74,7 @@ const GROUPS: Group[] = [
     id: "calculadoras",
     title: "Calculadoras & Referência",
     subtitle: "Scores, valores críticos e cronômetros.",
-    accent: "from-indigo-500/20 to-indigo-500/5 ring-indigo-500/30 text-indigo-300",
+    accent: "from-primary0/20 to-primary0/5 ring-primary0/30 text-primary",
     icon: Calculator,
     tools: [
       { name: "53 Calculadoras", desc: "Glasgow, SOFA, Wells, HEART, MELD…", icon: Calculator, path: "/calculators" },
@@ -88,7 +88,7 @@ const GROUPS: Group[] = [
     id: "especialidades",
     title: "Especialidades",
     subtitle: "Conteúdo dedicado por área de atuação.",
-    accent: "from-teal-500/20 to-teal-500/5 ring-teal-500/30 text-teal-300",
+    accent: "from-primary0/20 to-primary0/5 ring-primary0/30 text-primary",
     icon: Stethoscope,
     tools: [
       { name: "Pediatria", desc: "Protocolos pediátricos completos", icon: Baby, path: "/pediatrics" },
@@ -101,7 +101,7 @@ const GROUPS: Group[] = [
     id: "estudo",
     title: "Estudo",
     subtitle: "Revisão espaçada, residência e desempenho.",
-    accent: "from-amber-500/20 to-amber-500/5 ring-amber-500/30 text-amber-300",
+    accent: "from-destructive0/20 to-destructive0/5 ring-destructive0/30 text-destructive",
     icon: GraduationCap,
     tools: [
       { name: "Questões Comentadas", desc: "Banco com gabarito comentado", icon: HelpCircle, path: "/quiz" },
@@ -115,7 +115,7 @@ const GROUPS: Group[] = [
     id: "produtividade",
     title: "Produtividade no Plantão",
     subtitle: "Rotina organizada, mesmo nas piores noites.",
-    accent: "from-rose-500/20 to-rose-500/5 ring-rose-500/30 text-rose-300",
+    accent: "from-destructive0/20 to-destructive0/5 ring-destructive0/30 text-destructive",
     icon: BedDouble,
     tools: [
       { name: "Modo Rounds", desc: "Visita de leito com checklist", icon: BedDouble, path: "/rounds" },
@@ -186,12 +186,12 @@ export default function PrelaunchLanding() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0F1F] text-slate-100 selection:bg-blue-500/30 selection:text-white">
+    <div className="min-h-screen bg-[#0A0F1F] text-slate-100 selection:bg-primary0/30 selection:text-white">
       {/* Background ambiente */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-blue-500/10 blur-3xl" />
-        <div className="absolute top-1/3 -right-40 h-[480px] w-[480px] rounded-full bg-blue-700/15 blur-3xl" />
-        <div className="absolute bottom-0 left-1/3 h-[420px] w-[420px] rounded-full bg-emerald-400/5 blur-3xl" />
+        <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-primary0/10 blur-3xl" />
+        <div className="absolute top-1/3 -right-40 h-[480px] w-[480px] rounded-full bg-primary/15 blur-3xl" />
+        <div className="absolute bottom-0 left-1/3 h-[420px] w-[420px] rounded-full bg-primary/5 blur-3xl" />
         <svg className="absolute inset-0 h-full w-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse">
@@ -209,7 +209,7 @@ export default function PrelaunchLanding() {
             <img src={logo} alt="PULSO" className="h-7 w-auto" />
             <span className="hidden sm:inline text-sm font-semibold tracking-tight text-slate-100">
               PULSO <span className="text-slate-500 font-normal mx-1">|</span>
-              <span className="text-blue-300/90 font-medium">Emergência Médica</span>
+              <span className="text-primary/90 font-medium">Emergência Médica</span>
             </span>
           </button>
           <nav className="hidden md:flex items-center gap-7 text-sm text-slate-300">
@@ -221,13 +221,13 @@ export default function PrelaunchLanding() {
           <div className="flex items-center gap-2">
             <Link
               to="/auth"
-              className="hidden sm:inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-blue-300 transition px-3 py-2"
+              className="hidden sm:inline-flex items-center gap-1.5 text-xs text-slate-400 hover:text-primary transition px-3 py-2"
             >
               <Lock className="h-3.5 w-3.5" /> Acesso restrito
             </Link>
             <Button
               onClick={() => scrollTo("cadastro")}
-              className="bg-blue-500 hover:bg-blue-400 text-[#0A0F1F] font-semibold rounded-full px-4 sm:px-5"
+              className="bg-primary0 hover:bg-primary text-[#0A0F1F] font-semibold rounded-full px-4 sm:px-5"
             >
               Cadastrar
             </Button>
@@ -244,12 +244,12 @@ export default function PrelaunchLanding() {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="lg:col-span-7"
             >
-              <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/30 bg-blue-500/10 px-3 py-1 text-xs font-medium text-blue-300">
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary0/30 bg-primary0/10 px-3 py-1 text-xs font-medium text-primary">
                 <Sparkles className="h-3.5 w-3.5" /> Pré-lançamento · 2026
               </div>
               <h1 className="mt-5 text-4xl sm:text-5xl lg:text-[58px] font-semibold leading-[1.05] tracking-tight">
                 O novo padrão da{" "}
-                <span className="bg-gradient-to-r from-blue-300 via-blue-200 to-emerald-200 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-primary via-primary to-primary bg-clip-text text-transparent">
                   emergência
                 </span>{" "}
                 está chegando.
@@ -267,7 +267,7 @@ export default function PrelaunchLanding() {
                 <Button
                   size="lg"
                   onClick={() => scrollTo("cadastro")}
-                  className="bg-blue-500 hover:bg-blue-400 text-[#0A0F1F] font-semibold rounded-full px-6"
+                  className="bg-primary0 hover:bg-primary text-[#0A0F1F] font-semibold rounded-full px-6"
                 >
                   Quero me cadastrar para o lançamento
                   <ArrowRight className="h-4 w-4" />
@@ -293,7 +293,7 @@ export default function PrelaunchLanding() {
                   { n: "24/7", l: "pronto para o plantão" },
                 ].map((s) => (
                   <div key={s.l} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-3">
-                    <div className="text-2xl font-semibold text-blue-300">{s.n}</div>
+                    <div className="text-2xl font-semibold text-primary">{s.n}</div>
                     <div className="text-[11px] text-slate-400 leading-tight mt-0.5">{s.l}</div>
                   </div>
                 ))}
@@ -313,7 +313,7 @@ export default function PrelaunchLanding() {
                   <div className="flex items-center justify-between text-[10px] text-slate-400 px-1">
                     <span>9:41</span>
                     <span className="flex items-center gap-1">
-                      <span className="h-1.5 w-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                      <span className="h-1.5 w-1.5 rounded-full bg-primary animate-pulse" />
                       online
                     </span>
                   </div>
@@ -325,7 +325,7 @@ export default function PrelaunchLanding() {
                       </div>
                       <div className="leading-tight">
                         <div className="text-[12px] font-semibold text-white">PULSO</div>
-                        <div className="text-[8.5px] uppercase tracking-wider text-blue-300/80">Emergência Médica</div>
+                        <div className="text-[8.5px] uppercase tracking-wider text-primary/80">Emergência Médica</div>
                       </div>
                     </div>
                     <Search className="h-4 w-4 text-slate-400" />
@@ -337,7 +337,7 @@ export default function PrelaunchLanding() {
                       <div className="text-[10px] text-slate-400">Bom plantão, Dr.</div>
                       <div className="text-[12px] font-medium text-slate-100 leading-tight">Suas {TOTAL_TOOLS} ferramentas</div>
                     </div>
-                    <div className="text-[8.5px] text-blue-300/80 uppercase tracking-wider">Tudo no app</div>
+                    <div className="text-[8.5px] text-primary/80 uppercase tracking-wider">Tudo no app</div>
                   </div>
 
                   {/* Lista das 39 ferramentas com auto-scroll */}
@@ -352,7 +352,7 @@ export default function PrelaunchLanding() {
                           key={`${t.name}-${i}`}
                           className="rounded-lg border border-white/10 bg-gradient-to-b from-white/[0.06] to-transparent px-1 py-1.5 flex flex-col items-center justify-center gap-0.5 aspect-square"
                         >
-                          <t.icon className="h-3 w-3 text-blue-300" />
+                          <t.icon className="h-3 w-3 text-primary" />
                           <div className="text-[7.5px] text-slate-300 text-center leading-[1.05] font-medium line-clamp-2 px-0.5">
                             {t.name}
                           </div>
@@ -373,8 +373,8 @@ export default function PrelaunchLanding() {
                       { i: Bookmark, l: "Salvos" },
                     ].map((n) => (
                       <div key={n.l} className="flex flex-col items-center gap-0.5">
-                        <n.i className={`h-3.5 w-3.5 ${n.active ? "text-blue-300" : "text-slate-500"}`} />
-                        <div className={`text-[8px] ${n.active ? "text-blue-300" : "text-slate-500"}`}>{n.l}</div>
+                        <n.i className={`h-3.5 w-3.5 ${n.active ? "text-primary" : "text-slate-500"}`} />
+                        <div className={`text-[8px] ${n.active ? "text-primary" : "text-slate-500"}`}>{n.l}</div>
                       </div>
                     ))}
                   </div>
@@ -418,11 +418,11 @@ export default function PrelaunchLanding() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
           <div className="grid lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-5">
-              <div className="inline-flex items-center gap-2 rounded-full border border-blue-400/30 bg-blue-500/10 px-3 py-1 text-xs text-blue-200">
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary0/10 px-3 py-1 text-xs text-primary">
                 <Bot className="h-3.5 w-3.5" /> IA Clínica
               </div>
               <h2 className="mt-4 text-3xl sm:text-4xl font-semibold tracking-tight">
-                Conheça a <span className="text-blue-300">Dra. Clara</span>, a IA clínica do PULSO.
+                Conheça a <span className="text-primary">Dra. Clara</span>, a IA clínica do PULSO.
               </h2>
               <p className="mt-5 text-slate-300 leading-relaxed">
                 A Dra. Clara foi criada para apoiar o médico na busca por informações clínicas, organização
@@ -430,7 +430,7 @@ export default function PrelaunchLanding() {
               </p>
               <p className="mt-3 text-slate-400 text-sm leading-relaxed">
                 Ela funciona como uma assistente clínica inteligente dentro do PULSO, ajudando a interpretar
-                <span className="text-blue-200"> RX, TC, RM, US e ECG</span>, revisar condutas, consultar
+                <span className="text-primary"> RX, TC, RM, US e ECG</span>, revisar condutas, consultar
                 informações e tornar a experiência mais rápida e objetiva.
               </p>
               <p className="mt-6 text-[11px] text-slate-500 italic max-w-md">
@@ -447,7 +447,7 @@ export default function PrelaunchLanding() {
                 { icon: Activity, t: "Clareza em momentos críticos", d: "Respostas objetivas, com linguagem médica e foco na prática." },
               ].map((c) => (
                 <div key={c.t} className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent p-5">
-                  <div className="h-9 w-9 rounded-xl bg-blue-500/15 text-blue-300 flex items-center justify-center">
+                  <div className="h-9 w-9 rounded-xl bg-primary0/15 text-primary flex items-center justify-center">
                     <c.icon className="h-4 w-4" />
                   </div>
                   <div className="mt-3 font-medium">{c.t}</div>
@@ -458,13 +458,13 @@ export default function PrelaunchLanding() {
               {/* Chat preview */}
               <div className="sm:col-span-2 rounded-2xl border border-white/10 bg-[#0B1426] p-5 mt-2">
                 <div className="flex items-start gap-3">
-                  <div className="h-9 w-9 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white text-sm font-semibold">DC</div>
+                  <div className="h-9 w-9 rounded-full bg-gradient-to-br from-primary to-primary flex items-center justify-center text-white text-sm font-semibold">DC</div>
                   <div className="flex-1">
                     <div className="text-xs text-slate-400">Você · agora</div>
                     <div className="mt-1 rounded-2xl rounded-tl-sm bg-white/5 px-4 py-2.5 text-sm">
                       Dra. Clara, qual o próximo passo no choque séptico refratário?
                     </div>
-                    <div className="mt-3 rounded-2xl rounded-tl-sm bg-blue-500/10 border border-blue-400/20 px-4 py-3 text-sm text-blue-50">
+                    <div className="mt-3 rounded-2xl rounded-tl-sm bg-primary0/10 border border-primary/20 px-4 py-3 text-sm text-primary">
                       Considerar adicionar vasopressina à noradrenalina (até 0,03 U/min), reavaliar
                       perfusão tecidual e investigar foco infeccioso não controlado.
                     </div>
@@ -480,7 +480,7 @@ export default function PrelaunchLanding() {
       <section id="ferramentas" className="border-y border-white/5 bg-white/[0.015]">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
           <div className="max-w-3xl">
-            <div className="text-xs uppercase tracking-[0.22em] text-blue-300/80">Ferramentas reais do PULSO</div>
+            <div className="text-xs uppercase tracking-[0.22em] text-primary/80">Ferramentas reais do PULSO</div>
             <h2 className="mt-3 text-3xl sm:text-4xl font-semibold tracking-tight">
               {TOTAL_TOOLS} ferramentas para transformar sua rotina no plantão.
             </h2>
@@ -500,7 +500,7 @@ export default function PrelaunchLanding() {
                   onClick={() => setActiveGroup(g.id)}
                   className={`group inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition ${
                     active
-                      ? "bg-blue-500 text-[#0A0F1F] shadow-lg shadow-blue-500/20"
+                      ? "bg-primary0 text-[#0A0F1F] shadow-lg shadow-primary0/20"
                       : "bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10"
                   }`}
                 >
@@ -523,10 +523,10 @@ export default function PrelaunchLanding() {
             {visibleTools.map((t) => (
               <div
                 key={t.name}
-                className="group rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent p-4 hover:border-blue-400/30 hover:bg-white/[0.06] transition"
+                className="group rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent p-4 hover:border-primary/30 hover:bg-white/[0.06] transition"
               >
                 <div className="flex items-start gap-3">
-                  <div className="h-9 w-9 rounded-xl bg-blue-500/10 text-blue-300 flex items-center justify-center shrink-0">
+                  <div className="h-9 w-9 rounded-xl bg-primary0/10 text-primary flex items-center justify-center shrink-0">
                     <t.icon className="h-4 w-4" />
                   </div>
                   <div className="min-w-0">
@@ -547,7 +547,7 @@ export default function PrelaunchLanding() {
               { n: "Plantão", l: "feito para médicos" },
             ].map((c) => (
               <div key={c.l} className="rounded-2xl border border-white/10 bg-white/5 px-4 py-4">
-                <div className="text-xl font-semibold text-blue-300">{c.n}</div>
+                <div className="text-xl font-semibold text-primary">{c.n}</div>
                 <div className="text-[12px] text-slate-400 leading-tight mt-1">{c.l}</div>
               </div>
             ))}
@@ -583,7 +583,7 @@ export default function PrelaunchLanding() {
           ].map((b) => (
             <Card key={b.t} className="bg-white/[0.04] border-white/10 text-slate-100">
               <CardContent className="p-5">
-                <div className="h-10 w-10 rounded-xl bg-blue-500/10 text-blue-300 flex items-center justify-center">
+                <div className="h-10 w-10 rounded-xl bg-primary0/10 text-primary flex items-center justify-center">
                   <b.icon className="h-5 w-5" />
                 </div>
                 <div className="mt-4 font-medium">{b.t}</div>
@@ -611,7 +611,7 @@ export default function PrelaunchLanding() {
               "Equipes que precisam decidir rápido",
             ].map((p) => (
               <div key={p} className="rounded-2xl border border-white/10 bg-white/5 px-5 py-4 flex items-center gap-3 text-sm">
-                <Stethoscope className="h-4 w-4 text-blue-300 shrink-0" />
+                <Stethoscope className="h-4 w-4 text-primary shrink-0" />
                 <span className="text-slate-200">{p}</span>
               </div>
             ))}
@@ -623,7 +623,7 @@ export default function PrelaunchLanding() {
       <section id="cadastro" className="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
         <div className="grid lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-5">
-            <div className="inline-flex items-center gap-2 rounded-full border border-emerald-400/30 bg-emerald-500/10 px-3 py-1 text-xs text-emerald-200">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary0/10 px-3 py-1 text-xs text-primary">
               <Sparkles className="h-3.5 w-3.5" /> Benefícios de lançamento
             </div>
             <h2 className="mt-4 text-3xl sm:text-4xl font-semibold tracking-tight">
@@ -641,7 +641,7 @@ export default function PrelaunchLanding() {
                 "Novidades e atualizações em primeira mão.",
               ].map((i) => (
                 <li key={i} className="flex items-start gap-2">
-                  <CheckSquare className="h-4 w-4 text-emerald-300 mt-0.5 shrink-0" />
+                  <CheckSquare className="h-4 w-4 text-primary mt-0.5 shrink-0" />
                   {i}
                 </li>
               ))}
@@ -652,7 +652,7 @@ export default function PrelaunchLanding() {
             <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] p-6 sm:p-8">
               {submitted ? (
                 <div className="text-center py-10">
-                  <div className="mx-auto h-14 w-14 rounded-full bg-emerald-500/15 text-emerald-300 flex items-center justify-center">
+                  <div className="mx-auto h-14 w-14 rounded-full bg-primary0/15 text-primary flex items-center justify-center">
                     <CheckSquare className="h-7 w-7" />
                   </div>
                   <h3 className="mt-5 text-xl font-semibold">Cadastro realizado com sucesso.</h3>
@@ -678,7 +678,7 @@ export default function PrelaunchLanding() {
                     <select
                       value={form.perfil_profissional}
                       onChange={(e) => setForm({ ...form, perfil_profissional: e.target.value })}
-                      className="h-10 w-full rounded-md bg-white/5 border border-white/10 text-slate-100 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-400/40"
+                      className="h-10 w-full rounded-md bg-white/5 border border-white/10 text-slate-100 px-3 text-sm focus:outline-none focus:ring-2 focus:ring-primary/40"
                     >
                       <option value="" className="bg-[#0A0F1F]">Selecione…</option>
                       {PERFIS.map((p) => (
@@ -694,7 +694,7 @@ export default function PrelaunchLanding() {
                     <Checkbox
                       id="comm" checked={form.aceitou_comunicacao}
                       onCheckedChange={(v) => setForm({ ...form, aceitou_comunicacao: !!v })}
-                      className="mt-0.5 border-white/30 data-[state=checked]:bg-blue-500 data-[state=checked]:border-blue-500"
+                      className="mt-0.5 border-white/30 data-[state=checked]:bg-primary0 data-[state=checked]:border-primary0"
                     />
                     <label htmlFor="comm" className="text-xs text-slate-300 leading-relaxed cursor-pointer">
                       Quero receber novidades e benefícios sobre o lançamento do PULSO.
@@ -704,13 +704,13 @@ export default function PrelaunchLanding() {
                   <div className="sm:col-span-2 mt-2">
                     <Button
                       type="submit" disabled={submitting}
-                      className="w-full bg-blue-500 hover:bg-blue-400 text-[#0A0F1F] font-semibold rounded-full h-11"
+                      className="w-full bg-primary0 hover:bg-primary text-[#0A0F1F] font-semibold rounded-full h-11"
                     >
                       {submitting ? "Enviando…" : "Quero receber benefícios no lançamento"}
                     </Button>
                     <p className="mt-3 text-[11px] text-slate-500 text-center">
                       Ao enviar, você concorda com nossa{" "}
-                      <Link to="/privacy" className="underline hover:text-blue-300">Política de Privacidade</Link>.
+                      <Link to="/privacy" className="underline hover:text-primary">Política de Privacidade</Link>.
                     </p>
                   </div>
                 </form>
@@ -723,7 +723,7 @@ export default function PrelaunchLanding() {
       {/* CTA FINAL */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 py-20 sm:py-24">
-          <div className="relative rounded-3xl border border-blue-400/20 bg-gradient-to-br from-blue-500/10 via-blue-700/10 to-emerald-500/5 p-10 sm:p-14 text-center">
+          <div className="relative rounded-3xl border border-primary/20 bg-gradient-to-br from-primary0/10 via-primary/10 to-primary0/5 p-10 sm:p-14 text-center">
             <img src={logo} alt="PULSO" className="h-9 w-auto mx-auto opacity-80" />
             <h2 className="mt-6 text-3xl sm:text-4xl font-semibold tracking-tight">
               O plantão vai mudar. Esteja entre os primeiros a saber.
@@ -734,7 +734,7 @@ export default function PrelaunchLanding() {
             </p>
             <Button
               size="lg" onClick={() => scrollTo("cadastro")}
-              className="mt-8 bg-blue-500 hover:bg-blue-400 text-[#0A0F1F] font-semibold rounded-full px-7"
+              className="mt-8 bg-primary0 hover:bg-primary text-[#0A0F1F] font-semibold rounded-full px-7"
             >
               Quero receber benefícios no lançamento
               <ArrowRight className="h-4 w-4" />
@@ -753,9 +753,9 @@ export default function PrelaunchLanding() {
             </p>
           </div>
           <div className="text-sm text-slate-300 space-y-2">
-            <Link to="/privacy" className="block hover:text-blue-300">Política de Privacidade</Link>
-            <Link to="/terms" className="block hover:text-blue-300">Termos de Uso</Link>
-            <Link to="/auth" className="inline-flex items-center gap-1.5 text-slate-400 hover:text-blue-300">
+            <Link to="/privacy" className="block hover:text-primary">Política de Privacidade</Link>
+            <Link to="/terms" className="block hover:text-primary">Termos de Uso</Link>
+            <Link to="/auth" className="inline-flex items-center gap-1.5 text-slate-400 hover:text-primary">
               <Lock className="h-3.5 w-3.5" /> Acesso restrito
             </Link>
           </div>
