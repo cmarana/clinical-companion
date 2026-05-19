@@ -17,6 +17,8 @@ import { Badge } from "@/components/ui/badge";
 import { useTheme } from "@/contexts/ThemeContext";
 import { hapticLight } from "@/lib/haptics";
 import MyProgressSection from "@/components/MyProgressSection";
+import TwoFactorSettings from "@/components/TwoFactorSettings";
+import { ShieldCheck as ShieldCheck2FA } from "lucide-react";
 
 const SPECIALTIES_BY_AREA: Record<string, string[]> = {
   "Medicina": [
@@ -771,6 +773,11 @@ export default function Profile() {
               {themeOptions.find(o => o.id === theme)?.desc}
             </p>
           </div>
+
+          {/* ── Segurança (2FA) ── */}
+          <Section icon={ShieldCheck2FA} title="Segurança" index={4}>
+            <TwoFactorSettings />
+          </Section>
 
           {/* ── Account info ── */}
           <Section icon={Shield} title="Conta" index={5}>

@@ -18,6 +18,8 @@ import { lazy, Suspense, useEffect } from "react";
 import { ProtocolListSkeleton, ProtocolDetailSkeleton, MedicationListSkeleton } from "@/components/PageSkeleton";
 import { APP_LAUNCH_STATUS } from "@/config/launchStatus";
 import { useAppAccess } from "@/hooks/useAppAccess";
+import { useTwoFactor } from "@/hooks/useTwoFactor";
+import TwoFactorGate from "@/components/TwoFactorGate";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Protocols = lazy(() => import("@/pages/Protocols"));
@@ -119,9 +121,9 @@ const queryClient = new QueryClient({
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading, profileComplete } = useAuth();
   const { hasAccess, loading: accessLoading } = useAppAccess();
+  const twoFa = useTwoFactor();
   if (loading) return <LazyFallback />;
   if (!user) return <Navigate to="/auth" replace />;
-  // Pre-launch gate: only admin/tester/developer can enter the app.
   if (APP_LAUNCH_STATUS === "prelaunch") {
     if (accessLoading || hasAccess === null) return <LazyFallback />;
     if (!hasAccess) return <Navigate to="/coming-soon" replace />;
@@ -129,6 +131,10 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   if (profileComplete === null) return <LazyFallback />;
   const justOnboarded = sessionStorage.getItem("pulso_just_onboarded") === "1";
   if (!profileComplete && !justOnboarded) return <Navigate to="/onboarding" replace />;
+  if (twoFa.loading) return <LazyFallback />;
+  if (twoFa.needsVerification) {
+    return <TwoFactorGate onVerified={() => twoFa.refresh()} />;
+  }
   return <>{children}</>;
 }
 
