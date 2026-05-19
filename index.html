@@ -412,21 +412,21 @@
       })();
     </script>
     <script>
-      // Emergency SW cleanup for preview/iframe — runs before React
+      // Emergency SW cleanup for preview/iframe — must finish before loading React.
       (function(){
         try {
           var isPreview = location.hostname.indexOf('id-preview--') !== -1 || location.hostname.indexOf('lovableproject.com') !== -1;
           var isIframe = false;
           try { isIframe = window.self !== window.top; } catch(e) { isIframe = true; }
+          window.__pulsoPreviewCleanupPromise = Promise.resolve();
           if ((isPreview || isIframe) && 'serviceWorker' in navigator) {
-            navigator.serviceWorker.getRegistrations().then(function(regs) {
-              regs.forEach(function(r) { r.unregister(); });
+            var clearSW = navigator.serviceWorker.getRegistrations().then(function(regs) {
+              return Promise.all(regs.map(function(r) { return r.unregister().catch(function(){ return false; }); }));
             });
-            if ('caches' in window) {
-              caches.keys().then(function(keys) {
-                keys.forEach(function(k) { caches.delete(k); });
-              });
-            }
+            var clearCaches = 'caches' in window
+              ? caches.keys().then(function(keys) { return Promise.all(keys.map(function(k) { return caches.delete(k).catch(function(){ return false; }); })); })
+              : Promise.resolve();
+            window.__pulsoPreviewCleanupPromise = Promise.all([clearSW, clearCaches]).catch(function(){});
           }
         } catch(e) {}
       })();
@@ -514,6 +514,18 @@
         }
       })();
     </script>
-    <script type="module" src="/src/main.tsx"></script>
+    <script>
+      (function(){
+        function startApp(){
+          var s = document.createElement('script');
+          s.type = 'module';
+          s.src = '/src/main.tsx?v=' + Date.now();
+          document.body.appendChild(s);
+        }
+        var cleanup = window.__pulsoPreviewCleanupPromise;
+        if (cleanup && typeof cleanup.then === 'function') cleanup.then(startApp).catch(startApp);
+        else startApp();
+      })();
+    </script>
   </body>
 </html>
