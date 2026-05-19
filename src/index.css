@@ -574,3 +574,9 @@
   85%  { stroke-dashoffset: 0; opacity: 1; }
   100% { stroke-dashoffset: -220; opacity: 0.4; }
 }
+
+/* ECG sweep across the header bar */
+@keyframes pulso-ecg-sweep {
+  0%   { stroke-dashoffset: 600; }
+  100% { stroke-dashoffset: -600; }
+}
