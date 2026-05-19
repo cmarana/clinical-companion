@@ -117,7 +117,7 @@
         background: radial-gradient(closest-side, rgba(10,109,217,0.10), rgba(10,109,217,0) 70%);
         z-index: -1;
       }
-      .pulso-icon svg { width: 100%; height: 100%; display: block; }
+      .pulso-icon svg, .pulso-icon img { width: 100%; height: 100%; display: block; object-fit: contain; }
 
       /* 2) ECG — desenha a partir da esquerda (stroke-dashoffset → 0) */
       .pulso-ecg-line {
@@ -266,26 +266,7 @@
     <div id="pulso-splash" aria-hidden="true">
       <div class="pulso-brand">
         <div class="pulso-icon">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-            <defs>
-              <linearGradient id="pulso-p-grad" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#5fb0ff"/>
-                <stop offset="55%" stop-color="#1f7dea"/>
-                <stop offset="100%" stop-color="#0a4fb8"/>
-              </linearGradient>
-            </defs>
-            <!-- Letra P em gradiente azul -->
-            <path d="M24 12 H58 a20 20 0 0 1 0 40 H38 V88 H24 Z M38 26 V38 H56 a6 6 0 0 0 0-12 Z"
-                  fill="url(#pulso-p-grad)"/>
-            <!-- Linha de ECG cruzando o "P" -->
-            <path class="pulso-ecg-line"
-                  d="M14 50 L34 50 L40 38 L46 64 L52 30 L58 60 L64 50 L86 50"
-                  fill="none"
-                  stroke="#5fb0ff"
-                  stroke-width="3.4"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"/>
-          </svg>
+          <img src="/pulso-logo.png" alt="PULSO" width="512" height="512" />
         </div>
         <div class="pulso-wordmark">PULSO</div>
         <div class="pulso-tagline">EMERGÊNCIA</div>
