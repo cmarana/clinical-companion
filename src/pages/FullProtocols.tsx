@@ -392,7 +392,7 @@ export default function FullProtocols() {
         <div className="flex items-center justify-between text-[10px] text-muted-foreground px-1">
           <span>
             <strong className="text-foreground">{visibleItems.length}</strong>
-            {lockedCount > 0 && <span className="text-amber-600 dark:text-amber-400"> + {lockedCount} bloqueados</span>}
+            {lockedCount > 0 && <span className="text-primary"> + {lockedCount} bloqueados</span>}
             {" "}de {filtered.length}
           </span>
           {hasActiveFilters && (
