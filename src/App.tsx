@@ -23,6 +23,8 @@ const Home = lazy(() => import("@/pages/Home"));
 const Protocols = lazy(() => import("@/pages/Protocols"));
 const ProtocolDetail = lazy(() => import("@/pages/ProtocolDetail"));
 const Calculators = lazy(() => import("@/pages/Calculators"));
+const Tools = lazy(() => import("@/pages/Tools"));
+const Specialties = lazy(() => import("@/pages/Specialties"));
 const Quiz = lazy(() => import("@/pages/Quiz"));
 const SearchPage = lazy(() => import("@/pages/SearchPage"));
 const Favorites = lazy(() => import("@/pages/Favorites"));
