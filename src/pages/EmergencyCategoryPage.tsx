@@ -103,40 +103,42 @@ function EmergencyCategoryContent() {
                 </button>
 
                 {open && (
-                  <div className="px-4 pb-4 space-y-1.5 border-t border-border/50 pt-3">
-                    {sections.map(s => {
-                      const isOpen = openSection[p.id] === s.id;
-                      return (
-                            <div key={s.id} className="rounded-lg bg-white/12 ring-1 ring-white/15">
-                          <button
-                            onClick={() =>
-                              setOpenSection(prev => ({
-                                ...prev,
-                                [p.id]: isOpen ? "" : s.id,
-                              }))
-                            }
-                            className="w-full flex items-center justify-between px-3 py-2 text-left"
-                          >
-                            <span className="text-xs font-heading font-medium">
-                              {s.title}
-                            </span>
-                            <ChevronDown
-                              size={13}
-                              className={`text-white/78 transition-transform ${isOpen ? "rotate-180" : ""}`}
-                            />
-                          </button>
-                          {isOpen && (
-                            <div className="px-3 pb-3 text-xs leading-relaxed whitespace-pre-wrap text-white/88">
-                              {s.content}
-                            </div>
-                          )}
-                        </div>
-                      );
-                    })}
+                  <div className="px-4 pb-4 pt-3 border-t border-white/15">
+                    <div className="rounded-xl overflow-hidden ring-1 ring-white/15 divide-y divide-white/10">
+                      {sections.map(s => {
+                        const isOpen = openSection[p.id] === s.id;
+                        return (
+                          <div key={s.id} className="bg-white/10">
+                            <button
+                              onClick={() =>
+                                setOpenSection(prev => ({
+                                  ...prev,
+                                  [p.id]: isOpen ? "" : s.id,
+                                }))
+                              }
+                              className="w-full flex items-center justify-between px-3 py-2.5 text-left hover:bg-white/5 transition"
+                            >
+                              <span className="text-xs font-heading font-medium">
+                                {s.title}
+                              </span>
+                              <ChevronDown
+                                size={13}
+                                className={`text-white/78 transition-transform ${isOpen ? "rotate-180" : ""}`}
+                              />
+                            </button>
+                            {isOpen && (
+                              <div className="px-3 pb-3 text-xs leading-relaxed whitespace-pre-wrap text-white/88 border-t border-white/10 pt-2">
+                                {s.content}
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
 
                     <button
                       onClick={() => navigate(`/emergency/${p.id}`)}
-                      className="w-full mt-2 text-[11px] font-heading font-semibold py-2 rounded-lg bg-primary/10 text-primary hover:bg-primary/15 transition"
+                      className="w-full mt-3 text-[11px] font-heading font-semibold py-2 rounded-lg bg-white/15 hover:bg-white/25 text-white ring-1 ring-white/25 transition"
                     >
                       Abrir protocolo em tela cheia →
                     </button>
