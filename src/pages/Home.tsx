@@ -48,7 +48,7 @@ const modes = [
   { label: "Ferramentas", sub: "Calculadoras, bulário, diagnóstico", icon: Wrench, path: "/tools", tone: "slate" },
   { label: "Especialidades", sub: "Protocolos por área clínica", icon: Stethoscope, path: "/specialties", tone: "emerald" },
   { label: "Estudo", sub: "Flashcards, questões e residência", icon: GraduationCap, path: "/study-dashboard", tone: "amber" },
-  { label: "Documentos", sub: "Prescrições, evoluções e alta", icon: FileText, path: "/prescriptions", tone: "violet" },
+  { label: "Prescrições", sub: "Modelos, evoluções e alta", icon: FileText, path: "/prescriptions", tone: "violet" },
 ];
 
 const toneStyles: Record<string, { icon: string; ring: string }> = {
