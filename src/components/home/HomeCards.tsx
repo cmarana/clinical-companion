@@ -21,16 +21,16 @@ type IconType = ElementType;
 type Variant = "ai" | "emergency" | "cyan" | "default";
 
 const cardStyles: Record<Variant, string> = {
-  ai: "col-span-2 bg-gradient-to-br from-primary via-primary to-primary dark:from-primary0 dark:via-primary0 dark:to-primary0 text-white shadow-lg shadow-primary0/25 dark:shadow-primary0/40 ring-1 ring-white/10",
+  ai: "col-span-2 bg-gradient-to-br from-primary via-primary to-primary dark:from-primary dark:via-primary dark:to-primary text-white shadow-lg shadow-primary/25 dark:shadow-primary/40 ring-1 ring-white/10",
   emergency: "bg-gradient-to-br from-card to-card dark:from-card dark:to-[hsl(var(--card)/0.8)] shadow-md shadow-destructive/5 dark:shadow-destructive/10 ring-1 ring-destructive/15 dark:ring-destructive/25",
-  cyan: "bg-gradient-to-br from-card to-card dark:from-card dark:to-[hsl(var(--card)/0.8)] shadow-md shadow-primary0/5 dark:shadow-primary0/10 ring-1 ring-primary0/15 dark:ring-primary0/25",
+  cyan: "bg-gradient-to-br from-card to-card dark:from-card dark:to-[hsl(var(--card)/0.8)] shadow-md shadow-primary/5 dark:shadow-primary/10 ring-1 ring-primary/15 dark:ring-primary/25",
   default: "bg-gradient-to-br from-card to-card dark:from-card dark:to-[hsl(var(--card)/0.8)] shadow-md shadow-primary/5 dark:shadow-primary/10 ring-1 ring-border/50 dark:ring-border/30",
 };
 
 const iconStyles: Record<Variant, string> = {
   ai: "bg-white/20 text-white",
   emergency: "bg-gradient-to-br from-destructive/10 to-destructive/20 text-destructive dark:from-destructive/15 dark:to-destructive/30",
-  cyan: "bg-gradient-to-br from-primary0/10 to-primary0/20 text-primary dark:from-primary0/15 dark:to-primary0/30 dark:text-primary",
+  cyan: "bg-gradient-to-br from-primary/10 to-primary/20 text-primary dark:from-primary/15 dark:to-primary/30 dark:text-primary",
   default: "bg-gradient-to-br from-primary/10 to-primary/20 text-primary dark:from-primary/15 dark:to-primary/30",
 };
 

@@ -17,16 +17,16 @@ interface Feedback {
 }
 
 const typeConfig: Record<string, { label: string; icon: typeof Bug; color: string }> = {
-  bug: { label: "Bug", icon: Bug, color: "text-destructive0 bg-destructive0/10" },
-  suggestion: { label: "Sugestão", icon: Lightbulb, color: "text-destructive0 bg-destructive0/10" },
-  support: { label: "Suporte", icon: MessageSquare, color: "text-primary0 bg-primary0/10" },
+  bug: { label: "Bug", icon: Bug, color: "text-destructive bg-destructive/10" },
+  suggestion: { label: "Sugestão", icon: Lightbulb, color: "text-destructive bg-destructive/10" },
+  support: { label: "Suporte", icon: MessageSquare, color: "text-primary bg-primary/10" },
   other: { label: "Outro", icon: MessageSquarePlus, color: "text-muted-foreground bg-muted" },
 };
 
 const statusConfig: Record<string, { label: string; color: string }> = {
-  new: { label: "Novo", color: "bg-primary0/10 text-primary0 border-primary0/20" },
-  reviewing: { label: "Em análise", color: "bg-destructive0/10 text-destructive0 border-destructive0/20" },
-  resolved: { label: "Resolvido", color: "bg-primary0/10 text-primary0 border-primary0/20" },
+  new: { label: "Novo", color: "bg-primary/10 text-primary border-primary/20" },
+  reviewing: { label: "Em análise", color: "bg-destructive/10 text-destructive border-destructive/20" },
+  resolved: { label: "Resolvido", color: "bg-primary/10 text-primary border-primary/20" },
 };
 
 export default function AdminFeedback() {
@@ -118,9 +118,9 @@ export default function AdminFeedback() {
       <div className="grid grid-cols-4 gap-2 px-4 py-3">
         {[
           { label: "Total", value: counts.total, color: "text-foreground" },
-          { label: "Novos", value: counts.new, color: "text-primary0" },
-          { label: "Bugs", value: counts.bug, color: "text-destructive0" },
-          { label: "Suporte", value: counts.support, color: "text-primary0" },
+          { label: "Novos", value: counts.new, color: "text-primary" },
+          { label: "Bugs", value: counts.bug, color: "text-destructive" },
+          { label: "Suporte", value: counts.support, color: "text-primary" },
         ].map(s => (
           <div key={s.label} className="bg-card rounded-xl p-3 text-center border border-border">
             <p className={`text-lg font-bold ${s.color}`}>{s.value}</p>

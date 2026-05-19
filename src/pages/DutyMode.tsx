@@ -31,14 +31,14 @@ const quickAccess = [
 ];
 
 const emergencyOneTap = [
-  { label: "PCR / RCP", path: "/protocols/pcr", color: "bg-destructive0/15 text-destructive dark:text-destructive" },
-  { label: "Sepse", path: "/protocols/sepse", color: "bg-destructive0/15 text-destructive dark:text-destructive" },
-  { label: "IAM", path: "/protocols/iam", color: "bg-destructive0/15 text-destructive dark:text-destructive" },
-  { label: "AVC", path: "/protocols/avc", color: "bg-destructive0/15 text-destructive dark:text-destructive" },
-  { label: "Anafilaxia", path: "/protocols/anafilaxia", color: "bg-destructive0/15 text-destructive dark:text-destructive" },
-  { label: "IOT", path: "/protocols/iot", color: "bg-destructive0/15 text-destructive dark:text-destructive" },
-  { label: "Choque", path: "/protocols/choque-hipovolemico", color: "bg-destructive0/15 text-destructive dark:text-destructive" },
-  { label: "EAP", path: "/protocols/eap", color: "bg-destructive0/15 text-destructive dark:text-destructive" },
+  { label: "PCR / RCP", path: "/protocols/pcr", color: "bg-destructive/15 text-destructive dark:text-destructive" },
+  { label: "Sepse", path: "/protocols/sepse", color: "bg-destructive/15 text-destructive dark:text-destructive" },
+  { label: "IAM", path: "/protocols/iam", color: "bg-destructive/15 text-destructive dark:text-destructive" },
+  { label: "AVC", path: "/protocols/avc", color: "bg-destructive/15 text-destructive dark:text-destructive" },
+  { label: "Anafilaxia", path: "/protocols/anafilaxia", color: "bg-destructive/15 text-destructive dark:text-destructive" },
+  { label: "IOT", path: "/protocols/iot", color: "bg-destructive/15 text-destructive dark:text-destructive" },
+  { label: "Choque", path: "/protocols/choque-hipovolemico", color: "bg-destructive/15 text-destructive dark:text-destructive" },
+  { label: "EAP", path: "/protocols/eap", color: "bg-destructive/15 text-destructive dark:text-destructive" },
 ];
 
 const emergencyMore = [

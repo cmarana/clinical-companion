@@ -228,7 +228,7 @@ export default function ClinicalAtlas() {
                           href={buildRealImageUrl(entry)}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="flex items-center gap-2 px-3 py-2.5 bg-primary0/10 dark:bg-primary0/5 rounded-xl text-primary dark:text-primary text-xs font-medium hover:bg-primary0/20 transition-colors"
+                          className="flex items-center gap-2 px-3 py-2.5 bg-primary/10 dark:bg-primary/5 rounded-xl text-primary dark:text-primary text-xs font-medium hover:bg-primary/20 transition-colors"
                         >
                           <ExternalLink size={14} />
                           <span>Ver imagens reais (Radiopaedia, DermNet, LITFL)</span>
@@ -246,7 +246,7 @@ export default function ClinicalAtlas() {
                         {/* Findings */}
                         <div>
                           <div className="flex items-center gap-2 mb-2">
-                            <Stethoscope size={14} className="text-primary0" />
+                            <Stethoscope size={14} className="text-primary" />
                             <span className="text-xs font-semibold">Achados-Chave</span>
                           </div>
                           <ul className="space-y-1.5">
@@ -260,24 +260,24 @@ export default function ClinicalAtlas() {
                         </div>
 
                         {/* Clinical significance */}
-                        <div className="bg-destructive0/10 dark:bg-destructive0/5 rounded-xl p-3">
+                        <div className="bg-destructive/10 dark:bg-destructive/5 rounded-xl p-3">
                           <div className="flex items-center gap-2 mb-2">
-                            <AlertTriangle size={14} className="text-destructive0" />
+                            <AlertTriangle size={14} className="text-destructive" />
                             <span className="text-xs font-semibold text-destructive dark:text-destructive">Significado Clínico</span>
                           </div>
                           <p className="text-sm leading-relaxed">{entry.clinical_significance}</p>
                         </div>
 
                         {/* Pearls */}
-                        <div className="bg-primary0/10 dark:bg-primary0/5 rounded-xl p-3">
+                        <div className="bg-primary/10 dark:bg-primary/5 rounded-xl p-3">
                           <div className="flex items-center gap-2 mb-2">
-                            <Lightbulb size={14} className="text-primary0" />
+                            <Lightbulb size={14} className="text-primary" />
                             <span className="text-xs font-semibold text-primary dark:text-primary">Pérolas Clínicas</span>
                           </div>
                           <ul className="space-y-1.5">
                             {entry.pearls.map((p, i) => (
                               <li key={i} className="text-sm flex items-start gap-2">
-                                <span className="text-primary0 font-bold mt-0.5 shrink-0">💡</span>
+                                <span className="text-primary font-bold mt-0.5 shrink-0">💡</span>
                                 <span>{p}</span>
                               </li>
                             ))}

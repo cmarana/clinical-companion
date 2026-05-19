@@ -300,8 +300,8 @@ function InstitutionalContent() {
   );
 
   const roleIcon = (role: string) => {
-    if (role === "admin") return <Shield className="h-3.5 w-3.5 text-destructive0" />;
-    if (role === "editor") return <Pencil className="h-3.5 w-3.5 text-primary0" />;
+    if (role === "admin") return <Shield className="h-3.5 w-3.5 text-destructive" />;
+    if (role === "editor") return <Pencil className="h-3.5 w-3.5 text-primary" />;
     return <EyeIcon className="h-3.5 w-3.5 text-muted-foreground" />;
   };
 
@@ -357,7 +357,7 @@ function InstitutionalContent() {
               <span className="text-xs font-medium">Criar Instituição</span>
             </Button>
             <Button onClick={() => setView("join")} className="h-20 flex-col gap-2" variant="outline">
-              <UserPlus className="h-6 w-6 text-primary0" />
+              <UserPlus className="h-6 w-6 text-primary" />
               <span className="text-xs font-medium">Entrar com Código</span>
             </Button>
           </div>
@@ -657,7 +657,7 @@ function InstitutionalContent() {
                   {selectedInst?.invite_code}
                 </code>
                 <Button variant="outline" size="icon" onClick={copyInviteCode}>
-                  {copiedCode ? <Check className="h-4 w-4 text-primary0" /> : <Copy className="h-4 w-4" />}
+                  {copiedCode ? <Check className="h-4 w-4 text-primary" /> : <Copy className="h-4 w-4" />}
                 </Button>
               </div>
             </div>

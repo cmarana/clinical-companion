@@ -57,8 +57,8 @@ interface Suggestion {
 
 const IMPACT_COLORS: Record<string, string> = {
   low: "bg-muted text-muted-foreground",
-  medium: "bg-destructive0/15 text-destructive dark:text-destructive",
-  high: "bg-destructive0/15 text-destructive dark:text-destructive",
+  medium: "bg-destructive/15 text-destructive dark:text-destructive",
+  high: "bg-destructive/15 text-destructive dark:text-destructive",
   critical: "bg-destructive/15 text-destructive",
 };
 

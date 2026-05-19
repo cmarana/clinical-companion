@@ -11,9 +11,9 @@ import OfflineBadge from "@/components/OfflineBadge";
 type Msg = { role: "user" | "assistant"; content: string };
 
 const feedbackTypes = [
-  { id: "bug", label: "Bug", icon: Bug, color: "text-destructive0" },
-  { id: "suggestion", label: "Sugestão", icon: Lightbulb, color: "text-destructive0" },
-  { id: "other", label: "Outro", icon: MessageSquarePlus, color: "text-primary0" },
+  { id: "bug", label: "Bug", icon: Bug, color: "text-destructive" },
+  { id: "suggestion", label: "Sugestão", icon: Lightbulb, color: "text-destructive" },
+  { id: "other", label: "Outro", icon: MessageSquarePlus, color: "text-primary" },
 ] as const;
 
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/support-chat`;

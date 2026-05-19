@@ -157,7 +157,7 @@ export default function Checklists() {
                 <div className="flex-1 text-left">
                   <div className="flex items-center gap-2">
                     <p className="font-heading font-semibold text-sm">{list.title}</p>
-                    {doneCount === list.items.length && <CheckCircle2 size={14} className="text-primary0" />}
+                    {doneCount === list.items.length && <CheckCircle2 size={14} className="text-primary" />}
                   </div>
                   <p className="text-[10px] text-muted-foreground">{list.subtitle}</p>
                 </div>

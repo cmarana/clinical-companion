@@ -81,8 +81,8 @@ function UnifiedDiff({ lines }: { lines: DiffLine[] }) {
           key={idx}
           className={cn(
             "flex gap-2 px-3 py-0.5",
-            l.op === "add" && "bg-primary0/10 text-primary dark:text-primary",
-            l.op === "remove" && "bg-destructive0/10 text-destructive dark:text-destructive",
+            l.op === "add" && "bg-primary/10 text-primary dark:text-primary",
+            l.op === "remove" && "bg-destructive/10 text-destructive dark:text-destructive",
           )}
         >
           <span className="w-5 shrink-0 select-none text-muted-foreground">
@@ -138,7 +138,7 @@ function SplitDiff({ lines, oldLabel, newLabel }: { lines: DiffLine[]; oldLabel:
             <div
               className={cn(
                 "border-r px-3 py-0.5 whitespace-pre-wrap break-words",
-                row.left?.op === "remove" && "bg-destructive0/10 text-destructive dark:text-destructive",
+                row.left?.op === "remove" && "bg-destructive/10 text-destructive dark:text-destructive",
               )}
             >
               <span className="mr-2 inline-block w-6 select-none text-right text-muted-foreground/70">
@@ -149,7 +149,7 @@ function SplitDiff({ lines, oldLabel, newLabel }: { lines: DiffLine[]; oldLabel:
             <div
               className={cn(
                 "px-3 py-0.5 whitespace-pre-wrap break-words",
-                row.right?.op === "add" && "bg-primary0/10 text-primary dark:text-primary",
+                row.right?.op === "add" && "bg-primary/10 text-primary dark:text-primary",
               )}
             >
               <span className="mr-2 inline-block w-6 select-none text-right text-muted-foreground/70">

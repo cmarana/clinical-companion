@@ -208,7 +208,7 @@ export default function FullProtocols() {
         {!isPro && (
           <button
             onClick={() => navigate("/pricing")}
-            className="w-full flex items-center gap-3 px-4 py-3 rounded-2xl bg-gradient-to-r from-primary/10 to-destructive0/10 ring-1 ring-primary/20 hover:ring-primary/40 transition-all text-left active:scale-[0.99]"
+            className="w-full flex items-center gap-3 px-4 py-3 rounded-2xl bg-gradient-to-r from-primary/10 to-destructive/10 ring-1 ring-primary/20 hover:ring-primary/40 transition-all text-left active:scale-[0.99]"
           >
             <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-primary/15 text-primary shrink-0">
               <Crown size={16} />

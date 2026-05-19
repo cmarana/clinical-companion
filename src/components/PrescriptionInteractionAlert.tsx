@@ -64,7 +64,7 @@ function InteractionRow({ interaction }: { interaction: DetectedInteraction }) {
     <div className={`p-2.5 rounded-xl transition-colors ${
       isGrave
         ? "bg-destructive/10 border border-destructive/20"
-        : "bg-destructive0/10 border border-destructive0/20"
+        : "bg-destructive/10 border border-destructive/20"
     }`}>
       <div className="flex items-start gap-2">
         <Badge

@@ -100,8 +100,8 @@ export default function ResidencyQuiz() {
             {currentQ.options.map((opt, i) => {
               let cls = "border-border hover:bg-accent/50";
               if (selected !== null) {
-                if (i === currentQ.correctIndex) cls = "border-primary0 bg-primary0/10";
-                else if (i === selected) cls = "border-destructive0 bg-destructive0/10";
+                if (i === currentQ.correctIndex) cls = "border-primary bg-primary/10";
+                else if (i === selected) cls = "border-destructive bg-destructive/10";
               }
               return (
                 <button
@@ -112,8 +112,8 @@ export default function ResidencyQuiz() {
                   <div className="flex items-start gap-2">
                     <span className="font-mono text-xs text-muted-foreground mt-0.5">{String.fromCharCode(65 + i)}</span>
                     <span className="text-sm">{opt}</span>
-                    {selected !== null && i === currentQ.correctIndex && <CheckCircle2 size={16} className="ml-auto text-primary0 shrink-0" />}
-                    {selected !== null && i === selected && i !== currentQ.correctIndex && <XCircle size={16} className="ml-auto text-destructive0 shrink-0" />}
+                    {selected !== null && i === currentQ.correctIndex && <CheckCircle2 size={16} className="ml-auto text-primary shrink-0" />}
+                    {selected !== null && i === selected && i !== currentQ.correctIndex && <XCircle size={16} className="ml-auto text-destructive shrink-0" />}
                   </div>
                 </button>
               );

@@ -156,7 +156,7 @@ function DrugResultCard({ drug, weight }: { drug: PediatricDrug; weight: number 
               <span className="text-sm font-bold text-primary">{calc.singleDoseCapped}mg</span>
               <span className="text-xs text-muted-foreground">{drug.frequency} • {drug.route}</span>
               {calc.isCapped && (
-                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-destructive0/15 text-destructive dark:text-destructive font-medium flex items-center gap-0.5">
+                <span className="text-[10px] px-1.5 py-0.5 rounded-full bg-destructive/15 text-destructive dark:text-destructive font-medium flex items-center gap-0.5">
                   <AlertTriangle size={10} /> Dose máx
                 </span>
               )}
@@ -200,7 +200,7 @@ function DrugResultCard({ drug, weight }: { drug: PediatricDrug; weight: number 
               </h5>
               <div className="space-y-1">
                 {calc.formulations.map((f, i) => (
-                  <div key={i} className="flex items-center justify-between p-2 rounded-lg bg-primary0/5 border border-primary0/15">
+                  <div key={i} className="flex items-center justify-between p-2 rounded-lg bg-primary/5 border border-primary/15">
                     <span className="text-xs text-muted-foreground">{f.form}</span>
                     <span className="text-sm font-bold text-primary dark:text-primary">{f.volume}</span>
                   </div>
@@ -236,9 +236,9 @@ function DrugResultCard({ drug, weight }: { drug: PediatricDrug; weight: number 
 
           {/* Notes */}
           {drug.notes && (
-            <div className="bg-primary0/5 border border-primary0/15 rounded-lg p-2.5">
+            <div className="bg-primary/5 border border-primary/15 rounded-lg p-2.5">
               <p className="text-xs leading-relaxed text-foreground/80 flex gap-1.5">
-                <Info size={12} className="text-primary0 shrink-0 mt-0.5" />
+                <Info size={12} className="text-primary shrink-0 mt-0.5" />
                 <span>{drug.notes}</span>
               </p>
             </div>
@@ -408,7 +408,7 @@ export default function PediatricDoseCalculator() {
         )}
 
         {/* Disclaimer */}
-        <div className="mt-6 p-3 bg-destructive0/5 border border-destructive0/15 rounded-xl">
+        <div className="mt-6 p-3 bg-destructive/5 border border-destructive/15 rounded-xl">
           <p className="text-[10px] text-destructive dark:text-destructive leading-relaxed">
             ⚠️ <strong>Aviso:</strong> As doses calculadas são referências baseadas em guidelines (Nelson, SBP, PALS). 
             Sempre confirme a dose para o caso clínico específico, considere ajustes para idade gestacional, 

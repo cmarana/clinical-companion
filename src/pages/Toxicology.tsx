@@ -7,9 +7,9 @@ import { toxicAgents, searchToxicAgents, toxicologyCategories, type ToxicAgent }
 import { Search, ChevronDown, ChevronUp, AlertTriangle, Pill, Shield, HeartPulse, FlaskConical } from "lucide-react";
 
 const SEVERITY_CONFIG = {
-  leve: { label: "Leve", color: "bg-primary0/10 text-primary dark:text-primary border-primary0/20" },
-  moderado: { label: "Moderado", color: "bg-destructive0/10 text-destructive dark:text-destructive border-destructive0/20" },
-  grave: { label: "Grave", color: "bg-destructive0/10 text-destructive dark:text-destructive border-destructive0/20" },
+  leve: { label: "Leve", color: "bg-primary/10 text-primary dark:text-primary border-primary/20" },
+  moderado: { label: "Moderado", color: "bg-destructive/10 text-destructive dark:text-destructive border-destructive/20" },
+  grave: { label: "Grave", color: "bg-destructive/10 text-destructive dark:text-destructive border-destructive/20" },
   potencialmente_fatal: { label: "Potencialmente Fatal", color: "bg-destructive/10 text-destructive border-destructive/20" },
 } as const;
 

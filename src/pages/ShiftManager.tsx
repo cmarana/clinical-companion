@@ -83,8 +83,8 @@ function monthLabel(ym: string) {
 }
 
 const STATUS_CONFIG: Record<ShiftStatus, { label: string; color: string }> = {
-  agendado:  { label: "Agendado",  color: "bg-primary0/10 text-primary dark:text-primary border-primary0/20" },
-  realizado: { label: "Realizado", color: "bg-primary0/10 text-primary dark:text-primary border-primary0/20" },
+  agendado:  { label: "Agendado",  color: "bg-primary/10 text-primary dark:text-primary border-primary/20" },
+  realizado: { label: "Realizado", color: "bg-primary/10 text-primary dark:text-primary border-primary/20" },
   cancelado: { label: "Cancelado", color: "bg-destructive/10 text-destructive border-destructive/20" },
 };
 
@@ -259,7 +259,7 @@ function ShiftCard({ shift, onDelete, onTogglePaid, onToggleStatus }: {
             <p className="text-sm font-heading font-semibold truncate">{shift.local}</p>
             <Badge variant="outline" className={`text-[10px] ${status.color}`}>{status.label}</Badge>
             {shift.paid && (
-              <Badge variant="outline" className="text-[10px] bg-primary0/10 text-primary dark:text-primary border-primary0/20">
+              <Badge variant="outline" className="text-[10px] bg-primary/10 text-primary dark:text-primary border-primary/20">
                 Pago ✓
               </Badge>
             )}
@@ -310,7 +310,7 @@ function ShiftCard({ shift, onDelete, onTogglePaid, onToggleStatus }: {
               onClick={() => onTogglePaid(shift.id)}
               className={`px-2 py-1 rounded-full text-[10px] font-heading font-semibold border transition-colors ml-auto ${
                 shift.paid
-                  ? "bg-primary0/10 text-primary dark:text-primary border-primary0/20"
+                  ? "bg-primary/10 text-primary dark:text-primary border-primary/20"
                   : "border-border text-muted-foreground hover:bg-muted/60"
               }`}
             >

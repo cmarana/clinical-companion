@@ -127,7 +127,7 @@ export default function ValidationChecklist() {
       </div>
 
       {/* Banner global */}
-      <Card className={allPassing ? "border-primary0/50 bg-primary0/5" : "border-destructive0/50 bg-destructive0/5"}>
+      <Card className={allPassing ? "border-primary/50 bg-primary/5" : "border-destructive/50 bg-destructive/5"}>
         <CardHeader className="flex flex-row items-center gap-3 space-y-0">
           {allPassing ? (
             <CheckCircle2 className="h-6 w-6 text-primary" />
@@ -228,8 +228,8 @@ function StatusBadge({ ok, okLabel, failLabel }: { ok: boolean; okLabel: string;
       variant="outline"
       className={
         ok
-          ? "bg-primary0/10 text-primary dark:text-primary border-primary0/30"
-          : "bg-destructive0/10 text-destructive dark:text-destructive border-destructive0/30"
+          ? "bg-primary/10 text-primary dark:text-primary border-primary/30"
+          : "bg-destructive/10 text-destructive dark:text-destructive border-destructive/30"
       }
     >
       {ok ? <CheckCircle2 className="h-3 w-3 mr-1" /> : <AlertTriangle className="h-3 w-3 mr-1" />}

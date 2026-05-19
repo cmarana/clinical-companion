@@ -27,7 +27,7 @@ const GROUPS: Group[] = [
     id: "condutas",
     title: "Condutas & Protocolos",
     subtitle: "Decisões clínicas com referência e velocidade.",
-    accent: "from-primary0/20 to-primary0/5 ring-primary0/30 text-primary",
+    accent: "from-primary/20 to-primary/5 ring-primary/30 text-primary",
     icon: BookOpen,
     tools: [
       { name: "Modo Emergência", desc: "PCR, sepse, IAM, AVC com fluxogramas", icon: Siren, path: "/emergency" },
@@ -44,7 +44,7 @@ const GROUPS: Group[] = [
     id: "ia",
     title: "IA Clínica - Dra. Clara",
     subtitle: "Apoio inteligente para raciocínio, exames de imagem e documentação.",
-    accent: "from-primary0/20 to-primary0/5 ring-primary0/30 text-primary",
+    accent: "from-primary/20 to-primary/5 ring-primary/30 text-primary",
     icon: Bot,
     tools: [
       { name: "IA Clínica", desc: "Chat, Caso, Exames, Plantão e Texto", icon: Bot, path: "/clinical-ai" },
@@ -59,7 +59,7 @@ const GROUPS: Group[] = [
     id: "medicamentos",
     title: "Medicamentos & Doses",
     subtitle: "Bulário, interações e diluições à mão.",
-    accent: "from-primary0/20 to-primary0/5 ring-primary0/30 text-primary",
+    accent: "from-primary/20 to-primary/5 ring-primary/30 text-primary",
     icon: Pill,
     tools: [
       { name: "Bulário", desc: "2.000+ fármacos com posologia", icon: Pill, path: "/bulario" },
@@ -74,7 +74,7 @@ const GROUPS: Group[] = [
     id: "calculadoras",
     title: "Calculadoras & Referência",
     subtitle: "Scores, valores críticos e cronômetros.",
-    accent: "from-primary0/20 to-primary0/5 ring-primary0/30 text-primary",
+    accent: "from-primary/20 to-primary/5 ring-primary/30 text-primary",
     icon: Calculator,
     tools: [
       { name: "53 Calculadoras", desc: "Glasgow, SOFA, Wells, HEART, MELD…", icon: Calculator, path: "/calculators" },
@@ -88,7 +88,7 @@ const GROUPS: Group[] = [
     id: "especialidades",
     title: "Especialidades",
     subtitle: "Conteúdo dedicado por área de atuação.",
-    accent: "from-primary0/20 to-primary0/5 ring-primary0/30 text-primary",
+    accent: "from-primary/20 to-primary/5 ring-primary/30 text-primary",
     icon: Stethoscope,
     tools: [
       { name: "Pediatria", desc: "Protocolos pediátricos completos", icon: Baby, path: "/pediatrics" },
@@ -101,7 +101,7 @@ const GROUPS: Group[] = [
     id: "estudo",
     title: "Estudo",
     subtitle: "Revisão espaçada, residência e desempenho.",
-    accent: "from-destructive0/20 to-destructive0/5 ring-destructive0/30 text-destructive",
+    accent: "from-destructive/20 to-destructive/5 ring-destructive/30 text-destructive",
     icon: GraduationCap,
     tools: [
       { name: "Questões Comentadas", desc: "Banco com gabarito comentado", icon: HelpCircle, path: "/quiz" },
@@ -115,7 +115,7 @@ const GROUPS: Group[] = [
     id: "produtividade",
     title: "Produtividade no Plantão",
     subtitle: "Rotina organizada, mesmo nas piores noites.",
-    accent: "from-destructive0/20 to-destructive0/5 ring-destructive0/30 text-destructive",
+    accent: "from-destructive/20 to-destructive/5 ring-destructive/30 text-destructive",
     icon: BedDouble,
     tools: [
       { name: "Modo Rounds", desc: "Visita de leito com checklist", icon: BedDouble, path: "/rounds" },
@@ -186,10 +186,10 @@ export default function PrelaunchLanding() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0A0F1F] text-slate-100 selection:bg-primary0/30 selection:text-white">
+    <div className="min-h-screen bg-[#0A0F1F] text-slate-100 selection:bg-primary/30 selection:text-white">
       {/* Background ambiente */}
       <div className="pointer-events-none fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-primary0/10 blur-3xl" />
+        <div className="absolute -top-40 -left-40 h-[520px] w-[520px] rounded-full bg-primary/10 blur-3xl" />
         <div className="absolute top-1/3 -right-40 h-[480px] w-[480px] rounded-full bg-primary/15 blur-3xl" />
         <div className="absolute bottom-0 left-1/3 h-[420px] w-[420px] rounded-full bg-primary/5 blur-3xl" />
         <svg className="absolute inset-0 h-full w-full opacity-[0.04]" xmlns="http://www.w3.org/2000/svg">
@@ -227,7 +227,7 @@ export default function PrelaunchLanding() {
             </Link>
             <Button
               onClick={() => scrollTo("cadastro")}
-              className="bg-primary0 hover:bg-primary text-[#0A0F1F] font-semibold rounded-full px-4 sm:px-5"
+              className="bg-primary hover:bg-primary text-[#0A0F1F] font-semibold rounded-full px-4 sm:px-5"
             >
               Cadastrar
             </Button>
@@ -244,7 +244,7 @@ export default function PrelaunchLanding() {
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
               className="lg:col-span-7"
             >
-              <div className="inline-flex items-center gap-2 rounded-full border border-primary0/30 bg-primary0/10 px-3 py-1 text-xs font-medium text-primary">
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs font-medium text-primary">
                 <Sparkles className="h-3.5 w-3.5" /> Pré-lançamento · 2026
               </div>
               <h1 className="mt-5 text-4xl sm:text-5xl lg:text-[58px] font-semibold leading-[1.05] tracking-tight">
@@ -267,7 +267,7 @@ export default function PrelaunchLanding() {
                 <Button
                   size="lg"
                   onClick={() => scrollTo("cadastro")}
-                  className="bg-primary0 hover:bg-primary text-[#0A0F1F] font-semibold rounded-full px-6"
+                  className="bg-primary hover:bg-primary text-[#0A0F1F] font-semibold rounded-full px-6"
                 >
                   Quero me cadastrar para o lançamento
                   <ArrowRight className="h-4 w-4" />
@@ -418,7 +418,7 @@ export default function PrelaunchLanding() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
           <div className="grid lg:grid-cols-12 gap-10 items-start">
             <div className="lg:col-span-5">
-              <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary0/10 px-3 py-1 text-xs text-primary">
+              <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs text-primary">
                 <Bot className="h-3.5 w-3.5" /> IA Clínica
               </div>
               <h2 className="mt-4 text-3xl sm:text-4xl font-semibold tracking-tight">
@@ -447,7 +447,7 @@ export default function PrelaunchLanding() {
                 { icon: Activity, t: "Clareza em momentos críticos", d: "Respostas objetivas, com linguagem médica e foco na prática." },
               ].map((c) => (
                 <div key={c.t} className="rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent p-5">
-                  <div className="h-9 w-9 rounded-xl bg-primary0/15 text-primary flex items-center justify-center">
+                  <div className="h-9 w-9 rounded-xl bg-primary/15 text-primary flex items-center justify-center">
                     <c.icon className="h-4 w-4" />
                   </div>
                   <div className="mt-3 font-medium">{c.t}</div>
@@ -464,7 +464,7 @@ export default function PrelaunchLanding() {
                     <div className="mt-1 rounded-2xl rounded-tl-sm bg-white/5 px-4 py-2.5 text-sm">
                       Dra. Clara, qual o próximo passo no choque séptico refratário?
                     </div>
-                    <div className="mt-3 rounded-2xl rounded-tl-sm bg-primary0/10 border border-primary/20 px-4 py-3 text-sm text-primary">
+                    <div className="mt-3 rounded-2xl rounded-tl-sm bg-primary/10 border border-primary/20 px-4 py-3 text-sm text-primary">
                       Considerar adicionar vasopressina à noradrenalina (até 0,03 U/min), reavaliar
                       perfusão tecidual e investigar foco infeccioso não controlado.
                     </div>
@@ -500,7 +500,7 @@ export default function PrelaunchLanding() {
                   onClick={() => setActiveGroup(g.id)}
                   className={`group inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-medium transition ${
                     active
-                      ? "bg-primary0 text-[#0A0F1F] shadow-lg shadow-primary0/20"
+                      ? "bg-primary text-[#0A0F1F] shadow-lg shadow-primary/20"
                       : "bg-white/5 text-slate-300 border border-white/10 hover:bg-white/10"
                   }`}
                 >
@@ -526,7 +526,7 @@ export default function PrelaunchLanding() {
                 className="group rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent p-4 hover:border-primary/30 hover:bg-white/[0.06] transition"
               >
                 <div className="flex items-start gap-3">
-                  <div className="h-9 w-9 rounded-xl bg-primary0/10 text-primary flex items-center justify-center shrink-0">
+                  <div className="h-9 w-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                     <t.icon className="h-4 w-4" />
                   </div>
                   <div className="min-w-0">
@@ -583,7 +583,7 @@ export default function PrelaunchLanding() {
           ].map((b) => (
             <Card key={b.t} className="bg-white/[0.04] border-white/10 text-slate-100">
               <CardContent className="p-5">
-                <div className="h-10 w-10 rounded-xl bg-primary0/10 text-primary flex items-center justify-center">
+                <div className="h-10 w-10 rounded-xl bg-primary/10 text-primary flex items-center justify-center">
                   <b.icon className="h-5 w-5" />
                 </div>
                 <div className="mt-4 font-medium">{b.t}</div>
@@ -623,7 +623,7 @@ export default function PrelaunchLanding() {
       <section id="cadastro" className="mx-auto max-w-7xl px-4 sm:px-6 py-20 sm:py-28">
         <div className="grid lg:grid-cols-12 gap-10 items-start">
           <div className="lg:col-span-5">
-            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary0/10 px-3 py-1 text-xs text-primary">
+            <div className="inline-flex items-center gap-2 rounded-full border border-primary/30 bg-primary/10 px-3 py-1 text-xs text-primary">
               <Sparkles className="h-3.5 w-3.5" /> Benefícios de lançamento
             </div>
             <h2 className="mt-4 text-3xl sm:text-4xl font-semibold tracking-tight">
@@ -652,7 +652,7 @@ export default function PrelaunchLanding() {
             <div className="rounded-3xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-white/[0.01] p-6 sm:p-8">
               {submitted ? (
                 <div className="text-center py-10">
-                  <div className="mx-auto h-14 w-14 rounded-full bg-primary0/15 text-primary flex items-center justify-center">
+                  <div className="mx-auto h-14 w-14 rounded-full bg-primary/15 text-primary flex items-center justify-center">
                     <CheckSquare className="h-7 w-7" />
                   </div>
                   <h3 className="mt-5 text-xl font-semibold">Cadastro realizado com sucesso.</h3>
@@ -694,7 +694,7 @@ export default function PrelaunchLanding() {
                     <Checkbox
                       id="comm" checked={form.aceitou_comunicacao}
                       onCheckedChange={(v) => setForm({ ...form, aceitou_comunicacao: !!v })}
-                      className="mt-0.5 border-white/30 data-[state=checked]:bg-primary0 data-[state=checked]:border-primary0"
+                      className="mt-0.5 border-white/30 data-[state=checked]:bg-primary data-[state=checked]:border-primary"
                     />
                     <label htmlFor="comm" className="text-xs text-slate-300 leading-relaxed cursor-pointer">
                       Quero receber novidades e benefícios sobre o lançamento do PULSO.
@@ -704,7 +704,7 @@ export default function PrelaunchLanding() {
                   <div className="sm:col-span-2 mt-2">
                     <Button
                       type="submit" disabled={submitting}
-                      className="w-full bg-primary0 hover:bg-primary text-[#0A0F1F] font-semibold rounded-full h-11"
+                      className="w-full bg-primary hover:bg-primary text-[#0A0F1F] font-semibold rounded-full h-11"
                     >
                       {submitting ? "Enviando…" : "Quero receber benefícios no lançamento"}
                     </Button>
@@ -723,7 +723,7 @@ export default function PrelaunchLanding() {
       {/* CTA FINAL */}
       <section className="relative overflow-hidden">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 py-20 sm:py-24">
-          <div className="relative rounded-3xl border border-primary/20 bg-gradient-to-br from-primary0/10 via-primary/10 to-primary0/5 p-10 sm:p-14 text-center">
+          <div className="relative rounded-3xl border border-primary/20 bg-gradient-to-br from-primary/10 via-primary/10 to-primary/5 p-10 sm:p-14 text-center">
             <img src={logo} alt="PULSO" className="h-9 w-auto mx-auto opacity-80" />
             <h2 className="mt-6 text-3xl sm:text-4xl font-semibold tracking-tight">
               O plantão vai mudar. Esteja entre os primeiros a saber.
@@ -734,7 +734,7 @@ export default function PrelaunchLanding() {
             </p>
             <Button
               size="lg" onClick={() => scrollTo("cadastro")}
-              className="mt-8 bg-primary0 hover:bg-primary text-[#0A0F1F] font-semibold rounded-full px-7"
+              className="mt-8 bg-primary hover:bg-primary text-[#0A0F1F] font-semibold rounded-full px-7"
             >
               Quero receber benefícios no lançamento
               <ArrowRight className="h-4 w-4" />

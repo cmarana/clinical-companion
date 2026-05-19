@@ -115,7 +115,7 @@ export default function ShareProtocolDialog({ open, onClose, protocolTitle, shar
                   onClick={handleCopyLink}
                   className="shrink-0 p-1.5 rounded-lg bg-primary/10 hover:bg-primary/20 transition-colors"
                 >
-                  {copied ? <Check size={14} className="text-primary0" /> : <Copy size={14} className="text-primary" />}
+                  {copied ? <Check size={14} className="text-primary" /> : <Copy size={14} className="text-primary" />}
                 </button>
               </div>
             </div>
@@ -133,7 +133,7 @@ export default function ShareProtocolDialog({ open, onClose, protocolTitle, shar
         <div className="grid grid-cols-2 gap-2 px-4 pb-4">
           <button
             onClick={handleWhatsApp}
-            className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-primary0/10 hover:bg-primary0/20 transition-colors text-primary dark:text-primary text-xs font-medium"
+            className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-primary/10 hover:bg-primary/20 transition-colors text-primary dark:text-primary text-xs font-medium"
           >
             <MessageCircle size={14} /> WhatsApp
           </button>
@@ -153,7 +153,7 @@ export default function ShareProtocolDialog({ open, onClose, protocolTitle, shar
           )}
           <button
             onClick={handleSavePDF}
-            className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-destructive0/10 hover:bg-destructive0/20 transition-colors text-destructive dark:text-destructive text-xs font-medium"
+            className="flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-destructive/10 hover:bg-destructive/20 transition-colors text-destructive dark:text-destructive text-xs font-medium"
           >
             <FileDown size={14} /> Salvar PDF
           </button>

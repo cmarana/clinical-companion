@@ -5,9 +5,9 @@ import { Bell, Brain, Clock, BookOpen, Info, Check, CheckCheck, Trash2, X, BellR
 import { Button } from "@/components/ui/button";
 
 const typeConfig: Record<NotificationType, { icon: typeof Bell; label: string; color: string; bg: string }> = {
-  study: { icon: Brain, label: "Estudo", color: "text-primary dark:text-primary", bg: "bg-primary0/10 dark:bg-primary0/20" },
-  shift: { icon: Clock, label: "Plantão", color: "text-destructive dark:text-destructive", bg: "bg-destructive0/10 dark:bg-destructive0/20" },
-  protocol: { icon: BookOpen, label: "Protocolo", color: "text-primary dark:text-primary", bg: "bg-primary0/10 dark:bg-primary0/20" },
+  study: { icon: Brain, label: "Estudo", color: "text-primary dark:text-primary", bg: "bg-primary/10 dark:bg-primary/20" },
+  shift: { icon: Clock, label: "Plantão", color: "text-destructive dark:text-destructive", bg: "bg-destructive/10 dark:bg-destructive/20" },
+  protocol: { icon: BookOpen, label: "Protocolo", color: "text-primary dark:text-primary", bg: "bg-primary/10 dark:bg-primary/20" },
   system: { icon: Info, label: "Sistema", color: "text-muted-foreground", bg: "bg-muted" },
 };
 

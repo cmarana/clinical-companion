@@ -158,7 +158,7 @@ export default function AdminAiCosts() {
 
           <Card className="p-4">
             <div className="flex items-center justify-between mb-2">
-              <TrendingDown className="w-5 h-5 text-destructive0" />
+              <TrendingDown className="w-5 h-5 text-destructive" />
               <Badge variant="destructive">Custo</Badge>
             </div>
             <p className="text-2xl font-bold">R$ {data.totals.costBrl.toFixed(2)}</p>
@@ -167,7 +167,7 @@ export default function AdminAiCosts() {
 
           <Card className="p-4">
             <div className="flex items-center justify-between mb-2">
-              <Users className="w-5 h-5 text-primary0" />
+              <Users className="w-5 h-5 text-primary" />
               <Badge variant="outline">Ativos</Badge>
             </div>
             <p className="text-2xl font-bold">
@@ -179,7 +179,7 @@ export default function AdminAiCosts() {
 
           <Card className="p-4">
             <div className="flex items-center justify-between mb-2">
-              <Sparkles className="w-5 h-5 text-destructive0" />
+              <Sparkles className="w-5 h-5 text-destructive" />
               <Badge>Cache</Badge>
             </div>
             <p className="text-2xl font-bold">{data.cache.hitRate}%</p>
@@ -200,7 +200,7 @@ export default function AdminAiCosts() {
             </div>
             <div>
               <p className="text-muted-foreground">Custo IA</p>
-              <p className="text-lg font-bold text-destructive0">- R$ {data.totals.costBrl.toFixed(2)}</p>
+              <p className="text-lg font-bold text-destructive">- R$ {data.totals.costBrl.toFixed(2)}</p>
             </div>
             <div>
               <p className="text-muted-foreground">Lucro PIX</p>

@@ -44,9 +44,9 @@ interface ComparisonResult {
 }
 
 const sourceConfig = {
-  sus: { icon: Building2, label: "SUS / Min. Saúde", color: "bg-primary0/10 text-primary dark:text-primary border-primary0/20", badge: "bg-primary0/15 text-primary dark:text-primary" },
-  brazilian_society: { icon: Stethoscope, label: "Sociedade Brasileira", color: "bg-primary0/10 text-primary dark:text-primary border-primary0/20", badge: "bg-primary0/15 text-primary dark:text-primary" },
-  international: { icon: Globe, label: "Guideline Internacional", color: "bg-primary0/10 text-primary dark:text-primary border-primary0/20", badge: "bg-primary0/15 text-primary dark:text-primary" },
+  sus: { icon: Building2, label: "SUS / Min. Saúde", color: "bg-primary/10 text-primary dark:text-primary border-primary/20", badge: "bg-primary/15 text-primary dark:text-primary" },
+  brazilian_society: { icon: Stethoscope, label: "Sociedade Brasileira", color: "bg-primary/10 text-primary dark:text-primary border-primary/20", badge: "bg-primary/15 text-primary dark:text-primary" },
+  international: { icon: Globe, label: "Guideline Internacional", color: "bg-primary/10 text-primary dark:text-primary border-primary/20", badge: "bg-primary/15 text-primary dark:text-primary" },
 };
 
 function SourceCard({ source }: { source: Source }) {
@@ -418,7 +418,7 @@ export default function ConductComparator() {
 
               {/* Key differences */}
               {result.key_differences?.length > 0 && (
-                <Card className="border-destructive0/20 bg-destructive0/5">
+                <Card className="border-destructive/20 bg-destructive/5">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm flex items-center gap-2">
                       <BookOpen size={16} className="text-destructive dark:text-destructive" />

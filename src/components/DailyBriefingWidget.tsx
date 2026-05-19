@@ -99,7 +99,7 @@ export default function DailyBriefingWidget() {
           </h2>
         </div>
         {isPro ? (
-          <span className="flex items-center gap-1 text-[10px] font-bold text-destructive bg-destructive0/10 px-2 py-1 rounded-full ring-1 ring-destructive0/20">
+          <span className="flex items-center gap-1 text-[10px] font-bold text-destructive bg-destructive/10 px-2 py-1 rounded-full ring-1 ring-destructive/20">
             <Crown size={10} /> PRO
           </span>
         ) : (
@@ -129,9 +129,9 @@ export default function DailyBriefingWidget() {
 
         <div className="flex flex-col items-start p-2.5 rounded-xl bg-background/60 ring-1 ring-border/40">
           <div className="flex items-center gap-1 text-[9px] uppercase font-semibold text-muted-foreground">
-            <Flame size={9} className={streak > 0 ? "text-destructive0" : ""} /> Streak
+            <Flame size={9} className={streak > 0 ? "text-destructive" : ""} /> Streak
           </div>
-          <span className={`font-heading font-bold text-lg leading-none mt-1 ${streak > 0 ? "text-destructive0" : "text-muted-foreground"}`}>
+          <span className={`font-heading font-bold text-lg leading-none mt-1 ${streak > 0 ? "text-destructive" : "text-muted-foreground"}`}>
             {streak}
           </span>
           <span className="text-[9px] text-muted-foreground mt-0.5">{streak === 1 ? "dia" : "dias"}</span>
@@ -169,7 +169,7 @@ export default function DailyBriefingWidget() {
       ) : (
         <button
           onClick={() => go("/pricing")}
-          className="mx-4 mt-3 flex items-center gap-2 px-3 py-2 rounded-xl bg-destructive0/8 ring-1 ring-destructive0/20 hover:bg-destructive0/12 transition-colors text-left w-[calc(100%-2rem)]"
+          className="mx-4 mt-3 flex items-center gap-2 px-3 py-2 rounded-xl bg-destructive/8 ring-1 ring-destructive/20 hover:bg-destructive/12 transition-colors text-left w-[calc(100%-2rem)]"
         >
           <Lock size={12} className="text-destructive shrink-0" />
           <span className="text-[10px] text-foreground/80 flex-1">

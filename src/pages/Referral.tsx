@@ -100,12 +100,12 @@ export default function Referral() {
       {/* Stats */}
       <div className="grid grid-cols-2 gap-3 mb-6">
         <div className="bg-card rounded-2xl p-4 shadow-sm text-center">
-          <CheckCircle2 size={20} className="text-primary0 mx-auto mb-1" />
+          <CheckCircle2 size={20} className="text-primary mx-auto mb-1" />
           <p className="font-heading font-bold text-xl">{completedCount}</p>
           <p className="text-[10px] text-muted-foreground">Confirmados</p>
         </div>
         <div className="bg-card rounded-2xl p-4 shadow-sm text-center">
-          <Clock size={20} className="text-destructive0 mx-auto mb-1" />
+          <Clock size={20} className="text-destructive mx-auto mb-1" />
           <p className="font-heading font-bold text-xl">{pendingCount}</p>
           <p className="text-[10px] text-muted-foreground">Pendentes</p>
         </div>
@@ -154,8 +154,8 @@ export default function Referral() {
                 <span className="text-sm truncate mr-2">Convite #{referrals.indexOf(r) + 1}</span>
                 <span className={`text-[10px] font-semibold px-2 py-0.5 rounded-full ${
                   r.status === "completed" || r.status === "rewarded"
-                    ? "bg-primary0/10 text-primary"
-                    : "bg-destructive0/10 text-destructive"
+                    ? "bg-primary/10 text-primary"
+                    : "bg-destructive/10 text-destructive"
                 }`}>
                   {r.status === "pending" ? "Pendente" : r.status === "completed" ? "Confirmado" : "Recompensado"}
                 </span>

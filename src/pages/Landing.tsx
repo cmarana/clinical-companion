@@ -35,12 +35,12 @@ const stagger = {
 
 /* ── Data ────────────────────────────────────────────────────── */
 const features = [
-  { icon: Zap, title: "Modo Emergência", desc: "Algoritmos de PCR, Sepse, IAM e AVC com fluxogramas interativos. Decisões em segundos.", accent: "bg-destructive0/10 text-destructive0" },
-  { icon: Bot, title: "IA Clínica multimodal", desc: "5 modos: Chat, Caso estruturado, Análise de Exames (imagem), Plantão e Texto narrativo — com Gemini 2.5.", accent: "bg-primary0/10 text-primary0" },
-  { icon: Pill, title: "2.000+ Medicamentos", desc: "Doses, diluições, interações, ajustes renais e hepáticos. Bulário completo no bolso.", accent: "bg-primary0/10 text-primary0" },
-  { icon: BookOpen, title: "1.600+ Protocolos", desc: "Protocolos clínicos baseados em evidência com níveis de recomendação e referências.", accent: "bg-primary0/10 text-primary0" },
-  { icon: Calculator, title: "53 Calculadoras", desc: "Glasgow, SOFA, Wells, HEART, MELD, NEWS e dezenas de scores integrados aos protocolos.", accent: "bg-primary0/10 text-primary0" },
-  { icon: FileText, title: "Prescrições Prontas", desc: "Modelos por diagnóstico, prontos para copiar e adaptar. Checagem de interações por IA.", accent: "bg-destructive0/10 text-destructive0" },
+  { icon: Zap, title: "Modo Emergência", desc: "Algoritmos de PCR, Sepse, IAM e AVC com fluxogramas interativos. Decisões em segundos.", accent: "bg-destructive/10 text-destructive" },
+  { icon: Bot, title: "IA Clínica multimodal", desc: "5 modos: Chat, Caso estruturado, Análise de Exames (imagem), Plantão e Texto narrativo — com Gemini 2.5.", accent: "bg-primary/10 text-primary" },
+  { icon: Pill, title: "2.000+ Medicamentos", desc: "Doses, diluições, interações, ajustes renais e hepáticos. Bulário completo no bolso.", accent: "bg-primary/10 text-primary" },
+  { icon: BookOpen, title: "1.600+ Protocolos", desc: "Protocolos clínicos baseados em evidência com níveis de recomendação e referências.", accent: "bg-primary/10 text-primary" },
+  { icon: Calculator, title: "53 Calculadoras", desc: "Glasgow, SOFA, Wells, HEART, MELD, NEWS e dezenas de scores integrados aos protocolos.", accent: "bg-primary/10 text-primary" },
+  { icon: FileText, title: "Prescrições Prontas", desc: "Modelos por diagnóstico, prontos para copiar e adaptar. Checagem de interações por IA.", accent: "bg-destructive/10 text-destructive" },
 ];
 
 /**
@@ -56,8 +56,8 @@ const aiModes = [
     tagline: "Conversa livre com a IA",
     desc: "Tire dúvidas clínicas, peça diagnósticos diferenciais e raciocínio passo-a-passo. Suporta voz.",
     cta: "Abrir Chat",
-    accent: "from-primary0/15 to-primary0/5 text-primary0 ring-primary0/20",
-    iconBg: "bg-primary0/15 text-primary0",
+    accent: "from-primary/15 to-primary/5 text-primary ring-primary/20",
+    iconBg: "bg-primary/15 text-primary",
   },
   {
     id: "structured",
@@ -66,8 +66,8 @@ const aiModes = [
     tagline: "Anamnese guiada",
     desc: "Preencha queixa, antecedentes, exame físico e exames. A IA devolve hipóteses, conduta e prescrição.",
     cta: "Montar caso",
-    accent: "from-primary0/15 to-primary0/5 text-primary0 ring-primary0/20",
-    iconBg: "bg-primary0/15 text-primary0",
+    accent: "from-primary/15 to-primary/5 text-primary ring-primary/20",
+    iconBg: "bg-primary/15 text-primary",
   },
   {
     id: "image",
@@ -87,8 +87,8 @@ const aiModes = [
     tagline: "Resposta ultrarrápida",
     desc: "Pergunta direta, resposta direta. Otimizado para o ritmo do pronto-socorro — sem rodeios, beira do leito.",
     cta: "Modo Plantão",
-    accent: "from-destructive0/15 to-destructive0/5 text-destructive0 ring-destructive0/20",
-    iconBg: "bg-destructive0/15 text-destructive0",
+    accent: "from-destructive/15 to-destructive/5 text-destructive ring-destructive/20",
+    iconBg: "bg-destructive/15 text-destructive",
   },
   {
     id: "narrative",
@@ -97,8 +97,8 @@ const aiModes = [
     tagline: "Cole evolução / discussão",
     desc: "Cole prontuário, evolução ou texto livre. A IA extrai dados, organiza e propõe próximos passos.",
     cta: "Analisar texto",
-    accent: "from-destructive0/15 to-destructive0/5 text-destructive0 ring-destructive0/20",
-    iconBg: "bg-destructive0/15 text-destructive0",
+    accent: "from-destructive/15 to-destructive/5 text-destructive ring-destructive/20",
+    iconBg: "bg-destructive/15 text-destructive",
   },
 ] as const;
 
@@ -409,14 +409,14 @@ export default function Landing() {
 
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 relative">
             {[
-              { icon: Siren, label: "Modo Emergência", detail: "PCR, Sepse, IAM, AVC", accent: "from-destructive0/20 to-destructive0/5 text-destructive0", ring: "ring-destructive0/20" },
-              { icon: Bot, label: "IA Clínica multimodal", detail: "Chat · Caso · Exames · Plantão · Texto", accent: "from-primary0/20 to-primary0/5 text-primary0", ring: "ring-primary0/20" },
-              { icon: Pill, label: "2.000+ Fármacos", detail: "Doses, diluições, interações", accent: "from-primary0/20 to-primary0/5 text-primary0", ring: "ring-primary0/20" },
-              { icon: BookOpen, label: "1.600+ Protocolos", detail: "26 categorias, baseados em evidência", accent: "from-primary0/20 to-primary0/5 text-primary0", ring: "ring-primary0/20" },
-              { icon: Calculator, label: "53 Calculadoras", detail: "Glasgow, SOFA, Wells, HEART…", accent: "from-primary0/20 to-primary0/5 text-primary0", ring: "ring-primary0/20" },
-              { icon: FileText, label: "Prescrições Prontas", detail: "Modelos por diagnóstico + IA", accent: "from-destructive0/20 to-destructive0/5 text-destructive0", ring: "ring-destructive0/20" },
-              { icon: WifiOff, label: "100% Offline", detail: "Funciona sem internet", accent: "from-primary0/20 to-primary0/5 text-primary0", ring: "ring-primary0/20" },
-              { icon: Mic, label: "Voz & Evolução", detail: "Dite evoluções por voz", accent: "from-destructive0/20 to-destructive0/5 text-destructive0", ring: "ring-destructive0/20" },
+              { icon: Siren, label: "Modo Emergência", detail: "PCR, Sepse, IAM, AVC", accent: "from-destructive/20 to-destructive/5 text-destructive", ring: "ring-destructive/20" },
+              { icon: Bot, label: "IA Clínica multimodal", detail: "Chat · Caso · Exames · Plantão · Texto", accent: "from-primary/20 to-primary/5 text-primary", ring: "ring-primary/20" },
+              { icon: Pill, label: "2.000+ Fármacos", detail: "Doses, diluições, interações", accent: "from-primary/20 to-primary/5 text-primary", ring: "ring-primary/20" },
+              { icon: BookOpen, label: "1.600+ Protocolos", detail: "26 categorias, baseados em evidência", accent: "from-primary/20 to-primary/5 text-primary", ring: "ring-primary/20" },
+              { icon: Calculator, label: "53 Calculadoras", detail: "Glasgow, SOFA, Wells, HEART…", accent: "from-primary/20 to-primary/5 text-primary", ring: "ring-primary/20" },
+              { icon: FileText, label: "Prescrições Prontas", detail: "Modelos por diagnóstico + IA", accent: "from-destructive/20 to-destructive/5 text-destructive", ring: "ring-destructive/20" },
+              { icon: WifiOff, label: "100% Offline", detail: "Funciona sem internet", accent: "from-primary/20 to-primary/5 text-primary", ring: "ring-primary/20" },
+              { icon: Mic, label: "Voz & Evolução", detail: "Dite evoluções por voz", accent: "from-destructive/20 to-destructive/5 text-destructive", ring: "ring-destructive/20" },
             ].map((f, i) => (
               <motion.div
                 key={f.label}

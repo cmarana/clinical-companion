@@ -21,9 +21,9 @@ interface DashboardData {
 
 const PHASES = ["MVP", "Piloto", "iOS/Android", "Internacional"];
 const STATUS_COLORS: Record<string, string> = {
-  publicada: "bg-primary0/15 text-primary dark:text-primary border-primary0/30",
-  em_revisao: "bg-destructive0/15 text-destructive dark:text-destructive border-destructive0/30",
-  pendente: "bg-destructive0/15 text-destructive dark:text-destructive border-destructive0/30",
+  publicada: "bg-primary/15 text-primary dark:text-primary border-primary/30",
+  em_revisao: "bg-destructive/15 text-destructive dark:text-destructive border-destructive/30",
+  pendente: "bg-destructive/15 text-destructive dark:text-destructive border-destructive/30",
   arquivada: "bg-muted text-muted-foreground border-border",
 };
 
@@ -65,7 +65,7 @@ export default function GovernanceDashboard() {
           <ArrowLeft size={16} /> Voltar
         </button>
         <div className="text-center py-12">
-          <ShieldAlert className="mx-auto text-destructive0 mb-3" size={32} />
+          <ShieldAlert className="mx-auto text-destructive mb-3" size={32} />
           <p className="font-heading font-semibold">Acesso restrito</p>
           <p className="text-sm text-muted-foreground mt-1">{error || "Apenas administradores podem visualizar este painel."}</p>
         </div>
@@ -227,7 +227,7 @@ export default function GovernanceDashboard() {
             <Card>
               <CardHeader className="pb-2">
                 <CardTitle className="text-xs text-muted-foreground font-medium flex items-center gap-1">
-                  <CheckCircle2 size={12} className="text-primary0" /> EPM (mitigados)
+                  <CheckCircle2 size={12} className="text-primary" /> EPM (mitigados)
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -242,7 +242,7 @@ export default function GovernanceDashboard() {
             <Card>
               <CardHeader className="pb-2">
                 <CardTitle className="text-xs text-muted-foreground font-medium flex items-center gap-1">
-                  <AlertTriangle size={12} className="text-destructive0" /> CDDI (registros)
+                  <AlertTriangle size={12} className="text-destructive" /> CDDI (registros)
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -308,10 +308,10 @@ export default function GovernanceDashboard() {
         {/* ============ CURATION TAB ============ */}
         <TabsContent value="curation" className="space-y-4">
           {data.guidelines.upcoming_60d.length > 0 && (
-            <Card className="border-destructive0/30 bg-destructive0/5">
+            <Card className="border-destructive/30 bg-destructive/5">
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm font-heading flex items-center gap-2">
-                  <Clock size={14} className="text-destructive0" /> Próximas revisões (60 dias)
+                  <Clock size={14} className="text-destructive" /> Próximas revisões (60 dias)
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -406,10 +406,10 @@ export default function GovernanceDashboard() {
           </Card>
 
           {data.ttp.outliers.length > 0 && (
-            <Card className="border-destructive0/30">
+            <Card className="border-destructive/30">
               <CardHeader>
                 <CardTitle className="text-sm font-heading flex items-center gap-2">
-                  <AlertTriangle size={14} className="text-destructive0" /> Outliers recentes
+                  <AlertTriangle size={14} className="text-destructive" /> Outliers recentes
                 </CardTitle>
                 <CardDescription className="text-xs">Eventos com TTP acima de 5 minutos — investigar fluxo</CardDescription>
               </CardHeader>

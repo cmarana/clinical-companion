@@ -48,16 +48,16 @@ interface Stats {
 
 // ── Config ─────────────────────────────────────────────
 const typeConfig: Record<string, { label: string; icon: typeof Bug; color: string }> = {
-  bug: { label: "Bug", icon: Bug, color: "text-destructive0 bg-destructive0/10" },
-  suggestion: { label: "Sugestão", icon: Lightbulb, color: "text-destructive0 bg-destructive0/10" },
-  support: { label: "Suporte", icon: MessageSquare, color: "text-primary0 bg-primary0/10" },
+  bug: { label: "Bug", icon: Bug, color: "text-destructive bg-destructive/10" },
+  suggestion: { label: "Sugestão", icon: Lightbulb, color: "text-destructive bg-destructive/10" },
+  support: { label: "Suporte", icon: MessageSquare, color: "text-primary bg-primary/10" },
   other: { label: "Outro", icon: MessageSquarePlus, color: "text-muted-foreground bg-muted" },
 };
 
 const statusConfig: Record<string, { label: string; color: string }> = {
-  new: { label: "Novo", color: "bg-primary0/10 text-primary0 border-primary0/20" },
-  reviewing: { label: "Em análise", color: "bg-destructive0/10 text-destructive0 border-destructive0/20" },
-  resolved: { label: "Resolvido", color: "bg-primary0/10 text-primary0 border-primary0/20" },
+  new: { label: "Novo", color: "bg-primary/10 text-primary border-primary/20" },
+  reviewing: { label: "Em análise", color: "bg-destructive/10 text-destructive border-destructive/20" },
+  resolved: { label: "Resolvido", color: "bg-primary/10 text-primary border-primary/20" },
 };
 
 const tabs = [
@@ -257,7 +257,7 @@ export default function AdminDashboard() {
               <Icon size={14} />
               {tab.label}
               {tab.id === "feedback" && stats.newFeedback > 0 && (
-                <span className="bg-destructive0 text-white text-[9px] rounded-full px-1.5 py-0.5 font-bold">
+                <span className="bg-destructive text-white text-[9px] rounded-full px-1.5 py-0.5 font-bold">
                   {stats.newFeedback}
                 </span>
               )}
@@ -272,8 +272,8 @@ export default function AdminDashboard() {
           <div className="grid grid-cols-3 gap-3">
             {[
               { label: "Usuários", value: stats.totalUsers, color: "text-primary", icon: Users },
-              { label: "Feedbacks", value: stats.totalFeedback, color: "text-destructive0", icon: MessageSquare },
-              { label: "Novos", value: stats.newFeedback, color: "text-destructive0", icon: Clock },
+              { label: "Feedbacks", value: stats.totalFeedback, color: "text-destructive", icon: MessageSquare },
+              { label: "Novos", value: stats.newFeedback, color: "text-destructive", icon: Clock },
             ].map(s => {
               const SIcon = s.icon;
               return (

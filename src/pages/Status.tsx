@@ -118,7 +118,7 @@ export default function Status() {
       )}
 
       {!updateAvailable && status.lastResult === "ok" && !isDev && (
-        <Card className="mb-6 border-primary0/30 bg-primary0/5">
+        <Card className="mb-6 border-primary/30 bg-primary/5">
           <CardHeader className="flex flex-row items-center gap-3 space-y-0">
             <CheckCircle2 className="h-5 w-5 text-primary dark:text-primary" aria-hidden />
             <div>

@@ -7,10 +7,10 @@ import { Sparkles, RefreshCw, PenTool, Bug, ChevronRight, Newspaper } from "luci
 import { cn } from "@/lib/utils";
 
 const categoryConfig = {
-  new: { label: "Novo", icon: Sparkles, color: "bg-primary0/15 text-primary dark:text-primary" },
-  update: { label: "Atualização", icon: RefreshCw, color: "bg-primary0/15 text-primary dark:text-primary" },
-  revision: { label: "Revisão", icon: PenTool, color: "bg-destructive0/15 text-destructive dark:text-destructive" },
-  fix: { label: "Correção", icon: Bug, color: "bg-destructive0/15 text-destructive dark:text-destructive" },
+  new: { label: "Novo", icon: Sparkles, color: "bg-primary/15 text-primary dark:text-primary" },
+  update: { label: "Atualização", icon: RefreshCw, color: "bg-primary/15 text-primary dark:text-primary" },
+  revision: { label: "Revisão", icon: PenTool, color: "bg-destructive/15 text-destructive dark:text-destructive" },
+  fix: { label: "Correção", icon: Bug, color: "bg-destructive/15 text-destructive dark:text-destructive" },
 };
 
 function formatFullDate(iso: string): string {
@@ -45,10 +45,10 @@ export default function UpdatesFeed() {
                 {/* Timeline dot */}
                 <div className={cn(
                   "absolute left-2.5 top-1.5 w-3 h-3 rounded-full ring-2 ring-background",
-                  entry.category === "new" && "bg-primary0",
-                  entry.category === "update" && "bg-primary0",
-                  entry.category === "revision" && "bg-destructive0",
-                  entry.category === "fix" && "bg-destructive0",
+                  entry.category === "new" && "bg-primary",
+                  entry.category === "update" && "bg-primary",
+                  entry.category === "revision" && "bg-destructive",
+                  entry.category === "fix" && "bg-destructive",
                 )} />
 
                 <Card className="p-3 hover:shadow-md transition-shadow">

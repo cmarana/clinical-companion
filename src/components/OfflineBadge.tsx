@@ -22,8 +22,8 @@ export default function OfflineBadge({ message }: { message?: string }) {
   if (!offline) return null;
 
   return (
-    <div className="mx-4 mt-3 mb-2 flex items-center gap-2 rounded-xl bg-destructive0/10 border border-destructive0/20 px-3 py-2.5 animate-in fade-in">
-      <WifiOff size={14} className="text-destructive0 shrink-0" />
+    <div className="mx-4 mt-3 mb-2 flex items-center gap-2 rounded-xl bg-destructive/10 border border-destructive/20 px-3 py-2.5 animate-in fade-in">
+      <WifiOff size={14} className="text-destructive shrink-0" />
       <p className="text-[11px] text-destructive dark:text-destructive font-heading font-medium">
         {message || "Este recurso requer conexão com a internet"}
       </p>

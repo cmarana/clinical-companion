@@ -145,14 +145,14 @@ export default function Flashcards() {
               const p = getProgress()[currentCard.id];
               if (p?.leech) {
                 return (
-                  <Badge variant="outline" className="text-[10px] px-2 py-0.5 border-destructive0/40 text-destructive0 gap-1">
+                  <Badge variant="outline" className="text-[10px] px-2 py-0.5 border-destructive/40 text-destructive gap-1">
                     <AlertTriangle size={10} /> Travado
                   </Badge>
                 );
               }
               if ((p?.lapses ?? 0) >= 2) {
                 return (
-                  <Badge variant="outline" className="text-[10px] px-2 py-0.5 border-destructive0/40 text-destructive0">
+                  <Badge variant="outline" className="text-[10px] px-2 py-0.5 border-destructive/40 text-destructive">
                     {p.lapses} lapsos
                   </Badge>
                 );
@@ -166,7 +166,7 @@ export default function Flashcards() {
             onClick={() => !flipped && setFlipped(true)}
             className={cn(
               "flex-1 flex flex-col justify-center rounded-2xl shadow-lg p-6 cursor-pointer transition-all duration-300 min-h-[280px]",
-              flipped ? "bg-primary0/5 border border-primary0/20" : "bg-card border border-border"
+              flipped ? "bg-primary/5 border border-primary/20" : "bg-card border border-border"
             )}
           >
             {!flipped ? (
@@ -177,7 +177,7 @@ export default function Flashcards() {
               </div>
             ) : (
               <div className="space-y-3">
-                <p className="text-xs font-semibold text-primary0 flex items-center gap-1"><RotateCcw size={12} /> Resposta</p>
+                <p className="text-xs font-semibold text-primary flex items-center gap-1"><RotateCcw size={12} /> Resposta</p>
                 <div className="text-sm leading-relaxed whitespace-pre-wrap">{currentCard.back}</div>
               </div>
             )}
@@ -188,19 +188,19 @@ export default function Flashcards() {
             <div className="mt-4 space-y-2">
               <p className="text-xs text-muted-foreground text-center">Como foi?</p>
               <div className="grid grid-cols-4 gap-2">
-                <Button variant="outline" size="sm" className="flex-col h-14 rounded-xl border-destructive0/30 text-destructive0 hover:bg-destructive0/10" onClick={() => handleRate(1)}>
+                <Button variant="outline" size="sm" className="flex-col h-14 rounded-xl border-destructive/30 text-destructive hover:bg-destructive/10" onClick={() => handleRate(1)}>
                   <span className="text-lg">😣</span>
                   <span className="text-[9px]">Errei</span>
                 </Button>
-                <Button variant="outline" size="sm" className="flex-col h-14 rounded-xl border-destructive0/30 text-destructive0 hover:bg-destructive0/10" onClick={() => handleRate(3)}>
+                <Button variant="outline" size="sm" className="flex-col h-14 rounded-xl border-destructive/30 text-destructive hover:bg-destructive/10" onClick={() => handleRate(3)}>
                   <span className="text-lg">😐</span>
                   <span className="text-[9px]">Difícil</span>
                 </Button>
-                <Button variant="outline" size="sm" className="flex-col h-14 rounded-xl border-primary0/30 text-primary0 hover:bg-primary0/10" onClick={() => handleRate(4)}>
+                <Button variant="outline" size="sm" className="flex-col h-14 rounded-xl border-primary/30 text-primary hover:bg-primary/10" onClick={() => handleRate(4)}>
                   <span className="text-lg">😊</span>
                   <span className="text-[9px]">Bom</span>
                 </Button>
-                <Button variant="outline" size="sm" className="flex-col h-14 rounded-xl border-primary0/30 text-primary0 hover:bg-primary0/10" onClick={() => handleRate(5)}>
+                <Button variant="outline" size="sm" className="flex-col h-14 rounded-xl border-primary/30 text-primary hover:bg-primary/10" onClick={() => handleRate(5)}>
                   <span className="text-lg">🤩</span>
                   <span className="text-[9px]">Fácil</span>
                 </Button>
@@ -234,22 +234,22 @@ export default function Flashcards() {
         {/* Global stats */}
         <div className="grid grid-cols-4 gap-2 mb-4">
           <div className="bg-card rounded-2xl p-3 text-center shadow-sm">
-            <Zap size={16} className="mx-auto text-primary0 mb-1" />
+            <Zap size={16} className="mx-auto text-primary mb-1" />
             <p className="text-lg font-bold">{globalStats.new}</p>
             <p className="text-[9px] text-muted-foreground">Novos</p>
           </div>
           <div className="bg-card rounded-2xl p-3 text-center shadow-sm">
-            <Clock size={16} className="mx-auto text-destructive0 mb-1" />
+            <Clock size={16} className="mx-auto text-destructive mb-1" />
             <p className="text-lg font-bold">{globalStats.review}</p>
             <p className="text-[9px] text-muted-foreground">Para revisar</p>
           </div>
           <div className="bg-card rounded-2xl p-3 text-center shadow-sm">
-            <BookOpen size={16} className="mx-auto text-primary0 mb-1" />
+            <BookOpen size={16} className="mx-auto text-primary mb-1" />
             <p className="text-lg font-bold">{globalStats.learning}</p>
             <p className="text-[9px] text-muted-foreground">Aprendendo</p>
           </div>
           <div className="bg-card rounded-2xl p-3 text-center shadow-sm">
-            <Trophy size={16} className="mx-auto text-destructive0 mb-1" />
+            <Trophy size={16} className="mx-auto text-destructive mb-1" />
             <p className="text-lg font-bold">{globalStats.mastered}</p>
             <p className="text-[9px] text-muted-foreground">Dominados</p>
           </div>
@@ -257,14 +257,14 @@ export default function Flashcards() {
 
         {/* Retenção estimada */}
         <div className="bg-card rounded-2xl p-3 mb-3 flex items-center gap-3 shadow-sm">
-          <TrendingUp size={18} className="text-primary0 shrink-0" />
+          <TrendingUp size={18} className="text-primary shrink-0" />
           <div className="flex-1 min-w-0">
             <div className="flex items-center justify-between mb-1">
               <span className="text-[11px] font-semibold">Retenção estimada</span>
-              <span className="text-[11px] font-mono text-primary0">{Math.round(retention * 100)}%</span>
+              <span className="text-[11px] font-mono text-primary">{Math.round(retention * 100)}%</span>
             </div>
             <div className="h-1.5 bg-muted rounded-full overflow-hidden">
-              <div className="h-full bg-primary0 rounded-full transition-all" style={{ width: `${retention * 100}%` }} />
+              <div className="h-full bg-primary rounded-full transition-all" style={{ width: `${retention * 100}%` }} />
             </div>
           </div>
         </div>
@@ -278,7 +278,7 @@ export default function Flashcards() {
         {leechCount > 0 && (
           <Button
             variant="outline"
-            className="w-full rounded-2xl h-10 gap-2 mb-4 text-xs border-destructive0/30 text-destructive0 hover:bg-destructive0/10"
+            className="w-full rounded-2xl h-10 gap-2 mb-4 text-xs border-destructive/30 text-destructive hover:bg-destructive/10"
             onClick={() => startReview("leech")}
           >
             <AlertTriangle size={14} /> Cards travados (leech) — {leechCount}
@@ -305,16 +305,16 @@ export default function Flashcards() {
                     {cat.count} cards
                   </Badge>
                   {cat.stats.review > 0 && (
-                    <span className="text-[9px] text-destructive0 font-semibold">{cat.stats.review} pendentes</span>
+                    <span className="text-[9px] text-destructive font-semibold">{cat.stats.review} pendentes</span>
                   )}
                 </div>
                 <p className="font-semibold text-sm">{cat.label}</p>
                 {/* Mini progress bar */}
                 <div className="flex gap-0.5 mt-2">
-                  <div className="h-1 rounded-full bg-primary0/30 flex-1" style={{ flex: cat.stats.new || 0.1 }} />
-                  <div className="h-1 rounded-full bg-destructive0/50" style={{ flex: cat.stats.review || 0.1 }} />
-                  <div className="h-1 rounded-full bg-primary0/50" style={{ flex: cat.stats.learning || 0.1 }} />
-                  <div className="h-1 rounded-full bg-destructive0" style={{ flex: cat.stats.mastered || 0.1 }} />
+                  <div className="h-1 rounded-full bg-primary/30 flex-1" style={{ flex: cat.stats.new || 0.1 }} />
+                  <div className="h-1 rounded-full bg-destructive/50" style={{ flex: cat.stats.review || 0.1 }} />
+                  <div className="h-1 rounded-full bg-primary/50" style={{ flex: cat.stats.learning || 0.1 }} />
+                  <div className="h-1 rounded-full bg-destructive" style={{ flex: cat.stats.mastered || 0.1 }} />
                 </div>
               </div>
               <ChevronRight size={16} className="text-muted-foreground shrink-0" />

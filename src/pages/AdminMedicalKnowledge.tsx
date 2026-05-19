@@ -456,7 +456,7 @@ function QueriesTab() {
                   <div className="flex flex-wrap gap-1 mb-1">
                     <Badge
                       variant="secondary"
-                      className={`text-[9px] ${log.cache_hit ? "bg-primary0/10 text-primary dark:text-primary" : ""}`}
+                      className={`text-[9px] ${log.cache_hit ? "bg-primary/10 text-primary dark:text-primary" : ""}`}
                     >
                       {log.cache_hit ? "cache" : "llm"}
                     </Badge>
@@ -755,7 +755,7 @@ function IngestTab() {
               <span>{lastResult.inserted} chunks indexados</span>
               {lastResult.failed > 0 && (
                 <>
-                  <AlertTriangle size={14} className="text-destructive0 ml-2" />
+                  <AlertTriangle size={14} className="text-destructive ml-2" />
                   <span className="text-destructive dark:text-destructive">{lastResult.failed} falharam</span>
                 </>
               )}
@@ -793,7 +793,7 @@ function IngestTab() {
           {testAnswer && (
             <div className="space-y-3 rounded-lg border bg-muted/30 p-4">
               <div className="flex flex-wrap gap-2">
-                <Badge className={`text-[10px] ${testAnswer.source === "cache" ? "bg-primary0/10 text-primary dark:text-primary border-primary0/20" : "bg-primary/10 text-primary border-primary/20"}`}>
+                <Badge className={`text-[10px] ${testAnswer.source === "cache" ? "bg-primary/10 text-primary dark:text-primary border-primary/20" : "bg-primary/10 text-primary border-primary/20"}`}>
                   fonte: {testAnswer.source}
                 </Badge>
                 <Badge variant="outline" className="text-[10px]">intent: {testAnswer.intent}</Badge>
@@ -801,7 +801,7 @@ function IngestTab() {
                 {testAnswer.model && <Badge variant="outline" className="text-[10px]">{testAnswer.model}</Badge>}
                 {testAnswer.latency_ms && <Badge variant="outline" className="text-[10px]">{testAnswer.latency_ms}ms</Badge>}
                 {testAnswer.cached && (
-                  <Badge className="text-[10px] bg-primary0/10 text-primary dark:text-primary border-primary0/20">
+                  <Badge className="text-[10px] bg-primary/10 text-primary dark:text-primary border-primary/20">
                     session cache hit
                   </Badge>
                 )}

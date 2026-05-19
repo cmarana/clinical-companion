@@ -58,7 +58,7 @@ export function GuidelinesPanel({
             Fontes e diretrizes oficiais
           </h3>
           {recentCount > 0 && (
-            <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-primary0/15 text-primary dark:text-primary">
+            <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-primary/15 text-primary dark:text-primary">
               <Sparkles size={9} />
               {recentCount} {recentCount === 1 ? "atualizada" : "atualizadas"}
             </span>
@@ -77,7 +77,7 @@ export function GuidelinesPanel({
               key={`${g.society}-${g.year}-${i}`}
               className={cn(
                 "p-3 transition-colors",
-                isRecent && "bg-primary0/5 border-l-2 border-l-emerald-500/40",
+                isRecent && "bg-primary/5 border-l-2 border-l-emerald-500/40",
               )}
             >
               <div className="flex items-start gap-2">
@@ -97,7 +97,7 @@ export function GuidelinesPanel({
                       {g.year}
                     </span>
                     {isRecent && (
-                      <span className="inline-flex items-center gap-0.5 text-[9px] font-bold px-1.5 py-0.5 rounded bg-primary0/15 text-primary dark:text-primary">
+                      <span className="inline-flex items-center gap-0.5 text-[9px] font-bold px-1.5 py-0.5 rounded bg-primary/15 text-primary dark:text-primary">
                         <Sparkles size={8} />
                         ATUALIZADO
                       </span>
@@ -106,10 +106,10 @@ export function GuidelinesPanel({
                       <span
                         className={cn(
                           "inline-flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded",
-                          g.class === "I" && "bg-primary0/15 text-primary dark:text-primary",
-                          g.class === "IIa" && "bg-primary0/15 text-primary dark:text-primary",
-                          g.class === "IIb" && "bg-destructive0/15 text-destructive dark:text-destructive",
-                          g.class === "III" && "bg-destructive0/15 text-destructive dark:text-destructive",
+                          g.class === "I" && "bg-primary/15 text-primary dark:text-primary",
+                          g.class === "IIa" && "bg-primary/15 text-primary dark:text-primary",
+                          g.class === "IIb" && "bg-destructive/15 text-destructive dark:text-destructive",
+                          g.class === "III" && "bg-destructive/15 text-destructive dark:text-destructive",
                         )}
                       >
                         <ShieldCheck size={10} />

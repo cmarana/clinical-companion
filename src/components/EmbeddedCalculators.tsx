@@ -380,7 +380,7 @@ function DengueHidratacaoCalc() {
           ))}
         </ul>
         {b.alerta && (
-          <p className="text-[11px] font-semibold text-destructive dark:text-destructive border-l-2 border-destructive0 pl-2 mt-2">⚠ {b.alerta}</p>
+          <p className="text-[11px] font-semibold text-destructive dark:text-destructive border-l-2 border-destructive pl-2 mt-2">⚠ {b.alerta}</p>
         )}
         <p className="text-[10px] text-muted-foreground italic pt-1">
           Base: PCDT Dengue MS 2025-2026 + OPAS 2025. Reavaliar a cada 1 h em Grupo C/D.
@@ -433,7 +433,7 @@ function ArbovirusRiskCalc() {
   if (doenca === "dengue") {
     if (hasGrave) classif = {
       grupo: "Grupo D — Dengue grave",
-      cor: "bg-destructive0/15 text-destructive dark:text-destructive border-destructive0/40",
+      cor: "bg-destructive/15 text-destructive dark:text-destructive border-destructive/40",
       conduta: [
         "UTI imediata + monitorização invasiva",
         "Cristaloide 20 mL/kg em 15-30 min (até 3 bolus)",
@@ -444,7 +444,7 @@ function ArbovirusRiskCalc() {
     };
     else if (hasAlarme) classif = {
       grupo: "Grupo C — Sinais de alarme",
-      cor: "bg-destructive0/15 text-destructive dark:text-destructive border-destructive0/40",
+      cor: "bg-destructive/15 text-destructive dark:text-destructive border-destructive/40",
       conduta: [
         "Internação + hidratação parenteral (10 mL/kg em 1 h)",
         "Hct, plaquetas, PA e diurese a cada 1 h",
@@ -453,7 +453,7 @@ function ArbovirusRiskCalc() {
     };
     else if (grupoRisco) classif = {
       grupo: "Grupo B — Risco aumentado",
-      cor: "bg-destructive0/15 text-destructive dark:text-destructive border-destructive0/40",
+      cor: "bg-destructive/15 text-destructive dark:text-destructive border-destructive/40",
       conduta: [
         "Observação 24-48 h em unidade de saúde",
         "Hidratação oral supervisionada (60 mL/kg/dia)",
@@ -463,7 +463,7 @@ function ArbovirusRiskCalc() {
     };
     else classif = {
       grupo: "Grupo A — Manejo domiciliar",
-      cor: "bg-primary0/15 text-primary dark:text-primary border-primary0/40",
+      cor: "bg-primary/15 text-primary dark:text-primary border-primary/40",
       conduta: [
         "Hidratação oral 60 mL/kg/dia (1/3 SRO + 2/3 líquidos)",
         "Paracetamol/dipirona — vedado AAS, AINE, corticoide",
@@ -473,7 +473,7 @@ function ArbovirusRiskCalc() {
   } else {
     if (hasChikGrave) classif = {
       grupo: "Chikungunya grave / atípica",
-      cor: "bg-destructive0/15 text-destructive dark:text-destructive border-destructive0/40",
+      cor: "bg-destructive/15 text-destructive dark:text-destructive border-destructive/40",
       conduta: [
         "Internação (UTI se cardite/encefalite/hepatite fulminante)",
         "Suporte de órgão + analgesia escalonada",
@@ -483,7 +483,7 @@ function ArbovirusRiskCalc() {
     };
     else if (grupoRisco) classif = {
       grupo: "Chikungunya com risco aumentado",
-      cor: "bg-destructive0/15 text-destructive dark:text-destructive border-destructive0/40",
+      cor: "bg-destructive/15 text-destructive dark:text-destructive border-destructive/40",
       conduta: [
         "Observação + analgesia (paracetamol/dipirona)",
         "AINE somente após excluir dengue (NS1 negativo + plaquetas estáveis)",
@@ -493,7 +493,7 @@ function ArbovirusRiskCalc() {
     };
     else classif = {
       grupo: "Chikungunya aguda — manejo ambulatorial",
-      cor: "bg-primary0/15 text-primary dark:text-primary border-primary0/40",
+      cor: "bg-primary/15 text-primary dark:text-primary border-primary/40",
       conduta: [
         "Hidratação oral + paracetamol/dipirona",
         "NÃO usar AAS/AINE nas primeiras 2 sem (até excluir dengue)",

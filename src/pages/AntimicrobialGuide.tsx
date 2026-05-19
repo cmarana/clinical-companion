@@ -39,7 +39,7 @@ function ScenarioCard({ scenario }: { scenario: InfectionScenario }) {
                 "text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1",
                 scenario.severity.includes("EMERGÊNCIA") || scenario.severity.includes("URGÊNCIA")
                   ? "bg-destructive/15 text-destructive"
-                  : "bg-destructive0/15 text-destructive dark:text-destructive"
+                  : "bg-destructive/15 text-destructive dark:text-destructive"
               )}>
                 <AlertTriangle size={10} /> {scenario.severity}
               </span>
@@ -61,7 +61,7 @@ function ScenarioCard({ scenario }: { scenario: InfectionScenario }) {
           {/* 1st line */}
           <div>
             <div className="flex items-center gap-1.5 mb-1.5">
-              <Shield size={12} className="text-primary0" />
+              <Shield size={12} className="text-primary" />
               <h5 className="text-xs font-bold text-primary dark:text-primary uppercase tracking-wider">1ª Linha</h5>
             </div>
             <div className="space-y-1.5">
@@ -72,7 +72,7 @@ function ScenarioCard({ scenario }: { scenario: InfectionScenario }) {
           {/* 2nd line */}
           <div>
             <div className="flex items-center gap-1.5 mb-1.5">
-              <Shield size={12} className="text-destructive0" />
+              <Shield size={12} className="text-destructive" />
               <h5 className="text-xs font-bold text-destructive dark:text-destructive uppercase tracking-wider">2ª Linha / Alternativa</h5>
             </div>
             <div className="space-y-1.5">
@@ -84,7 +84,7 @@ function ScenarioCard({ scenario }: { scenario: InfectionScenario }) {
           {scenario.allergicAlternative && scenario.allergicAlternative.length > 0 && (
             <div>
               <div className="flex items-center gap-1.5 mb-1.5">
-                <AlertTriangle size={12} className="text-destructive0" />
+                <AlertTriangle size={12} className="text-destructive" />
                 <h5 className="text-xs font-bold text-destructive dark:text-destructive uppercase tracking-wider">Alergia a Betalactâmicos</h5>
               </div>
               <div className="space-y-1.5">

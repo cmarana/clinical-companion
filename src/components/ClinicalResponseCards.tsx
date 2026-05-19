@@ -93,10 +93,10 @@ function RagSourceBadge({
 
   const sourceColor =
     source === "cache"
-      ? "bg-primary0/10 text-primary dark:text-primary border-primary0/20"
+      ? "bg-primary/10 text-primary dark:text-primary border-primary/20"
       : source === "deterministic"
       ? "bg-primary/10 text-primary border-primary/20"
-      : "bg-primary0/10 text-primary dark:text-primary border-primary0/20";
+      : "bg-primary/10 text-primary dark:text-primary border-primary/20";
 
   return (
     <div className="rounded-lg border border-border bg-muted/30 overflow-hidden">

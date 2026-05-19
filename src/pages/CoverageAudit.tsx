@@ -39,9 +39,9 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
 const STATUS_TONE: Record<CoverageStatus, string> = {
-  ok: "bg-primary0/10 text-primary dark:text-primary border-primary0/30",
-  outdated: "bg-destructive0/10 text-destructive dark:text-destructive border-destructive0/30",
-  incomplete: "bg-destructive0/10 text-destructive dark:text-destructive border-destructive0/30",
+  ok: "bg-primary/10 text-primary dark:text-primary border-primary/30",
+  outdated: "bg-destructive/10 text-destructive dark:text-destructive border-destructive/30",
+  incomplete: "bg-destructive/10 text-destructive dark:text-destructive border-destructive/30",
   missing: "bg-destructive/10 text-destructive border-destructive/30",
 };
 

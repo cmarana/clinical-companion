@@ -1048,7 +1048,7 @@ function ClinicalAIContent() {
                                 <X size={11} />
                               </button>
                               {anonymize && (
-                                <div className="absolute bottom-0.5 left-0.5 right-0.5 flex items-center justify-center gap-0.5 px-1 py-0.5 rounded bg-primary0/90 text-white text-[8px] font-heading font-semibold backdrop-blur-sm">
+                                <div className="absolute bottom-0.5 left-0.5 right-0.5 flex items-center justify-center gap-0.5 px-1 py-0.5 rounded bg-primary/90 text-white text-[8px] font-heading font-semibold backdrop-blur-sm">
                                   <ShieldCheck size={8} /> Anon.
                                 </div>
                               )}
@@ -1070,7 +1070,7 @@ function ClinicalAIContent() {
                       <div className="space-y-1.5">
                         {documents.map((doc, idx) => (
                           <div key={idx} className="flex items-center gap-2 p-2 rounded-lg border border-border bg-card/60">
-                            <div className="w-9 h-9 rounded-lg bg-destructive0/10 text-destructive dark:text-destructive flex items-center justify-center shrink-0">
+                            <div className="w-9 h-9 rounded-lg bg-destructive/10 text-destructive dark:text-destructive flex items-center justify-center shrink-0">
                               <FileType2 size={18} />
                             </div>
                             <div className="flex-1 min-w-0">
@@ -1424,7 +1424,7 @@ function ClinicalAIContent() {
                       {h.thumbnail ? (
                         <img src={h.thumbnail} alt="" width={48} height={48} loading="lazy" decoding="async" className="w-12 h-12 rounded-md object-cover border border-border shrink-0" />
                       ) : (
-                        <div className="w-12 h-12 rounded-md bg-destructive0/10 text-destructive dark:text-destructive border border-border flex items-center justify-center shrink-0">
+                        <div className="w-12 h-12 rounded-md bg-destructive/10 text-destructive dark:text-destructive border border-border flex items-center justify-center shrink-0">
                           <FileType2 size={18} />
                         </div>
                       )}
@@ -1446,7 +1446,7 @@ function ClinicalAIContent() {
                             }
                             if (att > 0) {
                               return (
-                                <span className="shrink-0 px-1.5 py-0.5 rounded-full bg-destructive0 text-white text-[9px] font-bold leading-none flex items-center gap-0.5">
+                                <span className="shrink-0 px-1.5 py-0.5 rounded-full bg-destructive text-white text-[9px] font-bold leading-none flex items-center gap-0.5">
                                   ⚠️ {att}
                                 </span>
                               );
@@ -1467,7 +1467,7 @@ function ClinicalAIContent() {
                           </button>
                           <button
                             onClick={() => handleReanalyze(h)}
-                            className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-primary0/10 text-primary dark:text-primary text-[10px] font-heading font-semibold hover:bg-primary0/20"
+                            className="flex items-center gap-1 px-1.5 py-0.5 rounded bg-primary/10 text-primary dark:text-primary text-[10px] font-heading font-semibold hover:bg-primary/20"
                             title="Reaproveitar contexto e anexar novo arquivo"
                           >
                             <RotateCcw size={10} /> Reanalisar
@@ -1541,8 +1541,8 @@ function ClinicalAIContent() {
                             a.level === "critico"
                               ? "border-destructive/40 bg-destructive/10 text-destructive"
                               : a.level === "atencao"
-                                ? "border-destructive0/40 bg-destructive0/10 text-destructive dark:text-destructive"
-                                : "border-primary0/40 bg-primary0/10 text-primary dark:text-primary";
+                                ? "border-destructive/40 bg-destructive/10 text-destructive dark:text-destructive"
+                                : "border-primary/40 bg-primary/10 text-primary dark:text-primary";
                           const icon = a.level === "critico" ? "🚨" : a.level === "atencao" ? "⚠️" : "ℹ️";
                           return (
                             <li

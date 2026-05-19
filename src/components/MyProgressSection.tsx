@@ -122,7 +122,7 @@ export default function MyProgressSection() {
           </h3>
         </div>
         {isPro ? (
-          <span className="flex items-center gap-1 text-[9px] font-bold text-destructive bg-destructive0/10 px-1.5 py-0.5 rounded-full ring-1 ring-destructive0/20">
+          <span className="flex items-center gap-1 text-[9px] font-bold text-destructive bg-destructive/10 px-1.5 py-0.5 rounded-full ring-1 ring-destructive/20">
             <Crown size={9} /> PRO
           </span>
         ) : null}
@@ -160,7 +160,7 @@ export default function MyProgressSection() {
           label="Streak atual"
           value={streak}
           sub={streak === 1 ? "dia consecutivo" : "dias consecutivos"}
-          color={streak > 0 ? "text-destructive0" : "text-muted-foreground"}
+          color={streak > 0 ? "text-destructive" : "text-muted-foreground"}
         />
         <StatCard
           icon={Calendar}
@@ -175,7 +175,7 @@ export default function MyProgressSection() {
           label="Esta semana"
           value={weekViews}
           sub="protocolos consultados"
-          color="text-primary0"
+          color="text-primary"
           onClick={() => navigate("/full-protocols")}
         />
       </div>
@@ -221,7 +221,7 @@ export default function MyProgressSection() {
       {topSpecialties.length > 0 ? (
         <div className="rounded-2xl bg-card ring-1 ring-border/50 p-4 space-y-3">
           <p className="text-xs font-heading font-bold flex items-center gap-1.5">
-            <Award size={13} className="text-destructive0" /> Trilhas mais ativas
+            <Award size={13} className="text-destructive" /> Trilhas mais ativas
             <span className="text-[9px] text-muted-foreground font-normal ml-auto">últimos 30 dias</span>
           </p>
           <div className="space-y-2">
@@ -244,7 +244,7 @@ export default function MyProgressSection() {
                       transition={{ duration: 0.5, delay: idx * 0.05 }}
                       className={cn(
                         "h-full rounded-full",
-                        idx === 0 ? "bg-destructive0" : idx === 1 ? "bg-slate-400" : idx === 2 ? "bg-destructive" : "bg-primary/60"
+                        idx === 0 ? "bg-destructive" : idx === 1 ? "bg-slate-400" : idx === 2 ? "bg-destructive" : "bg-primary/60"
                       )}
                     />
                   </div>
@@ -329,7 +329,7 @@ function GoalRow({
           transition={{ duration: 0.5, ease: "easeOut" }}
           className={cn(
             "h-full rounded-full",
-            progress >= 100 ? "bg-primary0" : "bg-gradient-to-r from-primary to-primary/70"
+            progress >= 100 ? "bg-primary" : "bg-gradient-to-r from-primary to-primary/70"
           )}
         />
       </div>
