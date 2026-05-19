@@ -109,21 +109,21 @@ function DutyModeContent() {
             </button>
             <button
               onClick={() => navigate("/rounds")}
-              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl bg-primary/10 text-primary hover:bg-primary/20 active:scale-95 transition-all"
+              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl bg-white/12 text-white ring-1 ring-white/18 hover:bg-white/20 active:scale-95 transition-all"
             >
               <Users size={20} />
               <span className="text-[10px] font-heading font-bold leading-tight text-center">Round / Leitos</span>
             </button>
             <button
               onClick={() => navigate("/voice-evolution")}
-              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl bg-accent text-accent-foreground hover:bg-accent/80 active:scale-95 transition-all"
+              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl bg-white/12 text-white ring-1 ring-white/18 hover:bg-white/20 active:scale-95 transition-all"
             >
               <Mic size={20} />
               <span className="text-[10px] font-heading font-bold leading-tight text-center">Evolução por Voz</span>
             </button>
             <button
               onClick={() => navigate("/prescription-checker")}
-              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl bg-primary/10 text-primary hover:bg-primary/20 active:scale-95 transition-all"
+              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl bg-white/12 text-white ring-1 ring-white/18 hover:bg-white/20 active:scale-95 transition-all"
             >
               <Beaker size={20} />
               <span className="text-[10px] font-heading font-bold leading-tight text-center">Checagem Rx</span>
