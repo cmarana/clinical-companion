@@ -34,7 +34,7 @@ function EmergencyModeContent() {
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
   const [openCats, setOpenCats] = useState<Record<string, boolean>>(() =>
-    Object.fromEntries(emergencyCategories.map(c => [c.id, true]))
+    Object.fromEntries(emergencyCategories.map(c => [c.id, false]))
   );
 
   const searchResults = useMemo(() => {
