@@ -48,7 +48,9 @@ export default function BottomNav() {
                   ? isEmergency
                     ? "text-destructive"
                     : "text-primary"
-                  : "text-muted-foreground hover:text-foreground"
+                  : isEmergency
+                    ? "text-destructive"
+                    : "text-primary hover:text-foreground"
               )}
             >
               <tab.icon size={20} strokeWidth={active ? 2.5 : 2} />
