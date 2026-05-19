@@ -19,7 +19,7 @@ export const cardiovascularProtocols: EmergencyProtocol[] = [
       { id: "prescriptions", title: "Guia de Prescrições", content: "DOR TORÁCICA — SALA DE EMERGÊNCIA:\n1. Monitorização contínua: ECG, SpO2, PA\n2. Acesso venoso periférico calibroso\n3. O2 suplementar se SpO2 < 94%\n4. AAS 300mg VO (mastigar) — agora\n5. Nitroglicerina 5mg SL — agora (se PAS > 90)\n6. ECG 12 derivações — agora e repetir em 15-30 min se alterado\n7. Troponina ultrassensível — agora e em 1-3h\n8. Hemograma, ureia, creatinina, Na, K, glicemia, coagulograma\n9. Rx tórax PA\n\nSE SCA CONFIRMADA:\n10. Clopidogrel 300mg VO OU Ticagrelor 180mg VO\n11. Enoxaparina 1mg/kg SC (ou HNF 60UI/kg IV em bolus + 12UI/kg/h)\n12. Atorvastatina 80mg VO\n13. Metoprolol 25mg VO se FC > 70 e sem IC\n14. Nitrato IV se dor refratária: Nitroglicerina 50mg/250mL SG5% — iniciar 5mL/h" },
       { id: "references", title: "Referências Bibliográficas", content: "1. Amsterdam EA, et al. 2014 AHA/ACC Guideline for the Management of Patients with Non–ST-Elevation ACS. Circulation, 2014.\n2. Collet JP, et al. 2020 ESC Guidelines for the Management of ACS in Patients Presenting without Persistent ST-Segment Elevation. Eur Heart J, 2021.\n3. SBC. V Diretriz de Dor Torácica na Sala de Emergência. Arq Bras Cardiol, 2015.\n4. Body R, et al. The HEART Score for Early Discharge of Patients with Chest Pain. Acad Emerg Med, 2020.\n5. Kontos MC, et al. 2022 ACC Expert Consensus Decision Pathway for Evaluation of Acute Chest Pain. JACC, 2022.\n6. Hagan PG, et al. The International Registry of Acute Aortic Dissection (IRAD). JAMA, 2000." },
     ],
-  },,
+  },
   {
     id: "em-iam-supra",
     title: "IAM com Supradesnivelamento de ST (IAMCSST)",

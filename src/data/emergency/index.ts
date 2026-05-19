@@ -123,6 +123,7 @@ export const UPDATED_EMERGENCY_PROTOCOL_IDS = new Set<string>([
 let _validated = false;
 export function validateEmergencyData() {
   const emptyCategories: string[] = [];
+  const invalidProtocols: { categoryId: string; index: number }[] = [];
   const protocolsWithoutSections: string[] = [];
   const emptySections: { protocolId: string; sectionId: string }[] = [];
   const seenIds = new Map<string, number>();
@@ -130,7 +131,11 @@ export function validateEmergencyData() {
 
   for (const cat of emergencyCategories) {
     if (!cat.protocols || cat.protocols.length === 0) emptyCategories.push(cat.id);
-    for (const p of cat.protocols ?? []) {
+    for (const [index, p] of (cat.protocols ?? []).entries()) {
+      if (!p?.id) {
+        invalidProtocols.push({ categoryId: cat.id, index });
+        continue;
+      }
       seenIds.set(p.id, (seenIds.get(p.id) ?? 0) + 1);
       if (!p.sections || p.sections.length === 0) {
         protocolsWithoutSections.push(p.id);
@@ -150,12 +155,13 @@ export function validateEmergencyData() {
   if (!_validated && import.meta.env?.DEV) {
     _validated = true;
     if (emptyCategories.length) console.warn("[emergency] categorias vazias:", emptyCategories);
+    if (invalidProtocols.length) console.warn("[emergency] protocolos inválidos:", invalidProtocols);
     if (protocolsWithoutSections.length) console.warn("[emergency] protocolos sem seções:", protocolsWithoutSections);
     if (emptySections.length) console.warn("[emergency] seções vazias:", emptySections);
     if (duplicateIds.length) console.warn("[emergency] IDs duplicados:", duplicateIds);
   }
   return {
-    emptyCategories, protocolsWithoutSections, emptySections, duplicateIds,
+    emptyCategories, invalidProtocols, protocolsWithoutSections, emptySections, duplicateIds,
     totalCategories: emergencyCategories.length,
     totalProtocols: allEmergencyProtocols.length,
   };
