@@ -99,7 +99,7 @@ function PrescriptionsContent() {
                   <div
                     key={item.id}
                     onClick={() => navigate(`/prescriptions/${item.id}`)}
-                    className="cursor-pointer rounded-xl bg-card border border-primary/15 hover:border-primary/40 shadow-sm hover:shadow-md active:scale-[0.98] transition-all"
+                    className="cursor-pointer rounded-xl bg-primary/[0.04] hover:bg-primary/10 ring-1 ring-primary/15 hover:ring-primary/40 active:scale-[0.98] transition-all"
                   >
                     <div className="px-3.5 py-2.5 flex items-center justify-between gap-2">
                       <div className="min-w-0">
