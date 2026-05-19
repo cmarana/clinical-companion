@@ -73,7 +73,7 @@ export default function BularioDetail() {
             onClick={() => toggleFavorite({ id: med.id, type: "medication", title: med.nome })}
             className="p-1.5 rounded-md hover:bg-accent transition-colors"
           >
-            <Star size={18} className={cn(fav ? "fill-warning text-warning" : "text-muted-foreground")} />
+            <Star size={18} className={cn(fav ? "fill-destructive text-destructive" : "text-primary")} />
           </button>
         }
       />
@@ -86,7 +86,7 @@ export default function BularioDetail() {
           <Badge variant="outline">{med.forma_farmaceutica} — {med.via}</Badge>
           {med.controlado && <Badge variant="destructive">Controlado</Badge>}
           {med.receituario && (
-            <Badge variant="outline" className="border-warning text-warning-foreground">
+            <Badge variant="outline" className="border-destructive text-destructive">
               {med.receituario}
             </Badge>
           )}
