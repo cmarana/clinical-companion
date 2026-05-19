@@ -50,39 +50,8 @@ const modes = [
 ];
 
 // Paleta única: azul Plantão dominante. Vermelho APENAS em Emergência (semântico).
-// Texto da Emergência em azul para contrastar com as demais caixas azuis.
-type ToneStyle = {
-  background: string;
-  iconBg: string;
-  iconColor: string;
-  titleColor: string;
-  subColor: string;
-  ring: string;
-  ecgColor: string;
-};
-
-const toneStyles: Record<string, ToneStyle> = {
-  // Plantão e demais — mesma tonalidade azul profundo
-  deep: {
-    background: "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)",
-    iconBg: "bg-white/18 ring-1 ring-white/30",
-    iconColor: "text-white",
-    titleColor: "text-white",
-    subColor: "text-white/85",
-    ring: "ring-1 ring-white/15",
-    ecgColor: "text-white",
-  },
-  // Emergência — vermelho semântico mais profundo (gradiente fechado, sem fundo branco no ícone)
-  danger: {
-    background: "linear-gradient(135deg, hsl(0 72% 26%) 0%, hsl(0 68% 36%) 60%, hsl(0 64% 44%) 100%)",
-    iconBg: "bg-white/15 ring-1 ring-white/25 backdrop-blur-sm",
-    iconColor: "text-white",
-    titleColor: "text-white",
-    subColor: "text-white/85",
-    ring: "ring-1 ring-white/15",
-    ecgColor: "text-white",
-  },
-};
+// Tokens centralizados em src/lib/design-tokens.ts
+import { toneStyles, GRADIENT_BRIGHT_BLUE, GRADIENT_DEEP_BLUE_SOFT } from "@/lib/design-tokens";
 
 export default function Home() {
   const navigate = useNavigate();
