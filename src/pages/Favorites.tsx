@@ -4,6 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { FileText, Pill, Star, ClipboardList, FolderOpen, ChevronDown, ChevronRight } from "lucide-react";
 import { useState } from "react";
+import { GRADIENT_DEEP_BLUE } from "@/lib/design-tokens";
 
 export default function Favorites() {
   const navigate = useNavigate();
@@ -54,19 +55,23 @@ export default function Favorites() {
               const items = grouped[spec] || [];
               const isOpen = !collapsed[spec];
               return (
-                <div key={spec} className="rounded-2xl border bg-card overflow-hidden">
+                <div
+                  key={spec}
+                  className="rounded-2xl overflow-hidden text-white shadow-md ring-1 ring-white/15"
+                  style={{ background: GRADIENT_DEEP_BLUE }}
+                >
                   <button
                     onClick={() => toggle(spec)}
-                    className="w-full flex items-center gap-3 p-3.5 hover:bg-accent/50 transition-colors"
+                    className="w-full flex items-center gap-3 p-3.5 hover:bg-white/10 transition-colors"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
-                      <FolderOpen size={16} className="text-primary" />
+                    <div className="w-8 h-8 rounded-lg bg-white/15 ring-1 ring-white/25 flex items-center justify-center">
+                      <FolderOpen size={16} className="text-white" />
                     </div>
                     <div className="flex-1 text-left">
-                      <p className="font-heading font-semibold text-sm">{spec}</p>
-                      <p className="text-[10px] text-muted-foreground">{items.length} item{items.length !== 1 ? "s" : ""}</p>
+                      <p className="font-heading font-semibold text-sm text-white">{spec}</p>
+                      <p className="text-[10px] text-white/76">{items.length} item{items.length !== 1 ? "s" : ""}</p>
                     </div>
-                    {isOpen ? <ChevronDown size={16} className="text-muted-foreground" /> : <ChevronRight size={16} className="text-muted-foreground" />}
+                    {isOpen ? <ChevronDown size={16} className="text-white/78" /> : <ChevronRight size={16} className="text-white/78" />}
                   </button>
 
                   {isOpen && (
