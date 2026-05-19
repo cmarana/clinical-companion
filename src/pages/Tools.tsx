@@ -124,7 +124,7 @@ export default function Tools() {
         {/* Quick search */}
         <button
           onClick={() => navigate("/search")}
-          className="w-full flex items-center gap-3 h-12 px-4 rounded-2xl bg-card border border-border/70 shadow-sm hover:border-primary/30 transition-all text-left mb-5"
+          className="w-full flex items-center gap-3 h-12 px-4 rounded-2xl bg-muted/60 dark:bg-muted/40 shadow-inner hover:ring-2 hover:ring-primary/30 transition-all text-left mb-5"
         >
           <Search size={16} className="text-muted-foreground shrink-0" />
           <span className="text-[12.5px] text-muted-foreground truncate">

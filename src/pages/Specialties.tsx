@@ -102,7 +102,7 @@ export default function Specialties() {
             placeholder="Buscar especialidade..."
             value={q}
             onChange={(e) => setQ(e.target.value)}
-            className="pl-9 rounded-2xl bg-card border-border/70 h-12 text-[13px]"
+            className="pl-9 rounded-2xl bg-muted/60 dark:bg-muted/40 border-0 shadow-inner focus-visible:ring-2 focus-visible:ring-primary/30 h-12 text-[13px]"
           />
         </div>
 

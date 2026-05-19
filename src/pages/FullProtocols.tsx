@@ -257,7 +257,7 @@ export default function FullProtocols() {
                 className={cn(
                   "flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-[10px] font-heading font-semibold transition-all",
                   sort === opt.id
-                    ? "bg-background text-foreground shadow-sm"
+                    ? "bg-primary text-primary-foreground shadow-sm"
                     : "text-muted-foreground hover:text-foreground"
                 )}
               >
@@ -276,7 +276,7 @@ export default function FullProtocols() {
                     "flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-[10px] font-heading font-semibold transition-all ring-1",
                     hasGuidelineFilter
                       ? "bg-primary/15 text-primary ring-primary/30"
-                      : "bg-card text-muted-foreground ring-border hover:text-foreground"
+                      : "bg-muted/60 text-muted-foreground ring-primary/15 hover:text-foreground hover:ring-primary/30"
                   )}
                   title="Filtrar por sociedade e ano da diretriz"
                   aria-label="Abrir filtros de diretriz"
@@ -311,7 +311,7 @@ export default function FullProtocols() {
                               "px-2 py-1 rounded-lg text-[10px] font-heading font-semibold transition-all ring-1",
                               active
                                 ? "bg-primary text-primary-foreground ring-primary"
-                                : "bg-card text-muted-foreground ring-border hover:text-foreground"
+                                : "bg-muted/60 text-muted-foreground ring-primary/15 hover:text-foreground hover:ring-primary/30"
                             )}
                           >
                             {s}
@@ -359,7 +359,7 @@ export default function FullProtocols() {
                 "flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-[10px] font-heading font-semibold transition-all ring-1",
                 showFavOnly
                   ? "bg-primary/15 text-primary ring-primary/30"
-                  : "bg-card text-muted-foreground ring-border hover:text-foreground"
+                  : "bg-muted/60 text-muted-foreground ring-primary/15 hover:text-foreground hover:ring-primary/30"
               )}
               title="Mostrar somente favoritos"
             >
@@ -534,7 +534,7 @@ function CategoryPill({
         "shrink-0 flex items-center gap-1.5 px-3.5 py-2 rounded-2xl text-xs font-heading font-medium transition-all duration-200 active:scale-[0.97]",
         active
           ? "bg-primary text-primary-foreground shadow-sm"
-          : "bg-card text-secondary-foreground shadow-sm hover:bg-accent"
+          : "bg-muted/60 text-foreground ring-1 ring-primary/15 hover:bg-primary/10 hover:ring-primary/30"
       )}
     >
       <span>{label}</span>

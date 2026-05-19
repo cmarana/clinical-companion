@@ -83,7 +83,7 @@ export default function BularioFilterBar({ filters, onChange, totalCount, filter
 
       {/* Filters panel */}
       {showFilters && (
-        <div className="grid grid-cols-2 gap-2 p-3 rounded-xl bg-card border border-border">
+        <div className="grid grid-cols-2 gap-2 p-3 rounded-xl bg-primary/5 ring-1 ring-primary/15">
           <FilterSelect
             label="Classe"
             options={DRUG_CLASSES}
@@ -188,7 +188,7 @@ function TogglePill({
         "px-2.5 py-1 rounded-full text-[11px] font-medium border transition-colors",
         active
           ? "bg-primary text-primary-foreground border-primary"
-          : "bg-card text-muted-foreground border-border hover:border-primary/40"
+          : "bg-muted/60 text-muted-foreground border-primary/15 hover:border-primary/40"
       )}
     >
       {label}
