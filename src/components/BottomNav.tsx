@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Home, Search, Activity, AlertTriangle, Heart } from "lucide-react";
+import { Home, Search, Activity, AlertTriangle, WifiOff } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { hapticLight } from "@/lib/haptics";
 import { motion } from "framer-motion";
@@ -10,7 +10,7 @@ const tabs = [
   { path: "/search", icon: Search, label: "Buscar" },
   { path: "/emergency", icon: AlertTriangle, label: "Emergência" },
   { path: "/duty", icon: Activity, label: "Plantão" },
-  { path: "/favorites", icon: Heart, label: "Favoritos" },
+  { path: "/offline", icon: WifiOff, label: "Offline" },
 ];
 
 export default function BottomNav() {

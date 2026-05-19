@@ -72,14 +72,14 @@ const toneStyles: Record<string, ToneStyle> = {
     ring: "ring-1 ring-white/15",
     ecgColor: "text-white",
   },
-  // Emergência — vermelho semântico com texto branco e ícone azul
+  // Emergência — vermelho semântico mais profundo (gradiente fechado, sem fundo branco no ícone)
   danger: {
-    background: "linear-gradient(135deg, hsl(0 78% 42%) 0%, hsl(0 82% 54%) 100%)",
-    iconBg: "bg-white ring-1 ring-white/50",
-    iconColor: "text-primary",
+    background: "linear-gradient(135deg, hsl(0 72% 26%) 0%, hsl(0 68% 36%) 60%, hsl(0 64% 44%) 100%)",
+    iconBg: "bg-white/15 ring-1 ring-white/25 backdrop-blur-sm",
+    iconColor: "text-white",
     titleColor: "text-white",
-    subColor: "text-white/90",
-    ring: "ring-1 ring-white/20",
+    subColor: "text-white/85",
+    ring: "ring-1 ring-white/15",
     ecgColor: "text-white",
   },
 };

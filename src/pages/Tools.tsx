@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import {
   Calculator, Baby, Droplets, Pill, FlaskConical, Microscope, Stethoscope,
   ShieldAlert, BookOpen, Activity, Syringe, ClipboardList, FileText, AlertTriangle,
-  Search, Brain, ScanLine, Wrench, ChevronRight, ListChecks, Hash,
+  Search, Brain, ScanLine, Wrench, ChevronRight, ListChecks, Hash, Heart, WifiOff,
 } from "lucide-react";
 import TopBar from "@/components/TopBar";
 import { hapticLight } from "@/lib/haptics";
@@ -23,6 +23,14 @@ type Group = {
 };
 
 const groups: Group[] = [
+  {
+    title: "Acesso rápido",
+    sub: "Seus favoritos e conteúdo offline",
+    items: [
+      { label: "Favoritos", sub: "Protocolos e ferramentas salvos", icon: Heart, path: "/favorites", tone: "primary" },
+      { label: "Modo Offline", sub: "Baixe conteúdo para uso sem internet", icon: WifiOff, path: "/offline", tone: "primary" },
+    ],
+  },
   {
     title: "Cálculos & Escores",
     sub: "Calculadoras e escores clínicos validados",
@@ -134,28 +142,55 @@ export default function Tools() {
                 </h2>
                 <p className="text-[11px] text-muted-foreground mt-0.5">{g.sub}</p>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2">
-                {g.items.map((t) => (
-                  <motion.button
-                    key={t.path + t.label}
-                    whileTap={{ scale: 0.98 }}
-                    onClick={() => go(t.path)}
-                    className="flex items-center gap-3 p-3.5 rounded-2xl bg-card border border-border/60 hover:border-primary/30 hover:shadow-md transition-all text-left"
-                  >
-                    <div className={`flex items-center justify-center w-10 h-10 rounded-xl shrink-0 ${toneStyles[t.tone]}`}>
-                      <t.icon size={18} />
-                    </div>
-                    <div className="flex-1 min-w-0">
-                      <div className="font-heading font-semibold text-[13px] text-foreground leading-tight truncate">
-                        {t.label}
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+                {g.items.map((t) => {
+                  const isDanger = t.tone === "danger";
+                  const bg = isDanger
+                    ? "linear-gradient(135deg, hsl(0 72% 26%) 0%, hsl(0 68% 36%) 60%, hsl(0 64% 44%) 100%)"
+                    : "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)";
+                  return (
+                    <motion.button
+                      key={t.path + t.label}
+                      whileTap={{ scale: 0.98 }}
+                      onClick={() => go(t.path)}
+                      className="relative overflow-hidden flex items-center gap-3 p-3.5 rounded-2xl text-left text-white shadow-md ring-1 ring-white/10 hover:shadow-lg hover:-translate-y-0.5 transition-all"
+                      style={{ background: bg }}
+                    >
+                      {/* ECG pulsante de fundo */}
+                      <svg
+                        className="absolute inset-x-0 bottom-0 w-full h-10 opacity-[0.18] pointer-events-none text-white"
+                        viewBox="0 0 200 60"
+                        preserveAspectRatio="none"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="1.4"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <motion.path
+                          d="M0 35 L40 35 L48 35 L56 18 L64 52 L72 35 L110 35 L118 35 L126 12 L134 58 L142 35 L200 35"
+                          initial={{ pathLength: 0, opacity: 0.2 }}
+                          animate={{ pathLength: 1, opacity: [0.2, 1, 0.4] }}
+                          transition={{ duration: 2.4, ease: "easeInOut", repeat: Infinity, repeatType: "loop" }}
+                        />
+                      </svg>
+                      <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-white/10 blur-2xl pointer-events-none" />
+
+                      <div className="relative flex items-center justify-center w-10 h-10 rounded-xl shrink-0 bg-white/15 ring-1 ring-white/25 backdrop-blur-sm">
+                        <t.icon size={18} className="text-white" />
                       </div>
-                      <div className="text-[11px] text-muted-foreground mt-0.5 leading-snug line-clamp-1">
-                        {t.sub}
+                      <div className="relative flex-1 min-w-0">
+                        <div className="font-heading font-bold text-[13px] text-white leading-tight truncate">
+                          {t.label}
+                        </div>
+                        <div className="text-[11px] text-white/80 mt-0.5 leading-snug line-clamp-1">
+                          {t.sub}
+                        </div>
                       </div>
-                    </div>
-                    <ChevronRight size={15} className="text-muted-foreground shrink-0" />
-                  </motion.button>
-                ))}
+                      <ChevronRight size={15} className="relative text-white/70 shrink-0" />
+                    </motion.button>
+                  );
+                })}
               </div>
             </section>
           ))}
