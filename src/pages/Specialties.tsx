@@ -5,6 +5,7 @@ import {
   Heart, Brain, Activity, Wind, Bone, Baby, Stethoscope, Bug, Pill, Droplets,
   ShieldAlert, ScanLine, AlertTriangle, Sparkles, Eye, Ear, Hand, FlaskConical,
   ClipboardList, Users, Flame, FileText, Layers, Search, ChevronRight, Beaker,
+  Soup, MessagesSquare,
 } from "lucide-react";
 import TopBar from "@/components/TopBar";
 import { Input } from "@/components/ui/input";
@@ -27,9 +28,9 @@ const iconByCat: Record<string, any> = {
   pediatrics: Baby,
   neonatal: Baby,
   infectious: Bug,
-  gastroenterology: Pill,
+  gastroenterology: Soup,
   nephrology: Droplets,
-  psychiatry: Brain,
+  psychiatry: MessagesSquare,
   dermatology: ScanLine,
   ophthalmology: Eye,
   otorhinolaryngology: Ear,

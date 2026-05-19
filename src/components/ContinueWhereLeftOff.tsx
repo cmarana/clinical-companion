@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecentHistory, type HistoryEntry } from "@/hooks/useRecentHistory";
 import { flashcards } from "@/data/flashcardsData";
@@ -7,6 +7,8 @@ import {
   ArrowRight, BookOpen, Pill, Brain, Clock, FileText, Zap, ChevronRight,
 } from "lucide-react";
 import { hapticLight } from "@/lib/haptics";
+import { shortenIfNeeded } from "@/lib/medical-abbreviations";
+import { ListSkeleton } from "@/components/skeletons/PulsoSkeletons";
 
 const PROTOCOL_TYPES = new Set(["protocol", "fullProtocol", "emergency"]);
 
@@ -28,6 +30,11 @@ function timeAgo(ts: number): string {
 export default function ContinueWhereLeftOff() {
   const navigate = useNavigate();
   const { history } = useRecentHistory();
+  const [ready, setReady] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setReady(true), 0);
+    return () => clearTimeout(t);
+  }, []);
 
   const lastProtocols = useMemo(
     () => pickLast(history, (e) => PROTOCOL_TYPES.has(e.type), 2),
@@ -49,6 +56,10 @@ export default function ContinueWhereLeftOff() {
   };
 
   const hasAny = lastProtocols.length > 0 || !!lastMedication || pendingFlashcards > 0;
+
+  if (!ready) {
+    return <ListSkeleton count={2} />;
+  }
 
   if (!hasAny) {
     return (
@@ -86,7 +97,7 @@ export default function ContinueWhereLeftOff() {
                 {p.type === "emergency" ? "Último protocolo de emergência" : "Último protocolo"}
               </p>
               <p className="font-heading font-semibold text-[13px] text-foreground truncate mt-0.5">
-                {p.title}
+                {shortenIfNeeded(p.title, 28)}
               </p>
               <p className="text-[10.5px] text-muted-foreground mt-0.5">{timeAgo(p.timestamp)}</p>
             </div>
@@ -109,7 +120,7 @@ export default function ContinueWhereLeftOff() {
               Último medicamento
             </p>
             <p className="font-heading font-semibold text-[13px] text-foreground truncate mt-0.5">
-              {lastMedication.title}
+              {shortenIfNeeded(lastMedication.title, 28)}
             </p>
             <p className="text-[10.5px] text-muted-foreground mt-0.5">
               {timeAgo(lastMedication.timestamp)}
