@@ -75,26 +75,26 @@ export default function Favorites() {
                   </button>
 
                   {isOpen && (
-                    <div className="border-t">
+                    <div className="border-t border-white/15">
                       {items.map((f) => (
-                        <div key={f.id} className="flex items-center gap-3 px-3.5 py-2.5 hover:bg-accent/30 transition-colors">
+                        <div key={f.id} className="flex items-center gap-3 px-3.5 py-2.5 hover:bg-white/10 transition-colors">
                           <button
                             onClick={() => navigate(getPath(f))}
                             className="flex items-center gap-3 flex-1 min-w-0"
                           >
-                            <div className="w-7 h-7 rounded-md bg-accent flex items-center justify-center text-accent-foreground shrink-0">
+                            <div className="w-7 h-7 rounded-md bg-white/15 ring-1 ring-white/20 flex items-center justify-center text-white shrink-0">
                               {typeIcon(f.type)}
                             </div>
                             <div className="min-w-0">
-                              <p className="font-heading font-medium text-xs truncate">{f.title}</p>
-                              <p className="text-[10px] text-muted-foreground">{typeLabel(f.type)}</p>
+                              <p className="font-heading font-medium text-xs text-white truncate">{f.title}</p>
+                              <p className="text-[10px] text-white/74">{typeLabel(f.type)}</p>
                             </div>
                           </button>
                           <button
                             onClick={() => toggleFavorite(f)}
                             className="p-1.5 rounded-md hover:bg-accent transition-colors shrink-0"
                           >
-                            <Star size={14} className="fill-warning text-warning" />
+                            <Star size={14} className="fill-destructive text-destructive" />
                           </button>
                         </div>
                       ))}
