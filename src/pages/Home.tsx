@@ -149,20 +149,23 @@ export default function Home() {
 
       {/* ── SEARCH ─────────────────────────────────────── */}
       <div className="px-4">
-        <button
-          onClick={() => navigate("/search")}
-          className="group w-full flex items-center gap-3 h-14 px-4 rounded-2xl bg-card border border-border/70 shadow-sm hover:shadow-md hover:border-primary/30 active:scale-[0.99] transition-all text-left"
+        <div
+          className="group w-full flex items-center gap-3 h-14 px-4 rounded-2xl bg-card border border-border/70 shadow-sm hover:shadow-md hover:border-primary/30 transition-all"
           data-tour="search"
         >
-          <Search size={18} className="text-muted-foreground shrink-0" />
-          <span className="flex-1 text-[13px] text-muted-foreground truncate">
-            Buscar conduta, medicamento, CID ou cálculo
-          </span>
-          <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-primary/8 text-primary">
-            <Mic size={16} />
-          </span>
-        </button>
+          <button
+            onClick={() => navigate("/search")}
+            className="flex items-center gap-3 flex-1 min-w-0 text-left active:scale-[0.99] transition-transform"
+          >
+            <Search size={18} className="text-muted-foreground shrink-0" />
+            <span className="flex-1 text-[13px] text-muted-foreground truncate">
+              Buscar conduta, medicamento, CID ou cálculo
+            </span>
+          </button>
+          <VoiceSearchButton className="w-9 h-9 shrink-0" size={16} />
+        </div>
       </div>
+
 
       {/* ── HERO: MODO PLANTÃO ─────────────────────────── */}
       <div className="px-4 mt-5">
