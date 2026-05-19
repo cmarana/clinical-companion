@@ -120,11 +120,24 @@ export default function SupportChat() {
         }
       }
     } catch (e: any) {
-      upsert("Desculpe, ocorreu um erro. Tente novamente ou entre em contato por e-mail.");
+      upsert("Desculpe, ocorreu um erro. Tente novamente ou entre em contato por e-mail/WhatsApp.");
     } finally {
       setIsLoading(false);
+      setAiAttempts(n => n + 1);
     }
   }, [input, messages, isLoading]);
+
+  const handleStartTriage = () => {
+    if (!triageCategory || triageDescription.trim().length < 10) {
+      toast.error("Selecione uma categoria e descreva sua dúvida (mín. 10 caracteres).");
+      return;
+    }
+    const catLabel = triageCategories.find(c => c.id === triageCategory)?.label || triageCategory;
+    const prompt = `Categoria: ${catLabel}\n\nDúvida do usuário: ${triageDescription.trim()}`;
+    setView("chat");
+    setTriageDescription("");
+    setTimeout(() => sendMessage(prompt), 50);
+  };
 
   const handleSendEmail = async () => {
     if (!emailSubject.trim() || !emailBody.trim()) {
