@@ -1,6 +1,7 @@
 import { createContext, useContext, useEffect, useState, useCallback, useMemo, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import type { User, Session } from "@supabase/supabase-js";
+import { getDeviceId, getDeviceLabel } from "@/lib/deviceId";
 
 interface SubscriptionInfo {
   subscribed: boolean;
@@ -105,6 +106,62 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return pendingCheck.current;
   }, []);
 
+  // === Sessão única por dispositivo ===
+  const deviceChannelRef = useRef<ReturnType<typeof supabase.channel> | null>(null);
+  const kickedRef = useRef(false);
+
+  const forceSignOut = useCallback(async (reason: string) => {
+    if (kickedRef.current) return;
+    kickedRef.current = true;
+    try {
+      // Toast leve via evento (evita dependência circular com hook de toast aqui)
+      window.dispatchEvent(new CustomEvent("pulso:session-revoked", { detail: { reason } }));
+    } catch { /* noop */ }
+    try { await supabase.auth.signOut(); } catch { /* noop */ }
+    setUser(null);
+    setSession(null);
+    setSubscription(defaultSub);
+    setProfileComplete(null);
+  }, []);
+
+  const verifyActiveDevice = useCallback(async (userId: string) => {
+    try {
+      const { data } = await supabase
+        .from("profiles")
+        .select("active_device_id")
+        .eq("user_id", userId)
+        .maybeSingle();
+      const remote = (data as any)?.active_device_id || "";
+      const local = getDeviceId();
+      // Se já existe um dispositivo ativo diferente do atual, desloga.
+      if (remote && remote !== local) {
+        await forceSignOut("device_replaced");
+      }
+    } catch { /* noop */ }
+  }, [forceSignOut]);
+
+  const subscribeDeviceChanges = useCallback((userId: string) => {
+    if (deviceChannelRef.current) {
+      supabase.removeChannel(deviceChannelRef.current);
+      deviceChannelRef.current = null;
+    }
+    const channel = supabase
+      .channel(`profile-device-${userId}`)
+      .on(
+        "postgres_changes",
+        { event: "UPDATE", schema: "public", table: "profiles", filter: `user_id=eq.${userId}` },
+        (payload) => {
+          const next = (payload.new as any)?.active_device_id || "";
+          const local = getDeviceId();
+          if (next && next !== local) {
+            forceSignOut("device_replaced");
+          }
+        }
+      )
+      .subscribe();
+    deviceChannelRef.current = channel;
+  }, [forceSignOut]);
+
   useEffect(() => {
     let initialCheckDone = false;
 
@@ -114,6 +171,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         setUser(newSession?.user ?? null);
         setLoading(false);
         if (newSession?.user) {
+          kickedRef.current = false;
           if (!initialCheckDone) {
             initialCheckDone = true;
             setTimeout(() => {
@@ -121,6 +179,24 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
               checkProfile(newSession.user.id);
             }, 0);
           }
+          // Reivindica o dispositivo no SIGNED_IN (caso login social, ou retorno após confirmação)
+          if (event === "SIGNED_IN") {
+            setTimeout(() => {
+              (async () => {
+                try {
+                  await supabase.rpc("claim_active_device", {
+                    _device_id: getDeviceId(),
+                    _device_label: getDeviceLabel(),
+                  });
+                } catch { /* noop */ }
+              })();
+            }, 0);
+          }
+          // Verifica dispositivo ativo e assina mudanças em tempo real
+          setTimeout(() => {
+            verifyActiveDevice(newSession.user.id);
+            subscribeDeviceChanges(newSession.user.id);
+          }, 0);
           // Send welcome email on first sign-up
           if (event === 'SIGNED_IN' && newSession.user.created_at) {
             const createdAt = new Date(newSession.user.created_at).getTime();
@@ -139,6 +215,10 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         } else {
           setSubscription(defaultSub);
           setProfileComplete(null);
+          if (deviceChannelRef.current) {
+            supabase.removeChannel(deviceChannelRef.current);
+            deviceChannelRef.current = null;
+          }
         }
       }
     );
@@ -151,11 +231,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
         initialCheckDone = true;
         checkSubscription();
         checkProfile(s.user.id);
+        verifyActiveDevice(s.user.id);
+        subscribeDeviceChanges(s.user.id);
       }
     });
 
-    return () => authSub.unsubscribe();
-  }, [checkSubscription, checkProfile]);
+    return () => {
+      authSub.unsubscribe();
+      if (deviceChannelRef.current) {
+        supabase.removeChannel(deviceChannelRef.current);
+        deviceChannelRef.current = null;
+      }
+    };
+  }, [checkSubscription, checkProfile, verifyActiveDevice, subscribeDeviceChanges]);
 
   useEffect(() => {
     if (!user) return;

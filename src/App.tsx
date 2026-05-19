@@ -20,6 +20,7 @@ import { APP_LAUNCH_STATUS } from "@/config/launchStatus";
 import { useAppAccess } from "@/hooks/useAppAccess";
 import { useTwoFactor } from "@/hooks/useTwoFactor";
 import TwoFactorGate from "@/components/TwoFactorGate";
+import { SessionRevokedListener } from "@/components/SessionRevokedListener";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Protocols = lazy(() => import("@/pages/Protocols"));
@@ -296,6 +297,7 @@ const App = () => (
                   <StatusBarScrim />
                   <Toaster />
                   <Sonner />
+                  <SessionRevokedListener />
                   <OfflineIndicator />
                   <PWAInstallPrompt />
                   

@@ -16,6 +16,8 @@ import { PulsoLogo } from "@/components/PulsoLogo";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Separator } from "@/components/ui/separator";
 import { hapticLight } from "@/lib/haptics";
+import { isValidCpf, maskCpf, onlyDigitsCpf } from "@/lib/cpf";
+import { getDeviceId, getDeviceLabel } from "@/lib/deviceId";
 
 /* ── Top features for the showcase ─────────────────────────── */
 const topFeatures = [
@@ -84,6 +86,7 @@ export default function Auth() {
   const initialMode = locState?.mode;
   const [isLogin, setIsLogin] = useState(initialMode !== "signup");
   const [fullName, setFullName] = useState("");
+  const [cpf, setCpf] = useState("");
 
   // Pré-preenche o email a partir de (em ordem de prioridade):
   // 1) location.state.email (navegação interna)
@@ -174,14 +177,31 @@ export default function Auth() {
         const { error } = await supabase.auth.signInWithPassword({ email, password });
         if (error) throw error;
         try { localStorage.setItem("pulso_last_email", email); } catch { /* noop */ }
+        // Reivindica este dispositivo como ativo — desconecta os demais
+        try {
+          await supabase.rpc("claim_active_device", {
+            _device_id: getDeviceId(),
+            _device_label: getDeviceLabel(),
+          });
+        } catch { /* noop */ }
         navigate("/");
       } else {
+        // CPF obrigatório e único
+        const cpfDigits = onlyDigitsCpf(cpf);
+        if (!isValidCpf(cpfDigits)) {
+          throw new Error("CPF inválido. Confira a digitação.");
+        }
+        const { data: exists, error: rpcErr } = await supabase.rpc("cpf_exists", { _cpf: cpfDigits });
+        if (rpcErr) throw rpcErr;
+        if (exists === true) {
+          throw new Error("Este CPF já possui uma conta. Cada CPF pode cadastrar apenas uma conta.");
+        }
         const { error } = await supabase.auth.signUp({
           email,
           password,
           options: {
             emailRedirectTo: window.location.origin,
-            data: { full_name: fullName.trim() },
+            data: { full_name: fullName.trim(), cpf: cpfDigits },
           },
         });
         if (error) throw error;
@@ -316,6 +336,20 @@ export default function Auth() {
             required
             disabled={loading}
             autoComplete="name"
+            className="h-12 rounded-xl bg-muted/50 border-border/50 focus:bg-background transition-colors disabled:opacity-60"
+          />
+        )}
+        {!resetMode && !isLogin && (
+          <Input
+            type="text"
+            placeholder="CPF (apenas um cadastro por CPF)"
+            value={cpf}
+            onChange={(e) => { setCpf(maskCpf(e.target.value)); if (errorMsg) setErrorMsg(null); }}
+            required
+            disabled={loading}
+            inputMode="numeric"
+            autoComplete="off"
+            maxLength={14}
             className="h-12 rounded-xl bg-muted/50 border-border/50 focus:bg-background transition-colors disabled:opacity-60"
           />
         )}
