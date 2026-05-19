@@ -52,9 +52,25 @@ const cleanupServiceWorkers = async () => {
   }
 };
 
-if (isPreviewHost || isInIframe) {
-  cleanupServiceWorkers().catch(() => {});
-}
+const previewCleanupPromise = (isPreviewHost || isInIframe)
+  ? cleanupServiceWorkers().catch(() => {})
+  : Promise.resolve();
+
+const recoverFromModuleLoadFailure = async (error: unknown) => {
+  const message = error instanceof Error ? error.message : String(error);
+  const isModuleLoadFailure = /Importing a module script failed|Failed to fetch dynamically imported module|error loading dynamically imported module/i.test(message);
+  if (!isModuleLoadFailure) return false;
+
+  const marker = "pulso-module-reload-attempted";
+  if (sessionStorage.getItem(marker) === "1") return false;
+  sessionStorage.setItem(marker, "1");
+
+  await cleanupServiceWorkers().catch(() => {});
+  const url = new URL(window.location.href);
+  url.searchParams.set("v", Date.now().toString());
+  window.location.replace(url.toString());
+  return true;
+};
 
 if (typeof window !== "undefined" && window.location.pathname === "/index") {
   window.history.replaceState({}, "", `/${window.location.search}${window.location.hash}`);
@@ -112,12 +128,15 @@ const bootstrap = async () => {
   void configureNativeStatusBar();
 
   try {
+    await previewCleanupPromise;
     const { default: App } = await import("./App.tsx");
     createRoot(rootEl).render(<App />);
+    sessionStorage.removeItem("pulso-module-reload-attempted");
     // Signal to the inline pre-React version probe that React is alive,
     // so it defers stale-build handling to the in-app confirmation modal.
     (window as unknown as { __pulsoReactMounted?: boolean }).__pulsoReactMounted = true;
   } catch (e) {
+    if (await recoverFromModuleLoadFailure(e)) return;
     rootEl.innerHTML = '<div style="color:red;padding:20px">Erro ao carregar: ' + String(e) + '</div>';
   }
 };
