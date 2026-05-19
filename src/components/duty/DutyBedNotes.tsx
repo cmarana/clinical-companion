@@ -67,7 +67,7 @@ export default function DutyBedNotes() {
           onClick={() => setShowForm(!showForm)}
           className="h-7 w-7 p-0"
         >
-          {showForm ? <X size={14} className="text-muted-foreground" /> : <Plus size={14} className="text-primary" />}
+          {showForm ? <X size={14} className="text-white/70" /> : <Plus size={14} className="text-white" />}
         </Button>
       </div>
 
