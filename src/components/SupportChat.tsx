@@ -303,8 +303,24 @@ export default function SupportChat() {
               ) : view === "email" ? (
                 <div className="flex-1 overflow-y-auto p-4 space-y-4" style={{ paddingBottom: "max(env(safe-area-inset-bottom, 0px), 16px)" }}>
                   <p className="text-xs text-muted-foreground">
-                    Não conseguiu resolver sua dúvida? Envie uma mensagem e responderemos por e-mail.
+                    Não conseguiu resolver sua dúvida? Fale com a gente pelo WhatsApp ou envie uma mensagem por e-mail.
                   </p>
+                  <a
+                    href="https://wa.me/message/ZTQKMSJFBHPWG1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 w-full rounded-xl bg-[#25D366] hover:bg-[#1ebe5d] text-white font-semibold py-2.5 text-sm transition-colors"
+                  >
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor" aria-hidden="true">
+                      <path d="M20.52 3.48A11.86 11.86 0 0 0 12.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.83 11.83 0 0 0 5.64 1.44h.01c6.54 0 11.84-5.3 11.84-11.84 0-3.16-1.23-6.13-3.37-8.44ZM12.05 21.5h-.01a9.65 9.65 0 0 1-4.92-1.35l-.35-.21-3.8 1 .99-3.71-.23-.38a9.66 9.66 0 0 1-1.48-5.12c0-5.34 4.34-9.68 9.69-9.68 2.59 0 5.02 1.01 6.85 2.84a9.62 9.62 0 0 1 2.84 6.85c0 5.34-4.35 9.76-9.58 9.76Zm5.31-7.27c-.29-.15-1.72-.85-1.98-.95-.27-.1-.46-.15-.66.15s-.76.95-.93 1.14c-.17.19-.34.22-.63.07-.29-.15-1.23-.45-2.34-1.44-.86-.77-1.45-1.72-1.62-2.01-.17-.29-.02-.45.13-.6.13-.13.29-.34.44-.51.15-.17.19-.29.29-.48.1-.19.05-.36-.02-.51-.07-.15-.66-1.59-.9-2.18-.24-.57-.48-.5-.66-.51-.17-.01-.36-.01-.55-.01-.19 0-.51.07-.78.36-.27.29-1.02 1-1.02 2.43 0 1.43 1.04 2.81 1.19 3 .15.19 2.05 3.13 4.97 4.39.69.3 1.24.47 1.66.61.7.22 1.34.19 1.84.12.56-.08 1.72-.7 1.96-1.38.24-.68.24-1.26.17-1.38-.07-.12-.27-.19-.56-.34Z"/>
+                    </svg>
+                    Falar pelo WhatsApp
+                  </a>
+                  <div className="flex items-center gap-2 text-[10px] text-muted-foreground uppercase tracking-wider">
+                    <div className="flex-1 h-px bg-border" />
+                    ou por e-mail
+                    <div className="flex-1 h-px bg-border" />
+                  </div>
                   <div className="space-y-3">
                     <input
                       value={emailSubject}
@@ -316,7 +332,7 @@ export default function SupportChat() {
                       value={emailBody}
                       onChange={(e) => setEmailBody(e.target.value)}
                       placeholder="Descreva seu problema ou dúvida em detalhes..."
-                      rows={6}
+                      rows={5}
                       className="w-full bg-muted/50 border border-border rounded-xl px-3 py-2.5 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-primary/40"
                     />
                     {user?.email && (
