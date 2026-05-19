@@ -18,6 +18,8 @@ import { lazy, Suspense, useEffect } from "react";
 import { ProtocolListSkeleton, ProtocolDetailSkeleton, MedicationListSkeleton } from "@/components/PageSkeleton";
 import { APP_LAUNCH_STATUS } from "@/config/launchStatus";
 import { useAppAccess } from "@/hooks/useAppAccess";
+import { useTwoFactor } from "@/hooks/useTwoFactor";
+import TwoFactorGate from "@/components/TwoFactorGate";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Protocols = lazy(() => import("@/pages/Protocols"));
