@@ -201,7 +201,7 @@ export default function Home() {
             <p className="text-[13px] lg:text-sm text-white/80 mt-1.5 max-w-sm leading-snug">
               Emergências, condutas, doses, prescrições e ferramentas em um fluxo rápido.
             </p>
-            <div className="mt-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white text-primary font-heading font-semibold text-[13px] shadow-md">
+            <div className="mt-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/15 text-white ring-1 ring-white/25 font-heading font-semibold text-[13px] shadow-md">
               Iniciar plantão
               <ArrowRight size={15} />
             </div>
