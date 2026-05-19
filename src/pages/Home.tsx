@@ -336,10 +336,15 @@ export default function Home() {
       </section>
 
       {/* ── DISCLAIMER ─────────────────────────────────── */}
-      <p className="mt-8 px-6 text-center text-[10.5px] leading-relaxed text-muted-foreground/80">
-        O Pulso é uma ferramenta de apoio à decisão clínica. As informações
-        apresentadas não substituem o julgamento médico profissional.
-      </p>
+      <div className="mt-10 mb-2 px-5">
+        <div className="flex items-start gap-2 rounded-xl border border-border/40 bg-card/40 px-3.5 py-2.5">
+          <Shield size={13} className="mt-0.5 shrink-0 text-muted-foreground/60" />
+          <p className="text-[10px] leading-relaxed text-muted-foreground/70">
+            O PULSO é uma ferramenta de <span className="text-muted-foreground/90 font-medium">apoio à decisão clínica</span>.
+            As informações aqui não substituem o julgamento médico profissional nem a relação médico-paciente.
+          </p>
+        </div>
+      </div>
 
       <WelcomeScreen userName={fullName} onComplete={() => {}} />
     </div>
