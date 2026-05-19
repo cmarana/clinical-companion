@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import {
   Calculator, Baby, Droplets, Pill, FlaskConical, Microscope, Stethoscope,
   ShieldAlert, BookOpen, Activity, Syringe, ClipboardList, FileText, AlertTriangle,
-  Search, Brain, ScanLine, Wrench, ChevronRight, ListChecks, Hash,
+  Search, Brain, ScanLine, Wrench, ChevronRight, ListChecks, Hash, Heart, WifiOff,
 } from "lucide-react";
 import TopBar from "@/components/TopBar";
 import { hapticLight } from "@/lib/haptics";
