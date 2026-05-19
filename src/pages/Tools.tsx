@@ -146,9 +146,7 @@ export default function Tools() {
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5">
                 {g.items.map((t) => {
                   const isDanger = t.tone === "danger";
-                  const bg = isDanger
-                    ? "linear-gradient(135deg, hsl(0 72% 26%) 0%, hsl(0 68% 36%) 60%, hsl(0 64% 44%) 100%)"
-                    : "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)";
+                  const bg = isDanger ? GRADIENT_DANGER : GRADIENT_DEEP_BLUE;
                   return (
                     <motion.button
                       key={t.path + t.label}
