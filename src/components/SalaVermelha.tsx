@@ -133,7 +133,7 @@ export default function SalaVermelha() {
             className={`shrink-0 px-2.5 py-1 rounded-full text-[10px] font-medium transition-all ${
               activeCat === cat
                 ? "bg-destructive text-destructive-foreground"
-                : "bg-destructive/10 text-destructive hover:bg-destructive/20"
+                : "bg-destructive text-destructive-foreground opacity-85 hover:opacity-100"
             }`}
           >
             {cat}
@@ -147,7 +147,8 @@ export default function SalaVermelha() {
           variant="outline"
           size="sm"
           onClick={() => navigate("/emergencias")}
-          className="h-8 text-[10px] border-destructive/20 hover:bg-destructive/10"
+          className="h-8 text-[10px] border-white/20 text-white hover:bg-white/10 hover:text-white"
+          style={{ background: GRADIENT_DANGER }}
         >
           <Activity size={12} className="mr-1" /> Todas
         </Button>
@@ -155,7 +156,8 @@ export default function SalaVermelha() {
           variant="outline"
           size="sm"
           onClick={() => navigate("/timer-acls")}
-          className="h-8 text-[10px] border-destructive/20 hover:bg-destructive/10"
+          className="h-8 text-[10px] border-white/20 text-white hover:bg-white/10 hover:text-white"
+          style={{ background: GRADIENT_DANGER }}
         >
           <Timer size={12} className="mr-1" /> ACLS
         </Button>
@@ -163,7 +165,8 @@ export default function SalaVermelha() {
           variant="outline"
           size="sm"
           onClick={() => navigate("/calculadoras")}
-          className="h-8 text-[10px] border-destructive/20 hover:bg-destructive/10"
+          className="h-8 text-[10px] border-white/20 text-white hover:bg-white/10 hover:text-white"
+          style={{ background: GRADIENT_DANGER }}
         >
           <FlaskConical size={12} className="mr-1" /> Doses
         </Button>
