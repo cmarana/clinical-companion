@@ -514,18 +514,6 @@
         }
       })();
     </script>
-    <script>
-      (function(){
-        function startApp(){
-          var s = document.createElement('script');
-          s.type = 'module';
-          s.src = '/src/main.tsx?v=' + Date.now();
-          document.body.appendChild(s);
-        }
-        var cleanup = window.__pulsoPreviewCleanupPromise;
-        if (cleanup && typeof cleanup.then === 'function') cleanup.then(startApp).catch(startApp);
-        else startApp();
-      })();
-    </script>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
