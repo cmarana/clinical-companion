@@ -36,11 +36,9 @@ export const HeroCard: React.FC<HeroCardProps> = ({
   <button
     type="button"
     onClick={onClick}
-    className="relative w-full overflow-hidden rounded-3xl p-5 text-left transition-transform active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-primary-300"
+    className="relative w-full overflow-hidden rounded-3xl bg-gradient-to-br from-primary to-primary/80 p-5 text-left shadow-lg shadow-primary/20 transition-transform active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-ring"
     style={{
-      background: 'linear-gradient(135deg, #0A6DD9 0%, #1681E3 100%)',
       minHeight: 156,
-      boxShadow: '0 8px 24px rgba(10,109,217,0.18)',
     }}
   >
     {showEKG && (
@@ -64,7 +62,7 @@ export const HeroCard: React.FC<HeroCardProps> = ({
     <div className="relative z-10">
       {eyebrow && (
         <div className="flex items-center gap-1.5 mb-3">
-          <span className="w-1.5 h-1.5 rounded-full bg-success-400 animate-pulse" />
+          <span className="w-1.5 h-1.5 rounded-full bg-success animate-pulse" />
           <span className="text-[10px] uppercase tracking-[0.16em] font-bold text-white/90">
             {eyebrow}
           </span>
@@ -79,7 +77,7 @@ export const HeroCard: React.FC<HeroCardProps> = ({
         {description}
       </p>
 
-      <span className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-white font-display font-semibold text-[13px] text-primary-500">
+      <span className="inline-flex items-center gap-2 px-4 py-2.5 rounded-full bg-primary-foreground font-display font-semibold text-[13px] text-primary">
         {cta} <ArrowUpRight size={14} strokeWidth={2.5} />
       </span>
     </div>
@@ -108,14 +106,14 @@ export const ToolCard: React.FC<ToolCardProps> = ({
 }) => {
   const colors =
     semantic === 'emergency'
-      ? 'bg-emergency-50 text-emergency-500 dark:bg-emergency-500/15 dark:text-emergency-400'
-      : 'bg-primary-50 text-primary-500 dark:bg-primary-500/15 dark:text-primary-400';
+      ? 'bg-destructive/10 text-destructive dark:bg-destructive/15 dark:text-destructive'
+      : 'bg-primary/10 text-primary dark:bg-primary/15 dark:text-primary';
 
   return (
     <button
       type="button"
       onClick={onClick}
-      className="text-left p-4 rounded-2xl bg-white dark:bg-neutral-800 border border-neutral-100 dark:border-neutral-700 shadow-sm transition-transform active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-primary-300 flex flex-col h-[112px] justify-between"
+      className="text-left p-4 rounded-2xl bg-card border border-border shadow-sm transition-transform active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-ring flex flex-col h-[112px] justify-between"
     >
       <div
         className={`w-10 h-10 rounded-xl flex items-center justify-center ${colors}`}
@@ -123,10 +121,10 @@ export const ToolCard: React.FC<ToolCardProps> = ({
         <Icon size={18} strokeWidth={2.2} />
       </div>
       <div>
-        <div className="font-display font-semibold text-[14.5px] leading-tight text-neutral-900 dark:text-neutral-50 line-clamp-2 break-words">
+        <div className="font-display font-semibold text-[14.5px] leading-tight text-card-foreground line-clamp-2 break-words">
           {title}
         </div>
-        <div className="text-[11.5px] mt-0.5 text-neutral-500 dark:text-neutral-400 tabular-nums truncate">
+        <div className="text-[11.5px] mt-0.5 text-muted-foreground tabular-nums truncate">
           {subtitle}
         </div>
       </div>
