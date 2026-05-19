@@ -188,7 +188,7 @@ function TogglePill({
         "px-2.5 py-1 rounded-full text-[11px] font-medium border transition-colors",
         active
           ? "bg-primary text-primary-foreground border-primary"
-          : "bg-card text-muted-foreground border-border hover:border-primary/40"
+          : "bg-muted/60 text-muted-foreground border-primary/15 hover:border-primary/40"
       )}
     >
       {label}
