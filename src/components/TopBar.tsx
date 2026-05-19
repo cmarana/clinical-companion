@@ -65,9 +65,9 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
         {!title && <div className="flex-1" />}
         {rightContent}
         {offline && (
-          <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/25 animate-in fade-in">
-            <WifiOff size={12} className="text-amber-500" />
-            <span className="text-[10px] font-heading font-semibold text-amber-500">Offline</span>
+          <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-destructive/15 border border-destructive/25 animate-in fade-in">
+            <WifiOff size={12} className="text-destructive" />
+            <span className="text-[10px] font-heading font-semibold text-destructive">Offline</span>
           </div>
         )}
         <button
@@ -88,10 +88,10 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
 
       {showReconnected && (
         <div
-          className="sticky z-40 top-after-topbar flex items-center justify-center gap-1.5 py-1.5 bg-emerald-500/15 border-b border-emerald-500/25 animate-in slide-in-from-top fade-in duration-300"
+          className="sticky z-40 top-after-topbar flex items-center justify-center gap-1.5 py-1.5 bg-primary/10 border-b border-primary/20 animate-in slide-in-from-top fade-in duration-300"
         >
-          <Wifi size={13} className="text-emerald-500" />
-          <span className="text-[11px] font-heading font-semibold text-emerald-500">Conexão restabelecida</span>
+          <Wifi size={13} className="text-primary" />
+          <span className="text-[11px] font-heading font-semibold text-primary">Conexão restabelecida</span>
         </div>
       )}
 
@@ -118,7 +118,7 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
                     theme === "dark" ? "translate-x-5" : "translate-x-0.5"
                   )}
                 >
-                  {theme === "dark" ? <Moon size={12} className="text-primary" /> : <Sun size={12} className="text-amber-500" />}
+                  {theme === "dark" ? <Moon size={12} className="text-primary" /> : <Sun size={12} className="text-primary" />}
                 </span>
               </button>
             </div>
