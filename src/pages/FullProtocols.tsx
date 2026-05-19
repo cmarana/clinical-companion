@@ -1,7 +1,7 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
-import {
 import { GRADIENT_DEEP_BLUE } from "@/lib/design-tokens";
+import {
   ChevronRight, Search, Star, TrendingUp, ArrowDownAZ, Filter,
   Lock, Crown, X, Sparkles, BookOpen, CalendarDays, CalendarCheck,
 } from "lucide-react";

@@ -16,7 +16,7 @@ export const GRADIENT_BRIGHT_BLUE =
   "linear-gradient(135deg, hsl(212 90% 28%) 0%, hsl(212 88% 38%) 50%, hsl(212 86% 48%) 100%)";
 
 export const GRADIENT_DANGER =
-  "linear-gradient(135deg, hsl(0 72% 26%) 0%, hsl(0 68% 36%) 60%, hsl(0 64% 44%) 100%)";
+  "linear-gradient(135deg, hsl(355 52% 20%) 0%, hsl(358 48% 28%) 55%, hsl(0 45% 34%) 100%)";
 
 // Aliases retrocompatíveis
 export const PULSO_BG = GRADIENT_DEEP_BLUE;
