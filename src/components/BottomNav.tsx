@@ -10,7 +10,7 @@ const tabs = [
   { path: "/search", icon: Search, label: "Buscar" },
   { path: "/emergency", icon: AlertTriangle, label: "Emergência" },
   { path: "/duty", icon: Activity, label: "Plantão" },
-  { path: "/offline-setup", icon: WifiOff, label: "Offline" },
+  { path: "/offline", icon: WifiOff, label: "Offline" },
 ];
 
 export default function BottomNav() {
