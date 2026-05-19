@@ -274,16 +274,16 @@
 }
 
 .clinical-card {
-  background: hsl(var(--card));
-  border: 1px solid hsl(var(--border));
-  border-radius: 10px;
+  background: hsl(var(--muted) / 0.62);
+  border: 1px solid hsl(var(--primary) / 0.16);
+  border-radius: 14px;
   padding: 14px 16px;
-  box-shadow: 0 1px 3px hsl(var(--foreground) / 0.04);
+  box-shadow: inset 0 0 0 1px hsl(var(--background) / 0.35);
 }
 
 .dark .clinical-card {
-  background: hsl(240 6% 10%);
-  border-color: hsl(240 4% 18%);
+  background: hsl(var(--muted) / 0.52);
+  border-color: hsl(var(--primary) / 0.16);
 }
 
 /* ─── Typography inside cards ─── */
@@ -427,15 +427,15 @@
 
 /* ─── Duty Mode (Modo Plantão) ─── */
 .duty-card {
-  background: hsl(var(--card));
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+  background: hsl(var(--muted) / 0.62);
+  border: 1px solid hsl(var(--primary) / 0.14);
+  border-radius: 18px;
+  box-shadow: inset 0 0 0 1px hsl(var(--background) / 0.35);
 }
 
 .dark .duty-card {
-  background: hsl(217 33% 17%);
-  box-shadow: none;
+  background: hsl(var(--muted) / 0.52);
+  border-color: hsl(var(--primary) / 0.14);
 }
 
 .duty-grid-btn {
@@ -445,12 +445,12 @@
   gap: 6px;
   padding: 14px 6px;
   border-radius: 16px;
-  border: none;
-  background: hsl(var(--muted) / 0.6);
-  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--primary) / 0.14);
+  background: hsl(var(--muted) / 0.7);
+  color: hsl(var(--primary));
   font-family: var(--font-heading);
   transition: all 200ms;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  box-shadow: none;
 }
 
 .duty-grid-btn:active {
