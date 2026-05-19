@@ -161,12 +161,12 @@ export default function ProtocolDetail() {
 
         <Tabs defaultValue={visibleSections[0]?.id || ""} className="w-full">
           <div className="w-full overflow-x-auto no-scrollbar mb-4">
-            <TabsList className="inline-flex h-auto gap-0 bg-secondary p-1 rounded-full divide-x divide-border/40">
+            <TabsList className="inline-flex items-stretch h-auto gap-0 bg-secondary p-1 rounded-full divide-x divide-border/40">
               {visibleSections.map((s) => (
                 <TabsTrigger
                   key={s.id}
                   value={s.id}
-                  className="shrink-0 text-xs px-3.5 py-1.5 rounded-none first:rounded-l-full last:rounded-r-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm bg-transparent text-foreground/80 hover:text-foreground transition-colors"
+                  className="shrink-0 text-xs px-3.5 py-1.5 min-h-[34px] flex items-center justify-center rounded-none first:rounded-l-full last:rounded-r-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm bg-transparent text-foreground/80 hover:text-foreground transition-colors"
                 >
                   {s.title}
                 </TabsTrigger>
@@ -174,7 +174,7 @@ export default function ProtocolDetail() {
               {lockedSections.map((s) => (
                 <span
                   key={s.id}
-                  className="shrink-0 text-xs px-3.5 py-1.5 rounded-none first:rounded-l-full last:rounded-r-full text-muted-foreground opacity-60 cursor-not-allowed"
+                  className="shrink-0 text-xs px-3.5 py-1.5 min-h-[34px] flex items-center justify-center rounded-none first:rounded-l-full last:rounded-r-full text-muted-foreground opacity-60 cursor-not-allowed"
                 >
                   🔒 {s.title}
                 </span>
