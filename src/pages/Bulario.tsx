@@ -131,7 +131,7 @@ export default function Bulario() {
         )}
 
         {!isLoading && totalCount > 0 && medsCount !== null && totalCount < medsCount && (
-          <div className="flex items-center justify-between p-3 rounded-xl bg-card border border-border">
+          <div className="flex items-center justify-between p-3 rounded-xl bg-primary/5 ring-1 ring-primary/15">
             <p className="text-xs text-muted-foreground">
               {totalCount} de {medsCount} medicamentos importados.
             </p>
