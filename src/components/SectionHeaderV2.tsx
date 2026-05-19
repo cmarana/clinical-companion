@@ -45,16 +45,16 @@ export const SectionHeader: React.FC<Props> = ({
           {bullet && (
             <span
               className={`w-1.5 h-1.5 rounded-full flex-shrink-0 self-center ${
-                bullet === 'emergency' ? 'bg-emergency-500' : 'bg-success-500'
+                bullet === 'emergency' ? 'bg-destructive' : 'bg-success'
               }`}
               aria-hidden="true"
             />
           )}
-          <h2 className="font-display font-bold text-[18px] leading-tight text-neutral-900 dark:text-neutral-50">
+          <h2 className="font-display font-bold text-[18px] leading-tight text-foreground">
             {title}
           </h2>
           {count !== undefined && (
-            <span className="text-[12px] text-neutral-400 dark:text-neutral-500 tabular-nums font-medium">
+            <span className="text-[12px] text-muted-foreground tabular-nums font-medium">
               · {count}
             </span>
           )}
@@ -64,7 +64,7 @@ export const SectionHeader: React.FC<Props> = ({
           <button
             type="button"
             onClick={action.onClick}
-            className="flex items-center gap-0.5 text-[12px] font-semibold text-primary-500 hover:text-primary-600 transition-colors -mr-1 px-1 py-1"
+            className="flex items-center gap-0.5 text-[12px] font-semibold text-primary hover:text-primary/80 transition-colors -mr-1 px-1 py-1"
           >
             {action.label}
             <ChevronRight size={13} strokeWidth={2.5} />
@@ -73,7 +73,7 @@ export const SectionHeader: React.FC<Props> = ({
       </div>
 
       {description && (
-        <p className="text-[12.5px] text-neutral-500 dark:text-neutral-400 leading-snug">
+        <p className="text-[12.5px] text-muted-foreground leading-snug">
           {description}
         </p>
       )}

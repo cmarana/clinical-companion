@@ -1048,7 +1048,7 @@ function ClinicalAIContent() {
                                 <X size={11} />
                               </button>
                               {anonymize && (
-                                <div className="absolute bottom-0.5 left-0.5 right-0.5 flex items-center justify-center gap-0.5 px-1 py-0.5 rounded bg-primary/90 text-white text-[8px] font-heading font-semibold backdrop-blur-sm">
+                                <div className="absolute bottom-0.5 left-0.5 right-0.5 flex items-center justify-center gap-0.5 px-1 py-0.5 rounded bg-primary/90 text-primary-foreground text-[8px] font-heading font-semibold backdrop-blur-sm">
                                   <ShieldCheck size={8} /> Anon.
                                 </div>
                               )}
@@ -1375,7 +1375,7 @@ function ClinicalAIContent() {
                   {compareSelection.length === 2 && (
                     <button
                       onClick={() => setCompareOpen(true)}
-                      className="px-2 py-0.5 rounded-full bg-primary text-white text-[10px] font-heading font-semibold hover:bg-primary"
+                      className="px-2 py-0.5 rounded-full bg-primary text-primary-foreground text-[10px] font-heading font-semibold hover:bg-primary/90"
                     >
                       Comparar 2
                     </button>
