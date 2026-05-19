@@ -97,7 +97,7 @@ export default function ContinueWhereLeftOff() {
                 {p.type === "emergency" ? "Último protocolo de emergência" : "Último protocolo"}
               </p>
               <p className="font-heading font-semibold text-[13px] text-foreground truncate mt-0.5">
-                {p.title}
+                {shortenIfNeeded(p.title, 28)}
               </p>
               <p className="text-[10.5px] text-muted-foreground mt-0.5">{timeAgo(p.timestamp)}</p>
             </div>
