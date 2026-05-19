@@ -40,7 +40,7 @@ export default function DutyShiftTimer() {
   };
 
   return (
-    <div className="rounded-2xl border bg-card p-4 flex items-center gap-3">
+    <div className="duty-card p-4 flex items-center gap-3">
       <div className="w-10 h-10 rounded-2xl bg-primary/10 flex items-center justify-center">
         <Clock size={20} className="text-primary" />
       </div>
