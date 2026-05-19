@@ -55,7 +55,7 @@ export default function DutyShiftTimer() {
           <Square size={14} /> Encerrar
         </Button>
       ) : (
-        <Button size="sm" onClick={startShift} className="gap-1.5 bg-primary text-primary-foreground border border-primary-foreground/30 hover:bg-primary/90 font-semibold shadow-md">
+        <Button size="sm" onClick={startShift} className="gap-1.5 !bg-white !text-[#0a6dd9] hover:!bg-white/90 font-semibold shadow-md">
           <Play size={14} /> Iniciar
         </Button>
       )}
