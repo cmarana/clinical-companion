@@ -219,21 +219,21 @@ export const AICard: React.FC<AICardProps> = ({ title, subtitle, onClick }) => (
     </div>
     <div className="flex-1 min-w-0">
       <div className="flex items-center gap-2">
-        <span className="font-display font-semibold text-[14.5px] text-neutral-900 dark:text-neutral-50">
+        <span className="font-display font-semibold text-[14.5px] text-foreground">
           {title}
         </span>
-        <span className="text-[9px] uppercase tracking-[0.12em] px-1.5 py-px rounded font-bold tabular-nums bg-success-100 text-success-600 dark:bg-success-500/20 dark:text-success-400">
+        <span className="text-[9px] uppercase tracking-[0.12em] px-1.5 py-px rounded font-bold tabular-nums bg-success/10 text-success">
           IA
         </span>
       </div>
-      <div className="text-[12px] mt-0.5 truncate text-neutral-500 dark:text-neutral-400">
+      <div className="text-[12px] mt-0.5 truncate text-muted-foreground">
         {subtitle}
       </div>
     </div>
     <ArrowUpRight
       size={16}
       strokeWidth={2.2}
-      className="text-primary-500 flex-shrink-0"
+      className="text-primary flex-shrink-0"
     />
   </button>
 );
