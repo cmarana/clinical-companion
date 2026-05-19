@@ -105,17 +105,39 @@ export default function Home() {
     <div className="pb-28 max-w-lg md:max-w-4xl lg:max-w-5xl mx-auto pt-safe-fb">
       {/* ── HEADER ──────────────────────────────────────── */}
       <div
-        className="sticky z-app-chrome top-safe-fb flex items-center justify-between h-14 px-4 border-b border-white/10 text-white"
+        className="relative sticky z-app-chrome top-safe-fb flex items-center justify-between h-14 px-4 border-b border-white/10 text-white overflow-hidden"
         style={{ background: GRADIENT_DEEP_BLUE }}
       >
+        {/* ECG animado de fundo, atravessando a barra */}
+        <svg
+          aria-hidden="true"
+          viewBox="0 0 400 56"
+          preserveAspectRatio="none"
+          className="absolute inset-0 w-full h-full pointer-events-none opacity-40"
+        >
+          <path
+            d="M0 28 L80 28 L100 28 L108 18 L116 38 L122 8 L130 48 L138 28 L400 28"
+            fill="none"
+            stroke="white"
+            strokeWidth="1.6"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            style={{
+              strokeDasharray: 600,
+              strokeDashoffset: 600,
+              animation: "pulso-ecg-sweep 2.4s linear infinite",
+            }}
+          />
+        </svg>
+
         <button
           onClick={() => navigate("/")}
-          className="flex items-center gap-2.5 select-none text-white"
+          className="relative flex items-center gap-2.5 select-none text-white"
         >
-          <PulsoLogoECG size={28} />
+          <PulsoLogo size={28} priority forceVariant="dark" />
           <span className="font-heading font-bold text-base tracking-tight text-white">PULSO</span>
         </button>
-        <div className="flex items-center gap-1">
+        <div className="relative flex items-center gap-1">
           {isAdmin && (
             <button onClick={() => navigate("/admin")} className="p-2 rounded-full hover:bg-white/15 text-white" title="Painel Admin">
               <Shield size={16} />
