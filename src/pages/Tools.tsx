@@ -136,29 +136,32 @@ export default function Tools() {
         <div className="space-y-6">
           {groups.map((g) => (
             <section key={g.title}>
-              <div className="mb-2.5">
-                <h2 className="font-heading font-bold text-[14px] tracking-tight text-foreground">
+              <div className="mb-3">
+                <h3 className="font-heading font-bold text-[15px] tracking-tight text-foreground">
                   {g.title}
-                </h2>
-                <p className="text-[11px] text-muted-foreground mt-0.5">{g.sub}</p>
+                </h3>
+                <p className="text-[11.5px] text-muted-foreground mt-0.5">{g.sub}</p>
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2.5">
+              <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
                 {g.items.map((t) => {
                   const isDanger = t.tone === "danger";
                   const bg = isDanger
                     ? "linear-gradient(135deg, hsl(0 72% 26%) 0%, hsl(0 68% 36%) 60%, hsl(0 64% 44%) 100%)"
                     : "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)";
+                  const iconBg = isDanger
+                    ? "bg-white/15 ring-1 ring-white/25 backdrop-blur-sm"
+                    : "bg-white/18 ring-1 ring-white/30";
                   return (
                     <motion.button
                       key={t.path + t.label}
-                      whileTap={{ scale: 0.98 }}
+                      whileTap={{ scale: 0.97 }}
                       onClick={() => go(t.path)}
-                      className="relative overflow-hidden flex items-center gap-3 p-3.5 rounded-2xl text-left text-white shadow-md ring-1 ring-white/10 hover:shadow-lg hover:-translate-y-0.5 transition-all"
+                      className="group relative overflow-hidden p-4 min-h-[110px] rounded-2xl text-left shadow-md ring-1 ring-white/15 hover:shadow-lg hover:-translate-y-0.5 transition-all"
                       style={{ background: bg }}
                     >
-                      {/* ECG pulsante de fundo */}
+                      {/* ECG pulsante de fundo — padronizado como na Home */}
                       <svg
-                        className="absolute inset-x-0 bottom-0 w-full h-10 opacity-[0.18] pointer-events-none text-white"
+                        className="absolute inset-x-0 bottom-0 w-full h-14 opacity-[0.18] pointer-events-none text-white"
                         viewBox="0 0 200 60"
                         preserveAspectRatio="none"
                         fill="none"
@@ -174,20 +177,19 @@ export default function Tools() {
                           transition={{ duration: 2.4, ease: "easeInOut", repeat: Infinity, repeatType: "loop" }}
                         />
                       </svg>
-                      <div className="absolute -top-8 -right-8 w-24 h-24 rounded-full bg-white/10 blur-2xl pointer-events-none" />
+                      <div className="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-white/10 blur-2xl pointer-events-none" />
 
-                      <div className="relative flex items-center justify-center w-10 h-10 rounded-xl shrink-0 bg-white/15 ring-1 ring-white/25 backdrop-blur-sm">
-                        <t.icon size={18} className="text-white" />
-                      </div>
-                      <div className="relative flex-1 min-w-0">
-                        <div className="font-heading font-bold text-[13px] text-white leading-tight truncate">
+                      <div className="relative">
+                        <div className={`flex items-center justify-center w-10 h-10 rounded-xl mb-3 ${iconBg}`}>
+                          <t.icon size={20} strokeWidth={2.3} className="text-white" />
+                        </div>
+                        <div className="font-heading font-bold text-[14.5px] leading-tight tracking-tight text-white">
                           {t.label}
                         </div>
-                        <div className="text-[11px] text-white/80 mt-0.5 leading-snug line-clamp-1">
+                        <div className="text-[12px] mt-1 leading-snug font-medium text-white/85">
                           {t.sub}
                         </div>
                       </div>
-                      <ChevronRight size={15} className="relative text-white/70 shrink-0" />
                     </motion.button>
                   );
                 })}
