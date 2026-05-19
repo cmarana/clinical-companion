@@ -102,24 +102,27 @@ export default function Home() {
   return (
     <div className="pb-28 max-w-lg md:max-w-4xl lg:max-w-5xl mx-auto pt-safe-fb">
       {/* ── HEADER ──────────────────────────────────────── */}
-      <div className="sticky z-app-chrome top-safe-fb flex items-center justify-between h-14 px-4 bg-background/85 backdrop-blur-md border-b border-border/40">
+      <div
+        className="sticky z-app-chrome top-safe-fb flex items-center justify-between h-14 px-4 border-b border-white/10 text-white"
+        style={{ background: "linear-gradient(135deg, hsl(210 85% 28%) 0%, hsl(210 90% 42%) 100%)" }}
+      >
         <button
           onClick={() => navigate("/")}
           className="flex items-center gap-2.5 select-none"
         >
-          <PulsoLogo size={30} priority />
-          <span className="font-heading font-bold text-base tracking-tight">PULSO</span>
+          <PulsoLogo size={30} priority forceVariant="dark" animate />
+          <span className="font-heading font-bold text-base tracking-tight text-white">PULSO</span>
         </button>
         <div className="flex items-center gap-1">
           {isAdmin && (
-            <button onClick={() => navigate("/admin")} className="p-2 rounded-full hover:bg-accent text-destructive" title="Painel Admin">
+            <button onClick={() => navigate("/admin")} className="p-2 rounded-full hover:bg-white/15 text-white" title="Painel Admin">
               <Shield size={16} />
             </button>
           )}
-          <button onClick={() => { hapticLight(); toggleTheme(); }} className="p-2 rounded-full hover:bg-accent text-muted-foreground" title={themeLabel}>
+          <button onClick={() => { hapticLight(); toggleTheme(); }} className="p-2 rounded-full hover:bg-white/15 text-white/90" title={themeLabel}>
             {theme === "oled" ? <Eclipse size={16} /> : theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
           </button>
-          <button onClick={() => navigate("/notifications")} className="relative p-2 rounded-full hover:bg-accent text-muted-foreground">
+          <button onClick={() => navigate("/notifications")} className="relative p-2 rounded-full hover:bg-white/15 text-white/90">
             <Bell size={16} />
             {unreadCount > 0 && (
               <span className="absolute top-0.5 right-0.5 w-4 h-4 rounded-full bg-destructive text-destructive-foreground text-[9px] font-bold flex items-center justify-center">
@@ -127,10 +130,10 @@ export default function Home() {
               </span>
             )}
           </button>
-          <button onClick={() => navigate(user ? "/profile" : "/auth")} className="ml-1 rounded-full hover:ring-2 hover:ring-primary/30 transition-all">
-            <Avatar className="w-8 h-8">
+          <button onClick={() => navigate(user ? "/profile" : "/auth")} className="ml-1 rounded-full hover:ring-2 hover:ring-white/40 transition-all">
+            <Avatar className="w-8 h-8 ring-2 ring-white/30">
               {avatarUrl ? <AvatarImage src={avatarUrl} alt="Avatar" /> : null}
-              <AvatarFallback className="text-xs font-bold bg-primary/10 text-primary">{initials}</AvatarFallback>
+              <AvatarFallback className="text-xs font-bold bg-white/15 text-white">{initials}</AvatarFallback>
             </Avatar>
           </button>
         </div>
