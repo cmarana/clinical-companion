@@ -16,6 +16,8 @@ type Props = {
   alt?: string;
   /** Prioridade de carregamento. */
   priority?: boolean;
+  /** Aplica animação contínua de batida cardíaca. */
+  animate?: boolean;
 };
 
 /**
