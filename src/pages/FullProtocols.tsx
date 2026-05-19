@@ -429,7 +429,7 @@ export default function FullProtocols() {
                               <p className="font-heading font-semibold text-sm truncate">{p.title}</p>
                               {patched2026Ids.has(p.id) && (
                                 <span
-                                  className="inline-flex items-center gap-0.5 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 ring-1 ring-emerald-500/30 shrink-0"
+                                  className="inline-flex items-center gap-0.5 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-primary/15 text-primary ring-1 ring-primary/30 shrink-0"
                                   title="Diretrizes revisadas em 2026 pela equipe PULSO"
                                 >
                                   <CalendarCheck size={9} />
