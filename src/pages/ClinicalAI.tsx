@@ -721,10 +721,33 @@ function ClinicalAIContent() {
       <div className="flex-1 overflow-y-auto px-3 py-3 space-y-3">
         {messages.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full text-center px-4">
-            <div className="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center mb-3">
-              <PulsoLogo size={32} />
-            </div>
-            <h2 className="font-heading font-bold text-base mb-1">Dra. Clara — IA Clínica</h2>
+            {/* Caixa Dra. Clara — mesmo estilo compacto da Home */}
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.25 }}
+              className="relative w-full max-w-sm overflow-hidden rounded-2xl text-left text-white shadow-md ring-1 ring-white/10 mb-5"
+              style={{
+                background:
+                  "linear-gradient(135deg, hsl(212 60% 18%) 0%, hsl(212 70% 26%) 100%)",
+              }}
+            >
+              <div className="absolute -bottom-10 -right-6 w-32 h-32 rounded-full bg-white/10 blur-2xl" />
+              <div className="relative px-4 py-3 flex items-center gap-3">
+                <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/15 ring-1 ring-white/25 shrink-0">
+                  <PulsoLogo size={20} />
+                </div>
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-heading font-bold text-[14px] leading-tight">
+                    Dra. Clara — IA Clínica
+                  </h3>
+                  <p className="text-[11.5px] text-white/75 mt-0.5 leading-snug">
+                    Pergunte, analise casos e interprete exames.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
             <p className="text-[12px] text-foreground/80 max-w-sm mb-2">
               Olá! Sou a Dra. Clara. Como posso auxiliar na sua decisão clínica agora?
             </p>
