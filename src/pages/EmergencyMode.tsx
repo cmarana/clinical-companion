@@ -146,10 +146,10 @@ function EmergencyModeContent() {
   );
 }
 
-export default function EmergencyMode() {
-  return (
-    <PremiumPageGuard feature="Modo Emergência" title="Emergência">
-      <EmergencyModeContent />
-    </PremiumPageGuard>
-  );
-}
+const EmergencyMode = () => (
+  <PremiumPageGuard feature="Modo Emergência" title="Emergência">
+    <EmergencyModeContent />
+  </PremiumPageGuard>
+);
+
+export default EmergencyMode;
