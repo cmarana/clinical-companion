@@ -7,40 +7,40 @@
 
 @layer base {
   :root {
-    --background: 210 40% 98%;
-    --foreground: 217 33% 17%;
-    --card: 0 0% 100%;
+    --background: 212 42% 95%;
+    --foreground: 212 64% 14%;
+    --card: 212 42% 95%;
     --card-foreground: 217 33% 17%;
-    --popover: 0 0% 100%;
+    --popover: 212 42% 95%;
     --popover-foreground: 217 33% 17%;
-    --primary: 213 94% 44%;
+    --primary: 212 72% 28%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 210 40% 96%;
+    --secondary: 212 36% 90%;
     --secondary-foreground: 217 33% 17%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
-    --accent: 213 94% 94%;
-    --accent-foreground: 213 94% 44%;
-    --destructive: 0 84% 60%;
+    --muted: 212 36% 90%;
+    --muted-foreground: 212 48% 24%;
+    --accent: 212 40% 88%;
+    --accent-foreground: 212 72% 22%;
+    --destructive: 358 58% 38%;
     --destructive-foreground: 0 0% 100%;
-    --destructive-surface: 0 70% 97%;
-    --border: 214 20% 90%;
-    --input: 214 20% 90%;
-    --ring: 213 94% 44%;
+    --destructive-surface: 358 42% 90%;
+    --border: 212 30% 82%;
+    --input: 212 30% 82%;
+    --ring: 212 72% 28%;
     --radius: 0.5rem;
 
-    --sidebar-background: 210 40% 96%;
-    --sidebar-foreground: 215 16% 47%;
-    --sidebar-primary: 217 33% 17%;
+    --sidebar-background: 212 42% 95%;
+    --sidebar-foreground: 212 64% 18%;
+    --sidebar-primary: 212 72% 28%;
     --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 210 40% 96%;
-    --sidebar-accent-foreground: 217 33% 17%;
-    --sidebar-border: 214 32% 91%;
-    --sidebar-ring: 213 94% 44%;
+    --sidebar-accent: 212 40% 88%;
+    --sidebar-accent-foreground: 212 72% 22%;
+    --sidebar-border: 212 30% 82%;
+    --sidebar-ring: 212 72% 28%;
 
-    --warning: 38 92% 50%;
-    --warning-foreground: 38 80% 12%;
-    --success: 160 84% 39%;
+    --warning: 358 58% 38%;
+    --warning-foreground: 0 0% 100%;
+    --success: 212 72% 28%;
     --success-foreground: 0 0% 100%;
 
     --font-heading: 'Sora', system-ui, sans-serif;
@@ -55,33 +55,33 @@
     --card-foreground: 210 40% 96%;
     --popover: 217 33% 17%;
     --popover-foreground: 210 40% 96%;
-    --primary: 213 94% 58%;
+    --primary: 0 0% 100%;
     --primary-foreground: 0 0% 100%;
     --secondary: 217 33% 17%;
     --secondary-foreground: 210 40% 96%;
     --muted: 217 33% 17%;
     --muted-foreground: 215 20% 65%;
-    --accent: 213 40% 22%;
-    --accent-foreground: 213 94% 72%;
-    --destructive: 0 72% 58%;
+    --accent: 212 44% 20%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 358 58% 46%;
     --destructive-foreground: 0 0% 100%;
     --destructive-surface: 0 40% 15%;
     --border: 217 33% 20%;
     --input: 217 33% 20%;
-    --ring: 213 94% 58%;
+    --ring: 0 0% 100%;
 
     --sidebar-background: 222 47% 11%;
     --sidebar-foreground: 210 40% 96%;
-    --sidebar-primary: 224 76% 48%;
+    --sidebar-primary: 0 0% 100%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 217 33% 17%;
     --sidebar-accent-foreground: 210 40% 96%;
     --sidebar-border: 217 33% 20%;
-    --sidebar-ring: 213 94% 58%;
+    --sidebar-ring: 0 0% 100%;
 
-    --warning: 38 92% 50%;
-    --warning-foreground: 38 92% 90%;
-    --success: 160 84% 45%;
+    --warning: 358 58% 46%;
+    --warning-foreground: 0 0% 100%;
+    --success: 0 0% 100%;
     --success-foreground: 0 0% 100%;
   }
 
@@ -92,33 +92,33 @@
     --card-foreground: 0 0% 92%;
     --popover: 0 0% 5%;
     --popover-foreground: 0 0% 92%;
-    --primary: 213 94% 55%;
+    --primary: 0 0% 100%;
     --primary-foreground: 0 0% 100%;
     --secondary: 0 0% 8%;
     --secondary-foreground: 0 0% 92%;
     --muted: 0 0% 8%;
     --muted-foreground: 0 0% 55%;
-    --accent: 213 30% 12%;
-    --accent-foreground: 213 94% 68%;
-    --destructive: 0 72% 50%;
+    --accent: 212 36% 12%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 358 58% 42%;
     --destructive-foreground: 0 0% 100%;
     --destructive-surface: 0 40% 8%;
     --border: 0 0% 12%;
     --input: 0 0% 12%;
-    --ring: 213 94% 55%;
+    --ring: 0 0% 100%;
 
     --sidebar-background: 0 0% 0%;
     --sidebar-foreground: 0 0% 92%;
-    --sidebar-primary: 213 94% 55%;
+    --sidebar-primary: 0 0% 100%;
     --sidebar-primary-foreground: 0 0% 100%;
     --sidebar-accent: 0 0% 8%;
     --sidebar-accent-foreground: 0 0% 92%;
     --sidebar-border: 0 0% 12%;
-    --sidebar-ring: 213 94% 55%;
+    --sidebar-ring: 0 0% 100%;
 
-    --warning: 38 92% 50%;
-    --warning-foreground: 38 92% 90%;
-    --success: 160 84% 45%;
+    --warning: 358 58% 42%;
+    --warning-foreground: 0 0% 100%;
+    --success: 0 0% 100%;
     --success-foreground: 0 0% 100%;
   }
 }
@@ -274,16 +274,16 @@
 }
 
 .clinical-card {
-  background: hsl(var(--card));
-  border: 1px solid hsl(var(--border));
-  border-radius: 10px;
+  background: hsl(var(--muted) / 0.62);
+  border: 1px solid hsl(var(--primary) / 0.16);
+  border-radius: 14px;
   padding: 14px 16px;
-  box-shadow: 0 1px 3px hsl(var(--foreground) / 0.04);
+  box-shadow: inset 0 0 0 1px hsl(var(--background) / 0.35);
 }
 
 .dark .clinical-card {
-  background: hsl(240 6% 10%);
-  border-color: hsl(240 4% 18%);
+  background: hsl(var(--muted) / 0.52);
+  border-color: hsl(var(--primary) / 0.16);
 }
 
 /* ─── Typography inside cards ─── */
@@ -427,15 +427,15 @@
 
 /* ─── Duty Mode (Modo Plantão) ─── */
 .duty-card {
-  background: hsl(var(--card));
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.06);
+  background: hsl(var(--muted) / 0.62);
+  border: 1px solid hsl(var(--primary) / 0.14);
+  border-radius: 18px;
+  box-shadow: inset 0 0 0 1px hsl(var(--background) / 0.35);
 }
 
 .dark .duty-card {
-  background: hsl(217 33% 17%);
-  box-shadow: none;
+  background: hsl(var(--muted) / 0.52);
+  border-color: hsl(var(--primary) / 0.14);
 }
 
 .duty-grid-btn {
@@ -445,12 +445,12 @@
   gap: 6px;
   padding: 14px 6px;
   border-radius: 16px;
-  border: none;
-  background: hsl(var(--muted) / 0.6);
-  color: hsl(var(--foreground));
+  border: 1px solid hsl(var(--primary) / 0.14);
+  background: hsl(var(--muted) / 0.7);
+  color: hsl(var(--primary));
   font-family: var(--font-heading);
   transition: all 200ms;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.04);
+  box-shadow: none;
 }
 
 .duty-grid-btn:active {
@@ -459,16 +459,16 @@
 
 .duty-grid-btn:hover {
   background: hsl(var(--accent));
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  box-shadow: inset 0 0 0 1px hsl(var(--primary) / 0.12);
 }
 
 .dark .duty-grid-btn {
-  background: hsl(213 40% 22%);
+  background: hsl(var(--muted) / 0.62);
   box-shadow: none;
 }
 
 .dark .duty-grid-btn:hover {
-  background: hsl(213 40% 26%);
+  background: hsl(var(--accent));
 }
 
 .duty-list-item {
@@ -486,11 +486,11 @@
 
 .duty-list-item:hover {
   background: hsl(var(--accent));
-  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06);
+  box-shadow: inset 0 0 0 1px hsl(var(--primary) / 0.1);
 }
 
 .dark .duty-list-item:hover {
-  background: hsl(213 40% 22%);
+  background: hsl(var(--accent));
 }
 
 .duty-list-item:active {
@@ -503,8 +503,8 @@
   font-weight: 500;
   padding: 3px 8px;
   border-radius: 10px;
-  background: hsl(var(--muted));
-  color: hsl(var(--muted-foreground));
+  background: hsl(var(--primary) / 0.1);
+  color: hsl(var(--primary));
   white-space: nowrap;
 }
 

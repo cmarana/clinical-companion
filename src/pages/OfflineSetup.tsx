@@ -164,9 +164,9 @@ export default function OfflineSetup() {
       <div className="px-4 pt-3 max-w-lg mx-auto space-y-3">
         {/* Connection Status */}
         <div className="bg-card rounded-2xl shadow-sm overflow-hidden">
-          <div className={cn("px-4 py-4 flex items-center gap-3", isOnline ? "bg-emerald-500/10" : "bg-amber-500/10")}>
-            <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center", isOnline ? "bg-emerald-500/20" : "bg-amber-500/20")}>
-              {isOnline ? <Wifi size={20} className="text-emerald-500" /> : <WifiOff size={20} className="text-amber-500" />}
+          <div className={cn("px-4 py-4 flex items-center gap-3", isOnline ? "bg-primary/10" : "bg-destructive/10")}>
+            <div className={cn("w-10 h-10 rounded-xl flex items-center justify-center", isOnline ? "bg-primary/20" : "bg-destructive/20")}>
+              {isOnline ? <Wifi size={20} className="text-primary" /> : <WifiOff size={20} className="text-destructive" />}
             </div>
             <div className="flex-1">
               <h2 className="font-heading font-bold text-sm flex items-center gap-1.5">
@@ -197,10 +197,10 @@ export default function OfflineSetup() {
 
         {/* Preview warning */}
         {isInPreview && (
-          <div className="bg-amber-500/10 border border-amber-500/20 rounded-2xl p-4 flex items-start gap-2">
-            <AlertTriangle size={16} className="text-amber-500 shrink-0 mt-0.5" />
+          <div className="bg-destructive/10 border border-destructive/20 rounded-2xl p-4 flex items-start gap-2">
+            <AlertTriangle size={16} className="text-destructive shrink-0 mt-0.5" />
             <div>
-              <p className="text-[12px] font-heading font-semibold text-amber-600 dark:text-amber-400">Ambiente de Preview</p>
+              <p className="text-[12px] font-heading font-semibold text-destructive dark:text-destructive">Ambiente de Preview</p>
               <p className="text-[11px] text-muted-foreground mt-0.5">Modo offline funciona apenas no app publicado.</p>
             </div>
           </div>
@@ -303,9 +303,9 @@ export default function OfflineSetup() {
                     />
                   )}
                   <div className={cn("w-9 h-9 rounded-xl flex items-center justify-center shrink-0",
-                    isDownloaded ? "bg-emerald-500/10" : "bg-muted/50"
+                    isDownloaded ? "bg-primary/10" : "bg-muted/50"
                   )}>
-                    <Icon size={16} className={isDownloaded ? "text-emerald-500" : mod.color} />
+                    <Icon size={16} className={isDownloaded ? "text-primary" : mod.color} />
                   </div>
 
                   <div className="flex-1 min-w-0">
@@ -315,7 +315,7 @@ export default function OfflineSetup() {
                   </div>
 
                   {isDownloaded ? (
-                    <Badge variant="outline" className="text-[9px] bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 border-emerald-500/20 shrink-0">
+                    <Badge variant="outline" className="text-[9px] bg-primary/10 text-primary dark:text-primary border-primary/20 shrink-0">
                       <CheckCircle size={10} className="mr-1" /> Salvo
                     </Badge>
                   ) : (

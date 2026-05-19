@@ -264,8 +264,8 @@ function DrugInteractionsContent() {
 
               {localResults.length === 0 ? (
                 <div className="text-center py-4">
-                  <Shield size={32} className="mx-auto text-green-500 mb-2" />
-                  <p className="font-heading font-semibold text-sm text-green-600 dark:text-green-400">
+                  <Shield size={32} className="mx-auto text-primary mb-2" />
+                  <p className="font-heading font-semibold text-sm text-primary dark:text-primary">
                     Nenhuma interação conhecida encontrada
                   </p>
                   <p className="text-[11px] text-muted-foreground mt-1">
@@ -468,7 +468,7 @@ function DatabaseCoveragePanel() {
             <p className="text-[9px] text-muted-foreground font-medium">Pares</p>
           </div>
           <div className="bg-background/80 rounded-xl p-2.5 text-center">
-            <p className="text-lg font-bold font-heading text-amber-500">{DB_CATEGORIES.length}</p>
+            <p className="text-lg font-bold font-heading text-destructive">{DB_CATEGORIES.length}</p>
             <p className="text-[9px] text-muted-foreground font-medium">Categorias</p>
           </div>
         </div>

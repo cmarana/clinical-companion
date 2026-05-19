@@ -163,7 +163,7 @@ function LabValueCard({ val, expanded, onToggle, formatRange }: {
                       {val.unit && <span className="text-muted-foreground ml-1">{val.unit}</span>}
                       {range.note && (
                         <div className="flex items-start gap-1 mt-1 justify-end">
-                          <Info size={10} className="text-amber-500 shrink-0 mt-0.5" />
+                          <Info size={10} className="text-destructive shrink-0 mt-0.5" />
                           <span className="text-[10px] text-muted-foreground leading-tight">{range.note}</span>
                         </div>
                       )}

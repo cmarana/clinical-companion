@@ -21,9 +21,9 @@ interface DashboardData {
 
 const PHASES = ["MVP", "Piloto", "iOS/Android", "Internacional"];
 const STATUS_COLORS: Record<string, string> = {
-  publicada: "bg-green-500/15 text-green-600 dark:text-green-400 border-green-500/30",
-  em_revisao: "bg-amber-500/15 text-amber-600 dark:text-amber-400 border-amber-500/30",
-  pendente: "bg-orange-500/15 text-orange-600 dark:text-orange-400 border-orange-500/30",
+  publicada: "bg-primary/15 text-primary dark:text-primary border-primary/30",
+  em_revisao: "bg-destructive/15 text-destructive dark:text-destructive border-destructive/30",
+  pendente: "bg-destructive/15 text-destructive dark:text-destructive border-destructive/30",
   arquivada: "bg-muted text-muted-foreground border-border",
 };
 
@@ -65,7 +65,7 @@ export default function GovernanceDashboard() {
           <ArrowLeft size={16} /> Voltar
         </button>
         <div className="text-center py-12">
-          <ShieldAlert className="mx-auto text-amber-500 mb-3" size={32} />
+          <ShieldAlert className="mx-auto text-destructive mb-3" size={32} />
           <p className="font-heading font-semibold">Acesso restrito</p>
           <p className="text-sm text-muted-foreground mt-1">{error || "Apenas administradores podem visualizar este painel."}</p>
         </div>
@@ -149,7 +149,7 @@ export default function GovernanceDashboard() {
                       </p>
                     </div>
                     <div className="text-right">
-                      <p className={`text-lg font-bold ${k.progress_pct >= 80 ? "text-green-600 dark:text-green-400" : k.progress_pct >= 50 ? "text-amber-600 dark:text-amber-400" : "text-red-600 dark:text-red-400"}`}>
+                      <p className={`text-lg font-bold ${k.progress_pct >= 80 ? "text-primary dark:text-primary" : k.progress_pct >= 50 ? "text-destructive dark:text-destructive" : "text-destructive dark:text-destructive"}`}>
                         {k.progress_pct}%
                       </p>
                       <p className="text-[10px] text-muted-foreground">progresso</p>
@@ -227,7 +227,7 @@ export default function GovernanceDashboard() {
             <Card>
               <CardHeader className="pb-2">
                 <CardTitle className="text-xs text-muted-foreground font-medium flex items-center gap-1">
-                  <CheckCircle2 size={12} className="text-green-500" /> EPM (mitigados)
+                  <CheckCircle2 size={12} className="text-primary" /> EPM (mitigados)
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -242,7 +242,7 @@ export default function GovernanceDashboard() {
             <Card>
               <CardHeader className="pb-2">
                 <CardTitle className="text-xs text-muted-foreground font-medium flex items-center gap-1">
-                  <AlertTriangle size={12} className="text-amber-500" /> CDDI (registros)
+                  <AlertTriangle size={12} className="text-destructive" /> CDDI (registros)
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -292,7 +292,7 @@ export default function GovernanceDashboard() {
                     <div key={i} className="flex justify-between items-center py-2 border-b last:border-0 text-xs">
                       <div className="flex items-center gap-2">
                         <Badge variant="outline" className="text-[10px]">{e.category}</Badge>
-                        <span className={e.was_mitigated ? "text-green-600 dark:text-green-400" : "text-red-600 dark:text-red-400"}>
+                        <span className={e.was_mitigated ? "text-primary dark:text-primary" : "text-destructive dark:text-destructive"}>
                           {e.was_mitigated ? "mitigado" : "ocorrido"}
                         </span>
                       </div>
@@ -308,10 +308,10 @@ export default function GovernanceDashboard() {
         {/* ============ CURATION TAB ============ */}
         <TabsContent value="curation" className="space-y-4">
           {data.guidelines.upcoming_60d.length > 0 && (
-            <Card className="border-amber-500/30 bg-amber-500/5">
+            <Card className="border-destructive/30 bg-destructive/5">
               <CardHeader className="pb-2">
                 <CardTitle className="text-sm font-heading flex items-center gap-2">
-                  <Clock size={14} className="text-amber-500" /> Próximas revisões (60 dias)
+                  <Clock size={14} className="text-destructive" /> Próximas revisões (60 dias)
                 </CardTitle>
               </CardHeader>
               <CardContent>
@@ -378,7 +378,7 @@ export default function GovernanceDashboard() {
             <Card>
               <CardHeader className="pb-2"><CardTitle className="text-xs text-muted-foreground font-medium">Outliers</CardTitle></CardHeader>
               <CardContent>
-                <p className="text-2xl font-bold font-heading text-amber-600 dark:text-amber-400">{data.ttp.outliers.length}</p>
+                <p className="text-2xl font-bold font-heading text-destructive dark:text-destructive">{data.ttp.outliers.length}</p>
                 <p className="text-[10px] text-muted-foreground mt-1">{`>5 min entre início e protocolo`}</p>
               </CardContent>
             </Card>
@@ -406,10 +406,10 @@ export default function GovernanceDashboard() {
           </Card>
 
           {data.ttp.outliers.length > 0 && (
-            <Card className="border-amber-500/30">
+            <Card className="border-destructive/30">
               <CardHeader>
                 <CardTitle className="text-sm font-heading flex items-center gap-2">
-                  <AlertTriangle size={14} className="text-amber-500" /> Outliers recentes
+                  <AlertTriangle size={14} className="text-destructive" /> Outliers recentes
                 </CardTitle>
                 <CardDescription className="text-xs">Eventos com TTP acima de 5 minutos — investigar fluxo</CardDescription>
               </CardHeader>
@@ -422,7 +422,7 @@ export default function GovernanceDashboard() {
                         <p className="text-[10px] text-muted-foreground">{o.trigger_source}</p>
                       </div>
                       <div className="text-right">
-                        <p className="font-bold text-amber-600 dark:text-amber-400">{o.ttp_seconds}s</p>
+                        <p className="font-bold text-destructive dark:text-destructive">{o.ttp_seconds}s</p>
                         <p className="text-[10px] text-muted-foreground">{new Date(o.created_at).toLocaleDateString("pt-BR")}</p>
                       </div>
                     </div>

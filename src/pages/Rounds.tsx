@@ -144,7 +144,7 @@ function PatientCard({
         <div className="flex items-center gap-2 shrink-0">
           {pending > 0 && (
             <span className={`text-xs font-medium px-2 py-0.5 rounded-full ${
-              urgent > 0 ? "bg-destructive/15 text-destructive" : "bg-amber-500/15 text-amber-600"
+              urgent > 0 ? "bg-destructive/15 text-destructive" : "bg-destructive/15 text-destructive"
             }`}>
               {pending} pend.
             </span>

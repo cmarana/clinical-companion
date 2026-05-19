@@ -17,7 +17,7 @@ function RegimenRow({ regimen, label }: { regimen: AntimicrobialRegimen; label?:
         <span>{regimen.route}</span>
         <span className="flex items-center gap-1"><Clock size={10} /> {regimen.duration}</span>
       </div>
-      {regimen.notes && <p className="ml-5 text-[11px] text-amber-600 dark:text-amber-400 italic">{regimen.notes}</p>}
+      {regimen.notes && <p className="ml-5 text-[11px] text-destructive dark:text-destructive italic">{regimen.notes}</p>}
     </div>
   );
 }
@@ -39,7 +39,7 @@ function ScenarioCard({ scenario }: { scenario: InfectionScenario }) {
                 "text-[10px] font-bold px-2 py-0.5 rounded-full flex items-center gap-1",
                 scenario.severity.includes("EMERGÊNCIA") || scenario.severity.includes("URGÊNCIA")
                   ? "bg-destructive/15 text-destructive"
-                  : "bg-amber-500/15 text-amber-600 dark:text-amber-400"
+                  : "bg-destructive/15 text-destructive dark:text-destructive"
               )}>
                 <AlertTriangle size={10} /> {scenario.severity}
               </span>
@@ -61,8 +61,8 @@ function ScenarioCard({ scenario }: { scenario: InfectionScenario }) {
           {/* 1st line */}
           <div>
             <div className="flex items-center gap-1.5 mb-1.5">
-              <Shield size={12} className="text-emerald-500" />
-              <h5 className="text-xs font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-wider">1ª Linha</h5>
+              <Shield size={12} className="text-primary" />
+              <h5 className="text-xs font-bold text-primary dark:text-primary uppercase tracking-wider">1ª Linha</h5>
             </div>
             <div className="space-y-1.5">
               {scenario.firstLine.map((r, i) => <RegimenRow key={i} regimen={r} />)}
@@ -72,8 +72,8 @@ function ScenarioCard({ scenario }: { scenario: InfectionScenario }) {
           {/* 2nd line */}
           <div>
             <div className="flex items-center gap-1.5 mb-1.5">
-              <Shield size={12} className="text-amber-500" />
-              <h5 className="text-xs font-bold text-amber-600 dark:text-amber-400 uppercase tracking-wider">2ª Linha / Alternativa</h5>
+              <Shield size={12} className="text-destructive" />
+              <h5 className="text-xs font-bold text-destructive dark:text-destructive uppercase tracking-wider">2ª Linha / Alternativa</h5>
             </div>
             <div className="space-y-1.5">
               {scenario.secondLine.map((r, i) => <RegimenRow key={i} regimen={r} />)}
@@ -84,8 +84,8 @@ function ScenarioCard({ scenario }: { scenario: InfectionScenario }) {
           {scenario.allergicAlternative && scenario.allergicAlternative.length > 0 && (
             <div>
               <div className="flex items-center gap-1.5 mb-1.5">
-                <AlertTriangle size={12} className="text-rose-500" />
-                <h5 className="text-xs font-bold text-rose-600 dark:text-rose-400 uppercase tracking-wider">Alergia a Betalactâmicos</h5>
+                <AlertTriangle size={12} className="text-destructive" />
+                <h5 className="text-xs font-bold text-destructive dark:text-destructive uppercase tracking-wider">Alergia a Betalactâmicos</h5>
               </div>
               <div className="space-y-1.5">
                 {scenario.allergicAlternative.map((r, i) => <RegimenRow key={i} regimen={r} />)}

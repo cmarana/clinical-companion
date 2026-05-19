@@ -80,9 +80,9 @@ drugs.forEach(a => drugs.forEach(b => {
 }));
 
 const colorMap: Record<Compat, string> = {
-  C: "bg-green-500/20 text-green-700 dark:text-green-400",
-  I: "bg-red-500/20 text-red-700 dark:text-red-400",
-  "?": "bg-yellow-500/10 text-yellow-700 dark:text-yellow-400",
+  C: "bg-primary/20 text-primary dark:text-primary",
+  I: "bg-destructive/20 text-destructive dark:text-destructive",
+  "?": "bg-destructive/10 text-destructive dark:text-destructive",
   "-": "bg-muted text-muted-foreground",
 };
 const labelMap: Record<Compat, string> = { C: "Compatível", I: "Incompatível", "?": "Dados insuficientes", "-": "-" };
@@ -123,9 +123,9 @@ export default function DrugCompatibility() {
         <p className="text-xs text-muted-foreground">Tabela de compatibilidade para administração simultânea em Y na UTI/PS</p>
 
         <div className="flex gap-1.5 flex-wrap">
-          <span className="flex items-center gap-1 text-[10px]"><span className="w-3 h-3 rounded bg-green-500/30 inline-block" /> Compatível</span>
-          <span className="flex items-center gap-1 text-[10px]"><span className="w-3 h-3 rounded bg-red-500/30 inline-block" /> Incompatível</span>
-          <span className="flex items-center gap-1 text-[10px]"><span className="w-3 h-3 rounded bg-yellow-500/20 inline-block" /> Sem dados</span>
+          <span className="flex items-center gap-1 text-[10px]"><span className="w-3 h-3 rounded bg-primary/30 inline-block" /> Compatível</span>
+          <span className="flex items-center gap-1 text-[10px]"><span className="w-3 h-3 rounded bg-destructive/30 inline-block" /> Incompatível</span>
+          <span className="flex items-center gap-1 text-[10px]"><span className="w-3 h-3 rounded bg-destructive/20 inline-block" /> Sem dados</span>
         </div>
 
         <div className="relative">
@@ -179,7 +179,7 @@ export default function DrugCompatibility() {
           </>
         )}
 
-        <Card className="border-yellow-500/20">
+        <Card className="border-destructive/20">
           <CardContent className="p-3">
             <p className="text-[10px] text-muted-foreground leading-relaxed">
               ⚠ <strong>Atenção:</strong> Esta tabela é uma referência rápida baseada em fontes como Trissel's™ e King Guide®. 

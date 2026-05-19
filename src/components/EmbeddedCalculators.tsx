@@ -17,7 +17,7 @@ function QSofaCalc() {
   const [checked, setChecked] = useState<boolean[]>(new Array(3).fill(false));
   const total = checked.filter(Boolean).length;
   const rec = total < 2 ? "Baixo risco — reavaliar" : "Alto risco de sepse — investigar SOFA";
-  const color = total < 2 ? "text-emerald-600 dark:text-emerald-400" : "text-destructive";
+  const color = total < 2 ? "text-primary dark:text-primary" : "text-destructive";
 
   return (
     <div className="space-y-3">
@@ -89,7 +89,7 @@ function GlasgowCalc() {
   const [verbal, setVerbal] = useState(5);
   const [motor, setMotor] = useState(6);
   const total = eye + verbal + motor;
-  const cls = total <= 8 ? { text: "Grave (IOT indicada)", color: "text-destructive" } : total <= 12 ? { text: "Moderado", color: "text-amber-600 dark:text-amber-400" } : { text: "Leve", color: "text-emerald-600 dark:text-emerald-400" };
+  const cls = total <= 8 ? { text: "Grave (IOT indicada)", color: "text-destructive" } : total <= 12 ? { text: "Moderado", color: "text-destructive dark:text-destructive" } : { text: "Leve", color: "text-primary dark:text-primary" };
 
   return (
     <div className="space-y-3">
@@ -154,7 +154,7 @@ function WellsCalc() {
   const [checked, setChecked] = useState<boolean[]>(new Array(items.length).fill(false));
   const total = items.reduce((sum, item, i) => sum + (checked[i] ? item.pts : 0), 0);
   const risk = total <= 1 ? "Baixo risco" : total <= 6 ? "Risco intermediário" : "Alto risco";
-  const color = total <= 1 ? "text-emerald-600 dark:text-emerald-400" : total <= 6 ? "text-amber-600 dark:text-amber-400" : "text-destructive";
+  const color = total <= 1 ? "text-primary dark:text-primary" : total <= 6 ? "text-destructive dark:text-destructive" : "text-destructive";
 
   return (
     <div className="space-y-3">
@@ -223,7 +223,7 @@ function CURB65Calc() {
   const [checked, setChecked] = useState<boolean[]>(new Array(5).fill(false));
   const total = checked.filter(Boolean).length;
   const rec = total <= 1 ? "Ambulatorial" : total === 2 ? "Internação breve" : "Internação (UTI se 4-5)";
-  const color = total <= 1 ? "text-emerald-600 dark:text-emerald-400" : total === 2 ? "text-amber-600 dark:text-amber-400" : "text-destructive";
+  const color = total <= 1 ? "text-primary dark:text-primary" : total === 2 ? "text-destructive dark:text-destructive" : "text-destructive";
 
   return (
     <div className="space-y-3">
@@ -249,7 +249,7 @@ function HEARTCalc() {
   const [troponin, setTroponin] = useState(0);
   const total = history + ecg + age + risk + troponin;
   const rec = total <= 3 ? "Baixo risco — alta precoce" : total <= 6 ? "Risco moderado — observação" : "Alto risco — internação / cateterismo";
-  const color = total <= 3 ? "text-emerald-600 dark:text-emerald-400" : total <= 6 ? "text-amber-600 dark:text-amber-400" : "text-destructive";
+  const color = total <= 3 ? "text-primary dark:text-primary" : total <= 6 ? "text-destructive dark:text-destructive" : "text-destructive";
 
   const Sel = ({ label, value, onChange, opts }: { label: string; value: number; onChange: (v: number) => void; opts: string[] }) => (
     <div className="space-y-1">
@@ -380,7 +380,7 @@ function DengueHidratacaoCalc() {
           ))}
         </ul>
         {b.alerta && (
-          <p className="text-[11px] font-semibold text-amber-700 dark:text-amber-400 border-l-2 border-amber-500 pl-2 mt-2">⚠ {b.alerta}</p>
+          <p className="text-[11px] font-semibold text-destructive dark:text-destructive border-l-2 border-destructive pl-2 mt-2">⚠ {b.alerta}</p>
         )}
         <p className="text-[10px] text-muted-foreground italic pt-1">
           Base: PCDT Dengue MS 2025-2026 + OPAS 2025. Reavaliar a cada 1 h em Grupo C/D.
@@ -433,7 +433,7 @@ function ArbovirusRiskCalc() {
   if (doenca === "dengue") {
     if (hasGrave) classif = {
       grupo: "Grupo D — Dengue grave",
-      cor: "bg-red-500/15 text-red-600 dark:text-red-400 border-red-500/40",
+      cor: "bg-destructive/15 text-destructive dark:text-destructive border-destructive/40",
       conduta: [
         "UTI imediata + monitorização invasiva",
         "Cristaloide 20 mL/kg em 15-30 min (até 3 bolus)",
@@ -444,7 +444,7 @@ function ArbovirusRiskCalc() {
     };
     else if (hasAlarme) classif = {
       grupo: "Grupo C — Sinais de alarme",
-      cor: "bg-orange-500/15 text-orange-600 dark:text-orange-400 border-orange-500/40",
+      cor: "bg-destructive/15 text-destructive dark:text-destructive border-destructive/40",
       conduta: [
         "Internação + hidratação parenteral (10 mL/kg em 1 h)",
         "Hct, plaquetas, PA e diurese a cada 1 h",
@@ -453,7 +453,7 @@ function ArbovirusRiskCalc() {
     };
     else if (grupoRisco) classif = {
       grupo: "Grupo B — Risco aumentado",
-      cor: "bg-amber-500/15 text-amber-700 dark:text-amber-400 border-amber-500/40",
+      cor: "bg-destructive/15 text-destructive dark:text-destructive border-destructive/40",
       conduta: [
         "Observação 24-48 h em unidade de saúde",
         "Hidratação oral supervisionada (60 mL/kg/dia)",
@@ -463,7 +463,7 @@ function ArbovirusRiskCalc() {
     };
     else classif = {
       grupo: "Grupo A — Manejo domiciliar",
-      cor: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/40",
+      cor: "bg-primary/15 text-primary dark:text-primary border-primary/40",
       conduta: [
         "Hidratação oral 60 mL/kg/dia (1/3 SRO + 2/3 líquidos)",
         "Paracetamol/dipirona — vedado AAS, AINE, corticoide",
@@ -473,7 +473,7 @@ function ArbovirusRiskCalc() {
   } else {
     if (hasChikGrave) classif = {
       grupo: "Chikungunya grave / atípica",
-      cor: "bg-red-500/15 text-red-600 dark:text-red-400 border-red-500/40",
+      cor: "bg-destructive/15 text-destructive dark:text-destructive border-destructive/40",
       conduta: [
         "Internação (UTI se cardite/encefalite/hepatite fulminante)",
         "Suporte de órgão + analgesia escalonada",
@@ -483,7 +483,7 @@ function ArbovirusRiskCalc() {
     };
     else if (grupoRisco) classif = {
       grupo: "Chikungunya com risco aumentado",
-      cor: "bg-amber-500/15 text-amber-700 dark:text-amber-400 border-amber-500/40",
+      cor: "bg-destructive/15 text-destructive dark:text-destructive border-destructive/40",
       conduta: [
         "Observação + analgesia (paracetamol/dipirona)",
         "AINE somente após excluir dengue (NS1 negativo + plaquetas estáveis)",
@@ -493,7 +493,7 @@ function ArbovirusRiskCalc() {
     };
     else classif = {
       grupo: "Chikungunya aguda — manejo ambulatorial",
-      cor: "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 border-emerald-500/40",
+      cor: "bg-primary/15 text-primary dark:text-primary border-primary/40",
       conduta: [
         "Hidratação oral + paracetamol/dipirona",
         "NÃO usar AAS/AINE nas primeiras 2 sem (até excluir dengue)",

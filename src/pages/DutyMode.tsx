@@ -15,6 +15,7 @@ import {
 import { useState, useMemo } from "react";
 import { protocols } from "@/data/protocols";
 import { medications } from "@/data/medications";
+import { GRADIENT_DEEP_BLUE_SOFT } from "@/lib/design-tokens";
 
 /* ─── Data ─── */
 
@@ -30,14 +31,14 @@ const quickAccess = [
 ];
 
 const emergencyOneTap = [
-  { label: "PCR / RCP", path: "/protocols/pcr", color: "bg-red-500/15 text-red-600 dark:text-red-400" },
-  { label: "Sepse", path: "/protocols/sepse", color: "bg-orange-500/15 text-orange-600 dark:text-orange-400" },
-  { label: "IAM", path: "/protocols/iam", color: "bg-red-500/15 text-red-600 dark:text-red-400" },
-  { label: "AVC", path: "/protocols/avc", color: "bg-purple-500/15 text-purple-600 dark:text-purple-400" },
-  { label: "Anafilaxia", path: "/protocols/anafilaxia", color: "bg-pink-500/15 text-pink-600 dark:text-pink-400" },
-  { label: "IOT", path: "/protocols/iot", color: "bg-blue-500/15 text-blue-600 dark:text-blue-400" },
-  { label: "Choque", path: "/protocols/choque-hipovolemico", color: "bg-red-500/15 text-red-600 dark:text-red-400" },
-  { label: "EAP", path: "/protocols/eap", color: "bg-cyan-500/15 text-cyan-600 dark:text-cyan-400" },
+  { label: "PCR / RCP", path: "/protocols/pcr", color: "bg-destructive/15 text-destructive dark:text-destructive" },
+  { label: "Sepse", path: "/protocols/sepse", color: "bg-destructive/15 text-destructive dark:text-destructive" },
+  { label: "IAM", path: "/protocols/iam", color: "bg-destructive/15 text-destructive dark:text-destructive" },
+  { label: "AVC", path: "/protocols/avc", color: "bg-destructive/15 text-destructive dark:text-destructive" },
+  { label: "Anafilaxia", path: "/protocols/anafilaxia", color: "bg-destructive/15 text-destructive dark:text-destructive" },
+  { label: "IOT", path: "/protocols/iot", color: "bg-destructive/15 text-destructive dark:text-destructive" },
+  { label: "Choque", path: "/protocols/choque-hipovolemico", color: "bg-destructive/15 text-destructive dark:text-destructive" },
+  { label: "EAP", path: "/protocols/eap", color: "bg-destructive/15 text-destructive dark:text-destructive" },
 ];
 
 const emergencyMore = [
@@ -121,7 +122,7 @@ function DutyModeContent() {
             </button>
             <button
               onClick={() => navigate("/prescription-checker")}
-              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl bg-orange-500/10 text-orange-600 dark:text-orange-400 hover:bg-orange-500/20 active:scale-95 transition-all"
+              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl bg-primary/10 text-primary hover:bg-primary/20 active:scale-95 transition-all"
             >
               <Beaker size={20} />
               <span className="text-[10px] font-heading font-bold leading-tight text-center">Checagem Rx</span>
@@ -199,7 +200,8 @@ function DutyModeContent() {
             {/* ── IA Clínica ── */}
             <button
               onClick={() => navigate("/clinical-ai")}
-              className="w-full flex items-center gap-3 p-4 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-indigo-500 text-white rounded-[20px] shadow-lg shadow-blue-500/20 dark:shadow-blue-500/30 active:scale-[0.98] transition-all duration-200"
+              className="w-full flex items-center gap-3 p-4 text-white rounded-[20px] shadow-md ring-1 ring-white/15 active:scale-[0.98] transition-all duration-200"
+              style={{ background: GRADIENT_DEEP_BLUE_SOFT }}
             >
               <div className="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center">
                 <Sparkles size={20} className="text-white" />

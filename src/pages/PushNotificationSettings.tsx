@@ -110,13 +110,13 @@ export default function PushNotificationSettings() {
         <div className="bg-card rounded-[20px] shadow-sm overflow-hidden">
           <div className={cn(
             "px-4 py-4 flex items-center gap-3",
-            isGranted ? "bg-emerald-500/10" : isDenied ? "bg-destructive/10" : "bg-primary/5"
+            isGranted ? "bg-primary/10" : isDenied ? "bg-destructive/10" : "bg-primary/5"
           )}>
             <div className={cn(
               "w-10 h-10 rounded-xl flex items-center justify-center",
-              isGranted ? "bg-emerald-500/20" : isDenied ? "bg-destructive/20" : "bg-primary/10"
+              isGranted ? "bg-primary/20" : isDenied ? "bg-destructive/20" : "bg-primary/10"
             )}>
-              {isGranted ? <BellRing size={20} className="text-emerald-500" /> :
+              {isGranted ? <BellRing size={20} className="text-primary" /> :
                isDenied ? <BellOff size={20} className="text-destructive" /> :
                <Bell size={20} className="text-primary" />}
             </div>
@@ -192,7 +192,7 @@ export default function PushNotificationSettings() {
                 </div>
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
-                    <Shield size={14} className="text-emerald-500" />
+                    <Shield size={14} className="text-primary" />
                     <div>
                       <p className="text-xs font-heading font-medium">Atualizações de Protocolos</p>
                       <p className="text-[10px] text-muted-foreground">Novos protocolos e alterações</p>
@@ -213,8 +213,8 @@ export default function PushNotificationSettings() {
 
         <div className="bg-card rounded-[20px] shadow-sm p-4">
           <div className="flex items-center gap-2 mb-3">
-            <div className="w-8 h-8 rounded-xl bg-amber-500/10 flex items-center justify-center">
-              <Clock size={16} className="text-amber-500" />
+            <div className="w-8 h-8 rounded-xl bg-destructive/10 flex items-center justify-center">
+              <Clock size={16} className="text-destructive" />
             </div>
             <div className="flex-1">
               <h3 className="font-heading font-semibold text-sm">Alertas de Plantão</h3>

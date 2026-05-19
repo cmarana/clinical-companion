@@ -60,7 +60,7 @@ export default function ShareMenu({ getText, title, showPDF = false, shareUrl }:
               onClick={handleWhatsApp}
               className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg hover:bg-accent/50 transition-colors text-left"
             >
-              <MessageCircle size={16} className="text-emerald-500" />
+              <MessageCircle size={16} className="text-primary" />
               <span className="text-xs font-medium">WhatsApp</span>
             </button>
             <button
@@ -75,7 +75,7 @@ export default function ShareMenu({ getText, title, showPDF = false, shareUrl }:
                 onClick={handlePDF}
                 className="w-full flex items-center gap-2.5 px-3 py-2.5 rounded-lg hover:bg-accent/50 transition-colors text-left"
               >
-                <FileDown size={16} className="text-orange-500" />
+                <FileDown size={16} className="text-destructive" />
                 <span className="text-xs font-medium">Salvar como PDF</span>
               </button>
             )}

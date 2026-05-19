@@ -32,8 +32,8 @@ export function DiffView({
     <div className={cn("rounded-md border bg-card", className)}>
       <header className="flex flex-wrap items-center justify-between gap-2 border-b px-3 py-2">
         <div className="flex items-center gap-3 text-xs">
-          <span className="font-mono text-emerald-600 dark:text-emerald-400">+{stats.added}</span>
-          <span className="font-mono text-red-600 dark:text-red-400">-{stats.removed}</span>
+          <span className="font-mono text-primary dark:text-primary">+{stats.added}</span>
+          <span className="font-mono text-destructive dark:text-destructive">-{stats.removed}</span>
           <span className="font-mono text-muted-foreground">={stats.unchanged}</span>
         </div>
         {!forceUnified && (
@@ -81,8 +81,8 @@ function UnifiedDiff({ lines }: { lines: DiffLine[] }) {
           key={idx}
           className={cn(
             "flex gap-2 px-3 py-0.5",
-            l.op === "add" && "bg-emerald-500/10 text-emerald-900 dark:text-emerald-200",
-            l.op === "remove" && "bg-red-500/10 text-red-900 dark:text-red-200",
+            l.op === "add" && "bg-primary/10 text-primary dark:text-primary",
+            l.op === "remove" && "bg-destructive/10 text-destructive dark:text-destructive",
           )}
         >
           <span className="w-5 shrink-0 select-none text-muted-foreground">
@@ -138,7 +138,7 @@ function SplitDiff({ lines, oldLabel, newLabel }: { lines: DiffLine[]; oldLabel:
             <div
               className={cn(
                 "border-r px-3 py-0.5 whitespace-pre-wrap break-words",
-                row.left?.op === "remove" && "bg-red-500/10 text-red-900 dark:text-red-200",
+                row.left?.op === "remove" && "bg-destructive/10 text-destructive dark:text-destructive",
               )}
             >
               <span className="mr-2 inline-block w-6 select-none text-right text-muted-foreground/70">
@@ -149,7 +149,7 @@ function SplitDiff({ lines, oldLabel, newLabel }: { lines: DiffLine[]; oldLabel:
             <div
               className={cn(
                 "px-3 py-0.5 whitespace-pre-wrap break-words",
-                row.right?.op === "add" && "bg-emerald-500/10 text-emerald-900 dark:text-emerald-200",
+                row.right?.op === "add" && "bg-primary/10 text-primary dark:text-primary",
               )}
             >
               <span className="mr-2 inline-block w-6 select-none text-right text-muted-foreground/70">

@@ -162,8 +162,8 @@ export default function PixSuccess() {
               </div>
             )}
 
-            <div className="bg-amber-500/10 border border-amber-500/20 rounded-lg p-3">
-              <p className="text-xs text-amber-700 dark:text-amber-400 leading-relaxed">
+            <div className="bg-destructive/10 border border-destructive/20 rounded-lg p-3">
+              <p className="text-xs text-destructive dark:text-destructive leading-relaxed">
                 <strong>Lembrete:</strong> O pagamento PIX não renova automaticamente. 
                 Quando seu acesso expirar, renove manualmente na página de assinatura.
               </p>

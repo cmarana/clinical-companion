@@ -219,15 +219,15 @@ export { calculatorItems };
 
 export const typeColors: Record<string, string> = {
   protocol: "bg-primary/10 text-primary",
-  medication: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
-  prescription: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
-  symptom: "bg-orange-500/10 text-orange-600 dark:text-orange-400",
-  bulario: "bg-blue-500/10 text-blue-600 dark:text-blue-400",
-  fullProtocol: "bg-violet-500/10 text-violet-600 dark:text-violet-400",
+  medication: "bg-primary/10 text-primary",
+  prescription: "bg-primary/10 text-primary",
+  symptom: "bg-primary/10 text-primary",
+  bulario: "bg-primary/10 text-primary",
+  fullProtocol: "bg-primary/10 text-primary",
   emergency: "bg-destructive/10 text-destructive",
-  calculator: "bg-teal-500/10 text-teal-600 dark:text-teal-400",
-  cid: "bg-pink-500/10 text-pink-600 dark:text-pink-400",
-  labValue: "bg-cyan-500/10 text-cyan-600 dark:text-cyan-400",
+  calculator: "bg-primary/10 text-primary",
+  cid: "bg-primary/10 text-primary",
+  labValue: "bg-primary/10 text-primary",
 };
 
 export const typeLabels: Record<string, string> = {

@@ -4,11 +4,11 @@ import { Clock, ChevronRight, FileText, Pill, ClipboardList, BookOpen, Zap, Calc
 
 const typeColors: Record<string, string> = {
   protocol: "bg-primary/10 text-primary",
-  prescription: "bg-amber-500/10 text-amber-600 dark:text-amber-400",
-  medication: "bg-emerald-500/10 text-emerald-600 dark:text-emerald-400",
-  fullProtocol: "bg-violet-500/10 text-violet-600 dark:text-violet-400",
+  prescription: "bg-destructive/10 text-destructive dark:text-destructive",
+  medication: "bg-primary/10 text-primary dark:text-primary",
+  fullProtocol: "bg-primary/10 text-primary dark:text-primary",
   emergency: "bg-destructive/10 text-destructive",
-  calculator: "bg-teal-500/10 text-teal-600 dark:text-teal-400",
+  calculator: "bg-primary/10 text-primary dark:text-primary",
 };
 
 const getIcon = (type: string) => {

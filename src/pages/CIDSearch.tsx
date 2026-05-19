@@ -89,7 +89,7 @@ function CIDItem({ entry, copied, onCopy }: { entry: CIDEntry; copied: string | 
           <Badge variant="outline" className="font-mono text-xs shrink-0">{entry.code}</Badge>
           <span className="text-xs">{entry.description}</span>
         </div>
-        {copied === entry.code ? <Check size={14} className="text-green-500" /> : <Copy size={14} className="text-muted-foreground" />}
+        {copied === entry.code ? <Check size={14} className="text-primary" /> : <Copy size={14} className="text-muted-foreground" />}
       </CardContent>
     </Card>
   );

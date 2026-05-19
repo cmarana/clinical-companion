@@ -58,7 +58,7 @@ export function GuidelinesPanel({
             Fontes e diretrizes oficiais
           </h3>
           {recentCount > 0 && (
-            <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+            <span className="inline-flex items-center gap-1 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-primary/15 text-primary dark:text-primary">
               <Sparkles size={9} />
               {recentCount} {recentCount === 1 ? "atualizada" : "atualizadas"}
             </span>
@@ -77,7 +77,7 @@ export function GuidelinesPanel({
               key={`${g.society}-${g.year}-${i}`}
               className={cn(
                 "p-3 transition-colors",
-                isRecent && "bg-emerald-500/5 border-l-2 border-l-emerald-500/40",
+                isRecent && "bg-primary/5 border-l-2 border-l-primary/40",
               )}
             >
               <div className="flex items-start gap-2">
@@ -90,14 +90,14 @@ export function GuidelinesPanel({
                       className={cn(
                         "text-[10px] font-medium",
                         isRecent
-                          ? "text-emerald-600 dark:text-emerald-400 font-bold"
+                          ? "text-primary dark:text-primary font-bold"
                           : "text-muted-foreground",
                       )}
                     >
                       {g.year}
                     </span>
                     {isRecent && (
-                      <span className="inline-flex items-center gap-0.5 text-[9px] font-bold px-1.5 py-0.5 rounded bg-emerald-500/15 text-emerald-600 dark:text-emerald-400">
+                      <span className="inline-flex items-center gap-0.5 text-[9px] font-bold px-1.5 py-0.5 rounded bg-primary/15 text-primary dark:text-primary">
                         <Sparkles size={8} />
                         ATUALIZADO
                       </span>
@@ -106,10 +106,10 @@ export function GuidelinesPanel({
                       <span
                         className={cn(
                           "inline-flex items-center gap-1 text-[10px] font-bold px-1.5 py-0.5 rounded",
-                          g.class === "I" && "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400",
-                          g.class === "IIa" && "bg-sky-500/15 text-sky-600 dark:text-sky-400",
-                          g.class === "IIb" && "bg-amber-500/15 text-amber-600 dark:text-amber-400",
-                          g.class === "III" && "bg-red-500/15 text-red-600 dark:text-red-400",
+                          g.class === "I" && "bg-primary/15 text-primary dark:text-primary",
+                          g.class === "IIa" && "bg-primary/15 text-primary dark:text-primary",
+                          g.class === "IIb" && "bg-destructive/15 text-destructive dark:text-destructive",
+                          g.class === "III" && "bg-destructive/15 text-destructive dark:text-destructive",
                         )}
                       >
                         <ShieldCheck size={10} />

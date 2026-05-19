@@ -44,9 +44,9 @@ interface ComparisonResult {
 }
 
 const sourceConfig = {
-  sus: { icon: Building2, label: "SUS / Min. Saúde", color: "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20", badge: "bg-green-500/15 text-green-700 dark:text-green-400" },
-  brazilian_society: { icon: Stethoscope, label: "Sociedade Brasileira", color: "bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20", badge: "bg-blue-500/15 text-blue-700 dark:text-blue-400" },
-  international: { icon: Globe, label: "Guideline Internacional", color: "bg-purple-500/10 text-purple-700 dark:text-purple-400 border-purple-500/20", badge: "bg-purple-500/15 text-purple-700 dark:text-purple-400" },
+  sus: { icon: Building2, label: "SUS / Min. Saúde", color: "bg-primary/10 text-primary dark:text-primary border-primary/20", badge: "bg-primary/15 text-primary dark:text-primary" },
+  brazilian_society: { icon: Stethoscope, label: "Sociedade Brasileira", color: "bg-primary/10 text-primary dark:text-primary border-primary/20", badge: "bg-primary/15 text-primary dark:text-primary" },
+  international: { icon: Globe, label: "Guideline Internacional", color: "bg-primary/10 text-primary dark:text-primary border-primary/20", badge: "bg-primary/15 text-primary dark:text-primary" },
 };
 
 function SourceCard({ source }: { source: Source }) {
@@ -418,10 +418,10 @@ export default function ConductComparator() {
 
               {/* Key differences */}
               {result.key_differences?.length > 0 && (
-                <Card className="border-amber-500/20 bg-amber-500/5">
+                <Card className="border-destructive/20 bg-destructive/5">
                   <CardHeader className="pb-2">
                     <CardTitle className="text-sm flex items-center gap-2">
-                      <BookOpen size={16} className="text-amber-600 dark:text-amber-400" />
+                      <BookOpen size={16} className="text-destructive dark:text-destructive" />
                       Principais Diferenças entre as Fontes
                     </CardTitle>
                   </CardHeader>
@@ -429,7 +429,7 @@ export default function ConductComparator() {
                     <ul className="space-y-2">
                       {result.key_differences.map((d, i) => (
                         <li key={i} className="flex gap-2 text-sm">
-                          <span className="text-amber-600 dark:text-amber-400 font-bold shrink-0">{i + 1}.</span>
+                          <span className="text-destructive dark:text-destructive font-bold shrink-0">{i + 1}.</span>
                           <span className="text-muted-foreground">{d}</span>
                         </li>
                       ))}

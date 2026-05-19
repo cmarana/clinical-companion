@@ -237,8 +237,8 @@ export default function StudyDashboard() {
       <div className="px-4 pt-3 max-w-lg mx-auto space-y-4">
         {/* Streak & Weekly Goal */}
         <div className="grid grid-cols-2 gap-3">
-          <Card className="p-4 flex flex-col items-center gap-1 bg-gradient-to-br from-orange-500/10 to-red-500/10 border-orange-500/20">
-            <Flame className="text-orange-500" size={28} />
+          <Card className="p-4 flex flex-col items-center gap-1 bg-gradient-to-br from-destructive/10 to-destructive/10 border-destructive/20">
+            <Flame className="text-destructive" size={28} />
             <span className="text-2xl font-bold text-foreground">{streak.current}</span>
             <span className="text-[11px] text-muted-foreground font-medium">Streak (dias)</span>
             <span className="text-[10px] text-muted-foreground">Recorde: {streak.best}</span>
@@ -290,9 +290,9 @@ export default function StudyDashboard() {
         <div className="grid grid-cols-4 gap-2">
           {[
             { icon: Brain, label: "Flashcards", value: stats.total, color: "text-primary" },
-            { icon: Trophy, label: "Dominados", value: stats.mastered, color: "text-green-500" },
-            { icon: Zap, label: "Revisão", value: stats.review, color: "text-yellow-500" },
-            { icon: GraduationCap, label: "Questões", value: quizStats.total, color: "text-blue-500" },
+            { icon: Trophy, label: "Dominados", value: stats.mastered, color: "text-primary" },
+            { icon: Zap, label: "Revisão", value: stats.review, color: "text-destructive" },
+            { icon: GraduationCap, label: "Questões", value: quizStats.total, color: "text-primary" },
           ].map(({ icon: Icon, label, value, color }) => (
             <Card key={label} className="p-3 flex flex-col items-center gap-1">
               <Icon size={18} className={color} />
@@ -379,28 +379,28 @@ export default function StudyDashboard() {
         {/* Retenção estimada + Leech */}
         <Card className="p-4">
           <h3 className="font-heading font-semibold text-sm mb-3 flex items-center gap-2">
-            <Brain size={16} className="text-emerald-500" /> Saúde da Memória
+            <Brain size={16} className="text-primary" /> Saúde da Memória
           </h3>
           <div className="space-y-3">
             <div>
               <div className="flex items-center justify-between mb-1.5">
                 <span className="text-xs font-medium">Retenção estimada</span>
-                <span className="text-xs font-mono font-bold text-emerald-500">{Math.round(retention * 100)}%</span>
+                <span className="text-xs font-mono font-bold text-primary">{Math.round(retention * 100)}%</span>
               </div>
               <div className="h-2 bg-muted rounded-full overflow-hidden">
-                <div className="h-full bg-gradient-to-r from-emerald-500 to-emerald-400 rounded-full transition-all" style={{ width: `${retention * 100}%` }} />
+                <div className="h-full bg-gradient-to-r from-primary to-primary rounded-full transition-all" style={{ width: `${retention * 100}%` }} />
               </div>
               <p className="text-[10px] text-muted-foreground mt-1">Curva de Ebbinghaus aplicada ao seu progresso.</p>
             </div>
             <div className="grid grid-cols-2 gap-2">
               <div className="rounded-xl bg-muted/40 p-2.5">
                 <p className="text-[10px] text-muted-foreground">Cards travados</p>
-                <p className="text-lg font-bold text-red-500">{leechCount}</p>
+                <p className="text-lg font-bold text-destructive">{leechCount}</p>
                 <p className="text-[9px] text-muted-foreground">≥ 4 lapsos consecutivos</p>
               </div>
               <div className="rounded-xl bg-muted/40 p-2.5">
                 <p className="text-[10px] text-muted-foreground">Total de lapsos</p>
-                <p className="text-lg font-bold text-orange-500">{stats.lapses ?? 0}</p>
+                <p className="text-lg font-bold text-destructive">{stats.lapses ?? 0}</p>
                 <p className="text-[9px] text-muted-foreground">Erros após graduação</p>
               </div>
             </div>
@@ -410,7 +410,7 @@ export default function StudyDashboard() {
         {/* Specialty Ranking */}
         <Card className="p-4">
           <h3 className="font-heading font-semibold text-sm mb-3 flex items-center gap-2">
-            <Star size={16} className="text-yellow-500" /> Ranking por Especialidade
+            <Star size={16} className="text-destructive" /> Ranking por Especialidade
           </h3>
           <div className="space-y-2.5">
             {categories.slice(0, 10).map((c, i) => (
@@ -419,9 +419,9 @@ export default function StudyDashboard() {
                   <div className="flex items-center gap-2">
                     <span className={cn(
                       "w-5 h-5 rounded-full flex items-center justify-center text-[10px] font-bold",
-                      i === 0 ? "bg-yellow-500/20 text-yellow-600" :
+                      i === 0 ? "bg-destructive/20 text-destructive" :
                       i === 1 ? "bg-gray-300/30 text-gray-500" :
-                      i === 2 ? "bg-orange-400/20 text-orange-500" :
+                      i === 2 ? "bg-destructive/20 text-destructive" :
                       "bg-muted text-muted-foreground"
                     )}>
                       {i + 1}
@@ -445,7 +445,7 @@ export default function StudyDashboard() {
         <Card className="p-4">
           <div className="flex items-center justify-between mb-3">
             <h3 className="font-heading font-semibold text-sm flex items-center gap-2">
-              <Award size={16} className="text-amber-500" /> Conquistas
+              <Award size={16} className="text-destructive" /> Conquistas
             </h3>
             <Badge variant="secondary" className="text-[10px]">
               {(() => {
@@ -485,7 +485,7 @@ export default function StudyDashboard() {
                       key={a.id}
                       className={cn(
                         "flex flex-col items-center gap-1 rounded-xl p-2.5 text-center transition-all",
-                        isUnlocked ? "bg-amber-500/10" : "bg-muted/40 opacity-50"
+                        isUnlocked ? "bg-destructive/10" : "bg-muted/40 opacity-50"
                       )}
                     >
                       <span className="text-xl">{isUnlocked ? a.icon : "🔒"}</span>

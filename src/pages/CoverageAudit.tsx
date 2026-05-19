@@ -39,9 +39,9 @@ import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
 const STATUS_TONE: Record<CoverageStatus, string> = {
-  ok: "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/30",
-  outdated: "bg-amber-500/10 text-amber-700 dark:text-amber-300 border-amber-500/30",
-  incomplete: "bg-orange-500/10 text-orange-700 dark:text-orange-300 border-orange-500/30",
+  ok: "bg-primary/10 text-primary dark:text-primary border-primary/30",
+  outdated: "bg-destructive/10 text-destructive dark:text-destructive border-destructive/30",
+  incomplete: "bg-destructive/10 text-destructive dark:text-destructive border-destructive/30",
   missing: "bg-destructive/10 text-destructive border-destructive/30",
 };
 
@@ -191,9 +191,9 @@ export default function CoverageAudit() {
                   </div>
                   <div className="grid grid-cols-2 gap-1 text-xs text-muted-foreground">
                     <div>Total: <span className="text-foreground font-medium">{sm.total}</span></div>
-                    <div>OK: <span className="text-emerald-600 font-medium">{sm.ok}</span></div>
-                    <div>Desat.: <span className="text-amber-600 font-medium">{sm.outdated}</span></div>
-                    <div>Incomp.: <span className="text-orange-600 font-medium">{sm.incomplete}</span></div>
+                    <div>OK: <span className="text-primary font-medium">{sm.ok}</span></div>
+                    <div>Desat.: <span className="text-destructive font-medium">{sm.outdated}</span></div>
+                    <div>Incomp.: <span className="text-destructive font-medium">{sm.incomplete}</span></div>
                     <div className="col-span-2">Faltantes: <span className="text-destructive font-medium">{sm.missing}</span></div>
                   </div>
                 </div>
@@ -347,9 +347,9 @@ function SummaryCard({
 }) {
   const toneCls = {
     neutral: "text-foreground",
-    ok: "text-emerald-600",
-    warn: "text-amber-600",
-    orange: "text-orange-600",
+    ok: "text-primary",
+    warn: "text-destructive",
+    orange: "text-destructive",
     err: "text-destructive",
   }[tone];
   return (

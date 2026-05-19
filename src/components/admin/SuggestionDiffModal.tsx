@@ -46,8 +46,8 @@ interface Props {
 
 const IMPACT_STYLES: Record<string, string> = {
   low: "bg-muted text-muted-foreground",
-  medium: "bg-amber-500/15 text-amber-700 dark:text-amber-300",
-  high: "bg-orange-500/15 text-orange-700 dark:text-orange-300",
+  medium: "bg-destructive/15 text-destructive dark:text-destructive",
+  high: "bg-destructive/15 text-destructive dark:text-destructive",
   critical: "bg-destructive/15 text-destructive",
 };
 

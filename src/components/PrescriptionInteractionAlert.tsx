@@ -34,7 +34,7 @@ export default function PrescriptionInteractionAlert({ drugNames }: Props) {
           <p className="text-[10px] text-muted-foreground mt-0.5">
             {graveCount > 0 && <span className="text-destructive font-semibold">{graveCount} grave(s)</span>}
             {graveCount > 0 && moderadoCount > 0 && " • "}
-            {moderadoCount > 0 && <span className="text-amber-600 dark:text-amber-400 font-semibold">{moderadoCount} moderada(s)</span>}
+            {moderadoCount > 0 && <span className="text-destructive dark:text-destructive font-semibold">{moderadoCount} moderada(s)</span>}
           </p>
         </div>
       </div>
@@ -64,7 +64,7 @@ function InteractionRow({ interaction }: { interaction: DetectedInteraction }) {
     <div className={`p-2.5 rounded-xl transition-colors ${
       isGrave
         ? "bg-destructive/10 border border-destructive/20"
-        : "bg-amber-500/10 border border-amber-500/20"
+        : "bg-destructive/10 border border-destructive/20"
     }`}>
       <div className="flex items-start gap-2">
         <Badge

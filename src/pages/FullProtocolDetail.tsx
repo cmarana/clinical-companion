@@ -224,10 +224,10 @@ export default function FullProtocolDetail() {
             {evidence && (
               <span className={cn(
                 "inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full",
-                evidence.class === "I" && "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400",
-                evidence.class === "IIa" && "bg-sky-500/15 text-sky-600 dark:text-sky-400",
-                evidence.class === "IIb" && "bg-amber-500/15 text-amber-600 dark:text-amber-400",
-                evidence.class === "III" && "bg-red-500/15 text-red-600 dark:text-red-400",
+                evidence.class === "I" && "bg-primary/15 text-primary dark:text-primary",
+                evidence.class === "IIa" && "bg-primary/15 text-primary dark:text-primary",
+                evidence.class === "IIb" && "bg-destructive/15 text-destructive dark:text-destructive",
+                evidence.class === "III" && "bg-destructive/15 text-destructive dark:text-destructive",
               )}>
                 <ShieldCheck size={12} />
                 Classe {evidence.class} · Nível {evidence.level}
@@ -238,8 +238,8 @@ export default function FullProtocolDetail() {
                 className={cn(
                   "inline-flex items-center gap-1 text-[10px] font-bold px-2 py-0.5 rounded-full ring-1",
                   protocol.lastReviewed.startsWith("2026")
-                    ? "bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 ring-emerald-500/30"
-                    : "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 ring-emerald-500/20",
+                    ? "bg-primary/15 text-primary dark:text-primary ring-primary/30"
+                    : "bg-primary/10 text-primary dark:text-primary ring-primary/20",
                 )}
                 title="Revisão editorial PULSO com diretrizes 2025/2026"
               >
@@ -277,7 +277,7 @@ export default function FullProtocolDetail() {
               {hasCalcs && (
                 <TabsTrigger
                   value="calculadoras"
-                  className="shrink-0 inline-flex items-center gap-1.5 text-[11px] tracking-tight px-3 py-1.5 rounded-full font-heading font-medium text-amber-700 dark:text-amber-400 bg-amber-500/8 ring-1 ring-amber-500/15 hover:bg-amber-500/12 transition-all duration-200 data-[state=active]:bg-amber-500 data-[state=active]:text-white data-[state=active]:ring-transparent data-[state=active]:shadow-[0_2px_8px_-2px_hsl(38_92%_50%/0.45)]"
+                  className="shrink-0 inline-flex items-center gap-1.5 text-[11px] tracking-tight px-3 py-1.5 rounded-full font-heading font-medium text-destructive dark:text-destructive bg-destructive/8 ring-1 ring-destructive/15 hover:bg-destructive/12 transition-all duration-200 data-[state=active]:bg-destructive data-[state=active]:text-white data-[state=active]:ring-transparent data-[state=active]:shadow-[0_2px_8px_-2px_hsl(38_92%_50%/0.45)]"
                 >
                   <Calculator size={11} strokeWidth={2.25} /> Calculadoras
                 </TabsTrigger>

@@ -108,7 +108,7 @@ function FavoritesQuickAccess() {
   return (
     <SidebarGroup>
       <SidebarGroupLabel>
-        <Star className="h-3 w-3 mr-1 text-amber-500" />
+        <Star className="h-3 w-3 mr-1 text-primary" />
         Favoritos Rápidos
       </SidebarGroupLabel>
       <SidebarGroupContent>
@@ -128,7 +128,7 @@ function FavoritesQuickAccess() {
                   tooltip={fav.title}
                   className="text-xs"
                 >
-                  <Star className="h-3 w-3 text-amber-500 fill-amber-500" />
+                  <Star className="h-3 w-3 text-primary fill-primary" />
                   <span className="truncate">{fav.title}</span>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -185,7 +185,7 @@ export function AppSidebar() {
           {isAdmin && (
             <SidebarGroup>
               <SidebarGroupLabel>
-                <Shield className="h-3 w-3 mr-1 text-red-500" />
+                <Shield className="h-3 w-3 mr-1 text-destructive" />
                 Admin
               </SidebarGroupLabel>
               <SidebarGroupContent>
@@ -196,7 +196,7 @@ export function AppSidebar() {
                       onClick={() => navigate("/admin")}
                       tooltip="Painel Admin"
                     >
-                      <Shield className="h-4 w-4 text-red-500" />
+                      <Shield className="h-4 w-4 text-destructive" />
                       <span>Painel Admin</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -206,7 +206,7 @@ export function AppSidebar() {
                       onClick={() => navigate("/admin/medical-knowledge")}
                       tooltip="Base de Conhecimento"
                     >
-                      <Database className="h-4 w-4 text-red-500" />
+                      <Database className="h-4 w-4 text-destructive" />
                       <span>Base Médica (RAG)</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>
@@ -216,7 +216,7 @@ export function AppSidebar() {
                       onClick={() => navigate("/admin/launch-signups")}
                       tooltip="Cadastros do pré-lançamento"
                     >
-                      <Shield className="h-4 w-4 text-red-500" />
+                      <Shield className="h-4 w-4 text-destructive" />
                       <span>Cadastros (Lançamento)</span>
                     </SidebarMenuButton>
                   </SidebarMenuItem>

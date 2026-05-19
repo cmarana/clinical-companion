@@ -36,7 +36,7 @@ export const OFFLINE_MODULES: OfflineModule[] = [
     label: "Cardiologia",
     desc: "Protocolos de cardiologia completos",
     icon: "Heart",
-    color: "text-red-500",
+    color: "text-destructive",
     sizeMb: 1.8,
     loader: () => Promise.all([
       import("@/data/fullProtocols/cardiology"),
@@ -58,7 +58,7 @@ export const OFFLINE_MODULES: OfflineModule[] = [
     label: "Neurologia",
     desc: "Protocolos neurológicos completos",
     icon: "Brain",
-    color: "text-purple-500",
+    color: "text-primary",
     sizeMb: 1.5,
     loader: () => Promise.all([
       import("@/data/fullProtocols/neurology"),
@@ -78,7 +78,7 @@ export const OFFLINE_MODULES: OfflineModule[] = [
     label: "Pneumologia",
     desc: "Protocolos respiratórios",
     icon: "Wind",
-    color: "text-sky-500",
+    color: "text-primary",
     sizeMb: 1.2,
     loader: () => Promise.all([
       import("@/data/fullProtocols/respiratory"),
@@ -97,7 +97,7 @@ export const OFFLINE_MODULES: OfflineModule[] = [
     label: "Gastroenterologia",
     desc: "Protocolos gastro completos",
     icon: "Utensils",
-    color: "text-amber-600",
+    color: "text-primary",
     sizeMb: 1.0,
     loader: () => Promise.all([
       import("@/data/fullProtocols/gastroenterology"),
@@ -113,7 +113,7 @@ export const OFFLINE_MODULES: OfflineModule[] = [
     label: "Obstetrícia",
     desc: "Protocolos obstétricos e ginecologia",
     icon: "Baby",
-    color: "text-pink-500",
+    color: "text-primary",
     sizeMb: 1.4,
     loader: () => Promise.all([
       import("@/data/fullProtocols/obstetrics"),
@@ -138,7 +138,7 @@ export const OFFLINE_MODULES: OfflineModule[] = [
     label: "Pediatria",
     desc: "Protocolos pediátricos e neonatais",
     icon: "Baby",
-    color: "text-teal-500",
+    color: "text-primary",
     sizeMb: 1.3,
     loader: () => Promise.all([
       import("@/data/fullProtocols/pediatric"),
@@ -160,7 +160,7 @@ export const OFFLINE_MODULES: OfflineModule[] = [
     label: "Infectologia",
     desc: "Protocolos de doenças infecciosas",
     icon: "Bug",
-    color: "text-green-600",
+    color: "text-primary",
     sizeMb: 1.2,
     loader: () => Promise.all([
       import("@/data/fullProtocols/infectious"),
@@ -178,7 +178,7 @@ export const OFFLINE_MODULES: OfflineModule[] = [
     label: "Medicamentos",
     desc: "1500+ fármacos com posologia completa",
     icon: "Pill",
-    color: "text-emerald-500",
+    color: "text-primary",
     sizeMb: 3.0,
     loader: () => Promise.all([
       import("@/data/medications"),
@@ -214,7 +214,7 @@ export const OFFLINE_MODULES: OfflineModule[] = [
     label: "Prescrições",
     desc: "1200+ modelos prontos de prescrições",
     icon: "ClipboardList",
-    color: "text-amber-500",
+    color: "text-primary",
     sizeMb: 1.5,
     loader: () => Promise.all([
       import("@/data/prescriptions/index"),
@@ -227,7 +227,7 @@ export const OFFLINE_MODULES: OfflineModule[] = [
     label: "Calculadoras",
     desc: "53 scores e calculadoras médicas",
     icon: "Calculator",
-    color: "text-blue-500",
+    color: "text-primary",
     sizeMb: 0.8,
     loader: () => Promise.all([
       import("@/pages/Calculators"),
@@ -240,7 +240,7 @@ export const OFFLINE_MODULES: OfflineModule[] = [
     label: "Interações Medicamentosas",
     desc: "700+ pares de interações de alto risco",
     icon: "AlertTriangle",
-    color: "text-orange-500",
+    color: "text-destructive",
     sizeMb: 0.6,
     loader: () => Promise.all([
       import("@/data/drugInteractionPairs"),
@@ -253,7 +253,7 @@ export const OFFLINE_MODULES: OfflineModule[] = [
     label: "Sepse",
     desc: "Protocolos completos de sepse e choque",
     icon: "Thermometer",
-    color: "text-red-600",
+    color: "text-destructive",
     sizeMb: 1.0,
     loader: () => Promise.all([
       import("@/data/fullProtocols/sepsis"),
@@ -271,7 +271,7 @@ export const OFFLINE_MODULES: OfflineModule[] = [
     label: "Trauma",
     desc: "Protocolos de trauma (ATLS)",
     icon: "Siren",
-    color: "text-orange-600",
+    color: "text-destructive",
     sizeMb: 1.0,
     loader: () => Promise.all([
       import("@/data/fullProtocols/trauma"),
