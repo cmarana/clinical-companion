@@ -16,6 +16,8 @@ type Props = {
   alt?: string;
   /** Prioridade de carregamento. */
   priority?: boolean;
+  /** Aplica animação contínua de batida cardíaca. */
+  animate?: boolean;
 };
 
 /**
@@ -28,6 +30,7 @@ export function PulsoLogo({
   forceVariant,
   alt = "PULSO",
   priority = false,
+  animate = false,
 }: Props) {
   const common = {
     width: size,
@@ -39,15 +42,15 @@ export function PulsoLogo({
     loading: priority ? ("eager" as const) : ("lazy" as const),
   };
 
-  // Filtro para converter o logo azul-escuro em branco puro
   const whiteFilter = { filter: "brightness(0) invert(1)" };
+  const animClass = animate ? "pulso-animate" : "";
 
   if (forceVariant === "dark") {
     return (
       <span className={`inline-flex shrink-0 ${className}`} style={{ width: size, height: size }}>
         <img
           {...common}
-          className="block w-full h-full object-contain bg-transparent"
+          className={`block w-full h-full object-contain bg-transparent ${animClass}`}
           style={whiteFilter}
         />
       </span>
@@ -56,21 +59,20 @@ export function PulsoLogo({
   if (forceVariant === "light") {
     return (
       <span className={`inline-flex shrink-0 ${className}`} style={{ width: size, height: size }}>
-        <img {...common} className="block w-full h-full object-contain bg-transparent" />
+        <img {...common} className={`block w-full h-full object-contain bg-transparent ${animClass}`} />
       </span>
     );
   }
 
-  // Auto: troca por tema usando classe `dark` no <html>
   return (
     <span className={`inline-flex shrink-0 ${className}`} style={{ width: size, height: size }}>
       <img
         {...common}
-        className="block w-full h-full object-contain bg-transparent dark:hidden"
+        className={`block w-full h-full object-contain bg-transparent dark:hidden ${animClass}`}
       />
       <img
         {...common}
-        className="hidden dark:block w-full h-full object-contain bg-transparent"
+        className={`hidden dark:block w-full h-full object-contain bg-transparent ${animClass}`}
         style={whiteFilter}
       />
     </span>
