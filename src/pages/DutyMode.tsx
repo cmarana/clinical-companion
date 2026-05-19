@@ -170,7 +170,8 @@ function DutyModeContent() {
                   <button
                     key={s.path}
                     onClick={() => navigate(s.path)}
-                    className={`flex items-center justify-center px-2 py-3 rounded-2xl text-[11px] font-heading font-semibold transition-all active:scale-95 ${s.color}`}
+                    className="flex items-center justify-center px-2 py-3 rounded-2xl text-[11px] font-heading font-semibold text-white ring-1 ring-white/20 transition-all active:scale-95"
+                    style={{ background: GRADIENT_DANGER }}
                   >
                     {s.label}
                   </button>
