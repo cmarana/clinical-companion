@@ -17,6 +17,8 @@ import { Badge } from "@/components/ui/badge";
 import { useTheme } from "@/contexts/ThemeContext";
 import { hapticLight } from "@/lib/haptics";
 import MyProgressSection from "@/components/MyProgressSection";
+import TwoFactorSettings from "@/components/TwoFactorSettings";
+import { ShieldCheck as ShieldCheck2FA } from "lucide-react";
 
 const SPECIALTIES_BY_AREA: Record<string, string[]> = {
   "Medicina": [
