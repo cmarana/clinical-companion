@@ -10,6 +10,7 @@ import {
   NEW_EMERGENCY_CATEGORY_IDS,
   UPDATED_EMERGENCY_PROTOCOL_IDS,
 } from "@/data/emergency";
+import { GRADIENT_DANGER } from "@/lib/design-tokens";
 
 function Badge({ kind }: { kind: "new" | "updated" }) {
   const label = kind === "new" ? "Novo" : "Atualizado";
@@ -47,14 +48,14 @@ function EmergencyCategoryContent() {
           <ArrowLeft size={14} /> Todas as categorias
         </button>
 
-        <header className="duty-card p-5 space-y-2">
+        <header className="p-5 space-y-2 rounded-[18px] text-white shadow-md ring-1 ring-white/15" style={{ background: GRADIENT_DANGER }}>
           <div className="flex items-center gap-2 flex-wrap">
-            <h1 className="font-heading font-bold text-base tracking-tight">
+            <h1 className="font-heading font-bold text-base tracking-tight text-white">
               {category.title}
             </h1>
             {isNewCategory && <Badge kind="new" />}
           </div>
-          <p className="text-xs text-muted-foreground">
+          <p className="text-xs text-white/82">
             {category.protocols.length} protocolo{category.protocols.length === 1 ? "" : "s"} · toque em um protocolo para expandir suas seções ou abrir em tela cheia.
           </p>
         </header>
@@ -70,20 +71,20 @@ function EmergencyCategoryContent() {
             const open = expanded[p.id];
 
             return (
-              <article key={p.id} className="duty-card overflow-hidden">
+              <article key={p.id} className="overflow-hidden rounded-[18px] text-white shadow-md ring-1 ring-white/15" style={{ background: GRADIENT_DANGER }}>
                 <button
                   onClick={() => toggle(p.id)}
                   className="w-full flex items-center gap-3 p-4 text-left active:scale-[0.99] transition"
                 >
                   <div className="flex-1 min-w-0 space-y-1">
                     <div className="flex items-center gap-2 flex-wrap">
-                      <h2 className="font-heading font-semibold text-sm">{p.title}</h2>
+                      <h2 className="font-heading font-semibold text-sm text-white">{p.title}</h2>
                       {(isUpdated || isNewCategory) && (
                         <Badge kind={isUpdated ? "updated" : "new"} />
                       )}
                     </div>
                     {(meta.version || meta.lastReviewed) && (
-                      <div className="flex items-center gap-3 text-[10px] text-muted-foreground font-medium">
+                          <div className="flex items-center gap-3 text-[10px] text-white/76 font-medium">
                         {meta.version && (
                           <span className="inline-flex items-center gap-1">
                             <Tag size={10} /> {meta.version}
