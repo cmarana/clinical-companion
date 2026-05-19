@@ -946,7 +946,7 @@ export default function Calculators() {
             placeholder="Buscar calculadora..."
             value={searchTerm}
             onChange={(e) => { setSearchTerm(e.target.value); closeCalculator(); }}
-            className="pl-9 rounded-2xl bg-card border-0 shadow-sm"
+            className="pl-9 rounded-2xl bg-muted/60 dark:bg-muted/40 border-0 shadow-inner focus:ring-2 focus:ring-primary/30"
           />
         </div>
         <p className="text-xs text-muted-foreground text-center">{filtered.length} de {calculators.length} calculadoras</p>
