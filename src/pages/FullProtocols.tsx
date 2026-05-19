@@ -1,6 +1,7 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import {
+import { GRADIENT_DEEP_BLUE } from "@/lib/design-tokens";
   ChevronRight, Search, Star, TrendingUp, ArrowDownAZ, Filter,
   Lock, Crown, X, Sparkles, BookOpen, CalendarDays, CalendarCheck,
 } from "lucide-react";
@@ -422,7 +423,7 @@ export default function FullProtocols() {
                       <div
                         onClick={() => handleCard(p)}
                         className="cursor-pointer relative overflow-hidden rounded-2xl text-white shadow-md ring-1 ring-white/15 hover:shadow-lg active:scale-[0.98] transition-all group"
-                        style={{ background: "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)" }}
+                        style={{ background: GRADIENT_DEEP_BLUE }}
                       >
                         <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-white/10 blur-2xl pointer-events-none" />
                         <div className="relative flex items-center justify-between px-3.5 py-3 gap-2">

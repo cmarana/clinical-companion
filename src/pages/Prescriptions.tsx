@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Search, ChevronRight, ClipboardList, Stethoscope, Zap, Building, Baby, HeartPulse, Thermometer, Pill, Target, LogOut, FlaskConical, FileText, Brain, Eye, Droplets, Scissors, Syringe, Monitor, Shield, Flame, Ribbon, Activity, Bone, Skull, Wind, UtensilsCrossed, Bug, Ear, Palette, Cross, UserRound } from "lucide-react";
 import { prescriptionCategories } from "@/data/prescriptions/index";
+import { GRADIENT_DEEP_BLUE } from "@/lib/design-tokens";
 
 const iconMap: Record<string, React.ReactNode> = {
   stethoscope: <Stethoscope size={16} className="text-primary" />,
@@ -78,7 +79,7 @@ function PrescriptionsContent() {
             <button
               onClick={() => setExpandedCat(expandedCat === cat.id ? null : cat.id)}
               className="relative overflow-hidden w-full flex items-center justify-between p-3.5 rounded-2xl text-white shadow-md ring-1 ring-white/15 active:scale-[0.98] transition-all"
-              style={{ background: "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)" }}
+              style={{ background: GRADIENT_DEEP_BLUE }}
             >
               <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-white/10 blur-2xl pointer-events-none" />
               <div className="relative flex items-center gap-2.5 min-w-0">

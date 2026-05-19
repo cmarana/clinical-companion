@@ -6,10 +6,7 @@ import TopBar from "@/components/TopBar";
 import PremiumPageGuard from "@/components/PremiumPageGuard";
 import SalaVermelha from "@/components/SalaVermelha";
 import { emergencyCategories, allEmergencyProtocols, NEW_EMERGENCY_CATEGORY_IDS } from "@/data/emergency";
-
-// Gradiente vermelho profundo padronizado (mesma paleta do card de Emergência na Home)
-const DANGER_BG =
-  "linear-gradient(135deg, hsl(0 72% 26%) 0%, hsl(0 68% 36%) 60%, hsl(0 64% 44%) 100%)";
+import { DANGER_BG } from "@/lib/design-tokens";
 
 function EcgPulse({ className = "" }: { className?: string }) {
   return (

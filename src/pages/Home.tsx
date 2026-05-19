@@ -50,39 +50,8 @@ const modes = [
 ];
 
 // Paleta única: azul Plantão dominante. Vermelho APENAS em Emergência (semântico).
-// Texto da Emergência em azul para contrastar com as demais caixas azuis.
-type ToneStyle = {
-  background: string;
-  iconBg: string;
-  iconColor: string;
-  titleColor: string;
-  subColor: string;
-  ring: string;
-  ecgColor: string;
-};
-
-const toneStyles: Record<string, ToneStyle> = {
-  // Plantão e demais — mesma tonalidade azul profundo
-  deep: {
-    background: "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)",
-    iconBg: "bg-white/18 ring-1 ring-white/30",
-    iconColor: "text-white",
-    titleColor: "text-white",
-    subColor: "text-white/85",
-    ring: "ring-1 ring-white/15",
-    ecgColor: "text-white",
-  },
-  // Emergência — vermelho semântico mais profundo (gradiente fechado, sem fundo branco no ícone)
-  danger: {
-    background: "linear-gradient(135deg, hsl(0 72% 26%) 0%, hsl(0 68% 36%) 60%, hsl(0 64% 44%) 100%)",
-    iconBg: "bg-white/15 ring-1 ring-white/25 backdrop-blur-sm",
-    iconColor: "text-white",
-    titleColor: "text-white",
-    subColor: "text-white/85",
-    ring: "ring-1 ring-white/15",
-    ecgColor: "text-white",
-  },
-};
+// Tokens centralizados em src/lib/design-tokens.ts
+import { toneStyles, GRADIENT_BRIGHT_BLUE, GRADIENT_DEEP_BLUE_SOFT } from "@/lib/design-tokens";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -203,10 +172,7 @@ export default function Home() {
           whileTap={{ scale: 0.985 }}
           onClick={() => go("/duty", "Modo Plantão")}
           className="relative w-full overflow-hidden rounded-3xl text-left text-white shadow-xl shadow-primary/20 ring-1 ring-white/10"
-          style={{
-            background:
-              "linear-gradient(135deg, hsl(212 90% 28%) 0%, hsl(212 88% 38%) 50%, hsl(212 86% 48%) 100%)",
-          }}
+          style={{ background: GRADIENT_BRIGHT_BLUE }}
         >
           {/* decorative ECG line */}
           <svg
@@ -280,10 +246,7 @@ export default function Home() {
           whileTap={{ scale: 0.99 }}
           onClick={() => go("/clinical-ai", "Dra. Clara")}
           className="relative w-full overflow-hidden rounded-2xl text-left text-white shadow-md ring-1 ring-white/10"
-          style={{
-            background:
-              "linear-gradient(135deg, hsl(212 60% 18%) 0%, hsl(212 70% 26%) 100%)",
-          }}
+          style={{ background: GRADIENT_DEEP_BLUE_SOFT }}
         >
           <div className="absolute -bottom-10 -right-6 w-32 h-32 rounded-full bg-white/10 blur-2xl" />
           <div className="relative px-4 py-3 flex items-center gap-3">
