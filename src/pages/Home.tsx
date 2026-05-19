@@ -5,6 +5,8 @@ import {
   ArrowRight, ChevronRight, ScanLine, MessageSquareText, FlaskConical,
 } from "lucide-react";
 import { PulsoLogo } from "@/components/PulsoLogo";
+import { PulsoLogoECG } from "@/components/PulsoLogoECG";
+import { GRADIENT_DEEP_BLUE } from "@/lib/design-tokens";
 import { useState, useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useTheme } from "@/contexts/ThemeContext";
