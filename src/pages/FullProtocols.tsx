@@ -311,7 +311,7 @@ export default function FullProtocols() {
                               "px-2 py-1 rounded-lg text-[10px] font-heading font-semibold transition-all ring-1",
                               active
                                 ? "bg-primary text-primary-foreground ring-primary"
-                                : "bg-card text-muted-foreground ring-border hover:text-foreground"
+                                : "bg-muted/60 text-muted-foreground ring-primary/15 hover:text-foreground hover:ring-primary/30"
                             )}
                           >
                             {s}
