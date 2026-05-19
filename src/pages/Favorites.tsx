@@ -32,7 +32,7 @@ export default function Favorites() {
         {favorites.length === 0 ? (
           <div className="text-center py-16 space-y-4">
             <div className="w-16 h-16 rounded-2xl bg-warning/10 flex items-center justify-center mx-auto">
-              <Star size={28} className="text-warning/60" />
+              <Star size={28} className="text-destructive/70" />
             </div>
             <div className="space-y-1">
               <p className="font-heading font-semibold text-sm">Nenhum favorito ainda</p>
