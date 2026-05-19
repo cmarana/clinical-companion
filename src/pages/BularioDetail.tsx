@@ -10,17 +10,18 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import DrugInteractionAlert from "@/components/DrugInteractionAlert";
 import { useRecentHistory } from "@/hooks/useRecentHistory";
+import { GRADIENT_DEEP_BLUE } from "@/lib/design-tokens";
 
 function Section({ title, content }: { title: string; content?: string }) {
   if (!content) return null;
   return (
-    <Card>
+    <Card className="overflow-hidden text-white shadow-md ring-1 ring-white/15" style={{ background: GRADIENT_DEEP_BLUE }}>
       <CardHeader className="pb-2 pt-4 px-4">
-        <CardTitle className="text-sm font-heading">{title}</CardTitle>
+        <CardTitle className="text-sm font-heading text-white">{title}</CardTitle>
       </CardHeader>
       <CardContent className="px-4 pb-4">
         {content.split("\n").map((line, i) => (
-          <p key={i} className="text-sm leading-relaxed mb-1">{line}</p>
+          <p key={i} className="text-sm leading-relaxed mb-1 text-white/86">{line}</p>
         ))}
       </CardContent>
     </Card>
@@ -120,13 +121,13 @@ export default function BularioDetail() {
 
         {/* Tabbed content */}
         <Tabs defaultValue="principal" className="w-full">
-          <TabsList className="w-full grid grid-cols-3 lg:grid-cols-6 h-auto">
-            <TabsTrigger value="principal" className="text-xs py-2">Principal</TabsTrigger>
-            <TabsTrigger value="posologia" className="text-xs py-2">Posologia</TabsTrigger>
-            <TabsTrigger value="cuidados" className="text-xs py-2">Cuidados</TabsTrigger>
-            <TabsTrigger value="interacoes" className="text-xs py-2">Interações</TabsTrigger>
-            <TabsTrigger value="diluicao" className="text-xs py-2">Diluição</TabsTrigger>
-            <TabsTrigger value="referencias" className="text-xs py-2">Referências</TabsTrigger>
+          <TabsList className="w-full grid grid-cols-3 lg:grid-cols-6 h-auto bg-primary/10 border border-primary/15">
+            <TabsTrigger value="principal" className="text-xs py-2 text-primary data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Principal</TabsTrigger>
+            <TabsTrigger value="posologia" className="text-xs py-2 text-primary data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Posologia</TabsTrigger>
+            <TabsTrigger value="cuidados" className="text-xs py-2 text-primary data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Cuidados</TabsTrigger>
+            <TabsTrigger value="interacoes" className="text-xs py-2 text-primary data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Interações</TabsTrigger>
+            <TabsTrigger value="diluicao" className="text-xs py-2 text-primary data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Diluição</TabsTrigger>
+            <TabsTrigger value="referencias" className="text-xs py-2 text-primary data-[state=active]:bg-primary data-[state=active]:text-primary-foreground">Referências</TabsTrigger>
           </TabsList>
 
           <TabsContent value="principal" className="space-y-3 mt-3">
