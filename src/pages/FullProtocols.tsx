@@ -358,7 +358,7 @@ export default function FullProtocols() {
               className={cn(
                 "flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-[10px] font-heading font-semibold transition-all ring-1",
                 showFavOnly
-                  ? "bg-amber-500/15 text-amber-700 dark:text-amber-400 ring-amber-500/30"
+                  ? "bg-primary/15 text-primary ring-primary/30"
                   : "bg-card text-muted-foreground ring-border hover:text-foreground"
               )}
               title="Mostrar somente favoritos"
@@ -392,7 +392,7 @@ export default function FullProtocols() {
         <div className="flex items-center justify-between text-[10px] text-muted-foreground px-1">
           <span>
             <strong className="text-foreground">{visibleItems.length}</strong>
-            {lockedCount > 0 && <span className="text-amber-600 dark:text-amber-400"> + {lockedCount} bloqueados</span>}
+            {lockedCount > 0 && <span className="text-primary"> + {lockedCount} bloqueados</span>}
             {" "}de {filtered.length}
           </span>
           {hasActiveFilters && (
@@ -429,7 +429,7 @@ export default function FullProtocols() {
                               <p className="font-heading font-semibold text-sm truncate">{p.title}</p>
                               {patched2026Ids.has(p.id) && (
                                 <span
-                                  className="inline-flex items-center gap-0.5 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-emerald-500/15 text-emerald-600 dark:text-emerald-400 ring-1 ring-emerald-500/30 shrink-0"
+                                  className="inline-flex items-center gap-0.5 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-primary/15 text-primary ring-1 ring-primary/30 shrink-0"
                                   title="Diretrizes revisadas em 2026 pela equipe PULSO"
                                 >
                                   <CalendarCheck size={9} />
@@ -458,7 +458,7 @@ export default function FullProtocols() {
                           >
                             <Star
                               size={14}
-                              className={fav ? "fill-amber-500 text-amber-500" : "text-muted-foreground"}
+                              className={fav ? "fill-primary text-primary" : "text-muted-foreground"}
                             />
                           </button>
                           <ChevronRight size={16} className="text-muted-foreground shrink-0" />

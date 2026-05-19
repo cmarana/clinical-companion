@@ -166,9 +166,9 @@ export default function Bulario() {
                   </p>
                 </div>
                 <div className="flex items-center gap-1 shrink-0">
-                  {m.controlado && <ShieldCheck size={12} className="text-destructive" />}
+                  {m.controlado && <ShieldCheck size={12} className="text-primary" />}
                   {m.pediatria && <Baby size={12} className="text-primary" />}
-                  {m.gestacao_seguro && <Heart size={12} className="text-success" />}
+                  {m.gestacao_seguro && <Heart size={12} className="text-primary" />}
                   <ChevronRight size={14} className="text-muted-foreground ml-1" />
                 </div>
               </div>
