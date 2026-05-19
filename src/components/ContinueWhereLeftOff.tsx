@@ -1,4 +1,4 @@
-import { useMemo } from "react";
+import { useMemo, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useRecentHistory, type HistoryEntry } from "@/hooks/useRecentHistory";
 import { flashcards } from "@/data/flashcardsData";
@@ -7,6 +7,8 @@ import {
   ArrowRight, BookOpen, Pill, Brain, Clock, FileText, Zap, ChevronRight,
 } from "lucide-react";
 import { hapticLight } from "@/lib/haptics";
+import { shortenIfNeeded } from "@/lib/medical-abbreviations";
+import { ListSkeleton } from "@/components/skeletons/PulsoSkeletons";
 
 const PROTOCOL_TYPES = new Set(["protocol", "fullProtocol", "emergency"]);
 
