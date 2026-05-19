@@ -172,10 +172,7 @@ export default function Home() {
           whileTap={{ scale: 0.985 }}
           onClick={() => go("/duty", "Modo Plantão")}
           className="relative w-full overflow-hidden rounded-3xl text-left text-white shadow-xl shadow-primary/20 ring-1 ring-white/10"
-          style={{
-            background:
-              "linear-gradient(135deg, hsl(212 90% 28%) 0%, hsl(212 88% 38%) 50%, hsl(212 86% 48%) 100%)",
-          }}
+          style={{ background: GRADIENT_BRIGHT_BLUE }}
         >
           {/* decorative ECG line */}
           <svg
