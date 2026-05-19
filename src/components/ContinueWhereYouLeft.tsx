@@ -61,8 +61,8 @@ export const ContinueWhereYouLeft: React.FC<Props> = ({
 }) => {
   if (items.length === 0) {
     return (
-      <div className="mx-5 rounded-2xl border border-dashed border-neutral-200 dark:border-neutral-700 px-4 py-6 text-center">
-        <p className="text-[12.5px] text-neutral-400 dark:text-neutral-500">
+      <div className="mx-5 rounded-2xl border border-dashed border-border px-4 py-6 text-center">
+        <p className="text-[12.5px] text-muted-foreground">
           {emptyMessage}
         </p>
       </div>
@@ -85,20 +85,20 @@ const ContinueRow: React.FC<{ item: ContinueItem }> = ({ item }) => {
     <button
       type="button"
       onClick={item.onClick}
-      className="w-full flex items-center gap-3 p-3.5 rounded-2xl bg-white dark:bg-neutral-800 border border-neutral-100 dark:border-neutral-700 text-left transition-transform active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-primary-300"
+      className="w-full flex items-center gap-3 p-3.5 rounded-2xl bg-card border border-border text-left transition-transform active:scale-[0.99] focus:outline-none focus:ring-2 focus:ring-ring"
     >
-      <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-primary-50 dark:bg-primary-500/15 text-primary-500 dark:text-primary-400 flex-shrink-0">
+      <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-primary/10 dark:bg-primary/15 text-primary flex-shrink-0">
         <Icon size={17} strokeWidth={2.2} />
       </div>
 
       <div className="flex-1 min-w-0">
-        <div className="text-[10px] uppercase tracking-[0.12em] font-bold text-neutral-400 dark:text-neutral-500 mb-0.5">
+        <div className="text-[10px] uppercase tracking-[0.12em] font-bold text-muted-foreground mb-0.5">
           {item.category}
         </div>
-        <div className="font-display font-semibold text-[14px] leading-tight text-neutral-900 dark:text-neutral-50 truncate">
+        <div className="font-display font-semibold text-[14px] leading-tight text-card-foreground truncate">
           {item.title}
         </div>
-        <div className="text-[11px] mt-0.5 text-neutral-400 dark:text-neutral-500 tabular-nums">
+        <div className="text-[11px] mt-0.5 text-muted-foreground tabular-nums">
           {item.timestamp}
         </div>
       </div>
@@ -110,14 +110,14 @@ const ContinueRow: React.FC<{ item: ContinueItem }> = ({ item }) => {
             e.stopPropagation();
             item.action!.onClick();
           }}
-          className="px-3 py-1.5 rounded-full bg-primary-500 text-white text-[12px] font-semibold font-display flex-shrink-0 transition-transform active:scale-95"
+          className="px-3 py-1.5 rounded-full bg-primary text-primary-foreground text-[12px] font-semibold font-display flex-shrink-0 transition-transform active:scale-95"
         >
           {item.action.label}
         </button>
       ) : (
         <ChevronRight
           size={16}
-          className="text-neutral-400 dark:text-neutral-500 flex-shrink-0"
+          className="text-muted-foreground flex-shrink-0"
           strokeWidth={2.2}
         />
       )}
