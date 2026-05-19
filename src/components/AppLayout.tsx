@@ -17,8 +17,9 @@ import { useIdlePrefetch } from "@/hooks/useRoutePrefetch";
 const IDLE_PREFETCH_ROUTES = [
   "/home",
   "/full-protocols",
+  "/emergency",
+  "/tools",
   "/duty",
-  "/bulario",
   "/search",
   "/favorites",
 ];

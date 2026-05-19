@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Home, Search, Activity, GraduationCap } from "lucide-react";
+import { Home, Search, Activity, AlertTriangle, Wrench } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { hapticLight } from "@/lib/haptics";
 import { motion } from "framer-motion";
@@ -8,8 +8,9 @@ import { prefetchRoute } from "@/hooks/useRoutePrefetch";
 const tabs = [
   { path: "/", icon: Home, label: "Início" },
   { path: "/search", icon: Search, label: "Buscar" },
+  { path: "/emergency", icon: AlertTriangle, label: "Emergência" },
+  { path: "/tools", icon: Wrench, label: "Ferramentas" },
   { path: "/duty", icon: Activity, label: "Plantão" },
-  { path: "/study-dashboard", icon: GraduationCap, label: "Estudo" },
 ];
 
 export default function BottomNav() {
