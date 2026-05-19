@@ -44,8 +44,8 @@ const emergencyShortcuts = [
 const modes = [
   { label: "Plantão", sub: "Atendimento em tempo real", icon: Activity, path: "/duty", tone: "primary" },
   { label: "Emergência", sub: "Protocolos críticos", icon: Zap, path: "/emergency", tone: "danger" },
-  { label: "Ferramentas", sub: "Cálculos, doses e checagens", icon: Wrench, path: "/calculators", tone: "slate" },
-  { label: "Especialidades", sub: "Pediatria, obstetrícia, clínica", icon: Stethoscope, path: "/full-protocols", tone: "emerald" },
+  { label: "Ferramentas", sub: "Calculadoras, bulário, diagnóstico", icon: Wrench, path: "/tools", tone: "slate" },
+  { label: "Especialidades", sub: "Protocolos por área clínica", icon: Stethoscope, path: "/specialties", tone: "emerald" },
   { label: "Estudo", sub: "Flashcards, questões e residência", icon: GraduationCap, path: "/study-dashboard", tone: "amber" },
   { label: "Documentos", sub: "Prescrições, evoluções e alta", icon: FileText, path: "/prescriptions", tone: "violet" },
 ];
