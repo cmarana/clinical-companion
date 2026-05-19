@@ -83,17 +83,19 @@ export default function EmergencyProtocolDetail() {
           protocolTitle={protocol.title}
         />
         <Tabs defaultValue={defaultTab} className="w-full">
-          <TabsList className="w-full flex overflow-x-auto no-scrollbar h-auto gap-1 bg-transparent p-0 mb-4">
-            {orderedSections.map(s => (
-              <TabsTrigger
-                key={s.id}
-                value={s.id}
-                className="shrink-0 text-[11px] px-2.5 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground bg-secondary"
-              >
-                {s.title}
-              </TabsTrigger>
-            ))}
-          </TabsList>
+          <div className="w-full overflow-x-auto no-scrollbar mb-4">
+            <TabsList className="inline-flex h-auto gap-0.5 bg-secondary p-1 rounded-full">
+              {orderedSections.map(s => (
+                <TabsTrigger
+                  key={s.id}
+                  value={s.id}
+                  className="shrink-0 text-[11px] px-2.5 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm bg-transparent text-foreground/80 hover:text-foreground transition-colors"
+                >
+                  {s.title}
+                </TabsTrigger>
+              ))}
+            </TabsList>
+          </div>
           {orderedSections.map(s => (
             <TabsContent key={s.id} value={s.id} className="protocol-content">
               <h2 className="text-lg font-semibold mb-3 border-b border-border pb-2 font-heading">

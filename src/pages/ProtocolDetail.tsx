@@ -160,25 +160,27 @@ export default function ProtocolDetail() {
         </div>
 
         <Tabs defaultValue={visibleSections[0]?.id || ""} className="w-full">
-          <TabsList className="w-full flex overflow-x-auto no-scrollbar h-auto gap-1 bg-transparent p-0 mb-4">
-            {visibleSections.map((s) => (
-              <TabsTrigger
-                key={s.id}
-                value={s.id}
-                className="shrink-0 text-xs px-3 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground bg-secondary"
-              >
-                {s.title}
-              </TabsTrigger>
-            ))}
-            {lockedSections.map((s) => (
-              <span
-                key={s.id}
-                className="shrink-0 text-xs px-3 py-1.5 rounded-full bg-muted text-muted-foreground opacity-50 cursor-not-allowed"
-              >
-                🔒 {s.title}
-              </span>
-            ))}
-          </TabsList>
+          <div className="w-full overflow-x-auto no-scrollbar mb-4">
+            <TabsList className="inline-flex h-auto gap-0.5 bg-secondary p-1 rounded-full">
+              {visibleSections.map((s) => (
+                <TabsTrigger
+                  key={s.id}
+                  value={s.id}
+                  className="shrink-0 text-xs px-3 py-1.5 rounded-full data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:shadow-sm bg-transparent text-foreground/80 hover:text-foreground transition-colors"
+                >
+                  {s.title}
+                </TabsTrigger>
+              ))}
+              {lockedSections.map((s) => (
+                <span
+                  key={s.id}
+                  className="shrink-0 text-xs px-3 py-1.5 rounded-full text-muted-foreground opacity-60 cursor-not-allowed"
+                >
+                  🔒 {s.title}
+                </span>
+              ))}
+            </TabsList>
+          </div>
           {visibleSections.map((s) => (
             <TabsContent key={s.id} value={s.id} className="protocol-content">
               <h2 className="text-lg font-semibold mb-3 border-b border-border pb-2 font-heading">{s.title}</h2>
