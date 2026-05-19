@@ -296,6 +296,7 @@ const App = () => (
                   <StatusBarScrim />
                   <Toaster />
                   <Sonner />
+                  <SessionRevokedListener />
                   <OfflineIndicator />
                   <PWAInstallPrompt />
                   
