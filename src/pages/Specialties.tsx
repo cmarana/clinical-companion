@@ -110,41 +110,63 @@ export default function Specialties() {
         <motion.button
           whileTap={{ scale: 0.99 }}
           onClick={() => { hapticLight(); navigate("/full-protocols"); }}
-          className="w-full flex items-center gap-3 p-3.5 rounded-2xl bg-card border border-border/60 hover:border-primary/30 hover:shadow-md transition-all text-left mb-4"
+          className="relative overflow-hidden w-full flex items-center gap-3 p-3.5 rounded-2xl text-white shadow-md ring-1 ring-white/15 transition-all text-left mb-4"
+          style={{ background: "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)" }}
         >
-          <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 text-primary shrink-0">
-            <Layers size={18} />
+          <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-white/10 blur-2xl pointer-events-none" />
+          <div className="relative flex items-center justify-center w-9 h-9 rounded-xl bg-white/18 ring-1 ring-white/30 shrink-0">
+            <Layers size={16} className="text-white" />
           </div>
-          <div className="flex-1 min-w-0">
-            <div className="font-heading font-semibold text-[13.5px]">Ver todos os protocolos</div>
-            <div className="text-[11.5px] text-muted-foreground mt-0.5">
+          <div className="relative flex-1 min-w-0">
+            <div className="font-heading font-semibold text-[13px] text-white">Ver todos os protocolos</div>
+            <div className="text-[11px] text-white/80 mt-0.5">
               {fullProtocolMetas.length} protocolos em todas as especialidades
             </div>
           </div>
-          <ChevronRight size={16} className="text-muted-foreground shrink-0" />
+          <ChevronRight size={15} className="relative text-white/85 shrink-0" />
         </motion.button>
 
         {/* Grade de especialidades */}
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5">
-          {filtered.map((c, i) => {
+          {filtered.map((c) => {
             const Icon = iconByCat[c.id] ?? Stethoscope;
-            const tone = tones[i % tones.length];
             const count = countByCat[c.id] ?? 0;
             return (
               <motion.button
                 key={c.id}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => go(c.id)}
-                className="p-3.5 rounded-2xl bg-card border border-border/60 hover:border-primary/30 hover:shadow-md transition-all text-left"
+                className="relative overflow-hidden p-3 rounded-2xl text-left text-white shadow-md ring-1 ring-white/15 transition-all"
+                style={{ background: "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)" }}
               >
-                <div className={`flex items-center justify-center w-9 h-9 rounded-xl mb-2.5 ${toneStyles[tone]}`}>
-                  <Icon size={18} strokeWidth={2} />
-                </div>
-                <div className="font-heading font-semibold text-[12.5px] text-foreground leading-tight">
-                  {c.title}
-                </div>
-                <div className="text-[10.5px] text-muted-foreground mt-1">
-                  {count} {count === 1 ? "protocolo" : "protocolos"}
+                <svg
+                  className="absolute inset-x-0 bottom-0 w-full h-9 opacity-[0.18] pointer-events-none text-white"
+                  viewBox="0 0 200 60"
+                  preserveAspectRatio="none"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="1.4"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <motion.path
+                    d="M0 35 L40 35 L48 35 L56 18 L64 52 L72 35 L110 35 L118 35 L126 12 L134 58 L142 35 L200 35"
+                    initial={{ pathLength: 0, opacity: 0.2 }}
+                    animate={{ pathLength: 1, opacity: [0.2, 1, 0.4] }}
+                    transition={{ duration: 2.4, ease: "easeInOut", repeat: Infinity, repeatType: "loop" }}
+                  />
+                </svg>
+                <div className="absolute -top-6 -right-6 w-16 h-16 rounded-full bg-white/10 blur-2xl pointer-events-none" />
+                <div className="relative">
+                  <div className="flex items-center justify-center w-8 h-8 rounded-lg mb-2 bg-white/18 ring-1 ring-white/30">
+                    <Icon size={16} strokeWidth={2.3} className="text-white" />
+                  </div>
+                  <div className="font-heading font-semibold text-[12px] text-white leading-tight">
+                    {c.title}
+                  </div>
+                  <div className="text-[10.5px] text-white/80 mt-0.5">
+                    {count} {count === 1 ? "protocolo" : "protocolos"}
+                  </div>
                 </div>
               </motion.button>
             );

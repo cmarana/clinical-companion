@@ -74,35 +74,39 @@ function PrescriptionsContent() {
         </div>
 
         {filtered.map(cat => (
-          <div key={cat.id} className="space-y-2.5">
+          <div key={cat.id} className="space-y-2">
             <button
               onClick={() => setExpandedCat(expandedCat === cat.id ? null : cat.id)}
-              className="w-full flex items-center justify-between p-4 rounded-[20px] bg-card shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 border-0"
+              className="relative overflow-hidden w-full flex items-center justify-between p-3.5 rounded-2xl text-white shadow-md ring-1 ring-white/15 active:scale-[0.98] transition-all"
+              style={{ background: "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)" }}
             >
-              <div className="flex items-center gap-2">
-                <div className="w-8 h-8 rounded-xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center">
-                  {cat.icon && iconMap[cat.icon] ? iconMap[cat.icon] : <ClipboardList size={16} className="text-primary" />}
+              <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-white/10 blur-2xl pointer-events-none" />
+              <div className="relative flex items-center gap-2.5 min-w-0">
+                <div className="w-9 h-9 rounded-xl bg-white/18 ring-1 ring-white/30 flex items-center justify-center text-white shrink-0">
+                  {cat.icon && iconMap[cat.icon]
+                    ? <span className="[&_svg]:text-white [&_svg]:!stroke-white">{iconMap[cat.icon]}</span>
+                    : <ClipboardList size={16} className="text-white" />}
                 </div>
-                <span className="font-heading font-semibold text-sm">{cat.title}</span>
-                <span className="text-[11px] text-muted-foreground bg-muted px-2 py-0.5 rounded-full">{cat.items.length}</span>
+                <span className="font-heading font-semibold text-[13px] text-white text-left truncate">{cat.title}</span>
+                <span className="text-[10px] text-white/80 bg-white/15 ring-1 ring-white/25 px-1.5 py-0.5 rounded-full shrink-0">{cat.items.length}</span>
               </div>
-              <ChevronRight size={16} className={`text-muted-foreground transition-transform ${expandedCat === cat.id ? "rotate-90" : ""}`} />
+              <ChevronRight size={16} className={`relative text-white/85 shrink-0 transition-transform ${expandedCat === cat.id ? "rotate-90" : ""}`} />
             </button>
 
             {(expandedCat === cat.id || query.length >= 2) && (
-              <div className="space-y-2 pl-1">
+              <div className="space-y-1.5 pl-1">
                 {cat.items.map(item => (
                   <div
                     key={item.id}
                     onClick={() => navigate(`/prescriptions/${item.id}`)}
-                    className="cursor-pointer bg-card rounded-2xl shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 border-0"
+                    className="cursor-pointer rounded-xl bg-card border border-primary/15 hover:border-primary/40 shadow-sm hover:shadow-md active:scale-[0.98] transition-all"
                   >
-                    <div className="p-4 flex items-center justify-between">
-                      <div>
-                        <p className="font-heading font-semibold text-[13px]">{item.title}</p>
-                        <p className="text-[11px] text-muted-foreground mt-0.5">{item.type}</p>
+                    <div className="px-3.5 py-2.5 flex items-center justify-between gap-2">
+                      <div className="min-w-0">
+                        <p className="font-heading font-semibold text-[12.5px] text-foreground truncate">{item.title}</p>
+                        <p className="text-[10.5px] text-muted-foreground mt-0.5 truncate">{item.type}</p>
                       </div>
-                      <ChevronRight size={14} className="text-muted-foreground" />
+                      <ChevronRight size={13} className="text-primary shrink-0" />
                     </div>
                   </div>
                 ))}
