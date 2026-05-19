@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect, useCallback } from "react";
-import { MessageCircleQuestion, X, Send, Loader2, Mail, ArrowLeft, Bug, Lightbulb, MessageSquarePlus } from "lucide-react";
+import { MessageCircleQuestion, X, Send, Loader2, Mail, ArrowLeft, Bug, Lightbulb, MessageSquarePlus, HelpCircle, CreditCard, Bot, Wifi, Shield, FileText, User } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 import { motion, AnimatePresence } from "framer-motion";
 import OfflineBadge from "@/components/OfflineBadge";
+import { useNavigate } from "react-router-dom";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -16,12 +17,23 @@ const feedbackTypes = [
   { id: "other", label: "Outro", icon: MessageSquarePlus, color: "text-primary" },
 ] as const;
 
+const triageCategories = [
+  { id: "account", label: "Conta & Perfil", icon: User },
+  { id: "billing", label: "Assinatura & Pagamento", icon: CreditCard },
+  { id: "ai", label: "IA Clínica", icon: Bot },
+  { id: "offline", label: "Offline & App", icon: Wifi },
+  { id: "privacy", label: "Privacidade & LGPD", icon: Shield },
+  { id: "content", label: "Conteúdo Clínico", icon: FileText },
+  { id: "other", label: "Outro", icon: HelpCircle },
+] as const;
+
 const CHAT_URL = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/support-chat`;
 
 export default function SupportChat() {
   const { user } = useAuth();
+  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const [view, setView] = useState<"chat" | "email" | "feedback">("chat");
+  const [view, setView] = useState<"triage" | "chat" | "email" | "feedback">("triage");
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
@@ -31,7 +43,14 @@ export default function SupportChat() {
   const [feedbackType, setFeedbackType] = useState("suggestion");
   const [feedbackMessage, setFeedbackMessage] = useState("");
   const [sendingFeedback, setSendingFeedback] = useState(false);
+  // Triagem guiada
+  const [triageCategory, setTriageCategory] = useState<string>("");
+  const [triageDescription, setTriageDescription] = useState("");
+  const [aiAttempts, setAiAttempts] = useState(0);
   const scrollRef = useRef<HTMLDivElement>(null);
+
+  const aiTriedAtLeastOnce = aiAttempts > 0;
+  const showContactShortcuts = aiAttempts >= 1; // depois da 1ª resposta da IA, libera fallback humano
 
   useEffect(() => {
     scrollRef.current?.scrollTo({ top: scrollRef.current.scrollHeight, behavior: "smooth" });
