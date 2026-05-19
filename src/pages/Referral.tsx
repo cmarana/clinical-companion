@@ -57,7 +57,7 @@ export default function Referral() {
   const shareLink = async () => {
     if (navigator.share) {
       await navigator.share({
-        title: "PULSO — Emergência Médica",
+        title: "PULSO — Emergência",
         text: "Use o PULSO para protocolos médicos rápidos no plantão! Cadastre-se com meu link:",
         url: referralLink,
       });

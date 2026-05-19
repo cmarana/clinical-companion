@@ -209,7 +209,7 @@ export default function PrelaunchLanding() {
             <img src={logo} alt="PULSO" className="h-7 w-auto" />
             <span className="hidden sm:inline text-sm font-semibold tracking-tight text-slate-100">
               PULSO <span className="text-slate-500 font-normal mx-1">|</span>
-              <span className="text-primary/90 font-medium">Emergência Médica</span>
+              <span className="text-primary/90 font-medium">Emergência</span>
             </span>
           </button>
           <nav className="hidden md:flex items-center gap-7 text-sm text-slate-300">
@@ -325,7 +325,7 @@ export default function PrelaunchLanding() {
                       </div>
                       <div className="leading-tight">
                         <div className="text-[12px] font-semibold text-white">PULSO</div>
-                        <div className="text-[8.5px] uppercase tracking-wider text-primary/80">Emergência Médica</div>
+                        <div className="text-[8.5px] uppercase tracking-wider text-primary/80">Emergência</div>
                       </div>
                     </div>
                     <Search className="h-4 w-4 text-slate-400" />
@@ -760,7 +760,7 @@ export default function PrelaunchLanding() {
             </Link>
           </div>
           <div className="text-xs text-slate-500 sm:text-right">
-            PULSO Emergência Médica © {new Date().getFullYear()}.<br />Todos os direitos reservados.
+            PULSO Emergência © {new Date().getFullYear()}.<br />Todos os direitos reservados.
           </div>
         </div>
         <div className="border-t border-white/5">

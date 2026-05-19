@@ -277,7 +277,7 @@ export default function ConductComparator() {
         <p style="font-size:13px;color:#555;margin:0 0 16px">${result.summary}</p>
         ${result.sources?.map(buildSourceHTML).join("") || ""}
         ${result.key_differences?.length ? `<div style="background:#fffbeb;border:1px solid #fbbf24;border-radius:8px;padding:16px;margin-top:12px"><h3 style="margin:0 0 8px;font-size:14px">Principais Diferenças</h3><ol style="margin:0;padding-left:18px;font-size:12px;color:#555">${result.key_differences.map(d => `<li style="margin-bottom:4px">${d}</li>`).join("")}</ol></div>` : ""}
-        <p style="text-align:center;font-size:10px;color:#aaa;margin-top:24px">${result.last_update_check} · Gerado por PULSO Emergência Médica</p>
+        <p style="text-align:center;font-size:10px;color:#aaa;margin-top:24px">${result.last_update_check} · Gerado por PULSO Emergência</p>
       </body></html>`;
 
     const w = window.open("", "_blank");

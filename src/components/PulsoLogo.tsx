@@ -1,5 +1,4 @@
-import pulsoLogoDark from "@/assets/pulso-logo-dark.png";
-import pulsoLogoLight from "@/assets/pulso-logo-light.png";
+import pulsoLogo from "@/assets/pulso-logo.png";
 
 type Props = {
   /** Tamanho em pixels (largura = altura). Default 24. */
@@ -21,9 +20,7 @@ type Props = {
 
 /**
  * Logo PULSO padronizada — sempre transparente.
- * Branca em fundo escuro, azul escura em fundo claro.
- * Substitui qualquer uso direto de pulso-logo*.png em avatares,
- * cabeçalhos, botões e cards.
+ * Imagem única em azul escuro; em fundo escuro aplica filtro para virar branca.
  */
 export function PulsoLogo({
   size = 24,
@@ -36,23 +33,30 @@ export function PulsoLogo({
     width: size,
     height: size,
     alt,
+    src: pulsoLogo,
     decoding: "async" as const,
     fetchPriority: priority ? ("high" as const) : ("auto" as const),
     loading: priority ? ("eager" as const) : ("lazy" as const),
-    className: "block w-full h-full object-contain bg-transparent",
   };
+
+  // Filtro para converter o logo azul-escuro em branco puro
+  const whiteFilter = { filter: "brightness(0) invert(1)" };
 
   if (forceVariant === "dark") {
     return (
       <span className={`inline-flex shrink-0 ${className}`} style={{ width: size, height: size }}>
-        <img src={pulsoLogoDark} {...common} />
+        <img
+          {...common}
+          className="block w-full h-full object-contain bg-transparent"
+          style={whiteFilter}
+        />
       </span>
     );
   }
   if (forceVariant === "light") {
     return (
       <span className={`inline-flex shrink-0 ${className}`} style={{ width: size, height: size }}>
-        <img src={pulsoLogoLight} {...common} />
+        <img {...common} className="block w-full h-full object-contain bg-transparent" />
       </span>
     );
   }
@@ -60,8 +64,15 @@ export function PulsoLogo({
   // Auto: troca por tema usando classe `dark` no <html>
   return (
     <span className={`inline-flex shrink-0 ${className}`} style={{ width: size, height: size }}>
-      <img src={pulsoLogoLight} {...common} className={`${common.className} dark:hidden`} />
-      <img src={pulsoLogoDark} {...common} className={`${common.className} hidden dark:block`} />
+      <img
+        {...common}
+        className="block w-full h-full object-contain bg-transparent dark:hidden"
+      />
+      <img
+        {...common}
+        className="hidden dark:block w-full h-full object-contain bg-transparent"
+        style={whiteFilter}
+      />
     </span>
   );
 }

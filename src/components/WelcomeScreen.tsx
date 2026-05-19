@@ -59,14 +59,44 @@ export default function WelcomeScreen({ userName, onComplete }: WelcomeScreenPro
             transition={{ duration: 0.45, delay: 0.1 }}
             className="w-full max-w-md mx-4 flex flex-col items-center text-center px-6 py-8"
           >
-            {/* Logo */}
+            {/* Logo com animação de pulso (heartbeat) */}
             <motion.div
-              className="mb-4"
-              initial={{ scale: 0.5, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
+              className="mb-4 relative"
+              initial={{ scale: 0.4, opacity: 0, rotate: -8 }}
+              animate={{ scale: 1, opacity: 1, rotate: 0 }}
+              transition={{ delay: 0.15, type: "spring", stiffness: 180, damping: 14 }}
             >
-              <PulsoLogo size={64} priority />
+              <motion.div
+                animate={{ scale: [1, 1.08, 1, 1.05, 1] }}
+                transition={{
+                  duration: 1.6,
+                  repeat: Infinity,
+                  repeatDelay: 0.4,
+                  ease: "easeInOut",
+                  times: [0, 0.18, 0.36, 0.54, 1],
+                  delay: 0.8,
+                }}
+              >
+                <PulsoLogo size={88} priority />
+              </motion.div>
+              {/* Halo pulsante */}
+              <motion.span
+                aria-hidden
+                className="absolute inset-0 rounded-full ring-2 ring-primary/40"
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: [0, 0.5, 0], scale: [0.9, 1.6, 1.9] }}
+                transition={{ duration: 1.8, repeat: Infinity, repeatDelay: 0.4, delay: 0.9, ease: "easeOut" }}
+              />
+            </motion.div>
+
+            {/* Wordmark animado */}
+            <motion.div
+              className="font-heading font-bold text-primary tracking-[0.2em] text-sm mb-1"
+              initial={{ opacity: 0, letterSpacing: "0.5em" }}
+              animate={{ opacity: 1, letterSpacing: "0.2em" }}
+              transition={{ delay: 0.45, duration: 0.6 }}
+            >
+              PULSO EMERGÊNCIA
             </motion.div>
 
             {/* Greeting */}
