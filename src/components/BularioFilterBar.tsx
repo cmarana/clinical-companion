@@ -83,7 +83,7 @@ export default function BularioFilterBar({ filters, onChange, totalCount, filter
 
       {/* Filters panel */}
       {showFilters && (
-        <div className="grid grid-cols-2 gap-2 p-3 rounded-xl bg-card border border-border">
+        <div className="grid grid-cols-2 gap-2 p-3 rounded-xl bg-primary/5 ring-1 ring-primary/15">
           <FilterSelect
             label="Classe"
             options={DRUG_CLASSES}
