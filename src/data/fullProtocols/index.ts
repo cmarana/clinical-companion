@@ -1,4 +1,4 @@
-import type { FullProtocol, FullProtocolCategory } from "./types";
+import type { FullProtocol } from "./types";
 export { FULL_SECTION_ORDER } from "./types";
 export type { FullProtocol, FullProtocolSection, FullProtocolCategory, EvidenceLevel } from "./types";
 export { getEvidence } from "./evidenceMap";
