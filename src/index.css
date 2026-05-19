@@ -441,12 +441,17 @@
   border-color: hsl(0 0% 100% / 0.14);
 }
 
-.duty-card :is(h1,h2,h3,p,span,button,svg) {
+.duty-card :is(h1,h2,h3,p,span,button) {
   color: inherit;
 }
-
+.duty-card svg:not(.text-destructive):not([class*="text-red"]) {
+  color: inherit;
+}
 .duty-card :is(.text-muted-foreground,.text-foreground,.text-primary,.text-accent-foreground) {
   color: hsl(0 0% 100% / 0.82);
+}
+.duty-card .text-destructive {
+  color: hsl(0 78% 62%) !important;
 }
 
 .duty-grid-btn {
