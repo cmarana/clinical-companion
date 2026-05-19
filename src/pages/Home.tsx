@@ -12,6 +12,7 @@ import { useAuth } from "@/contexts/AuthContext";
 import { supabase } from "@/integrations/supabase/client";
 import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
 import ContinueWhereLeftOff from "@/components/ContinueWhereLeftOff";
+import VoiceSearchButton from "@/components/VoiceSearchButton";
 import { useNotifications } from "@/contexts/NotificationsContext";
 import { hapticLight } from "@/lib/haptics";
 import { useModuleAnalytics } from "@/hooks/useModuleAnalytics";
