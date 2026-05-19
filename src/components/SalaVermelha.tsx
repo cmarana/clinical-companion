@@ -8,6 +8,7 @@ import {
 import { startTTPSession } from "@/hooks/useTTPTracking";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { GRADIENT_DANGER } from "@/lib/design-tokens";
 
 type Category = "ABCDE" | "Cardio" | "Neuro" | "Infecto" | "Trauma" | "Metab" | "Tóxico" | "Pediatria";
 
@@ -179,14 +180,15 @@ export default function SalaVermelha() {
             <button
               key={item.id}
               onClick={() => handleClick(item.id, item.label)}
-              className="flex items-center gap-3 p-3 rounded-xl border border-destructive/20 bg-destructive/5 hover:bg-destructive/10 active:scale-[0.97] transition-all text-left"
+              className="flex items-center gap-3 p-3 rounded-xl text-white ring-1 ring-white/15 active:scale-[0.97] transition-all text-left shadow-md"
+              style={{ background: GRADIENT_DANGER }}
             >
-              <div className="w-9 h-9 rounded-lg bg-destructive/15 flex items-center justify-center shrink-0">
-                <item.icon size={18} className="text-destructive" />
+              <div className="w-9 h-9 rounded-lg bg-white/15 ring-1 ring-white/25 flex items-center justify-center shrink-0">
+                <item.icon size={18} className="text-white" />
               </div>
               <div className="min-w-0 flex-1">
-                <p className="font-heading font-bold text-xs truncate">{item.label}</p>
-                <p className="text-[9px] text-muted-foreground leading-tight line-clamp-2">{item.desc}</p>
+                <p className="font-heading font-bold text-xs text-white truncate">{item.label}</p>
+                <p className="text-[9px] text-white/78 leading-tight line-clamp-2">{item.desc}</p>
               </div>
             </button>
           ))}
