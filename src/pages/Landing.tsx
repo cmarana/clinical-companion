@@ -989,6 +989,19 @@ export default function Landing() {
                   </a>
                 </li>
                 <li>
+                  <a
+                    href="https://wa.me/message/ZTQKMSJFBHPWG1"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 hover:text-foreground transition-colors"
+                  >
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true">
+                      <path d="M20.52 3.48A11.86 11.86 0 0 0 12.04 0C5.5 0 .2 5.3.2 11.84c0 2.09.55 4.13 1.6 5.93L0 24l6.4-1.68a11.83 11.83 0 0 0 5.64 1.44h.01c6.54 0 11.84-5.3 11.84-11.84 0-3.16-1.23-6.13-3.37-8.44Z"/>
+                    </svg>
+                    WhatsApp
+                  </a>
+                </li>
+                <li>
                   <a href="https://pulsoemergencia.com.br" target="_blank" rel="noopener noreferrer" className="hover:text-foreground transition-colors">
                     pulsoemergencia.com.br
                   </a>
