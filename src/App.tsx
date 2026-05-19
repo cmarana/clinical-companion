@@ -182,6 +182,8 @@ const AppRoutes = () => (
         <Route path="/medications" element={<Navigate to="/bulario" replace />} />
         <Route path="/medications/:id" element={<Navigate to="/bulario" replace />} />
         <Route path="/calculators" element={<Calculators />} />
+        <Route path="/tools" element={<Tools />} />
+        <Route path="/specialties" element={<Specialties />} />
         <Route path="/quiz" element={<Quiz />} />
         <Route path="/search" element={<SearchPage />} />
         <Route path="/favorites" element={<Favorites />} />
