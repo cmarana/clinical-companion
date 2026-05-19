@@ -106,13 +106,13 @@ export default function Home() {
       {/* ── HEADER ──────────────────────────────────────── */}
       <div
         className="sticky z-app-chrome top-safe-fb flex items-center justify-between h-14 px-4 border-b border-white/10 text-white"
-        style={{ background: "linear-gradient(135deg, hsl(210 85% 28%) 0%, hsl(210 90% 42%) 100%)" }}
+        style={{ background: GRADIENT_DEEP_BLUE }}
       >
         <button
           onClick={() => navigate("/")}
-          className="flex items-center gap-2.5 select-none"
+          className="flex items-center gap-2.5 select-none text-white"
         >
-          <PulsoLogo size={30} priority forceVariant="dark" animate />
+          <PulsoLogoECG size={28} />
           <span className="font-heading font-bold text-base tracking-tight text-white">PULSO</span>
         </button>
         <div className="flex items-center gap-1">
