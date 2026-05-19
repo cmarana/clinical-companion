@@ -7,29 +7,29 @@
 
 @layer base {
   :root {
-    --background: 212 42% 95%;
+    --background: 0 0% 100%;
     --foreground: 212 64% 14%;
-    --card: 212 42% 95%;
+    --card: 0 0% 100%;
     --card-foreground: 217 33% 17%;
-    --popover: 212 42% 95%;
+    --popover: 0 0% 100%;
     --popover-foreground: 217 33% 17%;
-    --primary: 212 72% 28%;
+    --primary: 212 72% 26%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 212 36% 90%;
+    --secondary: 212 35% 94%;
     --secondary-foreground: 217 33% 17%;
-    --muted: 212 36% 90%;
+    --muted: 212 35% 94%;
     --muted-foreground: 212 48% 24%;
-    --accent: 212 40% 88%;
-    --accent-foreground: 212 72% 22%;
-    --destructive: 358 58% 38%;
+    --accent: 212 36% 91%;
+    --accent-foreground: 212 72% 18%;
+    --destructive: 358 68% 40%;
     --destructive-foreground: 0 0% 100%;
-    --destructive-surface: 358 42% 90%;
-    --border: 212 30% 82%;
-    --input: 212 30% 82%;
-    --ring: 212 72% 28%;
+    --destructive-surface: 358 45% 94%;
+    --border: 212 26% 84%;
+    --input: 212 26% 84%;
+    --ring: 212 72% 26%;
     --radius: 0.5rem;
 
-    --sidebar-background: 212 42% 95%;
+    --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 212 64% 18%;
     --sidebar-primary: 212 72% 28%;
     --sidebar-primary-foreground: 0 0% 98%;
@@ -38,9 +38,9 @@
     --sidebar-border: 212 30% 82%;
     --sidebar-ring: 212 72% 28%;
 
-    --warning: 358 58% 38%;
+    --warning: 358 68% 40%;
     --warning-foreground: 0 0% 100%;
-    --success: 212 72% 28%;
+    --success: 212 72% 26%;
     --success-foreground: 0 0% 100%;
 
     --font-heading: 'Sora', system-ui, sans-serif;
