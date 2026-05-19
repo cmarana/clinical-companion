@@ -358,7 +358,7 @@ export default function FullProtocols() {
               className={cn(
                 "flex items-center gap-1 px-2.5 py-1.5 rounded-xl text-[10px] font-heading font-semibold transition-all ring-1",
                 showFavOnly
-                  ? "bg-amber-500/15 text-amber-700 dark:text-amber-400 ring-amber-500/30"
+                  ? "bg-primary/15 text-primary ring-primary/30"
                   : "bg-card text-muted-foreground ring-border hover:text-foreground"
               )}
               title="Mostrar somente favoritos"
