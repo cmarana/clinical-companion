@@ -148,28 +148,30 @@ export default function Bulario() {
           </div>
         )}
 
-        <div className="space-y-2.5">
+        <div className="space-y-2">
           {medications.map((m) => (
             <div
               key={m.id}
               onClick={() => navigate(`/bulario/${m.id}`)}
-              className="cursor-pointer bg-card rounded-[20px] shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 border-0"
+              className="cursor-pointer relative overflow-hidden rounded-2xl text-white shadow-md ring-1 ring-white/15 hover:shadow-lg active:scale-[0.98] transition-all"
+              style={{ background: "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)" }}
             >
-              <div className="flex items-center gap-3 p-4">
-                <div className="w-10 h-10 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary shrink-0">
-                  <Pill size={18} />
+              <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-white/10 blur-2xl pointer-events-none" />
+              <div className="relative flex items-center gap-3 px-3.5 py-3">
+                <div className="w-9 h-9 rounded-xl bg-white/18 ring-1 ring-white/30 flex items-center justify-center text-white shrink-0">
+                  <Pill size={16} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-heading font-semibold text-[13px] truncate">{m.nome}</p>
-                  <p className="text-[11px] text-muted-foreground truncate">
+                  <p className="font-heading font-semibold text-[12.5px] text-white truncate">{m.nome}</p>
+                  <p className="text-[10.5px] text-white/80 truncate">
                     {m.principio_ativo} · {m.classe}
                   </p>
                 </div>
                 <div className="flex items-center gap-1 shrink-0">
-                  {m.controlado && <ShieldCheck size={12} className="text-primary" />}
-                  {m.pediatria && <Baby size={12} className="text-primary" />}
-                  {m.gestacao_seguro && <Heart size={12} className="text-primary" />}
-                  <ChevronRight size={14} className="text-muted-foreground ml-1" />
+                  {m.controlado && <ShieldCheck size={11} className="text-white/90" />}
+                  {m.pediatria && <Baby size={11} className="text-white/90" />}
+                  {m.gestacao_seguro && <Heart size={11} className="text-white/90" />}
+                  <ChevronRight size={13} className="text-white/85 ml-1" />
                 </div>
               </div>
             </div>
