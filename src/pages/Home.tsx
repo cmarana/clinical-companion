@@ -341,8 +341,3 @@ export default function Home() {
     </div>
   );
 }
-
-      <WelcomeScreen userName={fullName} onComplete={() => {}} />
-    </div>
-  );
-}
