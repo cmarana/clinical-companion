@@ -246,10 +246,7 @@ export default function Home() {
           whileTap={{ scale: 0.99 }}
           onClick={() => go("/clinical-ai", "Dra. Clara")}
           className="relative w-full overflow-hidden rounded-2xl text-left text-white shadow-md ring-1 ring-white/10"
-          style={{
-            background:
-              "linear-gradient(135deg, hsl(212 60% 18%) 0%, hsl(212 70% 26%) 100%)",
-          }}
+          style={{ background: GRADIENT_DEEP_BLUE_SOFT }}
         >
           <div className="absolute -bottom-10 -right-6 w-32 h-32 rounded-full bg-white/10 blur-2xl" />
           <div className="relative px-4 py-3 flex items-center gap-3">
