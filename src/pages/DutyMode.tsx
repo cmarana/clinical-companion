@@ -205,9 +205,7 @@ function DutyModeContent() {
               className="w-full flex items-center gap-3 p-4 text-white rounded-[20px] shadow-md ring-1 ring-white/15 active:scale-[0.98] transition-all duration-200"
               style={{ background: GRADIENT_DEEP_BLUE_SOFT }}
             >
-              <div className="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center">
-                <Sparkles size={20} className="text-white" />
-              </div>
+              <Sparkles size={22} className="text-white shrink-0" />
               <div className="text-left flex-1">
                 <p className="font-heading font-semibold text-sm text-white">IA Clínica</p>
                 <p className="text-xs text-white/70">Diagnóstico, conduta e prescrição assistidos por IA</p>
