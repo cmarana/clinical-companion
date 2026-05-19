@@ -15,6 +15,7 @@ import {
 import { useState, useMemo } from "react";
 import { protocols } from "@/data/protocols";
 import { medications } from "@/data/medications";
+import { GRADIENT_DEEP_BLUE_SOFT } from "@/lib/design-tokens";
 
 /* ─── Data ─── */
 
@@ -31,13 +32,13 @@ const quickAccess = [
 
 const emergencyOneTap = [
   { label: "PCR / RCP", path: "/protocols/pcr", color: "bg-red-500/15 text-red-600 dark:text-red-400" },
-  { label: "Sepse", path: "/protocols/sepse", color: "bg-orange-500/15 text-orange-600 dark:text-orange-400" },
+  { label: "Sepse", path: "/protocols/sepse", color: "bg-red-500/15 text-red-600 dark:text-red-400" },
   { label: "IAM", path: "/protocols/iam", color: "bg-red-500/15 text-red-600 dark:text-red-400" },
-  { label: "AVC", path: "/protocols/avc", color: "bg-purple-500/15 text-purple-600 dark:text-purple-400" },
-  { label: "Anafilaxia", path: "/protocols/anafilaxia", color: "bg-pink-500/15 text-pink-600 dark:text-pink-400" },
-  { label: "IOT", path: "/protocols/iot", color: "bg-blue-500/15 text-blue-600 dark:text-blue-400" },
+  { label: "AVC", path: "/protocols/avc", color: "bg-red-500/15 text-red-600 dark:text-red-400" },
+  { label: "Anafilaxia", path: "/protocols/anafilaxia", color: "bg-red-500/15 text-red-600 dark:text-red-400" },
+  { label: "IOT", path: "/protocols/iot", color: "bg-red-500/15 text-red-600 dark:text-red-400" },
   { label: "Choque", path: "/protocols/choque-hipovolemico", color: "bg-red-500/15 text-red-600 dark:text-red-400" },
-  { label: "EAP", path: "/protocols/eap", color: "bg-cyan-500/15 text-cyan-600 dark:text-cyan-400" },
+  { label: "EAP", path: "/protocols/eap", color: "bg-red-500/15 text-red-600 dark:text-red-400" },
 ];
 
 const emergencyMore = [
