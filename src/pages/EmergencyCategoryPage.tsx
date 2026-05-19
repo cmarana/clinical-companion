@@ -14,10 +14,7 @@ import { GRADIENT_DANGER } from "@/lib/design-tokens";
 
 function Badge({ kind }: { kind: "new" | "updated" }) {
   const label = kind === "new" ? "Novo" : "Atualizado";
-  const cls =
-    kind === "new"
-      ? "bg-primary/15 text-primary border border-primary/30"
-      : "bg-accent/20 text-accent-foreground border border-accent/40";
+  const cls = "bg-white/16 text-white border border-white/28";
   return (
     <span className={`text-[10px] font-heading font-semibold px-2 py-0.5 rounded-full ${cls}`}>
       {label}
@@ -99,9 +96,9 @@ function EmergencyCategoryContent() {
                     )}
                   </div>
                   {open ? (
-                    <ChevronDown size={16} className="text-muted-foreground shrink-0" />
+                    <ChevronDown size={16} className="text-white/78 shrink-0" />
                   ) : (
-                    <ChevronRight size={16} className="text-muted-foreground shrink-0" />
+                    <ChevronRight size={16} className="text-white/78 shrink-0" />
                   )}
                 </button>
 
@@ -110,7 +107,7 @@ function EmergencyCategoryContent() {
                     {sections.map(s => {
                       const isOpen = openSection[p.id] === s.id;
                       return (
-                        <div key={s.id} className="rounded-lg bg-muted/40">
+                            <div key={s.id} className="rounded-lg bg-white/12 ring-1 ring-white/15">
                           <button
                             onClick={() =>
                               setOpenSection(prev => ({
@@ -125,11 +122,11 @@ function EmergencyCategoryContent() {
                             </span>
                             <ChevronDown
                               size={13}
-                              className={`text-muted-foreground transition-transform ${isOpen ? "rotate-180" : ""}`}
+                              className={`text-white/78 transition-transform ${isOpen ? "rotate-180" : ""}`}
                             />
                           </button>
                           {isOpen && (
-                            <div className="px-3 pb-3 text-xs leading-relaxed whitespace-pre-wrap text-foreground/90">
+                            <div className="px-3 pb-3 text-xs leading-relaxed whitespace-pre-wrap text-white/88">
                               {s.content}
                             </div>
                           )}
