@@ -47,7 +47,7 @@ const groups: Group[] = [
       { label: "Bulário", sub: "Base completa de medicamentos", icon: Pill, path: "/bulario", tone: "emerald" },
       { label: "Interações Medicamentosas", sub: "1.000+ pares de alto risco", icon: AlertTriangle, path: "/drug-interactions", tone: "danger" },
       { label: "Guia de Antimicrobianos", sub: "Empírico por foco/germe", icon: ShieldAlert, path: "/antimicrobials", tone: "amber" },
-      { label: "Checagem de Prescrição", sub: "IA: interação, alergia, Y-site", icon: ListChecks, path: "/prescription-check", tone: "primary" },
+      { label: "Checagem de Prescrição", sub: "IA: interação, alergia, Y-site", icon: ListChecks, path: "/prescription-checker", tone: "primary" },
     ],
   },
   {
