@@ -122,7 +122,7 @@ function DutyModeContent() {
             </button>
             <button
               onClick={() => navigate("/prescription-checker")}
-              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl bg-orange-500/10 text-orange-600 dark:text-orange-400 hover:bg-orange-500/20 active:scale-95 transition-all"
+              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl bg-primary/10 text-primary hover:bg-primary/20 active:scale-95 transition-all"
             >
               <Beaker size={20} />
               <span className="text-[10px] font-heading font-bold leading-tight text-center">Checagem Rx</span>
@@ -200,7 +200,8 @@ function DutyModeContent() {
             {/* ── IA Clínica ── */}
             <button
               onClick={() => navigate("/clinical-ai")}
-              className="w-full flex items-center gap-3 p-4 bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-500 dark:to-indigo-500 text-white rounded-[20px] shadow-lg shadow-blue-500/20 dark:shadow-blue-500/30 active:scale-[0.98] transition-all duration-200"
+              className="w-full flex items-center gap-3 p-4 text-white rounded-[20px] shadow-md ring-1 ring-white/15 active:scale-[0.98] transition-all duration-200"
+              style={{ background: GRADIENT_DEEP_BLUE_SOFT }}
             >
               <div className="w-10 h-10 rounded-2xl bg-white/20 flex items-center justify-center">
                 <Sparkles size={20} className="text-white" />
