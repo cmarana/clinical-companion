@@ -508,7 +508,7 @@ export default function Auth() {
                 PULSO
               </h1>
               <p className="text-sm text-muted-foreground mt-1 font-medium tracking-wide">
-                Emergência Médica
+                Emergência
               </p>
             </motion.div>
 
@@ -650,7 +650,7 @@ export default function Auth() {
           {/* Footer */}
           <div className="text-center pb-8 px-4 space-y-2">
             <p className="text-[9px] text-muted-foreground/60">
-              PULSO · Emergência Médica · Feito para quem salva vidas
+              PULSO · Emergência · Feito para quem salva vidas
             </p>
             <p className="text-[9px] text-muted-foreground/50 max-w-xs mx-auto leading-relaxed">
               Ferramenta de apoio à decisão clínica. Não substitui o julgamento médico profissional.

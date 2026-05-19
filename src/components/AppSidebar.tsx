@@ -170,7 +170,7 @@ export function AppSidebar() {
           <PulsoLogo size={28} priority />
           <div className="flex flex-col group-data-[collapsible=icon]:hidden">
             <span className="font-heading font-bold text-sm tracking-tight text-primary">PULSO</span>
-            <span className="text-[9px] text-muted-foreground -mt-0.5">Emergência Médica</span>
+            <span className="text-[9px] text-muted-foreground -mt-0.5">Emergência</span>
           </div>
         </div>
       </SidebarHeader>
