@@ -41,9 +41,7 @@ export default function DutyShiftTimer() {
 
   return (
     <div className="duty-card p-4 flex items-center gap-3">
-      <div className="w-10 h-10 rounded-2xl bg-white/15 ring-1 ring-white/20 flex items-center justify-center">
-        <Clock size={20} className="text-white" />
-      </div>
+      <Clock size={22} className="text-white shrink-0" />
       <div className="flex-1">
         <p className="font-heading font-semibold text-xs text-muted-foreground uppercase tracking-wider">Cronômetro de Turno</p>
         {shiftStart ? (
