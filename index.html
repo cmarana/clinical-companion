@@ -44,29 +44,29 @@
     <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="preload" as="image" href="/icons/icon-192.png" fetchpriority="high" />
 
-    <!-- Splash inline — sequência: ícone → ECG → PULSO → tagline. -->
+    <!-- Splash inline — entrada impactante: logo → texto → eletro animado. -->
     <style>
       :root {
         color-scheme: light;
-        /* Timings centralizados — alterar aqui propaga para tudo */
         --pulso-ease: cubic-bezier(.22, 1, .36, 1);
         --pulso-ease-draw: cubic-bezier(.65, 0, .35, 1);
-        --pulso-icon-delay: 60ms;
-        --pulso-icon-dur: 520ms;
-        --pulso-ecg-delay: 480ms;   /* começa antes do ícone terminar (overlap suave) */
-        --pulso-ecg-dur: 900ms;
-        --pulso-word-delay: 1100ms; /* logo após o ECG completar */
-        --pulso-word-dur: 480ms;
-        --pulso-tag-delay: 1340ms;
+        --pulso-icon-delay: 40ms;
+        --pulso-icon-dur: 680ms;
+        --pulso-word-delay: 460ms;
+        --pulso-word-dur: 520ms;
+        --pulso-tag-delay: 660ms;
         --pulso-tag-dur: 480ms;
-        /* Sequência total ≈ 1820ms — usado como MIN_SHOW_MS no JS */
+        --pulso-ecg-delay: 900ms;
+        --pulso-ecg-dur: 1400ms;
       }
       html, body { margin: 0; padding: 0; background: #ffffff; }
 
       #pulso-splash {
         position: fixed; inset: 0; z-index: 2147483647;
         display: flex; flex-direction: column; align-items: center; justify-content: center;
-        background: #ffffff;
+        background:
+          radial-gradient(60% 50% at 50% 45%, rgba(10,109,217,0.07), rgba(255,255,255,0) 70%),
+          #ffffff;
         -webkit-tap-highlight-color: transparent;
         padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
         overflow: hidden;
@@ -97,43 +97,37 @@
         display: flex; flex-direction: column; align-items: center;
       }
 
-      /* 1) Ícone — sobe e dá fade-in (sem mexer no scale para evitar
-         interpolação inconsistente entre WebKit/Blink/Gecko) */
+      /* 1) Ícone — entrada impactante (scale + fade) com glow pulsante */
       .pulso-icon {
         position: relative;
-        width: min(30vw, 112px);
-        height: min(30vw, 112px);
+        width: min(34vw, 132px);
+        height: min(34vw, 132px);
         display: flex; align-items: center; justify-content: center;
         background: transparent;
         opacity: 0;
+        margin-bottom: -10px; /* aproxima do texto (logo tem padding interno) */
         will-change: opacity, transform;
-        -webkit-animation: pulso-fade-up var(--pulso-icon-dur) var(--pulso-ease) var(--pulso-icon-delay) both;
-                animation: pulso-fade-up var(--pulso-icon-dur) var(--pulso-ease) var(--pulso-icon-delay) both;
+        -webkit-animation: pulso-pop var(--pulso-icon-dur) var(--pulso-ease) var(--pulso-icon-delay) both;
+                animation: pulso-pop var(--pulso-icon-dur) var(--pulso-ease) var(--pulso-icon-delay) both;
       }
       .pulso-icon::before {
         content: "";
-        position: absolute; inset: -16%;
+        position: absolute; inset: -18%;
         border-radius: 50%;
-        background: radial-gradient(closest-side, rgba(10,109,217,0.10), rgba(10,109,217,0) 70%);
+        background: radial-gradient(closest-side, rgba(10,109,217,0.22), rgba(10,109,217,0) 70%);
         z-index: -1;
+        opacity: 0;
+        -webkit-animation: pulso-glow 2.4s ease-in-out 700ms infinite;
+                animation: pulso-glow 2.4s ease-in-out 700ms infinite;
       }
       .pulso-icon svg, .pulso-icon img { width: 100%; height: 100%; display: block; object-fit: contain; }
 
-      /* 2) ECG — desenha a partir da esquerda (stroke-dashoffset → 0) */
-      .pulso-ecg-line {
-        stroke-dasharray: 200;
-        stroke-dashoffset: 200;
-        will-change: stroke-dashoffset;
-        -webkit-animation: pulso-draw var(--pulso-ecg-dur) var(--pulso-ease-draw) var(--pulso-ecg-delay) both;
-                animation: pulso-draw var(--pulso-ecg-dur) var(--pulso-ease-draw) var(--pulso-ecg-delay) both;
-      }
-
-      /* 3) Wordmark "PULSO" */
+      /* 2) Wordmark "PULSO" */
       .pulso-wordmark {
-        margin-top: 14px;
+        margin-top: 0;
         font-family: 'Helvetica Neue', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         font-weight: 700;
-        font-size: clamp(20px, 5vw, 26px);
+        font-size: clamp(22px, 5.4vw, 30px);
         letter-spacing: 0.32em;
         color: #0a1628;
         text-align: center;
@@ -143,7 +137,7 @@
                 animation: pulso-fade-up var(--pulso-word-dur) var(--pulso-ease) var(--pulso-word-delay) both;
       }
 
-      /* 4) Tagline */
+      /* 3) Tagline */
       .pulso-tagline {
         margin-top: 6px;
         font-family: 'Helvetica Neue', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
@@ -158,26 +152,78 @@
                 animation: pulso-fade-up var(--pulso-tag-dur) var(--pulso-ease) var(--pulso-tag-delay) both;
       }
 
-      /* Keyframes únicos e isolados (sem compartilhamento ambíguo) */
+      /* 4) Eletro animado abaixo do texto — desenho contínuo em loop */
+      .pulso-ecg {
+        margin-top: 20px;
+        width: min(72vw, 260px);
+        height: 44px;
+        opacity: 0;
+        -webkit-animation: pulso-fade-in 360ms ease var(--pulso-ecg-delay) both;
+                animation: pulso-fade-in 360ms ease var(--pulso-ecg-delay) both;
+      }
+      .pulso-ecg-track { stroke: rgba(10,109,217,0.12); stroke-width: 1.2; fill: none; }
+      .pulso-ecg-line {
+        stroke: #0a6dd9;
+        stroke-width: 2.2;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        filter: drop-shadow(0 0 4px rgba(10,109,217,0.55));
+        stroke-dasharray: 520;
+        stroke-dashoffset: 520;
+        -webkit-animation: pulso-draw var(--pulso-ecg-dur) var(--pulso-ease-draw) var(--pulso-ecg-delay) infinite;
+                animation: pulso-draw var(--pulso-ecg-dur) var(--pulso-ease-draw) var(--pulso-ecg-delay) infinite;
+      }
+
+      /* Keyframes */
       @-webkit-keyframes pulso-fade-up {
-        0%   { opacity: 0; -webkit-transform: translate3d(0, 8px, 0); transform: translate3d(0, 8px, 0); }
-        100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0);   transform: translate3d(0, 0, 0); }
+        0%   { opacity: 0; -webkit-transform: translate3d(0, 10px, 0); transform: translate3d(0, 10px, 0); }
+        100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0);    transform: translate3d(0, 0, 0); }
       }
       @keyframes pulso-fade-up {
-        0%   { opacity: 0; -webkit-transform: translate3d(0, 8px, 0); transform: translate3d(0, 8px, 0); }
-        100% { opacity: 1; -webkit-transform: translate3d(0, 0, 0);   transform: translate3d(0, 0, 0); }
+        0%   { opacity: 0; transform: translate3d(0, 10px, 0); }
+        100% { opacity: 1; transform: translate3d(0, 0, 0); }
       }
-      @-webkit-keyframes pulso-draw { to { stroke-dashoffset: 0; } }
-      @keyframes pulso-draw { to { stroke-dashoffset: 0; } }
+      @-webkit-keyframes pulso-pop {
+        0%   { opacity: 0; -webkit-transform: scale(.55); transform: scale(.55); }
+        55%  { opacity: 1; -webkit-transform: scale(1.08); transform: scale(1.08); }
+        100% { opacity: 1; -webkit-transform: scale(1);   transform: scale(1); }
+      }
+      @keyframes pulso-pop {
+        0%   { opacity: 0; transform: scale(.55); }
+        55%  { opacity: 1; transform: scale(1.08); }
+        100% { opacity: 1; transform: scale(1); }
+      }
+      @-webkit-keyframes pulso-glow {
+        0%, 100% { opacity: .3; -webkit-transform: scale(1);    transform: scale(1); }
+        50%      { opacity: .9; -webkit-transform: scale(1.12); transform: scale(1.12); }
+      }
+      @keyframes pulso-glow {
+        0%, 100% { opacity: .3; transform: scale(1); }
+        50%      { opacity: .9; transform: scale(1.12); }
+      }
+      @-webkit-keyframes pulso-fade-in { to { opacity: 1; } }
+      @keyframes pulso-fade-in { to { opacity: 1; } }
+      @-webkit-keyframes pulso-draw {
+        0%   { stroke-dashoffset: 520; }
+        65%  { stroke-dashoffset: 0; }
+        100% { stroke-dashoffset: -520; }
+      }
+      @keyframes pulso-draw {
+        0%   { stroke-dashoffset: 520; }
+        65%  { stroke-dashoffset: 0; }
+        100% { stroke-dashoffset: -520; }
+      }
 
       @media (prefers-reduced-motion: reduce) {
-        .pulso-icon, .pulso-wordmark, .pulso-tagline, .pulso-ecg-line {
+        .pulso-icon, .pulso-wordmark, .pulso-tagline, .pulso-ecg, .pulso-ecg-line, .pulso-icon::before {
           -webkit-animation: none; animation: none;
           opacity: 1; transform: none; stroke-dashoffset: 0;
         }
         #root.pulso-app-enter { -webkit-animation: none; animation: none; }
       }
     </style>
+
 
     <!-- JSON-LD: MobileApplication -->
     <script type="application/ld+json">
@@ -270,6 +316,11 @@
         </div>
         <div class="pulso-wordmark">PULSO</div>
         <div class="pulso-tagline">EMERGÊNCIA</div>
+        <svg class="pulso-ecg" viewBox="0 0 260 44" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <line class="pulso-ecg-track" x1="0" y1="22" x2="260" y2="22" />
+          <path class="pulso-ecg-line"
+                d="M0 22 L60 22 L72 22 L78 14 L84 30 L90 6 L96 36 L102 22 L120 22 L132 22 L138 16 L144 28 L150 8 L156 34 L162 22 L200 22 L260 22" />
+        </svg>
       </div>
     </div>
     <div id="root"></div>
