@@ -4,6 +4,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import { hapticLight } from "@/lib/haptics";
+import { GRADIENT_DEEP_BLUE, GRADIENT_DANGER } from "@/lib/design-tokens";
 import FontSizeSelector from "./FontSizeSelector";
 
 interface TopBarProps {
