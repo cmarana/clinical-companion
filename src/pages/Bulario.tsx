@@ -37,10 +37,11 @@ export default function Bulario() {
 
   const medications = data?.pages.flatMap((p) => p.items) ?? [];
 
-  // Load meds count lazily on mount
+  // Só carrega a base local pesada se o banco ainda estiver vazio.
   useEffect(() => {
+    if (totalCount > 0 || medsCount !== null) return;
     loadMedicationsData().then(d => setMedsCount(d.length));
-  }, []);
+  }, [totalCount, medsCount]);
 
   // Infinite scroll sentinel
   const sentinelRef = useRef<HTMLDivElement>(null);

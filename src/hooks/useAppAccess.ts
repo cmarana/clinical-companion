@@ -21,17 +21,18 @@ export function useAppAccess() {
     }
     setHasAccess(null);
     (async () => {
-      for (const r of APP_ACCESS_ROLES) {
-        const { data } = await supabase.rpc("has_role", {
+      const checks = await Promise.all(
+        APP_ACCESS_ROLES.map((r) => supabase.rpc("has_role", {
           _user_id: user.id,
           _role: r,
-        });
+        }).then(({ data }) => ({ role: r, allowed: !!data })))
+      );
         if (!active) return;
-        if (data) {
-          setRole(r);
-          setHasAccess(true);
-          return;
-        }
+      const match = checks.find((c) => c.allowed);
+      if (match) {
+        setRole(match.role);
+        setHasAccess(true);
+        return;
       }
       if (active) {
         setHasAccess(false);
