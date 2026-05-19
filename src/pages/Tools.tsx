@@ -24,6 +24,14 @@ type Group = {
 
 const groups: Group[] = [
   {
+    title: "Acesso rápido",
+    sub: "Seus favoritos e conteúdo offline",
+    items: [
+      { label: "Favoritos", sub: "Protocolos e ferramentas salvos", icon: Heart, path: "/favorites", tone: "primary" },
+      { label: "Modo Offline", sub: "Baixe conteúdo para uso sem internet", icon: WifiOff, path: "/offline", tone: "primary" },
+    ],
+  },
+  {
     title: "Cálculos & Escores",
     sub: "Calculadoras e escores clínicos validados",
     items: [
