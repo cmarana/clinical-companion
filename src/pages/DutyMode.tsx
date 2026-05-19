@@ -15,7 +15,7 @@ import {
 import { useState, useMemo } from "react";
 import { protocols } from "@/data/protocols";
 import { medications } from "@/data/medications";
-import { GRADIENT_DEEP_BLUE_SOFT } from "@/lib/design-tokens";
+import { GRADIENT_DANGER, GRADIENT_DEEP_BLUE_SOFT } from "@/lib/design-tokens";
 
 /* ─── Data ─── */
 
@@ -31,14 +31,14 @@ const quickAccess = [
 ];
 
 const emergencyOneTap = [
-  { label: "PCR / RCP", path: "/protocols/pcr", color: "bg-destructive/15 text-destructive dark:text-destructive" },
-  { label: "Sepse", path: "/protocols/sepse", color: "bg-destructive/15 text-destructive dark:text-destructive" },
-  { label: "IAM", path: "/protocols/iam", color: "bg-destructive/15 text-destructive dark:text-destructive" },
-  { label: "AVC", path: "/protocols/avc", color: "bg-destructive/15 text-destructive dark:text-destructive" },
-  { label: "Anafilaxia", path: "/protocols/anafilaxia", color: "bg-destructive/15 text-destructive dark:text-destructive" },
-  { label: "IOT", path: "/protocols/iot", color: "bg-destructive/15 text-destructive dark:text-destructive" },
-  { label: "Choque", path: "/protocols/choque-hipovolemico", color: "bg-destructive/15 text-destructive dark:text-destructive" },
-  { label: "EAP", path: "/protocols/eap", color: "bg-destructive/15 text-destructive dark:text-destructive" },
+  { label: "PCR / RCP", path: "/protocols/pcr" },
+  { label: "Sepse", path: "/protocols/sepse" },
+  { label: "IAM", path: "/protocols/iam" },
+  { label: "AVC", path: "/protocols/avc" },
+  { label: "Anafilaxia", path: "/protocols/anafilaxia" },
+  { label: "IOT", path: "/protocols/iot" },
+  { label: "Choque", path: "/protocols/choque-hipovolemico" },
+  { label: "EAP", path: "/protocols/eap" },
 ];
 
 const emergencyMore = [
@@ -101,7 +101,8 @@ function DutyModeContent() {
           <div className="grid grid-cols-4 gap-2">
             <button
               onClick={() => navigate("/cpr-timer")}
-              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl bg-destructive/10 text-destructive hover:bg-destructive/20 active:scale-95 transition-all"
+              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl text-white ring-1 ring-white/20 active:scale-95 transition-all"
+              style={{ background: GRADIENT_DANGER }}
             >
               <Timer size={20} />
               <span className="text-[10px] font-heading font-bold leading-tight text-center">PCR Timer</span>
