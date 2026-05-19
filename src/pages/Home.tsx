@@ -64,22 +64,22 @@ type ToneStyle = {
 const toneStyles: Record<string, ToneStyle> = {
   // Plantão e demais — mesma tonalidade azul profundo
   deep: {
-    background: "linear-gradient(135deg, hsl(212 60% 18%) 0%, hsl(212 70% 26%) 100%)",
-    iconBg: "bg-white/15 ring-1 ring-white/25",
+    background: "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)",
+    iconBg: "bg-white/18 ring-1 ring-white/30",
     iconColor: "text-white",
-    titleColor: "text-white",
-    subColor: "text-white/75",
-    ring: "ring-1 ring-white/10",
-    ecgColor: "text-white",
-  },
-  // Emergência — vermelho semântico com texto azul para contraste
-  danger: {
-    background: "linear-gradient(135deg, hsl(0 75% 45%) 0%, hsl(0 80% 55%) 100%)",
-    iconBg: "bg-white ring-1 ring-white/40",
-    iconColor: "text-primary",
     titleColor: "text-white",
     subColor: "text-white/85",
     ring: "ring-1 ring-white/15",
+    ecgColor: "text-white",
+  },
+  // Emergência — vermelho semântico com texto branco e ícone azul
+  danger: {
+    background: "linear-gradient(135deg, hsl(0 78% 42%) 0%, hsl(0 82% 54%) 100%)",
+    iconBg: "bg-white ring-1 ring-white/50",
+    iconColor: "text-primary",
+    titleColor: "text-white",
+    subColor: "text-white/90",
+    ring: "ring-1 ring-white/20",
     ecgColor: "text-white",
   },
 };
