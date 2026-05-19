@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import { Home, Search, Activity, GraduationCap, User } from "lucide-react";
+import { Home, Search, Activity, GraduationCap } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { hapticLight } from "@/lib/haptics";
 import { motion } from "framer-motion";
@@ -10,7 +10,6 @@ const tabs = [
   { path: "/search", icon: Search, label: "Buscar" },
   { path: "/duty", icon: Activity, label: "Plantão" },
   { path: "/study-dashboard", icon: GraduationCap, label: "Estudo" },
-  { path: "/profile", icon: User, label: "Conta" },
 ];
 
 export default function BottomNav() {
