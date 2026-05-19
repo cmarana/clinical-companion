@@ -972,24 +972,26 @@ export default function Calculators() {
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2.5">
           {filtered.map((calc) => (
             <button
               type="button"
               key={calc.id}
               onClick={() => openCalculator(calc.id)}
-              className={`text-left bg-card rounded-[20px] shadow-sm hover:shadow-md active:scale-[0.98] transition-all duration-200 border-0 ${
-                activeCalc === calc.id ? "ring-2 ring-primary shadow-md" : ""
+              className={`text-left relative overflow-hidden rounded-2xl text-white shadow-md ring-1 ring-white/15 hover:shadow-lg active:scale-[0.98] transition-all ${
+                activeCalc === calc.id ? "ring-2 ring-white/60" : ""
               }`}
+              style={{ background: "linear-gradient(135deg, hsl(212 64% 16%) 0%, hsl(212 72% 28%) 100%)" }}
               aria-pressed={activeCalc === calc.id}
             >
-              <div className="flex items-center gap-3 p-4">
-                <div className="w-10 h-10 rounded-2xl bg-primary/10 dark:bg-primary/20 flex items-center justify-center text-primary">
+              <div className="absolute -top-6 -right-6 w-16 h-16 rounded-full bg-white/10 blur-2xl pointer-events-none" />
+              <div className="relative flex items-center gap-2.5 p-3">
+                <div className="w-9 h-9 rounded-xl bg-white/18 ring-1 ring-white/30 flex items-center justify-center text-white shrink-0 [&_svg]:!text-white [&_svg]:!stroke-white">
                   {calc.icon}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-heading font-semibold text-[13px]">{calc.title}</p>
-                  <p className="text-[11px] text-muted-foreground mt-0.5">{calc.description}</p>
+                  <p className="font-heading font-semibold text-[12.5px] text-white leading-tight">{calc.title}</p>
+                  <p className="text-[10.5px] text-white/80 mt-0.5 line-clamp-2">{calc.description}</p>
                 </div>
               </div>
             </button>
