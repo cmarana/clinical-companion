@@ -93,8 +93,20 @@ export default function TermsOfUse() {
           </section>
 
           <section>
-            <h2 className="text-base font-semibold text-foreground mb-2">11. Contato</h2>
-            <p>Para dúvidas sobre estes Termos, entre em contato pelo e-mail disponível na seção de Suporte do Aplicativo.</p>
+            <h2 className="text-base font-semibold text-foreground mb-2">11. Uso de Inteligência Artificial no Suporte</h2>
+            <p>O atendimento de suporte do PULSO utiliza <strong className="text-foreground">assistente de IA generativa</strong> como primeira camada de atendimento. Ao usar o suporte, você reconhece que:</p>
+            <ul className="list-disc list-inside space-y-1 mt-1">
+              <li>A primeira resposta é gerada automaticamente por IA com base na sua descrição da dúvida.</li>
+              <li>Respostas da IA têm caráter informativo e podem conter imprecisões; sempre confirme com a equipe humana em casos críticos.</li>
+              <li>A IA <strong className="text-foreground">não deve ser usada para discutir dados de pacientes identificáveis</strong>. Não envie nome, CPF, prontuário ou qualquer dado sensível de terceiros.</li>
+              <li>Se a IA não resolver, você pode acionar atendimento humano por WhatsApp ou e-mail diretamente no chat de suporte.</li>
+              <li>As conversas de suporte podem ser revisadas pela equipe interna exclusivamente para melhoria do serviço e treinamento de atendimento.</li>
+            </ul>
+          </section>
+
+          <section>
+            <h2 className="text-base font-semibold text-foreground mb-2">12. Contato</h2>
+            <p>Para dúvidas sobre estes Termos, acesse a <strong className="text-foreground">Central de Ajuda</strong> em <em>/help</em>, fale pelo WhatsApp ou pelo e-mail disponível na seção de Suporte do Aplicativo.</p>
           </section>
         </div>
       </div>

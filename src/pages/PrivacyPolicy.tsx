@@ -47,40 +47,65 @@ export default function PrivacyPolicy() {
           </section>
 
           <section>
-            <h2 className="text-base font-semibold text-foreground mb-2">4. Finalidade do Tratamento</h2>
-            <p className="mb-2">Os dados são tratados para as seguintes finalidades (Art. 7º, LGPD):</p>
+            <h2 className="text-base font-semibold text-foreground mb-2">4. Bases Legais e Finalidades do Tratamento</h2>
+            <p className="mb-2">Tratamos seus dados com fundamento nas seguintes <strong className="text-foreground">bases legais</strong> previstas no Art. 7º da LGPD:</p>
             <ul className="list-disc list-inside space-y-1">
-              <li><strong className="text-foreground">Execução do contrato:</strong> fornecer acesso ao Aplicativo e seus recursos.</li>
-              <li><strong className="text-foreground">Legítimo interesse:</strong> melhorar a experiência do usuário e personalizar conteúdo.</li>
-              <li><strong className="text-foreground">Consentimento:</strong> envio de notificações push e comunicações promocionais.</li>
-              <li><strong className="text-foreground">Obrigação legal:</strong> manter registros conforme legislação vigente.</li>
+              <li><strong className="text-foreground">Execução de contrato (Art. 7º, V):</strong> criação de conta, autenticação, fornecimento dos recursos do Aplicativo e processamento de pagamentos.</li>
+              <li><strong className="text-foreground">Legítimo interesse (Art. 7º, IX):</strong> métricas de uso anonimizadas, prevenção a fraude, segurança da plataforma e melhoria contínua do produto.</li>
+              <li><strong className="text-foreground">Consentimento (Art. 7º, I):</strong> envio de notificações push, e-mails de marketing e participação em pesquisas. Pode ser revogado a qualquer momento em Perfil → Notificações.</li>
+              <li><strong className="text-foreground">Cumprimento de obrigação legal (Art. 7º, II):</strong> guarda de registros fiscais, contábeis e atendimento a requisições de autoridades competentes.</li>
+              <li><strong className="text-foreground">Proteção ao crédito (Art. 7º, X):</strong> análise antifraude no processamento de assinaturas.</li>
             </ul>
           </section>
 
           <section>
-            <h2 className="text-base font-semibold text-foreground mb-2">5. Compartilhamento de Dados</h2>
+            <h2 className="text-base font-semibold text-foreground mb-2">5. Uso de Inteligência Artificial</h2>
+            <div className="bg-primary/10 border border-primary/20 rounded-lg p-4 space-y-2">
+              <p className="font-medium text-foreground">🤖 Como a IA trata seus dados:</p>
+              <ul className="list-disc list-inside space-y-1">
+                <li><strong className="text-foreground">IA Clínica:</strong> consultas são enviadas a provedores de modelos (Google Gemini) via gateway seguro. <strong className="text-foreground">Não armazenamos</strong> o conteúdo das consultas em nossos servidores.</li>
+                <li><strong className="text-foreground">Suporte com IA:</strong> mensagens enviadas ao chat de suporte são processadas por IA generativa para gerar a primeira resposta. Mensagens podem ser registradas para auditoria e melhoria do atendimento.</li>
+                <li>Não usamos seus dados pessoais para <strong className="text-foreground">treinar modelos de IA de terceiros</strong>. Os provedores contratados não retêm os prompts.</li>
+                <li>Você não deve inserir dados identificáveis de pacientes em nenhuma interação com IA.</li>
+              </ul>
+            </div>
+          </section>
+
+          <section>
+            <h2 className="text-base font-semibold text-foreground mb-2">6. Compartilhamento de Dados</h2>
             <p className="mb-2">Seus dados podem ser compartilhados com:</p>
             <ul className="list-disc list-inside space-y-1">
               <li><strong className="text-foreground">Stripe:</strong> processamento de pagamentos (certificado PCI DSS).</li>
-              <li><strong className="text-foreground">Provedores de infraestrutura:</strong> hospedagem e banco de dados com servidores seguros.</li>
+              <li><strong className="text-foreground">Provedores de infraestrutura:</strong> hospedagem (Supabase, Vercel) e banco de dados com servidores seguros.</li>
+              <li><strong className="text-foreground">Provedores de IA:</strong> Google (Gemini) para IA Clínica e suporte, via gateway seguro.</li>
               <li><strong className="text-foreground">Autoridades legais:</strong> quando exigido por lei ou ordem judicial.</li>
             </ul>
             <p className="mt-2">Não vendemos, alugamos ou comercializamos seus dados pessoais a terceiros.</p>
           </section>
 
           <section>
-            <h2 className="text-base font-semibold text-foreground mb-2">6. Seus Direitos (Art. 18, LGPD)</h2>
-            <p className="mb-2">Você tem direito a:</p>
+            <h2 className="text-base font-semibold text-foreground mb-2">7. Seus Direitos (Art. 18, LGPD)</h2>
+            <p className="mb-2">Como titular dos dados, você tem direito a:</p>
             <ul className="list-disc list-inside space-y-1">
-              <li>✅ Confirmar a existência de tratamento de seus dados.</li>
-              <li>✅ Acessar seus dados pessoais.</li>
-              <li>✅ Corrigir dados incompletos ou desatualizados.</li>
-              <li>✅ Solicitar anonimização ou eliminação de dados desnecessários.</li>
-              <li>✅ Portabilidade dos dados a outro fornecedor.</li>
+              <li>✅ Confirmar a existência de tratamento.</li>
+              <li>✅ Acessar e obter cópia dos seus dados.</li>
+              <li>✅ Corrigir dados incompletos, inexatos ou desatualizados.</li>
+              <li>✅ Solicitar anonimização, bloqueio ou eliminação de dados desnecessários.</li>
+              <li>✅ <strong className="text-foreground">Portabilidade</strong> dos dados a outro fornecedor.</li>
               <li>✅ Revogar consentimento a qualquer momento.</li>
-              <li>✅ Solicitar exclusão completa da conta e dados associados.</li>
+              <li>✅ Solicitar <strong className="text-foreground">exclusão completa</strong> da conta e dados associados.</li>
+              <li>✅ Obter informações sobre uso compartilhado dos seus dados.</li>
             </ul>
-            <p className="mt-2">Para exercer seus direitos, utilize a seção de perfil no Aplicativo ou entre em contato pelo canal de suporte.</p>
+
+            <div className="mt-4 bg-muted/40 border border-border rounded-lg p-4 space-y-2">
+              <p className="font-medium text-foreground">📩 Como exercer seus direitos:</p>
+              <ol className="list-decimal list-inside space-y-1">
+                <li><strong className="text-foreground">Auto-atendimento:</strong> em <em>Perfil → Privacidade</em> você pode baixar seus dados (portabilidade) e excluir sua conta diretamente.</li>
+                <li><strong className="text-foreground">WhatsApp:</strong> <a href="https://wa.me/message/ZTQKMSJFBHPWG1" target="_blank" rel="noopener noreferrer" className="text-primary underline">fale com o suporte</a> usando o assunto <em>"Exclusão LGPD"</em> ou <em>"Portabilidade LGPD"</em>.</li>
+                <li><strong className="text-foreground">E-mail:</strong> envie para <em>privacidade@pulsoemergencia.com.br</em> com cópia do documento de identidade.</li>
+              </ol>
+              <p className="text-xs">Respondemos solicitações em até <strong className="text-foreground">15 dias úteis</strong>, conforme Art. 19 da LGPD. Exclusão completa ocorre em até 30 dias após confirmação.</p>
+            </div>
           </section>
 
           <section>
