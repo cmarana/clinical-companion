@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import TopBar from "@/components/TopBar";
 import { hapticLight } from "@/lib/haptics";
+import { GRADIENT_DEEP_BLUE, GRADIENT_DANGER } from "@/lib/design-tokens";
 
 type Tool = {
   label: string;
