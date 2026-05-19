@@ -53,11 +53,11 @@ export default function DutyShiftTimer() {
         )}
       </div>
       {shiftStart ? (
-        <Button variant="outline" size="sm" onClick={endShift} className="gap-1.5 border-destructive/30 text-destructive hover:bg-destructive/10">
+        <Button variant="outline" size="sm" onClick={endShift} className="gap-1.5 bg-white/10 border-white/30 text-white hover:bg-white/20">
           <Square size={14} /> Encerrar
         </Button>
       ) : (
-        <Button size="sm" onClick={startShift} className="gap-1.5">
+        <Button size="sm" onClick={startShift} className="gap-1.5 bg-white text-primary hover:bg-white/90">
           <Play size={14} /> Iniciar
         </Button>
       )}
