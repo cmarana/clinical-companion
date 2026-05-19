@@ -458,7 +458,7 @@ export default function FullProtocols() {
                           >
                             <Star
                               size={14}
-                              className={fav ? "fill-amber-500 text-amber-500" : "text-muted-foreground"}
+                              className={fav ? "fill-primary text-primary" : "text-muted-foreground"}
                             />
                           </button>
                           <ChevronRight size={16} className="text-muted-foreground shrink-0" />
