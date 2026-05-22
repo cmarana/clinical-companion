@@ -108,6 +108,7 @@ const PrescriptionChecker = lazy(() => import("@/pages/PrescriptionChecker"));
 const Rounds = lazy(() => import("@/pages/Rounds"));
 const DischargeSummary = lazy(() => import("@/pages/DischargeSummary"));
 const ConductComparator = lazy(() => import("@/pages/ConductComparator"));
+const Demo = lazy(() => import("@/pages/Demo"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
