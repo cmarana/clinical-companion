@@ -124,6 +124,8 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading, profileComplete } = useAuth();
   const { hasAccess, loading: accessLoading } = useAppAccess();
   const twoFa = useTwoFactor();
+  // Demo mode bypasses all gates (auth, prelaunch, onboarding, 2FA).
+  if (isDemoMode()) return <>{children}</>;
   if (loading) return <LazyFallback />;
   if (!user) return <Navigate to="/auth" replace />;
   if (APP_LAUNCH_STATUS === "prelaunch") {
