@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState, useCallback, useMemo, u
 import { supabase } from "@/integrations/supabase/client";
 import type { User, Session } from "@supabase/supabase-js";
 import { getDeviceId, getDeviceLabel } from "@/lib/deviceId";
+import { isDemoMode, useDemoMode } from "@/lib/demoMode";
 
 interface SubscriptionInfo {
   subscribed: boolean;
