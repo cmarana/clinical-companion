@@ -21,6 +21,7 @@ import { useAppAccess } from "@/hooks/useAppAccess";
 import { useTwoFactor } from "@/hooks/useTwoFactor";
 import TwoFactorGate from "@/components/TwoFactorGate";
 import { SessionRevokedListener } from "@/components/SessionRevokedListener";
+import { isDemoMode } from "@/lib/demoMode";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Protocols = lazy(() => import("@/pages/Protocols"));
