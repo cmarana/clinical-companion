@@ -13,7 +13,7 @@ export default function DemoBanner() {
   };
 
   return (
-    <div className="fixed left-0 right-0 top-0 z-[100] w-full bg-gradient-to-r from-primary to-primary/80 text-primary-foreground shadow-md safe-area-top">
+    <div className="sticky top-0 z-[60] w-full bg-gradient-to-r from-primary to-primary/80 text-primary-foreground shadow-md">
       <div className="mx-auto flex max-w-7xl items-center justify-between gap-3 px-3 py-1.5 text-xs font-medium">
         <div className="flex items-center gap-2 min-w-0">
           <Sparkles className="h-3.5 w-3.5 shrink-0" />
