@@ -179,6 +179,7 @@ const AppRoutes = () => (
       <Route path="/landing-original" element={<Landing />} />
       <Route path="/coming-soon" element={<ComingSoon />} />
       <Route path="/prelaunch" element={<PrelaunchLanding />} />
+      <Route path="/demo" element={<Demo />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/terms" element={<TermsOfUse />} />
