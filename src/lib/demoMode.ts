@@ -16,12 +16,14 @@ export function isDemoMode(): boolean {
 export function enterDemoMode() {
   try {
     sessionStorage.setItem(KEY, "1");
+    window.dispatchEvent(new Event("pulso:demo-changed"));
   } catch { /* noop */ }
 }
 
 export function exitDemoMode() {
   try {
     sessionStorage.removeItem(KEY);
+    window.dispatchEvent(new Event("pulso:demo-changed"));
   } catch { /* noop */ }
 }
 
