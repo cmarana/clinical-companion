@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { getDeviceId } from "@/lib/deviceId";
+import { isDemoMode } from "@/lib/demoMode";
 
 interface TwoFactorState {
   loading: boolean;
@@ -22,7 +23,7 @@ export function useTwoFactor(): TwoFactorState {
   const [trustedUntil, setTrustedUntil] = useState<string | null>(null);
 
   const load = useCallback(async () => {
-    if (!user) {
+    if (isDemoMode() || !user) {
       setLoading(false);
       setEnabled(false);
       setDeviceTrusted(false);

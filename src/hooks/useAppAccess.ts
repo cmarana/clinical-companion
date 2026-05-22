@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
 import { APP_ACCESS_ROLES, type AppAccessRole } from "@/config/launchStatus";
+import { isDemoMode } from "@/lib/demoMode";
 
 /**
  * Verifica se o usuário autenticado tem alguma das roles que liberam
@@ -14,6 +15,11 @@ export function useAppAccess() {
 
   useEffect(() => {
     let active = true;
+    if (isDemoMode()) {
+      setHasAccess(true);
+      setRole("tester");
+      return;
+    }
     if (!user) {
       setHasAccess(false);
       setRole(null);

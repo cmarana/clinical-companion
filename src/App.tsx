@@ -21,6 +21,7 @@ import { useAppAccess } from "@/hooks/useAppAccess";
 import { useTwoFactor } from "@/hooks/useTwoFactor";
 import TwoFactorGate from "@/components/TwoFactorGate";
 import { SessionRevokedListener } from "@/components/SessionRevokedListener";
+import { isDemoMode } from "@/lib/demoMode";
 
 const Home = lazy(() => import("@/pages/Home"));
 const Protocols = lazy(() => import("@/pages/Protocols"));
@@ -107,6 +108,7 @@ const PrescriptionChecker = lazy(() => import("@/pages/PrescriptionChecker"));
 const Rounds = lazy(() => import("@/pages/Rounds"));
 const DischargeSummary = lazy(() => import("@/pages/DischargeSummary"));
 const ConductComparator = lazy(() => import("@/pages/ConductComparator"));
+const Demo = lazy(() => import("@/pages/Demo"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -123,6 +125,8 @@ function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading, profileComplete } = useAuth();
   const { hasAccess, loading: accessLoading } = useAppAccess();
   const twoFa = useTwoFactor();
+  // Demo mode bypasses all gates (auth, prelaunch, onboarding, 2FA).
+  if (isDemoMode()) return <>{children}</>;
   if (loading) return <LazyFallback />;
   if (!user) return <Navigate to="/auth" replace />;
   if (APP_LAUNCH_STATUS === "prelaunch") {
@@ -175,6 +179,7 @@ const AppRoutes = () => (
       <Route path="/landing-original" element={<Landing />} />
       <Route path="/coming-soon" element={<ComingSoon />} />
       <Route path="/prelaunch" element={<PrelaunchLanding />} />
+      <Route path="/demo" element={<Demo />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/terms" element={<TermsOfUse />} />

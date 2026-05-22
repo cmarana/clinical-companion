@@ -13,6 +13,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { Moon, Sun, Eclipse } from "lucide-react";
 import { hapticLight } from "@/lib/haptics";
 import { useIdlePrefetch } from "@/hooks/useRoutePrefetch";
+import DemoBanner from "./DemoBanner";
 
 const IDLE_PREFETCH_ROUTES = [
   "/home",
@@ -44,6 +45,7 @@ export default function AppLayout() {
       <div className="min-h-screen flex w-full">
         <AppSidebar />
         <div className="flex-1 flex flex-col min-w-0">
+          <DemoBanner />
           {/* Desktop sidebar trigger */}
           <header className="hidden md:flex h-10 items-center border-b border-border bg-card/80 backdrop-blur-sm px-3 safe-area-top">
             <SidebarTrigger />

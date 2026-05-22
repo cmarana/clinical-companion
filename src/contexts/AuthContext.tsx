@@ -2,6 +2,7 @@ import { createContext, useContext, useEffect, useState, useCallback, useMemo, u
 import { supabase } from "@/integrations/supabase/client";
 import type { User, Session } from "@supabase/supabase-js";
 import { getDeviceId, getDeviceLabel } from "@/lib/deviceId";
+import { isDemoMode, useDemoMode } from "@/lib/demoMode";
 
 interface SubscriptionInfo {
   subscribed: boolean;
@@ -259,12 +260,28 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     setProfileComplete(null);
   };
 
+  const demoActive = useDemoMode();
+
   const value = useMemo(
-    () => ({
-      user, session, loading, subscription, profileComplete,
-      checkSubscription, recheckProfile: checkProfile, signOut,
-    }),
-    [user, session, loading, subscription, profileComplete, checkSubscription, checkProfile]
+    () => {
+      if (demoActive) {
+        return {
+          user: { id: "demo-user", email: "demo@pulso.app", user_metadata: { full_name: "Dr. Demo" } } as unknown as User,
+          session: null,
+          loading: false,
+          subscription: { subscribed: true, productId: "demo", subscriptionEnd: null, isTrial: false, trialDaysLeft: 0 },
+          profileComplete: true,
+          checkSubscription: async () => {},
+          recheckProfile: async () => {},
+          signOut: async () => {},
+        };
+      }
+      return {
+        user, session, loading, subscription, profileComplete,
+        checkSubscription, recheckProfile: checkProfile, signOut,
+      };
+    },
+    [demoActive, user, session, loading, subscription, profileComplete, checkSubscription, checkProfile]
   );
 
   return (
