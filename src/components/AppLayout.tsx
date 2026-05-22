@@ -13,6 +13,7 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { Moon, Sun, Eclipse } from "lucide-react";
 import { hapticLight } from "@/lib/haptics";
 import { useIdlePrefetch } from "@/hooks/useRoutePrefetch";
+import DemoBanner from "./DemoBanner";
 
 const IDLE_PREFETCH_ROUTES = [
   "/home",
