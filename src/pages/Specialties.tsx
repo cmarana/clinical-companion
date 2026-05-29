@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   Heart, Brain, Activity, Wind, Bone, Baby, Stethoscope, Bug, Pill, Droplets,
-  ShieldAlert, ScanLine, AlertTriangle, Sparkles, Eye, Ear, Hand, FlaskConical,
+  ShieldAlert, ScanLine, Sparkles, Eye, Ear, Hand, FlaskConical,
   ClipboardList, Users, Flame, FileText, Layers, Search, ChevronRight, Beaker,
   Soup, MessagesSquare,
 } from "lucide-react";
@@ -42,16 +42,6 @@ const iconByCat: Record<string, any> = {
   other_emergencies: Layers,
 };
 
-const tones = ["primary", "danger", "violet", "emerald", "amber", "sky", "slate"] as const;
-const toneStyles: Record<(typeof tones)[number], string> = {
-  primary: "bg-primary/10 text-primary",
-  danger: "bg-destructive/10 text-destructive",
-  slate: "bg-slate-500/10 text-slate-600 dark:text-slate-300",
-  emerald: "bg-primary/10 text-primary dark:text-primary",
-  amber: "bg-destructive/10 text-destructive dark:text-destructive",
-  violet: "bg-primary/10 text-primary dark:text-primary",
-  sky: "bg-primary/10 text-primary dark:text-primary",
-};
 
 export default function Specialties() {
   const navigate = useNavigate();
