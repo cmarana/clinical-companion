@@ -266,16 +266,14 @@ function ClinicalAIContent() {
   useEffect(() => {
     const count = messages.length;
     if (count > lastMsgCount.current) {
-      // Nova mensagem adicionada — se for do assistente, scroll para cima dela
       const last = messages[count - 1];
       if (last?.role === "assistant") {
-        // Aguarda 1 frame para o DOM renderizar, depois sobe ao início da msg
+        // Posiciona o início da resposta sem rolagem suave (evita "puxar" a tela enquanto o usuário lê)
         requestAnimationFrame(() => {
-          messagesStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+          messagesStartRef.current?.scrollIntoView({ behavior: "auto", block: "start" });
         });
       } else {
-        // Mensagem do usuário — vai para o final para ver o indicador de loading
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        messagesEndRef.current?.scrollIntoView({ behavior: "auto", block: "end" });
       }
       lastMsgCount.current = count;
     }
