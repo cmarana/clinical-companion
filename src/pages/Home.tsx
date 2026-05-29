@@ -53,7 +53,7 @@ const modes = [
 
 // Paleta única: azul Plantão dominante. Vermelho APENAS em Emergência (semântico).
 // Tokens centralizados em src/lib/design-tokens.ts
-import { GRADIENT_BRIGHT_BLUE } from "@/lib/design-tokens";
+
 
 export default function Home() {
   const navigate = useNavigate();
@@ -193,17 +193,17 @@ export default function Home() {
       </div>
 
 
-      {/* ── HERO: MODO PLANTÃO — sólido, sem blur ─── */}
+      {/* ── HERO: MODO PLANTÃO — Premium v2 (claro, faixa primária) ─── */}
       <div className="px-4 mt-5">
         <motion.button
           whileTap={{ scale: 0.985 }}
           onClick={() => go("/duty", "Modo Plantão")}
-          className="relative w-full overflow-hidden rounded-2xl text-left text-white ring-1 ring-white/10"
-          style={{ background: GRADIENT_BRIGHT_BLUE }}
+          className="relative w-full overflow-hidden rounded-2xl text-left bg-card ring-1 ring-border hover:ring-primary/30 shadow-sm hover:shadow-md transition-all"
         >
-          {/* decorative ECG line */}
+          <span aria-hidden className="absolute left-0 top-0 bottom-0 w-1 bg-primary" />
+          {/* ECG decorativo discreto */}
           <svg
-            className="absolute inset-x-0 bottom-0 w-full h-20 opacity-20 pointer-events-none"
+            className="absolute inset-x-0 bottom-0 w-full h-16 text-primary opacity-[0.08] pointer-events-none"
             viewBox="0 0 400 100"
             preserveAspectRatio="none"
             fill="none"
@@ -213,26 +213,28 @@ export default function Home() {
             <path d="M0 60 L80 60 L95 60 L105 30 L115 85 L130 60 L200 60 L215 60 L225 20 L235 90 L250 60 L400 60" />
           </svg>
 
-          <div className="relative p-5 lg:p-7">
+          <div className="relative p-5 pl-6 lg:p-7 lg:pl-8">
             <div className="flex items-center gap-2 mb-3">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/12 ring-1 ring-white/20 text-[10px] font-semibold uppercase tracking-wider">
-                <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary/10 text-primary text-[10px] font-semibold uppercase tracking-wider">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
                 Modo principal
               </span>
             </div>
-            <h2 className="font-heading font-bold text-[22px] lg:text-2xl leading-tight">
+            <h2 className="font-heading font-bold text-[22px] lg:text-2xl leading-tight text-foreground">
               Modo Plantão
             </h2>
-            <p className="text-[13px] lg:text-sm text-white/75 mt-1.5 max-w-sm leading-snug">
+            <p className="text-[13px] lg:text-sm text-muted-foreground mt-1.5 max-w-sm leading-snug">
               Emergências, condutas, doses, prescrições e ferramentas em um fluxo rápido.
             </p>
-            <div className="mt-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white text-primary font-heading font-semibold text-[13px]">
+            <div className="mt-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-primary text-primary-foreground font-heading font-semibold text-[13px]">
               Iniciar plantão
               <ArrowRight size={15} />
             </div>
           </div>
         </motion.button>
       </div>
+
+
 
 
       {/* ── EMERGÊNCIA EM 1 TOQUE ──────────────────────── */}
