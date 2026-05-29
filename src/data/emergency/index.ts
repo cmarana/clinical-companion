@@ -320,6 +320,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...vascularGeriatricsEmergencyProtocols.filter(p => p.id === "delirium-elderly"),
       ...thoracicEntEmergencyProtocols.filter(p => p.id === "central-vertigo-emergency"),
       ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "other-emergencies"),
+      ...samuP2MissingBatch1Protocols.filter(p => p.categoryId === "other-emergencies"),
     ]),
   },
 ];
