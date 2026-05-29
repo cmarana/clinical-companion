@@ -104,21 +104,19 @@ export default function Home() {
   return (
     <div className="pb-28 max-w-lg md:max-w-4xl lg:max-w-5xl mx-auto pt-safe-fb">
       {/* ── HEADER ──────────────────────────────────────── */}
-      <div
-        className="relative sticky z-app-chrome top-safe-fb flex items-center justify-between h-14 px-4 border-b border-white/10 text-white overflow-hidden"
-        style={{ background: GRADIENT_DEEP_BLUE }}
-      >
+      <div className="relative sticky z-app-chrome top-safe-fb flex items-center justify-between h-14 px-4 bg-card border-b border-border text-foreground overflow-hidden">
+        <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary" aria-hidden="true" />
         {/* ECG animado de fundo, atravessando a barra */}
         <svg
           aria-hidden="true"
           viewBox="0 0 400 56"
           preserveAspectRatio="none"
-          className="absolute inset-0 w-full h-full pointer-events-none opacity-40"
+          className="absolute inset-0 w-full h-full pointer-events-none opacity-[0.08] text-primary"
         >
           <path
             d="M0 28 L80 28 L100 28 L108 18 L116 38 L122 8 L130 48 L138 28 L400 28"
             fill="none"
-            stroke="white"
+            stroke="currentColor"
             strokeWidth="1.6"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -132,21 +130,21 @@ export default function Home() {
 
         <button
           onClick={() => navigate("/")}
-          className="relative flex items-center gap-2.5 select-none text-white"
+          className="relative flex items-center gap-2.5 select-none text-foreground"
         >
-          <PulsoLogo size={28} priority forceVariant="dark" />
-          <span className="font-heading font-bold text-base tracking-tight text-white">PULSO</span>
+          <PulsoLogo size={28} priority />
+          <span className="font-heading font-bold text-base tracking-tight text-foreground">PULSO</span>
         </button>
         <div className="relative flex items-center gap-1">
           {isAdmin && (
-            <button onClick={() => navigate("/admin")} className="p-2 rounded-full hover:bg-white/15 text-white" title="Painel Admin">
+            <button onClick={() => navigate("/admin")} className="p-2 rounded-full hover:bg-muted text-muted-foreground" title="Painel Admin">
               <Shield size={16} />
             </button>
           )}
-          <button onClick={() => { hapticLight(); toggleTheme(); }} className="p-2 rounded-full hover:bg-white/15 text-white/90" title={themeLabel}>
+          <button onClick={() => { hapticLight(); toggleTheme(); }} className="p-2 rounded-full hover:bg-muted text-muted-foreground" title={themeLabel}>
             {theme === "oled" ? <Eclipse size={16} /> : theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
           </button>
-          <button onClick={() => navigate("/notifications")} className="relative p-2 rounded-full hover:bg-white/15 text-white/90">
+          <button onClick={() => navigate("/notifications")} className="relative p-2 rounded-full hover:bg-muted text-muted-foreground">
             <Bell size={16} />
             {unreadCount > 0 && (
               <span className="absolute top-0.5 right-0.5 w-4 h-4 rounded-full bg-destructive text-destructive-foreground text-[9px] font-bold flex items-center justify-center">
@@ -154,10 +152,10 @@ export default function Home() {
               </span>
             )}
           </button>
-          <button onClick={() => navigate(user ? "/profile" : "/auth")} className="ml-1 rounded-full hover:ring-2 hover:ring-white/40 transition-all">
-            <Avatar className="w-8 h-8 ring-2 ring-white/30">
+          <button onClick={() => navigate(user ? "/profile" : "/auth")} className="ml-1 rounded-full hover:ring-2 hover:ring-primary/40 transition-all">
+            <Avatar className="w-8 h-8 ring-2 ring-border">
               {avatarUrl ? <AvatarImage src={avatarUrl} alt="Avatar" /> : null}
-              <AvatarFallback className="text-xs font-bold bg-white/15 text-white">{initials}</AvatarFallback>
+              <AvatarFallback className="text-xs font-bold bg-primary/10 text-primary">{initials}</AvatarFallback>
             </Avatar>
           </button>
         </div>
