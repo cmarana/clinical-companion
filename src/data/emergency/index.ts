@@ -59,6 +59,10 @@ import {
 } from "./combined_remaining";
 import { vascularGeriatricsEmergencyProtocols } from "./vascular_geriatrics";
 import { thoracicEntEmergencyProtocols } from "./thoracic_ent";
+import {
+  protocolAcidenteOfidico,
+  protocolIntoxicacaoOpioide,
+} from "./protocol_ofidico_opioide";
 
 export { SECTION_ORDER } from "./types";
 export type { EmergencyProtocol, EmergencyCategory, EmergencySection } from "./types";
@@ -220,6 +224,8 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...intoxicationProtocols5,
       ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "intoxication"),
       ...samuP1MissingBatch2Protocols.filter(p => p.categoryId === "intoxication"),
+      protocolAcidenteOfidico,
+      protocolIntoxicacaoOpioide,
     ]),
   },
   {
