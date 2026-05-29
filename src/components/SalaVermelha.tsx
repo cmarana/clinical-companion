@@ -94,10 +94,17 @@ export default function SalaVermelha() {
       const matchCat = activeCat === "Todos" || it.category === activeCat;
       if (!matchCat) return false;
       if (!q) return true;
+      // Códigos/tags SAMU do protocolo real (BC5, AC17, "samu", "samu192", ...)
+      const proto = getEmergencyProtocol(it.id);
+      const samuHaystack = [
+        ...(proto?.samuCodes ?? []),
+        ...(proto?.tags ?? []),
+      ].join(" ").toLowerCase();
       return (
         it.label.toLowerCase().includes(q) ||
         it.desc.toLowerCase().includes(q) ||
-        (it.keywords ?? "").toLowerCase().includes(q)
+        (it.keywords ?? "").toLowerCase().includes(q) ||
+        samuHaystack.includes(q)
       );
     });
   }, [query, activeCat]);
