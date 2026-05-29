@@ -298,8 +298,12 @@ export const emergencyCategories: EmergencyCategory[] = [
 ];
 
 // Aplica metadados SAMU 192 (samuCodes/samuLevel/samuSource + referência)
-// de forma idempotente, sem duplicar conteúdo nem alterar a ordem.
+// de forma idempotente. Constrói o mapa a partir do conjunto completo
+// antes de aplicar em cada categoria, para que protocolos de qualquer
+// categoria possam casar com os grupos definidos.
 import { applySamuMetadataAll, findEmergencyIdBySamuCode } from "./samuMapping";
+const _allFlat = emergencyCategories.flatMap(c => c.protocols);
+applySamuMetadataAll(_allFlat); // semeia o cache interno do resolvedor
 for (const cat of emergencyCategories) {
   cat.protocols = applySamuMetadataAll(cat.protocols);
 }

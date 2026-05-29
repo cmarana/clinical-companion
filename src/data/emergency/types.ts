@@ -24,6 +24,8 @@ export interface EmergencyProtocol {
   samuSource?: {
     title: string;
     url: string;
+    sbvUrl?: string;
+    savUrl?: string;
   };
 }
 
