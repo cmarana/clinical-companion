@@ -270,9 +270,9 @@ const AppRoutes = () => (
         <Route path="/rounds" element={<Rounds />} />
         <Route path="/discharge-summary" element={<DischargeSummary />} />
         <Route path="/conduct-comparator" element={<ConductComparator />} />
-        <Route path="/samu-protocols" element={<Suspense fallback={<ProtocolListSkeleton />}><SamuProtocols /></Suspense>} />
-        <Route path="/samu-protocols/gaps" element={<Suspense fallback={<ProtocolListSkeleton />}><SamuGaps /></Suspense>} />
-        <Route path="/samu-protocols/:code" element={<Suspense fallback={<ProtocolDetailSkeleton />}><SamuProtocolDetail /></Suspense>} />
+        <Route path="/samu-protocols" element={<Navigate to="/emergency" replace />} />
+        <Route path="/samu-protocols/gaps" element={<Navigate to="/emergency" replace />} />
+        <Route path="/samu-protocols/:code" element={<SamuCodeRedirect />} />
       </Route>
       <Route path="/" element={<SmartRoot />} />
       <Route path="/status" element={<Status />} />
