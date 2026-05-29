@@ -249,6 +249,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     protocols: dedup([
       ...gastroenterologyEmergencyProtocols,
       ...thoracicEntEmergencyProtocols.filter(p => p.id === "boerhaave-esophageal-perforation"),
+      ...samuP1MissingBatch3Protocols.filter(p => p.categoryId === "gastroenterology-emergency"),
     ]),
   },
   {
