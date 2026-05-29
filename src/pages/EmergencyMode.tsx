@@ -180,6 +180,14 @@ function EmergencyModeContent() {
                       <span className="flex-1 text-[12.5px] font-heading font-medium text-foreground leading-snug">
                         {p.title}
                       </span>
+                      {p.samuCodes && p.samuCodes.length > 0 && (
+                        <span
+                          className="text-[9px] font-heading font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-primary/10 text-primary border border-primary/20 flex-shrink-0"
+                          title={`SAMU 192 — ${p.samuCodes.join(", ")}`}
+                        >
+                          SAMU
+                        </span>
+                      )}
                       <ChevronRight size={13} className="text-muted-foreground/60 shrink-0" />
                     </button>
                   ))}
