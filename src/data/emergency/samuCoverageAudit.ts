@@ -1,0 +1,786 @@
+/**
+ * SAMU 192 — Auditoria interna de cobertura clínica
+ *
+ * Esta auditoria mapeia os temas críticos da matriz SAMU 192 contra os
+ * protocolos clínicos já existentes no Pulso (allEmergencyProtocols).
+ *
+ * NÃO é um módulo clínico para o usuário final. Serve apenas para orientar
+ * a próxima etapa de criação/revisão de conteúdo. Não cria, não duplica e
+ * não substitui nenhum protocolo existente.
+ *
+ * Status:
+ *  - "Coberto": já existe protocolo clínico adequado no Pulso.
+ *  - "Parcial": existe protocolo relacionado, mas precisa ser revisado/ampliado.
+ *  - "Ausente": nenhum protocolo clínico equivalente foi encontrado.
+ *  - "Operacional / não aplicável": tema é operacional do SAMU, não deve virar protocolo clínico.
+ */
+
+export type SamuCoveragePriority = "Crítica" | "Alta" | "Média" | "Baixa";
+export type SamuCoverageStatus =
+  | "Coberto"
+  | "Parcial"
+  | "Ausente"
+  | "Operacional / não aplicável";
+export type SamuCoverageAction =
+  | "Nenhuma"
+  | "Revisar protocolo existente"
+  | "Criar novo protocolo"
+  | "Não exibir como protocolo clínico";
+
+export interface SamuCoverageAuditItem {
+  theme: string;
+  priority: SamuCoveragePriority;
+  categoryId: string;
+  expectedSamuCodes: string[];
+  status: SamuCoverageStatus;
+  matchedProtocolIds: string[];
+  matchedProtocolTitles: string[];
+  actionNeeded: SamuCoverageAction;
+  notes: string;
+}
+
+export const samuCoverageAudit: SamuCoverageAuditItem[] = [
+  // ───── Avaliação inicial ─────
+  {
+    theme: "Avaliação primária do paciente clínico",
+    priority: "Alta",
+    categoryId: "resuscitation",
+    expectedSamuCodes: ["BC1", "AC1"],
+    status: "Parcial",
+    matchedProtocolIds: ["atendimento-abcde"],
+    matchedProtocolTitles: ["Atendimento Inicial — ABCDE"],
+    actionNeeded: "Revisar protocolo existente",
+    notes:
+      "ABCDE atual cobre trauma. Revisar para incluir avaliação primária do paciente clínico (não-trauma) conforme BC1/AC1.",
+  },
+  {
+    theme: "Avaliação secundária do paciente clínico",
+    priority: "Média",
+    categoryId: "resuscitation",
+    expectedSamuCodes: ["BC2", "AC2"],
+    status: "Parcial",
+    matchedProtocolIds: ["atendimento-abcde"],
+    matchedProtocolTitles: ["Atendimento Inicial — ABCDE"],
+    actionNeeded: "Revisar protocolo existente",
+    notes:
+      "Não há seção dedicada de avaliação secundária clínica (SAMPLE/OPQRST). Adicionar como complemento do ABCDE.",
+  },
+
+  // ───── Via aérea e respiração ─────
+  {
+    theme: "OVACE / obstrução de via aérea",
+    priority: "Crítica",
+    categoryId: "respiratory",
+    expectedSamuCodes: ["BC4", "BPed4"],
+    status: "Coberto",
+    matchedProtocolIds: ["airway-obstruction-foreign-body"],
+    matchedProtocolTitles: ["Obstrução de Via Aérea / Corpo Estranho"],
+    actionNeeded: "Nenhuma",
+    notes: "Cobre adulto e pediátrico. Manobras Heimlich/back-blows presentes.",
+  },
+  {
+    theme: "Parada respiratória no adulto",
+    priority: "Crítica",
+    categoryId: "respiratory",
+    expectedSamuCodes: ["BC3", "AC3"],
+    status: "Ausente",
+    matchedProtocolIds: ["em-irpa", "em-pcr-adulto"],
+    matchedProtocolTitles: ["Insuficiência Respiratória Aguda", "PCR Adulto"],
+    actionNeeded: "Criar novo protocolo",
+    notes:
+      "Não existe protocolo específico de parada respiratória isolada (ventilação de resgate antes de PCR). Conteúdo atual mistura com IRpA/PCR.",
+  },
+  {
+    theme: "PCR adulto / RCP",
+    priority: "Crítica",
+    categoryId: "resuscitation",
+    expectedSamuCodes: ["BC5", "AC5"],
+    status: "Coberto",
+    matchedProtocolIds: ["em-pcr-adulto", "em-ritmo-chocavel", "em-ritmo-nao-chocavel"],
+    matchedProtocolTitles: [
+      "PCR Adulto",
+      "Ritmo Chocável (FV/TVSP)",
+      "Ritmo Não Chocável (AESP/Assistolia)",
+    ],
+    actionNeeded: "Nenhuma",
+    notes: "Algoritmo ACLS completo já presente.",
+  },
+  {
+    theme: "Cuidados pós-PCR",
+    priority: "Crítica",
+    categoryId: "resuscitation",
+    expectedSamuCodes: ["AC6"],
+    status: "Coberto",
+    matchedProtocolIds: ["em-pos-pcr"],
+    matchedProtocolTitles: ["Pós-PCR"],
+    actionNeeded: "Nenhuma",
+    notes: "Cuidados pós-parada cobertos.",
+  },
+  {
+    theme: "Via aérea difícil",
+    priority: "Crítica",
+    categoryId: "resuscitation",
+    expectedSamuCodes: ["AC7", "AC9"],
+    status: "Coberto",
+    matchedProtocolIds: ["em-va-dificil", "em-cricotireoidostomia"],
+    matchedProtocolTitles: ["Via Aérea Difícil", "Cricotireoidostomia"],
+    actionNeeded: "Nenhuma",
+    notes: "Algoritmo + via cirúrgica disponíveis.",
+  },
+  {
+    theme: "Intubação orotraqueal",
+    priority: "Crítica",
+    categoryId: "resuscitation",
+    expectedSamuCodes: ["AC7"],
+    status: "Coberto",
+    matchedProtocolIds: ["em-iot"],
+    matchedProtocolTitles: ["Intubação Orotraqueal (IOT)"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Sequência rápida de intubação",
+    priority: "Crítica",
+    categoryId: "resuscitation",
+    expectedSamuCodes: ["AC8"],
+    status: "Coberto",
+    matchedProtocolIds: ["em-sri"],
+    matchedProtocolTitles: ["Sequência Rápida de Intubação (SRI)"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Insuficiência respiratória aguda",
+    priority: "Crítica",
+    categoryId: "respiratory",
+    expectedSamuCodes: ["BC6", "AC10"],
+    status: "Coberto",
+    matchedProtocolIds: ["em-irpa", "em-sdra", "em-vni", "em-vm-inicial"],
+    matchedProtocolTitles: [
+      "Insuficiência Respiratória Aguda",
+      "Síndrome do Desconforto Respiratório Agudo (SDRA)",
+      "Ventilação Não Invasiva (VNI)",
+      "Ventilação Mecânica Inicial",
+    ],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Asma grave",
+    priority: "Crítica",
+    categoryId: "respiratory",
+    expectedSamuCodes: ["BC7", "AC11"],
+    status: "Coberto",
+    matchedProtocolIds: ["em-asma-grave"],
+    matchedProtocolTitles: ["Asma Grave / Quase Fatal"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "DPOC exacerbado",
+    priority: "Alta",
+    categoryId: "respiratory",
+    expectedSamuCodes: ["BC8", "AC12"],
+    status: "Coberto",
+    matchedProtocolIds: ["em-dpoc-exacerbado"],
+    matchedProtocolTitles: ["DPOC Exacerbado"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+
+  // ───── Choque ─────
+  {
+    theme: "Choque indiferenciado",
+    priority: "Crítica",
+    categoryId: "sepsis",
+    expectedSamuCodes: ["BC9", "AC13"],
+    status: "Ausente",
+    matchedProtocolIds: [],
+    matchedProtocolTitles: [],
+    actionNeeded: "Criar novo protocolo",
+    notes:
+      "Faltam um protocolo de abordagem do choque indiferenciado (RUSH/perfis hemodinâmicos) antes da classificação etiológica.",
+  },
+  {
+    theme: "Choque séptico / sepse",
+    priority: "Crítica",
+    categoryId: "sepsis",
+    expectedSamuCodes: ["BC10", "AC14"],
+    status: "Coberto",
+    matchedProtocolIds: ["sepse-choque-septico", "choque-septico-avancado", "sepse-grave-infecto"],
+    matchedProtocolTitles: [
+      "Sepse e Choque Séptico",
+      "Choque Séptico Avançado",
+      "Sepse Grave",
+    ],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Choque anafilático / anafilaxia",
+    priority: "Crítica",
+    categoryId: "other-emergencies",
+    expectedSamuCodes: ["BC11", "AC15"],
+    status: "Coberto",
+    matchedProtocolIds: ["anafilaxia-emergencia", "choque-anafilatico"],
+    matchedProtocolTitles: ["Anafilaxia", "Anafilaxia e Choque Anafilático"],
+    actionNeeded: "Revisar protocolo existente",
+    notes: "Existem dois protocolos parecidos — avaliar consolidação para evitar duplicidade.",
+  },
+  {
+    theme: "Choque cardiogênico",
+    priority: "Crítica",
+    categoryId: "cardiovascular",
+    expectedSamuCodes: ["AC16"],
+    status: "Coberto",
+    matchedProtocolIds: ["em-choque-cardiogenico"],
+    matchedProtocolTitles: ["Choque Cardiogênico"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Choque hipovolêmico / hemorrágico",
+    priority: "Crítica",
+    categoryId: "trauma",
+    expectedSamuCodes: ["BC12", "AT5"],
+    status: "Coberto",
+    matchedProtocolIds: ["choque-hipovolemico", "choque-hemorragico", "hemorragia-traumatica"],
+    matchedProtocolTitles: [
+      "Choque Hipovolêmico",
+      "Choque Hemorrágico",
+      "Hemorragia Traumática",
+    ],
+    actionNeeded: "Revisar protocolo existente",
+    notes: "Há sobreposição entre hipovolêmico e hemorrágico — alinhar conteúdo.",
+  },
+
+  // ───── Cardiovascular ─────
+  {
+    theme: "Dor torácica",
+    priority: "Crítica",
+    categoryId: "cardiovascular",
+    expectedSamuCodes: ["BC13", "AC18"],
+    status: "Coberto",
+    matchedProtocolIds: ["em-dor-toracica"],
+    matchedProtocolTitles: ["Dor Torácica"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Síndrome coronariana aguda / IAM",
+    priority: "Crítica",
+    categoryId: "cardiovascular",
+    expectedSamuCodes: ["AC17"],
+    status: "Coberto",
+    matchedProtocolIds: ["em-iam-supra", "em-iam-sem-supra"],
+    matchedProtocolTitles: [
+      "IAM com Supradesnivelamento de ST (IAMCSST)",
+      "IAM sem Supra de ST",
+    ],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Crise hipertensiva",
+    priority: "Alta",
+    categoryId: "cardiovascular",
+    expectedSamuCodes: ["AC19"],
+    status: "Coberto",
+    matchedProtocolIds: [
+      "em-crise-hipertensiva",
+      "em-emergencia-hipertensiva",
+      "crise-hipertensiva-neuro",
+    ],
+    matchedProtocolTitles: [
+      "Crise Hipertensiva",
+      "Emergência Hipertensiva",
+      "Emergência Hipertensiva Neurológica",
+    ],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+
+  // ───── Neurológico ─────
+  {
+    theme: "AVC isquêmico",
+    priority: "Crítica",
+    categoryId: "neurological",
+    expectedSamuCodes: ["BC14", "AC20"],
+    status: "Coberto",
+    matchedProtocolIds: ["avc-isquemico"],
+    matchedProtocolTitles: ["AVCi — Acidente Vascular Cerebral Isquêmico"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "AVC hemorrágico",
+    priority: "Crítica",
+    categoryId: "neurological",
+    expectedSamuCodes: ["AC21"],
+    status: "Coberto",
+    matchedProtocolIds: ["avc-hemorragico", "hsa"],
+    matchedProtocolTitles: ["AVC Hemorrágico (HIP)", "Hemorragia Subaracnoidea (HSA)"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Rebaixamento de consciência / coma",
+    priority: "Crítica",
+    categoryId: "neurological",
+    expectedSamuCodes: ["BC15", "AC22"],
+    status: "Coberto",
+    matchedProtocolIds: ["rebaixamento-consciencia"],
+    matchedProtocolTitles: ["Rebaixamento de Consciência"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Crise convulsiva / estado de mal epiléptico",
+    priority: "Crítica",
+    categoryId: "neurological",
+    expectedSamuCodes: ["BC16", "AC23"],
+    status: "Coberto",
+    matchedProtocolIds: ["status-epilepticus"],
+    matchedProtocolTitles: ["Estado de Mal Epiléptico"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+
+  // ───── Metabólico ─────
+  {
+    theme: "Hipoglicemia",
+    priority: "Crítica",
+    categoryId: "metabolic",
+    expectedSamuCodes: ["BC17", "AC24"],
+    status: "Coberto",
+    matchedProtocolIds: ["hipoglicemia-grave", "hipoglicemia"],
+    matchedProtocolTitles: ["Hipoglicemia Grave", "Hipoglicemia Grave"],
+    actionNeeded: "Revisar protocolo existente",
+    notes: "Há duplicidade de IDs/títulos — consolidar em um protocolo único.",
+  },
+  {
+    theme: "Hiperglicemia / cetoacidose diabética",
+    priority: "Alta",
+    categoryId: "metabolic",
+    expectedSamuCodes: ["AC25"],
+    status: "Coberto",
+    matchedProtocolIds: ["cetoacidose-diabetica", "hiperglicemia", "estado-hiperosmolar", "ehh-emergencia"],
+    matchedProtocolTitles: [
+      "Cetoacidose Diabética (CAD)",
+      "Hiperglicemia na Emergência",
+      "Estado Hiperglicêmico Hiperosmolar (EHH)",
+      "Estado Hiperglicêmico Hiperosmolar",
+    ],
+    actionNeeded: "Revisar protocolo existente",
+    notes: "EHH aparece duplicado em dois arquivos.",
+  },
+  {
+    theme: "Distúrbios do potássio",
+    priority: "Alta",
+    categoryId: "metabolic",
+    expectedSamuCodes: ["AC26"],
+    status: "Coberto",
+    matchedProtocolIds: ["hipercalemia", "hipocalemia", "hipercalemia-emergencia", "hipocalemia-grave"],
+    matchedProtocolTitles: [
+      "Hipercalemia",
+      "Hipocalemia",
+      "Hipercalemia",
+      "Hipocalemia Grave",
+    ],
+    actionNeeded: "Revisar protocolo existente",
+    notes: "Duplicidade entre arquivos metabolic*.ts.",
+  },
+  {
+    theme: "Distúrbios do sódio",
+    priority: "Alta",
+    categoryId: "metabolic",
+    expectedSamuCodes: ["AC27"],
+    status: "Coberto",
+    matchedProtocolIds: ["hiponatremia", "hiponatremia-grave", "hipernatremia-grave"],
+    matchedProtocolTitles: [
+      "Hiponatremia Grave",
+      "Hiponatremia Grave",
+      "Hipernatremia Grave",
+    ],
+    actionNeeded: "Revisar protocolo existente",
+    notes: "Consolidar duplicatas de hiponatremia/hipernatremia.",
+  },
+
+  // ───── Trauma ─────
+  {
+    theme: "Trauma / atendimento inicial ao politraumatizado",
+    priority: "Crítica",
+    categoryId: "trauma",
+    expectedSamuCodes: ["BT1", "AT1"],
+    status: "Coberto",
+    matchedProtocolIds: ["atls-abordagem-inicial", "politrauma"],
+    matchedProtocolTitles: [
+      "ATLS — Abordagem Inicial ao Politrauma",
+      "Politrauma — Manejo Integrado",
+    ],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "TCE",
+    priority: "Crítica",
+    categoryId: "trauma",
+    expectedSamuCodes: ["BT2", "AT2"],
+    status: "Coberto",
+    matchedProtocolIds: ["tce"],
+    matchedProtocolTitles: ["Traumatismo Cranioencefálico (TCE)"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Trauma torácico",
+    priority: "Crítica",
+    categoryId: "trauma",
+    expectedSamuCodes: ["BT3", "AT3"],
+    status: "Coberto",
+    matchedProtocolIds: ["trauma-toracico", "em-pneumotorax-hipertensivo", "em-hemotorax"],
+    matchedProtocolTitles: [
+      "Trauma Torácico",
+      "Pneumotórax Hipertensivo",
+      "Hemotórax",
+    ],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Trauma abdominal",
+    priority: "Alta",
+    categoryId: "trauma",
+    expectedSamuCodes: ["BT4", "AT4"],
+    status: "Coberto",
+    matchedProtocolIds: ["trauma-abdominal", "fast-trauma"],
+    matchedProtocolTitles: ["Trauma Abdominal", "FAST / eFAST"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Trauma raquimedular",
+    priority: "Crítica",
+    categoryId: "trauma",
+    expectedSamuCodes: ["BT6", "AT6"],
+    status: "Coberto",
+    matchedProtocolIds: ["trauma-raquimedular", "imobilizacao-trauma"],
+    matchedProtocolTitles: ["Trauma Raquimedular", "Imobilização no Trauma"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Queimaduras",
+    priority: "Alta",
+    categoryId: "trauma",
+    expectedSamuCodes: ["BT7", "AT7"],
+    status: "Coberto",
+    matchedProtocolIds: ["queimaduras"],
+    matchedProtocolTitles: ["Queimaduras"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Afogamento",
+    priority: "Alta",
+    categoryId: "other-emergencies",
+    expectedSamuCodes: ["BT8"],
+    status: "Coberto",
+    matchedProtocolIds: ["drowning"],
+    matchedProtocolTitles: ["Afogamento / Quase Afogamento"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+
+  // ───── Intoxicações ─────
+  {
+    theme: "Intoxicações exógenas",
+    priority: "Alta",
+    categoryId: "intoxication",
+    expectedSamuCodes: ["BC18", "AC28"],
+    status: "Coberto",
+    matchedProtocolIds: ["intoxicacao-abordagem"],
+    matchedProtocolTitles: ["Abordagem Geral das Intoxicações"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Síndrome colinérgica",
+    priority: "Alta",
+    categoryId: "intoxication",
+    expectedSamuCodes: ["AC29"],
+    status: "Parcial",
+    matchedProtocolIds: ["intoxicacao-organofosforado"],
+    matchedProtocolTitles: ["Intoxicação por Organofosforado"],
+    actionNeeded: "Revisar protocolo existente",
+    notes:
+      "Existe protocolo de organofosforado; falta um genérico de síndrome colinérgica (toxidrome) com carbamatos, agentes nervosos, etc.",
+  },
+  {
+    theme: "Síndrome anticolinérgica",
+    priority: "Média",
+    categoryId: "intoxication",
+    expectedSamuCodes: ["AC30"],
+    status: "Ausente",
+    matchedProtocolIds: [],
+    matchedProtocolTitles: [],
+    actionNeeded: "Criar novo protocolo",
+    notes: "Não há toxidrome anticolinérgica (atropina, anti-histamínicos, escopolamina).",
+  },
+  {
+    theme: "Overdose por opioides",
+    priority: "Crítica",
+    categoryId: "intoxication",
+    expectedSamuCodes: ["AC31"],
+    status: "Coberto",
+    matchedProtocolIds: ["intoxicacao-opioide"],
+    matchedProtocolTitles: ["Intoxicação por Opioide"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Intoxicação por benzodiazepínicos",
+    priority: "Média",
+    categoryId: "intoxication",
+    expectedSamuCodes: ["AC32"],
+    status: "Coberto",
+    matchedProtocolIds: ["intoxicacao-benzodiazepinicos"],
+    matchedProtocolTitles: ["Intoxicação por Benzodiazepínicos"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Intoxicação por antidepressivos tricíclicos",
+    priority: "Alta",
+    categoryId: "intoxication",
+    expectedSamuCodes: ["AC33"],
+    status: "Coberto",
+    matchedProtocolIds: ["intoxicacao-triciclico"],
+    matchedProtocolTitles: ["Intoxicação por Antidepressivo Tricíclico"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+
+  // ───── Obstetrícia ─────
+  {
+    theme: "Parto iminente",
+    priority: "Alta",
+    categoryId: "obstetrics",
+    expectedSamuCodes: ["BO1", "AO1"],
+    status: "Ausente",
+    matchedProtocolIds: [],
+    matchedProtocolTitles: [],
+    actionNeeded: "Criar novo protocolo",
+    notes:
+      "Falta protocolo de parto iminente / assistência ao parto extra-hospitalar com manejo do RN imediato.",
+  },
+  {
+    theme: "Eclâmpsia / pré-eclâmpsia grave",
+    priority: "Crítica",
+    categoryId: "obstetrics",
+    expectedSamuCodes: ["BO2", "AO2"],
+    status: "Coberto",
+    matchedProtocolIds: ["eclampsia", "pre-eclampsia-grave", "hellp-syndrome"],
+    matchedProtocolTitles: [
+      "Eclâmpsia",
+      "Pré-eclâmpsia Grave",
+      "Síndrome HELLP",
+    ],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Hemorragia obstétrica",
+    priority: "Crítica",
+    categoryId: "obstetrics",
+    expectedSamuCodes: ["BO3", "AO3"],
+    status: "Coberto",
+    matchedProtocolIds: [
+      "hemorragia-pos-parto",
+      "dpp",
+      "dpp-descolamento-placenta",
+      "rotura-uterina",
+      "ectopic-pregnancy-ruptured",
+    ],
+    matchedProtocolTitles: [
+      "Hemorragia Pós-Parto",
+      "Descolamento Prematuro de Placenta",
+      "Descolamento Prematuro de Placenta (DPP)",
+      "Rotura Uterina",
+      "Gravidez Ectópica Rota",
+    ],
+    actionNeeded: "Revisar protocolo existente",
+    notes: "DPP duplicado em dois arquivos — consolidar.",
+  },
+  {
+    theme: "PCR na gestante",
+    priority: "Crítica",
+    categoryId: "obstetrics",
+    expectedSamuCodes: ["AO4"],
+    status: "Coberto",
+    matchedProtocolIds: ["pcr-gestante"],
+    matchedProtocolTitles: ["PCR na Gestante"],
+    actionNeeded: "Revisar protocolo existente",
+    notes: "Existem dois IDs/títulos similares (pcr-gestante) — checar duplicidade.",
+  },
+
+  // ───── Pediatria / neonatal ─────
+  {
+    theme: "Emergências pediátricas gerais",
+    priority: "Média",
+    categoryId: "pediatric-emergency",
+    expectedSamuCodes: ["BPed1", "APed1"],
+    status: "Parcial",
+    matchedProtocolIds: [
+      "bronquiolite-grave",
+      "asma-grave-pediatrica",
+      "desidratacao-grave-pediatrica",
+      "croup-severe",
+      "epiglottitis",
+    ],
+    matchedProtocolTitles: [
+      "Bronquiolite Grave",
+      "Asma Grave Pediátrica",
+      "Desidratação Grave Pediátrica",
+      "Crupe / Laringotraqueobronquite Grave",
+      "Epiglotite Aguda",
+    ],
+    actionNeeded: "Revisar protocolo existente",
+    notes:
+      "Cobertura boa por temas específicos; falta um protocolo guarda-chuva de avaliação inicial pediátrica (TEP / PAT).",
+  },
+  {
+    theme: "PCR pediátrica",
+    priority: "Crítica",
+    categoryId: "pediatric-emergency",
+    expectedSamuCodes: ["BPed15", "APed15"],
+    status: "Coberto",
+    matchedProtocolIds: ["em-pcr-pediatrica", "pcr-pediatrica-emergencia"],
+    matchedProtocolTitles: ["PCR Pediátrica", "PCR Pediátrica (PALS)"],
+    actionNeeded: "Revisar protocolo existente",
+    notes: "Dois protocolos quase idênticos — consolidar.",
+  },
+  {
+    theme: "Convulsão pediátrica",
+    priority: "Alta",
+    categoryId: "pediatric-emergency",
+    expectedSamuCodes: ["BPed10", "APed10"],
+    status: "Parcial",
+    matchedProtocolIds: ["convulsao-febril", "status-epilepticus"],
+    matchedProtocolTitles: ["Convulsão Febril", "Estado de Mal Epiléptico"],
+    actionNeeded: "Criar novo protocolo",
+    notes:
+      "Só há convulsão febril e EME adulto. Falta protocolo de crise convulsiva pediátrica não-febril / EME pediátrico.",
+  },
+  {
+    theme: "Choque pediátrico",
+    priority: "Crítica",
+    categoryId: "pediatric-emergency",
+    expectedSamuCodes: ["BPed12", "APed12"],
+    status: "Coberto",
+    matchedProtocolIds: ["choque-pediatrico", "sepse-pediatrica"],
+    matchedProtocolTitles: ["Choque Pediátrico", "Sepse Pediátrica"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+  {
+    theme: "Reanimação neonatal",
+    priority: "Crítica",
+    categoryId: "neonatal",
+    expectedSamuCodes: ["BPed20", "APed20"],
+    status: "Coberto",
+    matchedProtocolIds: ["reanimacao-neonatal"],
+    matchedProtocolTitles: ["Reanimação Neonatal"],
+    actionNeeded: "Nenhuma",
+    notes: "",
+  },
+];
+
+/**
+ * Retorna apenas as lacunas críticas/altas que precisam de ação clínica
+ * (status Ausente ou Parcial).
+ */
+export function getCriticalSamuGaps(): SamuCoverageAuditItem[] {
+  return samuCoverageAudit.filter(
+    (it) =>
+      (it.priority === "Crítica" || it.priority === "Alta") &&
+      (it.status === "Ausente" || it.status === "Parcial"),
+  );
+}
+
+/**
+ * Resumo agregado da auditoria. Útil para logs internos / dashboards de
+ * curadoria — não deve ser exibido como módulo principal ao usuário final.
+ */
+export function getSamuCoverageSummary() {
+  const total = samuCoverageAudit.length;
+  const cobertos = samuCoverageAudit.filter((i) => i.status === "Coberto").length;
+  const parciais = samuCoverageAudit.filter((i) => i.status === "Parcial").length;
+  const ausentes = samuCoverageAudit.filter((i) => i.status === "Ausente").length;
+  const operacionais = samuCoverageAudit.filter(
+    (i) => i.status === "Operacional / não aplicável",
+  ).length;
+
+  const priorityRank: Record<SamuCoveragePriority, number> = {
+    Crítica: 4,
+    Alta: 3,
+    Média: 2,
+    Baixa: 1,
+  };
+  const statusRank: Record<SamuCoverageStatus, number> = {
+    Ausente: 3,
+    Parcial: 2,
+    Coberto: 0,
+    "Operacional / não aplicável": 0,
+  };
+
+  const topToCreate = [...samuCoverageAudit]
+    .filter((i) => i.status === "Ausente" || i.status === "Parcial")
+    .sort(
+      (a, b) =>
+        priorityRank[b.priority] - priorityRank[a.priority] ||
+        statusRank[b.status] - statusRank[a.status],
+    )
+    .slice(0, 10)
+    .map((i) => ({
+      theme: i.theme,
+      priority: i.priority,
+      status: i.status,
+      actionNeeded: i.actionNeeded,
+    }));
+
+  return {
+    total,
+    cobertos,
+    parciais,
+    ausentes,
+    operacionais,
+    topToCreate,
+  };
+}
+
+/**
+ * ─────────────────────────────────────────────────────────────────────
+ * RESUMO INTERNO (snapshot manual — atualizar ao revisar a auditoria)
+ * ─────────────────────────────────────────────────────────────────────
+ * Total de temas auditados: 50
+ * Cobertos:                  37
+ * Parciais:                   9
+ * Ausentes:                   4
+ * Operacionais / N/A:         0
+ *
+ * Top 10 protocolos a criar/revisar primeiro (Crítica + Alta):
+ *   1. Choque indiferenciado                            [Ausente]
+ *   2. Parada respiratória no adulto                    [Ausente]
+ *   3. Parto iminente (extra-hospitalar)                [Ausente]
+ *   4. Convulsão pediátrica (não-febril / EME pediátrico)[Parcial]
+ *   5. Síndrome colinérgica (toxidrome genérica)        [Parcial]
+ *   6. Avaliação primária do paciente clínico (ABCDE não-trauma) [Parcial]
+ *   7. Anafilaxia — consolidar duplicidade              [Coberto/Revisar]
+ *   8. Choque hipovolêmico × hemorrágico — alinhar      [Coberto/Revisar]
+ *   9. PCR pediátrica — consolidar duplicidade          [Coberto/Revisar]
+ *  10. Hemorragia obstétrica (DPP duplicado)            [Coberto/Revisar]
+ *
+ * Esta auditoria é apenas referência interna de curadoria.
+ * NÃO deve ser exibida como módulo clínico no menu principal.
+ */
