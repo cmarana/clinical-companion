@@ -7,6 +7,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.4";
 import { embedText } from "../_shared/embeddings.ts";
 import { classifyIntent, pickModel } from "../_shared/intentRouter.ts";
+import { geminiChat } from "../_shared/gemini.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
