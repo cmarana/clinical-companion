@@ -728,9 +728,6 @@ function ClinicalAIContent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.25 }}
               className="relative w-full max-w-sm overflow-hidden rounded-2xl text-left mb-5 bg-card border border-border"
-              style={{
-                background:
-              }}
             >
               <div className="relative px-4 py-3 flex items-center gap-3">
                 <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 shrink-0">
