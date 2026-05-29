@@ -53,7 +53,7 @@ const modes = [
 
 // Paleta única: azul Plantão dominante. Vermelho APENAS em Emergência (semântico).
 // Tokens centralizados em src/lib/design-tokens.ts
-import { toneStyles, GRADIENT_BRIGHT_BLUE, GRADIENT_DEEP_BLUE_SOFT } from "@/lib/design-tokens";
+import { GRADIENT_BRIGHT_BLUE } from "@/lib/design-tokens";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -193,31 +193,29 @@ export default function Home() {
       </div>
 
 
-      {/* ── HERO: MODO PLANTÃO ─────────────────────────── */}
+      {/* ── HERO: MODO PLANTÃO — sólido, sem blur ─── */}
       <div className="px-4 mt-5">
         <motion.button
           whileTap={{ scale: 0.985 }}
           onClick={() => go("/duty", "Modo Plantão")}
-          className="relative w-full overflow-hidden rounded-3xl text-left text-white shadow-xl shadow-primary/20 ring-1 ring-white/10"
+          className="relative w-full overflow-hidden rounded-2xl text-left text-white ring-1 ring-white/10"
           style={{ background: GRADIENT_BRIGHT_BLUE }}
         >
           {/* decorative ECG line */}
           <svg
-            className="absolute inset-x-0 bottom-0 w-full h-24 opacity-25"
+            className="absolute inset-x-0 bottom-0 w-full h-20 opacity-20 pointer-events-none"
             viewBox="0 0 400 100"
             preserveAspectRatio="none"
             fill="none"
             stroke="currentColor"
-            strokeWidth="1.5"
+            strokeWidth="1.4"
           >
             <path d="M0 60 L80 60 L95 60 L105 30 L115 85 L130 60 L200 60 L215 60 L225 20 L235 90 L250 60 L400 60" />
           </svg>
-          {/* glow */}
-          <div className="absolute -top-16 -right-16 w-56 h-56 rounded-full bg-white/15 blur-3xl" />
 
           <div className="relative p-5 lg:p-7">
             <div className="flex items-center gap-2 mb-3">
-              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/15 backdrop-blur-sm text-[10px] font-semibold uppercase tracking-wider">
+              <span className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-white/12 ring-1 ring-white/20 text-[10px] font-semibold uppercase tracking-wider">
                 <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse" />
                 Modo principal
               </span>
@@ -225,16 +223,17 @@ export default function Home() {
             <h2 className="font-heading font-bold text-[22px] lg:text-2xl leading-tight">
               Modo Plantão
             </h2>
-            <p className="text-[13px] lg:text-sm text-white/80 mt-1.5 max-w-sm leading-snug">
+            <p className="text-[13px] lg:text-sm text-white/75 mt-1.5 max-w-sm leading-snug">
               Emergências, condutas, doses, prescrições e ferramentas em um fluxo rápido.
             </p>
-            <div className="mt-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white/15 text-white ring-1 ring-white/25 font-heading font-semibold text-[13px] shadow-md">
+            <div className="mt-4 inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-white text-primary font-heading font-semibold text-[13px]">
               Iniciar plantão
               <ArrowRight size={15} />
             </div>
           </div>
         </motion.button>
       </div>
+
 
       {/* ── EMERGÊNCIA EM 1 TOQUE ──────────────────────── */}
       <section className="mt-7 px-4">
@@ -267,24 +266,23 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── DRA. CLARA — IA CLÍNICA ────────────────────── */}
+      {/* ── DRA. CLARA — IA CLÍNICA (card claro premium v2) ─── */}
       <section className="mt-6 px-4">
         <motion.button
           whileTap={{ scale: 0.99 }}
           onClick={() => go("/clinical-ai", "Dra. Clara")}
-          className="relative w-full overflow-hidden rounded-2xl text-left text-white shadow-md ring-1 ring-white/10"
-          style={{ background: GRADIENT_DEEP_BLUE_SOFT }}
+          className="relative w-full overflow-hidden rounded-xl text-left bg-card border border-border hover:border-border/70 hover:bg-muted/20 transition-all"
         >
-          <div className="absolute -bottom-10 -right-6 w-32 h-32 rounded-full bg-white/10 blur-2xl" />
+          <span className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary" />
           <div className="relative px-4 py-3 flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/15 ring-1 ring-white/25 shrink-0">
-              <Bot size={18} />
+            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 shrink-0">
+              <Bot size={18} className="text-primary" strokeWidth={2.2} />
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-heading font-bold text-[14px] leading-tight">
+              <h3 className="font-heading font-bold text-[14px] leading-tight text-foreground">
                 Dra. Clara — IA Clínica
               </h3>
-              <p className="text-[11.5px] text-white/75 mt-0.5 leading-snug">
+              <p className="text-[11.5px] text-muted-foreground mt-0.5 leading-snug">
                 Pergunte, analise casos e interprete exames.
               </p>
             </div>
@@ -298,7 +296,7 @@ export default function Home() {
                   key={c.label}
                   onClick={(e) => { e.stopPropagation(); go(c.path, `IA · ${c.label}`); }}
                   title={c.label}
-                  className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-white/15 hover:bg-white/25 backdrop-blur-sm transition-colors cursor-pointer"
+                  className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-muted hover:bg-muted/70 text-muted-foreground transition-colors cursor-pointer"
                 >
                   <c.icon size={13} />
                 </span>
@@ -307,6 +305,7 @@ export default function Home() {
           </div>
         </motion.button>
       </section>
+
 
 
       {/* ── ESCOLHA SEU MODO ───────────────────────────── */}
@@ -321,75 +320,42 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-3">
           {modes.map((m) => {
-            const t = toneStyles[m.tone];
             const isDuty = m.path === "/duty";
+            const isEmergency = m.tone === "danger";
             const isLeaving = leavingMode === m.path;
+            const accent = isEmergency ? "hsl(var(--destructive))" : "hsl(var(--primary))";
+            const accentSoft = isEmergency ? "bg-destructive/10 text-destructive" : "bg-primary/10 text-primary";
             return (
               <motion.button
                 key={m.path}
                 whileTap={{ scale: 0.97 }}
-                animate={isLeaving ? {
-                  scale: [1, 1.06, 1.03],
-                  filter: ["brightness(1)", "brightness(1.15)", "brightness(1.05)"],
-                } : {
-                  scale: 1,
-                  filter: "brightness(1)",
-                }}
-                transition={isLeaving ? { duration: 0.28, ease: "easeOut" } : { duration: 0.2 }}
+                animate={isLeaving ? { scale: [1, 1.04, 1.02] } : { scale: 1 }}
+                transition={{ duration: 0.28 }}
                 onClick={() => go(m.path, m.label)}
-                className={`group relative overflow-hidden p-4 min-h-[110px] rounded-2xl text-left shadow-md hover:shadow-lg hover:-translate-y-0.5 transition-all ${t.ring} ${isLeaving ? "z-10" : ""}`}
-                style={{ background: t.background }}
+                className={`group relative overflow-hidden p-4 min-h-[110px] rounded-xl text-left bg-card border border-border hover:border-border/70 hover:bg-muted/20 transition-all ${isLeaving ? "z-10" : ""}`}
               >
-                {/* ECG pulsante de fundo — padronizado em todas as caixas */}
-                <svg
-                  className={`absolute inset-x-0 bottom-0 w-full h-14 opacity-[0.18] pointer-events-none ${t.ecgColor}`}
-                  viewBox="0 0 200 60"
-                  preserveAspectRatio="none"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <motion.path
-                    d="M0 35 L40 35 L48 35 L56 18 L64 52 L72 35 L110 35 L118 35 L126 12 L134 58 L142 35 L200 35"
-                    initial={{ pathLength: 0, opacity: 0.2 }}
-                    animate={{ pathLength: 1, opacity: [0.2, 1, 0.4] }}
-                    transition={{
-                      duration: 2.4,
-                      ease: "easeInOut",
-                      repeat: Infinity,
-                      repeatType: "loop",
-                    }}
-                  />
-                </svg>
-                {/* glow sutil */}
-                <div className="absolute -top-10 -right-10 w-28 h-28 rounded-full bg-white/10 blur-2xl pointer-events-none" />
+                {/* Barra lateral semântica */}
+                <span
+                  className="absolute left-0 top-0 bottom-0 w-0.5"
+                  style={{ background: accent }}
+                />
 
                 <div className="relative">
-                  <motion.div
-                    animate={isLeaving ? { scale: [1, 1.2, 1.1], rotate: [0, -5, 0] } : { scale: 1, rotate: 0 }}
-                    transition={{ duration: 0.28 }}
-                    className={`flex items-center justify-center w-10 h-10 rounded-xl mb-3 ${t.iconBg}`}
-                  >
-                    <m.icon size={20} strokeWidth={2.3} className={t.iconColor} />
-                  </motion.div>
+                  <div className={`flex items-center justify-center w-10 h-10 rounded-xl mb-3 ${accentSoft}`}>
+                    <m.icon size={18} strokeWidth={2.2} />
+                  </div>
                   <div className="flex items-center gap-1.5">
-                    <motion.span
-                      animate={isLeaving ? { y: [0, -2, 0] } : { y: 0 }}
-                      transition={{ duration: 0.28 }}
-                      className={`font-heading font-bold text-[14.5px] leading-tight tracking-tight ${t.titleColor}`}
-                    >
+                    <span className="font-heading font-bold text-[14.5px] leading-tight tracking-tight text-foreground">
                       {m.label}
-                    </motion.span>
+                    </span>
                     {isDuty && (
                       <span className="relative flex h-1.5 w-1.5">
-                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-white opacity-75" />
-                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-white" />
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75" />
+                        <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary" />
                       </span>
                     )}
                   </div>
-                  <div className={`text-[12px] mt-1 leading-snug font-medium ${t.subColor}`}>
+                  <div className="text-[12px] mt-1 leading-snug text-muted-foreground">
                     {m.sub}
                   </div>
                 </div>
@@ -397,11 +363,11 @@ export default function Home() {
                 {/* Ripple de confirmação */}
                 {isLeaving && (
                   <motion.div
-                    initial={{ scale: 0, opacity: 0.4 }}
+                    initial={{ scale: 0, opacity: 0.25 }}
                     animate={{ scale: 2.5, opacity: 0 }}
                     transition={{ duration: 0.5, ease: "easeOut" }}
-                    className="absolute inset-0 rounded-2xl bg-white/30 pointer-events-none"
-                    style={{ originX: 0.5, originY: 0.5 }}
+                    className="absolute inset-0 rounded-xl pointer-events-none"
+                    style={{ background: accent, originX: 0.5, originY: 0.5 }}
                   />
                 )}
               </motion.button>
@@ -410,6 +376,7 @@ export default function Home() {
         </div>
 
       </section>
+
 
       {/* ── CONTINUE DE ONDE PAROU ─────────────────────── */}
       <section className="mt-8 px-4">
