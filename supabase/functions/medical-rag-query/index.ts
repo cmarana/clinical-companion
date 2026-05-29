@@ -7,6 +7,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2.49.4";
 import { embedText } from "../_shared/embeddings.ts";
 import { classifyIntent, pickModel } from "../_shared/intentRouter.ts";
+import { geminiChat } from "../_shared/gemini.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -166,33 +167,23 @@ Deno.serve(async (req) => {
           ).join("\n\n---\n\n")
         : "(Nenhum trecho relevante encontrado na base PULSO.)";
 
-      const llmRes = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${Deno.env.get("LOVABLE_API_KEY")}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          model,
-          messages: [
-            { role: "system", content: SYSTEM_PROMPT },
-            { role: "user", content: `PERGUNTA: ${question}\n\nTRECHOS_FONTE:\n${context}` },
-          ],
-        }),
+      const llmRes = await geminiChat({
+        model,
+        messages: [
+          { role: "system", content: SYSTEM_PROMPT },
+          { role: "user", content: `PERGUNTA: ${question}\n\nTRECHOS_FONTE:\n${context}` },
+        ],
       });
 
       if (!llmRes.ok) {
         const t = await llmRes.text();
         console.error("LLM error", llmRes.status, t);
-        const isCredits = llmRes.status === 402;
         const isRate = llmRes.status === 429;
         return new Response(
           JSON.stringify({
             error: "Erro na IA",
-            code: isCredits ? "credits" : isRate ? "rate_limit" : "server",
-            message: isCredits
-              ? "Créditos de IA esgotados. Adicione créditos em Configurações > Workspace > Uso."
-              : isRate
+            code: isRate ? "rate_limit" : "server",
+            message: isRate
               ? "Muitas requisições. Aguarde alguns segundos e tente novamente."
               : "Falha temporária na IA. Tente novamente.",
           }),
