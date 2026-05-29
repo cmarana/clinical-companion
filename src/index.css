@@ -395,33 +395,25 @@
 .no-scrollbar::-webkit-scrollbar { display: none; }
 .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
 
-/* ─── Duty Mode (Modo Plantão) ─── */
+/* ─── Duty Mode (Modo Plantão) — Premium v2: cards claros, faixa lateral semântica ─── */
 .duty-card {
   position: relative;
   overflow: hidden;
-  background: hsl(212 64% 10%);
-  border: 1px solid hsl(0 0% 100% / 0.10);
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
   border-radius: 18px;
-  color: hsl(0 0% 100%);
-  box-shadow: 0 4px 20px -8px hsl(212 72% 8% / 0.5);
+  color: hsl(var(--foreground));
+  box-shadow: 0 1px 2px hsl(0 0% 0% / 0.04);
 }
 
-.dark .duty-card {
-  background: hsl(212 58% 11%);
-  border-color: hsl(0 0% 100% / 0.08);
-}
-
-.duty-card :is(h1,h2,h3,p,span,button) {
-  color: inherit;
-}
-.duty-card svg:not(.text-destructive):not([class*="text-red"]) {
-  color: inherit;
-}
-.duty-card :is(.text-muted-foreground,.text-foreground,.text-primary,.text-accent-foreground) {
-  color: hsl(0 0% 100% / 0.72);
-}
-.duty-card .text-destructive {
-  color: hsl(0 78% 62%) !important;
+.duty-card::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: hsl(var(--primary));
 }
 
 .duty-grid-btn {
@@ -431,9 +423,9 @@
   gap: 6px;
   padding: 14px 6px;
   border-radius: 14px;
-  border: 1px solid hsl(0 0% 100% / 0.12);
-  background: hsl(0 0% 100% / 0.08);
-  color: hsl(0 0% 100%);
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card));
+  color: hsl(var(--foreground));
   font-family: var(--font-heading);
   transition: background 150ms ease, border-color 150ms ease;
 }
@@ -443,16 +435,8 @@
 }
 
 .duty-grid-btn:hover {
-  background: hsl(0 0% 100% / 0.14);
-  border-color: hsl(0 0% 100% / 0.18);
-}
-
-.dark .duty-grid-btn {
-  background: hsl(0 0% 100% / 0.08);
-}
-
-.dark .duty-grid-btn:hover {
-  background: hsl(0 0% 100% / 0.14);
+  background: hsl(var(--muted) / 0.6);
+  border-color: hsl(var(--primary) / 0.3);
 }
 
 .duty-list-item {
@@ -464,16 +448,12 @@
   border-radius: 12px;
   font-family: var(--font-heading);
   font-size: 13px;
-  color: hsl(0 0% 100%);
+  color: hsl(var(--foreground));
   transition: background 150ms ease;
 }
 
 .duty-list-item:hover {
-  background: hsl(0 0% 100% / 0.10);
-}
-
-.dark .duty-list-item:hover {
-  background: hsl(0 0% 100% / 0.10);
+  background: hsl(var(--muted) / 0.6);
 }
 
 .duty-list-item:active {
@@ -486,8 +466,8 @@
   font-weight: 500;
   padding: 3px 8px;
   border-radius: 10px;
-  background: hsl(0 0% 100% / 0.12);
-  color: hsl(0 0% 100% / 0.85);
+  background: hsl(var(--muted));
+  color: hsl(var(--muted-foreground));
   white-space: nowrap;
 }
 
