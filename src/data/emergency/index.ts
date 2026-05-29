@@ -1,6 +1,7 @@
 import type { EmergencyCategory } from "./types";
 import { resuscitationProtocols } from "./resuscitation";
 import { samuCriticalResuscitationProtocols } from "./samu_critical_resuscitation";
+import { samuP1MissingBatch1Protocols } from "./samu_p1_faltantes_lote2";
 import { cardiovascularProtocols } from "./cardiovascular";
 import { cardiovascularProtocols2 } from "./cardiovascular2";
 import { cardiovascularProtocols3 } from "./cardiovascular3";
