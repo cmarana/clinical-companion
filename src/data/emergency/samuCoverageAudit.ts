@@ -1115,19 +1115,19 @@ export function getSamuCoverageSummary() {
  * ─────────────────────────────────────────────────────────────────────
  * RESUMO INTERNO (snapshot manual — atualizar ao revisar a auditoria)
  * ─────────────────────────────────────────────────────────────────────
- * Total de temas auditados: 50
- * Cobertos:                  37
- * Parciais:                   9
- * Ausentes:                   4
+ * Total de temas auditados: 79
+ * Cobertos:                  73
+ * Parciais:                   3
+ * Ausentes:                   3
  * Operacionais / N/A:         0
  *
- * Top 10 protocolos a criar/revisar primeiro (Crítica + Alta):
+ * Lacunas remanescentes (Crítica + Alta) após lotes SAMU/UTI 2-7:
  *   1. Choque indiferenciado                            [Ausente]
- *   2. Parada respiratória no adulto                    [Ausente]
- *   3. Parto iminente (extra-hospitalar)                [Ausente]
- *   4. Convulsão pediátrica (não-febril / EME pediátrico)[Parcial]
+ *   2. Parto iminente (extra-hospitalar)                [Ausente]
+ *   3. Síndrome anticolinérgica (toxidrome)             [Ausente]
+ *   4. Convulsão pediátrica não-febril / EME pediátrico  [Parcial]
  *   5. Síndrome colinérgica (toxidrome genérica)        [Parcial]
- *   6. Avaliação primária do paciente clínico (ABCDE não-trauma) [Parcial]
+ *   6. Emergências pediátricas gerais (TEP/PAT guarda-chuva) [Parcial]
  *   7. Anafilaxia — consolidar duplicidade              [Coberto/Revisar]
  *   8. Choque hipovolêmico × hemorrágico — alinhar      [Coberto/Revisar]
  *   9. PCR pediátrica — consolidar duplicidade          [Coberto/Revisar]
