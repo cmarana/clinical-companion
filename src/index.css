@@ -238,22 +238,36 @@
 /* ─── Clinical AI Cards Layout ─── */
 .clinical-cards {
   font-family: 'Inter', 'Roboto Flex', var(--font-heading), system-ui, sans-serif;
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.65;
   color: hsl(var(--foreground));
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .clinical-intro {
-  padding: 12px 16px;
-  font-size: 14px;
-  line-height: 1.7;
+  padding: 12px 14px;
+  font-size: 15px;
+  line-height: 1.65;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .clinical-card {
   background: hsl(var(--card));
   border: 1px solid hsl(var(--border));
   border-radius: 14px;
-  padding: 14px 16px;
+  padding: 14px;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .dark .clinical-card {
