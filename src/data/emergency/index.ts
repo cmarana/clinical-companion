@@ -146,6 +146,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...respiratoryProtocols,
       ...respiratoryProtocols2,
       ...thoracicEntEmergencyProtocols.filter(p => p.id === "pleural-empyema"),
+      ...samuP1MissingBatch2Protocols.filter(p => p.categoryId === "respiratory"),
     ]),
   },
   {
