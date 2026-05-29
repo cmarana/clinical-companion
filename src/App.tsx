@@ -109,9 +109,7 @@ const Rounds = lazy(() => import("@/pages/Rounds"));
 const DischargeSummary = lazy(() => import("@/pages/DischargeSummary"));
 const ConductComparator = lazy(() => import("@/pages/ConductComparator"));
 const Demo = lazy(() => import("@/pages/Demo"));
-const SamuProtocols = lazy(() => import("@/pages/SamuProtocols"));
-const SamuProtocolDetail = lazy(() => import("@/pages/SamuProtocolDetail"));
-const SamuGaps = lazy(() => import("@/pages/SamuGaps"));
+import SamuCodeRedirect from "@/pages/SamuCodeRedirect";
 
 const queryClient = new QueryClient({
   defaultOptions: {
