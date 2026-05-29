@@ -10,7 +10,7 @@ import { Button } from "@/components/ui/button";
 import type { MedicationImportItem } from "@/data/medicationsData";
 import { useQueryClient } from "@tanstack/react-query";
 import { toast } from "sonner";
-import { GRADIENT_DEEP_BLUE } from "@/lib/design-tokens";
+
 
 // Lazy-load the heavy medications data (45K+ lines) only when needed
 let _cachedMedsData: MedicationImportItem[] | null = null;
@@ -154,25 +154,24 @@ export default function Bulario() {
             <div
               key={m.id}
               onClick={() => navigate(`/bulario/${m.id}`)}
-              className="cursor-pointer relative overflow-hidden rounded-2xl text-white shadow-md ring-1 ring-white/15 hover:shadow-lg active:scale-[0.98] transition-all"
-              style={{ background: GRADIENT_DEEP_BLUE }}
+              className="cursor-pointer relative overflow-hidden rounded-2xl bg-card ring-1 ring-border hover:ring-primary/30 shadow-sm hover:shadow-md active:scale-[0.99] transition-all"
             >
-              <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-white/10 blur-2xl pointer-events-none" />
-              <div className="relative flex items-center gap-3 px-3.5 py-3">
-                <div className="w-9 h-9 rounded-xl bg-white/18 ring-1 ring-white/30 flex items-center justify-center text-white shrink-0">
+              <span aria-hidden className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary" />
+              <div className="relative flex items-center gap-3 px-3.5 py-3 pl-4">
+                <div className="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0">
                   <Pill size={16} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-heading font-semibold text-[12.5px] text-white truncate">{m.nome}</p>
-                  <p className="text-[10.5px] text-white/80 truncate">
+                  <p className="font-heading font-semibold text-[12.5px] text-foreground truncate">{m.nome}</p>
+                  <p className="text-[10.5px] text-muted-foreground truncate">
                     {m.principio_ativo} · {m.classe}
                   </p>
                 </div>
-                <div className="flex items-center gap-1 shrink-0">
-                  {m.controlado && <ShieldCheck size={11} className="text-white/90" />}
-                  {m.pediatria && <Baby size={11} className="text-white/90" />}
-                  {m.gestacao_seguro && <Heart size={11} className="text-white/90" />}
-                  <ChevronRight size={13} className="text-white/85 ml-1" />
+                <div className="flex items-center gap-1 shrink-0 text-muted-foreground">
+                  {m.controlado && <ShieldCheck size={11} />}
+                  {m.pediatria && <Baby size={11} />}
+                  {m.gestacao_seguro && <Heart size={11} />}
+                  <ChevronRight size={13} className="text-primary ml-1" />
                 </div>
               </div>
             </div>

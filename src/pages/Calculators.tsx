@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Calculator, Activity, Brain, Droplets, Heart, Scale, Baby, Stethoscope, Syringe, Search } from "lucide-react";
-import { GRADIENT_DEEP_BLUE } from "@/lib/design-tokens";
+
 import {
   HASBLEDCalculator, PERCCalculator, GRACECalculator, BishopCalculator, RansonCalculator,
   NEWSCalculator, MEWSCalculator, RoxIndexCalculator, SIRS_Calculator, MASCCCalculator,
@@ -979,20 +979,19 @@ export default function Calculators() {
               type="button"
               key={calc.id}
               onClick={() => openCalculator(calc.id)}
-              className={`text-left relative overflow-hidden rounded-2xl text-white shadow-md ring-1 ring-white/15 hover:shadow-lg active:scale-[0.98] transition-all ${
-                activeCalc === calc.id ? "ring-2 ring-white/60" : ""
+              className={`text-left relative overflow-hidden rounded-2xl bg-card ring-1 ring-border hover:ring-primary/30 shadow-sm hover:shadow-md active:scale-[0.99] transition-all ${
+                activeCalc === calc.id ? "ring-2 ring-primary/60" : ""
               }`}
-              style={{ background: GRADIENT_DEEP_BLUE }}
               aria-pressed={activeCalc === calc.id}
             >
-              <div className="absolute -top-6 -right-6 w-16 h-16 rounded-full bg-white/10 blur-2xl pointer-events-none" />
-              <div className="relative flex items-center gap-2.5 p-3">
-                <div className="w-9 h-9 rounded-xl bg-white/18 ring-1 ring-white/30 flex items-center justify-center text-white shrink-0 [&_svg]:!text-white [&_svg]:!stroke-white">
+              <span aria-hidden className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary" />
+              <div className="relative flex items-center gap-2.5 p-3 pl-3.5">
+                <div className="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 [&_svg]:!text-primary [&_svg]:!stroke-current">
                   {calc.icon}
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="font-heading font-semibold text-[12.5px] text-white leading-tight">{calc.title}</p>
-                  <p className="text-[10.5px] text-white/80 mt-0.5 line-clamp-2">{calc.description}</p>
+                  <p className="font-heading font-semibold text-[12.5px] text-foreground leading-tight">{calc.title}</p>
+                  <p className="text-[10.5px] text-muted-foreground mt-0.5 line-clamp-2">{calc.description}</p>
                 </div>
               </div>
             </button>

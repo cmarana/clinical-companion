@@ -1,10 +1,9 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { GRADIENT_DEEP_BLUE } from "@/lib/design-tokens";
 import {
   Heart, Brain, Activity, Wind, Bone, Baby, Stethoscope, Bug, Pill, Droplets,
-  ShieldAlert, ScanLine, AlertTriangle, Sparkles, Eye, Ear, Hand, FlaskConical,
+  ShieldAlert, ScanLine, Sparkles, Eye, Ear, Hand, FlaskConical,
   ClipboardList, Users, Flame, FileText, Layers, Search, ChevronRight, Beaker,
   Soup, MessagesSquare,
 } from "lucide-react";
@@ -43,16 +42,6 @@ const iconByCat: Record<string, any> = {
   other_emergencies: Layers,
 };
 
-const tones = ["primary", "danger", "violet", "emerald", "amber", "sky", "slate"] as const;
-const toneStyles: Record<(typeof tones)[number], string> = {
-  primary: "bg-primary/10 text-primary",
-  danger: "bg-destructive/10 text-destructive",
-  slate: "bg-slate-500/10 text-slate-600 dark:text-slate-300",
-  emerald: "bg-primary/10 text-primary dark:text-primary",
-  amber: "bg-destructive/10 text-destructive dark:text-destructive",
-  violet: "bg-primary/10 text-primary dark:text-primary",
-  sky: "bg-primary/10 text-primary dark:text-primary",
-};
 
 export default function Specialties() {
   const navigate = useNavigate();
@@ -111,20 +100,19 @@ export default function Specialties() {
         <motion.button
           whileTap={{ scale: 0.99 }}
           onClick={() => { hapticLight(); navigate("/full-protocols"); }}
-          className="relative overflow-hidden w-full flex items-center gap-3 p-3.5 rounded-2xl text-white shadow-md ring-1 ring-white/15 transition-all text-left mb-4"
-          style={{ background: GRADIENT_DEEP_BLUE }}
+          className="relative overflow-hidden w-full flex items-center gap-3 p-3.5 pl-4 rounded-2xl bg-card ring-1 ring-border hover:ring-primary/30 shadow-sm transition-all text-left mb-4"
         >
-          <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-white/10 blur-2xl pointer-events-none" />
-          <div className="relative flex items-center justify-center w-9 h-9 rounded-xl bg-white/18 ring-1 ring-white/30 shrink-0">
-            <Layers size={16} className="text-white" />
+          <span aria-hidden className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary" />
+          <div className="relative flex items-center justify-center w-9 h-9 rounded-xl bg-primary/10 text-primary shrink-0">
+            <Layers size={16} />
           </div>
           <div className="relative flex-1 min-w-0">
-            <div className="font-heading font-semibold text-[13px] text-white">Ver todos os protocolos</div>
-            <div className="text-[11px] text-white/80 mt-0.5">
+            <div className="font-heading font-semibold text-[13px] text-foreground">Ver todos os protocolos</div>
+            <div className="text-[11px] text-muted-foreground mt-0.5">
               {fullProtocolMetas.length} protocolos em todas as especialidades
             </div>
           </div>
-          <ChevronRight size={15} className="relative text-white/85 shrink-0" />
+          <ChevronRight size={15} className="relative text-primary shrink-0" />
         </motion.button>
 
         {/* Grade de especialidades */}
@@ -137,35 +125,17 @@ export default function Specialties() {
                 key={c.id}
                 whileTap={{ scale: 0.97 }}
                 onClick={() => go(c.id)}
-                className="relative overflow-hidden p-3 rounded-2xl text-left text-white shadow-md ring-1 ring-white/15 transition-all"
-                style={{ background: GRADIENT_DEEP_BLUE }}
+                className="relative overflow-hidden p-3 pl-3.5 rounded-2xl text-left bg-card ring-1 ring-border hover:ring-primary/30 shadow-sm transition-all"
               >
-                <svg
-                  className="absolute inset-x-0 bottom-0 w-full h-9 opacity-[0.18] pointer-events-none text-white"
-                  viewBox="0 0 200 60"
-                  preserveAspectRatio="none"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="1.4"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <motion.path
-                    d="M0 35 L40 35 L48 35 L56 18 L64 52 L72 35 L110 35 L118 35 L126 12 L134 58 L142 35 L200 35"
-                    initial={{ pathLength: 0, opacity: 0.2 }}
-                    animate={{ pathLength: 1, opacity: [0.2, 1, 0.4] }}
-                    transition={{ duration: 2.4, ease: "easeInOut", repeat: Infinity, repeatType: "loop" }}
-                  />
-                </svg>
-                <div className="absolute -top-6 -right-6 w-16 h-16 rounded-full bg-white/10 blur-2xl pointer-events-none" />
+                <span aria-hidden className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary" />
                 <div className="relative">
-                  <div className="flex items-center justify-center w-8 h-8 rounded-lg mb-2 bg-white/18 ring-1 ring-white/30">
-                    <Icon size={16} strokeWidth={2.3} className="text-white" />
+                  <div className="flex items-center justify-center w-8 h-8 rounded-lg mb-2 bg-primary/10 text-primary">
+                    <Icon size={16} strokeWidth={2.3} />
                   </div>
-                  <div className="font-heading font-semibold text-[12px] text-white leading-tight">
+                  <div className="font-heading font-semibold text-[12px] text-foreground leading-tight">
                     {c.title}
                   </div>
-                  <div className="text-[10.5px] text-white/80 mt-0.5">
+                  <div className="text-[10.5px] text-muted-foreground mt-0.5">
                     {count} {count === 1 ? "protocolo" : "protocolos"}
                   </div>
                 </div>
