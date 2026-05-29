@@ -172,10 +172,10 @@ export default function SamuGaps() {
             </div>
             <div className="min-w-0 flex-1">
               <h1 className="font-heading font-bold text-[13.5px] text-foreground leading-tight">
-                Lacunas do Pulso — Priorização de Conteúdo
+                Lacunas do Pulso
               </h1>
               <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">
-                Painel interno: protocolos SAMU que ainda precisam ser criados, revisados ou estão parcialmente cobertos.
+                Lacunas do Pulso — protocolos que precisam ser criados, revisados ou vinculados.
               </p>
             </div>
           </div>
