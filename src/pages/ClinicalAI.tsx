@@ -23,7 +23,7 @@ import type { RagSourceChunk } from "@/components/ClinicalResponseCards";
 import { motion } from "framer-motion";
 import OfflineBadge from "@/components/OfflineBadge";
 import { AiUsageBadge } from "@/components/AiUsageBadge";
-// premium v2: gradiente removido — cards claros
+
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -727,15 +727,17 @@ function ClinicalAIContent() {
               initial={{ opacity: 0, y: 8 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.25 }}
-              className="relative w-full max-w-sm overflow-hidden rounded-xl bg-card border border-border mb-5"
+              className="relative w-full max-w-sm overflow-hidden rounded-2xl text-left mb-5 bg-card border border-border"
+              style={{
+                background:
+              }}
             >
-              <span className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary" />
               <div className="relative px-4 py-3 flex items-center gap-3">
                 <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 shrink-0">
                   <PulsoLogo size={20} />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <h3 className="font-heading font-bold text-[14px] leading-tight text-foreground">
+                  <h3 className="font-heading font-semibold text-[14px] leading-tight text-foreground">
                     Dra. Clara — IA Clínica
                   </h3>
                   <p className="text-[11.5px] text-muted-foreground mt-0.5 leading-snug">
@@ -744,7 +746,6 @@ function ClinicalAIContent() {
                 </div>
               </div>
             </motion.div>
-
 
             <p className="text-[12px] text-foreground/80 max-w-sm mb-2">
               Olá! Sou a Dra. Clara. Como posso auxiliar na sua decisão clínica agora?
@@ -774,13 +775,13 @@ function ClinicalAIContent() {
         {messages.map((msg, i) => (
           <div key={i} className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
             {msg.role === "assistant" && (
-              <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0 mt-1">
+              <div className="w-7 h-7 rounded-full bg-card border border-border flex items-center justify-center shrink-0 mt-1">
                 <PulsoLogo size={14} />
               </div>
             )}
             <div className={`max-w-[95%] rounded-lg text-sm ${
               msg.role === "user"
-                ? "bg-primary text-primary-foreground rounded-br-sm px-4 py-3"
+                ? "bg-primary text-primary-foreground rounded-2xl rounded-br-sm px-4 py-3 shadow-sm"
                 : "rounded-bl-sm"
             }`}>
               {msg.role === "assistant" ? (
@@ -796,7 +797,7 @@ function ClinicalAIContent() {
               )}
             </div>
             {msg.role === "user" && (
-              <div className="w-6 h-6 rounded-full bg-primary flex items-center justify-center shrink-0 mt-1">
+              <div className="w-7 h-7 rounded-full bg-primary flex items-center justify-center shrink-0 mt-1 shadow-sm">
                 <User size={14} className="text-primary-foreground" />
               </div>
             )}
@@ -808,9 +809,13 @@ function ClinicalAIContent() {
             <div className="w-6 h-6 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
               <PulsoLogo size={14} />
             </div>
-            <div className="bg-muted rounded-2xl rounded-bl-md px-4 py-3 flex items-center gap-2">
-              <Loader2 size={14} className="animate-spin text-muted-foreground" />
-              <span className="text-[11px] text-muted-foreground">Analisando caso clínico...</span>
+            <div className="bg-card border border-border rounded-2xl rounded-bl-sm px-4 py-3 flex items-center gap-3">
+              <div className="flex gap-1 items-center">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-bounce" style={{ animationDelay: '0ms' }} />
+                <span className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-bounce" style={{ animationDelay: '150ms' }} />
+                <span className="w-1.5 h-1.5 rounded-full bg-primary/60 animate-bounce" style={{ animationDelay: '300ms' }} />
+              </div>
+              <span className="text-[11px] text-muted-foreground font-heading">Analisando caso clínico...</span>
             </div>
           </div>
         )}
