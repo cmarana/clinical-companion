@@ -266,16 +266,14 @@ function ClinicalAIContent() {
   useEffect(() => {
     const count = messages.length;
     if (count > lastMsgCount.current) {
-      // Nova mensagem adicionada — se for do assistente, scroll para cima dela
       const last = messages[count - 1];
       if (last?.role === "assistant") {
-        // Aguarda 1 frame para o DOM renderizar, depois sobe ao início da msg
+        // Posiciona o início da resposta sem rolagem suave (evita "puxar" a tela enquanto o usuário lê)
         requestAnimationFrame(() => {
-          messagesStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+          messagesStartRef.current?.scrollIntoView({ behavior: "auto", block: "start" });
         });
       } else {
-        // Mensagem do usuário — vai para o final para ver o indicador de loading
-        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+        messagesEndRef.current?.scrollIntoView({ behavior: "auto", block: "end" });
       }
       lastMsgCount.current = count;
     }
@@ -738,7 +736,7 @@ function ClinicalAIContent() {
       </div>
 
       {/* Messages */}
-      <div className="flex-1 overflow-y-auto px-3 py-3 space-y-3">
+      <div className="flex-1 overflow-y-auto overflow-x-hidden overscroll-contain px-3 py-3 space-y-3">
         {messages.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full text-center px-4">
             {/* Caixa Dra. Clara — mesmo estilo compacto da Home */}
@@ -790,16 +788,16 @@ function ClinicalAIContent() {
 
         <div ref={messagesStartRef} />
         {messages.map((msg, i) => (
-          <div key={i} className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+          <div key={i} className={`flex gap-2 w-full min-w-0 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
             {msg.role === "assistant" && (
               <div className="w-7 h-7 rounded-full bg-card border border-border flex items-center justify-center shrink-0 mt-1">
                 <PulsoLogo size={14} />
               </div>
             )}
-            <div className={`max-w-[95%] rounded-lg text-sm ${
+            <div className={`min-w-0 rounded-lg text-sm ${
               msg.role === "user"
-                ? "bg-primary text-primary-foreground rounded-2xl rounded-br-sm px-4 py-3 shadow-sm"
-                : "rounded-bl-sm"
+                ? "max-w-[85%] bg-primary text-primary-foreground rounded-2xl rounded-br-sm px-4 py-3 shadow-sm break-words"
+                : "flex-1 max-w-[calc(100%-2.5rem)] rounded-bl-sm"
             }`}>
               {msg.role === "assistant" ? (
                 <ClinicalResponseCards
@@ -810,7 +808,7 @@ function ClinicalAIContent() {
                   ragChunks={i === messages.length - 1 ? lastRagMeta?.chunks : undefined}
                 />
               ) : (
-                <div className="whitespace-pre-wrap text-[13px]">{msg.content}</div>
+                <div className="whitespace-pre-wrap break-words text-[13px]">{msg.content}</div>
               )}
             </div>
             {msg.role === "user" && (

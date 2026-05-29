@@ -238,22 +238,36 @@
 /* ─── Clinical AI Cards Layout ─── */
 .clinical-cards {
   font-family: 'Inter', 'Roboto Flex', var(--font-heading), system-ui, sans-serif;
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.65;
   color: hsl(var(--foreground));
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  hyphens: auto;
 }
 
 .clinical-intro {
-  padding: 12px 16px;
-  font-size: 14px;
-  line-height: 1.7;
+  padding: 12px 14px;
+  font-size: 15px;
+  line-height: 1.65;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .clinical-card {
   background: hsl(var(--card));
   border: 1px solid hsl(var(--border));
   border-radius: 14px;
-  padding: 14px 16px;
+  padding: 14px;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .dark .clinical-card {
@@ -287,8 +301,10 @@
 .clinical-card p,
 .clinical-intro p {
   margin-bottom: 10px;
-  font-size: 14px;
-  line-height: 1.7;
+  font-size: 15px;
+  line-height: 1.65;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .clinical-card p:last-child,
@@ -312,17 +328,24 @@
 
 .clinical-card li,
 .clinical-intro li {
-  font-size: 14px;
-  margin-bottom: 5px;
-  line-height: 1.7;
+  font-size: 15px;
+  margin-bottom: 6px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
+/* Tables: allow horizontal scroll on narrow viewports without breaking layout */
 .clinical-card table,
 .clinical-intro table {
+  display: block;
   width: 100%;
+  max-width: 100%;
+  overflow-x: auto;
   border-collapse: collapse;
   margin: 10px 0 12px;
   font-size: 13px;
+  -webkit-overflow-scrolling: touch;
 }
 
 .clinical-card th,
@@ -336,6 +359,7 @@
   letter-spacing: 0.04em;
   border: 1px solid hsl(var(--border));
   font-family: 'Inter', var(--font-heading), sans-serif;
+  white-space: nowrap;
 }
 
 .clinical-card td,
@@ -343,6 +367,7 @@
   padding: 7px 10px;
   border: 1px solid hsl(var(--border));
   line-height: 1.5;
+  word-break: break-word;
 }
 
 .clinical-card code,
@@ -360,6 +385,9 @@
   border-radius: 6px;
   overflow-x: auto;
   margin: 10px 0;
+  white-space: pre-wrap;
+  word-break: break-word;
+  max-width: 100%;
 }
 
 .clinical-card pre code,
