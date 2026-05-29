@@ -85,6 +85,13 @@ export async function askMedicalRag(question: string): Promise<RagAnswer> {
   });
   if (error) throw error;
 
+  // Edge function returns { error, code, message } for credit/rate errors with 200 status
+  if (data && (data as any).error && !(data as any).answer) {
+    const err: any = new Error((data as any).message || (data as any).error);
+    err.code = (data as any).code;
+    throw err;
+  }
+
   const answer = data as RagAnswer;
   answer.latency_ms = Date.now() - t0;
 

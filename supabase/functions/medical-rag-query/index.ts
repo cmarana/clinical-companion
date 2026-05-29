@@ -184,9 +184,20 @@ Deno.serve(async (req) => {
       if (!llmRes.ok) {
         const t = await llmRes.text();
         console.error("LLM error", llmRes.status, t);
-        return new Response(JSON.stringify({ error: "Erro na IA", code: llmRes.status === 402 ? "credits" : "server" }), {
-          status: llmRes.status, headers: { ...corsHeaders, "Content-Type": "application/json" },
-        });
+        const isCredits = llmRes.status === 402;
+        const isRate = llmRes.status === 429;
+        return new Response(
+          JSON.stringify({
+            error: "Erro na IA",
+            code: isCredits ? "credits" : isRate ? "rate_limit" : "server",
+            message: isCredits
+              ? "Créditos de IA esgotados. Adicione créditos em Configurações > Workspace > Uso."
+              : isRate
+              ? "Muitas requisições. Aguarde alguns segundos e tente novamente."
+              : "Falha temporária na IA. Tente novamente.",
+          }),
+          { status: 200, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+        );
       }
       const llmJson = await llmRes.json();
       answer = llmJson.choices?.[0]?.message?.content || "";
