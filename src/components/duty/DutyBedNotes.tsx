@@ -67,24 +67,24 @@ export default function DutyBedNotes() {
           onClick={() => setShowForm(!showForm)}
           className="h-7 w-7 p-0"
         >
-          {showForm ? <X size={14} className="text-white/70" /> : <Plus size={14} className="text-white" />}
+          {showForm ? <X size={14} className="text-muted-foreground" /> : <Plus size={14} className="text-primary" />}
         </Button>
       </div>
 
       {showForm && (
-        <div className="space-y-2 bg-white/10 ring-1 ring-white/15 rounded-xl p-3">
+        <div className="space-y-2 bg-muted/40 ring-1 ring-border rounded-xl p-3">
           <div className="flex gap-2">
             <Input
               placeholder="Leito (ex: 3A)"
               value={bed}
               onChange={e => setBed(e.target.value)}
-              className="h-9 text-xs rounded-xl flex-[0.4] bg-white/15 border-white/20 text-white placeholder:text-white/50"
+              className="h-9 text-xs rounded-xl flex-[0.4]"
             />
             <Input
               placeholder="Paciente (opcional)"
               value={patient}
               onChange={e => setPatient(e.target.value)}
-              className="h-9 text-xs rounded-xl flex-[0.6] bg-white/15 border-white/20 text-white placeholder:text-white/50"
+              className="h-9 text-xs rounded-xl flex-[0.6]"
             />
           </div>
           <Textarea
@@ -92,9 +92,9 @@ export default function DutyBedNotes() {
             value={noteText}
             onChange={e => setNoteText(e.target.value)}
             rows={2}
-            className="text-xs rounded-xl bg-white/15 border-white/20 text-white placeholder:text-white/50"
+            className="text-xs rounded-xl"
           />
-          <Button size="sm" onClick={addNote} className="gap-1 rounded-xl w-full bg-white text-primary hover:bg-white/90">
+          <Button size="sm" onClick={addNote} className="gap-1 rounded-xl w-full">
             <Check size={14} /> Salvar
           </Button>
         </div>
@@ -102,28 +102,28 @@ export default function DutyBedNotes() {
 
       {notes.length === 0 && !showForm ? (
         <div className="text-center py-4 space-y-2">
-          <BedDouble size={24} className="mx-auto text-white/40" />
-          <p className="text-xs text-white/70">Anote informações rápidas por leito para acompanhar seus pacientes durante o plantão.</p>
-          <button onClick={() => setShowForm(true)} className="text-xs text-white font-heading font-medium">
+          <BedDouble size={24} className="mx-auto text-muted-foreground/60" />
+          <p className="text-xs text-muted-foreground">Anote informações rápidas por leito para acompanhar seus pacientes durante o plantão.</p>
+          <button onClick={() => setShowForm(true)} className="text-xs text-primary font-heading font-medium">
             + Adicionar nota de leito
           </button>
         </div>
       ) : (
         <div className="space-y-1.5">
           {notes.map(n => (
-            <div key={n.id} className="flex items-start gap-2.5 px-3 py-2.5 rounded-xl bg-white/10 hover:bg-white/15 transition-colors">
-              <div className="w-8 h-8 rounded-lg bg-white/20 flex items-center justify-center shrink-0">
-                <span className="text-[10px] font-heading font-bold text-white">{n.bed}</span>
+            <div key={n.id} className="flex items-start gap-2.5 px-3 py-2.5 rounded-xl bg-muted/40 hover:bg-muted/60 transition-colors">
+              <div className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                <span className="text-[10px] font-heading font-bold text-primary">{n.bed}</span>
               </div>
               <div className="flex-1 min-w-0">
-                {n.patient && <p className="text-[10px] font-heading font-semibold text-white">{n.patient}</p>}
-                {n.note && <p className="text-[11px] text-white/80 leading-relaxed">{n.note}</p>}
-                <p className="text-[9px] text-white/50 mt-0.5">
+                {n.patient && <p className="text-[10px] font-heading font-semibold text-foreground">{n.patient}</p>}
+                {n.note && <p className="text-[11px] text-foreground/80 leading-relaxed">{n.note}</p>}
+                <p className="text-[9px] text-muted-foreground mt-0.5">
                   {new Date(n.createdAt).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}
                 </p>
               </div>
               <button onClick={() => removeNote(n.id)} className="p-1 rounded-md hover:bg-destructive/20 transition-colors shrink-0">
-                <Trash2 size={12} className="text-white/60 hover:text-destructive" />
+                <Trash2 size={12} className="text-muted-foreground hover:text-destructive" />
               </button>
             </div>
           ))}

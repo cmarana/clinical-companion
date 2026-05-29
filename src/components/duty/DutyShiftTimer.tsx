@@ -41,21 +41,21 @@ export default function DutyShiftTimer() {
 
   return (
     <div className="duty-card p-4 flex items-center gap-3">
-      <Clock size={22} className="text-white shrink-0" />
+      <Clock size={22} className="text-primary shrink-0" />
       <div className="flex-1">
         <p className="font-heading font-semibold text-xs text-muted-foreground uppercase tracking-wider">Cronômetro de Turno</p>
         {shiftStart ? (
-          <p className="font-heading text-2xl font-bold tabular-nums tracking-tight">{formatTime(shiftElapsed)}</p>
+          <p className="font-heading text-2xl font-bold tabular-nums tracking-tight text-foreground">{formatTime(shiftElapsed)}</p>
         ) : (
           <p className="text-sm text-muted-foreground">Nenhum plantão ativo</p>
         )}
       </div>
       {shiftStart ? (
-        <Button variant="outline" size="sm" onClick={endShift} className="gap-1.5 bg-white/10 border-white/30 text-white hover:bg-white/20">
+        <Button variant="outline" size="sm" onClick={endShift} className="gap-1.5">
           <Square size={14} /> Encerrar
         </Button>
       ) : (
-        <Button size="sm" onClick={startShift} className="gap-1.5 !bg-white !text-[#0a6dd9] hover:!bg-white/90 font-semibold shadow-md">
+        <Button size="sm" onClick={startShift} className="gap-1.5 font-semibold shadow-md">
           <Play size={14} /> Iniciar
         </Button>
       )}

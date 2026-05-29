@@ -65,9 +65,9 @@ export default function DutyHandoffChecklist() {
       </div>
 
       {/* Progress bar */}
-      <div className="h-1.5 bg-white/15 rounded-full overflow-hidden">
+      <div className="h-1.5 bg-muted rounded-full overflow-hidden">
         <div
-          className="h-full bg-white rounded-full transition-all duration-300"
+          className="h-full bg-primary rounded-full transition-all duration-300"
           style={{ width: `${progress}%` }}
         />
       </div>
@@ -79,16 +79,16 @@ export default function DutyHandoffChecklist() {
             onClick={() => toggle(idx)}
             className={`w-full flex items-start gap-2.5 px-3 py-2.5 rounded-xl text-left transition-all active:scale-[0.98] ${
               item.checked
-                ? "bg-white/10"
-                : "hover:bg-white/10"
+                ? "bg-muted/60"
+                : "hover:bg-muted/40"
             }`}
           >
             {item.checked ? (
-              <CheckSquare size={16} className="text-white shrink-0 mt-0.5" />
+              <CheckSquare size={16} className="text-primary shrink-0 mt-0.5" />
             ) : (
-              <Square size={16} className="text-white/60 shrink-0 mt-0.5" />
+              <Square size={16} className="text-muted-foreground shrink-0 mt-0.5" />
             )}
-            <span className={`text-xs font-heading leading-relaxed ${item.checked ? "line-through text-white/60" : "text-white"}`}>
+            <span className={`text-xs font-heading leading-relaxed ${item.checked ? "line-through text-muted-foreground" : "text-foreground"}`}>
               {item.text}
             </span>
           </button>
