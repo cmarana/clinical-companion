@@ -258,8 +258,27 @@ function ClinicalAIContent() {
     toast.success("🎤 Ouvindo... fale o relato do paciente");
   }, [isListening]);
 
+  const messagesStartRef = useRef<HTMLDivElement>(null);
+
+  // Scroll para o INÍCIO da resposta quando uma nova mensagem do assistente começa
+  // e para o final apenas durante o streaming (para acompanhar o texto chegando)
+  const lastMsgCount = useRef(0);
   useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+    const count = messages.length;
+    if (count > lastMsgCount.current) {
+      // Nova mensagem adicionada — se for do assistente, scroll para cima dela
+      const last = messages[count - 1];
+      if (last?.role === "assistant") {
+        // Aguarda 1 frame para o DOM renderizar, depois sobe ao início da msg
+        requestAnimationFrame(() => {
+          messagesStartRef.current?.scrollIntoView({ behavior: "smooth", block: "start" });
+        });
+      } else {
+        // Mensagem do usuário — vai para o final para ver o indicador de loading
+        messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+      }
+      lastMsgCount.current = count;
+    }
   }, [messages]);
 
   // Handle prefilled context from protocol pages
@@ -672,7 +691,7 @@ function ClinicalAIContent() {
   };
 
   return (
-    <div className="flex flex-col h-[calc(100vh-4rem)] max-w-2xl mx-auto">
+    <div className="flex flex-col max-w-2xl mx-auto" style={{ height: "calc(100svh - 4rem)" }}>
       {/* Header */}
       <div className="flex items-center gap-2 px-3 py-2 border-b border-border bg-card/80 backdrop-blur-sm">
         <button onClick={() => navigate(-1)} className="p-1.5 rounded-md hover:bg-accent text-muted-foreground">
@@ -769,6 +788,7 @@ function ClinicalAIContent() {
           </div>
         )}
 
+        <div ref={messagesStartRef} />
         {messages.map((msg, i) => (
           <div key={i} className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
             {msg.role === "assistant" && (
