@@ -1,14 +1,11 @@
 /**
  * Matriz SAMU 192 — Protocolos Nacionais
- * Estrutura de dados base para a Matriz SAMU dentro do Pulso Emergência.
  *
- * Vínculos: cada protocolo SAMU pode apontar para um protocolo já existente
- * no Pulso em `relatedPulsoProtocolSlug` (rota dentro do app, ex.:
- * "/emergency/em-pcr-adulto") e `relatedPulsoProtocolTitle` (título exibido).
+ * Camada de indexação e auditoria do conteúdo clínico do Pulso em relação
+ * aos protocolos nacionais do SAMU 192 / Ministério da Saúde.
  *
- * Status:
- *  - coverageStatus: cobertura no Pulso
- *  - contentStatus: situação do conteúdo dentro desta matriz
+ * NÃO substitui os protocolos clínicos do app — apenas mapeia cobertura,
+ * lacunas e prioridades.
  */
 
 export type SamuProtocolLevel = "SBV" | "SAV";
@@ -25,6 +22,16 @@ export type SamuContentStatus =
   | "Precisa revisar"
   | "Precisa criar"
   | "Não aplicável";
+
+export type SamuPriority =
+  | "Sala Vermelha"
+  | "Emergência Clínica"
+  | "Trauma"
+  | "Pediatria"
+  | "Obstetrícia"
+  | "Procedimento"
+  | "Operacional"
+  | "Baixa prioridade";
 
 export const SAMU_CATEGORIES = [
   "Emergências Clínicas",
@@ -46,19 +53,26 @@ export interface SamuProtocol {
   code: string;
   title: string;
   level: SamuProtocolLevel;
-  category: string;
+  category: SamuProtocolCategory | string;
   coverageStatus: SamuCoverageStatus;
   contentStatus: SamuContentStatus;
+  priority?: SamuPriority;
+  clinicalArea?: string;
   relatedPulsoProtocolSlug?: string;
   relatedPulsoProtocolTitle?: string;
-  tags: string[];
   source: string;
+  tags: string[];
   notes?: string;
+  isOperational?: boolean;
+  needsMedicalReview?: boolean;
 }
 
 const SAMU_SOURCE = "SAMU 192 — Protocolos Nacionais (Ministério da Saúde)";
 
-export const samuProtocols: SamuProtocol[] = [
+// ──────────────────────────────────────────────────────────────────────────
+// Protocolos curados (com mapeamento real para o conteúdo clínico do Pulso)
+// ──────────────────────────────────────────────────────────────────────────
+const curated: SamuProtocol[] = [
   // ───────── Emergências Clínicas — SBV ─────────
   {
     id: "samu-bc2-pcr-sbv-adulto",
@@ -68,6 +82,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Emergências Clínicas",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Sala Vermelha",
+    clinicalArea: "Cardiologia / Ressuscitação",
     relatedPulsoProtocolSlug: "/emergency/em-pcr-adulto",
     relatedPulsoProtocolTitle: "PCR Adulto",
     tags: ["pcr", "rcp", "bls", "dea", "cadeia de sobrevivência"],
@@ -81,6 +97,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Emergências Clínicas",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Sala Vermelha",
+    clinicalArea: "Via aérea",
     relatedPulsoProtocolSlug: "/emergency/airway-obstruction-foreign-body",
     relatedPulsoProtocolTitle: "Obstrução de Via Aérea / Corpo Estranho",
     tags: ["ovace", "heimlich", "via aérea"],
@@ -94,10 +112,13 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Emergências Clínicas",
     coverageStatus: "Encontrado",
     contentStatus: "Precisa revisar",
+    priority: "Emergência Clínica",
+    clinicalArea: "Cardiologia",
     relatedPulsoProtocolSlug: "/emergency/em-dor-toracica",
     relatedPulsoProtocolTitle: "Dor Torácica",
     tags: ["dor torácica", "sca", "iam"],
     source: SAMU_SOURCE,
+    needsMedicalReview: true,
   },
   {
     id: "samu-bc5-dispneia",
@@ -107,10 +128,13 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Emergências Clínicas",
     coverageStatus: "Encontrado",
     contentStatus: "Precisa revisar",
+    priority: "Emergência Clínica",
+    clinicalArea: "Pneumologia",
     relatedPulsoProtocolSlug: "/emergency/em-dispneia-aguda",
     relatedPulsoProtocolTitle: "Dispneia Aguda",
     tags: ["dispneia", "irpa", "insuficiência respiratória"],
     source: SAMU_SOURCE,
+    needsMedicalReview: true,
   },
   {
     id: "samu-bc6-convulsao",
@@ -120,6 +144,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Emergências Clínicas",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Emergência Clínica",
+    clinicalArea: "Neurologia",
     relatedPulsoProtocolSlug: "/emergency/convulsao",
     relatedPulsoProtocolTitle: "Crise Convulsiva",
     tags: ["convulsão", "estado de mal epiléptico"],
@@ -133,6 +159,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Emergências Clínicas",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Sala Vermelha",
+    clinicalArea: "Neurologia",
     relatedPulsoProtocolSlug: "/emergency/avc-isquemico",
     relatedPulsoProtocolTitle: "AVC Isquêmico",
     tags: ["avc", "cincinnati", "janela terapêutica"],
@@ -146,11 +174,14 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Emergências Clínicas",
     coverageStatus: "Parcial",
     contentStatus: "Precisa revisar",
+    priority: "Emergência Clínica",
+    clinicalArea: "Pneumologia",
     relatedPulsoProtocolSlug: "/emergency/em-asma-grave",
     relatedPulsoProtocolTitle: "Asma Grave / Quase Fatal",
     tags: ["asma", "dpoc", "broncoespasmo", "salbutamol"],
     notes: "Pulso cobre Asma Grave e DPOC Exacerbado separadamente — alinhar fluxograma SBV unificado.",
     source: SAMU_SOURCE,
+    needsMedicalReview: true,
   },
 
   // ───────── Emergências Clínicas — SAV ─────────
@@ -162,6 +193,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Emergências Clínicas",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Sala Vermelha",
+    clinicalArea: "Cardiologia / Ressuscitação",
     relatedPulsoProtocolSlug: "/emergency/em-pcr-adulto",
     relatedPulsoProtocolTitle: "PCR Adulto (ACLS)",
     tags: ["acls", "pcr", "ritmos chocáveis", "adrenalina", "amiodarona"],
@@ -175,6 +208,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Emergências Clínicas",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Sala Vermelha",
+    clinicalArea: "Cardiologia",
     relatedPulsoProtocolSlug: "/emergency/em-iam-supra",
     relatedPulsoProtocolTitle: "IAM com Supradesnivelamento de ST (IAMCSST)",
     tags: ["sca", "iam", "iamcsst", "iamsst", "aas", "clopidogrel"],
@@ -188,6 +223,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Emergências Clínicas",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Sala Vermelha",
+    clinicalArea: "Cardiologia",
     relatedPulsoProtocolSlug: "/emergency/em-eap",
     relatedPulsoProtocolTitle: "Edema Agudo de Pulmão",
     tags: ["eap", "icc", "vni", "furosemida"],
@@ -201,10 +238,13 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Emergências Clínicas",
     coverageStatus: "Encontrado",
     contentStatus: "Precisa revisar",
+    priority: "Emergência Clínica",
+    clinicalArea: "Cardiologia",
     relatedPulsoProtocolSlug: "/emergency/em-emergencia-hipertensiva",
     relatedPulsoProtocolTitle: "Emergência Hipertensiva",
     tags: ["urgência hipertensiva", "emergência hipertensiva", "nitroprussiato"],
     source: SAMU_SOURCE,
+    needsMedicalReview: true,
   },
   {
     id: "samu-ac5-arritmias",
@@ -214,6 +254,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Emergências Clínicas",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Sala Vermelha",
+    clinicalArea: "Cardiologia",
     relatedPulsoProtocolSlug: "/emergency/em-taquiarritmia-instavel",
     relatedPulsoProtocolTitle: "Taquiarritmia Instável",
     tags: ["arritmia", "bradicardia", "taquicardia", "cardioversão"],
@@ -227,6 +269,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Emergências Clínicas",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Sala Vermelha",
+    clinicalArea: "Infectologia / Terapia Intensiva",
     relatedPulsoProtocolSlug: "/emergency/sepse-choque-septico",
     relatedPulsoProtocolTitle: "Sepse e Choque Séptico",
     tags: ["sepse", "choque séptico", "qsofa", "ressuscitação volêmica"],
@@ -240,6 +284,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Emergências Clínicas",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Sala Vermelha",
+    clinicalArea: "Alergologia",
     relatedPulsoProtocolSlug: "/emergency/anafilaxia-emergencia",
     relatedPulsoProtocolTitle: "Anafilaxia",
     tags: ["anafilaxia", "adrenalina im", "alergia"],
@@ -253,6 +299,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Emergências Clínicas",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Emergência Clínica",
+    clinicalArea: "Endocrinologia",
     relatedPulsoProtocolSlug: "/emergency/cetoacidose-diabetica",
     relatedPulsoProtocolTitle: "Cetoacidose Diabética (CAD)",
     tags: ["hipoglicemia", "cad", "ehh", "glicose 50%"],
@@ -266,6 +314,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Emergências Clínicas",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Sala Vermelha",
+    clinicalArea: "Pneumologia",
     relatedPulsoProtocolSlug: "/emergency/em-asma-grave",
     relatedPulsoProtocolTitle: "Asma Grave / Quase Fatal",
     tags: ["asma", "broncoespasmo", "sulfato de magnésio"],
@@ -279,6 +329,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Emergências Clínicas",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Emergência Clínica",
+    clinicalArea: "Pneumologia",
     relatedPulsoProtocolSlug: "/emergency/em-dpoc-exacerbado",
     relatedPulsoProtocolTitle: "DPOC Exacerbado",
     tags: ["dpoc", "vni", "broncodilatador"],
@@ -294,10 +346,13 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Trauma",
     coverageStatus: "Encontrado",
     contentStatus: "Precisa revisar",
+    priority: "Trauma",
+    clinicalArea: "Trauma",
     relatedPulsoProtocolSlug: "/emergency/atendimento-abcde",
     relatedPulsoProtocolTitle: "Atendimento Inicial — ABCDE",
     tags: ["xabcde", "phtls", "avaliação primária", "politrauma"],
     source: SAMU_SOURCE,
+    needsMedicalReview: true,
   },
   {
     id: "samu-bt2-politraumatizado",
@@ -307,6 +362,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Trauma",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Trauma",
+    clinicalArea: "Trauma",
     relatedPulsoProtocolSlug: "/emergency/politrauma",
     relatedPulsoProtocolTitle: "Politrauma",
     tags: ["politrauma", "phtls", "atls"],
@@ -320,6 +377,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Trauma",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Trauma",
+    clinicalArea: "Trauma",
     relatedPulsoProtocolSlug: "/emergency/hemorragia-traumatica",
     relatedPulsoProtocolTitle: "Hemorragia Traumática",
     tags: ["torniquete", "compressão direta", "hemostasia"],
@@ -333,10 +392,13 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Trauma",
     coverageStatus: "Encontrado",
     contentStatus: "Precisa revisar",
+    priority: "Trauma",
+    clinicalArea: "Trauma",
     relatedPulsoProtocolSlug: "/emergency/queimaduras",
     relatedPulsoProtocolTitle: "Queimaduras",
     tags: ["queimadura", "regra dos nove", "parkland"],
     source: SAMU_SOURCE,
+    needsMedicalReview: true,
   },
   {
     id: "samu-bt5-tce",
@@ -346,6 +408,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Trauma",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Sala Vermelha",
+    clinicalArea: "Neurocirurgia / Trauma",
     relatedPulsoProtocolSlug: "/emergency/tce",
     relatedPulsoProtocolTitle: "Traumatismo Cranioencefálico (TCE)",
     tags: ["tce", "glasgow"],
@@ -359,6 +423,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Trauma",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Sala Vermelha",
+    clinicalArea: "Trauma",
     relatedPulsoProtocolSlug: "/emergency/em-pneumotorax-hipertensivo",
     relatedPulsoProtocolTitle: "Pneumotórax Hipertensivo",
     tags: ["pneumotórax", "toracocentese", "descompressão"],
@@ -372,10 +438,13 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Trauma",
     coverageStatus: "Encontrado",
     contentStatus: "Precisa revisar",
+    priority: "Trauma",
+    clinicalArea: "Trauma",
     relatedPulsoProtocolSlug: "/emergency/trauma-abdominal",
     relatedPulsoProtocolTitle: "Trauma Abdominal",
     tags: ["trauma abdominal", "fast"],
     source: SAMU_SOURCE,
+    needsMedicalReview: true,
   },
   {
     id: "samu-at3-raquimedular",
@@ -385,10 +454,13 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Trauma",
     coverageStatus: "Encontrado",
     contentStatus: "Precisa revisar",
+    priority: "Trauma",
+    clinicalArea: "Trauma",
     relatedPulsoProtocolSlug: "/emergency/trauma-raquimedular",
     relatedPulsoProtocolTitle: "Trauma Raquimedular",
     tags: ["raquimedular", "lesão medular", "imobilização"],
     source: SAMU_SOURCE,
+    needsMedicalReview: true,
   },
   {
     id: "samu-at4-choque-hemorragico",
@@ -398,10 +470,13 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Trauma",
     coverageStatus: "Encontrado",
     contentStatus: "Precisa revisar",
+    priority: "Sala Vermelha",
+    clinicalArea: "Trauma",
     relatedPulsoProtocolSlug: "/emergency/choque-hemorragico",
     relatedPulsoProtocolTitle: "Choque Hemorrágico",
     tags: ["choque hemorrágico", "ácido tranexâmico", "hipotensão permissiva"],
     source: SAMU_SOURCE,
+    needsMedicalReview: true,
   },
 
   // ───────── Procedimentos ─────────
@@ -413,6 +488,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Procedimentos",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Procedimento",
+    clinicalArea: "Procedimentos",
     relatedPulsoProtocolSlug: "/emergency/acesso-intraosseo",
     relatedPulsoProtocolTitle: "Acesso Intraósseo",
     tags: ["acesso venoso", "intraósseo", "punção"],
@@ -426,6 +503,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Procedimentos",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Procedimento",
+    clinicalArea: "Via aérea",
     relatedPulsoProtocolSlug: "/emergency/em-sri",
     relatedPulsoProtocolTitle: "Sequência Rápida de Intubação (SRI)",
     tags: ["iot", "sri", "rsi", "via aérea avançada", "etomidato", "succinilcolina"],
@@ -439,10 +518,13 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Procedimentos",
     coverageStatus: "Encontrado",
     contentStatus: "Precisa revisar",
+    priority: "Procedimento",
+    clinicalArea: "Via aérea",
     relatedPulsoProtocolSlug: "/emergency/em-cricotireoidostomia",
     relatedPulsoProtocolTitle: "Cricotireoidostomia",
     tags: ["via aérea cirúrgica", "crico", "via aérea difícil"],
     source: SAMU_SOURCE,
+    needsMedicalReview: true,
   },
   {
     id: "samu-pr4-desfibrilacao",
@@ -452,6 +534,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Procedimentos",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Procedimento",
+    clinicalArea: "Cardiologia",
     relatedPulsoProtocolSlug: "/emergency/desfibrilacao",
     relatedPulsoProtocolTitle: "Desfibrilação",
     tags: ["desfibrilação", "cardioversão sincronizada", "energia bifásica"],
@@ -467,6 +551,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Protocolos Especiais",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Emergência Clínica",
+    clinicalArea: "Psiquiatria",
     relatedPulsoProtocolSlug: "/emergency/psychomotor-agitation",
     relatedPulsoProtocolTitle: "Agitação Psicomotora",
     tags: ["agitação", "contenção química", "haloperidol"],
@@ -480,9 +566,13 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Protocolos Especiais",
     coverageStatus: "Operacional SAMU",
     contentStatus: "Precisa criar",
+    priority: "Operacional",
+    clinicalArea: "Operacional / Ético-legal",
     tags: ["recusa", "termo", "ética"],
     notes: "Protocolo operacional do SAMU — não substitui conduta clínica.",
     source: SAMU_SOURCE,
+    isOperational: true,
+    needsMedicalReview: true,
   },
   {
     id: "samu-es3-obito",
@@ -492,8 +582,12 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Protocolos Especiais",
     coverageStatus: "Operacional SAMU",
     contentStatus: "Precisa criar",
+    priority: "Operacional",
+    clinicalArea: "Operacional / Ético-legal",
     tags: ["óbito", "constatação", "declaração"],
     source: SAMU_SOURCE,
+    isOperational: true,
+    needsMedicalReview: true,
   },
 
   // ───────── Gineco-Obstetrícia ─────────
@@ -505,11 +599,14 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Gineco-Obstetrícia",
     coverageStatus: "Parcial",
     contentStatus: "Precisa revisar",
+    priority: "Obstetrícia",
+    clinicalArea: "Obstetrícia",
     relatedPulsoProtocolSlug: "/emergency/reanimacao-neonatal",
     relatedPulsoProtocolTitle: "Reanimação Neonatal (relacionado)",
     tags: ["parto", "extra-hospitalar", "obstetrícia"],
     notes: "Pulso cobre Reanimação Neonatal; parto extra-hospitalar precisa de protocolo dedicado.",
     source: SAMU_SOURCE,
+    needsMedicalReview: true,
   },
   {
     id: "samu-go2-eclampsia",
@@ -519,6 +616,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Gineco-Obstetrícia",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Sala Vermelha",
+    clinicalArea: "Obstetrícia",
     relatedPulsoProtocolSlug: "/emergency/eclampsia",
     relatedPulsoProtocolTitle: "Eclâmpsia",
     tags: ["eclampsia", "pré-eclâmpsia", "sulfato de magnésio"],
@@ -532,6 +631,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Gineco-Obstetrícia",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Sala Vermelha",
+    clinicalArea: "Obstetrícia",
     relatedPulsoProtocolSlug: "/emergency/hemorragia-pos-parto",
     relatedPulsoProtocolTitle: "Hemorragia Pós-Parto",
     tags: ["hpp", "atonia", "ocitocina", "massagem uterina"],
@@ -547,6 +648,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Pediatria",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Sala Vermelha",
+    clinicalArea: "Pediatria / Ressuscitação",
     relatedPulsoProtocolSlug: "/emergency/em-pcr-pediatrica",
     relatedPulsoProtocolTitle: "PCR Pediátrica",
     tags: ["pals", "rcp pediátrica", "bls pediátrico"],
@@ -560,6 +663,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Pediatria",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Sala Vermelha",
+    clinicalArea: "Pediatria / Ressuscitação",
     relatedPulsoProtocolSlug: "/emergency/em-pcr-pediatrica",
     relatedPulsoProtocolTitle: "PCR Pediátrica",
     tags: ["pals", "rcp pediátrica", "drogas pediátricas"],
@@ -573,10 +678,13 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Pediatria",
     coverageStatus: "Encontrado",
     contentStatus: "Precisa revisar",
+    priority: "Pediatria",
+    clinicalArea: "Neuropediatria",
     relatedPulsoProtocolSlug: "/emergency/convulsao-febril",
     relatedPulsoProtocolTitle: "Convulsão Febril",
     tags: ["convulsão", "convulsão febril", "pediatria"],
     source: SAMU_SOURCE,
+    needsMedicalReview: true,
   },
   {
     id: "samu-pd4-asma-pediatrica",
@@ -586,6 +694,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Pediatria",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Pediatria",
+    clinicalArea: "Pneumopediatria",
     relatedPulsoProtocolSlug: "/emergency/asma-grave-pediatrica",
     relatedPulsoProtocolTitle: "Asma Grave Pediátrica",
     tags: ["asma pediátrica", "bronquiolite", "crupe"],
@@ -599,6 +709,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Pediatria",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Sala Vermelha",
+    clinicalArea: "Neonatologia",
     relatedPulsoProtocolSlug: "/emergency/reanimacao-neonatal",
     relatedPulsoProtocolTitle: "Reanimação Neonatal",
     tags: ["apgar", "neonatal", "ventilação com pressão positiva"],
@@ -614,10 +726,13 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Intoxicações / Produtos Perigosos",
     coverageStatus: "Encontrado",
     contentStatus: "Precisa revisar",
+    priority: "Emergência Clínica",
+    clinicalArea: "Toxicologia",
     relatedPulsoProtocolSlug: "/emergency/intoxicacao-abordagem",
     relatedPulsoProtocolTitle: "Intoxicação Exógena — Abordagem",
     tags: ["intoxicação", "antídoto", "carvão ativado", "toxíndromes"],
     source: SAMU_SOURCE,
+    needsMedicalReview: true,
   },
   {
     id: "samu-in2-ofidico",
@@ -627,6 +742,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Intoxicações / Produtos Perigosos",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Emergência Clínica",
+    clinicalArea: "Toxicologia",
     relatedPulsoProtocolSlug: "/emergency/snakebite-bothrops",
     relatedPulsoProtocolTitle: "Acidente Ofídico — Bothrops (Jararaca)",
     tags: ["jararaca", "soro antiofídico", "coagulopatia"],
@@ -640,8 +757,12 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Intoxicações / Produtos Perigosos",
     coverageStatus: "Não localizado",
     contentStatus: "Precisa criar",
+    priority: "Operacional",
+    clinicalArea: "Toxicologia / Operacional",
     tags: ["hazmat", "descontaminação", "epi"],
     source: SAMU_SOURCE,
+    isOperational: true,
+    needsMedicalReview: true,
   },
   {
     id: "samu-in4-opioide",
@@ -651,6 +772,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Intoxicações / Produtos Perigosos",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Sala Vermelha",
+    clinicalArea: "Toxicologia",
     relatedPulsoProtocolSlug: "/emergency/intoxicacao-opioide",
     relatedPulsoProtocolTitle: "Intoxicação por Opioide",
     tags: ["opioide", "naloxona", "overdose"],
@@ -664,6 +787,8 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Intoxicações / Produtos Perigosos",
     coverageStatus: "Encontrado",
     contentStatus: "Completo",
+    priority: "Emergência Clínica",
+    clinicalArea: "Toxicologia",
     relatedPulsoProtocolSlug: "/emergency/intoxicacao-organofosforado",
     relatedPulsoProtocolTitle: "Intoxicação por Organofosforado",
     tags: ["organofosforado", "atropina", "pralidoxima"],
@@ -679,8 +804,12 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Incidentes com Múltiplas Vítimas",
     coverageStatus: "Não localizado",
     contentStatus: "Precisa criar",
+    priority: "Operacional",
+    clinicalArea: "Operacional / Trauma",
     tags: ["start", "triagem", "imv"],
     source: SAMU_SOURCE,
+    isOperational: true,
+    needsMedicalReview: true,
   },
   {
     id: "samu-mv2-comando-controle",
@@ -690,8 +819,12 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Incidentes com Múltiplas Vítimas",
     coverageStatus: "Operacional SAMU",
     contentStatus: "Precisa criar",
+    priority: "Operacional",
+    clinicalArea: "Operacional",
     tags: ["comando", "ics", "regulação"],
     source: SAMU_SOURCE,
+    isOperational: true,
+    needsMedicalReview: true,
   },
 
   // ───────── Motolância ─────────
@@ -703,8 +836,12 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Motolância",
     coverageStatus: "Operacional SAMU",
     contentStatus: "Precisa criar",
+    priority: "Operacional",
+    clinicalArea: "Operacional",
     tags: ["motolância", "primeira resposta", "tempo-resposta"],
     source: SAMU_SOURCE,
+    isOperational: true,
+    needsMedicalReview: true,
   },
 
   // ───────── Aeromédico ─────────
@@ -716,10 +853,81 @@ export const samuProtocols: SamuProtocol[] = [
     category: "Aeromédico",
     coverageStatus: "Operacional SAMU",
     contentStatus: "Precisa criar",
+    priority: "Operacional",
+    clinicalArea: "Operacional",
     tags: ["aeromédico", "asa rotativa", "helicóptero"],
     source: SAMU_SOURCE,
+    isOperational: true,
+    needsMedicalReview: true,
   },
 ];
+
+// ──────────────────────────────────────────────────────────────────────────
+// Backlog gerado (slots da matriz oficial ainda sem título mapeado).
+// A base SAMU 192 do MS comporta cerca de 480 itens entre SBV e SAV.
+// Estes slots representam a estrutura completa e serão progressivamente
+// preenchidos / renomeados conforme o conteúdo for criado.
+// ──────────────────────────────────────────────────────────────────────────
+interface SlotSpec {
+  prefix: string;
+  count: number;
+  level: SamuProtocolLevel;
+  category: SamuProtocolCategory;
+  priority: SamuPriority;
+  clinicalArea: string;
+  isOperational?: boolean;
+}
+
+const SLOT_GROUPS: SlotSpec[] = [
+  { prefix: "BC", count: 30,  level: "SBV", category: "Emergências Clínicas",                priority: "Emergência Clínica", clinicalArea: "Clínica" },
+  { prefix: "AC", count: 60,  level: "SAV", category: "Emergências Clínicas",                priority: "Emergência Clínica", clinicalArea: "Clínica" },
+  { prefix: "BT", count: 30,  level: "SBV", category: "Trauma",                              priority: "Trauma",             clinicalArea: "Trauma" },
+  { prefix: "AT", count: 40,  level: "SAV", category: "Trauma",                              priority: "Trauma",             clinicalArea: "Trauma" },
+  { prefix: "PD", count: 40,  level: "SAV", category: "Pediatria",                           priority: "Pediatria",          clinicalArea: "Pediatria" },
+  { prefix: "BP", count: 20,  level: "SBV", category: "Pediatria",                           priority: "Pediatria",          clinicalArea: "Pediatria" },
+  { prefix: "GO", count: 25,  level: "SAV", category: "Gineco-Obstetrícia",                  priority: "Obstetrícia",        clinicalArea: "Obstetrícia" },
+  { prefix: "IN", count: 30,  level: "SAV", category: "Intoxicações / Produtos Perigosos",   priority: "Emergência Clínica", clinicalArea: "Toxicologia" },
+  { prefix: "PR", count: 40,  level: "SAV", category: "Procedimentos",                       priority: "Procedimento",       clinicalArea: "Procedimentos" },
+  { prefix: "ES", count: 30,  level: "SAV", category: "Protocolos Especiais",                priority: "Operacional",        clinicalArea: "Operacional",  isOperational: true },
+  { prefix: "MV", count: 20,  level: "SAV", category: "Incidentes com Múltiplas Vítimas",    priority: "Operacional",        clinicalArea: "Operacional",  isOperational: true },
+  { prefix: "MT", count: 10,  level: "SBV", category: "Motolância",                          priority: "Operacional",        clinicalArea: "Operacional",  isOperational: true },
+  { prefix: "AE", count: 10,  level: "SAV", category: "Aeromédico",                          priority: "Operacional",        clinicalArea: "Operacional",  isOperational: true },
+  { prefix: "HM", count: 10,  level: "SAV", category: "Intoxicações / Produtos Perigosos",   priority: "Operacional",        clinicalArea: "HAZMAT",        isOperational: true },
+  { prefix: "OP", count: 25,  level: "SAV", category: "Protocolos Especiais",                priority: "Operacional",        clinicalArea: "Operacional",  isOperational: true },
+  { prefix: "RG", count: 15,  level: "SAV", category: "Protocolos Especiais",                priority: "Operacional",        clinicalArea: "Regulação",    isOperational: true },
+  { prefix: "TR", count: 15,  level: "SAV", category: "Protocolos Especiais",                priority: "Operacional",        clinicalArea: "Transporte",   isOperational: true },
+  { prefix: "BV", count: 10,  level: "SBV", category: "Protocolos Especiais",                priority: "Baixa prioridade",   clinicalArea: "Geral" },
+  { prefix: "AV", count: 20,  level: "SAV", category: "Emergências Clínicas",                priority: "Emergência Clínica", clinicalArea: "Clínica avançada" },
+];
+// Total ≈ 480 slots
+
+const curatedCodes = new Set(curated.map(p => p.code.toUpperCase()));
+
+const slots: SamuProtocol[] = [];
+for (const g of SLOT_GROUPS) {
+  for (let i = 1; i <= g.count; i++) {
+    const code = `${g.prefix}${i}`;
+    if (curatedCodes.has(code.toUpperCase())) continue;
+    slots.push({
+      id: `samu-slot-${code.toLowerCase()}`,
+      code,
+      title: `${g.category} — Item ${code} (slot da matriz oficial)`,
+      level: g.level,
+      category: g.category,
+      coverageStatus: "Sem título no sumário",
+      contentStatus: "Precisa criar",
+      priority: g.priority,
+      clinicalArea: g.clinicalArea,
+      tags: [g.category.toLowerCase()],
+      source: SAMU_SOURCE,
+      notes: "Slot da matriz oficial SAMU 192 aguardando mapeamento de título e conteúdo clínico.",
+      isOperational: g.isOperational,
+      needsMedicalReview: true,
+    });
+  }
+}
+
+export const samuProtocols: SamuProtocol[] = [...curated, ...slots];
 
 export function getSamuProtocolById(id: string): SamuProtocol | undefined {
   return samuProtocols.find(p => p.id === id);
