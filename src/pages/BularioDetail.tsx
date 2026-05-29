@@ -10,18 +10,18 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Badge } from "@/components/ui/badge";
 import DrugInteractionAlert from "@/components/DrugInteractionAlert";
 import { useRecentHistory } from "@/hooks/useRecentHistory";
-import { GRADIENT_DEEP_BLUE } from "@/lib/design-tokens";
 
 function Section({ title, content }: { title: string; content?: string }) {
   if (!content) return null;
   return (
-    <Card className="overflow-hidden text-white shadow-md ring-1 ring-white/15" style={{ background: GRADIENT_DEEP_BLUE }}>
-      <CardHeader className="pb-2 pt-4 px-4">
-        <CardTitle className="text-sm font-heading text-white">{title}</CardTitle>
+    <Card className="relative overflow-hidden bg-card ring-1 ring-border shadow-sm">
+      <span aria-hidden className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary" />
+      <CardHeader className="pb-2 pt-4 px-4 pl-5">
+        <CardTitle className="text-sm font-heading text-foreground">{title}</CardTitle>
       </CardHeader>
-      <CardContent className="px-4 pb-4">
+      <CardContent className="px-4 pl-5 pb-4">
         {content.split("\n").map((line, i) => (
-          <p key={i} className="text-sm leading-relaxed mb-1 text-white/86">{line}</p>
+          <p key={i} className="text-sm leading-relaxed mb-1 text-foreground/85">{line}</p>
         ))}
       </CardContent>
     </Card>

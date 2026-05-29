@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import { FileText, Pill, Star, ClipboardList, FolderOpen, ChevronDown, ChevronRight } from "lucide-react";
 import { useState } from "react";
-import { GRADIENT_DEEP_BLUE } from "@/lib/design-tokens";
+
 
 export default function Favorites() {
   const navigate = useNavigate();
@@ -57,42 +57,42 @@ export default function Favorites() {
               return (
                 <div
                   key={spec}
-                  className="rounded-2xl overflow-hidden text-white shadow-md ring-1 ring-white/15"
-                  style={{ background: GRADIENT_DEEP_BLUE }}
+                  className="relative rounded-2xl overflow-hidden bg-card ring-1 ring-border shadow-sm"
                 >
+                  <span aria-hidden className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary" />
                   <button
                     onClick={() => toggle(spec)}
-                    className="w-full flex items-center gap-3 p-3.5 hover:bg-white/10 transition-colors"
+                    className="w-full flex items-center gap-3 p-3.5 pl-4 hover:bg-muted/40 transition-colors"
                   >
-                    <div className="w-8 h-8 rounded-lg bg-white/15 ring-1 ring-white/25 flex items-center justify-center">
-                      <FolderOpen size={16} className="text-white" />
+                    <div className="w-8 h-8 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                      <FolderOpen size={16} />
                     </div>
                     <div className="flex-1 text-left">
-                      <p className="font-heading font-semibold text-sm text-white">{spec}</p>
-                      <p className="text-[10px] text-white/76">{items.length} item{items.length !== 1 ? "s" : ""}</p>
+                      <p className="font-heading font-semibold text-sm text-foreground">{spec}</p>
+                      <p className="text-[10px] text-muted-foreground">{items.length} item{items.length !== 1 ? "s" : ""}</p>
                     </div>
-                    {isOpen ? <ChevronDown size={16} className="text-white/78" /> : <ChevronRight size={16} className="text-white/78" />}
+                    {isOpen ? <ChevronDown size={16} className="text-muted-foreground" /> : <ChevronRight size={16} className="text-muted-foreground" />}
                   </button>
 
                   {isOpen && (
-                    <div className="border-t border-white/15">
+                    <div className="border-t border-border">
                       {items.map((f) => (
-                        <div key={f.id} className="flex items-center gap-3 px-3.5 py-2.5 hover:bg-white/10 transition-colors">
+                        <div key={f.id} className="flex items-center gap-3 px-3.5 pl-4 py-2.5 hover:bg-muted/40 transition-colors">
                           <button
                             onClick={() => navigate(getPath(f))}
                             className="flex items-center gap-3 flex-1 min-w-0"
                           >
-                            <div className="w-7 h-7 rounded-md bg-white/15 ring-1 ring-white/20 flex items-center justify-center text-white shrink-0">
+                            <div className="w-7 h-7 rounded-md bg-primary/10 text-primary flex items-center justify-center shrink-0">
                               {typeIcon(f.type)}
                             </div>
-                            <div className="min-w-0">
-                              <p className="font-heading font-medium text-xs text-white truncate">{f.title}</p>
-                              <p className="text-[10px] text-white/74">{typeLabel(f.type)}</p>
+                            <div className="min-w-0 text-left">
+                              <p className="font-heading font-medium text-xs text-foreground truncate">{f.title}</p>
+                              <p className="text-[10px] text-muted-foreground">{typeLabel(f.type)}</p>
                             </div>
                           </button>
                           <button
                             onClick={() => toggleFavorite(f)}
-                            className="p-1.5 rounded-md hover:bg-accent transition-colors shrink-0"
+                            className="p-1.5 rounded-md hover:bg-muted transition-colors shrink-0"
                           >
                             <Star size={14} className="fill-destructive text-destructive" />
                           </button>

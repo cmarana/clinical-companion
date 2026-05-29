@@ -237,7 +237,7 @@ export default function StudyDashboard() {
       <div className="px-4 pt-3 max-w-lg mx-auto space-y-4">
         {/* Streak & Weekly Goal */}
         <div className="grid grid-cols-2 gap-3">
-          <Card className="p-4 flex flex-col items-center gap-1 bg-gradient-to-br from-destructive/10 to-destructive/10 border-destructive/20">
+          <Card className="p-4 flex flex-col items-center gap-1 bg-destructive/5 border-destructive/20">
             <Flame className="text-destructive" size={28} />
             <span className="text-2xl font-bold text-foreground">{streak.current}</span>
             <span className="text-[11px] text-muted-foreground font-medium">Streak (dias)</span>
