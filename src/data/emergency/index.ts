@@ -4,6 +4,7 @@ import { samuCriticalResuscitationProtocols } from "./samu_critical_resuscitatio
 import { samuP1MissingBatch1Protocols } from "./samu_p1_faltantes_lote2";
 import { samuP1MissingBatch2Protocols } from "./samu_p1_faltantes_lote3";
 import { samuP1MissingBatch3Protocols } from "./samu_p1_faltantes_lote4";
+import { samuP2MissingBatch1Protocols } from "./samu_p2_faltantes_lote5";
 import { cardiovascularProtocols } from "./cardiovascular";
 import { cardiovascularProtocols2 } from "./cardiovascular2";
 import { cardiovascularProtocols3 } from "./cardiovascular3";
@@ -231,6 +232,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...infectiousProtocols4,
       ...samuP1MissingBatch2Protocols.filter(p => p.categoryId === "infectious"),
       ...samuP1MissingBatch3Protocols.filter(p => p.categoryId === "infectious"),
+      ...samuP2MissingBatch1Protocols.filter(p => p.categoryId === "infectious"),
     ]),
   },
   {
@@ -262,6 +264,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "pediatric-emergency"),
       ...samuP1MissingBatch2Protocols.filter(p => p.categoryId === "pediatric-emergency"),
       ...samuP1MissingBatch3Protocols.filter(p => p.categoryId === "pediatric-emergency"),
+      ...samuP2MissingBatch1Protocols.filter(p => p.categoryId === "pediatric-emergency"),
     ]),
   },
   {
@@ -317,6 +320,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...vascularGeriatricsEmergencyProtocols.filter(p => p.id === "delirium-elderly"),
       ...thoracicEntEmergencyProtocols.filter(p => p.id === "central-vertigo-emergency"),
       ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "other-emergencies"),
+      ...samuP2MissingBatch1Protocols.filter(p => p.categoryId === "other-emergencies"),
     ]),
   },
 ];
