@@ -3,6 +3,7 @@ import { resuscitationProtocols } from "./resuscitation";
 import { samuCriticalResuscitationProtocols } from "./samu_critical_resuscitation";
 import { samuP1MissingBatch1Protocols } from "./samu_p1_faltantes_lote2";
 import { samuP1MissingBatch2Protocols } from "./samu_p1_faltantes_lote3";
+import { samuP1MissingBatch3Protocols } from "./samu_p1_faltantes_lote4";
 import { cardiovascularProtocols } from "./cardiovascular";
 import { cardiovascularProtocols2 } from "./cardiovascular2";
 import { cardiovascularProtocols3 } from "./cardiovascular3";
@@ -229,6 +230,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...infectiousProtocols3,
       ...infectiousProtocols4,
       ...samuP1MissingBatch2Protocols.filter(p => p.categoryId === "infectious"),
+      ...samuP1MissingBatch3Protocols.filter(p => p.categoryId === "infectious"),
     ]),
   },
   {
@@ -247,6 +249,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     protocols: dedup([
       ...gastroenterologyEmergencyProtocols,
       ...thoracicEntEmergencyProtocols.filter(p => p.id === "boerhaave-esophageal-perforation"),
+      ...samuP1MissingBatch3Protocols.filter(p => p.categoryId === "gastroenterology-emergency"),
     ]),
   },
   {
@@ -258,12 +261,16 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...pediatricEmergencyProtocols3,
       ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "pediatric-emergency"),
       ...samuP1MissingBatch2Protocols.filter(p => p.categoryId === "pediatric-emergency"),
+      ...samuP1MissingBatch3Protocols.filter(p => p.categoryId === "pediatric-emergency"),
     ]),
   },
   {
     id: "neonatal",
     title: "Neonatal",
-    protocols: dedup(neonatalProtocols),
+    protocols: dedup([
+      ...neonatalProtocols,
+      ...samuP1MissingBatch3Protocols.filter(p => p.categoryId === "neonatal"),
+    ]),
   },
   {
     id: "psychiatry-emergency",
