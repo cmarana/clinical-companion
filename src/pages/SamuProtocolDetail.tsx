@@ -57,6 +57,11 @@ export default function SamuProtocolDetail() {
     protocol.contentStatus === "Precisa criar" ||
     protocol.contentStatus === "Precisa revisar";
 
+  const resolvedPulsoPath = resolvePulsoProtocolLink(
+    protocol.relatedPulsoProtocolTitle,
+    protocol.relatedPulsoProtocolSlug,
+  );
+
   return (
     <>
       <TopBar title={`SAMU · ${protocol.code}`} />
