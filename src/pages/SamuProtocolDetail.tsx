@@ -7,6 +7,7 @@ import {
   type SamuCoverageStatus,
   type SamuContentStatus,
 } from "@/data/samuProtocols";
+import { resolvePulsoProtocolLink } from "@/data/samuPulsoLinks";
 
 const COVERAGE_TONE: Record<SamuCoverageStatus, string> = {
   "Encontrado":            "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/20",
@@ -56,6 +57,11 @@ export default function SamuProtocolDetail() {
     protocol.contentStatus === "Precisa criar" ||
     protocol.contentStatus === "Precisa revisar";
 
+  const resolvedPulsoPath = resolvePulsoProtocolLink(
+    protocol.relatedPulsoProtocolTitle,
+    protocol.relatedPulsoProtocolSlug,
+  );
+
   return (
     <>
       <TopBar title={`SAMU · ${protocol.code}`} />
@@ -103,9 +109,9 @@ export default function SamuProtocolDetail() {
         </div>
 
         {/* Botão principal — abre protocolo clínico real do Pulso quando existir */}
-        {protocol.relatedPulsoProtocolSlug ? (
+        {resolvedPulsoPath ? (
           <button
-            onClick={() => navigate(protocol.relatedPulsoProtocolSlug!)}
+            onClick={() => navigate(resolvedPulsoPath)}
             className="w-full flex items-center gap-3 rounded-xl bg-primary text-primary-foreground p-3.5 hover:bg-primary/90 transition text-left"
           >
             <div className="w-9 h-9 rounded-lg bg-primary-foreground/15 flex items-center justify-center">
@@ -113,13 +119,31 @@ export default function SamuProtocolDetail() {
             </div>
             <div className="flex-1 min-w-0">
               <p className="text-[10.5px] font-heading font-bold uppercase tracking-wider opacity-90">
-                Abrir protocolo clínico no Pulso
+                Ver protocolo no Pulso
               </p>
               <p className="text-[13px] font-heading font-semibold truncate">
                 {protocol.relatedPulsoProtocolTitle ?? "Abrir"}
               </p>
             </div>
           </button>
+        ) : protocol.relatedPulsoProtocolTitle ? (
+          <div className="w-full flex items-start gap-3 rounded-xl bg-muted/40 border border-border p-3.5">
+            <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center shrink-0">
+              <Info size={16} className="text-muted-foreground" />
+            </div>
+            <div className="flex-1 min-w-0 space-y-0.5">
+              <p className="text-[10.5px] font-heading font-bold uppercase tracking-wider text-muted-foreground">
+                Relacionado no Pulso
+              </p>
+              <p className="text-[12.5px] text-foreground font-heading font-semibold leading-snug">
+                {protocol.relatedPulsoProtocolTitle}
+              </p>
+              <p className="text-[11px] text-muted-foreground leading-snug">
+                Vínculo conceitual: o protocolo clínico ainda não foi mapeado
+                com segurança para um id do Pulso.
+              </p>
+            </div>
+          </div>
         ) : (
           <div className="w-full flex items-start gap-3 rounded-xl bg-muted/40 border border-border p-3.5">
             <div className="w-9 h-9 rounded-lg bg-muted flex items-center justify-center shrink-0">

@@ -12,6 +12,7 @@ import {
   type SamuCoverageStatus,
   type SamuContentStatus,
 } from "@/data/samuProtocols";
+import { resolvePulsoProtocolLink } from "@/data/samuPulsoLinks";
 
 const LEVELS: SamuProtocolLevel[] = ["SBV", "SAV"];
 
@@ -271,7 +272,12 @@ export default function SamuProtocols() {
             </div>
 
             <div className="grid gap-2 sm:grid-cols-2">
-              {items.map(p => (
+              {items.map(p => {
+                const resolvedPath = resolvePulsoProtocolLink(
+                  p.relatedPulsoProtocolTitle,
+                  p.relatedPulsoProtocolSlug,
+                );
+                return (
                 <motion.div
                   key={p.id}
                   whileTap={{ scale: 0.995 }}
@@ -311,7 +317,9 @@ export default function SamuProtocols() {
 
                     {p.relatedPulsoProtocolTitle && (
                       <div className="rounded-lg bg-primary/5 border border-primary/15 px-2.5 py-1.5 text-[11px] flex items-center gap-1.5">
-                        <span className="text-muted-foreground shrink-0">Relacionado:</span>
+                        <span className="text-muted-foreground shrink-0">
+                          {resolvedPath ? "Relacionado:" : "Relacionado no Pulso:"}
+                        </span>
                         <span className="font-heading font-semibold text-foreground truncate flex-1">
                           {p.relatedPulsoProtocolTitle}
                         </span>
@@ -325,10 +333,10 @@ export default function SamuProtocols() {
                     )}
 
                     <div className="flex items-center gap-2 pt-1">
-                      {p.relatedPulsoProtocolSlug ? (
+                      {resolvedPath ? (
                         <>
                           <button
-                            onClick={() => navigate(p.relatedPulsoProtocolSlug!)}
+                            onClick={() => navigate(resolvedPath)}
                             className="flex-1 inline-flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg bg-primary text-primary-foreground text-[12px] font-heading font-semibold hover:bg-primary/90 transition"
                             title="Abrir protocolo clínico do Pulso"
                           >
@@ -355,12 +363,14 @@ export default function SamuProtocols() {
                       )}
                     </div>
 
+
                     <p className="text-[10px] text-muted-foreground/70 pt-1">
                       Fonte: {p.source}
                     </p>
                   </div>
                 </motion.div>
-              ))}
+                );
+              })}
             </div>
           </section>
         ))}
