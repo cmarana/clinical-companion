@@ -95,12 +95,26 @@ function adaptEmergencyToFull(p: EmergencyProtocol): FullProtocol {
     (p.lastReviewed && parseInt(p.lastReviewed.match(/\d{4}/)?.[0] ?? "", 10)) ||
     (p.badge === "new" || p.badge === "updated" ? 2026 : 2025);
 
+  // Normaliza ids de seções PT-BR (lotes SAMU) para os ids esperados pelo auditor.
+  const SECTION_ID_ALIASES: Record<string, string> = {
+    conduta: "conduct",
+    tratamento: "treatment",
+    referencias: "references",
+    definicao: "def",
+    identificacao: "screening",
+    avaliacao: "screening",
+  };
+  const normalizedSections = p.sections.map((s) => ({
+    ...s,
+    id: SECTION_ID_ALIASES[s.id] ?? s.id,
+  }));
+
   return {
     id: p.id,
     title: p.title,
     category: p.categoryId,
     lastReviewed: `${reviewedYear}-01-01`,
-    sections: p.sections,
+    sections: normalizedSections,
     guidelines: presentSocieties.map((society) => ({
       society,
       year: reviewedYear,
