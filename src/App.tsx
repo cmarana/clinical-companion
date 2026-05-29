@@ -109,6 +109,8 @@ const Rounds = lazy(() => import("@/pages/Rounds"));
 const DischargeSummary = lazy(() => import("@/pages/DischargeSummary"));
 const ConductComparator = lazy(() => import("@/pages/ConductComparator"));
 const Demo = lazy(() => import("@/pages/Demo"));
+const SamuProtocols = lazy(() => import("@/pages/SamuProtocols"));
+const SamuProtocolDetail = lazy(() => import("@/pages/SamuProtocolDetail"));
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -267,6 +269,8 @@ const AppRoutes = () => (
         <Route path="/rounds" element={<Rounds />} />
         <Route path="/discharge-summary" element={<DischargeSummary />} />
         <Route path="/conduct-comparator" element={<ConductComparator />} />
+        <Route path="/samu-protocols" element={<Suspense fallback={<ProtocolListSkeleton />}><SamuProtocols /></Suspense>} />
+        <Route path="/samu-protocols/:code" element={<Suspense fallback={<ProtocolDetailSkeleton />}><SamuProtocolDetail /></Suspense>} />
       </Route>
       <Route path="/" element={<SmartRoot />} />
       <Route path="/status" element={<Status />} />
