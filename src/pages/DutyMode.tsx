@@ -96,40 +96,38 @@ function DutyModeContent() {
         {/* ── Shift Timer ── */}
         <DutyShiftTimer />
 
-        {/* ── Critical Tools (Bedside) ── */}
+        {/* ── Critical Tools (Bedside) — Premium v2 ── */}
         <DutySection title="Ferramentas de Plantão" icon={<Activity size={14} className="text-destructive" />}>
           <div className="grid grid-cols-4 gap-2">
-            <button
-              onClick={() => navigate("/cpr-timer")}
-              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl text-white ring-1 ring-white/20 active:scale-95 transition-all"
-              style={{ background: GRADIENT_DANGER }}
-            >
-              <Timer size={20} />
-              <span className="text-[10px] font-heading font-bold leading-tight text-center">PCR Timer</span>
-            </button>
-            <button
-              onClick={() => navigate("/rounds")}
-              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl bg-white/12 text-white ring-1 ring-white/18 hover:bg-white/20 active:scale-95 transition-all"
-            >
-              <Users size={20} />
-              <span className="text-[10px] font-heading font-bold leading-tight text-center">Round / Leitos</span>
-            </button>
-            <button
-              onClick={() => navigate("/voice-evolution")}
-              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl bg-white/12 text-white ring-1 ring-white/18 hover:bg-white/20 active:scale-95 transition-all"
-            >
-              <Mic size={20} />
-              <span className="text-[10px] font-heading font-bold leading-tight text-center">Evolução por Voz</span>
-            </button>
-            <button
-              onClick={() => navigate("/prescription-checker")}
-              className="flex flex-col items-center gap-1.5 p-3 rounded-2xl bg-white/12 text-white ring-1 ring-white/18 hover:bg-white/20 active:scale-95 transition-all"
-            >
-              <Beaker size={20} />
-              <span className="text-[10px] font-heading font-bold leading-tight text-center">Checagem Rx</span>
-            </button>
+            {[
+              { label: "PCR Timer",       icon: Timer,  path: "/cpr-timer",            color: "#C0392B" },
+              { label: "Round / Leitos",  icon: Users,  path: "/rounds",               color: "#0E4D8A" },
+              { label: "Evolução por Voz", icon: Mic,   path: "/voice-evolution",      color: "#5B21B6" },
+              { label: "Checagem Rx",     icon: Beaker, path: "/prescription-checker", color: "#065F46" },
+            ].map(({ label, icon: Icon, path, color }) => (
+              <button
+                key={path}
+                onClick={() => navigate(path)}
+                className="relative flex flex-col items-center gap-1.5 p-3 rounded-xl bg-card border border-border hover:border-border/70 hover:bg-muted/30 active:scale-[0.97] transition-all overflow-hidden"
+              >
+                <span
+                  className="absolute top-0 left-0 right-0 h-0.5"
+                  style={{ background: color }}
+                />
+                <div
+                  className="w-9 h-9 rounded-lg flex items-center justify-center"
+                  style={{ background: `${color}15` }}
+                >
+                  <Icon size={16} strokeWidth={2.2} style={{ color }} />
+                </div>
+                <span className="text-[10px] font-heading font-semibold leading-tight text-center text-foreground">
+                  {label}
+                </span>
+              </button>
+            ))}
           </div>
         </DutySection>
+
 
         {/* ── Search ── */}
         <div className="relative">
@@ -163,16 +161,16 @@ function DutyModeContent() {
 
         {!searchResults && (
           <>
-            {/* ── One-Tap Emergency ── */}
+            {/* ── One-Tap Emergency — Premium v2 ── */}
             <DutySection title="Emergência One-Tap" icon={<Zap size={14} className="text-destructive" />}>
               <div className="grid grid-cols-4 gap-2">
                 {emergencyOneTap.map(s => (
                   <button
                     key={s.path}
                     onClick={() => navigate(s.path)}
-                    className="flex items-center justify-center px-2 py-3 rounded-2xl text-[11px] font-heading font-semibold text-white ring-1 ring-white/20 transition-all active:scale-95"
-                    style={{ background: GRADIENT_DANGER }}
+                    className="relative flex items-center justify-center px-2 py-3 rounded-xl bg-card border border-border hover:bg-muted/30 active:scale-[0.97] transition-all overflow-hidden text-[11px] font-heading font-semibold text-foreground"
                   >
+                    <span className="absolute left-0 top-0 bottom-0 w-0.5 bg-destructive" />
                     {s.label}
                   </button>
                 ))}
@@ -187,6 +185,7 @@ function DutyModeContent() {
               </div>
             </DutySection>
 
+
             {/* ── Quick Access Grid ── */}
             <DutySection title="Acesso Rápido">
               <div className="grid grid-cols-4 gap-2">
@@ -199,19 +198,22 @@ function DutyModeContent() {
               </div>
             </DutySection>
 
-            {/* ── IA Clínica ── */}
+            {/* ── IA Clínica — card claro com sotaque PULSO ── */}
             <button
               onClick={() => navigate("/clinical-ai")}
-              className="w-full flex items-center gap-3 p-4 text-white rounded-[20px] shadow-md ring-1 ring-white/15 active:scale-[0.98] transition-all duration-200"
-              style={{ background: GRADIENT_DEEP_BLUE_SOFT }}
+              className="relative w-full flex items-center gap-3 p-4 rounded-xl bg-card border border-border hover:border-border/70 hover:bg-muted/20 active:scale-[0.99] transition-all overflow-hidden text-left"
             >
-              <Sparkles size={22} className="text-white shrink-0" />
-              <div className="text-left flex-1">
-                <p className="font-heading font-semibold text-sm text-white">IA Clínica</p>
-                <p className="text-xs text-white/70">Diagnóstico, conduta e prescrição assistidos por IA</p>
+              <span className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary" />
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                <Sparkles size={18} className="text-primary" strokeWidth={2.2} />
               </div>
-              <ChevronRight size={16} className="text-white/60" />
+              <div className="flex-1 min-w-0">
+                <p className="font-heading font-semibold text-sm text-foreground">IA Clínica</p>
+                <p className="text-xs text-muted-foreground">Diagnóstico, conduta e prescrição assistidos por IA</p>
+              </div>
+              <ChevronRight size={16} className="text-muted-foreground shrink-0" />
             </button>
+
 
             {/* ── Handoff Checklist ── */}
             <DutyHandoffChecklist />
