@@ -78,6 +78,7 @@ const OfflineSetup = lazy(() => import("@/pages/OfflineSetup"));
 const PushNotificationSettings = lazy(() => import("@/pages/PushNotificationSettings"));
 const AdminAnalytics = lazy(() => import("@/pages/AdminAnalytics"));
 const AdminFeedback = lazy(() => import("@/pages/AdminFeedback"));
+const AdminSamuAudit = lazy(() => import("@/pages/AdminSamuAudit"));
 const AdminDashboard = lazy(() => import("@/pages/AdminDashboard"));
 const GovernanceDashboard = lazy(() => import("@/pages/GovernanceDashboard"));
 const AdminAiCosts = lazy(() => import("@/pages/AdminAiCosts"));
