@@ -53,9 +53,12 @@ function EmergencyModeContent() {
 
   const searchResults = useMemo(() => {
     if (search.length < 2) return null;
-    const q = search.toLowerCase();
+    const q = search.toLowerCase().trim();
     return allEmergencyProtocols.filter(p =>
-      p.title.toLowerCase().includes(q)
+      p.title.toLowerCase().includes(q) ||
+      (p.tags ?? []).some(t => t.toLowerCase().includes(q)) ||
+      (p.samuCodes ?? []).some(c => c.toLowerCase().includes(q)) ||
+      (q === "samu" && (p.samuCodes?.length ?? 0) > 0)
     );
   }, [search]);
 
