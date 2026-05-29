@@ -16,6 +16,15 @@ export interface EmergencyProtocol {
   badge?: "new" | "updated";
   sections: EmergencySection[];
   tags?: string[];
+  /** Códigos da Matriz SAMU 192 cobertos por este protocolo (ex.: ["BC5","AC18"]). */
+  samuCodes?: string[];
+  /** Nível(is) SAMU aplicáveis. */
+  samuLevel?: ("SBV" | "SAV")[];
+  /** Fonte oficial SAMU para esta cobertura — exibida apenas em Referências. */
+  samuSource?: {
+    title: string;
+    url: string;
+  };
 }
 
 export interface EmergencyCategory {

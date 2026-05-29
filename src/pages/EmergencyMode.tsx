@@ -53,9 +53,12 @@ function EmergencyModeContent() {
 
   const searchResults = useMemo(() => {
     if (search.length < 2) return null;
-    const q = search.toLowerCase();
+    const q = search.toLowerCase().trim();
     return allEmergencyProtocols.filter(p =>
-      p.title.toLowerCase().includes(q)
+      p.title.toLowerCase().includes(q) ||
+      (p.tags ?? []).some(t => t.toLowerCase().includes(q)) ||
+      (p.samuCodes ?? []).some(c => c.toLowerCase().includes(q)) ||
+      (q === "samu" && (p.samuCodes?.length ?? 0) > 0)
     );
   }, [search]);
 
@@ -98,6 +101,14 @@ function EmergencyModeContent() {
                 <span className="flex-1 text-[13px] font-heading font-semibold text-foreground leading-tight">
                   {p.title}
                 </span>
+                {p.samuCodes && p.samuCodes.length > 0 && (
+                  <span
+                    className="text-[9px] font-heading font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-primary/10 text-primary border border-primary/20 flex-shrink-0"
+                    title={`Cobre SAMU 192 — ${p.samuCodes.join(", ")}`}
+                  >
+                    SAMU
+                  </span>
+                )}
                 <ChevronRight size={14} className="text-muted-foreground shrink-0" />
               </motion.button>
             ))}
@@ -169,6 +180,14 @@ function EmergencyModeContent() {
                       <span className="flex-1 text-[12.5px] font-heading font-medium text-foreground leading-snug">
                         {p.title}
                       </span>
+                      {p.samuCodes && p.samuCodes.length > 0 && (
+                        <span
+                          className="text-[9px] font-heading font-bold uppercase tracking-wider px-1.5 py-0.5 rounded bg-primary/10 text-primary border border-primary/20 flex-shrink-0"
+                          title={`SAMU 192 — ${p.samuCodes.join(", ")}`}
+                        >
+                          SAMU
+                        </span>
+                      )}
                       <ChevronRight size={13} className="text-muted-foreground/60 shrink-0" />
                     </button>
                   ))}

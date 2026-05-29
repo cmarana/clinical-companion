@@ -59,7 +59,7 @@ export default function EmergencyProtocolDetail() {
     <>
       <TopBar title={protocol.title} />
       <div className="px-4 py-4 max-w-lg md:max-w-3xl lg:max-w-5xl mx-auto pb-24">
-        {(meta.version || meta.lastReviewed || isUpdated) && (
+        {(meta.version || meta.lastReviewed || isUpdated || (protocol.samuCodes && protocol.samuCodes.length > 0)) && (
           <div className="flex items-center gap-2 flex-wrap mb-3 text-[10px] font-heading font-medium text-muted-foreground">
             {isUpdated && (
               <span className="px-2 py-0.5 rounded-full bg-primary/15 text-primary border border-primary/30 font-semibold">
@@ -74,6 +74,15 @@ export default function EmergencyProtocolDetail() {
             {meta.lastReviewed && (
               <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-muted">
                 <Calendar size={10} /> Última revisão: {meta.lastReviewed}
+              </span>
+            )}
+            {protocol.samuCodes && protocol.samuCodes.length > 0 && (
+              <span
+                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/20 font-semibold"
+                title="Cobertura conforme protocolos nacionais SAMU 192"
+              >
+                Referência SAMU: {protocol.samuCodes.join(" · ")}
+                {protocol.samuLevel && protocol.samuLevel.length > 0 && ` · ${protocol.samuLevel.join("/")}`}
               </span>
             )}
           </div>

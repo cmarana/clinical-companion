@@ -297,6 +297,14 @@ export const emergencyCategories: EmergencyCategory[] = [
   },
 ];
 
+// Aplica metadados SAMU 192 (samuCodes/samuLevel/samuSource + referência)
+// de forma idempotente, sem duplicar conteúdo nem alterar a ordem.
+import { applySamuMetadataAll, findEmergencyIdBySamuCode } from "./samuMapping";
+for (const cat of emergencyCategories) {
+  cat.protocols = applySamuMetadataAll(cat.protocols);
+}
+export { findEmergencyIdBySamuCode };
+
 // Lista plana para busca/lookup
 export const allEmergencyProtocols = emergencyCategories.flatMap(c => c.protocols);
 
