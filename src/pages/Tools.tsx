@@ -91,14 +91,15 @@ const groups: Group[] = [
   },
 ];
 
-const toneStyles: Record<Tool["tone"], string> = {
-  primary: "bg-primary/10 text-primary",
-  danger: "bg-destructive/10 text-destructive",
-  slate: "bg-primary/10 text-primary",
-  emerald: "bg-primary/10 text-primary",
-  amber: "bg-primary/10 text-primary",
-  violet: "bg-primary/10 text-primary",
-  sky: "bg-primary/10 text-primary",
+// Cor semântica por tone — usada apenas no ícone + barra lateral (premium v2)
+const toneColors: Record<Tool["tone"], string> = {
+  primary: "hsl(var(--primary))",
+  danger:  "hsl(var(--destructive))",
+  slate:   "#374151",
+  emerald: "#065F46",
+  amber:   "#92400E",
+  violet:  "#5B21B6",
+  sky:     "#0E4D8A",
 };
 
 export default function Tools() {
@@ -125,7 +126,7 @@ export default function Tools() {
         {/* Quick search */}
         <button
           onClick={() => navigate("/search")}
-          className="w-full flex items-center gap-3 h-12 px-4 rounded-2xl bg-muted/60 dark:bg-muted/40 shadow-inner hover:ring-2 hover:ring-primary/30 transition-all text-left mb-5"
+          className="w-full flex items-center gap-3 h-12 px-4 rounded-xl bg-card border border-border hover:border-primary/30 transition-all text-left mb-5"
         >
           <Search size={16} className="text-muted-foreground shrink-0" />
           <span className="text-[12.5px] text-muted-foreground truncate">
@@ -145,43 +146,31 @@ export default function Tools() {
               </div>
               <div className="grid grid-cols-2 lg:grid-cols-3 gap-2.5">
                 {g.items.map((t) => {
-                  const isDanger = t.tone === "danger";
-                  const bg = isDanger ? GRADIENT_DANGER : GRADIENT_DEEP_BLUE;
+                  const color = toneColors[t.tone];
                   return (
                     <motion.button
                       key={t.path + t.label}
                       whileTap={{ scale: 0.97 }}
                       onClick={() => go(t.path)}
-                      className="group relative overflow-hidden p-3 rounded-2xl text-left shadow-md ring-1 ring-white/15 hover:shadow-lg transition-all"
-                      style={{ background: bg }}
+                      className="group relative overflow-hidden p-3 rounded-xl text-left bg-card border border-border hover:border-border/70 hover:bg-muted/20 transition-all"
                     >
-                      <svg
-                        className="absolute inset-x-0 bottom-0 w-full h-9 opacity-[0.18] pointer-events-none text-white"
-                        viewBox="0 0 200 60"
-                        preserveAspectRatio="none"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="1.4"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <motion.path
-                          d="M0 35 L40 35 L48 35 L56 18 L64 52 L72 35 L110 35 L118 35 L126 12 L134 58 L142 35 L200 35"
-                          initial={{ pathLength: 0, opacity: 0.2 }}
-                          animate={{ pathLength: 1, opacity: [0.2, 1, 0.4] }}
-                          transition={{ duration: 2.4, ease: "easeInOut", repeat: Infinity, repeatType: "loop" }}
-                        />
-                      </svg>
-                      <div className="absolute -top-6 -right-6 w-16 h-16 rounded-full bg-white/10 blur-2xl pointer-events-none" />
+                      {/* Barra lateral semântica */}
+                      <span
+                        className="absolute left-0 top-0 bottom-0 w-0.5"
+                        style={{ background: color }}
+                      />
 
                       <div className="relative">
-                        <div className="flex items-center justify-center w-8 h-8 rounded-lg mb-2 bg-white/18 ring-1 ring-white/30">
-                          <t.icon size={16} strokeWidth={2.3} className="text-white" />
+                        <div
+                          className="flex items-center justify-center w-8 h-8 rounded-lg mb-2"
+                          style={{ background: `${color}15` }}
+                        >
+                          <t.icon size={16} strokeWidth={2.2} style={{ color }} />
                         </div>
-                        <div className="font-heading font-bold text-[12.5px] leading-tight tracking-tight text-white">
+                        <div className="font-heading font-bold text-[12.5px] leading-tight tracking-tight text-foreground">
                           {t.label}
                         </div>
-                        <div className="text-[10.5px] mt-0.5 leading-snug font-medium text-white/85 line-clamp-2">
+                        <div className="text-[10.5px] mt-0.5 leading-snug text-muted-foreground line-clamp-2">
                           {t.sub}
                         </div>
                       </div>
@@ -196,3 +185,4 @@ export default function Tools() {
     </>
   );
 }
+
