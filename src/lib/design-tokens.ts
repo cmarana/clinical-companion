@@ -11,17 +11,17 @@
 
 // ============== Backgrounds sólidos (substituem os gradientes) ==============
 
-/** Hero banner e TopBar — azul-marinho profundo, sólido. */
-export const GRADIENT_DEEP_BLUE = "hsl(212 64% 10%)";
+/** Hero banner e TopBar — Azul PULSO vivo. */
+export const GRADIENT_DEEP_BLUE = "hsl(211 91% 45%)";
 
-/** Variante levemente mais clara para hero em modo escuro. */
-export const GRADIENT_DEEP_BLUE_SOFT = "hsl(212 58% 13%)";
+/** Variante levemente mais escura para hero em modo escuro. */
+export const GRADIENT_DEEP_BLUE_SOFT = "hsl(211 91% 40%)";
 
-/** Variante com tonalidade levemente mais fria — para cards internos escuros se necessário. */
-export const GRADIENT_BRIGHT_BLUE = "hsl(212 64% 10%)";
+/** Variante com tonalidade levemente mais fria — para cards internos. */
+export const GRADIENT_BRIGHT_BLUE = "hsl(211 91% 45%)";
 
-/** Emergência — vermelho sólido, profundo. Sem gradiente. */
-export const GRADIENT_DANGER = "hsl(358 72% 32%)";
+/** Emergência — vermelho destructive, vivo. Sem gradiente. */
+export const GRADIENT_DANGER = "hsl(0 75% 50%)";
 
 // Aliases retrocompatíveis (mantidos para não quebrar imports existentes)
 export const PULSO_BG = GRADIENT_DEEP_BLUE;
