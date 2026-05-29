@@ -2,6 +2,7 @@ import type { EmergencyCategory } from "./types";
 import { resuscitationProtocols } from "./resuscitation";
 import { samuCriticalResuscitationProtocols } from "./samu_critical_resuscitation";
 import { samuP1MissingBatch1Protocols } from "./samu_p1_faltantes_lote2";
+import { samuP1MissingBatch2Protocols } from "./samu_p1_faltantes_lote3";
 import { cardiovascularProtocols } from "./cardiovascular";
 import { cardiovascularProtocols2 } from "./cardiovascular2";
 import { cardiovascularProtocols3 } from "./cardiovascular3";
@@ -145,6 +146,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...respiratoryProtocols,
       ...respiratoryProtocols2,
       ...thoracicEntEmergencyProtocols.filter(p => p.id === "pleural-empyema"),
+      ...samuP1MissingBatch2Protocols.filter(p => p.categoryId === "respiratory"),
     ]),
   },
   {
@@ -181,6 +183,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...metabolicProtocols5,
       ...nephrologyEmergencyProtocols,
       ...thoracicEntEmergencyProtocols.filter(p => p.id === "adrenal-crisis"),
+      ...samuP1MissingBatch2Protocols.filter(p => p.categoryId === "metabolic"),
     ]),
   },
   {
@@ -209,6 +212,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...intoxicationProtocols4,
       ...intoxicationProtocols5,
       ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "intoxication"),
+      ...samuP1MissingBatch2Protocols.filter(p => p.categoryId === "intoxication"),
     ]),
   },
   {
@@ -224,6 +228,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...infectiousProtocols2,
       ...infectiousProtocols3,
       ...infectiousProtocols4,
+      ...samuP1MissingBatch2Protocols.filter(p => p.categoryId === "infectious"),
     ]),
   },
   {
@@ -252,6 +257,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...pediatricEmergencyProtocols2,
       ...pediatricEmergencyProtocols3,
       ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "pediatric-emergency"),
+      ...samuP1MissingBatch2Protocols.filter(p => p.categoryId === "pediatric-emergency"),
     ]),
   },
   {
