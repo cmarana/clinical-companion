@@ -28,7 +28,9 @@ const mainItems = [
 const clinicalItems = [
   { title: "Modo Plantão", url: "/duty", icon: AlertTriangle },
   { title: "Emergência / UTI", url: "/emergency", icon: Zap },
-  { title: "Protocolos", url: "/full-protocols", icon: BookOpen },
+  { title: "Protocolos Clínicos", url: "/full-protocols", icon: BookOpen },
+  { title: "Matriz SAMU 192", url: "/samu-protocols", icon: Radio },
+  { title: "Lacunas do Pulso", url: "/samu-protocols/gaps", icon: AlertTriangle },
   { title: "Bulário", url: "/bulario", icon: Pill },
   { title: "Prescrições", url: "/prescriptions", icon: ClipboardList },
   { title: "Calculadoras", url: "/calculators", icon: Calculator },
