@@ -53,7 +53,7 @@ const modes = [
 
 // Paleta única: azul Plantão dominante. Vermelho APENAS em Emergência (semântico).
 // Tokens centralizados em src/lib/design-tokens.ts
-import { toneStyles, GRADIENT_BRIGHT_BLUE, GRADIENT_DEEP_BLUE_SOFT } from "@/lib/design-tokens";
+import { GRADIENT_BRIGHT_BLUE } from "@/lib/design-tokens";
 
 export default function Home() {
   const navigate = useNavigate();

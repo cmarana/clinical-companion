@@ -23,7 +23,7 @@ import type { RagSourceChunk } from "@/components/ClinicalResponseCards";
 import { motion } from "framer-motion";
 import OfflineBadge from "@/components/OfflineBadge";
 import { AiUsageBadge } from "@/components/AiUsageBadge";
-import { GRADIENT_DEEP_BLUE_SOFT } from "@/lib/design-tokens";
+// premium v2: gradiente removido — cards claros
 
 type Msg = { role: "user" | "assistant"; content: string };
 

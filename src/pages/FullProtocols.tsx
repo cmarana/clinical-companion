@@ -1,6 +1,6 @@
 import { useNavigate, useSearchParams } from "react-router-dom";
 import TopBar from "@/components/TopBar";
-import { GRADIENT_DEEP_BLUE } from "@/lib/design-tokens";
+// premium v2: gradiente removido — cards claros
 import {
   ChevronRight, Search, Star, TrendingUp, ArrowDownAZ, Filter,
   Lock, Crown, X, Sparkles, BookOpen, CalendarDays, CalendarCheck,

@@ -15,7 +15,7 @@ import {
 import { useState, useMemo } from "react";
 import { protocols } from "@/data/protocols";
 import { medications } from "@/data/medications";
-import { GRADIENT_DANGER, GRADIENT_DEEP_BLUE_SOFT } from "@/lib/design-tokens";
+// premium v2: gradientes removidos — cards claros com barra lateral
 
 /* ─── Data ─── */
 
