@@ -5,7 +5,46 @@ import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import { hapticLight } from "@/lib/haptics";
 import FontSizeSelector from "./FontSizeSelector";
-...
+
+interface TopBarProps {
+  title?: string;
+  showBack?: boolean;
+  className?: string;
+  rightContent?: React.ReactNode;
+}
+
+export default function TopBar({ title, showBack, className, rightContent }: TopBarProps) {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const { theme, toggleTheme } = useTheme();
+  const [showSettings, setShowSettings] = useState(false);
+  const [offline, setOffline] = useState(!navigator.onLine);
+  const [showReconnected, setShowReconnected] = useState(false);
+  const wasOfflineRef = useState(() => ({ current: !navigator.onLine }))[0];
+
+  useEffect(() => {
+    const on = () => {
+      setOffline(false);
+      if (wasOfflineRef.current) {
+        setShowReconnected(true);
+        setTimeout(() => setShowReconnected(false), 3000);
+      }
+      wasOfflineRef.current = false;
+    };
+    const off = () => {
+      setOffline(true);
+      wasOfflineRef.current = true;
+    };
+    window.addEventListener("online", on);
+    window.addEventListener("offline", off);
+    return () => {
+      window.removeEventListener("online", on);
+      window.removeEventListener("offline", off);
+    };
+  }, []);
+
+  const canGoBack = showBack ?? location.pathname !== "/";
+
   const isEmergency = location.pathname.startsWith("/emergency");
   const accentClass = isEmergency ? "bg-destructive" : "bg-primary";
 
