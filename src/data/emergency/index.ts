@@ -1,5 +1,6 @@
 import type { EmergencyCategory } from "./types";
 import { resuscitationProtocols } from "./resuscitation";
+import { samuCriticalResuscitationProtocols } from "./samu_critical_resuscitation";
 import { cardiovascularProtocols } from "./cardiovascular";
 import { cardiovascularProtocols2 } from "./cardiovascular2";
 import { cardiovascularProtocols3 } from "./cardiovascular3";
@@ -120,7 +121,10 @@ export const emergencyCategories: EmergencyCategory[] = [
   {
     id: "resuscitation",
     title: "Ressuscitação e Via Aérea",
-    protocols: dedup(resuscitationProtocols),
+    protocols: dedup([
+      ...resuscitationProtocols,
+      ...samuCriticalResuscitationProtocols,
+    ]),
   },
   {
     id: "cardiovascular",
