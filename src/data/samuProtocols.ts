@@ -13634,3 +13634,21 @@ export const samuProtocols: SamuProtocol[] = [
 ];
 
 export default samuProtocols;
+
+// ──────────────────────────────────────────────────────────────────────────
+// Helpers e categorias derivadas da base real
+// ──────────────────────────────────────────────────────────────────────────
+export type SamuProtocolCategory = string;
+
+export const SAMU_CATEGORIES: string[] = Array.from(
+  new Set(samuProtocols.map(p => p.category))
+);
+
+export function getSamuProtocolById(id: string): SamuProtocol | undefined {
+  return samuProtocols.find(p => p.id === id);
+}
+
+export function getSamuProtocolByCode(code: string): SamuProtocol | undefined {
+  const c = code.toLowerCase();
+  return samuProtocols.find(p => p.code.toLowerCase() === c);
+}
