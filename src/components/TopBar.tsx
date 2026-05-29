@@ -4,7 +4,6 @@ import { useTheme } from "@/contexts/ThemeContext";
 import { cn } from "@/lib/utils";
 import { useState, useEffect } from "react";
 import { hapticLight } from "@/lib/haptics";
-import { GRADIENT_DEEP_BLUE, GRADIENT_DANGER } from "@/lib/design-tokens";
 import FontSizeSelector from "./FontSizeSelector";
 
 interface TopBarProps {
@@ -47,44 +46,44 @@ export default function TopBar({ title, showBack, className, rightContent }: Top
   const canGoBack = showBack ?? location.pathname !== "/";
 
   const isEmergency = location.pathname.startsWith("/emergency");
-  const headerGradient = isEmergency ? GRADIENT_DANGER : GRADIENT_DEEP_BLUE;
+  const accentClass = isEmergency ? "bg-destructive" : "bg-primary";
 
   return (
     <>
       <header
         className={cn(
-          "sticky top-0 z-40 border-b border-white/10 safe-area-top text-white",
+          "relative sticky top-0 z-40 bg-card border-b border-border safe-area-top text-foreground",
           className
         )}
-        style={{ background: headerGradient }}
       >
+        <div className={cn("absolute left-0 top-0 bottom-0 w-1", accentClass)} aria-hidden="true" />
         <div className="flex items-center h-12 px-3 gap-2">
         {canGoBack && (
-          <button onClick={() => { hapticLight(); navigate(-1); }} className="p-1.5 -ml-1 rounded-md hover:bg-white/15 active:scale-90 transition-all text-white">
+          <button onClick={() => { hapticLight(); navigate(-1); }} className="p-1.5 -ml-1 rounded-md hover:bg-muted active:scale-90 transition-all text-foreground">
             <ArrowLeft size={20} />
           </button>
         )}
         {title && (
-          <h1 className="font-heading font-semibold text-sm truncate flex-1 text-white">{title}</h1>
+          <h1 className="font-heading font-semibold text-sm truncate flex-1 text-foreground">{title}</h1>
         )}
         {!title && <div className="flex-1" />}
         {rightContent}
         {offline && (
-          <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-white/15 border border-white/25 animate-in fade-in">
-            <WifiOff size={12} className="text-white" />
-            <span className="text-[10px] font-heading font-semibold text-white">Offline</span>
+          <div className="flex items-center gap-1 px-2 py-0.5 rounded-full bg-muted border border-border animate-in fade-in">
+            <WifiOff size={12} className="text-muted-foreground" />
+            <span className="text-[10px] font-heading font-semibold text-muted-foreground">Offline</span>
           </div>
         )}
         <button
           onClick={() => { hapticLight(); toggleTheme(); }}
-          className="p-1.5 rounded-md hover:bg-white/15 transition-colors text-white/85"
+          className="p-1.5 rounded-md hover:bg-muted transition-colors text-muted-foreground"
           title={theme === "light" ? "Modo Escuro" : theme === "dark" ? "Plantão Noturno" : "Modo Claro"}
         >
           {theme === "oled" ? <Eclipse size={18} /> : theme === "dark" ? <Sun size={18} /> : <Moon size={18} />}
         </button>
         <button
           onClick={() => setShowSettings(!showSettings)}
-          className="p-1.5 rounded-md hover:bg-white/15 transition-colors text-white/85"
+          className="p-1.5 rounded-md hover:bg-muted transition-colors text-muted-foreground"
         >
           <Settings size={18} />
         </button>
