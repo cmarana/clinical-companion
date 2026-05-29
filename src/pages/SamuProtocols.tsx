@@ -369,7 +369,8 @@ export default function SamuProtocols() {
                     </p>
                   </div>
                 </motion.div>
-              ))}
+                );
+              })}
             </div>
           </section>
         ))}
