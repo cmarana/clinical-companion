@@ -142,6 +142,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...cardiovascularProtocols2,
       ...cardiovascularProtocols3,
       ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "cardiovascular"),
+      ...samuMissingBatch4Protocols.filter(p => p.categoryId === "cardiovascular"),
     ])),
   },
   {
@@ -189,6 +190,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...nephrologyEmergencyProtocols,
       ...thoracicEntEmergencyProtocols.filter(p => p.id === "adrenal-crisis"),
       ...samuP1MissingBatch2Protocols.filter(p => p.categoryId === "metabolic"),
+      ...samuMissingBatch4Protocols.filter(p => p.categoryId === "metabolic"),
     ]),
   },
   {
@@ -223,7 +225,11 @@ export const emergencyCategories: EmergencyCategory[] = [
   {
     id: "procedures",
     title: "Procedimentos de Emergência",
-    protocols: dedup(proceduresProtocols4),
+    protocols: dedup([
+      ...proceduresProtocols4,
+      ...samuMissingBatch4Protocols.filter(p => p.categoryId === "procedures"),
+      ...samuMissingBatch5Protocols.filter(p => p.categoryId === "procedures"),
+    ]),
   },
   {
     id: "infectious",
