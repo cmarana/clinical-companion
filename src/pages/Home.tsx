@@ -104,49 +104,25 @@ export default function Home() {
   return (
     <div className="pb-28 max-w-lg md:max-w-4xl lg:max-w-5xl mx-auto pt-safe-fb">
       {/* ── HEADER ──────────────────────────────────────── */}
-      <div
-        className="relative sticky z-app-chrome top-safe-fb flex items-center justify-between h-14 px-4 border-b border-white/10 text-white overflow-hidden"
-        style={{ background: GRADIENT_DEEP_BLUE }}
-      >
-        {/* ECG animado de fundo, atravessando a barra */}
-        <svg
-          aria-hidden="true"
-          viewBox="0 0 400 56"
-          preserveAspectRatio="none"
-          className="absolute inset-0 w-full h-full pointer-events-none opacity-40"
-        >
-          <path
-            d="M0 28 L80 28 L100 28 L108 18 L116 38 L122 8 L130 48 L138 28 L400 28"
-            fill="none"
-            stroke="white"
-            strokeWidth="1.6"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            style={{
-              strokeDasharray: 600,
-              strokeDashoffset: 600,
-              animation: "pulso-ecg-sweep 2.4s linear infinite",
-            }}
-          />
-        </svg>
-
+      <div className="relative sticky z-app-chrome top-safe-fb flex items-center justify-between h-14 px-4 border-b border-border bg-card text-foreground">
+        <div className="absolute left-0 top-0 bottom-0 w-1 bg-primary" aria-hidden="true" />
         <button
           onClick={() => navigate("/")}
-          className="relative flex items-center gap-2.5 select-none text-white"
+          className="relative flex items-center gap-2.5 select-none"
         >
-          <PulsoLogo size={28} priority forceVariant="dark" />
-          <span className="font-heading font-bold text-base tracking-tight text-white">PULSO</span>
+          <PulsoLogo size={28} priority />
+          <span className="font-heading font-bold text-base tracking-tight text-primary">PULSO</span>
         </button>
         <div className="relative flex items-center gap-1">
           {isAdmin && (
-            <button onClick={() => navigate("/admin")} className="p-2 rounded-full hover:bg-white/15 text-white" title="Painel Admin">
+            <button onClick={() => navigate("/admin")} className="p-2 rounded-full hover:bg-muted text-muted-foreground" title="Painel Admin">
               <Shield size={16} />
             </button>
           )}
-          <button onClick={() => { hapticLight(); toggleTheme(); }} className="p-2 rounded-full hover:bg-white/15 text-white/90" title={themeLabel}>
+          <button onClick={() => { hapticLight(); toggleTheme(); }} className="p-2 rounded-full hover:bg-muted text-muted-foreground" title={themeLabel}>
             {theme === "oled" ? <Eclipse size={16} /> : theme === "dark" ? <Sun size={16} /> : <Moon size={16} />}
           </button>
-          <button onClick={() => navigate("/notifications")} className="relative p-2 rounded-full hover:bg-white/15 text-white/90">
+          <button onClick={() => navigate("/notifications")} className="relative p-2 rounded-full hover:bg-muted text-muted-foreground">
             <Bell size={16} />
             {unreadCount > 0 && (
               <span className="absolute top-0.5 right-0.5 w-4 h-4 rounded-full bg-destructive text-destructive-foreground text-[9px] font-bold flex items-center justify-center">
@@ -154,10 +130,10 @@ export default function Home() {
               </span>
             )}
           </button>
-          <button onClick={() => navigate(user ? "/profile" : "/auth")} className="ml-1 rounded-full hover:ring-2 hover:ring-white/40 transition-all">
-            <Avatar className="w-8 h-8 ring-2 ring-white/30">
+          <button onClick={() => navigate(user ? "/profile" : "/auth")} className="ml-1 rounded-full hover:ring-2 hover:ring-primary/40 transition-all">
+            <Avatar className="w-8 h-8 ring-2 ring-border">
               {avatarUrl ? <AvatarImage src={avatarUrl} alt="Avatar" /> : null}
-              <AvatarFallback className="text-xs font-bold bg-white/15 text-white">{initials}</AvatarFallback>
+              <AvatarFallback className="text-xs font-bold bg-primary/10 text-primary">{initials}</AvatarFallback>
             </Avatar>
           </button>
         </div>
@@ -230,18 +206,17 @@ export default function Home() {
         <motion.button
           whileTap={{ scale: 0.99 }}
           onClick={() => go("/clinical-ai", "Dra. Clara")}
-          className="relative w-full overflow-hidden rounded-2xl text-left text-white shadow-md ring-1 ring-white/10"
-          style={{ background: GRADIENT_DEEP_BLUE_SOFT }}
+          className="relative w-full overflow-hidden rounded-2xl text-left bg-card border border-border shadow-sm hover:shadow-md hover:border-primary/30 transition-all"
         >
           <div className="relative px-4 py-3 flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/15 ring-1 ring-white/25 shrink-0">
+            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 ring-1 ring-primary/20 shrink-0 text-primary">
               <Bot size={18} />
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-heading font-bold text-[14px] leading-tight">
+              <h3 className="font-heading font-bold text-[14px] leading-tight text-foreground">
                 Dra. Clara — IA Clínica
               </h3>
-              <p className="text-[11.5px] text-white/75 mt-0.5 leading-snug">
+              <p className="text-[11.5px] text-muted-foreground mt-0.5 leading-snug">
                 Pergunte, analise casos e interprete exames.
               </p>
             </div>
@@ -255,7 +230,7 @@ export default function Home() {
                   key={c.label}
                   onClick={(e) => { e.stopPropagation(); go(c.path, `IA · ${c.label}`); }}
                   title={c.label}
-                  className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-white/15 hover:bg-white/25 backdrop-blur-sm transition-colors cursor-pointer"
+                  className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-muted hover:bg-primary/10 text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                 >
                   <c.icon size={13} />
                 </span>
