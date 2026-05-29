@@ -109,15 +109,6 @@ export default function SamuProtocolDetail() {
         </div>
 
         {/* Botão principal — abre protocolo clínico real do Pulso quando existir */}
-        {protocol.relatedPulsoProtocolSlug ? (
-          <button
-            onClick={() => navigate(protocol.relatedPulsoProtocolSlug!)}
-            className="w-full flex items-center gap-3 rounded-xl bg-primary text-primary-foreground p-3.5 hover:bg-primary/90 transition text-left"
-          >
-            <div className="w-9 h-9 rounded-lg bg-primary-foreground/15 flex items-center justify-center">
-              <ExternalLink size={16} />
-            </div>
-        {/* Botão principal — abre protocolo clínico real do Pulso quando existir */}
         {resolvedPulsoPath ? (
           <button
             onClick={() => navigate(resolvedPulsoPath)}
