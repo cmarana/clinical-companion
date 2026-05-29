@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Search, ChevronRight, Filter, X, ExternalLink, Radio } from "lucide-react";
+import { Search, ChevronRight, Filter, X, ExternalLink, Radio, AlertTriangle } from "lucide-react";
 import TopBar from "@/components/TopBar";
 import { cn } from "@/lib/utils";
 import {
@@ -143,6 +143,25 @@ export default function SamuProtocols() {
             </div>
           </div>
         </div>
+
+        {/* Acesso rápido às Lacunas */}
+        <button
+          onClick={() => navigate("/samu-protocols/gaps")}
+          className="w-full rounded-xl bg-gradient-to-r from-amber-500/10 to-red-500/10 border border-amber-500/25 hover:border-amber-500/40 p-3 flex items-center gap-2.5 text-left transition-all"
+        >
+          <div className="w-8 h-8 rounded-lg bg-amber-500/15 flex items-center justify-center flex-shrink-0">
+            <AlertTriangle size={15} className="text-amber-600 dark:text-amber-400" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="font-heading font-semibold text-[12.5px] text-foreground leading-tight">
+              Lacunas do Pulso
+            </p>
+            <p className="text-[10.5px] text-muted-foreground leading-snug">
+              Painel de priorização: o que falta criar, revisar ou complementar
+            </p>
+          </div>
+          <ChevronRight size={15} className="text-muted-foreground flex-shrink-0" />
+        </button>
 
         {/* Busca */}
         <div className="relative">
