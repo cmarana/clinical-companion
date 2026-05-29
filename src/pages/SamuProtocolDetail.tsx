@@ -7,6 +7,7 @@ import {
   type SamuCoverageStatus,
   type SamuContentStatus,
 } from "@/data/samuProtocols";
+import { resolvePulsoProtocolLink } from "@/data/samuPulsoLinks";
 
 const COVERAGE_TONE: Record<SamuCoverageStatus, string> = {
   "Encontrado":            "bg-emerald-500/10 text-emerald-700 dark:text-emerald-300 border-emerald-500/20",
