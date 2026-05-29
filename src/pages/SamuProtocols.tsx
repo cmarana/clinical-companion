@@ -325,21 +325,32 @@ export default function SamuProtocols() {
                     )}
 
                     <div className="flex items-center gap-2 pt-1">
-                      <button
-                        onClick={() => navigate(`/samu-protocols/${encodeURIComponent(p.code)}`)}
-                        className="flex-1 inline-flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg bg-primary text-primary-foreground text-[12px] font-heading font-semibold hover:bg-primary/90 transition"
-                      >
-                        Ver protocolo
-                        <ChevronRight size={13} />
-                      </button>
-                      {p.relatedPulsoProtocolSlug && (
+                      {p.relatedPulsoProtocolSlug ? (
+                        <>
+                          <button
+                            onClick={() => navigate(p.relatedPulsoProtocolSlug!)}
+                            className="flex-1 inline-flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg bg-primary text-primary-foreground text-[12px] font-heading font-semibold hover:bg-primary/90 transition"
+                            title="Abrir protocolo clínico do Pulso"
+                          >
+                            <ExternalLink size={13} />
+                            Ver protocolo no Pulso
+                          </button>
+                          <button
+                            onClick={() => navigate(`/samu-protocols/${encodeURIComponent(p.code)}`)}
+                            className="inline-flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg bg-card border border-border text-foreground text-[12px] font-heading font-semibold hover:border-primary/40 transition"
+                            title="Detalhes na matriz SAMU"
+                          >
+                            Matriz
+                            <ChevronRight size={13} />
+                          </button>
+                        </>
+                      ) : (
                         <button
-                          onClick={() => navigate(p.relatedPulsoProtocolSlug!)}
-                          className="inline-flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg bg-card border border-border text-foreground text-[12px] font-heading font-semibold hover:border-primary/40 transition"
-                          title="Abrir protocolo relacionado no Pulso"
+                          onClick={() => navigate(`/samu-protocols/${encodeURIComponent(p.code)}`)}
+                          className="flex-1 inline-flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg bg-primary text-primary-foreground text-[12px] font-heading font-semibold hover:bg-primary/90 transition"
                         >
-                          <ExternalLink size={13} />
-                          <span className="hidden sm:inline">Relacionado</span>
+                          Abrir na matriz SAMU
+                          <ChevronRight size={13} />
                         </button>
                       )}
                     </div>
@@ -353,6 +364,13 @@ export default function SamuProtocols() {
             </div>
           </section>
         ))}
+
+        {/* Disclaimer de segurança clínica */}
+        <div className="mt-6 rounded-xl border border-border bg-muted/30 p-3">
+          <p className="text-[10.5px] text-muted-foreground leading-snug">
+            <strong className="text-foreground">Aviso:</strong> A Matriz SAMU é uma ferramenta de organização e auditoria de conteúdo. Protocolos marcados como "Precisa criar" ou "Precisa revisar" não devem ser interpretados como conduta assistencial completa.
+          </p>
+        </div>
       </div>
     </>
   );
