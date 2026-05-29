@@ -114,8 +114,10 @@ export default function SamuGaps() {
       if (p.coverageStatus === "Encontrado") s.encontrado++;
       else if (p.coverageStatus === "Parcial") s.parcial++;
       else if (p.coverageStatus === "Não localizado") s.naoLocalizado++;
-      else if (p.coverageStatus === "Operacional SAMU") s.operacional++;
       else if (p.coverageStatus === "Sem título no sumário") s.semTitulo++;
+
+      // Operacionais: coverageStatus "Operacional SAMU" OU flag isOperational
+      if (p.coverageStatus === "Operacional SAMU" || p.isOperational) s.operacional++;
 
       if (p.contentStatus === "Completo") s.completo++;
       else if (p.contentStatus === "Precisa revisar") s.precisaRevisar++;
