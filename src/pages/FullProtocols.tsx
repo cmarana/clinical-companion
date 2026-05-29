@@ -223,6 +223,23 @@ export default function FullProtocols() {
           </button>
         )}
 
+        {/* Atalho: Matriz SAMU 192 */}
+        <button
+          onClick={() => navigate("/samu-protocols")}
+          className="w-full flex items-center gap-3 px-4 py-3 rounded-2xl bg-card border border-border hover:border-primary/40 transition-all text-left active:scale-[0.99]"
+        >
+          <div className="flex items-center justify-center w-9 h-9 rounded-xl bg-primary/10 text-primary shrink-0">
+            <BookOpen size={16} />
+          </div>
+          <div className="flex-1 min-w-0">
+            <p className="font-heading font-semibold text-xs">Matriz SAMU 192</p>
+            <p className="text-[10px] text-muted-foreground">
+              Protocolos pré-hospitalares nacionais — SBV e SAV, com cobertura no Pulso
+            </p>
+          </div>
+          <ChevronRight size={14} className="text-muted-foreground shrink-0" />
+        </button>
+
         {/* Search */}
         <div className="relative">
           <Search size={16} className="absolute left-4 top-1/2 -translate-y-1/2 text-muted-foreground" />
