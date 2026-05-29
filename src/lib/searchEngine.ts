@@ -134,7 +134,11 @@ export async function fullTextSearch(query: string): Promise<SearchResult[]> {
   // ── Emergency ──
   const emergencyResults: SearchResult[] = [];
   for (const p of data.allEmergencyProtocols) {
-    const titleMatch = matchesAll(p.title) || matchesAny(p.categoryId);
+    const samuHaystack = [...(p.samuCodes ?? []), ...(p.tags ?? [])].join(" ");
+    const titleMatch =
+      matchesAll(p.title) ||
+      matchesAny(p.categoryId) ||
+      matchesAll(samuHaystack);
     let contentSnippet: string | undefined;
     let matchSection = "";
     if (!titleMatch) {
