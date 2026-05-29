@@ -12,6 +12,7 @@ import {
   type SamuCoverageStatus,
   type SamuContentStatus,
 } from "@/data/samuProtocols";
+import { resolvePulsoProtocolLink } from "@/data/samuPulsoLinks";
 
 const LEVELS: SamuProtocolLevel[] = ["SBV", "SAV"];
 
