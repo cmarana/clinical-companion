@@ -1,6 +1,6 @@
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { ArrowLeft, Send, RotateCcw, MessageSquare, ClipboardList, Loader2, User, Mic, MicOff, Zap, FileText, Image as ImageIcon, Camera, Upload, X, ScanSearch, ShieldCheck, FileType2, History, Trash2, Eye, FileDown, Download } from "lucide-react";
+import { ArrowLeft, Send, RotateCcw, MessageSquare, Loader2, User, Mic, MicOff, Zap, FileText, Image as ImageIcon, Camera, Upload, X, ScanSearch, ShieldCheck, FileType2, History, Trash2, Eye, FileDown, Download } from "lucide-react";
 import { PulsoLogo } from "@/components/PulsoLogo";
 import { downloadAnonymizedAttachments } from "@/lib/downloadAttachments";
 import { extractPdfText, type ExtractedPdf } from "@/lib/pdfExtract";
@@ -44,7 +44,7 @@ function ClinicalAIContent() {
   const [messages, setMessages] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [mode, setMode] = useState<"chat" | "structured" | "plantao" | "narrative" | "image">("chat");
+  const [mode, setMode] = useState<"chat" | "plantao" | "narrative" | "image">("chat");
   const [lastRagMeta, setLastRagMeta] = useState<{
     source?: "cache" | "llm" | "deterministic";
     intent?: string;
@@ -280,7 +280,7 @@ function ClinicalAIContent() {
   useEffect(() => {
     const params = new URLSearchParams(location.search);
     const tab = params.get("tab");
-    const valid = ["chat", "structured", "image", "plantao", "narrative"] as const;
+    const valid = ["chat", "image", "plantao", "narrative"] as const;
     if (tab && (valid as readonly string[]).includes(tab)) {
       setMode(tab as typeof mode);
     }
@@ -298,7 +298,7 @@ function ClinicalAIContent() {
     return parts.length ? `[CONTEXTO DO PACIENTE: ${parts.join(" | ")}]\n\n` : "";
   };
 
-  const sendMessage = async (text: string, sendMode: "chat" | "structured" | "plantao" | "narrative" = "chat") => {
+  const sendMessage = async (text: string, sendMode: "chat" | "plantao" | "narrative" = "chat") => {
     if (!text.trim() || isLoading) return;
 
     const fullText = buildContextPrefix() + text;
@@ -728,6 +728,9 @@ function ClinicalAIContent() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.25 }}
               className="relative w-full max-w-sm overflow-hidden rounded-2xl text-left mb-5 bg-card border border-border"
+              style={{
+                background:
+              }}
             >
               <div className="relative px-4 py-3 flex items-center gap-3">
                 <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 shrink-0">
@@ -748,7 +751,7 @@ function ClinicalAIContent() {
               Olá! Sou a Dra. Clara. Como posso auxiliar na sua decisão clínica agora?
             </p>
             <p className="text-[10px] text-muted-foreground max-w-sm mb-1">
-              Respostas estruturadas em 10 seções: resumo, diagnóstico, diferenciais, algoritmo, exames, conduta, prescrição, interações, alertas e referências.
+              Use Completo para análise detalhada com diagnósticos, condutas e prescrições. Use Rápido para decisão imediata no plantão.
             </p>
             <p className="text-[10px] text-muted-foreground/70 max-w-sm mb-4">
               Preencha o contexto do paciente acima para cálculos de dose automáticos.
@@ -823,28 +826,26 @@ function ClinicalAIContent() {
       {/* Input */}
       <div className="border-t border-border bg-card/80 backdrop-blur-sm p-3">
         <Tabs value={mode} onValueChange={(v) => setMode(v as typeof mode)} className="w-full">
-          <TabsList className="w-full mb-2 h-8 grid grid-cols-5">
+          <TabsList className="w-full mb-2 h-8 grid grid-cols-4">
             <TabsTrigger value="chat" className="text-[10px] gap-1 h-7 px-1">
-              <MessageSquare size={11} /> Chat
+              <MessageSquare size={11} /> Completo
             </TabsTrigger>
-            <TabsTrigger value="structured" className="text-[10px] gap-1 h-7 px-1">
-              <ClipboardList size={11} /> Caso
-            </TabsTrigger>
+
             <TabsTrigger value="image" className="text-[10px] gap-1 h-7 px-1 data-[state=active]:bg-primary/15 data-[state=active]:text-primary">
               <ImageIcon size={11} /> Exames
             </TabsTrigger>
             <TabsTrigger value="plantao" className="text-[10px] gap-1 h-7 px-1 data-[state=active]:bg-destructive data-[state=active]:text-destructive-foreground">
-              <Zap size={11} /> Plantão
+              <Zap size={11} /> Rápido
             </TabsTrigger>
             <TabsTrigger value="narrative" className="text-[10px] gap-1 h-7 px-1">
-              <FileText size={11} /> Texto
+              <FileText size={11} /> Relato
             </TabsTrigger>
           </TabsList>
 
           <TabsContent value="chat" className="mt-0">
             <form onSubmit={handleChatSubmit} className="flex gap-2">
               <Textarea value={input} onChange={(e) => setInput(e.target.value)}
-                placeholder={isListening && voiceTarget === "chat" ? "🎤 Ouvindo..." : "Descreva sintomas, caso clínico ou dúvida..."}
+                placeholder={isListening && voiceTarget === "chat" ? "🎤 Ouvindo..." : "Descreva o caso clínico para análise completa..."}
                 className="min-h-[44px] max-h-32 text-sm resize-none rounded-xl"
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); handleChatSubmit(e); }
@@ -875,63 +876,7 @@ function ClinicalAIContent() {
             )}
           </TabsContent>
 
-          <TabsContent value="structured" className="mt-0">
-            <form onSubmit={handleStructuredSubmit} className="space-y-2">
-              {speechSupported && (
-                <button type="button" onClick={() => startVoice("symptoms")}
-                  className={`w-full flex items-center justify-center gap-2 py-2 rounded-xl text-xs font-heading font-semibold transition-all ${
-                    isListening && voiceTarget === "symptoms"
-                      ? "bg-destructive/15 text-destructive animate-pulse border border-destructive/30"
-                      : "bg-primary/10 text-primary border border-primary/20 hover:bg-primary/20"
-                  }`}>
-                  {isListening && voiceTarget === "symptoms" ? <><MicOff size={14} /> Parar gravação</> : <><Mic size={14} /> 🎤 Gravar relato do paciente</>}
-                </button>
-              )}
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <label className="text-[10px] font-heading font-medium text-muted-foreground mb-0.5 block">Sintomas / QP *</label>
-                  <div className="flex gap-1">
-                    <Input value={symptoms} onChange={(e) => setSymptoms(e.target.value)} placeholder={isListening && voiceTarget === "symptoms" ? "🎤 Ouvindo..." : "Dor torácica, dispneia..."} className="h-8 text-xs" />
-                  </div>
-                </div>
-                <div>
-                  <label className="text-[10px] font-heading font-medium text-muted-foreground mb-0.5 block">Sinais Vitais</label>
-                  <Input value={vitals} onChange={(e) => setVitals(e.target.value)} placeholder="PA, FC, SpO2, FR, Tax..." className="h-8 text-xs" />
-                </div>
-              </div>
-              <div>
-                <label className="text-[10px] font-heading font-medium text-muted-foreground mb-0.5 block">História Clínica</label>
-                <div className="flex gap-1">
-                  <Input value={history} onChange={(e) => setHistory(e.target.value)} placeholder="HAS, DM, antecedentes..." className="h-8 text-xs flex-1" />
-                  {speechSupported && (
-                    <button type="button" onClick={() => startVoice("history")}
-                      className={`shrink-0 w-8 h-8 rounded-lg flex items-center justify-center transition-all ${
-                        isListening && voiceTarget === "history" ? "bg-destructive/15 text-destructive animate-pulse" : "bg-muted hover:bg-accent text-muted-foreground"
-                      }`}>
-                      {isListening && voiceTarget === "history" ? <MicOff size={12} /> : <Mic size={12} />}
-                    </button>
-                  )}
-                </div>
-              </div>
-              <div className="grid grid-cols-2 gap-2">
-                <div>
-                  <label className="text-[10px] font-heading font-medium text-muted-foreground mb-0.5 block">Exames</label>
-                  <Input value={exams} onChange={(e) => setExams(e.target.value)} placeholder="ECG, Labs, imagem..." className="h-8 text-xs" />
-                </div>
-                <div>
-                  <label className="text-[10px] font-heading font-medium text-muted-foreground mb-0.5 block">Medicações em uso</label>
-                  <Input value={medications} onChange={(e) => setMedications(e.target.value)} placeholder="Losartana, Metformina..." className="h-8 text-xs" />
-                </div>
-              </div>
-              <div>
-                <label className="text-[10px] font-heading font-medium text-muted-foreground mb-0.5 block">Info adicional</label>
-                <Input value={additionalInfo} onChange={(e) => setAdditionalInfo(e.target.value)} placeholder="Alergias, observações..." className="h-8 text-xs" />
-              </div>
-              <Button type="submit" disabled={isLoading} className="w-full h-9 text-xs rounded-xl">
-                {isLoading ? <><Loader2 size={14} className="animate-spin mr-1.5" /> Analisando...</> : "🔍 Analisar Caso Clínico"}
-              </Button>
-            </form>
-          </TabsContent>
+
 
           <TabsContent value="image" className="mt-0">
             <div className="space-y-2">
@@ -1236,13 +1181,13 @@ function ClinicalAIContent() {
               <div className="flex items-center gap-1.5 px-2 py-1 rounded-lg bg-destructive/10 border border-destructive/20">
                 <Zap size={11} className="text-destructive shrink-0" />
                 <p className="text-[10px] text-destructive font-medium leading-tight">
-                  Resposta direta beira-leito: ações 0-10min, prescrição, alertas. Sem texto longo.
+                  Resposta resumida para decisão imediata — ações prioritárias, dose e conduta direta.
                 </p>
               </div>
               <Textarea
                 value={plantaoQuery}
                 onChange={(e) => setPlantaoQuery(e.target.value)}
-                placeholder="Ex.: Homem 60a, dor torácica 2h + sudorese, PA 90x60, ECG supra V1-V4"
+                placeholder="Ex.: PCR em andamento, homem 60a, FV refratária — próximo passo?"
                 className="min-h-[60px] max-h-32 text-sm resize-none rounded-xl"
                 onKeyDown={(e) => {
                   if (e.key === "Enter" && !e.shiftKey && (e.ctrlKey || e.metaKey)) {
@@ -1257,7 +1202,7 @@ function ClinicalAIContent() {
                 variant="destructive"
                 className="w-full h-9 text-xs rounded-xl font-heading font-bold"
               >
-                {isLoading ? <><Loader2 size={14} className="animate-spin mr-1.5" /> Calculando...</> : <><Zap size={14} className="mr-1.5" /> RESPOSTA DE PLANTÃO</>}
+                {isLoading ? <><Loader2 size={14} className="animate-spin mr-1.5" /> Calculando...</> : <><Zap size={14} className="mr-1.5" /> Resposta Rápida</>}
               </Button>
             </form>
           </TabsContent>
