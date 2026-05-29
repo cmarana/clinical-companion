@@ -7,6 +7,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import { startTTPSession } from "@/hooks/useTTPTracking";
+import { getEmergencyProtocol } from "@/data/emergency";
 
 type Category = "ABCDE" | "Cardio" | "Neuro" | "Infecto" | "Trauma" | "Metab" | "Tóxico" | "Pediatria";
 
