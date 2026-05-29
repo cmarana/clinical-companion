@@ -21,7 +21,7 @@ function getMappings(arr: EmergencyProtocol[]): Map<string, SamuMeta> {
 /** Anexa a citação SAMU à seção "Referências Bibliográficas", se ainda não houver. */
 function appendSamuReference(p: EmergencyProtocol): EmergencyProtocol {
   if (!p.samuSource) return p;
-  const citation = `\n\n• ${SAMU_REFERENCE_CITATION}`;
+  const citation = `\n\n• ${SAMU_REFERENCE_TEXT}`;
   const refIdx = p.sections.findIndex(s => s.id === "references");
   if (refIdx === -1) {
     return {
