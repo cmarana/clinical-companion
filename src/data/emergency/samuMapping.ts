@@ -7,7 +7,7 @@
 // ──────────────────────────────────────────────────────────────────────────
 
 import type { EmergencyProtocol } from "./types";
-import { SAMU_REFERENCE, SAMU_REFERENCE_CITATION } from "./samuReference";
+import { SAMU_REFERENCE, SAMU_REFERENCE_TEXT } from "./samuReference";
 import { buildSamuMappings, type SamuMeta } from "./samuEmergencyMappings";
 
 let _cache: Map<string, SamuMeta> | null = null;
