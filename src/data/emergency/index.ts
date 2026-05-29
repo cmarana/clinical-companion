@@ -212,6 +212,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...intoxicationProtocols4,
       ...intoxicationProtocols5,
       ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "intoxication"),
+      ...samuP1MissingBatch2Protocols.filter(p => p.categoryId === "intoxication"),
     ]),
   },
   {
