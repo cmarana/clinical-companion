@@ -206,18 +206,17 @@ export default function Home() {
         <motion.button
           whileTap={{ scale: 0.99 }}
           onClick={() => go("/clinical-ai", "Dra. Clara")}
-          className="relative w-full overflow-hidden rounded-2xl text-left text-white shadow-md ring-1 ring-white/10"
-          style={{ background: GRADIENT_DEEP_BLUE_SOFT }}
+          className="relative w-full overflow-hidden rounded-2xl text-left bg-card border border-border shadow-sm hover:shadow-md hover:border-primary/30 transition-all"
         >
           <div className="relative px-4 py-3 flex items-center gap-3">
-            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-white/15 ring-1 ring-white/25 shrink-0">
+            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 ring-1 ring-primary/20 shrink-0 text-primary">
               <Bot size={18} />
             </div>
             <div className="flex-1 min-w-0">
-              <h3 className="font-heading font-bold text-[14px] leading-tight">
+              <h3 className="font-heading font-bold text-[14px] leading-tight text-foreground">
                 Dra. Clara — IA Clínica
               </h3>
-              <p className="text-[11.5px] text-white/75 mt-0.5 leading-snug">
+              <p className="text-[11.5px] text-muted-foreground mt-0.5 leading-snug">
                 Pergunte, analise casos e interprete exames.
               </p>
             </div>
@@ -231,7 +230,7 @@ export default function Home() {
                   key={c.label}
                   onClick={(e) => { e.stopPropagation(); go(c.path, `IA · ${c.label}`); }}
                   title={c.label}
-                  className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-white/15 hover:bg-white/25 backdrop-blur-sm transition-colors cursor-pointer"
+                  className="inline-flex items-center justify-center w-7 h-7 rounded-lg bg-muted hover:bg-primary/10 text-muted-foreground hover:text-primary transition-colors cursor-pointer"
                 >
                   <c.icon size={13} />
                 </span>
