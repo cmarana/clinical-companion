@@ -330,6 +330,8 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...thoracicEntEmergencyProtocols.filter(p => p.id === "central-vertigo-emergency"),
       ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "other-emergencies"),
       ...samuP2MissingBatch1Protocols.filter(p => p.categoryId === "other-emergencies"),
+      ...samuMissingBatch4Protocols.filter(p => p.categoryId === "other-emergencies"),
+      ...samuMissingBatch5Protocols.filter(p => p.categoryId === "other-emergencies"),
     ]),
   },
 ];
