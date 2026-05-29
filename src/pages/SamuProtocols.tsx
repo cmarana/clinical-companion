@@ -135,10 +135,10 @@ export default function SamuProtocols() {
             </div>
             <div className="min-w-0">
               <h1 className="font-heading font-bold text-[13.5px] text-foreground leading-tight">
-                Protocolos SAMU 192
+                Matriz SAMU 192
               </h1>
               <p className="text-[11px] text-muted-foreground leading-snug">
-                Matriz nacional de protocolos pré-hospitalares — SBV e SAV
+                Matriz de referência baseada nos protocolos nacionais do SAMU 192, organizada para mapear cobertura, lacunas e prioridades clínicas do Pulso.
               </p>
             </div>
           </div>
