@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Search, ChevronRight, ClipboardList, Stethoscope, Zap, Building, Baby, HeartPulse, Thermometer, Pill, Target, LogOut, FlaskConical, FileText, Brain, Eye, Droplets, Scissors, Syringe, Monitor, Shield, Flame, Ribbon, Activity, Bone, Skull, Wind, UtensilsCrossed, Bug, Ear, Palette, Cross, UserRound } from "lucide-react";
 import { prescriptionCategories } from "@/data/prescriptions/index";
-import { GRADIENT_DEEP_BLUE } from "@/lib/design-tokens";
+
 
 const iconMap: Record<string, React.ReactNode> = {
   stethoscope: <Stethoscope size={16} className="text-primary" />,
@@ -78,20 +78,19 @@ function PrescriptionsContent() {
           <div key={cat.id} className="space-y-2">
             <button
               onClick={() => setExpandedCat(expandedCat === cat.id ? null : cat.id)}
-              className="relative overflow-hidden w-full flex items-center justify-between p-3.5 rounded-2xl text-white shadow-md ring-1 ring-white/15 active:scale-[0.98] transition-all"
-              style={{ background: GRADIENT_DEEP_BLUE }}
+              className="relative overflow-hidden w-full flex items-center justify-between p-3.5 pl-4 rounded-2xl bg-card ring-1 ring-border hover:ring-primary/30 shadow-sm active:scale-[0.99] transition-all"
             >
-              <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-white/10 blur-2xl pointer-events-none" />
+              <span aria-hidden className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary" />
               <div className="relative flex items-center gap-2.5 min-w-0">
-                <div className="w-9 h-9 rounded-xl bg-white/18 ring-1 ring-white/30 flex items-center justify-center text-white shrink-0">
+                <div className="w-9 h-9 rounded-xl bg-primary/10 text-primary flex items-center justify-center shrink-0 [&_svg]:!text-primary [&_svg]:!stroke-current">
                   {cat.icon && iconMap[cat.icon]
-                    ? <span className="[&_svg]:text-white [&_svg]:!stroke-white">{iconMap[cat.icon]}</span>
-                    : <ClipboardList size={16} className="text-white" />}
+                    ? iconMap[cat.icon]
+                    : <ClipboardList size={16} />}
                 </div>
-                <span className="font-heading font-semibold text-[13px] text-white text-left truncate">{cat.title}</span>
-                <span className="text-[10px] text-white/80 bg-white/15 ring-1 ring-white/25 px-1.5 py-0.5 rounded-full shrink-0">{cat.items.length}</span>
+                <span className="font-heading font-semibold text-[13px] text-foreground text-left truncate">{cat.title}</span>
+                <span className="text-[10px] text-muted-foreground bg-muted px-1.5 py-0.5 rounded-full shrink-0">{cat.items.length}</span>
               </div>
-              <ChevronRight size={16} className={`relative text-white/85 shrink-0 transition-transform ${expandedCat === cat.id ? "rotate-90" : ""}`} />
+              <ChevronRight size={16} className={`relative text-primary shrink-0 transition-transform ${expandedCat === cat.id ? "rotate-90" : ""}`} />
             </button>
 
             {(expandedCat === cat.id || query.length >= 2) && (
