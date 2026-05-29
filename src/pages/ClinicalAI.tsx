@@ -788,16 +788,16 @@ function ClinicalAIContent() {
 
         <div ref={messagesStartRef} />
         {messages.map((msg, i) => (
-          <div key={i} className={`flex gap-2 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
+          <div key={i} className={`flex gap-2 w-full min-w-0 ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
             {msg.role === "assistant" && (
               <div className="w-7 h-7 rounded-full bg-card border border-border flex items-center justify-center shrink-0 mt-1">
                 <PulsoLogo size={14} />
               </div>
             )}
-            <div className={`max-w-[95%] rounded-lg text-sm ${
+            <div className={`min-w-0 rounded-lg text-sm ${
               msg.role === "user"
-                ? "bg-primary text-primary-foreground rounded-2xl rounded-br-sm px-4 py-3 shadow-sm"
-                : "rounded-bl-sm"
+                ? "max-w-[85%] bg-primary text-primary-foreground rounded-2xl rounded-br-sm px-4 py-3 shadow-sm break-words"
+                : "flex-1 max-w-[calc(100%-2.5rem)] rounded-bl-sm"
             }`}>
               {msg.role === "assistant" ? (
                 <ClinicalResponseCards
@@ -808,7 +808,7 @@ function ClinicalAIContent() {
                   ragChunks={i === messages.length - 1 ? lastRagMeta?.chunks : undefined}
                 />
               ) : (
-                <div className="whitespace-pre-wrap text-[13px]">{msg.content}</div>
+                <div className="whitespace-pre-wrap break-words text-[13px]">{msg.content}</div>
               )}
             </div>
             {msg.role === "user" && (
