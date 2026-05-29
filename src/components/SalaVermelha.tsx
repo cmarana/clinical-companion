@@ -157,9 +157,9 @@ export default function SalaVermelha() {
       {/* Atalhos rápidos — 3 botões limpos, sem fundo vermelho */}
       <div className="grid grid-cols-3 gap-2">
         {[
-          { label: "Todas", icon: Activity,      path: "/emergencias" },
-          { label: "ACLS",  icon: Timer,         path: "/timer-acls" },
-          { label: "Doses", icon: FlaskConical,  path: "/calculadoras" },
+          { label: "Todas", icon: Activity,      path: "/emergency" },
+          { label: "ACLS",  icon: Timer,         path: "/cpr-timer" },
+          { label: "Doses", icon: FlaskConical,  path: "/pediatric-doses" },
         ].map(({ label, icon: Icon, path }) => (
           <button
             key={label}
