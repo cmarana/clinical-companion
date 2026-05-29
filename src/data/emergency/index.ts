@@ -5,6 +5,8 @@ import { samuP1MissingBatch1Protocols } from "./samu_p1_faltantes_lote2";
 import { samuP1MissingBatch2Protocols } from "./samu_p1_faltantes_lote3";
 import { samuP1MissingBatch3Protocols } from "./samu_p1_faltantes_lote4";
 import { samuP2MissingBatch1Protocols } from "./samu_p2_faltantes_lote5";
+import { samuMissingBatch4Protocols } from "./samu_faltantes_lote6";
+import { samuMissingBatch5Protocols } from "./samu_faltantes_lote7";
 import { cardiovascularProtocols } from "./cardiovascular";
 import { cardiovascularProtocols2 } from "./cardiovascular2";
 import { cardiovascularProtocols3 } from "./cardiovascular3";
@@ -129,6 +131,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...resuscitationProtocols,
       ...samuCriticalResuscitationProtocols,
       ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "resuscitation"),
+      ...samuMissingBatch4Protocols.filter(p => p.categoryId === "resuscitation"),
     ]),
   },
   {
@@ -139,6 +142,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...cardiovascularProtocols2,
       ...cardiovascularProtocols3,
       ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "cardiovascular"),
+      ...samuMissingBatch4Protocols.filter(p => p.categoryId === "cardiovascular"),
     ])),
   },
   {
@@ -186,6 +190,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...nephrologyEmergencyProtocols,
       ...thoracicEntEmergencyProtocols.filter(p => p.id === "adrenal-crisis"),
       ...samuP1MissingBatch2Protocols.filter(p => p.categoryId === "metabolic"),
+      ...samuMissingBatch4Protocols.filter(p => p.categoryId === "metabolic"),
     ]),
   },
   {
@@ -220,7 +225,11 @@ export const emergencyCategories: EmergencyCategory[] = [
   {
     id: "procedures",
     title: "Procedimentos de Emergência",
-    protocols: dedup(proceduresProtocols4),
+    protocols: dedup([
+      ...proceduresProtocols4,
+      ...samuMissingBatch4Protocols.filter(p => p.categoryId === "procedures"),
+      ...samuMissingBatch5Protocols.filter(p => p.categoryId === "procedures"),
+    ]),
   },
   {
     id: "infectious",
@@ -321,6 +330,8 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...thoracicEntEmergencyProtocols.filter(p => p.id === "central-vertigo-emergency"),
       ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "other-emergencies"),
       ...samuP2MissingBatch1Protocols.filter(p => p.categoryId === "other-emergencies"),
+      ...samuMissingBatch4Protocols.filter(p => p.categoryId === "other-emergencies"),
+      ...samuMissingBatch5Protocols.filter(p => p.categoryId === "other-emergencies"),
     ]),
   },
 ];
