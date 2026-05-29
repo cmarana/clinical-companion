@@ -183,6 +183,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...metabolicProtocols5,
       ...nephrologyEmergencyProtocols,
       ...thoracicEntEmergencyProtocols.filter(p => p.id === "adrenal-crisis"),
+      ...samuP1MissingBatch2Protocols.filter(p => p.categoryId === "metabolic"),
     ]),
   },
   {
