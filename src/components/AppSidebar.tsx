@@ -5,7 +5,7 @@ import {
   Calculator, FlaskConical, Baby, Heart, Stethoscope, HelpCircle,
   Search, Star, User, StickyNote, Home, Gift, Timer, Hash, Calendar, 
   TestTubes, Droplets, Brain, GraduationCap, BarChart3, FileEdit,
-  Syringe, ScanLine, WifiOff, ChevronRight, Shield, Database
+  Syringe, ScanLine, WifiOff, ChevronRight, Shield, Database, Radio
 } from "lucide-react";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupLabel,
@@ -28,7 +28,9 @@ const mainItems = [
 const clinicalItems = [
   { title: "Modo Plantão", url: "/duty", icon: AlertTriangle },
   { title: "Emergência / UTI", url: "/emergency", icon: Zap },
-  { title: "Protocolos", url: "/full-protocols", icon: BookOpen },
+  { title: "Protocolos Clínicos", url: "/full-protocols", icon: BookOpen },
+  { title: "Matriz SAMU 192", url: "/samu-protocols", icon: Radio },
+  { title: "Lacunas do Pulso", url: "/samu-protocols/gaps", icon: AlertTriangle },
   { title: "Bulário", url: "/bulario", icon: Pill },
   { title: "Prescrições", url: "/prescriptions", icon: ClipboardList },
   { title: "Calculadoras", url: "/calculators", icon: Calculator },

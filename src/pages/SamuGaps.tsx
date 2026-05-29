@@ -114,8 +114,10 @@ export default function SamuGaps() {
       if (p.coverageStatus === "Encontrado") s.encontrado++;
       else if (p.coverageStatus === "Parcial") s.parcial++;
       else if (p.coverageStatus === "Não localizado") s.naoLocalizado++;
-      else if (p.coverageStatus === "Operacional SAMU") s.operacional++;
       else if (p.coverageStatus === "Sem título no sumário") s.semTitulo++;
+
+      // Operacionais: coverageStatus "Operacional SAMU" OU flag isOperational
+      if (p.coverageStatus === "Operacional SAMU" || p.isOperational) s.operacional++;
 
       if (p.contentStatus === "Completo") s.completo++;
       else if (p.contentStatus === "Precisa revisar") s.precisaRevisar++;
@@ -170,10 +172,10 @@ export default function SamuGaps() {
             </div>
             <div className="min-w-0 flex-1">
               <h1 className="font-heading font-bold text-[13.5px] text-foreground leading-tight">
-                Lacunas do Pulso — Priorização de Conteúdo
+                Lacunas do Pulso
               </h1>
               <p className="text-[11px] text-muted-foreground leading-snug mt-0.5">
-                Painel interno: protocolos SAMU que ainda precisam ser criados, revisados ou estão parcialmente cobertos.
+                Lacunas do Pulso — protocolos que precisam ser criados, revisados ou vinculados.
               </p>
             </div>
           </div>
@@ -282,21 +284,31 @@ export default function SamuGaps() {
                       )}
 
                       <div className="flex items-center gap-2 pt-1">
-                        <button
-                          onClick={() => navigate(`/samu-protocols/${encodeURIComponent(p.code)}`)}
-                          className="flex-1 inline-flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg bg-primary text-primary-foreground text-[12px] font-heading font-semibold hover:bg-primary/90 transition"
-                        >
-                          Ver na matriz
-                          <ChevronRight size={13} />
-                        </button>
-                        {p.relatedPulsoProtocolSlug && (
+                        {p.relatedPulsoProtocolSlug ? (
+                          <>
+                            <button
+                              onClick={() => navigate(p.relatedPulsoProtocolSlug!)}
+                              className="flex-1 inline-flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg bg-primary text-primary-foreground text-[12px] font-heading font-semibold hover:bg-primary/90 transition"
+                              title="Abrir protocolo clínico do Pulso"
+                            >
+                              <ExternalLink size={13} />
+                              Ver no Pulso
+                            </button>
+                            <button
+                              onClick={() => navigate(`/samu-protocols/${encodeURIComponent(p.code)}`)}
+                              className="inline-flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg bg-card border border-border text-foreground text-[12px] font-heading font-semibold hover:border-primary/40 transition"
+                            >
+                              Matriz
+                              <ChevronRight size={13} />
+                            </button>
+                          </>
+                        ) : (
                           <button
-                            onClick={() => navigate(p.relatedPulsoProtocolSlug!)}
-                            className="inline-flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg bg-card border border-border text-foreground text-[12px] font-heading font-semibold hover:border-primary/40 transition"
-                            title="Abrir protocolo relacionado no Pulso"
+                            onClick={() => navigate(`/samu-protocols/${encodeURIComponent(p.code)}`)}
+                            className="flex-1 inline-flex items-center justify-center gap-1.5 h-9 px-3 rounded-lg bg-primary text-primary-foreground text-[12px] font-heading font-semibold hover:bg-primary/90 transition"
                           >
-                            <ExternalLink size={13} />
-                            <span className="hidden sm:inline">Relacionado</span>
+                            Abrir na matriz SAMU
+                            <ChevronRight size={13} />
                           </button>
                         )}
                       </div>
@@ -307,6 +319,13 @@ export default function SamuGaps() {
             </section>
           );
         })}
+
+        {/* Disclaimer clínico */}
+        <div className="mt-6 rounded-xl border border-border bg-muted/30 p-3">
+          <p className="text-[10.5px] text-muted-foreground leading-snug">
+            <strong className="text-foreground">Aviso:</strong> A Matriz SAMU é uma ferramenta de organização e auditoria de conteúdo. Protocolos marcados como "Precisa criar" ou "Precisa revisar" não devem ser interpretados como conduta assistencial completa.
+          </p>
+        </div>
       </div>
     </>
   );
