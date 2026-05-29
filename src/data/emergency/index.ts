@@ -1,6 +1,7 @@
 import type { EmergencyCategory } from "./types";
 import { resuscitationProtocols } from "./resuscitation";
 import { samuCriticalResuscitationProtocols } from "./samu_critical_resuscitation";
+import { samuP1MissingBatch1Protocols } from "./samu_p1_faltantes_lote2";
 import { cardiovascularProtocols } from "./cardiovascular";
 import { cardiovascularProtocols2 } from "./cardiovascular2";
 import { cardiovascularProtocols3 } from "./cardiovascular3";
@@ -124,6 +125,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     protocols: dedup([
       ...resuscitationProtocols,
       ...samuCriticalResuscitationProtocols,
+      ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "resuscitation"),
     ]),
   },
   {
@@ -133,6 +135,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...cardiovascularProtocols,
       ...cardiovascularProtocols2,
       ...cardiovascularProtocols3,
+      ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "cardiovascular"),
     ])),
   },
   {
@@ -153,6 +156,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...neurologicalProtocols3,
       ...neurologicalProtocols4,
       ...neurologicalProtocols5,
+      ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "neurological"),
     ])),
   },
   {
@@ -204,6 +208,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...intoxicationProtocols,
       ...intoxicationProtocols4,
       ...intoxicationProtocols5,
+      ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "intoxication"),
     ]),
   },
   {
@@ -246,6 +251,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...pediatricEmergencyProtocols,
       ...pediatricEmergencyProtocols2,
       ...pediatricEmergencyProtocols3,
+      ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "pediatric-emergency"),
     ]),
   },
   {
@@ -297,6 +303,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       // delirium idoso mantido — pode ser emergência no PS
       ...vascularGeriatricsEmergencyProtocols.filter(p => p.id === "delirium-elderly"),
       ...thoracicEntEmergencyProtocols.filter(p => p.id === "central-vertigo-emergency"),
+      ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "other-emergencies"),
     ]),
   },
 ];
