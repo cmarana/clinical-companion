@@ -4,6 +4,7 @@ import { samuCriticalResuscitationProtocols } from "./samu_critical_resuscitatio
 import { samuP1MissingBatch1Protocols } from "./samu_p1_faltantes_lote2";
 import { samuP1MissingBatch2Protocols } from "./samu_p1_faltantes_lote3";
 import { samuP1MissingBatch3Protocols } from "./samu_p1_faltantes_lote4";
+import { samuP2MissingBatch1Protocols } from "./samu_p2_faltantes_lote5";
 import { cardiovascularProtocols } from "./cardiovascular";
 import { cardiovascularProtocols2 } from "./cardiovascular2";
 import { cardiovascularProtocols3 } from "./cardiovascular3";
