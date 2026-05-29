@@ -422,17 +422,16 @@ export default function FullProtocols() {
                     <HoverCardTrigger asChild>
                       <div
                         onClick={() => handleCard(p)}
-                        className="cursor-pointer relative overflow-hidden rounded-2xl text-white shadow-md ring-1 ring-white/15 hover:shadow-lg active:scale-[0.98] transition-all group"
-                        style={{ background: GRADIENT_DEEP_BLUE }}
+                        className="cursor-pointer relative overflow-hidden rounded-xl bg-card border border-border hover:border-border/70 hover:bg-muted/20 active:scale-[0.98] transition-all group"
                       >
-                        <div className="absolute -top-6 -right-6 w-20 h-20 rounded-full bg-white/10 blur-2xl pointer-events-none" />
+                        <span className="absolute left-0 top-0 bottom-0 w-0.5 bg-primary" />
                         <div className="relative flex items-center justify-between px-3.5 py-3 gap-2">
                           <div className="min-w-0 flex-1">
                             <div className="flex items-center gap-1.5 flex-wrap">
-                              <p className="font-heading font-semibold text-[13px] text-white truncate">{p.title}</p>
+                              <p className="font-heading font-semibold text-[13px] text-foreground truncate">{p.title}</p>
                               {patched2026Ids.has(p.id) && (
                                 <span
-                                  className="inline-flex items-center gap-0.5 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-white/20 text-white ring-1 ring-white/30 shrink-0"
+                                  className="inline-flex items-center gap-0.5 text-[9px] font-bold px-1.5 py-0.5 rounded-full bg-primary/10 text-primary ring-1 ring-primary/20 shrink-0"
                                   title="Diretrizes revisadas em 2026 pela equipe PULSO"
                                 >
                                   <CalendarCheck size={9} />
@@ -441,11 +440,11 @@ export default function FullProtocols() {
                               )}
                             </div>
                             <div className="flex items-center gap-2 mt-0.5">
-                              <span className="text-[10.5px] text-white/80 truncate">
+                              <span className="text-[10.5px] text-muted-foreground truncate">
                                 {catLabel(p.categoryId)}
                               </span>
                               {count > 0 && (
-                                <span className="flex items-center gap-0.5 text-[9.5px] text-white/90 font-medium">
+                                <span className="flex items-center gap-0.5 text-[9.5px] text-muted-foreground font-medium">
                                   <TrendingUp size={9} /> {count}×
                                 </span>
                               )}
@@ -454,20 +453,21 @@ export default function FullProtocols() {
                           <button
                             onClick={(e) => { e.stopPropagation(); toggleFav(p.id, p.title, p.categoryId); }}
                             className={cn(
-                              "p-1.5 rounded-lg transition-all opacity-80 hover:opacity-100 hover:bg-white/15",
+                              "p-1.5 rounded-lg transition-all opacity-70 hover:opacity-100 hover:bg-muted",
                               fav && "opacity-100"
                             )}
                             aria-label={fav ? "Remover favorito" : "Favoritar"}
                           >
                             <Star
                               size={13}
-                              className={fav ? "fill-white text-white" : "text-white/85"}
+                              className={fav ? "fill-primary text-primary" : "text-muted-foreground"}
                             />
                           </button>
-                          <ChevronRight size={15} className="text-white/85 shrink-0" />
+                          <ChevronRight size={15} className="text-muted-foreground shrink-0" />
                         </div>
                       </div>
                     </HoverCardTrigger>
+
                     <HoverCardContent side="right" align="start" className="w-72 p-3 hidden md:block">
                       <p className="font-display font-semibold text-sm mb-1.5">{p.title}</p>
                       <p className="text-[10px] text-muted-foreground mb-2">{catLabel(p.categoryId)}</p>
