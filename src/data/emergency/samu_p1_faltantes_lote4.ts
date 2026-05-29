@@ -5,7 +5,7 @@ export const samuP1MissingBatch3Protocols: EmergencyProtocol[] = [
   {
     id: "samu-isquemia-mesenterica-aguda",
     title: "Isquemia Mesentérica Aguda",
-    categoryId: "gastrointestinal",
+    categoryId: "gastroenterology-emergency",
     samuCodes: [],
     samuLevel: [],
     samuSource: SAMU_REFERENCE,
