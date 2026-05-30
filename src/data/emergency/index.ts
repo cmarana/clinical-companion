@@ -68,6 +68,18 @@ import {
   protocolAVCiAtualizado,
 } from "./protocol_updates_desatualizados";
 import {
+  protocolChoqueCardiogenico,
+  protocolChoqueHipovolemico,
+  protocolEAP,
+  protocolCriseHipertensiva,
+  protocolDisseccaoAorta,
+  protocolTaquiarritmias,
+  protocolVasopressores,
+  protocolTransfusaoMacica,
+  protocolPneumotoraxHipertensivo,
+  protocolCIVD,
+} from "./protocol_cardio_criticos";
+import {
   protocolDigitalico,
   protocolIntoxicacaoADT,
   protocolOrganofosforado,
@@ -166,6 +178,13 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "cardiovascular",
     title: "Cardiovasculares de Emergência",
     protocols: dedup(filterEmergency([
+      protocolChoqueCardiogenico,
+      protocolChoqueHipovolemico,
+      protocolEAP,
+      protocolCriseHipertensiva,
+      protocolDisseccaoAorta,
+      protocolTaquiarritmias,
+      protocolVasopressores,
       protocolBradiarritmias,
       protocolTamponamento,
       ...cardiovascularProtocols,
@@ -179,6 +198,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "respiratory",
     title: "Respiratório",
     protocols: dedup([
+      protocolPneumotoraxHipertensivo,
       protocolHemoptiseMacica,
       ...respiratoryProtocols,
       ...respiratoryProtocols2,
@@ -289,6 +309,8 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "hematology-emergency",
     title: "Hematologia e Oncologia de Emergência",
     protocols: dedup([
+      protocolTransfusaoMacica,
+      protocolCIVD,
       ...hematologyEmergencyProtocols,
       ...oncologyEmergencyProtocols,
     ]),
