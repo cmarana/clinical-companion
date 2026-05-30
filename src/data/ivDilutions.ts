@@ -1114,4 +1114,17 @@ export const ivDrugs: IVDrug[] = [
     calculatorHelper: { doseMin: 25, doseMax: 50, unit: "mcg/h" },
   },
 ];
-export const ivCategories = [...new Set(ivDrugs.map(d => d.category))].sort();
+
+// Importar lote extra de diluições
+import { ivDrugsExtra } from "./ivDilutionsExtra";
+
+// Array unificado — dedup por ID (os do lote principal têm prioridade)
+const _seenIds = new Set<string>();
+const _allDrugs = [...ivDrugs, ...ivDrugsExtra].filter(d => {
+  if (_seenIds.has(d.id)) return false;
+  _seenIds.add(d.id);
+  return true;
+});
+export const allIvDrugs: IVDrug[] = _allDrugs;
+
+export const ivCategories = [...new Set(allIvDrugs.map(d => d.category))].sort();
