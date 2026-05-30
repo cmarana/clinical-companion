@@ -300,6 +300,12 @@ export default function FullProtocolDetail() {
               ))}
             </TabsList>
 
+            <TabsContent value="padrao" className="protocol-content">
+              <StandardProtocolView sections={protocol.sections} />
+            </TabsContent>
+
+
+
             {matchedTree && (
               <TabsContent value="flowchart">
                 <DecisionTree
