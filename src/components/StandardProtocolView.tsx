@@ -157,7 +157,7 @@ export default function StandardProtocolView({
       text: ({ value }: { value: string }) => (
         <HighlightText value={value} query={trimmedQuery} />
       ),
-    }),
+    } as any),
     [trimmedQuery],
   );
 
