@@ -8,7 +8,8 @@ import { useAuth } from "@/contexts/AuthContext";
 import { useFavorites } from "@/contexts/FavoritesContext";
 import PremiumGate from "@/components/PremiumGate";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
-import { Star, ShieldCheck, GitBranch, Calculator, ChevronRight, Eye, EyeOff } from "lucide-react";
+import { Star, ShieldCheck, GitBranch, Calculator, ChevronRight, Eye, EyeOff, LayoutTemplate } from "lucide-react";
+import StandardProtocolView from "@/components/StandardProtocolView";
 import { cn } from "@/lib/utils";
 import { FULL_SECTION_ORDER } from "@/data/fullProtocols/types";
 import { getEvidence } from "@/data/fullProtocols/evidenceMap";
@@ -264,8 +265,14 @@ export default function FullProtocolDetail() {
             protocolSections={orderedSections.map(s => ({ title: s.title, content: s.content }))}
           />
 
-          <Tabs defaultValue={matchedTree ? "flowchart" : defaultTab} className="w-full">
+          <Tabs defaultValue="padrao" className="w-full">
             <TabsList className="w-full flex flex-wrap h-auto gap-0 bg-transparent p-0 mb-5 justify-start">
+              <TabsTrigger
+                value="padrao"
+                className="shrink-0 inline-flex items-center gap-1.5 text-[11px] tracking-tight px-3 py-1.5 rounded-full font-heading font-medium text-primary bg-primary/10 ring-1 ring-primary/20 hover:bg-primary/15 transition-all duration-200 data-[state=active]:bg-primary data-[state=active]:text-primary-foreground data-[state=active]:ring-transparent data-[state=active]:shadow-[0_2px_8px_-2px_hsl(var(--primary)/0.4)]"
+              >
+                <LayoutTemplate size={11} strokeWidth={2.25} /> Padrão PULSO
+              </TabsTrigger>
               {matchedTree && (
                 <TabsTrigger
                   value="flowchart"
@@ -292,6 +299,12 @@ export default function FullProtocolDetail() {
                 </TabsTrigger>
               ))}
             </TabsList>
+
+            <TabsContent value="padrao" className="protocol-content">
+              <StandardProtocolView sections={protocol.sections} />
+            </TabsContent>
+
+
 
             {matchedTree && (
               <TabsContent value="flowchart">
