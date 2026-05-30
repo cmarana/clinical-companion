@@ -58,6 +58,11 @@ import {
   pediatricEmergencyProtocols3,
 } from "./combined_remaining";
 import { vascularGeriatricsEmergencyProtocols } from "./vascular_geriatrics";
+import { obstetricsProtocols4 } from "./obstetrics4";
+import { traumaProtocols3 } from "./trauma3";
+import { traumaProtocols4 } from "./trauma4";
+import { urologyEmergencyProtocols } from "./urology";
+import { intoxicationProtocols3 } from "./intoxication3";
 import { thoracicEntEmergencyProtocols } from "./thoracic_ent";
 import {
   protocolAcidenteOfidico,
@@ -222,6 +227,50 @@ const NAO_EMERGENCIA = new Set([
   "paraphimosis",
   // Oftalmologia — já em combined_remaining, manter só se urgência real
   // (glaucoma agudo e oclusão artéria retina SÃO emergências oftalmológicas — manter)
+  // Duplicatas — versões mais completas existem
+  "intoxicacao-organofosforado",
+  "intoxicacao-cocaina",
+  "intoxicacao-opioide",
+  "intoxicacao-benzodiazepinicos",
+  "intoxicacao-antidepressivo",
+  "intoxicacao-triciclico",
+  "overdose-multipla",
+  "overdose-multiplas-substancias",
+  "intoxicacao-alcoolica-grave",
+  "intoxicacao-bcc",
+  "intoxicacao-betabloqueador",
+  "intoxicacao-betabloqueador-bcc",
+  "intoxicacao-monoxido-carbono",
+  "hipoglicemia-grave",
+  "hiponatremia-grave",
+  "hipercalemia-emergencia",
+  "delirium-agudo",
+  "delirium-tremens",
+  "hemoptise-macica",
+  "em-choque-cardiogenico",
+  "em-eap",
+  "em-disseccao-aorta",
+  "em-taquiarritmia-instavel",
+  "em-taquiarritmia-estavel",
+  "em-pneumotorax-hipertensivo",
+  "em-pneumotorax",
+  "estado-mal-epileptico",
+  "status-epilepticus",
+  "dengue-grave-emergencia",
+  "leptospirose-grave",
+  "sepse-neonatal",
+  "sepse-pediatrica",
+  "ehh-emergencia",
+  "estado-hiperosmolar",
+  "crise-adrenal",
+  "insuficiencia-adrenal",
+  "tempestade-tireoidiana",
+  "em-crise-hipertensiva",
+  "crise-hipertensiva-neuro",
+  "avc-isquemico",
+  "hdb-emergencia",
+  "hemorragia-digestiva-baixa",
+  "hipocalemia-grave",
 ]);
 
 function filterEmergency<T extends { id: string }>(arr: T[]): T[] {
@@ -340,6 +389,8 @@ export const emergencyCategories: EmergencyCategory[] = [
       protocolTCEGrave,
       protocolQueimado,
       protocolTRM,
+      ...traumaProtocols3,
+      ...traumaProtocols4,
       ...traumaProtocols,
       ...traumaProtocols2,
       ...traumaProtocols5,
@@ -354,6 +405,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...obstetricsProtocols,
       ...obstetricsProtocols2,
       ...obstetricsProtocols5,
+      ...obstetricsProtocols4,
     ]),
   },
   {
@@ -363,6 +415,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       protocolEscorpiao,
       protocolAraneido,
       protocolBZDIntox,
+      ...intoxicationProtocols3,
       protocolCO,
       protocolCocaina,
       protocolSalicilato,
@@ -395,6 +448,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       protocolChikungunya,
       protocolPAV,
       protocolTetano,
+      ...urologyEmergencyProtocols,
       protocolPEPHIV,
       protocolRaiva,
       protocolLeptospiroseGrave,
