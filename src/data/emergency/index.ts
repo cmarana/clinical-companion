@@ -63,6 +63,10 @@ import {
   protocolAcidenteOfidico,
   protocolIntoxicacaoOpioide,
 } from "./protocol_ofidico_opioide";
+import {
+  protocolDengueAtualizado,
+  protocolAVCiAtualizado,
+} from "./protocol_updates_desatualizados";
 
 export { SECTION_ORDER } from "./types";
 export type { EmergencyProtocol, EmergencyCategory, EmergencySection } from "./types";
@@ -163,6 +167,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "neurological",
     title: "Neurológico",
     protocols: dedup(filterEmergency([
+      protocolAVCiAtualizado,
       ...neurologicalProtocols,
       ...neurologicalProtocols2,
       ...neurologicalProtocols3,
@@ -224,8 +229,6 @@ export const emergencyCategories: EmergencyCategory[] = [
       ...intoxicationProtocols5,
       ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "intoxication"),
       ...samuP1MissingBatch2Protocols.filter(p => p.categoryId === "intoxication"),
-      protocolAcidenteOfidico,
-      protocolIntoxicacaoOpioide,
     ]),
   },
   {
@@ -241,6 +244,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "infectious",
     title: "Infectologia de Emergência",
     protocols: dedup([
+      protocolDengueAtualizado,
       ...infectiousProtocols,
       ...infectiousProtocols2,
       ...infectiousProtocols3,
