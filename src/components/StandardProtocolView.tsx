@@ -278,7 +278,9 @@ export default function StandardProtocolView({
                     )}
                   </h3>
                   <div className="prose prose-sm dark:prose-invert max-w-none">
-                    <ReactMarkdown remarkPlugins={[remarkGfm]}>{s.content}</ReactMarkdown>
+                    <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+                      {s.content}
+                    </ReactMarkdown>
                   </div>
                 </article>
               );
