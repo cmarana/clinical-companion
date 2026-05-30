@@ -48,6 +48,32 @@ function countMatches(text: string, query: string): number {
   return count;
 }
 
+function escapeRegExp(s: string): string {
+  return s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+}
+
+function HighlightText({ value, query }: { value: string; query: string }) {
+  if (!query) return <>{value}</>;
+  const regex = new RegExp(`(${escapeRegExp(query)})`, "gi");
+  const parts = value.split(regex);
+  return (
+    <>
+      {parts.map((part, i) =>
+        part.toLowerCase() === query.toLowerCase() ? (
+          <mark
+            key={i}
+            className="bg-primary/20 text-primary dark:text-primary rounded px-0.5 font-semibold"
+          >
+            {part}
+          </mark>
+        ) : (
+          <span key={i}>{part}</span>
+        )
+      )}
+    </>
+  );
+}
+
 interface Props {
   sections: RawProtocolSection[];
   /** Quando true, mostra um chip com os títulos originais agrupados no slot. */
