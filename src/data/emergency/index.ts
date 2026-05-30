@@ -68,6 +68,14 @@ import {
   protocolAVCiAtualizado,
 } from "./protocol_updates_desatualizados";
 import {
+  protocolDigitalico,
+  protocolIntoxicacaoADT,
+  protocolOrganofosforado,
+  protocolMetanol,
+  protocolTamponamento,
+  protocolViaAereaDificil,
+} from "./protocol_intoxicacoes_e_cardio";
+import {
   protocolTCEGrave,
   protocolSepsePediatricaPhoenix,
   protocolMalEpileptico,
@@ -147,6 +155,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "resuscitation",
     title: "Ressuscitação e Via Aérea",
     protocols: dedup([
+      protocolViaAereaDificil,
       ...resuscitationProtocols,
       ...samuCriticalResuscitationProtocols,
       ...samuP1MissingBatch1Protocols.filter(p => p.categoryId === "resuscitation"),
@@ -158,6 +167,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     title: "Cardiovasculares de Emergência",
     protocols: dedup(filterEmergency([
       protocolBradiarritmias,
+      protocolTamponamento,
       ...cardiovascularProtocols,
       ...cardiovascularProtocols2,
       ...cardiovascularProtocols3,
@@ -240,6 +250,10 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "intoxication",
     title: "Intoxicações e Envenenamentos",
     protocols: dedup([
+      protocolDigitalico,
+      protocolIntoxicacaoADT,
+      protocolOrganofosforado,
+      protocolMetanol,
       ...intoxicationProtocols,
       ...intoxicationProtocols4,
       ...intoxicationProtocols5,
