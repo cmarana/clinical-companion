@@ -68,6 +68,16 @@ import {
   protocolAVCiAtualizado,
 } from "./protocol_updates_desatualizados";
 import {
+  protocolLRA,
+  protocolEHH,
+  protocolHiponatremia,
+  protocolReversaoAnticoag,
+  protocolCriseAdrenal,
+  protocolHSA,
+  protocolAbdomeAgudo,
+  protocolPALS,
+} from "./protocol_p1_lote2";
+import {
   protocolChoqueCardiogenico,
   protocolChoqueHipovolemico,
   protocolEAP,
@@ -210,6 +220,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "neurological",
     title: "Neurológico",
     protocols: dedup(filterEmergency([
+      protocolHSA,
       protocolAVCiAtualizado,
       protocolMalEpileptico,
       protocolComaAbordagem,
@@ -237,6 +248,10 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "metabolic",
     title: "Metabólico e Eletrolítico",
     protocols: dedup([
+      protocolLRA,
+      protocolEHH,
+      protocolHiponatremia,
+      protocolCriseAdrenal,
       ...metabolicProtocols,
       ...metabolicProtocols2,
       ...metabolicProtocols4,
@@ -309,6 +324,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "hematology-emergency",
     title: "Hematologia e Oncologia de Emergência",
     protocols: dedup([
+      protocolReversaoAnticoag,
       protocolTransfusaoMacica,
       protocolCIVD,
       ...hematologyEmergencyProtocols,
@@ -321,6 +337,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     // surgery.ts removido — contém cirurgias eletivas (apendicite, colecistite)
     // mantém apenas gastroenterologia de emergência real e Boerhaave
     protocols: dedup([
+      protocolAbdomeAgudo,
       protocolIsquemiaMesenterica,
       ...gastroenterologyEmergencyProtocols,
       ...thoracicEntEmergencyProtocols.filter(p => p.id === "boerhaave-esophageal-perforation"),
@@ -331,6 +348,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "pediatric-emergency",
     title: "Pediatria de Emergência",
     protocols: dedup([
+      protocolPALS,
       protocolSepsePediatricaPhoenix,
       ...pediatricEmergencyProtocols,
       ...pediatricEmergencyProtocols2,
