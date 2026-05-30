@@ -68,6 +68,22 @@ import {
   protocolAVCiAtualizado,
 } from "./protocol_updates_desatualizados";
 import {
+  protocolECMO,
+  protocolBZDIntox,
+  protocolObstIntestinal,
+  protocolPAV,
+  protocolTEVprofil,
+  protocolQueimaduraQuimica,
+  protocolRabdomiolise,
+  protocolPADIS,
+  protocolSincope,
+  protocolGuillainBarre,
+  protocolTetano,
+  protocolTPP,
+  protocolVNI,
+  protocolAVCPediatrico,
+} from "./protocol_p2_lote2";
+import {
   protocolAbstinenciaAlcoolica,
   protocolAraneido,
   protocolAgitacaoPsicomotora,
@@ -229,6 +245,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     title: "Cardiovasculares de Emergência",
     protocols: dedup(filterEmergency([
       protocolDorToracica,
+      protocolSincope,
       protocolCardioversao,
       protocolChoqueCardiogenico,
       protocolChoqueHipovolemico,
@@ -252,6 +269,8 @@ export const emergencyCategories: EmergencyCategory[] = [
     protocols: dedup([
       protocolPneumotoraxHipertensivo,
       protocolDesmame,
+      protocolECMO,
+      protocolVNI,
       protocolHemoptiseMacica,
       ...respiratoryProtocols,
       ...respiratoryProtocols2,
@@ -267,6 +286,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       protocolCefaleia,
       protocolMorteEncefalica,
       protocolCriseMiastenica,
+      protocolGuillainBarre,
       protocolAVCiAtualizado,
       protocolMalEpileptico,
       protocolComaAbordagem,
@@ -298,6 +318,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       protocolTRR,
       protocolHipernatremia,
       protocolHipocalemia,
+      protocolRabdomiolise,
       protocolLRA,
       protocolEHH,
       protocolHiponatremia,
@@ -329,6 +350,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     title: "Obstetrícia de Emergência",
     protocols: dedup([
       protocolSepsePuerperal,
+      protocolTPP,
       ...obstetricsProtocols,
       ...obstetricsProtocols2,
       ...obstetricsProtocols5,
@@ -340,6 +362,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     protocols: dedup([
       protocolEscorpiao,
       protocolAraneido,
+      protocolBZDIntox,
       protocolCO,
       protocolCocaina,
       protocolSalicilato,
@@ -370,6 +393,8 @@ export const emergencyCategories: EmergencyCategory[] = [
       protocolDengueAtualizado,
       protocolFasciite,
       protocolChikungunya,
+      protocolPAV,
+      protocolTetano,
       protocolPEPHIV,
       protocolRaiva,
       protocolLeptospiroseGrave,
@@ -388,6 +413,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     protocols: dedup([
       protocolReversaoAnticoag,
       protocolFalciforme,
+      protocolTEVprofil,
       protocolTransfusaoMacica,
       protocolCIVD,
       ...hematologyEmergencyProtocols,
@@ -402,6 +428,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     protocols: dedup([
       protocolAbdomeAgudo,
       protocolColangite,
+      protocolObstIntestinal,
       protocolHDB,
       protocolEncefalopatiaHepatica,
       protocolALF,
@@ -417,6 +444,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     protocols: dedup([
       protocolPALS,
       protocolBronquiolite,
+      protocolAVCPediatrico,
       protocolSepsePediatricaPhoenix,
       ...pediatricEmergencyProtocols,
       ...pediatricEmergencyProtocols2,
@@ -451,7 +479,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "ophthalmology-emergency",
     title: "Oftalmologia de Emergência",
     // Glaucoma agudo e oclusão artéria retina SÃO emergências reais — mantidos
-    protocols: dedup(ophthalmologyEmergencyProtocols),
+    protocols: dedup([protocolQueimaduraQuimica, ...ophthalmologyEmergencyProtocols]),
   },
   {
     id: "otorhino-emergency",
@@ -483,6 +511,7 @@ export const emergencyCategories: EmergencyCategory[] = [
       protocolAngioedema,
       protocolDelirium,
       protocolHipotermia,
+      protocolPADIS,
       ...otherEmergencyProtocols,
       ...allergyEmergencyProtocols,
       // delirium idoso mantido — pode ser emergência no PS
