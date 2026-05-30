@@ -243,7 +243,9 @@ export default function StandardProtocolView({
               )}
             </header>
             <div className="prose prose-sm dark:prose-invert max-w-none prose-headings:font-heading prose-p:leading-relaxed">
-              <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
+              <ReactMarkdown remarkPlugins={[remarkGfm]} components={markdownComponents}>
+                {content}
+              </ReactMarkdown>
             </div>
           </section>
         );
