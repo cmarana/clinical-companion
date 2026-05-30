@@ -67,6 +67,17 @@ import {
   protocolDengueAtualizado,
   protocolAVCiAtualizado,
 } from "./protocol_updates_desatualizados";
+import {
+  protocolTCEGrave,
+  protocolSepsePediatricaPhoenix,
+  protocolMalEpileptico,
+  protocolLeptospiroseGrave,
+  protocolBradiarritmias,
+  protocolComaAbordagem,
+  protocolHemoptiseMacica,
+  protocolIsquemiaMesenterica,
+  protocolSepseNeonatal,
+} from "./protocol_p1_completos";
 
 export { SECTION_ORDER } from "./types";
 export type { EmergencyProtocol, EmergencyCategory, EmergencySection } from "./types";
@@ -146,6 +157,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "cardiovascular",
     title: "Cardiovasculares de Emergência",
     protocols: dedup(filterEmergency([
+      protocolBradiarritmias,
       ...cardiovascularProtocols,
       ...cardiovascularProtocols2,
       ...cardiovascularProtocols3,
@@ -157,6 +169,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "respiratory",
     title: "Respiratório",
     protocols: dedup([
+      protocolHemoptiseMacica,
       ...respiratoryProtocols,
       ...respiratoryProtocols2,
       ...thoracicEntEmergencyProtocols.filter(p => p.id === "pleural-empyema"),
@@ -168,6 +181,8 @@ export const emergencyCategories: EmergencyCategory[] = [
     title: "Neurológico",
     protocols: dedup(filterEmergency([
       protocolAVCiAtualizado,
+      protocolMalEpileptico,
+      protocolComaAbordagem,
       ...neurologicalProtocols,
       ...neurologicalProtocols2,
       ...neurologicalProtocols3,
@@ -206,6 +221,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "trauma",
     title: "Trauma (ATLS)",
     protocols: dedup(filterEmergency([
+      protocolTCEGrave,
       ...traumaProtocols,
       ...traumaProtocols2,
       ...traumaProtocols5,
@@ -245,6 +261,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     title: "Infectologia de Emergência",
     protocols: dedup([
       protocolDengueAtualizado,
+      protocolLeptospiroseGrave,
       ...infectiousProtocols,
       ...infectiousProtocols2,
       ...infectiousProtocols3,
@@ -268,6 +285,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     // surgery.ts removido — contém cirurgias eletivas (apendicite, colecistite)
     // mantém apenas gastroenterologia de emergência real e Boerhaave
     protocols: dedup([
+      protocolIsquemiaMesenterica,
       ...gastroenterologyEmergencyProtocols,
       ...thoracicEntEmergencyProtocols.filter(p => p.id === "boerhaave-esophageal-perforation"),
       ...samuP1MissingBatch3Protocols.filter(p => p.categoryId === "gastroenterology-emergency"),
@@ -277,6 +295,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "pediatric-emergency",
     title: "Pediatria de Emergência",
     protocols: dedup([
+      protocolSepsePediatricaPhoenix,
       ...pediatricEmergencyProtocols,
       ...pediatricEmergencyProtocols2,
       ...pediatricEmergencyProtocols3,
@@ -290,6 +309,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "neonatal",
     title: "Neonatal",
     protocols: dedup([
+      protocolSepseNeonatal,
       ...neonatalProtocols,
       ...samuP1MissingBatch3Protocols.filter(p => p.categoryId === "neonatal"),
     ]),
