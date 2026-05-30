@@ -137,15 +137,15 @@ A digoxina tem janela terapêutica estreita (0,5–2 ng/mL). Intoxicação ocorr
 ## Cálculo da Dose de Fab
 
 ### Por quantidade ingerida (intoxicação aguda)
-```
+\`\`\`
 N° de frascos = mg ingeridos × 0,8 / 0,6
 Ou: mg ingeridos × 1,33
-```
+\`\`\`
 
 ### Por nível sérico
-```
+\`\`\`
 N° de frascos = (nível sérico em ng/mL × peso em kg) / 100
-```
+\`\`\`
 
 ### Dose empírica (nível desconhecido, instável)
 - **Adultos:** 10–20 frascos IV (800 mg–1600 mg)
