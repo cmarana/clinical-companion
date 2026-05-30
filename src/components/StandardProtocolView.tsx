@@ -152,6 +152,15 @@ export default function StandardProtocolView({
     inputRef.current?.blur();
   };
 
+  const markdownComponents = useMemo(
+    () => ({
+      text: ({ value }: { value: string }) => (
+        <HighlightText value={value} query={trimmedQuery} />
+      ),
+    }),
+    [trimmedQuery],
+  );
+
   return (
     <div className={cn("flex flex-col gap-4", className)}>
       {/* Search bar */}
