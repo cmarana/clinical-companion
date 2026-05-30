@@ -265,7 +265,7 @@ export default function FullProtocolDetail() {
             protocolSections={orderedSections.map(s => ({ title: s.title, content: s.content }))}
           />
 
-          <Tabs defaultValue={matchedTree ? "flowchart" : defaultTab} className="w-full">
+          <Tabs defaultValue="padrao" className="w-full">
             <TabsList className="w-full flex flex-wrap h-auto gap-0 bg-transparent p-0 mb-5 justify-start">
               {matchedTree && (
                 <TabsTrigger
