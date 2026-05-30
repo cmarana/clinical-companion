@@ -68,6 +68,29 @@ import {
   protocolAVCiAtualizado,
 } from "./protocol_updates_desatualizados";
 import {
+  protocolEscorpiao,
+  protocolSuicidio,
+  protocolCardioversao,
+  protocolManchester,
+  protocolColangite,
+  protocolEncefalopatiaHepatica,
+  protocolFasciite,
+  protocolQueimado,
+  protocolHeatStroke,
+  protocolCO,
+  protocolCocaina,
+  protocolSalicilato,
+  protocolPEPHIV,
+  protocolRaiva,
+  protocolSepsePuerperal,
+  protocolTRM,
+  protocolCriseTireotoxica,
+  protocolCriseMiastenica,
+  protocolDorToracica,
+  protocolALF,
+  protocolTRR,
+} from "./protocol_p1_lote3";
+import {
   protocolLRA,
   protocolEHH,
   protocolHiponatremia,
@@ -188,6 +211,8 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "cardiovascular",
     title: "Cardiovasculares de Emergência",
     protocols: dedup(filterEmergency([
+      protocolDorToracica,
+      protocolCardioversao,
       protocolChoqueCardiogenico,
       protocolChoqueHipovolemico,
       protocolEAP,
@@ -221,6 +246,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     title: "Neurológico",
     protocols: dedup(filterEmergency([
       protocolHSA,
+      protocolCriseMiastenica,
       protocolAVCiAtualizado,
       protocolMalEpileptico,
       protocolComaAbordagem,
@@ -248,6 +274,8 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "metabolic",
     title: "Metabólico e Eletrolítico",
     protocols: dedup([
+      protocolCriseTireotoxica,
+      protocolTRR,
       protocolLRA,
       protocolEHH,
       protocolHiponatremia,
@@ -267,6 +295,8 @@ export const emergencyCategories: EmergencyCategory[] = [
     title: "Trauma (ATLS)",
     protocols: dedup(filterEmergency([
       protocolTCEGrave,
+      protocolQueimado,
+      protocolTRM,
       ...traumaProtocols,
       ...traumaProtocols2,
       ...traumaProtocols5,
@@ -276,6 +306,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "obstetrics",
     title: "Obstetrícia de Emergência",
     protocols: dedup([
+      protocolSepsePuerperal,
       ...obstetricsProtocols,
       ...obstetricsProtocols2,
       ...obstetricsProtocols5,
@@ -285,6 +316,10 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "intoxication",
     title: "Intoxicações e Envenenamentos",
     protocols: dedup([
+      protocolEscorpiao,
+      protocolCO,
+      protocolCocaina,
+      protocolSalicilato,
       protocolDigitalico,
       protocolIntoxicacaoADT,
       protocolOrganofosforado,
@@ -310,6 +345,9 @@ export const emergencyCategories: EmergencyCategory[] = [
     title: "Infectologia de Emergência",
     protocols: dedup([
       protocolDengueAtualizado,
+      protocolFasciite,
+      protocolPEPHIV,
+      protocolRaiva,
       protocolLeptospiroseGrave,
       ...infectiousProtocols,
       ...infectiousProtocols2,
@@ -338,6 +376,9 @@ export const emergencyCategories: EmergencyCategory[] = [
     // mantém apenas gastroenterologia de emergência real e Boerhaave
     protocols: dedup([
       protocolAbdomeAgudo,
+      protocolColangite,
+      protocolEncefalopatiaHepatica,
+      protocolALF,
       protocolIsquemiaMesenterica,
       ...gastroenterologyEmergencyProtocols,
       ...thoracicEntEmergencyProtocols.filter(p => p.id === "boerhaave-esophageal-perforation"),
@@ -372,6 +413,7 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "psychiatry-emergency",
     title: "Psiquiatria de Emergência",
     protocols: dedup([
+      protocolSuicidio,
       ...psychiatryEmergencyProtocols,
       ...psychiatryEmergencyProtocols2,
     ]),
@@ -407,6 +449,8 @@ export const emergencyCategories: EmergencyCategory[] = [
     id: "other-emergencies",
     title: "Outras Emergências",
     protocols: dedup([
+      protocolManchester,
+      protocolHeatStroke,
       ...otherEmergencyProtocols,
       ...allergyEmergencyProtocols,
       // delirium idoso mantido — pode ser emergência no PS
