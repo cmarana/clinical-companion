@@ -4,7 +4,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { ivDrugs, ivCategories, type IVDrug } from "@/data/ivDilutions";
+import { allIvDrugs, ivCategories, type IVDrug } from "@/data/ivDilutions";
 import {
   Search, Droplets, AlertTriangle, Calculator, ChevronDown, ChevronUp,
   Beaker, Clock, ShieldAlert, Syringe, Check, X
@@ -221,7 +221,7 @@ export default function IVDilutions() {
   const [filterCat, setFilterCat] = useState("");
 
   const filtered = useMemo(() => {
-    let list = ivDrugs;
+    let list = allIvDrugs;
     if (filterCat) list = list.filter(d => d.category === filterCat);
     if (search.length >= 2) {
       const s = search.toLowerCase();
