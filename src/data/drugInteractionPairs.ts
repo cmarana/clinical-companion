@@ -3,7 +3,7 @@
 
 export interface InteractionPair {
   drugs: string[];
-  severity: "grave" | "moderado";
+  severity: "grave" | "moderado" | "leve";
   desc: string;
 }
 
