@@ -1038,7 +1038,7 @@ export const HIGH_RISK_PAIRS: Record<string, InteractionPair[]> = {
     { drugs: ["álcool", "etanol"], severity: "grave", desc: "Depressão do SNC sinérgica — risco de apneia." },
     { drugs: ["selegilina", "tranilcipromina"], severity: "grave", desc: "IMAO + opioide — síndrome serotoninérgica/hiperpirexia." },
   ],
-  "tramadol": [
+  "tramadol ": [
     { drugs: ["fluoxetina", "sertralina", "paroxetina", "venlafaxina", "escitalopram"], severity: "grave", desc: "Síndrome serotoninérgica — agitação, hipertermia, mioclonias." },
     { drugs: ["selegilina", "fenelzina", "tranilcipromina"], severity: "grave", desc: "IMAO + tramadol — síndrome serotoninérgica grave e fatal." },
     { drugs: ["carbamazepina"], severity: "moderado", desc: "Carbamazepina induz metabolismo do tramadol — menor efeito analgésico." },
@@ -1099,7 +1099,7 @@ export const HIGH_RISK_PAIRS: Record<string, InteractionPair[]> = {
     { drugs: ["metoprolol", "propranolol"], severity: "moderado", desc: "Inibe CYP2D6 — aumenta nível de betabloqueadores." },
     { drugs: ["lítio"], severity: "moderado", desc: "Risco de síndrome serotoninérgica." },
   ],
-  "amitriptilina": [
+  "amitriptilina ": [
     { drugs: ["selegilina", "fenelzina", "tranilcipromina"], severity: "grave", desc: "IMAO + ADT — síndrome serotoninérgica e hipertensão grave." },
     { drugs: ["fluconazol", "paroxetina", "fluoxetina"], severity: "moderado", desc: "Inibição de CYP2D6/3A4 — nível de amitriptilina aumenta → QTc prolongado." },
     { drugs: ["álcool", "etanol"], severity: "moderado", desc: "Potencialização da depressão do SNC." },
@@ -1107,7 +1107,7 @@ export const HIGH_RISK_PAIRS: Record<string, InteractionPair[]> = {
     { drugs: ["tramadol"], severity: "grave", desc: "Síndrome serotoninérgica + rebaixamento do limiar de convulsão." },
     { drugs: ["anti-histamínicos", "difenidramina"], severity: "moderado", desc: "Efeito anticolinérgico aditivo — retenção urinária, confusão." },
   ],
-  "lítio": [
+  "lítio ": [
     { drugs: ["ibuprofeno", "diclofenaco", "naproxeno", "piroxicam"], severity: "grave", desc: "AINEs reduzem excreção renal de lítio — toxicidade (tremor, confusão, arritmia)." },
     { drugs: ["furosemida", "hidroclorotiazida"], severity: "grave", desc: "Diuréticos reduzem excreção de lítio — toxicidade grave." },
     { drugs: ["enalapril", "captopril", "losartana"], severity: "grave", desc: "IECA/BRA aumentam risco de toxicidade por lítio (redução da excreção)." },
@@ -1141,7 +1141,7 @@ export const HIGH_RISK_PAIRS: Record<string, InteractionPair[]> = {
   ],
 
   // === CARDIOVASCULAR ===
-  "nitroglicerina": [
+  "nitroglicerina ": [
     { drugs: ["sildenafila", "tadalafila", "vardenafila", "avanafila"], severity: "grave", desc: "Hipotensão grave e potencialmente fatal — contraindicação absoluta." },
     { drugs: ["álcool", "etanol"], severity: "moderado", desc: "Hipotensão aditiva." },
     { drugs: ["anti-hipertensivos"], severity: "moderado", desc: "Hipotensão aditiva — monitorar PA." },
@@ -1153,14 +1153,14 @@ export const HIGH_RISK_PAIRS: Record<string, InteractionPair[]> = {
     { drugs: ["cetoconazol", "itraconazol", "voriconazol"], severity: "moderado", desc: "Azólicos inibem CYP3A4 — nível de sildenafila aumenta." },
     { drugs: ["alpha-bloqueadores", "doxazosina", "terazosina"], severity: "moderado", desc: "Hipotensão ortostática aditiva." },
   ],
-  "clopidogrel": [
+  "clopidogrel ": [
     { drugs: ["omeprazol", "esomeprazol"], severity: "moderado", desc: "Omeprazol inibe CYP2C19 — reduz conversão de clopidogrel em metabólito ativo." },
     { drugs: ["fluoxetina", "fluvoxamina", "paroxetina"], severity: "moderado", desc: "Inibidores de CYP2C19 — reduzem ativação do clopidogrel." },
     { drugs: ["varfarina"], severity: "grave", desc: "Sangramento grave — monitorar INR e sinais hemorrágicos." },
     { drugs: ["aas", "ácido acetilsalicílico"], severity: "moderado", desc: "Dupla antiagregação — maior risco de sangramento; indicação específica (SCA, stent)." },
     { drugs: ["ibuprofeno", "naproxeno"], severity: "moderado", desc: "Ibuprofeno pode inibir competitivamente a COX-1 — menor efeito antiplaquetário." },
   ],
-  "ticagrelor": [
+  "ticagrelor ": [
     { drugs: ["ritonavir", "atazanavir", "claritromicina"], severity: "grave", desc: "Inibição CYP3A4 — nível de ticagrelor aumenta drasticamente → sangramento." },
     { drugs: ["rifampicina", "fenitoína", "carbamazepina"], severity: "grave", desc: "Indução CYP3A4 — reduz nível e eficácia do ticagrelor." },
     { drugs: ["varfarina"], severity: "grave", desc: "Sangramento grave — tripla terapia de alto risco." },
@@ -1279,7 +1279,7 @@ export const HIGH_RISK_PAIRS: Record<string, InteractionPair[]> = {
     { drugs: ["eritromicina"], severity: "moderado", desc: "Antagonismo farmacológico — evitar associação." },
     { drugs: ["kaolin-pectina"], severity: "leve", desc: "Reduz absorção oral de clindamicina — separar por 2h." },
   ],
-  "metronidazol": [
+  "metronidazol ": [
     { drugs: ["omeprazol", "pantoprazol", "esomeprazol"], severity: "leve", desc: "Inibidores de bomba de próton podem alterar metabolismo do metronidazol levemente." },
   ],
   "gentamicina": [
@@ -1503,7 +1503,7 @@ export function normalizeDrugName(s: string): string {
 export interface DetectedInteraction {
   drugA: string;
   drugB: string;
-  severity: "grave" | "moderado";
+  severity: "grave" | "moderado" | "leve";
   description: string;
 }
 
