@@ -3,7 +3,7 @@
 
 export interface InteractionPair {
   drugs: string[];
-  severity: "grave" | "moderado";
+  severity: "grave" | "moderado" | "leve";
   desc: string;
 }
 
@@ -1021,6 +1021,476 @@ export const HIGH_RISK_PAIRS: Record<string, InteractionPair[]> = {
     { drugs: ["rifampicina"], severity: "moderado", desc: "Rifampicina aumenta clearance de terbinafina 100%." },
     { drugs: ["cafeína"], severity: "moderado", desc: "Terbinafina inibe CYP1A2 — aumento de cafeína." },
   ],
+  // === OPIOIDES ===
+  "morfina": [
+    { drugs: ["álcool", "etanol"], severity: "grave", desc: "Depressão do SNC sinérgica — risco de apneia e morte." },
+    { drugs: ["benzodiazepínicos", "diazepam", "midazolam", "lorazepam", "alprazolam", "clonazepam"], severity: "grave", desc: "Combinação FDA Black Box Warning — risco de depressão respiratória fatal." },
+    { drugs: ["tramadol"], severity: "moderado", desc: "Risco de síndrome serotoninérgica e depressão respiratória aditiva." },
+    { drugs: ["naltrexona", "naloxona"], severity: "grave", desc: "Antagonismo — precipita abstinência aguda em dependentes." },
+    { drugs: ["rifampicina"], severity: "moderado", desc: "Rifampicina induz CYP3A4 — reduz efeito da morfina." },
+    { drugs: ["cimetidina"], severity: "moderado", desc: "Cimetidina reduz metabolismo da morfina — risco de sedação excessiva." },
+  ],
+  "fentanil": [
+    { drugs: ["benzodiazepínicos", "midazolam", "diazepam", "lorazepam"], severity: "grave", desc: "Depressão respiratória aditiva — FDA Black Box Warning." },
+    { drugs: ["ritonavir", "lopinavir", "atazanavir"], severity: "grave", desc: "Inibidores de proteases inibem CYP3A4 — nível de fentanil aumenta drasticamente." },
+    { drugs: ["claritromicina", "eritromicina"], severity: "moderado", desc: "Inibição de CYP3A4 — aumento do nível sérico de fentanil." },
+    { drugs: ["diltiazem", "verapamil"], severity: "moderado", desc: "Inibição de CYP3A4 e P-gp — maior sedação." },
+    { drugs: ["álcool", "etanol"], severity: "grave", desc: "Depressão do SNC sinérgica — risco de apneia." },
+    { drugs: ["selegilina", "tranilcipromina"], severity: "grave", desc: "IMAO + opioide — síndrome serotoninérgica/hiperpirexia." },
+  ],
+  "tramadol ": [
+    { drugs: ["fluoxetina", "sertralina", "paroxetina", "venlafaxina", "escitalopram"], severity: "grave", desc: "Síndrome serotoninérgica — agitação, hipertermia, mioclonias." },
+    { drugs: ["selegilina", "fenelzina", "tranilcipromina"], severity: "grave", desc: "IMAO + tramadol — síndrome serotoninérgica grave e fatal." },
+    { drugs: ["carbamazepina"], severity: "moderado", desc: "Carbamazepina induz metabolismo do tramadol — menor efeito analgésico." },
+    { drugs: ["varfarina"], severity: "moderado", desc: "Tramadol pode potencializar efeito anticoagulante." },
+    { drugs: ["benzodiazepínicos", "midazolam", "diazepam"], severity: "moderado", desc: "Depressão do SNC aditiva." },
+    { drugs: ["ondansetrona", "metoclopramida"], severity: "moderado", desc: "Antagonistas 5-HT3 podem reduzir efeito analgésico do tramadol." },
+  ],
+  "metadona": [
+    { drugs: ["fluconazol", "voriconazol"], severity: "grave", desc: "Inibição de CYP3A4 — prolongamento do QTc e risco de TdP." },
+    { drugs: ["rifampicina"], severity: "grave", desc: "Indução de CYP3A4 — queda abrupta do nível de metadona → abstinência." },
+    { drugs: ["amiodarona", "sotalol", "haloperidol"], severity: "grave", desc: "Prolongamento aditivo do QTc — risco de torsades de pointes." },
+    { drugs: ["benzodiazepínicos", "diazepam", "midazolam"], severity: "grave", desc: "Depressão respiratória fatal — FDA Black Box Warning." },
+    { drugs: ["ciprofloxacino", "levofloxacino"], severity: "moderado", desc: "Quinolonas prolongam QTc — risco aditivo com metadona." },
+    { drugs: ["naltrexona"], severity: "grave", desc: "Precipita abstinência aguda." },
+  ],
+  "codeína": [
+    { drugs: ["fluoxetina", "paroxetina", "bupropiona"], severity: "grave", desc: "Inibidores de CYP2D6 bloqueiam conversão de codeína em morfina — analgesia ineficaz ou acúmulo." },
+    { drugs: ["álcool", "etanol"], severity: "grave", desc: "Depressão do SNC sinérgica." },
+    { drugs: ["benzodiazepínicos"], severity: "moderado", desc: "Depressão respiratória aditiva." },
+  ],
+
+  // === BENZODIAZEPÍNICOS ===
+  "midazolam": [
+    { drugs: ["ritonavir", "lopinavir", "atazanavir"], severity: "grave", desc: "Inibidores de protease inibem CYP3A4 — risco de sedação profunda e prolongada." },
+    { drugs: ["claritromicina", "eritromicina"], severity: "moderado", desc: "Inibição de CYP3A4 — nível de midazolam aumenta até 7×." },
+    { drugs: ["fluconazol", "voriconazol", "itraconazol"], severity: "grave", desc: "Azólicos inibem CYP3A4 — aumento de 2–7× do nível de midazolam." },
+    { drugs: ["álcool", "etanol"], severity: "grave", desc: "Depressão do SNC sinérgica." },
+    { drugs: ["opioides", "morfina", "fentanil"], severity: "grave", desc: "FDA Black Box Warning — depressão respiratória fatal." },
+    { drugs: ["diltiazem", "verapamil"], severity: "moderado", desc: "Inibição CYP3A4 — maior sedação." },
+  ],
+  "diazepam": [
+    { drugs: ["álcool", "etanol"], severity: "grave", desc: "Depressão do SNC sinérgica — risco de apneia." },
+    { drugs: ["opioides", "morfina", "fentanil"], severity: "grave", desc: "Depressão respiratória fatal — FDA Black Box Warning." },
+    { drugs: ["fluconazol", "itraconazol"], severity: "moderado", desc: "Inibição CYP2C19/3A4 — sedação prolongada." },
+    { drugs: ["cimetidina", "omeprazol"], severity: "moderado", desc: "Inibição CYP2C19 — aumento do nível de diazepam." },
+    { drugs: ["rifampicina"], severity: "moderado", desc: "Indução enzimática — reduz efeito do diazepam." },
+  ],
+  "clonazepam": [
+    { drugs: ["álcool", "etanol"], severity: "grave", desc: "Depressão do SNC sinérgica." },
+    { drugs: ["carbamazepina", "fenitoína", "rifampicina"], severity: "moderado", desc: "Indutores enzimáticos reduzem nível de clonazepam." },
+    { drugs: ["opioides", "morfina"], severity: "grave", desc: "Depressão respiratória aditiva." },
+  ],
+
+  // === ANTIDEPRESSIVOS / PSIQUIATRIA ===
+  "escitalopram": [
+    { drugs: ["tramadol", "meperidina", "fentanil"], severity: "grave", desc: "Síndrome serotoninérgica — agitação, mioclonias, hipertermia." },
+    { drugs: ["selegilina", "fenelzina", "tranilcipromina"], severity: "grave", desc: "IMAO + SSRI — síndrome serotoninérgica grave, possivelmente fatal." },
+    { drugs: ["tamoxifeno"], severity: "moderado", desc: "Escitalopram inibe CYP2D6 — reduz conversão de tamoxifeno em endoxifeno (ativo)." },
+    { drugs: ["clopidogrel"], severity: "moderado", desc: "SSRIs aumentam risco de sangramento GI com antiagregantes." },
+    { drugs: ["lítio"], severity: "moderado", desc: "Risco aumentado de síndrome serotoninérgica." },
+    { drugs: ["amiodarona", "haloperidol", "metadona"], severity: "moderado", desc: "Prolongamento aditivo do QTc." },
+  ],
+  "paroxetina": [
+    { drugs: ["tramadol"], severity: "grave", desc: "Síndrome serotoninérgica — paroxetina inibe CYP2D6 (metabolismo do tramadol)." },
+    { drugs: ["tamoxifeno"], severity: "grave", desc: "Paroxetina inibe CYP2D6 — reduz conversão em endoxifeno → menor eficácia antitumoral." },
+    { drugs: ["selegilina", "iMAO"], severity: "grave", desc: "Síndrome serotoninérgica grave — contraindicado." },
+    { drugs: ["clopidogrel"], severity: "moderado", desc: "Inibe CYP2D6 e aumenta risco de sangramento GI." },
+    { drugs: ["metoprolol", "propranolol"], severity: "moderado", desc: "Inibe CYP2D6 — aumenta nível de betabloqueadores." },
+    { drugs: ["lítio"], severity: "moderado", desc: "Risco de síndrome serotoninérgica." },
+  ],
+  "amitriptilina ": [
+    { drugs: ["selegilina", "fenelzina", "tranilcipromina"], severity: "grave", desc: "IMAO + ADT — síndrome serotoninérgica e hipertensão grave." },
+    { drugs: ["fluconazol", "paroxetina", "fluoxetina"], severity: "moderado", desc: "Inibição de CYP2D6/3A4 — nível de amitriptilina aumenta → QTc prolongado." },
+    { drugs: ["álcool", "etanol"], severity: "moderado", desc: "Potencialização da depressão do SNC." },
+    { drugs: ["amiodarona", "haloperidol"], severity: "grave", desc: "Prolongamento aditivo do QTc — risco de TdP." },
+    { drugs: ["tramadol"], severity: "grave", desc: "Síndrome serotoninérgica + rebaixamento do limiar de convulsão." },
+    { drugs: ["anti-histamínicos", "difenidramina"], severity: "moderado", desc: "Efeito anticolinérgico aditivo — retenção urinária, confusão." },
+  ],
+  "lítio ": [
+    { drugs: ["ibuprofeno", "diclofenaco", "naproxeno", "piroxicam"], severity: "grave", desc: "AINEs reduzem excreção renal de lítio — toxicidade (tremor, confusão, arritmia)." },
+    { drugs: ["furosemida", "hidroclorotiazida"], severity: "grave", desc: "Diuréticos reduzem excreção de lítio — toxicidade grave." },
+    { drugs: ["enalapril", "captopril", "losartana"], severity: "grave", desc: "IECA/BRA aumentam risco de toxicidade por lítio (redução da excreção)." },
+    { drugs: ["haloperidol"], severity: "moderado", desc: "Risco de síndrome neuroléptica maligna com lítio elevado." },
+    { drugs: ["fluoxetina", "sertralina"], severity: "moderado", desc: "SSRIs aumentam risco de síndrome serotoninérgica com lítio." },
+    { drugs: ["metronidazol"], severity: "moderado", desc: "Metronidazol reduz excreção renal de lítio — nível sérico aumenta." },
+  ],
+
+  // === DIURÉTICOS ===
+  "furosemida": [
+    { drugs: ["aminoglicosídeos", "gentamicina", "amicacina", "tobramicina"], severity: "grave", desc: "Ototoxicidade sinérgica — perda auditiva permanente." },
+    { drugs: ["anfotericina b"], severity: "grave", desc: "Nefrotoxicidade e hipocalemia sinérgica." },
+    { drugs: ["lítio"], severity: "grave", desc: "Furosemida aumenta reabsorção renal de lítio — toxicidade." },
+    { drugs: ["digoxina"], severity: "moderado", desc: "Hipocalemia por furosemida aumenta toxicidade da digoxina." },
+    { drugs: ["cisplatina"], severity: "grave", desc: "Nefro e ototoxicidade sinérgica." },
+    { drugs: ["aine", "ibuprofeno", "diclofenaco"], severity: "moderado", desc: "AINEs reduzem efeito diurético e aumentam risco de IRA." },
+  ],
+  "espironolactona": [
+    { drugs: ["enalapril", "captopril", "ramipril", "lisinopril"], severity: "grave", desc: "Hipercalemia potencialmente fatal — monitorar K+ sérico." },
+    { drugs: ["losartana", "valsartana", "candesartana"], severity: "grave", desc: "Hipercalemia — duplo bloqueio com poupador de K+." },
+    { drugs: ["lítio"], severity: "moderado", desc: "Pode aumentar excreção de lítio — monitorar nível." },
+    { drugs: ["aine", "ibuprofeno"], severity: "moderado", desc: "AINEs reduzem efeito da espironolactona e aumentam K+." },
+    { drugs: ["suplemento de potássio", "kcl"], severity: "grave", desc: "Hipercalemia grave — monitorar K+." },
+  ],
+  "hidroclorotiazida": [
+    { drugs: ["lítio"], severity: "grave", desc: "Tiazídicos aumentam reabsorção renal de lítio — toxicidade." },
+    { drugs: ["digoxina"], severity: "moderado", desc: "Hipocalemia por tiazídico aumenta toxicidade da digoxina." },
+    { drugs: ["aine", "ibuprofeno"], severity: "moderado", desc: "AINEs reduzem efeito diurético." },
+    { drugs: ["allopurinol"], severity: "moderado", desc: "Tiazídicos aumentam uricemia — piora da gota." },
+    { drugs: ["antidiabéticos"], severity: "moderado", desc: "Tiazídicos reduzem tolerância à glicose — ajuste de antidiabéticos." },
+  ],
+
+  // === CARDIOVASCULAR ===
+  "nitroglicerina ": [
+    { drugs: ["sildenafila", "tadalafila", "vardenafila", "avanafila"], severity: "grave", desc: "Hipotensão grave e potencialmente fatal — contraindicação absoluta." },
+    { drugs: ["álcool", "etanol"], severity: "moderado", desc: "Hipotensão aditiva." },
+    { drugs: ["anti-hipertensivos"], severity: "moderado", desc: "Hipotensão aditiva — monitorar PA." },
+    { drugs: ["heparina"], severity: "moderado", desc: "Nitroglicerina em altas doses pode reduzir efeito da heparina." },
+  ],
+  "sildenafila": [
+    { drugs: ["nitroglicerina", "isossorbida", "nitrato"], severity: "grave", desc: "Hipotensão grave e potencialmente fatal — contraindicação absoluta." },
+    { drugs: ["ritonavir", "lopinavir", "indinavir"], severity: "grave", desc: "Inibidores de protease elevam sildenafila > 10× — hipotensão grave." },
+    { drugs: ["cetoconazol", "itraconazol", "voriconazol"], severity: "moderado", desc: "Azólicos inibem CYP3A4 — nível de sildenafila aumenta." },
+    { drugs: ["alpha-bloqueadores", "doxazosina", "terazosina"], severity: "moderado", desc: "Hipotensão ortostática aditiva." },
+  ],
+  "clopidogrel ": [
+    { drugs: ["omeprazol", "esomeprazol"], severity: "moderado", desc: "Omeprazol inibe CYP2C19 — reduz conversão de clopidogrel em metabólito ativo." },
+    { drugs: ["fluoxetina", "fluvoxamina", "paroxetina"], severity: "moderado", desc: "Inibidores de CYP2C19 — reduzem ativação do clopidogrel." },
+    { drugs: ["varfarina"], severity: "grave", desc: "Sangramento grave — monitorar INR e sinais hemorrágicos." },
+    { drugs: ["aas", "ácido acetilsalicílico"], severity: "moderado", desc: "Dupla antiagregação — maior risco de sangramento; indicação específica (SCA, stent)." },
+    { drugs: ["ibuprofeno", "naproxeno"], severity: "moderado", desc: "Ibuprofeno pode inibir competitivamente a COX-1 — menor efeito antiplaquetário." },
+  ],
+  "ticagrelor ": [
+    { drugs: ["ritonavir", "atazanavir", "claritromicina"], severity: "grave", desc: "Inibição CYP3A4 — nível de ticagrelor aumenta drasticamente → sangramento." },
+    { drugs: ["rifampicina", "fenitoína", "carbamazepina"], severity: "grave", desc: "Indução CYP3A4 — reduz nível e eficácia do ticagrelor." },
+    { drugs: ["varfarina"], severity: "grave", desc: "Sangramento grave — tripla terapia de alto risco." },
+    { drugs: ["digoxina"], severity: "moderado", desc: "Ticagrelor inibe P-gp — pode aumentar nível de digoxina." },
+    { drugs: ["sinvastatina", "lovastatina"], severity: "moderado", desc: "Inibição CYP3A4 — risco de miopatia." },
+  ],
+
+  // === MACROLÍDEOS / QT ===
+  "azitromicina": [
+    { drugs: ["amiodarona", "sotalol"], severity: "grave", desc: "Prolongamento aditivo do QTc — risco de TdP." },
+    { drugs: ["haloperidol", "quetiapina", "risperidona"], severity: "moderado", desc: "Prolongamento aditivo do QTc." },
+    { drugs: ["metadona"], severity: "grave", desc: "Prolongamento do QTc — risco de arritmia grave." },
+    { drugs: ["varfarina"], severity: "moderado", desc: "Pode aumentar INR — monitorar." },
+    { drugs: ["digoxina"], severity: "moderado", desc: "Macrolídeos podem aumentar nível sérico de digoxina." },
+  ],
+  "eritromicina": [
+    { drugs: ["sinvastatina", "atorvastatina", "lovastatina"], severity: "grave", desc: "Inibição CYP3A4 — rabdomiólise." },
+    { drugs: ["varfarina"], severity: "moderado", desc: "Potencializa efeito anticoagulante — monitorar INR." },
+    { drugs: ["amiodarona", "metadona"], severity: "grave", desc: "Prolongamento aditivo do QTc." },
+    { drugs: ["midazolam", "triazolam"], severity: "grave", desc: "Inibição CYP3A4 — sedação profunda." },
+    { drugs: ["digoxina"], severity: "grave", desc: "Aumenta nível sérico de digoxina — monitorar." },
+  ],
+  "levofloxacino": [
+    { drugs: ["amiodarona", "sotalol"], severity: "grave", desc: "Prolongamento aditivo do QTc — risco de TdP." },
+    { drugs: ["varfarina"], severity: "moderado", desc: "Quinolonas podem potencializar varfarina." },
+    { drugs: ["antidiabéticos", "insulina", "glibenclamida"], severity: "moderado", desc: "Hipo ou hiperglicemia com quinolonas — monitorar glicemia." },
+    { drugs: ["metadona", "haloperidol"], severity: "grave", desc: "Prolongamento aditivo do QTc." },
+    { drugs: ["antiácidos com alumínio/magnésio", "sucralfato", "sais de ferro"], severity: "moderado", desc: "Quelação — reduz absorção da quinolona em 50–90% (separar 2–4h)." },
+  ],
+  "moxifloxacino": [
+    { drugs: ["amiodarona", "sotalol", "haloperidol", "metadona"], severity: "grave", desc: "Moxifloxacino é a quinolona com maior risco de QTc — combinações contraindicadas." },
+    { drugs: ["antidiabéticos", "insulina"], severity: "moderado", desc: "Disglicemia — monitorar." },
+    { drugs: ["varfarina"], severity: "moderado", desc: "Potencializa anticoagulação." },
+  ],
+
+  // === ANTIMICROBIANOS ===
+  "isoniazida": [
+    { drugs: ["fenitoína", "carbamazepina"], severity: "grave", desc: "Isoniazida inibe CYP2C19 — nível de fenitoína aumenta → toxicidade (ataxia, nistagmo)." },
+    { drugs: ["álcool", "etanol"], severity: "grave", desc: "Hepatotoxicidade sinérgica." },
+    { drugs: ["valproato"], severity: "moderado", desc: "Isoniazida inibe metabolismo do valproato — hepatotoxicidade." },
+    { drugs: ["rifampicina"], severity: "moderado", desc: "Hepatotoxicidade aditiva — monitorar TGO/TGP mensalmente." },
+    { drugs: ["antiácidos com alumínio"], severity: "moderado", desc: "Reduz absorção da isoniazida — administrar 1h antes." },
+  ],
+
+  // === NITRATO ===
+  "nitrato": [
+    { drugs: ["sildenafila", "tadalafila", "vardenafila"], severity: "grave", desc: "Hipotensão grave e fatal — contraindicação absoluta." },
+    { drugs: ["álcool", "etanol"], severity: "moderado", desc: "Hipotensão aditiva." },
+    { drugs: ["anti-hipertensivos"], severity: "moderado", desc: "Hipotensão aditiva." },
+  ],
+
+  // === OUTROS IMPORTANTES ===
+  "colchicina": [
+    { drugs: ["claritromicina", "eritromicina"], severity: "grave", desc: "Inibição CYP3A4 e P-gp — miotoxicidade e morte por colchicina. Contraindicado em IR." },
+    { drugs: ["ciclosporina"], severity: "grave", desc: "Inibição P-gp — toxicidade grave de colchicina." },
+    { drugs: ["ritonavir", "lopinavir"], severity: "grave", desc: "Inibição CYP3A4 — toxicidade de colchicina." },
+    { drugs: ["estatinas", "sinvastatina", "atorvastatina"], severity: "moderado", desc: "Miopatia/rabdomiólise — risco aditivo." },
+    { drugs: ["verapamil", "diltiazem"], severity: "moderado", desc: "Inibição P-gp — nível de colchicina aumenta." },
+  ],
+  "loperamida": [
+    { drugs: ["quinidina", "itraconazol"], severity: "moderado", desc: "Inibição P-gp — loperamida atravessa BHE → depressão SNC." },
+    { drugs: ["ritonavir"], severity: "grave", desc: "Inibição CYP3A4 e P-gp — prolongamento QTc com loperamida em dose alta." },
+    { drugs: ["amiodarona", "haloperidol"], severity: "moderado", desc: "Prolongamento aditivo do QTc em doses supraterapêuticas." },
+  ],
+  "prednisolona": [
+    { drugs: ["varfarina"], severity: "moderado", desc: "Corticoides podem tanto aumentar quanto diminuir efeito anticoagulante — monitorar INR." },
+    { drugs: ["insulina", "antidiabéticos orais"], severity: "moderado", desc: "Corticoides elevam glicemia — ajuste de antidiabéticos necessário." },
+    { drugs: ["ibuprofeno", "diclofenaco", "aine"], severity: "moderado", desc: "Risco de sangramento GI aumentado — IBP profilático recomendado." },
+    { drugs: ["rifampicina", "fenitoína", "carbamazepina"], severity: "moderado", desc: "Indutores enzimáticos reduzem efeito do corticoide." },
+    { drugs: ["salmeterol", "formoterol", "beta2-agonistas"], severity: "moderado", desc: "Hipocalemia aditiva em altas doses." },
+    { drugs: ["tacrolimus", "ciclosporina"], severity: "moderado", desc: "Imunossupressão excessiva — risco de infecções oportunistas." },
+  ],
+  "buprenorfina": [
+    { drugs: ["benzodiazepínicos", "diazepam", "clonazepam"], severity: "grave", desc: "Depressão respiratória grave — FDA Black Box Warning." },
+    { drugs: ["álcool", "etanol"], severity: "grave", desc: "Depressão do SNC sinérgica." },
+    { drugs: ["naltrexona"], severity: "grave", desc: "Precipita síndrome de abstinência aguda." },
+    { drugs: ["ritonavir", "atazanavir"], severity: "moderado", desc: "Inibição CYP3A4 — nível de buprenorfina aumenta." },
+    { drugs: ["rifampicina"], severity: "moderado", desc: "Indução CYP3A4 — queda do nível de buprenorfina." },
+  ],
+
+
+  // ── ANTIBIÓTICOS ──────────────────────────────────────────────────────────
+  "piperacilina-tazobactam": [
+    { drugs: ["vancomicina"], severity: "moderado", desc: "Associação frequente em UTI — monitorar função renal (nefrotoxicidade sinérgica)." },
+    { drugs: ["aminoglicosídeo", "gentamicina", "amicacina"], severity: "moderado", desc: "Risco de nefrotoxicidade aditiva — monitorar creatinina e débito urinário diariamente." },
+    { drugs: ["metotrexato"], severity: "moderado", desc: "Piperacilina pode reduzir excreção renal do metotrexato — risco de toxicidade." },
+    { drugs: ["heparina"], severity: "leve", desc: "Piperacilina pode prolongar tempo de sangramento em doses altas." },
+  ],
+  "ceftriaxona": [
+    { drugs: ["gluconato de cálcio", "cálcio"], severity: "grave", desc: "Precipitação fatal em neonatos — CONTRAINDICADO administrar pela mesma via simultaneamente." },
+    { drugs: ["vancomicina"], severity: "moderado", desc: "Incompatíveis na mesma linha — precipitação imediata." },
+    { drugs: ["aminoglicosídeo", "gentamicina", "amicacina"], severity: "leve", desc: "Sinergismo antibacteriano (usar em vias separadas)." },
+  ],
+  "cefepima": [
+    { drugs: ["vancomicina"], severity: "leve", desc: "Incompatíveis na mesma linha — administrar separadamente." },
+    { drugs: ["metronidazol"], severity: "leve", desc: "Incompatíveis na mesma seringa — administrar em linhas separadas." },
+    { drugs: ["aminoglicosídeo", "gentamicina", "amicacina"], severity: "moderado", desc: "Nefrotoxicidade aditiva — monitorar função renal." },
+  ],
+  "doxiciclina": [
+    { drugs: ["antiácido", "hidróxido de alumínio", "hidróxido de magnésio"], severity: "moderado", desc: "Antiácidos quelam doxiciclina — reduzem absorção até 50%. Separar por 2–3h." },
+    { drugs: ["cálcio", "gluconato de cálcio", "leite"], severity: "moderado", desc: "Cálcio forma quelato com doxiciclina — reduz biodisponibilidade." },
+    { drugs: ["varfarina", "marevan"], severity: "moderado", desc: "Doxiciclina pode potencializar varfarina — monitorar INR." },
+    { drugs: ["fenitoína", "carbamazepina", "fenobarbital"], severity: "moderado", desc: "Anticonvulsivantes indutores reduzem meia-vida da doxiciclina." },
+    { drugs: ["isotretinoína", "acitretina"], severity: "grave", desc: "Risco de hipertensão intracraniana benigna (pseudotumor cerebri)." },
+  ],
+  "metronidazol": [
+    { drugs: ["álcool etílico", "etanol"], severity: "grave", desc: "Efeito antabuse — náuseas, vômitos, rubor, taquicardia. Evitar álcool durante e 48h após." },
+    { drugs: ["varfarina", "marevan"], severity: "moderado", desc: "Inibe CYP2C9 — aumenta efeito anticoagulante. Monitorar INR." },
+    { drugs: ["lítio"], severity: "moderado", desc: "Pode aumentar litemia — monitorar nível sérico." },
+    { drugs: ["fenitoína"], severity: "moderado", desc: "Metronidazol inibe metabolismo da fenitoína — risco de toxicidade." },
+    { drugs: ["dissulfiram"], severity: "grave", desc: "Psicose e confusão aguda — contraindicado." },
+    { drugs: ["busulfano"], severity: "grave", desc: "Metronidazol inibe metabolismo do busulfano — toxicidade grave." },
+  ],
+  "clindamicina": [
+    { drugs: ["bloqueador neuromuscular", "rocurônio", "atracúrio", "vecurônio"], severity: "moderado", desc: "Clindamicina pode potencializar bloqueio neuromuscular — cautela em anestesia." },
+    { drugs: ["eritromicina"], severity: "moderado", desc: "Antagonismo farmacológico — evitar associação." },
+    { drugs: ["kaolin-pectina"], severity: "leve", desc: "Reduz absorção oral de clindamicina — separar por 2h." },
+  ],
+  "metronidazol ": [
+    { drugs: ["omeprazol", "pantoprazol", "esomeprazol"], severity: "leve", desc: "Inibidores de bomba de próton podem alterar metabolismo do metronidazol levemente." },
+  ],
+  "gentamicina": [
+    { drugs: ["vancomicina"], severity: "grave", desc: "Nefrotoxicidade sinérgica — monitorar creatinina e débito urinário diariamente." },
+    { drugs: ["anfotericina b"], severity: "grave", desc: "Nefrotoxicidade aditiva severa — evitar associação se possível." },
+    { drugs: ["furosemida"], severity: "moderado", desc: "Furosemida aumenta nefrotoxicidade e ototoxicidade dos aminoglicosídeos." },
+    { drugs: ["cisplatina"], severity: "grave", desc: "Nefrotoxicidade e ototoxicidade sinérgicas." },
+    { drugs: ["succinilcolina", "rocurônio", "vecurônio"], severity: "moderado", desc: "Aminoglicosídeos podem potencializar bloqueio neuromuscular." },
+  ],
+  "amicacina": [
+    { drugs: ["vancomicina"], severity: "grave", desc: "Nefrotoxicidade sinérgica — monitorar creatinina diariamente." },
+    { drugs: ["anfotericina b"], severity: "grave", desc: "Nefrotoxicidade aditiva severa." },
+    { drugs: ["furosemida"], severity: "moderado", desc: "Aumenta ototoxicidade e nefrotoxicidade da amicacina." },
+    { drugs: ["cisplatina"], severity: "grave", desc: "Nefrotoxicidade e ototoxicidade sinérgicas." },
+  ],
+  "linezolida": [
+    { drugs: ["tramadol"], severity: "grave", desc: "Linezolida é inibidor de MAO fraco — risco de síndrome serotoninérgica." },
+    { drugs: ["sertralina", "fluoxetina", "paroxetina", "escitalopram"], severity: "grave", desc: "Risco de síndrome serotoninérgica — contraindicado." },
+    { drugs: ["pseudoefedrina", "fenilefrina oral"], severity: "moderado", desc: "Inibição de MAO — risco de crise hipertensiva." },
+    { drugs: ["meperidina", "petidina"], severity: "grave", desc: "Risco de síndrome serotoninérgica grave." },
+    { drugs: ["adrenalina"], severity: "moderado", desc: "Potencialização vasopressora — monitorar PA." },
+  ],
+  // ── BETABLOQUEADORES ───────────────────────────────────────────────────────
+  "atenolol": [
+    { drugs: ["insulina", "glibenclamida", "glimepirida"], severity: "moderado", desc: "Betabloqueadores mascararam sintomas adrenérgicos da hipoglicemia (exceto sudorese)." },
+    { drugs: ["verapamil", "diltiazem"], severity: "grave", desc: "Bradicardia, BAV e parada cardíaca — evitar combinação EV." },
+    { drugs: ["clonidina"], severity: "grave", desc: "Hipertensão rebote grave ao suspender clonidina — retirar BB primeiro." },
+    { drugs: ["amiodarona"], severity: "moderado", desc: "Risco de bradicardia e BAV." },
+  ],
+  "metoprolol": [
+    { drugs: ["verapamil", "diltiazem"], severity: "grave", desc: "Bradicardia, BAV e colapso hemodinâmico — evitar combinação EV." },
+    { drugs: ["insulina", "glibenclamida", "glimepirida"], severity: "moderado", desc: "Mascara sintomas de hipoglicemia." },
+    { drugs: ["amiodarona"], severity: "moderado", desc: "Risco de bradicardia e BAV." },
+    { drugs: ["fluoxetina", "paroxetina"], severity: "moderado", desc: "Inibem CYP2D6 — aumentam nível de metoprolol, risco de bradicardia." },
+    { drugs: ["rifampicina"], severity: "moderado", desc: "Induz metabolismo do metoprolol — reduz efeito betabloqueador." },
+  ],
+  "propranolol": [
+    { drugs: ["verapamil", "diltiazem"], severity: "grave", desc: "Bradicardia, BAV e insuficiência cardíaca — evitar combinação EV." },
+    { drugs: ["insulina"], severity: "moderado", desc: "Mascara todos os sintomas adrenérgicos da hipoglicemia." },
+    { drugs: ["amiodarona"], severity: "moderado", desc: "Bradicardia e BAV." },
+    { drugs: ["clonidina"], severity: "grave", desc: "Hipertensão rebote grave ao suspender clonidina." },
+    { drugs: ["ergotamina"], severity: "grave", desc: "Vasoconstrição periférica grave — risco de isquemia." },
+  ],
+  "carvedilol": [
+    { drugs: ["insulina", "glibenclamida"], severity: "moderado", desc: "Mascara hipoglicemia e pode afetar metabolismo glicídico." },
+    { drugs: ["amiodarona"], severity: "moderado", desc: "Bradicardia e BAV." },
+    { drugs: ["verapamil", "diltiazem"], severity: "grave", desc: "Risco de bradicardia grave e BAV — evitar combinação EV." },
+    { drugs: ["rifampicina"], severity: "moderado", desc: "Induz metabolismo do carvedilol — reduz eficácia." },
+    { drugs: ["ciclosporina"], severity: "moderado", desc: "Carvedilol pode aumentar nível sérico da ciclosporina." },
+  ],
+  // ── BLOQUEADORES DE CANAL DE CÁLCIO ──────────────────────────────────────
+  "amlodipina": [
+    { drugs: ["sinvastatina"], severity: "moderado", desc: "Amlodipina inibe CYP3A4 — aumenta nível de sinvastatina. Limitar sinvastatina a 20mg/dia." },
+    { drugs: ["tacrolimus", "ciclosporina"], severity: "moderado", desc: "Amlodipina pode aumentar nível sérico de imunossupressores." },
+    { drugs: ["sildenafila", "tadalafila"], severity: "moderado", desc: "Potencialização hipotensora — cautela, especialmente em idosos." },
+    { drugs: ["claritromicina", "eritromicina"], severity: "moderado", desc: "Macrolídeos inibem CYP3A4 — aumentam nível de amlodipina." },
+    { drugs: ["itraconazol", "cetoconazol"], severity: "moderado", desc: "Azólicos inibem CYP3A4 — potencializam efeito da amlodipina." },
+  ],
+  "diltiazem": [
+    { drugs: ["betabloqueador", "atenolol", "metoprolol", "propranolol", "carvedilol"], severity: "grave", desc: "Bradicardia, BAV e colapso hemodinâmico — evitar EV concomitante." },
+    { drugs: ["sinvastatina", "atorvastatina"], severity: "moderado", desc: "Diltiazem inibe CYP3A4 — aumenta nível de estatinas." },
+    { drugs: ["digoxina"], severity: "grave", desc: "Diltiazem aumenta digoxinemia — risco de toxicidade digitálica." },
+    { drugs: ["ciclosporina", "tacrolimus"], severity: "moderado", desc: "Inibe CYP3A4 — aumenta nível de imunossupressores." },
+    { drugs: ["amiodarona"], severity: "grave", desc: "Risco de BAV grave e bradicardia." },
+    { drugs: ["fenitoína"], severity: "moderado", desc: "Diltiazem pode aumentar nível de fenitoína." },
+  ],
+  "verapamil": [
+    { drugs: ["betabloqueador", "atenolol", "metoprolol", "propranolol"], severity: "grave", desc: "BAV, bradicardia grave e parada cardíaca — CONTRAINDICADO EV simultâneo." },
+    { drugs: ["digoxina"], severity: "grave", desc: "Verapamil aumenta digoxinemia em 50–70% — risco de toxicidade." },
+    { drugs: ["sinvastatina", "atorvastatina"], severity: "moderado", desc: "Inibe CYP3A4 e glicoproteína-P — risco de miopatia." },
+    { drugs: ["colchicina"], severity: "grave", desc: "Inibe glicoproteína-P — aumenta toxicidade da colchicina." },
+    { drugs: ["amiodarona"], severity: "grave", desc: "Risco de BAV completo e parada cardíaca." },
+    { drugs: ["rifampicina"], severity: "moderado", desc: "Rifampicina reduz drasticamente nível de verapamil." },
+  ],
+  "nifedipina": [
+    { drugs: ["betabloqueador", "atenolol", "metoprolol"], severity: "moderado", desc: "Hipotensão aditiva — pode ser benéfico em associações controladas, mas cautela." },
+    { drugs: ["fenitoína"], severity: "grave", desc: "Fenitoína induz metabolismo da nifedipina — reduz eficácia." },
+    { drugs: ["rifampicina"], severity: "grave", desc: "Induz CYP3A4 — reduz nível de nifedipina drasticamente." },
+    { drugs: ["claritromicina", "eritromicina"], severity: "moderado", desc: "Aumentam nível de nifedipina via inibição de CYP3A4." },
+    { drugs: ["succo de toranja", "grapefruit"], severity: "moderado", desc: "Grapefruit inibe CYP3A4 intestinal — aumenta nível de nifedipina." },
+  ],
+  // ── ANALGÉSICOS / AAINES ──────────────────────────────────────────────────
+  "ibuprofeno": [
+    { drugs: ["varfarina", "marevan"], severity: "grave", desc: "Risco hemorrágico aumentado 3–6x — evitar. Usar paracetamol se necessário." },
+    { drugs: ["ácido acetilsalicílico", "aas", "aspirina"], severity: "moderado", desc: "AAS low dose tem efeito antiagregante reduzido quando ibuprofeno é tomado antes." },
+    { drugs: ["enalapril", "captopril", "losartana"], severity: "moderado", desc: "AINEs antagonizam efeito anti-hipertensivo e aumentam risco de IRA." },
+    { drugs: ["lítio"], severity: "grave", desc: "AINEs reduzem excreção renal de lítio — risco de intoxicação." },
+    { drugs: ["metotrexato"], severity: "grave", desc: "AINEs reduzem clearance renal do metotrexato — toxicidade grave." },
+    { drugs: ["corticoide", "prednisona", "prednisolona", "dexametasona"], severity: "moderado", desc: "Risco aumentado de sangramento GI e úlcera péptica." },
+    { drugs: ["furosemida"], severity: "moderado", desc: "AINEs reduzem efeito diurético e podem causar IRA." },
+    { drugs: ["ciclosporina"], severity: "grave", desc: "Nefrotoxicidade sinérgica." },
+  ],
+  "diclofenaco": [
+    { drugs: ["varfarina", "marevan"], severity: "grave", desc: "Risco hemorrágico aumentado — evitar. Usar paracetamol." },
+    { drugs: ["lítio"], severity: "grave", desc: "Reduz excreção renal de lítio — risco de intoxicação." },
+    { drugs: ["metotrexato"], severity: "grave", desc: "Reduz clearance renal do metotrexato — toxicidade." },
+    { drugs: ["enalapril", "captopril", "losartana"], severity: "moderado", desc: "Antagonismo anti-hipertensivo e risco de IRA." },
+    { drugs: ["ciclosporina"], severity: "grave", desc: "Nefrotoxicidade sinérgica." },
+    { drugs: ["furosemida"], severity: "moderado", desc: "Reduz efeito diurético." },
+  ],
+  "naproxeno": [
+    { drugs: ["varfarina", "marevan"], severity: "grave", desc: "Risco hemorrágico aumentado — evitar." },
+    { drugs: ["lítio"], severity: "grave", desc: "Aumenta litemia — risco de intoxicação." },
+    { drugs: ["metotrexato"], severity: "grave", desc: "Reduz clearance renal do metotrexato." },
+    { drugs: ["enalapril", "captopril", "losartana"], severity: "moderado", desc: "AINEs antagonizam efeito anti-hipertensivo." },
+  ],
+  "paracetamol": [
+    { drugs: ["álcool etílico", "etanol"], severity: "grave", desc: "Hepatotoxicidade sinérgica — máximo 2g/dia em etilistas, evitar se hepatopatia." },
+    { drugs: ["varfarina", "marevan"], severity: "leve", desc: "Doses > 2g/dia podem leve potencializar varfarina — monitorar INR se uso regular." },
+    { drugs: ["carbamazepina", "fenitoína", "fenobarbital"], severity: "moderado", desc: "Anticonvulsivantes indutores aumentam produção de metabólito hepatotóxico do paracetamol." },
+    { drugs: ["isoniazida"], severity: "moderado", desc: "Isoniazida induz CYP2E1 — aumenta hepatotoxicidade do paracetamol." },
+  ],
+  "dipirona": [
+    { drugs: ["ciclosporina"], severity: "moderado", desc: "Dipirona pode reduzir nível sérico de ciclosporina." },
+    { drugs: ["clorpromazina"], severity: "grave", desc: "Associação pode causar hipotermia grave." },
+    { drugs: ["varfarina", "marevan"], severity: "leve", desc: "Pode potencializar levemente o anticoagulante." },
+    { drugs: ["metotrexato"], severity: "moderado", desc: "Pode reduzir excreção renal do metotrexato." },
+  ],
+  "celecoxibe": [
+    { drugs: ["varfarina", "marevan"], severity: "moderado", desc: "Inibe CYP2C9 — pode aumentar INR." },
+    { drugs: ["lítio"], severity: "moderado", desc: "Inibidores de COX-2 podem aumentar litemia." },
+    { drugs: ["fluconazol"], severity: "moderado", desc: "Fluconazol inibe CYP2C9 — aumenta nível de celecoxibe." },
+    { drugs: ["ácido acetilsalicílico", "aas"], severity: "moderado", desc: "Perde vantagem GI do celecoxibe ao associar com AAS." },
+  ],
+  // ── BENZODIAZEPÍNICOS ─────────────────────────────────────────────────────
+  "alprazolam": [
+    { drugs: ["álcool etílico", "etanol"], severity: "grave", desc: "Depressão do SNC sinérgica — risco de depressão respiratória e óbito." },
+    { drugs: ["opioide", "morfina", "codeína", "tramadol", "fentanil"], severity: "grave", desc: "Depressão respiratória potencialmente fatal — Black Box FDA." },
+    { drugs: ["fluoxetina", "fluvoxamina"], severity: "moderado", desc: "Inibem CYP3A4 — aumentam nível de alprazolam em 2–3x." },
+    { drugs: ["itraconazol", "cetoconazol"], severity: "grave", desc: "Azólicos inibem CYP3A4 — aumento dramático do nível de alprazolam." },
+    { drugs: ["claritromicina", "eritromicina"], severity: "moderado", desc: "Inibem CYP3A4 — aumentam nível de alprazolam." },
+  ],
+  "lorazepam": [
+    { drugs: ["álcool etílico", "etanol"], severity: "grave", desc: "Depressão do SNC sinérgica." },
+    { drugs: ["opioide", "morfina", "fentanil"], severity: "grave", desc: "Depressão respiratória grave — monitorar rigorosamente em UTI." },
+    { drugs: ["ácido valpróico", "valproato"], severity: "moderado", desc: "Valproato pode aumentar nível de lorazepam em 20%." },
+    { drugs: ["probenecida"], severity: "moderado", desc: "Probenecida reduz eliminação do lorazepam." },
+  ],
+  // ── ANTIDEPRESSIVOS NOVOS ─────────────────────────────────────────────────
+  "bupropiona": [
+    { drugs: ["inibidor de mao", "fenelzina", "tranilcipromina"], severity: "grave", desc: "Crise hipertensiva e convulsão — contraindicado." },
+    { drugs: ["tamoxifeno"], severity: "grave", desc: "Inibe CYP2D6 — reduz conversão do tamoxifeno ao metabólito ativo (endoxifeno)." },
+    { drugs: ["tramadol"], severity: "grave", desc: "Bupropiona inibe CYP2D6 e baixa limiar de convulsão — risco aumentado." },
+    { drugs: ["carbamazepina"], severity: "moderado", desc: "Carbamazepina induz metabolismo da bupropiona — reduz eficácia." },
+    { drugs: ["álcool etílico", "etanol"], severity: "grave", desc: "Aumenta risco de convulsão com bupropiona." },
+    { drugs: ["metoprolol", "propranolol", "carvedilol"], severity: "moderado", desc: "Inibe CYP2D6 — aumenta nível de betabloqueadores." },
+  ],
+  "clomipramina": [
+    { drugs: ["inibidor de mao", "fenelzina", "tranilcipromina"], severity: "grave", desc: "Síndrome serotoninérgica e crise hipertensiva — contraindicado." },
+    { drugs: ["álcool etílico", "etanol"], severity: "moderado", desc: "Potencialização da sedação e depressão do SNC." },
+    { drugs: ["amiodarona"], severity: "grave", desc: "Prolongamento QT sinérgico — risco de torsades." },
+    { drugs: ["tramadol"], severity: "grave", desc: "Risco de síndrome serotoninérgica e convulsão." },
+    { drugs: ["adrenalina"], severity: "grave", desc: "ADTs potencializam efeito vasopressor da adrenalina — arritmias graves." },
+  ],
+  "imipramina": [
+    { drugs: ["inibidor de mao"], severity: "grave", desc: "Síndrome serotoninérgica — contraindicado." },
+    { drugs: ["álcool etílico"], severity: "moderado", desc: "Potencialização sedativa." },
+    { drugs: ["amiodarona", "haloperidol", "quetiapina"], severity: "grave", desc: "Prolongamento QT aditivo." },
+    { drugs: ["adrenalina"], severity: "grave", desc: "Arritmias graves — ADTs bloqueiam recaptação de noradrenalina." },
+    { drugs: ["cimetidina"], severity: "moderado", desc: "Cimetidina inibe metabolismo hepático da imipramina." },
+  ],
+  // ── ANTIDIABÉTICOS ────────────────────────────────────────────────────────
+  "glimepirida": [
+    { drugs: ["fluconazol", "miconazol", "cetoconazol"], severity: "grave", desc: "Inibem CYP2C9 — aumentam nível de sulfonilureias — risco de hipoglicemia grave." },
+    { drugs: ["ciprofloxacino"], severity: "moderado", desc: "Quinolonas podem intensificar hipoglicemia com sulfonilureias." },
+    { drugs: ["álcool etílico", "etanol"], severity: "moderado", desc: "Potencializa hipoglicemia e efeito antabuse (raramente)." },
+    { drugs: ["betabloqueador", "atenolol", "metoprolol", "propranolol"], severity: "moderado", desc: "Mascaramento dos sintomas adrenérgicos da hipoglicemia." },
+    { drugs: ["colestiramina"], severity: "leve", desc: "Colestiramina pode reduzir absorção de sulfonilureias — separar por 2h." },
+  ],
+  "glipizida": [
+    { drugs: ["fluconazol"], severity: "grave", desc: "Inibe CYP2C9 — aumenta nível de glipizida — risco de hipoglicemia." },
+    { drugs: ["betabloqueador"], severity: "moderado", desc: "Mascara hipoglicemia." },
+    { drugs: ["álcool etílico"], severity: "moderado", desc: "Potencializa hipoglicemia." },
+    { drugs: ["sulfonamidas"], severity: "moderado", desc: "Sulfonamidas podem deslocar sulfonilureias de proteínas plasmáticas." },
+  ],
+  "pioglitazona": [
+    { drugs: ["insulina"], severity: "moderado", desc: "Aumento do risco de hipoglicemia e retenção hídrica/IC." },
+    { drugs: ["rifampicina"], severity: "moderado", desc: "Induz CYP2C8 — reduz eficácia da pioglitazona." },
+    { drugs: ["contraceptivo oral"], severity: "moderado", desc: "Pioglitazona pode reduzir eficácia de contraceptivos com etinilestradiol." },
+    { drugs: ["genfibrozila"], severity: "grave", desc: "Inibe CYP2C8 — aumenta nível de pioglitazona drasticamente." },
+  ],
+  // ── IBP / ANTIULCEROSOS ───────────────────────────────────────────────────
+  "omeprazol": [
+    { drugs: ["clopidogrel"], severity: "moderado", desc: "Omeprazol inibe CYP2C19 — reduz ativação do clopidogrel em 40%. Preferir pantoprazol." },
+    { drugs: ["metotrexato"], severity: "moderado", desc: "IBPs podem retardar eliminação do metotrexato — risco de toxicidade." },
+    { drugs: ["atazanavir", "nelfinavir"], severity: "grave", desc: "IBPs reduzem absorção de inibidores de protease — contraindicado." },
+    { drugs: ["erlotinibe"], severity: "moderado", desc: "IBPs reduzem absorção de erlotinibe — monitorar." },
+    { drugs: ["tacrolimus"], severity: "moderado", desc: "Omeprazol via CYP2C19 pode alterar metabolismo do tacrolimus." },
+    { drugs: ["vitamina b12"], severity: "leve", desc: "Uso prolongado de IBP reduz absorção de vitamina B12." },
+  ],
+  "pantoprazol": [
+    { drugs: ["clopidogrel"], severity: "leve", desc: "Menor interação que omeprazol com clopidogrel — preferir pantoprazol em uso combinado." },
+    { drugs: ["metotrexato"], severity: "moderado", desc: "IBPs podem retardar eliminação do metotrexato." },
+    { drugs: ["atazanavir"], severity: "grave", desc: "IBPs contraindicados com atazanavir — reduzem absorção." },
+  ],
+  // ── OUTROS ───────────────────────────────────────────────────────────────
+  "alopurinol": [
+    { drugs: ["azatioprina", "mercaptopurina"], severity: "grave", desc: "Alopurinol inibe xantina oxidase — aumenta toxicidade da azatioprina. Reduzir azatioprina 75%." },
+    { drugs: ["ampicilina", "amoxicilina"], severity: "moderado", desc: "Exantema alérgico aumentado em 3–5x com a associação." },
+    { drugs: ["varfarina", "marevan"], severity: "moderado", desc: "Alopurinol pode inibir metabolismo da varfarina — monitorar INR." },
+    { drugs: ["ciclosporina"], severity: "moderado", desc: "Alopurinol pode aumentar nível sérico de ciclosporina." },
+    { drugs: ["capecitabina"], severity: "grave", desc: "Allopurinol reduz eficácia da capecitabina — evitar." },
+  ],
+  "tadalafila": [
+    { drugs: ["nitrato", "nitroglicerina", "dinitrato de isossorbida", "mononitrato de isossorbida"], severity: "grave", desc: "Hipotensão grave e potencialmente fatal — contraindicado." },
+    { drugs: ["anti-hipertensivo", "enalapril", "losartana", "amlodipina"], severity: "moderado", desc: "Potencialização hipotensora — cautela especialmente em idosos." },
+    { drugs: ["ritonavir", "atazanavir", "lopinavir"], severity: "grave", desc: "Inibidores de CYP3A4 — aumentam nível de tadalafila. Dose máxima: 10mg/48h." },
+    { drugs: ["itraconazol", "cetoconazol"], severity: "moderado", desc: "Aumentam nível de tadalafila via inibição de CYP3A4." },
+    { drugs: ["alfabloqueador", "tansulosina", "doxazosina"], severity: "moderado", desc: "Hipotensão ortostática — iniciar com doses baixas e intervalos adequados." },
+  ],
+
 };
 
 // Normalize drug name for matching
@@ -1033,7 +1503,7 @@ export function normalizeDrugName(s: string): string {
 export interface DetectedInteraction {
   drugA: string;
   drugB: string;
-  severity: "grave" | "moderado";
+  severity: "grave" | "moderado" | "leve";
   description: string;
 }
 

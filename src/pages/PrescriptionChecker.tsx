@@ -1,4 +1,4 @@
-import { useState, useRef, useCallback } from "react";
+import { useState, useRef, useCallback, useMemo } from "react";
 import { ArrowLeft, Mic, MicOff, Copy, Check, RotateCcw, ShieldCheck, Loader2, AlertTriangle, Info } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
@@ -7,7 +7,23 @@ import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
 import PremiumPageGuard from "@/components/PremiumPageGuard";
+import EnhancedPrescriptionInteractionAlert from "@/components/EnhancedPrescriptionInteractionAlert";
 import { supabase } from "@/integrations/supabase/client";
+
+/** Extract drug names from a free-form prescription textarea (one drug per line). */
+function extractDrugNames(text: string): string[] {
+  return text
+    .split(/\r?\n/)
+    .map(line => {
+      // Strip leading numbering/bullets like "1.", "2)", "-", "•"
+      const cleaned = line.replace(/^\s*(?:[-•*]|\d+[.)])\s*/, "").trim();
+      // Take tokens until we hit a number or a dose unit
+      const match = cleaned.match(/^([A-Za-zÀ-ÿ][A-Za-zÀ-ÿ\s-]*?)(?=\s+\d|\s+(?:mg|g|mcg|ui|ml|cp|amp|ev|vo|im|sc|sl|gts|comp)\b|$)/i);
+      return (match?.[1] ?? cleaned.split(/\s+/)[0] ?? "").trim();
+    })
+    .filter(n => n.length >= 3);
+}
+
 
 const getAuthHeader = async () => {
   const { data: { session } } = await supabase.auth.getSession();
@@ -26,6 +42,8 @@ const PrescriptionChecker = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [copied, setCopied] = useState(false);
   const recognitionRef = useRef<any>(null);
+  const drugNames = useMemo(() => extractDrugNames(prescription), [prescription]);
+
 
   const startListening = useCallback(() => {
     const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
@@ -198,6 +216,9 @@ const PrescriptionChecker = () => {
               />
             </div>
           </div>
+
+          {/* Local pre-check: interactions from offline DB */}
+          <EnhancedPrescriptionInteractionAlert drugNames={drugNames} />
 
           {/* Analyze button */}
           <Button
