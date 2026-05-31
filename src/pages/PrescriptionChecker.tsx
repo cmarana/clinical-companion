@@ -217,6 +217,9 @@ const PrescriptionChecker = () => {
             </div>
           </div>
 
+          {/* Local pre-check: interactions from offline DB */}
+          <EnhancedPrescriptionInteractionAlert drugNames={drugNames} />
+
           {/* Analyze button */}
           <Button
             onClick={analyze}
