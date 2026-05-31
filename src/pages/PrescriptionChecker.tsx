@@ -42,6 +42,8 @@ const PrescriptionChecker = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [copied, setCopied] = useState(false);
   const recognitionRef = useRef<any>(null);
+  const drugNames = useMemo(() => extractDrugNames(prescription), [prescription]);
+
 
   const startListening = useCallback(() => {
     const SR = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
