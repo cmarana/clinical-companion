@@ -866,30 +866,6 @@ export const interactionsDB: DrugInteraction[] = [
     alternative: "Paracetamol ou dipirona para analgesia/antipirexia",
     monitoring: "Lítio sérico, função renal, ECG",
   },
-
-];
-export function normalizeDrug(s: string): string {
-  return s.toLowerCase()
-    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
-    .replace(/[^a-z0-9 ]/g, "")
-    .trim();
-}
-
-export interface FoundInteraction {
-  drugAName: string;
-  drugBName: string;
-  interaction: DrugInteraction;
-}
-
-export function checkInteractions(drugNames: string[]): FoundInteraction[] {
-  const normalized = drugNames.map(d => normalizeDrug(d));
-  const results: FoundInteraction[] = [];
-  const seen = new Set<string>();
-
-  for (let i = 0; i < normalized.length; i++) {
-    for (let j = i + 1; j < normalized.length; j++) {
-      const a = normalized[i];
-      const b = normalized[j
   // === ANTIBIÓTICOS ===
   {
     drugA: ["gentamicina", "tobramicina", "amicacina", "aminoglicosídeo"],
@@ -1050,8 +1026,30 @@ export function checkInteractions(drugNames: string[]): FoundInteraction[] {
     monitoring: "Hemograma semanal se associação necessária",
     alternative: "Febuxostate para hiperuricemia (sem interação com azatioprina, mas cautela inicial)",
   },
-
 ];
+
+export function normalizeDrug(s: string): string {
+  return s.toLowerCase()
+    .normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+    .replace(/[^a-z0-9 ]/g, "")
+    .trim();
+}
+
+export interface FoundInteraction {
+  drugAName: string;
+  drugBName: string;
+  interaction: DrugInteraction;
+}
+
+export function checkInteractions(drugNames: string[]): FoundInteraction[] {
+  const normalized = drugNames.map(d => normalizeDrug(d));
+  const results: FoundInteraction[] = [];
+  const seen = new Set<string>();
+
+  for (let i = 0; i < normalized.length; i++) {
+    for (let j = i + 1; j < normalized.length; j++) {
+      const a = normalized[i];
+      const b = normalized[j];
 
       for (const inter of interactionsDB) {
         const aMatchesDrugA = inter.drugA.some(d => a.includes(normalizeDrug(d)) || normalizeDrug(d).includes(a));
