@@ -5,6 +5,9 @@ import { flashcardsLote4 } from "./flashcardsLote4";
 import { flashcardsLote5 } from "./flashcardsLote5";
 import { flashcardsLote6 } from "./flashcardsLote6";
 import { flashcardsLote7 } from "./flashcardsLote7";
+import { flashcardsLote8 } from "./flashcardsLote8";
+import { flashcardsLote9 } from "./flashcardsLote9";
+import { flashcardsLote10 } from "./flashcardsLote10";
 
 export interface Flashcard {
   id: string;
@@ -286,4 +289,7 @@ export const flashcards: Flashcard[] = [
   ...flashcardsLote5,
   ...flashcardsLote6,
   ...flashcardsLote7,
+  ...flashcardsLote8,
+  ...flashcardsLote9,
+  ...flashcardsLote10,
 ];
