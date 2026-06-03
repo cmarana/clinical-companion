@@ -25,12 +25,16 @@ function countMatches(file: string, key: string): number {
 }
 
 describe("Dataset counts · sincronizadas com os arquivos-fonte", () => {
-  it("flashcards == soma de flashcardsData + Extra + Extra2 + Extra3", () => {
+  it("flashcards == soma de Data + Extras + Lotes 4-7", () => {
     const real =
       countMatches("src/data/flashcardsData.ts", "front") +
       countMatches("src/data/flashcardsExtra.ts", "front") +
       countMatches("src/data/flashcardsExtra2.ts", "front") +
-      countMatches("src/data/flashcardsExtra3.ts", "front");
+      countMatches("src/data/flashcardsExtra3.ts", "front") +
+      countMatches("src/data/flashcardsLote4.ts", "front") +
+      countMatches("src/data/flashcardsLote5.ts", "front") +
+      countMatches("src/data/flashcardsLote6.ts", "front") +
+      countMatches("src/data/flashcardsLote7.ts", "front");
     expect(
       DATASET_COUNTS.flashcards,
       `Atualize DATASET_COUNTS.flashcards para ${real}`,
