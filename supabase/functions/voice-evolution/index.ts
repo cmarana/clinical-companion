@@ -3,13 +3,145 @@ import { verifyAuthAndQuota, bumpAiUsage, hashPrompt, lookupCache, storeCache } 
 import { geminiChat } from "../_shared/gemini.ts";
 
 const FEATURE = "voice-evolution";
-const MODEL = "google/gemini-2.5-flash-lite"; // Estruturação simples → modelo barato
+const MODEL = "google/gemini-2.5-flash-lite";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
 
+// ── Prompts por formato ──────────────────────────────────────────────────────
+function buildPrompt(format: string, context: string): string {
+  const ctx = {
+    ps: "Pronto-Socorro / UPA",
+    uti: "UTI / Terapia Intensiva",
+    enfermaria: "Enfermaria hospitalar",
+    ambulatorio: "Ambulatório / Consulta eletiva",
+  }[context] ?? "Pronto-Socorro";
+
+  const base = `Você é um médico experiente trabalhando em ${ctx} no Brasil. Escreva em português médico formal. Use marcadores e seções claras. Inclua CID-10 quando mencionado ou óbvio. Se dados estiverem ausentes, escreva "Não informado". Nunca invente dados clínicos não presentes no relato. Ao final, adicione a linha: ⚕️ Uso exclusivo por profissional de saúde habilitado.`;
+
+  const prompts: Record<string, string> = {
+    SOAP: `${base}
+
+Estruture a evolução no formato SOAP:
+
+**S — Subjetivo**
+Queixas e sintomas relatados pelo paciente ou acompanhante. Início, duração, intensidade, fatores de melhora/piora, sintomas associados.
+
+**O — Objetivo**
+Sinais vitais, exame físico, exames laboratoriais e de imagem relevantes.
+
+**A — Avaliação**
+Hipóteses diagnósticas principais e diferenciais. CID-10 quando aplicável.
+
+**P — Plano**
+Condutas, medicamentos (dose, via, frequência), exames solicitados, orientações, encaminhamentos.`,
+
+    "I-PASS": `${base}
+
+Estruture no formato I-PASS para passagem de plantão segura:
+
+**I — Illness Severity (Gravidade)**
+Estável / Em observação / Instável / Crítico. Justificativa breve.
+
+**P — Patient Summary (Resumo do Paciente)**
+Identificação, diagnóstico principal, histórico relevante, eventos do plantão.
+
+**A — Action List (Lista de Ações)**
+Pendências: exames aguardando resultado, condutas iniciadas, reavaliações necessárias.
+
+**S — Situation Awareness (Situação e Plano Contingencial)**
+O que pode mudar? Se piorar, o que fazer? Alertas críticos.
+
+**S — Synthesis (Síntese para o Plantonista)**
+Mensagem-chave para quem assume o paciente.`,
+
+    ADMISSAO: `${base}
+
+Gere um registro de admissão completo:
+
+**IDENTIFICAÇÃO**
+Dados do paciente conforme informado.
+
+**MOTIVO DA ADMISSÃO / QUEIXA PRINCIPAL**
+
+**HISTÓRIA DA DOENÇA ATUAL (HDA)**
+Relato cronológico detalhado com início, progressão, fatores associados.
+
+**ANTECEDENTES PESSOAIS**
+Comorbidades, cirurgias prévias, internações.
+
+**MEDICAMENTOS EM USO**
+Lista de medicamentos (incluindo dose se mencionada) e alergias.
+
+**EXAME FÍSICO**
+Sinais vitais e achados relevantes de cada sistema.
+
+**HIPÓTESES DIAGNÓSTICAS**
+Diagnóstico principal e diferenciais (com CID-10).
+
+**CONDUTA INICIAL**
+Primeiros atendimentos, exames solicitados, medicamentos prescritos.
+
+**PLANO DE INTERNAÇÃO**
+Objetivos do tratamento, monitorização, critérios de alta.`,
+
+    SBAR: `${base}
+
+Gere uma comunicação de transferência/handoff no formato SBAR:
+
+**S — Situation (Situação Atual)**
+Nome, idade, diagnóstico principal, motivo da transferência em 2-3 linhas.
+
+**B — Background (Contexto Clínico)**
+História relevante, comorbidades, medicamentos em uso, evolução durante a internação.
+
+**A — Assessment (Avaliação Atual)**
+Estado atual do paciente: estável/instável, últimos sinais vitais, achados críticos, exames pendentes.
+
+**R — Recommendation (Recomendações)**
+O que o próximo médico/serviço precisa fazer: monitorizar, medicamentos, procedimentos, consultas.
+
+**ALERTAS DE SEGURANÇA**
+Alergias, riscos específicos, cuidados especiais.`,
+
+    ALTA: `${base}
+
+Gere um sumário de alta hospitalar completo:
+
+**DADOS DA INTERNAÇÃO**
+Data de admissão, data de alta, unidade, tempo de internação.
+
+**DIAGNÓSTICO PRINCIPAL** (CID-10)
+**DIAGNÓSTICOS SECUNDÁRIOS** (CID-10 quando aplicável)
+
+**RESUMO DA INTERNAÇÃO**
+Motivo da admissão, evolução clínica resumida, procedimentos realizados, intercorrências.
+
+**EXAMES RELEVANTES**
+Resultados mais importantes durante a internação.
+
+**CONDIÇÃO NA ALTA**
+Estado do paciente na saída (estável/melhora/alta a pedido).
+
+**PRESCRIÇÃO DE ALTA**
+Medicamentos (nome, dose, via, frequência, duração).
+
+**ORIENTAÇÕES E RESTRIÇÕES**
+Dieta, atividade física, curativos, cuidados especiais.
+
+**RETORNO / ENCAMINHAMENTOS**
+Consultas agendadas, retorno à emergência se sinais de alarme, encaminhamentos.
+
+**SINAIS DE ALARME PARA RETORNO**
+Quando voltar ao PS/emergência.`,
+  };
+
+  return prompts[format] ?? prompts["SOAP"];
+}
+
+// ── Handler ──────────────────────────────────────────────────────────────────
 serve(async (req) => {
   if (req.method === "OPTIONS") return new Response(null, { headers: corsHeaders });
 
@@ -17,22 +149,19 @@ serve(async (req) => {
     const ctx = await verifyAuthAndQuota(req, FEATURE);
     if (ctx instanceof Response) return ctx;
 
-    const { transcription, format } = await req.json();
-    if (!transcription || !format) {
-      return new Response(JSON.stringify({ error: "transcription and format are required" }), {
+    const { transcription, format = "SOAP", context = "ps" } = await req.json();
+    if (!transcription) {
+      return new Response(JSON.stringify({ error: "transcription is required" }), {
         status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
     }
 
-
-    const soapPrompt = `Você é um médico especialista em documentação clínica. Estruture o relato no formato SOAP (Subjetivo, Objetivo, Avaliação, Plano). Use linguagem médica formal, organize em tópicos, inclua CID-10 quando possível. Se faltar informação, escreva "Não informado".`;
-    const ipassPrompt = `Você é um médico especialista em passagem de plantão. Estruture o relato no formato I-PASS (Illness Severity, Patient Summary, Action List, Situation Awareness, Synthesis). Linguagem formal, priorize segurança do paciente, destaque alertas críticos.`;
-
-    const systemPrompt = format === "SOAP" ? soapPrompt : ipassPrompt;
-    const userMessage = `Relato clínico transcrito por voz:\n\n${transcription}`;
+    const systemPrompt = buildPrompt(format, context);
+    const userMessage = `Relato clínico (${format} — ${context}):\n\n${transcription}`;
+    const cacheKey = `${format}::${context}`;
 
     const promptHash = await hashPrompt(`${systemPrompt}::${userMessage}`);
-    const cached = await lookupCache(ctx.serviceClient, promptHash, FEATURE, MODEL, format);
+    const cached = await lookupCache(ctx.serviceClient, promptHash, FEATURE, MODEL, cacheKey);
     if (cached.hit && cached.response) {
       const stream = new ReadableStream({
         start(controller) {
@@ -63,14 +192,12 @@ serve(async (req) => {
     const transform = new TransformStream({
       transform(chunk, controller) {
         const text = new TextDecoder().decode(chunk);
-        const lines = text.split("\n");
-        for (const line of lines) {
+        for (const line of text.split("\n")) {
           if (line.startsWith("data: ") && !line.includes("[DONE]")) {
             try {
-              const json = JSON.parse(line.slice(6));
-              const delta = json.choices?.[0]?.delta?.content;
+              const delta = JSON.parse(line.slice(6)).choices?.[0]?.delta?.content;
               if (delta) fullResponse += delta;
-            } catch { /* ignore */ }
+            } catch { /* ignore partial */ }
           }
         }
         controller.enqueue(chunk);
@@ -78,7 +205,7 @@ serve(async (req) => {
       async flush() {
         if (fullResponse.length > 0) {
           await bumpAiUsage(ctx.serviceClient, ctx.userId, FEATURE);
-          await storeCache(ctx.serviceClient, promptHash, FEATURE, MODEL, format, fullResponse);
+          await storeCache(ctx.serviceClient, promptHash, FEATURE, MODEL, cacheKey, fullResponse);
         }
       },
     });
