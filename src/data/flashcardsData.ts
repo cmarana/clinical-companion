@@ -11,6 +11,8 @@ import { flashcardsLote10 } from "./flashcardsLote10";
 import { flashcardsLote11 } from "./flashcardsLote11";
 import { flashcardsLote12 } from "./flashcardsLote12";
 import { flashcardsLote13 } from "./flashcardsLote13";
+import { flashcardsLote14 } from "./flashcardsLote14";
+import { flashcardsLote15 } from "./flashcardsLote15";
 
 export interface Flashcard {
   id: string;
@@ -298,4 +300,6 @@ export const flashcards: Flashcard[] = [
   ...flashcardsLote11,
   ...flashcardsLote12,
   ...flashcardsLote13,
+  ...flashcardsLote14,
+  ...flashcardsLote15,
 ];
