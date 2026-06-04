@@ -15,8 +15,8 @@
  *     teste validará automaticamente.
  */
 export const DATASET_COUNTS = {
-  /** Flashcards consolidados (Data + Extras + Lotes 4-15). */
-  flashcards: 1000,
+  /** Flashcards consolidados (Data + Extras + Lotes 4-17). */
+  flashcards: 1040,
   /** Quiz clínico (quizQuestions + quizQuestionsExtra). */
   quizQuestions: 1027,
   /** Questões de residência por banca. */
