@@ -534,6 +534,74 @@ export type Database = {
           },
         ]
       }
+      clinical_outcomes: {
+        Row: {
+          acertou_hipotese: boolean | null
+          aprendizado: string | null
+          atendimento_at: string
+          cid: string | null
+          complexidade: string | null
+          created_at: string
+          desfecho: string
+          diagnostico_final: string
+          hipotese_inicial: string | null
+          id: string
+          local: string
+          patient_id: string | null
+          procedimentos: string[] | null
+          specialty: string
+          tags: string[] | null
+          tempo_atendimento_min: number | null
+          user_id: string
+        }
+        Insert: {
+          acertou_hipotese?: boolean | null
+          aprendizado?: string | null
+          atendimento_at?: string
+          cid?: string | null
+          complexidade?: string | null
+          created_at?: string
+          desfecho: string
+          diagnostico_final?: string
+          hipotese_inicial?: string | null
+          id?: string
+          local?: string
+          patient_id?: string | null
+          procedimentos?: string[] | null
+          specialty?: string
+          tags?: string[] | null
+          tempo_atendimento_min?: number | null
+          user_id: string
+        }
+        Update: {
+          acertou_hipotese?: boolean | null
+          aprendizado?: string | null
+          atendimento_at?: string
+          cid?: string | null
+          complexidade?: string | null
+          created_at?: string
+          desfecho?: string
+          diagnostico_final?: string
+          hipotese_inicial?: string | null
+          id?: string
+          local?: string
+          patient_id?: string | null
+          procedimentos?: string[] | null
+          specialty?: string
+          tags?: string[] | null
+          tempo_atendimento_min?: number | null
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "clinical_outcomes_patient_id_fkey"
+            columns: ["patient_id"]
+            isOneToOne: false
+            referencedRelation: "rounds_patients"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       email_send_log: {
         Row: {
           created_at: string
@@ -1557,38 +1625,65 @@ export type Database = {
       }
       rounds_patients: {
         Row: {
+          acertou_hipotese: boolean | null
           admission_date: string | null
+          aprendizado: string | null
           bed_number: string
           created_at: string
+          desfecho: string | null
+          desfecho_at: string | null
+          desfecho_notas: string | null
           diagnosis: string
+          diagnostico_final: string | null
+          hipotese_inicial: string | null
           id: string
           notes: string
           patient_name: string
+          procedimentos: string[] | null
           status: string
+          tempo_atendimento_min: number | null
           updated_at: string
           user_id: string
         }
         Insert: {
+          acertou_hipotese?: boolean | null
           admission_date?: string | null
+          aprendizado?: string | null
           bed_number?: string
           created_at?: string
+          desfecho?: string | null
+          desfecho_at?: string | null
+          desfecho_notas?: string | null
           diagnosis?: string
+          diagnostico_final?: string | null
+          hipotese_inicial?: string | null
           id?: string
           notes?: string
           patient_name?: string
+          procedimentos?: string[] | null
           status?: string
+          tempo_atendimento_min?: number | null
           updated_at?: string
           user_id: string
         }
         Update: {
+          acertou_hipotese?: boolean | null
           admission_date?: string | null
+          aprendizado?: string | null
           bed_number?: string
           created_at?: string
+          desfecho?: string | null
+          desfecho_at?: string | null
+          desfecho_notas?: string | null
           diagnosis?: string
+          diagnostico_final?: string | null
+          hipotese_inicial?: string | null
           id?: string
           notes?: string
           patient_name?: string
+          procedimentos?: string[] | null
           status?: string
+          tempo_atendimento_min?: number | null
           updated_at?: string
           user_id?: string
         }
@@ -2005,7 +2100,23 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      outcome_stats: {
+        Row: {
+          diagnosticos_distintos: number | null
+          taxa_acerto_hipotese: number | null
+          tempo_medio_min: number | null
+          total_alta: number | null
+          total_casos: number | null
+          total_internacao: number | null
+          total_obito: number | null
+          total_retorno: number | null
+          total_transferencia: number | null
+          total_uti: number | null
+          ultimo_atendimento: string | null
+          user_id: string | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       claim_active_device: {
