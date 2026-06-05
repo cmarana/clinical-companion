@@ -357,7 +357,6 @@ const checklistsData: ChecklistData[] = [
     ],
   },
 ];
-];
 
 export default function Checklists() {
   const { subscription } = useAuth();
