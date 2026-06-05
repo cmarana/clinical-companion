@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import {
   Bot, AlertTriangle, Zap, Pill, ClipboardList, BookOpen,
   Calculator, FlaskConical, Baby, Heart, Stethoscope, HelpCircle,
-  Search, Star, User, StickyNote, Home, Gift, Timer, Hash, Calendar, 
+  Search, Star, User, StickyNote, Home, Gift, Timer, Hash, Calendar,
   TestTubes, Droplets, Brain, GraduationCap, BarChart3, FileEdit,
-  Syringe, ScanLine, WifiOff, ChevronRight, Shield, Database, Radio
+  Syringe, ScanLine, WifiOff, ChevronRight, Shield, Database, Radio,
+  ClipboardCheck, Activity
 } from "lucide-react";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupLabel,
