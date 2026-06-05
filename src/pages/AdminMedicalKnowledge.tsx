@@ -9,7 +9,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { toast } from "sonner";
-import { buildAllChunks } from "@/lib/knowledgeIngest";
+import { buildAllChunks, getChunkSummary } from "@/lib/knowledgeIngest";
 import { askMedicalRag, getRagSessionCacheStats, clearRagSessionCache, type RagAnswer } from "@/lib/medicalRag";
 import {
   Loader2, Database, Sparkles, Search, Trash2, CheckCircle2,
@@ -69,8 +69,11 @@ interface Stats {
 }
 
 const SOURCE_LABELS: Record<string, string> = {
-  full_protocol: "Protocolo",
+  full_protocol: "Protocolo Completo",
   medication: "Medicamento",
+  symptom_guide: "Diagnóstico por Sintoma",
+  flashcard: "Flashcard SM-2",
+  residency_question: "Quiz Residência",
   emergency: "Emergência",
   prescription: "Prescrição",
   antimicrobial: "Antimicrobiano",
