@@ -32,6 +32,8 @@ const clinicalItems = [
   { title: "Protocolos Clínicos", url: "/full-protocols", icon: BookOpen },
   { title: "Bulário", url: "/bulario", icon: Pill },
   { title: "Prescrições", url: "/prescriptions", icon: ClipboardList },
+  { title: "Checklists", url: "/checklists", icon: ClipboardCheck },
+  { title: "Vigilância Epidemiológica", url: "/epidemiology", icon: Activity },
   { title: "Calculadoras", url: "/calculators", icon: Calculator },
   { title: "Interações", url: "/drug-interactions", icon: FlaskConical },
   { title: "Diluições IV", url: "/iv-dilutions", icon: Droplets },
