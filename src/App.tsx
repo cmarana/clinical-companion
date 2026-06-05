@@ -1,4 +1,5 @@
 import EpidemiologicalMonitoring from "@/pages/EpidemiologicalMonitoring";
+import PatientLoop from "@/pages/PatientLoop";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -272,6 +273,7 @@ const AppRoutes = () => (
         <Route path="/discharge-summary" element={<DischargeSummary />} />
         <Route path="/conduct-comparator" element={<ConductComparator />} />
           <Route path="/epidemiology" element={<EpidemiologicalMonitoring />} />
+          <Route path="/patient-loop" element={<PatientLoop />} />
         <Route path="/samu-protocols" element={<Navigate to="/emergency" replace />} />
         <Route path="/samu-protocols/gaps" element={<Navigate to="/emergency" replace />} />
         <Route path="/samu-protocols/:code" element={<SamuCodeRedirect />} />
