@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {
   ArrowLeft, Users, MessageSquare, BarChart3, Shield, Loader2,
   Bug, Lightbulb, MessageSquarePlus, CheckCircle, Clock, Eye,
-  Send, Search, Mail, ChevronDown, ChevronUp, RefreshCw
+  Send, Search, Mail, ChevronDown, ChevronUp, RefreshCw, Database
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
