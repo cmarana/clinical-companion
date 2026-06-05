@@ -5,7 +5,7 @@
 import { fullProtocols } from "@/data/fullProtocols";
 import { medications } from "@/data/medications";
 import { symptomGuides } from "@/data/symptomGuides";
-import { flashcardsData } from "@/data/flashcardsData";
+import { flashcards as flashcardsData } from "@/data/flashcardsData";
 import { residencyQuestions } from "@/data/residencyQuestions";
 
 export interface KnowledgeChunk {
@@ -89,8 +89,8 @@ export function buildMedicationChunks(): KnowledgeChunk[] {
       m.dilution && `Diluição: ${m.dilution}`,
       m.administration && `Administração: ${m.administration}`,
       m.precautions && `Precauções: ${m.precautions}`,
-      m.contraindications && `Contraindicações: ${m.contraindications}`,
-      m.interactions && `Interações: ${m.interactions}`,
+      (m as any).contraindications && `Contraindicações: ${(m as any).contraindications}`,
+      (m as any).interactions && `Interações: ${(m as any).interactions}`,
     ].filter(Boolean).join("\n");
     out.push({
       source_type: "medication",
