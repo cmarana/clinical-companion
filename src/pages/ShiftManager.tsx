@@ -1,4 +1,5 @@
 import { useState, useCallback, useMemo } from "react";
+import { useNavigate } from "react-router-dom";
 import TopBar from "@/components/TopBar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -9,7 +10,7 @@ import { toast } from "sonner";
 import { safeLocalStorage } from "@/lib/safeStorage";
 import {
   Calendar, Plus, Clock, DollarSign, TrendingUp,
-  ChevronDown, ChevronUp, Building2,
+  ChevronDown, ChevronUp, Building2, Heart, ArrowRight,
 } from "lucide-react";
 
 // ─── Tipos ───────────────────────────────────────────────────────────────────
@@ -332,6 +333,7 @@ function ShiftCard({ shift, onDelete, onTogglePaid, onToggleStatus }: {
 // ─── Página ──────────────────────────────────────────────────────────────────
 
 export default function ShiftManager() {
+  const navigate = useNavigate();
   const [shifts, setShifts] = useState<Shift[]>(loadShifts);
   const [showForm, setShowForm] = useState(false);
   const [selectedMonth, setSelectedMonth] = useState(currentMonth);
@@ -423,6 +425,23 @@ export default function ShiftManager() {
         {showForm && (
           <ShiftForm onSave={addShift} onCancel={() => setShowForm(false)} />
         )}
+
+        {/* Patient Loop banner */}
+        <button
+          onClick={() => navigate("/patient-loop")}
+          className="w-full flex items-center justify-between gap-3 rounded-xl border border-primary/30 bg-primary/5 px-4 py-3 hover:bg-primary/10 transition-colors text-left"
+        >
+          <div className="flex items-center gap-3">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary/15">
+              <Heart size={16} className="text-primary" />
+            </div>
+            <div>
+              <p className="text-sm font-semibold text-primary">Patient Loop</p>
+              <p className="text-[11px] text-muted-foreground">Registre desfechos e acompanhe sua evolução clínica</p>
+            </div>
+          </div>
+          <ArrowRight size={16} className="text-primary shrink-0" />
+        </button>
 
         <Tabs defaultValue="agenda">
           <TabsList className="grid w-full grid-cols-3 h-9">
