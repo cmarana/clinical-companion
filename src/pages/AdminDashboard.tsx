@@ -344,6 +344,14 @@ export default function AdminDashboard() {
           <Button
             variant="default"
             className="w-full h-auto py-3 flex-col gap-1 text-xs bg-primary hover:bg-primary/90"
+            onClick={() => navigate("/admin/medical-knowledge")}
+          >
+            <Database size={16} />
+            Base de Conhecimento (RAG: ingestão + busca semântica)
+          </Button>
+          <Button
+            variant="default"
+            className="w-full h-auto py-3 flex-col gap-1 text-xs bg-primary hover:bg-primary/90"
             onClick={() => navigate("/admin/ai-costs")}
           >
             <BarChart3 size={16} />
