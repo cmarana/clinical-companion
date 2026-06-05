@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import {
   Bot, AlertTriangle, Zap, Pill, ClipboardList, BookOpen,
   Calculator, FlaskConical, Baby, Heart, Stethoscope, HelpCircle,
-  Search, Star, User, StickyNote, Home, Gift, Timer, Hash, Calendar, 
+  Search, Star, User, StickyNote, Home, Gift, Timer, Hash, Calendar,
   TestTubes, Droplets, Brain, GraduationCap, BarChart3, FileEdit,
-  Syringe, ScanLine, WifiOff, ChevronRight, Shield, Database, Radio
+  Syringe, ScanLine, WifiOff, ChevronRight, Shield, Database, Radio,
+  ClipboardCheck, Activity
 } from "lucide-react";
 import {
   Sidebar, SidebarContent, SidebarGroup, SidebarGroupLabel,
@@ -31,6 +32,8 @@ const clinicalItems = [
   { title: "Protocolos Clínicos", url: "/full-protocols", icon: BookOpen },
   { title: "Bulário", url: "/bulario", icon: Pill },
   { title: "Prescrições", url: "/prescriptions", icon: ClipboardList },
+  { title: "Checklists", url: "/checklists", icon: ClipboardCheck },
+  { title: "Vigilância Epidemiológica", url: "/epidemiology", icon: Activity },
   { title: "Calculadoras", url: "/calculators", icon: Calculator },
   { title: "Interações", url: "/drug-interactions", icon: FlaskConical },
   { title: "Diluições IV", url: "/iv-dilutions", icon: Droplets },
