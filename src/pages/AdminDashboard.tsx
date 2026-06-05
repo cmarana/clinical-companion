@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import {
   ArrowLeft, Users, MessageSquare, BarChart3, Shield, Loader2,
   Bug, Lightbulb, MessageSquarePlus, CheckCircle, Clock, Eye,
-  Send, Search, Mail, ChevronDown, ChevronUp, RefreshCw
+  Send, Search, Mail, ChevronDown, ChevronUp, RefreshCw, Database
 } from "lucide-react";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/contexts/AuthContext";
@@ -340,6 +340,14 @@ export default function AdminDashboard() {
           >
             <Shield size={16} />
             Governança Clínica (KPIs, Checklists, EPM, Curadoria, TTP)
+          </Button>
+          <Button
+            variant="default"
+            className="w-full h-auto py-3 flex-col gap-1 text-xs bg-primary hover:bg-primary/90"
+            onClick={() => navigate("/admin/medical-knowledge")}
+          >
+            <Database size={16} />
+            Base de Conhecimento (RAG: ingestão + busca semântica)
           </Button>
           <Button
             variant="default"
