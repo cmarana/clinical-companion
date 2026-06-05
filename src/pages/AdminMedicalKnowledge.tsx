@@ -681,32 +681,35 @@ function IngestTab() {
   const [testAnswer, setTestAnswer] = useState<RagAnswer | null>(null);
   const [testing, setTesting] = useState(false);
 
-  const handleIngest = async () => {
+  const handleIngest = async (startFrom = 0) => {
     setIngesting(true);
-    setProgress(0);
+    setProgress(startFrom);
     setLastResult(null);
     try {
       const chunks = buildAllChunks();
       setProgressTotal(chunks.length);
-      const BATCH = 25;
+      const BATCH = 5; // menor lote = menos chance de timeout
       let inserted = 0, failed = 0;
-      for (let i = 0; i < chunks.length; i += BATCH) {
+      for (let i = startFrom; i < chunks.length; i += BATCH) {
         const batch = chunks.slice(i, i + BATCH);
         const { data, error } = await supabase.functions.invoke("ingest-medical-knowledge", {
           body: { items: batch },
         });
         if (error) {
           failed += batch.length;
+          console.warn(`Lote ${i}-${i+BATCH} falhou:`, error.message);
         } else {
           inserted += (data as any)?.inserted || 0;
           failed += (data as any)?.failed || 0;
         }
         setProgress(i + batch.length);
+        // delay entre lotes para não saturar a Gemini Embeddings API
+        await new Promise(r => setTimeout(r, 200));
       }
       setLastResult({ inserted, failed });
       toast.success(`Ingestão concluída: ${inserted} indexados, ${failed} falharam.`);
     } catch (e) {
-      toast.error(`Erro: ${String(e)}`);
+      toast.error(`Erro na ingestão: ${String(e)}`);
     } finally {
       setIngesting(false);
     }
@@ -734,14 +737,14 @@ function IngestTab() {
             <Database size={14} /> Reindexar base do PULSO
           </CardTitle>
           <CardDescription className="text-xs">
-            Lê os datasets estáticos do app, gera embeddings com Gemini text-embedding-004 (gratuito) e faz upsert em lotes de 25.
+            Lê todos os datasets do PULSO (protocolos, medicamentos, sintomas, flashcards, quiz), gera embeddings com Gemini text-embedding-004 e faz upsert em lotes de 5. Estimativa: ~30 min para o corpus completo. Pode fechar e reabrir — use "Continuar" para retomar.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-3">
           {ingesting && (
-            <div className="space-y-1">
+            <div className="space-y-2">
               <div className="flex justify-between text-xs text-muted-foreground">
-                <span>{progress} / {progressTotal} chunks</span>
+                <span>{progress.toLocaleString()} / {progressTotal.toLocaleString()} chunks</span>
                 <span>{progressTotal > 0 ? Math.round((progress / progressTotal) * 100) : 0}%</span>
               </div>
               <div className="w-full bg-muted rounded-full h-2">
@@ -750,27 +753,44 @@ function IngestTab() {
                   style={{ width: `${progressTotal > 0 ? (progress / progressTotal) * 100 : 0}%` }}
                 />
               </div>
+              <p className="text-xs text-muted-foreground">
+                Tempo estimado restante: ~{Math.ceil((progressTotal - progress) * 0.25 / 60)} min
+              </p>
             </div>
           )}
           {lastResult && !ingesting && (
-            <div className="flex items-center gap-2 text-xs">
-              <CheckCircle2 size={14} className="text-primary dark:text-primary" />
-              <span>{lastResult.inserted} chunks indexados</span>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2 text-xs">
+                <CheckCircle2 size={14} className="text-primary dark:text-primary" />
+                <span>{lastResult.inserted} chunks indexados</span>
+                {lastResult.failed > 0 && (
+                  <>
+                    <AlertTriangle size={14} className="text-destructive ml-2" />
+                    <span className="text-destructive dark:text-destructive">{lastResult.failed} falharam</span>
+                  </>
+                )}
+              </div>
               {lastResult.failed > 0 && (
-                <>
-                  <AlertTriangle size={14} className="text-destructive ml-2" />
-                  <span className="text-destructive dark:text-destructive">{lastResult.failed} falharam</span>
-                </>
+                <p className="text-xs text-muted-foreground">
+                  Houve falhas. Clique em "Continuar" para retomar do chunk {progress}.
+                </p>
               )}
             </div>
           )}
-          <Button onClick={handleIngest} disabled={ingesting} size="sm">
-            {ingesting ? (
-              <><Loader2 size={14} className="animate-spin mr-1.5" /> Indexando...</>
-            ) : (
-              <><Database size={14} className="mr-1.5" /> Iniciar ingestão</>
+          <div className="flex gap-2 flex-wrap">
+            <Button onClick={() => handleIngest(0)} disabled={ingesting} size="sm">
+              {ingesting ? (
+                <><Loader2 size={14} className="animate-spin mr-1.5" /> Indexando...</>
+              ) : (
+                <><Database size={14} className="mr-1.5" /> Iniciar ingestão completa</>
+              )}
+            </Button>
+            {progress > 0 && !ingesting && (
+              <Button onClick={() => handleIngest(progress)} disabled={ingesting} size="sm" variant="outline">
+                <RefreshCw size={14} className="mr-1.5" /> Continuar do chunk {progress.toLocaleString()}
+              </Button>
             )}
-          </Button>
+          </div>
         </CardContent>
       </Card>
 
