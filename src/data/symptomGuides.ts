@@ -318,8 +318,6 @@ export const symptomGuides: SymptomGuide[] = [
     ],
     guideline: "SBN / ILAE",
   },
-];
-
   // ── EXPANSÃO: sintomas 9-40 ──────────────────────────────────
   {
     id: "edema-mmii",

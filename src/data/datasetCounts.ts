@@ -20,7 +20,7 @@ export const DATASET_COUNTS = {
   /** Quiz clínico (quizQuestions + quizQuestionsExtra). */
   quizQuestions: 1027,
   /** Questões de residência por banca. */
-  residencyQuestions: 501,
+  residencyQuestions: 500,
 } as const;
 
 /** Quiz total (clínico + residência) — usado em Home e Landing. */
