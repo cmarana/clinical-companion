@@ -49,7 +49,6 @@ const modes = [
   { label: "Especialidades", sub: "Protocolos por área clínica", icon: Stethoscope, path: "/specialties", tone: "deep" },
   { label: "Estudo", sub: "Flashcards, questões e residência", icon: GraduationCap, path: "/study-dashboard", tone: "deep" },
   { label: "Prescrições", sub: "Modelos, evoluções e alta", icon: FileText, path: "/prescriptions", tone: "deep" },
-  { label: "Patient Loop", sub: "Desfechos e aprendizado clínico", icon: Heart, path: "/patient-loop", tone: "deep" },
 ];
 
 // Paleta única: azul Plantão dominante. Vermelho APENAS em Emergência (semântico).
