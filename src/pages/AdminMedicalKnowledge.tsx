@@ -1023,20 +1023,62 @@ function IngestTab() {
               )}
             </div>
           )}
+          {hasPersistedState && !lastResult && (
+            <div className="space-y-3 rounded-lg border border-dashed bg-card p-3">
+              <div className="flex items-center gap-2 text-xs">
+                <RefreshCw size={14} className="text-primary" />
+                <span className="font-medium">Sessão anterior restaurada</span>
+                <span className="ml-auto text-[10px] text-muted-foreground tabular-nums">
+                  {progress.toLocaleString()} / {progressTotal.toLocaleString()} ({pct.toFixed(1)}%)
+                </span>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                <div className="rounded-md bg-primary/10 p-2 text-center">
+                  <div className="text-[10px] text-muted-foreground">Novos</div>
+                  <div className="text-base font-heading font-semibold text-primary tabular-nums">
+                    {liveStats.inserted.toLocaleString()}
+                  </div>
+                </div>
+                <div className="rounded-md bg-muted p-2 text-center">
+                  <div className="text-[10px] text-muted-foreground">Já existentes</div>
+                  <div className="text-base font-heading font-semibold tabular-nums">
+                    {liveStats.skipped.toLocaleString()}
+                  </div>
+                </div>
+                <div className="rounded-md bg-destructive/10 p-2 text-center">
+                  <div className="text-[10px] text-muted-foreground">Falhas</div>
+                  <div className="text-base font-heading font-semibold text-destructive tabular-nums">
+                    {liveStats.failed.toLocaleString()}
+                  </div>
+                </div>
+              </div>
+              {currentBatch && (
+                <p className="text-[11px] text-muted-foreground">
+                  Última posição: chunks {currentBatch.start.toLocaleString()}–{currentBatch.end.toLocaleString()} ({currentBatch.sourceType}) — {currentBatch.title}
+                </p>
+              )}
+            </div>
+          )}
           <div className="flex gap-2 flex-wrap">
             <Button onClick={() => handleIngest(0)} disabled={ingesting} size="sm">
               {ingesting ? (
                 <><Loader2 size={14} className="animate-spin mr-1.5" /> Indexando...</>
               ) : (
-                <><Database size={14} className="mr-1.5" /> Iniciar ingestão completa</>
+                <><Database size={14} className="mr-1.5" /> {hasPersistedState ? "Reiniciar do zero" : "Iniciar ingestão completa"}</>
               )}
             </Button>
-            {progress > 0 && !ingesting && (
-              <Button onClick={() => handleIngest(progress)} disabled={ingesting} size="sm" variant="outline">
-                <RefreshCw size={14} className="mr-1.5" /> Continuar do chunk {progress.toLocaleString()}
-              </Button>
+            {hasPersistedState && (
+              <>
+                <Button onClick={() => handleIngest(progress)} disabled={ingesting} size="sm" variant="outline">
+                  <RefreshCw size={14} className="mr-1.5" /> Continuar do chunk {progress.toLocaleString()}
+                </Button>
+                <Button onClick={limparEstado} disabled={ingesting} size="sm" variant="ghost">
+                  Limpar estado
+                </Button>
+              </>
             )}
           </div>
+
         </CardContent>
       </Card>
 
