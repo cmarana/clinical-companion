@@ -673,10 +673,14 @@ function CuratedTab() {
 }
 
 function IngestTab() {
+  const PROGRESS_KEY = "pulso.ingest.progress";
   const [ingesting, setIngesting] = useState(false);
-  const [progress, setProgress] = useState(0);
+  const [progress, setProgress] = useState(() => {
+    const v = Number(localStorage.getItem(PROGRESS_KEY) || 0);
+    return Number.isFinite(v) && v > 0 ? v : 0;
+  });
   const [progressTotal, setProgressTotal] = useState(0);
-  const [lastResult, setLastResult] = useState<{ inserted: number; failed: number } | null>(null);
+  const [lastResult, setLastResult] = useState<{ inserted: number; failed: number; skipped: number } | null>(null);
   const [question, setQuestion] = useState("");
   const [testAnswer, setTestAnswer] = useState<RagAnswer | null>(null);
   const [testing, setTesting] = useState(false);
@@ -689,7 +693,7 @@ function IngestTab() {
       const chunks = buildAllChunks();
       setProgressTotal(chunks.length);
       const BATCH = 5; // menor lote = menos chance de timeout
-      let inserted = 0, failed = 0;
+      let inserted = 0, failed = 0, skipped = 0;
       for (let i = startFrom; i < chunks.length; i += BATCH) {
         const batch = chunks.slice(i, i + BATCH);
         const { data, error } = await supabase.functions.invoke("ingest-medical-knowledge", {
@@ -701,19 +705,25 @@ function IngestTab() {
         } else {
           inserted += (data as any)?.inserted || 0;
           failed += (data as any)?.failed || 0;
+          skipped += (data as any)?.skipped || 0;
         }
-        setProgress(i + batch.length);
+        const newProgress = i + batch.length;
+        setProgress(newProgress);
+        localStorage.setItem(PROGRESS_KEY, String(newProgress));
         // delay entre lotes para não saturar a Gemini Embeddings API
         await new Promise(r => setTimeout(r, 200));
       }
-      setLastResult({ inserted, failed });
-      toast.success(`Ingestão concluída: ${inserted} indexados, ${failed} falharam.`);
+      setLastResult({ inserted, failed, skipped });
+      localStorage.removeItem(PROGRESS_KEY);
+      setProgress(0);
+      toast.success(`Ingestão concluída: ${inserted} novos, ${skipped} já existentes, ${failed} falharam.`);
     } catch (e) {
       toast.error(`Erro na ingestão: ${String(e)}`);
     } finally {
       setIngesting(false);
     }
   };
+
 
   const handleTest = async () => {
     if (!question.trim()) return;

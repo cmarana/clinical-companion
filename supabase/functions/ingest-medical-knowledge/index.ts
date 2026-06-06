@@ -77,10 +77,35 @@ Deno.serve(async (req) => {
       });
     }
 
-    let inserted = 0, failed = 0;
+    let inserted = 0, failed = 0, skipped = 0;
     const errors: string[] = [];
 
+    // Otimização: pular chunks já indexados para não re-embeddar em retomadas
+    // (Gemini Embeddings tem quota — re-embeddar do zero esgota a cota antes de avançar).
+    const existingKeys = new Set<string>();
+    try {
+      const orFilter = items
+        .map((it) =>
+          `and(source_type.eq.${it.source_type},source_id.eq.${it.source_id},chunk_index.eq.${it.chunk_index ?? 0})`
+        )
+        .join(",");
+      const { data: existing } = await service
+        .from("medical_knowledge")
+        .select("source_type,source_id,chunk_index")
+        .or(orFilter);
+      for (const r of existing || []) {
+        existingKeys.add(`${r.source_type}|${r.source_id}|${r.chunk_index}`);
+      }
+    } catch (_) {
+      // Em caso de falha na checagem, segue fluxo normal (upsert idempotente).
+    }
+
     for (const item of items) {
+      const key = `${item.source_type}|${item.source_id}|${item.chunk_index ?? 0}`;
+      if (existingKeys.has(key)) {
+        skipped++;
+        continue;
+      }
       try {
         const text = `${item.title}\n${item.subtitle || ""}\n${item.content}`.slice(0, 8000);
         const embedding = await embedText(text);
@@ -113,9 +138,11 @@ Deno.serve(async (req) => {
       await new Promise((r) => setTimeout(r, 60));
     }
 
-    return new Response(JSON.stringify({ inserted, failed, errors: errors.slice(0, 10) }), {
+
+    return new Response(JSON.stringify({ inserted, failed, skipped, errors: errors.slice(0, 10) }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
+
   } catch (e) {
     console.error("ingest-medical-knowledge error:", e);
     return new Response(JSON.stringify({ error: "Erro na ingestão" }), {
