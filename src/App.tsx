@@ -1,5 +1,6 @@
 import EpidemiologicalMonitoring from "@/pages/EpidemiologicalMonitoring";
 import PatientLoop from "@/pages/PatientLoop";
+import MunicipalEpidemiology from "@/pages/MunicipalEpidemiology";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
@@ -16,7 +17,7 @@ import { PWAInstallPrompt, OfflineIndicator } from "@/components/PWAInstallPromp
 import UpdatePromptDialog from "@/components/UpdatePromptDialog";
 import StatusBarScrim from "@/components/StatusBarScrim";
 
-import { Component, lazy, Suspense, useEffect, type ErrorInfo, type ReactNode } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { ProtocolListSkeleton, ProtocolDetailSkeleton, MedicationListSkeleton } from "@/components/PageSkeleton";
 import { APP_LAUNCH_STATUS } from "@/config/launchStatus";
 import { useAppAccess } from "@/hooks/useAppAccess";
@@ -124,53 +125,6 @@ const queryClient = new QueryClient({
     },
   },
 });
-
-const isModuleScriptFailure = (error: unknown) => {
-  const message = error instanceof Error ? error.message : String(error);
-  return /Importing a module script failed|Failed to fetch dynamically imported module|error loading dynamically imported module/i.test(message);
-};
-
-const cleanupRuntimeCaches = async () => {
-  if ("serviceWorker" in navigator) {
-    const registrations = await navigator.serviceWorker.getRegistrations();
-    await Promise.all(registrations.map((registration) => registration.unregister()));
-  }
-  if ("caches" in window) {
-    const keys = await caches.keys();
-    await Promise.all(keys.map((key) => caches.delete(key)));
-  }
-};
-
-class ChunkLoadBoundary extends Component<{ children: ReactNode }, { failed: boolean }> {
-  state = { failed: false };
-
-  componentDidCatch(error: unknown, info: ErrorInfo) {
-    console.error("Erro de carregamento de rota:", error, info);
-
-    if (!isModuleScriptFailure(error)) {
-      this.setState({ failed: true });
-      return;
-    }
-
-    const marker = "pulso-route-module-reload-attempted";
-    if (sessionStorage.getItem(marker) === "1") {
-      this.setState({ failed: true });
-      return;
-    }
-
-    sessionStorage.setItem(marker, "1");
-    void cleanupRuntimeCaches().finally(() => {
-      const url = new URL(window.location.href);
-      url.searchParams.set("v", Date.now().toString());
-      window.location.replace(url.toString());
-    });
-  }
-
-  render() {
-    if (this.state.failed) return <LazyFallback />;
-    return this.props.children;
-  }
-}
 
 function ProtectedRoute({ children }: { children: React.ReactNode }) {
   const { user, loading, profileComplete } = useAuth();
@@ -321,6 +275,7 @@ const AppRoutes = () => (
         <Route path="/conduct-comparator" element={<ConductComparator />} />
           <Route path="/epidemiology" element={<EpidemiologicalMonitoring />} />
           <Route path="/patient-loop" element={<PatientLoop />} />
+          <Route path="/epidemiology/municipal" element={<MunicipalEpidemiology />} />
         <Route path="/samu-protocols" element={<Navigate to="/emergency" replace />} />
         <Route path="/samu-protocols/gaps" element={<Navigate to="/emergency" replace />} />
         <Route path="/samu-protocols/:code" element={<SamuCodeRedirect />} />
@@ -364,9 +319,7 @@ const App = () => (
                   <PWAInstallPrompt />
                   
                   <UpdatePromptDialog />
-                  <ChunkLoadBoundary>
-                    <AppRoutes />
-                  </ChunkLoadBoundary>
+                  <AppRoutes />
                 </TooltipProvider>
               </NotesProvider>
             </FavoritesProvider>
