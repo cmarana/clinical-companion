@@ -36,6 +36,7 @@ const clinicalItems = [
   { title: "Diluições IV", url: "/iv-dilutions", icon: Droplets },
   { title: "Timer PCR", url: "/cpr-timer", icon: Timer },
   { title: "Gestão de Plantão", url: "/shift-manager", icon: Calendar },
+  { title: "Epidemiologia", url: "/epidemiology", icon: Radio },
 ];
 
 const specialtyItems = [
