@@ -522,7 +522,7 @@ export default function EpidemiologicalMonitoring() {
       {/* Botão mapa compat */}
       <button
         onClick={() => navigate("/epidemiology/municipal")}
-        className="hidden"
+        
         className="w-full flex items-center justify-between gap-2 bg-primary/8 border border-primary/25 rounded-xl px-3 py-2.5 mb-3 hover:bg-primary/12 transition-colors"
       >
         <div className="flex items-center gap-2">
