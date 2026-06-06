@@ -1,4 +1,4 @@
-import { useEffect, useState, useCallback } from "react";
+import { useEffect, useState, useCallback, useMemo, useRef } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { useIsAdmin } from "@/hooks/useIsAdmin";
 import { Navigate } from "react-router-dom";
@@ -672,49 +672,129 @@ function CuratedTab() {
   );
 }
 
+type IngestSnapshot = {
+  progress: number;
+  progressTotal: number;
+  liveStats: { inserted: number; skipped: number; failed: number };
+  currentBatch: { start: number; end: number; sourceType: string; title: string } | null;
+  recentErrors: string[];
+  startedAt: number | null;
+  elapsedBeforeReload: number; // segundos acumulados antes do reload (para ETA correto)
+  updatedAt: number;
+};
+
+const INGEST_STATE_KEY = "pulso.ingest.state.v1";
+
+function loadIngestSnapshot(): IngestSnapshot | null {
+  try {
+    const raw = localStorage.getItem(INGEST_STATE_KEY);
+    if (!raw) return null;
+    const s = JSON.parse(raw) as IngestSnapshot;
+    if (typeof s.progress !== "number") return null;
+    return s;
+  } catch {
+    return null;
+  }
+}
+
+function saveIngestSnapshot(s: IngestSnapshot) {
+  try {
+    localStorage.setItem(INGEST_STATE_KEY, JSON.stringify({ ...s, updatedAt: Date.now() }));
+  } catch {
+    /* quota — ignora */
+  }
+}
+
+function clearIngestSnapshot() {
+  try {
+    localStorage.removeItem(INGEST_STATE_KEY);
+    localStorage.removeItem("pulso.ingest.progress"); // chave legada
+  } catch {
+    /* noop */
+  }
+}
+
 function IngestTab() {
-  const PROGRESS_KEY = "pulso.ingest.progress";
+  // Recupera snapshot do último estado (sobrevive a reload/fechar navegador)
+  const restored = useMemo(() => loadIngestSnapshot(), []);
   const [ingesting, setIngesting] = useState(false);
-  const [progress, setProgress] = useState(() => {
-    const v = Number(localStorage.getItem(PROGRESS_KEY) || 0);
-    return Number.isFinite(v) && v > 0 ? v : 0;
-  });
-  const [progressTotal, setProgressTotal] = useState(0);
-  const [liveStats, setLiveStats] = useState({ inserted: 0, skipped: 0, failed: 0 });
-  const [currentBatch, setCurrentBatch] = useState<{ start: number; end: number; sourceType: string; title: string } | null>(null);
-  const [recentErrors, setRecentErrors] = useState<string[]>([]);
+  const [progress, setProgress] = useState(restored?.progress ?? 0);
+  const [progressTotal, setProgressTotal] = useState(restored?.progressTotal ?? 0);
+  const [liveStats, setLiveStats] = useState(
+    restored?.liveStats ?? { inserted: 0, skipped: 0, failed: 0 }
+  );
+  const [currentBatch, setCurrentBatch] = useState<{ start: number; end: number; sourceType: string; title: string } | null>(
+    restored?.currentBatch ?? null
+  );
+  const [recentErrors, setRecentErrors] = useState<string[]>(restored?.recentErrors ?? []);
   const [startedAt, setStartedAt] = useState<number | null>(null);
+  const elapsedBeforeRef = useRef<number>(restored?.elapsedBeforeReload ?? 0);
   const [lastResult, setLastResult] = useState<{ inserted: number; failed: number; skipped: number } | null>(null);
   const [question, setQuestion] = useState("");
   const [testAnswer, setTestAnswer] = useState<RagAnswer | null>(null);
   const [testing, setTesting] = useState(false);
 
+  // Helper que persiste snapshot completo
+  const persist = useCallback(
+    (patch: Partial<IngestSnapshot>) => {
+      const snapshot: IngestSnapshot = {
+        progress,
+        progressTotal,
+        liveStats,
+        currentBatch,
+        recentErrors,
+        startedAt,
+        elapsedBeforeReload: elapsedBeforeRef.current,
+        updatedAt: Date.now(),
+        ...patch,
+      };
+      saveIngestSnapshot(snapshot);
+    },
+    [progress, progressTotal, liveStats, currentBatch, recentErrors, startedAt]
+  );
+
   const handleIngest = async (startFrom = 0) => {
     setIngesting(true);
     setProgress(startFrom);
     setLastResult(null);
-    setLiveStats({ inserted: 0, skipped: 0, failed: 0 });
-    setRecentErrors([]);
-    setStartedAt(Date.now());
+    // Se for retomada, mantém os contadores; se for início do zero, reseta
+    const resuming = startFrom > 0 && restored && restored.progress === startFrom;
+    const baseStats = resuming ? liveStats : { inserted: 0, skipped: 0, failed: 0 };
+    const baseErrors = resuming ? recentErrors : [];
+    if (!resuming) {
+      setLiveStats(baseStats);
+      setRecentErrors(baseErrors);
+      elapsedBeforeRef.current = 0;
+    }
+    const sessionStart = Date.now();
+    setStartedAt(sessionStart);
     try {
       const chunks = buildAllChunks();
       setProgressTotal(chunks.length);
+      persist({ progress: startFrom, progressTotal: chunks.length, startedAt: sessionStart });
       const BATCH = 5;
-      let inserted = 0, failed = 0, skipped = 0;
+      let inserted = baseStats.inserted;
+      let failed = baseStats.failed;
+      let skipped = baseStats.skipped;
+      let errorsAcc = [...baseErrors];
+
       for (let i = startFrom; i < chunks.length; i += BATCH) {
         const batch = chunks.slice(i, i + BATCH);
-        setCurrentBatch({
+        const batchInfo = {
           start: i + 1,
           end: i + batch.length,
           sourceType: batch[0]?.source_type || "—",
           title: batch[0]?.title || "—",
-        });
+        };
+        setCurrentBatch(batchInfo);
+        persist({ currentBatch: batchInfo });
+
         const { data, error } = await supabase.functions.invoke("ingest-medical-knowledge", {
           body: { items: batch },
         });
         if (error) {
           failed += batch.length;
-          setRecentErrors((prev) => [`Lote ${i + 1}-${i + batch.length}: ${error.message}`, ...prev].slice(0, 5));
+          errorsAcc = [`Lote ${i + 1}-${i + batch.length}: ${error.message}`, ...errorsAcc].slice(0, 5);
           console.warn(`Lote ${i}-${i + BATCH} falhou:`, error.message);
         } else {
           inserted += (data as any)?.inserted || 0;
@@ -722,19 +802,37 @@ function IngestTab() {
           skipped += (data as any)?.skipped || 0;
           const errs = (data as any)?.errors as string[] | undefined;
           if (errs && errs.length > 0) {
-            setRecentErrors((prev) => [...errs, ...prev].slice(0, 5));
+            errorsAcc = [...errs, ...errorsAcc].slice(0, 5);
           }
         }
-        setLiveStats({ inserted, skipped, failed });
+        const newStats = { inserted, skipped, failed };
         const newProgress = i + batch.length;
+        const elapsedNow = elapsedBeforeRef.current + Math.round((Date.now() - sessionStart) / 1000);
+
+        setLiveStats(newStats);
+        setRecentErrors(errorsAcc);
         setProgress(newProgress);
-        localStorage.setItem(PROGRESS_KEY, String(newProgress));
+        saveIngestSnapshot({
+          progress: newProgress,
+          progressTotal: chunks.length,
+          liveStats: newStats,
+          currentBatch: batchInfo,
+          recentErrors: errorsAcc,
+          startedAt: sessionStart,
+          elapsedBeforeReload: elapsedNow,
+          updatedAt: Date.now(),
+        });
+
         await new Promise((r) => setTimeout(r, 200));
       }
       setLastResult({ inserted, failed, skipped });
       setCurrentBatch(null);
-      localStorage.removeItem(PROGRESS_KEY);
+      clearIngestSnapshot();
       setProgress(0);
+      setProgressTotal(0);
+      setLiveStats({ inserted: 0, skipped: 0, failed: 0 });
+      setRecentErrors([]);
+      elapsedBeforeRef.current = 0;
       toast.success(`Ingestão concluída: ${inserted} novos, ${skipped} já existentes, ${failed} falharam.`);
     } catch (e) {
       toast.error(`Erro na ingestão: ${String(e)}`);
@@ -742,6 +840,34 @@ function IngestTab() {
       setIngesting(false);
     }
   };
+
+  // Salva tempo decorrido ao desmontar/fechar para ETA continuar correto
+  useEffect(() => {
+    const handler = () => {
+      if (ingesting && startedAt) {
+        const elapsedNow = elapsedBeforeRef.current + Math.round((Date.now() - startedAt) / 1000);
+        persist({ elapsedBeforeReload: elapsedNow });
+      }
+    };
+    window.addEventListener("beforeunload", handler);
+    return () => {
+      handler();
+      window.removeEventListener("beforeunload", handler);
+    };
+  }, [ingesting, startedAt, persist]);
+
+  const limparEstado = () => {
+    clearIngestSnapshot();
+    setProgress(0);
+    setProgressTotal(0);
+    setLiveStats({ inserted: 0, skipped: 0, failed: 0 });
+    setCurrentBatch(null);
+    setRecentErrors([]);
+    elapsedBeforeRef.current = 0;
+    toast.success("Estado da ingestão limpo.");
+  };
+
+
 
 
   const handleTest = async () => {
@@ -759,11 +885,14 @@ function IngestTab() {
   };
 
   const pct = progressTotal > 0 ? (progress / progressTotal) * 100 : 0;
-  const elapsedSec = startedAt ? Math.round((Date.now() - startedAt) / 1000) : 0;
+  const sessionElapsed = startedAt ? Math.round((Date.now() - startedAt) / 1000) : 0;
+  const elapsedSec = elapsedBeforeRef.current + sessionElapsed;
   const processedSinceStart = liveStats.inserted + liveStats.skipped + liveStats.failed;
   const ratePerSec = elapsedSec > 0 && processedSinceStart > 0 ? processedSinceStart / elapsedSec : 0;
   const remaining = Math.max(0, progressTotal - progress);
   const etaMin = ratePerSec > 0 ? Math.ceil(remaining / ratePerSec / 60) : Math.ceil((remaining * 0.25) / 60);
+  const hasPersistedState = progress > 0 && !ingesting;
+
 
   return (
     <div className="space-y-6 mt-4">
@@ -894,20 +1023,62 @@ function IngestTab() {
               )}
             </div>
           )}
+          {hasPersistedState && !lastResult && (
+            <div className="space-y-3 rounded-lg border border-dashed bg-card p-3">
+              <div className="flex items-center gap-2 text-xs">
+                <RefreshCw size={14} className="text-primary" />
+                <span className="font-medium">Sessão anterior restaurada</span>
+                <span className="ml-auto text-[10px] text-muted-foreground tabular-nums">
+                  {progress.toLocaleString()} / {progressTotal.toLocaleString()} ({pct.toFixed(1)}%)
+                </span>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                <div className="rounded-md bg-primary/10 p-2 text-center">
+                  <div className="text-[10px] text-muted-foreground">Novos</div>
+                  <div className="text-base font-heading font-semibold text-primary tabular-nums">
+                    {liveStats.inserted.toLocaleString()}
+                  </div>
+                </div>
+                <div className="rounded-md bg-muted p-2 text-center">
+                  <div className="text-[10px] text-muted-foreground">Já existentes</div>
+                  <div className="text-base font-heading font-semibold tabular-nums">
+                    {liveStats.skipped.toLocaleString()}
+                  </div>
+                </div>
+                <div className="rounded-md bg-destructive/10 p-2 text-center">
+                  <div className="text-[10px] text-muted-foreground">Falhas</div>
+                  <div className="text-base font-heading font-semibold text-destructive tabular-nums">
+                    {liveStats.failed.toLocaleString()}
+                  </div>
+                </div>
+              </div>
+              {currentBatch && (
+                <p className="text-[11px] text-muted-foreground">
+                  Última posição: chunks {currentBatch.start.toLocaleString()}–{currentBatch.end.toLocaleString()} ({currentBatch.sourceType}) — {currentBatch.title}
+                </p>
+              )}
+            </div>
+          )}
           <div className="flex gap-2 flex-wrap">
             <Button onClick={() => handleIngest(0)} disabled={ingesting} size="sm">
               {ingesting ? (
                 <><Loader2 size={14} className="animate-spin mr-1.5" /> Indexando...</>
               ) : (
-                <><Database size={14} className="mr-1.5" /> Iniciar ingestão completa</>
+                <><Database size={14} className="mr-1.5" /> {hasPersistedState ? "Reiniciar do zero" : "Iniciar ingestão completa"}</>
               )}
             </Button>
-            {progress > 0 && !ingesting && (
-              <Button onClick={() => handleIngest(progress)} disabled={ingesting} size="sm" variant="outline">
-                <RefreshCw size={14} className="mr-1.5" /> Continuar do chunk {progress.toLocaleString()}
-              </Button>
+            {hasPersistedState && (
+              <>
+                <Button onClick={() => handleIngest(progress)} disabled={ingesting} size="sm" variant="outline">
+                  <RefreshCw size={14} className="mr-1.5" /> Continuar do chunk {progress.toLocaleString()}
+                </Button>
+                <Button onClick={limparEstado} disabled={ingesting} size="sm" variant="ghost">
+                  Limpar estado
+                </Button>
+              </>
             )}
           </div>
+
         </CardContent>
       </Card>
 
