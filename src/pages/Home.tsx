@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import {
-  Sun, Moon, Bell, Eclipse, Shield, Search, Mic, Activity,
+  Sun, Moon, Bell, Eclipse, Shield, Search, Mic, Activity, Heart,
   Zap, Bot, Stethoscope, Wrench, GraduationCap, FileText,
   ChevronRight, ScanLine, MessageSquareText, FlaskConical,
 } from "lucide-react";
@@ -49,6 +49,8 @@ const modes = [
   { label: "Especialidades", sub: "Protocolos por área clínica", icon: Stethoscope, path: "/specialties", tone: "deep" },
   { label: "Estudo", sub: "Flashcards, questões e residência", icon: GraduationCap, path: "/study-dashboard", tone: "deep" },
   { label: "Prescrições", sub: "Modelos, evoluções e alta", icon: FileText, path: "/prescriptions", tone: "deep" },
+  { label: "Patient Loop", sub: "Desfechos e aprendizado clínico", icon: Heart, path: "/patient-loop", tone: "deep" },
+  { label: "Epidemiologia", sub: "Vigilância em tempo real — SVS/SINAN", icon: Activity, path: "/epidemiology", tone: "deep" },
 ];
 
 // Paleta única: azul Plantão dominante. Vermelho APENAS em Emergência (semântico).
