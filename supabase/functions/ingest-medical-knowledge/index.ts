@@ -139,9 +139,10 @@ Deno.serve(async (req) => {
     }
 
 
-    return new Response(JSON.stringify({ inserted, failed, errors: errors.slice(0, 10) }), {
+    return new Response(JSON.stringify({ inserted, failed, skipped, errors: errors.slice(0, 10) }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
+
   } catch (e) {
     console.error("ingest-medical-knowledge error:", e);
     return new Response(JSON.stringify({ error: "Erro na ingestão" }), {
