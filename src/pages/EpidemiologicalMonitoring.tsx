@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Activity, AlertTriangle, TrendingUp, TrendingDown, Minus,
-  RefreshCw, MapPin, Info, ExternalLink, Loader2, BarChart3
+  RefreshCw, MapPin, Info, ExternalLink, Loader2, BarChart3, Pill
 } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, LineChart, Line } from "recharts";
 
@@ -506,9 +506,23 @@ export default function EpidemiologicalMonitoring() {
         </button>
       </div>
 
+      {/* REMUME */}
+      <button
+        onClick={() => navigate("/remume")}
+        className="w-full flex items-center gap-3 bg-muted/20 border border-border rounded-xl px-3 py-2.5 mb-2 hover:bg-muted/40 transition-colors text-left"
+      >
+        <Pill size={14} className="text-muted-foreground shrink-0" />
+        <div className="flex-1">
+          <p className="text-xs font-semibold">RENAME / REMUME</p>
+          <p className="text-[10px] text-muted-foreground">Disponibilidade de medicamentos no SUS</p>
+        </div>
+        <span className="text-[10px] text-muted-foreground">→</span>
+      </button>
+
       {/* Botão mapa compat */}
       <button
         onClick={() => navigate("/epidemiology/municipal")}
+        
         className="w-full flex items-center justify-between gap-2 bg-primary/8 border border-primary/25 rounded-xl px-3 py-2.5 mb-3 hover:bg-primary/12 transition-colors"
       >
         <div className="flex items-center gap-2">
