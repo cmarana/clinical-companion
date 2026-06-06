@@ -7,7 +7,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import {
   Activity, AlertTriangle, TrendingUp, TrendingDown, Minus,
-  RefreshCw, MapPin, Info, ExternalLink, Loader2, BarChart3
+  RefreshCw, MapPin, Info, ExternalLink, Loader2, BarChart3, Pill
 } from "lucide-react";
 import { BarChart, Bar, XAxis, YAxis, Tooltip, ResponsiveContainer, CartesianGrid, LineChart, Line } from "recharts";
 
