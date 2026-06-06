@@ -64,6 +64,7 @@ const groups: Group[] = [
     sub: "Ferramentas de raciocínio clínico",
     items: [
       { label: "Diagnóstico por Sintoma", sub: "Fluxos de raciocínio", icon: Brain, path: "/diagnosis", tone: "violet" },
+      { label: "Patient Loop", sub: "Simulação de casos clínicos com desfecho", icon: Activity, path: "/patient-loop", tone: "primary" },
       { label: "Atlas Clínico", sub: "Imagens diagnósticas + IA", icon: ScanLine, path: "/clinical-atlas", tone: "sky" },
       { label: "Referência Laboratorial", sub: "140 exames com alertas", icon: Microscope, path: "/lab-reference", tone: "emerald" },
       { label: "CID-10", sub: "300+ códigos categorizados", icon: Hash, path: "/cid", tone: "slate" },
