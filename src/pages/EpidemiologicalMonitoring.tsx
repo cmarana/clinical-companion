@@ -482,7 +482,31 @@ export default function EpidemiologicalMonitoring() {
   return (
     <div className="px-4 pt-4 pb-24 max-w-2xl mx-auto space-y-4">
       {/* Header */}
-      {/* Link para perfil municipal */}
+      {/* Links rápidos — mapa + perfil municipal */}
+      <div className="grid grid-cols-2 gap-2 mb-3">
+        <button
+          onClick={() => navigate("/epidemiology/map")}
+          className="flex items-center gap-2 bg-primary/8 border border-primary/25 rounded-xl px-3 py-2.5 hover:bg-primary/12 transition-colors text-left"
+        >
+          <Activity size={14} className="text-primary shrink-0" />
+          <div>
+            <p className="text-xs font-semibold text-primary">Mapa por Estado</p>
+            <p className="text-[10px] text-muted-foreground">Alertas interativos</p>
+          </div>
+        </button>
+        <button
+          onClick={() => navigate("/epidemiology/municipal")}
+          className="flex items-center gap-2 bg-muted/20 border border-border rounded-xl px-3 py-2.5 hover:bg-muted/40 transition-colors text-left"
+        >
+          <MapPin size={14} className="text-muted-foreground shrink-0" />
+          <div>
+            <p className="text-xs font-semibold">Por Município</p>
+            <p className="text-[10px] text-muted-foreground">Perfil local</p>
+          </div>
+        </button>
+      </div>
+
+      {/* Botão mapa compat */}
       <button
         onClick={() => navigate("/epidemiology/municipal")}
         className="w-full flex items-center justify-between gap-2 bg-primary/8 border border-primary/25 rounded-xl px-3 py-2.5 mb-3 hover:bg-primary/12 transition-colors"
