@@ -885,11 +885,14 @@ function IngestTab() {
   };
 
   const pct = progressTotal > 0 ? (progress / progressTotal) * 100 : 0;
-  const elapsedSec = startedAt ? Math.round((Date.now() - startedAt) / 1000) : 0;
+  const sessionElapsed = startedAt ? Math.round((Date.now() - startedAt) / 1000) : 0;
+  const elapsedSec = elapsedBeforeRef.current + sessionElapsed;
   const processedSinceStart = liveStats.inserted + liveStats.skipped + liveStats.failed;
   const ratePerSec = elapsedSec > 0 && processedSinceStart > 0 ? processedSinceStart / elapsedSec : 0;
   const remaining = Math.max(0, progressTotal - progress);
   const etaMin = ratePerSec > 0 ? Math.ceil(remaining / ratePerSec / 60) : Math.ceil((remaining * 0.25) / 60);
+  const hasPersistedState = progress > 0 && !ingesting;
+
 
   return (
     <div className="space-y-6 mt-4">
