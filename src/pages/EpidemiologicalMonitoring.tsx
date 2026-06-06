@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useCallback } from "react";
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -448,6 +449,7 @@ function DetalheDoenca({ d, onClose }: { d: DoencaVigil; onClose: () => void }) 
 // ─── Página principal ────────────────────────────────────────────────────────
 
 export default function EpidemiologicalMonitoring() {
+  const navigate = useNavigate();
   const [selecionada, setSelecionada] = useState<DoencaVigil | null>(null);
   const [filtro, setFiltro] = useState<string>("todas");
   const [loading, setLoading] = useState(false);
@@ -480,6 +482,21 @@ export default function EpidemiologicalMonitoring() {
   return (
     <div className="px-4 pt-4 pb-24 max-w-2xl mx-auto space-y-4">
       {/* Header */}
+      {/* Link para perfil municipal */}
+      <button
+        onClick={() => navigate("/epidemiology/municipal")}
+        className="w-full flex items-center justify-between gap-2 bg-primary/8 border border-primary/25 rounded-xl px-3 py-2.5 mb-3 hover:bg-primary/12 transition-colors"
+      >
+        <div className="flex items-center gap-2">
+          <MapPin size={14} className="text-primary" />
+          <div className="text-left">
+            <p className="text-xs font-semibold text-primary">Perfil por Município</p>
+            <p className="text-[10px] text-muted-foreground">Veja as doenças mais prevalentes na sua cidade</p>
+          </div>
+        </div>
+        <span className="text-[10px] text-primary">→</span>
+      </button>
+
       <div className="flex items-start justify-between">
         <div>
           <h1 className="text-xl font-bold">Vigilância Epidemiológica</h1>
