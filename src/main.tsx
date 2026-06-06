@@ -71,6 +71,15 @@ const recoverFromModuleLoadFailure = async (error: unknown) => {
   return true;
 };
 
+window.addEventListener("vite:preloadError", (event) => {
+  event.preventDefault();
+  void recoverFromModuleLoadFailure((event as ErrorEvent).error ?? event);
+});
+
+window.addEventListener("unhandledrejection", (event) => {
+  void recoverFromModuleLoadFailure(event.reason);
+});
+
 if (typeof window !== "undefined" && window.location.pathname === "/index") {
   window.history.replaceState({}, "", `/${window.location.search}${window.location.hash}`);
 }
