@@ -73,7 +73,8 @@ const recoverFromModuleLoadFailure = async (error: unknown) => {
 
 window.addEventListener("vite:preloadError", (event) => {
   event.preventDefault();
-  void recoverFromModuleLoadFailure((event as ErrorEvent).error ?? event);
+  const error = (event as unknown as { payload?: unknown }).payload ?? event;
+  void recoverFromModuleLoadFailure(error);
 });
 
 window.addEventListener("unhandledrejection", (event) => {
