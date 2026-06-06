@@ -680,6 +680,10 @@ function IngestTab() {
     return Number.isFinite(v) && v > 0 ? v : 0;
   });
   const [progressTotal, setProgressTotal] = useState(0);
+  const [liveStats, setLiveStats] = useState({ inserted: 0, skipped: 0, failed: 0 });
+  const [currentBatch, setCurrentBatch] = useState<{ start: number; end: number; sourceType: string; title: string } | null>(null);
+  const [recentErrors, setRecentErrors] = useState<string[]>([]);
+  const [startedAt, setStartedAt] = useState<number | null>(null);
   const [lastResult, setLastResult] = useState<{ inserted: number; failed: number; skipped: number } | null>(null);
   const [question, setQuestion] = useState("");
   const [testAnswer, setTestAnswer] = useState<RagAnswer | null>(null);
@@ -689,31 +693,46 @@ function IngestTab() {
     setIngesting(true);
     setProgress(startFrom);
     setLastResult(null);
+    setLiveStats({ inserted: 0, skipped: 0, failed: 0 });
+    setRecentErrors([]);
+    setStartedAt(Date.now());
     try {
       const chunks = buildAllChunks();
       setProgressTotal(chunks.length);
-      const BATCH = 5; // menor lote = menos chance de timeout
+      const BATCH = 5;
       let inserted = 0, failed = 0, skipped = 0;
       for (let i = startFrom; i < chunks.length; i += BATCH) {
         const batch = chunks.slice(i, i + BATCH);
+        setCurrentBatch({
+          start: i + 1,
+          end: i + batch.length,
+          sourceType: batch[0]?.source_type || "—",
+          title: batch[0]?.title || "—",
+        });
         const { data, error } = await supabase.functions.invoke("ingest-medical-knowledge", {
           body: { items: batch },
         });
         if (error) {
           failed += batch.length;
-          console.warn(`Lote ${i}-${i+BATCH} falhou:`, error.message);
+          setRecentErrors((prev) => [`Lote ${i + 1}-${i + batch.length}: ${error.message}`, ...prev].slice(0, 5));
+          console.warn(`Lote ${i}-${i + BATCH} falhou:`, error.message);
         } else {
           inserted += (data as any)?.inserted || 0;
           failed += (data as any)?.failed || 0;
           skipped += (data as any)?.skipped || 0;
+          const errs = (data as any)?.errors as string[] | undefined;
+          if (errs && errs.length > 0) {
+            setRecentErrors((prev) => [...errs, ...prev].slice(0, 5));
+          }
         }
+        setLiveStats({ inserted, skipped, failed });
         const newProgress = i + batch.length;
         setProgress(newProgress);
         localStorage.setItem(PROGRESS_KEY, String(newProgress));
-        // delay entre lotes para não saturar a Gemini Embeddings API
-        await new Promise(r => setTimeout(r, 200));
+        await new Promise((r) => setTimeout(r, 200));
       }
       setLastResult({ inserted, failed, skipped });
+      setCurrentBatch(null);
       localStorage.removeItem(PROGRESS_KEY);
       setProgress(0);
       toast.success(`Ingestão concluída: ${inserted} novos, ${skipped} já existentes, ${failed} falharam.`);
@@ -739,6 +758,13 @@ function IngestTab() {
     }
   };
 
+  const pct = progressTotal > 0 ? (progress / progressTotal) * 100 : 0;
+  const elapsedSec = startedAt ? Math.round((Date.now() - startedAt) / 1000) : 0;
+  const processedSinceStart = liveStats.inserted + liveStats.skipped + liveStats.failed;
+  const ratePerSec = elapsedSec > 0 && processedSinceStart > 0 ? processedSinceStart / elapsedSec : 0;
+  const remaining = Math.max(0, progressTotal - progress);
+  const etaMin = ratePerSec > 0 ? Math.ceil(remaining / ratePerSec / 60) : Math.ceil((remaining * 0.25) / 60);
+
   return (
     <div className="space-y-6 mt-4">
       <Card>
@@ -747,38 +773,119 @@ function IngestTab() {
             <Database size={14} /> Reindexar base do PULSO
           </CardTitle>
           <CardDescription className="text-xs">
-            Lê todos os datasets do PULSO (protocolos, medicamentos, sintomas, flashcards, quiz), gera embeddings com Gemini text-embedding-004 e faz upsert em lotes de 5. Estimativa: ~30 min para o corpus completo. Pode fechar e reabrir — use "Continuar" para retomar.
+            Lê todos os datasets do PULSO (protocolos, medicamentos, sintomas, flashcards, quiz), gera embeddings com Gemini text-embedding-004 e faz upsert em lotes de 5. Pode fechar e reabrir — use "Continuar" para retomar.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-3">
           {ingesting && (
-            <div className="space-y-2">
-              <div className="flex justify-between text-xs text-muted-foreground">
-                <span>{progress.toLocaleString()} / {progressTotal.toLocaleString()} chunks</span>
-                <span>{progressTotal > 0 ? Math.round((progress / progressTotal) * 100) : 0}%</span>
+            <div className="space-y-3 rounded-lg border bg-card p-3">
+              {/* Barra de progresso */}
+              <div className="space-y-1.5">
+                <div className="flex justify-between text-xs text-muted-foreground">
+                  <span className="font-medium">
+                    {progress.toLocaleString()} / {progressTotal.toLocaleString()} chunks
+                  </span>
+                  <span className="tabular-nums">{pct.toFixed(1)}%</span>
+                </div>
+                <div className="w-full bg-muted rounded-full h-2 overflow-hidden">
+                  <div
+                    className="bg-primary h-full rounded-full transition-all duration-300"
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
               </div>
-              <div className="w-full bg-muted rounded-full h-2">
-                <div
-                  className="bg-primary h-2 rounded-full transition-all duration-300"
-                  style={{ width: `${progressTotal > 0 ? (progress / progressTotal) * 100 : 0}%` }}
-                />
+
+              {/* Painel de stats em tempo real */}
+              <div className="grid grid-cols-3 gap-2">
+                <div className="rounded-md bg-primary/10 ring-1 ring-primary/20 p-2 text-center">
+                  <div className="text-[10px] uppercase tracking-wide text-muted-foreground">Novos</div>
+                  <div className="text-lg font-heading font-semibold text-primary tabular-nums">
+                    {liveStats.inserted.toLocaleString()}
+                  </div>
+                </div>
+                <div className="rounded-md bg-muted ring-1 ring-border p-2 text-center">
+                  <div className="text-[10px] uppercase tracking-wide text-muted-foreground">Já existentes</div>
+                  <div className="text-lg font-heading font-semibold text-foreground tabular-nums">
+                    {liveStats.skipped.toLocaleString()}
+                  </div>
+                </div>
+                <div className="rounded-md bg-destructive/10 ring-1 ring-destructive/20 p-2 text-center">
+                  <div className="text-[10px] uppercase tracking-wide text-muted-foreground">Falhas</div>
+                  <div className="text-lg font-heading font-semibold text-destructive tabular-nums">
+                    {liveStats.failed.toLocaleString()}
+                  </div>
+                </div>
               </div>
-              <p className="text-xs text-muted-foreground">
-                Tempo estimado restante: ~{Math.ceil((progressTotal - progress) * 0.25 / 60)} min
-              </p>
+
+              {/* Chunk atual */}
+              {currentBatch && (
+                <div className="rounded-md bg-muted/50 p-2 space-y-1">
+                  <div className="flex items-center gap-1.5 text-[10px] uppercase tracking-wide text-muted-foreground">
+                    <Loader2 size={10} className="animate-spin" />
+                    Processando chunks {currentBatch.start.toLocaleString()}–{currentBatch.end.toLocaleString()}
+                    <span className="ml-auto px-1.5 py-0.5 rounded bg-primary/15 text-primary font-medium normal-case tracking-normal">
+                      {currentBatch.sourceType}
+                    </span>
+                  </div>
+                  <p className="text-xs text-foreground truncate" title={currentBatch.title}>
+                    {currentBatch.title}
+                  </p>
+                </div>
+              )}
+
+              {/* ETA e taxa */}
+              <div className="flex items-center justify-between text-[11px] text-muted-foreground">
+                <span>
+                  Taxa: <span className="tabular-nums text-foreground">{ratePerSec > 0 ? ratePerSec.toFixed(1) : "—"}</span> chunks/s
+                </span>
+                <span>
+                  Decorrido: <span className="tabular-nums text-foreground">{Math.floor(elapsedSec / 60)}m {elapsedSec % 60}s</span>
+                </span>
+                <span>
+                  ETA: <span className="tabular-nums text-foreground">~{etaMin} min</span>
+                </span>
+              </div>
+
+              {/* Erros recentes */}
+              {recentErrors.length > 0 && (
+                <details className="text-[11px]">
+                  <summary className="cursor-pointer text-destructive flex items-center gap-1">
+                    <AlertTriangle size={11} /> Últimos erros ({recentErrors.length})
+                  </summary>
+                  <ul className="mt-1.5 space-y-0.5 text-muted-foreground font-mono">
+                    {recentErrors.map((e, i) => (
+                      <li key={i} className="truncate" title={e}>• {e}</li>
+                    ))}
+                  </ul>
+                </details>
+              )}
             </div>
           )}
           {lastResult && !ingesting && (
-            <div className="space-y-2">
+            <div className="space-y-2 rounded-lg border bg-card p-3">
               <div className="flex items-center gap-2 text-xs">
-                <CheckCircle2 size={14} className="text-primary dark:text-primary" />
-                <span>{lastResult.inserted} chunks indexados</span>
-                {lastResult.failed > 0 && (
-                  <>
-                    <AlertTriangle size={14} className="text-destructive ml-2" />
-                    <span className="text-destructive dark:text-destructive">{lastResult.failed} falharam</span>
-                  </>
-                )}
+                <CheckCircle2 size={14} className="text-primary" />
+                <span className="font-medium">Ingestão concluída</span>
+              </div>
+              <div className="grid grid-cols-3 gap-2">
+                <div className="rounded-md bg-primary/10 p-2 text-center">
+                  <div className="text-[10px] text-muted-foreground">Novos</div>
+                  <div className="text-base font-heading font-semibold text-primary tabular-nums">
+                    {lastResult.inserted.toLocaleString()}
+                  </div>
+                </div>
+                <div className="rounded-md bg-muted p-2 text-center">
+                  <div className="text-[10px] text-muted-foreground">Já existentes</div>
+                  <div className="text-base font-heading font-semibold tabular-nums">
+                    {lastResult.skipped.toLocaleString()}
+                  </div>
+                </div>
+                <div className="rounded-md bg-destructive/10 p-2 text-center">
+                  <div className="text-[10px] text-muted-foreground">Falhas</div>
+                  <div className="text-base font-heading font-semibold text-destructive tabular-nums">
+                    {lastResult.failed.toLocaleString()}
+                  </div>
+                </div>
               </div>
               {lastResult.failed > 0 && (
                 <p className="text-xs text-muted-foreground">
@@ -803,6 +910,8 @@ function IngestTab() {
           </div>
         </CardContent>
       </Card>
+
+
 
       <Card>
         <CardHeader className="pb-2">
