@@ -49,8 +49,6 @@ const modes = [
   { label: "Especialidades", sub: "Protocolos por área clínica", icon: Stethoscope, path: "/specialties", tone: "deep" },
   { label: "Estudo", sub: "Flashcards, questões e residência", icon: GraduationCap, path: "/study-dashboard", tone: "deep" },
   { label: "Prescrições", sub: "Modelos, evoluções e alta", icon: FileText, path: "/prescriptions", tone: "deep" },
-  { label: "Patient Loop", sub: "Desfechos e aprendizado clínico", icon: Heart, path: "/patient-loop", tone: "deep" },
-  { label: "Epidemiologia", sub: "Vigilância em tempo real — SVS/SINAN", icon: Activity, path: "/epidemiology", tone: "deep" },
 ];
 
 // Paleta única: azul Plantão dominante. Vermelho APENAS em Emergência (semântico).
@@ -241,6 +239,31 @@ export default function Home() {
           </div>
         </motion.button>
       </section>
+
+      {/* ── EPIDEMIOLOGIA ─────────────────────────────── */}
+      <section className="mt-3 px-4">
+        <motion.button
+          whileTap={{ scale: 0.99 }}
+          onClick={() => go("/epidemiology", "Epidemiologia")}
+          className="relative w-full overflow-hidden rounded-2xl text-left bg-card border border-border shadow-sm hover:shadow-md hover:border-primary/30 transition-all"
+        >
+          <div className="relative px-4 py-3 flex items-center gap-3">
+            <div className="flex items-center justify-center w-10 h-10 rounded-xl bg-primary/10 ring-1 ring-primary/20 shrink-0 text-primary">
+              <Activity size={18} />
+            </div>
+            <div className="flex-1 min-w-0">
+              <h3 className="font-heading font-bold text-[14px] leading-tight text-foreground">
+                Monitoramento Epidemiológico
+              </h3>
+              <p className="text-[11.5px] text-muted-foreground mt-0.5 leading-snug">
+                Vigilância em tempo real — SVS/SINAN.
+              </p>
+            </div>
+            <ChevronRight size={16} className="text-muted-foreground shrink-0" />
+          </div>
+        </motion.button>
+      </section>
+
 
 
       {/* ── ESCOLHA SEU MODO ───────────────────────────── */}
