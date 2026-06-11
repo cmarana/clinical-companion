@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import QRCode from "qrcode";
+import { BRAND } from "../mock-data";
+import PulsoLogo from "@/components/PulsoLogo";
 
 const URL_TARGET = "https://pulsoemergencia.com.br/websummit";
 
@@ -10,35 +12,39 @@ export default function SceneClosing() {
     QRCode.toString(URL_TARGET, {
       type: "svg",
       errorCorrectionLevel: "H",
-      margin: 3,
-      color: { dark: "#050B1A", light: "#FFFFFF" },
-      width: 360,
+      margin: 4,
+      color: { dark: BRAND.navy, light: "#FFFFFF" },
+      width: 380,
     }).then(setQr);
   }, []);
 
   return (
-    <div className="absolute inset-0 flex flex-col items-center justify-center px-8" style={{ background: "#050B1A" }}>
+    <div className="absolute inset-0 flex flex-col items-center justify-center px-8" style={{ background: BRAND.bgLight }}>
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 40% at 50% 0%, rgba(10,109,217,0.12), transparent 70%)",
+        }}
+      />
       <motion.div
-        initial={{ opacity: 0, y: -12 }}
+        initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
-        className="flex items-center gap-3 mb-8"
+        className="relative flex items-center gap-3 mb-7"
       >
-        <div
-          className="w-14 h-14 rounded-2xl flex items-center justify-center text-2xl font-bold"
-          style={{ background: "#0A6DD9", fontFamily: "Sora, system-ui", color: "white" }}
-        >
-          P
-        </div>
-        <div className="text-white text-4xl font-bold tracking-tight" style={{ fontFamily: "Sora, system-ui" }}>
+        <PulsoLogo size={52} forceVariant="light" priority />
+        <div className="text-4xl font-bold tracking-tight" style={{ fontFamily: "Sora, system-ui", color: BRAND.text }}>
           PULSO
         </div>
       </motion.div>
 
       <motion.div
-        initial={{ scale: 0.85, opacity: 0 }}
+        initial={{ scale: 0.88, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
-        transition={{ delay: 0.2, type: "spring", stiffness: 180, damping: 18 }}
-        className="bg-white rounded-3xl p-6 shadow-[0_30px_80px_-20px_rgba(10,109,217,0.5)]"
+        transition={{ delay: 0.15, type: "spring", stiffness: 160, damping: 18 }}
+        className="relative bg-white rounded-3xl p-6"
+        style={{ boxShadow: "0 30px 80px -20px rgba(10,109,217,0.35), 0 0 0 1px rgba(15,23,42,0.05)" }}
       >
         <div
           className="w-[320px] h-[320px] md:w-[360px] md:h-[360px] flex items-center justify-center"
@@ -47,21 +53,22 @@ export default function SceneClosing() {
       </motion.div>
 
       <motion.h2
-        initial={{ opacity: 0, y: 16 }}
+        initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6 }}
-        className="text-3xl md:text-4xl font-bold mt-8 text-white text-center"
-        style={{ fontFamily: "Sora, system-ui" }}
+        transition={{ delay: 0.55 }}
+        className="relative text-3xl md:text-4xl font-bold mt-7 text-center"
+        style={{ fontFamily: "Sora, system-ui", color: BRAND.text }}
       >
-        Use o PULSO completo por <span style={{ color: "#0A6DD9" }}>7 dias</span>
+        Use o PULSO completo por <span style={{ color: BRAND.primary }}>7 dias</span>
       </motion.h2>
       <motion.p
-        initial={{ opacity: 0, y: 16 }}
+        initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.8 }}
-        className="text-white/75 mt-3 text-center text-base md:text-lg"
+        transition={{ delay: 0.75 }}
+        className="relative mt-2 text-center text-base md:text-lg"
+        style={{ color: BRAND.textMuted }}
       >
-        Escaneie, crie sua conta e comece agora — cortesia Web Summit Rio.
+        Escaneie e crie sua conta — cortesia Web Summit Rio · Lançamento oficial em julho de 2026
       </motion.p>
     </div>
   );

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
 import { ArrowRight, Check, Copy, ShieldCheck, Sparkles, Stethoscope } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import PulsoLogo from "@/components/PulsoLogo";
 
 const EVENT_FLAG = "pulso_event_src";
 const EVENT_FLAG_EXPIRES = "pulso_event_src_expires";
@@ -72,14 +73,9 @@ export default function WebSummitLanding() {
       />
 
       <header className="relative z-10 px-6 py-5 flex items-center justify-between max-w-6xl mx-auto">
-        <div className="flex items-center gap-2">
-          <div
-            className="w-9 h-9 rounded-xl flex items-center justify-center font-bold"
-            style={{ background: "#0A6DD9", fontFamily: "Sora, system-ui" }}
-          >
-            P
-          </div>
-          <span className="font-semibold tracking-tight" style={{ fontFamily: "Sora, system-ui" }}>
+        <div className="flex items-center gap-2.5">
+          <PulsoLogo size={36} forceVariant="dark" priority />
+          <span className="font-semibold tracking-tight text-lg" style={{ fontFamily: "Sora, system-ui" }}>
             PULSO
           </span>
         </div>
