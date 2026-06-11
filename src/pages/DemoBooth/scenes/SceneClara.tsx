@@ -80,7 +80,7 @@ export default function SceneClara() {
             </div>
           </div>
         </div>
-      </div>
+      </motion.div>
       <div className="absolute bottom-20 right-6">
         <MetricChip accent>IA clínica em PT-BR · contexto brasileiro</MetricChip>
       </div>
