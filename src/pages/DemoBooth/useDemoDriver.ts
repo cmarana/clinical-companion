@@ -1,88 +1,45 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 
+export type SceneKind =
+  | "cold-open"
+  | "impact"
+  | "red-room"
+  | "search-protocol"
+  | "meds"
+  | "calc"
+  | "offline"
+  | "clara"
+  | "duty-epidemic"
+  | "numbers"
+  | "closing";
+
 export interface Scene {
-  /** Rota real do app a carregar no iframe (ou "closing" para a tela final com QR). */
-  route: string;
-  /** Identificador estável da cena. */
   id: string;
-  /** Rótulo curto exibido no progress dots. */
+  kind: SceneKind;
   label: string;
-  /** "Manchete" curta — chama atenção (1 linha). */
-  headline: string;
-  /** Subtítulo de 1 frase contextualizando. */
-  sub: string;
-  /** Duração em ms. */
+  /** Texto para cenas "impact" (story beat em tela cheia). */
+  impact?: { kicker?: string; text: string };
   durationMs: number;
-  /** Cena final com QR — sem iframe. */
-  closing?: boolean;
 }
 
-// Tour real do app — usa as rotas que existem no App.tsx.
-// Frases curtas, problema → solução, foco em investidor + clínico.
+// Narrativa para investidor — ~65s, ritmo de trailer, com beats de "porquê" entre as telas reais.
 export const SCENES: Scene[] = [
-  {
-    id: "home", route: "/home", label: "Home",
-    headline: "Plantão é segundo, não clique.",
-    sub: "Hospitais ainda rodam em planilha, PDF e grupo de WhatsApp. O PULSO entrega a conduta em 2 toques.",
-    durationMs: 10000,
-  },
-  {
-    id: "emergency", route: "/emergency", label: "Emergência",
-    headline: "Modo Emergência — beira do leito.",
-    sub: "Protocolos por sintoma. Dose, diluição e tempo, prontos antes do paciente entrar na sala.",
-    durationMs: 10000,
-  },
-  {
-    id: "specialties", route: "/specialties", label: "Especialidades",
-    headline: "20 especialidades, um único app.",
-    sub: "Toda a medicina hospitalar — clínica, cirurgia, pediatria, obstetrícia, terapia intensiva.",
-    durationMs: 9000,
-  },
-  {
-    id: "tools", route: "/tools", label: "Ferramentas",
-    headline: "53 calculadoras e scores validados.",
-    sub: "qSOFA, NIHSS, CHA₂DS₂-VASc, Wells, APACHE — tudo em PT-BR, calibrado para o SUS.",
-    durationMs: 9000,
-  },
-  {
-    id: "ped-doses", route: "/pediatric-doses", label: "Doses Ped.",
-    headline: "Dose pediátrica sem planilha, sem erro.",
-    sub: "Calculada pelo peso, trava no máximo do adulto. Zero conta de cabeça em criança grave.",
-    durationMs: 9000,
-  },
-  {
-    id: "bulario", route: "/bulario", label: "Bulário",
-    headline: "2.000 medicamentos · diluição · alerta.",
-    sub: "Compatibilidade Y-site, interações graves e ajuste renal, em um só toque.",
-    durationMs: 9000,
-  },
-  {
-    id: "epidemic", route: "/epidemic-map", label: "Vigilância",
-    headline: "Surto detectado antes do boletim.",
-    sub: "Mapa epidemiológico em tempo real — IA cruza alertas sanitários por município.",
-    durationMs: 9000,
-  },
-  {
-    id: "atlas", route: "/clinical-atlas", label: "IA · Atlas",
-    headline: "IA clínica com visão.",
-    sub: "Envie ECG, raio-X, TC ou USG. Receba descrição estruturada e diferenciais — em segundos.",
-    durationMs: 10000,
-  },
-  {
-    id: "flashcards", route: "/flashcards", label: "Flashcards",
-    headline: "Fixa o que salva vida.",
-    sub: "Repetição espaçada (SM-2) sobre 1.004 protocolos. Estudo que acompanha o plantão.",
-    durationMs: 9000,
-  },
-  {
-    id: "closing", route: "closing", label: "Web Summit",
-    headline: "Experimente agora.",
-    sub: "Acesso de 7 dias · cortesia Web Summit Rio 2026.",
-    durationMs: 12000, closing: true,
-  },
+  { id: "cold",       kind: "cold-open",       label: "PULSO",            durationMs: 4500 },
+  { id: "beat-1",     kind: "impact",          label: "O problema",       impact: { kicker: "3 da manhã · plantão lotado", text: "A internet do hospital cai. A decisão clínica não pode." }, durationMs: 4500 },
+  { id: "beat-2",     kind: "impact",          label: "A origem",         impact: { kicker: "Feito por médicos, para médicos", text: "Nasceu na beira do leito — onde planilha, PDF e WhatsApp custam vidas." }, durationMs: 4500 },
+  { id: "red-room",   kind: "red-room",        label: "Sala Vermelha",    durationMs: 6500 },
+  { id: "search",     kind: "search-protocol", label: "Busca · Sepse",    durationMs: 6500 },
+  { id: "meds",       kind: "meds",            label: "Bulário · IV",     durationMs: 6500 },
+  { id: "calc",       kind: "calc",            label: "Calculadora",      durationMs: 5500 },
+  { id: "beat-3",     kind: "impact",          label: "Diferencial",      impact: { kicker: "O que ninguém mais entrega", text: "100% offline-first. Funciona onde o sinal não chega." }, durationMs: 4000 },
+  { id: "offline",    kind: "offline",         label: "Offline real",     durationMs: 6500 },
+  { id: "clara",      kind: "clara",           label: "Dra. Clara · IA",  durationMs: 7000 },
+  { id: "duty-epi",   kind: "duty-epidemic",   label: "Plantão & Surto",  durationMs: 6500 },
+  { id: "numbers",    kind: "numbers",         label: "Os números",       durationMs: 6000 },
+  { id: "closing",    kind: "closing",         label: "Web Summit",       durationMs: 9000 },
 ];
 
-// Ring buffer de logs locais — inspecionável via window.__demoBoothLog
+// Ring buffer de logs — inspecionável via window.__demoBoothLog
 type LogEntry = { t: string; level: "info" | "warn" | "error"; msg: string; data?: unknown };
 const MAX_LOGS = 200;
 function pushLog(entry: LogEntry) {
