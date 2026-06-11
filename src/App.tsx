@@ -115,6 +115,10 @@ const Rounds = lazy(() => import("@/pages/Rounds"));
 const DischargeSummary = lazy(() => import("@/pages/DischargeSummary"));
 const ConductComparator = lazy(() => import("@/pages/ConductComparator"));
 const Demo = lazy(() => import("@/pages/Demo"));
+const WebSummitLanding = lazy(() => import("@/pages/WebSummit/WebSummitLanding"));
+const DemoBooth = lazy(() => import("@/pages/DemoBooth/DemoBooth"));
+import EventAccessClaimer from "@/integrations/event-access/EventAccessClaimer";
+import EventAccessBadgePortal from "@/integrations/event-access/EventAccessBadgePortal";
 import SamuCodeRedirect from "@/pages/SamuCodeRedirect";
 
 const queryClient = new QueryClient({
@@ -187,6 +191,8 @@ const AppRoutes = () => (
       <Route path="/coming-soon" element={<ComingSoon />} />
       <Route path="/prelaunch" element={<PrelaunchLanding />} />
       <Route path="/demo" element={<Demo />} />
+      <Route path="/websummit" element={<WebSummitLanding />} />
+      <Route path="/demo-booth" element={<DemoBooth />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/terms" element={<TermsOfUse />} />
@@ -323,6 +329,8 @@ const App = () => (
                   <PWAInstallPrompt />
                   
                   <UpdatePromptDialog />
+                  <EventAccessClaimer />
+                  <EventAccessBadgePortal />
                   <AppRoutes />
                 </TooltipProvider>
               </NotesProvider>

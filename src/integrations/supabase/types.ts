@@ -1434,6 +1434,7 @@ export type Database = {
           crm: string
           crm_state: string
           email: string
+          event_access_until: string | null
           first_name: string
           full_name: string
           gender: string
@@ -1468,6 +1469,7 @@ export type Database = {
           crm?: string
           crm_state?: string
           email?: string
+          event_access_until?: string | null
           first_name?: string
           full_name?: string
           gender?: string
@@ -1502,6 +1504,7 @@ export type Database = {
           crm?: string
           crm_state?: string
           email?: string
+          event_access_until?: string | null
           first_name?: string
           full_name?: string
           gender?: string
@@ -2123,6 +2126,7 @@ export type Database = {
         Args: { _device_id: string; _device_label: string }
         Returns: undefined
       }
+      claim_websummit_access: { Args: never; Returns: string }
       cpf_exists: { Args: { _cpf: string }; Returns: boolean }
       create_institution_with_admin: {
         Args: { _description?: string; _name: string }
