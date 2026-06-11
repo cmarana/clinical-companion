@@ -85,8 +85,8 @@ export const epidemicRegions: Array<{
 export const bigNumbers = [
   { v: "1.004", k: "protocolos clínicos" },
   { v: "2.000", k: "medicamentos" },
-  { v: "100%",  k: "offline-first" },
-  { v: "<200ms", k: "latência edge AI" },
+  { v: "OFFLINE", k: "inteligente" },
+  { v: "53", k: "calculadoras" },
   { v: "PT-BR", k: "RAG médico próprio" },
   { v: "1,2M",  k: "profissionais TAM" },
 ];
