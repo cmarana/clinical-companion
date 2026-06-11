@@ -107,7 +107,7 @@ export default function DemoBooth() {
   const isDarkScene = true;
 
   return (
-    <div className="fixed inset-0 overflow-hidden" style={{ background: BRAND.bgLight, color: BRAND.text }}>
+    <div className="fixed inset-0 overflow-hidden" style={{ background: BRAND.bgDark, color: BRAND.text }}>
       {/* progress bar */}
       <div className="absolute top-0 inset-x-0 z-50 px-4 pt-3 pointer-events-none">
         <div className="flex gap-1.5 pointer-events-auto">
