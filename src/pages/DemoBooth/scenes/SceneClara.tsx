@@ -7,15 +7,15 @@ import { useEffect, useState } from "react";
 
 export default function SceneClara() {
   const [phase, setPhase] = useState(0); // 0 typing question, 1 streaming answer
-  const q = useTypewriter("Dose de noradrenalina, choque séptico, 70kg?", phase === 0, 28);
+  const q = useTypewriter("Dose de noradrenalina, choque séptico, 70kg?", phase === 0, 55);
   const [shown, setShown] = useState(0);
   useEffect(() => {
-    const t = setTimeout(() => setPhase(1), 1700);
+    const t = setTimeout(() => setPhase(1), 3200);
     return () => clearTimeout(t);
   }, []);
   useEffect(() => {
     if (phase !== 1) return;
-    const id = setInterval(() => setShown((s) => Math.min(claraAnswerBlocks.length, s + 1)), 550);
+    const id = setInterval(() => setShown((s) => Math.min(claraAnswerBlocks.length, s + 1)), 1100);
     return () => clearInterval(id);
   }, [phase]);
 
