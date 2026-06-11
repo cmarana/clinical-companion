@@ -16,20 +16,77 @@ export const SCENES: Scene[] = [
   { id: "closing", label: "Fechamento", durationMs: 8000 },
 ];
 
-export function useDemoDriver(running: boolean) {
+// Ring buffer de logs locais — inspecionável via window.__demoBoothLog
+type LogEntry = { t: string; level: "info" | "warn" | "error"; msg: string; data?: unknown };
+const MAX_LOGS = 200;
+function pushLog(entry: LogEntry) {
+  try {
+    const w = window as unknown as { __demoBoothLog?: LogEntry[] };
+    if (!w.__demoBoothLog) w.__demoBoothLog = [];
+    w.__demoBoothLog.push(entry);
+    if (w.__demoBoothLog.length > MAX_LOGS) w.__demoBoothLog.shift();
+    const tag = "[demo-booth]";
+    if (entry.level === "error") console.error(tag, entry.msg, entry.data ?? "");
+    else if (entry.level === "warn") console.warn(tag, entry.msg, entry.data ?? "");
+    else console.info(tag, entry.msg, entry.data ?? "");
+  } catch {
+    /* noop */
+  }
+}
+
+export interface DriverOptions {
+  manual?: boolean;
+}
+
+export function useDemoDriver(running: boolean, options: DriverOptions = {}) {
+  const { manual = false } = options;
   const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
+  const [paused, setPaused] = useState(manual);
   const startRef = useRef(performance.now());
   const [progress, setProgress] = useState(0);
+  const loopCountRef = useRef(0);
 
   const next = useCallback(() => {
-    setIndex((i) => (i + 1) % SCENES.length);
+    setIndex((i) => {
+      const ni = (i + 1) % SCENES.length;
+      if (ni === 0) loopCountRef.current += 1;
+      pushLog({
+        t: new Date().toISOString(),
+        level: "info",
+        msg: `→ next: ${SCENES[i].id} → ${SCENES[ni].id}`,
+        data: { loop: loopCountRef.current },
+      });
+      return ni;
+    });
+    startRef.current = performance.now();
+    setProgress(0);
+  }, []);
+
+  const prev = useCallback(() => {
+    setIndex((i) => {
+      const ni = (i - 1 + SCENES.length) % SCENES.length;
+      pushLog({
+        t: new Date().toISOString(),
+        level: "info",
+        msg: `← prev: ${SCENES[i].id} → ${SCENES[ni].id}`,
+      });
+      return ni;
+    });
     startRef.current = performance.now();
     setProgress(0);
   }, []);
 
   const goTo = useCallback((i: number) => {
-    setIndex(i % SCENES.length);
+    setIndex(() => {
+      const ni = i % SCENES.length;
+      pushLog({
+        t: new Date().toISOString(),
+        level: "info",
+        msg: `→ goTo: ${SCENES[ni].id}`,
+        data: { index: ni },
+      });
+      return ni;
+    });
     startRef.current = performance.now();
     setProgress(0);
   }, []);
@@ -38,28 +95,52 @@ export function useDemoDriver(running: boolean) {
     if (!running || paused) return;
     let raf = 0;
     let lastTick = performance.now();
+    let stuckTicks = 0;
     const tick = (t: number) => {
-      const dur = SCENES[index].durationMs;
-      const dt = t - lastTick;
-      lastTick = t;
-      startRef.current += 0; // keep
-      const elapsed = t - startRef.current;
-      setProgress(Math.min(1, elapsed / dur));
-      if (elapsed >= dur) {
-        next();
-      } else {
-        raf = requestAnimationFrame(tick);
+      try {
+        const dur = SCENES[index].durationMs;
+        const dt = t - lastTick;
+        lastTick = t;
+        const elapsed = t - startRef.current;
+        setProgress(Math.min(1, elapsed / dur));
+        // Detect frame-rate stalls (raf gap > 1.5s)
+        if (dt > 1500) {
+          stuckTicks += 1;
+          pushLog({
+            t: new Date().toISOString(),
+            level: "warn",
+            msg: `frame stall on scene ${SCENES[index].id}`,
+            data: { dt: Math.round(dt), stuckTicks },
+          });
+        }
+        if (elapsed >= dur) {
+          next();
+        } else {
+          raf = requestAnimationFrame(tick);
+        }
+      } catch (err) {
+        pushLog({
+          t: new Date().toISOString(),
+          level: "error",
+          msg: `driver tick error on scene ${SCENES[index]?.id ?? "?"}`,
+          data: err instanceof Error ? err.message : String(err),
+        });
       }
-      void dt;
     };
     raf = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(raf);
   }, [index, running, paused, next]);
 
-  // when scene changes manually, reset start
+  // log scene change
   useEffect(() => {
     startRef.current = performance.now();
-  }, [index]);
+    pushLog({
+      t: new Date().toISOString(),
+      level: "info",
+      msg: `▶ scene ${SCENES[index].id} (${SCENES[index].durationMs}ms)`,
+      data: { index, loop: loopCountRef.current, manual, paused },
+    });
+  }, [index, manual, paused]);
 
   return {
     index,
@@ -68,6 +149,9 @@ export function useDemoDriver(running: boolean) {
     paused,
     setPaused,
     next,
+    prev,
     goTo,
+    manual,
+    loopCount: loopCountRef.current,
   };
 }
