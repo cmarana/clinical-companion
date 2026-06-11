@@ -9,6 +9,28 @@ const EVENT_FLAG_EXPIRES = "pulso_event_src_expires";
 
 export default function WebSummitLanding() {
   const navigate = useNavigate();
+  const { toast } = useToast();
+  const [copied, setCopied] = useState(false);
+
+  const inviteLink =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/websummit?src=websummit`
+      : "https://pulsoemergencia.com.br/websummit?src=websummit";
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(inviteLink);
+      setCopied(true);
+      toast({ title: "Link copiado!", description: "Envie para seus convidados do Web Summit." });
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      toast({
+        title: "Não foi possível copiar",
+        description: inviteLink,
+        variant: "destructive",
+      });
+    }
+  };
 
   useEffect(() => {
     document.title = "PULSO no Web Summit Rio 2026 — 7 dias de acesso";
