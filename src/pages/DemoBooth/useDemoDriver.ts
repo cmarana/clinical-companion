@@ -9,7 +9,8 @@ export type SceneKind =
   | "calc"
   | "offline"
   | "clara"
-  | "duty-epidemic"
+  | "epidemic"
+  | "duty"
   | "numbers"
   | "closing";
 
@@ -22,7 +23,7 @@ export interface Scene {
   durationMs: number;
 }
 
-// Narrativa para investidor — ~65s, ritmo de trailer, com beats de "porquê" entre as telas reais.
+// Narrativa para investidor — ~50s, ritmo de trailer, com beats de "porquê" entre as telas reais.
 export const SCENES: Scene[] = [
   { id: "cold",       kind: "cold-open",       label: "PULSO",            durationMs: 4500 },
   { id: "beat-1",     kind: "impact",          label: "O problema",       impact: { kicker: "3 da manhã · plantão lotado", text: "A internet do hospital cai. A decisão clínica não pode." }, durationMs: 4500 },
@@ -30,11 +31,12 @@ export const SCENES: Scene[] = [
   { id: "red-room",   kind: "red-room",        label: "Sala Vermelha",    durationMs: 6500 },
   { id: "search",     kind: "search-protocol", label: "Busca · Sepse",    durationMs: 6500 },
   { id: "meds",       kind: "meds",            label: "Bulário · IV",     durationMs: 6500 },
-  { id: "calc",       kind: "calc",            label: "Calculadora",      durationMs: 5500 },
-  { id: "beat-3",     kind: "impact",          label: "Diferencial",      impact: { kicker: "O que ninguém mais entrega", text: "100% offline-first. Funciona onde o sinal não chega." }, durationMs: 4000 },
+  { id: "beat-3",     kind: "impact",          label: "Diferencial",      impact: { kicker: "O que ninguém mais entrega", text: "Funciona offline onde a rede não chega." }, durationMs: 4000 },
   { id: "offline",    kind: "offline",         label: "Offline real",     durationMs: 6500 },
-  { id: "clara",      kind: "clara",           label: "Dra. Clara · IA",  durationMs: 7000 },
-  { id: "duty-epi",   kind: "duty-epidemic",   label: "Plantão & Surto",  durationMs: 6500 },
+  { id: "clara",      kind: "clara",           label: "Dra. Clara · IA",  durationMs: 6500 },
+  { id: "calc",       kind: "calc",            label: "qSOFA",            durationMs: 4000 },
+  { id: "epidemic",   kind: "epidemic",        label: "Vigilância BR",    durationMs: 6000 },
+  { id: "duty",       kind: "duty",            label: "Modo Plantão",     durationMs: 4000 },
   { id: "numbers",    kind: "numbers",         label: "Os números",       durationMs: 6000 },
   { id: "closing",    kind: "closing",         label: "Web Summit",       durationMs: 9000 },
 ];
