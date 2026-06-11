@@ -21,9 +21,9 @@ import SceneClosing from "./scenes/SceneClosing";
 const renderScene = (id: string) => {
   switch (id) {
     case "cold-open":     return <SceneColdOpen />;
-    case "card-wifi":     return <ImpactCard>E quando a internet cai<br />no meio da emergência?</ImpactCard>;
+    case "card-wifi":     return <ImpactCard kicker="Infraestrutura">Quando a internet cai,<br/>o PULSO <span style={{ color: "#5BA8FF" }}>continua online</span>.</ImpactCard>;
     case "red-room":      return <SceneRedRoom />;
-    case "card-plantao":  return <ImpactCard small>Construído para o plantão real.</ImpactCard>;
+    case "card-plantao":  return <ImpactCard kicker="Mercado" small>1,2 milhão de profissionais<br/>de saúde no Brasil.<br/><span style={{ color: "#5BA8FF" }}>Zero plataforma vertical.</span></ImpactCard>;
     case "search":        return <SceneSearchProtocol />;
     case "meds":          return <SceneMeds />;
     case "calc":          return <SceneCalc />;
