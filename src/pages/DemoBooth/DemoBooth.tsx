@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { Pause, Play, X, Maximize2 } from "lucide-react";
+import { Pause, Play, X, Maximize2, ChevronLeft, ChevronRight } from "lucide-react";
 import { SCENES, useDemoDriver } from "./useDemoDriver";
 import SceneIntro from "./scenes/SceneIntro";
 import SceneSearch from "./scenes/SceneSearch";
@@ -21,8 +22,13 @@ const sceneComponents = [
 ];
 
 export default function DemoBooth() {
-  const [started, setStarted] = useState(false);
-  const driver = useDemoDriver(started);
+  const [searchParams] = useSearchParams();
+  const manual = useMemo(
+    () => searchParams.get("manual") === "1" || searchParams.get("mode") === "manual",
+    [searchParams],
+  );
+  const [started, setStarted] = useState(manual); // modo manual entra direto
+  const driver = useDemoDriver(started, { manual });
 
   useEffect(() => {
     document.title = "PULSO · Demonstração ao vivo";
