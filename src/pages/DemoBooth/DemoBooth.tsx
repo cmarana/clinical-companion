@@ -28,7 +28,8 @@ function renderScene(scene: Scene) {
     case "calc":            return <SceneCalc />;
     case "offline":         return <SceneOffline />;
     case "clara":           return <SceneClara />;
-    case "duty-epidemic":   return <SceneDutyEpidemic />;
+    case "epidemic":        return <SceneDutyEpidemic force="epi" />;
+    case "duty":            return <SceneDutyEpidemic force="duty" />;
     case "numbers":         return <SceneNumbers />;
     case "closing":         return <SceneClosing />;
     default: return null;

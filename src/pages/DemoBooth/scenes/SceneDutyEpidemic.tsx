@@ -4,12 +4,13 @@ import LightShell, { MetricChip, DarkPanel } from "../LightShell";
 import { BRAND, epidemicRegions } from "../mock-data";
 import { useEffect, useState } from "react";
 
-export default function SceneDutyEpidemic() {
-  const [view, setView] = useState<"duty" | "epi">("duty");
+export default function SceneDutyEpidemic({ force }: { force?: "duty" | "epi" } = {}) {
+  const [view, setView] = useState<"duty" | "epi">(force ?? "duty");
   useEffect(() => {
+    if (force) return;
     const t = setTimeout(() => setView("epi"), 3000);
     return () => clearTimeout(t);
-  }, []);
+  }, [force]);
 
   return (
     <LightShell title={view === "duty" ? "Modo Plantão" : "Vigilância Epidemiológica"}>
