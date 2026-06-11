@@ -1,40 +1,12 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Pause, Play, X, Maximize2, ChevronLeft, ChevronRight } from "lucide-react";
 import { SCENES, useDemoDriver } from "./useDemoDriver";
 import { BRAND } from "./mock-data";
 import PulsoLogo from "@/components/PulsoLogo";
-
-import SceneColdOpen from "./scenes/SceneColdOpen";
-import ImpactCard from "./scenes/ImpactCard";
-import SceneRedRoom from "./scenes/SceneRedRoom";
-import SceneSearchProtocol from "./scenes/SceneSearchProtocol";
-import SceneMeds from "./scenes/SceneMeds";
-import SceneCalc from "./scenes/SceneCalc";
-import SceneOffline from "./scenes/SceneOffline";
-import SceneClara from "./scenes/SceneClara";
-import SceneDutyEpidemic from "./scenes/SceneDutyEpidemic";
-import SceneNumbers from "./scenes/SceneNumbers";
+import { enterDemoMode, exitDemoMode } from "@/lib/demoMode";
 import SceneClosing from "./scenes/SceneClosing";
-
-const renderScene = (id: string) => {
-  switch (id) {
-    case "cold-open":     return <SceneColdOpen />;
-    case "card-wifi":     return <ImpactCard kicker="Infraestrutura">Quando a internet cai,<br/>o PULSO <span style={{ color: "#5BA8FF" }}>continua online</span>.</ImpactCard>;
-    case "red-room":      return <SceneRedRoom />;
-    case "card-plantao":  return <ImpactCard kicker="Mercado" small>1,2 milhão de profissionais<br/>de saúde no Brasil.<br/><span style={{ color: "#5BA8FF" }}>Zero plataforma vertical.</span></ImpactCard>;
-    case "search":        return <SceneSearchProtocol />;
-    case "meds":          return <SceneMeds />;
-    case "calc":          return <SceneCalc />;
-    case "offline":       return <SceneOffline />;
-    case "clara":         return <SceneClara />;
-    case "duty-epidemic": return <SceneDutyEpidemic />;
-    case "numbers":       return <SceneNumbers />;
-    case "closing":       return <SceneClosing />;
-    default:              return null;
-  }
-};
 
 export default function DemoBooth() {
   const [searchParams] = useSearchParams();
@@ -44,9 +16,17 @@ export default function DemoBooth() {
   );
   const [started, setStarted] = useState(manual);
   const driver = useDemoDriver(started, { manual });
+  const iframeRef = useRef<HTMLIFrameElement>(null);
+
+  // Ativa demo mode no sessionStorage da aba — o app real renderiza sem login.
+  useEffect(() => {
+    if (!started) return;
+    enterDemoMode();
+    return () => { exitDemoMode(); };
+  }, [started]);
 
   useEffect(() => {
-    document.title = "PULSO · Trailer ao vivo";
+    document.title = "PULSO · Demonstração ao vivo";
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape" && !manual) setStarted(false);
       if (e.key === " " && started) { e.preventDefault(); driver.setPaused((p) => !p); }
@@ -56,6 +36,21 @@ export default function DemoBooth() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [started, driver, manual]);
+
+  // Quando a cena muda, navega o iframe para a rota real.
+  useEffect(() => {
+    if (!started) return;
+    const scene = driver.scene;
+    if (scene.closing) return;
+    const url = `${scene.route}?demo=1`;
+    try {
+      const ifr = iframeRef.current;
+      if (ifr) {
+        // Substitui sem empilhar histórico
+        ifr.src = url;
+      }
+    } catch { /* noop */ }
+  }, [driver.scene, started]);
 
   const goFullscreen = async () => {
     try { if (!document.fullscreenElement) await document.documentElement.requestFullscreen(); } catch { /* noop */ }
@@ -72,10 +67,10 @@ export default function DemoBooth() {
             <div className="text-5xl font-bold tracking-tight" style={{ fontFamily: "Sora, system-ui" }}>PULSO</div>
           </div>
           <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight" style={{ fontFamily: "Sora, system-ui" }}>
-            Veja o PULSO em ação
+            O app de verdade, ao vivo.
           </h1>
           <p className="mb-10 text-lg" style={{ color: BRAND.textMuted }}>
-            Trailer de ~65 segundos · roda em loop · ESC para sair.
+            Tour automático pelas telas reais do PULSO · ~95s em loop · ESC para sair.
           </p>
           <div className="flex items-center justify-center gap-3">
             <button
@@ -84,7 +79,7 @@ export default function DemoBooth() {
               style={{ background: BRAND.primary, fontFamily: "Sora, system-ui", boxShadow: "0 14px 40px -10px rgba(10,109,217,0.55)" }}
             >
               <Play className="w-5 h-5" fill="currentColor" />
-              Reproduzir trailer
+              Iniciar tour
             </button>
             <button onClick={goFullscreen} className="inline-flex items-center gap-2 px-4 py-4 rounded-2xl border" style={{ borderColor: BRAND.border, color: BRAND.textMuted }} title="Tela cheia">
               <Maximize2 className="w-5 h-5" />
@@ -99,18 +94,20 @@ export default function DemoBooth() {
     );
   }
 
+  const s = driver.scene;
+
   return (
     <div className="fixed inset-0 overflow-hidden" style={{ background: BRAND.bgLight, color: BRAND.text }}>
       {/* progress bar */}
-      <div className="absolute top-0 inset-x-0 z-50 px-4 pt-3">
-        <div className="flex gap-1.5">
-          {SCENES.map((s, i) => (
+      <div className="absolute top-0 inset-x-0 z-50 px-4 pt-3 pointer-events-none">
+        <div className="flex gap-1.5 pointer-events-auto">
+          {SCENES.map((sc, i) => (
             <button
-              key={s.id}
+              key={sc.id}
               onClick={() => driver.goTo(i)}
               className="flex-1 h-1 rounded-full overflow-hidden relative"
-              style={{ background: "rgba(15,23,42,0.12)" }}
-              title={s.label}
+              style={{ background: "rgba(15,23,42,0.18)" }}
+              title={sc.label}
             >
               <motion.div
                 className="absolute inset-y-0 left-0"
@@ -150,22 +147,77 @@ export default function DemoBooth() {
         )}
       </div>
 
+      {/* Iframe do app real (oculto na cena de fechamento) */}
+      {!s.closing && (
+        <iframe
+          ref={iframeRef}
+          title="PULSO app real"
+          className="absolute inset-0 w-full h-full border-0"
+          style={{ background: "white" }}
+          // Bloqueia clique de visitante — é tour assistido
+          sandbox="allow-same-origin allow-scripts allow-forms"
+        />
+      )}
+
+      {/* Camada-fantasma — visualmente sutil, impede clique no iframe durante o tour */}
+      {!s.closing && (
+        <div aria-hidden className="absolute inset-0 z-30" style={{ background: "transparent" }} />
+      )}
+
+      {/* Legenda chamativa sobreposta */}
       <AnimatePresence mode="wait">
-        <motion.div
-          key={driver.scene.id}
-          initial={{ opacity: 0, x: 18 }}
-          animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -18 }}
-          transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
-          className="absolute inset-0"
-        >
-          {renderScene(driver.scene.id)}
-        </motion.div>
+        {!s.closing && (
+          <motion.div
+            key={s.id}
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+            className="absolute left-0 right-0 bottom-10 z-40 flex justify-center px-4 pointer-events-none"
+          >
+            <div
+              className="max-w-3xl w-full rounded-2xl px-6 py-5 backdrop-blur-md"
+              style={{
+                background: "rgba(5, 11, 26, 0.88)",
+                boxShadow: "0 30px 80px -20px rgba(5,11,26,0.55), 0 0 0 1px rgba(255,255,255,0.06)",
+              }}
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <PulsoLogo size={20} forceVariant="dark" />
+                <span className="text-[10px] uppercase tracking-[0.25em] font-bold" style={{ color: "#5BA8FF" }}>
+                  {s.label}
+                </span>
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold leading-tight text-white" style={{ fontFamily: "Sora, system-ui" }}>
+                {s.headline}
+              </h2>
+              <p className="mt-2 text-sm md:text-base leading-relaxed" style={{ color: "rgba(255,255,255,0.75)", fontFamily: "Inter, system-ui" }}>
+                {s.sub}
+              </p>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Cena de fechamento (QR + acesso 7 dias) */}
+      <AnimatePresence>
+        {s.closing && (
+          <motion.div
+            key="closing"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.4 }}
+            className="absolute inset-0 z-20"
+          >
+            <SceneClosing />
+          </motion.div>
+        )}
       </AnimatePresence>
 
       <footer
         className="absolute bottom-0 inset-x-0 z-40 text-center text-[10px] py-2 backdrop-blur"
-        style={{ color: driver.scene.impact || driver.scene.id === "numbers" ? "rgba(255,255,255,0.55)" : BRAND.textMuted, background: driver.scene.impact || driver.scene.id === "numbers" ? "rgba(5,11,26,0.45)" : "rgba(255,255,255,0.65)" }}
+        style={{ color: "rgba(255,255,255,0.7)", background: "rgba(5,11,26,0.55)" }}
       >
         Ferramenta de apoio à decisão clínica. Não substitui o julgamento médico.
       </footer>
