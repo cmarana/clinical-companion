@@ -3,23 +3,38 @@ import { useSearchParams } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 import { Pause, Play, X, Maximize2, ChevronLeft, ChevronRight } from "lucide-react";
 import { SCENES, useDemoDriver } from "./useDemoDriver";
-import SceneIntro from "./scenes/SceneIntro";
-import SceneSearch from "./scenes/SceneSearch";
-import SceneProtocol from "./scenes/SceneProtocol";
-import SceneCalculator from "./scenes/SceneCalculator";
+import { BRAND } from "./mock-data";
+import PulsoLogo from "@/components/PulsoLogo";
+
+import SceneColdOpen from "./scenes/SceneColdOpen";
+import ImpactCard from "./scenes/ImpactCard";
+import SceneRedRoom from "./scenes/SceneRedRoom";
+import SceneSearchProtocol from "./scenes/SceneSearchProtocol";
+import SceneMeds from "./scenes/SceneMeds";
+import SceneCalc from "./scenes/SceneCalc";
+import SceneOffline from "./scenes/SceneOffline";
 import SceneClara from "./scenes/SceneClara";
-import SceneEpidemic from "./scenes/SceneEpidemic";
+import SceneDutyEpidemic from "./scenes/SceneDutyEpidemic";
+import SceneNumbers from "./scenes/SceneNumbers";
 import SceneClosing from "./scenes/SceneClosing";
 
-const sceneComponents = [
-  SceneIntro,
-  SceneSearch,
-  SceneProtocol,
-  SceneCalculator,
-  SceneClara,
-  SceneEpidemic,
-  SceneClosing,
-];
+const renderScene = (id: string) => {
+  switch (id) {
+    case "cold-open":     return <SceneColdOpen />;
+    case "card-wifi":     return <ImpactCard>E quando a internet cai<br />no meio da emergência?</ImpactCard>;
+    case "red-room":      return <SceneRedRoom />;
+    case "card-plantao":  return <ImpactCard small>Construído para o plantão real.</ImpactCard>;
+    case "search":        return <SceneSearchProtocol />;
+    case "meds":          return <SceneMeds />;
+    case "calc":          return <SceneCalc />;
+    case "offline":       return <SceneOffline />;
+    case "clara":         return <SceneClara />;
+    case "duty-epidemic": return <SceneDutyEpidemic />;
+    case "numbers":       return <SceneNumbers />;
+    case "closing":       return <SceneClosing />;
+    default:              return null;
+  }
+};
 
 export default function DemoBooth() {
   const [searchParams] = useSearchParams();
@@ -27,95 +42,65 @@ export default function DemoBooth() {
     () => searchParams.get("manual") === "1" || searchParams.get("mode") === "manual",
     [searchParams],
   );
-  const [started, setStarted] = useState(manual); // modo manual entra direto
+  const [started, setStarted] = useState(manual);
   const driver = useDemoDriver(started, { manual });
 
   useEffect(() => {
-    document.title = "PULSO · Demonstração ao vivo";
+    document.title = "PULSO · Trailer ao vivo";
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape" && !manual) setStarted(false);
-      if (e.key === " " && started) {
-        e.preventDefault();
-        driver.setPaused((p) => !p);
-      }
+      if (e.key === " " && started) { e.preventDefault(); driver.setPaused((p) => !p); }
       if (manual && e.key === "ArrowRight") driver.next();
       if (manual && e.key === "ArrowLeft") driver.prev();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [started, driver]);
+  }, [started, driver, manual]);
 
   const goFullscreen = async () => {
-    try {
-      if (!document.fullscreenElement) await document.documentElement.requestFullscreen();
-    } catch {
-      /* noop */
-    }
+    try { if (!document.fullscreenElement) await document.documentElement.requestFullscreen(); } catch { /* noop */ }
   };
 
   if (!started) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center px-6 text-white relative overflow-hidden" style={{ background: "#050B1A" }}>
-        <div
-          aria-hidden
-          className="absolute inset-0 pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse 60% 40% at 50% 30%, rgba(10,109,217,0.35), transparent 60%)",
-          }}
-        />
+      <div className="min-h-screen flex flex-col items-center justify-center px-6 relative overflow-hidden" style={{ background: BRAND.bgLight, color: BRAND.text }}>
+        <div aria-hidden className="absolute inset-0 pointer-events-none"
+          style={{ background: "radial-gradient(ellipse 60% 40% at 50% 25%, rgba(10,109,217,0.18), transparent 60%)" }} />
         <div className="relative z-10 text-center max-w-2xl">
           <div className="flex items-center justify-center gap-3 mb-8">
-            <div
-              className="w-16 h-16 rounded-2xl flex items-center justify-center text-3xl font-bold"
-              style={{ background: "#0A6DD9", fontFamily: "Sora, system-ui" }}
-            >
-              P
-            </div>
-            <div className="text-5xl font-bold tracking-tight" style={{ fontFamily: "Sora, system-ui" }}>
-              PULSO
-            </div>
+            <PulsoLogo size={60} forceVariant="light" priority />
+            <div className="text-5xl font-bold tracking-tight" style={{ fontFamily: "Sora, system-ui" }}>PULSO</div>
           </div>
           <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight" style={{ fontFamily: "Sora, system-ui" }}>
             Veja o PULSO em ação
           </h1>
-          <p className="text-white/70 mb-10 text-lg">
-            Tour automático de 75 segundos pelos principais recursos da plataforma.
+          <p className="mb-10 text-lg" style={{ color: BRAND.textMuted }}>
+            Trailer de ~65 segundos · roda em loop · ESC para sair.
           </p>
           <div className="flex items-center justify-center gap-3">
             <button
-              onClick={() => {
-                setStarted(true);
-                goFullscreen();
-              }}
-              className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] shadow-[0_10px_40px_-10px_rgba(10,109,217,0.6)]"
-              style={{ background: "#0A6DD9", fontFamily: "Sora, system-ui" }}
+              onClick={() => { setStarted(true); goFullscreen(); }}
+              className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] text-white"
+              style={{ background: BRAND.primary, fontFamily: "Sora, system-ui", boxShadow: "0 14px 40px -10px rgba(10,109,217,0.55)" }}
             >
               <Play className="w-5 h-5" fill="currentColor" />
-              Ver o PULSO em ação
+              Reproduzir trailer
             </button>
-            <button
-              onClick={goFullscreen}
-              className="inline-flex items-center gap-2 px-4 py-4 rounded-2xl border border-white/15 text-white/80 hover:bg-white/5"
-              title="Tela cheia"
-            >
+            <button onClick={goFullscreen} className="inline-flex items-center gap-2 px-4 py-4 rounded-2xl border" style={{ borderColor: BRAND.border, color: BRAND.textMuted }} title="Tela cheia">
               <Maximize2 className="w-5 h-5" />
             </button>
           </div>
-          <p className="text-xs text-white/40 mt-6">Modo kiosk · Roda em loop · ESC para sair</p>
         </div>
 
-        <footer className="absolute bottom-0 inset-x-0 text-center text-[11px] text-white/45 py-3 border-t border-white/5">
+        <footer className="absolute bottom-0 inset-x-0 text-center text-[11px] py-3 border-t" style={{ color: BRAND.textMuted, borderColor: BRAND.border, background: "white" }}>
           Ferramenta de apoio à decisão clínica. Não substitui o julgamento médico.
         </footer>
       </div>
     );
   }
 
-  const SceneComponent = sceneComponents[driver.index];
-
   return (
-    <div className="fixed inset-0 overflow-hidden text-white" style={{ background: "#050B1A" }}>
+    <div className="fixed inset-0 overflow-hidden" style={{ background: BRAND.bgLight, color: BRAND.text }}>
       {/* progress bar */}
       <div className="absolute top-0 inset-x-0 z-50 px-4 pt-3">
         <div className="flex gap-1.5">
@@ -124,15 +109,13 @@ export default function DemoBooth() {
               key={s.id}
               onClick={() => driver.goTo(i)}
               className="flex-1 h-1 rounded-full overflow-hidden relative"
-              style={{ background: "rgba(255,255,255,0.12)" }}
+              style={{ background: "rgba(15,23,42,0.12)" }}
               title={s.label}
             >
               <motion.div
                 className="absolute inset-y-0 left-0"
-                style={{ background: "#0A6DD9" }}
-                animate={{
-                  width: i < driver.index ? "100%" : i === driver.index ? `${driver.progress * 100}%` : "0%",
-                }}
+                style={{ background: BRAND.primary }}
+                animate={{ width: i < driver.index ? "100%" : i === driver.index ? `${driver.progress * 100}%` : "0%" }}
                 transition={{ duration: 0.2 }}
               />
             </button>
@@ -143,41 +126,25 @@ export default function DemoBooth() {
       {/* controls */}
       <div className="absolute top-4 right-4 z-50 flex items-center gap-2">
         {manual && (
-          <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-widest uppercase bg-white/10 border border-white/20 backdrop-blur">
+          <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-widest uppercase border backdrop-blur" style={{ borderColor: BRAND.border, background: "rgba(255,255,255,0.85)", color: BRAND.text }}>
             Manual · {driver.index + 1}/{SCENES.length}
           </span>
         )}
         {manual && (
-          <button
-            onClick={() => driver.prev()}
-            className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/15 backdrop-blur"
-            title="Cena anterior (←)"
-          >
+          <button onClick={() => driver.prev()} className="w-9 h-9 rounded-full flex items-center justify-center backdrop-blur" style={{ background: "rgba(255,255,255,0.9)", border: `1px solid ${BRAND.border}` }} title="Anterior (←)">
             <ChevronLeft className="w-4 h-4" />
           </button>
         )}
-        <button
-          onClick={() => driver.setPaused((p) => !p)}
-          className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/15 backdrop-blur"
-          title={driver.paused ? "Reproduzir (espaço)" : "Pausar (espaço)"}
-        >
+        <button onClick={() => driver.setPaused((p) => !p)} className="w-9 h-9 rounded-full flex items-center justify-center backdrop-blur" style={{ background: "rgba(255,255,255,0.9)", border: `1px solid ${BRAND.border}` }} title={driver.paused ? "Reproduzir (espaço)" : "Pausar (espaço)"}>
           {driver.paused ? <Play className="w-4 h-4" /> : <Pause className="w-4 h-4" />}
         </button>
         {manual && (
-          <button
-            onClick={() => driver.next()}
-            className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/15 backdrop-blur"
-            title="Próxima cena (→)"
-          >
+          <button onClick={() => driver.next()} className="w-9 h-9 rounded-full flex items-center justify-center backdrop-blur" style={{ background: "rgba(255,255,255,0.9)", border: `1px solid ${BRAND.border}` }} title="Próxima (→)">
             <ChevronRight className="w-4 h-4" />
           </button>
         )}
         {!manual && (
-          <button
-            onClick={() => setStarted(false)}
-            className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/15 backdrop-blur"
-            title="Sair (ESC)"
-          >
+          <button onClick={() => setStarted(false)} className="w-9 h-9 rounded-full flex items-center justify-center backdrop-blur" style={{ background: "rgba(255,255,255,0.9)", border: `1px solid ${BRAND.border}` }} title="Sair (ESC)">
             <X className="w-4 h-4" />
           </button>
         )}
@@ -186,17 +153,20 @@ export default function DemoBooth() {
       <AnimatePresence mode="wait">
         <motion.div
           key={driver.scene.id}
-          initial={{ opacity: 0, x: 24 }}
+          initial={{ opacity: 0, x: 18 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -24 }}
-          transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
+          exit={{ opacity: 0, x: -18 }}
+          transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
           className="absolute inset-0"
         >
-          <SceneComponent />
+          {renderScene(driver.scene.id)}
         </motion.div>
       </AnimatePresence>
 
-      <footer className="absolute bottom-0 inset-x-0 z-40 text-center text-[10px] text-white/40 py-2 bg-[#050B1A]/70 backdrop-blur">
+      <footer
+        className="absolute bottom-0 inset-x-0 z-40 text-center text-[10px] py-2 backdrop-blur"
+        style={{ color: driver.scene.impact || driver.scene.id === "numbers" ? "rgba(255,255,255,0.55)" : BRAND.textMuted, background: driver.scene.impact || driver.scene.id === "numbers" ? "rgba(5,11,26,0.45)" : "rgba(255,255,255,0.65)" }}
+      >
         Ferramenta de apoio à decisão clínica. Não substitui o julgamento médico.
       </footer>
     </div>

@@ -1,73 +1,83 @@
-// Mocks PT-BR para a demonstração de estande. Conteúdo realista, sem chamadas reais.
+// Mocks PT-BR para o trailer. Conteúdo realista, zero chamadas externas.
 
-export const searchResults = [
-  {
-    id: "sepse-ssc-2026",
-    title: "Protocolo Sepse — SSC 2026",
-    subtitle: "Bundle da 1ª hora · qSOFA · Antibiótico empírico",
-    badge: "Protocolo",
-  },
-  { id: "qsofa", title: "Calculadora qSOFA", subtitle: "Triagem rápida de sepse à beira-leito", badge: "Calculadora" },
-  { id: "ssc-pediatrica", title: "Sepse Pediátrica — SBP 2025", subtitle: "Choque séptico em crianças", badge: "Protocolo" },
-  { id: "noradrenalina", title: "Noradrenalina — Diluição e titulação", subtitle: "Bulário PULSO", badge: "Medicação" },
+export const BRAND = {
+  primary: "#0A6DD9",
+  primaryDark: "#0857AE",
+  navy: "#050B1A",
+  bgLight: "#F7F9FC",
+  surface: "#FFFFFF",
+  border: "#E4E8EF",
+  text: "#0F172A",
+  textMuted: "#5B6577",
+  danger: "#DC2626",
+  warning: "#F59E0B",
+  ok: "#16A34A",
+};
+
+export const redRoomScenarios = [
+  { id: "pcr", label: "PCR no Adulto", tag: "Crítico", color: "#DC2626" },
+  { id: "avc", label: "AVCi — Janela", tag: "Tempo", color: "#F59E0B" },
+  { id: "sepse", label: "Choque Séptico", tag: "Crítico", color: "#DC2626" },
+  { id: "iam", label: "IAM com Supra", tag: "Tempo", color: "#F59E0B" },
 ];
 
-export const sepseProtocol = {
-  title: "Sepse e Choque Séptico — Surviving Sepsis Campaign 2026",
-  meta: ["Adulto", "Emergência", "Atualizado em mar/2026", "Referência: SSC/IDSA"],
-  sections: [
-    {
-      heading: "Definição",
-      body:
-        "Disfunção orgânica ameaçadora à vida causada por resposta desregulada do hospedeiro à infecção. Choque séptico = sepse + necessidade de vasopressor para manter PAM ≥65 mmHg + lactato >2 mmol/L após ressuscitação.",
-    },
-    {
-      heading: "Critérios diagnósticos (qSOFA ≥2)",
-      bullets: [
-        "Frequência respiratória ≥22 ipm",
-        "Alteração do nível de consciência (Glasgow <15)",
-        "Pressão arterial sistólica ≤100 mmHg",
-      ],
-    },
-    {
-      heading: "Bundle da 1ª hora",
-      bullets: [
-        "Lactato sérico — repetir em 2h se >2 mmol/L",
-        "Hemoculturas antes do antibiótico (2 pares)",
-        "Antibiótico de amplo espectro EV ≤1h",
-        "Cristaloide 30 mL/kg em 3h se hipotensão ou lactato ≥4",
-        "Vasopressor (noradrenalina) se PAM <65 após volume",
-      ],
-    },
-    {
-      heading: "Antibiótico empírico",
-      body:
-        "Foco indefinido: piperacilina-tazobactam 4,5 g EV 6/6h. Suspeita de MRSA: associar vancomicina 25–30 mg/kg ataque, depois 15–20 mg/kg 8–12/12h.",
-    },
+export const pcrConduct = {
+  title: "Parada Cardiorrespiratória — Adulto",
+  steps: [
+    { t: "00:00", a: "Iniciar RCP 30:2 · Compressões 100–120/min" },
+    { t: "00:30", a: "Monitor / Desfibrilador · Checar ritmo" },
+    { t: "02:00", a: "Adrenalina 1 mg EV · repetir 3–5 min" },
+    { t: "04:00", a: "Amiodarona 300 mg EV (FV/TVSP refratária)" },
   ],
 };
 
-export const claraConversation = {
-  question: "Dose de noradrenalina para choque séptico, paciente 70kg?",
-  answer: [
-    "**Noradrenalina — choque séptico (adulto 70 kg)**",
-    "",
-    "**Diluição padrão:** 4 ampolas (16 mg) em 234 mL de SG 5% = 64 mcg/mL (concentração de 250 mL).",
-    "",
-    "**Dose inicial:** 0,05 mcg/kg/min — em paciente de 70 kg ≈ 3,5 mcg/min ≈ **3,3 mL/h** em BIC.",
-    "",
-    "**Titulação:** ajustar a cada 5 min até PAM ≥65 mmHg. Faixa usual: **0,05 – 1,0 mcg/kg/min** (até 2,0 em refratário).",
-    "",
-    "**Via:** preferir acesso central. Em via periférica, calibre adequado e tempo limitado (até 6h), com vigilância de extravasamento.",
-    "",
-    "**Referência:** SSC 2026; Diretriz AMIB de sepse 2024.",
-  ].join("\n"),
+export const sepseProtocolBundle = [
+  "Lactato sérico — repetir em 2h se >2 mmol/L",
+  "Hemoculturas antes do antibiótico (2 pares)",
+  "Antibiótico amplo espectro EV ≤ 1h",
+  "Cristaloide 30 mL/kg em 3h se hipotensão / lactato ≥4",
+  "Vasopressor (noradrenalina) se PAM <65 após volume",
+];
+
+export const noradrenalineDilution = {
+  drug: "Noradrenalina",
+  presentation: "Ampola 4 mg / 4 mL",
+  dilution: "16 mg (4 amp) em 234 mL SG 5% = 64 mcg/mL",
+  dose: "0,05 – 1,0 mcg/kg/min",
+  startRate: "70 kg → 3,3 mL/h (BIC)",
+  alert: "Interação grave: IMAO · Risco de extravasamento em via periférica",
 };
 
-export const epidemicAlerts = [
-  { region: "Sudeste", level: "amarelo", title: "Dengue", detail: "Aumento de 38% em 4 semanas" },
-  { region: "Norte", level: "vermelho", title: "Malária", detail: "Surto em municípios do AM" },
-  { region: "Nordeste", level: "amarelo", title: "Chikungunya", detail: "Casos acima da média histórica" },
-  { region: "Sul", level: "verde", title: "Influenza", detail: "Cobertura vacinal estável" },
-  { region: "Centro-Oeste", level: "amarelo", title: "Febre Amarela", detail: "Alerta sazonal ativo" },
+export const qsofaItems = [
+  { k: "Frequência respiratória ≥ 22 ipm", v: true },
+  { k: "Alteração do nível de consciência (Glasgow < 15)", v: true },
+  { k: "Pressão arterial sistólica ≤ 100 mmHg", v: true },
+];
+
+export const claraAnswerBlocks = [
+  "**Noradrenalina — choque séptico (adulto 70 kg)**",
+  "**Diluição:** 16 mg em 234 mL SG 5% → 64 mcg/mL",
+  "**Dose inicial:** 0,05 mcg/kg/min ≈ **3,3 mL/h** em BIC",
+  "**Titulação:** ajustar a cada 5 min até PAM ≥ 65 mmHg",
+  "**Faixa usual:** 0,05 – 1,0 mcg/kg/min",
+  "*Ref.: SSC 2026 · AMIB 2024*",
+];
+
+export const epidemicRegions: Array<{
+  id: string; name: string; color: string; d: string; label: string;
+}> = [
+  { id: "n",  name: "Norte",         color: "#DC2626", label: "Malária — surto AM",   d: "M120,80 L260,75 L310,110 L300,200 L210,230 L130,210 Z" },
+  { id: "ne", name: "Nordeste",      color: "#F59E0B", label: "Chikungunya",          d: "M310,110 L420,120 L430,230 L350,260 L300,200 Z" },
+  { id: "co", name: "Centro-Oeste",  color: "#F59E0B", label: "Febre amarela",        d: "M200,230 L300,200 L350,260 L320,330 L220,330 Z" },
+  { id: "se", name: "Sudeste",       color: "#DC2626", label: "Dengue +38%",          d: "M320,330 L420,310 L430,380 L340,400 Z" },
+  { id: "s",  name: "Sul",           color: "#16A34A", label: "Influenza estável",    d: "M260,400 L370,400 L360,470 L240,460 Z" },
+];
+
+export const bigNumbers = [
+  { v: "1.004", k: "protocolos" },
+  { v: "2.000", k: "medicamentos" },
+  { v: "53",    k: "calculadoras" },
+  { v: "1.265", k: "templates SUS" },
+  { v: "30+",   k: "árvores de decisão" },
+  { v: "100%",  k: "em português" },
 ];
