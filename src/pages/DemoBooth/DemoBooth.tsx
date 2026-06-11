@@ -33,11 +33,13 @@ export default function DemoBooth() {
   useEffect(() => {
     document.title = "PULSO · Demonstração ao vivo";
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setStarted(false);
+      if (e.key === "Escape" && !manual) setStarted(false);
       if (e.key === " " && started) {
         e.preventDefault();
         driver.setPaused((p) => !p);
       }
+      if (manual && e.key === "ArrowRight") driver.next();
+      if (manual && e.key === "ArrowLeft") driver.prev();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
