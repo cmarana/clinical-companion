@@ -7,21 +7,28 @@ import { useEffect, useState } from "react";
 
 export default function SceneClara() {
   const [phase, setPhase] = useState(0);
-  const q = useTypewriter("Dose de noradrenalina, choque séptico, 70kg?", phase === 0, 55);
+  const question = "Dose de noradrenalina, choque séptico, 70kg?";
+  const q = useTypewriter(question, phase === 0, 38);
   const [shown, setShown] = useState(0);
   useEffect(() => {
-    const t = setTimeout(() => setPhase(1), 3200);
+    // Resposta começa 0,5s após o fim da digitação (38ms * 44 chars ≈ 1670ms + 500ms)
+    const t = setTimeout(() => setPhase(1), question.length * 38 + 500);
     return () => clearTimeout(t);
-  }, []);
+  }, [question]);
   useEffect(() => {
     if (phase !== 1) return;
-    const id = setInterval(() => setShown((s) => Math.min(claraAnswerBlocks.length, s + 1)), 1100);
+    const id = setInterval(() => setShown((s) => Math.min(claraAnswerBlocks.length, s + 1)), 650);
     return () => clearInterval(id);
   }, [phase]);
 
   return (
     <LightShell title="Dra. Clara · IA Clínica">
-      <div className="h-full flex flex-col p-6">
+      <motion.div
+        className="h-full flex flex-col p-6"
+        initial={{ scale: 1.04 }}
+        animate={{ scale: 1 }}
+        transition={{ duration: 6, ease: "linear" }}
+      >
         <div className="flex-1 overflow-hidden max-w-3xl mx-auto w-full space-y-3">
           <motion.div
             initial={{ opacity: 0, y: 8 }}
