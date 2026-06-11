@@ -54,6 +54,27 @@ serve(async (req) => {
       );
     }
 
+    // Event access (ex: cortesia Web Summit) — trata como Pro enquanto válido.
+    const { data: profileEvent } = await supabaseAdmin
+      .from("profiles")
+      .select("event_access_until")
+      .eq("user_id", user.id)
+      .maybeSingle();
+
+    if (profileEvent?.event_access_until && new Date(profileEvent.event_access_until) > new Date()) {
+      return new Response(
+        JSON.stringify({
+          subscribed: true,
+          provider: "event_access",
+          product_id: "event_websummit",
+          subscription_end: profileEvent.event_access_until,
+          event_access: true,
+        }),
+        { headers: { ...corsHeaders, "Content-Type": "application/json" } },
+      );
+    }
+
+
     const { data: override } = await supabaseAdmin
       .from("test_access_overrides")
       .select("expires_at")
