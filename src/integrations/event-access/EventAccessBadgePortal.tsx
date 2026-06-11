@@ -42,6 +42,17 @@ export default function EventAccessBadgePortal() {
 
   if (location.pathname !== "/profile" || !until) return null;
 
+  const tz = Intl.DateTimeFormat().resolvedOptions().timeZone || "America/Sao_Paulo";
+  const formatted = new Intl.DateTimeFormat("pt-BR", {
+    day: "2-digit",
+    month: "long",
+    year: "numeric",
+    hour: "2-digit",
+    minute: "2-digit",
+    timeZone: tz,
+    timeZoneName: "short",
+  }).format(until);
+
   return createPortal(
     <div
       className="fixed top-[72px] left-1/2 -translate-x-1/2 z-40 px-4 py-2.5 rounded-full text-sm shadow-lg border flex items-center gap-2 animate-fade-in"
@@ -51,13 +62,11 @@ export default function EventAccessBadgePortal() {
         color: "hsl(var(--foreground))",
         backdropFilter: "blur(8px)",
       }}
+      title={`Fuso horário: ${tz}`}
     >
       <CalendarCheck className="w-4 h-4" style={{ color: "#0A6DD9" }} />
       <span>
-        Acesso Web Summit ativo até{" "}
-        <strong>
-          {until.toLocaleDateString("pt-BR", { day: "2-digit", month: "long", year: "numeric" })}
-        </strong>
+        Acesso Web Summit ativo até <strong>{formatted}</strong>
       </span>
     </div>,
     document.body,

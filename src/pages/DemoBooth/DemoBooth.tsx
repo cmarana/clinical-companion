@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
-import { Pause, Play, X, Maximize2 } from "lucide-react";
+import { Pause, Play, X, Maximize2, ChevronLeft, ChevronRight } from "lucide-react";
 import { SCENES, useDemoDriver } from "./useDemoDriver";
 import SceneIntro from "./scenes/SceneIntro";
 import SceneSearch from "./scenes/SceneSearch";
@@ -21,17 +22,24 @@ const sceneComponents = [
 ];
 
 export default function DemoBooth() {
-  const [started, setStarted] = useState(false);
-  const driver = useDemoDriver(started);
+  const [searchParams] = useSearchParams();
+  const manual = useMemo(
+    () => searchParams.get("manual") === "1" || searchParams.get("mode") === "manual",
+    [searchParams],
+  );
+  const [started, setStarted] = useState(manual); // modo manual entra direto
+  const driver = useDemoDriver(started, { manual });
 
   useEffect(() => {
     document.title = "PULSO · Demonstração ao vivo";
     const onKey = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setStarted(false);
+      if (e.key === "Escape" && !manual) setStarted(false);
       if (e.key === " " && started) {
         e.preventDefault();
         driver.setPaused((p) => !p);
       }
+      if (manual && e.key === "ArrowRight") driver.next();
+      if (manual && e.key === "ArrowLeft") driver.prev();
     };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
@@ -133,19 +141,46 @@ export default function DemoBooth() {
       </div>
 
       {/* controls */}
-      <div className="absolute top-4 right-4 z-50 flex gap-2">
+      <div className="absolute top-4 right-4 z-50 flex items-center gap-2">
+        {manual && (
+          <span className="px-2.5 py-1 rounded-full text-[10px] font-semibold tracking-widest uppercase bg-white/10 border border-white/20 backdrop-blur">
+            Manual · {driver.index + 1}/{SCENES.length}
+          </span>
+        )}
+        {manual && (
+          <button
+            onClick={() => driver.prev()}
+            className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/15 backdrop-blur"
+            title="Cena anterior (←)"
+          >
+            <ChevronLeft className="w-4 h-4" />
+          </button>
+        )}
         <button
           onClick={() => driver.setPaused((p) => !p)}
           className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/15 backdrop-blur"
+          title={driver.paused ? "Reproduzir (espaço)" : "Pausar (espaço)"}
         >
           {driver.paused ? <Play className="w-4 h-4" /> : <Pause className="w-4 h-4" />}
         </button>
-        <button
-          onClick={() => setStarted(false)}
-          className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/15 backdrop-blur"
-        >
-          <X className="w-4 h-4" />
-        </button>
+        {manual && (
+          <button
+            onClick={() => driver.next()}
+            className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/15 backdrop-blur"
+            title="Próxima cena (→)"
+          >
+            <ChevronRight className="w-4 h-4" />
+          </button>
+        )}
+        {!manual && (
+          <button
+            onClick={() => setStarted(false)}
+            className="w-9 h-9 rounded-full flex items-center justify-center bg-white/10 hover:bg-white/15 backdrop-blur"
+            title="Sair (ESC)"
+          >
+            <X className="w-4 h-4" />
+          </button>
+        )}
       </div>
 
       <AnimatePresence mode="wait">

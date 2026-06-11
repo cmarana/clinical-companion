@@ -1,13 +1,36 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, ShieldCheck, Sparkles, Stethoscope } from "lucide-react";
+import { ArrowRight, Check, Copy, ShieldCheck, Sparkles, Stethoscope } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const EVENT_FLAG = "pulso_event_src";
 const EVENT_FLAG_EXPIRES = "pulso_event_src_expires";
 
 export default function WebSummitLanding() {
   const navigate = useNavigate();
+  const { toast } = useToast();
+  const [copied, setCopied] = useState(false);
+
+  const inviteLink =
+    typeof window !== "undefined"
+      ? `${window.location.origin}/websummit?src=websummit`
+      : "https://pulsoemergencia.com.br/websummit?src=websummit";
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(inviteLink);
+      setCopied(true);
+      toast({ title: "Link copiado!", description: "Envie para seus convidados do Web Summit." });
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      toast({
+        title: "Não foi possível copiar",
+        description: inviteLink,
+        variant: "destructive",
+      });
+    }
+  };
 
   useEffect(() => {
     document.title = "PULSO no Web Summit Rio 2026 — 7 dias de acesso";
@@ -114,6 +137,32 @@ export default function WebSummitLanding() {
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
           </button>
           <p className="text-xs text-white/50">Cadastro com email e senha · Sem cartão · Sem cobrança</p>
+
+          <div className="mt-6 w-full max-w-md">
+            <div className="text-[11px] uppercase tracking-[0.18em] text-white/45 mb-2">
+              Convidar outros visitantes
+            </div>
+            <div className="flex items-stretch gap-2 p-1.5 rounded-2xl border border-white/15 bg-white/[0.04] backdrop-blur">
+              <input
+                readOnly
+                value={inviteLink}
+                onFocus={(e) => e.currentTarget.select()}
+                className="flex-1 bg-transparent px-3 py-2 text-sm text-white/85 outline-none truncate"
+                aria-label="Link de convite Web Summit"
+              />
+              <button
+                onClick={handleCopy}
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
+                style={{ background: "#0A6DD9", fontFamily: "Sora, system-ui" }}
+              >
+                {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                {copied ? "Copiado" : "Copiar"}
+              </button>
+            </div>
+            <p className="mt-2 text-[11px] text-white/45">
+              Quem abrir este link recebe os mesmos 7 dias de cortesia ao se cadastrar.
+            </p>
+          </div>
         </motion.div>
 
         <motion.div
