@@ -31,11 +31,12 @@ export default function SceneNumbers() {
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1.2 }}
-        className="relative mt-10 text-2xl md:text-3xl text-white font-semibold text-center"
+        transition={{ delay: 1.4, duration: 0.6 }}
+        className="relative mt-10 text-2xl md:text-3xl text-white font-semibold text-center max-w-3xl"
         style={{ fontFamily: "Sora, system-ui" }}
       >
-        Uma única camada clínica. À beira-leito.
+        Stack proprietária. Construída no Brasil.<br/>
+        <span className="text-white/60 text-lg md:text-xl font-normal">Pronta para escalar na América Latina.</span>
       </motion.div>
     </div>
   );

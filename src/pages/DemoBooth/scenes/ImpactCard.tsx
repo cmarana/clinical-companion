@@ -5,9 +5,11 @@ import { BRAND } from "../mock-data";
 export default function ImpactCard({
   children,
   small = false,
+  kicker,
 }: {
   children: ReactNode;
   small?: boolean;
+  kicker?: string;
 }) {
   return (
     <div className="absolute inset-0 flex items-center justify-center px-10" style={{ background: BRAND.navy }}>
@@ -20,16 +22,21 @@ export default function ImpactCard({
         }}
       />
       <motion.div
-        initial={{ opacity: 0, scale: 0.92, y: 10 }}
+        initial={{ opacity: 0, scale: 0.94, y: 10 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 1.04 }}
-        transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
-        className={`relative text-center text-white font-bold leading-[1.05] tracking-tight ${
-          small ? "text-4xl md:text-5xl" : "text-5xl md:text-7xl"
-        }`}
+        transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1] }}
+        className="relative text-center"
         style={{ fontFamily: "Sora, system-ui", maxWidth: 1100 }}
       >
-        {children}
+        {kicker && (
+          <div className="text-[11px] md:text-xs font-bold tracking-[0.35em] uppercase mb-5 text-white/55">
+            {kicker}
+          </div>
+        )}
+        <div className={`text-white font-bold leading-[1.08] tracking-tight ${small ? "text-4xl md:text-5xl" : "text-5xl md:text-7xl"}`}>
+          {children}
+        </div>
       </motion.div>
     </div>
   );

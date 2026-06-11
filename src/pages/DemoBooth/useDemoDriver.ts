@@ -8,20 +8,20 @@ export interface Scene {
   impact?: boolean;
 }
 
-// Trailer ~64.5s, 12 cenas.
+// Trailer ~110s, 12 cenas. Pacing legível: tempo para ler cada tela.
 export const SCENES: Scene[] = [
-  { id: "cold-open",      label: "Abertura",        durationMs: 4000 },
-  { id: "card-wifi",      label: "Cartão",          durationMs: 2000, impact: true },
-  { id: "red-room",       label: "Sala Vermelha",   durationMs: 7000 },
-  { id: "card-plantao",   label: "Cartão",          durationMs: 1500, impact: true },
-  { id: "search",         label: "Busca + Protocolo", durationMs: 6000 },
-  { id: "meds",           label: "Medicamentos",    durationMs: 6000 },
-  { id: "calc",           label: "Calculadora",     durationMs: 4000 },
-  { id: "offline",        label: "Offline ★",       durationMs: 8000 },
-  { id: "clara",          label: "Dra. Clara",      durationMs: 7000 },
-  { id: "duty-epidemic",  label: "Plantão · Vigilância", durationMs: 7000 },
-  { id: "numbers",        label: "Números",         durationMs: 4000, impact: true },
-  { id: "closing",        label: "Fechamento",      durationMs: 8000 },
+  { id: "cold-open",      label: "Abertura",        durationMs: 5500 },
+  { id: "card-wifi",      label: "Cartão",          durationMs: 5000, impact: true },
+  { id: "red-room",       label: "Sala Vermelha",   durationMs: 11000 },
+  { id: "card-plantao",   label: "Cartão",          durationMs: 4500, impact: true },
+  { id: "search",         label: "Busca + Protocolo", durationMs: 11000 },
+  { id: "meds",           label: "Medicamentos",    durationMs: 10000 },
+  { id: "calc",           label: "Calculadora",     durationMs: 8000 },
+  { id: "offline",        label: "Offline ★",       durationMs: 10000 },
+  { id: "clara",          label: "Dra. Clara",      durationMs: 13000 },
+  { id: "duty-epidemic",  label: "Plantão · Vigilância", durationMs: 11000 },
+  { id: "numbers",        label: "Tecnologia",      durationMs: 8000, impact: true },
+  { id: "closing",        label: "Fechamento",      durationMs: 11000 },
 ];
 
 // Ring buffer de logs locais — inspecionável via window.__demoBoothLog

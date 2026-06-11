@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export function useTypewriter(text: string, active: boolean, speed = 80) {
+export function useTypewriter(text: string, active: boolean, speed = 140) {
   const [out, setOut] = useState("");
   useEffect(() => {
     if (!active) {
@@ -19,6 +19,6 @@ export function useTypewriter(text: string, active: boolean, speed = 80) {
   return out;
 }
 
-export function useStreamingText(text: string, active: boolean, speed = 18) {
+export function useStreamingText(text: string, active: boolean, speed = 38) {
   return useTypewriter(text, active, speed);
 }
