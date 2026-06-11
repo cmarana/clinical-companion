@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
 import PremiumGate from "@/components/PremiumGate";
 
@@ -33,17 +33,17 @@ describe("PremiumGate respeitando event_access_until (cortesia Web Summit)", () 
     (useAuth as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
       subscription: { ...baseSub, subscribed: true, productId: "event_websummit", subscriptionEnd: future },
     });
-    renderGate();
-    expect(screen.getByTestId("premium-content")).toBeDefined();
+    const { container } = renderGate();
+    expect(container.querySelector('[data-testid="premium-content"]')).not.toBeNull();
   });
 
   it("bloqueia conteúdo quando subscription.subscribed=false (sem cortesia / expirou)", () => {
     (useAuth as unknown as ReturnType<typeof vi.fn>).mockReturnValue({
       subscription: baseSub,
     });
-    renderGate();
-    expect(screen.queryByTestId("premium-content")).toBeNull();
-    expect(screen.getByText(/Premium/i)).toBeDefined();
+    const { container } = renderGate();
+    expect(container.querySelector('[data-testid="premium-content"]')).toBeNull();
+    expect(container.textContent ?? "").toMatch(/Premium/i);
   });
 
   it("simula edge function: event_access_until > now → subscribed=true; passado → false", () => {
