@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
-import { ArrowRight, ShieldCheck, Sparkles, Stethoscope } from "lucide-react";
+import { ArrowRight, Check, Copy, ShieldCheck, Sparkles, Stethoscope } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const EVENT_FLAG = "pulso_event_src";
 const EVENT_FLAG_EXPIRES = "pulso_event_src_expires";
