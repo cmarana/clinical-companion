@@ -329,6 +329,8 @@ const App = () => (
                   <PWAInstallPrompt />
                   
                   <UpdatePromptDialog />
+                  <EventAccessClaimer />
+                  <EventAccessBadgePortal />
                   <AppRoutes />
                 </TooltipProvider>
               </NotesProvider>
