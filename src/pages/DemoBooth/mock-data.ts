@@ -1,24 +1,33 @@
 // Mocks PT-BR para o trailer. Conteúdo realista, zero chamadas externas.
+// Paleta DARK / Azul PULSO — fiel ao tema OLED do app.
 
 export const BRAND = {
   primary: "#0A6DD9",
+  primaryGlow: "#3D8BE8",
   primaryDark: "#0857AE",
-  navy: "#050B1A",
-  bgLight: "#F7F9FC",
-  surface: "#FFFFFF",
-  border: "#E4E8EF",
-  text: "#0F172A",
-  textMuted: "#5B6577",
-  danger: "#DC2626",
-  warning: "#F59E0B",
-  ok: "#16A34A",
+  navy: "#030814",
+  navyDeep: "#020611",
+  bgDark: "#050B1A",
+  surface: "#0B1426",
+  surfaceElev: "#0F1B30",
+  border: "rgba(91,168,255,0.16)",
+  borderStrong: "rgba(91,168,255,0.28)",
+  text: "#E8EEF8",
+  textMuted: "#8A99B4",
+  danger: "#FF4D5E",
+  warning: "#FFB020",
+  ok: "#22D39A",
+
+  // Legados (mantidos para componentes que ainda referenciam, mas mapeados ao tema escuro)
+  bgLight: "#050B1A",
+  textLegacy: "#E8EEF8",
 };
 
 export const redRoomScenarios = [
-  { id: "pcr", label: "PCR no Adulto", tag: "Crítico", color: "#DC2626" },
-  { id: "avc", label: "AVCi — Janela", tag: "Tempo", color: "#F59E0B" },
-  { id: "sepse", label: "Choque Séptico", tag: "Crítico", color: "#DC2626" },
-  { id: "iam", label: "IAM com Supra", tag: "Tempo", color: "#F59E0B" },
+  { id: "pcr", label: "PCR no Adulto", tag: "Crítico", color: "#FF4D5E" },
+  { id: "avc", label: "AVCi — Janela", tag: "Tempo", color: "#FFB020" },
+  { id: "sepse", label: "Choque Séptico", tag: "Crítico", color: "#FF4D5E" },
+  { id: "iam", label: "IAM com Supra", tag: "Tempo", color: "#FFB020" },
 ];
 
 export const pcrConduct = {
@@ -66,11 +75,11 @@ export const claraAnswerBlocks = [
 export const epidemicRegions: Array<{
   id: string; name: string; color: string; d: string; label: string;
 }> = [
-  { id: "n",  name: "Norte",         color: "#DC2626", label: "Malária — surto AM",   d: "M120,80 L260,75 L310,110 L300,200 L210,230 L130,210 Z" },
-  { id: "ne", name: "Nordeste",      color: "#F59E0B", label: "Chikungunya",          d: "M310,110 L420,120 L430,230 L350,260 L300,200 Z" },
-  { id: "co", name: "Centro-Oeste",  color: "#F59E0B", label: "Febre amarela",        d: "M200,230 L300,200 L350,260 L320,330 L220,330 Z" },
-  { id: "se", name: "Sudeste",       color: "#DC2626", label: "Dengue +38%",          d: "M320,330 L420,310 L430,380 L340,400 Z" },
-  { id: "s",  name: "Sul",           color: "#16A34A", label: "Influenza estável",    d: "M260,400 L370,400 L360,470 L240,460 Z" },
+  { id: "n",  name: "Norte",         color: "#FF4D5E", label: "Malária — surto AM",   d: "M120,80 L260,75 L310,110 L300,200 L210,230 L130,210 Z" },
+  { id: "ne", name: "Nordeste",      color: "#FFB020", label: "Chikungunya",          d: "M310,110 L420,120 L430,230 L350,260 L300,200 Z" },
+  { id: "co", name: "Centro-Oeste",  color: "#FFB020", label: "Febre amarela",        d: "M200,230 L300,200 L350,260 L320,330 L220,330 Z" },
+  { id: "se", name: "Sudeste",       color: "#FF4D5E", label: "Dengue +38%",          d: "M320,330 L420,310 L430,380 L340,400 Z" },
+  { id: "s",  name: "Sul",           color: "#22D39A", label: "Influenza estável",    d: "M260,400 L370,400 L360,470 L240,460 Z" },
 ];
 
 export const bigNumbers = [
