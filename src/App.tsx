@@ -191,6 +191,8 @@ const AppRoutes = () => (
       <Route path="/coming-soon" element={<ComingSoon />} />
       <Route path="/prelaunch" element={<PrelaunchLanding />} />
       <Route path="/demo" element={<Demo />} />
+      <Route path="/websummit" element={<WebSummitLanding />} />
+      <Route path="/demo-booth" element={<DemoBooth />} />
       <Route path="/auth" element={<Auth />} />
       <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/terms" element={<TermsOfUse />} />
