@@ -137,6 +137,32 @@ export default function WebSummitLanding() {
             <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
           </button>
           <p className="text-xs text-white/50">Cadastro com email e senha · Sem cartão · Sem cobrança</p>
+
+          <div className="mt-6 w-full max-w-md">
+            <div className="text-[11px] uppercase tracking-[0.18em] text-white/45 mb-2">
+              Convidar outros visitantes
+            </div>
+            <div className="flex items-stretch gap-2 p-1.5 rounded-2xl border border-white/15 bg-white/[0.04] backdrop-blur">
+              <input
+                readOnly
+                value={inviteLink}
+                onFocus={(e) => e.currentTarget.select()}
+                className="flex-1 bg-transparent px-3 py-2 text-sm text-white/85 outline-none truncate"
+                aria-label="Link de convite Web Summit"
+              />
+              <button
+                onClick={handleCopy}
+                className="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl text-sm font-semibold transition-all hover:scale-[1.02] active:scale-[0.98]"
+                style={{ background: "#0A6DD9", fontFamily: "Sora, system-ui" }}
+              >
+                {copied ? <Check className="w-4 h-4" /> : <Copy className="w-4 h-4" />}
+                {copied ? "Copiado" : "Copiar"}
+              </button>
+            </div>
+            <p className="mt-2 text-[11px] text-white/45">
+              Quem abrir este link recebe os mesmos 7 dias de cortesia ao se cadastrar.
+            </p>
+          </div>
         </motion.div>
 
         <motion.div
