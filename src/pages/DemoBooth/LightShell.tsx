@@ -18,15 +18,21 @@ export default function LightShell({
   return (
     <div className="absolute inset-0 flex flex-col" style={{ background: BRAND.bgLight, color: BRAND.text, fontFamily: "Inter, system-ui" }}>
       <div
-        className="flex items-center gap-3 px-5 py-3 border-b"
+        className="relative flex items-center gap-3 px-5 py-3 border-b"
         style={{ borderColor: BRAND.border, background: BRAND.surface }}
       >
+        <div className="absolute left-0 top-0 bottom-0 w-1" style={{ background: BRAND.primary }} aria-hidden />
         <ChevronLeft className="w-5 h-5" style={{ color: BRAND.textMuted }} />
         <div className="flex items-center gap-2 flex-1">
           <PulsoLogo size={28} forceVariant="light" priority />
-          <span className="font-semibold text-[15px] tracking-tight" style={{ fontFamily: "Sora, system-ui" }}>
-            {title ?? "PULSO"}
+          <span className="font-bold text-[15px] tracking-tight" style={{ fontFamily: "Sora, system-ui", color: BRAND.primary }}>
+            PULSO
           </span>
+          {title && (
+            <span className="text-[13px] font-medium ml-2 truncate" style={{ color: BRAND.textMuted, fontFamily: "Inter, system-ui" }}>
+              · {title}
+            </span>
+          )}
         </div>
         {showSearch && <Search className="w-5 h-5" style={{ color: BRAND.textMuted }} />}
         <Bell className="w-5 h-5" style={{ color: BRAND.textMuted }} />
