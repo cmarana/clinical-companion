@@ -62,13 +62,17 @@ export default function DemoBooth() {
 
   if (!started) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center px-6 relative overflow-hidden" style={{ background: BRAND.bgLight, color: BRAND.text }}>
+      <div className="min-h-screen flex flex-col items-center justify-center px-6 relative overflow-hidden" style={{ background: BRAND.navyDeep, color: BRAND.text }}>
         <div aria-hidden className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 60% 40% at 50% 25%, rgba(10,109,217,0.18), transparent 60%)" }} />
+          style={{ background: "radial-gradient(ellipse 60% 45% at 50% 30%, rgba(10,109,217,0.28), transparent 60%)" }} />
+        <div aria-hidden className="absolute inset-0 opacity-[0.07]" style={{
+          backgroundImage: "linear-gradient(rgba(91,168,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(91,168,255,1) 1px, transparent 1px)",
+          backgroundSize: "48px 48px",
+        }} />
         <div className="relative z-10 text-center max-w-2xl">
           <div className="flex items-center justify-center gap-3 mb-8">
-            <PulsoLogo size={60} forceVariant="light" priority />
-            <div className="text-5xl font-bold tracking-tight" style={{ fontFamily: "Sora, system-ui" }}>PULSO</div>
+            <PulsoLogo size={60} forceVariant="dark" priority />
+            <div className="text-5xl font-bold tracking-tight" style={{ fontFamily: "Sora, system-ui", textShadow: `0 0 30px ${BRAND.primary}80` }}>PULSO</div>
           </div>
           <h1 className="text-3xl md:text-5xl font-bold mb-4 leading-tight" style={{ fontFamily: "Sora, system-ui" }}>
             A plataforma clínica que não para.
@@ -80,18 +84,18 @@ export default function DemoBooth() {
             <button
               onClick={() => { setStarted(true); goFullscreen(); }}
               className="inline-flex items-center gap-2 px-7 py-4 rounded-2xl text-lg font-semibold transition-all hover:scale-[1.02] active:scale-[0.98] text-white"
-              style={{ background: BRAND.primary, fontFamily: "Sora, system-ui", boxShadow: "0 14px 40px -10px rgba(10,109,217,0.55)" }}
+              style={{ background: `linear-gradient(135deg, ${BRAND.primary}, ${BRAND.primaryDark})`, fontFamily: "Sora, system-ui", boxShadow: `0 20px 50px -10px ${BRAND.primary}90, 0 0 0 1px ${BRAND.primaryGlow}50` }}
             >
               <Play className="w-5 h-5" fill="currentColor" />
               Iniciar
             </button>
-            <button onClick={goFullscreen} className="inline-flex items-center gap-2 px-4 py-4 rounded-2xl border" style={{ borderColor: BRAND.border, color: BRAND.textMuted }} title="Tela cheia">
+            <button onClick={goFullscreen} className="inline-flex items-center gap-2 px-4 py-4 rounded-2xl border" style={{ borderColor: BRAND.borderStrong, color: BRAND.textMuted, background: "rgba(15,27,48,0.5)" }} title="Tela cheia">
               <Maximize2 className="w-5 h-5" />
             </button>
           </div>
         </div>
 
-        <footer className="absolute bottom-0 inset-x-0 text-center text-[11px] py-3 border-t" style={{ color: BRAND.textMuted, borderColor: BRAND.border, background: "white" }}>
+        <footer className="absolute bottom-0 inset-x-0 text-center text-[11px] py-3 border-t" style={{ color: BRAND.textMuted, borderColor: BRAND.border, background: "rgba(5,11,26,0.8)" }}>
           Ferramenta de apoio à decisão clínica. Não substitui o julgamento médico.
         </footer>
       </div>
@@ -99,10 +103,11 @@ export default function DemoBooth() {
   }
 
   const s = driver.scene;
-  const isDarkScene = s.kind === "impact" || s.kind === "numbers";
+  // Toda a demo agora é dark; mantemos a flag por compat com a barra de progresso/rodapé.
+  const isDarkScene = true;
 
   return (
-    <div className="fixed inset-0 overflow-hidden" style={{ background: BRAND.bgLight, color: BRAND.text }}>
+    <div className="fixed inset-0 overflow-hidden" style={{ background: BRAND.bgDark, color: BRAND.text }}>
       {/* progress bar */}
       <div className="absolute top-0 inset-x-0 z-50 px-4 pt-3 pointer-events-none">
         <div className="flex gap-1.5 pointer-events-auto">
