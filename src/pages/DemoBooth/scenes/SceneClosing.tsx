@@ -55,20 +55,21 @@ export default function SceneClosing() {
       <motion.h2
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.55 }}
-        className="relative text-3xl md:text-4xl font-bold mt-7 text-center"
+        transition={{ delay: 0.55, duration: 0.6 }}
+        className="relative text-3xl md:text-4xl font-bold mt-7 text-center max-w-3xl"
         style={{ fontFamily: "Sora, system-ui", color: BRAND.text }}
       >
-        Use o PULSO completo por <span style={{ color: BRAND.primary }}>7 dias</span>
+        Experimente o PULSO completo por <span style={{ color: BRAND.primary }}>7 dias</span>
       </motion.h2>
       <motion.p
         initial={{ opacity: 0, y: 14 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.75 }}
-        className="relative mt-2 text-center text-base md:text-lg"
+        transition={{ delay: 0.95, duration: 0.6 }}
+        className="relative mt-3 text-center text-base md:text-lg max-w-2xl"
         style={{ color: BRAND.textMuted }}
       >
-        Escaneie e crie sua conta — cortesia Web Summit Rio · Lançamento oficial em julho de 2026
+        Escaneie · cortesia Web Summit Rio 2026<br/>
+        <span className="text-sm">Conversas com investidores e parcerias hospitalares · <b style={{ color: BRAND.text }}>contato@pulsoemergencia.com.br</b></span>
       </motion.p>
     </div>
   );
